@@ -1,0 +1,10441 @@
+/*
+Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+
+
+This file is part of pythonOCC.
+pythonOCC is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+    
+pythonOCC is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
+
+*/
+%module GeomFill
+
+#pragma SWIG nowarn=504,325,503
+
+%{
+#ifdef WNT
+#pragma warning(disable : 4716)
+#endif
+%}
+
+%include ../common/CommonIncludes.i
+%include ../common/StandardDefines.i
+%include ../common/ExceptionCatcher.i
+%include ../common/FunctionTransformers.i
+%include ../common/Operators.i
+
+%include GeomFill_required_python_modules.i
+%include GeomFill_headers.i
+
+/* typedefs */
+/* end typedefs declaration */
+
+/* public enums */
+enum GeomFill_ApproxStyle {
+	GeomFill_Section = 0,
+	GeomFill_Location = 1,
+};
+
+enum GeomFill_FillingStyle {
+	GeomFill_StretchStyle = 0,
+	GeomFill_CoonsStyle = 1,
+	GeomFill_CurvedStyle = 2,
+};
+
+enum GeomFill_PipeError {
+	GeomFill_PipeOk = 0,
+	GeomFill_PipeNotOk = 1,
+	GeomFill_PlaneNotIntersectGuide = 2,
+	GeomFill_ImpossibleContact = 3,
+};
+
+enum GeomFill_Trihedron {
+	GeomFill_IsCorrectedFrenet = 0,
+	GeomFill_IsFixed = 1,
+	GeomFill_IsFrenet = 2,
+	GeomFill_IsConstantNormal = 3,
+	GeomFill_IsDarboux = 4,
+	GeomFill_IsGuideAC = 5,
+	GeomFill_IsGuidePlan = 6,
+	GeomFill_IsGuideACWithContact = 7,
+	GeomFill_IsGuidePlanWithContact = 8,
+	GeomFill_IsDiscreteTrihedron = 9,
+};
+
+/* end public enums declaration */
+
+%rename(geomfill) GeomFill;
+%nodefaultctor GeomFill;
+class GeomFill {
+	public:
+		%feature("autodoc", "Args:
+	Curve1(Handle_Geom_Curve)
+	Curve2(Handle_Geom_Curve)
+
+Returns:
+	static Handle_Geom_Surface
+
+Builds a ruled surface between the two curves, Curve1 and Curve2.") Surface;
+		static Handle_Geom_Surface Surface (const Handle_Geom_Curve & Curve1,const Handle_Geom_Curve & Curve2);
+		%feature("autodoc", "Args:
+	TConv(Convert_ParameterisationType)
+	ns1(gp_Vec)
+	ns2(gp_Vec)
+	nplan(gp_Vec)
+	pt1(gp_Pnt)
+	pt2(gp_Pnt)
+	Rayon(Standard_Real)
+	Center(gp_Pnt)
+	Poles(TColgp_Array1OfPnt)
+	Weigths(TColStd_Array1OfReal)
+
+Returns:
+	static void
+
+No detailed docstring for this function.") GetCircle;
+		static void GetCircle (const Convert_ParameterisationType TConv,const gp_Vec & ns1,const gp_Vec & ns2,const gp_Vec & nplan,const gp_Pnt & pt1,const gp_Pnt & pt2,const Standard_Real Rayon,const gp_Pnt & Center,TColgp_Array1OfPnt & Poles,TColStd_Array1OfReal & Weigths);
+		%feature("autodoc", "Args:
+	TConv(Convert_ParameterisationType)
+	ns1(gp_Vec)
+	ns2(gp_Vec)
+	dn1w(gp_Vec)
+	dn2w(gp_Vec)
+	nplan(gp_Vec)
+	dnplan(gp_Vec)
+	pts1(gp_Pnt)
+	pts2(gp_Pnt)
+	tang1(gp_Vec)
+	tang2(gp_Vec)
+	Rayon(Standard_Real)
+	DRayon(Standard_Real)
+	Center(gp_Pnt)
+	DCenter(gp_Vec)
+	Poles(TColgp_Array1OfPnt)
+	DPoles(TColgp_Array1OfVec)
+	Weigths(TColStd_Array1OfReal)
+	DWeigths(TColStd_Array1OfReal)
+
+Returns:
+	static Standard_Boolean
+
+No detailed docstring for this function.") GetCircle;
+		static Standard_Boolean GetCircle (const Convert_ParameterisationType TConv,const gp_Vec & ns1,const gp_Vec & ns2,const gp_Vec & dn1w,const gp_Vec & dn2w,const gp_Vec & nplan,const gp_Vec & dnplan,const gp_Pnt & pts1,const gp_Pnt & pts2,const gp_Vec & tang1,const gp_Vec & tang2,const Standard_Real Rayon,const Standard_Real DRayon,const gp_Pnt & Center,const gp_Vec & DCenter,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
+		%feature("autodoc", "Args:
+	TConv(Convert_ParameterisationType)
+	ns1(gp_Vec)
+	ns2(gp_Vec)
+	dn1w(gp_Vec)
+	dn2w(gp_Vec)
+	d2n1w(gp_Vec)
+	d2n2w(gp_Vec)
+	nplan(gp_Vec)
+	dnplan(gp_Vec)
+	d2nplan(gp_Vec)
+	pts1(gp_Pnt)
+	pts2(gp_Pnt)
+	tang1(gp_Vec)
+	tang2(gp_Vec)
+	Dtang1(gp_Vec)
+	Dtang2(gp_Vec)
+	Rayon(Standard_Real)
+	DRayon(Standard_Real)
+	D2Rayon(Standard_Real)
+	Center(gp_Pnt)
+	DCenter(gp_Vec)
+	D2Center(gp_Vec)
+	Poles(TColgp_Array1OfPnt)
+	DPoles(TColgp_Array1OfVec)
+	D2Poles(TColgp_Array1OfVec)
+	Weigths(TColStd_Array1OfReal)
+	DWeigths(TColStd_Array1OfReal)
+	D2Weigths(TColStd_Array1OfReal)
+
+Returns:
+	static Standard_Boolean
+
+No detailed docstring for this function.") GetCircle;
+		static Standard_Boolean GetCircle (const Convert_ParameterisationType TConv,const gp_Vec & ns1,const gp_Vec & ns2,const gp_Vec & dn1w,const gp_Vec & dn2w,const gp_Vec & d2n1w,const gp_Vec & d2n2w,const gp_Vec & nplan,const gp_Vec & dnplan,const gp_Vec & d2nplan,const gp_Pnt & pts1,const gp_Pnt & pts2,const gp_Vec & tang1,const gp_Vec & tang2,const gp_Vec & Dtang1,const gp_Vec & Dtang2,const Standard_Real Rayon,const Standard_Real DRayon,const Standard_Real D2Rayon,const gp_Pnt & Center,const gp_Vec & DCenter,const gp_Vec & D2Center,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths,TColStd_Array1OfReal & D2Weigths);
+		%feature("autodoc", "Args:
+	MaxAng(Standard_Real)
+	NbPoles(Standard_Integer)
+	NbKnots(Standard_Integer)
+	Degree(Standard_Integer)
+	TypeConv(Convert_ParameterisationType)
+
+Returns:
+	static void
+
+No detailed docstring for this function.") GetShape;
+		static void GetShape (const Standard_Real MaxAng,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Convert_ParameterisationType & TypeConv);
+		%feature("autodoc", "Args:
+	TypeConv(Convert_ParameterisationType)
+	TKnots(TColStd_Array1OfReal)
+
+Returns:
+	static void
+
+No detailed docstring for this function.") Knots;
+		static void Knots (const Convert_ParameterisationType TypeConv,TColStd_Array1OfReal & TKnots);
+		%feature("autodoc", "Args:
+	TypeConv(Convert_ParameterisationType)
+	TMults(TColStd_Array1OfInteger)
+
+Returns:
+	static void
+
+No detailed docstring for this function.") Mults;
+		static void Mults (const Convert_ParameterisationType TypeConv,TColStd_Array1OfInteger & TMults);
+		%feature("autodoc", "Args:
+	TConv(Convert_ParameterisationType)
+	AngleMin(Standard_Real)
+	AngleMax(Standard_Real)
+	Weigths(TColStd_Array1OfReal)
+
+Returns:
+	static void
+
+No detailed docstring for this function.") GetMinimalWeights;
+		static void GetMinimalWeights (const Convert_ParameterisationType TConv,const Standard_Real AngleMin,const Standard_Real AngleMax,TColStd_Array1OfReal & Weigths);
+		%feature("autodoc", "Args:
+	TConv(Convert_ParameterisationType)
+	AngleMin(Standard_Real)
+	Radius(Standard_Real)
+	AngularTol(Standard_Real)
+	SpatialTol(Standard_Real)
+
+Returns:
+	static Standard_Real
+
+Used  by  the  generical classes to determine  
+         Tolerance for approximation") GetTolerance;
+		static Standard_Real GetTolerance (const Convert_ParameterisationType TConv,const Standard_Real AngleMin,const Standard_Real Radius,const Standard_Real AngularTol,const Standard_Real SpatialTol);
+};
+
+
+%feature("shadow") GeomFill::~GeomFill %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_AppSurf;
+class GeomFill_AppSurf : public AppBlend_Approx {
+	public:
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_AppSurf;
+		 GeomFill_AppSurf ();
+		%feature("autodoc", "Args:
+	Degmin(Standard_Integer)
+	Degmax(Standard_Integer)
+	Tol3d(Standard_Real)
+	Tol2d(Standard_Real)
+	NbIt(Standard_Integer)
+	KnownParameters(Standard_Boolean)=Standard_False
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_AppSurf;
+		 GeomFill_AppSurf (const Standard_Integer Degmin,const Standard_Integer Degmax,const Standard_Real Tol3d,const Standard_Real Tol2d,const Standard_Integer NbIt,const Standard_Boolean KnownParameters = Standard_False);
+		%feature("autodoc", "Args:
+	Degmin(Standard_Integer)
+	Degmax(Standard_Integer)
+	Tol3d(Standard_Real)
+	Tol2d(Standard_Real)
+	NbIt(Standard_Integer)
+	KnownParameters(Standard_Boolean)=Standard_False
+
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init (const Standard_Integer Degmin,const Standard_Integer Degmax,const Standard_Real Tol3d,const Standard_Real Tol2d,const Standard_Integer NbIt,const Standard_Boolean KnownParameters = Standard_False);
+		%feature("autodoc", "Args:
+	ParType(Approx_ParametrizationType)
+
+Returns:
+	None
+
+No detailed docstring for this function.") SetParType;
+		void SetParType (const Approx_ParametrizationType ParType);
+		%feature("autodoc", "Args:
+	C(GeomAbs_Shape)
+
+Returns:
+	None
+
+No detailed docstring for this function.") SetContinuity;
+		void SetContinuity (const GeomAbs_Shape C);
+		%feature("autodoc", "Args:
+	W1(Standard_Real)
+	W2(Standard_Real)
+	W3(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") SetCriteriumWeight;
+		void SetCriteriumWeight (const Standard_Real W1,const Standard_Real W2,const Standard_Real W3);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Approx_ParametrizationType
+
+No detailed docstring for this function.") ParType;
+		Approx_ParametrizationType ParType ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	GeomAbs_Shape
+
+No detailed docstring for this function.") Continuity;
+		GeomAbs_Shape Continuity ();
+		%feature("autodoc", "Args:
+	W1(Standard_Real)
+	W2(Standard_Real)
+	W3(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") CriteriumWeight;
+		void CriteriumWeight (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	Lin(Handle_GeomFill_Line)
+	SecGen(GeomFill_SectionGenerator)
+	SpApprox(Standard_Boolean)=Standard_False
+
+Returns:
+	None
+
+No detailed docstring for this function.") Perform;
+		void Perform (const Handle_GeomFill_Line & Lin,GeomFill_SectionGenerator & SecGen,const Standard_Boolean SpApprox = Standard_False);
+		%feature("autodoc", "Args:
+	Lin(Handle_GeomFill_Line)
+	SecGen(GeomFill_SectionGenerator)
+
+Returns:
+	None
+
+No detailed docstring for this function.") PerformSmoothing;
+		void PerformSmoothing (const Handle_GeomFill_Line & Lin,GeomFill_SectionGenerator & SecGen);
+		%feature("autodoc", "Args:
+	Lin(Handle_GeomFill_Line)
+	SecGen(GeomFill_SectionGenerator)
+	NbMaxP(Standard_Integer)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Perform;
+		void Perform (const Handle_GeomFill_Line & Lin,GeomFill_SectionGenerator & SecGen,const Standard_Integer NbMaxP);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Boolean
+
+No detailed docstring for this function.") IsDone;
+		Standard_Boolean IsDone ();
+		%feature("autodoc", "Args:
+	UDegree(Standard_Integer)
+	VDegree(Standard_Integer)
+	NbUPoles(Standard_Integer)
+	NbVPoles(Standard_Integer)
+	NbUKnots(Standard_Integer)
+	NbVKnots(Standard_Integer)
+
+Returns:
+	None
+
+No detailed docstring for this function.") SurfShape;
+		void SurfShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
+		%feature("autodoc", "Args:
+	TPoles(TColgp_Array2OfPnt)
+	TWeights(TColStd_Array2OfReal)
+	TUKnots(TColStd_Array1OfReal)
+	TVKnots(TColStd_Array1OfReal)
+	TUMults(TColStd_Array1OfInteger)
+	TVMults(TColStd_Array1OfInteger)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Surface;
+		void Surface (TColgp_Array2OfPnt & TPoles,TColStd_Array2OfReal & TWeights,TColStd_Array1OfReal & TUKnots,TColStd_Array1OfReal & TVKnots,TColStd_Array1OfInteger & TUMults,TColStd_Array1OfInteger & TVMults);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+No detailed docstring for this function.") UDegree;
+		Standard_Integer UDegree ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+No detailed docstring for this function.") VDegree;
+		Standard_Integer VDegree ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	TColgp_Array2OfPnt
+
+No detailed docstring for this function.") SurfPoles;
+		const TColgp_Array2OfPnt & SurfPoles ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	TColStd_Array2OfReal
+
+No detailed docstring for this function.") SurfWeights;
+		const TColStd_Array2OfReal & SurfWeights ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	TColStd_Array1OfReal
+
+No detailed docstring for this function.") SurfUKnots;
+		const TColStd_Array1OfReal & SurfUKnots ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	TColStd_Array1OfReal
+
+No detailed docstring for this function.") SurfVKnots;
+		const TColStd_Array1OfReal & SurfVKnots ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	TColStd_Array1OfInteger
+
+No detailed docstring for this function.") SurfUMults;
+		const TColStd_Array1OfInteger & SurfUMults ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	TColStd_Array1OfInteger
+
+No detailed docstring for this function.") SurfVMults;
+		const TColStd_Array1OfInteger & SurfVMults ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+No detailed docstring for this function.") NbCurves2d;
+		Standard_Integer NbCurves2d ();
+		%feature("autodoc", "Args:
+	Degree(Standard_Integer)
+	NbPoles(Standard_Integer)
+	NbKnots(Standard_Integer)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Curves2dShape;
+		void Curves2dShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+	TPoles(TColgp_Array1OfPnt2d)
+	TKnots(TColStd_Array1OfReal)
+	TMults(TColStd_Array1OfInteger)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Curve2d;
+		void Curve2d (const Standard_Integer Index,TColgp_Array1OfPnt2d & TPoles,TColStd_Array1OfReal & TKnots,TColStd_Array1OfInteger & TMults);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+No detailed docstring for this function.") Curves2dDegree;
+		Standard_Integer Curves2dDegree ();
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+
+Returns:
+	TColgp_Array1OfPnt2d
+
+No detailed docstring for this function.") Curve2dPoles;
+		const TColgp_Array1OfPnt2d & Curve2dPoles (const Standard_Integer Index);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	TColStd_Array1OfReal
+
+No detailed docstring for this function.") Curves2dKnots;
+		const TColStd_Array1OfReal & Curves2dKnots ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	TColStd_Array1OfInteger
+
+No detailed docstring for this function.") Curves2dMults;
+		const TColStd_Array1OfInteger & Curves2dMults ();
+		%feature("autodoc", "Args:
+	Tol3d(Standard_Real)
+	Tol2d(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") TolReached;
+		void TolReached (Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+
+Returns:
+	Standard_Real
+
+No detailed docstring for this function.") TolCurveOnSurf;
+		Standard_Real TolCurveOnSurf (const Standard_Integer Index);
+};
+
+
+%feature("shadow") GeomFill_AppSurf::~GeomFill_AppSurf %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_AppSurf {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_AppSweep;
+class GeomFill_AppSweep : public AppBlend_Approx {
+	public:
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_AppSweep;
+		 GeomFill_AppSweep ();
+		%feature("autodoc", "Args:
+	Degmin(Standard_Integer)
+	Degmax(Standard_Integer)
+	Tol3d(Standard_Real)
+	Tol2d(Standard_Real)
+	NbIt(Standard_Integer)
+	KnownParameters(Standard_Boolean)=Standard_False
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_AppSweep;
+		 GeomFill_AppSweep (const Standard_Integer Degmin,const Standard_Integer Degmax,const Standard_Real Tol3d,const Standard_Real Tol2d,const Standard_Integer NbIt,const Standard_Boolean KnownParameters = Standard_False);
+		%feature("autodoc", "Args:
+	Degmin(Standard_Integer)
+	Degmax(Standard_Integer)
+	Tol3d(Standard_Real)
+	Tol2d(Standard_Real)
+	NbIt(Standard_Integer)
+	KnownParameters(Standard_Boolean)=Standard_False
+
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init (const Standard_Integer Degmin,const Standard_Integer Degmax,const Standard_Real Tol3d,const Standard_Real Tol2d,const Standard_Integer NbIt,const Standard_Boolean KnownParameters = Standard_False);
+		%feature("autodoc", "Args:
+	ParType(Approx_ParametrizationType)
+
+Returns:
+	None
+
+No detailed docstring for this function.") SetParType;
+		void SetParType (const Approx_ParametrizationType ParType);
+		%feature("autodoc", "Args:
+	C(GeomAbs_Shape)
+
+Returns:
+	None
+
+No detailed docstring for this function.") SetContinuity;
+		void SetContinuity (const GeomAbs_Shape C);
+		%feature("autodoc", "Args:
+	W1(Standard_Real)
+	W2(Standard_Real)
+	W3(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") SetCriteriumWeight;
+		void SetCriteriumWeight (const Standard_Real W1,const Standard_Real W2,const Standard_Real W3);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Approx_ParametrizationType
+
+No detailed docstring for this function.") ParType;
+		Approx_ParametrizationType ParType ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	GeomAbs_Shape
+
+No detailed docstring for this function.") Continuity;
+		GeomAbs_Shape Continuity ();
+		%feature("autodoc", "Args:
+	W1(Standard_Real)
+	W2(Standard_Real)
+	W3(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") CriteriumWeight;
+		void CriteriumWeight (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	Lin(Handle_GeomFill_Line)
+	SecGen(GeomFill_SweepSectionGenerator)
+	SpApprox(Standard_Boolean)=Standard_False
+
+Returns:
+	None
+
+No detailed docstring for this function.") Perform;
+		void Perform (const Handle_GeomFill_Line & Lin,GeomFill_SweepSectionGenerator & SecGen,const Standard_Boolean SpApprox = Standard_False);
+		%feature("autodoc", "Args:
+	Lin(Handle_GeomFill_Line)
+	SecGen(GeomFill_SweepSectionGenerator)
+
+Returns:
+	None
+
+No detailed docstring for this function.") PerformSmoothing;
+		void PerformSmoothing (const Handle_GeomFill_Line & Lin,GeomFill_SweepSectionGenerator & SecGen);
+		%feature("autodoc", "Args:
+	Lin(Handle_GeomFill_Line)
+	SecGen(GeomFill_SweepSectionGenerator)
+	NbMaxP(Standard_Integer)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Perform;
+		void Perform (const Handle_GeomFill_Line & Lin,GeomFill_SweepSectionGenerator & SecGen,const Standard_Integer NbMaxP);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Boolean
+
+No detailed docstring for this function.") IsDone;
+		Standard_Boolean IsDone ();
+		%feature("autodoc", "Args:
+	UDegree(Standard_Integer)
+	VDegree(Standard_Integer)
+	NbUPoles(Standard_Integer)
+	NbVPoles(Standard_Integer)
+	NbUKnots(Standard_Integer)
+	NbVKnots(Standard_Integer)
+
+Returns:
+	None
+
+No detailed docstring for this function.") SurfShape;
+		void SurfShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
+		%feature("autodoc", "Args:
+	TPoles(TColgp_Array2OfPnt)
+	TWeights(TColStd_Array2OfReal)
+	TUKnots(TColStd_Array1OfReal)
+	TVKnots(TColStd_Array1OfReal)
+	TUMults(TColStd_Array1OfInteger)
+	TVMults(TColStd_Array1OfInteger)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Surface;
+		void Surface (TColgp_Array2OfPnt & TPoles,TColStd_Array2OfReal & TWeights,TColStd_Array1OfReal & TUKnots,TColStd_Array1OfReal & TVKnots,TColStd_Array1OfInteger & TUMults,TColStd_Array1OfInteger & TVMults);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+No detailed docstring for this function.") UDegree;
+		Standard_Integer UDegree ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+No detailed docstring for this function.") VDegree;
+		Standard_Integer VDegree ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	TColgp_Array2OfPnt
+
+No detailed docstring for this function.") SurfPoles;
+		const TColgp_Array2OfPnt & SurfPoles ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	TColStd_Array2OfReal
+
+No detailed docstring for this function.") SurfWeights;
+		const TColStd_Array2OfReal & SurfWeights ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	TColStd_Array1OfReal
+
+No detailed docstring for this function.") SurfUKnots;
+		const TColStd_Array1OfReal & SurfUKnots ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	TColStd_Array1OfReal
+
+No detailed docstring for this function.") SurfVKnots;
+		const TColStd_Array1OfReal & SurfVKnots ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	TColStd_Array1OfInteger
+
+No detailed docstring for this function.") SurfUMults;
+		const TColStd_Array1OfInteger & SurfUMults ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	TColStd_Array1OfInteger
+
+No detailed docstring for this function.") SurfVMults;
+		const TColStd_Array1OfInteger & SurfVMults ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+No detailed docstring for this function.") NbCurves2d;
+		Standard_Integer NbCurves2d ();
+		%feature("autodoc", "Args:
+	Degree(Standard_Integer)
+	NbPoles(Standard_Integer)
+	NbKnots(Standard_Integer)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Curves2dShape;
+		void Curves2dShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+	TPoles(TColgp_Array1OfPnt2d)
+	TKnots(TColStd_Array1OfReal)
+	TMults(TColStd_Array1OfInteger)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Curve2d;
+		void Curve2d (const Standard_Integer Index,TColgp_Array1OfPnt2d & TPoles,TColStd_Array1OfReal & TKnots,TColStd_Array1OfInteger & TMults);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+No detailed docstring for this function.") Curves2dDegree;
+		Standard_Integer Curves2dDegree ();
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+
+Returns:
+	TColgp_Array1OfPnt2d
+
+No detailed docstring for this function.") Curve2dPoles;
+		const TColgp_Array1OfPnt2d & Curve2dPoles (const Standard_Integer Index);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	TColStd_Array1OfReal
+
+No detailed docstring for this function.") Curves2dKnots;
+		const TColStd_Array1OfReal & Curves2dKnots ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	TColStd_Array1OfInteger
+
+No detailed docstring for this function.") Curves2dMults;
+		const TColStd_Array1OfInteger & Curves2dMults ();
+		%feature("autodoc", "Args:
+	Tol3d(Standard_Real)
+	Tol2d(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") TolReached;
+		void TolReached (Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+
+Returns:
+	Standard_Real
+
+No detailed docstring for this function.") TolCurveOnSurf;
+		Standard_Real TolCurveOnSurf (const Standard_Integer Index);
+};
+
+
+%feature("shadow") GeomFill_AppSweep::~GeomFill_AppSweep %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_AppSweep {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_Array1OfLocationLaw;
+class GeomFill_Array1OfLocationLaw {
+	public:
+		%feature("autodoc", "Args:
+	Low(Standard_Integer)
+	Up(Standard_Integer)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Array1OfLocationLaw;
+		 GeomFill_Array1OfLocationLaw (const Standard_Integer Low,const Standard_Integer Up);
+		%feature("autodoc", "Args:
+	Item(Handle_GeomFill_LocationLaw)
+	Low(Standard_Integer)
+	Up(Standard_Integer)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Array1OfLocationLaw;
+		 GeomFill_Array1OfLocationLaw (const Handle_GeomFill_LocationLaw & Item,const Standard_Integer Low,const Standard_Integer Up);
+		%feature("autodoc", "Args:
+	V(Handle_GeomFill_LocationLaw)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init (const Handle_GeomFill_LocationLaw & V);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") Destroy;
+		void Destroy ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Boolean
+
+No detailed docstring for this function.") IsAllocated;
+		Standard_Boolean IsAllocated ();
+		%feature("autodoc", "Args:
+	Other(GeomFill_Array1OfLocationLaw)
+
+Returns:
+	GeomFill_Array1OfLocationLaw
+
+No detailed docstring for this function.") Assign;
+		const GeomFill_Array1OfLocationLaw & Assign (const GeomFill_Array1OfLocationLaw & Other);
+		%feature("autodoc", "Args:
+	Other(GeomFill_Array1OfLocationLaw)
+
+Returns:
+	GeomFill_Array1OfLocationLaw
+
+No detailed docstring for this function.") operator=;
+		const GeomFill_Array1OfLocationLaw & operator = (const GeomFill_Array1OfLocationLaw & Other);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+No detailed docstring for this function.") Length;
+		Standard_Integer Length ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+No detailed docstring for this function.") Lower;
+		Standard_Integer Lower ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+No detailed docstring for this function.") Upper;
+		Standard_Integer Upper ();
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+	Value(Handle_GeomFill_LocationLaw)
+
+Returns:
+	None
+
+No detailed docstring for this function.") SetValue;
+		void SetValue (const Standard_Integer Index,const Handle_GeomFill_LocationLaw & Value);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+
+Returns:
+	Handle_GeomFill_LocationLaw
+
+No detailed docstring for this function.") Value;
+		const Handle_GeomFill_LocationLaw & Value (const Standard_Integer Index);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+
+Returns:
+	Handle_GeomFill_LocationLaw
+
+No detailed docstring for this function.") ChangeValue;
+		Handle_GeomFill_LocationLaw & ChangeValue (const Standard_Integer Index);
+};
+
+
+%feature("shadow") GeomFill_Array1OfLocationLaw::~GeomFill_Array1OfLocationLaw %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_Array1OfLocationLaw {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_Array1OfSectionLaw;
+class GeomFill_Array1OfSectionLaw {
+	public:
+		%feature("autodoc", "Args:
+	Low(Standard_Integer)
+	Up(Standard_Integer)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Array1OfSectionLaw;
+		 GeomFill_Array1OfSectionLaw (const Standard_Integer Low,const Standard_Integer Up);
+		%feature("autodoc", "Args:
+	Item(Handle_GeomFill_SectionLaw)
+	Low(Standard_Integer)
+	Up(Standard_Integer)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Array1OfSectionLaw;
+		 GeomFill_Array1OfSectionLaw (const Handle_GeomFill_SectionLaw & Item,const Standard_Integer Low,const Standard_Integer Up);
+		%feature("autodoc", "Args:
+	V(Handle_GeomFill_SectionLaw)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init (const Handle_GeomFill_SectionLaw & V);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") Destroy;
+		void Destroy ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Boolean
+
+No detailed docstring for this function.") IsAllocated;
+		Standard_Boolean IsAllocated ();
+		%feature("autodoc", "Args:
+	Other(GeomFill_Array1OfSectionLaw)
+
+Returns:
+	GeomFill_Array1OfSectionLaw
+
+No detailed docstring for this function.") Assign;
+		const GeomFill_Array1OfSectionLaw & Assign (const GeomFill_Array1OfSectionLaw & Other);
+		%feature("autodoc", "Args:
+	Other(GeomFill_Array1OfSectionLaw)
+
+Returns:
+	GeomFill_Array1OfSectionLaw
+
+No detailed docstring for this function.") operator=;
+		const GeomFill_Array1OfSectionLaw & operator = (const GeomFill_Array1OfSectionLaw & Other);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+No detailed docstring for this function.") Length;
+		Standard_Integer Length ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+No detailed docstring for this function.") Lower;
+		Standard_Integer Lower ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+No detailed docstring for this function.") Upper;
+		Standard_Integer Upper ();
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+	Value(Handle_GeomFill_SectionLaw)
+
+Returns:
+	None
+
+No detailed docstring for this function.") SetValue;
+		void SetValue (const Standard_Integer Index,const Handle_GeomFill_SectionLaw & Value);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+
+Returns:
+	Handle_GeomFill_SectionLaw
+
+No detailed docstring for this function.") Value;
+		const Handle_GeomFill_SectionLaw & Value (const Standard_Integer Index);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+
+Returns:
+	Handle_GeomFill_SectionLaw
+
+No detailed docstring for this function.") ChangeValue;
+		Handle_GeomFill_SectionLaw & ChangeValue (const Standard_Integer Index);
+};
+
+
+%feature("shadow") GeomFill_Array1OfSectionLaw::~GeomFill_Array1OfSectionLaw %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_Array1OfSectionLaw {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_BSplineCurves;
+class GeomFill_BSplineCurves {
+	public:
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+Constructs a default BSpline surface framework.") GeomFill_BSplineCurves;
+		 GeomFill_BSplineCurves ();
+		%feature("autodoc", "Args:
+	C1(Handle_Geom_BSplineCurve)
+	C2(Handle_Geom_BSplineCurve)
+	C3(Handle_Geom_BSplineCurve)
+	C4(Handle_Geom_BSplineCurve)
+	Type(GeomFill_FillingStyle)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_BSplineCurves;
+		 GeomFill_BSplineCurves (const Handle_Geom_BSplineCurve & C1,const Handle_Geom_BSplineCurve & C2,const Handle_Geom_BSplineCurve & C3,const Handle_Geom_BSplineCurve & C4,const GeomFill_FillingStyle Type);
+		%feature("autodoc", "Args:
+	C1(Handle_Geom_BSplineCurve)
+	C2(Handle_Geom_BSplineCurve)
+	C3(Handle_Geom_BSplineCurve)
+	Type(GeomFill_FillingStyle)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_BSplineCurves;
+		 GeomFill_BSplineCurves (const Handle_Geom_BSplineCurve & C1,const Handle_Geom_BSplineCurve & C2,const Handle_Geom_BSplineCurve & C3,const GeomFill_FillingStyle Type);
+		%feature("autodoc", "Args:
+	C1(Handle_Geom_BSplineCurve)
+	C2(Handle_Geom_BSplineCurve)
+	Type(GeomFill_FillingStyle)
+
+Returns:
+	None
+
+Constructs a framework for building a BSpline surface from either  
+-   the four contiguous BSpline curves, C1, C2, C3 and C4, or  
+-   the three contiguous BSpline curves, C1, C2 and C3, or  
+-   the two contiguous BSpline curves, C1 and C2.  
+The type of filling style Type to be used is one of:  
+-   GeomFill_Stretch - the style with the flattest patch  
+-   GeomFill_Coons - a rounded style of patch with  
+  less depth than that of Curved  
+-   GeomFill_Curved - the style with the most rounded  
+  patch.Constructs a framework for building a BSpline  
+  surface common to the two BSpline curves, C1 and C2.  
+Exceptions  
+Standard_ConstructionError if the curves are not contiguous.") GeomFill_BSplineCurves;
+		 GeomFill_BSplineCurves (const Handle_Geom_BSplineCurve & C1,const Handle_Geom_BSplineCurve & C2,const GeomFill_FillingStyle Type);
+		%feature("autodoc", "Args:
+	C1(Handle_Geom_BSplineCurve)
+	C2(Handle_Geom_BSplineCurve)
+	C3(Handle_Geom_BSplineCurve)
+	C4(Handle_Geom_BSplineCurve)
+	Type(GeomFill_FillingStyle)
+
+Returns:
+	None
+
+if the curves cannot be joined") Init;
+		void Init (const Handle_Geom_BSplineCurve & C1,const Handle_Geom_BSplineCurve & C2,const Handle_Geom_BSplineCurve & C3,const Handle_Geom_BSplineCurve & C4,const GeomFill_FillingStyle Type);
+		%feature("autodoc", "Args:
+	C1(Handle_Geom_BSplineCurve)
+	C2(Handle_Geom_BSplineCurve)
+	C3(Handle_Geom_BSplineCurve)
+	Type(GeomFill_FillingStyle)
+
+Returns:
+	None
+
+if the curves cannot be joined") Init;
+		void Init (const Handle_Geom_BSplineCurve & C1,const Handle_Geom_BSplineCurve & C2,const Handle_Geom_BSplineCurve & C3,const GeomFill_FillingStyle Type);
+		%feature("autodoc", "Args:
+	C1(Handle_Geom_BSplineCurve)
+	C2(Handle_Geom_BSplineCurve)
+	Type(GeomFill_FillingStyle)
+
+Returns:
+	None
+
+Initializes or reinitializes this algorithm with two, three,  
+or four curves - C1, C2, C3, and C4 - and Type, one  
+of the following filling styles:  
+-   GeomFill_Stretch - the style with the flattest patch  
+-   GeomFill_Coons - a rounded style of patch with  
+  less depth than that of Curved  
+-   GeomFill_Curved - the style with the most rounded patch.  
+  Exceptions  
+Standard_ConstructionError if the curves are not contiguous.") Init;
+		void Init (const Handle_Geom_BSplineCurve & C1,const Handle_Geom_BSplineCurve & C2,const GeomFill_FillingStyle Type);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Handle_Geom_BSplineSurface
+
+Returns the BSpline surface Surface resulting from  
+the computation performed by this algorithm.") Surface;
+		const Handle_Geom_BSplineSurface & Surface ();
+};
+
+
+%feature("shadow") GeomFill_BSplineCurves::~GeomFill_BSplineCurves %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_BSplineCurves {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_BezierCurves;
+class GeomFill_BezierCurves {
+	public:
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+Constructs an empty framework for building a Bezier  
+surface from contiguous Bezier curves.  
+You use the Init function to define the boundaries of the surface.") GeomFill_BezierCurves;
+		 GeomFill_BezierCurves ();
+		%feature("autodoc", "Args:
+	C1(Handle_Geom_BezierCurve)
+	C2(Handle_Geom_BezierCurve)
+	C3(Handle_Geom_BezierCurve)
+	C4(Handle_Geom_BezierCurve)
+	Type(GeomFill_FillingStyle)
+
+Returns:
+	None
+
+Constructs a framework for building a Bezier surface  
+from the four contiguous Bezier curves, C1, C2, C3 and C4  
+Raises Standard_ConstructionError if the curves are not contiguous.") GeomFill_BezierCurves;
+		 GeomFill_BezierCurves (const Handle_Geom_BezierCurve & C1,const Handle_Geom_BezierCurve & C2,const Handle_Geom_BezierCurve & C3,const Handle_Geom_BezierCurve & C4,const GeomFill_FillingStyle Type);
+		%feature("autodoc", "Args:
+	C1(Handle_Geom_BezierCurve)
+	C2(Handle_Geom_BezierCurve)
+	C3(Handle_Geom_BezierCurve)
+	Type(GeomFill_FillingStyle)
+
+Returns:
+	None
+
+Constructs a framework for building a Bezier surface  
+from the three contiguous Bezier curves, C1, C2 and C3  
+Raises Standard_ConstructionError if the curves are not contiguous.") GeomFill_BezierCurves;
+		 GeomFill_BezierCurves (const Handle_Geom_BezierCurve & C1,const Handle_Geom_BezierCurve & C2,const Handle_Geom_BezierCurve & C3,const GeomFill_FillingStyle Type);
+		%feature("autodoc", "Args:
+	C1(Handle_Geom_BezierCurve)
+	C2(Handle_Geom_BezierCurve)
+	Type(GeomFill_FillingStyle)
+
+Returns:
+	None
+
+Constructs a framework for building a Bezier surface  
+from the two contiguous Bezier curves, C1 and C2  
+Raises Standard_ConstructionError if the curves are not contiguous.") GeomFill_BezierCurves;
+		 GeomFill_BezierCurves (const Handle_Geom_BezierCurve & C1,const Handle_Geom_BezierCurve & C2,const GeomFill_FillingStyle Type);
+		%feature("autodoc", "Args:
+	C1(Handle_Geom_BezierCurve)
+	C2(Handle_Geom_BezierCurve)
+	C3(Handle_Geom_BezierCurve)
+	C4(Handle_Geom_BezierCurve)
+	Type(GeomFill_FillingStyle)
+
+Returns:
+	None
+
+if the curves cannot be joined") Init;
+		void Init (const Handle_Geom_BezierCurve & C1,const Handle_Geom_BezierCurve & C2,const Handle_Geom_BezierCurve & C3,const Handle_Geom_BezierCurve & C4,const GeomFill_FillingStyle Type);
+		%feature("autodoc", "Args:
+	C1(Handle_Geom_BezierCurve)
+	C2(Handle_Geom_BezierCurve)
+	C3(Handle_Geom_BezierCurve)
+	Type(GeomFill_FillingStyle)
+
+Returns:
+	None
+
+if the curves cannot be joined") Init;
+		void Init (const Handle_Geom_BezierCurve & C1,const Handle_Geom_BezierCurve & C2,const Handle_Geom_BezierCurve & C3,const GeomFill_FillingStyle Type);
+		%feature("autodoc", "Args:
+	C1(Handle_Geom_BezierCurve)
+	C2(Handle_Geom_BezierCurve)
+	Type(GeomFill_FillingStyle)
+
+Returns:
+	None
+
+Initializes or reinitializes this algorithm with two, three,  
+or four curves - C1, C2, C3, and C4 - and Type, one  
+of the following filling styles:  
+-   GeomFill_Stretch - the style with the flattest patch  
+-   GeomFill_Coons - a rounded style of patch with  
+  less depth than that of Curved  
+-   GeomFill_Curved - the style with the most rounded patch.  
+ Exceptions  
+Standard_ConstructionError if the curves are not contiguous.") Init;
+		void Init (const Handle_Geom_BezierCurve & C1,const Handle_Geom_BezierCurve & C2,const GeomFill_FillingStyle Type);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Handle_Geom_BezierSurface
+
+Returns the Bezier surface resulting from the  
+computation performed by this algorithm.") Surface;
+		const Handle_Geom_BezierSurface & Surface ();
+};
+
+
+%feature("shadow") GeomFill_BezierCurves::~GeomFill_BezierCurves %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_BezierCurves {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_Boundary;
+class GeomFill_Boundary : public MMgt_TShared {
+	public:
+		%feature("autodoc", "Args:
+	U(Standard_Real)
+
+Returns:
+	virtual gp_Pnt
+
+No detailed docstring for this function.") Value;
+		virtual gp_Pnt Value (const Standard_Real U);
+		%feature("autodoc", "Args:
+	U(Standard_Real)
+	P(gp_Pnt)
+	V(gp_Vec)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") D1;
+		virtual void D1 (const Standard_Real U,gp_Pnt & P,gp_Vec & V);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+No detailed docstring for this function.") HasNormals;
+		virtual Standard_Boolean HasNormals ();
+		%feature("autodoc", "Args:
+	U(Standard_Real)
+
+Returns:
+	virtual gp_Vec
+
+No detailed docstring for this function.") Norm;
+		virtual gp_Vec Norm (const Standard_Real U);
+		%feature("autodoc", "Args:
+	U(Standard_Real)
+	N(gp_Vec)
+	DN(gp_Vec)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") D1Norm;
+		virtual void D1Norm (const Standard_Real U,gp_Vec & N,gp_Vec & DN);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+	HasDF(Standard_Boolean)
+	HasDL(Standard_Boolean)
+	DF(Standard_Real)
+	DL(Standard_Real)
+	Rev(Standard_Boolean)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") Reparametrize;
+		virtual void Reparametrize (const Standard_Real First,const Standard_Real Last,const Standard_Boolean HasDF,const Standard_Boolean HasDL,const Standard_Real DF,const Standard_Real DL,const Standard_Boolean Rev);
+		%feature("autodoc", "Args:
+	PFirst(gp_Pnt)
+	PLast(gp_Pnt)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Points;
+		void Points (gp_Pnt & PFirst,gp_Pnt & PLast);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") Bounds;
+		virtual void Bounds (Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+No detailed docstring for this function.") IsDegenerated;
+		virtual Standard_Boolean IsDegenerated ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Real
+
+No detailed docstring for this function.") Tol3d;
+		Standard_Real Tol3d ();
+		%feature("autodoc", "Args:
+	Tol(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Tol3d;
+		void Tol3d (const Standard_Real Tol);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Real
+
+No detailed docstring for this function.") Tolang;
+		Standard_Real Tolang ();
+		%feature("autodoc", "Args:
+	Tol(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Tolang;
+		void Tolang (const Standard_Real Tol);
+};
+
+
+%feature("shadow") GeomFill_Boundary::~GeomFill_Boundary %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_Boundary {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_Boundary {
+	Handle_GeomFill_Boundary GetHandle() {
+	return *(Handle_GeomFill_Boundary*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_Boundary;
+class Handle_GeomFill_Boundary : public Handle_MMgt_TShared {
+
+    public:
+        // constructors
+        Handle_GeomFill_Boundary();
+        Handle_GeomFill_Boundary(const Handle_GeomFill_Boundary &aHandle);
+        Handle_GeomFill_Boundary(const GeomFill_Boundary *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_Boundary DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_Boundary {
+    GeomFill_Boundary* GetObject() {
+    return (GeomFill_Boundary*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_Boundary::~Handle_GeomFill_Boundary %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_Boundary {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_CircularBlendFunc;
+class GeomFill_CircularBlendFunc : public Approx_SweepFunction {
+	public:
+		%feature("autodoc", "Args:
+	Path(Handle_Adaptor3d_HCurve)
+	Curve1(Handle_Adaptor3d_HCurve)
+	Curve2(Handle_Adaptor3d_HCurve)
+	Radius(Standard_Real)
+	Polynomial(Standard_Boolean)=Standard_False
+
+Returns:
+	None
+
+Create a Blend  with a  constant  radius with 2  
+         guide-line.   <FShape>  sets the type of  fillet  
+          surface. The --  default value is  Convert_TgtThetaOver2 (classical --  
+             nurbs    --   representation  of   circles).  
+         ChFi3d_QuasiAngular  --  corresponds  to a nurbs  
+            representation   of  circles     --     which  
+         parameterisation  matches  the  circle  one.  --  
+         ChFi3d_Polynomial corresponds to a polynomial --  
+         representation of circles.") GeomFill_CircularBlendFunc;
+		 GeomFill_CircularBlendFunc (const Handle_Adaptor3d_HCurve & Path,const Handle_Adaptor3d_HCurve & Curve1,const Handle_Adaptor3d_HCurve & Curve2,const Standard_Real Radius,const Standard_Boolean Polynomial = Standard_False);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	First(Standard_Real)
+	Last(Standard_Real)
+	Poles(TColgp_Array1OfPnt)
+	Poles2d(TColgp_Array1OfPnt2d)
+	Weigths(TColStd_Array1OfReal)
+
+Returns:
+	virtual Standard_Boolean
+
+compute the section for v = param") D0;
+		virtual Standard_Boolean D0 (const Standard_Real Param,const Standard_Real First,const Standard_Real Last,TColgp_Array1OfPnt & Poles,TColgp_Array1OfPnt2d & Poles2d,TColStd_Array1OfReal & Weigths);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	First(Standard_Real)
+	Last(Standard_Real)
+	Poles(TColgp_Array1OfPnt)
+	DPoles(TColgp_Array1OfVec)
+	Poles2d(TColgp_Array1OfPnt2d)
+	DPoles2d(TColgp_Array1OfVec2d)
+	Weigths(TColStd_Array1OfReal)
+	DWeigths(TColStd_Array1OfReal)
+
+Returns:
+	virtual Standard_Boolean
+
+compute the first  derivative in v direction  of the  
+          section for v =  param") D1;
+		virtual Standard_Boolean D1 (const Standard_Real Param,const Standard_Real First,const Standard_Real Last,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	First(Standard_Real)
+	Last(Standard_Real)
+	Poles(TColgp_Array1OfPnt)
+	DPoles(TColgp_Array1OfVec)
+	D2Poles(TColgp_Array1OfVec)
+	Poles2d(TColgp_Array1OfPnt2d)
+	DPoles2d(TColgp_Array1OfVec2d)
+	D2Poles2d(TColgp_Array1OfVec2d)
+	Weigths(TColStd_Array1OfReal)
+	DWeigths(TColStd_Array1OfReal)
+	D2Weigths(TColStd_Array1OfReal)
+
+Returns:
+	virtual Standard_Boolean
+
+compute the second derivative  in v direction of the  
+         section  for v = param") D2;
+		virtual Standard_Boolean D2 (const Standard_Real Param,const Standard_Real First,const Standard_Real Last,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColgp_Array1OfVec2d & D2Poles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths,TColStd_Array1OfReal & D2Weigths);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Integer
+
+get the number of 2d curves to  approximate.") Nb2dCurves;
+		virtual Standard_Integer Nb2dCurves ();
+		%feature("autodoc", "Args:
+	NbPoles(Standard_Integer)
+	NbKnots(Standard_Integer)
+	Degree(Standard_Integer)
+
+Returns:
+	virtual void
+
+get the format of an  section") SectionShape;
+		virtual void SectionShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
+		%feature("autodoc", "Args:
+	TKnots(TColStd_Array1OfReal)
+
+Returns:
+	virtual void
+
+get the Knots of the section") Knots;
+		virtual void Knots (TColStd_Array1OfReal & TKnots);
+		%feature("autodoc", "Args:
+	TMults(TColStd_Array1OfInteger)
+
+Returns:
+	virtual void
+
+get the Multplicities of the section") Mults;
+		virtual void Mults (TColStd_Array1OfInteger & TMults);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Returns if the section is rationnal or not") IsRational;
+		virtual Standard_Boolean IsRational ();
+		%feature("autodoc", "Args:
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual Standard_Integer
+
+Returns  the number  of  intervals for  continuity  
+         <S>. May be one if Continuity(me) >= <S>") NbIntervals;
+		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	T(TColStd_Array1OfReal)
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual void
+
+Stores in <T> the  parameters bounding the intervals  
+         of continuity <S>.  
+ 
+         The array must provide  enough room to  accomodate  
+         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+		virtual void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+Sets the bounds of the parametric interval on  
+         the fonction  
+         This determines the derivatives in these values if the  
+         function is not Cn.") SetInterval;
+		virtual void SetInterval (const Standard_Real First,const Standard_Real Last);
+		%feature("autodoc", "Args:
+	BoundTol(Standard_Real)
+	SurfTol(Standard_Real)
+	AngleTol(Standard_Real)
+	Tol3d(TColStd_Array1OfReal)
+
+Returns:
+	virtual void
+
+Returns the tolerance to reach in approximation  
+         to respecte  
+         BoundTol error at the Boundary  
+         AngleTol tangent error at the Boundary (in radian)  
+         SurfTol error inside the surface.") GetTolerance;
+		virtual void GetTolerance (const Standard_Real BoundTol,const Standard_Real SurfTol,const Standard_Real AngleTol,TColStd_Array1OfReal & Tol3d);
+		%feature("autodoc", "Args:
+	Tol3d(Standard_Real)
+	Tol2d(Standard_Real)
+
+Returns:
+	virtual void
+
+Is usfull, if (me) have to  be run numerical  
+          algorithme to perform D0, D1 or D2") SetTolerance;
+		virtual void SetTolerance (const Standard_Real Tol3d,const Standard_Real Tol2d);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual gp_Pnt
+
+Get    the   barycentre of   Surface.   An   very  poor  
+         estimation is sufficent. This information is usefull  
+         to perform well conditionned rational approximation.") BarycentreOfSurf;
+		virtual gp_Pnt BarycentreOfSurf ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Real
+
+Returns the   length of the maximum section. This  
+         information is usefull to perform well conditionned rational  
+          approximation.") MaximalSection;
+		virtual Standard_Real MaximalSection ();
+		%feature("autodoc", "Args:
+	Weigths(TColStd_Array1OfReal)
+
+Returns:
+	virtual void
+
+Compute the minimal value of weight for each poles  
+         of all  sections.  This information is  usefull to  
+         perform well conditionned rational approximation.") GetMinimalWeight;
+		virtual void GetMinimalWeight (TColStd_Array1OfReal & Weigths);
+};
+
+
+%feature("shadow") GeomFill_CircularBlendFunc::~GeomFill_CircularBlendFunc %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_CircularBlendFunc {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_CircularBlendFunc {
+	Handle_GeomFill_CircularBlendFunc GetHandle() {
+	return *(Handle_GeomFill_CircularBlendFunc*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_CircularBlendFunc;
+class Handle_GeomFill_CircularBlendFunc : public Handle_Approx_SweepFunction {
+
+    public:
+        // constructors
+        Handle_GeomFill_CircularBlendFunc();
+        Handle_GeomFill_CircularBlendFunc(const Handle_GeomFill_CircularBlendFunc &aHandle);
+        Handle_GeomFill_CircularBlendFunc(const GeomFill_CircularBlendFunc *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_CircularBlendFunc DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_CircularBlendFunc {
+    GeomFill_CircularBlendFunc* GetObject() {
+    return (GeomFill_CircularBlendFunc*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_CircularBlendFunc::~Handle_GeomFill_CircularBlendFunc %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_CircularBlendFunc {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_ConstrainedFilling;
+class GeomFill_ConstrainedFilling {
+	public:
+		%feature("autodoc", "Args:
+	MaxDeg(Standard_Integer)
+	MaxSeg(Standard_Integer)
+
+Returns:
+	None
+
+Constructs an empty framework for filling a surface from boundaries.  
+The boundaries of the surface will be defined, and the  
+surface will be built by using the function Init.  
+The surface will respect the following constraints:  
+-   its degree will not be greater than MaxDeg  
+-   the maximum number of segments MaxSeg which  
+  BSpline surfaces can have.") GeomFill_ConstrainedFilling;
+		 GeomFill_ConstrainedFilling (const Standard_Integer MaxDeg,const Standard_Integer MaxSeg);
+		%feature("autodoc", "Args:
+	B1(Handle_GeomFill_Boundary)
+	B2(Handle_GeomFill_Boundary)
+	B3(Handle_GeomFill_Boundary)
+	NoCheck(Standard_Boolean)=Standard_False
+
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init (const Handle_GeomFill_Boundary & B1,const Handle_GeomFill_Boundary & B2,const Handle_GeomFill_Boundary & B3,const Standard_Boolean NoCheck = Standard_False);
+		%feature("autodoc", "Args:
+	B1(Handle_GeomFill_Boundary)
+	B2(Handle_GeomFill_Boundary)
+	B3(Handle_GeomFill_Boundary)
+	B4(Handle_GeomFill_Boundary)
+	NoCheck(Standard_Boolean)=Standard_False
+
+Returns:
+	None
+
+Constructs a BSpline surface filled from the series of  
+boundaries B1, B2, B3 and, if need be, B4, which serve:  
+-   as path constraints  
+-   and optionally, as tangency constraints if they are  
+  GeomFill_BoundWithSurf curves.  
+The boundaries may be given in any order: they are  
+classified and if necessary, reversed and reparameterized.  
+The surface will also respect the following constraints:  
+-   its degree will not be greater than the maximum  
+  degree defined at the time of construction of this framework, and  
+-   the maximum number of segments MaxSeg which BSpline surfaces can have") Init;
+		void Init (const Handle_GeomFill_Boundary & B1,const Handle_GeomFill_Boundary & B2,const Handle_GeomFill_Boundary & B3,const Handle_GeomFill_Boundary & B4,const Standard_Boolean NoCheck = Standard_False);
+		%feature("autodoc", "Args:
+	l(Standard_Real)
+	B(Handle_GeomFill_BoundWithSurf)
+
+Returns:
+	None
+
+Allows to modify domain on witch the blending function  
+         associated to  the constrained boundary B  will propag  
+         the  influence   of the  field   of  tangency.  Can be  
+         usefull to  reduce  influence of boundaries  on whitch  
+         the Coons compatibility  conditions are not respected.  
+         l is a  relative value of  the parametric range of  B.  
+         Default value for l is 1 (used in Init).  
+ Warning: Must be called after  Init with a constrained boundary  
+         used in the call to Init.") SetDomain;
+		void SetDomain (const Standard_Real l,const Handle_GeomFill_BoundWithSurf & B);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+Computes the  new poles  of  the surface using the  new  
+         blending  functions set by several calls to SetDomain.") ReBuild;
+		void ReBuild ();
+		%feature("autodoc", "Args:
+	I(Standard_Integer)
+
+Returns:
+	Handle_GeomFill_Boundary
+
+Returns the bound of index i after sort.") Boundary;
+		Handle_GeomFill_Boundary Boundary (const Standard_Integer I);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Handle_Geom_BSplineSurface
+
+Returns the BSpline surface after computation of the fill by this framework.") Surface;
+		Handle_Geom_BSplineSurface Surface ();
+		%feature("autodoc", "Args:
+	W(Standard_Real)
+	Ord(Standard_Integer)
+	Result(Standard_Real)
+
+Returns:
+	Standard_Integer
+
+Internal use for Advmath approximation call.") Eval;
+		Standard_Integer Eval (const Standard_Real W,const Standard_Integer Ord,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	I(Standard_Integer)
+
+Returns:
+	None
+
+Computes the fields of tangents on 30 points along the  
+         bound  I, these  are  not the  constraint tangents but  
+         gives an idea of the coonsAlgPatch regularity.") CheckCoonsAlgPatch;
+		void CheckCoonsAlgPatch (const Standard_Integer I);
+		%feature("autodoc", "Args:
+	I(Standard_Integer)
+
+Returns:
+	None
+
+Computes  the fields  of tangents  and  normals on  30  
+         points along the bound  I, draw them, and computes the  
+         max dot product that must be near than 0.") CheckTgteField;
+		void CheckTgteField (const Standard_Integer I);
+		%feature("autodoc", "Args:
+	I(Standard_Integer)
+
+Returns:
+	None
+
+Computes  values  and normals  along  the bound  I and  
+         compare  them to the  approx  result curves (bound and  
+         tgte field) , draw  the normals and tangents.") CheckApprox;
+		void CheckApprox (const Standard_Integer I);
+		%feature("autodoc", "Args:
+	I(Standard_Integer)
+
+Returns:
+	None
+
+Computes values and normals along the  bound I on both  
+         constraint  surface    and result  surface,  draw  the  
+         normals, and  computes the max distance between values  
+         and the max angle  between normals.") CheckResult;
+		void CheckResult (const Standard_Integer I);
+};
+
+
+%feature("shadow") GeomFill_ConstrainedFilling::~GeomFill_ConstrainedFilling %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_ConstrainedFilling {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_CoonsAlgPatch;
+class GeomFill_CoonsAlgPatch : public MMgt_TShared {
+	public:
+		%feature("autodoc", "Args:
+	B1(Handle_GeomFill_Boundary)
+	B2(Handle_GeomFill_Boundary)
+	B3(Handle_GeomFill_Boundary)
+	B4(Handle_GeomFill_Boundary)
+
+Returns:
+	None
+
+Constructs the  algorithmic   patch. By   Default  the  
+         constructed blending functions are linear.  
+ Warning: No control is done on the bounds.  
+         B1/B3 and B2/B4 must be same range and well oriented.") GeomFill_CoonsAlgPatch;
+		 GeomFill_CoonsAlgPatch (const Handle_GeomFill_Boundary & B1,const Handle_GeomFill_Boundary & B2,const Handle_GeomFill_Boundary & B3,const Handle_GeomFill_Boundary & B4);
+		%feature("autodoc", "Args:
+	f1(Handle_Law_Function)
+	f2(Handle_Law_Function)
+
+Returns:
+	None
+
+Give the blending functions.") Func;
+		void Func (Handle_Law_Function & f1,Handle_Law_Function & f2);
+		%feature("autodoc", "Args:
+	f1(Handle_Law_Function)
+	f2(Handle_Law_Function)
+
+Returns:
+	None
+
+Set the blending functions.") SetFunc;
+		void SetFunc (const Handle_Law_Function & f1,const Handle_Law_Function & f2);
+		%feature("autodoc", "Args:
+	U(Standard_Real)
+	V(Standard_Real)
+
+Returns:
+	gp_Pnt
+
+Computes  the  value   on the  algorithmic    patch at  
+         parameters U and V.") Value;
+		gp_Pnt Value (const Standard_Real U,const Standard_Real V);
+		%feature("autodoc", "Args:
+	U(Standard_Real)
+	V(Standard_Real)
+
+Returns:
+	gp_Vec
+
+Computes   the  d/dU   partial   derivative  on    the  
+         algorithmic patch at parameters U and V.") D1U;
+		gp_Vec D1U (const Standard_Real U,const Standard_Real V);
+		%feature("autodoc", "Args:
+	U(Standard_Real)
+	V(Standard_Real)
+
+Returns:
+	gp_Vec
+
+Computes    the  d/dV    partial    derivative on  the  
+         algorithmic patch at parameters U and V.") D1V;
+		gp_Vec D1V (const Standard_Real U,const Standard_Real V);
+		%feature("autodoc", "Args:
+	U(Standard_Real)
+	V(Standard_Real)
+
+Returns:
+	gp_Vec
+
+Computes the   d2/dUdV  partial  derivative   on   the  
+         algorithmic  patch made with linear blending functions  
+         at parameter U and V.") DUV;
+		gp_Vec DUV (const Standard_Real U,const Standard_Real V);
+		%feature("autodoc", "Args:
+	I(Standard_Integer)
+
+Returns:
+	gp_Pnt
+
+No detailed docstring for this function.") Corner;
+		const gp_Pnt & Corner (const Standard_Integer I);
+		%feature("autodoc", "Args:
+	I(Standard_Integer)
+
+Returns:
+	Handle_GeomFill_Boundary
+
+No detailed docstring for this function.") Bound;
+		const Handle_GeomFill_Boundary & Bound (const Standard_Integer I);
+		%feature("autodoc", "Args:
+	I(Standard_Integer)
+
+Returns:
+	Handle_Law_Function
+
+No detailed docstring for this function.") Func;
+		const Handle_Law_Function & Func (const Standard_Integer I);
+};
+
+
+%feature("shadow") GeomFill_CoonsAlgPatch::~GeomFill_CoonsAlgPatch %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_CoonsAlgPatch {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_CoonsAlgPatch {
+	Handle_GeomFill_CoonsAlgPatch GetHandle() {
+	return *(Handle_GeomFill_CoonsAlgPatch*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_CoonsAlgPatch;
+class Handle_GeomFill_CoonsAlgPatch : public Handle_MMgt_TShared {
+
+    public:
+        // constructors
+        Handle_GeomFill_CoonsAlgPatch();
+        Handle_GeomFill_CoonsAlgPatch(const Handle_GeomFill_CoonsAlgPatch &aHandle);
+        Handle_GeomFill_CoonsAlgPatch(const GeomFill_CoonsAlgPatch *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_CoonsAlgPatch DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_CoonsAlgPatch {
+    GeomFill_CoonsAlgPatch* GetObject() {
+    return (GeomFill_CoonsAlgPatch*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_CoonsAlgPatch::~Handle_GeomFill_CoonsAlgPatch %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_CoonsAlgPatch {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_CornerState;
+class GeomFill_CornerState {
+	public:
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_CornerState;
+		 GeomFill_CornerState ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Real
+
+No detailed docstring for this function.") Gap;
+		Standard_Real Gap ();
+		%feature("autodoc", "Args:
+	G(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Gap;
+		void Gap (const Standard_Real G);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Real
+
+No detailed docstring for this function.") TgtAng;
+		Standard_Real TgtAng ();
+		%feature("autodoc", "Args:
+	Ang(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") TgtAng;
+		void TgtAng (const Standard_Real Ang);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Boolean
+
+No detailed docstring for this function.") HasConstraint;
+		Standard_Boolean HasConstraint ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") Constraint;
+		void Constraint ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Real
+
+No detailed docstring for this function.") NorAng;
+		Standard_Real NorAng ();
+		%feature("autodoc", "Args:
+	Ang(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") NorAng;
+		void NorAng (const Standard_Real Ang);
+		%feature("autodoc", "Args:
+	Scal(Standard_Real)
+
+Returns:
+	Standard_Boolean
+
+No detailed docstring for this function.") IsToKill;
+		Standard_Boolean IsToKill (Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	Scal(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") DoKill;
+		void DoKill (const Standard_Real Scal);
+};
+
+
+%feature("shadow") GeomFill_CornerState::~GeomFill_CornerState %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_CornerState {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_Filling;
+class GeomFill_Filling {
+	public:
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Filling;
+		 GeomFill_Filling ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+No detailed docstring for this function.") NbUPoles;
+		Standard_Integer NbUPoles ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+No detailed docstring for this function.") NbVPoles;
+		Standard_Integer NbVPoles ();
+		%feature("autodoc", "Args:
+	Poles(TColgp_Array2OfPnt)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Poles;
+		void Poles (TColgp_Array2OfPnt & Poles);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Boolean
+
+No detailed docstring for this function.") isRational;
+		Standard_Boolean isRational ();
+		%feature("autodoc", "Args:
+	Weights(TColStd_Array2OfReal)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Weights;
+		void Weights (TColStd_Array2OfReal & Weights);
+};
+
+
+%feature("shadow") GeomFill_Filling::~GeomFill_Filling %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_Filling {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_FunctionDraft;
+class GeomFill_FunctionDraft : public math_FunctionSetWithDerivatives {
+	public:
+		%feature("autodoc", "Args:
+	S(Handle_Adaptor3d_HSurface)
+	C(Handle_Adaptor3d_HCurve)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_FunctionDraft;
+		 GeomFill_FunctionDraft (const Handle_Adaptor3d_HSurface & S,const Handle_Adaptor3d_HCurve & C);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Integer
+
+returns the number of variables of the function.") NbVariables;
+		virtual Standard_Integer NbVariables ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Integer
+
+returns the number of equations of the function.") NbEquations;
+		virtual Standard_Integer NbEquations ();
+		%feature("autodoc", "Args:
+	X(math_Vector)
+	F(math_Vector)
+
+Returns:
+	virtual Standard_Boolean
+
+computes the values <F> of the Functions for the  
+         variable <X>.  
+         Returns True if the computation was done successfully,  
+         False otherwise.") Value;
+		virtual Standard_Boolean Value (const math_Vector & X,math_Vector & F);
+		%feature("autodoc", "Args:
+	X(math_Vector)
+	D(math_Matrix)
+
+Returns:
+	virtual Standard_Boolean
+
+returns the values <D> of the derivatives for the  
+         variable <X>.  
+         Returns True if the computation was done successfully,  
+         False otherwise.") Derivatives;
+		virtual Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
+		%feature("autodoc", "Args:
+	X(math_Vector)
+	F(math_Vector)
+	D(math_Matrix)
+
+Returns:
+	virtual Standard_Boolean
+
+returns the values <F> of the functions and the derivatives  
+         <D> for the variable <X>.  
+         Returns True if the computation was done successfully,  
+         False otherwise.") Values;
+		virtual Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
+		%feature("autodoc", "Args:
+	C(Handle_Adaptor3d_HCurve)
+	Param(Standard_Real)
+	W(Standard_Real)
+	dN(gp_Vec)
+	teta(Standard_Real)
+	F(math_Vector)
+
+Returns:
+	Standard_Boolean
+
+returns the values <F> of the T derivatives for  
+         the parameter Param .") DerivT;
+		Standard_Boolean DerivT (const Handle_Adaptor3d_HCurve & C,const Standard_Real Param,const Standard_Real W,const gp_Vec & dN,const Standard_Real teta,math_Vector & F);
+		%feature("autodoc", "Args:
+	C(Handle_Adaptor3d_HCurve)
+	Param(Standard_Real)
+	W(Standard_Real)
+	d2N(gp_Vec)
+	teta(Standard_Real)
+	F(math_Vector)
+
+Returns:
+	Standard_Boolean
+
+returns the values <F> of the T2 derivatives for  
+         the parameter Param .") Deriv2T;
+		Standard_Boolean Deriv2T (const Handle_Adaptor3d_HCurve & C,const Standard_Real Param,const Standard_Real W,const gp_Vec & d2N,const Standard_Real teta,math_Vector & F);
+		%feature("autodoc", "Args:
+	dN(gp_Vec)
+	teta(Standard_Real)
+	D(math_Matrix)
+
+Returns:
+	Standard_Boolean
+
+returns the values <D> of  the TX derivatives for  
+         the parameter Param .") DerivTX;
+		Standard_Boolean DerivTX (const gp_Vec & dN,const Standard_Real teta,math_Matrix & D);
+		%feature("autodoc", "Args:
+	X(math_Vector)
+	T(GeomFill_Tensor)
+
+Returns:
+	Standard_Boolean
+
+returns the values <T> of  the X2 derivatives for  
+         the parameter Param .") Deriv2X;
+		Standard_Boolean Deriv2X (const math_Vector & X,GeomFill_Tensor & T);
+};
+
+
+%feature("shadow") GeomFill_FunctionDraft::~GeomFill_FunctionDraft %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_FunctionDraft {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_FunctionGuide;
+class GeomFill_FunctionGuide : public math_FunctionSetWithDerivatives {
+	public:
+		%feature("autodoc", "Args:
+	S(Handle_GeomFill_SectionLaw)
+	Guide(Handle_Adaptor3d_HCurve)
+	ParamOnLaw(Standard_Real)=0.0
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_FunctionGuide;
+		 GeomFill_FunctionGuide (const Handle_GeomFill_SectionLaw & S,const Handle_Adaptor3d_HCurve & Guide,const Standard_Real ParamOnLaw = 0.0);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Centre(gp_Pnt)
+	Dir(gp_XYZ)
+	XDir(gp_XYZ)
+
+Returns:
+	None
+
+No detailed docstring for this function.") SetParam;
+		void SetParam (const Standard_Real Param,const gp_Pnt & Centre,const gp_XYZ & Dir,const gp_XYZ & XDir);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Integer
+
+returns the number of variables of the function.") NbVariables;
+		virtual Standard_Integer NbVariables ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Integer
+
+returns the number of equations of the function.") NbEquations;
+		virtual Standard_Integer NbEquations ();
+		%feature("autodoc", "Args:
+	X(math_Vector)
+	F(math_Vector)
+
+Returns:
+	virtual Standard_Boolean
+
+computes the values <F> of the Functions for the  
+         variable <X>.  
+         Returns True if the computation was done successfully,  
+         False otherwise.") Value;
+		virtual Standard_Boolean Value (const math_Vector & X,math_Vector & F);
+		%feature("autodoc", "Args:
+	X(math_Vector)
+	D(math_Matrix)
+
+Returns:
+	virtual Standard_Boolean
+
+returns the values <D> of the derivatives for the  
+         variable <X>.  
+         Returns True if the computation was done successfully,  
+         False otherwise.") Derivatives;
+		virtual Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
+		%feature("autodoc", "Args:
+	X(math_Vector)
+	F(math_Vector)
+	D(math_Matrix)
+
+Returns:
+	virtual Standard_Boolean
+
+returns the values <F> of the functions and the derivatives  
+         <D> for the variable <X>.  
+         Returns True if the computation was done successfully,  
+         False otherwise.") Values;
+		virtual Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
+		%feature("autodoc", "Args:
+	X(math_Vector)
+	DCentre(gp_XYZ)
+	DDir(gp_XYZ)
+	DFDT(math_Vector)
+
+Returns:
+	Standard_Boolean
+
+returns the values <F> of the T derivatives for  
+         the parameter Param .") DerivT;
+		Standard_Boolean DerivT (const math_Vector & X,const gp_XYZ & DCentre,const gp_XYZ & DDir,math_Vector & DFDT);
+};
+
+
+%feature("shadow") GeomFill_FunctionGuide::~GeomFill_FunctionGuide %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_FunctionGuide {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_HArray1OfLocationLaw;
+class GeomFill_HArray1OfLocationLaw : public MMgt_TShared {
+	public:
+		%feature("autodoc", "Args:
+	Low(Standard_Integer)
+	Up(Standard_Integer)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_HArray1OfLocationLaw;
+		 GeomFill_HArray1OfLocationLaw (const Standard_Integer Low,const Standard_Integer Up);
+		%feature("autodoc", "Args:
+	Low(Standard_Integer)
+	Up(Standard_Integer)
+	V(Handle_GeomFill_LocationLaw)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_HArray1OfLocationLaw;
+		 GeomFill_HArray1OfLocationLaw (const Standard_Integer Low,const Standard_Integer Up,const Handle_GeomFill_LocationLaw & V);
+		%feature("autodoc", "Args:
+	V(Handle_GeomFill_LocationLaw)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init (const Handle_GeomFill_LocationLaw & V);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+No detailed docstring for this function.") Length;
+		Standard_Integer Length ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+No detailed docstring for this function.") Lower;
+		Standard_Integer Lower ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+No detailed docstring for this function.") Upper;
+		Standard_Integer Upper ();
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+	Value(Handle_GeomFill_LocationLaw)
+
+Returns:
+	None
+
+No detailed docstring for this function.") SetValue;
+		void SetValue (const Standard_Integer Index,const Handle_GeomFill_LocationLaw & Value);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+
+Returns:
+	Handle_GeomFill_LocationLaw
+
+No detailed docstring for this function.") Value;
+		const Handle_GeomFill_LocationLaw & Value (const Standard_Integer Index);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+
+Returns:
+	Handle_GeomFill_LocationLaw
+
+No detailed docstring for this function.") ChangeValue;
+		Handle_GeomFill_LocationLaw & ChangeValue (const Standard_Integer Index);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	GeomFill_Array1OfLocationLaw
+
+No detailed docstring for this function.") Array1;
+		const GeomFill_Array1OfLocationLaw & Array1 ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	GeomFill_Array1OfLocationLaw
+
+No detailed docstring for this function.") ChangeArray1;
+		GeomFill_Array1OfLocationLaw & ChangeArray1 ();
+};
+
+
+%feature("shadow") GeomFill_HArray1OfLocationLaw::~GeomFill_HArray1OfLocationLaw %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_HArray1OfLocationLaw {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_HArray1OfLocationLaw {
+	Handle_GeomFill_HArray1OfLocationLaw GetHandle() {
+	return *(Handle_GeomFill_HArray1OfLocationLaw*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_HArray1OfLocationLaw;
+class Handle_GeomFill_HArray1OfLocationLaw : public Handle_MMgt_TShared {
+
+    public:
+        // constructors
+        Handle_GeomFill_HArray1OfLocationLaw();
+        Handle_GeomFill_HArray1OfLocationLaw(const Handle_GeomFill_HArray1OfLocationLaw &aHandle);
+        Handle_GeomFill_HArray1OfLocationLaw(const GeomFill_HArray1OfLocationLaw *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_HArray1OfLocationLaw DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_HArray1OfLocationLaw {
+    GeomFill_HArray1OfLocationLaw* GetObject() {
+    return (GeomFill_HArray1OfLocationLaw*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_HArray1OfLocationLaw::~Handle_GeomFill_HArray1OfLocationLaw %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_HArray1OfLocationLaw {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_HArray1OfSectionLaw;
+class GeomFill_HArray1OfSectionLaw : public MMgt_TShared {
+	public:
+		%feature("autodoc", "Args:
+	Low(Standard_Integer)
+	Up(Standard_Integer)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_HArray1OfSectionLaw;
+		 GeomFill_HArray1OfSectionLaw (const Standard_Integer Low,const Standard_Integer Up);
+		%feature("autodoc", "Args:
+	Low(Standard_Integer)
+	Up(Standard_Integer)
+	V(Handle_GeomFill_SectionLaw)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_HArray1OfSectionLaw;
+		 GeomFill_HArray1OfSectionLaw (const Standard_Integer Low,const Standard_Integer Up,const Handle_GeomFill_SectionLaw & V);
+		%feature("autodoc", "Args:
+	V(Handle_GeomFill_SectionLaw)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init (const Handle_GeomFill_SectionLaw & V);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+No detailed docstring for this function.") Length;
+		Standard_Integer Length ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+No detailed docstring for this function.") Lower;
+		Standard_Integer Lower ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+No detailed docstring for this function.") Upper;
+		Standard_Integer Upper ();
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+	Value(Handle_GeomFill_SectionLaw)
+
+Returns:
+	None
+
+No detailed docstring for this function.") SetValue;
+		void SetValue (const Standard_Integer Index,const Handle_GeomFill_SectionLaw & Value);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+
+Returns:
+	Handle_GeomFill_SectionLaw
+
+No detailed docstring for this function.") Value;
+		const Handle_GeomFill_SectionLaw & Value (const Standard_Integer Index);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+
+Returns:
+	Handle_GeomFill_SectionLaw
+
+No detailed docstring for this function.") ChangeValue;
+		Handle_GeomFill_SectionLaw & ChangeValue (const Standard_Integer Index);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	GeomFill_Array1OfSectionLaw
+
+No detailed docstring for this function.") Array1;
+		const GeomFill_Array1OfSectionLaw & Array1 ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	GeomFill_Array1OfSectionLaw
+
+No detailed docstring for this function.") ChangeArray1;
+		GeomFill_Array1OfSectionLaw & ChangeArray1 ();
+};
+
+
+%feature("shadow") GeomFill_HArray1OfSectionLaw::~GeomFill_HArray1OfSectionLaw %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_HArray1OfSectionLaw {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_HArray1OfSectionLaw {
+	Handle_GeomFill_HArray1OfSectionLaw GetHandle() {
+	return *(Handle_GeomFill_HArray1OfSectionLaw*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_HArray1OfSectionLaw;
+class Handle_GeomFill_HArray1OfSectionLaw : public Handle_MMgt_TShared {
+
+    public:
+        // constructors
+        Handle_GeomFill_HArray1OfSectionLaw();
+        Handle_GeomFill_HArray1OfSectionLaw(const Handle_GeomFill_HArray1OfSectionLaw &aHandle);
+        Handle_GeomFill_HArray1OfSectionLaw(const GeomFill_HArray1OfSectionLaw *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_HArray1OfSectionLaw DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_HArray1OfSectionLaw {
+    GeomFill_HArray1OfSectionLaw* GetObject() {
+    return (GeomFill_HArray1OfSectionLaw*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_HArray1OfSectionLaw::~Handle_GeomFill_HArray1OfSectionLaw %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_HArray1OfSectionLaw {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_HSequenceOfAx2;
+class GeomFill_HSequenceOfAx2 : public MMgt_TShared {
+	public:
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_HSequenceOfAx2;
+		 GeomFill_HSequenceOfAx2 ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Boolean
+
+No detailed docstring for this function.") IsEmpty;
+		Standard_Boolean IsEmpty ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+No detailed docstring for this function.") Length;
+		Standard_Integer Length ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") Clear;
+		void Clear ();
+		%feature("autodoc", "Args:
+	anItem(gp_Ax2)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Append;
+		void Append (const gp_Ax2 & anItem);
+		%feature("autodoc", "Args:
+	aSequence(Handle_GeomFill_HSequenceOfAx2)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Append;
+		void Append (const Handle_GeomFill_HSequenceOfAx2 & aSequence);
+		%feature("autodoc", "Args:
+	anItem(gp_Ax2)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Prepend;
+		void Prepend (const gp_Ax2 & anItem);
+		%feature("autodoc", "Args:
+	aSequence(Handle_GeomFill_HSequenceOfAx2)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Prepend;
+		void Prepend (const Handle_GeomFill_HSequenceOfAx2 & aSequence);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") Reverse;
+		void Reverse ();
+		%feature("autodoc", "Args:
+	anIndex(Standard_Integer)
+	anItem(gp_Ax2)
+
+Returns:
+	None
+
+No detailed docstring for this function.") InsertBefore;
+		void InsertBefore (const Standard_Integer anIndex,const gp_Ax2 & anItem);
+		%feature("autodoc", "Args:
+	anIndex(Standard_Integer)
+	aSequence(Handle_GeomFill_HSequenceOfAx2)
+
+Returns:
+	None
+
+No detailed docstring for this function.") InsertBefore;
+		void InsertBefore (const Standard_Integer anIndex,const Handle_GeomFill_HSequenceOfAx2 & aSequence);
+		%feature("autodoc", "Args:
+	anIndex(Standard_Integer)
+	anItem(gp_Ax2)
+
+Returns:
+	None
+
+No detailed docstring for this function.") InsertAfter;
+		void InsertAfter (const Standard_Integer anIndex,const gp_Ax2 & anItem);
+		%feature("autodoc", "Args:
+	anIndex(Standard_Integer)
+	aSequence(Handle_GeomFill_HSequenceOfAx2)
+
+Returns:
+	None
+
+No detailed docstring for this function.") InsertAfter;
+		void InsertAfter (const Standard_Integer anIndex,const Handle_GeomFill_HSequenceOfAx2 & aSequence);
+		%feature("autodoc", "Args:
+	anIndex(Standard_Integer)
+	anOtherIndex(Standard_Integer)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Exchange;
+		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
+		%feature("autodoc", "Args:
+	anIndex(Standard_Integer)
+
+Returns:
+	Handle_GeomFill_HSequenceOfAx2
+
+No detailed docstring for this function.") Split;
+		Handle_GeomFill_HSequenceOfAx2 Split (const Standard_Integer anIndex);
+		%feature("autodoc", "Args:
+	anIndex(Standard_Integer)
+	anItem(gp_Ax2)
+
+Returns:
+	None
+
+No detailed docstring for this function.") SetValue;
+		void SetValue (const Standard_Integer anIndex,const gp_Ax2 & anItem);
+		%feature("autodoc", "Args:
+	anIndex(Standard_Integer)
+
+Returns:
+	gp_Ax2
+
+No detailed docstring for this function.") Value;
+		const gp_Ax2 & Value (const Standard_Integer anIndex);
+		%feature("autodoc", "Args:
+	anIndex(Standard_Integer)
+
+Returns:
+	gp_Ax2
+
+No detailed docstring for this function.") ChangeValue;
+		gp_Ax2 & ChangeValue (const Standard_Integer anIndex);
+		%feature("autodoc", "Args:
+	anIndex(Standard_Integer)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Remove;
+		void Remove (const Standard_Integer anIndex);
+		%feature("autodoc", "Args:
+	fromIndex(Standard_Integer)
+	toIndex(Standard_Integer)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Remove;
+		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	GeomFill_SequenceOfAx2
+
+No detailed docstring for this function.") Sequence;
+		const GeomFill_SequenceOfAx2 & Sequence ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	GeomFill_SequenceOfAx2
+
+No detailed docstring for this function.") ChangeSequence;
+		GeomFill_SequenceOfAx2 & ChangeSequence ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Handle_GeomFill_HSequenceOfAx2
+
+No detailed docstring for this function.") ShallowCopy;
+		Handle_GeomFill_HSequenceOfAx2 ShallowCopy ();
+};
+
+
+%feature("shadow") GeomFill_HSequenceOfAx2::~GeomFill_HSequenceOfAx2 %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_HSequenceOfAx2 {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_HSequenceOfAx2 {
+	Handle_GeomFill_HSequenceOfAx2 GetHandle() {
+	return *(Handle_GeomFill_HSequenceOfAx2*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_HSequenceOfAx2;
+class Handle_GeomFill_HSequenceOfAx2 : public Handle_MMgt_TShared {
+
+    public:
+        // constructors
+        Handle_GeomFill_HSequenceOfAx2();
+        Handle_GeomFill_HSequenceOfAx2(const Handle_GeomFill_HSequenceOfAx2 &aHandle);
+        Handle_GeomFill_HSequenceOfAx2(const GeomFill_HSequenceOfAx2 *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_HSequenceOfAx2 DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_HSequenceOfAx2 {
+    GeomFill_HSequenceOfAx2* GetObject() {
+    return (GeomFill_HSequenceOfAx2*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_HSequenceOfAx2::~Handle_GeomFill_HSequenceOfAx2 %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_HSequenceOfAx2 {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_Line;
+class GeomFill_Line : public MMgt_TShared {
+	public:
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Line;
+		 GeomFill_Line ();
+		%feature("autodoc", "Args:
+	NbPoints(Standard_Integer)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Line;
+		 GeomFill_Line (const Standard_Integer NbPoints);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+No detailed docstring for this function.") NbPoints;
+		Standard_Integer NbPoints ();
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+
+Returns:
+	Standard_Integer
+
+No detailed docstring for this function.") Point;
+		Standard_Integer Point (const Standard_Integer Index);
+};
+
+
+%feature("shadow") GeomFill_Line::~GeomFill_Line %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_Line {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_Line {
+	Handle_GeomFill_Line GetHandle() {
+	return *(Handle_GeomFill_Line*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_Line;
+class Handle_GeomFill_Line : public Handle_MMgt_TShared {
+
+    public:
+        // constructors
+        Handle_GeomFill_Line();
+        Handle_GeomFill_Line(const Handle_GeomFill_Line &aHandle);
+        Handle_GeomFill_Line(const GeomFill_Line *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_Line DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_Line {
+    GeomFill_Line* GetObject() {
+    return (GeomFill_Line*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_Line::~Handle_GeomFill_Line %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_Line {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_LocFunction;
+class GeomFill_LocFunction {
+	public:
+		%feature("autodoc", "Args:
+	Law(Handle_GeomFill_LocationLaw)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_LocFunction;
+		 GeomFill_LocFunction (const Handle_GeomFill_LocationLaw & Law);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	Standard_Boolean
+
+compute the section for v = param") D0;
+		Standard_Boolean D0 (const Standard_Real Param,const Standard_Real First,const Standard_Real Last);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	Standard_Boolean
+
+compute the first  derivative in v direction  of the  
+          section for v =  param") D1;
+		Standard_Boolean D1 (const Standard_Real Param,const Standard_Real First,const Standard_Real Last);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	Standard_Boolean
+
+compute the second derivative  in v direction of the  
+         section  for v = param") D2;
+		Standard_Boolean D2 (const Standard_Real Param,const Standard_Real First,const Standard_Real Last);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	First(Standard_Real)
+	Last(Standard_Real)
+	Order(Standard_Integer)
+	Result(Standard_Real)
+	Ier(Standard_Integer)
+
+Returns:
+	None
+
+No detailed docstring for this function.") DN;
+		void DN (const Standard_Real Param,const Standard_Real First,const Standard_Real Last,const Standard_Integer Order,Standard_Real &OutValue,Standard_Integer &OutValue);
+};
+
+
+%feature("shadow") GeomFill_LocFunction::~GeomFill_LocFunction %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_LocFunction {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_LocationLaw;
+class GeomFill_LocationLaw : public MMgt_TShared {
+	public:
+		%feature("autodoc", "Args:
+	C(Handle_Adaptor3d_HCurve)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") SetCurve;
+		virtual void SetCurve (const Handle_Adaptor3d_HCurve & C);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual  Handle_Adaptor3d_HCurve
+
+No detailed docstring for this function.") GetCurve;
+		virtual const Handle_Adaptor3d_HCurve & GetCurve ();
+		%feature("autodoc", "Args:
+	Transfo(gp_Mat)
+
+Returns:
+	virtual void
+
+Set a transformation Matrix like   the law M(t) become  
+         Mat * M(t)") SetTrsf;
+		virtual void SetTrsf (const gp_Mat & Transfo);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Handle_GeomFill_LocationLaw
+
+No detailed docstring for this function.") Copy;
+		virtual Handle_GeomFill_LocationLaw Copy ();
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	M(gp_Mat)
+	V(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+compute Location") D0;
+		virtual Standard_Boolean D0 (const Standard_Real Param,gp_Mat & M,gp_Vec & V);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	M(gp_Mat)
+	V(gp_Vec)
+	Poles2d(TColgp_Array1OfPnt2d)
+
+Returns:
+	virtual Standard_Boolean
+
+compute Location and 2d points") D0;
+		virtual Standard_Boolean D0 (const Standard_Real Param,gp_Mat & M,gp_Vec & V,TColgp_Array1OfPnt2d & Poles2d);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	M(gp_Mat)
+	V(gp_Vec)
+	DM(gp_Mat)
+	DV(gp_Vec)
+	Poles2d(TColgp_Array1OfPnt2d)
+	DPoles2d(TColgp_Array1OfVec2d)
+
+Returns:
+	virtual Standard_Boolean
+
+compute location 2d  points and  associated  
+         first derivatives.  
+ Warning : It used only for C1 or C2 aproximation") D1;
+		virtual Standard_Boolean D1 (const Standard_Real Param,gp_Mat & M,gp_Vec & V,gp_Mat & DM,gp_Vec & DV,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	M(gp_Mat)
+	V(gp_Vec)
+	DM(gp_Mat)
+	DV(gp_Vec)
+	D2M(gp_Mat)
+	D2V(gp_Vec)
+	Poles2d(TColgp_Array1OfPnt2d)
+	DPoles2d(TColgp_Array1OfVec2d)
+	D2Poles2d(TColgp_Array1OfVec2d)
+
+Returns:
+	virtual Standard_Boolean
+
+compute location 2d  points and associated  
+         first and seconde  derivatives.  
+ Warning : It used only for C2 aproximation") D2;
+		virtual Standard_Boolean D2 (const Standard_Real Param,gp_Mat & M,gp_Vec & V,gp_Mat & DM,gp_Vec & DV,gp_Mat & D2M,gp_Vec & D2V,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColgp_Array1OfVec2d & D2Poles2d);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+get the number of  2d  curves (Restrictions  +  Traces)  
+           to approximate.") Nb2dCurves;
+		Standard_Integer Nb2dCurves ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Say if the first restriction is defined in this class.  
+          If it  is true the  first element  of poles array   in  
+         D0,D1,D2... Correspond to this restriction.  
+ Returns Standard_False (default implementation)") HasFirstRestriction;
+		virtual Standard_Boolean HasFirstRestriction ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Say if the last restriction is defined in this class.  
+          If it is  true the  last element  of poles array in  
+         D0,D1,D2... Correspond to this restriction.  
+         Returns Standard_False (default implementation)") HasLastRestriction;
+		virtual Standard_Boolean HasLastRestriction ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Integer
+
+Give the number of trace (Curves 2d wich are not restriction)  
+         Returns 0 (default implementation)") TraceNumber;
+		virtual Standard_Integer TraceNumber ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual GeomFill_PipeError
+
+//!Give a status to the Law  
+         Returns PipeOk (default implementation)") ErrorStatus;
+		virtual GeomFill_PipeError ErrorStatus ();
+		%feature("autodoc", "Args:
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual Standard_Integer
+
+Returns  the number  of  intervals for  continuity  
+         <S>.  
+         May be one if Continuity(me) >= <S>") NbIntervals;
+		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	T(TColStd_Array1OfReal)
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual void
+
+Stores in <T> the  parameters bounding the intervals  
+         of continuity <S>.  
+ 
+         The array must provide  enough room to  accomodate  
+         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+		virtual void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+Sets the bounds of the parametric interval on  
+         the function  
+         This determines the derivatives in these values if the  
+         function is not Cn.") SetInterval;
+		virtual void SetInterval (const Standard_Real First,const Standard_Real Last);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+Gets the bounds of the parametric interval on  
+         the function") GetInterval;
+		virtual void GetInterval (Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+Gets the bounds of the function parametric domain.  
+ Warning: This domain it is  not modified by the  
+         SetValue method") GetDomain;
+		virtual void GetDomain (Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+	Tol(Standard_Real)
+	TolU(Standard_Real)
+	TolV(Standard_Real)
+
+Returns:
+	virtual void
+
+Returns the resolutions in the  sub-space 2d <Index>  
+         This information is usfull to find an good tolerance in  
+         2d approximation.") Resolution;
+		virtual void Resolution (const Standard_Integer Index,const Standard_Real Tol,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	Tol3d(Standard_Real)
+	Tol2d(Standard_Real)
+
+Returns:
+	virtual void
+
+Is usefull, if (me) have to run numerical  
+         algorithm to perform D0, D1 or D2  
+The default implementation make nothing.") SetTolerance;
+		virtual void SetTolerance (const Standard_Real Tol3d,const Standard_Real Tol2d);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Real
+
+Get the maximum Norm  of the matrix-location part.  It  
+          is usful to find an good Tolerance to approx M(t).") GetMaximalNorm;
+		virtual Standard_Real GetMaximalNorm ();
+		%feature("autodoc", "Args:
+	AM(gp_Mat)
+	AV(gp_Vec)
+
+Returns:
+	virtual void
+
+Get average value of M(t) and V(t) it is usfull to  
+         make fast approximation of rational surfaces.") GetAverageLaw;
+		virtual void GetAverageLaw (gp_Mat & AM,gp_Vec & AV);
+		%feature("autodoc", "Args:
+	Error(Standard_Real)
+
+Returns:
+	virtual Standard_Boolean
+
+Say if the Location  Law, is an translation of  Location  
+The default implementation is ' returns False '.") IsTranslation;
+		virtual Standard_Boolean IsTranslation (Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	Error(Standard_Real)
+
+Returns:
+	virtual Standard_Boolean
+
+Say if the Location  Law, is a rotation of Location  
+The default implementation is ' returns False '.") IsRotation;
+		virtual Standard_Boolean IsRotation (Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	Center(gp_Pnt)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") Rotation;
+		virtual void Rotation (gp_Pnt & Center);
+};
+
+
+%feature("shadow") GeomFill_LocationLaw::~GeomFill_LocationLaw %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_LocationLaw {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_LocationLaw {
+	Handle_GeomFill_LocationLaw GetHandle() {
+	return *(Handle_GeomFill_LocationLaw*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_LocationLaw;
+class Handle_GeomFill_LocationLaw : public Handle_MMgt_TShared {
+
+    public:
+        // constructors
+        Handle_GeomFill_LocationLaw();
+        Handle_GeomFill_LocationLaw(const Handle_GeomFill_LocationLaw &aHandle);
+        Handle_GeomFill_LocationLaw(const GeomFill_LocationLaw *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_LocationLaw DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_LocationLaw {
+    GeomFill_LocationLaw* GetObject() {
+    return (GeomFill_LocationLaw*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_LocationLaw::~Handle_GeomFill_LocationLaw %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_LocationLaw {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_Pipe;
+class GeomFill_Pipe {
+	public:
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+Constructs an empty algorithm for building pipes. Use  
+the function Init to initialize it.") GeomFill_Pipe;
+		 GeomFill_Pipe ();
+		%feature("autodoc", "Args:
+	Path(Handle_Geom_Curve)
+	Radius(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Pipe;
+		 GeomFill_Pipe (const Handle_Geom_Curve & Path,const Standard_Real Radius);
+		%feature("autodoc", "Args:
+	Path(Handle_Geom_Curve)
+	FirstSect(Handle_Geom_Curve)
+	Option(GeomFill_Trihedron)=GeomFill_IsCorrectedFrenet
+
+Returns:
+	None
+
+Create  a  pipe  with  a  constant  section  
+ (<FirstSection>)  and a path (<Path>)  
+Option can be  - GeomFill_IsCorrectedFrenet  
+               - GeomFill_IsFrenet  
+               - GeomFill_IsConstant") GeomFill_Pipe;
+		 GeomFill_Pipe (const Handle_Geom_Curve & Path,const Handle_Geom_Curve & FirstSect,const GeomFill_Trihedron Option = GeomFill_IsCorrectedFrenet);
+		%feature("autodoc", "Args:
+	Path(Handle_Geom2d_Curve)
+	Support(Handle_Geom_Surface)
+	FirstSect(Handle_Geom_Curve)
+
+Returns:
+	None
+
+Create  a  pipe  with  a  constant  section  
+ (<FirstSection>)  and a path defined by <Path> and <Support>") GeomFill_Pipe;
+		 GeomFill_Pipe (const Handle_Geom2d_Curve & Path,const Handle_Geom_Surface & Support,const Handle_Geom_Curve & FirstSect);
+		%feature("autodoc", "Args:
+	Path(Handle_Geom_Curve)
+	FirstSect(Handle_Geom_Curve)
+	Dir(gp_Dir)
+
+Returns:
+	None
+
+Create  a  pipe with  a  constant section  
+   (<FirstSection>) and a   path <Path>  and a fixed  
+   binormal direction <Dir>") GeomFill_Pipe;
+		 GeomFill_Pipe (const Handle_Geom_Curve & Path,const Handle_Geom_Curve & FirstSect,const gp_Dir & Dir);
+		%feature("autodoc", "Args:
+	Path(Handle_Geom_Curve)
+	FirstSect(Handle_Geom_Curve)
+	LastSect(Handle_Geom_Curve)
+
+Returns:
+	None
+
+Create a pipe with an evolving section  
+         The section evoluate from First to Last Section") GeomFill_Pipe;
+		 GeomFill_Pipe (const Handle_Geom_Curve & Path,const Handle_Geom_Curve & FirstSect,const Handle_Geom_Curve & LastSect);
+		%feature("autodoc", "Args:
+	Path(Handle_Geom_Curve)
+	NSections(TColGeom_SequenceOfCurve)
+
+Returns:
+	None
+
+Create a pipe with N  sections  
+         The section evoluate from First to Last Section") GeomFill_Pipe;
+		 GeomFill_Pipe (const Handle_Geom_Curve & Path,const TColGeom_SequenceOfCurve & NSections);
+		%feature("autodoc", "Args:
+	Path(Handle_Geom_Curve)
+	Curve1(Handle_Geom_Curve)
+	Curve2(Handle_Geom_Curve)
+	Radius(Standard_Real)
+
+Returns:
+	None
+
+Create  a pipe  with  a constant  radius with  2  
+         guide-line.") GeomFill_Pipe;
+		 GeomFill_Pipe (const Handle_Geom_Curve & Path,const Handle_Geom_Curve & Curve1,const Handle_Geom_Curve & Curve2,const Standard_Real Radius);
+		%feature("autodoc", "Args:
+	Path(Handle_Adaptor3d_HCurve)
+	Curve1(Handle_Adaptor3d_HCurve)
+	Curve2(Handle_Adaptor3d_HCurve)
+	Radius(Standard_Real)
+
+Returns:
+	None
+
+Create  a pipe  with  a constant  radius with  2  
+         guide-line.") GeomFill_Pipe;
+		 GeomFill_Pipe (const Handle_Adaptor3d_HCurve & Path,const Handle_Adaptor3d_HCurve & Curve1,const Handle_Adaptor3d_HCurve & Curve2,const Standard_Real Radius);
+		%feature("autodoc", "Args:
+	Path(Handle_Geom_Curve)
+	Guide(Handle_Adaptor3d_HCurve)
+	FirstSect(Handle_Geom_Curve)
+	ByACR(Standard_Boolean)
+	rotat(Standard_Boolean)
+
+Returns:
+	None
+
+Create a pipe with a constant section and  with 1  
+         guide-line.  
+    Use the function Perform to build the surface.  
+All standard specific cases are detected in order to  
+construct, according to the respective geometric  
+nature of Path and the sections, a planar, cylindrical,  
+conical, spherical or toroidal surface, a surface of  
+linear extrusion or a surface of revolution.  
+In the general case, the result is a BSpline surface  
+(NURBS) built by approximation of a series of sections where:  
+-   the number of sections N is chosen automatically  
+  by the algorithm according to the respective  
+  geometries of Path and the sections. N is greater than or equal to 2;  
+-   N points Pi (with i in the range [ 1,N ]) are  
+  defined at regular intervals along the curve Path  
+  from its first point to its end point. At each point Pi,  
+  a coordinate system Ti is computed with Pi as  
+  origin, and with the tangential and normal vectors  
+  to Path defining two of its coordinate axes.  
+In the case of a pipe with a constant circular section,  
+the first section is a circle of radius Radius centered  
+on the origin of Path and whose 'Z Axis' is aligned  
+along the vector tangential to the origin of Path. In the  
+case of a pipe with a constant section, the first section  
+is the curve FirstSect. In these two cases, the ith  
+section (for values of i greater than 1) is obtained by  
+applying to a copy of this first section the geometric  
+transformation which transforms coordinate system  
+T1 into coordinate system Ti.  
+In the case of an evolving section, N-2 intermediate  
+curves Si are first computed (if N is greater than 2,  
+and with i in the range [ 2,N-1 ]) whose geometry  
+evolves regularly from the curve S1=FirstSect to the  
+curve SN=LastSect. The first section is FirstSect,  
+and the ith section (for values of i greater than 1) is  
+obtained by applying to the curve Si the geometric  
+transformation which transforms coordinate system  
+T1 into coordinate system Ti.") GeomFill_Pipe;
+		 GeomFill_Pipe (const Handle_Geom_Curve & Path,const Handle_Adaptor3d_HCurve & Guide,const Handle_Geom_Curve & FirstSect,const Standard_Boolean ByACR,const Standard_Boolean rotat);
+		%feature("autodoc", "Args:
+	Path(Handle_Geom_Curve)
+	Radius(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init (const Handle_Geom_Curve & Path,const Standard_Real Radius);
+		%feature("autodoc", "Args:
+	Path(Handle_Geom_Curve)
+	FirstSect(Handle_Geom_Curve)
+	Option(GeomFill_Trihedron)=GeomFill_IsCorrectedFrenet
+
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init (const Handle_Geom_Curve & Path,const Handle_Geom_Curve & FirstSect,const GeomFill_Trihedron Option = GeomFill_IsCorrectedFrenet);
+		%feature("autodoc", "Args:
+	Path(Handle_Geom2d_Curve)
+	Support(Handle_Geom_Surface)
+	FirstSect(Handle_Geom_Curve)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init (const Handle_Geom2d_Curve & Path,const Handle_Geom_Surface & Support,const Handle_Geom_Curve & FirstSect);
+		%feature("autodoc", "Args:
+	Path(Handle_Geom_Curve)
+	FirstSect(Handle_Geom_Curve)
+	Dir(gp_Dir)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init (const Handle_Geom_Curve & Path,const Handle_Geom_Curve & FirstSect,const gp_Dir & Dir);
+		%feature("autodoc", "Args:
+	Path(Handle_Geom_Curve)
+	FirstSect(Handle_Geom_Curve)
+	LastSect(Handle_Geom_Curve)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init (const Handle_Geom_Curve & Path,const Handle_Geom_Curve & FirstSect,const Handle_Geom_Curve & LastSect);
+		%feature("autodoc", "Args:
+	Path(Handle_Geom_Curve)
+	NSections(TColGeom_SequenceOfCurve)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init (const Handle_Geom_Curve & Path,const TColGeom_SequenceOfCurve & NSections);
+		%feature("autodoc", "Args:
+	Path(Handle_Adaptor3d_HCurve)
+	Curve1(Handle_Adaptor3d_HCurve)
+	Curve2(Handle_Adaptor3d_HCurve)
+	Radius(Standard_Real)
+
+Returns:
+	None
+
+Create  a pipe  with  a constant  radius with  2  
+         guide-line.") Init;
+		void Init (const Handle_Adaptor3d_HCurve & Path,const Handle_Adaptor3d_HCurve & Curve1,const Handle_Adaptor3d_HCurve & Curve2,const Standard_Real Radius);
+		%feature("autodoc", "Args:
+	Path(Handle_Geom_Curve)
+	Guide(Handle_Adaptor3d_HCurve)
+	FirstSect(Handle_Geom_Curve)
+	ByACR(Standard_Boolean)
+	rotat(Standard_Boolean)
+
+Returns:
+	None
+
+Initializes this pipe algorithm to build the following surface:  
+-   a pipe with a constant circular section of radius  
+  Radius along the path Path, or  
+-   a pipe with constant section FirstSect along the path Path, or  
+-   a pipe where the section evolves from FirstSect to  
+  LastSect along the path Path.  
+Use the function Perform to build the surface.  
+Note: a description of the resulting surface is given under Constructors.") Init;
+		void Init (const Handle_Geom_Curve & Path,const Handle_Adaptor3d_HCurve & Guide,const Handle_Geom_Curve & FirstSect,const Standard_Boolean ByACR,const Standard_Boolean rotat);
+		%feature("autodoc", "Args:
+	WithParameters(Standard_Boolean)=Standard_False
+	myPolynomial(Standard_Boolean)=Standard_False
+
+Returns:
+	None
+
+Builds the pipe defined at the time of initialization of this  
+algorithm. A description of the resulting surface is given under Constructors.  
+If WithParameters (defaulted to false) is set to true, the  
+approximation algorithm (used only in the general case  
+of construction of a BSpline surface) builds the surface  
+with a u parameter corresponding to the one of the path.  
+Exceptions  
+Standard_ConstructionError if a surface cannot be constructed from the data.  
+ Warning: It is the old Perform method, the next methode is recommended.") Perform;
+		void Perform (const Standard_Boolean WithParameters = Standard_False,const Standard_Boolean myPolynomial = Standard_False);
+		%feature("autodoc", "Args:
+	Tol(Standard_Real)
+	Polynomial(Standard_Boolean)
+	Conti(GeomAbs_Shape)=GeomAbs_C1
+	MaxDegree(Standard_Integer)=11
+	NbMaxSegment(Standard_Integer)=30
+
+Returns:
+	None
+
+detects the  particular cases.  And compute the surface.  
+   if  none   particular  case  is  detected we make an approximation  
+   with respect of the Tolerance <Tol>, the continuty <Conti>, the  
+   maximum degree <MaxDegree>, the maximum number of span <NbMaxSegment>  
+   and the spine parametrization.  If we can't create a surface with the data") Perform;
+		void Perform (const Standard_Real Tol,const Standard_Boolean Polynomial,const GeomAbs_Shape Conti = GeomAbs_C1,const Standard_Integer MaxDegree = 11,const Standard_Integer NbMaxSegment = 30);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Handle_Geom_Surface
+
+Returns the surface built by this algorithm.  
+Warning  
+Do not use this function before the surface is built (in this  
+case the function will return a null handle).") Surface;
+		const Handle_Geom_Surface & Surface ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Boolean
+
+The u parametric direction of the surface constructed by  
+this algorithm usually corresponds to the evolution  
+along the path and the v parametric direction  
+corresponds to the evolution along the section(s).  
+However, this rule is not respected when constructing  
+certain specific Geom surfaces (typically cylindrical  
+surfaces, surfaces of revolution, etc.) for which the  
+parameterization is inversed.  
+The ExchangeUV function checks for this, and returns  
+true in all these specific cases.  
+Warning  
+Do not use this function before the surface is built.") ExchangeUV;
+		Standard_Boolean ExchangeUV ();
+		%feature("autodoc", "Args:
+	B(Standard_Boolean)
+
+Returns:
+	None
+
+Sets a flag  to  try to   create as many   planes,  
+         cylinder,...    as  possible.  Default  value   is  
+         <Standard_False>.") GenerateParticularCase;
+		void GenerateParticularCase (const Standard_Boolean B);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Boolean
+
+Returns the flag.") GenerateParticularCase;
+		Standard_Boolean GenerateParticularCase ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Real
+
+Returns the approximation's error.  if the Surface  
+         is plane, cylinder ... this error can be 0.") ErrorOnSurf;
+		Standard_Real ErrorOnSurf ();
+};
+
+
+%feature("shadow") GeomFill_Pipe::~GeomFill_Pipe %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_Pipe {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_PlanFunc;
+class GeomFill_PlanFunc : public math_FunctionWithDerivative {
+	public:
+		%feature("autodoc", "Args:
+	P(gp_Pnt)
+	V(gp_Vec)
+	C(Handle_Adaptor3d_HCurve)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_PlanFunc;
+		 GeomFill_PlanFunc (const gp_Pnt & P,const gp_Vec & V,const Handle_Adaptor3d_HCurve & C);
+		%feature("autodoc", "Args:
+	X(Standard_Real)
+	F(Standard_Real)
+
+Returns:
+	virtual Standard_Boolean
+
+computes the value <F>of the function for the variable <X>.  
+         Returns True if the calculation were successfully done,  
+         False otherwise.") Value;
+		virtual Standard_Boolean Value (const Standard_Real X,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	X(Standard_Real)
+	D(Standard_Real)
+
+Returns:
+	virtual Standard_Boolean
+
+computes the derivative <D> of the function  
+         for the variable <X>.  
+          Returns True if the calculation were successfully done,  
+          False otherwise.") Derivative;
+		virtual Standard_Boolean Derivative (const Standard_Real X,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	X(Standard_Real)
+	F(Standard_Real)
+	D(Standard_Real)
+
+Returns:
+	virtual Standard_Boolean
+
+computes the value <F> and the derivative <D> of the  
+         function for the variable <X>.  
+         Returns True if the calculation were successfully done,  
+         False otherwise.") Values;
+		virtual Standard_Boolean Values (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	X(Standard_Real)
+	F(Standard_Real)
+	D1(Standard_Real)
+	D2(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") D2;
+		void D2 (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	X(Standard_Real)
+	DP(gp_Vec)
+	DV(gp_Vec)
+	DF(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") DEDT;
+		void DEDT (const Standard_Real X,const gp_Vec & DP,const gp_Vec & DV,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	X(Standard_Real)
+	DP(gp_Vec)
+	D2P(gp_Vec)
+	DV(gp_Vec)
+	D2V(gp_Vec)
+	DFDT(Standard_Real)
+	D2FDT2(Standard_Real)
+	D2FDTDX(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") D2E;
+		void D2E (const Standard_Real X,const gp_Vec & DP,const gp_Vec & D2P,const gp_Vec & DV,const gp_Vec & D2V,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
+};
+
+
+%feature("shadow") GeomFill_PlanFunc::~GeomFill_PlanFunc %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_PlanFunc {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_PolynomialConvertor;
+class GeomFill_PolynomialConvertor {
+	public:
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_PolynomialConvertor;
+		 GeomFill_PolynomialConvertor ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Boolean
+
+say if <self> is Initialized") Initialized;
+		Standard_Boolean Initialized ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init ();
+		%feature("autodoc", "Args:
+	FirstPnt(gp_Pnt)
+	Center(gp_Pnt)
+	Dir(gp_Vec)
+	Angle(Standard_Real)
+	Poles(TColgp_Array1OfPnt)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Section;
+		void Section (const gp_Pnt & FirstPnt,const gp_Pnt & Center,const gp_Vec & Dir,const Standard_Real Angle,TColgp_Array1OfPnt & Poles);
+		%feature("autodoc", "Args:
+	FirstPnt(gp_Pnt)
+	DFirstPnt(gp_Vec)
+	Center(gp_Pnt)
+	DCenter(gp_Vec)
+	Dir(gp_Vec)
+	DDir(gp_Vec)
+	Angle(Standard_Real)
+	DAngle(Standard_Real)
+	Poles(TColgp_Array1OfPnt)
+	DPoles(TColgp_Array1OfVec)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Section;
+		void Section (const gp_Pnt & FirstPnt,const gp_Vec & DFirstPnt,const gp_Pnt & Center,const gp_Vec & DCenter,const gp_Vec & Dir,const gp_Vec & DDir,const Standard_Real Angle,const Standard_Real DAngle,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles);
+		%feature("autodoc", "Args:
+	FirstPnt(gp_Pnt)
+	DFirstPnt(gp_Vec)
+	D2FirstPnt(gp_Vec)
+	Center(gp_Pnt)
+	DCenter(gp_Vec)
+	D2Center(gp_Vec)
+	Dir(gp_Vec)
+	DDir(gp_Vec)
+	D2Dir(gp_Vec)
+	Angle(Standard_Real)
+	DAngle(Standard_Real)
+	D2Angle(Standard_Real)
+	Poles(TColgp_Array1OfPnt)
+	DPoles(TColgp_Array1OfVec)
+	D2Poles(TColgp_Array1OfVec)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Section;
+		void Section (const gp_Pnt & FirstPnt,const gp_Vec & DFirstPnt,const gp_Vec & D2FirstPnt,const gp_Pnt & Center,const gp_Vec & DCenter,const gp_Vec & D2Center,const gp_Vec & Dir,const gp_Vec & DDir,const gp_Vec & D2Dir,const Standard_Real Angle,const Standard_Real DAngle,const Standard_Real D2Angle,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles);
+};
+
+
+%feature("shadow") GeomFill_PolynomialConvertor::~GeomFill_PolynomialConvertor %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_PolynomialConvertor {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_Profiler;
+class GeomFill_Profiler {
+	public:
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Profiler;
+		 GeomFill_Profiler ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual void
+
+No detailed docstring for this function.") Delete;
+		virtual void Delete ();
+		%feature("autodoc", "Args:
+	Curve(Handle_Geom_Curve)
+
+Returns:
+	None
+
+No detailed docstring for this function.") AddCurve;
+		void AddCurve (const Handle_Geom_Curve & Curve);
+		%feature("autodoc", "Args:
+	PTol(Standard_Real)
+
+Returns:
+	virtual void
+
+Converts all curves to BSplineCurves.  
+         Set them to the common profile.  
+         <PTol> is used to compare 2 knots.") Perform;
+		virtual void Perform (const Standard_Real PTol);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+Raises if not yet perform") Degree;
+		Standard_Integer Degree ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Boolean
+
+No detailed docstring for this function.") IsPeriodic;
+		Standard_Boolean IsPeriodic ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+Raises if not yet perform") NbPoles;
+		Standard_Integer NbPoles ();
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+	Poles(TColgp_Array1OfPnt)
+
+Returns:
+	None
+
+returns in <Poles> the  poles  of the BSplineCurve  
+         from index <Index> adjusting to the current profile.  Raises if not yet perform  Raises if <Index> not in the range [1,NbCurves]  
+         if  the  length  of  <Poles>  is  not  equal  to  
+         NbPoles().") Poles;
+		void Poles (const Standard_Integer Index,TColgp_Array1OfPnt & Poles);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+	Weights(TColStd_Array1OfReal)
+
+Returns:
+	None
+
+returns in <Weights> the weights of the BSplineCurve  
+         from index <Index> adjusting to the current profile.  Raises if not yet perform  Raises if <Index> not in the range [1,NbCurves] or  
+         if  the  length  of  <Weights>  is  not  equal  to  
+         NbPoles().") Weights;
+		void Weights (const Standard_Integer Index,TColStd_Array1OfReal & Weights);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+Raises if not yet perform") NbKnots;
+		Standard_Integer NbKnots ();
+		%feature("autodoc", "Args:
+	Knots(TColStd_Array1OfReal)
+	Mults(TColStd_Array1OfInteger)
+
+Returns:
+	None
+
+Raises if not yet perform  Raises if  the lengthes of <Knots> and <Mults> are  
+         not equal to NbKnots().") KnotsAndMults;
+		void KnotsAndMults (TColStd_Array1OfReal & Knots,TColStd_Array1OfInteger & Mults);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+
+Returns:
+	Handle_Geom_Curve
+
+No detailed docstring for this function.") Curve;
+		const Handle_Geom_Curve & Curve (const Standard_Integer Index);
+};
+
+
+%feature("shadow") GeomFill_Profiler::~GeomFill_Profiler %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_Profiler {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_QuasiAngularConvertor;
+class GeomFill_QuasiAngularConvertor {
+	public:
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_QuasiAngularConvertor;
+		 GeomFill_QuasiAngularConvertor ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Boolean
+
+say if <self> is Initialized") Initialized;
+		Standard_Boolean Initialized ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init ();
+		%feature("autodoc", "Args:
+	FirstPnt(gp_Pnt)
+	Center(gp_Pnt)
+	Dir(gp_Vec)
+	Angle(Standard_Real)
+	Poles(TColgp_Array1OfPnt)
+	Weights(TColStd_Array1OfReal)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Section;
+		void Section (const gp_Pnt & FirstPnt,const gp_Pnt & Center,const gp_Vec & Dir,const Standard_Real Angle,TColgp_Array1OfPnt & Poles,TColStd_Array1OfReal & Weights);
+		%feature("autodoc", "Args:
+	FirstPnt(gp_Pnt)
+	DFirstPnt(gp_Vec)
+	Center(gp_Pnt)
+	DCenter(gp_Vec)
+	Dir(gp_Vec)
+	DDir(gp_Vec)
+	Angle(Standard_Real)
+	DAngle(Standard_Real)
+	Poles(TColgp_Array1OfPnt)
+	DPoles(TColgp_Array1OfVec)
+	Weights(TColStd_Array1OfReal)
+	DWeights(TColStd_Array1OfReal)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Section;
+		void Section (const gp_Pnt & FirstPnt,const gp_Vec & DFirstPnt,const gp_Pnt & Center,const gp_Vec & DCenter,const gp_Vec & Dir,const gp_Vec & DDir,const Standard_Real Angle,const Standard_Real DAngle,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColStd_Array1OfReal & Weights,TColStd_Array1OfReal & DWeights);
+		%feature("autodoc", "Args:
+	FirstPnt(gp_Pnt)
+	DFirstPnt(gp_Vec)
+	D2FirstPnt(gp_Vec)
+	Center(gp_Pnt)
+	DCenter(gp_Vec)
+	D2Center(gp_Vec)
+	Dir(gp_Vec)
+	DDir(gp_Vec)
+	D2Dir(gp_Vec)
+	Angle(Standard_Real)
+	DAngle(Standard_Real)
+	D2Angle(Standard_Real)
+	Poles(TColgp_Array1OfPnt)
+	DPoles(TColgp_Array1OfVec)
+	D2Poles(TColgp_Array1OfVec)
+	Weights(TColStd_Array1OfReal)
+	DWeights(TColStd_Array1OfReal)
+	D2Weights(TColStd_Array1OfReal)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Section;
+		void Section (const gp_Pnt & FirstPnt,const gp_Vec & DFirstPnt,const gp_Vec & D2FirstPnt,const gp_Pnt & Center,const gp_Vec & DCenter,const gp_Vec & D2Center,const gp_Vec & Dir,const gp_Vec & DDir,const gp_Vec & D2Dir,const Standard_Real Angle,const Standard_Real DAngle,const Standard_Real D2Angle,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColStd_Array1OfReal & Weights,TColStd_Array1OfReal & DWeights,TColStd_Array1OfReal & D2Weights);
+};
+
+
+%feature("shadow") GeomFill_QuasiAngularConvertor::~GeomFill_QuasiAngularConvertor %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_QuasiAngularConvertor {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_SectionLaw;
+class GeomFill_SectionLaw : public MMgt_TShared {
+	public:
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Poles(TColgp_Array1OfPnt)
+	Weigths(TColStd_Array1OfReal)
+
+Returns:
+	virtual Standard_Boolean
+
+compute the section for v = param") D0;
+		virtual Standard_Boolean D0 (const Standard_Real Param,TColgp_Array1OfPnt & Poles,TColStd_Array1OfReal & Weigths);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Poles(TColgp_Array1OfPnt)
+	DPoles(TColgp_Array1OfVec)
+	Weigths(TColStd_Array1OfReal)
+	DWeigths(TColStd_Array1OfReal)
+
+Returns:
+	virtual Standard_Boolean
+
+compute the first  derivative in v direction  of the  
+          section for v =  param  
+ Warning : It used only for C1 or C2 aproximation") D1;
+		virtual Standard_Boolean D1 (const Standard_Real Param,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Poles(TColgp_Array1OfPnt)
+	DPoles(TColgp_Array1OfVec)
+	D2Poles(TColgp_Array1OfVec)
+	Weigths(TColStd_Array1OfReal)
+	DWeigths(TColStd_Array1OfReal)
+	D2Weigths(TColStd_Array1OfReal)
+
+Returns:
+	virtual Standard_Boolean
+
+compute the second derivative  in v direction of the  
+         section  for v = param  
+ Warning : It used only for C2 aproximation") D2;
+		virtual Standard_Boolean D2 (const Standard_Real Param,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths,TColStd_Array1OfReal & D2Weigths);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Handle_Geom_BSplineSurface
+
+give if possible an bspline Surface, like iso-v are the  
+         section.   If it is  not possible this  methode have to  
+         get an Null Surface. It is the default  implementation.") BSplineSurface;
+		virtual Handle_Geom_BSplineSurface BSplineSurface ();
+		%feature("autodoc", "Args:
+	NbPoles(Standard_Integer)
+	NbKnots(Standard_Integer)
+	Degree(Standard_Integer)
+
+Returns:
+	virtual void
+
+get the format of an  section") SectionShape;
+		virtual void SectionShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
+		%feature("autodoc", "Args:
+	TKnots(TColStd_Array1OfReal)
+
+Returns:
+	virtual void
+
+get the Knots of the section") Knots;
+		virtual void Knots (TColStd_Array1OfReal & TKnots);
+		%feature("autodoc", "Args:
+	TMults(TColStd_Array1OfInteger)
+
+Returns:
+	virtual void
+
+get the Multplicities of the section") Mults;
+		virtual void Mults (TColStd_Array1OfInteger & TMults);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Returns if the sections are rationnal or not") IsRational;
+		virtual Standard_Boolean IsRational ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Returns if the sections are periodic or not") IsUPeriodic;
+		virtual Standard_Boolean IsUPeriodic ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Returns if law is periodic or not") IsVPeriodic;
+		virtual Standard_Boolean IsVPeriodic ();
+		%feature("autodoc", "Args:
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual Standard_Integer
+
+Returns  the number  of  intervals for  continuity  
+         <S>.  
+         May be one if Continuity(me) >= <S>") NbIntervals;
+		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	T(TColStd_Array1OfReal)
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual void
+
+Stores in <T> the  parameters bounding the intervals  
+         of continuity <S>.  
+ 
+         The array must provide  enough room to  accomodate  
+         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+		virtual void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+Sets the bounds of the parametric interval on  
+         the function  
+         This determines the derivatives in these values if the  
+         function is not Cn.") SetInterval;
+		virtual void SetInterval (const Standard_Real First,const Standard_Real Last);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+Gets the bounds of the parametric interval on  
+         the function") GetInterval;
+		virtual void GetInterval (Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+Gets the bounds of the function parametric domain.  
+ Warning: This domain it is  not modified by the  
+         SetValue method") GetDomain;
+		virtual void GetDomain (Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	BoundTol(Standard_Real)
+	SurfTol(Standard_Real)
+	AngleTol(Standard_Real)
+	Tol3d(TColStd_Array1OfReal)
+
+Returns:
+	virtual void
+
+Returns the tolerances associated at each poles to  
+         reach  in approximation, to satisfy: BoundTol error  
+         at the   Boundary  AngleTol tangent error  at  the  
+         Boundary  (in radian)  SurfTol   error inside the  
+         surface.") GetTolerance;
+		virtual void GetTolerance (const Standard_Real BoundTol,const Standard_Real SurfTol,const Standard_Real AngleTol,TColStd_Array1OfReal & Tol3d);
+		%feature("autodoc", "Args:
+	Tol3d(Standard_Real)
+	Tol2d(Standard_Real)
+
+Returns:
+	virtual void
+
+Is  usefull, if (me)  have to run  numerical  
+         algorithm  to perform D0,  D1 or D2  
+The default implementation make nothing.") SetTolerance;
+		virtual void SetTolerance (const Standard_Real Tol3d,const Standard_Real Tol2d);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual gp_Pnt
+
+Get the barycentre of Surface.  
+         An   very  poor estimation is sufficent.  
+         This information is usefull to perform well  
+         conditioned rational approximation.  
+ Warning: Used only if <self> IsRational") BarycentreOfSurf;
+		virtual gp_Pnt BarycentreOfSurf ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Real
+
+Returns the   length of the greater section. This  
+         information is usefull to G1's control.  
+ Warning: With an little value, approximation can be slower.") MaximalSection;
+		virtual Standard_Real MaximalSection ();
+		%feature("autodoc", "Args:
+	Weigths(TColStd_Array1OfReal)
+
+Returns:
+	virtual void
+
+Compute the minimal value of weight for each poles  
+         in all  sections.  
+         This information is  usefull to control error  
+         in rational approximation.  
+ Warning: Used only if <self> IsRational") GetMinimalWeight;
+		virtual void GetMinimalWeight (TColStd_Array1OfReal & Weigths);
+		%feature("autodoc", "Args:
+	Error(Standard_Real)
+
+Returns:
+	virtual Standard_Boolean
+
+Say if all sections are equals") IsConstant;
+		virtual Standard_Boolean IsConstant (Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Handle_Geom_Curve
+
+Return a  copy of the  constant Section,  if me  
+         IsConstant") ConstantSection;
+		virtual Handle_Geom_Curve ConstantSection ();
+		%feature("autodoc", "Args:
+	Error(Standard_Real)
+
+Returns:
+	virtual Standard_Boolean
+
+Returns True if all section  are circle, with same  
+         plane,same center and  linear  radius  evolution  
+         Return False by Default.") IsConicalLaw;
+		virtual Standard_Boolean IsConicalLaw (Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+
+Returns:
+	virtual Handle_Geom_Curve
+
+Return the circle section  at parameter <Param>, if  
+         <self> a  IsConicalLaw") CirclSection;
+		virtual Handle_Geom_Curve CirclSection (const Standard_Real Param);
+};
+
+
+%feature("shadow") GeomFill_SectionLaw::~GeomFill_SectionLaw %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_SectionLaw {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_SectionLaw {
+	Handle_GeomFill_SectionLaw GetHandle() {
+	return *(Handle_GeomFill_SectionLaw*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_SectionLaw;
+class Handle_GeomFill_SectionLaw : public Handle_MMgt_TShared {
+
+    public:
+        // constructors
+        Handle_GeomFill_SectionLaw();
+        Handle_GeomFill_SectionLaw(const Handle_GeomFill_SectionLaw &aHandle);
+        Handle_GeomFill_SectionLaw(const GeomFill_SectionLaw *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_SectionLaw DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_SectionLaw {
+    GeomFill_SectionLaw* GetObject() {
+    return (GeomFill_SectionLaw*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_SectionLaw::~Handle_GeomFill_SectionLaw %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_SectionLaw {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_SectionPlacement;
+class GeomFill_SectionPlacement {
+	public:
+		%feature("autodoc", "Args:
+	L(Handle_GeomFill_LocationLaw)
+	Section(Handle_Geom_Geometry)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_SectionPlacement;
+		 GeomFill_SectionPlacement (const Handle_GeomFill_LocationLaw & L,const Handle_Geom_Geometry & Section);
+		%feature("autodoc", "Args:
+	L(Handle_GeomFill_LocationLaw)
+
+Returns:
+	None
+
+To change the section Law") SetLocation;
+		void SetLocation (const Handle_GeomFill_LocationLaw & L);
+		%feature("autodoc", "Args:
+	Tol(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Perform;
+		void Perform (const Standard_Real Tol);
+		%feature("autodoc", "Args:
+	Path(Handle_Adaptor3d_HCurve)
+	Tol(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Perform;
+		void Perform (const Handle_Adaptor3d_HCurve & Path,const Standard_Real Tol);
+		%feature("autodoc", "Args:
+	ParamOnPath(Standard_Real)
+	Tol(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Perform;
+		void Perform (const Standard_Real ParamOnPath,const Standard_Real Tol);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Boolean
+
+No detailed docstring for this function.") IsDone;
+		Standard_Boolean IsDone ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Real
+
+No detailed docstring for this function.") ParameterOnPath;
+		Standard_Real ParameterOnPath ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Real
+
+No detailed docstring for this function.") ParameterOnSection;
+		Standard_Real ParameterOnSection ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Real
+
+No detailed docstring for this function.") Distance;
+		Standard_Real Distance ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Real
+
+No detailed docstring for this function.") Angle;
+		Standard_Real Angle ();
+		%feature("autodoc", "Args:
+	WithTranslation(Standard_Boolean)
+	WithCorrection(Standard_Boolean)=Standard_False
+
+Returns:
+	gp_Trsf
+
+No detailed docstring for this function.") Transformation;
+		gp_Trsf Transformation (const Standard_Boolean WithTranslation,const Standard_Boolean WithCorrection = Standard_False);
+		%feature("autodoc", "Args:
+	WithTranslation(Standard_Boolean)
+
+Returns:
+	Handle_Geom_Curve
+
+Compute the Section, in the coordinate syteme given by  
+         the Location Law.  
+         If <WithTranslation> contact beetween  
+         <Section> and <Path> is forced.") Section;
+		Handle_Geom_Curve Section (const Standard_Boolean WithTranslation);
+		%feature("autodoc", "Args:
+	WithTranslation(Standard_Boolean)
+
+Returns:
+	Handle_Geom_Curve
+
+Compute the Section, in the coordinate syteme given by  
+         the Location Law.  
+         To have the Normal to section equal to the Location  
+         Law Normal.  If <WithTranslation> contact beetween  
+         <Section> and <Path> is forced.") ModifiedSection;
+		Handle_Geom_Curve ModifiedSection (const Standard_Boolean WithTranslation);
+};
+
+
+%feature("shadow") GeomFill_SectionPlacement::~GeomFill_SectionPlacement %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_SectionPlacement {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_SequenceNodeOfSequenceOfAx2;
+class GeomFill_SequenceNodeOfSequenceOfAx2 : public TCollection_SeqNode {
+	public:
+		%feature("autodoc", "Args:
+	I(gp_Ax2)
+	n(TCollection_SeqNodePtr)
+	p(TCollection_SeqNodePtr)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_SequenceNodeOfSequenceOfAx2;
+		 GeomFill_SequenceNodeOfSequenceOfAx2 (const gp_Ax2 & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	gp_Ax2
+
+No detailed docstring for this function.") Value;
+		gp_Ax2 & Value ();
+};
+
+
+%feature("shadow") GeomFill_SequenceNodeOfSequenceOfAx2::~GeomFill_SequenceNodeOfSequenceOfAx2 %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_SequenceNodeOfSequenceOfAx2 {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_SequenceNodeOfSequenceOfAx2 {
+	Handle_GeomFill_SequenceNodeOfSequenceOfAx2 GetHandle() {
+	return *(Handle_GeomFill_SequenceNodeOfSequenceOfAx2*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_SequenceNodeOfSequenceOfAx2;
+class Handle_GeomFill_SequenceNodeOfSequenceOfAx2 : public Handle_TCollection_SeqNode {
+
+    public:
+        // constructors
+        Handle_GeomFill_SequenceNodeOfSequenceOfAx2();
+        Handle_GeomFill_SequenceNodeOfSequenceOfAx2(const Handle_GeomFill_SequenceNodeOfSequenceOfAx2 &aHandle);
+        Handle_GeomFill_SequenceNodeOfSequenceOfAx2(const GeomFill_SequenceNodeOfSequenceOfAx2 *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_SequenceNodeOfSequenceOfAx2 DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_SequenceNodeOfSequenceOfAx2 {
+    GeomFill_SequenceNodeOfSequenceOfAx2* GetObject() {
+    return (GeomFill_SequenceNodeOfSequenceOfAx2*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_SequenceNodeOfSequenceOfAx2::~Handle_GeomFill_SequenceNodeOfSequenceOfAx2 %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_SequenceNodeOfSequenceOfAx2 {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_SequenceNodeOfSequenceOfTrsf;
+class GeomFill_SequenceNodeOfSequenceOfTrsf : public TCollection_SeqNode {
+	public:
+		%feature("autodoc", "Args:
+	I(gp_Trsf)
+	n(TCollection_SeqNodePtr)
+	p(TCollection_SeqNodePtr)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_SequenceNodeOfSequenceOfTrsf;
+		 GeomFill_SequenceNodeOfSequenceOfTrsf (const gp_Trsf & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	gp_Trsf
+
+No detailed docstring for this function.") Value;
+		gp_Trsf & Value ();
+};
+
+
+%feature("shadow") GeomFill_SequenceNodeOfSequenceOfTrsf::~GeomFill_SequenceNodeOfSequenceOfTrsf %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_SequenceNodeOfSequenceOfTrsf {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_SequenceNodeOfSequenceOfTrsf {
+	Handle_GeomFill_SequenceNodeOfSequenceOfTrsf GetHandle() {
+	return *(Handle_GeomFill_SequenceNodeOfSequenceOfTrsf*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_SequenceNodeOfSequenceOfTrsf;
+class Handle_GeomFill_SequenceNodeOfSequenceOfTrsf : public Handle_TCollection_SeqNode {
+
+    public:
+        // constructors
+        Handle_GeomFill_SequenceNodeOfSequenceOfTrsf();
+        Handle_GeomFill_SequenceNodeOfSequenceOfTrsf(const Handle_GeomFill_SequenceNodeOfSequenceOfTrsf &aHandle);
+        Handle_GeomFill_SequenceNodeOfSequenceOfTrsf(const GeomFill_SequenceNodeOfSequenceOfTrsf *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_SequenceNodeOfSequenceOfTrsf DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_SequenceNodeOfSequenceOfTrsf {
+    GeomFill_SequenceNodeOfSequenceOfTrsf* GetObject() {
+    return (GeomFill_SequenceNodeOfSequenceOfTrsf*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_SequenceNodeOfSequenceOfTrsf::~Handle_GeomFill_SequenceNodeOfSequenceOfTrsf %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_SequenceNodeOfSequenceOfTrsf {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_SequenceOfAx2;
+class GeomFill_SequenceOfAx2 : public TCollection_BaseSequence {
+	public:
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_SequenceOfAx2;
+		 GeomFill_SequenceOfAx2 ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") Clear;
+		void Clear ();
+		%feature("autodoc", "Args:
+	Other(GeomFill_SequenceOfAx2)
+
+Returns:
+	GeomFill_SequenceOfAx2
+
+No detailed docstring for this function.") Assign;
+		const GeomFill_SequenceOfAx2 & Assign (const GeomFill_SequenceOfAx2 & Other);
+		%feature("autodoc", "Args:
+	Other(GeomFill_SequenceOfAx2)
+
+Returns:
+	GeomFill_SequenceOfAx2
+
+No detailed docstring for this function.") operator=;
+		const GeomFill_SequenceOfAx2 & operator = (const GeomFill_SequenceOfAx2 & Other);
+		%feature("autodoc", "Args:
+	T(gp_Ax2)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Append;
+		void Append (const gp_Ax2 & T);
+		%feature("autodoc", "Args:
+	S(GeomFill_SequenceOfAx2)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Append;
+		void Append (GeomFill_SequenceOfAx2 & S);
+		%feature("autodoc", "Args:
+	T(gp_Ax2)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Prepend;
+		void Prepend (const gp_Ax2 & T);
+		%feature("autodoc", "Args:
+	S(GeomFill_SequenceOfAx2)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Prepend;
+		void Prepend (GeomFill_SequenceOfAx2 & S);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+	T(gp_Ax2)
+
+Returns:
+	None
+
+No detailed docstring for this function.") InsertBefore;
+		void InsertBefore (const Standard_Integer Index,const gp_Ax2 & T);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+	S(GeomFill_SequenceOfAx2)
+
+Returns:
+	None
+
+No detailed docstring for this function.") InsertBefore;
+		void InsertBefore (const Standard_Integer Index,GeomFill_SequenceOfAx2 & S);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+	T(gp_Ax2)
+
+Returns:
+	None
+
+No detailed docstring for this function.") InsertAfter;
+		void InsertAfter (const Standard_Integer Index,const gp_Ax2 & T);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+	S(GeomFill_SequenceOfAx2)
+
+Returns:
+	None
+
+No detailed docstring for this function.") InsertAfter;
+		void InsertAfter (const Standard_Integer Index,GeomFill_SequenceOfAx2 & S);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	gp_Ax2
+
+No detailed docstring for this function.") First;
+		const gp_Ax2 & First ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	gp_Ax2
+
+No detailed docstring for this function.") Last;
+		const gp_Ax2 & Last ();
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+	Sub(GeomFill_SequenceOfAx2)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Split;
+		void Split (const Standard_Integer Index,GeomFill_SequenceOfAx2 & Sub);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+
+Returns:
+	gp_Ax2
+
+No detailed docstring for this function.") Value;
+		const gp_Ax2 & Value (const Standard_Integer Index);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+	I(gp_Ax2)
+
+Returns:
+	None
+
+No detailed docstring for this function.") SetValue;
+		void SetValue (const Standard_Integer Index,const gp_Ax2 & I);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+
+Returns:
+	gp_Ax2
+
+No detailed docstring for this function.") ChangeValue;
+		gp_Ax2 & ChangeValue (const Standard_Integer Index);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Remove;
+		void Remove (const Standard_Integer Index);
+		%feature("autodoc", "Args:
+	FromIndex(Standard_Integer)
+	ToIndex(Standard_Integer)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Remove;
+		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
+};
+
+
+%feature("shadow") GeomFill_SequenceOfAx2::~GeomFill_SequenceOfAx2 %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_SequenceOfAx2 {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_SequenceOfTrsf;
+class GeomFill_SequenceOfTrsf : public TCollection_BaseSequence {
+	public:
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_SequenceOfTrsf;
+		 GeomFill_SequenceOfTrsf ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") Clear;
+		void Clear ();
+		%feature("autodoc", "Args:
+	Other(GeomFill_SequenceOfTrsf)
+
+Returns:
+	GeomFill_SequenceOfTrsf
+
+No detailed docstring for this function.") Assign;
+		const GeomFill_SequenceOfTrsf & Assign (const GeomFill_SequenceOfTrsf & Other);
+		%feature("autodoc", "Args:
+	Other(GeomFill_SequenceOfTrsf)
+
+Returns:
+	GeomFill_SequenceOfTrsf
+
+No detailed docstring for this function.") operator=;
+		const GeomFill_SequenceOfTrsf & operator = (const GeomFill_SequenceOfTrsf & Other);
+		%feature("autodoc", "Args:
+	T(gp_Trsf)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Append;
+		void Append (const gp_Trsf & T);
+		%feature("autodoc", "Args:
+	S(GeomFill_SequenceOfTrsf)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Append;
+		void Append (GeomFill_SequenceOfTrsf & S);
+		%feature("autodoc", "Args:
+	T(gp_Trsf)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Prepend;
+		void Prepend (const gp_Trsf & T);
+		%feature("autodoc", "Args:
+	S(GeomFill_SequenceOfTrsf)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Prepend;
+		void Prepend (GeomFill_SequenceOfTrsf & S);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+	T(gp_Trsf)
+
+Returns:
+	None
+
+No detailed docstring for this function.") InsertBefore;
+		void InsertBefore (const Standard_Integer Index,const gp_Trsf & T);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+	S(GeomFill_SequenceOfTrsf)
+
+Returns:
+	None
+
+No detailed docstring for this function.") InsertBefore;
+		void InsertBefore (const Standard_Integer Index,GeomFill_SequenceOfTrsf & S);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+	T(gp_Trsf)
+
+Returns:
+	None
+
+No detailed docstring for this function.") InsertAfter;
+		void InsertAfter (const Standard_Integer Index,const gp_Trsf & T);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+	S(GeomFill_SequenceOfTrsf)
+
+Returns:
+	None
+
+No detailed docstring for this function.") InsertAfter;
+		void InsertAfter (const Standard_Integer Index,GeomFill_SequenceOfTrsf & S);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	gp_Trsf
+
+No detailed docstring for this function.") First;
+		const gp_Trsf & First ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	gp_Trsf
+
+No detailed docstring for this function.") Last;
+		const gp_Trsf & Last ();
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+	Sub(GeomFill_SequenceOfTrsf)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Split;
+		void Split (const Standard_Integer Index,GeomFill_SequenceOfTrsf & Sub);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+
+Returns:
+	gp_Trsf
+
+No detailed docstring for this function.") Value;
+		const gp_Trsf & Value (const Standard_Integer Index);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+	I(gp_Trsf)
+
+Returns:
+	None
+
+No detailed docstring for this function.") SetValue;
+		void SetValue (const Standard_Integer Index,const gp_Trsf & I);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+
+Returns:
+	gp_Trsf
+
+No detailed docstring for this function.") ChangeValue;
+		gp_Trsf & ChangeValue (const Standard_Integer Index);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Remove;
+		void Remove (const Standard_Integer Index);
+		%feature("autodoc", "Args:
+	FromIndex(Standard_Integer)
+	ToIndex(Standard_Integer)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Remove;
+		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
+};
+
+
+%feature("shadow") GeomFill_SequenceOfTrsf::~GeomFill_SequenceOfTrsf %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_SequenceOfTrsf {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_SnglrFunc;
+class GeomFill_SnglrFunc : public Adaptor3d_Curve {
+	public:
+		%feature("autodoc", "Args:
+	HC(Handle_Adaptor3d_HCurve)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_SnglrFunc;
+		 GeomFill_SnglrFunc (const Handle_Adaptor3d_HCurve & HC);
+		%feature("autodoc", "Args:
+	Ratio(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") SetRatio;
+		void SetRatio (const Standard_Real Ratio);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Real
+
+No detailed docstring for this function.") FirstParameter;
+		Standard_Real FirstParameter ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Real
+
+No detailed docstring for this function.") LastParameter;
+		Standard_Real LastParameter ();
+		%feature("autodoc", "Args:
+	S(GeomAbs_Shape)
+
+Returns:
+	Standard_Integer
+
+Returns  the number  of  intervals for  continuity  
+         <S>. May be one if Continuity(me) >= <S>") NbIntervals;
+		Standard_Integer NbIntervals (const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	T(TColStd_Array1OfReal)
+	S(GeomAbs_Shape)
+
+Returns:
+	None
+
+Stores in <T> the  parameters bounding the intervals  
+         of continuity <S>.  
+ 
+         The array must provide  enough room to  accomodate  
+         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+		void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	U(Standard_Real)
+
+Returns:
+	gp_Pnt
+
+Computes the point of parameter U on the curve.") Value;
+		gp_Pnt Value (const Standard_Real U);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Boolean
+
+No detailed docstring for this function.") IsPeriodic;
+		Standard_Boolean IsPeriodic ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Real
+
+No detailed docstring for this function.") Period;
+		Standard_Real Period ();
+		%feature("autodoc", "Args:
+	U(Standard_Real)
+	P(gp_Pnt)
+
+Returns:
+	None
+
+Computes the point of parameter U on the curve.") D0;
+		void D0 (const Standard_Real U,gp_Pnt & P);
+		%feature("autodoc", "Args:
+	U(Standard_Real)
+	P(gp_Pnt)
+	V(gp_Vec)
+
+Returns:
+	None
+
+Computes the point of parameter U on the curve with its  
+ first derivative.  Raised if the continuity of the current interval  
+ is not C1.") D1;
+		void D1 (const Standard_Real U,gp_Pnt & P,gp_Vec & V);
+		%feature("autodoc", "Args:
+	U(Standard_Real)
+	P(gp_Pnt)
+	V1(gp_Vec)
+	V2(gp_Vec)
+
+Returns:
+	None
+
+Returns the point P of parameter U, the first and second  
+ derivatives V1 and V2.  Raised if the continuity of the current interval  
+ is not C2.") D2;
+		void D2 (const Standard_Real U,gp_Pnt & P,gp_Vec & V1,gp_Vec & V2);
+		%feature("autodoc", "Args:
+	U(Standard_Real)
+	P(gp_Pnt)
+	V1(gp_Vec)
+	V2(gp_Vec)
+	V3(gp_Vec)
+
+Returns:
+	None
+
+Returns the point P of parameter U, the first, the second  
+ and the third derivative.  Raised if the continuity of the current interval  
+ is not C1.") D3;
+		void D3 (const Standard_Real U,gp_Pnt & P,gp_Vec & V1,gp_Vec & V2,gp_Vec & V3);
+		%feature("autodoc", "Args:
+	U(Standard_Real)
+	N(Standard_Integer)
+
+Returns:
+	gp_Vec
+
+The returned vector gives the value of the derivative for the  
+ order of derivation N.  Raised if N < 1.") DN;
+		gp_Vec DN (const Standard_Real U,const Standard_Integer N);
+		%feature("autodoc", "Args:
+	R3d(Standard_Real)
+
+Returns:
+	Standard_Real
+
+Returns the parametric  resolution corresponding  
+        to the real space resolution <R3d>.") Resolution;
+		Standard_Real Resolution (const Standard_Real R3d);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	GeomAbs_CurveType
+
+Returns  the  type of the   curve  in the  current  
+         interval :   Line,   Circle,   Ellipse, Hyperbola,  
+         Parabola, BezierCurve, BSplineCurve, OtherCurve.") GetType;
+		GeomAbs_CurveType GetType ();
+};
+
+
+%feature("shadow") GeomFill_SnglrFunc::~GeomFill_SnglrFunc %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_SnglrFunc {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_Sweep;
+class GeomFill_Sweep {
+	public:
+		%feature("autodoc", "Args:
+	Location(Handle_GeomFill_LocationLaw)
+	WithKpart(Standard_Boolean)=Standard_True
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Sweep;
+		 GeomFill_Sweep (const Handle_GeomFill_LocationLaw & Location,const Standard_Boolean WithKpart = Standard_True);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+	SectionFirst(Standard_Real)
+	SectionLast(Standard_Real)
+
+Returns:
+	None
+
+Set parametric information  
+         [<First>, <Last>] Sets the parametric bound of the  
+                 sweeping surface to build.  
+          <SectionFirst>, <SectionLast> gives coresponding  
+          bounds parameter on the section law of <First> and <Last>  
+ 
+          V-Iso on Sweeping Surface S(u,v) is defined by  
+          Location(v) and Section(w) where  
+          w = SectionFirst + (v - First) / (Last-First)  
+            * (SectionLast - SectionFirst)  
+ 
+          By default w = v, and First and Last are given by  
+          First and Last parameter stored in LocationLaw.") SetDomain;
+		void SetDomain (const Standard_Real First,const Standard_Real Last,const Standard_Real SectionFirst,const Standard_Real SectionLast);
+		%feature("autodoc", "Args:
+	Tol3d(Standard_Real)
+	BoundTol(Standard_Real)=1.0
+	Tol2d(Standard_Real)=1.0e-5
+	TolAngular(Standard_Real)=1.0
+
+Returns:
+	None
+
+Set Approximation Tolerance  
+   Tol3d : Tolerance to surface approximation  
+   Tol2d : Tolerance used to perform curve approximation  
+           Normaly the 2d curve are approximated with a  
+           tolerance given by the resolution method define in  
+           <LocationLaw> but if this tolerance is too large Tol2d  
+           is used.  
+   TolAngular : Tolerance (in radian) to control the angle  
+                beetween tangents on the section law and  
+                tangent of iso-v on approximed surface") SetTolerance;
+		void SetTolerance (const Standard_Real Tol3d,const Standard_Real BoundTol = 1.0,const Standard_Real Tol2d = 1.0e-5,const Standard_Real TolAngular = 1.0);
+		%feature("autodoc", "Args:
+	ForceApproxC1(Standard_Boolean)
+
+Returns:
+	None
+
+Set the flag that indicates attempt to approximate  
+         a C1-continuous surface if a swept surface proved  
+         to be C0.") SetForceApproxC1;
+		void SetForceApproxC1 (const Standard_Boolean ForceApproxC1);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Boolean
+
+returns true if sections are U-Iso  
+This can be produce in some cases when <WithKpart> is True.") ExchangeUV;
+		Standard_Boolean ExchangeUV ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Boolean
+
+returns true if Parametrisation sens in U is inverse of  
+         parametrisation sens of section (or of path if ExchangeUV)") UReversed;
+		Standard_Boolean UReversed ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Boolean
+
+returns true if Parametrisation sens in V is inverse of  
+         parametrisation sens of path (or of section if ExchangeUV)") VReversed;
+		Standard_Boolean VReversed ();
+		%feature("autodoc", "Args:
+	Section(Handle_GeomFill_SectionLaw)
+	Methode(GeomFill_ApproxStyle)=GeomFill_Location
+	Continuity(GeomAbs_Shape)=GeomAbs_C2
+	Degmax(Standard_Integer)=10
+	Segmax(Standard_Integer)=30
+
+Returns:
+	None
+
+Build the Sweeep  Surface  
+   ApproxStyle defines Approximation Strategy  
+   - GeomFill_Section : The composed Function : Location X Section  
+                        is directly approximed.  
+   - GeomFill_Location : The location law is approximed, and the  
+                         SweepSurface is build algebric composition  
+                         of approximed location law and section law  
+                         This option is Ok, if Section.Surface() methode  
+                         is effective.  
+   Continuity : The continuity in v waiting on the surface  
+   Degmax     : The maximum degree in v requiered on the surface  
+   Segmax     : The maximum number of span in v requiered on  
+                the surface  
+ 
+     raise If Domain are infinite or Profile not Setted.") Build;
+		void Build (const Handle_GeomFill_SectionLaw & Section,const GeomFill_ApproxStyle Methode = GeomFill_Location,const GeomAbs_Shape Continuity = GeomAbs_C2,const Standard_Integer Degmax = 10,const Standard_Integer Segmax = 30);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Boolean
+
+Tells if the Surface is Buildt.") IsDone;
+		Standard_Boolean IsDone ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Real
+
+Gets the Approximation  error.") ErrorOnSurface;
+		Standard_Real ErrorOnSurface ();
+		%feature("autodoc", "Args:
+	IsFirst(Standard_Boolean)
+	UError(Standard_Real)
+	VError(Standard_Real)
+
+Returns:
+	None
+
+Gets the Approximation  error.") ErrorOnRestriction;
+		void ErrorOnRestriction (const Standard_Boolean IsFirst,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	IndexOfTrace(Standard_Integer)
+	UError(Standard_Real)
+	VError(Standard_Real)
+
+Returns:
+	None
+
+Gets the Approximation error.") ErrorOnTrace;
+		void ErrorOnTrace (const Standard_Integer IndexOfTrace,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Handle_Geom_Surface
+
+No detailed docstring for this function.") Surface;
+		Handle_Geom_Surface Surface ();
+		%feature("autodoc", "Args:
+	IsFirst(Standard_Boolean)
+
+Returns:
+	Handle_Geom2d_Curve
+
+No detailed docstring for this function.") Restriction;
+		Handle_Geom2d_Curve Restriction (const Standard_Boolean IsFirst);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Integer
+
+No detailed docstring for this function.") NumberOfTrace;
+		Standard_Integer NumberOfTrace ();
+		%feature("autodoc", "Args:
+	IndexOfTrace(Standard_Integer)
+
+Returns:
+	Handle_Geom2d_Curve
+
+No detailed docstring for this function.") Trace;
+		Handle_Geom2d_Curve Trace (const Standard_Integer IndexOfTrace);
+};
+
+
+%feature("shadow") GeomFill_Sweep::~GeomFill_Sweep %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_Sweep {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_SweepFunction;
+class GeomFill_SweepFunction : public Approx_SweepFunction {
+	public:
+		%feature("autodoc", "Args:
+	Section(Handle_GeomFill_SectionLaw)
+	Location(Handle_GeomFill_LocationLaw)
+	FirstParameter(Standard_Real)
+	FirstParameterOnS(Standard_Real)
+	RatioParameterOnS(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_SweepFunction;
+		 GeomFill_SweepFunction (const Handle_GeomFill_SectionLaw & Section,const Handle_GeomFill_LocationLaw & Location,const Standard_Real FirstParameter,const Standard_Real FirstParameterOnS,const Standard_Real RatioParameterOnS);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	First(Standard_Real)
+	Last(Standard_Real)
+	Poles(TColgp_Array1OfPnt)
+	Poles2d(TColgp_Array1OfPnt2d)
+	Weigths(TColStd_Array1OfReal)
+
+Returns:
+	virtual Standard_Boolean
+
+compute the section for v = param") D0;
+		virtual Standard_Boolean D0 (const Standard_Real Param,const Standard_Real First,const Standard_Real Last,TColgp_Array1OfPnt & Poles,TColgp_Array1OfPnt2d & Poles2d,TColStd_Array1OfReal & Weigths);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	First(Standard_Real)
+	Last(Standard_Real)
+	Poles(TColgp_Array1OfPnt)
+	DPoles(TColgp_Array1OfVec)
+	Poles2d(TColgp_Array1OfPnt2d)
+	DPoles2d(TColgp_Array1OfVec2d)
+	Weigths(TColStd_Array1OfReal)
+	DWeigths(TColStd_Array1OfReal)
+
+Returns:
+	virtual Standard_Boolean
+
+compute the first  derivative in v direction  of the  
+          section for v =  param") D1;
+		virtual Standard_Boolean D1 (const Standard_Real Param,const Standard_Real First,const Standard_Real Last,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	First(Standard_Real)
+	Last(Standard_Real)
+	Poles(TColgp_Array1OfPnt)
+	DPoles(TColgp_Array1OfVec)
+	D2Poles(TColgp_Array1OfVec)
+	Poles2d(TColgp_Array1OfPnt2d)
+	DPoles2d(TColgp_Array1OfVec2d)
+	D2Poles2d(TColgp_Array1OfVec2d)
+	Weigths(TColStd_Array1OfReal)
+	DWeigths(TColStd_Array1OfReal)
+	D2Weigths(TColStd_Array1OfReal)
+
+Returns:
+	virtual Standard_Boolean
+
+compute the second derivative  in v direction of the  
+         section  for v = param") D2;
+		virtual Standard_Boolean D2 (const Standard_Real Param,const Standard_Real First,const Standard_Real Last,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColgp_Array1OfVec2d & D2Poles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths,TColStd_Array1OfReal & D2Weigths);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Integer
+
+get the number of 2d curves to  approximate.") Nb2dCurves;
+		virtual Standard_Integer Nb2dCurves ();
+		%feature("autodoc", "Args:
+	NbPoles(Standard_Integer)
+	NbKnots(Standard_Integer)
+	Degree(Standard_Integer)
+
+Returns:
+	virtual void
+
+get the format of an  section") SectionShape;
+		virtual void SectionShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
+		%feature("autodoc", "Args:
+	TKnots(TColStd_Array1OfReal)
+
+Returns:
+	virtual void
+
+get the Knots of the section") Knots;
+		virtual void Knots (TColStd_Array1OfReal & TKnots);
+		%feature("autodoc", "Args:
+	TMults(TColStd_Array1OfInteger)
+
+Returns:
+	virtual void
+
+get the Multplicities of the section") Mults;
+		virtual void Mults (TColStd_Array1OfInteger & TMults);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Returns if the section is rationnal or not") IsRational;
+		virtual Standard_Boolean IsRational ();
+		%feature("autodoc", "Args:
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual Standard_Integer
+
+Returns  the number  of  intervals for  continuity  
+         <S>. May be one if Continuity(me) >= <S>") NbIntervals;
+		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	T(TColStd_Array1OfReal)
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual void
+
+Stores in <T> the  parameters bounding the intervals  
+         of continuity <S>.  
+ 
+         The array must provide  enough room to  accomodate  
+         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+		virtual void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+Sets the bounds of the parametric interval on  
+         the function  
+         This determines the derivatives in these values if the  
+         function is not Cn.") SetInterval;
+		virtual void SetInterval (const Standard_Real First,const Standard_Real Last);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+	Tol(Standard_Real)
+	TolU(Standard_Real)
+	TolV(Standard_Real)
+
+Returns:
+	virtual void
+
+Returns the resolutions in the  sub-space 2d <Index>  
+         This information is usfull to find an good tolerance in  
+         2d approximation.  
+ Warning: Used only if Nb2dCurve > 0") Resolution;
+		virtual void Resolution (const Standard_Integer Index,const Standard_Real Tol,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	BoundTol(Standard_Real)
+	SurfTol(Standard_Real)
+	AngleTol(Standard_Real)
+	Tol3d(TColStd_Array1OfReal)
+
+Returns:
+	virtual void
+
+Returns the tolerance to reach in approximation  
+         to respecte  
+         BoundTol error at the Boundary  
+         AngleTol tangent error at the Boundary (in radian)  
+         SurfTol error inside the surface.") GetTolerance;
+		virtual void GetTolerance (const Standard_Real BoundTol,const Standard_Real SurfTol,const Standard_Real AngleTol,TColStd_Array1OfReal & Tol3d);
+		%feature("autodoc", "Args:
+	Tol3d(Standard_Real)
+	Tol2d(Standard_Real)
+
+Returns:
+	virtual void
+
+Is usfull, if (me) have to  be run numerical  
+          algorithme to perform D0, D1 or D2") SetTolerance;
+		virtual void SetTolerance (const Standard_Real Tol3d,const Standard_Real Tol2d);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual gp_Pnt
+
+Get    the   barycentre of   Surface.   An   very  poor  
+         estimation is sufficent. This information is usefull  
+         to perform well conditionned rational approximation.  
+ Warning: Used only if <self> IsRational") BarycentreOfSurf;
+		virtual gp_Pnt BarycentreOfSurf ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Real
+
+Returns the   length of the maximum section. This  
+         information is usefull to perform well conditionned rational  
+          approximation.") MaximalSection;
+		virtual Standard_Real MaximalSection ();
+		%feature("autodoc", "Args:
+	Weigths(TColStd_Array1OfReal)
+
+Returns:
+	virtual void
+
+Compute the minimal value of weight for each poles  
+         of all  sections.  This information is  usefull to  
+         perform well conditionned rational approximation.  
+ Warning: Used only if <self> IsRational") GetMinimalWeight;
+		virtual void GetMinimalWeight (TColStd_Array1OfReal & Weigths);
+};
+
+
+%feature("shadow") GeomFill_SweepFunction::~GeomFill_SweepFunction %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_SweepFunction {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_SweepFunction {
+	Handle_GeomFill_SweepFunction GetHandle() {
+	return *(Handle_GeomFill_SweepFunction*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_SweepFunction;
+class Handle_GeomFill_SweepFunction : public Handle_Approx_SweepFunction {
+
+    public:
+        // constructors
+        Handle_GeomFill_SweepFunction();
+        Handle_GeomFill_SweepFunction(const Handle_GeomFill_SweepFunction &aHandle);
+        Handle_GeomFill_SweepFunction(const GeomFill_SweepFunction *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_SweepFunction DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_SweepFunction {
+    GeomFill_SweepFunction* GetObject() {
+    return (GeomFill_SweepFunction*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_SweepFunction::~Handle_GeomFill_SweepFunction %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_SweepFunction {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_Tensor;
+class GeomFill_Tensor {
+	public:
+		%feature("autodoc", "Args:
+	NbRow(Standard_Integer)
+	NbCol(Standard_Integer)
+	NbMat(Standard_Integer)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Tensor;
+		 GeomFill_Tensor (const Standard_Integer NbRow,const Standard_Integer NbCol,const Standard_Integer NbMat);
+		%feature("autodoc", "Args:
+	InitialValue(Standard_Real)
+
+Returns:
+	None
+
+//!Initialize all the elements of a Tensor to InitialValue.") Init;
+		void Init (const Standard_Real InitialValue);
+		%feature("autodoc", "Args:
+	Row(Standard_Integer)
+	Col(Standard_Integer)
+	Mat(Standard_Integer)
+
+Returns:
+	Standard_Real
+
+accesses (in read or write mode) the value of index <Row>,  
+         <Col> and <Mat> of a Tensor.  
+         An exception is raised if <Row>, <Col> or <Mat> are not  
+         in the correct range.") Value;
+		const Standard_Real & Value (const Standard_Integer Row,const Standard_Integer Col,const Standard_Integer Mat);
+		%feature("autodoc", "Args:
+	Row(Standard_Integer)
+	Col(Standard_Integer)
+	Mat(Standard_Integer)
+
+Returns:
+	Standard_Real
+
+accesses (in read or write mode) the value of index <Row>,  
+         <Col> and <Mat> of a Tensor.  
+         An exception is raised if <Row>, <Col> or <Mat> are not  
+         in the correct range.") ChangeValue;
+		Standard_Real & ChangeValue (const Standard_Integer Row,const Standard_Integer Col,const Standard_Integer Mat);
+		%feature("autodoc", "Args:
+	Right(math_Vector)
+	Product(math_Matrix)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Multiply;
+		void Multiply (const math_Vector & Right,math_Matrix & Product);
+};
+
+
+%feature("shadow") GeomFill_Tensor::~GeomFill_Tensor %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_Tensor {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_TgtField;
+class GeomFill_TgtField : public MMgt_TShared {
+	public:
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+No detailed docstring for this function.") IsScalable;
+		virtual Standard_Boolean IsScalable ();
+		%feature("autodoc", "Args:
+	Func(Handle_Law_BSpline)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") Scale;
+		virtual void Scale (const Handle_Law_BSpline & Func);
+		%feature("autodoc", "Args:
+	W(Standard_Real)
+
+Returns:
+	virtual gp_Vec
+
+Computes  the value  of the    field of tangency    at  
+         parameter W.") Value;
+		virtual gp_Vec Value (const Standard_Real W);
+		%feature("autodoc", "Args:
+	W(Standard_Real)
+
+Returns:
+	virtual gp_Vec
+
+Computes the  derivative of  the field of  tangency at  
+         parameter W.") D1;
+		virtual gp_Vec D1 (const Standard_Real W);
+		%feature("autodoc", "Args:
+	W(Standard_Real)
+	V(gp_Vec)
+	DV(gp_Vec)
+
+Returns:
+	virtual void
+
+Computes the value and the  derivative of the field of  
+         tangency at parameter W.") D1;
+		virtual void D1 (const Standard_Real W,gp_Vec & V,gp_Vec & DV);
+};
+
+
+%feature("shadow") GeomFill_TgtField::~GeomFill_TgtField %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_TgtField {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_TgtField {
+	Handle_GeomFill_TgtField GetHandle() {
+	return *(Handle_GeomFill_TgtField*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_TgtField;
+class Handle_GeomFill_TgtField : public Handle_MMgt_TShared {
+
+    public:
+        // constructors
+        Handle_GeomFill_TgtField();
+        Handle_GeomFill_TgtField(const Handle_GeomFill_TgtField &aHandle);
+        Handle_GeomFill_TgtField(const GeomFill_TgtField *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_TgtField DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_TgtField {
+    GeomFill_TgtField* GetObject() {
+    return (GeomFill_TgtField*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_TgtField::~Handle_GeomFill_TgtField %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_TgtField {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_TrihedronLaw;
+class GeomFill_TrihedronLaw : public MMgt_TShared {
+	public:
+		%feature("autodoc", "Args:
+	C(Handle_Adaptor3d_HCurve)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") SetCurve;
+		virtual void SetCurve (const Handle_Adaptor3d_HCurve & C);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Handle_GeomFill_TrihedronLaw
+
+No detailed docstring for this function.") Copy;
+		virtual Handle_GeomFill_TrihedronLaw Copy ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual GeomFill_PipeError
+
+//!Give a status to the Law  
+        Returns PipeOk (default implementation)") ErrorStatus;
+		virtual GeomFill_PipeError ErrorStatus ();
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	Normal(gp_Vec)
+	BiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+compute Triedrhon on curve at parameter <Param>") D0;
+		virtual Standard_Boolean D0 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & Normal,gp_Vec & BiNormal);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	DTangent(gp_Vec)
+	Normal(gp_Vec)
+	DNormal(gp_Vec)
+	BiNormal(gp_Vec)
+	DBiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+compute Triedrhon and  derivative Trihedron  on curve  
+         at parameter <Param>  
+ Warning : It used only for C1 or C2 aproximation") D1;
+		virtual Standard_Boolean D1 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & DTangent,gp_Vec & Normal,gp_Vec & DNormal,gp_Vec & BiNormal,gp_Vec & DBiNormal);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	DTangent(gp_Vec)
+	D2Tangent(gp_Vec)
+	Normal(gp_Vec)
+	DNormal(gp_Vec)
+	D2Normal(gp_Vec)
+	BiNormal(gp_Vec)
+	DBiNormal(gp_Vec)
+	D2BiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+compute  Trihedron on curve  
+         first and seconde  derivatives.  
+ Warning : It used only for C2 aproximation") D2;
+		virtual Standard_Boolean D2 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & DTangent,gp_Vec & D2Tangent,gp_Vec & Normal,gp_Vec & DNormal,gp_Vec & D2Normal,gp_Vec & BiNormal,gp_Vec & DBiNormal,gp_Vec & D2BiNormal);
+		%feature("autodoc", "Args:
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual Standard_Integer
+
+Returns  the number  of  intervals for  continuity  
+         <S>.  
+         May be one if Continuity(me) >= <S>") NbIntervals;
+		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	T(TColStd_Array1OfReal)
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual void
+
+Stores in <T> the  parameters bounding the intervals  
+         of continuity <S>.  
+ 
+         The array must provide  enough room to  accomodate  
+         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+		virtual void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+Sets the bounds of the parametric interval on  
+         the function  
+         This determines the derivatives in these values if the  
+         function is not Cn.") SetInterval;
+		virtual void SetInterval (const Standard_Real First,const Standard_Real Last);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	None
+
+Gets the bounds of the parametric interval on  
+         the function") GetInterval;
+		void GetInterval (Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	ATangent(gp_Vec)
+	ANormal(gp_Vec)
+	ABiNormal(gp_Vec)
+
+Returns:
+	virtual void
+
+Get average value of M(t) and V(t) it is usfull to  
+         make fast approximation of rational  surfaces.") GetAverageLaw;
+		virtual void GetAverageLaw (gp_Vec & ATangent,gp_Vec & ANormal,gp_Vec & ABiNormal);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Say if the law is Constant") IsConstant;
+		virtual Standard_Boolean IsConstant ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Say if the law is defined, only by the 3d Geometry of  
+         the setted Curve  
+         Return False by Default.") IsOnlyBy3dCurve;
+		virtual Standard_Boolean IsOnlyBy3dCurve ();
+};
+
+
+%feature("shadow") GeomFill_TrihedronLaw::~GeomFill_TrihedronLaw %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_TrihedronLaw {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_TrihedronLaw {
+	Handle_GeomFill_TrihedronLaw GetHandle() {
+	return *(Handle_GeomFill_TrihedronLaw*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_TrihedronLaw;
+class Handle_GeomFill_TrihedronLaw : public Handle_MMgt_TShared {
+
+    public:
+        // constructors
+        Handle_GeomFill_TrihedronLaw();
+        Handle_GeomFill_TrihedronLaw(const Handle_GeomFill_TrihedronLaw &aHandle);
+        Handle_GeomFill_TrihedronLaw(const GeomFill_TrihedronLaw *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_TrihedronLaw DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_TrihedronLaw {
+    GeomFill_TrihedronLaw* GetObject() {
+    return (GeomFill_TrihedronLaw*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_TrihedronLaw::~Handle_GeomFill_TrihedronLaw %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_TrihedronLaw {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_BoundWithSurf;
+class GeomFill_BoundWithSurf : public GeomFill_Boundary {
+	public:
+		%feature("autodoc", "Args:
+	CurveOnSurf(Adaptor3d_CurveOnSurface)
+	Tol3d(Standard_Real)
+	Tolang(Standard_Real)
+
+Returns:
+	None
+
+Constructs a boundary object defined by the 3d curve CurveOnSurf.  
+The surface to be filled along this boundary will be in the  
+tolerance range defined by Tol3d.  
+What's more, at each point of CurveOnSurf, the angle  
+between the normal to the surface to be filled along this  
+boundary, and the normal to the surface on which  
+CurveOnSurf lies, must not be greater than TolAng.  
+This object is to be used as a boundary for a  
+GeomFill_ConstrainedFilling framework.  
+Warning  
+CurveOnSurf is an adapted curve, that is, an object  
+which is an interface between:  
+-   the services provided by a curve lying on a surface from the package Geom  
+-   and those required of the curve by the computation algorithm which uses it.  
+The adapted curve is created in the following way:  
+Handle_Geom_Surface mySurface = ... ;  
+Handle_Geom2d_Curve myParamCurve = ... ;  
+// where myParamCurve is a 2D curve in the parametric space of the surface mySurface  
+Handle_GeomAdaptor_HSurface  
+   Surface = new  
+GeomAdaptor_HSurface(mySurface);  
+Handle_Geom2dAdaptor_HCurve  
+   ParamCurve = new  
+Geom2dAdaptor_HCurve(myParamCurve);  
+CurveOnSurf = Adaptor3d_CurveOnSurface(ParamCurve,Surface);  
+The boundary is then constructed with the CurveOnSurf object:  
+Standard_Real Tol = ... ;  
+Standard_Real TolAng = ... ;  
+myBoundary =  GeomFill_BoundWithSurf (  
+CurveOnSurf, Tol, TolAng );") GeomFill_BoundWithSurf;
+		 GeomFill_BoundWithSurf (const Adaptor3d_CurveOnSurface & CurveOnSurf,const Standard_Real Tol3d,const Standard_Real Tolang);
+		%feature("autodoc", "Args:
+	U(Standard_Real)
+
+Returns:
+	gp_Pnt
+
+No detailed docstring for this function.") Value;
+		gp_Pnt Value (const Standard_Real U);
+		%feature("autodoc", "Args:
+	U(Standard_Real)
+	P(gp_Pnt)
+	V(gp_Vec)
+
+Returns:
+	None
+
+No detailed docstring for this function.") D1;
+		void D1 (const Standard_Real U,gp_Pnt & P,gp_Vec & V);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+No detailed docstring for this function.") HasNormals;
+		virtual Standard_Boolean HasNormals ();
+		%feature("autodoc", "Args:
+	U(Standard_Real)
+
+Returns:
+	virtual gp_Vec
+
+No detailed docstring for this function.") Norm;
+		virtual gp_Vec Norm (const Standard_Real U);
+		%feature("autodoc", "Args:
+	U(Standard_Real)
+	N(gp_Vec)
+	DN(gp_Vec)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") D1Norm;
+		virtual void D1Norm (const Standard_Real U,gp_Vec & N,gp_Vec & DN);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+	HasDF(Standard_Boolean)
+	HasDL(Standard_Boolean)
+	DF(Standard_Real)
+	DL(Standard_Real)
+	Rev(Standard_Boolean)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Reparametrize;
+		void Reparametrize (const Standard_Real First,const Standard_Real Last,const Standard_Boolean HasDF,const Standard_Boolean HasDL,const Standard_Real DF,const Standard_Real DL,const Standard_Boolean Rev);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Bounds;
+		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Boolean
+
+No detailed docstring for this function.") IsDegenerated;
+		Standard_Boolean IsDegenerated ();
+};
+
+
+%feature("shadow") GeomFill_BoundWithSurf::~GeomFill_BoundWithSurf %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_BoundWithSurf {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_BoundWithSurf {
+	Handle_GeomFill_BoundWithSurf GetHandle() {
+	return *(Handle_GeomFill_BoundWithSurf*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_BoundWithSurf;
+class Handle_GeomFill_BoundWithSurf : public Handle_GeomFill_Boundary {
+
+    public:
+        // constructors
+        Handle_GeomFill_BoundWithSurf();
+        Handle_GeomFill_BoundWithSurf(const Handle_GeomFill_BoundWithSurf &aHandle);
+        Handle_GeomFill_BoundWithSurf(const GeomFill_BoundWithSurf *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_BoundWithSurf DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_BoundWithSurf {
+    GeomFill_BoundWithSurf* GetObject() {
+    return (GeomFill_BoundWithSurf*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_BoundWithSurf::~Handle_GeomFill_BoundWithSurf %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_BoundWithSurf {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_ConstantBiNormal;
+class GeomFill_ConstantBiNormal : public GeomFill_TrihedronLaw {
+	public:
+		%feature("autodoc", "Args:
+	BiNormal(gp_Dir)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_ConstantBiNormal;
+		 GeomFill_ConstantBiNormal (const gp_Dir & BiNormal);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Handle_GeomFill_TrihedronLaw
+
+No detailed docstring for this function.") Copy;
+		virtual Handle_GeomFill_TrihedronLaw Copy ();
+		%feature("autodoc", "Args:
+	C(Handle_Adaptor3d_HCurve)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") SetCurve;
+		virtual void SetCurve (const Handle_Adaptor3d_HCurve & C);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	Normal(gp_Vec)
+	BiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+Computes Triedrhon on curve at parameter <Param>") D0;
+		virtual Standard_Boolean D0 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & Normal,gp_Vec & BiNormal);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	DTangent(gp_Vec)
+	Normal(gp_Vec)
+	DNormal(gp_Vec)
+	BiNormal(gp_Vec)
+	DBiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+Computes Triedrhon and  derivative Trihedron  on curve  
+         at parameter <Param>  
+ Warning : It used only for C1 or C2 aproximation") D1;
+		virtual Standard_Boolean D1 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & DTangent,gp_Vec & Normal,gp_Vec & DNormal,gp_Vec & BiNormal,gp_Vec & DBiNormal);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	DTangent(gp_Vec)
+	D2Tangent(gp_Vec)
+	Normal(gp_Vec)
+	DNormal(gp_Vec)
+	D2Normal(gp_Vec)
+	BiNormal(gp_Vec)
+	DBiNormal(gp_Vec)
+	D2BiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+compute  Trihedron on curve  
+         first and seconde  derivatives.  
+ Warning : It used only for C2 aproximation") D2;
+		virtual Standard_Boolean D2 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & DTangent,gp_Vec & D2Tangent,gp_Vec & Normal,gp_Vec & DNormal,gp_Vec & D2Normal,gp_Vec & BiNormal,gp_Vec & DBiNormal,gp_Vec & D2BiNormal);
+		%feature("autodoc", "Args:
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual Standard_Integer
+
+Returns  the number  of  intervals for  continuity  
+         <S>.  
+         May be one if Continuity(me) >= <S>") NbIntervals;
+		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	T(TColStd_Array1OfReal)
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual void
+
+Stores in <T> the  parameters bounding the intervals  
+         of continuity <S>.  
+ 
+         The array must provide  enough room to  accomodate  
+         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+		virtual void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	ATangent(gp_Vec)
+	ANormal(gp_Vec)
+	ABiNormal(gp_Vec)
+
+Returns:
+	virtual void
+
+Gets average value of Tangent(t) and Normal(t) it is usfull to  
+         make fast approximation of rational  surfaces.") GetAverageLaw;
+		virtual void GetAverageLaw (gp_Vec & ATangent,gp_Vec & ANormal,gp_Vec & ABiNormal);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Says if the law is Constant.") IsConstant;
+		virtual Standard_Boolean IsConstant ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Return True.") IsOnlyBy3dCurve;
+		virtual Standard_Boolean IsOnlyBy3dCurve ();
+};
+
+
+%feature("shadow") GeomFill_ConstantBiNormal::~GeomFill_ConstantBiNormal %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_ConstantBiNormal {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_ConstantBiNormal {
+	Handle_GeomFill_ConstantBiNormal GetHandle() {
+	return *(Handle_GeomFill_ConstantBiNormal*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_ConstantBiNormal;
+class Handle_GeomFill_ConstantBiNormal : public Handle_GeomFill_TrihedronLaw {
+
+    public:
+        // constructors
+        Handle_GeomFill_ConstantBiNormal();
+        Handle_GeomFill_ConstantBiNormal(const Handle_GeomFill_ConstantBiNormal &aHandle);
+        Handle_GeomFill_ConstantBiNormal(const GeomFill_ConstantBiNormal *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_ConstantBiNormal DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_ConstantBiNormal {
+    GeomFill_ConstantBiNormal* GetObject() {
+    return (GeomFill_ConstantBiNormal*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_ConstantBiNormal::~Handle_GeomFill_ConstantBiNormal %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_ConstantBiNormal {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_Coons;
+class GeomFill_Coons : public GeomFill_Filling {
+	public:
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Coons;
+		 GeomFill_Coons ();
+		%feature("autodoc", "Args:
+	P1(TColgp_Array1OfPnt)
+	P2(TColgp_Array1OfPnt)
+	P3(TColgp_Array1OfPnt)
+	P4(TColgp_Array1OfPnt)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Coons;
+		 GeomFill_Coons (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2,const TColgp_Array1OfPnt & P3,const TColgp_Array1OfPnt & P4);
+		%feature("autodoc", "Args:
+	P1(TColgp_Array1OfPnt)
+	P2(TColgp_Array1OfPnt)
+	P3(TColgp_Array1OfPnt)
+	P4(TColgp_Array1OfPnt)
+	W1(TColStd_Array1OfReal)
+	W2(TColStd_Array1OfReal)
+	W3(TColStd_Array1OfReal)
+	W4(TColStd_Array1OfReal)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Coons;
+		 GeomFill_Coons (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2,const TColgp_Array1OfPnt & P3,const TColgp_Array1OfPnt & P4,const TColStd_Array1OfReal & W1,const TColStd_Array1OfReal & W2,const TColStd_Array1OfReal & W3,const TColStd_Array1OfReal & W4);
+		%feature("autodoc", "Args:
+	P1(TColgp_Array1OfPnt)
+	P2(TColgp_Array1OfPnt)
+	P3(TColgp_Array1OfPnt)
+	P4(TColgp_Array1OfPnt)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2,const TColgp_Array1OfPnt & P3,const TColgp_Array1OfPnt & P4);
+		%feature("autodoc", "Args:
+	P1(TColgp_Array1OfPnt)
+	P2(TColgp_Array1OfPnt)
+	P3(TColgp_Array1OfPnt)
+	P4(TColgp_Array1OfPnt)
+	W1(TColStd_Array1OfReal)
+	W2(TColStd_Array1OfReal)
+	W3(TColStd_Array1OfReal)
+	W4(TColStd_Array1OfReal)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2,const TColgp_Array1OfPnt & P3,const TColgp_Array1OfPnt & P4,const TColStd_Array1OfReal & W1,const TColStd_Array1OfReal & W2,const TColStd_Array1OfReal & W3,const TColStd_Array1OfReal & W4);
+};
+
+
+%feature("shadow") GeomFill_Coons::~GeomFill_Coons %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_Coons {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_CorrectedFrenet;
+class GeomFill_CorrectedFrenet : public GeomFill_TrihedronLaw {
+	public:
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_CorrectedFrenet;
+		 GeomFill_CorrectedFrenet ();
+		%feature("autodoc", "Args:
+	ForEvaluation(Standard_Boolean)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_CorrectedFrenet;
+		 GeomFill_CorrectedFrenet (const Standard_Boolean ForEvaluation);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Handle_GeomFill_TrihedronLaw
+
+No detailed docstring for this function.") Copy;
+		virtual Handle_GeomFill_TrihedronLaw Copy ();
+		%feature("autodoc", "Args:
+	C(Handle_Adaptor3d_HCurve)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") SetCurve;
+		virtual void SetCurve (const Handle_Adaptor3d_HCurve & C);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") SetInterval;
+		virtual void SetInterval (const Standard_Real First,const Standard_Real Last);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	Normal(gp_Vec)
+	BiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+compute Triedrhon on curve at parameter <Param>") D0;
+		virtual Standard_Boolean D0 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & Normal,gp_Vec & BiNormal);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	DTangent(gp_Vec)
+	Normal(gp_Vec)
+	DNormal(gp_Vec)
+	BiNormal(gp_Vec)
+	DBiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+compute Triedrhon and  derivative Trihedron  on curve  
+         at parameter <Param>  
+ Warning : It used only for C1 or C2 aproximation") D1;
+		virtual Standard_Boolean D1 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & DTangent,gp_Vec & Normal,gp_Vec & DNormal,gp_Vec & BiNormal,gp_Vec & DBiNormal);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	DTangent(gp_Vec)
+	D2Tangent(gp_Vec)
+	Normal(gp_Vec)
+	DNormal(gp_Vec)
+	D2Normal(gp_Vec)
+	BiNormal(gp_Vec)
+	DBiNormal(gp_Vec)
+	D2BiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+compute  Trihedron on curve  
+         first and seconde  derivatives.  
+ Warning : It used only for C2 aproximation") D2;
+		virtual Standard_Boolean D2 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & DTangent,gp_Vec & D2Tangent,gp_Vec & Normal,gp_Vec & DNormal,gp_Vec & D2Normal,gp_Vec & BiNormal,gp_Vec & DBiNormal,gp_Vec & D2BiNormal);
+		%feature("autodoc", "Args:
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual Standard_Integer
+
+Returns  the number  of  intervals for  continuity  
+         <S>.  
+         May be one if Continuity(me) >= <S>") NbIntervals;
+		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	T(TColStd_Array1OfReal)
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual void
+
+Stores in <T> the  parameters bounding the intervals  
+         of continuity <S>.  
+ 
+         The array must provide  enough room to  accomodate  
+         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+		virtual void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	GeomFill_Trihedron
+
+Tries to define the best trihedron mode  
+         for the curve. It can be:  
+         - Frenet  
+         - CorrectedFrenet  
+         - DiscreteTrihedron  
+         Warning: the CorrectedFrenet must be constructed  
+         with option ForEvaluation = True,  
+         the curve must be set by method SetCurve.") EvaluateBestMode;
+		GeomFill_Trihedron EvaluateBestMode ();
+		%feature("autodoc", "Args:
+	ATangent(gp_Vec)
+	ANormal(gp_Vec)
+	ABiNormal(gp_Vec)
+
+Returns:
+	virtual void
+
+Get average value of Tangent(t) and Normal(t) it is usfull to  
+         make fast approximation of rational  surfaces.") GetAverageLaw;
+		virtual void GetAverageLaw (gp_Vec & ATangent,gp_Vec & ANormal,gp_Vec & ABiNormal);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Say if the law is Constant.") IsConstant;
+		virtual Standard_Boolean IsConstant ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Return True.") IsOnlyBy3dCurve;
+		virtual Standard_Boolean IsOnlyBy3dCurve ();
+};
+
+
+%feature("shadow") GeomFill_CorrectedFrenet::~GeomFill_CorrectedFrenet %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_CorrectedFrenet {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_CorrectedFrenet {
+	Handle_GeomFill_CorrectedFrenet GetHandle() {
+	return *(Handle_GeomFill_CorrectedFrenet*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_CorrectedFrenet;
+class Handle_GeomFill_CorrectedFrenet : public Handle_GeomFill_TrihedronLaw {
+
+    public:
+        // constructors
+        Handle_GeomFill_CorrectedFrenet();
+        Handle_GeomFill_CorrectedFrenet(const Handle_GeomFill_CorrectedFrenet &aHandle);
+        Handle_GeomFill_CorrectedFrenet(const GeomFill_CorrectedFrenet *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_CorrectedFrenet DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_CorrectedFrenet {
+    GeomFill_CorrectedFrenet* GetObject() {
+    return (GeomFill_CorrectedFrenet*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_CorrectedFrenet::~Handle_GeomFill_CorrectedFrenet %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_CorrectedFrenet {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_CurveAndTrihedron;
+class GeomFill_CurveAndTrihedron : public GeomFill_LocationLaw {
+	public:
+		%feature("autodoc", "Args:
+	Trihedron(Handle_GeomFill_TrihedronLaw)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_CurveAndTrihedron;
+		 GeomFill_CurveAndTrihedron (const Handle_GeomFill_TrihedronLaw & Trihedron);
+		%feature("autodoc", "Args:
+	C(Handle_Adaptor3d_HCurve)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") SetCurve;
+		virtual void SetCurve (const Handle_Adaptor3d_HCurve & C);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual  Handle_Adaptor3d_HCurve
+
+No detailed docstring for this function.") GetCurve;
+		virtual const Handle_Adaptor3d_HCurve & GetCurve ();
+		%feature("autodoc", "Args:
+	Transfo(gp_Mat)
+
+Returns:
+	virtual void
+
+Set a transformation Matrix like   the law M(t) become  
+         Mat * M(t)") SetTrsf;
+		virtual void SetTrsf (const gp_Mat & Transfo);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Handle_GeomFill_LocationLaw
+
+No detailed docstring for this function.") Copy;
+		virtual Handle_GeomFill_LocationLaw Copy ();
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	M(gp_Mat)
+	V(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+compute Location and 2d points") D0;
+		virtual Standard_Boolean D0 (const Standard_Real Param,gp_Mat & M,gp_Vec & V);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	M(gp_Mat)
+	V(gp_Vec)
+	Poles2d(TColgp_Array1OfPnt2d)
+
+Returns:
+	virtual Standard_Boolean
+
+compute Location and 2d points") D0;
+		virtual Standard_Boolean D0 (const Standard_Real Param,gp_Mat & M,gp_Vec & V,TColgp_Array1OfPnt2d & Poles2d);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	M(gp_Mat)
+	V(gp_Vec)
+	DM(gp_Mat)
+	DV(gp_Vec)
+	Poles2d(TColgp_Array1OfPnt2d)
+	DPoles2d(TColgp_Array1OfVec2d)
+
+Returns:
+	virtual Standard_Boolean
+
+compute location 2d  points and  associated  
+         first derivatives.  
+ Warning : It used only for C1 or C2 aproximation") D1;
+		virtual Standard_Boolean D1 (const Standard_Real Param,gp_Mat & M,gp_Vec & V,gp_Mat & DM,gp_Vec & DV,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	M(gp_Mat)
+	V(gp_Vec)
+	DM(gp_Mat)
+	DV(gp_Vec)
+	D2M(gp_Mat)
+	D2V(gp_Vec)
+	Poles2d(TColgp_Array1OfPnt2d)
+	DPoles2d(TColgp_Array1OfVec2d)
+	D2Poles2d(TColgp_Array1OfVec2d)
+
+Returns:
+	virtual Standard_Boolean
+
+compute location 2d  points and associated  
+         first and seconde  derivatives.  
+ Warning : It used only for C2 aproximation") D2;
+		virtual Standard_Boolean D2 (const Standard_Real Param,gp_Mat & M,gp_Vec & V,gp_Mat & DM,gp_Vec & DV,gp_Mat & D2M,gp_Vec & D2V,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColgp_Array1OfVec2d & D2Poles2d);
+		%feature("autodoc", "Args:
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual Standard_Integer
+
+Returns  the number  of  intervals for  continuity  
+         <S>.  
+         May be one if Continuity(me) >= <S>") NbIntervals;
+		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	T(TColStd_Array1OfReal)
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual void
+
+Stores in <T> the  parameters bounding the intervals  
+         of continuity <S>.  
+ 
+         The array must provide  enough room to  accomodate  
+         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+		virtual void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+Sets the bounds of the parametric interval on  
+         the function  
+         This determines the derivatives in these values if the  
+         function is not Cn.") SetInterval;
+		virtual void SetInterval (const Standard_Real First,const Standard_Real Last);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+Gets the bounds of the parametric interval on  
+         the function") GetInterval;
+		virtual void GetInterval (Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+Gets the bounds of the function parametric domain.  
+ Warning: This domain it is  not modified by the  
+         SetValue method") GetDomain;
+		virtual void GetDomain (Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Real
+
+Get the maximum Norm  of the matrix-location part.  It  
+          is usful to find an good Tolerance to approx M(t).") GetMaximalNorm;
+		virtual Standard_Real GetMaximalNorm ();
+		%feature("autodoc", "Args:
+	AM(gp_Mat)
+	AV(gp_Vec)
+
+Returns:
+	virtual void
+
+Get average value of M(t) and V(t) it is usfull to  
+         make fast approximation of rational  surfaces.") GetAverageLaw;
+		virtual void GetAverageLaw (gp_Mat & AM,gp_Vec & AV);
+		%feature("autodoc", "Args:
+	Error(Standard_Real)
+
+Returns:
+	virtual Standard_Boolean
+
+Say if the Location  Law, is an translation of  Location  
+The default implementation is ' returns False '.") IsTranslation;
+		virtual Standard_Boolean IsTranslation (Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	Error(Standard_Real)
+
+Returns:
+	virtual Standard_Boolean
+
+Say if the Location  Law, is a rotation of Location  
+The default implementation is ' returns False '.") IsRotation;
+		virtual Standard_Boolean IsRotation (Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	Center(gp_Pnt)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") Rotation;
+		virtual void Rotation (gp_Pnt & Center);
+};
+
+
+%feature("shadow") GeomFill_CurveAndTrihedron::~GeomFill_CurveAndTrihedron %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_CurveAndTrihedron {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_CurveAndTrihedron {
+	Handle_GeomFill_CurveAndTrihedron GetHandle() {
+	return *(Handle_GeomFill_CurveAndTrihedron*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_CurveAndTrihedron;
+class Handle_GeomFill_CurveAndTrihedron : public Handle_GeomFill_LocationLaw {
+
+    public:
+        // constructors
+        Handle_GeomFill_CurveAndTrihedron();
+        Handle_GeomFill_CurveAndTrihedron(const Handle_GeomFill_CurveAndTrihedron &aHandle);
+        Handle_GeomFill_CurveAndTrihedron(const GeomFill_CurveAndTrihedron *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_CurveAndTrihedron DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_CurveAndTrihedron {
+    GeomFill_CurveAndTrihedron* GetObject() {
+    return (GeomFill_CurveAndTrihedron*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_CurveAndTrihedron::~Handle_GeomFill_CurveAndTrihedron %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_CurveAndTrihedron {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_Curved;
+class GeomFill_Curved : public GeomFill_Filling {
+	public:
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Curved;
+		 GeomFill_Curved ();
+		%feature("autodoc", "Args:
+	P1(TColgp_Array1OfPnt)
+	P2(TColgp_Array1OfPnt)
+	P3(TColgp_Array1OfPnt)
+	P4(TColgp_Array1OfPnt)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Curved;
+		 GeomFill_Curved (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2,const TColgp_Array1OfPnt & P3,const TColgp_Array1OfPnt & P4);
+		%feature("autodoc", "Args:
+	P1(TColgp_Array1OfPnt)
+	P2(TColgp_Array1OfPnt)
+	P3(TColgp_Array1OfPnt)
+	P4(TColgp_Array1OfPnt)
+	W1(TColStd_Array1OfReal)
+	W2(TColStd_Array1OfReal)
+	W3(TColStd_Array1OfReal)
+	W4(TColStd_Array1OfReal)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Curved;
+		 GeomFill_Curved (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2,const TColgp_Array1OfPnt & P3,const TColgp_Array1OfPnt & P4,const TColStd_Array1OfReal & W1,const TColStd_Array1OfReal & W2,const TColStd_Array1OfReal & W3,const TColStd_Array1OfReal & W4);
+		%feature("autodoc", "Args:
+	P1(TColgp_Array1OfPnt)
+	P2(TColgp_Array1OfPnt)
+	P3(TColgp_Array1OfPnt)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Curved;
+		 GeomFill_Curved (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2,const TColgp_Array1OfPnt & P3);
+		%feature("autodoc", "Args:
+	P1(TColgp_Array1OfPnt)
+	P2(TColgp_Array1OfPnt)
+	P3(TColgp_Array1OfPnt)
+	W1(TColStd_Array1OfReal)
+	W2(TColStd_Array1OfReal)
+	W3(TColStd_Array1OfReal)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Curved;
+		 GeomFill_Curved (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2,const TColgp_Array1OfPnt & P3,const TColStd_Array1OfReal & W1,const TColStd_Array1OfReal & W2,const TColStd_Array1OfReal & W3);
+		%feature("autodoc", "Args:
+	P1(TColgp_Array1OfPnt)
+	P2(TColgp_Array1OfPnt)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Curved;
+		 GeomFill_Curved (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2);
+		%feature("autodoc", "Args:
+	P1(TColgp_Array1OfPnt)
+	P2(TColgp_Array1OfPnt)
+	W1(TColStd_Array1OfReal)
+	W2(TColStd_Array1OfReal)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Curved;
+		 GeomFill_Curved (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2,const TColStd_Array1OfReal & W1,const TColStd_Array1OfReal & W2);
+		%feature("autodoc", "Args:
+	P1(TColgp_Array1OfPnt)
+	P2(TColgp_Array1OfPnt)
+	P3(TColgp_Array1OfPnt)
+	P4(TColgp_Array1OfPnt)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2,const TColgp_Array1OfPnt & P3,const TColgp_Array1OfPnt & P4);
+		%feature("autodoc", "Args:
+	P1(TColgp_Array1OfPnt)
+	P2(TColgp_Array1OfPnt)
+	P3(TColgp_Array1OfPnt)
+	P4(TColgp_Array1OfPnt)
+	W1(TColStd_Array1OfReal)
+	W2(TColStd_Array1OfReal)
+	W3(TColStd_Array1OfReal)
+	W4(TColStd_Array1OfReal)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2,const TColgp_Array1OfPnt & P3,const TColgp_Array1OfPnt & P4,const TColStd_Array1OfReal & W1,const TColStd_Array1OfReal & W2,const TColStd_Array1OfReal & W3,const TColStd_Array1OfReal & W4);
+		%feature("autodoc", "Args:
+	P1(TColgp_Array1OfPnt)
+	P2(TColgp_Array1OfPnt)
+	P3(TColgp_Array1OfPnt)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2,const TColgp_Array1OfPnt & P3);
+		%feature("autodoc", "Args:
+	P1(TColgp_Array1OfPnt)
+	P2(TColgp_Array1OfPnt)
+	P3(TColgp_Array1OfPnt)
+	W1(TColStd_Array1OfReal)
+	W2(TColStd_Array1OfReal)
+	W3(TColStd_Array1OfReal)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2,const TColgp_Array1OfPnt & P3,const TColStd_Array1OfReal & W1,const TColStd_Array1OfReal & W2,const TColStd_Array1OfReal & W3);
+		%feature("autodoc", "Args:
+	P1(TColgp_Array1OfPnt)
+	P2(TColgp_Array1OfPnt)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2);
+		%feature("autodoc", "Args:
+	P1(TColgp_Array1OfPnt)
+	P2(TColgp_Array1OfPnt)
+	W1(TColStd_Array1OfReal)
+	W2(TColStd_Array1OfReal)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2,const TColStd_Array1OfReal & W1,const TColStd_Array1OfReal & W2);
+};
+
+
+%feature("shadow") GeomFill_Curved::~GeomFill_Curved %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_Curved {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_Darboux;
+class GeomFill_Darboux : public GeomFill_TrihedronLaw {
+	public:
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Darboux;
+		 GeomFill_Darboux ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Handle_GeomFill_TrihedronLaw
+
+No detailed docstring for this function.") Copy;
+		virtual Handle_GeomFill_TrihedronLaw Copy ();
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	Normal(gp_Vec)
+	BiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+compute Triedrhon on curve at parameter <Param>") D0;
+		virtual Standard_Boolean D0 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & Normal,gp_Vec & BiNormal);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	DTangent(gp_Vec)
+	Normal(gp_Vec)
+	DNormal(gp_Vec)
+	BiNormal(gp_Vec)
+	DBiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+compute Triedrhon and  derivative Trihedron  on curve  
+         at parameter <Param>  
+ Warning : It used only for C1 or C2 aproximation") D1;
+		virtual Standard_Boolean D1 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & DTangent,gp_Vec & Normal,gp_Vec & DNormal,gp_Vec & BiNormal,gp_Vec & DBiNormal);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	DTangent(gp_Vec)
+	D2Tangent(gp_Vec)
+	Normal(gp_Vec)
+	DNormal(gp_Vec)
+	D2Normal(gp_Vec)
+	BiNormal(gp_Vec)
+	DBiNormal(gp_Vec)
+	D2BiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+compute  Trihedron on curve  
+         first and seconde  derivatives.  
+ Warning : It used only for C2 aproximation") D2;
+		virtual Standard_Boolean D2 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & DTangent,gp_Vec & D2Tangent,gp_Vec & Normal,gp_Vec & DNormal,gp_Vec & D2Normal,gp_Vec & BiNormal,gp_Vec & DBiNormal,gp_Vec & D2BiNormal);
+		%feature("autodoc", "Args:
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual Standard_Integer
+
+Returns  the number  of  intervals for  continuity  
+         <S>.  
+         May be one if Continuity(me) >= <S>") NbIntervals;
+		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	T(TColStd_Array1OfReal)
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual void
+
+Stores in <T> the  parameters bounding the intervals  
+         of continuity <S>.  
+ 
+         The array must provide  enough room to  accomodate  
+         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+		virtual void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	ATangent(gp_Vec)
+	ANormal(gp_Vec)
+	ABiNormal(gp_Vec)
+
+Returns:
+	virtual void
+
+Get average value of Tangent(t) and Normal(t) it is usfull to  
+         make fast approximation of rational  surfaces.") GetAverageLaw;
+		virtual void GetAverageLaw (gp_Vec & ATangent,gp_Vec & ANormal,gp_Vec & ABiNormal);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Say if the law is Constant.") IsConstant;
+		virtual Standard_Boolean IsConstant ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Return False.") IsOnlyBy3dCurve;
+		virtual Standard_Boolean IsOnlyBy3dCurve ();
+};
+
+
+%feature("shadow") GeomFill_Darboux::~GeomFill_Darboux %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_Darboux {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_Darboux {
+	Handle_GeomFill_Darboux GetHandle() {
+	return *(Handle_GeomFill_Darboux*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_Darboux;
+class Handle_GeomFill_Darboux : public Handle_GeomFill_TrihedronLaw {
+
+    public:
+        // constructors
+        Handle_GeomFill_Darboux();
+        Handle_GeomFill_Darboux(const Handle_GeomFill_Darboux &aHandle);
+        Handle_GeomFill_Darboux(const GeomFill_Darboux *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_Darboux DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_Darboux {
+    GeomFill_Darboux* GetObject() {
+    return (GeomFill_Darboux*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_Darboux::~Handle_GeomFill_Darboux %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_Darboux {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_DegeneratedBound;
+class GeomFill_DegeneratedBound : public GeomFill_Boundary {
+	public:
+		%feature("autodoc", "Args:
+	Point(gp_Pnt)
+	First(Standard_Real)
+	Last(Standard_Real)
+	Tol3d(Standard_Real)
+	Tolang(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_DegeneratedBound;
+		 GeomFill_DegeneratedBound (const gp_Pnt & Point,const Standard_Real First,const Standard_Real Last,const Standard_Real Tol3d,const Standard_Real Tolang);
+		%feature("autodoc", "Args:
+	U(Standard_Real)
+
+Returns:
+	gp_Pnt
+
+No detailed docstring for this function.") Value;
+		gp_Pnt Value (const Standard_Real U);
+		%feature("autodoc", "Args:
+	U(Standard_Real)
+	P(gp_Pnt)
+	V(gp_Vec)
+
+Returns:
+	None
+
+No detailed docstring for this function.") D1;
+		void D1 (const Standard_Real U,gp_Pnt & P,gp_Vec & V);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+	HasDF(Standard_Boolean)
+	HasDL(Standard_Boolean)
+	DF(Standard_Real)
+	DL(Standard_Real)
+	Rev(Standard_Boolean)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Reparametrize;
+		void Reparametrize (const Standard_Real First,const Standard_Real Last,const Standard_Boolean HasDF,const Standard_Boolean HasDL,const Standard_Real DF,const Standard_Real DL,const Standard_Boolean Rev);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Bounds;
+		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Boolean
+
+No detailed docstring for this function.") IsDegenerated;
+		Standard_Boolean IsDegenerated ();
+};
+
+
+%feature("shadow") GeomFill_DegeneratedBound::~GeomFill_DegeneratedBound %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_DegeneratedBound {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_DegeneratedBound {
+	Handle_GeomFill_DegeneratedBound GetHandle() {
+	return *(Handle_GeomFill_DegeneratedBound*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_DegeneratedBound;
+class Handle_GeomFill_DegeneratedBound : public Handle_GeomFill_Boundary {
+
+    public:
+        // constructors
+        Handle_GeomFill_DegeneratedBound();
+        Handle_GeomFill_DegeneratedBound(const Handle_GeomFill_DegeneratedBound &aHandle);
+        Handle_GeomFill_DegeneratedBound(const GeomFill_DegeneratedBound *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_DegeneratedBound DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_DegeneratedBound {
+    GeomFill_DegeneratedBound* GetObject() {
+    return (GeomFill_DegeneratedBound*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_DegeneratedBound::~Handle_GeomFill_DegeneratedBound %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_DegeneratedBound {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_DiscreteTrihedron;
+class GeomFill_DiscreteTrihedron : public GeomFill_TrihedronLaw {
+	public:
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_DiscreteTrihedron;
+		 GeomFill_DiscreteTrihedron ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Handle_GeomFill_TrihedronLaw
+
+No detailed docstring for this function.") Copy;
+		virtual Handle_GeomFill_TrihedronLaw Copy ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init ();
+		%feature("autodoc", "Args:
+	C(Handle_Adaptor3d_HCurve)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") SetCurve;
+		virtual void SetCurve (const Handle_Adaptor3d_HCurve & C);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	Normal(gp_Vec)
+	BiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+compute Trihedron on curve at parameter <Param>") D0;
+		virtual Standard_Boolean D0 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & Normal,gp_Vec & BiNormal);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	DTangent(gp_Vec)
+	Normal(gp_Vec)
+	DNormal(gp_Vec)
+	BiNormal(gp_Vec)
+	DBiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+compute Trihedron and  derivative Trihedron  on curve  
+         at parameter <Param>  
+ Warning : It used only for C1 or C2 aproximation  
+ For the moment it returns null values for DTangent, DNormal  
+ and DBiNormal.") D1;
+		virtual Standard_Boolean D1 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & DTangent,gp_Vec & Normal,gp_Vec & DNormal,gp_Vec & BiNormal,gp_Vec & DBiNormal);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	DTangent(gp_Vec)
+	D2Tangent(gp_Vec)
+	Normal(gp_Vec)
+	DNormal(gp_Vec)
+	D2Normal(gp_Vec)
+	BiNormal(gp_Vec)
+	DBiNormal(gp_Vec)
+	D2BiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+compute  Trihedron on curve  
+         first and seconde  derivatives.  
+ Warning : It used only for C2 aproximation  
+ For the moment it returns null values for DTangent, DNormal  
+ DBiNormal, D2Tangent, D2Normal, D2BiNormal.") D2;
+		virtual Standard_Boolean D2 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & DTangent,gp_Vec & D2Tangent,gp_Vec & Normal,gp_Vec & DNormal,gp_Vec & D2Normal,gp_Vec & BiNormal,gp_Vec & DBiNormal,gp_Vec & D2BiNormal);
+		%feature("autodoc", "Args:
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual Standard_Integer
+
+Returns  the number  of  intervals for  continuity  
+         <S>.  
+         May be one if Continuity(me) >= <S>") NbIntervals;
+		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	T(TColStd_Array1OfReal)
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual void
+
+Stores in <T> the  parameters bounding the intervals  
+         of continuity <S>.  
+ 
+         The array must provide  enough room to  accomodate  
+         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+		virtual void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	ATangent(gp_Vec)
+	ANormal(gp_Vec)
+	ABiNormal(gp_Vec)
+
+Returns:
+	virtual void
+
+Get average value of Tangent(t) and Normal(t) it is usful to  
+         make fast approximation of rational  surfaces.") GetAverageLaw;
+		virtual void GetAverageLaw (gp_Vec & ATangent,gp_Vec & ANormal,gp_Vec & ABiNormal);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Say if the law is Constant.") IsConstant;
+		virtual Standard_Boolean IsConstant ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Return True.") IsOnlyBy3dCurve;
+		virtual Standard_Boolean IsOnlyBy3dCurve ();
+};
+
+
+%feature("shadow") GeomFill_DiscreteTrihedron::~GeomFill_DiscreteTrihedron %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_DiscreteTrihedron {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_DiscreteTrihedron {
+	Handle_GeomFill_DiscreteTrihedron GetHandle() {
+	return *(Handle_GeomFill_DiscreteTrihedron*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_DiscreteTrihedron;
+class Handle_GeomFill_DiscreteTrihedron : public Handle_GeomFill_TrihedronLaw {
+
+    public:
+        // constructors
+        Handle_GeomFill_DiscreteTrihedron();
+        Handle_GeomFill_DiscreteTrihedron(const Handle_GeomFill_DiscreteTrihedron &aHandle);
+        Handle_GeomFill_DiscreteTrihedron(const GeomFill_DiscreteTrihedron *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_DiscreteTrihedron DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_DiscreteTrihedron {
+    GeomFill_DiscreteTrihedron* GetObject() {
+    return (GeomFill_DiscreteTrihedron*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_DiscreteTrihedron::~Handle_GeomFill_DiscreteTrihedron %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_DiscreteTrihedron {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_DraftTrihedron;
+class GeomFill_DraftTrihedron : public GeomFill_TrihedronLaw {
+	public:
+		%feature("autodoc", "Args:
+	BiNormal(gp_Vec)
+	Angle(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_DraftTrihedron;
+		 GeomFill_DraftTrihedron (const gp_Vec & BiNormal,const Standard_Real Angle);
+		%feature("autodoc", "Args:
+	Angle(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") SetAngle;
+		void SetAngle (const Standard_Real Angle);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Handle_GeomFill_TrihedronLaw
+
+No detailed docstring for this function.") Copy;
+		virtual Handle_GeomFill_TrihedronLaw Copy ();
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	Normal(gp_Vec)
+	BiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+compute Triedrhon and derivative Trihedron on curve at  
+         parameter <Param>  
+ Warning : It used  only for C1 or C2 aproximation") D0;
+		virtual Standard_Boolean D0 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & Normal,gp_Vec & BiNormal);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	DTangent(gp_Vec)
+	Normal(gp_Vec)
+	DNormal(gp_Vec)
+	BiNormal(gp_Vec)
+	DBiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+compute Trihedron on curve  
+         first and seconde  derivatives.  
+ Warning : It used only for C2 aproximation") D1;
+		virtual Standard_Boolean D1 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & DTangent,gp_Vec & Normal,gp_Vec & DNormal,gp_Vec & BiNormal,gp_Vec & DBiNormal);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	DTangent(gp_Vec)
+	D2Tangent(gp_Vec)
+	Normal(gp_Vec)
+	DNormal(gp_Vec)
+	D2Normal(gp_Vec)
+	BiNormal(gp_Vec)
+	DBiNormal(gp_Vec)
+	D2BiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+No detailed docstring for this function.") D2;
+		virtual Standard_Boolean D2 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & DTangent,gp_Vec & D2Tangent,gp_Vec & Normal,gp_Vec & DNormal,gp_Vec & D2Normal,gp_Vec & BiNormal,gp_Vec & DBiNormal,gp_Vec & D2BiNormal);
+		%feature("autodoc", "Args:
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual Standard_Integer
+
+Returns  the number  of  intervals for  continuity  
+         <S>.  
+         May be one if Continuity(me) >= <S>") NbIntervals;
+		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	T(TColStd_Array1OfReal)
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual void
+
+Stores in <T> the  parameters bounding the intervals  
+         of continuity <S>.  
+ 
+         The array must provide  enough room to  accomodate  
+         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+		virtual void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	ATangent(gp_Vec)
+	ANormal(gp_Vec)
+	ABiNormal(gp_Vec)
+
+Returns:
+	virtual void
+
+Get average value of Tangent(t) and Normal(t) it is usefull to  
+         make fast approximation of rational  surfaces.") GetAverageLaw;
+		virtual void GetAverageLaw (gp_Vec & ATangent,gp_Vec & ANormal,gp_Vec & ABiNormal);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Say if the law is Constant.") IsConstant;
+		virtual Standard_Boolean IsConstant ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Return True.") IsOnlyBy3dCurve;
+		virtual Standard_Boolean IsOnlyBy3dCurve ();
+};
+
+
+%feature("shadow") GeomFill_DraftTrihedron::~GeomFill_DraftTrihedron %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_DraftTrihedron {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_DraftTrihedron {
+	Handle_GeomFill_DraftTrihedron GetHandle() {
+	return *(Handle_GeomFill_DraftTrihedron*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_DraftTrihedron;
+class Handle_GeomFill_DraftTrihedron : public Handle_GeomFill_TrihedronLaw {
+
+    public:
+        // constructors
+        Handle_GeomFill_DraftTrihedron();
+        Handle_GeomFill_DraftTrihedron(const Handle_GeomFill_DraftTrihedron &aHandle);
+        Handle_GeomFill_DraftTrihedron(const GeomFill_DraftTrihedron *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_DraftTrihedron DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_DraftTrihedron {
+    GeomFill_DraftTrihedron* GetObject() {
+    return (GeomFill_DraftTrihedron*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_DraftTrihedron::~Handle_GeomFill_DraftTrihedron %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_DraftTrihedron {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_EvolvedSection;
+class GeomFill_EvolvedSection : public GeomFill_SectionLaw {
+	public:
+		%feature("autodoc", "Args:
+	C(Handle_Geom_Curve)
+	L(Handle_Law_Function)
+
+Returns:
+	None
+
+Make an SectionLaw with a Curve and a real  Law.") GeomFill_EvolvedSection;
+		 GeomFill_EvolvedSection (const Handle_Geom_Curve & C,const Handle_Law_Function & L);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Poles(TColgp_Array1OfPnt)
+	Weigths(TColStd_Array1OfReal)
+
+Returns:
+	virtual Standard_Boolean
+
+compute the section for v = param") D0;
+		virtual Standard_Boolean D0 (const Standard_Real Param,TColgp_Array1OfPnt & Poles,TColStd_Array1OfReal & Weigths);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Poles(TColgp_Array1OfPnt)
+	DPoles(TColgp_Array1OfVec)
+	Weigths(TColStd_Array1OfReal)
+	DWeigths(TColStd_Array1OfReal)
+
+Returns:
+	virtual Standard_Boolean
+
+compute the first  derivative in v direction  of the  
+          section for v =  param  
+ Warning : It used only for C1 or C2 aproximation") D1;
+		virtual Standard_Boolean D1 (const Standard_Real Param,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Poles(TColgp_Array1OfPnt)
+	DPoles(TColgp_Array1OfVec)
+	D2Poles(TColgp_Array1OfVec)
+	Weigths(TColStd_Array1OfReal)
+	DWeigths(TColStd_Array1OfReal)
+	D2Weigths(TColStd_Array1OfReal)
+
+Returns:
+	virtual Standard_Boolean
+
+compute the second derivative  in v direction of the  
+         section  for v = param  
+ Warning : It used only for C2 aproximation") D2;
+		virtual Standard_Boolean D2 (const Standard_Real Param,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths,TColStd_Array1OfReal & D2Weigths);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Handle_Geom_BSplineSurface
+
+give if possible an bspline Surface, like iso-v are the  
+         section.  If it is  not possible  this methode have  to  
+         get an Null Surface.  Is it the default implementation.") BSplineSurface;
+		virtual Handle_Geom_BSplineSurface BSplineSurface ();
+		%feature("autodoc", "Args:
+	NbPoles(Standard_Integer)
+	NbKnots(Standard_Integer)
+	Degree(Standard_Integer)
+
+Returns:
+	virtual void
+
+get the format of an  section") SectionShape;
+		virtual void SectionShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
+		%feature("autodoc", "Args:
+	TKnots(TColStd_Array1OfReal)
+
+Returns:
+	virtual void
+
+get the Knots of the section") Knots;
+		virtual void Knots (TColStd_Array1OfReal & TKnots);
+		%feature("autodoc", "Args:
+	TMults(TColStd_Array1OfInteger)
+
+Returns:
+	virtual void
+
+get the Multplicities of the section") Mults;
+		virtual void Mults (TColStd_Array1OfInteger & TMults);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Returns if the sections are rationnal or not") IsRational;
+		virtual Standard_Boolean IsRational ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Returns if the sections are periodic or not") IsUPeriodic;
+		virtual Standard_Boolean IsUPeriodic ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Returns if the law  isperiodic or not") IsVPeriodic;
+		virtual Standard_Boolean IsVPeriodic ();
+		%feature("autodoc", "Args:
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual Standard_Integer
+
+Returns  the number  of  intervals for  continuity  
+         <S>.  
+         May be one if Continuity(me) >= <S>") NbIntervals;
+		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	T(TColStd_Array1OfReal)
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual void
+
+Stores in <T> the  parameters bounding the intervals  
+         of continuity <S>.  
+ 
+         The array must provide  enough room to  accomodate  
+         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+		virtual void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+Sets the bounds of the parametric interval on  
+         the function  
+         This determines the derivatives in these values if the  
+         function is not Cn.") SetInterval;
+		virtual void SetInterval (const Standard_Real First,const Standard_Real Last);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+Gets the bounds of the parametric interval on  
+         the function") GetInterval;
+		virtual void GetInterval (Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+Gets the bounds of the function parametric domain.  
+ Warning: This domain it is  not modified by the  
+         SetValue method") GetDomain;
+		virtual void GetDomain (Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	BoundTol(Standard_Real)
+	SurfTol(Standard_Real)
+	AngleTol(Standard_Real)
+	Tol3d(TColStd_Array1OfReal)
+
+Returns:
+	virtual void
+
+Returns the tolerances associated at each poles to  
+         reach  in approximation, to satisfy: BoundTol error  
+         at the   Boundary  AngleTol tangent error  at  the  
+         Boundary  (in radian)  SurfTol   error inside the  
+         surface.") GetTolerance;
+		virtual void GetTolerance (const Standard_Real BoundTol,const Standard_Real SurfTol,const Standard_Real AngleTol,TColStd_Array1OfReal & Tol3d);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual gp_Pnt
+
+Get the barycentre of Surface.  
+         An   very  poor estimation is sufficent.  
+         This information is usefull to perform well  
+         conditioned rational approximation.  
+ Warning: Used only if <self> IsRational") BarycentreOfSurf;
+		virtual gp_Pnt BarycentreOfSurf ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Real
+
+Returns the   length of the greater section. This  
+         information is usefull to G1's control.  
+ Warning: With an little value, approximation can be slower.") MaximalSection;
+		virtual Standard_Real MaximalSection ();
+		%feature("autodoc", "Args:
+	Weigths(TColStd_Array1OfReal)
+
+Returns:
+	virtual void
+
+Compute the minimal value of weight for each poles  
+         in all  sections.  
+         This information is  usefull to control error  
+         in rational approximation.  
+ Warning: Used only if <self> IsRational") GetMinimalWeight;
+		virtual void GetMinimalWeight (TColStd_Array1OfReal & Weigths);
+		%feature("autodoc", "Args:
+	Error(Standard_Real)
+
+Returns:
+	virtual Standard_Boolean
+
+return True If the Law isConstant") IsConstant;
+		virtual Standard_Boolean IsConstant (Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Handle_Geom_Curve
+
+Return the constant Section if <self>  IsConstant.") ConstantSection;
+		virtual Handle_Geom_Curve ConstantSection ();
+};
+
+
+%feature("shadow") GeomFill_EvolvedSection::~GeomFill_EvolvedSection %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_EvolvedSection {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_EvolvedSection {
+	Handle_GeomFill_EvolvedSection GetHandle() {
+	return *(Handle_GeomFill_EvolvedSection*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_EvolvedSection;
+class Handle_GeomFill_EvolvedSection : public Handle_GeomFill_SectionLaw {
+
+    public:
+        // constructors
+        Handle_GeomFill_EvolvedSection();
+        Handle_GeomFill_EvolvedSection(const Handle_GeomFill_EvolvedSection &aHandle);
+        Handle_GeomFill_EvolvedSection(const GeomFill_EvolvedSection *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_EvolvedSection DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_EvolvedSection {
+    GeomFill_EvolvedSection* GetObject() {
+    return (GeomFill_EvolvedSection*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_EvolvedSection::~Handle_GeomFill_EvolvedSection %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_EvolvedSection {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_Fixed;
+class GeomFill_Fixed : public GeomFill_TrihedronLaw {
+	public:
+		%feature("autodoc", "Args:
+	Tangent(gp_Vec)
+	Normal(gp_Vec)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Fixed;
+		 GeomFill_Fixed (const gp_Vec & Tangent,const gp_Vec & Normal);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Handle_GeomFill_TrihedronLaw
+
+No detailed docstring for this function.") Copy;
+		virtual Handle_GeomFill_TrihedronLaw Copy ();
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	Normal(gp_Vec)
+	BiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+compute Triedrhon on curve at parameter <Param>") D0;
+		virtual Standard_Boolean D0 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & Normal,gp_Vec & BiNormal);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	DTangent(gp_Vec)
+	Normal(gp_Vec)
+	DNormal(gp_Vec)
+	BiNormal(gp_Vec)
+	DBiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+compute Triedrhon and  derivative Trihedron  on curve  
+         at parameter <Param>  
+ Warning : It used only for C1 or C2 aproximation") D1;
+		virtual Standard_Boolean D1 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & DTangent,gp_Vec & Normal,gp_Vec & DNormal,gp_Vec & BiNormal,gp_Vec & DBiNormal);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	DTangent(gp_Vec)
+	D2Tangent(gp_Vec)
+	Normal(gp_Vec)
+	DNormal(gp_Vec)
+	D2Normal(gp_Vec)
+	BiNormal(gp_Vec)
+	DBiNormal(gp_Vec)
+	D2BiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+compute  Trihedron on curve  
+         first and seconde  derivatives.  
+ Warning : It used only for C2 aproximation") D2;
+		virtual Standard_Boolean D2 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & DTangent,gp_Vec & D2Tangent,gp_Vec & Normal,gp_Vec & DNormal,gp_Vec & D2Normal,gp_Vec & BiNormal,gp_Vec & DBiNormal,gp_Vec & D2BiNormal);
+		%feature("autodoc", "Args:
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual Standard_Integer
+
+Returns  the number  of  intervals for  continuity  
+         <S>.  
+         May be one if Continuity(me) >= <S>") NbIntervals;
+		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	T(TColStd_Array1OfReal)
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual void
+
+Stores in <T> the  parameters bounding the intervals  
+         of continuity <S>.  
+ 
+         The array must provide  enough room to  accomodate  
+         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+		virtual void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	ATangent(gp_Vec)
+	ANormal(gp_Vec)
+	ABiNormal(gp_Vec)
+
+Returns:
+	virtual void
+
+Get average value of Tangent(t) and Normal(t) it is usfull to  
+         make fast approximation of rational  surfaces.") GetAverageLaw;
+		virtual void GetAverageLaw (gp_Vec & ATangent,gp_Vec & ANormal,gp_Vec & ABiNormal);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Return True.") IsConstant;
+		virtual Standard_Boolean IsConstant ();
+};
+
+
+%feature("shadow") GeomFill_Fixed::~GeomFill_Fixed %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_Fixed {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_Fixed {
+	Handle_GeomFill_Fixed GetHandle() {
+	return *(Handle_GeomFill_Fixed*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_Fixed;
+class Handle_GeomFill_Fixed : public Handle_GeomFill_TrihedronLaw {
+
+    public:
+        // constructors
+        Handle_GeomFill_Fixed();
+        Handle_GeomFill_Fixed(const Handle_GeomFill_Fixed &aHandle);
+        Handle_GeomFill_Fixed(const GeomFill_Fixed *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_Fixed DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_Fixed {
+    GeomFill_Fixed* GetObject() {
+    return (GeomFill_Fixed*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_Fixed::~Handle_GeomFill_Fixed %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_Fixed {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_Frenet;
+class GeomFill_Frenet : public GeomFill_TrihedronLaw {
+	public:
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Frenet;
+		 GeomFill_Frenet ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Handle_GeomFill_TrihedronLaw
+
+No detailed docstring for this function.") Copy;
+		virtual Handle_GeomFill_TrihedronLaw Copy ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init ();
+		%feature("autodoc", "Args:
+	C(Handle_Adaptor3d_HCurve)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") SetCurve;
+		virtual void SetCurve (const Handle_Adaptor3d_HCurve & C);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	Normal(gp_Vec)
+	BiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+compute Triedrhon on curve at parameter <Param>") D0;
+		virtual Standard_Boolean D0 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & Normal,gp_Vec & BiNormal);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	DTangent(gp_Vec)
+	Normal(gp_Vec)
+	DNormal(gp_Vec)
+	BiNormal(gp_Vec)
+	DBiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+compute Triedrhon and  derivative Trihedron  on curve  
+         at parameter <Param>  
+ Warning : It used only for C1 or C2 aproximation") D1;
+		virtual Standard_Boolean D1 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & DTangent,gp_Vec & Normal,gp_Vec & DNormal,gp_Vec & BiNormal,gp_Vec & DBiNormal);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	DTangent(gp_Vec)
+	D2Tangent(gp_Vec)
+	Normal(gp_Vec)
+	DNormal(gp_Vec)
+	D2Normal(gp_Vec)
+	BiNormal(gp_Vec)
+	DBiNormal(gp_Vec)
+	D2BiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+compute  Trihedron on curve  
+         first and seconde  derivatives.  
+ Warning : It used only for C2 aproximation") D2;
+		virtual Standard_Boolean D2 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & DTangent,gp_Vec & D2Tangent,gp_Vec & Normal,gp_Vec & DNormal,gp_Vec & D2Normal,gp_Vec & BiNormal,gp_Vec & DBiNormal,gp_Vec & D2BiNormal);
+		%feature("autodoc", "Args:
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual Standard_Integer
+
+Returns  the number  of  intervals for  continuity  
+         <S>.  
+         May be one if Continuity(me) >= <S>") NbIntervals;
+		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	T(TColStd_Array1OfReal)
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual void
+
+Stores in <T> the  parameters bounding the intervals  
+         of continuity <S>.  
+ 
+         The array must provide  enough room to  accomodate  
+         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+		virtual void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	ATangent(gp_Vec)
+	ANormal(gp_Vec)
+	ABiNormal(gp_Vec)
+
+Returns:
+	virtual void
+
+Get average value of Tangent(t) and Normal(t) it is usfull to  
+         make fast approximation of rational  surfaces.") GetAverageLaw;
+		virtual void GetAverageLaw (gp_Vec & ATangent,gp_Vec & ANormal,gp_Vec & ABiNormal);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Say if the law is Constant.") IsConstant;
+		virtual Standard_Boolean IsConstant ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Return True.") IsOnlyBy3dCurve;
+		virtual Standard_Boolean IsOnlyBy3dCurve ();
+};
+
+
+%feature("shadow") GeomFill_Frenet::~GeomFill_Frenet %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_Frenet {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_Frenet {
+	Handle_GeomFill_Frenet GetHandle() {
+	return *(Handle_GeomFill_Frenet*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_Frenet;
+class Handle_GeomFill_Frenet : public Handle_GeomFill_TrihedronLaw {
+
+    public:
+        // constructors
+        Handle_GeomFill_Frenet();
+        Handle_GeomFill_Frenet(const Handle_GeomFill_Frenet &aHandle);
+        Handle_GeomFill_Frenet(const GeomFill_Frenet *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_Frenet DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_Frenet {
+    GeomFill_Frenet* GetObject() {
+    return (GeomFill_Frenet*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_Frenet::~Handle_GeomFill_Frenet %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_Frenet {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_Generator;
+class GeomFill_Generator : public GeomFill_Profiler {
+	public:
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Generator;
+		 GeomFill_Generator ();
+		%feature("autodoc", "Args:
+	PTol(Standard_Real)
+
+Returns:
+	virtual void
+
+Converts all curves to BSplineCurves.  
+         Set them to the common profile.  
+         Compute the surface (degv = 1).  
+         <PTol> is used to compare 2 knots.") Perform;
+		virtual void Perform (const Standard_Real PTol);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Handle_Geom_Surface
+
+No detailed docstring for this function.") Surface;
+		const Handle_Geom_Surface & Surface ();
+};
+
+
+%feature("shadow") GeomFill_Generator::~GeomFill_Generator %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_Generator {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_LocationDraft;
+class GeomFill_LocationDraft : public GeomFill_LocationLaw {
+	public:
+		%feature("autodoc", "Args:
+	Direction(gp_Dir)
+	Angle(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_LocationDraft;
+		 GeomFill_LocationDraft (const gp_Dir & Direction,const Standard_Real Angle);
+		%feature("autodoc", "Args:
+	Surf(Handle_Adaptor3d_HSurface)
+
+Returns:
+	None
+
+No detailed docstring for this function.") SetStopSurf;
+		void SetStopSurf (const Handle_Adaptor3d_HSurface & Surf);
+		%feature("autodoc", "Args:
+	Angle(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") SetAngle;
+		void SetAngle (const Standard_Real Angle);
+		%feature("autodoc", "Args:
+	C(Handle_Adaptor3d_HCurve)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") SetCurve;
+		virtual void SetCurve (const Handle_Adaptor3d_HCurve & C);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual  Handle_Adaptor3d_HCurve
+
+No detailed docstring for this function.") GetCurve;
+		virtual const Handle_Adaptor3d_HCurve & GetCurve ();
+		%feature("autodoc", "Args:
+	Transfo(gp_Mat)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") SetTrsf;
+		virtual void SetTrsf (const gp_Mat & Transfo);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Handle_GeomFill_LocationLaw
+
+No detailed docstring for this function.") Copy;
+		virtual Handle_GeomFill_LocationLaw Copy ();
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	M(gp_Mat)
+	V(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+compute Location") D0;
+		virtual Standard_Boolean D0 (const Standard_Real Param,gp_Mat & M,gp_Vec & V);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	M(gp_Mat)
+	V(gp_Vec)
+	Poles2d(TColgp_Array1OfPnt2d)
+
+Returns:
+	virtual Standard_Boolean
+
+compute Location and 2d points") D0;
+		virtual Standard_Boolean D0 (const Standard_Real Param,gp_Mat & M,gp_Vec & V,TColgp_Array1OfPnt2d & Poles2d);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	M(gp_Mat)
+	V(gp_Vec)
+	DM(gp_Mat)
+	DV(gp_Vec)
+	Poles2d(TColgp_Array1OfPnt2d)
+	DPoles2d(TColgp_Array1OfVec2d)
+
+Returns:
+	virtual Standard_Boolean
+
+compute location 2d  points and  associated  
+         first derivatives.  
+ Warning : It used only for C1 or C2 aproximation") D1;
+		virtual Standard_Boolean D1 (const Standard_Real Param,gp_Mat & M,gp_Vec & V,gp_Mat & DM,gp_Vec & DV,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	M(gp_Mat)
+	V(gp_Vec)
+	DM(gp_Mat)
+	DV(gp_Vec)
+	D2M(gp_Mat)
+	D2V(gp_Vec)
+	Poles2d(TColgp_Array1OfPnt2d)
+	DPoles2d(TColgp_Array1OfVec2d)
+	D2Poles2d(TColgp_Array1OfVec2d)
+
+Returns:
+	virtual Standard_Boolean
+
+compute location 2d  points and associated  
+         first and seconde  derivatives.  
+ Warning : It used only for C2 aproximation") D2;
+		virtual Standard_Boolean D2 (const Standard_Real Param,gp_Mat & M,gp_Vec & V,gp_Mat & DM,gp_Vec & DV,gp_Mat & D2M,gp_Vec & D2V,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColgp_Array1OfVec2d & D2Poles2d);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Say if the first restriction is defined in this class.  
+          If it  is true the  first element  of poles array   in  
+         D0,D1,D2... Correspond to this restriction.  
+ Returns Standard_False (default implementation)") HasFirstRestriction;
+		virtual Standard_Boolean HasFirstRestriction ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Say if the last restriction is defined in this class.  
+          If it is  true the  last element  of poles array in  
+         D0,D1,D2... Correspond to this restriction.  
+         Returns Standard_False (default implementation)") HasLastRestriction;
+		virtual Standard_Boolean HasLastRestriction ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Integer
+
+Give the number of trace (Curves 2d wich are not restriction)  
+         Returns 1 (default implementation)") TraceNumber;
+		virtual Standard_Integer TraceNumber ();
+		%feature("autodoc", "Args:
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual Standard_Integer
+
+Returns  the number  of  intervals for  continuity  
+         <S>.  
+         May be one if Continuity(me) >= <S>") NbIntervals;
+		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	T(TColStd_Array1OfReal)
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual void
+
+Stores in <T> the  parameters bounding the intervals  
+         of continuity <S>.  
+ 
+         The array must provide  enough room to  accomodate  
+         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+		virtual void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+Sets the bounds of the parametric interval on  
+         the function  
+         This determines the derivatives in these values if the  
+         function is not Cn.") SetInterval;
+		virtual void SetInterval (const Standard_Real First,const Standard_Real Last);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+Gets the bounds of the parametric interval on  
+         the function") GetInterval;
+		virtual void GetInterval (Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+Gets the bounds of the function parametric domain.  
+ Warning: This domain it is  not modified by the  
+         SetValue method") GetDomain;
+		virtual void GetDomain (Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+	Tol(Standard_Real)
+	TolU(Standard_Real)
+	TolV(Standard_Real)
+
+Returns:
+	virtual void
+
+Returns the resolutions in the  sub-space 2d <Index>  
+         This information is usfull to find an good tolerance in  
+         2d approximation.  
+ Warning: Used only if Nb2dCurve > 0") Resolution;
+		virtual void Resolution (const Standard_Integer Index,const Standard_Real Tol,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Real
+
+Get the maximum Norm  of the matrix-location part.  It  
+          is usful to find an good Tolerance to approx M(t).") GetMaximalNorm;
+		virtual Standard_Real GetMaximalNorm ();
+		%feature("autodoc", "Args:
+	AM(gp_Mat)
+	AV(gp_Vec)
+
+Returns:
+	virtual void
+
+Get average value of M(t) and V(t) it is usfull to  
+         make fast approximation of rational  surfaces.") GetAverageLaw;
+		virtual void GetAverageLaw (gp_Mat & AM,gp_Vec & AV);
+		%feature("autodoc", "Args:
+	Error(Standard_Real)
+
+Returns:
+	virtual Standard_Boolean
+
+Say if the Location  Law, is an translation of  Location  
+The default implementation is ' returns False '.") IsTranslation;
+		virtual Standard_Boolean IsTranslation (Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	Error(Standard_Real)
+
+Returns:
+	virtual Standard_Boolean
+
+Say if the Location  Law, is a rotation of Location  
+The default implementation is ' returns False '.") IsRotation;
+		virtual Standard_Boolean IsRotation (Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	Center(gp_Pnt)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") Rotation;
+		virtual void Rotation (gp_Pnt & Center);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Boolean
+
+Say if the generatrice interset the surface") IsIntersec;
+		Standard_Boolean IsIntersec ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	gp_Dir
+
+No detailed docstring for this function.") Direction;
+		gp_Dir Direction ();
+};
+
+
+%feature("shadow") GeomFill_LocationDraft::~GeomFill_LocationDraft %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_LocationDraft {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_LocationDraft {
+	Handle_GeomFill_LocationDraft GetHandle() {
+	return *(Handle_GeomFill_LocationDraft*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_LocationDraft;
+class Handle_GeomFill_LocationDraft : public Handle_GeomFill_LocationLaw {
+
+    public:
+        // constructors
+        Handle_GeomFill_LocationDraft();
+        Handle_GeomFill_LocationDraft(const Handle_GeomFill_LocationDraft &aHandle);
+        Handle_GeomFill_LocationDraft(const GeomFill_LocationDraft *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_LocationDraft DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_LocationDraft {
+    GeomFill_LocationDraft* GetObject() {
+    return (GeomFill_LocationDraft*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_LocationDraft::~Handle_GeomFill_LocationDraft %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_LocationDraft {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_LocationGuide;
+class GeomFill_LocationGuide : public GeomFill_LocationLaw {
+	public:
+		%feature("autodoc", "Args:
+	Triedre(Handle_GeomFill_TrihedronWithGuide)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_LocationGuide;
+		 GeomFill_LocationGuide (const Handle_GeomFill_TrihedronWithGuide & Triedre);
+		%feature("autodoc", "Args:
+	Section(Handle_GeomFill_SectionLaw)
+	rotat(Standard_Boolean)
+	SFirst(Standard_Real)
+	SLast(Standard_Real)
+	PrecAngle(Standard_Real)
+	LastAngle(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Set;
+		void Set (const Handle_GeomFill_SectionLaw & Section,const Standard_Boolean rotat,const Standard_Real SFirst,const Standard_Real SLast,const Standard_Real PrecAngle,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") EraseRotation;
+		void EraseRotation ();
+		%feature("autodoc", "Args:
+	C(Handle_Adaptor3d_HCurve)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") SetCurve;
+		virtual void SetCurve (const Handle_Adaptor3d_HCurve & C);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual  Handle_Adaptor3d_HCurve
+
+No detailed docstring for this function.") GetCurve;
+		virtual const Handle_Adaptor3d_HCurve & GetCurve ();
+		%feature("autodoc", "Args:
+	Transfo(gp_Mat)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") SetTrsf;
+		virtual void SetTrsf (const gp_Mat & Transfo);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Handle_GeomFill_LocationLaw
+
+No detailed docstring for this function.") Copy;
+		virtual Handle_GeomFill_LocationLaw Copy ();
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	M(gp_Mat)
+	V(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+compute Location") D0;
+		virtual Standard_Boolean D0 (const Standard_Real Param,gp_Mat & M,gp_Vec & V);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	M(gp_Mat)
+	V(gp_Vec)
+	Poles2d(TColgp_Array1OfPnt2d)
+
+Returns:
+	virtual Standard_Boolean
+
+compute Location and 2d points") D0;
+		virtual Standard_Boolean D0 (const Standard_Real Param,gp_Mat & M,gp_Vec & V,TColgp_Array1OfPnt2d & Poles2d);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	M(gp_Mat)
+	V(gp_Vec)
+	DM(gp_Mat)
+	DV(gp_Vec)
+	Poles2d(TColgp_Array1OfPnt2d)
+	DPoles2d(TColgp_Array1OfVec2d)
+
+Returns:
+	virtual Standard_Boolean
+
+compute location 2d  points and  associated  
+         first derivatives.  
+ Warning : It used only for C1 or C2 aproximation") D1;
+		virtual Standard_Boolean D1 (const Standard_Real Param,gp_Mat & M,gp_Vec & V,gp_Mat & DM,gp_Vec & DV,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	M(gp_Mat)
+	V(gp_Vec)
+	DM(gp_Mat)
+	DV(gp_Vec)
+	D2M(gp_Mat)
+	D2V(gp_Vec)
+	Poles2d(TColgp_Array1OfPnt2d)
+	DPoles2d(TColgp_Array1OfVec2d)
+	D2Poles2d(TColgp_Array1OfVec2d)
+
+Returns:
+	virtual Standard_Boolean
+
+compute location 2d  points and associated  
+         first and seconde  derivatives.  
+ Warning : It used only for C2 aproximation") D2;
+		virtual Standard_Boolean D2 (const Standard_Real Param,gp_Mat & M,gp_Vec & V,gp_Mat & DM,gp_Vec & DV,gp_Mat & D2M,gp_Vec & D2V,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColgp_Array1OfVec2d & D2Poles2d);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Say if the first restriction is defined in this class.  
+          If it  is true the  first element  of poles array   in  
+         D0,D1,D2... Correspond to this restriction.  
+ Returns Standard_False (default implementation)") HasFirstRestriction;
+		virtual Standard_Boolean HasFirstRestriction ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Say if the last restriction is defined in this class.  
+          If it is  true the  last element  of poles array in  
+         D0,D1,D2... Correspond to this restriction.  
+         Returns Standard_False (default implementation)") HasLastRestriction;
+		virtual Standard_Boolean HasLastRestriction ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Integer
+
+Give the number of trace (Curves 2d wich are not restriction)  
+         Returns 1 (default implementation)") TraceNumber;
+		virtual Standard_Integer TraceNumber ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual GeomFill_PipeError
+
+//!Give a status to the Law  
+         Returns PipeOk (default implementation)") ErrorStatus;
+		virtual GeomFill_PipeError ErrorStatus ();
+		%feature("autodoc", "Args:
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual Standard_Integer
+
+Returns  the number  of  intervals for  continuity  
+         <S>.  
+         May be one if Continuity(me) >= <S>") NbIntervals;
+		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	T(TColStd_Array1OfReal)
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual void
+
+Stores in <T> the  parameters bounding the intervals  
+         of continuity <S>.  
+ 
+         The array must provide  enough room to  accomodate  
+         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+		virtual void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+Sets the bounds of the parametric interval on  
+         the function  
+         This determines the derivatives in these values if the  
+         function is not Cn.") SetInterval;
+		virtual void SetInterval (const Standard_Real First,const Standard_Real Last);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+Gets the bounds of the parametric interval on  
+         the function") GetInterval;
+		virtual void GetInterval (Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+Gets the bounds of the function parametric domain.  
+ Warning: This domain it is  not modified by the  
+         SetValue method") GetDomain;
+		virtual void GetDomain (Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	Tol3d(Standard_Real)
+	Tol2d(Standard_Real)
+
+Returns:
+	virtual void
+
+Is usefull, if (me) have to run numerical  
+         algorithm to perform D0, D1 or D2  
+The default implementation make nothing.") SetTolerance;
+		virtual void SetTolerance (const Standard_Real Tol3d,const Standard_Real Tol2d);
+		%feature("autodoc", "Args:
+	Index(Standard_Integer)
+	Tol(Standard_Real)
+	TolU(Standard_Real)
+	TolV(Standard_Real)
+
+Returns:
+	virtual void
+
+Returns the resolutions in the  sub-space 2d <Index>  
+         This information is usfull to find an good tolerance in  
+         2d approximation.  
+ Warning: Used only if Nb2dCurve > 0") Resolution;
+		virtual void Resolution (const Standard_Integer Index,const Standard_Real Tol,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Real
+
+Get the maximum Norm  of the matrix-location part.  It  
+          is usful to find an good Tolerance to approx M(t).") GetMaximalNorm;
+		virtual Standard_Real GetMaximalNorm ();
+		%feature("autodoc", "Args:
+	AM(gp_Mat)
+	AV(gp_Vec)
+
+Returns:
+	virtual void
+
+Get average value of M(t) and V(t) it is usfull to  
+         make fast approximation of rational  surfaces.") GetAverageLaw;
+		virtual void GetAverageLaw (gp_Mat & AM,gp_Vec & AV);
+		%feature("autodoc", "Args:
+	Error(Standard_Real)
+
+Returns:
+	virtual Standard_Boolean
+
+Say if the Location  Law, is an translation of  Location  
+The default implementation is ' returns False '.") IsTranslation;
+		virtual Standard_Boolean IsTranslation (Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	Error(Standard_Real)
+
+Returns:
+	virtual Standard_Boolean
+
+Say if the Location  Law, is a rotation of Location  
+The default implementation is ' returns False '.") IsRotation;
+		virtual Standard_Boolean IsRotation (Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	Center(gp_Pnt)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") Rotation;
+		virtual void Rotation (gp_Pnt & Center);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Handle_Geom_Curve
+
+No detailed docstring for this function.") Section;
+		Handle_Geom_Curve Section ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Handle_Adaptor3d_HCurve
+
+No detailed docstring for this function.") Guide;
+		Handle_Adaptor3d_HCurve Guide ();
+		%feature("autodoc", "Args:
+	Param1(Standard_Real)
+	Param2(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") SetOrigine;
+		void SetOrigine (const Standard_Real Param1,const Standard_Real Param2);
+		%feature("autodoc", "Args:
+	ParAndRad(Handle_TColgp_HArray1OfPnt2d)
+
+Returns:
+	GeomFill_PipeError
+
+No detailed docstring for this function.") ComputeAutomaticLaw;
+		GeomFill_PipeError ComputeAutomaticLaw (Handle_TColgp_HArray1OfPnt2d & ParAndRad);
+};
+
+
+%feature("shadow") GeomFill_LocationGuide::~GeomFill_LocationGuide %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_LocationGuide {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_LocationGuide {
+	Handle_GeomFill_LocationGuide GetHandle() {
+	return *(Handle_GeomFill_LocationGuide*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_LocationGuide;
+class Handle_GeomFill_LocationGuide : public Handle_GeomFill_LocationLaw {
+
+    public:
+        // constructors
+        Handle_GeomFill_LocationGuide();
+        Handle_GeomFill_LocationGuide(const Handle_GeomFill_LocationGuide &aHandle);
+        Handle_GeomFill_LocationGuide(const GeomFill_LocationGuide *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_LocationGuide DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_LocationGuide {
+    GeomFill_LocationGuide* GetObject() {
+    return (GeomFill_LocationGuide*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_LocationGuide::~Handle_GeomFill_LocationGuide %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_LocationGuide {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_SectionGenerator;
+class GeomFill_SectionGenerator : public GeomFill_Profiler {
+	public:
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_SectionGenerator;
+		 GeomFill_SectionGenerator ();
+		%feature("autodoc", "Args:
+	Params(Handle_TColStd_HArray1OfReal)
+
+Returns:
+	None
+
+No detailed docstring for this function.") SetParam;
+		void SetParam (const Handle_TColStd_HArray1OfReal & Params);
+		%feature("autodoc", "Args:
+	NbPoles(Standard_Integer)
+	NbKnots(Standard_Integer)
+	Degree(Standard_Integer)
+	NbPoles2d(Standard_Integer)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GetShape;
+		void GetShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
+		%feature("autodoc", "Args:
+	TKnots(TColStd_Array1OfReal)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Knots;
+		void Knots (TColStd_Array1OfReal & TKnots);
+		%feature("autodoc", "Args:
+	TMults(TColStd_Array1OfInteger)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Mults;
+		void Mults (TColStd_Array1OfInteger & TMults);
+		%feature("autodoc", "Args:
+	P(Standard_Integer)
+	Poles(TColgp_Array1OfPnt)
+	DPoles(TColgp_Array1OfVec)
+	Poles2d(TColgp_Array1OfPnt2d)
+	DPoles2d(TColgp_Array1OfVec2d)
+	Weigths(TColStd_Array1OfReal)
+	DWeigths(TColStd_Array1OfReal)
+
+Returns:
+	Standard_Boolean
+
+Used for the first and last section  
+         The method returns Standard_True if the derivatives  
+         are computed, otherwise it returns Standard_False.") Section;
+		Standard_Boolean Section (const Standard_Integer P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
+		%feature("autodoc", "Args:
+	P(Standard_Integer)
+	Poles(TColgp_Array1OfPnt)
+	Poles2d(TColgp_Array1OfPnt2d)
+	Weigths(TColStd_Array1OfReal)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Section;
+		void Section (const Standard_Integer P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfPnt2d & Poles2d,TColStd_Array1OfReal & Weigths);
+		%feature("autodoc", "Args:
+	P(Standard_Integer)
+
+Returns:
+	Standard_Real
+
+Returns  the parameter of   Section<P>, to impose  it for the  
+         approximation.") Parameter;
+		Standard_Real Parameter (const Standard_Integer P);
+};
+
+
+%feature("shadow") GeomFill_SectionGenerator::~GeomFill_SectionGenerator %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_SectionGenerator {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_SimpleBound;
+class GeomFill_SimpleBound : public GeomFill_Boundary {
+	public:
+		%feature("autodoc", "Args:
+	Curve(Handle_Adaptor3d_HCurve)
+	Tol3d(Standard_Real)
+	Tolang(Standard_Real)
+
+Returns:
+	None
+
+Constructs the boundary object defined by the 3d curve.  
+The surface to be built along this boundary will be in the  
+tolerance range defined by Tol3d.  
+This object is to be used as a boundary for a  
+GeomFill_ConstrainedFilling framework.  
+Dummy is initialized but has no function in this class.  
+Warning  
+Curve is an adapted curve, that is, an object which is an interface between:  
+-   the services provided by a 3D curve from the package Geom  
+-   and those required of the curve by the computation  
+  algorithm which uses it.  
+The adapted curve is created in one of the following ways:  
+-   First sequence:  
+Handle_Geom_Curve myCurve = ... ;  
+Handle_GeomAdaptor_HCurve  
+    Curve = new  
+GeomAdaptor_HCurve(myCurve);  
+-   Second sequence:  
+// Step 1  
+Handle_Geom_Curve myCurve = ... ;  
+GeomAdaptor_Curve Crv (myCurve);  
+// Step 2  
+Handle_GeomAdaptor_HCurve  
+    Curve = new  
+GeomAdaptor_HCurve(Crv);  
+You use the second part of this sequence if you already  
+have the adapted curve Crv.  
+The boundary is then constructed with the Curve object:  
+Standard_Real Tol = ... ;  
+Standard_Real dummy = 0. ;  
+myBoundary = GeomFill_SimpleBound  
+(Curve,Tol,dummy);") GeomFill_SimpleBound;
+		 GeomFill_SimpleBound (const Handle_Adaptor3d_HCurve & Curve,const Standard_Real Tol3d,const Standard_Real Tolang);
+		%feature("autodoc", "Args:
+	U(Standard_Real)
+
+Returns:
+	gp_Pnt
+
+No detailed docstring for this function.") Value;
+		gp_Pnt Value (const Standard_Real U);
+		%feature("autodoc", "Args:
+	U(Standard_Real)
+	P(gp_Pnt)
+	V(gp_Vec)
+
+Returns:
+	None
+
+No detailed docstring for this function.") D1;
+		void D1 (const Standard_Real U,gp_Pnt & P,gp_Vec & V);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+	HasDF(Standard_Boolean)
+	HasDL(Standard_Boolean)
+	DF(Standard_Real)
+	DL(Standard_Real)
+	Rev(Standard_Boolean)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Reparametrize;
+		void Reparametrize (const Standard_Real First,const Standard_Real Last,const Standard_Boolean HasDF,const Standard_Boolean HasDL,const Standard_Real DF,const Standard_Real DL,const Standard_Boolean Rev);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Bounds;
+		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	Standard_Boolean
+
+No detailed docstring for this function.") IsDegenerated;
+		Standard_Boolean IsDegenerated ();
+};
+
+
+%feature("shadow") GeomFill_SimpleBound::~GeomFill_SimpleBound %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_SimpleBound {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_SimpleBound {
+	Handle_GeomFill_SimpleBound GetHandle() {
+	return *(Handle_GeomFill_SimpleBound*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_SimpleBound;
+class Handle_GeomFill_SimpleBound : public Handle_GeomFill_Boundary {
+
+    public:
+        // constructors
+        Handle_GeomFill_SimpleBound();
+        Handle_GeomFill_SimpleBound(const Handle_GeomFill_SimpleBound &aHandle);
+        Handle_GeomFill_SimpleBound(const GeomFill_SimpleBound *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_SimpleBound DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_SimpleBound {
+    GeomFill_SimpleBound* GetObject() {
+    return (GeomFill_SimpleBound*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_SimpleBound::~Handle_GeomFill_SimpleBound %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_SimpleBound {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_Stretch;
+class GeomFill_Stretch : public GeomFill_Filling {
+	public:
+		%feature("autodoc", "Args:
+	None
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Stretch;
+		 GeomFill_Stretch ();
+		%feature("autodoc", "Args:
+	P1(TColgp_Array1OfPnt)
+	P2(TColgp_Array1OfPnt)
+	P3(TColgp_Array1OfPnt)
+	P4(TColgp_Array1OfPnt)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Stretch;
+		 GeomFill_Stretch (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2,const TColgp_Array1OfPnt & P3,const TColgp_Array1OfPnt & P4);
+		%feature("autodoc", "Args:
+	P1(TColgp_Array1OfPnt)
+	P2(TColgp_Array1OfPnt)
+	P3(TColgp_Array1OfPnt)
+	P4(TColgp_Array1OfPnt)
+	W1(TColStd_Array1OfReal)
+	W2(TColStd_Array1OfReal)
+	W3(TColStd_Array1OfReal)
+	W4(TColStd_Array1OfReal)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_Stretch;
+		 GeomFill_Stretch (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2,const TColgp_Array1OfPnt & P3,const TColgp_Array1OfPnt & P4,const TColStd_Array1OfReal & W1,const TColStd_Array1OfReal & W2,const TColStd_Array1OfReal & W3,const TColStd_Array1OfReal & W4);
+		%feature("autodoc", "Args:
+	P1(TColgp_Array1OfPnt)
+	P2(TColgp_Array1OfPnt)
+	P3(TColgp_Array1OfPnt)
+	P4(TColgp_Array1OfPnt)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2,const TColgp_Array1OfPnt & P3,const TColgp_Array1OfPnt & P4);
+		%feature("autodoc", "Args:
+	P1(TColgp_Array1OfPnt)
+	P2(TColgp_Array1OfPnt)
+	P3(TColgp_Array1OfPnt)
+	P4(TColgp_Array1OfPnt)
+	W1(TColStd_Array1OfReal)
+	W2(TColStd_Array1OfReal)
+	W3(TColStd_Array1OfReal)
+	W4(TColStd_Array1OfReal)
+
+Returns:
+	None
+
+No detailed docstring for this function.") Init;
+		void Init (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2,const TColgp_Array1OfPnt & P3,const TColgp_Array1OfPnt & P4,const TColStd_Array1OfReal & W1,const TColStd_Array1OfReal & W2,const TColStd_Array1OfReal & W3,const TColStd_Array1OfReal & W4);
+};
+
+
+%feature("shadow") GeomFill_Stretch::~GeomFill_Stretch %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_Stretch {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor GeomFill_TgtOnCoons;
+class GeomFill_TgtOnCoons : public GeomFill_TgtField {
+	public:
+		%feature("autodoc", "Args:
+	K(Handle_GeomFill_CoonsAlgPatch)
+	I(Standard_Integer)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_TgtOnCoons;
+		 GeomFill_TgtOnCoons (const Handle_GeomFill_CoonsAlgPatch & K,const Standard_Integer I);
+		%feature("autodoc", "Args:
+	W(Standard_Real)
+
+Returns:
+	gp_Vec
+
+Computes  the value  of the    field of tangency    at  
+         parameter W.") Value;
+		gp_Vec Value (const Standard_Real W);
+		%feature("autodoc", "Args:
+	W(Standard_Real)
+
+Returns:
+	gp_Vec
+
+Computes the  derivative of  the field of  tangency at  
+         parameter W.") D1;
+		gp_Vec D1 (const Standard_Real W);
+		%feature("autodoc", "Args:
+	W(Standard_Real)
+	T(gp_Vec)
+	DT(gp_Vec)
+
+Returns:
+	None
+
+Computes the value and the  derivative of the field of  
+         tangency at parameter W.") D1;
+		void D1 (const Standard_Real W,gp_Vec & T,gp_Vec & DT);
+};
+
+
+%feature("shadow") GeomFill_TgtOnCoons::~GeomFill_TgtOnCoons %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_TgtOnCoons {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_TgtOnCoons {
+	Handle_GeomFill_TgtOnCoons GetHandle() {
+	return *(Handle_GeomFill_TgtOnCoons*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_TgtOnCoons;
+class Handle_GeomFill_TgtOnCoons : public Handle_GeomFill_TgtField {
+
+    public:
+        // constructors
+        Handle_GeomFill_TgtOnCoons();
+        Handle_GeomFill_TgtOnCoons(const Handle_GeomFill_TgtOnCoons &aHandle);
+        Handle_GeomFill_TgtOnCoons(const GeomFill_TgtOnCoons *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_TgtOnCoons DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_TgtOnCoons {
+    GeomFill_TgtOnCoons* GetObject() {
+    return (GeomFill_TgtOnCoons*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_TgtOnCoons::~Handle_GeomFill_TgtOnCoons %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_TgtOnCoons {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_TrihedronWithGuide;
+class GeomFill_TrihedronWithGuide : public GeomFill_TrihedronLaw {
+	public:
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Handle_Adaptor3d_HCurve
+
+No detailed docstring for this function.") Guide;
+		virtual Handle_Adaptor3d_HCurve Guide ();
+		%feature("autodoc", "Args:
+	Param1(Standard_Real)
+	Param2(Standard_Real)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") Origine;
+		virtual void Origine (const Standard_Real Param1,const Standard_Real Param2);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	gp_Pnt
+
+Returns the current point on guide  
+         found by D0, D1 or D2.") CurrentPointOnGuide;
+		gp_Pnt CurrentPointOnGuide ();
+};
+
+
+%feature("shadow") GeomFill_TrihedronWithGuide::~GeomFill_TrihedronWithGuide %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_TrihedronWithGuide {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_TrihedronWithGuide {
+	Handle_GeomFill_TrihedronWithGuide GetHandle() {
+	return *(Handle_GeomFill_TrihedronWithGuide*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_TrihedronWithGuide;
+class Handle_GeomFill_TrihedronWithGuide : public Handle_GeomFill_TrihedronLaw {
+
+    public:
+        // constructors
+        Handle_GeomFill_TrihedronWithGuide();
+        Handle_GeomFill_TrihedronWithGuide(const Handle_GeomFill_TrihedronWithGuide &aHandle);
+        Handle_GeomFill_TrihedronWithGuide(const GeomFill_TrihedronWithGuide *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_TrihedronWithGuide DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_TrihedronWithGuide {
+    GeomFill_TrihedronWithGuide* GetObject() {
+    return (GeomFill_TrihedronWithGuide*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_TrihedronWithGuide::~Handle_GeomFill_TrihedronWithGuide %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_TrihedronWithGuide {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_UniformSection;
+class GeomFill_UniformSection : public GeomFill_SectionLaw {
+	public:
+		%feature("autodoc", "Args:
+	C(Handle_Geom_Curve)
+	FirstParameter(Standard_Real)=0.0
+	LastParameter(Standard_Real)=1.0
+
+Returns:
+	None
+
+Make an constant Law with C.  
+[First, Last] define law definition domain") GeomFill_UniformSection;
+		 GeomFill_UniformSection (const Handle_Geom_Curve & C,const Standard_Real FirstParameter = 0.0,const Standard_Real LastParameter = 1.0);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Poles(TColgp_Array1OfPnt)
+	Weigths(TColStd_Array1OfReal)
+
+Returns:
+	virtual Standard_Boolean
+
+compute the section for v = param") D0;
+		virtual Standard_Boolean D0 (const Standard_Real Param,TColgp_Array1OfPnt & Poles,TColStd_Array1OfReal & Weigths);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Poles(TColgp_Array1OfPnt)
+	DPoles(TColgp_Array1OfVec)
+	Weigths(TColStd_Array1OfReal)
+	DWeigths(TColStd_Array1OfReal)
+
+Returns:
+	virtual Standard_Boolean
+
+compute the first  derivative in v direction  of the  
+          section for v =  param  
+ Warning : It used only for C1 or C2 aproximation") D1;
+		virtual Standard_Boolean D1 (const Standard_Real Param,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Poles(TColgp_Array1OfPnt)
+	DPoles(TColgp_Array1OfVec)
+	D2Poles(TColgp_Array1OfVec)
+	Weigths(TColStd_Array1OfReal)
+	DWeigths(TColStd_Array1OfReal)
+	D2Weigths(TColStd_Array1OfReal)
+
+Returns:
+	virtual Standard_Boolean
+
+compute the second derivative  in v direction of the  
+         section  for v = param  
+ Warning : It used only for C2 aproximation") D2;
+		virtual Standard_Boolean D2 (const Standard_Real Param,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths,TColStd_Array1OfReal & D2Weigths);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Handle_Geom_BSplineSurface
+
+give if possible an bspline Surface, like iso-v are the  
+         section.  If it is  not possible  this methode have  to  
+         get an Null Surface.  Is it the default implementation.") BSplineSurface;
+		virtual Handle_Geom_BSplineSurface BSplineSurface ();
+		%feature("autodoc", "Args:
+	NbPoles(Standard_Integer)
+	NbKnots(Standard_Integer)
+	Degree(Standard_Integer)
+
+Returns:
+	virtual void
+
+get the format of an  section") SectionShape;
+		virtual void SectionShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
+		%feature("autodoc", "Args:
+	TKnots(TColStd_Array1OfReal)
+
+Returns:
+	virtual void
+
+get the Knots of the section") Knots;
+		virtual void Knots (TColStd_Array1OfReal & TKnots);
+		%feature("autodoc", "Args:
+	TMults(TColStd_Array1OfInteger)
+
+Returns:
+	virtual void
+
+get the Multplicities of the section") Mults;
+		virtual void Mults (TColStd_Array1OfInteger & TMults);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Returns if the sections are rationnal or not") IsRational;
+		virtual Standard_Boolean IsRational ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Returns if the sections are periodic or not") IsUPeriodic;
+		virtual Standard_Boolean IsUPeriodic ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Returns if the law  isperiodic or not") IsVPeriodic;
+		virtual Standard_Boolean IsVPeriodic ();
+		%feature("autodoc", "Args:
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual Standard_Integer
+
+Returns  the number  of  intervals for  continuity  
+         <S>.  
+         May be one if Continuity(me) >= <S>") NbIntervals;
+		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	T(TColStd_Array1OfReal)
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual void
+
+Stores in <T> the  parameters bounding the intervals  
+         of continuity <S>.  
+ 
+         The array must provide  enough room to  accomodate  
+         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+		virtual void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+Sets the bounds of the parametric interval on  
+         the function  
+         This determines the derivatives in these values if the  
+         function is not Cn.") SetInterval;
+		virtual void SetInterval (const Standard_Real First,const Standard_Real Last);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+Gets the bounds of the parametric interval on  
+         the function") GetInterval;
+		virtual void GetInterval (Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+Gets the bounds of the function parametric domain.  
+ Warning: This domain it is  not modified by the  
+         SetValue method") GetDomain;
+		virtual void GetDomain (Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	BoundTol(Standard_Real)
+	SurfTol(Standard_Real)
+	AngleTol(Standard_Real)
+	Tol3d(TColStd_Array1OfReal)
+
+Returns:
+	virtual void
+
+Returns the tolerances associated at each poles to  
+         reach  in approximation, to satisfy: BoundTol error  
+         at the   Boundary  AngleTol tangent error  at  the  
+         Boundary  (in radian)  SurfTol   error inside the  
+         surface.") GetTolerance;
+		virtual void GetTolerance (const Standard_Real BoundTol,const Standard_Real SurfTol,const Standard_Real AngleTol,TColStd_Array1OfReal & Tol3d);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual gp_Pnt
+
+Get the barycentre of Surface.  
+         An   very  poor estimation is sufficent.  
+         This information is usefull to perform well  
+         conditioned rational approximation.  
+ Warning: Used only if <self> IsRational") BarycentreOfSurf;
+		virtual gp_Pnt BarycentreOfSurf ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Real
+
+Returns the   length of the greater section. This  
+         information is usefull to G1's control.  
+ Warning: With an little value, approximation can be slower.") MaximalSection;
+		virtual Standard_Real MaximalSection ();
+		%feature("autodoc", "Args:
+	Weigths(TColStd_Array1OfReal)
+
+Returns:
+	virtual void
+
+Compute the minimal value of weight for each poles  
+         in all  sections.  
+         This information is  usefull to control error  
+         in rational approximation.  
+ Warning: Used only if <self> IsRational") GetMinimalWeight;
+		virtual void GetMinimalWeight (TColStd_Array1OfReal & Weigths);
+		%feature("autodoc", "Args:
+	Error(Standard_Real)
+
+Returns:
+	virtual Standard_Boolean
+
+return True") IsConstant;
+		virtual Standard_Boolean IsConstant (Standard_Real &OutValue);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Handle_Geom_Curve
+
+Return the constant Section if <self>  IsConstant.") ConstantSection;
+		virtual Handle_Geom_Curve ConstantSection ();
+};
+
+
+%feature("shadow") GeomFill_UniformSection::~GeomFill_UniformSection %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_UniformSection {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_UniformSection {
+	Handle_GeomFill_UniformSection GetHandle() {
+	return *(Handle_GeomFill_UniformSection*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_UniformSection;
+class Handle_GeomFill_UniformSection : public Handle_GeomFill_SectionLaw {
+
+    public:
+        // constructors
+        Handle_GeomFill_UniformSection();
+        Handle_GeomFill_UniformSection(const Handle_GeomFill_UniformSection &aHandle);
+        Handle_GeomFill_UniformSection(const GeomFill_UniformSection *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_UniformSection DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_UniformSection {
+    GeomFill_UniformSection* GetObject() {
+    return (GeomFill_UniformSection*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_UniformSection::~Handle_GeomFill_UniformSection %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_UniformSection {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_GuideTrihedronAC;
+class GeomFill_GuideTrihedronAC : public GeomFill_TrihedronWithGuide {
+	public:
+		%feature("autodoc", "Args:
+	guide(Handle_Adaptor3d_HCurve)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_GuideTrihedronAC;
+		 GeomFill_GuideTrihedronAC (const Handle_Adaptor3d_HCurve & guide);
+		%feature("autodoc", "Args:
+	C(Handle_Adaptor3d_HCurve)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") SetCurve;
+		virtual void SetCurve (const Handle_Adaptor3d_HCurve & C);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Handle_GeomFill_TrihedronLaw
+
+No detailed docstring for this function.") Copy;
+		virtual Handle_GeomFill_TrihedronLaw Copy ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Handle_Adaptor3d_HCurve
+
+No detailed docstring for this function.") Guide;
+		virtual Handle_Adaptor3d_HCurve Guide ();
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	Normal(gp_Vec)
+	BiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+No detailed docstring for this function.") D0;
+		virtual Standard_Boolean D0 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & Normal,gp_Vec & BiNormal);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	DTangent(gp_Vec)
+	Normal(gp_Vec)
+	DNormal(gp_Vec)
+	BiNormal(gp_Vec)
+	DBiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+No detailed docstring for this function.") D1;
+		virtual Standard_Boolean D1 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & DTangent,gp_Vec & Normal,gp_Vec & DNormal,gp_Vec & BiNormal,gp_Vec & DBiNormal);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	DTangent(gp_Vec)
+	D2Tangent(gp_Vec)
+	Normal(gp_Vec)
+	DNormal(gp_Vec)
+	D2Normal(gp_Vec)
+	BiNormal(gp_Vec)
+	DBiNormal(gp_Vec)
+	D2BiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+No detailed docstring for this function.") D2;
+		virtual Standard_Boolean D2 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & DTangent,gp_Vec & D2Tangent,gp_Vec & Normal,gp_Vec & DNormal,gp_Vec & D2Normal,gp_Vec & BiNormal,gp_Vec & DBiNormal,gp_Vec & D2BiNormal);
+		%feature("autodoc", "Args:
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual Standard_Integer
+
+Returns  the number  of  intervals for  continuity  
+         <S>.  
+         May be one if Continuity(me) >= <S>") NbIntervals;
+		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	T(TColStd_Array1OfReal)
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual void
+
+Stores in <T> the  parameters bounding the intervals  
+         of continuity <S>.  
+ 
+         The array must provide  enough room to  accomodate  
+         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+		virtual void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+Sets the bounds of the parametric interval on  
+         the function  
+         This determines the derivatives in these values if the  
+         function is not Cn.") SetInterval;
+		virtual void SetInterval (const Standard_Real First,const Standard_Real Last);
+		%feature("autodoc", "Args:
+	ATangent(gp_Vec)
+	ANormal(gp_Vec)
+	ABiNormal(gp_Vec)
+
+Returns:
+	virtual void
+
+Get average value of M(t) and V(t) it is usfull to  
+         make fast approximation of rational  surfaces.") GetAverageLaw;
+		virtual void GetAverageLaw (gp_Vec & ATangent,gp_Vec & ANormal,gp_Vec & ABiNormal);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Say if the law is Constant") IsConstant;
+		virtual Standard_Boolean IsConstant ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Say if the law is defined, only by the 3d Geometry of  
+         the setted Curve  
+         Return False by Default.") IsOnlyBy3dCurve;
+		virtual Standard_Boolean IsOnlyBy3dCurve ();
+		%feature("autodoc", "Args:
+	OrACR1(Standard_Real)
+	OrACR2(Standard_Real)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") Origine;
+		virtual void Origine (const Standard_Real OrACR1,const Standard_Real OrACR2);
+};
+
+
+%feature("shadow") GeomFill_GuideTrihedronAC::~GeomFill_GuideTrihedronAC %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_GuideTrihedronAC {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_GuideTrihedronAC {
+	Handle_GeomFill_GuideTrihedronAC GetHandle() {
+	return *(Handle_GeomFill_GuideTrihedronAC*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_GuideTrihedronAC;
+class Handle_GeomFill_GuideTrihedronAC : public Handle_GeomFill_TrihedronWithGuide {
+
+    public:
+        // constructors
+        Handle_GeomFill_GuideTrihedronAC();
+        Handle_GeomFill_GuideTrihedronAC(const Handle_GeomFill_GuideTrihedronAC &aHandle);
+        Handle_GeomFill_GuideTrihedronAC(const GeomFill_GuideTrihedronAC *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_GuideTrihedronAC DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_GuideTrihedronAC {
+    GeomFill_GuideTrihedronAC* GetObject() {
+    return (GeomFill_GuideTrihedronAC*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_GuideTrihedronAC::~Handle_GeomFill_GuideTrihedronAC %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_GuideTrihedronAC {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor GeomFill_GuideTrihedronPlan;
+class GeomFill_GuideTrihedronPlan : public GeomFill_TrihedronWithGuide {
+	public:
+		%feature("autodoc", "Args:
+	theGuide(Handle_Adaptor3d_HCurve)
+
+Returns:
+	None
+
+No detailed docstring for this function.") GeomFill_GuideTrihedronPlan;
+		 GeomFill_GuideTrihedronPlan (const Handle_Adaptor3d_HCurve & theGuide);
+		%feature("autodoc", "Args:
+	thePath(Handle_Adaptor3d_HCurve)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") SetCurve;
+		virtual void SetCurve (const Handle_Adaptor3d_HCurve & thePath);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Handle_GeomFill_TrihedronLaw
+
+No detailed docstring for this function.") Copy;
+		virtual Handle_GeomFill_TrihedronLaw Copy ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual GeomFill_PipeError
+
+//!Give a status to the Law  
+        Returns PipeOk (default implementation)") ErrorStatus;
+		virtual GeomFill_PipeError ErrorStatus ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Handle_Adaptor3d_HCurve
+
+No detailed docstring for this function.") Guide;
+		virtual Handle_Adaptor3d_HCurve Guide ();
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	Normal(gp_Vec)
+	BiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+No detailed docstring for this function.") D0;
+		virtual Standard_Boolean D0 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & Normal,gp_Vec & BiNormal);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	DTangent(gp_Vec)
+	Normal(gp_Vec)
+	DNormal(gp_Vec)
+	BiNormal(gp_Vec)
+	DBiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+No detailed docstring for this function.") D1;
+		virtual Standard_Boolean D1 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & DTangent,gp_Vec & Normal,gp_Vec & DNormal,gp_Vec & BiNormal,gp_Vec & DBiNormal);
+		%feature("autodoc", "Args:
+	Param(Standard_Real)
+	Tangent(gp_Vec)
+	DTangent(gp_Vec)
+	D2Tangent(gp_Vec)
+	Normal(gp_Vec)
+	DNormal(gp_Vec)
+	D2Normal(gp_Vec)
+	BiNormal(gp_Vec)
+	DBiNormal(gp_Vec)
+	D2BiNormal(gp_Vec)
+
+Returns:
+	virtual Standard_Boolean
+
+No detailed docstring for this function.") D2;
+		virtual Standard_Boolean D2 (const Standard_Real Param,gp_Vec & Tangent,gp_Vec & DTangent,gp_Vec & D2Tangent,gp_Vec & Normal,gp_Vec & DNormal,gp_Vec & D2Normal,gp_Vec & BiNormal,gp_Vec & DBiNormal,gp_Vec & D2BiNormal);
+		%feature("autodoc", "Args:
+	First(Standard_Real)
+	Last(Standard_Real)
+
+Returns:
+	virtual void
+
+Sets the bounds of the parametric interval on  
+         the function  
+         This determines the derivatives in these values if the  
+         function is not Cn.") SetInterval;
+		virtual void SetInterval (const Standard_Real First,const Standard_Real Last);
+		%feature("autodoc", "Args:
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual Standard_Integer
+
+Returns  the number  of  intervals for  continuity  
+         <S>.  
+         May be one if Continuity(me) >= <S>") NbIntervals;
+		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	T(TColStd_Array1OfReal)
+	S(GeomAbs_Shape)
+
+Returns:
+	virtual void
+
+Stores in <T> the  parameters bounding the intervals  
+         of continuity <S>.  
+ 
+         The array must provide  enough room to  accomodate  
+         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+		virtual void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		%feature("autodoc", "Args:
+	ATangent(gp_Vec)
+	ANormal(gp_Vec)
+	ABiNormal(gp_Vec)
+
+Returns:
+	virtual void
+
+Get average value of M(t) and V(t) it is usfull to  
+         make fast approximation of rational  surfaces.") GetAverageLaw;
+		virtual void GetAverageLaw (gp_Vec & ATangent,gp_Vec & ANormal,gp_Vec & ABiNormal);
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Say if the law is Constant") IsConstant;
+		virtual Standard_Boolean IsConstant ();
+		%feature("autodoc", "Args:
+	None
+Returns:
+	virtual Standard_Boolean
+
+Say if the law is defined, only by the 3d Geometry of  
+         the setted Curve  
+         Return False by Default.") IsOnlyBy3dCurve;
+		virtual Standard_Boolean IsOnlyBy3dCurve ();
+		%feature("autodoc", "Args:
+	OrACR1(Standard_Real)
+	OrACR2(Standard_Real)
+
+Returns:
+	virtual void
+
+No detailed docstring for this function.") Origine;
+		virtual void Origine (const Standard_Real OrACR1,const Standard_Real OrACR2);
+};
+
+
+%feature("shadow") GeomFill_GuideTrihedronPlan::~GeomFill_GuideTrihedronPlan %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend GeomFill_GuideTrihedronPlan {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend GeomFill_GuideTrihedronPlan {
+	Handle_GeomFill_GuideTrihedronPlan GetHandle() {
+	return *(Handle_GeomFill_GuideTrihedronPlan*) &$self;
+	}
+};
+
+%nodefaultctor Handle_GeomFill_GuideTrihedronPlan;
+class Handle_GeomFill_GuideTrihedronPlan : public Handle_GeomFill_TrihedronWithGuide {
+
+    public:
+        // constructors
+        Handle_GeomFill_GuideTrihedronPlan();
+        Handle_GeomFill_GuideTrihedronPlan(const Handle_GeomFill_GuideTrihedronPlan &aHandle);
+        Handle_GeomFill_GuideTrihedronPlan(const GeomFill_GuideTrihedronPlan *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_GeomFill_GuideTrihedronPlan DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_GeomFill_GuideTrihedronPlan {
+    GeomFill_GuideTrihedronPlan* GetObject() {
+    return (GeomFill_GuideTrihedronPlan*)$self->Access();
+    }
+};
+%feature("shadow") Handle_GeomFill_GuideTrihedronPlan::~Handle_GeomFill_GuideTrihedronPlan %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_GeomFill_GuideTrihedronPlan {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+

@@ -1,0 +1,65 @@
+OVERVIEW:
+========
+
+pythonOCC is a python library whose purpose is to provide 3D modeling features
+as well as parametric modeling, data exchange, meshing etc. It's intended to
+developers who aim at developing a complete CAD/PLM application, and to
+engineers who want to have a total control over the data during complex design
+activities.
+
+ABOUT THIS DOCUMENT:
+====================
+
+This file explains how to build pythonOCC-core from source on Windows, Linux or
+MacOSX platforms.
+
+REQUIREMENTS:
+=============
+
+pythonOCC needs the following libraries or programs to be installed before you
+can compile/use it :
+
+- the python programming language (http://www.python.org). Python 2.5 or
+higher is required,
+
+- SWIG 1.3.36 or higher,
+
+- OCE 0.16 (https://github.com/tpaviot/oce),
+
+- CMake 2.8 or higher (http://www.cmake.org)
+
+
+PYTHON WRAPPER COMPILATION:
+===========================
+cd to the root pythonocc directory:
+your_dev_folder/$cd pythonocc
+your_dev_folder/pythonocc$
+
+Create a work directory:
+your_dev_folder/pythonocc$ mkdir cmake-build
+your_dev_folder/pythonocc$ mkdir cd cmake-build
+your_dev_folder/pythonocc/cmake-build$
+
+Launch the cmake-gui:
+your_dev_folder/pythonocc/cmake-build$ cmake-gui ..
+
+Check :
+* the oce include and lib directories,
+* the install path (default points to the default site-packages directory)
+
+Then
+your_dev_folder/pythonocc/cmake-build$ make
+
+When completed ([100%] done), install the python package:
+your_dev_folder/pythonocc/cmake-build$ make install
+
+(you may have to sudo make install if admin privileges are required)
+
+TEST:
+=====
+You can either run the unittest suite to check that everything is ok:
+your_dev_folder/pythonocc/cmake-build$ cd ../tests
+
+your_dev_folder/pythonocc/src/unittests$ python run_tests.py
+
+You can also run the examples avalaible from the examples directory.
