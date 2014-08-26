@@ -1,15 +1,7 @@
+[![license](https://binstar.org/jf/pythonocc-core/badges/license.svg)](https://github.com/tpaviot/pythonocc-core/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/tpaviot/pythonocc-core.png?branch=master)](https://travis-ci.org/tpaviot/pythonocc-core)
+[![Conda installer](https://binstar.org/jf/pythonocc-core/badges/installer/conda.svg)](https://binstar.org/jf/pythonocc-core/)
 pythonocc-core
 ==============
 
 A python wrapper for the [OCE](https://github.com/tpaviot/oce) library
-
-pythonocc is composed of a number of packages:
-    - [pythonocc-dataexchange](https://github.com/tpaviot/pythonocc-dataexchange)
-    - [pythonocc-examples](https://github.com/tpaviot/pythonocc-examples)
-    
-additional functionality is provided by the [GEOM]
-(http://youtu.be/ZUCv7COgzU0?t=33s) and [SMESH]
-(http://www.pythonocc.org/resources/meshing/pythonocc-and-smesh/) in respectively parametric modeling and FEM meshing 
-    
-    - [pythonocc-smesh](https://github.com/tpaviot/pythonocc-smesh)
-    - [pythonocc-geom](https://github.com/tpaviot/pythonocc-geom)
