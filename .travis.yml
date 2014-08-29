@@ -1,0 +1,23 @@
+language: cpp
+compiler:
+  - gcc
+  - clang
+before_install:
+   - sudo apt-get install swig
+   - sudo add-apt-repository "deb http://ppa.launchpad.net/freecad-maintainers/oce-release/ubuntu precise main" -y
+   - sudo apt-get update -q
+   - sudo apt-get install liboce-ocaf-dev oce-draw
+before_script:
+  - mkdir cmake-build
+  - cd cmake-build
+#  Depth is necessary, otherwise DRAWEXE exits with this message:
+#    Tcl Exception: ** Exception ** 0x7fee03adb307 : Aspect_WindowDefinitionError: Xw_Window, couldn't find compatible Visual (RGBA, double-buffered)
+script: xvfb-run -s "-screen 0 1024x768x16" ../.travis.build.sh
+after_script:
+# run unittest suite
+  - cd ../test
+  - python run_tests.py
+branches:
+  only:
+    - master
+    - /^review/
