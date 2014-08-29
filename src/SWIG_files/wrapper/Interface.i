@@ -2037,14 +2037,20 @@ Returns:
 
 No detailed docstring for this function.") Key;
 		Handle_Standard_Transient & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Value;
-		Standard_Integer & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetValue() {
+                return (Standard_Integer) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Integer value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") Interface_DataMapNodeOfDataMapOfTransientInteger::~Interface_DataMapNodeOfDataMapOfTransientInteger %{
@@ -5114,14 +5120,20 @@ Returns:
 
 No detailed docstring for this function.") Key1;
 		TCollection_AsciiString & Key1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key2;
-		Standard_Integer & Key2 ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey2() {
+                return (Standard_Integer) $self->Key2();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey2(Standard_Integer value ) {
+                $self->Key2()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	TCollection_MapNodePtr
@@ -5495,14 +5507,20 @@ Returns:
 
 No detailed docstring for this function.") Value;
 		Standard_Integer Value ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") CValue;
-		Standard_Integer & CValue ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetCValue() {
+                return (Standard_Integer) $self->CValue();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetCValue(Standard_Integer value ) {
+                $self->CValue()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") Interface_IntVal::~Interface_IntVal %{
@@ -5601,17 +5619,20 @@ Returns:
 
 Returns the GTool, set by SetProtocol or by SetGTool") GTool;
 		Handle_Interface_GTool GTool ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
 
-Returns the Dispatch Status, either for get or set  
-          A Model which is produced from Dispatch may share entities  
-          with the original (according to the Protocol), hence these  
-          non-copied entities should not be deleted") DispatchStatus;
-		Standard_Boolean & DispatchStatus ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetDispatchStatus() {
+                return (Standard_Boolean) $self->DispatchStatus();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetDispatchStatus(Standard_Boolean value ) {
+                $self->DispatchStatus()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	virtual void

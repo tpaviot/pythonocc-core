@@ -1252,20 +1252,20 @@ Creates an extracted EditForm from an Editor, limited to
           the values identified in <nums>  
           A specific Label can be given") IFSelect_EditForm;
 		 IFSelect_EditForm (const Handle_IFSelect_Editor & editor,const TColStd_SequenceOfInteger & nums,const Standard_Boolean readonly,const Standard_Boolean undoable,const char * label = "");
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
 
-Returns and may change the keep status on modif  
-          It starts as False  
-          If it is True, Apply does not clear modification status  
-          and the EditForm can be loaded again, modified value remain  
-          and may be applied again  
-          Remark that ApplyData does not clear the modification status,  
-          a call to ClearEdit does") EditKeepStatus;
-		Standard_Boolean & EditKeepStatus ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetEditKeepStatus() {
+                return (Standard_Boolean) $self->EditKeepStatus();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetEditKeepStatus(Standard_Boolean value ) {
+                $self->EditKeepStatus()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	char *
@@ -5665,18 +5665,20 @@ Returns:
 Changes the record-list status. The list is not cleared but  
           its use changes") SetList;
 		void SetList (const Standard_Boolean withlist);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
 
-Returns modifiable the SignOnly Mode  
-          If False (D), the counter normally counts  
-          If True, the counting work is turned off, Add only fills the  
-          LastValue, which can be used as signature, when a counter  
-          works from data which are not available from a Signature") ModeSignOnly;
-		Standard_Boolean & ModeSignOnly ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetModeSignOnly() {
+                return (Standard_Boolean) $self->ModeSignOnly();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetModeSignOnly(Standard_Boolean value ) {
+                $self->ModeSignOnly()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	virtual void

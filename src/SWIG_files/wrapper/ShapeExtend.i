@@ -1883,18 +1883,20 @@ Returns sequence of non-manifold edges
          This sequence can be not empty if wire data set in manifold mode but  
          initial wire has INTERNAL orientation or contains INTERNAL edges") NonmanifoldEdges;
 		Handle_TopTools_HSequenceOfShape NonmanifoldEdges ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
 
-Returns mode defining manifold wire data or not.  
-         If manifold that nonmanifold edges will not be not  
-         consider during operations(previous behaviour)  
-        and they will be added only in result wire  
-         else non-manifold edges will consider during operations") ManifoldMode;
-		Standard_Boolean & ManifoldMode ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetManifoldMode() {
+                return (Standard_Boolean) $self->ManifoldMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetManifoldMode(Standard_Boolean value ) {
+                $self->ManifoldMode()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	num(Standard_Integer)
 
 Returns:

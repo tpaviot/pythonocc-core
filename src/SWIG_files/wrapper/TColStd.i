@@ -2288,14 +2288,20 @@ Returns:
 
 No detailed docstring for this function.") Key;
 		TCollection_AsciiString & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Value;
-		Standard_Integer & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetValue() {
+                return (Standard_Integer) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Integer value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TColStd_DataMapNodeOfDataMapOfAsciiStringInteger::~TColStd_DataMapNodeOfDataMapOfAsciiStringInteger %{
@@ -2364,21 +2370,33 @@ Returns:
 
 No detailed docstring for this function.") TColStd_DataMapNodeOfDataMapOfIntegerInteger;
 		 TColStd_DataMapNodeOfDataMapOfIntegerInteger (Standard_Integer &OutValue,Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key;
-		Standard_Integer & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Value;
-		Standard_Integer & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey() {
+                return (Standard_Integer) $self->Key();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey(Standard_Integer value ) {
+                $self->Key()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetValue() {
+                return (Standard_Integer) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Integer value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TColStd_DataMapNodeOfDataMapOfIntegerInteger::~TColStd_DataMapNodeOfDataMapOfIntegerInteger %{
@@ -2447,14 +2465,20 @@ Returns:
 
 No detailed docstring for this function.") TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger;
 		 TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger (Standard_Integer &OutValue,const TColStd_ListOfInteger & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key;
-		Standard_Integer & Key ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey() {
+                return (Standard_Integer) $self->Key();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey(Standard_Integer value ) {
+                $self->Key()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	TColStd_ListOfInteger
@@ -2530,21 +2554,33 @@ Returns:
 
 No detailed docstring for this function.") TColStd_DataMapNodeOfDataMapOfIntegerReal;
 		 TColStd_DataMapNodeOfDataMapOfIntegerReal (Standard_Integer &OutValue,Standard_Real &OutValue,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key;
-		Standard_Integer & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Value;
-		Standard_Real & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey() {
+                return (Standard_Integer) $self->Key();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey(Standard_Integer value ) {
+                $self->Key()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetValue() {
+                return (Standard_Real) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Real value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TColStd_DataMapNodeOfDataMapOfIntegerReal::~TColStd_DataMapNodeOfDataMapOfIntegerReal %{
@@ -2613,14 +2649,20 @@ Returns:
 
 No detailed docstring for this function.") TColStd_DataMapNodeOfDataMapOfIntegerTransient;
 		 TColStd_DataMapNodeOfDataMapOfIntegerTransient (Standard_Integer &OutValue,const Handle_Standard_Transient & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key;
-		Standard_Integer & Key ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey() {
+                return (Standard_Integer) $self->Key();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey(Standard_Integer value ) {
+                $self->Key()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	Handle_Standard_Transient
@@ -2703,14 +2745,20 @@ Returns:
 
 No detailed docstring for this function.") Key;
 		TCollection_ExtendedString & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Value;
-		Standard_Integer & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetValue() {
+                return (Standard_Integer) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Integer value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TColStd_DataMapNodeOfDataMapOfStringInteger::~TColStd_DataMapNodeOfDataMapOfStringInteger %{
@@ -8166,14 +8214,20 @@ Returns:
 
 No detailed docstring for this function.") Key1;
 		Handle_Standard_Transient & Key1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key2;
-		Standard_Integer & Key2 ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey2() {
+                return (Standard_Integer) $self->Key2();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey2(Standard_Integer value ) {
+                $self->Key2()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	TCollection_MapNodePtr
@@ -8414,21 +8468,33 @@ Returns:
 
 No detailed docstring for this function.") TColStd_IndexedMapNodeOfIndexedMapOfInteger;
 		 TColStd_IndexedMapNodeOfIndexedMapOfInteger (Standard_Integer &OutValue,const Standard_Integer K2,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key1;
-		Standard_Integer & Key1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Key2;
-		Standard_Integer & Key2 ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey1() {
+                return (Standard_Integer) $self->Key1();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey1(Standard_Integer value ) {
+                $self->Key1()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey2() {
+                return (Standard_Integer) $self->Key2();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey2(Standard_Integer value ) {
+                $self->Key2()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	TCollection_MapNodePtr
@@ -8505,21 +8571,33 @@ Returns:
 
 No detailed docstring for this function.") TColStd_IndexedMapNodeOfIndexedMapOfReal;
 		 TColStd_IndexedMapNodeOfIndexedMapOfReal (Standard_Real &OutValue,const Standard_Integer K2,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
 
-No detailed docstring for this function.") Key1;
-		Standard_Real & Key1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Key2;
-		Standard_Integer & Key2 ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetKey1() {
+                return (Standard_Real) $self->Key1();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey1(Standard_Real value ) {
+                $self->Key1()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey2() {
+                return (Standard_Integer) $self->Key2();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey2(Standard_Integer value ) {
+                $self->Key2()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	TCollection_MapNodePtr
@@ -8603,14 +8681,20 @@ Returns:
 
 No detailed docstring for this function.") Key1;
 		Handle_Standard_Transient & Key1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key2;
-		Standard_Integer & Key2 ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey2() {
+                return (Standard_Integer) $self->Key2();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey2(Standard_Integer value ) {
+                $self->Key2()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	TCollection_MapNodePtr
@@ -9098,14 +9182,20 @@ Returns:
 
 No detailed docstring for this function.") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Value;
-		Standard_Integer & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetValue() {
+                return (Standard_Integer) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Integer value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TColStd_ListIteratorOfListOfInteger::~TColStd_ListIteratorOfListOfInteger %{
@@ -9162,14 +9252,20 @@ Returns:
 
 No detailed docstring for this function.") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
 
-No detailed docstring for this function.") Value;
-		Standard_Real & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetValue() {
+                return (Standard_Real) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Real value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TColStd_ListIteratorOfListOfReal::~TColStd_ListIteratorOfListOfReal %{
@@ -9290,14 +9386,20 @@ Returns:
 
 No detailed docstring for this function.") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Value;
-		Standard_Integer & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetValue() {
+                return (Standard_Integer) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Integer value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TColStd_ListIteratorOfSetListOfSetOfInteger::~TColStd_ListIteratorOfSetListOfSetOfInteger %{
@@ -9354,14 +9456,20 @@ Returns:
 
 No detailed docstring for this function.") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
 
-No detailed docstring for this function.") Value;
-		Standard_Real & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetValue() {
+                return (Standard_Real) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Real value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TColStd_ListIteratorOfSetListOfSetOfReal::~TColStd_ListIteratorOfSetListOfSetOfReal %{
@@ -9529,14 +9637,20 @@ Returns:
 
 No detailed docstring for this function.") TColStd_ListNodeOfListOfInteger;
 		 TColStd_ListNodeOfListOfInteger (Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Value;
-		Standard_Integer & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetValue() {
+                return (Standard_Integer) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Integer value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TColStd_ListNodeOfListOfInteger::~TColStd_ListNodeOfListOfInteger %{
@@ -9604,14 +9718,20 @@ Returns:
 
 No detailed docstring for this function.") TColStd_ListNodeOfListOfReal;
 		 TColStd_ListNodeOfListOfReal (Standard_Real &OutValue,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
 
-No detailed docstring for this function.") Value;
-		Standard_Real & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetValue() {
+                return (Standard_Real) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Real value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TColStd_ListNodeOfListOfReal::~TColStd_ListNodeOfListOfReal %{
@@ -9754,14 +9874,20 @@ Returns:
 
 No detailed docstring for this function.") TColStd_ListNodeOfSetListOfSetOfInteger;
 		 TColStd_ListNodeOfSetListOfSetOfInteger (Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Value;
-		Standard_Integer & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetValue() {
+                return (Standard_Integer) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Integer value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TColStd_ListNodeOfSetListOfSetOfInteger::~TColStd_ListNodeOfSetListOfSetOfInteger %{
@@ -9829,14 +9955,20 @@ Returns:
 
 No detailed docstring for this function.") TColStd_ListNodeOfSetListOfSetOfReal;
 		 TColStd_ListNodeOfSetListOfSetOfReal (Standard_Real &OutValue,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
 
-No detailed docstring for this function.") Value;
-		Standard_Real & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetValue() {
+                return (Standard_Real) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Real value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TColStd_ListNodeOfSetListOfSetOfReal::~TColStd_ListNodeOfSetListOfSetOfReal %{
@@ -10243,21 +10375,33 @@ Returns:
 
 No detailed docstring for this function.") Append;
 		void Append (TColStd_ListOfInteger & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") First;
-		Standard_Integer & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Last;
-		Standard_Integer & Last ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFirst() {
+                return (Standard_Integer) $self->First();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFirst(Standard_Integer value ) {
+                $self->First()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetLast() {
+                return (Standard_Integer) $self->Last();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetLast(Standard_Integer value ) {
+                $self->Last()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	None
@@ -10422,21 +10566,33 @@ Returns:
 
 No detailed docstring for this function.") Append;
 		void Append (TColStd_ListOfReal & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
 
-No detailed docstring for this function.") First;
-		Standard_Real & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Last;
-		Standard_Real & Last ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetFirst() {
+                return (Standard_Real) $self->First();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFirst(Standard_Real value ) {
+                $self->First()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetLast() {
+                return (Standard_Real) $self->Last();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetLast(Standard_Real value ) {
+                $self->Last()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	None
@@ -11755,14 +11911,20 @@ Returns:
 
 No detailed docstring for this function.") TColStd_QueueNodeOfQueueOfInteger;
 		 TColStd_QueueNodeOfQueueOfInteger (Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Value;
-		Standard_Integer & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetValue() {
+                return (Standard_Integer) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Integer value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TColStd_QueueNodeOfQueueOfInteger::~TColStd_QueueNodeOfQueueOfInteger %{
@@ -11830,14 +11992,20 @@ Returns:
 
 No detailed docstring for this function.") TColStd_QueueNodeOfQueueOfReal;
 		 TColStd_QueueNodeOfQueueOfReal (Standard_Real &OutValue,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
 
-No detailed docstring for this function.") Value;
-		Standard_Real & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetValue() {
+                return (Standard_Real) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Real value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TColStd_QueueNodeOfQueueOfReal::~TColStd_QueueNodeOfQueueOfReal %{
@@ -12037,14 +12205,20 @@ Returns:
 
 No detailed docstring for this function.") Pop;
 		void Pop ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") ChangeFront;
-		Standard_Integer & ChangeFront ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetChangeFront() {
+                return (Standard_Integer) $self->ChangeFront();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetChangeFront(Standard_Integer value ) {
+                $self->ChangeFront()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TColStd_QueueOfInteger::~TColStd_QueueOfInteger %{
@@ -12130,14 +12304,20 @@ Returns:
 
 No detailed docstring for this function.") Pop;
 		void Pop ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
 
-No detailed docstring for this function.") ChangeFront;
-		Standard_Real & ChangeFront ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetChangeFront() {
+                return (Standard_Real) $self->ChangeFront();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetChangeFront(Standard_Real value ) {
+                $self->ChangeFront()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TColStd_QueueOfReal::~TColStd_QueueOfReal %{
@@ -12412,14 +12592,20 @@ Returns:
 
 No detailed docstring for this function.") TColStd_SequenceNodeOfSequenceOfBoolean;
 		 TColStd_SequenceNodeOfSequenceOfBoolean (const Standard_Boolean & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
 
-No detailed docstring for this function.") Value;
-		Standard_Boolean & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetValue() {
+                return (Standard_Boolean) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Boolean value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TColStd_SequenceNodeOfSequenceOfBoolean::~TColStd_SequenceNodeOfSequenceOfBoolean %{
@@ -12716,14 +12902,20 @@ Returns:
 
 No detailed docstring for this function.") TColStd_SequenceNodeOfSequenceOfInteger;
 		 TColStd_SequenceNodeOfSequenceOfInteger (Standard_Integer &OutValue,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Value;
-		Standard_Integer & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetValue() {
+                return (Standard_Integer) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Integer value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TColStd_SequenceNodeOfSequenceOfInteger::~TColStd_SequenceNodeOfSequenceOfInteger %{
@@ -12792,14 +12984,20 @@ Returns:
 
 No detailed docstring for this function.") TColStd_SequenceNodeOfSequenceOfReal;
 		 TColStd_SequenceNodeOfSequenceOfReal (Standard_Real &OutValue,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
 
-No detailed docstring for this function.") Value;
-		Standard_Real & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetValue() {
+                return (Standard_Real) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Real value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TColStd_SequenceNodeOfSequenceOfReal::~TColStd_SequenceNodeOfSequenceOfReal %{
@@ -14867,21 +15065,33 @@ Returns:
 
 No detailed docstring for this function.") Append;
 		void Append (TColStd_SetListOfSetOfInteger & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") First;
-		Standard_Integer & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Last;
-		Standard_Integer & Last ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFirst() {
+                return (Standard_Integer) $self->First();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFirst(Standard_Integer value ) {
+                $self->First()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetLast() {
+                return (Standard_Integer) $self->Last();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetLast(Standard_Integer value ) {
+                $self->Last()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	None
@@ -15046,21 +15256,33 @@ Returns:
 
 No detailed docstring for this function.") Append;
 		void Append (TColStd_SetListOfSetOfReal & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
 
-No detailed docstring for this function.") First;
-		Standard_Real & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Last;
-		Standard_Real & Last ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetFirst() {
+                return (Standard_Real) $self->First();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFirst(Standard_Real value ) {
+                $self->First()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetLast() {
+                return (Standard_Real) $self->Last();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetLast(Standard_Real value ) {
+                $self->Last()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	None
@@ -15847,14 +16069,20 @@ Returns:
 
 No detailed docstring for this function.") TColStd_StackNodeOfStackOfInteger;
 		 TColStd_StackNodeOfStackOfInteger (Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Value;
-		Standard_Integer & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetValue() {
+                return (Standard_Integer) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Integer value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TColStd_StackNodeOfStackOfInteger::~TColStd_StackNodeOfStackOfInteger %{
@@ -15922,14 +16150,20 @@ Returns:
 
 No detailed docstring for this function.") TColStd_StackNodeOfStackOfReal;
 		 TColStd_StackNodeOfStackOfReal (Standard_Real &OutValue,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
 
-No detailed docstring for this function.") Value;
-		Standard_Real & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetValue() {
+                return (Standard_Real) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Real value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TColStd_StackNodeOfStackOfReal::~TColStd_StackNodeOfStackOfReal %{
@@ -16129,14 +16363,20 @@ Returns:
 
 No detailed docstring for this function.") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") ChangeTop;
-		Standard_Integer & ChangeTop ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetChangeTop() {
+                return (Standard_Integer) $self->ChangeTop();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetChangeTop(Standard_Integer value ) {
+                $self->ChangeTop()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TColStd_StackOfInteger::~TColStd_StackOfInteger %{
@@ -16222,14 +16462,20 @@ Returns:
 
 No detailed docstring for this function.") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
 
-No detailed docstring for this function.") ChangeTop;
-		Standard_Real & ChangeTop ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetChangeTop() {
+                return (Standard_Real) $self->ChangeTop();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetChangeTop(Standard_Real value ) {
+                $self->ChangeTop()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TColStd_StackOfReal::~TColStd_StackOfReal %{
@@ -16426,14 +16672,20 @@ Returns:
 
 No detailed docstring for this function.") TColStd_StdMapNodeOfMapOfInteger;
 		 TColStd_StdMapNodeOfMapOfInteger (Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key;
-		Standard_Integer & Key ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey() {
+                return (Standard_Integer) $self->Key();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey(Standard_Integer value ) {
+                $self->Key()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TColStd_StdMapNodeOfMapOfInteger::~TColStd_StdMapNodeOfMapOfInteger %{
@@ -16501,14 +16753,20 @@ Returns:
 
 No detailed docstring for this function.") TColStd_StdMapNodeOfMapOfReal;
 		 TColStd_StdMapNodeOfMapOfReal (Standard_Real &OutValue,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
 
-No detailed docstring for this function.") Key;
-		Standard_Real & Key ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetKey() {
+                return (Standard_Real) $self->Key();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey(Standard_Real value ) {
+                $self->Key()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TColStd_StdMapNodeOfMapOfReal::~TColStd_StdMapNodeOfMapOfReal %{

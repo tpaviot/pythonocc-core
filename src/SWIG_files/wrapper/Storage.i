@@ -3232,28 +3232,40 @@ Returns:
 
 No detailed docstring for this function.") Key1;
 		TCollection_AsciiString & Key1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key2;
-		Standard_Integer & Key2 ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey2() {
+                return (Standard_Integer) $self->Key2();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey2(Standard_Integer value ) {
+                $self->Key2()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	TCollection_MapNodePtr
 
 No detailed docstring for this function.") Next2;
 		TCollection_MapNodePtr & Next2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Value;
-		Standard_Integer & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetValue() {
+                return (Standard_Integer) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Integer value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") Storage_IndexedDataMapNodeOfPType::~Storage_IndexedDataMapNodeOfPType %{

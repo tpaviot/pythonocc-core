@@ -143,14 +143,20 @@ Returns:
 
 No detailed docstring for this function.") Left;
 		TCollection_AVLBaseNodePtr & Left ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Count;
-		Standard_Integer & Count ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetCount() {
+                return (Standard_Integer) $self->Count();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetCount(Standard_Integer value ) {
+                $self->Count()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TCollection_AVLBaseNode::~TCollection_AVLBaseNode %{

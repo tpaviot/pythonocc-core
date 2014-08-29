@@ -2782,14 +2782,20 @@ Returns:
 
 No detailed docstring for this function.") TColgp_DataMapNodeOfDataMapOfIntegerCirc2d;
 		 TColgp_DataMapNodeOfDataMapOfIntegerCirc2d (Standard_Integer &OutValue,const gp_Circ2d & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key;
-		Standard_Integer & Key ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey() {
+                return (Standard_Integer) $self->Key();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey(Standard_Integer value ) {
+                $self->Key()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	gp_Circ2d

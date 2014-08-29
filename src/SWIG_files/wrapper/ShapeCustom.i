@@ -650,132 +650,215 @@ Returns:
 
 Sets default parameters.") ShapeCustom_RestrictionParameters;
 		 ShapeCustom_RestrictionParameters ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-Returns (modifiable) maximal degree of approximation.") GMaxDegree;
-		Standard_Integer & GMaxDegree ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-Returns (modifiable) maximal number of spans of  
-         approximation.") GMaxSeg;
-		Standard_Integer & GMaxSeg ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-Sets flag for define if Plane converted to BSpline surface.") ConvertPlane;
-		Standard_Boolean & ConvertPlane ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-Sets flag for define if Bezier surface converted to BSpline  
-         surface.") ConvertBezierSurf;
-		Standard_Boolean & ConvertBezierSurf ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-Sets flag for define if surface of Revolution converted to  
-         BSpline surface.") ConvertRevolutionSurf;
-		Standard_Boolean & ConvertRevolutionSurf ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-Sets flag for define if surface of LinearExtrusion converted  
-         to BSpline surface.") ConvertExtrusionSurf;
-		Standard_Boolean & ConvertExtrusionSurf ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-Sets flag for define if Offset surface converted to BSpline  
-         surface.") ConvertOffsetSurf;
-		Standard_Boolean & ConvertOffsetSurf ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-Sets flag for define if cylindrical surface converted to BSpline  
-         surface.") ConvertCylindricalSurf;
-		Standard_Boolean & ConvertCylindricalSurf ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-Sets flag for define if conical surface converted to BSpline  
-         surface.") ConvertConicalSurf;
-		Standard_Boolean & ConvertConicalSurf ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-Sets flag for define if toroidal surface converted to BSpline  
-         surface.") ConvertToroidalSurf;
-		Standard_Boolean & ConvertToroidalSurf ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-Sets flag for define if spherical surface converted to BSpline  
-         surface.") ConvertSphericalSurf;
-		Standard_Boolean & ConvertSphericalSurf ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-Sets Segment mode for surface. If Segment is True surface is  
-         approximated in the bondaries of face lying on this surface.") SegmentSurfaceMode;
-		Standard_Boolean & SegmentSurfaceMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-Sets flag for define if 3d curve converted to BSpline curve.") ConvertCurve3d;
-		Standard_Boolean & ConvertCurve3d ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-Sets flag for define if Offset curve3d converted to BSpline  
-         surface.") ConvertOffsetCurv3d;
-		Standard_Boolean & ConvertOffsetCurv3d ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-Returns (modifiable) flag for define if 2d curve converted  
-         to BSpline curve.") ConvertCurve2d;
-		Standard_Boolean & ConvertCurve2d ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-Returns (modifiable) flag for define if Offset curve2d  
-         converted to BSpline surface.") ConvertOffsetCurv2d;
-		Standard_Boolean & ConvertOffsetCurv2d ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetGMaxDegree() {
+                return (Standard_Integer) $self->GMaxDegree();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetGMaxDegree(Standard_Integer value ) {
+                $self->GMaxDegree()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetGMaxSeg() {
+                return (Standard_Integer) $self->GMaxSeg();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetGMaxSeg(Standard_Integer value ) {
+                $self->GMaxSeg()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetConvertPlane() {
+                return (Standard_Boolean) $self->ConvertPlane();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetConvertPlane(Standard_Boolean value ) {
+                $self->ConvertPlane()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetConvertBezierSurf() {
+                return (Standard_Boolean) $self->ConvertBezierSurf();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetConvertBezierSurf(Standard_Boolean value ) {
+                $self->ConvertBezierSurf()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetConvertRevolutionSurf() {
+                return (Standard_Boolean) $self->ConvertRevolutionSurf();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetConvertRevolutionSurf(Standard_Boolean value ) {
+                $self->ConvertRevolutionSurf()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetConvertExtrusionSurf() {
+                return (Standard_Boolean) $self->ConvertExtrusionSurf();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetConvertExtrusionSurf(Standard_Boolean value ) {
+                $self->ConvertExtrusionSurf()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetConvertOffsetSurf() {
+                return (Standard_Boolean) $self->ConvertOffsetSurf();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetConvertOffsetSurf(Standard_Boolean value ) {
+                $self->ConvertOffsetSurf()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetConvertCylindricalSurf() {
+                return (Standard_Boolean) $self->ConvertCylindricalSurf();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetConvertCylindricalSurf(Standard_Boolean value ) {
+                $self->ConvertCylindricalSurf()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetConvertConicalSurf() {
+                return (Standard_Boolean) $self->ConvertConicalSurf();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetConvertConicalSurf(Standard_Boolean value ) {
+                $self->ConvertConicalSurf()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetConvertToroidalSurf() {
+                return (Standard_Boolean) $self->ConvertToroidalSurf();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetConvertToroidalSurf(Standard_Boolean value ) {
+                $self->ConvertToroidalSurf()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetConvertSphericalSurf() {
+                return (Standard_Boolean) $self->ConvertSphericalSurf();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetConvertSphericalSurf(Standard_Boolean value ) {
+                $self->ConvertSphericalSurf()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetSegmentSurfaceMode() {
+                return (Standard_Boolean) $self->SegmentSurfaceMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetSegmentSurfaceMode(Standard_Boolean value ) {
+                $self->SegmentSurfaceMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetConvertCurve3d() {
+                return (Standard_Boolean) $self->ConvertCurve3d();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetConvertCurve3d(Standard_Boolean value ) {
+                $self->ConvertCurve3d()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetConvertOffsetCurv3d() {
+                return (Standard_Boolean) $self->ConvertOffsetCurv3d();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetConvertOffsetCurv3d(Standard_Boolean value ) {
+                $self->ConvertOffsetCurv3d()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetConvertCurve2d() {
+                return (Standard_Boolean) $self->ConvertCurve2d();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetConvertCurve2d(Standard_Boolean value ) {
+                $self->ConvertCurve2d()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetConvertOffsetCurv2d() {
+                return (Standard_Boolean) $self->ConvertOffsetCurv2d();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetConvertOffsetCurv2d(Standard_Boolean value ) {
+                $self->ConvertOffsetCurv2d()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") ShapeCustom_RestrictionParameters::~ShapeCustom_RestrictionParameters %{

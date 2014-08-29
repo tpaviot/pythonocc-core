@@ -1831,19 +1831,20 @@ Initializes with composite surface, face and precision.
          pcurves. Precision is used (together with tolerance of edges)  
          for handling subtle cases, such as tangential intersections.") Init;
 		void Init (const Handle_ShapeExtend_CompositeSurface & Grid,const TopLoc_Location & L,const TopoDS_Face & Face,const Standard_Real Prec);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
 
-Returns (modifiable) flag for special 'closed'  
-         mode which forces ComposeShell to consider  
-         all pcurves on closed surface as modulo period.  
-         This can reduce reliability, but allows to deal  
-         with wires closed in 3d but open in 2d (missing seam)  
-         Default is False") ClosedMode;
-		Standard_Boolean & ClosedMode ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetClosedMode() {
+                return (Standard_Boolean) $self->ClosedMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetClosedMode(Standard_Boolean value ) {
+                $self->ClosedMode()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	virtual Standard_Boolean
@@ -2058,89 +2059,137 @@ Returns:
 
 Sets maximal allowed tolerance (also to FixWireTool)") SetMaxTolerance;
 		virtual void SetMaxTolerance (const Standard_Real maxtol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-Returns (modifiable) the mode for applying fixes of  
-         ShapeFix_Wire, by default True.") FixWireMode;
-		Standard_Integer & FixWireMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-Returns (modifiable) the fix orientation mode, by default  
-         True. If True, wires oriented to border limited square.") FixOrientationMode;
-		Standard_Integer & FixOrientationMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-Returns (modifiable) the add natural bound mode.  
-         If true, natural boundary is added on faces that miss them.  
-         Default is False for faces with single wire (they are  
-         handled by FixOrientation in that case) and True for others.") FixAddNaturalBoundMode;
-		Standard_Integer & FixAddNaturalBoundMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-Returns (modifiable) the fix missing seam mode, by default  
-         True. If True, tries to insert seam is missed.") FixMissingSeamMode;
-		Standard_Integer & FixMissingSeamMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-Returns (modifiable) the fix small area wire mode, by default  
-         False. If True, drops small wires.") FixSmallAreaWireMode;
-		Standard_Integer & FixSmallAreaWireMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-Returns (modifiable) the fix intersecting wires mode  
-         by default True.") FixIntersectingWiresMode;
-		Standard_Integer & FixIntersectingWiresMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-Returns (modifiable) the fix loop wires mode  
-         by default True.") FixLoopWiresMode;
-		Standard_Integer & FixLoopWiresMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-Returns (modifiable) the fix split face mode  
-         by default True.") FixSplitFaceMode;
-		Standard_Integer & FixSplitFaceMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-Returns (modifiable) the auto-correct precision mode  
-         by default False.") AutoCorrectPrecisionMode;
-		Standard_Integer & AutoCorrectPrecisionMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-Returns (modifiable) the activation flag for periodic  
-         degenerated fix. False by default.") FixPeriodicDegeneratedMode;
-		Standard_Integer & FixPeriodicDegeneratedMode ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixWireMode() {
+                return (Standard_Integer) $self->FixWireMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixWireMode(Standard_Integer value ) {
+                $self->FixWireMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixOrientationMode() {
+                return (Standard_Integer) $self->FixOrientationMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixOrientationMode(Standard_Integer value ) {
+                $self->FixOrientationMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixAddNaturalBoundMode() {
+                return (Standard_Integer) $self->FixAddNaturalBoundMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixAddNaturalBoundMode(Standard_Integer value ) {
+                $self->FixAddNaturalBoundMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixMissingSeamMode() {
+                return (Standard_Integer) $self->FixMissingSeamMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixMissingSeamMode(Standard_Integer value ) {
+                $self->FixMissingSeamMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixSmallAreaWireMode() {
+                return (Standard_Integer) $self->FixSmallAreaWireMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixSmallAreaWireMode(Standard_Integer value ) {
+                $self->FixSmallAreaWireMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixIntersectingWiresMode() {
+                return (Standard_Integer) $self->FixIntersectingWiresMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixIntersectingWiresMode(Standard_Integer value ) {
+                $self->FixIntersectingWiresMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixLoopWiresMode() {
+                return (Standard_Integer) $self->FixLoopWiresMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixLoopWiresMode(Standard_Integer value ) {
+                $self->FixLoopWiresMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixSplitFaceMode() {
+                return (Standard_Integer) $self->FixSplitFaceMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixSplitFaceMode(Standard_Integer value ) {
+                $self->FixSplitFaceMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetAutoCorrectPrecisionMode() {
+                return (Standard_Integer) $self->AutoCorrectPrecisionMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetAutoCorrectPrecisionMode(Standard_Integer value ) {
+                $self->AutoCorrectPrecisionMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixPeriodicDegeneratedMode() {
+                return (Standard_Integer) $self->FixPeriodicDegeneratedMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixPeriodicDegeneratedMode(Standard_Integer value ) {
+                $self->FixPeriodicDegeneratedMode()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	TopoDS_Face
@@ -2702,55 +2751,85 @@ Returns:
 
 Sets maximal allowed tolerance (also to FixSolidTool)") SetMaxTolerance;
 		virtual void SetMaxTolerance (const Standard_Real maxtol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-Returns (modifiable) the mode for applying fixes of  
-         ShapeFix_Solid, by default True.") FixSolidMode;
-		Standard_Integer & FixSolidMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-Returns (modifiable) the mode for applying fixes of  
-         ShapeFix_Shell, by default True.") FixFreeShellMode;
-		Standard_Integer & FixFreeShellMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-Returns (modifiable) the mode for applying fixes of  
-         ShapeFix_Face, by default True.") FixFreeFaceMode;
-		Standard_Integer & FixFreeFaceMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-Returns (modifiable) the mode for applying fixes of  
-         ShapeFix_Wire, by default True.") FixFreeWireMode;
-		Standard_Integer & FixFreeWireMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-Returns (modifiable) the mode for applying  
-         ShapeFix::SameParameter after all fixes, by default True.") FixSameParameterMode;
-		Standard_Integer & FixSameParameterMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-Returns (modifiable) the mode for applying  
-         ShapeFix::FixVertexPosition before all fixes, by default False.") FixVertexPositionMode;
-		Standard_Integer & FixVertexPositionMode ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixSolidMode() {
+                return (Standard_Integer) $self->FixSolidMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixSolidMode(Standard_Integer value ) {
+                $self->FixSolidMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixFreeShellMode() {
+                return (Standard_Integer) $self->FixFreeShellMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixFreeShellMode(Standard_Integer value ) {
+                $self->FixFreeShellMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixFreeFaceMode() {
+                return (Standard_Integer) $self->FixFreeFaceMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixFreeFaceMode(Standard_Integer value ) {
+                $self->FixFreeFaceMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixFreeWireMode() {
+                return (Standard_Integer) $self->FixFreeWireMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixFreeWireMode(Standard_Integer value ) {
+                $self->FixFreeWireMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixSameParameterMode() {
+                return (Standard_Integer) $self->FixSameParameterMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixSameParameterMode(Standard_Integer value ) {
+                $self->FixSameParameterMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixVertexPositionMode() {
+                return (Standard_Integer) $self->FixVertexPositionMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixVertexPositionMode(Standard_Integer value ) {
+                $self->FixVertexPositionMode()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") ShapeFix_Shape::~ShapeFix_Shape %{
@@ -2943,23 +3022,33 @@ Returns:
 
 Sets maximal allowed tolerance (also to FixWireTool)") SetMaxTolerance;
 		virtual void SetMaxTolerance (const Standard_Real maxtol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-Returns (modifiable) the mode for applying fixes of  
-         ShapeFix_Face, by default True.") FixFaceMode;
-		Standard_Integer & FixFaceMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-Returns (modifiable) the mode for applying  
-         FixFaceOrientation, by default True.") FixOrientationMode;
-		Standard_Integer & FixOrientationMode ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixFaceMode() {
+                return (Standard_Integer) $self->FixFaceMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixFaceMode(Standard_Integer value ) {
+                $self->FixFaceMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixOrientationMode() {
+                return (Standard_Integer) $self->FixOrientationMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixOrientationMode(Standard_Integer value ) {
+                $self->FixOrientationMode()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") ShapeFix_Shell::~ShapeFix_Shell %{
@@ -3114,26 +3203,33 @@ Returns:
 
 Sets maximal allowed tolerance (also to FixShellTool)") SetMaxTolerance;
 		virtual void SetMaxTolerance (const Standard_Real maxtol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-Returns (modifiable) the mode for applying fixes of  
-         ShapeFix_Shell, by default True.") FixShellMode;
-		Standard_Integer & FixShellMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-Returns (modifiable) the mode for creation of solids.  
-         If mode myCreateOpenSolidMode is equal to true  
-         solids are created from open shells  
-         else solids are created  from closed shells only.  
-         ShapeFix_Shell, by default False.") CreateOpenSolidMode;
-		Standard_Boolean & CreateOpenSolidMode ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixShellMode() {
+                return (Standard_Integer) $self->FixShellMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixShellMode(Standard_Integer value ) {
+                $self->FixShellMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetCreateOpenSolidMode() {
+                return (Standard_Boolean) $self->CreateOpenSolidMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetCreateOpenSolidMode(Standard_Boolean value ) {
+                $self->CreateOpenSolidMode()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	TopoDS_Shape
@@ -3447,223 +3543,371 @@ Returns:
 
 returns working face (Analyzer.Face())") Face;
 		const TopoDS_Face & Face ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
 
-Returns (modifiable) the flag which defines whether it is  
-         allowed to modify topology of the wire during fixing  
-         (adding/removing edges etc.)") ModifyTopologyMode;
-		Standard_Boolean & ModifyTopologyMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-Returns (modifiable) the flag which defines whether the Fix..()  
-         methods are allowed to modify geometry of the edges and vertices") ModifyGeometryMode;
-		Standard_Boolean & ModifyGeometryMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-Returns (modifiable) the flag which defines whether the Fix..()  
-         methods are allowed to modify RemoveLoop of the edges") ModifyRemoveLoopMode;
-		Standard_Integer & ModifyRemoveLoopMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-Returns (modifiable) the flag which defines whether the wire  
-         is to be closed (by calling methods like FixDegenerated()  
-         and FixConnected() for last and first edges).") ClosedWireMode;
-		Standard_Boolean & ClosedWireMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-Returns (modifiable) the flag which defines whether the 2d (True)  
-         representation of the wire is preferable over 3d one (in the  
-         case of ambiguity in FixEdgeCurves).") PreferencePCurveMode;
-		Standard_Boolean & PreferencePCurveMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-Returns (modifiable) the flag which defines whether tool  
-         tries to fix gaps first by changing curves ranges (i.e.  
-         using intersection, extrema, projections) or not.") FixGapsByRangesMode;
-		Standard_Boolean & FixGapsByRangesMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FixReorderMode;
-		Standard_Integer & FixReorderMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FixSmallMode;
-		Standard_Integer & FixSmallMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FixConnectedMode;
-		Standard_Integer & FixConnectedMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FixEdgeCurvesMode;
-		Standard_Integer & FixEdgeCurvesMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FixDegeneratedMode;
-		Standard_Integer & FixDegeneratedMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FixSelfIntersectionMode;
-		Standard_Integer & FixSelfIntersectionMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FixLackingMode;
-		Standard_Integer & FixLackingMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FixGaps3dMode;
-		Standard_Integer & FixGaps3dMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-Returns (modifiable) the flag for corresponding Fix..() method  
-         which defines whether this method will be called from the  
-         method APIFix():  
-      -1 default  
-       1 method will be called  
-       0 method will not be called") FixGaps2dMode;
-		Standard_Integer & FixGaps2dMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FixReversed2dMode;
-		Standard_Integer & FixReversed2dMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FixRemovePCurveMode;
-		Standard_Integer & FixRemovePCurveMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FixAddPCurveMode;
-		Standard_Integer & FixAddPCurveMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FixRemoveCurve3dMode;
-		Standard_Integer & FixRemoveCurve3dMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FixAddCurve3dMode;
-		Standard_Integer & FixAddCurve3dMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FixSeamMode;
-		Standard_Integer & FixSeamMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FixShiftedMode;
-		Standard_Integer & FixShiftedMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FixSameParameterMode;
-		Standard_Integer & FixSameParameterMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FixVertexToleranceMode;
-		Standard_Integer & FixVertexToleranceMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FixNotchedEdgesMode;
-		Standard_Integer & FixNotchedEdgesMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FixSelfIntersectingEdgeMode;
-		Standard_Integer & FixSelfIntersectingEdgeMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FixIntersectingEdgesMode;
-		Standard_Integer & FixIntersectingEdgesMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-Returns (modifiable) the flag for corresponding Fix..() method  
-         which defines whether this method will be called from the  
-         corresponding Fix..() method of the public level:  
-      -1 default  
-       1 method will be called  
-       0 method will not be called") FixNonAdjacentIntersectingEdgesMode;
-		Standard_Integer & FixNonAdjacentIntersectingEdgesMode ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetModifyTopologyMode() {
+                return (Standard_Boolean) $self->ModifyTopologyMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetModifyTopologyMode(Standard_Boolean value ) {
+                $self->ModifyTopologyMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetModifyGeometryMode() {
+                return (Standard_Boolean) $self->ModifyGeometryMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetModifyGeometryMode(Standard_Boolean value ) {
+                $self->ModifyGeometryMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetModifyRemoveLoopMode() {
+                return (Standard_Integer) $self->ModifyRemoveLoopMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetModifyRemoveLoopMode(Standard_Integer value ) {
+                $self->ModifyRemoveLoopMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetClosedWireMode() {
+                return (Standard_Boolean) $self->ClosedWireMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetClosedWireMode(Standard_Boolean value ) {
+                $self->ClosedWireMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetPreferencePCurveMode() {
+                return (Standard_Boolean) $self->PreferencePCurveMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetPreferencePCurveMode(Standard_Boolean value ) {
+                $self->PreferencePCurveMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetFixGapsByRangesMode() {
+                return (Standard_Boolean) $self->FixGapsByRangesMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixGapsByRangesMode(Standard_Boolean value ) {
+                $self->FixGapsByRangesMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixReorderMode() {
+                return (Standard_Integer) $self->FixReorderMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixReorderMode(Standard_Integer value ) {
+                $self->FixReorderMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixSmallMode() {
+                return (Standard_Integer) $self->FixSmallMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixSmallMode(Standard_Integer value ) {
+                $self->FixSmallMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixConnectedMode() {
+                return (Standard_Integer) $self->FixConnectedMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixConnectedMode(Standard_Integer value ) {
+                $self->FixConnectedMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixEdgeCurvesMode() {
+                return (Standard_Integer) $self->FixEdgeCurvesMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixEdgeCurvesMode(Standard_Integer value ) {
+                $self->FixEdgeCurvesMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixDegeneratedMode() {
+                return (Standard_Integer) $self->FixDegeneratedMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixDegeneratedMode(Standard_Integer value ) {
+                $self->FixDegeneratedMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixSelfIntersectionMode() {
+                return (Standard_Integer) $self->FixSelfIntersectionMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixSelfIntersectionMode(Standard_Integer value ) {
+                $self->FixSelfIntersectionMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixLackingMode() {
+                return (Standard_Integer) $self->FixLackingMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixLackingMode(Standard_Integer value ) {
+                $self->FixLackingMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixGaps3dMode() {
+                return (Standard_Integer) $self->FixGaps3dMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixGaps3dMode(Standard_Integer value ) {
+                $self->FixGaps3dMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixGaps2dMode() {
+                return (Standard_Integer) $self->FixGaps2dMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixGaps2dMode(Standard_Integer value ) {
+                $self->FixGaps2dMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixReversed2dMode() {
+                return (Standard_Integer) $self->FixReversed2dMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixReversed2dMode(Standard_Integer value ) {
+                $self->FixReversed2dMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixRemovePCurveMode() {
+                return (Standard_Integer) $self->FixRemovePCurveMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixRemovePCurveMode(Standard_Integer value ) {
+                $self->FixRemovePCurveMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixAddPCurveMode() {
+                return (Standard_Integer) $self->FixAddPCurveMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixAddPCurveMode(Standard_Integer value ) {
+                $self->FixAddPCurveMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixRemoveCurve3dMode() {
+                return (Standard_Integer) $self->FixRemoveCurve3dMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixRemoveCurve3dMode(Standard_Integer value ) {
+                $self->FixRemoveCurve3dMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixAddCurve3dMode() {
+                return (Standard_Integer) $self->FixAddCurve3dMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixAddCurve3dMode(Standard_Integer value ) {
+                $self->FixAddCurve3dMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixSeamMode() {
+                return (Standard_Integer) $self->FixSeamMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixSeamMode(Standard_Integer value ) {
+                $self->FixSeamMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixShiftedMode() {
+                return (Standard_Integer) $self->FixShiftedMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixShiftedMode(Standard_Integer value ) {
+                $self->FixShiftedMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixSameParameterMode() {
+                return (Standard_Integer) $self->FixSameParameterMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixSameParameterMode(Standard_Integer value ) {
+                $self->FixSameParameterMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixVertexToleranceMode() {
+                return (Standard_Integer) $self->FixVertexToleranceMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixVertexToleranceMode(Standard_Integer value ) {
+                $self->FixVertexToleranceMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixNotchedEdgesMode() {
+                return (Standard_Integer) $self->FixNotchedEdgesMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixNotchedEdgesMode(Standard_Integer value ) {
+                $self->FixNotchedEdgesMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixSelfIntersectingEdgeMode() {
+                return (Standard_Integer) $self->FixSelfIntersectingEdgeMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixSelfIntersectingEdgeMode(Standard_Integer value ) {
+                $self->FixSelfIntersectingEdgeMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixIntersectingEdgesMode() {
+                return (Standard_Integer) $self->FixIntersectingEdgesMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixIntersectingEdgesMode(Standard_Integer value ) {
+                $self->FixIntersectingEdgesMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetFixNonAdjacentIntersectingEdgesMode() {
+                return (Standard_Integer) $self->FixNonAdjacentIntersectingEdgesMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetFixNonAdjacentIntersectingEdgesMode(Standard_Integer value ) {
+                $self->FixNonAdjacentIntersectingEdgesMode()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	Standard_Boolean
@@ -4211,14 +4455,20 @@ Returns:
 
 No detailed docstring for this function.") Shape;
 		TopoDS_Shape Shape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
 
-Returns mode managing removing small edges.") ModeDropSmallEdges;
-		Standard_Boolean & ModeDropSmallEdges ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetModeDropSmallEdges() {
+                return (Standard_Boolean) $self->ModeDropSmallEdges();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetModeDropSmallEdges(Standard_Boolean value ) {
+                $self->ModeDropSmallEdges()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	theLimitAngle(Standard_Real)
 
 Returns:

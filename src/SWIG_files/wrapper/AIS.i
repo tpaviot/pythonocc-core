@@ -1170,14 +1170,20 @@ Returns:
 
 No detailed docstring for this function.") AIS_DataMapNodeOfDataMapOfILC;
 		 AIS_DataMapNodeOfDataMapOfILC (Standard_Integer &OutValue,const Handle_AIS_LocalContext & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key;
-		Standard_Integer & Key ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey() {
+                return (Standard_Integer) $self->Key();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey(Standard_Integer value ) {
+                $self->Key()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	Handle_AIS_LocalContext
@@ -1419,14 +1425,20 @@ Returns:
 
 No detailed docstring for this function.") AIS_DataMapNodeOfDataMapofIntegerListOfinteractive;
 		 AIS_DataMapNodeOfDataMapofIntegerListOfinteractive (Standard_Integer &OutValue,const AIS_ListOfInteractive & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key;
-		Standard_Integer & Key ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey() {
+                return (Standard_Integer) $self->Key();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey(Standard_Integer value ) {
+                $self->Key()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	AIS_ListOfInteractive
@@ -3386,14 +3398,20 @@ Returns:
 
 No detailed docstring for this function.") Key1;
 		Handle_SelectMgr_EntityOwner & Key1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key2;
-		Standard_Integer & Key2 ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey2() {
+                return (Standard_Integer) $self->Key2();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey2(Standard_Integer value ) {
+                $self->Key2()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	TCollection_MapNodePtr

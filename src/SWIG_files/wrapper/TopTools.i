@@ -1058,14 +1058,20 @@ Returns:
 
 No detailed docstring for this function.") TopTools_DataMapNodeOfDataMapOfIntegerListOfShape;
 		 TopTools_DataMapNodeOfDataMapOfIntegerListOfShape (Standard_Integer &OutValue,const TopTools_ListOfShape & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key;
-		Standard_Integer & Key ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey() {
+                return (Standard_Integer) $self->Key();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey(Standard_Integer value ) {
+                $self->Key()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	TopTools_ListOfShape
@@ -1141,14 +1147,20 @@ Returns:
 
 No detailed docstring for this function.") TopTools_DataMapNodeOfDataMapOfIntegerShape;
 		 TopTools_DataMapNodeOfDataMapOfIntegerShape (Standard_Integer &OutValue,const TopoDS_Shape & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key;
-		Standard_Integer & Key ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey() {
+                return (Standard_Integer) $self->Key();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey(Standard_Integer value ) {
+                $self->Key()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	TopoDS_Shape
@@ -1231,14 +1243,20 @@ Returns:
 
 No detailed docstring for this function.") Key;
 		TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Value;
-		Standard_Integer & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetValue() {
+                return (Standard_Integer) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Integer value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger::~TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger %{
@@ -1397,14 +1415,20 @@ Returns:
 
 No detailed docstring for this function.") Key;
 		TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Value;
-		Standard_Integer & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetValue() {
+                return (Standard_Integer) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Integer value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TopTools_DataMapNodeOfDataMapOfShapeInteger::~TopTools_DataMapNodeOfDataMapOfShapeInteger %{
@@ -1646,14 +1670,20 @@ Returns:
 
 No detailed docstring for this function.") Key;
 		TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
 
-No detailed docstring for this function.") Value;
-		Standard_Real & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetValue() {
+                return (Standard_Real) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Real value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") TopTools_DataMapNodeOfDataMapOfShapeReal::~TopTools_DataMapNodeOfDataMapOfShapeReal %{
@@ -3765,14 +3795,20 @@ Returns:
 
 No detailed docstring for this function.") Key1;
 		TopoDS_Shape & Key1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key2;
-		Standard_Integer & Key2 ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey2() {
+                return (Standard_Integer) $self->Key2();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey2(Standard_Integer value ) {
+                $self->Key2()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	TCollection_MapNodePtr
@@ -3864,14 +3900,20 @@ Returns:
 
 No detailed docstring for this function.") Key1;
 		TopoDS_Shape & Key1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key2;
-		Standard_Integer & Key2 ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey2() {
+                return (Standard_Integer) $self->Key2();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey2(Standard_Integer value ) {
+                $self->Key2()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	TCollection_MapNodePtr
@@ -3963,14 +4005,20 @@ Returns:
 
 No detailed docstring for this function.") Key1;
 		TopoDS_Shape & Key1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key2;
-		Standard_Integer & Key2 ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey2() {
+                return (Standard_Integer) $self->Key2();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey2(Standard_Integer value ) {
+                $self->Key2()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	TCollection_MapNodePtr
@@ -4532,14 +4580,20 @@ Returns:
 
 No detailed docstring for this function.") Key1;
 		TopoDS_Shape & Key1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key2;
-		Standard_Integer & Key2 ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey2() {
+                return (Standard_Integer) $self->Key2();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey2(Standard_Integer value ) {
+                $self->Key2()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	TCollection_MapNodePtr
@@ -4623,14 +4677,20 @@ Returns:
 
 No detailed docstring for this function.") Key1;
 		TopoDS_Shape & Key1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key2;
-		Standard_Integer & Key2 ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey2() {
+                return (Standard_Integer) $self->Key2();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey2(Standard_Integer value ) {
+                $self->Key2()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	TCollection_MapNodePtr

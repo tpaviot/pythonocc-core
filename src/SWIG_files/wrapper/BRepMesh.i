@@ -1352,14 +1352,20 @@ Returns:
 
 No detailed docstring for this function.") BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger;
 		 BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger (Standard_Integer &OutValue,const BRepMesh_ListOfInteger & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key;
-		Standard_Integer & Key ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey() {
+                return (Standard_Integer) $self->Key();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey(Standard_Integer value ) {
+                $self->Key()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	BRepMesh_ListOfInteger
@@ -1435,14 +1441,20 @@ Returns:
 
 No detailed docstring for this function.") BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY;
 		 BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY (Standard_Integer &OutValue,const BRepMesh_ListOfXY & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key;
-		Standard_Integer & Key ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey() {
+                return (Standard_Integer) $self->Key();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey(Standard_Integer value ) {
+                $self->Key()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	BRepMesh_ListOfXY
@@ -1518,14 +1530,20 @@ Returns:
 
 No detailed docstring for this function.") BRepMesh_DataMapNodeOfDataMapOfIntegerPnt;
 		 BRepMesh_DataMapNodeOfDataMapOfIntegerPnt (Standard_Integer &OutValue,const gp_Pnt & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key;
-		Standard_Integer & Key ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey() {
+                return (Standard_Integer) $self->Key();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey(Standard_Integer value ) {
+                $self->Key()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	gp_Pnt
@@ -1691,14 +1709,20 @@ Returns:
 
 No detailed docstring for this function.") Key;
 		TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
 
-No detailed docstring for this function.") Value;
-		Standard_Real & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetValue() {
+                return (Standard_Real) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Real value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") BRepMesh_DataMapNodeOfDataMapOfShapeReal::~BRepMesh_DataMapNodeOfDataMapOfShapeReal %{
@@ -1774,14 +1798,20 @@ Returns:
 
 No detailed docstring for this function.") Key;
 		TopoDS_Vertex & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Value;
-		Standard_Integer & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetValue() {
+                return (Standard_Integer) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Integer value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") BRepMesh_DataMapNodeOfDataMapOfVertexInteger::~BRepMesh_DataMapNodeOfDataMapOfVertexInteger %{
@@ -3397,70 +3427,124 @@ Returns:
 
 No detailed docstring for this function.") BRepMesh_FaceAttribute;
 		 BRepMesh_FaceAttribute ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
 
-No detailed docstring for this function.") GetDefFace;
-		Standard_Real & GetDefFace ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") GetUMin;
-		Standard_Real & GetUMin ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") GetVMin;
-		Standard_Real & GetVMin ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") GetUMax;
-		Standard_Real & GetUMax ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") GetVMax;
-		Standard_Real & GetVMax ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") GetDeltaX;
-		Standard_Real & GetDeltaX ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") GetDeltaY;
-		Standard_Real & GetDeltaY ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") GetMinX;
-		Standard_Real & GetMinX ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") GetMinY;
-		Standard_Real & GetMinY ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetGetDefFace() {
+                return (Standard_Real) $self->GetDefFace();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetGetDefFace(Standard_Real value ) {
+                $self->GetDefFace()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetGetUMin() {
+                return (Standard_Real) $self->GetUMin();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetGetUMin(Standard_Real value ) {
+                $self->GetUMin()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetGetVMin() {
+                return (Standard_Real) $self->GetVMin();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetGetVMin(Standard_Real value ) {
+                $self->GetVMin()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetGetUMax() {
+                return (Standard_Real) $self->GetUMax();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetGetUMax(Standard_Real value ) {
+                $self->GetUMax()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetGetVMax() {
+                return (Standard_Real) $self->GetVMax();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetGetVMax(Standard_Real value ) {
+                $self->GetVMax()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetGetDeltaX() {
+                return (Standard_Real) $self->GetDeltaX();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetGetDeltaX(Standard_Real value ) {
+                $self->GetDeltaX()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetGetDeltaY() {
+                return (Standard_Real) $self->GetDeltaY();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetGetDeltaY(Standard_Real value ) {
+                $self->GetDeltaY()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetGetMinX() {
+                return (Standard_Real) $self->GetMinX();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetGetMinX(Standard_Real value ) {
+                $self->GetMinX()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetGetMinY() {
+                return (Standard_Real) $self->GetMinY();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetGetMinY(Standard_Real value ) {
+                $self->GetMinY()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	BRepMesh_ClassifierPtr
@@ -4765,14 +4849,20 @@ Returns:
 
 No detailed docstring for this function.") Key1;
 		BRepMesh_Edge & Key1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key2;
-		Standard_Integer & Key2 ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey2() {
+                return (Standard_Integer) $self->Key2();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey2(Standard_Integer value ) {
+                $self->Key2()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	TCollection_MapNodePtr
@@ -4864,14 +4954,20 @@ Returns:
 
 No detailed docstring for this function.") Key1;
 		BRepMesh_Vertex & Key1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key2;
-		Standard_Integer & Key2 ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey2() {
+                return (Standard_Integer) $self->Key2();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey2(Standard_Integer value ) {
+                $self->Key2()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	TCollection_MapNodePtr
@@ -4962,14 +5058,20 @@ Returns:
 
 No detailed docstring for this function.") Key1;
 		BRepMesh_Triangle & Key1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key2;
-		Standard_Integer & Key2 ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey2() {
+                return (Standard_Integer) $self->Key2();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey2(Standard_Integer value ) {
+                $self->Key2()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	TCollection_MapNodePtr
@@ -5053,14 +5155,20 @@ Returns:
 
 No detailed docstring for this function.") Key1;
 		BRepMesh_Vertex & Key1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key2;
-		Standard_Integer & Key2 ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey2() {
+                return (Standard_Integer) $self->Key2();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey2(Standard_Integer value ) {
+                $self->Key2()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	TCollection_MapNodePtr

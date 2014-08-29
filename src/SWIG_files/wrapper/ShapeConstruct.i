@@ -567,33 +567,33 @@ Returns:
 
 Sets value for current precision") SetPrecision;
 		void SetPrecision (const Standard_Real preci);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
 
-Returns (modifiable) the build-curve-3d mode, by default False  
-          If True, if the projected curve has been recomputed by  
-          interpolation, the 3d curve is also rebuild by interpolation") BuildCurveMode;
-		Standard_Boolean & BuildCurveMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-Returns (modifiable) the flag specifying to which side of  
-          parametrical space adjust part of pcurve which lies on seam.  
-          This is required in very rare case when 3d curve which is  
-          to be projected goes partly along the seam on the closed  
-          surface with singularity (e.g. sphere), goes through the  
-          degenerated point and paerly lies on internal area of surface.  
- 
-          If this flag is True, the seam part of such curve will be  
-          adjusted to the left side of parametric space (on sphere U=0),  
-          else to the right side (on sphere U=2*PI)  
-          Default value is True") AdjustOverDegenMode;
-		Standard_Integer & AdjustOverDegenMode ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetBuildCurveMode() {
+                return (Standard_Boolean) $self->BuildCurveMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetBuildCurveMode(Standard_Boolean value ) {
+                $self->BuildCurveMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetAdjustOverDegenMode() {
+                return (Standard_Integer) $self->AdjustOverDegenMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetAdjustOverDegenMode(Standard_Integer value ) {
+                $self->AdjustOverDegenMode()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	Status(ShapeExtend_Status)
 
 Returns:

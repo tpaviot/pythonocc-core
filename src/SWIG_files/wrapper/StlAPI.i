@@ -150,36 +150,33 @@ Returns:
 Sets the coeffiecient for computation of deflection through  
          relative size of shape. Default value = 0.001") SetCoefficient;
 		void SetCoefficient (const Standard_Real aCoefficient);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
 
-Returns the address to the  
-flag defining the relative mode for writing the file.  
-This address may be used to either read or change the flag.  
-If the mode returns True (default value), the  
-deflection is calculated from the relative size of the  
-shape. If the mode returns False, the user defined deflection is used.  
-Example  
-Read:  
-Standard_Boolean val = Writer.RelativeMode( );  
-Modify:  
-Writer.RelativeMode( ) = Standard_True;") RelativeMode;
-		Standard_Boolean & RelativeMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-Returns the address to the  
-flag defining the mode for writing the file. This address  
-may be used to either read or change the flag.  
-If the mode returns True (default value) the generated  
-file is an ASCII file. If the mode returns False, the  
-generated file is a binary file.") ASCIIMode;
-		Standard_Boolean & ASCIIMode ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetRelativeMode() {
+                return (Standard_Boolean) $self->RelativeMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetRelativeMode(Standard_Boolean value ) {
+                $self->RelativeMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetASCIIMode() {
+                return (Standard_Boolean) $self->ASCIIMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetASCIIMode(Standard_Boolean value ) {
+                $self->ASCIIMode()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	aShape(TopoDS_Shape)
 	aFileName(char *)
 	InParallel(Standard_Boolean)=Standard_False

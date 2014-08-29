@@ -258,14 +258,20 @@ Returns:
 
 No detailed docstring for this function.") Geom2dHatch_DataMapNodeOfHatchingsOfHatcher;
 		 Geom2dHatch_DataMapNodeOfHatchingsOfHatcher (Standard_Integer &OutValue,const Geom2dHatch_HatchingOfHatcher & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key;
-		Standard_Integer & Key ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey() {
+                return (Standard_Integer) $self->Key();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey(Standard_Integer value ) {
+                $self->Key()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	Geom2dHatch_HatchingOfHatcher
@@ -341,14 +347,20 @@ Returns:
 
 No detailed docstring for this function.") Geom2dHatch_DataMapNodeOfMapOfElementsOfElementsOfHatcher;
 		 Geom2dHatch_DataMapNodeOfMapOfElementsOfElementsOfHatcher (Standard_Integer &OutValue,const Geom2dHatch_ElementOfHatcher & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key;
-		Standard_Integer & Key ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey() {
+                return (Standard_Integer) $self->Key();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey(Standard_Integer value ) {
+                $self->Key()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	Geom2dHatch_ElementOfHatcher

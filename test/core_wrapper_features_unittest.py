@@ -149,29 +149,28 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertEqual(p_coord.Y(), 2.)
         self.assertEqual(p_coord.Z(), 3.2)
 
-    # TODO : doesn't work
-    # def testStandardIntegerByRefPassedReturned(self):
-    #     '''
-    #     Checks the Standard_Integer & byreference return parameter
-    #     '''
-    #     print 'Test: Standard_Integer & by reference transformator'
-    #     from OCC.ShapeFix import ShapeFix_Solid
-    #     sfs = ShapeFix_Solid()
-    #     sfs.SetFixShellMode(5)
-    #     self.assertEqual(sfs.GetFixShellMode(), 5)
+    # TODO : add a testStandardRealByRefPassedReturned
+    def testStandardIntegerByRefPassedReturned(self):
+        '''
+        Checks the Standard_Integer & byreference return parameter
+        '''
+        print 'Test: Standard_Integer & by reference transformator'
+        from OCC.ShapeFix import ShapeFix_Solid
+        sfs = ShapeFix_Solid()
+        sfs.SetFixShellMode(5)
+        self.assertEqual(sfs.GetFixShellMode(), 5)
 
-    # TODO : doesn't work
-    # def testStandardBooleanByRefPassedReturned(self):
-    #     '''
-    #     Checks the Standard_Boolean & byreference return parameter
-    #     '''
-    #     print 'Test: Standard_Boolean & by reference transformator'
-    #     from OCC.ShapeFix import ShapeFix_Wire
-    #     sfw = ShapeFix_Wire()
-    #     sfw.SetModifyGeometryMode(True)
-    #     self.assertEqual(sfw.GetModifyGeometryMode(), True)
-    #     sfw.SetModifyGeometryMode(False)
-    #     self.assertEqual(sfw.GetModifyGeometryMode(), False)
+    def testStandardBooleanByRefPassedReturned(self):
+        '''
+        Checks the Standard_Boolean & byreference return parameter
+        '''
+        print 'Test: Standard_Boolean & by reference transformator'
+        from OCC.ShapeFix import ShapeFix_Wire
+        sfw = ShapeFix_Wire()
+        sfw.SetModifyGeometryMode(True)
+        self.assertEqual(sfw.GetModifyGeometryMode(), True)
+        sfw.SetModifyGeometryMode(False)
+        self.assertEqual(sfw.GetModifyGeometryMode(), False)
 
     # TODO :doesn't work
     # def testDumpToString(self):

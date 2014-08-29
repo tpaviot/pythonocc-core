@@ -1590,23 +1590,33 @@ Returns:
 
 //!Get result shape") GetResult;
 		TopoDS_Shape GetResult ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
 
-//!Set min area allowed for holes( all holes having area less than mi area will be removed)") MinArea;
-		Standard_Real & MinArea ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-//!Set mode which manage removing faces which have outer wires consisting only from edges  
-        belonginig to removed internal wires.  
-      By default it is equal to true.") RemoveFaceMode;
-		Standard_Boolean & RemoveFaceMode ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetMinArea() {
+                return (Standard_Real) $self->MinArea();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetMinArea(Standard_Real value ) {
+                $self->MinArea()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetRemoveFaceMode() {
+                return (Standard_Boolean) $self->RemoveFaceMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetRemoveFaceMode(Standard_Boolean value ) {
+                $self->RemoveFaceMode()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	TopTools_SequenceOfShape
@@ -1961,14 +1971,20 @@ Returns:
 
 Initialize by a Shape.") ShapeUpgrade_ShapeDivideArea;
 		 ShapeUpgrade_ShapeDivideArea (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
 
-//!Set max area allowed for faces") MaxArea;
-		Standard_Real & MaxArea ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetMaxArea() {
+                return (Standard_Real) $self->MaxArea();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetMaxArea(Standard_Real value ) {
+                $self->MaxArea()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") ShapeUpgrade_ShapeDivideArea::~ShapeUpgrade_ShapeDivideArea %{
@@ -2454,14 +2470,20 @@ Returns:
 
 Empty constructor.") ShapeUpgrade_SplitSurfaceArea;
 		 ShapeUpgrade_SplitSurfaceArea ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-//!Set number of split for surfaces") NbParts;
-		Standard_Integer & NbParts ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetNbParts() {
+                return (Standard_Integer) $self->NbParts();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetNbParts(Standard_Integer value ) {
+                $self->NbParts()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	Segment(Standard_Boolean)=Standard_True
 
 Returns:
@@ -3270,14 +3292,20 @@ Returns:
 Performs splitting and computes the resulting shell  
          The context is used to keep track of former splittings") Perform;
 		virtual Standard_Boolean Perform ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
 
-//!Set max area allowed for faces") MaxArea;
-		Standard_Real & MaxArea ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetMaxArea() {
+                return (Standard_Real) $self->MaxArea();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetMaxArea(Standard_Real value ) {
+                $self->MaxArea()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") ShapeUpgrade_FaceDivideArea::~ShapeUpgrade_FaceDivideArea %{

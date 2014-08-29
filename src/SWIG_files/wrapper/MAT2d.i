@@ -1056,14 +1056,20 @@ Returns:
 
 No detailed docstring for this function.") Key;
 		MAT2d_BiInt & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Value;
-		Standard_Integer & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetValue() {
+                return (Standard_Integer) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Integer value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") MAT2d_DataMapNodeOfDataMapOfBiIntInteger::~MAT2d_DataMapNodeOfDataMapOfBiIntInteger %{
@@ -1215,14 +1221,20 @@ Returns:
 
 No detailed docstring for this function.") MAT2d_DataMapNodeOfDataMapOfIntegerBisec;
 		 MAT2d_DataMapNodeOfDataMapOfIntegerBisec (Standard_Integer &OutValue,const Bisector_Bisec & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key;
-		Standard_Integer & Key ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey() {
+                return (Standard_Integer) $self->Key();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey(Standard_Integer value ) {
+                $self->Key()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	Bisector_Bisec
@@ -1298,14 +1310,20 @@ Returns:
 
 No detailed docstring for this function.") MAT2d_DataMapNodeOfDataMapOfIntegerConnexion;
 		 MAT2d_DataMapNodeOfDataMapOfIntegerConnexion (Standard_Integer &OutValue,const Handle_MAT2d_Connexion & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key;
-		Standard_Integer & Key ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey() {
+                return (Standard_Integer) $self->Key();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey(Standard_Integer value ) {
+                $self->Key()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	Handle_MAT2d_Connexion
@@ -1381,14 +1399,20 @@ Returns:
 
 No detailed docstring for this function.") MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d;
 		 MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d (Standard_Integer &OutValue,const gp_Pnt2d & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key;
-		Standard_Integer & Key ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey() {
+                return (Standard_Integer) $self->Key();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey(Standard_Integer value ) {
+                $self->Key()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	gp_Pnt2d
@@ -1464,14 +1488,20 @@ Returns:
 
 No detailed docstring for this function.") MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion;
 		 MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion (Standard_Integer &OutValue,const MAT2d_SequenceOfConnexion & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key;
-		Standard_Integer & Key ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey() {
+                return (Standard_Integer) $self->Key();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey(Standard_Integer value ) {
+                $self->Key()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	MAT2d_SequenceOfConnexion
@@ -1547,14 +1577,20 @@ Returns:
 
 No detailed docstring for this function.") MAT2d_DataMapNodeOfDataMapOfIntegerVec2d;
 		 MAT2d_DataMapNodeOfDataMapOfIntegerVec2d (Standard_Integer &OutValue,const gp_Vec2d & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key;
-		Standard_Integer & Key ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey() {
+                return (Standard_Integer) $self->Key();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey(Standard_Integer value ) {
+                $self->Key()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	gp_Vec2d

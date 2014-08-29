@@ -934,14 +934,20 @@ Returns:
 
 No detailed docstring for this function.") Key;
 		TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
 
-No detailed docstring for this function.") Value;
-		Standard_Boolean & Value ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetValue() {
+                return (Standard_Boolean) $self->Value();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetValue(Standard_Boolean value ) {
+                $self->Value()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean::~BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean %{

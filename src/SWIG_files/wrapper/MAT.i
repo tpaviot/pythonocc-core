@@ -920,14 +920,20 @@ Returns:
 
 No detailed docstring for this function.") MAT_DataMapNodeOfDataMapOfIntegerArc;
 		 MAT_DataMapNodeOfDataMapOfIntegerArc (Standard_Integer &OutValue,const Handle_MAT_Arc & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key;
-		Standard_Integer & Key ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey() {
+                return (Standard_Integer) $self->Key();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey(Standard_Integer value ) {
+                $self->Key()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	Handle_MAT_Arc
@@ -1003,14 +1009,20 @@ Returns:
 
 No detailed docstring for this function.") MAT_DataMapNodeOfDataMapOfIntegerBasicElt;
 		 MAT_DataMapNodeOfDataMapOfIntegerBasicElt (Standard_Integer &OutValue,const Handle_MAT_BasicElt & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key;
-		Standard_Integer & Key ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey() {
+                return (Standard_Integer) $self->Key();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey(Standard_Integer value ) {
+                $self->Key()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	Handle_MAT_BasicElt
@@ -1086,14 +1098,20 @@ Returns:
 
 No detailed docstring for this function.") MAT_DataMapNodeOfDataMapOfIntegerBisector;
 		 MAT_DataMapNodeOfDataMapOfIntegerBisector (Standard_Integer &OutValue,const Handle_MAT_Bisector & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key;
-		Standard_Integer & Key ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey() {
+                return (Standard_Integer) $self->Key();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey(Standard_Integer value ) {
+                $self->Key()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	Handle_MAT_Bisector
@@ -1169,14 +1187,20 @@ Returns:
 
 No detailed docstring for this function.") MAT_DataMapNodeOfDataMapOfIntegerNode;
 		 MAT_DataMapNodeOfDataMapOfIntegerNode (Standard_Integer &OutValue,const Handle_MAT_Node & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") Key;
-		Standard_Integer & Key ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey() {
+                return (Standard_Integer) $self->Key();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey(Standard_Integer value ) {
+                $self->Key()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	Handle_MAT_Node

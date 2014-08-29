@@ -429,28 +429,40 @@ Returns:
 
 No detailed docstring for this function.") Intersection;
 		const Standard_Real & Intersection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
 
-No detailed docstring for this function.") ChangeIntersection;
-		Standard_Real & ChangeIntersection ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Real GetChangeIntersection() {
+                return (Standard_Real) $self->ChangeIntersection();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetChangeIntersection(Standard_Real value ) {
+                $self->ChangeIntersection()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	Standard_Integer
 
 No detailed docstring for this function.") Boundary;
 		const Standard_Integer & Boundary ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
 
-No detailed docstring for this function.") ChangeBoundary;
-		Standard_Integer & ChangeBoundary ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetChangeBoundary() {
+                return (Standard_Integer) $self->ChangeBoundary();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetChangeBoundary(Standard_Integer value ) {
+                $self->ChangeBoundary()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	TopAbs_Orientation

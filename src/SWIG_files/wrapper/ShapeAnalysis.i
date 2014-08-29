@@ -2462,55 +2462,85 @@ Returns:
 Counts quantities of sun-shapes in shape and  
          stores sub-shapes according to flags") Perform;
 		void Perform (const TopoDS_Shape & shape);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
 
-Returns (modifiable) the flag which defines whether to store faces  
-         with edges if its 3D curves has more than 8192 poles.") ModifyBigSplineMode;
-		Standard_Boolean & ModifyBigSplineMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-Returns (modifiable) the flag which defines whether to store faces  
-         on indirect surfaces") ModifyIndirectMode;
-		Standard_Boolean & ModifyIndirectMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-Returns (modifiable) the flag which defines whether to store faces  
-         on offset surfaces.") ModifyOffestSurfaceMode;
-		Standard_Boolean & ModifyOffestSurfaceMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-Returns (modifiable) the flag which defines whether to store faces  
-         with edges if ist 3D curves are trimmed curves") ModifyTrimmed3dMode;
-		Standard_Boolean & ModifyTrimmed3dMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-Returns (modifiable) the flag which defines whether to store faces  
-         with edges if its 3D curves and pcurves are offest curves") ModifyOffsetCurveMode;
-		Standard_Boolean & ModifyOffsetCurveMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-Returns (modifiable) the flag which defines whether to store faces  
-         with edges if its  pcurves are trimmed curves") ModifyTrimmed2dMode;
-		Standard_Boolean & ModifyTrimmed2dMode ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetModifyBigSplineMode() {
+                return (Standard_Boolean) $self->ModifyBigSplineMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetModifyBigSplineMode(Standard_Boolean value ) {
+                $self->ModifyBigSplineMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetModifyIndirectMode() {
+                return (Standard_Boolean) $self->ModifyIndirectMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetModifyIndirectMode(Standard_Boolean value ) {
+                $self->ModifyIndirectMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetModifyOffestSurfaceMode() {
+                return (Standard_Boolean) $self->ModifyOffestSurfaceMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetModifyOffestSurfaceMode(Standard_Boolean value ) {
+                $self->ModifyOffestSurfaceMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetModifyTrimmed3dMode() {
+                return (Standard_Boolean) $self->ModifyTrimmed3dMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetModifyTrimmed3dMode(Standard_Boolean value ) {
+                $self->ModifyTrimmed3dMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetModifyOffsetCurveMode() {
+                return (Standard_Boolean) $self->ModifyOffsetCurveMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetModifyOffsetCurveMode(Standard_Boolean value ) {
+                $self->ModifyOffsetCurveMode()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetModifyTrimmed2dMode() {
+                return (Standard_Boolean) $self->ModifyTrimmed2dMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetModifyTrimmed2dMode(Standard_Boolean value ) {
+                $self->ModifyTrimmed2dMode()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	None
 Returns:
 	Standard_Integer
@@ -4561,16 +4591,20 @@ Returns:
 
 Returns the count of added couples of points (one per edges)") NbEdges;
 		Standard_Integer NbEdges ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
 
-If this mode is True method perform does not sort edges of  
-          different loops. The resulting order is first loop, second  
-          one etc...") KeepLoopsMode;
-		Standard_Boolean & KeepLoopsMode ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetKeepLoopsMode() {
+                return (Standard_Boolean) $self->KeepLoopsMode();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKeepLoopsMode(Standard_Boolean value ) {
+                $self->KeepLoopsMode()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	closed(Standard_Boolean)=Standard_True
 
 Returns:
@@ -5153,17 +5187,20 @@ Returns:
 //!Transfers parameter given by  Param from 3d curve  
          to pcurve (if To2d is True) or back (if To2d is False)") Perform;
 		virtual Standard_Real Perform (const Standard_Real Param,const Standard_Boolean To2d);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
 
-Returns modifiable flag forcing projection  
-         If it is False (default), projection is done only  
-         if edge is not SameParameter or if tolerance of edge  
-         is greater than MaxTolerance()") ForceProjection;
-		Standard_Boolean & ForceProjection ();
-		%feature("autodoc", "Args:
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetForceProjection() {
+                return (Standard_Boolean) $self->ForceProjection();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetForceProjection(Standard_Boolean value ) {
+                $self->ForceProjection()=value;
+                }
+            };
+            		%feature("autodoc", "Args:
 	newEdge(TopoDS_Edge)
 	prevPar(Standard_Real)
 	currPar(Standard_Real)

@@ -1073,23 +1073,33 @@ Applies the substitutions requests to a shape.
          If incompatible shape type is encountered, it is ignored  
          and flag FAIL1 is set in Status.") Apply;
 		virtual TopoDS_Shape Apply (const TopoDS_Shape & shape,const TopAbs_ShapeEnum until = TopAbs_SHAPE);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
 
-//!Returns (modifiable) the flag which defines whether Location of shape take into account  
-        during replacing shapes.") ModeConsiderLocation;
-		Standard_Boolean & ModeConsiderLocation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-//!Returns (modifiable) the flag which defines whether Orientation of shape take into account  
-        during replacing shapes.") ModeConsiderOrientation;
-		Standard_Boolean & ModeConsiderOrientation ();
-};
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetModeConsiderLocation() {
+                return (Standard_Boolean) $self->ModeConsiderLocation();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetModeConsiderLocation(Standard_Boolean value ) {
+                $self->ModeConsiderLocation()=value;
+                }
+            };
+            
+            %feature("autodoc","1");
+            %extend {
+                Standard_Boolean GetModeConsiderOrientation() {
+                return (Standard_Boolean) $self->ModeConsiderOrientation();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetModeConsiderOrientation(Standard_Boolean value ) {
+                $self->ModeConsiderOrientation()=value;
+                }
+            };
+            };
 
 
 %feature("shadow") BRepTools_ReShape::~BRepTools_ReShape %{
