@@ -17,7 +17,7 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module SortTools
+%module (package="OCC") SortTools
 
 #pragma SWIG nowarn=504,325,503
 
@@ -33,7 +33,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%include SortTools_required_python_modules.i
 %include SortTools_headers.i
 
 /* typedefs */

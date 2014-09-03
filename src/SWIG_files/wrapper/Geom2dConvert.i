@@ -17,7 +17,7 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module Geom2dConvert
+%module (package="OCC") Geom2dConvert
 
 #pragma SWIG nowarn=504,325,503
 
@@ -33,7 +33,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%include Geom2dConvert_required_python_modules.i
 %include Geom2dConvert_headers.i
 
 /* typedefs */

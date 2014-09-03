@@ -45,6 +45,7 @@ ENDMACRO( OPTION_WITH_DEFAULT OPTION_NAME OPTION_STRING OPTION_DEFAULT )
 ##########
 # Python #
 ##########
+FIND_PACKAGE(PythonInterp)
 FIND_PACKAGE(PythonLibs)
 INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_PATH})
 
@@ -86,7 +87,7 @@ SET(OCE_LIB_PATH /usr/local/lib CACHE PATH "OCE lib path" )
 # Installation directory                     #
 # by default, installed to site-packages/OCC #
 ##############################################
-EXECUTE_PROCESS(COMMAND python -c "from distutils.sysconfig import get_python_lib; import os;print get_python_lib()" OUTPUT_VARIABLE python_lib OUTPUT_STRIP_TRAILING_WHITESPACE )
+EXECUTE_PROCESS(COMMAND python -c "from __future__ import print_function; from distutils.sysconfig import get_python_lib; import os;print(get_python_lib())" OUTPUT_VARIABLE python_lib OUTPUT_STRIP_TRAILING_WHITESPACE )
 SET(${PROJECT_NAME}_INSTALL_DIRECTORY ${python_lib}/OCC CACHE PATH "pythonOCC install directory" )
 
 # List of OCE shared libraries to link with
@@ -132,6 +133,13 @@ ELSE(UNIX)
   ENDIF(WIN32)
 ENDIF(UNIX)
 MESSAGE(STATUS "Platform:" ${PLATFORM})
+
+##################################
+# Tells Swig to use py3k option  #
+##################################
+IF(${PYTHON_VERSION_MAJOR} MATCHES "3")
+  SET(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -py3)
+ENDIF(${PYTHON_VERSION_MAJOR} MATCHES "3")
 
 ################################################
 # Define output path for generated libraries:  #

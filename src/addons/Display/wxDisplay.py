@@ -17,8 +17,8 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-import os
-import sys
+from __future__ import print_function
+
 try:
     import wx
 except ImportError:
@@ -128,10 +128,9 @@ class wxViewer3d(wxBaseViewer):
     def OnKeyDown(self, evt):
         code = evt.GetKeyCode()
         try:
-            print 'key', chr(code), 'in keymap'
             self._key_map[code]()
         except:
-            print 'unrecognized key', evt.GetKeyCode()
+            print('unrecognized key %i' % evt.GetKeyCode())
 
     def OnMaximize(self, event):
         if self._inited:

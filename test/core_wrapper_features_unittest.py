@@ -18,7 +18,6 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 import unittest
-import sys
 
 from OCC.Standard import *
 from OCC.BRepPrimAPI import *
@@ -33,7 +32,6 @@ class TestWrapperFeatures(unittest.TestCase):
         '''
         Check whether the __hash__ function is equal to HashCode()
         '''
-        print 'Test: __hash__ overloading'
         s = Standard_Transient()
         id_s = id(s)
         hash1_s = s.__hash__()
@@ -43,7 +41,6 @@ class TestWrapperFeatures(unittest.TestCase):
         '''
         Test python lists features
         '''
-        print 'Test: python lists'
         P1 = gp_Pnt(1, 2, 3)
         P2 = gp_Pnt(2, 3, 4)
         P3 = gp_Pnt(5, 7, 8)
@@ -72,7 +69,6 @@ class TestWrapperFeatures(unittest.TestCase):
         '''
         Test python dict features
         '''
-        print 'Test: python dicts'
         P1 = gp_Pnt(1, 2, 3)
         P2 = gp_Pnt(2, 3, 4)
         d = {P1: 'P1', P2: 'P2'}
@@ -83,7 +79,6 @@ class TestWrapperFeatures(unittest.TestCase):
         '''
         Checks the Topology.py utility script.
         '''
-        print 'Test: Topology'
 
         def get_shape():
             shape = BRepPrimAPI_MakeBox(10., 10., 10.).Shape()
@@ -131,7 +126,6 @@ class TestWrapperFeatures(unittest.TestCase):
         >>> from OCC.Interface import *
         >>> Interface_Static_SetCVal("write.step.schema","AP203")
         '''
-        print 'Test : wrapper for C++ static methods'
         # needs to be inited otherwise the following does not work
         w = STEPControl_Writer()
         # Note : static methods are wrapped with lowercase convention
@@ -154,7 +148,6 @@ class TestWrapperFeatures(unittest.TestCase):
         '''
         Checks the Standard_Integer & byreference return parameter
         '''
-        print 'Test: Standard_Integer & by reference transformator'
         from OCC.ShapeFix import ShapeFix_Solid
         sfs = ShapeFix_Solid()
         sfs.SetFixShellMode(5)
@@ -164,7 +157,6 @@ class TestWrapperFeatures(unittest.TestCase):
         '''
         Checks the Standard_Boolean & byreference return parameter
         '''
-        print 'Test: Standard_Boolean & by reference transformator'
         from OCC.ShapeFix import ShapeFix_Wire
         sfw = ShapeFix_Wire()
         sfw.SetModifyGeometryMode(True)

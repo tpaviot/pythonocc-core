@@ -17,6 +17,8 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+from __future__ import print_function
+
 import time
 
 from OCC.gp import *
@@ -49,7 +51,7 @@ def rotating_cube_1_axis(event=None):
         display.Context.SetLocation(ais_boxshp, aCubeToploc)
         display.Context.UpdateCurrentViewer()
         angle += 0.1
-    print "{0} rotations took {1}".format(n_rotations, time.time() - tA)
+    print("%i rotations took %f" % (n_rotations, time.time() - tA))
 
 
 def rotating_cube_2_axis(event=None):
@@ -69,7 +71,7 @@ def rotating_cube_2_axis(event=None):
         display.Context.SetLocation(ais_boxshp, aCubeToploc)
         display.Context.UpdateCurrentViewer()
         angle += 0.1
-    print "{0} rotations took {1}".format(n_rotations, time.time() - tA)
+    print("%i rotations took %f" % (n_rotations, time.time() - tA))
 
 if __name__ == '__main__':
     add_menu('animation')

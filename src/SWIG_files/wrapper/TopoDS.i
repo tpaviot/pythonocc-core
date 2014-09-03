@@ -17,7 +17,7 @@ You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-%module TopoDS
+%module (package="OCC") TopoDS
 
 #pragma SWIG nowarn=504,325,503
 
@@ -33,7 +33,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%include TopoDS_required_python_modules.i
 %include TopoDS_headers.i
 
 /* typedefs */
@@ -1178,14 +1177,14 @@ def __del__(self):
 %extend TopoDS_Shape {
 %pythoncode {
 	def __getstate__(self):
-		from BRepTools import BRepTools_ShapeSet
+		from .BRepTools import BRepTools_ShapeSet
 		ss = BRepTools_ShapeSet()
 		ss.Add(self)
 		str_shape = ss.WriteToString()
 		indx = ss.Locations().Index(self.Location())
 		return str_shape, indx
 	def __setstate__(self, state):
-		from BRepTools import BRepTools_ShapeSet
+		from .BRepTools import BRepTools_ShapeSet
 		topods_str, indx = state
 		ss = BRepTools_ShapeSet()
 		ss.ReadFromString(topods_str)
