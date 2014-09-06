@@ -2969,7 +2969,7 @@ No detailed docstring for this function.") IsNotEqual;
             try:
                 return self.__ne_wrapper__(right)
             except:
-                return False
+                return True
         }
         };
 
@@ -3450,7 +3450,7 @@ No detailed docstring for this function.") IsNotEqual;
             try:
                 return self.__ne_wrapper__(right)
             except:
-                return False
+                return True
         }
         };
 
@@ -3855,7 +3855,7 @@ No detailed docstring for this function.") IsNotEqual;
             try:
                 return self.__ne_wrapper__(right)
             except:
-                return False
+                return True
         }
         };
 
@@ -6580,7 +6580,7 @@ No detailed docstring for this function.") IsNotEqual;
             try:
                 return self.__ne_wrapper__(right)
             except:
-                return False
+                return True
         }
         		%feature("autodoc", "Args:
 	None
@@ -7043,7 +7043,7 @@ No detailed docstring for this function.") IsNotEqual;
             try:
                 return self.__ne_wrapper__(right)
             except:
-                return False
+                return True
         }
         		%feature("autodoc", "Args:
 	None

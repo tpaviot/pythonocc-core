@@ -908,7 +908,7 @@ Note that this method is an alias of operator !=") IsDifferent;
             try:
                 return self.__ne_wrapper__(right)
             except:
-                return False
+                return True
         }
         		%feature("autodoc", "Args:
 	other(TCollection_AsciiString)
@@ -932,7 +932,7 @@ Note that this method is an alias of operator !=") IsDifferent;
             try:
                 return self.__ne_wrapper__(right)
             except:
-                return False
+                return True
         }
         		%feature("autodoc", "Args:
 	other(char *)
@@ -1871,7 +1871,7 @@ Note that this method is an alias of operator !=.") IsDifferent;
             try:
                 return self.__ne_wrapper__(right)
             except:
-                return False
+                return True
         }
         		%feature("autodoc", "Args:
 	other(TCollection_ExtendedString)
@@ -1895,7 +1895,7 @@ Note that this method is an alias of operator !=.") IsDifferent;
             try:
                 return self.__ne_wrapper__(right)
             except:
-                return False
+                return True
         }
         		%feature("autodoc", "Args:
 	other(Standard_ExtString)

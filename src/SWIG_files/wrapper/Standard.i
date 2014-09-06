@@ -420,7 +420,7 @@ No detailed docstring for this function.") IsNotSame;
             try:
                 return self.__ne_wrapper__(right)
             except:
-                return False
+                return True
         }
         		%feature("autodoc", "Args:
 	uid(Standard_GUID)

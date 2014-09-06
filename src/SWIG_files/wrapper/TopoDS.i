@@ -1130,7 +1130,7 @@ Negation of the IsEqual method.") IsNotEqual;
             try:
                 return self.__ne_wrapper__(right)
             except:
-                return False
+                return True
         }
         		%feature("autodoc", "Args:
 	Upper(Standard_Integer)

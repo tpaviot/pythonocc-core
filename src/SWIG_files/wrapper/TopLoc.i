@@ -616,7 +616,7 @@ This method is an alias for operator !=.") IsDifferent;
             try:
                 return self.__ne_wrapper__(right)
             except:
-                return False
+                return True
         }
         		%feature("autodoc", "Args:
 	S(Standard_OStream)

@@ -6250,7 +6250,7 @@ Returns Standard_True if the materials <self> and
             try:
                 return self.__ne_wrapper__(right)
             except:
-                return False
+                return True
         }
         		%feature("autodoc", "Args:
 	Other(Graphic3d_MaterialAspect)

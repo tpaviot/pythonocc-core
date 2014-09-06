@@ -255,8 +255,8 @@ class TestWrapperFeatures(unittest.TestCase):
         shape_1 = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
         shape_2 = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
         self.assertFalse(shape_1 == shape_2)
-        self.assertTrue(shape1 == shape1)
-        self.assertFalse(shape1 == "some_string")
+        self.assertTrue(shape_1 == shape_1)
+        self.assertFalse(shape_1 == "some_string")
 
     def testNEqOperator(self):
          # test Standard
@@ -270,8 +270,8 @@ class TestWrapperFeatures(unittest.TestCase):
         shape_1 = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
         shape_2 = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
         self.assertTrue(shape_1 != shape_2)
-        self.assertFalse(shape1 != shape1)
-        self.assertTrue(shape1 != "some_string")
+        self.assertFalse(shape_1 != shape_1)
+        self.assertTrue(shape_1 != "some_string")
 
 
 def suite():

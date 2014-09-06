@@ -1293,7 +1293,7 @@ Returns Standard_True if the distance between <self> and
             try:
                 return self.__ne_wrapper__(right)
             except:
-                return False
+                return True
         }
         		%feature("autodoc", "Args:
 	Other(Quantity_Color)
