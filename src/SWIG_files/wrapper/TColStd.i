@@ -11839,17 +11839,21 @@ Returns:
 * same sets of elements
 */") IsEqual;
 		Standard_Boolean IsEqual (const TColStd_PackedMapOfInteger &);
-		%feature("autodoc", "Args:
-	MM(TColStd_PackedMapOfInteger)
 
-Returns:
-	Standard_Boolean
-
-/**
-* Overloaded operator version of IsEqual().
-*/") operator==;
-		Standard_Boolean operator == (const TColStd_PackedMapOfInteger & MM);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __eq_wrapper__(const TColStd_PackedMapOfInteger  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	&(TColStd_PackedMapOfInteger)
 
 Returns:

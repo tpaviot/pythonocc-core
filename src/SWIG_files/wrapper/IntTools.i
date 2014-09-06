@@ -702,15 +702,21 @@ Returns:
 
 No detailed docstring for this function.") IsEqual;
 		Standard_Boolean IsEqual (const IntTools_CArray1OfInteger & Other);
-		%feature("autodoc", "Args:
-	Other(IntTools_CArray1OfInteger)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator==;
-		Standard_Boolean operator == (const IntTools_CArray1OfInteger & Other);
-};
+        %extend{
+            bool __eq_wrapper__(const IntTools_CArray1OfInteger  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        };
 
 
 %feature("shadow") IntTools_CArray1OfInteger::~IntTools_CArray1OfInteger %{
@@ -818,15 +824,21 @@ Returns:
 
 No detailed docstring for this function.") IsEqual;
 		Standard_Boolean IsEqual (const IntTools_CArray1OfReal & Other);
-		%feature("autodoc", "Args:
-	Other(IntTools_CArray1OfReal)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator==;
-		Standard_Boolean operator == (const IntTools_CArray1OfReal & Other);
-};
+        %extend{
+            bool __eq_wrapper__(const IntTools_CArray1OfReal  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        };
 
 
 %feature("shadow") IntTools_CArray1OfReal::~IntTools_CArray1OfReal %{

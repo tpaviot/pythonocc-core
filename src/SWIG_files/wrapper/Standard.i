@@ -386,15 +386,21 @@ Returns:
 
 No detailed docstring for this function.") IsSame;
 		Standard_Boolean IsSame (const Standard_GUID & uid);
-		%feature("autodoc", "Args:
-	uid(Standard_GUID)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator==;
-		Standard_Boolean operator == (const Standard_GUID & uid);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __eq_wrapper__(const Standard_GUID  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	uid(Standard_GUID)
 
 Returns:
@@ -402,15 +408,21 @@ Returns:
 
 No detailed docstring for this function.") IsNotSame;
 		Standard_Boolean IsNotSame (const Standard_GUID & uid);
-		%feature("autodoc", "Args:
-	uid(Standard_GUID)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator!=;
-		Standard_Boolean operator != (const Standard_GUID & uid);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __ne_wrapper__(const Standard_GUID  other) {
+            if (*self!=other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __ne__(self,right):
+            try:
+                return self.__ne_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	uid(Standard_GUID)
 
 Returns:
@@ -770,7 +782,13 @@ Returns:
 Returns a hashed value denoting <self>. This value is in  
         the range 1..<Upper>.") HashCode;
 		virtual Standard_Integer HashCode (const Standard_Integer Upper);
-		%feature("autodoc", "Args:
+
+        %extend {
+            Standard_Integer __hash__() {
+            return $self->HashCode(2147483647);
+            }
+        };
+        		%feature("autodoc", "Args:
 	Other(Standard_Storable)
 
 Returns:
@@ -779,15 +797,21 @@ Returns:
 Returns true if the direct contents of <self> and  
         <Other> are memberwise equal.") IsEqual;
 		Standard_Boolean IsEqual (const Standard_Storable & Other);
-		%feature("autodoc", "Args:
-	Other(Standard_Storable)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator==;
-		Standard_Boolean operator == (const Standard_Storable & Other);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __eq_wrapper__(const Standard_Storable  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	Other(Standard_Storable)
 
 Returns:

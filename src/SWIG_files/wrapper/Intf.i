@@ -443,15 +443,21 @@ Returns:
 
 Compares two SectionLines.") IsEqual;
 		Standard_Boolean IsEqual (const Intf_SectionLine & Other);
-		%feature("autodoc", "Args:
-	Other(Intf_SectionLine)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator==;
-		Standard_Boolean operator == (const Intf_SectionLine & Other);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __eq_wrapper__(const Intf_SectionLine  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	None
 Returns:
 	None
@@ -642,15 +648,21 @@ Returns:
 Returns True if the two SectionPoint have the  same logical  
          informations.") IsEqual;
 		Standard_Boolean IsEqual (const Intf_SectionPoint & Other);
-		%feature("autodoc", "Args:
-	Other(Intf_SectionPoint)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator==;
-		Standard_Boolean operator == (const Intf_SectionPoint & Other);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __eq_wrapper__(const Intf_SectionPoint  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	Other(Intf_SectionPoint)
 
 Returns:
@@ -1539,15 +1551,21 @@ Returns:
 
 Compares two TangentZones.") IsEqual;
 		Standard_Boolean IsEqual (const Intf_TangentZone & Other);
-		%feature("autodoc", "Args:
-	Other(Intf_TangentZone)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator==;
-		Standard_Boolean operator == (const Intf_TangentZone & Other);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __eq_wrapper__(const Intf_TangentZone  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	ThePI(Intf_SectionPoint)
 
 Returns:

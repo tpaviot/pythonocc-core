@@ -848,15 +848,21 @@ Returns true if the characters in this ASCII string
 are identical to the characters in ASCII string other.  
 Note that this method is an alias of operator ==.") IsEqual;
 		Standard_Boolean IsEqual (const char * other);
-		%feature("autodoc", "Args:
-	other(char *)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator==;
-		Standard_Boolean operator == (const char * other);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __eq_wrapper__(const Standard_CString other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	other(TCollection_AsciiString)
 
 Returns:
@@ -866,15 +872,21 @@ Returns true if the characters in this ASCII string
 are identical to the characters in ASCII string other.  
 Note that this method is an alias of operator ==.") IsEqual;
 		Standard_Boolean IsEqual (const TCollection_AsciiString & other);
-		%feature("autodoc", "Args:
-	other(TCollection_AsciiString)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator==;
-		Standard_Boolean operator == (const TCollection_AsciiString & other);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __eq_wrapper__(const TCollection_AsciiString  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	other(char *)
 
 Returns:
@@ -884,15 +896,21 @@ Returns true if there are differences between the
 characters in this ASCII string and ASCII string other.  
 Note that this method is an alias of operator !=") IsDifferent;
 		Standard_Boolean IsDifferent (const char * other);
-		%feature("autodoc", "Args:
-	other(char *)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator!=;
-		Standard_Boolean operator != (const char * other);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __ne_wrapper__(const Standard_CString other) {
+            if (*self!=other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __ne__(self,right):
+            try:
+                return self.__ne_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	other(TCollection_AsciiString)
 
 Returns:
@@ -902,15 +920,21 @@ Returns true if there are differences between the
 characters in this ASCII string and ASCII string other.  
 Note that this method is an alias of operator !=") IsDifferent;
 		Standard_Boolean IsDifferent (const TCollection_AsciiString & other);
-		%feature("autodoc", "Args:
-	other(TCollection_AsciiString)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator!=;
-		Standard_Boolean operator != (const TCollection_AsciiString & other);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __ne_wrapper__(const TCollection_AsciiString  other) {
+            if (*self!=other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __ne__(self,right):
+            try:
+                return self.__ne_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	other(char *)
 
 Returns:
@@ -1787,15 +1811,21 @@ Returns true if the characters in this extended
 string are identical to the characters in the other extended string.  
 Note that this method is an alias of operator ==") IsEqual;
 		Standard_Boolean IsEqual (const Standard_ExtString other);
-		%feature("autodoc", "Args:
-	other(Standard_ExtString)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator==;
-		Standard_Boolean operator == (const Standard_ExtString other);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __eq_wrapper__(const Standard_ExtString other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	other(TCollection_ExtendedString)
 
 Returns:
@@ -1805,15 +1835,21 @@ Returns true if the characters in this extended
 string are identical to the characters in the other extended string.  
 Note that this method is an alias of operator ==") IsEqual;
 		Standard_Boolean IsEqual (const TCollection_ExtendedString & other);
-		%feature("autodoc", "Args:
-	other(TCollection_ExtendedString)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator==;
-		Standard_Boolean operator == (const TCollection_ExtendedString & other);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __eq_wrapper__(const TCollection_ExtendedString  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	other(Standard_ExtString)
 
 Returns:
@@ -1823,15 +1859,21 @@ Returns true if there are differences between the
 characters in this extended string and the other extended string.  
 Note that this method is an alias of operator !=.") IsDifferent;
 		Standard_Boolean IsDifferent (const Standard_ExtString other);
-		%feature("autodoc", "Args:
-	other(Standard_ExtString)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator!=;
-		Standard_Boolean operator != (const Standard_ExtString other);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __ne_wrapper__(const Standard_ExtString other) {
+            if (*self!=other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __ne__(self,right):
+            try:
+                return self.__ne_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	other(TCollection_ExtendedString)
 
 Returns:
@@ -1841,15 +1883,21 @@ Returns true if there are differences between the
 characters in this extended string and the other extended string.  
 Note that this method is an alias of operator !=.") IsDifferent;
 		Standard_Boolean IsDifferent (const TCollection_ExtendedString & other);
-		%feature("autodoc", "Args:
-	other(TCollection_ExtendedString)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator!=;
-		Standard_Boolean operator != (const TCollection_ExtendedString & other);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __ne_wrapper__(const TCollection_ExtendedString  other) {
+            if (*self!=other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __ne__(self,right):
+            try:
+                return self.__ne_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	other(Standard_ExtString)
 
 Returns:

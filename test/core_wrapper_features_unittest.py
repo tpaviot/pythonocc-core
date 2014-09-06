@@ -251,24 +251,15 @@ class TestWrapperFeatures(unittest.TestCase):
         res = items.index(line)
         self.assertEqual(res, 1.)
 
-    # TODO : doesn't work
-    # def testTopoDS_ShapeOperators(self):
-    #     shape_1 = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
-    #     shape_2 = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
-    #     shape_3 = BRepPrimAPI_MakeSphere(20).Shape()
-    #     self.assertFalse(shape_1 == shape_2)
-    #     self.assertFalse(shape_2 == shape_3)
-    #     self.assertFalse(shape_3 == shape_1)
-    #     self.assertFalse(shape_2 == "some_string")
-    #     self.assertTrue(shape_1 != shape_2)
-    #     self.assertTrue(shape_2 != shape_3)
-    #     self.assertTrue(shape_3 != shape_1)
-    #     self.assertTrue(shape_2 != "some_string")
+    def testEqOperator(self):
+        shape_1 = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+        shape_2 = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+        self.assertFalse(shape_1 == shape_2)
+        self.assertTrue(shape1 == shape1)
+        self.assertFalse(shape1 == "some_string")
 
     def testNEqOperator(self):
-        ''' test that the != wrapper is ok
-        '''
-        # test Standard
+         # test Standard
         h1 = Handle_Standard_Transient()
         s = Standard_Transient()
         h2 = s.GetHandle()
@@ -276,6 +267,11 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertTrue(h1 != h2)
         self.assertTrue(h1 != 10)
         self.assertFalse(h2 != s)
+        shape_1 = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+        shape_2 = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+        self.assertTrue(shape_1 != shape_2)
+        self.assertFalse(shape1 != shape1)
+        self.assertTrue(shape1 != "some_string")
 
 
 def suite():

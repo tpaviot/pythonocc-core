@@ -3337,7 +3337,13 @@ Returns:
 
 No detailed docstring for this function.") HashCode;
 		Standard_Integer HashCode (const Standard_Integer Upper);
-		%feature("autodoc", "Args:
+
+        %extend {
+            Standard_Integer __hash__() {
+            return $self->HashCode(2147483647);
+            }
+        };
+        		%feature("autodoc", "Args:
 	Other(BRepMesh_Edge)
 
 Returns:
@@ -3353,15 +3359,21 @@ Returns:
 
 No detailed docstring for this function.") IsEqual;
 		Standard_Boolean IsEqual (const BRepMesh_Edge & Other);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_Edge)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator==;
-		Standard_Boolean operator == (const BRepMesh_Edge & Other);
-};
+        %extend{
+            bool __eq_wrapper__(const BRepMesh_Edge  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        };
 
 
 %feature("shadow") BRepMesh_Edge::~BRepMesh_Edge %{
@@ -6705,7 +6717,13 @@ Returns:
 
 No detailed docstring for this function.") HashCode;
 		Standard_Integer HashCode (const Standard_Integer theUpper);
-		%feature("autodoc", "Args:
+
+        %extend {
+            Standard_Integer __hash__() {
+            return $self->HashCode(2147483647);
+            }
+        };
+        		%feature("autodoc", "Args:
 	theOther(BRepMesh_Triangle)
 
 Returns:
@@ -6713,15 +6731,21 @@ Returns:
 
 No detailed docstring for this function.") IsEqual;
 		Standard_Boolean IsEqual (const BRepMesh_Triangle & theOther);
-		%feature("autodoc", "Args:
-	theOther(BRepMesh_Triangle)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator==;
-		Standard_Boolean operator == (const BRepMesh_Triangle & theOther);
-};
+        %extend{
+            bool __eq_wrapper__(const BRepMesh_Triangle  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        };
 
 
 %feature("shadow") BRepMesh_Triangle::~BRepMesh_Triangle %{
@@ -6815,7 +6839,13 @@ Returns:
 
 No detailed docstring for this function.") HashCode;
 		Standard_Integer HashCode (const Standard_Integer Upper);
-		%feature("autodoc", "Args:
+
+        %extend {
+            Standard_Integer __hash__() {
+            return $self->HashCode(2147483647);
+            }
+        };
+        		%feature("autodoc", "Args:
 	Other(BRepMesh_Vertex)
 
 Returns:
@@ -6823,15 +6853,21 @@ Returns:
 
 No detailed docstring for this function.") IsEqual;
 		Standard_Boolean IsEqual (const BRepMesh_Vertex & Other);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_Vertex)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator==;
-		Standard_Boolean operator == (const BRepMesh_Vertex & Other);
-};
+        %extend{
+            bool __eq_wrapper__(const BRepMesh_Vertex  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        };
 
 
 %feature("shadow") BRepMesh_Vertex::~BRepMesh_Vertex %{

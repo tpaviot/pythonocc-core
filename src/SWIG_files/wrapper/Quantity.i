@@ -1281,15 +1281,21 @@ Returns:
 Returns Standard_True if the distance between <self> and  
 //!	    <Other> is greater than Epsilon ().") IsDifferent;
 		Standard_Boolean IsDifferent (const Quantity_Color & Other);
-		%feature("autodoc", "Args:
-	Other(Quantity_Color)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator!=;
-		Standard_Boolean operator != (const Quantity_Color & Other);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __ne_wrapper__(const Quantity_Color  other) {
+            if (*self!=other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __ne__(self,right):
+            try:
+                return self.__ne_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	Other(Quantity_Color)
 
 Returns:
@@ -1302,15 +1308,21 @@ Two colors are considered to be equal if their
 distance is no greater than Epsilon().  
 These methods are aliases of operator != and operator ==.") IsEqual;
 		Standard_Boolean IsEqual (const Quantity_Color & Other);
-		%feature("autodoc", "Args:
-	Other(Quantity_Color)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator==;
-		Standard_Boolean operator == (const Quantity_Color & Other);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __eq_wrapper__(const Quantity_Color  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	None
 Returns:
 	Quantity_Parameter
@@ -1786,15 +1798,21 @@ Returns:
 Returns TRUE if both <self> and <other> are equal.  
 This method is an alias of operator ==.") IsEqual;
 		Standard_Boolean IsEqual (const Quantity_Date & anOther);
-		%feature("autodoc", "Args:
-	anOther(Quantity_Date)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator==;
-		Standard_Boolean operator == (const Quantity_Date & anOther);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __eq_wrapper__(const Quantity_Date  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	anOther(Quantity_Date)
 
 Returns:
@@ -2205,15 +2223,21 @@ Returns:
 
 Returns TRUE if both <self> and <other> are equal.") IsEqual;
 		Standard_Boolean IsEqual (const Quantity_Period & anOther);
-		%feature("autodoc", "Args:
-	anOther(Quantity_Period)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator==;
-		Standard_Boolean operator == (const Quantity_Period & anOther);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __eq_wrapper__(const Quantity_Period  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	anOther(Quantity_Period)
 
 Returns:
