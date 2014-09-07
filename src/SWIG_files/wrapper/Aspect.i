@@ -2935,15 +2935,21 @@ Returns:
 
 No detailed docstring for this function.") IsEqual;
 		Standard_Boolean IsEqual (const Aspect_FontStyle & Other);
-		%feature("autodoc", "Args:
-	Other(Aspect_FontStyle)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator==;
-		Standard_Boolean operator == (const Aspect_FontStyle & Other);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __eq_wrapper__(const Aspect_FontStyle  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	Other(Aspect_FontStyle)
 
 Returns:
@@ -2951,15 +2957,21 @@ Returns:
 
 No detailed docstring for this function.") IsNotEqual;
 		Standard_Boolean IsNotEqual (const Aspect_FontStyle & Other);
-		%feature("autodoc", "Args:
-	Other(Aspect_FontStyle)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator!=;
-		Standard_Boolean operator != (const Aspect_FontStyle & Other);
-};
+        %extend{
+            bool __ne_wrapper__(const Aspect_FontStyle  other) {
+            if (*self!=other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __ne__(self,right):
+            try:
+                return self.__ne_wrapper__(right)
+            except:
+                return True
+        }
+        };
 
 
 %feature("shadow") Aspect_FontStyle::~Aspect_FontStyle %{
@@ -3404,15 +3416,21 @@ Returns:
 
 No detailed docstring for this function.") IsEqual;
 		Standard_Boolean IsEqual (const Aspect_LineStyle & Other);
-		%feature("autodoc", "Args:
-	Other(Aspect_LineStyle)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator==;
-		Standard_Boolean operator == (const Aspect_LineStyle & Other);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __eq_wrapper__(const Aspect_LineStyle  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	Other(Aspect_LineStyle)
 
 Returns:
@@ -3420,15 +3438,21 @@ Returns:
 
 No detailed docstring for this function.") IsNotEqual;
 		Standard_Boolean IsNotEqual (const Aspect_LineStyle & Other);
-		%feature("autodoc", "Args:
-	Other(Aspect_LineStyle)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator!=;
-		Standard_Boolean operator != (const Aspect_LineStyle & Other);
-};
+        %extend{
+            bool __ne_wrapper__(const Aspect_LineStyle  other) {
+            if (*self!=other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __ne__(self,right):
+            try:
+                return self.__ne_wrapper__(right)
+            except:
+                return True
+        }
+        };
 
 
 %feature("shadow") Aspect_LineStyle::~Aspect_LineStyle %{
@@ -3797,15 +3821,21 @@ Returns:
 
 No detailed docstring for this function.") IsEqual;
 		Standard_Boolean IsEqual (const Aspect_MarkerStyle & Other);
-		%feature("autodoc", "Args:
-	Other(Aspect_MarkerStyle)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator==;
-		Standard_Boolean operator == (const Aspect_MarkerStyle & Other);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __eq_wrapper__(const Aspect_MarkerStyle  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	Other(Aspect_MarkerStyle)
 
 Returns:
@@ -3813,15 +3843,21 @@ Returns:
 
 No detailed docstring for this function.") IsNotEqual;
 		Standard_Boolean IsNotEqual (const Aspect_MarkerStyle & Other);
-		%feature("autodoc", "Args:
-	Other(Aspect_MarkerStyle)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator!=;
-		Standard_Boolean operator != (const Aspect_MarkerStyle & Other);
-};
+        %extend{
+            bool __ne_wrapper__(const Aspect_MarkerStyle  other) {
+            if (*self!=other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __ne__(self,right):
+            try:
+                return self.__ne_wrapper__(right)
+            except:
+                return True
+        }
+        };
 
 
 %feature("shadow") Aspect_MarkerStyle::~Aspect_MarkerStyle %{
@@ -6496,7 +6532,13 @@ Returns:
 Returns a hashed value denoting <self>. This value is in  
         the range 1..<Upper>.") HashCode;
 		Standard_Integer HashCode (const Standard_Integer Upper);
-		%feature("autodoc", "Args:
+
+        %extend {
+            Standard_Integer __hash__() {
+            return $self->HashCode(2147483647);
+            }
+        };
+        		%feature("autodoc", "Args:
 	Other(Aspect_ColorPixel)
 
 Returns:
@@ -6504,15 +6546,21 @@ Returns:
 
 No detailed docstring for this function.") IsEqual;
 		Standard_Boolean IsEqual (const Aspect_ColorPixel & Other);
-		%feature("autodoc", "Args:
-	Other(Aspect_ColorPixel)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator==;
-		Standard_Boolean operator == (const Aspect_ColorPixel & Other);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __eq_wrapper__(const Aspect_ColorPixel  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	Other(Aspect_ColorPixel)
 
 Returns:
@@ -6520,15 +6568,21 @@ Returns:
 
 No detailed docstring for this function.") IsNotEqual;
 		Standard_Boolean IsNotEqual (const Aspect_ColorPixel & Other);
-		%feature("autodoc", "Args:
-	Other(Aspect_ColorPixel)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator!=;
-		Standard_Boolean operator != (const Aspect_ColorPixel & Other);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __ne_wrapper__(const Aspect_ColorPixel  other) {
+            if (*self!=other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __ne__(self,right):
+            try:
+                return self.__ne_wrapper__(right)
+            except:
+                return True
+        }
+        		%feature("autodoc", "Args:
 	None
 Returns:
 	Quantity_Color
@@ -6933,7 +6987,13 @@ Returns:
 Returns a hashed value denoting <self>. This value is in  
         the range 1..<Upper>.") HashCode;
 		Standard_Integer HashCode (const Standard_Integer Upper);
-		%feature("autodoc", "Args:
+
+        %extend {
+            Standard_Integer __hash__() {
+            return $self->HashCode(2147483647);
+            }
+        };
+        		%feature("autodoc", "Args:
 	s(Standard_OStream)
 
 Returns:
@@ -6949,15 +7009,21 @@ Returns:
 
 No detailed docstring for this function.") IsEqual;
 		Standard_Boolean IsEqual (const Aspect_IndexPixel & Other);
-		%feature("autodoc", "Args:
-	Other(Aspect_IndexPixel)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator==;
-		Standard_Boolean operator == (const Aspect_IndexPixel & Other);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __eq_wrapper__(const Aspect_IndexPixel  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	Other(Aspect_IndexPixel)
 
 Returns:
@@ -6965,15 +7031,21 @@ Returns:
 
 No detailed docstring for this function.") IsNotEqual;
 		Standard_Boolean IsNotEqual (const Aspect_IndexPixel & Other);
-		%feature("autodoc", "Args:
-	Other(Aspect_IndexPixel)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator!=;
-		Standard_Boolean operator != (const Aspect_IndexPixel & Other);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __ne_wrapper__(const Aspect_IndexPixel  other) {
+            if (*self!=other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __ne__(self,right):
+            try:
+                return self.__ne_wrapper__(right)
+            except:
+                return True
+        }
+        		%feature("autodoc", "Args:
 	None
 Returns:
 	Standard_Integer

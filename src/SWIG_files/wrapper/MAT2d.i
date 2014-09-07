@@ -235,15 +235,21 @@ Returns:
 
 No detailed docstring for this function.") IsEqual;
 		Standard_Boolean IsEqual (const MAT2d_BiInt & B);
-		%feature("autodoc", "Args:
-	B(MAT2d_BiInt)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator==;
-		Standard_Boolean operator == (const MAT2d_BiInt & B);
-};
+        %extend{
+            bool __eq_wrapper__(const MAT2d_BiInt  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        };
 
 
 %feature("shadow") MAT2d_BiInt::~MAT2d_BiInt %{

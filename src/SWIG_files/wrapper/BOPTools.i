@@ -1388,7 +1388,13 @@ Returns:
 
 No detailed docstring for this function.") HashCode;
 		Standard_Integer HashCode (const Standard_Integer Upper);
-};
+
+        %extend {
+            Standard_Integer __hash__() {
+            return $self->HashCode(2147483647);
+            }
+        };
+        };
 
 
 %feature("shadow") BOPTools_Set::~BOPTools_Set %{

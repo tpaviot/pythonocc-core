@@ -562,7 +562,13 @@ Returns a hashed value for this local coordinate system.
 This value is used, with map tables, to store and  
 retrieve the object easily, and is in the range [ 1..Upper ].") HashCode;
 		Standard_Integer HashCode (const Standard_Integer Upper);
-		%feature("autodoc", "Args:
+
+        %extend {
+            Standard_Integer __hash__() {
+            return $self->HashCode(2147483647);
+            }
+        };
+        		%feature("autodoc", "Args:
 	Other(TopLoc_Location)
 
 Returns:
@@ -573,15 +579,21 @@ have the same elementary data, i.e. contain the same
 series of TopLoc_Datum3D and respective powers.  
 This method is an alias for operator ==.") IsEqual;
 		Standard_Boolean IsEqual (const TopLoc_Location & Other);
-		%feature("autodoc", "Args:
-	Other(TopLoc_Location)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator==;
-		Standard_Boolean operator == (const TopLoc_Location & Other);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __eq_wrapper__(const TopLoc_Location  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	Other(TopLoc_Location)
 
 Returns:
@@ -592,15 +604,21 @@ not have the same elementary data, i.e. do not
 contain the same series of TopLoc_Datum3D and respective powers.  
 This method is an alias for operator !=.") IsDifferent;
 		Standard_Boolean IsDifferent (const TopLoc_Location & Other);
-		%feature("autodoc", "Args:
-	Other(TopLoc_Location)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator!=;
-		Standard_Boolean operator != (const TopLoc_Location & Other);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __ne_wrapper__(const TopLoc_Location  other) {
+            if (*self!=other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __ne__(self,right):
+            try:
+                return self.__ne_wrapper__(right)
+            except:
+                return True
+        }
+        		%feature("autodoc", "Args:
 	S(Standard_OStream)
 
 Returns:

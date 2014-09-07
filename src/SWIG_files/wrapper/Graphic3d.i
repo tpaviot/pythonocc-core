@@ -6238,15 +6238,21 @@ Returns:
 Returns Standard_True if the materials <self> and  
          <Other> are different.") IsDifferent;
 		Standard_Boolean IsDifferent (const Graphic3d_MaterialAspect & Other);
-		%feature("autodoc", "Args:
-	Other(Graphic3d_MaterialAspect)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator!=;
-		Standard_Boolean operator != (const Graphic3d_MaterialAspect & Other);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __ne_wrapper__(const Graphic3d_MaterialAspect  other) {
+            if (*self!=other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __ne__(self,right):
+            try:
+                return self.__ne_wrapper__(right)
+            except:
+                return True
+        }
+        		%feature("autodoc", "Args:
 	Other(Graphic3d_MaterialAspect)
 
 Returns:
@@ -6255,15 +6261,21 @@ Returns:
 Returns Standard_True if the materials <self> and  
          <Other> are identical.") IsEqual;
 		Standard_Boolean IsEqual (const Graphic3d_MaterialAspect & Other);
-		%feature("autodoc", "Args:
-	Other(Graphic3d_MaterialAspect)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator==;
-		Standard_Boolean operator == (const Graphic3d_MaterialAspect & Other);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __eq_wrapper__(const Graphic3d_MaterialAspect  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	None
 Returns:
 	static Standard_Integer

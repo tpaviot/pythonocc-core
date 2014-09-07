@@ -1804,7 +1804,13 @@ Returns:
 Query  
 Returns hash  code") HashCode;
 		Standard_Integer HashCode (const Standard_Integer theUpper);
-		%feature("autodoc", "Args:
+
+        %extend {
+            Standard_Integer __hash__() {
+            return $self->HashCode(2147483647);
+            }
+        };
+        		%feature("autodoc", "Args:
 	theIndex(Standard_Integer)
 
 Returns:
@@ -1969,15 +1975,21 @@ Query
 Returns true if thr parameter od this is equal  
  to the parameter of  <theOther>") IsEqual;
 		Standard_Boolean IsEqual (const BOPDS_Pave & theOther);
-		%feature("autodoc", "Args:
-	theOther(BOPDS_Pave)
 
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator==;
-		Standard_Boolean operator == (const BOPDS_Pave & theOther);
-		%feature("autodoc", "Args:
+        %extend{
+            bool __eq_wrapper__(const BOPDS_Pave  other) {
+            if (*self==other) return true;
+            else return false;
+            }
+        }
+        %pythoncode {
+        def __eq__(self,right):
+            try:
+                return self.__eq_wrapper__(right)
+            except:
+                return False
+        }
+        		%feature("autodoc", "Args:
 	None
 Returns:
 	None
