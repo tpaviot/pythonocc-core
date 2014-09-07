@@ -2,9 +2,6 @@ language: python
 python:
   - "2.7"
   - "3.3"
-compiler:
-  - gcc
-  - clang
 before_install:
    - sudo apt-get install swig
    - sudo add-apt-repository "deb http://ppa.launchpad.net/freecad-maintainers/oce-release/ubuntu precise main" -y
@@ -15,12 +12,11 @@ before_install:
 before_script:
   - mkdir cmake-build
   - cd cmake-build
-script: xvfb-run -s "-screen 0 1024x768x16" ../.travis.build.sh
+script: ../.travis.build.sh
 after_script:
-# run unittest suite
   - cd ../test
   - python run_tests.py
-  - xvfb-run -s "-screen 0 1024x768x16" ./core_display_unittest.py
+  - xvfb-run -s "-screen 0 1024x768x16" python core_display_unittest.py
 branches:
   only:
     - master

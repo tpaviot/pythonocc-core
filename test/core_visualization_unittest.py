@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 ##Copyright 2009-2013 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
