@@ -7,7 +7,7 @@ before_install:
    - sudo add-apt-repository "deb http://ppa.launchpad.net/freecad-maintainers/oce-release/ubuntu precise main" -y
    - sudo apt-get update -q
    - sudo apt-get install liboce-ocaf-dev oce-draw
-   - sudo apt-get install python-wxgtk2.8 libwxgtk-2.8-dev
+   - sudo apt-get install python-wxgtk2.8
    - sudo apt-get install python-qt4 python-pyside
 before_script:
   - mkdir cmake-build
