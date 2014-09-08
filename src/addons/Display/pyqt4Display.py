@@ -20,16 +20,9 @@
 from __future__ import print_function
 
 import sys
-
-try:
-    from PySide import QtCore, QtGui, QtOpenGL
-except:
-    try:
-        from PyQt4 import QtCore, QtGui, QtOpenGL
-    except:
-        raise Exception('None of PySide or PyQt4 installed')
 import OCCViewer
 
+from PyQt4 import QtCore, QtGui, QtOpenGL
 
 class point(object):
     def __init__(self, obj=None):

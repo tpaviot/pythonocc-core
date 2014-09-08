@@ -30,12 +30,12 @@ def get_backend():
     """
     try:
         from PySide import QtCore, QtGui
-        return 'qt'
+        return 'pyside'
     except:
         pass
     try:
         from PyQt4 import QtCore, QtGui
-        return 'qt'
+        return 'pyqt4'
     except:
         pass
     # Check wxPython
@@ -43,13 +43,7 @@ def get_backend():
         import wx
         return 'wx'
     except:
-        pass
-    # use Tk backend as a fall back...
-    try:
-        import Tkinter
-        return 'tkinter'
-    except:
-        raise ImportError("No compliant GUI library found. You must have either PySide, PyQt4, wxPython or Tkinter installed.")
+        raise ImportError("No compliant GUI library found. You must have either PySide, PyQt4 or wxPython installed.")
         sys.exit(1)
 
 
@@ -58,7 +52,7 @@ def init_display(backend_str=None):
 
     if not backend_str:
         USED_BACKEND = get_backend()
-    elif backend_str in ['wx', 'qt', 'tkinter']:
+    elif backend_str in ['wx', 'pyside', 'pyqt4']:
         USED_BACKEND = backend_str
     else:
         raise ValueError("You should pass either 'wx','qt' or 'tkinter' to the init_display function.")
@@ -112,21 +106,19 @@ def init_display(backend_str=None):
             app.MainLoop()
 
     # Qt based simple GUI
-    elif USED_BACKEND == 'qt':
-        try:
-            from PySide import QtCore, QtGui
-        except:
-            try:
-                from PyQt4 import QtCore, QtGui
-            except:
-                raise ImportError('None of PySide or PyQt4 installed.')
-        from qtDisplay import qtViewer3d
+    elif USED_BACKEND in ['pyqt4', 'pyside']:
+        if USED_BACKEND == 'pyqt4':
+            from PyQt4 import QtCore, QtGui, QtOpenGL
+            from pyqt4Display import qtViewer3d
+        elif USED_BACKEND == 'pyside':
+            from PySide import QtCore, QtGui, QtOpenGL
+            from pysideDisplay import qtViewer3d
 
         class MainWindow(QtGui.QMainWindow):
             def __init__(self, *args):
                 apply(QtGui.QMainWindow.__init__, (self,)+args)
                 self.canva = qtViewer3d(self)
-                self.setWindowTitle("pythonOCC-%s 3d viewer ('qt' backend)" % VERSION)
+                self.setWindowTitle("pythonOCC-%s 3d viewer ('%s' backend)" % (VERSION, USED_BACKEND))
                 self.resize(1024, 768)
                 self.setCentralWidget(self.canva)
                 if not sys.platform == 'darwin':
@@ -183,23 +175,6 @@ def init_display(backend_str=None):
         def start_display():
             win.raise_()  # make the application float to the top
             app.exec_()
-
-    elif USED_BACKEND == 'tkinter':
-        import Tkinter
-        from tkDisplay import tkViewer3d
-        app = Tkinter.Tk()
-        win = tkViewer3d(app)
-        win.InitDriver()
-        display = win._display
-
-        def start_display():
-            app.mainloop()
-
-        def add_menu(*args, **kwargs):
-            pass
-
-        def add_function_to_menu(*args, **kwargs):
-            pass
     return display, start_display, add_menu, add_function_to_menu
 
 if __name__ == '__main__':
