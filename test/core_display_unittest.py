@@ -20,12 +20,17 @@
 from OCC.Display.SimpleGui import init_display
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
 
+# pyside test
+pyside_display, start_display, add_menu, add_function_to_menu = init_display('pyside')
+my_box_1 = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
+pyside_display.DisplayShape(my_box_1, update=True)
+
+# pyqt4 test
+pyqt4_display, start_display, add_menu, add_function_to_menu = init_display('qt')
+my_box_2 = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
+pyqt4_display.DisplayShape(my_box_2, update=True)
+
 # wx test
 wx_display, start_display, add_menu, add_function_to_menu = init_display('wx')
-my_box = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
-wx_display.DisplayShape(my_box, update=True)
-
-# qt test
-qt_display, start_display, add_menu, add_function_to_menu = init_display('qt')
-my_box = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
-qt_display.DisplayShape(my_box, update=True)
+my_box_3 = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
+wx_display.DisplayShape(my_box_3, update=True)
