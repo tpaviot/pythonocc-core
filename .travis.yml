@@ -9,10 +9,10 @@ before_install:
    - sudo apt-get install liboce-ocaf-dev oce-draw
    - sudo apt-get install python-wxgtk2.8
    - sudo python -c "import wx"
-   - sudo apt-get install python-qt4
-   - sudo python -c "import PyQt4"
+   - sudo apt-get install python-qt4 python-qt4-gl
+   - sudo python -c "from PyQt4 import QtGui, QtCore, QtOpenGL"
    - sudo apt-get install python-pyside
-   - sudo python -c "import PySide"
+   - sudo python -c "from PySide import QtGui, QtCore, QtOpenGL"
 before_script:
   - mkdir cmake-build
   - cd cmake-build
