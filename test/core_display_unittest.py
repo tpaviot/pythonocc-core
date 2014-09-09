@@ -17,6 +17,11 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+from __future__ import print_function
+
+import sys
+print(sys.path)
+sys.path.append('/home/travis/virtualenv/python2.7.8/lib/python2.7/site-packages')
 from OCC.Display.SimpleGui import init_display
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
 
@@ -26,7 +31,7 @@ my_box_1 = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
 pyside_display.DisplayShape(my_box_1, update=True)
 
 # pyqt4 test
-pyqt4_display, start_display, add_menu, add_function_to_menu = init_display('qt')
+pyqt4_display, start_display, add_menu, add_function_to_menu = init_display('pyqt4')
 my_box_2 = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
 pyqt4_display.DisplayShape(my_box_2, update=True)
 

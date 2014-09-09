@@ -19,10 +19,11 @@
 Usage :
 $ python core_visualization_unittest.python """
 
-from OCC.Visualization import Tesselator, atNormal
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
-
+import os
 import unittest
+
+from OCC.Visualization import Tesselator, atNormal
+from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus, BRepPrimAPI_MakeSphere
 
 
 class TestTesselator(unittest.TestCase):
@@ -42,6 +43,12 @@ class TestTesselator(unittest.TestCase):
                           0.1, 0.1, 0.)
         self.assert_(tess.ObjGetTriangleCount() > 100)
         self.assert_(tess.ObjGetNormalCount() > 100)
+
+    def test_export_to_x3d(self):
+        """ 3rd test : export a sphere to X3D file format """
+        a_sphere = BRepPrimAPI_MakeSphere(10.).Shape()
+        Tesselator(a_sphere).ExportShapeToX3D("sphere.x3d")
+        self.assert_(os.path.exists("sphere.x3d"))
 
 
 def suite():
