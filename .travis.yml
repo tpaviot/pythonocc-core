@@ -8,7 +8,11 @@ before_install:
    - sudo apt-get update -q
    - sudo apt-get install liboce-ocaf-dev oce-draw
    - sudo apt-get install python-wxgtk2.8
-   - sudo apt-get install python-qt4 python-pyside
+   - sudo python -c "import wx"
+   - sudo apt-get install python-qt4
+   - sudo python -c "import PyQt4"
+   - sudo apt-get install python-pyside
+   - sudo python -c "import PySide"
 before_script:
   - mkdir cmake-build
   - cd cmake-build
@@ -16,9 +20,7 @@ script: ../.travis.build.sh
 after_script:
   - cd ../test
   - python run_tests.py
-# test display, different depths
-  - xvfb-run -s "-screen 0 1024x768x16" python core_display_unittest.py
-  - xvfb-run -s "-screen 0 1024x768x32" python core_display_unittest.py
+  - xvfb-run -s "-screen 0 1024x768x16" sudo python core_display_unittest.py
 branches:
   only:
     - master
