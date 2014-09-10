@@ -17,15 +17,31 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+from __future__ import print_function
+
+import sys
+print(sys.path)
+# required by travis to find SimpleGui module
+# both on py2 and py3
+sys.path.append('/home/travis/virtualenv/python2.7.8/lib/python2.7/site-packages')
+sys.path.append('/home/travis/virtualenv/python3.3.5/lib/python3.3/site-packages')
 from OCC.Display.SimpleGui import init_display
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
 
-# wx test
-wx_display, start_display, add_menu, add_function_to_menu = init_display('wx')
-my_box = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
-wx_display.DisplayShape(my_box, update=True)
+# pyside test
+print('pyside test')
+pyside_display, start_display, add_menu, add_function_to_menu = init_display('pyside')
+my_box_1 = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
+pyside_display.DisplayShape(my_box_1, update=True)
 
-# qt test
-qt_display, start_display, add_menu, add_function_to_menu = init_display('qt')
-my_box = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
-qt_display.DisplayShape(my_box, update=True)
+# pyqt4 test
+print('pyqt4 test')
+pyqt4_display, start_display, add_menu, add_function_to_menu = init_display('pyqt4')
+my_box_2 = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
+pyqt4_display.DisplayShape(my_box_2, update=True)
+
+# wx test
+print('wx test')
+wx_display, start_display, add_menu, add_function_to_menu = init_display('wx')
+my_box_3 = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
+wx_display.DisplayShape(my_box_3, update=True)
