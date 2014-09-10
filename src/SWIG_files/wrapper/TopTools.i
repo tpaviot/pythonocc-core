@@ -5342,16 +5342,14 @@ Returns the index of <L>.") Index;
             self->Write(s);
             return s.str();}
         };
+        
+        %feature("autodoc", "1");
+        %extend{
+            void ReadFromString(std::string src) {
+            std::stringstream s(src);
+            self->Read(s);}
+        };
         		%feature("autodoc", "Args:
-	IS(Standard_IStream)
-
-Returns:
-	None
-
-Reads the content of me from the  stream  <IS>. me  
-         is first cleared.") Read;
-		void Read (Standard_IStream & IS);
-		%feature("autodoc", "Args:
 	PR(Handle_Message_ProgressIndicator)
 
 Returns:
@@ -6166,26 +6164,14 @@ Dumps the number of objects in me in the string S
             self->Write(s);
             return s.str();}
         };
+        
+        %feature("autodoc", "1");
+        %extend{
+            void ReadFromString(std::string src) {
+            std::stringstream s(src);
+            self->Read(s);}
+        };
         		%feature("autodoc", "Args:
-	IS(Standard_IStream)
-
-Returns:
-	virtual void
-
-Reads the content of me from the  stream  <IS>. me  
-         is first cleared.  
- 
-         Reads the locations.  
- 
-         Reads the geometry calling ReadGeometry.  
- 
-         Reads the shapes.  
-           For each shape  
-             Reads the type.  
-             calls ReadGeometry(T,S).  
-             Reads the flag, the subshapes.") Read;
-		virtual void Read (Standard_IStream & IS);
-		%feature("autodoc", "Args:
 	S(TopoDS_Shape)
 	OS(Standard_OStream)
 
@@ -6240,15 +6226,14 @@ Stores the geometry of <S>.") AddGeometry;
             self->WriteGeometry(s);
             return s.str();}
         };
+        
+        %feature("autodoc", "1");
+        %extend{
+            void ReadGeometryFromString(std::string src) {
+            std::stringstream s(src);
+            self->ReadGeometry(s);}
+        };
         		%feature("autodoc", "Args:
-	IS(Standard_IStream)
-
-Returns:
-	virtual void
-
-Reads the geometry of me from the  stream  <IS>.") ReadGeometry;
-		virtual void ReadGeometry (Standard_IStream & IS);
-		%feature("autodoc", "Args:
 	S(TopoDS_Shape)
 	OS(Standard_OStream)
 

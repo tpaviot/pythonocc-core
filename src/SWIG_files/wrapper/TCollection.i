@@ -1151,15 +1151,14 @@ assert ( myAlphabet == 'abcde' );") Prepend;
             self->Print(s);
             return s.str();}
         };
+        
+        %feature("autodoc", "1");
+        %extend{
+            void ReadFromString(std::string src) {
+            std::stringstream s(src);
+            self->Read(s);}
+        };
         		%feature("autodoc", "Args:
-	astream(Standard_IStream)
-
-Returns:
-	None
-
-Read <self> from a stream.") Read;
-		void Read (Standard_IStream & astream);
-		%feature("autodoc", "Args:
 	None
 Returns:
 	Standard_Real

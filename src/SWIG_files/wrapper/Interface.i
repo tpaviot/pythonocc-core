@@ -6536,16 +6536,14 @@ Returns:
 
 No detailed docstring for this function.") operatorStandard_CString;
 		 operator Standard_CString ();
-		%feature("autodoc", "Args:
-	S(Standard_IStream)
 
-Returns:
-	static Standard_Integer
-
-Reads a list of messages from a stream, returns read count  
-          0 means empty file, -1 means error") Read;
-		static Standard_Integer Read (Standard_IStream & S);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            void ReadFromString(std::string src) {
+            std::stringstream s(src);
+            self->Read(s);}
+        };
+        		%feature("autodoc", "Args:
 	file(char *)
 
 Returns:

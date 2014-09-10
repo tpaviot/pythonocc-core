@@ -1207,15 +1207,14 @@ Stores the goemetry of <S>.") AddGeometry;
             self->WriteGeometry(s);
             return s.str();}
         };
+        
+        %feature("autodoc", "1");
+        %extend{
+            void ReadGeometryFromString(std::string src) {
+            std::stringstream s(src);
+            self->ReadGeometry(s);}
+        };
         		%feature("autodoc", "Args:
-	IS(Standard_IStream)
-
-Returns:
-	virtual void
-
-Reads the geometry of me from the  stream  <IS>.") ReadGeometry;
-		virtual void ReadGeometry (Standard_IStream & IS);
-		%feature("autodoc", "Args:
 	S(TopoDS_Shape)
 	OS(Standard_OStream)
 
@@ -1265,16 +1264,14 @@ Returns:
 
 No detailed docstring for this function.") Check;
 		virtual void Check (const TopAbs_ShapeEnum T,TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	IS(Standard_IStream)
 
-Returns:
-	None
-
-Reads the 3d polygons  of me  
-         from the  stream  <IS>.") ReadPolygon3D;
-		void ReadPolygon3D (Standard_IStream & IS);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            void ReadPolygon3DFromString(std::string src) {
+            std::stringstream s(src);
+            self->ReadPolygon3D(s);}
+        };
+        		%feature("autodoc", "Args:
 	OS(Standard_OStream)
 	Compact(Standard_Boolean)=Standard_True
 
@@ -1293,16 +1290,14 @@ Writes the 3d polygons
             self->DumpPolygon3D(s);
             return s.str();}
         };
+        
+        %feature("autodoc", "1");
+        %extend{
+            void ReadTriangulationFromString(std::string src) {
+            std::stringstream s(src);
+            self->ReadTriangulation(s);}
+        };
         		%feature("autodoc", "Args:
-	IS(Standard_IStream)
-
-Returns:
-	None
-
-Reads the triangulation of me  
-         from the  stream  <IS>.") ReadTriangulation;
-		void ReadTriangulation (Standard_IStream & IS);
-		%feature("autodoc", "Args:
 	OS(Standard_OStream)
 	Compact(Standard_Boolean)=Standard_True
 
@@ -1321,16 +1316,14 @@ Writes the triangulation
             self->DumpTriangulation(s);
             return s.str();}
         };
+        
+        %feature("autodoc", "1");
+        %extend{
+            void ReadPolygonOnTriangulationFromString(std::string src) {
+            std::stringstream s(src);
+            self->ReadPolygonOnTriangulation(s);}
+        };
         		%feature("autodoc", "Args:
-	IS(Standard_IStream)
-
-Returns:
-	None
-
-Reads the polygons on triangulation of me  
-         from the  stream  <IS>.") ReadPolygonOnTriangulation;
-		void ReadPolygonOnTriangulation (Standard_IStream & IS);
-		%feature("autodoc", "Args:
 	OS(Standard_OStream)
 	Compact(Standard_Boolean)=Standard_True
 
