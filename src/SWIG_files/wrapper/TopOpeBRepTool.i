@@ -4138,15 +4138,15 @@ Returns:
 
 No detailed docstring for this function.") Index;
 		Standard_Integer Index ();
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	Standard_OStream
-
-No detailed docstring for this function.") DumpCurrent;
-		Standard_OStream & DumpCurrent (Standard_OStream & OS);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpCurrentToString() {
+            std::stringstream s;
+            self->DumpCurrent(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") TopOpeBRepTool_ShapeExplorer::~TopOpeBRepTool_ShapeExplorer %{

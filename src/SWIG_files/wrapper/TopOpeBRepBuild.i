@@ -1255,15 +1255,15 @@ Returns:
 
 No detailed docstring for this function.") Current;
 		void Current (TopAbs_State & s1,TopAbs_State & s2);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
-		void Dump (Standard_OStream & OS);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") TopOpeBRepBuild_GIter::~TopOpeBRepBuild_GIter %{
@@ -1364,15 +1364,15 @@ Returns:
 
 No detailed docstring for this function.") GComDiff;
 		static TopOpeBRepBuild_GTopo GComDiff (const TopAbs_ShapeEnum s1,const TopAbs_ShapeEnum s2);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	static void
-
-No detailed docstring for this function.") Dump;
-		static void Dump (Standard_OStream & OS);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") TopOpeBRepBuild_GTool::~TopOpeBRepBuild_GTool %{
@@ -1565,15 +1565,15 @@ Returns:
 
 No detailed docstring for this function.") DumpVal;
 		void DumpVal (Standard_OStream & OS,const TopAbs_State s1,const TopAbs_State s2);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	None
-
-No detailed docstring for this function.") DumpType;
-		void DumpType (Standard_OStream & OS);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpTypeToString() {
+            std::stringstream s;
+            self->DumpType(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "Args:
 	OS(Standard_OStream)
 	s1(TopAbs_State)
 	s2(TopAbs_State)

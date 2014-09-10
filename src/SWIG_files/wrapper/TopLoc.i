@@ -69,15 +69,15 @@ Returns:
 Returns a gp_Trsf which, when applied to this datum,  
 produces the default datum.") Transformation;
 		const gp_Trsf & Transformation ();
-		%feature("autodoc", "Args:
-	S(Standard_OStream)
 
-Returns:
-	None
-
-Writes the contents of this Datum3D to the stream S.") ShallowDump;
-		void ShallowDump (Standard_OStream & S);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string ShallowDumpToString() {
+            std::stringstream s;
+            self->ShallowDump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") TopLoc_Datum3D::~TopLoc_Datum3D %{
@@ -618,15 +618,15 @@ This method is an alias for operator !=.") IsDifferent;
             except:
                 return True
         }
-        		%feature("autodoc", "Args:
-	S(Standard_OStream)
-
-Returns:
-	None
-
-Prints the contents of <self> on the stream <s>.") ShallowDump;
-		void ShallowDump (Standard_OStream & S);
-};
+        
+        %feature("autodoc", "1");
+        %extend{
+            std::string ShallowDumpToString() {
+            std::stringstream s;
+            self->ShallowDump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") TopLoc_Location::~TopLoc_Location %{

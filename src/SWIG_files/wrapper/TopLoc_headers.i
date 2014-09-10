@@ -72,6 +72,27 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<gp_VectorWithNullMagnitude.hxx>
 #include<gp_XY.hxx>
 #include<gp_XYZ.hxx>
+#include<TCollection.hxx>
+#include<TCollection_Array1Descriptor.hxx>
+#include<TCollection_Array2Descriptor.hxx>
+#include<TCollection_AsciiString.hxx>
+#include<TCollection_AVLBaseNode.hxx>
+#include<TCollection_AVLBaseNodePtr.hxx>
+#include<TCollection_BaseSequence.hxx>
+#include<TCollection_BasicMap.hxx>
+#include<TCollection_BasicMapIterator.hxx>
+#include<TCollection_CompareOfInteger.hxx>
+#include<TCollection_CompareOfReal.hxx>
+#include<TCollection_ExtendedString.hxx>
+#include<TCollection_HAsciiString.hxx>
+#include<TCollection_HExtendedString.hxx>
+#include<TCollection_MapNode.hxx>
+#include<TCollection_MapNodePtr.hxx>
+#include<TCollection_PrivCompareOfInteger.hxx>
+#include<TCollection_PrivCompareOfReal.hxx>
+#include<TCollection_SeqNode.hxx>
+#include<TCollection_SeqNodePtr.hxx>
+#include<TCollection_Side.hxx>
 #include<Standard.hxx>
 #include<Standard_AbortiveTransaction.hxx>
 #include<Standard_Address.hxx>
@@ -154,27 +175,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Standard_Version.hxx>
 #include<Standard_WayOfLife.hxx>
 #include<Standard_values.h>
-#include<TCollection.hxx>
-#include<TCollection_Array1Descriptor.hxx>
-#include<TCollection_Array2Descriptor.hxx>
-#include<TCollection_AsciiString.hxx>
-#include<TCollection_AVLBaseNode.hxx>
-#include<TCollection_AVLBaseNodePtr.hxx>
-#include<TCollection_BaseSequence.hxx>
-#include<TCollection_BasicMap.hxx>
-#include<TCollection_BasicMapIterator.hxx>
-#include<TCollection_CompareOfInteger.hxx>
-#include<TCollection_CompareOfReal.hxx>
-#include<TCollection_ExtendedString.hxx>
-#include<TCollection_HAsciiString.hxx>
-#include<TCollection_HExtendedString.hxx>
-#include<TCollection_MapNode.hxx>
-#include<TCollection_MapNodePtr.hxx>
-#include<TCollection_PrivCompareOfInteger.hxx>
-#include<TCollection_PrivCompareOfReal.hxx>
-#include<TCollection_SeqNode.hxx>
-#include<TCollection_SeqNodePtr.hxx>
-#include<TCollection_Side.hxx>
 #include<TColgp_Array1OfCirc2d.hxx>
 #include<TColgp_Array1OfDir.hxx>
 #include<TColgp_Array1OfDir2d.hxx>
@@ -463,5 +463,5 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %};
 %import MMgt.i
 %import gp.i
-%import Standard.i
 %import TCollection.i
+%import Standard.i

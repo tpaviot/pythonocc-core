@@ -5326,24 +5326,23 @@ Returns:
 
 Returns the index of <L>.") Index;
 		Standard_Integer Index (const TopLoc_Location & L);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	None
-
-Dumps the content of me on the stream <OS>.") Dump;
-		void Dump (Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
-
-Returns:
-	None
-
-Writes the content of  me  on the stream <OS> in a  
-         format that can be read back by Read.") Write;
-		void Write (Standard_OStream & OS);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        
+        %feature("autodoc", "1");
+        %extend{
+            std::string WriteToString() {
+            std::stringstream s;
+            self->Write(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "Args:
 	IS(Standard_IStream)
 
 Returns:
@@ -6134,16 +6133,15 @@ Returns:
 
 No detailed docstring for this function.") ChangeLocations;
 		TopTools_LocationSet & ChangeLocations ();
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	Standard_OStream
-
-Dumps the number of objects in me on the stream <OS>.  
-(Number of shapes of each type)") DumpExtent;
-		Standard_OStream & DumpExtent (Standard_OStream & OS);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpExtentToString() {
+            std::stringstream s;
+            self->DumpExtent(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "Args:
 	S(TCollection_AsciiString)
 
 Returns:
@@ -6152,44 +6150,23 @@ Returns:
 Dumps the number of objects in me in the string S  
 (Number of shapes of each type)") DumpExtent;
 		void DumpExtent (TCollection_AsciiString & S);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	virtual void
-
-Dumps the content of me on the stream <OS>.  
- 
-         Dumps the shapes from first to last.  
-           For each Shape  
-              Dump the type, the flags, the subshapes  
-              calls DumpGeometry(S)  
- 
- 
-         Dumps the geometry calling DumpGeometry.  
- 
-         Dumps the locations.") Dump;
-		virtual void Dump (Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
-
-Returns:
-	virtual void
-
-Writes the content of  me  on the stream <OS> in a  
-         format that can be read back by Read.  
- 
-         Writes the locations.  
- 
-         Writes the geometry calling WriteGeometry.  
- 
-         Dumps the shapes from last to first.  
-           For each shape  :  
-             Write the type.  
-             calls WriteGeometry(S).  
-             Write the flags, the subshapes.") Write;
-		virtual void Write (Standard_OStream & OS);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        
+        %feature("autodoc", "1");
+        %extend{
+            std::string WriteToString() {
+            std::stringstream s;
+            self->Write(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "Args:
 	IS(Standard_IStream)
 
 Returns:
@@ -6247,24 +6224,23 @@ Returns:
 
 Stores the geometry of <S>.") AddGeometry;
 		virtual void AddGeometry (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	virtual void
-
-Dumps the geometry of me on the stream <OS>.") DumpGeometry;
-		virtual void DumpGeometry (Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
-
-Returns:
-	virtual void
-
-Writes the geometry of  me  on the stream <OS> in a  
-         format that can be read back by Read.") WriteGeometry;
-		virtual void WriteGeometry (Standard_OStream & OS);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpGeometryToString() {
+            std::stringstream s;
+            self->DumpGeometry(s);
+            return s.str();}
+        };
+        
+        %feature("autodoc", "1");
+        %extend{
+            std::string WriteGeometryToString() {
+            std::stringstream s;
+            self->WriteGeometry(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "Args:
 	IS(Standard_IStream)
 
 Returns:

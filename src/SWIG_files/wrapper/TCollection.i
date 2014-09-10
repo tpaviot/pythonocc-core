@@ -1143,15 +1143,15 @@ TCollection_AsciiString myBegin('ab');
 myAlphabet.Prepend(myBegin);  
 assert ( myAlphabet == 'abcde' );") Prepend;
 		void Prepend (const TCollection_AsciiString & other);
-		%feature("autodoc", "Args:
-	astream(Standard_OStream)
 
-Returns:
-	None
-
-Displays <self> on a stream.") Print;
-		void Print (Standard_OStream & astream);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintToString() {
+            std::stringstream s;
+            self->Print(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "Args:
 	astream(Standard_IStream)
 
 Returns:
@@ -1547,16 +1547,15 @@ Returns:
 Returns  True when the map  contains no keys.  
 This is exactly Extent() == 0.") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	S(Standard_OStream)
 
-Returns:
-	None
-
-Prints  on <S> usefull  statistics  about  the map  
-<self>.  It  can be used  to test the quality of the hashcoding.") Statistics;
-		void Statistics (Standard_OStream & S);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string StatisticsToString() {
+            std::stringstream s;
+            self->Statistics(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") TCollection_BasicMap::~TCollection_BasicMap %{
@@ -1977,15 +1976,15 @@ Returns:
 Returns number of characters in <self>.  
 This is the same functionality as 'strlen' in C.") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	astream(Standard_OStream)
 
-Returns:
-	None
-
-Displays <self> .") Print;
-		void Print (Standard_OStream & astream);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintToString() {
+            std::stringstream s;
+            self->Print(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "Args:
 	what(Standard_ExtCharacter)
 
 Returns:
@@ -2656,15 +2655,15 @@ before
 after  
   me = 'abcde' , S = 'ab'") Prepend;
 		void Prepend (const Handle_TCollection_HAsciiString & other);
-		%feature("autodoc", "Args:
-	astream(Standard_OStream)
 
-Returns:
-	None
-
-Prints this string on the stream <astream>.") Print;
-		void Print (Standard_OStream & astream);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintToString() {
+            std::stringstream s;
+            self->Print(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "Args:
 	None
 Returns:
 	Standard_Real
@@ -2932,15 +2931,15 @@ Returns:
 
 No detailed docstring for this function.") ShallowCopy;
 		Handle_TCollection_HAsciiString ShallowCopy ();
-		%feature("autodoc", "Args:
-	s(Standard_OStream)
 
-Returns:
-	None
-
-No detailed docstring for this function.") ShallowDump;
-		void ShallowDump (Standard_OStream & s);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string ShallowDumpToString() {
+            std::stringstream s;
+            self->ShallowDump(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "Args:
 	other(Handle_TCollection_HAsciiString)
 
 Returns:
@@ -3304,30 +3303,30 @@ Returns:
 
 Returns the field myString") String;
 		const TCollection_ExtendedString & String ();
-		%feature("autodoc", "Args:
-	astream(Standard_OStream)
 
-Returns:
-	None
-
-Displays <self> .") Print;
-		void Print (Standard_OStream & astream);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintToString() {
+            std::stringstream s;
+            self->Print(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "Args:
 	None
 Returns:
 	Handle_TCollection_HExtendedString
 
 No detailed docstring for this function.") ShallowCopy;
 		Handle_TCollection_HExtendedString ShallowCopy ();
-		%feature("autodoc", "Args:
-	s(Standard_OStream)
 
-Returns:
-	None
-
-No detailed docstring for this function.") ShallowDump;
-		void ShallowDump (Standard_OStream & s);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string ShallowDumpToString() {
+            std::stringstream s;
+            self->ShallowDump(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "Args:
 	other(Handle_TCollection_HExtendedString)
 
 Returns:

@@ -243,16 +243,15 @@ Returns:
 
 No detailed docstring for this function.") CritError;
 		Standard_Real CritError (const Standard_Integer Dimension,const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	o(Standard_OStream)
 
-Returns:
-	None
-
-Prints on the stream o informations on the current state  
-         of the object.") Dump;
-		void Dump (Standard_OStream & o);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") AdvApp2Var_ApproxAFunc2Var::~AdvApp2Var_ApproxAFunc2Var %{

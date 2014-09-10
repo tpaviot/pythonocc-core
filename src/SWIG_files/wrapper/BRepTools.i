@@ -1191,24 +1191,23 @@ Returns:
 
 Stores the goemetry of <S>.") AddGeometry;
 		virtual void AddGeometry (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	virtual void
-
-Dumps the geometry of me on the stream <OS>.") DumpGeometry;
-		virtual void DumpGeometry (Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
-
-Returns:
-	virtual void
-
-Writes the geometry of  me  on the stream <OS> in a  
-         format that can be read back by Read.") WriteGeometry;
-		virtual void WriteGeometry (Standard_OStream & OS);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpGeometryToString() {
+            std::stringstream s;
+            self->DumpGeometry(s);
+            return s.str();}
+        };
+        
+        %feature("autodoc", "1");
+        %extend{
+            std::string WriteGeometryToString() {
+            std::stringstream s;
+            self->WriteGeometry(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "Args:
 	IS(Standard_IStream)
 
 Returns:
@@ -1286,16 +1285,15 @@ Writes the 3d polygons
          on the stream <OS> in a format that can  
          be read back by Read.") WritePolygon3D;
 		void WritePolygon3D (Standard_OStream & OS,const Standard_Boolean Compact = Standard_True);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	None
-
-Dumps the 3d polygons  
-         on the stream <OS>.") DumpPolygon3D;
-		void DumpPolygon3D (Standard_OStream & OS);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpPolygon3DToString() {
+            std::stringstream s;
+            self->DumpPolygon3D(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "Args:
 	IS(Standard_IStream)
 
 Returns:
@@ -1315,16 +1313,15 @@ Writes the triangulation
          on the stream <OS> in a format that can  
          be read back by Read.") WriteTriangulation;
 		void WriteTriangulation (Standard_OStream & OS,const Standard_Boolean Compact = Standard_True);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	None
-
-Dumps the triangulation  
-         on the stream <OS>.") DumpTriangulation;
-		void DumpTriangulation (Standard_OStream & OS);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpTriangulationToString() {
+            std::stringstream s;
+            self->DumpTriangulation(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "Args:
 	IS(Standard_IStream)
 
 Returns:
@@ -1344,16 +1341,15 @@ Writes the polygons on triangulation
          on the stream <OS> in a format that can  
          be read back by Read.") WritePolygonOnTriangulation;
 		void WritePolygonOnTriangulation (Standard_OStream & OS,const Standard_Boolean Compact = Standard_True);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	None
-
-Dumps the polygons on triangulation  
-         on the stream <OS>.") DumpPolygonOnTriangulation;
-		void DumpPolygonOnTriangulation (Standard_OStream & OS);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpPolygonOnTriangulationToString() {
+            std::stringstream s;
+            self->DumpPolygonOnTriangulation(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") BRepTools_ShapeSet::~BRepTools_ShapeSet %{

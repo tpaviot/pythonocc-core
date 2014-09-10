@@ -454,17 +454,15 @@ Returns:
 
 No detailed docstring for this function.") operator=;
 		void operator = (const Standard_UUID & uid);
-		%feature("autodoc", "Args:
-	aStream(Standard_OStream)
 
-Returns:
-	virtual void
-
-Display the GUID with the following format:  
- 
-         '00000000-0000-0000-0000-000000000000'") ShallowDump;
-		virtual void ShallowDump (Standard_OStream & aStream);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string ShallowDumpToString() {
+            std::stringstream s;
+            self->ShallowDump(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "Args:
 	aGuid(char *)
 
 Returns:
@@ -820,18 +818,15 @@ Returns:
 Returns true if the Deep contents of <self> and  
         <Other> are memberwise equal.") IsSimilar;
 		Standard_Boolean IsSimilar (const Standard_Storable & Other);
-		%feature("autodoc", "Args:
-	S(Standard_OStream)
 
-Returns:
-	virtual void
-
-Prints the contents at the first level of <self> on  
-        the stream <s>. The Root version of ShallowDump prints  
-        the name of the class <self> is instance of, followed by  
-        its memory address.") ShallowDump;
-		virtual void ShallowDump (Standard_OStream & S);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string ShallowDumpToString() {
+            std::stringstream s;
+            self->ShallowDump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Standard_Storable::~Standard_Storable %{
@@ -881,15 +876,15 @@ Returns:
 
 Memory deallocator for transient classes") Delete;
 		virtual void Delete ();
-		%feature("autodoc", "Args:
-	&(Standard_OStream)
 
-Returns:
-	virtual void
-
-No detailed docstring for this function.") ShallowDump;
-		virtual void ShallowDump (Standard_OStream &);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string ShallowDumpToString() {
+            std::stringstream s;
+            self->ShallowDump(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "Args:
 	None
 Returns:
 	virtual  Handle_Standard_Type
@@ -1414,27 +1409,23 @@ Returns:
 
 Prints the Information about type.") ShallowDump;
 		void ShallowDump ();
-		%feature("autodoc", "Args:
-	S(Standard_OStream)
 
-Returns:
-	None
-
-Prints the Information about type.") ShallowDump;
-		void ShallowDump (Standard_OStream & S);
-		%feature("autodoc", "Args:
-	s(Standard_OStream)
-
-Returns:
-	None
-
-Prints on the stream <s> the name of Type.  
- Warning:  
-  The operator 'OStream& operator<< (Standard_OStream&,  
-                                     Handle_Standard_Type&)'  
-  is implemented. (This operator uses the method Print)") Print;
-		void Print (Standard_OStream & s);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string ShallowDumpToString() {
+            std::stringstream s;
+            self->ShallowDump(s);
+            return s.str();}
+        };
+        
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintToString() {
+            std::stringstream s;
+            self->Print(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Standard_Type::~Standard_Type %{

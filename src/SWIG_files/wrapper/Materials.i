@@ -389,15 +389,15 @@ Returns:
 
 No detailed docstring for this function.") Value;
 		virtual Standard_Boolean Value (const char * aparameter,Handle_Standard_Transient & avalue);
-		%feature("autodoc", "Args:
-	astream(Standard_OStream)
 
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Dump;
-		virtual void Dump (Standard_OStream & astream);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Materials_FuzzyInstance::~Materials_FuzzyInstance %{
@@ -590,15 +590,15 @@ Returns true if there has been no  modification of the
          file Materials.dat  since the   creation of the dictionary  
          object, false otherwise.") UpToDate;
 		Standard_Boolean UpToDate ();
-		%feature("autodoc", "Args:
-	astream(Standard_OStream)
 
-Returns:
-	None
-
-Useful for debugging.") Dump;
-		void Dump (Standard_OStream & astream);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Materials_MaterialsDictionary::~Materials_MaterialsDictionary %{
@@ -1173,15 +1173,15 @@ Returns:
 
 Returns the name of the material.") Name;
 		TCollection_AsciiString Name ();
-		%feature("autodoc", "Args:
-	astream(Standard_OStream)
 
-Returns:
-	virtual void
-
-Useful for debugging.") Dump;
-		virtual void Dump (Standard_OStream & astream);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Materials_Material::~Materials_Material %{

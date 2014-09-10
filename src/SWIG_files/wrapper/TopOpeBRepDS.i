@@ -991,15 +991,15 @@ Returns:
 
 No detailed docstring for this function.") ChangeHDS;
 		Handle_TopOpeBRepDS_HDataStructure & ChangeHDS ();
-		%feature("autodoc", "Args:
-	S(Standard_OStream)
 
-Returns:
-	Standard_OStream
-
-No detailed docstring for this function.") PrintIntg;
-		Standard_OStream & PrintIntg (Standard_OStream & S);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintIntgToString() {
+            std::stringstream s;
+            self->PrintIntg(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "Args:
 	stat(TopOpeBRepDS_CheckStatus)
 	S(Standard_OStream)
 
@@ -4922,15 +4922,15 @@ Returns:
 
 No detailed docstring for this function.") DumpGeometry;
 		Standard_OStream & DumpGeometry (const TopOpeBRepDS_Kind K,const Standard_Integer I,Standard_OStream & OS,const Standard_Boolean fk = Standard_False,const Standard_Boolean ct = Standard_True);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	Standard_OStream
-
-No detailed docstring for this function.") DumpTopology;
-		Standard_OStream & DumpTopology (Standard_OStream & OS);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpTopologyToString() {
+            std::stringstream s;
+            self->DumpTopology(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "Args:
 	K(TopOpeBRepDS_Kind)
 	OS(Standard_OStream)
 
@@ -6893,31 +6893,31 @@ Returns:
 
 No detailed docstring for this function.") HasSameGeometry;
 		Standard_Boolean HasSameGeometry (const Handle_TopOpeBRepDS_Interference & Other);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	Standard_OStream
-
-No detailed docstring for this function.") DumpG;
-		Standard_OStream & DumpG (Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
-
-Returns:
-	Standard_OStream
-
-No detailed docstring for this function.") DumpS;
-		Standard_OStream & DumpS (Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
-
-Returns:
-	virtual Standard_OStream
-
-No detailed docstring for this function.") Dump;
-		virtual Standard_OStream & Dump (Standard_OStream & OS);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpGToString() {
+            std::stringstream s;
+            self->DumpG(s);
+            return s.str();}
+        };
+        
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpSToString() {
+            std::stringstream s;
+            self->DumpS(s);
+            return s.str();}
+        };
+        
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "Args:
 	OS(Standard_OStream)
 	s1(TCollection_AsciiString)
 	s2(TCollection_AsciiString)
@@ -9532,31 +9532,31 @@ Returns:
 
 returns True if both states are UNKNOWN") IsUnknown;
 		Standard_Boolean IsUnknown ();
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	Standard_OStream
-
-No detailed docstring for this function.") DumpA;
-		Standard_OStream & DumpA (Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
-
-Returns:
-	Standard_OStream
-
-No detailed docstring for this function.") DumpB;
-		Standard_OStream & DumpB (Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
-
-Returns:
-	Standard_OStream
-
-No detailed docstring for this function.") Dump;
-		Standard_OStream & Dump (Standard_OStream & OS);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpAToString() {
+            std::stringstream s;
+            self->DumpA(s);
+            return s.str();}
+        };
+        
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpBToString() {
+            std::stringstream s;
+            self->DumpB(s);
+            return s.str();}
+        };
+        
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") TopOpeBRepDS_Transition::~TopOpeBRepDS_Transition %{
@@ -9700,15 +9700,15 @@ Returns:
 
 No detailed docstring for this function.") Parameter;
 		void Parameter (const Standard_Real P);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	virtual Standard_OStream
-
-No detailed docstring for this function.") Dump;
-		virtual Standard_OStream & Dump (Standard_OStream & OS);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") TopOpeBRepDS_CurvePointInterference::~TopOpeBRepDS_CurvePointInterference %{
@@ -9983,15 +9983,15 @@ Returns:
 
 No detailed docstring for this function.") SetGBound;
 		void SetGBound (const Standard_Boolean b);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	virtual Standard_OStream
-
-No detailed docstring for this function.") Dump;
-		virtual Standard_OStream & Dump (Standard_OStream & OS);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") TopOpeBRepDS_ShapeShapeInterference::~TopOpeBRepDS_ShapeShapeInterference %{
@@ -10062,15 +10062,15 @@ Returns:
 
 No detailed docstring for this function.") TopOpeBRepDS_SolidSurfaceInterference;
 		 TopOpeBRepDS_SolidSurfaceInterference (const TopOpeBRepDS_Transition & Transition,const TopOpeBRepDS_Kind SupportType,const Standard_Integer Support,const TopOpeBRepDS_Kind GeometryType,const Standard_Integer Geometry);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	virtual Standard_OStream
-
-No detailed docstring for this function.") Dump;
-		virtual Standard_OStream & Dump (Standard_OStream & OS);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") TopOpeBRepDS_SolidSurfaceInterference::~TopOpeBRepDS_SolidSurfaceInterference %{
@@ -10181,15 +10181,15 @@ Returns:
 
 No detailed docstring for this function.") DumpPCurve;
 		Standard_OStream & DumpPCurve (Standard_OStream & OS,const Standard_Boolean compact = Standard_True);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	virtual Standard_OStream
-
-No detailed docstring for this function.") Dump;
-		virtual Standard_OStream & Dump (Standard_OStream & OS);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") TopOpeBRepDS_SurfaceCurveInterference::~TopOpeBRepDS_SurfaceCurveInterference %{
@@ -10387,15 +10387,15 @@ Returns:
 
 No detailed docstring for this function.") Parameter;
 		void Parameter (const Standard_Real P);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	virtual Standard_OStream
-
-No detailed docstring for this function.") Dump;
-		virtual Standard_OStream & Dump (Standard_OStream & OS);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") TopOpeBRepDS_EdgeVertexInterference::~TopOpeBRepDS_EdgeVertexInterference %{
@@ -10466,15 +10466,15 @@ Returns:
 
 Create an interference of EDGE <G> on FACE <S>.") TopOpeBRepDS_FaceEdgeInterference;
 		 TopOpeBRepDS_FaceEdgeInterference (const TopOpeBRepDS_Transition & T,const Standard_Integer S,const Standard_Integer G,const Standard_Boolean GIsBound,const TopOpeBRepDS_Config C);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	virtual Standard_OStream
-
-No detailed docstring for this function.") Dump;
-		virtual Standard_OStream & Dump (Standard_OStream & OS);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") TopOpeBRepDS_FaceEdgeInterference::~TopOpeBRepDS_FaceEdgeInterference %{

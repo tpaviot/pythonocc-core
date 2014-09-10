@@ -246,15 +246,15 @@ Returns:
 gives the corresponding parameters (U,V) if the Nth solution  
 is situated on an Face of the second shape") ParOnFaceS2;
 		void ParOnFaceS2 (const Standard_Integer N,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	o(Standard_OStream)
 
-Returns:
-	None
-
-Prints on the stream o information on the current state of the object.") Dump;
-		void Dump (Standard_OStream & o);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "Args:
 	F(Extrema_ExtFlag)
 
 Returns:

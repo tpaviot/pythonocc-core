@@ -417,15 +417,15 @@ Returns:
 returns  the  Maximum  Error  (>0 when an approximation  
  has  been  done, 0  if  no  approximation)") MaxError;
 		Standard_Real MaxError ();
-		%feature("autodoc", "Args:
-	o(Standard_OStream)
 
-Returns:
-	None
-
-Print on the stream  o  information about the object") Dump;
-		void Dump (Standard_OStream & o);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Approx_Curve3d::~Approx_Curve3d %{
@@ -630,15 +630,15 @@ Returns:
 
 returns the maximum error on the second reparametrized 2D curve") MaxError2d2;
 		Standard_Real MaxError2d2 ();
-		%feature("autodoc", "Args:
-	o(Standard_OStream)
 
-Returns:
-	None
-
-print the maximum errors(s)") Dump;
-		void Dump (Standard_OStream & o);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Approx_CurvilinearParameter::~Approx_CurvilinearParameter %{
@@ -2202,15 +2202,15 @@ Returns:
 returns the  maximum 3d  error  of the  <Index>  
           2d curve approximation on the Surface.") TolCurveOnSurf;
 		Standard_Real TolCurveOnSurf (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	o(Standard_OStream)
 
-Returns:
-	None
-
-display information on approximation.") Dump;
-		void Dump (Standard_OStream & o);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Approx_SweepApproximation::~Approx_SweepApproximation %{

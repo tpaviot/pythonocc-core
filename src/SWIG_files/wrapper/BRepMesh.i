@@ -2934,15 +2934,15 @@ This method  substitute the deleted  items  by
          non-deleted  elements, links  or  nodes in the  
          structure.") ClearDeleted;
 		void ClearDeleted ();
-		%feature("autodoc", "Args:
-	flot(Standard_OStream)
 
-Returns:
-	None
-
-Give informations on map.") Statistics;
-		void Statistics (Standard_OStream & flot);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string StatisticsToString() {
+            std::stringstream s;
+            self->Statistics(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "Args:
 	None
 Returns:
 	BRepMesh_BaseAllocator
@@ -7215,15 +7215,15 @@ Returns the list with indexes of
          equal to BRepMesh_Deleted and can be  
          replaced with another node.") GetListOfDelNodes;
 		const BRepMesh_ListOfInteger & GetListOfDelNodes ();
-		%feature("autodoc", "Args:
-	S(Standard_OStream)
 
-Returns:
-	None
-
-Prints statistics.") Statistics;
-		void Statistics (Standard_OStream & S);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string StatisticsToString() {
+            std::stringstream s;
+            self->Statistics(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") BRepMesh_VertexTool::~BRepMesh_VertexTool %{

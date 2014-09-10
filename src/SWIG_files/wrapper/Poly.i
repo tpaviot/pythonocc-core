@@ -603,15 +603,15 @@ Returns:
 * Create an iterator of incident triangles.
 */") TriangleIterator;
 		inline Poly_CoherentTriPtr::Iterator TriangleIterator ();
-		%feature("autodoc", "Args:
-	theStream(Standard_OStream)
 
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
-		void Dump (Standard_OStream & theStream);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Poly_CoherentNode::~Poly_CoherentNode %{

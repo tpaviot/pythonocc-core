@@ -200,24 +200,23 @@ Returns:
 
 Returns the index of <L>.") Index;
 		Standard_Integer Index (const Handle_Geom2d_Curve & C);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	None
-
-Dumps the content of me on the stream <OS>.") Dump;
-		void Dump (Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
-
-Returns:
-	None
-
-Writes the content of  me  on the stream <OS> in a  
-         format that can be read back by Read.") Write;
-		void Write (Standard_OStream & OS);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        
+        %feature("autodoc", "1");
+        %extend{
+            std::string WriteToString() {
+            std::stringstream s;
+            self->Write(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "Args:
 	IS(Standard_IStream)
 
 Returns:
@@ -322,24 +321,23 @@ Returns:
 
 Returns the index of <L>.") Index;
 		Standard_Integer Index (const Handle_Geom_Curve & C);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	None
-
-Dumps the content of me on the stream <OS>.") Dump;
-		void Dump (Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
-
-Returns:
-	None
-
-Writes the content of  me  on the stream <OS> in a  
-         format that can be read back by Read.") Write;
-		void Write (Standard_OStream & OS);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        
+        %feature("autodoc", "1");
+        %extend{
+            std::string WriteToString() {
+            std::stringstream s;
+            self->Write(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "Args:
 	IS(Standard_IStream)
 
 Returns:
@@ -444,24 +442,23 @@ Returns:
 
 Returns the index of <L>.") Index;
 		Standard_Integer Index (const Handle_Geom_Surface & S);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	None
-
-Dumps the content of me on the stream <OS>.") Dump;
-		void Dump (Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
-
-Returns:
-	None
-
-Writes the content of  me  on the stream <OS> in a  
-         format that can be read back by Read.") Write;
-		void Write (Standard_OStream & OS);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        
+        %feature("autodoc", "1");
+        %extend{
+            std::string WriteToString() {
+            std::stringstream s;
+            self->Write(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "Args:
 	IS(Standard_IStream)
 
 Returns:

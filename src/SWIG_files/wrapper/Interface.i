@@ -6622,16 +6622,15 @@ Sets the main modes for MSG :
           - if <raising> is False, MSG runs without exception, then  
             see also Trace Modes above") SetMode;
 		static void SetMode (const Standard_Boolean running,const Standard_Boolean raising);
-		%feature("autodoc", "Args:
-	S(Standard_OStream)
 
-Returns:
-	static void
-
-Prints the recorded errors (without title; can be empty, this  
-          is the normally expected case)") PrintTrace;
-		static void PrintTrace (Standard_OStream & S);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintTraceToString() {
+            std::stringstream s;
+            self->PrintTrace(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "Args:
 	val(Standard_Real)
 	order(Standard_Integer)=3
 	upper(Standard_Boolean)=Standard_False
