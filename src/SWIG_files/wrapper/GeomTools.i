@@ -200,33 +200,30 @@ Returns:
 
 Returns the index of <L>.") Index;
 		Standard_Integer Index (const Handle_Geom2d_Curve & C);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	None
-
-Dumps the content of me on the stream <OS>.") Dump;
-		void Dump (Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
-
-Returns:
-	None
-
-Writes the content of  me  on the stream <OS> in a  
-         format that can be read back by Read.") Write;
-		void Write (Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	IS(Standard_IStream)
-
-Returns:
-	None
-
-Reads the content of me from the  stream  <IS>. me  
-         is first cleared.") Read;
-		void Read (Standard_IStream & IS);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        
+        %feature("autodoc", "1");
+        %extend{
+            std::string WriteToString() {
+            std::stringstream s;
+            self->Write(s);
+            return s.str();}
+        };
+        
+        %feature("autodoc", "1");
+        %extend{
+            void ReadFromString(std::string src) {
+            std::stringstream s(src);
+            self->Read(s);}
+        };
+        		%feature("autodoc", "Args:
 	C(Handle_Geom2d_Curve)
 	OS(Standard_OStream)
 	compact(Standard_Boolean)=Standard_False
@@ -322,33 +319,30 @@ Returns:
 
 Returns the index of <L>.") Index;
 		Standard_Integer Index (const Handle_Geom_Curve & C);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	None
-
-Dumps the content of me on the stream <OS>.") Dump;
-		void Dump (Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
-
-Returns:
-	None
-
-Writes the content of  me  on the stream <OS> in a  
-         format that can be read back by Read.") Write;
-		void Write (Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	IS(Standard_IStream)
-
-Returns:
-	None
-
-Reads the content of me from the  stream  <IS>. me  
-         is first cleared.") Read;
-		void Read (Standard_IStream & IS);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        
+        %feature("autodoc", "1");
+        %extend{
+            std::string WriteToString() {
+            std::stringstream s;
+            self->Write(s);
+            return s.str();}
+        };
+        
+        %feature("autodoc", "1");
+        %extend{
+            void ReadFromString(std::string src) {
+            std::stringstream s(src);
+            self->Read(s);}
+        };
+        		%feature("autodoc", "Args:
 	C(Handle_Geom_Curve)
 	OS(Standard_OStream)
 	compact(Standard_Boolean)=Standard_False
@@ -444,33 +438,30 @@ Returns:
 
 Returns the index of <L>.") Index;
 		Standard_Integer Index (const Handle_Geom_Surface & S);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
 
-Returns:
-	None
-
-Dumps the content of me on the stream <OS>.") Dump;
-		void Dump (Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	OS(Standard_OStream)
-
-Returns:
-	None
-
-Writes the content of  me  on the stream <OS> in a  
-         format that can be read back by Read.") Write;
-		void Write (Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	IS(Standard_IStream)
-
-Returns:
-	None
-
-Reads the content of me from the  stream  <IS>. me  
-         is first cleared.") Read;
-		void Read (Standard_IStream & IS);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        
+        %feature("autodoc", "1");
+        %extend{
+            std::string WriteToString() {
+            std::stringstream s;
+            self->Write(s);
+            return s.str();}
+        };
+        
+        %feature("autodoc", "1");
+        %extend{
+            void ReadFromString(std::string src) {
+            std::stringstream s(src);
+            self->Read(s);}
+        };
+        		%feature("autodoc", "Args:
 	S(Handle_Geom_Surface)
 	OS(Standard_OStream)
 	compact(Standard_Boolean)=Standard_False

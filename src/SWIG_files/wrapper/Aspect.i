@@ -3877,15 +3877,15 @@ def __del__(self):
 %nodefaultctor Aspect_Pixel;
 class Aspect_Pixel {
 	public:
-		%feature("autodoc", "Args:
-	s(Standard_OStream)
 
-Returns:
-	virtual void
-
-Prints the contents of <self> on the stream <s>") Print;
-		virtual void Print (Standard_OStream & s);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintToString() {
+            std::stringstream s;
+            self->Print(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Aspect_Pixel::~Aspect_Pixel %{
@@ -6515,15 +6515,15 @@ Returns:
 
 No detailed docstring for this function.") SetValue;
 		void SetValue (const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	s(Standard_OStream)
 
-Returns:
-	None
-
-Prints the contents of <self> on the stream <s>") Print;
-		void Print (Standard_OStream & s);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintToString() {
+            std::stringstream s;
+            self->Print(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "Args:
 	Upper(Standard_Integer)
 
 Returns:
@@ -6993,15 +6993,15 @@ Returns a hashed value denoting <self>. This value is in
             return $self->HashCode(2147483647);
             }
         };
+        
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintToString() {
+            std::stringstream s;
+            self->Print(s);
+            return s.str();}
+        };
         		%feature("autodoc", "Args:
-	s(Standard_OStream)
-
-Returns:
-	None
-
-Prints the contents of <self> on the stream <s>") Print;
-		void Print (Standard_OStream & s);
-		%feature("autodoc", "Args:
 	Other(Aspect_IndexPixel)
 
 Returns:

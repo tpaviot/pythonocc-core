@@ -334,18 +334,15 @@ Returns:
 
 Returns the computed curve a 2d BSpline.") Curve;
 		Handle_Geom2d_BSplineCurve Curve ();
-		%feature("autodoc", "Args:
-	o(Standard_OStream)
 
-Returns:
-	virtual void
-
-Prints on the stream o information on the current state  
-         of the object.  
- 
-  Private methodes  --------------------------------------") Dump;
-		virtual void Dump (Standard_OStream & o);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") FairCurve_Batten::~FairCurve_Batten %{
@@ -1006,17 +1003,15 @@ Returns:
 
 Returns the physical ratio, or kind of energy.") GetPhysicalRatio;
 		Standard_Real GetPhysicalRatio ();
-		%feature("autodoc", "Args:
-	o(Standard_OStream)
 
-Returns:
-	virtual void
-
-Prints on the stream o information on the current state  
-         of the object.  
-         Is used to redefine the operator <<.") Dump;
-		virtual void Dump (Standard_OStream & o);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") FairCurve_MinimalVariation::~FairCurve_MinimalVariation %{

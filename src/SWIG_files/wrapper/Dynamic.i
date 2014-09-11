@@ -135,15 +135,15 @@ Returns:
 
 Returns an instance object of this class.") Instance;
 		virtual Handle_Dynamic_DynamicInstance Instance ();
-		%feature("autodoc", "Args:
-	astream(Standard_OStream)
 
-Returns:
-	virtual void
-
-useful for debugging.") Dump;
-		virtual void Dump (Standard_OStream & astream);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Dynamic_DynamicClass::~Dynamic_DynamicClass %{
@@ -501,15 +501,15 @@ Returns  True,  if  there is  a   parameter <aparameter>
          the corresponding object value  in  the output argument  
          <avalue>, False otherwise.") Value;
 		virtual Standard_Boolean Value (const char * aparameter,Handle_Standard_Transient & avalue);
-		%feature("autodoc", "Args:
-	astream(Standard_OStream)
 
-Returns:
-	virtual void
-
-Useful for debugging.") Dump;
-		virtual void Dump (Standard_OStream & astream);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Dynamic_FuzzyClass::~Dynamic_FuzzyClass %{
@@ -627,15 +627,15 @@ Returns:
 Returns a  reference on the  definition identified  by  
          the index <anidex>.") Definition;
 		Handle_Dynamic_FuzzyClass Definition (const Standard_Integer anindex);
-		%feature("autodoc", "Args:
-	astream(Standard_OStream)
 
-Returns:
-	None
-
-Useful for debugging.") Dump;
-		void Dump (Standard_OStream & astream);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Dynamic_FuzzyDefinitionsDictionary::~Dynamic_FuzzyDefinitionsDictionary %{
@@ -753,15 +753,15 @@ Returns True, if  there  is a variable   named <aname>
          the   corresponding variable  in  the output  argument  
          <avariable>, False otherwise.") Value;
 		Standard_Boolean Value (const char * aname,Handle_Dynamic_Variable & avariable);
-		%feature("autodoc", "Args:
-	astream(Standard_OStream)
 
-Returns:
-	virtual void
-
-Useful for debugging.") Dump;
-		virtual void Dump (Standard_OStream & astream);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Dynamic_Method::~Dynamic_Method %{
@@ -889,15 +889,15 @@ Returns:
 Returns a  reference on the  definition identified  by  
          the index <anidex>.") Definition;
 		Handle_Dynamic_Method Definition (const Standard_Integer anindex);
-		%feature("autodoc", "Args:
-	astream(Standard_OStream)
 
-Returns:
-	None
-
-Useful for debugging.") Dump;
-		void Dump (Standard_OStream & astream);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Dynamic_MethodDefinitionsDictionary::~Dynamic_MethodDefinitionsDictionary %{
@@ -963,15 +963,15 @@ Returns:
 
 Returns in an AsciiString the name of the parameter.") Name;
 		TCollection_AsciiString Name ();
-		%feature("autodoc", "Args:
-	astream(Standard_OStream)
 
-Returns:
-	virtual void
-
-Useful for debugging.") Dump;
-		virtual void Dump (Standard_OStream & astream);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Dynamic_Parameter::~Dynamic_Parameter %{
@@ -3179,15 +3179,15 @@ Returns:
 
 Returns the mode of the variable.") Mode;
 		Dynamic_ModeEnum Mode ();
-		%feature("autodoc", "Args:
-	astream(Standard_OStream)
 
-Returns:
-	None
-
-Useful for debugging.") Dump;
-		void Dump (Standard_OStream & astream);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Dynamic_Variable::~Dynamic_Variable %{
@@ -3464,15 +3464,15 @@ Returns:
 
 Sets the field <thevalue> with the boolean value <avalue>") Value;
 		void Value (const Standard_Boolean avalue);
-		%feature("autodoc", "Args:
-	astream(Standard_OStream)
 
-Returns:
-	virtual void
-
-Useful for debugging.") Dump;
-		virtual void Dump (Standard_OStream & astream);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Dynamic_BooleanParameter::~Dynamic_BooleanParameter %{
@@ -3640,15 +3640,15 @@ Returns:
 
 Returns the type of object.") Type;
 		virtual TCollection_AsciiString Type ();
-		%feature("autodoc", "Args:
-	astream(Standard_OStream)
 
-Returns:
-	virtual void
-
-Useful for debugging.") Dump;
-		virtual void Dump (Standard_OStream & astream);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Dynamic_FuzzyDefinition::~Dynamic_FuzzyDefinition %{
@@ -3741,15 +3741,15 @@ Returns:
 
 Sets <avalue> to <thevalue>.") Value;
 		void Value (const Handle_Dynamic_DynamicInstance & avalue);
-		%feature("autodoc", "Args:
-	astream(Standard_OStream)
 
-Returns:
-	virtual void
-
-Useful for debugging.") Dump;
-		virtual void Dump (Standard_OStream & astream);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Dynamic_InstanceParameter::~Dynamic_InstanceParameter %{
@@ -3842,15 +3842,15 @@ Returns:
 
 Sets the field <thevalue> with the integer value <avalue>") Value;
 		void Value (const Standard_Integer avalue);
-		%feature("autodoc", "Args:
-	astream(Standard_OStream)
 
-Returns:
-	virtual void
-
-Useful for debugging.") Dump;
-		virtual void Dump (Standard_OStream & astream);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Dynamic_IntegerParameter::~Dynamic_IntegerParameter %{
@@ -3932,15 +3932,15 @@ Adds  a  new  variable   created from    the parameter
          for accepting  a  set of homogeneous variables.   with  
          the parameter value <aparameter>.") AddVariable;
 		void AddVariable (const Handle_Dynamic_Parameter & aparameter,const Dynamic_ModeEnum amode,const Standard_Boolean agroup = Standard_False);
-		%feature("autodoc", "Args:
-	astream(Standard_OStream)
 
-Returns:
-	virtual void
-
-Useful for debugging.") Dump;
-		virtual void Dump (Standard_OStream & astream);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Dynamic_MethodDefinition::~Dynamic_MethodDefinition %{
@@ -4033,15 +4033,15 @@ Returns:
 
 Sets the object <anobject> in <self>.") Value;
 		void Value (const Handle_Standard_Transient & anobject);
-		%feature("autodoc", "Args:
-	astream(Standard_OStream)
 
-Returns:
-	virtual void
-
-Useful for debugging.") Dump;
-		virtual void Dump (Standard_OStream & astream);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Dynamic_ObjectParameter::~Dynamic_ObjectParameter %{
@@ -4133,15 +4133,15 @@ Returns:
 
 Sets the real <avalue> in <self>.") Value;
 		void Value (const Standard_Real avalue);
-		%feature("autodoc", "Args:
-	astream(Standard_OStream)
 
-Returns:
-	virtual void
-
-Useful for debugging.") Dump;
-		virtual void Dump (Standard_OStream & astream);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Dynamic_RealParameter::~Dynamic_RealParameter %{
@@ -4235,15 +4235,15 @@ Returns:
 
 Sets the string <avalue> in <self>.") Value;
 		void Value (const char * avalue);
-		%feature("autodoc", "Args:
-	astream(Standard_OStream)
 
-Returns:
-	virtual void
-
-Useful for debugging.") Dump;
-		virtual void Dump (Standard_OStream & astream);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Dynamic_StringParameter::~Dynamic_StringParameter %{
@@ -4486,15 +4486,15 @@ Returns:
 
 Returns the method of range <anindex>.") Method;
 		Handle_Dynamic_Method Method (const Standard_Integer anindex);
-		%feature("autodoc", "Args:
-	astream(Standard_OStream)
 
-Returns:
-	virtual void
-
-Useful for debugging.") Dump;
-		virtual void Dump (Standard_OStream & astream);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Dynamic_CompositMethod::~Dynamic_CompositMethod %{

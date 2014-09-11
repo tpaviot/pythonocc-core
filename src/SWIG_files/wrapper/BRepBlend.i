@@ -820,15 +820,15 @@ Returns:
 
 No detailed docstring for this function.") TolCurveOnSurf;
 		Standard_Real TolCurveOnSurf (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	o(Standard_OStream)
 
-Returns:
-	None
-
-diplay information on approximation.") Dump;
-		void Dump (Standard_OStream & o);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") BRepBlend_AppSurface::~BRepBlend_AppSurface %{

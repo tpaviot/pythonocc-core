@@ -345,15 +345,15 @@ source conic and the BSpline curve resulting from the
 approximation. (>0 when an approximation  
  has  been  done, 0  if  no  approximation)") MaxError;
 		Standard_Real MaxError ();
-		%feature("autodoc", "Args:
-	o(Standard_OStream)
 
-Returns:
-	None
-
-Print on the stream  o  information about the object") Dump;
-		void Dump (Standard_OStream & o);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Geom2dConvert_ApproxCurve::~Geom2dConvert_ApproxCurve %{

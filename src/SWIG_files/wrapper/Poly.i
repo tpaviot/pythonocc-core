@@ -135,31 +135,28 @@ Returns:
 Dumps  the  2D  polygon.  This   is a call to  the  
          previous method with Comapct set to False.") Dump;
 		static void Dump (const Handle_Poly_Polygon2D & P,Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	IS(Standard_IStream)
 
-Returns:
-	static Handle_Poly_Triangulation
-
-Reads a triangulation from the stream <IS>.") ReadTriangulation;
-		static Handle_Poly_Triangulation ReadTriangulation (Standard_IStream & IS);
-		%feature("autodoc", "Args:
-	IS(Standard_IStream)
-
-Returns:
-	static Handle_Poly_Polygon3D
-
-Reads a 3d polygon from the stream <IS>.") ReadPolygon3D;
-		static Handle_Poly_Polygon3D ReadPolygon3D (Standard_IStream & IS);
-		%feature("autodoc", "Args:
-	IS(Standard_IStream)
-
-Returns:
-	static Handle_Poly_Polygon2D
-
-Reads a 2D polygon from the stream <IS>.") ReadPolygon2D;
-		static Handle_Poly_Polygon2D ReadPolygon2D (Standard_IStream & IS);
-		%feature("autodoc", "Args:
+        %feature("autodoc", "1");
+        %extend{
+            void ReadTriangulationFromString(std::string src) {
+            std::stringstream s(src);
+            self->ReadTriangulation(s);}
+        };
+        
+        %feature("autodoc", "1");
+        %extend{
+            void ReadPolygon3DFromString(std::string src) {
+            std::stringstream s(src);
+            self->ReadPolygon3D(s);}
+        };
+        
+        %feature("autodoc", "1");
+        %extend{
+            void ReadPolygon2DFromString(std::string src) {
+            std::stringstream s(src);
+            self->ReadPolygon2D(s);}
+        };
+        		%feature("autodoc", "Args:
 	Tri(Handle_Poly_Triangulation)
 
 Returns:
@@ -603,15 +600,15 @@ Returns:
 * Create an iterator of incident triangles.
 */") TriangleIterator;
 		inline Poly_CoherentTriPtr::Iterator TriangleIterator ();
-		%feature("autodoc", "Args:
-	theStream(Standard_OStream)
 
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
-		void Dump (Standard_OStream & theStream);
-};
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
 
 
 %feature("shadow") Poly_CoherentNode::~Poly_CoherentNode %{
