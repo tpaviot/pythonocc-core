@@ -450,7 +450,7 @@ void Tesselator::ExportShapeToJSON(char * filename)
     }
     // footer
     JSONObject << "function v( x, y, z ) {\n";
-    JSONObject<< "  scope.vertices.push(new THREE.Vertex(new THREE.Vector3(x,y,z)));\n";
+    JSONObject<< "  scope.vertices.push(new THREE.Vector3(x,y,z));\n";
     JSONObject<<"}\n";
     JSONObject <<"function f3( a, b, c, n1_x,n1_y,n1_z,n2_x,n2_y,n2_z,n3_x,n3_y,n3_z ) {\n";
     JSONObject << "  scope.faces.push(new THREE.Face3(a,b,c,[new THREE.Vector3(n1_x,n1_y,n1_z),\n";
