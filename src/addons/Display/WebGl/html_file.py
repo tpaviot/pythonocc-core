@@ -20,215 +20,191 @@ import OCC
 
 HEADER = """
 <head>
-	<title>pythonOCC @VERSION@ webgl renderer</title>
-	<meta name='Author' content='Thomas Paviot - tpaviot@gmail.com'>
-	<meta name='Description' content='Cylinder head visualization using WebGL and pythonOCC'>
-	<meta name='Keywords' content='WebGl,pythonOCC, cylinder, head, CAD'>
-	<meta charset="utf-8">
-	<style type="text/css">
-		body {
-		    background-color: @background-color@;
-			margin: 0px;
-			overflow: hidden;
-		}
-		#info {
-			position: absolute;
-			top: 96%;
-			width: 96%;
-			color: #808080;
-			padding: 5px;
-			font-family: Monospace;
-			font-size: 13px;
-			text-align: right;
-			opacity: 1;
-			}
-		#pythonocc_rocks {
-			padding: 5px;
-			position: absolute;
-			left: 1%;
-			top: 85%;
-			height: 75px;
-			width: 355px;
-			border-radius: 5px;
-			border: 2px solid #f7941e;
-			opacity: 0.7;
-			font-family: Arial;
-			background-color: #414042;
-			color: #ffffff;
-			font-size: 20px;
-			opacity: 0.7;
-		}
+    <title>pythonOCC @VERSION@ webgl renderer</title>
+    <meta name='Author' content='Thomas Paviot - tpaviot@gmail.com'>
+    <meta name='Keywords' content='WebGl,pythonOCC'>
+    <meta charset="utf-8">
+    <style type="text/css">
+        body {
+            background-color: @background-color@;
+            margin: 0px;
+            overflow: hidden;
+        }
+        #info {
+            position: absolute;
+            top: 96%;
+            width: 96%;
+            color: #808080;
+            padding: 5px;
+            font-family: Monospace;
+            font-size: 13px;
+            text-align: right;
+            opacity: 1;
+            }
+        #pythonocc_rocks {
+            padding: 5px;
+            position: absolute;
+            left: 1%;
+            top: 85%;
+            height: 60px;
+            width: 305px;
+            border-radius: 5px;
+            border: 2px solid #f7941e;
+            opacity: 0.7;
+            font-family: Arial;
+            background-color: #414042;
+            color: #ffffff;
+            font-size: 16px;
+            opacity: 0.7;
+        }
 
-		a {
-			color: #f7941e;
-			text-decoration: none;
-		}
+        a {
+            color: #f7941e;
+            text-decoration: none;
+        }
 
-		a:hover {
-			color: #ffffff;
-		}
-	</style>
+        a:hover {
+            color: #ffffff;
+        }
+    </style>
 </head>
 """
 
 BODY = """
 <body>
-	<div id="container"></div>
-	<div id="info">
-				WebGL engine by <a href="http://github.com/mrdoob/three.js" target="_blank">three.js</a>
-	</div>
-	<div id="pythonocc_rocks">
-    	<b>pythonOCC @VERSION@ WebGL renderer</b>
-    	towards CAD in a webbrowser
-    	<a style="font-size:15px;" href=http://www.pythonocc.org>http://www.pythonocc.org</a>
+    <div id="container"></div>
+    <div id="info">
+                WebGL engine by <a href="http://github.com/mrdoob/three.js" target="_blank">three.js</a>
+    </div>
+    <div id="pythonocc_rocks">
+        <b>pythonOCC @VERSION@ WebGL renderer</b><hr>
+        CAD in a browser
+        <a style="font-size:14px;" href=http://www.pythonocc.org>http://www.pythonocc.org</a>
     </div>
 
-	<script type="text/javascript" src="@Three.jsPath@"></script> 
-	<script type="text/javascript" src="./shape.js"></script>
+    <script type="text/javascript" src="@Three.jsPath@/three.min.js"></script>
+    <script type="text/javascript" src="@Three.jsPath@/OrbitControls.js"></script>
+    <script type="text/javascript" src="@Three.jsPath@/stats.min.js"></script>
+    @VertexShaderDefinition@
+    @FragmentShaderDefinition@
+    <script type="text/javascript" src="./shape.js"></script>
+    <script type="text/javascript">
+        var camera, scene, renderer, object, stats, container, shape_material;
+        var targetRotation = 0;
+        var targetRotationOnMouseDown = 0;
+        var targetRotationY = 0;
+        var targetRotationYOnMouseDown = 0;
+        var mouseX = 0;
+        var mouseXOnMouseDown = 0;
+        var mouseY = 0;
+        var mouseYOnMouseDown = 0;
+        var moveForward = false;
+        var moveBackward = false;
+        var moveLeft = false;
+        var moveRight = false;
+        var moveUp = false;
+        var moveDown = false;
+        var windowHalfX = window.innerWidth / 2;
+        var windowHalfY = window.innerHeight / 2;
 
-	<script type="text/javascript">
-	    var camera, scene, renderer, object;
-		var targetRotation = 0;
-		var targetRotationOnMouseDown = 0;
-		var targetRotationY = 0;
-		var targetRotationYOnMouseDown = 0;
-		var mouseX = 0;
-		var mouseXOnMouseDown = 0;
-		var mouseY = 0;
-		var mouseYOnMouseDown = 0;
-		var moveForward = false;
-		var moveBackward = false;
-		var moveLeft = false;
-		var moveRight = false;
-		var moveUp = false;
-		var moveDown = false;
-		var windowHalfX = window.innerWidth / 2;
-		var windowHalfY = window.innerHeight / 2;
-		
-		init();
-		setInterval( loop, 1000 / 60 );
+        init();
+        animate();
 
-		function init() {
-			var container = document.getElementById( 'container' );
-			camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 1, 2000 );
-			camera.position.z = 1000;
-			scene = new THREE.Scene();
-			scene.add( new THREE.AmbientLight(0x101010));
-			directionalLight = new THREE.DirectionalLight( 0xffffff );
-			directionalLight.position.x = 1;
-			directionalLight.position.y = 1;
-			directionalLight.position.z = 2;
-			directionalLight.position.normalize();
-			scene.add( directionalLight );
-			light1 = new THREE.PointLight( 0xffffff );
-			scene.add( light1 );
-			object = new THREE.Mesh( new Shape(), new THREE.MeshPhongMaterial( { ambient: 0x000000, color: 0xffaa00, specular: 0x555555, shininess: 30 } ));
-			object.overdraw = true;
-			object.scale.x = object.scale.y = object.scale.z = 3.5;
-			object.rotation.x = -1.57/2;
-			object.position.y -= 100;
-			targetRotationY = -1.57/2;
-			scene.add( object );
-			renderer = new THREE.WebGLRenderer({antialias:true});
-			renderer.setSize( window.innerWidth, window.innerHeight );
-			container.appendChild( renderer.domElement );
-			document.addEventListener( 'mousedown', onDocumentMouseDown, false );
-		}
-		
-		function onDocumentMouseDown( event ) {
-						event.preventDefault();
-						document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-						document.addEventListener( 'mouseup', onDocumentMouseUp, false );
-						document.addEventListener( 'mouseout', onDocumentMouseOut, false );
-						document.addEventListener( 'keydown', onDocumentKeyDown, false );
-						document.addEventListener( 'keyup', onDocumentKeyUp, false );
-						mouseXOnMouseDown = event.clientX - windowHalfX;
-						mouseYOnMouseDown = event.clientY - windowHalfY;
-						targetRotationOnMouseDown = targetRotation;
-					}
+        function init() {
+            container = document.createElement( 'div' );
+            document.body.appendChild( container );
 
-					function onDocumentMouseMove( event ) {
-						mouseX = event.clientX - windowHalfX;
-						mouseY = event.clientY - windowHalfY;
-						targetRotation = targetRotationOnMouseDown + ( mouseX - mouseXOnMouseDown ) * 0.01;
-						targetRotationY = targetRotationYOnMouseDown + ( mouseY - mouseYOnMouseDown ) * 0.01;
-					}
+            camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 1, 200 );
+            camera.position.z = 100;
+            controls = new THREE.OrbitControls( camera );
+            scene = new THREE.Scene();
+            scene.add( new THREE.AmbientLight(0x101010));
+            directionalLight = new THREE.DirectionalLight( 0xffffff );
+            directionalLight.position.x = 1;
+            directionalLight.position.y = 1;
+            directionalLight.position.z = 2;
+            directionalLight.position.normalize();
+            scene.add( directionalLight );
+            light1 = new THREE.PointLight( 0xffffff );
+            scene.add( light1 );
+            @ShaderMaterialDefinition@
+            phong_material = new THREE.MeshPhongMaterial( { ambient: 0x000000, color: 0xffaa00, specular: 0x555555, shininess: 30 } )
+            object = new THREE.Mesh( new Shape(), @ShapeMaterial@);
+            object.overdraw = true;
+            object.rotation.x = -1.57/2;
+            scene.add( object );
+            renderer = new THREE.WebGLRenderer({antialias:true});
+            renderer.setClearColor("@background-color@");
+            renderer.setSize( window.innerWidth, window.innerHeight );
+            container.appendChild( renderer.domElement );
 
-					function onDocumentMouseUp( event ) {
-						document.removeEventListener( 'mousemove', onDocumentMouseMove, false );
-						document.removeEventListener( 'mouseup', onDocumentMouseUp, false );
-						document.removeEventListener( 'mouseout', onDocumentMouseOut, false );
-					}
+            renderer.shadowMapEnabled = true;
+            renderer.shadowMapType = THREE.PCFShadowMap;
 
-					function onDocumentMouseOut( event ) {
-						document.removeEventListener( 'mousemove', onDocumentMouseMove, false );
-						document.removeEventListener( 'mouseup', onDocumentMouseUp, false );
-						document.removeEventListener( 'mouseout', onDocumentMouseOut, false );
-					}
-					
-					function onDocumentKeyDown( event ) {
-						switch( event.keyCode ) {
-							case 87: /*W*/ moveForward = true; break;
-							case 37: /*left*/
-							case 65: /*A*/ moveLeft = true; break;
-							case 83: /*S*/ moveBackward = true; break;
-							case 39: /*right*/
-							case 68: /*D*/ moveRight = true; break;
-							case 38: /*up*/ moveUp = true; break;
-							case 40: /*down*/ moveDown = true; break;
-						}
+            stats = new Stats();
+            stats.domElement.style.position = 'absolute';
+            stats.domElement.style.top = '0px';
+            container.appendChild( stats.domElement );
+            window.addEventListener( 'resize', onWindowResize, false );
+        }
+        function animate() {
+                requestAnimationFrame( animate );
+                controls.update();
+                render();
+                stats.update();
 
-					}
-
-					function onDocumentKeyUp(event) {
-						switch(event.keyCode) {
-							case 87: /*W*/ moveForward = false; break;
-							case 37: /*left*/
-							case 65: /*A*/ moveLeft = false; break;
-							case 83: /*S*/ moveBackward = false; break;
-							case 39: /*right*/
-							case 68: /*D*/ moveRight = false; break;
-							case 38: /*up*/ moveUp = false; break;	
-							case 40: /*down*/ moveDown = false; break;
-						}
-					}
-
-		function loop() {
-			var time = new Date().getTime() * 0.0005;
-			object.rotation.y += ( targetRotation - object.rotation.y )*0.1;
-			object.rotation.x += ( targetRotationY - object.rotation.x )*0.1;
-			if (moveForward) camera.translateZ(-10);
-			if (moveBackward) camera.translateZ(10);
-			if (moveUp) camera.translateY(-10);
-			if (moveDown) camera.translateY(10);
-			if (moveLeft) camera.translateX(10);
-			if (moveRight) camera.translateX(-10);	
-			renderer.render(scene, camera);
-		}
-	</script>
+        }
+        function render() {
+               renderer.render( scene, camera );
+        }
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize( window.innerWidth, window.innerHeight );
+        }
+    </script>
 </body>
 """
 
 
-class HTMLHeader:
+class HTMLHeader(object):
     def __init__(self, background_color='#000000'):
         self._background_color = background_color
 
     def get_str(self):
-        header_str = HEADER.replace('@background-color@','%s'%self._background_color)
-        header_str = header_str.replace('@VERSION@',OCC.VERSION)
+        header_str = HEADER.replace('@background-color@', '%s' % self._background_color)
+        header_str = header_str.replace('@VERSION@', OCC.VERSION)
         return header_str
 
 
-class HTMLBody:
-    def __init__(self):
-        pass
+class HTMLBody(object):
+    def __init__(self, background_color='#000000', vertex_shader=None, fragment_shader=None):
+        self._background_color = background_color
+        self._vertex_shader = vertex_shader
+        self._fragment_shader = fragment_shader
 
     def get_str(self):
         # get the location where pythonocc is running from
-        import OCC
-        threejs_build_location = os.sep.join([OCC.__path__[0],'Display','WebGl','three.min.js'])
-        body_str = BODY.replace('@Three.jsPath@','%s'%threejs_build_location)
-        body_str = body_str.replace('@VERSION@',OCC.VERSION)
+        threejs_build_location = os.sep.join([OCC.__path__[0], 'Display', 'WebGl'])
+        body_str = BODY.replace('@Three.jsPath@', '%s' % threejs_build_location)
+        body_str = body_str.replace('@background-color@', '%s' % self._background_color)
+        body_str = body_str.replace('@VERSION@', OCC.VERSION)
+        if (self._fragment_shader is not None) and (self._fragment_shader is not None):
+            vertex_shader_string_definition = '<script type="x-shader/x-vertex" id="vertexShader">%s</script>' % self._vertex_shader
+            fragment_shader_string_definition = '<script type="x-shader/x-fragment" id="fragmentShader">%s</script>' % self._fragment_shader
+            shader_material_definition = """
+            var vertexShader = document.getElementById( 'vertexShader' ).textContent;
+            var fragmentShader = document.getElementById( 'fragmentShader' ).textContent;
+            var shader_material = new THREE.ShaderMaterial( { uniforms: {}, vertexShader: vertexShader, fragmentShader: fragmentShader } );
+            """
+            body_str = body_str.replace('@VertexShaderDefinition@', vertex_shader_string_definition)
+            body_str = body_str.replace('@FragmentShaderDefinition@', fragment_shader_string_definition)
+            body_str = body_str.replace('@ShaderMaterialDefinition@', shader_material_definition)
+            body_str = body_str.replace('@ShapeMaterial@', 'shader_material')
+        else:
+            body_str = body_str.replace('@VertexShaderDefinition@', '')
+            body_str = body_str.replace('@FragmentShaderDefinition@', '')
+            body_str = body_str.replace('@ShaderMaterialDefinition@', '')
+            body_str = body_str.replace('@ShapeMaterial@', 'phong_material')
         return body_str
 
