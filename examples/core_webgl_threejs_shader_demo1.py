@@ -18,12 +18,13 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 from OCC.Display.WebGl import threejs_renderer
-from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
+from OCC.BRepPrimAPI import BRepPrimAPI_MakeTorus
 
 # create box
-cube_shp = BRepPrimAPI_MakeBox(10., 10., 10.).Shape()
+cube_shp = BRepPrimAPI_MakeTorus(30., 20.).Shape()
 # load shaders
-vs = open('shaders/rgb_vertex_shader.vs', 'r').read()
-fs = open('shaders/rgb_fragment_shader.fs', 'r').read()
-my_renderer = threejs_renderer.ThreejsRenderer(vertex_shader=vs, fragment_shader=fs)
+vs = open('shaders/fresnel.vs', 'r').read()
+fs = open('shaders/fresnel.fs', 'r').read()
+u = open('shaders/fresnel.uniforms', 'r').read()
+my_renderer = threejs_renderer.ThreejsRenderer(vertex_shader=vs, fragment_shader=fs, uniforms = u)
 my_renderer.DisplayShape(cube_shp)
