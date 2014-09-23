@@ -161,6 +161,7 @@ BODY = """
 
         }
         function render() {
+               @IncrementTime@
                renderer.render( scene, camera );
         }
         function onWindowResize() {
@@ -213,12 +214,17 @@ class HTMLBody(object):
             body_str = body_str.replace('@FragmentShaderDefinition@', fragment_shader_string_definition)
             body_str = body_str.replace('@ShaderMaterialDefinition@', shader_material_definition)
             body_str = body_str.replace('@ShapeMaterial@', 'shader_material')
+            if 'time' in self._uniforms:
+                body_str = body_str.replace('@IncrementTime@', 'uniforms.time.value += 0.05;')
+            else:
+                body_str = body_str.replace('@IncrementTime@', '')
         else:
             body_str = body_str.replace('@Uniforms@', '')
             body_str = body_str.replace('@VertexShaderDefinition@', '')
             body_str = body_str.replace('@FragmentShaderDefinition@', '')
             body_str = body_str.replace('@ShaderMaterialDefinition@', '')
             body_str = body_str.replace('@ShapeMaterial@', 'phong_material')
+            body_str = body_str.replace('@IncrementTime@', '')
         return body_str
 
 
