@@ -132,6 +132,7 @@ BODY = """
             scene.add( directionalLight );
             light1 = new THREE.PointLight( 0xffffff );
             scene.add( light1 );
+            @Uniforms@
             @ShaderMaterialDefinition@
             phong_material = new THREE.MeshPhongMaterial( { ambient: 0x000000, color: 0xffaa00, specular: 0x555555, shininess: 30 } )
             object = new THREE.Mesh( new Shape(), @ShapeMaterial@);
