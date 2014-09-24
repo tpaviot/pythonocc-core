@@ -21,6 +21,7 @@ after_script:
   - cd ../test
   - python run_tests.py
   - xvfb-run -s "-screen 0 1024x768x16" sudo python core_display_unittest.py
+  - xvfb-run -s "-screen 0 1024x768x16" sudo python core_webgl_unittest.py
 branches:
   only:
     - master

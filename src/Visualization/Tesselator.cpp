@@ -69,20 +69,21 @@ Tesselator::Tesselator(TopoDS_Shape   aShape,
     // compute default deviation
     ComputeDefaultDeviation();
     
-    Tesselate();
+    //Tesselate();
+    TesselateWithUVCoords();
 }
 
 Tesselator::Tesselator(TopoDS_Shape   aShape) :
   //set local variables
   myDeviation(1.0),
-  myUOrigin(1.0),
-  myVOrigin(0.1),
-  myURepeat(0.1),
-  myVRepeat(0.1),
-  myScaleU(0.1),
-  myScaleV(0.1),
-  myAutoScaleSizeOnU(0.1),
-  myAutoScaleSizeOnV(0.1),
+  myUOrigin(0.),
+  myVOrigin(0.),
+  myURepeat(1.),
+  myVRepeat(1.),
+  myScaleU(1.),
+  myScaleV(1.),
+  myAutoScaleSizeOnU(1.),
+  myAutoScaleSizeOnV(1.),
   myTxtMapType(atNormal),
   myShape(aShape),
   myRotationAngle(0.)
@@ -93,7 +94,7 @@ Tesselator::Tesselator(TopoDS_Shape   aShape) :
     // compute default deviation
     ComputeDefaultDeviation();
     
-    Tesselate();
+    TesselateWithUVCoords();
 }
 //---------------------------------------------------------------------------
 Tesselator::~Tesselator()
@@ -223,7 +224,7 @@ void Tesselator::TesselateWithUVCoords()
 
   gp_Vec2d theCoord_p;
   gp_Pnt2d d_coord;
-
+  cout << "Tesselate with UV coords\n";
   //Triangulate
   BRepMesh::Mesh(myShape, myDeviation);
 
@@ -286,15 +287,12 @@ void Tesselator::TesselateWithUVCoords()
         }
         else {
           d_coord = UVNodes(i);
-
           d_coord.SetX((-myUOrigin+(myURepeat*(d_coord.X()-Umin))/dUmax)/myScaleU);
           d_coord.SetY((-myVOrigin+(myVRepeat*(d_coord.Y()-Vmin))/dVmax)/myScaleV);
         }
-
-        d_coord.Rotate(gp::Origin2d(), myRotationAngle);
-
-        this_face->tex_coord[((i-1) * 3)+ id1] = theCoord_p.X();
-        this_face->tex_coord[((i-1) * 3)+ id2] = theCoord_p.Y();
+        d_coord.Rotate(gp::Origin2d(), myRotationAngle);  
+        this_face->tex_coord[((i-1) * 3)+ id1] = d_coord.X();
+        this_face->tex_coord[((i-1) * 3)+ id2] = d_coord.Y();
         this_face->tex_coord[((i-1) * 3)+ idNull] = 0;
       }
 
@@ -322,7 +320,7 @@ void Tesselator::TesselateWithUVCoords()
       facelist.push_back(this_face);
     }
   }
-  JoinPrimitives();
+  JoinPrimitivesWithUVCoords();
 }
 
 //---------------------------INTERFACE---------------------------------------
@@ -448,13 +446,27 @@ void Tesselator::ExportShapeToJSON(char * filename)
             << locNormalcoord[normals_idx[2]+2];
         JSONObject << ");\n";
     }
+
+    // at last, write texcoords
+    for (int i=0;i<tot_triangle_count;i++) {
+        ObjGetTriangle(i, vertices_idx, texcoords_idx, normals_idx);
+        JSONObject << "uvs(";
+        JSONObject << locTexcoord[texcoords_idx[0]]<<","<<locTexcoord[texcoords_idx[0]+2]<<",";
+        JSONObject << locTexcoord[texcoords_idx[1]]<<","<<locTexcoord[texcoords_idx[1]+2]<<",";
+        JSONObject << locTexcoord[texcoords_idx[2]]<<","<<locTexcoord[texcoords_idx[2]+2];
+        JSONObject << ");\n";
+    }
+
     // footer
     JSONObject << "function v( x, y, z ) {\n";
-    JSONObject<< "  scope.vertices.push(new THREE.Vertex(new THREE.Vector3(x,y,z)));\n";
+    JSONObject<< "  scope.vertices.push(new THREE.Vector3(x,y,z));\n";
     JSONObject<<"}\n";
     JSONObject <<"function f3( a, b, c, n1_x,n1_y,n1_z,n2_x,n2_y,n2_z,n3_x,n3_y,n3_z ) {\n";
     JSONObject << "  scope.faces.push(new THREE.Face3(a,b,c,[new THREE.Vector3(n1_x,n1_y,n1_z),\n";
     JSONObject << "new THREE.Vector3( n2_x, n2_y, n2_z ), new THREE.Vector3( n3_x, n3_y, n3_z ) ]  ) );\n";
+    JSONObject << "}\n";
+    JSONObject << "function uvs(a,b,c,d,e,f) {\n";
+    JSONObject << "scope.faceVertexUvs[ 0 ].push( [new THREE.Vector2(a,b), new THREE.Vector2(c,d), new THREE.Vector2(e,f)] );\n";
     JSONObject << "}\n}\n";
     JSONObject << "Shape.prototype = new THREE.Geometry();\n";
     JSONObject << "Shape.prototype.constructor = Shape;\n";
