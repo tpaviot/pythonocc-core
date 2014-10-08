@@ -239,6 +239,19 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopoDS_UnCompatibleShapes.hxx>
 #include<TopoDS_Vertex.hxx>
 #include<TopoDS_Wire.hxx>
+#include<XSControl.hxx>
+#include<XSControl_ConnectedShapes.hxx>
+#include<XSControl_Controller.hxx>
+#include<XSControl_FuncShape.hxx>
+#include<XSControl_Functions.hxx>
+#include<XSControl_Reader.hxx>
+#include<XSControl_SelectForTransfer.hxx>
+#include<XSControl_SignTransferStatus.hxx>
+#include<XSControl_TransferReader.hxx>
+#include<XSControl_TransferWriter.hxx>
+#include<XSControl_Utils.hxx>
+#include<XSControl_WorkSession.hxx>
+#include<XSControl_Writer.hxx>
 #include<Interface_Array1OfFileParameter.hxx>
 #include<Interface_Array1OfHAsciiString.hxx>
 #include<Interface_BitMap.hxx>
@@ -879,6 +892,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %import gp.i
 %import TopTools.i
 %import TopoDS.i
+%import XSControl.i
 %import Interface.i
 %import IFSelect.i
 %import TColStd.i

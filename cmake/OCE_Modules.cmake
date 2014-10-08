@@ -244,4 +244,5 @@ LIST(APPEND OCE_TOOLKIT_DATAEXCHANGE
 # TKXSBase
         Interface
         IFSelect
+        XSControl
         )
