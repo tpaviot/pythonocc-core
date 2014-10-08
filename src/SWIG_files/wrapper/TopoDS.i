@@ -54,7 +54,7 @@ Returns:
 Basic tool to access the data structure.  Casts shape S to the more specialized return type, Vertex.  
 Exceptions  
 Standard_TypeMismatch if S cannot be cast to this return type.") Vertex;
-		static const TopoDS_Vertex & Vertex (const TopoDS_Shape  S);
+		static const TopoDS_Vertex & Vertex (const TopoDS_Shape & S);
 		%feature("autodoc", "Args:
 	&(TopoDS_Shape)
 
@@ -72,7 +72,7 @@ Returns:
 Casts shape S to the more specialized return type, Edge  
 Exceptions  
 Standard_TypeMismatch if S cannot be cast to this return type.") Edge;
-		static const TopoDS_Edge & Edge (const TopoDS_Shape  S);
+		static const TopoDS_Edge & Edge (const TopoDS_Shape & S);
 		%feature("autodoc", "Args:
 	&(TopoDS_Shape)
 
@@ -90,7 +90,7 @@ Returns:
 Casts shape S to the more specialized return type, Wire.  
 Exceptions  
 Standard_TypeMismatch if S cannot be cast to this return type.") Wire;
-		static const TopoDS_Wire & Wire (const TopoDS_Shape  S);
+		static const TopoDS_Wire & Wire (const TopoDS_Shape & S);
 		%feature("autodoc", "Args:
 	&(TopoDS_Shape)
 
@@ -108,7 +108,7 @@ Returns:
 Casts shape S to the more specialized return type, Face.  
 Exceptions  
 Standard_TypeMismatch if S cannot be cast to this return type.") Face;
-		static const TopoDS_Face & Face (const TopoDS_Shape  S);
+		static const TopoDS_Face & Face (const TopoDS_Shape & S);
 		%feature("autodoc", "Args:
 	&(TopoDS_Shape)
 
@@ -126,7 +126,7 @@ Returns:
 Casts shape S to the more specialized return type, Shell.  
 Exceptions  
 Standard_TypeMismatch if S cannot be cast to this return type.") Shell;
-		static const TopoDS_Shell & Shell (const TopoDS_Shape  S);
+		static const TopoDS_Shell & Shell (const TopoDS_Shape & S);
 		%feature("autodoc", "Args:
 	&(TopoDS_Shape)
 
@@ -144,7 +144,7 @@ Returns:
 Casts shape S to the more specialized return type, Solid.  
 Exceptions  
 Standard_TypeMismatch if S cannot be cast to this return type.") Solid;
-		static const TopoDS_Solid & Solid (const TopoDS_Shape  S);
+		static const TopoDS_Solid & Solid (const TopoDS_Shape & S);
 		%feature("autodoc", "Args:
 	&(TopoDS_Shape)
 
@@ -162,7 +162,7 @@ Returns:
 Casts shape S to the more specialized return type, CompSolid.  
 Exceptions  
 Standard_TypeMismatch if S cannot be cast to this return type.") CompSolid;
-		static const TopoDS_CompSolid & CompSolid (const TopoDS_Shape  S);
+		static const TopoDS_CompSolid & CompSolid (const TopoDS_Shape & S);
 		%feature("autodoc", "Args:
 	&(TopoDS_Shape)
 
@@ -180,7 +180,7 @@ Returns:
 Casts shape S to the more specialized return type, Compound.  
 Exceptions  
 Standard_TypeMismatch if S cannot be cast to this return type.") Compound;
-		static const TopoDS_Compound & Compound (const TopoDS_Shape  S);
+		static const TopoDS_Compound & Compound (const TopoDS_Shape & S);
 		%feature("autodoc", "Args:
 	&(TopoDS_Shape)
 
@@ -216,7 +216,7 @@ Returns:
 	None
 
 Make an empty Wire.") MakeWire;
-		void MakeWire (TopoDS_Wire  W);
+		void MakeWire (TopoDS_Wire & W);
 		%feature("autodoc", "Args:
 	S(TopoDS_Shell)
 
@@ -224,7 +224,7 @@ Returns:
 	None
 
 Make an empty Shell.") MakeShell;
-		void MakeShell (TopoDS_Shell  S);
+		void MakeShell (TopoDS_Shell & S);
 		%feature("autodoc", "Args:
 	S(TopoDS_Solid)
 
@@ -232,7 +232,7 @@ Returns:
 	None
 
 Make a Solid covering the whole 3D space.") MakeSolid;
-		void MakeSolid (TopoDS_Solid  S);
+		void MakeSolid (TopoDS_Solid & S);
 		%feature("autodoc", "Args:
 	C(TopoDS_CompSolid)
 
@@ -240,7 +240,7 @@ Returns:
 	None
 
 Make an empty Composite Solid.") MakeCompSolid;
-		void MakeCompSolid (TopoDS_CompSolid  C);
+		void MakeCompSolid (TopoDS_CompSolid & C);
 		%feature("autodoc", "Args:
 	C(TopoDS_Compound)
 
@@ -248,7 +248,7 @@ Returns:
 	None
 
 Make an empty Compound.") MakeCompound;
-		void MakeCompound (TopoDS_Compound  C);
+		void MakeCompound (TopoDS_Compound & C);
 		%feature("autodoc", "Args:
 	S(TopoDS_Shape)
 	C(TopoDS_Shape)
@@ -260,7 +260,7 @@ Add the Shape C in the Shape S.
 Exceptions  
 - TopoDS_FrozenShape if S is not free and cannot be modified.  
 - TopoDS__UnCompatibleShapes if S and C are not compatible.") Add;
-		void Add (TopoDS_Shape  S,const TopoDS_Shape  C);
+		void Add (TopoDS_Shape & S,const TopoDS_Shape & C);
 		%feature("autodoc", "Args:
 	S(TopoDS_Shape)
 	C(TopoDS_Shape)
@@ -271,7 +271,7 @@ Returns:
 Remove the Shape C from the Shape S.  
 Exceptions  
 TopoDS_FrozenShape if S is frozen and cannot be modified.") Remove;
-		void Remove (TopoDS_Shape  S,const TopoDS_Shape  C);
+		void Remove (TopoDS_Shape & S,const TopoDS_Shape & C);
 };
 
 
@@ -306,7 +306,7 @@ Returns:
 	None
 
 Constructs a shape object defined by the shape aShape.") TopoDS_HShape;
-		 TopoDS_HShape (const TopoDS_Shape  aShape);
+		 TopoDS_HShape (const TopoDS_Shape & aShape);
 		%feature("autodoc", "Args:
 	aShape(TopoDS_Shape)
 
@@ -314,7 +314,7 @@ Returns:
 	None
 
 Loads this shape with the shape aShape") Shape;
-		void Shape (const TopoDS_Shape  aShape);
+		void Shape (const TopoDS_Shape & aShape);
 		%feature("autodoc", "Args:
 	None
 Returns:
@@ -415,7 +415,7 @@ Creates an Iterator on <S> sub-shapes.
 - If cumLoc is true, the function multiplies all  
   sub-shapes by the location of S, i.e. it applies to  
   each sub-shape the transformation that is associated with S.") TopoDS_Iterator;
-		 TopoDS_Iterator (const TopoDS_Shape  S,const Standard_Boolean cumOri = Standard_True,const Standard_Boolean cumLoc = Standard_True);
+		 TopoDS_Iterator (const TopoDS_Shape & S,const Standard_Boolean cumOri = Standard_True,const Standard_Boolean cumLoc = Standard_True);
 		%feature("autodoc", "Args:
 	S(TopoDS_Shape)
 	cumOri(Standard_Boolean)=Standard_True
@@ -431,7 +431,7 @@ Note:
 - If cumLoc is true, the function multiplies all  
   sub-shapes by the location of S, i.e. it applies to  
   each sub-shape the transformation that is associated with S.") Initialize;
-		void Initialize (const TopoDS_Shape  S,const Standard_Boolean cumOri = Standard_True,const Standard_Boolean cumLoc = Standard_True);
+		void Initialize (const TopoDS_Shape & S,const Standard_Boolean cumOri = Standard_True,const Standard_Boolean cumLoc = Standard_True);
 		%feature("autodoc", "Args:
 	None
 Returns:
@@ -494,7 +494,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") TopoDS_ListIteratorOfListOfShape;
-		 TopoDS_ListIteratorOfListOfShape (const TopoDS_ListOfShape  L);
+		 TopoDS_ListIteratorOfListOfShape (const TopoDS_ListOfShape & L);
 		%feature("autodoc", "Args:
 	L(TopoDS_ListOfShape)
 
@@ -502,7 +502,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Initialize;
-		void Initialize (const TopoDS_ListOfShape  L);
+		void Initialize (const TopoDS_ListOfShape & L);
 		%feature("autodoc", "Args:
 	None
 Returns:
@@ -552,7 +552,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") TopoDS_ListNodeOfListOfShape;
-		 TopoDS_ListNodeOfListOfShape (const TopoDS_Shape  I,const TCollection_MapNodePtr  n);
+		 TopoDS_ListNodeOfListOfShape (const TopoDS_Shape & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "Args:
 	None
 Returns:
@@ -633,7 +633,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Assign;
-		void Assign (const TopoDS_ListOfShape  Other);
+		void Assign (const TopoDS_ListOfShape & Other);
 		%feature("autodoc", "Args:
 	Other(TopoDS_ListOfShape)
 
@@ -641,7 +641,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") operator=;
-		void operator = (const TopoDS_ListOfShape  Other);
+		void operator = (const TopoDS_ListOfShape & Other);
 		%feature("autodoc", "Args:
 	None
 Returns:
@@ -670,7 +670,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Prepend;
-		void Prepend (const TopoDS_Shape  I);
+		void Prepend (const TopoDS_Shape & I);
 		%feature("autodoc", "Args:
 	I(TopoDS_Shape)
 	theIt(TopoDS_ListIteratorOfListOfShape)
@@ -679,7 +679,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Prepend;
-		void Prepend (const TopoDS_Shape  I,TopoDS_ListIteratorOfListOfShape  theIt);
+		void Prepend (const TopoDS_Shape & I,TopoDS_ListIteratorOfListOfShape & theIt);
 		%feature("autodoc", "Args:
 	Other(TopoDS_ListOfShape)
 
@@ -687,7 +687,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Prepend;
-		void Prepend (TopoDS_ListOfShape  Other);
+		void Prepend (TopoDS_ListOfShape & Other);
 		%feature("autodoc", "Args:
 	I(TopoDS_Shape)
 
@@ -695,7 +695,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Append;
-		void Append (const TopoDS_Shape  I);
+		void Append (const TopoDS_Shape & I);
 		%feature("autodoc", "Args:
 	I(TopoDS_Shape)
 	theIt(TopoDS_ListIteratorOfListOfShape)
@@ -704,7 +704,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Append;
-		void Append (const TopoDS_Shape  I,TopoDS_ListIteratorOfListOfShape  theIt);
+		void Append (const TopoDS_Shape & I,TopoDS_ListIteratorOfListOfShape & theIt);
 		%feature("autodoc", "Args:
 	Other(TopoDS_ListOfShape)
 
@@ -712,7 +712,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Append;
-		void Append (TopoDS_ListOfShape  Other);
+		void Append (TopoDS_ListOfShape & Other);
 		%feature("autodoc", "Args:
 	None
 Returns:
@@ -741,7 +741,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Remove;
-		void Remove (TopoDS_ListIteratorOfListOfShape  It);
+		void Remove (TopoDS_ListIteratorOfListOfShape & It);
 		%feature("autodoc", "Args:
 	I(TopoDS_Shape)
 	It(TopoDS_ListIteratorOfListOfShape)
@@ -750,7 +750,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") InsertBefore;
-		void InsertBefore (const TopoDS_Shape  I,TopoDS_ListIteratorOfListOfShape  It);
+		void InsertBefore (const TopoDS_Shape & I,TopoDS_ListIteratorOfListOfShape & It);
 		%feature("autodoc", "Args:
 	Other(TopoDS_ListOfShape)
 	It(TopoDS_ListIteratorOfListOfShape)
@@ -759,7 +759,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") InsertBefore;
-		void InsertBefore (TopoDS_ListOfShape  Other,TopoDS_ListIteratorOfListOfShape  It);
+		void InsertBefore (TopoDS_ListOfShape & Other,TopoDS_ListIteratorOfListOfShape & It);
 		%feature("autodoc", "Args:
 	I(TopoDS_Shape)
 	It(TopoDS_ListIteratorOfListOfShape)
@@ -768,7 +768,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") InsertAfter;
-		void InsertAfter (const TopoDS_Shape  I,TopoDS_ListIteratorOfListOfShape  It);
+		void InsertAfter (const TopoDS_Shape & I,TopoDS_ListIteratorOfListOfShape & It);
 		%feature("autodoc", "Args:
 	Other(TopoDS_ListOfShape)
 	It(TopoDS_ListIteratorOfListOfShape)
@@ -777,7 +777,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") InsertAfter;
-		void InsertAfter (TopoDS_ListOfShape  Other,TopoDS_ListIteratorOfListOfShape  It);
+		void InsertAfter (TopoDS_ListOfShape & Other,TopoDS_ListIteratorOfListOfShape & It);
 };
 
 
@@ -838,7 +838,7 @@ Returns:
 	None
 
 Sets the shape local coordinate system.") Location;
-		void Location (const TopLoc_Location  Loc);
+		void Location (const TopLoc_Location & Loc);
 		%feature("autodoc", "Args:
 	Loc(TopLoc_Location)
 
@@ -847,7 +847,7 @@ Returns:
 
 Returns a  shape  similar to <self> with   the local  
          coordinate system set to <Loc>.") Located;
-		TopoDS_Shape Located (const TopLoc_Location  Loc);
+		TopoDS_Shape Located (const TopLoc_Location & Loc);
 		%feature("autodoc", "Args:
 	None
 Returns:
@@ -1002,7 +1002,7 @@ Returns:
 	None
 
 Multiplies the Shape location by <position>.") Move;
-		void Move (const TopLoc_Location  position);
+		void Move (const TopLoc_Location & position);
 		%feature("autodoc", "Args:
 	position(TopLoc_Location)
 
@@ -1011,7 +1011,7 @@ Returns:
 
 Returns  a shape similar  to  <self> with a location  
          multiplied  by <position>.") Moved;
-		TopoDS_Shape Moved (const TopLoc_Location  position);
+		TopoDS_Shape Moved (const TopLoc_Location & position);
 		%feature("autodoc", "Args:
 	None
 Returns:
@@ -1075,7 +1075,7 @@ Returns:
 Returns True if two shapes  are partners, i.e.  if  
          they   share   the   same  TShape.  Locations  and  
          Orientations may differ.") IsPartner;
-		Standard_Boolean IsPartner (const TopoDS_Shape  other);
+		Standard_Boolean IsPartner (const TopoDS_Shape & other);
 		%feature("autodoc", "Args:
 	other(TopoDS_Shape)
 
@@ -1085,7 +1085,7 @@ Returns:
 Returns True if two shapes are same, i.e.  if they  
          share  the  same TShape  with the same  Locations.  
          Orientations may differ.") IsSame;
-		Standard_Boolean IsSame (const TopoDS_Shape  other);
+		Standard_Boolean IsSame (const TopoDS_Shape & other);
 		%feature("autodoc", "Args:
 	other(TopoDS_Shape)
 
@@ -1095,7 +1095,7 @@ Returns:
 Returns True if two shapes are equal, i.e. if they  
          share the same TShape with  the same Locations and  
          Orientations.") IsEqual;
-		Standard_Boolean IsEqual (const TopoDS_Shape  other);
+		Standard_Boolean IsEqual (const TopoDS_Shape & other);
 
         %extend{
             bool __eq_wrapper__(const TopoDS_Shape  other) {
@@ -1117,7 +1117,7 @@ Returns:
 	Standard_Boolean
 
 Negation of the IsEqual method.") IsNotEqual;
-		Standard_Boolean IsNotEqual (const TopoDS_Shape  other);
+		Standard_Boolean IsNotEqual (const TopoDS_Shape & other);
 
         %extend{
             bool __ne_wrapper__(const TopoDS_Shape  other) {
@@ -1174,7 +1174,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") TShape;
-		void TShape (const Handle_TopoDS_TShape  T);
+		void TShape (const Handle_TopoDS_TShape & T);
 };
 
 
