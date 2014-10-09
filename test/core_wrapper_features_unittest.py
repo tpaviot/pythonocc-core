@@ -28,6 +28,8 @@ from OCC.STEPControl import STEPControl_Writer
 from OCC.Interface import Interface_Static_SetCVal, Interface_Static_CVal
 from OCC.GCE2d import GCE2d_MakeSegment
 from OCC.ShapeFix import ShapeFix_Solid, ShapeFix_Wire
+from OCC.TopoDS import TopoDS_Compound, TopoDS_Builder
+from OCC.BRepPrimAPI import BRepPrimAPI_MakeCylinder
 
 
 class TestWrapperFeatures(unittest.TestCase):
@@ -163,6 +165,18 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertEqual(sfw.GetModifyGeometryMode(), True)
         sfw.SetModifyGeometryMode(False)
         self.assertEqual(sfw.GetModifyGeometryMode(), False)
+
+    def testTopoDS_byref_arguments(self):
+        '''
+        Test byref pass arguments to TopoDS
+        '''
+        cyl1 = BRepPrimAPI_MakeCylinder(10., 10.).Shape()
+        cyl2 = BRepPrimAPI_MakeCylinder(100., 50.).Shape()
+        c = TopoDS_Compound()
+        bb = TopoDS_Builder()
+        bb.MakeCompound(c)
+        for child in [cyl1, cyl2]:
+            bb.Add(c, child)
 
     def test_dump_to_string(self):
         '''
