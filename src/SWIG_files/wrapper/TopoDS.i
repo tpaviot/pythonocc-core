@@ -206,7 +206,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor TopoDS_Builder;
 class TopoDS_Builder {
 	public:
 		%feature("autodoc", "Args:

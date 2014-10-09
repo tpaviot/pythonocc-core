@@ -41,7 +41,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 /* public enums */
 /* end public enums declaration */
 
-%nodefaultctor BRep_Builder;
 class BRep_Builder : public TopoDS_Builder {
 	public:
 		%feature("autodoc", "Args:
