@@ -923,7 +923,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") TColStd_Array1OfReal;
-		 TColStd_Array1OfReal (Standard_Real &OutValue,const Standard_Integer Low,const Standard_Integer Up);
+		 TColStd_Array1OfReal (const Standard_Real & Item,const Standard_Integer Low,const Standard_Integer Up);
 		%feature("autodoc", "Args:
 	V(Standard_Real)
 
@@ -931,7 +931,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Init;
-		void Init (Standard_Real &OutValue);
+		void Init (const Standard_Real & V);
 		%feature("autodoc", "Args:
 	None
 Returns:
@@ -991,7 +991,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") SetValue;
-		void SetValue (const Standard_Integer Index,Standard_Real &OutValue);
+		void SetValue (const Standard_Integer Index,const Standard_Real & Value);
 		%feature("autodoc", "Args:
 	Index(Standard_Integer)
 
@@ -1605,7 +1605,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") TColStd_Array2OfReal;
-		 TColStd_Array2OfReal (Standard_Real &OutValue,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+		 TColStd_Array2OfReal (const Standard_Real & Item,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
 		%feature("autodoc", "Args:
 	V(Standard_Real)
 
@@ -1613,7 +1613,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Init;
-		void Init (Standard_Real &OutValue);
+		void Init (const Standard_Real & V);
 		%feature("autodoc", "Args:
 	None
 Returns:
@@ -1688,7 +1688,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") SetValue;
-		void SetValue (const Standard_Integer Row,const Standard_Integer Col,Standard_Real &OutValue);
+		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Standard_Real & Value);
 		%feature("autodoc", "Args:
 	Row(Standard_Integer)
 	Col(Standard_Integer)
@@ -2552,7 +2552,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") TColStd_DataMapNodeOfDataMapOfIntegerReal;
-		 TColStd_DataMapNodeOfDataMapOfIntegerReal (Standard_Integer &OutValue,Standard_Real &OutValue,const TCollection_MapNodePtr & n);
+		 TColStd_DataMapNodeOfDataMapOfIntegerReal (Standard_Integer &OutValue,const Standard_Real & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -3294,7 +3294,7 @@ Returns:
 	Standard_Boolean
 
 No detailed docstring for this function.") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,Standard_Real &OutValue);
+		Standard_Boolean Bind (Standard_Integer &OutValue,const Standard_Real & I);
 		%feature("autodoc", "Args:
 	K(Standard_Integer)
 
@@ -4751,7 +4751,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") TColStd_HArray1OfReal;
-		 TColStd_HArray1OfReal (const Standard_Integer Low,const Standard_Integer Up,Standard_Real &OutValue);
+		 TColStd_HArray1OfReal (const Standard_Integer Low,const Standard_Integer Up,const Standard_Real & V);
 		%feature("autodoc", "Args:
 	V(Standard_Real)
 
@@ -4759,7 +4759,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Init;
-		void Init (Standard_Real &OutValue);
+		void Init (const Standard_Real & V);
 		%feature("autodoc", "Args:
 	None
 Returns:
@@ -4789,7 +4789,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") SetValue;
-		void SetValue (const Standard_Integer Index,Standard_Real &OutValue);
+		void SetValue (const Standard_Integer Index,const Standard_Real & Value);
 		%feature("autodoc", "Args:
 	Index(Standard_Integer)
 
@@ -5569,7 +5569,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") TColStd_HArray2OfReal;
-		 TColStd_HArray2OfReal (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,Standard_Real &OutValue);
+		 TColStd_HArray2OfReal (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Standard_Real & V);
 		%feature("autodoc", "Args:
 	V(Standard_Real)
 
@@ -5577,7 +5577,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Init;
-		void Init (Standard_Real &OutValue);
+		void Init (const Standard_Real & V);
 		%feature("autodoc", "Args:
 	None
 Returns:
@@ -5629,7 +5629,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") SetValue;
-		void SetValue (const Standard_Integer Row,const Standard_Integer Col,Standard_Real &OutValue);
+		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Standard_Real & Value);
 		%feature("autodoc", "Args:
 	Row(Standard_Integer)
 	Col(Standard_Integer)
@@ -7229,7 +7229,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Append;
-		void Append (Standard_Real &OutValue);
+		void Append (const Standard_Real & anItem);
 		%feature("autodoc", "Args:
 	aSequence(Handle_TColStd_HSequenceOfReal)
 
@@ -7245,7 +7245,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Prepend;
-		void Prepend (Standard_Real &OutValue);
+		void Prepend (const Standard_Real & anItem);
 		%feature("autodoc", "Args:
 	aSequence(Handle_TColStd_HSequenceOfReal)
 
@@ -7269,7 +7269,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") InsertBefore;
-		void InsertBefore (const Standard_Integer anIndex,Standard_Real &OutValue);
+		void InsertBefore (const Standard_Integer anIndex,const Standard_Real & anItem);
 		%feature("autodoc", "Args:
 	anIndex(Standard_Integer)
 	aSequence(Handle_TColStd_HSequenceOfReal)
@@ -7287,7 +7287,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") InsertAfter;
-		void InsertAfter (const Standard_Integer anIndex,Standard_Real &OutValue);
+		void InsertAfter (const Standard_Integer anIndex,const Standard_Real & anItem);
 		%feature("autodoc", "Args:
 	anIndex(Standard_Integer)
 	aSequence(Handle_TColStd_HSequenceOfReal)
@@ -7322,7 +7322,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") SetValue;
-		void SetValue (const Standard_Integer anIndex,Standard_Real &OutValue);
+		void SetValue (const Standard_Integer anIndex,const Standard_Real & anItem);
 		%feature("autodoc", "Args:
 	anIndex(Standard_Integer)
 
@@ -7885,7 +7885,7 @@ Returns:
 	Standard_Boolean
 
 No detailed docstring for this function.") Add;
-		Standard_Boolean Add (Standard_Real &OutValue);
+		Standard_Boolean Add (const Standard_Real & T);
 		%feature("autodoc", "Args:
 	T(Standard_Real)
 
@@ -7893,7 +7893,7 @@ Returns:
 	Standard_Boolean
 
 No detailed docstring for this function.") Remove;
-		Standard_Boolean Remove (Standard_Real &OutValue);
+		Standard_Boolean Remove (const Standard_Real & T);
 		%feature("autodoc", "Args:
 	B(Handle_TColStd_HSetOfReal)
 
@@ -7925,7 +7925,7 @@ Returns:
 	Standard_Boolean
 
 No detailed docstring for this function.") Contains;
-		Standard_Boolean Contains (Standard_Real &OutValue);
+		Standard_Boolean Contains (const Standard_Real & T);
 		%feature("autodoc", "Args:
 	S(Handle_TColStd_HSetOfReal)
 
@@ -8569,7 +8569,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") TColStd_IndexedMapNodeOfIndexedMapOfReal;
-		 TColStd_IndexedMapNodeOfIndexedMapOfReal (Standard_Real &OutValue,const Standard_Integer K2,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
+		 TColStd_IndexedMapNodeOfIndexedMapOfReal (const Standard_Real & K1,const Standard_Integer K2,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
 
             %feature("autodoc","1");
             %extend {
@@ -8912,7 +8912,7 @@ Returns:
 	Standard_Integer
 
 No detailed docstring for this function.") Add;
-		Standard_Integer Add (Standard_Real &OutValue);
+		Standard_Integer Add (const Standard_Real & K);
 		%feature("autodoc", "Args:
 	I(Standard_Integer)
 	K(Standard_Real)
@@ -8921,7 +8921,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Substitute;
-		void Substitute (const Standard_Integer I,Standard_Real &OutValue);
+		void Substitute (const Standard_Integer I,const Standard_Real & K);
 		%feature("autodoc", "Args:
 	None
 Returns:
@@ -8936,7 +8936,7 @@ Returns:
 	Standard_Boolean
 
 No detailed docstring for this function.") Contains;
-		Standard_Boolean Contains (Standard_Real &OutValue);
+		Standard_Boolean Contains (const Standard_Real & K);
 		%feature("autodoc", "Args:
 	I(Standard_Integer)
 
@@ -8952,7 +8952,7 @@ Returns:
 	Standard_Integer
 
 No detailed docstring for this function.") FindIndex;
-		Standard_Integer FindIndex (Standard_Real &OutValue);
+		Standard_Integer FindIndex (const Standard_Real & K);
 };
 
 
@@ -9716,7 +9716,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") TColStd_ListNodeOfListOfReal;
-		 TColStd_ListNodeOfListOfReal (Standard_Real &OutValue,const TCollection_MapNodePtr & n);
+		 TColStd_ListNodeOfListOfReal (const Standard_Real & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -9953,7 +9953,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") TColStd_ListNodeOfSetListOfSetOfReal;
-		 TColStd_ListNodeOfSetListOfSetOfReal (Standard_Real &OutValue,const TCollection_MapNodePtr & n);
+		 TColStd_ListNodeOfSetListOfSetOfReal (const Standard_Real & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -10522,7 +10522,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Prepend;
-		void Prepend (Standard_Real &OutValue);
+		void Prepend (const Standard_Real & I);
 		%feature("autodoc", "Args:
 	I(Standard_Real)
 	theIt(TColStd_ListIteratorOfListOfReal)
@@ -10531,7 +10531,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Prepend;
-		void Prepend (Standard_Real &OutValue,TColStd_ListIteratorOfListOfReal & theIt);
+		void Prepend (const Standard_Real & I,TColStd_ListIteratorOfListOfReal & theIt);
 		%feature("autodoc", "Args:
 	Other(TColStd_ListOfReal)
 
@@ -10547,7 +10547,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Append;
-		void Append (Standard_Real &OutValue);
+		void Append (const Standard_Real & I);
 		%feature("autodoc", "Args:
 	I(Standard_Real)
 	theIt(TColStd_ListIteratorOfListOfReal)
@@ -10556,7 +10556,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Append;
-		void Append (Standard_Real &OutValue,TColStd_ListIteratorOfListOfReal & theIt);
+		void Append (const Standard_Real & I,TColStd_ListIteratorOfListOfReal & theIt);
 		%feature("autodoc", "Args:
 	Other(TColStd_ListOfReal)
 
@@ -10614,7 +10614,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") InsertBefore;
-		void InsertBefore (Standard_Real &OutValue,TColStd_ListIteratorOfListOfReal & It);
+		void InsertBefore (const Standard_Real & I,TColStd_ListIteratorOfListOfReal & It);
 		%feature("autodoc", "Args:
 	Other(TColStd_ListOfReal)
 	It(TColStd_ListIteratorOfListOfReal)
@@ -10632,7 +10632,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") InsertAfter;
-		void InsertAfter (Standard_Real &OutValue,TColStd_ListIteratorOfListOfReal & It);
+		void InsertAfter (const Standard_Real & I,TColStd_ListIteratorOfListOfReal & It);
 		%feature("autodoc", "Args:
 	Other(TColStd_ListOfReal)
 	It(TColStd_ListIteratorOfListOfReal)
@@ -11355,7 +11355,7 @@ Returns:
 	Standard_Boolean
 
 No detailed docstring for this function.") Add;
-		Standard_Boolean Add (Standard_Real &OutValue);
+		Standard_Boolean Add (const Standard_Real & aKey);
 		%feature("autodoc", "Args:
 	aKey(Standard_Real)
 
@@ -11363,7 +11363,7 @@ Returns:
 	Standard_Boolean
 
 No detailed docstring for this function.") Contains;
-		Standard_Boolean Contains (Standard_Real &OutValue);
+		Standard_Boolean Contains (const Standard_Real & aKey);
 		%feature("autodoc", "Args:
 	aKey(Standard_Real)
 
@@ -11371,7 +11371,7 @@ Returns:
 	Standard_Boolean
 
 No detailed docstring for this function.") Remove;
-		Standard_Boolean Remove (Standard_Real &OutValue);
+		Standard_Boolean Remove (const Standard_Real & aKey);
 };
 
 
@@ -11483,7 +11483,7 @@ Returns:
 	static Standard_Integer
 
 No detailed docstring for this function.") HashCode;
-		static Standard_Integer HashCode (Standard_Real &OutValue,const Standard_Integer Upper);
+		static Standard_Integer HashCode (const Standard_Real & K,const Standard_Integer Upper);
 		%feature("autodoc", "Args:
 	K1(Standard_Real)
 	K2(Standard_Real)
@@ -11492,7 +11492,7 @@ Returns:
 	static Standard_Boolean
 
 No detailed docstring for this function.") IsEqual;
-		static Standard_Boolean IsEqual (Standard_Real &OutValue,Standard_Real &OutValue);
+		static Standard_Boolean IsEqual (const Standard_Real & K1,const Standard_Real & K2);
 };
 
 
@@ -11640,7 +11640,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") TColStd_QueueNodeOfQueueOfReal;
-		 TColStd_QueueNodeOfQueueOfReal (Standard_Real &OutValue,const TCollection_MapNodePtr & n);
+		 TColStd_QueueNodeOfQueueOfReal (const Standard_Real & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -11945,7 +11945,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Push;
-		void Push (Standard_Real &OutValue);
+		void Push (const Standard_Real & T);
 		%feature("autodoc", "Args:
 	None
 Returns:
@@ -12632,7 +12632,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") TColStd_SequenceNodeOfSequenceOfReal;
-		 TColStd_SequenceNodeOfSequenceOfReal (Standard_Real &OutValue,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
+		 TColStd_SequenceNodeOfSequenceOfReal (const Standard_Real & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
 
             %feature("autodoc","1");
             %extend {
@@ -14099,7 +14099,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Append;
-		void Append (Standard_Real &OutValue);
+		void Append (const Standard_Real & T);
 		%feature("autodoc", "Args:
 	S(TColStd_SequenceOfReal)
 
@@ -14115,7 +14115,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Prepend;
-		void Prepend (Standard_Real &OutValue);
+		void Prepend (const Standard_Real & T);
 		%feature("autodoc", "Args:
 	S(TColStd_SequenceOfReal)
 
@@ -14132,7 +14132,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,Standard_Real &OutValue);
+		void InsertBefore (const Standard_Integer Index,const Standard_Real & T);
 		%feature("autodoc", "Args:
 	Index(Standard_Integer)
 	S(TColStd_SequenceOfReal)
@@ -14150,7 +14150,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,Standard_Real &OutValue);
+		void InsertAfter (const Standard_Integer Index,const Standard_Real & T);
 		%feature("autodoc", "Args:
 	Index(Standard_Integer)
 	S(TColStd_SequenceOfReal)
@@ -14199,7 +14199,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") SetValue;
-		void SetValue (const Standard_Integer Index,Standard_Real &OutValue);
+		void SetValue (const Standard_Integer Index,const Standard_Real & I);
 		%feature("autodoc", "Args:
 	Index(Standard_Integer)
 
@@ -14862,7 +14862,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Prepend;
-		void Prepend (Standard_Real &OutValue);
+		void Prepend (const Standard_Real & I);
 		%feature("autodoc", "Args:
 	I(Standard_Real)
 	theIt(TColStd_ListIteratorOfSetListOfSetOfReal)
@@ -14871,7 +14871,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Prepend;
-		void Prepend (Standard_Real &OutValue,TColStd_ListIteratorOfSetListOfSetOfReal & theIt);
+		void Prepend (const Standard_Real & I,TColStd_ListIteratorOfSetListOfSetOfReal & theIt);
 		%feature("autodoc", "Args:
 	Other(TColStd_SetListOfSetOfReal)
 
@@ -14887,7 +14887,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Append;
-		void Append (Standard_Real &OutValue);
+		void Append (const Standard_Real & I);
 		%feature("autodoc", "Args:
 	I(Standard_Real)
 	theIt(TColStd_ListIteratorOfSetListOfSetOfReal)
@@ -14896,7 +14896,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Append;
-		void Append (Standard_Real &OutValue,TColStd_ListIteratorOfSetListOfSetOfReal & theIt);
+		void Append (const Standard_Real & I,TColStd_ListIteratorOfSetListOfSetOfReal & theIt);
 		%feature("autodoc", "Args:
 	Other(TColStd_SetListOfSetOfReal)
 
@@ -14954,7 +14954,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") InsertBefore;
-		void InsertBefore (Standard_Real &OutValue,TColStd_ListIteratorOfSetListOfSetOfReal & It);
+		void InsertBefore (const Standard_Real & I,TColStd_ListIteratorOfSetListOfSetOfReal & It);
 		%feature("autodoc", "Args:
 	Other(TColStd_SetListOfSetOfReal)
 	It(TColStd_ListIteratorOfSetListOfSetOfReal)
@@ -14972,7 +14972,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") InsertAfter;
-		void InsertAfter (Standard_Real &OutValue,TColStd_ListIteratorOfSetListOfSetOfReal & It);
+		void InsertAfter (const Standard_Real & I,TColStd_ListIteratorOfSetListOfSetOfReal & It);
 		%feature("autodoc", "Args:
 	Other(TColStd_SetListOfSetOfReal)
 	It(TColStd_ListIteratorOfSetListOfSetOfReal)
@@ -15328,7 +15328,7 @@ Returns:
 	Standard_Boolean
 
 No detailed docstring for this function.") Add;
-		Standard_Boolean Add (Standard_Real &OutValue);
+		Standard_Boolean Add (const Standard_Real & T);
 		%feature("autodoc", "Args:
 	T(Standard_Real)
 
@@ -15336,7 +15336,7 @@ Returns:
 	Standard_Boolean
 
 No detailed docstring for this function.") Remove;
-		Standard_Boolean Remove (Standard_Real &OutValue);
+		Standard_Boolean Remove (const Standard_Real & T);
 		%feature("autodoc", "Args:
 	B(TColStd_SetOfReal)
 
@@ -15368,7 +15368,7 @@ Returns:
 	Standard_Boolean
 
 No detailed docstring for this function.") Contains;
-		Standard_Boolean Contains (Standard_Real &OutValue);
+		Standard_Boolean Contains (const Standard_Real & T);
 		%feature("autodoc", "Args:
 	S(TColStd_SetOfReal)
 
@@ -15798,7 +15798,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") TColStd_StackNodeOfStackOfReal;
-		 TColStd_StackNodeOfStackOfReal (Standard_Real &OutValue,const TCollection_MapNodePtr & n);
+		 TColStd_StackNodeOfStackOfReal (const Standard_Real & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -16096,7 +16096,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Push;
-		void Push (Standard_Real &OutValue);
+		void Push (const Standard_Real & I);
 		%feature("autodoc", "Args:
 	None
 Returns:
@@ -16401,7 +16401,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") TColStd_StdMapNodeOfMapOfReal;
-		 TColStd_StdMapNodeOfMapOfReal (Standard_Real &OutValue,const TCollection_MapNodePtr & n);
+		 TColStd_StdMapNodeOfMapOfReal (const Standard_Real & K,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
