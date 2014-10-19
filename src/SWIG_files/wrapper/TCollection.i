@@ -3521,7 +3521,7 @@ Returns:
 	virtual Standard_Boolean
 
 No detailed docstring for this function.") IsLower;
-		virtual Standard_Boolean IsLower (Standard_Real &OutValue,Standard_Real &OutValue);
+		virtual Standard_Boolean IsLower (const Standard_Real & Left,const Standard_Real & Right);
 		%feature("autodoc", "Args:
 	Left(Standard_Real)
 	Right(Standard_Real)
@@ -3530,7 +3530,7 @@ Returns:
 	virtual Standard_Boolean
 
 No detailed docstring for this function.") IsGreater;
-		virtual Standard_Boolean IsGreater (Standard_Real &OutValue,Standard_Real &OutValue);
+		virtual Standard_Boolean IsGreater (const Standard_Real & Left,const Standard_Real & Right);
 		%feature("autodoc", "Args:
 	Left(Standard_Real)
 	Right(Standard_Real)
@@ -3539,7 +3539,7 @@ Returns:
 	virtual Standard_Boolean
 
 No detailed docstring for this function.") IsEqual;
-		virtual Standard_Boolean IsEqual (Standard_Real &OutValue,Standard_Real &OutValue);
+		virtual Standard_Boolean IsEqual (const Standard_Real & Left,const Standard_Real & Right);
 };
 
 
@@ -3702,7 +3702,7 @@ Returns:
 	virtual Standard_Boolean
 
 Returns True if <Left> is lower than <Right>.") IsLower;
-		virtual Standard_Boolean IsLower (Standard_Real &OutValue,Standard_Real &OutValue);
+		virtual Standard_Boolean IsLower (const Standard_Real & Left,const Standard_Real & Right);
 		%feature("autodoc", "Args:
 	Left(Standard_Real)
 	Right(Standard_Real)
@@ -3711,7 +3711,7 @@ Returns:
 	virtual Standard_Boolean
 
 Returns True if <Left> is greater than <Right>.") IsGreater;
-		virtual Standard_Boolean IsGreater (Standard_Real &OutValue,Standard_Real &OutValue);
+		virtual Standard_Boolean IsGreater (const Standard_Real & Left,const Standard_Real & Right);
 };
 
 

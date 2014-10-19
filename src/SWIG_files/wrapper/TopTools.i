@@ -1661,7 +1661,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") TopTools_DataMapNodeOfDataMapOfShapeReal;
-		 TopTools_DataMapNodeOfDataMapOfShapeReal (const TopoDS_Shape & K,Standard_Real &OutValue,const TCollection_MapNodePtr & n);
+		 TopTools_DataMapNodeOfDataMapOfShapeReal (const TopoDS_Shape & K,const Standard_Real & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "Args:
 	None
 Returns:
@@ -2766,7 +2766,7 @@ Returns:
 	Standard_Boolean
 
 No detailed docstring for this function.") Bind;
-		Standard_Boolean Bind (const TopoDS_Shape & K,Standard_Real &OutValue);
+		Standard_Boolean Bind (const TopoDS_Shape & K,const Standard_Real & I);
 		%feature("autodoc", "Args:
 	K(TopoDS_Shape)
 

@@ -5842,7 +5842,7 @@ Returns:
                      others will be stored as '0'
 @return marker image as array of bytes. If an instance of the class has been
 initialized with image, it will be converted to bitmap based on the parameter theAlphaValue.") GetBitMapArray;
-		Handle_TColStd_HArray1OfByte GetBitMapArray (Standard_Real &OutValue = 0.5);
+		Handle_TColStd_HArray1OfByte GetBitMapArray (const Standard_Real & theAlphaValue = 0.5);
 		%feature("autodoc", "Args:
 	None
 Returns:

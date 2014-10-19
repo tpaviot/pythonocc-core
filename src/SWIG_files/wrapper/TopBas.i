@@ -380,7 +380,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") TopBas_TestInterference;
-		 TopBas_TestInterference (Standard_Real &OutValue,Standard_Integer &OutValue,const TopAbs_Orientation Orient,const TopAbs_Orientation Trans,const TopAbs_Orientation BTrans);
+		 TopBas_TestInterference (const Standard_Real & Inters,Standard_Integer &OutValue,const TopAbs_Orientation Orient,const TopAbs_Orientation Trans,const TopAbs_Orientation BTrans);
 		%feature("autodoc", "Args:
 	I(Standard_Real)
 
@@ -388,7 +388,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Intersection;
-		void Intersection (Standard_Real &OutValue);
+		void Intersection (const Standard_Real & I);
 		%feature("autodoc", "Args:
 	B(Standard_Integer)
 

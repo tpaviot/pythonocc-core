@@ -62,7 +62,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") TColQuantity_Array1OfLength;
-		 TColQuantity_Array1OfLength (Standard_Real &OutValue,const Standard_Integer Low,const Standard_Integer Up);
+		 TColQuantity_Array1OfLength (const Quantity_Length & Item,const Standard_Integer Low,const Standard_Integer Up);
 		%feature("autodoc", "Args:
 	V(Quantity_Length)
 
@@ -70,7 +70,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Init;
-		void Init (Standard_Real &OutValue);
+		void Init (const Quantity_Length & V);
 		%feature("autodoc", "Args:
 	None
 Returns:
@@ -130,7 +130,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") SetValue;
-		void SetValue (const Standard_Integer Index,Standard_Real &OutValue);
+		void SetValue (const Standard_Integer Index,const Quantity_Length & Value);
 		%feature("autodoc", "Args:
 	Index(Standard_Integer)
 
@@ -189,7 +189,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") TColQuantity_Array2OfLength;
-		 TColQuantity_Array2OfLength (Standard_Real &OutValue,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+		 TColQuantity_Array2OfLength (const Quantity_Length & Item,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
 		%feature("autodoc", "Args:
 	V(Quantity_Length)
 
@@ -197,7 +197,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Init;
-		void Init (Standard_Real &OutValue);
+		void Init (const Quantity_Length & V);
 		%feature("autodoc", "Args:
 	None
 Returns:
@@ -272,7 +272,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") SetValue;
-		void SetValue (const Standard_Integer Row,const Standard_Integer Col,Standard_Real &OutValue);
+		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Quantity_Length & Value);
 		%feature("autodoc", "Args:
 	Row(Standard_Integer)
 	Col(Standard_Integer)
@@ -329,7 +329,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") TColQuantity_HArray1OfLength;
-		 TColQuantity_HArray1OfLength (const Standard_Integer Low,const Standard_Integer Up,Standard_Real &OutValue);
+		 TColQuantity_HArray1OfLength (const Standard_Integer Low,const Standard_Integer Up,const Quantity_Length & V);
 		%feature("autodoc", "Args:
 	V(Quantity_Length)
 
@@ -337,7 +337,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Init;
-		void Init (Standard_Real &OutValue);
+		void Init (const Quantity_Length & V);
 		%feature("autodoc", "Args:
 	None
 Returns:
@@ -367,7 +367,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") SetValue;
-		void SetValue (const Standard_Integer Index,Standard_Real &OutValue);
+		void SetValue (const Standard_Integer Index,const Quantity_Length & Value);
 		%feature("autodoc", "Args:
 	Index(Standard_Integer)
 
@@ -479,7 +479,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") TColQuantity_HArray2OfLength;
-		 TColQuantity_HArray2OfLength (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,Standard_Real &OutValue);
+		 TColQuantity_HArray2OfLength (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Quantity_Length & V);
 		%feature("autodoc", "Args:
 	V(Quantity_Length)
 
@@ -487,7 +487,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") Init;
-		void Init (Standard_Real &OutValue);
+		void Init (const Quantity_Length & V);
 		%feature("autodoc", "Args:
 	None
 Returns:
@@ -539,7 +539,7 @@ Returns:
 	None
 
 No detailed docstring for this function.") SetValue;
-		void SetValue (const Standard_Integer Row,const Standard_Integer Col,Standard_Real &OutValue);
+		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Quantity_Length & Value);
 		%feature("autodoc", "Args:
 	Row(Standard_Integer)
 	Col(Standard_Integer)
