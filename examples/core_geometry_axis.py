@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-##Copyright 2009-2013 Jelle Ferina (jelleferinga@gmail.com)
+##Copyright 2009-2014 Jelle Ferina (jelleferinga@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -27,7 +27,7 @@ from OCC.Display.SimpleGui import init_display
 display, start_display, add_menu, add_function_to_menu = init_display()
 
 
-def axis(even=None):
+def axis():
     p1 = gp_Pnt(2., 3., 4.)
     d = gp_Dir(4., 5., 6.)
     a = gp_Ax3(p1, d)
@@ -52,6 +52,5 @@ def exit(event=None):
     sys.exit()
 
 if __name__ == '__main__':
-    add_menu('geometry')
-    add_function_to_menu('geometry', axis)
+    axis()
     start_display()

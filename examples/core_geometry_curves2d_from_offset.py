@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-##Copyright 2009-2013 Jelle Ferina (jelleferinga@gmail.com)
+##Copyright 2009-2014 Jelle Ferina (jelleferinga@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -18,8 +18,6 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 from __future__ import print_function
-
-import sys
 
 from OCC.gp import gp_Pnt2d
 from OCC.TColgp import TColgp_Array1OfPnt2d
@@ -41,7 +39,7 @@ def curves2d_from_offset(event=None):
     pnt2d_array.SetValue(4, gp_Pnt2d(-4, 3))
     pnt2d_array.SetValue(5, gp_Pnt2d(-3, 5))
 
-    SPL1 = Geom2dAPI_PointsToBSpline(pnt2d_array).Curve()
+    spline_1 = Geom2dAPI_PointsToBSpline(pnt2d_array).Curve()
 
     dist = 1
     offset_curve1 = Geom2d_OffsetCurve(SPL1, dist)
@@ -53,16 +51,11 @@ def curves2d_from_offset(event=None):
     result = offset_curve1.IsCN(2)
     print("Offset curve blue is C2: %r" % result2)
 
-    display.DisplayShape(SPL1)
+    display.DisplayShape(spline_1)
     display.DisplayShape(offset_curve1, color='YELLOW')
     display.DisplayShape(offset_curve2, color='BLUE', update=True)
 
 
-def exit(event=None):
-    sys.exit()
-
 if __name__ == '__main__':
-    add_menu('geometry')
-    add_function_to_menu('geometry', curves2d_from_offset)
-    add_function_to_menu('geometry', exit)
+    curves2d_from_offset()
     start_display()
