@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-##Copyright 2009-2013 Jelle Ferina (jelleferinga@gmail.com)
+##Copyright 2009-2014 Jelle Ferina (jelleferinga@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -19,8 +19,6 @@
 
 from __future__ import print_function
 
-import sys
-
 from OCC.gp import gp_Pnt, gp_XOY
 from OCC.GeomAPI import GeomAPI_ProjectPointOnCurve
 from OCC.Geom import Geom_Circle
@@ -29,7 +27,7 @@ from OCC.Display.SimpleGui import init_display
 display, start_display, add_menu, add_function_to_menu = init_display()
 
 
-def project_point_on_curve(event=None):
+def project_point_on_curve():
     '''
     '''
     point_to_project = gp_Pnt(1., 2., 3.)
@@ -64,10 +62,6 @@ def project_point_on_curve(event=None):
             display.DisplayMessage(Q, pstring)
 
 
-def exit(event=None):
-    sys.exit()
-
 if __name__ == '__main__':
-    add_menu('geometry')
-    add_function_to_menu('geometry', project_point_on_curve)
+    project_point_on_curve()
     start_display()

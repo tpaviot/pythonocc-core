@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-##Copyright 2009-2013 Jelle Ferina (jelleferinga@gmail.com)
+##Copyright 2009-2014 Jelle Ferina (jelleferinga@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -19,8 +19,6 @@
 
 from __future__ import print_function
 
-import sys
-
 from OCC.gp import gp_Pln, gp_XOY, gp_Ax3, gp_YOZ, gp_Elips
 from OCC.IntAna import IntAna_IntConicQuad
 from OCC.Precision import precision_Angular, precision_Confusion
@@ -31,7 +29,7 @@ from OCC.Display.SimpleGui import init_display
 display, start_display, add_menu, add_function_to_menu = init_display()
 
 
-def points_from_intersection(event=None):
+def points_from_intersection():
     '''
     @param display:
     '''
@@ -60,10 +58,6 @@ def points_from_intersection(event=None):
                 display.DisplayMessage(P, pstring)
 
 
-def exit(event=None):
-    sys.exit()
-
 if __name__ == '__main__':
-    add_menu('geometry')
-    add_function_to_menu('geometry', points_from_intersection)
+    points_from_intersection()
     start_display()

@@ -1,4 +1,4 @@
-##Copyright 2009-2013 Jelle Ferina (jelleferinga@gmail.com)
+##Copyright 2009-2014 Jelle Ferina (jelleferinga@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -15,9 +15,9 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from OCC.BRepBuilderAPI import BRepBuilderAPI_MakeEdge,\
-                               BRepBuilderAPI_MakeVertex,\
-                               BRepBuilderAPI_MakeWire
+from OCC.BRepBuilderAPI import (BRepBuilderAPI_MakeEdge,
+                                BRepBuilderAPI_MakeVertex,
+                                BRepBuilderAPI_MakeWire)
 from OCC.BRepFill import BRepFill_Filling
 from OCC.GeomAbs import GeomAbs_C0
 from OCC.GeomAPI import GeomAPI_PointsToBSpline

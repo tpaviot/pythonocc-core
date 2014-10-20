@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-##Copyright 2009-2013 Jelle Ferina (jelleferinga@gmail.com)
+##Copyright 2009-2014 Jelle Ferina (jelleferinga@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -19,16 +19,15 @@
 
 from __future__ import print_function
 
-import sys
-
 from OCC.gp import gp_Pnt2d
 from OCC.Geom2dAPI import Geom2dAPI_Interpolate, Geom2dAPI_PointsToBSpline
 from OCC.TColgp import TColgp_HArray1OfPnt2d, TColgp_Array1OfPnt2d
+
 from OCC.Display.SimpleGui import init_display
 display, start_display, add_menu, add_function_to_menu = init_display()
 
 
-def bspline(event=None):
+def bspline():
     # the first bspline
     array = TColgp_Array1OfPnt2d(1, 5)
     array.SetValue(1, gp_Pnt2d(0, 0))
@@ -62,25 +61,16 @@ def bspline(event=None):
     bspline_3 = anInterpolation2.Curve()
 
     for j in range(array.Lower(), array.Upper()+1):
-        P = array.Value(j)
-        display.DisplayShape(P, update=False)
+        p = array.Value(j)
+        display.DisplayShape(p, update=False)
     for j in range(harray.Lower(), harray.Upper()+1):
-        P = harray.Value(j)
-        display.DisplayShape(P, update=False)
-    #for j in range(harray2.Lower(), harray2.Upper()+1):
-    #    P = harray2.Value(j)
-    #    display.DisplayShape(P, update=False)
+        p = harray.Value(j)
+        display.DisplayShape(p, update=False)
 
     display.DisplayShape(bspline_1, update=False)
     display.DisplayShape(bspline_2, update=False, color='GREEN')
     display.DisplayShape(bspline_3, update=True, color='BLUE')
 
-
-def exit(event=None):
-    sys.exit()
-
 if __name__ == '__main__':
-    add_menu('geometry')
-    add_function_to_menu('geometry', bspline)
-    add_function_to_menu('geometry', exit)
+    bspline()
     start_display()

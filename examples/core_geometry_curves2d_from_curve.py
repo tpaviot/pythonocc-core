@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-##Copyright 2009-2013 Jelle Ferina (jelleferinga@gmail.com)
+##Copyright 2009-2014 Jelle Ferina (jelleferinga@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -19,8 +19,6 @@
 
 from __future__ import print_function
 
-import sys
-
 from OCC.gp import gp_OX2d
 from OCC.GCE2d import GCE2d_MakeEllipse
 from OCC.Geom2d import Geom2d_TrimmedCurve
@@ -31,7 +29,7 @@ from OCC.Display.SimpleGui import init_display
 display, start_display, add_menu, add_function_to_menu = init_display()
 
 
-def curves2d_from_curves(event=None):
+def curves2d_from_curves():
     major, minor = 12, 4
     axis = gp_OX2d()
     ellipse = GCE2d_MakeEllipse(axis, major, minor).Value()
@@ -41,11 +39,6 @@ def curves2d_from_curves(event=None):
     display.DisplayShape(bspline, update=True)
 
 
-def exit(event=None):
-    sys.exit()
-
 if __name__ == '__main__':
-    add_menu('geometry')
-    add_function_to_menu('geometry', curves2d_from_curves)
-    add_function_to_menu('geometry', exit)
+    curves2d_from_curves()
     start_display()
