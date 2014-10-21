@@ -23,7 +23,7 @@ try:
     import wx
 except ImportError:
     raise ImportError('Please install wxPython.')
-import OCCViewer
+from OCC.Display import OCCViewer
 
 
 class wxBaseViewer(wx.Panel):
