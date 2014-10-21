@@ -20,9 +20,10 @@
 from __future__ import print_function
 
 import sys
-import OCCViewer
+from OCC.Display import OCCViewer
 
 from PyQt4 import QtCore, QtGui, QtOpenGL
+
 
 class point(object):
     def __init__(self, obj=None):
