@@ -24,8 +24,8 @@
 from itertools import izip
 import os
 
-import OCCViewer
-from qtDisplay import qtViewer3d
+from OCC.Display import OCCViewer
+from OCC.Display.pyqt4Display import qtViewer3d
 
 try:
     if os.environ["ETS_TOOLKIT"] == "wx":
