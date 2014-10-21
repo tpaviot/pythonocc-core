@@ -109,14 +109,14 @@ def init_display(backend_str=None):
     elif USED_BACKEND in ['pyqt4', 'pyside']:
         if USED_BACKEND == 'pyqt4':
             from PyQt4 import QtCore, QtGui, QtOpenGL
-            from pyqt4Display import qtViewer3d
+            from OCC.Display.pyqt4Display import qtViewer3d
         elif USED_BACKEND == 'pyside':
             from PySide import QtCore, QtGui, QtOpenGL
-            from pysideDisplay import qtViewer3d
+            from OCC.Display.pysideDisplay import qtViewer3d
 
         class MainWindow(QtGui.QMainWindow):
             def __init__(self, *args):
-                apply(QtGui.QMainWindow.__init__, (self,)+args)
+                QtGui.QMainWindow.__init__(self, *args)
                 self.canva = qtViewer3d(self)
                 self.setWindowTitle("pythonOCC-%s 3d viewer ('%s' backend)" % (VERSION, USED_BACKEND))
                 self.resize(1024, 768)

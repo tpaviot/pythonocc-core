@@ -24,7 +24,7 @@
 from itertools import izip
 import os
 
-import OCCViewer
+from OCC.Display import OCCViewer
 from qtDisplay import qtViewer3d
 
 try:
