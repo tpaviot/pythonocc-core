@@ -40,7 +40,7 @@ import OCC.AIS
 from OCC.TCollection import TCollection_ExtendedString, TCollection_AsciiString
 from OCC.Quantity import *
 from OCC.Prs3d import Prs3d_Arrow, Prs3d_Presentation, Prs3d_Text, Prs3d_TextAspect
-from OCC.Graphic3d import Graphic3d_NOM_SATIN
+from OCC.Graphic3d import Graphic3d_NOM_NEON_GNC
 
 
 def color(r, g, b):
@@ -356,7 +356,7 @@ class Viewer3d(BaseDriver, OCC.Visualization.Display3d):
         if material is None:
             #The default material is too shiny to show the object
             #color well, so I set it to something less reflective
-            shape_to_display.SetMaterial(Graphic3d_NOM_SATIN)
+            shape_to_display.SetMaterial(Graphic3d_NOM_NEON_GNC)
         if color:
             if isinstance(color, str):
                 color = get_color_from_name(color)
