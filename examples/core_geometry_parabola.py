@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-##Copyright 2009-2013 Jelle Ferina (jelleferinga@gmail.com)
+##Copyright 2009-2014 Jelle Ferina (jelleferinga@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -18,8 +18,6 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 from __future__ import print_function
-
-import sys
 
 from OCC.gp import gp_Pnt2d, gp_Dir2d, gp_Ax22d, gp_Parab2d
 from OCC.GCE2d import GCE2d_MakeParabola
@@ -48,11 +46,6 @@ def parabola(event=None):
     display.DisplayShape(aTrimmedCurve, update=True)
 
 
-def exit(event=None):
-    sys.exit()
-
 if __name__ == '__main__':
-    add_menu('geometry')
-    add_function_to_menu('geometry', parabola)
-    add_function_to_menu('geometry', exit)
+    parabola()
     start_display()

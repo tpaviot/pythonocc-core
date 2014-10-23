@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-##Copyright 2013 Guillaume Florent (florentsailing@gmail.com)
+##Copyright 2013-2014 Guillaume Florent (florentsailing@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##

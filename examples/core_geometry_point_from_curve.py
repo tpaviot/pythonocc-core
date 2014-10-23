@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-##Copyright 2009-2013 Jelle Ferina (jelleferinga@gmail.com)
+##Copyright 2009-2014 Jelle Ferina (jelleferinga@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -17,8 +17,6 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-import sys
-
 from OCC.gp import gp_Pnt, gp_Pnt2d, gp_OX2d
 from OCC.Geom2d import Geom2d_Circle
 from OCC.Geom2dAdaptor import Geom2dAdaptor_Curve
@@ -28,26 +26,23 @@ from OCC.Display.SimpleGui import init_display
 display, start_display, add_menu, add_function_to_menu = init_display()
 
 
-def points_from_curve(event=None):
+def points_from_curve():
     radius = 5.
     abscissa = 3.
     circle = Geom2d_Circle(gp_OX2d(), radius, True)
     gac = Geom2dAdaptor_Curve(circle.GetHandle())
     ua = GCPnts_UniformAbscissa(gac, abscissa)
-
-    aSequence = []
+    a_sequence = []
     if ua.IsDone():
         n = ua.NbPoints()
         for count in range(1, n + 1):
             p = gp_Pnt2d()
             circle.D0(ua.Parameter(count), p)
-            aSequence.append(p)
-
+            a_sequence.append(p)
     # convert analytic to bspline
     display.DisplayShape(circle, update=True)
-
     i = 0
-    for p in aSequence:
+    for p in a_sequence:
         i = i + 1
         pstring = 'P%i : parameter %f' % (i, ua.Parameter(i))
         pnt = gp_Pnt(p.X(), p.Y(), 0)
@@ -55,12 +50,6 @@ def points_from_curve(event=None):
         display.DisplayShape(pnt, update=True)
         display.DisplayMessage(pnt, pstring)
 
-
-def exit(event=None):
-    sys.exit()
-
 if __name__ == '__main__':
-    add_menu('geometry')
-    add_function_to_menu('geometry', points_from_curve)
-    add_function_to_menu('geometry', exit)
+    points_from_curve()
     start_display()
