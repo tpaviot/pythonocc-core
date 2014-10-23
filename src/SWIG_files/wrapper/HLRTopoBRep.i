@@ -243,7 +243,7 @@ class HLRTopoBRep_Data {
 		void NextEdge ();
 		%feature("autodoc", "	:rtype: TopoDS_Edge
 ") Edge;
-		const TopoDS_Edge & Edge ();
+		const TopoDS_Edge  Edge ();
 		%feature("autodoc", "	* Start an iteration on the vertices of E.
 
 	:param E:
@@ -259,7 +259,7 @@ class HLRTopoBRep_Data {
 		void NextVertex ();
 		%feature("autodoc", "	:rtype: TopoDS_Vertex
 ") Vertex;
-		const TopoDS_Vertex & Vertex ();
+		const TopoDS_Vertex  Vertex ();
 		%feature("autodoc", "	:rtype: float
 ") Parameter;
 		Standard_Real Parameter ();
@@ -314,7 +314,7 @@ class HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData : public TCollection_B
 		void Initialize (const HLRTopoBRep_DataMapOfShapeFaceData & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: HLRTopoBRep_FaceData
 ") Value;
 		const HLRTopoBRep_FaceData & Value ();
@@ -353,7 +353,7 @@ class HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData : public TCollection_Ba
 		void Initialize (const HLRTopoBRep_MapOfShapeListOfVData & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: HLRTopoBRep_ListOfVData
 ") Value;
 		const HLRTopoBRep_ListOfVData & Value ();
@@ -388,7 +388,7 @@ class HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData : public TCollection_MapNo
 		 HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData (const TopoDS_Shape & K,const HLRTopoBRep_FaceData & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: HLRTopoBRep_FaceData
 ") Value;
 		HLRTopoBRep_FaceData & Value ();
@@ -462,7 +462,7 @@ class HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData : public TCollection_MapNod
 		 HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData (const TopoDS_Shape & K,const HLRTopoBRep_ListOfVData & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: HLRTopoBRep_ListOfVData
 ") Value;
 		HLRTopoBRep_ListOfVData & Value ();
@@ -1040,7 +1040,7 @@ class HLRTopoBRep_OutLiner : public MMgt_TShared {
 		void OriginalShape (const TopoDS_Shape & OriS);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") OriginalShape;
-		TopoDS_Shape & OriginalShape ();
+		TopoDS_Shape  OriginalShape ();
 		%feature("autodoc", "	:param OutS:
 	:type OutS: TopoDS_Shape &
 	:rtype: None
@@ -1048,7 +1048,7 @@ class HLRTopoBRep_OutLiner : public MMgt_TShared {
 		void OutLinedShape (const TopoDS_Shape & OutS);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") OutLinedShape;
-		TopoDS_Shape & OutLinedShape ();
+		TopoDS_Shape  OutLinedShape ();
 		%feature("autodoc", "	:rtype: HLRTopoBRep_Data
 ") DataStructure;
 		HLRTopoBRep_Data & DataStructure ();
@@ -1135,7 +1135,7 @@ class HLRTopoBRep_VData {
 		Standard_Real Parameter ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Vertex;
-		const TopoDS_Shape & Vertex ();
+		const TopoDS_Shape  Vertex ();
 };
 
 

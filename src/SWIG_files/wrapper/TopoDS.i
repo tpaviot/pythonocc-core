@@ -51,96 +51,96 @@ class TopoDS {
 	:type S: TopoDS_Shape &
 	:rtype: TopoDS_Vertex
 ") Vertex;
-		static const TopoDS_Vertex & Vertex (const TopoDS_Shape & S);
+		static const TopoDS_Vertex  Vertex (const TopoDS_Shape & S);
 		%feature("autodoc", "	:param &:
 	:type &: TopoDS_Shape
 	:rtype: inline TopoDS_Vertex
 ") Vertex;
-		inline static TopoDS_Vertex & Vertex (TopoDS_Shape &);
+		inline static TopoDS_Vertex  Vertex (TopoDS_Shape &);
 		%feature("autodoc", "	* Casts shape S to the more specialized return type, Edge Exceptions Standard_TypeMismatch if S cannot be cast to this return type.
 
 	:param S:
 	:type S: TopoDS_Shape &
 	:rtype: TopoDS_Edge
 ") Edge;
-		static const TopoDS_Edge & Edge (const TopoDS_Shape & S);
+		static const TopoDS_Edge  Edge (const TopoDS_Shape & S);
 		%feature("autodoc", "	:param &:
 	:type &: TopoDS_Shape
 	:rtype: inline TopoDS_Edge
 ") Edge;
-		inline static TopoDS_Edge & Edge (TopoDS_Shape &);
+		inline static TopoDS_Edge  Edge (TopoDS_Shape &);
 		%feature("autodoc", "	* Casts shape S to the more specialized return type, Wire. Exceptions Standard_TypeMismatch if S cannot be cast to this return type.
 
 	:param S:
 	:type S: TopoDS_Shape &
 	:rtype: TopoDS_Wire
 ") Wire;
-		static const TopoDS_Wire & Wire (const TopoDS_Shape & S);
+		static const TopoDS_Wire  Wire (const TopoDS_Shape & S);
 		%feature("autodoc", "	:param &:
 	:type &: TopoDS_Shape
 	:rtype: inline TopoDS_Wire
 ") Wire;
-		inline static TopoDS_Wire & Wire (TopoDS_Shape &);
+		inline static TopoDS_Wire  Wire (TopoDS_Shape &);
 		%feature("autodoc", "	* Casts shape S to the more specialized return type, Face. Exceptions Standard_TypeMismatch if S cannot be cast to this return type.
 
 	:param S:
 	:type S: TopoDS_Shape &
 	:rtype: TopoDS_Face
 ") Face;
-		static const TopoDS_Face & Face (const TopoDS_Shape & S);
+		static const TopoDS_Face  Face (const TopoDS_Shape & S);
 		%feature("autodoc", "	:param &:
 	:type &: TopoDS_Shape
 	:rtype: inline TopoDS_Face
 ") Face;
-		inline static TopoDS_Face & Face (TopoDS_Shape &);
+		inline static TopoDS_Face  Face (TopoDS_Shape &);
 		%feature("autodoc", "	* Casts shape S to the more specialized return type, Shell. Exceptions Standard_TypeMismatch if S cannot be cast to this return type.
 
 	:param S:
 	:type S: TopoDS_Shape &
 	:rtype: TopoDS_Shell
 ") Shell;
-		static const TopoDS_Shell & Shell (const TopoDS_Shape & S);
+		static const TopoDS_Shell  Shell (const TopoDS_Shape & S);
 		%feature("autodoc", "	:param &:
 	:type &: TopoDS_Shape
 	:rtype: inline TopoDS_Shell
 ") Shell;
-		inline static TopoDS_Shell & Shell (TopoDS_Shape &);
+		inline static TopoDS_Shell  Shell (TopoDS_Shape &);
 		%feature("autodoc", "	* Casts shape S to the more specialized return type, Solid. Exceptions Standard_TypeMismatch if S cannot be cast to this return type.
 
 	:param S:
 	:type S: TopoDS_Shape &
 	:rtype: TopoDS_Solid
 ") Solid;
-		static const TopoDS_Solid & Solid (const TopoDS_Shape & S);
+		static const TopoDS_Solid  Solid (const TopoDS_Shape & S);
 		%feature("autodoc", "	:param &:
 	:type &: TopoDS_Shape
 	:rtype: inline TopoDS_Solid
 ") Solid;
-		inline static TopoDS_Solid & Solid (TopoDS_Shape &);
+		inline static TopoDS_Solid  Solid (TopoDS_Shape &);
 		%feature("autodoc", "	* Casts shape S to the more specialized return type, CompSolid. Exceptions Standard_TypeMismatch if S cannot be cast to this return type.
 
 	:param S:
 	:type S: TopoDS_Shape &
 	:rtype: TopoDS_CompSolid
 ") CompSolid;
-		static const TopoDS_CompSolid & CompSolid (const TopoDS_Shape & S);
+		static const TopoDS_CompSolid  CompSolid (const TopoDS_Shape & S);
 		%feature("autodoc", "	:param &:
 	:type &: TopoDS_Shape
 	:rtype: inline TopoDS_CompSolid
 ") CompSolid;
-		inline static TopoDS_CompSolid & CompSolid (TopoDS_Shape &);
+		inline static TopoDS_CompSolid  CompSolid (TopoDS_Shape &);
 		%feature("autodoc", "	* Casts shape S to the more specialized return type, Compound. Exceptions Standard_TypeMismatch if S cannot be cast to this return type.
 
 	:param S:
 	:type S: TopoDS_Shape &
 	:rtype: TopoDS_Compound
 ") Compound;
-		static const TopoDS_Compound & Compound (const TopoDS_Shape & S);
+		static const TopoDS_Compound  Compound (const TopoDS_Shape & S);
 		%feature("autodoc", "	:param &:
 	:type &: TopoDS_Shape
 	:rtype: inline TopoDS_Compound
 ") Compound;
-		inline static TopoDS_Compound & Compound (TopoDS_Shape &);
+		inline static TopoDS_Compound  Compound (TopoDS_Shape &);
 };
 
 
@@ -256,12 +256,12 @@ class TopoDS_HShape : public MMgt_TShared {
 
 	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape ();
+		const TopoDS_Shape  Shape ();
 		%feature("autodoc", "	* Exchanges the TopoDS_Shape object defining this shape for another one referencing the same underlying shape Accesses the list of shapes within the underlying shape referenced by the TopoDS_Shape object. Returns a reference to a TopoDS_Shape based on this shape. The TopoDS_Shape can be modified.
 
 	:rtype: TopoDS_Shape
 ") ChangeShape;
-		TopoDS_Shape & ChangeShape ();
+		TopoDS_Shape  ChangeShape ();
 };
 
 
@@ -362,7 +362,7 @@ class TopoDS_Iterator {
 
 	:rtype: TopoDS_Shape
 ") Value;
-		const TopoDS_Shape & Value ();
+		const TopoDS_Shape  Value ();
 };
 
 
@@ -404,7 +404,7 @@ class TopoDS_ListIteratorOfListOfShape {
 		void Next ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Value;
-		TopoDS_Shape & Value ();
+		TopoDS_Shape  Value ();
 };
 
 
@@ -434,7 +434,7 @@ class TopoDS_ListNodeOfListOfShape : public TCollection_MapNode {
 		 TopoDS_ListNodeOfListOfShape (const TopoDS_Shape & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Value;
-		TopoDS_Shape & Value ();
+		TopoDS_Shape  Value ();
 };
 
 
@@ -552,10 +552,10 @@ class TopoDS_ListOfShape {
 		void Append (TopoDS_ListOfShape & Other);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") First;
-		TopoDS_Shape & First ();
+		TopoDS_Shape  First ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Last;
-		TopoDS_Shape & Last ();
+		TopoDS_Shape  Last ();
 		%feature("autodoc", "	:rtype: None
 ") RemoveFirst;
 		void RemoveFirst ();
@@ -669,7 +669,7 @@ class TopoDS_Shape {
 		TopoDS_Shape Oriented (const TopAbs_Orientation Or);
 		%feature("autodoc", "	:rtype: Handle_TopoDS_TShape
 ") TShape;
-		const Handle_TopoDS_TShape & TShape ();
+		const Handle_TopoDS_TShape  TShape ();
 		%feature("autodoc", "	* Returns the value of the TopAbs_ShapeEnum enumeration that corresponds to this shape, for example VERTEX, EDGE, and so on. Exceptions Standard_NullObject if this shape is null.
 
 	:rtype: TopAbs_ShapeEnum

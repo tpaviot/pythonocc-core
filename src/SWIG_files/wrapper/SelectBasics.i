@@ -720,7 +720,7 @@ class SelectBasics_PickArgs {
 		inline Standard_Real DepthMax ();
 		%feature("autodoc", "	:rtype: inline  gp_Lin
 ") PickLine;
-		inline const gp_Lin & PickLine ();
+		inline const gp_Lin  PickLine ();
 		%feature("autodoc", "	* returns True if passed depth lies outside valid depth range.
 
 	:param theDepth:

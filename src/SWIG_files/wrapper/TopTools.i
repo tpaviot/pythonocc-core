@@ -222,12 +222,12 @@ class TopTools_Array1OfShape {
 	:type Index: Standard_Integer
 	:rtype: TopoDS_Shape
 ") Value;
-		const TopoDS_Shape & Value (const Standard_Integer Index);
+		const TopoDS_Shape  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: TopoDS_Shape
 ") ChangeValue;
-		TopoDS_Shape & ChangeValue (const Standard_Integer Index);
+		TopoDS_Shape  ChangeValue (const Standard_Integer Index);
 };
 
 
@@ -323,14 +323,14 @@ class TopTools_Array2OfShape {
 	:type Col: Standard_Integer
 	:rtype: TopoDS_Shape
 ") Value;
-		const TopoDS_Shape & Value (const Standard_Integer Row,const Standard_Integer Col);
+		const TopoDS_Shape  Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:param Row:
 	:type Row: Standard_Integer
 	:param Col:
 	:type Col: Standard_Integer
 	:rtype: TopoDS_Shape
 ") ChangeValue;
-		TopoDS_Shape & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
+		TopoDS_Shape  ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 };
 
 
@@ -408,7 +408,7 @@ class TopTools_DataMapIteratorOfDataMapOfIntegerShape : public TCollection_Basic
 		const Standard_Integer & Key ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Value;
-		const TopoDS_Shape & Value ();
+		const TopoDS_Shape  Value ();
 };
 
 
@@ -444,7 +444,7 @@ class TopTools_DataMapIteratorOfDataMapOfOrientedShapeInteger : public TCollecti
 		void Initialize (const TopTools_DataMapOfOrientedShapeInteger & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: int
 ") Value;
 		const Standard_Integer & Value ();
@@ -483,10 +483,10 @@ class TopTools_DataMapIteratorOfDataMapOfOrientedShapeShape : public TCollection
 		void Initialize (const TopTools_DataMapOfOrientedShapeShape & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Value;
-		const TopoDS_Shape & Value ();
+		const TopoDS_Shape  Value ();
 };
 
 
@@ -522,7 +522,7 @@ class TopTools_DataMapIteratorOfDataMapOfShapeInteger : public TCollection_Basic
 		void Initialize (const TopTools_DataMapOfShapeInteger & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: int
 ") Value;
 		const Standard_Integer & Value ();
@@ -561,7 +561,7 @@ class TopTools_DataMapIteratorOfDataMapOfShapeListOfInteger : public TCollection
 		void Initialize (const TopTools_DataMapOfShapeListOfInteger & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TColStd_ListOfInteger
 ") Value;
 		const TColStd_ListOfInteger & Value ();
@@ -600,7 +600,7 @@ class TopTools_DataMapIteratorOfDataMapOfShapeListOfShape : public TCollection_B
 		void Initialize (const TopTools_DataMapOfShapeListOfShape & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TopTools_ListOfShape
 ") Value;
 		const TopTools_ListOfShape & Value ();
@@ -639,7 +639,7 @@ class TopTools_DataMapIteratorOfDataMapOfShapeReal : public TCollection_BasicMap
 		void Initialize (const TopTools_DataMapOfShapeReal & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: float
 ") Value;
 		const Standard_Real & Value ();
@@ -678,7 +678,7 @@ class TopTools_DataMapIteratorOfDataMapOfShapeSequenceOfShape : public TCollecti
 		void Initialize (const TopTools_DataMapOfShapeSequenceOfShape & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TopTools_SequenceOfShape
 ") Value;
 		const TopTools_SequenceOfShape & Value ();
@@ -717,10 +717,10 @@ class TopTools_DataMapIteratorOfDataMapOfShapeShape : public TCollection_BasicMa
 		void Initialize (const TopTools_DataMapOfShapeShape & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Value;
-		const TopoDS_Shape & Value ();
+		const TopoDS_Shape  Value ();
 };
 
 
@@ -849,7 +849,7 @@ class TopTools_DataMapNodeOfDataMapOfIntegerShape : public TCollection_MapNode {
             };
             		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Value;
-		TopoDS_Shape & Value ();
+		TopoDS_Shape  Value ();
 };
 
 
@@ -920,7 +920,7 @@ class TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger : public TCollection_M
 		 TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger (const TopoDS_Shape & K,Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 
             %feature("autodoc","1");
             %extend {
@@ -1004,10 +1004,10 @@ class TopTools_DataMapNodeOfDataMapOfOrientedShapeShape : public TCollection_Map
 		 TopTools_DataMapNodeOfDataMapOfOrientedShapeShape (const TopoDS_Shape & K,const TopoDS_Shape & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Value;
-		TopoDS_Shape & Value ();
+		TopoDS_Shape  Value ();
 };
 
 
@@ -1078,7 +1078,7 @@ class TopTools_DataMapNodeOfDataMapOfShapeInteger : public TCollection_MapNode {
 		 TopTools_DataMapNodeOfDataMapOfShapeInteger (const TopoDS_Shape & K,Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 
             %feature("autodoc","1");
             %extend {
@@ -1162,7 +1162,7 @@ class TopTools_DataMapNodeOfDataMapOfShapeListOfInteger : public TCollection_Map
 		 TopTools_DataMapNodeOfDataMapOfShapeListOfInteger (const TopoDS_Shape & K,const TColStd_ListOfInteger & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TColStd_ListOfInteger
 ") Value;
 		TColStd_ListOfInteger & Value ();
@@ -1236,7 +1236,7 @@ class TopTools_DataMapNodeOfDataMapOfShapeListOfShape : public TCollection_MapNo
 		 TopTools_DataMapNodeOfDataMapOfShapeListOfShape (const TopoDS_Shape & K,const TopTools_ListOfShape & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TopTools_ListOfShape
 ") Value;
 		TopTools_ListOfShape & Value ();
@@ -1310,7 +1310,7 @@ class TopTools_DataMapNodeOfDataMapOfShapeReal : public TCollection_MapNode {
 		 TopTools_DataMapNodeOfDataMapOfShapeReal (const TopoDS_Shape & K,const Standard_Real & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 
             %feature("autodoc","1");
             %extend {
@@ -1394,7 +1394,7 @@ class TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape : public TCollection_M
 		 TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape (const TopoDS_Shape & K,const TopTools_SequenceOfShape & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TopTools_SequenceOfShape
 ") Value;
 		TopTools_SequenceOfShape & Value ();
@@ -1468,10 +1468,10 @@ class TopTools_DataMapNodeOfDataMapOfShapeShape : public TCollection_MapNode {
 		 TopTools_DataMapNodeOfDataMapOfShapeShape (const TopoDS_Shape & K,const TopoDS_Shape & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Value;
-		TopoDS_Shape & Value ();
+		TopoDS_Shape  Value ();
 };
 
 
@@ -1655,12 +1655,12 @@ class TopTools_DataMapOfIntegerShape : public TCollection_BasicMap {
 	:type K: Standard_Integer &
 	:rtype: TopoDS_Shape
 ") Find;
-		const TopoDS_Shape & Find (Standard_Integer &OutValue);
+		const TopoDS_Shape  Find (Standard_Integer &OutValue);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: TopoDS_Shape
 ") ChangeFind;
-		TopoDS_Shape & ChangeFind (Standard_Integer &OutValue);
+		TopoDS_Shape  ChangeFind (Standard_Integer &OutValue);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
@@ -1815,12 +1815,12 @@ class TopTools_DataMapOfOrientedShapeShape : public TCollection_BasicMap {
 	:type K: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") Find;
-		const TopoDS_Shape & Find (const TopoDS_Shape & K);
+		const TopoDS_Shape  Find (const TopoDS_Shape & K);
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") ChangeFind;
-		TopoDS_Shape & ChangeFind (const TopoDS_Shape & K);
+		TopoDS_Shape  ChangeFind (const TopoDS_Shape & K);
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
 	:rtype: Standard_Address
@@ -2295,12 +2295,12 @@ class TopTools_DataMapOfShapeShape : public TCollection_BasicMap {
 	:type K: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") Find;
-		const TopoDS_Shape & Find (const TopoDS_Shape & K);
+		const TopoDS_Shape  Find (const TopoDS_Shape & K);
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") ChangeFind;
-		TopoDS_Shape & ChangeFind (const TopoDS_Shape & K);
+		TopoDS_Shape  ChangeFind (const TopoDS_Shape & K);
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
 	:rtype: Standard_Address
@@ -2484,12 +2484,12 @@ class TopTools_HArray1OfShape : public MMgt_TShared {
 	:type Index: Standard_Integer
 	:rtype: TopoDS_Shape
 ") Value;
-		const TopoDS_Shape & Value (const Standard_Integer Index);
+		const TopoDS_Shape  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: TopoDS_Shape
 ") ChangeValue;
-		TopoDS_Shape & ChangeValue (const Standard_Integer Index);
+		TopoDS_Shape  ChangeValue (const Standard_Integer Index);
 		%feature("autodoc", "	:rtype: TopTools_Array1OfShape
 ") Array1;
 		const TopTools_Array1OfShape & Array1 ();
@@ -2617,14 +2617,14 @@ class TopTools_HArray2OfShape : public MMgt_TShared {
 	:type Col: Standard_Integer
 	:rtype: TopoDS_Shape
 ") Value;
-		const TopoDS_Shape & Value (const Standard_Integer Row,const Standard_Integer Col);
+		const TopoDS_Shape  Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:param Row:
 	:type Row: Standard_Integer
 	:param Col:
 	:type Col: Standard_Integer
 	:rtype: TopoDS_Shape
 ") ChangeValue;
-		TopoDS_Shape & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
+		TopoDS_Shape  ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:rtype: TopTools_Array2OfShape
 ") Array2;
 		const TopTools_Array2OfShape & Array2 ();
@@ -2776,12 +2776,12 @@ class TopTools_HSequenceOfShape : public MMgt_TShared {
 	:type anIndex: Standard_Integer
 	:rtype: TopoDS_Shape
 ") Value;
-		const TopoDS_Shape & Value (const Standard_Integer anIndex);
+		const TopoDS_Shape  Value (const Standard_Integer anIndex);
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: Standard_Integer
 	:rtype: TopoDS_Shape
 ") ChangeValue;
-		TopoDS_Shape & ChangeValue (const Standard_Integer anIndex);
+		TopoDS_Shape  ChangeValue (const Standard_Integer anIndex);
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: Standard_Integer
 	:rtype: None
@@ -2877,7 +2877,7 @@ class TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress : public TCollec
 		 TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress (const TopoDS_Shape & K1,const Standard_Integer K2,const Standard_Address & I,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key1;
-		TopoDS_Shape & Key1 ();
+		TopoDS_Shape  Key1 ();
 
             %feature("autodoc","1");
             %extend {
@@ -2971,7 +2971,7 @@ class TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape : public TCo
 		 TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape (const TopoDS_Shape & K1,const Standard_Integer K2,const TopTools_ListOfShape & I,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key1;
-		TopoDS_Shape & Key1 ();
+		TopoDS_Shape  Key1 ();
 
             %feature("autodoc","1");
             %extend {
@@ -3065,7 +3065,7 @@ class TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape : public TCollecti
 		 TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape (const TopoDS_Shape & K1,const Standard_Integer K2,const TopoDS_Shape & I,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key1;
-		TopoDS_Shape & Key1 ();
+		TopoDS_Shape  Key1 ();
 
             %feature("autodoc","1");
             %extend {
@@ -3084,7 +3084,7 @@ class TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape : public TCollecti
 		TCollection_MapNodePtr & Next2 ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Value;
-		TopoDS_Shape & Value ();
+		TopoDS_Shape  Value ();
 };
 
 
@@ -3195,7 +3195,7 @@ class TopTools_IndexedDataMapOfShapeAddress : public TCollection_BasicMap {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") FindKey;
-		const TopoDS_Shape & FindKey (const Standard_Integer I);
+		const TopoDS_Shape  FindKey (const Standard_Integer I);
 		%feature("autodoc", "	:param I:
 	:type I: Standard_Integer
 	:rtype: Standard_Address
@@ -3302,7 +3302,7 @@ class TopTools_IndexedDataMapOfShapeListOfShape : public TCollection_BasicMap {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") FindKey;
-		const TopoDS_Shape & FindKey (const Standard_Integer I);
+		const TopoDS_Shape  FindKey (const Standard_Integer I);
 		%feature("autodoc", "	:param I:
 	:type I: Standard_Integer
 	:rtype: TopTools_ListOfShape
@@ -3409,17 +3409,17 @@ class TopTools_IndexedDataMapOfShapeShape : public TCollection_BasicMap {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") FindKey;
-		const TopoDS_Shape & FindKey (const Standard_Integer I);
+		const TopoDS_Shape  FindKey (const Standard_Integer I);
 		%feature("autodoc", "	:param I:
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") FindFromIndex;
-		const TopoDS_Shape & FindFromIndex (const Standard_Integer I);
+		const TopoDS_Shape  FindFromIndex (const Standard_Integer I);
 		%feature("autodoc", "	:param I:
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") ChangeFromIndex;
-		TopoDS_Shape & ChangeFromIndex (const Standard_Integer I);
+		TopoDS_Shape  ChangeFromIndex (const Standard_Integer I);
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
 	:rtype: int
@@ -3429,12 +3429,12 @@ class TopTools_IndexedDataMapOfShapeShape : public TCollection_BasicMap {
 	:type K: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") FindFromKey;
-		const TopoDS_Shape & FindFromKey (const TopoDS_Shape & K);
+		const TopoDS_Shape  FindFromKey (const TopoDS_Shape & K);
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") ChangeFromKey;
-		TopoDS_Shape & ChangeFromKey (const TopoDS_Shape & K);
+		TopoDS_Shape  ChangeFromKey (const TopoDS_Shape & K);
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
 	:rtype: Standard_Address
@@ -3478,7 +3478,7 @@ class TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape : public TCollection_Ma
 		 TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape (const TopoDS_Shape & K1,const Standard_Integer K2,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key1;
-		TopoDS_Shape & Key1 ();
+		TopoDS_Shape  Key1 ();
 
             %feature("autodoc","1");
             %extend {
@@ -3567,7 +3567,7 @@ class TopTools_IndexedMapNodeOfIndexedMapOfShape : public TCollection_MapNode {
 		 TopTools_IndexedMapNodeOfIndexedMapOfShape (const TopoDS_Shape & K1,const Standard_Integer K2,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key1;
-		TopoDS_Shape & Key1 ();
+		TopoDS_Shape  Key1 ();
 
             %feature("autodoc","1");
             %extend {
@@ -3690,7 +3690,7 @@ class TopTools_IndexedMapOfOrientedShape : public TCollection_BasicMap {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") FindKey;
-		const TopoDS_Shape & FindKey (const Standard_Integer I);
+		const TopoDS_Shape  FindKey (const Standard_Integer I);
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
 	:rtype: int
@@ -3763,7 +3763,7 @@ class TopTools_IndexedMapOfShape : public TCollection_BasicMap {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") FindKey;
-		const TopoDS_Shape & FindKey (const Standard_Integer I);
+		const TopoDS_Shape  FindKey (const Standard_Integer I);
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
 	:rtype: int
@@ -3810,7 +3810,7 @@ class TopTools_ListIteratorOfListOfShape {
 		void Next ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Value;
-		TopoDS_Shape & Value ();
+		TopoDS_Shape  Value ();
 };
 
 
@@ -3840,7 +3840,7 @@ class TopTools_ListNodeOfListOfShape : public TCollection_MapNode {
 		 TopTools_ListNodeOfListOfShape (const TopoDS_Shape & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Value;
-		TopoDS_Shape & Value ();
+		TopoDS_Shape  Value ();
 };
 
 
@@ -3958,10 +3958,10 @@ class TopTools_ListOfShape {
 		void Append (TopTools_ListOfShape & Other);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") First;
-		TopoDS_Shape & First ();
+		TopoDS_Shape  First ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Last;
-		TopoDS_Shape & Last ();
+		TopoDS_Shape  Last ();
 		%feature("autodoc", "	:rtype: None
 ") RemoveFirst;
 		void RemoveFirst ();
@@ -4115,7 +4115,7 @@ class TopTools_MapIteratorOfMapOfOrientedShape : public TCollection_BasicMapIter
 		void Initialize (const TopTools_MapOfOrientedShape & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 };
 
 
@@ -4151,7 +4151,7 @@ class TopTools_MapIteratorOfMapOfShape : public TCollection_BasicMapIterator {
 		void Initialize (const TopTools_MapOfShape & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 };
 
 
@@ -4390,7 +4390,7 @@ class TopTools_SequenceNodeOfSequenceOfShape : public TCollection_SeqNode {
 		 TopTools_SequenceNodeOfSequenceOfShape (const TopoDS_Shape & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Value;
-		TopoDS_Shape & Value ();
+		TopoDS_Shape  Value ();
 };
 
 
@@ -4516,10 +4516,10 @@ class TopTools_SequenceOfShape : public TCollection_BaseSequence {
 		void InsertAfter (const Standard_Integer Index,TopTools_SequenceOfShape & S);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") First;
-		const TopoDS_Shape & First ();
+		const TopoDS_Shape  First ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Last;
-		const TopoDS_Shape & Last ();
+		const TopoDS_Shape  Last ();
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:param Sub:
@@ -4531,7 +4531,7 @@ class TopTools_SequenceOfShape : public TCollection_BaseSequence {
 	:type Index: Standard_Integer
 	:rtype: TopoDS_Shape
 ") Value;
-		const TopoDS_Shape & Value (const Standard_Integer Index);
+		const TopoDS_Shape  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:param I:
@@ -4543,7 +4543,7 @@ class TopTools_SequenceOfShape : public TCollection_BaseSequence {
 	:type Index: Standard_Integer
 	:rtype: TopoDS_Shape
 ") ChangeValue;
-		TopoDS_Shape & ChangeValue (const Standard_Integer Index);
+		TopoDS_Shape  ChangeValue (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: None
@@ -4650,7 +4650,7 @@ class TopTools_ShapeSet {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape (const Standard_Integer I);
+		const TopoDS_Shape  Shape (const Standard_Integer I);
 		%feature("autodoc", "	* Returns the index of <S>.
 
 	:param S:
@@ -4848,7 +4848,7 @@ class TopTools_StdMapNodeOfMapOfOrientedShape : public TCollection_MapNode {
 		 TopTools_StdMapNodeOfMapOfOrientedShape (const TopoDS_Shape & K,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 };
 
 
@@ -4917,7 +4917,7 @@ class TopTools_StdMapNodeOfMapOfShape : public TCollection_MapNode {
 		 TopTools_StdMapNodeOfMapOfShape (const TopoDS_Shape & K,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 };
 
 

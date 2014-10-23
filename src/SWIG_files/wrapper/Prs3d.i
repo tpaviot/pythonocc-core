@@ -1211,7 +1211,7 @@ class Prs3d_ShapeTool {
 		void NextFace ();
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") GetFace;
-		const TopoDS_Face & GetFace ();
+		const TopoDS_Face  GetFace ();
 		%feature("autodoc", "	:rtype: Bnd_Box
 ") FaceBound;
 		Bnd_Box FaceBound ();
@@ -1229,7 +1229,7 @@ class Prs3d_ShapeTool {
 		void NextCurve ();
 		%feature("autodoc", "	:rtype: TopoDS_Edge
 ") GetCurve;
-		const TopoDS_Edge & GetCurve ();
+		const TopoDS_Edge  GetCurve ();
 		%feature("autodoc", "	:rtype: Bnd_Box
 ") CurveBound;
 		Bnd_Box CurveBound ();
@@ -1250,7 +1250,7 @@ class Prs3d_ShapeTool {
 		void NextVertex ();
 		%feature("autodoc", "	:rtype: TopoDS_Vertex
 ") GetVertex;
-		const TopoDS_Vertex & GetVertex ();
+		const TopoDS_Vertex  GetVertex ();
 		%feature("autodoc", "	:rtype: bool
 ") HasSurface;
 		Standard_Boolean HasSurface ();

@@ -141,10 +141,10 @@ class Plate_D1 {
 		 Plate_D1 (const Plate_D1 & ref);
 		%feature("autodoc", "	:rtype: gp_XYZ
 ") DU;
-		const gp_XYZ & DU ();
+		const gp_XYZ  DU ();
 		%feature("autodoc", "	:rtype: gp_XYZ
 ") DV;
-		const gp_XYZ & DV ();
+		const gp_XYZ  DV ();
 };
 
 
@@ -779,7 +779,7 @@ class Plate_PinpointConstraint {
 		 Plate_PinpointConstraint (const gp_XY & point2d,const gp_XYZ & ImposedValue,const Standard_Integer iu = 0,const Standard_Integer iv = 0);
 		%feature("autodoc", "	:rtype: gp_XY
 ") Pnt2d;
-		const gp_XY & Pnt2d ();
+		const gp_XY  Pnt2d ();
 		%feature("autodoc", "	:rtype: int
 ") Idu;
 		const Standard_Integer & Idu ();
@@ -788,7 +788,7 @@ class Plate_PinpointConstraint {
 		const Standard_Integer & Idv ();
 		%feature("autodoc", "	:rtype: gp_XYZ
 ") Value;
-		const gp_XYZ & Value ();
+		const gp_XYZ  Value ();
 };
 
 

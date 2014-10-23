@@ -87,7 +87,7 @@ class BRepClass3d_DataMapIteratorOfMapOfInter : public TCollection_BasicMapItera
 		void Initialize (const BRepClass3d_MapOfInter & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: Standard_Address
 ") Value;
 		const Standard_Address & Value ();
@@ -122,7 +122,7 @@ class BRepClass3d_DataMapNodeOfMapOfInter : public TCollection_MapNode {
 		 BRepClass3d_DataMapNodeOfMapOfInter (const TopoDS_Shape & K,const Standard_Address & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: Standard_Address
 ") Value;
 		Standard_Address & Value ();
@@ -232,7 +232,7 @@ class BRepClass3d_Intersector3d {
 
 	:rtype: gp_Pnt
 ") Pnt;
-		const gp_Pnt & Pnt ();
+		const gp_Pnt  Pnt ();
 		%feature("autodoc", "	* Returns the transition of the line on the surface.
 
 	:rtype: IntCurveSurface_TransitionOnCurve
@@ -247,7 +247,7 @@ class BRepClass3d_Intersector3d {
 
 	:rtype: TopoDS_Face
 ") Face;
-		const TopoDS_Face & Face ();
+		const TopoDS_Face  Face ();
 };
 
 

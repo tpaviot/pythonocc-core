@@ -1035,10 +1035,10 @@ class ProjLib_ProjectOnPlane : public Adaptor3d_Curve {
 		void Load (const Handle_Adaptor3d_HCurve & C,const Standard_Real Tolerance,const Standard_Boolean KeepParametrization = Standard_True);
 		%feature("autodoc", "	:rtype: gp_Ax3
 ") GetPlane;
-		const gp_Ax3 & GetPlane ();
+		const gp_Ax3  GetPlane ();
 		%feature("autodoc", "	:rtype: gp_Dir
 ") GetDirection;
-		const gp_Dir & GetDirection ();
+		const gp_Dir  GetDirection ();
 		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HCurve
 ") GetCurve;
 		const Handle_Adaptor3d_HCurve & GetCurve ();
@@ -1516,19 +1516,19 @@ class ProjLib_Projector {
 		void SetPeriodic ();
 		%feature("autodoc", "	:rtype: gp_Lin2d
 ") Line;
-		const gp_Lin2d & Line ();
+		const gp_Lin2d  Line ();
 		%feature("autodoc", "	:rtype: gp_Circ2d
 ") Circle;
-		const gp_Circ2d & Circle ();
+		const gp_Circ2d  Circle ();
 		%feature("autodoc", "	:rtype: gp_Elips2d
 ") Ellipse;
-		const gp_Elips2d & Ellipse ();
+		const gp_Elips2d  Ellipse ();
 		%feature("autodoc", "	:rtype: gp_Hypr2d
 ") Hyperbola;
-		const gp_Hypr2d & Hyperbola ();
+		const gp_Hypr2d  Hyperbola ();
 		%feature("autodoc", "	:rtype: gp_Parab2d
 ") Parabola;
-		const gp_Parab2d & Parabola ();
+		const gp_Parab2d  Parabola ();
 		%feature("autodoc", "	:rtype: Handle_Geom2d_BezierCurve
 ") Bezier;
 		Handle_Geom2d_BezierCurve Bezier ();

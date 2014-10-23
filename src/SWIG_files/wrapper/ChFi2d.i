@@ -141,7 +141,7 @@ class ChFi2d_AnaFilletAlgo {
 	:type e2: TopoDS_Edge &
 	:rtype: TopoDS_Edge
 ") Result;
-		const TopoDS_Edge & Result (TopoDS_Edge & e1,TopoDS_Edge & e2);
+		const TopoDS_Edge  Result (TopoDS_Edge & e1,TopoDS_Edge & e2);
 };
 
 
@@ -307,14 +307,14 @@ class ChFi2d_Builder {
 	:type E: TopoDS_Edge &
 	:rtype: TopoDS_Edge
 ") DescendantEdge;
-		const TopoDS_Edge & DescendantEdge (const TopoDS_Edge & E);
+		const TopoDS_Edge  DescendantEdge (const TopoDS_Edge & E);
 		%feature("autodoc", "	* Returns the parent edge of <E> Warning: If <E>is a basis edge, the returned edge would be equal to <E>
 
 	:param E:
 	:type E: TopoDS_Edge &
 	:rtype: TopoDS_Edge
 ") BasisEdge;
-		const TopoDS_Edge & BasisEdge (const TopoDS_Edge & E);
+		const TopoDS_Edge  BasisEdge (const TopoDS_Edge & E);
 		%feature("autodoc", "	:rtype: ChFi2d_ConstructionError
 ") Status;
 		ChFi2d_ConstructionError Status ();

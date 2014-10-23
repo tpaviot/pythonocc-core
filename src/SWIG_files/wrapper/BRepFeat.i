@@ -462,12 +462,12 @@ class BRepFeat_Gluer : public BRepBuilderAPI_MakeShape {
 
 	:rtype: TopoDS_Shape
 ") BasisShape;
-		const TopoDS_Shape & BasisShape ();
+		const TopoDS_Shape  BasisShape ();
 		%feature("autodoc", "	* Returns the resulting compound shape.
 
 	:rtype: TopoDS_Shape
 ") GluedShape;
-		const TopoDS_Shape & GluedShape ();
+		const TopoDS_Shape  GluedShape ();
 		%feature("autodoc", "	* This is called by Shape(). It does nothing but may be redefined.
 
 	:rtype: void

@@ -339,7 +339,7 @@ class BRepMesh_Circ {
 		void SetRadius (const Standard_Real rad);
 		%feature("autodoc", "	:rtype: gp_XY
 ") Location;
-		const gp_XY & Location ();
+		const gp_XY  Location ();
 		%feature("autodoc", "	:rtype: float
 ") Radius;
 		const Standard_Real & Radius ();
@@ -722,7 +722,7 @@ class BRepMesh_DataMapIteratorOfDataMapOfFaceAttribute : public TCollection_Basi
 		void Initialize (const BRepMesh_DataMapOfFaceAttribute & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") Key;
-		const TopoDS_Face & Key ();
+		const TopoDS_Face  Key ();
 		%feature("autodoc", "	:rtype: Handle_BRepMesh_FaceAttribute
 ") Value;
 		const Handle_BRepMesh_FaceAttribute & Value ();
@@ -842,7 +842,7 @@ class BRepMesh_DataMapIteratorOfDataMapOfIntegerPnt : public TCollection_BasicMa
 		const Standard_Integer & Key ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") Value;
-		const gp_Pnt & Value ();
+		const gp_Pnt  Value ();
 };
 
 
@@ -878,7 +878,7 @@ class BRepMesh_DataMapIteratorOfDataMapOfShapePairOfPolygon : public TCollection
 		void Initialize (const BRepMesh_DataMapOfShapePairOfPolygon & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: BRepMesh_PairOfPolygon
 ") Value;
 		const BRepMesh_PairOfPolygon & Value ();
@@ -917,7 +917,7 @@ class BRepMesh_DataMapIteratorOfDataMapOfShapeReal : public TCollection_BasicMap
 		void Initialize (const BRepMesh_DataMapOfShapeReal & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: float
 ") Value;
 		const Standard_Real & Value ();
@@ -956,7 +956,7 @@ class BRepMesh_DataMapIteratorOfDataMapOfVertexInteger : public TCollection_Basi
 		void Initialize (const BRepMesh_DataMapOfVertexInteger & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Vertex
 ") Key;
-		const TopoDS_Vertex & Key ();
+		const TopoDS_Vertex  Key ();
 		%feature("autodoc", "	:rtype: int
 ") Value;
 		const Standard_Integer & Value ();
@@ -991,7 +991,7 @@ class BRepMesh_DataMapNodeOfDataMapOfFaceAttribute : public TCollection_MapNode 
 		 BRepMesh_DataMapNodeOfDataMapOfFaceAttribute (const TopoDS_Face & K,const Handle_BRepMesh_FaceAttribute & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") Key;
-		TopoDS_Face & Key ();
+		TopoDS_Face  Key ();
 		%feature("autodoc", "	:rtype: Handle_BRepMesh_FaceAttribute
 ") Value;
 		Handle_BRepMesh_FaceAttribute & Value ();
@@ -1246,7 +1246,7 @@ class BRepMesh_DataMapNodeOfDataMapOfIntegerPnt : public TCollection_MapNode {
             };
             		%feature("autodoc", "	:rtype: gp_Pnt
 ") Value;
-		gp_Pnt & Value ();
+		gp_Pnt  Value ();
 };
 
 
@@ -1317,7 +1317,7 @@ class BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon : public TCollection_Map
 		 BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon (const TopoDS_Shape & K,const BRepMesh_PairOfPolygon & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: BRepMesh_PairOfPolygon
 ") Value;
 		BRepMesh_PairOfPolygon & Value ();
@@ -1391,7 +1391,7 @@ class BRepMesh_DataMapNodeOfDataMapOfShapeReal : public TCollection_MapNode {
 		 BRepMesh_DataMapNodeOfDataMapOfShapeReal (const TopoDS_Shape & K,const Standard_Real & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 
             %feature("autodoc","1");
             %extend {
@@ -1475,7 +1475,7 @@ class BRepMesh_DataMapNodeOfDataMapOfVertexInteger : public TCollection_MapNode 
 		 BRepMesh_DataMapNodeOfDataMapOfVertexInteger (const TopoDS_Vertex & K,Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Vertex
 ") Key;
-		TopoDS_Vertex & Key ();
+		TopoDS_Vertex  Key ();
 
             %feature("autodoc","1");
             %extend {
@@ -1832,12 +1832,12 @@ class BRepMesh_DataMapOfIntegerPnt : public TCollection_BasicMap {
 	:type K: Standard_Integer &
 	:rtype: gp_Pnt
 ") Find;
-		const gp_Pnt & Find (Standard_Integer &OutValue);
+		const gp_Pnt  Find (Standard_Integer &OutValue);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: gp_Pnt
 ") ChangeFind;
-		gp_Pnt & ChangeFind (Standard_Integer &OutValue);
+		gp_Pnt  ChangeFind (Standard_Integer &OutValue);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
@@ -2544,7 +2544,7 @@ class BRepMesh_DiscretRoot : public Standard_Transient {
 		void SetShape (const TopoDS_Shape & theShape);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape ();
+		const TopoDS_Shape  Shape ();
 		%feature("autodoc", "	* Compute triangulation for set shape.
 
 	:rtype: void
@@ -3071,7 +3071,7 @@ class BRepMesh_FastDiscret : public MMgt_TShared {
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt
 ") Pnt;
-		const gp_Pnt & Pnt (const Standard_Integer Index);
+		const gp_Pnt  Pnt (const Standard_Integer Index);
 		%feature("autodoc", "	* Gives the list of indices of the vertices
 
 	:param Indices:
@@ -3104,7 +3104,7 @@ class BRepMesh_FastDiscret : public MMgt_TShared {
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt
 ") Point3d;
-		const gp_Pnt & Point3d (const Standard_Integer Index);
+		const gp_Pnt  Point3d (const Standard_Integer Index);
 		%feature("autodoc", "	* returns the deflection value.
 
 	:rtype: float
@@ -3281,7 +3281,7 @@ class BRepMesh_FastDiscretFace : public MMgt_TShared {
 	:type theIndex: Standard_Integer
 	:rtype: gp_Pnt
 ") Pnt;
-		const gp_Pnt & Pnt (const Standard_Integer theIndex);
+		const gp_Pnt  Pnt (const Standard_Integer theIndex);
 };
 
 
@@ -4452,7 +4452,7 @@ class BRepMesh_ListIteratorOfListOfXY {
 		void Next ();
 		%feature("autodoc", "	:rtype: gp_XY
 ") Value;
-		gp_XY & Value ();
+		gp_XY  Value ();
 };
 
 
@@ -4551,7 +4551,7 @@ class BRepMesh_ListNodeOfListOfXY : public TCollection_MapNode {
 		 BRepMesh_ListNodeOfListOfXY (const gp_XY & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: gp_XY
 ") Value;
-		gp_XY & Value ();
+		gp_XY  Value ();
 };
 
 
@@ -4787,10 +4787,10 @@ class BRepMesh_ListOfXY {
 		void Append (BRepMesh_ListOfXY & Other);
 		%feature("autodoc", "	:rtype: gp_XY
 ") First;
-		gp_XY & First ();
+		gp_XY  First ();
 		%feature("autodoc", "	:rtype: gp_XY
 ") Last;
-		gp_XY & Last ();
+		gp_XY  Last ();
 		%feature("autodoc", "	:rtype: None
 ") RemoveFirst;
 		void RemoveFirst ();
@@ -5131,7 +5131,7 @@ class BRepMesh_ShapeTool {
 		void NextFace ();
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") CurrentFace;
-		const TopoDS_Face & CurrentFace ();
+		const TopoDS_Face  CurrentFace ();
 		%feature("autodoc", "	:param F:
 	:type F: TopoDS_Face &
 	:rtype: None
@@ -5145,7 +5145,7 @@ class BRepMesh_ShapeTool {
 		void NextEdge ();
 		%feature("autodoc", "	:rtype: TopoDS_Edge
 ") CurrentEdge;
-		const TopoDS_Edge & CurrentEdge ();
+		const TopoDS_Edge  CurrentEdge ();
 		%feature("autodoc", "	:param E:
 	:type E: TopoDS_Edge &
 	:rtype: None
@@ -5159,7 +5159,7 @@ class BRepMesh_ShapeTool {
 		void NextInternalVertex ();
 		%feature("autodoc", "	:rtype: TopoDS_Vertex
 ") CurrentInternalVertex;
-		const TopoDS_Vertex & CurrentInternalVertex ();
+		const TopoDS_Vertex  CurrentInternalVertex ();
 		%feature("autodoc", "	:param F:
 	:type F: TopoDS_Face &
 	:rtype: TopAbs_Orientation
@@ -5440,7 +5440,7 @@ class BRepMesh_Vertex {
 		void Initialize (const gp_XY & UV,const Standard_Integer Locat3d,const BRepMesh_DegreeOfFreedom Move);
 		%feature("autodoc", "	:rtype: gp_XY
 ") Coord;
-		const gp_XY & Coord ();
+		const gp_XY  Coord ();
 		%feature("autodoc", "	:rtype: int
 ") Location3d;
 		Standard_Integer Location3d ();

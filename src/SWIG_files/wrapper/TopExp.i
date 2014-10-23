@@ -193,7 +193,7 @@ class TopExp_Explorer {
 
 	:rtype: TopoDS_Shape
 ") Current;
-		const TopoDS_Shape & Current ();
+		const TopoDS_Shape  Current ();
 		%feature("autodoc", "	* Reinitialize the exploration with the original arguments.
 
 	:rtype: None
@@ -253,7 +253,7 @@ class TopExp_StackIteratorOfStackOfIterator {
 		void Next ();
 		%feature("autodoc", "	:rtype: TopoDS_Iterator
 ") Value;
-		const TopoDS_Iterator & Value ();
+		const TopoDS_Iterator  Value ();
 };
 
 
@@ -283,7 +283,7 @@ class TopExp_StackNodeOfStackOfIterator : public TCollection_MapNode {
 		 TopExp_StackNodeOfStackOfIterator (const TopoDS_Iterator & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Iterator
 ") Value;
-		TopoDS_Iterator & Value ();
+		TopoDS_Iterator  Value ();
 };
 
 
@@ -364,7 +364,7 @@ class TopExp_StackOfIterator {
 		Standard_Integer Depth ();
 		%feature("autodoc", "	:rtype: TopoDS_Iterator
 ") Top;
-		const TopoDS_Iterator & Top ();
+		const TopoDS_Iterator  Top ();
 		%feature("autodoc", "	:param I:
 	:type I: TopoDS_Iterator &
 	:rtype: None
@@ -378,7 +378,7 @@ class TopExp_StackOfIterator {
 		void Clear ();
 		%feature("autodoc", "	:rtype: TopoDS_Iterator
 ") ChangeTop;
-		TopoDS_Iterator & ChangeTop ();
+		TopoDS_Iterator  ChangeTop ();
 };
 
 

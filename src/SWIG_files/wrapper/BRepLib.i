@@ -428,7 +428,7 @@ class BRepLib_FuseEdges {
 
 	:rtype: TopoDS_Shape
 ") Shape;
-		TopoDS_Shape & Shape ();
+		TopoDS_Shape  Shape ();
 		%feature("autodoc", "	* returns the number of vertices candidate to be removed
 
 	:rtype: int
@@ -466,7 +466,7 @@ class BRepLib_MakeShape : public BRepLib_Command {
 		void Build ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape ();
+		const TopoDS_Shape  Shape ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Shape;
 		 operator TopoDS_Shape ();
@@ -970,7 +970,7 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 		BRepLib_EdgeError Error ();
 		%feature("autodoc", "	:rtype: TopoDS_Edge
 ") Edge;
-		const TopoDS_Edge & Edge ();
+		const TopoDS_Edge  Edge ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Edge;
 		 operator TopoDS_Edge ();
@@ -978,12 +978,12 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 
 	:rtype: TopoDS_Vertex
 ") Vertex1;
-		const TopoDS_Vertex & Vertex1 ();
+		const TopoDS_Vertex  Vertex1 ();
 		%feature("autodoc", "	* Returns the second vertex of the edge. May be Null.
 
 	:rtype: TopoDS_Vertex
 ") Vertex2;
-		const TopoDS_Vertex & Vertex2 ();
+		const TopoDS_Vertex  Vertex2 ();
 };
 
 
@@ -1301,7 +1301,7 @@ class BRepLib_MakeEdge2d : public BRepLib_MakeShape {
 		BRepLib_EdgeError Error ();
 		%feature("autodoc", "	:rtype: TopoDS_Edge
 ") Edge;
-		const TopoDS_Edge & Edge ();
+		const TopoDS_Edge  Edge ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Edge;
 		 operator TopoDS_Edge ();
@@ -1309,12 +1309,12 @@ class BRepLib_MakeEdge2d : public BRepLib_MakeShape {
 
 	:rtype: TopoDS_Vertex
 ") Vertex1;
-		const TopoDS_Vertex & Vertex1 ();
+		const TopoDS_Vertex  Vertex1 ();
 		%feature("autodoc", "	* Returns the second vertex of the edge. May be Null.
 
 	:rtype: TopoDS_Vertex
 ") Vertex2;
-		const TopoDS_Vertex & Vertex2 ();
+		const TopoDS_Vertex  Vertex2 ();
 };
 
 
@@ -1616,7 +1616,7 @@ class BRepLib_MakeFace : public BRepLib_MakeShape {
 
 	:rtype: TopoDS_Face
 ") Face;
-		const TopoDS_Face & Face ();
+		const TopoDS_Face  Face ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Face;
 		 operator TopoDS_Face ();
@@ -1727,21 +1727,21 @@ class BRepLib_MakePolygon : public BRepLib_MakeShape {
 		void Close ();
 		%feature("autodoc", "	:rtype: TopoDS_Vertex
 ") FirstVertex;
-		const TopoDS_Vertex & FirstVertex ();
+		const TopoDS_Vertex  FirstVertex ();
 		%feature("autodoc", "	:rtype: TopoDS_Vertex
 ") LastVertex;
-		const TopoDS_Vertex & LastVertex ();
+		const TopoDS_Vertex  LastVertex ();
 		%feature("autodoc", "	* Returns the last edge added to the polygon.
 
 	:rtype: TopoDS_Edge
 ") Edge;
-		const TopoDS_Edge & Edge ();
+		const TopoDS_Edge  Edge ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Edge;
 		 operator TopoDS_Edge ();
 		%feature("autodoc", "	:rtype: TopoDS_Wire
 ") Wire;
-		const TopoDS_Wire & Wire ();
+		const TopoDS_Wire  Wire ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Wire;
 		 operator TopoDS_Wire ();
@@ -1816,7 +1816,7 @@ class BRepLib_MakeShell : public BRepLib_MakeShape {
 
 	:rtype: TopoDS_Shell
 ") Shell;
-		const TopoDS_Shell & Shell ();
+		const TopoDS_Shell  Shell ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Shell;
 		 operator TopoDS_Shell ();
@@ -1906,7 +1906,7 @@ class BRepLib_MakeSolid : public BRepLib_MakeShape {
 
 	:rtype: TopoDS_Solid
 ") Solid;
-		const TopoDS_Solid & Solid ();
+		const TopoDS_Solid  Solid ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Solid;
 		 operator TopoDS_Solid ();
@@ -1944,7 +1944,7 @@ class BRepLib_MakeVertex : public BRepLib_MakeShape {
 		 BRepLib_MakeVertex (const gp_Pnt & P);
 		%feature("autodoc", "	:rtype: TopoDS_Vertex
 ") Vertex;
-		const TopoDS_Vertex & Vertex ();
+		const TopoDS_Vertex  Vertex ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Vertex;
 		 operator TopoDS_Vertex ();
@@ -2057,7 +2057,7 @@ class BRepLib_MakeWire : public BRepLib_MakeShape {
 
 	:rtype: TopoDS_Wire
 ") Wire;
-		const TopoDS_Wire & Wire ();
+		const TopoDS_Wire  Wire ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Wire;
 		 operator TopoDS_Wire ();
@@ -2065,12 +2065,12 @@ class BRepLib_MakeWire : public BRepLib_MakeShape {
 
 	:rtype: TopoDS_Edge
 ") Edge;
-		const TopoDS_Edge & Edge ();
+		const TopoDS_Edge  Edge ();
 		%feature("autodoc", "	* Returns the last connecting vertex.
 
 	:rtype: TopoDS_Vertex
 ") Vertex;
-		const TopoDS_Vertex & Vertex ();
+		const TopoDS_Vertex  Vertex ();
 };
 
 

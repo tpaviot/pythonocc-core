@@ -307,17 +307,17 @@ class GProp_PrincipalProps {
 
 	:rtype: gp_Vec
 ") FirstAxisOfInertia;
-		const gp_Vec & FirstAxisOfInertia ();
+		const gp_Vec  FirstAxisOfInertia ();
 		%feature("autodoc", "	* returns the second axis of inertia. if the system has a point of symmetry or an axis of symmetry the second and the third axis of symmetry are undefined.
 
 	:rtype: gp_Vec
 ") SecondAxisOfInertia;
-		const gp_Vec & SecondAxisOfInertia ();
+		const gp_Vec  SecondAxisOfInertia ();
 		%feature("autodoc", "	* returns the third axis of inertia. This and the above functions return the first, second or third eigen vector of the matrix of inertia of the current system. The first, second and third principal axis of inertia pass through the center of mass of the current system. They are respectively parallel to these three eigen vectors. Note that: - If the current system has an axis of symmetry, any axis is an axis of principal inertia if it passes through the center of mass of the system, and runs parallel to a linear combination of the two eigen vectors of the matrix of inertia, corresponding to the two eigen values which are equal. If the current system has a center of symmetry, any axis passing through the center of mass of the system is an axis of principal inertia. Use the functions HasSymmetryAxis and HasSymmetryPoint to check these particular cases, where the returned eigen vectors define an infinity of principal axis of inertia. - The Moments function can be used to know which of the three eigen vectors corresponds to the two eigen values which are equal. if the system has a point of symmetry or an axis of symmetry the second and the third axis of symmetry are undefined.
 
 	:rtype: gp_Vec
 ") ThirdAxisOfInertia;
-		const gp_Vec & ThirdAxisOfInertia ();
+		const gp_Vec  ThirdAxisOfInertia ();
 		%feature("autodoc", "	* Returns the principal radii of gyration Rxx, Ryy and Rzz are the radii of gyration of the current system about its three principal axes of inertia. Note that: - If the current system has an axis of symmetry, two of the three values Rxx, Ryy and Rzz are equal. - If the current system has a center of symmetry, Rxx, Ryy and Rzz are equal.
 
 	:param Rxx:

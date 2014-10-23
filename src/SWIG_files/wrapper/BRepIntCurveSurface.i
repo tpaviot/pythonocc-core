@@ -90,7 +90,7 @@ class BRepIntCurveSurface_Inter {
 
 	:rtype: gp_Pnt
 ") Pnt;
-		const gp_Pnt & Pnt ();
+		const gp_Pnt  Pnt ();
 		%feature("autodoc", "	* returns the U parameter of the current point on the current face.
 
 	:rtype: float
@@ -120,7 +120,7 @@ class BRepIntCurveSurface_Inter {
 
 	:rtype: TopoDS_Face
 ") Face;
-		const TopoDS_Face & Face ();
+		const TopoDS_Face  Face ();
 };
 
 

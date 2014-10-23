@@ -616,7 +616,7 @@ class GeomAPI_IntCS {
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt
 ") Point;
-		const gp_Pnt & Point (const Standard_Integer Index);
+		const gp_Pnt  Point (const Standard_Integer Index);
 		%feature("autodoc", "	* Returns parameter W on the curve and (parameters U,V) on the surface of the computed intersection point of index Index in case of cross intersection. Exceptions StdFail_NotDone if intersection algorithm fails or is not initialized. Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of computed intersection points.
 
 	:param Index:

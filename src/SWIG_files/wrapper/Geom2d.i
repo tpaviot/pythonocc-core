@@ -1248,7 +1248,7 @@ class Geom2d_Conic : public Geom2d_Curve {
 
 	:rtype: gp_Ax22d
 ") Position;
-		const gp_Ax22d & Position ();
+		const gp_Ax22d  Position ();
 		%feature("autodoc", "	* Reverses the direction of parameterization of <self>. The local coordinate system of the conic is modified.
 
 	:rtype: None
@@ -1517,7 +1517,7 @@ class Geom2d_Line : public Geom2d_Curve {
 
 	:rtype: gp_Dir2d
 ") Direction;
-		const gp_Dir2d & Direction ();
+		const gp_Dir2d  Direction ();
 		%feature("autodoc", "	* Changes the 'Location' point (origin) of the line.
 
 	:param P:
@@ -1529,7 +1529,7 @@ class Geom2d_Line : public Geom2d_Curve {
 
 	:rtype: gp_Pnt2d
 ") Location;
-		const gp_Pnt2d & Location ();
+		const gp_Pnt2d  Location ();
 		%feature("autodoc", "	* Changes the 'Location' and a the 'Direction' of <self>.
 
 	:param A:
@@ -1539,7 +1539,7 @@ class Geom2d_Line : public Geom2d_Curve {
 		void SetPosition (const gp_Ax2d & A);
 		%feature("autodoc", "	:rtype: gp_Ax2d
 ") Position;
-		const gp_Ax2d & Position ();
+		const gp_Ax2d  Position ();
 		%feature("autodoc", "	* Returns non persistent line from gp with the same geometric properties as <self>
 
 	:rtype: gp_Lin2d

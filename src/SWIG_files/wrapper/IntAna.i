@@ -295,7 +295,7 @@ class IntAna_Int3Pln {
 
 	:rtype: gp_Pnt
 ") Value;
-		const gp_Pnt & Value ();
+		const gp_Pnt  Value ();
 };
 
 
@@ -563,7 +563,7 @@ class IntAna_IntConicQuad {
 	:type N: Standard_Integer
 	:rtype: gp_Pnt
 ") Point;
-		const gp_Pnt & Point (const Standard_Integer N);
+		const gp_Pnt  Point (const Standard_Integer N);
 		%feature("autodoc", "	* Returns the parameter on the line of the intersection point of range N.
 
 	:param N:
@@ -628,7 +628,7 @@ class IntAna_IntLinTorus {
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt
 ") Value;
-		const gp_Pnt & Value (const Standard_Integer Index);
+		const gp_Pnt  Value (const Standard_Integer Index);
 		%feature("autodoc", "	* Returns the parameter on the line of the intersection point of range Index.
 
 	:param Index:
@@ -749,7 +749,7 @@ class IntAna_IntQuadQuad {
 	:type N: Standard_Integer
 	:rtype: gp_Pnt
 ") Point;
-		const gp_Pnt & Point (const Standard_Integer N);
+		const gp_Pnt  Point (const Standard_Integer N);
 		%feature("autodoc", "	* Returns the paramaters on the 'explicit quadric' (i.e the cylinder or the cone, the first argument given to the constructor) of the point of range N.
 
 	:param N:
@@ -1451,7 +1451,7 @@ class IntAna_QuadQuadGeo {
 		Standard_Boolean HasCommonGen ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") PChar;
-		const gp_Pnt & PChar ();
+		const gp_Pnt  PChar ();
 };
 
 

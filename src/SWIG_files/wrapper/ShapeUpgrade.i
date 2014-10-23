@@ -741,7 +741,7 @@ class ShapeUpgrade_UnifySameDomain : public MMgt_TShared {
 
 	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape ();
+		const TopoDS_Shape  Shape ();
 		%feature("autodoc", "	:param aShape:
 	:type aShape: TopoDS_Shape &
 	:rtype: TopoDS_Shape
@@ -2330,7 +2330,7 @@ class ShapeUpgrade_WireDivide : public ShapeUpgrade_Tool {
 
 	:rtype: TopoDS_Wire
 ") Wire;
-		const TopoDS_Wire & Wire ();
+		const TopoDS_Wire  Wire ();
 		%feature("autodoc", "	* Queries status of last call to Perform() OK - no edges were splitted, wire left untouched DONE1 - some edges were splitted FAIL1 - some edges have no 3d curve (skipped) FAIL2 - some edges have no pcurve (skipped)
 
 	:param status:

@@ -664,13 +664,13 @@ class HLRBRep_BiPnt2D {
 		 HLRBRep_BiPnt2D (const Standard_Real x1,const Standard_Real y1,const Standard_Real x2,const Standard_Real y2,const TopoDS_Shape & S,const Standard_Boolean reg1,const Standard_Boolean regn,const Standard_Boolean outl,const Standard_Boolean intl);
 		%feature("autodoc", "	:rtype: gp_Pnt2d
 ") P1;
-		const gp_Pnt2d & P1 ();
+		const gp_Pnt2d  P1 ();
 		%feature("autodoc", "	:rtype: gp_Pnt2d
 ") P2;
-		const gp_Pnt2d & P2 ();
+		const gp_Pnt2d  P2 ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape ();
+		const TopoDS_Shape  Shape ();
 		%feature("autodoc", "	:param S:
 	:type S: TopoDS_Shape &
 	:rtype: None
@@ -758,13 +758,13 @@ class HLRBRep_BiPoint {
 		 HLRBRep_BiPoint (const Standard_Real x1,const Standard_Real y1,const Standard_Real z1,const Standard_Real x2,const Standard_Real y2,const Standard_Real z2,const TopoDS_Shape & S,const Standard_Boolean reg1,const Standard_Boolean regn,const Standard_Boolean outl,const Standard_Boolean intl);
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") P1;
-		const gp_Pnt & P1 ();
+		const gp_Pnt  P1 ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") P2;
-		const gp_Pnt & P2 ();
+		const gp_Pnt  P2 ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape ();
+		const TopoDS_Shape  Shape ();
 		%feature("autodoc", "	:param S:
 	:type S: TopoDS_Shape &
 	:rtype: None
@@ -1035,16 +1035,16 @@ class HLRBRep_CLProps {
 		void SetCurve (const Standard_Address & C);
 		%feature("autodoc", "	:rtype: gp_Pnt2d
 ") Value;
-		const gp_Pnt2d & Value ();
+		const gp_Pnt2d  Value ();
 		%feature("autodoc", "	:rtype: gp_Vec2d
 ") D1;
-		const gp_Vec2d & D1 ();
+		const gp_Vec2d  D1 ();
 		%feature("autodoc", "	:rtype: gp_Vec2d
 ") D2;
-		const gp_Vec2d & D2 ();
+		const gp_Vec2d  D2 ();
 		%feature("autodoc", "	:rtype: gp_Vec2d
 ") D3;
-		const gp_Vec2d & D3 ();
+		const gp_Vec2d  D3 ();
 		%feature("autodoc", "	:rtype: bool
 ") IsTangentDefined;
 		Standard_Boolean IsTangentDefined ();
@@ -4511,7 +4511,7 @@ class HLRBRep_PolyAlgo : public MMgt_TShared {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") Shape;
-		TopoDS_Shape & Shape (const Standard_Integer I);
+		TopoDS_Shape  Shape (const Standard_Integer I);
 		%feature("autodoc", "	* remove the Shape of Index <I>.
 
 	:param I:
@@ -4854,22 +4854,22 @@ class HLRBRep_SLProps {
 		void SetParameters (const Standard_Real U,const Standard_Real V);
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") Value;
-		const gp_Pnt & Value ();
+		const gp_Pnt  Value ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") D1U;
-		const gp_Vec & D1U ();
+		const gp_Vec  D1U ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") D1V;
-		const gp_Vec & D1V ();
+		const gp_Vec  D1V ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") D2U;
-		const gp_Vec & D2U ();
+		const gp_Vec  D2U ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") D2V;
-		const gp_Vec & D2V ();
+		const gp_Vec  D2V ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") DUV;
-		const gp_Vec & DUV ();
+		const gp_Vec  DUV ();
 		%feature("autodoc", "	:rtype: bool
 ") IsTangentUDefined;
 		Standard_Boolean IsTangentUDefined ();
@@ -4891,7 +4891,7 @@ class HLRBRep_SLProps {
 		Standard_Boolean IsNormalDefined ();
 		%feature("autodoc", "	:rtype: gp_Dir
 ") Normal;
-		const gp_Dir & Normal ();
+		const gp_Dir  Normal ();
 		%feature("autodoc", "	:rtype: bool
 ") IsCurvatureDefined;
 		Standard_Boolean IsCurvatureDefined ();
@@ -5971,7 +5971,7 @@ class HLRBRep_TheCSFunctionOfInterCSurf : public math_FunctionSetWithDerivatives
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") Point;
-		const gp_Pnt & Point ();
+		const gp_Pnt  Point ();
 		%feature("autodoc", "	:rtype: float
 ") Root;
 		Standard_Real Root ();
@@ -5980,7 +5980,7 @@ class HLRBRep_TheCSFunctionOfInterCSurf : public math_FunctionSetWithDerivatives
 		const Standard_Address & AuxillarSurface ();
 		%feature("autodoc", "	:rtype: gp_Lin
 ") AuxillarCurve;
-		const gp_Lin & AuxillarCurve ();
+		const gp_Lin  AuxillarCurve ();
 };
 
 
@@ -6110,7 +6110,7 @@ class HLRBRep_TheExactInterCSurf {
 		Standard_Boolean IsEmpty ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") Point;
-		const gp_Pnt & Point ();
+		const gp_Pnt  Point ();
 		%feature("autodoc", "	:rtype: float
 ") ParameterOnCurve;
 		Standard_Real ParameterOnCurve ();
@@ -6847,12 +6847,12 @@ class HLRBRep_ThePolygonOfInterCSurf {
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt
 ") BeginOfSeg;
-		const gp_Pnt & BeginOfSeg (const Standard_Integer Index);
+		const gp_Pnt  BeginOfSeg (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt
 ") EndOfSeg;
-		const gp_Pnt & EndOfSeg (const Standard_Integer Index);
+		const gp_Pnt  EndOfSeg (const Standard_Integer Index);
 		%feature("autodoc", "	:rtype: float
 ") InfParameter;
 		Standard_Real InfParameter ();
@@ -6915,14 +6915,14 @@ class HLRBRep_ThePolygonToolOfInterCSurf {
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt
 ") BeginOfSeg;
-		static const gp_Pnt & BeginOfSeg (const HLRBRep_ThePolygonOfInterCSurf & thePolygon,const Standard_Integer Index);
+		static const gp_Pnt  BeginOfSeg (const HLRBRep_ThePolygonOfInterCSurf & thePolygon,const Standard_Integer Index);
 		%feature("autodoc", "	:param thePolygon:
 	:type thePolygon: HLRBRep_ThePolygonOfInterCSurf &
 	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt
 ") EndOfSeg;
-		static const gp_Pnt & EndOfSeg (const HLRBRep_ThePolygonOfInterCSurf & thePolygon,const Standard_Integer Index);
+		static const gp_Pnt  EndOfSeg (const HLRBRep_ThePolygonOfInterCSurf & thePolygon,const Standard_Integer Index);
 		%feature("autodoc", "	:param thePolygon:
 	:type thePolygon: HLRBRep_ThePolygonOfInterCSurf &
 	:rtype: void
@@ -6987,7 +6987,7 @@ class HLRBRep_ThePolyhedronToolOfInterCSurf {
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt
 ") Point;
-		static const gp_Pnt & Point (const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh,const Standard_Integer Index);
+		static const gp_Pnt  Point (const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh,const Standard_Integer Index);
 		%feature("autodoc", "	:param thePolyh:
 	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
 	:param Triang:

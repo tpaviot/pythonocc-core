@@ -8818,7 +8818,7 @@ class Extrema_POnCurv {
 		void SetValues (const Standard_Real U,const gp_Pnt & P);
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") Value;
-		const gp_Pnt & Value ();
+		const gp_Pnt  Value ();
 		%feature("autodoc", "	:rtype: float
 ") Parameter;
 		Standard_Real Parameter ();
@@ -8832,7 +8832,7 @@ class Extrema_POnCurv {
 		void _CSFDB_SetExtrema_POnCurvmyU (const Standard_Real p);
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") _CSFDB_GetExtrema_POnCurvmyP;
-		const gp_Pnt & _CSFDB_GetExtrema_POnCurvmyP ();
+		const gp_Pnt  _CSFDB_GetExtrema_POnCurvmyP ();
 };
 
 
@@ -8872,7 +8872,7 @@ class Extrema_POnCurv2d {
 		void SetValues (const Standard_Real U,const gp_Pnt2d & P);
 		%feature("autodoc", "	:rtype: gp_Pnt2d
 ") Value;
-		const gp_Pnt2d & Value ();
+		const gp_Pnt2d  Value ();
 		%feature("autodoc", "	:rtype: float
 ") Parameter;
 		Standard_Real Parameter ();
@@ -8886,7 +8886,7 @@ class Extrema_POnCurv2d {
 		void _CSFDB_SetExtrema_POnCurv2dmyU (const Standard_Real p);
 		%feature("autodoc", "	:rtype: gp_Pnt2d
 ") _CSFDB_GetExtrema_POnCurv2dmyP;
-		const gp_Pnt2d & _CSFDB_GetExtrema_POnCurv2dmyP ();
+		const gp_Pnt2d  _CSFDB_GetExtrema_POnCurv2dmyP ();
 };
 
 
@@ -8927,7 +8927,7 @@ class Extrema_POnSurf {
 
 	:rtype: gp_Pnt
 ") Value;
-		const gp_Pnt & Value ();
+		const gp_Pnt  Value ();
 		%feature("autodoc", "	* Returns the parameter values on the surface.
 
 	:param U:

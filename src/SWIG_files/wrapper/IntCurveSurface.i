@@ -158,7 +158,7 @@ class IntCurveSurface_IntersectionPoint {
 
 	:rtype: gp_Pnt
 ") Pnt;
-		const gp_Pnt & Pnt ();
+		const gp_Pnt  Pnt ();
 		%feature("autodoc", "	* returns the U parameter on the surface.
 
 	:rtype: float
@@ -699,7 +699,7 @@ class IntCurveSurface_TheCSFunctionOfHInter : public math_FunctionSetWithDerivat
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") Point;
-		const gp_Pnt & Point ();
+		const gp_Pnt  Point ();
 		%feature("autodoc", "	:rtype: float
 ") Root;
 		Standard_Real Root ();
@@ -782,7 +782,7 @@ class IntCurveSurface_TheExactHInter {
 		Standard_Boolean IsEmpty ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") Point;
-		const gp_Pnt & Point ();
+		const gp_Pnt  Point ();
 		%feature("autodoc", "	:rtype: float
 ") ParameterOnCurve;
 		Standard_Real ParameterOnCurve ();
@@ -1203,12 +1203,12 @@ class IntCurveSurface_ThePolygonOfHInter {
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt
 ") BeginOfSeg;
-		const gp_Pnt & BeginOfSeg (const Standard_Integer Index);
+		const gp_Pnt  BeginOfSeg (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt
 ") EndOfSeg;
-		const gp_Pnt & EndOfSeg (const Standard_Integer Index);
+		const gp_Pnt  EndOfSeg (const Standard_Integer Index);
 		%feature("autodoc", "	:rtype: float
 ") InfParameter;
 		Standard_Real InfParameter ();
@@ -1271,14 +1271,14 @@ class IntCurveSurface_ThePolygonToolOfHInter {
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt
 ") BeginOfSeg;
-		static const gp_Pnt & BeginOfSeg (const IntCurveSurface_ThePolygonOfHInter & thePolygon,const Standard_Integer Index);
+		static const gp_Pnt  BeginOfSeg (const IntCurveSurface_ThePolygonOfHInter & thePolygon,const Standard_Integer Index);
 		%feature("autodoc", "	:param thePolygon:
 	:type thePolygon: IntCurveSurface_ThePolygonOfHInter &
 	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt
 ") EndOfSeg;
-		static const gp_Pnt & EndOfSeg (const IntCurveSurface_ThePolygonOfHInter & thePolygon,const Standard_Integer Index);
+		static const gp_Pnt  EndOfSeg (const IntCurveSurface_ThePolygonOfHInter & thePolygon,const Standard_Integer Index);
 		%feature("autodoc", "	:param thePolygon:
 	:type thePolygon: IntCurveSurface_ThePolygonOfHInter &
 	:rtype: void
@@ -1343,7 +1343,7 @@ class IntCurveSurface_ThePolyhedronToolOfHInter {
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt
 ") Point;
-		static const gp_Pnt & Point (const IntCurveSurface_ThePolyhedronOfHInter & thePolyh,const Standard_Integer Index);
+		static const gp_Pnt  Point (const IntCurveSurface_ThePolyhedronOfHInter & thePolyh,const Standard_Integer Index);
 		%feature("autodoc", "	:param thePolyh:
 	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
 	:param Triang:

@@ -323,7 +323,7 @@ class BRepPrim_FaceBuilder {
 		void Init (const BRep_Builder & B,const Handle_Geom_Surface & S,const Standard_Real UMin,const Standard_Real UMax,const Standard_Real VMin,const Standard_Real VMax);
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") Face;
-		const TopoDS_Face & Face ();
+		const TopoDS_Face  Face ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Face;
 		 operator TopoDS_Face ();
@@ -333,14 +333,14 @@ class BRepPrim_FaceBuilder {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Edge
 ") Edge;
-		const TopoDS_Edge & Edge (const Standard_Integer I);
+		const TopoDS_Edge  Edge (const Standard_Integer I);
 		%feature("autodoc", "	* Returns the vertex of index <I> 1 - Vertex UMin,VMin 2 - Vertex UMax,VMin 3 - Vertex UMax,VMax 4 - Vertex UMin,VMax
 
 	:param I:
 	:type I: Standard_Integer
 	:rtype: TopoDS_Vertex
 ") Vertex;
-		const TopoDS_Vertex & Vertex (const Standard_Integer I);
+		const TopoDS_Vertex  Vertex (const Standard_Integer I);
 };
 
 
@@ -466,7 +466,7 @@ class BRepPrim_GWedge {
 		Standard_Boolean IsInfinite (const Primitives_Direction d1);
 		%feature("autodoc", "	:rtype: TopoDS_Shell
 ") Shell;
-		const TopoDS_Shell & Shell ();
+		const TopoDS_Shell  Shell ();
 		%feature("autodoc", "	:param d1:
 	:type d1: Primitives_Direction
 	:rtype: bool
@@ -476,7 +476,7 @@ class BRepPrim_GWedge {
 	:type d1: Primitives_Direction
 	:rtype: TopoDS_Face
 ") Face;
-		const TopoDS_Face & Face (const Primitives_Direction d1);
+		const TopoDS_Face  Face (const Primitives_Direction d1);
 		%feature("autodoc", "	:param d1:
 	:type d1: Primitives_Direction
 	:rtype: gp_Pln
@@ -491,7 +491,7 @@ class BRepPrim_GWedge {
 	:type d1: Primitives_Direction
 	:rtype: TopoDS_Wire
 ") Wire;
-		const TopoDS_Wire & Wire (const Primitives_Direction d1);
+		const TopoDS_Wire  Wire (const Primitives_Direction d1);
 		%feature("autodoc", "	:param d1:
 	:type d1: Primitives_Direction
 	:param d2:
@@ -505,7 +505,7 @@ class BRepPrim_GWedge {
 	:type d2: Primitives_Direction
 	:rtype: TopoDS_Edge
 ") Edge;
-		const TopoDS_Edge & Edge (const Primitives_Direction d1,const Primitives_Direction d2);
+		const TopoDS_Edge  Edge (const Primitives_Direction d1,const Primitives_Direction d2);
 		%feature("autodoc", "	:param d1:
 	:type d1: Primitives_Direction
 	:param d2:
@@ -530,7 +530,7 @@ class BRepPrim_GWedge {
 	:type d3: Primitives_Direction
 	:rtype: TopoDS_Vertex
 ") Vertex;
-		const TopoDS_Vertex & Vertex (const Primitives_Direction d1,const Primitives_Direction d2,const Primitives_Direction d3);
+		const TopoDS_Vertex  Vertex (const Primitives_Direction d1,const Primitives_Direction d2,const Primitives_Direction d3);
 		%feature("autodoc", "	:param d1:
 	:type d1: Primitives_Direction
 	:param d2:
@@ -570,7 +570,7 @@ class BRepPrim_OneAxis {
 		void SetMeridianOffset (const Standard_Real MeridianOffset = 0);
 		%feature("autodoc", "	:rtype: gp_Ax2
 ") Axes;
-		const gp_Ax2 & Axes ();
+		const gp_Ax2  Axes ();
 		%feature("autodoc", "	:param A:
 	:type A: gp_Ax2
 	:rtype: None
@@ -645,94 +645,94 @@ class BRepPrim_OneAxis {
 		virtual Standard_Boolean HasSides ();
 		%feature("autodoc", "	:rtype: TopoDS_Shell
 ") Shell;
-		const TopoDS_Shell & Shell ();
+		const TopoDS_Shell  Shell ();
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") LateralFace;
-		const TopoDS_Face & LateralFace ();
+		const TopoDS_Face  LateralFace ();
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") TopFace;
-		const TopoDS_Face & TopFace ();
+		const TopoDS_Face  TopFace ();
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") BottomFace;
-		const TopoDS_Face & BottomFace ();
+		const TopoDS_Face  BottomFace ();
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") StartFace;
-		const TopoDS_Face & StartFace ();
+		const TopoDS_Face  StartFace ();
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") EndFace;
-		const TopoDS_Face & EndFace ();
+		const TopoDS_Face  EndFace ();
 		%feature("autodoc", "	:rtype: TopoDS_Wire
 ") LateralWire;
-		const TopoDS_Wire & LateralWire ();
+		const TopoDS_Wire  LateralWire ();
 		%feature("autodoc", "	:rtype: TopoDS_Wire
 ") LateralStartWire;
-		const TopoDS_Wire & LateralStartWire ();
+		const TopoDS_Wire  LateralStartWire ();
 		%feature("autodoc", "	:rtype: TopoDS_Wire
 ") LateralEndWire;
-		const TopoDS_Wire & LateralEndWire ();
+		const TopoDS_Wire  LateralEndWire ();
 		%feature("autodoc", "	:rtype: TopoDS_Wire
 ") TopWire;
-		const TopoDS_Wire & TopWire ();
+		const TopoDS_Wire  TopWire ();
 		%feature("autodoc", "	:rtype: TopoDS_Wire
 ") BottomWire;
-		const TopoDS_Wire & BottomWire ();
+		const TopoDS_Wire  BottomWire ();
 		%feature("autodoc", "	:rtype: TopoDS_Wire
 ") StartWire;
-		const TopoDS_Wire & StartWire ();
+		const TopoDS_Wire  StartWire ();
 		%feature("autodoc", "	:rtype: TopoDS_Wire
 ") AxisStartWire;
-		const TopoDS_Wire & AxisStartWire ();
+		const TopoDS_Wire  AxisStartWire ();
 		%feature("autodoc", "	:rtype: TopoDS_Wire
 ") EndWire;
-		const TopoDS_Wire & EndWire ();
+		const TopoDS_Wire  EndWire ();
 		%feature("autodoc", "	:rtype: TopoDS_Wire
 ") AxisEndWire;
-		const TopoDS_Wire & AxisEndWire ();
+		const TopoDS_Wire  AxisEndWire ();
 		%feature("autodoc", "	:rtype: TopoDS_Edge
 ") AxisEdge;
-		const TopoDS_Edge & AxisEdge ();
+		const TopoDS_Edge  AxisEdge ();
 		%feature("autodoc", "	:rtype: TopoDS_Edge
 ") StartEdge;
-		const TopoDS_Edge & StartEdge ();
+		const TopoDS_Edge  StartEdge ();
 		%feature("autodoc", "	:rtype: TopoDS_Edge
 ") EndEdge;
-		const TopoDS_Edge & EndEdge ();
+		const TopoDS_Edge  EndEdge ();
 		%feature("autodoc", "	:rtype: TopoDS_Edge
 ") StartTopEdge;
-		const TopoDS_Edge & StartTopEdge ();
+		const TopoDS_Edge  StartTopEdge ();
 		%feature("autodoc", "	:rtype: TopoDS_Edge
 ") StartBottomEdge;
-		const TopoDS_Edge & StartBottomEdge ();
+		const TopoDS_Edge  StartBottomEdge ();
 		%feature("autodoc", "	:rtype: TopoDS_Edge
 ") EndTopEdge;
-		const TopoDS_Edge & EndTopEdge ();
+		const TopoDS_Edge  EndTopEdge ();
 		%feature("autodoc", "	:rtype: TopoDS_Edge
 ") EndBottomEdge;
-		const TopoDS_Edge & EndBottomEdge ();
+		const TopoDS_Edge  EndBottomEdge ();
 		%feature("autodoc", "	:rtype: TopoDS_Edge
 ") TopEdge;
-		const TopoDS_Edge & TopEdge ();
+		const TopoDS_Edge  TopEdge ();
 		%feature("autodoc", "	:rtype: TopoDS_Edge
 ") BottomEdge;
-		const TopoDS_Edge & BottomEdge ();
+		const TopoDS_Edge  BottomEdge ();
 		%feature("autodoc", "	:rtype: TopoDS_Vertex
 ") AxisTopVertex;
-		const TopoDS_Vertex & AxisTopVertex ();
+		const TopoDS_Vertex  AxisTopVertex ();
 		%feature("autodoc", "	:rtype: TopoDS_Vertex
 ") AxisBottomVertex;
-		const TopoDS_Vertex & AxisBottomVertex ();
+		const TopoDS_Vertex  AxisBottomVertex ();
 		%feature("autodoc", "	:rtype: TopoDS_Vertex
 ") TopStartVertex;
-		const TopoDS_Vertex & TopStartVertex ();
+		const TopoDS_Vertex  TopStartVertex ();
 		%feature("autodoc", "	:rtype: TopoDS_Vertex
 ") TopEndVertex;
-		const TopoDS_Vertex & TopEndVertex ();
+		const TopoDS_Vertex  TopEndVertex ();
 		%feature("autodoc", "	:rtype: TopoDS_Vertex
 ") BottomStartVertex;
-		const TopoDS_Vertex & BottomStartVertex ();
+		const TopoDS_Vertex  BottomStartVertex ();
 		%feature("autodoc", "	:rtype: TopoDS_Vertex
 ") BottomEndVertex;
-		const TopoDS_Vertex & BottomEndVertex ();
+		const TopoDS_Vertex  BottomEndVertex ();
 };
 
 

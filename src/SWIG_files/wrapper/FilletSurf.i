@@ -125,14 +125,14 @@ class FilletSurf_Builder {
 	:type Index: Standard_Integer
 	:rtype: TopoDS_Face
 ") SupportFace1;
-		const TopoDS_Face & SupportFace1 (const Standard_Integer Index);
+		const TopoDS_Face  SupportFace1 (const Standard_Integer Index);
 		%feature("autodoc", "	* //!gives the second support face relative to SurfaceFillet(Index);
 
 	:param Index:
 	:type Index: Standard_Integer
 	:rtype: TopoDS_Face
 ") SupportFace2;
-		const TopoDS_Face & SupportFace2 (const Standard_Integer Index);
+		const TopoDS_Face  SupportFace2 (const Standard_Integer Index);
 		%feature("autodoc", "	* gives the 3d curve of SurfaceFillet(Index) on SupportFace1(Index)
 
 	:param Index:
@@ -278,14 +278,14 @@ class FilletSurf_InternalBuilder : public ChFi3d_FilBuilder {
 	:type Index: Standard_Integer
 	:rtype: TopoDS_Face
 ") SupportFace1;
-		const TopoDS_Face & SupportFace1 (const Standard_Integer Index);
+		const TopoDS_Face  SupportFace1 (const Standard_Integer Index);
 		%feature("autodoc", "	* //!gives the second support face relative to SurfaceFillet(Index);
 
 	:param Index:
 	:type Index: Standard_Integer
 	:rtype: TopoDS_Face
 ") SupportFace2;
-		const TopoDS_Face & SupportFace2 (const Standard_Integer Index);
+		const TopoDS_Face  SupportFace2 (const Standard_Integer Index);
 		%feature("autodoc", "	* gives the 3d curve of SurfaceFillet(Index) on SupportFace1(Index)
 
 	:param Index:

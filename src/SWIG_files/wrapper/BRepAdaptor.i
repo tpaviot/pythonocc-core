@@ -189,7 +189,7 @@ class BRepAdaptor_CompCurve : public Adaptor3d_Curve {
 
 	:rtype: TopoDS_Wire
 ") Wire;
-		const TopoDS_Wire & Wire ();
+		const TopoDS_Wire  Wire ();
 		%feature("autodoc", "	* returns an edge and one parameter on them corresponding to the parameter U.
 
 	:param U:
@@ -414,7 +414,7 @@ class BRepAdaptor_Curve : public Adaptor3d_Curve {
 
 	:rtype: gp_Trsf
 ") Trsf;
-		const gp_Trsf & Trsf ();
+		const gp_Trsf  Trsf ();
 		%feature("autodoc", "	* Returns True if the edge geometry is computed from a 3D curve.
 
 	:rtype: bool
@@ -439,7 +439,7 @@ class BRepAdaptor_Curve : public Adaptor3d_Curve {
 
 	:rtype: TopoDS_Edge
 ") Edge;
-		const TopoDS_Edge & Edge ();
+		const TopoDS_Edge  Edge ();
 		%feature("autodoc", "	* Returns the edge tolerance.
 
 	:rtype: float
@@ -648,12 +648,12 @@ class BRepAdaptor_Curve2d : public Geom2dAdaptor_Curve {
 
 	:rtype: TopoDS_Edge
 ") Edge;
-		const TopoDS_Edge & Edge ();
+		const TopoDS_Edge  Edge ();
 		%feature("autodoc", "	* Returns the Face.
 
 	:rtype: TopoDS_Face
 ") Face;
-		const TopoDS_Face & Face ();
+		const TopoDS_Face  Face ();
 };
 
 
@@ -1141,12 +1141,12 @@ class BRepAdaptor_Surface : public Adaptor3d_Surface {
 
 	:rtype: gp_Trsf
 ") Trsf;
-		const gp_Trsf & Trsf ();
+		const gp_Trsf  Trsf ();
 		%feature("autodoc", "	* Returns the face.
 
 	:rtype: TopoDS_Face
 ") Face;
-		const TopoDS_Face & Face ();
+		const TopoDS_Face  Face ();
 		%feature("autodoc", "	* Returns the face tolerance.
 
 	:rtype: float

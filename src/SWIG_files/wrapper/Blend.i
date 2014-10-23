@@ -153,12 +153,12 @@ class Blend_AppFunction : public math_FunctionSetWithDerivatives {
 
 	:rtype: gp_Pnt
 ") Pnt1;
-		virtual const gp_Pnt & Pnt1 ();
+		virtual const gp_Pnt  Pnt1 ();
 		%feature("autodoc", "	* Returns the point on the first support.
 
 	:rtype: gp_Pnt
 ") Pnt2;
-		virtual const gp_Pnt & Pnt2 ();
+		virtual const gp_Pnt  Pnt2 ();
 		%feature("autodoc", "	* Returns if the section is rationnal
 
 	:rtype: bool
@@ -917,10 +917,10 @@ class Blend_Point {
 		Standard_Boolean IsTangencyPoint ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") PointOnS1;
-		const gp_Pnt & PointOnS1 ();
+		const gp_Pnt  PointOnS1 ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") PointOnS2;
-		const gp_Pnt & PointOnS2 ();
+		const gp_Pnt  PointOnS2 ();
 		%feature("autodoc", "	:param U:
 	:type U: float &
 	:param V:
@@ -937,10 +937,10 @@ class Blend_Point {
 		void ParametersOnS2 (Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("autodoc", "	:rtype: gp_Vec
 ") TangentOnS1;
-		const gp_Vec & TangentOnS1 ();
+		const gp_Vec  TangentOnS1 ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") TangentOnS2;
-		const gp_Vec & TangentOnS2 ();
+		const gp_Vec  TangentOnS2 ();
 		%feature("autodoc", "	:rtype: gp_Vec2d
 ") Tangent2dOnS1;
 		gp_Vec2d Tangent2dOnS1 ();
@@ -949,10 +949,10 @@ class Blend_Point {
 		gp_Vec2d Tangent2dOnS2 ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") PointOnS;
-		const gp_Pnt & PointOnS ();
+		const gp_Pnt  PointOnS ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") PointOnC;
-		const gp_Pnt & PointOnC ();
+		const gp_Pnt  PointOnC ();
 		%feature("autodoc", "	:param U:
 	:type U: float &
 	:param V:
@@ -965,19 +965,19 @@ class Blend_Point {
 		Standard_Real ParameterOnC ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") TangentOnS;
-		const gp_Vec & TangentOnS ();
+		const gp_Vec  TangentOnS ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") TangentOnC;
-		const gp_Vec & TangentOnC ();
+		const gp_Vec  TangentOnC ();
 		%feature("autodoc", "	:rtype: gp_Vec2d
 ") Tangent2d;
 		gp_Vec2d Tangent2d ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") PointOnC1;
-		const gp_Pnt & PointOnC1 ();
+		const gp_Pnt  PointOnC1 ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") PointOnC2;
-		const gp_Pnt & PointOnC2 ();
+		const gp_Pnt  PointOnC2 ();
 		%feature("autodoc", "	:rtype: float
 ") ParameterOnC1;
 		Standard_Real ParameterOnC1 ();
@@ -986,10 +986,10 @@ class Blend_Point {
 		Standard_Real ParameterOnC2 ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") TangentOnC1;
-		const gp_Vec & TangentOnC1 ();
+		const gp_Vec  TangentOnC1 ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") TangentOnC2;
-		const gp_Vec & TangentOnC2 ();
+		const gp_Vec  TangentOnC2 ();
 };
 
 
@@ -1484,27 +1484,27 @@ class Blend_CSFunction : public Blend_AppFunction {
 
 	:rtype: gp_Pnt
 ") Pnt1;
-		const gp_Pnt & Pnt1 ();
+		const gp_Pnt  Pnt1 ();
 		%feature("autodoc", "	* Returns the point on the seconde support.
 
 	:rtype: gp_Pnt
 ") Pnt2;
-		const gp_Pnt & Pnt2 ();
+		const gp_Pnt  Pnt2 ();
 		%feature("autodoc", "	* Returns the point on the surface.
 
 	:rtype: gp_Pnt
 ") PointOnS;
-		virtual const gp_Pnt & PointOnS ();
+		virtual const gp_Pnt  PointOnS ();
 		%feature("autodoc", "	* Returns the point on the curve.
 
 	:rtype: gp_Pnt
 ") PointOnC;
-		virtual const gp_Pnt & PointOnC ();
+		virtual const gp_Pnt  PointOnC ();
 		%feature("autodoc", "	* Returns U,V coordinates of the point on the surface.
 
 	:rtype: gp_Pnt2d
 ") Pnt2d;
-		virtual const gp_Pnt2d & Pnt2d ();
+		virtual const gp_Pnt2d  Pnt2d ();
 		%feature("autodoc", "	* Returns parameter of the point on the curve.
 
 	:rtype: float
@@ -1519,17 +1519,17 @@ class Blend_CSFunction : public Blend_AppFunction {
 
 	:rtype: gp_Vec
 ") TangentOnS;
-		virtual const gp_Vec & TangentOnS ();
+		virtual const gp_Vec  TangentOnS ();
 		%feature("autodoc", "	* Returns the tangent vector at PointOnS, in the parametric space of the first surface.
 
 	:rtype: gp_Vec2d
 ") Tangent2d;
-		virtual const gp_Vec2d & Tangent2d ();
+		virtual const gp_Vec2d  Tangent2d ();
 		%feature("autodoc", "	* Returns the tangent vector at PointOnC, in 3d space.
 
 	:rtype: gp_Vec
 ") TangentOnC;
-		virtual const gp_Vec & TangentOnC ();
+		virtual const gp_Vec  TangentOnC ();
 		%feature("autodoc", "	* Returns the tangent vector at the section, at the beginning and the end of the section, and returns the normal (of the surfaces) at these points.
 
 	:param U:
@@ -1740,22 +1740,22 @@ class Blend_Function : public Blend_AppFunction {
 
 	:rtype: gp_Pnt
 ") Pnt1;
-		const gp_Pnt & Pnt1 ();
+		const gp_Pnt  Pnt1 ();
 		%feature("autodoc", "	* Returns the point on the seconde support.
 
 	:rtype: gp_Pnt
 ") Pnt2;
-		const gp_Pnt & Pnt2 ();
+		const gp_Pnt  Pnt2 ();
 		%feature("autodoc", "	* Returns the point on the first surface, at parameter Sol(1),Sol(2) (Sol is the vector used in the call of IsSolution.
 
 	:rtype: gp_Pnt
 ") PointOnS1;
-		virtual const gp_Pnt & PointOnS1 ();
+		virtual const gp_Pnt  PointOnS1 ();
 		%feature("autodoc", "	* Returns the point on the second surface, at parameter Sol(3),Sol(4) (Sol is the vector used in the call of IsSolution.
 
 	:rtype: gp_Pnt
 ") PointOnS2;
-		virtual const gp_Pnt & PointOnS2 ();
+		virtual const gp_Pnt  PointOnS2 ();
 		%feature("autodoc", "	* Returns True when it is not possible to compute the tangent vectors at PointOnS1 and/or PointOnS2.
 
 	:rtype: bool
@@ -1765,22 +1765,22 @@ class Blend_Function : public Blend_AppFunction {
 
 	:rtype: gp_Vec
 ") TangentOnS1;
-		virtual const gp_Vec & TangentOnS1 ();
+		virtual const gp_Vec  TangentOnS1 ();
 		%feature("autodoc", "	* Returns the tangent vector at PointOnS1, in the parametric space of the first surface.
 
 	:rtype: gp_Vec2d
 ") Tangent2dOnS1;
-		virtual const gp_Vec2d & Tangent2dOnS1 ();
+		virtual const gp_Vec2d  Tangent2dOnS1 ();
 		%feature("autodoc", "	* Returns the tangent vector at PointOnS2, in 3d space.
 
 	:rtype: gp_Vec
 ") TangentOnS2;
-		virtual const gp_Vec & TangentOnS2 ();
+		virtual const gp_Vec  TangentOnS2 ();
 		%feature("autodoc", "	* Returns the tangent vector at PointOnS2, in the parametric space of the second surface.
 
 	:rtype: gp_Vec2d
 ") Tangent2dOnS2;
-		virtual const gp_Vec2d & Tangent2dOnS2 ();
+		virtual const gp_Vec2d  Tangent2dOnS2 ();
 		%feature("autodoc", "	* Returns the tangent vector at the section, at the beginning and the end of the section, and returns the normal (of the surfaces) at these points.
 
 	:param U1:
@@ -2010,32 +2010,32 @@ class Blend_RstRstFunction : public Blend_AppFunction {
 
 	:rtype: gp_Pnt
 ") Pnt1;
-		const gp_Pnt & Pnt1 ();
+		const gp_Pnt  Pnt1 ();
 		%feature("autodoc", "	* Returns the point on the seconde support.
 
 	:rtype: gp_Pnt
 ") Pnt2;
-		const gp_Pnt & Pnt2 ();
+		const gp_Pnt  Pnt2 ();
 		%feature("autodoc", "	* Returns the point on the surface.
 
 	:rtype: gp_Pnt
 ") PointOnRst1;
-		virtual const gp_Pnt & PointOnRst1 ();
+		virtual const gp_Pnt  PointOnRst1 ();
 		%feature("autodoc", "	* Returns the point on the curve.
 
 	:rtype: gp_Pnt
 ") PointOnRst2;
-		virtual const gp_Pnt & PointOnRst2 ();
+		virtual const gp_Pnt  PointOnRst2 ();
 		%feature("autodoc", "	* Returns U,V coordinates of the point on the surface.
 
 	:rtype: gp_Pnt2d
 ") Pnt2dOnRst1;
-		virtual const gp_Pnt2d & Pnt2dOnRst1 ();
+		virtual const gp_Pnt2d  Pnt2dOnRst1 ();
 		%feature("autodoc", "	* Returns U,V coordinates of the point on the curve on surface.
 
 	:rtype: gp_Pnt2d
 ") Pnt2dOnRst2;
-		virtual const gp_Pnt2d & Pnt2dOnRst2 ();
+		virtual const gp_Pnt2d  Pnt2dOnRst2 ();
 		%feature("autodoc", "	* Returns parameter of the point on the curve.
 
 	:rtype: float
@@ -2055,22 +2055,22 @@ class Blend_RstRstFunction : public Blend_AppFunction {
 
 	:rtype: gp_Vec
 ") TangentOnRst1;
-		virtual const gp_Vec & TangentOnRst1 ();
+		virtual const gp_Vec  TangentOnRst1 ();
 		%feature("autodoc", "	* Returns the tangent vector at PointOnS, in the parametric space of the first surface.
 
 	:rtype: gp_Vec2d
 ") Tangent2dOnRst1;
-		virtual const gp_Vec2d & Tangent2dOnRst1 ();
+		virtual const gp_Vec2d  Tangent2dOnRst1 ();
 		%feature("autodoc", "	* Returns the tangent vector at PointOnC, in 3d space.
 
 	:rtype: gp_Vec
 ") TangentOnRst2;
-		virtual const gp_Vec & TangentOnRst2 ();
+		virtual const gp_Vec  TangentOnRst2 ();
 		%feature("autodoc", "	* Returns the tangent vector at PointOnRst, in the parametric space of the second surface.
 
 	:rtype: gp_Vec2d
 ") Tangent2dOnRst2;
-		virtual const gp_Vec2d & Tangent2dOnRst2 ();
+		virtual const gp_Vec2d  Tangent2dOnRst2 ();
 		%feature("autodoc", "	* Enables to implement a criterion of decrochage specific to the function. Warning: Can be called without previous call of issolution but the values calculated can be senseless.
 
 	:param Sol:
@@ -2321,32 +2321,32 @@ class Blend_SurfRstFunction : public Blend_AppFunction {
 
 	:rtype: gp_Pnt
 ") Pnt1;
-		const gp_Pnt & Pnt1 ();
+		const gp_Pnt  Pnt1 ();
 		%feature("autodoc", "	* Returns the point on the seconde support.
 
 	:rtype: gp_Pnt
 ") Pnt2;
-		const gp_Pnt & Pnt2 ();
+		const gp_Pnt  Pnt2 ();
 		%feature("autodoc", "	* Returns the point on the surface.
 
 	:rtype: gp_Pnt
 ") PointOnS;
-		virtual const gp_Pnt & PointOnS ();
+		virtual const gp_Pnt  PointOnS ();
 		%feature("autodoc", "	* Returns the point on the curve.
 
 	:rtype: gp_Pnt
 ") PointOnRst;
-		virtual const gp_Pnt & PointOnRst ();
+		virtual const gp_Pnt  PointOnRst ();
 		%feature("autodoc", "	* Returns U,V coordinates of the point on the surface.
 
 	:rtype: gp_Pnt2d
 ") Pnt2dOnS;
-		virtual const gp_Pnt2d & Pnt2dOnS ();
+		virtual const gp_Pnt2d  Pnt2dOnS ();
 		%feature("autodoc", "	* Returns U,V coordinates of the point on the curve on surface.
 
 	:rtype: gp_Pnt2d
 ") Pnt2dOnRst;
-		virtual const gp_Pnt2d & Pnt2dOnRst ();
+		virtual const gp_Pnt2d  Pnt2dOnRst ();
 		%feature("autodoc", "	* Returns parameter of the point on the curve.
 
 	:rtype: float
@@ -2361,22 +2361,22 @@ class Blend_SurfRstFunction : public Blend_AppFunction {
 
 	:rtype: gp_Vec
 ") TangentOnS;
-		virtual const gp_Vec & TangentOnS ();
+		virtual const gp_Vec  TangentOnS ();
 		%feature("autodoc", "	* Returns the tangent vector at PointOnS, in the parametric space of the first surface.
 
 	:rtype: gp_Vec2d
 ") Tangent2dOnS;
-		virtual const gp_Vec2d & Tangent2dOnS ();
+		virtual const gp_Vec2d  Tangent2dOnS ();
 		%feature("autodoc", "	* Returns the tangent vector at PointOnC, in 3d space.
 
 	:rtype: gp_Vec
 ") TangentOnRst;
-		virtual const gp_Vec & TangentOnRst ();
+		virtual const gp_Vec  TangentOnRst ();
 		%feature("autodoc", "	* Returns the tangent vector at PointOnRst, in the parametric space of the second surface.
 
 	:rtype: gp_Vec2d
 ") Tangent2dOnRst;
-		virtual const gp_Vec2d & Tangent2dOnRst ();
+		virtual const gp_Vec2d  Tangent2dOnRst ();
 		%feature("autodoc", "	* Enables implementation of a criterion of decrochage specific to the function.
 
 	:param Sol:

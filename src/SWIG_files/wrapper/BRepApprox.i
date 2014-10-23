@@ -2498,13 +2498,13 @@ class BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox {
 		Standard_Boolean IsTangent ();
 		%feature("autodoc", "	:rtype: gp_Dir
 ") Direction;
-		const gp_Dir & Direction ();
+		const gp_Dir  Direction ();
 		%feature("autodoc", "	:rtype: gp_Dir2d
 ") DirectionOnS1;
-		const gp_Dir2d & DirectionOnS1 ();
+		const gp_Dir2d  DirectionOnS1 ();
 		%feature("autodoc", "	:rtype: gp_Dir2d
 ") DirectionOnS2;
-		const gp_Dir2d & DirectionOnS2 ();
+		const gp_Dir2d  DirectionOnS2 ();
 		%feature("autodoc", "	:rtype: BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox
 ") Function;
 		BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox & Function ();
@@ -3018,16 +3018,16 @@ class BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox : public math_Functi
 		Standard_Real Tolerance ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") Point;
-		const gp_Pnt & Point ();
+		const gp_Pnt  Point ();
 		%feature("autodoc", "	:rtype: bool
 ") IsTangent;
 		Standard_Boolean IsTangent ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") Direction3d;
-		const gp_Vec & Direction3d ();
+		const gp_Vec  Direction3d ();
 		%feature("autodoc", "	:rtype: gp_Dir2d
 ") Direction2d;
-		const gp_Dir2d & Direction2d ();
+		const gp_Dir2d  Direction2d ();
 		%feature("autodoc", "	:rtype: BRepAdaptor_Surface
 ") PSurface;
 		const BRepAdaptor_Surface & PSurface ();

@@ -969,16 +969,16 @@ class TopOpeBRepDS_Curve {
 		void GetShapes (TopoDS_Shape & S1,TopoDS_Shape & S2);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Shape1;
-		const TopoDS_Shape & Shape1 ();
+		const TopoDS_Shape  Shape1 ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") ChangeShape1;
-		TopoDS_Shape & ChangeShape1 ();
+		TopoDS_Shape  ChangeShape1 ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Shape2;
-		const TopoDS_Shape & Shape2 ();
+		const TopoDS_Shape  Shape2 ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") ChangeShape2;
-		TopoDS_Shape & ChangeShape2 ();
+		TopoDS_Shape  ChangeShape2 ();
 		%feature("autodoc", "	:rtype: Handle_Geom_Curve
 ") Curve;
 		const Handle_Geom_Curve & Curve ();
@@ -1288,7 +1288,7 @@ class TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceShape : public TCollect
 		const Handle_TopOpeBRepDS_Interference & Key ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Value;
-		const TopoDS_Shape & Value ();
+		const TopoDS_Shape  Value ();
 };
 
 
@@ -1324,7 +1324,7 @@ class TopOpeBRepDS_DataMapIteratorOfDataMapOfShapeListOfShapeOn1State : public T
 		void Initialize (const TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TopOpeBRepDS_ListOfShapeOn1State
 ") Value;
 		const TopOpeBRepDS_ListOfShapeOn1State & Value ();
@@ -1363,7 +1363,7 @@ class TopOpeBRepDS_DataMapIteratorOfDataMapOfShapeState : public TCollection_Bas
 		void Initialize (const TopOpeBRepDS_DataMapOfShapeState & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TopAbs_State
 ") Value;
 		const TopAbs_State & Value ();
@@ -1558,7 +1558,7 @@ class TopOpeBRepDS_DataMapIteratorOfShapeSurface : public TCollection_BasicMapIt
 		void Initialize (const TopOpeBRepDS_ShapeSurface & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: Handle_Geom_Surface
 ") Value;
 		const Handle_Geom_Surface & Value ();
@@ -1838,7 +1838,7 @@ class TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape : public TCollection_
 		Handle_TopOpeBRepDS_Interference & Key ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Value;
-		TopoDS_Shape & Value ();
+		TopoDS_Shape  Value ();
 };
 
 
@@ -1909,7 +1909,7 @@ class TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State : public TColl
 		 TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State (const TopoDS_Shape & K,const TopOpeBRepDS_ListOfShapeOn1State & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TopOpeBRepDS_ListOfShapeOn1State
 ") Value;
 		TopOpeBRepDS_ListOfShapeOn1State & Value ();
@@ -1983,7 +1983,7 @@ class TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState : public TCollection_MapNode
 		 TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState (const TopoDS_Shape & K,const TopAbs_State & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TopAbs_State
 ") Value;
 		TopAbs_State & Value ();
@@ -2393,7 +2393,7 @@ class TopOpeBRepDS_DataMapNodeOfShapeSurface : public TCollection_MapNode {
 		 TopOpeBRepDS_DataMapNodeOfShapeSurface (const TopoDS_Shape & K,const Handle_Geom_Surface & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: Handle_Geom_Surface
 ") Value;
 		Handle_Geom_Surface & Value ();
@@ -2740,12 +2740,12 @@ class TopOpeBRepDS_DataMapOfInterferenceShape : public TCollection_BasicMap {
 	:type K: Handle_TopOpeBRepDS_Interference &
 	:rtype: TopoDS_Shape
 ") Find;
-		const TopoDS_Shape & Find (const Handle_TopOpeBRepDS_Interference & K);
+		const TopoDS_Shape  Find (const Handle_TopOpeBRepDS_Interference & K);
 		%feature("autodoc", "	:param K:
 	:type K: Handle_TopOpeBRepDS_Interference &
 	:rtype: TopoDS_Shape
 ") ChangeFind;
-		TopoDS_Shape & ChangeFind (const Handle_TopOpeBRepDS_Interference & K);
+		TopoDS_Shape  ChangeFind (const Handle_TopOpeBRepDS_Interference & K);
 		%feature("autodoc", "	:param K:
 	:type K: Handle_TopOpeBRepDS_Interference &
 	:rtype: Standard_Address
@@ -3415,7 +3415,7 @@ class TopOpeBRepDS_DataStructure {
 	:type FindKeep: bool
 	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape (const Standard_Integer I,const Standard_Boolean FindKeep = Standard_True);
+		const TopoDS_Shape  Shape (const Standard_Integer I,const Standard_Boolean FindKeep = Standard_True);
 		%feature("autodoc", "	* returns the index of shape <S> stored in the map myShapes, accessing a list of interference. returns 0 if <S> is not in the map.
 
 	:param S:
@@ -3431,7 +3431,7 @@ class TopOpeBRepDS_DataStructure {
 	:type FindKeep: bool
 	:rtype: TopoDS_Edge
 ") SectionEdge;
-		const TopoDS_Edge & SectionEdge (const Standard_Integer I,const Standard_Boolean FindKeep = Standard_True);
+		const TopoDS_Edge  SectionEdge (const Standard_Integer I,const Standard_Boolean FindKeep = Standard_True);
 		%feature("autodoc", "	:param E:
 	:type E: TopoDS_Edge &
 	:param FindKeep: default value is Standard_True
@@ -3549,7 +3549,7 @@ class TopOpeBRepDS_DoubleMapIteratorOfDoubleMapOfIntegerShape : public TCollecti
 		const Standard_Integer & Key1 ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key2;
-		const TopoDS_Shape & Key2 ();
+		const TopoDS_Shape  Key2 ();
 };
 
 
@@ -3596,7 +3596,7 @@ class TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape : public TCollection_M
             };
             		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key2;
-		TopoDS_Shape & Key2 ();
+		TopoDS_Shape  Key2 ();
 		%feature("autodoc", "	:rtype: TCollection_MapNodePtr
 ") Next2;
 		TCollection_MapNodePtr & Next2 ();
@@ -3710,7 +3710,7 @@ class TopOpeBRepDS_DoubleMapOfIntegerShape : public TCollection_BasicMap {
 	:type K: Standard_Integer &
 	:rtype: TopoDS_Shape
 ") Find1;
-		const TopoDS_Shape & Find1 (Standard_Integer &OutValue);
+		const TopoDS_Shape  Find1 (Standard_Integer &OutValue);
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
 	:rtype: int
@@ -4130,19 +4130,19 @@ class TopOpeBRepDS_Explorer {
 		void Next ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Current;
-		const TopoDS_Shape & Current ();
+		const TopoDS_Shape  Current ();
 		%feature("autodoc", "	:rtype: int
 ") Index;
 		Standard_Integer Index ();
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") Face;
-		const TopoDS_Face & Face ();
+		const TopoDS_Face  Face ();
 		%feature("autodoc", "	:rtype: TopoDS_Edge
 ") Edge;
-		const TopoDS_Edge & Edge ();
+		const TopoDS_Edge  Edge ();
 		%feature("autodoc", "	:rtype: TopoDS_Vertex
 ") Vertex;
-		const TopoDS_Vertex & Vertex ();
+		const TopoDS_Vertex  Vertex ();
 };
 
 
@@ -4766,7 +4766,7 @@ class TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState : public T
 		 TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState (const TopoDS_Shape & K1,const Standard_Integer K2,const TopOpeBRepDS_ShapeWithState & I,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key1;
-		TopoDS_Shape & Key1 ();
+		TopoDS_Shape  Key1 ();
 
             %feature("autodoc","1");
             %extend {
@@ -4860,7 +4860,7 @@ class TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint : public TCol
 		 TopOpeBRepDS_IndexedDataMapNodeOfIndexedDataMapOfVertexPoint (const TopoDS_Shape & K1,const Standard_Integer K2,const TopOpeBRepDS_Point & I,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key1;
-		TopoDS_Shape & Key1 ();
+		TopoDS_Shape  Key1 ();
 
             %feature("autodoc","1");
             %extend {
@@ -4954,7 +4954,7 @@ class TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData : public TCollection_MapNo
 		 TopOpeBRepDS_IndexedDataMapNodeOfMapOfShapeData (const TopoDS_Shape & K1,const Standard_Integer K2,const TopOpeBRepDS_ShapeData & I,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key1;
-		TopoDS_Shape & Key1 ();
+		TopoDS_Shape  Key1 ();
 
             %feature("autodoc","1");
             %extend {
@@ -5084,7 +5084,7 @@ class TopOpeBRepDS_IndexedDataMapOfShapeWithState : public TCollection_BasicMap 
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") FindKey;
-		const TopoDS_Shape & FindKey (const Standard_Integer I);
+		const TopoDS_Shape  FindKey (const Standard_Integer I);
 		%feature("autodoc", "	:param I:
 	:type I: Standard_Integer
 	:rtype: TopOpeBRepDS_ShapeWithState
@@ -5191,7 +5191,7 @@ class TopOpeBRepDS_IndexedDataMapOfVertexPoint : public TCollection_BasicMap {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") FindKey;
-		const TopoDS_Shape & FindKey (const Standard_Integer I);
+		const TopoDS_Shape  FindKey (const Standard_Integer I);
 		%feature("autodoc", "	:param I:
 	:type I: Standard_Integer
 	:rtype: TopOpeBRepDS_Point
@@ -6203,7 +6203,7 @@ class TopOpeBRepDS_MapOfShapeData : public TCollection_BasicMap {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") FindKey;
-		const TopoDS_Shape & FindKey (const Standard_Integer I);
+		const TopoDS_Shape  FindKey (const Standard_Integer I);
 		%feature("autodoc", "	:param I:
 	:type I: Standard_Integer
 	:rtype: TopOpeBRepDS_ShapeData
@@ -6452,10 +6452,10 @@ class TopOpeBRepDS_Point {
 		Standard_Boolean IsEqual (const TopOpeBRepDS_Point & other);
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") Point;
-		const gp_Pnt & Point ();
+		const gp_Pnt  Point ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") ChangePoint;
-		gp_Pnt & ChangePoint ();
+		gp_Pnt  ChangePoint ();
 		%feature("autodoc", "	:rtype: float
 ") Tolerance;
 		Standard_Real Tolerance ();

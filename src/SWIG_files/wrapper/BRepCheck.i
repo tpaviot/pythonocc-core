@@ -197,7 +197,7 @@ class BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus : public TCollection
 		void Initialize (const BRepCheck_DataMapOfShapeListOfStatus & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: BRepCheck_ListOfStatus
 ") Value;
 		const BRepCheck_ListOfStatus & Value ();
@@ -236,7 +236,7 @@ class BRepCheck_DataMapIteratorOfDataMapOfShapeResult : public TCollection_Basic
 		void Initialize (const BRepCheck_DataMapOfShapeResult & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: Handle_BRepCheck_Result
 ") Value;
 		const Handle_BRepCheck_Result & Value ();
@@ -271,7 +271,7 @@ class BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus : public TCollection_Map
 		 BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus (const TopoDS_Shape & K,const BRepCheck_ListOfStatus & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: BRepCheck_ListOfStatus
 ") Value;
 		BRepCheck_ListOfStatus & Value ();
@@ -345,7 +345,7 @@ class BRepCheck_DataMapNodeOfDataMapOfShapeResult : public TCollection_MapNode {
 		 BRepCheck_DataMapNodeOfDataMapOfShapeResult (const TopoDS_Shape & K,const Handle_BRepCheck_Result & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: Handle_BRepCheck_Result
 ") Value;
 		Handle_BRepCheck_Result & Value ();
@@ -842,7 +842,7 @@ class BRepCheck_Result : public MMgt_TShared {
 		Standard_Boolean MoreShapeInContext ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") ContextualShape;
-		const TopoDS_Shape & ContextualShape ();
+		const TopoDS_Shape  ContextualShape ();
 		%feature("autodoc", "	:rtype: BRepCheck_ListOfStatus
 ") StatusOnShape;
 		const BRepCheck_ListOfStatus & StatusOnShape ();

@@ -134,14 +134,14 @@ class BRepExtrema_DistShapeShape {
 	:type N: Standard_Integer
 	:rtype: gp_Pnt
 ") PointOnShape1;
-		const gp_Pnt & PointOnShape1 (const Standard_Integer N);
+		const gp_Pnt  PointOnShape1 (const Standard_Integer N);
 		%feature("autodoc", "	* Returns the Point corresponding to the <N>th solution on the second Shape
 
 	:param N:
 	:type N: Standard_Integer
 	:rtype: gp_Pnt
 ") PointOnShape2;
-		const gp_Pnt & PointOnShape2 (const Standard_Integer N);
+		const gp_Pnt  PointOnShape2 (const Standard_Integer N);
 		%feature("autodoc", "	* gives the type of the support where the Nth solution on the first shape is situated: IsVertex => the Nth solution on the first shape is a Vertex IsOnEdge => the Nth soluion on the first shape is on a Edge IsInFace => the Nth solution on the first shape is inside a face the corresponding support is obtained by the method SupportOnShape1
 
 	:param N:
@@ -949,7 +949,7 @@ class BRepExtrema_SolutionElem {
 
 	:rtype: gp_Pnt
 ") Point;
-		const gp_Pnt & Point ();
+		const gp_Pnt  Point ();
 		%feature("autodoc", "	* returns the Support type : //!	 IsVertex => The solution is a vertex. 	 IsOnEdge => The solution belongs to an Edge. 	 IsInFace => The solution is inside a Face.
 
 	:rtype: BRepExtrema_SupportType
@@ -959,17 +959,17 @@ class BRepExtrema_SolutionElem {
 
 	:rtype: TopoDS_Vertex
 ") Vertex;
-		const TopoDS_Vertex & Vertex ();
+		const TopoDS_Vertex  Vertex ();
 		%feature("autodoc", "	* returns the vertex if the solution is an Edge.
 
 	:rtype: TopoDS_Edge
 ") Edge;
-		const TopoDS_Edge & Edge ();
+		const TopoDS_Edge  Edge ();
 		%feature("autodoc", "	* returns the vertex if the solution is an Face.
 
 	:rtype: TopoDS_Face
 ") Face;
-		const TopoDS_Face & Face ();
+		const TopoDS_Face  Face ();
 		%feature("autodoc", "	* returns the parameter t if the solution is on Edge.
 
 	:param par1:

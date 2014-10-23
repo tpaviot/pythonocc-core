@@ -115,7 +115,7 @@ class IntCurvesFace_Intersector {
 	:type I: Standard_Integer
 	:rtype: gp_Pnt
 ") Pnt;
-		const gp_Pnt & Pnt (const Standard_Integer I);
+		const gp_Pnt  Pnt (const Standard_Integer I);
 		%feature("autodoc", "	* Returns the ith transition of the line on the surface.
 
 	:param I:
@@ -134,7 +134,7 @@ class IntCurvesFace_Intersector {
 
 	:rtype: TopoDS_Face
 ") Face;
-		const TopoDS_Face & Face ();
+		const TopoDS_Face  Face ();
 		%feature("autodoc", "	:param Puv:
 	:type Puv: gp_Pnt2d
 	:rtype: TopAbs_State
@@ -244,7 +244,7 @@ class IntCurvesFace_ShapeIntersector {
 	:type I: Standard_Integer
 	:rtype: gp_Pnt
 ") Pnt;
-		const gp_Pnt & Pnt (const Standard_Integer I);
+		const gp_Pnt  Pnt (const Standard_Integer I);
 		%feature("autodoc", "	* Returns the ith transition of the line on the surface.
 
 	:param I:
@@ -265,7 +265,7 @@ class IntCurvesFace_ShapeIntersector {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Face
 ") Face;
-		const TopoDS_Face & Face (const Standard_Integer I);
+		const TopoDS_Face  Face (const Standard_Integer I);
 		%feature("autodoc", "	* Internal method. Sort the result on the Curve parameter.
 
 	:rtype: None

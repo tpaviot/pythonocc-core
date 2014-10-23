@@ -172,12 +172,12 @@ class FairCurve_Batten {
 
 	:rtype: gp_Pnt2d
 ") GetP1;
-		const gp_Pnt2d & GetP1 ();
+		const gp_Pnt2d  GetP1 ();
 		%feature("autodoc", "	* Returns the established location of the point P2.
 
 	:rtype: gp_Pnt2d
 ") GetP2;
-		const gp_Pnt2d & GetP2 ();
+		const gp_Pnt2d  GetP2 ();
 		%feature("autodoc", "	* Returns the established first angle.
 
 	:rtype: float

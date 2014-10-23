@@ -122,7 +122,7 @@ class BiTgte_Blend {
 
 	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape ();
+		const TopoDS_Shape  Shape ();
 		%feature("autodoc", "	* returns the Number of generated surfaces.
 
 	:rtype: int
@@ -141,7 +141,7 @@ class BiTgte_Blend {
 	:type Index: Standard_Integer
 	:rtype: TopoDS_Face
 ") Face;
-		const TopoDS_Face & Face (const Standard_Integer Index);
+		const TopoDS_Face  Face (const Standard_Integer Index);
 		%feature("autodoc", "	* set in <LC> all the center lines
 
 	:param LC:
@@ -162,7 +162,7 @@ class BiTgte_Blend {
 	:type CenterLine: TopoDS_Shape &
 	:rtype: TopoDS_Face
 ") Face;
-		const TopoDS_Face & Face (const TopoDS_Shape & CenterLine);
+		const TopoDS_Face  Face (const TopoDS_Shape & CenterLine);
 		%feature("autodoc", "	* returns the type of contact
 
 	:param Index:
@@ -176,14 +176,14 @@ class BiTgte_Blend {
 	:type Index: Standard_Integer
 	:rtype: TopoDS_Shape
 ") SupportShape1;
-		const TopoDS_Shape & SupportShape1 (const Standard_Integer Index);
+		const TopoDS_Shape  SupportShape1 (const Standard_Integer Index);
 		%feature("autodoc", "	* gives the second support shape relative to SurfaceFillet(Index);
 
 	:param Index:
 	:type Index: Standard_Integer
 	:rtype: TopoDS_Shape
 ") SupportShape2;
-		const TopoDS_Shape & SupportShape2 (const Standard_Integer Index);
+		const TopoDS_Shape  SupportShape2 (const Standard_Integer Index);
 		%feature("autodoc", "	* gives the 3d curve of SurfaceFillet(Index) on SupportShape1(Index)
 
 	:param Index:
@@ -662,7 +662,7 @@ class BiTgte_DataMapIteratorOfDataMapOfShapeBox : public TCollection_BasicMapIte
 		void Initialize (const BiTgte_DataMapOfShapeBox & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: Bnd_Box
 ") Value;
 		const Bnd_Box & Value ();
@@ -697,7 +697,7 @@ class BiTgte_DataMapNodeOfDataMapOfShapeBox : public TCollection_MapNode {
 		 BiTgte_DataMapNodeOfDataMapOfShapeBox (const TopoDS_Shape & K,const Bnd_Box & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: Bnd_Box
 ") Value;
 		Bnd_Box & Value ();

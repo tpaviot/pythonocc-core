@@ -568,7 +568,7 @@ class BOPDS_DS {
 	:type theIndex: Standard_Integer
 	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape (const Standard_Integer theIndex);
+		const TopoDS_Shape  Shape (const Standard_Integer theIndex);
 		%feature("autodoc", "	* Selector Returns the index of the shape theS
 
 	:param theS:
@@ -1784,7 +1784,7 @@ class BOPDS_Point {
 
 	:rtype: gp_Pnt
 ") Pnt;
-		const gp_Pnt & Pnt ();
+		const gp_Pnt  Pnt ();
 		%feature("autodoc", "	* Modifier Sets 2D point on the first face <thePnt>
 
 	:param thePnt:
@@ -1796,7 +1796,7 @@ class BOPDS_Point {
 
 	:rtype: gp_Pnt2d
 ") Pnt2D1;
-		const gp_Pnt2d & Pnt2D1 ();
+		const gp_Pnt2d  Pnt2D1 ();
 		%feature("autodoc", "	* Modifier Sets 2D point on the second face <thePnt>
 
 	:param thePnt:
@@ -1808,7 +1808,7 @@ class BOPDS_Point {
 
 	:rtype: gp_Pnt2d
 ") Pnt2D2;
-		const gp_Pnt2d & Pnt2D2 ();
+		const gp_Pnt2d  Pnt2D2 ();
 		%feature("autodoc", "	* Modifier Sets the index of the vertex <theIndex>
 
 	:param theIndex:
@@ -1864,7 +1864,7 @@ class BOPDS_ShapeInfo {
 
 	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape ();
+		const TopoDS_Shape  Shape ();
 		%feature("autodoc", "	* Modifier Sets the type of shape theType
 
 	:param theType:

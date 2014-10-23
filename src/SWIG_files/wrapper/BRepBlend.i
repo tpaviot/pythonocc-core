@@ -1071,7 +1071,7 @@ class BRepBlend_Extremity {
 		void SetValue (const gp_Pnt & P,const Standard_Real W,const Standard_Real Param,const Standard_Real Tol);
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") Value;
-		const gp_Pnt & Value ();
+		const gp_Pnt  Value ();
 		%feature("autodoc", "	:param Tangent:
 	:type Tangent: gp_Vec
 	:rtype: None
@@ -1082,7 +1082,7 @@ class BRepBlend_Extremity {
 		Standard_Boolean HasTangent ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") Tangent;
-		const gp_Vec & Tangent ();
+		const gp_Vec  Tangent ();
 		%feature("autodoc", "	:rtype: float
 ") Tolerance;
 		Standard_Real Tolerance ();
@@ -1827,20 +1827,20 @@ class BRepBlend_RstRstConstRad : public Blend_RstRstFunction {
 		virtual Standard_Real GetMinimalDistance ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") PointOnRst1;
-		const gp_Pnt & PointOnRst1 ();
+		const gp_Pnt  PointOnRst1 ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") PointOnRst2;
-		const gp_Pnt & PointOnRst2 ();
+		const gp_Pnt  PointOnRst2 ();
 		%feature("autodoc", "	* Returns U,V coordinates of the point on the surface.
 
 	:rtype: gp_Pnt2d
 ") Pnt2dOnRst1;
-		const gp_Pnt2d & Pnt2dOnRst1 ();
+		const gp_Pnt2d  Pnt2dOnRst1 ();
 		%feature("autodoc", "	* Returns U,V coordinates of the point on the curve on surface.
 
 	:rtype: gp_Pnt2d
 ") Pnt2dOnRst2;
-		const gp_Pnt2d & Pnt2dOnRst2 ();
+		const gp_Pnt2d  Pnt2dOnRst2 ();
 		%feature("autodoc", "	* Returns parameter of the point on the curve.
 
 	:rtype: float
@@ -1856,16 +1856,16 @@ class BRepBlend_RstRstConstRad : public Blend_RstRstFunction {
 		Standard_Boolean IsTangencyPoint ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") TangentOnRst1;
-		const gp_Vec & TangentOnRst1 ();
+		const gp_Vec  TangentOnRst1 ();
 		%feature("autodoc", "	:rtype: gp_Vec2d
 ") Tangent2dOnRst1;
-		const gp_Vec2d & Tangent2dOnRst1 ();
+		const gp_Vec2d  Tangent2dOnRst1 ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") TangentOnRst2;
-		const gp_Vec & TangentOnRst2 ();
+		const gp_Vec  TangentOnRst2 ();
 		%feature("autodoc", "	:rtype: gp_Vec2d
 ") Tangent2dOnRst2;
-		const gp_Vec2d & Tangent2dOnRst2 ();
+		const gp_Vec2d  Tangent2dOnRst2 ();
 		%feature("autodoc", "	* Permet d ' implementer un critere de decrochage specifique a la fonction.
 
 	:param Sol:
@@ -2187,20 +2187,20 @@ class BRepBlend_RstRstEvolRad : public Blend_RstRstFunction {
 		virtual Standard_Real GetMinimalDistance ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") PointOnRst1;
-		const gp_Pnt & PointOnRst1 ();
+		const gp_Pnt  PointOnRst1 ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") PointOnRst2;
-		const gp_Pnt & PointOnRst2 ();
+		const gp_Pnt  PointOnRst2 ();
 		%feature("autodoc", "	* Returns U,V coordinates of the point on the surface.
 
 	:rtype: gp_Pnt2d
 ") Pnt2dOnRst1;
-		const gp_Pnt2d & Pnt2dOnRst1 ();
+		const gp_Pnt2d  Pnt2dOnRst1 ();
 		%feature("autodoc", "	* Returns U,V coordinates of the point on the curve on surface.
 
 	:rtype: gp_Pnt2d
 ") Pnt2dOnRst2;
-		const gp_Pnt2d & Pnt2dOnRst2 ();
+		const gp_Pnt2d  Pnt2dOnRst2 ();
 		%feature("autodoc", "	* Returns parameter of the point on the curve.
 
 	:rtype: float
@@ -2216,16 +2216,16 @@ class BRepBlend_RstRstEvolRad : public Blend_RstRstFunction {
 		Standard_Boolean IsTangencyPoint ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") TangentOnRst1;
-		const gp_Vec & TangentOnRst1 ();
+		const gp_Vec  TangentOnRst1 ();
 		%feature("autodoc", "	:rtype: gp_Vec2d
 ") Tangent2dOnRst1;
-		const gp_Vec2d & Tangent2dOnRst1 ();
+		const gp_Vec2d  Tangent2dOnRst1 ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") TangentOnRst2;
-		const gp_Vec & TangentOnRst2 ();
+		const gp_Vec  TangentOnRst2 ();
 		%feature("autodoc", "	:rtype: gp_Vec2d
 ") Tangent2dOnRst2;
-		const gp_Vec2d & Tangent2dOnRst2 ();
+		const gp_Vec2d  Tangent2dOnRst2 ();
 		%feature("autodoc", "	* Enables implementation of a criterion of decrochage specific to the function.
 
 	:param Sol:
@@ -3475,20 +3475,20 @@ class BRepBlend_SurfRstConstRad : public Blend_SurfRstFunction {
 		virtual Standard_Real GetMinimalDistance ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") PointOnS;
-		const gp_Pnt & PointOnS ();
+		const gp_Pnt  PointOnS ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") PointOnRst;
-		const gp_Pnt & PointOnRst ();
+		const gp_Pnt  PointOnRst ();
 		%feature("autodoc", "	* Returns U,V coordinates of the point on the surface.
 
 	:rtype: gp_Pnt2d
 ") Pnt2dOnS;
-		const gp_Pnt2d & Pnt2dOnS ();
+		const gp_Pnt2d  Pnt2dOnS ();
 		%feature("autodoc", "	* Returns U,V coordinates of the point on the curve on surface.
 
 	:rtype: gp_Pnt2d
 ") Pnt2dOnRst;
-		const gp_Pnt2d & Pnt2dOnRst ();
+		const gp_Pnt2d  Pnt2dOnRst ();
 		%feature("autodoc", "	* Returns parameter of the point on the curve.
 
 	:rtype: float
@@ -3499,16 +3499,16 @@ class BRepBlend_SurfRstConstRad : public Blend_SurfRstFunction {
 		Standard_Boolean IsTangencyPoint ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") TangentOnS;
-		const gp_Vec & TangentOnS ();
+		const gp_Vec  TangentOnS ();
 		%feature("autodoc", "	:rtype: gp_Vec2d
 ") Tangent2dOnS;
-		const gp_Vec2d & Tangent2dOnS ();
+		const gp_Vec2d  Tangent2dOnS ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") TangentOnRst;
-		const gp_Vec & TangentOnRst ();
+		const gp_Vec  TangentOnRst ();
 		%feature("autodoc", "	:rtype: gp_Vec2d
 ") Tangent2dOnRst;
-		const gp_Vec2d & Tangent2dOnRst ();
+		const gp_Vec2d  Tangent2dOnRst ();
 		%feature("autodoc", "	* Enables implementation of a criterion of decrochage specific to the function. Warning: Can be called without previous call of issolution but the values calculated can be senseless.
 
 	:param Sol:
@@ -3807,20 +3807,20 @@ class BRepBlend_SurfRstEvolRad : public Blend_SurfRstFunction {
 		virtual Standard_Real GetMinimalDistance ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") PointOnS;
-		const gp_Pnt & PointOnS ();
+		const gp_Pnt  PointOnS ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") PointOnRst;
-		const gp_Pnt & PointOnRst ();
+		const gp_Pnt  PointOnRst ();
 		%feature("autodoc", "	* Returns U,V coordinates of the point on the surface.
 
 	:rtype: gp_Pnt2d
 ") Pnt2dOnS;
-		const gp_Pnt2d & Pnt2dOnS ();
+		const gp_Pnt2d  Pnt2dOnS ();
 		%feature("autodoc", "	* Returns U,V coordinates of the point on the curve on surface.
 
 	:rtype: gp_Pnt2d
 ") Pnt2dOnRst;
-		const gp_Pnt2d & Pnt2dOnRst ();
+		const gp_Pnt2d  Pnt2dOnRst ();
 		%feature("autodoc", "	* Returns parameter of the point on the curve.
 
 	:rtype: float
@@ -3831,16 +3831,16 @@ class BRepBlend_SurfRstEvolRad : public Blend_SurfRstFunction {
 		Standard_Boolean IsTangencyPoint ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") TangentOnS;
-		const gp_Vec & TangentOnS ();
+		const gp_Vec  TangentOnS ();
 		%feature("autodoc", "	:rtype: gp_Vec2d
 ") Tangent2dOnS;
-		const gp_Vec2d & Tangent2dOnS ();
+		const gp_Vec2d  Tangent2dOnS ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") TangentOnRst;
-		const gp_Vec & TangentOnRst ();
+		const gp_Vec  TangentOnRst ();
 		%feature("autodoc", "	:rtype: gp_Vec2d
 ") Tangent2dOnRst;
-		const gp_Vec2d & Tangent2dOnRst ();
+		const gp_Vec2d  Tangent2dOnRst ();
 		%feature("autodoc", "	* Permet d ' implementer un critere de decrochage specifique a la fonction.
 
 	:param Sol:

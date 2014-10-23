@@ -157,12 +157,12 @@ class Intf_Array1OfLin {
 	:type Index: Standard_Integer
 	:rtype: gp_Lin
 ") Value;
-		const gp_Lin & Value (const Standard_Integer Index);
+		const gp_Lin  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_Lin
 ") ChangeValue;
-		gp_Lin & ChangeValue (const Standard_Integer Index);
+		gp_Lin  ChangeValue (const Standard_Integer Index);
 };
 
 
@@ -452,7 +452,7 @@ class Intf_SectionPoint {
 
 	:rtype: gp_Pnt
 ") Pnt;
-		const gp_Pnt & Pnt ();
+		const gp_Pnt  Pnt ();
 		%feature("autodoc", "	* Returns the cumulated Parameter of the SectionPoint on the first element.
 
 	:rtype: float

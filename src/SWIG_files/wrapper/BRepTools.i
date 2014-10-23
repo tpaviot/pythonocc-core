@@ -353,7 +353,7 @@ class BRepTools_DataMapIteratorOfMapOfVertexPnt2d : public TCollection_BasicMapI
 		void Initialize (const BRepTools_MapOfVertexPnt2d & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TColgp_SequenceOfPnt2d
 ") Value;
 		const TColgp_SequenceOfPnt2d & Value ();
@@ -388,7 +388,7 @@ class BRepTools_DataMapNodeOfMapOfVertexPnt2d : public TCollection_MapNode {
 		 BRepTools_DataMapNodeOfMapOfVertexPnt2d (const TopoDS_Shape & K,const TColgp_SequenceOfPnt2d & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TColgp_SequenceOfPnt2d
 ") Value;
 		TColgp_SequenceOfPnt2d & Value ();
@@ -724,7 +724,7 @@ class BRepTools_Modifier {
 	:type S: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") ModifiedShape;
-		const TopoDS_Shape & ModifiedShape (const TopoDS_Shape & S);
+		const TopoDS_Shape  ModifiedShape (const TopoDS_Shape & S);
 };
 
 
@@ -786,7 +786,7 @@ class BRepTools_Quilt {
 	:type S: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") Copy;
-		const TopoDS_Shape & Copy (const TopoDS_Shape & S);
+		const TopoDS_Shape  Copy (const TopoDS_Shape & S);
 		%feature("autodoc", "	* Returns a Compound of shells made from the current set of faces. The shells will be flagged as closed or not closed.
 
 	:rtype: TopoDS_Shape
@@ -1269,7 +1269,7 @@ class BRepTools_WireExplorer {
 
 	:rtype: TopoDS_Edge
 ") Current;
-		const TopoDS_Edge & Current ();
+		const TopoDS_Edge  Current ();
 		%feature("autodoc", "	* Returns an Orientation for the current edge.
 
 	:rtype: TopAbs_Orientation
@@ -1279,7 +1279,7 @@ class BRepTools_WireExplorer {
 
 	:rtype: TopoDS_Vertex
 ") CurrentVertex;
-		const TopoDS_Vertex & CurrentVertex ();
+		const TopoDS_Vertex  CurrentVertex ();
 		%feature("autodoc", "	* Clears the content of the explorer.
 
 	:rtype: None
@@ -1314,7 +1314,7 @@ class BRepTools_GTrsfModification : public BRepTools_Modification {
 
 	:rtype: gp_GTrsf
 ") GTrsf;
-		gp_GTrsf & GTrsf ();
+		gp_GTrsf  GTrsf ();
 		%feature("autodoc", "	* Returns Standard_True if the face <F> has been modified. In this case, <S> is the new geometric support of the face, <L> the new location,<Tol> the new tolerance.<RevWires> has to be set to Standard_True when the modification reverses the normal of the surface.(the wires have to be reversed). <RevFace> has to be set to Standard_True if the orientation of the modified face changes in the shells which contain it. -- Here, <RevFace> will return Standard_True if the -- gp_Trsf is negative.
 
 	:param F:
@@ -1621,7 +1621,7 @@ class BRepTools_TrsfModification : public BRepTools_Modification {
 
 	:rtype: gp_Trsf
 ") Trsf;
-		gp_Trsf & Trsf ();
+		gp_Trsf  Trsf ();
 		%feature("autodoc", "	* Returns true if the face F has been modified. If the face has been modified: - S is the new geometry of the face, - L is its new location, and - Tol is the new tolerance. RevWires is set to true when the modification reverses the normal of the surface (the wires have to be reversed). RevFace is set to true if the orientation of the modified face changes in the shells which contain it. For this class, RevFace returns true if the gp_Trsf associated with this modification is negative.
 
 	:param F:

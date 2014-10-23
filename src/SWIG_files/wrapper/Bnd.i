@@ -2118,7 +2118,7 @@ class Bnd_Sphere {
 
 	:rtype: gp_XYZ
 ") Center;
-		const gp_XYZ & Center ();
+		const gp_XYZ  Center ();
 		%feature("autodoc", "	* Returns the radius value
 
 	:rtype: float
