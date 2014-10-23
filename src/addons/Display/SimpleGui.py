@@ -47,7 +47,7 @@ def get_backend():
         sys.exit(1)
 
 
-def init_display(backend_str=None):
+def init_display(backend_str=None, size=(1024, 768)):
     global display, add_menu, add_function_to_menu, start_display, app, win, USED_BACKEND
 
     if not backend_str:
@@ -67,7 +67,7 @@ def init_display(backend_str=None):
 
         class AppFrame(wx.Frame):
             def __init__(self, parent):
-                wx.Frame.__init__(self, parent, -1, "pythonOCC-%s 3d viewer ('wx' backend)" % VERSION, style=wx.DEFAULT_FRAME_STYLE, size=(640, 480))
+                wx.Frame.__init__(self, parent, -1, "pythonOCC-%s 3d viewer ('wx' backend)" % VERSION, style=wx.DEFAULT_FRAME_STYLE, size=size)
                 self.canva = wxViewer3d(self)
                 self.menuBar = wx.MenuBar()
                 self._menus = {}
@@ -119,7 +119,7 @@ def init_display(backend_str=None):
                 QtGui.QMainWindow.__init__(self, *args)
                 self.canva = qtViewer3d(self)
                 self.setWindowTitle("pythonOCC-%s 3d viewer ('%s' backend)" % (VERSION, USED_BACKEND))
-                self.resize(1024, 768)
+                self.resize(size[0], size[1])
                 self.setCentralWidget(self.canva)
                 if not sys.platform == 'darwin':
                     self.menu_bar = self.menuBar()
@@ -155,12 +155,16 @@ def init_display(backend_str=None):
                     self._menus[menu_name].addAction(_action)
                 except KeyError:
                     raise ValueError('the menu item %s does not exist' % menu_name)
-        app = QtGui.QApplication(sys.argv)
+        # following couple of lines is a twek to enable ipython --gui='qt'
+        app = QtGui.QApplication.instance()  # checks if QApplication already exists 
+        if not app:  # create QApplication if it doesnt exist 
+            app = QtGui.QApplication(sys.argv)
         win = MainWindow()
         win.show()
         win.canva.InitDriver()
         display = win.canva._display
-        display.EnableAntiAliasing()
+        if sys.platform != "linux2":
+            display.EnableAntiAliasing()
         # background gradient
         display.set_bg_gradient_color(206, 215, 222, 128, 128, 128)
         # display black trihedron
