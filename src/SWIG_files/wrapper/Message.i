@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -196,29 +196,21 @@ enum Message_StatusType {
 %nodefaultctor Message;
 class Message {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static  Handle_Message_Messenger
+		%feature("autodoc", "	* Defines default messenger for OCCT applications. This is global static instance of the messenger. By default, it contains single printer directed to cout. It can be customized according to the application needs.
 
-Defines default messenger for OCCT applications.  
-         This is global static instance of the messenger.  
-         By default, it contains single printer directed to cout.  
-         It can be customized according to the application needs.") DefaultMessenger;
+	:rtype: Handle_Message_Messenger
+") DefaultMessenger;
 		static const Handle_Message_Messenger & DefaultMessenger ();
-		%feature("autodoc", "Args:
-	Hour(Standard_Integer)
-	Minute(Standard_Integer)
-	Second(Standard_Real)
+		%feature("autodoc", "	* Returns the string filled with values of hours, minutes and seconds. Example: 1. (5, 12, 26.3345) returns '05h:12m:26.33s', 2. (0, 6, 34.496 ) returns '06m:34.50s', 3. (0, 0, 4.5 ) returns '4.50s'
 
-Returns:
-	static TCollection_AsciiString
-
-Returns the string filled with values of hours, minutes and seconds.  
-Example:  
-         1. (5, 12, 26.3345) returns '05h:12m:26.33s',  
-         2. (0,  6, 34.496 ) returns '06m:34.50s',  
-         3. (0,  0,  4.5   ) returns '4.50s'") FillTime;
+	:param Hour:
+	:type Hour: Standard_Integer
+	:param Minute:
+	:type Minute: Standard_Integer
+	:param Second:
+	:type Second: float
+	:rtype: TCollection_AsciiString
+") FillTime;
 		static TCollection_AsciiString FillTime (const Standard_Integer Hour,const Standard_Integer Minute,const Standard_Real Second);
 };
 
@@ -240,233 +232,185 @@ def __del__(self):
 %nodefaultctor Message_Algorithm;
 class Message_Algorithm : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor
 
-Empty constructor") Message_Algorithm;
+	:rtype: None
+") Message_Algorithm;
 		 Message_Algorithm ();
-		%feature("autodoc", "Args:
-	theStat(Message_Status)
+		%feature("autodoc", "	* Sets status with no parameter
 
-Returns:
-	None
-
-Sets status with no parameter") SetStatus;
+	:param theStat:
+	:type theStat: Message_Status &
+	:rtype: None
+") SetStatus;
 		void SetStatus (const Message_Status & theStat);
-		%feature("autodoc", "Args:
-	theStat(Message_Status)
-	theInt(Standard_Integer)
+		%feature("autodoc", "	* Sets status with integer parameter
 
-Returns:
-	None
-
-Sets status with integer parameter") SetStatus;
+	:param theStat:
+	:type theStat: Message_Status &
+	:param theInt:
+	:type theInt: Standard_Integer
+	:rtype: None
+") SetStatus;
 		void SetStatus (const Message_Status & theStat,const Standard_Integer theInt);
-		%feature("autodoc", "Args:
-	theStat(Message_Status)
-	theStr(char *)
-	noRepetitions(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Sets status with string parameter. If noRepetitions is True, the parameter will be added only if it has not been yet recorded for the same status flag
 
-Returns:
-	None
-
-Sets status with string parameter.  
-         If noRepetitions is True, the parameter will be added only  
-         if it has not been yet recorded for the same status flag") SetStatus;
+	:param theStat:
+	:type theStat: Message_Status &
+	:param theStr:
+	:type theStr: char *
+	:param noRepetitions: default value is Standard_True
+	:type noRepetitions: bool
+	:rtype: None
+") SetStatus;
 		void SetStatus (const Message_Status & theStat,const char * theStr,const Standard_Boolean noRepetitions = Standard_True);
-		%feature("autodoc", "Args:
-	theStat(Message_Status)
-	theStr(TCollection_AsciiString)
-	noRepetitions(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Sets status with string parameter If noRepetitions is True, the parameter will be added only if it has not been yet recorded for the same status flag
 
-Returns:
-	None
-
-Sets status with string parameter  
-         If noRepetitions is True, the parameter will be added only  
-         if it has not been yet recorded for the same status flag") SetStatus;
+	:param theStat:
+	:type theStat: Message_Status &
+	:param theStr:
+	:type theStr: TCollection_AsciiString &
+	:param noRepetitions: default value is Standard_True
+	:type noRepetitions: bool
+	:rtype: None
+") SetStatus;
 		void SetStatus (const Message_Status & theStat,const TCollection_AsciiString & theStr,const Standard_Boolean noRepetitions = Standard_True);
-		%feature("autodoc", "Args:
-	theStat(Message_Status)
-	theStr(Handle_TCollection_HAsciiString)
-	noRepetitions(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Sets status with string parameter If noRepetitions is True, the parameter will be added only if it has not been yet recorded for the same status flag
 
-Returns:
-	None
-
-Sets status with string parameter  
-         If noRepetitions is True, the parameter will be added only  
-         if it has not been yet recorded for the same status flag") SetStatus;
+	:param theStat:
+	:type theStat: Message_Status &
+	:param theStr:
+	:type theStr: Handle_TCollection_HAsciiString &
+	:param noRepetitions: default value is Standard_True
+	:type noRepetitions: bool
+	:rtype: None
+") SetStatus;
 		void SetStatus (const Message_Status & theStat,const Handle_TCollection_HAsciiString & theStr,const Standard_Boolean noRepetitions = Standard_True);
-		%feature("autodoc", "Args:
-	theStat(Message_Status)
-	theStr(TCollection_ExtendedString)
-	noRepetitions(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Sets status with string parameter If noRepetitions is True, the parameter will be added only if it has not been yet recorded for the same status flag
 
-Returns:
-	None
-
-Sets status with string parameter  
-         If noRepetitions is True, the parameter will be added only  
-         if it has not been yet recorded for the same status flag") SetStatus;
+	:param theStat:
+	:type theStat: Message_Status &
+	:param theStr:
+	:type theStr: TCollection_ExtendedString &
+	:param noRepetitions: default value is Standard_True
+	:type noRepetitions: bool
+	:rtype: None
+") SetStatus;
 		void SetStatus (const Message_Status & theStat,const TCollection_ExtendedString & theStr,const Standard_Boolean noRepetitions = Standard_True);
-		%feature("autodoc", "Args:
-	theStat(Message_Status)
-	theStr(Handle_TCollection_HExtendedString)
-	noRepetitions(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Sets status with string parameter If noRepetitions is True, the parameter will be added only if it has not been yet recorded for the same status flag
 
-Returns:
-	None
-
-Sets status with string parameter  
-         If noRepetitions is True, the parameter will be added only  
-         if it has not been yet recorded for the same status flag") SetStatus;
+	:param theStat:
+	:type theStat: Message_Status &
+	:param theStr:
+	:type theStr: Handle_TCollection_HExtendedString &
+	:param noRepetitions: default value is Standard_True
+	:type noRepetitions: bool
+	:rtype: None
+") SetStatus;
 		void SetStatus (const Message_Status & theStat,const Handle_TCollection_HExtendedString & theStr,const Standard_Boolean noRepetitions = Standard_True);
-		%feature("autodoc", "Args:
-	theStat(Message_Status)
-	theMsg(Message_Msg)
+		%feature("autodoc", "	* Sets status with preformatted message. This message will be used directly to report the status; automatic generation of status messages will be disabled for it.
 
-Returns:
-	None
-
-Sets status with preformatted message. This message will be  
-         used directly to report the status; automatic generation of  
-         status messages will be disabled for it.") SetStatus;
+	:param theStat:
+	:type theStat: Message_Status &
+	:param theMsg:
+	:type theMsg: Message_Msg &
+	:rtype: None
+") SetStatus;
 		void SetStatus (const Message_Status & theStat,const Message_Msg & theMsg);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Message_ExecStatus
+		%feature("autodoc", "	* Returns copy of exec status of algorithm
 
-Returns copy of exec status of algorithm") GetStatus;
+	:rtype: Message_ExecStatus
+") GetStatus;
 		const Message_ExecStatus & GetStatus ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Message_ExecStatus
+		%feature("autodoc", "	* Returns exec status of algorithm
 
-Returns exec status of algorithm") ChangeStatus;
+	:rtype: Message_ExecStatus
+") ChangeStatus;
 		Message_ExecStatus & ChangeStatus ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Clear exec status of algorithm
 
-Clear exec status of algorithm") ClearStatus;
+	:rtype: None
+") ClearStatus;
 		void ClearStatus ();
-		%feature("autodoc", "Args:
-	theMsgr(Handle_Message_Messenger)
+		%feature("autodoc", "	* Sets messenger to algorithm
 
-Returns:
-	None
-
-Sets messenger to algorithm") SetMessenger;
+	:param theMsgr:
+	:type theMsgr: Handle_Message_Messenger &
+	:rtype: None
+") SetMessenger;
 		void SetMessenger (const Handle_Message_Messenger & theMsgr);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Message_Messenger
+		%feature("autodoc", "	* Returns messenger of algorithm. The returned handle is always non-null and can be used for sending messages.
 
-Returns messenger of algorithm.  
-         The returned handle is always non-null and can  
-         be used for sending messages.") GetMessenger;
+	:rtype: Handle_Message_Messenger
+") GetMessenger;
 		Handle_Message_Messenger GetMessenger ();
-		%feature("autodoc", "Args:
-	theFilter(Message_ExecStatus)
-	theTraceLevel(Message_Gravity)=Message_Warning
-	theMaxCount(Standard_Integer)=20
+		%feature("autodoc", "	* Print messages for all status flags that have been set during algorithm execution, excluding statuses that are NOT set in theFilter.  The messages are taken from resource file, names being constructed as {dynamic class type}.{status name}, for instance, 'Message_Algorithm.Fail5'. If message is not found in resources for this class and all its base types, surrogate text is printed.  For the statuses having number or string parameters, theMaxCount defines maximal number of numbers or strings to be included in the message  Note that this method is virtual; this allows descendant classes to customize message output (e.g. by adding messages from other sub-algorithms)
 
-Returns:
-	virtual void
-
-Print messages for all status flags that have been set during  
-         algorithm execution, excluding statuses that are NOT set  
-         in theFilter.  
- 
-         The messages are taken from resource file, names being  
-         constructed as {dynamic class type}.{status name},  
-         for instance, 'Message_Algorithm.Fail5'.  
-         If message is not found in resources for this class and all  
-         its base types, surrogate text is printed.  
- 
-         For the statuses having number or string parameters,  
-         theMaxCount defines maximal number of numbers or strings to be  
-         included in the message  
- 
-         Note that this method is virtual; this allows descendant  
-         classes to customize message output (e.g. by adding  
-         messages from other sub-algorithms)") SendStatusMessages;
+	:param theFilter:
+	:type theFilter: Message_ExecStatus &
+	:param theTraceLevel: default value is Message_Warning
+	:type theTraceLevel: Message_Gravity
+	:param theMaxCount: default value is 20
+	:type theMaxCount: Standard_Integer
+	:rtype: void
+") SendStatusMessages;
 		virtual void SendStatusMessages (const Message_ExecStatus & theFilter,const Message_Gravity theTraceLevel = Message_Warning,const Standard_Integer theMaxCount = 20);
-		%feature("autodoc", "Args:
-	theTraceLevel(Message_Gravity)=Message_Warning
-	theMaxCount(Standard_Integer)=20
+		%feature("autodoc", "	* Convenient variant of SendStatusMessages() with theFilter having defined all WARN, ALARM, and FAIL (but not DONE) status flags
 
-Returns:
-	None
-
-Convenient variant of SendStatusMessages() with theFilter  
-         having defined all WARN, ALARM, and FAIL (but not DONE)  
-         status flags") SendMessages;
+	:param theTraceLevel: default value is Message_Warning
+	:type theTraceLevel: Message_Gravity
+	:param theMaxCount: default value is 20
+	:type theMaxCount: Standard_Integer
+	:rtype: None
+") SendMessages;
 		void SendMessages (const Message_Gravity theTraceLevel = Message_Warning,const Standard_Integer theMaxCount = 20);
-		%feature("autodoc", "Args:
-	theOther(Handle_Message_Algorithm)
+		%feature("autodoc", "	* Add statuses to this algorithm from other algorithm (including messages)
 
-Returns:
-	None
-
-Add statuses to this algorithm from other algorithm  
-         (including messages)") AddStatus;
+	:param theOther:
+	:type theOther: Handle_Message_Algorithm &
+	:rtype: None
+") AddStatus;
 		void AddStatus (const Handle_Message_Algorithm & theOther);
-		%feature("autodoc", "Args:
-	theStatus(Message_ExecStatus)
-	theOther(Handle_Message_Algorithm)
+		%feature("autodoc", "	* Add statuses to this algorithm from other algorithm, but only those items are moved that correspond to statuses set in theStatus
 
-Returns:
-	None
-
-Add statuses to this algorithm from other algorithm, but  
-         only those items are moved that correspond to statuses  
-         set in theStatus") AddStatus;
+	:param theStatus:
+	:type theStatus: Message_ExecStatus &
+	:param theOther:
+	:type theOther: Handle_Message_Algorithm &
+	:rtype: None
+") AddStatus;
 		void AddStatus (const Message_ExecStatus & theStatus,const Handle_Message_Algorithm & theOther);
-		%feature("autodoc", "Args:
-	theStatus(Message_Status)
+		%feature("autodoc", "	* Return the numbers associated with the indicated status; Null handle if no such status or no numbers associated with it
 
-Returns:
-	Handle_TColStd_HPackedMapOfInteger
-
-Return the numbers associated with the indicated status;  
-         Null handle if no such status or no numbers associated with it") GetMessageNumbers;
+	:param theStatus:
+	:type theStatus: Message_Status &
+	:rtype: Handle_TColStd_HPackedMapOfInteger
+") GetMessageNumbers;
 		Handle_TColStd_HPackedMapOfInteger GetMessageNumbers (const Message_Status & theStatus);
-		%feature("autodoc", "Args:
-	theStatus(Message_Status)
+		%feature("autodoc", "	* Return the strings associated with the indicated status; Null handle if no such status or no strings associated with it
 
-Returns:
-	Handle_TColStd_HSequenceOfHExtendedString
-
-Return the strings associated with the indicated status;  
-         Null handle if no such status or no strings associated with it") GetMessageStrings;
+	:param theStatus:
+	:type theStatus: Message_Status &
+	:rtype: Handle_TColStd_HSequenceOfHExtendedString
+") GetMessageStrings;
 		Handle_TColStd_HSequenceOfHExtendedString GetMessageStrings (const Message_Status & theStatus);
-		%feature("autodoc", "Args:
-	theError(Handle_TColStd_HPackedMapOfInteger)
-	theMaxCount(Standard_Integer)
+		%feature("autodoc", "	* Prepares a string containing a list of integers contained in theError map, but not more than theMaxCount
 
-Returns:
-	static TCollection_ExtendedString
-
-Prepares a string containing a list of integers contained  
-         in theError map, but not more than theMaxCount") PrepareReport;
+	:param theError:
+	:type theError: Handle_TColStd_HPackedMapOfInteger &
+	:param theMaxCount:
+	:type theMaxCount: Standard_Integer
+	:rtype: TCollection_ExtendedString
+") PrepareReport;
 		static TCollection_ExtendedString PrepareReport (const Handle_TColStd_HPackedMapOfInteger & theError,const Standard_Integer theMaxCount);
-		%feature("autodoc", "Args:
-	theReportSeq(TColStd_SequenceOfHExtendedString)
-	theMaxCount(Standard_Integer)
+		%feature("autodoc", "	* Prepares a string containing a list of names contained in theReportSeq sequence, but not more than theMaxCount
 
-Returns:
-	static TCollection_ExtendedString
-
-Prepares a string containing a list of names contained  
-         in theReportSeq sequence, but not more than theMaxCount") PrepareReport;
+	:param theReportSeq:
+	:type theReportSeq: TColStd_SequenceOfHExtendedString &
+	:param theMaxCount:
+	:type theMaxCount: Standard_Integer
+	:rtype: TCollection_ExtendedString
+") PrepareReport;
 		static TCollection_ExtendedString PrepareReport (const TColStd_SequenceOfHExtendedString & theReportSeq,const Standard_Integer theMaxCount);
 };
 
@@ -527,49 +471,27 @@ def __del__(self):
 %nodefaultctor Message_ListIteratorOfListOfMsg;
 class Message_ListIteratorOfListOfMsg {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Message_ListIteratorOfListOfMsg;
+		%feature("autodoc", "	:rtype: None
+") Message_ListIteratorOfListOfMsg;
 		 Message_ListIteratorOfListOfMsg ();
-		%feature("autodoc", "Args:
-	L(Message_ListOfMsg)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Message_ListIteratorOfListOfMsg;
+		%feature("autodoc", "	:param L:
+	:type L: Message_ListOfMsg &
+	:rtype: None
+") Message_ListIteratorOfListOfMsg;
 		 Message_ListIteratorOfListOfMsg (const Message_ListOfMsg & L);
-		%feature("autodoc", "Args:
-	L(Message_ListOfMsg)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: Message_ListOfMsg &
+	:rtype: None
+") Initialize;
 		void Initialize (const Message_ListOfMsg & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Message_Msg
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Message_Msg
+") Value;
 		Message_Msg & Value ();
 };
 
@@ -591,21 +513,15 @@ def __del__(self):
 %nodefaultctor Message_ListNodeOfListOfMsg;
 class Message_ListNodeOfListOfMsg : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Message_Msg)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Message_ListNodeOfListOfMsg;
+		%feature("autodoc", "	:param I:
+	:type I: Message_Msg &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") Message_ListNodeOfListOfMsg;
 		 Message_ListNodeOfListOfMsg (const Message_Msg & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Message_Msg
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Message_Msg
+") Value;
 		Message_Msg & Value ();
 };
 
@@ -666,164 +582,103 @@ def __del__(self):
 %nodefaultctor Message_ListOfMsg;
 class Message_ListOfMsg {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Message_ListOfMsg;
+		%feature("autodoc", "	:rtype: None
+") Message_ListOfMsg;
 		 Message_ListOfMsg ();
-		%feature("autodoc", "Args:
-	Other(Message_ListOfMsg)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Message_ListOfMsg &
+	:rtype: None
+") Assign;
 		void Assign (const Message_ListOfMsg & Other);
-		%feature("autodoc", "Args:
-	Other(Message_ListOfMsg)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Message_ListOfMsg &
+	:rtype: None
+") operator=;
 		void operator = (const Message_ListOfMsg & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(Message_Msg)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Message_Msg &
+	:rtype: None
+") Prepend;
 		void Prepend (const Message_Msg & I);
-		%feature("autodoc", "Args:
-	I(Message_Msg)
-	theIt(Message_ListIteratorOfListOfMsg)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Message_Msg &
+	:param theIt:
+	:type theIt: Message_ListIteratorOfListOfMsg &
+	:rtype: None
+") Prepend;
 		void Prepend (const Message_Msg & I,Message_ListIteratorOfListOfMsg & theIt);
-		%feature("autodoc", "Args:
-	Other(Message_ListOfMsg)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: Message_ListOfMsg &
+	:rtype: None
+") Prepend;
 		void Prepend (Message_ListOfMsg & Other);
-		%feature("autodoc", "Args:
-	I(Message_Msg)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Message_Msg &
+	:rtype: None
+") Append;
 		void Append (const Message_Msg & I);
-		%feature("autodoc", "Args:
-	I(Message_Msg)
-	theIt(Message_ListIteratorOfListOfMsg)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Message_Msg &
+	:param theIt:
+	:type theIt: Message_ListIteratorOfListOfMsg &
+	:rtype: None
+") Append;
 		void Append (const Message_Msg & I,Message_ListIteratorOfListOfMsg & theIt);
-		%feature("autodoc", "Args:
-	Other(Message_ListOfMsg)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: Message_ListOfMsg &
+	:rtype: None
+") Append;
 		void Append (Message_ListOfMsg & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Message_Msg
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Message_Msg
+") First;
 		Message_Msg & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Message_Msg
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Message_Msg
+") Last;
 		Message_Msg & Last ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(Message_ListIteratorOfListOfMsg)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: Message_ListIteratorOfListOfMsg &
+	:rtype: None
+") Remove;
 		void Remove (Message_ListIteratorOfListOfMsg & It);
-		%feature("autodoc", "Args:
-	I(Message_Msg)
-	It(Message_ListIteratorOfListOfMsg)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: Message_Msg &
+	:param It:
+	:type It: Message_ListIteratorOfListOfMsg &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Message_Msg & I,Message_ListIteratorOfListOfMsg & It);
-		%feature("autodoc", "Args:
-	Other(Message_ListOfMsg)
-	It(Message_ListIteratorOfListOfMsg)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: Message_ListOfMsg &
+	:param It:
+	:type It: Message_ListIteratorOfListOfMsg &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (Message_ListOfMsg & Other,Message_ListIteratorOfListOfMsg & It);
-		%feature("autodoc", "Args:
-	I(Message_Msg)
-	It(Message_ListIteratorOfListOfMsg)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: Message_Msg &
+	:param It:
+	:type It: Message_ListIteratorOfListOfMsg &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Message_Msg & I,Message_ListIteratorOfListOfMsg & It);
-		%feature("autodoc", "Args:
-	Other(Message_ListOfMsg)
-	It(Message_ListIteratorOfListOfMsg)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: Message_ListOfMsg &
+	:param It:
+	:type It: Message_ListIteratorOfListOfMsg &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (Message_ListOfMsg & Other,Message_ListIteratorOfListOfMsg & It);
 };
 
@@ -845,103 +700,81 @@ def __del__(self):
 %nodefaultctor Message_Messenger;
 class Message_Messenger : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor; initializes by single printer directed to cout. Note: the default messenger is not empty but directed to cout in order to protect against possibility to forget defining printers. If printing to cout is not needed, clear messenger by GetPrinters().Clear()
 
-Empty constructor; initializes by single printer directed to cout.  
-         Note: the default messenger is not empty but directed to cout  
-         in order to protect against possibility to forget defining printers.  
-         If printing to cout is not needed, clear messenger by GetPrinters().Clear()") Message_Messenger;
+	:rtype: None
+") Message_Messenger;
 		 Message_Messenger ();
-		%feature("autodoc", "Args:
-	thePrinter(Handle_Message_Printer)
+		%feature("autodoc", "	* Create messenger with single printer
 
-Returns:
-	None
-
-Create messenger with single printer") Message_Messenger;
+	:param thePrinter:
+	:type thePrinter: Handle_Message_Printer &
+	:rtype: None
+") Message_Messenger;
 		 Message_Messenger (const Handle_Message_Printer & thePrinter);
-		%feature("autodoc", "Args:
-	thePrinter(Handle_Message_Printer)
+		%feature("autodoc", "	* Add a printer to the messenger. The printer will be added only if it is not yet in the list. Returns True if printer has been added.
 
-Returns:
-	Standard_Boolean
-
-Add a printer to the messenger.  
-         The printer will be added only if it is not yet in the list.  
-         Returns True if printer has been added.") AddPrinter;
+	:param thePrinter:
+	:type thePrinter: Handle_Message_Printer &
+	:rtype: bool
+") AddPrinter;
 		Standard_Boolean AddPrinter (const Handle_Message_Printer & thePrinter);
-		%feature("autodoc", "Args:
-	thePrinter(Handle_Message_Printer)
+		%feature("autodoc", "	* Removes specified printer from the messenger. Returns True if this printer has been found in the list and removed.
 
-Returns:
-	Standard_Boolean
-
-Removes specified printer from the messenger.  
-         Returns True if this printer has been found in the list  
-         and removed.") RemovePrinter;
+	:param thePrinter:
+	:type thePrinter: Handle_Message_Printer &
+	:rtype: bool
+") RemovePrinter;
 		Standard_Boolean RemovePrinter (const Handle_Message_Printer & thePrinter);
-		%feature("autodoc", "Args:
-	theType(Handle_Standard_Type)
+		%feature("autodoc", "	* Removes printers of specified type (including derived classes) from the messenger. Returns number of removed printers.
 
-Returns:
-	Standard_Integer
-
-Removes printers of specified type (including derived classes)  
-         from the messenger.  
-         Returns number of removed printers.") RemovePrinters;
+	:param theType:
+	:type theType: Handle_Standard_Type &
+	:rtype: int
+") RemovePrinters;
 		Standard_Integer RemovePrinters (const Handle_Standard_Type & theType);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Message_SequenceOfPrinters
+		%feature("autodoc", "	* Returns current sequence of printers
 
-Returns current sequence of printers") Printers;
+	:rtype: Message_SequenceOfPrinters
+") Printers;
 		const Message_SequenceOfPrinters & Printers ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Message_SequenceOfPrinters
+		%feature("autodoc", "	* Returns sequence of printers The sequence can be modified.
 
-Returns sequence of printers  
-         The sequence can be modified.") ChangePrinters;
+	:rtype: Message_SequenceOfPrinters
+") ChangePrinters;
 		Message_SequenceOfPrinters & ChangePrinters ();
-		%feature("autodoc", "Args:
-	theString(char *)
-	theGravity(Message_Gravity)=Message_Warning
-	putEndl(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Dispatch a message to all the printers in the list. Three versions of string representations are accepted for convenience, by default all are converted to ExtendedString. The parameter putEndl specifies whether the new line should be started after this message (default) or not (may have sense in some conditions).
 
-Returns:
-	None
-
-Dispatch a message to all the printers in the list.  
-         Three versions of string representations are accepted for  
-         convenience, by default all are converted to ExtendedString.  
-         The parameter putEndl specifies whether the new line should  
-         be started after this message (default) or not (may have  
-         sense in some conditions).") Send;
+	:param theString:
+	:type theString: char *
+	:param theGravity: default value is Message_Warning
+	:type theGravity: Message_Gravity
+	:param putEndl: default value is Standard_True
+	:type putEndl: bool
+	:rtype: None
+") Send;
 		void Send (const char * theString,const Message_Gravity theGravity = Message_Warning,const Standard_Boolean putEndl = Standard_True);
-		%feature("autodoc", "Args:
-	theString(TCollection_AsciiString)
-	theGravity(Message_Gravity)=Message_Warning
-	putEndl(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* See above
 
-Returns:
-	None
-
-See above") Send;
+	:param theString:
+	:type theString: TCollection_AsciiString &
+	:param theGravity: default value is Message_Warning
+	:type theGravity: Message_Gravity
+	:param putEndl: default value is Standard_True
+	:type putEndl: bool
+	:rtype: None
+") Send;
 		void Send (const TCollection_AsciiString & theString,const Message_Gravity theGravity = Message_Warning,const Standard_Boolean putEndl = Standard_True);
-		%feature("autodoc", "Args:
-	theString(TCollection_ExtendedString)
-	theGravity(Message_Gravity)=Message_Warning
-	putEndl(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* See above
 
-Returns:
-	None
-
-See above") Send;
+	:param theString:
+	:type theString: TCollection_ExtendedString &
+	:param theGravity: default value is Message_Warning
+	:type theGravity: Message_Gravity
+	:param putEndl: default value is Standard_True
+	:type putEndl: bool
+	:rtype: None
+") Send;
 		void Send (const TCollection_ExtendedString & theString,const Message_Gravity theGravity = Message_Warning,const Standard_Boolean putEndl = Standard_True);
 };
 
@@ -1002,74 +835,53 @@ def __del__(self):
 %nodefaultctor Message_MsgFile;
 class Message_MsgFile {
 	public:
-		%feature("autodoc", "Args:
-	theDirName(char *)
-	theFileName(char *)
+		%feature("autodoc", "	* Load message file <theFileName> from directory <theDirName> or its sub-directory
 
-Returns:
-	static Standard_Boolean
-
-Load message file <theFileName> from directory <theDirName>  
-         or its sub-directory") Load;
+	:param theDirName:
+	:type theDirName: char *
+	:param theFileName:
+	:type theFileName: char *
+	:rtype: bool
+") Load;
 		static Standard_Boolean Load (const char * theDirName,const char * theFileName);
-		%feature("autodoc", "Args:
-	theFName(char *)
+		%feature("autodoc", "	* Load the messages from the given file, additive to any previously loaded messages. Messages with same keywords, if already present, are replaced with the new ones.
 
-Returns:
-	static Standard_Boolean
-
-Load the messages from the given file, additive to any previously  
-         loaded messages. Messages with same keywords, if already present,  
-         are replaced with the new ones.") LoadFile;
+	:param theFName:
+	:type theFName: char *
+	:rtype: bool
+") LoadFile;
 		static Standard_Boolean LoadFile (const char * theFName);
-		%feature("autodoc", "Args:
-	envname(char *)
-	filename(char *)
-	ext(char *)=
+		%feature("autodoc", "	* Loads the messages from the file with name (without extension) given by environment variable. Extension of the file name is given separately. If its not defined, it is taken: - by default from environment CSF_LANGUAGE, - if not defined either, as 'us'.
 
-Returns:
-	static void
-
-Loads the messages from the file with name (without extension)  
-         given by environment variable.  
-         Extension of the file name is given separately. If its not  
-         defined, it is taken:  
-         - by default from environment CSF_LANGUAGE,  
-         - if not defined either, as 'us'.") LoadFromEnv;
+	:param envname:
+	:type envname: char *
+	:param filename:
+	:type filename: char *
+	:param ext: default value is 
+	:type ext: char *
+	:rtype: void
+") LoadFromEnv;
 		static void LoadFromEnv (const char * envname,const char * filename,const char * ext = "");
-		%feature("autodoc", "Args:
-	key(TCollection_AsciiString)
-	text(TCollection_ExtendedString)
+		%feature("autodoc", "	* Adds new message to the map. Parameter <key> gives the key of the message, <text> defines the message itself. If there already was defined the message identified by the same keyword, it is replaced with the new one.
 
-Returns:
-	static Standard_Boolean
-
-Adds new message to the map. Parameter <key> gives  
-         the key of the message, <text> defines the message itself.  
-         If there already was defined the message identified by the  
-         same keyword, it is replaced with the new one.") AddMsg;
+	:param key:
+	:type key: TCollection_AsciiString &
+	:param text:
+	:type text: TCollection_ExtendedString &
+	:rtype: bool
+") AddMsg;
 		static Standard_Boolean AddMsg (const TCollection_AsciiString & key,const TCollection_ExtendedString & text);
-		%feature("autodoc", "Args:
-	key(char *)
-
-Returns:
-	static  TCollection_ExtendedString
-
-No detailed docstring for this function.") Msg;
+		%feature("autodoc", "	:param key:
+	:type key: char *
+	:rtype: TCollection_ExtendedString
+") Msg;
 		static const TCollection_ExtendedString & Msg (const char * key);
-		%feature("autodoc", "Args:
-	key(TCollection_AsciiString)
+		%feature("autodoc", "	* Gives the text for the message identified by the keyword <key> If there are no messages with such keyword defined, the error message is returned. In that case reference to static string is returned, it can be chenged with next call(s) to Msg(). Note: The error message is constructed like 'Unknown message: <key>', and can itself be customized by defining message with key Message_Msg_BadKeyword.
 
-Returns:
-	static  TCollection_ExtendedString
-
-Gives the text for the message identified by the keyword <key>  
-         If there are no messages with such keyword defined,  
-         the error message is returned.  
-         In that case reference to static string is returned, it can  
-         be chenged with next call(s) to Msg().  
-         Note: The error message is constructed like 'Unknown message: <key>', and can  
-               itself be customized by defining message with key Message_Msg_BadKeyword.") Msg;
+	:param key:
+	:type key: TCollection_AsciiString &
+	:rtype: TCollection_ExtendedString
+") Msg;
 		static const TCollection_ExtendedString & Msg (const TCollection_AsciiString & key);
 };
 
@@ -1091,44 +903,38 @@ def __del__(self):
 %nodefaultctor Message_Printer;
 class Message_Printer : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	theString(TCollection_ExtendedString)
-	theGravity(Message_Gravity)
-	putEndl(Standard_Boolean)
+		%feature("autodoc", "	* Send a string message with specified trace level. The parameter putEndl specified whether end-of-line should be added to the end of the message. This method must be redefined in descentant.
 
-Returns:
-	virtual void
-
-Send a string message with specified trace level.  
-         The parameter putEndl specified whether end-of-line  
-         should be added to the end of the message.  
-         This method must be redefined in descentant.") Send;
+	:param theString:
+	:type theString: TCollection_ExtendedString &
+	:param theGravity:
+	:type theGravity: Message_Gravity
+	:param putEndl:
+	:type putEndl: bool
+	:rtype: void
+") Send;
 		virtual void Send (const TCollection_ExtendedString & theString,const Message_Gravity theGravity,const Standard_Boolean putEndl);
-		%feature("autodoc", "Args:
-	theString(char *)
-	theGravity(Message_Gravity)
-	putEndl(Standard_Boolean)
+		%feature("autodoc", "	* Send a string message with specified trace level. The parameter putEndl specified whether end-of-line should be added to the end of the message. Default implementation calls first method Send().
 
-Returns:
-	virtual void
-
-Send a string message with specified trace level.  
-         The parameter putEndl specified whether end-of-line  
-         should be added to the end of the message.  
-         Default implementation calls first method Send().") Send;
+	:param theString:
+	:type theString: char *
+	:param theGravity:
+	:type theGravity: Message_Gravity
+	:param putEndl:
+	:type putEndl: bool
+	:rtype: void
+") Send;
 		virtual void Send (const char * theString,const Message_Gravity theGravity,const Standard_Boolean putEndl);
-		%feature("autodoc", "Args:
-	theString(TCollection_AsciiString)
-	theGravity(Message_Gravity)
-	putEndl(Standard_Boolean)
+		%feature("autodoc", "	* Send a string message with specified trace level. The parameter putEndl specified whether end-of-line should be added to the end of the message. Default implementation calls first method Send().
 
-Returns:
-	virtual void
-
-Send a string message with specified trace level.  
-         The parameter putEndl specified whether end-of-line  
-         should be added to the end of the message.  
-         Default implementation calls first method Send().") Send;
+	:param theString:
+	:type theString: TCollection_AsciiString &
+	:param theGravity:
+	:type theGravity: Message_Gravity
+	:param putEndl:
+	:type putEndl: bool
+	:rtype: void
+") Send;
 		virtual void Send (const TCollection_AsciiString & theString,const Message_Gravity theGravity,const Standard_Boolean putEndl);
 };
 
@@ -1189,230 +995,178 @@ def __del__(self):
 %nodefaultctor Message_ProgressIndicator;
 class Message_ProgressIndicator : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Drops all scopes and sets scale from 0 to 100, step 1 This scale has name 'Step'
 
-Drops all scopes and sets scale from 0 to 100, step 1  
-         This scale has name 'Step'") Reset;
+	:rtype: void
+") Reset;
 		virtual void Reset ();
-		%feature("autodoc", "Args:
-	name(char *)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetName;
+		%feature("autodoc", "	:param name:
+	:type name: char *
+	:rtype: None
+") SetName;
 		void SetName (const char * name);
-		%feature("autodoc", "Args:
-	name(Handle_TCollection_HAsciiString)
+		%feature("autodoc", "	* Set (optional) name for scale
 
-Returns:
-	None
-
-Set (optional) name for scale") SetName;
+	:param name:
+	:type name: Handle_TCollection_HAsciiString &
+	:rtype: None
+") SetName;
 		void SetName (const Handle_TCollection_HAsciiString & name);
-		%feature("autodoc", "Args:
-	min(Standard_Real)
-	max(Standard_Real)
+		%feature("autodoc", "	* Set range for current scale
 
-Returns:
-	None
-
-Set range for current scale") SetRange;
+	:param min:
+	:type min: float
+	:param max:
+	:type max: float
+	:rtype: None
+") SetRange;
 		void SetRange (const Standard_Real min,const Standard_Real max);
-		%feature("autodoc", "Args:
-	step(Standard_Real)
+		%feature("autodoc", "	* Set step for current scale
 
-Returns:
-	None
-
-Set step for current scale") SetStep;
+	:param step:
+	:type step: float
+	:rtype: None
+") SetStep;
 		void SetStep (const Standard_Real step);
-		%feature("autodoc", "Args:
-	isInf(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Set or drop infinite mode for the current scale
 
-Returns:
-	None
-
-Set or drop infinite mode for the current scale") SetInfinite;
+	:param isInf: default value is Standard_True
+	:type isInf: bool
+	:rtype: None
+") SetInfinite;
 		void SetInfinite (const Standard_Boolean isInf = Standard_True);
-		%feature("autodoc", "Args:
-	name(char *)
-	min(Standard_Real)
-	max(Standard_Real)
-	step(Standard_Real)
-	isInf(Standard_Boolean)=Standard_False
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetScale;
+		%feature("autodoc", "	:param name:
+	:type name: char *
+	:param min:
+	:type min: float
+	:param max:
+	:type max: float
+	:param step:
+	:type step: float
+	:param isInf: default value is Standard_False
+	:type isInf: bool
+	:rtype: None
+") SetScale;
 		void SetScale (const char * name,const Standard_Real min,const Standard_Real max,const Standard_Real step,const Standard_Boolean isInf = Standard_False);
-		%feature("autodoc", "Args:
-	min(Standard_Real)
-	max(Standard_Real)
-	step(Standard_Real)
-	isInf(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Set all parameters for current scale
 
-Returns:
-	None
-
-Set all parameters for current scale") SetScale;
+	:param min:
+	:type min: float
+	:param max:
+	:type max: float
+	:param step:
+	:type step: float
+	:param isInf: default value is Standard_False
+	:type isInf: bool
+	:rtype: None
+") SetScale;
 		void SetScale (const Standard_Real min,const Standard_Real max,const Standard_Real step,const Standard_Boolean isInf = Standard_False);
-		%feature("autodoc", "Args:
-	min(Standard_Real)
-	max(Standard_Real)
-	step(Standard_Real)
-	isInf(Standard_Boolean)
+		%feature("autodoc", "	* Returns all parameters for current scale
 
-Returns:
-	None
-
-Returns all parameters for current scale") GetScale;
+	:param min:
+	:type min: float &
+	:param max:
+	:type max: float &
+	:param step:
+	:type step: float &
+	:param isInf:
+	:type isInf: bool
+	:rtype: None
+") GetScale;
 		void GetScale (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Boolean & isInf);
-		%feature("autodoc", "Args:
-	val(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param val:
+	:type val: float
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Real val);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Set and get progress value at current scale If the value to be set is more than currently set one, or out of range for the current scale, it is limited by that range
 
-Set and get progress value at current scale  
-         If the value to be set is more than currently set one, or out  
-         of range for the current scale, it is limited by that range") GetValue;
+	:rtype: float
+") GetValue;
 		Standard_Real GetValue ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Increment;
+		%feature("autodoc", "	:rtype: None
+") Increment;
 		void Increment ();
-		%feature("autodoc", "Args:
-	step(Standard_Real)
+		%feature("autodoc", "	* Increment the progress value by the default of specified step
 
-Returns:
-	None
-
-Increment the progress value by the default of specified step") Increment;
+	:param step:
+	:type step: float
+	:rtype: None
+") Increment;
 		void Increment (const Standard_Real step);
-		%feature("autodoc", "Args:
-	name(char *)=0
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") NewScope;
+		%feature("autodoc", "	:param name: default value is 0
+	:type name: char *
+	:rtype: bool
+") NewScope;
 		Standard_Boolean NewScope (const char * name = 0);
-		%feature("autodoc", "Args:
-	name(Handle_TCollection_HAsciiString)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") NewScope;
+		%feature("autodoc", "	:param name:
+	:type name: Handle_TCollection_HAsciiString &
+	:rtype: bool
+") NewScope;
 		Standard_Boolean NewScope (const Handle_TCollection_HAsciiString & name);
-		%feature("autodoc", "Args:
-	span(Standard_Real)
-	name(char *)=0
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") NewScope;
+		%feature("autodoc", "	:param span:
+	:type span: float
+	:param name: default value is 0
+	:type name: char *
+	:rtype: bool
+") NewScope;
 		Standard_Boolean NewScope (const Standard_Real span,const char * name = 0);
-		%feature("autodoc", "Args:
-	span(Standard_Real)
-	name(Handle_TCollection_HAsciiString)
+		%feature("autodoc", "	* Creates new scope on a part of a current scale from current position with span either equal to default step, or specified The scale for the new scope will have specified name and ranged from 0 to 100 with step 1 Returns False if something is wrong in arguments or in current position of progress indicator; scope is opened anyway
 
-Returns:
-	Standard_Boolean
-
-Creates new scope on a part of a current scale from current  
-         position with span either equal to default step, or specified  
-         The scale for the new scope will have specified name and  
-         ranged from 0 to 100 with step 1  
-         Returns False if something is wrong in arguments or in current  
-         position of progress indicator; scope is opened anyway") NewScope;
+	:param span:
+	:type span: float
+	:param name:
+	:type name: Handle_TCollection_HAsciiString &
+	:rtype: bool
+") NewScope;
 		Standard_Boolean NewScope (const Standard_Real span,const Handle_TCollection_HAsciiString & name);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Close the current scope and thus return to previous scale Updates position to be at the end of the closing scope Returns False if no scope is opened
 
-Close the current scope and thus return to previous scale  
-         Updates position to be at the end of the closing scope  
-         Returns False if no scope is opened") EndScope;
+	:rtype: bool
+") EndScope;
 		Standard_Boolean EndScope ();
-		%feature("autodoc", "Args:
-	name(char *)=0
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") NextScope;
+		%feature("autodoc", "	:param name: default value is 0
+	:type name: char *
+	:rtype: bool
+") NextScope;
 		Standard_Boolean NextScope (const char * name = 0);
-		%feature("autodoc", "Args:
-	span(Standard_Real)
-	name(char *)=0
+		%feature("autodoc", "	* Optimized version of { return EndScope() && NewScope(); }
 
-Returns:
-	Standard_Boolean
-
-Optimized version of { return EndScope() && NewScope(); }") NextScope;
+	:param span:
+	:type span: float
+	:param name: default value is 0
+	:type name: char *
+	:rtype: bool
+") NextScope;
 		Standard_Boolean NextScope (const Standard_Real span,const char * name = 0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Should return True if user has send a break signal. Default implementation returns False.
 
-Should return True if user has send a break signal.  
-         Default implementation returns False.") UserBreak;
+	:rtype: bool
+") UserBreak;
 		virtual Standard_Boolean UserBreak ();
-		%feature("autodoc", "Args:
-	force(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Update presentation of the progress indicator Called when progress position is changed Flag force is intended for forcing update in case if it is optimized; all internal calls from ProgressIndicator are done with this flag equal to False
 
-Returns:
-	virtual Standard_Boolean
-
-Update presentation of the progress indicator  
-         Called when progress position is changed  
-         Flag force is intended for forcing update in case if it is  
-         optimized; all internal calls from ProgressIndicator are  
-         done with this flag equal to False") Show;
+	:param force: default value is Standard_True
+	:type force: bool
+	:rtype: bool
+") Show;
 		virtual Standard_Boolean Show (const Standard_Boolean force = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns total progress position on the basic scale ranged from 0. to 1.
 
-Returns total progress position on the basic scale  
-         ranged from 0. to 1.") GetPosition;
+	:rtype: float
+") GetPosition;
 		Standard_Real GetPosition ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns current number of opened scopes This number is always >=1 as top-level scale is always present
 
-Returns current number of opened scopes  
-         This number is always >=1 as top-level scale is always present") GetNbScopes;
+	:rtype: int
+") GetNbScopes;
 		Standard_Integer GetNbScopes ();
-		%feature("autodoc", "Args:
-	index(Standard_Integer)
+		%feature("autodoc", "	* Returns data for scale of index-th scope The first scope is current one, the last is the top-level one
 
-Returns:
-	Message_ProgressScale
-
-Returns data for scale of index-th scope  
-         The first scope is current one, the last is the top-level one") GetScope;
+	:param index:
+	:type index: Standard_Integer
+	:rtype: Message_ProgressScale
+") GetScope;
 		const Message_ProgressScale & GetScope (const Standard_Integer index);
 };
 
@@ -1473,155 +1227,126 @@ def __del__(self):
 %nodefaultctor Message_ProgressScale;
 class Message_ProgressScale {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates scale ranged from 0 to 100 with step 1
 
-Creates scale ranged from 0 to 100 with step 1") Message_ProgressScale;
+	:rtype: None
+") Message_ProgressScale;
 		 Message_ProgressScale ();
-		%feature("autodoc", "Args:
-	theName(char *)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetName;
+		%feature("autodoc", "	:param theName:
+	:type theName: char *
+	:rtype: None
+") SetName;
 		void SetName (const char * theName);
-		%feature("autodoc", "Args:
-	theName(Handle_TCollection_HAsciiString)
+		%feature("autodoc", "	* Sets scale name
 
-Returns:
-	None
-
-Sets scale name") SetName;
+	:param theName:
+	:type theName: Handle_TCollection_HAsciiString &
+	:rtype: None
+") SetName;
 		void SetName (const Handle_TCollection_HAsciiString & theName);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TCollection_HAsciiString
+		%feature("autodoc", "	* Gets scale name Name may be Null handle if not set
 
-Gets scale name  
-         Name may be Null handle if not set") GetName;
+	:rtype: Handle_TCollection_HAsciiString
+") GetName;
 		Handle_TCollection_HAsciiString GetName ();
-		%feature("autodoc", "Args:
-	theMin(Standard_Real)
+		%feature("autodoc", "	* Sets minimum value of scale
 
-Returns:
-	None
-
-Sets minimum value of scale") SetMin;
+	:param theMin:
+	:type theMin: float
+	:rtype: None
+") SetMin;
 		void SetMin (const Standard_Real theMin);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Gets minimum value of scale
 
-Gets minimum value of scale") GetMin;
+	:rtype: float
+") GetMin;
 		Standard_Real GetMin ();
-		%feature("autodoc", "Args:
-	theMax(Standard_Real)
+		%feature("autodoc", "	* Sets minimum value of scale
 
-Returns:
-	None
-
-Sets minimum value of scale") SetMax;
+	:param theMax:
+	:type theMax: float
+	:rtype: None
+") SetMax;
 		void SetMax (const Standard_Real theMax);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Gets minimum value of scale
 
-Gets minimum value of scale") GetMax;
+	:rtype: float
+") GetMax;
 		Standard_Real GetMax ();
-		%feature("autodoc", "Args:
-	min(Standard_Real)
-	max(Standard_Real)
+		%feature("autodoc", "	* Set both min and max
 
-Returns:
-	None
-
-Set both min and max") SetRange;
+	:param min:
+	:type min: float
+	:param max:
+	:type max: float
+	:rtype: None
+") SetRange;
 		void SetRange (const Standard_Real min,const Standard_Real max);
-		%feature("autodoc", "Args:
-	theStep(Standard_Real)
+		%feature("autodoc", "	* Sets default step
 
-Returns:
-	None
-
-Sets default step") SetStep;
+	:param theStep:
+	:type theStep: float
+	:rtype: None
+") SetStep;
 		void SetStep (const Standard_Real theStep);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Gets default step
 
-Gets default step") GetStep;
+	:rtype: float
+") GetStep;
 		Standard_Real GetStep ();
-		%feature("autodoc", "Args:
-	theInfinite(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Sets flag for infinite scale
 
-Returns:
-	None
-
-Sets flag for infinite scale") SetInfinite;
+	:param theInfinite: default value is Standard_True
+	:type theInfinite: bool
+	:rtype: None
+") SetInfinite;
 		void SetInfinite (const Standard_Boolean theInfinite = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Gets flag for infinite scale
 
-Gets flag for infinite scale") GetInfinite;
+	:rtype: bool
+") GetInfinite;
 		Standard_Boolean GetInfinite ();
-		%feature("autodoc", "Args:
-	min(Standard_Real)
-	max(Standard_Real)
-	step(Standard_Real)
-	theInfinite(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Set all scale parameters
 
-Returns:
-	None
-
-Set all scale parameters") SetScale;
+	:param min:
+	:type min: float
+	:param max:
+	:type max: float
+	:param step:
+	:type step: float
+	:param theInfinite: default value is Standard_True
+	:type theInfinite: bool
+	:rtype: None
+") SetScale;
 		void SetScale (const Standard_Real min,const Standard_Real max,const Standard_Real step,const Standard_Boolean theInfinite = Standard_True);
-		%feature("autodoc", "Args:
-	first(Standard_Real)
-	last(Standard_Real)
+		%feature("autodoc", "	* Defines span occupied by the scale on the basis scale
 
-Returns:
-	None
-
-Defines span occupied by the scale on the basis scale") SetSpan;
+	:param first:
+	:type first: float
+	:param last:
+	:type last: float
+	:rtype: None
+") SetSpan;
 		void SetSpan (const Standard_Real first,const Standard_Real last);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") GetFirst;
+		%feature("autodoc", "	:rtype: float
+") GetFirst;
 		Standard_Real GetFirst ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Return information on span occupied by the scale on the base scale
 
-Return information on span occupied by the scale on the base scale") GetLast;
+	:rtype: float
+") GetLast;
 		Standard_Real GetLast ();
-		%feature("autodoc", "Args:
-	val(Standard_Real)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") LocalToBase;
+		%feature("autodoc", "	:param val:
+	:type val: float
+	:rtype: float
+") LocalToBase;
 		Standard_Real LocalToBase (const Standard_Real val);
-		%feature("autodoc", "Args:
-	val(Standard_Real)
+		%feature("autodoc", "	* Convert value from this scale to base one and back
 
-Returns:
-	Standard_Real
-
-Convert value from this scale to base one and back") BaseToLocal;
+	:param val:
+	:type val: float
+	:rtype: float
+") BaseToLocal;
 		Standard_Real BaseToLocal (const Standard_Real val);
 };
 
@@ -1643,86 +1368,77 @@ def __del__(self):
 %nodefaultctor Message_ProgressSentry;
 class Message_ProgressSentry {
 	public:
-		%feature("autodoc", "Args:
-	PI(Handle_Message_ProgressIndicator)
-	name(char *)
-	min(Standard_Real)
-	max(Standard_Real)
-	step(Standard_Real)
-	isInf(Standard_Boolean)=Standard_False
-	newScopeSpan(Standard_Real)=0.0
-
-Returns:
-	None
-
-No detailed docstring for this function.") Message_ProgressSentry;
+		%feature("autodoc", "	:param PI:
+	:type PI: Handle_Message_ProgressIndicator &
+	:param name:
+	:type name: char *
+	:param min:
+	:type min: float
+	:param max:
+	:type max: float
+	:param step:
+	:type step: float
+	:param isInf: default value is Standard_False
+	:type isInf: bool
+	:param newScopeSpan: default value is 0.0
+	:type newScopeSpan: float
+	:rtype: None
+") Message_ProgressSentry;
 		 Message_ProgressSentry (const Handle_Message_ProgressIndicator & PI,const char * name,const Standard_Real min,const Standard_Real max,const Standard_Real step,const Standard_Boolean isInf = Standard_False,const Standard_Real newScopeSpan = 0.0);
-		%feature("autodoc", "Args:
-	PI(Handle_Message_ProgressIndicator)
-	name(Handle_TCollection_HAsciiString)
-	min(Standard_Real)
-	max(Standard_Real)
-	step(Standard_Real)
-	isInf(Standard_Boolean)=Standard_False
-	newScopeSpan(Standard_Real)=0.0
+		%feature("autodoc", "	* Creates an instance of ProgressSentry attaching it to the specified ProgressIndicator, selects parameters of the current scale, and opens a new scope with specified span (equal to step by default)
 
-Returns:
-	None
-
-Creates an instance of ProgressSentry attaching it to  
-         the specified ProgressIndicator, selects parameters of  
-         the current scale, and opens a new scope with specified  
-         span (equal to step by default)") Message_ProgressSentry;
+	:param PI:
+	:type PI: Handle_Message_ProgressIndicator &
+	:param name:
+	:type name: Handle_TCollection_HAsciiString &
+	:param min:
+	:type min: float
+	:param max:
+	:type max: float
+	:param step:
+	:type step: float
+	:param isInf: default value is Standard_False
+	:type isInf: bool
+	:param newScopeSpan: default value is 0.0
+	:type newScopeSpan: float
+	:rtype: None
+") Message_ProgressSentry;
 		 Message_ProgressSentry (const Handle_Message_ProgressIndicator & PI,const Handle_TCollection_HAsciiString & name,const Standard_Real min,const Standard_Real max,const Standard_Real step,const Standard_Boolean isInf = Standard_False,const Standard_Real newScopeSpan = 0.0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Moves progress indicator to the end of the current scale and relieves sentry from its duty. Methods other than Show() will do nothing after this one is called.
 
-Moves progress indicator to the end of the current scale  
-         and relieves sentry from its duty. Methods other than Show()  
-         will do nothing after this one is called.") Relieve;
+	:rtype: None
+") Relieve;
 		void Relieve ();
-		%feature("autodoc", "Args:
-	name(char *)=0
-
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:param name: default value is 0
+	:type name: char *
+	:rtype: None
+") Next;
 		void Next (const char * name = 0);
-		%feature("autodoc", "Args:
-	span(Standard_Real)
-	name(char *)=0
-
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:param span:
+	:type span: float
+	:param name: default value is 0
+	:type name: char *
+	:rtype: None
+") Next;
 		void Next (const Standard_Real span,const char * name = 0);
-		%feature("autodoc", "Args:
-	span(Standard_Real)
-	name(Handle_TCollection_HAsciiString)
+		%feature("autodoc", "	* Closes current scope and opens next one with either specified or default span
 
-Returns:
-	None
-
-Closes current scope and opens next one  
-         with either specified or default span") Next;
+	:param span:
+	:type span: float
+	:param name:
+	:type name: Handle_TCollection_HAsciiString &
+	:rtype: None
+") Next;
 		void Next (const Standard_Real span,const Handle_TCollection_HAsciiString & name);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns False if ProgressIndicator signals UserBreak
 
-Returns False if ProgressIndicator signals UserBreak") More;
+	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Forces update of progress indicator display
 
-Forces update of progress indicator display") Show;
+	:rtype: None
+") Show;
 		void Show ();
 };
 
@@ -1744,22 +1460,17 @@ def __del__(self):
 %nodefaultctor Message_SequenceNodeOfSequenceOfPrinters;
 class Message_SequenceNodeOfSequenceOfPrinters : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Message_Printer)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Message_SequenceNodeOfSequenceOfPrinters;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Message_Printer &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Message_SequenceNodeOfSequenceOfPrinters;
 		 Message_SequenceNodeOfSequenceOfPrinters (const Handle_Message_Printer & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Message_Printer
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Message_Printer
+") Value;
 		Handle_Message_Printer & Value ();
 };
 
@@ -1820,22 +1531,17 @@ def __del__(self):
 %nodefaultctor Message_SequenceNodeOfSequenceOfProgressScale;
 class Message_SequenceNodeOfSequenceOfProgressScale : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Message_ProgressScale)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Message_SequenceNodeOfSequenceOfProgressScale;
+		%feature("autodoc", "	:param I:
+	:type I: Message_ProgressScale &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Message_SequenceNodeOfSequenceOfProgressScale;
 		 Message_SequenceNodeOfSequenceOfProgressScale (const Message_ProgressScale & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Message_ProgressScale
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Message_ProgressScale
+") Value;
 		Message_ProgressScale & Value ();
 };
 
@@ -1896,168 +1602,111 @@ def __del__(self):
 %nodefaultctor Message_SequenceOfPrinters;
 class Message_SequenceOfPrinters : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Message_SequenceOfPrinters;
+		%feature("autodoc", "	:rtype: None
+") Message_SequenceOfPrinters;
 		 Message_SequenceOfPrinters ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Message_SequenceOfPrinters)
-
-Returns:
-	Message_SequenceOfPrinters
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Message_SequenceOfPrinters &
+	:rtype: Message_SequenceOfPrinters
+") Assign;
 		const Message_SequenceOfPrinters & Assign (const Message_SequenceOfPrinters & Other);
-		%feature("autodoc", "Args:
-	Other(Message_SequenceOfPrinters)
-
-Returns:
-	Message_SequenceOfPrinters
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Message_SequenceOfPrinters &
+	:rtype: Message_SequenceOfPrinters
+") operator=;
 		const Message_SequenceOfPrinters & operator = (const Message_SequenceOfPrinters & Other);
-		%feature("autodoc", "Args:
-	T(Handle_Message_Printer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Message_Printer &
+	:rtype: None
+") Append;
 		void Append (const Handle_Message_Printer & T);
-		%feature("autodoc", "Args:
-	S(Message_SequenceOfPrinters)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Message_SequenceOfPrinters &
+	:rtype: None
+") Append;
 		void Append (Message_SequenceOfPrinters & S);
-		%feature("autodoc", "Args:
-	T(Handle_Message_Printer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Message_Printer &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Message_Printer & T);
-		%feature("autodoc", "Args:
-	S(Message_SequenceOfPrinters)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Message_SequenceOfPrinters &
+	:rtype: None
+") Prepend;
 		void Prepend (Message_SequenceOfPrinters & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Message_Printer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Message_Printer &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_Message_Printer & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Message_SequenceOfPrinters)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Message_SequenceOfPrinters &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Message_SequenceOfPrinters & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Message_Printer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Message_Printer &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_Message_Printer & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Message_SequenceOfPrinters)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Message_SequenceOfPrinters &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Message_SequenceOfPrinters & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Message_Printer
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_Message_Printer
+") First;
 		const Handle_Message_Printer & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Message_Printer
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_Message_Printer
+") Last;
 		const Handle_Message_Printer & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Message_SequenceOfPrinters)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Message_SequenceOfPrinters &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Message_SequenceOfPrinters & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Message_Printer
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Message_Printer
+") Value;
 		const Handle_Message_Printer & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_Message_Printer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_Message_Printer &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Message_Printer & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Message_Printer
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Message_Printer
+") ChangeValue;
 		Handle_Message_Printer & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -2079,168 +1728,111 @@ def __del__(self):
 %nodefaultctor Message_SequenceOfProgressScale;
 class Message_SequenceOfProgressScale : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Message_SequenceOfProgressScale;
+		%feature("autodoc", "	:rtype: None
+") Message_SequenceOfProgressScale;
 		 Message_SequenceOfProgressScale ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Message_SequenceOfProgressScale)
-
-Returns:
-	Message_SequenceOfProgressScale
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Message_SequenceOfProgressScale &
+	:rtype: Message_SequenceOfProgressScale
+") Assign;
 		const Message_SequenceOfProgressScale & Assign (const Message_SequenceOfProgressScale & Other);
-		%feature("autodoc", "Args:
-	Other(Message_SequenceOfProgressScale)
-
-Returns:
-	Message_SequenceOfProgressScale
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Message_SequenceOfProgressScale &
+	:rtype: Message_SequenceOfProgressScale
+") operator=;
 		const Message_SequenceOfProgressScale & operator = (const Message_SequenceOfProgressScale & Other);
-		%feature("autodoc", "Args:
-	T(Message_ProgressScale)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Message_ProgressScale &
+	:rtype: None
+") Append;
 		void Append (const Message_ProgressScale & T);
-		%feature("autodoc", "Args:
-	S(Message_SequenceOfProgressScale)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Message_SequenceOfProgressScale &
+	:rtype: None
+") Append;
 		void Append (Message_SequenceOfProgressScale & S);
-		%feature("autodoc", "Args:
-	T(Message_ProgressScale)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Message_ProgressScale &
+	:rtype: None
+") Prepend;
 		void Prepend (const Message_ProgressScale & T);
-		%feature("autodoc", "Args:
-	S(Message_SequenceOfProgressScale)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Message_SequenceOfProgressScale &
+	:rtype: None
+") Prepend;
 		void Prepend (Message_SequenceOfProgressScale & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Message_ProgressScale)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Message_ProgressScale &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Message_ProgressScale & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Message_SequenceOfProgressScale)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Message_SequenceOfProgressScale &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Message_SequenceOfProgressScale & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Message_ProgressScale)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Message_ProgressScale &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Message_ProgressScale & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Message_SequenceOfProgressScale)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Message_SequenceOfProgressScale &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Message_SequenceOfProgressScale & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Message_ProgressScale
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Message_ProgressScale
+") First;
 		const Message_ProgressScale & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Message_ProgressScale
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Message_ProgressScale
+") Last;
 		const Message_ProgressScale & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Message_SequenceOfProgressScale)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Message_SequenceOfProgressScale &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Message_SequenceOfProgressScale & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Message_ProgressScale
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Message_ProgressScale
+") Value;
 		const Message_ProgressScale & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Message_ProgressScale)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Message_ProgressScale &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Message_ProgressScale & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Message_ProgressScale
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Message_ProgressScale
+") ChangeValue;
 		Message_ProgressScale & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -2262,113 +1854,90 @@ def __del__(self):
 %nodefaultctor Message_PrinterOStream;
 class Message_PrinterOStream : public Message_Printer {
 	public:
-		%feature("autodoc", "Args:
-	theTraceLevel(Message_Gravity)=Message_Info
+		%feature("autodoc", "	* Empty constructor, defaulting to cout
 
-Returns:
-	None
-
-Empty constructor, defaulting to cout") Message_PrinterOStream;
+	:param theTraceLevel: default value is Message_Info
+	:type theTraceLevel: Message_Gravity
+	:rtype: None
+") Message_PrinterOStream;
 		 Message_PrinterOStream (const Message_Gravity theTraceLevel = Message_Info);
-		%feature("autodoc", "Args:
-	theFileName(char *)
-	theDoAppend(Standard_Boolean)
-	theTraceLevel(Message_Gravity)=Message_Info
+		%feature("autodoc", "	* Create printer for output to a specified file. The option theDoAppend specifies whether file should be appended or rewritten. For specific file names (cout, cerr) standard streams are used
 
-Returns:
-	None
-
-Create printer for output to a specified file.  
-         The option theDoAppend specifies whether file should be  
-         appended or rewritten.  
-         For specific file names (cout, cerr) standard streams are used") Message_PrinterOStream;
+	:param theFileName:
+	:type theFileName: char *
+	:param theDoAppend:
+	:type theDoAppend: bool
+	:param theTraceLevel: default value is Message_Info
+	:type theTraceLevel: Message_Gravity
+	:rtype: None
+") Message_PrinterOStream;
 		 Message_PrinterOStream (const char * theFileName,const Standard_Boolean theDoAppend,const Message_Gravity theTraceLevel = Message_Info);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Flushes the output stream and destroys it if it has been specified externally with option doFree (or if it is internal file stream)
 
-Flushes the output stream and destroys it if it has been  
-         specified externally with option doFree (or if it is internal  
-         file stream)") Close;
+	:rtype: None
+") Close;
 		void Close ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Message_Gravity
+		%feature("autodoc", "	* Return trace level used for filtering messages; messages with lover gravity will be ignored.
 
-Return trace level used for filtering messages;  
-         messages with lover gravity will be ignored.") GetTraceLevel;
+	:rtype: Message_Gravity
+") GetTraceLevel;
 		Message_Gravity GetTraceLevel ();
-		%feature("autodoc", "Args:
-	theTraceLevel(Message_Gravity)
+		%feature("autodoc", "	* Set trace level used for filtering messages. By default, trace level is Message_Info, so that all messages are output
 
-Returns:
-	None
-
-Set trace level used for filtering messages.  
-         By default, trace level is Message_Info, so that  
-         all messages are output") SetTraceLevel;
+	:param theTraceLevel:
+	:type theTraceLevel: Message_Gravity
+	:rtype: None
+") SetTraceLevel;
 		void SetTraceLevel (const Message_Gravity theTraceLevel);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns option to convert non-Ascii symbols to UTF8 encoding
 
-Returns option to convert non-Ascii symbols to UTF8 encoding") GetUseUtf8;
+	:rtype: bool
+") GetUseUtf8;
 		Standard_Boolean GetUseUtf8 ();
-		%feature("autodoc", "Args:
-	useUtf8(Standard_Boolean)
+		%feature("autodoc", "	* Sets option to convert non-Ascii symbols to UTF8 encoding
 
-Returns:
-	None
-
-Sets option to convert non-Ascii symbols to UTF8 encoding") SetUseUtf8;
+	:param useUtf8:
+	:type useUtf8: bool
+	:rtype: None
+") SetUseUtf8;
 		void SetUseUtf8 (const Standard_Boolean useUtf8);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_OStream
+		%feature("autodoc", "	* Returns reference to the output stream
 
-Returns reference to the output stream") GetStream;
+	:rtype: Standard_OStream
+") GetStream;
 		Standard_OStream & GetStream ();
-		%feature("autodoc", "Args:
-	theString(char *)
-	theGravity(Message_Gravity)
-	putEndl(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Puts a message to the current stream if its gravity is equal or greater to the trace level set by SetTraceLevel()
 
-Returns:
-	virtual void
-
-Puts a message to the current stream  
-         if its gravity is equal or greater  
-         to the trace level set by SetTraceLevel()") Send;
+	:param theString:
+	:type theString: char *
+	:param theGravity:
+	:type theGravity: Message_Gravity
+	:param putEndl: default value is Standard_True
+	:type putEndl: bool
+	:rtype: void
+") Send;
 		virtual void Send (const char * theString,const Message_Gravity theGravity,const Standard_Boolean putEndl = Standard_True);
-		%feature("autodoc", "Args:
-	theString(TCollection_AsciiString)
-	theGravity(Message_Gravity)
-	putEndl(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Puts a message to the current stream if its gravity is equal or greater to the trace level set by SetTraceLevel()
 
-Returns:
-	virtual void
-
-Puts a message to the current stream  
-         if its gravity is equal or greater  
-         to the trace level set by SetTraceLevel()") Send;
+	:param theString:
+	:type theString: TCollection_AsciiString &
+	:param theGravity:
+	:type theGravity: Message_Gravity
+	:param putEndl: default value is Standard_True
+	:type putEndl: bool
+	:rtype: void
+") Send;
 		virtual void Send (const TCollection_AsciiString & theString,const Message_Gravity theGravity,const Standard_Boolean putEndl = Standard_True);
-		%feature("autodoc", "Args:
-	theString(TCollection_ExtendedString)
-	theGravity(Message_Gravity)
-	putEndl(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Puts a message to the current stream if its gravity is equal or greater to the trace level set by SetTraceLevel() Non-Ascii symbols are converted to UTF-8 if UseUtf8 option is set, else replaced by symbols '?'
 
-Returns:
-	virtual void
-
-Puts a message to the current stream  
-         if its gravity is equal or greater  
-         to the trace level set by SetTraceLevel()  
-         Non-Ascii symbols are converted to UTF-8 if UseUtf8  
-         option is set, else replaced by symbols '?'") Send;
+	:param theString:
+	:type theString: TCollection_ExtendedString &
+	:param theGravity:
+	:type theGravity: Message_Gravity
+	:param putEndl: default value is Standard_True
+	:type putEndl: bool
+	:rtype: void
+") Send;
 		virtual void Send (const TCollection_ExtendedString & theString,const Message_Gravity theGravity,const Standard_Boolean putEndl = Standard_True);
 };
 

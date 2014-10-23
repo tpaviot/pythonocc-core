@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -53,18 +53,12 @@ enum TCollection_Side {
 %nodefaultctor TCollection;
 class TCollection {
 	public:
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* Returns a prime number greater than <I> suitable to dimension a Map. When <I> becomes great there is a limit on the result (today the limit is around 1 000 000). This is not a limit of the number of items but a limit in the number of buckets. i.e. there will be more collisions in the map.
 
-Returns:
-	static Standard_Integer
-
-Returns a  prime number greater than  <I> suitable  
-to dimension a Map.  When  <I> becomes great there  
-is  a  limit on  the  result (today  the  limit is  
-around 1 000 000). This is not a limit of the number of  
-items but a limit in the number  of buckets.  i.e.  
-there will be more collisions  in  the map.") NextPrimeForMap;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: int
+") NextPrimeForMap;
 		static Standard_Integer NextPrimeForMap (const Standard_Integer I);
 };
 
@@ -86,61 +80,40 @@ def __del__(self):
 %nodefaultctor TCollection_AVLBaseNode;
 class TCollection_AVLBaseNode : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	L(TCollection_AVLBaseNodePtr)
-	R(TCollection_AVLBaseNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TCollection_AVLBaseNode;
+		%feature("autodoc", "	:param L:
+	:type L: TCollection_AVLBaseNodePtr &
+	:param R:
+	:type R: TCollection_AVLBaseNodePtr &
+	:rtype: None
+") TCollection_AVLBaseNode;
 		 TCollection_AVLBaseNode (const TCollection_AVLBaseNodePtr & L,const TCollection_AVLBaseNodePtr & R);
-		%feature("autodoc", "Args:
-	theNode(TCollection_AVLBaseNodePtr)
-	theSide(TCollection_Side)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetChild;
+		%feature("autodoc", "	:param theNode:
+	:type theNode: TCollection_AVLBaseNodePtr &
+	:param theSide:
+	:type theSide: TCollection_Side
+	:rtype: None
+") SetChild;
 		void SetChild (const TCollection_AVLBaseNodePtr & theNode,const TCollection_Side theSide);
-		%feature("autodoc", "Args:
-	ANode(TCollection_AVLBaseNodePtr)
-
-Returns:
-	static Standard_Integer
-
-No detailed docstring for this function.") Height;
+		%feature("autodoc", "	:param ANode:
+	:type ANode: TCollection_AVLBaseNodePtr &
+	:rtype: int
+") Height;
 		static Standard_Integer Height (const TCollection_AVLBaseNodePtr & ANode);
-		%feature("autodoc", "Args:
-	ANode(TCollection_AVLBaseNodePtr)
-
-Returns:
-	static Standard_Integer
-
-No detailed docstring for this function.") RecursiveExtent;
+		%feature("autodoc", "	:param ANode:
+	:type ANode: TCollection_AVLBaseNodePtr &
+	:rtype: int
+") RecursiveExtent;
 		static Standard_Integer RecursiveExtent (const TCollection_AVLBaseNodePtr & ANode);
-		%feature("autodoc", "Args:
-	ANode(TCollection_AVLBaseNodePtr)
-
-Returns:
-	static Standard_Integer
-
-No detailed docstring for this function.") RecursiveTotalExtent;
+		%feature("autodoc", "	:param ANode:
+	:type ANode: TCollection_AVLBaseNodePtr &
+	:rtype: int
+") RecursiveTotalExtent;
 		static Standard_Integer RecursiveTotalExtent (const TCollection_AVLBaseNodePtr & ANode);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AVLBaseNodePtr
-
-No detailed docstring for this function.") Right;
+		%feature("autodoc", "	:rtype: TCollection_AVLBaseNodePtr
+") Right;
 		TCollection_AVLBaseNodePtr & Right ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AVLBaseNodePtr
-
-No detailed docstring for this function.") Left;
+		%feature("autodoc", "	:rtype: TCollection_AVLBaseNodePtr
+") Left;
 		TCollection_AVLBaseNodePtr & Left ();
 
             %feature("autodoc","1");
@@ -214,26 +187,14 @@ def __del__(self):
 %nodefaultctor TCollection_Array1Descriptor;
 class TCollection_Array1Descriptor {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Address;
+		%feature("autodoc", "	:rtype: Standard_Address
+") Address;
 		Standard_Address Address ();
 };
 
@@ -255,40 +216,20 @@ def __del__(self):
 %nodefaultctor TCollection_Array2Descriptor;
 class TCollection_Array2Descriptor {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperRow;
+		%feature("autodoc", "	:rtype: int
+") UpperRow;
 		Standard_Integer UpperRow ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerRow;
+		%feature("autodoc", "	:rtype: int
+") LowerRow;
 		Standard_Integer LowerRow ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperCol;
+		%feature("autodoc", "	:rtype: int
+") UpperCol;
 		Standard_Integer UpperCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerCol;
+		%feature("autodoc", "	:rtype: int
+") LowerCol;
 		Standard_Integer LowerCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Address;
+		%feature("autodoc", "	:rtype: Standard_Address
+") Address;
 		Standard_Address Address ();
 };
 
@@ -310,543 +251,357 @@ def __del__(self):
 %nodefaultctor TCollection_AsciiString;
 class TCollection_AsciiString {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Initializes a AsciiString to an empty AsciiString.
 
-Initializes a AsciiString to an empty AsciiString.") TCollection_AsciiString;
+	:rtype: None
+") TCollection_AsciiString;
 		 TCollection_AsciiString ();
-		%feature("autodoc", "Args:
-	message(char *)
+		%feature("autodoc", "	* Initializes a AsciiString with a CString.
 
-Returns:
-	None
-
-Initializes a AsciiString with a CString.") TCollection_AsciiString;
+	:param message:
+	:type message: char *
+	:rtype: None
+") TCollection_AsciiString;
 		 TCollection_AsciiString (const char * message);
-		%feature("autodoc", "Args:
-	message(char *)
-	aLen(Standard_Integer)
+		%feature("autodoc", "	* Initializes a AsciiString with a CString.
 
-Returns:
-	None
-
-Initializes a AsciiString with a CString.") TCollection_AsciiString;
+	:param message:
+	:type message: char *
+	:param aLen:
+	:type aLen: Standard_Integer
+	:rtype: None
+") TCollection_AsciiString;
 		 TCollection_AsciiString (const char * message,const Standard_Integer aLen);
-		%feature("autodoc", "Args:
-	aChar(Standard_Character)
+		%feature("autodoc", "	* Initializes a AsciiString with a single character.
 
-Returns:
-	None
-
-Initializes a AsciiString with a single character.") TCollection_AsciiString;
+	:param aChar:
+	:type aChar: Standard_Character
+	:rtype: None
+") TCollection_AsciiString;
 		 TCollection_AsciiString (const Standard_Character aChar);
-		%feature("autodoc", "Args:
-	length(Standard_Integer)
-	filler(Standard_Character)
+		%feature("autodoc", "	* Initializes an AsciiString with <length> space allocated. and filled with <filler>. This is usefull for buffers.
 
-Returns:
-	None
-
-Initializes an AsciiString with <length> space allocated.  
-and filled with <filler>. This is usefull for buffers.") TCollection_AsciiString;
+	:param length:
+	:type length: Standard_Integer
+	:param filler:
+	:type filler: Standard_Character
+	:rtype: None
+") TCollection_AsciiString;
 		 TCollection_AsciiString (const Standard_Integer length,const Standard_Character filler);
-		%feature("autodoc", "Args:
-	value(Standard_Integer)
+		%feature("autodoc", "	* Initializes an AsciiString with an integer value
 
-Returns:
-	None
-
-Initializes an AsciiString with an integer value") TCollection_AsciiString;
+	:param value:
+	:type value: Standard_Integer
+	:rtype: None
+") TCollection_AsciiString;
 		 TCollection_AsciiString (const Standard_Integer value);
-		%feature("autodoc", "Args:
-	value(Standard_Real)
+		%feature("autodoc", "	* Initializes an AsciiString with a real value
 
-Returns:
-	None
-
-Initializes an AsciiString with a real value") TCollection_AsciiString;
+	:param value:
+	:type value: float
+	:rtype: None
+") TCollection_AsciiString;
 		 TCollection_AsciiString (const Standard_Real value);
-		%feature("autodoc", "Args:
-	astring(TCollection_AsciiString)
+		%feature("autodoc", "	* Initializes a AsciiString with another AsciiString.
 
-Returns:
-	None
-
-Initializes a AsciiString with another AsciiString.") TCollection_AsciiString;
+	:param astring:
+	:type astring: TCollection_AsciiString &
+	:rtype: None
+") TCollection_AsciiString;
 		 TCollection_AsciiString (const TCollection_AsciiString & astring);
-		%feature("autodoc", "Args:
-	astring(TCollection_AsciiString)
-	message(Standard_Character)
+		%feature("autodoc", "	* Initializes a AsciiString with copy of another AsciiString concatenated with the message character.
 
-Returns:
-	None
-
-Initializes a AsciiString with copy of another AsciiString  
-         concatenated with the message character.") TCollection_AsciiString;
+	:param astring:
+	:type astring: TCollection_AsciiString &
+	:param message:
+	:type message: Standard_Character
+	:rtype: None
+") TCollection_AsciiString;
 		 TCollection_AsciiString (const TCollection_AsciiString & astring,const Standard_Character message);
-		%feature("autodoc", "Args:
-	astring(TCollection_AsciiString)
-	message(char *)
+		%feature("autodoc", "	* Initializes a AsciiString with copy of another AsciiString concatenated with the message string.
 
-Returns:
-	None
-
-Initializes a AsciiString with copy of another AsciiString  
-         concatenated with the message string.") TCollection_AsciiString;
+	:param astring:
+	:type astring: TCollection_AsciiString &
+	:param message:
+	:type message: char *
+	:rtype: None
+") TCollection_AsciiString;
 		 TCollection_AsciiString (const TCollection_AsciiString & astring,const char * message);
-		%feature("autodoc", "Args:
-	astring(TCollection_AsciiString)
-	message(TCollection_AsciiString)
+		%feature("autodoc", "	* Initializes a AsciiString with copy of another AsciiString concatenated with the message string.
 
-Returns:
-	None
-
-Initializes a AsciiString with copy of another AsciiString  
-         concatenated with the message string.") TCollection_AsciiString;
+	:param astring:
+	:type astring: TCollection_AsciiString &
+	:param message:
+	:type message: TCollection_AsciiString &
+	:rtype: None
+") TCollection_AsciiString;
 		 TCollection_AsciiString (const TCollection_AsciiString & astring,const TCollection_AsciiString & message);
-		%feature("autodoc", "Args:
-	astring(TCollection_ExtendedString)
-	replaceNonAscii(Standard_Character)=0
+		%feature("autodoc", "	* Creation by converting an extended string to an ascii string. If replaceNonAscii is non-null charecter, it will be used in place of any non-ascii character found in the source string. Otherwise, raises OutOfRange exception if at least one character in the source string is not in the 'Ascii range'.
 
-Returns:
-	None
-
-Creation by converting an extended string to an ascii string.  
-         If replaceNonAscii is non-null charecter, it will be used  
-         in place of any non-ascii character found in the source string.  
-         Otherwise, raises OutOfRange exception if at least one character  
-         in the source string is not in the 'Ascii range'.") TCollection_AsciiString;
+	:param astring:
+	:type astring: TCollection_ExtendedString &
+	:param replaceNonAscii: default value is 0
+	:type replaceNonAscii: Standard_Character
+	:rtype: None
+") TCollection_AsciiString;
 		 TCollection_AsciiString (const TCollection_ExtendedString & astring,const Standard_Character replaceNonAscii = 0);
-		%feature("autodoc", "Args:
-	other(Standard_Character)
+		%feature("autodoc", "	* Appends <other> to me. This is an unary operator.
 
-Returns:
-	None
-
-Appends <other>  to me. This is an unary operator.") AssignCat;
+	:param other:
+	:type other: Standard_Character
+	:rtype: None
+") AssignCat;
 		void AssignCat (const Standard_Character other);
-		%feature("autodoc", "Args:
-	other(Standard_Character)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator+=;
+		%feature("autodoc", "	:param other:
+	:type other: Standard_Character
+	:rtype: None
+") operator+=;
 		void operator += (const Standard_Character other);
-		%feature("autodoc", "Args:
-	other(Standard_Integer)
+		%feature("autodoc", "	* Appends <other> to me. This is an unary operator.
 
-Returns:
-	None
-
-Appends <other>  to me. This is an unary operator.") AssignCat;
+	:param other:
+	:type other: Standard_Integer
+	:rtype: None
+") AssignCat;
 		void AssignCat (const Standard_Integer other);
-		%feature("autodoc", "Args:
-	other(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator+=;
+		%feature("autodoc", "	:param other:
+	:type other: Standard_Integer
+	:rtype: None
+") operator+=;
 		void operator += (const Standard_Integer other);
-		%feature("autodoc", "Args:
-	other(Standard_Real)
+		%feature("autodoc", "	* Appends <other> to me. This is an unary operator.
 
-Returns:
-	None
-
-Appends <other>  to me. This is an unary operator.") AssignCat;
+	:param other:
+	:type other: float
+	:rtype: None
+") AssignCat;
 		void AssignCat (const Standard_Real other);
-		%feature("autodoc", "Args:
-	other(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator+=;
+		%feature("autodoc", "	:param other:
+	:type other: float
+	:rtype: None
+") operator+=;
 		void operator += (const Standard_Real other);
-		%feature("autodoc", "Args:
-	other(char *)
+		%feature("autodoc", "	* Appends <other> to me. This is an unary operator. ex: aString += 'Dummy' To catenate more than one CString, you must put a AsciiString before. Example: aString += 'Hello ' + 'Dolly' IS NOT VALID ! But astring += anotherString + 'Hello ' + 'Dolly' is valid.
 
-Returns:
-	None
-
-Appends <other>  to me. This is an unary operator.  
-ex: aString += 'Dummy'  
-To catenate more than one CString, you must put a  
-AsciiString before.  
- Example: aString += 'Hello ' + 'Dolly'  IS NOT VALID !  
-But astring += anotherString + 'Hello ' + 'Dolly' is valid.") AssignCat;
+	:param other:
+	:type other: char *
+	:rtype: None
+") AssignCat;
 		void AssignCat (const char * other);
-		%feature("autodoc", "Args:
-	other(char *)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator+=;
+		%feature("autodoc", "	:param other:
+	:type other: char *
+	:rtype: None
+") operator+=;
 		void operator += (const char * other);
-		%feature("autodoc", "Args:
-	other(TCollection_AsciiString)
+		%feature("autodoc", "	* Appends <other> to me. This is an unary operator. Example: aString += anotherString
 
-Returns:
-	None
-
-Appends <other> to me. This is an unary operator.  
- Example: aString += anotherString") AssignCat;
+	:param other:
+	:type other: TCollection_AsciiString &
+	:rtype: None
+") AssignCat;
 		void AssignCat (const TCollection_AsciiString & other);
-		%feature("autodoc", "Args:
-	other(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator+=;
+		%feature("autodoc", "	:param other:
+	:type other: TCollection_AsciiString &
+	:rtype: None
+") operator+=;
 		void operator += (const TCollection_AsciiString & other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Converts the first character into its corresponding upper-case character and the other characters into lowercase Example: before me = 'hellO ' after me = 'Hello '
 
-Converts the first character into its corresponding  
-upper-case character and the other characters into lowercase  
- Example: before  
-  me = 'hellO '  
-after  
-  me = 'Hello '") Capitalize;
+	:rtype: None
+") Capitalize;
 		void Capitalize ();
-		%feature("autodoc", "Args:
-	other(Standard_Character)
+		%feature("autodoc", "	* Appends <other> to me. Syntax: aString = aString + 'Dummy' Example: aString contains 'I say ' aString = aString + 'Hello ' + 'Dolly' gives 'I say Hello Dolly' To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = 'Hello ' + 'Dolly' THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too.
 
-Returns:
-	TCollection_AsciiString
-
-Appends <other>  to me.  
-Syntax:  
-aString = aString + 'Dummy'  
- Example: aString contains 'I say '  
-aString = aString + 'Hello ' + 'Dolly'  
-gives 'I say Hello Dolly'  
-To catenate more than one CString, you must put a String before.  
-So the following example is WRONG !  
-     aString = 'Hello ' + 'Dolly'  THIS IS NOT ALLOWED  
-This rule is applicable to AssignCat (operator +=) too.") Cat;
+	:param other:
+	:type other: Standard_Character
+	:rtype: TCollection_AsciiString
+") Cat;
 		TCollection_AsciiString Cat (const Standard_Character other);
-		%feature("autodoc", "Args:
-	other(Standard_Character)
-
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") operator+;
+		%feature("autodoc", "	:param other:
+	:type other: Standard_Character
+	:rtype: TCollection_AsciiString
+") operator+;
 		TCollection_AsciiString operator + (const Standard_Character other);
-		%feature("autodoc", "Args:
-	other(Standard_Integer)
+		%feature("autodoc", "	* Appends <other> to me. Syntax: aString = aString + 15; Example: aString contains 'I say ' gives 'I say 15' To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = 'Hello ' + 'Dolly' THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too.
 
-Returns:
-	TCollection_AsciiString
-
-Appends <other>  to me.  
-Syntax:  
-aString = aString + 15;  
- Example: aString contains 'I say '  
-gives 'I say 15'  
-To catenate more than one CString, you must put a String before.  
-So the following example is WRONG !  
-     aString = 'Hello ' + 'Dolly'  THIS IS NOT ALLOWED  
-This rule is applicable to AssignCat (operator +=) too.") Cat;
+	:param other:
+	:type other: Standard_Integer
+	:rtype: TCollection_AsciiString
+") Cat;
 		TCollection_AsciiString Cat (const Standard_Integer other);
-		%feature("autodoc", "Args:
-	other(Standard_Integer)
-
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") operator+;
+		%feature("autodoc", "	:param other:
+	:type other: Standard_Integer
+	:rtype: TCollection_AsciiString
+") operator+;
 		TCollection_AsciiString operator + (const Standard_Integer other);
-		%feature("autodoc", "Args:
-	other(Standard_Real)
+		%feature("autodoc", "	* Appends <other> to me. Syntax: aString = aString + 15.15; Example: aString contains 'I say ' gives 'I say 15.15' To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = 'Hello ' + 'Dolly' THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too.
 
-Returns:
-	TCollection_AsciiString
-
-Appends <other>  to me.  
-Syntax:  
-aString = aString + 15.15;  
- Example: aString contains 'I say '  
-gives 'I say 15.15'  
-To catenate more than one CString, you must put a String before.  
-So the following example is WRONG !  
-     aString = 'Hello ' + 'Dolly'  THIS IS NOT ALLOWED  
-This rule is applicable to AssignCat (operator +=) too.") Cat;
+	:param other:
+	:type other: float
+	:rtype: TCollection_AsciiString
+") Cat;
 		TCollection_AsciiString Cat (const Standard_Real other);
-		%feature("autodoc", "Args:
-	other(Standard_Real)
-
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") operator+;
+		%feature("autodoc", "	:param other:
+	:type other: float
+	:rtype: TCollection_AsciiString
+") operator+;
 		TCollection_AsciiString operator + (const Standard_Real other);
-		%feature("autodoc", "Args:
-	other(char *)
+		%feature("autodoc", "	* Appends <other> to me. Syntax: aString = aString + 'Dummy' Example: aString contains 'I say ' aString = aString + 'Hello ' + 'Dolly' gives 'I say Hello Dolly' To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = 'Hello ' + 'Dolly' THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too.
 
-Returns:
-	TCollection_AsciiString
-
-Appends <other>  to me.  
-Syntax:  
-aString = aString + 'Dummy'  
- Example: aString contains 'I say '  
-aString = aString + 'Hello ' + 'Dolly'  
-gives 'I say Hello Dolly'  
-To catenate more than one CString, you must put a String before.  
-So the following example is WRONG !  
-     aString = 'Hello ' + 'Dolly'  THIS IS NOT ALLOWED  
-This rule is applicable to AssignCat (operator +=) too.") Cat;
+	:param other:
+	:type other: char *
+	:rtype: TCollection_AsciiString
+") Cat;
 		TCollection_AsciiString Cat (const char * other);
-		%feature("autodoc", "Args:
-	other(char *)
-
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") operator+;
+		%feature("autodoc", "	:param other:
+	:type other: char *
+	:rtype: TCollection_AsciiString
+") operator+;
 		TCollection_AsciiString operator + (const char * other);
-		%feature("autodoc", "Args:
-	other(TCollection_AsciiString)
+		%feature("autodoc", "	* Appends <other> to me. Example: aString = aString + anotherString
 
-Returns:
-	TCollection_AsciiString
-
-Appends <other> to me.  
- Example: aString = aString + anotherString") Cat;
+	:param other:
+	:type other: TCollection_AsciiString &
+	:rtype: TCollection_AsciiString
+") Cat;
 		TCollection_AsciiString Cat (const TCollection_AsciiString & other);
-		%feature("autodoc", "Args:
-	other(TCollection_AsciiString)
-
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") operator+;
+		%feature("autodoc", "	:param other:
+	:type other: TCollection_AsciiString &
+	:rtype: TCollection_AsciiString
+") operator+;
 		TCollection_AsciiString operator + (const TCollection_AsciiString & other);
-		%feature("autodoc", "Args:
-	Width(Standard_Integer)
-	Filler(Standard_Character)
+		%feature("autodoc", "	* Modifies this ASCII string so that its length becomes equal to Width and the new characters are equal to Filler. New characters are added both at the beginning and at the end of this string. If Width is less than the length of this ASCII string, nothing happens. Example TCollection_AsciiString myAlphabet('abcdef'); myAlphabet.Center(9,' '); assert ( myAlphabet == ' abcdef ' );
 
-Returns:
-	None
-
-Modifies this ASCII string so that its length  
-becomes equal to Width and the new characters  
-are equal to Filler. New characters are added  
-both at the beginning and at the end of this string.  
-If Width is less than the length of this ASCII string, nothing happens.  
-Example  
-TCollection_AsciiString  
-myAlphabet('abcdef');  
-myAlphabet.Center(9,' ');  
-assert ( myAlphabet == '  
-abcdef ' );") Center;
+	:param Width:
+	:type Width: Standard_Integer
+	:param Filler:
+	:type Filler: Standard_Character
+	:rtype: None
+") Center;
 		void Center (const Standard_Integer Width,const Standard_Character Filler);
-		%feature("autodoc", "Args:
-	aChar(Standard_Character)
-	NewChar(Standard_Character)
-	CaseSensitive(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Substitutes all the characters equal to aChar by NewChar in the AsciiString <self>. The substitution can be case sensitive. If you don't use default case sensitive, no matter wether aChar is uppercase or not. Example: me = 'Histake' -> ChangeAll('H','M',Standard_True) gives me = 'Mistake'
 
-Returns:
-	None
-
-Substitutes all the characters equal to aChar by NewChar  
-in the AsciiString <self>.  
-The substitution can be case sensitive.  
-If you don't use default case sensitive, no matter wether aChar  
-is uppercase or not.  
- Example: me = 'Histake' -> ChangeAll('H','M',Standard_True)  
-gives me = 'Mistake'") ChangeAll;
+	:param aChar:
+	:type aChar: Standard_Character
+	:param NewChar:
+	:type NewChar: Standard_Character
+	:param CaseSensitive: default value is Standard_True
+	:type CaseSensitive: bool
+	:rtype: None
+") ChangeAll;
 		void ChangeAll (const Standard_Character aChar,const Standard_Character NewChar,const Standard_Boolean CaseSensitive = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Removes all characters contained in <self>. This produces an empty AsciiString.
 
-Removes all characters contained in <self>.  
-This produces an empty AsciiString.") Clear;
+	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	fromwhere(char *)
+		%feature("autodoc", "	* Copy <fromwhere> to <self>. Used as operator = Example: aString = anotherCString;
 
-Returns:
-	None
-
-Copy <fromwhere> to <self>.  
-Used as operator =  
- Example: aString = anotherCString;") Copy;
+	:param fromwhere:
+	:type fromwhere: char *
+	:rtype: None
+") Copy;
 		void Copy (const char * fromwhere);
-		%feature("autodoc", "Args:
-	fromwhere(char *)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param fromwhere:
+	:type fromwhere: char *
+	:rtype: None
+") operator=;
 		void operator = (const char * fromwhere);
-		%feature("autodoc", "Args:
-	fromwhere(TCollection_AsciiString)
+		%feature("autodoc", "	* Copy <fromwhere> to <self>. Used as operator = Example: aString = anotherString;
 
-Returns:
-	None
-
-Copy <fromwhere> to <self>.  
-Used as operator =  
- Example: aString = anotherString;") Copy;
+	:param fromwhere:
+	:type fromwhere: TCollection_AsciiString &
+	:rtype: None
+") Copy;
 		void Copy (const TCollection_AsciiString & fromwhere);
-		%feature("autodoc", "Args:
-	fromwhere(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param fromwhere:
+	:type fromwhere: TCollection_AsciiString &
+	:rtype: None
+") operator=;
 		void operator = (const TCollection_AsciiString & fromwhere);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Frees memory allocated by AsciiString.
 
-Frees memory allocated by AsciiString.") Destroy;
+	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	Set(TCollection_AsciiString)
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the index of the first character of <self> that is present in <Set>. The search begins to the index FromIndex and ends to the the index ToIndex. Returns zero if failure. Raises an exception if FromIndex or ToIndex is out of range. Example: before me = 'aabAcAa', S = 'Aa', FromIndex = 1, Toindex = 7 after me = 'aabAcAa' returns 1
 
-Returns:
-	Standard_Integer
-
-Returns the index of the first character of <self> that is  
-present in <Set>.  
-The search begins to the index FromIndex and ends to the  
-the index ToIndex.  
-Returns zero if failure.  
-Raises an exception if FromIndex or ToIndex is out of range.  
- Example: before  
-  me = 'aabAcAa', S = 'Aa', FromIndex = 1, Toindex = 7  
-after  
-  me = 'aabAcAa'  
-returns  
-  1") FirstLocationInSet;
+	:param Set:
+	:type Set: TCollection_AsciiString &
+	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: int
+") FirstLocationInSet;
 		Standard_Integer FirstLocationInSet (const TCollection_AsciiString & Set,const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-		%feature("autodoc", "Args:
-	Set(TCollection_AsciiString)
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the index of the first character of <self> that is not present in the set <Set>. The search begins to the index FromIndex and ends to the the index ToIndex in <self>. Returns zero if failure. Raises an exception if FromIndex or ToIndex is out of range. Example: before me = 'aabAcAa', S = 'Aa', FromIndex = 1, Toindex = 7 after me = 'aabAcAa' returns 3
 
-Returns:
-	Standard_Integer
-
-Returns the index of the first character of <self>  
-that is not present in the set <Set>.  
-The search begins to the index FromIndex and ends to the  
-the index ToIndex in <self>.  
-Returns zero if failure.  
-Raises an exception if FromIndex or ToIndex is out of range.  
- Example: before  
-  me = 'aabAcAa', S = 'Aa', FromIndex = 1, Toindex = 7  
-after  
-  me = 'aabAcAa'  
-returns  
-  3") FirstLocationNotInSet;
+	:param Set:
+	:type Set: TCollection_AsciiString &
+	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: int
+") FirstLocationNotInSet;
 		Standard_Integer FirstLocationNotInSet (const TCollection_AsciiString & Set,const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
-	what(Standard_Character)
+		%feature("autodoc", "	* Inserts a Character at position <where>. Example: aString contains 'hy not ?' aString.Insert(1,'W'); gives 'Why not ?' aString contains 'Wh' aString.Insert(3,'y'); gives 'Why' aString contains 'Way' aString.Insert(2,'h'); gives 'Why'
 
-Returns:
-	None
-
-Inserts a Character at position <where>.  
- Example:  
-   aString contains 'hy not ?'  
-   aString.Insert(1,'W'); gives 'Why not ?'  
-   aString contains 'Wh'  
-   aString.Insert(3,'y'); gives 'Why'  
-   aString contains 'Way'  
-   aString.Insert(2,'h'); gives 'Why'") Insert;
+	:param where:
+	:type where: Standard_Integer
+	:param what:
+	:type what: Standard_Character
+	:rtype: None
+") Insert;
 		void Insert (const Standard_Integer where,const Standard_Character what);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
-	what(char *)
+		%feature("autodoc", "	* Inserts a CString at position <where>. Example: aString contains 'O more' aString.Insert(2,'nce'); gives 'Once more'
 
-Returns:
-	None
-
-Inserts a CString at position <where>.  
- Example:  
-   aString contains 'O more'  
-   aString.Insert(2,'nce');  gives 'Once more'") Insert;
+	:param where:
+	:type where: Standard_Integer
+	:param what:
+	:type what: char *
+	:rtype: None
+") Insert;
 		void Insert (const Standard_Integer where,const char * what);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
-	what(TCollection_AsciiString)
+		%feature("autodoc", "	* Inserts a AsciiString at position <where>.
 
-Returns:
-	None
-
-Inserts a AsciiString at position <where>.") Insert;
+	:param where:
+	:type where: Standard_Integer
+	:param what:
+	:type what: TCollection_AsciiString &
+	:rtype: None
+") Insert;
 		void Insert (const Standard_Integer where,const TCollection_AsciiString & what);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	other(TCollection_AsciiString)
+		%feature("autodoc", "	* Pushing a string after a specific index in the string <self>. Raises an exception if Index is out of bounds. - less than 0 (InsertAfter), or less than 1 (InsertBefore), or - greater than the number of characters in this ASCII string. Example: before me = 'cde' , Index = 0 , other = 'ab' after me = 'abcde' , other = 'ab'
 
-Returns:
-	None
-
-Pushing a string after a specific index in the string <self>.  
-Raises an exception if Index is out of bounds.  
--   less than 0 (InsertAfter), or less than 1 (InsertBefore), or  
--   greater than the number of characters in this ASCII string.  
- Example:  
-before  
-  me = 'cde' , Index = 0 , other = 'ab'  
-after  
-  me = 'abcde' , other = 'ab'") InsertAfter;
+	:param Index:
+	:type Index: Standard_Integer
+	:param other:
+	:type other: TCollection_AsciiString &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const TCollection_AsciiString & other);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	other(TCollection_AsciiString)
+		%feature("autodoc", "	* Pushing a string before a specific index in the string <self>. Raises an exception if Index is out of bounds. - less than 0 (InsertAfter), or less than 1 (InsertBefore), or - greater than the number of characters in this ASCII string. Example: before me = 'cde' , Index = 1 , other = 'ab' after me = 'abcde' , other = 'ab'
 
-Returns:
-	None
-
-Pushing a string before a specific index in the string <self>.  
-Raises an exception if Index is out of bounds.  
--   less than 0 (InsertAfter), or less than 1 (InsertBefore), or  
--   greater than the number of characters in this ASCII string.  
- Example:  
-before  
-  me = 'cde' , Index = 1 , other = 'ab'  
-after  
-  me = 'abcde' , other = 'ab'") InsertBefore;
+	:param Index:
+	:type Index: Standard_Integer
+	:param other:
+	:type other: TCollection_AsciiString &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const TCollection_AsciiString & other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the string <self> contains zero character.
 
-Returns True if the string <self> contains zero character.") IsEmpty;
+	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	other(char *)
+		%feature("autodoc", "	* Returns true if the characters in this ASCII string are identical to the characters in ASCII string other. Note that this method is an alias of operator ==.
 
-Returns:
-	Standard_Boolean
-
-Returns true if the characters in this ASCII string  
-are identical to the characters in ASCII string other.  
-Note that this method is an alias of operator ==.") IsEqual;
+	:param other:
+	:type other: char *
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const char * other);
 
         %extend{
@@ -862,15 +617,12 @@ Note that this method is an alias of operator ==.") IsEqual;
             except:
                 return False
         }
-        		%feature("autodoc", "Args:
-	other(TCollection_AsciiString)
+        		%feature("autodoc", "	* Returns true if the characters in this ASCII string are identical to the characters in ASCII string other. Note that this method is an alias of operator ==.
 
-Returns:
-	Standard_Boolean
-
-Returns true if the characters in this ASCII string  
-are identical to the characters in ASCII string other.  
-Note that this method is an alias of operator ==.") IsEqual;
+	:param other:
+	:type other: TCollection_AsciiString &
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const TCollection_AsciiString & other);
 
         %extend{
@@ -886,15 +638,12 @@ Note that this method is an alias of operator ==.") IsEqual;
             except:
                 return False
         }
-        		%feature("autodoc", "Args:
-	other(char *)
+        		%feature("autodoc", "	* Returns true if there are differences between the characters in this ASCII string and ASCII string other. Note that this method is an alias of operator !=
 
-Returns:
-	Standard_Boolean
-
-Returns true if there are differences between the  
-characters in this ASCII string and ASCII string other.  
-Note that this method is an alias of operator !=") IsDifferent;
+	:param other:
+	:type other: char *
+	:rtype: bool
+") IsDifferent;
 		Standard_Boolean IsDifferent (const char * other);
 
         %extend{
@@ -910,15 +659,12 @@ Note that this method is an alias of operator !=") IsDifferent;
             except:
                 return True
         }
-        		%feature("autodoc", "Args:
-	other(TCollection_AsciiString)
+        		%feature("autodoc", "	* Returns true if there are differences between the characters in this ASCII string and ASCII string other. Note that this method is an alias of operator !=
 
-Returns:
-	Standard_Boolean
-
-Returns true if there are differences between the  
-characters in this ASCII string and ASCII string other.  
-Note that this method is an alias of operator !=") IsDifferent;
+	:param other:
+	:type other: TCollection_AsciiString &
+	:rtype: bool
+") IsDifferent;
 		Standard_Boolean IsDifferent (const TCollection_AsciiString & other);
 
         %extend{
@@ -934,214 +680,128 @@ Note that this method is an alias of operator !=") IsDifferent;
             except:
                 return True
         }
-        		%feature("autodoc", "Args:
-	other(char *)
+        		%feature("autodoc", "	* Returns True if <self> is 'ASCII' less than <other>.
 
-Returns:
-	Standard_Boolean
-
-Returns TRUE if <self> is 'ASCII' less than <other>.") IsLess;
+	:param other:
+	:type other: char *
+	:rtype: bool
+") IsLess;
 		Standard_Boolean IsLess (const char * other);
-		%feature("autodoc", "Args:
-	other(char *)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator<;
+		%feature("autodoc", "	:param other:
+	:type other: char *
+	:rtype: bool
+") operator<;
 		Standard_Boolean operator < (const char * other);
-		%feature("autodoc", "Args:
-	other(TCollection_AsciiString)
+		%feature("autodoc", "	* Returns True if <self> is 'ASCII' less than <other>.
 
-Returns:
-	Standard_Boolean
-
-Returns TRUE if <self> is 'ASCII' less than <other>.") IsLess;
+	:param other:
+	:type other: TCollection_AsciiString &
+	:rtype: bool
+") IsLess;
 		Standard_Boolean IsLess (const TCollection_AsciiString & other);
-		%feature("autodoc", "Args:
-	other(TCollection_AsciiString)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator<;
+		%feature("autodoc", "	:param other:
+	:type other: TCollection_AsciiString &
+	:rtype: bool
+") operator<;
 		Standard_Boolean operator < (const TCollection_AsciiString & other);
-		%feature("autodoc", "Args:
-	other(char *)
+		%feature("autodoc", "	* Returns True if <self> is 'ASCII' greater than <other>.
 
-Returns:
-	Standard_Boolean
-
-Returns TRUE if <self> is 'ASCII' greater than <other>.") IsGreater;
+	:param other:
+	:type other: char *
+	:rtype: bool
+") IsGreater;
 		Standard_Boolean IsGreater (const char * other);
-		%feature("autodoc", "Args:
-	other(char *)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator>;
+		%feature("autodoc", "	:param other:
+	:type other: char *
+	:rtype: bool
+") operator>;
 		Standard_Boolean operator > (const char * other);
-		%feature("autodoc", "Args:
-	other(TCollection_AsciiString)
+		%feature("autodoc", "	* Returns True if <self> is 'ASCII' greater than <other>.
 
-Returns:
-	Standard_Boolean
-
-Returns TRUE if <self> is 'ASCII' greater than <other>.") IsGreater;
+	:param other:
+	:type other: TCollection_AsciiString &
+	:rtype: bool
+") IsGreater;
 		Standard_Boolean IsGreater (const TCollection_AsciiString & other);
-		%feature("autodoc", "Args:
-	other(TCollection_AsciiString)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator>;
+		%feature("autodoc", "	:param other:
+	:type other: TCollection_AsciiString &
+	:rtype: bool
+") operator>;
 		Standard_Boolean operator > (const TCollection_AsciiString & other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Converts a AsciiString containing a numeric expression to an Integer. Example: '215' returns 215.
 
-Converts a AsciiString containing a numeric expression to  
-an Integer.  
- Example: '215' returns 215.") IntegerValue;
+	:rtype: int
+") IntegerValue;
 		Standard_Integer IntegerValue ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the AsciiString contains an integer value. Note: an integer value is considered to be a real value as well.
 
-Returns True if the AsciiString contains an integer value.  
-Note: an integer value is considered to be a real value as well.") IsIntegerValue;
+	:rtype: bool
+") IsIntegerValue;
 		Standard_Boolean IsIntegerValue ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the AsciiString contains a real value. Note: an integer value is considered to be a real value as well.
 
-Returns True if the AsciiString contains a real value.  
- Note: an integer value is considered to be a real value as well.") IsRealValue;
+	:rtype: bool
+") IsRealValue;
 		Standard_Boolean IsRealValue ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the AsciiString contains only ASCII characters between ' ' and '~'. This means no control character and no extended ASCII code.
 
-Returns True if the AsciiString contains only ASCII characters  
-between ' ' and '~'.  
-This means no control character and no extended ASCII code.") IsAscii;
+	:rtype: bool
+") IsAscii;
 		Standard_Boolean IsAscii ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Removes all space characters in the begining of the string.
 
-Removes all space characters in the begining of the string.") LeftAdjust;
+	:rtype: None
+") LeftAdjust;
 		void LeftAdjust ();
-		%feature("autodoc", "Args:
-	Width(Standard_Integer)
-	Filler(Standard_Character)
+		%feature("autodoc", "	* left justify Length becomes equal to Width and the new characters are equal to Filler. If Width < Length nothing happens. Raises an exception if Width is less than zero. Example: before me = 'abcdef' , Width = 9 , Filler = ' ' after me = 'abcdef '
 
-Returns:
-	None
-
-left justify  
-Length becomes equal to Width and the new characters are  
-equal to Filler.  
-If Width < Length nothing happens.  
-Raises an exception if Width is less than zero.  
- Example:  
-before  
-  me = 'abcdef' , Width = 9 , Filler = ' '  
-after  
-  me = 'abcdef   '") LeftJustify;
+	:param Width:
+	:type Width: Standard_Integer
+	:param Filler:
+	:type Filler: Standard_Character
+	:rtype: None
+") LeftJustify;
 		void LeftJustify (const Standard_Integer Width,const Standard_Character Filler);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns number of characters in <self>. This is the same functionality as 'strlen' in C. Example TCollection_AsciiString myAlphabet('abcdef'); assert ( myAlphabet.Length() == 6 ); - 1 is the position of the first character in this string. - The length of this string gives the position of its last character. - Positions less than or equal to zero, or greater than the length of this string are invalid in functions which identify a character of this string by its position.
 
-Returns number of characters in <self>.  
-This is the same functionality as 'strlen' in C.  
-Example  
- TCollection_AsciiString myAlphabet('abcdef');  
-assert ( myAlphabet.Length() == 6 );  
--   1 is the position of the first character in this string.  
--   The length of this string gives the position of its last character.  
--   Positions less than or equal to zero, or  
-  greater than the length of this string are  
-  invalid in functions which identify a character  
-  of this string by its position.") Length;
+	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	other(TCollection_AsciiString)
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns an index in the string <self> of the first occurence of the string S in the string <self> from the starting index FromIndex to the ending index ToIndex returns zero if failure Raises an exception if FromIndex or ToIndex is out of range. Example: before me = 'aabAaAa', S = 'Aa', FromIndex = 1, ToIndex = 7 after me = 'aabAaAa' returns 4
 
-Returns:
-	Standard_Integer
-
-Returns an index in the string <self> of the first occurence  
-of the string S in the string <self> from the starting index  
-FromIndex to the ending index ToIndex  
-returns zero if failure  
-Raises an exception if FromIndex or ToIndex is out of range.  
- Example:  
-before  
-  me = 'aabAaAa', S = 'Aa', FromIndex = 1, ToIndex = 7  
-after  
-  me = 'aabAaAa'  
-returns  
-  4") Location;
+	:param other:
+	:type other: TCollection_AsciiString &
+	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: int
+") Location;
 		Standard_Integer Location (const TCollection_AsciiString & other,const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-		%feature("autodoc", "Args:
-	N(Standard_Integer)
-	C(Standard_Character)
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the index of the nth occurence of the character C in the string <self> from the starting index FromIndex to the ending index ToIndex. Returns zero if failure. Raises an exception if FromIndex or ToIndex is out of range. Example: before me = 'aabAa', N = 3, C = 'a', FromIndex = 1, ToIndex = 5 after me = 'aabAa' returns 5
 
-Returns:
-	Standard_Integer
-
-Returns the index of the nth occurence of the character C  
-in the string <self> from the starting index FromIndex to the  
-ending index ToIndex.  
-Returns zero if failure.  
-Raises an exception if FromIndex or ToIndex is out of range.  
- Example:  
-before  
-  me = 'aabAa', N = 3, C = 'a', FromIndex = 1, ToIndex = 5  
-after  
-  me = 'aabAa'  
-returns  
-  5") Location;
+	:param N:
+	:type N: Standard_Integer
+	:param C:
+	:type C: Standard_Character
+	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: int
+") Location;
 		Standard_Integer Location (const Standard_Integer N,const Standard_Character C,const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Converts <self> to its lower-case equivalent. Example TCollection_AsciiString myString('Hello Dolly'); myString.UpperCase(); assert ( myString == 'HELLO DOLLY' ); myString.LowerCase(); assert ( myString == 'hello dolly' );
 
-Converts <self> to its lower-case equivalent.  
-Example  
-TCollection_AsciiString myString('Hello Dolly');  
-myString.UpperCase();  
-assert ( myString == 'HELLO DOLLY' );  
-myString.LowerCase();  
-assert ( myString == 'hello dolly' );") LowerCase;
+	:rtype: None
+") LowerCase;
 		void LowerCase ();
-		%feature("autodoc", "Args:
-	other(TCollection_AsciiString)
+		%feature("autodoc", "	* Inserts the string other at the beginning of this ASCII string. Example TCollection_AsciiString myAlphabet('cde'); TCollection_AsciiString myBegin('ab'); myAlphabet.Prepend(myBegin); assert ( myAlphabet == 'abcde' );
 
-Returns:
-	None
-
-Inserts the string other at the beginning of this ASCII string.  
-Example  
-TCollection_AsciiString myAlphabet('cde');  
-TCollection_AsciiString myBegin('ab');  
-myAlphabet.Prepend(myBegin);  
-assert ( myAlphabet == 'abcde' );") Prepend;
+	:param other:
+	:type other: TCollection_AsciiString &
+	:rtype: None
+") Prepend;
 		void Prepend (const TCollection_AsciiString & other);
 
         %feature("autodoc", "1");
@@ -1158,288 +818,185 @@ assert ( myAlphabet == 'abcde' );") Prepend;
             std::stringstream s(src);
             self->Read(s);}
         };
-        		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+        		%feature("autodoc", "	* Converts an AsciiString containing a numeric expression. to a Real. Example: ex: '215' returns 215.0. ex: '3.14159267' returns 3.14159267.
 
-Converts an AsciiString containing a numeric expression.  
-to a Real.  
- Example: ex: '215' returns 215.0.  
-ex: '3.14159267' returns 3.14159267.") RealValue;
+	:rtype: float
+") RealValue;
 		Standard_Real RealValue ();
-		%feature("autodoc", "Args:
-	C(Standard_Character)
-	CaseSensitive(Standard_Boolean)
+		%feature("autodoc", "	* Remove all the occurences of the character C in the string. Example: before me = 'HellLLo', C = 'L' , CaseSensitive = True after me = 'Hello'
 
-Returns:
-	None
-
-Remove all the occurences of the character C in the string.  
- Example:  
-before  
-  me = 'HellLLo', C = 'L' , CaseSensitive = True  
-after  
-  me = 'Hello'") RemoveAll;
+	:param C:
+	:type C: Standard_Character
+	:param CaseSensitive:
+	:type CaseSensitive: bool
+	:rtype: None
+") RemoveAll;
 		void RemoveAll (const Standard_Character C,const Standard_Boolean CaseSensitive);
-		%feature("autodoc", "Args:
-	what(Standard_Character)
+		%feature("autodoc", "	* Removes every <what> characters from <self>.
 
-Returns:
-	None
-
-Removes every <what> characters from <self>.") RemoveAll;
+	:param what:
+	:type what: Standard_Character
+	:rtype: None
+") RemoveAll;
 		void RemoveAll (const Standard_Character what);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
-	ahowmany(Standard_Integer)=1
+		%feature("autodoc", "	* Erases <ahowmany> characters from position <where>, <where> included. Example: aString contains 'Hello' aString.Remove(2,2) erases 2 characters from position 2 This gives 'Hlo'.
 
-Returns:
-	None
-
-Erases <ahowmany> characters from position <where>,  
-<where> included.  
- Example:  
-  aString contains 'Hello'  
-  aString.Remove(2,2) erases 2 characters from position 2  
-This gives 'Hlo'.") Remove;
+	:param where:
+	:type where: Standard_Integer
+	:param ahowmany: default value is 1
+	:type ahowmany: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer where,const Standard_Integer ahowmany = 1);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Removes all space characters at the end of the string.
 
-Removes all space characters at the end of the string.") RightAdjust;
+	:rtype: None
+") RightAdjust;
 		void RightAdjust ();
-		%feature("autodoc", "Args:
-	Width(Standard_Integer)
-	Filler(Standard_Character)
+		%feature("autodoc", "	* Right justify. Length becomes equal to Width and the new characters are equal to Filler. if Width < Length nothing happens. Raises an exception if Width is less than zero. Example: before me = 'abcdef' , Width = 9 , Filler = ' ' after me = ' abcdef'
 
-Returns:
-	None
-
-Right justify.  
-Length becomes equal to Width and the new characters are  
-equal to Filler.  
-if Width < Length nothing happens.  
-Raises an exception if Width is less than zero.  
- Example:  
-before  
-  me = 'abcdef' , Width = 9 , Filler = ' '  
-after  
-  me = '   abcdef'") RightJustify;
+	:param Width:
+	:type Width: Standard_Integer
+	:param Filler:
+	:type Filler: Standard_Character
+	:rtype: None
+") RightJustify;
 		void RightJustify (const Standard_Integer Width,const Standard_Character Filler);
-		%feature("autodoc", "Args:
-	what(char *)
+		%feature("autodoc", "	* Searches a CString in <self> from the beginning and returns position of first item <what> matching. it returns -1 if not found. Example: aString contains 'Sample single test' aString.Search('le') returns 5
 
-Returns:
-	Standard_Integer
-
-Searches a CString in <self> from the beginning  
-and returns position of first item <what> matching.  
-it returns -1 if not found.  
- Example:  
- aString contains 'Sample single test'  
- aString.Search('le') returns 5") Search;
+	:param what:
+	:type what: char *
+	:rtype: int
+") Search;
 		Standard_Integer Search (const char * what);
-		%feature("autodoc", "Args:
-	what(TCollection_AsciiString)
+		%feature("autodoc", "	* Searches an AsciiString in <self> from the beginning and returns position of first item <what> matching. It returns -1 if not found.
 
-Returns:
-	Standard_Integer
-
-Searches an AsciiString in <self> from the beginning  
-and returns position of first item <what> matching.  
-It returns -1 if not found.") Search;
+	:param what:
+	:type what: TCollection_AsciiString &
+	:rtype: int
+") Search;
 		Standard_Integer Search (const TCollection_AsciiString & what);
-		%feature("autodoc", "Args:
-	what(char *)
+		%feature("autodoc", "	* Searches a CString in a AsciiString from the end and returns position of first item <what> matching. It returns -1 if not found. Example: aString contains 'Sample single test' aString.SearchFromEnd('le') returns 12
 
-Returns:
-	Standard_Integer
-
-Searches a CString in a AsciiString from the end  
-and returns position of first item <what> matching.  
-It returns -1 if not found.  
- Example:  
- aString contains 'Sample single test'  
- aString.SearchFromEnd('le') returns 12") SearchFromEnd;
+	:param what:
+	:type what: char *
+	:rtype: int
+") SearchFromEnd;
 		Standard_Integer SearchFromEnd (const char * what);
-		%feature("autodoc", "Args:
-	what(TCollection_AsciiString)
+		%feature("autodoc", "	* Searches a AsciiString in another AsciiString from the end and returns position of first item <what> matching. It returns -1 if not found.
 
-Returns:
-	Standard_Integer
-
-Searches a AsciiString in another AsciiString from the end  
-and returns position of first item <what> matching.  
-It returns -1 if not found.") SearchFromEnd;
+	:param what:
+	:type what: TCollection_AsciiString &
+	:rtype: int
+") SearchFromEnd;
 		Standard_Integer SearchFromEnd (const TCollection_AsciiString & what);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
-	what(Standard_Character)
+		%feature("autodoc", "	* Replaces one character in the AsciiString at position <where>. If <where> is less than zero or greater than the length of <self> an exception is raised. Example: aString contains 'Garbake' astring.Replace(6,'g') gives <self> = 'Garbage'
 
-Returns:
-	None
-
-Replaces one character in the AsciiString at position <where>.  
-If <where> is less than zero or greater than the length of <self>  
-an exception is raised.  
- Example:  
-aString contains 'Garbake'  
-astring.Replace(6,'g')  gives <self> = 'Garbage'") SetValue;
+	:param where:
+	:type where: Standard_Integer
+	:param what:
+	:type what: Standard_Character
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer where,const Standard_Character what);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
-	what(char *)
+		%feature("autodoc", "	* Replaces a part of <self> by a CString. If <where> is less than zero or greater than the length of <self> an exception is raised. Example: aString contains 'abcde' aString.SetValue(4,'1234567') gives <self> = 'abc1234567'
 
-Returns:
-	None
-
-Replaces a part of <self> by a CString.  
-If <where> is less than zero or greater than the length of <self>  
-an exception is raised.  
- Example:  
- aString contains 'abcde'  
- aString.SetValue(4,'1234567') gives <self> = 'abc1234567'") SetValue;
+	:param where:
+	:type where: Standard_Integer
+	:param what:
+	:type what: char *
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer where,const char * what);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
-	what(TCollection_AsciiString)
+		%feature("autodoc", "	* Replaces a part of <self> by another AsciiString.
 
-Returns:
-	None
-
-Replaces a part of <self> by another AsciiString.") SetValue;
+	:param where:
+	:type where: Standard_Integer
+	:param what:
+	:type what: TCollection_AsciiString &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer where,const TCollection_AsciiString & what);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
+		%feature("autodoc", "	* Splits a AsciiString into two sub-strings. Example: aString contains 'abcdefg' aString.Split(3) gives <self> = 'abc' and returns 'defg'
 
-Returns:
-	TCollection_AsciiString
-
-Splits a AsciiString into two sub-strings.  
- Example:  
-aString contains 'abcdefg'  
-aString.Split(3) gives <self> = 'abc' and returns 'defg'") Split;
+	:param where:
+	:type where: Standard_Integer
+	:rtype: TCollection_AsciiString
+") Split;
 		TCollection_AsciiString Split (const Standard_Integer where);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
+		%feature("autodoc", "	* Creation of a sub-string of the string <self>. The sub-string starts to the index Fromindex and ends to the index ToIndex. Raises an exception if ToIndex or FromIndex is out of bounds Example: before me = 'abcdefg', ToIndex=3, FromIndex=6 after me = 'abcdefg' returns 'cdef'
 
-Returns:
-	TCollection_AsciiString
-
-Creation of a sub-string of the string <self>.  
-The sub-string starts to the index Fromindex and ends  
-to the index ToIndex.  
-Raises an exception if ToIndex or FromIndex is out of bounds  
- Example:  
-before  
-  me = 'abcdefg', ToIndex=3, FromIndex=6  
-after  
-  me = 'abcdefg'  
-returns  
-  'cdef'") SubString;
+	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: TCollection_AsciiString
+") SubString;
 		TCollection_AsciiString SubString (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	char *
+		%feature("autodoc", "	* Returns pointer to AsciiString (char *). This is useful for some casual manipulations. Warning: Because this 'char *' is 'const', you can't modify its contents.
 
-Returns pointer to AsciiString (char *).  
-This is useful for some casual manipulations.  
- Warning: Because this 'char *' is 'const', you can't modify its contents.") ToCString;
+	:rtype: char *
+") ToCString;
 		char * ToCString ();
-		%feature("autodoc", "Args:
-	separators(char *)= \t
-	whichone(Standard_Integer)=1
+		%feature("autodoc", "	* Extracts <whichone> token from <self>. By default, the <separators> is set to space and tabulation. By default, the token extracted is the first one (whichone = 1). <separators> contains all separators you need. If no token indexed by <whichone> is found, it returns empty AsciiString. Example: aString contains 'This is a message' aString.Token() returns 'This' aString.Token(' ',4) returns 'message' aString.Token(' ',2) returns 'is' aString.Token(' ',9) returns '' Other separators than space character and tabulation are allowed : aString contains '1234; test:message , value' aString.Token('; :,',4) returns 'value' aString.Token('; :,',2) returns 'test'
 
-Returns:
-	TCollection_AsciiString
-
-Extracts <whichone> token from <self>.  
-By default, the <separators> is set to space and tabulation.  
-By default, the token extracted is the first one (whichone = 1).  
-<separators> contains all separators you need.  
-If no token indexed by <whichone> is found, it returns empty AsciiString.  
- Example:  
-   aString contains 'This is a     message'  
-   aString.Token()  returns 'This'  
-   aString.Token(' ',4) returns 'message'  
-   aString.Token(' ',2) returns 'is'  
-   aString.Token(' ',9) returns ''  
-Other separators than space character and tabulation are allowed :  
-   aString contains '1234; test:message   , value'  
-   aString.Token('; :,',4) returns 'value'  
-   aString.Token('; :,',2) returns 'test'") Token;
+	:param separators: default value is  \t
+	:type separators: char *
+	:param whichone: default value is 1
+	:type whichone: Standard_Integer
+	:rtype: TCollection_AsciiString
+") Token;
 		TCollection_AsciiString Token (const char * separators = " \t",const Standard_Integer whichone = 1);
-		%feature("autodoc", "Args:
-	ahowmany(Standard_Integer)
+		%feature("autodoc", "	* Truncates <self> to <ahowmany> characters. Example: me = 'Hello Dolly' -> Trunc(3) -> me = 'Hel'
 
-Returns:
-	None
-
-Truncates <self> to <ahowmany> characters.  
- Example:  me = 'Hello Dolly' -> Trunc(3) -> me = 'Hel'") Trunc;
+	:param ahowmany:
+	:type ahowmany: Standard_Integer
+	:rtype: None
+") Trunc;
 		void Trunc (const Standard_Integer ahowmany);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Converts <self> to its upper-case equivalent.
 
-Converts <self> to its upper-case equivalent.") UpperCase;
+	:rtype: None
+") UpperCase;
 		void UpperCase ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Length of the string ignoring all spaces (' ') and the control character at the end.
 
-Length of the string ignoring all spaces (' ') and the  
-control character at the end.") UsefullLength;
+	:rtype: int
+") UsefullLength;
 		Standard_Integer UsefullLength ();
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
+		%feature("autodoc", "	* Returns character at position <where> in <self>. If <where> is less than zero or greater than the lenght of <self>, an exception is raised. Example: aString contains 'Hello' aString.Value(2) returns 'e'
 
-Returns:
-	Standard_Character
-
-Returns character at position <where> in <self>.  
-If <where> is less than zero or greater than the lenght of <self>,  
-an exception is raised.  
- Example:  
-   aString contains 'Hello'  
-   aString.Value(2) returns 'e'") Value;
+	:param where:
+	:type where: Standard_Integer
+	:rtype: Standard_Character
+") Value;
 		Standard_Character Value (const Standard_Integer where);
-		%feature("autodoc", "Args:
-	astring(TCollection_AsciiString)
-	Upper(Standard_Integer)
+		%feature("autodoc", "	* Hash function for AsciiString (returns the same Integer value that the hash function for ExtendedString)
 
-Returns:
-	static Standard_Integer
-
-Hash function for AsciiString  
- (returns the same Integer value that the hash function for ExtendedString)") HashCode;
+	:param astring:
+	:type astring: TCollection_AsciiString &
+	:param Upper:
+	:type Upper: Standard_Integer
+	:rtype: int
+") HashCode;
 		static Standard_Integer HashCode (const TCollection_AsciiString & astring,const Standard_Integer Upper);
-		%feature("autodoc", "Args:
-	string1(TCollection_AsciiString)
-	string2(TCollection_AsciiString)
+		%feature("autodoc", "	* Returns True when the two strings are the same. (Just for HashCode for AsciiString)
 
-Returns:
-	static Standard_Boolean
-
-Returns True  when the two  strings are the same.  
-         (Just for HashCode for AsciiString)") IsEqual;
+	:param string1:
+	:type string1: TCollection_AsciiString &
+	:param string2:
+	:type string2: TCollection_AsciiString &
+	:rtype: bool
+") IsEqual;
 		static Standard_Boolean IsEqual (const TCollection_AsciiString & string1,const TCollection_AsciiString & string2);
-		%feature("autodoc", "Args:
-	string1(TCollection_AsciiString)
-	string2(char *)
+		%feature("autodoc", "	* Returns True when the two strings are the same. (Just for HashCode for AsciiString)
 
-Returns:
-	static Standard_Boolean
-
-Returns True  when the two  strings are the same.  
-         (Just for HashCode for AsciiString)") IsEqual;
+	:param string1:
+	:type string1: TCollection_AsciiString &
+	:param string2:
+	:type string2: char *
+	:rtype: bool
+") IsEqual;
 		static Standard_Boolean IsEqual (const TCollection_AsciiString & string1,const char * string2);
 };
 
@@ -1461,48 +1018,29 @@ def __del__(self):
 %nodefaultctor TCollection_BaseSequence;
 class TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns True if the sequence <self> contains no elements.
 
-returns True if the sequence <self> contains no elements.") IsEmpty;
+	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of element(s) in the sequence. Returns zero if the sequence is empty.
 
-Returns  the  number  of element(s) in the  
-sequence.  Returns zero if the sequence is empty.") Length;
+	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Reverses the order of items on <self>. Example: before me = (A B C) after me = (C B A)
 
-Reverses the order of items on <self>.  
- Example:  
-before  
-  me = (A B C)  
-after  
-  me = (C B A)") Reverse;
+	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	J(Standard_Integer)
+		%feature("autodoc", "	* Swaps elements which are located at positions <I> and <J> in <self>. Raises an exception if I or J is out of bound. Example: before me = (A B C), I = 1, J = 3 after me = (C B A)
 
-Returns:
-	None
-
-Swaps  elements  which    are  located  at  
-positions <I> and <J> in <self>.  
-Raises an exception if I or J is out of bound.  
- Example:  
-before  
-  me = (A B C), I = 1, J = 3  
-after  
-  me = (C B A)") Exchange;
+	:param I:
+	:type I: Standard_Integer
+	:param J:
+	:type J: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer I,const Standard_Integer J);
 };
 
@@ -1524,27 +1062,20 @@ def __del__(self):
 %nodefaultctor TCollection_BasicMap;
 class TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of buckets in <self>.
 
-Returns the number of buckets in <self>.") NbBuckets;
+	:rtype: int
+") NbBuckets;
 		Standard_Integer NbBuckets ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of keys already stored in <self>.
 
-Returns the number of keys already stored in <self>.") Extent;
+	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True when the map contains no keys. This is exactly Extent() == 0.
 
-Returns  True when the map  contains no keys.  
-This is exactly Extent() == 0.") IsEmpty;
+	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
 
         %feature("autodoc", "1");
@@ -1574,31 +1105,20 @@ def __del__(self):
 %nodefaultctor TCollection_BasicMapIterator;
 class TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Resets the iterator to the first node.
 
-Resets the iterator to the first node.") Reset;
+	:rtype: None
+") Reset;
 		void Reset ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if there is a current entry for this iterator in the map. Use the function Next to set this iterator to the position of the next entry, if it exists.
 
-Returns true if there is a current entry for this iterator in the map.  
-Use the function Next to set this iterator to the position of  
-the next entry, if it exists.") More;
+	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Sets this iterator to the position of the next entry of the map. Nothing is changed if there is no more entry to explore in the map: this iterator is always positioned on the last entry of the map but the function More returns false.
 
-Sets this iterator to the position of the next entry of the map.  
-Nothing is changed if there is no more entry to explore in  
-the map: this iterator is always positioned on the last entry  
-of the map but the function More returns false.") Next;
+	:rtype: None
+") Next;
 		void Next ();
 };
 
@@ -1620,194 +1140,157 @@ def __del__(self):
 %nodefaultctor TCollection_ExtendedString;
 class TCollection_ExtendedString {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Initializes a ExtendedString to an empty ExtendedString.
 
-Initializes a ExtendedString to an empty ExtendedString.") TCollection_ExtendedString;
+	:rtype: None
+") TCollection_ExtendedString;
 		 TCollection_ExtendedString ();
-		%feature("autodoc", "Args:
-	astring(char *)
-	isMultiByte(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Creation by converting a CString to an extended string.
 
-Returns:
-	None
-
-Creation by converting a CString to an extended string.") TCollection_ExtendedString;
+	:param astring:
+	:type astring: char *
+	:param isMultiByte: default value is Standard_False
+	:type isMultiByte: bool
+	:rtype: None
+") TCollection_ExtendedString;
 		 TCollection_ExtendedString (const char * astring,const Standard_Boolean isMultiByte = Standard_False);
-		%feature("autodoc", "Args:
-	astring(Standard_ExtString)
+		%feature("autodoc", "	* Creation by converting an ExtString to an extended string.
 
-Returns:
-	None
-
-Creation by converting an ExtString to an extended string.") TCollection_ExtendedString;
+	:param astring:
+	:type astring: Standard_ExtString
+	:rtype: None
+") TCollection_ExtendedString;
 		 TCollection_ExtendedString (const Standard_ExtString astring);
-		%feature("autodoc", "Args:
-	aChar(Standard_Character)
+		%feature("autodoc", "	* Initializes a AsciiString with a single character.
 
-Returns:
-	None
-
-Initializes a AsciiString with a single character.") TCollection_ExtendedString;
+	:param aChar:
+	:type aChar: Standard_Character
+	:rtype: None
+") TCollection_ExtendedString;
 		 TCollection_ExtendedString (const Standard_Character aChar);
-		%feature("autodoc", "Args:
-	aChar(Standard_ExtCharacter)
+		%feature("autodoc", "	* Initializes a ExtendedString with a single character.
 
-Returns:
-	None
-
-Initializes a ExtendedString with a single character.") TCollection_ExtendedString;
+	:param aChar:
+	:type aChar: Standard_ExtCharacter
+	:rtype: None
+") TCollection_ExtendedString;
 		 TCollection_ExtendedString (const Standard_ExtCharacter aChar);
-		%feature("autodoc", "Args:
-	length(Standard_Integer)
-	filler(Standard_ExtCharacter)
+		%feature("autodoc", "	* Initializes a ExtendedString with <length> space allocated. and filled with <filler>.This is useful for buffers.
 
-Returns:
-	None
-
-Initializes a ExtendedString with <length> space allocated.  
-and filled with <filler>.This is useful for buffers.") TCollection_ExtendedString;
+	:param length:
+	:type length: Standard_Integer
+	:param filler:
+	:type filler: Standard_ExtCharacter
+	:rtype: None
+") TCollection_ExtendedString;
 		 TCollection_ExtendedString (const Standard_Integer length,const Standard_ExtCharacter filler);
-		%feature("autodoc", "Args:
-	value(Standard_Integer)
+		%feature("autodoc", "	* Initializes an ExtendedString with an integer value
 
-Returns:
-	None
-
-Initializes an ExtendedString with an integer value") TCollection_ExtendedString;
+	:param value:
+	:type value: Standard_Integer
+	:rtype: None
+") TCollection_ExtendedString;
 		 TCollection_ExtendedString (const Standard_Integer value);
-		%feature("autodoc", "Args:
-	value(Standard_Real)
+		%feature("autodoc", "	* Initializes an ExtendedString with a real value
 
-Returns:
-	None
-
-Initializes an ExtendedString with a real value") TCollection_ExtendedString;
+	:param value:
+	:type value: float
+	:rtype: None
+") TCollection_ExtendedString;
 		 TCollection_ExtendedString (const Standard_Real value);
-		%feature("autodoc", "Args:
-	astring(TCollection_ExtendedString)
+		%feature("autodoc", "	* Initializes a ExtendedString with another ExtendedString.
 
-Returns:
-	None
-
-Initializes a ExtendedString with another ExtendedString.") TCollection_ExtendedString;
+	:param astring:
+	:type astring: TCollection_ExtendedString &
+	:rtype: None
+") TCollection_ExtendedString;
 		 TCollection_ExtendedString (const TCollection_ExtendedString & astring);
-		%feature("autodoc", "Args:
-	astring(TCollection_AsciiString)
+		%feature("autodoc", "	* Creation by converting a normal Ascii string to an extended string.
 
-Returns:
-	None
-
-Creation by converting a normal Ascii string to an extended string.") TCollection_ExtendedString;
+	:param astring:
+	:type astring: TCollection_AsciiString &
+	:rtype: None
+") TCollection_ExtendedString;
 		 TCollection_ExtendedString (const TCollection_AsciiString & astring);
-		%feature("autodoc", "Args:
-	other(TCollection_ExtendedString)
+		%feature("autodoc", "	* Appends the other extended string to this extended string. Note that this method is an alias of operator +=. Example: aString += anotherString
 
-Returns:
-	None
-
-Appends the other extended string to this extended string.  
-Note that this method is an alias of operator +=.  
-Example: aString += anotherString") AssignCat;
+	:param other:
+	:type other: TCollection_ExtendedString &
+	:rtype: None
+") AssignCat;
 		void AssignCat (const TCollection_ExtendedString & other);
-		%feature("autodoc", "Args:
-	other(TCollection_ExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator+=;
+		%feature("autodoc", "	:param other:
+	:type other: TCollection_ExtendedString &
+	:rtype: None
+") operator+=;
 		void operator += (const TCollection_ExtendedString & other);
-		%feature("autodoc", "Args:
-	other(TCollection_ExtendedString)
+		%feature("autodoc", "	* Appends <other> to me.
 
-Returns:
-	TCollection_ExtendedString
-
-Appends <other> to me.") Cat;
+	:param other:
+	:type other: TCollection_ExtendedString &
+	:rtype: TCollection_ExtendedString
+") Cat;
 		TCollection_ExtendedString Cat (const TCollection_ExtendedString & other);
-		%feature("autodoc", "Args:
-	other(TCollection_ExtendedString)
-
-Returns:
-	TCollection_ExtendedString
-
-No detailed docstring for this function.") operator+;
+		%feature("autodoc", "	:param other:
+	:type other: TCollection_ExtendedString &
+	:rtype: TCollection_ExtendedString
+") operator+;
 		TCollection_ExtendedString operator + (const TCollection_ExtendedString & other);
-		%feature("autodoc", "Args:
-	aChar(Standard_ExtCharacter)
-	NewChar(Standard_ExtCharacter)
+		%feature("autodoc", "	* Substitutes all the characters equal to aChar by NewChar in the ExtendedString <self>. The substitution can be case sensitive. If you don't use default case sensitive, no matter wether aChar is uppercase or not.
 
-Returns:
-	None
-
-Substitutes all the characters equal to aChar by NewChar  
-in the ExtendedString <self>.  
-The substitution can be case sensitive.  
-If you don't use default case sensitive, no matter wether aChar  
-is uppercase or not.") ChangeAll;
+	:param aChar:
+	:type aChar: Standard_ExtCharacter
+	:param NewChar:
+	:type NewChar: Standard_ExtCharacter
+	:rtype: None
+") ChangeAll;
 		void ChangeAll (const Standard_ExtCharacter aChar,const Standard_ExtCharacter NewChar);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Removes all characters contained in <self>. This produces an empty ExtendedString.
 
-Removes all characters contained in <self>.  
-This produces an empty ExtendedString.") Clear;
+	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	fromwhere(TCollection_ExtendedString)
+		%feature("autodoc", "	* Copy <fromwhere> to <self>. Used as operator =
 
-Returns:
-	None
-
-Copy <fromwhere> to <self>.  
-Used as operator =") Copy;
+	:param fromwhere:
+	:type fromwhere: TCollection_ExtendedString &
+	:rtype: None
+") Copy;
 		void Copy (const TCollection_ExtendedString & fromwhere);
-		%feature("autodoc", "Args:
-	fromwhere(TCollection_ExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param fromwhere:
+	:type fromwhere: TCollection_ExtendedString &
+	:rtype: None
+") operator=;
 		void operator = (const TCollection_ExtendedString & fromwhere);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Frees memory allocated by ExtendedString.
 
-Frees memory allocated by ExtendedString.") Destroy;
+	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
-	what(Standard_ExtCharacter)
+		%feature("autodoc", "	* Insert a Character at position <where>.
 
-Returns:
-	None
-
-Insert a Character at position <where>.") Insert;
+	:param where:
+	:type where: Standard_Integer
+	:param what:
+	:type what: Standard_ExtCharacter
+	:rtype: None
+") Insert;
 		void Insert (const Standard_Integer where,const Standard_ExtCharacter what);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
-	what(TCollection_ExtendedString)
+		%feature("autodoc", "	* Insert a ExtendedString at position <where>.
 
-Returns:
-	None
-
-Insert a ExtendedString at position <where>.") Insert;
+	:param where:
+	:type where: Standard_Integer
+	:param what:
+	:type what: TCollection_ExtendedString &
+	:rtype: None
+") Insert;
 		void Insert (const Standard_Integer where,const TCollection_ExtendedString & what);
-		%feature("autodoc", "Args:
-	other(Standard_ExtString)
+		%feature("autodoc", "	* Returns true if the characters in this extended string are identical to the characters in the other extended string. Note that this method is an alias of operator ==
 
-Returns:
-	Standard_Boolean
-
-Returns true if the characters in this extended  
-string are identical to the characters in the other extended string.  
-Note that this method is an alias of operator ==") IsEqual;
+	:param other:
+	:type other: Standard_ExtString
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const Standard_ExtString other);
 
         %extend{
@@ -1823,15 +1306,12 @@ Note that this method is an alias of operator ==") IsEqual;
             except:
                 return False
         }
-        		%feature("autodoc", "Args:
-	other(TCollection_ExtendedString)
+        		%feature("autodoc", "	* Returns true if the characters in this extended string are identical to the characters in the other extended string. Note that this method is an alias of operator ==
 
-Returns:
-	Standard_Boolean
-
-Returns true if the characters in this extended  
-string are identical to the characters in the other extended string.  
-Note that this method is an alias of operator ==") IsEqual;
+	:param other:
+	:type other: TCollection_ExtendedString &
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const TCollection_ExtendedString & other);
 
         %extend{
@@ -1847,15 +1327,12 @@ Note that this method is an alias of operator ==") IsEqual;
             except:
                 return False
         }
-        		%feature("autodoc", "Args:
-	other(Standard_ExtString)
+        		%feature("autodoc", "	* Returns true if there are differences between the characters in this extended string and the other extended string. Note that this method is an alias of operator !=.
 
-Returns:
-	Standard_Boolean
-
-Returns true if there are differences between the  
-characters in this extended string and the other extended string.  
-Note that this method is an alias of operator !=.") IsDifferent;
+	:param other:
+	:type other: Standard_ExtString
+	:rtype: bool
+") IsDifferent;
 		Standard_Boolean IsDifferent (const Standard_ExtString other);
 
         %extend{
@@ -1871,15 +1348,12 @@ Note that this method is an alias of operator !=.") IsDifferent;
             except:
                 return True
         }
-        		%feature("autodoc", "Args:
-	other(TCollection_ExtendedString)
+        		%feature("autodoc", "	* Returns true if there are differences between the characters in this extended string and the other extended string. Note that this method is an alias of operator !=.
 
-Returns:
-	Standard_Boolean
-
-Returns true if there are differences between the  
-characters in this extended string and the other extended string.  
-Note that this method is an alias of operator !=.") IsDifferent;
+	:param other:
+	:type other: TCollection_ExtendedString &
+	:rtype: bool
+") IsDifferent;
 		Standard_Boolean IsDifferent (const TCollection_ExtendedString & other);
 
         %extend{
@@ -1895,85 +1369,63 @@ Note that this method is an alias of operator !=.") IsDifferent;
             except:
                 return True
         }
-        		%feature("autodoc", "Args:
-	other(Standard_ExtString)
+        		%feature("autodoc", "	* Returns True if <self> is less than <other>.
 
-Returns:
-	Standard_Boolean
-
-Returns TRUE if <self> is less than <other>.") IsLess;
+	:param other:
+	:type other: Standard_ExtString
+	:rtype: bool
+") IsLess;
 		Standard_Boolean IsLess (const Standard_ExtString other);
-		%feature("autodoc", "Args:
-	other(Standard_ExtString)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator<;
+		%feature("autodoc", "	:param other:
+	:type other: Standard_ExtString
+	:rtype: bool
+") operator<;
 		Standard_Boolean operator < (const Standard_ExtString other);
-		%feature("autodoc", "Args:
-	other(TCollection_ExtendedString)
+		%feature("autodoc", "	* Returns True if <self> is less than <other>.
 
-Returns:
-	Standard_Boolean
-
-Returns TRUE if <self> is less than <other>.") IsLess;
+	:param other:
+	:type other: TCollection_ExtendedString &
+	:rtype: bool
+") IsLess;
 		Standard_Boolean IsLess (const TCollection_ExtendedString & other);
-		%feature("autodoc", "Args:
-	other(TCollection_ExtendedString)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator<;
+		%feature("autodoc", "	:param other:
+	:type other: TCollection_ExtendedString &
+	:rtype: bool
+") operator<;
 		Standard_Boolean operator < (const TCollection_ExtendedString & other);
-		%feature("autodoc", "Args:
-	other(Standard_ExtString)
+		%feature("autodoc", "	* Returns True if <self> is greater than <other>.
 
-Returns:
-	Standard_Boolean
-
-Returns TRUE if <self> is greater than <other>.") IsGreater;
+	:param other:
+	:type other: Standard_ExtString
+	:rtype: bool
+") IsGreater;
 		Standard_Boolean IsGreater (const Standard_ExtString other);
-		%feature("autodoc", "Args:
-	other(Standard_ExtString)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator>;
+		%feature("autodoc", "	:param other:
+	:type other: Standard_ExtString
+	:rtype: bool
+") operator>;
 		Standard_Boolean operator > (const Standard_ExtString other);
-		%feature("autodoc", "Args:
-	other(TCollection_ExtendedString)
+		%feature("autodoc", "	* Returns True if <self> is greater than <other>.
 
-Returns:
-	Standard_Boolean
-
-Returns TRUE if <self> is greater than <other>.") IsGreater;
+	:param other:
+	:type other: TCollection_ExtendedString &
+	:rtype: bool
+") IsGreater;
 		Standard_Boolean IsGreater (const TCollection_ExtendedString & other);
-		%feature("autodoc", "Args:
-	other(TCollection_ExtendedString)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator>;
+		%feature("autodoc", "	:param other:
+	:type other: TCollection_ExtendedString &
+	:rtype: bool
+") operator>;
 		Standard_Boolean operator > (const TCollection_ExtendedString & other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the ExtendedString contains only 'Ascii Range' characters .
 
-Returns True if the ExtendedString contains only  
-'Ascii Range' characters .") IsAscii;
+	:rtype: bool
+") IsAscii;
 		Standard_Boolean IsAscii ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns number of characters in <self>. This is the same functionality as 'strlen' in C.
 
-Returns number of characters in <self>.  
-This is the same functionality as 'strlen' in C.") Length;
+	:rtype: int
+") Length;
 		Standard_Integer Length ();
 
         %feature("autodoc", "1");
@@ -1983,180 +1435,118 @@ This is the same functionality as 'strlen' in C.") Length;
             self->Print(s);
             return s.str();}
         };
-        		%feature("autodoc", "Args:
-	what(Standard_ExtCharacter)
+        		%feature("autodoc", "	* Removes every <what> characters from <self>.
 
-Returns:
-	None
-
-Removes every <what> characters from <self>.") RemoveAll;
+	:param what:
+	:type what: Standard_ExtCharacter
+	:rtype: None
+") RemoveAll;
 		void RemoveAll (const Standard_ExtCharacter what);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
-	ahowmany(Standard_Integer)=1
+		%feature("autodoc", "	* Erases <ahowmany> characters from position <where>,<where> included.
 
-Returns:
-	None
-
-Erases <ahowmany> characters from position <where>,<where> included.") Remove;
+	:param where:
+	:type where: Standard_Integer
+	:param ahowmany: default value is 1
+	:type ahowmany: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer where,const Standard_Integer ahowmany = 1);
-		%feature("autodoc", "Args:
-	what(TCollection_ExtendedString)
+		%feature("autodoc", "	* Searches a ExtendedString in <self> from the beginning and returns position of first item <what> matching. it returns -1 if not found.
 
-Returns:
-	Standard_Integer
-
-Searches a ExtendedString in <self> from the beginning  
-and returns position of first item <what> matching.  
-it returns -1 if not found.") Search;
+	:param what:
+	:type what: TCollection_ExtendedString &
+	:rtype: int
+") Search;
 		Standard_Integer Search (const TCollection_ExtendedString & what);
-		%feature("autodoc", "Args:
-	what(TCollection_ExtendedString)
+		%feature("autodoc", "	* Searches a ExtendedString in another ExtendedString from the end and returns position of first item <what> matching. it returns -1 if not found.
 
-Returns:
-	Standard_Integer
-
-Searches a ExtendedString in another ExtendedString from the  
-end and returns position of first item <what> matching.  
-it returns -1 if not found.") SearchFromEnd;
+	:param what:
+	:type what: TCollection_ExtendedString &
+	:rtype: int
+") SearchFromEnd;
 		Standard_Integer SearchFromEnd (const TCollection_ExtendedString & what);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
-	what(Standard_ExtCharacter)
+		%feature("autodoc", "	* Replaces one character in the ExtendedString at position <where>. If <where> is less than zero or greater than the length of <self> an exception is raised.
 
-Returns:
-	None
-
-Replaces one character in the ExtendedString at position <where>.  
-If <where> is less than zero or greater than the length of <self>  
-an exception is raised.") SetValue;
+	:param where:
+	:type where: Standard_Integer
+	:param what:
+	:type what: Standard_ExtCharacter
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer where,const Standard_ExtCharacter what);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
-	what(TCollection_ExtendedString)
+		%feature("autodoc", "	* Replaces a part of <self> by another ExtendedString see above.
 
-Returns:
-	None
-
-Replaces a part of <self> by another ExtendedString see above.") SetValue;
+	:param where:
+	:type where: Standard_Integer
+	:param what:
+	:type what: TCollection_ExtendedString &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer where,const TCollection_ExtendedString & what);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
+		%feature("autodoc", "	* Splits this extended string into two sub-strings at position where. - The second sub-string (from position where + 1 of this string to the end) is returned in a new extended string. - this extended string is modified: its last characters are removed, it becomes equal to the first sub-string (from the first character to position where). Example: aString contains 'abcdefg' aString.Split(3) gives <self> = 'abc' and returns 'defg'
 
-Returns:
-	TCollection_ExtendedString
-
-Splits this extended string into two sub-strings at position where.  
--   The second sub-string (from position  
-  where + 1 of this string to the end) is  
-  returned in a new extended string.  
--   this extended string is modified: its last  
-  characters are removed, it becomes equal to  
-  the first sub-string (from the first character to position where).  
-Example:  
-  aString contains 'abcdefg'  
-  aString.Split(3) gives <self> = 'abc' and returns 'defg'") Split;
+	:param where:
+	:type where: Standard_Integer
+	:rtype: TCollection_ExtendedString
+") Split;
 		TCollection_ExtendedString Split (const Standard_Integer where);
-		%feature("autodoc", "Args:
-	separators(Standard_ExtString)
-	whichone(Standard_Integer)=1
+		%feature("autodoc", "	* Extracts <whichone> token from <self>. By default, the <separators> is set to space and tabulation. By default, the token extracted is the first one (whichone = 1). <separators> contains all separators you need. If no token indexed by <whichone> is found, it returns an empty AsciiString. Example: aString contains 'This is a message' aString.Token() returns 'This' aString.Token(' ',4) returns 'message' aString.Token(' ',2) returns 'is' aString.Token(' ',9) returns '' Other separators than space character and tabulation are allowed : aString contains '1234; test:message , value' aString.Token('; :,',4) returns 'value' aString.Token('; :,',2) returns 'test'
 
-Returns:
-	TCollection_ExtendedString
-
-Extracts <whichone> token from <self>.  
-By default, the <separators> is set to space and tabulation.  
-By default, the token extracted is the first one (whichone = 1).  
-<separators> contains all separators you need.  
-If no token indexed by <whichone> is found, it returns an empty AsciiString.  
-Example:  
-   aString contains 'This is a     message'  
-   aString.Token()  returns 'This'  
-   aString.Token(' ',4) returns 'message'  
-   aString.Token(' ',2) returns 'is'  
-   aString.Token(' ',9) returns ''  
-Other separators than space character and tabulation are allowed :  
-   aString contains '1234; test:message   , value'  
-   aString.Token('; :,',4) returns 'value'  
-   aString.Token('; :,',2) returns 'test'") Token;
+	:param separators:
+	:type separators: Standard_ExtString
+	:param whichone: default value is 1
+	:type whichone: Standard_Integer
+	:rtype: TCollection_ExtendedString
+") Token;
 		TCollection_ExtendedString Token (const Standard_ExtString separators,const Standard_Integer whichone = 1);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ExtString
+		%feature("autodoc", "	* Returns pointer to ExtString
 
-Returns pointer to ExtString") ToExtString;
+	:rtype: Standard_ExtString
+") ToExtString;
 		Standard_ExtString ToExtString ();
-		%feature("autodoc", "Args:
-	ahowmany(Standard_Integer)
+		%feature("autodoc", "	* Truncates <self> to <ahowmany> characters. Example: me = 'Hello Dolly' -> Trunc(3) -> me = 'Hel' Exceptions Standard_OutOfRange if ahowmany is greater than the length of this string.
 
-Returns:
-	None
-
-Truncates <self> to <ahowmany> characters.  
-Example:  me = 'Hello Dolly' -> Trunc(3) -> me = 'Hel'  
-  Exceptions  
-Standard_OutOfRange if ahowmany is greater  
-than the length of this string.") Trunc;
+	:param ahowmany:
+	:type ahowmany: Standard_Integer
+	:rtype: None
+") Trunc;
 		void Trunc (const Standard_Integer ahowmany);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
+		%feature("autodoc", "	* Returns character at position <where> in <self>. If <where> is less than zero or greater than the lenght of <self>, an exception is raised. Example: aString contains 'Hello' aString.Value(2) returns 'e' Exceptions Standard_OutOfRange if where lies outside the bounds of this extended string.
 
-Returns:
-	Standard_ExtCharacter
-
-Returns character at position <where> in <self>.  
-If <where> is less than zero or greater than the lenght of  
-<self>, an exception is raised.  
-Example:  
-  aString contains 'Hello'  
-  aString.Value(2) returns 'e'  
-Exceptions  
-Standard_OutOfRange if where lies outside  
-the bounds of this extended string.") Value;
+	:param where:
+	:type where: Standard_Integer
+	:rtype: Standard_ExtCharacter
+") Value;
 		Standard_ExtCharacter Value (const Standard_Integer where);
-		%feature("autodoc", "Args:
-	astring(TCollection_ExtendedString)
-	Upper(Standard_Integer)
+		%feature("autodoc", "	* Returns a hashed value for the extended string astring within the range 1..Upper. Note: if astring is ASCII, the computed value is the same as the value computed with the HashCode function on a TCollection_AsciiString string composed with equivalent ASCII characters
 
-Returns:
-	static Standard_Integer
-
-Returns a hashed value for the extended string  
-astring within the range 1..Upper.  
-Note: if astring is ASCII, the computed value is  
-the same as the value computed with the HashCode function on a  
-TCollection_AsciiString string composed with equivalent ASCII characters") HashCode;
+	:param astring:
+	:type astring: TCollection_ExtendedString &
+	:param Upper:
+	:type Upper: Standard_Integer
+	:rtype: int
+") HashCode;
 		static Standard_Integer HashCode (const TCollection_ExtendedString & astring,const Standard_Integer Upper);
-		%feature("autodoc", "Args:
-	string1(TCollection_ExtendedString)
-	string2(TCollection_ExtendedString)
+		%feature("autodoc", "	* Returns true if the characters in this extended string are identical to the characters in the other extended string. Note that this method is an alias of operator ==.
 
-Returns:
-	static Standard_Boolean
-
-Returns true if the characters in this extended  
-string are identical to the characters in the other extended string.  
-Note that this method is an alias of operator ==.") IsEqual;
+	:param string1:
+	:type string1: TCollection_ExtendedString &
+	:param string2:
+	:type string2: TCollection_ExtendedString &
+	:rtype: bool
+") IsEqual;
 		static Standard_Boolean IsEqual (const TCollection_ExtendedString & string1,const TCollection_ExtendedString & string2);
-		%feature("autodoc", "Args:
-	theCString(Standard_PCharacter)
+		%feature("autodoc", "	* Converts the internal <mystring> to UTF8 coding and returns length of the out CString. A memory for the <theCString> should be allocated before call!
 
-Returns:
-	Standard_Integer
-
-Converts the internal <mystring> to UTF8 coding and  
-         returns length of the out CString. A memory for the  
-         <theCString> should be allocated before call!") ToUTF8CString;
+	:param theCString:
+	:type theCString: Standard_PCharacter &
+	:rtype: int
+") ToUTF8CString;
 		Standard_Integer ToUTF8CString (Standard_PCharacter & theCString);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns expected CString length in UTF8 coding. It can be used for memory calculation before converting to CString containing symbols in UTF8 coding.
 
-Returns expected CString length in UTF8 coding.  
-         It can be used for  memory  calculation  before converting  
-         to CString containing symbols in UTF8 coding.") LengthOfCString;
+	:rtype: int
+") LengthOfCString;
 		Standard_Integer LengthOfCString ();
 };
 
@@ -2178,481 +1568,312 @@ def __del__(self):
 %nodefaultctor TCollection_HAsciiString;
 class TCollection_HAsciiString : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Initializes a HAsciiString to an empty AsciiString.
 
-Initializes a HAsciiString to an empty AsciiString.") TCollection_HAsciiString;
+	:rtype: None
+") TCollection_HAsciiString;
 		 TCollection_HAsciiString ();
-		%feature("autodoc", "Args:
-	message(char *)
+		%feature("autodoc", "	* Initializes a HAsciiString with a CString.
 
-Returns:
-	None
-
-Initializes a HAsciiString with a CString.") TCollection_HAsciiString;
+	:param message:
+	:type message: char *
+	:rtype: None
+") TCollection_HAsciiString;
 		 TCollection_HAsciiString (const char * message);
-		%feature("autodoc", "Args:
-	aChar(Standard_Character)
+		%feature("autodoc", "	* Initializes a HAsciiString with a single character.
 
-Returns:
-	None
-
-Initializes a HAsciiString with a single character.") TCollection_HAsciiString;
+	:param aChar:
+	:type aChar: Standard_Character
+	:rtype: None
+") TCollection_HAsciiString;
 		 TCollection_HAsciiString (const Standard_Character aChar);
-		%feature("autodoc", "Args:
-	length(Standard_Integer)
-	filler(Standard_Character)
+		%feature("autodoc", "	* Initializes a HAsciiString with <length> space allocated. and filled with <filler>.This is useful for buffers.
 
-Returns:
-	None
-
-Initializes a HAsciiString with <length> space allocated.  
-and filled with <filler>.This is useful for buffers.") TCollection_HAsciiString;
+	:param length:
+	:type length: Standard_Integer
+	:param filler:
+	:type filler: Standard_Character
+	:rtype: None
+") TCollection_HAsciiString;
 		 TCollection_HAsciiString (const Standard_Integer length,const Standard_Character filler);
-		%feature("autodoc", "Args:
-	value(Standard_Integer)
+		%feature("autodoc", "	* Initializes a HAsciiString with an integer value
 
-Returns:
-	None
-
-Initializes a HAsciiString with an integer value") TCollection_HAsciiString;
+	:param value:
+	:type value: Standard_Integer
+	:rtype: None
+") TCollection_HAsciiString;
 		 TCollection_HAsciiString (const Standard_Integer value);
-		%feature("autodoc", "Args:
-	value(Standard_Real)
+		%feature("autodoc", "	* Initializes a HAsciiString with a real value
 
-Returns:
-	None
-
-Initializes a HAsciiString with a real value") TCollection_HAsciiString;
+	:param value:
+	:type value: float
+	:rtype: None
+") TCollection_HAsciiString;
 		 TCollection_HAsciiString (const Standard_Real value);
-		%feature("autodoc", "Args:
-	aString(TCollection_AsciiString)
+		%feature("autodoc", "	* Initializes a HAsciiString with a HAsciiString.
 
-Returns:
-	None
-
-Initializes a HAsciiString with a HAsciiString.") TCollection_HAsciiString;
+	:param aString:
+	:type aString: TCollection_AsciiString &
+	:rtype: None
+") TCollection_HAsciiString;
 		 TCollection_HAsciiString (const TCollection_AsciiString & aString);
-		%feature("autodoc", "Args:
-	aString(Handle_TCollection_HAsciiString)
+		%feature("autodoc", "	* Initializes a HAsciiString with a HAsciiString.
 
-Returns:
-	None
-
-Initializes a HAsciiString with a HAsciiString.") TCollection_HAsciiString;
+	:param aString:
+	:type aString: Handle_TCollection_HAsciiString &
+	:rtype: None
+") TCollection_HAsciiString;
 		 TCollection_HAsciiString (const Handle_TCollection_HAsciiString & aString);
-		%feature("autodoc", "Args:
-	aString(Handle_TCollection_HExtendedString)
-	replaceNonAscii(Standard_Character)
+		%feature("autodoc", "	* Initializes a HAsciiString with a HAsciiString. If replaceNonAscii is non-null charecter, it will be used in place of any non-ascii character found in the source string. Otherwise, raises OutOfRange exception if at least one character in the source string is not in the 'Ascii range'.
 
-Returns:
-	None
-
-Initializes a HAsciiString with a HAsciiString.  
-         If replaceNonAscii is non-null charecter, it will be used  
-         in place of any non-ascii character found in the source string.  
-         Otherwise, raises OutOfRange exception if at least one character  
-         in the source string is not in the 'Ascii range'.") TCollection_HAsciiString;
+	:param aString:
+	:type aString: Handle_TCollection_HExtendedString &
+	:param replaceNonAscii:
+	:type replaceNonAscii: Standard_Character
+	:rtype: None
+") TCollection_HAsciiString;
 		 TCollection_HAsciiString (const Handle_TCollection_HExtendedString & aString,const Standard_Character replaceNonAscii);
-		%feature("autodoc", "Args:
-	other(char *)
+		%feature("autodoc", "	* Appends <other> to me.
 
-Returns:
-	None
-
-Appends <other>  to me.") AssignCat;
+	:param other:
+	:type other: char *
+	:rtype: None
+") AssignCat;
 		void AssignCat (const char * other);
-		%feature("autodoc", "Args:
-	other(Handle_TCollection_HAsciiString)
+		%feature("autodoc", "	* Appends <other> to me. Example: aString = aString + anotherString
 
-Returns:
-	None
-
-Appends <other>  to me.  
- Example:  aString = aString + anotherString") AssignCat;
+	:param other:
+	:type other: Handle_TCollection_HAsciiString &
+	:rtype: None
+") AssignCat;
 		void AssignCat (const Handle_TCollection_HAsciiString & other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Converts the first character into its corresponding upper-case character and the other characters into lowercase. Example: before me = 'hellO ' after me = 'Hello '
 
-Converts the first character into its corresponding  
-upper-case character and the other characters into lowercase.  
- Example:  
-before  
-  me = 'hellO '  
-after  
-  me = 'Hello '") Capitalize;
+	:rtype: None
+") Capitalize;
 		void Capitalize ();
-		%feature("autodoc", "Args:
-	other(char *)
+		%feature("autodoc", "	* Creates a new string by concatenation of this ASCII string and the other ASCII string. Example: aString = aString + anotherString aString = aString + 'Dummy' aString contains 'I say ' aString = aString + 'Hello ' + 'Dolly' gives 'I say Hello Dolly' Warning: To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = 'Hello ' + 'Dolly' THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too.
 
-Returns:
-	Handle_TCollection_HAsciiString
-
-Creates a new string by concatenation of this  
-ASCII string and the other ASCII string.  
- Example:  
-   aString = aString + anotherString  
-   aString = aString + 'Dummy'  
-   aString contains 'I say '  
-   aString = aString + 'Hello ' + 'Dolly'  
-gives 'I say Hello Dolly'  
- Warning: To catenate more than one CString, you must put a String before.  
-So the following example is WRONG !  
-     aString = 'Hello ' + 'Dolly'  THIS IS NOT ALLOWED  
-This rule is applicable to AssignCat (operator +=) too.") Cat;
+	:param other:
+	:type other: char *
+	:rtype: Handle_TCollection_HAsciiString
+") Cat;
 		Handle_TCollection_HAsciiString Cat (const char * other);
-		%feature("autodoc", "Args:
-	other(Handle_TCollection_HAsciiString)
+		%feature("autodoc", "	* Creates a new string by concatenation of this ASCII string and the other ASCII string. Example: aString = aString + anotherString
 
-Returns:
-	Handle_TCollection_HAsciiString
-
-Creates a new string by concatenation of this  
-ASCII string and the other ASCII string.  
- Example:  aString = aString + anotherString") Cat;
+	:param other:
+	:type other: Handle_TCollection_HAsciiString &
+	:rtype: Handle_TCollection_HAsciiString
+") Cat;
 		Handle_TCollection_HAsciiString Cat (const Handle_TCollection_HAsciiString & other);
-		%feature("autodoc", "Args:
-	Width(Standard_Integer)
-	Filler(Standard_Character)
+		%feature("autodoc", "	* Modifies this ASCII string so that its length becomes equal to Width and the new characters are equal to Filler. New characters are added both at the beginning and at the end of this string. If Width is less than the length of this ASCII string, nothing happens. Example Handle_TCollection_HAsciiString myAlphabet = new TCollection_HAsciiString ('abcdef'); myAlphabet->Center(9,' '); assert ( !strcmp( myAlphabet->ToCString(), ' abcdef ') );
 
-Returns:
-	None
-
-Modifies this ASCII string so that its length  
-becomes equal to Width and the new characters  
-are equal to Filler. New characters are added  
-both at the beginning and at the end of this string.  
-If Width is less than the length of this ASCII string, nothing happens.  
-Example  
-Handle_TCollection_HAsciiString  
-myAlphabet  
-   = new  
-TCollection_HAsciiString  
-('abcdef');  
-myAlphabet->Center(9,' ');  
-assert ( !strcmp(  
-myAlphabet->ToCString(),  
-       ' abcdef ') );") Center;
+	:param Width:
+	:type Width: Standard_Integer
+	:param Filler:
+	:type Filler: Standard_Character
+	:rtype: None
+") Center;
 		void Center (const Standard_Integer Width,const Standard_Character Filler);
-		%feature("autodoc", "Args:
-	aChar(Standard_Character)
-	NewChar(Standard_Character)
-	CaseSensitive(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Replaces all characters equal to aChar by NewChar in this ASCII string. The substitution is case sensitive if CaseSensitive is true (default value). If you do not use the default case sensitive option, it does not matter whether aChar is upper-case or not. Example Handle_TCollection_HAsciiString myMistake = new TCollection_HAsciiString ('Hather'); myMistake->ChangeAll('H','F'); assert ( !strcmp( myMistake->ToCString(), 'Father') );
 
-Returns:
-	None
-
-Replaces all characters equal to aChar by  
-NewChar in this ASCII string. The substitution is  
-case sensitive if CaseSensitive is true (default value).  
-If you do not use the default case sensitive  
-option, it does not matter whether aChar is upper-case or not.  
-Example  
-Handle_TCollection_HAsciiString  
-myMistake = new  
-TCollection_HAsciiString  
-('Hather');  
-myMistake->ChangeAll('H','F');  
-assert ( !strcmp(  
-myMistake->ToCString(),  
-'Father') );") ChangeAll;
+	:param aChar:
+	:type aChar: Standard_Character
+	:param NewChar:
+	:type NewChar: Standard_Character
+	:param CaseSensitive: default value is Standard_True
+	:type CaseSensitive: bool
+	:rtype: None
+") ChangeAll;
 		void ChangeAll (const Standard_Character aChar,const Standard_Character NewChar,const Standard_Boolean CaseSensitive = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Removes all characters contained in <self>. This produces an empty HAsciiString.
 
-Removes all characters contained in <self>.  
-This produces an empty HAsciiString.") Clear;
+	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Set(Handle_TCollection_HAsciiString)
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the index of the first character of <self> that is present in <Set>. The search begins to the index FromIndex and ends to the the index ToIndex. Returns zero if failure. Raises an exception if FromIndex or ToIndex is out of range Example: before me = 'aabAcAa', S = 'Aa', FromIndex = 1, Toindex = 7 after me = 'aabAcAa' returns 1
 
-Returns:
-	Standard_Integer
-
-Returns the index of the first character of <self> that is  
-present in <Set>.  
-The search begins to the index FromIndex and ends to the  
-the index ToIndex.  
-Returns zero if failure.  
-Raises an exception if FromIndex or ToIndex is out of range  
- Example:  
-before  
-  me = 'aabAcAa', S = 'Aa', FromIndex = 1, Toindex = 7  
-after  
-  me = 'aabAcAa'  
-returns  
-  1") FirstLocationInSet;
+	:param Set:
+	:type Set: Handle_TCollection_HAsciiString &
+	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: int
+") FirstLocationInSet;
 		Standard_Integer FirstLocationInSet (const Handle_TCollection_HAsciiString & Set,const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-		%feature("autodoc", "Args:
-	Set(Handle_TCollection_HAsciiString)
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the index of the first character of <self> that is not present in the set <Set>. The search begins to the index FromIndex and ends to the the index ToIndex in <self>. Returns zero if failure. Raises an exception if FromIndex or ToIndex is out of range. Example: before me = 'aabAcAa', S = 'Aa', FromIndex = 1, Toindex = 7 after me = 'aabAcAa' returns 3
 
-Returns:
-	Standard_Integer
-
-Returns the index of the first character of <self>  
-that is not present in the set <Set>.  
-The search begins to the index FromIndex and ends to the  
-the index ToIndex in <self>.  
-Returns zero if failure.  
-Raises an exception if FromIndex or ToIndex is out of range.  
- Example:  
-before  
-  me = 'aabAcAa', S = 'Aa', FromIndex = 1, Toindex = 7  
-after  
-  me = 'aabAcAa'  
-returns  
-  3") FirstLocationNotInSet;
+	:param Set:
+	:type Set: Handle_TCollection_HAsciiString &
+	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: int
+") FirstLocationNotInSet;
 		Standard_Integer FirstLocationNotInSet (const Handle_TCollection_HAsciiString & Set,const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
-	what(Standard_Character)
+		%feature("autodoc", "	* Insert a Character at position <where>. Example: aString contains 'hy not ?' aString.Insert(1,'W'); gives 'Why not ?' aString contains 'Wh' aString.Insert(3,'y'); gives 'Why' aString contains 'Way' aString.Insert(2,'h'); gives 'Why'
 
-Returns:
-	None
-
-Insert a Character at position <where>.  
- Example:  
-   aString contains 'hy not ?'  
-   aString.Insert(1,'W'); gives 'Why not ?'  
-   aString contains 'Wh'  
-   aString.Insert(3,'y'); gives 'Why'  
-   aString contains 'Way'  
-   aString.Insert(2,'h'); gives 'Why'") Insert;
+	:param where:
+	:type where: Standard_Integer
+	:param what:
+	:type what: Standard_Character
+	:rtype: None
+") Insert;
 		void Insert (const Standard_Integer where,const Standard_Character what);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
-	what(char *)
+		%feature("autodoc", "	* Insert a HAsciiString at position <where>.
 
-Returns:
-	None
-
-Insert a HAsciiString at position <where>.") Insert;
+	:param where:
+	:type where: Standard_Integer
+	:param what:
+	:type what: char *
+	:rtype: None
+") Insert;
 		void Insert (const Standard_Integer where,const char * what);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
-	what(Handle_TCollection_HAsciiString)
+		%feature("autodoc", "	* Insert a HAsciiString at position <where>.
 
-Returns:
-	None
-
-Insert a HAsciiString at position <where>.") Insert;
+	:param where:
+	:type where: Standard_Integer
+	:param what:
+	:type what: Handle_TCollection_HAsciiString &
+	:rtype: None
+") Insert;
 		void Insert (const Standard_Integer where,const Handle_TCollection_HAsciiString & what);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	other(Handle_TCollection_HAsciiString)
+		%feature("autodoc", "	* Inserts the other ASCII string a after a specific index in the string <self> Example: before me = 'cde' , Index = 0 , other = 'ab' after me = 'abcde' , other = 'ab'
 
-Returns:
-	None
-
-Inserts the other ASCII string a after a specific index in the string <self>  
- Example:  
-before  
-  me = 'cde' , Index = 0 , other = 'ab'  
-after  
-  me = 'abcde' , other = 'ab'") InsertAfter;
+	:param Index:
+	:type Index: Standard_Integer
+	:param other:
+	:type other: Handle_TCollection_HAsciiString &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_TCollection_HAsciiString & other);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	other(Handle_TCollection_HAsciiString)
+		%feature("autodoc", "	* Inserts the other ASCII string a before a specific index in the string <self> Raises an exception if Index is out of bounds Example: before me = 'cde' , Index = 1 , other = 'ab' after me = 'abcde' , other = 'ab'
 
-Returns:
-	None
-
-Inserts the other ASCII string a before a specific index in the string <self>  
-Raises an exception if Index is out of bounds  
- Example:  
-before  
-  me = 'cde' , Index = 1 , other = 'ab'  
-after  
-  me = 'abcde' , other = 'ab'") InsertBefore;
+	:param Index:
+	:type Index: Standard_Integer
+	:param other:
+	:type other: Handle_TCollection_HAsciiString &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_TCollection_HAsciiString & other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the string <self> contains zero character
 
-Returns True if the string <self> contains zero character") IsEmpty;
+	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	other(Handle_TCollection_HAsciiString)
+		%feature("autodoc", "	* Returns True if <self> is 'ASCII' less than <other>.
 
-Returns:
-	Standard_Boolean
-
-Returns TRUE if <self> is 'ASCII' less than <other>.") IsLess;
+	:param other:
+	:type other: Handle_TCollection_HAsciiString &
+	:rtype: bool
+") IsLess;
 		Standard_Boolean IsLess (const Handle_TCollection_HAsciiString & other);
-		%feature("autodoc", "Args:
-	other(Handle_TCollection_HAsciiString)
+		%feature("autodoc", "	* Returns True if <self> is 'ASCII' greater than <other>.
 
-Returns:
-	Standard_Boolean
-
-Returns TRUE if <self> is 'ASCII' greater than <other>.") IsGreater;
+	:param other:
+	:type other: Handle_TCollection_HAsciiString &
+	:rtype: bool
+") IsGreater;
 		Standard_Boolean IsGreater (const Handle_TCollection_HAsciiString & other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Converts a HAsciiString containing a numeric expression to an Integer. Example: '215' returns 215.
 
-Converts a HAsciiString containing a numeric expression to  
-an Integer.  
- Example: '215' returns 215.") IntegerValue;
+	:rtype: int
+") IntegerValue;
 		Standard_Integer IntegerValue ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the string contains an integer value.
 
-Returns True if the string contains an integer value.") IsIntegerValue;
+	:rtype: bool
+") IsIntegerValue;
 		Standard_Boolean IsIntegerValue ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the string contains a real value.
 
-Returns True if the string contains a real value.") IsRealValue;
+	:rtype: bool
+") IsRealValue;
 		Standard_Boolean IsRealValue ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the string contains only ASCII characters between ' ' and '~'. This means no control character and no extended ASCII code.
 
-Returns True if the string contains only ASCII characters  
-between ' ' and '~'.  
-This means no control character and no extended ASCII code.") IsAscii;
+	:rtype: bool
+") IsAscii;
 		Standard_Boolean IsAscii ();
-		%feature("autodoc", "Args:
-	S(Handle_TCollection_HAsciiString)
+		%feature("autodoc", "	* Returns True if the string S not contains same characters than the string <self>.
 
-Returns:
-	Standard_Boolean
-
-Returns True if the string S not contains same characters than  
-the string <self>.") IsDifferent;
+	:param S:
+	:type S: Handle_TCollection_HAsciiString &
+	:rtype: bool
+") IsDifferent;
 		Standard_Boolean IsDifferent (const Handle_TCollection_HAsciiString & S);
-		%feature("autodoc", "Args:
-	S(Handle_TCollection_HAsciiString)
+		%feature("autodoc", "	* Returns True if the string S contains same characters than the string <self>.
 
-Returns:
-	Standard_Boolean
-
-Returns True if the string S contains same characters than the  
-string <self>.") IsSameString;
+	:param S:
+	:type S: Handle_TCollection_HAsciiString &
+	:rtype: bool
+") IsSameString;
 		Standard_Boolean IsSameString (const Handle_TCollection_HAsciiString & S);
-		%feature("autodoc", "Args:
-	S(Handle_TCollection_HAsciiString)
-	CaseSensitive(Standard_Boolean)
+		%feature("autodoc", "	* Returns True if the string S contains same characters than the string <self>.
 
-Returns:
-	Standard_Boolean
-
-Returns True if the string S contains same characters than the  
-string <self>.") IsSameString;
+	:param S:
+	:type S: Handle_TCollection_HAsciiString &
+	:param CaseSensitive:
+	:type CaseSensitive: bool
+	:rtype: bool
+") IsSameString;
 		Standard_Boolean IsSameString (const Handle_TCollection_HAsciiString & S,const Standard_Boolean CaseSensitive);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Removes all space characters in the begining of the string
 
-Removes all space characters in the begining of the string") LeftAdjust;
+	:rtype: None
+") LeftAdjust;
 		void LeftAdjust ();
-		%feature("autodoc", "Args:
-	Width(Standard_Integer)
-	Filler(Standard_Character)
+		%feature("autodoc", "	* Left justify. Length becomes equal to Width and the new characters are equal to Filler if Width < Length nothing happens Raises an exception if Width is less than zero Example: before me = 'abcdef' , Width = 9 , Filler = ' ' after me = 'abcdef '
 
-Returns:
-	None
-
-Left justify.  
-Length becomes equal to Width and the new characters are  
-equal to Filler  
-if Width < Length nothing happens  
-Raises an exception if Width is less than zero  
- Example:  
-before  
-  me = 'abcdef' , Width = 9 , Filler = ' '  
-after  
-  me = 'abcdef   '") LeftJustify;
+	:param Width:
+	:type Width: Standard_Integer
+	:param Filler:
+	:type Filler: Standard_Character
+	:rtype: None
+") LeftJustify;
 		void LeftJustify (const Standard_Integer Width,const Standard_Character Filler);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns number of characters in <self>. This is the same functionality as 'strlen' in C.
 
-Returns number of characters in <self>.  
-This is the same functionality as 'strlen' in C.") Length;
+	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	other(Handle_TCollection_HAsciiString)
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
+		%feature("autodoc", "	* returns an index in the string <self> of the first occurence of the string S in the string <self> from the starting index FromIndex to the ending index ToIndex returns zero if failure Raises an exception if FromIndex or ToIndex is out of range. Example: before me = 'aabAaAa', S = 'Aa', FromIndex = 1, ToIndex = 7 after me = 'aabAaAa' returns 4
 
-Returns:
-	Standard_Integer
-
-returns an index in the string <self> of the first occurence  
-of the string S in the string <self> from the starting index  
-FromIndex to the ending index ToIndex  
-returns zero if failure  
-Raises an exception if FromIndex or ToIndex is out of range.  
- Example:  
-before  
-  me = 'aabAaAa', S = 'Aa', FromIndex = 1, ToIndex = 7  
-after  
-  me = 'aabAaAa'  
-returns  
-  4") Location;
+	:param other:
+	:type other: Handle_TCollection_HAsciiString &
+	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: int
+") Location;
 		Standard_Integer Location (const Handle_TCollection_HAsciiString & other,const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-		%feature("autodoc", "Args:
-	N(Standard_Integer)
-	C(Standard_Character)
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the index of the nth occurence of the character C in the string <self> from the starting index FromIndex to the ending index ToIndex. Returns zero if failure. Raises an exception if FromIndex or ToIndex is out of range Example: before me = 'aabAa', N = 3, C = 'a', FromIndex = 1, ToIndex = 5 after me = 'aabAa' returns 5
 
-Returns:
-	Standard_Integer
-
-Returns the index of the nth occurence of the character C  
-in the string <self> from the starting index FromIndex to the  
-ending index ToIndex.  
-Returns zero if failure.  
-Raises an exception if FromIndex or ToIndex is out of range  
- Example:  
-before  
-  me = 'aabAa', N = 3, C = 'a', FromIndex = 1, ToIndex = 5  
-after  
-  me = 'aabAa'  
-returns 5") Location;
+	:param N:
+	:type N: Standard_Integer
+	:param C:
+	:type C: Standard_Character
+	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: int
+") Location;
 		Standard_Integer Location (const Standard_Integer N,const Standard_Character C,const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Converts <self> to its lower-case equivalent.
 
-Converts <self> to its lower-case equivalent.") LowerCase;
+	:rtype: None
+") LowerCase;
 		void LowerCase ();
-		%feature("autodoc", "Args:
-	other(Handle_TCollection_HAsciiString)
+		%feature("autodoc", "	* Inserts the other string at the begining of the string <self> Example: before me = 'cde' , S = 'ab' after me = 'abcde' , S = 'ab'
 
-Returns:
-	None
-
-Inserts the other string at the begining of the string <self>  
- Example:  
-before  
-  me = 'cde' , S = 'ab'  
-after  
-  me = 'abcde' , S = 'ab'") Prepend;
+	:param other:
+	:type other: Handle_TCollection_HAsciiString &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_TCollection_HAsciiString & other);
 
         %feature("autodoc", "1");
@@ -2662,273 +1883,166 @@ after
             self->Print(s);
             return s.str();}
         };
-        		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+        		%feature("autodoc", "	* Converts a string containing a numeric expression to a Real. Example: '215' returns 215.0. '3.14159267' returns 3.14159267.
 
-Converts a string containing a numeric expression to a Real.  
- Example:  
- '215' returns 215.0.  
- '3.14159267' returns 3.14159267.") RealValue;
+	:rtype: float
+") RealValue;
 		Standard_Real RealValue ();
-		%feature("autodoc", "Args:
-	C(Standard_Character)
-	CaseSensitive(Standard_Boolean)
+		%feature("autodoc", "	* Remove all the occurences of the character C in the string Example: before me = 'HellLLo', C = 'L' , CaseSensitive = True after me = 'Hello'
 
-Returns:
-	None
-
-Remove all the occurences of the character C in the string  
- Example:  
-before  
-  me = 'HellLLo', C = 'L' , CaseSensitive = True  
-after  
-  me = 'Hello'") RemoveAll;
+	:param C:
+	:type C: Standard_Character
+	:param CaseSensitive:
+	:type CaseSensitive: bool
+	:rtype: None
+") RemoveAll;
 		void RemoveAll (const Standard_Character C,const Standard_Boolean CaseSensitive);
-		%feature("autodoc", "Args:
-	what(Standard_Character)
+		%feature("autodoc", "	* Removes every <what> characters from <self>
 
-Returns:
-	None
-
-Removes every <what> characters from <self>") RemoveAll;
+	:param what:
+	:type what: Standard_Character
+	:rtype: None
+") RemoveAll;
 		void RemoveAll (const Standard_Character what);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
-	ahowmany(Standard_Integer)=1
+		%feature("autodoc", "	* Erases <ahowmany> characters from position <where>, <where> included. Example: aString contains 'Hello' aString.Erase(2,2) erases 2 characters from position 1 This gives 'Hlo'.
 
-Returns:
-	None
-
-Erases <ahowmany> characters from position <where>,  
-<where> included.  
- Example:  
-   aString contains 'Hello'  
-   aString.Erase(2,2) erases 2 characters from position 1  
-This gives 'Hlo'.") Remove;
+	:param where:
+	:type where: Standard_Integer
+	:param ahowmany: default value is 1
+	:type ahowmany: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer where,const Standard_Integer ahowmany = 1);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Removes all space characters at the end of the string.
 
-Removes all space characters at the end of the string.") RightAdjust;
+	:rtype: None
+") RightAdjust;
 		void RightAdjust ();
-		%feature("autodoc", "Args:
-	Width(Standard_Integer)
-	Filler(Standard_Character)
+		%feature("autodoc", "	* Right justify. Length becomes equal to Width and the new characters are equal to Filler if Width < Length nothing happens Raises an exception if Width is less than zero Example: before me = 'abcdef' , Width = 9 , Filler = ' ' after me = ' abcdef'
 
-Returns:
-	None
-
-Right justify.  
-Length becomes equal to Width and the new characters are  
-equal to Filler  
-if Width < Length nothing happens  
-Raises an exception if Width is less than zero  
- Example:  
-before  
-  me = 'abcdef' , Width = 9 , Filler = ' '  
-after  
-  me = '   abcdef'") RightJustify;
+	:param Width:
+	:type Width: Standard_Integer
+	:param Filler:
+	:type Filler: Standard_Character
+	:rtype: None
+") RightJustify;
 		void RightJustify (const Standard_Integer Width,const Standard_Character Filler);
-		%feature("autodoc", "Args:
-	what(char *)
+		%feature("autodoc", "	* Searches a CString in <self> from the beginning and returns position of first item <what> matching. It returns -1 if not found. Example: aString contains 'Sample single test' aString.Search('le') returns 5
 
-Returns:
-	Standard_Integer
-
-Searches a CString in <self> from the beginning  
-and returns position of first item <what> matching.  
-It returns -1 if not found.  
- Example:  
-  aString contains 'Sample single test'  
-  aString.Search('le') returns 5") Search;
+	:param what:
+	:type what: char *
+	:rtype: int
+") Search;
 		Standard_Integer Search (const char * what);
-		%feature("autodoc", "Args:
-	what(Handle_TCollection_HAsciiString)
+		%feature("autodoc", "	* Searches a String in <self> from the beginning and returns position of first item <what> matching. it returns -1 if not found.
 
-Returns:
-	Standard_Integer
-
-Searches a String in <self> from the beginning  
-and returns position of first item <what> matching.  
-it returns -1 if not found.") Search;
+	:param what:
+	:type what: Handle_TCollection_HAsciiString &
+	:rtype: int
+") Search;
 		Standard_Integer Search (const Handle_TCollection_HAsciiString & what);
-		%feature("autodoc", "Args:
-	what(char *)
+		%feature("autodoc", "	* Searches a CString in a String from the end and returns position of first item <what> matching. It returns -1 if not found. Example: aString contains 'Sample single test' aString.SearchFromEnd('le') returns 12
 
-Returns:
-	Standard_Integer
-
-Searches a CString in a String from the end  
-and returns position of first item <what> matching.  
-It returns -1 if not found.  
- Example:  
-aString contains 'Sample single test'  
-aString.SearchFromEnd('le') returns 12") SearchFromEnd;
+	:param what:
+	:type what: char *
+	:rtype: int
+") SearchFromEnd;
 		Standard_Integer SearchFromEnd (const char * what);
-		%feature("autodoc", "Args:
-	what(Handle_TCollection_HAsciiString)
+		%feature("autodoc", "	* Searches a HAsciiString in another HAsciiString from the end and returns position of first item <what> matching. It returns -1 if not found.
 
-Returns:
-	Standard_Integer
-
-Searches a HAsciiString in another HAsciiString from the end  
-and returns position of first item <what> matching.  
-It returns -1 if not found.") SearchFromEnd;
+	:param what:
+	:type what: Handle_TCollection_HAsciiString &
+	:rtype: int
+") SearchFromEnd;
 		Standard_Integer SearchFromEnd (const Handle_TCollection_HAsciiString & what);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
-	what(Standard_Character)
+		%feature("autodoc", "	* Replaces one character in the string at position <where>. If <where> is less than zero or greater than the length of <self> an exception is raised. Example: aString contains 'Garbake' astring.Replace(6,'g') gives <self> = 'Garbage'
 
-Returns:
-	None
-
-Replaces one character in the string at position <where>.  
-If <where> is less than zero or greater than the length of <self>  
-an exception is raised.  
- Example:  
- aString contains 'Garbake'  
- astring.Replace(6,'g')  gives <self> = 'Garbage'") SetValue;
+	:param where:
+	:type where: Standard_Integer
+	:param what:
+	:type what: Standard_Character
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer where,const Standard_Character what);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
-	what(char *)
+		%feature("autodoc", "	* Replaces a part of <self> in the string at position <where>. If <where> is less than zero or greater than the length of <self> an exception is raised. Example: aString contains 'Garbake' astring.Replace(6,'g') gives <self> = 'Garbage'
 
-Returns:
-	None
-
-Replaces a part of <self> in the string at position <where>.  
-If <where> is less than zero or greater than the length of <self>  
-an exception is raised.  
- Example:  
- aString contains 'Garbake'  
- astring.Replace(6,'g')  gives <self> = 'Garbage'") SetValue;
+	:param where:
+	:type where: Standard_Integer
+	:param what:
+	:type what: char *
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer where,const char * what);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
-	what(Handle_TCollection_HAsciiString)
+		%feature("autodoc", "	* Replaces a part of <self> by another string.
 
-Returns:
-	None
-
-Replaces a part of <self> by another string.") SetValue;
+	:param where:
+	:type where: Standard_Integer
+	:param what:
+	:type what: Handle_TCollection_HAsciiString &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer where,const Handle_TCollection_HAsciiString & what);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
+		%feature("autodoc", "	* Splits a HAsciiString into two sub-strings. Example: aString contains 'abcdefg' aString.Split(3) gives <self> = 'abc' and returns 'defg'
 
-Returns:
-	Handle_TCollection_HAsciiString
-
-Splits a HAsciiString into two sub-strings.  
- Example:  
- aString contains 'abcdefg'  
- aString.Split(3) gives <self> = 'abc' and returns 'defg'") Split;
+	:param where:
+	:type where: Standard_Integer
+	:rtype: Handle_TCollection_HAsciiString
+") Split;
 		Handle_TCollection_HAsciiString Split (const Standard_Integer where);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
+		%feature("autodoc", "	* Creation of a sub-string of the string <self>. The sub-string starts to the index Fromindex and ends to the index ToIndex. Raises an exception if ToIndex or FromIndex is out of bounds Example: before me = 'abcdefg', ToIndex=3, FromIndex=6 after me = 'abcdefg' returns 'cdef'
 
-Returns:
-	Handle_TCollection_HAsciiString
-
-Creation of a sub-string of the string <self>.  
-The sub-string starts to the index Fromindex and ends  
-to the index ToIndex.  
-Raises an exception if ToIndex or FromIndex is out of  
-bounds  
- Example:  
-before  
-  me = 'abcdefg', ToIndex=3, FromIndex=6  
-after  
-  me = 'abcdefg'  
-returns  
-  'cdef'") SubString;
+	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: Handle_TCollection_HAsciiString
+") SubString;
 		Handle_TCollection_HAsciiString SubString (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	char *
+		%feature("autodoc", "	* Returns pointer to string (char *) This is useful for some casual manipulations Because this 'char *' is 'const', you can't modify its contents.
 
-Returns pointer to string (char *)  
-This is useful for some casual manipulations  
-Because this 'char *' is 'const', you can't modify its contents.") ToCString;
+	:rtype: char *
+") ToCString;
 		char * ToCString ();
-		%feature("autodoc", "Args:
-	separators(char *)= \t
-	whichone(Standard_Integer)=1
+		%feature("autodoc", "	* Extracts <whichone> token from <self>. By default, the <separators> is set to space and tabulation. By default, the token extracted is the first one (whichone = 1). <separators> contains all separators you need. If no token indexed by <whichone> is found, it returns an empty String. Example: aString contains 'This is a message' aString.Token() returns 'This' aString.Token(' ',4) returns 'message' aString.Token(' ',2) returns 'is' aString.Token(' ',9) returns '' Other separators than space character and tabulation are allowed aString contains '1234; test:message , value' aString.Token('; :,',4) returns 'value' aString.Token('; :,',2) returns 'test'
 
-Returns:
-	Handle_TCollection_HAsciiString
-
-Extracts <whichone> token from <self>.  
-By default, the <separators> is set to space and tabulation.  
-By default, the token extracted is the first one (whichone = 1).  
-<separators> contains all separators you need.  
-If no token indexed by <whichone> is found, it returns an empty String.  
- Example:  
-   aString contains 'This is a     message'  
-   aString.Token()  returns 'This'  
-   aString.Token(' ',4) returns 'message'  
-   aString.Token(' ',2) returns 'is'  
-   aString.Token(' ',9) returns ''  
-Other separators than space character and tabulation are allowed  
-   aString contains '1234; test:message   , value'  
-   aString.Token('; :,',4) returns 'value'  
-   aString.Token('; :,',2) returns 'test'") Token;
+	:param separators: default value is  \t
+	:type separators: char *
+	:param whichone: default value is 1
+	:type whichone: Standard_Integer
+	:rtype: Handle_TCollection_HAsciiString
+") Token;
 		Handle_TCollection_HAsciiString Token (const char * separators = " \t",const Standard_Integer whichone = 1);
-		%feature("autodoc", "Args:
-	ahowmany(Standard_Integer)
+		%feature("autodoc", "	* Truncates <self> to <ahowmany> characters. Example: me = 'Hello Dolly' -> Trunc(3) -> me = 'Hel'
 
-Returns:
-	None
-
-Truncates <self> to <ahowmany> characters.  
- Example:  me = 'Hello Dolly' -> Trunc(3) -> me = 'Hel'") Trunc;
+	:param ahowmany:
+	:type ahowmany: Standard_Integer
+	:rtype: None
+") Trunc;
 		void Trunc (const Standard_Integer ahowmany);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Converts <self> to its upper-case equivalent.
 
-Converts <self> to its upper-case equivalent.") UpperCase;
+	:rtype: None
+") UpperCase;
 		void UpperCase ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Length of the string ignoring all spaces (' ') and the control character at the end.
 
-Length of the string ignoring all spaces (' ') and the  
-control character at the end.") UsefullLength;
+	:rtype: int
+") UsefullLength;
 		Standard_Integer UsefullLength ();
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
+		%feature("autodoc", "	* Returns character at position <where> in <self>. If <where> is less than zero or greater than the lenght of <self>, an exception is raised. Example: aString contains 'Hello' aString.Value(2) returns 'e'
 
-Returns:
-	Standard_Character
-
-Returns character at position <where> in <self>.  
-If <where> is less than zero or greater than the lenght of  
-<self>, an exception is raised.  
- Example:  
-  aString contains 'Hello'  
-  aString.Value(2) returns 'e'") Value;
+	:param where:
+	:type where: Standard_Integer
+	:rtype: Standard_Character
+") Value;
 		Standard_Character Value (const Standard_Integer where);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* Returns the field myString.
 
-Returns the field myString.") String;
+	:rtype: TCollection_AsciiString
+") String;
 		const TCollection_AsciiString & String ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TCollection_HAsciiString
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_TCollection_HAsciiString
+") ShallowCopy;
 		Handle_TCollection_HAsciiString ShallowCopy ();
 
         %feature("autodoc", "1");
@@ -2938,13 +2052,10 @@ No detailed docstring for this function.") ShallowCopy;
             self->ShallowDump(s);
             return s.str();}
         };
-        		%feature("autodoc", "Args:
-	other(Handle_TCollection_HAsciiString)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsSameState;
+        		%feature("autodoc", "	:param other:
+	:type other: Handle_TCollection_HAsciiString &
+	:rtype: bool
+") IsSameState;
 		Standard_Boolean IsSameState (const Handle_TCollection_HAsciiString & other);
 };
 
@@ -3005,302 +2116,224 @@ def __del__(self):
 %nodefaultctor TCollection_HExtendedString;
 class TCollection_HExtendedString : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Initializes a HExtendedString to an empty ExtendedString.
 
-Initializes a HExtendedString to an empty ExtendedString.") TCollection_HExtendedString;
+	:rtype: None
+") TCollection_HExtendedString;
 		 TCollection_HExtendedString ();
-		%feature("autodoc", "Args:
-	message(char *)
+		%feature("autodoc", "	* Initializes a HExtendedString with a CString.
 
-Returns:
-	None
-
-Initializes a HExtendedString with a CString.") TCollection_HExtendedString;
+	:param message:
+	:type message: char *
+	:rtype: None
+") TCollection_HExtendedString;
 		 TCollection_HExtendedString (const char * message);
-		%feature("autodoc", "Args:
-	message(Standard_ExtString)
+		%feature("autodoc", "	* Initializes a HExtendedString with an ExtString.
 
-Returns:
-	None
-
-Initializes a HExtendedString with an ExtString.") TCollection_HExtendedString;
+	:param message:
+	:type message: Standard_ExtString
+	:rtype: None
+") TCollection_HExtendedString;
 		 TCollection_HExtendedString (const Standard_ExtString message);
-		%feature("autodoc", "Args:
-	aChar(Standard_ExtCharacter)
+		%feature("autodoc", "	* Initializes a HExtendedString with a single character.
 
-Returns:
-	None
-
-Initializes a HExtendedString with a single character.") TCollection_HExtendedString;
+	:param aChar:
+	:type aChar: Standard_ExtCharacter
+	:rtype: None
+") TCollection_HExtendedString;
 		 TCollection_HExtendedString (const Standard_ExtCharacter aChar);
-		%feature("autodoc", "Args:
-	length(Standard_Integer)
-	filler(Standard_ExtCharacter)
+		%feature("autodoc", "	* Initializes a HExtendedString with <length> space allocated. and filled with <filler>.This is usefull for buffers.
 
-Returns:
-	None
-
-Initializes a HExtendedString with <length> space allocated.  
-and filled with <filler>.This is usefull for buffers.") TCollection_HExtendedString;
+	:param length:
+	:type length: Standard_Integer
+	:param filler:
+	:type filler: Standard_ExtCharacter
+	:rtype: None
+") TCollection_HExtendedString;
 		 TCollection_HExtendedString (const Standard_Integer length,const Standard_ExtCharacter filler);
-		%feature("autodoc", "Args:
-	aString(TCollection_ExtendedString)
+		%feature("autodoc", "	* Initializes a HExtendedString with a HExtendedString.
 
-Returns:
-	None
-
-Initializes a HExtendedString with a HExtendedString.") TCollection_HExtendedString;
+	:param aString:
+	:type aString: TCollection_ExtendedString &
+	:rtype: None
+") TCollection_HExtendedString;
 		 TCollection_HExtendedString (const TCollection_ExtendedString & aString);
-		%feature("autodoc", "Args:
-	aString(Handle_TCollection_HAsciiString)
+		%feature("autodoc", "	* Initializes a HExtendedString with an HAsciiString.
 
-Returns:
-	None
-
-Initializes a HExtendedString with an HAsciiString.") TCollection_HExtendedString;
+	:param aString:
+	:type aString: Handle_TCollection_HAsciiString &
+	:rtype: None
+") TCollection_HExtendedString;
 		 TCollection_HExtendedString (const Handle_TCollection_HAsciiString & aString);
-		%feature("autodoc", "Args:
-	aString(Handle_TCollection_HExtendedString)
+		%feature("autodoc", "	* Initializes a HExtendedString with a HExtendedString.
 
-Returns:
-	None
-
-Initializes a HExtendedString with a HExtendedString.") TCollection_HExtendedString;
+	:param aString:
+	:type aString: Handle_TCollection_HExtendedString &
+	:rtype: None
+") TCollection_HExtendedString;
 		 TCollection_HExtendedString (const Handle_TCollection_HExtendedString & aString);
-		%feature("autodoc", "Args:
-	other(Handle_TCollection_HExtendedString)
+		%feature("autodoc", "	* Appends <other> to me.
 
-Returns:
-	None
-
-Appends <other>  to me.") AssignCat;
+	:param other:
+	:type other: Handle_TCollection_HExtendedString &
+	:rtype: None
+") AssignCat;
 		void AssignCat (const Handle_TCollection_HExtendedString & other);
-		%feature("autodoc", "Args:
-	other(Handle_TCollection_HExtendedString)
+		%feature("autodoc", "	* Returns a string appending <other> to me.
 
-Returns:
-	Handle_TCollection_HExtendedString
-
-Returns a string appending <other>  to me.") Cat;
+	:param other:
+	:type other: Handle_TCollection_HExtendedString &
+	:rtype: Handle_TCollection_HExtendedString
+") Cat;
 		Handle_TCollection_HExtendedString Cat (const Handle_TCollection_HExtendedString & other);
-		%feature("autodoc", "Args:
-	aChar(Standard_ExtCharacter)
-	NewChar(Standard_ExtCharacter)
+		%feature("autodoc", "	* Substitutes all the characters equal to aChar by NewChar in the string <self>.
 
-Returns:
-	None
-
-Substitutes all the characters equal to aChar by NewChar  
-in the string <self>.") ChangeAll;
+	:param aChar:
+	:type aChar: Standard_ExtCharacter
+	:param NewChar:
+	:type NewChar: Standard_ExtCharacter
+	:rtype: None
+") ChangeAll;
 		void ChangeAll (const Standard_ExtCharacter aChar,const Standard_ExtCharacter NewChar);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Removes all characters contained in <self>. This produces an empty ExtendedString.
 
-Removes all characters contained in <self>.  
-This produces an empty ExtendedString.") Clear;
+	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the string <self> contains zero character
 
-Returns True if the string <self> contains zero character") IsEmpty;
+	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
-	what(Standard_ExtCharacter)
+		%feature("autodoc", "	* Insert a ExtCharacter at position <where>. Example: aString contains 'hy not ?' aString.Insert(1,'W'); gives 'Why not ?' aString contains 'Wh' aString.Insert(3,'y'); gives 'Why' aString contains 'Way' aString.Insert(2,'h'); gives 'Why'
 
-Returns:
-	None
-
-Insert a ExtCharacter at position <where>.  
-Example:  
-   aString contains 'hy not ?'  
-   aString.Insert(1,'W'); gives 'Why not ?'  
-   aString contains 'Wh'  
-   aString.Insert(3,'y'); gives 'Why'  
-   aString contains 'Way'  
-   aString.Insert(2,'h'); gives 'Why'") Insert;
+	:param where:
+	:type where: Standard_Integer
+	:param what:
+	:type what: Standard_ExtCharacter
+	:rtype: None
+") Insert;
 		void Insert (const Standard_Integer where,const Standard_ExtCharacter what);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
-	what(Handle_TCollection_HExtendedString)
+		%feature("autodoc", "	* Insert a HExtendedString at position <where>.
 
-Returns:
-	None
-
-Insert a HExtendedString at position <where>.") Insert;
+	:param where:
+	:type where: Standard_Integer
+	:param what:
+	:type what: Handle_TCollection_HExtendedString &
+	:rtype: None
+") Insert;
 		void Insert (const Standard_Integer where,const Handle_TCollection_HExtendedString & what);
-		%feature("autodoc", "Args:
-	other(Handle_TCollection_HExtendedString)
+		%feature("autodoc", "	* Returns True if <self> is less than <other>.
 
-Returns:
-	Standard_Boolean
-
-Returns TRUE if <self> is less than <other>.") IsLess;
+	:param other:
+	:type other: Handle_TCollection_HExtendedString &
+	:rtype: bool
+") IsLess;
 		Standard_Boolean IsLess (const Handle_TCollection_HExtendedString & other);
-		%feature("autodoc", "Args:
-	other(Handle_TCollection_HExtendedString)
+		%feature("autodoc", "	* Returns True if <self> is greater than <other>.
 
-Returns:
-	Standard_Boolean
-
-Returns TRUE if <self> is greater than <other>.") IsGreater;
+	:param other:
+	:type other: Handle_TCollection_HExtendedString &
+	:rtype: bool
+") IsGreater;
 		Standard_Boolean IsGreater (const Handle_TCollection_HExtendedString & other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the string contains only 'Ascii Range' characters
 
-Returns True if the string contains only 'Ascii Range'  characters") IsAscii;
+	:rtype: bool
+") IsAscii;
 		Standard_Boolean IsAscii ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns number of characters in <self>. This is the same functionality as 'strlen' in C.
 
-Returns number of characters in <self>.  
-This is the same functionality as 'strlen' in C.") Length;
+	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
-	ahowmany(Standard_Integer)=1
+		%feature("autodoc", "	* Erases <ahowmany> characters from position <where>, <where> included. Example: aString contains 'Hello' aString.Erase(2,2) erases 2 characters from position 1 This gives 'Hlo'.
 
-Returns:
-	None
-
-Erases <ahowmany> characters from position <where>,  
-<where> included.  
-Example:  
-  aString contains 'Hello'  
-  aString.Erase(2,2) erases 2 characters from position 1  
-  This gives 'Hlo'.") Remove;
+	:param where:
+	:type where: Standard_Integer
+	:param ahowmany: default value is 1
+	:type ahowmany: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer where,const Standard_Integer ahowmany = 1);
-		%feature("autodoc", "Args:
-	what(Standard_ExtCharacter)
+		%feature("autodoc", "	* Removes every <what> characters from <self>.
 
-Returns:
-	None
-
-Removes every <what> characters from <self>.") RemoveAll;
+	:param what:
+	:type what: Standard_ExtCharacter
+	:rtype: None
+") RemoveAll;
 		void RemoveAll (const Standard_ExtCharacter what);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
-	what(Standard_ExtCharacter)
+		%feature("autodoc", "	* Replaces one character in the string at position <where>. If <where> is less than zero or greater than the length of <self> an exception is raised. Example: aString contains 'Garbake' astring.Replace(6,'g') gives <self> = 'Garbage'
 
-Returns:
-	None
-
-Replaces one character in the string at position <where>.  
-If <where> is less than zero or greater than the length of <self>  
-an exception is raised.  
-Example:  
-  aString contains 'Garbake'  
-  astring.Replace(6,'g')  gives <self> = 'Garbage'") SetValue;
+	:param where:
+	:type where: Standard_Integer
+	:param what:
+	:type what: Standard_ExtCharacter
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer where,const Standard_ExtCharacter what);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
-	what(Handle_TCollection_HExtendedString)
+		%feature("autodoc", "	* Replaces a part of <self> by another string.
 
-Returns:
-	None
-
-Replaces a part of <self> by another string.") SetValue;
+	:param where:
+	:type where: Standard_Integer
+	:param what:
+	:type what: Handle_TCollection_HExtendedString &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer where,const Handle_TCollection_HExtendedString & what);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
+		%feature("autodoc", "	* Splits a ExtendedString into two sub-strings. Example: aString contains 'abcdefg' aString.Split(3) gives <self> = 'abc' and returns 'defg'
 
-Returns:
-	Handle_TCollection_HExtendedString
-
-Splits a ExtendedString into two sub-strings.  
-Example:  
-  aString contains 'abcdefg'  
-  aString.Split(3) gives <self> = 'abc' and returns 'defg'") Split;
+	:param where:
+	:type where: Standard_Integer
+	:rtype: Handle_TCollection_HExtendedString
+") Split;
 		Handle_TCollection_HExtendedString Split (const Standard_Integer where);
-		%feature("autodoc", "Args:
-	what(Handle_TCollection_HExtendedString)
+		%feature("autodoc", "	* Searches a String in <self> from the beginning and returns position of first item <what> matching. It returns -1 if not found.
 
-Returns:
-	Standard_Integer
-
-Searches a String in <self> from the beginning  
-and returns position of first item <what> matching.  
-It returns -1 if not found.") Search;
+	:param what:
+	:type what: Handle_TCollection_HExtendedString &
+	:rtype: int
+") Search;
 		Standard_Integer Search (const Handle_TCollection_HExtendedString & what);
-		%feature("autodoc", "Args:
-	what(Handle_TCollection_HExtendedString)
+		%feature("autodoc", "	* Searches a ExtendedString in another ExtendedString from the end and returns position of first item <what> matching. It returns -1 if not found.
 
-Returns:
-	Standard_Integer
-
-Searches a ExtendedString in another ExtendedString from the end  
-and returns position of first item <what> matching.  
-It returns -1 if not found.") SearchFromEnd;
+	:param what:
+	:type what: Handle_TCollection_HExtendedString &
+	:rtype: int
+") SearchFromEnd;
 		Standard_Integer SearchFromEnd (const Handle_TCollection_HExtendedString & what);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ExtString
+		%feature("autodoc", "	* Returns pointer to ExtString
 
-Returns pointer to ExtString") ToExtString;
+	:rtype: Standard_ExtString
+") ToExtString;
 		Standard_ExtString ToExtString ();
-		%feature("autodoc", "Args:
-	separators(Standard_ExtString)
-	whichone(Standard_Integer)=1
+		%feature("autodoc", "	* Extracts <whichone> token from <self>. By default, the <separators> is set to space and tabulation. By default, the token extracted is the first one (whichone = 1). <separators> contains all separators you need. If no token indexed by <whichone> is found, it returns an empty String. Example: aString contains 'This is a message' aString.Token() returns 'This' aString.Token(' ',4) returns 'message' aString.Token(' ',2) returns 'is' aString.Token(' ',9) returns '' Other separators than space character and tabulation are allowed aString contains '1234; test:message , value' aString.Token('; :,',4) returns 'value' aString.Token('; :,',2) returns 'test'
 
-Returns:
-	Handle_TCollection_HExtendedString
-
-Extracts <whichone> token from <self>.  
-By default, the <separators> is set to space and tabulation.  
-By default, the token extracted is the first one (whichone = 1).  
-<separators> contains all separators you need.  
-If no token indexed by <whichone> is found, it returns an empty String.  
-Example:  
-   aString contains 'This is a     message'  
-   aString.Token()  returns 'This'  
-   aString.Token(' ',4) returns 'message'  
-   aString.Token(' ',2) returns 'is'  
-   aString.Token(' ',9) returns ''  
-Other separators than space character and tabulation are allowed  
-   aString contains '1234; test:message   , value'  
-   aString.Token('; :,',4) returns 'value'  
-   aString.Token('; :,',2) returns 'test'") Token;
+	:param separators:
+	:type separators: Standard_ExtString
+	:param whichone: default value is 1
+	:type whichone: Standard_Integer
+	:rtype: Handle_TCollection_HExtendedString
+") Token;
 		Handle_TCollection_HExtendedString Token (const Standard_ExtString separators,const Standard_Integer whichone = 1);
-		%feature("autodoc", "Args:
-	ahowmany(Standard_Integer)
+		%feature("autodoc", "	* Truncates <self> to <ahowmany> characters. Example: me = 'Hello Dolly' -> Trunc(3) -> me = 'Hel'
 
-Returns:
-	None
-
-Truncates <self> to <ahowmany> characters.  
-Example:  me = 'Hello Dolly' -> Trunc(3) -> me = 'Hel'") Trunc;
+	:param ahowmany:
+	:type ahowmany: Standard_Integer
+	:rtype: None
+") Trunc;
 		void Trunc (const Standard_Integer ahowmany);
-		%feature("autodoc", "Args:
-	where(Standard_Integer)
+		%feature("autodoc", "	* Returns ExtCharacter at position <where> in <self>. If <where> is less than zero or greater than the length of <self>, an exception is raised. Example: aString contains 'Hello' aString.Value(2) returns 'e'
 
-Returns:
-	Standard_ExtCharacter
-
-Returns ExtCharacter at position <where> in <self>.  
-If <where> is less than zero or greater than the length of  
-<self>, an exception is raised.  
-Example:  
-  aString contains 'Hello'  
-  aString.Value(2) returns 'e'") Value;
+	:param where:
+	:type where: Standard_Integer
+	:rtype: Standard_ExtCharacter
+") Value;
 		Standard_ExtCharacter Value (const Standard_Integer where);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_ExtendedString
+		%feature("autodoc", "	* Returns the field myString
 
-Returns the field myString") String;
+	:rtype: TCollection_ExtendedString
+") String;
 		const TCollection_ExtendedString & String ();
 
         %feature("autodoc", "1");
@@ -3310,12 +2343,8 @@ Returns the field myString") String;
             self->Print(s);
             return s.str();}
         };
-        		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TCollection_HExtendedString
-
-No detailed docstring for this function.") ShallowCopy;
+        		%feature("autodoc", "	:rtype: Handle_TCollection_HExtendedString
+") ShallowCopy;
 		Handle_TCollection_HExtendedString ShallowCopy ();
 
         %feature("autodoc", "1");
@@ -3325,13 +2354,10 @@ No detailed docstring for this function.") ShallowCopy;
             self->ShallowDump(s);
             return s.str();}
         };
-        		%feature("autodoc", "Args:
-	other(Handle_TCollection_HExtendedString)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsSameState;
+        		%feature("autodoc", "	:param other:
+	:type other: Handle_TCollection_HExtendedString &
+	:rtype: bool
+") IsSameState;
 		Standard_Boolean IsSameState (const Handle_TCollection_HExtendedString & other);
 };
 
@@ -3392,20 +2418,13 @@ def __del__(self):
 %nodefaultctor TCollection_MapNode;
 class TCollection_MapNode : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TCollection_MapNode;
+		%feature("autodoc", "	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TCollection_MapNode;
 		 TCollection_MapNode (const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_MapNodePtr
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: TCollection_MapNodePtr
+") Next;
 		TCollection_MapNodePtr & Next ();
 };
 
@@ -3466,32 +2485,26 @@ def __del__(self):
 %nodefaultctor TCollection_PrivCompareOfInteger;
 class TCollection_PrivCompareOfInteger {
 	public:
-		%feature("autodoc", "Args:
-	Left(Standard_Integer)
-	Right(Standard_Integer)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") IsLower;
+		%feature("autodoc", "	:param Left:
+	:type Left: Standard_Integer &
+	:param Right:
+	:type Right: Standard_Integer &
+	:rtype: bool
+") IsLower;
 		virtual Standard_Boolean IsLower (Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	Left(Standard_Integer)
-	Right(Standard_Integer)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") IsGreater;
+		%feature("autodoc", "	:param Left:
+	:type Left: Standard_Integer &
+	:param Right:
+	:type Right: Standard_Integer &
+	:rtype: bool
+") IsGreater;
 		virtual Standard_Boolean IsGreater (Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	Left(Standard_Integer)
-	Right(Standard_Integer)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") IsEqual;
+		%feature("autodoc", "	:param Left:
+	:type Left: Standard_Integer &
+	:param Right:
+	:type Right: Standard_Integer &
+	:rtype: bool
+") IsEqual;
 		virtual Standard_Boolean IsEqual (Standard_Integer &OutValue,Standard_Integer &OutValue);
 };
 
@@ -3513,32 +2526,26 @@ def __del__(self):
 %nodefaultctor TCollection_PrivCompareOfReal;
 class TCollection_PrivCompareOfReal {
 	public:
-		%feature("autodoc", "Args:
-	Left(Standard_Real)
-	Right(Standard_Real)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") IsLower;
+		%feature("autodoc", "	:param Left:
+	:type Left: float &
+	:param Right:
+	:type Right: float &
+	:rtype: bool
+") IsLower;
 		virtual Standard_Boolean IsLower (const Standard_Real & Left,const Standard_Real & Right);
-		%feature("autodoc", "Args:
-	Left(Standard_Real)
-	Right(Standard_Real)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") IsGreater;
+		%feature("autodoc", "	:param Left:
+	:type Left: float &
+	:param Right:
+	:type Right: float &
+	:rtype: bool
+") IsGreater;
 		virtual Standard_Boolean IsGreater (const Standard_Real & Left,const Standard_Real & Right);
-		%feature("autodoc", "Args:
-	Left(Standard_Real)
-	Right(Standard_Real)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") IsEqual;
+		%feature("autodoc", "	:param Left:
+	:type Left: float &
+	:param Right:
+	:type Right: float &
+	:rtype: bool
+") IsEqual;
 		virtual Standard_Boolean IsEqual (const Standard_Real & Left,const Standard_Real & Right);
 };
 
@@ -3560,28 +2567,18 @@ def __del__(self):
 %nodefaultctor TCollection_SeqNode;
 class TCollection_SeqNode : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TCollection_SeqNode;
+		%feature("autodoc", "	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") TCollection_SeqNode;
 		 TCollection_SeqNode (const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_SeqNodePtr
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: TCollection_SeqNodePtr
+") Next;
 		TCollection_SeqNodePtr & Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_SeqNodePtr
-
-No detailed docstring for this function.") Previous;
+		%feature("autodoc", "	:rtype: TCollection_SeqNodePtr
+") Previous;
 		TCollection_SeqNodePtr & Previous ();
 };
 
@@ -3642,30 +2639,26 @@ def __del__(self):
 %nodefaultctor TCollection_CompareOfInteger;
 class TCollection_CompareOfInteger : public TCollection_PrivCompareOfInteger {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TCollection_CompareOfInteger;
+		%feature("autodoc", "	:rtype: None
+") TCollection_CompareOfInteger;
 		 TCollection_CompareOfInteger ();
-		%feature("autodoc", "Args:
-	Left(Standard_Integer)
-	Right(Standard_Integer)
+		%feature("autodoc", "	* Returns True if <Left> is lower than <Right>.
 
-Returns:
-	virtual Standard_Boolean
-
-Returns True if <Left> is lower than <Right>.") IsLower;
+	:param Left:
+	:type Left: Standard_Integer &
+	:param Right:
+	:type Right: Standard_Integer &
+	:rtype: bool
+") IsLower;
 		virtual Standard_Boolean IsLower (Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	Left(Standard_Integer)
-	Right(Standard_Integer)
+		%feature("autodoc", "	* Returns True if <Left> is greater than <Right>.
 
-Returns:
-	virtual Standard_Boolean
-
-Returns True if <Left> is greater than <Right>.") IsGreater;
+	:param Left:
+	:type Left: Standard_Integer &
+	:param Right:
+	:type Right: Standard_Integer &
+	:rtype: bool
+") IsGreater;
 		virtual Standard_Boolean IsGreater (Standard_Integer &OutValue,Standard_Integer &OutValue);
 };
 
@@ -3687,30 +2680,26 @@ def __del__(self):
 %nodefaultctor TCollection_CompareOfReal;
 class TCollection_CompareOfReal : public TCollection_PrivCompareOfReal {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TCollection_CompareOfReal;
+		%feature("autodoc", "	:rtype: None
+") TCollection_CompareOfReal;
 		 TCollection_CompareOfReal ();
-		%feature("autodoc", "Args:
-	Left(Standard_Real)
-	Right(Standard_Real)
+		%feature("autodoc", "	* Returns True if <Left> is lower than <Right>.
 
-Returns:
-	virtual Standard_Boolean
-
-Returns True if <Left> is lower than <Right>.") IsLower;
+	:param Left:
+	:type Left: float &
+	:param Right:
+	:type Right: float &
+	:rtype: bool
+") IsLower;
 		virtual Standard_Boolean IsLower (const Standard_Real & Left,const Standard_Real & Right);
-		%feature("autodoc", "Args:
-	Left(Standard_Real)
-	Right(Standard_Real)
+		%feature("autodoc", "	* Returns True if <Left> is greater than <Right>.
 
-Returns:
-	virtual Standard_Boolean
-
-Returns True if <Left> is greater than <Right>.") IsGreater;
+	:param Left:
+	:type Left: float &
+	:param Right:
+	:type Right: float &
+	:rtype: bool
+") IsGreater;
 		virtual Standard_Boolean IsGreater (const Standard_Real & Left,const Standard_Real & Right);
 };
 

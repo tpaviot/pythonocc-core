@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -44,107 +44,82 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor BRepIntCurveSurface_Inter;
 class BRepIntCurveSurface_Inter {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor;
 
-Empty constructor;") BRepIntCurveSurface_Inter;
+	:rtype: None
+") BRepIntCurveSurface_Inter;
 		 BRepIntCurveSurface_Inter ();
-		%feature("autodoc", "Args:
-	Sh(TopoDS_Shape)
-	Cu(GeomAdaptor_Curve)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Load the Shape, the curve and initialize the tolerance used for the classification.
 
-Returns:
-	None
-
-Load the Shape, the curve  and initialize the  
-          tolerance used for the classification.") Init;
+	:param Sh:
+	:type Sh: TopoDS_Shape &
+	:param Cu:
+	:type Cu: GeomAdaptor_Curve &
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Shape & Sh,const GeomAdaptor_Curve & Cu,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Sh(TopoDS_Shape)
-	L(gp_Lin)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Load the Shape, the curve and initialize the tolerance used for the classification.
 
-Returns:
-	None
-
-Load the Shape, the curve  and initialize the  
-          tolerance used for the classification.") Init;
+	:param Sh:
+	:type Sh: TopoDS_Shape &
+	:param L:
+	:type L: gp_Lin
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Shape & Sh,const gp_Lin & L,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns True if there is a current face.
 
-returns True if there is a current face.") More;
+	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Sets the explorer to the next face.
 
-Sets the explorer to the next face.") Next;
+	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntCurveSurface_IntersectionPoint
+		%feature("autodoc", "	* returns the current Intersection point.
 
-returns the current Intersection point.") Point;
+	:rtype: IntCurveSurface_IntersectionPoint
+") Point;
 		IntCurveSurface_IntersectionPoint Point ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
+		%feature("autodoc", "	* returns the current geometric Point
 
-returns the current geometric Point") Pnt;
+	:rtype: gp_Pnt
+") Pnt;
 		const gp_Pnt & Pnt ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns the U parameter of the current point on the current face.
 
-returns the U parameter of the current point  
-         on the current face.") U;
+	:rtype: float
+") U;
 		Standard_Real U ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns the V parameter of the current point on the current face.
 
-returns the V parameter of the current point  
-         on the current face.") V;
+	:rtype: float
+") V;
 		Standard_Real V ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns the parameter of the current point on the curve.
 
-returns the  parameter of the current point  
-         on the curve.") W;
+	:rtype: float
+") W;
 		Standard_Real W ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_State
+		%feature("autodoc", "	* returns the current state (IN or ON)
 
-returns the current state  (IN or ON)") State;
+	:rtype: TopAbs_State
+") State;
 		TopAbs_State State ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntCurveSurface_TransitionOnCurve
+		%feature("autodoc", "	* returns the transition of the line on the surface (IN or OUT or UNKNOWN)
 
-returns the transition of the line on the surface (IN or OUT or UNKNOWN)") Transition;
+	:rtype: IntCurveSurface_TransitionOnCurve
+") Transition;
 		IntCurveSurface_TransitionOnCurve Transition ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Face
+		%feature("autodoc", "	* returns the current face.
 
-returns the current face.") Face;
+	:rtype: TopoDS_Face
+") Face;
 		const TopoDS_Face & Face ();
 };
 

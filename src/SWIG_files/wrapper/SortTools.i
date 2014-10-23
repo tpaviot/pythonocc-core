@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -44,14 +44,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor SortTools_HeapSortOfInteger;
 class SortTools_HeapSortOfInteger {
 	public:
-		%feature("autodoc", "Args:
-	TheArray(TColStd_Array1OfInteger)
-	Comp(TCollection_CompareOfInteger)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") Sort;
+		%feature("autodoc", "	:param TheArray:
+	:type TheArray: TColStd_Array1OfInteger &
+	:param Comp:
+	:type Comp: TCollection_CompareOfInteger &
+	:rtype: void
+") Sort;
 		static void Sort (TColStd_Array1OfInteger & TheArray,const TCollection_CompareOfInteger & Comp);
 };
 
@@ -73,14 +71,12 @@ def __del__(self):
 %nodefaultctor SortTools_HeapSortOfReal;
 class SortTools_HeapSortOfReal {
 	public:
-		%feature("autodoc", "Args:
-	TheArray(TColStd_Array1OfReal)
-	Comp(TCollection_CompareOfReal)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") Sort;
+		%feature("autodoc", "	:param TheArray:
+	:type TheArray: TColStd_Array1OfReal &
+	:param Comp:
+	:type Comp: TCollection_CompareOfReal &
+	:rtype: void
+") Sort;
 		static void Sort (TColStd_Array1OfReal & TheArray,const TCollection_CompareOfReal & Comp);
 };
 
@@ -102,14 +98,12 @@ def __del__(self):
 %nodefaultctor SortTools_QuickSortOfInteger;
 class SortTools_QuickSortOfInteger {
 	public:
-		%feature("autodoc", "Args:
-	TheArray(TColStd_Array1OfInteger)
-	Comp(TCollection_CompareOfInteger)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") Sort;
+		%feature("autodoc", "	:param TheArray:
+	:type TheArray: TColStd_Array1OfInteger &
+	:param Comp:
+	:type Comp: TCollection_CompareOfInteger &
+	:rtype: void
+") Sort;
 		static void Sort (TColStd_Array1OfInteger & TheArray,const TCollection_CompareOfInteger & Comp);
 };
 
@@ -131,14 +125,12 @@ def __del__(self):
 %nodefaultctor SortTools_QuickSortOfReal;
 class SortTools_QuickSortOfReal {
 	public:
-		%feature("autodoc", "Args:
-	TheArray(TColStd_Array1OfReal)
-	Comp(TCollection_CompareOfReal)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") Sort;
+		%feature("autodoc", "	:param TheArray:
+	:type TheArray: TColStd_Array1OfReal &
+	:param Comp:
+	:type Comp: TCollection_CompareOfReal &
+	:rtype: void
+") Sort;
 		static void Sort (TColStd_Array1OfReal & TheArray,const TCollection_CompareOfReal & Comp);
 };
 
@@ -160,14 +152,12 @@ def __del__(self):
 %nodefaultctor SortTools_ShellSortOfInteger;
 class SortTools_ShellSortOfInteger {
 	public:
-		%feature("autodoc", "Args:
-	TheArray(TColStd_Array1OfInteger)
-	Comp(TCollection_CompareOfInteger)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") Sort;
+		%feature("autodoc", "	:param TheArray:
+	:type TheArray: TColStd_Array1OfInteger &
+	:param Comp:
+	:type Comp: TCollection_CompareOfInteger &
+	:rtype: void
+") Sort;
 		static void Sort (TColStd_Array1OfInteger & TheArray,const TCollection_CompareOfInteger & Comp);
 };
 
@@ -189,14 +179,12 @@ def __del__(self):
 %nodefaultctor SortTools_ShellSortOfReal;
 class SortTools_ShellSortOfReal {
 	public:
-		%feature("autodoc", "Args:
-	TheArray(TColStd_Array1OfReal)
-	Comp(TCollection_CompareOfReal)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") Sort;
+		%feature("autodoc", "	:param TheArray:
+	:type TheArray: TColStd_Array1OfReal &
+	:param Comp:
+	:type Comp: TCollection_CompareOfReal &
+	:rtype: void
+") Sort;
 		static void Sort (TColStd_Array1OfReal & TheArray,const TCollection_CompareOfReal & Comp);
 };
 
@@ -218,14 +206,12 @@ def __del__(self):
 %nodefaultctor SortTools_StraightInsertionSortOfInteger;
 class SortTools_StraightInsertionSortOfInteger {
 	public:
-		%feature("autodoc", "Args:
-	TheArray(TColStd_Array1OfInteger)
-	Comp(TCollection_CompareOfInteger)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") Sort;
+		%feature("autodoc", "	:param TheArray:
+	:type TheArray: TColStd_Array1OfInteger &
+	:param Comp:
+	:type Comp: TCollection_CompareOfInteger &
+	:rtype: void
+") Sort;
 		static void Sort (TColStd_Array1OfInteger & TheArray,const TCollection_CompareOfInteger & Comp);
 };
 
@@ -247,14 +233,12 @@ def __del__(self):
 %nodefaultctor SortTools_StraightInsertionSortOfReal;
 class SortTools_StraightInsertionSortOfReal {
 	public:
-		%feature("autodoc", "Args:
-	TheArray(TColStd_Array1OfReal)
-	Comp(TCollection_CompareOfReal)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") Sort;
+		%feature("autodoc", "	:param TheArray:
+	:type TheArray: TColStd_Array1OfReal &
+	:param Comp:
+	:type Comp: TCollection_CompareOfReal &
+	:rtype: void
+") Sort;
 		static void Sort (TColStd_Array1OfReal & TheArray,const TCollection_CompareOfReal & Comp);
 };
 

@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -45,65 +45,56 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor ShapeFix;
 class ShapeFix {
 	public:
-		%feature("autodoc", "Args:
-	shape(TopoDS_Shape)
-	enforce(Standard_Boolean)
-	preci(Standard_Real)=0.0
-	theProgress(Handle_Message_ProgressIndicator)=0
+		%feature("autodoc", "	* Runs SameParameter from BRepLib with these adaptations : <enforce> forces computations, else they are made only on Edges with flag SameParameter false <preci>, if not precised, is taken for each EDge as its own Tolerance Returns True when done, False if an exception has been raised In case of exception anyway, as many edges as possible have been processed. The passed progress indicator allows user to consult the current progress stage and abort algorithm if needed.
 
-Returns:
-	static Standard_Boolean
-
-Runs SameParameter from BRepLib with these adaptations :  
-          <enforce> forces computations, else they are made only on  
-            Edges with flag SameParameter false  
-          <preci>, if not precised, is taken for each EDge as its own  
-          Tolerance  
-          Returns True when done, False if an exception has been raised  
-          In case of exception anyway, as many edges as possible have  
-          been processed. The passed progress indicator allows user  
-          to consult the current progress stage and abort algorithm  
-          if needed.") SameParameter;
+	:param shape:
+	:type shape: TopoDS_Shape &
+	:param enforce:
+	:type enforce: bool
+	:param preci: default value is 0.0
+	:type preci: float
+	:param theProgress: default value is 0
+	:type theProgress: Handle_Message_ProgressIndicator &
+	:rtype: bool
+") SameParameter;
 		static Standard_Boolean SameParameter (const TopoDS_Shape & shape,const Standard_Boolean enforce,const Standard_Real preci = 0.0,const Handle_Message_ProgressIndicator & theProgress = 0);
-		%feature("autodoc", "Args:
-	shape(TopoDS_Shape)
-	tolang(Standard_Real)=1.0e-10
+		%feature("autodoc", "	* Runs EncodeRegularity from BRepLib taking into account shared components of assemblies, so that each component is processed only once
 
-Returns:
-	static void
-
-Runs EncodeRegularity from BRepLib taking into account  
-          shared components of assemblies, so that each component  
-          is processed only once") EncodeRegularity;
+	:param shape:
+	:type shape: TopoDS_Shape &
+	:param tolang: default value is 1.0e-10
+	:type tolang: float
+	:rtype: void
+") EncodeRegularity;
 		static void EncodeRegularity (const TopoDS_Shape & shape,const Standard_Real tolang = 1.0e-10);
-		%feature("autodoc", "Args:
-	shape(TopoDS_Shape)
-	Tolerance(Standard_Real)
-	context(Handle_ShapeBuild_ReShape)
+		%feature("autodoc", "	* Removes edges which are less than given tolerance from shape with help of ShapeFix_Wire::FixSmall()
 
-Returns:
-	static TopoDS_Shape
-
-Removes edges which are less than given tolerance from shape  
-         with help of ShapeFix_Wire::FixSmall()") RemoveSmallEdges;
+	:param shape:
+	:type shape: TopoDS_Shape &
+	:param Tolerance:
+	:type Tolerance: float
+	:param context:
+	:type context: Handle_ShapeBuild_ReShape &
+	:rtype: TopoDS_Shape
+") RemoveSmallEdges;
 		static TopoDS_Shape RemoveSmallEdges (TopoDS_Shape & shape,const Standard_Real Tolerance,Handle_ShapeBuild_ReShape & context);
-		%feature("autodoc", "Args:
-	theshape(TopoDS_Shape)
-	theTolerance(Standard_Real)
-	thecontext(Handle_ShapeBuild_ReShape)
+		%feature("autodoc", "	* Fix position of the vertices having tolerance more tnan specified one.;
 
-Returns:
-	static Standard_Boolean
-
-Fix position of the vertices having tolerance more tnan specified one.;") FixVertexPosition;
+	:param theshape:
+	:type theshape: TopoDS_Shape &
+	:param theTolerance:
+	:type theTolerance: float
+	:param thecontext:
+	:type thecontext: Handle_ShapeBuild_ReShape &
+	:rtype: bool
+") FixVertexPosition;
 		static Standard_Boolean FixVertexPosition (TopoDS_Shape & theshape,const Standard_Real theTolerance,const Handle_ShapeBuild_ReShape & thecontext);
-		%feature("autodoc", "Args:
-	theshape(TopoDS_Shape)
+		%feature("autodoc", "	* Calculate size of least edge;
 
-Returns:
-	static Standard_Real
-
-Calculate size of least edge;") LeastEdgeSize;
+	:param theshape:
+	:type theshape: TopoDS_Shape &
+	:rtype: float
+") LeastEdgeSize;
 		static Standard_Real LeastEdgeSize (TopoDS_Shape & theshape);
 };
 
@@ -125,42 +116,24 @@ def __del__(self):
 %nodefaultctor ShapeFix_DataMapIteratorOfDataMapOfShapeBox2d;
 class ShapeFix_DataMapIteratorOfDataMapOfShapeBox2d : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ShapeFix_DataMapIteratorOfDataMapOfShapeBox2d;
+		%feature("autodoc", "	:rtype: None
+") ShapeFix_DataMapIteratorOfDataMapOfShapeBox2d;
 		 ShapeFix_DataMapIteratorOfDataMapOfShapeBox2d ();
-		%feature("autodoc", "Args:
-	aMap(ShapeFix_DataMapOfShapeBox2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ShapeFix_DataMapIteratorOfDataMapOfShapeBox2d;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: ShapeFix_DataMapOfShapeBox2d &
+	:rtype: None
+") ShapeFix_DataMapIteratorOfDataMapOfShapeBox2d;
 		 ShapeFix_DataMapIteratorOfDataMapOfShapeBox2d (const ShapeFix_DataMapOfShapeBox2d & aMap);
-		%feature("autodoc", "Args:
-	aMap(ShapeFix_DataMapOfShapeBox2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: ShapeFix_DataMapOfShapeBox2d &
+	:rtype: None
+") Initialize;
 		void Initialize (const ShapeFix_DataMapOfShapeBox2d & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		const TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Box2d
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Bnd_Box2d
+") Value;
 		const Bnd_Box2d & Value ();
 };
 
@@ -182,29 +155,20 @@ def __del__(self):
 %nodefaultctor ShapeFix_DataMapNodeOfDataMapOfShapeBox2d;
 class ShapeFix_DataMapNodeOfDataMapOfShapeBox2d : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(Bnd_Box2d)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ShapeFix_DataMapNodeOfDataMapOfShapeBox2d;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: Bnd_Box2d &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") ShapeFix_DataMapNodeOfDataMapOfShapeBox2d;
 		 ShapeFix_DataMapNodeOfDataMapOfShapeBox2d (const TopoDS_Shape & K,const Bnd_Box2d & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Box2d
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Bnd_Box2d
+") Value;
 		Bnd_Box2d & Value ();
 };
 
@@ -265,101 +229,65 @@ def __del__(self):
 %nodefaultctor ShapeFix_DataMapOfShapeBox2d;
 class ShapeFix_DataMapOfShapeBox2d : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") ShapeFix_DataMapOfShapeBox2d;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ShapeFix_DataMapOfShapeBox2d;
 		 ShapeFix_DataMapOfShapeBox2d (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(ShapeFix_DataMapOfShapeBox2d)
-
-Returns:
-	ShapeFix_DataMapOfShapeBox2d
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: ShapeFix_DataMapOfShapeBox2d &
+	:rtype: ShapeFix_DataMapOfShapeBox2d
+") Assign;
 		ShapeFix_DataMapOfShapeBox2d & Assign (const ShapeFix_DataMapOfShapeBox2d & Other);
-		%feature("autodoc", "Args:
-	Other(ShapeFix_DataMapOfShapeBox2d)
-
-Returns:
-	ShapeFix_DataMapOfShapeBox2d
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: ShapeFix_DataMapOfShapeBox2d &
+	:rtype: ShapeFix_DataMapOfShapeBox2d
+") operator=;
 		ShapeFix_DataMapOfShapeBox2d & operator = (const ShapeFix_DataMapOfShapeBox2d & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(Bnd_Box2d)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: Bnd_Box2d &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const TopoDS_Shape & K,const Bnd_Box2d & I);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Bnd_Box2d
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Bnd_Box2d
+") Find;
 		const Bnd_Box2d & Find (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Bnd_Box2d
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Bnd_Box2d
+") ChangeFind;
 		Bnd_Box2d & ChangeFind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const TopoDS_Shape & K);
 };
 
@@ -381,238 +309,155 @@ def __del__(self):
 %nodefaultctor ShapeFix_Edge;
 class ShapeFix_Edge : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor
 
-Empty constructor") ShapeFix_Edge;
+	:rtype: None
+") ShapeFix_Edge;
 		 ShapeFix_Edge ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ShapeConstruct_ProjectCurveOnSurface
+		%feature("autodoc", "	* Returns the projector used for recomputing missing pcurves Can be used for adjusting parameters of projector
 
-Returns the projector used for recomputing missing pcurves  
-         Can be used for adjusting parameters of projector") Projector;
+	:rtype: Handle_ShapeConstruct_ProjectCurveOnSurface
+") Projector;
 		Handle_ShapeConstruct_ProjectCurveOnSurface Projector ();
-		%feature("autodoc", "Args:
-	edge(TopoDS_Edge)
-	face(TopoDS_Face)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") FixRemovePCurve;
+		%feature("autodoc", "	:param edge:
+	:type edge: TopoDS_Edge &
+	:param face:
+	:type face: TopoDS_Face &
+	:rtype: bool
+") FixRemovePCurve;
 		Standard_Boolean FixRemovePCurve (const TopoDS_Edge & edge,const TopoDS_Face & face);
-		%feature("autodoc", "Args:
-	edge(TopoDS_Edge)
-	surface(Handle_Geom_Surface)
-	location(TopLoc_Location)
+		%feature("autodoc", "	* Removes the pcurve(s) of the edge if it does not match the vertices Check is done Use : It is to be called when pcurve of an edge can be wrong (e.g., after import from IGES) Returns: True, if does not match, removed (status DONE) False, (status OK) if matches or (status FAIL) if no pcurve, nothing done
 
-Returns:
-	Standard_Boolean
-
-Removes the pcurve(s) of the edge if it does not match the  
-         vertices  
-         Check is done  
- Use    : It is to be called when pcurve of an edge can be wrong  
-         (e.g., after import from IGES)  
- Returns: True, if does not match, removed (status DONE)  
-         False, (status OK) if matches or (status FAIL) if no pcurve,  
-         nothing done") FixRemovePCurve;
+	:param edge:
+	:type edge: TopoDS_Edge &
+	:param surface:
+	:type surface: Handle_Geom_Surface &
+	:param location:
+	:type location: TopLoc_Location &
+	:rtype: bool
+") FixRemovePCurve;
 		Standard_Boolean FixRemovePCurve (const TopoDS_Edge & edge,const Handle_Geom_Surface & surface,const TopLoc_Location & location);
-		%feature("autodoc", "Args:
-	edge(TopoDS_Edge)
+		%feature("autodoc", "	* Removes 3d curve of the edge if it does not match the vertices Returns: True, if does not match, removed (status DONE) False, (status OK) if matches or (status FAIL) if no 3d curve, nothing done
 
-Returns:
-	Standard_Boolean
-
-Removes 3d curve of the edge if it does not match the vertices  
- Returns: True,  if does not match, removed (status DONE)  
-         False, (status OK) if matches or (status FAIL) if no 3d curve,  
-         nothing done") FixRemoveCurve3d;
+	:param edge:
+	:type edge: TopoDS_Edge &
+	:rtype: bool
+") FixRemoveCurve3d;
 		Standard_Boolean FixRemoveCurve3d (const TopoDS_Edge & edge);
-		%feature("autodoc", "Args:
-	edge(TopoDS_Edge)
-	face(TopoDS_Face)
-	isSeam(Standard_Boolean)
-	prec(Standard_Real)=0.0
+		%feature("autodoc", "	* See method below for information
 
-Returns:
-	Standard_Boolean
-
-See method below for information") FixAddPCurve;
+	:param edge:
+	:type edge: TopoDS_Edge &
+	:param face:
+	:type face: TopoDS_Face &
+	:param isSeam:
+	:type isSeam: bool
+	:param prec: default value is 0.0
+	:type prec: float
+	:rtype: bool
+") FixAddPCurve;
 		Standard_Boolean FixAddPCurve (const TopoDS_Edge & edge,const TopoDS_Face & face,const Standard_Boolean isSeam,const Standard_Real prec = 0.0);
-		%feature("autodoc", "Args:
-	edge(TopoDS_Edge)
-	surface(Handle_Geom_Surface)
-	location(TopLoc_Location)
-	isSeam(Standard_Boolean)
-	prec(Standard_Real)=0.0
+		%feature("autodoc", "	* See method below for information
 
-Returns:
-	Standard_Boolean
-
-See method below for information") FixAddPCurve;
+	:param edge:
+	:type edge: TopoDS_Edge &
+	:param surface:
+	:type surface: Handle_Geom_Surface &
+	:param location:
+	:type location: TopLoc_Location &
+	:param isSeam:
+	:type isSeam: bool
+	:param prec: default value is 0.0
+	:type prec: float
+	:rtype: bool
+") FixAddPCurve;
 		Standard_Boolean FixAddPCurve (const TopoDS_Edge & edge,const Handle_Geom_Surface & surface,const TopLoc_Location & location,const Standard_Boolean isSeam,const Standard_Real prec = 0.0);
-		%feature("autodoc", "Args:
-	edge(TopoDS_Edge)
-	face(TopoDS_Face)
-	isSeam(Standard_Boolean)
-	surfana(Handle_ShapeAnalysis_Surface)
-	prec(Standard_Real)=0.0
+		%feature("autodoc", "	* See method below for information
 
-Returns:
-	Standard_Boolean
-
-See method below for information") FixAddPCurve;
+	:param edge:
+	:type edge: TopoDS_Edge &
+	:param face:
+	:type face: TopoDS_Face &
+	:param isSeam:
+	:type isSeam: bool
+	:param surfana:
+	:type surfana: Handle_ShapeAnalysis_Surface &
+	:param prec: default value is 0.0
+	:type prec: float
+	:rtype: bool
+") FixAddPCurve;
 		Standard_Boolean FixAddPCurve (const TopoDS_Edge & edge,const TopoDS_Face & face,const Standard_Boolean isSeam,const Handle_ShapeAnalysis_Surface & surfana,const Standard_Real prec = 0.0);
-		%feature("autodoc", "Args:
-	edge(TopoDS_Edge)
-	surface(Handle_Geom_Surface)
-	location(TopLoc_Location)
-	isSeam(Standard_Boolean)
-	surfana(Handle_ShapeAnalysis_Surface)
-	prec(Standard_Real)=0.0
+		%feature("autodoc", "	* Adds pcurve(s) of the edge if missing (by projecting 3d curve) Parameter isSeam indicates if the edge is a seam. The parameter <prec> defines the precision for calculations. If it is 0 (default), the tolerance of the edge is taken. Remark : This method is rather for internal use since it accepts parameter <surfana> for optimization of computations Use : It is to be called after FixRemovePCurve (if removed) or in any case when edge can have no pcurve Returns: True if pcurve was added, else False Status : OK : Pcurve exists FAIL1: No 3d curve FAIL2: fail during projecting DONE1: Pcurve was added DONE2: specific case of pcurve going through degenerated point on  sphere encountered during projection (see class  ShapeConstruct_ProjectCurveOnSurface for more info)
 
-Returns:
-	Standard_Boolean
-
-Adds pcurve(s) of the edge if missing (by projecting 3d curve)  
-         Parameter isSeam indicates if the edge is a seam.  
-         The parameter <prec> defines the precision for calculations.  
-         If it is 0 (default), the tolerance of the edge is taken.  
- Remark : This method is rather for internal use since it accepts parameter  
-         <surfana> for optimization of computations  
- Use    : It is to be called after FixRemovePCurve (if removed) or in any  
-         case when edge can have no pcurve  
- Returns: True if pcurve was added, else False  
- Status :  
-         OK   : Pcurve exists  
-         FAIL1: No 3d curve  
-         FAIL2: fail during projecting  
-         DONE1: Pcurve was added  
-         DONE2: specific case of pcurve going through degenerated point on  
-                sphere encountered during projection (see class  
-                ShapeConstruct_ProjectCurveOnSurface for more info)") FixAddPCurve;
+	:param edge:
+	:type edge: TopoDS_Edge &
+	:param surface:
+	:type surface: Handle_Geom_Surface &
+	:param location:
+	:type location: TopLoc_Location &
+	:param isSeam:
+	:type isSeam: bool
+	:param surfana:
+	:type surfana: Handle_ShapeAnalysis_Surface &
+	:param prec: default value is 0.0
+	:type prec: float
+	:rtype: bool
+") FixAddPCurve;
 		Standard_Boolean FixAddPCurve (const TopoDS_Edge & edge,const Handle_Geom_Surface & surface,const TopLoc_Location & location,const Standard_Boolean isSeam,const Handle_ShapeAnalysis_Surface & surfana,const Standard_Real prec = 0.0);
-		%feature("autodoc", "Args:
-	edge(TopoDS_Edge)
+		%feature("autodoc", "	* Tries to build 3d curve of the edge if missing Use : It is to be called after FixRemoveCurve3d (if removed) or in any case when edge can have no 3d curve Returns: True if 3d curve was added, else False Status : OK : 3d curve exists FAIL1: BRepLib::BuildCurve3d() has failed DONE1: 3d curve was added
 
-Returns:
-	Standard_Boolean
-
-Tries to build 3d curve of the edge if missing  
- Use    : It is to be called after FixRemoveCurve3d (if removed) or in any  
-         case when edge can have no 3d curve  
- Returns: True if 3d curve was added, else False  
- Status :  
-         OK   : 3d curve exists  
-         FAIL1: BRepLib::BuildCurve3d() has failed  
-         DONE1: 3d curve was added") FixAddCurve3d;
+	:param edge:
+	:type edge: TopoDS_Edge &
+	:rtype: bool
+") FixAddCurve3d;
 		Standard_Boolean FixAddCurve3d (const TopoDS_Edge & edge);
-		%feature("autodoc", "Args:
-	edge(TopoDS_Edge)
-	face(TopoDS_Face)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") FixVertexTolerance;
+		%feature("autodoc", "	:param edge:
+	:type edge: TopoDS_Edge &
+	:param face:
+	:type face: TopoDS_Face &
+	:rtype: bool
+") FixVertexTolerance;
 		Standard_Boolean FixVertexTolerance (const TopoDS_Edge & edge,const TopoDS_Face & face);
-		%feature("autodoc", "Args:
-	edge(TopoDS_Edge)
+		%feature("autodoc", "	* Increases the tolerances of the edge vertices to comprise the ends of 3d curve and pcurve on the given face (first method) or all pcurves stored in an edge (second one) Returns: True, if tolerances have been increased, otherwise False Status: OK : the original tolerances have not been changed DONE1: the tolerance of first vertex has been increased DONE2: the tolerance of last vertex has been increased
 
-Returns:
-	Standard_Boolean
-
-Increases the tolerances of the edge vertices to comprise  
-         the ends of 3d curve and pcurve on the given face  
-         (first method) or all pcurves stored in an edge (second one)  
- Returns: True, if tolerances have been increased, otherwise False  
- Status:  
-         OK   : the original tolerances have not been changed  
-         DONE1: the tolerance of first vertex has been increased  
-         DONE2: the tolerance of last  vertex has been increased") FixVertexTolerance;
+	:param edge:
+	:type edge: TopoDS_Edge &
+	:rtype: bool
+") FixVertexTolerance;
 		Standard_Boolean FixVertexTolerance (const TopoDS_Edge & edge);
-		%feature("autodoc", "Args:
-	edge(TopoDS_Edge)
-	face(TopoDS_Face)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") FixReversed2d;
+		%feature("autodoc", "	:param edge:
+	:type edge: TopoDS_Edge &
+	:param face:
+	:type face: TopoDS_Face &
+	:rtype: bool
+") FixReversed2d;
 		Standard_Boolean FixReversed2d (const TopoDS_Edge & edge,const TopoDS_Face & face);
-		%feature("autodoc", "Args:
-	edge(TopoDS_Edge)
-	surface(Handle_Geom_Surface)
-	location(TopLoc_Location)
+		%feature("autodoc", "	* Fixes edge if pcurve is directed opposite to 3d curve Check is done by call to the function ShapeAnalysis_Edge::CheckCurve3dWithPCurve() Warning: For seam edge this method will check and fix the pcurve in only one direction. Hence, it should be called twice for seam edge: once with edge orientation FORWARD and once with REVERSED. Returns: False if nothing done, True if reversed (status DONE) Status: OK - pcurve OK, nothing done FAIL1 - no pcurve FAIL2 - no 3d curve DONE1 - pcurve was reversed
 
-Returns:
-	Standard_Boolean
-
-Fixes edge if pcurve is directed opposite to 3d curve  
-         Check is done by call to the function  
-         ShapeAnalysis_Edge::CheckCurve3dWithPCurve()  
- Warning: For seam edge this method will check and fix the pcurve in only  
-         one direction. Hence, it should be called twice for seam edge:  
-         once with edge orientation FORWARD and once with REVERSED.  
- Returns: False if nothing done, True if reversed (status DONE)  
- Status:  OK    - pcurve OK, nothing done  
-         FAIL1 - no pcurve  
-         FAIL2 - no 3d curve  
-         DONE1 - pcurve was reversed") FixReversed2d;
+	:param edge:
+	:type edge: TopoDS_Edge &
+	:param surface:
+	:type surface: Handle_Geom_Surface &
+	:param location:
+	:type location: TopLoc_Location &
+	:rtype: bool
+") FixReversed2d;
 		Standard_Boolean FixReversed2d (const TopoDS_Edge & edge,const Handle_Geom_Surface & surface,const TopLoc_Location & location);
-		%feature("autodoc", "Args:
-	edge(TopoDS_Edge)
-	tolerance(Standard_Real)=0.0
+		%feature("autodoc", "	* Tries to make edge SameParameter and sets corresponding tolerance and SameParameter flag. First, it makes edge same range if SameRange flag is not set.  If flag SameParameter is set, this method calls the function ShapeAnalysis_Edge::CheckSameParameter() that calculates the maximal deviation of pcurves of the edge from its 3d curve. If deviation > tolerance, the tolerance of edge is increased to a value of deviation. If deviation < tolerance nothing happens.  If flag SameParameter is not set, this method chooses the best variant (one that has minimal tolerance), either a. only after computing deviation (as above) or b. after calling standard procedure BRepLib::SameParameter and computing deviation (as above). If <tolerance> > 0, it is used as parameter for BRepLib::SameParameter, otherwise, tolerance of the edge is used. Use : Is to be called after all pcurves and 3d curve of the edge are correctly computed Remark : SameParameter flag is always set to True after this method Returns: True, if something done, else False Status : OK - edge was initially SameParameter, nothing is done FAIL1 - computation of deviation of pcurves from 3d curve has failed FAIL2 - BRepLib::SameParameter() has failed DONE1 - tolerance of the edge was increased DONE2 - flag SameParameter was set to True (only if  BRepLib::SameParameter() did not set it) DONE3 - edge was modified by BRepLib::SameParameter() to SameParameter DONE4 - not used anymore DONE5 - if the edge resulting from BRepLib has been chosen, i.e. variant b. above  (only for edges with not set SameParameter)
 
-Returns:
-	Standard_Boolean
-
-Tries to make edge SameParameter and sets corresponding  
-         tolerance and SameParameter flag.  
-         First, it makes edge same range if SameRange flag is not set.  
- 
-         If flag SameParameter is set, this method calls the  
-         function ShapeAnalysis_Edge::CheckSameParameter() that  
-         calculates the maximal deviation of pcurves of the edge from  
-         its 3d curve. If deviation > tolerance, the tolerance of edge  
-         is increased to a value of deviation. If deviation < tolerance  
-         nothing happens.  
- 
-         If flag SameParameter is not set, this method chooses the best  
-         variant (one that has minimal tolerance), either  
-         a. only after computing deviation (as above) or  
-         b. after calling standard procedure BRepLib::SameParameter  
-         and computing deviation (as above). If <tolerance> > 0, it is  
-         used as parameter for BRepLib::SameParameter, otherwise,  
-         tolerance of the edge is used.  
- 
- Use    : Is to be called after all pcurves and 3d curve of the edge are  
-         correctly computed  
- Remark : SameParameter flag is always set to True after this method  
- Returns: True, if something done, else False  
- Status : OK    - edge was initially SameParameter, nothing is done  
-         FAIL1 - computation of deviation of pcurves from 3d curve has failed  
-         FAIL2 - BRepLib::SameParameter() has failed  
-         DONE1 - tolerance of the edge was increased  
-         DONE2 - flag SameParameter was set to True (only if  
-                 BRepLib::SameParameter() did not set it)  
-         DONE3 - edge was modified by BRepLib::SameParameter() to SameParameter  
-         DONE4 - not used anymore  
-         DONE5 - if the edge resulting from BRepLib has been chosen, i.e. variant b. above  
-                 (only for edges with not set SameParameter)") FixSameParameter;
+	:param edge:
+	:type edge: TopoDS_Edge &
+	:param tolerance: default value is 0.0
+	:type tolerance: float
+	:rtype: bool
+") FixSameParameter;
 		Standard_Boolean FixSameParameter (const TopoDS_Edge & edge,const Standard_Real tolerance = 0.0);
-		%feature("autodoc", "Args:
-	status(ShapeExtend_Status)
+		%feature("autodoc", "	* Returns the status (in the form of True/False) of last Fix
 
-Returns:
-	Standard_Boolean
-
-Returns the status (in the form of True/False) of last Fix") Status;
+	:param status:
+	:type status: ShapeExtend_Status
+	:rtype: bool
+") Status;
 		Standard_Boolean Status (const ShapeExtend_Status status);
 };
 
@@ -673,47 +518,34 @@ def __del__(self):
 %nodefaultctor ShapeFix_EdgeConnect;
 class ShapeFix_EdgeConnect {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ShapeFix_EdgeConnect;
+		%feature("autodoc", "	:rtype: None
+") ShapeFix_EdgeConnect;
 		 ShapeFix_EdgeConnect ();
-		%feature("autodoc", "Args:
-	aFirst(TopoDS_Edge)
-	aSecond(TopoDS_Edge)
+		%feature("autodoc", "	* Adds information on connectivity between start vertex of second edge and end vertex of first edge, taking edges orientation into account
 
-Returns:
-	None
-
-Adds information on connectivity between start vertex  
-          of second edge and end vertex of first edge,  
-          taking edges orientation into account") Add;
+	:param aFirst:
+	:type aFirst: TopoDS_Edge &
+	:param aSecond:
+	:type aSecond: TopoDS_Edge &
+	:rtype: None
+") Add;
 		void Add (const TopoDS_Edge & aFirst,const TopoDS_Edge & aSecond);
-		%feature("autodoc", "Args:
-	aShape(TopoDS_Shape)
+		%feature("autodoc", "	* Adds connectivity information for the whole shape. Note: edges in wires must be well ordered Note: flag Closed should be set for closed wires
 
-Returns:
-	None
-
-Adds connectivity information for the whole shape.  
-          Note: edges in wires must be well ordered  
-          Note: flag Closed should be set for closed wires") Add;
+	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:rtype: None
+") Add;
 		void Add (const TopoDS_Shape & aShape);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Builds shared vertices, updates their positions and tolerances
 
-Builds shared vertices, updates their positions and tolerances") Build;
+	:rtype: None
+") Build;
 		void Build ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Clears internal data structure
 
-Clears internal data structure") Clear;
+	:rtype: None
+") Clear;
 		void Clear ();
 };
 
@@ -735,74 +567,44 @@ def __del__(self):
 %nodefaultctor ShapeFix_EdgeProjAux;
 class ShapeFix_EdgeProjAux : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ShapeFix_EdgeProjAux;
+		%feature("autodoc", "	:rtype: None
+") ShapeFix_EdgeProjAux;
 		 ShapeFix_EdgeProjAux ();
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-	E(TopoDS_Edge)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ShapeFix_EdgeProjAux;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: None
+") ShapeFix_EdgeProjAux;
 		 ShapeFix_EdgeProjAux (const TopoDS_Face & F,const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-	E(TopoDS_Edge)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Face & F,const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	preci(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Compute;
+		%feature("autodoc", "	:param preci:
+	:type preci: float
+	:rtype: None
+") Compute;
 		void Compute (const Standard_Real preci);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsFirstDone;
+		%feature("autodoc", "	:rtype: bool
+") IsFirstDone;
 		Standard_Boolean IsFirstDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsLastDone;
+		%feature("autodoc", "	:rtype: bool
+") IsLastDone;
 		Standard_Boolean IsLastDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") FirstParam;
+		%feature("autodoc", "	:rtype: float
+") FirstParam;
 		Standard_Real FirstParam ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") LastParam;
+		%feature("autodoc", "	:rtype: float
+") LastParam;
 		Standard_Real LastParam ();
-		%feature("autodoc", "Args:
-	C(Handle_Geom2d_Curve)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsIso;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Geom2d_Curve &
+	:rtype: bool
+") IsIso;
 		Standard_Boolean IsIso (const Handle_Geom2d_Curve & C);
 };
 
@@ -863,38 +665,29 @@ def __del__(self):
 %nodefaultctor ShapeFix_FaceConnect;
 class ShapeFix_FaceConnect {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ShapeFix_FaceConnect;
+		%feature("autodoc", "	:rtype: None
+") ShapeFix_FaceConnect;
 		 ShapeFix_FaceConnect ();
-		%feature("autodoc", "Args:
-	aFirst(TopoDS_Face)
-	aSecond(TopoDS_Face)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param aFirst:
+	:type aFirst: TopoDS_Face &
+	:param aSecond:
+	:type aSecond: TopoDS_Face &
+	:rtype: bool
+") Add;
 		Standard_Boolean Add (const TopoDS_Face & aFirst,const TopoDS_Face & aSecond);
-		%feature("autodoc", "Args:
-	shell(TopoDS_Shell)
-	sewtoler(Standard_Real)
-	fixtoler(Standard_Real)
-
-Returns:
-	TopoDS_Shell
-
-No detailed docstring for this function.") Build;
+		%feature("autodoc", "	:param shell:
+	:type shell: TopoDS_Shell &
+	:param sewtoler:
+	:type sewtoler: float
+	:param fixtoler:
+	:type fixtoler: float
+	:rtype: TopoDS_Shell
+") Build;
 		TopoDS_Shell Build (const TopoDS_Shell & shell,const Standard_Real sewtoler,const Standard_Real fixtoler);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Clears internal data structure
 
-Clears internal data structure") Clear;
+	:rtype: None
+") Clear;
 		void Clear ();
 };
 
@@ -916,63 +709,53 @@ def __del__(self):
 %nodefaultctor ShapeFix_FreeBounds;
 class ShapeFix_FreeBounds {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor
 
-Empty constructor") ShapeFix_FreeBounds;
+	:rtype: None
+") ShapeFix_FreeBounds;
 		 ShapeFix_FreeBounds ();
-		%feature("autodoc", "Args:
-	shape(TopoDS_Shape)
-	sewtoler(Standard_Real)
-	closetoler(Standard_Real)
-	splitclosed(Standard_Boolean)
-	splitopen(Standard_Boolean)
+		%feature("autodoc", "	* Builds forecasting free bounds of the <shape> and connects open wires with tolerance <closetoler>. <shape> should be a compound of faces. Tolerance <closetoler> should be greater than tolerance <sewtoler> used for initializing sewing analyzer, otherwise connection of open wires is not performed.
 
-Returns:
-	None
-
-Builds forecasting free bounds of the <shape> and connects  
-         open wires with tolerance <closetoler>.  
-         <shape> should be a compound of faces.  
-         Tolerance <closetoler> should be greater than tolerance  
-         <sewtoler> used for initializing sewing analyzer, otherwise  
-         connection of open wires is not performed.") ShapeFix_FreeBounds;
+	:param shape:
+	:type shape: TopoDS_Shape &
+	:param sewtoler:
+	:type sewtoler: float
+	:param closetoler:
+	:type closetoler: float
+	:param splitclosed:
+	:type splitclosed: bool
+	:param splitopen:
+	:type splitopen: bool
+	:rtype: None
+") ShapeFix_FreeBounds;
 		 ShapeFix_FreeBounds (const TopoDS_Shape & shape,const Standard_Real sewtoler,const Standard_Real closetoler,const Standard_Boolean splitclosed,const Standard_Boolean splitopen);
-		%feature("autodoc", "Args:
-	shape(TopoDS_Shape)
-	closetoler(Standard_Real)
-	splitclosed(Standard_Boolean)
-	splitopen(Standard_Boolean)
+		%feature("autodoc", "	* Builds actual free bounds of the <shape> and connects open wires with tolerance <closetoler>. <shape> should be a compound of shells.
 
-Returns:
-	None
-
-Builds actual free bounds of the <shape> and connects  
-         open wires with tolerance <closetoler>.  
-         <shape> should be a compound of shells.") ShapeFix_FreeBounds;
+	:param shape:
+	:type shape: TopoDS_Shape &
+	:param closetoler:
+	:type closetoler: float
+	:param splitclosed:
+	:type splitclosed: bool
+	:param splitopen:
+	:type splitopen: bool
+	:rtype: None
+") ShapeFix_FreeBounds;
 		 ShapeFix_FreeBounds (const TopoDS_Shape & shape,const Standard_Real closetoler,const Standard_Boolean splitclosed,const Standard_Boolean splitopen);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Compound
+		%feature("autodoc", "	* Returns compound of closed wires out of free edges.
 
-Returns compound of closed wires out of free edges.") GetClosedWires;
+	:rtype: TopoDS_Compound
+") GetClosedWires;
 		const TopoDS_Compound & GetClosedWires ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Compound
+		%feature("autodoc", "	* Returns compound of open wires out of free edges.
 
-Returns compound of open wires out of free edges.") GetOpenWires;
+	:rtype: TopoDS_Compound
+") GetOpenWires;
 		const TopoDS_Compound & GetOpenWires ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Returns modified source shape.
 
-Returns modified source shape.") GetShape;
+	:rtype: TopoDS_Shape
+") GetShape;
 		const TopoDS_Shape & GetShape ();
 };
 
@@ -994,70 +777,73 @@ def __del__(self):
 %nodefaultctor ShapeFix_IntersectionTool;
 class ShapeFix_IntersectionTool {
 	public:
-		%feature("autodoc", "Args:
-	context(Handle_ShapeBuild_ReShape)
-	preci(Standard_Real)
-	maxtol(Standard_Real)=1.0
+		%feature("autodoc", "	* Constructor
 
-Returns:
-	None
-
-Constructor") ShapeFix_IntersectionTool;
+	:param context:
+	:type context: Handle_ShapeBuild_ReShape &
+	:param preci:
+	:type preci: float
+	:param maxtol: default value is 1.0
+	:type maxtol: float
+	:rtype: None
+") ShapeFix_IntersectionTool;
 		 ShapeFix_IntersectionTool (const Handle_ShapeBuild_ReShape & context,const Standard_Real preci,const Standard_Real maxtol = 1.0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ShapeBuild_ReShape
+		%feature("autodoc", "	* Returns context
 
-Returns context") Context;
+	:rtype: Handle_ShapeBuild_ReShape
+") Context;
 		Handle_ShapeBuild_ReShape Context ();
-		%feature("autodoc", "Args:
-	edge(TopoDS_Edge)
-	param(Standard_Real)
-	vert(TopoDS_Vertex)
-	face(TopoDS_Face)
-	newE1(TopoDS_Edge)
-	newE2(TopoDS_Edge)
-	preci(Standard_Real)
+		%feature("autodoc", "	* Split edge on two new edges using new vertex 'vert' and 'param' - parameter for splitting The 'face' is necessary for pcurves and using TransferParameterProj
 
-Returns:
-	Standard_Boolean
-
-Split edge on two new edges using new vertex 'vert'  
-         and 'param' - parameter for splitting  
-         The 'face' is necessary for pcurves and using TransferParameterProj") SplitEdge;
+	:param edge:
+	:type edge: TopoDS_Edge &
+	:param param:
+	:type param: float
+	:param vert:
+	:type vert: TopoDS_Vertex &
+	:param face:
+	:type face: TopoDS_Face &
+	:param newE1:
+	:type newE1: TopoDS_Edge &
+	:param newE2:
+	:type newE2: TopoDS_Edge &
+	:param preci:
+	:type preci: float
+	:rtype: bool
+") SplitEdge;
 		Standard_Boolean SplitEdge (const TopoDS_Edge & edge,const Standard_Real param,const TopoDS_Vertex & vert,const TopoDS_Face & face,TopoDS_Edge & newE1,TopoDS_Edge & newE2,const Standard_Real preci);
-		%feature("autodoc", "Args:
-	edge(TopoDS_Edge)
-	pend(Standard_Real)
-	cut(Standard_Real)
-	face(TopoDS_Face)
-	iscutline(Standard_Boolean)
+		%feature("autodoc", "	* Cut edge by parameters pend and cut
 
-Returns:
-	Standard_Boolean
-
-Cut edge by parameters pend and cut") CutEdge;
+	:param edge:
+	:type edge: TopoDS_Edge &
+	:param pend:
+	:type pend: float
+	:param cut:
+	:type cut: float
+	:param face:
+	:type face: TopoDS_Face &
+	:param iscutline:
+	:type iscutline: bool
+	:rtype: bool
+") CutEdge;
 		Standard_Boolean CutEdge (const TopoDS_Edge & edge,const Standard_Real pend,const Standard_Real cut,const TopoDS_Face & face,Standard_Boolean & iscutline);
-		%feature("autodoc", "Args:
-	sewd(Handle_ShapeExtend_WireData)
-	face(TopoDS_Face)
-	NbSplit(Standard_Integer)
-	NbCut(Standard_Integer)
-	NbRemoved(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") FixSelfIntersectWire;
+		%feature("autodoc", "	:param sewd:
+	:type sewd: Handle_ShapeExtend_WireData &
+	:param face:
+	:type face: TopoDS_Face &
+	:param NbSplit:
+	:type NbSplit: Standard_Integer &
+	:param NbCut:
+	:type NbCut: Standard_Integer &
+	:param NbRemoved:
+	:type NbRemoved: Standard_Integer &
+	:rtype: bool
+") FixSelfIntersectWire;
 		Standard_Boolean FixSelfIntersectWire (Handle_ShapeExtend_WireData & sewd,const TopoDS_Face & face,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	face(TopoDS_Face)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") FixIntersectingWires;
+		%feature("autodoc", "	:param face:
+	:type face: TopoDS_Face &
+	:rtype: bool
+") FixIntersectingWires;
 		Standard_Boolean FixIntersectingWires (TopoDS_Face & face);
 };
 
@@ -1079,160 +865,136 @@ def __del__(self):
 %nodefaultctor ShapeFix_Root;
 class ShapeFix_Root : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty Constructor (no context is created)
 
-Empty Constructor (no context is created)") ShapeFix_Root;
+	:rtype: None
+") ShapeFix_Root;
 		 ShapeFix_Root ();
-		%feature("autodoc", "Args:
-	Root(Handle_ShapeFix_Root)
+		%feature("autodoc", "	* Copy all fields from another Root object
 
-Returns:
-	virtual void
-
-Copy all fields from another Root object") Set;
+	:param Root:
+	:type Root: Handle_ShapeFix_Root &
+	:rtype: void
+") Set;
 		virtual void Set (const Handle_ShapeFix_Root & Root);
-		%feature("autodoc", "Args:
-	context(Handle_ShapeBuild_ReShape)
+		%feature("autodoc", "	* Sets context
 
-Returns:
-	virtual void
-
-Sets context") SetContext;
+	:param context:
+	:type context: Handle_ShapeBuild_ReShape &
+	:rtype: void
+") SetContext;
 		virtual void SetContext (const Handle_ShapeBuild_ReShape & context);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ShapeBuild_ReShape
+		%feature("autodoc", "	* Returns context
 
-Returns context") Context;
+	:rtype: Handle_ShapeBuild_ReShape
+") Context;
 		Handle_ShapeBuild_ReShape Context ();
-		%feature("autodoc", "Args:
-	msgreg(Handle_ShapeExtend_BasicMsgRegistrator)
+		%feature("autodoc", "	* Sets message registrator
 
-Returns:
-	virtual void
-
-Sets message registrator") SetMsgRegistrator;
+	:param msgreg:
+	:type msgreg: Handle_ShapeExtend_BasicMsgRegistrator &
+	:rtype: void
+") SetMsgRegistrator;
 		virtual void SetMsgRegistrator (const Handle_ShapeExtend_BasicMsgRegistrator & msgreg);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ShapeExtend_BasicMsgRegistrator
+		%feature("autodoc", "	* Returns message registrator
 
-Returns message registrator") MsgRegistrator;
+	:rtype: Handle_ShapeExtend_BasicMsgRegistrator
+") MsgRegistrator;
 		Handle_ShapeExtend_BasicMsgRegistrator MsgRegistrator ();
-		%feature("autodoc", "Args:
-	preci(Standard_Real)
+		%feature("autodoc", "	* Sets basic precision value
 
-Returns:
-	virtual void
-
-Sets basic precision value") SetPrecision;
+	:param preci:
+	:type preci: float
+	:rtype: void
+") SetPrecision;
 		virtual void SetPrecision (const Standard_Real preci);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns basic precision value
 
-Returns basic precision value") Precision;
+	:rtype: float
+") Precision;
 		Standard_Real Precision ();
-		%feature("autodoc", "Args:
-	mintol(Standard_Real)
+		%feature("autodoc", "	* Sets minimal allowed tolerance
 
-Returns:
-	virtual void
-
-Sets minimal allowed tolerance") SetMinTolerance;
+	:param mintol:
+	:type mintol: float
+	:rtype: void
+") SetMinTolerance;
 		virtual void SetMinTolerance (const Standard_Real mintol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns minimal allowed tolerance
 
-Returns minimal allowed tolerance") MinTolerance;
+	:rtype: float
+") MinTolerance;
 		Standard_Real MinTolerance ();
-		%feature("autodoc", "Args:
-	maxtol(Standard_Real)
+		%feature("autodoc", "	* Sets maximal allowed tolerance
 
-Returns:
-	virtual void
-
-Sets maximal allowed tolerance") SetMaxTolerance;
+	:param maxtol:
+	:type maxtol: float
+	:rtype: void
+") SetMaxTolerance;
 		virtual void SetMaxTolerance (const Standard_Real maxtol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns maximal allowed tolerance
 
-Returns maximal allowed tolerance") MaxTolerance;
+	:rtype: float
+") MaxTolerance;
 		Standard_Real MaxTolerance ();
-		%feature("autodoc", "Args:
-	toler(Standard_Real)
+		%feature("autodoc", "	* Returns tolerance limited by [myMinTol,myMaxTol]
 
-Returns:
-	Standard_Real
-
-Returns tolerance limited by [myMinTol,myMaxTol]") LimitTolerance;
+	:param toler:
+	:type toler: float
+	:rtype: float
+") LimitTolerance;
 		Standard_Real LimitTolerance (const Standard_Real toler);
-		%feature("autodoc", "Args:
-	shape(TopoDS_Shape)
-	message(Message_Msg)
-	gravity(Message_Gravity)=Message_Info
+		%feature("autodoc", "	* Sends a message to be attached to the shape. Calls corresponding message of message registrator.
 
-Returns:
-	None
-
-Sends a message to be attached to the shape.  
-         Calls corresponding message of message registrator.") SendMsg;
+	:param shape:
+	:type shape: TopoDS_Shape &
+	:param message:
+	:type message: Message_Msg &
+	:param gravity: default value is Message_Info
+	:type gravity: Message_Gravity
+	:rtype: None
+") SendMsg;
 		void SendMsg (const TopoDS_Shape & shape,const Message_Msg & message,const Message_Gravity gravity = Message_Info);
-		%feature("autodoc", "Args:
-	message(Message_Msg)
-	gravity(Message_Gravity)=Message_Info
+		%feature("autodoc", "	* Sends a message to be attached to myShape. Calls previous method.
 
-Returns:
-	None
-
-Sends a message to be attached to myShape.  
-         Calls previous method.") SendMsg;
+	:param message:
+	:type message: Message_Msg &
+	:param gravity: default value is Message_Info
+	:type gravity: Message_Gravity
+	:rtype: None
+") SendMsg;
 		void SendMsg (const Message_Msg & message,const Message_Gravity gravity = Message_Info);
-		%feature("autodoc", "Args:
-	shape(TopoDS_Shape)
-	message(Message_Msg)
+		%feature("autodoc", "	* Sends a warning to be attached to the shape. Calls SendMsg with gravity set to Message_Warning.
 
-Returns:
-	None
-
-Sends a warning to be attached to the shape.  
-         Calls SendMsg with gravity set to Message_Warning.") SendWarning;
+	:param shape:
+	:type shape: TopoDS_Shape &
+	:param message:
+	:type message: Message_Msg &
+	:rtype: None
+") SendWarning;
 		void SendWarning (const TopoDS_Shape & shape,const Message_Msg & message);
-		%feature("autodoc", "Args:
-	message(Message_Msg)
+		%feature("autodoc", "	* Calls previous method for myShape.
 
-Returns:
-	None
-
-Calls previous method for myShape.") SendWarning;
+	:param message:
+	:type message: Message_Msg &
+	:rtype: None
+") SendWarning;
 		void SendWarning (const Message_Msg & message);
-		%feature("autodoc", "Args:
-	shape(TopoDS_Shape)
-	message(Message_Msg)
+		%feature("autodoc", "	* Sends a fail to be attached to the shape. Calls SendMsg with gravity set to Message_Fail.
 
-Returns:
-	None
-
-Sends a fail to be attached to the shape.  
-         Calls SendMsg with gravity set to Message_Fail.") SendFail;
+	:param shape:
+	:type shape: TopoDS_Shape &
+	:param message:
+	:type message: Message_Msg &
+	:rtype: None
+") SendFail;
 		void SendFail (const TopoDS_Shape & shape,const Message_Msg & message);
-		%feature("autodoc", "Args:
-	message(Message_Msg)
+		%feature("autodoc", "	* Calls previous method for myShape.
 
-Returns:
-	None
-
-Calls previous method for myShape.") SendFail;
+	:param message:
+	:type message: Message_Msg &
+	:rtype: None
+") SendFail;
 		void SendFail (const Message_Msg & message);
 };
 
@@ -1293,22 +1055,17 @@ def __del__(self):
 %nodefaultctor ShapeFix_SequenceNodeOfSequenceOfWireSegment;
 class ShapeFix_SequenceNodeOfSequenceOfWireSegment : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(ShapeFix_WireSegment)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ShapeFix_SequenceNodeOfSequenceOfWireSegment;
+		%feature("autodoc", "	:param I:
+	:type I: ShapeFix_WireSegment &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") ShapeFix_SequenceNodeOfSequenceOfWireSegment;
 		 ShapeFix_SequenceNodeOfSequenceOfWireSegment (const ShapeFix_WireSegment & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ShapeFix_WireSegment
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: ShapeFix_WireSegment
+") Value;
 		ShapeFix_WireSegment & Value ();
 };
 
@@ -1369,168 +1126,111 @@ def __del__(self):
 %nodefaultctor ShapeFix_SequenceOfWireSegment;
 class ShapeFix_SequenceOfWireSegment : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ShapeFix_SequenceOfWireSegment;
+		%feature("autodoc", "	:rtype: None
+") ShapeFix_SequenceOfWireSegment;
 		 ShapeFix_SequenceOfWireSegment ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(ShapeFix_SequenceOfWireSegment)
-
-Returns:
-	ShapeFix_SequenceOfWireSegment
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: ShapeFix_SequenceOfWireSegment &
+	:rtype: ShapeFix_SequenceOfWireSegment
+") Assign;
 		const ShapeFix_SequenceOfWireSegment & Assign (const ShapeFix_SequenceOfWireSegment & Other);
-		%feature("autodoc", "Args:
-	Other(ShapeFix_SequenceOfWireSegment)
-
-Returns:
-	ShapeFix_SequenceOfWireSegment
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: ShapeFix_SequenceOfWireSegment &
+	:rtype: ShapeFix_SequenceOfWireSegment
+") operator=;
 		const ShapeFix_SequenceOfWireSegment & operator = (const ShapeFix_SequenceOfWireSegment & Other);
-		%feature("autodoc", "Args:
-	T(ShapeFix_WireSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: ShapeFix_WireSegment &
+	:rtype: None
+") Append;
 		void Append (const ShapeFix_WireSegment & T);
-		%feature("autodoc", "Args:
-	S(ShapeFix_SequenceOfWireSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: ShapeFix_SequenceOfWireSegment &
+	:rtype: None
+") Append;
 		void Append (ShapeFix_SequenceOfWireSegment & S);
-		%feature("autodoc", "Args:
-	T(ShapeFix_WireSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: ShapeFix_WireSegment &
+	:rtype: None
+") Prepend;
 		void Prepend (const ShapeFix_WireSegment & T);
-		%feature("autodoc", "Args:
-	S(ShapeFix_SequenceOfWireSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: ShapeFix_SequenceOfWireSegment &
+	:rtype: None
+") Prepend;
 		void Prepend (ShapeFix_SequenceOfWireSegment & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(ShapeFix_WireSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: ShapeFix_WireSegment &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const ShapeFix_WireSegment & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(ShapeFix_SequenceOfWireSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: ShapeFix_SequenceOfWireSegment &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,ShapeFix_SequenceOfWireSegment & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(ShapeFix_WireSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: ShapeFix_WireSegment &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const ShapeFix_WireSegment & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(ShapeFix_SequenceOfWireSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: ShapeFix_SequenceOfWireSegment &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,ShapeFix_SequenceOfWireSegment & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ShapeFix_WireSegment
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: ShapeFix_WireSegment
+") First;
 		const ShapeFix_WireSegment & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ShapeFix_WireSegment
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: ShapeFix_WireSegment
+") Last;
 		const ShapeFix_WireSegment & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(ShapeFix_SequenceOfWireSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: ShapeFix_SequenceOfWireSegment &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,ShapeFix_SequenceOfWireSegment & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	ShapeFix_WireSegment
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: ShapeFix_WireSegment
+") Value;
 		const ShapeFix_WireSegment & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(ShapeFix_WireSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: ShapeFix_WireSegment &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const ShapeFix_WireSegment & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	ShapeFix_WireSegment
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: ShapeFix_WireSegment
+") ChangeValue;
 		ShapeFix_WireSegment & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -1552,50 +1252,32 @@ def __del__(self):
 %nodefaultctor ShapeFix_ShapeTolerance;
 class ShapeFix_ShapeTolerance {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ShapeFix_ShapeTolerance;
+		%feature("autodoc", "	:rtype: None
+") ShapeFix_ShapeTolerance;
 		 ShapeFix_ShapeTolerance ();
-		%feature("autodoc", "Args:
-	shape(TopoDS_Shape)
-	tmin(Standard_Real)
-	tmax(Standard_Real)=0.0
-	styp(TopAbs_ShapeEnum)=TopAbs_SHAPE
+		%feature("autodoc", "	* Limits tolerances in a shape as follows : tmin = tmax -> as SetTolerance (forces) tmin = 0 -> maximum tolerance will be <tmax> tmax = 0 or not given (more generally, tmax < tmin) -> <tmax> ignored, minimum will be <tmin> else, maximum will be <max> and minimum will be <min> styp = VERTEX : only vertices are set styp = EDGE : only edges are set styp = FACE : only faces are set styp = WIRE : to have edges and their vertices set styp = other value : all (vertices,edges,faces) are set Returns True if at least one tolerance of the sub-shape has been modified
 
-Returns:
-	Standard_Boolean
-
-Limits tolerances in a shape as follows :  
-         tmin = tmax -> as SetTolerance (forces)  
-         tmin = 0   -> maximum tolerance will be <tmax>  
-         tmax = 0 or not given (more generally, tmax < tmin) ->  
-            <tmax> ignored, minimum will be <tmin>  
-         else, maximum will be <max> and minimum will be <min>  
-         styp = VERTEX : only vertices are set  
-         styp = EDGE   : only edges are set  
-         styp = FACE   : only faces are set  
-         styp = WIRE   : to have edges and their vertices set  
-         styp = other value : all (vertices,edges,faces) are set  
-         Returns True if at least one tolerance of the sub-shape has  
-         been modified") LimitTolerance;
+	:param shape:
+	:type shape: TopoDS_Shape &
+	:param tmin:
+	:type tmin: float
+	:param tmax: default value is 0.0
+	:type tmax: float
+	:param styp: default value is TopAbs_SHAPE
+	:type styp: TopAbs_ShapeEnum
+	:rtype: bool
+") LimitTolerance;
 		Standard_Boolean LimitTolerance (const TopoDS_Shape & shape,const Standard_Real tmin,const Standard_Real tmax = 0.0,const TopAbs_ShapeEnum styp = TopAbs_SHAPE);
-		%feature("autodoc", "Args:
-	shape(TopoDS_Shape)
-	preci(Standard_Real)
-	styp(TopAbs_ShapeEnum)=TopAbs_SHAPE
+		%feature("autodoc", "	* Sets (enforces) tolerances in a shape to the given value styp = VERTEX : only vertices are set styp = EDGE : only edges are set styp = FACE : only faces are set styp = WIRE : to have edges and their vertices set styp = other value : all (vertices,edges,faces) are set
 
-Returns:
-	None
-
-Sets (enforces) tolerances in a shape to the given value  
-         styp = VERTEX : only vertices are set  
-         styp = EDGE   : only edges are set  
-         styp = FACE   : only faces are set  
-         styp = WIRE   : to have edges and their vertices set  
-         styp = other value : all (vertices,edges,faces) are set") SetTolerance;
+	:param shape:
+	:type shape: TopoDS_Shape &
+	:param preci:
+	:type preci: float
+	:param styp: default value is TopAbs_SHAPE
+	:type styp: TopAbs_ShapeEnum
+	:rtype: None
+") SetTolerance;
 		void SetTolerance (const TopoDS_Shape & shape,const Standard_Real preci,const TopAbs_ShapeEnum styp = TopAbs_SHAPE);
 };
 
@@ -1617,80 +1299,96 @@ def __del__(self):
 %nodefaultctor ShapeFix_SplitTool;
 class ShapeFix_SplitTool {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor
 
-Empty constructor") ShapeFix_SplitTool;
+	:rtype: None
+") ShapeFix_SplitTool;
 		 ShapeFix_SplitTool ();
-		%feature("autodoc", "Args:
-	edge(TopoDS_Edge)
-	param(Standard_Real)
-	vert(TopoDS_Vertex)
-	face(TopoDS_Face)
-	newE1(TopoDS_Edge)
-	newE2(TopoDS_Edge)
-	tol3d(Standard_Real)
-	tol2d(Standard_Real)
+		%feature("autodoc", "	* Split edge on two new edges using new vertex 'vert' and 'param' - parameter for splitting The 'face' is necessary for pcurves and using TransferParameterProj
 
-Returns:
-	Standard_Boolean
-
-Split edge on two new edges using new vertex 'vert'  
-         and 'param' - parameter for splitting  
-         The 'face' is necessary for pcurves and using TransferParameterProj") SplitEdge;
+	:param edge:
+	:type edge: TopoDS_Edge &
+	:param param:
+	:type param: float
+	:param vert:
+	:type vert: TopoDS_Vertex &
+	:param face:
+	:type face: TopoDS_Face &
+	:param newE1:
+	:type newE1: TopoDS_Edge &
+	:param newE2:
+	:type newE2: TopoDS_Edge &
+	:param tol3d:
+	:type tol3d: float
+	:param tol2d:
+	:type tol2d: float
+	:rtype: bool
+") SplitEdge;
 		Standard_Boolean SplitEdge (const TopoDS_Edge & edge,const Standard_Real param,const TopoDS_Vertex & vert,const TopoDS_Face & face,TopoDS_Edge & newE1,TopoDS_Edge & newE2,const Standard_Real tol3d,const Standard_Real tol2d);
-		%feature("autodoc", "Args:
-	edge(TopoDS_Edge)
-	param1(Standard_Real)
-	param2(Standard_Real)
-	vert(TopoDS_Vertex)
-	face(TopoDS_Face)
-	newE1(TopoDS_Edge)
-	newE2(TopoDS_Edge)
-	tol3d(Standard_Real)
-	tol2d(Standard_Real)
+		%feature("autodoc", "	* Split edge on two new edges using new vertex 'vert' and 'param1' and 'param2' - parameter for splitting and cutting The 'face' is necessary for pcurves and using TransferParameterProj
 
-Returns:
-	Standard_Boolean
-
-Split edge on two new edges using new vertex 'vert'  
-         and 'param1' and 'param2' - parameter for splitting and cutting  
-         The 'face' is necessary for pcurves and using TransferParameterProj") SplitEdge;
+	:param edge:
+	:type edge: TopoDS_Edge &
+	:param param1:
+	:type param1: float
+	:param param2:
+	:type param2: float
+	:param vert:
+	:type vert: TopoDS_Vertex &
+	:param face:
+	:type face: TopoDS_Face &
+	:param newE1:
+	:type newE1: TopoDS_Edge &
+	:param newE2:
+	:type newE2: TopoDS_Edge &
+	:param tol3d:
+	:type tol3d: float
+	:param tol2d:
+	:type tol2d: float
+	:rtype: bool
+") SplitEdge;
 		Standard_Boolean SplitEdge (const TopoDS_Edge & edge,const Standard_Real param1,const Standard_Real param2,const TopoDS_Vertex & vert,const TopoDS_Face & face,TopoDS_Edge & newE1,TopoDS_Edge & newE2,const Standard_Real tol3d,const Standard_Real tol2d);
-		%feature("autodoc", "Args:
-	edge(TopoDS_Edge)
-	pend(Standard_Real)
-	cut(Standard_Real)
-	face(TopoDS_Face)
-	iscutline(Standard_Boolean)
+		%feature("autodoc", "	* Cut edge by parameters pend and cut
 
-Returns:
-	Standard_Boolean
-
-Cut edge by parameters pend and cut") CutEdge;
+	:param edge:
+	:type edge: TopoDS_Edge &
+	:param pend:
+	:type pend: float
+	:param cut:
+	:type cut: float
+	:param face:
+	:type face: TopoDS_Face &
+	:param iscutline:
+	:type iscutline: bool
+	:rtype: bool
+") CutEdge;
 		Standard_Boolean CutEdge (const TopoDS_Edge & edge,const Standard_Real pend,const Standard_Real cut,const TopoDS_Face & face,Standard_Boolean & iscutline);
-		%feature("autodoc", "Args:
-	edge(TopoDS_Edge)
-	fp(Standard_Real)
-	V1(TopoDS_Vertex)
-	lp(Standard_Real)
-	V2(TopoDS_Vertex)
-	face(TopoDS_Face)
-	SeqE(TopTools_SequenceOfShape)
-	aNum(Standard_Integer)
-	context(Handle_ShapeBuild_ReShape)
-	tol3d(Standard_Real)
-	tol2d(Standard_Real)
+		%feature("autodoc", "	* Split edge on two new edges using two new vertex V1 and V2 and two parameters for splitting - fp and lp correspondingly The 'face' is necessary for pcurves and using TransferParameterProj aNum - number of edge in SeqE which corresponding to [fp,lp]
 
-Returns:
-	Standard_Boolean
-
-Split edge on two new edges using two new vertex V1 and V2  
-         and two parameters for splitting - fp and lp correspondingly  
-         The 'face' is necessary for pcurves and using TransferParameterProj  
-         aNum - number of edge in SeqE which corresponding to [fp,lp]") SplitEdge;
+	:param edge:
+	:type edge: TopoDS_Edge &
+	:param fp:
+	:type fp: float
+	:param V1:
+	:type V1: TopoDS_Vertex &
+	:param lp:
+	:type lp: float
+	:param V2:
+	:type V2: TopoDS_Vertex &
+	:param face:
+	:type face: TopoDS_Face &
+	:param SeqE:
+	:type SeqE: TopTools_SequenceOfShape &
+	:param aNum:
+	:type aNum: Standard_Integer &
+	:param context:
+	:type context: Handle_ShapeBuild_ReShape &
+	:param tol3d:
+	:type tol3d: float
+	:param tol2d:
+	:type tol2d: float
+	:rtype: bool
+") SplitEdge;
 		Standard_Boolean SplitEdge (const TopoDS_Edge & edge,const Standard_Real fp,const TopoDS_Vertex & V1,const Standard_Real lp,const TopoDS_Vertex & V2,const TopoDS_Face & face,TopTools_SequenceOfShape & SeqE,Standard_Integer &OutValue,const Handle_ShapeBuild_ReShape & context,const Standard_Real tol3d,const Standard_Real tol2d);
 };
 
@@ -1712,82 +1410,58 @@ def __del__(self):
 %nodefaultctor ShapeFix_WireVertex;
 class ShapeFix_WireVertex {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ShapeFix_WireVertex;
+		%feature("autodoc", "	:rtype: None
+") ShapeFix_WireVertex;
 		 ShapeFix_WireVertex ();
-		%feature("autodoc", "Args:
-	wire(TopoDS_Wire)
-	preci(Standard_Real)
+		%feature("autodoc", "	* Loads the wire, ininializes internal analyzer (ShapeAnalysis_WireVertex) with the given precision, and performs analysis
 
-Returns:
-	None
-
-Loads the wire, ininializes internal analyzer  
-         (ShapeAnalysis_WireVertex) with the given precision,  
-         and performs analysis") Init;
+	:param wire:
+	:type wire: TopoDS_Wire &
+	:param preci:
+	:type preci: float
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Wire & wire,const Standard_Real preci);
-		%feature("autodoc", "Args:
-	sbwd(Handle_ShapeExtend_WireData)
-	preci(Standard_Real)
+		%feature("autodoc", "	* Loads the wire, ininializes internal analyzer (ShapeAnalysis_WireVertex) with the given precision, and performs analysis
 
-Returns:
-	None
-
-Loads the wire, ininializes internal analyzer  
-         (ShapeAnalysis_WireVertex) with the given precision,  
-         and performs analysis") Init;
+	:param sbwd:
+	:type sbwd: Handle_ShapeExtend_WireData &
+	:param preci:
+	:type preci: float
+	:rtype: None
+") Init;
 		void Init (const Handle_ShapeExtend_WireData & sbwd,const Standard_Real preci);
-		%feature("autodoc", "Args:
-	sawv(ShapeAnalysis_WireVertex)
+		%feature("autodoc", "	* Loads all the data on wire, already analysed by ShapeAnalysis_WireVertex
 
-Returns:
-	None
-
-Loads all the data on wire, already analysed by  
-         ShapeAnalysis_WireVertex") Init;
+	:param sawv:
+	:type sawv: ShapeAnalysis_WireVertex &
+	:rtype: None
+") Init;
 		void Init (const ShapeAnalysis_WireVertex & sawv);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ShapeAnalysis_WireVertex
+		%feature("autodoc", "	* returns internal analyzer
 
-returns internal analyzer") Analyzer;
+	:rtype: ShapeAnalysis_WireVertex
+") Analyzer;
 		const ShapeAnalysis_WireVertex & Analyzer ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ShapeExtend_WireData
+		%feature("autodoc", "	* returns data on wire (fixed)
 
-returns data on wire (fixed)") WireData;
+	:rtype: Handle_ShapeExtend_WireData
+") WireData;
 		const Handle_ShapeExtend_WireData & WireData ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Wire
+		%feature("autodoc", "	* returns resulting wire (fixed)
 
-returns resulting wire (fixed)") Wire;
+	:rtype: TopoDS_Wire
+") Wire;
 		TopoDS_Wire Wire ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Fixes 'Same' or 'Close' status (same vertex may be set, without changing parameters) Returns the count of fixed vertices, 0 if none
 
-Fixes 'Same' or 'Close' status (same vertex may be set,  
-         without changing parameters)  
-         Returns the count of fixed vertices, 0 if none") FixSame;
+	:rtype: int
+") FixSame;
 		Standard_Integer FixSame ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Fixes all statuses except 'Disjoined', i.e. the cases in which a common value has been set, with or without changing parameters Returns the count of fixed vertices, 0 if none
 
-Fixes all statuses except 'Disjoined', i.e. the cases in which a  
-         common value has been set, with or without changing parameters  
-         Returns the count of fixed vertices, 0 if none") Fix;
+	:rtype: int
+") Fix;
 		Standard_Integer Fix ();
 };
 
@@ -1809,26 +1483,23 @@ def __del__(self):
 %nodefaultctor ShapeFix_ComposeShell;
 class ShapeFix_ComposeShell : public ShapeFix_Root {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates empty tool.
 
-Creates empty tool.") ShapeFix_ComposeShell;
+	:rtype: None
+") ShapeFix_ComposeShell;
 		 ShapeFix_ComposeShell ();
-		%feature("autodoc", "Args:
-	Grid(Handle_ShapeExtend_CompositeSurface)
-	L(TopLoc_Location)
-	Face(TopoDS_Face)
-	Prec(Standard_Real)
+		%feature("autodoc", "	* Initializes with composite surface, face and precision. Here face defines both set of wires and way of getting pcurves. Precision is used (together with tolerance of edges) for handling subtle cases, such as tangential intersections.
 
-Returns:
-	None
-
-Initializes with composite surface, face and precision.  
-         Here face defines both set of wires and way of getting  
-         pcurves. Precision is used (together with tolerance of edges)  
-         for handling subtle cases, such as tangential intersections.") Init;
+	:param Grid:
+	:type Grid: Handle_ShapeExtend_CompositeSurface &
+	:param L:
+	:type L: TopLoc_Location &
+	:param Face:
+	:type Face: TopoDS_Face &
+	:param Prec:
+	:type Prec: float
+	:rtype: None
+") Init;
 		void Init (const Handle_ShapeExtend_CompositeSurface & Grid,const TopLoc_Location & L,const TopoDS_Face & Face,const Standard_Real Prec);
 
             %feature("autodoc","1");
@@ -1843,76 +1514,48 @@ Initializes with composite surface, face and precision.
                 $self->ClosedMode()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+            		%feature("autodoc", "	* Performs the work on already loaded data.
 
-Performs the work on already loaded data.") Perform;
+	:rtype: bool
+") Perform;
 		virtual Standard_Boolean Perform ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Splits edges in the original shape by grid. This is a part of Perform() which does not produce any resulting shape; the only result is filled context where splittings are recorded.  NOTE: If edge is splitted, it is replaced by wire, and order of edges in the wire corresponds to FORWARD orientation of the edge.
 
-Splits edges in the original shape by grid.  
-         This is a part of Perform() which does not produce any  
-         resulting shape; the only result is filled context  
-         where splittings are recorded.  
- 
-         NOTE: If edge is splitted, it is replaced by wire, and  
-         order of edges in the wire corresponds to FORWARD orientation  
-         of the edge.") SplitEdges;
+	:rtype: None
+") SplitEdges;
 		void SplitEdges ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Returns resulting shell or face (or Null shape if not done)
 
-Returns resulting shell or face (or Null shape if not done)") Result;
+	:rtype: TopoDS_Shape
+") Result;
 		const TopoDS_Shape & Result ();
-		%feature("autodoc", "Args:
-	status(ShapeExtend_Status)
+		%feature("autodoc", "	* Queries status of last call to Perform() OK : nothing done (some kind of error) DONE1: splitting is done, at least one new face created DONE2: splitting is done, several new faces obtained FAIL1: misoriented wire encountered (handled) FAIL2: recoverable parity error FAIL3: edge with no pcurve on supporting face FAIL4: unrecoverable algorithm error (parity check)
 
-Returns:
-	Standard_Boolean
-
-Queries status of last call to Perform()  
-OK   : nothing done (some kind of error)  
-DONE1: splitting is done, at least one new face created  
-DONE2: splitting is done, several new faces obtained  
-FAIL1: misoriented wire encountered (handled)  
-FAIL2: recoverable parity error  
-FAIL3: edge with no pcurve on supporting face  
-FAIL4: unrecoverable algorithm error (parity check)") Status;
+	:param status:
+	:type status: ShapeExtend_Status
+	:rtype: bool
+") Status;
 		Standard_Boolean Status (const ShapeExtend_Status status);
-		%feature("autodoc", "Args:
-	faces(TopTools_SequenceOfShape)
-	wires(ShapeFix_SequenceOfWireSegment)
+		%feature("autodoc", "	* Creates new faces from the set of (closed) wires. Each wire is put on corresponding patch in the composite surface, and all pcurves on the initial (pseudo)face are reassigned to that surface. If several wires are one inside another, single face is created.
 
-Returns:
-	None
-
-Creates new faces from the set of (closed) wires. Each wire  
-         is put on corresponding patch in the composite surface,  
-         and all pcurves on the initial (pseudo)face are reassigned to  
-         that surface. If several wires are one inside another, single  
-         face is created.") DispatchWires;
+	:param faces:
+	:type faces: TopTools_SequenceOfShape &
+	:param wires:
+	:type wires: ShapeFix_SequenceOfWireSegment &
+	:rtype: None
+") DispatchWires;
 		void DispatchWires (TopTools_SequenceOfShape & faces,ShapeFix_SequenceOfWireSegment & wires);
-		%feature("autodoc", "Args:
-	TransferParam(Handle_ShapeAnalysis_TransferParameters)
+		%feature("autodoc", "	* Sets tool for transfer parameters from 3d to 2d and vice versa.
 
-Returns:
-	None
-
-Sets tool for transfer parameters from 3d to 2d and vice versa.") SetTransferParamTool;
+	:param TransferParam:
+	:type TransferParam: Handle_ShapeAnalysis_TransferParameters &
+	:rtype: None
+") SetTransferParamTool;
 		void SetTransferParamTool (const Handle_ShapeAnalysis_TransferParameters & TransferParam);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ShapeAnalysis_TransferParameters
+		%feature("autodoc", "	* Gets tool for transfer parameters from 3d to 2d and vice versa.
 
-Gets tool for transfer parameters from 3d to 2d and vice versa.") GetTransferParamTool;
+	:rtype: Handle_ShapeAnalysis_TransferParameters
+") GetTransferParamTool;
 		Handle_ShapeAnalysis_TransferParameters GetTransferParamTool ();
 };
 
@@ -1973,90 +1616,79 @@ def __del__(self):
 %nodefaultctor ShapeFix_Face;
 class ShapeFix_Face : public ShapeFix_Root {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates an empty tool
 
-Creates an empty tool") ShapeFix_Face;
+	:rtype: None
+") ShapeFix_Face;
 		 ShapeFix_Face ();
-		%feature("autodoc", "Args:
-	face(TopoDS_Face)
+		%feature("autodoc", "	* Creates a tool and loads a face
 
-Returns:
-	None
-
-Creates a tool and loads a face") ShapeFix_Face;
+	:param face:
+	:type face: TopoDS_Face &
+	:rtype: None
+") ShapeFix_Face;
 		 ShapeFix_Face (const TopoDS_Face & face);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Sets all modes to default
 
-Sets all modes to default") ClearModes;
+	:rtype: void
+") ClearModes;
 		virtual void ClearModes ();
-		%feature("autodoc", "Args:
-	face(TopoDS_Face)
+		%feature("autodoc", "	* Loads a whole face already created, with its wires, sense and location
 
-Returns:
-	None
-
-Loads a whole face already created, with its wires, sense and  
-         location") Init;
+	:param face:
+	:type face: TopoDS_Face &
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Face & face);
-		%feature("autodoc", "Args:
-	surf(Handle_Geom_Surface)
-	preci(Standard_Real)
-	fwd(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Starts the creation of the face By default it will be FORWARD, or REVERSED if <fwd> is False
 
-Returns:
-	None
-
-Starts the creation of the face  
-         By default it will be FORWARD, or REVERSED if <fwd> is False") Init;
+	:param surf:
+	:type surf: Handle_Geom_Surface &
+	:param preci:
+	:type preci: float
+	:param fwd: default value is Standard_True
+	:type fwd: bool
+	:rtype: None
+") Init;
 		void Init (const Handle_Geom_Surface & surf,const Standard_Real preci,const Standard_Boolean fwd = Standard_True);
-		%feature("autodoc", "Args:
-	surf(Handle_ShapeAnalysis_Surface)
-	preci(Standard_Real)
-	fwd(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Starts the creation of the face By default it will be FORWARD, or REVERSED if <fwd> is False
 
-Returns:
-	None
-
-Starts the creation of the face  
-         By default it will be FORWARD, or REVERSED if <fwd> is False") Init;
+	:param surf:
+	:type surf: Handle_ShapeAnalysis_Surface &
+	:param preci:
+	:type preci: float
+	:param fwd: default value is Standard_True
+	:type fwd: bool
+	:rtype: None
+") Init;
 		void Init (const Handle_ShapeAnalysis_Surface & surf,const Standard_Real preci,const Standard_Boolean fwd = Standard_True);
-		%feature("autodoc", "Args:
-	msgreg(Handle_ShapeExtend_BasicMsgRegistrator)
+		%feature("autodoc", "	* Sets message registrator
 
-Returns:
-	virtual void
-
-Sets message registrator") SetMsgRegistrator;
+	:param msgreg:
+	:type msgreg: Handle_ShapeExtend_BasicMsgRegistrator &
+	:rtype: void
+") SetMsgRegistrator;
 		virtual void SetMsgRegistrator (const Handle_ShapeExtend_BasicMsgRegistrator & msgreg);
-		%feature("autodoc", "Args:
-	preci(Standard_Real)
+		%feature("autodoc", "	* Sets basic precision value (also to FixWireTool)
 
-Returns:
-	virtual void
-
-Sets basic precision value (also to FixWireTool)") SetPrecision;
+	:param preci:
+	:type preci: float
+	:rtype: void
+") SetPrecision;
 		virtual void SetPrecision (const Standard_Real preci);
-		%feature("autodoc", "Args:
-	mintol(Standard_Real)
+		%feature("autodoc", "	* Sets minimal allowed tolerance (also to FixWireTool)
 
-Returns:
-	virtual void
-
-Sets minimal allowed tolerance (also to FixWireTool)") SetMinTolerance;
+	:param mintol:
+	:type mintol: float
+	:rtype: void
+") SetMinTolerance;
 		virtual void SetMinTolerance (const Standard_Real mintol);
-		%feature("autodoc", "Args:
-	maxtol(Standard_Real)
+		%feature("autodoc", "	* Sets maximal allowed tolerance (also to FixWireTool)
 
-Returns:
-	virtual void
-
-Sets maximal allowed tolerance (also to FixWireTool)") SetMaxTolerance;
+	:param maxtol:
+	:type maxtol: float
+	:rtype: void
+") SetMaxTolerance;
 		virtual void SetMaxTolerance (const Standard_Real maxtol);
 
             %feature("autodoc","1");
@@ -2188,183 +1820,95 @@ Sets maximal allowed tolerance (also to FixWireTool)") SetMaxTolerance;
                 $self->FixPeriodicDegeneratedMode()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Face
+            		%feature("autodoc", "	* Returns a face which corresponds to the current state Warning: The finally produced face may be another one ... but with the same support
 
-Returns a face which corresponds to the current state  
- Warning: The finally produced face may be another one ... but with the  
-         same support") Face;
+	:rtype: TopoDS_Face
+") Face;
 		TopoDS_Face Face ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Returns resulting shape (Face or Shell if splitted) To be used instead of Face() if FixMissingSeam involved
 
-Returns resulting shape (Face or Shell if splitted)  
-         To be used instead of Face() if FixMissingSeam involved") Result;
+	:rtype: TopoDS_Shape
+") Result;
 		TopoDS_Shape Result ();
-		%feature("autodoc", "Args:
-	wire(TopoDS_Wire)
+		%feature("autodoc", "	* Add a wire to current face using BRep_Builder. Wire is added without taking into account orientation of face (as if face were FORWARD).
 
-Returns:
-	None
-
-Add a wire to current face using BRep_Builder.  
-         Wire is added without taking into account orientation of face  
-         (as if face were FORWARD).") Add;
+	:param wire:
+	:type wire: TopoDS_Wire &
+	:rtype: None
+") Add;
 		void Add (const TopoDS_Wire & wire);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Performs all the fixes, depending on modes Function Status returns the status of last call to Perform() ShapeExtend_OK : face was OK, nothing done ShapeExtend_DONE1: some wires are fixed ShapeExtend_DONE2: orientation of wires fixed ShapeExtend_DONE3: missing seam added ShapeExtend_DONE4: small area wire removed ShapeExtend_DONE5: natural bounds added ShapeExtend_FAIL1: some fails during fixing wires ShapeExtend_FAIL2: cannot fix orientation of wires ShapeExtend_FAIL3: cannot add missing seam ShapeExtend_FAIL4: cannot remove small area wire
 
-Performs all the fixes, depending on modes  
-Function Status returns the status of last call to Perform()  
-         ShapeExtend_OK   : face was OK, nothing done  
-         ShapeExtend_DONE1: some wires are fixed  
-         ShapeExtend_DONE2: orientation of wires fixed  
-         ShapeExtend_DONE3: missing seam added  
-         ShapeExtend_DONE4: small area wire removed  
-         ShapeExtend_DONE5: natural bounds added  
-         ShapeExtend_FAIL1: some fails during fixing wires  
-         ShapeExtend_FAIL2: cannot fix orientation of wires  
-         ShapeExtend_FAIL3: cannot add missing seam  
-         ShapeExtend_FAIL4: cannot remove small area wire") Perform;
+	:rtype: bool
+") Perform;
 		Standard_Boolean Perform ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Fixes orientation of wires on the face It tries to make all wires lie outside all others (according to orientation) by reversing orientation of some of them. If face lying on sphere or torus has single wire and AddNaturalBoundMode is True, that wire is not reversed in any case (supposing that natural bound will be added). Returns True if wires were reversed
 
-Fixes orientation of wires on the face  
-         It tries to make all wires lie outside all others (according  
-         to orientation) by reversing orientation of some of them.  
-         If face lying on sphere or torus has single wire and  
-         AddNaturalBoundMode is True, that wire is not reversed in  
-         any case (supposing that natural bound will be added).  
-         Returns True if wires were reversed") FixOrientation;
+	:rtype: bool
+") FixOrientation;
 		Standard_Boolean FixOrientation ();
-		%feature("autodoc", "Args:
-	MapWires(TopTools_DataMapOfShapeListOfShape)
+		%feature("autodoc", "	* Fixes orientation of wires on the face It tries to make all wires lie outside all others (according to orientation) by reversing orientation of some of them. If face lying on sphere or torus has single wire and AddNaturalBoundMode is True, that wire is not reversed in any case (supposing that natural bound will be added). Returns True if wires were reversed OutWires return information about out wires + list of internal wires for each (for performing split face).
 
-Returns:
-	Standard_Boolean
-
-Fixes orientation of wires on the face  
-         It tries to make all wires lie outside all others (according  
-         to orientation) by reversing orientation of some of them.  
-         If face lying on sphere or torus has single wire and  
-         AddNaturalBoundMode is True, that wire is not reversed in  
-         any case (supposing that natural bound will be added).  
-         Returns True if wires were reversed  
-         OutWires return information about out wires + list of  
-         internal wires for each (for performing split face).") FixOrientation;
+	:param MapWires:
+	:type MapWires: TopTools_DataMapOfShapeListOfShape &
+	:rtype: bool
+") FixOrientation;
 		Standard_Boolean FixOrientation (TopTools_DataMapOfShapeListOfShape & MapWires);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Adds natural boundary on face if it is missing. Two cases are supported: - face has no wires - face lies on geometrically double-closed surface  (sphere or torus) and none of wires is left-oriented Returns True if natural boundary was added
 
-Adds natural boundary on face if it is missing.  
-         Two cases are supported:  
-         - face has no wires  
-         - face lies on geometrically double-closed surface  
-           (sphere or torus) and none of wires is left-oriented  
-         Returns True if natural boundary was added") FixAddNaturalBound;
+	:rtype: bool
+") FixAddNaturalBound;
 		Standard_Boolean FixAddNaturalBound ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Detects and fixes the special case when face on a closed surface is given by two wires closed in 3d but with gap in 2d. In that case it creates a new wire from the two, and adds a missing seam edge Returns True if missing seam was added
 
-Detects and fixes the special case when face on a closed  
-         surface is given by two wires closed in 3d but with gap in 2d.  
-         In that case it creates a new wire from the two, and adds a  
-         missing seam edge  
-         Returns True if missing seam was added") FixMissingSeam;
+	:rtype: bool
+") FixMissingSeam;
 		Standard_Boolean FixMissingSeam ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Detects wires with small area (that is less than 100*Precision::PConfusion(). Removes these wires if they are internal. Returns : True if at least one small wire removed, 	 False if does nothing.
 
-Detects wires with small area (that is less than  
-         100*Precision::PConfusion(). Removes these wires if they are internal.  
- Returns : True if at least one small wire removed,  
-   	    False if does nothing.") FixSmallAreaWire;
+	:rtype: bool
+") FixSmallAreaWire;
 		Standard_Boolean FixSmallAreaWire ();
-		%feature("autodoc", "Args:
-	aResWires(TopTools_SequenceOfShape)
+		%feature("autodoc", "	* Detects if wire has a loop and fixes this situation by splitting on the few parts. if wire has a loops and it was splitted Status was set to value ShapeExtend_DONE6.
 
-Returns:
-	Standard_Boolean
-
-Detects if wire has a loop and fixes this situation by splitting on the few parts.  
-         if wire has a loops and it was splitted Status was set to value ShapeExtend_DONE6.") FixLoopWire;
+	:param aResWires:
+	:type aResWires: TopTools_SequenceOfShape &
+	:rtype: bool
+") FixLoopWire;
 		Standard_Boolean FixLoopWire (TopTools_SequenceOfShape & aResWires);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Detects and fixes the special case when face has more than one wire and this wires have intersection point
 
-Detects and fixes the special case when face has more than one wire  
-         and this wires have intersection point") FixIntersectingWires;
+	:rtype: bool
+") FixIntersectingWires;
 		Standard_Boolean FixIntersectingWires ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* If wire contains two coincidence edges it must be removed Queries on status after Perform()
 
-If wire contains two coincidence edges it must be removed  
-Queries on status after Perform()") FixWiresTwoCoincEdges;
+	:rtype: bool
+") FixWiresTwoCoincEdges;
 		Standard_Boolean FixWiresTwoCoincEdges ();
-		%feature("autodoc", "Args:
-	MapWires(TopTools_DataMapOfShapeListOfShape)
+		%feature("autodoc", "	* Split face if there are more than one out wire using inrormation after FixOrientation()
 
-Returns:
-	Standard_Boolean
-
-Split face if there are more than one out wire  
-         using inrormation after FixOrientation()") FixSplitFace;
+	:param MapWires:
+	:type MapWires: TopTools_DataMapOfShapeListOfShape &
+	:rtype: bool
+") FixSplitFace;
 		Standard_Boolean FixSplitFace (const TopTools_DataMapOfShapeListOfShape & MapWires);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Fixes topology for a specific case when face is composed by a single wire belting a periodic surface. In that case a degenerated edge is reconstructed in the degenerated pole of the surface. Initial wire gets consistent orientation. Must be used in couple and before FixMissingSeam routine
 
-Fixes topology for a specific case when face is composed  
-         by a single wire belting a periodic surface. In that case  
-         a degenerated edge is reconstructed in the degenerated pole  
-         of the surface. Initial wire gets consistent orientation.  
-         Must be used in couple and before FixMissingSeam routine") FixPeriodicDegenerated;
+	:rtype: bool
+") FixPeriodicDegenerated;
 		Standard_Boolean FixPeriodicDegenerated ();
-		%feature("autodoc", "Args:
-	status(ShapeExtend_Status)
+		%feature("autodoc", "	* Returns the status of last call to Perform() ShapeExtend_OK : face was OK, nothing done ShapeExtend_DONE1: some wires are fixed ShapeExtend_DONE2: orientation of wires fixed ShapeExtend_DONE3: missing seam added ShapeExtend_DONE4: small area wire removed ShapeExtend_DONE5: natural bounds added ShapeExtend_DONE8: face may be splited ShapeExtend_FAIL1: some fails during fixing wires ShapeExtend_FAIL2: cannot fix orientation of wires ShapeExtend_FAIL3: cannot add missing seam ShapeExtend_FAIL4: cannot remove small area wire
 
-Returns:
-	Standard_Boolean
-
-Returns the status of last call to Perform()  
-         ShapeExtend_OK   : face was OK, nothing done  
-         ShapeExtend_DONE1: some wires are fixed  
-         ShapeExtend_DONE2: orientation of wires fixed  
-         ShapeExtend_DONE3: missing seam added  
-         ShapeExtend_DONE4: small area wire removed  
-         ShapeExtend_DONE5: natural bounds added  
-         ShapeExtend_DONE8: face may be splited  
-         ShapeExtend_FAIL1: some fails during fixing wires  
-         ShapeExtend_FAIL2: cannot fix orientation of wires  
-         ShapeExtend_FAIL3: cannot add missing seam  
-         ShapeExtend_FAIL4: cannot remove small area wire") Status;
+	:param status:
+	:type status: ShapeExtend_Status
+	:rtype: bool
+") Status;
 		Standard_Boolean Status (const ShapeExtend_Status status);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ShapeFix_Wire
+		%feature("autodoc", "	* Returns tool for fixing wires.
 
-Returns tool for fixing wires.") FixWireTool;
+	:rtype: Handle_ShapeFix_Wire
+") FixWireTool;
 		Handle_ShapeFix_Wire FixWireTool ();
 };
 
@@ -2425,151 +1969,123 @@ def __del__(self):
 %nodefaultctor ShapeFix_FixSmallFace;
 class ShapeFix_FixSmallFace : public ShapeFix_Root {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ShapeFix_FixSmallFace;
+		%feature("autodoc", "	:rtype: None
+") ShapeFix_FixSmallFace;
 		 ShapeFix_FixSmallFace ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Fixing case of spot face
 
-Fixing case of spot face") Perform;
+	:rtype: None
+") Perform;
 		void Perform ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Fixing case of spot face, if tol = -1 used local tolerance.
 
-Fixing case of spot face, if tol = -1 used local tolerance.") FixSpotFace;
+	:rtype: TopoDS_Shape
+") FixSpotFace;
 		TopoDS_Shape FixSpotFace ();
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-	tol(Standard_Real)
+		%feature("autodoc", "	* Compute average vertex and replacing vertices by new one.
 
-Returns:
-	Standard_Boolean
-
-Compute average vertex and replacing vertices by new one.") ReplaceVerticesInCaseOfSpot;
+	:param F:
+	:type F: TopoDS_Face &
+	:param tol:
+	:type tol: float
+	:rtype: bool
+") ReplaceVerticesInCaseOfSpot;
 		Standard_Boolean ReplaceVerticesInCaseOfSpot (TopoDS_Face & F,const Standard_Real tol);
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
+		%feature("autodoc", "	* Remove spot face from compound
 
-Returns:
-	Standard_Boolean
-
-Remove spot face from compound") RemoveFacesInCaseOfSpot;
+	:param F:
+	:type F: TopoDS_Face &
+	:rtype: bool
+") RemoveFacesInCaseOfSpot;
 		Standard_Boolean RemoveFacesInCaseOfSpot (const TopoDS_Face & F);
-		%feature("autodoc", "Args:
-	wasdone(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Fixing case of strip face, if tol = -1 used local tolerance
 
-Returns:
-	TopoDS_Shape
-
-Fixing case of strip face, if tol = -1 used local tolerance") FixStripFace;
+	:param wasdone: default value is Standard_False
+	:type wasdone: bool
+	:rtype: TopoDS_Shape
+") FixStripFace;
 		TopoDS_Shape FixStripFace (const Standard_Boolean wasdone = Standard_False);
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-	E1(TopoDS_Edge)
-	E2(TopoDS_Edge)
-	tol(Standard_Real)
+		%feature("autodoc", "	* Replace veretces and edges.
 
-Returns:
-	Standard_Boolean
-
-Replace veretces and edges.") ReplaceInCaseOfStrip;
+	:param F:
+	:type F: TopoDS_Face &
+	:param E1:
+	:type E1: TopoDS_Edge &
+	:param E2:
+	:type E2: TopoDS_Edge &
+	:param tol:
+	:type tol: float
+	:rtype: bool
+") ReplaceInCaseOfStrip;
 		Standard_Boolean ReplaceInCaseOfStrip (TopoDS_Face & F,TopoDS_Edge & E1,TopoDS_Edge & E2,const Standard_Real tol);
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
+		%feature("autodoc", "	* Remove strip face from compound.
 
-Returns:
-	Standard_Boolean
-
-Remove strip face from compound.") RemoveFacesInCaseOfStrip;
+	:param F:
+	:type F: TopoDS_Face &
+	:rtype: bool
+") RemoveFacesInCaseOfStrip;
 		Standard_Boolean RemoveFacesInCaseOfStrip (const TopoDS_Face & F);
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-	E1(TopoDS_Edge)
-	E2(TopoDS_Edge)
-	F1(TopoDS_Face)
-	tol(Standard_Real)
+		%feature("autodoc", "	* Compute average edge for strip face
 
-Returns:
-	TopoDS_Edge
-
-Compute average edge for strip face") ComputeSharedEdgeForStripFace;
+	:param F:
+	:type F: TopoDS_Face &
+	:param E1:
+	:type E1: TopoDS_Edge &
+	:param E2:
+	:type E2: TopoDS_Edge &
+	:param F1:
+	:type F1: TopoDS_Face &
+	:param tol:
+	:type tol: float
+	:rtype: TopoDS_Edge
+") ComputeSharedEdgeForStripFace;
 		TopoDS_Edge ComputeSharedEdgeForStripFace (const TopoDS_Face & F,const TopoDS_Edge & E1,const TopoDS_Edge & E2,const TopoDS_Face & F1,const Standard_Real tol);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* 
 
-Returns:
-	TopoDS_Shape
-
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: TopoDS_Shape
 ") FixSplitFace;
 		TopoDS_Shape FixSplitFace (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Split faces by splitting vertices
 
-Split faces by splitting vertices") SplitFaces;
+	:rtype: TopoDS_Shape
+") SplitFaces;
 		TopoDS_Shape SplitFaces ();
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-	theSplittedFaces(TopoDS_Compound)
+		%feature("autodoc", "	* Compute data for face splitting.
 
-Returns:
-	Standard_Boolean
-
-Compute data for face splitting.") SplitOneFace;
+	:param F:
+	:type F: TopoDS_Face &
+	:param theSplittedFaces:
+	:type theSplittedFaces: TopoDS_Compound &
+	:rtype: bool
+") SplitOneFace;
 		Standard_Boolean SplitOneFace (TopoDS_Face & F,TopoDS_Compound & theSplittedFaces);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Remove small faces from compound.
 
-Remove small faces from compound.") RemoveSmallFaces;
+	:rtype: TopoDS_Shape
+") RemoveSmallFaces;
 		TopoDS_Shape RemoveSmallFaces ();
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-
-Returns:
-	TopoDS_Face
-
-No detailed docstring for this function.") FixFace;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:rtype: TopoDS_Face
+") FixFace;
 		TopoDS_Face FixFace (const TopoDS_Face & F);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") FixShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") FixShape;
 		TopoDS_Shape FixShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Shape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Shape;
 		TopoDS_Shape Shape ();
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") FixPinFace;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:rtype: bool
+") FixPinFace;
 		Standard_Boolean FixPinFace (TopoDS_Face & F);
 };
 
@@ -2630,125 +2146,96 @@ def __del__(self):
 %nodefaultctor ShapeFix_Shape;
 class ShapeFix_Shape : public ShapeFix_Root {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty Constructor
 
-Empty Constructor") ShapeFix_Shape;
+	:rtype: None
+") ShapeFix_Shape;
 		 ShapeFix_Shape ();
-		%feature("autodoc", "Args:
-	shape(TopoDS_Shape)
+		%feature("autodoc", "	* Initislises by shape.
 
-Returns:
-	None
-
-Initislises by shape.") ShapeFix_Shape;
+	:param shape:
+	:type shape: TopoDS_Shape &
+	:rtype: None
+") ShapeFix_Shape;
 		 ShapeFix_Shape (const TopoDS_Shape & shape);
-		%feature("autodoc", "Args:
-	shape(TopoDS_Shape)
+		%feature("autodoc", "	* Initislises by shape.
 
-Returns:
-	None
-
-Initislises by shape.") Init;
+	:param shape:
+	:type shape: TopoDS_Shape &
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Shape & shape);
-		%feature("autodoc", "Args:
-	theProgress(Handle_Message_ProgressIndicator)=0
+		%feature("autodoc", "	* Iterates on sub- shape and performs fixes
 
-Returns:
-	Standard_Boolean
-
-Iterates on sub- shape and performs fixes") Perform;
+	:param theProgress: default value is 0
+	:type theProgress: Handle_Message_ProgressIndicator &
+	:rtype: bool
+") Perform;
 		Standard_Boolean Perform (const Handle_Message_ProgressIndicator & theProgress = 0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Returns resulting shape
 
-Returns resulting shape") Shape;
+	:rtype: TopoDS_Shape
+") Shape;
 		TopoDS_Shape Shape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ShapeFix_Solid
+		%feature("autodoc", "	* Returns tool for fixing solids.
 
-Returns tool for fixing solids.") FixSolidTool;
+	:rtype: Handle_ShapeFix_Solid
+") FixSolidTool;
 		Handle_ShapeFix_Solid FixSolidTool ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ShapeFix_Shell
+		%feature("autodoc", "	* Returns tool for fixing shells.
 
-Returns tool for fixing shells.") FixShellTool;
+	:rtype: Handle_ShapeFix_Shell
+") FixShellTool;
 		Handle_ShapeFix_Shell FixShellTool ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ShapeFix_Face
+		%feature("autodoc", "	* Returns tool for fixing faces.
 
-Returns tool for fixing faces.") FixFaceTool;
+	:rtype: Handle_ShapeFix_Face
+") FixFaceTool;
 		Handle_ShapeFix_Face FixFaceTool ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ShapeFix_Wire
+		%feature("autodoc", "	* Returns tool for fixing wires.
 
-Returns tool for fixing wires.") FixWireTool;
+	:rtype: Handle_ShapeFix_Wire
+") FixWireTool;
 		Handle_ShapeFix_Wire FixWireTool ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ShapeFix_Edge
+		%feature("autodoc", "	* Returns tool for fixing edges.
 
-Returns tool for fixing edges.") FixEdgeTool;
+	:rtype: Handle_ShapeFix_Edge
+") FixEdgeTool;
 		Handle_ShapeFix_Edge FixEdgeTool ();
-		%feature("autodoc", "Args:
-	status(ShapeExtend_Status)
+		%feature("autodoc", "	* Returns the status of the last Fix. This can be a combination of the following flags: ShapeExtend_DONE1: some free edges were fixed ShapeExtend_DONE2: some free wires were fixed ShapeExtend_DONE3: some free faces were fixed ShapeExtend_DONE4: some free shells were fixed ShapeExtend_DONE5: some free solids were fixed ShapeExtend_DONE6: shapes in compound(s) were fixed
 
-Returns:
-	Standard_Boolean
-
-Returns the status of the last Fix.  
-         This can be a combination of the following flags:  
-         ShapeExtend_DONE1: some free edges were fixed  
-         ShapeExtend_DONE2: some free wires were fixed  
-         ShapeExtend_DONE3: some free faces were fixed  
-         ShapeExtend_DONE4: some free shells were fixed  
-         ShapeExtend_DONE5: some free solids were fixed  
-         ShapeExtend_DONE6: shapes in compound(s) were fixed") Status;
+	:param status:
+	:type status: ShapeExtend_Status
+	:rtype: bool
+") Status;
 		Standard_Boolean Status (const ShapeExtend_Status status);
-		%feature("autodoc", "Args:
-	msgreg(Handle_ShapeExtend_BasicMsgRegistrator)
+		%feature("autodoc", "	* Sets message registrator
 
-Returns:
-	virtual void
-
-Sets message registrator") SetMsgRegistrator;
+	:param msgreg:
+	:type msgreg: Handle_ShapeExtend_BasicMsgRegistrator &
+	:rtype: void
+") SetMsgRegistrator;
 		virtual void SetMsgRegistrator (const Handle_ShapeExtend_BasicMsgRegistrator & msgreg);
-		%feature("autodoc", "Args:
-	preci(Standard_Real)
+		%feature("autodoc", "	* Sets basic precision value (also to FixSolidTool)
 
-Returns:
-	virtual void
-
-Sets basic precision value (also to FixSolidTool)") SetPrecision;
+	:param preci:
+	:type preci: float
+	:rtype: void
+") SetPrecision;
 		virtual void SetPrecision (const Standard_Real preci);
-		%feature("autodoc", "Args:
-	mintol(Standard_Real)
+		%feature("autodoc", "	* Sets minimal allowed tolerance (also to FixSolidTool)
 
-Returns:
-	virtual void
-
-Sets minimal allowed tolerance (also to FixSolidTool)") SetMinTolerance;
+	:param mintol:
+	:type mintol: float
+	:rtype: void
+") SetMinTolerance;
 		virtual void SetMinTolerance (const Standard_Real mintol);
-		%feature("autodoc", "Args:
-	maxtol(Standard_Real)
+		%feature("autodoc", "	* Sets maximal allowed tolerance (also to FixSolidTool)
 
-Returns:
-	virtual void
-
-Sets maximal allowed tolerance (also to FixSolidTool)") SetMaxTolerance;
+	:param maxtol:
+	:type maxtol: float
+	:rtype: void
+") SetMaxTolerance;
 		virtual void SetMaxTolerance (const Standard_Real maxtol);
 
             %feature("autodoc","1");
@@ -2887,139 +2374,102 @@ def __del__(self):
 %nodefaultctor ShapeFix_Shell;
 class ShapeFix_Shell : public ShapeFix_Root {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor
 
-Empty constructor") ShapeFix_Shell;
+	:rtype: None
+") ShapeFix_Shell;
 		 ShapeFix_Shell ();
-		%feature("autodoc", "Args:
-	shape(TopoDS_Shell)
+		%feature("autodoc", "	* Initializes by shell.
 
-Returns:
-	None
-
-Initializes by shell.") ShapeFix_Shell;
+	:param shape:
+	:type shape: TopoDS_Shell &
+	:rtype: None
+") ShapeFix_Shell;
 		 ShapeFix_Shell (const TopoDS_Shell & shape);
-		%feature("autodoc", "Args:
-	shell(TopoDS_Shell)
+		%feature("autodoc", "	* Initializes by shell.
 
-Returns:
-	None
-
-Initializes by shell.") Init;
+	:param shell:
+	:type shell: TopoDS_Shell &
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Shell & shell);
-		%feature("autodoc", "Args:
-	theProgress(Handle_Message_ProgressIndicator)=0
+		%feature("autodoc", "	* Iterates on subshapes and performs fixes (for each face calls ShapeFix_Face::Perform and then calls FixFaceOrientation). The passed progress indicator allows user to consult the current progress stage and abort algorithm if needed.
 
-Returns:
-	Standard_Boolean
-
-Iterates on subshapes and performs fixes  
-         (for each face calls ShapeFix_Face::Perform and  
-         then calls FixFaceOrientation). The passed progress  
-         indicator allows user to consult the current progress  
-         stage and abort algorithm if needed.") Perform;
+	:param theProgress: default value is 0
+	:type theProgress: Handle_Message_ProgressIndicator &
+	:rtype: bool
+") Perform;
 		Standard_Boolean Perform (const Handle_Message_ProgressIndicator & theProgress = 0);
-		%feature("autodoc", "Args:
-	shell(TopoDS_Shell)
-	isAccountMultiConex(Standard_Boolean)=Standard_True
-	NonManifold(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Fixes orientation of faces in shell. Changes orientation of face in the shell, if it is oriented opposite to neigbouring faces. If it is not possible to orient all faces in the shell (like in case of mebious band), this method orients only subset of faces. Other faces are stored in Error compound. Modes : 	 isAccountMultiConex - mode for account cases of multiconnexity. If this mode is equal to Standard_True, separate shells will be created in the cases of multiconnexity. If this mode is equal to Standard_False, one shell will be created without account of multiconnexity.By defautt - Standard_True; NonManifold - mode for creation of non-manifold shells. If this mode is equal to Standard_True one non-manifold will be created from shell contains multishared edges. Else if this mode is equal to Standard_False only manifold shells will be created. By default - Standard_False.
 
-Returns:
-	Standard_Boolean
-
-Fixes orientation of faces in shell.  
-         Changes orientation of face in the shell, if it is oriented opposite  
-         to neigbouring faces. If it is not possible to orient all faces in the  
-         shell (like in case of mebious band), this method orients only subset  
-         of faces. Other faces are stored in Error compound.  
-         Modes :  
-   	    isAccountMultiConex - mode for account cases of multiconnexity.  
-         If this mode is equal to Standard_True, separate shells will be created  
-         in the cases of multiconnexity. If this mode is equal to Standard_False,  
-         one shell will be created without account of multiconnexity.By defautt - Standard_True;  
-         NonManifold - mode for creation of non-manifold shells.  
-         If this mode is equal to Standard_True one non-manifold will be created from shell  
-         contains multishared edges. Else if this mode is equal to Standard_False only  
-         manifold shells will be created. By default - Standard_False.") FixFaceOrientation;
+	:param shell:
+	:type shell: TopoDS_Shell &
+	:param isAccountMultiConex: default value is Standard_True
+	:type isAccountMultiConex: bool
+	:param NonManifold: default value is Standard_False
+	:type NonManifold: bool
+	:rtype: bool
+") FixFaceOrientation;
 		Standard_Boolean FixFaceOrientation (const TopoDS_Shell & shell,const Standard_Boolean isAccountMultiConex = Standard_True,const Standard_Boolean NonManifold = Standard_False);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shell
+		%feature("autodoc", "	* Returns fixed shell (or subset of oriented faces).
 
-Returns fixed shell (or subset of oriented faces).") Shell;
+	:rtype: TopoDS_Shell
+") Shell;
 		TopoDS_Shell Shell ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* In case of multiconnexity returns compound of fixed shells else returns one shell..
 
-In case of multiconnexity returns compound of fixed shells  
-         else returns one shell..") Shape;
+	:rtype: TopoDS_Shape
+") Shape;
 		TopoDS_Shape Shape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns Number of obtainrd shells;
 
-Returns Number of obtainrd shells;") NbShells;
+	:rtype: int
+") NbShells;
 		Standard_Integer NbShells ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Compound
+		%feature("autodoc", "	* Returns not oriented subset of faces.
 
-Returns not oriented subset of faces.") ErrorFaces;
+	:rtype: TopoDS_Compound
+") ErrorFaces;
 		TopoDS_Compound ErrorFaces ();
-		%feature("autodoc", "Args:
-	status(ShapeExtend_Status)
+		%feature("autodoc", "	* Returns the status of the last Fix.
 
-Returns:
-	Standard_Boolean
-
-Returns the status of the last Fix.") Status;
+	:param status:
+	:type status: ShapeExtend_Status
+	:rtype: bool
+") Status;
 		Standard_Boolean Status (const ShapeExtend_Status status);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ShapeFix_Face
+		%feature("autodoc", "	* Returns tool for fixing faces.
 
-Returns tool for fixing faces.") FixFaceTool;
+	:rtype: Handle_ShapeFix_Face
+") FixFaceTool;
 		Handle_ShapeFix_Face FixFaceTool ();
-		%feature("autodoc", "Args:
-	msgreg(Handle_ShapeExtend_BasicMsgRegistrator)
+		%feature("autodoc", "	* Sets message registrator
 
-Returns:
-	virtual void
-
-Sets message registrator") SetMsgRegistrator;
+	:param msgreg:
+	:type msgreg: Handle_ShapeExtend_BasicMsgRegistrator &
+	:rtype: void
+") SetMsgRegistrator;
 		virtual void SetMsgRegistrator (const Handle_ShapeExtend_BasicMsgRegistrator & msgreg);
-		%feature("autodoc", "Args:
-	preci(Standard_Real)
+		%feature("autodoc", "	* Sets basic precision value (also to FixWireTool)
 
-Returns:
-	virtual void
-
-Sets basic precision value (also to FixWireTool)") SetPrecision;
+	:param preci:
+	:type preci: float
+	:rtype: void
+") SetPrecision;
 		virtual void SetPrecision (const Standard_Real preci);
-		%feature("autodoc", "Args:
-	mintol(Standard_Real)
+		%feature("autodoc", "	* Sets minimal allowed tolerance (also to FixWireTool)
 
-Returns:
-	virtual void
-
-Sets minimal allowed tolerance (also to FixWireTool)") SetMinTolerance;
+	:param mintol:
+	:type mintol: float
+	:rtype: void
+") SetMinTolerance;
 		virtual void SetMinTolerance (const Standard_Real mintol);
-		%feature("autodoc", "Args:
-	maxtol(Standard_Real)
+		%feature("autodoc", "	* Sets maximal allowed tolerance (also to FixWireTool)
 
-Returns:
-	virtual void
-
-Sets maximal allowed tolerance (also to FixWireTool)") SetMaxTolerance;
+	:param maxtol:
+	:type maxtol: float
+	:rtype: void
+") SetMaxTolerance;
 		virtual void SetMaxTolerance (const Standard_Real maxtol);
 
             %feature("autodoc","1");
@@ -3106,101 +2556,83 @@ def __del__(self):
 %nodefaultctor ShapeFix_Solid;
 class ShapeFix_Solid : public ShapeFix_Root {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor;
 
-Empty constructor;") ShapeFix_Solid;
+	:rtype: None
+") ShapeFix_Solid;
 		 ShapeFix_Solid ();
-		%feature("autodoc", "Args:
-	solid(TopoDS_Solid)
+		%feature("autodoc", "	* Initializes by solid.
 
-Returns:
-	None
-
-Initializes by solid.") ShapeFix_Solid;
+	:param solid:
+	:type solid: TopoDS_Solid &
+	:rtype: None
+") ShapeFix_Solid;
 		 ShapeFix_Solid (const TopoDS_Solid & solid);
-		%feature("autodoc", "Args:
-	solid(TopoDS_Solid)
+		%feature("autodoc", "	* Initializes by solid .
 
-Returns:
-	virtual void
-
-Initializes by solid .") Init;
+	:param solid:
+	:type solid: TopoDS_Solid &
+	:rtype: void
+") Init;
 		virtual void Init (const TopoDS_Solid & solid);
-		%feature("autodoc", "Args:
-	theProgress(Handle_Message_ProgressIndicator)=0
+		%feature("autodoc", "	* Iterates on shells and performs fixes (calls ShapeFix_Shell for each subshell). The passed progress indicator allows user to consult the current progress stage and abort algorithm if needed.
 
-Returns:
-	virtual Standard_Boolean
-
-Iterates on shells and performs fixes  
-         (calls ShapeFix_Shell for each subshell). The passed  
-         progress indicator allows user to consult the current  
-         progress stage and abort algorithm if needed.") Perform;
+	:param theProgress: default value is 0
+	:type theProgress: Handle_Message_ProgressIndicator &
+	:rtype: bool
+") Perform;
 		virtual Standard_Boolean Perform (const Handle_Message_ProgressIndicator & theProgress = 0);
-		%feature("autodoc", "Args:
-	shell(TopoDS_Shell)
+		%feature("autodoc", "	* Calls MakeSolid and orients the solid to be 'not infinite'
 
-Returns:
-	TopoDS_Solid
-
-Calls MakeSolid and orients the solid to be 'not infinite'") SolidFromShell;
+	:param shell:
+	:type shell: TopoDS_Shell &
+	:rtype: TopoDS_Solid
+") SolidFromShell;
 		TopoDS_Solid SolidFromShell (const TopoDS_Shell & shell);
-		%feature("autodoc", "Args:
-	status(ShapeExtend_Status)
+		%feature("autodoc", "	* Returns the status of the last Fix.
 
-Returns:
-	Standard_Integer
-
-Returns the status of the last Fix.") Status;
+	:param status:
+	:type status: ShapeExtend_Status
+	:rtype: int
+") Status;
 		Standard_Integer Status (const ShapeExtend_Status status);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Returns resulting solid.
 
-Returns resulting solid.") Solid;
+	:rtype: TopoDS_Shape
+") Solid;
 		TopoDS_Shape Solid ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ShapeFix_Shell
+		%feature("autodoc", "	* Returns tool for fixing shells.
 
-Returns tool for fixing shells.") FixShellTool;
+	:rtype: Handle_ShapeFix_Shell
+") FixShellTool;
 		Handle_ShapeFix_Shell FixShellTool ();
-		%feature("autodoc", "Args:
-	msgreg(Handle_ShapeExtend_BasicMsgRegistrator)
+		%feature("autodoc", "	* Sets message registrator
 
-Returns:
-	virtual void
-
-Sets message registrator") SetMsgRegistrator;
+	:param msgreg:
+	:type msgreg: Handle_ShapeExtend_BasicMsgRegistrator &
+	:rtype: void
+") SetMsgRegistrator;
 		virtual void SetMsgRegistrator (const Handle_ShapeExtend_BasicMsgRegistrator & msgreg);
-		%feature("autodoc", "Args:
-	preci(Standard_Real)
+		%feature("autodoc", "	* Sets basic precision value (also to FixShellTool)
 
-Returns:
-	virtual void
-
-Sets basic precision value (also to FixShellTool)") SetPrecision;
+	:param preci:
+	:type preci: float
+	:rtype: void
+") SetPrecision;
 		virtual void SetPrecision (const Standard_Real preci);
-		%feature("autodoc", "Args:
-	mintol(Standard_Real)
+		%feature("autodoc", "	* Sets minimal allowed tolerance (also to FixShellTool)
 
-Returns:
-	virtual void
-
-Sets minimal allowed tolerance (also to FixShellTool)") SetMinTolerance;
+	:param mintol:
+	:type mintol: float
+	:rtype: void
+") SetMinTolerance;
 		virtual void SetMinTolerance (const Standard_Real mintol);
-		%feature("autodoc", "Args:
-	maxtol(Standard_Real)
+		%feature("autodoc", "	* Sets maximal allowed tolerance (also to FixShellTool)
 
-Returns:
-	virtual void
-
-Sets maximal allowed tolerance (also to FixShellTool)") SetMaxTolerance;
+	:param maxtol:
+	:type maxtol: float
+	:rtype: void
+") SetMaxTolerance;
 		virtual void SetMaxTolerance (const Standard_Real maxtol);
 
             %feature("autodoc","1");
@@ -3228,13 +2660,10 @@ Sets maximal allowed tolerance (also to FixShellTool)") SetMaxTolerance;
                 $self->CreateOpenSolidMode()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+            		%feature("autodoc", "	* In case of multiconnexity returns compound of fixed solids else returns one solid.
 
-In case of multiconnexity returns compound of fixed solids  
-         else returns one solid.") Shape;
+	:rtype: TopoDS_Shape
+") Shape;
 		TopoDS_Shape Shape ();
 };
 
@@ -3295,34 +2724,19 @@ def __del__(self):
 %nodefaultctor ShapeFix_SplitCommonVertex;
 class ShapeFix_SplitCommonVertex : public ShapeFix_Root {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ShapeFix_SplitCommonVertex;
+		%feature("autodoc", "	:rtype: None
+") ShapeFix_SplitCommonVertex;
 		 ShapeFix_SplitCommonVertex ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:rtype: None
+") Perform;
 		void Perform ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Shape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Shape;
 		TopoDS_Shape Shape ();
 };
 
@@ -3383,164 +2797,133 @@ def __del__(self):
 %nodefaultctor ShapeFix_Wire;
 class ShapeFix_Wire : public ShapeFix_Root {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty Constructor, creates clear object with default flags
 
-Empty Constructor, creates clear object with default flags") ShapeFix_Wire;
+	:rtype: None
+") ShapeFix_Wire;
 		 ShapeFix_Wire ();
-		%feature("autodoc", "Args:
-	wire(TopoDS_Wire)
-	face(TopoDS_Face)
-	prec(Standard_Real)
+		%feature("autodoc", "	* Create new object with default flags and prepare it for use (Loads analyzer with all the data for the wire and face)
 
-Returns:
-	None
-
-Create new object with default flags and prepare it for use  
-         (Loads analyzer with all the data for the wire and face)") ShapeFix_Wire;
+	:param wire:
+	:type wire: TopoDS_Wire &
+	:param face:
+	:type face: TopoDS_Face &
+	:param prec:
+	:type prec: float
+	:rtype: None
+") ShapeFix_Wire;
 		 ShapeFix_Wire (const TopoDS_Wire & wire,const TopoDS_Face & face,const Standard_Real prec);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Sets all modes to default
 
-Sets all modes to default") ClearModes;
+	:rtype: None
+") ClearModes;
 		void ClearModes ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Clears all statuses
 
-Clears all statuses") ClearStatuses;
+	:rtype: None
+") ClearStatuses;
 		void ClearStatuses ();
-		%feature("autodoc", "Args:
-	wire(TopoDS_Wire)
-	face(TopoDS_Face)
-	prec(Standard_Real)
+		%feature("autodoc", "	* Load analyzer with all the data for the wire and face and drops all fixing statuses
 
-Returns:
-	None
-
-Load analyzer with all the data for the wire and face  
-         and drops all fixing statuses") Init;
+	:param wire:
+	:type wire: TopoDS_Wire &
+	:param face:
+	:type face: TopoDS_Face &
+	:param prec:
+	:type prec: float
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Wire & wire,const TopoDS_Face & face,const Standard_Real prec);
-		%feature("autodoc", "Args:
-	saw(Handle_ShapeAnalysis_Wire)
+		%feature("autodoc", "	* Load analyzer with all the data already prepared and drops all fixing statuses If analyzer contains face, there is no need to set it by SetFace or SetSurface
 
-Returns:
-	None
-
-Load analyzer with all the data already prepared  
-         and drops all fixing statuses  
-         If analyzer contains face, there is no need to set it  
-         by SetFace or SetSurface") Init;
+	:param saw:
+	:type saw: Handle_ShapeAnalysis_Wire &
+	:rtype: None
+") Init;
 		void Init (const Handle_ShapeAnalysis_Wire & saw);
-		%feature("autodoc", "Args:
-	wire(TopoDS_Wire)
+		%feature("autodoc", "	* Load data for the wire, and drops all fixing statuses
 
-Returns:
-	None
-
-Load data for the wire, and drops all fixing statuses") Load;
+	:param wire:
+	:type wire: TopoDS_Wire &
+	:rtype: None
+") Load;
 		void Load (const TopoDS_Wire & wire);
-		%feature("autodoc", "Args:
-	sbwd(Handle_ShapeExtend_WireData)
+		%feature("autodoc", "	* Load data for the wire, and drops all fixing statuses
 
-Returns:
-	None
-
-Load data for the wire, and drops all fixing statuses") Load;
+	:param sbwd:
+	:type sbwd: Handle_ShapeExtend_WireData &
+	:rtype: None
+") Load;
 		void Load (const Handle_ShapeExtend_WireData & sbwd);
-		%feature("autodoc", "Args:
-	face(TopoDS_Face)
+		%feature("autodoc", "	* Set working face for the wire
 
-Returns:
-	None
-
-Set working face for the wire") SetFace;
+	:param face:
+	:type face: TopoDS_Face &
+	:rtype: None
+") SetFace;
 		void SetFace (const TopoDS_Face & face);
-		%feature("autodoc", "Args:
-	surf(Handle_Geom_Surface)
+		%feature("autodoc", "	* Set surface for the wire
 
-Returns:
-	None
-
-Set surface for the wire") SetSurface;
+	:param surf:
+	:type surf: Handle_Geom_Surface &
+	:rtype: None
+") SetSurface;
 		void SetSurface (const Handle_Geom_Surface & surf);
-		%feature("autodoc", "Args:
-	surf(Handle_Geom_Surface)
-	loc(TopLoc_Location)
+		%feature("autodoc", "	* Set surface for the wire
 
-Returns:
-	None
-
-Set surface for the wire") SetSurface;
+	:param surf:
+	:type surf: Handle_Geom_Surface &
+	:param loc:
+	:type loc: TopLoc_Location &
+	:rtype: None
+") SetSurface;
 		void SetSurface (const Handle_Geom_Surface & surf,const TopLoc_Location & loc);
-		%feature("autodoc", "Args:
-	prec(Standard_Real)
+		%feature("autodoc", "	* Set working precision (to root and to analyzer)
 
-Returns:
-	virtual void
-
-Set working precision (to root and to analyzer)") SetPrecision;
+	:param prec:
+	:type prec: float
+	:rtype: void
+") SetPrecision;
 		virtual void SetPrecision (const Standard_Real prec);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Tells if the wire is loaded
 
-Tells if the wire is loaded") IsLoaded;
+	:rtype: bool
+") IsLoaded;
 		Standard_Boolean IsLoaded ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Tells if the wire and face are loaded
 
-Tells if the wire and face are loaded") IsReady;
+	:rtype: bool
+") IsReady;
 		Standard_Boolean IsReady ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* returns number of edges in the working wire
 
-returns number of edges in the working wire") NbEdges;
+	:rtype: int
+") NbEdges;
 		Standard_Integer NbEdges ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Wire
+		%feature("autodoc", "	* Makes the resulting Wire (by basic Brep_Builder)
 
-Makes the resulting Wire (by basic Brep_Builder)") Wire;
+	:rtype: TopoDS_Wire
+") Wire;
 		TopoDS_Wire Wire ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Wire
+		%feature("autodoc", "	* Makes the resulting Wire (by BRepAPI_MakeWire)
 
-Makes the resulting Wire (by BRepAPI_MakeWire)") WireAPIMake;
+	:rtype: TopoDS_Wire
+") WireAPIMake;
 		TopoDS_Wire WireAPIMake ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ShapeAnalysis_Wire
+		%feature("autodoc", "	* returns field Analyzer (working tool)
 
-returns field Analyzer (working tool)") Analyzer;
+	:rtype: Handle_ShapeAnalysis_Wire
+") Analyzer;
 		Handle_ShapeAnalysis_Wire Analyzer ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ShapeExtend_WireData
+		%feature("autodoc", "	* returns working wire
 
-returns working wire") WireData;
+	:rtype: Handle_ShapeExtend_WireData
+") WireData;
 		const Handle_ShapeExtend_WireData & WireData ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Face
+		%feature("autodoc", "	* returns working face (Analyzer.Face())
 
-returns working face (Analyzer.Face())") Face;
+	:rtype: TopoDS_Face
+") Face;
 		const TopoDS_Face & Face ();
 
             %feature("autodoc","1");
@@ -3906,385 +3289,218 @@ returns working face (Analyzer.Face())") Face;
                 $self->FixNonAdjacentIntersectingEdgesMode()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+            		%feature("autodoc", "	* This method performs all the available fixes. If some fix is turned on or off explicitly by the Fix..Mode() flag, this fix is either called or not depending on that flag. Else (i.e. if flag is default) fix is called depending on the situation: some fixes are not called or are limited if order of edges in the wire is not OK, or depending on modes  The order of the fixes and default behaviour of Perform() are: FixReorder FixSmall (with lockvtx true if ! TopoMode or if wire is not ordered) FixConnected (if wire is ordered) FixEdgeCurves (without FixShifted if wire is not ordered) FixDegenerated (if wire is ordered) FixSelfIntersection (if wire is ordered and ClosedMode is True) FixLacking (if wire is ordered)
 
-This method performs all the available fixes.  
-         If some fix is turned on or off explicitly by the Fix..Mode() flag,  
-         this fix is either called or not depending on that flag.  
-         Else (i.e. if flag is default) fix is called depending on the  
-         situation: some fixes are not called or are limited if order of  
-         edges in the wire is not OK, or depending on modes  
- 
-         The order of the fixes and default behaviour of Perform() are:  
-         FixReorder  
-         FixSmall (with lockvtx true if ! TopoMode or if wire is not ordered)  
-         FixConnected (if wire is ordered)  
-         FixEdgeCurves (without FixShifted if wire is not ordered)  
-         FixDegenerated (if wire is ordered)  
-         FixSelfIntersection (if wire is ordered and ClosedMode is True)  
-         FixLacking (if wire is ordered)") Perform;
+	:rtype: bool
+") Perform;
 		Standard_Boolean Perform ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Performs an analysis and reorders edges in the wire using class WireOrder
 
-Performs an analysis and reorders edges in the wire using  
-         class WireOrder") FixReorder;
+	:rtype: bool
+") FixReorder;
 		Standard_Boolean FixReorder ();
-		%feature("autodoc", "Args:
-	lockvtx(Standard_Boolean)
-	precsmall(Standard_Real)=0.0
+		%feature("autodoc", "	* Applies FixSmall(num) to all edges in the wire
 
-Returns:
-	Standard_Integer
-
-Applies FixSmall(num) to all edges in the wire") FixSmall;
+	:param lockvtx:
+	:type lockvtx: bool
+	:param precsmall: default value is 0.0
+	:type precsmall: float
+	:rtype: int
+") FixSmall;
 		Standard_Integer FixSmall (const Standard_Boolean lockvtx,const Standard_Real precsmall = 0.0);
-		%feature("autodoc", "Args:
-	prec(Standard_Real)=-1.0
+		%feature("autodoc", "	* Applies FixConnected(num) to all edges in the wire Connection between first and last edges is treated only if flag ClosedMode is True If <prec> is -1 then MaxTolerance() is taken.
 
-Returns:
-	Standard_Boolean
-
-Applies FixConnected(num) to all edges in the wire  
-         Connection between first and last edges is treated only if  
-         flag ClosedMode is True  
-         If <prec> is -1 then MaxTolerance() is taken.") FixConnected;
+	:param prec: default value is -1.0
+	:type prec: float
+	:rtype: bool
+") FixConnected;
 		Standard_Boolean FixConnected (const Standard_Real prec = -1.0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Groups the fixes dealing with 3d and pcurves of the edges. The order of the fixes and the default behaviour are: ShapeFix_Edge::FixReversed2d ShapeFix_Edge::FixRemovePCurve (only if forced) ShapeFix_Edge::FixAddPCurve ShapeFix_Edge::FixRemoveCurve3d (only if forced) ShapeFix_Edge::FixAddCurve3d FixSeam, FixShifted, ShapeFix_Edge::FixSameParameter
 
-Groups the fixes dealing with 3d and pcurves of the edges.  
-         The order of the fixes and the default behaviour are:  
-         ShapeFix_Edge::FixReversed2d  
-         ShapeFix_Edge::FixRemovePCurve (only if forced)  
-         ShapeFix_Edge::FixAddPCurve  
-         ShapeFix_Edge::FixRemoveCurve3d (only if forced)  
-         ShapeFix_Edge::FixAddCurve3d  
-         FixSeam,  
-         FixShifted,  
-         ShapeFix_Edge::FixSameParameter") FixEdgeCurves;
+	:rtype: bool
+") FixEdgeCurves;
 		Standard_Boolean FixEdgeCurves ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Applies FixDegenerated(num) to all edges in the wire Connection between first and last edges is treated only if flag ClosedMode is True
 
-Applies FixDegenerated(num) to all edges in the wire  
-         Connection between first and last edges is treated only if  
-         flag ClosedMode is True") FixDegenerated;
+	:rtype: bool
+") FixDegenerated;
 		Standard_Boolean FixDegenerated ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Applies FixSelfIntersectingEdge(num) and FixIntersectingEdges(num) to all edges in the wire and FixIntersectingEdges(num1, num2) for all pairs num1 and num2 such that num2 >= num1 + 2 and removes wrong edges if any
 
-Applies FixSelfIntersectingEdge(num) and  
-         FixIntersectingEdges(num) to all edges in the wire and  
-         FixIntersectingEdges(num1, num2) for all pairs num1 and num2  
-         such that num2 >= num1 + 2  
-         and removes wrong edges if any") FixSelfIntersection;
+	:rtype: bool
+") FixSelfIntersection;
 		Standard_Boolean FixSelfIntersection ();
-		%feature("autodoc", "Args:
-	force(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Applies FixLacking(num) to all edges in the wire Connection between first and last edges is treated only if flag ClosedMode is True If <force> is False (default), test for connectness is done with precision of vertex between edges, else it is done with minimal value of vertex tolerance and Analyzer.Precision(). Hence, <force> will lead to inserting lacking edges in replacement of vertices which have big tolerances.
 
-Returns:
-	Standard_Boolean
-
-Applies FixLacking(num) to all edges in the wire  
-         Connection between first and last edges is treated only if  
-         flag ClosedMode is True  
-         If <force> is False (default), test for connectness is done with  
-         precision of vertex between edges, else it is done with minimal  
-         value of vertex tolerance and Analyzer.Precision().  
-         Hence, <force> will lead to inserting lacking edges in replacement  
-         of vertices which have big tolerances.") FixLacking;
+	:param force: default value is Standard_False
+	:type force: bool
+	:rtype: bool
+") FixLacking;
 		Standard_Boolean FixLacking (const Standard_Boolean force = Standard_False);
-		%feature("autodoc", "Args:
-	prec(Standard_Real)=-1.0
+		%feature("autodoc", "	* Fixes a wire to be well closed It performs FixConnected, FixDegenerated and FixLacking between last and first edges (independingly on flag ClosedMode and modes for these fixings) If <prec> is -1 then MaxTolerance() is taken.
 
-Returns:
-	Standard_Boolean
-
-Fixes a wire to be well closed  
-         It performs FixConnected, FixDegenerated and FixLacking between  
-         last and first edges (independingly on flag ClosedMode and modes  
-         for these fixings)  
-         If <prec> is -1 then MaxTolerance() is taken.") FixClosed;
+	:param prec: default value is -1.0
+	:type prec: float
+	:rtype: bool
+") FixClosed;
 		Standard_Boolean FixClosed (const Standard_Real prec = -1.0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Fixes gaps between ends of 3d curves on adjacent edges myPrecision is used to detect the gaps.
 
-Fixes gaps between ends of 3d curves on adjacent edges  
-         myPrecision is used to detect the gaps.") FixGaps3d;
+	:rtype: bool
+") FixGaps3d;
 		Standard_Boolean FixGaps3d ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Fixes gaps between ends of pcurves on adjacent edges myPrecision is used to detect the gaps.
 
-Fixes gaps between ends of pcurves on adjacent edges  
-         myPrecision is used to detect the gaps.") FixGaps2d;
+	:rtype: bool
+") FixGaps2d;
 		Standard_Boolean FixGaps2d ();
-		%feature("autodoc", "Args:
-	wi(ShapeAnalysis_WireOrder)
+		%feature("autodoc", "	* Reorder edges in the wire as determined by WireOrder that should be filled and computed before
 
-Returns:
-	Standard_Boolean
-
-Reorder edges in the wire as determined by WireOrder  
-         that should be filled and computed before") FixReorder;
+	:param wi:
+	:type wi: ShapeAnalysis_WireOrder &
+	:rtype: bool
+") FixReorder;
 		Standard_Boolean FixReorder (const ShapeAnalysis_WireOrder & wi);
-		%feature("autodoc", "Args:
-	num(Standard_Integer)
-	lockvtx(Standard_Boolean)
-	precsmall(Standard_Real)
+		%feature("autodoc", "	* Fixes Null Length Edge to be removed If an Edge has Null Length (regarding preci, or <precsmall> - what is smaller), it should be removed It can be with no problem if its two vertices are the same Else, if lockvtx is False, it is removed and its end vertex is put on the preceeding edge But if lockvtx is True, this edge must be kept ...
 
-Returns:
-	Standard_Boolean
-
-Fixes Null Length Edge to be removed  
-         If an Edge has Null Length (regarding preci, or <precsmall>  
-         - what is smaller), it should be removed  
-         It can be with no problem if its two vertices are the same  
-         Else, if lockvtx is False, it is removed and its end vertex  
-         is put on the preceeding edge  
-         But if lockvtx is True, this edge must be kept ...") FixSmall;
+	:param num:
+	:type num: Standard_Integer
+	:param lockvtx:
+	:type lockvtx: bool
+	:param precsmall:
+	:type precsmall: float
+	:rtype: bool
+") FixSmall;
 		Standard_Boolean FixSmall (const Standard_Integer num,const Standard_Boolean lockvtx,const Standard_Real precsmall);
-		%feature("autodoc", "Args:
-	num(Standard_Integer)
-	prec(Standard_Real)
+		%feature("autodoc", "	* Fixes connected edges (preceeding and current) Forces Vertices (end of preceeding-begin of current) to be the same one Tests with starting preci or, if given greater, <prec> If <prec> is -1 then MaxTolerance() is taken.
 
-Returns:
-	Standard_Boolean
-
-Fixes connected edges (preceeding and current)  
-         Forces Vertices (end of preceeding-begin of current) to be  
-         the same one  
-         Tests with starting preci or, if given greater, <prec>  
-         If <prec> is -1 then MaxTolerance() is taken.") FixConnected;
+	:param num:
+	:type num: Standard_Integer
+	:param prec:
+	:type prec: float
+	:rtype: bool
+") FixConnected;
 		Standard_Boolean FixConnected (const Standard_Integer num,const Standard_Real prec);
-		%feature("autodoc", "Args:
-	num(Standard_Integer)
+		%feature("autodoc", "	* Fixes a seam edge A Seam edge has two pcurves, one for forward. one for reversed The forward pcurve must be set as first  NOTE that correct order of pcurves in the seam edge depends on its orientation (i.e., on orientation of the wire, method of exploration of edges etc.). Since wire represented by the ShapeExtend_WireData is always forward (orientation is accounted by edges), it will work correct if: 1. Wire created from ShapeExtend_WireData with methods ShapeExtend_WireData::Wire..() is added into the FORWARD face (orientation can be applied later) 2. Wire is extracted from the face with orientation not composed with orientation of the face
 
-Returns:
-	Standard_Boolean
-
-Fixes a seam edge  
-         A Seam edge has two pcurves, one for forward. one for reversed  
-         The forward pcurve must be set as first  
- 
-         NOTE that correct order of pcurves in the seam edge depends on  
-         its orientation (i.e., on orientation of the wire, method of  
-         exploration of edges etc.).  
-         Since wire represented by the ShapeExtend_WireData is always forward  
-         (orientation is accounted by edges), it will work correct if:  
-      1. Wire created from ShapeExtend_WireData with methods  
-         ShapeExtend_WireData::Wire..() is added into the FORWARD face  
-         (orientation can be applied later)  
-      2. Wire is extracted from the face with orientation not composed  
-         with orientation of the face") FixSeam;
+	:param num:
+	:type num: Standard_Integer
+	:rtype: bool
+") FixSeam;
 		Standard_Boolean FixSeam (const Standard_Integer num);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Fixes edges which have pcurves shifted by whole parameter range on the closed surface (the case may occur if pcurve of edge was computed by projecting 3d curve, which goes along the seam). It compares each two consequent edges and tries to connect them if distance between ends is near to range of the surface. It also can detect and fix the case if all pcurves are connected, but lie out of parametric bounds of the surface. In addition to FixShifted from ShapeFix_Wire, more sophisticated check of degenerate points is performed, and special cases like sphere given by two meridians are treated.
 
-Fixes edges which have pcurves shifted by whole parameter  
-         range on the closed surface (the case may occur if pcurve  
-         of edge was computed by projecting 3d curve, which goes  
-         along the seam).  
-         It compares each two consequent edges and tries to connect them  
-         if distance between ends is near to range of the surface.  
-         It also can detect and fix the case if all pcurves are connected,  
-         but lie out of parametric bounds of the surface.  
-         In addition to FixShifted from ShapeFix_Wire, more  
-         sophisticated check of degenerate points is performed,  
-         and special cases like sphere given by two meridians  
-         are treated.") FixShifted;
+	:rtype: bool
+") FixShifted;
 		Standard_Boolean FixShifted ();
-		%feature("autodoc", "Args:
-	num(Standard_Integer)
+		%feature("autodoc", "	* Fixes Degenerated Edge Checks an <num-th> edge or a point between <num>th-1 and <num>th edges for a singularity on a supporting surface. If singularity is detected, either adds new degenerated edge (before <num>th), or makes <num>th edge to be degenerated.
 
-Returns:
-	Standard_Boolean
-
-Fixes Degenerated Edge  
-         Checks an <num-th> edge or a point between <num>th-1 and <num>th  
-         edges for a singularity on a supporting surface.  
-         If singularity is detected, either adds new degenerated edge  
-         (before <num>th), or makes <num>th edge to be degenerated.") FixDegenerated;
+	:param num:
+	:type num: Standard_Integer
+	:rtype: bool
+") FixDegenerated;
 		Standard_Boolean FixDegenerated (const Standard_Integer num);
-		%feature("autodoc", "Args:
-	num(Standard_Integer)
-	force(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Fixes Lacking Edge Test if two adjucent edges are disconnected in 2d (while connected in 3d), and in that case either increase tolerance of the vertex or add a new edge (straight in 2d space), in order to close wire in 2d. Returns True if edge was added or tolerance was increased.
 
-Returns:
-	Standard_Boolean
-
-Fixes Lacking Edge  
-         Test if two adjucent edges are disconnected in 2d (while  
-         connected in 3d), and in that case either increase tolerance  
-         of the vertex or add a new edge (straight in 2d space), in  
-         order to close wire in 2d.  
-         Returns True if edge was added or tolerance was increased.") FixLacking;
+	:param num:
+	:type num: Standard_Integer
+	:param force: default value is Standard_False
+	:type force: bool
+	:rtype: bool
+") FixLacking;
 		Standard_Boolean FixLacking (const Standard_Integer num,const Standard_Boolean force = Standard_False);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") FixNotchedEdges;
+		%feature("autodoc", "	:rtype: bool
+") FixNotchedEdges;
 		Standard_Boolean FixNotchedEdges ();
-		%feature("autodoc", "Args:
-	num(Standard_Integer)
-	convert(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Fixes gap between ends of 3d curves on num-1 and num-th edges. myPrecision is used to detect the gap. If convert is True, converts curves to bsplines to bend.
 
-Returns:
-	Standard_Boolean
-
-Fixes gap between ends of 3d curves on num-1 and num-th edges.  
-         myPrecision is used to detect the gap.  
-         If convert is True, converts curves to bsplines to bend.") FixGap3d;
+	:param num:
+	:type num: Standard_Integer
+	:param convert: default value is Standard_False
+	:type convert: bool
+	:rtype: bool
+") FixGap3d;
 		Standard_Boolean FixGap3d (const Standard_Integer num,const Standard_Boolean convert = Standard_False);
-		%feature("autodoc", "Args:
-	num(Standard_Integer)
-	convert(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Fixes gap between ends of pcurves on num-1 and num-th edges. myPrecision is used to detect the gap. If convert is True, converts pcurves to bsplines to bend.
 
-Returns:
-	Standard_Boolean
-
-Fixes gap between ends of pcurves on num-1 and num-th edges.  
-         myPrecision is used to detect the gap.  
-         If convert is True, converts pcurves to bsplines to bend.") FixGap2d;
+	:param num:
+	:type num: Standard_Integer
+	:param convert: default value is Standard_False
+	:type convert: bool
+	:rtype: bool
+") FixGap2d;
 		Standard_Boolean FixGap2d (const Standard_Integer num,const Standard_Boolean convert = Standard_False);
-		%feature("autodoc", "Args:
-	status(ShapeExtend_Status)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") StatusReorder;
+		%feature("autodoc", "	:param status:
+	:type status: ShapeExtend_Status
+	:rtype: bool
+") StatusReorder;
 		Standard_Boolean StatusReorder (const ShapeExtend_Status status);
-		%feature("autodoc", "Args:
-	status(ShapeExtend_Status)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") StatusSmall;
+		%feature("autodoc", "	:param status:
+	:type status: ShapeExtend_Status
+	:rtype: bool
+") StatusSmall;
 		Standard_Boolean StatusSmall (const ShapeExtend_Status status);
-		%feature("autodoc", "Args:
-	status(ShapeExtend_Status)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") StatusConnected;
+		%feature("autodoc", "	:param status:
+	:type status: ShapeExtend_Status
+	:rtype: bool
+") StatusConnected;
 		Standard_Boolean StatusConnected (const ShapeExtend_Status status);
-		%feature("autodoc", "Args:
-	status(ShapeExtend_Status)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") StatusEdgeCurves;
+		%feature("autodoc", "	:param status:
+	:type status: ShapeExtend_Status
+	:rtype: bool
+") StatusEdgeCurves;
 		Standard_Boolean StatusEdgeCurves (const ShapeExtend_Status status);
-		%feature("autodoc", "Args:
-	status(ShapeExtend_Status)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") StatusDegenerated;
+		%feature("autodoc", "	:param status:
+	:type status: ShapeExtend_Status
+	:rtype: bool
+") StatusDegenerated;
 		Standard_Boolean StatusDegenerated (const ShapeExtend_Status status);
-		%feature("autodoc", "Args:
-	status(ShapeExtend_Status)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") StatusSelfIntersection;
+		%feature("autodoc", "	:param status:
+	:type status: ShapeExtend_Status
+	:rtype: bool
+") StatusSelfIntersection;
 		Standard_Boolean StatusSelfIntersection (const ShapeExtend_Status status);
-		%feature("autodoc", "Args:
-	status(ShapeExtend_Status)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") StatusLacking;
+		%feature("autodoc", "	:param status:
+	:type status: ShapeExtend_Status
+	:rtype: bool
+") StatusLacking;
 		Standard_Boolean StatusLacking (const ShapeExtend_Status status);
-		%feature("autodoc", "Args:
-	status(ShapeExtend_Status)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") StatusClosed;
+		%feature("autodoc", "	:param status:
+	:type status: ShapeExtend_Status
+	:rtype: bool
+") StatusClosed;
 		Standard_Boolean StatusClosed (const ShapeExtend_Status status);
-		%feature("autodoc", "Args:
-	status(ShapeExtend_Status)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") StatusGaps3d;
+		%feature("autodoc", "	:param status:
+	:type status: ShapeExtend_Status
+	:rtype: bool
+") StatusGaps3d;
 		Standard_Boolean StatusGaps3d (const ShapeExtend_Status status);
-		%feature("autodoc", "Args:
-	status(ShapeExtend_Status)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") StatusGaps2d;
+		%feature("autodoc", "	:param status:
+	:type status: ShapeExtend_Status
+	:rtype: bool
+") StatusGaps2d;
 		Standard_Boolean StatusGaps2d (const ShapeExtend_Status status);
-		%feature("autodoc", "Args:
-	status(ShapeExtend_Status)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") StatusNotches;
+		%feature("autodoc", "	:param status:
+	:type status: ShapeExtend_Status
+	:rtype: bool
+") StatusNotches;
 		Standard_Boolean StatusNotches (const ShapeExtend_Status status);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Querying the status of perfomed API fixing procedures Each Status..() methods gives information about the last call to the corresponding Fix..() method of API level: OK : no problems detected; nothing done DONE: some problem(s) was(were) detected and successfully fixed FAIL: some problem(s) cannot be fixed
 
-Querying the status of perfomed API fixing procedures  
-         Each Status..() methods gives information about the last call to  
-         the corresponding Fix..() method of API level:  
-         OK  : no problems detected; nothing done  
-         DONE: some problem(s) was(were) detected and successfully fixed  
-         FAIL: some problem(s) cannot be fixed") StatusRemovedSegment;
+	:rtype: bool
+") StatusRemovedSegment;
 		Standard_Boolean StatusRemovedSegment ();
-		%feature("autodoc", "Args:
-	status(ShapeExtend_Status)
+		%feature("autodoc", "	* Queries the status of last call to methods Fix... of advanced level For details see corresponding methods; universal statuses are: OK : problem not detected; nothing done DONE: problem was detected and successfully fixed FAIL: problem cannot be fixed
 
-Returns:
-	Standard_Boolean
-
-Queries the status of last call to methods Fix... of  
-         advanced level  
-         For details see corresponding methods; universal statuses are:  
-         OK  : problem not detected; nothing done  
-         DONE: problem was detected and successfully fixed  
-         FAIL: problem cannot be fixed") LastFixStatus;
+	:param status:
+	:type status: ShapeExtend_Status
+	:rtype: bool
+") LastFixStatus;
 		Standard_Boolean LastFixStatus (const ShapeExtend_Status status);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ShapeFix_Edge
+		%feature("autodoc", "	* Returns tool for fixing wires.
 
-Returns tool for fixing wires.") FixEdgeTool;
+	:rtype: Handle_ShapeFix_Edge
+") FixEdgeTool;
 		Handle_ShapeFix_Edge FixEdgeTool ();
 };
 
@@ -4345,114 +3561,82 @@ def __del__(self):
 %nodefaultctor ShapeFix_Wireframe;
 class ShapeFix_Wireframe : public ShapeFix_Root {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ShapeFix_Wireframe;
+		%feature("autodoc", "	:rtype: None
+") ShapeFix_Wireframe;
 		 ShapeFix_Wireframe ();
-		%feature("autodoc", "Args:
-	shape(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ShapeFix_Wireframe;
+		%feature("autodoc", "	:param shape:
+	:type shape: TopoDS_Shape &
+	:rtype: None
+") ShapeFix_Wireframe;
 		 ShapeFix_Wireframe (const TopoDS_Shape & shape);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Clears all statuses
 
-Clears all statuses") ClearStatuses;
+	:rtype: void
+") ClearStatuses;
 		virtual void ClearStatuses ();
-		%feature("autodoc", "Args:
-	shape(TopoDS_Shape)
+		%feature("autodoc", "	* Loads a shape, resets statuses
 
-Returns:
-	None
-
-Loads a shape, resets statuses") Load;
+	:param shape:
+	:type shape: TopoDS_Shape &
+	:rtype: None
+") Load;
 		void Load (const TopoDS_Shape & shape);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Fixes gaps between ends of curves of adjacent edges (both 3d and pcurves) in wires If precision is 0.0, uses Precision::Confusion().
 
-Fixes gaps between ends of curves of adjacent edges  
-          (both 3d and pcurves) in wires  
-          If precision is 0.0, uses Precision::Confusion().") FixWireGaps;
+	:rtype: bool
+") FixWireGaps;
 		Standard_Boolean FixWireGaps ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Fixes small edges in shape by merging adjacent edges If precision is 0.0, uses Precision::Confusion().
 
-Fixes small edges in shape by merging adjacent edges  
-          If precision is 0.0, uses Precision::Confusion().") FixSmallEdges;
+	:rtype: bool
+") FixSmallEdges;
 		Standard_Boolean FixSmallEdges ();
-		%feature("autodoc", "Args:
-	theSmallEdges(TopTools_MapOfShape)
-	theEdgeToFaces(TopTools_DataMapOfShapeListOfShape)
-	theFaceWithSmall(TopTools_DataMapOfShapeListOfShape)
-	theMultyEdges(TopTools_MapOfShape)
+		%feature("autodoc", "	* Auxiliary tool for FixSmallEdges which checks for small edges and fills the maps. Returns True if at least one small edge has been found.
 
-Returns:
-	Standard_Boolean
-
-Auxiliary tool for FixSmallEdges which checks for small edges and fills the maps.  
-         Returns True if at least one small edge has been found.") CheckSmallEdges;
+	:param theSmallEdges:
+	:type theSmallEdges: TopTools_MapOfShape &
+	:param theEdgeToFaces:
+	:type theEdgeToFaces: TopTools_DataMapOfShapeListOfShape &
+	:param theFaceWithSmall:
+	:type theFaceWithSmall: TopTools_DataMapOfShapeListOfShape &
+	:param theMultyEdges:
+	:type theMultyEdges: TopTools_MapOfShape &
+	:rtype: bool
+") CheckSmallEdges;
 		Standard_Boolean CheckSmallEdges (TopTools_MapOfShape & theSmallEdges,TopTools_DataMapOfShapeListOfShape & theEdgeToFaces,TopTools_DataMapOfShapeListOfShape & theFaceWithSmall,TopTools_MapOfShape & theMultyEdges);
-		%feature("autodoc", "Args:
-	theSmallEdges(TopTools_MapOfShape)
-	theEdgeToFaces(TopTools_DataMapOfShapeListOfShape)
-	theFaceWithSmall(TopTools_DataMapOfShapeListOfShape)
-	theMultyEdges(TopTools_MapOfShape)
-	theModeDrop(Standard_Boolean)=Standard_False
-	theLimitAngle(Standard_Real)=- 1
+		%feature("autodoc", "	* Auxiliary tool for FixSmallEdges which merges small edges. If theModeDrop is equal to Standard_True then small edges, which cannot be connected with adjacent edges are dropped. Otherwise they are kept. theLimitAngle specifies maximum allowed tangency discontinuity between adjacent edges. If theLimitAngle is equal to -1, this angle is not taken into account.
 
-Returns:
-	Standard_Boolean
-
-Auxiliary tool for FixSmallEdges which merges small edges.  
-         If theModeDrop is equal to Standard_True then small edges,  
-         which cannot be connected with adjacent edges are dropped.  
-         Otherwise they are kept.  
-         theLimitAngle specifies maximum allowed tangency  
-         discontinuity between adjacent edges.  
-         If theLimitAngle is equal to -1, this angle is not taken into account.") MergeSmallEdges;
+	:param theSmallEdges:
+	:type theSmallEdges: TopTools_MapOfShape &
+	:param theEdgeToFaces:
+	:type theEdgeToFaces: TopTools_DataMapOfShapeListOfShape &
+	:param theFaceWithSmall:
+	:type theFaceWithSmall: TopTools_DataMapOfShapeListOfShape &
+	:param theMultyEdges:
+	:type theMultyEdges: TopTools_MapOfShape &
+	:param theModeDrop: default value is Standard_False
+	:type theModeDrop: bool
+	:param theLimitAngle: default value is - 1
+	:type theLimitAngle: float
+	:rtype: bool
+") MergeSmallEdges;
 		Standard_Boolean MergeSmallEdges (TopTools_MapOfShape & theSmallEdges,TopTools_DataMapOfShapeListOfShape & theEdgeToFaces,TopTools_DataMapOfShapeListOfShape & theFaceWithSmall,TopTools_MapOfShape & theMultyEdges,const Standard_Boolean theModeDrop = Standard_False,const Standard_Real theLimitAngle = - 1);
-		%feature("autodoc", "Args:
-	status(ShapeExtend_Status)
+		%feature("autodoc", "	* Decodes the status of the last FixWireGaps. OK - No gaps were found DONE1 - Some gaps in 3D were fixed DONE2 - Some gaps in 2D were fixed FAIL1 - Failed to fix some gaps in 3D FAIL2 - Failed to fix some gaps in 2D
 
-Returns:
-	Standard_Boolean
-
-Decodes the status of the last FixWireGaps.  
-          OK - No gaps were found  
-          DONE1 - Some gaps in 3D were fixed  
-          DONE2 - Some gaps in 2D were fixed  
-          FAIL1 - Failed to fix some gaps in 3D  
-          FAIL2 - Failed to fix some gaps in 2D") StatusWireGaps;
+	:param status:
+	:type status: ShapeExtend_Status
+	:rtype: bool
+") StatusWireGaps;
 		Standard_Boolean StatusWireGaps (const ShapeExtend_Status status);
-		%feature("autodoc", "Args:
-	status(ShapeExtend_Status)
+		%feature("autodoc", "	* Decodes the status of the last FixSmallEdges. OK - No small edges were found DONE1 - Some small edges were fixed FAIL1 - Failed to fix some small edges
 
-Returns:
-	Standard_Boolean
-
-Decodes the status of the last FixSmallEdges.  
-          OK - No small edges were found  
-          DONE1 - Some small edges were fixed  
-          FAIL1 - Failed to fix some small edges") StatusSmallEdges;
+	:param status:
+	:type status: ShapeExtend_Status
+	:rtype: bool
+") StatusSmallEdges;
 		Standard_Boolean StatusSmallEdges (const ShapeExtend_Status status);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Shape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Shape;
 		TopoDS_Shape Shape ();
 
             %feature("autodoc","1");
@@ -4467,20 +3651,17 @@ No detailed docstring for this function.") Shape;
                 $self->ModeDropSmallEdges()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	theLimitAngle(Standard_Real)
+            		%feature("autodoc", "	* //!Set limit angle for merging edges.
 
-Returns:
-	None
-
-//!Set limit angle for merging edges.") SetLimitAngle;
+	:param theLimitAngle:
+	:type theLimitAngle: float
+	:rtype: None
+") SetLimitAngle;
 		void SetLimitAngle (const Standard_Real theLimitAngle);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* //!Get limit angle for merging edges.
 
-//!Get limit angle for merging edges.") LimitAngle;
+	:rtype: float
+") LimitAngle;
 		Standard_Real LimitAngle ();
 };
 

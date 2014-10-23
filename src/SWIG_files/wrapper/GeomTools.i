@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -45,101 +45,94 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor GeomTools;
 class GeomTools {
 	public:
-		%feature("autodoc", "Args:
-	S(Handle_Geom_Surface)
-	OS(Standard_OStream)
+		%feature("autodoc", "	* A set of Curves from Geom2d. Dumps the surface on the stream.
 
-Returns:
-	static void
-
-A set of Curves from Geom2d.  Dumps the surface on the stream.") Dump;
+	:param S:
+	:type S: Handle_Geom_Surface &
+	:param OS:
+	:type OS: Standard_OStream &
+	:rtype: void
+") Dump;
 		static void Dump (const Handle_Geom_Surface & S,Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	S(Handle_Geom_Surface)
-	OS(Standard_OStream)
+		%feature("autodoc", "	* Writes the surface on the stream.
 
-Returns:
-	static void
-
-Writes the surface on the stream.") Write;
+	:param S:
+	:type S: Handle_Geom_Surface &
+	:param OS:
+	:type OS: Standard_OStream &
+	:rtype: void
+") Write;
 		static void Write (const Handle_Geom_Surface & S,Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	S(Handle_Geom_Surface)
-	IS(Standard_IStream)
+		%feature("autodoc", "	* Reads the surface from the stream.
 
-Returns:
-	static void
-
-Reads the surface from the stream.") Read;
+	:param S:
+	:type S: Handle_Geom_Surface &
+	:param IS:
+	:type IS: Standard_IStream &
+	:rtype: void
+") Read;
 		static void Read (Handle_Geom_Surface & S,Standard_IStream & IS);
-		%feature("autodoc", "Args:
-	C(Handle_Geom_Curve)
-	OS(Standard_OStream)
+		%feature("autodoc", "	* Dumps the Curve on the stream.
 
-Returns:
-	static void
-
-Dumps the Curve on the stream.") Dump;
+	:param C:
+	:type C: Handle_Geom_Curve &
+	:param OS:
+	:type OS: Standard_OStream &
+	:rtype: void
+") Dump;
 		static void Dump (const Handle_Geom_Curve & C,Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	C(Handle_Geom_Curve)
-	OS(Standard_OStream)
+		%feature("autodoc", "	* Writes the Curve on the stream.
 
-Returns:
-	static void
-
-Writes the Curve on the stream.") Write;
+	:param C:
+	:type C: Handle_Geom_Curve &
+	:param OS:
+	:type OS: Standard_OStream &
+	:rtype: void
+") Write;
 		static void Write (const Handle_Geom_Curve & C,Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	C(Handle_Geom_Curve)
-	IS(Standard_IStream)
+		%feature("autodoc", "	* Reads the Curve from the stream.
 
-Returns:
-	static void
-
-Reads the Curve from the stream.") Read;
+	:param C:
+	:type C: Handle_Geom_Curve &
+	:param IS:
+	:type IS: Standard_IStream &
+	:rtype: void
+") Read;
 		static void Read (Handle_Geom_Curve & C,Standard_IStream & IS);
-		%feature("autodoc", "Args:
-	C(Handle_Geom2d_Curve)
-	OS(Standard_OStream)
+		%feature("autodoc", "	* Dumps the Curve on the stream.
 
-Returns:
-	static void
-
-Dumps the Curve on the stream.") Dump;
+	:param C:
+	:type C: Handle_Geom2d_Curve &
+	:param OS:
+	:type OS: Standard_OStream &
+	:rtype: void
+") Dump;
 		static void Dump (const Handle_Geom2d_Curve & C,Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	C(Handle_Geom2d_Curve)
-	OS(Standard_OStream)
+		%feature("autodoc", "	* Writes the Curve on the stream.
 
-Returns:
-	static void
-
-Writes the Curve on the stream.") Write;
+	:param C:
+	:type C: Handle_Geom2d_Curve &
+	:param OS:
+	:type OS: Standard_OStream &
+	:rtype: void
+") Write;
 		static void Write (const Handle_Geom2d_Curve & C,Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	C(Handle_Geom2d_Curve)
-	IS(Standard_IStream)
+		%feature("autodoc", "	* Reads the Curve from the stream.
 
-Returns:
-	static void
-
-Reads the Curve from the stream.") Read;
+	:param C:
+	:type C: Handle_Geom2d_Curve &
+	:param IS:
+	:type IS: Standard_IStream &
+	:rtype: void
+") Read;
 		static void Read (Handle_Geom2d_Curve & C,Standard_IStream & IS);
-		%feature("autodoc", "Args:
-	aHandler(Handle_GeomTools_UndefinedTypeHandler)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") SetUndefinedTypeHandler;
+		%feature("autodoc", "	:param aHandler:
+	:type aHandler: Handle_GeomTools_UndefinedTypeHandler &
+	:rtype: void
+") SetUndefinedTypeHandler;
 		static void SetUndefinedTypeHandler (const Handle_GeomTools_UndefinedTypeHandler & aHandler);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static Handle_GeomTools_UndefinedTypeHandler
-
-No detailed docstring for this function.") GetUndefinedTypeHandler;
+		%feature("autodoc", "	:rtype: Handle_GeomTools_UndefinedTypeHandler
+") GetUndefinedTypeHandler;
 		static Handle_GeomTools_UndefinedTypeHandler GetUndefinedTypeHandler ();
 };
 
@@ -161,44 +154,36 @@ def __del__(self):
 %nodefaultctor GeomTools_Curve2dSet;
 class GeomTools_Curve2dSet {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Returns an empty set of Curves.
 
-Returns an empty set of Curves.") GeomTools_Curve2dSet;
+	:rtype: None
+") GeomTools_Curve2dSet;
 		 GeomTools_Curve2dSet ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Clears the content of the set.
 
-Clears the content of the set.") Clear;
+	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	C(Handle_Geom2d_Curve)
+		%feature("autodoc", "	* Incorporate a new Curve in the set and returns its index.
 
-Returns:
-	Standard_Integer
-
-Incorporate a new Curve in the  set and returns  
-         its index.") Add;
+	:param C:
+	:type C: Handle_Geom2d_Curve &
+	:rtype: int
+") Add;
 		Standard_Integer Add (const Handle_Geom2d_Curve & C);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* Returns the Curve of index <I>.
 
-Returns:
-	Handle_Geom2d_Curve
-
-Returns the Curve of index <I>.") Curve2d;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: Handle_Geom2d_Curve
+") Curve2d;
 		Handle_Geom2d_Curve Curve2d (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	C(Handle_Geom2d_Curve)
+		%feature("autodoc", "	* Returns the index of <L>.
 
-Returns:
-	Standard_Integer
-
-Returns the index of <L>.") Index;
+	:param C:
+	:type C: Handle_Geom2d_Curve &
+	:rtype: int
+") Index;
 		Standard_Integer Index (const Handle_Geom2d_Curve & C);
 
         %feature("autodoc", "1");
@@ -223,42 +208,33 @@ Returns the index of <L>.") Index;
             std::stringstream s(src);
             self->Read(s);}
         };
-        		%feature("autodoc", "Args:
-	C(Handle_Geom2d_Curve)
-	OS(Standard_OStream)
-	compact(Standard_Boolean)=Standard_False
+        		%feature("autodoc", "	* Dumps the curve on the stream, if compact is True use the compact format that can be read back.
 
-Returns:
-	static void
-
-Dumps the curve on the stream,  if compact is True  
-         use the compact format that can be read back.") PrintCurve2d;
+	:param C:
+	:type C: Handle_Geom2d_Curve &
+	:param OS:
+	:type OS: Standard_OStream &
+	:param compact: default value is Standard_False
+	:type compact: bool
+	:rtype: void
+") PrintCurve2d;
 		static void PrintCurve2d (const Handle_Geom2d_Curve & C,Standard_OStream & OS,const Standard_Boolean compact = Standard_False);
-		%feature("autodoc", "Args:
-	IS(Standard_IStream)
-	C(Handle_Geom2d_Curve)
+		%feature("autodoc", "	* Reads the curve from the stream. The curve is assumed to have been writtent with the Print method (compact = True).
 
-Returns:
-	static Standard_IStream
-
-Reads the curve  from  the stream.  The  curve  is  
-         assumed   to have  been  writtent  with  the Print  
-         method (compact = True).") ReadCurve2d;
+	:param IS:
+	:type IS: Standard_IStream &
+	:param C:
+	:type C: Handle_Geom2d_Curve &
+	:rtype: Standard_IStream
+") ReadCurve2d;
 		static Standard_IStream & ReadCurve2d (Standard_IStream & IS,Handle_Geom2d_Curve & C);
-		%feature("autodoc", "Args:
-	PR(Handle_Message_ProgressIndicator)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetProgress;
+		%feature("autodoc", "	:param PR:
+	:type PR: Handle_Message_ProgressIndicator &
+	:rtype: None
+") SetProgress;
 		void SetProgress (const Handle_Message_ProgressIndicator & PR);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Message_ProgressIndicator
-
-No detailed docstring for this function.") GetProgress;
+		%feature("autodoc", "	:rtype: Handle_Message_ProgressIndicator
+") GetProgress;
 		Handle_Message_ProgressIndicator GetProgress ();
 };
 
@@ -280,44 +256,36 @@ def __del__(self):
 %nodefaultctor GeomTools_CurveSet;
 class GeomTools_CurveSet {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Returns an empty set of Curves.
 
-Returns an empty set of Curves.") GeomTools_CurveSet;
+	:rtype: None
+") GeomTools_CurveSet;
 		 GeomTools_CurveSet ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Clears the content of the set.
 
-Clears the content of the set.") Clear;
+	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	C(Handle_Geom_Curve)
+		%feature("autodoc", "	* Incorporate a new Curve in the set and returns its index.
 
-Returns:
-	Standard_Integer
-
-Incorporate a new Curve in the  set and returns  
-         its index.") Add;
+	:param C:
+	:type C: Handle_Geom_Curve &
+	:rtype: int
+") Add;
 		Standard_Integer Add (const Handle_Geom_Curve & C);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* Returns the Curve of index <I>.
 
-Returns:
-	Handle_Geom_Curve
-
-Returns the Curve of index <I>.") Curve;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: Handle_Geom_Curve
+") Curve;
 		Handle_Geom_Curve Curve (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	C(Handle_Geom_Curve)
+		%feature("autodoc", "	* Returns the index of <L>.
 
-Returns:
-	Standard_Integer
-
-Returns the index of <L>.") Index;
+	:param C:
+	:type C: Handle_Geom_Curve &
+	:rtype: int
+") Index;
 		Standard_Integer Index (const Handle_Geom_Curve & C);
 
         %feature("autodoc", "1");
@@ -342,42 +310,33 @@ Returns the index of <L>.") Index;
             std::stringstream s(src);
             self->Read(s);}
         };
-        		%feature("autodoc", "Args:
-	C(Handle_Geom_Curve)
-	OS(Standard_OStream)
-	compact(Standard_Boolean)=Standard_False
+        		%feature("autodoc", "	* Dumps the curve on the stream, if compact is True use the compact format that can be read back.
 
-Returns:
-	static void
-
-Dumps the curve on the stream,  if compact is True  
-         use the compact format that can be read back.") PrintCurve;
+	:param C:
+	:type C: Handle_Geom_Curve &
+	:param OS:
+	:type OS: Standard_OStream &
+	:param compact: default value is Standard_False
+	:type compact: bool
+	:rtype: void
+") PrintCurve;
 		static void PrintCurve (const Handle_Geom_Curve & C,Standard_OStream & OS,const Standard_Boolean compact = Standard_False);
-		%feature("autodoc", "Args:
-	IS(Standard_IStream)
-	C(Handle_Geom_Curve)
+		%feature("autodoc", "	* Reads the curve from the stream. The curve is assumed to have been writtent with the Print method (compact = True).
 
-Returns:
-	static Standard_IStream
-
-Reads the curve  from  the stream.  The  curve  is  
-         assumed   to have  been  writtent  with  the Print  
-         method (compact = True).") ReadCurve;
+	:param IS:
+	:type IS: Standard_IStream &
+	:param C:
+	:type C: Handle_Geom_Curve &
+	:rtype: Standard_IStream
+") ReadCurve;
 		static Standard_IStream & ReadCurve (Standard_IStream & IS,Handle_Geom_Curve & C);
-		%feature("autodoc", "Args:
-	PR(Handle_Message_ProgressIndicator)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetProgress;
+		%feature("autodoc", "	:param PR:
+	:type PR: Handle_Message_ProgressIndicator &
+	:rtype: None
+") SetProgress;
 		void SetProgress (const Handle_Message_ProgressIndicator & PR);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Message_ProgressIndicator
-
-No detailed docstring for this function.") GetProgress;
+		%feature("autodoc", "	:rtype: Handle_Message_ProgressIndicator
+") GetProgress;
 		Handle_Message_ProgressIndicator GetProgress ();
 };
 
@@ -399,44 +358,36 @@ def __del__(self):
 %nodefaultctor GeomTools_SurfaceSet;
 class GeomTools_SurfaceSet {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Returns an empty set of Surfaces.
 
-Returns an empty set of Surfaces.") GeomTools_SurfaceSet;
+	:rtype: None
+") GeomTools_SurfaceSet;
 		 GeomTools_SurfaceSet ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Clears the content of the set.
 
-Clears the content of the set.") Clear;
+	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	S(Handle_Geom_Surface)
+		%feature("autodoc", "	* Incorporate a new Surface in the set and returns its index.
 
-Returns:
-	Standard_Integer
-
-Incorporate a new Surface in the  set and returns  
-         its index.") Add;
+	:param S:
+	:type S: Handle_Geom_Surface &
+	:rtype: int
+") Add;
 		Standard_Integer Add (const Handle_Geom_Surface & S);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* Returns the Surface of index <I>.
 
-Returns:
-	Handle_Geom_Surface
-
-Returns the Surface of index <I>.") Surface;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: Handle_Geom_Surface
+") Surface;
 		Handle_Geom_Surface Surface (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	S(Handle_Geom_Surface)
+		%feature("autodoc", "	* Returns the index of <L>.
 
-Returns:
-	Standard_Integer
-
-Returns the index of <L>.") Index;
+	:param S:
+	:type S: Handle_Geom_Surface &
+	:rtype: int
+") Index;
 		Standard_Integer Index (const Handle_Geom_Surface & S);
 
         %feature("autodoc", "1");
@@ -461,42 +412,33 @@ Returns the index of <L>.") Index;
             std::stringstream s(src);
             self->Read(s);}
         };
-        		%feature("autodoc", "Args:
-	S(Handle_Geom_Surface)
-	OS(Standard_OStream)
-	compact(Standard_Boolean)=Standard_False
+        		%feature("autodoc", "	* Dumps the surface on the stream, if compact is True use the compact format that can be read back.
 
-Returns:
-	static void
-
-Dumps the surface on the stream,  if compact is True  
-         use the compact format that can be read back.") PrintSurface;
+	:param S:
+	:type S: Handle_Geom_Surface &
+	:param OS:
+	:type OS: Standard_OStream &
+	:param compact: default value is Standard_False
+	:type compact: bool
+	:rtype: void
+") PrintSurface;
 		static void PrintSurface (const Handle_Geom_Surface & S,Standard_OStream & OS,const Standard_Boolean compact = Standard_False);
-		%feature("autodoc", "Args:
-	IS(Standard_IStream)
-	S(Handle_Geom_Surface)
+		%feature("autodoc", "	* Reads the surface from the stream. The surface is assumed to have been writtent with the Print method (compact = True).
 
-Returns:
-	static Standard_IStream
-
-Reads the surface  from  the stream.  The  surface  is  
-         assumed   to have  been  writtent  with  the Print  
-         method (compact = True).") ReadSurface;
+	:param IS:
+	:type IS: Standard_IStream &
+	:param S:
+	:type S: Handle_Geom_Surface &
+	:rtype: Standard_IStream
+") ReadSurface;
 		static Standard_IStream & ReadSurface (Standard_IStream & IS,Handle_Geom_Surface & S);
-		%feature("autodoc", "Args:
-	PR(Handle_Message_ProgressIndicator)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetProgress;
+		%feature("autodoc", "	:param PR:
+	:type PR: Handle_Message_ProgressIndicator &
+	:rtype: None
+") SetProgress;
 		void SetProgress (const Handle_Message_ProgressIndicator & PR);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Message_ProgressIndicator
-
-No detailed docstring for this function.") GetProgress;
+		%feature("autodoc", "	:rtype: Handle_Message_ProgressIndicator
+") GetProgress;
 		Handle_Message_ProgressIndicator GetProgress ();
 };
 
@@ -518,72 +460,62 @@ def __del__(self):
 %nodefaultctor GeomTools_UndefinedTypeHandler;
 class GeomTools_UndefinedTypeHandler : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") GeomTools_UndefinedTypeHandler;
+		%feature("autodoc", "	:rtype: None
+") GeomTools_UndefinedTypeHandler;
 		 GeomTools_UndefinedTypeHandler ();
-		%feature("autodoc", "Args:
-	C(Handle_Geom_Curve)
-	OS(Standard_OStream)
-	compact(Standard_Boolean)=Standard_False
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") PrintCurve;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Geom_Curve &
+	:param OS:
+	:type OS: Standard_OStream &
+	:param compact: default value is Standard_False
+	:type compact: bool
+	:rtype: void
+") PrintCurve;
 		virtual void PrintCurve (const Handle_Geom_Curve & C,Standard_OStream & OS,const Standard_Boolean compact = Standard_False);
-		%feature("autodoc", "Args:
-	ctype(Standard_Integer)
-	IS(Standard_IStream)
-	C(Handle_Geom_Curve)
-
-Returns:
-	virtual Standard_IStream
-
-No detailed docstring for this function.") ReadCurve;
+		%feature("autodoc", "	:param ctype:
+	:type ctype: Standard_Integer
+	:param IS:
+	:type IS: Standard_IStream &
+	:param C:
+	:type C: Handle_Geom_Curve &
+	:rtype: Standard_IStream
+") ReadCurve;
 		virtual Standard_IStream & ReadCurve (const Standard_Integer ctype,Standard_IStream & IS,Handle_Geom_Curve & C);
-		%feature("autodoc", "Args:
-	C(Handle_Geom2d_Curve)
-	OS(Standard_OStream)
-	compact(Standard_Boolean)=Standard_False
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") PrintCurve2d;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Geom2d_Curve &
+	:param OS:
+	:type OS: Standard_OStream &
+	:param compact: default value is Standard_False
+	:type compact: bool
+	:rtype: void
+") PrintCurve2d;
 		virtual void PrintCurve2d (const Handle_Geom2d_Curve & C,Standard_OStream & OS,const Standard_Boolean compact = Standard_False);
-		%feature("autodoc", "Args:
-	ctype(Standard_Integer)
-	IS(Standard_IStream)
-	C(Handle_Geom2d_Curve)
-
-Returns:
-	virtual Standard_IStream
-
-No detailed docstring for this function.") ReadCurve2d;
+		%feature("autodoc", "	:param ctype:
+	:type ctype: Standard_Integer
+	:param IS:
+	:type IS: Standard_IStream &
+	:param C:
+	:type C: Handle_Geom2d_Curve &
+	:rtype: Standard_IStream
+") ReadCurve2d;
 		virtual Standard_IStream & ReadCurve2d (const Standard_Integer ctype,Standard_IStream & IS,Handle_Geom2d_Curve & C);
-		%feature("autodoc", "Args:
-	S(Handle_Geom_Surface)
-	OS(Standard_OStream)
-	compact(Standard_Boolean)=Standard_False
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") PrintSurface;
+		%feature("autodoc", "	:param S:
+	:type S: Handle_Geom_Surface &
+	:param OS:
+	:type OS: Standard_OStream &
+	:param compact: default value is Standard_False
+	:type compact: bool
+	:rtype: void
+") PrintSurface;
 		virtual void PrintSurface (const Handle_Geom_Surface & S,Standard_OStream & OS,const Standard_Boolean compact = Standard_False);
-		%feature("autodoc", "Args:
-	ctype(Standard_Integer)
-	IS(Standard_IStream)
-	S(Handle_Geom_Surface)
-
-Returns:
-	virtual Standard_IStream
-
-No detailed docstring for this function.") ReadSurface;
+		%feature("autodoc", "	:param ctype:
+	:type ctype: Standard_Integer
+	:param IS:
+	:type IS: Standard_IStream &
+	:param S:
+	:type S: Handle_Geom_Surface &
+	:rtype: Standard_IStream
+") ReadSurface;
 		virtual Standard_IStream & ReadSurface (const Standard_Integer ctype,Standard_IStream & IS,Handle_Geom_Surface & S);
 };
 

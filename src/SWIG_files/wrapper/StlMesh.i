@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -45,16 +45,14 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor StlMesh;
 class StlMesh {
 	public:
-		%feature("autodoc", "Args:
-	mesh1(Handle_StlMesh_Mesh)
-	mesh2(Handle_StlMesh_Mesh)
+		%feature("autodoc", "	* Sequence of meshes Make a merge of two Mesh and returns a new Mesh. Very useful if you want to merge partMesh and CheckSurfaceMesh for example
 
-Returns:
-	static Handle_StlMesh_Mesh
-
-Sequence of meshes  Make a merge of two Mesh and returns a new Mesh.  
-         Very useful if you want to merge partMesh and CheckSurfaceMesh  
-         for example") Merge;
+	:param mesh1:
+	:type mesh1: Handle_StlMesh_Mesh &
+	:param mesh2:
+	:type mesh2: Handle_StlMesh_Mesh &
+	:rtype: Handle_StlMesh_Mesh
+") Merge;
 		static Handle_StlMesh_Mesh Merge (const Handle_StlMesh_Mesh & mesh1,const Handle_StlMesh_Mesh & mesh2);
 };
 
@@ -76,169 +74,126 @@ def __del__(self):
 %nodefaultctor StlMesh_Mesh;
 class StlMesh_Mesh : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates an empty mesh.
 
-Creates an empty mesh.") StlMesh_Mesh;
+	:rtype: None
+") StlMesh_Mesh;
 		 StlMesh_Mesh ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Adds a new mesh domain. The mesh deflection is defaulted to Confusion from package Precision.
 
-Adds a   new mesh domain.  The  mesh deflection is  
-         defaulted to Confusion from package Precision.") AddDomain;
+	:rtype: void
+") AddDomain;
 		virtual void AddDomain ();
-		%feature("autodoc", "Args:
-	Deflection(Standard_Real)
+		%feature("autodoc", "	* Adds a new mesh domain. Raised if the deflection is lower than zero Raised if the deflection is lower than Confusion from package Precision
 
-Returns:
-	virtual void
-
-Adds a new mesh domain.  Raised if the deflection is lower than zero  Raised if  the deflection is lower  than Confusion  
-         from package Precision") AddDomain;
+	:param Deflection:
+	:type Deflection: float
+	:rtype: void
+") AddDomain;
 		virtual void AddDomain (const Standard_Real Deflection);
-		%feature("autodoc", "Args:
-	V1(Standard_Integer)
-	V2(Standard_Integer)
-	V3(Standard_Integer)
-	Xn(Standard_Real)
-	Yn(Standard_Real)
-	Zn(Standard_Real)
+		%feature("autodoc", "	* Build a triangle with the triplet of vertices (V1, V2, V3). This triplet defines the indexes of the vertex in the current domain The coordinates Xn, Yn, Zn defines the normal direction to the triangle. Returns the range of the triangle in the current domain.
 
-Returns:
-	virtual Standard_Integer
-
-Build a triangle with the triplet of vertices (V1,  
-         V2, V3).  This triplet defines  the indexes of the  
-         vertex in the  current domain The coordinates  Xn,  
-         Yn,  Zn  defines   the normal  direction   to  the  
-         triangle.  Returns  the  range of  the triangle in  
-         the current domain.") AddTriangle;
+	:param V1:
+	:type V1: Standard_Integer
+	:param V2:
+	:type V2: Standard_Integer
+	:param V3:
+	:type V3: Standard_Integer
+	:param Xn:
+	:type Xn: float
+	:param Yn:
+	:type Yn: float
+	:param Zn:
+	:type Zn: float
+	:rtype: int
+") AddTriangle;
 		virtual Standard_Integer AddTriangle (const Standard_Integer V1,const Standard_Integer V2,const Standard_Integer V3,const Standard_Real Xn,const Standard_Real Yn,const Standard_Real Zn);
-		%feature("autodoc", "Args:
-	X(Standard_Real)
-	Y(Standard_Real)
-	Z(Standard_Real)
+		%feature("autodoc", "	* Returns the range of the vertex in the current domain.
 
-Returns:
-	virtual Standard_Integer
-
-Returns the  range  of the  vertex in the  current  
-         domain.") AddVertex;
+	:param X:
+	:type X: float
+	:param Y:
+	:type Y: float
+	:param Z:
+	:type Z: float
+	:rtype: int
+") AddVertex;
 		virtual Standard_Integer AddVertex (const Standard_Real X,const Standard_Real Y,const Standard_Real Z);
-		%feature("autodoc", "Args:
-	X(Standard_Real)
-	Y(Standard_Real)
-	Z(Standard_Real)
+		%feature("autodoc", "	* Returns the range of the vertex in the current domain. The current vertex is not inserted in the mesh if it already exist.
 
-Returns:
-	virtual Standard_Integer
-
-Returns  the range of   the vertex in  the current  
-         domain.  The current vertex is not inserted in the  
-         mesh if it already exist.") AddOnlyNewVertex;
+	:param X:
+	:type X: float
+	:param Y:
+	:type Y: float
+	:param Z:
+	:type Z: float
+	:rtype: int
+") AddOnlyNewVertex;
 		virtual Standard_Integer AddOnlyNewVertex (const Standard_Real X,const Standard_Real Y,const Standard_Real Z);
-		%feature("autodoc", "Args:
-	XYZmax(gp_XYZ)
-	XYZmin(gp_XYZ)
+		%feature("autodoc", "	* Each vertex of the mesh verifies the following relations : XYZMin.X() <= X <= XYZMax.X() XYZMin.Y() <= Y <= XYZMax.y() XYZMin.Z() <= Z <= XYZMax.Z()
 
-Returns:
-	virtual void
-
-Each  vertex of  the  mesh verifies  the following  
-         relations :  
-         XYZMin.X() <= X <= XYZMax.X()  
-         XYZMin.Y() <= Y <= XYZMax.y()  
-         XYZMin.Z() <= Z <= XYZMax.Z()") Bounds;
+	:param XYZmax:
+	:type XYZmax: gp_XYZ
+	:param XYZmin:
+	:type XYZmin: gp_XYZ
+	:rtype: void
+") Bounds;
 		virtual void Bounds (gp_XYZ & XYZmax,gp_XYZ & XYZmin);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: void
+") Clear;
 		virtual void Clear ();
-		%feature("autodoc", "Args:
-	DomainIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the deflection of the mesh of the domain of range <DomainIndex>. Raised if <DomainIndex> is lower than 1 or greater than the number of domains.
 
-Returns:
-	virtual Standard_Real
-
-Returns the deflection of the mesh of the domain  
-         of range <DomainIndex>.  Raised if <DomainIndex> is lower than 1 or greater  
-         than the number of domains.") Deflection;
+	:param DomainIndex:
+	:type DomainIndex: Standard_Integer
+	:rtype: float
+") Deflection;
 		virtual Standard_Real Deflection (const Standard_Integer DomainIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Number of domains in the mesh.
 
-Number of domains in the mesh.") NbDomains;
+	:rtype: int
+") NbDomains;
 		Standard_Integer NbDomains ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Cumulative Number of triangles in the mesh.
 
-Cumulative Number of triangles in the mesh.") NbTriangles;
+	:rtype: int
+") NbTriangles;
 		Standard_Integer NbTriangles ();
-		%feature("autodoc", "Args:
-	DomainIndex(Standard_Integer)
+		%feature("autodoc", "	* Number of triangles in the domain of range <DomainIndex>. Raised if <DomainIndex> is lower than 1 or greater than the number of domains.
 
-Returns:
-	virtual Standard_Integer
-
-Number of  triangles   in  the  domain   of  range  
-         <DomainIndex>.  Raised if <DomainIndex> is lower than 1 or greater  
-         than the number of domains.") NbTriangles;
+	:param DomainIndex:
+	:type DomainIndex: Standard_Integer
+	:rtype: int
+") NbTriangles;
 		virtual Standard_Integer NbTriangles (const Standard_Integer DomainIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Cumulative Number of vertices in the mesh.
 
-Cumulative Number of vertices in the mesh.") NbVertices;
+	:rtype: int
+") NbVertices;
 		Standard_Integer NbVertices ();
-		%feature("autodoc", "Args:
-	DomainIndex(Standard_Integer)
+		%feature("autodoc", "	* Number of vertices in the domain of range <DomainIndex>. Raised if <DomainIndex> is lower than 1 or greater than the number of domains.
 
-Returns:
-	virtual Standard_Integer
-
-Number of vertices in the domain of range  
-         <DomainIndex>.  Raised if <DomainIndex> is lower than 1 or greater  
-         than the number of domains.") NbVertices;
+	:param DomainIndex:
+	:type DomainIndex: Standard_Integer
+	:rtype: int
+") NbVertices;
 		virtual Standard_Integer NbVertices (const Standard_Integer DomainIndex);
-		%feature("autodoc", "Args:
-	DomainIndex(Standard_Integer)=1
+		%feature("autodoc", "	* Returns the set of triangle of the mesh domain of range <DomainIndex>. Raised if <DomainIndex> is lower than 1 or greater than the number of domains.
 
-Returns:
-	virtual  StlMesh_SequenceOfMeshTriangle
-
-Returns the set of triangle   of   the  mesh domain   of   range  
-         <DomainIndex>.  Raised if <DomainIndex> is lower than 1 or greater  
-         than the number of domains.") Triangles;
+	:param DomainIndex: default value is 1
+	:type DomainIndex: Standard_Integer
+	:rtype: StlMesh_SequenceOfMeshTriangle
+") Triangles;
 		virtual const StlMesh_SequenceOfMeshTriangle & Triangles (const Standard_Integer DomainIndex = 1);
-		%feature("autodoc", "Args:
-	DomainIndex(Standard_Integer)=1
+		%feature("autodoc", "	* Returns the coordinates of the vertices of the mesh domain of range <DomainIndex>. {XV1, YV1, ZV1, XV2, YV2, ZV2, XV3,.....} Raised if <DomainIndex> is lower than 1 or greater than the number of domains.
 
-Returns:
-	virtual  TColgp_SequenceOfXYZ
-
-Returns  the coordinates   of the  vertices of the  
-         mesh domain   of range <DomainIndex>.   {XV1, YV1,  
-         ZV1, XV2, YV2, ZV2, XV3,.....}  Raised if <DomainIndex> is lower than 1 or greater  
-         than the number of domains.") Vertices;
+	:param DomainIndex: default value is 1
+	:type DomainIndex: Standard_Integer
+	:rtype: TColgp_SequenceOfXYZ
+") Vertices;
 		virtual const TColgp_SequenceOfXYZ & Vertices (const Standard_Integer DomainIndex = 1);
 };
 
@@ -299,101 +254,81 @@ def __del__(self):
 %nodefaultctor StlMesh_MeshDomain;
 class StlMesh_MeshDomain : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* The mesh deflection is defaulted to Confusion from package Precision.
 
-The mesh deflection is defaulted to Confusion from  
-         package Precision.") StlMesh_MeshDomain;
+	:rtype: None
+") StlMesh_MeshDomain;
 		 StlMesh_MeshDomain ();
-		%feature("autodoc", "Args:
-	Deflection(Standard_Real)
+		%feature("autodoc", "	* Raised if the deflection is lower than zero Raised if the deflection is lower than Confusion from package Precision
 
-Returns:
-	None
-
-Raised if the deflection is lower than zero  Raised if the deflection  is lower than  Confusion  
-         from package Precision") StlMesh_MeshDomain;
+	:param Deflection:
+	:type Deflection: float
+	:rtype: None
+") StlMesh_MeshDomain;
 		 StlMesh_MeshDomain (const Standard_Real Deflection);
-		%feature("autodoc", "Args:
-	V1(Standard_Integer)
-	V2(Standard_Integer)
-	V3(Standard_Integer)
-	Xn(Standard_Real)
-	Yn(Standard_Real)
-	Zn(Standard_Real)
+		%feature("autodoc", "	* Build a triangle with the triplet of vertices (V1, V2, V3). This triplet defines the indexes of the vertex in the current domain The coordinates Xn, Yn, Zn defines the normal direction to the triangle. Returns the range of the triangle in the current domain.
 
-Returns:
-	virtual Standard_Integer
-
-Build a triangle with the triplet of vertices (V1,  
-         V2, V3).  This triplet defines  the indexes of the  
-         vertex in the  current domain The coordinates  Xn,  
-         Yn,  Zn  defines   the normal  direction   to  the  
-         triangle.  Returns  the  range of  the triangle in  
-         the current domain.") AddTriangle;
+	:param V1:
+	:type V1: Standard_Integer
+	:param V2:
+	:type V2: Standard_Integer
+	:param V3:
+	:type V3: Standard_Integer
+	:param Xn:
+	:type Xn: float
+	:param Yn:
+	:type Yn: float
+	:param Zn:
+	:type Zn: float
+	:rtype: int
+") AddTriangle;
 		virtual Standard_Integer AddTriangle (const Standard_Integer V1,const Standard_Integer V2,const Standard_Integer V3,const Standard_Real Xn,const Standard_Real Yn,const Standard_Real Zn);
-		%feature("autodoc", "Args:
-	X(Standard_Real)
-	Y(Standard_Real)
-	Z(Standard_Real)
+		%feature("autodoc", "	* Returns the range of the vertex in the current domain.
 
-Returns:
-	virtual Standard_Integer
-
-Returns the range of the vertex in the current  
-         domain.") AddVertex;
+	:param X:
+	:type X: float
+	:param Y:
+	:type Y: float
+	:param Z:
+	:type Z: float
+	:rtype: int
+") AddVertex;
 		virtual Standard_Integer AddVertex (const Standard_Real X,const Standard_Real Y,const Standard_Real Z);
-		%feature("autodoc", "Args:
-	X(Standard_Real)
-	Y(Standard_Real)
-	Z(Standard_Real)
-	IsNew(Standard_Boolean)
+		%feature("autodoc", "	* Returns the range of the vertex in the current domain. The current vertex is not inserted in the mesh if it already exist.
 
-Returns:
-	virtual Standard_Integer
-
-Returns  the range of   the vertex in  the current  
-         domain.  The current vertex is not inserted in the  
-         mesh if it already exist.") AddOnlyNewVertex;
+	:param X:
+	:type X: float
+	:param Y:
+	:type Y: float
+	:param Z:
+	:type Z: float
+	:param IsNew:
+	:type IsNew: bool
+	:rtype: int
+") AddOnlyNewVertex;
 		virtual Standard_Integer AddOnlyNewVertex (const Standard_Real X,const Standard_Real Y,const Standard_Real Z,Standard_Boolean & IsNew);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Deflection;
+		%feature("autodoc", "	:rtype: float
+") Deflection;
 		Standard_Real Deflection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Number of triangles in the mesh.
 
-Number of triangles in the mesh.") NbTriangles;
+	:rtype: int
+") NbTriangles;
 		Standard_Integer NbTriangles ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Number of vertices in the mesh.
 
-Number of vertices in the mesh.") NbVertices;
+	:rtype: int
+") NbVertices;
 		Standard_Integer NbVertices ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	StlMesh_SequenceOfMeshTriangle
+		%feature("autodoc", "	* Returns the set of triangles of the current mesh domain
 
-Returns the set of triangles of the  current mesh domain") Triangles;
+	:rtype: StlMesh_SequenceOfMeshTriangle
+") Triangles;
 		const StlMesh_SequenceOfMeshTriangle & Triangles ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColgp_SequenceOfXYZ
+		%feature("autodoc", "	* Returns the coordinates of the vertices of the mesh domain of range <DomainIndex>. {XV1, YV1, ZV1, XV2, YV2, ZV2, XV3,.....}
 
-Returns  the coordinates   of the  vertices of the  
-         mesh domain   of range <DomainIndex>.   {XV1, YV1,  
-         ZV1, XV2, YV2, ZV2, XV3,.....}") Vertices;
+	:rtype: TColgp_SequenceOfXYZ
+") Vertices;
 		const TColgp_SequenceOfXYZ & Vertices ();
 };
 
@@ -454,73 +389,64 @@ def __del__(self):
 %nodefaultctor StlMesh_MeshExplorer;
 class StlMesh_MeshExplorer {
 	public:
-		%feature("autodoc", "Args:
-	M(Handle_StlMesh_Mesh)
-
-Returns:
-	None
-
-No detailed docstring for this function.") StlMesh_MeshExplorer;
+		%feature("autodoc", "	:param M:
+	:type M: Handle_StlMesh_Mesh &
+	:rtype: None
+") StlMesh_MeshExplorer;
 		 StlMesh_MeshExplorer (const Handle_StlMesh_Mesh & M);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the mesh deflection of the current domain.
 
-Returns the mesh deflection of the current domain.") Deflection;
+	:rtype: float
+") Deflection;
 		Standard_Real Deflection ();
-		%feature("autodoc", "Args:
-	DomainIndex(Standard_Integer)=1
+		%feature("autodoc", "	* Initializes the exploration of the triangles of the mesh domain of range <DomainIndex>. Raised if <DomainIndex> is lower than 1 or greater than the number of domains.
 
-Returns:
-	None
-
-Initializes the exploration  of the  triangles  of  
-         the mesh domain of range <DomainIndex>.  Raised if <DomainIndex> is lower than 1 or greater  
-         than the number of domains.") InitTriangle;
+	:param DomainIndex: default value is 1
+	:type DomainIndex: Standard_Integer
+	:rtype: None
+") InitTriangle;
 		void InitTriangle (const Standard_Integer DomainIndex = 1);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") MoreTriangle;
+		%feature("autodoc", "	:rtype: bool
+") MoreTriangle;
 		Standard_Boolean MoreTriangle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Raised if there is no more triangle in the current domain.
 
-Raised if there is no more triangle in the current  
-         domain.") NextTriangle;
+	:rtype: None
+") NextTriangle;
 		void NextTriangle ();
-		%feature("autodoc", "Args:
-	X1(Standard_Real)
-	Y1(Standard_Real)
-	Z1(Standard_Real)
-	X2(Standard_Real)
-	Y2(Standard_Real)
-	Z2(Standard_Real)
-	X3(Standard_Real)
-	Y3(Standard_Real)
-	Z3(Standard_Real)
+		%feature("autodoc", "	* Raised if there is no more triangle in the current domain.
 
-Returns:
-	None
-
-Raised if there is no more triangle in the current  
-         domain.") TriangleVertices;
+	:param X1:
+	:type X1: float &
+	:param Y1:
+	:type Y1: float &
+	:param Z1:
+	:type Z1: float &
+	:param X2:
+	:type X2: float &
+	:param Y2:
+	:type Y2: float &
+	:param Z2:
+	:type Z2: float &
+	:param X3:
+	:type X3: float &
+	:param Y3:
+	:type Y3: float &
+	:param Z3:
+	:type Z3: float &
+	:rtype: None
+") TriangleVertices;
 		void TriangleVertices (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Xn(Standard_Real)
-	Yn(Standard_Real)
-	Zn(Standard_Real)
+		%feature("autodoc", "	* Raised if there is no more triangle in the current domain.
 
-Returns:
-	None
-
-Raised if there is no more triangle in the current  
-         domain.") TriangleOrientation;
+	:param Xn:
+	:type Xn: float &
+	:param Yn:
+	:type Yn: float &
+	:param Zn:
+	:type Zn: float &
+	:rtype: None
+") TriangleOrientation;
 		void TriangleOrientation (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 };
 
@@ -542,72 +468,83 @@ def __del__(self):
 %nodefaultctor StlMesh_MeshTriangle;
 class StlMesh_MeshTriangle : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* empty constructor
 
-empty constructor") StlMesh_MeshTriangle;
+	:rtype: None
+") StlMesh_MeshTriangle;
 		 StlMesh_MeshTriangle ();
-		%feature("autodoc", "Args:
-	V1(Standard_Integer)
-	V2(Standard_Integer)
-	V3(Standard_Integer)
-	Xn(Standard_Real)
-	Yn(Standard_Real)
-	Zn(Standard_Real)
+		%feature("autodoc", "	* create a triangle defined with the indexes of its three vertices and its orientation Raised if V1, V2 or V3 is lower than zero
 
-Returns:
-	None
-
-create a triangle defined with the indexes of its three vertices  
-         and its orientation  Raised if V1, V2 or V3 is lower than zero") StlMesh_MeshTriangle;
+	:param V1:
+	:type V1: Standard_Integer
+	:param V2:
+	:type V2: Standard_Integer
+	:param V3:
+	:type V3: Standard_Integer
+	:param Xn:
+	:type Xn: float
+	:param Yn:
+	:type Yn: float
+	:param Zn:
+	:type Zn: float
+	:rtype: None
+") StlMesh_MeshTriangle;
 		 StlMesh_MeshTriangle (const Standard_Integer V1,const Standard_Integer V2,const Standard_Integer V3,const Standard_Real Xn,const Standard_Real Yn,const Standard_Real Zn);
-		%feature("autodoc", "Args:
-	V1(Standard_Integer)
-	V2(Standard_Integer)
-	V3(Standard_Integer)
-	Xn(Standard_Real)
-	Yn(Standard_Real)
-	Zn(Standard_Real)
+		%feature("autodoc", "	* get indexes of the three vertices (V1,V2,V3) and the orientation
 
-Returns:
-	None
-
-get indexes of the three vertices (V1,V2,V3) and the orientation") GetVertexAndOrientation;
+	:param V1:
+	:type V1: Standard_Integer &
+	:param V2:
+	:type V2: Standard_Integer &
+	:param V3:
+	:type V3: Standard_Integer &
+	:param Xn:
+	:type Xn: float &
+	:param Yn:
+	:type Yn: float &
+	:param Zn:
+	:type Zn: float &
+	:rtype: None
+") GetVertexAndOrientation;
 		void GetVertexAndOrientation (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	V1(Standard_Integer)
-	V2(Standard_Integer)
-	V3(Standard_Integer)
-	Xn(Standard_Real)
-	Yn(Standard_Real)
-	Zn(Standard_Real)
+		%feature("autodoc", "	* set indexes of the three vertices (V1,V2,V3) and the orientation Raised if V1, V2 or V3 is lower than zero
 
-Returns:
-	None
-
-set indexes of the three vertices (V1,V2,V3) and the orientation  Raised if V1, V2 or V3 is lower than zero") SetVertexAndOrientation;
+	:param V1:
+	:type V1: Standard_Integer
+	:param V2:
+	:type V2: Standard_Integer
+	:param V3:
+	:type V3: Standard_Integer
+	:param Xn:
+	:type Xn: float
+	:param Yn:
+	:type Yn: float
+	:param Zn:
+	:type Zn: float
+	:rtype: None
+") SetVertexAndOrientation;
 		void SetVertexAndOrientation (const Standard_Integer V1,const Standard_Integer V2,const Standard_Integer V3,const Standard_Real Xn,const Standard_Real Yn,const Standard_Real Zn);
-		%feature("autodoc", "Args:
-	V1(Standard_Integer)
-	V2(Standard_Integer)
-	V3(Standard_Integer)
+		%feature("autodoc", "	* get indexes of the three vertices (V1,V2,V3)
 
-Returns:
-	None
-
-get indexes of the three vertices (V1,V2,V3)") GetVertex;
+	:param V1:
+	:type V1: Standard_Integer &
+	:param V2:
+	:type V2: Standard_Integer &
+	:param V3:
+	:type V3: Standard_Integer &
+	:rtype: None
+") GetVertex;
 		void GetVertex (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	V1(Standard_Integer)
-	V2(Standard_Integer)
-	V3(Standard_Integer)
+		%feature("autodoc", "	* set indexes of the three vertices (V1,V2,V3) Raised if V1, V2 or V3 is lower than zero
 
-Returns:
-	None
-
-set indexes of the three vertices (V1,V2,V3)  Raised if V1, V2 or V3 is lower than zero") SetVertex;
+	:param V1:
+	:type V1: Standard_Integer
+	:param V2:
+	:type V2: Standard_Integer
+	:param V3:
+	:type V3: Standard_Integer
+	:rtype: None
+") SetVertex;
 		void SetVertex (const Standard_Integer V1,const Standard_Integer V2,const Standard_Integer V3);
 };
 
@@ -668,22 +605,17 @@ def __del__(self):
 %nodefaultctor StlMesh_SequenceNodeOfSequenceOfMesh;
 class StlMesh_SequenceNodeOfSequenceOfMesh : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_StlMesh_Mesh)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") StlMesh_SequenceNodeOfSequenceOfMesh;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_StlMesh_Mesh &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") StlMesh_SequenceNodeOfSequenceOfMesh;
 		 StlMesh_SequenceNodeOfSequenceOfMesh (const Handle_StlMesh_Mesh & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_StlMesh_Mesh
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_StlMesh_Mesh
+") Value;
 		Handle_StlMesh_Mesh & Value ();
 };
 
@@ -744,22 +676,17 @@ def __del__(self):
 %nodefaultctor StlMesh_SequenceNodeOfSequenceOfMeshDomain;
 class StlMesh_SequenceNodeOfSequenceOfMeshDomain : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_StlMesh_MeshDomain)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") StlMesh_SequenceNodeOfSequenceOfMeshDomain;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_StlMesh_MeshDomain &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") StlMesh_SequenceNodeOfSequenceOfMeshDomain;
 		 StlMesh_SequenceNodeOfSequenceOfMeshDomain (const Handle_StlMesh_MeshDomain & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_StlMesh_MeshDomain
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_StlMesh_MeshDomain
+") Value;
 		Handle_StlMesh_MeshDomain & Value ();
 };
 
@@ -820,22 +747,17 @@ def __del__(self):
 %nodefaultctor StlMesh_SequenceNodeOfSequenceOfMeshTriangle;
 class StlMesh_SequenceNodeOfSequenceOfMeshTriangle : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_StlMesh_MeshTriangle)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") StlMesh_SequenceNodeOfSequenceOfMeshTriangle;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_StlMesh_MeshTriangle &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") StlMesh_SequenceNodeOfSequenceOfMeshTriangle;
 		 StlMesh_SequenceNodeOfSequenceOfMeshTriangle (const Handle_StlMesh_MeshTriangle & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_StlMesh_MeshTriangle
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_StlMesh_MeshTriangle
+") Value;
 		Handle_StlMesh_MeshTriangle & Value ();
 };
 
@@ -896,168 +818,111 @@ def __del__(self):
 %nodefaultctor StlMesh_SequenceOfMesh;
 class StlMesh_SequenceOfMesh : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") StlMesh_SequenceOfMesh;
+		%feature("autodoc", "	:rtype: None
+") StlMesh_SequenceOfMesh;
 		 StlMesh_SequenceOfMesh ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(StlMesh_SequenceOfMesh)
-
-Returns:
-	StlMesh_SequenceOfMesh
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: StlMesh_SequenceOfMesh &
+	:rtype: StlMesh_SequenceOfMesh
+") Assign;
 		const StlMesh_SequenceOfMesh & Assign (const StlMesh_SequenceOfMesh & Other);
-		%feature("autodoc", "Args:
-	Other(StlMesh_SequenceOfMesh)
-
-Returns:
-	StlMesh_SequenceOfMesh
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: StlMesh_SequenceOfMesh &
+	:rtype: StlMesh_SequenceOfMesh
+") operator=;
 		const StlMesh_SequenceOfMesh & operator = (const StlMesh_SequenceOfMesh & Other);
-		%feature("autodoc", "Args:
-	T(Handle_StlMesh_Mesh)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_StlMesh_Mesh &
+	:rtype: None
+") Append;
 		void Append (const Handle_StlMesh_Mesh & T);
-		%feature("autodoc", "Args:
-	S(StlMesh_SequenceOfMesh)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: StlMesh_SequenceOfMesh &
+	:rtype: None
+") Append;
 		void Append (StlMesh_SequenceOfMesh & S);
-		%feature("autodoc", "Args:
-	T(Handle_StlMesh_Mesh)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_StlMesh_Mesh &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_StlMesh_Mesh & T);
-		%feature("autodoc", "Args:
-	S(StlMesh_SequenceOfMesh)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: StlMesh_SequenceOfMesh &
+	:rtype: None
+") Prepend;
 		void Prepend (StlMesh_SequenceOfMesh & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_StlMesh_Mesh)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_StlMesh_Mesh &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_StlMesh_Mesh & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(StlMesh_SequenceOfMesh)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: StlMesh_SequenceOfMesh &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,StlMesh_SequenceOfMesh & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_StlMesh_Mesh)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_StlMesh_Mesh &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_StlMesh_Mesh & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(StlMesh_SequenceOfMesh)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: StlMesh_SequenceOfMesh &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,StlMesh_SequenceOfMesh & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_StlMesh_Mesh
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_StlMesh_Mesh
+") First;
 		const Handle_StlMesh_Mesh & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_StlMesh_Mesh
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_StlMesh_Mesh
+") Last;
 		const Handle_StlMesh_Mesh & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(StlMesh_SequenceOfMesh)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: StlMesh_SequenceOfMesh &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,StlMesh_SequenceOfMesh & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_StlMesh_Mesh
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_StlMesh_Mesh
+") Value;
 		const Handle_StlMesh_Mesh & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_StlMesh_Mesh)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_StlMesh_Mesh &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_StlMesh_Mesh & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_StlMesh_Mesh
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_StlMesh_Mesh
+") ChangeValue;
 		Handle_StlMesh_Mesh & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -1079,168 +944,111 @@ def __del__(self):
 %nodefaultctor StlMesh_SequenceOfMeshDomain;
 class StlMesh_SequenceOfMeshDomain : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") StlMesh_SequenceOfMeshDomain;
+		%feature("autodoc", "	:rtype: None
+") StlMesh_SequenceOfMeshDomain;
 		 StlMesh_SequenceOfMeshDomain ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(StlMesh_SequenceOfMeshDomain)
-
-Returns:
-	StlMesh_SequenceOfMeshDomain
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: StlMesh_SequenceOfMeshDomain &
+	:rtype: StlMesh_SequenceOfMeshDomain
+") Assign;
 		const StlMesh_SequenceOfMeshDomain & Assign (const StlMesh_SequenceOfMeshDomain & Other);
-		%feature("autodoc", "Args:
-	Other(StlMesh_SequenceOfMeshDomain)
-
-Returns:
-	StlMesh_SequenceOfMeshDomain
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: StlMesh_SequenceOfMeshDomain &
+	:rtype: StlMesh_SequenceOfMeshDomain
+") operator=;
 		const StlMesh_SequenceOfMeshDomain & operator = (const StlMesh_SequenceOfMeshDomain & Other);
-		%feature("autodoc", "Args:
-	T(Handle_StlMesh_MeshDomain)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_StlMesh_MeshDomain &
+	:rtype: None
+") Append;
 		void Append (const Handle_StlMesh_MeshDomain & T);
-		%feature("autodoc", "Args:
-	S(StlMesh_SequenceOfMeshDomain)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: StlMesh_SequenceOfMeshDomain &
+	:rtype: None
+") Append;
 		void Append (StlMesh_SequenceOfMeshDomain & S);
-		%feature("autodoc", "Args:
-	T(Handle_StlMesh_MeshDomain)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_StlMesh_MeshDomain &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_StlMesh_MeshDomain & T);
-		%feature("autodoc", "Args:
-	S(StlMesh_SequenceOfMeshDomain)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: StlMesh_SequenceOfMeshDomain &
+	:rtype: None
+") Prepend;
 		void Prepend (StlMesh_SequenceOfMeshDomain & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_StlMesh_MeshDomain)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_StlMesh_MeshDomain &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_StlMesh_MeshDomain & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(StlMesh_SequenceOfMeshDomain)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: StlMesh_SequenceOfMeshDomain &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,StlMesh_SequenceOfMeshDomain & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_StlMesh_MeshDomain)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_StlMesh_MeshDomain &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_StlMesh_MeshDomain & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(StlMesh_SequenceOfMeshDomain)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: StlMesh_SequenceOfMeshDomain &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,StlMesh_SequenceOfMeshDomain & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_StlMesh_MeshDomain
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_StlMesh_MeshDomain
+") First;
 		const Handle_StlMesh_MeshDomain & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_StlMesh_MeshDomain
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_StlMesh_MeshDomain
+") Last;
 		const Handle_StlMesh_MeshDomain & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(StlMesh_SequenceOfMeshDomain)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: StlMesh_SequenceOfMeshDomain &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,StlMesh_SequenceOfMeshDomain & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_StlMesh_MeshDomain
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_StlMesh_MeshDomain
+") Value;
 		const Handle_StlMesh_MeshDomain & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_StlMesh_MeshDomain)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_StlMesh_MeshDomain &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_StlMesh_MeshDomain & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_StlMesh_MeshDomain
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_StlMesh_MeshDomain
+") ChangeValue;
 		Handle_StlMesh_MeshDomain & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -1262,168 +1070,111 @@ def __del__(self):
 %nodefaultctor StlMesh_SequenceOfMeshTriangle;
 class StlMesh_SequenceOfMeshTriangle : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") StlMesh_SequenceOfMeshTriangle;
+		%feature("autodoc", "	:rtype: None
+") StlMesh_SequenceOfMeshTriangle;
 		 StlMesh_SequenceOfMeshTriangle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(StlMesh_SequenceOfMeshTriangle)
-
-Returns:
-	StlMesh_SequenceOfMeshTriangle
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: StlMesh_SequenceOfMeshTriangle &
+	:rtype: StlMesh_SequenceOfMeshTriangle
+") Assign;
 		const StlMesh_SequenceOfMeshTriangle & Assign (const StlMesh_SequenceOfMeshTriangle & Other);
-		%feature("autodoc", "Args:
-	Other(StlMesh_SequenceOfMeshTriangle)
-
-Returns:
-	StlMesh_SequenceOfMeshTriangle
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: StlMesh_SequenceOfMeshTriangle &
+	:rtype: StlMesh_SequenceOfMeshTriangle
+") operator=;
 		const StlMesh_SequenceOfMeshTriangle & operator = (const StlMesh_SequenceOfMeshTriangle & Other);
-		%feature("autodoc", "Args:
-	T(Handle_StlMesh_MeshTriangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_StlMesh_MeshTriangle &
+	:rtype: None
+") Append;
 		void Append (const Handle_StlMesh_MeshTriangle & T);
-		%feature("autodoc", "Args:
-	S(StlMesh_SequenceOfMeshTriangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: StlMesh_SequenceOfMeshTriangle &
+	:rtype: None
+") Append;
 		void Append (StlMesh_SequenceOfMeshTriangle & S);
-		%feature("autodoc", "Args:
-	T(Handle_StlMesh_MeshTriangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_StlMesh_MeshTriangle &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_StlMesh_MeshTriangle & T);
-		%feature("autodoc", "Args:
-	S(StlMesh_SequenceOfMeshTriangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: StlMesh_SequenceOfMeshTriangle &
+	:rtype: None
+") Prepend;
 		void Prepend (StlMesh_SequenceOfMeshTriangle & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_StlMesh_MeshTriangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_StlMesh_MeshTriangle &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_StlMesh_MeshTriangle & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(StlMesh_SequenceOfMeshTriangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: StlMesh_SequenceOfMeshTriangle &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,StlMesh_SequenceOfMeshTriangle & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_StlMesh_MeshTriangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_StlMesh_MeshTriangle &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_StlMesh_MeshTriangle & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(StlMesh_SequenceOfMeshTriangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: StlMesh_SequenceOfMeshTriangle &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,StlMesh_SequenceOfMeshTriangle & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_StlMesh_MeshTriangle
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_StlMesh_MeshTriangle
+") First;
 		const Handle_StlMesh_MeshTriangle & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_StlMesh_MeshTriangle
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_StlMesh_MeshTriangle
+") Last;
 		const Handle_StlMesh_MeshTriangle & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(StlMesh_SequenceOfMeshTriangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: StlMesh_SequenceOfMeshTriangle &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,StlMesh_SequenceOfMeshTriangle & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_StlMesh_MeshTriangle
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_StlMesh_MeshTriangle
+") Value;
 		const Handle_StlMesh_MeshTriangle & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_StlMesh_MeshTriangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_StlMesh_MeshTriangle &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_StlMesh_MeshTriangle & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_StlMesh_MeshTriangle
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_StlMesh_MeshTriangle
+") ChangeValue;
 		Handle_StlMesh_MeshTriangle & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 

@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -44,108 +44,68 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor Bnd_Array1OfBox;
 class Bnd_Array1OfBox {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Bnd_Array1OfBox;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Bnd_Array1OfBox;
 		 Bnd_Array1OfBox (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Bnd_Box)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Bnd_Array1OfBox;
+		%feature("autodoc", "	:param Item:
+	:type Item: Bnd_Box &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Bnd_Array1OfBox;
 		 Bnd_Array1OfBox (const Bnd_Box & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Bnd_Box)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Bnd_Box &
+	:rtype: None
+") Init;
 		void Init (const Bnd_Box & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(Bnd_Array1OfBox)
-
-Returns:
-	Bnd_Array1OfBox
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Bnd_Array1OfBox &
+	:rtype: Bnd_Array1OfBox
+") Assign;
 		const Bnd_Array1OfBox & Assign (const Bnd_Array1OfBox & Other);
-		%feature("autodoc", "Args:
-	Other(Bnd_Array1OfBox)
-
-Returns:
-	Bnd_Array1OfBox
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Bnd_Array1OfBox &
+	:rtype: Bnd_Array1OfBox
+") operator=;
 		const Bnd_Array1OfBox & operator = (const Bnd_Array1OfBox & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Bnd_Box)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Bnd_Box &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Bnd_Box & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Bnd_Box
+") Value;
 		const Bnd_Box & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Bnd_Box
+") ChangeValue;
 		Bnd_Box & ChangeValue (const Standard_Integer Index);
 };
 
@@ -167,108 +127,68 @@ def __del__(self):
 %nodefaultctor Bnd_Array1OfBox2d;
 class Bnd_Array1OfBox2d {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Bnd_Array1OfBox2d;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Bnd_Array1OfBox2d;
 		 Bnd_Array1OfBox2d (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Bnd_Box2d)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Bnd_Array1OfBox2d;
+		%feature("autodoc", "	:param Item:
+	:type Item: Bnd_Box2d &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Bnd_Array1OfBox2d;
 		 Bnd_Array1OfBox2d (const Bnd_Box2d & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Bnd_Box2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Bnd_Box2d &
+	:rtype: None
+") Init;
 		void Init (const Bnd_Box2d & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(Bnd_Array1OfBox2d)
-
-Returns:
-	Bnd_Array1OfBox2d
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Bnd_Array1OfBox2d &
+	:rtype: Bnd_Array1OfBox2d
+") Assign;
 		const Bnd_Array1OfBox2d & Assign (const Bnd_Array1OfBox2d & Other);
-		%feature("autodoc", "Args:
-	Other(Bnd_Array1OfBox2d)
-
-Returns:
-	Bnd_Array1OfBox2d
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Bnd_Array1OfBox2d &
+	:rtype: Bnd_Array1OfBox2d
+") operator=;
 		const Bnd_Array1OfBox2d & operator = (const Bnd_Array1OfBox2d & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Bnd_Box2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Bnd_Box2d &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Bnd_Box2d & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Bnd_Box2d
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Bnd_Box2d
+") Value;
 		const Bnd_Box2d & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Bnd_Box2d
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Bnd_Box2d
+") ChangeValue;
 		Bnd_Box2d & ChangeValue (const Standard_Integer Index);
 };
 
@@ -290,108 +210,68 @@ def __del__(self):
 %nodefaultctor Bnd_Array1OfSphere;
 class Bnd_Array1OfSphere {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Bnd_Array1OfSphere;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Bnd_Array1OfSphere;
 		 Bnd_Array1OfSphere (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Bnd_Sphere)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Bnd_Array1OfSphere;
+		%feature("autodoc", "	:param Item:
+	:type Item: Bnd_Sphere &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Bnd_Array1OfSphere;
 		 Bnd_Array1OfSphere (const Bnd_Sphere & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Bnd_Sphere)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Bnd_Sphere &
+	:rtype: None
+") Init;
 		void Init (const Bnd_Sphere & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(Bnd_Array1OfSphere)
-
-Returns:
-	Bnd_Array1OfSphere
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Bnd_Array1OfSphere &
+	:rtype: Bnd_Array1OfSphere
+") Assign;
 		const Bnd_Array1OfSphere & Assign (const Bnd_Array1OfSphere & Other);
-		%feature("autodoc", "Args:
-	Other(Bnd_Array1OfSphere)
-
-Returns:
-	Bnd_Array1OfSphere
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Bnd_Array1OfSphere &
+	:rtype: Bnd_Array1OfSphere
+") operator=;
 		const Bnd_Array1OfSphere & operator = (const Bnd_Array1OfSphere & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Bnd_Sphere)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Bnd_Sphere &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Bnd_Sphere & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Bnd_Sphere
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Bnd_Sphere
+") Value;
 		const Bnd_Sphere & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Bnd_Sphere
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Bnd_Sphere
+") ChangeValue;
 		Bnd_Sphere & ChangeValue (const Standard_Integer Index);
 };
 
@@ -413,189 +293,120 @@ def __del__(self):
 %nodefaultctor Bnd_B2d;
 class Bnd_B2d {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Bnd_B2d;
+		%feature("autodoc", "	:rtype: None
+") Bnd_B2d;
 		 Bnd_B2d ();
-		%feature("autodoc", "Args:
-	theCenter(gp_XY)
-	theHSize(gp_XY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Bnd_B2d;
+		%feature("autodoc", "	:param theCenter:
+	:type theCenter: gp_XY
+	:param theHSize:
+	:type theHSize: gp_XY
+	:rtype: None
+") Bnd_B2d;
 		 Bnd_B2d (const gp_XY & theCenter,const gp_XY & theHSize);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsVoid;
+		%feature("autodoc", "	:rtype: bool
+") IsVoid;
 		Standard_Boolean IsVoid ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	thePnt(gp_XY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param thePnt:
+	:type thePnt: gp_XY
+	:rtype: None
+") Add;
 		void Add (const gp_XY & thePnt);
-		%feature("autodoc", "Args:
-	thePnt(gp_Pnt2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param thePnt:
+	:type thePnt: gp_Pnt2d
+	:rtype: None
+") Add;
 		void Add (const gp_Pnt2d & thePnt);
-		%feature("autodoc", "Args:
-	theBox(Bnd_B2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param theBox:
+	:type theBox: Bnd_B2d &
+	:rtype: None
+") Add;
 		void Add (const Bnd_B2d & theBox);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_XY
-
-No detailed docstring for this function.") CornerMin;
+		%feature("autodoc", "	:rtype: gp_XY
+") CornerMin;
 		gp_XY CornerMin ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_XY
-
-No detailed docstring for this function.") CornerMax;
+		%feature("autodoc", "	:rtype: gp_XY
+") CornerMax;
 		gp_XY CornerMax ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") SquareExtent;
+		%feature("autodoc", "	:rtype: float
+") SquareExtent;
 		Standard_Real SquareExtent ();
-		%feature("autodoc", "Args:
-	theDiff(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Enlarge;
+		%feature("autodoc", "	:param theDiff:
+	:type theDiff: float
+	:rtype: None
+") Enlarge;
 		void Enlarge (const Standard_Real theDiff);
-		%feature("autodoc", "Args:
-	theOtherBox(Bnd_B2d)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Limit;
+		%feature("autodoc", "	:param theOtherBox:
+	:type theOtherBox: Bnd_B2d &
+	:rtype: bool
+") Limit;
 		Standard_Boolean Limit (const Bnd_B2d & theOtherBox);
-		%feature("autodoc", "Args:
-	theTrsf(gp_Trsf2d)
-
-Returns:
-	Bnd_B2d
-
-No detailed docstring for this function.") Transformed;
+		%feature("autodoc", "	:param theTrsf:
+	:type theTrsf: gp_Trsf2d
+	:rtype: Bnd_B2d
+") Transformed;
 		Bnd_B2d Transformed (const gp_Trsf2d & theTrsf);
-		%feature("autodoc", "Args:
-	thePnt(gp_XY)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOut;
+		%feature("autodoc", "	:param thePnt:
+	:type thePnt: gp_XY
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const gp_XY & thePnt);
-		%feature("autodoc", "Args:
-	theCenter(gp_XY)
-	theRadius(Standard_Real)
-	isCircleHollow(Standard_Boolean)=Standard_False
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOut;
+		%feature("autodoc", "	:param theCenter:
+	:type theCenter: gp_XY
+	:param theRadius:
+	:type theRadius: float
+	:param isCircleHollow: default value is Standard_False
+	:type isCircleHollow: bool
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const gp_XY & theCenter,const Standard_Real theRadius,const Standard_Boolean isCircleHollow = Standard_False);
-		%feature("autodoc", "Args:
-	theOtherBox(Bnd_B2d)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOut;
+		%feature("autodoc", "	:param theOtherBox:
+	:type theOtherBox: Bnd_B2d &
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const Bnd_B2d & theOtherBox);
-		%feature("autodoc", "Args:
-	theOtherBox(Bnd_B2d)
-	theTrsf(gp_Trsf2d)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOut;
+		%feature("autodoc", "	:param theOtherBox:
+	:type theOtherBox: Bnd_B2d &
+	:param theTrsf:
+	:type theTrsf: gp_Trsf2d
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const Bnd_B2d & theOtherBox,const gp_Trsf2d & theTrsf);
-		%feature("autodoc", "Args:
-	theLine(gp_Ax2d)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOut;
+		%feature("autodoc", "	:param theLine:
+	:type theLine: gp_Ax2d
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const gp_Ax2d & theLine);
-		%feature("autodoc", "Args:
-	theP0(gp_XY)
-	theP1(gp_XY)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOut;
+		%feature("autodoc", "	:param theP0:
+	:type theP0: gp_XY
+	:param theP1:
+	:type theP1: gp_XY
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const gp_XY & theP0,const gp_XY & theP1);
-		%feature("autodoc", "Args:
-	theBox(Bnd_B2d)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsIn;
+		%feature("autodoc", "	:param theBox:
+	:type theBox: Bnd_B2d &
+	:rtype: bool
+") IsIn;
 		Standard_Boolean IsIn (const Bnd_B2d & theBox);
-		%feature("autodoc", "Args:
-	theBox(Bnd_B2d)
-	theTrsf(gp_Trsf2d)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsIn;
+		%feature("autodoc", "	:param theBox:
+	:type theBox: Bnd_B2d &
+	:param theTrsf:
+	:type theTrsf: gp_Trsf2d
+	:rtype: bool
+") IsIn;
 		Standard_Boolean IsIn (const Bnd_B2d & theBox,const gp_Trsf2d & theTrsf);
-		%feature("autodoc", "Args:
-	theCenter(gp_XY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetCenter;
+		%feature("autodoc", "	:param theCenter:
+	:type theCenter: gp_XY
+	:rtype: None
+") SetCenter;
 		void SetCenter (const gp_XY & theCenter);
-		%feature("autodoc", "Args:
-	theHSize(gp_XY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetHSize;
+		%feature("autodoc", "	:param theHSize:
+	:type theHSize: gp_XY
+	:rtype: None
+") SetHSize;
 		void SetHSize (const gp_XY & theHSize);
 };
 
@@ -617,189 +428,120 @@ def __del__(self):
 %nodefaultctor Bnd_B2f;
 class Bnd_B2f {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Bnd_B2f;
+		%feature("autodoc", "	:rtype: None
+") Bnd_B2f;
 		 Bnd_B2f ();
-		%feature("autodoc", "Args:
-	theCenter(gp_XY)
-	theHSize(gp_XY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Bnd_B2f;
+		%feature("autodoc", "	:param theCenter:
+	:type theCenter: gp_XY
+	:param theHSize:
+	:type theHSize: gp_XY
+	:rtype: None
+") Bnd_B2f;
 		 Bnd_B2f (const gp_XY & theCenter,const gp_XY & theHSize);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsVoid;
+		%feature("autodoc", "	:rtype: bool
+") IsVoid;
 		Standard_Boolean IsVoid ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	thePnt(gp_XY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param thePnt:
+	:type thePnt: gp_XY
+	:rtype: None
+") Add;
 		void Add (const gp_XY & thePnt);
-		%feature("autodoc", "Args:
-	thePnt(gp_Pnt2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param thePnt:
+	:type thePnt: gp_Pnt2d
+	:rtype: None
+") Add;
 		void Add (const gp_Pnt2d & thePnt);
-		%feature("autodoc", "Args:
-	theBox(Bnd_B2f)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param theBox:
+	:type theBox: Bnd_B2f &
+	:rtype: None
+") Add;
 		void Add (const Bnd_B2f & theBox);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_XY
-
-No detailed docstring for this function.") CornerMin;
+		%feature("autodoc", "	:rtype: gp_XY
+") CornerMin;
 		gp_XY CornerMin ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_XY
-
-No detailed docstring for this function.") CornerMax;
+		%feature("autodoc", "	:rtype: gp_XY
+") CornerMax;
 		gp_XY CornerMax ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") SquareExtent;
+		%feature("autodoc", "	:rtype: float
+") SquareExtent;
 		Standard_Real SquareExtent ();
-		%feature("autodoc", "Args:
-	theDiff(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Enlarge;
+		%feature("autodoc", "	:param theDiff:
+	:type theDiff: float
+	:rtype: None
+") Enlarge;
 		void Enlarge (const Standard_Real theDiff);
-		%feature("autodoc", "Args:
-	theOtherBox(Bnd_B2f)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Limit;
+		%feature("autodoc", "	:param theOtherBox:
+	:type theOtherBox: Bnd_B2f &
+	:rtype: bool
+") Limit;
 		Standard_Boolean Limit (const Bnd_B2f & theOtherBox);
-		%feature("autodoc", "Args:
-	theTrsf(gp_Trsf2d)
-
-Returns:
-	Bnd_B2f
-
-No detailed docstring for this function.") Transformed;
+		%feature("autodoc", "	:param theTrsf:
+	:type theTrsf: gp_Trsf2d
+	:rtype: Bnd_B2f
+") Transformed;
 		Bnd_B2f Transformed (const gp_Trsf2d & theTrsf);
-		%feature("autodoc", "Args:
-	thePnt(gp_XY)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOut;
+		%feature("autodoc", "	:param thePnt:
+	:type thePnt: gp_XY
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const gp_XY & thePnt);
-		%feature("autodoc", "Args:
-	theCenter(gp_XY)
-	theRadius(Standard_Real)
-	isCircleHollow(Standard_Boolean)=Standard_False
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOut;
+		%feature("autodoc", "	:param theCenter:
+	:type theCenter: gp_XY
+	:param theRadius:
+	:type theRadius: float
+	:param isCircleHollow: default value is Standard_False
+	:type isCircleHollow: bool
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const gp_XY & theCenter,const Standard_Real theRadius,const Standard_Boolean isCircleHollow = Standard_False);
-		%feature("autodoc", "Args:
-	theOtherBox(Bnd_B2f)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOut;
+		%feature("autodoc", "	:param theOtherBox:
+	:type theOtherBox: Bnd_B2f &
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const Bnd_B2f & theOtherBox);
-		%feature("autodoc", "Args:
-	theOtherBox(Bnd_B2f)
-	theTrsf(gp_Trsf2d)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOut;
+		%feature("autodoc", "	:param theOtherBox:
+	:type theOtherBox: Bnd_B2f &
+	:param theTrsf:
+	:type theTrsf: gp_Trsf2d
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const Bnd_B2f & theOtherBox,const gp_Trsf2d & theTrsf);
-		%feature("autodoc", "Args:
-	theLine(gp_Ax2d)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOut;
+		%feature("autodoc", "	:param theLine:
+	:type theLine: gp_Ax2d
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const gp_Ax2d & theLine);
-		%feature("autodoc", "Args:
-	theP0(gp_XY)
-	theP1(gp_XY)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOut;
+		%feature("autodoc", "	:param theP0:
+	:type theP0: gp_XY
+	:param theP1:
+	:type theP1: gp_XY
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const gp_XY & theP0,const gp_XY & theP1);
-		%feature("autodoc", "Args:
-	theBox(Bnd_B2f)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsIn;
+		%feature("autodoc", "	:param theBox:
+	:type theBox: Bnd_B2f &
+	:rtype: bool
+") IsIn;
 		Standard_Boolean IsIn (const Bnd_B2f & theBox);
-		%feature("autodoc", "Args:
-	theBox(Bnd_B2f)
-	theTrsf(gp_Trsf2d)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsIn;
+		%feature("autodoc", "	:param theBox:
+	:type theBox: Bnd_B2f &
+	:param theTrsf:
+	:type theTrsf: gp_Trsf2d
+	:rtype: bool
+") IsIn;
 		Standard_Boolean IsIn (const Bnd_B2f & theBox,const gp_Trsf2d & theTrsf);
-		%feature("autodoc", "Args:
-	theCenter(gp_XY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetCenter;
+		%feature("autodoc", "	:param theCenter:
+	:type theCenter: gp_XY
+	:rtype: None
+") SetCenter;
 		void SetCenter (const gp_XY & theCenter);
-		%feature("autodoc", "Args:
-	theHSize(gp_XY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetHSize;
+		%feature("autodoc", "	:param theHSize:
+	:type theHSize: gp_XY
+	:rtype: None
+") SetHSize;
 		void SetHSize (const gp_XY & theHSize);
 };
 
@@ -821,190 +563,122 @@ def __del__(self):
 %nodefaultctor Bnd_B3d;
 class Bnd_B3d {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Bnd_B3d;
+		%feature("autodoc", "	:rtype: None
+") Bnd_B3d;
 		 Bnd_B3d ();
-		%feature("autodoc", "Args:
-	theCenter(gp_XYZ)
-	theHSize(gp_XYZ)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Bnd_B3d;
+		%feature("autodoc", "	:param theCenter:
+	:type theCenter: gp_XYZ
+	:param theHSize:
+	:type theHSize: gp_XYZ
+	:rtype: None
+") Bnd_B3d;
 		 Bnd_B3d (const gp_XYZ & theCenter,const gp_XYZ & theHSize);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsVoid;
+		%feature("autodoc", "	:rtype: bool
+") IsVoid;
 		Standard_Boolean IsVoid ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	thePnt(gp_XYZ)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param thePnt:
+	:type thePnt: gp_XYZ
+	:rtype: None
+") Add;
 		void Add (const gp_XYZ & thePnt);
-		%feature("autodoc", "Args:
-	thePnt(gp_Pnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param thePnt:
+	:type thePnt: gp_Pnt
+	:rtype: None
+") Add;
 		void Add (const gp_Pnt & thePnt);
-		%feature("autodoc", "Args:
-	theBox(Bnd_B3d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param theBox:
+	:type theBox: Bnd_B3d &
+	:rtype: None
+") Add;
 		void Add (const Bnd_B3d & theBox);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_XYZ
-
-No detailed docstring for this function.") CornerMin;
+		%feature("autodoc", "	:rtype: gp_XYZ
+") CornerMin;
 		gp_XYZ CornerMin ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_XYZ
-
-No detailed docstring for this function.") CornerMax;
+		%feature("autodoc", "	:rtype: gp_XYZ
+") CornerMax;
 		gp_XYZ CornerMax ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") SquareExtent;
+		%feature("autodoc", "	:rtype: float
+") SquareExtent;
 		Standard_Real SquareExtent ();
-		%feature("autodoc", "Args:
-	theDiff(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Enlarge;
+		%feature("autodoc", "	:param theDiff:
+	:type theDiff: float
+	:rtype: None
+") Enlarge;
 		void Enlarge (const Standard_Real theDiff);
-		%feature("autodoc", "Args:
-	theOtherBox(Bnd_B3d)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Limit;
+		%feature("autodoc", "	:param theOtherBox:
+	:type theOtherBox: Bnd_B3d &
+	:rtype: bool
+") Limit;
 		Standard_Boolean Limit (const Bnd_B3d & theOtherBox);
-		%feature("autodoc", "Args:
-	theTrsf(gp_Trsf)
-
-Returns:
-	Bnd_B3d
-
-No detailed docstring for this function.") Transformed;
+		%feature("autodoc", "	:param theTrsf:
+	:type theTrsf: gp_Trsf
+	:rtype: Bnd_B3d
+") Transformed;
 		Bnd_B3d Transformed (const gp_Trsf & theTrsf);
-		%feature("autodoc", "Args:
-	thePnt(gp_XYZ)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOut;
+		%feature("autodoc", "	:param thePnt:
+	:type thePnt: gp_XYZ
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const gp_XYZ & thePnt);
-		%feature("autodoc", "Args:
-	theCenter(gp_XYZ)
-	theRadius(Standard_Real)
-	isSphereHollow(Standard_Boolean)=Standard_False
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOut;
+		%feature("autodoc", "	:param theCenter:
+	:type theCenter: gp_XYZ
+	:param theRadius:
+	:type theRadius: float
+	:param isSphereHollow: default value is Standard_False
+	:type isSphereHollow: bool
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const gp_XYZ & theCenter,const Standard_Real theRadius,const Standard_Boolean isSphereHollow = Standard_False);
-		%feature("autodoc", "Args:
-	theOtherBox(Bnd_B3d)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOut;
+		%feature("autodoc", "	:param theOtherBox:
+	:type theOtherBox: Bnd_B3d &
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const Bnd_B3d & theOtherBox);
-		%feature("autodoc", "Args:
-	theOtherBox(Bnd_B3d)
-	theTrsf(gp_Trsf)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOut;
+		%feature("autodoc", "	:param theOtherBox:
+	:type theOtherBox: Bnd_B3d &
+	:param theTrsf:
+	:type theTrsf: gp_Trsf
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const Bnd_B3d & theOtherBox,const gp_Trsf & theTrsf);
-		%feature("autodoc", "Args:
-	theLine(gp_Ax1)
-	isRay(Standard_Boolean)=Standard_False
-	theOverthickness(Standard_Real)=0.0
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOut;
+		%feature("autodoc", "	:param theLine:
+	:type theLine: gp_Ax1
+	:param isRay: default value is Standard_False
+	:type isRay: bool
+	:param theOverthickness: default value is 0.0
+	:type theOverthickness: float
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const gp_Ax1 & theLine,const Standard_Boolean isRay = Standard_False,const Standard_Real theOverthickness = 0.0);
-		%feature("autodoc", "Args:
-	thePlane(gp_Ax3)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOut;
+		%feature("autodoc", "	:param thePlane:
+	:type thePlane: gp_Ax3
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const gp_Ax3 & thePlane);
-		%feature("autodoc", "Args:
-	theBox(Bnd_B3d)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsIn;
+		%feature("autodoc", "	:param theBox:
+	:type theBox: Bnd_B3d &
+	:rtype: bool
+") IsIn;
 		Standard_Boolean IsIn (const Bnd_B3d & theBox);
-		%feature("autodoc", "Args:
-	theBox(Bnd_B3d)
-	theTrsf(gp_Trsf)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsIn;
+		%feature("autodoc", "	:param theBox:
+	:type theBox: Bnd_B3d &
+	:param theTrsf:
+	:type theTrsf: gp_Trsf
+	:rtype: bool
+") IsIn;
 		Standard_Boolean IsIn (const Bnd_B3d & theBox,const gp_Trsf & theTrsf);
-		%feature("autodoc", "Args:
-	theCenter(gp_XYZ)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetCenter;
+		%feature("autodoc", "	:param theCenter:
+	:type theCenter: gp_XYZ
+	:rtype: None
+") SetCenter;
 		void SetCenter (const gp_XYZ & theCenter);
-		%feature("autodoc", "Args:
-	theHSize(gp_XYZ)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetHSize;
+		%feature("autodoc", "	:param theHSize:
+	:type theHSize: gp_XYZ
+	:rtype: None
+") SetHSize;
 		void SetHSize (const gp_XYZ & theHSize);
 };
 
@@ -1026,190 +700,122 @@ def __del__(self):
 %nodefaultctor Bnd_B3f;
 class Bnd_B3f {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Bnd_B3f;
+		%feature("autodoc", "	:rtype: None
+") Bnd_B3f;
 		 Bnd_B3f ();
-		%feature("autodoc", "Args:
-	theCenter(gp_XYZ)
-	theHSize(gp_XYZ)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Bnd_B3f;
+		%feature("autodoc", "	:param theCenter:
+	:type theCenter: gp_XYZ
+	:param theHSize:
+	:type theHSize: gp_XYZ
+	:rtype: None
+") Bnd_B3f;
 		 Bnd_B3f (const gp_XYZ & theCenter,const gp_XYZ & theHSize);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsVoid;
+		%feature("autodoc", "	:rtype: bool
+") IsVoid;
 		Standard_Boolean IsVoid ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	thePnt(gp_XYZ)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param thePnt:
+	:type thePnt: gp_XYZ
+	:rtype: None
+") Add;
 		void Add (const gp_XYZ & thePnt);
-		%feature("autodoc", "Args:
-	thePnt(gp_Pnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param thePnt:
+	:type thePnt: gp_Pnt
+	:rtype: None
+") Add;
 		void Add (const gp_Pnt & thePnt);
-		%feature("autodoc", "Args:
-	theBox(Bnd_B3f)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param theBox:
+	:type theBox: Bnd_B3f &
+	:rtype: None
+") Add;
 		void Add (const Bnd_B3f & theBox);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_XYZ
-
-No detailed docstring for this function.") CornerMin;
+		%feature("autodoc", "	:rtype: gp_XYZ
+") CornerMin;
 		gp_XYZ CornerMin ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_XYZ
-
-No detailed docstring for this function.") CornerMax;
+		%feature("autodoc", "	:rtype: gp_XYZ
+") CornerMax;
 		gp_XYZ CornerMax ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") SquareExtent;
+		%feature("autodoc", "	:rtype: float
+") SquareExtent;
 		Standard_Real SquareExtent ();
-		%feature("autodoc", "Args:
-	theDiff(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Enlarge;
+		%feature("autodoc", "	:param theDiff:
+	:type theDiff: float
+	:rtype: None
+") Enlarge;
 		void Enlarge (const Standard_Real theDiff);
-		%feature("autodoc", "Args:
-	theOtherBox(Bnd_B3f)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Limit;
+		%feature("autodoc", "	:param theOtherBox:
+	:type theOtherBox: Bnd_B3f &
+	:rtype: bool
+") Limit;
 		Standard_Boolean Limit (const Bnd_B3f & theOtherBox);
-		%feature("autodoc", "Args:
-	theTrsf(gp_Trsf)
-
-Returns:
-	Bnd_B3f
-
-No detailed docstring for this function.") Transformed;
+		%feature("autodoc", "	:param theTrsf:
+	:type theTrsf: gp_Trsf
+	:rtype: Bnd_B3f
+") Transformed;
 		Bnd_B3f Transformed (const gp_Trsf & theTrsf);
-		%feature("autodoc", "Args:
-	thePnt(gp_XYZ)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOut;
+		%feature("autodoc", "	:param thePnt:
+	:type thePnt: gp_XYZ
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const gp_XYZ & thePnt);
-		%feature("autodoc", "Args:
-	theCenter(gp_XYZ)
-	theRadius(Standard_Real)
-	isSphereHollow(Standard_Boolean)=Standard_False
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOut;
+		%feature("autodoc", "	:param theCenter:
+	:type theCenter: gp_XYZ
+	:param theRadius:
+	:type theRadius: float
+	:param isSphereHollow: default value is Standard_False
+	:type isSphereHollow: bool
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const gp_XYZ & theCenter,const Standard_Real theRadius,const Standard_Boolean isSphereHollow = Standard_False);
-		%feature("autodoc", "Args:
-	theOtherBox(Bnd_B3f)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOut;
+		%feature("autodoc", "	:param theOtherBox:
+	:type theOtherBox: Bnd_B3f &
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const Bnd_B3f & theOtherBox);
-		%feature("autodoc", "Args:
-	theOtherBox(Bnd_B3f)
-	theTrsf(gp_Trsf)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOut;
+		%feature("autodoc", "	:param theOtherBox:
+	:type theOtherBox: Bnd_B3f &
+	:param theTrsf:
+	:type theTrsf: gp_Trsf
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const Bnd_B3f & theOtherBox,const gp_Trsf & theTrsf);
-		%feature("autodoc", "Args:
-	theLine(gp_Ax1)
-	isRay(Standard_Boolean)=Standard_False
-	theOverthickness(Standard_Real)=0.0
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOut;
+		%feature("autodoc", "	:param theLine:
+	:type theLine: gp_Ax1
+	:param isRay: default value is Standard_False
+	:type isRay: bool
+	:param theOverthickness: default value is 0.0
+	:type theOverthickness: float
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const gp_Ax1 & theLine,const Standard_Boolean isRay = Standard_False,const Standard_Real theOverthickness = 0.0);
-		%feature("autodoc", "Args:
-	thePlane(gp_Ax3)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOut;
+		%feature("autodoc", "	:param thePlane:
+	:type thePlane: gp_Ax3
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const gp_Ax3 & thePlane);
-		%feature("autodoc", "Args:
-	theBox(Bnd_B3f)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsIn;
+		%feature("autodoc", "	:param theBox:
+	:type theBox: Bnd_B3f &
+	:rtype: bool
+") IsIn;
 		Standard_Boolean IsIn (const Bnd_B3f & theBox);
-		%feature("autodoc", "Args:
-	theBox(Bnd_B3f)
-	theTrsf(gp_Trsf)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsIn;
+		%feature("autodoc", "	:param theBox:
+	:type theBox: Bnd_B3f &
+	:param theTrsf:
+	:type theTrsf: gp_Trsf
+	:rtype: bool
+") IsIn;
 		Standard_Boolean IsIn (const Bnd_B3f & theBox,const gp_Trsf & theTrsf);
-		%feature("autodoc", "Args:
-	theCenter(gp_XYZ)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetCenter;
+		%feature("autodoc", "	:param theCenter:
+	:type theCenter: gp_XYZ
+	:rtype: None
+") SetCenter;
 		void SetCenter (const gp_XYZ & theCenter);
-		%feature("autodoc", "Args:
-	theHSize(gp_XYZ)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetHSize;
+		%feature("autodoc", "	:param theHSize:
+	:type theHSize: gp_XYZ
+	:rtype: None
+") SetHSize;
 		void SetHSize (const gp_XYZ & theHSize);
 };
 
@@ -1231,107 +837,64 @@ def __del__(self):
 %nodefaultctor Bnd_BoundSortBox;
 class Bnd_BoundSortBox {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Constructs an empty comparison algorithm for bounding boxes. The bounding boxes are then defined using the Initialize function.
 
-Constructs an empty comparison algorithm for bounding boxes.  
-The bounding boxes are then defined using the Initialize function.") Bnd_BoundSortBox;
+	:rtype: None
+") Bnd_BoundSortBox;
 		 Bnd_BoundSortBox ();
-		%feature("autodoc", "Args:
-	CompleteBox(Bnd_Box)
-	SetOfBox(Handle_Bnd_HArray1OfBox)
+		%feature("autodoc", "	* Initializes this comparison algorithm with - the set of bounding boxes SetOfBox.
 
-Returns:
-	None
-
-Initializes this comparison algorithm with  
--   the set of bounding boxes SetOfBox.") Initialize;
+	:param CompleteBox:
+	:type CompleteBox: Bnd_Box &
+	:param SetOfBox:
+	:type SetOfBox: Handle_Bnd_HArray1OfBox &
+	:rtype: None
+") Initialize;
 		void Initialize (const Bnd_Box & CompleteBox,const Handle_Bnd_HArray1OfBox & SetOfBox);
-		%feature("autodoc", "Args:
-	SetOfBox(Handle_Bnd_HArray1OfBox)
+		%feature("autodoc", "	* Initializes this comparison algorithm with - the set of bounding boxes SetOfBox, where CompleteBox is given as the global bounding box of SetOfBox.
 
-Returns:
-	None
-
-Initializes this comparison algorithm with  
--   the set of bounding boxes SetOfBox, where  
-  CompleteBox is given as the global bounding box of SetOfBox.") Initialize;
+	:param SetOfBox:
+	:type SetOfBox: Handle_Bnd_HArray1OfBox &
+	:rtype: None
+") Initialize;
 		void Initialize (const Handle_Bnd_HArray1OfBox & SetOfBox);
-		%feature("autodoc", "Args:
-	CompleteBox(Bnd_Box)
-	nbComponents(Standard_Integer)
+		%feature("autodoc", "	* Initializes this comparison algorithm, giving it only - the maximum number nbComponents of the bounding boxes to be managed. Use the Add function to define the array of bounding boxes to be sorted by this algorithm.
 
-Returns:
-	None
-
-Initializes this comparison algorithm, giving it only  
--   the maximum number nbComponents  
-of the bounding boxes to be managed. Use the Add  
-function to define the array of bounding boxes to be sorted by this algorithm.") Initialize;
+	:param CompleteBox:
+	:type CompleteBox: Bnd_Box &
+	:param nbComponents:
+	:type nbComponents: Standard_Integer
+	:rtype: None
+") Initialize;
 		void Initialize (const Bnd_Box & CompleteBox,const Standard_Integer nbComponents);
-		%feature("autodoc", "Args:
-	theBox(Bnd_Box)
-	boxIndex(Standard_Integer)
+		%feature("autodoc", "	* Adds the bounding box theBox at position boxIndex in the array of boxes to be sorted by this comparison algorithm. This function is used only in conjunction with the third syntax described in the synopsis of Initialize. Exceptions: - Standard_OutOfRange if boxIndex is not in the range [ 1,nbComponents ] where nbComponents is the maximum number of bounding boxes declared for this comparison algorithm at initialization. - Standard_MultiplyDefined if a box already exists at position boxIndex in the array of boxes to be sorted by this comparison algorithm.
 
-Returns:
-	None
-
-Adds the bounding box theBox at position boxIndex in  
-the array of boxes to be sorted by this comparison algorithm.  
-This function is used only in conjunction with the third  
-syntax described in the synopsis of Initialize.  
- 
-Exceptions:  
- 
-- Standard_OutOfRange if boxIndex is not in the  
-  range [ 1,nbComponents ] where  
-  nbComponents is the maximum number of bounding  
-  boxes declared for this comparison algorithm at  
-  initialization.  
- 
-- Standard_MultiplyDefined if a box already exists at  
-  position boxIndex in the array of boxes to be sorted by  
-  this comparison algorithm.") Add;
+	:param theBox:
+	:type theBox: Bnd_Box &
+	:param boxIndex:
+	:type boxIndex: Standard_Integer
+	:rtype: None
+") Add;
 		void Add (const Bnd_Box & theBox,const Standard_Integer boxIndex);
-		%feature("autodoc", "Args:
-	theBox(Bnd_Box)
+		%feature("autodoc", "	* Compares the bounding box theBox, with the set of bounding boxes to be sorted by this comparison algorithm, and returns the list of intersecting bounding boxes as a list of indexes on the array of bounding boxes used by this algorithm.
 
-Returns:
-	TColStd_ListOfInteger
-
-Compares the bounding box theBox,  
-with the set of bounding boxes to be sorted by this  
-comparison algorithm, and returns the list of intersecting  
-bounding boxes as a list of indexes on the array of  
-bounding boxes used by this algorithm.") Compare;
+	:param theBox:
+	:type theBox: Bnd_Box &
+	:rtype: TColStd_ListOfInteger
+") Compare;
 		const TColStd_ListOfInteger & Compare (const Bnd_Box & theBox);
-		%feature("autodoc", "Args:
-	P(gp_Pln)
+		%feature("autodoc", "	* Compares the plane P with the set of bounding boxes to be sorted by this comparison algorithm, and returns the list of intersecting bounding boxes as a list of indexes on the array of bounding boxes used by this algorithm.
 
-Returns:
-	TColStd_ListOfInteger
-
-Compares the plane P  
-with the set of bounding boxes to be sorted by this  
-comparison algorithm, and returns the list of intersecting  
-bounding boxes as a list of indexes on the array of  
-bounding boxes used by this algorithm.") Compare;
+	:param P:
+	:type P: gp_Pln
+	:rtype: TColStd_ListOfInteger
+") Compare;
 		const TColStd_ListOfInteger & Compare (const gp_Pln & P);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
 };
 
@@ -1353,85 +916,54 @@ def __del__(self):
 %nodefaultctor Bnd_BoundSortBox2d;
 class Bnd_BoundSortBox2d {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Constructs an empty comparison algorithm for 2D bounding boxes. The bounding boxes are then defined using the Initialize function.
 
-Constructs an empty comparison algorithm for 2D bounding boxes.  
-The bounding boxes are then defined using the Initialize function.") Bnd_BoundSortBox2d;
+	:rtype: None
+") Bnd_BoundSortBox2d;
 		 Bnd_BoundSortBox2d ();
-		%feature("autodoc", "Args:
-	CompleteBox(Bnd_Box2d)
-	SetOfBox(Handle_Bnd_HArray1OfBox2d)
+		%feature("autodoc", "	* Initializes this comparison algorithm with - the set of 2D bounding boxes SetOfBox
 
-Returns:
-	None
-
-Initializes this comparison algorithm with  
--   the set of 2D bounding boxes SetOfBox") Initialize;
+	:param CompleteBox:
+	:type CompleteBox: Bnd_Box2d &
+	:param SetOfBox:
+	:type SetOfBox: Handle_Bnd_HArray1OfBox2d &
+	:rtype: None
+") Initialize;
 		void Initialize (const Bnd_Box2d & CompleteBox,const Handle_Bnd_HArray1OfBox2d & SetOfBox);
-		%feature("autodoc", "Args:
-	SetOfBox(Handle_Bnd_HArray1OfBox2d)
+		%feature("autodoc", "	* Initializes this comparison algorithm with - the set of 2D bounding boxes SetOfBox, where CompleteBox is given as the global bounding box of SetOfBox.
 
-Returns:
-	None
-
-Initializes this comparison algorithm with  
--   the set of 2D bounding boxes SetOfBox, where  
- CompleteBox is given as the global bounding box of   SetOfBox.") Initialize;
+	:param SetOfBox:
+	:type SetOfBox: Handle_Bnd_HArray1OfBox2d &
+	:rtype: None
+") Initialize;
 		void Initialize (const Handle_Bnd_HArray1OfBox2d & SetOfBox);
-		%feature("autodoc", "Args:
-	CompleteBox(Bnd_Box2d)
-	nbComponents(Standard_Integer)
+		%feature("autodoc", "	* Initializes this comparison algorithm, giving it only - the maximum number nbComponents, and - the global bounding box CompleteBox, of the 2D bounding boxes to be managed. Use the Add function to define the array of bounding boxes to be sorted by this algorithm.
 
-Returns:
-	None
-
-Initializes this comparison algorithm, giving it only  
--   the maximum number nbComponents, and  
--   the global bounding box CompleteBox,  
-of the 2D bounding boxes to be managed. Use the Add  
-function to define the array of bounding boxes to be sorted by this algorithm.") Initialize;
+	:param CompleteBox:
+	:type CompleteBox: Bnd_Box2d &
+	:param nbComponents:
+	:type nbComponents: Standard_Integer
+	:rtype: None
+") Initialize;
 		void Initialize (const Bnd_Box2d & CompleteBox,const Standard_Integer nbComponents);
-		%feature("autodoc", "Args:
-	theBox(Bnd_Box2d)
-	boxIndex(Standard_Integer)
+		%feature("autodoc", "	* Adds the 2D bounding box theBox at position boxIndex in the array of boxes to be sorted by this comparison algorithm. This function is used only in conjunction with the third syntax described in the synopsis of Initialize. Exceptions - Standard_OutOfRange if boxIndex is not in the range [ 1,nbComponents ] where nbComponents is the maximum number of bounding boxes declared for this comparison algorithm at initialization. - Standard_MultiplyDefined if a box still exists at position boxIndex in the array of boxes to be sorted by this comparison algorithm.
 
-Returns:
-	None
-
-Adds the 2D bounding box theBox at position boxIndex in  
-the array of boxes to be sorted by this comparison algorithm.  
-This function is used only in conjunction with the third  
-syntax described in the synopsis of Initialize.  
-Exceptions  
--   Standard_OutOfRange if boxIndex is not in the  
-  range [ 1,nbComponents ] where  
-  nbComponents is the maximum number of bounding  
-  boxes declared for this comparison algorithm at  
-  initialization.  
--   Standard_MultiplyDefined if a box still exists at  
-  position boxIndex in the array of boxes to be sorted by  
-  this comparison algorithm.") Add;
+	:param theBox:
+	:type theBox: Bnd_Box2d &
+	:param boxIndex:
+	:type boxIndex: Standard_Integer
+	:rtype: None
+") Add;
 		void Add (const Bnd_Box2d & theBox,const Standard_Integer boxIndex);
-		%feature("autodoc", "Args:
-	theBox(Bnd_Box2d)
+		%feature("autodoc", "	* Compares the 2D bounding box theBox with the set of bounding boxes to be sorted by this comparison algorithm, and returns the list of intersecting bounding boxes as a list of indexes on the array of bounding boxes used by this algorithm.
 
-Returns:
-	TColStd_ListOfInteger
-
-Compares the 2D bounding box theBox with the set of  
-bounding boxes to be sorted by this comparison algorithm,  
-and returns the list of intersecting bounding boxes as a list  
-of indexes on the array of bounding boxes used by this algorithm.") Compare;
+	:param theBox:
+	:type theBox: Bnd_Box2d &
+	:rtype: TColStd_ListOfInteger
+") Compare;
 		const TColStd_ListOfInteger & Compare (const Bnd_Box2d & theBox);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
 };
 
@@ -1453,394 +985,309 @@ def __del__(self):
 %nodefaultctor Bnd_Box;
 class Bnd_Box {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates an empty Box. The constructed box is qualified Void. Its gap is null.
 
-Creates an empty Box.  
-The constructed box is qualified Void. Its gap is null.") Bnd_Box;
+	:rtype: None
+") Bnd_Box;
 		 Bnd_Box ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Sets this bounding box so that it covers the whole of 3D space. It is infinitely long in all directions.
 
-Sets this bounding box so that it  covers the whole of 3D space.  
-       It is infinitely  long in all directions.") SetWhole;
+	:rtype: None
+") SetWhole;
 		void SetWhole ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Sets this bounding box so that it is empty. All points are outside a void box.
 
-Sets this bounding box so that it is empty. All points are outside a void box.") SetVoid;
+	:rtype: None
+") SetVoid;
 		void SetVoid ();
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
+		%feature("autodoc", "	* Sets this bounding box so that it bounds - the point P. This involves first setting this bounding box to be void and then adding the point P.
 
-Returns:
-	None
-
-Sets this bounding box so that it bounds  
--   the point P. This involves first setting this bounding box  
-  to be void and then adding the point P.") Set;
+	:param P:
+	:type P: gp_Pnt
+	:rtype: None
+") Set;
 		void Set (const gp_Pnt & P);
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
-	D(gp_Dir)
+		%feature("autodoc", "	* Sets this bounding box so that it bounds the half-line defined by point P and direction D, i.e. all points M defined by M=P+u*D, where u is greater than or equal to 0, are inside the bounding volume. This involves first setting this box to be void and then adding the half-line.
 
-Returns:
-	None
-
-Sets this bounding box so that it bounds  
-  the half-line defined by point P and direction D, i.e. all  
-  points M defined by M=P+u*D, where u is greater than  
-  or equal to 0, are inside the bounding volume. This  
-  involves first setting this box to be void and then adding   the half-line.") Set;
+	:param P:
+	:type P: gp_Pnt
+	:param D:
+	:type D: gp_Dir
+	:rtype: None
+") Set;
 		void Set (const gp_Pnt & P,const gp_Dir & D);
-		%feature("autodoc", "Args:
-	aXmin(Standard_Real)
-	aYmin(Standard_Real)
-	aZmin(Standard_Real)
-	aXmax(Standard_Real)
-	aYmax(Standard_Real)
-	aZmax(Standard_Real)
+		%feature("autodoc", "	* Enlarges this bounding box, if required, so that it contains at least: - interval [ aXmin,aXmax ] in the 'X Direction', - interval [ aYmin,aYmax ] in the 'Y Direction', - interval [ aZmin,aZmax ] in the 'Z Direction';
 
-Returns:
-	None
-
-Enlarges this bounding box, if required, so that it  
-         contains at least:  
-  -   interval [ aXmin,aXmax ] in the 'X Direction',  
-  -   interval [ aYmin,aYmax ] in the 'Y Direction',  
-  -   interval [ aZmin,aZmax ] in the 'Z Direction';") Update;
+	:param aXmin:
+	:type aXmin: float
+	:param aYmin:
+	:type aYmin: float
+	:param aZmin:
+	:type aZmin: float
+	:param aXmax:
+	:type aXmax: float
+	:param aYmax:
+	:type aYmax: float
+	:param aZmax:
+	:type aZmax: float
+	:rtype: None
+") Update;
 		void Update (const Standard_Real aXmin,const Standard_Real aYmin,const Standard_Real aZmin,const Standard_Real aXmax,const Standard_Real aYmax,const Standard_Real aZmax);
-		%feature("autodoc", "Args:
-	X(Standard_Real)
-	Y(Standard_Real)
-	Z(Standard_Real)
+		%feature("autodoc", "	* Adds a point of coordinates (X,Y,Z) to this bounding box.
 
-Returns:
-	None
-
-Adds a point of coordinates (X,Y,Z) to this bounding box.") Update;
+	:param X:
+	:type X: float
+	:param Y:
+	:type Y: float
+	:param Z:
+	:type Z: float
+	:rtype: None
+") Update;
 		void Update (const Standard_Real X,const Standard_Real Y,const Standard_Real Z);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the gap of this bounding box.
 
-Returns the gap of this bounding box.") GetGap;
+	:rtype: float
+") GetGap;
 		Standard_Real GetGap ();
-		%feature("autodoc", "Args:
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Set the gap of this bounding box to abs(Tol).
 
-Returns:
-	None
-
-Set the gap of this bounding box to abs(Tol).") SetGap;
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") SetGap;
 		void SetGap (const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Enlarges the box with a tolerance value. (minvalues-Abs(<tol>) and maxvalues+Abs(<tol>)) //!	This means that the minimum values of its X, Y and Z intervals of definition, when they are finite, are reduced by the absolute value of Tol, while the maximum values are increased by the same amount.
 
-Returns:
-	None
-
-Enlarges the      box    with    a   tolerance   value.  
-         (minvalues-Abs(<tol>) and maxvalues+Abs(<tol>))  
-//!	This means that the minimum values of its X, Y and Z  
-intervals of definition, when they are finite, are reduced by  
-the absolute value of Tol, while the maximum values are  
-increased by the same amount.") Enlarge;
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Enlarge;
 		void Enlarge (const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	aXmin(Standard_Real)
-	aYmin(Standard_Real)
-	aZmin(Standard_Real)
-	aXmax(Standard_Real)
-	aYmax(Standard_Real)
-	aZmax(Standard_Real)
+		%feature("autodoc", "	* Returns the bounds of this bounding box. The gap is included. If this bounding box is infinite (i.e. 'open'), returned values may be equal to +/- Precision::Infinite(). if IsVoid()
 
-Returns:
-	None
-
-Returns the bounds of this bounding box. The gap is included.  
-If this bounding box is infinite (i.e. 'open'), returned values  
-may be equal to +/- Precision::Infinite().  
-if IsVoid()") Get;
+	:param aXmin:
+	:type aXmin: float &
+	:param aYmin:
+	:type aYmin: float &
+	:param aZmin:
+	:type aZmin: float &
+	:param aXmax:
+	:type aXmax: float &
+	:param aYmax:
+	:type aYmax: float &
+	:param aZmax:
+	:type aZmax: float &
+	:rtype: None
+") Get;
 		void Get (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* The Box will be infinitely long in the Xmin direction.
 
-The   Box will be   infinitely   long  in the Xmin  
-         direction.") OpenXmin;
+	:rtype: None
+") OpenXmin;
 		void OpenXmin ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* The Box will be infinitely long in the Xmax direction.
 
-The   Box will be   infinitely   long  in the Xmax  
-         direction.") OpenXmax;
+	:rtype: None
+") OpenXmax;
 		void OpenXmax ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* The Box will be infinitely long in the Ymin direction.
 
-The   Box will be   infinitely   long  in the Ymin  
-         direction.") OpenYmin;
+	:rtype: None
+") OpenYmin;
 		void OpenYmin ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* The Box will be infinitely long in the Ymax direction.
 
-The   Box will be   infinitely   long  in the Ymax  
-         direction.") OpenYmax;
+	:rtype: None
+") OpenYmax;
 		void OpenYmax ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* The Box will be infinitely long in the Zmin direction.
 
-The   Box will be   infinitely   long  in the Zmin  
-         direction.") OpenZmin;
+	:rtype: None
+") OpenZmin;
 		void OpenZmin ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* The Box will be infinitely long in the Zmax direction.
 
-The   Box will be   infinitely   long  in the Zmax  
-         direction.") OpenZmax;
+	:rtype: None
+") OpenZmax;
 		void OpenZmax ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if this bounding box is open in the Xmin direction.
 
-Returns true if this bounding box is open in the  Xmin direction.") IsOpenXmin;
+	:rtype: bool
+") IsOpenXmin;
 		Standard_Boolean IsOpenXmin ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if this bounding box is open in the Xmax direction.
 
-Returns true if this bounding box is open in the  Xmax direction.") IsOpenXmax;
+	:rtype: bool
+") IsOpenXmax;
 		Standard_Boolean IsOpenXmax ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if this bounding box is open in the Ymix direction.
 
-Returns true if this bounding box is open in the  Ymix direction.") IsOpenYmin;
+	:rtype: bool
+") IsOpenYmin;
 		Standard_Boolean IsOpenYmin ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if this bounding box is open in the Ymax direction.
 
-Returns true if this bounding box is open in the  Ymax direction.") IsOpenYmax;
+	:rtype: bool
+") IsOpenYmax;
 		Standard_Boolean IsOpenYmax ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if this bounding box is open in the Zmin direction.
 
-Returns true if this bounding box is open in the  Zmin direction.") IsOpenZmin;
+	:rtype: bool
+") IsOpenZmin;
 		Standard_Boolean IsOpenZmin ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if this bounding box is open in the Zmax direction.
 
-Returns true if this bounding box is open in the  Zmax  direction.") IsOpenZmax;
+	:rtype: bool
+") IsOpenZmax;
 		Standard_Boolean IsOpenZmax ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if this bounding box is infinite in all 6 directions (WholeSpace flag).
 
-Returns true if this bounding box is infinite in all 6 directions (WholeSpace flag).") IsWhole;
+	:rtype: bool
+") IsWhole;
 		Standard_Boolean IsWhole ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if this bounding box is empty (Void flag).
 
-Returns true if this bounding box is empty (Void flag).") IsVoid;
+	:rtype: bool
+") IsVoid;
 		Standard_Boolean IsVoid ();
-		%feature("autodoc", "Args:
-	tol(Standard_Real)
+		%feature("autodoc", "	* true if xmax-xmin < tol.
 
-Returns:
-	Standard_Boolean
-
-true if xmax-xmin < tol.") IsXThin;
+	:param tol:
+	:type tol: float
+	:rtype: bool
+") IsXThin;
 		Standard_Boolean IsXThin (const Standard_Real tol);
-		%feature("autodoc", "Args:
-	tol(Standard_Real)
+		%feature("autodoc", "	* true if ymax-ymin < tol.
 
-Returns:
-	Standard_Boolean
-
-true if ymax-ymin < tol.") IsYThin;
+	:param tol:
+	:type tol: float
+	:rtype: bool
+") IsYThin;
 		Standard_Boolean IsYThin (const Standard_Real tol);
-		%feature("autodoc", "Args:
-	tol(Standard_Real)
+		%feature("autodoc", "	* true if zmax-zmin < tol.
 
-Returns:
-	Standard_Boolean
-
-true if zmax-zmin < tol.") IsZThin;
+	:param tol:
+	:type tol: float
+	:rtype: bool
+") IsZThin;
 		Standard_Boolean IsZThin (const Standard_Real tol);
-		%feature("autodoc", "Args:
-	tol(Standard_Real)
+		%feature("autodoc", "	* Returns true if IsXThin, IsYThin and IsZThin are all true, i.e. if the box is thin in all three dimensions.
 
-Returns:
-	Standard_Boolean
-
-Returns true if IsXThin, IsYThin and IsZThin are all true,  
-i.e. if the box is thin in all three dimensions.") IsThin;
+	:param tol:
+	:type tol: float
+	:rtype: bool
+") IsThin;
 		Standard_Boolean IsThin (const Standard_Real tol);
-		%feature("autodoc", "Args:
-	T(gp_Trsf)
+		%feature("autodoc", "	* Returns a bounding box which is the result of applying the transformation T to this bounding box. Warning Applying a geometric transformation (for example, a rotation) to a bounding box generally increases its dimensions. This is not optimal for algorithms which use it.
 
-Returns:
-	Bnd_Box
-
-Returns a bounding box which is the result of applying the  
-transformation T to this bounding box.  
-Warning  
-Applying a geometric transformation (for example, a  
-rotation) to a bounding box generally increases its  
-dimensions. This is not optimal for algorithms which use it.") Transformed;
+	:param T:
+	:type T: gp_Trsf
+	:rtype: Bnd_Box
+") Transformed;
 		Bnd_Box Transformed (const gp_Trsf & T);
-		%feature("autodoc", "Args:
-	Other(Bnd_Box)
+		%feature("autodoc", "	* Adds the box <Other> to <self>.
 
-Returns:
-	None
-
-Adds the box <Other> to <self>.") Add;
+	:param Other:
+	:type Other: Bnd_Box &
+	:rtype: None
+") Add;
 		void Add (const Bnd_Box & Other);
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
+		%feature("autodoc", "	* Adds a Pnt to the box.
 
-Returns:
-	None
-
-Adds a Pnt to the box.") Add;
+	:param P:
+	:type P: gp_Pnt
+	:rtype: None
+") Add;
 		void Add (const gp_Pnt & P);
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
-	D(gp_Dir)
+		%feature("autodoc", "	* Extends <self> from the Pnt <P> in the direction <D>.
 
-Returns:
-	None
-
-Extends  <self> from the Pnt <P> in the direction <D>.") Add;
+	:param P:
+	:type P: gp_Pnt
+	:param D:
+	:type D: gp_Dir
+	:rtype: None
+") Add;
 		void Add (const gp_Pnt & P,const gp_Dir & D);
-		%feature("autodoc", "Args:
-	D(gp_Dir)
+		%feature("autodoc", "	* Extends the Box in the given Direction, i.e. adds an half-line. The box may become infinite in 1,2 or 3 directions.
 
-Returns:
-	None
-
-Extends the Box  in the given Direction, i.e. adds  
-         an  half-line. The   box  may become   infinite in  
-         1,2 or 3 directions.") Add;
+	:param D:
+	:type D: gp_Dir
+	:rtype: None
+") Add;
 		void Add (const gp_Dir & D);
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
+		%feature("autodoc", "	* Returns True if the Pnt is out the box.
 
-Returns:
-	Standard_Boolean
-
-Returns True if the Pnt is out the box.") IsOut;
+	:param P:
+	:type P: gp_Pnt
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const gp_Pnt & P);
-		%feature("autodoc", "Args:
-	L(gp_Lin)
+		%feature("autodoc", "	* Returns False if the line intersects the box.
 
-Returns:
-	Standard_Boolean
-
-Returns False if the line intersects the box.") IsOut;
+	:param L:
+	:type L: gp_Lin
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const gp_Lin & L);
-		%feature("autodoc", "Args:
-	P(gp_Pln)
+		%feature("autodoc", "	* Returns False if the plane intersects the box.
 
-Returns:
-	Standard_Boolean
-
-Returns False if the plane intersects the box.") IsOut;
+	:param P:
+	:type P: gp_Pln
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const gp_Pln & P);
-		%feature("autodoc", "Args:
-	Other(Bnd_Box)
+		%feature("autodoc", "	* Returns False if the <Box> intersects or is inside <self>.
 
-Returns:
-	Standard_Boolean
-
-Returns False if the <Box> intersects or is inside <self>.") IsOut;
+	:param Other:
+	:type Other: Bnd_Box &
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const Bnd_Box & Other);
-		%feature("autodoc", "Args:
-	Other(Bnd_Box)
-	T(gp_Trsf)
+		%feature("autodoc", "	* Returns False if the transformed <Box> intersects or is inside <self>.
 
-Returns:
-	Standard_Boolean
-
-Returns False if  the transformed <Box> intersects  
-         or  is inside <self>.") IsOut;
+	:param Other:
+	:type Other: Bnd_Box &
+	:param T:
+	:type T: gp_Trsf
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const Bnd_Box & Other,const gp_Trsf & T);
-		%feature("autodoc", "Args:
-	T1(gp_Trsf)
-	Other(Bnd_Box)
-	T2(gp_Trsf)
+		%feature("autodoc", "	* Returns False if the transformed <Box> intersects or is inside the transformed box <self>.
 
-Returns:
-	Standard_Boolean
-
-Returns False  if the transformed <Box> intersects  
-         or  is inside the transformed box <self>.") IsOut;
+	:param T1:
+	:type T1: gp_Trsf
+	:param Other:
+	:type Other: Bnd_Box &
+	:param T2:
+	:type T2: gp_Trsf
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const gp_Trsf & T1,const Bnd_Box & Other,const gp_Trsf & T2);
-		%feature("autodoc", "Args:
-	P1(gp_Pnt)
-	P2(gp_Pnt)
-	D(gp_Dir)
+		%feature("autodoc", "	* Returns False if the flat band lying between two parallel 	 lines represented by their reference points <P1>, <P2> and direction <D> intersects the box.
 
-Returns:
-	Standard_Boolean
-
-Returns False  if the flat band lying between two parallel  
-   	    lines represented by their reference points <P1>, <P2> and  
-         direction <D> intersects the box.") IsOut;
+	:param P1:
+	:type P1: gp_Pnt
+	:param P2:
+	:type P2: gp_Pnt
+	:param D:
+	:type D: gp_Dir
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const gp_Pnt & P1,const gp_Pnt & P2,const gp_Dir & D);
-		%feature("autodoc", "Args:
-	Other(Bnd_Box)
+		%feature("autodoc", "	* Computes the minimum distance between two boxes.
 
-Returns:
-	Standard_Real
-
-Computes the minimum distance between two boxes.") Distance;
+	:param Other:
+	:type Other: Bnd_Box &
+	:rtype: float
+") Distance;
 		Standard_Real Distance (const Bnd_Box & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Computes the squared diagonal of me.
 
-Computes the squared diagonal of me.") SquareExtent;
+	:rtype: float
+") SquareExtent;
 		Standard_Real SquareExtent ();
 };
 
@@ -1862,285 +1309,219 @@ def __del__(self):
 %nodefaultctor Bnd_Box2d;
 class Bnd_Box2d {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates an empty 2D bounding box. The constructed box is qualified Void. Its gap is null.
 
-Creates an empty 2D bounding box.  
-The constructed box is qualified Void. Its gap is null.") Bnd_Box2d;
+	:rtype: None
+") Bnd_Box2d;
 		 Bnd_Box2d ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Sets this bounding box so that it covers the whole 2D space, i.e. it is infinite in all directions.
 
-Sets this bounding box so that it covers the whole 2D  
-space, i.e. it is infinite in all directions.") SetWhole;
+	:rtype: None
+") SetWhole;
 		void SetWhole ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Sets this 2D bounding box so that it is empty. All points are outside a void box.
 
-Sets this 2D bounding box so that it is empty. All points are outside a void box.") SetVoid;
+	:rtype: None
+") SetVoid;
 		void SetVoid ();
-		%feature("autodoc", "Args:
-	P(gp_Pnt2d)
+		%feature("autodoc", "	* Sets this 2D bounding box so that it bounds the point P. This involves first setting this bounding box to be void and then adding the point PThe rectangle bounds the point <P>.
 
-Returns:
-	None
-
-Sets this 2D bounding box so that it bounds  
-  the point P. This involves first setting this bounding box  
-  to be void and then adding the point PThe rectangle bounds   the  point <P>.") Set;
+	:param P:
+	:type P: gp_Pnt2d
+	:rtype: None
+") Set;
 		void Set (const gp_Pnt2d & P);
-		%feature("autodoc", "Args:
-	P(gp_Pnt2d)
-	D(gp_Dir2d)
+		%feature("autodoc", "	* Sets this 2D bounding box so that it bounds the half-line defined by point P and direction D, i.e. all points M defined by M=P+u*D, where u is greater than or equal to 0, are inside the bounding area. This involves first setting this 2D box to be void and then adding the half-line.
 
-Returns:
-	None
-
-Sets this 2D bounding box so that it bounds  
-the half-line defined by point P and direction D, i.e. all  
-  points M defined by M=P+u*D, where u is greater than  
-  or equal to 0, are inside the bounding area. This involves  
-  first setting this 2D box to be void and then adding the   half-line.") Set;
+	:param P:
+	:type P: gp_Pnt2d
+	:param D:
+	:type D: gp_Dir2d
+	:rtype: None
+") Set;
 		void Set (const gp_Pnt2d & P,const gp_Dir2d & D);
-		%feature("autodoc", "Args:
-	aXmin(Standard_Real)
-	aYmin(Standard_Real)
-	aXmax(Standard_Real)
-	aYmax(Standard_Real)
+		%feature("autodoc", "	* Enlarges this 2D bounding box, if required, so that it contains at least: - interval [ aXmin,aXmax ] in the 'X Direction', - interval [ aYmin,aYmax ] in the 'Y Direction'
 
-Returns:
-	None
-
-Enlarges this 2D bounding box, if required, so that it  
-         contains at least:  
-  -   interval [ aXmin,aXmax ] in the 'X Direction',  
-  -   interval [ aYmin,aYmax ] in the 'Y Direction'") Update;
+	:param aXmin:
+	:type aXmin: float
+	:param aYmin:
+	:type aYmin: float
+	:param aXmax:
+	:type aXmax: float
+	:param aYmax:
+	:type aYmax: float
+	:rtype: None
+") Update;
 		void Update (const Standard_Real aXmin,const Standard_Real aYmin,const Standard_Real aXmax,const Standard_Real aYmax);
-		%feature("autodoc", "Args:
-	X(Standard_Real)
-	Y(Standard_Real)
+		%feature("autodoc", "	* Adds a point of coordinates (X,Y) to this bounding box.
 
-Returns:
-	None
-
-Adds a point of coordinates (X,Y) to this bounding box.") Update;
+	:param X:
+	:type X: float
+	:param Y:
+	:type Y: float
+	:rtype: None
+") Update;
 		void Update (const Standard_Real X,const Standard_Real Y);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the gap of this 2D bounding box.
 
-Returns the gap of this 2D bounding box.") GetGap;
+	:rtype: float
+") GetGap;
 		Standard_Real GetGap ();
-		%feature("autodoc", "Args:
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Set the gap of this 2D bounding box to abs(Tol).
 
-Returns:
-	None
-
-Set the gap of this 2D bounding box to abs(Tol).") SetGap;
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") SetGap;
 		void SetGap (const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Enlarges the box with a tolerance value. This means that the minimum values of its X and Y intervals of definition, when they are finite, are reduced by the absolute value of Tol, while the maximum values are increased by the same amount.
 
-Returns:
-	None
-
-Enlarges     the  box  with    a  tolerance  value.  
-  This means that the minimum values of its X and Y  
-intervals of definition, when they are finite, are reduced by  
-the absolute value of Tol, while the maximum values are  
-increased by the same amount.") Enlarge;
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Enlarge;
 		void Enlarge (const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	aXmin(Standard_Real)
-	aYmin(Standard_Real)
-	aXmax(Standard_Real)
-	aYmax(Standard_Real)
+		%feature("autodoc", "	* Returns the bounds of this 2D bounding box. The gap is included. If this bounding box is infinite (i.e. 'open'), returned values may be equal to +/- Precision::Infinite(). if IsVoid()
 
-Returns:
-	None
-
-Returns the bounds of this 2D bounding box.  
-The gap is included. If this bounding box is infinite (i.e. 'open'), returned values  
-may be equal to +/- Precision::Infinite().  
-if IsVoid()") Get;
+	:param aXmin:
+	:type aXmin: float &
+	:param aYmin:
+	:type aYmin: float &
+	:param aXmax:
+	:type aXmax: float &
+	:param aYmax:
+	:type aYmax: float &
+	:rtype: None
+") Get;
 		void Get (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* The Box will be infinitely long in the Xmin direction.
 
-The Box will be infinitely long in the Xmin direction.") OpenXmin;
+	:rtype: None
+") OpenXmin;
 		void OpenXmin ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* The Box will be infinitely long in the Xmax direction.
 
-The Box will be infinitely long in the Xmax direction.") OpenXmax;
+	:rtype: None
+") OpenXmax;
 		void OpenXmax ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* The Box will be infinitely long in the Ymin direction.
 
-The Box will be infinitely long in the Ymin direction.") OpenYmin;
+	:rtype: None
+") OpenYmin;
 		void OpenYmin ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* The Box will be infinitely long in the Ymax direction.
 
-The Box will be infinitely long in the Ymax direction.") OpenYmax;
+	:rtype: None
+") OpenYmax;
 		void OpenYmax ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if this bounding box is open in the Xmin direction.
 
-Returns true if this bounding box is open in the Xmin direction.") IsOpenXmin;
+	:rtype: bool
+") IsOpenXmin;
 		Standard_Boolean IsOpenXmin ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if this bounding box is open in the Xmax direction.
 
-Returns true if this bounding box is open in the Xmax direction.") IsOpenXmax;
+	:rtype: bool
+") IsOpenXmax;
 		Standard_Boolean IsOpenXmax ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if this bounding box is open in the Ymin direction.
 
-Returns true if this bounding box is open in the Ymin direction.") IsOpenYmin;
+	:rtype: bool
+") IsOpenYmin;
 		Standard_Boolean IsOpenYmin ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if this bounding box is open in the Ymax direction.
 
-Returns true if this bounding box is open in the Ymax direction.") IsOpenYmax;
+	:rtype: bool
+") IsOpenYmax;
 		Standard_Boolean IsOpenYmax ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if this bounding box is infinite in all 4 directions (Whole Space flag).
 
-Returns true if this bounding box is infinite in all 4  
-directions (Whole Space flag).") IsWhole;
+	:rtype: bool
+") IsWhole;
 		Standard_Boolean IsWhole ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if this 2D bounding box is empty (Void flag).
 
-Returns true if this 2D bounding box is empty (Void flag).") IsVoid;
+	:rtype: bool
+") IsVoid;
 		Standard_Boolean IsVoid ();
-		%feature("autodoc", "Args:
-	T(gp_Trsf2d)
+		%feature("autodoc", "	* Returns a bounding box which is the result of applying the transformation T to this bounding box. Warning Applying a geometric transformation (for example, a rotation) to a bounding box generally increases its dimensions. This is not optimal for algorithms which use it.
 
-Returns:
-	Bnd_Box2d
-
-Returns a bounding box which is the result of applying the  
-transformation T to this bounding box.  
-Warning  
-Applying a geometric transformation (for example, a  
-rotation) to a bounding box generally increases its  
-dimensions. This is not optimal for algorithms which use it.") Transformed;
+	:param T:
+	:type T: gp_Trsf2d
+	:rtype: Bnd_Box2d
+") Transformed;
 		Bnd_Box2d Transformed (const gp_Trsf2d & T);
-		%feature("autodoc", "Args:
-	Other(Bnd_Box2d)
+		%feature("autodoc", "	* Adds the 2d box <Other> to <self>.
 
-Returns:
-	None
-
-Adds the 2d box <Other> to <self>.") Add;
+	:param Other:
+	:type Other: Bnd_Box2d &
+	:rtype: None
+") Add;
 		void Add (const Bnd_Box2d & Other);
-		%feature("autodoc", "Args:
-	P(gp_Pnt2d)
+		%feature("autodoc", "	* Adds the 2d pnt <P> to <self>.
 
-Returns:
-	None
-
-Adds  the 2d pnt <P> to <self>.") Add;
+	:param P:
+	:type P: gp_Pnt2d
+	:rtype: None
+") Add;
 		void Add (const gp_Pnt2d & P);
-		%feature("autodoc", "Args:
-	P(gp_Pnt2d)
-	D(gp_Dir2d)
+		%feature("autodoc", "	* Extends <self> from the Pnt <P> in the direction <D>.
 
-Returns:
-	None
-
-Extends <self> from the Pnt <P> in the direction <D>.") Add;
+	:param P:
+	:type P: gp_Pnt2d
+	:param D:
+	:type D: gp_Dir2d
+	:rtype: None
+") Add;
 		void Add (const gp_Pnt2d & P,const gp_Dir2d & D);
-		%feature("autodoc", "Args:
-	D(gp_Dir2d)
+		%feature("autodoc", "	* Extends the Box in the given Direction, i.e. adds a half-line. The box may become infinite in 1 or 2 directions.
 
-Returns:
-	None
-
-Extends the Box  in the given Direction, i.e. adds  
-         a half-line. The box may become infinite in 1 or 2  
-         directions.") Add;
+	:param D:
+	:type D: gp_Dir2d
+	:rtype: None
+") Add;
 		void Add (const gp_Dir2d & D);
-		%feature("autodoc", "Args:
-	P(gp_Pnt2d)
+		%feature("autodoc", "	* Returns True if the 2d pnt <P> is out <self>.
 
-Returns:
-	Standard_Boolean
-
-Returns True if the 2d pnt <P> is out <self>.") IsOut;
+	:param P:
+	:type P: gp_Pnt2d
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const gp_Pnt2d & P);
-		%feature("autodoc", "Args:
-	Other(Bnd_Box2d)
+		%feature("autodoc", "	* Returns True if <Box2d> is out <self>.
 
-Returns:
-	Standard_Boolean
-
-Returns True if <Box2d> is out <self>.") IsOut;
+	:param Other:
+	:type Other: Bnd_Box2d &
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const Bnd_Box2d & Other);
-		%feature("autodoc", "Args:
-	Other(Bnd_Box2d)
-	T(gp_Trsf2d)
+		%feature("autodoc", "	* Returns True if transformed <Box2d> is out <self>.
 
-Returns:
-	Standard_Boolean
-
-Returns True if transformed <Box2d> is out <self>.") IsOut;
+	:param Other:
+	:type Other: Bnd_Box2d &
+	:param T:
+	:type T: gp_Trsf2d
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const Bnd_Box2d & Other,const gp_Trsf2d & T);
-		%feature("autodoc", "Args:
-	T1(gp_Trsf2d)
-	Other(Bnd_Box2d)
-	T2(gp_Trsf2d)
+		%feature("autodoc", "	* Compares a transformed bounding with a transformed bounding. The default implementation is to make a copy of <self> and <Other>, to transform them and to test.
 
-Returns:
-	Standard_Boolean
-
-Compares  a transformed  bounding with  a    transformed  
-         bounding. The default implementation is  to make a copy  
-         of <self> and <Other>, to transform them and to test.") IsOut;
+	:param T1:
+	:type T1: gp_Trsf2d
+	:param Other:
+	:type Other: Bnd_Box2d &
+	:param T2:
+	:type T2: gp_Trsf2d
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const gp_Trsf2d & T1,const Bnd_Box2d & Other,const gp_Trsf2d & T2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Computes the squared diagonal of me.
 
-Computes the squared diagonal of me.") SquareExtent;
+	:rtype: float
+") SquareExtent;
 		Standard_Real SquareExtent ();
 };
 
@@ -2162,92 +1543,58 @@ def __del__(self):
 %nodefaultctor Bnd_HArray1OfBox;
 class Bnd_HArray1OfBox : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Bnd_HArray1OfBox;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Bnd_HArray1OfBox;
 		 Bnd_HArray1OfBox (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(Bnd_Box)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Bnd_HArray1OfBox;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: Bnd_Box &
+	:rtype: None
+") Bnd_HArray1OfBox;
 		 Bnd_HArray1OfBox (const Standard_Integer Low,const Standard_Integer Up,const Bnd_Box & V);
-		%feature("autodoc", "Args:
-	V(Bnd_Box)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Bnd_Box &
+	:rtype: None
+") Init;
 		void Init (const Bnd_Box & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Bnd_Box)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Bnd_Box &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Bnd_Box & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Bnd_Box
+") Value;
 		const Bnd_Box & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Bnd_Box
+") ChangeValue;
 		Bnd_Box & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Array1OfBox
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: Bnd_Array1OfBox
+") Array1;
 		const Bnd_Array1OfBox & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Array1OfBox
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: Bnd_Array1OfBox
+") ChangeArray1;
 		Bnd_Array1OfBox & ChangeArray1 ();
 };
 
@@ -2308,92 +1655,58 @@ def __del__(self):
 %nodefaultctor Bnd_HArray1OfBox2d;
 class Bnd_HArray1OfBox2d : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Bnd_HArray1OfBox2d;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Bnd_HArray1OfBox2d;
 		 Bnd_HArray1OfBox2d (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(Bnd_Box2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Bnd_HArray1OfBox2d;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: Bnd_Box2d &
+	:rtype: None
+") Bnd_HArray1OfBox2d;
 		 Bnd_HArray1OfBox2d (const Standard_Integer Low,const Standard_Integer Up,const Bnd_Box2d & V);
-		%feature("autodoc", "Args:
-	V(Bnd_Box2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Bnd_Box2d &
+	:rtype: None
+") Init;
 		void Init (const Bnd_Box2d & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Bnd_Box2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Bnd_Box2d &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Bnd_Box2d & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Bnd_Box2d
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Bnd_Box2d
+") Value;
 		const Bnd_Box2d & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Bnd_Box2d
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Bnd_Box2d
+") ChangeValue;
 		Bnd_Box2d & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Array1OfBox2d
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: Bnd_Array1OfBox2d
+") Array1;
 		const Bnd_Array1OfBox2d & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Array1OfBox2d
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: Bnd_Array1OfBox2d
+") ChangeArray1;
 		Bnd_Array1OfBox2d & ChangeArray1 ();
 };
 
@@ -2454,92 +1767,58 @@ def __del__(self):
 %nodefaultctor Bnd_HArray1OfSphere;
 class Bnd_HArray1OfSphere : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Bnd_HArray1OfSphere;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Bnd_HArray1OfSphere;
 		 Bnd_HArray1OfSphere (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(Bnd_Sphere)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Bnd_HArray1OfSphere;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: Bnd_Sphere &
+	:rtype: None
+") Bnd_HArray1OfSphere;
 		 Bnd_HArray1OfSphere (const Standard_Integer Low,const Standard_Integer Up,const Bnd_Sphere & V);
-		%feature("autodoc", "Args:
-	V(Bnd_Sphere)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Bnd_Sphere &
+	:rtype: None
+") Init;
 		void Init (const Bnd_Sphere & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Bnd_Sphere)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Bnd_Sphere &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Bnd_Sphere & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Bnd_Sphere
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Bnd_Sphere
+") Value;
 		const Bnd_Sphere & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Bnd_Sphere
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Bnd_Sphere
+") ChangeValue;
 		Bnd_Sphere & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Array1OfSphere
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: Bnd_Array1OfSphere
+") Array1;
 		const Bnd_Array1OfSphere & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Array1OfSphere
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: Bnd_Array1OfSphere
+") ChangeArray1;
 		Bnd_Array1OfSphere & ChangeArray1 ();
 };
 
@@ -2600,168 +1879,111 @@ def __del__(self):
 %nodefaultctor Bnd_SeqOfBox;
 class Bnd_SeqOfBox : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Bnd_SeqOfBox;
+		%feature("autodoc", "	:rtype: None
+") Bnd_SeqOfBox;
 		 Bnd_SeqOfBox ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Bnd_SeqOfBox)
-
-Returns:
-	Bnd_SeqOfBox
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Bnd_SeqOfBox &
+	:rtype: Bnd_SeqOfBox
+") Assign;
 		const Bnd_SeqOfBox & Assign (const Bnd_SeqOfBox & Other);
-		%feature("autodoc", "Args:
-	Other(Bnd_SeqOfBox)
-
-Returns:
-	Bnd_SeqOfBox
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Bnd_SeqOfBox &
+	:rtype: Bnd_SeqOfBox
+") operator=;
 		const Bnd_SeqOfBox & operator = (const Bnd_SeqOfBox & Other);
-		%feature("autodoc", "Args:
-	T(Bnd_Box)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Bnd_Box &
+	:rtype: None
+") Append;
 		void Append (const Bnd_Box & T);
-		%feature("autodoc", "Args:
-	S(Bnd_SeqOfBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Bnd_SeqOfBox &
+	:rtype: None
+") Append;
 		void Append (Bnd_SeqOfBox & S);
-		%feature("autodoc", "Args:
-	T(Bnd_Box)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Bnd_Box &
+	:rtype: None
+") Prepend;
 		void Prepend (const Bnd_Box & T);
-		%feature("autodoc", "Args:
-	S(Bnd_SeqOfBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Bnd_SeqOfBox &
+	:rtype: None
+") Prepend;
 		void Prepend (Bnd_SeqOfBox & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Bnd_Box)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Bnd_Box &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Bnd_Box & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Bnd_SeqOfBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Bnd_SeqOfBox &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Bnd_SeqOfBox & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Bnd_Box)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Bnd_Box &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Bnd_Box & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Bnd_SeqOfBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Bnd_SeqOfBox &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Bnd_SeqOfBox & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Bnd_Box
+") First;
 		const Bnd_Box & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Bnd_Box
+") Last;
 		const Bnd_Box & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Bnd_SeqOfBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Bnd_SeqOfBox &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Bnd_SeqOfBox & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Bnd_Box
+") Value;
 		const Bnd_Box & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Bnd_Box)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Bnd_Box &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Bnd_Box & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Bnd_Box
+") ChangeValue;
 		Bnd_Box & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -2783,22 +2005,17 @@ def __del__(self):
 %nodefaultctor Bnd_SequenceNodeOfSeqOfBox;
 class Bnd_SequenceNodeOfSeqOfBox : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Bnd_Box)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Bnd_SequenceNodeOfSeqOfBox;
+		%feature("autodoc", "	:param I:
+	:type I: Bnd_Box &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Bnd_SequenceNodeOfSeqOfBox;
 		 Bnd_SequenceNodeOfSeqOfBox (const Bnd_Box & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Bnd_Box
+") Value;
 		Bnd_Box & Value ();
 };
 
@@ -2859,151 +2076,118 @@ def __del__(self):
 %nodefaultctor Bnd_Sphere;
 class Bnd_Sphere {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor
 
-Empty constructor") Bnd_Sphere;
+	:rtype: None
+") Bnd_Sphere;
 		 Bnd_Sphere ();
-		%feature("autodoc", "Args:
-	theCntr(gp_XYZ)
-	theRad(Standard_Real)
-	theU(Standard_Integer)
-	theV(Standard_Integer)
+		%feature("autodoc", "	* Constructor of a definite sphere
 
-Returns:
-	None
-
-Constructor of a definite sphere") Bnd_Sphere;
+	:param theCntr:
+	:type theCntr: gp_XYZ
+	:param theRad:
+	:type theRad: float
+	:param theU:
+	:type theU: Standard_Integer
+	:param theV:
+	:type theV: Standard_Integer
+	:rtype: None
+") Bnd_Sphere;
 		 Bnd_Sphere (const gp_XYZ & theCntr,const Standard_Real theRad,const Standard_Integer theU,const Standard_Integer theV);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the U parameter on shape
 
-Returns the U parameter on shape") U;
+	:rtype: int
+") U;
 		Standard_Integer U ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the V parameter on shape
 
-Returns the V parameter on shape") V;
+	:rtype: int
+") V;
 		Standard_Integer V ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns validity status, indicating that this //!		sphere corresponds to a real entity
 
-Returns validity status, indicating that this  
-//!		sphere corresponds to a real entity") IsValid;
+	:rtype: bool
+") IsValid;
 		Standard_Boolean IsValid ();
-		%feature("autodoc", "Args:
-	isValid(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValid;
+		%feature("autodoc", "	:param isValid:
+	:type isValid: bool
+	:rtype: None
+") SetValid;
 		void SetValid (const Standard_Boolean isValid);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_XYZ
+		%feature("autodoc", "	* Returns center of sphere object
 
-Returns center of sphere object") Center;
+	:rtype: gp_XYZ
+") Center;
 		const gp_XYZ & Center ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the radius value
 
-Returns the radius value") Radius;
+	:rtype: float
+") Radius;
 		Standard_Real Radius ();
-		%feature("autodoc", "Args:
-	theXYZ(gp_XYZ)
-	theMin(Standard_Real)
-	theMax(Standard_Real)
+		%feature("autodoc", "	* Calculate and return minimal and maximal distance to sphere. //!		NOTE: This function is tightly optimized; any modifications //!		may affect performance!
 
-Returns:
-	None
-
-Calculate and return minimal and maximal distance to sphere.  
-//!		NOTE: This function is tightly optimized; any modifications  
-//!		may affect performance!") Distances;
+	:param theXYZ:
+	:type theXYZ: gp_XYZ
+	:param theMin:
+	:type theMin: float &
+	:param theMax:
+	:type theMax: float &
+	:rtype: None
+") Distances;
 		void Distances (const gp_XYZ & theXYZ,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	theXYZ(gp_XYZ)
-	theMin(Standard_Real)
-	theMax(Standard_Real)
+		%feature("autodoc", "	* Calculate and return minimal and maximal distance to sphere. //!		NOTE: This function is tightly optimized; any modifications //!		may affect performance!
 
-Returns:
-	None
-
-Calculate and return minimal and maximal distance to sphere.  
-//!		NOTE: This function is tightly optimized; any modifications  
-//!		may affect performance!") SquareDistances;
+	:param theXYZ:
+	:type theXYZ: gp_XYZ
+	:param theMin:
+	:type theMin: float &
+	:param theMax:
+	:type theMax: float &
+	:rtype: None
+") SquareDistances;
 		void SquareDistances (const gp_XYZ & theXYZ,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	theNode(gp_XYZ)
-	theProjNode(gp_XYZ)
-	theDist(Standard_Real)
-	theInside(Standard_Boolean)
+		%feature("autodoc", "	* Projects a point on entity. //!		 Returns true if success
 
-Returns:
-	Standard_Boolean
-
-Projects a point on entity.  
-//!		   Returns true if success") Project;
+	:param theNode:
+	:type theNode: gp_XYZ
+	:param theProjNode:
+	:type theProjNode: gp_XYZ
+	:param theDist:
+	:type theDist: float &
+	:param theInside:
+	:type theInside: bool
+	:rtype: bool
+") Project;
 		Standard_Boolean Project (const gp_XYZ & theNode,gp_XYZ & theProjNode,Standard_Real &OutValue,Standard_Boolean & theInside);
-		%feature("autodoc", "Args:
-	theNode(gp_XYZ)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Distance;
+		%feature("autodoc", "	:param theNode:
+	:type theNode: gp_XYZ
+	:rtype: float
+") Distance;
 		Standard_Real Distance (const gp_XYZ & theNode);
-		%feature("autodoc", "Args:
-	theNode(gp_XYZ)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") SquareDistance;
+		%feature("autodoc", "	:param theNode:
+	:type theNode: gp_XYZ
+	:rtype: float
+") SquareDistance;
 		Standard_Real SquareDistance (const gp_XYZ & theNode);
-		%feature("autodoc", "Args:
-	theOther(Bnd_Sphere)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param theOther:
+	:type theOther: Bnd_Sphere &
+	:rtype: None
+") Add;
 		void Add (const Bnd_Sphere & theOther);
-		%feature("autodoc", "Args:
-	theOther(Bnd_Sphere)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOut;
+		%feature("autodoc", "	:param theOther:
+	:type theOther: Bnd_Sphere &
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const Bnd_Sphere & theOther);
-		%feature("autodoc", "Args:
-	thePnt(gp_XYZ)
-	theMaxDist(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOut;
+		%feature("autodoc", "	:param thePnt:
+	:type thePnt: gp_XYZ
+	:param theMaxDist:
+	:type theMaxDist: float &
+	:rtype: bool
+") IsOut;
 		Standard_Boolean IsOut (const gp_XYZ & thePnt,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") SquareExtent;
+		%feature("autodoc", "	:rtype: float
+") SquareExtent;
 		Standard_Real SquareExtent ();
 };
 

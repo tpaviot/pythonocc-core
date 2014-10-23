@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -49,165 +49,124 @@ enum MAT_Side {
 %nodefaultctor MAT_Arc;
 class MAT_Arc : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	ArcIndex(Standard_Integer)
-	GeomIndex(Standard_Integer)
-	FirstElement(Handle_MAT_BasicElt)
-	SecondElement(Handle_MAT_BasicElt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_Arc;
+		%feature("autodoc", "	:param ArcIndex:
+	:type ArcIndex: Standard_Integer
+	:param GeomIndex:
+	:type GeomIndex: Standard_Integer
+	:param FirstElement:
+	:type FirstElement: Handle_MAT_BasicElt &
+	:param SecondElement:
+	:type SecondElement: Handle_MAT_BasicElt &
+	:rtype: None
+") MAT_Arc;
 		 MAT_Arc (const Standard_Integer ArcIndex,const Standard_Integer GeomIndex,const Handle_MAT_BasicElt & FirstElement,const Handle_MAT_BasicElt & SecondElement);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the index of <self> in Graph.theArcs.
 
-Returns the index of <self> in Graph.theArcs.") Index;
+	:rtype: int
+") Index;
 		Standard_Integer Index ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the index associated of the geometric  representation of <self>.
 
-Returns  the index associated  of the  geometric  
-           representation of <self>.") GeomIndex;
+	:rtype: int
+") GeomIndex;
 		Standard_Integer GeomIndex ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_BasicElt
+		%feature("autodoc", "	* Returns one of the BasicElt equidistant from <self>.
 
-Returns one of the BasicElt equidistant from <self>.") FirstElement;
+	:rtype: Handle_MAT_BasicElt
+") FirstElement;
 		Handle_MAT_BasicElt FirstElement ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_BasicElt
+		%feature("autodoc", "	* Returns the other BasicElt equidistant from <self>.
 
-Returns the other BasicElt equidistant from <self>.") SecondElement;
+	:rtype: Handle_MAT_BasicElt
+") SecondElement;
 		Handle_MAT_BasicElt SecondElement ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Node
+		%feature("autodoc", "	* Returns one Node extremity of <self>.
 
-Returns one Node extremity of <self>.") FirstNode;
+	:rtype: Handle_MAT_Node
+") FirstNode;
 		Handle_MAT_Node FirstNode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Node
+		%feature("autodoc", "	* Returns the other Node extremity of <self>.
 
-Returns the other Node extremity of <self>.") SecondNode;
+	:rtype: Handle_MAT_Node
+") SecondNode;
 		Handle_MAT_Node SecondNode ();
-		%feature("autodoc", "Args:
-	aNode(Handle_MAT_Node)
+		%feature("autodoc", "	* an Arc has two Node, if <aNode> egal one  Returns the other. if <aNode> is not oh <self>
 
-Returns:
-	Handle_MAT_Node
-
-an Arc has two Node, if <aNode> egal one  
-           Returns the other.  
- if <aNode> is not oh <self>") TheOtherNode;
+	:param aNode:
+	:type aNode: Handle_MAT_Node &
+	:rtype: Handle_MAT_Node
+") TheOtherNode;
 		Handle_MAT_Node TheOtherNode (const Handle_MAT_Node & aNode);
-		%feature("autodoc", "Args:
-	aNode(Handle_MAT_Node)
-	aSide(MAT_Side)
+		%feature("autodoc", "	* Returnst True is there is an arc linked to  the Node <aNode> located on the side <aSide> of <self>; if <aNode> is not on <self>
 
-Returns:
-	Standard_Boolean
-
-Returnst True is there is an arc linked to  
-           the Node <aNode> located on the side <aSide> of <self>;  if <aNode> is not on <self>") HasNeighbour;
+	:param aNode:
+	:type aNode: Handle_MAT_Node &
+	:param aSide:
+	:type aSide: MAT_Side
+	:rtype: bool
+") HasNeighbour;
 		Standard_Boolean HasNeighbour (const Handle_MAT_Node & aNode,const MAT_Side aSide);
-		%feature("autodoc", "Args:
-	aNode(Handle_MAT_Node)
-	aSide(MAT_Side)
+		%feature("autodoc", "	* Returns the first arc linked to the Node <aNode>  located on the side <aSide> of <self>; if HasNeighbour() returns False.
 
-Returns:
-	Handle_MAT_Arc
-
-Returns the first arc linked to the Node <aNode>  
-           located on the side <aSide> of <self>;  if HasNeighbour() returns FALSE.") Neighbour;
+	:param aNode:
+	:type aNode: Handle_MAT_Node &
+	:param aSide:
+	:type aSide: MAT_Side
+	:rtype: Handle_MAT_Arc
+") Neighbour;
 		Handle_MAT_Arc Neighbour (const Handle_MAT_Node & aNode,const MAT_Side aSide);
-		%feature("autodoc", "Args:
-	anInteger(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetIndex;
+		%feature("autodoc", "	:param anInteger:
+	:type anInteger: Standard_Integer
+	:rtype: None
+") SetIndex;
 		void SetIndex (const Standard_Integer anInteger);
-		%feature("autodoc", "Args:
-	anInteger(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetGeomIndex;
+		%feature("autodoc", "	:param anInteger:
+	:type anInteger: Standard_Integer
+	:rtype: None
+") SetGeomIndex;
 		void SetGeomIndex (const Standard_Integer anInteger);
-		%feature("autodoc", "Args:
-	aBasicElt(Handle_MAT_BasicElt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetFirstElement;
+		%feature("autodoc", "	:param aBasicElt:
+	:type aBasicElt: Handle_MAT_BasicElt &
+	:rtype: None
+") SetFirstElement;
 		void SetFirstElement (const Handle_MAT_BasicElt & aBasicElt);
-		%feature("autodoc", "Args:
-	aBasicElt(Handle_MAT_BasicElt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetSecondElement;
+		%feature("autodoc", "	:param aBasicElt:
+	:type aBasicElt: Handle_MAT_BasicElt &
+	:rtype: None
+") SetSecondElement;
 		void SetSecondElement (const Handle_MAT_BasicElt & aBasicElt);
-		%feature("autodoc", "Args:
-	aNode(Handle_MAT_Node)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetFirstNode;
+		%feature("autodoc", "	:param aNode:
+	:type aNode: Handle_MAT_Node &
+	:rtype: None
+") SetFirstNode;
 		void SetFirstNode (const Handle_MAT_Node & aNode);
-		%feature("autodoc", "Args:
-	aNode(Handle_MAT_Node)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetSecondNode;
+		%feature("autodoc", "	:param aNode:
+	:type aNode: Handle_MAT_Node &
+	:rtype: None
+") SetSecondNode;
 		void SetSecondNode (const Handle_MAT_Node & aNode);
-		%feature("autodoc", "Args:
-	aSide(MAT_Side)
-	anArc(Handle_MAT_Arc)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetFirstArc;
+		%feature("autodoc", "	:param aSide:
+	:type aSide: MAT_Side
+	:param anArc:
+	:type anArc: Handle_MAT_Arc &
+	:rtype: None
+") SetFirstArc;
 		void SetFirstArc (const MAT_Side aSide,const Handle_MAT_Arc & anArc);
-		%feature("autodoc", "Args:
-	aSide(MAT_Side)
-	anArc(Handle_MAT_Arc)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetSecondArc;
+		%feature("autodoc", "	:param aSide:
+	:type aSide: MAT_Side
+	:param anArc:
+	:type anArc: Handle_MAT_Arc &
+	:rtype: None
+") SetSecondArc;
 		void SetSecondArc (const MAT_Side aSide,const Handle_MAT_Arc & anArc);
-		%feature("autodoc", "Args:
-	aSide(MAT_Side)
-	aNode(Handle_MAT_Node)
-	anArc(Handle_MAT_Arc)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetNeighbour;
+		%feature("autodoc", "	:param aSide:
+	:type aSide: MAT_Side
+	:param aNode:
+	:type aNode: Handle_MAT_Node &
+	:param anArc:
+	:type anArc: Handle_MAT_Arc &
+	:rtype: None
+") SetNeighbour;
 		void SetNeighbour (const MAT_Side aSide,const Handle_MAT_Node & aNode,const Handle_MAT_Arc & anArc);
 };
 
@@ -268,75 +227,52 @@ def __del__(self):
 %nodefaultctor MAT_BasicElt;
 class MAT_BasicElt : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	anInteger(Standard_Integer)
+		%feature("autodoc", "	* Constructor, <anInteger> is the <index> of <self>.
 
-Returns:
-	None
-
-Constructor, <anInteger> is the <index> of <self>.") MAT_BasicElt;
+	:param anInteger:
+	:type anInteger: Standard_Integer
+	:rtype: None
+") MAT_BasicElt;
 		 MAT_BasicElt (const Standard_Integer anInteger);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Arc
+		%feature("autodoc", "	* Return <startArcLeft> or <startArcRight> corresponding  to <aSide>.
 
-Return <startArcLeft> or <startArcRight> corresponding  
-           to <aSide>.") StartArc;
+	:rtype: Handle_MAT_Arc
+") StartArc;
 		Handle_MAT_Arc StartArc ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Arc
+		%feature("autodoc", "	* Return <endArcLeft> or <endArcRight> corresponding  to <aSide>.
 
-Return <endArcLeft> or <endArcRight> corresponding  
-           to <aSide>.") EndArc;
+	:rtype: Handle_MAT_Arc
+") EndArc;
 		Handle_MAT_Arc EndArc ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Return the <index> of <self> in Graph.TheBasicElts.
 
-Return the <index> of <self> in Graph.TheBasicElts.") Index;
+	:rtype: int
+") Index;
 		Standard_Integer Index ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Return the <GeomIndex> of <self>.
 
-Return the <GeomIndex> of <self>.") GeomIndex;
+	:rtype: int
+") GeomIndex;
 		Standard_Integer GeomIndex ();
-		%feature("autodoc", "Args:
-	anArc(Handle_MAT_Arc)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetStartArc;
+		%feature("autodoc", "	:param anArc:
+	:type anArc: Handle_MAT_Arc &
+	:rtype: None
+") SetStartArc;
 		void SetStartArc (const Handle_MAT_Arc & anArc);
-		%feature("autodoc", "Args:
-	anArc(Handle_MAT_Arc)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetEndArc;
+		%feature("autodoc", "	:param anArc:
+	:type anArc: Handle_MAT_Arc &
+	:rtype: None
+") SetEndArc;
 		void SetEndArc (const Handle_MAT_Arc & anArc);
-		%feature("autodoc", "Args:
-	anInteger(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetIndex;
+		%feature("autodoc", "	:param anInteger:
+	:type anInteger: Standard_Integer
+	:rtype: None
+") SetIndex;
 		void SetIndex (const Standard_Integer anInteger);
-		%feature("autodoc", "Args:
-	anInteger(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetGeomIndex;
+		%feature("autodoc", "	:param anInteger:
+	:type anInteger: Standard_Integer
+	:rtype: None
+") SetGeomIndex;
 		void SetGeomIndex (const Standard_Integer anInteger);
 };
 
@@ -397,230 +333,125 @@ def __del__(self):
 %nodefaultctor MAT_Bisector;
 class MAT_Bisector : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_Bisector;
+		%feature("autodoc", "	:rtype: None
+") MAT_Bisector;
 		 MAT_Bisector ();
-		%feature("autodoc", "Args:
-	abisector(Handle_MAT_Bisector)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AddBisector;
+		%feature("autodoc", "	:param abisector:
+	:type abisector: Handle_MAT_Bisector &
+	:rtype: None
+") AddBisector;
 		void AddBisector (const Handle_MAT_Bisector & abisector);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_ListOfBisector
-
-No detailed docstring for this function.") List;
+		%feature("autodoc", "	:rtype: Handle_MAT_ListOfBisector
+") List;
 		Handle_MAT_ListOfBisector List ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Bisector
-
-No detailed docstring for this function.") FirstBisector;
+		%feature("autodoc", "	:rtype: Handle_MAT_Bisector
+") FirstBisector;
 		Handle_MAT_Bisector FirstBisector ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Bisector
-
-No detailed docstring for this function.") LastBisector;
+		%feature("autodoc", "	:rtype: Handle_MAT_Bisector
+") LastBisector;
 		Handle_MAT_Bisector LastBisector ();
-		%feature("autodoc", "Args:
-	anumber(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BisectorNumber;
+		%feature("autodoc", "	:param anumber:
+	:type anumber: Standard_Integer
+	:rtype: None
+") BisectorNumber;
 		void BisectorNumber (const Standard_Integer anumber);
-		%feature("autodoc", "Args:
-	anumber(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IndexNumber;
+		%feature("autodoc", "	:param anumber:
+	:type anumber: Standard_Integer
+	:rtype: None
+") IndexNumber;
 		void IndexNumber (const Standard_Integer anumber);
-		%feature("autodoc", "Args:
-	anedge(Handle_MAT_Edge)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FirstEdge;
+		%feature("autodoc", "	:param anedge:
+	:type anedge: Handle_MAT_Edge &
+	:rtype: None
+") FirstEdge;
 		void FirstEdge (const Handle_MAT_Edge & anedge);
-		%feature("autodoc", "Args:
-	anedge(Handle_MAT_Edge)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SecondEdge;
+		%feature("autodoc", "	:param anedge:
+	:type anedge: Handle_MAT_Edge &
+	:rtype: None
+") SecondEdge;
 		void SecondEdge (const Handle_MAT_Edge & anedge);
-		%feature("autodoc", "Args:
-	apoint(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IssuePoint;
+		%feature("autodoc", "	:param apoint:
+	:type apoint: Standard_Integer
+	:rtype: None
+") IssuePoint;
 		void IssuePoint (const Standard_Integer apoint);
-		%feature("autodoc", "Args:
-	apoint(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") EndPoint;
+		%feature("autodoc", "	:param apoint:
+	:type apoint: Standard_Integer
+	:rtype: None
+") EndPoint;
 		void EndPoint (const Standard_Integer apoint);
-		%feature("autodoc", "Args:
-	areal(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") DistIssuePoint;
+		%feature("autodoc", "	:param areal:
+	:type areal: float
+	:rtype: None
+") DistIssuePoint;
 		void DistIssuePoint (const Standard_Real areal);
-		%feature("autodoc", "Args:
-	avector(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FirstVector;
+		%feature("autodoc", "	:param avector:
+	:type avector: Standard_Integer
+	:rtype: None
+") FirstVector;
 		void FirstVector (const Standard_Integer avector);
-		%feature("autodoc", "Args:
-	avector(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SecondVector;
+		%feature("autodoc", "	:param avector:
+	:type avector: Standard_Integer
+	:rtype: None
+") SecondVector;
 		void SecondVector (const Standard_Integer avector);
-		%feature("autodoc", "Args:
-	asense(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Sense;
+		%feature("autodoc", "	:param asense:
+	:type asense: float
+	:rtype: None
+") Sense;
 		void Sense (const Standard_Real asense);
-		%feature("autodoc", "Args:
-	aparameter(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FirstParameter;
+		%feature("autodoc", "	:param aparameter:
+	:type aparameter: float
+	:rtype: None
+") FirstParameter;
 		void FirstParameter (const Standard_Real aparameter);
-		%feature("autodoc", "Args:
-	aparameter(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SecondParameter;
+		%feature("autodoc", "	:param aparameter:
+	:type aparameter: float
+	:rtype: None
+") SecondParameter;
 		void SecondParameter (const Standard_Real aparameter);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") BisectorNumber;
+		%feature("autodoc", "	:rtype: int
+") BisectorNumber;
 		Standard_Integer BisectorNumber ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") IndexNumber;
+		%feature("autodoc", "	:rtype: int
+") IndexNumber;
 		Standard_Integer IndexNumber ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Edge
-
-No detailed docstring for this function.") FirstEdge;
+		%feature("autodoc", "	:rtype: Handle_MAT_Edge
+") FirstEdge;
 		Handle_MAT_Edge FirstEdge ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Edge
-
-No detailed docstring for this function.") SecondEdge;
+		%feature("autodoc", "	:rtype: Handle_MAT_Edge
+") SecondEdge;
 		Handle_MAT_Edge SecondEdge ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") IssuePoint;
+		%feature("autodoc", "	:rtype: int
+") IssuePoint;
 		Standard_Integer IssuePoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") EndPoint;
+		%feature("autodoc", "	:rtype: int
+") EndPoint;
 		Standard_Integer EndPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") DistIssuePoint;
+		%feature("autodoc", "	:rtype: float
+") DistIssuePoint;
 		Standard_Real DistIssuePoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FirstVector;
+		%feature("autodoc", "	:rtype: int
+") FirstVector;
 		Standard_Integer FirstVector ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") SecondVector;
+		%feature("autodoc", "	:rtype: int
+") SecondVector;
 		Standard_Integer SecondVector ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Sense;
+		%feature("autodoc", "	:rtype: float
+") Sense;
 		Standard_Real Sense ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") FirstParameter;
+		%feature("autodoc", "	:rtype: float
+") FirstParameter;
 		Standard_Real FirstParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") SecondParameter;
+		%feature("autodoc", "	:rtype: float
+") SecondParameter;
 		Standard_Real SecondParameter ();
-		%feature("autodoc", "Args:
-	ashift(Standard_Integer)
-	alevel(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param ashift:
+	:type ashift: Standard_Integer
+	:param alevel:
+	:type alevel: Standard_Integer
+	:rtype: None
+") Dump;
 		void Dump (const Standard_Integer ashift,const Standard_Integer alevel);
 };
 
@@ -681,42 +512,24 @@ def __del__(self):
 %nodefaultctor MAT_DataMapIteratorOfDataMapOfIntegerArc;
 class MAT_DataMapIteratorOfDataMapOfIntegerArc : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_DataMapIteratorOfDataMapOfIntegerArc;
+		%feature("autodoc", "	:rtype: None
+") MAT_DataMapIteratorOfDataMapOfIntegerArc;
 		 MAT_DataMapIteratorOfDataMapOfIntegerArc ();
-		%feature("autodoc", "Args:
-	aMap(MAT_DataMapOfIntegerArc)
-
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_DataMapIteratorOfDataMapOfIntegerArc;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: MAT_DataMapOfIntegerArc &
+	:rtype: None
+") MAT_DataMapIteratorOfDataMapOfIntegerArc;
 		 MAT_DataMapIteratorOfDataMapOfIntegerArc (const MAT_DataMapOfIntegerArc & aMap);
-		%feature("autodoc", "Args:
-	aMap(MAT_DataMapOfIntegerArc)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: MAT_DataMapOfIntegerArc &
+	:rtype: None
+") Initialize;
 		void Initialize (const MAT_DataMapOfIntegerArc & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: int
+") Key;
 		const Standard_Integer & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Arc
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_MAT_Arc
+") Value;
 		const Handle_MAT_Arc & Value ();
 };
 
@@ -738,42 +551,24 @@ def __del__(self):
 %nodefaultctor MAT_DataMapIteratorOfDataMapOfIntegerBasicElt;
 class MAT_DataMapIteratorOfDataMapOfIntegerBasicElt : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_DataMapIteratorOfDataMapOfIntegerBasicElt;
+		%feature("autodoc", "	:rtype: None
+") MAT_DataMapIteratorOfDataMapOfIntegerBasicElt;
 		 MAT_DataMapIteratorOfDataMapOfIntegerBasicElt ();
-		%feature("autodoc", "Args:
-	aMap(MAT_DataMapOfIntegerBasicElt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_DataMapIteratorOfDataMapOfIntegerBasicElt;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: MAT_DataMapOfIntegerBasicElt &
+	:rtype: None
+") MAT_DataMapIteratorOfDataMapOfIntegerBasicElt;
 		 MAT_DataMapIteratorOfDataMapOfIntegerBasicElt (const MAT_DataMapOfIntegerBasicElt & aMap);
-		%feature("autodoc", "Args:
-	aMap(MAT_DataMapOfIntegerBasicElt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: MAT_DataMapOfIntegerBasicElt &
+	:rtype: None
+") Initialize;
 		void Initialize (const MAT_DataMapOfIntegerBasicElt & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: int
+") Key;
 		const Standard_Integer & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_BasicElt
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_MAT_BasicElt
+") Value;
 		const Handle_MAT_BasicElt & Value ();
 };
 
@@ -795,42 +590,24 @@ def __del__(self):
 %nodefaultctor MAT_DataMapIteratorOfDataMapOfIntegerBisector;
 class MAT_DataMapIteratorOfDataMapOfIntegerBisector : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_DataMapIteratorOfDataMapOfIntegerBisector;
+		%feature("autodoc", "	:rtype: None
+") MAT_DataMapIteratorOfDataMapOfIntegerBisector;
 		 MAT_DataMapIteratorOfDataMapOfIntegerBisector ();
-		%feature("autodoc", "Args:
-	aMap(MAT_DataMapOfIntegerBisector)
-
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_DataMapIteratorOfDataMapOfIntegerBisector;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: MAT_DataMapOfIntegerBisector &
+	:rtype: None
+") MAT_DataMapIteratorOfDataMapOfIntegerBisector;
 		 MAT_DataMapIteratorOfDataMapOfIntegerBisector (const MAT_DataMapOfIntegerBisector & aMap);
-		%feature("autodoc", "Args:
-	aMap(MAT_DataMapOfIntegerBisector)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: MAT_DataMapOfIntegerBisector &
+	:rtype: None
+") Initialize;
 		void Initialize (const MAT_DataMapOfIntegerBisector & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: int
+") Key;
 		const Standard_Integer & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Bisector
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_MAT_Bisector
+") Value;
 		const Handle_MAT_Bisector & Value ();
 };
 
@@ -852,42 +629,24 @@ def __del__(self):
 %nodefaultctor MAT_DataMapIteratorOfDataMapOfIntegerNode;
 class MAT_DataMapIteratorOfDataMapOfIntegerNode : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_DataMapIteratorOfDataMapOfIntegerNode;
+		%feature("autodoc", "	:rtype: None
+") MAT_DataMapIteratorOfDataMapOfIntegerNode;
 		 MAT_DataMapIteratorOfDataMapOfIntegerNode ();
-		%feature("autodoc", "Args:
-	aMap(MAT_DataMapOfIntegerNode)
-
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_DataMapIteratorOfDataMapOfIntegerNode;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: MAT_DataMapOfIntegerNode &
+	:rtype: None
+") MAT_DataMapIteratorOfDataMapOfIntegerNode;
 		 MAT_DataMapIteratorOfDataMapOfIntegerNode (const MAT_DataMapOfIntegerNode & aMap);
-		%feature("autodoc", "Args:
-	aMap(MAT_DataMapOfIntegerNode)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: MAT_DataMapOfIntegerNode &
+	:rtype: None
+") Initialize;
 		void Initialize (const MAT_DataMapOfIntegerNode & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: int
+") Key;
 		const Standard_Integer & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Node
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_MAT_Node
+") Value;
 		const Handle_MAT_Node & Value ();
 };
 
@@ -909,15 +668,14 @@ def __del__(self):
 %nodefaultctor MAT_DataMapNodeOfDataMapOfIntegerArc;
 class MAT_DataMapNodeOfDataMapOfIntegerArc : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(Handle_MAT_Arc)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_DataMapNodeOfDataMapOfIntegerArc;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: Handle_MAT_Arc &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") MAT_DataMapNodeOfDataMapOfIntegerArc;
 		 MAT_DataMapNodeOfDataMapOfIntegerArc (Standard_Integer &OutValue,const Handle_MAT_Arc & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
@@ -932,12 +690,8 @@ No detailed docstring for this function.") MAT_DataMapNodeOfDataMapOfIntegerArc;
                 $self->Key()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Arc
-
-No detailed docstring for this function.") Value;
+            		%feature("autodoc", "	:rtype: Handle_MAT_Arc
+") Value;
 		Handle_MAT_Arc & Value ();
 };
 
@@ -998,15 +752,14 @@ def __del__(self):
 %nodefaultctor MAT_DataMapNodeOfDataMapOfIntegerBasicElt;
 class MAT_DataMapNodeOfDataMapOfIntegerBasicElt : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(Handle_MAT_BasicElt)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_DataMapNodeOfDataMapOfIntegerBasicElt;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: Handle_MAT_BasicElt &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") MAT_DataMapNodeOfDataMapOfIntegerBasicElt;
 		 MAT_DataMapNodeOfDataMapOfIntegerBasicElt (Standard_Integer &OutValue,const Handle_MAT_BasicElt & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
@@ -1021,12 +774,8 @@ No detailed docstring for this function.") MAT_DataMapNodeOfDataMapOfIntegerBasi
                 $self->Key()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_BasicElt
-
-No detailed docstring for this function.") Value;
+            		%feature("autodoc", "	:rtype: Handle_MAT_BasicElt
+") Value;
 		Handle_MAT_BasicElt & Value ();
 };
 
@@ -1087,15 +836,14 @@ def __del__(self):
 %nodefaultctor MAT_DataMapNodeOfDataMapOfIntegerBisector;
 class MAT_DataMapNodeOfDataMapOfIntegerBisector : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(Handle_MAT_Bisector)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_DataMapNodeOfDataMapOfIntegerBisector;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: Handle_MAT_Bisector &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") MAT_DataMapNodeOfDataMapOfIntegerBisector;
 		 MAT_DataMapNodeOfDataMapOfIntegerBisector (Standard_Integer &OutValue,const Handle_MAT_Bisector & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
@@ -1110,12 +858,8 @@ No detailed docstring for this function.") MAT_DataMapNodeOfDataMapOfIntegerBise
                 $self->Key()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Bisector
-
-No detailed docstring for this function.") Value;
+            		%feature("autodoc", "	:rtype: Handle_MAT_Bisector
+") Value;
 		Handle_MAT_Bisector & Value ();
 };
 
@@ -1176,15 +920,14 @@ def __del__(self):
 %nodefaultctor MAT_DataMapNodeOfDataMapOfIntegerNode;
 class MAT_DataMapNodeOfDataMapOfIntegerNode : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(Handle_MAT_Node)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_DataMapNodeOfDataMapOfIntegerNode;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: Handle_MAT_Node &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") MAT_DataMapNodeOfDataMapOfIntegerNode;
 		 MAT_DataMapNodeOfDataMapOfIntegerNode (Standard_Integer &OutValue,const Handle_MAT_Node & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
@@ -1199,12 +942,8 @@ No detailed docstring for this function.") MAT_DataMapNodeOfDataMapOfIntegerNode
                 $self->Key()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Node
-
-No detailed docstring for this function.") Value;
+            		%feature("autodoc", "	:rtype: Handle_MAT_Node
+") Value;
 		Handle_MAT_Node & Value ();
 };
 
@@ -1265,101 +1004,65 @@ def __del__(self):
 %nodefaultctor MAT_DataMapOfIntegerArc;
 class MAT_DataMapOfIntegerArc : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_DataMapOfIntegerArc;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") MAT_DataMapOfIntegerArc;
 		 MAT_DataMapOfIntegerArc (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(MAT_DataMapOfIntegerArc)
-
-Returns:
-	MAT_DataMapOfIntegerArc
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: MAT_DataMapOfIntegerArc &
+	:rtype: MAT_DataMapOfIntegerArc
+") Assign;
 		MAT_DataMapOfIntegerArc & Assign (const MAT_DataMapOfIntegerArc & Other);
-		%feature("autodoc", "Args:
-	Other(MAT_DataMapOfIntegerArc)
-
-Returns:
-	MAT_DataMapOfIntegerArc
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: MAT_DataMapOfIntegerArc &
+	:rtype: MAT_DataMapOfIntegerArc
+") operator=;
 		MAT_DataMapOfIntegerArc & operator = (const MAT_DataMapOfIntegerArc & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(Handle_MAT_Arc)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: Handle_MAT_Arc &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (Standard_Integer &OutValue,const Handle_MAT_Arc & I);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Handle_MAT_Arc
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Handle_MAT_Arc
+") Find;
 		const Handle_MAT_Arc & Find (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Handle_MAT_Arc
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Handle_MAT_Arc
+") ChangeFind;
 		Handle_MAT_Arc & ChangeFind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
 };
 
@@ -1381,101 +1084,65 @@ def __del__(self):
 %nodefaultctor MAT_DataMapOfIntegerBasicElt;
 class MAT_DataMapOfIntegerBasicElt : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_DataMapOfIntegerBasicElt;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") MAT_DataMapOfIntegerBasicElt;
 		 MAT_DataMapOfIntegerBasicElt (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(MAT_DataMapOfIntegerBasicElt)
-
-Returns:
-	MAT_DataMapOfIntegerBasicElt
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: MAT_DataMapOfIntegerBasicElt &
+	:rtype: MAT_DataMapOfIntegerBasicElt
+") Assign;
 		MAT_DataMapOfIntegerBasicElt & Assign (const MAT_DataMapOfIntegerBasicElt & Other);
-		%feature("autodoc", "Args:
-	Other(MAT_DataMapOfIntegerBasicElt)
-
-Returns:
-	MAT_DataMapOfIntegerBasicElt
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: MAT_DataMapOfIntegerBasicElt &
+	:rtype: MAT_DataMapOfIntegerBasicElt
+") operator=;
 		MAT_DataMapOfIntegerBasicElt & operator = (const MAT_DataMapOfIntegerBasicElt & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(Handle_MAT_BasicElt)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: Handle_MAT_BasicElt &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (Standard_Integer &OutValue,const Handle_MAT_BasicElt & I);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Handle_MAT_BasicElt
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Handle_MAT_BasicElt
+") Find;
 		const Handle_MAT_BasicElt & Find (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Handle_MAT_BasicElt
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Handle_MAT_BasicElt
+") ChangeFind;
 		Handle_MAT_BasicElt & ChangeFind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
 };
 
@@ -1497,101 +1164,65 @@ def __del__(self):
 %nodefaultctor MAT_DataMapOfIntegerBisector;
 class MAT_DataMapOfIntegerBisector : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_DataMapOfIntegerBisector;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") MAT_DataMapOfIntegerBisector;
 		 MAT_DataMapOfIntegerBisector (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(MAT_DataMapOfIntegerBisector)
-
-Returns:
-	MAT_DataMapOfIntegerBisector
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: MAT_DataMapOfIntegerBisector &
+	:rtype: MAT_DataMapOfIntegerBisector
+") Assign;
 		MAT_DataMapOfIntegerBisector & Assign (const MAT_DataMapOfIntegerBisector & Other);
-		%feature("autodoc", "Args:
-	Other(MAT_DataMapOfIntegerBisector)
-
-Returns:
-	MAT_DataMapOfIntegerBisector
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: MAT_DataMapOfIntegerBisector &
+	:rtype: MAT_DataMapOfIntegerBisector
+") operator=;
 		MAT_DataMapOfIntegerBisector & operator = (const MAT_DataMapOfIntegerBisector & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(Handle_MAT_Bisector)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: Handle_MAT_Bisector &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (Standard_Integer &OutValue,const Handle_MAT_Bisector & I);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Handle_MAT_Bisector
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Handle_MAT_Bisector
+") Find;
 		const Handle_MAT_Bisector & Find (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Handle_MAT_Bisector
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Handle_MAT_Bisector
+") ChangeFind;
 		Handle_MAT_Bisector & ChangeFind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
 };
 
@@ -1613,101 +1244,65 @@ def __del__(self):
 %nodefaultctor MAT_DataMapOfIntegerNode;
 class MAT_DataMapOfIntegerNode : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_DataMapOfIntegerNode;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") MAT_DataMapOfIntegerNode;
 		 MAT_DataMapOfIntegerNode (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(MAT_DataMapOfIntegerNode)
-
-Returns:
-	MAT_DataMapOfIntegerNode
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: MAT_DataMapOfIntegerNode &
+	:rtype: MAT_DataMapOfIntegerNode
+") Assign;
 		MAT_DataMapOfIntegerNode & Assign (const MAT_DataMapOfIntegerNode & Other);
-		%feature("autodoc", "Args:
-	Other(MAT_DataMapOfIntegerNode)
-
-Returns:
-	MAT_DataMapOfIntegerNode
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: MAT_DataMapOfIntegerNode &
+	:rtype: MAT_DataMapOfIntegerNode
+") operator=;
 		MAT_DataMapOfIntegerNode & operator = (const MAT_DataMapOfIntegerNode & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(Handle_MAT_Node)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: Handle_MAT_Node &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (Standard_Integer &OutValue,const Handle_MAT_Node & I);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Handle_MAT_Node
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Handle_MAT_Node
+") Find;
 		const Handle_MAT_Node & Find (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Handle_MAT_Node
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Handle_MAT_Node
+") ChangeFind;
 		Handle_MAT_Node & ChangeFind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
 };
 
@@ -1729,96 +1324,55 @@ def __del__(self):
 %nodefaultctor MAT_Edge;
 class MAT_Edge : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_Edge;
+		%feature("autodoc", "	:rtype: None
+") MAT_Edge;
 		 MAT_Edge ();
-		%feature("autodoc", "Args:
-	anumber(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") EdgeNumber;
+		%feature("autodoc", "	:param anumber:
+	:type anumber: Standard_Integer
+	:rtype: None
+") EdgeNumber;
 		void EdgeNumber (const Standard_Integer anumber);
-		%feature("autodoc", "Args:
-	abisector(Handle_MAT_Bisector)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FirstBisector;
+		%feature("autodoc", "	:param abisector:
+	:type abisector: Handle_MAT_Bisector &
+	:rtype: None
+") FirstBisector;
 		void FirstBisector (const Handle_MAT_Bisector & abisector);
-		%feature("autodoc", "Args:
-	abisector(Handle_MAT_Bisector)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SecondBisector;
+		%feature("autodoc", "	:param abisector:
+	:type abisector: Handle_MAT_Bisector &
+	:rtype: None
+") SecondBisector;
 		void SecondBisector (const Handle_MAT_Bisector & abisector);
-		%feature("autodoc", "Args:
-	adistance(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Distance;
+		%feature("autodoc", "	:param adistance:
+	:type adistance: float
+	:rtype: None
+") Distance;
 		void Distance (const Standard_Real adistance);
-		%feature("autodoc", "Args:
-	apoint(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntersectionPoint;
+		%feature("autodoc", "	:param apoint:
+	:type apoint: Standard_Integer
+	:rtype: None
+") IntersectionPoint;
 		void IntersectionPoint (const Standard_Integer apoint);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") EdgeNumber;
+		%feature("autodoc", "	:rtype: int
+") EdgeNumber;
 		Standard_Integer EdgeNumber ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Bisector
-
-No detailed docstring for this function.") FirstBisector;
+		%feature("autodoc", "	:rtype: Handle_MAT_Bisector
+") FirstBisector;
 		Handle_MAT_Bisector FirstBisector ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Bisector
-
-No detailed docstring for this function.") SecondBisector;
+		%feature("autodoc", "	:rtype: Handle_MAT_Bisector
+") SecondBisector;
 		Handle_MAT_Bisector SecondBisector ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Distance;
+		%feature("autodoc", "	:rtype: float
+") Distance;
 		Standard_Real Distance ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") IntersectionPoint;
+		%feature("autodoc", "	:rtype: int
+") IntersectionPoint;
 		Standard_Integer IntersectionPoint ();
-		%feature("autodoc", "Args:
-	ashift(Standard_Integer)
-	alevel(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param ashift:
+	:type ashift: Standard_Integer
+	:param alevel:
+	:type alevel: Standard_Integer
+	:rtype: None
+") Dump;
 		void Dump (const Standard_Integer ashift,const Standard_Integer alevel);
 };
 
@@ -1879,141 +1433,101 @@ def __del__(self):
 %nodefaultctor MAT_Graph;
 class MAT_Graph : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor.
 
-Empty constructor.") MAT_Graph;
+	:rtype: None
+") MAT_Graph;
 		 MAT_Graph ();
-		%feature("autodoc", "Args:
-	SemiInfinite(Standard_Boolean)
-	TheRoots(Handle_MAT_ListOfBisector)
-	NbBasicElts(Standard_Integer)
-	NbArcs(Standard_Integer)
+		%feature("autodoc", "	* Construct <self> from the result of the method  <CreateMat> of the class <MAT> from <MAT>. <SemiInfinite> : if some bisector are infinites.  <TheRoots> : Set of the bisectors.  <NbBasicElts> : Number of Basic Elements.  <NbArcs> : Number of Arcs = Number of Bisectors.
 
-Returns:
-	None
-
-Construct <self> from the result of the method  
-           <CreateMat> of the class <MAT> from <MAT>.  
- 
-           <SemiInfinite> : if some bisector are infinites.  
-           <TheRoots>     : Set of the bisectors.  
-           <NbBasicElts>  : Number of Basic Elements.  
-           <NbArcs>       : Number of Arcs = Number of Bisectors.") Perform;
+	:param SemiInfinite:
+	:type SemiInfinite: bool
+	:param TheRoots:
+	:type TheRoots: Handle_MAT_ListOfBisector &
+	:param NbBasicElts:
+	:type NbBasicElts: Standard_Integer
+	:param NbArcs:
+	:type NbArcs: Standard_Integer
+	:rtype: None
+") Perform;
 		void Perform (const Standard_Boolean SemiInfinite,const Handle_MAT_ListOfBisector & TheRoots,const Standard_Integer NbBasicElts,const Standard_Integer NbArcs);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Return the Arc of index <Index> in <theArcs>.
 
-Returns:
-	Handle_MAT_Arc
-
-Return the Arc of index <Index> in <theArcs>.") Arc;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_MAT_Arc
+") Arc;
 		Handle_MAT_Arc Arc (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Return the BasicElt of index <Index> in <theBasicElts>.
 
-Returns:
-	Handle_MAT_BasicElt
-
-Return the BasicElt of index <Index> in <theBasicElts>.") BasicElt;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_MAT_BasicElt
+") BasicElt;
 		Handle_MAT_BasicElt BasicElt (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Return the Node of index <Index> in <theNodes>.
 
-Returns:
-	Handle_MAT_Node
-
-Return the Node of index <Index> in <theNodes>.") Node;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_MAT_Node
+") Node;
 		Handle_MAT_Node Node (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Return the number of arcs of <self>.
 
-Return the number of arcs of <self>.") NumberOfArcs;
+	:rtype: int
+") NumberOfArcs;
 		Standard_Integer NumberOfArcs ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Return the number of nodes of <self>.
 
-Return the number of nodes of <self>.") NumberOfNodes;
+	:rtype: int
+") NumberOfNodes;
 		Standard_Integer NumberOfNodes ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Return the number of basic elements of <self>.
 
-Return the number of basic elements of <self>.") NumberOfBasicElts;
+	:rtype: int
+") NumberOfBasicElts;
 		Standard_Integer NumberOfBasicElts ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Return the number of infinites nodes of <self>.
 
-Return the number of infinites nodes of <self>.") NumberOfInfiniteNodes;
+	:rtype: int
+") NumberOfInfiniteNodes;
 		Standard_Integer NumberOfInfiniteNodes ();
-		%feature("autodoc", "Args:
-	IndexElt1(Standard_Integer)
-	IndexElt2(Standard_Integer)
-	MergeArc1(Standard_Boolean)
-	GeomIndexArc1(Standard_Integer)
-	GeomIndexArc2(Standard_Integer)
-	MergeArc2(Standard_Boolean)
-	GeomIndexArc3(Standard_Integer)
-	GeomIndexArc4(Standard_Integer)
+		%feature("autodoc", "	* Merge two BasicElts. The End of the BasicElt Elt1 of IndexElt1 becomes The End of the BasicElt Elt2 of IndexElt2. Elt2 is replaced in the arcs by Elt1, Elt2 is eliminated.  <MergeArc1> is True if the fusion of the BasicElts => a fusion of two Arcs which separated the same elements. In this case <GeomIndexArc1> and <GeomIndexArc2> are the Geometric Index of this arcs.  If the BasicElt corresponds to a close line , the StartArc and the EndArc of Elt1 can separate the same elements . In this case there is a fusion of this arcs, <MergeArc2> is true and <GeomIndexArc3> and <GeomIndexArc4> are the Geometric Index of this arcs.
 
-Returns:
-	None
-
-Merge two BasicElts.  The End of the BasicElt Elt1  
-         of  IndexElt1 becomes The End of the BasicElt Elt2  
-         of  IndexElt2.   Elt2 is replaced in  the  arcs  by  
-         Elt1, Elt2 is eliminated.  
- 
-         <MergeArc1> is True  if the fusion  of the BasicElts  =>  
-         a fusion  of two Arcs which separated  the same  elements.  
-         In this case <GeomIndexArc1> and  <GeomIndexArc2>  are the  
-         Geometric  Index of this  arcs.  
- 
-         If the  BasicElt corresponds to a close line ,  
-         the StartArc and the EndArc of Elt1 can separate the same  
-         elements .  
-         In this case there is a fusion of this arcs, <MergeArc2>  
-         is true and <GeomIndexArc3> and  <GeomIndexArc4>  are the  
-         Geometric  Index of this  arcs.") FusionOfBasicElts;
+	:param IndexElt1:
+	:type IndexElt1: Standard_Integer
+	:param IndexElt2:
+	:type IndexElt2: Standard_Integer
+	:param MergeArc1:
+	:type MergeArc1: bool
+	:param GeomIndexArc1:
+	:type GeomIndexArc1: Standard_Integer &
+	:param GeomIndexArc2:
+	:type GeomIndexArc2: Standard_Integer &
+	:param MergeArc2:
+	:type MergeArc2: bool
+	:param GeomIndexArc3:
+	:type GeomIndexArc3: Standard_Integer &
+	:param GeomIndexArc4:
+	:type GeomIndexArc4: Standard_Integer &
+	:rtype: None
+") FusionOfBasicElts;
 		void FusionOfBasicElts (const Standard_Integer IndexElt1,const Standard_Integer IndexElt2,Standard_Boolean & MergeArc1,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Boolean & MergeArc2,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") CompactArcs;
+		%feature("autodoc", "	:rtype: None
+") CompactArcs;
 		void CompactArcs ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") CompactNodes;
+		%feature("autodoc", "	:rtype: None
+") CompactNodes;
 		void CompactNodes ();
-		%feature("autodoc", "Args:
-	NewMap(MAT_DataMapOfIntegerBasicElt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChangeBasicElts;
+		%feature("autodoc", "	:param NewMap:
+	:type NewMap: MAT_DataMapOfIntegerBasicElt &
+	:rtype: None
+") ChangeBasicElts;
 		void ChangeBasicElts (const MAT_DataMapOfIntegerBasicElt & NewMap);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_MAT_BasicElt
-
-No detailed docstring for this function.") ChangeBasicElt;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_MAT_BasicElt
+") ChangeBasicElt;
 		Handle_MAT_BasicElt ChangeBasicElt (const Standard_Integer Index);
 };
 
@@ -2074,189 +1588,98 @@ def __del__(self):
 %nodefaultctor MAT_ListOfBisector;
 class MAT_ListOfBisector : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_ListOfBisector;
+		%feature("autodoc", "	:rtype: None
+") MAT_ListOfBisector;
 		 MAT_ListOfBisector ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: None
+") First;
 		void First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: None
+") Last;
 		void Last ();
-		%feature("autodoc", "Args:
-	aniten(Handle_MAT_Bisector)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param aniten:
+	:type aniten: Handle_MAT_Bisector &
+	:rtype: None
+") Init;
 		void Init (const Handle_MAT_Bisector & aniten);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Previous;
+		%feature("autodoc", "	:rtype: None
+") Previous;
 		void Previous ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Bisector
-
-No detailed docstring for this function.") Current;
+		%feature("autodoc", "	:rtype: Handle_MAT_Bisector
+") Current;
 		Handle_MAT_Bisector Current ();
-		%feature("autodoc", "Args:
-	anitem(Handle_MAT_Bisector)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Current;
+		%feature("autodoc", "	:param anitem:
+	:type anitem: Handle_MAT_Bisector &
+	:rtype: None
+") Current;
 		void Current (const Handle_MAT_Bisector & anitem);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Bisector
-
-No detailed docstring for this function.") FirstItem;
+		%feature("autodoc", "	:rtype: Handle_MAT_Bisector
+") FirstItem;
 		Handle_MAT_Bisector FirstItem ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Bisector
-
-No detailed docstring for this function.") LastItem;
+		%feature("autodoc", "	:rtype: Handle_MAT_Bisector
+") LastItem;
 		Handle_MAT_Bisector LastItem ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Bisector
-
-No detailed docstring for this function.") PreviousItem;
+		%feature("autodoc", "	:rtype: Handle_MAT_Bisector
+") PreviousItem;
 		Handle_MAT_Bisector PreviousItem ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Bisector
-
-No detailed docstring for this function.") NextItem;
+		%feature("autodoc", "	:rtype: Handle_MAT_Bisector
+") NextItem;
 		Handle_MAT_Bisector NextItem ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Number;
+		%feature("autodoc", "	:rtype: int
+") Number;
 		Standard_Integer Number ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Index;
+		%feature("autodoc", "	:rtype: int
+") Index;
 		Standard_Integer Index ();
-		%feature("autodoc", "Args:
-	anindex(Standard_Integer)
-
-Returns:
-	Handle_MAT_Bisector
-
-No detailed docstring for this function.") Brackets;
+		%feature("autodoc", "	:param anindex:
+	:type anindex: Standard_Integer
+	:rtype: Handle_MAT_Bisector
+") Brackets;
 		Handle_MAT_Bisector Brackets (const Standard_Integer anindex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Unlink;
+		%feature("autodoc", "	:rtype: None
+") Unlink;
 		void Unlink ();
-		%feature("autodoc", "Args:
-	anitem(Handle_MAT_Bisector)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LinkBefore;
+		%feature("autodoc", "	:param anitem:
+	:type anitem: Handle_MAT_Bisector &
+	:rtype: None
+") LinkBefore;
 		void LinkBefore (const Handle_MAT_Bisector & anitem);
-		%feature("autodoc", "Args:
-	anitem(Handle_MAT_Bisector)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LinkAfter;
+		%feature("autodoc", "	:param anitem:
+	:type anitem: Handle_MAT_Bisector &
+	:rtype: None
+") LinkAfter;
 		void LinkAfter (const Handle_MAT_Bisector & anitem);
-		%feature("autodoc", "Args:
-	anitem(Handle_MAT_Bisector)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FrontAdd;
+		%feature("autodoc", "	:param anitem:
+	:type anitem: Handle_MAT_Bisector &
+	:rtype: None
+") FrontAdd;
 		void FrontAdd (const Handle_MAT_Bisector & anitem);
-		%feature("autodoc", "Args:
-	anitem(Handle_MAT_Bisector)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BackAdd;
+		%feature("autodoc", "	:param anitem:
+	:type anitem: Handle_MAT_Bisector &
+	:rtype: None
+") BackAdd;
 		void BackAdd (const Handle_MAT_Bisector & anitem);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Permute;
+		%feature("autodoc", "	:rtype: None
+") Permute;
 		void Permute ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Loop;
+		%feature("autodoc", "	:rtype: None
+") Loop;
 		void Loop ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	ashift(Standard_Integer)
-	alevel(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param ashift:
+	:type ashift: Standard_Integer
+	:param alevel:
+	:type alevel: Standard_Integer
+	:rtype: None
+") Dump;
 		void Dump (const Standard_Integer ashift,const Standard_Integer alevel);
 };
 
@@ -2317,189 +1740,98 @@ def __del__(self):
 %nodefaultctor MAT_ListOfEdge;
 class MAT_ListOfEdge : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_ListOfEdge;
+		%feature("autodoc", "	:rtype: None
+") MAT_ListOfEdge;
 		 MAT_ListOfEdge ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: None
+") First;
 		void First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: None
+") Last;
 		void Last ();
-		%feature("autodoc", "Args:
-	aniten(Handle_MAT_Edge)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param aniten:
+	:type aniten: Handle_MAT_Edge &
+	:rtype: None
+") Init;
 		void Init (const Handle_MAT_Edge & aniten);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Previous;
+		%feature("autodoc", "	:rtype: None
+") Previous;
 		void Previous ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Edge
-
-No detailed docstring for this function.") Current;
+		%feature("autodoc", "	:rtype: Handle_MAT_Edge
+") Current;
 		Handle_MAT_Edge Current ();
-		%feature("autodoc", "Args:
-	anitem(Handle_MAT_Edge)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Current;
+		%feature("autodoc", "	:param anitem:
+	:type anitem: Handle_MAT_Edge &
+	:rtype: None
+") Current;
 		void Current (const Handle_MAT_Edge & anitem);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Edge
-
-No detailed docstring for this function.") FirstItem;
+		%feature("autodoc", "	:rtype: Handle_MAT_Edge
+") FirstItem;
 		Handle_MAT_Edge FirstItem ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Edge
-
-No detailed docstring for this function.") LastItem;
+		%feature("autodoc", "	:rtype: Handle_MAT_Edge
+") LastItem;
 		Handle_MAT_Edge LastItem ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Edge
-
-No detailed docstring for this function.") PreviousItem;
+		%feature("autodoc", "	:rtype: Handle_MAT_Edge
+") PreviousItem;
 		Handle_MAT_Edge PreviousItem ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Edge
-
-No detailed docstring for this function.") NextItem;
+		%feature("autodoc", "	:rtype: Handle_MAT_Edge
+") NextItem;
 		Handle_MAT_Edge NextItem ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Number;
+		%feature("autodoc", "	:rtype: int
+") Number;
 		Standard_Integer Number ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Index;
+		%feature("autodoc", "	:rtype: int
+") Index;
 		Standard_Integer Index ();
-		%feature("autodoc", "Args:
-	anindex(Standard_Integer)
-
-Returns:
-	Handle_MAT_Edge
-
-No detailed docstring for this function.") Brackets;
+		%feature("autodoc", "	:param anindex:
+	:type anindex: Standard_Integer
+	:rtype: Handle_MAT_Edge
+") Brackets;
 		Handle_MAT_Edge Brackets (const Standard_Integer anindex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Unlink;
+		%feature("autodoc", "	:rtype: None
+") Unlink;
 		void Unlink ();
-		%feature("autodoc", "Args:
-	anitem(Handle_MAT_Edge)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LinkBefore;
+		%feature("autodoc", "	:param anitem:
+	:type anitem: Handle_MAT_Edge &
+	:rtype: None
+") LinkBefore;
 		void LinkBefore (const Handle_MAT_Edge & anitem);
-		%feature("autodoc", "Args:
-	anitem(Handle_MAT_Edge)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LinkAfter;
+		%feature("autodoc", "	:param anitem:
+	:type anitem: Handle_MAT_Edge &
+	:rtype: None
+") LinkAfter;
 		void LinkAfter (const Handle_MAT_Edge & anitem);
-		%feature("autodoc", "Args:
-	anitem(Handle_MAT_Edge)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FrontAdd;
+		%feature("autodoc", "	:param anitem:
+	:type anitem: Handle_MAT_Edge &
+	:rtype: None
+") FrontAdd;
 		void FrontAdd (const Handle_MAT_Edge & anitem);
-		%feature("autodoc", "Args:
-	anitem(Handle_MAT_Edge)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BackAdd;
+		%feature("autodoc", "	:param anitem:
+	:type anitem: Handle_MAT_Edge &
+	:rtype: None
+") BackAdd;
 		void BackAdd (const Handle_MAT_Edge & anitem);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Permute;
+		%feature("autodoc", "	:rtype: None
+") Permute;
 		void Permute ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Loop;
+		%feature("autodoc", "	:rtype: None
+") Loop;
 		void Loop ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	ashift(Standard_Integer)
-	alevel(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param ashift:
+	:type ashift: Standard_Integer
+	:param alevel:
+	:type alevel: Standard_Integer
+	:rtype: None
+") Dump;
 		void Dump (const Standard_Integer ashift,const Standard_Integer alevel);
 };
 
@@ -2560,92 +1892,68 @@ def __del__(self):
 %nodefaultctor MAT_Node;
 class MAT_Node : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	GeomIndex(Standard_Integer)
-	LinkedArc(Handle_MAT_Arc)
-	Distance(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_Node;
+		%feature("autodoc", "	:param GeomIndex:
+	:type GeomIndex: Standard_Integer
+	:param LinkedArc:
+	:type LinkedArc: Handle_MAT_Arc &
+	:param Distance:
+	:type Distance: float
+	:rtype: None
+") MAT_Node;
 		 MAT_Node (const Standard_Integer GeomIndex,const Handle_MAT_Arc & LinkedArc,const Standard_Real Distance);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the index associated of the geometric  representation of <self>.
 
-Returns the index associated of the geometric  
-           representation of <self>.") GeomIndex;
+	:rtype: int
+") GeomIndex;
 		Standard_Integer GeomIndex ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the index associated of the node
 
-Returns the index associated of the node") Index;
+	:rtype: int
+") Index;
 		Standard_Integer Index ();
-		%feature("autodoc", "Args:
-	S(MAT_SequenceOfArc)
+		%feature("autodoc", "	* Returns in <S> the Arcs linked to <self>.
 
-Returns:
-	None
-
-Returns in <S> the Arcs linked to <self>.") LinkedArcs;
+	:param S:
+	:type S: MAT_SequenceOfArc &
+	:rtype: None
+") LinkedArcs;
 		void LinkedArcs (MAT_SequenceOfArc & S);
-		%feature("autodoc", "Args:
-	S(MAT_SequenceOfBasicElt)
+		%feature("autodoc", "	* Returns in <S> the BasicElts equidistant to <self>.
 
-Returns:
-	None
-
-Returns  in <S> the BasicElts equidistant  
-         to <self>.") NearElts;
+	:param S:
+	:type S: MAT_SequenceOfBasicElt &
+	:rtype: None
+") NearElts;
 		void NearElts (MAT_SequenceOfBasicElt & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Distance;
+		%feature("autodoc", "	:rtype: float
+") Distance;
 		Standard_Real Distance ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* //!Returns True if <self> is a pending Node. (ie : the number of Arc Linked = 1)
 
-//!Returns True if <self> is a pending Node.  
-         (ie : the number of Arc Linked = 1)") PendingNode;
+	:rtype: bool
+") PendingNode;
 		Standard_Boolean PendingNode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if <self> belongs to the figure.
 
-Returns True if <self> belongs to the figure.") OnBasicElt;
+	:rtype: bool
+") OnBasicElt;
 		Standard_Boolean OnBasicElt ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the distance of <self> is Infinite
 
-Returns True if the distance of <self> is Infinite") Infinite;
+	:rtype: bool
+") Infinite;
 		Standard_Boolean Infinite ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
+		%feature("autodoc", "	* Set the index associated of the node
 
-Returns:
-	None
-
-Set the index associated of the node") SetIndex;
+	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") SetIndex;
 		void SetIndex (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anArc(Handle_MAT_Arc)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetLinkedArc;
+		%feature("autodoc", "	:param anArc:
+	:type anArc: Handle_MAT_Arc &
+	:rtype: None
+") SetLinkedArc;
 		void SetLinkedArc (const Handle_MAT_Arc & anArc);
 };
 
@@ -2706,22 +2014,17 @@ def __del__(self):
 %nodefaultctor MAT_SequenceNodeOfSequenceOfArc;
 class MAT_SequenceNodeOfSequenceOfArc : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_MAT_Arc)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_SequenceNodeOfSequenceOfArc;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_MAT_Arc &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") MAT_SequenceNodeOfSequenceOfArc;
 		 MAT_SequenceNodeOfSequenceOfArc (const Handle_MAT_Arc & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Arc
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_MAT_Arc
+") Value;
 		Handle_MAT_Arc & Value ();
 };
 
@@ -2782,22 +2085,17 @@ def __del__(self):
 %nodefaultctor MAT_SequenceNodeOfSequenceOfBasicElt;
 class MAT_SequenceNodeOfSequenceOfBasicElt : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_MAT_BasicElt)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_SequenceNodeOfSequenceOfBasicElt;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_MAT_BasicElt &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") MAT_SequenceNodeOfSequenceOfBasicElt;
 		 MAT_SequenceNodeOfSequenceOfBasicElt (const Handle_MAT_BasicElt & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_BasicElt
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_MAT_BasicElt
+") Value;
 		Handle_MAT_BasicElt & Value ();
 };
 
@@ -2858,168 +2156,111 @@ def __del__(self):
 %nodefaultctor MAT_SequenceOfArc;
 class MAT_SequenceOfArc : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_SequenceOfArc;
+		%feature("autodoc", "	:rtype: None
+") MAT_SequenceOfArc;
 		 MAT_SequenceOfArc ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(MAT_SequenceOfArc)
-
-Returns:
-	MAT_SequenceOfArc
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: MAT_SequenceOfArc &
+	:rtype: MAT_SequenceOfArc
+") Assign;
 		const MAT_SequenceOfArc & Assign (const MAT_SequenceOfArc & Other);
-		%feature("autodoc", "Args:
-	Other(MAT_SequenceOfArc)
-
-Returns:
-	MAT_SequenceOfArc
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: MAT_SequenceOfArc &
+	:rtype: MAT_SequenceOfArc
+") operator=;
 		const MAT_SequenceOfArc & operator = (const MAT_SequenceOfArc & Other);
-		%feature("autodoc", "Args:
-	T(Handle_MAT_Arc)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_MAT_Arc &
+	:rtype: None
+") Append;
 		void Append (const Handle_MAT_Arc & T);
-		%feature("autodoc", "Args:
-	S(MAT_SequenceOfArc)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: MAT_SequenceOfArc &
+	:rtype: None
+") Append;
 		void Append (MAT_SequenceOfArc & S);
-		%feature("autodoc", "Args:
-	T(Handle_MAT_Arc)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_MAT_Arc &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_MAT_Arc & T);
-		%feature("autodoc", "Args:
-	S(MAT_SequenceOfArc)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: MAT_SequenceOfArc &
+	:rtype: None
+") Prepend;
 		void Prepend (MAT_SequenceOfArc & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_MAT_Arc)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_MAT_Arc &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_MAT_Arc & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(MAT_SequenceOfArc)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: MAT_SequenceOfArc &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,MAT_SequenceOfArc & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_MAT_Arc)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_MAT_Arc &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_MAT_Arc & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(MAT_SequenceOfArc)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: MAT_SequenceOfArc &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,MAT_SequenceOfArc & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Arc
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_MAT_Arc
+") First;
 		const Handle_MAT_Arc & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Arc
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_MAT_Arc
+") Last;
 		const Handle_MAT_Arc & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(MAT_SequenceOfArc)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: MAT_SequenceOfArc &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,MAT_SequenceOfArc & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_MAT_Arc
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_MAT_Arc
+") Value;
 		const Handle_MAT_Arc & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_MAT_Arc)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_MAT_Arc &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_MAT_Arc & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_MAT_Arc
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_MAT_Arc
+") ChangeValue;
 		Handle_MAT_Arc & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -3041,168 +2282,111 @@ def __del__(self):
 %nodefaultctor MAT_SequenceOfBasicElt;
 class MAT_SequenceOfBasicElt : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_SequenceOfBasicElt;
+		%feature("autodoc", "	:rtype: None
+") MAT_SequenceOfBasicElt;
 		 MAT_SequenceOfBasicElt ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(MAT_SequenceOfBasicElt)
-
-Returns:
-	MAT_SequenceOfBasicElt
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: MAT_SequenceOfBasicElt &
+	:rtype: MAT_SequenceOfBasicElt
+") Assign;
 		const MAT_SequenceOfBasicElt & Assign (const MAT_SequenceOfBasicElt & Other);
-		%feature("autodoc", "Args:
-	Other(MAT_SequenceOfBasicElt)
-
-Returns:
-	MAT_SequenceOfBasicElt
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: MAT_SequenceOfBasicElt &
+	:rtype: MAT_SequenceOfBasicElt
+") operator=;
 		const MAT_SequenceOfBasicElt & operator = (const MAT_SequenceOfBasicElt & Other);
-		%feature("autodoc", "Args:
-	T(Handle_MAT_BasicElt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_MAT_BasicElt &
+	:rtype: None
+") Append;
 		void Append (const Handle_MAT_BasicElt & T);
-		%feature("autodoc", "Args:
-	S(MAT_SequenceOfBasicElt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: MAT_SequenceOfBasicElt &
+	:rtype: None
+") Append;
 		void Append (MAT_SequenceOfBasicElt & S);
-		%feature("autodoc", "Args:
-	T(Handle_MAT_BasicElt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_MAT_BasicElt &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_MAT_BasicElt & T);
-		%feature("autodoc", "Args:
-	S(MAT_SequenceOfBasicElt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: MAT_SequenceOfBasicElt &
+	:rtype: None
+") Prepend;
 		void Prepend (MAT_SequenceOfBasicElt & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_MAT_BasicElt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_MAT_BasicElt &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_MAT_BasicElt & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(MAT_SequenceOfBasicElt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: MAT_SequenceOfBasicElt &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,MAT_SequenceOfBasicElt & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_MAT_BasicElt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_MAT_BasicElt &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_MAT_BasicElt & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(MAT_SequenceOfBasicElt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: MAT_SequenceOfBasicElt &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,MAT_SequenceOfBasicElt & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_BasicElt
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_MAT_BasicElt
+") First;
 		const Handle_MAT_BasicElt & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_BasicElt
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_MAT_BasicElt
+") Last;
 		const Handle_MAT_BasicElt & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(MAT_SequenceOfBasicElt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: MAT_SequenceOfBasicElt &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,MAT_SequenceOfBasicElt & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_MAT_BasicElt
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_MAT_BasicElt
+") Value;
 		const Handle_MAT_BasicElt & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_MAT_BasicElt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_MAT_BasicElt &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_MAT_BasicElt & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_MAT_BasicElt
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_MAT_BasicElt
+") ChangeValue;
 		Handle_MAT_BasicElt & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -3224,72 +2408,40 @@ def __del__(self):
 %nodefaultctor MAT_TListNodeOfListOfBisector;
 class MAT_TListNodeOfListOfBisector : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_TListNodeOfListOfBisector;
+		%feature("autodoc", "	:rtype: None
+") MAT_TListNodeOfListOfBisector;
 		 MAT_TListNodeOfListOfBisector ();
-		%feature("autodoc", "Args:
-	anitem(Handle_MAT_Bisector)
-
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_TListNodeOfListOfBisector;
+		%feature("autodoc", "	:param anitem:
+	:type anitem: Handle_MAT_Bisector &
+	:rtype: None
+") MAT_TListNodeOfListOfBisector;
 		 MAT_TListNodeOfListOfBisector (const Handle_MAT_Bisector & anitem);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Bisector
-
-No detailed docstring for this function.") GetItem;
+		%feature("autodoc", "	:rtype: Handle_MAT_Bisector
+") GetItem;
 		Handle_MAT_Bisector GetItem ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_TListNodeOfListOfBisector
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: Handle_MAT_TListNodeOfListOfBisector
+") Next;
 		Handle_MAT_TListNodeOfListOfBisector Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_TListNodeOfListOfBisector
-
-No detailed docstring for this function.") Previous;
+		%feature("autodoc", "	:rtype: Handle_MAT_TListNodeOfListOfBisector
+") Previous;
 		Handle_MAT_TListNodeOfListOfBisector Previous ();
-		%feature("autodoc", "Args:
-	anitem(Handle_MAT_Bisector)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetItem;
+		%feature("autodoc", "	:param anitem:
+	:type anitem: Handle_MAT_Bisector &
+	:rtype: None
+") SetItem;
 		void SetItem (const Handle_MAT_Bisector & anitem);
-		%feature("autodoc", "Args:
-	atlistnode(Handle_MAT_TListNodeOfListOfBisector)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:param atlistnode:
+	:type atlistnode: Handle_MAT_TListNodeOfListOfBisector &
+	:rtype: None
+") Next;
 		void Next (const Handle_MAT_TListNodeOfListOfBisector & atlistnode);
-		%feature("autodoc", "Args:
-	atlistnode(Handle_MAT_TListNodeOfListOfBisector)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Previous;
+		%feature("autodoc", "	:param atlistnode:
+	:type atlistnode: Handle_MAT_TListNodeOfListOfBisector &
+	:rtype: None
+") Previous;
 		void Previous (const Handle_MAT_TListNodeOfListOfBisector & atlistnode);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dummy;
+		%feature("autodoc", "	:rtype: None
+") Dummy;
 		void Dummy ();
 };
 
@@ -3350,72 +2502,40 @@ def __del__(self):
 %nodefaultctor MAT_TListNodeOfListOfEdge;
 class MAT_TListNodeOfListOfEdge : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_TListNodeOfListOfEdge;
+		%feature("autodoc", "	:rtype: None
+") MAT_TListNodeOfListOfEdge;
 		 MAT_TListNodeOfListOfEdge ();
-		%feature("autodoc", "Args:
-	anitem(Handle_MAT_Edge)
-
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_TListNodeOfListOfEdge;
+		%feature("autodoc", "	:param anitem:
+	:type anitem: Handle_MAT_Edge &
+	:rtype: None
+") MAT_TListNodeOfListOfEdge;
 		 MAT_TListNodeOfListOfEdge (const Handle_MAT_Edge & anitem);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_Edge
-
-No detailed docstring for this function.") GetItem;
+		%feature("autodoc", "	:rtype: Handle_MAT_Edge
+") GetItem;
 		Handle_MAT_Edge GetItem ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_TListNodeOfListOfEdge
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: Handle_MAT_TListNodeOfListOfEdge
+") Next;
 		Handle_MAT_TListNodeOfListOfEdge Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MAT_TListNodeOfListOfEdge
-
-No detailed docstring for this function.") Previous;
+		%feature("autodoc", "	:rtype: Handle_MAT_TListNodeOfListOfEdge
+") Previous;
 		Handle_MAT_TListNodeOfListOfEdge Previous ();
-		%feature("autodoc", "Args:
-	anitem(Handle_MAT_Edge)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetItem;
+		%feature("autodoc", "	:param anitem:
+	:type anitem: Handle_MAT_Edge &
+	:rtype: None
+") SetItem;
 		void SetItem (const Handle_MAT_Edge & anitem);
-		%feature("autodoc", "Args:
-	atlistnode(Handle_MAT_TListNodeOfListOfEdge)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:param atlistnode:
+	:type atlistnode: Handle_MAT_TListNodeOfListOfEdge &
+	:rtype: None
+") Next;
 		void Next (const Handle_MAT_TListNodeOfListOfEdge & atlistnode);
-		%feature("autodoc", "Args:
-	atlistnode(Handle_MAT_TListNodeOfListOfEdge)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Previous;
+		%feature("autodoc", "	:param atlistnode:
+	:type atlistnode: Handle_MAT_TListNodeOfListOfEdge &
+	:rtype: None
+") Previous;
 		void Previous (const Handle_MAT_TListNodeOfListOfEdge & atlistnode);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dummy;
+		%feature("autodoc", "	:rtype: None
+") Dummy;
 		void Dummy ();
 };
 
@@ -3476,58 +2596,44 @@ def __del__(self):
 %nodefaultctor MAT_Zone;
 class MAT_Zone : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") MAT_Zone;
+		%feature("autodoc", "	:rtype: None
+") MAT_Zone;
 		 MAT_Zone ();
-		%feature("autodoc", "Args:
-	aBasicElt(Handle_MAT_BasicElt)
+		%feature("autodoc", "	* Compute the frontier of the Zone of proximity.
 
-Returns:
-	None
-
-Compute the frontier of the Zone of proximity.") MAT_Zone;
+	:param aBasicElt:
+	:type aBasicElt: Handle_MAT_BasicElt &
+	:rtype: None
+") MAT_Zone;
 		 MAT_Zone (const Handle_MAT_BasicElt & aBasicElt);
-		%feature("autodoc", "Args:
-	aBasicElt(Handle_MAT_BasicElt)
+		%feature("autodoc", "	* Compute the frontier of the Zone of proximity.
 
-Returns:
-	None
-
-Compute the frontier of the Zone of proximity.") Perform;
+	:param aBasicElt:
+	:type aBasicElt: Handle_MAT_BasicElt &
+	:rtype: None
+") Perform;
 		void Perform (const Handle_MAT_BasicElt & aBasicElt);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Return the number Of Arcs On the frontier of <self>.
 
-Return the number Of Arcs On the frontier of <self>.") NumberOfArcs;
+	:rtype: int
+") NumberOfArcs;
 		Standard_Integer NumberOfArcs ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Return the Arc number <Index> on the frontier. of <self>.
 
-Returns:
-	Handle_MAT_Arc
-
-Return the  Arc number <Index>  on the frontier.  
- of  <self>.") ArcOnFrontier;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_MAT_Arc
+") ArcOnFrontier;
 		Handle_MAT_Arc ArcOnFrontier (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Return True if <self> is not empty .
 
-Return TRUE if <self> is not empty .") NoEmptyZone;
+	:rtype: bool
+") NoEmptyZone;
 		Standard_Boolean NoEmptyZone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Return True if <self> is Limited.
 
-Return TRUE if <self> is Limited.") Limited;
+	:rtype: bool
+") Limited;
 		Standard_Boolean Limited ();
 };
 

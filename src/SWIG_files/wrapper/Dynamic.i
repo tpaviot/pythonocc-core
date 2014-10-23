@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -53,13 +53,10 @@ enum Dynamic_ModeEnum {
 %nodefaultctor Dynamic;
 class Dynamic {
 	public:
-		%feature("autodoc", "Args:
-	amode(char *)
-
-Returns:
-	static Dynamic_ModeEnum
-
-No detailed docstring for this function.") Mode;
+		%feature("autodoc", "	:param amode:
+	:type amode: char *
+	:rtype: Dynamic_ModeEnum
+") Mode;
 		static Dynamic_ModeEnum Mode (const char * amode);
 };
 
@@ -81,59 +78,49 @@ def __del__(self):
 %nodefaultctor Dynamic_DynamicClass;
 class Dynamic_DynamicClass : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	aname(char *)
+		%feature("autodoc", "	* Creates a new empty instance of DynamicClass.
 
-Returns:
-	None
-
-Creates a new empty instance of DynamicClass.") Dynamic_DynamicClass;
+	:param aname:
+	:type aname: char *
+	:rtype: None
+") Dynamic_DynamicClass;
 		 Dynamic_DynamicClass (const char * aname);
-		%feature("autodoc", "Args:
-	aparameter(Handle_Dynamic_Parameter)
+		%feature("autodoc", "	* Adds another parameter <aparameter> to the sequence of parameter definitions.
 
-Returns:
-	None
-
-Adds another parameter <aparameter> to the sequence of  
-         parameter definitions.") Parameter;
+	:param aparameter:
+	:type aparameter: Handle_Dynamic_Parameter &
+	:rtype: None
+") Parameter;
 		void Parameter (const Handle_Dynamic_Parameter & aparameter);
-		%feature("autodoc", "Args:
-	amethod(char *)
-	anaddress(char *)
+		%feature("autodoc", "	* Adds another method to the sequence of methods. It has <amethod> as name and <anaddress> as mangled name of the corresponding C++ function which must be called.
 
-Returns:
-	None
-
-Adds another method to the sequence of methods. It has  
-         <amethod> as name  and <anaddress> as mangled  name of  
-         the corresponding C++ function which must be called.") CompiledMethod;
+	:param amethod:
+	:type amethod: char *
+	:param anaddress:
+	:type anaddress: char *
+	:rtype: None
+") CompiledMethod;
 		void CompiledMethod (const char * amethod,const char * anaddress);
-		%feature("autodoc", "Args:
-	amethod(char *)
-	afile(char *)
+		%feature("autodoc", "	* Adds another method to the sequence of methods. It has <amethod> as name and <afile> as interpreted file.
 
-Returns:
-	None
-
-Adds  another method to the  sequence of methods.   It  
-         has <amethod> as name and <afile> as interpreted file.") InterpretedMethod;
+	:param amethod:
+	:type amethod: char *
+	:param afile:
+	:type afile: char *
+	:rtype: None
+") InterpretedMethod;
 		void InterpretedMethod (const char * amethod,const char * afile);
-		%feature("autodoc", "Args:
-	amethod(char *)
+		%feature("autodoc", "	* Returns a reference to the method object identified by the string <amethod>.
 
-Returns:
-	virtual Handle_Dynamic_Method
-
-Returns a reference to the method object identified by  
-         the string <amethod>.") Method;
+	:param amethod:
+	:type amethod: char *
+	:rtype: Handle_Dynamic_Method
+") Method;
 		virtual Handle_Dynamic_Method Method (const char * amethod);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Dynamic_DynamicInstance
+		%feature("autodoc", "	* Returns an instance object of this class.
 
-Returns an instance object of this class.") Instance;
+	:rtype: Handle_Dynamic_DynamicInstance
+") Instance;
 		virtual Handle_Dynamic_DynamicInstance Instance ();
 
         %feature("autodoc", "1");
@@ -202,95 +189,81 @@ def __del__(self):
 %nodefaultctor Dynamic_DynamicInstance;
 class Dynamic_DynamicInstance : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates an empty instance of this class.
 
-Creates an empty instance of this class.") Dynamic_DynamicInstance;
+	:rtype: None
+") Dynamic_DynamicInstance;
 		 Dynamic_DynamicInstance ();
-		%feature("autodoc", "Args:
-	aparameter(Handle_Dynamic_Parameter)
+		%feature("autodoc", "	* Adds <aparameter> to the sequence of parameters of <self>.
 
-Returns:
-	None
-
-Adds  <aparameter> to  the   sequence of parameters of  
-         <self>.") Parameter;
+	:param aparameter:
+	:type aparameter: Handle_Dynamic_Parameter &
+	:rtype: None
+") Parameter;
 		void Parameter (const Handle_Dynamic_Parameter & aparameter);
-		%feature("autodoc", "Args:
-	aninstance(Handle_Dynamic_DynamicInstance)
+		%feature("autodoc", "	* Adds all the parameters of <self>, to the sequence of parameters of <aninstance>.
 
-Returns:
-	None
-
-Adds all the parameters  of <self>,  to the sequence  of  
-         parameters of <aninstance>.") Parameter;
+	:param aninstance:
+	:type aninstance: Handle_Dynamic_DynamicInstance &
+	:rtype: None
+") Parameter;
 		void Parameter (const Handle_Dynamic_DynamicInstance & aninstance);
-		%feature("autodoc", "Args:
-	aparameter(char *)
-	avalue(Standard_Integer)
+		%feature("autodoc", "	* Puts the integer value <avalue> into the parameter object identified by the string <aparameter>.
 
-Returns:
-	None
-
-Puts the integer value <avalue> into the parameter  
-         object identified by the string <aparameter>.") Parameter;
+	:param aparameter:
+	:type aparameter: char *
+	:param avalue:
+	:type avalue: Standard_Integer
+	:rtype: None
+") Parameter;
 		void Parameter (const char * aparameter,const Standard_Integer avalue);
-		%feature("autodoc", "Args:
-	aparameter(char *)
-	avalue(Standard_Real)
+		%feature("autodoc", "	* Puts the real value <avalue> into the parameter object identified by the string <aparameter>.
 
-Returns:
-	None
-
-Puts the real value <avalue> into the parameter  
-         object identified by the string <aparameter>.") Parameter;
+	:param aparameter:
+	:type aparameter: char *
+	:param avalue:
+	:type avalue: float
+	:rtype: None
+") Parameter;
 		void Parameter (const char * aparameter,const Standard_Real avalue);
-		%feature("autodoc", "Args:
-	aparameter(char *)
-	avalue(char *)
+		%feature("autodoc", "	* Puts the string <avalue> into the parameter object identified by the string <aparameter>.
 
-Returns:
-	None
-
-Puts the string <avalue> into the parameter  
-         object identified by the string <aparameter>.") Parameter;
+	:param aparameter:
+	:type aparameter: char *
+	:param avalue:
+	:type avalue: char *
+	:rtype: None
+") Parameter;
 		void Parameter (const char * aparameter,const char * avalue);
-		%feature("autodoc", "Args:
-	aparameter(char *)
-	avalue(Handle_Dynamic_DynamicInstance)
+		%feature("autodoc", "	* Puts the dynamic instance <avalue> into the parameter object identified by the string <aparameter>.
 
-Returns:
-	None
-
-Puts the dynamic instance <avalue> into the parameter  
-         object identified by the string <aparameter>.") Parameter;
+	:param aparameter:
+	:type aparameter: char *
+	:param avalue:
+	:type avalue: Handle_Dynamic_DynamicInstance &
+	:rtype: None
+") Parameter;
 		void Parameter (const char * aparameter,const Handle_Dynamic_DynamicInstance & avalue);
-		%feature("autodoc", "Args:
-	aparameter(char *)
+		%feature("autodoc", "	* Searches and returns the parameter object identified by the string <aparameter>.
 
-Returns:
-	Handle_Dynamic_Parameter
-
-Searches and returns the parameter object identified  
-         by the string <aparameter>.") Parameter;
+	:param aparameter:
+	:type aparameter: char *
+	:rtype: Handle_Dynamic_Parameter
+") Parameter;
 		Handle_Dynamic_Parameter Parameter (const char * aparameter);
-		%feature("autodoc", "Args:
-	aclass(Handle_Dynamic_DynamicClass)
+		%feature("autodoc", "	* Sets the reference of the class.
 
-Returns:
-	None
-
-Sets the reference of the class.") Class;
+	:param aclass:
+	:type aclass: Handle_Dynamic_DynamicClass &
+	:rtype: None
+") Class;
 		void Class (const Handle_Dynamic_DynamicClass & aclass);
-		%feature("autodoc", "Args:
-	amethod(char *)
+		%feature("autodoc", "	* Calls the method identified by the string <amethod>.
 
-Returns:
-	None
-
-Calls the method identified by the string <amethod>.") Execute;
+	:param amethod:
+	:type amethod: char *
+	:rtype: None
+") Execute;
 		void Execute (const char * amethod);
 };
 
@@ -351,155 +324,119 @@ def __del__(self):
 %nodefaultctor Dynamic_FuzzyClass;
 class Dynamic_FuzzyClass : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual TCollection_AsciiString
+		%feature("autodoc", "	* This deferred method must returns the type of the object. If the instance is of the type FuzzyDefinition the method simply returns the field <thetype>. If the instance is of the type FuzzyInstance the method calls the Type method on the true definition.
 
-This  deferred method must   returns  the type of  the  
-         object. If the instance is of the type FuzzyDefinition  
-         the method simply  returns the field <thetype>. If the  
-         instance is of the type FuzzyInstance the method calls  
-         the Type method on the true definition.") Type;
+	:rtype: TCollection_AsciiString
+") Type;
 		virtual TCollection_AsciiString Type ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Dynamic_ParameterNode
+		%feature("autodoc", "	* Returns the head of the list of parameters. For the FuzzyDefinition class this method returns the head of the exaustive list of parameters defining the object and for the FuzzyInstance it just returns the head of the overloaded values.
 
-Returns the  head of the  list of parameters.  For the  
-         FuzzyDefinition class  this method returns the head of  
-         the exaustive list  of parameters defining the  object  
-         and for the FuzzyInstance it  just returns the head of  
-         the overloaded values.") FirstParameter;
+	:rtype: Handle_Dynamic_ParameterNode
+") FirstParameter;
 		Handle_Dynamic_ParameterNode FirstParameter ();
-		%feature("autodoc", "Args:
-	aparameter(char *)
+		%feature("autodoc", "	* Returns true if there is a parameter with <aparameter> as name, false otherwise.
 
-Returns:
-	Standard_Boolean
-
-Returns true if there is a parameter with <aparameter>  
-         as name, false otherwise.") Parameter;
+	:param aparameter:
+	:type aparameter: char *
+	:rtype: bool
+") Parameter;
 		Standard_Boolean Parameter (const char * aparameter);
-		%feature("autodoc", "Args:
-	aparameter(Handle_Dynamic_Parameter)
+		%feature("autodoc", "	* Adds another parameter <aparameter> to the sequence of parameters.
 
-Returns:
-	None
-
-Adds  another parameter <aparameter> to the sequence of  
-         parameters.") Parameter;
+	:param aparameter:
+	:type aparameter: Handle_Dynamic_Parameter &
+	:rtype: None
+") Parameter;
 		void Parameter (const Handle_Dynamic_Parameter & aparameter);
-		%feature("autodoc", "Args:
-	aparameter(char *)
-	avalue(Standard_Boolean)
+		%feature("autodoc", "	* Adds to the instance <self> the parameter <aparameter> with the boolean value <avalue>.
 
-Returns:
-	virtual void
-
-Adds  to the instance <self>  the parameter <aparameter>  
-         with the boolean value <avalue>.") Parameter;
+	:param aparameter:
+	:type aparameter: char *
+	:param avalue:
+	:type avalue: bool
+	:rtype: void
+") Parameter;
 		virtual void Parameter (const char * aparameter,const Standard_Boolean avalue);
-		%feature("autodoc", "Args:
-	aparameter(char *)
-	avalue(Standard_Integer)
+		%feature("autodoc", "	* Adds to the instance <self> the parameter <aparameter> with the integer value <avalue>.
 
-Returns:
-	virtual void
-
-Adds  to the instance <self>  the parameter <aparameter>  
-         with the integer value <avalue>.") Parameter;
+	:param aparameter:
+	:type aparameter: char *
+	:param avalue:
+	:type avalue: Standard_Integer
+	:rtype: void
+") Parameter;
 		virtual void Parameter (const char * aparameter,const Standard_Integer avalue);
-		%feature("autodoc", "Args:
-	aparameter(char *)
-	avalue(Standard_Real)
+		%feature("autodoc", "	* Adds to the instance <self> the parameter <aparameter> with the real value <avalue>.
 
-Returns:
-	virtual void
-
-Adds  to the  instance  <self>  the parameter <aparameter>  
-         with the real value <avalue>.") Parameter;
+	:param aparameter:
+	:type aparameter: char *
+	:param avalue:
+	:type avalue: float
+	:rtype: void
+") Parameter;
 		virtual void Parameter (const char * aparameter,const Standard_Real avalue);
-		%feature("autodoc", "Args:
-	aparameter(char *)
-	astring(char *)
+		%feature("autodoc", "	* Adds to the instance <self> the parameter <aparameter> with the string <astring>.
 
-Returns:
-	virtual void
-
-Adds  to the  instance  <self>  the parameter <aparameter>  
-         with the string <astring>.") Parameter;
+	:param aparameter:
+	:type aparameter: char *
+	:param astring:
+	:type astring: char *
+	:rtype: void
+") Parameter;
 		virtual void Parameter (const char * aparameter,const char * astring);
-		%feature("autodoc", "Args:
-	aparameter(char *)
-	anobject(Handle_Standard_Transient)
+		%feature("autodoc", "	* Adds to the instance <self> the parameter <aparameter> with the object value <anobject>.
 
-Returns:
-	virtual void
-
-Adds  to the  instance  <self>  the parameter <aparameter>  
-         with the object value <anobject>.") Parameter;
+	:param aparameter:
+	:type aparameter: char *
+	:param anobject:
+	:type anobject: Handle_Standard_Transient &
+	:rtype: void
+") Parameter;
 		virtual void Parameter (const char * aparameter,const Handle_Standard_Transient & anobject);
-		%feature("autodoc", "Args:
-	aparameter(char *)
-	avalue(Standard_Boolean)
+		%feature("autodoc", "	* Returns True, if there is a parameter <aparameter> previously stored in the instance <self> and there is the corresponding boolean value in the output argument <avalue>, False otherwise.
 
-Returns:
-	virtual Standard_Boolean
-
-Returns   True, if there   is a parameter <aparameter>  
-         previously stored  in the instance   <self> and there is  
-         the corresponding boolean value in the output argument  
-         <avalue>, False otherwise.") Value;
+	:param aparameter:
+	:type aparameter: char *
+	:param avalue:
+	:type avalue: bool
+	:rtype: bool
+") Value;
 		virtual Standard_Boolean Value (const char * aparameter,Standard_Boolean & avalue);
-		%feature("autodoc", "Args:
-	aparameter(char *)
-	avalue(Standard_Integer)
+		%feature("autodoc", "	* Returns True, if there is a parameter <aparameter> previously stored in the instance <self> and there is the corresponding integer value in the output argument <avalue>, False otherwise.
 
-Returns:
-	virtual Standard_Boolean
-
-Returns True,   if  there is  a   parameter <aparameter>  
-         previously stored in  the  instance  <self> and there is  
-         the corresponding integer value in the output argument  
-         <avalue>, False otherwise.") Value;
+	:param aparameter:
+	:type aparameter: char *
+	:param avalue:
+	:type avalue: Standard_Integer &
+	:rtype: bool
+") Value;
 		virtual Standard_Boolean Value (const char * aparameter,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	aparameter(char *)
-	avalue(Standard_Real)
+		%feature("autodoc", "	* Returns True, if there is a parameter <aparameter> previously stored in the instance <self> and there is the corresponding real value in the output argument <avalue>, False otherwise.
 
-Returns:
-	virtual Standard_Boolean
-
-Returns True,   if  there  is a   parameter <aparameter>  
-         previously stored in the  instance <self>  and  there is  
-         the corresponding  real value   in the output argument  
-         <avalue>, False otherwise.") Value;
+	:param aparameter:
+	:type aparameter: char *
+	:param avalue:
+	:type avalue: float &
+	:rtype: bool
+") Value;
 		virtual Standard_Boolean Value (const char * aparameter,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	aparameter(char *)
-	avalue(TCollection_AsciiString)
+		%feature("autodoc", "	* Returns True, if there is a parameter <aparameter> previously stored in the instance <self> and there is the corresponding string in the output argument <avalue>, False otherwise.
 
-Returns:
-	virtual Standard_Boolean
-
-Returns True, if  there   is  a parameter   <aparameter>  
-         previously stored  in the  instance <self> and  there is  
-         the  corresponding  string  in  the  output   argument  
-         <avalue>, False otherwise.") Value;
+	:param aparameter:
+	:type aparameter: char *
+	:param avalue:
+	:type avalue: TCollection_AsciiString &
+	:rtype: bool
+") Value;
 		virtual Standard_Boolean Value (const char * aparameter,TCollection_AsciiString & avalue);
-		%feature("autodoc", "Args:
-	aparameter(char *)
-	avalue(Handle_Standard_Transient)
+		%feature("autodoc", "	* Returns True, if there is a parameter <aparameter> previously stored in the instance <self> and there is the corresponding object value in the output argument <avalue>, False otherwise.
 
-Returns:
-	virtual Standard_Boolean
-
-Returns  True,  if  there is  a   parameter <aparameter>  
-         previously stored  in the instance <self> and   there is  
-         the corresponding object value  in  the output argument  
-         <avalue>, False otherwise.") Value;
+	:param aparameter:
+	:type aparameter: char *
+	:param avalue:
+	:type avalue: Handle_Standard_Transient &
+	:rtype: bool
+") Value;
 		virtual Standard_Boolean Value (const char * aparameter,Handle_Standard_Transient & avalue);
 
         %feature("autodoc", "1");
@@ -568,64 +505,49 @@ def __del__(self):
 %nodefaultctor Dynamic_FuzzyDefinitionsDictionary;
 class Dynamic_FuzzyDefinitionsDictionary : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	afilename(char *)
+		%feature("autodoc", "	* Starting with a file named <afilename>, fills the dictionary with all the wishes definitions.
 
-Returns:
-	None
-
-Starting with   a file named  <afilename>,  fills  the  
-         dictionary with all the wishes definitions.") Creates;
+	:param afilename:
+	:type afilename: char *
+	:rtype: None
+") Creates;
 		void Creates (const char * afilename);
-		%feature("autodoc", "Args:
-	aname(char *)
-	atype(char *)
-	avalue(char *)
+		%feature("autodoc", "	* This virtual method allows the user to add recognition of its own parameters when reading the file to fill the dictionary.
 
-Returns:
-	virtual Handle_Dynamic_Parameter
-
-This virtual method allows the user to add recognition  
-         of its  own  parameters when reading  the file to fill  
-         the dictionary.") Switch;
+	:param aname:
+	:type aname: char *
+	:param atype:
+	:type atype: char *
+	:param avalue:
+	:type avalue: char *
+	:rtype: Handle_Dynamic_Parameter
+") Switch;
 		virtual Handle_Dynamic_Parameter Switch (const char * aname,const char * atype,const char * avalue);
-		%feature("autodoc", "Args:
-	atype(char *)
-	adefinition(Handle_Dynamic_FuzzyClass)
+		%feature("autodoc", "	* Returns from the dictionary in the out variable <adefinition> a reference to the right instance of the definition identified by its type <atype>. The method returns true if the definition exist, false otherwise.
 
-Returns:
-	Standard_Boolean
-
-Returns from     the dictionary in  the   out variable  
-         <adefinition> a reference to the right instance of the  
-         definition identified  by its type <atype>. The method  
-         returns true if the definition exist, false otherwise.") Definition;
+	:param atype:
+	:type atype: char *
+	:param adefinition:
+	:type adefinition: Handle_Dynamic_FuzzyClass &
+	:rtype: bool
+") Definition;
 		Standard_Boolean Definition (const char * atype,Handle_Dynamic_FuzzyClass & adefinition);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if there has been no modification of the file fuzzyclasses.dat since the creation of the dictionary object, false otherwise.
 
-Returns true if there has been  no modification of the  
-         file  fuzzyclasses.dat  since  the   creation  of  the  
-         dictionary object, false otherwise.") UpToDate;
+	:rtype: bool
+") UpToDate;
 		Standard_Boolean UpToDate ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of definitions stored in the dictionary.
 
-Returns    the number  of  definitions  stored  in the  
-         dictionary.") NumberOfDefinitions;
+	:rtype: int
+") NumberOfDefinitions;
 		Standard_Integer NumberOfDefinitions ();
-		%feature("autodoc", "Args:
-	anindex(Standard_Integer)
+		%feature("autodoc", "	* Returns a reference on the definition identified by the index <anidex>.
 
-Returns:
-	Handle_Dynamic_FuzzyClass
-
-Returns a  reference on the  definition identified  by  
-         the index <anidex>.") Definition;
+	:param anindex:
+	:type anindex: Standard_Integer
+	:rtype: Handle_Dynamic_FuzzyClass
+") Definition;
 		Handle_Dynamic_FuzzyClass Definition (const Standard_Integer anindex);
 
         %feature("autodoc", "1");
@@ -694,64 +616,49 @@ def __del__(self):
 %nodefaultctor Dynamic_Method;
 class Dynamic_Method : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual TCollection_AsciiString
+		%feature("autodoc", "	* Returns the type of object which is the name of the function definition.
 
-Returns the type  of object which is  the  name of the  
-         function definition.") Type;
+	:rtype: TCollection_AsciiString
+") Type;
 		virtual TCollection_AsciiString Type ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Dynamic_VariableNode
+		%feature("autodoc", "	* Returns the first variable node of the Method which contains a variable.
 
-Returns the  first variable node   of the Method which  
-         contains a variable.") FirstVariableNode;
+	:rtype: Handle_Dynamic_VariableNode
+") FirstVariableNode;
 		Handle_Dynamic_VariableNode FirstVariableNode ();
-		%feature("autodoc", "Args:
-	avariable(char *)
+		%feature("autodoc", "	* Returns true if there is a variable with <avariable> as name, false otherwise.
 
-Returns:
-	Standard_Boolean
-
-Returns true if there is a variable with <avariable>  
-         as name, false otherwise.") Variable;
+	:param avariable:
+	:type avariable: char *
+	:rtype: bool
+") Variable;
 		Standard_Boolean Variable (const char * avariable);
-		%feature("autodoc", "Args:
-	avariable(Handle_Dynamic_Variable)
+		%feature("autodoc", "	* Adds another variable <avariable> to the sequence of variable definitions.
 
-Returns:
-	None
-
-Adds another  variable <avariable>  to the sequence of  
-         variable definitions.") Variable;
+	:param avariable:
+	:type avariable: Handle_Dynamic_Variable &
+	:rtype: None
+") Variable;
 		void Variable (const Handle_Dynamic_Variable & avariable);
-		%feature("autodoc", "Args:
-	aname(char *)
-	aparameter(Handle_Dynamic_Parameter)
-	amode(Dynamic_ModeEnum)
+		%feature("autodoc", "	* Returns True, if there is a variable <avariable> previously stored in the instance <self> and there is the corresponding parameter value in the output argument <aparameter>, False otherwise.
 
-Returns:
-	Standard_Boolean
-
-Returns  True,   if there  is   a variable <avariable>  
-         previously  stored in the  instance  <self> and there is  
-         the corresponding parameter    value   in the   output  
-         argument <aparameter>, False otherwise.") Value;
+	:param aname:
+	:type aname: char *
+	:param aparameter:
+	:type aparameter: Handle_Dynamic_Parameter &
+	:param amode:
+	:type amode: Dynamic_ModeEnum &
+	:rtype: bool
+") Value;
 		Standard_Boolean Value (const char * aname,Handle_Dynamic_Parameter & aparameter,Dynamic_ModeEnum & amode);
-		%feature("autodoc", "Args:
-	aname(char *)
-	avariable(Handle_Dynamic_Variable)
+		%feature("autodoc", "	* Returns True, if there is a variable named <aname> previously stored in the instance of <self> and returns the corresponding variable in the output argument <avariable>, False otherwise.
 
-Returns:
-	Standard_Boolean
-
-Returns True, if  there  is a variable   named <aname>  
-         previously stored in the  instance of <self> and returns  
-         the   corresponding variable  in  the output  argument  
-         <avariable>, False otherwise.") Value;
+	:param aname:
+	:type aname: char *
+	:param avariable:
+	:type avariable: Handle_Dynamic_Variable &
+	:rtype: bool
+") Value;
 		Standard_Boolean Value (const char * aname,Handle_Dynamic_Variable & avariable);
 
         %feature("autodoc", "1");
@@ -820,74 +727,56 @@ def __del__(self):
 %nodefaultctor Dynamic_MethodDefinitionsDictionary;
 class Dynamic_MethodDefinitionsDictionary : public Standard_Transient {
 	public:
-		%feature("autodoc", "Args:
-	afilename(char *)
+		%feature("autodoc", "	* Starting with a file named <afilename>, fills the dictionary with all the wishes definitions.
 
-Returns:
-	None
-
-Starting with   a file named  <afilename>,  fills  the  
-         dictionary with all the wishes definitions.") Creates;
+	:param afilename:
+	:type afilename: char *
+	:rtype: None
+") Creates;
 		void Creates (const char * afilename);
-		%feature("autodoc", "Args:
-	adefinition(Handle_Dynamic_Method)
+		%feature("autodoc", "	* This method sets the new definition <adefinition> in the dictionary. It returns true if the operation is successful, false otherwise.
 
-Returns:
-	Standard_Boolean
-
-This method sets  the new definition  <adefinition> in  
-         the dictionary. It   returns true if the operation  is  
-         successful, false otherwise.") Definition;
+	:param adefinition:
+	:type adefinition: Handle_Dynamic_Method &
+	:rtype: bool
+") Definition;
 		Standard_Boolean Definition (const Handle_Dynamic_Method & adefinition);
-		%feature("autodoc", "Args:
-	aname(char *)
-	atype(char *)
-	avalue(char *)
+		%feature("autodoc", "	* This virtual method allows the user to add recognition of its own parameters when reading the file to fill the dictionary.
 
-Returns:
-	Handle_Dynamic_Parameter
-
-This virtual method allows the user to add recognition  
-         of its  own  parameters when reading  the file to fill  
-         the dictionary.") Switch;
+	:param aname:
+	:type aname: char *
+	:param atype:
+	:type atype: char *
+	:param avalue:
+	:type avalue: char *
+	:rtype: Handle_Dynamic_Parameter
+") Switch;
 		Handle_Dynamic_Parameter Switch (const char * aname,const char * atype,const char * avalue);
-		%feature("autodoc", "Args:
-	atype(char *)
-	adefinition(Handle_Dynamic_Method)
+		%feature("autodoc", "	* Returns from the dictionary in the out variable <adefinition> a reference to the right instance of the definition identified by its type <atype>. The method returns true if the definition exist, false otherwise.
 
-Returns:
-	Standard_Boolean
-
-Returns from     the dictionary in  the   out variable  
-         <adefinition> a reference to the right instance of the  
-         definition identified  by its type <atype>. The method  
-         returns true if the definition exist, false otherwise.") Definition;
+	:param atype:
+	:type atype: char *
+	:param adefinition:
+	:type adefinition: Handle_Dynamic_Method &
+	:rtype: bool
+") Definition;
 		Standard_Boolean Definition (const char * atype,Handle_Dynamic_Method & adefinition);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if there has been no modification of the file method-definitions.dat since the creation of the dictionary object, false otherwise.
 
-Returns true if there has  been no modification of the  
-         file  method-definitions.dat since the creation of the  
-         dictionary object, false otherwise.") UpToDate;
+	:rtype: bool
+") UpToDate;
 		Standard_Boolean UpToDate ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of definitions stored in the dictionary.
 
-Returns    the number  of  definitions  stored  in the  
-         dictionary.") NumberOfDefinitions;
+	:rtype: int
+") NumberOfDefinitions;
 		Standard_Integer NumberOfDefinitions ();
-		%feature("autodoc", "Args:
-	anindex(Standard_Integer)
+		%feature("autodoc", "	* Returns a reference on the definition identified by the index <anidex>.
 
-Returns:
-	Handle_Dynamic_Method
-
-Returns a  reference on the  definition identified  by  
-         the index <anidex>.") Definition;
+	:param anindex:
+	:type anindex: Standard_Integer
+	:rtype: Handle_Dynamic_Method
+") Definition;
 		Handle_Dynamic_Method Definition (const Standard_Integer anindex);
 
         %feature("autodoc", "1");
@@ -956,12 +845,10 @@ def __del__(self):
 %nodefaultctor Dynamic_Parameter;
 class Dynamic_Parameter : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* Returns in an AsciiString the name of the parameter.
 
-Returns in an AsciiString the name of the parameter.") Name;
+	:rtype: TCollection_AsciiString
+") Name;
 		TCollection_AsciiString Name ();
 
         %feature("autodoc", "1");
@@ -1030,50 +917,29 @@ def __del__(self):
 %nodefaultctor Dynamic_ParameterNode;
 class Dynamic_ParameterNode : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dynamic_ParameterNode;
+		%feature("autodoc", "	:rtype: None
+") Dynamic_ParameterNode;
 		 Dynamic_ParameterNode ();
-		%feature("autodoc", "Args:
-	anitem(Handle_Dynamic_Parameter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Dynamic_ParameterNode;
+		%feature("autodoc", "	:param anitem:
+	:type anitem: Handle_Dynamic_Parameter &
+	:rtype: None
+") Dynamic_ParameterNode;
 		 Dynamic_ParameterNode (const Handle_Dynamic_Parameter & anitem);
-		%feature("autodoc", "Args:
-	anitem(Handle_Dynamic_Parameter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Object;
+		%feature("autodoc", "	:param anitem:
+	:type anitem: Handle_Dynamic_Parameter &
+	:rtype: None
+") Object;
 		void Object (const Handle_Dynamic_Parameter & anitem);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Dynamic_Parameter
-
-No detailed docstring for this function.") Object;
+		%feature("autodoc", "	:rtype: Handle_Dynamic_Parameter
+") Object;
 		Handle_Dynamic_Parameter Object ();
-		%feature("autodoc", "Args:
-	anode(Handle_Dynamic_ParameterNode)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:param anode:
+	:type anode: Handle_Dynamic_ParameterNode &
+	:rtype: None
+") Next;
 		void Next (const Handle_Dynamic_ParameterNode & anode);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Dynamic_ParameterNode
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: Handle_Dynamic_ParameterNode
+") Next;
 		Handle_Dynamic_ParameterNode Next ();
 };
 
@@ -1134,168 +1000,111 @@ def __del__(self):
 %nodefaultctor Dynamic_SeqOfClasses;
 class Dynamic_SeqOfClasses : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dynamic_SeqOfClasses;
+		%feature("autodoc", "	:rtype: None
+") Dynamic_SeqOfClasses;
 		 Dynamic_SeqOfClasses ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Dynamic_SeqOfClasses)
-
-Returns:
-	Dynamic_SeqOfClasses
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Dynamic_SeqOfClasses &
+	:rtype: Dynamic_SeqOfClasses
+") Assign;
 		const Dynamic_SeqOfClasses & Assign (const Dynamic_SeqOfClasses & Other);
-		%feature("autodoc", "Args:
-	Other(Dynamic_SeqOfClasses)
-
-Returns:
-	Dynamic_SeqOfClasses
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Dynamic_SeqOfClasses &
+	:rtype: Dynamic_SeqOfClasses
+") operator=;
 		const Dynamic_SeqOfClasses & operator = (const Dynamic_SeqOfClasses & Other);
-		%feature("autodoc", "Args:
-	T(Handle_Dynamic_DynamicClass)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Dynamic_DynamicClass &
+	:rtype: None
+") Append;
 		void Append (const Handle_Dynamic_DynamicClass & T);
-		%feature("autodoc", "Args:
-	S(Dynamic_SeqOfClasses)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Dynamic_SeqOfClasses &
+	:rtype: None
+") Append;
 		void Append (Dynamic_SeqOfClasses & S);
-		%feature("autodoc", "Args:
-	T(Handle_Dynamic_DynamicClass)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Dynamic_DynamicClass &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Dynamic_DynamicClass & T);
-		%feature("autodoc", "Args:
-	S(Dynamic_SeqOfClasses)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Dynamic_SeqOfClasses &
+	:rtype: None
+") Prepend;
 		void Prepend (Dynamic_SeqOfClasses & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Dynamic_DynamicClass)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Dynamic_DynamicClass &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_Dynamic_DynamicClass & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Dynamic_SeqOfClasses)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Dynamic_SeqOfClasses &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Dynamic_SeqOfClasses & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Dynamic_DynamicClass)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Dynamic_DynamicClass &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_Dynamic_DynamicClass & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Dynamic_SeqOfClasses)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Dynamic_SeqOfClasses &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Dynamic_SeqOfClasses & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Dynamic_DynamicClass
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_Dynamic_DynamicClass
+") First;
 		const Handle_Dynamic_DynamicClass & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Dynamic_DynamicClass
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_Dynamic_DynamicClass
+") Last;
 		const Handle_Dynamic_DynamicClass & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Dynamic_SeqOfClasses)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Dynamic_SeqOfClasses &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Dynamic_SeqOfClasses & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Dynamic_DynamicClass
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Dynamic_DynamicClass
+") Value;
 		const Handle_Dynamic_DynamicClass & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_Dynamic_DynamicClass)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_Dynamic_DynamicClass &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Dynamic_DynamicClass & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Dynamic_DynamicClass
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Dynamic_DynamicClass
+") ChangeValue;
 		Handle_Dynamic_DynamicClass & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -1317,168 +1126,111 @@ def __del__(self):
 %nodefaultctor Dynamic_SeqOfFuzzyDefinitions;
 class Dynamic_SeqOfFuzzyDefinitions : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dynamic_SeqOfFuzzyDefinitions;
+		%feature("autodoc", "	:rtype: None
+") Dynamic_SeqOfFuzzyDefinitions;
 		 Dynamic_SeqOfFuzzyDefinitions ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Dynamic_SeqOfFuzzyDefinitions)
-
-Returns:
-	Dynamic_SeqOfFuzzyDefinitions
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Dynamic_SeqOfFuzzyDefinitions &
+	:rtype: Dynamic_SeqOfFuzzyDefinitions
+") Assign;
 		const Dynamic_SeqOfFuzzyDefinitions & Assign (const Dynamic_SeqOfFuzzyDefinitions & Other);
-		%feature("autodoc", "Args:
-	Other(Dynamic_SeqOfFuzzyDefinitions)
-
-Returns:
-	Dynamic_SeqOfFuzzyDefinitions
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Dynamic_SeqOfFuzzyDefinitions &
+	:rtype: Dynamic_SeqOfFuzzyDefinitions
+") operator=;
 		const Dynamic_SeqOfFuzzyDefinitions & operator = (const Dynamic_SeqOfFuzzyDefinitions & Other);
-		%feature("autodoc", "Args:
-	T(Handle_Dynamic_FuzzyDefinition)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Dynamic_FuzzyDefinition &
+	:rtype: None
+") Append;
 		void Append (const Handle_Dynamic_FuzzyDefinition & T);
-		%feature("autodoc", "Args:
-	S(Dynamic_SeqOfFuzzyDefinitions)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Dynamic_SeqOfFuzzyDefinitions &
+	:rtype: None
+") Append;
 		void Append (Dynamic_SeqOfFuzzyDefinitions & S);
-		%feature("autodoc", "Args:
-	T(Handle_Dynamic_FuzzyDefinition)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Dynamic_FuzzyDefinition &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Dynamic_FuzzyDefinition & T);
-		%feature("autodoc", "Args:
-	S(Dynamic_SeqOfFuzzyDefinitions)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Dynamic_SeqOfFuzzyDefinitions &
+	:rtype: None
+") Prepend;
 		void Prepend (Dynamic_SeqOfFuzzyDefinitions & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Dynamic_FuzzyDefinition)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Dynamic_FuzzyDefinition &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_Dynamic_FuzzyDefinition & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Dynamic_SeqOfFuzzyDefinitions)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Dynamic_SeqOfFuzzyDefinitions &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Dynamic_SeqOfFuzzyDefinitions & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Dynamic_FuzzyDefinition)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Dynamic_FuzzyDefinition &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_Dynamic_FuzzyDefinition & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Dynamic_SeqOfFuzzyDefinitions)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Dynamic_SeqOfFuzzyDefinitions &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Dynamic_SeqOfFuzzyDefinitions & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Dynamic_FuzzyDefinition
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_Dynamic_FuzzyDefinition
+") First;
 		const Handle_Dynamic_FuzzyDefinition & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Dynamic_FuzzyDefinition
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_Dynamic_FuzzyDefinition
+") Last;
 		const Handle_Dynamic_FuzzyDefinition & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Dynamic_SeqOfFuzzyDefinitions)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Dynamic_SeqOfFuzzyDefinitions &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Dynamic_SeqOfFuzzyDefinitions & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Dynamic_FuzzyDefinition
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Dynamic_FuzzyDefinition
+") Value;
 		const Handle_Dynamic_FuzzyDefinition & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_Dynamic_FuzzyDefinition)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_Dynamic_FuzzyDefinition &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Dynamic_FuzzyDefinition & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Dynamic_FuzzyDefinition
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Dynamic_FuzzyDefinition
+") ChangeValue;
 		Handle_Dynamic_FuzzyDefinition & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -1500,168 +1252,111 @@ def __del__(self):
 %nodefaultctor Dynamic_SeqOfMethodDefinitions;
 class Dynamic_SeqOfMethodDefinitions : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dynamic_SeqOfMethodDefinitions;
+		%feature("autodoc", "	:rtype: None
+") Dynamic_SeqOfMethodDefinitions;
 		 Dynamic_SeqOfMethodDefinitions ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Dynamic_SeqOfMethodDefinitions)
-
-Returns:
-	Dynamic_SeqOfMethodDefinitions
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Dynamic_SeqOfMethodDefinitions &
+	:rtype: Dynamic_SeqOfMethodDefinitions
+") Assign;
 		const Dynamic_SeqOfMethodDefinitions & Assign (const Dynamic_SeqOfMethodDefinitions & Other);
-		%feature("autodoc", "Args:
-	Other(Dynamic_SeqOfMethodDefinitions)
-
-Returns:
-	Dynamic_SeqOfMethodDefinitions
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Dynamic_SeqOfMethodDefinitions &
+	:rtype: Dynamic_SeqOfMethodDefinitions
+") operator=;
 		const Dynamic_SeqOfMethodDefinitions & operator = (const Dynamic_SeqOfMethodDefinitions & Other);
-		%feature("autodoc", "Args:
-	T(Handle_Dynamic_MethodDefinition)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Dynamic_MethodDefinition &
+	:rtype: None
+") Append;
 		void Append (const Handle_Dynamic_MethodDefinition & T);
-		%feature("autodoc", "Args:
-	S(Dynamic_SeqOfMethodDefinitions)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Dynamic_SeqOfMethodDefinitions &
+	:rtype: None
+") Append;
 		void Append (Dynamic_SeqOfMethodDefinitions & S);
-		%feature("autodoc", "Args:
-	T(Handle_Dynamic_MethodDefinition)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Dynamic_MethodDefinition &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Dynamic_MethodDefinition & T);
-		%feature("autodoc", "Args:
-	S(Dynamic_SeqOfMethodDefinitions)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Dynamic_SeqOfMethodDefinitions &
+	:rtype: None
+") Prepend;
 		void Prepend (Dynamic_SeqOfMethodDefinitions & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Dynamic_MethodDefinition)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Dynamic_MethodDefinition &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_Dynamic_MethodDefinition & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Dynamic_SeqOfMethodDefinitions)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Dynamic_SeqOfMethodDefinitions &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Dynamic_SeqOfMethodDefinitions & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Dynamic_MethodDefinition)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Dynamic_MethodDefinition &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_Dynamic_MethodDefinition & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Dynamic_SeqOfMethodDefinitions)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Dynamic_SeqOfMethodDefinitions &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Dynamic_SeqOfMethodDefinitions & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Dynamic_MethodDefinition
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_Dynamic_MethodDefinition
+") First;
 		const Handle_Dynamic_MethodDefinition & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Dynamic_MethodDefinition
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_Dynamic_MethodDefinition
+") Last;
 		const Handle_Dynamic_MethodDefinition & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Dynamic_SeqOfMethodDefinitions)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Dynamic_SeqOfMethodDefinitions &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Dynamic_SeqOfMethodDefinitions & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Dynamic_MethodDefinition
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Dynamic_MethodDefinition
+") Value;
 		const Handle_Dynamic_MethodDefinition & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_Dynamic_MethodDefinition)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_Dynamic_MethodDefinition &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Dynamic_MethodDefinition & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Dynamic_MethodDefinition
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Dynamic_MethodDefinition
+") ChangeValue;
 		Handle_Dynamic_MethodDefinition & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -1683,168 +1378,111 @@ def __del__(self):
 %nodefaultctor Dynamic_SeqOfMethods;
 class Dynamic_SeqOfMethods : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dynamic_SeqOfMethods;
+		%feature("autodoc", "	:rtype: None
+") Dynamic_SeqOfMethods;
 		 Dynamic_SeqOfMethods ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Dynamic_SeqOfMethods)
-
-Returns:
-	Dynamic_SeqOfMethods
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Dynamic_SeqOfMethods &
+	:rtype: Dynamic_SeqOfMethods
+") Assign;
 		const Dynamic_SeqOfMethods & Assign (const Dynamic_SeqOfMethods & Other);
-		%feature("autodoc", "Args:
-	Other(Dynamic_SeqOfMethods)
-
-Returns:
-	Dynamic_SeqOfMethods
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Dynamic_SeqOfMethods &
+	:rtype: Dynamic_SeqOfMethods
+") operator=;
 		const Dynamic_SeqOfMethods & operator = (const Dynamic_SeqOfMethods & Other);
-		%feature("autodoc", "Args:
-	T(Handle_Dynamic_Method)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Dynamic_Method &
+	:rtype: None
+") Append;
 		void Append (const Handle_Dynamic_Method & T);
-		%feature("autodoc", "Args:
-	S(Dynamic_SeqOfMethods)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Dynamic_SeqOfMethods &
+	:rtype: None
+") Append;
 		void Append (Dynamic_SeqOfMethods & S);
-		%feature("autodoc", "Args:
-	T(Handle_Dynamic_Method)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Dynamic_Method &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Dynamic_Method & T);
-		%feature("autodoc", "Args:
-	S(Dynamic_SeqOfMethods)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Dynamic_SeqOfMethods &
+	:rtype: None
+") Prepend;
 		void Prepend (Dynamic_SeqOfMethods & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Dynamic_Method)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Dynamic_Method &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_Dynamic_Method & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Dynamic_SeqOfMethods)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Dynamic_SeqOfMethods &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Dynamic_SeqOfMethods & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Dynamic_Method)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Dynamic_Method &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_Dynamic_Method & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Dynamic_SeqOfMethods)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Dynamic_SeqOfMethods &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Dynamic_SeqOfMethods & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Dynamic_Method
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_Dynamic_Method
+") First;
 		const Handle_Dynamic_Method & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Dynamic_Method
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_Dynamic_Method
+") Last;
 		const Handle_Dynamic_Method & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Dynamic_SeqOfMethods)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Dynamic_SeqOfMethods &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Dynamic_SeqOfMethods & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Dynamic_Method
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Dynamic_Method
+") Value;
 		const Handle_Dynamic_Method & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_Dynamic_Method)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_Dynamic_Method &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Dynamic_Method & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Dynamic_Method
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Dynamic_Method
+") ChangeValue;
 		Handle_Dynamic_Method & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -1866,22 +1504,17 @@ def __del__(self):
 %nodefaultctor Dynamic_SequenceNodeOfSeqOfClasses;
 class Dynamic_SequenceNodeOfSeqOfClasses : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Dynamic_DynamicClass)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Dynamic_SequenceNodeOfSeqOfClasses;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Dynamic_DynamicClass &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Dynamic_SequenceNodeOfSeqOfClasses;
 		 Dynamic_SequenceNodeOfSeqOfClasses (const Handle_Dynamic_DynamicClass & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Dynamic_DynamicClass
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Dynamic_DynamicClass
+") Value;
 		Handle_Dynamic_DynamicClass & Value ();
 };
 
@@ -1942,22 +1575,17 @@ def __del__(self):
 %nodefaultctor Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions;
 class Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Dynamic_FuzzyDefinition)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Dynamic_FuzzyDefinition &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions;
 		 Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions (const Handle_Dynamic_FuzzyDefinition & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Dynamic_FuzzyDefinition
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Dynamic_FuzzyDefinition
+") Value;
 		Handle_Dynamic_FuzzyDefinition & Value ();
 };
 
@@ -2018,22 +1646,17 @@ def __del__(self):
 %nodefaultctor Dynamic_SequenceNodeOfSeqOfMethodDefinitions;
 class Dynamic_SequenceNodeOfSeqOfMethodDefinitions : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Dynamic_MethodDefinition)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Dynamic_SequenceNodeOfSeqOfMethodDefinitions;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Dynamic_MethodDefinition &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Dynamic_SequenceNodeOfSeqOfMethodDefinitions;
 		 Dynamic_SequenceNodeOfSeqOfMethodDefinitions (const Handle_Dynamic_MethodDefinition & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Dynamic_MethodDefinition
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Dynamic_MethodDefinition
+") Value;
 		Handle_Dynamic_MethodDefinition & Value ();
 };
 
@@ -2094,22 +1717,17 @@ def __del__(self):
 %nodefaultctor Dynamic_SequenceNodeOfSeqOfMethods;
 class Dynamic_SequenceNodeOfSeqOfMethods : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Dynamic_Method)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Dynamic_SequenceNodeOfSeqOfMethods;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Dynamic_Method &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Dynamic_SequenceNodeOfSeqOfMethods;
 		 Dynamic_SequenceNodeOfSeqOfMethods (const Handle_Dynamic_Method & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Dynamic_Method
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Dynamic_Method
+") Value;
 		Handle_Dynamic_Method & Value ();
 };
 
@@ -2170,188 +1788,118 @@ def __del__(self):
 %nodefaultctor Dynamic_SequenceOfClasses;
 class Dynamic_SequenceOfClasses : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dynamic_SequenceOfClasses;
+		%feature("autodoc", "	:rtype: None
+") Dynamic_SequenceOfClasses;
 		 Dynamic_SequenceOfClasses ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	anItem(Handle_Dynamic_DynamicClass)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Dynamic_DynamicClass &
+	:rtype: None
+") Append;
 		void Append (const Handle_Dynamic_DynamicClass & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_Dynamic_SequenceOfClasses)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_Dynamic_SequenceOfClasses &
+	:rtype: None
+") Append;
 		void Append (const Handle_Dynamic_SequenceOfClasses & aSequence);
-		%feature("autodoc", "Args:
-	anItem(Handle_Dynamic_DynamicClass)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Dynamic_DynamicClass &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Dynamic_DynamicClass & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_Dynamic_SequenceOfClasses)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_Dynamic_SequenceOfClasses &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Dynamic_SequenceOfClasses & aSequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Dynamic_DynamicClass)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Dynamic_DynamicClass &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Dynamic_DynamicClass & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_Dynamic_SequenceOfClasses)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_Dynamic_SequenceOfClasses &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Dynamic_SequenceOfClasses & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Dynamic_DynamicClass)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Dynamic_DynamicClass &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Dynamic_DynamicClass & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_Dynamic_SequenceOfClasses)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_Dynamic_SequenceOfClasses &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Dynamic_SequenceOfClasses & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anOtherIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Exchange;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anOtherIndex:
+	:type anOtherIndex: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Dynamic_SequenceOfClasses
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Dynamic_SequenceOfClasses
+") Split;
 		Handle_Dynamic_SequenceOfClasses Split (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Dynamic_DynamicClass)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Dynamic_DynamicClass &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Handle_Dynamic_DynamicClass & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Dynamic_DynamicClass
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Dynamic_DynamicClass
+") Value;
 		const Handle_Dynamic_DynamicClass & Value (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Dynamic_DynamicClass
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Dynamic_DynamicClass
+") ChangeValue;
 		Handle_Dynamic_DynamicClass & ChangeValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	fromIndex(Standard_Integer)
-	toIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param fromIndex:
+	:type fromIndex: Standard_Integer
+	:param toIndex:
+	:type toIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Dynamic_SeqOfClasses
-
-No detailed docstring for this function.") Sequence;
+		%feature("autodoc", "	:rtype: Dynamic_SeqOfClasses
+") Sequence;
 		const Dynamic_SeqOfClasses & Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Dynamic_SeqOfClasses
-
-No detailed docstring for this function.") ChangeSequence;
+		%feature("autodoc", "	:rtype: Dynamic_SeqOfClasses
+") ChangeSequence;
 		Dynamic_SeqOfClasses & ChangeSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Dynamic_SequenceOfClasses
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_Dynamic_SequenceOfClasses
+") ShallowCopy;
 		Handle_Dynamic_SequenceOfClasses ShallowCopy ();
 };
 
@@ -2412,188 +1960,118 @@ def __del__(self):
 %nodefaultctor Dynamic_SequenceOfFuzzyDefinitions;
 class Dynamic_SequenceOfFuzzyDefinitions : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dynamic_SequenceOfFuzzyDefinitions;
+		%feature("autodoc", "	:rtype: None
+") Dynamic_SequenceOfFuzzyDefinitions;
 		 Dynamic_SequenceOfFuzzyDefinitions ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	anItem(Handle_Dynamic_FuzzyDefinition)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Dynamic_FuzzyDefinition &
+	:rtype: None
+") Append;
 		void Append (const Handle_Dynamic_FuzzyDefinition & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_Dynamic_SequenceOfFuzzyDefinitions)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_Dynamic_SequenceOfFuzzyDefinitions &
+	:rtype: None
+") Append;
 		void Append (const Handle_Dynamic_SequenceOfFuzzyDefinitions & aSequence);
-		%feature("autodoc", "Args:
-	anItem(Handle_Dynamic_FuzzyDefinition)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Dynamic_FuzzyDefinition &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Dynamic_FuzzyDefinition & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_Dynamic_SequenceOfFuzzyDefinitions)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_Dynamic_SequenceOfFuzzyDefinitions &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Dynamic_SequenceOfFuzzyDefinitions & aSequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Dynamic_FuzzyDefinition)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Dynamic_FuzzyDefinition &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Dynamic_FuzzyDefinition & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_Dynamic_SequenceOfFuzzyDefinitions)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_Dynamic_SequenceOfFuzzyDefinitions &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Dynamic_SequenceOfFuzzyDefinitions & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Dynamic_FuzzyDefinition)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Dynamic_FuzzyDefinition &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Dynamic_FuzzyDefinition & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_Dynamic_SequenceOfFuzzyDefinitions)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_Dynamic_SequenceOfFuzzyDefinitions &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Dynamic_SequenceOfFuzzyDefinitions & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anOtherIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Exchange;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anOtherIndex:
+	:type anOtherIndex: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Dynamic_SequenceOfFuzzyDefinitions
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Dynamic_SequenceOfFuzzyDefinitions
+") Split;
 		Handle_Dynamic_SequenceOfFuzzyDefinitions Split (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Dynamic_FuzzyDefinition)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Dynamic_FuzzyDefinition &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Handle_Dynamic_FuzzyDefinition & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Dynamic_FuzzyDefinition
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Dynamic_FuzzyDefinition
+") Value;
 		const Handle_Dynamic_FuzzyDefinition & Value (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Dynamic_FuzzyDefinition
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Dynamic_FuzzyDefinition
+") ChangeValue;
 		Handle_Dynamic_FuzzyDefinition & ChangeValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	fromIndex(Standard_Integer)
-	toIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param fromIndex:
+	:type fromIndex: Standard_Integer
+	:param toIndex:
+	:type toIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Dynamic_SeqOfFuzzyDefinitions
-
-No detailed docstring for this function.") Sequence;
+		%feature("autodoc", "	:rtype: Dynamic_SeqOfFuzzyDefinitions
+") Sequence;
 		const Dynamic_SeqOfFuzzyDefinitions & Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Dynamic_SeqOfFuzzyDefinitions
-
-No detailed docstring for this function.") ChangeSequence;
+		%feature("autodoc", "	:rtype: Dynamic_SeqOfFuzzyDefinitions
+") ChangeSequence;
 		Dynamic_SeqOfFuzzyDefinitions & ChangeSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Dynamic_SequenceOfFuzzyDefinitions
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_Dynamic_SequenceOfFuzzyDefinitions
+") ShallowCopy;
 		Handle_Dynamic_SequenceOfFuzzyDefinitions ShallowCopy ();
 };
 
@@ -2654,188 +2132,118 @@ def __del__(self):
 %nodefaultctor Dynamic_SequenceOfMethodDefinitions;
 class Dynamic_SequenceOfMethodDefinitions : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dynamic_SequenceOfMethodDefinitions;
+		%feature("autodoc", "	:rtype: None
+") Dynamic_SequenceOfMethodDefinitions;
 		 Dynamic_SequenceOfMethodDefinitions ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	anItem(Handle_Dynamic_MethodDefinition)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Dynamic_MethodDefinition &
+	:rtype: None
+") Append;
 		void Append (const Handle_Dynamic_MethodDefinition & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_Dynamic_SequenceOfMethodDefinitions)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_Dynamic_SequenceOfMethodDefinitions &
+	:rtype: None
+") Append;
 		void Append (const Handle_Dynamic_SequenceOfMethodDefinitions & aSequence);
-		%feature("autodoc", "Args:
-	anItem(Handle_Dynamic_MethodDefinition)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Dynamic_MethodDefinition &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Dynamic_MethodDefinition & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_Dynamic_SequenceOfMethodDefinitions)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_Dynamic_SequenceOfMethodDefinitions &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Dynamic_SequenceOfMethodDefinitions & aSequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Dynamic_MethodDefinition)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Dynamic_MethodDefinition &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Dynamic_MethodDefinition & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_Dynamic_SequenceOfMethodDefinitions)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_Dynamic_SequenceOfMethodDefinitions &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Dynamic_SequenceOfMethodDefinitions & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Dynamic_MethodDefinition)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Dynamic_MethodDefinition &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Dynamic_MethodDefinition & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_Dynamic_SequenceOfMethodDefinitions)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_Dynamic_SequenceOfMethodDefinitions &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Dynamic_SequenceOfMethodDefinitions & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anOtherIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Exchange;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anOtherIndex:
+	:type anOtherIndex: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Dynamic_SequenceOfMethodDefinitions
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Dynamic_SequenceOfMethodDefinitions
+") Split;
 		Handle_Dynamic_SequenceOfMethodDefinitions Split (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Dynamic_MethodDefinition)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Dynamic_MethodDefinition &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Handle_Dynamic_MethodDefinition & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Dynamic_MethodDefinition
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Dynamic_MethodDefinition
+") Value;
 		const Handle_Dynamic_MethodDefinition & Value (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Dynamic_MethodDefinition
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Dynamic_MethodDefinition
+") ChangeValue;
 		Handle_Dynamic_MethodDefinition & ChangeValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	fromIndex(Standard_Integer)
-	toIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param fromIndex:
+	:type fromIndex: Standard_Integer
+	:param toIndex:
+	:type toIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Dynamic_SeqOfMethodDefinitions
-
-No detailed docstring for this function.") Sequence;
+		%feature("autodoc", "	:rtype: Dynamic_SeqOfMethodDefinitions
+") Sequence;
 		const Dynamic_SeqOfMethodDefinitions & Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Dynamic_SeqOfMethodDefinitions
-
-No detailed docstring for this function.") ChangeSequence;
+		%feature("autodoc", "	:rtype: Dynamic_SeqOfMethodDefinitions
+") ChangeSequence;
 		Dynamic_SeqOfMethodDefinitions & ChangeSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Dynamic_SequenceOfMethodDefinitions
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_Dynamic_SequenceOfMethodDefinitions
+") ShallowCopy;
 		Handle_Dynamic_SequenceOfMethodDefinitions ShallowCopy ();
 };
 
@@ -2896,188 +2304,118 @@ def __del__(self):
 %nodefaultctor Dynamic_SequenceOfMethods;
 class Dynamic_SequenceOfMethods : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dynamic_SequenceOfMethods;
+		%feature("autodoc", "	:rtype: None
+") Dynamic_SequenceOfMethods;
 		 Dynamic_SequenceOfMethods ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	anItem(Handle_Dynamic_Method)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Dynamic_Method &
+	:rtype: None
+") Append;
 		void Append (const Handle_Dynamic_Method & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_Dynamic_SequenceOfMethods)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_Dynamic_SequenceOfMethods &
+	:rtype: None
+") Append;
 		void Append (const Handle_Dynamic_SequenceOfMethods & aSequence);
-		%feature("autodoc", "Args:
-	anItem(Handle_Dynamic_Method)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Dynamic_Method &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Dynamic_Method & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_Dynamic_SequenceOfMethods)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_Dynamic_SequenceOfMethods &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Dynamic_SequenceOfMethods & aSequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Dynamic_Method)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Dynamic_Method &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Dynamic_Method & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_Dynamic_SequenceOfMethods)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_Dynamic_SequenceOfMethods &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Dynamic_SequenceOfMethods & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Dynamic_Method)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Dynamic_Method &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Dynamic_Method & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_Dynamic_SequenceOfMethods)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_Dynamic_SequenceOfMethods &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Dynamic_SequenceOfMethods & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anOtherIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Exchange;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anOtherIndex:
+	:type anOtherIndex: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Dynamic_SequenceOfMethods
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Dynamic_SequenceOfMethods
+") Split;
 		Handle_Dynamic_SequenceOfMethods Split (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Dynamic_Method)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Dynamic_Method &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Handle_Dynamic_Method & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Dynamic_Method
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Dynamic_Method
+") Value;
 		const Handle_Dynamic_Method & Value (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Dynamic_Method
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Dynamic_Method
+") ChangeValue;
 		Handle_Dynamic_Method & ChangeValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	fromIndex(Standard_Integer)
-	toIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param fromIndex:
+	:type fromIndex: Standard_Integer
+	:param toIndex:
+	:type toIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Dynamic_SeqOfMethods
-
-No detailed docstring for this function.") Sequence;
+		%feature("autodoc", "	:rtype: Dynamic_SeqOfMethods
+") Sequence;
 		const Dynamic_SeqOfMethods & Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Dynamic_SeqOfMethods
-
-No detailed docstring for this function.") ChangeSequence;
+		%feature("autodoc", "	:rtype: Dynamic_SeqOfMethods
+") ChangeSequence;
 		Dynamic_SeqOfMethods & ChangeSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Dynamic_SequenceOfMethods
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_Dynamic_SequenceOfMethods
+") ShallowCopy;
 		Handle_Dynamic_SequenceOfMethods ShallowCopy ();
 };
 
@@ -3138,46 +2476,34 @@ def __del__(self):
 %nodefaultctor Dynamic_Variable;
 class Dynamic_Variable : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates and returns an empty instance of this class.
 
-Creates and returns an empty instance of this class.") Dynamic_Variable;
+	:rtype: None
+") Dynamic_Variable;
 		 Dynamic_Variable ();
-		%feature("autodoc", "Args:
-	aparameter(Handle_Dynamic_Parameter)
+		%feature("autodoc", "	* Sets the parameter <aparameter> in <self>. This parameter gives the name, the type of value, and if necessary the default value of the variable.
 
-Returns:
-	None
-
-Sets  the   parameter  <aparameter>   in  <self>.   This  
-         parameter gives the name,  the  type of value, and  if  
-         necessary the default value of the variable.") Parameter;
+	:param aparameter:
+	:type aparameter: Handle_Dynamic_Parameter &
+	:rtype: None
+") Parameter;
 		void Parameter (const Handle_Dynamic_Parameter & aparameter);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Dynamic_Parameter
+		%feature("autodoc", "	* Returns the parameter stored in <self>.
 
-Returns the parameter stored in <self>.") Parameter;
+	:rtype: Handle_Dynamic_Parameter
+") Parameter;
 		Handle_Dynamic_Parameter Parameter ();
-		%feature("autodoc", "Args:
-	amode(Dynamic_ModeEnum)
+		%feature("autodoc", "	* Sets the mode to the variable. the mode is to take in the enumeration IN, OUT, INOUT, INTERNAL, CONSTANT, which describes the type of the variable.
 
-Returns:
-	None
-
-Sets the mode to the variable. the  mode is to take in  
-         the enumeration  IN,  OUT, INOUT,  INTERNAL, CONSTANT,  
-         which describes the type of the variable.") Mode;
+	:param amode:
+	:type amode: Dynamic_ModeEnum
+	:rtype: None
+") Mode;
 		void Mode (const Dynamic_ModeEnum amode);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Dynamic_ModeEnum
+		%feature("autodoc", "	* Returns the mode of the variable.
 
-Returns the mode of the variable.") Mode;
+	:rtype: Dynamic_ModeEnum
+") Mode;
 		Dynamic_ModeEnum Mode ();
 
         %feature("autodoc", "1");
@@ -3246,50 +2572,29 @@ def __del__(self):
 %nodefaultctor Dynamic_VariableNode;
 class Dynamic_VariableNode : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dynamic_VariableNode;
+		%feature("autodoc", "	:rtype: None
+") Dynamic_VariableNode;
 		 Dynamic_VariableNode ();
-		%feature("autodoc", "Args:
-	anitem(Handle_Dynamic_Variable)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Dynamic_VariableNode;
+		%feature("autodoc", "	:param anitem:
+	:type anitem: Handle_Dynamic_Variable &
+	:rtype: None
+") Dynamic_VariableNode;
 		 Dynamic_VariableNode (const Handle_Dynamic_Variable & anitem);
-		%feature("autodoc", "Args:
-	anitem(Handle_Dynamic_Variable)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Object;
+		%feature("autodoc", "	:param anitem:
+	:type anitem: Handle_Dynamic_Variable &
+	:rtype: None
+") Object;
 		void Object (const Handle_Dynamic_Variable & anitem);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Dynamic_Variable
-
-No detailed docstring for this function.") Object;
+		%feature("autodoc", "	:rtype: Handle_Dynamic_Variable
+") Object;
 		Handle_Dynamic_Variable Object ();
-		%feature("autodoc", "Args:
-	anode(Handle_Dynamic_VariableNode)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:param anode:
+	:type anode: Handle_Dynamic_VariableNode &
+	:rtype: None
+") Next;
 		void Next (const Handle_Dynamic_VariableNode & anode);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Dynamic_VariableNode
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: Handle_Dynamic_VariableNode
+") Next;
 		Handle_Dynamic_VariableNode Next ();
 };
 
@@ -3350,16 +2655,12 @@ def __del__(self):
 %nodefaultctor Dynamic_AbstractVariableInstance;
 class Dynamic_AbstractVariableInstance : public Dynamic_Variable {
 	public:
-		%feature("autodoc", "Args:
-	avariable(Handle_Dynamic_Variable)
+		%feature("autodoc", "	* This deferred method must be implemented in the derived classes for setting reference(s) to the corresponding variable(s) which define the signature of the method definition.
 
-Returns:
-	virtual void
-
-This  deferred method must     be implemented in   the  
-         derived    classes for  setting    reference(s) to the  
-         corresponding variable(s)  which define the  signature  
-         of the method definition.") Variable;
+	:param avariable:
+	:type avariable: Handle_Dynamic_Variable &
+	:rtype: void
+") Variable;
 		virtual void Variable (const Handle_Dynamic_Variable & avariable);
 };
 
@@ -3420,49 +2721,42 @@ def __del__(self):
 %nodefaultctor Dynamic_BooleanParameter;
 class Dynamic_BooleanParameter : public Dynamic_Parameter {
 	public:
-		%feature("autodoc", "Args:
-	aparameter(char *)
+		%feature("autodoc", "	* Creates a boolean parameter with <aparameter> as name.
 
-Returns:
-	None
-
-Creates a boolean parameter with <aparameter> as name.") Dynamic_BooleanParameter;
+	:param aparameter:
+	:type aparameter: char *
+	:rtype: None
+") Dynamic_BooleanParameter;
 		 Dynamic_BooleanParameter (const char * aparameter);
-		%feature("autodoc", "Args:
-	aparameter(char *)
-	avalue(Standard_Boolean)
+		%feature("autodoc", "	* Creates a boolean parameter with <aparameter> and <avalue> respectively as name and value.
 
-Returns:
-	None
-
-Creates a boolean parameter with <aparameter> and <avalue>  
-         respectively as name and value.") Dynamic_BooleanParameter;
+	:param aparameter:
+	:type aparameter: char *
+	:param avalue:
+	:type avalue: bool
+	:rtype: None
+") Dynamic_BooleanParameter;
 		 Dynamic_BooleanParameter (const char * aparameter,const Standard_Boolean avalue);
-		%feature("autodoc", "Args:
-	aparameter(char *)
-	avalue(char *)
+		%feature("autodoc", "	* Creates a boolean parameter with <aparameter> as name and <avalue> as value. <avalue> is a CString with two possible values which are : 'Standard_True' and 'Standard_False'.
 
-Returns:
-	None
-
-Creates a boolean parameter with <aparameter> as name  
-         and <avalue> as value. <avalue> is a CString with two possible  
-         values which are : 'Standard_True' and 'Standard_False'.") Dynamic_BooleanParameter;
+	:param aparameter:
+	:type aparameter: char *
+	:param avalue:
+	:type avalue: char *
+	:rtype: None
+") Dynamic_BooleanParameter;
 		 Dynamic_BooleanParameter (const char * aparameter,const char * avalue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns the boolean value <thevalue>.
 
-Returns the boolean value <thevalue>.") Value;
+	:rtype: bool
+") Value;
 		Standard_Boolean Value ();
-		%feature("autodoc", "Args:
-	avalue(Standard_Boolean)
+		%feature("autodoc", "	* Sets the field <thevalue> with the boolean value <avalue>
 
-Returns:
-	None
-
-Sets the field <thevalue> with the boolean value <avalue>") Value;
+	:param avalue:
+	:type avalue: bool
+	:rtype: None
+") Value;
 		void Value (const Standard_Boolean avalue);
 
         %feature("autodoc", "1");
@@ -3531,40 +2825,31 @@ def __del__(self):
 %nodefaultctor Dynamic_DynamicDerivedClass;
 class Dynamic_DynamicDerivedClass : public Dynamic_DynamicClass {
 	public:
-		%feature("autodoc", "Args:
-	aname(char *)
+		%feature("autodoc", "	* Creates a new instance of this class with <aname> as name.
 
-Returns:
-	None
-
-Creates a new instance of this class with <aname> as name.") Dynamic_DynamicDerivedClass;
+	:param aname:
+	:type aname: char *
+	:rtype: None
+") Dynamic_DynamicDerivedClass;
 		 Dynamic_DynamicDerivedClass (const char * aname);
-		%feature("autodoc", "Args:
-	aclass(Handle_Dynamic_DynamicClass)
+		%feature("autodoc", "	* Adds another class <aclass> to the sequence of derived classes.
 
-Returns:
-	None
-
-Adds another class <aclass> to the sequence of derived  
-         classes.") AddClass;
+	:param aclass:
+	:type aclass: Handle_Dynamic_DynamicClass &
+	:rtype: None
+") AddClass;
 		void AddClass (const Handle_Dynamic_DynamicClass & aclass);
-		%feature("autodoc", "Args:
-	amethod(char *)
+		%feature("autodoc", "	* Starting with the name of a method, this redefined method searches for the right method object in the sequence of methods of the derived class and in all the inherited classes.
 
-Returns:
-	virtual Handle_Dynamic_Method
-
-Starting with  the name of  a method,  this  redefined  
-         method searches for   the  right method object  in the  
-         sequence of methods  of  the derived class and  in all  
-         the inherited classes.") Method;
+	:param amethod:
+	:type amethod: char *
+	:rtype: Handle_Dynamic_Method
+") Method;
 		virtual Handle_Dynamic_Method Method (const char * amethod);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Dynamic_DynamicInstance
+		%feature("autodoc", "	* Defines an instance of this class definition.
 
-Defines an instance of this class definition.") Instance;
+	:rtype: Handle_Dynamic_DynamicInstance
+") Instance;
 		virtual Handle_Dynamic_DynamicInstance Instance ();
 };
 
@@ -3625,20 +2910,17 @@ def __del__(self):
 %nodefaultctor Dynamic_FuzzyDefinition;
 class Dynamic_FuzzyDefinition : public Dynamic_FuzzyClass {
 	public:
-		%feature("autodoc", "Args:
-	aname(char *)
+		%feature("autodoc", "	* Creates a FuzzyDefinition with <aname> as type.
 
-Returns:
-	None
-
-Creates a FuzzyDefinition with <aname> as type.") Dynamic_FuzzyDefinition;
+	:param aname:
+	:type aname: char *
+	:rtype: None
+") Dynamic_FuzzyDefinition;
 		 Dynamic_FuzzyDefinition (const char * aname);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual TCollection_AsciiString
+		%feature("autodoc", "	* Returns the type of object.
 
-Returns the type of object.") Type;
+	:rtype: TCollection_AsciiString
+") Type;
 		virtual TCollection_AsciiString Type ();
 
         %feature("autodoc", "1");
@@ -3707,39 +2989,33 @@ def __del__(self):
 %nodefaultctor Dynamic_InstanceParameter;
 class Dynamic_InstanceParameter : public Dynamic_Parameter {
 	public:
-		%feature("autodoc", "Args:
-	aparameter(char *)
+		%feature("autodoc", "	* Creates an InstanceParameter with <aparameter> as identifier.
 
-Returns:
-	None
-
-Creates an   InstanceParameter  with  <aparameter>  as  
-         identifier.") Dynamic_InstanceParameter;
+	:param aparameter:
+	:type aparameter: char *
+	:rtype: None
+") Dynamic_InstanceParameter;
 		 Dynamic_InstanceParameter (const char * aparameter);
-		%feature("autodoc", "Args:
-	aparameter(char *)
-	avalue(Handle_Dynamic_DynamicInstance)
+		%feature("autodoc", "	* Creates an InstanceParameter with <aparameter> as identifier and <avalue> as initial value.
 
-Returns:
-	None
-
-Creates   an  InstanceParameter  with  <aparameter>  as  
-         identifier and <avalue> as initial value.") Dynamic_InstanceParameter;
+	:param aparameter:
+	:type aparameter: char *
+	:param avalue:
+	:type avalue: Handle_Dynamic_DynamicInstance &
+	:rtype: None
+") Dynamic_InstanceParameter;
 		 Dynamic_InstanceParameter (const char * aparameter,const Handle_Dynamic_DynamicInstance & avalue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Dynamic_DynamicInstance
+		%feature("autodoc", "	* Returns <thevalue>.
 
-Returns <thevalue>.") Value;
+	:rtype: Handle_Dynamic_DynamicInstance
+") Value;
 		Handle_Dynamic_DynamicInstance Value ();
-		%feature("autodoc", "Args:
-	avalue(Handle_Dynamic_DynamicInstance)
+		%feature("autodoc", "	* Sets <avalue> to <thevalue>.
 
-Returns:
-	None
-
-Sets <avalue> to <thevalue>.") Value;
+	:param avalue:
+	:type avalue: Handle_Dynamic_DynamicInstance &
+	:rtype: None
+") Value;
 		void Value (const Handle_Dynamic_DynamicInstance & avalue);
 
         %feature("autodoc", "1");
@@ -3808,39 +3084,33 @@ def __del__(self):
 %nodefaultctor Dynamic_IntegerParameter;
 class Dynamic_IntegerParameter : public Dynamic_Parameter {
 	public:
-		%feature("autodoc", "Args:
-	aparameter(char *)
+		%feature("autodoc", "	* Creates an IntegerParameter with <aparameter> as identifier.
 
-Returns:
-	None
-
-Creates   an  IntegerParameter  with  <aparameter>  as  
-         identifier.") Dynamic_IntegerParameter;
+	:param aparameter:
+	:type aparameter: char *
+	:rtype: None
+") Dynamic_IntegerParameter;
 		 Dynamic_IntegerParameter (const char * aparameter);
-		%feature("autodoc", "Args:
-	aparameter(char *)
-	avalue(Standard_Integer)
+		%feature("autodoc", "	* Creates an IntegerParameter with <aparameter> as identifier and <avalue> as initial value.
 
-Returns:
-	None
-
-Creates   an  IntegerParameter  with  <aparameter>  as  
-         identifier and <avalue> as initial value.") Dynamic_IntegerParameter;
+	:param aparameter:
+	:type aparameter: char *
+	:param avalue:
+	:type avalue: Standard_Integer
+	:rtype: None
+") Dynamic_IntegerParameter;
 		 Dynamic_IntegerParameter (const char * aparameter,const Standard_Integer avalue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the integer value <thevalue>.
 
-Returns the integer value <thevalue>.") Value;
+	:rtype: int
+") Value;
 		Standard_Integer Value ();
-		%feature("autodoc", "Args:
-	avalue(Standard_Integer)
+		%feature("autodoc", "	* Sets the field <thevalue> with the integer value <avalue>
 
-Returns:
-	None
-
-Sets the field <thevalue> with the integer value <avalue>") Value;
+	:param avalue:
+	:type avalue: Standard_Integer
+	:rtype: None
+") Value;
 		void Value (const Standard_Integer avalue);
 
         %feature("autodoc", "1");
@@ -3909,28 +3179,21 @@ def __del__(self):
 %nodefaultctor Dynamic_MethodDefinition;
 class Dynamic_MethodDefinition : public Dynamic_Method {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual TCollection_AsciiString
+		%feature("autodoc", "	* Returns the name of the method definition.
 
-Returns the name of the method definition.") Type;
+	:rtype: TCollection_AsciiString
+") Type;
 		virtual TCollection_AsciiString Type ();
-		%feature("autodoc", "Args:
-	aparameter(Handle_Dynamic_Parameter)
-	amode(Dynamic_ModeEnum)
-	agroup(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Adds a new variable created from the parameter <aparameter>, which defines the name of the variable its type and if necessary its default value, the mode <amode> which precise if it is an in, out, inout, internal or constant variable and the flag <agroup> for accepting a set of homogeneous variables. with the parameter value <aparameter>.
 
-Returns:
-	None
-
-Adds  a  new  variable   created from    the parameter  
-         <aparameter>, which  defines the  name of the variable  
-         its type and if necessary its  default value, the mode  
-         <amode> which  precise  if it is  an  in,  out, inout,  
-         internal or   constant variable and the  flag <agroup>  
-         for accepting  a  set of homogeneous variables.   with  
-         the parameter value <aparameter>.") AddVariable;
+	:param aparameter:
+	:type aparameter: Handle_Dynamic_Parameter &
+	:param amode:
+	:type amode: Dynamic_ModeEnum
+	:param agroup: default value is Standard_False
+	:type agroup: bool
+	:rtype: None
+") AddVariable;
 		void AddVariable (const Handle_Dynamic_Parameter & aparameter,const Dynamic_ModeEnum amode,const Standard_Boolean agroup = Standard_False);
 
         %feature("autodoc", "1");
@@ -3999,39 +3262,33 @@ def __del__(self):
 %nodefaultctor Dynamic_ObjectParameter;
 class Dynamic_ObjectParameter : public Dynamic_Parameter {
 	public:
-		%feature("autodoc", "Args:
-	aparameter(char *)
+		%feature("autodoc", "	* Creates an ObjectParameter with <aparameter> as name.
 
-Returns:
-	None
-
-Creates an ObjectParameter with <aparameter> as name.") Dynamic_ObjectParameter;
+	:param aparameter:
+	:type aparameter: char *
+	:rtype: None
+") Dynamic_ObjectParameter;
 		 Dynamic_ObjectParameter (const char * aparameter);
-		%feature("autodoc", "Args:
-	aparameter(char *)
-	anobject(Handle_Standard_Transient)
+		%feature("autodoc", "	* With the name of the Parameter <aparameter> and the object <anobject>, creates an instance of ObjectParameter.
 
-Returns:
-	None
-
-With  the name of  the  Parameter <aparameter> and the  
-         object  <anobject>,      creates an   instance      of  
-         ObjectParameter.") Dynamic_ObjectParameter;
+	:param aparameter:
+	:type aparameter: char *
+	:param anobject:
+	:type anobject: Handle_Standard_Transient &
+	:rtype: None
+") Dynamic_ObjectParameter;
 		 Dynamic_ObjectParameter (const char * aparameter,const Handle_Standard_Transient & anobject);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
+		%feature("autodoc", "	* Returns the value of the parameter which is an object.
 
-Returns the value of the parameter which is an object.") Value;
+	:rtype: Handle_Standard_Transient
+") Value;
 		Handle_Standard_Transient Value ();
-		%feature("autodoc", "Args:
-	anobject(Handle_Standard_Transient)
+		%feature("autodoc", "	* Sets the object <anobject> in <self>.
 
-Returns:
-	None
-
-Sets the object <anobject> in <self>.") Value;
+	:param anobject:
+	:type anobject: Handle_Standard_Transient &
+	:rtype: None
+") Value;
 		void Value (const Handle_Standard_Transient & anobject);
 
         %feature("autodoc", "1");
@@ -4100,38 +3357,33 @@ def __del__(self):
 %nodefaultctor Dynamic_RealParameter;
 class Dynamic_RealParameter : public Dynamic_Parameter {
 	public:
-		%feature("autodoc", "Args:
-	aparameter(char *)
+		%feature("autodoc", "	* Creates a RealParameter with <aparameter> as name.
 
-Returns:
-	None
-
-Creates a RealParameter with <aparameter> as name.") Dynamic_RealParameter;
+	:param aparameter:
+	:type aparameter: char *
+	:rtype: None
+") Dynamic_RealParameter;
 		 Dynamic_RealParameter (const char * aparameter);
-		%feature("autodoc", "Args:
-	aparameter(char *)
-	avalue(Standard_Real)
+		%feature("autodoc", "	* With the name of the Parameter <aparameter> and the real <avalue>, creates an instance of RealParameter.
 
-Returns:
-	None
-
-With  the name  of the Parameter  <aparameter> and the  
-         real <avalue>, creates an instance of RealParameter.") Dynamic_RealParameter;
+	:param aparameter:
+	:type aparameter: char *
+	:param avalue:
+	:type avalue: float
+	:rtype: None
+") Dynamic_RealParameter;
 		 Dynamic_RealParameter (const char * aparameter,const Standard_Real avalue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the value of the parameter which is a real.
 
-Returns the value of the parameter which is a real.") Value;
+	:rtype: float
+") Value;
 		Standard_Real Value ();
-		%feature("autodoc", "Args:
-	avalue(Standard_Real)
+		%feature("autodoc", "	* Sets the real <avalue> in <self>.
 
-Returns:
-	None
-
-Sets the real <avalue> in <self>.") Value;
+	:param avalue:
+	:type avalue: float
+	:rtype: None
+") Value;
 		void Value (const Standard_Real avalue);
 
         %feature("autodoc", "1");
@@ -4200,40 +3452,33 @@ def __del__(self):
 %nodefaultctor Dynamic_StringParameter;
 class Dynamic_StringParameter : public Dynamic_Parameter {
 	public:
-		%feature("autodoc", "Args:
-	aparameter(char *)
+		%feature("autodoc", "	* Creates a StringParameter with <aparameter> as name.
 
-Returns:
-	None
-
-Creates a StringParameter with <aparameter> as name.") Dynamic_StringParameter;
+	:param aparameter:
+	:type aparameter: char *
+	:rtype: None
+") Dynamic_StringParameter;
 		 Dynamic_StringParameter (const char * aparameter);
-		%feature("autodoc", "Args:
-	aparameter(char *)
-	astring(char *)
+		%feature("autodoc", "	* With the name of the Parameter <aparameter> and the string <astring>, creates an instance of StringParameter.
 
-Returns:
-	None
-
-With  the name of  the  Parameter <aparameter> and the  
-         string    <astring>,   creates    an    instance    of  
-         StringParameter.") Dynamic_StringParameter;
+	:param aparameter:
+	:type aparameter: char *
+	:param astring:
+	:type astring: char *
+	:rtype: None
+") Dynamic_StringParameter;
 		 Dynamic_StringParameter (const char * aparameter,const char * astring);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* Returns the value of the parameter which is an AsciiString.
 
-Returns the value    of  the parameter which     is an  
-         AsciiString.") Value;
+	:rtype: TCollection_AsciiString
+") Value;
 		TCollection_AsciiString Value ();
-		%feature("autodoc", "Args:
-	avalue(char *)
+		%feature("autodoc", "	* Sets the string <avalue> in <self>.
 
-Returns:
-	None
-
-Sets the string <avalue> in <self>.") Value;
+	:param avalue:
+	:type avalue: char *
+	:rtype: None
+") Value;
 		void Value (const char * avalue);
 
         %feature("autodoc", "1");
@@ -4302,12 +3547,10 @@ def __del__(self):
 %nodefaultctor Dynamic_VariableGroup;
 class Dynamic_VariableGroup : public Dynamic_Variable {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates and Returns a new instance of this class.
 
-Creates and Returns a new instance of this class.") Dynamic_VariableGroup;
+	:rtype: None
+") Dynamic_VariableGroup;
 		 Dynamic_VariableGroup ();
 };
 
@@ -4368,31 +3611,26 @@ def __del__(self):
 %nodefaultctor Dynamic_CompiledMethod;
 class Dynamic_CompiledMethod : public Dynamic_MethodDefinition {
 	public:
-		%feature("autodoc", "Args:
-	aname(char *)
-	afunction(char *)
+		%feature("autodoc", "	* Creates a compiled method with <aname> as user name and <afunction> as C++ mangled name.
 
-Returns:
-	None
-
-Creates  a compiled method   with <aname> as user name  
-         and <afunction> as C++ mangled name.") Dynamic_CompiledMethod;
+	:param aname:
+	:type aname: char *
+	:param afunction:
+	:type afunction: char *
+	:rtype: None
+") Dynamic_CompiledMethod;
 		 Dynamic_CompiledMethod (const char * aname,const char * afunction);
-		%feature("autodoc", "Args:
-	afunction(char *)
+		%feature("autodoc", "	* Sets the C++ mangled name of the method to the field <thefunction>.
 
-Returns:
-	None
-
-Sets the  C++ mangled name  of the method to the field  
-         <thefunction>.") Function;
+	:param afunction:
+	:type afunction: char *
+	:rtype: None
+") Function;
 		void Function (const char * afunction);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* Returns the C++ mangled name of the function.
 
-Returns the C++ mangled name of the function.") Function;
+	:rtype: TCollection_AsciiString
+") Function;
 		TCollection_AsciiString Function ();
 };
 
@@ -4453,38 +3691,31 @@ def __del__(self):
 %nodefaultctor Dynamic_CompositMethod;
 class Dynamic_CompositMethod : public Dynamic_MethodDefinition {
 	public:
-		%feature("autodoc", "Args:
-	aname(char *)
+		%feature("autodoc", "	* Creates a composit method with <aname> as name.
 
-Returns:
-	None
-
-Creates a composit method with <aname> as name.") Dynamic_CompositMethod;
+	:param aname:
+	:type aname: char *
+	:rtype: None
+") Dynamic_CompositMethod;
 		 Dynamic_CompositMethod (const char * aname);
-		%feature("autodoc", "Args:
-	amethod(Handle_Dynamic_Method)
+		%feature("autodoc", "	* Adds <amethod>, which is an elementary or a composit method to <self>.
 
-Returns:
-	None
-
-Adds <amethod>, which  is an elementary or  a composit  
-         method to <self>.") Method;
+	:param amethod:
+	:type amethod: Handle_Dynamic_Method &
+	:rtype: None
+") Method;
 		void Method (const Handle_Dynamic_Method & amethod);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of methods referenced by the composit method <self>.
 
-Returns the   number  of methods   referenced  by  the  
-         composit method <self>.") NumberOfMethods;
+	:rtype: int
+") NumberOfMethods;
 		Standard_Integer NumberOfMethods ();
-		%feature("autodoc", "Args:
-	anindex(Standard_Integer)
+		%feature("autodoc", "	* Returns the method of range <anindex>.
 
-Returns:
-	Handle_Dynamic_Method
-
-Returns the method of range <anindex>.") Method;
+	:param anindex:
+	:type anindex: Standard_Integer
+	:rtype: Handle_Dynamic_Method
+") Method;
 		Handle_Dynamic_Method Method (const Standard_Integer anindex);
 
         %feature("autodoc", "1");
@@ -4553,29 +3784,22 @@ def __del__(self):
 %nodefaultctor Dynamic_CompositVariableInstance;
 class Dynamic_CompositVariableInstance : public Dynamic_AbstractVariableInstance {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates a new empty instance of CompositVariable- Instance.
 
-Creates  a new  empty  instance of   CompositVariable-  
-         Instance.") Dynamic_CompositVariableInstance;
+	:rtype: None
+") Dynamic_CompositVariableInstance;
 		 Dynamic_CompositVariableInstance ();
-		%feature("autodoc", "Args:
-	avariable(Handle_Dynamic_Variable)
+		%feature("autodoc", "	* Sets <avariable> into the collection of variable.
 
-Returns:
-	virtual void
-
-Sets <avariable> into the collection of variable.") Variable;
+	:param avariable:
+	:type avariable: Handle_Dynamic_Variable &
+	:rtype: void
+") Variable;
 		virtual void Variable (const Handle_Dynamic_Variable & avariable);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Dynamic_VariableNode
+		%feature("autodoc", "	* Returns the first VariableNode useful to explore the list of variables addressed by <self>.
 
-Returns the first VariableNode  useful to explore  the  
-         list of variables addressed by <self>.") FirstVariableNode;
+	:rtype: Handle_Dynamic_VariableNode
+") FirstVariableNode;
 		Handle_Dynamic_VariableNode FirstVariableNode ();
 };
 
@@ -4636,31 +3860,26 @@ def __del__(self):
 %nodefaultctor Dynamic_InterpretedMethod;
 class Dynamic_InterpretedMethod : public Dynamic_MethodDefinition {
 	public:
-		%feature("autodoc", "Args:
-	aname(char *)
-	afile(char *)
+		%feature("autodoc", "	* Creates a new InterpretedMethod with <aname> as name and <afile> as file name to be interpreted.
 
-Returns:
-	None
-
-Creates a new  InterpretedMethod with <aname> as  name  
-         and <afile> as file name to be interpreted.") Dynamic_InterpretedMethod;
+	:param aname:
+	:type aname: char *
+	:param afile:
+	:type afile: char *
+	:rtype: None
+") Dynamic_InterpretedMethod;
 		 Dynamic_InterpretedMethod (const char * aname,const char * afile);
-		%feature("autodoc", "Args:
-	afile(char *)
+		%feature("autodoc", "	* Sets the the name of the file to be interpreted to <afile>.
 
-Returns:
-	None
-
-Sets the the   name of the  file to  be interpreted to  
-         <afile>.") Function;
+	:param afile:
+	:type afile: char *
+	:rtype: None
+") Function;
 		void Function (const char * afile);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* Returns the name of the file to be interpreted.
 
-Returns the name of the file to be interpreted.") Function;
+	:rtype: TCollection_AsciiString
+") Function;
 		TCollection_AsciiString Function ();
 };
 
@@ -4721,29 +3940,22 @@ def __del__(self):
 %nodefaultctor Dynamic_VariableInstance;
 class Dynamic_VariableInstance : public Dynamic_AbstractVariableInstance {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Returns a new empty instance of this class.
 
-Returns a new empty instance of this class.") Dynamic_VariableInstance;
+	:rtype: None
+") Dynamic_VariableInstance;
 		 Dynamic_VariableInstance ();
-		%feature("autodoc", "Args:
-	avariable(Handle_Dynamic_Variable)
+		%feature("autodoc", "	* Sets the variable <avariable> into the VariableInstance <self>.
 
-Returns:
-	virtual void
-
-Sets    the    variable  <avariable>     into      the  
-         VariableInstance <self>.") Variable;
+	:param avariable:
+	:type avariable: Handle_Dynamic_Variable &
+	:rtype: void
+") Variable;
 		virtual void Variable (const Handle_Dynamic_Variable & avariable);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Dynamic_Variable
+		%feature("autodoc", "	* Returns the variable contained into the VariableInstance <self>.
 
-Returns       the      variable contained     into the  
-         VariableInstance <self>.") Variable;
+	:rtype: Handle_Dynamic_Variable
+") Variable;
 		Handle_Dynamic_Variable Variable ();
 };
 

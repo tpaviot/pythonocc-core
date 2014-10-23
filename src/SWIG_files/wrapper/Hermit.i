@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -45,41 +45,42 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor Hermit;
 class Hermit {
 	public:
-		%feature("autodoc", "Args:
-	BS(Handle_Geom_BSplineCurve)
-	TolPoles(Standard_Real)=0.000001
-	TolKnots(Standard_Real)=0.000001
+		%feature("autodoc", "	* //!returns the correct spline a(u) which will  be multiplicated with BS later.
 
-Returns:
-	static Handle_Geom2d_BSplineCurve
-
-//!returns the correct spline a(u) which will  
-                be multiplicated with BS later.") Solution;
+	:param BS:
+	:type BS: Handle_Geom_BSplineCurve &
+	:param TolPoles: default value is 0.000001
+	:type TolPoles: float
+	:param TolKnots: default value is 0.000001
+	:type TolKnots: float
+	:rtype: Handle_Geom2d_BSplineCurve
+") Solution;
 		static Handle_Geom2d_BSplineCurve Solution (const Handle_Geom_BSplineCurve & BS,const Standard_Real TolPoles = 0.000001,const Standard_Real TolKnots = 0.000001);
-		%feature("autodoc", "Args:
-	BS(Handle_Geom2d_BSplineCurve)
-	TolPoles(Standard_Real)=0.000001
-	TolKnots(Standard_Real)=0.000001
+		%feature("autodoc", "	* //!returns the correct spline a(u) which will  be multiplicated with BS later.
 
-Returns:
-	static Handle_Geom2d_BSplineCurve
-
-//!returns the correct spline a(u) which will  
-                be multiplicated with BS later.") Solution;
+	:param BS:
+	:type BS: Handle_Geom2d_BSplineCurve &
+	:param TolPoles: default value is 0.000001
+	:type TolPoles: float
+	:param TolKnots: default value is 0.000001
+	:type TolKnots: float
+	:rtype: Handle_Geom2d_BSplineCurve
+") Solution;
 		static Handle_Geom2d_BSplineCurve Solution (const Handle_Geom2d_BSplineCurve & BS,const Standard_Real TolPoles = 0.000001,const Standard_Real TolKnots = 0.000001);
-		%feature("autodoc", "Args:
-	BS(Handle_Geom_BSplineCurve)
-	Knotmin(Standard_Real)
-	Knotmax(Standard_Real)
-	TolPoles(Standard_Real)=0.000001
-	TolKnots(Standard_Real)=0.000001
+		%feature("autodoc", "	* //!returns the knots to insert to a(u) to  stay with a constant sign and in the  tolerances.
 
-Returns:
-	static void
-
-//!returns the knots to insert to a(u) to  
-        stay with a constant sign and in the  
-        tolerances.") Solutionbis;
+	:param BS:
+	:type BS: Handle_Geom_BSplineCurve &
+	:param Knotmin:
+	:type Knotmin: float &
+	:param Knotmax:
+	:type Knotmax: float &
+	:param TolPoles: default value is 0.000001
+	:type TolPoles: float
+	:param TolKnots: default value is 0.000001
+	:type TolKnots: float
+	:rtype: void
+") Solutionbis;
 		static void Solutionbis (const Handle_Geom_BSplineCurve & BS,Standard_Real &OutValue,Standard_Real &OutValue,const Standard_Real TolPoles = 0.000001,const Standard_Real TolKnots = 0.000001);
 };
 

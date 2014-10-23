@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -53,261 +53,197 @@ enum BiTgte_ContactType {
 %nodefaultctor BiTgte_Blend;
 class BiTgte_Blend {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BiTgte_Blend;
+		%feature("autodoc", "	:rtype: None
+") BiTgte_Blend;
 		 BiTgte_Blend ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-	Radius(Standard_Real)
-	Tol(Standard_Real)
-	NUBS(Standard_Boolean)
+		%feature("autodoc", "	* <S>: Shape to be rounded <Radius>: radius of the fillet <Tol>: Tol3d used in approximations <NUBS>: if true, generate only NUBS surfaces,  if false, generate analytical surfaces if possible
 
-Returns:
-	None
-
-<S>: Shape to be rounded  
-         <Radius>: radius of the fillet  
-         <Tol>: Tol3d used in approximations  
-         <NUBS>: if true,  generate only NUBS surfaces,  
-                 if false, generate analytical surfaces if possible") BiTgte_Blend;
+	:param S:
+	:type S: TopoDS_Shape &
+	:param Radius:
+	:type Radius: float
+	:param Tol:
+	:type Tol: float
+	:param NUBS:
+	:type NUBS: bool
+	:rtype: None
+") BiTgte_Blend;
 		 BiTgte_Blend (const TopoDS_Shape & S,const Standard_Real Radius,const Standard_Real Tol,const Standard_Boolean NUBS);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-	Radius(Standard_Real)
-	Tol(Standard_Real)
-	NUBS(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:param Radius:
+	:type Radius: float
+	:param Tol:
+	:type Tol: float
+	:param NUBS:
+	:type NUBS: bool
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Shape & S,const Standard_Real Radius,const Standard_Real Tol,const Standard_Boolean NUBS);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Clear all the Fields.
 
-Clear all the Fields.") Clear;
+	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	F1(TopoDS_Face)
-	F2(TopoDS_Face)
+		%feature("autodoc", "	* Set two faces of <myShape> on which the Sphere  must roll.
 
-Returns:
-	None
-
-Set two faces   of <myShape> on which the  Sphere  
-                   must roll.") SetFaces;
+	:param F1:
+	:type F1: TopoDS_Face &
+	:param F2:
+	:type F2: TopoDS_Face &
+	:rtype: None
+") SetFaces;
 		void SetFaces (const TopoDS_Face & F1,const TopoDS_Face & F2);
-		%feature("autodoc", "Args:
-	Edge(TopoDS_Edge)
+		%feature("autodoc", "	* Set an edge of <myShape> to be rounded.
 
-Returns:
-	None
-
-Set an edge of <myShape> to be rounded.") SetEdge;
+	:param Edge:
+	:type Edge: TopoDS_Edge &
+	:rtype: None
+") SetEdge;
 		void SetEdge (const TopoDS_Edge & Edge);
-		%feature("autodoc", "Args:
-	Face(TopoDS_Face)
+		%feature("autodoc", "	* Set a face on which the fillet must stop.
 
-Returns:
-	None
-
-Set a face on which the fillet must stop.") SetStoppingFace;
+	:param Face:
+	:type Face: TopoDS_Face &
+	:rtype: None
+") SetStoppingFace;
 		void SetStoppingFace (const TopoDS_Face & Face);
-		%feature("autodoc", "Args:
-	BuildShape(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Compute the generated surfaces. If <BuildShape> is true, compute the resulting Shape. If false, only the blending surfaces are computed.
 
-Returns:
-	None
-
-Compute the generated surfaces.  
-         If <BuildShape> is true, compute the resulting Shape.  
-         If false, only the blending surfaces are computed.") Perform;
+	:param BuildShape: default value is Standard_True
+	:type BuildShape: bool
+	:rtype: None
+") Perform;
 		void Perform (const Standard_Boolean BuildShape = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* returns the result
 
-returns the result") Shape;
+	:rtype: TopoDS_Shape
+") Shape;
 		const TopoDS_Shape & Shape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* returns the Number of generated surfaces.
 
-returns the Number of generated surfaces.") NbSurfaces;
+	:rtype: int
+") NbSurfaces;
 		Standard_Integer NbSurfaces ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* returns the surface of range Index
 
-Returns:
-	Handle_Geom_Surface
-
-returns the surface of range Index") Surface;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom_Surface
+") Surface;
 		Handle_Geom_Surface Surface (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* returns the surface of range Index
 
-Returns:
-	TopoDS_Face
-
-returns the surface of range Index") Face;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopoDS_Face
+") Face;
 		const TopoDS_Face & Face (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	LC(TopTools_ListOfShape)
+		%feature("autodoc", "	* set in <LC> all the center lines
 
-Returns:
-	None
-
-set in <LC> all the center lines") CenterLines;
+	:param LC:
+	:type LC: TopTools_ListOfShape &
+	:rtype: None
+") CenterLines;
 		void CenterLines (TopTools_ListOfShape & LC);
-		%feature("autodoc", "Args:
-	CenterLine(TopoDS_Shape)
+		%feature("autodoc", "	* returns the surface generated by the centerline. <CenterLine> may be - an edge : generate a pipe. - a vertex : generate a sphere. Warning: returns a Null Handle if <CenterLine> generates no surface.
 
-Returns:
-	Handle_Geom_Surface
-
-returns  the surface generated  by the centerline.  
-         <CenterLine> may be  
-            - an edge  : generate a pipe.  
-            - a vertex : generate a sphere.  
- Warning: returns a Null Handle if <CenterLine> generates  
-         no surface.") Surface;
+	:param CenterLine:
+	:type CenterLine: TopoDS_Shape &
+	:rtype: Handle_Geom_Surface
+") Surface;
 		Handle_Geom_Surface Surface (const TopoDS_Shape & CenterLine);
-		%feature("autodoc", "Args:
-	CenterLine(TopoDS_Shape)
+		%feature("autodoc", "	* returns the face generated by the centerline. <CenterLine> may be - an edge : generate a pipe. - a vertex : generate a sphere. Warning: returns a Null Shape if <CenterLine> generates no surface.
 
-Returns:
-	TopoDS_Face
-
-returns  the face generated  by the centerline.  
-         <CenterLine> may be  
-            - an edge  : generate a pipe.  
-            - a vertex : generate a sphere.  
- Warning: returns a Null Shape if <CenterLine> generates  
-         no surface.") Face;
+	:param CenterLine:
+	:type CenterLine: TopoDS_Shape &
+	:rtype: TopoDS_Face
+") Face;
 		const TopoDS_Face & Face (const TopoDS_Shape & CenterLine);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* returns the type of contact
 
-Returns:
-	BiTgte_ContactType
-
-returns the type of contact") ContactType;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: BiTgte_ContactType
+") ContactType;
 		BiTgte_ContactType ContactType (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* gives the first support shape relative to SurfaceFillet(Index);
 
-Returns:
-	TopoDS_Shape
-
-gives the first support shape relative to  
-         SurfaceFillet(Index);") SupportShape1;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopoDS_Shape
+") SupportShape1;
 		const TopoDS_Shape & SupportShape1 (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* gives the second support shape relative to SurfaceFillet(Index);
 
-Returns:
-	TopoDS_Shape
-
-gives the second support shape relative to  
-         SurfaceFillet(Index);") SupportShape2;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopoDS_Shape
+") SupportShape2;
 		const TopoDS_Shape & SupportShape2 (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* gives the 3d curve of SurfaceFillet(Index) on SupportShape1(Index)
 
-Returns:
-	Handle_Geom_Curve
-
-gives the 3d curve of SurfaceFillet(Index)  
-         on SupportShape1(Index)") CurveOnShape1;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom_Curve
+") CurveOnShape1;
 		Handle_Geom_Curve CurveOnShape1 (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* gives the 3d curve of SurfaceFillet(Index) on SupportShape2(Index)
 
-Returns:
-	Handle_Geom_Curve
-
-gives the 3d curve of SurfaceFillet(Index)  
-         on SupportShape2(Index)") CurveOnShape2;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom_Curve
+") CurveOnShape2;
 		Handle_Geom_Curve CurveOnShape2 (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* gives the PCurve associated to CurvOnShape1(Index) on the support face Warning: returns a Null Handle if SupportShape1 is not a Face
 
-Returns:
-	Handle_Geom2d_Curve
-
-gives the PCurve associated to CurvOnShape1(Index)  
-         on the support face  
- Warning: returns a Null Handle if SupportShape1 is not a Face") PCurveOnFace1;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_Curve
+") PCurveOnFace1;
 		Handle_Geom2d_Curve PCurveOnFace1 (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* gives the PCurve associated to CurveOnShape1(Index) on the Fillet
 
-Returns:
-	Handle_Geom2d_Curve
-
-gives the PCurve associated to CurveOnShape1(Index)  
-         on the Fillet") PCurve1OnFillet;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_Curve
+") PCurve1OnFillet;
 		Handle_Geom2d_Curve PCurve1OnFillet (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* gives the PCurve associated to CurveOnShape2(Index) on the support face Warning: returns a Null Handle if SupportShape2 is not a Face
 
-Returns:
-	Handle_Geom2d_Curve
-
-gives the PCurve  associated to CurveOnShape2(Index)  
-         on the  support face  
- Warning: returns a Null Handle if SupportShape2 is not a Face") PCurveOnFace2;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_Curve
+") PCurveOnFace2;
 		Handle_Geom2d_Curve PCurveOnFace2 (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* gives the PCurve associated to CurveOnShape2(Index) on the fillet
 
-Returns:
-	Handle_Geom2d_Curve
-
-gives the PCurve associated to CurveOnShape2(Index)  
-         on the fillet") PCurve2OnFillet;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_Curve
+") PCurve2OnFillet;
 		Handle_Geom2d_Curve PCurve2OnFillet (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbBranches;
+		%feature("autodoc", "	:rtype: int
+") NbBranches;
 		Standard_Integer NbBranches ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	From(Standard_Integer)
-	To(Standard_Integer)
+		%feature("autodoc", "	* Set in <From>,<To> the indices of the faces of the branche <Index>. i.e: Branche<Index> = Face(From) + Face(From+1) + ..+ Face(To)
 
-Returns:
-	None
-
-Set in <From>,<To>   the indices of the faces  of  
- the branche <Index>.  
- 
- i.e: Branche<Index> = Face(From) + Face(From+1) + ..+ Face(To)") IndicesOfBranche;
+	:param Index:
+	:type Index: Standard_Integer
+	:param From:
+	:type From: Standard_Integer &
+	:param To:
+	:type To: Standard_Integer &
+	:rtype: None
+") IndicesOfBranche;
 		void IndicesOfBranche (const Standard_Integer Index,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Computes the center lines
 
-Computes the center lines") ComputeCenters;
+	:rtype: None
+") ComputeCenters;
 		void ComputeCenters ();
 };
 
@@ -329,268 +265,176 @@ def __del__(self):
 %nodefaultctor BiTgte_CurveOnEdge;
 class BiTgte_CurveOnEdge : public Adaptor3d_Curve {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BiTgte_CurveOnEdge;
+		%feature("autodoc", "	:rtype: None
+") BiTgte_CurveOnEdge;
 		 BiTgte_CurveOnEdge ();
-		%feature("autodoc", "Args:
-	EonF(TopoDS_Edge)
-	Edge(TopoDS_Edge)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BiTgte_CurveOnEdge;
+		%feature("autodoc", "	:param EonF:
+	:type EonF: TopoDS_Edge &
+	:param Edge:
+	:type Edge: TopoDS_Edge &
+	:rtype: None
+") BiTgte_CurveOnEdge;
 		 BiTgte_CurveOnEdge (const TopoDS_Edge & EonF,const TopoDS_Edge & Edge);
-		%feature("autodoc", "Args:
-	EonF(TopoDS_Edge)
-	Edge(TopoDS_Edge)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param EonF:
+	:type EonF: TopoDS_Edge &
+	:param Edge:
+	:type Edge: TopoDS_Edge &
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Edge & EonF,const TopoDS_Edge & Edge);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") FirstParameter;
+		%feature("autodoc", "	:rtype: float
+") FirstParameter;
 		Standard_Real FirstParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") LastParameter;
+		%feature("autodoc", "	:rtype: float
+") LastParameter;
 		Standard_Real LastParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	GeomAbs_Shape
-
-No detailed docstring for this function.") Continuity;
+		%feature("autodoc", "	:rtype: GeomAbs_Shape
+") Continuity;
 		GeomAbs_Shape Continuity ();
-		%feature("autodoc", "Args:
-	S(GeomAbs_Shape)
+		%feature("autodoc", "	* Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>
 
-Returns:
-	Standard_Integer
-
-Returns  the number  of  intervals for  continuity  
-         <S>. May be one if Continuity(me) >= <S>") NbIntervals;
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: int
+") NbIntervals;
 		Standard_Integer NbIntervals (const GeomAbs_Shape S);
-		%feature("autodoc", "Args:
-	T(TColStd_Array1OfReal)
-	S(GeomAbs_Shape)
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
-Returns:
-	None
-
-Stores in <T> the  parameters bounding the intervals  
-         of continuity <S>.  
- 
-         The array must provide  enough room to  accomodate  
-         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+	:param T:
+	:type T: TColStd_Array1OfReal &
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: None
+") Intervals;
 		void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
-		%feature("autodoc", "Args:
-	First(Standard_Real)
-	Last(Standard_Real)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>
 
-Returns:
-	Handle_Adaptor3d_HCurve
-
-Returns    a  curve equivalent   of  <self>  between  
-         parameters <First>  and <Last>. <Tol>  is used  to  
-         test for 3d points confusion.  If <First> >= <Last>") Trim;
+	:param First:
+	:type First: float
+	:param Last:
+	:type Last: float
+	:param Tol:
+	:type Tol: float
+	:rtype: Handle_Adaptor3d_HCurve
+") Trim;
 		Handle_Adaptor3d_HCurve Trim (const Standard_Real First,const Standard_Real Last,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsClosed;
+		%feature("autodoc", "	:rtype: bool
+") IsClosed;
 		Standard_Boolean IsClosed ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsPeriodic;
+		%feature("autodoc", "	:rtype: bool
+") IsPeriodic;
 		Standard_Boolean IsPeriodic ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Period;
+		%feature("autodoc", "	:rtype: float
+") Period;
 		Standard_Real Period ();
-		%feature("autodoc", "Args:
-	U(Standard_Real)
+		%feature("autodoc", "	* Computes the point of parameter U on the curve.
 
-Returns:
-	gp_Pnt
-
-Computes the point of parameter U on the curve.") Value;
+	:param U:
+	:type U: float
+	:rtype: gp_Pnt
+") Value;
 		gp_Pnt Value (const Standard_Real U);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	P(gp_Pnt)
+		%feature("autodoc", "	* Computes the point of parameter U on the curve.
 
-Returns:
-	None
-
-Computes the point of parameter U on the curve.") D0;
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt
+	:rtype: None
+") D0;
 		void D0 (const Standard_Real U,gp_Pnt & P);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	P(gp_Pnt)
-	V(gp_Vec)
+		%feature("autodoc", "	* Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 
-Returns:
-	None
-
-Computes the point of parameter U on the curve with its  
- first derivative.  Raised if the continuity of the current interval  
- is not C1.") D1;
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt
+	:param V:
+	:type V: gp_Vec
+	:rtype: None
+") D1;
 		void D1 (const Standard_Real U,gp_Pnt & P,gp_Vec & V);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	P(gp_Pnt)
-	V1(gp_Vec)
-	V2(gp_Vec)
+		%feature("autodoc", "	* Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 
-Returns:
-	None
-
-Returns the point P of parameter U, the first and second  
- derivatives V1 and V2.  Raised if the continuity of the current interval  
- is not C2.") D2;
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt
+	:param V1:
+	:type V1: gp_Vec
+	:param V2:
+	:type V2: gp_Vec
+	:rtype: None
+") D2;
 		void D2 (const Standard_Real U,gp_Pnt & P,gp_Vec & V1,gp_Vec & V2);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	P(gp_Pnt)
-	V1(gp_Vec)
-	V2(gp_Vec)
-	V3(gp_Vec)
+		%feature("autodoc", "	* Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 
-Returns:
-	None
-
-Returns the point P of parameter U, the first, the second  
- and the third derivative.  Raised if the continuity of the current interval  
- is not C3.") D3;
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt
+	:param V1:
+	:type V1: gp_Vec
+	:param V2:
+	:type V2: gp_Vec
+	:param V3:
+	:type V3: gp_Vec
+	:rtype: None
+") D3;
 		void D3 (const Standard_Real U,gp_Pnt & P,gp_Vec & V1,gp_Vec & V2,gp_Vec & V3);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	N(Standard_Integer)
+		%feature("autodoc", "	* The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 
-Returns:
-	gp_Vec
-
-The returned vector gives the value of the derivative for the  
- order of derivation N.  Raised if the continuity of the current interval  
- is not CN.  Raised if N < 1.") DN;
+	:param U:
+	:type U: float
+	:param N:
+	:type N: Standard_Integer
+	:rtype: gp_Vec
+") DN;
 		gp_Vec DN (const Standard_Real U,const Standard_Integer N);
-		%feature("autodoc", "Args:
-	R3d(Standard_Real)
+		%feature("autodoc", "	* Returns the parametric resolution corresponding  to the real space resolution <R3d>.
 
-Returns:
-	Standard_Real
-
-Returns the parametric  resolution corresponding  
-        to the real space resolution <R3d>.") Resolution;
+	:param R3d:
+	:type R3d: float
+	:rtype: float
+") Resolution;
 		Standard_Real Resolution (const Standard_Real R3d);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	GeomAbs_CurveType
+		%feature("autodoc", "	* Returns the type of the curve in the current interval : Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 
-Returns  the  type of the   curve  in the  current  
-         interval :   Line,   Circle,   Ellipse, Hyperbola,  
-         Parabola, BezierCurve, BSplineCurve, OtherCurve.") GetType;
+	:rtype: GeomAbs_CurveType
+") GetType;
 		GeomAbs_CurveType GetType ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Lin
-
-No detailed docstring for this function.") Line;
+		%feature("autodoc", "	:rtype: gp_Lin
+") Line;
 		gp_Lin Line ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Circ
-
-No detailed docstring for this function.") Circle;
+		%feature("autodoc", "	:rtype: gp_Circ
+") Circle;
 		gp_Circ Circle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Elips
-
-No detailed docstring for this function.") Ellipse;
+		%feature("autodoc", "	:rtype: gp_Elips
+") Ellipse;
 		gp_Elips Ellipse ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Hypr
-
-No detailed docstring for this function.") Hyperbola;
+		%feature("autodoc", "	:rtype: gp_Hypr
+") Hyperbola;
 		gp_Hypr Hyperbola ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Parab
-
-No detailed docstring for this function.") Parabola;
+		%feature("autodoc", "	:rtype: gp_Parab
+") Parabola;
 		gp_Parab Parabola ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Degree;
+		%feature("autodoc", "	:rtype: int
+") Degree;
 		Standard_Integer Degree ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsRational;
+		%feature("autodoc", "	:rtype: bool
+") IsRational;
 		Standard_Boolean IsRational ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbPoles;
+		%feature("autodoc", "	:rtype: int
+") NbPoles;
 		Standard_Integer NbPoles ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbKnots;
+		%feature("autodoc", "	:rtype: int
+") NbKnots;
 		Standard_Integer NbKnots ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_BezierCurve
-
-No detailed docstring for this function.") Bezier;
+		%feature("autodoc", "	:rtype: Handle_Geom_BezierCurve
+") Bezier;
 		Handle_Geom_BezierCurve Bezier ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_BSplineCurve
-
-No detailed docstring for this function.") BSpline;
+		%feature("autodoc", "	:rtype: Handle_Geom_BSplineCurve
+") BSpline;
 		Handle_Geom_BSplineCurve BSpline ();
 };
 
@@ -612,268 +456,176 @@ def __del__(self):
 %nodefaultctor BiTgte_CurveOnVertex;
 class BiTgte_CurveOnVertex : public Adaptor3d_Curve {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BiTgte_CurveOnVertex;
+		%feature("autodoc", "	:rtype: None
+") BiTgte_CurveOnVertex;
 		 BiTgte_CurveOnVertex ();
-		%feature("autodoc", "Args:
-	EonF(TopoDS_Edge)
-	V(TopoDS_Vertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BiTgte_CurveOnVertex;
+		%feature("autodoc", "	:param EonF:
+	:type EonF: TopoDS_Edge &
+	:param V:
+	:type V: TopoDS_Vertex &
+	:rtype: None
+") BiTgte_CurveOnVertex;
 		 BiTgte_CurveOnVertex (const TopoDS_Edge & EonF,const TopoDS_Vertex & V);
-		%feature("autodoc", "Args:
-	EonF(TopoDS_Edge)
-	V(TopoDS_Vertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param EonF:
+	:type EonF: TopoDS_Edge &
+	:param V:
+	:type V: TopoDS_Vertex &
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Edge & EonF,const TopoDS_Vertex & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") FirstParameter;
+		%feature("autodoc", "	:rtype: float
+") FirstParameter;
 		Standard_Real FirstParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") LastParameter;
+		%feature("autodoc", "	:rtype: float
+") LastParameter;
 		Standard_Real LastParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	GeomAbs_Shape
-
-No detailed docstring for this function.") Continuity;
+		%feature("autodoc", "	:rtype: GeomAbs_Shape
+") Continuity;
 		GeomAbs_Shape Continuity ();
-		%feature("autodoc", "Args:
-	S(GeomAbs_Shape)
+		%feature("autodoc", "	* Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>
 
-Returns:
-	Standard_Integer
-
-Returns  the number  of  intervals for  continuity  
-         <S>. May be one if Continuity(me) >= <S>") NbIntervals;
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: int
+") NbIntervals;
 		Standard_Integer NbIntervals (const GeomAbs_Shape S);
-		%feature("autodoc", "Args:
-	T(TColStd_Array1OfReal)
-	S(GeomAbs_Shape)
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
-Returns:
-	None
-
-Stores in <T> the  parameters bounding the intervals  
-         of continuity <S>.  
- 
-         The array must provide  enough room to  accomodate  
-         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+	:param T:
+	:type T: TColStd_Array1OfReal &
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: None
+") Intervals;
 		void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
-		%feature("autodoc", "Args:
-	First(Standard_Real)
-	Last(Standard_Real)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>
 
-Returns:
-	Handle_Adaptor3d_HCurve
-
-Returns    a  curve equivalent   of  <self>  between  
-         parameters <First>  and <Last>. <Tol>  is used  to  
-         test for 3d points confusion.  If <First> >= <Last>") Trim;
+	:param First:
+	:type First: float
+	:param Last:
+	:type Last: float
+	:param Tol:
+	:type Tol: float
+	:rtype: Handle_Adaptor3d_HCurve
+") Trim;
 		Handle_Adaptor3d_HCurve Trim (const Standard_Real First,const Standard_Real Last,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsClosed;
+		%feature("autodoc", "	:rtype: bool
+") IsClosed;
 		Standard_Boolean IsClosed ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsPeriodic;
+		%feature("autodoc", "	:rtype: bool
+") IsPeriodic;
 		Standard_Boolean IsPeriodic ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Period;
+		%feature("autodoc", "	:rtype: float
+") Period;
 		Standard_Real Period ();
-		%feature("autodoc", "Args:
-	U(Standard_Real)
+		%feature("autodoc", "	* Computes the point of parameter U on the curve.
 
-Returns:
-	gp_Pnt
-
-Computes the point of parameter U on the curve.") Value;
+	:param U:
+	:type U: float
+	:rtype: gp_Pnt
+") Value;
 		gp_Pnt Value (const Standard_Real U);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	P(gp_Pnt)
+		%feature("autodoc", "	* Computes the point of parameter U on the curve.
 
-Returns:
-	None
-
-Computes the point of parameter U on the curve.") D0;
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt
+	:rtype: None
+") D0;
 		void D0 (const Standard_Real U,gp_Pnt & P);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	P(gp_Pnt)
-	V(gp_Vec)
+		%feature("autodoc", "	* Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 
-Returns:
-	None
-
-Computes the point of parameter U on the curve with its  
- first derivative.  Raised if the continuity of the current interval  
- is not C1.") D1;
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt
+	:param V:
+	:type V: gp_Vec
+	:rtype: None
+") D1;
 		void D1 (const Standard_Real U,gp_Pnt & P,gp_Vec & V);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	P(gp_Pnt)
-	V1(gp_Vec)
-	V2(gp_Vec)
+		%feature("autodoc", "	* Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 
-Returns:
-	None
-
-Returns the point P of parameter U, the first and second  
- derivatives V1 and V2.  Raised if the continuity of the current interval  
- is not C2.") D2;
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt
+	:param V1:
+	:type V1: gp_Vec
+	:param V2:
+	:type V2: gp_Vec
+	:rtype: None
+") D2;
 		void D2 (const Standard_Real U,gp_Pnt & P,gp_Vec & V1,gp_Vec & V2);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	P(gp_Pnt)
-	V1(gp_Vec)
-	V2(gp_Vec)
-	V3(gp_Vec)
+		%feature("autodoc", "	* Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 
-Returns:
-	None
-
-Returns the point P of parameter U, the first, the second  
- and the third derivative.  Raised if the continuity of the current interval  
- is not C3.") D3;
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt
+	:param V1:
+	:type V1: gp_Vec
+	:param V2:
+	:type V2: gp_Vec
+	:param V3:
+	:type V3: gp_Vec
+	:rtype: None
+") D3;
 		void D3 (const Standard_Real U,gp_Pnt & P,gp_Vec & V1,gp_Vec & V2,gp_Vec & V3);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	N(Standard_Integer)
+		%feature("autodoc", "	* The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 
-Returns:
-	gp_Vec
-
-The returned vector gives the value of the derivative for the  
- order of derivation N.  Raised if the continuity of the current interval  
- is not CN.  Raised if N < 1.") DN;
+	:param U:
+	:type U: float
+	:param N:
+	:type N: Standard_Integer
+	:rtype: gp_Vec
+") DN;
 		gp_Vec DN (const Standard_Real U,const Standard_Integer N);
-		%feature("autodoc", "Args:
-	R3d(Standard_Real)
+		%feature("autodoc", "	* Returns the parametric resolution corresponding  to the real space resolution <R3d>.
 
-Returns:
-	Standard_Real
-
-Returns the parametric  resolution corresponding  
-        to the real space resolution <R3d>.") Resolution;
+	:param R3d:
+	:type R3d: float
+	:rtype: float
+") Resolution;
 		Standard_Real Resolution (const Standard_Real R3d);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	GeomAbs_CurveType
+		%feature("autodoc", "	* Returns the type of the curve in the current interval : Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 
-Returns  the  type of the   curve  in the  current  
-         interval :   Line,   Circle,   Ellipse, Hyperbola,  
-         Parabola, BezierCurve, BSplineCurve, OtherCurve.") GetType;
+	:rtype: GeomAbs_CurveType
+") GetType;
 		GeomAbs_CurveType GetType ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Lin
-
-No detailed docstring for this function.") Line;
+		%feature("autodoc", "	:rtype: gp_Lin
+") Line;
 		gp_Lin Line ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Circ
-
-No detailed docstring for this function.") Circle;
+		%feature("autodoc", "	:rtype: gp_Circ
+") Circle;
 		gp_Circ Circle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Elips
-
-No detailed docstring for this function.") Ellipse;
+		%feature("autodoc", "	:rtype: gp_Elips
+") Ellipse;
 		gp_Elips Ellipse ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Hypr
-
-No detailed docstring for this function.") Hyperbola;
+		%feature("autodoc", "	:rtype: gp_Hypr
+") Hyperbola;
 		gp_Hypr Hyperbola ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Parab
-
-No detailed docstring for this function.") Parabola;
+		%feature("autodoc", "	:rtype: gp_Parab
+") Parabola;
 		gp_Parab Parabola ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Degree;
+		%feature("autodoc", "	:rtype: int
+") Degree;
 		Standard_Integer Degree ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsRational;
+		%feature("autodoc", "	:rtype: bool
+") IsRational;
 		Standard_Boolean IsRational ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbPoles;
+		%feature("autodoc", "	:rtype: int
+") NbPoles;
 		Standard_Integer NbPoles ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbKnots;
+		%feature("autodoc", "	:rtype: int
+") NbKnots;
 		Standard_Integer NbKnots ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_BezierCurve
-
-No detailed docstring for this function.") Bezier;
+		%feature("autodoc", "	:rtype: Handle_Geom_BezierCurve
+") Bezier;
 		Handle_Geom_BezierCurve Bezier ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_BSplineCurve
-
-No detailed docstring for this function.") BSpline;
+		%feature("autodoc", "	:rtype: Handle_Geom_BSplineCurve
+") BSpline;
 		Handle_Geom_BSplineCurve BSpline ();
 };
 
@@ -895,42 +647,24 @@ def __del__(self):
 %nodefaultctor BiTgte_DataMapIteratorOfDataMapOfShapeBox;
 class BiTgte_DataMapIteratorOfDataMapOfShapeBox : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BiTgte_DataMapIteratorOfDataMapOfShapeBox;
+		%feature("autodoc", "	:rtype: None
+") BiTgte_DataMapIteratorOfDataMapOfShapeBox;
 		 BiTgte_DataMapIteratorOfDataMapOfShapeBox ();
-		%feature("autodoc", "Args:
-	aMap(BiTgte_DataMapOfShapeBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BiTgte_DataMapIteratorOfDataMapOfShapeBox;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: BiTgte_DataMapOfShapeBox &
+	:rtype: None
+") BiTgte_DataMapIteratorOfDataMapOfShapeBox;
 		 BiTgte_DataMapIteratorOfDataMapOfShapeBox (const BiTgte_DataMapOfShapeBox & aMap);
-		%feature("autodoc", "Args:
-	aMap(BiTgte_DataMapOfShapeBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: BiTgte_DataMapOfShapeBox &
+	:rtype: None
+") Initialize;
 		void Initialize (const BiTgte_DataMapOfShapeBox & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		const TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Bnd_Box
+") Value;
 		const Bnd_Box & Value ();
 };
 
@@ -952,29 +686,20 @@ def __del__(self):
 %nodefaultctor BiTgte_DataMapNodeOfDataMapOfShapeBox;
 class BiTgte_DataMapNodeOfDataMapOfShapeBox : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(Bnd_Box)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BiTgte_DataMapNodeOfDataMapOfShapeBox;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: Bnd_Box &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") BiTgte_DataMapNodeOfDataMapOfShapeBox;
 		 BiTgte_DataMapNodeOfDataMapOfShapeBox (const TopoDS_Shape & K,const Bnd_Box & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Bnd_Box
+") Value;
 		Bnd_Box & Value ();
 };
 
@@ -1035,101 +760,65 @@ def __del__(self):
 %nodefaultctor BiTgte_DataMapOfShapeBox;
 class BiTgte_DataMapOfShapeBox : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") BiTgte_DataMapOfShapeBox;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") BiTgte_DataMapOfShapeBox;
 		 BiTgte_DataMapOfShapeBox (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(BiTgte_DataMapOfShapeBox)
-
-Returns:
-	BiTgte_DataMapOfShapeBox
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: BiTgte_DataMapOfShapeBox &
+	:rtype: BiTgte_DataMapOfShapeBox
+") Assign;
 		BiTgte_DataMapOfShapeBox & Assign (const BiTgte_DataMapOfShapeBox & Other);
-		%feature("autodoc", "Args:
-	Other(BiTgte_DataMapOfShapeBox)
-
-Returns:
-	BiTgte_DataMapOfShapeBox
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: BiTgte_DataMapOfShapeBox &
+	:rtype: BiTgte_DataMapOfShapeBox
+") operator=;
 		BiTgte_DataMapOfShapeBox & operator = (const BiTgte_DataMapOfShapeBox & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(Bnd_Box)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: Bnd_Box &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const TopoDS_Shape & K,const Bnd_Box & I);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Bnd_Box
+") Find;
 		const Bnd_Box & Find (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Bnd_Box
+") ChangeFind;
 		Bnd_Box & ChangeFind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const TopoDS_Shape & K);
 };
 
@@ -1151,49 +840,27 @@ def __del__(self):
 %nodefaultctor BiTgte_HCurveOnEdge;
 class BiTgte_HCurveOnEdge : public Adaptor3d_HCurve {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BiTgte_HCurveOnEdge;
+		%feature("autodoc", "	:rtype: None
+") BiTgte_HCurveOnEdge;
 		 BiTgte_HCurveOnEdge ();
-		%feature("autodoc", "Args:
-	C(BiTgte_CurveOnEdge)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BiTgte_HCurveOnEdge;
+		%feature("autodoc", "	:param C:
+	:type C: BiTgte_CurveOnEdge &
+	:rtype: None
+") BiTgte_HCurveOnEdge;
 		 BiTgte_HCurveOnEdge (const BiTgte_CurveOnEdge & C);
-		%feature("autodoc", "Args:
-	C(BiTgte_CurveOnEdge)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Set;
+		%feature("autodoc", "	:param C:
+	:type C: BiTgte_CurveOnEdge &
+	:rtype: None
+") Set;
 		void Set (const BiTgte_CurveOnEdge & C);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Adaptor3d_Curve
-
-No detailed docstring for this function.") Curve;
+		%feature("autodoc", "	:rtype: Adaptor3d_Curve
+") Curve;
 		const Adaptor3d_Curve & Curve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Adaptor3d_Curve
-
-No detailed docstring for this function.") GetCurve;
+		%feature("autodoc", "	:rtype: Adaptor3d_Curve
+") GetCurve;
 		Adaptor3d_Curve & GetCurve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BiTgte_CurveOnEdge
-
-No detailed docstring for this function.") ChangeCurve;
+		%feature("autodoc", "	:rtype: BiTgte_CurveOnEdge
+") ChangeCurve;
 		BiTgte_CurveOnEdge & ChangeCurve ();
 };
 
@@ -1254,49 +921,27 @@ def __del__(self):
 %nodefaultctor BiTgte_HCurveOnVertex;
 class BiTgte_HCurveOnVertex : public Adaptor3d_HCurve {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BiTgte_HCurveOnVertex;
+		%feature("autodoc", "	:rtype: None
+") BiTgte_HCurveOnVertex;
 		 BiTgte_HCurveOnVertex ();
-		%feature("autodoc", "Args:
-	C(BiTgte_CurveOnVertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BiTgte_HCurveOnVertex;
+		%feature("autodoc", "	:param C:
+	:type C: BiTgte_CurveOnVertex &
+	:rtype: None
+") BiTgte_HCurveOnVertex;
 		 BiTgte_HCurveOnVertex (const BiTgte_CurveOnVertex & C);
-		%feature("autodoc", "Args:
-	C(BiTgte_CurveOnVertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Set;
+		%feature("autodoc", "	:param C:
+	:type C: BiTgte_CurveOnVertex &
+	:rtype: None
+") Set;
 		void Set (const BiTgte_CurveOnVertex & C);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Adaptor3d_Curve
-
-No detailed docstring for this function.") Curve;
+		%feature("autodoc", "	:rtype: Adaptor3d_Curve
+") Curve;
 		const Adaptor3d_Curve & Curve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Adaptor3d_Curve
-
-No detailed docstring for this function.") GetCurve;
+		%feature("autodoc", "	:rtype: Adaptor3d_Curve
+") GetCurve;
 		Adaptor3d_Curve & GetCurve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BiTgte_CurveOnVertex
-
-No detailed docstring for this function.") ChangeCurve;
+		%feature("autodoc", "	:rtype: BiTgte_CurveOnVertex
+") ChangeCurve;
 		BiTgte_CurveOnVertex & ChangeCurve ();
 };
 

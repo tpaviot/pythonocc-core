@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -72,15 +72,14 @@ enum TopOpeBRep_TypeLineCurve {
 %nodefaultctor TopOpeBRep;
 class TopOpeBRep {
 	public:
-		%feature("autodoc", "Args:
-	TLC(TopOpeBRep_TypeLineCurve)
-	OS(Standard_OStream)
+		%feature("autodoc", "	* Prints the name of <TLC> as a String on the Stream <S> and returns <S>.
 
-Returns:
-	static Standard_OStream
-
-Prints the name  of  <TLC>  as  a String  on the  
-         Stream <S> and returns <S>.") Print;
+	:param TLC:
+	:type TLC: TopOpeBRep_TypeLineCurve
+	:param OS:
+	:type OS: Standard_OStream &
+	:rtype: Standard_OStream
+") Print;
 		static Standard_OStream & Print (const TopOpeBRep_TypeLineCurve TLC,Standard_OStream & OS);
 };
 
@@ -102,108 +101,68 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_Array1OfLineInter;
 class TopOpeBRep_Array1OfLineInter {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_Array1OfLineInter;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TopOpeBRep_Array1OfLineInter;
 		 TopOpeBRep_Array1OfLineInter (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(TopOpeBRep_LineInter)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_Array1OfLineInter;
+		%feature("autodoc", "	:param Item:
+	:type Item: TopOpeBRep_LineInter &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TopOpeBRep_Array1OfLineInter;
 		 TopOpeBRep_Array1OfLineInter (const TopOpeBRep_LineInter & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(TopOpeBRep_LineInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: TopOpeBRep_LineInter &
+	:rtype: None
+") Init;
 		void Init (const TopOpeBRep_LineInter & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(TopOpeBRep_Array1OfLineInter)
-
-Returns:
-	TopOpeBRep_Array1OfLineInter
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopOpeBRep_Array1OfLineInter &
+	:rtype: TopOpeBRep_Array1OfLineInter
+") Assign;
 		const TopOpeBRep_Array1OfLineInter & Assign (const TopOpeBRep_Array1OfLineInter & Other);
-		%feature("autodoc", "Args:
-	Other(TopOpeBRep_Array1OfLineInter)
-
-Returns:
-	TopOpeBRep_Array1OfLineInter
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopOpeBRep_Array1OfLineInter &
+	:rtype: TopOpeBRep_Array1OfLineInter
+") operator=;
 		const TopOpeBRep_Array1OfLineInter & operator = (const TopOpeBRep_Array1OfLineInter & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(TopOpeBRep_LineInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: TopOpeBRep_LineInter &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const TopOpeBRep_LineInter & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TopOpeBRep_LineInter
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopOpeBRep_LineInter
+") Value;
 		const TopOpeBRep_LineInter & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TopOpeBRep_LineInter
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopOpeBRep_LineInter
+") ChangeValue;
 		TopOpeBRep_LineInter & ChangeValue (const Standard_Integer Index);
 };
 
@@ -225,108 +184,68 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_Array1OfVPointInter;
 class TopOpeBRep_Array1OfVPointInter {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_Array1OfVPointInter;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TopOpeBRep_Array1OfVPointInter;
 		 TopOpeBRep_Array1OfVPointInter (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(TopOpeBRep_VPointInter)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_Array1OfVPointInter;
+		%feature("autodoc", "	:param Item:
+	:type Item: TopOpeBRep_VPointInter &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TopOpeBRep_Array1OfVPointInter;
 		 TopOpeBRep_Array1OfVPointInter (const TopOpeBRep_VPointInter & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(TopOpeBRep_VPointInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: TopOpeBRep_VPointInter &
+	:rtype: None
+") Init;
 		void Init (const TopOpeBRep_VPointInter & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(TopOpeBRep_Array1OfVPointInter)
-
-Returns:
-	TopOpeBRep_Array1OfVPointInter
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopOpeBRep_Array1OfVPointInter &
+	:rtype: TopOpeBRep_Array1OfVPointInter
+") Assign;
 		const TopOpeBRep_Array1OfVPointInter & Assign (const TopOpeBRep_Array1OfVPointInter & Other);
-		%feature("autodoc", "Args:
-	Other(TopOpeBRep_Array1OfVPointInter)
-
-Returns:
-	TopOpeBRep_Array1OfVPointInter
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopOpeBRep_Array1OfVPointInter &
+	:rtype: TopOpeBRep_Array1OfVPointInter
+") operator=;
 		const TopOpeBRep_Array1OfVPointInter & operator = (const TopOpeBRep_Array1OfVPointInter & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(TopOpeBRep_VPointInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: TopOpeBRep_VPointInter &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const TopOpeBRep_VPointInter & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TopOpeBRep_VPointInter
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopOpeBRep_VPointInter
+") Value;
 		const TopOpeBRep_VPointInter & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TopOpeBRep_VPointInter
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopOpeBRep_VPointInter
+") ChangeValue;
 		TopOpeBRep_VPointInter & ChangeValue (const Standard_Integer Index);
 };
 
@@ -348,35 +267,21 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_Bipoint;
 class TopOpeBRep_Bipoint {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_Bipoint;
+		%feature("autodoc", "	:rtype: None
+") TopOpeBRep_Bipoint;
 		 TopOpeBRep_Bipoint ();
-		%feature("autodoc", "Args:
-	I1(Standard_Integer)
-	I2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_Bipoint;
+		%feature("autodoc", "	:param I1:
+	:type I1: Standard_Integer
+	:param I2:
+	:type I2: Standard_Integer
+	:rtype: None
+") TopOpeBRep_Bipoint;
 		 TopOpeBRep_Bipoint (const Standard_Integer I1,const Standard_Integer I2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") I1;
+		%feature("autodoc", "	:rtype: int
+") I1;
 		Standard_Integer I1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") I2;
+		%feature("autodoc", "	:rtype: int
+") I2;
 		Standard_Integer I2 ();
 };
 
@@ -398,222 +303,150 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_DSFiller;
 class TopOpeBRep_DSFiller {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_DSFiller;
+		%feature("autodoc", "	:rtype: None
+") TopOpeBRep_DSFiller;
 		 TopOpeBRep_DSFiller ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRepTool_PShapeClassifier
+		%feature("autodoc", "	* return field myPShapeClassifier. set field myPShapeClassifier.
 
-return field myPShapeClassifier.  set field myPShapeClassifier.") PShapeClassifier;
+	:rtype: TopOpeBRepTool_PShapeClassifier
+") PShapeClassifier;
 		TopOpeBRepTool_PShapeClassifier PShapeClassifier ();
-		%feature("autodoc", "Args:
-	S1(TopoDS_Shape)
-	S2(TopoDS_Shape)
-	HDS(Handle_TopOpeBRepDS_HDataStructure)
-	orientFORWARD(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Stores in <DS> the intersections of <S1> and <S2>. if orientFORWARD = True  S FORWARD,REVERSED --> FORWARD  S EXTERNAL,INTERNAL --> EXTERNAL,INTERNAL
 
-Returns:
-	None
-
-Stores in <DS> the intersections of <S1> and <S2>.  
-         if orientFORWARD = True  
-              S FORWARD,REVERSED   --> FORWARD  
-              S EXTERNAL,INTERNAL --> EXTERNAL,INTERNAL") Insert;
+	:param S1:
+	:type S1: TopoDS_Shape &
+	:param S2:
+	:type S2: TopoDS_Shape &
+	:param HDS:
+	:type HDS: Handle_TopOpeBRepDS_HDataStructure &
+	:param orientFORWARD: default value is Standard_True
+	:type orientFORWARD: bool
+	:rtype: None
+") Insert;
 		void Insert (const TopoDS_Shape & S1,const TopoDS_Shape & S2,const Handle_TopOpeBRepDS_HDataStructure & HDS,const Standard_Boolean orientFORWARD = Standard_True);
-		%feature("autodoc", "Args:
-	S1(TopoDS_Shape)
-	S2(TopoDS_Shape)
-	HDS(Handle_TopOpeBRepDS_HDataStructure)
-	orientFORWARD(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Stores in <DS> the intersections of <S1> and <S2>. if orientFORWARD = True  S FORWAR,REVERSED --> FORWARD  S EXTERNAL,INTERNAL --> EXTERNAL,INTERNAL
 
-Returns:
-	None
-
-Stores in <DS> the intersections of <S1> and <S2>.  
-         if orientFORWARD = True  
-              S FORWAR,REVERSED   --> FORWARD  
-              S EXTERNAL,INTERNAL --> EXTERNAL,INTERNAL") InsertIntersection;
+	:param S1:
+	:type S1: TopoDS_Shape &
+	:param S2:
+	:type S2: TopoDS_Shape &
+	:param HDS:
+	:type HDS: Handle_TopOpeBRepDS_HDataStructure &
+	:param orientFORWARD: default value is Standard_True
+	:type orientFORWARD: bool
+	:rtype: None
+") InsertIntersection;
 		void InsertIntersection (const TopoDS_Shape & S1,const TopoDS_Shape & S2,const Handle_TopOpeBRepDS_HDataStructure & HDS,const Standard_Boolean orientFORWARD = Standard_True);
-		%feature("autodoc", "Args:
-	HDS(Handle_TopOpeBRepDS_HDataStructure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Complete;
+		%feature("autodoc", "	:param HDS:
+	:type HDS: Handle_TopOpeBRepDS_HDataStructure &
+	:rtype: None
+") Complete;
 		void Complete (const Handle_TopOpeBRepDS_HDataStructure & HDS);
-		%feature("autodoc", "Args:
-	S1(TopoDS_Shape)
-	S2(TopoDS_Shape)
-	HDS(Handle_TopOpeBRepDS_HDataStructure)
+		%feature("autodoc", "	* Stores in <DS> the intersections of <S1> and <S2>. S1 et S2 contain only SameDomain Face
 
-Returns:
-	None
-
-Stores in <DS> the intersections of <S1> and <S2>.  
-         S1 et S2 contain only SameDomain Face") Insert2d;
+	:param S1:
+	:type S1: TopoDS_Shape &
+	:param S2:
+	:type S2: TopoDS_Shape &
+	:param HDS:
+	:type HDS: Handle_TopOpeBRepDS_HDataStructure &
+	:rtype: None
+") Insert2d;
 		void Insert2d (const TopoDS_Shape & S1,const TopoDS_Shape & S2,const Handle_TopOpeBRepDS_HDataStructure & HDS);
-		%feature("autodoc", "Args:
-	S1(TopoDS_Shape)
-	S2(TopoDS_Shape)
-	HDS(Handle_TopOpeBRepDS_HDataStructure)
+		%feature("autodoc", "	* S1, S2 set of tangent face lance les intersections 2d pour coder correctement les faces SameDomain.
 
-Returns:
-	None
-
-S1, S2 set of tangent face  
-         lance les intersections 2d pour coder correctement  
-         les faces SameDomain.") InsertIntersection2d;
+	:param S1:
+	:type S1: TopoDS_Shape &
+	:param S2:
+	:type S2: TopoDS_Shape &
+	:param HDS:
+	:type HDS: Handle_TopOpeBRepDS_HDataStructure &
+	:rtype: None
+") InsertIntersection2d;
 		void InsertIntersection2d (const TopoDS_Shape & S1,const TopoDS_Shape & S2,const Handle_TopOpeBRepDS_HDataStructure & HDS);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsMadeOf1d;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: bool
+") IsMadeOf1d;
 		Standard_Boolean IsMadeOf1d (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsContext1d;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: bool
+") IsContext1d;
 		Standard_Boolean IsContext1d (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	S1(TopoDS_Shape)
-	S2(TopoDS_Shape)
-	F1(TopoDS_Face)
-	F2(TopoDS_Face)
-	HDS(Handle_TopOpeBRepDS_HDataStructure)
-	orientFORWARD(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Stores in <DS> the intersections of <S1> and <S2>. S1 and S2 are edges or wires. S1 edges have a 2d representation in face F1 S2 edges have a 2d representation in face F2 F1 is the face which surface is taken as reference for 2d description of S1 and S2 edges. if orientFORWARD = True  S FORWARD,REVERSED --> FORWARD  S EXTERNAL,INTERNAL --> EXTERNAL,INTERNAL
 
-Returns:
-	None
-
-Stores in <DS> the intersections of <S1> and <S2>.  
-         S1 and S2 are edges or wires.  
-         S1 edges have a 2d representation in face F1  
-         S2 edges have a 2d representation in face F2  
-         F1 is the face which surface is taken as reference  
-         for 2d description of S1 and S2 edges.  
-         if orientFORWARD = True  
-              S FORWARD,REVERSED  --> FORWARD  
-              S EXTERNAL,INTERNAL --> EXTERNAL,INTERNAL") Insert1d;
+	:param S1:
+	:type S1: TopoDS_Shape &
+	:param S2:
+	:type S2: TopoDS_Shape &
+	:param F1:
+	:type F1: TopoDS_Face &
+	:param F2:
+	:type F2: TopoDS_Face &
+	:param HDS:
+	:type HDS: Handle_TopOpeBRepDS_HDataStructure &
+	:param orientFORWARD: default value is Standard_False
+	:type orientFORWARD: bool
+	:rtype: None
+") Insert1d;
 		void Insert1d (const TopoDS_Shape & S1,const TopoDS_Shape & S2,const TopoDS_Face & F1,const TopoDS_Face & F2,const Handle_TopOpeBRepDS_HDataStructure & HDS,const Standard_Boolean orientFORWARD = Standard_False);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_ShapeIntersector
-
-No detailed docstring for this function.") ChangeShapeIntersector;
+		%feature("autodoc", "	:rtype: TopOpeBRep_ShapeIntersector
+") ChangeShapeIntersector;
 		TopOpeBRep_ShapeIntersector & ChangeShapeIntersector ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_ShapeIntersector2d
-
-No detailed docstring for this function.") ChangeShapeIntersector2d;
+		%feature("autodoc", "	:rtype: TopOpeBRep_ShapeIntersector2d
+") ChangeShapeIntersector2d;
 		TopOpeBRep_ShapeIntersector2d & ChangeShapeIntersector2d ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_FacesFiller
-
-No detailed docstring for this function.") ChangeFacesFiller;
+		%feature("autodoc", "	:rtype: TopOpeBRep_FacesFiller
+") ChangeFacesFiller;
 		TopOpeBRep_FacesFiller & ChangeFacesFiller ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_EdgesFiller
-
-No detailed docstring for this function.") ChangeEdgesFiller;
+		%feature("autodoc", "	:rtype: TopOpeBRep_EdgesFiller
+") ChangeEdgesFiller;
 		TopOpeBRep_EdgesFiller & ChangeEdgesFiller ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_FaceEdgeFiller
-
-No detailed docstring for this function.") ChangeFaceEdgeFiller;
+		%feature("autodoc", "	:rtype: TopOpeBRep_FaceEdgeFiller
+") ChangeFaceEdgeFiller;
 		TopOpeBRep_FaceEdgeFiller & ChangeFaceEdgeFiller ();
-		%feature("autodoc", "Args:
-	HDS(Handle_TopOpeBRepDS_HDataStructure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GapFiller;
+		%feature("autodoc", "	:param HDS:
+	:type HDS: Handle_TopOpeBRepDS_HDataStructure &
+	:rtype: None
+") GapFiller;
 		void GapFiller (const Handle_TopOpeBRepDS_HDataStructure & HDS);
-		%feature("autodoc", "Args:
-	HDS(Handle_TopOpeBRepDS_HDataStructure)
+		%feature("autodoc", "	* Update the data structure with relevant informations deduced from the intersections.  Shells containing an intersected face. Wires containing an intersected edge.
 
-Returns:
-	None
-
-Update   the  data      structure  with   relevant  
-         informations deduced from the intersections.  
- 
-         Shells containing an intersected face.  
-         Wires  containing an intersected edge.") CompleteDS;
+	:param HDS:
+	:type HDS: Handle_TopOpeBRepDS_HDataStructure &
+	:rtype: None
+") CompleteDS;
 		void CompleteDS (const Handle_TopOpeBRepDS_HDataStructure & HDS);
-		%feature("autodoc", "Args:
-	HDS(Handle_TopOpeBRepDS_HDataStructure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Filter;
+		%feature("autodoc", "	:param HDS:
+	:type HDS: Handle_TopOpeBRepDS_HDataStructure &
+	:rtype: None
+") Filter;
 		void Filter (const Handle_TopOpeBRepDS_HDataStructure & HDS);
-		%feature("autodoc", "Args:
-	HDS(Handle_TopOpeBRepDS_HDataStructure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Reducer;
+		%feature("autodoc", "	:param HDS:
+	:type HDS: Handle_TopOpeBRepDS_HDataStructure &
+	:rtype: None
+") Reducer;
 		void Reducer (const Handle_TopOpeBRepDS_HDataStructure & HDS);
-		%feature("autodoc", "Args:
-	HDS(Handle_TopOpeBRepDS_HDataStructure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveUnsharedGeometry;
+		%feature("autodoc", "	:param HDS:
+	:type HDS: Handle_TopOpeBRepDS_HDataStructure &
+	:rtype: None
+") RemoveUnsharedGeometry;
 		void RemoveUnsharedGeometry (const Handle_TopOpeBRepDS_HDataStructure & HDS);
-		%feature("autodoc", "Args:
-	HDS(Handle_TopOpeBRepDS_HDataStructure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Checker;
+		%feature("autodoc", "	:param HDS:
+	:type HDS: Handle_TopOpeBRepDS_HDataStructure &
+	:rtype: None
+") Checker;
 		void Checker (const Handle_TopOpeBRepDS_HDataStructure & HDS);
-		%feature("autodoc", "Args:
-	HDS(Handle_TopOpeBRepDS_HDataStructure)
+		%feature("autodoc", "	* Update the data structure with relevant informations deduced from the intersections 2d.  Shells containing an intersected face. Wires containing an intersected edge. search for interference identity using edge connexity //NYI
 
-Returns:
-	None
-
-Update   the  data      structure  with   relevant  
-         informations deduced from the intersections 2d.  
- 
-         Shells containing an intersected face.  
-         Wires  containing an intersected edge.  
- search for interference identity using edge connexity //NYI") CompleteDS2d;
+	:param HDS:
+	:type HDS: Handle_TopOpeBRepDS_HDataStructure &
+	:rtype: None
+") CompleteDS2d;
 		void CompleteDS2d (const Handle_TopOpeBRepDS_HDataStructure & HDS);
 };
 
@@ -635,42 +468,24 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_DataMapIteratorOfDataMapOfTopolTool;
 class TopOpeBRep_DataMapIteratorOfDataMapOfTopolTool : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_DataMapIteratorOfDataMapOfTopolTool;
+		%feature("autodoc", "	:rtype: None
+") TopOpeBRep_DataMapIteratorOfDataMapOfTopolTool;
 		 TopOpeBRep_DataMapIteratorOfDataMapOfTopolTool ();
-		%feature("autodoc", "Args:
-	aMap(TopOpeBRep_DataMapOfTopolTool)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_DataMapIteratorOfDataMapOfTopolTool;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TopOpeBRep_DataMapOfTopolTool &
+	:rtype: None
+") TopOpeBRep_DataMapIteratorOfDataMapOfTopolTool;
 		 TopOpeBRep_DataMapIteratorOfDataMapOfTopolTool (const TopOpeBRep_DataMapOfTopolTool & aMap);
-		%feature("autodoc", "Args:
-	aMap(TopOpeBRep_DataMapOfTopolTool)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TopOpeBRep_DataMapOfTopolTool &
+	:rtype: None
+") Initialize;
 		void Initialize (const TopOpeBRep_DataMapOfTopolTool & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		const TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_BRepTopAdaptor_TopolTool
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_BRepTopAdaptor_TopolTool
+") Value;
 		const Handle_BRepTopAdaptor_TopolTool & Value ();
 };
 
@@ -692,29 +507,20 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_DataMapNodeOfDataMapOfTopolTool;
 class TopOpeBRep_DataMapNodeOfDataMapOfTopolTool : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(Handle_BRepTopAdaptor_TopolTool)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_DataMapNodeOfDataMapOfTopolTool;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: Handle_BRepTopAdaptor_TopolTool &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TopOpeBRep_DataMapNodeOfDataMapOfTopolTool;
 		 TopOpeBRep_DataMapNodeOfDataMapOfTopolTool (const TopoDS_Shape & K,const Handle_BRepTopAdaptor_TopolTool & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_BRepTopAdaptor_TopolTool
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_BRepTopAdaptor_TopolTool
+") Value;
 		Handle_BRepTopAdaptor_TopolTool & Value ();
 };
 
@@ -775,101 +581,65 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_DataMapOfTopolTool;
 class TopOpeBRep_DataMapOfTopolTool : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_DataMapOfTopolTool;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TopOpeBRep_DataMapOfTopolTool;
 		 TopOpeBRep_DataMapOfTopolTool (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TopOpeBRep_DataMapOfTopolTool)
-
-Returns:
-	TopOpeBRep_DataMapOfTopolTool
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopOpeBRep_DataMapOfTopolTool &
+	:rtype: TopOpeBRep_DataMapOfTopolTool
+") Assign;
 		TopOpeBRep_DataMapOfTopolTool & Assign (const TopOpeBRep_DataMapOfTopolTool & Other);
-		%feature("autodoc", "Args:
-	Other(TopOpeBRep_DataMapOfTopolTool)
-
-Returns:
-	TopOpeBRep_DataMapOfTopolTool
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopOpeBRep_DataMapOfTopolTool &
+	:rtype: TopOpeBRep_DataMapOfTopolTool
+") operator=;
 		TopOpeBRep_DataMapOfTopolTool & operator = (const TopOpeBRep_DataMapOfTopolTool & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(Handle_BRepTopAdaptor_TopolTool)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: Handle_BRepTopAdaptor_TopolTool &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const TopoDS_Shape & K,const Handle_BRepTopAdaptor_TopolTool & I);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Handle_BRepTopAdaptor_TopolTool
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Handle_BRepTopAdaptor_TopolTool
+") Find;
 		const Handle_BRepTopAdaptor_TopolTool & Find (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Handle_BRepTopAdaptor_TopolTool
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Handle_BRepTopAdaptor_TopolTool
+") ChangeFind;
 		Handle_BRepTopAdaptor_TopolTool & ChangeFind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const TopoDS_Shape & K);
 };
 
@@ -891,40 +661,31 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_EdgesFiller;
 class TopOpeBRep_EdgesFiller {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_EdgesFiller;
+		%feature("autodoc", "	:rtype: None
+") TopOpeBRep_EdgesFiller;
 		 TopOpeBRep_EdgesFiller ();
-		%feature("autodoc", "Args:
-	E1(TopoDS_Shape)
-	E2(TopoDS_Shape)
-	EI(TopOpeBRep_EdgesIntersector)
-	HDS(Handle_TopOpeBRepDS_HDataStructure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Insert;
+		%feature("autodoc", "	:param E1:
+	:type E1: TopoDS_Shape &
+	:param E2:
+	:type E2: TopoDS_Shape &
+	:param EI:
+	:type EI: TopOpeBRep_EdgesIntersector &
+	:param HDS:
+	:type HDS: Handle_TopOpeBRepDS_HDataStructure &
+	:rtype: None
+") Insert;
 		void Insert (const TopoDS_Shape & E1,const TopoDS_Shape & E2,TopOpeBRep_EdgesIntersector & EI,const Handle_TopOpeBRepDS_HDataStructure & HDS);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	F(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Face;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param F:
+	:type F: TopoDS_Shape &
+	:rtype: None
+") Face;
 		void Face (const Standard_Integer I,const TopoDS_Shape & F);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Face;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopoDS_Shape
+") Face;
 		const TopoDS_Shape & Face (const Standard_Integer I);
 };
 
@@ -946,241 +707,153 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_EdgesIntersector;
 class TopOpeBRep_EdgesIntersector {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_EdgesIntersector;
+		%feature("autodoc", "	:rtype: None
+") TopOpeBRep_EdgesIntersector;
 		 TopOpeBRep_EdgesIntersector ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Delete;
+		%feature("autodoc", "	:rtype: void
+") Delete;
 		virtual void Delete ();
-		%feature("autodoc", "Args:
-	F1(TopoDS_Shape)
-	F2(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetFaces;
+		%feature("autodoc", "	:param F1:
+	:type F1: TopoDS_Shape &
+	:param F2:
+	:type F2: TopoDS_Shape &
+	:rtype: None
+") SetFaces;
 		void SetFaces (const TopoDS_Shape & F1,const TopoDS_Shape & F2);
-		%feature("autodoc", "Args:
-	F1(TopoDS_Shape)
-	F2(TopoDS_Shape)
-	B1(Bnd_Box)
-	B2(Bnd_Box)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetFaces;
+		%feature("autodoc", "	:param F1:
+	:type F1: TopoDS_Shape &
+	:param F2:
+	:type F2: TopoDS_Shape &
+	:param B1:
+	:type B1: Bnd_Box &
+	:param B2:
+	:type B2: Bnd_Box &
+	:rtype: None
+") SetFaces;
 		void SetFaces (const TopoDS_Shape & F1,const TopoDS_Shape & F2,const Bnd_Box & B1,const Bnd_Box & B2);
-		%feature("autodoc", "Args:
-	Tol1(Standard_Real)
-	Tol2(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ForceTolerances;
+		%feature("autodoc", "	:param Tol1:
+	:type Tol1: float
+	:param Tol2:
+	:type Tol2: float
+	:rtype: None
+") ForceTolerances;
 		void ForceTolerances (const Standard_Real Tol1,const Standard_Real Tol2);
-		%feature("autodoc", "Args:
-	D(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Dimension;
+		%feature("autodoc", "	:param D:
+	:type D: Standard_Integer
+	:rtype: None
+") Dimension;
 		void Dimension (const Standard_Integer D);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* set working space dimension D = 1 for E &|| W, 2 for E in F
 
-set working space dimension D = 1 for E &|| W, 2 for E in F") Dimension;
+	:rtype: int
+") Dimension;
 		Standard_Integer Dimension ();
-		%feature("autodoc", "Args:
-	E1(TopoDS_Shape)
-	E2(TopoDS_Shape)
-	ReduceSegments(Standard_Boolean)=Standard_True
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param E1:
+	:type E1: TopoDS_Shape &
+	:param E2:
+	:type E2: TopoDS_Shape &
+	:param ReduceSegments: default value is Standard_True
+	:type ReduceSegments: bool
+	:rtype: None
+") Perform;
 		void Perform (const TopoDS_Shape & E1,const TopoDS_Shape & E2,const Standard_Boolean ReduceSegments = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* true if at least one intersection segment.
 
-true if at least one intersection segment.") HasSegment;
+	:rtype: bool
+") HasSegment;
 		Standard_Boolean HasSegment ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* = mySameDomain.
 
-= mySameDomain.") SameDomain;
+	:rtype: bool
+") SameDomain;
 		Standard_Boolean SameDomain ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Edge;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopoDS_Shape
+") Edge;
 		const TopoDS_Shape & Edge (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Geom2dAdaptor_Curve
-
-No detailed docstring for this function.") Curve;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Geom2dAdaptor_Curve
+") Curve;
 		const Geom2dAdaptor_Curve & Curve (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Face;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopoDS_Shape
+") Face;
 		const TopoDS_Shape & Face (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	BRepAdaptor_Surface
-
-No detailed docstring for this function.") Surface;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: BRepAdaptor_Surface
+") Surface;
 		const BRepAdaptor_Surface & Surface (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") SurfacesSameOriented;
+		%feature("autodoc", "	:rtype: bool
+") SurfacesSameOriented;
 		Standard_Boolean SurfacesSameOriented ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") FacesSameOriented;
+		%feature("autodoc", "	:rtype: bool
+") FacesSameOriented;
 		Standard_Boolean FacesSameOriented ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") ToleranceMax;
+		%feature("autodoc", "	:rtype: float
+") ToleranceMax;
 		Standard_Real ToleranceMax ();
-		%feature("autodoc", "Args:
-	tol1(Standard_Real)
-	tol2(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Tolerances;
+		%feature("autodoc", "	:param tol1:
+	:type tol1: float &
+	:param tol2:
+	:type tol2: float &
+	:rtype: None
+") Tolerances;
 		void Tolerances (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbPoints;
+		%feature("autodoc", "	:rtype: int
+") NbPoints;
 		Standard_Integer NbPoints ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbSegments;
+		%feature("autodoc", "	:rtype: int
+") NbSegments;
 		Standard_Integer NbSegments ();
-		%feature("autodoc", "Args:
-	str(TCollection_AsciiString)
-	ie1(Standard_Integer)=0
-	ie2(Standard_Integer)=0
-
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param str:
+	:type str: TCollection_AsciiString &
+	:param ie1: default value is 0
+	:type ie1: Standard_Integer
+	:param ie2: default value is 0
+	:type ie2: Standard_Integer
+	:rtype: None
+") Dump;
 		void Dump (const TCollection_AsciiString & str,const Standard_Integer ie1 = 0,const Standard_Integer ie2 = 0);
-		%feature("autodoc", "Args:
-	selectkeep(Standard_Boolean)=Standard_True
-
-Returns:
-	None
-
-No detailed docstring for this function.") InitPoint;
+		%feature("autodoc", "	:param selectkeep: default value is Standard_True
+	:type selectkeep: bool
+	:rtype: None
+") InitPoint;
 		void InitPoint (const Standard_Boolean selectkeep = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") MorePoint;
+		%feature("autodoc", "	:rtype: bool
+") MorePoint;
 		Standard_Boolean MorePoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") NextPoint;
+		%feature("autodoc", "	:rtype: None
+") NextPoint;
 		void NextPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_SequenceOfPoint2d
-
-No detailed docstring for this function.") Points;
+		%feature("autodoc", "	:rtype: TopOpeBRep_SequenceOfPoint2d
+") Points;
 		const TopOpeBRep_SequenceOfPoint2d & Points ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_Point2d
-
-No detailed docstring for this function.") Point;
+		%feature("autodoc", "	:rtype: TopOpeBRep_Point2d
+") Point;
 		const TopOpeBRep_Point2d & Point ();
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopOpeBRep_Point2d
-
-No detailed docstring for this function.") Point;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopOpeBRep_Point2d
+") Point;
 		const TopOpeBRep_Point2d & Point (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	P1(TopOpeBRep_Point2d)
-	P2(TopOpeBRep_Point2d)
-	Pn(TopOpeBRep_Point2d)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") ReduceSegment;
+		%feature("autodoc", "	:param P1:
+	:type P1: TopOpeBRep_Point2d &
+	:param P2:
+	:type P2: TopOpeBRep_Point2d &
+	:param Pn:
+	:type Pn: TopOpeBRep_Point2d &
+	:rtype: bool
+") ReduceSegment;
 		virtual Standard_Boolean ReduceSegment (TopOpeBRep_Point2d & P1,TopOpeBRep_Point2d & P2,TopOpeBRep_Point2d & Pn);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_P2Dstatus
-
-No detailed docstring for this function.") Status1;
+		%feature("autodoc", "	:rtype: TopOpeBRep_P2Dstatus
+") Status1;
 		TopOpeBRep_P2Dstatus Status1 ();
 };
 
@@ -1202,81 +875,58 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_FFDumper;
 class TopOpeBRep_FFDumper : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	PFF(TopOpeBRep_PFacesFiller)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_FFDumper;
+		%feature("autodoc", "	:param PFF:
+	:type PFF: TopOpeBRep_PFacesFiller &
+	:rtype: None
+") TopOpeBRep_FFDumper;
 		 TopOpeBRep_FFDumper (const TopOpeBRep_PFacesFiller & PFF);
-		%feature("autodoc", "Args:
-	PFF(TopOpeBRep_PFacesFiller)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param PFF:
+	:type PFF: TopOpeBRep_PFacesFiller &
+	:rtype: None
+") Init;
 		void Init (const TopOpeBRep_PFacesFiller & PFF);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") DumpLine;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: None
+") DumpLine;
 		void DumpLine (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	L(TopOpeBRep_LineInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") DumpLine;
+		%feature("autodoc", "	:param L:
+	:type L: TopOpeBRep_LineInter &
+	:rtype: None
+") DumpLine;
 		void DumpLine (const TopOpeBRep_LineInter & L);
-		%feature("autodoc", "Args:
-	VP(TopOpeBRep_VPointInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") DumpVP;
+		%feature("autodoc", "	:param VP:
+	:type VP: TopOpeBRep_VPointInter &
+	:rtype: None
+") DumpVP;
 		void DumpVP (const TopOpeBRep_VPointInter & VP);
-		%feature("autodoc", "Args:
-	VP(TopOpeBRep_VPointInter)
-	ISI(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") DumpVP;
+		%feature("autodoc", "	:param VP:
+	:type VP: TopOpeBRep_VPointInter &
+	:param ISI:
+	:type ISI: Standard_Integer
+	:rtype: None
+") DumpVP;
 		void DumpVP (const TopOpeBRep_VPointInter & VP,const Standard_Integer ISI);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-	ISI(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ExploreIndex;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:param ISI:
+	:type ISI: Standard_Integer
+	:rtype: int
+") ExploreIndex;
 		Standard_Integer ExploreIndex (const TopoDS_Shape & S,const Standard_Integer ISI);
-		%feature("autodoc", "Args:
-	VP(TopOpeBRep_VPointInter)
-	GK(TopOpeBRepDS_Kind)
-	G(Standard_Integer)
-	newinDS(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") DumpDSP;
+		%feature("autodoc", "	:param VP:
+	:type VP: TopOpeBRep_VPointInter &
+	:param GK:
+	:type GK: TopOpeBRepDS_Kind
+	:param G:
+	:type G: Standard_Integer
+	:param newinDS:
+	:type newinDS: bool
+	:rtype: None
+") DumpDSP;
 		void DumpDSP (const TopOpeBRep_VPointInter & VP,const TopOpeBRepDS_Kind GK,const Standard_Integer G,const Standard_Boolean newinDS);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_PFacesFiller
-
-No detailed docstring for this function.") PFacesFillerDummy;
+		%feature("autodoc", "	:rtype: TopOpeBRep_PFacesFiller
+") PFacesFillerDummy;
 		TopOpeBRep_PFacesFiller PFacesFillerDummy ();
 };
 
@@ -1337,62 +987,54 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_FFTransitionTool;
 class TopOpeBRep_FFTransitionTool {
 	public:
-		%feature("autodoc", "Args:
-	P(TopOpeBRep_VPointInter)
-	Index(Standard_Integer)
-	EdgeOrientation(TopAbs_Orientation)
-
-Returns:
-	static TopOpeBRepDS_Transition
-
-No detailed docstring for this function.") ProcessLineTransition;
+		%feature("autodoc", "	:param P:
+	:type P: TopOpeBRep_VPointInter &
+	:param Index:
+	:type Index: Standard_Integer
+	:param EdgeOrientation:
+	:type EdgeOrientation: TopAbs_Orientation
+	:rtype: TopOpeBRepDS_Transition
+") ProcessLineTransition;
 		static TopOpeBRepDS_Transition ProcessLineTransition (const TopOpeBRep_VPointInter & P,const Standard_Integer Index,const TopAbs_Orientation EdgeOrientation);
-		%feature("autodoc", "Args:
-	P(TopOpeBRep_VPointInter)
-	L(TopOpeBRep_LineInter)
-
-Returns:
-	static TopOpeBRepDS_Transition
-
-No detailed docstring for this function.") ProcessLineTransition;
+		%feature("autodoc", "	:param P:
+	:type P: TopOpeBRep_VPointInter &
+	:param L:
+	:type L: TopOpeBRep_LineInter &
+	:rtype: TopOpeBRepDS_Transition
+") ProcessLineTransition;
 		static TopOpeBRepDS_Transition ProcessLineTransition (const TopOpeBRep_VPointInter & P,const TopOpeBRep_LineInter & L);
-		%feature("autodoc", "Args:
-	P(TopOpeBRep_VPointInter)
-	Index(Standard_Integer)
-	LineOrientation(TopAbs_Orientation)
-
-Returns:
-	static TopOpeBRepDS_Transition
-
-No detailed docstring for this function.") ProcessEdgeTransition;
+		%feature("autodoc", "	:param P:
+	:type P: TopOpeBRep_VPointInter &
+	:param Index:
+	:type Index: Standard_Integer
+	:param LineOrientation:
+	:type LineOrientation: TopAbs_Orientation
+	:rtype: TopOpeBRepDS_Transition
+") ProcessEdgeTransition;
 		static TopOpeBRepDS_Transition ProcessEdgeTransition (const TopOpeBRep_VPointInter & P,const Standard_Integer Index,const TopAbs_Orientation LineOrientation);
-		%feature("autodoc", "Args:
-	L(TopOpeBRep_LineInter)
-	Index(Standard_Integer)
-	FaceOrientation(TopAbs_Orientation)
-
-Returns:
-	static TopOpeBRepDS_Transition
-
-No detailed docstring for this function.") ProcessFaceTransition;
+		%feature("autodoc", "	:param L:
+	:type L: TopOpeBRep_LineInter &
+	:param Index:
+	:type Index: Standard_Integer
+	:param FaceOrientation:
+	:type FaceOrientation: TopAbs_Orientation
+	:rtype: TopOpeBRepDS_Transition
+") ProcessFaceTransition;
 		static TopOpeBRepDS_Transition ProcessFaceTransition (const TopOpeBRep_LineInter & L,const Standard_Integer Index,const TopAbs_Orientation FaceOrientation);
-		%feature("autodoc", "Args:
-	VP(TopOpeBRep_VPointInter)
-	Index(Standard_Integer)
-	R(TopoDS_Shape)
-	E(TopoDS_Shape)
-	F(TopoDS_Shape)
+		%feature("autodoc", "	* compute transition on 'IntPatch_Restriction line' edge <R> when crossing edge <E> of face <F> at point <VP>. VP is given on edge <E> of face <F> of index <Index> (1 or 2). <VP> has been classified by FacesFiller as TopAbs_ON an edge <R> of the other face than <F> of current (face/face) intersection. Transition depends on the orientation of E in F. This method should be provided by IntPatch_Line (NYI)
 
-Returns:
-	static TopOpeBRepDS_Transition
-
-compute transition on 'IntPatch_Restriction line' edge <R>  
-when crossing edge <E> of face <F> at point <VP>.  
-VP is given on edge <E> of face <F> of index <Index> (1 or 2).  
-<VP> has been classified by FacesFiller as TopAbs_ON an edge <R>  
-of the other face than <F> of current (face/face) intersection.  
-Transition depends on the orientation of E in F.  
-This method should be provided by IntPatch_Line (NYI)") ProcessEdgeONTransition;
+	:param VP:
+	:type VP: TopOpeBRep_VPointInter &
+	:param Index:
+	:type Index: Standard_Integer
+	:param R:
+	:type R: TopoDS_Shape &
+	:param E:
+	:type E: TopoDS_Shape &
+	:param F:
+	:type F: TopoDS_Shape &
+	:rtype: TopOpeBRepDS_Transition
+") ProcessEdgeONTransition;
 		static TopOpeBRepDS_Transition ProcessEdgeONTransition (const TopOpeBRep_VPointInter & VP,const Standard_Integer Index,const TopoDS_Shape & R,const TopoDS_Shape & E,const TopoDS_Shape & F);
 };
 
@@ -1414,23 +1056,19 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_FaceEdgeFiller;
 class TopOpeBRep_FaceEdgeFiller {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_FaceEdgeFiller;
+		%feature("autodoc", "	:rtype: None
+") TopOpeBRep_FaceEdgeFiller;
 		 TopOpeBRep_FaceEdgeFiller ();
-		%feature("autodoc", "Args:
-	F(TopoDS_Shape)
-	E(TopoDS_Shape)
-	FEINT(TopOpeBRep_FaceEdgeIntersector)
-	HDS(Handle_TopOpeBRepDS_HDataStructure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Insert;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Shape &
+	:param E:
+	:type E: TopoDS_Shape &
+	:param FEINT:
+	:type FEINT: TopOpeBRep_FaceEdgeIntersector &
+	:param HDS:
+	:type HDS: Handle_TopOpeBRepDS_HDataStructure &
+	:rtype: None
+") Insert;
 		void Insert (const TopoDS_Shape & F,const TopoDS_Shape & E,TopOpeBRep_FaceEdgeIntersector & FEINT,const Handle_TopOpeBRepDS_HDataStructure & HDS);
 };
 
@@ -1452,147 +1090,103 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_FaceEdgeIntersector;
 class TopOpeBRep_FaceEdgeIntersector {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_FaceEdgeIntersector;
+		%feature("autodoc", "	:rtype: None
+") TopOpeBRep_FaceEdgeIntersector;
 		 TopOpeBRep_FaceEdgeIntersector ();
-		%feature("autodoc", "Args:
-	F(TopoDS_Shape)
-	E(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Shape &
+	:param E:
+	:type E: TopoDS_Shape &
+	:rtype: None
+") Perform;
 		void Perform (const TopoDS_Shape & F,const TopoDS_Shape & E);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* returns intersected face or edge according to value of <Index> = 1 or 2
 
-Returns:
-	TopoDS_Shape
-
-returns intersected face or edge according to  
-         value of <Index> = 1 or 2") Shape;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopoDS_Shape
+") Shape;
 		const TopoDS_Shape & Shape (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	tol(Standard_Real)
+		%feature("autodoc", "	* Force the tolerance values used by the next Perform(S1,S2) call.
 
-Returns:
-	None
-
-Force the tolerance values used by the next Perform(S1,S2) call.") ForceTolerance;
+	:param tol:
+	:type tol: float
+	:rtype: None
+") ForceTolerance;
 		void ForceTolerance (const Standard_Real tol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Return the tolerance value used in the last Perform() call If ForceTolerance() has been called, return the given value. If not, return value extracted from shapes.
 
-Return the tolerance value used in the last Perform() call  
-If ForceTolerance() has been called, return the given value.  
-If not, return value extracted from shapes.") Tolerance;
+	:rtype: float
+") Tolerance;
 		Standard_Real Tolerance ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbPoints;
+		%feature("autodoc", "	:rtype: int
+") NbPoints;
 		Standard_Integer NbPoints ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") InitPoint;
+		%feature("autodoc", "	:rtype: None
+") InitPoint;
 		void InitPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") MorePoint;
+		%feature("autodoc", "	:rtype: bool
+") MorePoint;
 		Standard_Boolean MorePoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") NextPoint;
+		%feature("autodoc", "	:rtype: None
+") NextPoint;
 		void NextPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
+		%feature("autodoc", "	* return the 3D point of the current intersection point.
 
-return the 3D point of the current intersection point.") Value;
+	:rtype: gp_Pnt
+") Value;
 		gp_Pnt Value ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* parametre de Value() sur l'arete
 
-parametre de Value() sur l'arete") Parameter;
+	:rtype: float
+") Parameter;
 		Standard_Real Parameter ();
-		%feature("autodoc", "Args:
-	P(gp_Pnt2d)
+		%feature("autodoc", "	* parametre de Value() sur la face
 
-Returns:
-	None
-
-parametre de Value() sur la face") UVPoint;
+	:param P:
+	:type P: gp_Pnt2d
+	:rtype: None
+") UVPoint;
 		void UVPoint (gp_Pnt2d & P);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_State
+		%feature("autodoc", "	* IN ou ON / a la face. Les points OUT ne sont pas retournes.
 
-IN ou ON / a la face. Les points OUT ne sont pas retournes.") State;
+	:rtype: TopAbs_State
+") State;
 		TopAbs_State State ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	FaceOrientation(TopAbs_Orientation)
+		%feature("autodoc", "	* Index = 1 transition par rapport a la face, en cheminant sur l'arete
 
-Returns:
-	TopOpeBRepDS_Transition
-
-Index = 1 transition par rapport a la face, en cheminant sur l'arete") Transition;
+	:param Index:
+	:type Index: Standard_Integer
+	:param FaceOrientation:
+	:type FaceOrientation: TopAbs_Orientation
+	:rtype: TopOpeBRepDS_Transition
+") Transition;
 		TopOpeBRepDS_Transition Transition (const Standard_Integer Index,const TopAbs_Orientation FaceOrientation);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-	P(gp_Pnt)
-	Tol(Standard_Real)
-	V(TopoDS_Vertex)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsVertex;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:param P:
+	:type P: gp_Pnt
+	:param Tol:
+	:type Tol: float
+	:param V:
+	:type V: TopoDS_Vertex &
+	:rtype: bool
+") IsVertex;
 		Standard_Boolean IsVertex (const TopoDS_Shape & S,const gp_Pnt & P,const Standard_Real Tol,TopoDS_Vertex & V);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	V(TopoDS_Vertex)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsVertex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param V:
+	:type V: TopoDS_Vertex &
+	:rtype: bool
+") IsVertex;
 		Standard_Boolean IsVertex (const Standard_Integer I,TopoDS_Vertex & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* trace only
 
-trace only") Index;
+	:rtype: int
+") Index;
 		Standard_Integer Index ();
 };
 
@@ -1614,460 +1208,374 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_FacesFiller;
 class TopOpeBRep_FacesFiller {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_FacesFiller;
+		%feature("autodoc", "	:rtype: None
+") TopOpeBRep_FacesFiller;
 		 TopOpeBRep_FacesFiller ();
-		%feature("autodoc", "Args:
-	F1(TopoDS_Shape)
-	F2(TopoDS_Shape)
-	FACINT(TopOpeBRep_FacesIntersector)
-	HDS(Handle_TopOpeBRepDS_HDataStructure)
+		%feature("autodoc", "	* Stores in <DS> the intersections of <S1> and <S2>.
 
-Returns:
-	None
-
-Stores in <DS> the intersections of <S1> and <S2>.") Insert;
+	:param F1:
+	:type F1: TopoDS_Shape &
+	:param F2:
+	:type F2: TopoDS_Shape &
+	:param FACINT:
+	:type FACINT: TopOpeBRep_FacesIntersector &
+	:param HDS:
+	:type HDS: Handle_TopOpeBRepDS_HDataStructure &
+	:rtype: None
+") Insert;
 		void Insert (const TopoDS_Shape & F1,const TopoDS_Shape & F2,TopOpeBRep_FacesIntersector & FACINT,const Handle_TopOpeBRepDS_HDataStructure & HDS);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ProcessSectionEdges;
+		%feature("autodoc", "	:rtype: None
+") ProcessSectionEdges;
 		void ProcessSectionEdges ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_PointClassifier
-
-No detailed docstring for this function.") ChangePointClassifier;
+		%feature("autodoc", "	:rtype: TopOpeBRep_PointClassifier
+") ChangePointClassifier;
 		TopOpeBRep_PointClassifier & ChangePointClassifier ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRepTool_PShapeClassifier
+		%feature("autodoc", "	* return field myPShapeClassifier.
 
-return field myPShapeClassifier.") PShapeClassifier;
+	:rtype: TopOpeBRepTool_PShapeClassifier
+") PShapeClassifier;
 		TopOpeBRepTool_PShapeClassifier PShapeClassifier ();
-		%feature("autodoc", "Args:
-	PSC(TopOpeBRepTool_PShapeClassifier)
+		%feature("autodoc", "	* set field myPShapeClassifier.
 
-Returns:
-	None
-
-set field myPShapeClassifier.") SetPShapeClassifier;
+	:param PSC:
+	:type PSC: TopOpeBRepTool_PShapeClassifier &
+	:rtype: None
+") SetPShapeClassifier;
 		void SetPShapeClassifier (const TopOpeBRepTool_PShapeClassifier & PSC);
-		%feature("autodoc", "Args:
-	L(TopOpeBRep_LineInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LoadLine;
+		%feature("autodoc", "	:param L:
+	:type L: TopOpeBRep_LineInter &
+	:rtype: None
+") LoadLine;
 		void LoadLine (TopOpeBRep_LineInter & L);
-		%feature("autodoc", "Args:
-	L(TopOpeBRep_LineInter)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") CheckLine;
+		%feature("autodoc", "	:param L:
+	:type L: TopOpeBRep_LineInter &
+	:rtype: bool
+") CheckLine;
 		Standard_Boolean CheckLine (TopOpeBRep_LineInter & L);
-		%feature("autodoc", "Args:
-	FACINT(TopOpeBRep_FacesIntersector)
+		%feature("autodoc", "	* compute position of VPoints of lines
 
-Returns:
-	None
-
-compute position of VPoints of lines") VP_Position;
+	:param FACINT:
+	:type FACINT: TopOpeBRep_FacesIntersector &
+	:rtype: None
+") VP_Position;
 		void VP_Position (TopOpeBRep_FacesIntersector & FACINT);
-		%feature("autodoc", "Args:
-	L(TopOpeBRep_LineInter)
+		%feature("autodoc", "	* compute position of VPoints of line L
 
-Returns:
-	None
-
-compute position of VPoints of line L") VP_Position;
+	:param L:
+	:type L: TopOpeBRep_LineInter &
+	:rtype: None
+") VP_Position;
 		void VP_Position (TopOpeBRep_LineInter & L);
-		%feature("autodoc", "Args:
-	L(TopOpeBRep_LineInter)
+		%feature("autodoc", "	* compute position of VPoints of non-restriction line L.
 
-Returns:
-	None
-
-compute position of VPoints of non-restriction line L.") VP_PositionOnL;
+	:param L:
+	:type L: TopOpeBRep_LineInter &
+	:rtype: None
+") VP_PositionOnL;
 		void VP_PositionOnL (TopOpeBRep_LineInter & L);
-		%feature("autodoc", "Args:
-	L(TopOpeBRep_LineInter)
+		%feature("autodoc", "	* compute position of VPoints of restriction line L.
 
-Returns:
-	None
-
-compute position of VPoints of restriction line L.") VP_PositionOnR;
+	:param L:
+	:type L: TopOpeBRep_LineInter &
+	:rtype: None
+") VP_PositionOnR;
 		void VP_PositionOnR (TopOpeBRep_LineInter & L);
-		%feature("autodoc", "Args:
-	VP(TopOpeBRep_VPointInter)
-	VPC(TopOpeBRep_VPointInterClassifier)
+		%feature("autodoc", "	* compute position of VP with current faces, according to VP.ShapeIndex() .
 
-Returns:
-	None
-
-compute position of VP with current faces,  
-         according to VP.ShapeIndex() .") VP_Position;
+	:param VP:
+	:type VP: TopOpeBRep_VPointInter &
+	:param VPC:
+	:type VPC: TopOpeBRep_VPointInterClassifier &
+	:rtype: None
+") VP_Position;
 		void VP_Position (TopOpeBRep_VPointInter & VP,TopOpeBRep_VPointInterClassifier & VPC);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Process current intersection line (set by LoadLine)
 
-Process current intersection line (set by LoadLine)") ProcessLine;
+	:rtype: None
+") ProcessLine;
 		void ProcessLine ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ResetDSC;
+		%feature("autodoc", "	:rtype: None
+") ResetDSC;
 		void ResetDSC ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Process current restriction line, adding restriction edge and computing face/edge interference.
 
-Process current restriction line, adding restriction edge  
-         and computing face/edge interference.") ProcessRLine;
+	:rtype: None
+") ProcessRLine;
 		void ProcessRLine ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* VP processing for restriction line and line sharing same domain with section edges :  - if restriction :  Adds restriction edges as section edges and compute face/edge interference.  - if same domain :  If line share same domain with section edges, compute parts of line IN/IN the two faces, and compute curve/point interference for VP boundaries.
 
-VP processing for restriction  line  and line sharing  
-          same domain with  section edges :  
-           - if restriction :  
-           Adds restriction edges as  section edges and compute  
-          face/edge  interference.  
-           - if  same domain :  
-           If line share same domain  with section edges, compute  
-          parts of line IN/IN the two faces, and compute curve/point  
-          interference for VP boundaries.") FillLineVPonR;
+	:rtype: None
+") FillLineVPonR;
 		void FillLineVPonR ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") FillLine;
+		%feature("autodoc", "	:rtype: None
+") FillLine;
 		void FillLine ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* compute 3d curve, pcurves and face/curve interferences for current NDSC. Add them to the DS.
 
-compute 3d curve, pcurves and face/curve interferences  
-         for current NDSC. Add them to the DS.") AddShapesLine;
+	:rtype: None
+") AddShapesLine;
 		void AddShapesLine ();
-		%feature("autodoc", "Args:
-	LES(TopTools_ListOfShape)
+		%feature("autodoc", "	* Get map <mapES > of restriction edges having parts IN one of the 2 faces.
 
-Returns:
-	None
-
-Get map <mapES > of restriction edges having parts IN one  
-         of the 2 faces.") GetESL;
+	:param LES:
+	:type LES: TopTools_ListOfShape &
+	:rtype: None
+") GetESL;
 		void GetESL (TopTools_ListOfShape & LES);
-		%feature("autodoc", "Args:
-	FF(TopOpeBRep_FacesFiller)
-	VP(TopOpeBRep_VPointInter)
+		%feature("autodoc", "	* calling the followings ProcessVPIonR and ProcessVPonR.
 
-Returns:
-	None
-
-calling the followings ProcessVPIonR and ProcessVPonR.") ProcessVPR;
+	:param FF:
+	:type FF: TopOpeBRep_FacesFiller &
+	:param VP:
+	:type VP: TopOpeBRep_VPointInter &
+	:rtype: None
+") ProcessVPR;
 		void ProcessVPR (TopOpeBRep_FacesFiller & FF,const TopOpeBRep_VPointInter & VP);
-		%feature("autodoc", "Args:
-	VPI(TopOpeBRep_VPointInterIterator)
-	trans1(TopOpeBRepDS_Transition)
-	F1(TopoDS_Shape)
-	ShapeIndex(Standard_Integer)
+		%feature("autodoc", "	* processing ProcessVPonR for VPI.
 
-Returns:
-	None
-
-processing ProcessVPonR for VPI.") ProcessVPIonR;
+	:param VPI:
+	:type VPI: TopOpeBRep_VPointInterIterator &
+	:param trans1:
+	:type trans1: TopOpeBRepDS_Transition &
+	:param F1:
+	:type F1: TopoDS_Shape &
+	:param ShapeIndex:
+	:type ShapeIndex: Standard_Integer
+	:rtype: None
+") ProcessVPIonR;
 		void ProcessVPIonR (TopOpeBRep_VPointInterIterator & VPI,const TopOpeBRepDS_Transition & trans1,const TopoDS_Shape & F1,const Standard_Integer ShapeIndex);
-		%feature("autodoc", "Args:
-	VP(TopOpeBRep_VPointInter)
-	trans1(TopOpeBRepDS_Transition)
-	F1(TopoDS_Shape)
-	ShapeIndex(Standard_Integer)
+		%feature("autodoc", "	* adds <VP>'s geometric point (if not stored) and computes (curve or edge)/(point or vertex) interference.
 
-Returns:
-	None
-
-adds <VP>'s   geometric   point (if not   stored)  and  
-         computes (curve or edge)/(point or vertex) interference.") ProcessVPonR;
+	:param VP:
+	:type VP: TopOpeBRep_VPointInter &
+	:param trans1:
+	:type trans1: TopOpeBRepDS_Transition &
+	:param F1:
+	:type F1: TopoDS_Shape &
+	:param ShapeIndex:
+	:type ShapeIndex: Standard_Integer
+	:rtype: None
+") ProcessVPonR;
 		void ProcessVPonR (const TopOpeBRep_VPointInter & VP,const TopOpeBRepDS_Transition & trans1,const TopoDS_Shape & F1,const Standard_Integer ShapeIndex);
-		%feature("autodoc", "Args:
-	VP(TopOpeBRep_VPointInter)
-	F1(TopoDS_Shape)
-	ShapeIndex(Standard_Integer)
-	transEdge(TopOpeBRepDS_Transition)
-	PVKind(TopOpeBRepDS_Kind)
-	PVIndex(Standard_Integer)
-	EPIfound(Standard_Boolean)
-	IEPI(Handle_TopOpeBRepDS_Interference)
+		%feature("autodoc", "	* VP processing on closing arc.
 
-Returns:
-	None
-
-VP processing on closing arc.") ProcessVPonclosingR;
+	:param VP:
+	:type VP: TopOpeBRep_VPointInter &
+	:param F1:
+	:type F1: TopoDS_Shape &
+	:param ShapeIndex:
+	:type ShapeIndex: Standard_Integer
+	:param transEdge:
+	:type transEdge: TopOpeBRepDS_Transition &
+	:param PVKind:
+	:type PVKind: TopOpeBRepDS_Kind
+	:param PVIndex:
+	:type PVIndex: Standard_Integer
+	:param EPIfound:
+	:type EPIfound: bool
+	:param IEPI:
+	:type IEPI: Handle_TopOpeBRepDS_Interference &
+	:rtype: None
+") ProcessVPonclosingR;
 		void ProcessVPonclosingR (const TopOpeBRep_VPointInter & VP,const TopoDS_Shape & F1,const Standard_Integer ShapeIndex,const TopOpeBRepDS_Transition & transEdge,const TopOpeBRepDS_Kind PVKind,const Standard_Integer PVIndex,const Standard_Boolean EPIfound,const Handle_TopOpeBRepDS_Interference & IEPI);
-		%feature("autodoc", "Args:
-	VP(TopOpeBRep_VPointInter)
-	ShapeIndex(Standard_Integer)
-	PVKind(TopOpeBRepDS_Kind)
-	PVIndex(Standard_Integer)
-	EPIfound(Standard_Boolean)
-	IEPI(Handle_TopOpeBRepDS_Interference)
-	CPIfound(Standard_Boolean)
-	ICPI(Handle_TopOpeBRepDS_Interference)
+		%feature("autodoc", "	* VP processing on degenerated arc.
 
-Returns:
-	Standard_Boolean
-
-VP processing on degenerated arc.") ProcessVPondgE;
+	:param VP:
+	:type VP: TopOpeBRep_VPointInter &
+	:param ShapeIndex:
+	:type ShapeIndex: Standard_Integer
+	:param PVKind:
+	:type PVKind: TopOpeBRepDS_Kind &
+	:param PVIndex:
+	:type PVIndex: Standard_Integer &
+	:param EPIfound:
+	:type EPIfound: bool
+	:param IEPI:
+	:type IEPI: Handle_TopOpeBRepDS_Interference &
+	:param CPIfound:
+	:type CPIfound: bool
+	:param ICPI:
+	:type ICPI: Handle_TopOpeBRepDS_Interference &
+	:rtype: bool
+") ProcessVPondgE;
 		Standard_Boolean ProcessVPondgE (const TopOpeBRep_VPointInter & VP,const Standard_Integer ShapeIndex,TopOpeBRepDS_Kind & PVKind,Standard_Integer &OutValue,Standard_Boolean & EPIfound,Handle_TopOpeBRepDS_Interference & IEPI,Standard_Boolean & CPIfound,Handle_TopOpeBRepDS_Interference & ICPI);
-		%feature("autodoc", "Args:
-	VPI(TopOpeBRep_VPointInterIterator)
+		%feature("autodoc", "	* processing ProcessVPnotonR for VPI.
 
-Returns:
-	None
-
-processing ProcessVPnotonR for VPI.") ProcessVPInotonR;
+	:param VPI:
+	:type VPI: TopOpeBRep_VPointInterIterator &
+	:rtype: None
+") ProcessVPInotonR;
 		void ProcessVPInotonR (TopOpeBRep_VPointInterIterator & VPI);
-		%feature("autodoc", "Args:
-	VP(TopOpeBRep_VPointInter)
+		%feature("autodoc", "	* adds <VP>'s geometrical point to the DS (if not stored) and computes curve point interference.
 
-Returns:
-	None
-
-adds <VP>'s  geometrical point to the DS (if not stored)  
-         and computes curve point interference.") ProcessVPnotonR;
+	:param VP:
+	:type VP: TopOpeBRep_VPointInter &
+	:rtype: None
+") ProcessVPnotonR;
 		void ProcessVPnotonR (const TopOpeBRep_VPointInter & VP);
-		%feature("autodoc", "Args:
-	IT(TopOpeBRepDS_ListIteratorOfListOfInterference)
-	VP(TopOpeBRep_VPointInter)
-	G(Standard_Integer)
-	K(TopOpeBRepDS_Kind)
+		%feature("autodoc", "	* Get the geometry of a DS point <DSP>. Search for it with ScanInterfList (previous method). if found, set <G> to the geometry of the interference found. else, add the point <DSP> in the <DS> and set <G> to the value of the new geometry such created. returns the value of ScanInterfList().
 
-Returns:
-	Standard_Boolean
-
-Get the geometry of a DS point <DSP>.  
-Search for it with ScanInterfList (previous method).  
-if found, set <G> to the geometry of the interference found.  
-else, add the point <DSP> in the <DS> and set <G> to the  
-value of the new geometry such created.  
-returns the value of ScanInterfList().") GetGeometry;
+	:param IT:
+	:type IT: TopOpeBRepDS_ListIteratorOfListOfInterference &
+	:param VP:
+	:type VP: TopOpeBRep_VPointInter &
+	:param G:
+	:type G: Standard_Integer &
+	:param K:
+	:type K: TopOpeBRepDS_Kind &
+	:rtype: bool
+") GetGeometry;
 		Standard_Boolean GetGeometry (TopOpeBRepDS_ListIteratorOfListOfInterference & IT,const TopOpeBRep_VPointInter & VP,Standard_Integer &OutValue,TopOpeBRepDS_Kind & K);
-		%feature("autodoc", "Args:
-	VP(TopOpeBRep_VPointInter)
-	ShapeIndex(Standard_Integer)
-	K(TopOpeBRepDS_Kind)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") MakeGeometry;
+		%feature("autodoc", "	:param VP:
+	:type VP: TopOpeBRep_VPointInter &
+	:param ShapeIndex:
+	:type ShapeIndex: Standard_Integer
+	:param K:
+	:type K: TopOpeBRepDS_Kind &
+	:rtype: int
+") MakeGeometry;
 		Standard_Integer MakeGeometry (const TopOpeBRep_VPointInter & VP,const Standard_Integer ShapeIndex,TopOpeBRepDS_Kind & K);
-		%feature("autodoc", "Args:
-	I(Handle_TopOpeBRepDS_Interference)
+		%feature("autodoc", "	* Add interference <I> to list myDSCIL. on a given line, at first call, add a new DS curve.
 
-Returns:
-	None
-
-Add interference <I> to list myDSCIL.  
-on a given line, at first call, add a new DS curve.") StoreCurveInterference;
+	:param I:
+	:type I: Handle_TopOpeBRepDS_Interference &
+	:rtype: None
+") StoreCurveInterference;
 		void StoreCurveInterference (const Handle_TopOpeBRepDS_Interference & I);
-		%feature("autodoc", "Args:
-	DSP(TopOpeBRepDS_Point)
-	K(TopOpeBRepDS_Kind)
-	G(Standard_Integer)
+		%feature("autodoc", "	* search for G = geometry of Point which is identical to <DSP> among the DS Points created in the CURRENT face/face intersection ( current Insert() call).
 
-Returns:
-	Standard_Boolean
-
-search for G = geometry of Point which is identical to <DSP>  
-         among the DS Points created in the CURRENT face/face  
-         intersection ( current Insert() call).") GetFFGeometry;
+	:param DSP:
+	:type DSP: TopOpeBRepDS_Point &
+	:param K:
+	:type K: TopOpeBRepDS_Kind &
+	:param G:
+	:type G: Standard_Integer &
+	:rtype: bool
+") GetFFGeometry;
 		Standard_Boolean GetFFGeometry (const TopOpeBRepDS_Point & DSP,TopOpeBRepDS_Kind & K,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	VP(TopOpeBRep_VPointInter)
-	K(TopOpeBRepDS_Kind)
-	G(Standard_Integer)
+		%feature("autodoc", "	* search for G = geometry of Point which is identical to <VP> among the DS Points created in the CURRENT face/face intersection ( current Insert() call).
 
-Returns:
-	Standard_Boolean
-
-search for G = geometry of Point which is identical to <VP>  
-         among the DS Points created in the CURRENT face/face  
-         intersection ( current Insert() call).") GetFFGeometry;
+	:param VP:
+	:type VP: TopOpeBRep_VPointInter &
+	:param K:
+	:type K: TopOpeBRepDS_Kind &
+	:param G:
+	:type G: Standard_Integer &
+	:rtype: bool
+") GetFFGeometry;
 		Standard_Boolean GetFFGeometry (const TopOpeBRep_VPointInter & VP,TopOpeBRepDS_Kind & K,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_FacesIntersector
-
-No detailed docstring for this function.") ChangeFacesIntersector;
+		%feature("autodoc", "	:rtype: TopOpeBRep_FacesIntersector
+") ChangeFacesIntersector;
 		TopOpeBRep_FacesIntersector & ChangeFacesIntersector ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TopOpeBRepDS_HDataStructure
-
-No detailed docstring for this function.") HDataStructure;
+		%feature("autodoc", "	:rtype: Handle_TopOpeBRepDS_HDataStructure
+") HDataStructure;
 		Handle_TopOpeBRepDS_HDataStructure HDataStructure ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRepDS_DataStructure
-
-No detailed docstring for this function.") ChangeDataStructure;
+		%feature("autodoc", "	:rtype: TopOpeBRepDS_DataStructure
+") ChangeDataStructure;
 		TopOpeBRepDS_DataStructure & ChangeDataStructure ();
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopoDS_Face
-
-No detailed docstring for this function.") Face;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopoDS_Face
+") Face;
 		const TopoDS_Face & Face (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	L(TopOpeBRep_LineInter)
-	I(Standard_Integer)
-
-Returns:
-	TopOpeBRepDS_Transition
-
-No detailed docstring for this function.") FaceFaceTransition;
+		%feature("autodoc", "	:param L:
+	:type L: TopOpeBRep_LineInter &
+	:param I:
+	:type I: Standard_Integer
+	:rtype: TopOpeBRepDS_Transition
+") FaceFaceTransition;
 		const TopOpeBRepDS_Transition & FaceFaceTransition (const TopOpeBRep_LineInter & L,const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopOpeBRepDS_Transition
-
-No detailed docstring for this function.") FaceFaceTransition;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopOpeBRepDS_Transition
+") FaceFaceTransition;
 		const TopOpeBRepDS_Transition & FaceFaceTransition (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_PFacesIntersector
-
-No detailed docstring for this function.") PFacesIntersectorDummy;
+		%feature("autodoc", "	:rtype: TopOpeBRep_PFacesIntersector
+") PFacesIntersectorDummy;
 		TopOpeBRep_PFacesIntersector PFacesIntersectorDummy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRepDS_PDataStructure
-
-No detailed docstring for this function.") PDataStructureDummy;
+		%feature("autodoc", "	:rtype: TopOpeBRepDS_PDataStructure
+") PDataStructureDummy;
 		TopOpeBRepDS_PDataStructure PDataStructureDummy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_PLineInter
-
-No detailed docstring for this function.") PLineInterDummy;
+		%feature("autodoc", "	:rtype: TopOpeBRep_PLineInter
+") PLineInterDummy;
 		TopOpeBRep_PLineInter PLineInterDummy ();
-		%feature("autodoc", "Args:
-	exF1(Standard_Integer)
-	exF2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetTraceIndex;
+		%feature("autodoc", "	:param exF1:
+	:type exF1: Standard_Integer
+	:param exF2:
+	:type exF2: Standard_Integer
+	:rtype: None
+") SetTraceIndex;
 		void SetTraceIndex (const Standard_Integer exF1,const Standard_Integer exF2);
-		%feature("autodoc", "Args:
-	exF1(Standard_Integer)
-	exF2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GetTraceIndex;
+		%feature("autodoc", "	:param exF1:
+	:type exF1: Standard_Integer &
+	:param exF2:
+	:type exF2: Standard_Integer &
+	:rtype: None
+") GetTraceIndex;
 		void GetTraceIndex (Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	L(TopOpeBRep_LineInter)
-	pmin(Standard_Real)
-	pmax(Standard_Real)
+		%feature("autodoc", "	* Computes <pmin> and <pmax> the upper and lower bounds of <L> enclosing all vpoints.
 
-Returns:
-	static void
-
-Computes <pmin> and <pmax> the upper and lower bounds of <L>  
-         enclosing all vpoints.") Lminmax;
+	:param L:
+	:type L: TopOpeBRep_LineInter &
+	:param pmin:
+	:type pmin: float &
+	:param pmax:
+	:type pmax: float &
+	:rtype: void
+") Lminmax;
 		static void Lminmax (const TopOpeBRep_LineInter & L,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	L(TopOpeBRep_LineInter)
-	ERL(TopTools_ListOfShape)
+		%feature("autodoc", "	* Returns <True> if <L> shares a same geometric domain with at least one of the section edges of <ERL>.
 
-Returns:
-	static Standard_Boolean
-
-Returns <True> if <L> shares a same geometric domain with  
-         at least one of the section edges of <ERL>.") LSameDomainERL;
+	:param L:
+	:type L: TopOpeBRep_LineInter &
+	:param ERL:
+	:type ERL: TopTools_ListOfShape &
+	:rtype: bool
+") LSameDomainERL;
 		static Standard_Boolean LSameDomainERL (const TopOpeBRep_LineInter & L,const TopTools_ListOfShape & ERL);
-		%feature("autodoc", "Args:
-	L(TopOpeBRep_LineInter)
-	iVP(Standard_Integer)
-	SI12(Standard_Integer)
-	T(TopOpeBRepDS_Transition)
+		%feature("autodoc", "	* Computes the transition <T> of the VPoint <iVP> on the edge of <SI12>. Returns <False> if the status is unknown.
 
-Returns:
-	static Standard_Boolean
-
-Computes the transition <T> of the VPoint <iVP> on the edge  
-         of <SI12>. Returns <False> if the status is unknown.") IsVPtransLok;
+	:param L:
+	:type L: TopOpeBRep_LineInter &
+	:param iVP:
+	:type iVP: Standard_Integer
+	:param SI12:
+	:type SI12: Standard_Integer
+	:param T:
+	:type T: TopOpeBRepDS_Transition &
+	:rtype: bool
+") IsVPtransLok;
 		static Standard_Boolean IsVPtransLok (const TopOpeBRep_LineInter & L,const Standard_Integer iVP,const Standard_Integer SI12,TopOpeBRepDS_Transition & T);
-		%feature("autodoc", "Args:
-	L(TopOpeBRep_LineInter)
-	iVP(Standard_Integer)
-	SI(Standard_Integer)
-	isINOUT(Standard_Boolean)
+		%feature("autodoc", "	* Computes transition on line for VP<iVP> on edge restriction of <SI>. If <isINOUT> : returns <true> if transition computed is IN/OUT else : returns <true> if transition computed is OUT/IN.
 
-Returns:
-	static Standard_Boolean
-
-Computes   transition   on line for  VP<iVP>   on edge  
-         restriction of <SI>.  If <isINOUT>  :  returns <true> if  
-         transition computed is IN/OUT else : returns <true> if  
-         transition computed is OUT/IN.") TransvpOK;
+	:param L:
+	:type L: TopOpeBRep_LineInter &
+	:param iVP:
+	:type iVP: Standard_Integer
+	:param SI:
+	:type SI: Standard_Integer
+	:param isINOUT:
+	:type isINOUT: bool
+	:rtype: bool
+") TransvpOK;
 		static Standard_Boolean TransvpOK (const TopOpeBRep_LineInter & L,const Standard_Integer iVP,const Standard_Integer SI,const Standard_Boolean isINOUT);
-		%feature("autodoc", "Args:
-	vp(TopOpeBRep_VPointInter)
-	Lrest(TopOpeBRep_LineInter)
+		%feature("autodoc", "	* Returns parameter u of vp on the restriction edge.
 
-Returns:
-	static Standard_Real
-
-Returns parameter u of vp on the restriction edge.") VPParamOnER;
+	:param vp:
+	:type vp: TopOpeBRep_VPointInter &
+	:param Lrest:
+	:type Lrest: TopOpeBRep_LineInter &
+	:rtype: float
+") VPParamOnER;
 		static Standard_Real VPParamOnER (const TopOpeBRep_VPointInter & vp,const TopOpeBRep_LineInter & Lrest);
-		%feature("autodoc", "Args:
-	Lrest(TopOpeBRep_LineInter)
-	VP1(TopOpeBRep_VPointInter)
-	VP2(TopOpeBRep_VPointInter)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") EqualpPonR;
+		%feature("autodoc", "	:param Lrest:
+	:type Lrest: TopOpeBRep_LineInter &
+	:param VP1:
+	:type VP1: TopOpeBRep_VPointInter &
+	:param VP2:
+	:type VP2: TopOpeBRep_VPointInter &
+	:rtype: bool
+") EqualpPonR;
 		static Standard_Boolean EqualpPonR (const TopOpeBRep_LineInter & Lrest,const TopOpeBRep_VPointInter & VP1,const TopOpeBRep_VPointInter & VP2);
 };
 
@@ -2089,171 +1597,112 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_FacesIntersector;
 class TopOpeBRep_FacesIntersector {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_FacesIntersector;
+		%feature("autodoc", "	:rtype: None
+") TopOpeBRep_FacesIntersector;
 		 TopOpeBRep_FacesIntersector ();
-		%feature("autodoc", "Args:
-	S1(TopoDS_Shape)
-	S2(TopoDS_Shape)
+		%feature("autodoc", "	* Computes the intersection of faces S1 and S2.
 
-Returns:
-	None
-
-Computes the intersection of faces S1 and S2.") Perform;
+	:param S1:
+	:type S1: TopoDS_Shape &
+	:param S2:
+	:type S2: TopoDS_Shape &
+	:rtype: None
+") Perform;
 		void Perform (const TopoDS_Shape & S1,const TopoDS_Shape & S2);
-		%feature("autodoc", "Args:
-	S1(TopoDS_Shape)
-	S2(TopoDS_Shape)
-	B1(Bnd_Box)
-	B2(Bnd_Box)
+		%feature("autodoc", "	* Computes the intersection of faces S1 and S2.
 
-Returns:
-	None
-
-Computes the intersection of faces S1 and S2.") Perform;
+	:param S1:
+	:type S1: TopoDS_Shape &
+	:param S2:
+	:type S2: TopoDS_Shape &
+	:param B1:
+	:type B1: Bnd_Box &
+	:param B2:
+	:type B2: Bnd_Box &
+	:rtype: None
+") Perform;
 		void Perform (const TopoDS_Shape & S1,const TopoDS_Shape & S2,const Bnd_Box & B1,const Bnd_Box & B2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if Perform() arguments are two faces with the same surface.
 
-Returns True if Perform() arguments are two faces with the  
-         same surface.") SameDomain;
+	:rtype: bool
+") SameDomain;
 		Standard_Boolean SameDomain ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* returns first or second intersected face.
 
-Returns:
-	TopoDS_Shape
-
-returns first or second intersected face.") Face;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopoDS_Shape
+") Face;
 		const TopoDS_Shape & Face (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if Perform() arguments are two faces SameDomain() and normals on both side. Raise if SameDomain is False
 
-Returns True if Perform() arguments are two faces  
-         SameDomain() and normals on both side.  
-         Raise if SameDomain is False") SurfacesSameOriented;
+	:rtype: bool
+") SurfacesSameOriented;
 		Standard_Boolean SurfacesSameOriented ();
-		%feature("autodoc", "Args:
-	E(TopoDS_Shape)
+		%feature("autodoc", "	* returns true if edge <E> is found as same as the edge associated with a RESTRICTION line.
 
-Returns:
-	Standard_Boolean
-
-returns true if edge <E> is found as same as the edge  
-         associated with a RESTRICTION line.") IsRestriction;
+	:param E:
+	:type E: TopoDS_Shape &
+	:rtype: bool
+") IsRestriction;
 		Standard_Boolean IsRestriction (const TopoDS_Shape & E);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_IndexedMapOfShape
+		%feature("autodoc", "	* returns the map of edges found as TopeBRepBRep_RESTRICTION
 
-returns the map of edges found as TopeBRepBRep_RESTRICTION") Restrictions;
+	:rtype: TopTools_IndexedMapOfShape
+") Restrictions;
 		const TopTools_IndexedMapOfShape & Restrictions ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") PrepareLines;
+		%feature("autodoc", "	:rtype: None
+") PrepareLines;
 		void PrepareLines ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TopOpeBRep_HArray1OfLineInter
-
-No detailed docstring for this function.") Lines;
+		%feature("autodoc", "	:rtype: Handle_TopOpeBRep_HArray1OfLineInter
+") Lines;
 		Handle_TopOpeBRep_HArray1OfLineInter Lines ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbLines;
+		%feature("autodoc", "	:rtype: int
+") NbLines;
 		Standard_Integer NbLines ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") InitLine;
+		%feature("autodoc", "	:rtype: None
+") InitLine;
 		void InitLine ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") MoreLine;
+		%feature("autodoc", "	:rtype: bool
+") MoreLine;
 		Standard_Boolean MoreLine ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") NextLine;
+		%feature("autodoc", "	:rtype: None
+") NextLine;
 		void NextLine ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_LineInter
-
-No detailed docstring for this function.") CurrentLine;
+		%feature("autodoc", "	:rtype: TopOpeBRep_LineInter
+") CurrentLine;
 		TopOpeBRep_LineInter & CurrentLine ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") CurrentLineIndex;
+		%feature("autodoc", "	:rtype: int
+") CurrentLineIndex;
 		Standard_Integer CurrentLineIndex ();
-		%feature("autodoc", "Args:
-	IL(Standard_Integer)
-
-Returns:
-	TopOpeBRep_LineInter
-
-No detailed docstring for this function.") ChangeLine;
+		%feature("autodoc", "	:param IL:
+	:type IL: Standard_Integer
+	:rtype: TopOpeBRep_LineInter
+") ChangeLine;
 		TopOpeBRep_LineInter & ChangeLine (const Standard_Integer IL);
-		%feature("autodoc", "Args:
-	tolarc(Standard_Real)
-	toltang(Standard_Real)
+		%feature("autodoc", "	* Force the tolerance values used by the next Perform(S1,S2) call.
 
-Returns:
-	None
-
-Force the tolerance values used by the next Perform(S1,S2) call.") ForceTolerances;
+	:param tolarc:
+	:type tolarc: float
+	:param toltang:
+	:type toltang: float
+	:rtype: None
+") ForceTolerances;
 		void ForceTolerances (const Standard_Real tolarc,const Standard_Real toltang);
-		%feature("autodoc", "Args:
-	tolarc(Standard_Real)
-	toltang(Standard_Real)
+		%feature("autodoc", "	* Return the tolerance values used in the last Perform() call If ForceTolerances() has been called, return the given values. If not, return values extracted from shapes.
 
-Returns:
-	None
-
-Return the tolerance values used in the last Perform() call  
-If ForceTolerances() has been called, return the given values.  
-If not, return values extracted from shapes.") GetTolerances;
+	:param tolarc:
+	:type tolarc: float &
+	:param toltang:
+	:type toltang: float &
+	:rtype: None
+") GetTolerances;
 		void GetTolerances (Standard_Real &OutValue,Standard_Real &OutValue);
 };
 
@@ -2275,49 +1724,49 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_GeomTool;
 class TopOpeBRep_GeomTool {
 	public:
-		%feature("autodoc", "Args:
-	min(Standard_Real)
-	max(Standard_Real)
-	L(TopOpeBRep_LineInter)
-	S1(TopoDS_Shape)
-	S2(TopoDS_Shape)
-	C(TopOpeBRepDS_Curve)
-	PC1(Handle_Geom2d_Curve)
-	PC2(Handle_Geom2d_Curve)
+		%feature("autodoc", "	* Make the DS curve <C> and the pcurves <PC1,PC2> from intersection line <L> lying on shapes <S1,S2>. <min,max> = <L> bounds
 
-Returns:
-	static void
-
-Make the  DS curve <C> and the pcurves <PC1,PC2> from  
-intersection line <L> lying on shapes <S1,S2>. <min,max> = <L> bounds") MakeCurves;
+	:param min:
+	:type min: float
+	:param max:
+	:type max: float
+	:param L:
+	:type L: TopOpeBRep_LineInter &
+	:param S1:
+	:type S1: TopoDS_Shape &
+	:param S2:
+	:type S2: TopoDS_Shape &
+	:param C:
+	:type C: TopOpeBRepDS_Curve &
+	:param PC1:
+	:type PC1: Handle_Geom2d_Curve &
+	:param PC2:
+	:type PC2: Handle_Geom2d_Curve &
+	:rtype: void
+") MakeCurves;
 		static void MakeCurves (const Standard_Real min,const Standard_Real max,const TopOpeBRep_LineInter & L,const TopoDS_Shape & S1,const TopoDS_Shape & S2,TopOpeBRepDS_Curve & C,Handle_Geom2d_Curve & PC1,Handle_Geom2d_Curve & PC2);
-		%feature("autodoc", "Args:
-	min(Standard_Real)
-	max(Standard_Real)
-	L(TopOpeBRep_LineInter)
-	C(Handle_Geom_Curve)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") MakeCurve;
+		%feature("autodoc", "	:param min:
+	:type min: float
+	:param max:
+	:type max: float
+	:param L:
+	:type L: TopOpeBRep_LineInter &
+	:param C:
+	:type C: Handle_Geom_Curve &
+	:rtype: void
+") MakeCurve;
 		static void MakeCurve (const Standard_Real min,const Standard_Real max,const TopOpeBRep_LineInter & L,Handle_Geom_Curve & C);
-		%feature("autodoc", "Args:
-	L(TopOpeBRep_LineInter)
-
-Returns:
-	static Handle_Geom_Curve
-
-No detailed docstring for this function.") MakeBSpline1fromWALKING3d;
+		%feature("autodoc", "	:param L:
+	:type L: TopOpeBRep_LineInter &
+	:rtype: Handle_Geom_Curve
+") MakeBSpline1fromWALKING3d;
 		static Handle_Geom_Curve MakeBSpline1fromWALKING3d (const TopOpeBRep_LineInter & L);
-		%feature("autodoc", "Args:
-	L(TopOpeBRep_LineInter)
-	SI(Standard_Integer)
-
-Returns:
-	static Handle_Geom2d_Curve
-
-No detailed docstring for this function.") MakeBSpline1fromWALKING2d;
+		%feature("autodoc", "	:param L:
+	:type L: TopOpeBRep_LineInter &
+	:param SI:
+	:type SI: Standard_Integer
+	:rtype: Handle_Geom2d_Curve
+") MakeBSpline1fromWALKING2d;
 		static Handle_Geom2d_Curve MakeBSpline1fromWALKING2d (const TopOpeBRep_LineInter & L,const Standard_Integer SI);
 };
 
@@ -2339,92 +1788,58 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_HArray1OfLineInter;
 class TopOpeBRep_HArray1OfLineInter : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_HArray1OfLineInter;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TopOpeBRep_HArray1OfLineInter;
 		 TopOpeBRep_HArray1OfLineInter (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(TopOpeBRep_LineInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_HArray1OfLineInter;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: TopOpeBRep_LineInter &
+	:rtype: None
+") TopOpeBRep_HArray1OfLineInter;
 		 TopOpeBRep_HArray1OfLineInter (const Standard_Integer Low,const Standard_Integer Up,const TopOpeBRep_LineInter & V);
-		%feature("autodoc", "Args:
-	V(TopOpeBRep_LineInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: TopOpeBRep_LineInter &
+	:rtype: None
+") Init;
 		void Init (const TopOpeBRep_LineInter & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(TopOpeBRep_LineInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: TopOpeBRep_LineInter &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const TopOpeBRep_LineInter & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TopOpeBRep_LineInter
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopOpeBRep_LineInter
+") Value;
 		const TopOpeBRep_LineInter & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TopOpeBRep_LineInter
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopOpeBRep_LineInter
+") ChangeValue;
 		TopOpeBRep_LineInter & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_Array1OfLineInter
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: TopOpeBRep_Array1OfLineInter
+") Array1;
 		const TopOpeBRep_Array1OfLineInter & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_Array1OfLineInter
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: TopOpeBRep_Array1OfLineInter
+") ChangeArray1;
 		TopOpeBRep_Array1OfLineInter & ChangeArray1 ();
 };
 
@@ -2485,92 +1900,58 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_HArray1OfVPointInter;
 class TopOpeBRep_HArray1OfVPointInter : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_HArray1OfVPointInter;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TopOpeBRep_HArray1OfVPointInter;
 		 TopOpeBRep_HArray1OfVPointInter (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(TopOpeBRep_VPointInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_HArray1OfVPointInter;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: TopOpeBRep_VPointInter &
+	:rtype: None
+") TopOpeBRep_HArray1OfVPointInter;
 		 TopOpeBRep_HArray1OfVPointInter (const Standard_Integer Low,const Standard_Integer Up,const TopOpeBRep_VPointInter & V);
-		%feature("autodoc", "Args:
-	V(TopOpeBRep_VPointInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: TopOpeBRep_VPointInter &
+	:rtype: None
+") Init;
 		void Init (const TopOpeBRep_VPointInter & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(TopOpeBRep_VPointInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: TopOpeBRep_VPointInter &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const TopOpeBRep_VPointInter & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TopOpeBRep_VPointInter
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopOpeBRep_VPointInter
+") Value;
 		const TopOpeBRep_VPointInter & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TopOpeBRep_VPointInter
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopOpeBRep_VPointInter
+") ChangeValue;
 		TopOpeBRep_VPointInter & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_Array1OfVPointInter
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: TopOpeBRep_Array1OfVPointInter
+") Array1;
 		const TopOpeBRep_Array1OfVPointInter & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_Array1OfVPointInter
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: TopOpeBRep_Array1OfVPointInter
+") ChangeArray1;
 		TopOpeBRep_Array1OfVPointInter & ChangeArray1 ();
 };
 
@@ -2631,47 +2012,34 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_Hctxee2d;
 class TopOpeBRep_Hctxee2d : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_Hctxee2d;
+		%feature("autodoc", "	:rtype: None
+") TopOpeBRep_Hctxee2d;
 		 TopOpeBRep_Hctxee2d ();
-		%feature("autodoc", "Args:
-	E1(TopoDS_Edge)
-	E2(TopoDS_Edge)
-	BAS1(BRepAdaptor_Surface)
-	BAS2(BRepAdaptor_Surface)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetEdges;
+		%feature("autodoc", "	:param E1:
+	:type E1: TopoDS_Edge &
+	:param E2:
+	:type E2: TopoDS_Edge &
+	:param BAS1:
+	:type BAS1: BRepAdaptor_Surface &
+	:param BAS2:
+	:type BAS2: BRepAdaptor_Surface &
+	:rtype: None
+") SetEdges;
 		void SetEdges (const TopoDS_Edge & E1,const TopoDS_Edge & E2,const BRepAdaptor_Surface & BAS1,const BRepAdaptor_Surface & BAS2);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Edge;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopoDS_Shape
+") Edge;
 		const TopoDS_Shape & Edge (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Geom2dAdaptor_Curve
-
-No detailed docstring for this function.") Curve;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: Geom2dAdaptor_Curve
+") Curve;
 		const Geom2dAdaptor_Curve & Curve (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	IntRes2d_Domain
-
-No detailed docstring for this function.") Domain;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: IntRes2d_Domain
+") Domain;
 		const IntRes2d_Domain & Domain (const Standard_Integer I);
 };
 
@@ -2732,93 +2100,60 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_Hctxff2d;
 class TopOpeBRep_Hctxff2d : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_Hctxff2d;
+		%feature("autodoc", "	:rtype: None
+") TopOpeBRep_Hctxff2d;
 		 TopOpeBRep_Hctxff2d ();
-		%feature("autodoc", "Args:
-	F1(TopoDS_Face)
-	F2(TopoDS_Face)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetFaces;
+		%feature("autodoc", "	:param F1:
+	:type F1: TopoDS_Face &
+	:param F2:
+	:type F2: TopoDS_Face &
+	:rtype: None
+") SetFaces;
 		void SetFaces (const TopoDS_Face & F1,const TopoDS_Face & F2);
-		%feature("autodoc", "Args:
-	S1(Handle_BRepAdaptor_HSurface)
-	S2(Handle_BRepAdaptor_HSurface)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetHSurfaces;
+		%feature("autodoc", "	:param S1:
+	:type S1: Handle_BRepAdaptor_HSurface &
+	:param S2:
+	:type S2: Handle_BRepAdaptor_HSurface &
+	:rtype: None
+") SetHSurfaces;
 		void SetHSurfaces (const Handle_BRepAdaptor_HSurface & S1,const Handle_BRepAdaptor_HSurface & S2);
-		%feature("autodoc", "Args:
-	Tol1(Standard_Real)
-	Tol2(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetTolerances;
+		%feature("autodoc", "	:param Tol1:
+	:type Tol1: float
+	:param Tol2:
+	:type Tol2: float
+	:rtype: None
+") SetTolerances;
 		void SetTolerances (const Standard_Real Tol1,const Standard_Real Tol2);
-		%feature("autodoc", "Args:
-	Tol1(Standard_Real)
-	Tol2(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GetTolerances;
+		%feature("autodoc", "	:param Tol1:
+	:type Tol1: float &
+	:param Tol2:
+	:type Tol2: float &
+	:rtype: None
+") GetTolerances;
 		void GetTolerances (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") GetMaxTolerance;
+		%feature("autodoc", "	:rtype: float
+") GetMaxTolerance;
 		Standard_Real GetMaxTolerance ();
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopoDS_Face
-
-No detailed docstring for this function.") Face;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopoDS_Face
+") Face;
 		const TopoDS_Face & Face (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Handle_BRepAdaptor_HSurface
-
-No detailed docstring for this function.") HSurface;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: Handle_BRepAdaptor_HSurface
+") HSurface;
 		Handle_BRepAdaptor_HSurface HSurface (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") SurfacesSameOriented;
+		%feature("autodoc", "	:rtype: bool
+") SurfacesSameOriented;
 		Standard_Boolean SurfacesSameOriented ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") FacesSameOriented;
+		%feature("autodoc", "	:rtype: bool
+") FacesSameOriented;
 		Standard_Boolean FacesSameOriented ();
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") FaceSameOrientedWithRef;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: bool
+") FaceSameOrientedWithRef;
 		Standard_Boolean FaceSameOrientedWithRef (const Standard_Integer I);
 };
 
@@ -2879,350 +2214,202 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_LineInter;
 class TopOpeBRep_LineInter {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_LineInter;
+		%feature("autodoc", "	:rtype: None
+") TopOpeBRep_LineInter;
 		 TopOpeBRep_LineInter ();
-		%feature("autodoc", "Args:
-	L(Handle_IntPatch_Line)
-	S1(BRepAdaptor_Surface)
-	S2(BRepAdaptor_Surface)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetLine;
+		%feature("autodoc", "	:param L:
+	:type L: Handle_IntPatch_Line &
+	:param S1:
+	:type S1: BRepAdaptor_Surface &
+	:param S2:
+	:type S2: BRepAdaptor_Surface &
+	:rtype: None
+") SetLine;
 		void SetLine (const Handle_IntPatch_Line & L,const BRepAdaptor_Surface & S1,const BRepAdaptor_Surface & S2);
-		%feature("autodoc", "Args:
-	F1(TopoDS_Face)
-	F2(TopoDS_Face)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetFaces;
+		%feature("autodoc", "	:param F1:
+	:type F1: TopoDS_Face &
+	:param F2:
+	:type F2: TopoDS_Face &
+	:rtype: None
+") SetFaces;
 		void SetFaces (const TopoDS_Face & F1,const TopoDS_Face & F2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_TypeLineCurve
-
-No detailed docstring for this function.") TypeLineCurve;
+		%feature("autodoc", "	:rtype: TopOpeBRep_TypeLineCurve
+") TypeLineCurve;
 		TopOpeBRep_TypeLineCurve TypeLineCurve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbVPoint;
+		%feature("autodoc", "	:rtype: int
+") NbVPoint;
 		Standard_Integer NbVPoint ();
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopOpeBRep_VPointInter
-
-No detailed docstring for this function.") VPoint;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopOpeBRep_VPointInter
+") VPoint;
 		const TopOpeBRep_VPointInter & VPoint (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopOpeBRep_VPointInter
-
-No detailed docstring for this function.") ChangeVPoint;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopOpeBRep_VPointInter
+") ChangeVPoint;
 		TopOpeBRep_VPointInter & ChangeVPoint (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") SetINL;
+		%feature("autodoc", "	:rtype: None
+") SetINL;
 		void SetINL ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") INL;
+		%feature("autodoc", "	:rtype: bool
+") INL;
 		Standard_Boolean INL ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") SetIsVClosed;
+		%feature("autodoc", "	:rtype: None
+") SetIsVClosed;
 		void SetIsVClosed ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsVClosed;
+		%feature("autodoc", "	:rtype: bool
+") IsVClosed;
 		Standard_Boolean IsVClosed ();
-		%feature("autodoc", "Args:
-	B(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetOK;
+		%feature("autodoc", "	:param B:
+	:type B: bool
+	:rtype: None
+") SetOK;
 		void SetOK (const Standard_Boolean B);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") OK;
+		%feature("autodoc", "	:rtype: bool
+") OK;
 		Standard_Boolean OK ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") SetHasVPonR;
+		%feature("autodoc", "	:rtype: None
+") SetHasVPonR;
 		void SetHasVPonR ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasVPonR;
+		%feature("autodoc", "	:rtype: bool
+") HasVPonR;
 		Standard_Boolean HasVPonR ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") SetVPBounds;
+		%feature("autodoc", "	:rtype: None
+") SetVPBounds;
 		void SetVPBounds ();
-		%feature("autodoc", "Args:
-	f(Standard_Integer)
-	l(Standard_Integer)
-	n(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") VPBounds;
+		%feature("autodoc", "	:param f:
+	:type f: Standard_Integer &
+	:param l:
+	:type l: Standard_Integer &
+	:param n:
+	:type n: Standard_Integer &
+	:rtype: None
+") VPBounds;
 		void VPBounds (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsPeriodic;
+		%feature("autodoc", "	:rtype: bool
+") IsPeriodic;
 		Standard_Boolean IsPeriodic ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Period;
+		%feature("autodoc", "	:rtype: float
+") Period;
 		Standard_Real Period ();
-		%feature("autodoc", "Args:
-	f(Standard_Real)
-	l(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Bounds;
+		%feature("autodoc", "	:param f:
+	:type f: float &
+	:param l:
+	:type l: float &
+	:rtype: None
+") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasVInternal;
+		%feature("autodoc", "	:rtype: bool
+") HasVInternal;
 		Standard_Boolean HasVInternal ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbWPoint;
+		%feature("autodoc", "	:rtype: int
+") NbWPoint;
 		Standard_Integer NbWPoint ();
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopOpeBRep_WPointInter
-
-No detailed docstring for this function.") WPoint;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopOpeBRep_WPointInter
+") WPoint;
 		const TopOpeBRep_WPointInter & WPoint (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntSurf_TypeTrans
-
-No detailed docstring for this function.") TransitionOnS1;
+		%feature("autodoc", "	:rtype: IntSurf_TypeTrans
+") TransitionOnS1;
 		IntSurf_TypeTrans TransitionOnS1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntSurf_TypeTrans
-
-No detailed docstring for this function.") TransitionOnS2;
+		%feature("autodoc", "	:rtype: IntSurf_TypeTrans
+") TransitionOnS2;
 		IntSurf_TypeTrans TransitionOnS2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntSurf_Situation
-
-No detailed docstring for this function.") SituationS1;
+		%feature("autodoc", "	:rtype: IntSurf_Situation
+") SituationS1;
 		IntSurf_Situation SituationS1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntSurf_Situation
-
-No detailed docstring for this function.") SituationS2;
+		%feature("autodoc", "	:rtype: IntSurf_Situation
+") SituationS2;
 		IntSurf_Situation SituationS2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_Curve
-
-No detailed docstring for this function.") Curve;
+		%feature("autodoc", "	:rtype: Handle_Geom_Curve
+") Curve;
 		Handle_Geom_Curve Curve ();
-		%feature("autodoc", "Args:
-	parmin(Standard_Real)
-	parmax(Standard_Real)
-
-Returns:
-	Handle_Geom_Curve
-
-No detailed docstring for this function.") Curve;
+		%feature("autodoc", "	:param parmin:
+	:type parmin: float
+	:param parmax:
+	:type parmax: float
+	:rtype: Handle_Geom_Curve
+") Curve;
 		Handle_Geom_Curve Curve (const Standard_Real parmin,const Standard_Real parmax);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* returns the edge of a RESTRICTION line (or a null edge).
 
-returns the edge of a RESTRICTION line (or a null edge).") Arc;
+	:rtype: TopoDS_Shape
+") Arc;
 		const TopoDS_Shape & Arc ();
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* returns true if Arc() edge (of a RESTRICTION line) is an edge of the original face <Index> (1 or 2).
 
-Returns:
-	Standard_Boolean
-
-returns true if Arc() edge (of a RESTRICTION line) is  
-         an edge of the original face <Index> (1 or 2).") ArcIsEdge;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: bool
+") ArcIsEdge;
 		Standard_Boolean ArcIsEdge (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_IntPatch_WLine
-
-No detailed docstring for this function.") LineW;
+		%feature("autodoc", "	:rtype: Handle_IntPatch_WLine
+") LineW;
 		const Handle_IntPatch_WLine & LineW ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_IntPatch_GLine
-
-No detailed docstring for this function.") LineG;
+		%feature("autodoc", "	:rtype: Handle_IntPatch_GLine
+") LineG;
 		const Handle_IntPatch_GLine & LineG ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_IntPatch_RLine
-
-No detailed docstring for this function.") LineR;
+		%feature("autodoc", "	:rtype: Handle_IntPatch_RLine
+") LineR;
 		const Handle_IntPatch_RLine & LineR ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasFirstPoint;
+		%feature("autodoc", "	:rtype: bool
+") HasFirstPoint;
 		Standard_Boolean HasFirstPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasLastPoint;
+		%feature("autodoc", "	:rtype: bool
+") HasLastPoint;
 		Standard_Boolean HasLastPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ComputeFaceFaceTransition;
+		%feature("autodoc", "	:rtype: None
+") ComputeFaceFaceTransition;
 		void ComputeFaceFaceTransition ();
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopOpeBRepDS_Transition
-
-No detailed docstring for this function.") FaceFaceTransition;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopOpeBRepDS_Transition
+") FaceFaceTransition;
 		const TopOpeBRepDS_Transition & FaceFaceTransition (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Index;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: None
+") Index;
 		void Index (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Index;
+		%feature("autodoc", "	:rtype: int
+") Index;
 		Standard_Integer Index ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") DumpType;
+		%feature("autodoc", "	:rtype: None
+") DumpType;
 		void DumpType ();
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	s1(TCollection_AsciiString)
-	s2(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") DumpVPoint;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param s1:
+	:type s1: TCollection_AsciiString &
+	:param s2:
+	:type s2: TCollection_AsciiString &
+	:rtype: None
+") DumpVPoint;
 		void DumpVPoint (const Standard_Integer I,const TCollection_AsciiString & s1,const TCollection_AsciiString & s2);
-		%feature("autodoc", "Args:
-	B(TopOpeBRep_Bipoint)
-	s1(TCollection_AsciiString)
-	s2(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") DumpBipoint;
+		%feature("autodoc", "	:param B:
+	:type B: TopOpeBRep_Bipoint &
+	:param s1:
+	:type s1: TCollection_AsciiString &
+	:param s2:
+	:type s2: TCollection_AsciiString &
+	:rtype: None
+") DumpBipoint;
 		void DumpBipoint (const TopOpeBRep_Bipoint & B,const TCollection_AsciiString & s1,const TCollection_AsciiString & s2);
-		%feature("autodoc", "Args:
-	exF1(Standard_Integer)
-	exF2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetTraceIndex;
+		%feature("autodoc", "	:param exF1:
+	:type exF1: Standard_Integer
+	:param exF2:
+	:type exF2: Standard_Integer
+	:rtype: None
+") SetTraceIndex;
 		void SetTraceIndex (const Standard_Integer exF1,const Standard_Integer exF2);
-		%feature("autodoc", "Args:
-	exF1(Standard_Integer)
-	exF2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GetTraceIndex;
+		%feature("autodoc", "	:param exF1:
+	:type exF1: Standard_Integer &
+	:param exF2:
+	:type exF2: Standard_Integer &
+	:rtype: None
+") GetTraceIndex;
 		void GetTraceIndex (Standard_Integer &OutValue,Standard_Integer &OutValue);
 
         %feature("autodoc", "1");
@@ -3252,49 +2439,27 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_ListIteratorOfListOfBipoint;
 class TopOpeBRep_ListIteratorOfListOfBipoint {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_ListIteratorOfListOfBipoint;
+		%feature("autodoc", "	:rtype: None
+") TopOpeBRep_ListIteratorOfListOfBipoint;
 		 TopOpeBRep_ListIteratorOfListOfBipoint ();
-		%feature("autodoc", "Args:
-	L(TopOpeBRep_ListOfBipoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_ListIteratorOfListOfBipoint;
+		%feature("autodoc", "	:param L:
+	:type L: TopOpeBRep_ListOfBipoint &
+	:rtype: None
+") TopOpeBRep_ListIteratorOfListOfBipoint;
 		 TopOpeBRep_ListIteratorOfListOfBipoint (const TopOpeBRep_ListOfBipoint & L);
-		%feature("autodoc", "Args:
-	L(TopOpeBRep_ListOfBipoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: TopOpeBRep_ListOfBipoint &
+	:rtype: None
+") Initialize;
 		void Initialize (const TopOpeBRep_ListOfBipoint & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_Bipoint
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TopOpeBRep_Bipoint
+") Value;
 		TopOpeBRep_Bipoint & Value ();
 };
 
@@ -3316,21 +2481,15 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_ListNodeOfListOfBipoint;
 class TopOpeBRep_ListNodeOfListOfBipoint : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(TopOpeBRep_Bipoint)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_ListNodeOfListOfBipoint;
+		%feature("autodoc", "	:param I:
+	:type I: TopOpeBRep_Bipoint &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TopOpeBRep_ListNodeOfListOfBipoint;
 		 TopOpeBRep_ListNodeOfListOfBipoint (const TopOpeBRep_Bipoint & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_Bipoint
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TopOpeBRep_Bipoint
+") Value;
 		TopOpeBRep_Bipoint & Value ();
 };
 
@@ -3391,164 +2550,103 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_ListOfBipoint;
 class TopOpeBRep_ListOfBipoint {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_ListOfBipoint;
+		%feature("autodoc", "	:rtype: None
+") TopOpeBRep_ListOfBipoint;
 		 TopOpeBRep_ListOfBipoint ();
-		%feature("autodoc", "Args:
-	Other(TopOpeBRep_ListOfBipoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopOpeBRep_ListOfBipoint &
+	:rtype: None
+") Assign;
 		void Assign (const TopOpeBRep_ListOfBipoint & Other);
-		%feature("autodoc", "Args:
-	Other(TopOpeBRep_ListOfBipoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopOpeBRep_ListOfBipoint &
+	:rtype: None
+") operator=;
 		void operator = (const TopOpeBRep_ListOfBipoint & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(TopOpeBRep_Bipoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: TopOpeBRep_Bipoint &
+	:rtype: None
+") Prepend;
 		void Prepend (const TopOpeBRep_Bipoint & I);
-		%feature("autodoc", "Args:
-	I(TopOpeBRep_Bipoint)
-	theIt(TopOpeBRep_ListIteratorOfListOfBipoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: TopOpeBRep_Bipoint &
+	:param theIt:
+	:type theIt: TopOpeBRep_ListIteratorOfListOfBipoint &
+	:rtype: None
+") Prepend;
 		void Prepend (const TopOpeBRep_Bipoint & I,TopOpeBRep_ListIteratorOfListOfBipoint & theIt);
-		%feature("autodoc", "Args:
-	Other(TopOpeBRep_ListOfBipoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopOpeBRep_ListOfBipoint &
+	:rtype: None
+") Prepend;
 		void Prepend (TopOpeBRep_ListOfBipoint & Other);
-		%feature("autodoc", "Args:
-	I(TopOpeBRep_Bipoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: TopOpeBRep_Bipoint &
+	:rtype: None
+") Append;
 		void Append (const TopOpeBRep_Bipoint & I);
-		%feature("autodoc", "Args:
-	I(TopOpeBRep_Bipoint)
-	theIt(TopOpeBRep_ListIteratorOfListOfBipoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: TopOpeBRep_Bipoint &
+	:param theIt:
+	:type theIt: TopOpeBRep_ListIteratorOfListOfBipoint &
+	:rtype: None
+") Append;
 		void Append (const TopOpeBRep_Bipoint & I,TopOpeBRep_ListIteratorOfListOfBipoint & theIt);
-		%feature("autodoc", "Args:
-	Other(TopOpeBRep_ListOfBipoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopOpeBRep_ListOfBipoint &
+	:rtype: None
+") Append;
 		void Append (TopOpeBRep_ListOfBipoint & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_Bipoint
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: TopOpeBRep_Bipoint
+") First;
 		TopOpeBRep_Bipoint & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_Bipoint
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: TopOpeBRep_Bipoint
+") Last;
 		TopOpeBRep_Bipoint & Last ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(TopOpeBRep_ListIteratorOfListOfBipoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: TopOpeBRep_ListIteratorOfListOfBipoint &
+	:rtype: None
+") Remove;
 		void Remove (TopOpeBRep_ListIteratorOfListOfBipoint & It);
-		%feature("autodoc", "Args:
-	I(TopOpeBRep_Bipoint)
-	It(TopOpeBRep_ListIteratorOfListOfBipoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: TopOpeBRep_Bipoint &
+	:param It:
+	:type It: TopOpeBRep_ListIteratorOfListOfBipoint &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const TopOpeBRep_Bipoint & I,TopOpeBRep_ListIteratorOfListOfBipoint & It);
-		%feature("autodoc", "Args:
-	Other(TopOpeBRep_ListOfBipoint)
-	It(TopOpeBRep_ListIteratorOfListOfBipoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopOpeBRep_ListOfBipoint &
+	:param It:
+	:type It: TopOpeBRep_ListIteratorOfListOfBipoint &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (TopOpeBRep_ListOfBipoint & Other,TopOpeBRep_ListIteratorOfListOfBipoint & It);
-		%feature("autodoc", "Args:
-	I(TopOpeBRep_Bipoint)
-	It(TopOpeBRep_ListIteratorOfListOfBipoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: TopOpeBRep_Bipoint &
+	:param It:
+	:type It: TopOpeBRep_ListIteratorOfListOfBipoint &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const TopOpeBRep_Bipoint & I,TopOpeBRep_ListIteratorOfListOfBipoint & It);
-		%feature("autodoc", "Args:
-	Other(TopOpeBRep_ListOfBipoint)
-	It(TopOpeBRep_ListIteratorOfListOfBipoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopOpeBRep_ListOfBipoint &
+	:param It:
+	:type It: TopOpeBRep_ListIteratorOfListOfBipoint &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (TopOpeBRep_ListOfBipoint & Other,TopOpeBRep_ListIteratorOfListOfBipoint & It);
 };
 
@@ -3570,287 +2668,173 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_Point2d;
 class TopOpeBRep_Point2d {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_Point2d;
+		%feature("autodoc", "	:rtype: None
+") TopOpeBRep_Point2d;
 		 TopOpeBRep_Point2d ();
-		%feature("autodoc", "Args:
-	ie1(Standard_Integer)=0
-	ie2(Standard_Integer)=0
-
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param ie1: default value is 0
+	:type ie1: Standard_Integer
+	:param ie2: default value is 0
+	:type ie2: Standard_Integer
+	:rtype: None
+") Dump;
 		void Dump (const Standard_Integer ie1 = 0,const Standard_Integer ie2 = 0);
-		%feature("autodoc", "Args:
-	P(IntRes2d_IntersectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetPint;
+		%feature("autodoc", "	:param P:
+	:type P: IntRes2d_IntersectionPoint &
+	:rtype: None
+") SetPint;
 		void SetPint (const IntRes2d_IntersectionPoint & P);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasPint;
+		%feature("autodoc", "	:rtype: bool
+") HasPint;
 		Standard_Boolean HasPint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntRes2d_IntersectionPoint
-
-No detailed docstring for this function.") Pint;
+		%feature("autodoc", "	:rtype: IntRes2d_IntersectionPoint
+") Pint;
 		const IntRes2d_IntersectionPoint & Pint ();
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	B(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetIsVertex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param B:
+	:type B: bool
+	:rtype: None
+") SetIsVertex;
 		void SetIsVertex (const Standard_Integer I,const Standard_Boolean B);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsVertex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: bool
+") IsVertex;
 		Standard_Boolean IsVertex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	V(TopoDS_Vertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetVertex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param V:
+	:type V: TopoDS_Vertex &
+	:rtype: None
+") SetVertex;
 		void SetVertex (const Standard_Integer I,const TopoDS_Vertex & V);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopoDS_Vertex
-
-No detailed docstring for this function.") Vertex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopoDS_Vertex
+") Vertex;
 		const TopoDS_Vertex & Vertex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	T(TopOpeBRepDS_Transition)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetTransition;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param T:
+	:type T: TopOpeBRepDS_Transition &
+	:rtype: None
+") SetTransition;
 		void SetTransition (const Standard_Integer I,const TopOpeBRepDS_Transition & T);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopOpeBRepDS_Transition
-
-No detailed docstring for this function.") Transition;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopOpeBRepDS_Transition
+") Transition;
 		const TopOpeBRepDS_Transition & Transition (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopOpeBRepDS_Transition
-
-No detailed docstring for this function.") ChangeTransition;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopOpeBRepDS_Transition
+") ChangeTransition;
 		TopOpeBRepDS_Transition & ChangeTransition (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	P(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetParameter;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param P:
+	:type P: float
+	:rtype: None
+") SetParameter;
 		void SetParameter (const Standard_Integer I,const Standard_Real P);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Parameter;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: float
+") Parameter;
 		Standard_Real Parameter (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	B(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetIsPointOfSegment;
+		%feature("autodoc", "	:param B:
+	:type B: bool
+	:rtype: None
+") SetIsPointOfSegment;
 		void SetIsPointOfSegment (const Standard_Boolean B);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsPointOfSegment;
+		%feature("autodoc", "	:rtype: bool
+") IsPointOfSegment;
 		Standard_Boolean IsPointOfSegment ();
-		%feature("autodoc", "Args:
-	IP1(Standard_Integer)
-	IP2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetSegmentAncestors;
+		%feature("autodoc", "	:param IP1:
+	:type IP1: Standard_Integer
+	:param IP2:
+	:type IP2: Standard_Integer
+	:rtype: None
+") SetSegmentAncestors;
 		void SetSegmentAncestors (const Standard_Integer IP1,const Standard_Integer IP2);
-		%feature("autodoc", "Args:
-	IP1(Standard_Integer)
-	IP2(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") SegmentAncestors;
+		%feature("autodoc", "	:param IP1:
+	:type IP1: Standard_Integer &
+	:param IP2:
+	:type IP2: Standard_Integer &
+	:rtype: bool
+") SegmentAncestors;
 		Standard_Boolean SegmentAncestors (Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	S(TopOpeBRep_P2Dstatus)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetStatus;
+		%feature("autodoc", "	:param S:
+	:type S: TopOpeBRep_P2Dstatus
+	:rtype: None
+") SetStatus;
 		void SetStatus (const TopOpeBRep_P2Dstatus S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_P2Dstatus
-
-No detailed docstring for this function.") Status;
+		%feature("autodoc", "	:rtype: TopOpeBRep_P2Dstatus
+") Status;
 		TopOpeBRep_P2Dstatus Status ();
-		%feature("autodoc", "Args:
-	X(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetIndex;
+		%feature("autodoc", "	:param X:
+	:type X: Standard_Integer
+	:rtype: None
+") SetIndex;
 		void SetIndex (const Standard_Integer X);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Index;
+		%feature("autodoc", "	:rtype: int
+") Index;
 		Standard_Integer Index ();
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param P:
+	:type P: gp_Pnt
+	:rtype: None
+") SetValue;
 		void SetValue (const gp_Pnt & P);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: gp_Pnt
+") Value;
 		const gp_Pnt & Value ();
-		%feature("autodoc", "Args:
-	P(gp_Pnt2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue2d;
+		%feature("autodoc", "	:param P:
+	:type P: gp_Pnt2d
+	:rtype: None
+") SetValue2d;
 		void SetValue2d (const gp_Pnt2d & P);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt2d
-
-No detailed docstring for this function.") Value2d;
+		%feature("autodoc", "	:rtype: gp_Pnt2d
+") Value2d;
 		const gp_Pnt2d & Value2d ();
-		%feature("autodoc", "Args:
-	B(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetKeep;
+		%feature("autodoc", "	:param B:
+	:type B: bool
+	:rtype: None
+") SetKeep;
 		void SetKeep (const Standard_Boolean B);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Keep;
+		%feature("autodoc", "	:rtype: bool
+") Keep;
 		Standard_Boolean Keep ();
-		%feature("autodoc", "Args:
-	C(TopOpeBRepDS_Config)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetEdgesConfig;
+		%feature("autodoc", "	:param C:
+	:type C: TopOpeBRepDS_Config
+	:rtype: None
+") SetEdgesConfig;
 		void SetEdgesConfig (const TopOpeBRepDS_Config C);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRepDS_Config
-
-No detailed docstring for this function.") EdgesConfig;
+		%feature("autodoc", "	:rtype: TopOpeBRepDS_Config
+") EdgesConfig;
 		TopOpeBRepDS_Config EdgesConfig ();
-		%feature("autodoc", "Args:
-	T(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetTolerance;
+		%feature("autodoc", "	:param T:
+	:type T: float
+	:rtype: None
+") SetTolerance;
 		void SetTolerance (const Standard_Real T);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Tolerance;
+		%feature("autodoc", "	:rtype: float
+") Tolerance;
 		Standard_Real Tolerance ();
-		%feature("autodoc", "Args:
-	ff2d(Handle_TopOpeBRep_Hctxff2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetHctxff2d;
+		%feature("autodoc", "	:param ff2d:
+	:type ff2d: Handle_TopOpeBRep_Hctxff2d &
+	:rtype: None
+") SetHctxff2d;
 		void SetHctxff2d (const Handle_TopOpeBRep_Hctxff2d & ff2d);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TopOpeBRep_Hctxff2d
-
-No detailed docstring for this function.") Hctxff2d;
+		%feature("autodoc", "	:rtype: Handle_TopOpeBRep_Hctxff2d
+") Hctxff2d;
 		Handle_TopOpeBRep_Hctxff2d Hctxff2d ();
-		%feature("autodoc", "Args:
-	ee2d(Handle_TopOpeBRep_Hctxee2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetHctxee2d;
+		%feature("autodoc", "	:param ee2d:
+	:type ee2d: Handle_TopOpeBRep_Hctxee2d &
+	:rtype: None
+") SetHctxee2d;
 		void SetHctxee2d (const Handle_TopOpeBRep_Hctxee2d & ee2d);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TopOpeBRep_Hctxee2d
-
-No detailed docstring for this function.") Hctxee2d;
+		%feature("autodoc", "	:rtype: Handle_TopOpeBRep_Hctxee2d
+") Hctxee2d;
 		Handle_TopOpeBRep_Hctxee2d Hctxee2d ();
 };
 
@@ -3872,44 +2856,30 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_PointClassifier;
 class TopOpeBRep_PointClassifier {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_PointClassifier;
+		%feature("autodoc", "	:rtype: None
+") TopOpeBRep_PointClassifier;
 		 TopOpeBRep_PointClassifier ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:rtype: None
+") Init;
 		void Init ();
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Load;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:rtype: None
+") Load;
 		void Load (const TopoDS_Face & F);
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-	P(gp_Pnt2d)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* compute position of point <P> regarding with the face <F>.
 
-Returns:
-	TopAbs_State
-
-compute position of point <P> regarding with the face <F>.") Classify;
+	:param F:
+	:type F: TopoDS_Face &
+	:param P:
+	:type P: gp_Pnt2d
+	:param Tol:
+	:type Tol: float
+	:rtype: TopAbs_State
+") Classify;
 		TopAbs_State Classify (const TopoDS_Face & F,const gp_Pnt2d & P,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_State
-
-No detailed docstring for this function.") State;
+		%feature("autodoc", "	:rtype: TopAbs_State
+") State;
 		TopAbs_State State ();
 };
 
@@ -3931,46 +2901,32 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_PointGeomTool;
 class TopOpeBRep_PointGeomTool {
 	public:
-		%feature("autodoc", "Args:
-	IP(TopOpeBRep_VPointInter)
-
-Returns:
-	static TopOpeBRepDS_Point
-
-No detailed docstring for this function.") MakePoint;
+		%feature("autodoc", "	:param IP:
+	:type IP: TopOpeBRep_VPointInter &
+	:rtype: TopOpeBRepDS_Point
+") MakePoint;
 		static TopOpeBRepDS_Point MakePoint (const TopOpeBRep_VPointInter & IP);
-		%feature("autodoc", "Args:
-	P2D(TopOpeBRep_Point2d)
-
-Returns:
-	static TopOpeBRepDS_Point
-
-No detailed docstring for this function.") MakePoint;
+		%feature("autodoc", "	:param P2D:
+	:type P2D: TopOpeBRep_Point2d &
+	:rtype: TopOpeBRepDS_Point
+") MakePoint;
 		static TopOpeBRepDS_Point MakePoint (const TopOpeBRep_Point2d & P2D);
-		%feature("autodoc", "Args:
-	FEI(TopOpeBRep_FaceEdgeIntersector)
-
-Returns:
-	static TopOpeBRepDS_Point
-
-No detailed docstring for this function.") MakePoint;
+		%feature("autodoc", "	:param FEI:
+	:type FEI: TopOpeBRep_FaceEdgeIntersector &
+	:rtype: TopOpeBRepDS_Point
+") MakePoint;
 		static TopOpeBRepDS_Point MakePoint (const TopOpeBRep_FaceEdgeIntersector & FEI);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-
-Returns:
-	static TopOpeBRepDS_Point
-
-No detailed docstring for this function.") MakePoint;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: TopOpeBRepDS_Point
+") MakePoint;
 		static TopOpeBRepDS_Point MakePoint (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	DSP1(TopOpeBRepDS_Point)
-	DSP2(TopOpeBRepDS_Point)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") IsEqual;
+		%feature("autodoc", "	:param DSP1:
+	:type DSP1: TopOpeBRepDS_Point &
+	:param DSP2:
+	:type DSP2: TopOpeBRepDS_Point &
+	:rtype: bool
+") IsEqual;
 		static Standard_Boolean IsEqual (const TopOpeBRepDS_Point & DSP1,const TopOpeBRepDS_Point & DSP2);
 };
 
@@ -3992,22 +2948,17 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_SequenceNodeOfSequenceOfPoint2d;
 class TopOpeBRep_SequenceNodeOfSequenceOfPoint2d : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(TopOpeBRep_Point2d)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_SequenceNodeOfSequenceOfPoint2d;
+		%feature("autodoc", "	:param I:
+	:type I: TopOpeBRep_Point2d &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") TopOpeBRep_SequenceNodeOfSequenceOfPoint2d;
 		 TopOpeBRep_SequenceNodeOfSequenceOfPoint2d (const TopOpeBRep_Point2d & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_Point2d
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TopOpeBRep_Point2d
+") Value;
 		TopOpeBRep_Point2d & Value ();
 };
 
@@ -4068,168 +3019,111 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_SequenceOfPoint2d;
 class TopOpeBRep_SequenceOfPoint2d : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_SequenceOfPoint2d;
+		%feature("autodoc", "	:rtype: None
+") TopOpeBRep_SequenceOfPoint2d;
 		 TopOpeBRep_SequenceOfPoint2d ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(TopOpeBRep_SequenceOfPoint2d)
-
-Returns:
-	TopOpeBRep_SequenceOfPoint2d
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopOpeBRep_SequenceOfPoint2d &
+	:rtype: TopOpeBRep_SequenceOfPoint2d
+") Assign;
 		const TopOpeBRep_SequenceOfPoint2d & Assign (const TopOpeBRep_SequenceOfPoint2d & Other);
-		%feature("autodoc", "Args:
-	Other(TopOpeBRep_SequenceOfPoint2d)
-
-Returns:
-	TopOpeBRep_SequenceOfPoint2d
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopOpeBRep_SequenceOfPoint2d &
+	:rtype: TopOpeBRep_SequenceOfPoint2d
+") operator=;
 		const TopOpeBRep_SequenceOfPoint2d & operator = (const TopOpeBRep_SequenceOfPoint2d & Other);
-		%feature("autodoc", "Args:
-	T(TopOpeBRep_Point2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: TopOpeBRep_Point2d &
+	:rtype: None
+") Append;
 		void Append (const TopOpeBRep_Point2d & T);
-		%feature("autodoc", "Args:
-	S(TopOpeBRep_SequenceOfPoint2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: TopOpeBRep_SequenceOfPoint2d &
+	:rtype: None
+") Append;
 		void Append (TopOpeBRep_SequenceOfPoint2d & S);
-		%feature("autodoc", "Args:
-	T(TopOpeBRep_Point2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: TopOpeBRep_Point2d &
+	:rtype: None
+") Prepend;
 		void Prepend (const TopOpeBRep_Point2d & T);
-		%feature("autodoc", "Args:
-	S(TopOpeBRep_SequenceOfPoint2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: TopOpeBRep_SequenceOfPoint2d &
+	:rtype: None
+") Prepend;
 		void Prepend (TopOpeBRep_SequenceOfPoint2d & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(TopOpeBRep_Point2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: TopOpeBRep_Point2d &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const TopOpeBRep_Point2d & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TopOpeBRep_SequenceOfPoint2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TopOpeBRep_SequenceOfPoint2d &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,TopOpeBRep_SequenceOfPoint2d & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(TopOpeBRep_Point2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: TopOpeBRep_Point2d &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const TopOpeBRep_Point2d & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TopOpeBRep_SequenceOfPoint2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TopOpeBRep_SequenceOfPoint2d &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,TopOpeBRep_SequenceOfPoint2d & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_Point2d
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: TopOpeBRep_Point2d
+") First;
 		const TopOpeBRep_Point2d & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_Point2d
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: TopOpeBRep_Point2d
+") Last;
 		const TopOpeBRep_Point2d & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(TopOpeBRep_SequenceOfPoint2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: TopOpeBRep_SequenceOfPoint2d &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,TopOpeBRep_SequenceOfPoint2d & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TopOpeBRep_Point2d
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopOpeBRep_Point2d
+") Value;
 		const TopOpeBRep_Point2d & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(TopOpeBRep_Point2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: TopOpeBRep_Point2d &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const TopOpeBRep_Point2d & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TopOpeBRep_Point2d
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopOpeBRep_Point2d
+") ChangeValue;
 		TopOpeBRep_Point2d & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -4251,123 +3145,97 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_ShapeIntersector;
 class TopOpeBRep_ShapeIntersector {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_ShapeIntersector;
+		%feature("autodoc", "	:rtype: None
+") TopOpeBRep_ShapeIntersector;
 		 TopOpeBRep_ShapeIntersector ();
-		%feature("autodoc", "Args:
-	S1(TopoDS_Shape)
-	S2(TopoDS_Shape)
+		%feature("autodoc", "	* Initialize the intersection of shapes S1,S2.
 
-Returns:
-	None
-
-Initialize the intersection of shapes S1,S2.") InitIntersection;
+	:param S1:
+	:type S1: TopoDS_Shape &
+	:param S2:
+	:type S2: TopoDS_Shape &
+	:rtype: None
+") InitIntersection;
 		void InitIntersection (const TopoDS_Shape & S1,const TopoDS_Shape & S2);
-		%feature("autodoc", "Args:
-	S1(TopoDS_Shape)
-	S2(TopoDS_Shape)
-	F1(TopoDS_Face)
-	F2(TopoDS_Face)
+		%feature("autodoc", "	* Initialize the intersection of shapes S1,S2.
 
-Returns:
-	None
-
-Initialize the intersection of shapes S1,S2.") InitIntersection;
+	:param S1:
+	:type S1: TopoDS_Shape &
+	:param S2:
+	:type S2: TopoDS_Shape &
+	:param F1:
+	:type F1: TopoDS_Face &
+	:param F2:
+	:type F2: TopoDS_Face &
+	:rtype: None
+") InitIntersection;
 		void InitIntersection (const TopoDS_Shape & S1,const TopoDS_Shape & S2,const TopoDS_Face & F1,const TopoDS_Face & F2);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* return the shape <Index> ( = 1 or 2) given to InitIntersection(). Index = 1 will return S1, Index = 2 will return S2.
 
-Returns:
-	TopoDS_Shape
-
-return  the shape  <Index> ( = 1 or 2) given to  
-         InitIntersection().  
-         Index = 1 will return S1, Index = 2 will return S2.") Shape;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopoDS_Shape
+") Shape;
 		const TopoDS_Shape & Shape (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns True if there are more intersection between two the shapes.
 
-returns True if there are more intersection  
-         between two the shapes.") MoreIntersection;
+	:rtype: bool
+") MoreIntersection;
 		Standard_Boolean MoreIntersection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* search for the next intersection between the two shapes.
 
-search for the next intersection between the two shapes.") NextIntersection;
+	:rtype: None
+") NextIntersection;
 		void NextIntersection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_FacesIntersector
+		%feature("autodoc", "	* return the current intersection of two Faces.
 
-return the current intersection of two Faces.") ChangeFacesIntersector;
+	:rtype: TopOpeBRep_FacesIntersector
+") ChangeFacesIntersector;
 		TopOpeBRep_FacesIntersector & ChangeFacesIntersector ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_EdgesIntersector
+		%feature("autodoc", "	* return the current intersection of two Edges.
 
-return the current intersection of two Edges.") ChangeEdgesIntersector;
+	:rtype: TopOpeBRep_EdgesIntersector
+") ChangeEdgesIntersector;
 		TopOpeBRep_EdgesIntersector & ChangeEdgesIntersector ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_FaceEdgeIntersector
+		%feature("autodoc", "	* return the current intersection of a Face and an Edge.
 
-return the current intersection of a Face and an Edge.") ChangeFaceEdgeIntersector;
+	:rtype: TopOpeBRep_FaceEdgeIntersector
+") ChangeFaceEdgeIntersector;
 		TopOpeBRep_FaceEdgeIntersector & ChangeFaceEdgeIntersector ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* return geometric shape <Index> ( = 1 or 2 ) of current intersection.
 
-Returns:
-	TopoDS_Shape
-
-return  geometric  shape <Index> ( = 1 or 2 )  of  
-         current intersection.") CurrentGeomShape;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopoDS_Shape
+") CurrentGeomShape;
 		const TopoDS_Shape & CurrentGeomShape (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	tol1(Standard_Real)
-	tol2(Standard_Real)
+		%feature("autodoc", "	* return MAX of intersection tolerances with which FacesIntersector from TopOpeBRep was working.
 
-Returns:
-	None
-
-return  MAX of intersection tolerances with  
-         which FacesIntersector from TopOpeBRep was working.") GetTolerances;
+	:param tol1:
+	:type tol1: float &
+	:param tol2:
+	:type tol2: float &
+	:rtype: None
+") GetTolerances;
 		void GetTolerances (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") DumpCurrent;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer
+	:rtype: None
+") DumpCurrent;
 		void DumpCurrent (const Standard_Integer K);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Index;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer
+	:rtype: int
+") Index;
 		Standard_Integer Index (const Standard_Integer K);
-		%feature("autodoc", "Args:
-	anObj(TopoDS_Shape)
-	aReference(TopoDS_Shape)
-	aListOfShape(TopTools_ListOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") RejectedFaces;
+		%feature("autodoc", "	:param anObj:
+	:type anObj: TopoDS_Shape &
+	:param aReference:
+	:type aReference: TopoDS_Shape &
+	:param aListOfShape:
+	:type aListOfShape: TopTools_ListOfShape &
+	:rtype: None
+") RejectedFaces;
 		void RejectedFaces (const TopoDS_Shape & anObj,const TopoDS_Shape & aReference,TopTools_ListOfShape & aListOfShape);
 };
 
@@ -4389,78 +3257,56 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_ShapeIntersector2d;
 class TopOpeBRep_ShapeIntersector2d {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_ShapeIntersector2d;
+		%feature("autodoc", "	:rtype: None
+") TopOpeBRep_ShapeIntersector2d;
 		 TopOpeBRep_ShapeIntersector2d ();
-		%feature("autodoc", "Args:
-	S1(TopoDS_Shape)
-	S2(TopoDS_Shape)
+		%feature("autodoc", "	* Initialize the intersection of shapes S1,S2.
 
-Returns:
-	None
-
-Initialize the intersection of shapes S1,S2.") InitIntersection;
+	:param S1:
+	:type S1: TopoDS_Shape &
+	:param S2:
+	:type S2: TopoDS_Shape &
+	:rtype: None
+") InitIntersection;
 		void InitIntersection (const TopoDS_Shape & S1,const TopoDS_Shape & S2);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* return the shape <Index> ( = 1 or 2) given to InitIntersection(). Index = 1 will return S1, Index = 2 will return S2.
 
-Returns:
-	TopoDS_Shape
-
-return  the shape  <Index> ( = 1 or 2) given to  
-         InitIntersection().  
-         Index = 1 will return S1, Index = 2 will return S2.") Shape;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopoDS_Shape
+") Shape;
 		const TopoDS_Shape & Shape (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns True if there are more intersection between two the shapes.
 
-returns True if there are more intersection  
-         between two the shapes.") MoreIntersection;
+	:rtype: bool
+") MoreIntersection;
 		Standard_Boolean MoreIntersection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* search for the next intersection between the two shapes.
 
-search for the next intersection between the two shapes.") NextIntersection;
+	:rtype: None
+") NextIntersection;
 		void NextIntersection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_EdgesIntersector
+		%feature("autodoc", "	* return the current intersection of two Edges.
 
-return the current intersection of two Edges.") ChangeEdgesIntersector;
+	:rtype: TopOpeBRep_EdgesIntersector
+") ChangeEdgesIntersector;
 		TopOpeBRep_EdgesIntersector & ChangeEdgesIntersector ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* return geometric shape <Index> ( = 1 or 2 ) of current intersection.
 
-Returns:
-	TopoDS_Shape
-
-return  geometric  shape <Index> ( = 1 or 2 )  of  
-         current intersection.") CurrentGeomShape;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopoDS_Shape
+") CurrentGeomShape;
 		const TopoDS_Shape & CurrentGeomShape (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") DumpCurrent;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer
+	:rtype: None
+") DumpCurrent;
 		void DumpCurrent (const Standard_Integer K);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Index;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer
+	:rtype: int
+") Index;
 		Standard_Integer Index (const Standard_Integer K);
 };
 
@@ -4482,87 +3328,48 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_ShapeScanner;
 class TopOpeBRep_ShapeScanner {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_ShapeScanner;
+		%feature("autodoc", "	:rtype: None
+") TopOpeBRep_ShapeScanner;
 		 TopOpeBRep_ShapeScanner ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-	TS(TopAbs_ShapeEnum)
-	TA(TopAbs_ShapeEnum)=TopAbs_SHAPE
-
-Returns:
-	None
-
-No detailed docstring for this function.") AddBoxesMakeCOB;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:param TS:
+	:type TS: TopAbs_ShapeEnum
+	:param TA: default value is TopAbs_SHAPE
+	:type TA: TopAbs_ShapeEnum
+	:rtype: None
+") AddBoxesMakeCOB;
 		void AddBoxesMakeCOB (const TopoDS_Shape & S,const TopAbs_ShapeEnum TS,const TopAbs_ShapeEnum TA = TopAbs_SHAPE);
-		%feature("autodoc", "Args:
-	E(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param E:
+	:type E: TopoDS_Shape &
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Shape & E);
-		%feature("autodoc", "Args:
-	X(TopOpeBRepTool_ShapeExplorer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param X:
+	:type X: TopOpeBRepTool_ShapeExplorer &
+	:rtype: None
+") Init;
 		void Init (TopOpeBRepTool_ShapeExplorer & X);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Current;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Current;
 		const TopoDS_Shape & Current ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRepTool_BoxSort
-
-No detailed docstring for this function.") BoxSort;
+		%feature("autodoc", "	:rtype: TopOpeBRepTool_BoxSort
+") BoxSort;
 		const TopOpeBRepTool_BoxSort & BoxSort ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRepTool_BoxSort
-
-No detailed docstring for this function.") ChangeBoxSort;
+		%feature("autodoc", "	:rtype: TopOpeBRepTool_BoxSort
+") ChangeBoxSort;
 		TopOpeBRepTool_BoxSort & ChangeBoxSort ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Index;
+		%feature("autodoc", "	:rtype: int
+") Index;
 		Standard_Integer Index ();
 
         %feature("autodoc", "1");
@@ -4592,390 +3399,254 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_VPointInter;
 class TopOpeBRep_VPointInter {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_VPointInter;
+		%feature("autodoc", "	:rtype: None
+") TopOpeBRep_VPointInter;
 		 TopOpeBRep_VPointInter ();
-		%feature("autodoc", "Args:
-	P(IntPatch_Point)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetPoint;
+		%feature("autodoc", "	:param P:
+	:type P: IntPatch_Point &
+	:rtype: None
+") SetPoint;
 		void SetPoint (const IntPatch_Point & P);
-		%feature("autodoc", "Args:
-	I1(Standard_Integer)
-	I2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetShapes;
+		%feature("autodoc", "	:param I1:
+	:type I1: Standard_Integer
+	:param I2:
+	:type I2: Standard_Integer
+	:rtype: None
+") SetShapes;
 		void SetShapes (const Standard_Integer I1,const Standard_Integer I2);
-		%feature("autodoc", "Args:
-	I1(Standard_Integer)
-	I2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GetShapes;
+		%feature("autodoc", "	:param I1:
+	:type I1: Standard_Integer &
+	:param I2:
+	:type I2: Standard_Integer &
+	:rtype: None
+") GetShapes;
 		void GetShapes (Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntSurf_Transition
-
-No detailed docstring for this function.") TransitionOnS1;
+		%feature("autodoc", "	:rtype: IntSurf_Transition
+") TransitionOnS1;
 		IntSurf_Transition TransitionOnS1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntSurf_Transition
-
-No detailed docstring for this function.") TransitionOnS2;
+		%feature("autodoc", "	:rtype: IntSurf_Transition
+") TransitionOnS2;
 		IntSurf_Transition TransitionOnS2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntSurf_Transition
-
-No detailed docstring for this function.") TransitionLineArc1;
+		%feature("autodoc", "	:rtype: IntSurf_Transition
+") TransitionLineArc1;
 		IntSurf_Transition TransitionLineArc1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntSurf_Transition
-
-No detailed docstring for this function.") TransitionLineArc2;
+		%feature("autodoc", "	:rtype: IntSurf_Transition
+") TransitionLineArc2;
 		IntSurf_Transition TransitionLineArc2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOnDomS1;
+		%feature("autodoc", "	:rtype: bool
+") IsOnDomS1;
 		Standard_Boolean IsOnDomS1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOnDomS2;
+		%feature("autodoc", "	:rtype: bool
+") IsOnDomS2;
 		Standard_Boolean IsOnDomS2 ();
-		%feature("autodoc", "Args:
-	u(Standard_Real)
-	v(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ParametersOnS1;
+		%feature("autodoc", "	:param u:
+	:type u: float &
+	:param v:
+	:type v: float &
+	:rtype: None
+") ParametersOnS1;
 		void ParametersOnS1 (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	u(Standard_Real)
-	v(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ParametersOnS2;
+		%feature("autodoc", "	:param u:
+	:type u: float &
+	:param v:
+	:type v: float &
+	:rtype: None
+") ParametersOnS2;
 		void ParametersOnS2 (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: gp_Pnt
+") Value;
 		const gp_Pnt & Value ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Tolerance;
+		%feature("autodoc", "	:rtype: float
+") Tolerance;
 		Standard_Real Tolerance ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") ArcOnS1;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") ArcOnS1;
 		const TopoDS_Shape & ArcOnS1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") ArcOnS2;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") ArcOnS2;
 		const TopoDS_Shape & ArcOnS2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") ParameterOnLine;
+		%feature("autodoc", "	:rtype: float
+") ParameterOnLine;
 		Standard_Real ParameterOnLine ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") ParameterOnArc1;
+		%feature("autodoc", "	:rtype: float
+") ParameterOnArc1;
 		Standard_Real ParameterOnArc1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the point is a vertex on the initial restriction facet of the first surface.
 
-Returns TRUE if the point is a vertex on the initial  
-         restriction facet of the first surface.") IsVertexOnS1;
+	:rtype: bool
+") IsVertexOnS1;
 		Standard_Boolean IsVertexOnS1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Returns the information about the point when it is on the domain of the first patch, i-e when the function IsVertexOnS1 returns True. Otherwise, an exception is raised.
 
-Returns the information about the point when it is  
-         on the domain of the first patch, i-e when the function  
-         IsVertexOnS1 returns True.  
-         Otherwise, an exception is raised.") VertexOnS1;
+	:rtype: TopoDS_Shape
+") VertexOnS1;
 		const TopoDS_Shape & VertexOnS1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") ParameterOnArc2;
+		%feature("autodoc", "	:rtype: float
+") ParameterOnArc2;
 		Standard_Real ParameterOnArc2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the point is a vertex on the initial restriction facet of the second surface.
 
-Returns TRUE if the point is a vertex on the initial  
-         restriction facet of the second surface.") IsVertexOnS2;
+	:rtype: bool
+") IsVertexOnS2;
 		Standard_Boolean IsVertexOnS2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Returns the information about the point when it is on the domain of the second patch, i-e when the function IsVertexOnS2 returns True. Otherwise, an exception is raised.
 
-Returns the information about the point when it is  
-         on the domain of the second patch, i-e when the function  
-         IsVertexOnS2 returns True.  
-         Otherwise, an exception is raised.") VertexOnS2;
+	:rtype: TopoDS_Shape
+") VertexOnS2;
 		const TopoDS_Shape & VertexOnS2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsInternal;
+		%feature("autodoc", "	:rtype: bool
+") IsInternal;
 		Standard_Boolean IsInternal ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the point belongs to several intersection lines.
 
-Returns True if the point belongs to several intersection  
-         lines.") IsMultiple;
+	:rtype: bool
+") IsMultiple;
 		Standard_Boolean IsMultiple ();
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* get state of VPoint within the domain of geometric shape domain <I> (= 1 or 2).
 
-Returns:
-	TopAbs_State
-
-get state of VPoint within the domain of geometric shape  
-         domain <I> (= 1 or 2).") State;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: TopAbs_State
+") State;
 		TopAbs_State State (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	S(TopAbs_State)
-	I(Standard_Integer)
+		%feature("autodoc", "	* Set the state of VPoint within the domain of the geometric shape <I> (= 1 or 2).
 
-Returns:
-	None
-
-Set the state of VPoint within the  domain of  
-         the geometric shape <I> (= 1 or 2).") State;
+	:param S:
+	:type S: TopAbs_State
+	:param I:
+	:type I: Standard_Integer
+	:rtype: None
+") State;
 		void State (const TopAbs_State S,const Standard_Integer I);
-		%feature("autodoc", "Args:
-	Eon(TopoDS_Shape)
-	Par(Standard_Real)
-	I(Standard_Integer)
+		%feature("autodoc", "	* set the shape Eon of shape I (1,2) containing the point, and parameter <Par> of point on <Eon>.
 
-Returns:
-	None
-
-set the shape Eon of shape I (1,2) containing the point,  
-         and parameter <Par> of point on <Eon>.") EdgeON;
+	:param Eon:
+	:type Eon: TopoDS_Shape &
+	:param Par:
+	:type Par: float
+	:param I:
+	:type I: Standard_Integer
+	:rtype: None
+") EdgeON;
 		void EdgeON (const TopoDS_Shape & Eon,const Standard_Real Par,const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* get the edge of shape I (1,2) containing the point.
 
-Returns:
-	TopoDS_Shape
-
-get the edge of shape I (1,2) containing the point.") EdgeON;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: TopoDS_Shape
+") EdgeON;
 		const TopoDS_Shape & EdgeON (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* get the parameter on edge of shape I (1,2) containing the point.
 
-Returns:
-	Standard_Real
-
-get the parameter on edge of shape I (1,2) containing the point.") EdgeONParameter;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: float
+") EdgeONParameter;
 		Standard_Real EdgeONParameter (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* returns value of filed myShapeIndex = 0,1,2,3 0 means the VPoint is on no restriction 1 means the VPoint is on the restriction 1 2 means the VPoint is on the restriction 2 3 means the VPoint is on the restrictions 1 and 2
 
-returns value of filed myShapeIndex = 0,1,2,3  
-         0 means the VPoint is on no restriction  
-         1 means the VPoint is on the restriction 1  
-         2 means the VPoint is on the restriction 2  
-         3 means the VPoint is on the restrictions 1 and 2") ShapeIndex;
+	:rtype: int
+") ShapeIndex;
 		Standard_Integer ShapeIndex ();
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* set value of shape supporting me (0,1,2,3).
 
-Returns:
-	None
-
-set value of shape supporting me (0,1,2,3).") ShapeIndex;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: None
+") ShapeIndex;
 		void ShapeIndex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* get the edge of shape I (1,2) containing the point. Returned shape is null if the VPoint is not on an edge of shape I (1,2).
 
-Returns:
-	TopoDS_Shape
-
-get the edge of shape I (1,2) containing the point.  
-         Returned shape is null if the VPoint is not on an edge  
-         of shape I (1,2).") Edge;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: TopoDS_Shape
+") Edge;
 		const TopoDS_Shape & Edge (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* get the parameter on edge of shape I (1,2) containing the point
 
-Returns:
-	Standard_Real
-
-get the parameter on edge of shape I (1,2) containing the point") EdgeParameter;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: float
+") EdgeParameter;
 		Standard_Real EdgeParameter (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* get the parameter on surface of shape I (1,2) containing the point
 
-Returns:
-	gp_Pnt2d
-
-get the parameter on surface of shape I (1,2) containing the point") SurfaceParameters;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: gp_Pnt2d
+") SurfaceParameters;
 		gp_Pnt2d SurfaceParameters (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsVertex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: bool
+") IsVertex;
 		Standard_Boolean IsVertex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Vertex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopoDS_Shape
+") Vertex;
 		const TopoDS_Shape & Vertex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* set myKeep value according to current states.
 
-set myKeep value according to current states.") UpdateKeep;
+	:rtype: None
+") UpdateKeep;
 		void UpdateKeep ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns value of myKeep (does not evaluate states) False at creation of VPoint. Updated by State(State from TopAbs,Integer from Standard)
 
-Returns value of myKeep (does not evaluate states)  
-False at creation of VPoint.  
-Updated by State(State from TopAbs,Integer from Standard)") Keep;
+	:rtype: bool
+") Keep;
 		Standard_Boolean Keep ();
-		%feature("autodoc", "Args:
-	keep(Standard_Boolean)
+		%feature("autodoc", "	* updates VPointInter flag 'keep' with <keep>.
 
-Returns:
-	None
-
-updates VPointInter flag 'keep' with <keep>.") ChangeKeep;
+	:param keep:
+	:type keep: bool
+	:rtype: None
+") ChangeKeep;
 		void ChangeKeep (const Standard_Boolean keep);
-		%feature("autodoc", "Args:
-	VP(TopOpeBRep_VPointInter)
+		%feature("autodoc", "	* returns <True> if the 3d points and the parameters of the VPoints are same
 
-Returns:
-	Standard_Boolean
-
-returns <True> if the 3d points and the parameters of the  
-         VPoints are same") EqualpP;
+	:param VP:
+	:type VP: TopOpeBRep_VPointInter &
+	:rtype: bool
+") EqualpP;
 		Standard_Boolean EqualpP (const TopOpeBRep_VPointInter & VP);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
-	par(Standard_Real)
+		%feature("autodoc", "	* returns <false> if the vpoint is not given on arc <E>, else returns <par> parameter on <E>
 
-Returns:
-	Standard_Boolean
-
-returns <false> if the vpoint is not given on arc <E>,  
-         else returns <par> parameter on <E>") ParonE;
+	:param E:
+	:type E: TopoDS_Edge &
+	:param par:
+	:type par: float &
+	:rtype: bool
+") ParonE;
 		Standard_Boolean ParonE (const TopoDS_Edge & E,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Index;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: None
+") Index;
 		void Index (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Index;
+		%feature("autodoc", "	:rtype: int
+") Index;
 		Standard_Integer Index ();
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	F(TopoDS_Face)
-	OS(Standard_OStream)
-
-Returns:
-	Standard_OStream
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param F:
+	:type F: TopoDS_Face &
+	:param OS:
+	:type OS: Standard_OStream &
+	:rtype: Standard_OStream
+") Dump;
 		Standard_OStream & Dump (const Standard_Integer I,const TopoDS_Face & F,Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	F1(TopoDS_Face)
-	F2(TopoDS_Face)
-	OS(Standard_OStream)
-
-Returns:
-	Standard_OStream
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param F1:
+	:type F1: TopoDS_Face &
+	:param F2:
+	:type F2: TopoDS_Face &
+	:param OS:
+	:type OS: Standard_OStream &
+	:rtype: Standard_OStream
+") Dump;
 		Standard_OStream & Dump (const TopoDS_Face & F1,const TopoDS_Face & F2,Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_PThePointOfIntersection
-
-No detailed docstring for this function.") PThePointOfIntersectionDummy;
+		%feature("autodoc", "	:rtype: TopOpeBRep_PThePointOfIntersection
+") PThePointOfIntersectionDummy;
 		TopOpeBRep_PThePointOfIntersection PThePointOfIntersectionDummy ();
 };
 
@@ -4997,45 +3668,35 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_VPointInterClassifier;
 class TopOpeBRep_VPointInterClassifier {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_VPointInterClassifier;
+		%feature("autodoc", "	:rtype: None
+") TopOpeBRep_VPointInterClassifier;
 		 TopOpeBRep_VPointInterClassifier ();
-		%feature("autodoc", "Args:
-	F(TopoDS_Shape)
-	VP(TopOpeBRep_VPointInter)
-	ShapeIndex(Standard_Integer)
-	PC(TopOpeBRep_PointClassifier)
-	AssumeINON(Standard_Boolean)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* compute position of VPoint <VP> regarding with face <F>. <ShapeIndex> (= 1,2) indicates which (u,v) point of <VP> is used. when state is ON, set VP.EdgeON() with the edge containing <VP> and associated parameter. returns state of VP on ShapeIndex.
 
-Returns:
-	TopAbs_State
-
-compute position of VPoint <VP> regarding with face <F>.  
-<ShapeIndex> (= 1,2) indicates which (u,v) point of <VP> is used.  
-when state is ON, set VP.EdgeON() with the edge containing <VP>  
-and associated parameter.  
-returns state of VP on ShapeIndex.") VPointPosition;
+	:param F:
+	:type F: TopoDS_Shape &
+	:param VP:
+	:type VP: TopOpeBRep_VPointInter &
+	:param ShapeIndex:
+	:type ShapeIndex: Standard_Integer
+	:param PC:
+	:type PC: TopOpeBRep_PointClassifier &
+	:param AssumeINON:
+	:type AssumeINON: bool
+	:param Tol:
+	:type Tol: float
+	:rtype: TopAbs_State
+") VPointPosition;
 		TopAbs_State VPointPosition (const TopoDS_Shape & F,TopOpeBRep_VPointInter & VP,const Standard_Integer ShapeIndex,TopOpeBRep_PointClassifier & PC,const Standard_Boolean AssumeINON,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* returns the edge containing the VPoint <VP> used in the last VPointPosition() call. Edge is defined if the state previously computed is ON, else Edge is a null shape.
 
-returns the edge containing the VPoint <VP> used in the  
-last VPointPosition() call. Edge is defined if the state previously  
-computed is ON, else Edge is a null shape.") Edge;
+	:rtype: TopoDS_Shape
+") Edge;
 		const TopoDS_Shape & Edge ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns the parameter of the VPoint <VP> on Edge()
 
-returns the parameter of the VPoint <VP> on Edge()") EdgeParameter;
+	:rtype: float
+") EdgeParameter;
 		Standard_Real EdgeParameter ();
 };
 
@@ -5057,78 +3718,41 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_VPointInterIterator;
 class TopOpeBRep_VPointInterIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_VPointInterIterator;
+		%feature("autodoc", "	:rtype: None
+") TopOpeBRep_VPointInterIterator;
 		 TopOpeBRep_VPointInterIterator ();
-		%feature("autodoc", "Args:
-	LI(TopOpeBRep_LineInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_VPointInterIterator;
+		%feature("autodoc", "	:param LI:
+	:type LI: TopOpeBRep_LineInter &
+	:rtype: None
+") TopOpeBRep_VPointInterIterator;
 		 TopOpeBRep_VPointInterIterator (const TopOpeBRep_LineInter & LI);
-		%feature("autodoc", "Args:
-	LI(TopOpeBRep_LineInter)
-	checkkeep(Standard_Boolean)=Standard_False
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param LI:
+	:type LI: TopOpeBRep_LineInter &
+	:param checkkeep: default value is Standard_False
+	:type checkkeep: bool
+	:rtype: None
+") Init;
 		void Init (const TopOpeBRep_LineInter & LI,const Standard_Boolean checkkeep = Standard_False);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:rtype: None
+") Init;
 		void Init ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_VPointInter
-
-No detailed docstring for this function.") CurrentVP;
+		%feature("autodoc", "	:rtype: TopOpeBRep_VPointInter
+") CurrentVP;
 		const TopOpeBRep_VPointInter & CurrentVP ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") CurrentVPIndex;
+		%feature("autodoc", "	:rtype: int
+") CurrentVPIndex;
 		Standard_Integer CurrentVPIndex ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_VPointInter
-
-No detailed docstring for this function.") ChangeCurrentVP;
+		%feature("autodoc", "	:rtype: TopOpeBRep_VPointInter
+") ChangeCurrentVP;
 		TopOpeBRep_VPointInter & ChangeCurrentVP ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_PLineInter
-
-No detailed docstring for this function.") PLineInterDummy;
+		%feature("autodoc", "	:rtype: TopOpeBRep_PLineInter
+") PLineInterDummy;
 		TopOpeBRep_PLineInter PLineInterDummy ();
 };
 
@@ -5150,77 +3774,50 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_WPointInter;
 class TopOpeBRep_WPointInter {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_WPointInter;
+		%feature("autodoc", "	:rtype: None
+") TopOpeBRep_WPointInter;
 		 TopOpeBRep_WPointInter ();
-		%feature("autodoc", "Args:
-	P(IntSurf_PntOn2S)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Set;
+		%feature("autodoc", "	:param P:
+	:type P: IntSurf_PntOn2S &
+	:rtype: None
+") Set;
 		void Set (const IntSurf_PntOn2S & P);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ParametersOnS1;
+		%feature("autodoc", "	:param U:
+	:type U: float &
+	:param V:
+	:type V: float &
+	:rtype: None
+") ParametersOnS1;
 		void ParametersOnS1 (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ParametersOnS2;
+		%feature("autodoc", "	:param U:
+	:type U: float &
+	:param V:
+	:type V: float &
+	:rtype: None
+") ParametersOnS2;
 		void ParametersOnS2 (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	U1(Standard_Real)
-	V1(Standard_Real)
-	U2(Standard_Real)
-	V2(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Parameters;
+		%feature("autodoc", "	:param U1:
+	:type U1: float &
+	:param V1:
+	:type V1: float &
+	:param U2:
+	:type U2: float &
+	:param V2:
+	:type V2: float &
+	:rtype: None
+") Parameters;
 		void Parameters (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt2d
-
-No detailed docstring for this function.") ValueOnS1;
+		%feature("autodoc", "	:rtype: gp_Pnt2d
+") ValueOnS1;
 		gp_Pnt2d ValueOnS1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt2d
-
-No detailed docstring for this function.") ValueOnS2;
+		%feature("autodoc", "	:rtype: gp_Pnt2d
+") ValueOnS2;
 		gp_Pnt2d ValueOnS2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: gp_Pnt
+") Value;
 		const gp_Pnt & Value ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_PPntOn2S
-
-No detailed docstring for this function.") PPntOn2SDummy;
+		%feature("autodoc", "	:rtype: TopOpeBRep_PPntOn2S
+") PPntOn2SDummy;
 		TopOpeBRep_PPntOn2S PPntOn2SDummy ();
 };
 
@@ -5242,63 +3839,33 @@ def __del__(self):
 %nodefaultctor TopOpeBRep_WPointInterIterator;
 class TopOpeBRep_WPointInterIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_WPointInterIterator;
+		%feature("autodoc", "	:rtype: None
+") TopOpeBRep_WPointInterIterator;
 		 TopOpeBRep_WPointInterIterator ();
-		%feature("autodoc", "Args:
-	LI(TopOpeBRep_LineInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopOpeBRep_WPointInterIterator;
+		%feature("autodoc", "	:param LI:
+	:type LI: TopOpeBRep_LineInter &
+	:rtype: None
+") TopOpeBRep_WPointInterIterator;
 		 TopOpeBRep_WPointInterIterator (const TopOpeBRep_LineInter & LI);
-		%feature("autodoc", "Args:
-	LI(TopOpeBRep_LineInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param LI:
+	:type LI: TopOpeBRep_LineInter &
+	:rtype: None
+") Init;
 		void Init (const TopOpeBRep_LineInter & LI);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:rtype: None
+") Init;
 		void Init ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_WPointInter
-
-No detailed docstring for this function.") CurrentWP;
+		%feature("autodoc", "	:rtype: TopOpeBRep_WPointInter
+") CurrentWP;
 		const TopOpeBRep_WPointInter & CurrentWP ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopOpeBRep_PLineInter
-
-No detailed docstring for this function.") PLineInterDummy;
+		%feature("autodoc", "	:rtype: TopOpeBRep_PLineInter
+") PLineInterDummy;
 		TopOpeBRep_PLineInter PLineInterDummy ();
 };
 

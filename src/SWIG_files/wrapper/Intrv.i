@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -60,297 +60,202 @@ enum Intrv_Position {
 %nodefaultctor Intrv_Interval;
 class Intrv_Interval {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Intrv_Interval;
+		%feature("autodoc", "	:rtype: None
+") Intrv_Interval;
 		 Intrv_Interval ();
-		%feature("autodoc", "Args:
-	Start(Standard_Real)
-	End(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Intrv_Interval;
+		%feature("autodoc", "	:param Start:
+	:type Start: float
+	:param End:
+	:type End: float
+	:rtype: None
+") Intrv_Interval;
 		 Intrv_Interval (const Standard_Real Start,const Standard_Real End);
-		%feature("autodoc", "Args:
-	Start(Standard_Real)
-	TolStart(Standard_ShortReal)
-	End(Standard_Real)
-	TolEnd(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Intrv_Interval;
+		%feature("autodoc", "	:param Start:
+	:type Start: float
+	:param TolStart:
+	:type TolStart: Standard_ShortReal
+	:param End:
+	:type End: float
+	:param TolEnd:
+	:type TolEnd: Standard_ShortReal
+	:rtype: None
+") Intrv_Interval;
 		 Intrv_Interval (const Standard_Real Start,const Standard_ShortReal TolStart,const Standard_Real End,const Standard_ShortReal TolEnd);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Start;
+		%feature("autodoc", "	:rtype: float
+") Start;
 		Standard_Real Start ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") End;
+		%feature("autodoc", "	:rtype: float
+") End;
 		Standard_Real End ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") TolStart;
+		%feature("autodoc", "	:rtype: Standard_ShortReal
+") TolStart;
 		Standard_ShortReal TolStart ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") TolEnd;
+		%feature("autodoc", "	:rtype: Standard_ShortReal
+") TolEnd;
 		Standard_ShortReal TolEnd ();
-		%feature("autodoc", "Args:
-	Start(Standard_Real)
-	TolStart(Standard_ShortReal)
-	End(Standard_Real)
-	TolEnd(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Bounds;
+		%feature("autodoc", "	:param Start:
+	:type Start: float &
+	:param TolStart:
+	:type TolStart: Standard_ShortReal &
+	:param End:
+	:type End: float &
+	:param TolEnd:
+	:type TolEnd: Standard_ShortReal &
+	:rtype: None
+") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_ShortReal & TolStart,Standard_Real &OutValue,Standard_ShortReal & TolEnd);
-		%feature("autodoc", "Args:
-	Start(Standard_Real)
-	TolStart(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetStart;
+		%feature("autodoc", "	:param Start:
+	:type Start: float
+	:param TolStart:
+	:type TolStart: Standard_ShortReal
+	:rtype: None
+") SetStart;
 		void SetStart (const Standard_Real Start,const Standard_ShortReal TolStart);
-		%feature("autodoc", "Args:
-	Start(Standard_Real)
-	TolStart(Standard_ShortReal)
+		%feature("autodoc", "	* ****+****--------------------> Old one  ****+****------------------------> New one to fuse  <<< <<<  ****+****------------------------> result
 
-Returns:
-	None
-
-****+****-------------------->      Old one  
-        ****+****------------------------>      New one to fuse  
-        <<<     <<<  
-        ****+****------------------------>      result") FuseAtStart;
+	:param Start:
+	:type Start: float
+	:param TolStart:
+	:type TolStart: Standard_ShortReal
+	:rtype: None
+") FuseAtStart;
 		void FuseAtStart (const Standard_Real Start,const Standard_ShortReal TolStart);
-		%feature("autodoc", "Args:
-	Start(Standard_Real)
-	TolStart(Standard_ShortReal)
+		%feature("autodoc", "	* ****+****-----------> Old one  <----------**+** Tool for cutting  >>> >>> ****+****-----------> result
 
-Returns:
-	None
-
-****+****----------->      Old one  
-        <----------**+**                        Tool for cutting  
-                   >>>     >>>  
-                     ****+****----------->      result") CutAtStart;
+	:param Start:
+	:type Start: float
+	:param TolStart:
+	:type TolStart: Standard_ShortReal
+	:rtype: None
+") CutAtStart;
 		void CutAtStart (const Standard_Real Start,const Standard_ShortReal TolStart);
-		%feature("autodoc", "Args:
-	End(Standard_Real)
-	TolEnd(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetEnd;
+		%feature("autodoc", "	:param End:
+	:type End: float
+	:param TolEnd:
+	:type TolEnd: Standard_ShortReal
+	:rtype: None
+") SetEnd;
 		void SetEnd (const Standard_Real End,const Standard_ShortReal TolEnd);
-		%feature("autodoc", "Args:
-	End(Standard_Real)
-	TolEnd(Standard_ShortReal)
+		%feature("autodoc", "	* <---------------------****+**** Old one  <-----------------**+**  New one to fuse  >>> >>>  <---------------------****+**** result
 
-Returns:
-	None
-
-<---------------------****+****      Old one  
-        <-----------------**+**              New one to fuse  
-                            >>>     >>>  
-        <---------------------****+****      result") FuseAtEnd;
+	:param End:
+	:type End: float
+	:param TolEnd:
+	:type TolEnd: Standard_ShortReal
+	:rtype: None
+") FuseAtEnd;
 		void FuseAtEnd (const Standard_Real End,const Standard_ShortReal TolEnd);
-		%feature("autodoc", "Args:
-	End(Standard_Real)
-	TolEnd(Standard_ShortReal)
+		%feature("autodoc", "	* <-----****+****  Old one  **+**------> Tool for cutting  <<< <<<  <-----****+****  result
 
-Returns:
-	None
-
-<-----****+****                      Old one  
-                    **+**------>             Tool for cutting  
-              <<<     <<<  
-        <-----****+****                      result") CutAtEnd;
+	:param End:
+	:type End: float
+	:param TolEnd:
+	:type TolEnd: Standard_ShortReal
+	:rtype: None
+") CutAtEnd;
 		void CutAtEnd (const Standard_Real End,const Standard_ShortReal TolEnd);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* True if myStart+myTolStart > myEnd-myTolEnd  or if myEnd+myTolEnd > myStart-myTolStart
 
-True if myStart+myTolStart > myEnd-myTolEnd  
-           or if myEnd+myTolEnd > myStart-myTolStart") IsProbablyEmpty;
+	:rtype: bool
+") IsProbablyEmpty;
 		Standard_Boolean IsProbablyEmpty ();
-		%feature("autodoc", "Args:
-	Other(Intrv_Interval)
+		%feature("autodoc", "	* True if me is Before Other  **-----------**** Other ***-----*   Before ***------------*  JustBefore ***-----------------*  OverlappingAtStart ***--------------------------*  JustEnclosingAtEnd ***-------------------------------------* Enclosing ***----*  JustOverlappingAtStart ***-------------*  Similar ***------------------------* JustEnclosingAtStart  ***-*  Inside  ***------*  JustOverlappingAtEnd  ***-----------------* OverlappingAtEnd  ***--------* JustAfter  ***---* After
 
-Returns:
-	Intrv_Position
-
-True if me is Before Other  
-                **-----------****             Other  
-  ***-----*                                   Before  
-  ***------------*                            JustBefore  
-  ***-----------------*                       OverlappingAtStart  
-  ***--------------------------*              JustEnclosingAtEnd  
-  ***-------------------------------------*   Enclosing  
-               ***----*                       JustOverlappingAtStart  
-               ***-------------*              Similar  
-               ***------------------------*   JustEnclosingAtStart  
-                      ***-*                   Inside  
-                      ***------*              JustOverlappingAtEnd  
-                      ***-----------------*   OverlappingAtEnd  
-                               ***--------*   JustAfter  
-                                    ***---*   After") Position;
+	:param Other:
+	:type Other: Intrv_Interval &
+	:rtype: Intrv_Position
+") Position;
 		Intrv_Position Position (const Intrv_Interval & Other);
-		%feature("autodoc", "Args:
-	Other(Intrv_Interval)
+		%feature("autodoc", "	* True if me is Before Other ***----------------**  me  **-----------**** Other
 
-Returns:
-	Standard_Boolean
-
-True if me is Before Other  
-         ***----------------**                              me  
-                                 **-----------****          Other") IsBefore;
+	:param Other:
+	:type Other: Intrv_Interval &
+	:rtype: bool
+") IsBefore;
 		Standard_Boolean IsBefore (const Intrv_Interval & Other);
-		%feature("autodoc", "Args:
-	Other(Intrv_Interval)
+		%feature("autodoc", "	* True if me is After Other  **-----------**** me ***----------------**  Other
 
-Returns:
-	Standard_Boolean
-
-True if me is After Other  
-                                 **-----------****          me  
-         ***----------------**                              Other") IsAfter;
+	:param Other:
+	:type Other: Intrv_Interval &
+	:rtype: bool
+") IsAfter;
 		Standard_Boolean IsAfter (const Intrv_Interval & Other);
-		%feature("autodoc", "Args:
-	Other(Intrv_Interval)
+		%feature("autodoc", "	* True if me is Inside Other  **-----------****  me ***--------------------------**  Other
 
-Returns:
-	Standard_Boolean
-
-True if me is Inside Other  
-                 **-----------****                          me  
-         ***--------------------------**                    Other") IsInside;
+	:param Other:
+	:type Other: Intrv_Interval &
+	:rtype: bool
+") IsInside;
 		Standard_Boolean IsInside (const Intrv_Interval & Other);
-		%feature("autodoc", "Args:
-	Other(Intrv_Interval)
+		%feature("autodoc", "	* True if me is Enclosing Other ***----------------------------**** me ***------------------** Other
 
-Returns:
-	Standard_Boolean
-
-True if me is Enclosing Other  
-       ***----------------------------****                  me  
-             ***------------------**                        Other") IsEnclosing;
+	:param Other:
+	:type Other: Intrv_Interval &
+	:rtype: bool
+") IsEnclosing;
 		Standard_Boolean IsEnclosing (const Intrv_Interval & Other);
-		%feature("autodoc", "Args:
-	Other(Intrv_Interval)
+		%feature("autodoc", "	* True if me is just Enclosing Other at start  ***---------------------------**** me ***------------------** Other
 
-Returns:
-	Standard_Boolean
-
-True if me is just Enclosing Other at start  
-              ***---------------------------****            me  
-             ***------------------**                        Other") IsJustEnclosingAtStart;
+	:param Other:
+	:type Other: Intrv_Interval &
+	:rtype: bool
+") IsJustEnclosingAtStart;
 		Standard_Boolean IsJustEnclosingAtStart (const Intrv_Interval & Other);
-		%feature("autodoc", "Args:
-	Other(Intrv_Interval)
+		%feature("autodoc", "	* True if me is just Enclosing Other at End ***----------------------------**** me  ***-----------------****  Other
 
-Returns:
-	Standard_Boolean
-
-True if me is just Enclosing Other at End  
-       ***----------------------------****                  me  
-                 ***-----------------****                   Other") IsJustEnclosingAtEnd;
+	:param Other:
+	:type Other: Intrv_Interval &
+	:rtype: bool
+") IsJustEnclosingAtEnd;
 		Standard_Boolean IsJustEnclosingAtEnd (const Intrv_Interval & Other);
-		%feature("autodoc", "Args:
-	Other(Intrv_Interval)
+		%feature("autodoc", "	* True if me is just before Other ***--------****   me  ***-----------** Other
 
-Returns:
-	Standard_Boolean
-
-True if me is just before Other  
-       ***--------****                                      me  
-                    ***-----------**                        Other") IsJustBefore;
+	:param Other:
+	:type Other: Intrv_Interval &
+	:rtype: bool
+") IsJustBefore;
 		Standard_Boolean IsJustBefore (const Intrv_Interval & Other);
-		%feature("autodoc", "Args:
-	Other(Intrv_Interval)
+		%feature("autodoc", "	* True if me is just after Other  ****-------****  me ***-----------**  Other
 
-Returns:
-	Standard_Boolean
-
-True if me is just after Other  
-                    ****-------****                         me  
-       ***-----------**                                     Other") IsJustAfter;
+	:param Other:
+	:type Other: Intrv_Interval &
+	:rtype: bool
+") IsJustAfter;
 		Standard_Boolean IsJustAfter (const Intrv_Interval & Other);
-		%feature("autodoc", "Args:
-	Other(Intrv_Interval)
+		%feature("autodoc", "	* True if me is overlapping Other at start ***---------------***  me  ***-----------** Other
 
-Returns:
-	Standard_Boolean
-
-True if me is overlapping Other at start  
-       ***---------------***                                me  
-                    ***-----------**                        Other") IsOverlappingAtStart;
+	:param Other:
+	:type Other: Intrv_Interval &
+	:rtype: bool
+") IsOverlappingAtStart;
 		Standard_Boolean IsOverlappingAtStart (const Intrv_Interval & Other);
-		%feature("autodoc", "Args:
-	Other(Intrv_Interval)
+		%feature("autodoc", "	* True if me is overlapping Other at end  ***-----------** me ***---------------***  Other
 
-Returns:
-	Standard_Boolean
-
-True if me is overlapping Other at end  
-                    ***-----------**                        me  
-       ***---------------***                                Other") IsOverlappingAtEnd;
+	:param Other:
+	:type Other: Intrv_Interval &
+	:rtype: bool
+") IsOverlappingAtEnd;
 		Standard_Boolean IsOverlappingAtEnd (const Intrv_Interval & Other);
-		%feature("autodoc", "Args:
-	Other(Intrv_Interval)
+		%feature("autodoc", "	* True if me is just overlapping Other at start ***-----------***  me ***------------------------** Other
 
-Returns:
-	Standard_Boolean
-
-True if me is just overlapping Other at start  
-       ***-----------***                                    me  
-       ***------------------------**                        Other") IsJustOverlappingAtStart;
+	:param Other:
+	:type Other: Intrv_Interval &
+	:rtype: bool
+") IsJustOverlappingAtStart;
 		Standard_Boolean IsJustOverlappingAtStart (const Intrv_Interval & Other);
-		%feature("autodoc", "Args:
-	Other(Intrv_Interval)
+		%feature("autodoc", "	* True if me is just overlapping Other at end  ***-----------*  me ***------------------------** Other
 
-Returns:
-	Standard_Boolean
-
-True if me is just overlapping Other at end  
-                    ***-----------*                         me  
-       ***------------------------**                        Other") IsJustOverlappingAtEnd;
+	:param Other:
+	:type Other: Intrv_Interval &
+	:rtype: bool
+") IsJustOverlappingAtEnd;
 		Standard_Boolean IsJustOverlappingAtEnd (const Intrv_Interval & Other);
-		%feature("autodoc", "Args:
-	Other(Intrv_Interval)
+		%feature("autodoc", "	* True if me and Other have the same bounds  *----------------***  me ***-----------------**  Other
 
-Returns:
-	Standard_Boolean
-
-True if me and Other have the same bounds  
-        *----------------***                                me  
-       ***-----------------**                               Other") IsSimilar;
+	:param Other:
+	:type Other: Intrv_Interval &
+	:rtype: bool
+") IsSimilar;
 		Standard_Boolean IsSimilar (const Intrv_Interval & Other);
 };
 
@@ -372,109 +277,76 @@ def __del__(self):
 %nodefaultctor Intrv_Intervals;
 class Intrv_Intervals {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates a void sequence of intervals.
 
-Creates a void sequence of intervals.") Intrv_Intervals;
+	:rtype: None
+") Intrv_Intervals;
 		 Intrv_Intervals ();
-		%feature("autodoc", "Args:
-	Int(Intrv_Interval)
+		%feature("autodoc", "	* Creates a sequence of one interval.
 
-Returns:
-	None
-
-Creates a sequence of one interval.") Intrv_Intervals;
+	:param Int:
+	:type Int: Intrv_Interval &
+	:rtype: None
+") Intrv_Intervals;
 		 Intrv_Intervals (const Intrv_Interval & Int);
-		%feature("autodoc", "Args:
-	Int(Intrv_Intervals)
+		%feature("autodoc", "	* Creates by copying an existing sequence of intervals.
 
-Returns:
-	None
-
-Creates   by   copying  an   existing  sequence of  
-         intervals.") Intrv_Intervals;
+	:param Int:
+	:type Int: Intrv_Intervals &
+	:rtype: None
+") Intrv_Intervals;
 		 Intrv_Intervals (const Intrv_Intervals & Int);
-		%feature("autodoc", "Args:
-	Tool(Intrv_Interval)
+		%feature("autodoc", "	* Intersects the intervals with the interval <Tool>.
 
-Returns:
-	None
-
-Intersects the intervals with the interval <Tool>.") Intersect;
+	:param Tool:
+	:type Tool: Intrv_Interval &
+	:rtype: None
+") Intersect;
 		void Intersect (const Intrv_Interval & Tool);
-		%feature("autodoc", "Args:
-	Tool(Intrv_Intervals)
+		%feature("autodoc", "	* Intersects the intervals with the intervals in the sequence <Tool>.
 
-Returns:
-	None
-
-Intersects the intervals with the intervals in the  
-         sequence  <Tool>.") Intersect;
+	:param Tool:
+	:type Tool: Intrv_Intervals &
+	:rtype: None
+") Intersect;
 		void Intersect (const Intrv_Intervals & Tool);
-		%feature("autodoc", "Args:
-	Tool(Intrv_Interval)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Subtract;
+		%feature("autodoc", "	:param Tool:
+	:type Tool: Intrv_Interval &
+	:rtype: None
+") Subtract;
 		void Subtract (const Intrv_Interval & Tool);
-		%feature("autodoc", "Args:
-	Tool(Intrv_Intervals)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Subtract;
+		%feature("autodoc", "	:param Tool:
+	:type Tool: Intrv_Intervals &
+	:rtype: None
+") Subtract;
 		void Subtract (const Intrv_Intervals & Tool);
-		%feature("autodoc", "Args:
-	Tool(Intrv_Interval)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Unite;
+		%feature("autodoc", "	:param Tool:
+	:type Tool: Intrv_Interval &
+	:rtype: None
+") Unite;
 		void Unite (const Intrv_Interval & Tool);
-		%feature("autodoc", "Args:
-	Tool(Intrv_Intervals)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Unite;
+		%feature("autodoc", "	:param Tool:
+	:type Tool: Intrv_Intervals &
+	:rtype: None
+") Unite;
 		void Unite (const Intrv_Intervals & Tool);
-		%feature("autodoc", "Args:
-	Tool(Intrv_Interval)
-
-Returns:
-	None
-
-No detailed docstring for this function.") XUnite;
+		%feature("autodoc", "	:param Tool:
+	:type Tool: Intrv_Interval &
+	:rtype: None
+") XUnite;
 		void XUnite (const Intrv_Interval & Tool);
-		%feature("autodoc", "Args:
-	Tool(Intrv_Intervals)
-
-Returns:
-	None
-
-No detailed docstring for this function.") XUnite;
+		%feature("autodoc", "	:param Tool:
+	:type Tool: Intrv_Intervals &
+	:rtype: None
+") XUnite;
 		void XUnite (const Intrv_Intervals & Tool);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbIntervals;
+		%feature("autodoc", "	:rtype: int
+") NbIntervals;
 		Standard_Integer NbIntervals ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Intrv_Interval
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Intrv_Interval
+") Value;
 		const Intrv_Interval & Value (const Standard_Integer Index);
 };
 
@@ -496,22 +368,17 @@ def __del__(self):
 %nodefaultctor Intrv_SequenceNodeOfSequenceOfInterval;
 class Intrv_SequenceNodeOfSequenceOfInterval : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Intrv_Interval)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Intrv_SequenceNodeOfSequenceOfInterval;
+		%feature("autodoc", "	:param I:
+	:type I: Intrv_Interval &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Intrv_SequenceNodeOfSequenceOfInterval;
 		 Intrv_SequenceNodeOfSequenceOfInterval (const Intrv_Interval & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Intrv_Interval
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Intrv_Interval
+") Value;
 		Intrv_Interval & Value ();
 };
 
@@ -572,168 +439,111 @@ def __del__(self):
 %nodefaultctor Intrv_SequenceOfInterval;
 class Intrv_SequenceOfInterval : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Intrv_SequenceOfInterval;
+		%feature("autodoc", "	:rtype: None
+") Intrv_SequenceOfInterval;
 		 Intrv_SequenceOfInterval ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Intrv_SequenceOfInterval)
-
-Returns:
-	Intrv_SequenceOfInterval
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Intrv_SequenceOfInterval &
+	:rtype: Intrv_SequenceOfInterval
+") Assign;
 		const Intrv_SequenceOfInterval & Assign (const Intrv_SequenceOfInterval & Other);
-		%feature("autodoc", "Args:
-	Other(Intrv_SequenceOfInterval)
-
-Returns:
-	Intrv_SequenceOfInterval
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Intrv_SequenceOfInterval &
+	:rtype: Intrv_SequenceOfInterval
+") operator=;
 		const Intrv_SequenceOfInterval & operator = (const Intrv_SequenceOfInterval & Other);
-		%feature("autodoc", "Args:
-	T(Intrv_Interval)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Intrv_Interval &
+	:rtype: None
+") Append;
 		void Append (const Intrv_Interval & T);
-		%feature("autodoc", "Args:
-	S(Intrv_SequenceOfInterval)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Intrv_SequenceOfInterval &
+	:rtype: None
+") Append;
 		void Append (Intrv_SequenceOfInterval & S);
-		%feature("autodoc", "Args:
-	T(Intrv_Interval)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Intrv_Interval &
+	:rtype: None
+") Prepend;
 		void Prepend (const Intrv_Interval & T);
-		%feature("autodoc", "Args:
-	S(Intrv_SequenceOfInterval)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Intrv_SequenceOfInterval &
+	:rtype: None
+") Prepend;
 		void Prepend (Intrv_SequenceOfInterval & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Intrv_Interval)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Intrv_Interval &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Intrv_Interval & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Intrv_SequenceOfInterval)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Intrv_SequenceOfInterval &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Intrv_SequenceOfInterval & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Intrv_Interval)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Intrv_Interval &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Intrv_Interval & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Intrv_SequenceOfInterval)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Intrv_SequenceOfInterval &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Intrv_SequenceOfInterval & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Intrv_Interval
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Intrv_Interval
+") First;
 		const Intrv_Interval & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Intrv_Interval
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Intrv_Interval
+") Last;
 		const Intrv_Interval & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Intrv_SequenceOfInterval)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Intrv_SequenceOfInterval &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Intrv_SequenceOfInterval & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Intrv_Interval
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Intrv_Interval
+") Value;
 		const Intrv_Interval & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Intrv_Interval)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Intrv_Interval &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Intrv_Interval & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Intrv_Interval
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Intrv_Interval
+") ChangeValue;
 		Intrv_Interval & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 

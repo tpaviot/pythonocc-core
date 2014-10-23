@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -44,46 +44,43 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor HLRAppli_ReflectLines;
 class HLRAppli_ReflectLines {
 	public:
-		%feature("autodoc", "Args:
-	aShape(TopoDS_Shape)
+		%feature("autodoc", "	* Constructor
 
-Returns:
-	None
-
-Constructor") HLRAppli_ReflectLines;
+	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:rtype: None
+") HLRAppli_ReflectLines;
 		 HLRAppli_ReflectLines (const TopoDS_Shape & aShape);
-		%feature("autodoc", "Args:
-	Nx(Standard_Real)
-	Ny(Standard_Real)
-	Nz(Standard_Real)
-	XAt(Standard_Real)
-	YAt(Standard_Real)
-	ZAt(Standard_Real)
-	XUp(Standard_Real)
-	YUp(Standard_Real)
-	ZUp(Standard_Real)
+		%feature("autodoc", "	* Sets the normal to the plane of visualisation, the coordinates of the view point and the coordinates of the vertical direction vector.
 
-Returns:
-	None
-
-Sets the normal to the plane of visualisation,  
-         the coordinates of the view point and  
-         the coordinates of the vertical direction vector.") SetAxes;
+	:param Nx:
+	:type Nx: float
+	:param Ny:
+	:type Ny: float
+	:param Nz:
+	:type Nz: float
+	:param XAt:
+	:type XAt: float
+	:param YAt:
+	:type YAt: float
+	:param ZAt:
+	:type ZAt: float
+	:param XUp:
+	:type XUp: float
+	:param YUp:
+	:type YUp: float
+	:param ZUp:
+	:type ZUp: float
+	:rtype: None
+") SetAxes;
 		void SetAxes (const Standard_Real Nx,const Standard_Real Ny,const Standard_Real Nz,const Standard_Real XAt,const Standard_Real YAt,const Standard_Real ZAt,const Standard_Real XUp,const Standard_Real YUp,const Standard_Real ZUp);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:rtype: None
+") Perform;
 		void Perform ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* returns resulting compound of reflect lines represented by edges in 3d
 
-returns resulting compound of reflect lines  
-         represented by edges in 3d") GetResult;
+	:rtype: TopoDS_Shape
+") GetResult;
 		TopoDS_Shape GetResult ();
 };
 

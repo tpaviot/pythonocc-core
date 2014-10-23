@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -65,148 +65,82 @@ def __del__(self):
 %nodefaultctor ExprIntrp_Analysis;
 class ExprIntrp_Analysis {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ExprIntrp_Analysis;
+		%feature("autodoc", "	:rtype: None
+") ExprIntrp_Analysis;
 		 ExprIntrp_Analysis ();
-		%feature("autodoc", "Args:
-	agen(Handle_ExprIntrp_Generator)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetMaster;
+		%feature("autodoc", "	:param agen:
+	:type agen: Handle_ExprIntrp_Generator &
+	:rtype: None
+") SetMaster;
 		void SetMaster (const Handle_ExprIntrp_Generator & agen);
-		%feature("autodoc", "Args:
-	exp(Handle_Expr_GeneralExpression)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Push;
+		%feature("autodoc", "	:param exp:
+	:type exp: Handle_Expr_GeneralExpression &
+	:rtype: None
+") Push;
 		void Push (const Handle_Expr_GeneralExpression & exp);
-		%feature("autodoc", "Args:
-	rel(Handle_Expr_GeneralRelation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") PushRelation;
+		%feature("autodoc", "	:param rel:
+	:type rel: Handle_Expr_GeneralRelation &
+	:rtype: None
+") PushRelation;
 		void PushRelation (const Handle_Expr_GeneralRelation & rel);
-		%feature("autodoc", "Args:
-	name(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") PushName;
+		%feature("autodoc", "	:param name:
+	:type name: TCollection_AsciiString &
+	:rtype: None
+") PushName;
 		void PushName (const TCollection_AsciiString & name);
-		%feature("autodoc", "Args:
-	degree(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") PushValue;
+		%feature("autodoc", "	:param degree:
+	:type degree: Standard_Integer
+	:rtype: None
+") PushValue;
 		void PushValue (const Standard_Integer degree);
-		%feature("autodoc", "Args:
-	func(Handle_Expr_GeneralFunction)
-
-Returns:
-	None
-
-No detailed docstring for this function.") PushFunction;
+		%feature("autodoc", "	:param func:
+	:type func: Handle_Expr_GeneralFunction &
+	:rtype: None
+") PushFunction;
 		void PushFunction (const Handle_Expr_GeneralFunction & func);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Expr_GeneralExpression
-
-No detailed docstring for this function.") Pop;
+		%feature("autodoc", "	:rtype: Handle_Expr_GeneralExpression
+") Pop;
 		Handle_Expr_GeneralExpression Pop ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Expr_GeneralRelation
-
-No detailed docstring for this function.") PopRelation;
+		%feature("autodoc", "	:rtype: Handle_Expr_GeneralRelation
+") PopRelation;
 		Handle_Expr_GeneralRelation PopRelation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") PopName;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") PopName;
 		TCollection_AsciiString PopName ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") PopValue;
+		%feature("autodoc", "	:rtype: int
+") PopValue;
 		Standard_Integer PopValue ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Expr_GeneralFunction
-
-No detailed docstring for this function.") PopFunction;
+		%feature("autodoc", "	:rtype: Handle_Expr_GeneralFunction
+") PopFunction;
 		Handle_Expr_GeneralFunction PopFunction ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsExpStackEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsExpStackEmpty;
 		Standard_Boolean IsExpStackEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsRelStackEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsRelStackEmpty;
 		Standard_Boolean IsRelStackEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ResetAll;
+		%feature("autodoc", "	:rtype: None
+") ResetAll;
 		void ResetAll ();
-		%feature("autodoc", "Args:
-	func(Handle_Expr_NamedFunction)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Use;
+		%feature("autodoc", "	:param func:
+	:type func: Handle_Expr_NamedFunction &
+	:rtype: None
+") Use;
 		void Use (const Handle_Expr_NamedFunction & func);
-		%feature("autodoc", "Args:
-	named(Handle_Expr_NamedExpression)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Use;
+		%feature("autodoc", "	:param named:
+	:type named: Handle_Expr_NamedExpression &
+	:rtype: None
+") Use;
 		void Use (const Handle_Expr_NamedExpression & named);
-		%feature("autodoc", "Args:
-	name(TCollection_AsciiString)
-
-Returns:
-	Handle_Expr_NamedExpression
-
-No detailed docstring for this function.") GetNamed;
+		%feature("autodoc", "	:param name:
+	:type name: TCollection_AsciiString &
+	:rtype: Handle_Expr_NamedExpression
+") GetNamed;
 		Handle_Expr_NamedExpression GetNamed (const TCollection_AsciiString & name);
-		%feature("autodoc", "Args:
-	name(TCollection_AsciiString)
-
-Returns:
-	Handle_Expr_NamedFunction
-
-No detailed docstring for this function.") GetFunction;
+		%feature("autodoc", "	:param name:
+	:type name: TCollection_AsciiString &
+	:rtype: Handle_Expr_NamedFunction
+") GetFunction;
 		Handle_Expr_NamedFunction GetFunction (const TCollection_AsciiString & name);
 };
 
@@ -228,55 +162,35 @@ def __del__(self):
 %nodefaultctor ExprIntrp_Generator;
 class ExprIntrp_Generator : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	func(Handle_Expr_NamedFunction)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Use;
+		%feature("autodoc", "	:param func:
+	:type func: Handle_Expr_NamedFunction &
+	:rtype: None
+") Use;
 		void Use (const Handle_Expr_NamedFunction & func);
-		%feature("autodoc", "Args:
-	named(Handle_Expr_NamedExpression)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Use;
+		%feature("autodoc", "	:param named:
+	:type named: Handle_Expr_NamedExpression &
+	:rtype: None
+") Use;
 		void Use (const Handle_Expr_NamedExpression & named);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ExprIntrp_SequenceOfNamedExpression
-
-No detailed docstring for this function.") GetNamed;
+		%feature("autodoc", "	:rtype: ExprIntrp_SequenceOfNamedExpression
+") GetNamed;
 		const ExprIntrp_SequenceOfNamedExpression & GetNamed ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ExprIntrp_SequenceOfNamedFunction
-
-No detailed docstring for this function.") GetFunctions;
+		%feature("autodoc", "	:rtype: ExprIntrp_SequenceOfNamedFunction
+") GetFunctions;
 		const ExprIntrp_SequenceOfNamedFunction & GetFunctions ();
-		%feature("autodoc", "Args:
-	name(TCollection_AsciiString)
+		%feature("autodoc", "	* Returns NamedExpression with name <name> already interpreted if it exists. Returns a null handle if not.
 
-Returns:
-	Handle_Expr_NamedExpression
-
-Returns NamedExpression with name <name> already  
-         interpreted if it exists. Returns a null handle if  
-         not.") GetNamed;
+	:param name:
+	:type name: TCollection_AsciiString &
+	:rtype: Handle_Expr_NamedExpression
+") GetNamed;
 		Handle_Expr_NamedExpression GetNamed (const TCollection_AsciiString & name);
-		%feature("autodoc", "Args:
-	name(TCollection_AsciiString)
+		%feature("autodoc", "	* Returns NamedFunction with name <name> already interpreted if it exists. Returns a null handle if not.
 
-Returns:
-	Handle_Expr_NamedFunction
-
-Returns NamedFunction with name <name> already  
-         interpreted if it exists. Returns a null handle if  
-         not.") GetFunction;
+	:param name:
+	:type name: TCollection_AsciiString &
+	:rtype: Handle_Expr_NamedFunction
+") GetFunction;
 		Handle_Expr_NamedFunction GetFunction (const TCollection_AsciiString & name);
 };
 
@@ -337,22 +251,17 @@ def __del__(self):
 %nodefaultctor ExprIntrp_SequenceNodeOfSequenceOfNamedExpression;
 class ExprIntrp_SequenceNodeOfSequenceOfNamedExpression : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Expr_NamedExpression)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ExprIntrp_SequenceNodeOfSequenceOfNamedExpression;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Expr_NamedExpression &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") ExprIntrp_SequenceNodeOfSequenceOfNamedExpression;
 		 ExprIntrp_SequenceNodeOfSequenceOfNamedExpression (const Handle_Expr_NamedExpression & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Expr_NamedExpression
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Expr_NamedExpression
+") Value;
 		Handle_Expr_NamedExpression & Value ();
 };
 
@@ -413,22 +322,17 @@ def __del__(self):
 %nodefaultctor ExprIntrp_SequenceNodeOfSequenceOfNamedFunction;
 class ExprIntrp_SequenceNodeOfSequenceOfNamedFunction : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Expr_NamedFunction)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ExprIntrp_SequenceNodeOfSequenceOfNamedFunction;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Expr_NamedFunction &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") ExprIntrp_SequenceNodeOfSequenceOfNamedFunction;
 		 ExprIntrp_SequenceNodeOfSequenceOfNamedFunction (const Handle_Expr_NamedFunction & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Expr_NamedFunction
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Expr_NamedFunction
+") Value;
 		Handle_Expr_NamedFunction & Value ();
 };
 
@@ -489,168 +393,111 @@ def __del__(self):
 %nodefaultctor ExprIntrp_SequenceOfNamedExpression;
 class ExprIntrp_SequenceOfNamedExpression : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ExprIntrp_SequenceOfNamedExpression;
+		%feature("autodoc", "	:rtype: None
+") ExprIntrp_SequenceOfNamedExpression;
 		 ExprIntrp_SequenceOfNamedExpression ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(ExprIntrp_SequenceOfNamedExpression)
-
-Returns:
-	ExprIntrp_SequenceOfNamedExpression
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: ExprIntrp_SequenceOfNamedExpression &
+	:rtype: ExprIntrp_SequenceOfNamedExpression
+") Assign;
 		const ExprIntrp_SequenceOfNamedExpression & Assign (const ExprIntrp_SequenceOfNamedExpression & Other);
-		%feature("autodoc", "Args:
-	Other(ExprIntrp_SequenceOfNamedExpression)
-
-Returns:
-	ExprIntrp_SequenceOfNamedExpression
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: ExprIntrp_SequenceOfNamedExpression &
+	:rtype: ExprIntrp_SequenceOfNamedExpression
+") operator=;
 		const ExprIntrp_SequenceOfNamedExpression & operator = (const ExprIntrp_SequenceOfNamedExpression & Other);
-		%feature("autodoc", "Args:
-	T(Handle_Expr_NamedExpression)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Expr_NamedExpression &
+	:rtype: None
+") Append;
 		void Append (const Handle_Expr_NamedExpression & T);
-		%feature("autodoc", "Args:
-	S(ExprIntrp_SequenceOfNamedExpression)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: ExprIntrp_SequenceOfNamedExpression &
+	:rtype: None
+") Append;
 		void Append (ExprIntrp_SequenceOfNamedExpression & S);
-		%feature("autodoc", "Args:
-	T(Handle_Expr_NamedExpression)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Expr_NamedExpression &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Expr_NamedExpression & T);
-		%feature("autodoc", "Args:
-	S(ExprIntrp_SequenceOfNamedExpression)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: ExprIntrp_SequenceOfNamedExpression &
+	:rtype: None
+") Prepend;
 		void Prepend (ExprIntrp_SequenceOfNamedExpression & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Expr_NamedExpression)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Expr_NamedExpression &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_Expr_NamedExpression & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(ExprIntrp_SequenceOfNamedExpression)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: ExprIntrp_SequenceOfNamedExpression &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,ExprIntrp_SequenceOfNamedExpression & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Expr_NamedExpression)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Expr_NamedExpression &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_Expr_NamedExpression & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(ExprIntrp_SequenceOfNamedExpression)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: ExprIntrp_SequenceOfNamedExpression &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,ExprIntrp_SequenceOfNamedExpression & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Expr_NamedExpression
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_Expr_NamedExpression
+") First;
 		const Handle_Expr_NamedExpression & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Expr_NamedExpression
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_Expr_NamedExpression
+") Last;
 		const Handle_Expr_NamedExpression & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(ExprIntrp_SequenceOfNamedExpression)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: ExprIntrp_SequenceOfNamedExpression &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,ExprIntrp_SequenceOfNamedExpression & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Expr_NamedExpression
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Expr_NamedExpression
+") Value;
 		const Handle_Expr_NamedExpression & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_Expr_NamedExpression)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_Expr_NamedExpression &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Expr_NamedExpression & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Expr_NamedExpression
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Expr_NamedExpression
+") ChangeValue;
 		Handle_Expr_NamedExpression & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -672,168 +519,111 @@ def __del__(self):
 %nodefaultctor ExprIntrp_SequenceOfNamedFunction;
 class ExprIntrp_SequenceOfNamedFunction : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ExprIntrp_SequenceOfNamedFunction;
+		%feature("autodoc", "	:rtype: None
+") ExprIntrp_SequenceOfNamedFunction;
 		 ExprIntrp_SequenceOfNamedFunction ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(ExprIntrp_SequenceOfNamedFunction)
-
-Returns:
-	ExprIntrp_SequenceOfNamedFunction
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: ExprIntrp_SequenceOfNamedFunction &
+	:rtype: ExprIntrp_SequenceOfNamedFunction
+") Assign;
 		const ExprIntrp_SequenceOfNamedFunction & Assign (const ExprIntrp_SequenceOfNamedFunction & Other);
-		%feature("autodoc", "Args:
-	Other(ExprIntrp_SequenceOfNamedFunction)
-
-Returns:
-	ExprIntrp_SequenceOfNamedFunction
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: ExprIntrp_SequenceOfNamedFunction &
+	:rtype: ExprIntrp_SequenceOfNamedFunction
+") operator=;
 		const ExprIntrp_SequenceOfNamedFunction & operator = (const ExprIntrp_SequenceOfNamedFunction & Other);
-		%feature("autodoc", "Args:
-	T(Handle_Expr_NamedFunction)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Expr_NamedFunction &
+	:rtype: None
+") Append;
 		void Append (const Handle_Expr_NamedFunction & T);
-		%feature("autodoc", "Args:
-	S(ExprIntrp_SequenceOfNamedFunction)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: ExprIntrp_SequenceOfNamedFunction &
+	:rtype: None
+") Append;
 		void Append (ExprIntrp_SequenceOfNamedFunction & S);
-		%feature("autodoc", "Args:
-	T(Handle_Expr_NamedFunction)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Expr_NamedFunction &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Expr_NamedFunction & T);
-		%feature("autodoc", "Args:
-	S(ExprIntrp_SequenceOfNamedFunction)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: ExprIntrp_SequenceOfNamedFunction &
+	:rtype: None
+") Prepend;
 		void Prepend (ExprIntrp_SequenceOfNamedFunction & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Expr_NamedFunction)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Expr_NamedFunction &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_Expr_NamedFunction & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(ExprIntrp_SequenceOfNamedFunction)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: ExprIntrp_SequenceOfNamedFunction &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,ExprIntrp_SequenceOfNamedFunction & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Expr_NamedFunction)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Expr_NamedFunction &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_Expr_NamedFunction & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(ExprIntrp_SequenceOfNamedFunction)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: ExprIntrp_SequenceOfNamedFunction &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,ExprIntrp_SequenceOfNamedFunction & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Expr_NamedFunction
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_Expr_NamedFunction
+") First;
 		const Handle_Expr_NamedFunction & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Expr_NamedFunction
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_Expr_NamedFunction
+") Last;
 		const Handle_Expr_NamedFunction & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(ExprIntrp_SequenceOfNamedFunction)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: ExprIntrp_SequenceOfNamedFunction &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,ExprIntrp_SequenceOfNamedFunction & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Expr_NamedFunction
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Expr_NamedFunction
+") Value;
 		const Handle_Expr_NamedFunction & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_Expr_NamedFunction)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_Expr_NamedFunction &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Expr_NamedFunction & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Expr_NamedFunction
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Expr_NamedFunction
+") ChangeValue;
 		Handle_Expr_NamedFunction & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -855,49 +645,27 @@ def __del__(self):
 %nodefaultctor ExprIntrp_StackIteratorOfStackOfGeneralExpression;
 class ExprIntrp_StackIteratorOfStackOfGeneralExpression {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ExprIntrp_StackIteratorOfStackOfGeneralExpression;
+		%feature("autodoc", "	:rtype: None
+") ExprIntrp_StackIteratorOfStackOfGeneralExpression;
 		 ExprIntrp_StackIteratorOfStackOfGeneralExpression ();
-		%feature("autodoc", "Args:
-	S(ExprIntrp_StackOfGeneralExpression)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ExprIntrp_StackIteratorOfStackOfGeneralExpression;
+		%feature("autodoc", "	:param S:
+	:type S: ExprIntrp_StackOfGeneralExpression &
+	:rtype: None
+") ExprIntrp_StackIteratorOfStackOfGeneralExpression;
 		 ExprIntrp_StackIteratorOfStackOfGeneralExpression (const ExprIntrp_StackOfGeneralExpression & S);
-		%feature("autodoc", "Args:
-	S(ExprIntrp_StackOfGeneralExpression)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param S:
+	:type S: ExprIntrp_StackOfGeneralExpression &
+	:rtype: None
+") Initialize;
 		void Initialize (const ExprIntrp_StackOfGeneralExpression & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Expr_GeneralExpression
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Expr_GeneralExpression
+") Value;
 		const Handle_Expr_GeneralExpression & Value ();
 };
 
@@ -919,49 +687,27 @@ def __del__(self):
 %nodefaultctor ExprIntrp_StackIteratorOfStackOfGeneralFunction;
 class ExprIntrp_StackIteratorOfStackOfGeneralFunction {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ExprIntrp_StackIteratorOfStackOfGeneralFunction;
+		%feature("autodoc", "	:rtype: None
+") ExprIntrp_StackIteratorOfStackOfGeneralFunction;
 		 ExprIntrp_StackIteratorOfStackOfGeneralFunction ();
-		%feature("autodoc", "Args:
-	S(ExprIntrp_StackOfGeneralFunction)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ExprIntrp_StackIteratorOfStackOfGeneralFunction;
+		%feature("autodoc", "	:param S:
+	:type S: ExprIntrp_StackOfGeneralFunction &
+	:rtype: None
+") ExprIntrp_StackIteratorOfStackOfGeneralFunction;
 		 ExprIntrp_StackIteratorOfStackOfGeneralFunction (const ExprIntrp_StackOfGeneralFunction & S);
-		%feature("autodoc", "Args:
-	S(ExprIntrp_StackOfGeneralFunction)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param S:
+	:type S: ExprIntrp_StackOfGeneralFunction &
+	:rtype: None
+") Initialize;
 		void Initialize (const ExprIntrp_StackOfGeneralFunction & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Expr_GeneralFunction
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Expr_GeneralFunction
+") Value;
 		const Handle_Expr_GeneralFunction & Value ();
 };
 
@@ -983,49 +729,27 @@ def __del__(self):
 %nodefaultctor ExprIntrp_StackIteratorOfStackOfGeneralRelation;
 class ExprIntrp_StackIteratorOfStackOfGeneralRelation {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ExprIntrp_StackIteratorOfStackOfGeneralRelation;
+		%feature("autodoc", "	:rtype: None
+") ExprIntrp_StackIteratorOfStackOfGeneralRelation;
 		 ExprIntrp_StackIteratorOfStackOfGeneralRelation ();
-		%feature("autodoc", "Args:
-	S(ExprIntrp_StackOfGeneralRelation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ExprIntrp_StackIteratorOfStackOfGeneralRelation;
+		%feature("autodoc", "	:param S:
+	:type S: ExprIntrp_StackOfGeneralRelation &
+	:rtype: None
+") ExprIntrp_StackIteratorOfStackOfGeneralRelation;
 		 ExprIntrp_StackIteratorOfStackOfGeneralRelation (const ExprIntrp_StackOfGeneralRelation & S);
-		%feature("autodoc", "Args:
-	S(ExprIntrp_StackOfGeneralRelation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param S:
+	:type S: ExprIntrp_StackOfGeneralRelation &
+	:rtype: None
+") Initialize;
 		void Initialize (const ExprIntrp_StackOfGeneralRelation & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Expr_GeneralRelation
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Expr_GeneralRelation
+") Value;
 		const Handle_Expr_GeneralRelation & Value ();
 };
 
@@ -1047,49 +771,27 @@ def __del__(self):
 %nodefaultctor ExprIntrp_StackIteratorOfStackOfNames;
 class ExprIntrp_StackIteratorOfStackOfNames {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ExprIntrp_StackIteratorOfStackOfNames;
+		%feature("autodoc", "	:rtype: None
+") ExprIntrp_StackIteratorOfStackOfNames;
 		 ExprIntrp_StackIteratorOfStackOfNames ();
-		%feature("autodoc", "Args:
-	S(ExprIntrp_StackOfNames)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ExprIntrp_StackIteratorOfStackOfNames;
+		%feature("autodoc", "	:param S:
+	:type S: ExprIntrp_StackOfNames &
+	:rtype: None
+") ExprIntrp_StackIteratorOfStackOfNames;
 		 ExprIntrp_StackIteratorOfStackOfNames (const ExprIntrp_StackOfNames & S);
-		%feature("autodoc", "Args:
-	S(ExprIntrp_StackOfNames)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param S:
+	:type S: ExprIntrp_StackOfNames &
+	:rtype: None
+") Initialize;
 		void Initialize (const ExprIntrp_StackOfNames & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") Value;
 		const TCollection_AsciiString & Value ();
 };
 
@@ -1111,21 +813,15 @@ def __del__(self):
 %nodefaultctor ExprIntrp_StackNodeOfStackOfGeneralExpression;
 class ExprIntrp_StackNodeOfStackOfGeneralExpression : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Expr_GeneralExpression)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ExprIntrp_StackNodeOfStackOfGeneralExpression;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Expr_GeneralExpression &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") ExprIntrp_StackNodeOfStackOfGeneralExpression;
 		 ExprIntrp_StackNodeOfStackOfGeneralExpression (const Handle_Expr_GeneralExpression & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Expr_GeneralExpression
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Expr_GeneralExpression
+") Value;
 		Handle_Expr_GeneralExpression & Value ();
 };
 
@@ -1186,21 +882,15 @@ def __del__(self):
 %nodefaultctor ExprIntrp_StackNodeOfStackOfGeneralFunction;
 class ExprIntrp_StackNodeOfStackOfGeneralFunction : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Expr_GeneralFunction)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ExprIntrp_StackNodeOfStackOfGeneralFunction;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Expr_GeneralFunction &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") ExprIntrp_StackNodeOfStackOfGeneralFunction;
 		 ExprIntrp_StackNodeOfStackOfGeneralFunction (const Handle_Expr_GeneralFunction & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Expr_GeneralFunction
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Expr_GeneralFunction
+") Value;
 		Handle_Expr_GeneralFunction & Value ();
 };
 
@@ -1261,21 +951,15 @@ def __del__(self):
 %nodefaultctor ExprIntrp_StackNodeOfStackOfGeneralRelation;
 class ExprIntrp_StackNodeOfStackOfGeneralRelation : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Expr_GeneralRelation)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ExprIntrp_StackNodeOfStackOfGeneralRelation;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Expr_GeneralRelation &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") ExprIntrp_StackNodeOfStackOfGeneralRelation;
 		 ExprIntrp_StackNodeOfStackOfGeneralRelation (const Handle_Expr_GeneralRelation & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Expr_GeneralRelation
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Expr_GeneralRelation
+") Value;
 		Handle_Expr_GeneralRelation & Value ();
 };
 
@@ -1336,21 +1020,15 @@ def __del__(self):
 %nodefaultctor ExprIntrp_StackNodeOfStackOfNames;
 class ExprIntrp_StackNodeOfStackOfNames : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(TCollection_AsciiString)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ExprIntrp_StackNodeOfStackOfNames;
+		%feature("autodoc", "	:param I:
+	:type I: TCollection_AsciiString &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") ExprIntrp_StackNodeOfStackOfNames;
 		 ExprIntrp_StackNodeOfStackOfNames (const TCollection_AsciiString & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") Value;
 		TCollection_AsciiString & Value ();
 };
 
@@ -1411,78 +1089,41 @@ def __del__(self):
 %nodefaultctor ExprIntrp_StackOfGeneralExpression;
 class ExprIntrp_StackOfGeneralExpression {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ExprIntrp_StackOfGeneralExpression;
+		%feature("autodoc", "	:rtype: None
+") ExprIntrp_StackOfGeneralExpression;
 		 ExprIntrp_StackOfGeneralExpression ();
-		%feature("autodoc", "Args:
-	Other(ExprIntrp_StackOfGeneralExpression)
-
-Returns:
-	ExprIntrp_StackOfGeneralExpression
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: ExprIntrp_StackOfGeneralExpression &
+	:rtype: ExprIntrp_StackOfGeneralExpression
+") Assign;
 		const ExprIntrp_StackOfGeneralExpression & Assign (const ExprIntrp_StackOfGeneralExpression & Other);
-		%feature("autodoc", "Args:
-	Other(ExprIntrp_StackOfGeneralExpression)
-
-Returns:
-	ExprIntrp_StackOfGeneralExpression
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: ExprIntrp_StackOfGeneralExpression &
+	:rtype: ExprIntrp_StackOfGeneralExpression
+") operator=;
 		const ExprIntrp_StackOfGeneralExpression & operator = (const ExprIntrp_StackOfGeneralExpression & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Depth;
+		%feature("autodoc", "	:rtype: int
+") Depth;
 		Standard_Integer Depth ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Expr_GeneralExpression
-
-No detailed docstring for this function.") Top;
+		%feature("autodoc", "	:rtype: Handle_Expr_GeneralExpression
+") Top;
 		const Handle_Expr_GeneralExpression & Top ();
-		%feature("autodoc", "Args:
-	I(Handle_Expr_GeneralExpression)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Push;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Expr_GeneralExpression &
+	:rtype: None
+") Push;
 		void Push (const Handle_Expr_GeneralExpression & I);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Pop;
+		%feature("autodoc", "	:rtype: None
+") Pop;
 		void Pop ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Expr_GeneralExpression
-
-No detailed docstring for this function.") ChangeTop;
+		%feature("autodoc", "	:rtype: Handle_Expr_GeneralExpression
+") ChangeTop;
 		Handle_Expr_GeneralExpression & ChangeTop ();
 };
 
@@ -1504,78 +1145,41 @@ def __del__(self):
 %nodefaultctor ExprIntrp_StackOfGeneralFunction;
 class ExprIntrp_StackOfGeneralFunction {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ExprIntrp_StackOfGeneralFunction;
+		%feature("autodoc", "	:rtype: None
+") ExprIntrp_StackOfGeneralFunction;
 		 ExprIntrp_StackOfGeneralFunction ();
-		%feature("autodoc", "Args:
-	Other(ExprIntrp_StackOfGeneralFunction)
-
-Returns:
-	ExprIntrp_StackOfGeneralFunction
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: ExprIntrp_StackOfGeneralFunction &
+	:rtype: ExprIntrp_StackOfGeneralFunction
+") Assign;
 		const ExprIntrp_StackOfGeneralFunction & Assign (const ExprIntrp_StackOfGeneralFunction & Other);
-		%feature("autodoc", "Args:
-	Other(ExprIntrp_StackOfGeneralFunction)
-
-Returns:
-	ExprIntrp_StackOfGeneralFunction
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: ExprIntrp_StackOfGeneralFunction &
+	:rtype: ExprIntrp_StackOfGeneralFunction
+") operator=;
 		const ExprIntrp_StackOfGeneralFunction & operator = (const ExprIntrp_StackOfGeneralFunction & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Depth;
+		%feature("autodoc", "	:rtype: int
+") Depth;
 		Standard_Integer Depth ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Expr_GeneralFunction
-
-No detailed docstring for this function.") Top;
+		%feature("autodoc", "	:rtype: Handle_Expr_GeneralFunction
+") Top;
 		const Handle_Expr_GeneralFunction & Top ();
-		%feature("autodoc", "Args:
-	I(Handle_Expr_GeneralFunction)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Push;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Expr_GeneralFunction &
+	:rtype: None
+") Push;
 		void Push (const Handle_Expr_GeneralFunction & I);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Pop;
+		%feature("autodoc", "	:rtype: None
+") Pop;
 		void Pop ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Expr_GeneralFunction
-
-No detailed docstring for this function.") ChangeTop;
+		%feature("autodoc", "	:rtype: Handle_Expr_GeneralFunction
+") ChangeTop;
 		Handle_Expr_GeneralFunction & ChangeTop ();
 };
 
@@ -1597,78 +1201,41 @@ def __del__(self):
 %nodefaultctor ExprIntrp_StackOfGeneralRelation;
 class ExprIntrp_StackOfGeneralRelation {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ExprIntrp_StackOfGeneralRelation;
+		%feature("autodoc", "	:rtype: None
+") ExprIntrp_StackOfGeneralRelation;
 		 ExprIntrp_StackOfGeneralRelation ();
-		%feature("autodoc", "Args:
-	Other(ExprIntrp_StackOfGeneralRelation)
-
-Returns:
-	ExprIntrp_StackOfGeneralRelation
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: ExprIntrp_StackOfGeneralRelation &
+	:rtype: ExprIntrp_StackOfGeneralRelation
+") Assign;
 		const ExprIntrp_StackOfGeneralRelation & Assign (const ExprIntrp_StackOfGeneralRelation & Other);
-		%feature("autodoc", "Args:
-	Other(ExprIntrp_StackOfGeneralRelation)
-
-Returns:
-	ExprIntrp_StackOfGeneralRelation
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: ExprIntrp_StackOfGeneralRelation &
+	:rtype: ExprIntrp_StackOfGeneralRelation
+") operator=;
 		const ExprIntrp_StackOfGeneralRelation & operator = (const ExprIntrp_StackOfGeneralRelation & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Depth;
+		%feature("autodoc", "	:rtype: int
+") Depth;
 		Standard_Integer Depth ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Expr_GeneralRelation
-
-No detailed docstring for this function.") Top;
+		%feature("autodoc", "	:rtype: Handle_Expr_GeneralRelation
+") Top;
 		const Handle_Expr_GeneralRelation & Top ();
-		%feature("autodoc", "Args:
-	I(Handle_Expr_GeneralRelation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Push;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Expr_GeneralRelation &
+	:rtype: None
+") Push;
 		void Push (const Handle_Expr_GeneralRelation & I);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Pop;
+		%feature("autodoc", "	:rtype: None
+") Pop;
 		void Pop ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Expr_GeneralRelation
-
-No detailed docstring for this function.") ChangeTop;
+		%feature("autodoc", "	:rtype: Handle_Expr_GeneralRelation
+") ChangeTop;
 		Handle_Expr_GeneralRelation & ChangeTop ();
 };
 
@@ -1690,78 +1257,41 @@ def __del__(self):
 %nodefaultctor ExprIntrp_StackOfNames;
 class ExprIntrp_StackOfNames {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ExprIntrp_StackOfNames;
+		%feature("autodoc", "	:rtype: None
+") ExprIntrp_StackOfNames;
 		 ExprIntrp_StackOfNames ();
-		%feature("autodoc", "Args:
-	Other(ExprIntrp_StackOfNames)
-
-Returns:
-	ExprIntrp_StackOfNames
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: ExprIntrp_StackOfNames &
+	:rtype: ExprIntrp_StackOfNames
+") Assign;
 		const ExprIntrp_StackOfNames & Assign (const ExprIntrp_StackOfNames & Other);
-		%feature("autodoc", "Args:
-	Other(ExprIntrp_StackOfNames)
-
-Returns:
-	ExprIntrp_StackOfNames
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: ExprIntrp_StackOfNames &
+	:rtype: ExprIntrp_StackOfNames
+") operator=;
 		const ExprIntrp_StackOfNames & operator = (const ExprIntrp_StackOfNames & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Depth;
+		%feature("autodoc", "	:rtype: int
+") Depth;
 		Standard_Integer Depth ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") Top;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") Top;
 		const TCollection_AsciiString & Top ();
-		%feature("autodoc", "Args:
-	I(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Push;
+		%feature("autodoc", "	:param I:
+	:type I: TCollection_AsciiString &
+	:rtype: None
+") Push;
 		void Push (const TCollection_AsciiString & I);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Pop;
+		%feature("autodoc", "	:rtype: None
+") Pop;
 		void Pop ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") ChangeTop;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") ChangeTop;
 		TCollection_AsciiString & ChangeTop ();
 };
 
@@ -1783,36 +1313,25 @@ def __del__(self):
 %nodefaultctor ExprIntrp_GenExp;
 class ExprIntrp_GenExp : public ExprIntrp_Generator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static Handle_ExprIntrp_GenExp
-
-No detailed docstring for this function.") Create;
+		%feature("autodoc", "	:rtype: Handle_ExprIntrp_GenExp
+") Create;
 		static Handle_ExprIntrp_GenExp Create ();
-		%feature("autodoc", "Args:
-	str(TCollection_AsciiString)
+		%feature("autodoc", "	* Processes given string.
 
-Returns:
-	None
-
-Processes given string.") Process;
+	:param str:
+	:type str: TCollection_AsciiString &
+	:rtype: None
+") Process;
 		void Process (const TCollection_AsciiString & str);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns false if any syntax error has occurred during process.
 
-Returns false if any syntax error has occurred during  
-         process.") IsDone;
+	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Expr_GeneralExpression
+		%feature("autodoc", "	* Returns expression generated. Raises an exception if IsDone answers false.
 
-Returns expression generated. Raises an exception if  
-         IsDone answers false.") Expression;
+	:rtype: Handle_Expr_GeneralExpression
+") Expression;
 		Handle_Expr_GeneralExpression Expression ();
 };
 
@@ -1873,27 +1392,16 @@ def __del__(self):
 %nodefaultctor ExprIntrp_GenFct;
 class ExprIntrp_GenFct : public ExprIntrp_Generator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static Handle_ExprIntrp_GenFct
-
-No detailed docstring for this function.") Create;
+		%feature("autodoc", "	:rtype: Handle_ExprIntrp_GenFct
+") Create;
 		static Handle_ExprIntrp_GenFct Create ();
-		%feature("autodoc", "Args:
-	str(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Process;
+		%feature("autodoc", "	:param str:
+	:type str: TCollection_AsciiString &
+	:rtype: None
+") Process;
 		void Process (const TCollection_AsciiString & str);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
 };
 
@@ -1954,36 +1462,25 @@ def __del__(self):
 %nodefaultctor ExprIntrp_GenRel;
 class ExprIntrp_GenRel : public ExprIntrp_Generator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static Handle_ExprIntrp_GenRel
-
-No detailed docstring for this function.") Create;
+		%feature("autodoc", "	:rtype: Handle_ExprIntrp_GenRel
+") Create;
 		static Handle_ExprIntrp_GenRel Create ();
-		%feature("autodoc", "Args:
-	str(TCollection_AsciiString)
+		%feature("autodoc", "	* Processes given string.
 
-Returns:
-	None
-
-Processes given string.") Process;
+	:param str:
+	:type str: TCollection_AsciiString &
+	:rtype: None
+") Process;
 		void Process (const TCollection_AsciiString & str);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns false if any syntax error has occurred during process.
 
-Returns false if any syntax error has occurred during  
-         process.") IsDone;
+	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Expr_GeneralRelation
+		%feature("autodoc", "	* Returns relation generated. Raises an exception if IsDone answers false.
 
-Returns relation generated. Raises an exception if  
-         IsDone answers false.") Relation;
+	:rtype: Handle_Expr_GeneralRelation
+") Relation;
 		Handle_Expr_GeneralRelation Relation ();
 };
 

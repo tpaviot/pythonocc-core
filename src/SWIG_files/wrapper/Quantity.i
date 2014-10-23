@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -719,108 +719,68 @@ enum Quantity_TypeOfColor {
 %nodefaultctor Quantity_Array1OfCoefficient;
 class Quantity_Array1OfCoefficient {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Quantity_Array1OfCoefficient;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Quantity_Array1OfCoefficient;
 		 Quantity_Array1OfCoefficient (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Quantity_Coefficient)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Quantity_Array1OfCoefficient;
+		%feature("autodoc", "	:param Item:
+	:type Item: Quantity_Coefficient &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Quantity_Array1OfCoefficient;
 		 Quantity_Array1OfCoefficient (const Quantity_Coefficient & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Quantity_Coefficient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Quantity_Coefficient &
+	:rtype: None
+") Init;
 		void Init (const Quantity_Coefficient & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(Quantity_Array1OfCoefficient)
-
-Returns:
-	Quantity_Array1OfCoefficient
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Quantity_Array1OfCoefficient &
+	:rtype: Quantity_Array1OfCoefficient
+") Assign;
 		const Quantity_Array1OfCoefficient & Assign (const Quantity_Array1OfCoefficient & Other);
-		%feature("autodoc", "Args:
-	Other(Quantity_Array1OfCoefficient)
-
-Returns:
-	Quantity_Array1OfCoefficient
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Quantity_Array1OfCoefficient &
+	:rtype: Quantity_Array1OfCoefficient
+") operator=;
 		const Quantity_Array1OfCoefficient & operator = (const Quantity_Array1OfCoefficient & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Quantity_Coefficient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Quantity_Coefficient &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Quantity_Coefficient & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Quantity_Coefficient
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Quantity_Coefficient
+") Value;
 		const Quantity_Coefficient & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Quantity_Coefficient
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Quantity_Coefficient
+") ChangeValue;
 		Quantity_Coefficient & ChangeValue (const Standard_Integer Index);
 };
 
@@ -842,108 +802,68 @@ def __del__(self):
 %nodefaultctor Quantity_Array1OfColor;
 class Quantity_Array1OfColor {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Quantity_Array1OfColor;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Quantity_Array1OfColor;
 		 Quantity_Array1OfColor (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Quantity_Color)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Quantity_Array1OfColor;
+		%feature("autodoc", "	:param Item:
+	:type Item: Quantity_Color &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Quantity_Array1OfColor;
 		 Quantity_Array1OfColor (const Quantity_Color & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Quantity_Color)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Quantity_Color &
+	:rtype: None
+") Init;
 		void Init (const Quantity_Color & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(Quantity_Array1OfColor)
-
-Returns:
-	Quantity_Array1OfColor
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Quantity_Array1OfColor &
+	:rtype: Quantity_Array1OfColor
+") Assign;
 		const Quantity_Array1OfColor & Assign (const Quantity_Array1OfColor & Other);
-		%feature("autodoc", "Args:
-	Other(Quantity_Array1OfColor)
-
-Returns:
-	Quantity_Array1OfColor
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Quantity_Array1OfColor &
+	:rtype: Quantity_Array1OfColor
+") operator=;
 		const Quantity_Array1OfColor & operator = (const Quantity_Array1OfColor & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Quantity_Color)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Quantity_Color &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Quantity_Color & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Quantity_Color
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Quantity_Color
+") Value;
 		const Quantity_Color & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Quantity_Color
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Quantity_Color
+") ChangeValue;
 		Quantity_Color & ChangeValue (const Standard_Integer Index);
 };
 
@@ -965,129 +885,88 @@ def __del__(self):
 %nodefaultctor Quantity_Array2OfColor;
 class Quantity_Array2OfColor {
 	public:
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Quantity_Array2OfColor;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") Quantity_Array2OfColor;
 		 Quantity_Array2OfColor (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	Item(Quantity_Color)
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Quantity_Array2OfColor;
+		%feature("autodoc", "	:param Item:
+	:type Item: Quantity_Color &
+	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") Quantity_Array2OfColor;
 		 Quantity_Array2OfColor (const Quantity_Color & Item,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	V(Quantity_Color)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Quantity_Color &
+	:rtype: None
+") Init;
 		void Init (const Quantity_Color & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	Other(Quantity_Array2OfColor)
-
-Returns:
-	Quantity_Array2OfColor
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Quantity_Array2OfColor &
+	:rtype: Quantity_Array2OfColor
+") Assign;
 		const Quantity_Array2OfColor & Assign (const Quantity_Array2OfColor & Other);
-		%feature("autodoc", "Args:
-	Other(Quantity_Array2OfColor)
-
-Returns:
-	Quantity_Array2OfColor
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Quantity_Array2OfColor &
+	:rtype: Quantity_Array2OfColor
+") operator=;
 		const Quantity_Array2OfColor & operator = (const Quantity_Array2OfColor & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ColLength;
+		%feature("autodoc", "	:rtype: int
+") ColLength;
 		Standard_Integer ColLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") RowLength;
+		%feature("autodoc", "	:rtype: int
+") RowLength;
 		Standard_Integer RowLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerCol;
+		%feature("autodoc", "	:rtype: int
+") LowerCol;
 		Standard_Integer LowerCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerRow;
+		%feature("autodoc", "	:rtype: int
+") LowerRow;
 		Standard_Integer LowerRow ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperCol;
+		%feature("autodoc", "	:rtype: int
+") UpperCol;
 		Standard_Integer UpperCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperRow;
+		%feature("autodoc", "	:rtype: int
+") UpperRow;
 		Standard_Integer UpperRow ();
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-	Value(Quantity_Color)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:param Value:
+	:type Value: Quantity_Color &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Quantity_Color & Value);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Quantity_Color
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: Quantity_Color
+") Value;
 		const Quantity_Color & Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Quantity_Color
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: Quantity_Color
+") ChangeValue;
 		Quantity_Color & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 };
 
@@ -1109,177 +988,123 @@ def __del__(self):
 %nodefaultctor Quantity_Color;
 class Quantity_Color {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates a colour with the default value of //!	 Colour name : YELLOW
 
-Creates a colour with the default value of  
-//!	    Colour name : YELLOW") Quantity_Color;
+	:rtype: None
+") Quantity_Color;
 		 Quantity_Color ();
-		%feature("autodoc", "Args:
-	AName(Quantity_NameOfColor)
+		%feature("autodoc", "	* Creates the colour <AName>.
 
-Returns:
-	None
-
-Creates the colour <AName>.") Quantity_Color;
+	:param AName:
+	:type AName: Quantity_NameOfColor
+	:rtype: None
+") Quantity_Color;
 		 Quantity_Color (const Quantity_NameOfColor AName);
-		%feature("autodoc", "Args:
-	R1(Quantity_Parameter)
-	R2(Quantity_Parameter)
-	R3(Quantity_Parameter)
-	AType(Quantity_TypeOfColor)
+		%feature("autodoc", "	* Creates a colour according to the definition system //!	 TypeOfColor. //!	 TOC_RGB : <R1> the value of red between 0. and 1. //!		 <R2> the value of green between 0. and 1. //!		 <R3> the value of blue between 0. and 1. //!	 TOC_HLS : <R1> is the hue angle in degrees, 0. being red //!	 	 <R2> is the lightness between 0. and 1. //!		 <R3> is the saturation between 0. and 1.
 
-Returns:
-	None
-
-Creates a colour according to the definition system  
-//!	    TypeOfColor.  
-//!	    TOC_RGB : <R1> the value of red between 0. and 1.  
-//!		      <R2> the value of green between 0. and 1.  
-//!		      <R3> the value of blue between 0. and 1.  
- 
-//!	    TOC_HLS : <R1> is the hue angle in degrees, 0. being red  
-//!	  	      <R2> is the lightness between 0. and 1.  
-//!		      <R3> is the saturation between 0. and 1.") Quantity_Color;
+	:param R1:
+	:type R1: Quantity_Parameter
+	:param R2:
+	:type R2: Quantity_Parameter
+	:param R3:
+	:type R3: Quantity_Parameter
+	:param AType:
+	:type AType: Quantity_TypeOfColor
+	:rtype: None
+") Quantity_Color;
 		 Quantity_Color (const Quantity_Parameter R1,const Quantity_Parameter R2,const Quantity_Parameter R3,const Quantity_TypeOfColor AType);
-		%feature("autodoc", "Args:
-	Other(Quantity_Color)
+		%feature("autodoc", "	* Updates the colour <self> from the definition of the //!	 colour <Other>.
 
-Returns:
-	Quantity_Color
-
-Updates the colour <self> from the definition of the  
-//!	    colour <Other>.") Assign;
+	:param Other:
+	:type Other: Quantity_Color &
+	:rtype: Quantity_Color
+") Assign;
 		Quantity_Color & Assign (const Quantity_Color & Other);
-		%feature("autodoc", "Args:
-	Other(Quantity_Color)
-
-Returns:
-	Quantity_Color
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Quantity_Color &
+	:rtype: Quantity_Color
+") operator=;
 		Quantity_Color & operator = (const Quantity_Color & Other);
-		%feature("autodoc", "Args:
-	ADelta(Quantity_Rate)
+		%feature("autodoc", "	* Increases or decreases the contrast by <ADelta>. //!	 <ADelta> is a percentage. Any value greater than zero //!	 will increase the contrast. //!	 The variation is expressed as a percentage of the //!	 current value. //!	 It is a variation of the saturation.
 
-Returns:
-	None
-
-Increases or decreases the contrast by <ADelta>.  
-//!	    <ADelta> is a percentage. Any value greater than zero  
-//!	    will increase the contrast.  
-//!	    The variation is expressed as a percentage of the  
-//!	    current value.  
-//!	    It is a variation of the saturation.") ChangeContrast;
+	:param ADelta:
+	:type ADelta: Quantity_Rate
+	:rtype: None
+") ChangeContrast;
 		void ChangeContrast (const Quantity_Rate ADelta);
-		%feature("autodoc", "Args:
-	ADelta(Quantity_Rate)
+		%feature("autodoc", "	* Increases or decreases the intensity by <ADelta>. //!	 <ADelta> is a percentage. Any value greater than zero //!	 will increase the intensity. //!	 The variation is expressed as a percentage of the //!	 current value. //!	 It is a variation of the lightness.
 
-Returns:
-	None
-
-Increases or decreases the intensity by <ADelta>.  
-//!	    <ADelta> is a percentage. Any value greater than zero  
-//!	    will increase the intensity.  
-//!	    The variation is expressed as a percentage of the  
-//!	    current value.  
-//!	    It is a variation of the lightness.") ChangeIntensity;
+	:param ADelta:
+	:type ADelta: Quantity_Rate
+	:rtype: None
+") ChangeIntensity;
 		void ChangeIntensity (const Quantity_Rate ADelta);
-		%feature("autodoc", "Args:
-	AName(Quantity_NameOfColor)
+		%feature("autodoc", "	* Updates the colour <self> from the definition of the //!	 colour <AName>.
 
-Returns:
-	None
-
-Updates the colour <self> from the definition of the  
-//!	    colour <AName>.") SetValues;
+	:param AName:
+	:type AName: Quantity_NameOfColor
+	:rtype: None
+") SetValues;
 		void SetValues (const Quantity_NameOfColor AName);
-		%feature("autodoc", "Args:
-	R1(Quantity_Parameter)
-	R2(Quantity_Parameter)
-	R3(Quantity_Parameter)
-	AType(Quantity_TypeOfColor)
+		%feature("autodoc", "	* Updates a colour according to the mode specified by //!	 TypeOfColor //!	 TOC_RGB : <R1> the value of red between 0. and 1. //!		 <R2> the value of green between 0. and 1. //!		 <R3> the value of blue between 0. and 1. //!	 TOC_HLS : <R1> is the hue angle in degrees, 0. being red //!	 	 <R2> is the lightness between 0. and 1. //!		 <R3> is the saturation between 0. and 1.
 
-Returns:
-	None
-
-Updates a colour according to the mode specified by  
-//!	    TypeOfColor  
-//!	    TOC_RGB : <R1> the value of red between 0. and 1.  
-//!		      <R2> the value of green between 0. and 1.  
-//!		      <R3> the value of blue between 0. and 1.  
- 
-//!	    TOC_HLS : <R1> is the hue angle in degrees, 0. being red  
-//!	  	      <R2> is the lightness between 0. and 1.  
-//!		      <R3> is the saturation between 0. and 1.") SetValues;
+	:param R1:
+	:type R1: Quantity_Parameter
+	:param R2:
+	:type R2: Quantity_Parameter
+	:param R3:
+	:type R3: Quantity_Parameter
+	:param AType:
+	:type AType: Quantity_TypeOfColor
+	:rtype: None
+") SetValues;
 		void SetValues (const Quantity_Parameter R1,const Quantity_Parameter R2,const Quantity_Parameter R3,const Quantity_TypeOfColor AType);
-		%feature("autodoc", "Args:
-	AColor(Quantity_Color)
-	DC(Quantity_Parameter)
-	DI(Quantity_Parameter)
+		%feature("autodoc", "	* Returns the percentage change of contrast and intensity //!	 between <self> and <AColor>. //!	 <DC> and <DI> are percentages, either positive or negative. //!	 The calculation is with respect to the current value of <self> //!	 If <DC> is positive then <self> is more contrasty. //!	 If <DI> is positive then <self> is more intense.
 
-Returns:
-	None
-
-Returns the percentage change of contrast and intensity  
-//!	    between <self> and <AColor>.  
-//!	    <DC> and <DI> are percentages, either positive or negative.  
-//!	    The calculation is with respect to the current value of <self>  
-//!	    If <DC> is positive then <self> is more contrasty.  
-//!	    If <DI> is positive then <self> is more intense.") Delta;
+	:param AColor:
+	:type AColor: Quantity_Color &
+	:param DC:
+	:type DC: Quantity_Parameter &
+	:param DI:
+	:type DI: Quantity_Parameter &
+	:rtype: None
+") Delta;
 		void Delta (const Quantity_Color & AColor,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	AColor(Quantity_Color)
+		%feature("autodoc", "	* Returns the distance between two colours. It's a //!	 value between 0 and the square root of 3 //!	 (the black/white distance)
 
-Returns:
-	Standard_Real
-
-Returns the distance between two colours. It's a  
-//!	    value between 0 and the square root of 3  
-//!	    (the black/white distance)") Distance;
+	:param AColor:
+	:type AColor: Quantity_Color &
+	:rtype: float
+") Distance;
 		Standard_Real Distance (const Quantity_Color & AColor);
-		%feature("autodoc", "Args:
-	AColor(Quantity_Color)
+		%feature("autodoc", "	* Returns the square of distance between two colours.
 
-Returns:
-	Standard_Real
-
-Returns the square of distance between two colours.") SquareDistance;
+	:param AColor:
+	:type AColor: Quantity_Color &
+	:rtype: float
+") SquareDistance;
 		Standard_Real SquareDistance (const Quantity_Color & AColor);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Parameter
+		%feature("autodoc", "	* Returns the Blue component (quantity of blue) of the //!	 color <self>.
 
-Returns the Blue component (quantity of blue) of the  
-//!	    color <self>.") Blue;
+	:rtype: Quantity_Parameter
+") Blue;
 		Quantity_Parameter Blue ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Parameter
+		%feature("autodoc", "	* Returns the Green component (quantity of green) of the //!	 color <self>.
 
-Returns the Green component (quantity of green) of the  
-//!	    color <self>.") Green;
+	:rtype: Quantity_Parameter
+") Green;
 		Quantity_Parameter Green ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Parameter
+		%feature("autodoc", "	* Returns the Hue component (hue angle) of the //!	 color <self>.
 
-Returns the Hue component (hue angle) of the  
-//!	    color <self>.") Hue;
+	:rtype: Quantity_Parameter
+") Hue;
 		Quantity_Parameter Hue ();
-		%feature("autodoc", "Args:
-	Other(Quantity_Color)
+		%feature("autodoc", "	* Returns Standard_True if the distance between <self> and //!	 <Other> is greater than Epsilon ().
 
-Returns:
-	Standard_Boolean
-
-Returns Standard_True if the distance between <self> and  
-//!	    <Other> is greater than Epsilon ().") IsDifferent;
+	:param Other:
+	:type Other: Quantity_Color &
+	:rtype: bool
+") IsDifferent;
 		Standard_Boolean IsDifferent (const Quantity_Color & Other);
 
         %extend{
@@ -1295,18 +1120,12 @@ Returns Standard_True if the distance between <self> and
             except:
                 return True
         }
-        		%feature("autodoc", "Args:
-	Other(Quantity_Color)
+        		%feature("autodoc", "	* Returns true if the Other color is - different from, or - equal to this color. Two colors are considered to be equal if their distance is no greater than Epsilon(). These methods are aliases of operator != and operator ==.
 
-Returns:
-	Standard_Boolean
-
-Returns true if the Other color is  
--   different from, or  
--   equal to this color.  
-Two colors are considered to be equal if their  
-distance is no greater than Epsilon().  
-These methods are aliases of operator != and operator ==.") IsEqual;
+	:param Other:
+	:type Other: Quantity_Color &
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const Quantity_Color & Other);
 
         %extend{
@@ -1322,200 +1141,149 @@ These methods are aliases of operator != and operator ==.") IsEqual;
             except:
                 return False
         }
-        		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Parameter
+        		%feature("autodoc", "	* Returns the Light component (value of the lightness) of the //!	 color <self>.
 
-Returns the Light component (value of the lightness) of the  
-//!	    color <self>.") Light;
+	:rtype: Quantity_Parameter
+") Light;
 		Quantity_Parameter Light ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_NameOfColor
+		%feature("autodoc", "	* Returns the name of the color defined by its quantities of red R, green G and blue B; more precisely this is the nearest color from the Quantity_NameOfColor enumeration. Exceptions Standard_OutOfRange if R, G or B is less than 0. or greater than 1.
 
-Returns the name of the color defined by its  
-quantities of red R, green G and blue B; more  
-precisely this is the nearest color from the  
-Quantity_NameOfColor enumeration.  
-Exceptions  
-Standard_OutOfRange if R, G or B is less than 0. or greater than 1.") Name;
+	:rtype: Quantity_NameOfColor
+") Name;
 		Quantity_NameOfColor Name ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Parameter
+		%feature("autodoc", "	* Returns the Red component (quantity of red) of the //!	 color <self>.
 
-Returns the Red component (quantity of red) of the  
-//!	    color <self>.") Red;
+	:rtype: Quantity_Parameter
+") Red;
 		Quantity_Parameter Red ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Parameter
+		%feature("autodoc", "	* Returns the Saturation component (value of the saturation) //!	 of the color <self>.
 
-Returns the Saturation component (value of the saturation)  
-//!	    of the color <self>.") Saturation;
+	:rtype: Quantity_Parameter
+") Saturation;
 		Quantity_Parameter Saturation ();
-		%feature("autodoc", "Args:
-	R1(Quantity_Parameter)
-	R2(Quantity_Parameter)
-	R3(Quantity_Parameter)
-	AType(Quantity_TypeOfColor)
+		%feature("autodoc", "	* Returns in R1, R2 and R3 the components of this color according to the color system definition AType. - if AType is Quantity_TOC_RGB R1 is the quantity of red, R2 is the quantity of green and R3 is the quantity of blue in this color. - if AType is Quantity_TOC_HLS R1 is the hue angle in degrees (0 being red), R2 is the lightness and R3 is the saturation of this color.
 
-Returns:
-	None
-
-Returns in R1, R2 and R3 the components of  
-this color according to the color system definition AType.  
--   if AType is Quantity_TOC_RGB R1 is the  
-  quantity of red, R2 is the quantity of green and  
-  R3 is the quantity of blue in this color.  
--   if AType is Quantity_TOC_HLS R1 is the  
-  hue angle in degrees (0 being red), R2 is the  
-  lightness and R3 is the saturation of this color.") Values;
+	:param R1:
+	:type R1: Quantity_Parameter &
+	:param R2:
+	:type R2: Quantity_Parameter &
+	:param R3:
+	:type R3: Quantity_Parameter &
+	:param AType:
+	:type AType: Quantity_TypeOfColor
+	:rtype: None
+") Values;
 		void Values (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,const Quantity_TypeOfColor AType);
-		%feature("autodoc", "Args:
-	AnEpsilon(Quantity_Parameter)
+		%feature("autodoc", "	* Sets the specified value used to compare <self> and //!	 an other color in IsDifferent and in IsEqual methods. Warning: The default value is 0.0001
 
-Returns:
-	static void
-
-Sets the specified value used to compare <self> and  
-//!	    an other color in IsDifferent and in IsEqual methods.  
- Warning: The default value is 0.0001") SetEpsilon;
+	:param AnEpsilon:
+	:type AnEpsilon: Quantity_Parameter
+	:rtype: void
+") SetEpsilon;
 		static void SetEpsilon (const Quantity_Parameter AnEpsilon);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static Quantity_Parameter
+		%feature("autodoc", "	* Returns the specified value used to compare <self> and //!	 an other color in IsDifferent and in IsEqual methods.
 
-Returns the specified value used to compare <self> and  
-//!	    an other color in IsDifferent and in IsEqual methods.") Epsilon;
+	:rtype: Quantity_Parameter
+") Epsilon;
 		static Quantity_Parameter Epsilon ();
-		%feature("autodoc", "Args:
-	R(Quantity_Parameter)
-	G(Quantity_Parameter)
-	B(Quantity_Parameter)
+		%feature("autodoc", "	* Returns the name of the colour for which the RGB components //!	 are nearest to <R>, <G> and <B>.
 
-Returns:
-	static Quantity_NameOfColor
-
-Returns the name of the colour for which the RGB components  
-//!	    are nearest to <R>, <G> and <B>.") Name;
+	:param R:
+	:type R: Quantity_Parameter
+	:param G:
+	:type G: Quantity_Parameter
+	:param B:
+	:type B: Quantity_Parameter
+	:rtype: Quantity_NameOfColor
+") Name;
 		static Quantity_NameOfColor Name (const Quantity_Parameter R,const Quantity_Parameter G,const Quantity_Parameter B);
-		%feature("autodoc", "Args:
-	AColor(Quantity_NameOfColor)
+		%feature("autodoc", "	* Returns the name of the color identified by AName in the Quantity_NameOfColor enumeration. For example, the name of the color which corresponds to Quantity_NOC_BLACK is 'BLACK'. Exceptions Standard_OutOfRange if AName in not known in the Quantity_NameOfColor enumeration.
 
-Returns:
-	static char *
-
-Returns the name of the color identified by  
-AName in the Quantity_NameOfColor enumeration.  
-For example, the name of the color which  
-corresponds to Quantity_NOC_BLACK is 'BLACK'.  
-Exceptions  
-Standard_OutOfRange if AName in not known  
-in the Quantity_NameOfColor enumeration.") StringName;
+	:param AColor:
+	:type AColor: Quantity_NameOfColor
+	:rtype: char *
+") StringName;
 		static char * StringName (const Quantity_NameOfColor AColor);
-		%feature("autodoc", "Args:
-	H(Quantity_Parameter)
-	L(Quantity_Parameter)
-	S(Quantity_Parameter)
-	R(Quantity_Parameter)
-	G(Quantity_Parameter)
-	B(Quantity_Parameter)
+		%feature("autodoc", "	* Converts HLS components into RGB ones.
 
-Returns:
-	static void
-
-Converts HLS components into RGB ones.") HlsRgb;
+	:param H:
+	:type H: Quantity_Parameter
+	:param L:
+	:type L: Quantity_Parameter
+	:param S:
+	:type S: Quantity_Parameter
+	:param R:
+	:type R: Quantity_Parameter &
+	:param G:
+	:type G: Quantity_Parameter &
+	:param B:
+	:type B: Quantity_Parameter &
+	:rtype: void
+") HlsRgb;
 		static void HlsRgb (const Quantity_Parameter H,const Quantity_Parameter L,const Quantity_Parameter S,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	R(Quantity_Parameter)
-	G(Quantity_Parameter)
-	B(Quantity_Parameter)
-	H(Quantity_Parameter)
-	L(Quantity_Parameter)
-	S(Quantity_Parameter)
+		%feature("autodoc", "	* Converts RGB components into HLS ones.
 
-Returns:
-	static void
-
-Converts RGB components into HLS ones.") RgbHls;
+	:param R:
+	:type R: Quantity_Parameter
+	:param G:
+	:type G: Quantity_Parameter
+	:param B:
+	:type B: Quantity_Parameter
+	:param H:
+	:type H: Quantity_Parameter &
+	:param L:
+	:type L: Quantity_Parameter &
+	:param S:
+	:type S: Quantity_Parameter &
+	:rtype: void
+") RgbHls;
 		static void RgbHls (const Quantity_Parameter R,const Quantity_Parameter G,const Quantity_Parameter B,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	theColor(Quantity_Color)
-	theARGB(Standard_Integer)
+		%feature("autodoc", "	* Convert the Color value to ARGB integer value. theARGB has Alpha equal to zero, so the output is formatted as 0x00RRGGBB
 
-Returns:
-	static void
-
-Convert the Color value to ARGB integer value.  
-         theARGB has Alpha equal to zero, so the output is  
-         formatted as 0x00RRGGBB") Color2argb;
+	:param theColor:
+	:type theColor: Quantity_Color &
+	:param theARGB:
+	:type theARGB: Standard_Integer &
+	:rtype: void
+") Color2argb;
 		static void Color2argb (const Quantity_Color & theColor,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	theARGB(Standard_Integer)
-	theColor(Quantity_Color)
+		%feature("autodoc", "	* Convert integer ARGB value to Color. Alpha bits are ignored
 
-Returns:
-	static void
-
-Convert integer ARGB value to Color. Alpha bits are ignored") Argb2color;
+	:param theARGB:
+	:type theARGB: Standard_Integer
+	:param theColor:
+	:type theColor: Quantity_Color &
+	:rtype: void
+") Argb2color;
 		static void Argb2color (const Standard_Integer theARGB,Quantity_Color & theColor);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static void
+		%feature("autodoc", "	* Internal test
 
-Internal test") Test;
+	:rtype: void
+") Test;
 		static void Test ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") _CSFDB_GetQuantity_ColorMyRed;
+		%feature("autodoc", "	:rtype: Standard_ShortReal
+") _CSFDB_GetQuantity_ColorMyRed;
 		Standard_ShortReal _CSFDB_GetQuantity_ColorMyRed ();
-		%feature("autodoc", "Args:
-	p(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") _CSFDB_SetQuantity_ColorMyRed;
+		%feature("autodoc", "	:param p:
+	:type p: Standard_ShortReal
+	:rtype: None
+") _CSFDB_SetQuantity_ColorMyRed;
 		void _CSFDB_SetQuantity_ColorMyRed (const Standard_ShortReal p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") _CSFDB_GetQuantity_ColorMyGreen;
+		%feature("autodoc", "	:rtype: Standard_ShortReal
+") _CSFDB_GetQuantity_ColorMyGreen;
 		Standard_ShortReal _CSFDB_GetQuantity_ColorMyGreen ();
-		%feature("autodoc", "Args:
-	p(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") _CSFDB_SetQuantity_ColorMyGreen;
+		%feature("autodoc", "	:param p:
+	:type p: Standard_ShortReal
+	:rtype: None
+") _CSFDB_SetQuantity_ColorMyGreen;
 		void _CSFDB_SetQuantity_ColorMyGreen (const Standard_ShortReal p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") _CSFDB_GetQuantity_ColorMyBlue;
+		%feature("autodoc", "	:rtype: Standard_ShortReal
+") _CSFDB_GetQuantity_ColorMyBlue;
 		Standard_ShortReal _CSFDB_GetQuantity_ColorMyBlue ();
-		%feature("autodoc", "Args:
-	p(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") _CSFDB_SetQuantity_ColorMyBlue;
+		%feature("autodoc", "	:param p:
+	:type p: Standard_ShortReal
+	:rtype: None
+") _CSFDB_SetQuantity_ColorMyBlue;
 		void _CSFDB_SetQuantity_ColorMyBlue (const Standard_ShortReal p);
 };
 
@@ -1537,54 +1305,46 @@ def __del__(self):
 %nodefaultctor Quantity_Convert;
 class Quantity_Convert {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates an object;
 
-Creates an object;") Quantity_Convert;
+	:rtype: None
+") Quantity_Convert;
 		 Quantity_Convert ();
-		%feature("autodoc", "Args:
-	aQuantity(Quantity_PhysicalQuantity)
-	aCoef(Quantity_Coefficient)
+		%feature("autodoc", "	* Updates the conversion table (correspondances between Quantities and conversion coefficients).
 
-Returns:
-	static void
-
-Updates the conversion table (correspondances between  
-Quantities and conversion coefficients).") SetQuantity;
+	:param aQuantity:
+	:type aQuantity: Quantity_PhysicalQuantity
+	:param aCoef:
+	:type aCoef: Quantity_Coefficient
+	:rtype: void
+") SetQuantity;
 		static void SetQuantity (const Quantity_PhysicalQuantity aQuantity,const Quantity_Coefficient aCoef);
-		%feature("autodoc", "Args:
-	aQuantity(Quantity_PhysicalQuantity)
-	aVal(Standard_Real)
+		%feature("autodoc", "	* Converts, from the conversion table, the value <aVal> from the user system to the SI system.
 
-Returns:
-	static Standard_Real
-
-Converts, from the conversion table, the value <aVal>  
-from the user system to the SI system.") ConvertUserToSI;
+	:param aQuantity:
+	:type aQuantity: Quantity_PhysicalQuantity
+	:param aVal:
+	:type aVal: float
+	:rtype: float
+") ConvertUserToSI;
 		static Standard_Real ConvertUserToSI (const Quantity_PhysicalQuantity aQuantity,const Standard_Real aVal);
-		%feature("autodoc", "Args:
-	aQuantity(Quantity_PhysicalQuantity)
-	aVal(Standard_Real)
+		%feature("autodoc", "	* Converts, from the conversion table, the value <aVal> from the SI system to the user system.
 
-Returns:
-	static Standard_Real
-
-Converts, from the conversion table, the value <aVal>  
-from the SI system to the user system.") ConvertSIToUser;
+	:param aQuantity:
+	:type aQuantity: Quantity_PhysicalQuantity
+	:param aVal:
+	:type aVal: float
+	:rtype: float
+") ConvertSIToUser;
 		static Standard_Real ConvertSIToUser (const Quantity_PhysicalQuantity aQuantity,const Standard_Real aVal);
-		%feature("autodoc", "Args:
-	aTypeName(TCollection_AsciiString)
-	anEnum(TCollection_AsciiString)
+		%feature("autodoc", "	* if (aType is a physical quantity) returns True and the name of the associated PhysicalQuantity . else returns False.
 
-Returns:
-	static Standard_Boolean
-
-if (aType is a physical quantity)  
-   returns True and the name of the associated PhysicalQuantity .  
-else  
-   returns False.") IsPhysicalQuantity;
+	:param aTypeName:
+	:type aTypeName: TCollection_AsciiString &
+	:param anEnum:
+	:type anEnum: TCollection_AsciiString &
+	:rtype: bool
+") IsPhysicalQuantity;
 		static Standard_Boolean IsPhysicalQuantity (const TCollection_AsciiString & aTypeName,TCollection_AsciiString & anEnum);
 };
 
@@ -1606,197 +1366,151 @@ def __del__(self):
 %nodefaultctor Quantity_Date;
 class Quantity_Date {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Constructs a default date (00:00 GMT, January 1, 1979 (zero hour)); use the function SetValues to define the required date; or
 
-Constructs a default date  
-(00:00 GMT, January 1, 1979 (zero hour)); use the function  
-  SetValues to define the required date; or") Quantity_Date;
+	:rtype: None
+") Quantity_Date;
 		 Quantity_Date ();
-		%feature("autodoc", "Args:
-	mm(Standard_Integer)
-	dd(Standard_Integer)
-	yyyy(Standard_Integer)
-	hh(Standard_Integer)
-	mn(Standard_Integer)
-	ss(Standard_Integer)
-	mis(Standard_Integer)=0
-	mics(Standard_Integer)=0
+		%feature("autodoc", "	* Constructs a date from the year yyyy, the month mm, the day dd, the hour hh, the minute mn, the second ss, the millisecond mis (defaulted to 0) and the microsecond mics (defaulted to 0).. With: 1 <= mm <= 12  1 <= dd <= max number of days of <mm>  1979 <= yyyy  0 <= hh <= 23  0 <= mn <= 59  0 <= ss <= 59  0 <= mis <= 999  0 <= mics <= 999 Exceptions Quantity_DateDefinitionError if mm, dd, hh, mn, ss, mis and mics are not the components of the valid date.
 
-Returns:
-	None
-
-Constructs a date from the year yyyy, the  
-month mm, the day dd, the hour hh, the minute  
-mn, the second ss, the millisecond mis  
-(defaulted to 0) and the microsecond mics (defaulted to 0)..  
-         With:      1 <= mm <= 12  
-                    1 <= dd <= max number of days of <mm>  
-                    1979 <= yyyy  
-                    0 <= hh <= 23  
-                    0 <= mn <= 59  
-                    0 <= ss <= 59  
-                    0 <= mis <= 999  
-                    0 <= mics <= 999  
-Exceptions  
-Quantity_DateDefinitionError if mm, dd, hh,  
-mn, ss, mis and mics are not the components of the valid date.") Quantity_Date;
+	:param mm:
+	:type mm: Standard_Integer
+	:param dd:
+	:type dd: Standard_Integer
+	:param yyyy:
+	:type yyyy: Standard_Integer
+	:param hh:
+	:type hh: Standard_Integer
+	:param mn:
+	:type mn: Standard_Integer
+	:param ss:
+	:type ss: Standard_Integer
+	:param mis: default value is 0
+	:type mis: Standard_Integer
+	:param mics: default value is 0
+	:type mics: Standard_Integer
+	:rtype: None
+") Quantity_Date;
 		 Quantity_Date (const Standard_Integer mm,const Standard_Integer dd,const Standard_Integer yyyy,const Standard_Integer hh,const Standard_Integer mn,const Standard_Integer ss,const Standard_Integer mis = 0,const Standard_Integer mics = 0);
-		%feature("autodoc", "Args:
-	mm(Standard_Integer)
-	dd(Standard_Integer)
-	yy(Standard_Integer)
-	hh(Standard_Integer)
-	mn(Standard_Integer)
-	ss(Standard_Integer)
-	mis(Standard_Integer)
-	mics(Standard_Integer)
+		%feature("autodoc", "	* Gets a complete Date. - in mm - the month, - in dd - the day, - in yyyy - the year, - in hh - the hour, - in mn - the minute, - in ss - the second, - in mis - the millisecond, and - in mics - the microsecond
 
-Returns:
-	None
-
-Gets a complete Date.  
--   in mm - the month,  
--   in dd - the day,  
--   in yyyy - the year,  
--   in hh - the hour,  
--   in mn - the minute,  
--   in ss - the second,  
--   in mis - the millisecond, and  
--   in mics - the microsecond") Values;
+	:param mm:
+	:type mm: Standard_Integer &
+	:param dd:
+	:type dd: Standard_Integer &
+	:param yy:
+	:type yy: Standard_Integer &
+	:param hh:
+	:type hh: Standard_Integer &
+	:param mn:
+	:type mn: Standard_Integer &
+	:param ss:
+	:type ss: Standard_Integer &
+	:param mis:
+	:type mis: Standard_Integer &
+	:param mics:
+	:type mics: Standard_Integer &
+	:rtype: None
+") Values;
 		void Values (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	mm(Standard_Integer)
-	dd(Standard_Integer)
-	yy(Standard_Integer)
-	hh(Standard_Integer)
-	mn(Standard_Integer)
-	ss(Standard_Integer)
-	mis(Standard_Integer)=0
-	mics(Standard_Integer)=0
+		%feature("autodoc", "	* Assigns to this date the year yyyy, the month mm, the day dd, the hour hh, the minute mn, the second ss, the millisecond mis (defaulted to 0) and the microsecond mics (defaulted to 0). Exceptions Quantity_DateDefinitionError if mm, dd, hh, mn, ss, mis and mics are not components of a valid date.
 
-Returns:
-	None
-
-Assigns to this date the year yyyy, the month  
-mm, the day dd, the hour hh, the minute mn, the  
-second ss, the millisecond mis (defaulted to 0)  
-and the microsecond mics (defaulted to 0).  
-Exceptions  
-Quantity_DateDefinitionError if mm, dd, hh,  
-mn, ss, mis and mics are not components of a valid date.") SetValues;
+	:param mm:
+	:type mm: Standard_Integer
+	:param dd:
+	:type dd: Standard_Integer
+	:param yy:
+	:type yy: Standard_Integer
+	:param hh:
+	:type hh: Standard_Integer
+	:param mn:
+	:type mn: Standard_Integer
+	:param ss:
+	:type ss: Standard_Integer
+	:param mis: default value is 0
+	:type mis: Standard_Integer
+	:param mics: default value is 0
+	:type mics: Standard_Integer
+	:rtype: None
+") SetValues;
 		void SetValues (const Standard_Integer mm,const Standard_Integer dd,const Standard_Integer yy,const Standard_Integer hh,const Standard_Integer mn,const Standard_Integer ss,const Standard_Integer mis = 0,const Standard_Integer mics = 0);
-		%feature("autodoc", "Args:
-	anOther(Quantity_Date)
+		%feature("autodoc", "	* Subtracts one Date from another one to find the period between and returns the value. The result is the absolute value between the difference of two dates.
 
-Returns:
-	Quantity_Period
-
-Subtracts one Date from another one to find the period  
-         between and returns the value.  
-         The result is the absolute value between the difference  
-         of two dates.") Difference;
+	:param anOther:
+	:type anOther: Quantity_Date &
+	:rtype: Quantity_Period
+") Difference;
 		Quantity_Period Difference (const Quantity_Date & anOther);
-		%feature("autodoc", "Args:
-	aPeriod(Quantity_Period)
+		%feature("autodoc", "	* Subtracts a period from a Date and returns the new Date. Raises an exception if the result date is anterior to Jan 1, 1979.
 
-Returns:
-	Quantity_Date
-
-Subtracts a period from a Date and returns the new Date.  
-         Raises an exception if the result date is anterior to  
-         Jan 1, 1979.") Subtract;
+	:param aPeriod:
+	:type aPeriod: Quantity_Period &
+	:rtype: Quantity_Date
+") Subtract;
 		Quantity_Date Subtract (const Quantity_Period & aPeriod);
-		%feature("autodoc", "Args:
-	aPeriod(Quantity_Period)
-
-Returns:
-	Quantity_Date
-
-No detailed docstring for this function.") operator-;
+		%feature("autodoc", "	:param aPeriod:
+	:type aPeriod: Quantity_Period &
+	:rtype: Quantity_Date
+") operator-;
 		Quantity_Date operator - (const Quantity_Period & aPeriod);
-		%feature("autodoc", "Args:
-	aPeriod(Quantity_Period)
+		%feature("autodoc", "	* Adds a Period to a Date and returns the new Date.
 
-Returns:
-	Quantity_Date
-
-Adds a Period to a Date and returns the new Date.") Add;
+	:param aPeriod:
+	:type aPeriod: Quantity_Period &
+	:rtype: Quantity_Date
+") Add;
 		Quantity_Date Add (const Quantity_Period & aPeriod);
-		%feature("autodoc", "Args:
-	aPeriod(Quantity_Period)
-
-Returns:
-	Quantity_Date
-
-No detailed docstring for this function.") operator+;
+		%feature("autodoc", "	:param aPeriod:
+	:type aPeriod: Quantity_Period &
+	:rtype: Quantity_Date
+") operator+;
 		Quantity_Date operator + (const Quantity_Period & aPeriod);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns year of a Date.
 
-Returns year of a Date.") Year;
+	:rtype: int
+") Year;
 		Standard_Integer Year ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns month of a Date.
 
-Returns month of a Date.") Month;
+	:rtype: int
+") Month;
 		Standard_Integer Month ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns Day of a Date.
 
-Returns Day of a Date.") Day;
+	:rtype: int
+") Day;
 		Standard_Integer Day ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns Hour of a Date.
 
-Returns Hour of a Date.") Hour;
+	:rtype: int
+") Hour;
 		Standard_Integer Hour ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns minute of a Date.
 
-Returns minute of a Date.") Minute;
+	:rtype: int
+") Minute;
 		Standard_Integer Minute ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns seconde of a Date.
 
-Returns seconde of a Date.") Second;
+	:rtype: int
+") Second;
 		Standard_Integer Second ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns millisecond of a Date.
 
-Returns millisecond of a Date.") MilliSecond;
+	:rtype: int
+") MilliSecond;
 		Standard_Integer MilliSecond ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns microsecond of a Date.
 
-Returns microsecond of a Date.") MicroSecond;
+	:rtype: int
+") MicroSecond;
 		Standard_Integer MicroSecond ();
-		%feature("autodoc", "Args:
-	anOther(Quantity_Date)
+		%feature("autodoc", "	* Returns True if both <self> and <other> are equal. This method is an alias of operator ==.
 
-Returns:
-	Standard_Boolean
-
-Returns TRUE if both <self> and <other> are equal.  
-This method is an alias of operator ==.") IsEqual;
+	:param anOther:
+	:type anOther: Quantity_Date &
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const Quantity_Date & anOther);
 
         %extend{
@@ -1812,108 +1526,73 @@ This method is an alias of operator ==.") IsEqual;
             except:
                 return False
         }
-        		%feature("autodoc", "Args:
-	anOther(Quantity_Date)
+        		%feature("autodoc", "	* Returns True if <self> is earlier than <other>.
 
-Returns:
-	Standard_Boolean
-
-Returns TRUE if <self> is earlier than <other>.") IsEarlier;
+	:param anOther:
+	:type anOther: Quantity_Date &
+	:rtype: bool
+") IsEarlier;
 		Standard_Boolean IsEarlier (const Quantity_Date & anOther);
-		%feature("autodoc", "Args:
-	anOther(Quantity_Date)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator<;
+		%feature("autodoc", "	:param anOther:
+	:type anOther: Quantity_Date &
+	:rtype: bool
+") operator<;
 		Standard_Boolean operator < (const Quantity_Date & anOther);
-		%feature("autodoc", "Args:
-	anOther(Quantity_Date)
+		%feature("autodoc", "	* Returns True if <self> is later then <other>.
 
-Returns:
-	Standard_Boolean
-
-Returns TRUE if <self> is later then <other>.") IsLater;
+	:param anOther:
+	:type anOther: Quantity_Date &
+	:rtype: bool
+") IsLater;
 		Standard_Boolean IsLater (const Quantity_Date & anOther);
-		%feature("autodoc", "Args:
-	anOther(Quantity_Date)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator>;
+		%feature("autodoc", "	:param anOther:
+	:type anOther: Quantity_Date &
+	:rtype: bool
+") operator>;
 		Standard_Boolean operator > (const Quantity_Date & anOther);
-		%feature("autodoc", "Args:
-	mm(Standard_Integer)
-	dd(Standard_Integer)
-	yy(Standard_Integer)
-	hh(Standard_Integer)
-	mn(Standard_Integer)
-	ss(Standard_Integer)
-	mis(Standard_Integer)=0
-	mics(Standard_Integer)=0
+		%feature("autodoc", "	* Checks the validity of a date - returns true if a date defined from the year yyyy, the month mm, the day dd, the hour hh, the minute mn, the second ss, the millisecond mis (defaulted to 0) and the microsecond mics (defaulted to 0) is valid. A date must satisfy the conditions above: - yyyy is greater than or equal to 1979, - mm lies within the range [1, 12] (with 1 corresponding to January and 12 to December), - dd lies within a valid range for the month mm (from 1 to 28, 29, 30 or 31 depending on mm and whether yyyy is a leap year or not), - hh lies within the range [0, 23], - mn lies within the range [0, 59], - ss lies within the range [0, 59], - mis lies within the range [0, 999], - mics lies within the range [0, 999].C
 
-Returns:
-	static Standard_Boolean
-
-Checks the validity of a date - returns true if a  
-date defined from the year yyyy, the month mm,  
-the day dd, the hour hh, the minute mn, the  
-second ss, the millisecond mis (defaulted to 0)  
-and the microsecond mics (defaulted to 0) is valid.  
-A date must satisfy the conditions above:  
--   yyyy is greater than or equal to 1979,  
--   mm lies within the range [1, 12] (with 1  
-  corresponding to January and 12 to December),  
--   dd lies within a valid range for the month mm  
-  (from 1 to 28, 29, 30 or 31 depending on  
-  mm and whether yyyy is a leap year or not),  
--   hh lies within the range [0, 23],  
--   mn lies within the range [0, 59],  
--   ss lies within the range [0, 59],  
--   mis lies within the range [0, 999],  
--   mics lies within the range [0, 999].C") IsValid;
+	:param mm:
+	:type mm: Standard_Integer
+	:param dd:
+	:type dd: Standard_Integer
+	:param yy:
+	:type yy: Standard_Integer
+	:param hh:
+	:type hh: Standard_Integer
+	:param mn:
+	:type mn: Standard_Integer
+	:param ss:
+	:type ss: Standard_Integer
+	:param mis: default value is 0
+	:type mis: Standard_Integer
+	:param mics: default value is 0
+	:type mics: Standard_Integer
+	:rtype: bool
+") IsValid;
 		static Standard_Boolean IsValid (const Standard_Integer mm,const Standard_Integer dd,const Standard_Integer yy,const Standard_Integer hh,const Standard_Integer mn,const Standard_Integer ss,const Standard_Integer mis = 0,const Standard_Integer mics = 0);
-		%feature("autodoc", "Args:
-	yy(Standard_Integer)
+		%feature("autodoc", "	* Returns true if a year is a leap year. The leap years are divisable by 4 and not by 100 except the years divisable by 400.
 
-Returns:
-	static Standard_Boolean
-
-Returns true if a year is a leap year.  
-         The leap years are divisable by 4 and not by 100 except  
-         the years divisable by 400.") IsLeap;
+	:param yy:
+	:type yy: Standard_Integer
+	:rtype: bool
+") IsLeap;
 		static Standard_Boolean IsLeap (const Standard_Integer yy);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") _CSFDB_GetQuantity_DatemySec;
+		%feature("autodoc", "	:rtype: int
+") _CSFDB_GetQuantity_DatemySec;
 		Standard_Integer _CSFDB_GetQuantity_DatemySec ();
-		%feature("autodoc", "Args:
-	p(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") _CSFDB_SetQuantity_DatemySec;
+		%feature("autodoc", "	:param p:
+	:type p: Standard_Integer
+	:rtype: None
+") _CSFDB_SetQuantity_DatemySec;
 		void _CSFDB_SetQuantity_DatemySec (const Standard_Integer p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") _CSFDB_GetQuantity_DatemyUSec;
+		%feature("autodoc", "	:rtype: int
+") _CSFDB_GetQuantity_DatemyUSec;
 		Standard_Integer _CSFDB_GetQuantity_DatemyUSec ();
-		%feature("autodoc", "Args:
-	p(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") _CSFDB_SetQuantity_DatemyUSec;
+		%feature("autodoc", "	:param p:
+	:type p: Standard_Integer
+	:rtype: None
+") _CSFDB_SetQuantity_DatemyUSec;
 		void _CSFDB_SetQuantity_DatemyUSec (const Standard_Integer p);
 };
 
@@ -1935,92 +1614,58 @@ def __del__(self):
 %nodefaultctor Quantity_HArray1OfColor;
 class Quantity_HArray1OfColor : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Quantity_HArray1OfColor;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Quantity_HArray1OfColor;
 		 Quantity_HArray1OfColor (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(Quantity_Color)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Quantity_HArray1OfColor;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: Quantity_Color &
+	:rtype: None
+") Quantity_HArray1OfColor;
 		 Quantity_HArray1OfColor (const Standard_Integer Low,const Standard_Integer Up,const Quantity_Color & V);
-		%feature("autodoc", "Args:
-	V(Quantity_Color)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Quantity_Color &
+	:rtype: None
+") Init;
 		void Init (const Quantity_Color & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Quantity_Color)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Quantity_Color &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Quantity_Color & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Quantity_Color
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Quantity_Color
+") Value;
 		const Quantity_Color & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Quantity_Color
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Quantity_Color
+") ChangeValue;
 		Quantity_Color & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Array1OfColor
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: Quantity_Array1OfColor
+") Array1;
 		const Quantity_Array1OfColor & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Array1OfColor
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: Quantity_Array1OfColor
+") ChangeArray1;
 		Quantity_Array1OfColor & ChangeArray1 ();
 };
 
@@ -2081,147 +1726,114 @@ def __del__(self):
 %nodefaultctor Quantity_Period;
 class Quantity_Period {
 	public:
-		%feature("autodoc", "Args:
-	dd(Standard_Integer)
-	hh(Standard_Integer)
-	mn(Standard_Integer)
-	ss(Standard_Integer)
-	mis(Standard_Integer)=0
-	mics(Standard_Integer)=0
+		%feature("autodoc", "	* Creates a Period With: 0 <= dd  0 <= hh  0 <= mn  0 <= ss  0 <= mis  0 <= mics
 
-Returns:
-	None
-
-Creates a Period  
-         With:      0 <= dd  
-                    0 <= hh  
-                    0 <= mn  
-                    0 <= ss  
-                    0 <= mis  
-                    0 <= mics") Quantity_Period;
+	:param dd:
+	:type dd: Standard_Integer
+	:param hh:
+	:type hh: Standard_Integer
+	:param mn:
+	:type mn: Standard_Integer
+	:param ss:
+	:type ss: Standard_Integer
+	:param mis: default value is 0
+	:type mis: Standard_Integer
+	:param mics: default value is 0
+	:type mics: Standard_Integer
+	:rtype: None
+") Quantity_Period;
 		 Quantity_Period (const Standard_Integer dd,const Standard_Integer hh,const Standard_Integer mn,const Standard_Integer ss,const Standard_Integer mis = 0,const Standard_Integer mics = 0);
-		%feature("autodoc", "Args:
-	ss(Standard_Integer)
-	mics(Standard_Integer)=0
+		%feature("autodoc", "	* Creates a Period with a number of seconds and microseconds. Exceptions Quantity_PeriodDefinitionError: - if the number of seconds expressed either by: - dd days, hh hours, mn minutes and ss seconds, or - Ss is less than 0. - if the number of microseconds expressed either by: - mis milliseconds and mics microseconds, or - Mics is less than 0.
 
-Returns:
-	None
-
-Creates a Period with a number of seconds and microseconds.  
- Exceptions  
-Quantity_PeriodDefinitionError:  
--   if the number of seconds expressed either by:  
-  -   dd days, hh hours, mn minutes and ss seconds, or  
-  -   Ss  
-is less than 0.  
--   if the number of microseconds expressed either by:  
-  -   mis milliseconds and mics microseconds, or  
-  -   Mics  
-is less than 0.") Quantity_Period;
+	:param ss:
+	:type ss: Standard_Integer
+	:param mics: default value is 0
+	:type mics: Standard_Integer
+	:rtype: None
+") Quantity_Period;
 		 Quantity_Period (const Standard_Integer ss,const Standard_Integer mics = 0);
-		%feature("autodoc", "Args:
-	dd(Standard_Integer)
-	hh(Standard_Integer)
-	mn(Standard_Integer)
-	ss(Standard_Integer)
-	mis(Standard_Integer)
-	mics(Standard_Integer)
+		%feature("autodoc", "	* Decomposes this period into a number of days,hours, minutes,seconds,milliseconds and microseconds Example of return values: 2 days, 15 hours, 0 minute , 0 second 0 millisecond and 0 microsecond
 
-Returns:
-	None
-
-Decomposes this period into a number of days,hours,  
-         minutes,seconds,milliseconds and microseconds  
-         Example of return values:  
-         2 days, 15 hours, 0 minute , 0 second  
-         0 millisecond and 0 microsecond") Values;
+	:param dd:
+	:type dd: Standard_Integer &
+	:param hh:
+	:type hh: Standard_Integer &
+	:param mn:
+	:type mn: Standard_Integer &
+	:param ss:
+	:type ss: Standard_Integer &
+	:param mis:
+	:type mis: Standard_Integer &
+	:param mics:
+	:type mics: Standard_Integer &
+	:rtype: None
+") Values;
 		void Values (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	ss(Standard_Integer)
-	mics(Standard_Integer)
+		%feature("autodoc", "	* Returns the number of seconds in Ss and the number of remainding microseconds in Mics of this period. Example of return values: 3600 seconds and 0 microseconds
 
-Returns:
-	None
-
-Returns the number of seconds in Ss and the  
-number of remainding microseconds in Mics of this period.  
-Example of return values: 3600 seconds and 0 microseconds") Values;
+	:param ss:
+	:type ss: Standard_Integer &
+	:param mics:
+	:type mics: Standard_Integer &
+	:rtype: None
+") Values;
 		void Values (Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	dd(Standard_Integer)
-	hh(Standard_Integer)
-	mn(Standard_Integer)
-	ss(Standard_Integer)
-	mis(Standard_Integer)=0
-	mics(Standard_Integer)=0
+		%feature("autodoc", "	* Assigns to this period the time interval defined - with dd days, hh hours, mn minutes, ss seconds, mis (defaulted to 0) milliseconds and mics (defaulted to 0) microseconds; or
 
-Returns:
-	None
-
-Assigns to this period the time interval defined  
-   -   with dd days, hh hours, mn minutes, ss  
-  seconds, mis (defaulted to 0) milliseconds and  
-  mics (defaulted to 0) microseconds; or") SetValues;
+	:param dd:
+	:type dd: Standard_Integer
+	:param hh:
+	:type hh: Standard_Integer
+	:param mn:
+	:type mn: Standard_Integer
+	:param ss:
+	:type ss: Standard_Integer
+	:param mis: default value is 0
+	:type mis: Standard_Integer
+	:param mics: default value is 0
+	:type mics: Standard_Integer
+	:rtype: None
+") SetValues;
 		void SetValues (const Standard_Integer dd,const Standard_Integer hh,const Standard_Integer mn,const Standard_Integer ss,const Standard_Integer mis = 0,const Standard_Integer mics = 0);
-		%feature("autodoc", "Args:
-	ss(Standard_Integer)
-	mics(Standard_Integer)=0
+		%feature("autodoc", "	* Assigns to this period the time interval defined - with Ss seconds and Mics (defaulted to 0) microseconds. Exceptions Quantity_PeriodDefinitionError: - if the number of seconds expressed either by: - dd days, hh hours, mn minutes and ss seconds, or - Ss is less than 0. - if the number of microseconds expressed either by: - mis milliseconds and mics microseconds, or - Mics is less than 0.
 
-Returns:
-	None
-
-Assigns to this period the time interval defined  
--   with Ss seconds and Mics (defaulted to 0) microseconds.  
- Exceptions  
-Quantity_PeriodDefinitionError:  
--   if the number of seconds expressed either by:  
-  -   dd days, hh hours, mn minutes and ss seconds, or  
-  -   Ss  
-is less than 0.  
--   if the number of microseconds expressed either by:  
-  -   mis milliseconds and mics microseconds, or  
-  -   Mics  
-is less than 0.") SetValues;
+	:param ss:
+	:type ss: Standard_Integer
+	:param mics: default value is 0
+	:type mics: Standard_Integer
+	:rtype: None
+") SetValues;
 		void SetValues (const Standard_Integer ss,const Standard_Integer mics = 0);
-		%feature("autodoc", "Args:
-	anOther(Quantity_Period)
+		%feature("autodoc", "	* Subtracts one Period from another and returns the difference.
 
-Returns:
-	Quantity_Period
-
-Subtracts one Period from another and returns the difference.") Subtract;
+	:param anOther:
+	:type anOther: Quantity_Period &
+	:rtype: Quantity_Period
+") Subtract;
 		Quantity_Period Subtract (const Quantity_Period & anOther);
-		%feature("autodoc", "Args:
-	anOther(Quantity_Period)
-
-Returns:
-	Quantity_Period
-
-No detailed docstring for this function.") operator-;
+		%feature("autodoc", "	:param anOther:
+	:type anOther: Quantity_Period &
+	:rtype: Quantity_Period
+") operator-;
 		Quantity_Period operator - (const Quantity_Period & anOther);
-		%feature("autodoc", "Args:
-	anOther(Quantity_Period)
+		%feature("autodoc", "	* Adds one Period to another one.
 
-Returns:
-	Quantity_Period
-
-Adds one Period to another one.") Add;
+	:param anOther:
+	:type anOther: Quantity_Period &
+	:rtype: Quantity_Period
+") Add;
 		Quantity_Period Add (const Quantity_Period & anOther);
-		%feature("autodoc", "Args:
-	anOther(Quantity_Period)
-
-Returns:
-	Quantity_Period
-
-No detailed docstring for this function.") operator+;
+		%feature("autodoc", "	:param anOther:
+	:type anOther: Quantity_Period &
+	:rtype: Quantity_Period
+") operator+;
 		Quantity_Period operator + (const Quantity_Period & anOther);
-		%feature("autodoc", "Args:
-	anOther(Quantity_Period)
+		%feature("autodoc", "	* Returns True if both <self> and <other> are equal.
 
-Returns:
-	Standard_Boolean
-
-Returns TRUE if both <self> and <other> are equal.") IsEqual;
+	:param anOther:
+	:type anOther: Quantity_Period &
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const Quantity_Period & anOther);
 
         %extend{
@@ -2237,104 +1849,74 @@ Returns TRUE if both <self> and <other> are equal.") IsEqual;
             except:
                 return False
         }
-        		%feature("autodoc", "Args:
-	anOther(Quantity_Period)
+        		%feature("autodoc", "	* Returns True if <self> is shorter than <other>.
 
-Returns:
-	Standard_Boolean
-
-Returns TRUE if <self> is shorter than <other>.") IsShorter;
+	:param anOther:
+	:type anOther: Quantity_Period &
+	:rtype: bool
+") IsShorter;
 		Standard_Boolean IsShorter (const Quantity_Period & anOther);
-		%feature("autodoc", "Args:
-	anOther(Quantity_Period)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator<;
+		%feature("autodoc", "	:param anOther:
+	:type anOther: Quantity_Period &
+	:rtype: bool
+") operator<;
 		Standard_Boolean operator < (const Quantity_Period & anOther);
-		%feature("autodoc", "Args:
-	anOther(Quantity_Period)
+		%feature("autodoc", "	* Returns True if <self> is longer then <other>.
 
-Returns:
-	Standard_Boolean
-
-Returns TRUE if <self> is longer then <other>.") IsLonger;
+	:param anOther:
+	:type anOther: Quantity_Period &
+	:rtype: bool
+") IsLonger;
 		Standard_Boolean IsLonger (const Quantity_Period & anOther);
-		%feature("autodoc", "Args:
-	anOther(Quantity_Period)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator>;
+		%feature("autodoc", "	:param anOther:
+	:type anOther: Quantity_Period &
+	:rtype: bool
+") operator>;
 		Standard_Boolean operator > (const Quantity_Period & anOther);
-		%feature("autodoc", "Args:
-	dd(Standard_Integer)
-	hh(Standard_Integer)
-	mn(Standard_Integer)
-	ss(Standard_Integer)
-	mis(Standard_Integer)=0
-	mics(Standard_Integer)=0
+		%feature("autodoc", "	* Checks the validity of a Period in form (dd,hh,mn,ss,mil,mic) With: 0 <= dd  0 <= hh  0 <= mn  0 <= ss  0 <= mis  0 <= mics
 
-Returns:
-	static Standard_Boolean
-
-Checks the validity of a Period in form (dd,hh,mn,ss,mil,mic)  
-         With:      0 <= dd  
-                    0 <= hh  
-                    0 <= mn  
-                    0 <= ss  
-                    0 <= mis  
-                    0 <= mics") IsValid;
+	:param dd:
+	:type dd: Standard_Integer
+	:param hh:
+	:type hh: Standard_Integer
+	:param mn:
+	:type mn: Standard_Integer
+	:param ss:
+	:type ss: Standard_Integer
+	:param mis: default value is 0
+	:type mis: Standard_Integer
+	:param mics: default value is 0
+	:type mics: Standard_Integer
+	:rtype: bool
+") IsValid;
 		static Standard_Boolean IsValid (const Standard_Integer dd,const Standard_Integer hh,const Standard_Integer mn,const Standard_Integer ss,const Standard_Integer mis = 0,const Standard_Integer mics = 0);
-		%feature("autodoc", "Args:
-	ss(Standard_Integer)
-	mics(Standard_Integer)=0
+		%feature("autodoc", "	* Checks the validity of a Period in form (ss,mic) With: 0 <= ss  0 <= mics
 
-Returns:
-	static Standard_Boolean
-
-Checks the validity of a Period in form (ss,mic)  
-         With:      0 <= ss  
-                    0 <= mics") IsValid;
+	:param ss:
+	:type ss: Standard_Integer
+	:param mics: default value is 0
+	:type mics: Standard_Integer
+	:rtype: bool
+") IsValid;
 		static Standard_Boolean IsValid (const Standard_Integer ss,const Standard_Integer mics = 0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Quantity_Period;
+		%feature("autodoc", "	:rtype: None
+") Quantity_Period;
 		 Quantity_Period ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") _CSFDB_GetQuantity_PeriodmySec;
+		%feature("autodoc", "	:rtype: int
+") _CSFDB_GetQuantity_PeriodmySec;
 		Standard_Integer _CSFDB_GetQuantity_PeriodmySec ();
-		%feature("autodoc", "Args:
-	p(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") _CSFDB_SetQuantity_PeriodmySec;
+		%feature("autodoc", "	:param p:
+	:type p: Standard_Integer
+	:rtype: None
+") _CSFDB_SetQuantity_PeriodmySec;
 		void _CSFDB_SetQuantity_PeriodmySec (const Standard_Integer p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") _CSFDB_GetQuantity_PeriodmyUSec;
+		%feature("autodoc", "	:rtype: int
+") _CSFDB_GetQuantity_PeriodmyUSec;
 		Standard_Integer _CSFDB_GetQuantity_PeriodmyUSec ();
-		%feature("autodoc", "Args:
-	p(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") _CSFDB_SetQuantity_PeriodmyUSec;
+		%feature("autodoc", "	:param p:
+	:type p: Standard_Integer
+	:rtype: None
+") _CSFDB_SetQuantity_PeriodmyUSec;
 		void _CSFDB_SetQuantity_PeriodmyUSec (const Standard_Integer p);
 };
 

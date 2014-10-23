@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -44,108 +44,68 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor Plate_Array1OfPinpointConstraint;
 class Plate_Array1OfPinpointConstraint {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_Array1OfPinpointConstraint;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Plate_Array1OfPinpointConstraint;
 		 Plate_Array1OfPinpointConstraint (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Plate_PinpointConstraint)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_Array1OfPinpointConstraint;
+		%feature("autodoc", "	:param Item:
+	:type Item: Plate_PinpointConstraint &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Plate_Array1OfPinpointConstraint;
 		 Plate_Array1OfPinpointConstraint (const Plate_PinpointConstraint & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Plate_PinpointConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Plate_PinpointConstraint &
+	:rtype: None
+") Init;
 		void Init (const Plate_PinpointConstraint & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(Plate_Array1OfPinpointConstraint)
-
-Returns:
-	Plate_Array1OfPinpointConstraint
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Plate_Array1OfPinpointConstraint &
+	:rtype: Plate_Array1OfPinpointConstraint
+") Assign;
 		const Plate_Array1OfPinpointConstraint & Assign (const Plate_Array1OfPinpointConstraint & Other);
-		%feature("autodoc", "Args:
-	Other(Plate_Array1OfPinpointConstraint)
-
-Returns:
-	Plate_Array1OfPinpointConstraint
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Plate_Array1OfPinpointConstraint &
+	:rtype: Plate_Array1OfPinpointConstraint
+") operator=;
 		const Plate_Array1OfPinpointConstraint & operator = (const Plate_Array1OfPinpointConstraint & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Plate_PinpointConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Plate_PinpointConstraint &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Plate_PinpointConstraint & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Plate_PinpointConstraint
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Plate_PinpointConstraint
+") Value;
 		const Plate_PinpointConstraint & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Plate_PinpointConstraint
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Plate_PinpointConstraint
+") ChangeValue;
 		Plate_PinpointConstraint & ChangeValue (const Standard_Integer Index);
 };
 
@@ -167,36 +127,23 @@ def __del__(self):
 %nodefaultctor Plate_D1;
 class Plate_D1 {
 	public:
-		%feature("autodoc", "Args:
-	du(gp_XYZ)
-	dv(gp_XYZ)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_D1;
+		%feature("autodoc", "	:param du:
+	:type du: gp_XYZ
+	:param dv:
+	:type dv: gp_XYZ
+	:rtype: None
+") Plate_D1;
 		 Plate_D1 (const gp_XYZ & du,const gp_XYZ & dv);
-		%feature("autodoc", "Args:
-	ref(Plate_D1)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_D1;
+		%feature("autodoc", "	:param ref:
+	:type ref: Plate_D1 &
+	:rtype: None
+") Plate_D1;
 		 Plate_D1 (const Plate_D1 & ref);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_XYZ
-
-No detailed docstring for this function.") DU;
+		%feature("autodoc", "	:rtype: gp_XYZ
+") DU;
 		const gp_XYZ & DU ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_XYZ
-
-No detailed docstring for this function.") DV;
+		%feature("autodoc", "	:rtype: gp_XYZ
+") DV;
 		const gp_XYZ & DV ();
 };
 
@@ -218,23 +165,19 @@ def __del__(self):
 %nodefaultctor Plate_D2;
 class Plate_D2 {
 	public:
-		%feature("autodoc", "Args:
-	duu(gp_XYZ)
-	duv(gp_XYZ)
-	dvv(gp_XYZ)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_D2;
+		%feature("autodoc", "	:param duu:
+	:type duu: gp_XYZ
+	:param duv:
+	:type duv: gp_XYZ
+	:param dvv:
+	:type dvv: gp_XYZ
+	:rtype: None
+") Plate_D2;
 		 Plate_D2 (const gp_XYZ & duu,const gp_XYZ & duv,const gp_XYZ & dvv);
-		%feature("autodoc", "Args:
-	ref(Plate_D2)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_D2;
+		%feature("autodoc", "	:param ref:
+	:type ref: Plate_D2 &
+	:rtype: None
+") Plate_D2;
 		 Plate_D2 (const Plate_D2 & ref);
 };
 
@@ -256,24 +199,21 @@ def __del__(self):
 %nodefaultctor Plate_D3;
 class Plate_D3 {
 	public:
-		%feature("autodoc", "Args:
-	duuu(gp_XYZ)
-	duuv(gp_XYZ)
-	duvv(gp_XYZ)
-	dvvv(gp_XYZ)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_D3;
+		%feature("autodoc", "	:param duuu:
+	:type duuu: gp_XYZ
+	:param duuv:
+	:type duuv: gp_XYZ
+	:param duvv:
+	:type duvv: gp_XYZ
+	:param dvvv:
+	:type dvvv: gp_XYZ
+	:rtype: None
+") Plate_D3;
 		 Plate_D3 (const gp_XYZ & duuu,const gp_XYZ & duuv,const gp_XYZ & duvv,const gp_XYZ & dvvv);
-		%feature("autodoc", "Args:
-	ref(Plate_D3)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_D3;
+		%feature("autodoc", "	:param ref:
+	:type ref: Plate_D3 &
+	:rtype: None
+") Plate_D3;
 		 Plate_D3 (const Plate_D3 & ref);
 };
 
@@ -295,77 +235,72 @@ def __del__(self):
 %nodefaultctor Plate_FreeGtoCConstraint;
 class Plate_FreeGtoCConstraint {
 	public:
-		%feature("autodoc", "Args:
-	point2d(gp_XY)
-	D1S(Plate_D1)
-	D1T(Plate_D1)
-	IncrementalLoad(Standard_Real)=1.0
-	orientation(Standard_Integer)=0
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_FreeGtoCConstraint;
+		%feature("autodoc", "	:param point2d:
+	:type point2d: gp_XY
+	:param D1S:
+	:type D1S: Plate_D1 &
+	:param D1T:
+	:type D1T: Plate_D1 &
+	:param IncrementalLoad: default value is 1.0
+	:type IncrementalLoad: float
+	:param orientation: default value is 0
+	:type orientation: Standard_Integer
+	:rtype: None
+") Plate_FreeGtoCConstraint;
 		 Plate_FreeGtoCConstraint (const gp_XY & point2d,const Plate_D1 & D1S,const Plate_D1 & D1T,const Standard_Real IncrementalLoad = 1.0,const Standard_Integer orientation = 0);
-		%feature("autodoc", "Args:
-	point2d(gp_XY)
-	D1S(Plate_D1)
-	D1T(Plate_D1)
-	D2S(Plate_D2)
-	D2T(Plate_D2)
-	IncrementalLoad(Standard_Real)=1.0
-	orientation(Standard_Integer)=0
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_FreeGtoCConstraint;
+		%feature("autodoc", "	:param point2d:
+	:type point2d: gp_XY
+	:param D1S:
+	:type D1S: Plate_D1 &
+	:param D1T:
+	:type D1T: Plate_D1 &
+	:param D2S:
+	:type D2S: Plate_D2 &
+	:param D2T:
+	:type D2T: Plate_D2 &
+	:param IncrementalLoad: default value is 1.0
+	:type IncrementalLoad: float
+	:param orientation: default value is 0
+	:type orientation: Standard_Integer
+	:rtype: None
+") Plate_FreeGtoCConstraint;
 		 Plate_FreeGtoCConstraint (const gp_XY & point2d,const Plate_D1 & D1S,const Plate_D1 & D1T,const Plate_D2 & D2S,const Plate_D2 & D2T,const Standard_Real IncrementalLoad = 1.0,const Standard_Integer orientation = 0);
-		%feature("autodoc", "Args:
-	point2d(gp_XY)
-	D1S(Plate_D1)
-	D1T(Plate_D1)
-	D2S(Plate_D2)
-	D2T(Plate_D2)
-	D3S(Plate_D3)
-	D3T(Plate_D3)
-	IncrementalLoad(Standard_Real)=1.0
-	orientation(Standard_Integer)=0
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_FreeGtoCConstraint;
+		%feature("autodoc", "	:param point2d:
+	:type point2d: gp_XY
+	:param D1S:
+	:type D1S: Plate_D1 &
+	:param D1T:
+	:type D1T: Plate_D1 &
+	:param D2S:
+	:type D2S: Plate_D2 &
+	:param D2T:
+	:type D2T: Plate_D2 &
+	:param D3S:
+	:type D3S: Plate_D3 &
+	:param D3T:
+	:type D3T: Plate_D3 &
+	:param IncrementalLoad: default value is 1.0
+	:type IncrementalLoad: float
+	:param orientation: default value is 0
+	:type orientation: Standard_Integer
+	:rtype: None
+") Plate_FreeGtoCConstraint;
 		 Plate_FreeGtoCConstraint (const gp_XY & point2d,const Plate_D1 & D1S,const Plate_D1 & D1T,const Plate_D2 & D2S,const Plate_D2 & D2T,const Plate_D3 & D3S,const Plate_D3 & D3T,const Standard_Real IncrementalLoad = 1.0,const Standard_Integer orientation = 0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") nb_PPC;
+		%feature("autodoc", "	:rtype: int
+") nb_PPC;
 		const Standard_Integer & nb_PPC ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Plate_PinpointConstraint
-
-No detailed docstring for this function.") GetPPC;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Plate_PinpointConstraint
+") GetPPC;
 		const Plate_PinpointConstraint & GetPPC (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") nb_LSC;
+		%feature("autodoc", "	:rtype: int
+") nb_LSC;
 		const Standard_Integer & nb_LSC ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Plate_LinearScalarConstraint
-
-No detailed docstring for this function.") LSC;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Plate_LinearScalarConstraint
+") LSC;
 		const Plate_LinearScalarConstraint & LSC (const Standard_Integer Index);
 };
 
@@ -387,20 +322,13 @@ def __del__(self):
 %nodefaultctor Plate_GlobalTranslationConstraint;
 class Plate_GlobalTranslationConstraint {
 	public:
-		%feature("autodoc", "Args:
-	SOfXY(TColgp_SequenceOfXY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_GlobalTranslationConstraint;
+		%feature("autodoc", "	:param SOfXY:
+	:type SOfXY: TColgp_SequenceOfXY
+	:rtype: None
+") Plate_GlobalTranslationConstraint;
 		 Plate_GlobalTranslationConstraint (const TColgp_SequenceOfXY & SOfXY);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Plate_LinearXYZConstraint
-
-No detailed docstring for this function.") LXYZC;
+		%feature("autodoc", "	:rtype: Plate_LinearXYZConstraint
+") LXYZC;
 		const Plate_LinearXYZConstraint & LXYZC ();
 };
 
@@ -422,110 +350,105 @@ def __del__(self):
 %nodefaultctor Plate_GtoCConstraint;
 class Plate_GtoCConstraint {
 	public:
-		%feature("autodoc", "Args:
-	ref(Plate_GtoCConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_GtoCConstraint;
+		%feature("autodoc", "	:param ref:
+	:type ref: Plate_GtoCConstraint &
+	:rtype: None
+") Plate_GtoCConstraint;
 		 Plate_GtoCConstraint (const Plate_GtoCConstraint & ref);
-		%feature("autodoc", "Args:
-	point2d(gp_XY)
-	D1S(Plate_D1)
-	D1T(Plate_D1)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_GtoCConstraint;
+		%feature("autodoc", "	:param point2d:
+	:type point2d: gp_XY
+	:param D1S:
+	:type D1S: Plate_D1 &
+	:param D1T:
+	:type D1T: Plate_D1 &
+	:rtype: None
+") Plate_GtoCConstraint;
 		 Plate_GtoCConstraint (const gp_XY & point2d,const Plate_D1 & D1S,const Plate_D1 & D1T);
-		%feature("autodoc", "Args:
-	point2d(gp_XY)
-	D1S(Plate_D1)
-	D1T(Plate_D1)
-	nP(gp_XYZ)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_GtoCConstraint;
+		%feature("autodoc", "	:param point2d:
+	:type point2d: gp_XY
+	:param D1S:
+	:type D1S: Plate_D1 &
+	:param D1T:
+	:type D1T: Plate_D1 &
+	:param nP:
+	:type nP: gp_XYZ
+	:rtype: None
+") Plate_GtoCConstraint;
 		 Plate_GtoCConstraint (const gp_XY & point2d,const Plate_D1 & D1S,const Plate_D1 & D1T,const gp_XYZ & nP);
-		%feature("autodoc", "Args:
-	point2d(gp_XY)
-	D1S(Plate_D1)
-	D1T(Plate_D1)
-	D2S(Plate_D2)
-	D2T(Plate_D2)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_GtoCConstraint;
+		%feature("autodoc", "	:param point2d:
+	:type point2d: gp_XY
+	:param D1S:
+	:type D1S: Plate_D1 &
+	:param D1T:
+	:type D1T: Plate_D1 &
+	:param D2S:
+	:type D2S: Plate_D2 &
+	:param D2T:
+	:type D2T: Plate_D2 &
+	:rtype: None
+") Plate_GtoCConstraint;
 		 Plate_GtoCConstraint (const gp_XY & point2d,const Plate_D1 & D1S,const Plate_D1 & D1T,const Plate_D2 & D2S,const Plate_D2 & D2T);
-		%feature("autodoc", "Args:
-	point2d(gp_XY)
-	D1S(Plate_D1)
-	D1T(Plate_D1)
-	D2S(Plate_D2)
-	D2T(Plate_D2)
-	nP(gp_XYZ)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_GtoCConstraint;
+		%feature("autodoc", "	:param point2d:
+	:type point2d: gp_XY
+	:param D1S:
+	:type D1S: Plate_D1 &
+	:param D1T:
+	:type D1T: Plate_D1 &
+	:param D2S:
+	:type D2S: Plate_D2 &
+	:param D2T:
+	:type D2T: Plate_D2 &
+	:param nP:
+	:type nP: gp_XYZ
+	:rtype: None
+") Plate_GtoCConstraint;
 		 Plate_GtoCConstraint (const gp_XY & point2d,const Plate_D1 & D1S,const Plate_D1 & D1T,const Plate_D2 & D2S,const Plate_D2 & D2T,const gp_XYZ & nP);
-		%feature("autodoc", "Args:
-	point2d(gp_XY)
-	D1S(Plate_D1)
-	D1T(Plate_D1)
-	D2S(Plate_D2)
-	D2T(Plate_D2)
-	D3S(Plate_D3)
-	D3T(Plate_D3)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_GtoCConstraint;
+		%feature("autodoc", "	:param point2d:
+	:type point2d: gp_XY
+	:param D1S:
+	:type D1S: Plate_D1 &
+	:param D1T:
+	:type D1T: Plate_D1 &
+	:param D2S:
+	:type D2S: Plate_D2 &
+	:param D2T:
+	:type D2T: Plate_D2 &
+	:param D3S:
+	:type D3S: Plate_D3 &
+	:param D3T:
+	:type D3T: Plate_D3 &
+	:rtype: None
+") Plate_GtoCConstraint;
 		 Plate_GtoCConstraint (const gp_XY & point2d,const Plate_D1 & D1S,const Plate_D1 & D1T,const Plate_D2 & D2S,const Plate_D2 & D2T,const Plate_D3 & D3S,const Plate_D3 & D3T);
-		%feature("autodoc", "Args:
-	point2d(gp_XY)
-	D1S(Plate_D1)
-	D1T(Plate_D1)
-	D2S(Plate_D2)
-	D2T(Plate_D2)
-	D3S(Plate_D3)
-	D3T(Plate_D3)
-	nP(gp_XYZ)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_GtoCConstraint;
+		%feature("autodoc", "	:param point2d:
+	:type point2d: gp_XY
+	:param D1S:
+	:type D1S: Plate_D1 &
+	:param D1T:
+	:type D1T: Plate_D1 &
+	:param D2S:
+	:type D2S: Plate_D2 &
+	:param D2T:
+	:type D2T: Plate_D2 &
+	:param D3S:
+	:type D3S: Plate_D3 &
+	:param D3T:
+	:type D3T: Plate_D3 &
+	:param nP:
+	:type nP: gp_XYZ
+	:rtype: None
+") Plate_GtoCConstraint;
 		 Plate_GtoCConstraint (const gp_XY & point2d,const Plate_D1 & D1S,const Plate_D1 & D1T,const Plate_D2 & D2S,const Plate_D2 & D2T,const Plate_D3 & D3S,const Plate_D3 & D3T,const gp_XYZ & nP);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") nb_PPC;
+		%feature("autodoc", "	:rtype: int
+") nb_PPC;
 		const Standard_Integer & nb_PPC ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Plate_PinpointConstraint
-
-No detailed docstring for this function.") GetPPC;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Plate_PinpointConstraint
+") GetPPC;
 		const Plate_PinpointConstraint & GetPPC (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Plate_D1
-
-No detailed docstring for this function.") D1SurfInit;
+		%feature("autodoc", "	:rtype: Plate_D1
+") D1SurfInit;
 		const Plate_D1 & D1SurfInit ();
 };
 
@@ -547,92 +470,58 @@ def __del__(self):
 %nodefaultctor Plate_HArray1OfPinpointConstraint;
 class Plate_HArray1OfPinpointConstraint : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_HArray1OfPinpointConstraint;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Plate_HArray1OfPinpointConstraint;
 		 Plate_HArray1OfPinpointConstraint (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(Plate_PinpointConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_HArray1OfPinpointConstraint;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: Plate_PinpointConstraint &
+	:rtype: None
+") Plate_HArray1OfPinpointConstraint;
 		 Plate_HArray1OfPinpointConstraint (const Standard_Integer Low,const Standard_Integer Up,const Plate_PinpointConstraint & V);
-		%feature("autodoc", "Args:
-	V(Plate_PinpointConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Plate_PinpointConstraint &
+	:rtype: None
+") Init;
 		void Init (const Plate_PinpointConstraint & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Plate_PinpointConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Plate_PinpointConstraint &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Plate_PinpointConstraint & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Plate_PinpointConstraint
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Plate_PinpointConstraint
+") Value;
 		const Plate_PinpointConstraint & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Plate_PinpointConstraint
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Plate_PinpointConstraint
+") ChangeValue;
 		Plate_PinpointConstraint & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Plate_Array1OfPinpointConstraint
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: Plate_Array1OfPinpointConstraint
+") Array1;
 		const Plate_Array1OfPinpointConstraint & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Plate_Array1OfPinpointConstraint
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: Plate_Array1OfPinpointConstraint
+") ChangeArray1;
 		Plate_Array1OfPinpointConstraint & ChangeArray1 ();
 };
 
@@ -693,23 +582,19 @@ def __del__(self):
 %nodefaultctor Plate_LineConstraint;
 class Plate_LineConstraint {
 	public:
-		%feature("autodoc", "Args:
-	point2d(gp_XY)
-	lin(gp_Lin)
-	iu(Standard_Integer)=0
-	iv(Standard_Integer)=0
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_LineConstraint;
+		%feature("autodoc", "	:param point2d:
+	:type point2d: gp_XY
+	:param lin:
+	:type lin: gp_Lin
+	:param iu: default value is 0
+	:type iu: Standard_Integer
+	:param iv: default value is 0
+	:type iv: Standard_Integer
+	:rtype: None
+") Plate_LineConstraint;
 		 Plate_LineConstraint (const gp_XY & point2d,const gp_Lin & lin,const Standard_Integer iu = 0,const Standard_Integer iv = 0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Plate_LinearScalarConstraint
-
-No detailed docstring for this function.") LSC;
+		%feature("autodoc", "	:rtype: Plate_LinearScalarConstraint
+") LSC;
 		const Plate_LinearScalarConstraint & LSC ();
 };
 
@@ -731,85 +616,62 @@ def __del__(self):
 %nodefaultctor Plate_LinearScalarConstraint;
 class Plate_LinearScalarConstraint {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_LinearScalarConstraint;
+		%feature("autodoc", "	:rtype: None
+") Plate_LinearScalarConstraint;
 		 Plate_LinearScalarConstraint ();
-		%feature("autodoc", "Args:
-	PPC1(Plate_PinpointConstraint)
-	coeff(gp_XYZ)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_LinearScalarConstraint;
+		%feature("autodoc", "	:param PPC1:
+	:type PPC1: Plate_PinpointConstraint &
+	:param coeff:
+	:type coeff: gp_XYZ
+	:rtype: None
+") Plate_LinearScalarConstraint;
 		 Plate_LinearScalarConstraint (const Plate_PinpointConstraint & PPC1,const gp_XYZ & coeff);
-		%feature("autodoc", "Args:
-	ppc(Plate_Array1OfPinpointConstraint)
-	coeff(TColgp_Array1OfXYZ)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_LinearScalarConstraint;
+		%feature("autodoc", "	:param ppc:
+	:type ppc: Plate_Array1OfPinpointConstraint &
+	:param coeff:
+	:type coeff: TColgp_Array1OfXYZ
+	:rtype: None
+") Plate_LinearScalarConstraint;
 		 Plate_LinearScalarConstraint (const Plate_Array1OfPinpointConstraint & ppc,const TColgp_Array1OfXYZ & coeff);
-		%feature("autodoc", "Args:
-	ppc(Plate_Array1OfPinpointConstraint)
-	coeff(TColgp_Array2OfXYZ)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_LinearScalarConstraint;
+		%feature("autodoc", "	:param ppc:
+	:type ppc: Plate_Array1OfPinpointConstraint &
+	:param coeff:
+	:type coeff: TColgp_Array2OfXYZ
+	:rtype: None
+") Plate_LinearScalarConstraint;
 		 Plate_LinearScalarConstraint (const Plate_Array1OfPinpointConstraint & ppc,const TColgp_Array2OfXYZ & coeff);
-		%feature("autodoc", "Args:
-	ColLen(Standard_Integer)
-	RowLen(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_LinearScalarConstraint;
+		%feature("autodoc", "	:param ColLen:
+	:type ColLen: Standard_Integer
+	:param RowLen:
+	:type RowLen: Standard_Integer
+	:rtype: None
+") Plate_LinearScalarConstraint;
 		 Plate_LinearScalarConstraint (const Standard_Integer ColLen,const Standard_Integer RowLen);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Plate_Array1OfPinpointConstraint
-
-No detailed docstring for this function.") GetPPC;
+		%feature("autodoc", "	:rtype: Plate_Array1OfPinpointConstraint
+") GetPPC;
 		const Plate_Array1OfPinpointConstraint & GetPPC ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColgp_Array2OfXYZ
-
-No detailed docstring for this function.") Coeff;
+		%feature("autodoc", "	:rtype: TColgp_Array2OfXYZ
+") Coeff;
 		const TColgp_Array2OfXYZ & Coeff ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Plate_PinpointConstraint)
+		%feature("autodoc", "	* Sets the PinPointConstraint of index Index to Value raise if Index is greater than the length of ppc or the Row length of coeff or lower than 1
 
-Returns:
-	None
-
-Sets   the PinPointConstraint of   index Index to  
-         Value raise if Index is greater than the length of  
-         ppc or the Row length of coeff or lower  than 1") SetPPC;
+	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Plate_PinpointConstraint &
+	:rtype: None
+") SetPPC;
 		void SetPPC (const Standard_Integer Index,const Plate_PinpointConstraint & Value);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-	Value(gp_XYZ)
+		%feature("autodoc", "	* Sets the coeff of index (Row,Col) to Value raise if Row (respectively Col) is greater than the Row (respectively Column) length of coeff
 
-Returns:
-	None
-
-Sets the coeff  of index (Row,Col)  to Value  
-          raise if  Row (respectively Col)  is greater than the  
-         Row (respectively Column) length of coeff") SetCoeff;
+	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:param Value:
+	:type Value: gp_XYZ
+	:rtype: None
+") SetCoeff;
 		void SetCoeff (const Standard_Integer Row,const Standard_Integer Col,const gp_XYZ & Value);
 };
 
@@ -831,76 +693,55 @@ def __del__(self):
 %nodefaultctor Plate_LinearXYZConstraint;
 class Plate_LinearXYZConstraint {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_LinearXYZConstraint;
+		%feature("autodoc", "	:rtype: None
+") Plate_LinearXYZConstraint;
 		 Plate_LinearXYZConstraint ();
-		%feature("autodoc", "Args:
-	ppc(Plate_Array1OfPinpointConstraint)
-	coeff(TColStd_Array1OfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_LinearXYZConstraint;
+		%feature("autodoc", "	:param ppc:
+	:type ppc: Plate_Array1OfPinpointConstraint &
+	:param coeff:
+	:type coeff: TColStd_Array1OfReal &
+	:rtype: None
+") Plate_LinearXYZConstraint;
 		 Plate_LinearXYZConstraint (const Plate_Array1OfPinpointConstraint & ppc,const TColStd_Array1OfReal & coeff);
-		%feature("autodoc", "Args:
-	ppc(Plate_Array1OfPinpointConstraint)
-	coeff(TColStd_Array2OfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_LinearXYZConstraint;
+		%feature("autodoc", "	:param ppc:
+	:type ppc: Plate_Array1OfPinpointConstraint &
+	:param coeff:
+	:type coeff: TColStd_Array2OfReal &
+	:rtype: None
+") Plate_LinearXYZConstraint;
 		 Plate_LinearXYZConstraint (const Plate_Array1OfPinpointConstraint & ppc,const TColStd_Array2OfReal & coeff);
-		%feature("autodoc", "Args:
-	ColLen(Standard_Integer)
-	RowLen(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_LinearXYZConstraint;
+		%feature("autodoc", "	:param ColLen:
+	:type ColLen: Standard_Integer
+	:param RowLen:
+	:type RowLen: Standard_Integer
+	:rtype: None
+") Plate_LinearXYZConstraint;
 		 Plate_LinearXYZConstraint (const Standard_Integer ColLen,const Standard_Integer RowLen);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Plate_Array1OfPinpointConstraint
-
-No detailed docstring for this function.") GetPPC;
+		%feature("autodoc", "	:rtype: Plate_Array1OfPinpointConstraint
+") GetPPC;
 		const Plate_Array1OfPinpointConstraint & GetPPC ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array2OfReal
-
-No detailed docstring for this function.") Coeff;
+		%feature("autodoc", "	:rtype: TColStd_Array2OfReal
+") Coeff;
 		const TColStd_Array2OfReal & Coeff ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Plate_PinpointConstraint)
+		%feature("autodoc", "	* Sets the PinPointConstraint of index Index to Value raise if Index is greater than the length of ppc or the Row length of coeff or lower than 1
 
-Returns:
-	None
-
-Sets   the PinPointConstraint of   index Index to  
-         Value raise if Index is greater than the length of  
-         ppc or the Row length of coeff or lower  than 1") SetPPC;
+	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Plate_PinpointConstraint &
+	:rtype: None
+") SetPPC;
 		void SetPPC (const Standard_Integer Index,const Plate_PinpointConstraint & Value);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-	Value(Standard_Real)
+		%feature("autodoc", "	* Sets the coeff of index (Row,Col) to Value raise if Row (respectively Col) is greater than the Row (respectively Column) length of coeff
 
-Returns:
-	None
-
-Sets the coeff  of index (Row,Col)  to Value  
-          raise if  Row (respectively Col)  is greater than the  
-         Row (respectively Column) length of coeff") SetCoeff;
+	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:param Value:
+	:type Value: float
+	:rtype: None
+") SetCoeff;
 		void SetCoeff (const Standard_Integer Row,const Standard_Integer Col,const Standard_Real Value);
 };
 
@@ -922,51 +763,31 @@ def __del__(self):
 %nodefaultctor Plate_PinpointConstraint;
 class Plate_PinpointConstraint {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_PinpointConstraint;
+		%feature("autodoc", "	:rtype: None
+") Plate_PinpointConstraint;
 		 Plate_PinpointConstraint ();
-		%feature("autodoc", "Args:
-	point2d(gp_XY)
-	ImposedValue(gp_XYZ)
-	iu(Standard_Integer)=0
-	iv(Standard_Integer)=0
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_PinpointConstraint;
+		%feature("autodoc", "	:param point2d:
+	:type point2d: gp_XY
+	:param ImposedValue:
+	:type ImposedValue: gp_XYZ
+	:param iu: default value is 0
+	:type iu: Standard_Integer
+	:param iv: default value is 0
+	:type iv: Standard_Integer
+	:rtype: None
+") Plate_PinpointConstraint;
 		 Plate_PinpointConstraint (const gp_XY & point2d,const gp_XYZ & ImposedValue,const Standard_Integer iu = 0,const Standard_Integer iv = 0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_XY
-
-No detailed docstring for this function.") Pnt2d;
+		%feature("autodoc", "	:rtype: gp_XY
+") Pnt2d;
 		const gp_XY & Pnt2d ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Idu;
+		%feature("autodoc", "	:rtype: int
+") Idu;
 		const Standard_Integer & Idu ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Idv;
+		%feature("autodoc", "	:rtype: int
+") Idv;
 		const Standard_Integer & Idv ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_XYZ
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: gp_XYZ
+") Value;
 		const gp_XYZ & Value ();
 };
 
@@ -988,23 +809,19 @@ def __del__(self):
 %nodefaultctor Plate_PlaneConstraint;
 class Plate_PlaneConstraint {
 	public:
-		%feature("autodoc", "Args:
-	point2d(gp_XY)
-	pln(gp_Pln)
-	iu(Standard_Integer)=0
-	iv(Standard_Integer)=0
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_PlaneConstraint;
+		%feature("autodoc", "	:param point2d:
+	:type point2d: gp_XY
+	:param pln:
+	:type pln: gp_Pln
+	:param iu: default value is 0
+	:type iu: Standard_Integer
+	:param iv: default value is 0
+	:type iv: Standard_Integer
+	:rtype: None
+") Plate_PlaneConstraint;
 		 Plate_PlaneConstraint (const gp_XY & point2d,const gp_Pln & pln,const Standard_Integer iu = 0,const Standard_Integer iv = 0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Plate_LinearScalarConstraint
-
-No detailed docstring for this function.") LSC;
+		%feature("autodoc", "	:rtype: Plate_LinearScalarConstraint
+") LSC;
 		const Plate_LinearScalarConstraint & LSC ();
 };
 
@@ -1026,199 +843,131 @@ def __del__(self):
 %nodefaultctor Plate_Plate;
 class Plate_Plate {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_Plate;
+		%feature("autodoc", "	:rtype: None
+") Plate_Plate;
 		 Plate_Plate ();
-		%feature("autodoc", "Args:
-	Ref(Plate_Plate)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_Plate;
+		%feature("autodoc", "	:param Ref:
+	:type Ref: Plate_Plate &
+	:rtype: None
+") Plate_Plate;
 		 Plate_Plate (const Plate_Plate & Ref);
-		%feature("autodoc", "Args:
-	Ref(Plate_Plate)
-
-Returns:
-	Plate_Plate
-
-No detailed docstring for this function.") Copy;
+		%feature("autodoc", "	:param Ref:
+	:type Ref: Plate_Plate &
+	:rtype: Plate_Plate
+") Copy;
 		Plate_Plate & Copy (const Plate_Plate & Ref);
-		%feature("autodoc", "Args:
-	Ref(Plate_Plate)
-
-Returns:
-	Plate_Plate
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Ref:
+	:type Ref: Plate_Plate &
+	:rtype: Plate_Plate
+") operator=;
 		Plate_Plate & operator = (const Plate_Plate & Ref);
-		%feature("autodoc", "Args:
-	PConst(Plate_PinpointConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Load;
+		%feature("autodoc", "	:param PConst:
+	:type PConst: Plate_PinpointConstraint &
+	:rtype: None
+") Load;
 		void Load (const Plate_PinpointConstraint & PConst);
-		%feature("autodoc", "Args:
-	LXYZConst(Plate_LinearXYZConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Load;
+		%feature("autodoc", "	:param LXYZConst:
+	:type LXYZConst: Plate_LinearXYZConstraint &
+	:rtype: None
+") Load;
 		void Load (const Plate_LinearXYZConstraint & LXYZConst);
-		%feature("autodoc", "Args:
-	LScalarConst(Plate_LinearScalarConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Load;
+		%feature("autodoc", "	:param LScalarConst:
+	:type LScalarConst: Plate_LinearScalarConstraint &
+	:rtype: None
+") Load;
 		void Load (const Plate_LinearScalarConstraint & LScalarConst);
-		%feature("autodoc", "Args:
-	GTConst(Plate_GlobalTranslationConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Load;
+		%feature("autodoc", "	:param GTConst:
+	:type GTConst: Plate_GlobalTranslationConstraint &
+	:rtype: None
+") Load;
 		void Load (const Plate_GlobalTranslationConstraint & GTConst);
-		%feature("autodoc", "Args:
-	LConst(Plate_LineConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Load;
+		%feature("autodoc", "	:param LConst:
+	:type LConst: Plate_LineConstraint &
+	:rtype: None
+") Load;
 		void Load (const Plate_LineConstraint & LConst);
-		%feature("autodoc", "Args:
-	PConst(Plate_PlaneConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Load;
+		%feature("autodoc", "	:param PConst:
+	:type PConst: Plate_PlaneConstraint &
+	:rtype: None
+") Load;
 		void Load (const Plate_PlaneConstraint & PConst);
-		%feature("autodoc", "Args:
-	SCConst(Plate_SampledCurveConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Load;
+		%feature("autodoc", "	:param SCConst:
+	:type SCConst: Plate_SampledCurveConstraint &
+	:rtype: None
+") Load;
 		void Load (const Plate_SampledCurveConstraint & SCConst);
-		%feature("autodoc", "Args:
-	GtoCConst(Plate_GtoCConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Load;
+		%feature("autodoc", "	:param GtoCConst:
+	:type GtoCConst: Plate_GtoCConstraint &
+	:rtype: None
+") Load;
 		void Load (const Plate_GtoCConstraint & GtoCConst);
-		%feature("autodoc", "Args:
-	FGtoCConst(Plate_FreeGtoCConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Load;
+		%feature("autodoc", "	:param FGtoCConst:
+	:type FGtoCConst: Plate_FreeGtoCConstraint &
+	:rtype: None
+") Load;
 		void Load (const Plate_FreeGtoCConstraint & FGtoCConst);
-		%feature("autodoc", "Args:
-	ord(Standard_Integer)=4
-	anisotropie(Standard_Real)=1.0
-
-Returns:
-	None
-
-No detailed docstring for this function.") SolveTI;
+		%feature("autodoc", "	:param ord: default value is 4
+	:type ord: Standard_Integer
+	:param anisotropie: default value is 1.0
+	:type anisotropie: float
+	:rtype: None
+") SolveTI;
 		void SolveTI (const Standard_Integer ord = 4,const Standard_Real anisotropie = 1.0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns True if all has been correctly done.
 
-returns True if all has been correctly done.") IsDone;
+	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") destroy;
+		%feature("autodoc", "	:rtype: None
+") destroy;
 		void destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* reset the Plate in the initial state ( same as after Create())
 
-reset the Plate in the initial state  
-          ( same as after Create())") Init;
+	:rtype: None
+") Init;
 		void Init ();
-		%feature("autodoc", "Args:
-	point2d(gp_XY)
-
-Returns:
-	gp_XYZ
-
-No detailed docstring for this function.") Evaluate;
+		%feature("autodoc", "	:param point2d:
+	:type point2d: gp_XY
+	:rtype: gp_XYZ
+") Evaluate;
 		gp_XYZ Evaluate (const gp_XY & point2d);
-		%feature("autodoc", "Args:
-	point2d(gp_XY)
-	iu(Standard_Integer)
-	iv(Standard_Integer)
-
-Returns:
-	gp_XYZ
-
-No detailed docstring for this function.") EvaluateDerivative;
+		%feature("autodoc", "	:param point2d:
+	:type point2d: gp_XY
+	:param iu:
+	:type iu: Standard_Integer
+	:param iv:
+	:type iv: Standard_Integer
+	:rtype: gp_XYZ
+") EvaluateDerivative;
 		gp_XYZ EvaluateDerivative (const gp_XY & point2d,const Standard_Integer iu,const Standard_Integer iv);
-		%feature("autodoc", "Args:
-	Coefs(Handle_TColgp_HArray2OfXYZ)
-
-Returns:
-	None
-
-No detailed docstring for this function.") CoefPol;
+		%feature("autodoc", "	:param Coefs:
+	:type Coefs: Handle_TColgp_HArray2OfXYZ
+	:rtype: None
+") CoefPol;
 		void CoefPol (Handle_TColgp_HArray2OfXYZ & Coefs);
-		%feature("autodoc", "Args:
-	PPOnly(Standard_Boolean)=Standard_True
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetPolynomialPartOnly;
+		%feature("autodoc", "	:param PPOnly: default value is Standard_True
+	:type PPOnly: bool
+	:rtype: None
+") SetPolynomialPartOnly;
 		void SetPolynomialPartOnly (const Standard_Boolean PPOnly = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Continuity;
+		%feature("autodoc", "	:rtype: int
+") Continuity;
 		Standard_Integer Continuity ();
-		%feature("autodoc", "Args:
-	UMin(Standard_Real)
-	UMax(Standard_Real)
-	VMin(Standard_Real)
-	VMax(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") UVBox;
+		%feature("autodoc", "	:param UMin:
+	:type UMin: float &
+	:param UMax:
+	:type UMax: float &
+	:param VMin:
+	:type VMin: float &
+	:param VMax:
+	:type VMax: float &
+	:rtype: None
+") UVBox;
 		void UVBox (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Seq(TColgp_SequenceOfXY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") UVConstraints;
+		%feature("autodoc", "	:param Seq:
+	:type Seq: TColgp_SequenceOfXY
+	:rtype: None
+") UVConstraints;
 		void UVConstraints (TColgp_SequenceOfXY & Seq);
 };
 
@@ -1240,21 +989,15 @@ def __del__(self):
 %nodefaultctor Plate_SampledCurveConstraint;
 class Plate_SampledCurveConstraint {
 	public:
-		%feature("autodoc", "Args:
-	SOPPC(Plate_SequenceOfPinpointConstraint)
-	n(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_SampledCurveConstraint;
+		%feature("autodoc", "	:param SOPPC:
+	:type SOPPC: Plate_SequenceOfPinpointConstraint &
+	:param n:
+	:type n: Standard_Integer
+	:rtype: None
+") Plate_SampledCurveConstraint;
 		 Plate_SampledCurveConstraint (const Plate_SequenceOfPinpointConstraint & SOPPC,const Standard_Integer n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Plate_LinearXYZConstraint
-
-No detailed docstring for this function.") LXYZC;
+		%feature("autodoc", "	:rtype: Plate_LinearXYZConstraint
+") LXYZC;
 		const Plate_LinearXYZConstraint & LXYZC ();
 };
 
@@ -1276,22 +1019,17 @@ def __del__(self):
 %nodefaultctor Plate_SequenceNodeOfSequenceOfLinearScalarConstraint;
 class Plate_SequenceNodeOfSequenceOfLinearScalarConstraint : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Plate_LinearScalarConstraint)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_SequenceNodeOfSequenceOfLinearScalarConstraint;
+		%feature("autodoc", "	:param I:
+	:type I: Plate_LinearScalarConstraint &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Plate_SequenceNodeOfSequenceOfLinearScalarConstraint;
 		 Plate_SequenceNodeOfSequenceOfLinearScalarConstraint (const Plate_LinearScalarConstraint & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Plate_LinearScalarConstraint
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Plate_LinearScalarConstraint
+") Value;
 		Plate_LinearScalarConstraint & Value ();
 };
 
@@ -1352,22 +1090,17 @@ def __del__(self):
 %nodefaultctor Plate_SequenceNodeOfSequenceOfLinearXYZConstraint;
 class Plate_SequenceNodeOfSequenceOfLinearXYZConstraint : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Plate_LinearXYZConstraint)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_SequenceNodeOfSequenceOfLinearXYZConstraint;
+		%feature("autodoc", "	:param I:
+	:type I: Plate_LinearXYZConstraint &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Plate_SequenceNodeOfSequenceOfLinearXYZConstraint;
 		 Plate_SequenceNodeOfSequenceOfLinearXYZConstraint (const Plate_LinearXYZConstraint & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Plate_LinearXYZConstraint
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Plate_LinearXYZConstraint
+") Value;
 		Plate_LinearXYZConstraint & Value ();
 };
 
@@ -1428,22 +1161,17 @@ def __del__(self):
 %nodefaultctor Plate_SequenceNodeOfSequenceOfPinpointConstraint;
 class Plate_SequenceNodeOfSequenceOfPinpointConstraint : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Plate_PinpointConstraint)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_SequenceNodeOfSequenceOfPinpointConstraint;
+		%feature("autodoc", "	:param I:
+	:type I: Plate_PinpointConstraint &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Plate_SequenceNodeOfSequenceOfPinpointConstraint;
 		 Plate_SequenceNodeOfSequenceOfPinpointConstraint (const Plate_PinpointConstraint & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Plate_PinpointConstraint
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Plate_PinpointConstraint
+") Value;
 		Plate_PinpointConstraint & Value ();
 };
 
@@ -1504,168 +1232,111 @@ def __del__(self):
 %nodefaultctor Plate_SequenceOfLinearScalarConstraint;
 class Plate_SequenceOfLinearScalarConstraint : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_SequenceOfLinearScalarConstraint;
+		%feature("autodoc", "	:rtype: None
+") Plate_SequenceOfLinearScalarConstraint;
 		 Plate_SequenceOfLinearScalarConstraint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Plate_SequenceOfLinearScalarConstraint)
-
-Returns:
-	Plate_SequenceOfLinearScalarConstraint
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Plate_SequenceOfLinearScalarConstraint &
+	:rtype: Plate_SequenceOfLinearScalarConstraint
+") Assign;
 		const Plate_SequenceOfLinearScalarConstraint & Assign (const Plate_SequenceOfLinearScalarConstraint & Other);
-		%feature("autodoc", "Args:
-	Other(Plate_SequenceOfLinearScalarConstraint)
-
-Returns:
-	Plate_SequenceOfLinearScalarConstraint
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Plate_SequenceOfLinearScalarConstraint &
+	:rtype: Plate_SequenceOfLinearScalarConstraint
+") operator=;
 		const Plate_SequenceOfLinearScalarConstraint & operator = (const Plate_SequenceOfLinearScalarConstraint & Other);
-		%feature("autodoc", "Args:
-	T(Plate_LinearScalarConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Plate_LinearScalarConstraint &
+	:rtype: None
+") Append;
 		void Append (const Plate_LinearScalarConstraint & T);
-		%feature("autodoc", "Args:
-	S(Plate_SequenceOfLinearScalarConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Plate_SequenceOfLinearScalarConstraint &
+	:rtype: None
+") Append;
 		void Append (Plate_SequenceOfLinearScalarConstraint & S);
-		%feature("autodoc", "Args:
-	T(Plate_LinearScalarConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Plate_LinearScalarConstraint &
+	:rtype: None
+") Prepend;
 		void Prepend (const Plate_LinearScalarConstraint & T);
-		%feature("autodoc", "Args:
-	S(Plate_SequenceOfLinearScalarConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Plate_SequenceOfLinearScalarConstraint &
+	:rtype: None
+") Prepend;
 		void Prepend (Plate_SequenceOfLinearScalarConstraint & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Plate_LinearScalarConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Plate_LinearScalarConstraint &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Plate_LinearScalarConstraint & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Plate_SequenceOfLinearScalarConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Plate_SequenceOfLinearScalarConstraint &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Plate_SequenceOfLinearScalarConstraint & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Plate_LinearScalarConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Plate_LinearScalarConstraint &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Plate_LinearScalarConstraint & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Plate_SequenceOfLinearScalarConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Plate_SequenceOfLinearScalarConstraint &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Plate_SequenceOfLinearScalarConstraint & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Plate_LinearScalarConstraint
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Plate_LinearScalarConstraint
+") First;
 		const Plate_LinearScalarConstraint & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Plate_LinearScalarConstraint
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Plate_LinearScalarConstraint
+") Last;
 		const Plate_LinearScalarConstraint & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Plate_SequenceOfLinearScalarConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Plate_SequenceOfLinearScalarConstraint &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Plate_SequenceOfLinearScalarConstraint & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Plate_LinearScalarConstraint
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Plate_LinearScalarConstraint
+") Value;
 		const Plate_LinearScalarConstraint & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Plate_LinearScalarConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Plate_LinearScalarConstraint &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Plate_LinearScalarConstraint & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Plate_LinearScalarConstraint
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Plate_LinearScalarConstraint
+") ChangeValue;
 		Plate_LinearScalarConstraint & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -1687,168 +1358,111 @@ def __del__(self):
 %nodefaultctor Plate_SequenceOfLinearXYZConstraint;
 class Plate_SequenceOfLinearXYZConstraint : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_SequenceOfLinearXYZConstraint;
+		%feature("autodoc", "	:rtype: None
+") Plate_SequenceOfLinearXYZConstraint;
 		 Plate_SequenceOfLinearXYZConstraint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Plate_SequenceOfLinearXYZConstraint)
-
-Returns:
-	Plate_SequenceOfLinearXYZConstraint
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Plate_SequenceOfLinearXYZConstraint &
+	:rtype: Plate_SequenceOfLinearXYZConstraint
+") Assign;
 		const Plate_SequenceOfLinearXYZConstraint & Assign (const Plate_SequenceOfLinearXYZConstraint & Other);
-		%feature("autodoc", "Args:
-	Other(Plate_SequenceOfLinearXYZConstraint)
-
-Returns:
-	Plate_SequenceOfLinearXYZConstraint
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Plate_SequenceOfLinearXYZConstraint &
+	:rtype: Plate_SequenceOfLinearXYZConstraint
+") operator=;
 		const Plate_SequenceOfLinearXYZConstraint & operator = (const Plate_SequenceOfLinearXYZConstraint & Other);
-		%feature("autodoc", "Args:
-	T(Plate_LinearXYZConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Plate_LinearXYZConstraint &
+	:rtype: None
+") Append;
 		void Append (const Plate_LinearXYZConstraint & T);
-		%feature("autodoc", "Args:
-	S(Plate_SequenceOfLinearXYZConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Plate_SequenceOfLinearXYZConstraint &
+	:rtype: None
+") Append;
 		void Append (Plate_SequenceOfLinearXYZConstraint & S);
-		%feature("autodoc", "Args:
-	T(Plate_LinearXYZConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Plate_LinearXYZConstraint &
+	:rtype: None
+") Prepend;
 		void Prepend (const Plate_LinearXYZConstraint & T);
-		%feature("autodoc", "Args:
-	S(Plate_SequenceOfLinearXYZConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Plate_SequenceOfLinearXYZConstraint &
+	:rtype: None
+") Prepend;
 		void Prepend (Plate_SequenceOfLinearXYZConstraint & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Plate_LinearXYZConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Plate_LinearXYZConstraint &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Plate_LinearXYZConstraint & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Plate_SequenceOfLinearXYZConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Plate_SequenceOfLinearXYZConstraint &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Plate_SequenceOfLinearXYZConstraint & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Plate_LinearXYZConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Plate_LinearXYZConstraint &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Plate_LinearXYZConstraint & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Plate_SequenceOfLinearXYZConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Plate_SequenceOfLinearXYZConstraint &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Plate_SequenceOfLinearXYZConstraint & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Plate_LinearXYZConstraint
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Plate_LinearXYZConstraint
+") First;
 		const Plate_LinearXYZConstraint & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Plate_LinearXYZConstraint
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Plate_LinearXYZConstraint
+") Last;
 		const Plate_LinearXYZConstraint & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Plate_SequenceOfLinearXYZConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Plate_SequenceOfLinearXYZConstraint &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Plate_SequenceOfLinearXYZConstraint & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Plate_LinearXYZConstraint
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Plate_LinearXYZConstraint
+") Value;
 		const Plate_LinearXYZConstraint & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Plate_LinearXYZConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Plate_LinearXYZConstraint &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Plate_LinearXYZConstraint & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Plate_LinearXYZConstraint
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Plate_LinearXYZConstraint
+") ChangeValue;
 		Plate_LinearXYZConstraint & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -1870,168 +1484,111 @@ def __del__(self):
 %nodefaultctor Plate_SequenceOfPinpointConstraint;
 class Plate_SequenceOfPinpointConstraint : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Plate_SequenceOfPinpointConstraint;
+		%feature("autodoc", "	:rtype: None
+") Plate_SequenceOfPinpointConstraint;
 		 Plate_SequenceOfPinpointConstraint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Plate_SequenceOfPinpointConstraint)
-
-Returns:
-	Plate_SequenceOfPinpointConstraint
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Plate_SequenceOfPinpointConstraint &
+	:rtype: Plate_SequenceOfPinpointConstraint
+") Assign;
 		const Plate_SequenceOfPinpointConstraint & Assign (const Plate_SequenceOfPinpointConstraint & Other);
-		%feature("autodoc", "Args:
-	Other(Plate_SequenceOfPinpointConstraint)
-
-Returns:
-	Plate_SequenceOfPinpointConstraint
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Plate_SequenceOfPinpointConstraint &
+	:rtype: Plate_SequenceOfPinpointConstraint
+") operator=;
 		const Plate_SequenceOfPinpointConstraint & operator = (const Plate_SequenceOfPinpointConstraint & Other);
-		%feature("autodoc", "Args:
-	T(Plate_PinpointConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Plate_PinpointConstraint &
+	:rtype: None
+") Append;
 		void Append (const Plate_PinpointConstraint & T);
-		%feature("autodoc", "Args:
-	S(Plate_SequenceOfPinpointConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Plate_SequenceOfPinpointConstraint &
+	:rtype: None
+") Append;
 		void Append (Plate_SequenceOfPinpointConstraint & S);
-		%feature("autodoc", "Args:
-	T(Plate_PinpointConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Plate_PinpointConstraint &
+	:rtype: None
+") Prepend;
 		void Prepend (const Plate_PinpointConstraint & T);
-		%feature("autodoc", "Args:
-	S(Plate_SequenceOfPinpointConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Plate_SequenceOfPinpointConstraint &
+	:rtype: None
+") Prepend;
 		void Prepend (Plate_SequenceOfPinpointConstraint & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Plate_PinpointConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Plate_PinpointConstraint &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Plate_PinpointConstraint & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Plate_SequenceOfPinpointConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Plate_SequenceOfPinpointConstraint &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Plate_SequenceOfPinpointConstraint & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Plate_PinpointConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Plate_PinpointConstraint &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Plate_PinpointConstraint & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Plate_SequenceOfPinpointConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Plate_SequenceOfPinpointConstraint &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Plate_SequenceOfPinpointConstraint & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Plate_PinpointConstraint
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Plate_PinpointConstraint
+") First;
 		const Plate_PinpointConstraint & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Plate_PinpointConstraint
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Plate_PinpointConstraint
+") Last;
 		const Plate_PinpointConstraint & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Plate_SequenceOfPinpointConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Plate_SequenceOfPinpointConstraint &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Plate_SequenceOfPinpointConstraint & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Plate_PinpointConstraint
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Plate_PinpointConstraint
+") Value;
 		const Plate_PinpointConstraint & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Plate_PinpointConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Plate_PinpointConstraint &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Plate_PinpointConstraint & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Plate_PinpointConstraint
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Plate_PinpointConstraint
+") ChangeValue;
 		Plate_PinpointConstraint & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 

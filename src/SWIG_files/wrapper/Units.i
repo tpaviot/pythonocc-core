@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -45,131 +45,107 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor Units;
 class Units {
 	public:
-		%feature("autodoc", "Args:
-	afile(char *)
+		%feature("autodoc", "	* Defines the location of the file containing all the information useful in creating the dictionary of all the units known to the system.
 
-Returns:
-	static void
-
-Defines the location of the file containing all the  
-         information useful in creating the dictionary of all  
-         the units known to the system.") UnitsFile;
+	:param afile:
+	:type afile: char *
+	:rtype: void
+") UnitsFile;
 		static void UnitsFile (const char * afile);
-		%feature("autodoc", "Args:
-	afile(char *)
+		%feature("autodoc", "	* Defines the location of the file containing the lexicon useful in manipulating composite units.
 
-Returns:
-	static void
-
-Defines the location of the file containing the lexicon  
-         useful in manipulating composite units.") LexiconFile;
+	:param afile:
+	:type afile: char *
+	:rtype: void
+") LexiconFile;
 		static void LexiconFile (const char * afile);
-		%feature("autodoc", "Args:
-	amode(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Returns a unique instance of the dictionary of units. If <amode> is True, then it forces the recomputation of the dictionary of units.
 
-Returns:
-	static Handle_Units_UnitsDictionary
-
-Returns a unique instance of the dictionary of units.  
-         If <amode> is True, then it forces the recomputation of  
-         the dictionary of units.") DictionaryOfUnits;
+	:param amode: default value is Standard_False
+	:type amode: bool
+	:rtype: Handle_Units_UnitsDictionary
+") DictionaryOfUnits;
 		static Handle_Units_UnitsDictionary DictionaryOfUnits (const Standard_Boolean amode = Standard_False);
-		%feature("autodoc", "Args:
-	aquantity(char *)
+		%feature("autodoc", "	* Returns a unique quantity instance corresponding to <aquantity>.
 
-Returns:
-	static Handle_Units_Quantity
-
-Returns a unique quantity instance corresponding to <aquantity>.") Quantity;
+	:param aquantity:
+	:type aquantity: char *
+	:rtype: Handle_Units_Quantity
+") Quantity;
 		static Handle_Units_Quantity Quantity (const char * aquantity);
-		%feature("autodoc", "Args:
-	aunit(char *)
+		%feature("autodoc", "	* Returns the first quantity string founded from the unit <aUnit>.
 
-Returns:
-	static char *
-
-Returns the first quantity string founded from the unit <aUnit>.") FirstQuantity;
+	:param aunit:
+	:type aunit: char *
+	:rtype: char *
+") FirstQuantity;
 		static char * FirstQuantity (const char * aunit);
-		%feature("autodoc", "Args:
-	amode(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Returns a unique instance of the Units_Lexicon. If <amode> is True, it forces the recomputation of the dictionary of units, and by consequence the completion of the Units_Lexicon.
 
-Returns:
-	static Handle_Units_Lexicon
-
-Returns a unique instance of the Units_Lexicon.  
-         If <amode> is True, it forces the recomputation of  
-         the dictionary of units, and by consequence the  
-         completion of the Units_Lexicon.") LexiconUnits;
+	:param amode: default value is Standard_True
+	:type amode: bool
+	:rtype: Handle_Units_Lexicon
+") LexiconUnits;
 		static Handle_Units_Lexicon LexiconUnits (const Standard_Boolean amode = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static Handle_Units_Lexicon
+		%feature("autodoc", "	* Return a unique instance of LexiconFormula.
 
-Return a unique instance of LexiconFormula.") LexiconFormula;
+	:rtype: Handle_Units_Lexicon
+") LexiconFormula;
 		static Handle_Units_Lexicon LexiconFormula ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static Handle_Units_Dimensions
+		%feature("autodoc", "	* Returns always the same instance of Dimensions.
 
-Returns always the same instance of Dimensions.") NullDimensions;
+	:rtype: Handle_Units_Dimensions
+") NullDimensions;
 		static Handle_Units_Dimensions NullDimensions ();
-		%feature("autodoc", "Args:
-	avalue(Standard_Real)
-	afirstunit(char *)
-	asecondunit(char *)
+		%feature("autodoc", "	* Converts <avalue> expressed in <afirstunit> into the <asecondunit>.
 
-Returns:
-	static Standard_Real
-
-Converts <avalue> expressed in <afirstunit> into the <asecondunit>.") Convert;
+	:param avalue:
+	:type avalue: float
+	:param afirstunit:
+	:type afirstunit: char *
+	:param asecondunit:
+	:type asecondunit: char *
+	:rtype: float
+") Convert;
 		static Standard_Real Convert (const Standard_Real avalue,const char * afirstunit,const char * asecondunit);
-		%feature("autodoc", "Args:
-	aData(Standard_Real)
-	aUnit(char *)
-
-Returns:
-	static Standard_Real
-
-No detailed docstring for this function.") ToSI;
+		%feature("autodoc", "	:param aData:
+	:type aData: float
+	:param aUnit:
+	:type aUnit: char *
+	:rtype: float
+") ToSI;
 		static Standard_Real ToSI (const Standard_Real aData,const char * aUnit);
-		%feature("autodoc", "Args:
-	aData(Standard_Real)
-	aUnit(char *)
-	aDim(Handle_Units_Dimensions)
-
-Returns:
-	static Standard_Real
-
-No detailed docstring for this function.") ToSI;
+		%feature("autodoc", "	:param aData:
+	:type aData: float
+	:param aUnit:
+	:type aUnit: char *
+	:param aDim:
+	:type aDim: Handle_Units_Dimensions &
+	:rtype: float
+") ToSI;
 		static Standard_Real ToSI (const Standard_Real aData,const char * aUnit,Handle_Units_Dimensions & aDim);
-		%feature("autodoc", "Args:
-	aData(Standard_Real)
-	aUnit(char *)
-
-Returns:
-	static Standard_Real
-
-No detailed docstring for this function.") FromSI;
+		%feature("autodoc", "	:param aData:
+	:type aData: float
+	:param aUnit:
+	:type aUnit: char *
+	:rtype: float
+") FromSI;
 		static Standard_Real FromSI (const Standard_Real aData,const char * aUnit);
-		%feature("autodoc", "Args:
-	aData(Standard_Real)
-	aUnit(char *)
-	aDim(Handle_Units_Dimensions)
-
-Returns:
-	static Standard_Real
-
-No detailed docstring for this function.") FromSI;
+		%feature("autodoc", "	:param aData:
+	:type aData: float
+	:param aUnit:
+	:type aUnit: char *
+	:param aDim:
+	:type aDim: Handle_Units_Dimensions &
+	:rtype: float
+") FromSI;
 		static Standard_Real FromSI (const Standard_Real aData,const char * aUnit,Handle_Units_Dimensions & aDim);
-		%feature("autodoc", "Args:
-	aType(char *)
+		%feature("autodoc", "	* return the dimension associated to the Type
 
-Returns:
-	static Handle_Units_Dimensions
-
-return the dimension associated to the Type") Dimensions;
+	:param aType:
+	:type aType: char *
+	:rtype: Handle_Units_Dimensions
+") Dimensions;
 		static Handle_Units_Dimensions Dimensions (const char * aType);
 };
 
@@ -191,149 +167,109 @@ def __del__(self):
 %nodefaultctor Units_Explorer;
 class Units_Explorer {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty contructor of the class.
 
-Empty contructor of the class.") Units_Explorer;
+	:rtype: None
+") Units_Explorer;
 		 Units_Explorer ();
-		%feature("autodoc", "Args:
-	aunitssystem(Handle_Units_UnitsSystem)
+		%feature("autodoc", "	* Creates a new instance of the class, initialized with the UnitsSystem <aunitssystem>.
 
-Returns:
-	None
-
-Creates a new instance of the class, initialized with  
-         the UnitsSystem <aunitssystem>.") Units_Explorer;
+	:param aunitssystem:
+	:type aunitssystem: Handle_Units_UnitsSystem &
+	:rtype: None
+") Units_Explorer;
 		 Units_Explorer (const Handle_Units_UnitsSystem & aunitssystem);
-		%feature("autodoc", "Args:
-	aunitsdictionary(Handle_Units_UnitsDictionary)
+		%feature("autodoc", "	* Creates a new instance of the class, initialized with the UnitsDictionary <aunitsdictionary>.
 
-Returns:
-	None
-
-Creates a new instance of the class, initialized with  
-         the UnitsDictionary <aunitsdictionary>.") Units_Explorer;
+	:param aunitsdictionary:
+	:type aunitsdictionary: Handle_Units_UnitsDictionary &
+	:rtype: None
+") Units_Explorer;
 		 Units_Explorer (const Handle_Units_UnitsDictionary & aunitsdictionary);
-		%feature("autodoc", "Args:
-	aunitssystem(Handle_Units_UnitsSystem)
-	aquantity(char *)
+		%feature("autodoc", "	* Creates a new instance of the class, initialized with the UnitsSystem <aunitssystem> and positioned at the quantity <aquantity>.
 
-Returns:
-	None
-
-Creates a new instance of the class, initialized with  
-         the UnitsSystem <aunitssystem> and positioned at the  
-         quantity <aquantity>.") Units_Explorer;
+	:param aunitssystem:
+	:type aunitssystem: Handle_Units_UnitsSystem &
+	:param aquantity:
+	:type aquantity: char *
+	:rtype: None
+") Units_Explorer;
 		 Units_Explorer (const Handle_Units_UnitsSystem & aunitssystem,const char * aquantity);
-		%feature("autodoc", "Args:
-	aunitsdictionary(Handle_Units_UnitsDictionary)
-	aquantity(char *)
+		%feature("autodoc", "	* Creates a new instance of the class, initialized with the UnitsDictionary <aunitsdictionary> and positioned at the quantity <aquantity>.
 
-Returns:
-	None
-
-Creates a  new instance of the class,  initialized with  
-         the  UnitsDictionary <aunitsdictionary> and positioned  
-         at the quantity <aquantity>.") Units_Explorer;
+	:param aunitsdictionary:
+	:type aunitsdictionary: Handle_Units_UnitsDictionary &
+	:param aquantity:
+	:type aquantity: char *
+	:rtype: None
+") Units_Explorer;
 		 Units_Explorer (const Handle_Units_UnitsDictionary & aunitsdictionary,const char * aquantity);
-		%feature("autodoc", "Args:
-	aunitssystem(Handle_Units_UnitsSystem)
+		%feature("autodoc", "	* Initializes the instance of the class with the UnitsSystem <aunitssystem>.
 
-Returns:
-	None
-
-Initializes  the  instance  of  the  class  with  the  
-         UnitsSystem <aunitssystem>.") Init;
+	:param aunitssystem:
+	:type aunitssystem: Handle_Units_UnitsSystem &
+	:rtype: None
+") Init;
 		void Init (const Handle_Units_UnitsSystem & aunitssystem);
-		%feature("autodoc", "Args:
-	aunitsdictionary(Handle_Units_UnitsDictionary)
+		%feature("autodoc", "	* Initializes the instance of the class with the UnitsDictionary <aunitsdictionary>.
 
-Returns:
-	None
-
-Initializes  the  instance  of  the  class  with  the  
-         UnitsDictionary <aunitsdictionary>.") Init;
+	:param aunitsdictionary:
+	:type aunitsdictionary: Handle_Units_UnitsDictionary &
+	:rtype: None
+") Init;
 		void Init (const Handle_Units_UnitsDictionary & aunitsdictionary);
-		%feature("autodoc", "Args:
-	aunitssystem(Handle_Units_UnitsSystem)
-	aquantity(char *)
+		%feature("autodoc", "	* Initializes the instance of the class with the UnitsSystem <aunitssystem> and positioned at the quantity <aquantity>.
 
-Returns:
-	None
-
-Initializes  the  instance  of  the   class  with  the  
-         UnitsSystem  <aunitssystem>  and   positioned  at  the  
-         quantity <aquantity>.") Init;
+	:param aunitssystem:
+	:type aunitssystem: Handle_Units_UnitsSystem &
+	:param aquantity:
+	:type aquantity: char *
+	:rtype: None
+") Init;
 		void Init (const Handle_Units_UnitsSystem & aunitssystem,const char * aquantity);
-		%feature("autodoc", "Args:
-	aunitsdictionary(Handle_Units_UnitsDictionary)
-	aquantity(char *)
+		%feature("autodoc", "	* Initializes the instance of the class with the UnitsDictionary <aunitsdictionary> and positioned at the quantity <aquantity>.
 
-Returns:
-	None
-
-Initializes  the  instance   of  the  class  with  the  
-         UnitsDictionary  <aunitsdictionary> and positioned  at  
-         the quantity <aquantity>.") Init;
+	:param aunitsdictionary:
+	:type aunitsdictionary: Handle_Units_UnitsDictionary &
+	:param aquantity:
+	:type aquantity: char *
+	:rtype: None
+") Init;
 		void Init (const Handle_Units_UnitsDictionary & aunitsdictionary,const char * aquantity);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if there is another Quantity to explore, False otherwise.
 
-Returns True if there is another Quantity to explore,  
-         False otherwise.") MoreQuantity;
+	:rtype: bool
+") MoreQuantity;
 		Standard_Boolean MoreQuantity ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Sets the next Quantity current.
 
-Sets the next Quantity current.") NextQuantity;
+	:rtype: None
+") NextQuantity;
 		void NextQuantity ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* Returns the name of the current Quantity.
 
-Returns the name of the current Quantity.") Quantity;
+	:rtype: TCollection_AsciiString
+") Quantity;
 		TCollection_AsciiString Quantity ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if there is another Unit to explore, False otherwise.
 
-Returns True if there is another Unit to explore,  
-         False otherwise.") MoreUnit;
+	:rtype: bool
+") MoreUnit;
 		Standard_Boolean MoreUnit ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Sets the next Unit current.
 
-Sets the next Unit current.") NextUnit;
+	:rtype: None
+") NextUnit;
 		void NextUnit ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* Returns the name of the current unit.
 
-Returns the name of the current unit.") Unit;
+	:rtype: TCollection_AsciiString
+") Unit;
 		TCollection_AsciiString Unit ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* If the units system to explore is a user system, returns True if the current unit is active, False otherwise.  If the units system to explore is the units dictionary, returns True if the current unit is the S.I. unit.
 
-If the  units system  to  explore  is  a user  system,  
-         returns True  if  the  current unit  is  active, False  
-         otherwise.  
- 
-         If   the   units  system  to  explore  is   the  units  
-         dictionary,  returns True if the  current unit is  the  
-         S.I. unit.") IsActive;
+	:rtype: bool
+") IsActive;
 		Standard_Boolean IsActive ();
 };
 
@@ -355,64 +291,48 @@ def __del__(self):
 %nodefaultctor Units_Lexicon;
 class Units_Lexicon : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates an empty instance of Lexicon.
 
-Creates an empty instance of Lexicon.") Units_Lexicon;
+	:rtype: None
+") Units_Lexicon;
 		 Units_Lexicon ();
-		%feature("autodoc", "Args:
-	afilename(char *)
+		%feature("autodoc", "	* Reads the file <afilename> to create a sequence of tokens stored in <thesequenceoftokens>.
 
-Returns:
-	None
-
-Reads the file <afilename> to create a sequence  of tokens  
-         stored in <thesequenceoftokens>.") Creates;
+	:param afilename:
+	:type afilename: char *
+	:rtype: None
+") Creates;
 		void Creates (const char * afilename);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Units_TokensSequence
+		%feature("autodoc", "	* Returns the first item of the sequence of tokens.
 
-Returns the first item of the sequence of tokens.") Sequence;
+	:rtype: Handle_Units_TokensSequence
+") Sequence;
 		Handle_Units_TokensSequence Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* Returns in a AsciiString from TCollection the name of the file.
 
-Returns in a AsciiString from TCollection the name of the file.") FileName;
+	:rtype: TCollection_AsciiString
+") FileName;
 		TCollection_AsciiString FileName ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Returns true if the file has not changed since the creation of the Lexicon object. Returns false otherwise.
 
-Returns true if  the  file has not  changed  since the  
-         creation   of   the  Lexicon   object.   Returns false  
-         otherwise.") UpToDate;
+	:rtype: bool
+") UpToDate;
 		virtual Standard_Boolean UpToDate ();
-		%feature("autodoc", "Args:
-	aword(char *)
-	amean(char *)
-	avalue(Standard_Real)
+		%feature("autodoc", "	* Adds to the lexicon a new token with <aword>, <amean>, <avalue> as arguments. If there is already a token with the field <theword> equal to <aword>, the existing token is updated.
 
-Returns:
-	None
-
-Adds to the lexicon a new token with <aword>, <amean>,  
-         <avalue>  as  arguments.  If there is  already a token  
-         with   the  field  <theword>  equal    to <aword>, the  
-         existing token is updated.") AddToken;
+	:param aword:
+	:type aword: char *
+	:param amean:
+	:type amean: char *
+	:param avalue:
+	:type avalue: float
+	:rtype: None
+") AddToken;
 		void AddToken (const char * aword,const char * amean,const Standard_Real avalue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Useful for debugging.
 
-Useful for debugging.") Dump;
+	:rtype: None
+") Dump;
 		void Dump ();
 };
 
@@ -473,202 +393,142 @@ def __del__(self):
 %nodefaultctor Units_Measurement;
 class Units_Measurement {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* It is the empty constructor of the class.
 
-It is the empty constructor of the class.") Units_Measurement;
+	:rtype: None
+") Units_Measurement;
 		 Units_Measurement ();
-		%feature("autodoc", "Args:
-	avalue(Standard_Real)
-	atoken(Handle_Units_Token)
+		%feature("autodoc", "	* Returns an instance of this class. <avalue> defines the measurement, and <atoken> the token which defines the unit used.
 
-Returns:
-	None
-
-Returns an instance  of this class.   <avalue> defines  
-         the measurement, and <atoken>  the token which defines  
-         the unit used.") Units_Measurement;
+	:param avalue:
+	:type avalue: float
+	:param atoken:
+	:type atoken: Handle_Units_Token &
+	:rtype: None
+") Units_Measurement;
 		 Units_Measurement (const Standard_Real avalue,const Handle_Units_Token & atoken);
-		%feature("autodoc", "Args:
-	avalue(Standard_Real)
-	aunit(char *)
+		%feature("autodoc", "	* Returns an instance of this class. <avalue> defines the measurement, and <aunit> the unit used, described in natural language.
 
-Returns:
-	None
-
-Returns an  instance of this  class.  <avalue> defines  
-         the  measurement, and <aunit> the   unit used,  
-         described in natural language.") Units_Measurement;
+	:param avalue:
+	:type avalue: float
+	:param aunit:
+	:type aunit: char *
+	:rtype: None
+") Units_Measurement;
 		 Units_Measurement (const Standard_Real avalue,const char * aunit);
-		%feature("autodoc", "Args:
-	aunit(char *)
+		%feature("autodoc", "	* Converts (if possible) the measurement object into another unit. <aunit> must have the same dimensionality as the unit contained in the token <thetoken>.
 
-Returns:
-	None
-
-Converts (if   possible)  the  measurement   object into  
-         another   unit.      <aunit>   must  have    the  same  
-         dimensionality as  the  unit  contained in   the token  
-         <thetoken>.") Convert;
+	:param aunit:
+	:type aunit: char *
+	:rtype: None
+") Convert;
 		void Convert (const char * aunit);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Units_Measurement
+		%feature("autodoc", "	* Returns a Measurement object with the integer value of the measurement contained in <self>.
 
-Returns a Measurement object with the integer value of  
-         the measurement contained in <self>.") Integer;
+	:rtype: Units_Measurement
+") Integer;
 		Units_Measurement Integer ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Units_Measurement
+		%feature("autodoc", "	* Returns a Measurement object with the fractional value of the measurement contained in <self>.
 
-Returns a Measurement object with the fractional value  
-         of the measurement contained in <self>.") Fractional;
+	:rtype: Units_Measurement
+") Fractional;
 		Units_Measurement Fractional ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the value of the measurement.
 
-Returns the value of the measurement.") Measurement;
+	:rtype: float
+") Measurement;
 		Standard_Real Measurement ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Units_Token
+		%feature("autodoc", "	* Returns the token contained in <self>.
 
-Returns the token contained in <self>.") Token;
+	:rtype: Handle_Units_Token
+") Token;
 		Handle_Units_Token Token ();
-		%feature("autodoc", "Args:
-	ameasurement(Units_Measurement)
+		%feature("autodoc", "	* Returns (if it is possible) a measurement which is the addition of <self> and <ameasurement>. The chosen returned unit is the unit of <self>.
 
-Returns:
-	Units_Measurement
-
-Returns (if it is possible) a measurement which is the  
-         addition  of  <self>  and  <ameasurement>.  The   chosen  
-         returned unit is the unit of <self>.") Add;
+	:param ameasurement:
+	:type ameasurement: Units_Measurement &
+	:rtype: Units_Measurement
+") Add;
 		Units_Measurement Add (const Units_Measurement & ameasurement);
-		%feature("autodoc", "Args:
-	ameasurement(Units_Measurement)
-
-Returns:
-	Units_Measurement
-
-No detailed docstring for this function.") operator+;
+		%feature("autodoc", "	:param ameasurement:
+	:type ameasurement: Units_Measurement &
+	:rtype: Units_Measurement
+") operator+;
 		Units_Measurement operator + (const Units_Measurement & ameasurement);
-		%feature("autodoc", "Args:
-	ameasurement(Units_Measurement)
+		%feature("autodoc", "	* Returns (if it is possible) a measurement which is the subtraction of <self> and <ameasurement>. The chosen returned unit is the unit of <self>.
 
-Returns:
-	Units_Measurement
-
-Returns (if it is possible) a measurement which is the  
-         subtraction of  <self>  and <ameasurement>.   The chosen  
-         returned unit is the unit of <self>.") Subtract;
+	:param ameasurement:
+	:type ameasurement: Units_Measurement &
+	:rtype: Units_Measurement
+") Subtract;
 		Units_Measurement Subtract (const Units_Measurement & ameasurement);
-		%feature("autodoc", "Args:
-	ameasurement(Units_Measurement)
-
-Returns:
-	Units_Measurement
-
-No detailed docstring for this function.") operator-;
+		%feature("autodoc", "	:param ameasurement:
+	:type ameasurement: Units_Measurement &
+	:rtype: Units_Measurement
+") operator-;
 		Units_Measurement operator - (const Units_Measurement & ameasurement);
-		%feature("autodoc", "Args:
-	ameasurement(Units_Measurement)
+		%feature("autodoc", "	* Returns a measurement which is the multiplication of <self> and <ameasurement>.
 
-Returns:
-	Units_Measurement
-
-Returns  a measurement which  is the multiplication of  
-         <self> and <ameasurement>.") Multiply;
+	:param ameasurement:
+	:type ameasurement: Units_Measurement &
+	:rtype: Units_Measurement
+") Multiply;
 		Units_Measurement Multiply (const Units_Measurement & ameasurement);
-		%feature("autodoc", "Args:
-	ameasurement(Units_Measurement)
-
-Returns:
-	Units_Measurement
-
-No detailed docstring for this function.") operator*;
+		%feature("autodoc", "	:param ameasurement:
+	:type ameasurement: Units_Measurement &
+	:rtype: Units_Measurement
+") operator*;
 		Units_Measurement operator * (const Units_Measurement & ameasurement);
-		%feature("autodoc", "Args:
-	avalue(Standard_Real)
+		%feature("autodoc", "	* Returns a measurement which is the multiplication of <self> with the value <avalue>.
 
-Returns:
-	Units_Measurement
-
-Returns  a measurement which  is the multiplication of  
-         <self> with the value  <avalue>.") Multiply;
+	:param avalue:
+	:type avalue: float
+	:rtype: Units_Measurement
+") Multiply;
 		Units_Measurement Multiply (const Standard_Real avalue);
-		%feature("autodoc", "Args:
-	avalue(Standard_Real)
-
-Returns:
-	Units_Measurement
-
-No detailed docstring for this function.") operator*;
+		%feature("autodoc", "	:param avalue:
+	:type avalue: float
+	:rtype: Units_Measurement
+") operator*;
 		Units_Measurement operator * (const Standard_Real avalue);
-		%feature("autodoc", "Args:
-	ameasurement(Units_Measurement)
+		%feature("autodoc", "	* Returns a measurement which is the division of <self> by <ameasurement>.
 
-Returns:
-	Units_Measurement
-
-Returns a measurement which  is the division of  <self> by  
-         <ameasurement>.") Divide;
+	:param ameasurement:
+	:type ameasurement: Units_Measurement &
+	:rtype: Units_Measurement
+") Divide;
 		Units_Measurement Divide (const Units_Measurement & ameasurement);
-		%feature("autodoc", "Args:
-	ameasurement(Units_Measurement)
-
-Returns:
-	Units_Measurement
-
-No detailed docstring for this function.") operator/;
+		%feature("autodoc", "	:param ameasurement:
+	:type ameasurement: Units_Measurement &
+	:rtype: Units_Measurement
+") operator/;
 		Units_Measurement operator / (const Units_Measurement & ameasurement);
-		%feature("autodoc", "Args:
-	avalue(Standard_Real)
+		%feature("autodoc", "	* Returns a measurement which is the division of <self> by the constant <avalue>.
 
-Returns:
-	Units_Measurement
-
-Returns  a measurement which  is the division of <self> by  
-         the constant <avalue>.") Divide;
+	:param avalue:
+	:type avalue: float
+	:rtype: Units_Measurement
+") Divide;
 		Units_Measurement Divide (const Standard_Real avalue);
-		%feature("autodoc", "Args:
-	avalue(Standard_Real)
-
-Returns:
-	Units_Measurement
-
-No detailed docstring for this function.") operator/;
+		%feature("autodoc", "	:param avalue:
+	:type avalue: float
+	:rtype: Units_Measurement
+") operator/;
 		Units_Measurement operator / (const Standard_Real avalue);
-		%feature("autodoc", "Args:
-	anexponent(Standard_Real)
+		%feature("autodoc", "	* Returns a measurement which is <self> powered <anexponent>.
 
-Returns:
-	Units_Measurement
-
-Returns   a    measurement  which   is <self>    powered  
-         <anexponent>.") Power;
+	:param anexponent:
+	:type anexponent: float
+	:rtype: Units_Measurement
+") Power;
 		Units_Measurement Power (const Standard_Real anexponent);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasToken;
+		%feature("autodoc", "	:rtype: bool
+") HasToken;
 		Standard_Boolean HasToken ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Useful for debugging.
 
-Useful for debugging.") Dump;
+	:rtype: None
+") Dump;
 		void Dump ();
 };
 
@@ -690,168 +550,111 @@ def __del__(self):
 %nodefaultctor Units_QtsSequence;
 class Units_QtsSequence : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Units_QtsSequence;
+		%feature("autodoc", "	:rtype: None
+") Units_QtsSequence;
 		 Units_QtsSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Units_QtsSequence)
-
-Returns:
-	Units_QtsSequence
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Units_QtsSequence &
+	:rtype: Units_QtsSequence
+") Assign;
 		const Units_QtsSequence & Assign (const Units_QtsSequence & Other);
-		%feature("autodoc", "Args:
-	Other(Units_QtsSequence)
-
-Returns:
-	Units_QtsSequence
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Units_QtsSequence &
+	:rtype: Units_QtsSequence
+") operator=;
 		const Units_QtsSequence & operator = (const Units_QtsSequence & Other);
-		%feature("autodoc", "Args:
-	T(Handle_Units_Quantity)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Units_Quantity &
+	:rtype: None
+") Append;
 		void Append (const Handle_Units_Quantity & T);
-		%feature("autodoc", "Args:
-	S(Units_QtsSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Units_QtsSequence &
+	:rtype: None
+") Append;
 		void Append (Units_QtsSequence & S);
-		%feature("autodoc", "Args:
-	T(Handle_Units_Quantity)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Units_Quantity &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Units_Quantity & T);
-		%feature("autodoc", "Args:
-	S(Units_QtsSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Units_QtsSequence &
+	:rtype: None
+") Prepend;
 		void Prepend (Units_QtsSequence & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Units_Quantity)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Units_Quantity &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_Units_Quantity & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Units_QtsSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Units_QtsSequence &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Units_QtsSequence & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Units_Quantity)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Units_Quantity &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_Units_Quantity & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Units_QtsSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Units_QtsSequence &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Units_QtsSequence & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Units_Quantity
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_Units_Quantity
+") First;
 		const Handle_Units_Quantity & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Units_Quantity
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_Units_Quantity
+") Last;
 		const Handle_Units_Quantity & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Units_QtsSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Units_QtsSequence &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Units_QtsSequence & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Units_Quantity
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Units_Quantity
+") Value;
 		const Handle_Units_Quantity & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_Units_Quantity)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_Units_Quantity &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Units_Quantity & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Units_Quantity
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Units_Quantity
+") ChangeValue;
 		Handle_Units_Quantity & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -873,188 +676,118 @@ def __del__(self):
 %nodefaultctor Units_QuantitiesSequence;
 class Units_QuantitiesSequence : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Units_QuantitiesSequence;
+		%feature("autodoc", "	:rtype: None
+") Units_QuantitiesSequence;
 		 Units_QuantitiesSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	anItem(Handle_Units_Quantity)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Units_Quantity &
+	:rtype: None
+") Append;
 		void Append (const Handle_Units_Quantity & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_Units_QuantitiesSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_Units_QuantitiesSequence &
+	:rtype: None
+") Append;
 		void Append (const Handle_Units_QuantitiesSequence & aSequence);
-		%feature("autodoc", "Args:
-	anItem(Handle_Units_Quantity)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Units_Quantity &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Units_Quantity & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_Units_QuantitiesSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_Units_QuantitiesSequence &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Units_QuantitiesSequence & aSequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Units_Quantity)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Units_Quantity &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Units_Quantity & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_Units_QuantitiesSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_Units_QuantitiesSequence &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Units_QuantitiesSequence & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Units_Quantity)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Units_Quantity &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Units_Quantity & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_Units_QuantitiesSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_Units_QuantitiesSequence &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Units_QuantitiesSequence & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anOtherIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Exchange;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anOtherIndex:
+	:type anOtherIndex: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Units_QuantitiesSequence
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Units_QuantitiesSequence
+") Split;
 		Handle_Units_QuantitiesSequence Split (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Units_Quantity)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Units_Quantity &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Handle_Units_Quantity & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Units_Quantity
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Units_Quantity
+") Value;
 		const Handle_Units_Quantity & Value (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Units_Quantity
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Units_Quantity
+") ChangeValue;
 		Handle_Units_Quantity & ChangeValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	fromIndex(Standard_Integer)
-	toIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param fromIndex:
+	:type fromIndex: Standard_Integer
+	:param toIndex:
+	:type toIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Units_QtsSequence
-
-No detailed docstring for this function.") Sequence;
+		%feature("autodoc", "	:rtype: Units_QtsSequence
+") Sequence;
 		const Units_QtsSequence & Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Units_QtsSequence
-
-No detailed docstring for this function.") ChangeSequence;
+		%feature("autodoc", "	:rtype: Units_QtsSequence
+") ChangeSequence;
 		Units_QtsSequence & ChangeSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Units_QuantitiesSequence
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_Units_QuantitiesSequence
+") ShallowCopy;
 		Handle_Units_QuantitiesSequence ShallowCopy ();
 };
 
@@ -1115,60 +848,46 @@ def __del__(self):
 %nodefaultctor Units_Sentence;
 class Units_Sentence {
 	public:
-		%feature("autodoc", "Args:
-	alexicon(Handle_Units_Lexicon)
-	astring(char *)
+		%feature("autodoc", "	* Creates and returns a Sentence, by analyzing the string <astring> with the lexicon <alexicon>.
 
-Returns:
-	None
-
-Creates and  returns  a   Sentence, by  analyzing  the  
-         string <astring> with the lexicon <alexicon>.") Units_Sentence;
+	:param alexicon:
+	:type alexicon: Handle_Units_Lexicon &
+	:param astring:
+	:type astring: char *
+	:rtype: None
+") Units_Sentence;
 		 Units_Sentence (const Handle_Units_Lexicon & alexicon,const char * astring);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* For each constant encountered, sets the value.
 
-For each constant encountered, sets the value.") SetConstants;
+	:rtype: None
+") SetConstants;
 		void SetConstants ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Units_TokensSequence
+		%feature("autodoc", "	* Returns <thesequenceoftokens>.
 
-Returns <thesequenceoftokens>.") Sequence;
+	:rtype: Handle_Units_TokensSequence
+") Sequence;
 		Handle_Units_TokensSequence Sequence ();
-		%feature("autodoc", "Args:
-	asequenceoftokens(Handle_Units_TokensSequence)
+		%feature("autodoc", "	* Sets the field <thesequenceoftokens> to <asequenceoftokens>.
 
-Returns:
-	None
-
-Sets the field <thesequenceoftokens> to <asequenceoftokens>.") Sequence;
+	:param asequenceoftokens:
+	:type asequenceoftokens: Handle_Units_TokensSequence &
+	:rtype: None
+") Sequence;
 		void Sequence (const Handle_Units_TokensSequence & asequenceoftokens);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Units_Token
+		%feature("autodoc", "	* Computes and returns in a token the result of the expression.
 
-Computes and  returns in a   token the result  of  the  
-         expression.") Evaluate;
+	:rtype: Handle_Units_Token
+") Evaluate;
 		Handle_Units_Token Evaluate ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Return True if number of created tokens > 0 (i.e creation of sentence is succesfull)
 
-Return True if number of created tokens > 0  
-         (i.e creation of sentence is succesfull)") IsDone;
+	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Useful for debugging.
 
-Useful for debugging.") Dump;
+	:rtype: None
+") Dump;
 		void Dump ();
 };
 
@@ -1190,22 +909,17 @@ def __del__(self):
 %nodefaultctor Units_SequenceNodeOfQtsSequence;
 class Units_SequenceNodeOfQtsSequence : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Units_Quantity)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Units_SequenceNodeOfQtsSequence;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Units_Quantity &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Units_SequenceNodeOfQtsSequence;
 		 Units_SequenceNodeOfQtsSequence (const Handle_Units_Quantity & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Units_Quantity
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Units_Quantity
+") Value;
 		Handle_Units_Quantity & Value ();
 };
 
@@ -1266,22 +980,17 @@ def __del__(self):
 %nodefaultctor Units_SequenceNodeOfTksSequence;
 class Units_SequenceNodeOfTksSequence : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Units_Token)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Units_SequenceNodeOfTksSequence;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Units_Token &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Units_SequenceNodeOfTksSequence;
 		 Units_SequenceNodeOfTksSequence (const Handle_Units_Token & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Units_Token
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Units_Token
+") Value;
 		Handle_Units_Token & Value ();
 };
 
@@ -1342,22 +1051,17 @@ def __del__(self):
 %nodefaultctor Units_SequenceNodeOfUtsSequence;
 class Units_SequenceNodeOfUtsSequence : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Units_Unit)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Units_SequenceNodeOfUtsSequence;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Units_Unit &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Units_SequenceNodeOfUtsSequence;
 		 Units_SequenceNodeOfUtsSequence (const Handle_Units_Unit & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Units_Unit
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Units_Unit
+") Value;
 		Handle_Units_Unit & Value ();
 };
 
@@ -1418,168 +1122,111 @@ def __del__(self):
 %nodefaultctor Units_TksSequence;
 class Units_TksSequence : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Units_TksSequence;
+		%feature("autodoc", "	:rtype: None
+") Units_TksSequence;
 		 Units_TksSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Units_TksSequence)
-
-Returns:
-	Units_TksSequence
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Units_TksSequence &
+	:rtype: Units_TksSequence
+") Assign;
 		const Units_TksSequence & Assign (const Units_TksSequence & Other);
-		%feature("autodoc", "Args:
-	Other(Units_TksSequence)
-
-Returns:
-	Units_TksSequence
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Units_TksSequence &
+	:rtype: Units_TksSequence
+") operator=;
 		const Units_TksSequence & operator = (const Units_TksSequence & Other);
-		%feature("autodoc", "Args:
-	T(Handle_Units_Token)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Units_Token &
+	:rtype: None
+") Append;
 		void Append (const Handle_Units_Token & T);
-		%feature("autodoc", "Args:
-	S(Units_TksSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Units_TksSequence &
+	:rtype: None
+") Append;
 		void Append (Units_TksSequence & S);
-		%feature("autodoc", "Args:
-	T(Handle_Units_Token)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Units_Token &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Units_Token & T);
-		%feature("autodoc", "Args:
-	S(Units_TksSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Units_TksSequence &
+	:rtype: None
+") Prepend;
 		void Prepend (Units_TksSequence & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Units_Token)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Units_Token &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_Units_Token & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Units_TksSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Units_TksSequence &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Units_TksSequence & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Units_Token)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Units_Token &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_Units_Token & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Units_TksSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Units_TksSequence &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Units_TksSequence & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Units_Token
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_Units_Token
+") First;
 		const Handle_Units_Token & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Units_Token
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_Units_Token
+") Last;
 		const Handle_Units_Token & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Units_TksSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Units_TksSequence &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Units_TksSequence & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Units_Token
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Units_Token
+") Value;
 		const Handle_Units_Token & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_Units_Token)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_Units_Token &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Units_Token & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Units_Token
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Units_Token
+") ChangeValue;
 		Handle_Units_Token & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -1601,334 +1248,253 @@ def __del__(self):
 %nodefaultctor Units_Token;
 class Units_Token : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates and returns a empty token.
 
-Creates and returns a empty token.") Units_Token;
+	:rtype: None
+") Units_Token;
 		 Units_Token ();
-		%feature("autodoc", "Args:
-	aword(char *)
+		%feature("autodoc", "	* Creates and returns a token. <aword> is a string containing the available word.
 
-Returns:
-	None
-
-Creates  and returns  a token.   <aword>  is  a string  
-         containing the available word.") Units_Token;
+	:param aword:
+	:type aword: char *
+	:rtype: None
+") Units_Token;
 		 Units_Token (const char * aword);
-		%feature("autodoc", "Args:
-	atoken(Handle_Units_Token)
+		%feature("autodoc", "	* Creates and returns a token. <atoken> is copied in the returned token.
 
-Returns:
-	None
-
-Creates and returns a  token.  <atoken> is  copied  in  
-         the returned token.") Units_Token;
+	:param atoken:
+	:type atoken: Handle_Units_Token &
+	:rtype: None
+") Units_Token;
 		 Units_Token (const Handle_Units_Token & atoken);
-		%feature("autodoc", "Args:
-	aword(char *)
-	amean(char *)
+		%feature("autodoc", "	* Creates and returns a token. <aword> is a string containing the available word and <amean> gives the signification of the token.
 
-Returns:
-	None
-
-Creates  and  returns a  token.   <aword> is  a string  
-         containing the  available word and  <amean>  gives the  
-         signification of the token.") Units_Token;
+	:param aword:
+	:type aword: char *
+	:param amean:
+	:type amean: char *
+	:rtype: None
+") Units_Token;
 		 Units_Token (const char * aword,const char * amean);
-		%feature("autodoc", "Args:
-	aword(char *)
-	amean(char *)
-	avalue(Standard_Real)
+		%feature("autodoc", "	* Creates and returns a token. <aword> is a string containing the available word, <amean> gives the signification of the token and <avalue> is the numeric value of the dimension.
 
-Returns:
-	None
-
-Creates   and  returns a  token.   <aword> is a string  
-         containing   the available  word,  <amean> gives   the  
-         signification of the token and <avalue> is the numeric  
-         value of the dimension.") Units_Token;
+	:param aword:
+	:type aword: char *
+	:param amean:
+	:type amean: char *
+	:param avalue:
+	:type avalue: float
+	:rtype: None
+") Units_Token;
 		 Units_Token (const char * aword,const char * amean,const Standard_Real avalue);
-		%feature("autodoc", "Args:
-	aword(char *)
-	amean(char *)
-	avalue(Standard_Real)
-	adimension(Handle_Units_Dimensions)
+		%feature("autodoc", "	* Creates and returns a token. <aword> is a string containing the available word, <amean> gives the signification of the token, <avalue> is the numeric value of the dimension, and <adimensions> is the dimension of the given word <aword>.
 
-Returns:
-	None
-
-Creates and returns  a  token.  <aword> is   a  string  
-         containing the   available   word, <amean>   gives the  
-         signification of  the  token, <avalue> is  the numeric  
-         value  of the dimension,  and <adimensions>   is   the  
-         dimension of the given word <aword>.") Units_Token;
+	:param aword:
+	:type aword: char *
+	:param amean:
+	:type amean: char *
+	:param avalue:
+	:type avalue: float
+	:param adimension:
+	:type adimension: Handle_Units_Dimensions &
+	:rtype: None
+") Units_Token;
 		 Units_Token (const char * aword,const char * amean,const Standard_Real avalue,const Handle_Units_Dimensions & adimension);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Units_Token
+		%feature("autodoc", "	* Creates and returns a token, which is a ShiftedToken.
 
-Creates and returns a  token, which is a ShiftedToken.") Creates;
+	:rtype: Handle_Units_Token
+") Creates;
 		virtual Handle_Units_Token Creates ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the length of the word.
 
-Returns the length of the word.") Length;
+	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* Returns the string <theword>
 
-Returns the string <theword>") Word;
+	:rtype: TCollection_AsciiString
+") Word;
 		TCollection_AsciiString Word ();
-		%feature("autodoc", "Args:
-	aword(char *)
+		%feature("autodoc", "	* Sets the field <theword> to <aword>.
 
-Returns:
-	None
-
-Sets the field <theword> to <aword>.") Word;
+	:param aword:
+	:type aword: char *
+	:rtype: None
+") Word;
 		void Word (const char * aword);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* Returns the significance of the word <theword>, which is in the field <themean>.
 
-Returns the significance of the word  <theword>, which  
-         is in the field <themean>.") Mean;
+	:rtype: TCollection_AsciiString
+") Mean;
 		TCollection_AsciiString Mean ();
-		%feature("autodoc", "Args:
-	amean(char *)
+		%feature("autodoc", "	* Sets the field <themean> to <amean>.
 
-Returns:
-	None
-
-Sets the field <themean> to <amean>.") Mean;
+	:param amean:
+	:type amean: char *
+	:rtype: None
+") Mean;
 		void Mean (const char * amean);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the value stored in the field <thevalue>.
 
-Returns the value stored in the field <thevalue>.") Value;
+	:rtype: float
+") Value;
 		Standard_Real Value ();
-		%feature("autodoc", "Args:
-	avalue(Standard_Real)
+		%feature("autodoc", "	* Sets the field <thevalue> to <avalue>.
 
-Returns:
-	None
-
-Sets the field <thevalue> to <avalue>.") Value;
+	:param avalue:
+	:type avalue: float
+	:rtype: None
+") Value;
 		void Value (const Standard_Real avalue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Units_Dimensions
+		%feature("autodoc", "	* Returns the dimensions of the token <thedimensions>.
 
-Returns the dimensions of the token <thedimensions>.") Dimensions;
+	:rtype: Handle_Units_Dimensions
+") Dimensions;
 		Handle_Units_Dimensions Dimensions ();
-		%feature("autodoc", "Args:
-	adimensions(Handle_Units_Dimensions)
+		%feature("autodoc", "	* Sets the field <thedimensions> to <adimensions>.
 
-Returns:
-	None
-
-Sets the field <thedimensions> to <adimensions>.") Dimensions;
+	:param adimensions:
+	:type adimensions: Handle_Units_Dimensions &
+	:rtype: None
+") Dimensions;
 		void Dimensions (const Handle_Units_Dimensions & adimensions);
-		%feature("autodoc", "Args:
-	amean(char *)
+		%feature("autodoc", "	* Updates the token <self> with the additional signification <amean> by concatenation of the two strings <themean> and <amean>. If the two significations are the same , an information message is written in the output device.
 
-Returns:
-	None
-
-Updates     the  token  <self>    with  the   additional  
-         signification  <amean> by  concatenation   of the  two  
-         strings   <themean>    and   <amean>.   If    the  two  
-         significations are  the same  , an information message  
-         is written in the output device.") Update;
+	:param amean:
+	:type amean: char *
+	:rtype: None
+") Update;
 		void Update (const char * amean);
-		%feature("autodoc", "Args:
-	aninteger(Standard_Integer)
-
-Returns:
-	Handle_Units_Token
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param aninteger:
+	:type aninteger: Standard_Integer
+	:rtype: Handle_Units_Token
+") Add;
 		Handle_Units_Token Add (const Standard_Integer aninteger);
-		%feature("autodoc", "Args:
-	atoken(Handle_Units_Token)
+		%feature("autodoc", "	* Returns a token which is the addition of <self> and another token <atoken>. The addition is possible if and only if the dimensions are the same.
 
-Returns:
-	Handle_Units_Token
-
-Returns a  token which is  the addition  of  <self>  and  
-         another token <atoken>. The  addition  is  possible if  
-         and only if the dimensions are the same.") Add;
+	:param atoken:
+	:type atoken: Handle_Units_Token &
+	:rtype: Handle_Units_Token
+") Add;
 		Handle_Units_Token Add (const Handle_Units_Token & atoken);
-		%feature("autodoc", "Args:
-	atoken(Handle_Units_Token)
+		%feature("autodoc", "	* Returns a token which is the subtraction of <self> and another token <atoken>. The subtraction is possible if and only if the dimensions are the same.
 
-Returns:
-	Handle_Units_Token
-
-Returns a token  which is the  subtraction of <self> and  
-         another token <atoken>. The subtraction is possible if  
-         and only if the dimensions are the same.") Subtract;
+	:param atoken:
+	:type atoken: Handle_Units_Token &
+	:rtype: Handle_Units_Token
+") Subtract;
 		Handle_Units_Token Subtract (const Handle_Units_Token & atoken);
-		%feature("autodoc", "Args:
-	atoken(Handle_Units_Token)
+		%feature("autodoc", "	* Returns a token which is the product of <self> and another token <atoken>.
 
-Returns:
-	Handle_Units_Token
-
-Returns a  token  which  is the  product of   <self> and  
-         another token <atoken>.") Multiply;
+	:param atoken:
+	:type atoken: Handle_Units_Token &
+	:rtype: Handle_Units_Token
+") Multiply;
 		Handle_Units_Token Multiply (const Handle_Units_Token & atoken);
-		%feature("autodoc", "Args:
-	avalue(Standard_Real)
+		%feature("autodoc", "	* This virtual method is called by the Measurement methods, to compute the measurement during a conversion.
 
-Returns:
-	virtual Standard_Real
-
-This   virtual method is   called  by  the Measurement  
-         methods,  to  compute    the   measurement   during  a  
-         conversion.") Multiplied;
+	:param avalue:
+	:type avalue: float
+	:rtype: float
+") Multiplied;
 		virtual Standard_Real Multiplied (const Standard_Real avalue);
-		%feature("autodoc", "Args:
-	atoken(Handle_Units_Token)
+		%feature("autodoc", "	* Returns a token which is the division of <self> by another token <atoken>.
 
-Returns:
-	Handle_Units_Token
-
-Returns a token which is the division of <self> by another  
-         token <atoken>.") Divide;
+	:param atoken:
+	:type atoken: Handle_Units_Token &
+	:rtype: Handle_Units_Token
+") Divide;
 		Handle_Units_Token Divide (const Handle_Units_Token & atoken);
-		%feature("autodoc", "Args:
-	avalue(Standard_Real)
+		%feature("autodoc", "	* This virtual method is called by the Measurement methods, to compute the measurement during a conversion.
 
-Returns:
-	virtual Standard_Real
-
-This  virtual  method  is  called by  the  Measurement  
-         methods,   to   compute   the measurement  during    a  
-         conversion.") Divided;
+	:param avalue:
+	:type avalue: float
+	:rtype: float
+") Divided;
 		virtual Standard_Real Divided (const Standard_Real avalue);
-		%feature("autodoc", "Args:
-	atoken(Handle_Units_Token)
+		%feature("autodoc", "	* Returns a token which is <self> to the power of another token <atoken>. The computation is possible only if <atoken> is a dimensionless constant.
 
-Returns:
-	Handle_Units_Token
-
-Returns a token which is <self> to the power  of another  
-         token <atoken>.  The computation  is possible  only if  
-         <atoken> is a dimensionless constant.") Power;
+	:param atoken:
+	:type atoken: Handle_Units_Token &
+	:rtype: Handle_Units_Token
+") Power;
 		Handle_Units_Token Power (const Handle_Units_Token & atoken);
-		%feature("autodoc", "Args:
-	anexponent(Standard_Real)
+		%feature("autodoc", "	* Returns a token which is <self> to the power of <anexponent>.
 
-Returns:
-	Handle_Units_Token
-
-Returns a token which is <self> to the power  of <anexponent>.") Power;
+	:param anexponent:
+	:type anexponent: float
+	:rtype: Handle_Units_Token
+") Power;
 		Handle_Units_Token Power (const Standard_Real anexponent);
-		%feature("autodoc", "Args:
-	astring(char *)
+		%feature("autodoc", "	* Returns true if the field <theword> and the string <astring> are the same, false otherwise.
 
-Returns:
-	Standard_Boolean
-
-Returns true if  the  field <theword> and  the  string  
-         <astring> are the same, false otherwise.") IsEqual;
+	:param astring:
+	:type astring: char *
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const char * astring);
-		%feature("autodoc", "Args:
-	atoken(Handle_Units_Token)
+		%feature("autodoc", "	* Returns true if the field <theword> and the string <theword> contained in the token <atoken> are the same, false otherwise.
 
-Returns:
-	Standard_Boolean
-
-Returns true  if the  field  <theword> and  the string  
-         <theword> contained  in  the  token <atoken>  are  the  
-         same, false otherwise.") IsEqual;
+	:param atoken:
+	:type atoken: Handle_Units_Token &
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const Handle_Units_Token & atoken);
-		%feature("autodoc", "Args:
-	astring(char *)
+		%feature("autodoc", "	* Returns false if the field <theword> and the string <astring> are the same, true otherwise.
 
-Returns:
-	Standard_Boolean
-
-Returns false if  the field <theword>  and the  string  
-         <astring> are the same, true otherwise.") IsNotEqual;
+	:param astring:
+	:type astring: char *
+	:rtype: bool
+") IsNotEqual;
 		Standard_Boolean IsNotEqual (const char * astring);
-		%feature("autodoc", "Args:
-	atoken(Handle_Units_Token)
+		%feature("autodoc", "	* Returns false if the field <theword> and the string <theword> contained in the token <atoken> are the same, true otherwise.
 
-Returns:
-	Standard_Boolean
-
-Returns false if  the field <theword>  and the  string  
-         <theword> contained  in the  token  <atoken>  are  the  
-         same, true otherwise.") IsNotEqual;
+	:param atoken:
+	:type atoken: Handle_Units_Token &
+	:rtype: bool
+") IsNotEqual;
 		Standard_Boolean IsNotEqual (const Handle_Units_Token & atoken);
-		%feature("autodoc", "Args:
-	astring(char *)
+		%feature("autodoc", "	* Returns true if the field <theword> is strictly contained at the beginning of the string <astring>, false otherwise.
 
-Returns:
-	Standard_Boolean
-
-Returns   true  if the   field <theword>  is  strictly  
-         contained at  the beginning  of the string  <astring>,  
-         false otherwise.") IsLessOrEqual;
+	:param astring:
+	:type astring: char *
+	:rtype: bool
+") IsLessOrEqual;
 		Standard_Boolean IsLessOrEqual (const char * astring);
-		%feature("autodoc", "Args:
-	astring(char *)
+		%feature("autodoc", "	* Returns false if the field <theword> is strictly contained at the beginning of the string <astring>, true otherwise.
 
-Returns:
-	Standard_Boolean
-
-Returns false  if   the field   <theword> is  strictly  
-         contained at  the  beginning  of the string <astring>,  
-         true otherwise.") IsGreater;
+	:param astring:
+	:type astring: char *
+	:rtype: bool
+") IsGreater;
 		Standard_Boolean IsGreater (const char * astring);
-		%feature("autodoc", "Args:
-	atoken(Handle_Units_Token)
+		%feature("autodoc", "	* Returns false if the field <theword> is strictly contained at the beginning of the string <astring>, true otherwise.
 
-Returns:
-	Standard_Boolean
-
-Returns false  if   the field   <theword> is  strictly  
-         contained at  the  beginning  of the string <astring>,  
-         true otherwise.") IsGreater;
+	:param atoken:
+	:type atoken: Handle_Units_Token &
+	:rtype: bool
+") IsGreater;
 		Standard_Boolean IsGreater (const Handle_Units_Token & atoken);
-		%feature("autodoc", "Args:
-	atoken(Handle_Units_Token)
+		%feature("autodoc", "	* Returns true if the string <astring> is strictly contained at the beginning of the field <theword> false otherwise.
 
-Returns:
-	Standard_Boolean
-
-Returns true  if  the string <astring>   is   strictly  
-         contained   at the  beginning  of  the field <theword>  
-         false otherwise.") IsGreaterOrEqual;
+	:param atoken:
+	:type atoken: Handle_Units_Token &
+	:rtype: bool
+") IsGreaterOrEqual;
 		Standard_Boolean IsGreaterOrEqual (const Handle_Units_Token & atoken);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Destroies the Token
 
-Destroies the Token") Destroy;
+	:rtype: void
+") Destroy;
 		virtual void Destroy ();
-		%feature("autodoc", "Args:
-	ashift(Standard_Integer)
-	alevel(Standard_Integer)
+		%feature("autodoc", "	* Useful for debugging
 
-Returns:
-	virtual void
-
-Useful for debugging") Dump;
+	:param ashift:
+	:type ashift: Standard_Integer
+	:param alevel:
+	:type alevel: Standard_Integer
+	:rtype: void
+") Dump;
 		virtual void Dump (const Standard_Integer ashift,const Standard_Integer alevel);
 };
 
@@ -1989,188 +1555,118 @@ def __del__(self):
 %nodefaultctor Units_TokensSequence;
 class Units_TokensSequence : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Units_TokensSequence;
+		%feature("autodoc", "	:rtype: None
+") Units_TokensSequence;
 		 Units_TokensSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	anItem(Handle_Units_Token)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Units_Token &
+	:rtype: None
+") Append;
 		void Append (const Handle_Units_Token & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_Units_TokensSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_Units_TokensSequence &
+	:rtype: None
+") Append;
 		void Append (const Handle_Units_TokensSequence & aSequence);
-		%feature("autodoc", "Args:
-	anItem(Handle_Units_Token)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Units_Token &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Units_Token & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_Units_TokensSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_Units_TokensSequence &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Units_TokensSequence & aSequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Units_Token)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Units_Token &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Units_Token & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_Units_TokensSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_Units_TokensSequence &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Units_TokensSequence & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Units_Token)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Units_Token &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Units_Token & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_Units_TokensSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_Units_TokensSequence &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Units_TokensSequence & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anOtherIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Exchange;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anOtherIndex:
+	:type anOtherIndex: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Units_TokensSequence
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Units_TokensSequence
+") Split;
 		Handle_Units_TokensSequence Split (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Units_Token)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Units_Token &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Handle_Units_Token & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Units_Token
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Units_Token
+") Value;
 		const Handle_Units_Token & Value (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Units_Token
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Units_Token
+") ChangeValue;
 		Handle_Units_Token & ChangeValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	fromIndex(Standard_Integer)
-	toIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param fromIndex:
+	:type fromIndex: Standard_Integer
+	:param toIndex:
+	:type toIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Units_TksSequence
-
-No detailed docstring for this function.") Sequence;
+		%feature("autodoc", "	:rtype: Units_TksSequence
+") Sequence;
 		const Units_TksSequence & Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Units_TksSequence
-
-No detailed docstring for this function.") ChangeSequence;
+		%feature("autodoc", "	:rtype: Units_TksSequence
+") ChangeSequence;
 		Units_TksSequence & ChangeSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Units_TokensSequence
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_Units_TokensSequence
+") ShallowCopy;
 		Handle_Units_TokensSequence ShallowCopy ();
 };
 
@@ -2231,118 +1727,96 @@ def __del__(self):
 %nodefaultctor Units_Unit;
 class Units_Unit : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	aname(char *)
-	asymbol(char *)
-	avalue(Standard_Real)
-	aquantity(Handle_Units_Quantity)
+		%feature("autodoc", "	* Creates and returns a unit. <aname> is the name of the unit, <asymbol> is the usual abbreviation of the unit, and <avalue> is the value in relation to the International System of Units.
 
-Returns:
-	None
-
-Creates  and returns a  unit.  <aname> is  the name of  
-         the  unit, <asymbol> is the  usual abbreviation of the  
-         unit,  and  <avalue> is the  value in relation to  the  
-         International System of Units.") Units_Unit;
+	:param aname:
+	:type aname: char *
+	:param asymbol:
+	:type asymbol: char *
+	:param avalue:
+	:type avalue: float
+	:param aquantity:
+	:type aquantity: Handle_Units_Quantity &
+	:rtype: None
+") Units_Unit;
 		 Units_Unit (const char * aname,const char * asymbol,const Standard_Real avalue,const Handle_Units_Quantity & aquantity);
-		%feature("autodoc", "Args:
-	aname(char *)
-	asymbol(char *)
+		%feature("autodoc", "	* Creates and returns a unit. <aname> is the name of the unit, <asymbol> is the usual abbreviation of the unit.
 
-Returns:
-	None
-
-Creates  and returns a  unit.  <aname> is  the name of  
-         the  unit, <asymbol> is the  usual abbreviation of the  
-         unit.") Units_Unit;
+	:param aname:
+	:type aname: char *
+	:param asymbol:
+	:type asymbol: char *
+	:rtype: None
+") Units_Unit;
 		 Units_Unit (const char * aname,const char * asymbol);
-		%feature("autodoc", "Args:
-	aname(char *)
+		%feature("autodoc", "	* Creates and returns a unit. <aname> is the name of the unit.
 
-Returns:
-	None
-
-Creates  and returns a  unit.  <aname> is  the name of  
-         the  unit.") Units_Unit;
+	:param aname:
+	:type aname: char *
+	:rtype: None
+") Units_Unit;
 		 Units_Unit (const char * aname);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* Returns the name of the unit <thename>
 
-Returns the name of the unit <thename>") Name;
+	:rtype: TCollection_AsciiString
+") Name;
 		TCollection_AsciiString Name ();
-		%feature("autodoc", "Args:
-	asymbol(char *)
+		%feature("autodoc", "	* Adds a new symbol <asymbol> attached to <self>.
 
-Returns:
-	None
-
-Adds a new symbol <asymbol> attached to <self>.") Symbol;
+	:param asymbol:
+	:type asymbol: char *
+	:rtype: None
+") Symbol;
 		void Symbol (const char * asymbol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the value in relation with the International System of Units.
 
-Returns the  value in relation  with the International  
-         System of Units.") Value;
+	:rtype: float
+") Value;
 		Standard_Real Value ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Units_Quantity
+		%feature("autodoc", "	* Returns <thequantity> contained in <self>.
 
-Returns <thequantity> contained in <self>.") Quantity;
+	:rtype: Handle_Units_Quantity
+") Quantity;
 		Handle_Units_Quantity Quantity ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColStd_HSequenceOfHAsciiString
+		%feature("autodoc", "	* Returns the sequence of symbols <thesymbolssequence>
 
-Returns the sequence of symbols <thesymbolssequence>") SymbolsSequence;
+	:rtype: Handle_TColStd_HSequenceOfHAsciiString
+") SymbolsSequence;
 		Handle_TColStd_HSequenceOfHAsciiString SymbolsSequence ();
-		%feature("autodoc", "Args:
-	avalue(Standard_Real)
+		%feature("autodoc", "	* Sets the value <avalue> to <self>.
 
-Returns:
-	None
-
-Sets the value <avalue> to <self>.") Value;
+	:param avalue:
+	:type avalue: float
+	:rtype: None
+") Value;
 		void Value (const Standard_Real avalue);
-		%feature("autodoc", "Args:
-	aquantity(Handle_Units_Quantity)
+		%feature("autodoc", "	* Sets the physical Quantity <aquantity> to <self>.
 
-Returns:
-	None
-
-Sets the physical Quantity <aquantity> to <self>.") Quantity;
+	:param aquantity:
+	:type aquantity: Handle_Units_Quantity &
+	:rtype: None
+") Quantity;
 		void Quantity (const Handle_Units_Quantity & aquantity);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Units_Token
+		%feature("autodoc", "	* Starting with <self>, returns a new Token object.
 
-Starting with <self>, returns a new Token object.") Token;
+	:rtype: Handle_Units_Token
+") Token;
 		virtual Handle_Units_Token Token ();
-		%feature("autodoc", "Args:
-	astring(char *)
+		%feature("autodoc", "	* Compares all the symbols linked within <self> with the name of <atoken>, and returns True if there is one symbol equal to the name, False otherwise.
 
-Returns:
-	Standard_Boolean
-
-Compares all the symbols  linked  within <self> with the  
-         name of <atoken>,  and returns  True  if there is  one  
-         symbol equal to the name, False otherwise.") IsEqual;
+	:param astring:
+	:type astring: char *
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const char * astring);
-		%feature("autodoc", "Args:
-	ashift(Standard_Integer)
-	alevel(Standard_Integer)
+		%feature("autodoc", "	* Useful for debugging
 
-Returns:
-	virtual void
-
-Useful for debugging") Dump;
+	:param ashift:
+	:type ashift: Standard_Integer
+	:param alevel:
+	:type alevel: Standard_Integer
+	:rtype: void
+") Dump;
 		virtual void Dump (const Standard_Integer ashift,const Standard_Integer alevel);
 };
 
@@ -2403,67 +1877,48 @@ def __del__(self):
 %nodefaultctor Units_UnitsDictionary;
 class Units_UnitsDictionary : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Returns an empty instance of UnitsDictionary.
 
-Returns an empty instance of UnitsDictionary.") Units_UnitsDictionary;
+	:rtype: None
+") Units_UnitsDictionary;
 		 Units_UnitsDictionary ();
-		%feature("autodoc", "Args:
-	afilename(char *)
+		%feature("autodoc", "	* Returns a UnitsDictionary object which contains the sequence of all the units you want to consider, physical quantity by physical quantity.
 
-Returns:
-	None
-
-Returns a  UnitsDictionary object  which  contains the  
-         sequence  of all   the  units  you want to   consider,  
-         physical quantity by physical quantity.") Creates;
+	:param afilename:
+	:type afilename: char *
+	:rtype: None
+") Creates;
 		void Creates (const char * afilename);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Units_QuantitiesSequence
+		%feature("autodoc", "	* Returns the head of the sequence of physical quantities.
 
-Returns   the  head   of   the  sequence  of  physical  
-         quantities.") Sequence;
+	:rtype: Handle_Units_QuantitiesSequence
+") Sequence;
 		Handle_Units_QuantitiesSequence Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if there has been no modification of the file Units.dat since the creation of the dictionary object, false otherwise.
 
-Returns true if there has been no  modification of the  
-         file Units.dat  since the   creation of the dictionary  
-         object, false otherwise.") UpToDate;
+	:rtype: bool
+") UpToDate;
 		Standard_Boolean UpToDate ();
-		%feature("autodoc", "Args:
-	aquantity(char *)
+		%feature("autodoc", "	* Returns for <aquantity> the active unit.
 
-Returns:
-	TCollection_AsciiString
-
-Returns for <aquantity> the active unit.") ActiveUnit;
+	:param aquantity:
+	:type aquantity: char *
+	:rtype: TCollection_AsciiString
+") ActiveUnit;
 		TCollection_AsciiString ActiveUnit (const char * aquantity);
-		%feature("autodoc", "Args:
-	alevel(Standard_Integer)
+		%feature("autodoc", "	* Dumps only the sequence of quantities without the units if <alevel> is equal to zero, and for each quantity all the units stored if <alevel> is equal to one.
 
-Returns:
-	None
-
-Dumps only  the sequence   of  quantities without  the  
-         units  if  <alevel> is  equal  to zero,  and  for each  
-         quantity all the units stored if <alevel>  is equal to  
-         one.") Dump;
+	:param alevel:
+	:type alevel: Standard_Integer
+	:rtype: None
+") Dump;
 		void Dump (const Standard_Integer alevel);
-		%feature("autodoc", "Args:
-	adimensions(Handle_Units_Dimensions)
+		%feature("autodoc", "	* Dumps for a designated physical dimensions <adimensions> all the previously stored units.
 
-Returns:
-	None
-
-Dumps  for a     designated  physical       dimensions  
-         <adimensions> all the previously stored units.") Dump;
+	:param adimensions:
+	:type adimensions: Handle_Units_Dimensions &
+	:rtype: None
+") Dump;
 		void Dump (const Handle_Units_Dimensions & adimensions);
 };
 
@@ -2524,188 +1979,118 @@ def __del__(self):
 %nodefaultctor Units_UnitsSequence;
 class Units_UnitsSequence : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Units_UnitsSequence;
+		%feature("autodoc", "	:rtype: None
+") Units_UnitsSequence;
 		 Units_UnitsSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	anItem(Handle_Units_Unit)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Units_Unit &
+	:rtype: None
+") Append;
 		void Append (const Handle_Units_Unit & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_Units_UnitsSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_Units_UnitsSequence &
+	:rtype: None
+") Append;
 		void Append (const Handle_Units_UnitsSequence & aSequence);
-		%feature("autodoc", "Args:
-	anItem(Handle_Units_Unit)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Units_Unit &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Units_Unit & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_Units_UnitsSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_Units_UnitsSequence &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Units_UnitsSequence & aSequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Units_Unit)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Units_Unit &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Units_Unit & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_Units_UnitsSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_Units_UnitsSequence &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Units_UnitsSequence & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Units_Unit)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Units_Unit &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Units_Unit & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_Units_UnitsSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_Units_UnitsSequence &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Units_UnitsSequence & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anOtherIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Exchange;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anOtherIndex:
+	:type anOtherIndex: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Units_UnitsSequence
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Units_UnitsSequence
+") Split;
 		Handle_Units_UnitsSequence Split (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Units_Unit)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Units_Unit &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Handle_Units_Unit & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Units_Unit
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Units_Unit
+") Value;
 		const Handle_Units_Unit & Value (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Units_Unit
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Units_Unit
+") ChangeValue;
 		Handle_Units_Unit & ChangeValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	fromIndex(Standard_Integer)
-	toIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param fromIndex:
+	:type fromIndex: Standard_Integer
+	:param toIndex:
+	:type toIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Units_UtsSequence
-
-No detailed docstring for this function.") Sequence;
+		%feature("autodoc", "	:rtype: Units_UtsSequence
+") Sequence;
 		const Units_UtsSequence & Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Units_UtsSequence
-
-No detailed docstring for this function.") ChangeSequence;
+		%feature("autodoc", "	:rtype: Units_UtsSequence
+") ChangeSequence;
 		Units_UtsSequence & ChangeSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Units_UnitsSequence
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_Units_UnitsSequence
+") ShallowCopy;
 		Handle_Units_UnitsSequence ShallowCopy ();
 };
 
@@ -2766,137 +2151,105 @@ def __del__(self):
 %nodefaultctor Units_UnitsSystem;
 class Units_UnitsSystem : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Returns an instance of UnitsSystem initialized to the S.I. units system.
 
-Returns an instance of UnitsSystem initialized to the  
-         S.I. units system.") Units_UnitsSystem;
+	:rtype: None
+") Units_UnitsSystem;
 		 Units_UnitsSystem ();
-		%feature("autodoc", "Args:
-	aName(char *)
-	Verbose(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Returns an instance of UnitsSystem initialized to the S.I. units system upgraded by the base system units decription //!	 	file. Attempts to find the four following files: $CSF_`aName`Defaults/.aName $CSF_`aName`SiteDefaults/.aName $CSF_`aName`GroupDefaults/.aName $CSF_`aName`UserDefaults/.aName //!		See : Resource_Manager for the description of this file.
 
-Returns:
-	None
-
-Returns an instance of UnitsSystem initialized to the  
-         S.I. units system upgraded by the base system units decription  
-//!	 	file.  
-         Attempts to find the four following files:  
-         $CSF_`aName`Defaults/.aName  
-         $CSF_`aName`SiteDefaults/.aName  
-         $CSF_`aName`GroupDefaults/.aName  
-         $CSF_`aName`UserDefaults/.aName  
-//!		See : Resource_Manager for the description of this file.") Units_UnitsSystem;
+	:param aName:
+	:type aName: char *
+	:param Verbose: default value is Standard_False
+	:type Verbose: bool
+	:rtype: None
+") Units_UnitsSystem;
 		 Units_UnitsSystem (const char * aName,const Standard_Boolean Verbose = Standard_False);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Units_QuantitiesSequence
+		%feature("autodoc", "	* Returns the sequence of refined quantities.
 
-Returns the sequence of refined quantities.") QuantitiesSequence;
+	:rtype: Handle_Units_QuantitiesSequence
+") QuantitiesSequence;
 		Handle_Units_QuantitiesSequence QuantitiesSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColStd_HSequenceOfInteger
+		%feature("autodoc", "	* Returns a sequence of integer in correspondance with the sequence of quantities, which indicates, for each redefined quantity, the index into the sequence of units, of the active unit.
 
-Returns a sequence of integer in correspondance with  
-         the sequence of quantities, which indicates, for each  
-         redefined quantity, the index into the sequence of  
-         units, of the active unit.") ActiveUnitsSequence;
+	:rtype: Handle_TColStd_HSequenceOfInteger
+") ActiveUnitsSequence;
 		Handle_TColStd_HSequenceOfInteger ActiveUnitsSequence ();
-		%feature("autodoc", "Args:
-	aquantity(char *)
-	aunit(char *)
+		%feature("autodoc", "	* Specifies for <aquantity> the unit <aunit> used.
 
-Returns:
-	None
-
-Specifies for <aquantity> the unit <aunit> used.") Specify;
+	:param aquantity:
+	:type aquantity: char *
+	:param aunit:
+	:type aunit: char *
+	:rtype: None
+") Specify;
 		void Specify (const char * aquantity,const char * aunit);
-		%feature("autodoc", "Args:
-	aquantity(char *)
-	aunit(char *)
+		%feature("autodoc", "	* Removes for <aquantity> the unit <aunit> used.
 
-Returns:
-	None
-
-Removes for <aquantity> the unit <aunit> used.") Remove;
+	:param aquantity:
+	:type aquantity: char *
+	:param aunit:
+	:type aunit: char *
+	:rtype: None
+") Remove;
 		void Remove (const char * aquantity,const char * aunit);
-		%feature("autodoc", "Args:
-	aquantity(char *)
-	aunit(char *)
+		%feature("autodoc", "	* Specifies for <aquantity> the unit <aunit> used.
 
-Returns:
-	None
-
-Specifies for <aquantity> the unit <aunit> used.") Activate;
+	:param aquantity:
+	:type aquantity: char *
+	:param aunit:
+	:type aunit: char *
+	:rtype: None
+") Activate;
 		void Activate (const char * aquantity,const char * aunit);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Activates the first unit of all defined system quantities
 
-Activates the first unit of all defined system quantities") Activates;
+	:rtype: None
+") Activates;
 		void Activates ();
-		%feature("autodoc", "Args:
-	aquantity(char *)
+		%feature("autodoc", "	* Returns for <aquantity> the active unit.
 
-Returns:
-	TCollection_AsciiString
-
-Returns for <aquantity> the active unit.") ActiveUnit;
+	:param aquantity:
+	:type aquantity: char *
+	:rtype: TCollection_AsciiString
+") ActiveUnit;
 		TCollection_AsciiString ActiveUnit (const char * aquantity);
-		%feature("autodoc", "Args:
-	aquantity(char *)
-	avalue(Standard_Real)
-	aunit(char *)
+		%feature("autodoc", "	* Converts a real value <avalue> from the unit <aunit> belonging to the physical dimensions <aquantity> to the corresponding unit of the user system.
 
-Returns:
-	Standard_Real
-
-Converts a real value <avalue> from the unit <aunit>  
-         belonging to the physical dimensions <aquantity> to  
-         the corresponding unit of the user system.") ConvertValueToUserSystem;
+	:param aquantity:
+	:type aquantity: char *
+	:param avalue:
+	:type avalue: float
+	:param aunit:
+	:type aunit: char *
+	:rtype: float
+") ConvertValueToUserSystem;
 		Standard_Real ConvertValueToUserSystem (const char * aquantity,const Standard_Real avalue,const char * aunit);
-		%feature("autodoc", "Args:
-	aquantity(char *)
-	avalue(Standard_Real)
+		%feature("autodoc", "	* Converts the real value <avalue> from the S.I. system of units to the user system of units. <aquantity> is the physical dimensions of the measurement.
 
-Returns:
-	Standard_Real
-
-Converts the real value <avalue> from the S.I. system  
-         of units to the user system of units. <aquantity> is  
-         the physical dimensions of the measurement.") ConvertSIValueToUserSystem;
+	:param aquantity:
+	:type aquantity: char *
+	:param avalue:
+	:type avalue: float
+	:rtype: float
+") ConvertSIValueToUserSystem;
 		Standard_Real ConvertSIValueToUserSystem (const char * aquantity,const Standard_Real avalue);
-		%feature("autodoc", "Args:
-	aquantity(char *)
-	avalue(Standard_Real)
+		%feature("autodoc", "	* Converts the real value <avalue> from the user system of units to the S.I. system of units. <aquantity> is the physical dimensions of the measurement.
 
-Returns:
-	Standard_Real
-
-Converts the real value <avalue> from the user system  
-         of units to the S.I. system of units. <aquantity> is  
-         the physical dimensions of the measurement.") ConvertUserSystemValueToSI;
+	:param aquantity:
+	:type aquantity: char *
+	:param avalue:
+	:type avalue: float
+	:rtype: float
+") ConvertUserSystemValueToSI;
 		Standard_Real ConvertUserSystemValueToSI (const char * aquantity,const Standard_Real avalue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if no units has been defined in the system.
 
-Returns TRUE if no units has been defined in the system.") IsEmpty;
+	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
 };
 
@@ -2957,168 +2310,111 @@ def __del__(self):
 %nodefaultctor Units_UtsSequence;
 class Units_UtsSequence : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Units_UtsSequence;
+		%feature("autodoc", "	:rtype: None
+") Units_UtsSequence;
 		 Units_UtsSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Units_UtsSequence)
-
-Returns:
-	Units_UtsSequence
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Units_UtsSequence &
+	:rtype: Units_UtsSequence
+") Assign;
 		const Units_UtsSequence & Assign (const Units_UtsSequence & Other);
-		%feature("autodoc", "Args:
-	Other(Units_UtsSequence)
-
-Returns:
-	Units_UtsSequence
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Units_UtsSequence &
+	:rtype: Units_UtsSequence
+") operator=;
 		const Units_UtsSequence & operator = (const Units_UtsSequence & Other);
-		%feature("autodoc", "Args:
-	T(Handle_Units_Unit)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Units_Unit &
+	:rtype: None
+") Append;
 		void Append (const Handle_Units_Unit & T);
-		%feature("autodoc", "Args:
-	S(Units_UtsSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Units_UtsSequence &
+	:rtype: None
+") Append;
 		void Append (Units_UtsSequence & S);
-		%feature("autodoc", "Args:
-	T(Handle_Units_Unit)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Units_Unit &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Units_Unit & T);
-		%feature("autodoc", "Args:
-	S(Units_UtsSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Units_UtsSequence &
+	:rtype: None
+") Prepend;
 		void Prepend (Units_UtsSequence & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Units_Unit)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Units_Unit &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_Units_Unit & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Units_UtsSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Units_UtsSequence &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Units_UtsSequence & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Units_Unit)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Units_Unit &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_Units_Unit & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Units_UtsSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Units_UtsSequence &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Units_UtsSequence & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Units_Unit
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_Units_Unit
+") First;
 		const Handle_Units_Unit & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Units_Unit
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_Units_Unit
+") Last;
 		const Handle_Units_Unit & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Units_UtsSequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Units_UtsSequence &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Units_UtsSequence & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Units_Unit
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Units_Unit
+") Value;
 		const Handle_Units_Unit & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_Units_Unit)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_Units_Unit &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Units_Unit & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Units_Unit
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Units_Unit
+") ChangeValue;
 		Handle_Units_Unit & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -3140,15 +2436,12 @@ def __del__(self):
 %nodefaultctor Units_MathSentence;
 class Units_MathSentence : public Units_Sentence {
 	public:
-		%feature("autodoc", "Args:
-	astring(char *)
+		%feature("autodoc", "	* Creates and returns a MathSentence object. The string <astring> describes an algebraic formula in natural language.
 
-Returns:
-	None
-
-Creates and returns a  MathSentence object. The string  
-         <astring>  describes  an algebraic  formula in natural  
-         language.") Units_MathSentence;
+	:param astring:
+	:type astring: char *
+	:rtype: None
+") Units_MathSentence;
 		 Units_MathSentence (const char * astring);
 };
 
@@ -3170,72 +2463,56 @@ def __del__(self):
 %nodefaultctor Units_ShiftedToken;
 class Units_ShiftedToken : public Units_Token {
 	public:
-		%feature("autodoc", "Args:
-	aword(char *)
-	amean(char *)
-	avalue(Standard_Real)
-	amove(Standard_Real)
-	adimensions(Handle_Units_Dimensions)
+		%feature("autodoc", "	* Creates and returns a shifted token. <aword> is a string containing the available word, <amean> gives the signification of the token, <avalue> is the numeric value of the dimension, <amove> is the gap, and <adimensions> is the dimension of the given word <aword>.
 
-Returns:
-	None
-
-Creates and returns a  shifted   token.  <aword> is  a  
-         string containing the   available word, <amean>  gives  
-         the signification   of the   token,  <avalue> is   the  
-         numeric value  of the  dimension, <amove> is  the gap,  
-         and <adimensions> is  the dimension of the given  word  
-         <aword>.") Units_ShiftedToken;
+	:param aword:
+	:type aword: char *
+	:param amean:
+	:type amean: char *
+	:param avalue:
+	:type avalue: float
+	:param amove:
+	:type amove: float
+	:param adimensions:
+	:type adimensions: Handle_Units_Dimensions &
+	:rtype: None
+") Units_ShiftedToken;
 		 Units_ShiftedToken (const char * aword,const char * amean,const Standard_Real avalue,const Standard_Real amove,const Handle_Units_Dimensions & adimensions);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Units_Token
+		%feature("autodoc", "	* Creates and returns a token, which is a ShiftedToken.
 
-Creates and returns a  token, which is a ShiftedToken.") Creates;
+	:rtype: Handle_Units_Token
+") Creates;
 		virtual Handle_Units_Token Creates ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the gap <themove>
 
-Returns the gap <themove>") Move;
+	:rtype: float
+") Move;
 		Standard_Real Move ();
-		%feature("autodoc", "Args:
-	avalue(Standard_Real)
+		%feature("autodoc", "	* This virtual method is called by the Measurement methods, to compute the measurement during a conversion.
 
-Returns:
-	virtual Standard_Real
-
-This  virtual   method  is  called  by the Measurement  
-         methods,  to   compute  the   measurement    during  a  
-         conversion.") Multiplied;
+	:param avalue:
+	:type avalue: float
+	:rtype: float
+") Multiplied;
 		virtual Standard_Real Multiplied (const Standard_Real avalue);
-		%feature("autodoc", "Args:
-	avalue(Standard_Real)
+		%feature("autodoc", "	* This virtual method is called by the Measurement methods, to compute the measurement during a conversion.
 
-Returns:
-	virtual Standard_Real
-
-This   virtual  method is  called  by  the Measurement  
-         methods,   to   compute   the   measurement   during a  
-         conversion.") Divided;
+	:param avalue:
+	:type avalue: float
+	:rtype: float
+") Divided;
 		virtual Standard_Real Divided (const Standard_Real avalue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Destroies the Token
 
-Destroies the Token") Destroy;
+	:rtype: void
+") Destroy;
 		virtual void Destroy ();
-		%feature("autodoc", "Args:
-	ashift(Standard_Integer)
-	alevel(Standard_Integer)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param ashift:
+	:type ashift: Standard_Integer
+	:param alevel:
+	:type alevel: Standard_Integer
+	:rtype: void
+") Dump;
 		virtual void Dump (const Standard_Integer ashift,const Standard_Integer alevel);
 };
 
@@ -3296,76 +2573,60 @@ def __del__(self):
 %nodefaultctor Units_ShiftedUnit;
 class Units_ShiftedUnit : public Units_Unit {
 	public:
-		%feature("autodoc", "Args:
-	aname(char *)
-	asymbol(char *)
-	avalue(Standard_Real)
-	amove(Standard_Real)
-	aquantity(Handle_Units_Quantity)
+		%feature("autodoc", "	* Creates and returns a shifted unit. <aname> is the name of the unit, <asymbol> is the usual abbreviation of the unit, <avalue> is the value in relation to the International System of Units, and <amove> is the gap in relation to another unit.  For example Celcius dregee of temperature is an instance of ShiftedUnit with <avalue> equal to 1. and <amove> equal to 273.15.
 
-Returns:
-	None
-
-Creates  and  returns a  shifted unit.   <aname> is the  
-         name of the unit,  <asymbol> is the usual abbreviation  
-         of the unit, <avalue> is the  value in relation to the  
-         International System of Units, and <amove>  is the gap  
-         in relation to another unit.  
- 
-         For  example Celcius   dregee   of temperature  is  an  
-         instance of ShiftedUnit  with <avalue> equal to 1. and  
-         <amove> equal to 273.15.") Units_ShiftedUnit;
+	:param aname:
+	:type aname: char *
+	:param asymbol:
+	:type asymbol: char *
+	:param avalue:
+	:type avalue: float
+	:param amove:
+	:type amove: float
+	:param aquantity:
+	:type aquantity: Handle_Units_Quantity &
+	:rtype: None
+") Units_ShiftedUnit;
 		 Units_ShiftedUnit (const char * aname,const char * asymbol,const Standard_Real avalue,const Standard_Real amove,const Handle_Units_Quantity & aquantity);
-		%feature("autodoc", "Args:
-	aname(char *)
-	asymbol(char *)
+		%feature("autodoc", "	* Creates and returns a unit. <aname> is the name of the unit, <asymbol> is the usual abbreviation of the unit.
 
-Returns:
-	None
-
-Creates  and returns a  unit.  <aname> is  the name of  
-         the  unit, <asymbol> is the  usual abbreviation of the  
-         unit.") Units_ShiftedUnit;
+	:param aname:
+	:type aname: char *
+	:param asymbol:
+	:type asymbol: char *
+	:rtype: None
+") Units_ShiftedUnit;
 		 Units_ShiftedUnit (const char * aname,const char * asymbol);
-		%feature("autodoc", "Args:
-	aname(char *)
+		%feature("autodoc", "	* Creates and returns a unit. <aname> is the name of the unit.
 
-Returns:
-	None
-
-Creates  and returns a  unit.  <aname> is  the name of  
-         the  unit.") Units_ShiftedUnit;
+	:param aname:
+	:type aname: char *
+	:rtype: None
+") Units_ShiftedUnit;
 		 Units_ShiftedUnit (const char * aname);
-		%feature("autodoc", "Args:
-	amove(Standard_Real)
+		%feature("autodoc", "	* Sets the field <themove> to <amove>
 
-Returns:
-	None
-
-Sets the field <themove> to <amove>") Move;
+	:param amove:
+	:type amove: float
+	:rtype: None
+") Move;
 		void Move (const Standard_Real amove);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the shifted value <themove>.
 
-Returns the shifted value <themove>.") Move;
+	:rtype: float
+") Move;
 		Standard_Real Move ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Units_Token
+		%feature("autodoc", "	* This redefined method returns a ShiftedToken object.
 
-This redefined method returns a ShiftedToken object.") Token;
+	:rtype: Handle_Units_Token
+") Token;
 		virtual Handle_Units_Token Token ();
-		%feature("autodoc", "Args:
-	ashift(Standard_Integer)
-	alevel(Standard_Integer)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param ashift:
+	:type ashift: Standard_Integer
+	:param alevel:
+	:type alevel: Standard_Integer
+	:rtype: void
+") Dump;
 		virtual void Dump (const Standard_Integer ashift,const Standard_Integer alevel);
 };
 
@@ -3426,47 +2687,33 @@ def __del__(self):
 %nodefaultctor Units_UnitSentence;
 class Units_UnitSentence : public Units_Sentence {
 	public:
-		%feature("autodoc", "Args:
-	astring(char *)
+		%feature("autodoc", "	* Creates and returns a UnitSentence. The string <astring> describes in natural language the unit or the composed unit to be analysed.
 
-Returns:
-	None
-
-Creates   and   returns a   UnitSentence.   The string  
-         <astring> describes in natural  language the  unit  or  
-         the composed unit to be analysed.") Units_UnitSentence;
+	:param astring:
+	:type astring: char *
+	:rtype: None
+") Units_UnitSentence;
 		 Units_UnitSentence (const char * astring);
-		%feature("autodoc", "Args:
-	astring(char *)
-	aquantitiessequence(Handle_Units_QuantitiesSequence)
+		%feature("autodoc", "	* Creates and returns a UnitSentence. The string <astring> describes in natural language the unit to be analysed. The sequence of physical quantities <asequenceofquantities> describes the available dictionary of units you want to use.
 
-Returns:
-	None
-
-Creates  and returns    a  UnitSentence.  The   string  
-         <astring> describes in natural language the unit to be  
-         analysed.   The    sequence     of physical quantities  
-         <asequenceofquantities>   describes    the   available  
-         dictionary of units you want to use.") Units_UnitSentence;
+	:param astring:
+	:type astring: char *
+	:param aquantitiessequence:
+	:type aquantitiessequence: Handle_Units_QuantitiesSequence &
+	:rtype: None
+") Units_UnitSentence;
 		 Units_UnitSentence (const char * astring,const Handle_Units_QuantitiesSequence & aquantitiessequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Analyzes the sequence of tokens created by the constructor to find the true significance of each token.
 
-Analyzes   the sequence  of   tokens  created  by  the  
-         constructor to  find  the true significance   of  each  
-         token.") Analyse;
+	:rtype: None
+") Analyse;
 		void Analyse ();
-		%feature("autodoc", "Args:
-	aquantitiessequence(Handle_Units_QuantitiesSequence)
+		%feature("autodoc", "	* For each token which represents a unit, finds in the sequence of physical quantities all the characteristics of the unit found.
 
-Returns:
-	None
-
-For each token which  represents a unit, finds  in the  
-         sequence    of    physical   quantities      all   the  
-         characteristics of the unit found.") SetUnits;
+	:param aquantitiessequence:
+	:type aquantitiessequence: Handle_Units_QuantitiesSequence &
+	:rtype: None
+") SetUnits;
 		void SetUnits (const Handle_Units_QuantitiesSequence & aquantitiessequence);
 };
 
@@ -3488,47 +2735,36 @@ def __del__(self):
 %nodefaultctor Units_UnitsLexicon;
 class Units_UnitsLexicon : public Units_Lexicon {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Returns an empty instance of UnitsLexicon
 
-Returns an empty instance of UnitsLexicon") Units_UnitsLexicon;
+	:rtype: None
+") Units_UnitsLexicon;
 		 Units_UnitsLexicon ();
-		%feature("autodoc", "Args:
-	afilename1(char *)
-	afilename2(char *)
-	amode(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Reads the files <afilename1> and <afilename2> to create a sequence of tokens stored in <thesequenceoftokens>.
 
-Returns:
-	None
-
-Reads  the files  <afilename1>  and  <afilename2>   to  
-         create     a   sequence     of    tokens   stored   in  
-         <thesequenceoftokens>.") Creates;
+	:param afilename1:
+	:type afilename1: char *
+	:param afilename2:
+	:type afilename2: char *
+	:param amode: default value is Standard_True
+	:type amode: bool
+	:rtype: None
+") Creates;
 		void Creates (const char * afilename1,const char * afilename2,const Standard_Boolean amode = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* Returns in a AsciiString from TCollection the name of the file.
 
-Returns in a AsciiString from TCollection the name of the file.") FileName2;
+	:rtype: TCollection_AsciiString
+") FileName2;
 		TCollection_AsciiString FileName2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Returns true if the file has not changed since the creation of the Lexicon object. Returns false otherwise.
 
-Returns true if  the  file has not  changed  since the  
-         creation   of   the  Lexicon   object.   Returns false  
-         otherwise.") UpToDate;
+	:rtype: bool
+") UpToDate;
 		virtual Standard_Boolean UpToDate ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Useful for debugging.
 
-Useful for debugging.") Dump;
+	:rtype: None
+") Dump;
 		void Dump ();
 };
 

@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -44,175 +44,92 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor NLPlate_HGPPConstraint;
 class NLPlate_HGPPConstraint : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	UVFree(Standard_Boolean)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetUVFreeSliding;
+		%feature("autodoc", "	:param UVFree:
+	:type UVFree: bool
+	:rtype: void
+") SetUVFreeSliding;
 		virtual void SetUVFreeSliding (const Standard_Boolean UVFree);
-		%feature("autodoc", "Args:
-	ILA(Standard_Boolean)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetIncrementalLoadAllowed;
+		%feature("autodoc", "	:param ILA:
+	:type ILA: bool
+	:rtype: void
+") SetIncrementalLoadAllowed;
 		virtual void SetIncrementalLoadAllowed (const Standard_Boolean ILA);
-		%feature("autodoc", "Args:
-	ActiveOrder(Standard_Integer)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetActiveOrder;
+		%feature("autodoc", "	:param ActiveOrder:
+	:type ActiveOrder: Standard_Integer
+	:rtype: void
+") SetActiveOrder;
 		virtual void SetActiveOrder (const Standard_Integer ActiveOrder);
-		%feature("autodoc", "Args:
-	UV(gp_XY)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetUV;
+		%feature("autodoc", "	:param UV:
+	:type UV: gp_XY
+	:rtype: void
+") SetUV;
 		virtual void SetUV (const gp_XY & UV);
-		%feature("autodoc", "Args:
-	Orient(Standard_Integer)=0
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetOrientation;
+		%feature("autodoc", "	:param Orient: default value is 0
+	:type Orient: Standard_Integer
+	:rtype: void
+") SetOrientation;
 		virtual void SetOrientation (const Standard_Integer Orient = 0);
-		%feature("autodoc", "Args:
-	TolDist(Standard_Real)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetG0Criterion;
+		%feature("autodoc", "	:param TolDist:
+	:type TolDist: float
+	:rtype: void
+") SetG0Criterion;
 		virtual void SetG0Criterion (const Standard_Real TolDist);
-		%feature("autodoc", "Args:
-	TolAng(Standard_Real)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetG1Criterion;
+		%feature("autodoc", "	:param TolAng:
+	:type TolAng: float
+	:rtype: void
+") SetG1Criterion;
 		virtual void SetG1Criterion (const Standard_Real TolAng);
-		%feature("autodoc", "Args:
-	TolCurv(Standard_Real)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetG2Criterion;
+		%feature("autodoc", "	:param TolCurv:
+	:type TolCurv: float
+	:rtype: void
+") SetG2Criterion;
 		virtual void SetG2Criterion (const Standard_Real TolCurv);
-		%feature("autodoc", "Args:
-	TolG3(Standard_Real)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetG3Criterion;
+		%feature("autodoc", "	:param TolG3:
+	:type TolG3: float
+	:rtype: void
+") SetG3Criterion;
 		virtual void SetG3Criterion (const Standard_Real TolG3);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") UVFreeSliding;
+		%feature("autodoc", "	:rtype: bool
+") UVFreeSliding;
 		virtual Standard_Boolean UVFreeSliding ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") IncrementalLoadAllowed;
+		%feature("autodoc", "	:rtype: bool
+") IncrementalLoadAllowed;
 		virtual Standard_Boolean IncrementalLoadAllowed ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
-
-No detailed docstring for this function.") ActiveOrder;
+		%feature("autodoc", "	:rtype: int
+") ActiveOrder;
 		virtual Standard_Integer ActiveOrder ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  gp_XY
-
-No detailed docstring for this function.") UV;
+		%feature("autodoc", "	:rtype: gp_XY
+") UV;
 		virtual const gp_XY & UV ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
-
-No detailed docstring for this function.") Orientation;
+		%feature("autodoc", "	:rtype: int
+") Orientation;
 		virtual Standard_Integer Orientation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") IsG0;
+		%feature("autodoc", "	:rtype: bool
+") IsG0;
 		virtual Standard_Boolean IsG0 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  gp_XYZ
-
-No detailed docstring for this function.") G0Target;
+		%feature("autodoc", "	:rtype: gp_XYZ
+") G0Target;
 		virtual const gp_XYZ & G0Target ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  Plate_D1
-
-No detailed docstring for this function.") G1Target;
+		%feature("autodoc", "	:rtype: Plate_D1
+") G1Target;
 		virtual const Plate_D1 & G1Target ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  Plate_D2
-
-No detailed docstring for this function.") G2Target;
+		%feature("autodoc", "	:rtype: Plate_D2
+") G2Target;
 		virtual const Plate_D2 & G2Target ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  Plate_D3
-
-No detailed docstring for this function.") G3Target;
+		%feature("autodoc", "	:rtype: Plate_D3
+") G3Target;
 		virtual const Plate_D3 & G3Target ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Real
-
-No detailed docstring for this function.") G0Criterion;
+		%feature("autodoc", "	:rtype: float
+") G0Criterion;
 		virtual Standard_Real G0Criterion ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Real
-
-No detailed docstring for this function.") G1Criterion;
+		%feature("autodoc", "	:rtype: float
+") G1Criterion;
 		virtual Standard_Real G1Criterion ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Real
-
-No detailed docstring for this function.") G2Criterion;
+		%feature("autodoc", "	:rtype: float
+") G2Criterion;
 		virtual Standard_Real G2Criterion ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Real
-
-No detailed docstring for this function.") G3Criterion;
+		%feature("autodoc", "	:rtype: float
+") G3Criterion;
 		virtual Standard_Real G3Criterion ();
 };
 
@@ -273,112 +190,78 @@ def __del__(self):
 %nodefaultctor NLPlate_NLPlate;
 class NLPlate_NLPlate {
 	public:
-		%feature("autodoc", "Args:
-	InitialSurface(Handle_Geom_Surface)
-
-Returns:
-	None
-
-No detailed docstring for this function.") NLPlate_NLPlate;
+		%feature("autodoc", "	:param InitialSurface:
+	:type InitialSurface: Handle_Geom_Surface &
+	:rtype: None
+") NLPlate_NLPlate;
 		 NLPlate_NLPlate (const Handle_Geom_Surface & InitialSurface);
-		%feature("autodoc", "Args:
-	GConst(Handle_NLPlate_HGPPConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Load;
+		%feature("autodoc", "	:param GConst:
+	:type GConst: Handle_NLPlate_HGPPConstraint &
+	:rtype: None
+") Load;
 		void Load (const Handle_NLPlate_HGPPConstraint & GConst);
-		%feature("autodoc", "Args:
-	ord(Standard_Integer)=2
-	InitialConsraintOrder(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") Solve;
+		%feature("autodoc", "	:param ord: default value is 2
+	:type ord: Standard_Integer
+	:param InitialConsraintOrder: default value is 1
+	:type InitialConsraintOrder: Standard_Integer
+	:rtype: None
+") Solve;
 		void Solve (const Standard_Integer ord = 2,const Standard_Integer InitialConsraintOrder = 1);
-		%feature("autodoc", "Args:
-	ord(Standard_Integer)=2
-	InitialConsraintOrder(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") Solve2;
+		%feature("autodoc", "	:param ord: default value is 2
+	:type ord: Standard_Integer
+	:param InitialConsraintOrder: default value is 1
+	:type InitialConsraintOrder: Standard_Integer
+	:rtype: None
+") Solve2;
 		void Solve2 (const Standard_Integer ord = 2,const Standard_Integer InitialConsraintOrder = 1);
-		%feature("autodoc", "Args:
-	ord(Standard_Integer)=2
-	InitialConsraintOrder(Standard_Integer)=1
-	NbIncrements(Standard_Integer)=4
-	UVSliding(Standard_Boolean)=Standard_False
-
-Returns:
-	None
-
-No detailed docstring for this function.") IncrementalSolve;
+		%feature("autodoc", "	:param ord: default value is 2
+	:type ord: Standard_Integer
+	:param InitialConsraintOrder: default value is 1
+	:type InitialConsraintOrder: Standard_Integer
+	:param NbIncrements: default value is 4
+	:type NbIncrements: Standard_Integer
+	:param UVSliding: default value is Standard_False
+	:type UVSliding: bool
+	:rtype: None
+") IncrementalSolve;
 		void IncrementalSolve (const Standard_Integer ord = 2,const Standard_Integer InitialConsraintOrder = 1,const Standard_Integer NbIncrements = 4,const Standard_Boolean UVSliding = Standard_False);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns True if all has been correctly done.
 
-returns True if all has been correctly done.") IsDone;
+	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") destroy;
+		%feature("autodoc", "	:rtype: None
+") destroy;
 		void destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* reset the Plate in the initial state ( same as after Create((Surface))
 
-reset the Plate in the initial state  
-          ( same as after Create((Surface))") Init;
+	:rtype: None
+") Init;
 		void Init ();
-		%feature("autodoc", "Args:
-	point2d(gp_XY)
-
-Returns:
-	gp_XYZ
-
-No detailed docstring for this function.") Evaluate;
+		%feature("autodoc", "	:param point2d:
+	:type point2d: gp_XY
+	:rtype: gp_XYZ
+") Evaluate;
 		gp_XYZ Evaluate (const gp_XY & point2d);
-		%feature("autodoc", "Args:
-	point2d(gp_XY)
-	iu(Standard_Integer)
-	iv(Standard_Integer)
-
-Returns:
-	gp_XYZ
-
-No detailed docstring for this function.") EvaluateDerivative;
+		%feature("autodoc", "	:param point2d:
+	:type point2d: gp_XY
+	:param iu:
+	:type iu: Standard_Integer
+	:param iv:
+	:type iv: Standard_Integer
+	:rtype: gp_XYZ
+") EvaluateDerivative;
 		gp_XYZ EvaluateDerivative (const gp_XY & point2d,const Standard_Integer iu,const Standard_Integer iv);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Continuity;
+		%feature("autodoc", "	:rtype: int
+") Continuity;
 		Standard_Integer Continuity ();
-		%feature("autodoc", "Args:
-	NbIterations(Standard_Integer)=3
-
-Returns:
-	None
-
-No detailed docstring for this function.") ConstraintsSliding;
+		%feature("autodoc", "	:param NbIterations: default value is 3
+	:type NbIterations: Standard_Integer
+	:rtype: None
+") ConstraintsSliding;
 		void ConstraintsSliding (const Standard_Integer NbIterations = 3);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") MaxActiveConstraintOrder;
+		%feature("autodoc", "	:rtype: int
+") MaxActiveConstraintOrder;
 		Standard_Integer MaxActiveConstraintOrder ();
 };
 
@@ -400,22 +283,17 @@ def __del__(self):
 %nodefaultctor NLPlate_SequenceNodeOfSequenceOfHGPPConstraint;
 class NLPlate_SequenceNodeOfSequenceOfHGPPConstraint : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_NLPlate_HGPPConstraint)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") NLPlate_SequenceNodeOfSequenceOfHGPPConstraint;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_NLPlate_HGPPConstraint &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") NLPlate_SequenceNodeOfSequenceOfHGPPConstraint;
 		 NLPlate_SequenceNodeOfSequenceOfHGPPConstraint (const Handle_NLPlate_HGPPConstraint & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_NLPlate_HGPPConstraint
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_NLPlate_HGPPConstraint
+") Value;
 		Handle_NLPlate_HGPPConstraint & Value ();
 };
 
@@ -476,168 +354,111 @@ def __del__(self):
 %nodefaultctor NLPlate_SequenceOfHGPPConstraint;
 class NLPlate_SequenceOfHGPPConstraint : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") NLPlate_SequenceOfHGPPConstraint;
+		%feature("autodoc", "	:rtype: None
+") NLPlate_SequenceOfHGPPConstraint;
 		 NLPlate_SequenceOfHGPPConstraint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(NLPlate_SequenceOfHGPPConstraint)
-
-Returns:
-	NLPlate_SequenceOfHGPPConstraint
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: NLPlate_SequenceOfHGPPConstraint &
+	:rtype: NLPlate_SequenceOfHGPPConstraint
+") Assign;
 		const NLPlate_SequenceOfHGPPConstraint & Assign (const NLPlate_SequenceOfHGPPConstraint & Other);
-		%feature("autodoc", "Args:
-	Other(NLPlate_SequenceOfHGPPConstraint)
-
-Returns:
-	NLPlate_SequenceOfHGPPConstraint
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: NLPlate_SequenceOfHGPPConstraint &
+	:rtype: NLPlate_SequenceOfHGPPConstraint
+") operator=;
 		const NLPlate_SequenceOfHGPPConstraint & operator = (const NLPlate_SequenceOfHGPPConstraint & Other);
-		%feature("autodoc", "Args:
-	T(Handle_NLPlate_HGPPConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_NLPlate_HGPPConstraint &
+	:rtype: None
+") Append;
 		void Append (const Handle_NLPlate_HGPPConstraint & T);
-		%feature("autodoc", "Args:
-	S(NLPlate_SequenceOfHGPPConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: NLPlate_SequenceOfHGPPConstraint &
+	:rtype: None
+") Append;
 		void Append (NLPlate_SequenceOfHGPPConstraint & S);
-		%feature("autodoc", "Args:
-	T(Handle_NLPlate_HGPPConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_NLPlate_HGPPConstraint &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_NLPlate_HGPPConstraint & T);
-		%feature("autodoc", "Args:
-	S(NLPlate_SequenceOfHGPPConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: NLPlate_SequenceOfHGPPConstraint &
+	:rtype: None
+") Prepend;
 		void Prepend (NLPlate_SequenceOfHGPPConstraint & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_NLPlate_HGPPConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_NLPlate_HGPPConstraint &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_NLPlate_HGPPConstraint & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(NLPlate_SequenceOfHGPPConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: NLPlate_SequenceOfHGPPConstraint &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,NLPlate_SequenceOfHGPPConstraint & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_NLPlate_HGPPConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_NLPlate_HGPPConstraint &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_NLPlate_HGPPConstraint & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(NLPlate_SequenceOfHGPPConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: NLPlate_SequenceOfHGPPConstraint &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,NLPlate_SequenceOfHGPPConstraint & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_NLPlate_HGPPConstraint
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_NLPlate_HGPPConstraint
+") First;
 		const Handle_NLPlate_HGPPConstraint & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_NLPlate_HGPPConstraint
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_NLPlate_HGPPConstraint
+") Last;
 		const Handle_NLPlate_HGPPConstraint & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(NLPlate_SequenceOfHGPPConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: NLPlate_SequenceOfHGPPConstraint &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,NLPlate_SequenceOfHGPPConstraint & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_NLPlate_HGPPConstraint
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_NLPlate_HGPPConstraint
+") Value;
 		const Handle_NLPlate_HGPPConstraint & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_NLPlate_HGPPConstraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_NLPlate_HGPPConstraint &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_NLPlate_HGPPConstraint & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_NLPlate_HGPPConstraint
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_NLPlate_HGPPConstraint
+") ChangeValue;
 		Handle_NLPlate_HGPPConstraint & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -659,49 +480,27 @@ def __del__(self):
 %nodefaultctor NLPlate_StackIteratorOfStackOfPlate;
 class NLPlate_StackIteratorOfStackOfPlate {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") NLPlate_StackIteratorOfStackOfPlate;
+		%feature("autodoc", "	:rtype: None
+") NLPlate_StackIteratorOfStackOfPlate;
 		 NLPlate_StackIteratorOfStackOfPlate ();
-		%feature("autodoc", "Args:
-	S(NLPlate_StackOfPlate)
-
-Returns:
-	None
-
-No detailed docstring for this function.") NLPlate_StackIteratorOfStackOfPlate;
+		%feature("autodoc", "	:param S:
+	:type S: NLPlate_StackOfPlate &
+	:rtype: None
+") NLPlate_StackIteratorOfStackOfPlate;
 		 NLPlate_StackIteratorOfStackOfPlate (const NLPlate_StackOfPlate & S);
-		%feature("autodoc", "Args:
-	S(NLPlate_StackOfPlate)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param S:
+	:type S: NLPlate_StackOfPlate &
+	:rtype: None
+") Initialize;
 		void Initialize (const NLPlate_StackOfPlate & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Plate_Plate
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Plate_Plate
+") Value;
 		const Plate_Plate & Value ();
 };
 
@@ -723,21 +522,15 @@ def __del__(self):
 %nodefaultctor NLPlate_StackNodeOfStackOfPlate;
 class NLPlate_StackNodeOfStackOfPlate : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Plate_Plate)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") NLPlate_StackNodeOfStackOfPlate;
+		%feature("autodoc", "	:param I:
+	:type I: Plate_Plate &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") NLPlate_StackNodeOfStackOfPlate;
 		 NLPlate_StackNodeOfStackOfPlate (const Plate_Plate & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Plate_Plate
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Plate_Plate
+") Value;
 		Plate_Plate & Value ();
 };
 
@@ -798,78 +591,41 @@ def __del__(self):
 %nodefaultctor NLPlate_StackOfPlate;
 class NLPlate_StackOfPlate {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") NLPlate_StackOfPlate;
+		%feature("autodoc", "	:rtype: None
+") NLPlate_StackOfPlate;
 		 NLPlate_StackOfPlate ();
-		%feature("autodoc", "Args:
-	Other(NLPlate_StackOfPlate)
-
-Returns:
-	NLPlate_StackOfPlate
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: NLPlate_StackOfPlate &
+	:rtype: NLPlate_StackOfPlate
+") Assign;
 		const NLPlate_StackOfPlate & Assign (const NLPlate_StackOfPlate & Other);
-		%feature("autodoc", "Args:
-	Other(NLPlate_StackOfPlate)
-
-Returns:
-	NLPlate_StackOfPlate
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: NLPlate_StackOfPlate &
+	:rtype: NLPlate_StackOfPlate
+") operator=;
 		const NLPlate_StackOfPlate & operator = (const NLPlate_StackOfPlate & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Depth;
+		%feature("autodoc", "	:rtype: int
+") Depth;
 		Standard_Integer Depth ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Plate_Plate
-
-No detailed docstring for this function.") Top;
+		%feature("autodoc", "	:rtype: Plate_Plate
+") Top;
 		const Plate_Plate & Top ();
-		%feature("autodoc", "Args:
-	I(Plate_Plate)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Push;
+		%feature("autodoc", "	:param I:
+	:type I: Plate_Plate &
+	:rtype: None
+") Push;
 		void Push (const Plate_Plate & I);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Pop;
+		%feature("autodoc", "	:rtype: None
+") Pop;
 		void Pop ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Plate_Plate
-
-No detailed docstring for this function.") ChangeTop;
+		%feature("autodoc", "	:rtype: Plate_Plate
+") ChangeTop;
 		Plate_Plate & ChangeTop ();
 };
 
@@ -891,65 +647,37 @@ def __del__(self):
 %nodefaultctor NLPlate_HPG0Constraint;
 class NLPlate_HPG0Constraint : public NLPlate_HGPPConstraint {
 	public:
-		%feature("autodoc", "Args:
-	UV(gp_XY)
-	Value(gp_XYZ)
-
-Returns:
-	None
-
-No detailed docstring for this function.") NLPlate_HPG0Constraint;
+		%feature("autodoc", "	:param UV:
+	:type UV: gp_XY
+	:param Value:
+	:type Value: gp_XYZ
+	:rtype: None
+") NLPlate_HPG0Constraint;
 		 NLPlate_HPG0Constraint (const gp_XY & UV,const gp_XYZ & Value);
-		%feature("autodoc", "Args:
-	UVFree(Standard_Boolean)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetUVFreeSliding;
+		%feature("autodoc", "	:param UVFree:
+	:type UVFree: bool
+	:rtype: void
+") SetUVFreeSliding;
 		virtual void SetUVFreeSliding (const Standard_Boolean UVFree);
-		%feature("autodoc", "Args:
-	ILA(Standard_Boolean)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetIncrementalLoadAllowed;
+		%feature("autodoc", "	:param ILA:
+	:type ILA: bool
+	:rtype: void
+") SetIncrementalLoadAllowed;
 		virtual void SetIncrementalLoadAllowed (const Standard_Boolean ILA);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") UVFreeSliding;
+		%feature("autodoc", "	:rtype: bool
+") UVFreeSliding;
 		virtual Standard_Boolean UVFreeSliding ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") IncrementalLoadAllowed;
+		%feature("autodoc", "	:rtype: bool
+") IncrementalLoadAllowed;
 		virtual Standard_Boolean IncrementalLoadAllowed ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
-
-No detailed docstring for this function.") ActiveOrder;
+		%feature("autodoc", "	:rtype: int
+") ActiveOrder;
 		virtual Standard_Integer ActiveOrder ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") IsG0;
+		%feature("autodoc", "	:rtype: bool
+") IsG0;
 		virtual Standard_Boolean IsG0 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  gp_XYZ
-
-No detailed docstring for this function.") G0Target;
+		%feature("autodoc", "	:rtype: gp_XYZ
+") G0Target;
 		virtual const gp_XYZ & G0Target ();
 };
 
@@ -1010,65 +738,37 @@ def __del__(self):
 %nodefaultctor NLPlate_HPG1Constraint;
 class NLPlate_HPG1Constraint : public NLPlate_HGPPConstraint {
 	public:
-		%feature("autodoc", "Args:
-	UV(gp_XY)
-	D1T(Plate_D1)
-
-Returns:
-	None
-
-No detailed docstring for this function.") NLPlate_HPG1Constraint;
+		%feature("autodoc", "	:param UV:
+	:type UV: gp_XY
+	:param D1T:
+	:type D1T: Plate_D1 &
+	:rtype: None
+") NLPlate_HPG1Constraint;
 		 NLPlate_HPG1Constraint (const gp_XY & UV,const Plate_D1 & D1T);
-		%feature("autodoc", "Args:
-	ILA(Standard_Boolean)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetIncrementalLoadAllowed;
+		%feature("autodoc", "	:param ILA:
+	:type ILA: bool
+	:rtype: void
+") SetIncrementalLoadAllowed;
 		virtual void SetIncrementalLoadAllowed (const Standard_Boolean ILA);
-		%feature("autodoc", "Args:
-	Orient(Standard_Integer)=0
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetOrientation;
+		%feature("autodoc", "	:param Orient: default value is 0
+	:type Orient: Standard_Integer
+	:rtype: void
+") SetOrientation;
 		virtual void SetOrientation (const Standard_Integer Orient = 0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") IncrementalLoadAllowed;
+		%feature("autodoc", "	:rtype: bool
+") IncrementalLoadAllowed;
 		virtual Standard_Boolean IncrementalLoadAllowed ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
-
-No detailed docstring for this function.") ActiveOrder;
+		%feature("autodoc", "	:rtype: int
+") ActiveOrder;
 		virtual Standard_Integer ActiveOrder ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") IsG0;
+		%feature("autodoc", "	:rtype: bool
+") IsG0;
 		virtual Standard_Boolean IsG0 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
-
-No detailed docstring for this function.") Orientation;
+		%feature("autodoc", "	:rtype: int
+") Orientation;
 		virtual Standard_Integer Orientation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  Plate_D1
-
-No detailed docstring for this function.") G1Target;
+		%feature("autodoc", "	:rtype: Plate_D1
+") G1Target;
 		virtual const Plate_D1 & G1Target ();
 };
 
@@ -1129,44 +829,28 @@ def __del__(self):
 %nodefaultctor NLPlate_HPG0G1Constraint;
 class NLPlate_HPG0G1Constraint : public NLPlate_HPG0Constraint {
 	public:
-		%feature("autodoc", "Args:
-	UV(gp_XY)
-	Value(gp_XYZ)
-	D1T(Plate_D1)
-
-Returns:
-	None
-
-No detailed docstring for this function.") NLPlate_HPG0G1Constraint;
+		%feature("autodoc", "	:param UV:
+	:type UV: gp_XY
+	:param Value:
+	:type Value: gp_XYZ
+	:param D1T:
+	:type D1T: Plate_D1 &
+	:rtype: None
+") NLPlate_HPG0G1Constraint;
 		 NLPlate_HPG0G1Constraint (const gp_XY & UV,const gp_XYZ & Value,const Plate_D1 & D1T);
-		%feature("autodoc", "Args:
-	Orient(Standard_Integer)=0
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetOrientation;
+		%feature("autodoc", "	:param Orient: default value is 0
+	:type Orient: Standard_Integer
+	:rtype: void
+") SetOrientation;
 		virtual void SetOrientation (const Standard_Integer Orient = 0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
-
-No detailed docstring for this function.") ActiveOrder;
+		%feature("autodoc", "	:rtype: int
+") ActiveOrder;
 		virtual Standard_Integer ActiveOrder ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
-
-No detailed docstring for this function.") Orientation;
+		%feature("autodoc", "	:rtype: int
+") Orientation;
 		virtual Standard_Integer Orientation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  Plate_D1
-
-No detailed docstring for this function.") G1Target;
+		%feature("autodoc", "	:rtype: Plate_D1
+") G1Target;
 		virtual const Plate_D1 & G1Target ();
 };
 
@@ -1227,29 +911,20 @@ def __del__(self):
 %nodefaultctor NLPlate_HPG2Constraint;
 class NLPlate_HPG2Constraint : public NLPlate_HPG1Constraint {
 	public:
-		%feature("autodoc", "Args:
-	UV(gp_XY)
-	D1T(Plate_D1)
-	D2T(Plate_D2)
-
-Returns:
-	None
-
-No detailed docstring for this function.") NLPlate_HPG2Constraint;
+		%feature("autodoc", "	:param UV:
+	:type UV: gp_XY
+	:param D1T:
+	:type D1T: Plate_D1 &
+	:param D2T:
+	:type D2T: Plate_D2 &
+	:rtype: None
+") NLPlate_HPG2Constraint;
 		 NLPlate_HPG2Constraint (const gp_XY & UV,const Plate_D1 & D1T,const Plate_D2 & D2T);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
-
-No detailed docstring for this function.") ActiveOrder;
+		%feature("autodoc", "	:rtype: int
+") ActiveOrder;
 		virtual Standard_Integer ActiveOrder ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  Plate_D2
-
-No detailed docstring for this function.") G2Target;
+		%feature("autodoc", "	:rtype: Plate_D2
+") G2Target;
 		virtual const Plate_D2 & G2Target ();
 };
 
@@ -1310,30 +985,22 @@ def __del__(self):
 %nodefaultctor NLPlate_HPG0G2Constraint;
 class NLPlate_HPG0G2Constraint : public NLPlate_HPG0G1Constraint {
 	public:
-		%feature("autodoc", "Args:
-	UV(gp_XY)
-	Value(gp_XYZ)
-	D1T(Plate_D1)
-	D2T(Plate_D2)
-
-Returns:
-	None
-
-No detailed docstring for this function.") NLPlate_HPG0G2Constraint;
+		%feature("autodoc", "	:param UV:
+	:type UV: gp_XY
+	:param Value:
+	:type Value: gp_XYZ
+	:param D1T:
+	:type D1T: Plate_D1 &
+	:param D2T:
+	:type D2T: Plate_D2 &
+	:rtype: None
+") NLPlate_HPG0G2Constraint;
 		 NLPlate_HPG0G2Constraint (const gp_XY & UV,const gp_XYZ & Value,const Plate_D1 & D1T,const Plate_D2 & D2T);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
-
-No detailed docstring for this function.") ActiveOrder;
+		%feature("autodoc", "	:rtype: int
+") ActiveOrder;
 		virtual Standard_Integer ActiveOrder ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  Plate_D2
-
-No detailed docstring for this function.") G2Target;
+		%feature("autodoc", "	:rtype: Plate_D2
+") G2Target;
 		virtual const Plate_D2 & G2Target ();
 };
 
@@ -1394,30 +1061,22 @@ def __del__(self):
 %nodefaultctor NLPlate_HPG3Constraint;
 class NLPlate_HPG3Constraint : public NLPlate_HPG2Constraint {
 	public:
-		%feature("autodoc", "Args:
-	UV(gp_XY)
-	D1T(Plate_D1)
-	D2T(Plate_D2)
-	D3T(Plate_D3)
-
-Returns:
-	None
-
-No detailed docstring for this function.") NLPlate_HPG3Constraint;
+		%feature("autodoc", "	:param UV:
+	:type UV: gp_XY
+	:param D1T:
+	:type D1T: Plate_D1 &
+	:param D2T:
+	:type D2T: Plate_D2 &
+	:param D3T:
+	:type D3T: Plate_D3 &
+	:rtype: None
+") NLPlate_HPG3Constraint;
 		 NLPlate_HPG3Constraint (const gp_XY & UV,const Plate_D1 & D1T,const Plate_D2 & D2T,const Plate_D3 & D3T);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
-
-No detailed docstring for this function.") ActiveOrder;
+		%feature("autodoc", "	:rtype: int
+") ActiveOrder;
 		virtual Standard_Integer ActiveOrder ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  Plate_D3
-
-No detailed docstring for this function.") G3Target;
+		%feature("autodoc", "	:rtype: Plate_D3
+") G3Target;
 		virtual const Plate_D3 & G3Target ();
 };
 
@@ -1478,31 +1137,24 @@ def __del__(self):
 %nodefaultctor NLPlate_HPG0G3Constraint;
 class NLPlate_HPG0G3Constraint : public NLPlate_HPG0G2Constraint {
 	public:
-		%feature("autodoc", "Args:
-	UV(gp_XY)
-	Value(gp_XYZ)
-	D1T(Plate_D1)
-	D2T(Plate_D2)
-	D3T(Plate_D3)
-
-Returns:
-	None
-
-No detailed docstring for this function.") NLPlate_HPG0G3Constraint;
+		%feature("autodoc", "	:param UV:
+	:type UV: gp_XY
+	:param Value:
+	:type Value: gp_XYZ
+	:param D1T:
+	:type D1T: Plate_D1 &
+	:param D2T:
+	:type D2T: Plate_D2 &
+	:param D3T:
+	:type D3T: Plate_D3 &
+	:rtype: None
+") NLPlate_HPG0G3Constraint;
 		 NLPlate_HPG0G3Constraint (const gp_XY & UV,const gp_XYZ & Value,const Plate_D1 & D1T,const Plate_D2 & D2T,const Plate_D3 & D3T);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
-
-No detailed docstring for this function.") ActiveOrder;
+		%feature("autodoc", "	:rtype: int
+") ActiveOrder;
 		virtual Standard_Integer ActiveOrder ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  Plate_D3
-
-No detailed docstring for this function.") G3Target;
+		%feature("autodoc", "	:rtype: Plate_D3
+") G3Target;
 		virtual const Plate_D3 & G3Target ();
 };
 

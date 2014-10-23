@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -45,16 +45,16 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor XBRepMesh;
 class XBRepMesh {
 	public:
-		%feature("autodoc", "Args:
-	theShape(TopoDS_Shape)
-	theDeflection(Standard_Real)
-	theAngle(Standard_Real)
-	theAlgo(BRepMesh_PDiscretRoot)
-
-Returns:
-	static Standard_Integer
-
-No detailed docstring for this function.") Discret;
+		%feature("autodoc", "	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:param theDeflection:
+	:type theDeflection: float
+	:param theAngle:
+	:type theAngle: float
+	:param theAlgo:
+	:type theAlgo: BRepMesh_PDiscretRoot &
+	:rtype: int
+") Discret;
 		static Standard_Integer Discret (const TopoDS_Shape & theShape,const Standard_Real theDeflection,const Standard_Real theAngle,BRepMesh_PDiscretRoot & theAlgo);
 };
 

@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -44,175 +44,114 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor AppBlend_Approx;
 class AppBlend_Approx {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Delete;
+		%feature("autodoc", "	:rtype: void
+") Delete;
 		virtual void Delete ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		virtual Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	UDegree(Standard_Integer)
-	VDegree(Standard_Integer)
-	NbUPoles(Standard_Integer)
-	NbVPoles(Standard_Integer)
-	NbUKnots(Standard_Integer)
-	NbVKnots(Standard_Integer)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SurfShape;
+		%feature("autodoc", "	:param UDegree:
+	:type UDegree: Standard_Integer &
+	:param VDegree:
+	:type VDegree: Standard_Integer &
+	:param NbUPoles:
+	:type NbUPoles: Standard_Integer &
+	:param NbVPoles:
+	:type NbVPoles: Standard_Integer &
+	:param NbUKnots:
+	:type NbUKnots: Standard_Integer &
+	:param NbVKnots:
+	:type NbVKnots: Standard_Integer &
+	:rtype: void
+") SurfShape;
 		virtual void SurfShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	TPoles(TColgp_Array2OfPnt)
-	TWeights(TColStd_Array2OfReal)
-	TUKnots(TColStd_Array1OfReal)
-	TVKnots(TColStd_Array1OfReal)
-	TUMults(TColStd_Array1OfInteger)
-	TVMults(TColStd_Array1OfInteger)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Surface;
+		%feature("autodoc", "	:param TPoles:
+	:type TPoles: TColgp_Array2OfPnt
+	:param TWeights:
+	:type TWeights: TColStd_Array2OfReal &
+	:param TUKnots:
+	:type TUKnots: TColStd_Array1OfReal &
+	:param TVKnots:
+	:type TVKnots: TColStd_Array1OfReal &
+	:param TUMults:
+	:type TUMults: TColStd_Array1OfInteger &
+	:param TVMults:
+	:type TVMults: TColStd_Array1OfInteger &
+	:rtype: void
+") Surface;
 		virtual void Surface (TColgp_Array2OfPnt & TPoles,TColStd_Array2OfReal & TWeights,TColStd_Array1OfReal & TUKnots,TColStd_Array1OfReal & TVKnots,TColStd_Array1OfInteger & TUMults,TColStd_Array1OfInteger & TVMults);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
-
-No detailed docstring for this function.") UDegree;
+		%feature("autodoc", "	:rtype: int
+") UDegree;
 		virtual Standard_Integer UDegree ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
-
-No detailed docstring for this function.") VDegree;
+		%feature("autodoc", "	:rtype: int
+") VDegree;
 		virtual Standard_Integer VDegree ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  TColgp_Array2OfPnt
-
-No detailed docstring for this function.") SurfPoles;
+		%feature("autodoc", "	:rtype: TColgp_Array2OfPnt
+") SurfPoles;
 		virtual const TColgp_Array2OfPnt & SurfPoles ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  TColStd_Array2OfReal
-
-No detailed docstring for this function.") SurfWeights;
+		%feature("autodoc", "	:rtype: TColStd_Array2OfReal
+") SurfWeights;
 		virtual const TColStd_Array2OfReal & SurfWeights ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  TColStd_Array1OfReal
-
-No detailed docstring for this function.") SurfUKnots;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfReal
+") SurfUKnots;
 		virtual const TColStd_Array1OfReal & SurfUKnots ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  TColStd_Array1OfReal
-
-No detailed docstring for this function.") SurfVKnots;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfReal
+") SurfVKnots;
 		virtual const TColStd_Array1OfReal & SurfVKnots ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  TColStd_Array1OfInteger
-
-No detailed docstring for this function.") SurfUMults;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfInteger
+") SurfUMults;
 		virtual const TColStd_Array1OfInteger & SurfUMults ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  TColStd_Array1OfInteger
-
-No detailed docstring for this function.") SurfVMults;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfInteger
+") SurfVMults;
 		virtual const TColStd_Array1OfInteger & SurfVMults ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
-
-No detailed docstring for this function.") NbCurves2d;
+		%feature("autodoc", "	:rtype: int
+") NbCurves2d;
 		virtual Standard_Integer NbCurves2d ();
-		%feature("autodoc", "Args:
-	Degree(Standard_Integer)
-	NbPoles(Standard_Integer)
-	NbKnots(Standard_Integer)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Curves2dShape;
+		%feature("autodoc", "	:param Degree:
+	:type Degree: Standard_Integer &
+	:param NbPoles:
+	:type NbPoles: Standard_Integer &
+	:param NbKnots:
+	:type NbKnots: Standard_Integer &
+	:rtype: void
+") Curves2dShape;
 		virtual void Curves2dShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	TPoles(TColgp_Array1OfPnt2d)
-	TKnots(TColStd_Array1OfReal)
-	TMults(TColStd_Array1OfInteger)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Curve2d;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param TPoles:
+	:type TPoles: TColgp_Array1OfPnt2d
+	:param TKnots:
+	:type TKnots: TColStd_Array1OfReal &
+	:param TMults:
+	:type TMults: TColStd_Array1OfInteger &
+	:rtype: void
+") Curve2d;
 		virtual void Curve2d (const Standard_Integer Index,TColgp_Array1OfPnt2d & TPoles,TColStd_Array1OfReal & TKnots,TColStd_Array1OfInteger & TMults);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
-
-No detailed docstring for this function.") Curves2dDegree;
+		%feature("autodoc", "	:rtype: int
+") Curves2dDegree;
 		virtual Standard_Integer Curves2dDegree ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	virtual  TColgp_Array1OfPnt2d
-
-No detailed docstring for this function.") Curve2dPoles;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TColgp_Array1OfPnt2d
+") Curve2dPoles;
 		virtual const TColgp_Array1OfPnt2d & Curve2dPoles (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  TColStd_Array1OfReal
-
-No detailed docstring for this function.") Curves2dKnots;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfReal
+") Curves2dKnots;
 		virtual const TColStd_Array1OfReal & Curves2dKnots ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  TColStd_Array1OfInteger
-
-No detailed docstring for this function.") Curves2dMults;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfInteger
+") Curves2dMults;
 		virtual const TColStd_Array1OfInteger & Curves2dMults ();
-		%feature("autodoc", "Args:
-	Tol3d(Standard_Real)
-	Tol2d(Standard_Real)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") TolReached;
+		%feature("autodoc", "	:param Tol3d:
+	:type Tol3d: float &
+	:param Tol2d:
+	:type Tol2d: float &
+	:rtype: void
+") TolReached;
 		virtual void TolReached (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	virtual Standard_Real
-
-No detailed docstring for this function.") TolCurveOnSurf;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: float
+") TolCurveOnSurf;
 		virtual Standard_Real TolCurveOnSurf (const Standard_Integer Index);
 };
 

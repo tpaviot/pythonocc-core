@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -44,108 +44,68 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor TColStd_Array1OfAsciiString;
 class TColStd_Array1OfAsciiString {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array1OfAsciiString;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_Array1OfAsciiString;
 		 TColStd_Array1OfAsciiString (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(TCollection_AsciiString)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array1OfAsciiString;
+		%feature("autodoc", "	:param Item:
+	:type Item: TCollection_AsciiString &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_Array1OfAsciiString;
 		 TColStd_Array1OfAsciiString (const TCollection_AsciiString & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: TCollection_AsciiString &
+	:rtype: None
+") Init;
 		void Init (const TCollection_AsciiString & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(TColStd_Array1OfAsciiString)
-
-Returns:
-	TColStd_Array1OfAsciiString
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array1OfAsciiString &
+	:rtype: TColStd_Array1OfAsciiString
+") Assign;
 		const TColStd_Array1OfAsciiString & Assign (const TColStd_Array1OfAsciiString & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_Array1OfAsciiString)
-
-Returns:
-	TColStd_Array1OfAsciiString
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array1OfAsciiString &
+	:rtype: TColStd_Array1OfAsciiString
+") operator=;
 		const TColStd_Array1OfAsciiString & operator = (const TColStd_Array1OfAsciiString & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: TCollection_AsciiString &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const TCollection_AsciiString & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TCollection_AsciiString
+") Value;
 		const TCollection_AsciiString & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TCollection_AsciiString
+") ChangeValue;
 		TCollection_AsciiString & ChangeValue (const Standard_Integer Index);
 };
 
@@ -167,108 +127,68 @@ def __del__(self):
 %nodefaultctor TColStd_Array1OfBoolean;
 class TColStd_Array1OfBoolean {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array1OfBoolean;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_Array1OfBoolean;
 		 TColStd_Array1OfBoolean (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Standard_Boolean)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array1OfBoolean;
+		%feature("autodoc", "	:param Item:
+	:type Item: bool
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_Array1OfBoolean;
 		 TColStd_Array1OfBoolean (const Standard_Boolean & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: bool
+	:rtype: None
+") Init;
 		void Init (const Standard_Boolean & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(TColStd_Array1OfBoolean)
-
-Returns:
-	TColStd_Array1OfBoolean
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array1OfBoolean &
+	:rtype: TColStd_Array1OfBoolean
+") Assign;
 		const TColStd_Array1OfBoolean & Assign (const TColStd_Array1OfBoolean & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_Array1OfBoolean)
-
-Returns:
-	TColStd_Array1OfBoolean
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array1OfBoolean &
+	:rtype: TColStd_Array1OfBoolean
+") operator=;
 		const TColStd_Array1OfBoolean & operator = (const TColStd_Array1OfBoolean & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: bool
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Standard_Boolean & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: bool
+") Value;
 		const Standard_Boolean & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: bool
+") ChangeValue;
 		Standard_Boolean & ChangeValue (const Standard_Integer Index);
 };
 
@@ -290,108 +210,68 @@ def __del__(self):
 %nodefaultctor TColStd_Array1OfByte;
 class TColStd_Array1OfByte {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array1OfByte;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_Array1OfByte;
 		 TColStd_Array1OfByte (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Standard_Byte)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array1OfByte;
+		%feature("autodoc", "	:param Item:
+	:type Item: Standard_Byte &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_Array1OfByte;
 		 TColStd_Array1OfByte (const Standard_Byte & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Standard_Byte)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Standard_Byte &
+	:rtype: None
+") Init;
 		void Init (const Standard_Byte & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(TColStd_Array1OfByte)
-
-Returns:
-	TColStd_Array1OfByte
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array1OfByte &
+	:rtype: TColStd_Array1OfByte
+") Assign;
 		const TColStd_Array1OfByte & Assign (const TColStd_Array1OfByte & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_Array1OfByte)
-
-Returns:
-	TColStd_Array1OfByte
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array1OfByte &
+	:rtype: TColStd_Array1OfByte
+") operator=;
 		const TColStd_Array1OfByte & operator = (const TColStd_Array1OfByte & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Standard_Byte)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Standard_Byte &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Standard_Byte & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Byte
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Standard_Byte
+") Value;
 		const Standard_Byte & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Byte
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Standard_Byte
+") ChangeValue;
 		Standard_Byte & ChangeValue (const Standard_Integer Index);
 };
 
@@ -413,108 +293,68 @@ def __del__(self):
 %nodefaultctor TColStd_Array1OfCharacter;
 class TColStd_Array1OfCharacter {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array1OfCharacter;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_Array1OfCharacter;
 		 TColStd_Array1OfCharacter (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Standard_Character)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array1OfCharacter;
+		%feature("autodoc", "	:param Item:
+	:type Item: Standard_Character &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_Array1OfCharacter;
 		 TColStd_Array1OfCharacter (const Standard_Character & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Standard_Character)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Standard_Character &
+	:rtype: None
+") Init;
 		void Init (const Standard_Character & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(TColStd_Array1OfCharacter)
-
-Returns:
-	TColStd_Array1OfCharacter
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array1OfCharacter &
+	:rtype: TColStd_Array1OfCharacter
+") Assign;
 		const TColStd_Array1OfCharacter & Assign (const TColStd_Array1OfCharacter & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_Array1OfCharacter)
-
-Returns:
-	TColStd_Array1OfCharacter
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array1OfCharacter &
+	:rtype: TColStd_Array1OfCharacter
+") operator=;
 		const TColStd_Array1OfCharacter & operator = (const TColStd_Array1OfCharacter & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Standard_Character)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Standard_Character &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Standard_Character & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Character
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Standard_Character
+") Value;
 		const Standard_Character & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Character
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Standard_Character
+") ChangeValue;
 		Standard_Character & ChangeValue (const Standard_Integer Index);
 };
 
@@ -536,108 +376,68 @@ def __del__(self):
 %nodefaultctor TColStd_Array1OfExtendedString;
 class TColStd_Array1OfExtendedString {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array1OfExtendedString;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_Array1OfExtendedString;
 		 TColStd_Array1OfExtendedString (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(TCollection_ExtendedString)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array1OfExtendedString;
+		%feature("autodoc", "	:param Item:
+	:type Item: TCollection_ExtendedString &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_Array1OfExtendedString;
 		 TColStd_Array1OfExtendedString (const TCollection_ExtendedString & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(TCollection_ExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: TCollection_ExtendedString &
+	:rtype: None
+") Init;
 		void Init (const TCollection_ExtendedString & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(TColStd_Array1OfExtendedString)
-
-Returns:
-	TColStd_Array1OfExtendedString
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array1OfExtendedString &
+	:rtype: TColStd_Array1OfExtendedString
+") Assign;
 		const TColStd_Array1OfExtendedString & Assign (const TColStd_Array1OfExtendedString & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_Array1OfExtendedString)
-
-Returns:
-	TColStd_Array1OfExtendedString
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array1OfExtendedString &
+	:rtype: TColStd_Array1OfExtendedString
+") operator=;
 		const TColStd_Array1OfExtendedString & operator = (const TColStd_Array1OfExtendedString & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(TCollection_ExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: TCollection_ExtendedString &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const TCollection_ExtendedString & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TCollection_ExtendedString
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TCollection_ExtendedString
+") Value;
 		const TCollection_ExtendedString & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TCollection_ExtendedString
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TCollection_ExtendedString
+") ChangeValue;
 		TCollection_ExtendedString & ChangeValue (const Standard_Integer Index);
 };
 
@@ -659,108 +459,68 @@ def __del__(self):
 %nodefaultctor TColStd_Array1OfInteger;
 class TColStd_Array1OfInteger {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array1OfInteger;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_Array1OfInteger;
 		 TColStd_Array1OfInteger (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Standard_Integer)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array1OfInteger;
+		%feature("autodoc", "	:param Item:
+	:type Item: Standard_Integer &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_Array1OfInteger;
 		 TColStd_Array1OfInteger (Standard_Integer &OutValue,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Standard_Integer &
+	:rtype: None
+") Init;
 		void Init (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(TColStd_Array1OfInteger)
-
-Returns:
-	TColStd_Array1OfInteger
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array1OfInteger &
+	:rtype: TColStd_Array1OfInteger
+") Assign;
 		const TColStd_Array1OfInteger & Assign (const TColStd_Array1OfInteger & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_Array1OfInteger)
-
-Returns:
-	TColStd_Array1OfInteger
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array1OfInteger &
+	:rtype: TColStd_Array1OfInteger
+") operator=;
 		const TColStd_Array1OfInteger & operator = (const TColStd_Array1OfInteger & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Standard_Integer &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: int
+") Value;
 		const Standard_Integer & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: int
+") ChangeValue;
 		Standard_Integer & ChangeValue (const Standard_Integer Index);
 };
 
@@ -782,108 +542,68 @@ def __del__(self):
 %nodefaultctor TColStd_Array1OfListOfInteger;
 class TColStd_Array1OfListOfInteger {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array1OfListOfInteger;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_Array1OfListOfInteger;
 		 TColStd_Array1OfListOfInteger (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(TColStd_ListOfInteger)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array1OfListOfInteger;
+		%feature("autodoc", "	:param Item:
+	:type Item: TColStd_ListOfInteger &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_Array1OfListOfInteger;
 		 TColStd_Array1OfListOfInteger (const TColStd_ListOfInteger & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(TColStd_ListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: TColStd_ListOfInteger &
+	:rtype: None
+") Init;
 		void Init (const TColStd_ListOfInteger & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(TColStd_Array1OfListOfInteger)
-
-Returns:
-	TColStd_Array1OfListOfInteger
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array1OfListOfInteger &
+	:rtype: TColStd_Array1OfListOfInteger
+") Assign;
 		const TColStd_Array1OfListOfInteger & Assign (const TColStd_Array1OfListOfInteger & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_Array1OfListOfInteger)
-
-Returns:
-	TColStd_Array1OfListOfInteger
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array1OfListOfInteger &
+	:rtype: TColStd_Array1OfListOfInteger
+") operator=;
 		const TColStd_Array1OfListOfInteger & operator = (const TColStd_Array1OfListOfInteger & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(TColStd_ListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: TColStd_ListOfInteger &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const TColStd_ListOfInteger & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TColStd_ListOfInteger
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TColStd_ListOfInteger
+") Value;
 		const TColStd_ListOfInteger & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TColStd_ListOfInteger
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TColStd_ListOfInteger
+") ChangeValue;
 		TColStd_ListOfInteger & ChangeValue (const Standard_Integer Index);
 };
 
@@ -905,108 +625,68 @@ def __del__(self):
 %nodefaultctor TColStd_Array1OfReal;
 class TColStd_Array1OfReal {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array1OfReal;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_Array1OfReal;
 		 TColStd_Array1OfReal (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Standard_Real)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array1OfReal;
+		%feature("autodoc", "	:param Item:
+	:type Item: float &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_Array1OfReal;
 		 TColStd_Array1OfReal (const Standard_Real & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: float &
+	:rtype: None
+") Init;
 		void Init (const Standard_Real & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(TColStd_Array1OfReal)
-
-Returns:
-	TColStd_Array1OfReal
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array1OfReal &
+	:rtype: TColStd_Array1OfReal
+") Assign;
 		const TColStd_Array1OfReal & Assign (const TColStd_Array1OfReal & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_Array1OfReal)
-
-Returns:
-	TColStd_Array1OfReal
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array1OfReal &
+	:rtype: TColStd_Array1OfReal
+") operator=;
 		const TColStd_Array1OfReal & operator = (const TColStd_Array1OfReal & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: float &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Standard_Real & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: float
+") Value;
 		const Standard_Real & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: float
+") ChangeValue;
 		Standard_Real & ChangeValue (const Standard_Integer Index);
 };
 
@@ -1028,108 +708,68 @@ def __del__(self):
 %nodefaultctor TColStd_Array1OfTransient;
 class TColStd_Array1OfTransient {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array1OfTransient;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_Array1OfTransient;
 		 TColStd_Array1OfTransient (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Handle_Standard_Transient)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array1OfTransient;
+		%feature("autodoc", "	:param Item:
+	:type Item: Handle_Standard_Transient &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_Array1OfTransient;
 		 TColStd_Array1OfTransient (const Handle_Standard_Transient & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_Standard_Transient &
+	:rtype: None
+") Init;
 		void Init (const Handle_Standard_Transient & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(TColStd_Array1OfTransient)
-
-Returns:
-	TColStd_Array1OfTransient
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array1OfTransient &
+	:rtype: TColStd_Array1OfTransient
+") Assign;
 		const TColStd_Array1OfTransient & Assign (const TColStd_Array1OfTransient & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_Array1OfTransient)
-
-Returns:
-	TColStd_Array1OfTransient
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array1OfTransient &
+	:rtype: TColStd_Array1OfTransient
+") operator=;
 		const TColStd_Array1OfTransient & operator = (const TColStd_Array1OfTransient & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Handle_Standard_Transient &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Standard_Transient & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Standard_Transient
+") Value;
 		const Handle_Standard_Transient & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Standard_Transient
+") ChangeValue;
 		Handle_Standard_Transient & ChangeValue (const Standard_Integer Index);
 };
 
@@ -1151,129 +791,88 @@ def __del__(self):
 %nodefaultctor TColStd_Array2OfBoolean;
 class TColStd_Array2OfBoolean {
 	public:
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array2OfBoolean;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") TColStd_Array2OfBoolean;
 		 TColStd_Array2OfBoolean (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	Item(Standard_Boolean)
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array2OfBoolean;
+		%feature("autodoc", "	:param Item:
+	:type Item: bool
+	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") TColStd_Array2OfBoolean;
 		 TColStd_Array2OfBoolean (const Standard_Boolean & Item,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	V(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: bool
+	:rtype: None
+") Init;
 		void Init (const Standard_Boolean & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	Other(TColStd_Array2OfBoolean)
-
-Returns:
-	TColStd_Array2OfBoolean
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array2OfBoolean &
+	:rtype: TColStd_Array2OfBoolean
+") Assign;
 		const TColStd_Array2OfBoolean & Assign (const TColStd_Array2OfBoolean & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_Array2OfBoolean)
-
-Returns:
-	TColStd_Array2OfBoolean
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array2OfBoolean &
+	:rtype: TColStd_Array2OfBoolean
+") operator=;
 		const TColStd_Array2OfBoolean & operator = (const TColStd_Array2OfBoolean & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ColLength;
+		%feature("autodoc", "	:rtype: int
+") ColLength;
 		Standard_Integer ColLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") RowLength;
+		%feature("autodoc", "	:rtype: int
+") RowLength;
 		Standard_Integer RowLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerCol;
+		%feature("autodoc", "	:rtype: int
+") LowerCol;
 		Standard_Integer LowerCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerRow;
+		%feature("autodoc", "	:rtype: int
+") LowerRow;
 		Standard_Integer LowerRow ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperCol;
+		%feature("autodoc", "	:rtype: int
+") UpperCol;
 		Standard_Integer UpperCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperRow;
+		%feature("autodoc", "	:rtype: int
+") UpperRow;
 		Standard_Integer UpperRow ();
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-	Value(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:param Value:
+	:type Value: bool
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Standard_Boolean & Value);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: bool
+") Value;
 		const Standard_Boolean & Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: bool
+") ChangeValue;
 		Standard_Boolean & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 };
 
@@ -1295,129 +894,88 @@ def __del__(self):
 %nodefaultctor TColStd_Array2OfCharacter;
 class TColStd_Array2OfCharacter {
 	public:
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array2OfCharacter;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") TColStd_Array2OfCharacter;
 		 TColStd_Array2OfCharacter (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	Item(Standard_Character)
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array2OfCharacter;
+		%feature("autodoc", "	:param Item:
+	:type Item: Standard_Character &
+	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") TColStd_Array2OfCharacter;
 		 TColStd_Array2OfCharacter (const Standard_Character & Item,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	V(Standard_Character)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Standard_Character &
+	:rtype: None
+") Init;
 		void Init (const Standard_Character & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	Other(TColStd_Array2OfCharacter)
-
-Returns:
-	TColStd_Array2OfCharacter
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array2OfCharacter &
+	:rtype: TColStd_Array2OfCharacter
+") Assign;
 		const TColStd_Array2OfCharacter & Assign (const TColStd_Array2OfCharacter & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_Array2OfCharacter)
-
-Returns:
-	TColStd_Array2OfCharacter
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array2OfCharacter &
+	:rtype: TColStd_Array2OfCharacter
+") operator=;
 		const TColStd_Array2OfCharacter & operator = (const TColStd_Array2OfCharacter & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ColLength;
+		%feature("autodoc", "	:rtype: int
+") ColLength;
 		Standard_Integer ColLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") RowLength;
+		%feature("autodoc", "	:rtype: int
+") RowLength;
 		Standard_Integer RowLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerCol;
+		%feature("autodoc", "	:rtype: int
+") LowerCol;
 		Standard_Integer LowerCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerRow;
+		%feature("autodoc", "	:rtype: int
+") LowerRow;
 		Standard_Integer LowerRow ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperCol;
+		%feature("autodoc", "	:rtype: int
+") UpperCol;
 		Standard_Integer UpperCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperRow;
+		%feature("autodoc", "	:rtype: int
+") UpperRow;
 		Standard_Integer UpperRow ();
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-	Value(Standard_Character)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:param Value:
+	:type Value: Standard_Character &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Standard_Character & Value);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Standard_Character
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: Standard_Character
+") Value;
 		const Standard_Character & Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Standard_Character
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: Standard_Character
+") ChangeValue;
 		Standard_Character & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 };
 
@@ -1439,129 +997,88 @@ def __del__(self):
 %nodefaultctor TColStd_Array2OfInteger;
 class TColStd_Array2OfInteger {
 	public:
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array2OfInteger;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") TColStd_Array2OfInteger;
 		 TColStd_Array2OfInteger (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	Item(Standard_Integer)
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array2OfInteger;
+		%feature("autodoc", "	:param Item:
+	:type Item: Standard_Integer &
+	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") TColStd_Array2OfInteger;
 		 TColStd_Array2OfInteger (Standard_Integer &OutValue,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	V(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Standard_Integer &
+	:rtype: None
+") Init;
 		void Init (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	Other(TColStd_Array2OfInteger)
-
-Returns:
-	TColStd_Array2OfInteger
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array2OfInteger &
+	:rtype: TColStd_Array2OfInteger
+") Assign;
 		const TColStd_Array2OfInteger & Assign (const TColStd_Array2OfInteger & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_Array2OfInteger)
-
-Returns:
-	TColStd_Array2OfInteger
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array2OfInteger &
+	:rtype: TColStd_Array2OfInteger
+") operator=;
 		const TColStd_Array2OfInteger & operator = (const TColStd_Array2OfInteger & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ColLength;
+		%feature("autodoc", "	:rtype: int
+") ColLength;
 		Standard_Integer ColLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") RowLength;
+		%feature("autodoc", "	:rtype: int
+") RowLength;
 		Standard_Integer RowLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerCol;
+		%feature("autodoc", "	:rtype: int
+") LowerCol;
 		Standard_Integer LowerCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerRow;
+		%feature("autodoc", "	:rtype: int
+") LowerRow;
 		Standard_Integer LowerRow ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperCol;
+		%feature("autodoc", "	:rtype: int
+") UpperCol;
 		Standard_Integer UpperCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperRow;
+		%feature("autodoc", "	:rtype: int
+") UpperRow;
 		Standard_Integer UpperRow ();
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-	Value(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:param Value:
+	:type Value: Standard_Integer &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Row,const Standard_Integer Col,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: int
+") Value;
 		const Standard_Integer & Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: int
+") ChangeValue;
 		Standard_Integer & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 };
 
@@ -1583,129 +1100,88 @@ def __del__(self):
 %nodefaultctor TColStd_Array2OfReal;
 class TColStd_Array2OfReal {
 	public:
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array2OfReal;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") TColStd_Array2OfReal;
 		 TColStd_Array2OfReal (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	Item(Standard_Real)
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array2OfReal;
+		%feature("autodoc", "	:param Item:
+	:type Item: float &
+	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") TColStd_Array2OfReal;
 		 TColStd_Array2OfReal (const Standard_Real & Item,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	V(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: float &
+	:rtype: None
+") Init;
 		void Init (const Standard_Real & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	Other(TColStd_Array2OfReal)
-
-Returns:
-	TColStd_Array2OfReal
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array2OfReal &
+	:rtype: TColStd_Array2OfReal
+") Assign;
 		const TColStd_Array2OfReal & Assign (const TColStd_Array2OfReal & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_Array2OfReal)
-
-Returns:
-	TColStd_Array2OfReal
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array2OfReal &
+	:rtype: TColStd_Array2OfReal
+") operator=;
 		const TColStd_Array2OfReal & operator = (const TColStd_Array2OfReal & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ColLength;
+		%feature("autodoc", "	:rtype: int
+") ColLength;
 		Standard_Integer ColLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") RowLength;
+		%feature("autodoc", "	:rtype: int
+") RowLength;
 		Standard_Integer RowLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerCol;
+		%feature("autodoc", "	:rtype: int
+") LowerCol;
 		Standard_Integer LowerCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerRow;
+		%feature("autodoc", "	:rtype: int
+") LowerRow;
 		Standard_Integer LowerRow ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperCol;
+		%feature("autodoc", "	:rtype: int
+") UpperCol;
 		Standard_Integer UpperCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperRow;
+		%feature("autodoc", "	:rtype: int
+") UpperRow;
 		Standard_Integer UpperRow ();
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-	Value(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:param Value:
+	:type Value: float &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Standard_Real & Value);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: float
+") Value;
 		const Standard_Real & Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: float
+") ChangeValue;
 		Standard_Real & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 };
 
@@ -1727,129 +1203,88 @@ def __del__(self):
 %nodefaultctor TColStd_Array2OfTransient;
 class TColStd_Array2OfTransient {
 	public:
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array2OfTransient;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") TColStd_Array2OfTransient;
 		 TColStd_Array2OfTransient (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	Item(Handle_Standard_Transient)
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_Array2OfTransient;
+		%feature("autodoc", "	:param Item:
+	:type Item: Handle_Standard_Transient &
+	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") TColStd_Array2OfTransient;
 		 TColStd_Array2OfTransient (const Handle_Standard_Transient & Item,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	V(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_Standard_Transient &
+	:rtype: None
+") Init;
 		void Init (const Handle_Standard_Transient & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	Other(TColStd_Array2OfTransient)
-
-Returns:
-	TColStd_Array2OfTransient
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array2OfTransient &
+	:rtype: TColStd_Array2OfTransient
+") Assign;
 		const TColStd_Array2OfTransient & Assign (const TColStd_Array2OfTransient & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_Array2OfTransient)
-
-Returns:
-	TColStd_Array2OfTransient
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_Array2OfTransient &
+	:rtype: TColStd_Array2OfTransient
+") operator=;
 		const TColStd_Array2OfTransient & operator = (const TColStd_Array2OfTransient & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ColLength;
+		%feature("autodoc", "	:rtype: int
+") ColLength;
 		Standard_Integer ColLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") RowLength;
+		%feature("autodoc", "	:rtype: int
+") RowLength;
 		Standard_Integer RowLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerCol;
+		%feature("autodoc", "	:rtype: int
+") LowerCol;
 		Standard_Integer LowerCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerRow;
+		%feature("autodoc", "	:rtype: int
+") LowerRow;
 		Standard_Integer LowerRow ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperCol;
+		%feature("autodoc", "	:rtype: int
+") UpperCol;
 		Standard_Integer UpperCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperRow;
+		%feature("autodoc", "	:rtype: int
+") UpperRow;
 		Standard_Integer UpperRow ();
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-	Value(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:param Value:
+	:type Value: Handle_Standard_Transient &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Handle_Standard_Transient & Value);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: Handle_Standard_Transient
+") Value;
 		const Handle_Standard_Transient & Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: Handle_Standard_Transient
+") ChangeValue;
 		Handle_Standard_Transient & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 };
 
@@ -1871,42 +1306,24 @@ def __del__(self):
 %nodefaultctor TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger;
 class TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger;
+		%feature("autodoc", "	:rtype: None
+") TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger;
 		 TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger ();
-		%feature("autodoc", "Args:
-	aMap(TColStd_DataMapOfAsciiStringInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TColStd_DataMapOfAsciiStringInteger &
+	:rtype: None
+") TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger;
 		 TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger (const TColStd_DataMapOfAsciiStringInteger & aMap);
-		%feature("autodoc", "Args:
-	aMap(TColStd_DataMapOfAsciiStringInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TColStd_DataMapOfAsciiStringInteger &
+	:rtype: None
+") Initialize;
 		void Initialize (const TColStd_DataMapOfAsciiStringInteger & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") Key;
 		const TCollection_AsciiString & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: int
+") Value;
 		const Standard_Integer & Value ();
 };
 
@@ -1928,42 +1345,24 @@ def __del__(self):
 %nodefaultctor TColStd_DataMapIteratorOfDataMapOfIntegerInteger;
 class TColStd_DataMapIteratorOfDataMapOfIntegerInteger : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapIteratorOfDataMapOfIntegerInteger;
+		%feature("autodoc", "	:rtype: None
+") TColStd_DataMapIteratorOfDataMapOfIntegerInteger;
 		 TColStd_DataMapIteratorOfDataMapOfIntegerInteger ();
-		%feature("autodoc", "Args:
-	aMap(TColStd_DataMapOfIntegerInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapIteratorOfDataMapOfIntegerInteger;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TColStd_DataMapOfIntegerInteger &
+	:rtype: None
+") TColStd_DataMapIteratorOfDataMapOfIntegerInteger;
 		 TColStd_DataMapIteratorOfDataMapOfIntegerInteger (const TColStd_DataMapOfIntegerInteger & aMap);
-		%feature("autodoc", "Args:
-	aMap(TColStd_DataMapOfIntegerInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TColStd_DataMapOfIntegerInteger &
+	:rtype: None
+") Initialize;
 		void Initialize (const TColStd_DataMapOfIntegerInteger & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: int
+") Key;
 		const Standard_Integer & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: int
+") Value;
 		const Standard_Integer & Value ();
 };
 
@@ -1985,42 +1384,24 @@ def __del__(self):
 %nodefaultctor TColStd_DataMapIteratorOfDataMapOfIntegerListOfInteger;
 class TColStd_DataMapIteratorOfDataMapOfIntegerListOfInteger : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapIteratorOfDataMapOfIntegerListOfInteger;
+		%feature("autodoc", "	:rtype: None
+") TColStd_DataMapIteratorOfDataMapOfIntegerListOfInteger;
 		 TColStd_DataMapIteratorOfDataMapOfIntegerListOfInteger ();
-		%feature("autodoc", "Args:
-	aMap(TColStd_DataMapOfIntegerListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapIteratorOfDataMapOfIntegerListOfInteger;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TColStd_DataMapOfIntegerListOfInteger &
+	:rtype: None
+") TColStd_DataMapIteratorOfDataMapOfIntegerListOfInteger;
 		 TColStd_DataMapIteratorOfDataMapOfIntegerListOfInteger (const TColStd_DataMapOfIntegerListOfInteger & aMap);
-		%feature("autodoc", "Args:
-	aMap(TColStd_DataMapOfIntegerListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TColStd_DataMapOfIntegerListOfInteger &
+	:rtype: None
+") Initialize;
 		void Initialize (const TColStd_DataMapOfIntegerListOfInteger & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: int
+") Key;
 		const Standard_Integer & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_ListOfInteger
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TColStd_ListOfInteger
+") Value;
 		const TColStd_ListOfInteger & Value ();
 };
 
@@ -2042,42 +1423,24 @@ def __del__(self):
 %nodefaultctor TColStd_DataMapIteratorOfDataMapOfIntegerReal;
 class TColStd_DataMapIteratorOfDataMapOfIntegerReal : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapIteratorOfDataMapOfIntegerReal;
+		%feature("autodoc", "	:rtype: None
+") TColStd_DataMapIteratorOfDataMapOfIntegerReal;
 		 TColStd_DataMapIteratorOfDataMapOfIntegerReal ();
-		%feature("autodoc", "Args:
-	aMap(TColStd_DataMapOfIntegerReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapIteratorOfDataMapOfIntegerReal;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TColStd_DataMapOfIntegerReal &
+	:rtype: None
+") TColStd_DataMapIteratorOfDataMapOfIntegerReal;
 		 TColStd_DataMapIteratorOfDataMapOfIntegerReal (const TColStd_DataMapOfIntegerReal & aMap);
-		%feature("autodoc", "Args:
-	aMap(TColStd_DataMapOfIntegerReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TColStd_DataMapOfIntegerReal &
+	:rtype: None
+") Initialize;
 		void Initialize (const TColStd_DataMapOfIntegerReal & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: int
+") Key;
 		const Standard_Integer & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: float
+") Value;
 		const Standard_Real & Value ();
 };
 
@@ -2099,42 +1462,24 @@ def __del__(self):
 %nodefaultctor TColStd_DataMapIteratorOfDataMapOfIntegerTransient;
 class TColStd_DataMapIteratorOfDataMapOfIntegerTransient : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapIteratorOfDataMapOfIntegerTransient;
+		%feature("autodoc", "	:rtype: None
+") TColStd_DataMapIteratorOfDataMapOfIntegerTransient;
 		 TColStd_DataMapIteratorOfDataMapOfIntegerTransient ();
-		%feature("autodoc", "Args:
-	aMap(TColStd_DataMapOfIntegerTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapIteratorOfDataMapOfIntegerTransient;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TColStd_DataMapOfIntegerTransient &
+	:rtype: None
+") TColStd_DataMapIteratorOfDataMapOfIntegerTransient;
 		 TColStd_DataMapIteratorOfDataMapOfIntegerTransient (const TColStd_DataMapOfIntegerTransient & aMap);
-		%feature("autodoc", "Args:
-	aMap(TColStd_DataMapOfIntegerTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TColStd_DataMapOfIntegerTransient &
+	:rtype: None
+") Initialize;
 		void Initialize (const TColStd_DataMapOfIntegerTransient & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: int
+") Key;
 		const Standard_Integer & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Value;
 		const Handle_Standard_Transient & Value ();
 };
 
@@ -2156,42 +1501,24 @@ def __del__(self):
 %nodefaultctor TColStd_DataMapIteratorOfDataMapOfStringInteger;
 class TColStd_DataMapIteratorOfDataMapOfStringInteger : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapIteratorOfDataMapOfStringInteger;
+		%feature("autodoc", "	:rtype: None
+") TColStd_DataMapIteratorOfDataMapOfStringInteger;
 		 TColStd_DataMapIteratorOfDataMapOfStringInteger ();
-		%feature("autodoc", "Args:
-	aMap(TColStd_DataMapOfStringInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapIteratorOfDataMapOfStringInteger;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TColStd_DataMapOfStringInteger &
+	:rtype: None
+") TColStd_DataMapIteratorOfDataMapOfStringInteger;
 		 TColStd_DataMapIteratorOfDataMapOfStringInteger (const TColStd_DataMapOfStringInteger & aMap);
-		%feature("autodoc", "Args:
-	aMap(TColStd_DataMapOfStringInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TColStd_DataMapOfStringInteger &
+	:rtype: None
+") Initialize;
 		void Initialize (const TColStd_DataMapOfStringInteger & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_ExtendedString
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TCollection_ExtendedString
+") Key;
 		const TCollection_ExtendedString & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: int
+") Value;
 		const Standard_Integer & Value ();
 };
 
@@ -2213,42 +1540,24 @@ def __del__(self):
 %nodefaultctor TColStd_DataMapIteratorOfDataMapOfTransientTransient;
 class TColStd_DataMapIteratorOfDataMapOfTransientTransient : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapIteratorOfDataMapOfTransientTransient;
+		%feature("autodoc", "	:rtype: None
+") TColStd_DataMapIteratorOfDataMapOfTransientTransient;
 		 TColStd_DataMapIteratorOfDataMapOfTransientTransient ();
-		%feature("autodoc", "Args:
-	aMap(TColStd_DataMapOfTransientTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapIteratorOfDataMapOfTransientTransient;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TColStd_DataMapOfTransientTransient &
+	:rtype: None
+") TColStd_DataMapIteratorOfDataMapOfTransientTransient;
 		 TColStd_DataMapIteratorOfDataMapOfTransientTransient (const TColStd_DataMapOfTransientTransient & aMap);
-		%feature("autodoc", "Args:
-	aMap(TColStd_DataMapOfTransientTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TColStd_DataMapOfTransientTransient &
+	:rtype: None
+") Initialize;
 		void Initialize (const TColStd_DataMapOfTransientTransient & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Key;
 		const Handle_Standard_Transient & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Value;
 		const Handle_Standard_Transient & Value ();
 };
 
@@ -2270,22 +1579,17 @@ def __del__(self):
 %nodefaultctor TColStd_DataMapNodeOfDataMapOfAsciiStringInteger;
 class TColStd_DataMapNodeOfDataMapOfAsciiStringInteger : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-	I(Standard_Integer)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapNodeOfDataMapOfAsciiStringInteger;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:param I:
+	:type I: Standard_Integer &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_DataMapNodeOfDataMapOfAsciiStringInteger;
 		 TColStd_DataMapNodeOfDataMapOfAsciiStringInteger (const TCollection_AsciiString & K,Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") Key;
 		TCollection_AsciiString & Key ();
 
             %feature("autodoc","1");
@@ -2359,15 +1663,14 @@ def __del__(self):
 %nodefaultctor TColStd_DataMapNodeOfDataMapOfIntegerInteger;
 class TColStd_DataMapNodeOfDataMapOfIntegerInteger : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(Standard_Integer)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapNodeOfDataMapOfIntegerInteger;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: Standard_Integer &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_DataMapNodeOfDataMapOfIntegerInteger;
 		 TColStd_DataMapNodeOfDataMapOfIntegerInteger (Standard_Integer &OutValue,Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
@@ -2454,15 +1757,14 @@ def __del__(self):
 %nodefaultctor TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger;
 class TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(TColStd_ListOfInteger)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: TColStd_ListOfInteger &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger;
 		 TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger (Standard_Integer &OutValue,const TColStd_ListOfInteger & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
@@ -2477,12 +1779,8 @@ No detailed docstring for this function.") TColStd_DataMapNodeOfDataMapOfInteger
                 $self->Key()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_ListOfInteger
-
-No detailed docstring for this function.") Value;
+            		%feature("autodoc", "	:rtype: TColStd_ListOfInteger
+") Value;
 		TColStd_ListOfInteger & Value ();
 };
 
@@ -2543,15 +1841,14 @@ def __del__(self):
 %nodefaultctor TColStd_DataMapNodeOfDataMapOfIntegerReal;
 class TColStd_DataMapNodeOfDataMapOfIntegerReal : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(Standard_Real)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapNodeOfDataMapOfIntegerReal;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: float &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_DataMapNodeOfDataMapOfIntegerReal;
 		 TColStd_DataMapNodeOfDataMapOfIntegerReal (Standard_Integer &OutValue,const Standard_Real & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
@@ -2638,15 +1935,14 @@ def __del__(self):
 %nodefaultctor TColStd_DataMapNodeOfDataMapOfIntegerTransient;
 class TColStd_DataMapNodeOfDataMapOfIntegerTransient : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(Handle_Standard_Transient)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapNodeOfDataMapOfIntegerTransient;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: Handle_Standard_Transient &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_DataMapNodeOfDataMapOfIntegerTransient;
 		 TColStd_DataMapNodeOfDataMapOfIntegerTransient (Standard_Integer &OutValue,const Handle_Standard_Transient & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
@@ -2661,12 +1957,8 @@ No detailed docstring for this function.") TColStd_DataMapNodeOfDataMapOfInteger
                 $self->Key()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Value;
+            		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Value;
 		Handle_Standard_Transient & Value ();
 };
 
@@ -2727,22 +2019,17 @@ def __del__(self):
 %nodefaultctor TColStd_DataMapNodeOfDataMapOfStringInteger;
 class TColStd_DataMapNodeOfDataMapOfStringInteger : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(TCollection_ExtendedString)
-	I(Standard_Integer)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapNodeOfDataMapOfStringInteger;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_ExtendedString &
+	:param I:
+	:type I: Standard_Integer &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_DataMapNodeOfDataMapOfStringInteger;
 		 TColStd_DataMapNodeOfDataMapOfStringInteger (const TCollection_ExtendedString & K,Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_ExtendedString
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TCollection_ExtendedString
+") Key;
 		TCollection_ExtendedString & Key ();
 
             %feature("autodoc","1");
@@ -2816,29 +2103,20 @@ def __del__(self):
 %nodefaultctor TColStd_DataMapNodeOfDataMapOfTransientTransient;
 class TColStd_DataMapNodeOfDataMapOfTransientTransient : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-	I(Handle_Standard_Transient)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapNodeOfDataMapOfTransientTransient;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:param I:
+	:type I: Handle_Standard_Transient &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_DataMapNodeOfDataMapOfTransientTransient;
 		 TColStd_DataMapNodeOfDataMapOfTransientTransient (const Handle_Standard_Transient & K,const Handle_Standard_Transient & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Key;
 		Handle_Standard_Transient & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Value;
 		Handle_Standard_Transient & Value ();
 };
 
@@ -2899,101 +2177,65 @@ def __del__(self):
 %nodefaultctor TColStd_DataMapOfAsciiStringInteger;
 class TColStd_DataMapOfAsciiStringInteger : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapOfAsciiStringInteger;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TColStd_DataMapOfAsciiStringInteger;
 		 TColStd_DataMapOfAsciiStringInteger (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TColStd_DataMapOfAsciiStringInteger)
-
-Returns:
-	TColStd_DataMapOfAsciiStringInteger
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_DataMapOfAsciiStringInteger &
+	:rtype: TColStd_DataMapOfAsciiStringInteger
+") Assign;
 		TColStd_DataMapOfAsciiStringInteger & Assign (const TColStd_DataMapOfAsciiStringInteger & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_DataMapOfAsciiStringInteger)
-
-Returns:
-	TColStd_DataMapOfAsciiStringInteger
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_DataMapOfAsciiStringInteger &
+	:rtype: TColStd_DataMapOfAsciiStringInteger
+") operator=;
 		TColStd_DataMapOfAsciiStringInteger & operator = (const TColStd_DataMapOfAsciiStringInteger & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-	I(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:param I:
+	:type I: Standard_Integer &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const TCollection_AsciiString & K,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const TCollection_AsciiString & K);
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const TCollection_AsciiString & K);
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:rtype: int
+") Find;
 		const Standard_Integer & Find (const TCollection_AsciiString & K);
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:rtype: int
+") ChangeFind;
 		Standard_Integer & ChangeFind (const TCollection_AsciiString & K);
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const TCollection_AsciiString & K);
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const TCollection_AsciiString & K);
 };
 
@@ -3015,101 +2257,65 @@ def __del__(self):
 %nodefaultctor TColStd_DataMapOfIntegerInteger;
 class TColStd_DataMapOfIntegerInteger : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapOfIntegerInteger;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TColStd_DataMapOfIntegerInteger;
 		 TColStd_DataMapOfIntegerInteger (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TColStd_DataMapOfIntegerInteger)
-
-Returns:
-	TColStd_DataMapOfIntegerInteger
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_DataMapOfIntegerInteger &
+	:rtype: TColStd_DataMapOfIntegerInteger
+") Assign;
 		TColStd_DataMapOfIntegerInteger & Assign (const TColStd_DataMapOfIntegerInteger & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_DataMapOfIntegerInteger)
-
-Returns:
-	TColStd_DataMapOfIntegerInteger
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_DataMapOfIntegerInteger &
+	:rtype: TColStd_DataMapOfIntegerInteger
+") operator=;
 		TColStd_DataMapOfIntegerInteger & operator = (const TColStd_DataMapOfIntegerInteger & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: Standard_Integer &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: int
+") Find;
 		const Standard_Integer & Find (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: int
+") ChangeFind;
 		Standard_Integer & ChangeFind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
 };
 
@@ -3131,101 +2337,65 @@ def __del__(self):
 %nodefaultctor TColStd_DataMapOfIntegerListOfInteger;
 class TColStd_DataMapOfIntegerListOfInteger : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapOfIntegerListOfInteger;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TColStd_DataMapOfIntegerListOfInteger;
 		 TColStd_DataMapOfIntegerListOfInteger (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TColStd_DataMapOfIntegerListOfInteger)
-
-Returns:
-	TColStd_DataMapOfIntegerListOfInteger
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_DataMapOfIntegerListOfInteger &
+	:rtype: TColStd_DataMapOfIntegerListOfInteger
+") Assign;
 		TColStd_DataMapOfIntegerListOfInteger & Assign (const TColStd_DataMapOfIntegerListOfInteger & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_DataMapOfIntegerListOfInteger)
-
-Returns:
-	TColStd_DataMapOfIntegerListOfInteger
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_DataMapOfIntegerListOfInteger &
+	:rtype: TColStd_DataMapOfIntegerListOfInteger
+") operator=;
 		TColStd_DataMapOfIntegerListOfInteger & operator = (const TColStd_DataMapOfIntegerListOfInteger & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(TColStd_ListOfInteger)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: TColStd_ListOfInteger &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (Standard_Integer &OutValue,const TColStd_ListOfInteger & I);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	TColStd_ListOfInteger
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: TColStd_ListOfInteger
+") Find;
 		const TColStd_ListOfInteger & Find (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	TColStd_ListOfInteger
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: TColStd_ListOfInteger
+") ChangeFind;
 		TColStd_ListOfInteger & ChangeFind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
 };
 
@@ -3247,101 +2417,65 @@ def __del__(self):
 %nodefaultctor TColStd_DataMapOfIntegerReal;
 class TColStd_DataMapOfIntegerReal : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapOfIntegerReal;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TColStd_DataMapOfIntegerReal;
 		 TColStd_DataMapOfIntegerReal (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TColStd_DataMapOfIntegerReal)
-
-Returns:
-	TColStd_DataMapOfIntegerReal
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_DataMapOfIntegerReal &
+	:rtype: TColStd_DataMapOfIntegerReal
+") Assign;
 		TColStd_DataMapOfIntegerReal & Assign (const TColStd_DataMapOfIntegerReal & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_DataMapOfIntegerReal)
-
-Returns:
-	TColStd_DataMapOfIntegerReal
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_DataMapOfIntegerReal &
+	:rtype: TColStd_DataMapOfIntegerReal
+") operator=;
 		TColStd_DataMapOfIntegerReal & operator = (const TColStd_DataMapOfIntegerReal & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: float &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (Standard_Integer &OutValue,const Standard_Real & I);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: float
+") Find;
 		const Standard_Real & Find (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: float
+") ChangeFind;
 		Standard_Real & ChangeFind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
 };
 
@@ -3363,101 +2497,65 @@ def __del__(self):
 %nodefaultctor TColStd_DataMapOfIntegerTransient;
 class TColStd_DataMapOfIntegerTransient : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapOfIntegerTransient;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TColStd_DataMapOfIntegerTransient;
 		 TColStd_DataMapOfIntegerTransient (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TColStd_DataMapOfIntegerTransient)
-
-Returns:
-	TColStd_DataMapOfIntegerTransient
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_DataMapOfIntegerTransient &
+	:rtype: TColStd_DataMapOfIntegerTransient
+") Assign;
 		TColStd_DataMapOfIntegerTransient & Assign (const TColStd_DataMapOfIntegerTransient & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_DataMapOfIntegerTransient)
-
-Returns:
-	TColStd_DataMapOfIntegerTransient
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_DataMapOfIntegerTransient &
+	:rtype: TColStd_DataMapOfIntegerTransient
+") operator=;
 		TColStd_DataMapOfIntegerTransient & operator = (const TColStd_DataMapOfIntegerTransient & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(Handle_Standard_Transient)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: Handle_Standard_Transient &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (Standard_Integer &OutValue,const Handle_Standard_Transient & I);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Handle_Standard_Transient
+") Find;
 		const Handle_Standard_Transient & Find (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Handle_Standard_Transient
+") ChangeFind;
 		Handle_Standard_Transient & ChangeFind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
 };
 
@@ -3479,101 +2577,65 @@ def __del__(self):
 %nodefaultctor TColStd_DataMapOfStringInteger;
 class TColStd_DataMapOfStringInteger : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapOfStringInteger;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TColStd_DataMapOfStringInteger;
 		 TColStd_DataMapOfStringInteger (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TColStd_DataMapOfStringInteger)
-
-Returns:
-	TColStd_DataMapOfStringInteger
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_DataMapOfStringInteger &
+	:rtype: TColStd_DataMapOfStringInteger
+") Assign;
 		TColStd_DataMapOfStringInteger & Assign (const TColStd_DataMapOfStringInteger & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_DataMapOfStringInteger)
-
-Returns:
-	TColStd_DataMapOfStringInteger
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_DataMapOfStringInteger &
+	:rtype: TColStd_DataMapOfStringInteger
+") operator=;
 		TColStd_DataMapOfStringInteger & operator = (const TColStd_DataMapOfStringInteger & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TCollection_ExtendedString)
-	I(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_ExtendedString &
+	:param I:
+	:type I: Standard_Integer &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const TCollection_ExtendedString & K,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(TCollection_ExtendedString)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_ExtendedString &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const TCollection_ExtendedString & K);
-		%feature("autodoc", "Args:
-	K(TCollection_ExtendedString)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_ExtendedString &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const TCollection_ExtendedString & K);
-		%feature("autodoc", "Args:
-	K(TCollection_ExtendedString)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_ExtendedString &
+	:rtype: int
+") Find;
 		const Standard_Integer & Find (const TCollection_ExtendedString & K);
-		%feature("autodoc", "Args:
-	K(TCollection_ExtendedString)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_ExtendedString &
+	:rtype: int
+") ChangeFind;
 		Standard_Integer & ChangeFind (const TCollection_ExtendedString & K);
-		%feature("autodoc", "Args:
-	K(TCollection_ExtendedString)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_ExtendedString &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const TCollection_ExtendedString & K);
-		%feature("autodoc", "Args:
-	K(TCollection_ExtendedString)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_ExtendedString &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const TCollection_ExtendedString & K);
 };
 
@@ -3595,101 +2657,65 @@ def __del__(self):
 %nodefaultctor TColStd_DataMapOfTransientTransient;
 class TColStd_DataMapOfTransientTransient : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_DataMapOfTransientTransient;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TColStd_DataMapOfTransientTransient;
 		 TColStd_DataMapOfTransientTransient (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TColStd_DataMapOfTransientTransient)
-
-Returns:
-	TColStd_DataMapOfTransientTransient
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_DataMapOfTransientTransient &
+	:rtype: TColStd_DataMapOfTransientTransient
+") Assign;
 		TColStd_DataMapOfTransientTransient & Assign (const TColStd_DataMapOfTransientTransient & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_DataMapOfTransientTransient)
-
-Returns:
-	TColStd_DataMapOfTransientTransient
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_DataMapOfTransientTransient &
+	:rtype: TColStd_DataMapOfTransientTransient
+") operator=;
 		TColStd_DataMapOfTransientTransient & operator = (const TColStd_DataMapOfTransientTransient & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-	I(Handle_Standard_Transient)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:param I:
+	:type I: Handle_Standard_Transient &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const Handle_Standard_Transient & K,const Handle_Standard_Transient & I);
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const Handle_Standard_Transient & K);
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const Handle_Standard_Transient & K);
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:rtype: Handle_Standard_Transient
+") Find;
 		const Handle_Standard_Transient & Find (const Handle_Standard_Transient & K);
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:rtype: Handle_Standard_Transient
+") ChangeFind;
 		Handle_Standard_Transient & ChangeFind (const Handle_Standard_Transient & K);
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const Handle_Standard_Transient & K);
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const Handle_Standard_Transient & K);
 };
 
@@ -3711,92 +2737,58 @@ def __del__(self):
 %nodefaultctor TColStd_HArray1OfAsciiString;
 class TColStd_HArray1OfAsciiString : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray1OfAsciiString;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_HArray1OfAsciiString;
 		 TColStd_HArray1OfAsciiString (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray1OfAsciiString;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: TCollection_AsciiString &
+	:rtype: None
+") TColStd_HArray1OfAsciiString;
 		 TColStd_HArray1OfAsciiString (const Standard_Integer Low,const Standard_Integer Up,const TCollection_AsciiString & V);
-		%feature("autodoc", "Args:
-	V(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: TCollection_AsciiString &
+	:rtype: None
+") Init;
 		void Init (const TCollection_AsciiString & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: TCollection_AsciiString &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const TCollection_AsciiString & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TCollection_AsciiString
+") Value;
 		const TCollection_AsciiString & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TCollection_AsciiString
+") ChangeValue;
 		TCollection_AsciiString & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfAsciiString
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfAsciiString
+") Array1;
 		const TColStd_Array1OfAsciiString & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfAsciiString
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfAsciiString
+") ChangeArray1;
 		TColStd_Array1OfAsciiString & ChangeArray1 ();
 };
 
@@ -3857,92 +2849,58 @@ def __del__(self):
 %nodefaultctor TColStd_HArray1OfBoolean;
 class TColStd_HArray1OfBoolean : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray1OfBoolean;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_HArray1OfBoolean;
 		 TColStd_HArray1OfBoolean (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray1OfBoolean;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: bool
+	:rtype: None
+") TColStd_HArray1OfBoolean;
 		 TColStd_HArray1OfBoolean (const Standard_Integer Low,const Standard_Integer Up,const Standard_Boolean & V);
-		%feature("autodoc", "Args:
-	V(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: bool
+	:rtype: None
+") Init;
 		void Init (const Standard_Boolean & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: bool
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Standard_Boolean & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: bool
+") Value;
 		const Standard_Boolean & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: bool
+") ChangeValue;
 		Standard_Boolean & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfBoolean
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfBoolean
+") Array1;
 		const TColStd_Array1OfBoolean & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfBoolean
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfBoolean
+") ChangeArray1;
 		TColStd_Array1OfBoolean & ChangeArray1 ();
 };
 
@@ -4003,92 +2961,58 @@ def __del__(self):
 %nodefaultctor TColStd_HArray1OfByte;
 class TColStd_HArray1OfByte : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray1OfByte;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_HArray1OfByte;
 		 TColStd_HArray1OfByte (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(Standard_Byte)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray1OfByte;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: Standard_Byte &
+	:rtype: None
+") TColStd_HArray1OfByte;
 		 TColStd_HArray1OfByte (const Standard_Integer Low,const Standard_Integer Up,const Standard_Byte & V);
-		%feature("autodoc", "Args:
-	V(Standard_Byte)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Standard_Byte &
+	:rtype: None
+") Init;
 		void Init (const Standard_Byte & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Standard_Byte)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Standard_Byte &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Standard_Byte & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Byte
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Standard_Byte
+") Value;
 		const Standard_Byte & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Byte
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Standard_Byte
+") ChangeValue;
 		Standard_Byte & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfByte
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfByte
+") Array1;
 		const TColStd_Array1OfByte & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfByte
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfByte
+") ChangeArray1;
 		TColStd_Array1OfByte & ChangeArray1 ();
 };
 
@@ -4149,92 +3073,58 @@ def __del__(self):
 %nodefaultctor TColStd_HArray1OfCharacter;
 class TColStd_HArray1OfCharacter : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray1OfCharacter;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_HArray1OfCharacter;
 		 TColStd_HArray1OfCharacter (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(Standard_Character)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray1OfCharacter;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: Standard_Character &
+	:rtype: None
+") TColStd_HArray1OfCharacter;
 		 TColStd_HArray1OfCharacter (const Standard_Integer Low,const Standard_Integer Up,const Standard_Character & V);
-		%feature("autodoc", "Args:
-	V(Standard_Character)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Standard_Character &
+	:rtype: None
+") Init;
 		void Init (const Standard_Character & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Standard_Character)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Standard_Character &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Standard_Character & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Character
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Standard_Character
+") Value;
 		const Standard_Character & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Character
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Standard_Character
+") ChangeValue;
 		Standard_Character & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfCharacter
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfCharacter
+") Array1;
 		const TColStd_Array1OfCharacter & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfCharacter
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfCharacter
+") ChangeArray1;
 		TColStd_Array1OfCharacter & ChangeArray1 ();
 };
 
@@ -4295,92 +3185,58 @@ def __del__(self):
 %nodefaultctor TColStd_HArray1OfExtendedString;
 class TColStd_HArray1OfExtendedString : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray1OfExtendedString;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_HArray1OfExtendedString;
 		 TColStd_HArray1OfExtendedString (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(TCollection_ExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray1OfExtendedString;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: TCollection_ExtendedString &
+	:rtype: None
+") TColStd_HArray1OfExtendedString;
 		 TColStd_HArray1OfExtendedString (const Standard_Integer Low,const Standard_Integer Up,const TCollection_ExtendedString & V);
-		%feature("autodoc", "Args:
-	V(TCollection_ExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: TCollection_ExtendedString &
+	:rtype: None
+") Init;
 		void Init (const TCollection_ExtendedString & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(TCollection_ExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: TCollection_ExtendedString &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const TCollection_ExtendedString & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TCollection_ExtendedString
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TCollection_ExtendedString
+") Value;
 		const TCollection_ExtendedString & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TCollection_ExtendedString
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TCollection_ExtendedString
+") ChangeValue;
 		TCollection_ExtendedString & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfExtendedString
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfExtendedString
+") Array1;
 		const TColStd_Array1OfExtendedString & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfExtendedString
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfExtendedString
+") ChangeArray1;
 		TColStd_Array1OfExtendedString & ChangeArray1 ();
 };
 
@@ -4441,92 +3297,58 @@ def __del__(self):
 %nodefaultctor TColStd_HArray1OfInteger;
 class TColStd_HArray1OfInteger : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray1OfInteger;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_HArray1OfInteger;
 		 TColStd_HArray1OfInteger (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray1OfInteger;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: Standard_Integer &
+	:rtype: None
+") TColStd_HArray1OfInteger;
 		 TColStd_HArray1OfInteger (const Standard_Integer Low,const Standard_Integer Up,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	V(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Standard_Integer &
+	:rtype: None
+") Init;
 		void Init (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Standard_Integer &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: int
+") Value;
 		const Standard_Integer & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: int
+") ChangeValue;
 		Standard_Integer & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfInteger
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfInteger
+") Array1;
 		const TColStd_Array1OfInteger & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfInteger
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfInteger
+") ChangeArray1;
 		TColStd_Array1OfInteger & ChangeArray1 ();
 };
 
@@ -4587,92 +3409,58 @@ def __del__(self):
 %nodefaultctor TColStd_HArray1OfListOfInteger;
 class TColStd_HArray1OfListOfInteger : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray1OfListOfInteger;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_HArray1OfListOfInteger;
 		 TColStd_HArray1OfListOfInteger (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(TColStd_ListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray1OfListOfInteger;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: TColStd_ListOfInteger &
+	:rtype: None
+") TColStd_HArray1OfListOfInteger;
 		 TColStd_HArray1OfListOfInteger (const Standard_Integer Low,const Standard_Integer Up,const TColStd_ListOfInteger & V);
-		%feature("autodoc", "Args:
-	V(TColStd_ListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: TColStd_ListOfInteger &
+	:rtype: None
+") Init;
 		void Init (const TColStd_ListOfInteger & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(TColStd_ListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: TColStd_ListOfInteger &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const TColStd_ListOfInteger & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TColStd_ListOfInteger
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TColStd_ListOfInteger
+") Value;
 		const TColStd_ListOfInteger & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TColStd_ListOfInteger
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TColStd_ListOfInteger
+") ChangeValue;
 		TColStd_ListOfInteger & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfListOfInteger
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfListOfInteger
+") Array1;
 		const TColStd_Array1OfListOfInteger & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfListOfInteger
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfListOfInteger
+") ChangeArray1;
 		TColStd_Array1OfListOfInteger & ChangeArray1 ();
 };
 
@@ -4733,92 +3521,58 @@ def __del__(self):
 %nodefaultctor TColStd_HArray1OfReal;
 class TColStd_HArray1OfReal : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray1OfReal;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_HArray1OfReal;
 		 TColStd_HArray1OfReal (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray1OfReal;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: float &
+	:rtype: None
+") TColStd_HArray1OfReal;
 		 TColStd_HArray1OfReal (const Standard_Integer Low,const Standard_Integer Up,const Standard_Real & V);
-		%feature("autodoc", "Args:
-	V(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: float &
+	:rtype: None
+") Init;
 		void Init (const Standard_Real & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: float &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Standard_Real & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: float
+") Value;
 		const Standard_Real & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: float
+") ChangeValue;
 		Standard_Real & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfReal
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfReal
+") Array1;
 		const TColStd_Array1OfReal & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfReal
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfReal
+") ChangeArray1;
 		TColStd_Array1OfReal & ChangeArray1 ();
 };
 
@@ -4879,92 +3633,58 @@ def __del__(self):
 %nodefaultctor TColStd_HArray1OfTransient;
 class TColStd_HArray1OfTransient : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray1OfTransient;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColStd_HArray1OfTransient;
 		 TColStd_HArray1OfTransient (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray1OfTransient;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: Handle_Standard_Transient &
+	:rtype: None
+") TColStd_HArray1OfTransient;
 		 TColStd_HArray1OfTransient (const Standard_Integer Low,const Standard_Integer Up,const Handle_Standard_Transient & V);
-		%feature("autodoc", "Args:
-	V(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_Standard_Transient &
+	:rtype: None
+") Init;
 		void Init (const Handle_Standard_Transient & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Handle_Standard_Transient &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Standard_Transient & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Standard_Transient
+") Value;
 		const Handle_Standard_Transient & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Standard_Transient
+") ChangeValue;
 		Handle_Standard_Transient & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfTransient
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfTransient
+") Array1;
 		const TColStd_Array1OfTransient & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfTransient
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfTransient
+") ChangeArray1;
 		TColStd_Array1OfTransient & ChangeArray1 ();
 };
 
@@ -5025,120 +3745,81 @@ def __del__(self):
 %nodefaultctor TColStd_HArray2OfBoolean;
 class TColStd_HArray2OfBoolean : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray2OfBoolean;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") TColStd_HArray2OfBoolean;
 		 TColStd_HArray2OfBoolean (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-	V(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray2OfBoolean;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:param V:
+	:type V: bool
+	:rtype: None
+") TColStd_HArray2OfBoolean;
 		 TColStd_HArray2OfBoolean (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Standard_Boolean & V);
-		%feature("autodoc", "Args:
-	V(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: bool
+	:rtype: None
+") Init;
 		void Init (const Standard_Boolean & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ColLength;
+		%feature("autodoc", "	:rtype: int
+") ColLength;
 		Standard_Integer ColLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") RowLength;
+		%feature("autodoc", "	:rtype: int
+") RowLength;
 		Standard_Integer RowLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerCol;
+		%feature("autodoc", "	:rtype: int
+") LowerCol;
 		Standard_Integer LowerCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerRow;
+		%feature("autodoc", "	:rtype: int
+") LowerRow;
 		Standard_Integer LowerRow ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperCol;
+		%feature("autodoc", "	:rtype: int
+") UpperCol;
 		Standard_Integer UpperCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperRow;
+		%feature("autodoc", "	:rtype: int
+") UpperRow;
 		Standard_Integer UpperRow ();
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-	Value(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:param Value:
+	:type Value: bool
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Standard_Boolean & Value);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: bool
+") Value;
 		const Standard_Boolean & Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: bool
+") ChangeValue;
 		Standard_Boolean & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array2OfBoolean
-
-No detailed docstring for this function.") Array2;
+		%feature("autodoc", "	:rtype: TColStd_Array2OfBoolean
+") Array2;
 		const TColStd_Array2OfBoolean & Array2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array2OfBoolean
-
-No detailed docstring for this function.") ChangeArray2;
+		%feature("autodoc", "	:rtype: TColStd_Array2OfBoolean
+") ChangeArray2;
 		TColStd_Array2OfBoolean & ChangeArray2 ();
 };
 
@@ -5199,120 +3880,81 @@ def __del__(self):
 %nodefaultctor TColStd_HArray2OfCharacter;
 class TColStd_HArray2OfCharacter : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray2OfCharacter;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") TColStd_HArray2OfCharacter;
 		 TColStd_HArray2OfCharacter (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-	V(Standard_Character)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray2OfCharacter;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:param V:
+	:type V: Standard_Character &
+	:rtype: None
+") TColStd_HArray2OfCharacter;
 		 TColStd_HArray2OfCharacter (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Standard_Character & V);
-		%feature("autodoc", "Args:
-	V(Standard_Character)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Standard_Character &
+	:rtype: None
+") Init;
 		void Init (const Standard_Character & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ColLength;
+		%feature("autodoc", "	:rtype: int
+") ColLength;
 		Standard_Integer ColLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") RowLength;
+		%feature("autodoc", "	:rtype: int
+") RowLength;
 		Standard_Integer RowLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerCol;
+		%feature("autodoc", "	:rtype: int
+") LowerCol;
 		Standard_Integer LowerCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerRow;
+		%feature("autodoc", "	:rtype: int
+") LowerRow;
 		Standard_Integer LowerRow ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperCol;
+		%feature("autodoc", "	:rtype: int
+") UpperCol;
 		Standard_Integer UpperCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperRow;
+		%feature("autodoc", "	:rtype: int
+") UpperRow;
 		Standard_Integer UpperRow ();
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-	Value(Standard_Character)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:param Value:
+	:type Value: Standard_Character &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Standard_Character & Value);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Standard_Character
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: Standard_Character
+") Value;
 		const Standard_Character & Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Standard_Character
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: Standard_Character
+") ChangeValue;
 		Standard_Character & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array2OfCharacter
-
-No detailed docstring for this function.") Array2;
+		%feature("autodoc", "	:rtype: TColStd_Array2OfCharacter
+") Array2;
 		const TColStd_Array2OfCharacter & Array2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array2OfCharacter
-
-No detailed docstring for this function.") ChangeArray2;
+		%feature("autodoc", "	:rtype: TColStd_Array2OfCharacter
+") ChangeArray2;
 		TColStd_Array2OfCharacter & ChangeArray2 ();
 };
 
@@ -5373,120 +4015,81 @@ def __del__(self):
 %nodefaultctor TColStd_HArray2OfInteger;
 class TColStd_HArray2OfInteger : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray2OfInteger;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") TColStd_HArray2OfInteger;
 		 TColStd_HArray2OfInteger (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-	V(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray2OfInteger;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:param V:
+	:type V: Standard_Integer &
+	:rtype: None
+") TColStd_HArray2OfInteger;
 		 TColStd_HArray2OfInteger (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	V(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Standard_Integer &
+	:rtype: None
+") Init;
 		void Init (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ColLength;
+		%feature("autodoc", "	:rtype: int
+") ColLength;
 		Standard_Integer ColLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") RowLength;
+		%feature("autodoc", "	:rtype: int
+") RowLength;
 		Standard_Integer RowLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerCol;
+		%feature("autodoc", "	:rtype: int
+") LowerCol;
 		Standard_Integer LowerCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerRow;
+		%feature("autodoc", "	:rtype: int
+") LowerRow;
 		Standard_Integer LowerRow ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperCol;
+		%feature("autodoc", "	:rtype: int
+") UpperCol;
 		Standard_Integer UpperCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperRow;
+		%feature("autodoc", "	:rtype: int
+") UpperRow;
 		Standard_Integer UpperRow ();
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-	Value(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:param Value:
+	:type Value: Standard_Integer &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Row,const Standard_Integer Col,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: int
+") Value;
 		const Standard_Integer & Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: int
+") ChangeValue;
 		Standard_Integer & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array2OfInteger
-
-No detailed docstring for this function.") Array2;
+		%feature("autodoc", "	:rtype: TColStd_Array2OfInteger
+") Array2;
 		const TColStd_Array2OfInteger & Array2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array2OfInteger
-
-No detailed docstring for this function.") ChangeArray2;
+		%feature("autodoc", "	:rtype: TColStd_Array2OfInteger
+") ChangeArray2;
 		TColStd_Array2OfInteger & ChangeArray2 ();
 };
 
@@ -5547,120 +4150,81 @@ def __del__(self):
 %nodefaultctor TColStd_HArray2OfReal;
 class TColStd_HArray2OfReal : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray2OfReal;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") TColStd_HArray2OfReal;
 		 TColStd_HArray2OfReal (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-	V(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray2OfReal;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:param V:
+	:type V: float &
+	:rtype: None
+") TColStd_HArray2OfReal;
 		 TColStd_HArray2OfReal (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Standard_Real & V);
-		%feature("autodoc", "Args:
-	V(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: float &
+	:rtype: None
+") Init;
 		void Init (const Standard_Real & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ColLength;
+		%feature("autodoc", "	:rtype: int
+") ColLength;
 		Standard_Integer ColLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") RowLength;
+		%feature("autodoc", "	:rtype: int
+") RowLength;
 		Standard_Integer RowLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerCol;
+		%feature("autodoc", "	:rtype: int
+") LowerCol;
 		Standard_Integer LowerCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerRow;
+		%feature("autodoc", "	:rtype: int
+") LowerRow;
 		Standard_Integer LowerRow ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperCol;
+		%feature("autodoc", "	:rtype: int
+") UpperCol;
 		Standard_Integer UpperCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperRow;
+		%feature("autodoc", "	:rtype: int
+") UpperRow;
 		Standard_Integer UpperRow ();
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-	Value(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:param Value:
+	:type Value: float &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Standard_Real & Value);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: float
+") Value;
 		const Standard_Real & Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: float
+") ChangeValue;
 		Standard_Real & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array2OfReal
-
-No detailed docstring for this function.") Array2;
+		%feature("autodoc", "	:rtype: TColStd_Array2OfReal
+") Array2;
 		const TColStd_Array2OfReal & Array2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array2OfReal
-
-No detailed docstring for this function.") ChangeArray2;
+		%feature("autodoc", "	:rtype: TColStd_Array2OfReal
+") ChangeArray2;
 		TColStd_Array2OfReal & ChangeArray2 ();
 };
 
@@ -5721,120 +4285,81 @@ def __del__(self):
 %nodefaultctor TColStd_HArray2OfTransient;
 class TColStd_HArray2OfTransient : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray2OfTransient;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") TColStd_HArray2OfTransient;
 		 TColStd_HArray2OfTransient (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-	V(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HArray2OfTransient;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:param V:
+	:type V: Handle_Standard_Transient &
+	:rtype: None
+") TColStd_HArray2OfTransient;
 		 TColStd_HArray2OfTransient (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Handle_Standard_Transient & V);
-		%feature("autodoc", "Args:
-	V(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_Standard_Transient &
+	:rtype: None
+") Init;
 		void Init (const Handle_Standard_Transient & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ColLength;
+		%feature("autodoc", "	:rtype: int
+") ColLength;
 		Standard_Integer ColLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") RowLength;
+		%feature("autodoc", "	:rtype: int
+") RowLength;
 		Standard_Integer RowLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerCol;
+		%feature("autodoc", "	:rtype: int
+") LowerCol;
 		Standard_Integer LowerCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerRow;
+		%feature("autodoc", "	:rtype: int
+") LowerRow;
 		Standard_Integer LowerRow ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperCol;
+		%feature("autodoc", "	:rtype: int
+") UpperCol;
 		Standard_Integer UpperCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperRow;
+		%feature("autodoc", "	:rtype: int
+") UpperRow;
 		Standard_Integer UpperRow ();
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-	Value(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:param Value:
+	:type Value: Handle_Standard_Transient &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Handle_Standard_Transient & Value);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: Handle_Standard_Transient
+") Value;
 		const Handle_Standard_Transient & Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: Handle_Standard_Transient
+") ChangeValue;
 		Handle_Standard_Transient & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array2OfTransient
-
-No detailed docstring for this function.") Array2;
+		%feature("autodoc", "	:rtype: TColStd_Array2OfTransient
+") Array2;
 		const TColStd_Array2OfTransient & Array2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array2OfTransient
-
-No detailed docstring for this function.") ChangeArray2;
+		%feature("autodoc", "	:rtype: TColStd_Array2OfTransient
+") ChangeArray2;
 		TColStd_Array2OfTransient & ChangeArray2 ();
 };
 
@@ -5895,35 +4420,21 @@ def __del__(self):
 %nodefaultctor TColStd_HPackedMapOfInteger;
 class TColStd_HPackedMapOfInteger : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HPackedMapOfInteger;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TColStd_HPackedMapOfInteger;
 		 TColStd_HPackedMapOfInteger (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	theOther(TColStd_PackedMapOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HPackedMapOfInteger;
+		%feature("autodoc", "	:param theOther:
+	:type theOther: TColStd_PackedMapOfInteger &
+	:rtype: None
+") TColStd_HPackedMapOfInteger;
 		 TColStd_HPackedMapOfInteger (const TColStd_PackedMapOfInteger & theOther);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_PackedMapOfInteger
-
-No detailed docstring for this function.") Map;
+		%feature("autodoc", "	:rtype: TColStd_PackedMapOfInteger
+") Map;
 		const TColStd_PackedMapOfInteger & Map ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_PackedMapOfInteger
-
-No detailed docstring for this function.") ChangeMap;
+		%feature("autodoc", "	:rtype: TColStd_PackedMapOfInteger
+") ChangeMap;
 		TColStd_PackedMapOfInteger & ChangeMap ();
 };
 
@@ -5984,188 +4495,118 @@ def __del__(self):
 %nodefaultctor TColStd_HSequenceOfAsciiString;
 class TColStd_HSequenceOfAsciiString : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HSequenceOfAsciiString;
+		%feature("autodoc", "	:rtype: None
+") TColStd_HSequenceOfAsciiString;
 		 TColStd_HSequenceOfAsciiString ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	anItem(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: TCollection_AsciiString &
+	:rtype: None
+") Append;
 		void Append (const TCollection_AsciiString & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_TColStd_HSequenceOfAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfAsciiString &
+	:rtype: None
+") Append;
 		void Append (const Handle_TColStd_HSequenceOfAsciiString & aSequence);
-		%feature("autodoc", "Args:
-	anItem(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: TCollection_AsciiString &
+	:rtype: None
+") Prepend;
 		void Prepend (const TCollection_AsciiString & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_TColStd_HSequenceOfAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfAsciiString &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_TColStd_HSequenceOfAsciiString & aSequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: TCollection_AsciiString &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const TCollection_AsciiString & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_TColStd_HSequenceOfAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfAsciiString &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_TColStd_HSequenceOfAsciiString & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: TCollection_AsciiString &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const TCollection_AsciiString & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_TColStd_HSequenceOfAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfAsciiString &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_TColStd_HSequenceOfAsciiString & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anOtherIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Exchange;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anOtherIndex:
+	:type anOtherIndex: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_TColStd_HSequenceOfAsciiString
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_TColStd_HSequenceOfAsciiString
+") Split;
 		Handle_TColStd_HSequenceOfAsciiString Split (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: TCollection_AsciiString &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex,const TCollection_AsciiString & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: TCollection_AsciiString
+") Value;
 		const TCollection_AsciiString & Value (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: TCollection_AsciiString
+") ChangeValue;
 		TCollection_AsciiString & ChangeValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	fromIndex(Standard_Integer)
-	toIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param fromIndex:
+	:type fromIndex: Standard_Integer
+	:param toIndex:
+	:type toIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_SequenceOfAsciiString
-
-No detailed docstring for this function.") Sequence;
+		%feature("autodoc", "	:rtype: TColStd_SequenceOfAsciiString
+") Sequence;
 		const TColStd_SequenceOfAsciiString & Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_SequenceOfAsciiString
-
-No detailed docstring for this function.") ChangeSequence;
+		%feature("autodoc", "	:rtype: TColStd_SequenceOfAsciiString
+") ChangeSequence;
 		TColStd_SequenceOfAsciiString & ChangeSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColStd_HSequenceOfAsciiString
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_TColStd_HSequenceOfAsciiString
+") ShallowCopy;
 		Handle_TColStd_HSequenceOfAsciiString ShallowCopy ();
 };
 
@@ -6226,188 +4667,118 @@ def __del__(self):
 %nodefaultctor TColStd_HSequenceOfExtendedString;
 class TColStd_HSequenceOfExtendedString : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HSequenceOfExtendedString;
+		%feature("autodoc", "	:rtype: None
+") TColStd_HSequenceOfExtendedString;
 		 TColStd_HSequenceOfExtendedString ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	anItem(TCollection_ExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: TCollection_ExtendedString &
+	:rtype: None
+") Append;
 		void Append (const TCollection_ExtendedString & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_TColStd_HSequenceOfExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfExtendedString &
+	:rtype: None
+") Append;
 		void Append (const Handle_TColStd_HSequenceOfExtendedString & aSequence);
-		%feature("autodoc", "Args:
-	anItem(TCollection_ExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: TCollection_ExtendedString &
+	:rtype: None
+") Prepend;
 		void Prepend (const TCollection_ExtendedString & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_TColStd_HSequenceOfExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfExtendedString &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_TColStd_HSequenceOfExtendedString & aSequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(TCollection_ExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: TCollection_ExtendedString &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const TCollection_ExtendedString & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_TColStd_HSequenceOfExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfExtendedString &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_TColStd_HSequenceOfExtendedString & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(TCollection_ExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: TCollection_ExtendedString &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const TCollection_ExtendedString & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_TColStd_HSequenceOfExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfExtendedString &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_TColStd_HSequenceOfExtendedString & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anOtherIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Exchange;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anOtherIndex:
+	:type anOtherIndex: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_TColStd_HSequenceOfExtendedString
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_TColStd_HSequenceOfExtendedString
+") Split;
 		Handle_TColStd_HSequenceOfExtendedString Split (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(TCollection_ExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: TCollection_ExtendedString &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex,const TCollection_ExtendedString & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	TCollection_ExtendedString
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: TCollection_ExtendedString
+") Value;
 		const TCollection_ExtendedString & Value (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	TCollection_ExtendedString
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: TCollection_ExtendedString
+") ChangeValue;
 		TCollection_ExtendedString & ChangeValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	fromIndex(Standard_Integer)
-	toIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param fromIndex:
+	:type fromIndex: Standard_Integer
+	:param toIndex:
+	:type toIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_SequenceOfExtendedString
-
-No detailed docstring for this function.") Sequence;
+		%feature("autodoc", "	:rtype: TColStd_SequenceOfExtendedString
+") Sequence;
 		const TColStd_SequenceOfExtendedString & Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_SequenceOfExtendedString
-
-No detailed docstring for this function.") ChangeSequence;
+		%feature("autodoc", "	:rtype: TColStd_SequenceOfExtendedString
+") ChangeSequence;
 		TColStd_SequenceOfExtendedString & ChangeSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColStd_HSequenceOfExtendedString
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_TColStd_HSequenceOfExtendedString
+") ShallowCopy;
 		Handle_TColStd_HSequenceOfExtendedString ShallowCopy ();
 };
 
@@ -6468,188 +4839,118 @@ def __del__(self):
 %nodefaultctor TColStd_HSequenceOfHAsciiString;
 class TColStd_HSequenceOfHAsciiString : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HSequenceOfHAsciiString;
+		%feature("autodoc", "	:rtype: None
+") TColStd_HSequenceOfHAsciiString;
 		 TColStd_HSequenceOfHAsciiString ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	anItem(Handle_TCollection_HAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_TCollection_HAsciiString &
+	:rtype: None
+") Append;
 		void Append (const Handle_TCollection_HAsciiString & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_TColStd_HSequenceOfHAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfHAsciiString &
+	:rtype: None
+") Append;
 		void Append (const Handle_TColStd_HSequenceOfHAsciiString & aSequence);
-		%feature("autodoc", "Args:
-	anItem(Handle_TCollection_HAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_TCollection_HAsciiString &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_TCollection_HAsciiString & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_TColStd_HSequenceOfHAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfHAsciiString &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_TColStd_HSequenceOfHAsciiString & aSequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_TCollection_HAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_TCollection_HAsciiString &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_TCollection_HAsciiString & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_TColStd_HSequenceOfHAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfHAsciiString &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_TColStd_HSequenceOfHAsciiString & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_TCollection_HAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_TCollection_HAsciiString &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_TCollection_HAsciiString & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_TColStd_HSequenceOfHAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfHAsciiString &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_TColStd_HSequenceOfHAsciiString & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anOtherIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Exchange;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anOtherIndex:
+	:type anOtherIndex: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_TColStd_HSequenceOfHAsciiString
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_TColStd_HSequenceOfHAsciiString
+") Split;
 		Handle_TColStd_HSequenceOfHAsciiString Split (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_TCollection_HAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_TCollection_HAsciiString &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Handle_TCollection_HAsciiString & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_TCollection_HAsciiString
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_TCollection_HAsciiString
+") Value;
 		const Handle_TCollection_HAsciiString & Value (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_TCollection_HAsciiString
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_TCollection_HAsciiString
+") ChangeValue;
 		Handle_TCollection_HAsciiString & ChangeValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	fromIndex(Standard_Integer)
-	toIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param fromIndex:
+	:type fromIndex: Standard_Integer
+	:param toIndex:
+	:type toIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_SequenceOfHAsciiString
-
-No detailed docstring for this function.") Sequence;
+		%feature("autodoc", "	:rtype: TColStd_SequenceOfHAsciiString
+") Sequence;
 		const TColStd_SequenceOfHAsciiString & Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_SequenceOfHAsciiString
-
-No detailed docstring for this function.") ChangeSequence;
+		%feature("autodoc", "	:rtype: TColStd_SequenceOfHAsciiString
+") ChangeSequence;
 		TColStd_SequenceOfHAsciiString & ChangeSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColStd_HSequenceOfHAsciiString
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_TColStd_HSequenceOfHAsciiString
+") ShallowCopy;
 		Handle_TColStd_HSequenceOfHAsciiString ShallowCopy ();
 };
 
@@ -6710,188 +5011,118 @@ def __del__(self):
 %nodefaultctor TColStd_HSequenceOfHExtendedString;
 class TColStd_HSequenceOfHExtendedString : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HSequenceOfHExtendedString;
+		%feature("autodoc", "	:rtype: None
+") TColStd_HSequenceOfHExtendedString;
 		 TColStd_HSequenceOfHExtendedString ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	anItem(Handle_TCollection_HExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_TCollection_HExtendedString &
+	:rtype: None
+") Append;
 		void Append (const Handle_TCollection_HExtendedString & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_TColStd_HSequenceOfHExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfHExtendedString &
+	:rtype: None
+") Append;
 		void Append (const Handle_TColStd_HSequenceOfHExtendedString & aSequence);
-		%feature("autodoc", "Args:
-	anItem(Handle_TCollection_HExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_TCollection_HExtendedString &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_TCollection_HExtendedString & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_TColStd_HSequenceOfHExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfHExtendedString &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_TColStd_HSequenceOfHExtendedString & aSequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_TCollection_HExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_TCollection_HExtendedString &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_TCollection_HExtendedString & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_TColStd_HSequenceOfHExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfHExtendedString &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_TColStd_HSequenceOfHExtendedString & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_TCollection_HExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_TCollection_HExtendedString &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_TCollection_HExtendedString & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_TColStd_HSequenceOfHExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfHExtendedString &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_TColStd_HSequenceOfHExtendedString & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anOtherIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Exchange;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anOtherIndex:
+	:type anOtherIndex: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_TColStd_HSequenceOfHExtendedString
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_TColStd_HSequenceOfHExtendedString
+") Split;
 		Handle_TColStd_HSequenceOfHExtendedString Split (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_TCollection_HExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_TCollection_HExtendedString &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Handle_TCollection_HExtendedString & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_TCollection_HExtendedString
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_TCollection_HExtendedString
+") Value;
 		const Handle_TCollection_HExtendedString & Value (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_TCollection_HExtendedString
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_TCollection_HExtendedString
+") ChangeValue;
 		Handle_TCollection_HExtendedString & ChangeValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	fromIndex(Standard_Integer)
-	toIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param fromIndex:
+	:type fromIndex: Standard_Integer
+	:param toIndex:
+	:type toIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_SequenceOfHExtendedString
-
-No detailed docstring for this function.") Sequence;
+		%feature("autodoc", "	:rtype: TColStd_SequenceOfHExtendedString
+") Sequence;
 		const TColStd_SequenceOfHExtendedString & Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_SequenceOfHExtendedString
-
-No detailed docstring for this function.") ChangeSequence;
+		%feature("autodoc", "	:rtype: TColStd_SequenceOfHExtendedString
+") ChangeSequence;
 		TColStd_SequenceOfHExtendedString & ChangeSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColStd_HSequenceOfHExtendedString
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_TColStd_HSequenceOfHExtendedString
+") ShallowCopy;
 		Handle_TColStd_HSequenceOfHExtendedString ShallowCopy ();
 };
 
@@ -6952,188 +5183,118 @@ def __del__(self):
 %nodefaultctor TColStd_HSequenceOfInteger;
 class TColStd_HSequenceOfInteger : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HSequenceOfInteger;
+		%feature("autodoc", "	:rtype: None
+") TColStd_HSequenceOfInteger;
 		 TColStd_HSequenceOfInteger ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	anItem(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Standard_Integer &
+	:rtype: None
+") Append;
 		void Append (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	aSequence(Handle_TColStd_HSequenceOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfInteger &
+	:rtype: None
+") Append;
 		void Append (const Handle_TColStd_HSequenceOfInteger & aSequence);
-		%feature("autodoc", "Args:
-	anItem(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Standard_Integer &
+	:rtype: None
+") Prepend;
 		void Prepend (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	aSequence(Handle_TColStd_HSequenceOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfInteger &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_TColStd_HSequenceOfInteger & aSequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Standard_Integer &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_TColStd_HSequenceOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfInteger &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_TColStd_HSequenceOfInteger & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Standard_Integer &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_TColStd_HSequenceOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfInteger &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_TColStd_HSequenceOfInteger & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anOtherIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Exchange;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anOtherIndex:
+	:type anOtherIndex: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_TColStd_HSequenceOfInteger
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_TColStd_HSequenceOfInteger
+") Split;
 		Handle_TColStd_HSequenceOfInteger Split (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Standard_Integer &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: int
+") Value;
 		const Standard_Integer & Value (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: int
+") ChangeValue;
 		Standard_Integer & ChangeValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	fromIndex(Standard_Integer)
-	toIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param fromIndex:
+	:type fromIndex: Standard_Integer
+	:param toIndex:
+	:type toIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_SequenceOfInteger
-
-No detailed docstring for this function.") Sequence;
+		%feature("autodoc", "	:rtype: TColStd_SequenceOfInteger
+") Sequence;
 		const TColStd_SequenceOfInteger & Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_SequenceOfInteger
-
-No detailed docstring for this function.") ChangeSequence;
+		%feature("autodoc", "	:rtype: TColStd_SequenceOfInteger
+") ChangeSequence;
 		TColStd_SequenceOfInteger & ChangeSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColStd_HSequenceOfInteger
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_TColStd_HSequenceOfInteger
+") ShallowCopy;
 		Handle_TColStd_HSequenceOfInteger ShallowCopy ();
 };
 
@@ -7194,188 +5355,118 @@ def __del__(self):
 %nodefaultctor TColStd_HSequenceOfReal;
 class TColStd_HSequenceOfReal : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HSequenceOfReal;
+		%feature("autodoc", "	:rtype: None
+") TColStd_HSequenceOfReal;
 		 TColStd_HSequenceOfReal ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	anItem(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: float &
+	:rtype: None
+") Append;
 		void Append (const Standard_Real & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_TColStd_HSequenceOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfReal &
+	:rtype: None
+") Append;
 		void Append (const Handle_TColStd_HSequenceOfReal & aSequence);
-		%feature("autodoc", "Args:
-	anItem(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: float &
+	:rtype: None
+") Prepend;
 		void Prepend (const Standard_Real & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_TColStd_HSequenceOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfReal &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_TColStd_HSequenceOfReal & aSequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: float &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Standard_Real & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_TColStd_HSequenceOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfReal &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_TColStd_HSequenceOfReal & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: float &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Standard_Real & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_TColStd_HSequenceOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfReal &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_TColStd_HSequenceOfReal & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anOtherIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Exchange;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anOtherIndex:
+	:type anOtherIndex: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_TColStd_HSequenceOfReal
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_TColStd_HSequenceOfReal
+") Split;
 		Handle_TColStd_HSequenceOfReal Split (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: float &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Standard_Real & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: float
+") Value;
 		const Standard_Real & Value (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: float
+") ChangeValue;
 		Standard_Real & ChangeValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	fromIndex(Standard_Integer)
-	toIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param fromIndex:
+	:type fromIndex: Standard_Integer
+	:param toIndex:
+	:type toIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_SequenceOfReal
-
-No detailed docstring for this function.") Sequence;
+		%feature("autodoc", "	:rtype: TColStd_SequenceOfReal
+") Sequence;
 		const TColStd_SequenceOfReal & Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_SequenceOfReal
-
-No detailed docstring for this function.") ChangeSequence;
+		%feature("autodoc", "	:rtype: TColStd_SequenceOfReal
+") ChangeSequence;
 		TColStd_SequenceOfReal & ChangeSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColStd_HSequenceOfReal
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_TColStd_HSequenceOfReal
+") ShallowCopy;
 		Handle_TColStd_HSequenceOfReal ShallowCopy ();
 };
 
@@ -7436,188 +5527,118 @@ def __del__(self):
 %nodefaultctor TColStd_HSequenceOfTransient;
 class TColStd_HSequenceOfTransient : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HSequenceOfTransient;
+		%feature("autodoc", "	:rtype: None
+") TColStd_HSequenceOfTransient;
 		 TColStd_HSequenceOfTransient ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	anItem(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Standard_Transient &
+	:rtype: None
+") Append;
 		void Append (const Handle_Standard_Transient & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_TColStd_HSequenceOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfTransient &
+	:rtype: None
+") Append;
 		void Append (const Handle_TColStd_HSequenceOfTransient & aSequence);
-		%feature("autodoc", "Args:
-	anItem(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Standard_Transient &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Standard_Transient & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_TColStd_HSequenceOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfTransient &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_TColStd_HSequenceOfTransient & aSequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Standard_Transient &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Standard_Transient & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_TColStd_HSequenceOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfTransient &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_TColStd_HSequenceOfTransient & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Standard_Transient &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Standard_Transient & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_TColStd_HSequenceOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_TColStd_HSequenceOfTransient &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_TColStd_HSequenceOfTransient & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anOtherIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Exchange;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anOtherIndex:
+	:type anOtherIndex: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_TColStd_HSequenceOfTransient
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_TColStd_HSequenceOfTransient
+") Split;
 		Handle_TColStd_HSequenceOfTransient Split (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Standard_Transient &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Handle_Standard_Transient & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Standard_Transient
+") Value;
 		const Handle_Standard_Transient & Value (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Standard_Transient
+") ChangeValue;
 		Handle_Standard_Transient & ChangeValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	fromIndex(Standard_Integer)
-	toIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param fromIndex:
+	:type fromIndex: Standard_Integer
+	:param toIndex:
+	:type toIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_SequenceOfTransient
-
-No detailed docstring for this function.") Sequence;
+		%feature("autodoc", "	:rtype: TColStd_SequenceOfTransient
+") Sequence;
 		const TColStd_SequenceOfTransient & Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_SequenceOfTransient
-
-No detailed docstring for this function.") ChangeSequence;
+		%feature("autodoc", "	:rtype: TColStd_SequenceOfTransient
+") ChangeSequence;
 		TColStd_SequenceOfTransient & ChangeSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColStd_HSequenceOfTransient
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_TColStd_HSequenceOfTransient
+") ShallowCopy;
 		Handle_TColStd_HSequenceOfTransient ShallowCopy ();
 };
 
@@ -7678,118 +5699,66 @@ def __del__(self):
 %nodefaultctor TColStd_HSetOfInteger;
 class TColStd_HSetOfInteger : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HSetOfInteger;
+		%feature("autodoc", "	:rtype: None
+") TColStd_HSetOfInteger;
 		 TColStd_HSetOfInteger ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	T(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param T:
+	:type T: Standard_Integer &
+	:rtype: bool
+") Add;
 		Standard_Boolean Add (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	T(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param T:
+	:type T: Standard_Integer &
+	:rtype: bool
+") Remove;
 		Standard_Boolean Remove (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	B(Handle_TColStd_HSetOfInteger)
-
-Returns:
-	Handle_TColStd_HSetOfInteger
-
-No detailed docstring for this function.") Union;
+		%feature("autodoc", "	:param B:
+	:type B: Handle_TColStd_HSetOfInteger &
+	:rtype: Handle_TColStd_HSetOfInteger
+") Union;
 		Handle_TColStd_HSetOfInteger Union (const Handle_TColStd_HSetOfInteger & B);
-		%feature("autodoc", "Args:
-	B(Handle_TColStd_HSetOfInteger)
-
-Returns:
-	Handle_TColStd_HSetOfInteger
-
-No detailed docstring for this function.") Intersection;
+		%feature("autodoc", "	:param B:
+	:type B: Handle_TColStd_HSetOfInteger &
+	:rtype: Handle_TColStd_HSetOfInteger
+") Intersection;
 		Handle_TColStd_HSetOfInteger Intersection (const Handle_TColStd_HSetOfInteger & B);
-		%feature("autodoc", "Args:
-	B(Handle_TColStd_HSetOfInteger)
-
-Returns:
-	Handle_TColStd_HSetOfInteger
-
-No detailed docstring for this function.") Difference;
+		%feature("autodoc", "	:param B:
+	:type B: Handle_TColStd_HSetOfInteger &
+	:rtype: Handle_TColStd_HSetOfInteger
+") Difference;
 		Handle_TColStd_HSetOfInteger Difference (const Handle_TColStd_HSetOfInteger & B);
-		%feature("autodoc", "Args:
-	T(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param T:
+	:type T: Standard_Integer &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	S(Handle_TColStd_HSetOfInteger)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsASubset;
+		%feature("autodoc", "	:param S:
+	:type S: Handle_TColStd_HSetOfInteger &
+	:rtype: bool
+") IsASubset;
 		Standard_Boolean IsASubset (const Handle_TColStd_HSetOfInteger & S);
-		%feature("autodoc", "Args:
-	S(Handle_TColStd_HSetOfInteger)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAProperSubset;
+		%feature("autodoc", "	:param S:
+	:type S: Handle_TColStd_HSetOfInteger &
+	:rtype: bool
+") IsAProperSubset;
 		Standard_Boolean IsAProperSubset (const Handle_TColStd_HSetOfInteger & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColStd_HSetOfInteger
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_TColStd_HSetOfInteger
+") ShallowCopy;
 		Handle_TColStd_HSetOfInteger ShallowCopy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_SetOfInteger
-
-No detailed docstring for this function.") Set;
+		%feature("autodoc", "	:rtype: TColStd_SetOfInteger
+") Set;
 		const TColStd_SetOfInteger & Set ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_SetOfInteger
-
-No detailed docstring for this function.") ChangeSet;
+		%feature("autodoc", "	:rtype: TColStd_SetOfInteger
+") ChangeSet;
 		TColStd_SetOfInteger & ChangeSet ();
 };
 
@@ -7850,118 +5819,66 @@ def __del__(self):
 %nodefaultctor TColStd_HSetOfReal;
 class TColStd_HSetOfReal : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HSetOfReal;
+		%feature("autodoc", "	:rtype: None
+") TColStd_HSetOfReal;
 		 TColStd_HSetOfReal ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	T(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param T:
+	:type T: float &
+	:rtype: bool
+") Add;
 		Standard_Boolean Add (const Standard_Real & T);
-		%feature("autodoc", "Args:
-	T(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param T:
+	:type T: float &
+	:rtype: bool
+") Remove;
 		Standard_Boolean Remove (const Standard_Real & T);
-		%feature("autodoc", "Args:
-	B(Handle_TColStd_HSetOfReal)
-
-Returns:
-	Handle_TColStd_HSetOfReal
-
-No detailed docstring for this function.") Union;
+		%feature("autodoc", "	:param B:
+	:type B: Handle_TColStd_HSetOfReal &
+	:rtype: Handle_TColStd_HSetOfReal
+") Union;
 		Handle_TColStd_HSetOfReal Union (const Handle_TColStd_HSetOfReal & B);
-		%feature("autodoc", "Args:
-	B(Handle_TColStd_HSetOfReal)
-
-Returns:
-	Handle_TColStd_HSetOfReal
-
-No detailed docstring for this function.") Intersection;
+		%feature("autodoc", "	:param B:
+	:type B: Handle_TColStd_HSetOfReal &
+	:rtype: Handle_TColStd_HSetOfReal
+") Intersection;
 		Handle_TColStd_HSetOfReal Intersection (const Handle_TColStd_HSetOfReal & B);
-		%feature("autodoc", "Args:
-	B(Handle_TColStd_HSetOfReal)
-
-Returns:
-	Handle_TColStd_HSetOfReal
-
-No detailed docstring for this function.") Difference;
+		%feature("autodoc", "	:param B:
+	:type B: Handle_TColStd_HSetOfReal &
+	:rtype: Handle_TColStd_HSetOfReal
+") Difference;
 		Handle_TColStd_HSetOfReal Difference (const Handle_TColStd_HSetOfReal & B);
-		%feature("autodoc", "Args:
-	T(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param T:
+	:type T: float &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const Standard_Real & T);
-		%feature("autodoc", "Args:
-	S(Handle_TColStd_HSetOfReal)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsASubset;
+		%feature("autodoc", "	:param S:
+	:type S: Handle_TColStd_HSetOfReal &
+	:rtype: bool
+") IsASubset;
 		Standard_Boolean IsASubset (const Handle_TColStd_HSetOfReal & S);
-		%feature("autodoc", "Args:
-	S(Handle_TColStd_HSetOfReal)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAProperSubset;
+		%feature("autodoc", "	:param S:
+	:type S: Handle_TColStd_HSetOfReal &
+	:rtype: bool
+") IsAProperSubset;
 		Standard_Boolean IsAProperSubset (const Handle_TColStd_HSetOfReal & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColStd_HSetOfReal
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_TColStd_HSetOfReal
+") ShallowCopy;
 		Handle_TColStd_HSetOfReal ShallowCopy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_SetOfReal
-
-No detailed docstring for this function.") Set;
+		%feature("autodoc", "	:rtype: TColStd_SetOfReal
+") Set;
 		const TColStd_SetOfReal & Set ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_SetOfReal
-
-No detailed docstring for this function.") ChangeSet;
+		%feature("autodoc", "	:rtype: TColStd_SetOfReal
+") ChangeSet;
 		TColStd_SetOfReal & ChangeSet ();
 };
 
@@ -8022,118 +5939,66 @@ def __del__(self):
 %nodefaultctor TColStd_HSetOfTransient;
 class TColStd_HSetOfTransient : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_HSetOfTransient;
+		%feature("autodoc", "	:rtype: None
+") TColStd_HSetOfTransient;
 		 TColStd_HSetOfTransient ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	T(Handle_Standard_Transient)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Standard_Transient &
+	:rtype: bool
+") Add;
 		Standard_Boolean Add (const Handle_Standard_Transient & T);
-		%feature("autodoc", "Args:
-	T(Handle_Standard_Transient)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Standard_Transient &
+	:rtype: bool
+") Remove;
 		Standard_Boolean Remove (const Handle_Standard_Transient & T);
-		%feature("autodoc", "Args:
-	B(Handle_TColStd_HSetOfTransient)
-
-Returns:
-	Handle_TColStd_HSetOfTransient
-
-No detailed docstring for this function.") Union;
+		%feature("autodoc", "	:param B:
+	:type B: Handle_TColStd_HSetOfTransient &
+	:rtype: Handle_TColStd_HSetOfTransient
+") Union;
 		Handle_TColStd_HSetOfTransient Union (const Handle_TColStd_HSetOfTransient & B);
-		%feature("autodoc", "Args:
-	B(Handle_TColStd_HSetOfTransient)
-
-Returns:
-	Handle_TColStd_HSetOfTransient
-
-No detailed docstring for this function.") Intersection;
+		%feature("autodoc", "	:param B:
+	:type B: Handle_TColStd_HSetOfTransient &
+	:rtype: Handle_TColStd_HSetOfTransient
+") Intersection;
 		Handle_TColStd_HSetOfTransient Intersection (const Handle_TColStd_HSetOfTransient & B);
-		%feature("autodoc", "Args:
-	B(Handle_TColStd_HSetOfTransient)
-
-Returns:
-	Handle_TColStd_HSetOfTransient
-
-No detailed docstring for this function.") Difference;
+		%feature("autodoc", "	:param B:
+	:type B: Handle_TColStd_HSetOfTransient &
+	:rtype: Handle_TColStd_HSetOfTransient
+") Difference;
 		Handle_TColStd_HSetOfTransient Difference (const Handle_TColStd_HSetOfTransient & B);
-		%feature("autodoc", "Args:
-	T(Handle_Standard_Transient)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Standard_Transient &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const Handle_Standard_Transient & T);
-		%feature("autodoc", "Args:
-	S(Handle_TColStd_HSetOfTransient)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsASubset;
+		%feature("autodoc", "	:param S:
+	:type S: Handle_TColStd_HSetOfTransient &
+	:rtype: bool
+") IsASubset;
 		Standard_Boolean IsASubset (const Handle_TColStd_HSetOfTransient & S);
-		%feature("autodoc", "Args:
-	S(Handle_TColStd_HSetOfTransient)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAProperSubset;
+		%feature("autodoc", "	:param S:
+	:type S: Handle_TColStd_HSetOfTransient &
+	:rtype: bool
+") IsAProperSubset;
 		Standard_Boolean IsAProperSubset (const Handle_TColStd_HSetOfTransient & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColStd_HSetOfTransient
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_TColStd_HSetOfTransient
+") ShallowCopy;
 		Handle_TColStd_HSetOfTransient ShallowCopy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_SetOfTransient
-
-No detailed docstring for this function.") Set;
+		%feature("autodoc", "	:rtype: TColStd_SetOfTransient
+") Set;
 		const TColStd_SetOfTransient & Set ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_SetOfTransient
-
-No detailed docstring for this function.") ChangeSet;
+		%feature("autodoc", "	:rtype: TColStd_SetOfTransient
+") ChangeSet;
 		TColStd_SetOfTransient & ChangeSet ();
 };
 
@@ -8194,24 +6059,21 @@ def __del__(self):
 %nodefaultctor TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient;
 class TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K1(Handle_Standard_Transient)
-	K2(Standard_Integer)
-	I(Handle_Standard_Transient)
-	n1(TCollection_MapNodePtr)
-	n2(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient;
+		%feature("autodoc", "	:param K1:
+	:type K1: Handle_Standard_Transient &
+	:param K2:
+	:type K2: Standard_Integer
+	:param I:
+	:type I: Handle_Standard_Transient &
+	:param n1:
+	:type n1: TCollection_MapNodePtr &
+	:param n2:
+	:type n2: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient;
 		 TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient (const Handle_Standard_Transient & K1,const Standard_Integer K2,const Handle_Standard_Transient & I,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Key1;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Key1;
 		Handle_Standard_Transient & Key1 ();
 
             %feature("autodoc","1");
@@ -8226,19 +6088,11 @@ No detailed docstring for this function.") Key1;
                 $self->Key2()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_MapNodePtr
-
-No detailed docstring for this function.") Next2;
+            		%feature("autodoc", "	:rtype: TCollection_MapNodePtr
+") Next2;
 		TCollection_MapNodePtr & Next2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Value;
 		Handle_Standard_Transient & Value ();
 };
 
@@ -8299,142 +6153,92 @@ def __del__(self):
 %nodefaultctor TColStd_IndexedDataMapOfTransientTransient;
 class TColStd_IndexedDataMapOfTransientTransient : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_IndexedDataMapOfTransientTransient;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TColStd_IndexedDataMapOfTransientTransient;
 		 TColStd_IndexedDataMapOfTransientTransient (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TColStd_IndexedDataMapOfTransientTransient)
-
-Returns:
-	TColStd_IndexedDataMapOfTransientTransient
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_IndexedDataMapOfTransientTransient &
+	:rtype: TColStd_IndexedDataMapOfTransientTransient
+") Assign;
 		TColStd_IndexedDataMapOfTransientTransient & Assign (const TColStd_IndexedDataMapOfTransientTransient & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_IndexedDataMapOfTransientTransient)
-
-Returns:
-	TColStd_IndexedDataMapOfTransientTransient
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_IndexedDataMapOfTransientTransient &
+	:rtype: TColStd_IndexedDataMapOfTransientTransient
+") operator=;
 		TColStd_IndexedDataMapOfTransientTransient & operator = (const TColStd_IndexedDataMapOfTransientTransient & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-	I(Handle_Standard_Transient)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:param I:
+	:type I: Handle_Standard_Transient &
+	:rtype: int
+") Add;
 		Standard_Integer Add (const Handle_Standard_Transient & K,const Handle_Standard_Transient & I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	K(Handle_Standard_Transient)
-	T(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Substitute;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param K:
+	:type K: Handle_Standard_Transient &
+	:param T:
+	:type T: Handle_Standard_Transient &
+	:rtype: None
+") Substitute;
 		void Substitute (const Standard_Integer I,const Handle_Standard_Transient & K,const Handle_Standard_Transient & T);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveLast;
+		%feature("autodoc", "	:rtype: None
+") RemoveLast;
 		void RemoveLast ();
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const Handle_Standard_Transient & K);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") FindKey;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: Handle_Standard_Transient
+") FindKey;
 		const Handle_Standard_Transient & FindKey (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") FindFromIndex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: Handle_Standard_Transient
+") FindFromIndex;
 		const Handle_Standard_Transient & FindFromIndex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") ChangeFromIndex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: Handle_Standard_Transient
+") ChangeFromIndex;
 		Handle_Standard_Transient & ChangeFromIndex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FindIndex;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:rtype: int
+") FindIndex;
 		Standard_Integer FindIndex (const Handle_Standard_Transient & K);
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") FindFromKey;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:rtype: Handle_Standard_Transient
+") FindFromKey;
 		const Handle_Standard_Transient & FindFromKey (const Handle_Standard_Transient & K);
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") ChangeFromKey;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:rtype: Handle_Standard_Transient
+") ChangeFromKey;
 		Handle_Standard_Transient & ChangeFromKey (const Handle_Standard_Transient & K);
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") FindFromKey1;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:rtype: Standard_Address
+") FindFromKey1;
 		Standard_Address FindFromKey1 (const Handle_Standard_Transient & K);
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFromKey1;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:rtype: Standard_Address
+") ChangeFromKey1;
 		Standard_Address ChangeFromKey1 (const Handle_Standard_Transient & K);
 };
 
@@ -8456,16 +6260,16 @@ def __del__(self):
 %nodefaultctor TColStd_IndexedMapNodeOfIndexedMapOfInteger;
 class TColStd_IndexedMapNodeOfIndexedMapOfInteger : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K1(Standard_Integer)
-	K2(Standard_Integer)
-	n1(TCollection_MapNodePtr)
-	n2(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_IndexedMapNodeOfIndexedMapOfInteger;
+		%feature("autodoc", "	:param K1:
+	:type K1: Standard_Integer &
+	:param K2:
+	:type K2: Standard_Integer
+	:param n1:
+	:type n1: TCollection_MapNodePtr &
+	:param n2:
+	:type n2: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_IndexedMapNodeOfIndexedMapOfInteger;
 		 TColStd_IndexedMapNodeOfIndexedMapOfInteger (Standard_Integer &OutValue,const Standard_Integer K2,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
 
             %feature("autodoc","1");
@@ -8493,12 +6297,8 @@ No detailed docstring for this function.") TColStd_IndexedMapNodeOfIndexedMapOfI
                 $self->Key2()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_MapNodePtr
-
-No detailed docstring for this function.") Next2;
+            		%feature("autodoc", "	:rtype: TCollection_MapNodePtr
+") Next2;
 		TCollection_MapNodePtr & Next2 ();
 };
 
@@ -8559,16 +6359,16 @@ def __del__(self):
 %nodefaultctor TColStd_IndexedMapNodeOfIndexedMapOfReal;
 class TColStd_IndexedMapNodeOfIndexedMapOfReal : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K1(Standard_Real)
-	K2(Standard_Integer)
-	n1(TCollection_MapNodePtr)
-	n2(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_IndexedMapNodeOfIndexedMapOfReal;
+		%feature("autodoc", "	:param K1:
+	:type K1: float &
+	:param K2:
+	:type K2: Standard_Integer
+	:param n1:
+	:type n1: TCollection_MapNodePtr &
+	:param n2:
+	:type n2: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_IndexedMapNodeOfIndexedMapOfReal;
 		 TColStd_IndexedMapNodeOfIndexedMapOfReal (const Standard_Real & K1,const Standard_Integer K2,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
 
             %feature("autodoc","1");
@@ -8596,12 +6396,8 @@ No detailed docstring for this function.") TColStd_IndexedMapNodeOfIndexedMapOfR
                 $self->Key2()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_MapNodePtr
-
-No detailed docstring for this function.") Next2;
+            		%feature("autodoc", "	:rtype: TCollection_MapNodePtr
+") Next2;
 		TCollection_MapNodePtr & Next2 ();
 };
 
@@ -8662,23 +6458,19 @@ def __del__(self):
 %nodefaultctor TColStd_IndexedMapNodeOfIndexedMapOfTransient;
 class TColStd_IndexedMapNodeOfIndexedMapOfTransient : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K1(Handle_Standard_Transient)
-	K2(Standard_Integer)
-	n1(TCollection_MapNodePtr)
-	n2(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_IndexedMapNodeOfIndexedMapOfTransient;
+		%feature("autodoc", "	:param K1:
+	:type K1: Handle_Standard_Transient &
+	:param K2:
+	:type K2: Standard_Integer
+	:param n1:
+	:type n1: TCollection_MapNodePtr &
+	:param n2:
+	:type n2: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_IndexedMapNodeOfIndexedMapOfTransient;
 		 TColStd_IndexedMapNodeOfIndexedMapOfTransient (const Handle_Standard_Transient & K1,const Standard_Integer K2,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Key1;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Key1;
 		Handle_Standard_Transient & Key1 ();
 
             %feature("autodoc","1");
@@ -8693,12 +6485,8 @@ No detailed docstring for this function.") Key1;
                 $self->Key2()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_MapNodePtr
-
-No detailed docstring for this function.") Next2;
+            		%feature("autodoc", "	:rtype: TCollection_MapNodePtr
+") Next2;
 		TCollection_MapNodePtr & Next2 ();
 };
 
@@ -8759,92 +6547,58 @@ def __del__(self):
 %nodefaultctor TColStd_IndexedMapOfInteger;
 class TColStd_IndexedMapOfInteger : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_IndexedMapOfInteger;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TColStd_IndexedMapOfInteger;
 		 TColStd_IndexedMapOfInteger (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TColStd_IndexedMapOfInteger)
-
-Returns:
-	TColStd_IndexedMapOfInteger
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_IndexedMapOfInteger &
+	:rtype: TColStd_IndexedMapOfInteger
+") Assign;
 		TColStd_IndexedMapOfInteger & Assign (const TColStd_IndexedMapOfInteger & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_IndexedMapOfInteger)
-
-Returns:
-	TColStd_IndexedMapOfInteger
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_IndexedMapOfInteger &
+	:rtype: TColStd_IndexedMapOfInteger
+") operator=;
 		TColStd_IndexedMapOfInteger & operator = (const TColStd_IndexedMapOfInteger & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: int
+") Add;
 		Standard_Integer Add (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	K(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Substitute;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param K:
+	:type K: Standard_Integer &
+	:rtype: None
+") Substitute;
 		void Substitute (const Standard_Integer I,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveLast;
+		%feature("autodoc", "	:rtype: None
+") RemoveLast;
 		void RemoveLast ();
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FindKey;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: int
+") FindKey;
 		const Standard_Integer & FindKey (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FindIndex;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: int
+") FindIndex;
 		Standard_Integer FindIndex (Standard_Integer &OutValue);
 };
 
@@ -8866,92 +6620,58 @@ def __del__(self):
 %nodefaultctor TColStd_IndexedMapOfReal;
 class TColStd_IndexedMapOfReal : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_IndexedMapOfReal;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TColStd_IndexedMapOfReal;
 		 TColStd_IndexedMapOfReal (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TColStd_IndexedMapOfReal)
-
-Returns:
-	TColStd_IndexedMapOfReal
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_IndexedMapOfReal &
+	:rtype: TColStd_IndexedMapOfReal
+") Assign;
 		TColStd_IndexedMapOfReal & Assign (const TColStd_IndexedMapOfReal & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_IndexedMapOfReal)
-
-Returns:
-	TColStd_IndexedMapOfReal
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_IndexedMapOfReal &
+	:rtype: TColStd_IndexedMapOfReal
+") operator=;
 		TColStd_IndexedMapOfReal & operator = (const TColStd_IndexedMapOfReal & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(Standard_Real)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param K:
+	:type K: float &
+	:rtype: int
+") Add;
 		Standard_Integer Add (const Standard_Real & K);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	K(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Substitute;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param K:
+	:type K: float &
+	:rtype: None
+") Substitute;
 		void Substitute (const Standard_Integer I,const Standard_Real & K);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveLast;
+		%feature("autodoc", "	:rtype: None
+") RemoveLast;
 		void RemoveLast ();
-		%feature("autodoc", "Args:
-	K(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param K:
+	:type K: float &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const Standard_Real & K);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") FindKey;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: float
+") FindKey;
 		const Standard_Real & FindKey (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	K(Standard_Real)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FindIndex;
+		%feature("autodoc", "	:param K:
+	:type K: float &
+	:rtype: int
+") FindIndex;
 		Standard_Integer FindIndex (const Standard_Real & K);
 };
 
@@ -8973,92 +6693,58 @@ def __del__(self):
 %nodefaultctor TColStd_IndexedMapOfTransient;
 class TColStd_IndexedMapOfTransient : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_IndexedMapOfTransient;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TColStd_IndexedMapOfTransient;
 		 TColStd_IndexedMapOfTransient (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TColStd_IndexedMapOfTransient)
-
-Returns:
-	TColStd_IndexedMapOfTransient
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_IndexedMapOfTransient &
+	:rtype: TColStd_IndexedMapOfTransient
+") Assign;
 		TColStd_IndexedMapOfTransient & Assign (const TColStd_IndexedMapOfTransient & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_IndexedMapOfTransient)
-
-Returns:
-	TColStd_IndexedMapOfTransient
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_IndexedMapOfTransient &
+	:rtype: TColStd_IndexedMapOfTransient
+") operator=;
 		TColStd_IndexedMapOfTransient & operator = (const TColStd_IndexedMapOfTransient & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:rtype: int
+") Add;
 		Standard_Integer Add (const Handle_Standard_Transient & K);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	K(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Substitute;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param K:
+	:type K: Handle_Standard_Transient &
+	:rtype: None
+") Substitute;
 		void Substitute (const Standard_Integer I,const Handle_Standard_Transient & K);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveLast;
+		%feature("autodoc", "	:rtype: None
+") RemoveLast;
 		void RemoveLast ();
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const Handle_Standard_Transient & K);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") FindKey;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: Handle_Standard_Transient
+") FindKey;
 		const Handle_Standard_Transient & FindKey (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FindIndex;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:rtype: int
+") FindIndex;
 		Standard_Integer FindIndex (const Handle_Standard_Transient & K);
 };
 
@@ -9080,49 +6766,27 @@ def __del__(self):
 %nodefaultctor TColStd_ListIteratorOfListOfAsciiString;
 class TColStd_ListIteratorOfListOfAsciiString {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_ListIteratorOfListOfAsciiString;
+		%feature("autodoc", "	:rtype: None
+") TColStd_ListIteratorOfListOfAsciiString;
 		 TColStd_ListIteratorOfListOfAsciiString ();
-		%feature("autodoc", "Args:
-	L(TColStd_ListOfAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_ListIteratorOfListOfAsciiString;
+		%feature("autodoc", "	:param L:
+	:type L: TColStd_ListOfAsciiString &
+	:rtype: None
+") TColStd_ListIteratorOfListOfAsciiString;
 		 TColStd_ListIteratorOfListOfAsciiString (const TColStd_ListOfAsciiString & L);
-		%feature("autodoc", "Args:
-	L(TColStd_ListOfAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: TColStd_ListOfAsciiString &
+	:rtype: None
+") Initialize;
 		void Initialize (const TColStd_ListOfAsciiString & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") Value;
 		TCollection_AsciiString & Value ();
 };
 
@@ -9144,42 +6808,24 @@ def __del__(self):
 %nodefaultctor TColStd_ListIteratorOfListOfInteger;
 class TColStd_ListIteratorOfListOfInteger {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_ListIteratorOfListOfInteger;
+		%feature("autodoc", "	:rtype: None
+") TColStd_ListIteratorOfListOfInteger;
 		 TColStd_ListIteratorOfListOfInteger ();
-		%feature("autodoc", "Args:
-	L(TColStd_ListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_ListIteratorOfListOfInteger;
+		%feature("autodoc", "	:param L:
+	:type L: TColStd_ListOfInteger &
+	:rtype: None
+") TColStd_ListIteratorOfListOfInteger;
 		 TColStd_ListIteratorOfListOfInteger (const TColStd_ListOfInteger & L);
-		%feature("autodoc", "Args:
-	L(TColStd_ListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: TColStd_ListOfInteger &
+	:rtype: None
+") Initialize;
 		void Initialize (const TColStd_ListOfInteger & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
 
             %feature("autodoc","1");
@@ -9214,42 +6860,24 @@ def __del__(self):
 %nodefaultctor TColStd_ListIteratorOfListOfReal;
 class TColStd_ListIteratorOfListOfReal {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_ListIteratorOfListOfReal;
+		%feature("autodoc", "	:rtype: None
+") TColStd_ListIteratorOfListOfReal;
 		 TColStd_ListIteratorOfListOfReal ();
-		%feature("autodoc", "Args:
-	L(TColStd_ListOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_ListIteratorOfListOfReal;
+		%feature("autodoc", "	:param L:
+	:type L: TColStd_ListOfReal &
+	:rtype: None
+") TColStd_ListIteratorOfListOfReal;
 		 TColStd_ListIteratorOfListOfReal (const TColStd_ListOfReal & L);
-		%feature("autodoc", "Args:
-	L(TColStd_ListOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: TColStd_ListOfReal &
+	:rtype: None
+") Initialize;
 		void Initialize (const TColStd_ListOfReal & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
 
             %feature("autodoc","1");
@@ -9284,49 +6912,27 @@ def __del__(self):
 %nodefaultctor TColStd_ListIteratorOfListOfTransient;
 class TColStd_ListIteratorOfListOfTransient {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_ListIteratorOfListOfTransient;
+		%feature("autodoc", "	:rtype: None
+") TColStd_ListIteratorOfListOfTransient;
 		 TColStd_ListIteratorOfListOfTransient ();
-		%feature("autodoc", "Args:
-	L(TColStd_ListOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_ListIteratorOfListOfTransient;
+		%feature("autodoc", "	:param L:
+	:type L: TColStd_ListOfTransient &
+	:rtype: None
+") TColStd_ListIteratorOfListOfTransient;
 		 TColStd_ListIteratorOfListOfTransient (const TColStd_ListOfTransient & L);
-		%feature("autodoc", "Args:
-	L(TColStd_ListOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: TColStd_ListOfTransient &
+	:rtype: None
+") Initialize;
 		void Initialize (const TColStd_ListOfTransient & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Value;
 		Handle_Standard_Transient & Value ();
 };
 
@@ -9348,42 +6954,24 @@ def __del__(self):
 %nodefaultctor TColStd_ListIteratorOfSetListOfSetOfInteger;
 class TColStd_ListIteratorOfSetListOfSetOfInteger {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_ListIteratorOfSetListOfSetOfInteger;
+		%feature("autodoc", "	:rtype: None
+") TColStd_ListIteratorOfSetListOfSetOfInteger;
 		 TColStd_ListIteratorOfSetListOfSetOfInteger ();
-		%feature("autodoc", "Args:
-	L(TColStd_SetListOfSetOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_ListIteratorOfSetListOfSetOfInteger;
+		%feature("autodoc", "	:param L:
+	:type L: TColStd_SetListOfSetOfInteger &
+	:rtype: None
+") TColStd_ListIteratorOfSetListOfSetOfInteger;
 		 TColStd_ListIteratorOfSetListOfSetOfInteger (const TColStd_SetListOfSetOfInteger & L);
-		%feature("autodoc", "Args:
-	L(TColStd_SetListOfSetOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: TColStd_SetListOfSetOfInteger &
+	:rtype: None
+") Initialize;
 		void Initialize (const TColStd_SetListOfSetOfInteger & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
 
             %feature("autodoc","1");
@@ -9418,42 +7006,24 @@ def __del__(self):
 %nodefaultctor TColStd_ListIteratorOfSetListOfSetOfReal;
 class TColStd_ListIteratorOfSetListOfSetOfReal {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_ListIteratorOfSetListOfSetOfReal;
+		%feature("autodoc", "	:rtype: None
+") TColStd_ListIteratorOfSetListOfSetOfReal;
 		 TColStd_ListIteratorOfSetListOfSetOfReal ();
-		%feature("autodoc", "Args:
-	L(TColStd_SetListOfSetOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_ListIteratorOfSetListOfSetOfReal;
+		%feature("autodoc", "	:param L:
+	:type L: TColStd_SetListOfSetOfReal &
+	:rtype: None
+") TColStd_ListIteratorOfSetListOfSetOfReal;
 		 TColStd_ListIteratorOfSetListOfSetOfReal (const TColStd_SetListOfSetOfReal & L);
-		%feature("autodoc", "Args:
-	L(TColStd_SetListOfSetOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: TColStd_SetListOfSetOfReal &
+	:rtype: None
+") Initialize;
 		void Initialize (const TColStd_SetListOfSetOfReal & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
 
             %feature("autodoc","1");
@@ -9488,49 +7058,27 @@ def __del__(self):
 %nodefaultctor TColStd_ListIteratorOfSetListOfSetOfTransient;
 class TColStd_ListIteratorOfSetListOfSetOfTransient {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_ListIteratorOfSetListOfSetOfTransient;
+		%feature("autodoc", "	:rtype: None
+") TColStd_ListIteratorOfSetListOfSetOfTransient;
 		 TColStd_ListIteratorOfSetListOfSetOfTransient ();
-		%feature("autodoc", "Args:
-	L(TColStd_SetListOfSetOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_ListIteratorOfSetListOfSetOfTransient;
+		%feature("autodoc", "	:param L:
+	:type L: TColStd_SetListOfSetOfTransient &
+	:rtype: None
+") TColStd_ListIteratorOfSetListOfSetOfTransient;
 		 TColStd_ListIteratorOfSetListOfSetOfTransient (const TColStd_SetListOfSetOfTransient & L);
-		%feature("autodoc", "Args:
-	L(TColStd_SetListOfSetOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: TColStd_SetListOfSetOfTransient &
+	:rtype: None
+") Initialize;
 		void Initialize (const TColStd_SetListOfSetOfTransient & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Value;
 		Handle_Standard_Transient & Value ();
 };
 
@@ -9552,21 +7100,15 @@ def __del__(self):
 %nodefaultctor TColStd_ListNodeOfListOfAsciiString;
 class TColStd_ListNodeOfListOfAsciiString : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(TCollection_AsciiString)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_ListNodeOfListOfAsciiString;
+		%feature("autodoc", "	:param I:
+	:type I: TCollection_AsciiString &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_ListNodeOfListOfAsciiString;
 		 TColStd_ListNodeOfListOfAsciiString (const TCollection_AsciiString & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") Value;
 		TCollection_AsciiString & Value ();
 };
 
@@ -9627,14 +7169,12 @@ def __del__(self):
 %nodefaultctor TColStd_ListNodeOfListOfInteger;
 class TColStd_ListNodeOfListOfInteger : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_ListNodeOfListOfInteger;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_ListNodeOfListOfInteger;
 		 TColStd_ListNodeOfListOfInteger (Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
@@ -9708,14 +7248,12 @@ def __del__(self):
 %nodefaultctor TColStd_ListNodeOfListOfReal;
 class TColStd_ListNodeOfListOfReal : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Standard_Real)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_ListNodeOfListOfReal;
+		%feature("autodoc", "	:param I:
+	:type I: float &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_ListNodeOfListOfReal;
 		 TColStd_ListNodeOfListOfReal (const Standard_Real & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
@@ -9789,21 +7327,15 @@ def __del__(self):
 %nodefaultctor TColStd_ListNodeOfListOfTransient;
 class TColStd_ListNodeOfListOfTransient : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Standard_Transient)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_ListNodeOfListOfTransient;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Standard_Transient &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_ListNodeOfListOfTransient;
 		 TColStd_ListNodeOfListOfTransient (const Handle_Standard_Transient & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Value;
 		Handle_Standard_Transient & Value ();
 };
 
@@ -9864,14 +7396,12 @@ def __del__(self):
 %nodefaultctor TColStd_ListNodeOfSetListOfSetOfInteger;
 class TColStd_ListNodeOfSetListOfSetOfInteger : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_ListNodeOfSetListOfSetOfInteger;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_ListNodeOfSetListOfSetOfInteger;
 		 TColStd_ListNodeOfSetListOfSetOfInteger (Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
@@ -9945,14 +7475,12 @@ def __del__(self):
 %nodefaultctor TColStd_ListNodeOfSetListOfSetOfReal;
 class TColStd_ListNodeOfSetListOfSetOfReal : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Standard_Real)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_ListNodeOfSetListOfSetOfReal;
+		%feature("autodoc", "	:param I:
+	:type I: float &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_ListNodeOfSetListOfSetOfReal;
 		 TColStd_ListNodeOfSetListOfSetOfReal (const Standard_Real & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
@@ -10026,21 +7554,15 @@ def __del__(self):
 %nodefaultctor TColStd_ListNodeOfSetListOfSetOfTransient;
 class TColStd_ListNodeOfSetListOfSetOfTransient : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Standard_Transient)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_ListNodeOfSetListOfSetOfTransient;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Standard_Transient &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_ListNodeOfSetListOfSetOfTransient;
 		 TColStd_ListNodeOfSetListOfSetOfTransient (const Handle_Standard_Transient & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Value;
 		Handle_Standard_Transient & Value ();
 };
 
@@ -10101,164 +7623,103 @@ def __del__(self):
 %nodefaultctor TColStd_ListOfAsciiString;
 class TColStd_ListOfAsciiString {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_ListOfAsciiString;
+		%feature("autodoc", "	:rtype: None
+") TColStd_ListOfAsciiString;
 		 TColStd_ListOfAsciiString ();
-		%feature("autodoc", "Args:
-	Other(TColStd_ListOfAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfAsciiString &
+	:rtype: None
+") Assign;
 		void Assign (const TColStd_ListOfAsciiString & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_ListOfAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfAsciiString &
+	:rtype: None
+") operator=;
 		void operator = (const TColStd_ListOfAsciiString & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: TCollection_AsciiString &
+	:rtype: None
+") Prepend;
 		void Prepend (const TCollection_AsciiString & I);
-		%feature("autodoc", "Args:
-	I(TCollection_AsciiString)
-	theIt(TColStd_ListIteratorOfListOfAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: TCollection_AsciiString &
+	:param theIt:
+	:type theIt: TColStd_ListIteratorOfListOfAsciiString &
+	:rtype: None
+") Prepend;
 		void Prepend (const TCollection_AsciiString & I,TColStd_ListIteratorOfListOfAsciiString & theIt);
-		%feature("autodoc", "Args:
-	Other(TColStd_ListOfAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfAsciiString &
+	:rtype: None
+") Prepend;
 		void Prepend (TColStd_ListOfAsciiString & Other);
-		%feature("autodoc", "Args:
-	I(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: TCollection_AsciiString &
+	:rtype: None
+") Append;
 		void Append (const TCollection_AsciiString & I);
-		%feature("autodoc", "Args:
-	I(TCollection_AsciiString)
-	theIt(TColStd_ListIteratorOfListOfAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: TCollection_AsciiString &
+	:param theIt:
+	:type theIt: TColStd_ListIteratorOfListOfAsciiString &
+	:rtype: None
+") Append;
 		void Append (const TCollection_AsciiString & I,TColStd_ListIteratorOfListOfAsciiString & theIt);
-		%feature("autodoc", "Args:
-	Other(TColStd_ListOfAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfAsciiString &
+	:rtype: None
+") Append;
 		void Append (TColStd_ListOfAsciiString & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") First;
 		TCollection_AsciiString & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") Last;
 		TCollection_AsciiString & Last ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(TColStd_ListIteratorOfListOfAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: TColStd_ListIteratorOfListOfAsciiString &
+	:rtype: None
+") Remove;
 		void Remove (TColStd_ListIteratorOfListOfAsciiString & It);
-		%feature("autodoc", "Args:
-	I(TCollection_AsciiString)
-	It(TColStd_ListIteratorOfListOfAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: TCollection_AsciiString &
+	:param It:
+	:type It: TColStd_ListIteratorOfListOfAsciiString &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const TCollection_AsciiString & I,TColStd_ListIteratorOfListOfAsciiString & It);
-		%feature("autodoc", "Args:
-	Other(TColStd_ListOfAsciiString)
-	It(TColStd_ListIteratorOfListOfAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfAsciiString &
+	:param It:
+	:type It: TColStd_ListIteratorOfListOfAsciiString &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (TColStd_ListOfAsciiString & Other,TColStd_ListIteratorOfListOfAsciiString & It);
-		%feature("autodoc", "Args:
-	I(TCollection_AsciiString)
-	It(TColStd_ListIteratorOfListOfAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: TCollection_AsciiString &
+	:param It:
+	:type It: TColStd_ListIteratorOfListOfAsciiString &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const TCollection_AsciiString & I,TColStd_ListIteratorOfListOfAsciiString & It);
-		%feature("autodoc", "Args:
-	Other(TColStd_ListOfAsciiString)
-	It(TColStd_ListIteratorOfListOfAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfAsciiString &
+	:param It:
+	:type It: TColStd_ListIteratorOfListOfAsciiString &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (TColStd_ListOfAsciiString & Other,TColStd_ListIteratorOfListOfAsciiString & It);
 };
 
@@ -10280,99 +7741,61 @@ def __del__(self):
 %nodefaultctor TColStd_ListOfInteger;
 class TColStd_ListOfInteger {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_ListOfInteger;
+		%feature("autodoc", "	:rtype: None
+") TColStd_ListOfInteger;
 		 TColStd_ListOfInteger ();
-		%feature("autodoc", "Args:
-	Other(TColStd_ListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfInteger &
+	:rtype: None
+") Assign;
 		void Assign (const TColStd_ListOfInteger & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_ListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfInteger &
+	:rtype: None
+") operator=;
 		void operator = (const TColStd_ListOfInteger & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer &
+	:rtype: None
+") Prepend;
 		void Prepend (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	theIt(TColStd_ListIteratorOfListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer &
+	:param theIt:
+	:type theIt: TColStd_ListIteratorOfListOfInteger &
+	:rtype: None
+") Prepend;
 		void Prepend (Standard_Integer &OutValue,TColStd_ListIteratorOfListOfInteger & theIt);
-		%feature("autodoc", "Args:
-	Other(TColStd_ListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfInteger &
+	:rtype: None
+") Prepend;
 		void Prepend (TColStd_ListOfInteger & Other);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer &
+	:rtype: None
+") Append;
 		void Append (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	theIt(TColStd_ListIteratorOfListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer &
+	:param theIt:
+	:type theIt: TColStd_ListIteratorOfListOfInteger &
+	:rtype: None
+") Append;
 		void Append (Standard_Integer &OutValue,TColStd_ListIteratorOfListOfInteger & theIt);
-		%feature("autodoc", "Args:
-	Other(TColStd_ListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfInteger &
+	:rtype: None
+") Append;
 		void Append (TColStd_ListOfInteger & Other);
 
             %feature("autodoc","1");
@@ -10400,56 +7823,41 @@ No detailed docstring for this function.") Append;
                 $self->Last()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+            		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(TColStd_ListIteratorOfListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: TColStd_ListIteratorOfListOfInteger &
+	:rtype: None
+") Remove;
 		void Remove (TColStd_ListIteratorOfListOfInteger & It);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	It(TColStd_ListIteratorOfListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer &
+	:param It:
+	:type It: TColStd_ListIteratorOfListOfInteger &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (Standard_Integer &OutValue,TColStd_ListIteratorOfListOfInteger & It);
-		%feature("autodoc", "Args:
-	Other(TColStd_ListOfInteger)
-	It(TColStd_ListIteratorOfListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfInteger &
+	:param It:
+	:type It: TColStd_ListIteratorOfListOfInteger &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (TColStd_ListOfInteger & Other,TColStd_ListIteratorOfListOfInteger & It);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	It(TColStd_ListIteratorOfListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer &
+	:param It:
+	:type It: TColStd_ListIteratorOfListOfInteger &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (Standard_Integer &OutValue,TColStd_ListIteratorOfListOfInteger & It);
-		%feature("autodoc", "Args:
-	Other(TColStd_ListOfInteger)
-	It(TColStd_ListIteratorOfListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfInteger &
+	:param It:
+	:type It: TColStd_ListIteratorOfListOfInteger &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (TColStd_ListOfInteger & Other,TColStd_ListIteratorOfListOfInteger & It);
 };
 
@@ -10471,99 +7879,61 @@ def __del__(self):
 %nodefaultctor TColStd_ListOfReal;
 class TColStd_ListOfReal {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_ListOfReal;
+		%feature("autodoc", "	:rtype: None
+") TColStd_ListOfReal;
 		 TColStd_ListOfReal ();
-		%feature("autodoc", "Args:
-	Other(TColStd_ListOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfReal &
+	:rtype: None
+") Assign;
 		void Assign (const TColStd_ListOfReal & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_ListOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfReal &
+	:rtype: None
+") operator=;
 		void operator = (const TColStd_ListOfReal & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: float &
+	:rtype: None
+") Prepend;
 		void Prepend (const Standard_Real & I);
-		%feature("autodoc", "Args:
-	I(Standard_Real)
-	theIt(TColStd_ListIteratorOfListOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: float &
+	:param theIt:
+	:type theIt: TColStd_ListIteratorOfListOfReal &
+	:rtype: None
+") Prepend;
 		void Prepend (const Standard_Real & I,TColStd_ListIteratorOfListOfReal & theIt);
-		%feature("autodoc", "Args:
-	Other(TColStd_ListOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfReal &
+	:rtype: None
+") Prepend;
 		void Prepend (TColStd_ListOfReal & Other);
-		%feature("autodoc", "Args:
-	I(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: float &
+	:rtype: None
+") Append;
 		void Append (const Standard_Real & I);
-		%feature("autodoc", "Args:
-	I(Standard_Real)
-	theIt(TColStd_ListIteratorOfListOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: float &
+	:param theIt:
+	:type theIt: TColStd_ListIteratorOfListOfReal &
+	:rtype: None
+") Append;
 		void Append (const Standard_Real & I,TColStd_ListIteratorOfListOfReal & theIt);
-		%feature("autodoc", "Args:
-	Other(TColStd_ListOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfReal &
+	:rtype: None
+") Append;
 		void Append (TColStd_ListOfReal & Other);
 
             %feature("autodoc","1");
@@ -10591,56 +7961,41 @@ No detailed docstring for this function.") Append;
                 $self->Last()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+            		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(TColStd_ListIteratorOfListOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: TColStd_ListIteratorOfListOfReal &
+	:rtype: None
+") Remove;
 		void Remove (TColStd_ListIteratorOfListOfReal & It);
-		%feature("autodoc", "Args:
-	I(Standard_Real)
-	It(TColStd_ListIteratorOfListOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: float &
+	:param It:
+	:type It: TColStd_ListIteratorOfListOfReal &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Real & I,TColStd_ListIteratorOfListOfReal & It);
-		%feature("autodoc", "Args:
-	Other(TColStd_ListOfReal)
-	It(TColStd_ListIteratorOfListOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfReal &
+	:param It:
+	:type It: TColStd_ListIteratorOfListOfReal &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (TColStd_ListOfReal & Other,TColStd_ListIteratorOfListOfReal & It);
-		%feature("autodoc", "Args:
-	I(Standard_Real)
-	It(TColStd_ListIteratorOfListOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: float &
+	:param It:
+	:type It: TColStd_ListIteratorOfListOfReal &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Real & I,TColStd_ListIteratorOfListOfReal & It);
-		%feature("autodoc", "Args:
-	Other(TColStd_ListOfReal)
-	It(TColStd_ListIteratorOfListOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfReal &
+	:param It:
+	:type It: TColStd_ListIteratorOfListOfReal &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (TColStd_ListOfReal & Other,TColStd_ListIteratorOfListOfReal & It);
 };
 
@@ -10662,164 +8017,103 @@ def __del__(self):
 %nodefaultctor TColStd_ListOfTransient;
 class TColStd_ListOfTransient {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_ListOfTransient;
+		%feature("autodoc", "	:rtype: None
+") TColStd_ListOfTransient;
 		 TColStd_ListOfTransient ();
-		%feature("autodoc", "Args:
-	Other(TColStd_ListOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfTransient &
+	:rtype: None
+") Assign;
 		void Assign (const TColStd_ListOfTransient & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_ListOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfTransient &
+	:rtype: None
+") operator=;
 		void operator = (const TColStd_ListOfTransient & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Standard_Transient &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Standard_Transient & I);
-		%feature("autodoc", "Args:
-	I(Handle_Standard_Transient)
-	theIt(TColStd_ListIteratorOfListOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Standard_Transient &
+	:param theIt:
+	:type theIt: TColStd_ListIteratorOfListOfTransient &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Standard_Transient & I,TColStd_ListIteratorOfListOfTransient & theIt);
-		%feature("autodoc", "Args:
-	Other(TColStd_ListOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfTransient &
+	:rtype: None
+") Prepend;
 		void Prepend (TColStd_ListOfTransient & Other);
-		%feature("autodoc", "Args:
-	I(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Standard_Transient &
+	:rtype: None
+") Append;
 		void Append (const Handle_Standard_Transient & I);
-		%feature("autodoc", "Args:
-	I(Handle_Standard_Transient)
-	theIt(TColStd_ListIteratorOfListOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Standard_Transient &
+	:param theIt:
+	:type theIt: TColStd_ListIteratorOfListOfTransient &
+	:rtype: None
+") Append;
 		void Append (const Handle_Standard_Transient & I,TColStd_ListIteratorOfListOfTransient & theIt);
-		%feature("autodoc", "Args:
-	Other(TColStd_ListOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfTransient &
+	:rtype: None
+") Append;
 		void Append (TColStd_ListOfTransient & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") First;
 		Handle_Standard_Transient & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Last;
 		Handle_Standard_Transient & Last ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(TColStd_ListIteratorOfListOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: TColStd_ListIteratorOfListOfTransient &
+	:rtype: None
+") Remove;
 		void Remove (TColStd_ListIteratorOfListOfTransient & It);
-		%feature("autodoc", "Args:
-	I(Handle_Standard_Transient)
-	It(TColStd_ListIteratorOfListOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Standard_Transient &
+	:param It:
+	:type It: TColStd_ListIteratorOfListOfTransient &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Handle_Standard_Transient & I,TColStd_ListIteratorOfListOfTransient & It);
-		%feature("autodoc", "Args:
-	Other(TColStd_ListOfTransient)
-	It(TColStd_ListIteratorOfListOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfTransient &
+	:param It:
+	:type It: TColStd_ListIteratorOfListOfTransient &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (TColStd_ListOfTransient & Other,TColStd_ListIteratorOfListOfTransient & It);
-		%feature("autodoc", "Args:
-	I(Handle_Standard_Transient)
-	It(TColStd_ListIteratorOfListOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Standard_Transient &
+	:param It:
+	:type It: TColStd_ListIteratorOfListOfTransient &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Handle_Standard_Transient & I,TColStd_ListIteratorOfListOfTransient & It);
-		%feature("autodoc", "Args:
-	Other(TColStd_ListOfTransient)
-	It(TColStd_ListIteratorOfListOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfTransient &
+	:param It:
+	:type It: TColStd_ListIteratorOfListOfTransient &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (TColStd_ListOfTransient & Other,TColStd_ListIteratorOfListOfTransient & It);
 };
 
@@ -10841,23 +8135,19 @@ def __del__(self):
 %nodefaultctor TColStd_MapIntegerHasher;
 class TColStd_MapIntegerHasher {
 	public:
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	Upper(Standard_Integer)
-
-Returns:
-	static Standard_Integer
-
-No detailed docstring for this function.") HashCode;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param Upper:
+	:type Upper: Standard_Integer
+	:rtype: int
+") HashCode;
 		static Standard_Integer HashCode (Standard_Integer &OutValue,const Standard_Integer Upper);
-		%feature("autodoc", "Args:
-	K1(Standard_Integer)
-	K2(Standard_Integer)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") IsEqual;
+		%feature("autodoc", "	:param K1:
+	:type K1: Standard_Integer &
+	:param K2:
+	:type K2: Standard_Integer &
+	:rtype: bool
+") IsEqual;
 		static Standard_Boolean IsEqual (Standard_Integer &OutValue,Standard_Integer &OutValue);
 };
 
@@ -10879,35 +8169,21 @@ def __del__(self):
 %nodefaultctor TColStd_MapIteratorOfMapOfAsciiString;
 class TColStd_MapIteratorOfMapOfAsciiString : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_MapIteratorOfMapOfAsciiString;
+		%feature("autodoc", "	:rtype: None
+") TColStd_MapIteratorOfMapOfAsciiString;
 		 TColStd_MapIteratorOfMapOfAsciiString ();
-		%feature("autodoc", "Args:
-	aMap(TColStd_MapOfAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_MapIteratorOfMapOfAsciiString;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TColStd_MapOfAsciiString &
+	:rtype: None
+") TColStd_MapIteratorOfMapOfAsciiString;
 		 TColStd_MapIteratorOfMapOfAsciiString (const TColStd_MapOfAsciiString & aMap);
-		%feature("autodoc", "Args:
-	aMap(TColStd_MapOfAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TColStd_MapOfAsciiString &
+	:rtype: None
+") Initialize;
 		void Initialize (const TColStd_MapOfAsciiString & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") Key;
 		const TCollection_AsciiString & Key ();
 };
 
@@ -10929,35 +8205,21 @@ def __del__(self):
 %nodefaultctor TColStd_MapIteratorOfMapOfInteger;
 class TColStd_MapIteratorOfMapOfInteger : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_MapIteratorOfMapOfInteger;
+		%feature("autodoc", "	:rtype: None
+") TColStd_MapIteratorOfMapOfInteger;
 		 TColStd_MapIteratorOfMapOfInteger ();
-		%feature("autodoc", "Args:
-	aMap(TColStd_MapOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_MapIteratorOfMapOfInteger;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TColStd_MapOfInteger &
+	:rtype: None
+") TColStd_MapIteratorOfMapOfInteger;
 		 TColStd_MapIteratorOfMapOfInteger (const TColStd_MapOfInteger & aMap);
-		%feature("autodoc", "Args:
-	aMap(TColStd_MapOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TColStd_MapOfInteger &
+	:rtype: None
+") Initialize;
 		void Initialize (const TColStd_MapOfInteger & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: int
+") Key;
 		const Standard_Integer & Key ();
 };
 
@@ -10979,35 +8241,21 @@ def __del__(self):
 %nodefaultctor TColStd_MapIteratorOfMapOfReal;
 class TColStd_MapIteratorOfMapOfReal : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_MapIteratorOfMapOfReal;
+		%feature("autodoc", "	:rtype: None
+") TColStd_MapIteratorOfMapOfReal;
 		 TColStd_MapIteratorOfMapOfReal ();
-		%feature("autodoc", "Args:
-	aMap(TColStd_MapOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_MapIteratorOfMapOfReal;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TColStd_MapOfReal &
+	:rtype: None
+") TColStd_MapIteratorOfMapOfReal;
 		 TColStd_MapIteratorOfMapOfReal (const TColStd_MapOfReal & aMap);
-		%feature("autodoc", "Args:
-	aMap(TColStd_MapOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TColStd_MapOfReal &
+	:rtype: None
+") Initialize;
 		void Initialize (const TColStd_MapOfReal & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: float
+") Key;
 		const Standard_Real & Key ();
 };
 
@@ -11029,35 +8277,21 @@ def __del__(self):
 %nodefaultctor TColStd_MapIteratorOfMapOfTransient;
 class TColStd_MapIteratorOfMapOfTransient : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_MapIteratorOfMapOfTransient;
+		%feature("autodoc", "	:rtype: None
+") TColStd_MapIteratorOfMapOfTransient;
 		 TColStd_MapIteratorOfMapOfTransient ();
-		%feature("autodoc", "Args:
-	aMap(TColStd_MapOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_MapIteratorOfMapOfTransient;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TColStd_MapOfTransient &
+	:rtype: None
+") TColStd_MapIteratorOfMapOfTransient;
 		 TColStd_MapIteratorOfMapOfTransient (const TColStd_MapOfTransient & aMap);
-		%feature("autodoc", "Args:
-	aMap(TColStd_MapOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TColStd_MapOfTransient &
+	:rtype: None
+") Initialize;
 		void Initialize (const TColStd_MapOfTransient & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Key;
 		const Handle_Standard_Transient & Key ();
 };
 
@@ -11079,49 +8313,39 @@ def __del__(self):
 %nodefaultctor TColStd_MapIteratorOfPackedMapOfInteger;
 class TColStd_MapIteratorOfPackedMapOfInteger : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* /// Empty Constructor.
 
-/// Empty Constructor.") TColStd_MapIteratorOfPackedMapOfInteger;
+	:rtype: None
+") TColStd_MapIteratorOfPackedMapOfInteger;
 		 TColStd_MapIteratorOfPackedMapOfInteger ();
-		%feature("autodoc", "Args:
-	&(TColStd_PackedMapOfInteger)
+		%feature("autodoc", "	* /// Constructor.
 
-Returns:
-	None
-
-/// Constructor.") TColStd_MapIteratorOfPackedMapOfInteger;
+	:param &:
+	:type &: TColStd_PackedMapOfInteger
+	:rtype: None
+") TColStd_MapIteratorOfPackedMapOfInteger;
 		 TColStd_MapIteratorOfPackedMapOfInteger (const TColStd_PackedMapOfInteger &);
-		%feature("autodoc", "Args:
-	&(TColStd_PackedMapOfInteger)
+		%feature("autodoc", "	* /// Re-initialize with the same or another Map instance.
 
-Returns:
-	None
-
-/// Re-initialize with the same or another Map instance.") Initialize;
+	:param &:
+	:type &: TColStd_PackedMapOfInteger
+	:rtype: None
+") Initialize;
 		void Initialize (const TColStd_PackedMapOfInteger &);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* /// Restart the iteraton
 
-/// Restart the iteraton") Reset;
+	:rtype: None
+") Reset;
 		void Reset ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	inline Standard_Integer
+		%feature("autodoc", "	* /// Query the iterated key. Defined in TColStd_PackedMapOfInteger.cxx
 
-/// Query the iterated key. Defined in TColStd_PackedMapOfInteger.cxx") Key;
+	:rtype: inline int
+") Key;
 		inline Standard_Integer Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* /// Increment the iterator
 
-/// Increment the iterator") Next;
+	:rtype: None
+") Next;
 		void Next ();
 };
 
@@ -11143,68 +8367,43 @@ def __del__(self):
 %nodefaultctor TColStd_MapOfAsciiString;
 class TColStd_MapOfAsciiString : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_MapOfAsciiString;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TColStd_MapOfAsciiString;
 		 TColStd_MapOfAsciiString (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TColStd_MapOfAsciiString)
-
-Returns:
-	TColStd_MapOfAsciiString
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_MapOfAsciiString &
+	:rtype: TColStd_MapOfAsciiString
+") Assign;
 		TColStd_MapOfAsciiString & Assign (const TColStd_MapOfAsciiString & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_MapOfAsciiString)
-
-Returns:
-	TColStd_MapOfAsciiString
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_MapOfAsciiString &
+	:rtype: TColStd_MapOfAsciiString
+") operator=;
 		TColStd_MapOfAsciiString & operator = (const TColStd_MapOfAsciiString & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	aKey(TCollection_AsciiString)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: TCollection_AsciiString &
+	:rtype: bool
+") Add;
 		Standard_Boolean Add (const TCollection_AsciiString & aKey);
-		%feature("autodoc", "Args:
-	aKey(TCollection_AsciiString)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: TCollection_AsciiString &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const TCollection_AsciiString & aKey);
-		%feature("autodoc", "Args:
-	aKey(TCollection_AsciiString)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: TCollection_AsciiString &
+	:rtype: bool
+") Remove;
 		Standard_Boolean Remove (const TCollection_AsciiString & aKey);
 };
 
@@ -11226,68 +8425,43 @@ def __del__(self):
 %nodefaultctor TColStd_MapOfInteger;
 class TColStd_MapOfInteger : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_MapOfInteger;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TColStd_MapOfInteger;
 		 TColStd_MapOfInteger (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TColStd_MapOfInteger)
-
-Returns:
-	TColStd_MapOfInteger
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_MapOfInteger &
+	:rtype: TColStd_MapOfInteger
+") Assign;
 		TColStd_MapOfInteger & Assign (const TColStd_MapOfInteger & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_MapOfInteger)
-
-Returns:
-	TColStd_MapOfInteger
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_MapOfInteger &
+	:rtype: TColStd_MapOfInteger
+") operator=;
 		TColStd_MapOfInteger & operator = (const TColStd_MapOfInteger & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	aKey(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: Standard_Integer &
+	:rtype: bool
+") Add;
 		Standard_Boolean Add (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	aKey(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: Standard_Integer &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	aKey(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: Standard_Integer &
+	:rtype: bool
+") Remove;
 		Standard_Boolean Remove (Standard_Integer &OutValue);
 };
 
@@ -11309,68 +8483,43 @@ def __del__(self):
 %nodefaultctor TColStd_MapOfReal;
 class TColStd_MapOfReal : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_MapOfReal;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TColStd_MapOfReal;
 		 TColStd_MapOfReal (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TColStd_MapOfReal)
-
-Returns:
-	TColStd_MapOfReal
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_MapOfReal &
+	:rtype: TColStd_MapOfReal
+") Assign;
 		TColStd_MapOfReal & Assign (const TColStd_MapOfReal & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_MapOfReal)
-
-Returns:
-	TColStd_MapOfReal
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_MapOfReal &
+	:rtype: TColStd_MapOfReal
+") operator=;
 		TColStd_MapOfReal & operator = (const TColStd_MapOfReal & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	aKey(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: float &
+	:rtype: bool
+") Add;
 		Standard_Boolean Add (const Standard_Real & aKey);
-		%feature("autodoc", "Args:
-	aKey(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: float &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const Standard_Real & aKey);
-		%feature("autodoc", "Args:
-	aKey(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: float &
+	:rtype: bool
+") Remove;
 		Standard_Boolean Remove (const Standard_Real & aKey);
 };
 
@@ -11392,68 +8541,43 @@ def __del__(self):
 %nodefaultctor TColStd_MapOfTransient;
 class TColStd_MapOfTransient : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_MapOfTransient;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TColStd_MapOfTransient;
 		 TColStd_MapOfTransient (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TColStd_MapOfTransient)
-
-Returns:
-	TColStd_MapOfTransient
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_MapOfTransient &
+	:rtype: TColStd_MapOfTransient
+") Assign;
 		TColStd_MapOfTransient & Assign (const TColStd_MapOfTransient & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_MapOfTransient)
-
-Returns:
-	TColStd_MapOfTransient
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_MapOfTransient &
+	:rtype: TColStd_MapOfTransient
+") operator=;
 		TColStd_MapOfTransient & operator = (const TColStd_MapOfTransient & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	aKey(Handle_Standard_Transient)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: Handle_Standard_Transient &
+	:rtype: bool
+") Add;
 		Standard_Boolean Add (const Handle_Standard_Transient & aKey);
-		%feature("autodoc", "Args:
-	aKey(Handle_Standard_Transient)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: Handle_Standard_Transient &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const Handle_Standard_Transient & aKey);
-		%feature("autodoc", "Args:
-	aKey(Handle_Standard_Transient)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: Handle_Standard_Transient &
+	:rtype: bool
+") Remove;
 		Standard_Boolean Remove (const Handle_Standard_Transient & aKey);
 };
 
@@ -11475,23 +8599,19 @@ def __del__(self):
 %nodefaultctor TColStd_MapRealHasher;
 class TColStd_MapRealHasher {
 	public:
-		%feature("autodoc", "Args:
-	K(Standard_Real)
-	Upper(Standard_Integer)
-
-Returns:
-	static Standard_Integer
-
-No detailed docstring for this function.") HashCode;
+		%feature("autodoc", "	:param K:
+	:type K: float &
+	:param Upper:
+	:type Upper: Standard_Integer
+	:rtype: int
+") HashCode;
 		static Standard_Integer HashCode (const Standard_Real & K,const Standard_Integer Upper);
-		%feature("autodoc", "Args:
-	K1(Standard_Real)
-	K2(Standard_Real)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") IsEqual;
+		%feature("autodoc", "	:param K1:
+	:type K1: float &
+	:param K2:
+	:type K2: float &
+	:rtype: bool
+") IsEqual;
 		static Standard_Boolean IsEqual (const Standard_Real & K1,const Standard_Real & K2);
 };
 
@@ -11513,23 +8633,19 @@ def __del__(self):
 %nodefaultctor TColStd_MapTransientHasher;
 class TColStd_MapTransientHasher {
 	public:
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-	Upper(Standard_Integer)
-
-Returns:
-	static Standard_Integer
-
-No detailed docstring for this function.") HashCode;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:param Upper:
+	:type Upper: Standard_Integer
+	:rtype: int
+") HashCode;
 		static Standard_Integer HashCode (const Handle_Standard_Transient & K,const Standard_Integer Upper);
-		%feature("autodoc", "Args:
-	K1(Handle_Standard_Transient)
-	K2(Handle_Standard_Transient)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") IsEqual;
+		%feature("autodoc", "	:param K1:
+	:type K1: Handle_Standard_Transient &
+	:param K2:
+	:type K2: Handle_Standard_Transient &
+	:rtype: bool
+") IsEqual;
 		static Standard_Boolean IsEqual (const Handle_Standard_Transient & K1,const Handle_Standard_Transient & K2);
 };
 
@@ -11551,14 +8667,12 @@ def __del__(self):
 %nodefaultctor TColStd_QueueNodeOfQueueOfInteger;
 class TColStd_QueueNodeOfQueueOfInteger : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_QueueNodeOfQueueOfInteger;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_QueueNodeOfQueueOfInteger;
 		 TColStd_QueueNodeOfQueueOfInteger (Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
@@ -11632,14 +8746,12 @@ def __del__(self):
 %nodefaultctor TColStd_QueueNodeOfQueueOfReal;
 class TColStd_QueueNodeOfQueueOfReal : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Standard_Real)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_QueueNodeOfQueueOfReal;
+		%feature("autodoc", "	:param I:
+	:type I: float &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_QueueNodeOfQueueOfReal;
 		 TColStd_QueueNodeOfQueueOfReal (const Standard_Real & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
@@ -11713,21 +8825,15 @@ def __del__(self):
 %nodefaultctor TColStd_QueueNodeOfQueueOfTransient;
 class TColStd_QueueNodeOfQueueOfTransient : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Standard_Transient)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_QueueNodeOfQueueOfTransient;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Standard_Transient &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_QueueNodeOfQueueOfTransient;
 		 TColStd_QueueNodeOfQueueOfTransient (const Handle_Standard_Transient & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Value;
 		Handle_Standard_Transient & Value ();
 };
 
@@ -11788,71 +8894,38 @@ def __del__(self):
 %nodefaultctor TColStd_QueueOfInteger;
 class TColStd_QueueOfInteger {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_QueueOfInteger;
+		%feature("autodoc", "	:rtype: None
+") TColStd_QueueOfInteger;
 		 TColStd_QueueOfInteger ();
-		%feature("autodoc", "Args:
-	Other(TColStd_QueueOfInteger)
-
-Returns:
-	TColStd_QueueOfInteger
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_QueueOfInteger &
+	:rtype: TColStd_QueueOfInteger
+") Assign;
 		const TColStd_QueueOfInteger & Assign (const TColStd_QueueOfInteger & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_QueueOfInteger)
-
-Returns:
-	TColStd_QueueOfInteger
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_QueueOfInteger &
+	:rtype: TColStd_QueueOfInteger
+") operator=;
 		const TColStd_QueueOfInteger & operator = (const TColStd_QueueOfInteger & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Front;
+		%feature("autodoc", "	:rtype: int
+") Front;
 		const Standard_Integer & Front ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	T(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Push;
+		%feature("autodoc", "	:param T:
+	:type T: Standard_Integer &
+	:rtype: None
+") Push;
 		void Push (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Pop;
+		%feature("autodoc", "	:rtype: None
+") Pop;
 		void Pop ();
 
             %feature("autodoc","1");
@@ -11887,71 +8960,38 @@ def __del__(self):
 %nodefaultctor TColStd_QueueOfReal;
 class TColStd_QueueOfReal {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_QueueOfReal;
+		%feature("autodoc", "	:rtype: None
+") TColStd_QueueOfReal;
 		 TColStd_QueueOfReal ();
-		%feature("autodoc", "Args:
-	Other(TColStd_QueueOfReal)
-
-Returns:
-	TColStd_QueueOfReal
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_QueueOfReal &
+	:rtype: TColStd_QueueOfReal
+") Assign;
 		const TColStd_QueueOfReal & Assign (const TColStd_QueueOfReal & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_QueueOfReal)
-
-Returns:
-	TColStd_QueueOfReal
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_QueueOfReal &
+	:rtype: TColStd_QueueOfReal
+") operator=;
 		const TColStd_QueueOfReal & operator = (const TColStd_QueueOfReal & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Front;
+		%feature("autodoc", "	:rtype: float
+") Front;
 		const Standard_Real & Front ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	T(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Push;
+		%feature("autodoc", "	:param T:
+	:type T: float &
+	:rtype: None
+") Push;
 		void Push (const Standard_Real & T);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Pop;
+		%feature("autodoc", "	:rtype: None
+") Pop;
 		void Pop ();
 
             %feature("autodoc","1");
@@ -11986,78 +9026,41 @@ def __del__(self):
 %nodefaultctor TColStd_QueueOfTransient;
 class TColStd_QueueOfTransient {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_QueueOfTransient;
+		%feature("autodoc", "	:rtype: None
+") TColStd_QueueOfTransient;
 		 TColStd_QueueOfTransient ();
-		%feature("autodoc", "Args:
-	Other(TColStd_QueueOfTransient)
-
-Returns:
-	TColStd_QueueOfTransient
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_QueueOfTransient &
+	:rtype: TColStd_QueueOfTransient
+") Assign;
 		const TColStd_QueueOfTransient & Assign (const TColStd_QueueOfTransient & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_QueueOfTransient)
-
-Returns:
-	TColStd_QueueOfTransient
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_QueueOfTransient &
+	:rtype: TColStd_QueueOfTransient
+") operator=;
 		const TColStd_QueueOfTransient & operator = (const TColStd_QueueOfTransient & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Front;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Front;
 		const Handle_Standard_Transient & Front ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	T(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Push;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Standard_Transient &
+	:rtype: None
+") Push;
 		void Push (const Handle_Standard_Transient & T);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Pop;
+		%feature("autodoc", "	:rtype: None
+") Pop;
 		void Pop ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") ChangeFront;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") ChangeFront;
 		Handle_Standard_Transient & ChangeFront ();
 };
 
@@ -12079,22 +9082,17 @@ def __del__(self):
 %nodefaultctor TColStd_SequenceNodeOfSequenceOfAddress;
 class TColStd_SequenceNodeOfSequenceOfAddress : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Standard_Address)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SequenceNodeOfSequenceOfAddress;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Address &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") TColStd_SequenceNodeOfSequenceOfAddress;
 		 TColStd_SequenceNodeOfSequenceOfAddress (const Standard_Address & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Standard_Address
+") Value;
 		Standard_Address & Value ();
 };
 
@@ -12155,22 +9153,17 @@ def __del__(self):
 %nodefaultctor TColStd_SequenceNodeOfSequenceOfAsciiString;
 class TColStd_SequenceNodeOfSequenceOfAsciiString : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(TCollection_AsciiString)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SequenceNodeOfSequenceOfAsciiString;
+		%feature("autodoc", "	:param I:
+	:type I: TCollection_AsciiString &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") TColStd_SequenceNodeOfSequenceOfAsciiString;
 		 TColStd_SequenceNodeOfSequenceOfAsciiString (const TCollection_AsciiString & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") Value;
 		TCollection_AsciiString & Value ();
 };
 
@@ -12231,15 +9224,14 @@ def __del__(self):
 %nodefaultctor TColStd_SequenceNodeOfSequenceOfBoolean;
 class TColStd_SequenceNodeOfSequenceOfBoolean : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Standard_Boolean)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SequenceNodeOfSequenceOfBoolean;
+		%feature("autodoc", "	:param I:
+	:type I: bool
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") TColStd_SequenceNodeOfSequenceOfBoolean;
 		 TColStd_SequenceNodeOfSequenceOfBoolean (const Standard_Boolean & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
 
             %feature("autodoc","1");
@@ -12313,22 +9305,17 @@ def __del__(self):
 %nodefaultctor TColStd_SequenceNodeOfSequenceOfExtendedString;
 class TColStd_SequenceNodeOfSequenceOfExtendedString : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(TCollection_ExtendedString)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SequenceNodeOfSequenceOfExtendedString;
+		%feature("autodoc", "	:param I:
+	:type I: TCollection_ExtendedString &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") TColStd_SequenceNodeOfSequenceOfExtendedString;
 		 TColStd_SequenceNodeOfSequenceOfExtendedString (const TCollection_ExtendedString & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_ExtendedString
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TCollection_ExtendedString
+") Value;
 		TCollection_ExtendedString & Value ();
 };
 
@@ -12389,22 +9376,17 @@ def __del__(self):
 %nodefaultctor TColStd_SequenceNodeOfSequenceOfHAsciiString;
 class TColStd_SequenceNodeOfSequenceOfHAsciiString : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_TCollection_HAsciiString)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SequenceNodeOfSequenceOfHAsciiString;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_TCollection_HAsciiString &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") TColStd_SequenceNodeOfSequenceOfHAsciiString;
 		 TColStd_SequenceNodeOfSequenceOfHAsciiString (const Handle_TCollection_HAsciiString & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TCollection_HAsciiString
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_TCollection_HAsciiString
+") Value;
 		Handle_TCollection_HAsciiString & Value ();
 };
 
@@ -12465,22 +9447,17 @@ def __del__(self):
 %nodefaultctor TColStd_SequenceNodeOfSequenceOfHExtendedString;
 class TColStd_SequenceNodeOfSequenceOfHExtendedString : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_TCollection_HExtendedString)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SequenceNodeOfSequenceOfHExtendedString;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_TCollection_HExtendedString &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") TColStd_SequenceNodeOfSequenceOfHExtendedString;
 		 TColStd_SequenceNodeOfSequenceOfHExtendedString (const Handle_TCollection_HExtendedString & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TCollection_HExtendedString
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_TCollection_HExtendedString
+") Value;
 		Handle_TCollection_HExtendedString & Value ();
 };
 
@@ -12541,15 +9518,14 @@ def __del__(self):
 %nodefaultctor TColStd_SequenceNodeOfSequenceOfInteger;
 class TColStd_SequenceNodeOfSequenceOfInteger : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SequenceNodeOfSequenceOfInteger;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") TColStd_SequenceNodeOfSequenceOfInteger;
 		 TColStd_SequenceNodeOfSequenceOfInteger (Standard_Integer &OutValue,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
 
             %feature("autodoc","1");
@@ -12623,15 +9599,14 @@ def __del__(self):
 %nodefaultctor TColStd_SequenceNodeOfSequenceOfReal;
 class TColStd_SequenceNodeOfSequenceOfReal : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Standard_Real)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SequenceNodeOfSequenceOfReal;
+		%feature("autodoc", "	:param I:
+	:type I: float &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") TColStd_SequenceNodeOfSequenceOfReal;
 		 TColStd_SequenceNodeOfSequenceOfReal (const Standard_Real & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
 
             %feature("autodoc","1");
@@ -12705,22 +9680,17 @@ def __del__(self):
 %nodefaultctor TColStd_SequenceNodeOfSequenceOfTransient;
 class TColStd_SequenceNodeOfSequenceOfTransient : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Standard_Transient)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SequenceNodeOfSequenceOfTransient;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Standard_Transient &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") TColStd_SequenceNodeOfSequenceOfTransient;
 		 TColStd_SequenceNodeOfSequenceOfTransient (const Handle_Standard_Transient & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Value;
 		Handle_Standard_Transient & Value ();
 };
 
@@ -12781,168 +9751,111 @@ def __del__(self):
 %nodefaultctor TColStd_SequenceOfAddress;
 class TColStd_SequenceOfAddress : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SequenceOfAddress;
+		%feature("autodoc", "	:rtype: None
+") TColStd_SequenceOfAddress;
 		 TColStd_SequenceOfAddress ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(TColStd_SequenceOfAddress)
-
-Returns:
-	TColStd_SequenceOfAddress
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfAddress &
+	:rtype: TColStd_SequenceOfAddress
+") Assign;
 		const TColStd_SequenceOfAddress & Assign (const TColStd_SequenceOfAddress & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_SequenceOfAddress)
-
-Returns:
-	TColStd_SequenceOfAddress
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfAddress &
+	:rtype: TColStd_SequenceOfAddress
+") operator=;
 		const TColStd_SequenceOfAddress & operator = (const TColStd_SequenceOfAddress & Other);
-		%feature("autodoc", "Args:
-	T(Standard_Address)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Standard_Address &
+	:rtype: None
+") Append;
 		void Append (const Standard_Address & T);
-		%feature("autodoc", "Args:
-	S(TColStd_SequenceOfAddress)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SequenceOfAddress &
+	:rtype: None
+") Append;
 		void Append (TColStd_SequenceOfAddress & S);
-		%feature("autodoc", "Args:
-	T(Standard_Address)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Standard_Address &
+	:rtype: None
+") Prepend;
 		void Prepend (const Standard_Address & T);
-		%feature("autodoc", "Args:
-	S(TColStd_SequenceOfAddress)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SequenceOfAddress &
+	:rtype: None
+") Prepend;
 		void Prepend (TColStd_SequenceOfAddress & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Standard_Address)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Standard_Address &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Standard_Address & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TColStd_SequenceOfAddress)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TColStd_SequenceOfAddress &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,TColStd_SequenceOfAddress & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Standard_Address)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Standard_Address &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Standard_Address & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TColStd_SequenceOfAddress)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TColStd_SequenceOfAddress &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,TColStd_SequenceOfAddress & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Standard_Address
+") First;
 		const Standard_Address & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Standard_Address
+") Last;
 		const Standard_Address & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(TColStd_SequenceOfAddress)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: TColStd_SequenceOfAddress &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,TColStd_SequenceOfAddress & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Standard_Address
+") Value;
 		const Standard_Address & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Standard_Address)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Standard_Address &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Standard_Address & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Standard_Address
+") ChangeValue;
 		Standard_Address & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -12964,168 +9877,111 @@ def __del__(self):
 %nodefaultctor TColStd_SequenceOfAsciiString;
 class TColStd_SequenceOfAsciiString : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SequenceOfAsciiString;
+		%feature("autodoc", "	:rtype: None
+") TColStd_SequenceOfAsciiString;
 		 TColStd_SequenceOfAsciiString ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(TColStd_SequenceOfAsciiString)
-
-Returns:
-	TColStd_SequenceOfAsciiString
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfAsciiString &
+	:rtype: TColStd_SequenceOfAsciiString
+") Assign;
 		const TColStd_SequenceOfAsciiString & Assign (const TColStd_SequenceOfAsciiString & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_SequenceOfAsciiString)
-
-Returns:
-	TColStd_SequenceOfAsciiString
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfAsciiString &
+	:rtype: TColStd_SequenceOfAsciiString
+") operator=;
 		const TColStd_SequenceOfAsciiString & operator = (const TColStd_SequenceOfAsciiString & Other);
-		%feature("autodoc", "Args:
-	T(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: TCollection_AsciiString &
+	:rtype: None
+") Append;
 		void Append (const TCollection_AsciiString & T);
-		%feature("autodoc", "Args:
-	S(TColStd_SequenceOfAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SequenceOfAsciiString &
+	:rtype: None
+") Append;
 		void Append (TColStd_SequenceOfAsciiString & S);
-		%feature("autodoc", "Args:
-	T(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: TCollection_AsciiString &
+	:rtype: None
+") Prepend;
 		void Prepend (const TCollection_AsciiString & T);
-		%feature("autodoc", "Args:
-	S(TColStd_SequenceOfAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SequenceOfAsciiString &
+	:rtype: None
+") Prepend;
 		void Prepend (TColStd_SequenceOfAsciiString & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: TCollection_AsciiString &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const TCollection_AsciiString & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TColStd_SequenceOfAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TColStd_SequenceOfAsciiString &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,TColStd_SequenceOfAsciiString & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: TCollection_AsciiString &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const TCollection_AsciiString & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TColStd_SequenceOfAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TColStd_SequenceOfAsciiString &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,TColStd_SequenceOfAsciiString & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") First;
 		const TCollection_AsciiString & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") Last;
 		const TCollection_AsciiString & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(TColStd_SequenceOfAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: TColStd_SequenceOfAsciiString &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,TColStd_SequenceOfAsciiString & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TCollection_AsciiString
+") Value;
 		const TCollection_AsciiString & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: TCollection_AsciiString &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const TCollection_AsciiString & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TCollection_AsciiString
+") ChangeValue;
 		TCollection_AsciiString & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -13147,168 +10003,111 @@ def __del__(self):
 %nodefaultctor TColStd_SequenceOfBoolean;
 class TColStd_SequenceOfBoolean : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SequenceOfBoolean;
+		%feature("autodoc", "	:rtype: None
+") TColStd_SequenceOfBoolean;
 		 TColStd_SequenceOfBoolean ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(TColStd_SequenceOfBoolean)
-
-Returns:
-	TColStd_SequenceOfBoolean
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfBoolean &
+	:rtype: TColStd_SequenceOfBoolean
+") Assign;
 		const TColStd_SequenceOfBoolean & Assign (const TColStd_SequenceOfBoolean & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_SequenceOfBoolean)
-
-Returns:
-	TColStd_SequenceOfBoolean
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfBoolean &
+	:rtype: TColStd_SequenceOfBoolean
+") operator=;
 		const TColStd_SequenceOfBoolean & operator = (const TColStd_SequenceOfBoolean & Other);
-		%feature("autodoc", "Args:
-	T(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: bool
+	:rtype: None
+") Append;
 		void Append (const Standard_Boolean & T);
-		%feature("autodoc", "Args:
-	S(TColStd_SequenceOfBoolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SequenceOfBoolean &
+	:rtype: None
+") Append;
 		void Append (TColStd_SequenceOfBoolean & S);
-		%feature("autodoc", "Args:
-	T(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: bool
+	:rtype: None
+") Prepend;
 		void Prepend (const Standard_Boolean & T);
-		%feature("autodoc", "Args:
-	S(TColStd_SequenceOfBoolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SequenceOfBoolean &
+	:rtype: None
+") Prepend;
 		void Prepend (TColStd_SequenceOfBoolean & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: bool
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Standard_Boolean & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TColStd_SequenceOfBoolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TColStd_SequenceOfBoolean &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,TColStd_SequenceOfBoolean & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: bool
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Standard_Boolean & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TColStd_SequenceOfBoolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TColStd_SequenceOfBoolean &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,TColStd_SequenceOfBoolean & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: bool
+") First;
 		const Standard_Boolean & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: bool
+") Last;
 		const Standard_Boolean & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(TColStd_SequenceOfBoolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: TColStd_SequenceOfBoolean &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,TColStd_SequenceOfBoolean & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: bool
+") Value;
 		const Standard_Boolean & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: bool
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Standard_Boolean & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: bool
+") ChangeValue;
 		Standard_Boolean & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -13330,168 +10129,111 @@ def __del__(self):
 %nodefaultctor TColStd_SequenceOfExtendedString;
 class TColStd_SequenceOfExtendedString : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SequenceOfExtendedString;
+		%feature("autodoc", "	:rtype: None
+") TColStd_SequenceOfExtendedString;
 		 TColStd_SequenceOfExtendedString ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(TColStd_SequenceOfExtendedString)
-
-Returns:
-	TColStd_SequenceOfExtendedString
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfExtendedString &
+	:rtype: TColStd_SequenceOfExtendedString
+") Assign;
 		const TColStd_SequenceOfExtendedString & Assign (const TColStd_SequenceOfExtendedString & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_SequenceOfExtendedString)
-
-Returns:
-	TColStd_SequenceOfExtendedString
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfExtendedString &
+	:rtype: TColStd_SequenceOfExtendedString
+") operator=;
 		const TColStd_SequenceOfExtendedString & operator = (const TColStd_SequenceOfExtendedString & Other);
-		%feature("autodoc", "Args:
-	T(TCollection_ExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: TCollection_ExtendedString &
+	:rtype: None
+") Append;
 		void Append (const TCollection_ExtendedString & T);
-		%feature("autodoc", "Args:
-	S(TColStd_SequenceOfExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SequenceOfExtendedString &
+	:rtype: None
+") Append;
 		void Append (TColStd_SequenceOfExtendedString & S);
-		%feature("autodoc", "Args:
-	T(TCollection_ExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: TCollection_ExtendedString &
+	:rtype: None
+") Prepend;
 		void Prepend (const TCollection_ExtendedString & T);
-		%feature("autodoc", "Args:
-	S(TColStd_SequenceOfExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SequenceOfExtendedString &
+	:rtype: None
+") Prepend;
 		void Prepend (TColStd_SequenceOfExtendedString & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(TCollection_ExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: TCollection_ExtendedString &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const TCollection_ExtendedString & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TColStd_SequenceOfExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TColStd_SequenceOfExtendedString &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,TColStd_SequenceOfExtendedString & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(TCollection_ExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: TCollection_ExtendedString &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const TCollection_ExtendedString & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TColStd_SequenceOfExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TColStd_SequenceOfExtendedString &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,TColStd_SequenceOfExtendedString & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_ExtendedString
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: TCollection_ExtendedString
+") First;
 		const TCollection_ExtendedString & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_ExtendedString
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: TCollection_ExtendedString
+") Last;
 		const TCollection_ExtendedString & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(TColStd_SequenceOfExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: TColStd_SequenceOfExtendedString &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,TColStd_SequenceOfExtendedString & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TCollection_ExtendedString
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TCollection_ExtendedString
+") Value;
 		const TCollection_ExtendedString & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(TCollection_ExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: TCollection_ExtendedString &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const TCollection_ExtendedString & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TCollection_ExtendedString
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TCollection_ExtendedString
+") ChangeValue;
 		TCollection_ExtendedString & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -13513,168 +10255,111 @@ def __del__(self):
 %nodefaultctor TColStd_SequenceOfHAsciiString;
 class TColStd_SequenceOfHAsciiString : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SequenceOfHAsciiString;
+		%feature("autodoc", "	:rtype: None
+") TColStd_SequenceOfHAsciiString;
 		 TColStd_SequenceOfHAsciiString ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(TColStd_SequenceOfHAsciiString)
-
-Returns:
-	TColStd_SequenceOfHAsciiString
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfHAsciiString &
+	:rtype: TColStd_SequenceOfHAsciiString
+") Assign;
 		const TColStd_SequenceOfHAsciiString & Assign (const TColStd_SequenceOfHAsciiString & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_SequenceOfHAsciiString)
-
-Returns:
-	TColStd_SequenceOfHAsciiString
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfHAsciiString &
+	:rtype: TColStd_SequenceOfHAsciiString
+") operator=;
 		const TColStd_SequenceOfHAsciiString & operator = (const TColStd_SequenceOfHAsciiString & Other);
-		%feature("autodoc", "Args:
-	T(Handle_TCollection_HAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_TCollection_HAsciiString &
+	:rtype: None
+") Append;
 		void Append (const Handle_TCollection_HAsciiString & T);
-		%feature("autodoc", "Args:
-	S(TColStd_SequenceOfHAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SequenceOfHAsciiString &
+	:rtype: None
+") Append;
 		void Append (TColStd_SequenceOfHAsciiString & S);
-		%feature("autodoc", "Args:
-	T(Handle_TCollection_HAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_TCollection_HAsciiString &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_TCollection_HAsciiString & T);
-		%feature("autodoc", "Args:
-	S(TColStd_SequenceOfHAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SequenceOfHAsciiString &
+	:rtype: None
+") Prepend;
 		void Prepend (TColStd_SequenceOfHAsciiString & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_TCollection_HAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_TCollection_HAsciiString &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_TCollection_HAsciiString & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TColStd_SequenceOfHAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TColStd_SequenceOfHAsciiString &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,TColStd_SequenceOfHAsciiString & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_TCollection_HAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_TCollection_HAsciiString &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_TCollection_HAsciiString & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TColStd_SequenceOfHAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TColStd_SequenceOfHAsciiString &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,TColStd_SequenceOfHAsciiString & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TCollection_HAsciiString
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_TCollection_HAsciiString
+") First;
 		const Handle_TCollection_HAsciiString & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TCollection_HAsciiString
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_TCollection_HAsciiString
+") Last;
 		const Handle_TCollection_HAsciiString & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(TColStd_SequenceOfHAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: TColStd_SequenceOfHAsciiString &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,TColStd_SequenceOfHAsciiString & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_TCollection_HAsciiString
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_TCollection_HAsciiString
+") Value;
 		const Handle_TCollection_HAsciiString & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_TCollection_HAsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_TCollection_HAsciiString &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_TCollection_HAsciiString & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_TCollection_HAsciiString
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_TCollection_HAsciiString
+") ChangeValue;
 		Handle_TCollection_HAsciiString & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -13696,168 +10381,111 @@ def __del__(self):
 %nodefaultctor TColStd_SequenceOfHExtendedString;
 class TColStd_SequenceOfHExtendedString : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SequenceOfHExtendedString;
+		%feature("autodoc", "	:rtype: None
+") TColStd_SequenceOfHExtendedString;
 		 TColStd_SequenceOfHExtendedString ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(TColStd_SequenceOfHExtendedString)
-
-Returns:
-	TColStd_SequenceOfHExtendedString
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfHExtendedString &
+	:rtype: TColStd_SequenceOfHExtendedString
+") Assign;
 		const TColStd_SequenceOfHExtendedString & Assign (const TColStd_SequenceOfHExtendedString & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_SequenceOfHExtendedString)
-
-Returns:
-	TColStd_SequenceOfHExtendedString
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfHExtendedString &
+	:rtype: TColStd_SequenceOfHExtendedString
+") operator=;
 		const TColStd_SequenceOfHExtendedString & operator = (const TColStd_SequenceOfHExtendedString & Other);
-		%feature("autodoc", "Args:
-	T(Handle_TCollection_HExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_TCollection_HExtendedString &
+	:rtype: None
+") Append;
 		void Append (const Handle_TCollection_HExtendedString & T);
-		%feature("autodoc", "Args:
-	S(TColStd_SequenceOfHExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SequenceOfHExtendedString &
+	:rtype: None
+") Append;
 		void Append (TColStd_SequenceOfHExtendedString & S);
-		%feature("autodoc", "Args:
-	T(Handle_TCollection_HExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_TCollection_HExtendedString &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_TCollection_HExtendedString & T);
-		%feature("autodoc", "Args:
-	S(TColStd_SequenceOfHExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SequenceOfHExtendedString &
+	:rtype: None
+") Prepend;
 		void Prepend (TColStd_SequenceOfHExtendedString & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_TCollection_HExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_TCollection_HExtendedString &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_TCollection_HExtendedString & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TColStd_SequenceOfHExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TColStd_SequenceOfHExtendedString &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,TColStd_SequenceOfHExtendedString & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_TCollection_HExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_TCollection_HExtendedString &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_TCollection_HExtendedString & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TColStd_SequenceOfHExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TColStd_SequenceOfHExtendedString &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,TColStd_SequenceOfHExtendedString & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TCollection_HExtendedString
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_TCollection_HExtendedString
+") First;
 		const Handle_TCollection_HExtendedString & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TCollection_HExtendedString
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_TCollection_HExtendedString
+") Last;
 		const Handle_TCollection_HExtendedString & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(TColStd_SequenceOfHExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: TColStd_SequenceOfHExtendedString &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,TColStd_SequenceOfHExtendedString & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_TCollection_HExtendedString
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_TCollection_HExtendedString
+") Value;
 		const Handle_TCollection_HExtendedString & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_TCollection_HExtendedString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_TCollection_HExtendedString &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_TCollection_HExtendedString & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_TCollection_HExtendedString
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_TCollection_HExtendedString
+") ChangeValue;
 		Handle_TCollection_HExtendedString & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -13879,168 +10507,111 @@ def __del__(self):
 %nodefaultctor TColStd_SequenceOfInteger;
 class TColStd_SequenceOfInteger : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SequenceOfInteger;
+		%feature("autodoc", "	:rtype: None
+") TColStd_SequenceOfInteger;
 		 TColStd_SequenceOfInteger ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(TColStd_SequenceOfInteger)
-
-Returns:
-	TColStd_SequenceOfInteger
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfInteger &
+	:rtype: TColStd_SequenceOfInteger
+") Assign;
 		const TColStd_SequenceOfInteger & Assign (const TColStd_SequenceOfInteger & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_SequenceOfInteger)
-
-Returns:
-	TColStd_SequenceOfInteger
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfInteger &
+	:rtype: TColStd_SequenceOfInteger
+") operator=;
 		const TColStd_SequenceOfInteger & operator = (const TColStd_SequenceOfInteger & Other);
-		%feature("autodoc", "Args:
-	T(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Standard_Integer &
+	:rtype: None
+") Append;
 		void Append (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	S(TColStd_SequenceOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SequenceOfInteger &
+	:rtype: None
+") Append;
 		void Append (TColStd_SequenceOfInteger & S);
-		%feature("autodoc", "Args:
-	T(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Standard_Integer &
+	:rtype: None
+") Prepend;
 		void Prepend (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	S(TColStd_SequenceOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SequenceOfInteger &
+	:rtype: None
+") Prepend;
 		void Prepend (TColStd_SequenceOfInteger & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Standard_Integer &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TColStd_SequenceOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TColStd_SequenceOfInteger &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,TColStd_SequenceOfInteger & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Standard_Integer &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TColStd_SequenceOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TColStd_SequenceOfInteger &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,TColStd_SequenceOfInteger & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: int
+") First;
 		const Standard_Integer & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: int
+") Last;
 		const Standard_Integer & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(TColStd_SequenceOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: TColStd_SequenceOfInteger &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,TColStd_SequenceOfInteger & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: int
+") Value;
 		const Standard_Integer & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Standard_Integer &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: int
+") ChangeValue;
 		Standard_Integer & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -14062,168 +10633,111 @@ def __del__(self):
 %nodefaultctor TColStd_SequenceOfReal;
 class TColStd_SequenceOfReal : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SequenceOfReal;
+		%feature("autodoc", "	:rtype: None
+") TColStd_SequenceOfReal;
 		 TColStd_SequenceOfReal ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(TColStd_SequenceOfReal)
-
-Returns:
-	TColStd_SequenceOfReal
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfReal &
+	:rtype: TColStd_SequenceOfReal
+") Assign;
 		const TColStd_SequenceOfReal & Assign (const TColStd_SequenceOfReal & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_SequenceOfReal)
-
-Returns:
-	TColStd_SequenceOfReal
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfReal &
+	:rtype: TColStd_SequenceOfReal
+") operator=;
 		const TColStd_SequenceOfReal & operator = (const TColStd_SequenceOfReal & Other);
-		%feature("autodoc", "Args:
-	T(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: float &
+	:rtype: None
+") Append;
 		void Append (const Standard_Real & T);
-		%feature("autodoc", "Args:
-	S(TColStd_SequenceOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SequenceOfReal &
+	:rtype: None
+") Append;
 		void Append (TColStd_SequenceOfReal & S);
-		%feature("autodoc", "Args:
-	T(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: float &
+	:rtype: None
+") Prepend;
 		void Prepend (const Standard_Real & T);
-		%feature("autodoc", "Args:
-	S(TColStd_SequenceOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SequenceOfReal &
+	:rtype: None
+") Prepend;
 		void Prepend (TColStd_SequenceOfReal & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: float &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Standard_Real & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TColStd_SequenceOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TColStd_SequenceOfReal &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,TColStd_SequenceOfReal & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: float &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Standard_Real & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TColStd_SequenceOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TColStd_SequenceOfReal &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,TColStd_SequenceOfReal & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: float
+") First;
 		const Standard_Real & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: float
+") Last;
 		const Standard_Real & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(TColStd_SequenceOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: TColStd_SequenceOfReal &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,TColStd_SequenceOfReal & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: float
+") Value;
 		const Standard_Real & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: float &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Standard_Real & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: float
+") ChangeValue;
 		Standard_Real & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -14245,168 +10759,111 @@ def __del__(self):
 %nodefaultctor TColStd_SequenceOfTransient;
 class TColStd_SequenceOfTransient : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SequenceOfTransient;
+		%feature("autodoc", "	:rtype: None
+") TColStd_SequenceOfTransient;
 		 TColStd_SequenceOfTransient ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(TColStd_SequenceOfTransient)
-
-Returns:
-	TColStd_SequenceOfTransient
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfTransient &
+	:rtype: TColStd_SequenceOfTransient
+") Assign;
 		const TColStd_SequenceOfTransient & Assign (const TColStd_SequenceOfTransient & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_SequenceOfTransient)
-
-Returns:
-	TColStd_SequenceOfTransient
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfTransient &
+	:rtype: TColStd_SequenceOfTransient
+") operator=;
 		const TColStd_SequenceOfTransient & operator = (const TColStd_SequenceOfTransient & Other);
-		%feature("autodoc", "Args:
-	T(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Standard_Transient &
+	:rtype: None
+") Append;
 		void Append (const Handle_Standard_Transient & T);
-		%feature("autodoc", "Args:
-	S(TColStd_SequenceOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SequenceOfTransient &
+	:rtype: None
+") Append;
 		void Append (TColStd_SequenceOfTransient & S);
-		%feature("autodoc", "Args:
-	T(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Standard_Transient &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Standard_Transient & T);
-		%feature("autodoc", "Args:
-	S(TColStd_SequenceOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SequenceOfTransient &
+	:rtype: None
+") Prepend;
 		void Prepend (TColStd_SequenceOfTransient & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Standard_Transient &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_Standard_Transient & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TColStd_SequenceOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TColStd_SequenceOfTransient &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,TColStd_SequenceOfTransient & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Standard_Transient &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_Standard_Transient & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TColStd_SequenceOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TColStd_SequenceOfTransient &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,TColStd_SequenceOfTransient & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") First;
 		const Handle_Standard_Transient & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Last;
 		const Handle_Standard_Transient & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(TColStd_SequenceOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: TColStd_SequenceOfTransient &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,TColStd_SequenceOfTransient & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Standard_Transient
+") Value;
 		const Handle_Standard_Transient & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_Standard_Transient &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Standard_Transient & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Standard_Transient
+") ChangeValue;
 		Handle_Standard_Transient & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -14428,49 +10885,27 @@ def __del__(self):
 %nodefaultctor TColStd_SetIteratorOfSetOfInteger;
 class TColStd_SetIteratorOfSetOfInteger {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SetIteratorOfSetOfInteger;
+		%feature("autodoc", "	:rtype: None
+") TColStd_SetIteratorOfSetOfInteger;
 		 TColStd_SetIteratorOfSetOfInteger ();
-		%feature("autodoc", "Args:
-	S(TColStd_SetOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SetIteratorOfSetOfInteger;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SetOfInteger &
+	:rtype: None
+") TColStd_SetIteratorOfSetOfInteger;
 		 TColStd_SetIteratorOfSetOfInteger (const TColStd_SetOfInteger & S);
-		%feature("autodoc", "Args:
-	S(TColStd_SetOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SetOfInteger &
+	:rtype: None
+") Initialize;
 		void Initialize (const TColStd_SetOfInteger & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: int
+") Value;
 		const Standard_Integer & Value ();
 };
 
@@ -14492,49 +10927,27 @@ def __del__(self):
 %nodefaultctor TColStd_SetIteratorOfSetOfReal;
 class TColStd_SetIteratorOfSetOfReal {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SetIteratorOfSetOfReal;
+		%feature("autodoc", "	:rtype: None
+") TColStd_SetIteratorOfSetOfReal;
 		 TColStd_SetIteratorOfSetOfReal ();
-		%feature("autodoc", "Args:
-	S(TColStd_SetOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SetIteratorOfSetOfReal;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SetOfReal &
+	:rtype: None
+") TColStd_SetIteratorOfSetOfReal;
 		 TColStd_SetIteratorOfSetOfReal (const TColStd_SetOfReal & S);
-		%feature("autodoc", "Args:
-	S(TColStd_SetOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SetOfReal &
+	:rtype: None
+") Initialize;
 		void Initialize (const TColStd_SetOfReal & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: float
+") Value;
 		const Standard_Real & Value ();
 };
 
@@ -14556,49 +10969,27 @@ def __del__(self):
 %nodefaultctor TColStd_SetIteratorOfSetOfTransient;
 class TColStd_SetIteratorOfSetOfTransient {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SetIteratorOfSetOfTransient;
+		%feature("autodoc", "	:rtype: None
+") TColStd_SetIteratorOfSetOfTransient;
 		 TColStd_SetIteratorOfSetOfTransient ();
-		%feature("autodoc", "Args:
-	S(TColStd_SetOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SetIteratorOfSetOfTransient;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SetOfTransient &
+	:rtype: None
+") TColStd_SetIteratorOfSetOfTransient;
 		 TColStd_SetIteratorOfSetOfTransient (const TColStd_SetOfTransient & S);
-		%feature("autodoc", "Args:
-	S(TColStd_SetOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SetOfTransient &
+	:rtype: None
+") Initialize;
 		void Initialize (const TColStd_SetOfTransient & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Value;
 		const Handle_Standard_Transient & Value ();
 };
 
@@ -14620,99 +11011,61 @@ def __del__(self):
 %nodefaultctor TColStd_SetListOfSetOfInteger;
 class TColStd_SetListOfSetOfInteger {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SetListOfSetOfInteger;
+		%feature("autodoc", "	:rtype: None
+") TColStd_SetListOfSetOfInteger;
 		 TColStd_SetListOfSetOfInteger ();
-		%feature("autodoc", "Args:
-	Other(TColStd_SetListOfSetOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SetListOfSetOfInteger &
+	:rtype: None
+") Assign;
 		void Assign (const TColStd_SetListOfSetOfInteger & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_SetListOfSetOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SetListOfSetOfInteger &
+	:rtype: None
+") operator=;
 		void operator = (const TColStd_SetListOfSetOfInteger & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer &
+	:rtype: None
+") Prepend;
 		void Prepend (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	theIt(TColStd_ListIteratorOfSetListOfSetOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer &
+	:param theIt:
+	:type theIt: TColStd_ListIteratorOfSetListOfSetOfInteger &
+	:rtype: None
+") Prepend;
 		void Prepend (Standard_Integer &OutValue,TColStd_ListIteratorOfSetListOfSetOfInteger & theIt);
-		%feature("autodoc", "Args:
-	Other(TColStd_SetListOfSetOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SetListOfSetOfInteger &
+	:rtype: None
+") Prepend;
 		void Prepend (TColStd_SetListOfSetOfInteger & Other);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer &
+	:rtype: None
+") Append;
 		void Append (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	theIt(TColStd_ListIteratorOfSetListOfSetOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer &
+	:param theIt:
+	:type theIt: TColStd_ListIteratorOfSetListOfSetOfInteger &
+	:rtype: None
+") Append;
 		void Append (Standard_Integer &OutValue,TColStd_ListIteratorOfSetListOfSetOfInteger & theIt);
-		%feature("autodoc", "Args:
-	Other(TColStd_SetListOfSetOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SetListOfSetOfInteger &
+	:rtype: None
+") Append;
 		void Append (TColStd_SetListOfSetOfInteger & Other);
 
             %feature("autodoc","1");
@@ -14740,56 +11093,41 @@ No detailed docstring for this function.") Append;
                 $self->Last()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+            		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(TColStd_ListIteratorOfSetListOfSetOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: TColStd_ListIteratorOfSetListOfSetOfInteger &
+	:rtype: None
+") Remove;
 		void Remove (TColStd_ListIteratorOfSetListOfSetOfInteger & It);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	It(TColStd_ListIteratorOfSetListOfSetOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer &
+	:param It:
+	:type It: TColStd_ListIteratorOfSetListOfSetOfInteger &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (Standard_Integer &OutValue,TColStd_ListIteratorOfSetListOfSetOfInteger & It);
-		%feature("autodoc", "Args:
-	Other(TColStd_SetListOfSetOfInteger)
-	It(TColStd_ListIteratorOfSetListOfSetOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SetListOfSetOfInteger &
+	:param It:
+	:type It: TColStd_ListIteratorOfSetListOfSetOfInteger &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (TColStd_SetListOfSetOfInteger & Other,TColStd_ListIteratorOfSetListOfSetOfInteger & It);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	It(TColStd_ListIteratorOfSetListOfSetOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer &
+	:param It:
+	:type It: TColStd_ListIteratorOfSetListOfSetOfInteger &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (Standard_Integer &OutValue,TColStd_ListIteratorOfSetListOfSetOfInteger & It);
-		%feature("autodoc", "Args:
-	Other(TColStd_SetListOfSetOfInteger)
-	It(TColStd_ListIteratorOfSetListOfSetOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SetListOfSetOfInteger &
+	:param It:
+	:type It: TColStd_ListIteratorOfSetListOfSetOfInteger &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (TColStd_SetListOfSetOfInteger & Other,TColStd_ListIteratorOfSetListOfSetOfInteger & It);
 };
 
@@ -14811,99 +11149,61 @@ def __del__(self):
 %nodefaultctor TColStd_SetListOfSetOfReal;
 class TColStd_SetListOfSetOfReal {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SetListOfSetOfReal;
+		%feature("autodoc", "	:rtype: None
+") TColStd_SetListOfSetOfReal;
 		 TColStd_SetListOfSetOfReal ();
-		%feature("autodoc", "Args:
-	Other(TColStd_SetListOfSetOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SetListOfSetOfReal &
+	:rtype: None
+") Assign;
 		void Assign (const TColStd_SetListOfSetOfReal & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_SetListOfSetOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SetListOfSetOfReal &
+	:rtype: None
+") operator=;
 		void operator = (const TColStd_SetListOfSetOfReal & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: float &
+	:rtype: None
+") Prepend;
 		void Prepend (const Standard_Real & I);
-		%feature("autodoc", "Args:
-	I(Standard_Real)
-	theIt(TColStd_ListIteratorOfSetListOfSetOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: float &
+	:param theIt:
+	:type theIt: TColStd_ListIteratorOfSetListOfSetOfReal &
+	:rtype: None
+") Prepend;
 		void Prepend (const Standard_Real & I,TColStd_ListIteratorOfSetListOfSetOfReal & theIt);
-		%feature("autodoc", "Args:
-	Other(TColStd_SetListOfSetOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SetListOfSetOfReal &
+	:rtype: None
+") Prepend;
 		void Prepend (TColStd_SetListOfSetOfReal & Other);
-		%feature("autodoc", "Args:
-	I(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: float &
+	:rtype: None
+") Append;
 		void Append (const Standard_Real & I);
-		%feature("autodoc", "Args:
-	I(Standard_Real)
-	theIt(TColStd_ListIteratorOfSetListOfSetOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: float &
+	:param theIt:
+	:type theIt: TColStd_ListIteratorOfSetListOfSetOfReal &
+	:rtype: None
+") Append;
 		void Append (const Standard_Real & I,TColStd_ListIteratorOfSetListOfSetOfReal & theIt);
-		%feature("autodoc", "Args:
-	Other(TColStd_SetListOfSetOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SetListOfSetOfReal &
+	:rtype: None
+") Append;
 		void Append (TColStd_SetListOfSetOfReal & Other);
 
             %feature("autodoc","1");
@@ -14931,56 +11231,41 @@ No detailed docstring for this function.") Append;
                 $self->Last()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+            		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(TColStd_ListIteratorOfSetListOfSetOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: TColStd_ListIteratorOfSetListOfSetOfReal &
+	:rtype: None
+") Remove;
 		void Remove (TColStd_ListIteratorOfSetListOfSetOfReal & It);
-		%feature("autodoc", "Args:
-	I(Standard_Real)
-	It(TColStd_ListIteratorOfSetListOfSetOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: float &
+	:param It:
+	:type It: TColStd_ListIteratorOfSetListOfSetOfReal &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Real & I,TColStd_ListIteratorOfSetListOfSetOfReal & It);
-		%feature("autodoc", "Args:
-	Other(TColStd_SetListOfSetOfReal)
-	It(TColStd_ListIteratorOfSetListOfSetOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SetListOfSetOfReal &
+	:param It:
+	:type It: TColStd_ListIteratorOfSetListOfSetOfReal &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (TColStd_SetListOfSetOfReal & Other,TColStd_ListIteratorOfSetListOfSetOfReal & It);
-		%feature("autodoc", "Args:
-	I(Standard_Real)
-	It(TColStd_ListIteratorOfSetListOfSetOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: float &
+	:param It:
+	:type It: TColStd_ListIteratorOfSetListOfSetOfReal &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Real & I,TColStd_ListIteratorOfSetListOfSetOfReal & It);
-		%feature("autodoc", "Args:
-	Other(TColStd_SetListOfSetOfReal)
-	It(TColStd_ListIteratorOfSetListOfSetOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SetListOfSetOfReal &
+	:param It:
+	:type It: TColStd_ListIteratorOfSetListOfSetOfReal &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (TColStd_SetListOfSetOfReal & Other,TColStd_ListIteratorOfSetListOfSetOfReal & It);
 };
 
@@ -15002,164 +11287,103 @@ def __del__(self):
 %nodefaultctor TColStd_SetListOfSetOfTransient;
 class TColStd_SetListOfSetOfTransient {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SetListOfSetOfTransient;
+		%feature("autodoc", "	:rtype: None
+") TColStd_SetListOfSetOfTransient;
 		 TColStd_SetListOfSetOfTransient ();
-		%feature("autodoc", "Args:
-	Other(TColStd_SetListOfSetOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SetListOfSetOfTransient &
+	:rtype: None
+") Assign;
 		void Assign (const TColStd_SetListOfSetOfTransient & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_SetListOfSetOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SetListOfSetOfTransient &
+	:rtype: None
+") operator=;
 		void operator = (const TColStd_SetListOfSetOfTransient & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Standard_Transient &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Standard_Transient & I);
-		%feature("autodoc", "Args:
-	I(Handle_Standard_Transient)
-	theIt(TColStd_ListIteratorOfSetListOfSetOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Standard_Transient &
+	:param theIt:
+	:type theIt: TColStd_ListIteratorOfSetListOfSetOfTransient &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Standard_Transient & I,TColStd_ListIteratorOfSetListOfSetOfTransient & theIt);
-		%feature("autodoc", "Args:
-	Other(TColStd_SetListOfSetOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SetListOfSetOfTransient &
+	:rtype: None
+") Prepend;
 		void Prepend (TColStd_SetListOfSetOfTransient & Other);
-		%feature("autodoc", "Args:
-	I(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Standard_Transient &
+	:rtype: None
+") Append;
 		void Append (const Handle_Standard_Transient & I);
-		%feature("autodoc", "Args:
-	I(Handle_Standard_Transient)
-	theIt(TColStd_ListIteratorOfSetListOfSetOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Standard_Transient &
+	:param theIt:
+	:type theIt: TColStd_ListIteratorOfSetListOfSetOfTransient &
+	:rtype: None
+") Append;
 		void Append (const Handle_Standard_Transient & I,TColStd_ListIteratorOfSetListOfSetOfTransient & theIt);
-		%feature("autodoc", "Args:
-	Other(TColStd_SetListOfSetOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SetListOfSetOfTransient &
+	:rtype: None
+") Append;
 		void Append (TColStd_SetListOfSetOfTransient & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") First;
 		Handle_Standard_Transient & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Last;
 		Handle_Standard_Transient & Last ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(TColStd_ListIteratorOfSetListOfSetOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: TColStd_ListIteratorOfSetListOfSetOfTransient &
+	:rtype: None
+") Remove;
 		void Remove (TColStd_ListIteratorOfSetListOfSetOfTransient & It);
-		%feature("autodoc", "Args:
-	I(Handle_Standard_Transient)
-	It(TColStd_ListIteratorOfSetListOfSetOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Standard_Transient &
+	:param It:
+	:type It: TColStd_ListIteratorOfSetListOfSetOfTransient &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Handle_Standard_Transient & I,TColStd_ListIteratorOfSetListOfSetOfTransient & It);
-		%feature("autodoc", "Args:
-	Other(TColStd_SetListOfSetOfTransient)
-	It(TColStd_ListIteratorOfSetListOfSetOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SetListOfSetOfTransient &
+	:param It:
+	:type It: TColStd_ListIteratorOfSetListOfSetOfTransient &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (TColStd_SetListOfSetOfTransient & Other,TColStd_ListIteratorOfSetListOfSetOfTransient & It);
-		%feature("autodoc", "Args:
-	I(Handle_Standard_Transient)
-	It(TColStd_ListIteratorOfSetListOfSetOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Standard_Transient &
+	:param It:
+	:type It: TColStd_ListIteratorOfSetListOfSetOfTransient &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Handle_Standard_Transient & I,TColStd_ListIteratorOfSetListOfSetOfTransient & It);
-		%feature("autodoc", "Args:
-	Other(TColStd_SetListOfSetOfTransient)
-	It(TColStd_ListIteratorOfSetListOfSetOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SetListOfSetOfTransient &
+	:param It:
+	:type It: TColStd_ListIteratorOfSetListOfSetOfTransient &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (TColStd_SetListOfSetOfTransient & Other,TColStd_ListIteratorOfSetListOfSetOfTransient & It);
 };
 
@@ -15181,97 +11405,57 @@ def __del__(self):
 %nodefaultctor TColStd_SetOfInteger;
 class TColStd_SetOfInteger {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SetOfInteger;
+		%feature("autodoc", "	:rtype: None
+") TColStd_SetOfInteger;
 		 TColStd_SetOfInteger ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	T(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param T:
+	:type T: Standard_Integer &
+	:rtype: bool
+") Add;
 		Standard_Boolean Add (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	T(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param T:
+	:type T: Standard_Integer &
+	:rtype: bool
+") Remove;
 		Standard_Boolean Remove (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	B(TColStd_SetOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Union;
+		%feature("autodoc", "	:param B:
+	:type B: TColStd_SetOfInteger &
+	:rtype: None
+") Union;
 		void Union (const TColStd_SetOfInteger & B);
-		%feature("autodoc", "Args:
-	B(TColStd_SetOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Intersection;
+		%feature("autodoc", "	:param B:
+	:type B: TColStd_SetOfInteger &
+	:rtype: None
+") Intersection;
 		void Intersection (const TColStd_SetOfInteger & B);
-		%feature("autodoc", "Args:
-	B(TColStd_SetOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Difference;
+		%feature("autodoc", "	:param B:
+	:type B: TColStd_SetOfInteger &
+	:rtype: None
+") Difference;
 		void Difference (const TColStd_SetOfInteger & B);
-		%feature("autodoc", "Args:
-	T(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param T:
+	:type T: Standard_Integer &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	S(TColStd_SetOfInteger)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsASubset;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SetOfInteger &
+	:rtype: bool
+") IsASubset;
 		Standard_Boolean IsASubset (const TColStd_SetOfInteger & S);
-		%feature("autodoc", "Args:
-	S(TColStd_SetOfInteger)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAProperSubset;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SetOfInteger &
+	:rtype: bool
+") IsAProperSubset;
 		Standard_Boolean IsAProperSubset (const TColStd_SetOfInteger & S);
 };
 
@@ -15293,97 +11477,57 @@ def __del__(self):
 %nodefaultctor TColStd_SetOfReal;
 class TColStd_SetOfReal {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SetOfReal;
+		%feature("autodoc", "	:rtype: None
+") TColStd_SetOfReal;
 		 TColStd_SetOfReal ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	T(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param T:
+	:type T: float &
+	:rtype: bool
+") Add;
 		Standard_Boolean Add (const Standard_Real & T);
-		%feature("autodoc", "Args:
-	T(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param T:
+	:type T: float &
+	:rtype: bool
+") Remove;
 		Standard_Boolean Remove (const Standard_Real & T);
-		%feature("autodoc", "Args:
-	B(TColStd_SetOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Union;
+		%feature("autodoc", "	:param B:
+	:type B: TColStd_SetOfReal &
+	:rtype: None
+") Union;
 		void Union (const TColStd_SetOfReal & B);
-		%feature("autodoc", "Args:
-	B(TColStd_SetOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Intersection;
+		%feature("autodoc", "	:param B:
+	:type B: TColStd_SetOfReal &
+	:rtype: None
+") Intersection;
 		void Intersection (const TColStd_SetOfReal & B);
-		%feature("autodoc", "Args:
-	B(TColStd_SetOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Difference;
+		%feature("autodoc", "	:param B:
+	:type B: TColStd_SetOfReal &
+	:rtype: None
+") Difference;
 		void Difference (const TColStd_SetOfReal & B);
-		%feature("autodoc", "Args:
-	T(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param T:
+	:type T: float &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const Standard_Real & T);
-		%feature("autodoc", "Args:
-	S(TColStd_SetOfReal)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsASubset;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SetOfReal &
+	:rtype: bool
+") IsASubset;
 		Standard_Boolean IsASubset (const TColStd_SetOfReal & S);
-		%feature("autodoc", "Args:
-	S(TColStd_SetOfReal)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAProperSubset;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SetOfReal &
+	:rtype: bool
+") IsAProperSubset;
 		Standard_Boolean IsAProperSubset (const TColStd_SetOfReal & S);
 };
 
@@ -15405,97 +11549,57 @@ def __del__(self):
 %nodefaultctor TColStd_SetOfTransient;
 class TColStd_SetOfTransient {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_SetOfTransient;
+		%feature("autodoc", "	:rtype: None
+") TColStd_SetOfTransient;
 		 TColStd_SetOfTransient ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	T(Handle_Standard_Transient)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Standard_Transient &
+	:rtype: bool
+") Add;
 		Standard_Boolean Add (const Handle_Standard_Transient & T);
-		%feature("autodoc", "Args:
-	T(Handle_Standard_Transient)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Standard_Transient &
+	:rtype: bool
+") Remove;
 		Standard_Boolean Remove (const Handle_Standard_Transient & T);
-		%feature("autodoc", "Args:
-	B(TColStd_SetOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Union;
+		%feature("autodoc", "	:param B:
+	:type B: TColStd_SetOfTransient &
+	:rtype: None
+") Union;
 		void Union (const TColStd_SetOfTransient & B);
-		%feature("autodoc", "Args:
-	B(TColStd_SetOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Intersection;
+		%feature("autodoc", "	:param B:
+	:type B: TColStd_SetOfTransient &
+	:rtype: None
+") Intersection;
 		void Intersection (const TColStd_SetOfTransient & B);
-		%feature("autodoc", "Args:
-	B(TColStd_SetOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Difference;
+		%feature("autodoc", "	:param B:
+	:type B: TColStd_SetOfTransient &
+	:rtype: None
+") Difference;
 		void Difference (const TColStd_SetOfTransient & B);
-		%feature("autodoc", "Args:
-	T(Handle_Standard_Transient)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Standard_Transient &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const Handle_Standard_Transient & T);
-		%feature("autodoc", "Args:
-	S(TColStd_SetOfTransient)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsASubset;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SetOfTransient &
+	:rtype: bool
+") IsASubset;
 		Standard_Boolean IsASubset (const TColStd_SetOfTransient & S);
-		%feature("autodoc", "Args:
-	S(TColStd_SetOfTransient)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAProperSubset;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_SetOfTransient &
+	:rtype: bool
+") IsAProperSubset;
 		Standard_Boolean IsAProperSubset (const TColStd_SetOfTransient & S);
 };
 
@@ -15517,49 +11621,27 @@ def __del__(self):
 %nodefaultctor TColStd_StackIteratorOfStackOfInteger;
 class TColStd_StackIteratorOfStackOfInteger {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_StackIteratorOfStackOfInteger;
+		%feature("autodoc", "	:rtype: None
+") TColStd_StackIteratorOfStackOfInteger;
 		 TColStd_StackIteratorOfStackOfInteger ();
-		%feature("autodoc", "Args:
-	S(TColStd_StackOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_StackIteratorOfStackOfInteger;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_StackOfInteger &
+	:rtype: None
+") TColStd_StackIteratorOfStackOfInteger;
 		 TColStd_StackIteratorOfStackOfInteger (const TColStd_StackOfInteger & S);
-		%feature("autodoc", "Args:
-	S(TColStd_StackOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_StackOfInteger &
+	:rtype: None
+") Initialize;
 		void Initialize (const TColStd_StackOfInteger & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: int
+") Value;
 		const Standard_Integer & Value ();
 };
 
@@ -15581,49 +11663,27 @@ def __del__(self):
 %nodefaultctor TColStd_StackIteratorOfStackOfReal;
 class TColStd_StackIteratorOfStackOfReal {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_StackIteratorOfStackOfReal;
+		%feature("autodoc", "	:rtype: None
+") TColStd_StackIteratorOfStackOfReal;
 		 TColStd_StackIteratorOfStackOfReal ();
-		%feature("autodoc", "Args:
-	S(TColStd_StackOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_StackIteratorOfStackOfReal;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_StackOfReal &
+	:rtype: None
+") TColStd_StackIteratorOfStackOfReal;
 		 TColStd_StackIteratorOfStackOfReal (const TColStd_StackOfReal & S);
-		%feature("autodoc", "Args:
-	S(TColStd_StackOfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_StackOfReal &
+	:rtype: None
+") Initialize;
 		void Initialize (const TColStd_StackOfReal & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: float
+") Value;
 		const Standard_Real & Value ();
 };
 
@@ -15645,49 +11705,27 @@ def __del__(self):
 %nodefaultctor TColStd_StackIteratorOfStackOfTransient;
 class TColStd_StackIteratorOfStackOfTransient {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_StackIteratorOfStackOfTransient;
+		%feature("autodoc", "	:rtype: None
+") TColStd_StackIteratorOfStackOfTransient;
 		 TColStd_StackIteratorOfStackOfTransient ();
-		%feature("autodoc", "Args:
-	S(TColStd_StackOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_StackIteratorOfStackOfTransient;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_StackOfTransient &
+	:rtype: None
+") TColStd_StackIteratorOfStackOfTransient;
 		 TColStd_StackIteratorOfStackOfTransient (const TColStd_StackOfTransient & S);
-		%feature("autodoc", "Args:
-	S(TColStd_StackOfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param S:
+	:type S: TColStd_StackOfTransient &
+	:rtype: None
+") Initialize;
 		void Initialize (const TColStd_StackOfTransient & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Value;
 		const Handle_Standard_Transient & Value ();
 };
 
@@ -15709,14 +11747,12 @@ def __del__(self):
 %nodefaultctor TColStd_StackNodeOfStackOfInteger;
 class TColStd_StackNodeOfStackOfInteger : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_StackNodeOfStackOfInteger;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_StackNodeOfStackOfInteger;
 		 TColStd_StackNodeOfStackOfInteger (Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
@@ -15790,14 +11826,12 @@ def __del__(self):
 %nodefaultctor TColStd_StackNodeOfStackOfReal;
 class TColStd_StackNodeOfStackOfReal : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Standard_Real)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_StackNodeOfStackOfReal;
+		%feature("autodoc", "	:param I:
+	:type I: float &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_StackNodeOfStackOfReal;
 		 TColStd_StackNodeOfStackOfReal (const Standard_Real & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
@@ -15871,21 +11905,15 @@ def __del__(self):
 %nodefaultctor TColStd_StackNodeOfStackOfTransient;
 class TColStd_StackNodeOfStackOfTransient : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Standard_Transient)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_StackNodeOfStackOfTransient;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Standard_Transient &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_StackNodeOfStackOfTransient;
 		 TColStd_StackNodeOfStackOfTransient (const Handle_Standard_Transient & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Value;
 		Handle_Standard_Transient & Value ();
 };
 
@@ -15946,71 +11974,38 @@ def __del__(self):
 %nodefaultctor TColStd_StackOfInteger;
 class TColStd_StackOfInteger {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_StackOfInteger;
+		%feature("autodoc", "	:rtype: None
+") TColStd_StackOfInteger;
 		 TColStd_StackOfInteger ();
-		%feature("autodoc", "Args:
-	Other(TColStd_StackOfInteger)
-
-Returns:
-	TColStd_StackOfInteger
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_StackOfInteger &
+	:rtype: TColStd_StackOfInteger
+") Assign;
 		const TColStd_StackOfInteger & Assign (const TColStd_StackOfInteger & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_StackOfInteger)
-
-Returns:
-	TColStd_StackOfInteger
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_StackOfInteger &
+	:rtype: TColStd_StackOfInteger
+") operator=;
 		const TColStd_StackOfInteger & operator = (const TColStd_StackOfInteger & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Depth;
+		%feature("autodoc", "	:rtype: int
+") Depth;
 		Standard_Integer Depth ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Top;
+		%feature("autodoc", "	:rtype: int
+") Top;
 		const Standard_Integer & Top ();
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Push;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer &
+	:rtype: None
+") Push;
 		void Push (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Pop;
+		%feature("autodoc", "	:rtype: None
+") Pop;
 		void Pop ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
 
             %feature("autodoc","1");
@@ -16045,71 +12040,38 @@ def __del__(self):
 %nodefaultctor TColStd_StackOfReal;
 class TColStd_StackOfReal {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_StackOfReal;
+		%feature("autodoc", "	:rtype: None
+") TColStd_StackOfReal;
 		 TColStd_StackOfReal ();
-		%feature("autodoc", "Args:
-	Other(TColStd_StackOfReal)
-
-Returns:
-	TColStd_StackOfReal
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_StackOfReal &
+	:rtype: TColStd_StackOfReal
+") Assign;
 		const TColStd_StackOfReal & Assign (const TColStd_StackOfReal & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_StackOfReal)
-
-Returns:
-	TColStd_StackOfReal
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_StackOfReal &
+	:rtype: TColStd_StackOfReal
+") operator=;
 		const TColStd_StackOfReal & operator = (const TColStd_StackOfReal & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Depth;
+		%feature("autodoc", "	:rtype: int
+") Depth;
 		Standard_Integer Depth ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Top;
+		%feature("autodoc", "	:rtype: float
+") Top;
 		const Standard_Real & Top ();
-		%feature("autodoc", "Args:
-	I(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Push;
+		%feature("autodoc", "	:param I:
+	:type I: float &
+	:rtype: None
+") Push;
 		void Push (const Standard_Real & I);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Pop;
+		%feature("autodoc", "	:rtype: None
+") Pop;
 		void Pop ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
 
             %feature("autodoc","1");
@@ -16144,78 +12106,41 @@ def __del__(self):
 %nodefaultctor TColStd_StackOfTransient;
 class TColStd_StackOfTransient {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_StackOfTransient;
+		%feature("autodoc", "	:rtype: None
+") TColStd_StackOfTransient;
 		 TColStd_StackOfTransient ();
-		%feature("autodoc", "Args:
-	Other(TColStd_StackOfTransient)
-
-Returns:
-	TColStd_StackOfTransient
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_StackOfTransient &
+	:rtype: TColStd_StackOfTransient
+") Assign;
 		const TColStd_StackOfTransient & Assign (const TColStd_StackOfTransient & Other);
-		%feature("autodoc", "Args:
-	Other(TColStd_StackOfTransient)
-
-Returns:
-	TColStd_StackOfTransient
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_StackOfTransient &
+	:rtype: TColStd_StackOfTransient
+") operator=;
 		const TColStd_StackOfTransient & operator = (const TColStd_StackOfTransient & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Depth;
+		%feature("autodoc", "	:rtype: int
+") Depth;
 		Standard_Integer Depth ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Top;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Top;
 		const Handle_Standard_Transient & Top ();
-		%feature("autodoc", "Args:
-	I(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Push;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Standard_Transient &
+	:rtype: None
+") Push;
 		void Push (const Handle_Standard_Transient & I);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Pop;
+		%feature("autodoc", "	:rtype: None
+") Pop;
 		void Pop ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") ChangeTop;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") ChangeTop;
 		Handle_Standard_Transient & ChangeTop ();
 };
 
@@ -16237,21 +12162,15 @@ def __del__(self):
 %nodefaultctor TColStd_StdMapNodeOfMapOfAsciiString;
 class TColStd_StdMapNodeOfMapOfAsciiString : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_StdMapNodeOfMapOfAsciiString;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_StdMapNodeOfMapOfAsciiString;
 		 TColStd_StdMapNodeOfMapOfAsciiString (const TCollection_AsciiString & K,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") Key;
 		TCollection_AsciiString & Key ();
 };
 
@@ -16312,14 +12231,12 @@ def __del__(self):
 %nodefaultctor TColStd_StdMapNodeOfMapOfInteger;
 class TColStd_StdMapNodeOfMapOfInteger : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_StdMapNodeOfMapOfInteger;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_StdMapNodeOfMapOfInteger;
 		 TColStd_StdMapNodeOfMapOfInteger (Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
@@ -16393,14 +12310,12 @@ def __del__(self):
 %nodefaultctor TColStd_StdMapNodeOfMapOfReal;
 class TColStd_StdMapNodeOfMapOfReal : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(Standard_Real)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_StdMapNodeOfMapOfReal;
+		%feature("autodoc", "	:param K:
+	:type K: float &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_StdMapNodeOfMapOfReal;
 		 TColStd_StdMapNodeOfMapOfReal (const Standard_Real & K,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
@@ -16474,21 +12389,15 @@ def __del__(self):
 %nodefaultctor TColStd_StdMapNodeOfMapOfTransient;
 class TColStd_StdMapNodeOfMapOfTransient : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColStd_StdMapNodeOfMapOfTransient;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TColStd_StdMapNodeOfMapOfTransient;
 		 TColStd_StdMapNodeOfMapOfTransient (const Handle_Standard_Transient & K,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Key;
 		Handle_Standard_Transient & Key ();
 };
 

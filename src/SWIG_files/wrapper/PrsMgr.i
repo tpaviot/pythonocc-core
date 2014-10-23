@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -56,35 +56,21 @@ enum PrsMgr_TypeOfPresentation3d {
 %nodefaultctor PrsMgr_ModedPresentation;
 class PrsMgr_ModedPresentation {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") PrsMgr_ModedPresentation;
+		%feature("autodoc", "	:rtype: None
+") PrsMgr_ModedPresentation;
 		 PrsMgr_ModedPresentation ();
-		%feature("autodoc", "Args:
-	aPresentation(Handle_PrsMgr_Presentation)
-	aMode(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") PrsMgr_ModedPresentation;
+		%feature("autodoc", "	:param aPresentation:
+	:type aPresentation: Handle_PrsMgr_Presentation &
+	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: None
+") PrsMgr_ModedPresentation;
 		 PrsMgr_ModedPresentation (const Handle_PrsMgr_Presentation & aPresentation,const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_PrsMgr_Presentation
-
-No detailed docstring for this function.") Presentation;
+		%feature("autodoc", "	:rtype: Handle_PrsMgr_Presentation
+") Presentation;
 		Handle_PrsMgr_Presentation Presentation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Mode;
+		%feature("autodoc", "	:rtype: int
+") Mode;
 		Standard_Integer Mode ();
 };
 
@@ -106,206 +92,124 @@ def __del__(self):
 %nodefaultctor PrsMgr_PresentableObject;
 class PrsMgr_PresentableObject : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	PrsMgr_TypeOfPresentation3d
+		%feature("autodoc", "	* Returns information on whether the object accepts display in HLR mode or not.
 
-Returns information on whether the object accepts display in HLR mode or not.") TypeOfPresentation3d;
+	:rtype: PrsMgr_TypeOfPresentation3d
+") TypeOfPresentation3d;
 		PrsMgr_TypeOfPresentation3d TypeOfPresentation3d ();
-		%feature("autodoc", "Args:
-	aFlag(Graphic3d_TransModeFlags)
-	APoint(gp_Pnt)
+		%feature("autodoc", "	* Sets up Transform Persistence Mode for this object. This function used to lock in object position, rotation and / or zooming relative to camera position. Object will be drawn in the origin setted by APoint parameter (except Graphic3d_TMF_TriedronPers flag - see description later). aFlag should be: - Graphic3d_TMF_None - no persistence attributes (reset); - Graphic3d_TMF_PanPers - object doesn't move; - Graphic3d_TMF_ZoomPers - object doesn't resize; - Graphic3d_TMF_RotatePers - object doesn't rotate; - Graphic3d_TMF_FullPers - pan, zoom and rotate transform persistence; - Graphic3d_TMF_TriedronPers - object behaves like trihedron; - combination (Graphic3d_TMF_PanPers | Graphic3d_TMF_ZoomPers); - combination (Graphic3d_TMF_PanPers | Graphic3d_TMF_RotatePers); - combination (Graphic3d_TMF_ZoomPers | Graphic3d_TMF_RotatePers). If Graphic3d_TMF_TriedronPers persistence mode selected APoint coordinates X and Y means: - X = 0.0, Y = 0.0 - center of view window; - X > 0.0, Y > 0.0 - right upper corner of view window; - X > 0.0, Y < 0.0 - right lower corner of view window; - X < 0.0, Y > 0.0 - left upper corner of view window; - X < 0.0, Y < 0.0 - left lower corner of view window. And Z coordinate defines the gap from border of view window (except center position).
 
-Returns:
-	virtual void
-
-Sets up Transform Persistence Mode for this object.  
-This function used to lock in object position, rotation and / or zooming relative to camera position.  
-Object will be drawn in the origin setted by APoint parameter (except Graphic3d_TMF_TriedronPers flag  
-- see description later). aFlag should be:  
--   Graphic3d_TMF_None - no persistence attributes (reset);  
--   Graphic3d_TMF_PanPers - object doesn't move;  
--   Graphic3d_TMF_ZoomPers - object doesn't resize;  
--   Graphic3d_TMF_RotatePers - object doesn't rotate;  
--   Graphic3d_TMF_FullPers - pan, zoom and rotate transform persistence;  
--   Graphic3d_TMF_TriedronPers - object behaves like trihedron;  
--   combination (Graphic3d_TMF_PanPers | Graphic3d_TMF_ZoomPers);  
--   combination (Graphic3d_TMF_PanPers | Graphic3d_TMF_RotatePers);  
--   combination (Graphic3d_TMF_ZoomPers | Graphic3d_TMF_RotatePers).  
-If Graphic3d_TMF_TriedronPers persistence mode selected APoint coordinates X and Y means:  
--   X = 0.0, Y = 0.0 - center of view window;  
--   X > 0.0, Y > 0.0 - right upper corner of view window;  
--   X > 0.0, Y < 0.0 - right lower corner of view window;  
--   X < 0.0, Y > 0.0 - left  upper corner of view window;  
--   X < 0.0, Y < 0.0 - left  lower corner of view window.  
-And Z coordinate defines the gap from border of view window (except center position).") SetTransformPersistence;
+	:param aFlag:
+	:type aFlag: Graphic3d_TransModeFlags &
+	:param APoint:
+	:type APoint: gp_Pnt
+	:rtype: void
+") SetTransformPersistence;
 		virtual void SetTransformPersistence (const Graphic3d_TransModeFlags & aFlag,const gp_Pnt & APoint);
-		%feature("autodoc", "Args:
-	aFlag(Graphic3d_TransModeFlags)
+		%feature("autodoc", "	* Calls previous method with point (0,0,0)
 
-Returns:
-	None
-
-Calls previous method  with  point  (0,0,0)") SetTransformPersistence;
+	:param aFlag:
+	:type aFlag: Graphic3d_TransModeFlags &
+	:rtype: None
+") SetTransformPersistence;
 		void SetTransformPersistence (const Graphic3d_TransModeFlags & aFlag);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_TransModeFlags
+		%feature("autodoc", "	* Gets Transform Persistence Mode for this object
 
-Gets  Transform  Persistence Mode  for  this  object") GetTransformPersistenceMode;
+	:rtype: Graphic3d_TransModeFlags
+") GetTransformPersistenceMode;
 		Graphic3d_TransModeFlags GetTransformPersistenceMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
+		%feature("autodoc", "	* Gets point of transform persistence for this object
 
-Gets  point  of  transform  persistence for  this  object") GetTransformPersistencePoint;
+	:rtype: gp_Pnt
+") GetTransformPersistencePoint;
 		gp_Pnt GetTransformPersistencePoint ();
-		%feature("autodoc", "Args:
-	aType(PrsMgr_TypeOfPresentation3d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetTypeOfPresentation;
+		%feature("autodoc", "	:param aType:
+	:type aType: PrsMgr_TypeOfPresentation3d
+	:rtype: None
+") SetTypeOfPresentation;
 		void SetTypeOfPresentation (const PrsMgr_TypeOfPresentation3d aType);
-		%feature("autodoc", "Args:
-	aMode(Standard_Integer)
+		%feature("autodoc", "	* flags the Prs of mode <AMode> to be Updated. the Update will be done when needed.
 
-Returns:
-	None
-
-flags the Prs of mode <AMode> to be Updated.  
-         the Update will be done when needed.") SetToUpdate;
+	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: None
+") SetToUpdate;
 		void SetToUpdate (const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* flags all the Presentations to be Updated.
 
-flags all the Presentations to be Updated.") SetToUpdate;
+	:rtype: None
+") SetToUpdate;
 		void SetToUpdate ();
-		%feature("autodoc", "Args:
-	ListOfMode(TColStd_ListOfInteger)
+		%feature("autodoc", "	* gives the list of modes which are flagged 'to be updated'.
 
-Returns:
-	None
-
-gives the list of modes which are flagged 'to be updated'.") ToBeUpdated;
+	:param ListOfMode:
+	:type ListOfMode: TColStd_ListOfInteger &
+	:rtype: None
+") ToBeUpdated;
 		void ToBeUpdated (TColStd_ListOfInteger & ListOfMode);
-		%feature("autodoc", "Args:
-	aLoc(TopLoc_Location)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetLocation;
+		%feature("autodoc", "	:param aLoc:
+	:type aLoc: TopLoc_Location &
+	:rtype: void
+") SetLocation;
 		virtual void SetLocation (const TopLoc_Location & aLoc);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasLocation;
+		%feature("autodoc", "	:rtype: bool
+") HasLocation;
 		Standard_Boolean HasLocation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopLoc_Location
-
-No detailed docstring for this function.") Location;
+		%feature("autodoc", "	:rtype: TopLoc_Location
+") Location;
 		const TopLoc_Location & Location ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") ResetLocation;
+		%feature("autodoc", "	:rtype: void
+") ResetLocation;
 		virtual void ResetLocation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") UpdateLocation;
+		%feature("autodoc", "	:rtype: void
+") UpdateLocation;
 		virtual void UpdateLocation ();
-		%feature("autodoc", "Args:
-	P(Handle_Prs3d_Presentation)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") UpdateLocation;
+		%feature("autodoc", "	:param P:
+	:type P: Handle_Prs3d_Presentation &
+	:rtype: void
+") UpdateLocation;
 		virtual void UpdateLocation (const Handle_Prs3d_Presentation & P);
-		%feature("autodoc", "Args:
-	thePrsMgr(Handle_PrsMgr_PresentationManager)
-	theLayerId(Standard_Integer)
+		%feature("autodoc", "	* Set Z layer ID and update all presentations of the presentable object. The layer can be set only for displayed object. If all object presentations are removed, the layer ID will be set to default value when computing presentation. The layers mechanism allows drawing objects in higher layers in overlay of objects in lower layers.
 
-Returns:
-	virtual void
-
-Set Z layer ID and update all presentations of  
-the presentable object. The layer can be set only for displayed object.  
-If all object presentations are removed, the layer ID will be set to  
-default value when computing presentation. The layers mechanism allows  
-drawing objects in higher layers in overlay of objects in lower layers.") SetZLayer;
+	:param thePrsMgr:
+	:type thePrsMgr: Handle_PrsMgr_PresentationManager &
+	:param theLayerId:
+	:type theLayerId: Standard_Integer
+	:rtype: void
+") SetZLayer;
 		virtual void SetZLayer (const Handle_PrsMgr_PresentationManager & thePrsMgr,const Standard_Integer theLayerId);
-		%feature("autodoc", "Args:
-	thePrsMgr(Handle_PrsMgr_PresentationManager)
+		%feature("autodoc", "	* Get ID of Z layer. If no presentations of object is displayed, and layer ID is unavailable, the -1 value is returned.
 
-Returns:
-	Standard_Integer
-
-Get ID of Z layer. If no presentations of object is displayed,  
-and layer ID is unavailable, the -1 value is returned.") GetZLayer;
+	:param thePrsMgr:
+	:type thePrsMgr: Handle_PrsMgr_PresentationManager &
+	:rtype: int
+") GetZLayer;
 		Standard_Integer GetZLayer (const Handle_PrsMgr_PresentationManager & thePrsMgr);
-		%feature("autodoc", "Args:
-	thePlane(Graphic3d_ClipPlane_Handle)
+		%feature("autodoc", "	* Adds clip plane for graphical clipping for all display mode presentations. The composition of clip planes truncates the rendering space to convex volume. Please be aware that number of supported clip plane is limited. The planes which exceed the limit are ignored. Besides of this, some planes can be already set in view where the object is shown: the number of these planes should be substracted from limit to predict the maximum possible number of object clipping planes. @param thePlane [in] the clip plane to be appended to map of clip planes.
 
-Returns:
-	virtual void
-
-Adds clip plane for graphical clipping for all display mode  
-presentations. The composition of clip planes truncates the rendering  
-space to convex volume. Please be aware that number of supported  
-clip plane is limited. The planes which exceed the limit are ignored.  
-Besides of this, some planes can be already set in view where the object  
-is shown: the number of these planes should be substracted from limit  
-to predict the maximum possible number of object clipping planes.  
-@param thePlane [in] the clip plane to be appended to map of clip planes.") AddClipPlane;
+	:param thePlane:
+	:type thePlane: Graphic3d_ClipPlane_Handle &
+	:rtype: void
+") AddClipPlane;
 		virtual void AddClipPlane (const Graphic3d_ClipPlane_Handle & thePlane);
-		%feature("autodoc", "Args:
-	thePlane(Graphic3d_ClipPlane_Handle)
+		%feature("autodoc", "	* Removes previously added clip plane. @param thePlane [in] the clip plane to be removed from map of clip planes.
 
-Returns:
-	virtual void
-
-Removes previously added clip plane.  
-@param thePlane [in] the clip plane to be removed from map of clip planes.") RemoveClipPlane;
+	:param thePlane:
+	:type thePlane: Graphic3d_ClipPlane_Handle &
+	:rtype: void
+") RemoveClipPlane;
 		virtual void RemoveClipPlane (const Graphic3d_ClipPlane_Handle & thePlane);
-		%feature("autodoc", "Args:
-	thePlanes(Graphic3d_SequenceOfHClipPlane)
+		%feature("autodoc", "	* Set clip planes for graphical clipping for all display mode presentations. The composition of clip planes truncates the rendering space to convex volume. Please be aware that number of supported clip plane is limited. The planes which exceed the limit are ignored. Besides of this, some planes can be already set in view where the object is shown: the number of these planes should be substracted from limit to predict the maximum possible number of object clipping planes.
 
-Returns:
-	virtual void
-
-Set clip planes for graphical clipping for all display mode presentations.  
-The composition of clip planes truncates the rendering space to convex  
-volume. Please be aware that number of supported clip plane is limited.  
-The planes which exceed the limit are ignored. Besides of this, some  
-planes can be already set in view where the object is shown: the number  
-of these planes should be substracted from limit to predict the maximum  
-possible number of object clipping planes.") SetClipPlanes;
+	:param thePlanes:
+	:type thePlanes: Graphic3d_SequenceOfHClipPlane &
+	:rtype: void
+") SetClipPlanes;
 		virtual void SetClipPlanes (const Graphic3d_SequenceOfHClipPlane & thePlanes);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_SequenceOfHClipPlane
+		%feature("autodoc", "	* Get clip planes. returns set of previously added clip planes for all display mode presentations.
 
-Get clip planes.  
-@return set of previously added clip planes for all display mode presentations.") GetClipPlanes;
+	:rtype: Graphic3d_SequenceOfHClipPlane
+") GetClipPlanes;
 		const Graphic3d_SequenceOfHClipPlane & GetClipPlanes ();
 };
 
@@ -366,42 +270,28 @@ def __del__(self):
 %nodefaultctor PrsMgr_Presentation;
 class PrsMgr_Presentation : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual PrsMgr_KindOfPrs
+		%feature("autodoc", "	* 2D or 3D
 
-2D or 3D") KindOfPresentation;
+	:rtype: PrsMgr_KindOfPrs
+") KindOfPresentation;
 		virtual PrsMgr_KindOfPrs KindOfPresentation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Destructor
 
-Destructor") Destroy;
+	:rtype: void
+") Destroy;
 		virtual void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_PrsMgr_PresentationManager
+		%feature("autodoc", "	* returns the PresentationManager in which the presentation has been created.
 
-returns the PresentationManager in which the  
-         presentation has been created.") PresentationManager;
+	:rtype: Handle_PrsMgr_PresentationManager
+") PresentationManager;
 		const Handle_PrsMgr_PresentationManager & PresentationManager ();
-		%feature("autodoc", "Args:
-	aStat(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetUpdateStatus;
+		%feature("autodoc", "	:param aStat:
+	:type aStat: bool
+	:rtype: None
+") SetUpdateStatus;
 		void SetUpdateStatus (const Standard_Boolean aStat);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") MustBeUpdated;
+		%feature("autodoc", "	:rtype: bool
+") MustBeUpdated;
 		Standard_Boolean MustBeUpdated ();
 };
 
@@ -462,223 +352,182 @@ def __del__(self):
 %nodefaultctor PrsMgr_PresentationManager;
 class PrsMgr_PresentationManager : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") Is3D;
+		%feature("autodoc", "	:rtype: bool
+") Is3D;
 		virtual Standard_Boolean Is3D ();
-		%feature("autodoc", "Args:
-	aPresentableObject(Handle_PrsMgr_PresentableObject)
-	aMode(Standard_Integer)=0
+		%feature("autodoc", "	* Displays the presentation of the object in the given Presentation manager with the given mode. The mode should be enumerated by the object which inherits PresentableObject.
 
-Returns:
-	None
-
-Displays the presentation of the object in the given  
-         Presentation manager with the given mode.  
-         The mode should be enumerated by the object which  
-         inherits PresentableObject.") Display;
+	:param aPresentableObject:
+	:type aPresentableObject: Handle_PrsMgr_PresentableObject &
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:rtype: None
+") Display;
 		void Display (const Handle_PrsMgr_PresentableObject & aPresentableObject,const Standard_Integer aMode = 0);
-		%feature("autodoc", "Args:
-	aPresentableObject(Handle_PrsMgr_PresentableObject)
-	aMode(Standard_Integer)=0
+		%feature("autodoc", "	* erases the presentation of the object in the given Presentation manager with the given mode.
 
-Returns:
-	None
-
-erases the presentation of the object in the given  
-         Presentation manager with the given mode.") Erase;
+	:param aPresentableObject:
+	:type aPresentableObject: Handle_PrsMgr_PresentableObject &
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:rtype: None
+") Erase;
 		void Erase (const Handle_PrsMgr_PresentableObject & aPresentableObject,const Standard_Integer aMode = 0);
-		%feature("autodoc", "Args:
-	aPresentableObject(Handle_PrsMgr_PresentableObject)
-	aMode(Standard_Integer)=0
+		%feature("autodoc", "	* Clears the presentation of the presentable object aPresentableObject in this framework with the display mode aMode.
 
-Returns:
-	virtual void
-
-Clears the presentation of the presentable object  
-aPresentableObject in this framework with the  
-display mode aMode.") Clear;
+	:param aPresentableObject:
+	:type aPresentableObject: Handle_PrsMgr_PresentableObject &
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:rtype: void
+") Clear;
 		virtual void Clear (const Handle_PrsMgr_PresentableObject & aPresentableObject,const Standard_Integer aMode = 0);
-		%feature("autodoc", "Args:
-	thePresentableObject(Handle_PrsMgr_PresentableObject)
-	theMode(Standard_Integer)
-	theValue(Standard_Boolean)
+		%feature("autodoc", "	* Sets the visibility of presentable object.
 
-Returns:
-	None
-
-Sets the visibility of presentable object.") SetVisibility;
+	:param thePresentableObject:
+	:type thePresentableObject: Handle_PrsMgr_PresentableObject &
+	:param theMode:
+	:type theMode: Standard_Integer
+	:param theValue:
+	:type theValue: bool
+	:rtype: None
+") SetVisibility;
 		void SetVisibility (const Handle_PrsMgr_PresentableObject & thePresentableObject,const Standard_Integer theMode,const Standard_Boolean theValue);
-		%feature("autodoc", "Args:
-	aPresentableObject(Handle_PrsMgr_PresentableObject)
-	aMode(Standard_Integer)=0
+		%feature("autodoc", "	* Highlights the presentation of the presentable object aPresentableObject in this framework with the display mode aMode.
 
-Returns:
-	None
-
-Highlights the presentation of the presentable object  
-aPresentableObject in this framework with the display mode aMode.") Highlight;
+	:param aPresentableObject:
+	:type aPresentableObject: Handle_PrsMgr_PresentableObject &
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:rtype: None
+") Highlight;
 		void Highlight (const Handle_PrsMgr_PresentableObject & aPresentableObject,const Standard_Integer aMode = 0);
-		%feature("autodoc", "Args:
-	aPresentableObject(Handle_PrsMgr_PresentableObject)
-	aMode(Standard_Integer)=0
+		%feature("autodoc", "	* Removes highlighting from the presentation of the presentable object aPresentableObject in this framework with the display mode aMode.
 
-Returns:
-	None
-
-Removes highlighting from the presentation of the  
-presentable object aPresentableObject in this  
-framework with the display mode aMode.") Unhighlight;
+	:param aPresentableObject:
+	:type aPresentableObject: Handle_PrsMgr_PresentableObject &
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:rtype: None
+") Unhighlight;
 		void Unhighlight (const Handle_PrsMgr_PresentableObject & aPresentableObject,const Standard_Integer aMode = 0);
-		%feature("autodoc", "Args:
-	aPresentableObject(Handle_PrsMgr_PresentableObject)
-	amode(Standard_Integer)
-	aNewPrior(Standard_Integer)
+		%feature("autodoc", "	* Sets the display priority aNewPrior of the presentable object aPresentableObject in this framework with the display mode aMode.
 
-Returns:
-	None
-
-Sets the display priority aNewPrior   of the  
-presentable object aPresentableObject in this  
-framework with the display mode aMode.") SetDisplayPriority;
+	:param aPresentableObject:
+	:type aPresentableObject: Handle_PrsMgr_PresentableObject &
+	:param amode:
+	:type amode: Standard_Integer
+	:param aNewPrior:
+	:type aNewPrior: Standard_Integer
+	:rtype: None
+") SetDisplayPriority;
 		void SetDisplayPriority (const Handle_PrsMgr_PresentableObject & aPresentableObject,const Standard_Integer amode,const Standard_Integer aNewPrior);
-		%feature("autodoc", "Args:
-	aPresentableObject(Handle_PrsMgr_PresentableObject)
-	amode(Standard_Integer)
+		%feature("autodoc", "	* Returns the display priority of the presentable object aPresentableObject in this framework with the display mode aMode.
 
-Returns:
-	Standard_Integer
-
-Returns the display priority of the presentable object  
-aPresentableObject in this framework with the  
-display mode aMode.") DisplayPriority;
+	:param aPresentableObject:
+	:type aPresentableObject: Handle_PrsMgr_PresentableObject &
+	:param amode:
+	:type amode: Standard_Integer
+	:rtype: int
+") DisplayPriority;
 		Standard_Integer DisplayPriority (const Handle_PrsMgr_PresentableObject & aPresentableObject,const Standard_Integer amode);
-		%feature("autodoc", "Args:
-	thePresentableObject(Handle_PrsMgr_PresentableObject)
-	theLayerId(Standard_Integer)
+		%feature("autodoc", "	* Set Z layer ID for all presentations of the object.
 
-Returns:
-	None
-
-Set Z layer ID for all presentations of the object.") SetZLayer;
+	:param thePresentableObject:
+	:type thePresentableObject: Handle_PrsMgr_PresentableObject &
+	:param theLayerId:
+	:type theLayerId: Standard_Integer
+	:rtype: None
+") SetZLayer;
 		void SetZLayer (const Handle_PrsMgr_PresentableObject & thePresentableObject,const Standard_Integer theLayerId);
-		%feature("autodoc", "Args:
-	thePresentableObject(Handle_PrsMgr_PresentableObject)
+		%feature("autodoc", "	* Get Z layer ID assigned to all presentations of the object. Method returns -1 value if object has no presentations and is impossible to get layer index.
 
-Returns:
-	Standard_Integer
-
-Get Z layer ID assigned to all presentations of the object.  
-Method returns -1 value if object has no presentations and is  
-impossible to get layer index.") GetZLayer;
+	:param thePresentableObject:
+	:type thePresentableObject: Handle_PrsMgr_PresentableObject &
+	:rtype: int
+") GetZLayer;
 		Standard_Integer GetZLayer (const Handle_PrsMgr_PresentableObject & thePresentableObject);
-		%feature("autodoc", "Args:
-	aPresentableObject(Handle_PrsMgr_PresentableObject)
-	aMode(Standard_Integer)=0
+		%feature("autodoc", "	* Returns true if the presentation of the presentable object aPresentableObject in this framework with the display mode aMode is displayed.
 
-Returns:
-	Standard_Boolean
-
-Returns true if the presentation of the presentable  
-object aPresentableObject in this framework with the  
-display mode aMode is displayed.") IsDisplayed;
+	:param aPresentableObject:
+	:type aPresentableObject: Handle_PrsMgr_PresentableObject &
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:rtype: bool
+") IsDisplayed;
 		Standard_Boolean IsDisplayed (const Handle_PrsMgr_PresentableObject & aPresentableObject,const Standard_Integer aMode = 0);
-		%feature("autodoc", "Args:
-	aPresentableObject(Handle_PrsMgr_PresentableObject)
-	aMode(Standard_Integer)=0
+		%feature("autodoc", "	* Returns true if the presentation of the presentable object aPresentableObject in this framework with the display mode aMode is highlighted.
 
-Returns:
-	Standard_Boolean
-
-Returns true if the presentation of the presentable  
-object aPresentableObject in this framework with the  
-display mode aMode is highlighted.") IsHighlighted;
+	:param aPresentableObject:
+	:type aPresentableObject: Handle_PrsMgr_PresentableObject &
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:rtype: bool
+") IsHighlighted;
 		Standard_Boolean IsHighlighted (const Handle_PrsMgr_PresentableObject & aPresentableObject,const Standard_Integer aMode = 0);
-		%feature("autodoc", "Args:
-	aPresentableObject(Handle_PrsMgr_PresentableObject)
-	aMode(Standard_Integer)=0
+		%feature("autodoc", "	* Updates the presentation of the presentable object aPresentableObject in this framework with the display mode aMode.
 
-Returns:
-	None
-
-Updates the presentation of the presentable object  
-aPresentableObject in this framework with the display mode aMode.") Update;
+	:param aPresentableObject:
+	:type aPresentableObject: Handle_PrsMgr_PresentableObject &
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:rtype: None
+") Update;
 		void Update (const Handle_PrsMgr_PresentableObject & aPresentableObject,const Standard_Integer aMode = 0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* initializes the list of Prs to be displayed in transient mode
 
-initializes the list of Prs to be displayed in transient mode") BeginDraw;
+	:rtype: void
+") BeginDraw;
 		virtual void BeginDraw ();
-		%feature("autodoc", "Args:
-	aPresentableObject(Handle_PrsMgr_PresentableObject)
-	aMode(Standard_Integer)=0
+		%feature("autodoc", "	* Performs an iteration of the transient objects to look for the presentable objects with the display mode aMode. Appends the presentation of the presentable object aPresentableObject with the mode aMode to the list of objects in immediate mode.
 
-Returns:
-	None
-
-Performs an iteration of the transient objects to look  
-for the presentable objects with the display mode aMode.  
-Appends the presentation of the presentable object  
-aPresentableObject with the mode aMode to the list  
-of objects in immediate mode.") Add;
+	:param aPresentableObject:
+	:type aPresentableObject: Handle_PrsMgr_PresentableObject &
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:rtype: None
+") Add;
 		void Add (const Handle_PrsMgr_PresentableObject & aPresentableObject,const Standard_Integer aMode = 0);
-		%feature("autodoc", "Args:
-	aPresentableObject(Handle_PrsMgr_PresentableObject)
-	aMode(Standard_Integer)=0
+		%feature("autodoc", "	* Performs an iteration of the transient objects to look for the presentable objects with the display mode aMode. Removes the presentation of the presentable object aPresentableObject with the mode aMode from the list of objects in immediate mode.
 
-Returns:
-	None
-
-Performs an iteration of the transient objects to look  
-for the presentable objects with the display mode aMode.  
-Removes the presentation of the presentable object  
-aPresentableObject with the mode aMode from the  
-list of objects in immediate mode.") Remove;
+	:param aPresentableObject:
+	:type aPresentableObject: Handle_PrsMgr_PresentableObject &
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Handle_PrsMgr_PresentableObject & aPresentableObject,const Standard_Integer aMode = 0);
-		%feature("autodoc", "Args:
-	aView(Handle_V3d_View)
-	DoubleBuffer(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Allows rapid drawing of the view aView by avoiding an update of the whole background. If DoubleBuffer is true, the background is drawn.
 
-Returns:
-	virtual void
-
-Allows rapid drawing of the view aView by avoiding  
-an update of the whole background. If DoubleBuffer  
-is true, the background is drawn.") EndDraw;
+	:param aView:
+	:type aView: Handle_V3d_View &
+	:param DoubleBuffer: default value is Standard_False
+	:type DoubleBuffer: bool
+	:rtype: void
+") EndDraw;
 		virtual void EndDraw (const Handle_V3d_View & aView,const Standard_Boolean DoubleBuffer = Standard_False);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if immediate (transient) mode is on.
 
-Returns true if immediate (transient) mode is on.") IsImmediateModeOn;
+	:rtype: bool
+") IsImmediateModeOn;
 		Standard_Boolean IsImmediateModeOn ();
-		%feature("autodoc", "Args:
-	aPresentableObject(Handle_PrsMgr_PresentableObject)
-	aMode(Standard_Integer)=0
+		%feature("autodoc", "	* Returns true if there is a presentation of the presentable object aPresentableObject in this framework, aPresentableObject having the display mode aMode.
 
-Returns:
-	Standard_Boolean
-
-Returns true if there is a presentation of the  
-presentable object aPresentableObject in this  
-framework, aPresentableObject having the display mode aMode.") HasPresentation;
+	:param aPresentableObject:
+	:type aPresentableObject: Handle_PrsMgr_PresentableObject &
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:rtype: bool
+") HasPresentation;
 		Standard_Boolean HasPresentation (const Handle_PrsMgr_PresentableObject & aPresentableObject,const Standard_Integer aMode = 0);
-		%feature("autodoc", "Args:
-	aPresentableObject(Handle_PrsMgr_PresentableObject)
-	aMode(Standard_Integer)=0
+		%feature("autodoc", "	* Returns the presentation Presentation of the presentable object aPresentableObject in this framework. aPresentableObject has the display mode aMode.
 
-Returns:
-	Handle_PrsMgr_Presentation
-
-Returns the presentation Presentation of the  
-presentable object aPresentableObject in this  
-framework. aPresentableObject has the display mode aMode.") Presentation;
+	:param aPresentableObject:
+	:type aPresentableObject: Handle_PrsMgr_PresentableObject &
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:rtype: Handle_PrsMgr_Presentation
+") Presentation;
 		Handle_PrsMgr_Presentation Presentation (const Handle_PrsMgr_PresentableObject & aPresentableObject,const Standard_Integer aMode = 0);
 };
 
@@ -739,168 +588,111 @@ def __del__(self):
 %nodefaultctor PrsMgr_Presentations;
 class PrsMgr_Presentations : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") PrsMgr_Presentations;
+		%feature("autodoc", "	:rtype: None
+") PrsMgr_Presentations;
 		 PrsMgr_Presentations ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(PrsMgr_Presentations)
-
-Returns:
-	PrsMgr_Presentations
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: PrsMgr_Presentations &
+	:rtype: PrsMgr_Presentations
+") Assign;
 		const PrsMgr_Presentations & Assign (const PrsMgr_Presentations & Other);
-		%feature("autodoc", "Args:
-	Other(PrsMgr_Presentations)
-
-Returns:
-	PrsMgr_Presentations
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: PrsMgr_Presentations &
+	:rtype: PrsMgr_Presentations
+") operator=;
 		const PrsMgr_Presentations & operator = (const PrsMgr_Presentations & Other);
-		%feature("autodoc", "Args:
-	T(PrsMgr_ModedPresentation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: PrsMgr_ModedPresentation &
+	:rtype: None
+") Append;
 		void Append (const PrsMgr_ModedPresentation & T);
-		%feature("autodoc", "Args:
-	S(PrsMgr_Presentations)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: PrsMgr_Presentations &
+	:rtype: None
+") Append;
 		void Append (PrsMgr_Presentations & S);
-		%feature("autodoc", "Args:
-	T(PrsMgr_ModedPresentation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: PrsMgr_ModedPresentation &
+	:rtype: None
+") Prepend;
 		void Prepend (const PrsMgr_ModedPresentation & T);
-		%feature("autodoc", "Args:
-	S(PrsMgr_Presentations)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: PrsMgr_Presentations &
+	:rtype: None
+") Prepend;
 		void Prepend (PrsMgr_Presentations & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(PrsMgr_ModedPresentation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: PrsMgr_ModedPresentation &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const PrsMgr_ModedPresentation & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(PrsMgr_Presentations)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: PrsMgr_Presentations &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,PrsMgr_Presentations & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(PrsMgr_ModedPresentation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: PrsMgr_ModedPresentation &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const PrsMgr_ModedPresentation & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(PrsMgr_Presentations)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: PrsMgr_Presentations &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,PrsMgr_Presentations & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	PrsMgr_ModedPresentation
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: PrsMgr_ModedPresentation
+") First;
 		const PrsMgr_ModedPresentation & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	PrsMgr_ModedPresentation
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: PrsMgr_ModedPresentation
+") Last;
 		const PrsMgr_ModedPresentation & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(PrsMgr_Presentations)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: PrsMgr_Presentations &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,PrsMgr_Presentations & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	PrsMgr_ModedPresentation
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: PrsMgr_ModedPresentation
+") Value;
 		const PrsMgr_ModedPresentation & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(PrsMgr_ModedPresentation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: PrsMgr_ModedPresentation &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const PrsMgr_ModedPresentation & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	PrsMgr_ModedPresentation
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: PrsMgr_ModedPresentation
+") ChangeValue;
 		PrsMgr_ModedPresentation & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -922,66 +714,51 @@ def __del__(self):
 %nodefaultctor PrsMgr_Prs;
 class PrsMgr_Prs : public Prs3d_Presentation {
 	public:
-		%feature("autodoc", "Args:
-	aStructureManager(Handle_Graphic3d_StructureManager)
-	aPresentation(PrsMgr_Presentation3dPointer)
-	aTypeOfPresentation3d(PrsMgr_TypeOfPresentation3d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") PrsMgr_Prs;
+		%feature("autodoc", "	:param aStructureManager:
+	:type aStructureManager: Handle_Graphic3d_StructureManager &
+	:param aPresentation:
+	:type aPresentation: PrsMgr_Presentation3dPointer &
+	:param aTypeOfPresentation3d:
+	:type aTypeOfPresentation3d: PrsMgr_TypeOfPresentation3d
+	:rtype: None
+") PrsMgr_Prs;
 		 PrsMgr_Prs (const Handle_Graphic3d_StructureManager & aStructureManager,const PrsMgr_Presentation3dPointer & aPresentation,const PrsMgr_TypeOfPresentation3d aTypeOfPresentation3d);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Compute;
+		%feature("autodoc", "	:rtype: None
+") Compute;
 		void Compute ();
-		%feature("autodoc", "Args:
-	aProjector(Handle_Graphic3d_DataStructureManager)
-
-Returns:
-	Handle_Graphic3d_Structure
-
-No detailed docstring for this function.") Compute;
+		%feature("autodoc", "	:param aProjector:
+	:type aProjector: Handle_Graphic3d_DataStructureManager &
+	:rtype: Handle_Graphic3d_Structure
+") Compute;
 		Handle_Graphic3d_Structure Compute (const Handle_Graphic3d_DataStructureManager & aProjector);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Graphic3d_DataStructureManager)
-	AMatrix(TColStd_Array2OfReal)
+		%feature("autodoc", "	* the 'degenerated' Structure is displayed with a transformation defined by <AMatrix> which is not a Pure Translation. We have to take in account this Transformation in the computation of hidden line removal... returns a filled Graphic Structure.
 
-Returns:
-	Handle_Graphic3d_Structure
-
-the 'degenerated' Structure is displayed with  
-         a transformation defined by <AMatrix>  
-         which is not a Pure Translation.  
-         We have to take in account this Transformation  
-         in the computation of hidden line removal...  
-         returns a filled Graphic Structure.") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Graphic3d_DataStructureManager &
+	:param AMatrix:
+	:type AMatrix: TColStd_Array2OfReal &
+	:rtype: Handle_Graphic3d_Structure
+") Compute;
 		Handle_Graphic3d_Structure Compute (const Handle_Graphic3d_DataStructureManager & aProjector,const TColStd_Array2OfReal & AMatrix);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Graphic3d_DataStructureManager)
-	ComputedStruct(Handle_Graphic3d_Structure)
+		%feature("autodoc", "	* No need to return a structure, just to fill <ComputedStruct> ....
 
-Returns:
-	None
-
-No need to return a structure, just to fill  
-         <ComputedStruct> ....") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Graphic3d_DataStructureManager &
+	:param ComputedStruct:
+	:type ComputedStruct: Handle_Graphic3d_Structure &
+	:rtype: None
+") Compute;
 		void Compute (const Handle_Graphic3d_DataStructureManager & aProjector,Handle_Graphic3d_Structure & ComputedStruct);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Graphic3d_DataStructureManager)
-	AMatrix(TColStd_Array2OfReal)
-	aStructure(Handle_Graphic3d_Structure)
+		%feature("autodoc", "	* No Need to return a Structure, just to Fill <aStructure>. The Trsf has to be taken in account in the computation (Rotation Part....)
 
-Returns:
-	None
-
-No Need to return a Structure, just to  
-         Fill <aStructure>. The Trsf has to be taken in account  
-         in the computation (Rotation Part....)") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Graphic3d_DataStructureManager &
+	:param AMatrix:
+	:type AMatrix: TColStd_Array2OfReal &
+	:param aStructure:
+	:type aStructure: Handle_Graphic3d_Structure &
+	:rtype: None
+") Compute;
 		void Compute (const Handle_Graphic3d_DataStructureManager & aProjector,const TColStd_Array2OfReal & AMatrix,Handle_Graphic3d_Structure & aStructure);
 };
 
@@ -1042,22 +819,17 @@ def __del__(self):
 %nodefaultctor PrsMgr_SequenceNodeOfPresentations;
 class PrsMgr_SequenceNodeOfPresentations : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(PrsMgr_ModedPresentation)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") PrsMgr_SequenceNodeOfPresentations;
+		%feature("autodoc", "	:param I:
+	:type I: PrsMgr_ModedPresentation &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") PrsMgr_SequenceNodeOfPresentations;
 		 PrsMgr_SequenceNodeOfPresentations (const PrsMgr_ModedPresentation & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	PrsMgr_ModedPresentation
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: PrsMgr_ModedPresentation
+") Value;
 		PrsMgr_ModedPresentation & Value ();
 };
 
@@ -1118,26 +890,16 @@ def __del__(self):
 %nodefaultctor PrsMgr_Presentation3d;
 class PrsMgr_Presentation3d : public PrsMgr_Presentation {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	PrsMgr_KindOfPrs
-
-No detailed docstring for this function.") KindOfPresentation;
+		%feature("autodoc", "	:rtype: PrsMgr_KindOfPrs
+") KindOfPresentation;
 		PrsMgr_KindOfPrs KindOfPresentation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Destructor
 
-Destructor") Destroy;
+	:rtype: void
+") Destroy;
 		virtual void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_Presentation
-
-No detailed docstring for this function.") Presentation;
+		%feature("autodoc", "	:rtype: Handle_Prs3d_Presentation
+") Presentation;
 		Handle_Prs3d_Presentation Presentation ();
 };
 
@@ -1198,179 +960,151 @@ def __del__(self):
 %nodefaultctor PrsMgr_PresentationManager3d;
 class PrsMgr_PresentationManager3d : public PrsMgr_PresentationManager {
 	public:
-		%feature("autodoc", "Args:
-	aStructureManager(Handle_Graphic3d_StructureManager)
+		%feature("autodoc", "	* Creates a framework to manage displays and graphic entities with the 3D view aStructureManager.
 
-Returns:
-	None
-
-Creates a framework to manage displays and graphic  
-entities with the 3D view aStructureManager.") PrsMgr_PresentationManager3d;
+	:param aStructureManager:
+	:type aStructureManager: Handle_Graphic3d_StructureManager &
+	:rtype: None
+") PrsMgr_PresentationManager3d;
 		 PrsMgr_PresentationManager3d (const Handle_Graphic3d_StructureManager & aStructureManager);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") Is3D;
+		%feature("autodoc", "	:rtype: bool
+") Is3D;
 		virtual Standard_Boolean Is3D ();
-		%feature("autodoc", "Args:
-	aPresentableObject(Handle_PrsMgr_PresentableObject)
-	aColor(Quantity_NameOfColor)=Quantity_NOC_YELLOW
-	aMode(Standard_Integer)=0
+		%feature("autodoc", "	* Highlights the graphic object aPresentableObject in the color aColor. aPresentableObject has the display mode aMode; this has the default value of 0, that is, the wireframe display mode.
 
-Returns:
-	None
-
-Highlights the graphic object aPresentableObject in  
-the color aColor.  
-aPresentableObject has the display mode aMode;  
-this has the default value of 0, that is, the wireframe display mode.") Color;
+	:param aPresentableObject:
+	:type aPresentableObject: Handle_PrsMgr_PresentableObject &
+	:param aColor: default value is Quantity_NOC_YELLOW
+	:type aColor: Quantity_NameOfColor
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:rtype: None
+") Color;
 		void Color (const Handle_PrsMgr_PresentableObject & aPresentableObject,const Quantity_NameOfColor aColor = Quantity_NOC_YELLOW,const Standard_Integer aMode = 0);
-		%feature("autodoc", "Args:
-	aPresentableObject(Handle_PrsMgr_PresentableObject)
-	aMode(Standard_Integer)=0
+		%feature("autodoc", "	* highlights the boundbox of the presentation
 
-Returns:
-	None
-
-highlights the boundbox of the presentation") BoundBox;
+	:param aPresentableObject:
+	:type aPresentableObject: Handle_PrsMgr_PresentableObject &
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:rtype: None
+") BoundBox;
 		void BoundBox (const Handle_PrsMgr_PresentableObject & aPresentableObject,const Standard_Integer aMode = 0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BeginDraw;
+		%feature("autodoc", "	:rtype: None
+") BeginDraw;
 		void BeginDraw ();
-		%feature("autodoc", "Args:
-	aPrs(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* stores <aPrs> in a list of structure to be displayed in immediate mode. will be taken in account in EndDraw Method.
 
-Returns:
-	None
-
-stores <aPrs> in a list of structure to be displayed  
-         in immediate mode. will be taken in account in EndDraw Method.") AddToImmediateList;
+	:param aPrs:
+	:type aPrs: Handle_Prs3d_Presentation &
+	:rtype: None
+") AddToImmediateList;
 		void AddToImmediateList (const Handle_Prs3d_Presentation & aPrs);
-		%feature("autodoc", "Args:
-	theView(Handle_V3d_View)
-	DoubleBuffer(Standard_Boolean)=Standard_False
-
-Returns:
-	None
-
-No detailed docstring for this function.") EndDraw;
+		%feature("autodoc", "	:param theView:
+	:type theView: Handle_V3d_View &
+	:param DoubleBuffer: default value is Standard_False
+	:type DoubleBuffer: bool
+	:rtype: None
+") EndDraw;
 		void EndDraw (const Handle_V3d_View & theView,const Standard_Boolean DoubleBuffer = Standard_False);
-		%feature("autodoc", "Args:
-	aPresentableObject(Handle_PrsMgr_PresentableObject)
-	anOtherObject(Handle_PrsMgr_PresentableObject)
-	aMode(Standard_Integer)=0
-	anOtherMode(Standard_Integer)=0
-
-Returns:
-	None
-
-No detailed docstring for this function.") Connect;
+		%feature("autodoc", "	:param aPresentableObject:
+	:type aPresentableObject: Handle_PrsMgr_PresentableObject &
+	:param anOtherObject:
+	:type anOtherObject: Handle_PrsMgr_PresentableObject &
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:param anOtherMode: default value is 0
+	:type anOtherMode: Standard_Integer
+	:rtype: None
+") Connect;
 		void Connect (const Handle_PrsMgr_PresentableObject & aPresentableObject,const Handle_PrsMgr_PresentableObject & anOtherObject,const Standard_Integer aMode = 0,const Standard_Integer anOtherMode = 0);
-		%feature("autodoc", "Args:
-	aPresentableObject(Handle_PrsMgr_PresentableObject)
-	aTransformation(Handle_Geom_Transformation)
-	aMode(Standard_Integer)=0
+		%feature("autodoc", "	* Sets the transformation aTransformation for the presentable object aPresentableObject. aPresentableObject has the display mode aMode; this has the default value of 0, that is, the wireframe display mode.
 
-Returns:
-	None
-
-Sets the transformation aTransformation for the  
-presentable object aPresentableObject.  
-aPresentableObject has the display mode aMode;  
-this has the default value of 0, that is, the wireframe  
-display mode.") Transform;
+	:param aPresentableObject:
+	:type aPresentableObject: Handle_PrsMgr_PresentableObject &
+	:param aTransformation:
+	:type aTransformation: Handle_Geom_Transformation &
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:rtype: None
+") Transform;
 		void Transform (const Handle_PrsMgr_PresentableObject & aPresentableObject,const Handle_Geom_Transformation & aTransformation,const Standard_Integer aMode = 0);
-		%feature("autodoc", "Args:
-	aPresentableObject(Handle_PrsMgr_PresentableObject)
-	X(Quantity_Length)
-	Y(Quantity_Length)
-	Z(Quantity_Length)
-	aMode(Standard_Integer)=0
+		%feature("autodoc", "	* Sets a position to move the presentable object aPresentableObject to. This position is defined by the lengths along the x, y and z axes: X, Y and Z respectively. aPresentableObject has the display mode aMode; this has the default value of 0, that is, the wireframe display mode.
 
-Returns:
-	None
-
-Sets a position to move the presentable object  
-aPresentableObject to. This position is defined by the  
-lengths along the x, y and z axes: X, Y and Z respectively.  
-aPresentableObject has the display mode aMode;  
-this has the default value of 0, that is, the wireframe display mode.") Place;
+	:param aPresentableObject:
+	:type aPresentableObject: Handle_PrsMgr_PresentableObject &
+	:param X:
+	:type X: Quantity_Length
+	:param Y:
+	:type Y: Quantity_Length
+	:param Z:
+	:type Z: Quantity_Length
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:rtype: None
+") Place;
 		void Place (const Handle_PrsMgr_PresentableObject & aPresentableObject,const Quantity_Length X,const Quantity_Length Y,const Quantity_Length Z,const Standard_Integer aMode = 0);
-		%feature("autodoc", "Args:
-	aPresentableObject(Handle_PrsMgr_PresentableObject)
-	aTransformation(Handle_Geom_Transformation)
-	aMode(Standard_Integer)=0
+		%feature("autodoc", "	* Defines the transformation aTransformation for the presentable object aPresentableObject. aPresentableObject has the display mode aMode; this has the default value of 0, that is, the wireframe display mode.
 
-Returns:
-	None
-
-Defines the transformation aTransformation for the  
-presentable object aPresentableObject.  
-aPresentableObject has the display mode aMode;  
-this has the default value of 0, that is, the wireframe  
-display mode.") Multiply;
+	:param aPresentableObject:
+	:type aPresentableObject: Handle_PrsMgr_PresentableObject &
+	:param aTransformation:
+	:type aTransformation: Handle_Geom_Transformation &
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:rtype: None
+") Multiply;
 		void Multiply (const Handle_PrsMgr_PresentableObject & aPresentableObject,const Handle_Geom_Transformation & aTransformation,const Standard_Integer aMode = 0);
-		%feature("autodoc", "Args:
-	aPresentableObject(Handle_PrsMgr_PresentableObject)
-	X(Quantity_Length)
-	Y(Quantity_Length)
-	Z(Quantity_Length)
-	aMode(Standard_Integer)=0
+		%feature("autodoc", "	* Sets a position to move the presentable object aPresentableObject to. This position is defined by the lengths along the x, y and z axes: X, Y and Z respectively. aPresentableObject has the display mode aMode; this has the default value of 0, that is, the wireframe display mode.
 
-Returns:
-	None
-
-Sets a position to move the presentable object  
-aPresentableObject to. This position is defined by the  
-lengths along the x, y and z axes: X, Y and Z respectively.  
-aPresentableObject has the display mode aMode;  
-this has the default value of 0, that is, the wireframe  
-display mode.") Move;
+	:param aPresentableObject:
+	:type aPresentableObject: Handle_PrsMgr_PresentableObject &
+	:param X:
+	:type X: Quantity_Length
+	:param Y:
+	:type Y: Quantity_Length
+	:param Z:
+	:type Z: Quantity_Length
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:rtype: None
+") Move;
 		void Move (const Handle_PrsMgr_PresentableObject & aPresentableObject,const Quantity_Length X,const Quantity_Length Y,const Quantity_Length Z,const Standard_Integer aMode = 0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_StructureManager
+		%feature("autodoc", "	* Returns the structure manager.
 
-Returns the structure manager.") StructureManager;
+	:rtype: Handle_Graphic3d_StructureManager
+") StructureManager;
 		const Handle_Graphic3d_StructureManager & StructureManager ();
-		%feature("autodoc", "Args:
-	aPresentableObject(Handle_PrsMgr_PresentableObject)
-	aColor(Quantity_NameOfColor)
-	aMaterial(Graphic3d_NameOfMaterial)
-	aMode(Standard_Integer)=0
+		%feature("autodoc", "	* this method will change the color and the aspect of the presentations containg shaded structures.
 
-Returns:
-	None
-
-this method will change the color and the aspect  
-         of the presentations containg shaded structures.") SetShadingAspect;
+	:param aPresentableObject:
+	:type aPresentableObject: Handle_PrsMgr_PresentableObject &
+	:param aColor:
+	:type aColor: Quantity_NameOfColor
+	:param aMaterial:
+	:type aMaterial: Graphic3d_NameOfMaterial
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:rtype: None
+") SetShadingAspect;
 		void SetShadingAspect (const Handle_PrsMgr_PresentableObject & aPresentableObject,const Quantity_NameOfColor aColor,const Graphic3d_NameOfMaterial aMaterial,const Standard_Integer aMode = 0);
-		%feature("autodoc", "Args:
-	aPresentableObject(Handle_PrsMgr_PresentableObject)
-	aShadingAspect(Handle_Prs3d_ShadingAspect)
-	aMode(Standard_Integer)=0
+		%feature("autodoc", "	* this method will change the color and the aspect of the presentations containg shaded structures.
 
-Returns:
-	None
-
-this method will change the color and the aspect  
-         of the presentations containg shaded structures.") SetShadingAspect;
+	:param aPresentableObject:
+	:type aPresentableObject: Handle_PrsMgr_PresentableObject &
+	:param aShadingAspect:
+	:type aShadingAspect: Handle_Prs3d_ShadingAspect &
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:rtype: None
+") SetShadingAspect;
 		void SetShadingAspect (const Handle_PrsMgr_PresentableObject & aPresentableObject,const Handle_Prs3d_ShadingAspect & aShadingAspect,const Standard_Integer aMode = 0);
-		%feature("autodoc", "Args:
-	aPresentableObject(Handle_PrsMgr_PresentableObject)
-	aMode(Standard_Integer)=0
-
-Returns:
-	Handle_PrsMgr_Presentation3d
-
-No detailed docstring for this function.") CastPresentation;
+		%feature("autodoc", "	:param aPresentableObject:
+	:type aPresentableObject: Handle_PrsMgr_PresentableObject &
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:rtype: Handle_PrsMgr_Presentation3d
+") CastPresentation;
 		Handle_PrsMgr_Presentation3d CastPresentation (const Handle_PrsMgr_PresentableObject & aPresentableObject,const Standard_Integer aMode = 0);
 };
 

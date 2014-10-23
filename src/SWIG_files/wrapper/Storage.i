@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -77,12 +77,10 @@ enum Storage_SolveMode {
 %nodefaultctor Storage;
 class Storage {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static TCollection_AsciiString
+		%feature("autodoc", "	* returns the version of Storage's read/write routines
 
-returns the version of Storage's read/write routines") Version;
+	:rtype: TCollection_AsciiString
+") Version;
 		static TCollection_AsciiString Version ();
 };
 
@@ -104,108 +102,68 @@ def __del__(self):
 %nodefaultctor Storage_ArrayOfCallBack;
 class Storage_ArrayOfCallBack {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_ArrayOfCallBack;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Storage_ArrayOfCallBack;
 		 Storage_ArrayOfCallBack (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Handle_Storage_CallBack)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_ArrayOfCallBack;
+		%feature("autodoc", "	:param Item:
+	:type Item: Handle_Storage_CallBack &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Storage_ArrayOfCallBack;
 		 Storage_ArrayOfCallBack (const Handle_Storage_CallBack & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Handle_Storage_CallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_Storage_CallBack &
+	:rtype: None
+") Init;
 		void Init (const Handle_Storage_CallBack & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(Storage_ArrayOfCallBack)
-
-Returns:
-	Storage_ArrayOfCallBack
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Storage_ArrayOfCallBack &
+	:rtype: Storage_ArrayOfCallBack
+") Assign;
 		const Storage_ArrayOfCallBack & Assign (const Storage_ArrayOfCallBack & Other);
-		%feature("autodoc", "Args:
-	Other(Storage_ArrayOfCallBack)
-
-Returns:
-	Storage_ArrayOfCallBack
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Storage_ArrayOfCallBack &
+	:rtype: Storage_ArrayOfCallBack
+") operator=;
 		const Storage_ArrayOfCallBack & operator = (const Storage_ArrayOfCallBack & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Handle_Storage_CallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Handle_Storage_CallBack &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Storage_CallBack & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Storage_CallBack
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Storage_CallBack
+") Value;
 		const Handle_Storage_CallBack & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Storage_CallBack
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Storage_CallBack
+") ChangeValue;
 		Handle_Storage_CallBack & ChangeValue (const Standard_Integer Index);
 };
 
@@ -227,108 +185,68 @@ def __del__(self):
 %nodefaultctor Storage_ArrayOfSchema;
 class Storage_ArrayOfSchema {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_ArrayOfSchema;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Storage_ArrayOfSchema;
 		 Storage_ArrayOfSchema (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Handle_Storage_Schema)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_ArrayOfSchema;
+		%feature("autodoc", "	:param Item:
+	:type Item: Handle_Storage_Schema &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Storage_ArrayOfSchema;
 		 Storage_ArrayOfSchema (const Handle_Storage_Schema & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Handle_Storage_Schema)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_Storage_Schema &
+	:rtype: None
+") Init;
 		void Init (const Handle_Storage_Schema & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(Storage_ArrayOfSchema)
-
-Returns:
-	Storage_ArrayOfSchema
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Storage_ArrayOfSchema &
+	:rtype: Storage_ArrayOfSchema
+") Assign;
 		const Storage_ArrayOfSchema & Assign (const Storage_ArrayOfSchema & Other);
-		%feature("autodoc", "Args:
-	Other(Storage_ArrayOfSchema)
-
-Returns:
-	Storage_ArrayOfSchema
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Storage_ArrayOfSchema &
+	:rtype: Storage_ArrayOfSchema
+") operator=;
 		const Storage_ArrayOfSchema & operator = (const Storage_ArrayOfSchema & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Handle_Storage_Schema)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Handle_Storage_Schema &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Storage_Schema & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Storage_Schema
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Storage_Schema
+") Value;
 		const Handle_Storage_Schema & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Storage_Schema
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Storage_Schema
+") ChangeValue;
 		Handle_Storage_Schema & ChangeValue (const Standard_Integer Index);
 };
 
@@ -350,614 +268,369 @@ def __del__(self):
 %nodefaultctor Storage_BaseDriver;
 class Storage_BaseDriver {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Delete;
+		%feature("autodoc", "	:rtype: None
+") Delete;
 		void Delete ();
-		%feature("autodoc", "Args:
-	aName(TCollection_AsciiString)
-	aMode(Storage_OpenMode)
-
-Returns:
-	virtual Storage_Error
-
-No detailed docstring for this function.") Open;
+		%feature("autodoc", "	:param aName:
+	:type aName: TCollection_AsciiString &
+	:param aMode:
+	:type aMode: Storage_OpenMode
+	:rtype: Storage_Error
+") Open;
 		virtual Storage_Error Open (const TCollection_AsciiString & aName,const Storage_OpenMode aMode);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") Name;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") Name;
 		TCollection_AsciiString Name ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Storage_OpenMode
-
-No detailed docstring for this function.") OpenMode;
+		%feature("autodoc", "	:rtype: Storage_OpenMode
+") OpenMode;
 		Storage_OpenMode OpenMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* returns True if we are at end of the stream
 
-returns True if we are at end of the stream") IsEnd;
+	:rtype: bool
+") IsEnd;
 		virtual Standard_Boolean IsEnd ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Storage_Position
+		%feature("autodoc", "	* return position in the file. Return -1 upon error.
 
-return position in the file. Return -1 upon error.") Tell;
+	:rtype: Storage_Position
+") Tell;
 		virtual Storage_Position Tell ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Storage_Error
-
-No detailed docstring for this function.") BeginWriteInfoSection;
+		%feature("autodoc", "	:rtype: Storage_Error
+") BeginWriteInfoSection;
 		virtual Storage_Error BeginWriteInfoSection ();
-		%feature("autodoc", "Args:
-	nbObj(Standard_Integer)
-	dbVersion(TCollection_AsciiString)
-	date(TCollection_AsciiString)
-	schemaName(TCollection_AsciiString)
-	schemaVersion(TCollection_AsciiString)
-	appName(TCollection_ExtendedString)
-	appVersion(TCollection_AsciiString)
-	objectType(TCollection_ExtendedString)
-	userInfo(TColStd_SequenceOfAsciiString)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") WriteInfo;
+		%feature("autodoc", "	:param nbObj:
+	:type nbObj: Standard_Integer
+	:param dbVersion:
+	:type dbVersion: TCollection_AsciiString &
+	:param date:
+	:type date: TCollection_AsciiString &
+	:param schemaName:
+	:type schemaName: TCollection_AsciiString &
+	:param schemaVersion:
+	:type schemaVersion: TCollection_AsciiString &
+	:param appName:
+	:type appName: TCollection_ExtendedString &
+	:param appVersion:
+	:type appVersion: TCollection_AsciiString &
+	:param objectType:
+	:type objectType: TCollection_ExtendedString &
+	:param userInfo:
+	:type userInfo: TColStd_SequenceOfAsciiString &
+	:rtype: void
+") WriteInfo;
 		virtual void WriteInfo (const Standard_Integer nbObj,const TCollection_AsciiString & dbVersion,const TCollection_AsciiString & date,const TCollection_AsciiString & schemaName,const TCollection_AsciiString & schemaVersion,const TCollection_ExtendedString & appName,const TCollection_AsciiString & appVersion,const TCollection_ExtendedString & objectType,const TColStd_SequenceOfAsciiString & userInfo);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Storage_Error
-
-No detailed docstring for this function.") EndWriteInfoSection;
+		%feature("autodoc", "	:rtype: Storage_Error
+") EndWriteInfoSection;
 		virtual Storage_Error EndWriteInfoSection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Storage_Error
-
-No detailed docstring for this function.") BeginReadInfoSection;
+		%feature("autodoc", "	:rtype: Storage_Error
+") BeginReadInfoSection;
 		virtual Storage_Error BeginReadInfoSection ();
-		%feature("autodoc", "Args:
-	nbObj(Standard_Integer)
-	dbVersion(TCollection_AsciiString)
-	date(TCollection_AsciiString)
-	schemaName(TCollection_AsciiString)
-	schemaVersion(TCollection_AsciiString)
-	appName(TCollection_ExtendedString)
-	appVersion(TCollection_AsciiString)
-	objectType(TCollection_ExtendedString)
-	userInfo(TColStd_SequenceOfAsciiString)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") ReadInfo;
+		%feature("autodoc", "	:param nbObj:
+	:type nbObj: Standard_Integer &
+	:param dbVersion:
+	:type dbVersion: TCollection_AsciiString &
+	:param date:
+	:type date: TCollection_AsciiString &
+	:param schemaName:
+	:type schemaName: TCollection_AsciiString &
+	:param schemaVersion:
+	:type schemaVersion: TCollection_AsciiString &
+	:param appName:
+	:type appName: TCollection_ExtendedString &
+	:param appVersion:
+	:type appVersion: TCollection_AsciiString &
+	:param objectType:
+	:type objectType: TCollection_ExtendedString &
+	:param userInfo:
+	:type userInfo: TColStd_SequenceOfAsciiString &
+	:rtype: void
+") ReadInfo;
 		virtual void ReadInfo (Standard_Integer &OutValue,TCollection_AsciiString & dbVersion,TCollection_AsciiString & date,TCollection_AsciiString & schemaName,TCollection_AsciiString & schemaVersion,TCollection_ExtendedString & appName,TCollection_AsciiString & appVersion,TCollection_ExtendedString & objectType,TColStd_SequenceOfAsciiString & userInfo);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Storage_Error
-
-No detailed docstring for this function.") EndReadInfoSection;
+		%feature("autodoc", "	:rtype: Storage_Error
+") EndReadInfoSection;
 		virtual Storage_Error EndReadInfoSection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Storage_Error
-
-No detailed docstring for this function.") BeginWriteCommentSection;
+		%feature("autodoc", "	:rtype: Storage_Error
+") BeginWriteCommentSection;
 		virtual Storage_Error BeginWriteCommentSection ();
-		%feature("autodoc", "Args:
-	userComments(TColStd_SequenceOfExtendedString)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") WriteComment;
+		%feature("autodoc", "	:param userComments:
+	:type userComments: TColStd_SequenceOfExtendedString &
+	:rtype: void
+") WriteComment;
 		virtual void WriteComment (const TColStd_SequenceOfExtendedString & userComments);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Storage_Error
-
-No detailed docstring for this function.") EndWriteCommentSection;
+		%feature("autodoc", "	:rtype: Storage_Error
+") EndWriteCommentSection;
 		virtual Storage_Error EndWriteCommentSection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Storage_Error
-
-No detailed docstring for this function.") BeginReadCommentSection;
+		%feature("autodoc", "	:rtype: Storage_Error
+") BeginReadCommentSection;
 		virtual Storage_Error BeginReadCommentSection ();
-		%feature("autodoc", "Args:
-	userComments(TColStd_SequenceOfExtendedString)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") ReadComment;
+		%feature("autodoc", "	:param userComments:
+	:type userComments: TColStd_SequenceOfExtendedString &
+	:rtype: void
+") ReadComment;
 		virtual void ReadComment (TColStd_SequenceOfExtendedString & userComments);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Storage_Error
-
-No detailed docstring for this function.") EndReadCommentSection;
+		%feature("autodoc", "	:rtype: Storage_Error
+") EndReadCommentSection;
 		virtual Storage_Error EndReadCommentSection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Storage_Error
-
-No detailed docstring for this function.") BeginWriteTypeSection;
+		%feature("autodoc", "	:rtype: Storage_Error
+") BeginWriteTypeSection;
 		virtual Storage_Error BeginWriteTypeSection ();
-		%feature("autodoc", "Args:
-	aSize(Standard_Integer)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetTypeSectionSize;
+		%feature("autodoc", "	:param aSize:
+	:type aSize: Standard_Integer
+	:rtype: void
+") SetTypeSectionSize;
 		virtual void SetTypeSectionSize (const Standard_Integer aSize);
-		%feature("autodoc", "Args:
-	typeNum(Standard_Integer)
-	typeName(TCollection_AsciiString)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") WriteTypeInformations;
+		%feature("autodoc", "	:param typeNum:
+	:type typeNum: Standard_Integer
+	:param typeName:
+	:type typeName: TCollection_AsciiString &
+	:rtype: void
+") WriteTypeInformations;
 		virtual void WriteTypeInformations (const Standard_Integer typeNum,const TCollection_AsciiString & typeName);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Storage_Error
-
-No detailed docstring for this function.") EndWriteTypeSection;
+		%feature("autodoc", "	:rtype: Storage_Error
+") EndWriteTypeSection;
 		virtual Storage_Error EndWriteTypeSection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Storage_Error
-
-No detailed docstring for this function.") BeginReadTypeSection;
+		%feature("autodoc", "	:rtype: Storage_Error
+") BeginReadTypeSection;
 		virtual Storage_Error BeginReadTypeSection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
-
-No detailed docstring for this function.") TypeSectionSize;
+		%feature("autodoc", "	:rtype: int
+") TypeSectionSize;
 		virtual Standard_Integer TypeSectionSize ();
-		%feature("autodoc", "Args:
-	typeNum(Standard_Integer)
-	typeName(TCollection_AsciiString)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") ReadTypeInformations;
+		%feature("autodoc", "	:param typeNum:
+	:type typeNum: Standard_Integer &
+	:param typeName:
+	:type typeName: TCollection_AsciiString &
+	:rtype: void
+") ReadTypeInformations;
 		virtual void ReadTypeInformations (Standard_Integer &OutValue,TCollection_AsciiString & typeName);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Storage_Error
-
-No detailed docstring for this function.") EndReadTypeSection;
+		%feature("autodoc", "	:rtype: Storage_Error
+") EndReadTypeSection;
 		virtual Storage_Error EndReadTypeSection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Storage_Error
-
-No detailed docstring for this function.") BeginWriteRootSection;
+		%feature("autodoc", "	:rtype: Storage_Error
+") BeginWriteRootSection;
 		virtual Storage_Error BeginWriteRootSection ();
-		%feature("autodoc", "Args:
-	aSize(Standard_Integer)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetRootSectionSize;
+		%feature("autodoc", "	:param aSize:
+	:type aSize: Standard_Integer
+	:rtype: void
+") SetRootSectionSize;
 		virtual void SetRootSectionSize (const Standard_Integer aSize);
-		%feature("autodoc", "Args:
-	rootName(TCollection_AsciiString)
-	aRef(Standard_Integer)
-	aType(TCollection_AsciiString)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") WriteRoot;
+		%feature("autodoc", "	:param rootName:
+	:type rootName: TCollection_AsciiString &
+	:param aRef:
+	:type aRef: Standard_Integer
+	:param aType:
+	:type aType: TCollection_AsciiString &
+	:rtype: void
+") WriteRoot;
 		virtual void WriteRoot (const TCollection_AsciiString & rootName,const Standard_Integer aRef,const TCollection_AsciiString & aType);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Storage_Error
-
-No detailed docstring for this function.") EndWriteRootSection;
+		%feature("autodoc", "	:rtype: Storage_Error
+") EndWriteRootSection;
 		virtual Storage_Error EndWriteRootSection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Storage_Error
-
-No detailed docstring for this function.") BeginReadRootSection;
+		%feature("autodoc", "	:rtype: Storage_Error
+") BeginReadRootSection;
 		virtual Storage_Error BeginReadRootSection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
-
-No detailed docstring for this function.") RootSectionSize;
+		%feature("autodoc", "	:rtype: int
+") RootSectionSize;
 		virtual Standard_Integer RootSectionSize ();
-		%feature("autodoc", "Args:
-	rootName(TCollection_AsciiString)
-	aRef(Standard_Integer)
-	aType(TCollection_AsciiString)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") ReadRoot;
+		%feature("autodoc", "	:param rootName:
+	:type rootName: TCollection_AsciiString &
+	:param aRef:
+	:type aRef: Standard_Integer &
+	:param aType:
+	:type aType: TCollection_AsciiString &
+	:rtype: void
+") ReadRoot;
 		virtual void ReadRoot (TCollection_AsciiString & rootName,Standard_Integer &OutValue,TCollection_AsciiString & aType);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Storage_Error
-
-No detailed docstring for this function.") EndReadRootSection;
+		%feature("autodoc", "	:rtype: Storage_Error
+") EndReadRootSection;
 		virtual Storage_Error EndReadRootSection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Storage_Error
-
-No detailed docstring for this function.") BeginWriteRefSection;
+		%feature("autodoc", "	:rtype: Storage_Error
+") BeginWriteRefSection;
 		virtual Storage_Error BeginWriteRefSection ();
-		%feature("autodoc", "Args:
-	aSize(Standard_Integer)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetRefSectionSize;
+		%feature("autodoc", "	:param aSize:
+	:type aSize: Standard_Integer
+	:rtype: void
+") SetRefSectionSize;
 		virtual void SetRefSectionSize (const Standard_Integer aSize);
-		%feature("autodoc", "Args:
-	reference(Standard_Integer)
-	typeNum(Standard_Integer)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") WriteReferenceType;
+		%feature("autodoc", "	:param reference:
+	:type reference: Standard_Integer
+	:param typeNum:
+	:type typeNum: Standard_Integer
+	:rtype: void
+") WriteReferenceType;
 		virtual void WriteReferenceType (const Standard_Integer reference,const Standard_Integer typeNum);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Storage_Error
-
-No detailed docstring for this function.") EndWriteRefSection;
+		%feature("autodoc", "	:rtype: Storage_Error
+") EndWriteRefSection;
 		virtual Storage_Error EndWriteRefSection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Storage_Error
-
-No detailed docstring for this function.") BeginReadRefSection;
+		%feature("autodoc", "	:rtype: Storage_Error
+") BeginReadRefSection;
 		virtual Storage_Error BeginReadRefSection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
-
-No detailed docstring for this function.") RefSectionSize;
+		%feature("autodoc", "	:rtype: int
+") RefSectionSize;
 		virtual Standard_Integer RefSectionSize ();
-		%feature("autodoc", "Args:
-	reference(Standard_Integer)
-	typeNum(Standard_Integer)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") ReadReferenceType;
+		%feature("autodoc", "	:param reference:
+	:type reference: Standard_Integer &
+	:param typeNum:
+	:type typeNum: Standard_Integer &
+	:rtype: void
+") ReadReferenceType;
 		virtual void ReadReferenceType (Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Storage_Error
-
-No detailed docstring for this function.") EndReadRefSection;
+		%feature("autodoc", "	:rtype: Storage_Error
+") EndReadRefSection;
 		virtual Storage_Error EndReadRefSection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Storage_Error
-
-No detailed docstring for this function.") BeginWriteDataSection;
+		%feature("autodoc", "	:rtype: Storage_Error
+") BeginWriteDataSection;
 		virtual Storage_Error BeginWriteDataSection ();
-		%feature("autodoc", "Args:
-	aRef(Standard_Integer)
-	aType(Standard_Integer)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") WritePersistentObjectHeader;
+		%feature("autodoc", "	:param aRef:
+	:type aRef: Standard_Integer
+	:param aType:
+	:type aType: Standard_Integer
+	:rtype: void
+") WritePersistentObjectHeader;
 		virtual void WritePersistentObjectHeader (const Standard_Integer aRef,const Standard_Integer aType);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") BeginWritePersistentObjectData;
+		%feature("autodoc", "	:rtype: void
+") BeginWritePersistentObjectData;
 		virtual void BeginWritePersistentObjectData ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") BeginWriteObjectData;
+		%feature("autodoc", "	:rtype: void
+") BeginWriteObjectData;
 		virtual void BeginWriteObjectData ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") EndWriteObjectData;
+		%feature("autodoc", "	:rtype: void
+") EndWriteObjectData;
 		virtual void EndWriteObjectData ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") EndWritePersistentObjectData;
+		%feature("autodoc", "	:rtype: void
+") EndWritePersistentObjectData;
 		virtual void EndWritePersistentObjectData ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Storage_Error
-
-No detailed docstring for this function.") EndWriteDataSection;
+		%feature("autodoc", "	:rtype: Storage_Error
+") EndWriteDataSection;
 		virtual Storage_Error EndWriteDataSection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Storage_Error
-
-No detailed docstring for this function.") BeginReadDataSection;
+		%feature("autodoc", "	:rtype: Storage_Error
+") BeginReadDataSection;
 		virtual Storage_Error BeginReadDataSection ();
-		%feature("autodoc", "Args:
-	aRef(Standard_Integer)
-	aType(Standard_Integer)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") ReadPersistentObjectHeader;
+		%feature("autodoc", "	:param aRef:
+	:type aRef: Standard_Integer &
+	:param aType:
+	:type aType: Standard_Integer &
+	:rtype: void
+") ReadPersistentObjectHeader;
 		virtual void ReadPersistentObjectHeader (Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") BeginReadPersistentObjectData;
+		%feature("autodoc", "	:rtype: void
+") BeginReadPersistentObjectData;
 		virtual void BeginReadPersistentObjectData ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") BeginReadObjectData;
+		%feature("autodoc", "	:rtype: void
+") BeginReadObjectData;
 		virtual void BeginReadObjectData ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") EndReadObjectData;
+		%feature("autodoc", "	:rtype: void
+") EndReadObjectData;
 		virtual void EndReadObjectData ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") EndReadPersistentObjectData;
+		%feature("autodoc", "	:rtype: void
+") EndReadPersistentObjectData;
 		virtual void EndReadPersistentObjectData ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Storage_Error
-
-No detailed docstring for this function.") EndReadDataSection;
+		%feature("autodoc", "	:rtype: Storage_Error
+") EndReadDataSection;
 		virtual Storage_Error EndReadDataSection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SkipObject;
+		%feature("autodoc", "	:rtype: void
+") SkipObject;
 		virtual void SkipObject ();
-		%feature("autodoc", "Args:
-	aValue(Standard_Integer)
-
-Returns:
-	virtual Storage_BaseDriver
-
-No detailed docstring for this function.") PutReference;
+		%feature("autodoc", "	:param aValue:
+	:type aValue: Standard_Integer
+	:rtype: Storage_BaseDriver
+") PutReference;
 		virtual Storage_BaseDriver & PutReference (const Standard_Integer aValue);
-		%feature("autodoc", "Args:
-	aValue(Standard_Character)
-
-Returns:
-	virtual Storage_BaseDriver
-
-No detailed docstring for this function.") PutCharacter;
+		%feature("autodoc", "	:param aValue:
+	:type aValue: Standard_Character
+	:rtype: Storage_BaseDriver
+") PutCharacter;
 		virtual Storage_BaseDriver & PutCharacter (const Standard_Character aValue);
-		%feature("autodoc", "Args:
-	aValue(Standard_ExtCharacter)
-
-Returns:
-	virtual Storage_BaseDriver
-
-No detailed docstring for this function.") PutExtCharacter;
+		%feature("autodoc", "	:param aValue:
+	:type aValue: Standard_ExtCharacter
+	:rtype: Storage_BaseDriver
+") PutExtCharacter;
 		virtual Storage_BaseDriver & PutExtCharacter (const Standard_ExtCharacter aValue);
-		%feature("autodoc", "Args:
-	aValue(Standard_Integer)
-
-Returns:
-	virtual Storage_BaseDriver
-
-No detailed docstring for this function.") PutInteger;
+		%feature("autodoc", "	:param aValue:
+	:type aValue: Standard_Integer
+	:rtype: Storage_BaseDriver
+") PutInteger;
 		virtual Storage_BaseDriver & PutInteger (const Standard_Integer aValue);
-		%feature("autodoc", "Args:
-	aValue(Standard_Boolean)
-
-Returns:
-	virtual Storage_BaseDriver
-
-No detailed docstring for this function.") PutBoolean;
+		%feature("autodoc", "	:param aValue:
+	:type aValue: bool
+	:rtype: Storage_BaseDriver
+") PutBoolean;
 		virtual Storage_BaseDriver & PutBoolean (const Standard_Boolean aValue);
-		%feature("autodoc", "Args:
-	aValue(Standard_Real)
-
-Returns:
-	virtual Storage_BaseDriver
-
-No detailed docstring for this function.") PutReal;
+		%feature("autodoc", "	:param aValue:
+	:type aValue: float
+	:rtype: Storage_BaseDriver
+") PutReal;
 		virtual Storage_BaseDriver & PutReal (const Standard_Real aValue);
-		%feature("autodoc", "Args:
-	aValue(Standard_ShortReal)
-
-Returns:
-	virtual Storage_BaseDriver
-
-No detailed docstring for this function.") PutShortReal;
+		%feature("autodoc", "	:param aValue:
+	:type aValue: Standard_ShortReal
+	:rtype: Storage_BaseDriver
+") PutShortReal;
 		virtual Storage_BaseDriver & PutShortReal (const Standard_ShortReal aValue);
-		%feature("autodoc", "Args:
-	aValue(Standard_Integer)
-
-Returns:
-	virtual Storage_BaseDriver
-
-No detailed docstring for this function.") GetReference;
+		%feature("autodoc", "	:param aValue:
+	:type aValue: Standard_Integer &
+	:rtype: Storage_BaseDriver
+") GetReference;
 		virtual Storage_BaseDriver & GetReference (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	aValue(Standard_Character)
-
-Returns:
-	virtual Storage_BaseDriver
-
-No detailed docstring for this function.") GetCharacter;
+		%feature("autodoc", "	:param aValue:
+	:type aValue: Standard_Character &
+	:rtype: Storage_BaseDriver
+") GetCharacter;
 		virtual Storage_BaseDriver & GetCharacter (Standard_Character & aValue);
-		%feature("autodoc", "Args:
-	aValue(Standard_Character)
-
-Returns:
-	Storage_BaseDriver
-
-No detailed docstring for this function.") operator>>;
+		%feature("autodoc", "	:param aValue:
+	:type aValue: Standard_Character &
+	:rtype: Storage_BaseDriver
+") operator>>;
 		Storage_BaseDriver & operator >> (Standard_Character & aValue);
-		%feature("autodoc", "Args:
-	aValue(Standard_ExtCharacter)
-
-Returns:
-	virtual Storage_BaseDriver
-
-No detailed docstring for this function.") GetExtCharacter;
+		%feature("autodoc", "	:param aValue:
+	:type aValue: Standard_ExtCharacter &
+	:rtype: Storage_BaseDriver
+") GetExtCharacter;
 		virtual Storage_BaseDriver & GetExtCharacter (Standard_ExtCharacter & aValue);
-		%feature("autodoc", "Args:
-	aValue(Standard_ExtCharacter)
-
-Returns:
-	Storage_BaseDriver
-
-No detailed docstring for this function.") operator>>;
+		%feature("autodoc", "	:param aValue:
+	:type aValue: Standard_ExtCharacter &
+	:rtype: Storage_BaseDriver
+") operator>>;
 		Storage_BaseDriver & operator >> (Standard_ExtCharacter & aValue);
-		%feature("autodoc", "Args:
-	aValue(Standard_Integer)
-
-Returns:
-	virtual Storage_BaseDriver
-
-No detailed docstring for this function.") GetInteger;
+		%feature("autodoc", "	:param aValue:
+	:type aValue: Standard_Integer &
+	:rtype: Storage_BaseDriver
+") GetInteger;
 		virtual Storage_BaseDriver & GetInteger (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	aValue(Standard_Integer)
-
-Returns:
-	Storage_BaseDriver
-
-No detailed docstring for this function.") operator>>;
+		%feature("autodoc", "	:param aValue:
+	:type aValue: Standard_Integer &
+	:rtype: Storage_BaseDriver
+") operator>>;
 		Storage_BaseDriver & operator >> (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	aValue(Standard_Boolean)
-
-Returns:
-	virtual Storage_BaseDriver
-
-No detailed docstring for this function.") GetBoolean;
+		%feature("autodoc", "	:param aValue:
+	:type aValue: bool
+	:rtype: Storage_BaseDriver
+") GetBoolean;
 		virtual Storage_BaseDriver & GetBoolean (Standard_Boolean & aValue);
-		%feature("autodoc", "Args:
-	aValue(Standard_Boolean)
-
-Returns:
-	Storage_BaseDriver
-
-No detailed docstring for this function.") operator>>;
+		%feature("autodoc", "	:param aValue:
+	:type aValue: bool
+	:rtype: Storage_BaseDriver
+") operator>>;
 		Storage_BaseDriver & operator >> (Standard_Boolean & aValue);
-		%feature("autodoc", "Args:
-	aValue(Standard_Real)
-
-Returns:
-	virtual Storage_BaseDriver
-
-No detailed docstring for this function.") GetReal;
+		%feature("autodoc", "	:param aValue:
+	:type aValue: float &
+	:rtype: Storage_BaseDriver
+") GetReal;
 		virtual Storage_BaseDriver & GetReal (Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	aValue(Standard_Real)
-
-Returns:
-	Storage_BaseDriver
-
-No detailed docstring for this function.") operator>>;
+		%feature("autodoc", "	:param aValue:
+	:type aValue: float &
+	:rtype: Storage_BaseDriver
+") operator>>;
 		Storage_BaseDriver & operator >> (Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	aValue(Standard_ShortReal)
-
-Returns:
-	virtual Storage_BaseDriver
-
-No detailed docstring for this function.") GetShortReal;
+		%feature("autodoc", "	:param aValue:
+	:type aValue: Standard_ShortReal &
+	:rtype: Storage_BaseDriver
+") GetShortReal;
 		virtual Storage_BaseDriver & GetShortReal (Standard_ShortReal & aValue);
-		%feature("autodoc", "Args:
-	aValue(Standard_ShortReal)
-
-Returns:
-	Storage_BaseDriver
-
-No detailed docstring for this function.") operator>>;
+		%feature("autodoc", "	:param aValue:
+	:type aValue: Standard_ShortReal &
+	:rtype: Storage_BaseDriver
+") operator>>;
 		Storage_BaseDriver & operator >> (Standard_ShortReal & aValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Storage_Error
-
-No detailed docstring for this function.") Close;
+		%feature("autodoc", "	:rtype: Storage_Error
+") Close;
 		virtual Storage_Error Close ();
 };
 
@@ -979,27 +652,16 @@ def __del__(self):
 %nodefaultctor Storage_Bucket;
 class Storage_Bucket {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_Bucket;
+		%feature("autodoc", "	:rtype: None
+") Storage_Bucket;
 		 Storage_Bucket ();
-		%feature("autodoc", "Args:
-	theSpaceSize(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_Bucket;
+		%feature("autodoc", "	:param theSpaceSize:
+	:type theSpaceSize: Standard_Integer
+	:rtype: None
+") Storage_Bucket;
 		 Storage_Bucket (const Standard_Integer theSpaceSize);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
 };
 
@@ -1021,49 +683,27 @@ def __del__(self):
 %nodefaultctor Storage_BucketIterator;
 class Storage_BucketIterator {
 	public:
-		%feature("autodoc", "Args:
-	(Storage_BucketOfPersistent *)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_BucketIterator;
+		%feature("autodoc", "	:param :
+	:type : Storage_BucketOfPersistent *
+	:rtype: None
+") Storage_BucketIterator;
 		 Storage_BucketIterator (Storage_BucketOfPersistent * );
-		%feature("autodoc", "Args:
-	(Storage_BucketOfPersistent *)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param :
+	:type : Storage_BucketOfPersistent *
+	:rtype: None
+") Init;
 		void Init (Storage_BucketOfPersistent * );
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reset;
+		%feature("autodoc", "	:rtype: None
+") Reset;
 		void Reset ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Persistent *
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Standard_Persistent *
+") Value;
 		Standard_Persistent * Value ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
 };
 
@@ -1085,44 +725,28 @@ def __del__(self):
 %nodefaultctor Storage_BucketOfPersistent;
 class Storage_BucketOfPersistent {
 	public:
-		%feature("autodoc", "Args:
-	theBucketSize(Standard_Integer)=300000
-	theBucketNumber(Standard_Integer)=100
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_BucketOfPersistent;
+		%feature("autodoc", "	:param theBucketSize: default value is 300000
+	:type theBucketSize: Standard_Integer
+	:param theBucketNumber: default value is 100
+	:type theBucketNumber: Standard_Integer
+	:rtype: None
+") Storage_BucketOfPersistent;
 		 Storage_BucketOfPersistent (const Standard_Integer theBucketSize = 300000,const Standard_Integer theBucketNumber = 100);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	sp(Handle_Standard_Persistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param sp:
+	:type sp: Handle_Standard_Persistent &
+	:rtype: None
+") Append;
 		void Append (const Handle_Standard_Persistent & sp);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
-
-Returns:
-	Standard_Persistent *
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: Standard_Persistent *
+") Value;
 		Standard_Persistent * Value (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
 };
 
@@ -1144,41 +768,33 @@ def __del__(self):
 %nodefaultctor Storage_CallBack;
 class Storage_CallBack : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Standard_Persistent
-
-No detailed docstring for this function.") New;
+		%feature("autodoc", "	:rtype: Handle_Standard_Persistent
+") New;
 		virtual Handle_Standard_Persistent New ();
-		%feature("autodoc", "Args:
-	aPers(Handle_Standard_Persistent)
-	aSchema(Handle_Storage_Schema)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param aPers:
+	:type aPers: Handle_Standard_Persistent &
+	:param aSchema:
+	:type aSchema: Handle_Storage_Schema &
+	:rtype: void
+") Add;
 		virtual void Add (const Handle_Standard_Persistent & aPers,const Handle_Storage_Schema & aSchema);
-		%feature("autodoc", "Args:
-	aPers(Handle_Standard_Persistent)
-	aDriver(Storage_BaseDriver)
-	aSchema(Handle_Storage_Schema)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Write;
+		%feature("autodoc", "	:param aPers:
+	:type aPers: Handle_Standard_Persistent &
+	:param aDriver:
+	:type aDriver: Storage_BaseDriver &
+	:param aSchema:
+	:type aSchema: Handle_Storage_Schema &
+	:rtype: void
+") Write;
 		virtual void Write (const Handle_Standard_Persistent & aPers,Storage_BaseDriver & aDriver,const Handle_Storage_Schema & aSchema);
-		%feature("autodoc", "Args:
-	aPers(Handle_Standard_Persistent)
-	aDriver(Storage_BaseDriver)
-	aSchema(Handle_Storage_Schema)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Read;
+		%feature("autodoc", "	:param aPers:
+	:type aPers: Handle_Standard_Persistent &
+	:param aDriver:
+	:type aDriver: Storage_BaseDriver &
+	:param aSchema:
+	:type aSchema: Handle_Storage_Schema &
+	:rtype: void
+") Read;
 		virtual void Read (const Handle_Standard_Persistent & aPers,Storage_BaseDriver & aDriver,const Handle_Storage_Schema & aSchema);
 };
 
@@ -1239,276 +855,172 @@ def __del__(self):
 %nodefaultctor Storage_Data;
 class Storage_Data : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates an empty set of data. You explicitly create a Storage_Data object when preparing the set of objects to be stored together in a container (for example, in a file). Then use the function AddRoot to add persistent objects to the set of data. A Storage_Data object is also returned by the Read function of a Storage_Schema storage/retrieval algorithm. Use the functions NumberOfRoots and Roots to find the roots which were stored in the read container.
 
-Creates an empty set of data.  
-You explicitly create a Storage_Data object  
-when preparing the set of objects to be stored  
-together in a container (for example, in a file).  
-Then use the function AddRoot to add  
-persistent objects to the set of data.  
-A Storage_Data object is also returned by the  
-Read function of a Storage_Schema  
-storage/retrieval algorithm. Use the functions  
-NumberOfRoots and Roots to find the roots  
-which were stored in the read container.") Storage_Data;
+	:rtype: None
+") Storage_Data;
 		 Storage_Data ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Storage_Error
+		%feature("autodoc", "	* Returns Storage_VSOk if - the last storage operation performed with the function Read, or - the last retrieval operation performed with the function Write by a Storage_Schema algorithm, on this set of data was successful. If the storage or retrieval operation was not performed, the returned error status indicates the reason why the operation failed. The algorithm stops its analysis at the first detected error
 
-Returns Storage_VSOk if  
--   the last storage operation performed with the  
-  function Read, or  
--   the last retrieval operation performed with the function Write  
- by a Storage_Schema algorithm, on this set of data was successful.  
-If the storage or retrieval operation was not  
-performed, the returned error status indicates the  
-reason why the operation failed. The algorithm  
-stops its analysis at the first detected error") ErrorStatus;
+	:rtype: Storage_Error
+") ErrorStatus;
 		Storage_Error ErrorStatus ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Clears the error status positioned either by: - the last storage operation performed with the Read function, or - the last retrieval operation performed with the Write function by a Storage_Schema algorithm, on this set of data. This error status may be read by the function ErrorStatus.
 
-Clears the error status positioned either by:  
--   the last storage operation performed with the  
-  Read function, or  
--   the last retrieval operation performed with the Write function  
-  by a Storage_Schema algorithm, on this set of data.  
-This error status may be read by the function ErrorStatus.") ClearErrorStatus;
+	:rtype: None
+") ClearErrorStatus;
 		void ClearErrorStatus ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") ErrorStatusExtension;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") ErrorStatusExtension;
 		TCollection_AsciiString ErrorStatusExtension ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* return the creation date
 
-return the creation date") CreationDate;
+	:rtype: TCollection_AsciiString
+") CreationDate;
 		TCollection_AsciiString CreationDate ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* return the Storage package version
 
-return the Storage package version") StorageVersion;
+	:rtype: TCollection_AsciiString
+") StorageVersion;
 		TCollection_AsciiString StorageVersion ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* get the version of the schema
 
-get the version of the schema") SchemaVersion;
+	:rtype: TCollection_AsciiString
+") SchemaVersion;
 		TCollection_AsciiString SchemaVersion ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* get the schema's name
 
-get the schema's name") SchemaName;
+	:rtype: TCollection_AsciiString
+") SchemaName;
 		TCollection_AsciiString SchemaName ();
-		%feature("autodoc", "Args:
-	aVersion(TCollection_AsciiString)
+		%feature("autodoc", "	* set the version of the application
 
-Returns:
-	None
-
-set the version of the application") SetApplicationVersion;
+	:param aVersion:
+	:type aVersion: TCollection_AsciiString &
+	:rtype: None
+") SetApplicationVersion;
 		void SetApplicationVersion (const TCollection_AsciiString & aVersion);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* get the version of the application
 
-get the version of the application") ApplicationVersion;
+	:rtype: TCollection_AsciiString
+") ApplicationVersion;
 		TCollection_AsciiString ApplicationVersion ();
-		%feature("autodoc", "Args:
-	aName(TCollection_ExtendedString)
+		%feature("autodoc", "	* set the name of the application
 
-Returns:
-	None
-
-set the name of the application") SetApplicationName;
+	:param aName:
+	:type aName: TCollection_ExtendedString &
+	:rtype: None
+") SetApplicationName;
 		void SetApplicationName (const TCollection_ExtendedString & aName);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_ExtendedString
+		%feature("autodoc", "	* get the name of the application
 
-get the name of the application") ApplicationName;
+	:rtype: TCollection_ExtendedString
+") ApplicationName;
 		TCollection_ExtendedString ApplicationName ();
-		%feature("autodoc", "Args:
-	aType(TCollection_ExtendedString)
+		%feature("autodoc", "	* set the data type
 
-Returns:
-	None
-
-set the data type") SetDataType;
+	:param aType:
+	:type aType: TCollection_ExtendedString &
+	:rtype: None
+") SetDataType;
 		void SetDataType (const TCollection_ExtendedString & aType);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_ExtendedString
+		%feature("autodoc", "	* returns data type
 
-returns data type") DataType;
+	:rtype: TCollection_ExtendedString
+") DataType;
 		TCollection_ExtendedString DataType ();
-		%feature("autodoc", "Args:
-	anInfo(TCollection_AsciiString)
+		%feature("autodoc", "	* add <theUserInfo> to the user informations
 
-Returns:
-	None
-
-add <theUserInfo> to the user informations") AddToUserInfo;
+	:param anInfo:
+	:type anInfo: TCollection_AsciiString &
+	:rtype: None
+") AddToUserInfo;
 		void AddToUserInfo (const TCollection_AsciiString & anInfo);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_SequenceOfAsciiString
+		%feature("autodoc", "	* return the user informations
 
-return the user informations") UserInfo;
+	:rtype: TColStd_SequenceOfAsciiString
+") UserInfo;
 		const TColStd_SequenceOfAsciiString & UserInfo ();
-		%feature("autodoc", "Args:
-	aComment(TCollection_ExtendedString)
+		%feature("autodoc", "	* add <theUserInfo> to the user informations
 
-Returns:
-	None
-
-add <theUserInfo> to the user informations") AddToComments;
+	:param aComment:
+	:type aComment: TCollection_ExtendedString &
+	:rtype: None
+") AddToComments;
 		void AddToComments (const TCollection_ExtendedString & aComment);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_SequenceOfExtendedString
+		%feature("autodoc", "	* return the user informations
 
-return the user informations") Comments;
+	:rtype: TColStd_SequenceOfExtendedString
+") Comments;
 		const TColStd_SequenceOfExtendedString & Comments ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* the the number of persistent objects Return: the number of persistent objects readed
 
-the the number of persistent objects  
- Return:  
-  the number of persistent objects readed") NumberOfObjects;
+	:rtype: int
+") NumberOfObjects;
 		Standard_Integer NumberOfObjects ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of root objects in this set of data. - When preparing a storage operation, the result is the number of roots inserted into this set of data with the function AddRoot. - When retrieving an object, the result is the number of roots stored in the read container. Use the Roots function to get these roots in a sequence.
 
-Returns the number of root objects in this set of data.  
--   When preparing a storage operation, the  
-  result is the number of roots inserted into this  
-  set of data with the function AddRoot.  
--   When retrieving an object, the result is the  
-  number of roots stored in the read container.  
-  Use the Roots function to get these roots in a sequence.") NumberOfRoots;
+	:rtype: int
+") NumberOfRoots;
 		Standard_Integer NumberOfRoots ();
-		%feature("autodoc", "Args:
-	anObject(Handle_Standard_Persistent)
+		%feature("autodoc", "	* add a persistent root to write. the name of the root is a driver reference number.
 
-Returns:
-	None
-
-add a persistent root to write. the name of the root  
-         is a driver reference number.") AddRoot;
+	:param anObject:
+	:type anObject: Handle_Standard_Persistent &
+	:rtype: None
+") AddRoot;
 		void AddRoot (const Handle_Standard_Persistent & anObject);
-		%feature("autodoc", "Args:
-	aName(TCollection_AsciiString)
-	anObject(Handle_Standard_Persistent)
+		%feature("autodoc", "	* Adds the root anObject to this set of data. The name of the root is aName if given; if not, it will be a reference number assigned by the driver when writing the set of data into the container. When naming the roots, it is easier to retrieve objects by significant references rather than by references without any semantic values.
 
-Returns:
-	None
-
-Adds the root anObject to this set of data.  
-The name of the root is aName if given; if not, it  
-will be a reference number assigned by the driver  
-when writing the set of data into the container.  
-When naming the roots, it is easier to retrieve  
-objects by significant references rather than by  
-references without any semantic values.") AddRoot;
+	:param aName:
+	:type aName: TCollection_AsciiString &
+	:param anObject:
+	:type anObject: Handle_Standard_Persistent &
+	:rtype: None
+") AddRoot;
 		void AddRoot (const TCollection_AsciiString & aName,const Handle_Standard_Persistent & anObject);
-		%feature("autodoc", "Args:
-	aName(TCollection_AsciiString)
+		%feature("autodoc", "	* Removes from this set of data the root object named aName. Warning Nothing is done if there is no root object whose name is aName in this set of data.
 
-Returns:
-	None
-
-Removes from this set of data the root object named aName.  
-Warning  
-Nothing is done if there is no root object whose  
-name is aName in this set of data.") RemoveRoot;
+	:param aName:
+	:type aName: TCollection_AsciiString &
+	:rtype: None
+") RemoveRoot;
 		void RemoveRoot (const TCollection_AsciiString & aName);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Storage_HSeqOfRoot
+		%feature("autodoc", "	* Returns the roots of this set of data in a sequence. - When preparing a storage operation, the sequence contains the roots inserted into this set of data with the function AddRoot. - When retrieving an object, the sequence contains the roots stored in the container read. - An empty sequence is returned if there is no root in this set of data.
 
-Returns the roots of this set of data in a sequence.  
--   When preparing a storage operation, the  
-  sequence contains the roots inserted into this  
-  set of data with the function AddRoot.  
--   When retrieving an object, the sequence  
-  contains the roots stored in the container read.  
--   An empty sequence is returned if there is no root in this set of data.") Roots;
+	:rtype: Handle_Storage_HSeqOfRoot
+") Roots;
 		Handle_Storage_HSeqOfRoot Roots ();
-		%feature("autodoc", "Args:
-	aName(TCollection_AsciiString)
+		%feature("autodoc", "	* Gives the root object whose name is aName in this set of data. The returned object is a Storage_Root object, from which the object it encapsulates may be extracted. Warning A null handle is returned if there is no root object whose name is aName in this set of data.
 
-Returns:
-	Handle_Storage_Root
-
-Gives the root object whose name is aName in  
-this set of data. The returned object is a  
-Storage_Root object, from which the object it  
-encapsulates may be extracted.  
-Warning  
-A null handle is returned if there is no root object  
-whose name is aName in this set of data.") Find;
+	:param aName:
+	:type aName: TCollection_AsciiString &
+	:rtype: Handle_Storage_Root
+") Find;
 		Handle_Storage_Root Find (const TCollection_AsciiString & aName);
-		%feature("autodoc", "Args:
-	aName(TCollection_AsciiString)
+		%feature("autodoc", "	* returns Standard_True if <self> contains a root named <aName>
 
-Returns:
-	Standard_Boolean
-
-returns Standard_True if <self> contains a root named <aName>") IsRoot;
+	:param aName:
+	:type aName: TCollection_AsciiString &
+	:rtype: bool
+") IsRoot;
 		Standard_Boolean IsRoot (const TCollection_AsciiString & aName);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of types of objects used in this set of data.
 
-Returns the number of types of objects used in this set of data.") NumberOfTypes;
+	:rtype: int
+") NumberOfTypes;
 		Standard_Integer NumberOfTypes ();
-		%feature("autodoc", "Args:
-	aName(TCollection_AsciiString)
+		%feature("autodoc", "	* Returns true if this set of data contains an object of type aName. Persistent objects from this set of data must have types which are recognized by the Storage_Schema algorithm used to store or retrieve them.
 
-Returns:
-	Standard_Boolean
-
-Returns true if this set of data contains an object of type aName.  
-Persistent objects from this set of data must  
-have types which are recognized by the  
-Storage_Schema algorithm used to store or retrieve them.") IsType;
+	:param aName:
+	:type aName: TCollection_AsciiString &
+	:rtype: bool
+") IsType;
 		Standard_Boolean IsType (const TCollection_AsciiString & aName);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColStd_HSequenceOfAsciiString
+		%feature("autodoc", "	* Gives the list of types of objects used in this set of data in a sequence.
 
-Gives the list of types of objects used in this set of data in a sequence.") Types;
+	:rtype: Handle_TColStd_HSequenceOfAsciiString
+") Types;
 		Handle_TColStd_HSequenceOfAsciiString Types ();
 };
 
@@ -1569,42 +1081,24 @@ def __del__(self):
 %nodefaultctor Storage_DataMapIteratorOfMapOfCallBack;
 class Storage_DataMapIteratorOfMapOfCallBack : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_DataMapIteratorOfMapOfCallBack;
+		%feature("autodoc", "	:rtype: None
+") Storage_DataMapIteratorOfMapOfCallBack;
 		 Storage_DataMapIteratorOfMapOfCallBack ();
-		%feature("autodoc", "Args:
-	aMap(Storage_MapOfCallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_DataMapIteratorOfMapOfCallBack;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: Storage_MapOfCallBack &
+	:rtype: None
+") Storage_DataMapIteratorOfMapOfCallBack;
 		 Storage_DataMapIteratorOfMapOfCallBack (const Storage_MapOfCallBack & aMap);
-		%feature("autodoc", "Args:
-	aMap(Storage_MapOfCallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: Storage_MapOfCallBack &
+	:rtype: None
+") Initialize;
 		void Initialize (const Storage_MapOfCallBack & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") Key;
 		const TCollection_AsciiString & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Storage_TypedCallBack
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Storage_TypedCallBack
+") Value;
 		const Handle_Storage_TypedCallBack & Value ();
 };
 
@@ -1626,42 +1120,24 @@ def __del__(self):
 %nodefaultctor Storage_DataMapIteratorOfMapOfPers;
 class Storage_DataMapIteratorOfMapOfPers : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_DataMapIteratorOfMapOfPers;
+		%feature("autodoc", "	:rtype: None
+") Storage_DataMapIteratorOfMapOfPers;
 		 Storage_DataMapIteratorOfMapOfPers ();
-		%feature("autodoc", "Args:
-	aMap(Storage_MapOfPers)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_DataMapIteratorOfMapOfPers;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: Storage_MapOfPers &
+	:rtype: None
+") Storage_DataMapIteratorOfMapOfPers;
 		 Storage_DataMapIteratorOfMapOfPers (const Storage_MapOfPers & aMap);
-		%feature("autodoc", "Args:
-	aMap(Storage_MapOfPers)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: Storage_MapOfPers &
+	:rtype: None
+") Initialize;
 		void Initialize (const Storage_MapOfPers & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") Key;
 		const TCollection_AsciiString & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Storage_Root
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Storage_Root
+") Value;
 		const Handle_Storage_Root & Value ();
 };
 
@@ -1683,29 +1159,20 @@ def __del__(self):
 %nodefaultctor Storage_DataMapNodeOfMapOfCallBack;
 class Storage_DataMapNodeOfMapOfCallBack : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-	I(Handle_Storage_TypedCallBack)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_DataMapNodeOfMapOfCallBack;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:param I:
+	:type I: Handle_Storage_TypedCallBack &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") Storage_DataMapNodeOfMapOfCallBack;
 		 Storage_DataMapNodeOfMapOfCallBack (const TCollection_AsciiString & K,const Handle_Storage_TypedCallBack & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") Key;
 		TCollection_AsciiString & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Storage_TypedCallBack
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Storage_TypedCallBack
+") Value;
 		Handle_Storage_TypedCallBack & Value ();
 };
 
@@ -1766,29 +1233,20 @@ def __del__(self):
 %nodefaultctor Storage_DataMapNodeOfMapOfPers;
 class Storage_DataMapNodeOfMapOfPers : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-	I(Handle_Storage_Root)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_DataMapNodeOfMapOfPers;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:param I:
+	:type I: Handle_Storage_Root &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") Storage_DataMapNodeOfMapOfPers;
 		 Storage_DataMapNodeOfMapOfPers (const TCollection_AsciiString & K,const Handle_Storage_Root & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") Key;
 		TCollection_AsciiString & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Storage_Root
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Storage_Root
+") Value;
 		Handle_Storage_Root & Value ();
 };
 
@@ -1849,92 +1307,58 @@ def __del__(self):
 %nodefaultctor Storage_HArrayOfCallBack;
 class Storage_HArrayOfCallBack : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_HArrayOfCallBack;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Storage_HArrayOfCallBack;
 		 Storage_HArrayOfCallBack (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(Handle_Storage_CallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_HArrayOfCallBack;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: Handle_Storage_CallBack &
+	:rtype: None
+") Storage_HArrayOfCallBack;
 		 Storage_HArrayOfCallBack (const Standard_Integer Low,const Standard_Integer Up,const Handle_Storage_CallBack & V);
-		%feature("autodoc", "Args:
-	V(Handle_Storage_CallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_Storage_CallBack &
+	:rtype: None
+") Init;
 		void Init (const Handle_Storage_CallBack & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Handle_Storage_CallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Handle_Storage_CallBack &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Storage_CallBack & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Storage_CallBack
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Storage_CallBack
+") Value;
 		const Handle_Storage_CallBack & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Storage_CallBack
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Storage_CallBack
+") ChangeValue;
 		Handle_Storage_CallBack & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Storage_ArrayOfCallBack
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: Storage_ArrayOfCallBack
+") Array1;
 		const Storage_ArrayOfCallBack & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Storage_ArrayOfCallBack
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: Storage_ArrayOfCallBack
+") ChangeArray1;
 		Storage_ArrayOfCallBack & ChangeArray1 ();
 };
 
@@ -1995,92 +1419,58 @@ def __del__(self):
 %nodefaultctor Storage_HArrayOfSchema;
 class Storage_HArrayOfSchema : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_HArrayOfSchema;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Storage_HArrayOfSchema;
 		 Storage_HArrayOfSchema (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(Handle_Storage_Schema)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_HArrayOfSchema;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: Handle_Storage_Schema &
+	:rtype: None
+") Storage_HArrayOfSchema;
 		 Storage_HArrayOfSchema (const Standard_Integer Low,const Standard_Integer Up,const Handle_Storage_Schema & V);
-		%feature("autodoc", "Args:
-	V(Handle_Storage_Schema)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_Storage_Schema &
+	:rtype: None
+") Init;
 		void Init (const Handle_Storage_Schema & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Handle_Storage_Schema)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Handle_Storage_Schema &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Storage_Schema & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Storage_Schema
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Storage_Schema
+") Value;
 		const Handle_Storage_Schema & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Storage_Schema
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Storage_Schema
+") ChangeValue;
 		Handle_Storage_Schema & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Storage_ArrayOfSchema
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: Storage_ArrayOfSchema
+") Array1;
 		const Storage_ArrayOfSchema & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Storage_ArrayOfSchema
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: Storage_ArrayOfSchema
+") ChangeArray1;
 		Storage_ArrayOfSchema & ChangeArray1 ();
 };
 
@@ -2141,92 +1531,58 @@ def __del__(self):
 %nodefaultctor Storage_HPArray;
 class Storage_HPArray : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_HPArray;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Storage_HPArray;
 		 Storage_HPArray (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(Handle_Standard_Persistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_HPArray;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: Handle_Standard_Persistent &
+	:rtype: None
+") Storage_HPArray;
 		 Storage_HPArray (const Standard_Integer Low,const Standard_Integer Up,const Handle_Standard_Persistent & V);
-		%feature("autodoc", "Args:
-	V(Handle_Standard_Persistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_Standard_Persistent &
+	:rtype: None
+") Init;
 		void Init (const Handle_Standard_Persistent & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Handle_Standard_Persistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Handle_Standard_Persistent &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Standard_Persistent & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Standard_Persistent
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Standard_Persistent
+") Value;
 		const Handle_Standard_Persistent & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Standard_Persistent
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Standard_Persistent
+") ChangeValue;
 		Handle_Standard_Persistent & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Storage_PArray
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: Storage_PArray
+") Array1;
 		const Storage_PArray & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Storage_PArray
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: Storage_PArray
+") ChangeArray1;
 		Storage_PArray & ChangeArray1 ();
 };
 
@@ -2287,188 +1643,118 @@ def __del__(self):
 %nodefaultctor Storage_HSeqOfCallBack;
 class Storage_HSeqOfCallBack : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_HSeqOfCallBack;
+		%feature("autodoc", "	:rtype: None
+") Storage_HSeqOfCallBack;
 		 Storage_HSeqOfCallBack ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	anItem(Handle_Storage_CallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Storage_CallBack &
+	:rtype: None
+") Append;
 		void Append (const Handle_Storage_CallBack & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_Storage_HSeqOfCallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_Storage_HSeqOfCallBack &
+	:rtype: None
+") Append;
 		void Append (const Handle_Storage_HSeqOfCallBack & aSequence);
-		%feature("autodoc", "Args:
-	anItem(Handle_Storage_CallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Storage_CallBack &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Storage_CallBack & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_Storage_HSeqOfCallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_Storage_HSeqOfCallBack &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Storage_HSeqOfCallBack & aSequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Storage_CallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Storage_CallBack &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Storage_CallBack & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_Storage_HSeqOfCallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_Storage_HSeqOfCallBack &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Storage_HSeqOfCallBack & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Storage_CallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Storage_CallBack &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Storage_CallBack & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_Storage_HSeqOfCallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_Storage_HSeqOfCallBack &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Storage_HSeqOfCallBack & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anOtherIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Exchange;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anOtherIndex:
+	:type anOtherIndex: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Storage_HSeqOfCallBack
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Storage_HSeqOfCallBack
+") Split;
 		Handle_Storage_HSeqOfCallBack Split (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Storage_CallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Storage_CallBack &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Handle_Storage_CallBack & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Storage_CallBack
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Storage_CallBack
+") Value;
 		const Handle_Storage_CallBack & Value (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Storage_CallBack
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Storage_CallBack
+") ChangeValue;
 		Handle_Storage_CallBack & ChangeValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	fromIndex(Standard_Integer)
-	toIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param fromIndex:
+	:type fromIndex: Standard_Integer
+	:param toIndex:
+	:type toIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Storage_SeqOfCallBack
-
-No detailed docstring for this function.") Sequence;
+		%feature("autodoc", "	:rtype: Storage_SeqOfCallBack
+") Sequence;
 		const Storage_SeqOfCallBack & Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Storage_SeqOfCallBack
-
-No detailed docstring for this function.") ChangeSequence;
+		%feature("autodoc", "	:rtype: Storage_SeqOfCallBack
+") ChangeSequence;
 		Storage_SeqOfCallBack & ChangeSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Storage_HSeqOfCallBack
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_Storage_HSeqOfCallBack
+") ShallowCopy;
 		Handle_Storage_HSeqOfCallBack ShallowCopy ();
 };
 
@@ -2529,188 +1815,118 @@ def __del__(self):
 %nodefaultctor Storage_HSeqOfPersistent;
 class Storage_HSeqOfPersistent : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_HSeqOfPersistent;
+		%feature("autodoc", "	:rtype: None
+") Storage_HSeqOfPersistent;
 		 Storage_HSeqOfPersistent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	anItem(Handle_Standard_Persistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Standard_Persistent &
+	:rtype: None
+") Append;
 		void Append (const Handle_Standard_Persistent & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_Storage_HSeqOfPersistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_Storage_HSeqOfPersistent &
+	:rtype: None
+") Append;
 		void Append (const Handle_Storage_HSeqOfPersistent & aSequence);
-		%feature("autodoc", "Args:
-	anItem(Handle_Standard_Persistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Standard_Persistent &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Standard_Persistent & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_Storage_HSeqOfPersistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_Storage_HSeqOfPersistent &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Storage_HSeqOfPersistent & aSequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Standard_Persistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Standard_Persistent &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Standard_Persistent & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_Storage_HSeqOfPersistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_Storage_HSeqOfPersistent &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Storage_HSeqOfPersistent & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Standard_Persistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Standard_Persistent &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Standard_Persistent & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_Storage_HSeqOfPersistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_Storage_HSeqOfPersistent &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Storage_HSeqOfPersistent & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anOtherIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Exchange;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anOtherIndex:
+	:type anOtherIndex: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Storage_HSeqOfPersistent
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Storage_HSeqOfPersistent
+") Split;
 		Handle_Storage_HSeqOfPersistent Split (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Standard_Persistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Standard_Persistent &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Handle_Standard_Persistent & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Standard_Persistent
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Standard_Persistent
+") Value;
 		const Handle_Standard_Persistent & Value (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Standard_Persistent
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Standard_Persistent
+") ChangeValue;
 		Handle_Standard_Persistent & ChangeValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	fromIndex(Standard_Integer)
-	toIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param fromIndex:
+	:type fromIndex: Standard_Integer
+	:param toIndex:
+	:type toIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Storage_SeqOfPersistent
-
-No detailed docstring for this function.") Sequence;
+		%feature("autodoc", "	:rtype: Storage_SeqOfPersistent
+") Sequence;
 		const Storage_SeqOfPersistent & Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Storage_SeqOfPersistent
-
-No detailed docstring for this function.") ChangeSequence;
+		%feature("autodoc", "	:rtype: Storage_SeqOfPersistent
+") ChangeSequence;
 		Storage_SeqOfPersistent & ChangeSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Storage_HSeqOfPersistent
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_Storage_HSeqOfPersistent
+") ShallowCopy;
 		Handle_Storage_HSeqOfPersistent ShallowCopy ();
 };
 
@@ -2771,188 +1987,118 @@ def __del__(self):
 %nodefaultctor Storage_HSeqOfRoot;
 class Storage_HSeqOfRoot : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_HSeqOfRoot;
+		%feature("autodoc", "	:rtype: None
+") Storage_HSeqOfRoot;
 		 Storage_HSeqOfRoot ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	anItem(Handle_Storage_Root)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Storage_Root &
+	:rtype: None
+") Append;
 		void Append (const Handle_Storage_Root & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_Storage_HSeqOfRoot)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_Storage_HSeqOfRoot &
+	:rtype: None
+") Append;
 		void Append (const Handle_Storage_HSeqOfRoot & aSequence);
-		%feature("autodoc", "Args:
-	anItem(Handle_Storage_Root)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Storage_Root &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Storage_Root & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_Storage_HSeqOfRoot)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_Storage_HSeqOfRoot &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Storage_HSeqOfRoot & aSequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Storage_Root)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Storage_Root &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Storage_Root & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_Storage_HSeqOfRoot)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_Storage_HSeqOfRoot &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Storage_HSeqOfRoot & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Storage_Root)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Storage_Root &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Storage_Root & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_Storage_HSeqOfRoot)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_Storage_HSeqOfRoot &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Storage_HSeqOfRoot & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anOtherIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Exchange;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anOtherIndex:
+	:type anOtherIndex: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Storage_HSeqOfRoot
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Storage_HSeqOfRoot
+") Split;
 		Handle_Storage_HSeqOfRoot Split (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Storage_Root)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Storage_Root &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Handle_Storage_Root & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Storage_Root
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Storage_Root
+") Value;
 		const Handle_Storage_Root & Value (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Storage_Root
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Storage_Root
+") ChangeValue;
 		Handle_Storage_Root & ChangeValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	fromIndex(Standard_Integer)
-	toIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param fromIndex:
+	:type fromIndex: Standard_Integer
+	:param toIndex:
+	:type toIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Storage_SeqOfRoot
-
-No detailed docstring for this function.") Sequence;
+		%feature("autodoc", "	:rtype: Storage_SeqOfRoot
+") Sequence;
 		const Storage_SeqOfRoot & Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Storage_SeqOfRoot
-
-No detailed docstring for this function.") ChangeSequence;
+		%feature("autodoc", "	:rtype: Storage_SeqOfRoot
+") ChangeSequence;
 		Storage_SeqOfRoot & ChangeSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Storage_HSeqOfRoot
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_Storage_HSeqOfRoot
+") ShallowCopy;
 		Handle_Storage_HSeqOfRoot ShallowCopy ();
 };
 
@@ -3013,145 +2159,102 @@ def __del__(self):
 %nodefaultctor Storage_HeaderData;
 class Storage_HeaderData : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_HeaderData;
+		%feature("autodoc", "	:rtype: None
+") Storage_HeaderData;
 		 Storage_HeaderData ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* return the creation date
 
-return the creation date") CreationDate;
+	:rtype: TCollection_AsciiString
+") CreationDate;
 		TCollection_AsciiString CreationDate ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* return the Storage package version
 
-return the Storage package version") StorageVersion;
+	:rtype: TCollection_AsciiString
+") StorageVersion;
 		TCollection_AsciiString StorageVersion ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* get the version of the schema
 
-get the version of the schema") SchemaVersion;
+	:rtype: TCollection_AsciiString
+") SchemaVersion;
 		TCollection_AsciiString SchemaVersion ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* get the schema's name
 
-get the schema's name") SchemaName;
+	:rtype: TCollection_AsciiString
+") SchemaName;
 		TCollection_AsciiString SchemaName ();
-		%feature("autodoc", "Args:
-	aVersion(TCollection_AsciiString)
+		%feature("autodoc", "	* set the version of the application
 
-Returns:
-	None
-
-set the version of the application") SetApplicationVersion;
+	:param aVersion:
+	:type aVersion: TCollection_AsciiString &
+	:rtype: None
+") SetApplicationVersion;
 		void SetApplicationVersion (const TCollection_AsciiString & aVersion);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* get the version of the application
 
-get the version of the application") ApplicationVersion;
+	:rtype: TCollection_AsciiString
+") ApplicationVersion;
 		TCollection_AsciiString ApplicationVersion ();
-		%feature("autodoc", "Args:
-	aName(TCollection_ExtendedString)
+		%feature("autodoc", "	* set the name of the application
 
-Returns:
-	None
-
-set the name of the application") SetApplicationName;
+	:param aName:
+	:type aName: TCollection_ExtendedString &
+	:rtype: None
+") SetApplicationName;
 		void SetApplicationName (const TCollection_ExtendedString & aName);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_ExtendedString
+		%feature("autodoc", "	* get the name of the application
 
-get the name of the application") ApplicationName;
+	:rtype: TCollection_ExtendedString
+") ApplicationName;
 		TCollection_ExtendedString ApplicationName ();
-		%feature("autodoc", "Args:
-	aType(TCollection_ExtendedString)
+		%feature("autodoc", "	* set the data type
 
-Returns:
-	None
-
-set the data type") SetDataType;
+	:param aType:
+	:type aType: TCollection_ExtendedString &
+	:rtype: None
+") SetDataType;
 		void SetDataType (const TCollection_ExtendedString & aType);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_ExtendedString
+		%feature("autodoc", "	* returns data type
 
-returns data type") DataType;
+	:rtype: TCollection_ExtendedString
+") DataType;
 		TCollection_ExtendedString DataType ();
-		%feature("autodoc", "Args:
-	theUserInfo(TCollection_AsciiString)
+		%feature("autodoc", "	* add <theUserInfo> to the user informations
 
-Returns:
-	None
-
-add <theUserInfo> to the user informations") AddToUserInfo;
+	:param theUserInfo:
+	:type theUserInfo: TCollection_AsciiString &
+	:rtype: None
+") AddToUserInfo;
 		void AddToUserInfo (const TCollection_AsciiString & theUserInfo);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_SequenceOfAsciiString
+		%feature("autodoc", "	* return the user informations
 
-return the user informations") UserInfo;
+	:rtype: TColStd_SequenceOfAsciiString
+") UserInfo;
 		const TColStd_SequenceOfAsciiString & UserInfo ();
-		%feature("autodoc", "Args:
-	aComment(TCollection_ExtendedString)
+		%feature("autodoc", "	* add <theUserInfo> to the user informations
 
-Returns:
-	None
-
-add <theUserInfo> to the user informations") AddToComments;
+	:param aComment:
+	:type aComment: TCollection_ExtendedString &
+	:rtype: None
+") AddToComments;
 		void AddToComments (const TCollection_ExtendedString & aComment);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_SequenceOfExtendedString
+		%feature("autodoc", "	* return the user informations
 
-return the user informations") Comments;
+	:rtype: TColStd_SequenceOfExtendedString
+") Comments;
 		const TColStd_SequenceOfExtendedString & Comments ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* the the number of persistent objects Return: the number of persistent objects readed
 
-the the number of persistent objects  
- Return:  
-  the number of persistent objects readed") NumberOfObjects;
+	:rtype: int
+") NumberOfObjects;
 		Standard_Integer NumberOfObjects ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Storage_Error
-
-No detailed docstring for this function.") ErrorStatus;
+		%feature("autodoc", "	:rtype: Storage_Error
+") ErrorStatus;
 		Storage_Error ErrorStatus ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") ErrorStatusExtension;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") ErrorStatusExtension;
 		TCollection_AsciiString ErrorStatusExtension ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ClearErrorStatus;
+		%feature("autodoc", "	:rtype: None
+") ClearErrorStatus;
 		void ClearErrorStatus ();
 };
 
@@ -3212,24 +2315,21 @@ def __del__(self):
 %nodefaultctor Storage_IndexedDataMapNodeOfPType;
 class Storage_IndexedDataMapNodeOfPType : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K1(TCollection_AsciiString)
-	K2(Standard_Integer)
-	I(Standard_Integer)
-	n1(TCollection_MapNodePtr)
-	n2(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_IndexedDataMapNodeOfPType;
+		%feature("autodoc", "	:param K1:
+	:type K1: TCollection_AsciiString &
+	:param K2:
+	:type K2: Standard_Integer
+	:param I:
+	:type I: Standard_Integer &
+	:param n1:
+	:type n1: TCollection_MapNodePtr &
+	:param n2:
+	:type n2: TCollection_MapNodePtr &
+	:rtype: None
+") Storage_IndexedDataMapNodeOfPType;
 		 Storage_IndexedDataMapNodeOfPType (const TCollection_AsciiString & K1,const Standard_Integer K2,Standard_Integer &OutValue,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") Key1;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") Key1;
 		TCollection_AsciiString & Key1 ();
 
             %feature("autodoc","1");
@@ -3244,12 +2344,8 @@ No detailed docstring for this function.") Key1;
                 $self->Key2()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_MapNodePtr
-
-No detailed docstring for this function.") Next2;
+            		%feature("autodoc", "	:rtype: TCollection_MapNodePtr
+") Next2;
 		TCollection_MapNodePtr & Next2 ();
 
             %feature("autodoc","1");
@@ -3323,19 +2419,11 @@ def __del__(self):
 %nodefaultctor Storage_InternalData;
 class Storage_InternalData : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_InternalData;
+		%feature("autodoc", "	:rtype: None
+") Storage_InternalData;
 		 Storage_InternalData ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
 };
 
@@ -3396,101 +2484,65 @@ def __del__(self):
 %nodefaultctor Storage_MapOfCallBack;
 class Storage_MapOfCallBack : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_MapOfCallBack;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") Storage_MapOfCallBack;
 		 Storage_MapOfCallBack (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(Storage_MapOfCallBack)
-
-Returns:
-	Storage_MapOfCallBack
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Storage_MapOfCallBack &
+	:rtype: Storage_MapOfCallBack
+") Assign;
 		Storage_MapOfCallBack & Assign (const Storage_MapOfCallBack & Other);
-		%feature("autodoc", "Args:
-	Other(Storage_MapOfCallBack)
-
-Returns:
-	Storage_MapOfCallBack
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Storage_MapOfCallBack &
+	:rtype: Storage_MapOfCallBack
+") operator=;
 		Storage_MapOfCallBack & operator = (const Storage_MapOfCallBack & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-	I(Handle_Storage_TypedCallBack)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:param I:
+	:type I: Handle_Storage_TypedCallBack &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const TCollection_AsciiString & K,const Handle_Storage_TypedCallBack & I);
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const TCollection_AsciiString & K);
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const TCollection_AsciiString & K);
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-
-Returns:
-	Handle_Storage_TypedCallBack
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:rtype: Handle_Storage_TypedCallBack
+") Find;
 		const Handle_Storage_TypedCallBack & Find (const TCollection_AsciiString & K);
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-
-Returns:
-	Handle_Storage_TypedCallBack
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:rtype: Handle_Storage_TypedCallBack
+") ChangeFind;
 		Handle_Storage_TypedCallBack & ChangeFind (const TCollection_AsciiString & K);
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const TCollection_AsciiString & K);
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const TCollection_AsciiString & K);
 };
 
@@ -3512,101 +2564,65 @@ def __del__(self):
 %nodefaultctor Storage_MapOfPers;
 class Storage_MapOfPers : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_MapOfPers;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") Storage_MapOfPers;
 		 Storage_MapOfPers (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(Storage_MapOfPers)
-
-Returns:
-	Storage_MapOfPers
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Storage_MapOfPers &
+	:rtype: Storage_MapOfPers
+") Assign;
 		Storage_MapOfPers & Assign (const Storage_MapOfPers & Other);
-		%feature("autodoc", "Args:
-	Other(Storage_MapOfPers)
-
-Returns:
-	Storage_MapOfPers
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Storage_MapOfPers &
+	:rtype: Storage_MapOfPers
+") operator=;
 		Storage_MapOfPers & operator = (const Storage_MapOfPers & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-	I(Handle_Storage_Root)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:param I:
+	:type I: Handle_Storage_Root &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const TCollection_AsciiString & K,const Handle_Storage_Root & I);
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const TCollection_AsciiString & K);
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const TCollection_AsciiString & K);
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-
-Returns:
-	Handle_Storage_Root
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:rtype: Handle_Storage_Root
+") Find;
 		const Handle_Storage_Root & Find (const TCollection_AsciiString & K);
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-
-Returns:
-	Handle_Storage_Root
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:rtype: Handle_Storage_Root
+") ChangeFind;
 		Handle_Storage_Root & ChangeFind (const TCollection_AsciiString & K);
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const TCollection_AsciiString & K);
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const TCollection_AsciiString & K);
 };
 
@@ -3628,23 +2644,19 @@ def __del__(self):
 %nodefaultctor Storage_MapPSDHasher;
 class Storage_MapPSDHasher {
 	public:
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Persistent)
-	Upper(Standard_Integer)
-
-Returns:
-	static Standard_Integer
-
-No detailed docstring for this function.") HashCode;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Persistent &
+	:param Upper:
+	:type Upper: Standard_Integer
+	:rtype: int
+") HashCode;
 		static Standard_Integer HashCode (const Handle_Standard_Persistent & K,const Standard_Integer Upper);
-		%feature("autodoc", "Args:
-	K1(Handle_Standard_Persistent)
-	K2(Handle_Standard_Persistent)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") IsEqual;
+		%feature("autodoc", "	:param K1:
+	:type K1: Handle_Standard_Persistent &
+	:param K2:
+	:type K2: Handle_Standard_Persistent &
+	:rtype: bool
+") IsEqual;
 		static Standard_Boolean IsEqual (const Handle_Standard_Persistent & K1,const Handle_Standard_Persistent & K2);
 };
 
@@ -3666,108 +2678,68 @@ def __del__(self):
 %nodefaultctor Storage_PArray;
 class Storage_PArray {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_PArray;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Storage_PArray;
 		 Storage_PArray (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Handle_Standard_Persistent)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_PArray;
+		%feature("autodoc", "	:param Item:
+	:type Item: Handle_Standard_Persistent &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Storage_PArray;
 		 Storage_PArray (const Handle_Standard_Persistent & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Handle_Standard_Persistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_Standard_Persistent &
+	:rtype: None
+") Init;
 		void Init (const Handle_Standard_Persistent & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(Storage_PArray)
-
-Returns:
-	Storage_PArray
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Storage_PArray &
+	:rtype: Storage_PArray
+") Assign;
 		const Storage_PArray & Assign (const Storage_PArray & Other);
-		%feature("autodoc", "Args:
-	Other(Storage_PArray)
-
-Returns:
-	Storage_PArray
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Storage_PArray &
+	:rtype: Storage_PArray
+") operator=;
 		const Storage_PArray & operator = (const Storage_PArray & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Handle_Standard_Persistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Handle_Standard_Persistent &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Standard_Persistent & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Standard_Persistent
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Standard_Persistent
+") Value;
 		const Handle_Standard_Persistent & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Standard_Persistent
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Standard_Persistent
+") ChangeValue;
 		Handle_Standard_Persistent & ChangeValue (const Standard_Integer Index);
 };
 
@@ -3789,142 +2761,92 @@ def __del__(self):
 %nodefaultctor Storage_PType;
 class Storage_PType : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_PType;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") Storage_PType;
 		 Storage_PType (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(Storage_PType)
-
-Returns:
-	Storage_PType
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Storage_PType &
+	:rtype: Storage_PType
+") Assign;
 		Storage_PType & Assign (const Storage_PType & Other);
-		%feature("autodoc", "Args:
-	Other(Storage_PType)
-
-Returns:
-	Storage_PType
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Storage_PType &
+	:rtype: Storage_PType
+") operator=;
 		Storage_PType & operator = (const Storage_PType & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-	I(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:param I:
+	:type I: Standard_Integer &
+	:rtype: int
+") Add;
 		Standard_Integer Add (const TCollection_AsciiString & K,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	K(TCollection_AsciiString)
-	T(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Substitute;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param K:
+	:type K: TCollection_AsciiString &
+	:param T:
+	:type T: Standard_Integer &
+	:rtype: None
+") Substitute;
 		void Substitute (const Standard_Integer I,const TCollection_AsciiString & K,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveLast;
+		%feature("autodoc", "	:rtype: None
+") RemoveLast;
 		void RemoveLast ();
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const TCollection_AsciiString & K);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") FindKey;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TCollection_AsciiString
+") FindKey;
 		const TCollection_AsciiString & FindKey (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FindFromIndex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: int
+") FindFromIndex;
 		const Standard_Integer & FindFromIndex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ChangeFromIndex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: int
+") ChangeFromIndex;
 		Standard_Integer & ChangeFromIndex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FindIndex;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:rtype: int
+") FindIndex;
 		Standard_Integer FindIndex (const TCollection_AsciiString & K);
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FindFromKey;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:rtype: int
+") FindFromKey;
 		const Standard_Integer & FindFromKey (const TCollection_AsciiString & K);
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ChangeFromKey;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:rtype: int
+") ChangeFromKey;
 		Standard_Integer & ChangeFromKey (const TCollection_AsciiString & K);
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") FindFromKey1;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:rtype: Standard_Address
+") FindFromKey1;
 		Standard_Address FindFromKey1 (const TCollection_AsciiString & K);
-		%feature("autodoc", "Args:
-	K(TCollection_AsciiString)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFromKey1;
+		%feature("autodoc", "	:param K:
+	:type K: TCollection_AsciiString &
+	:rtype: Standard_Address
+") ChangeFromKey1;
 		Standard_Address ChangeFromKey1 (const TCollection_AsciiString & K);
 };
 
@@ -3946,71 +2868,40 @@ def __del__(self):
 %nodefaultctor Storage_Root;
 class Storage_Root : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_Root;
+		%feature("autodoc", "	:rtype: None
+") Storage_Root;
 		 Storage_Root ();
-		%feature("autodoc", "Args:
-	aName(TCollection_AsciiString)
-	anObject(Handle_Standard_Persistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_Root;
+		%feature("autodoc", "	:param aName:
+	:type aName: TCollection_AsciiString &
+	:param anObject:
+	:type anObject: Handle_Standard_Persistent &
+	:rtype: None
+") Storage_Root;
 		 Storage_Root (const TCollection_AsciiString & aName,const Handle_Standard_Persistent & anObject);
-		%feature("autodoc", "Args:
-	aName(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetName;
+		%feature("autodoc", "	:param aName:
+	:type aName: TCollection_AsciiString &
+	:rtype: None
+") SetName;
 		void SetName (const TCollection_AsciiString & aName);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* Returns the name of this root object. The name may have been given explicitly when the root was inserted into the Storage_Data object. If not, the name is a reference number which was assigned automatically by the driver when writing the set of data into the container. When naming the roots, it is easier to retrieve objects by significant references rather than by references without any semantic values. Warning The returned string will be empty if you call this function before having named this root object, either explicitly, or when writing the set of data into the container.
 
-Returns the name of this root object.  
-  The name may have been given explicitly when  
-the root was inserted into the Storage_Data  
-object. If not, the name is a reference number  
-which was assigned automatically by the driver  
-when writing the set of data into the container.  
-When naming the roots, it is easier to retrieve  
-objects by significant references rather than by  
-references without any semantic values.  
-Warning  
-The returned string will be empty if you call this  
-function before having named this root object,  
-either explicitly, or when writing the set of data  
-into the container.") Name;
+	:rtype: TCollection_AsciiString
+") Name;
 		TCollection_AsciiString Name ();
-		%feature("autodoc", "Args:
-	anObject(Handle_Standard_Persistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetObject;
+		%feature("autodoc", "	:param anObject:
+	:type anObject: Handle_Standard_Persistent &
+	:rtype: None
+") SetObject;
 		void SetObject (const Handle_Standard_Persistent & anObject);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Persistent
+		%feature("autodoc", "	* Returns the persistent object encapsulated by this root.
 
-Returns the persistent object encapsulated by this root.") Object;
+	:rtype: Handle_Standard_Persistent
+") Object;
 		Handle_Standard_Persistent Object ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* Returns the name of this root type.
 
-Returns the name of this root type.") Type;
+	:rtype: TCollection_AsciiString
+") Type;
 		TCollection_AsciiString Type ();
 };
 
@@ -4071,80 +2962,53 @@ def __del__(self):
 %nodefaultctor Storage_RootData;
 class Storage_RootData : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_RootData;
+		%feature("autodoc", "	:rtype: None
+") Storage_RootData;
 		 Storage_RootData ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* returns the number of roots.
 
-returns the number of roots.") NumberOfRoots;
+	:rtype: int
+") NumberOfRoots;
 		Standard_Integer NumberOfRoots ();
-		%feature("autodoc", "Args:
-	aRoot(Handle_Storage_Root)
+		%feature("autodoc", "	* add a root to <self>. If a root with same name is present, it will be replaced by <aRoot>.
 
-Returns:
-	None
-
-add a root to <self>. If a root with same name is present, it  
-         will be replaced by <aRoot>.") AddRoot;
+	:param aRoot:
+	:type aRoot: Handle_Storage_Root &
+	:rtype: None
+") AddRoot;
 		void AddRoot (const Handle_Storage_Root & aRoot);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Storage_HSeqOfRoot
-
-No detailed docstring for this function.") Roots;
+		%feature("autodoc", "	:rtype: Handle_Storage_HSeqOfRoot
+") Roots;
 		Handle_Storage_HSeqOfRoot Roots ();
-		%feature("autodoc", "Args:
-	aName(TCollection_AsciiString)
+		%feature("autodoc", "	* find a root with name <aName>.
 
-Returns:
-	Handle_Storage_Root
-
-find a root with name <aName>.") Find;
+	:param aName:
+	:type aName: TCollection_AsciiString &
+	:rtype: Handle_Storage_Root
+") Find;
 		Handle_Storage_Root Find (const TCollection_AsciiString & aName);
-		%feature("autodoc", "Args:
-	aName(TCollection_AsciiString)
+		%feature("autodoc", "	* returns Standard_True if <self> contains a root named <aName>
 
-Returns:
-	Standard_Boolean
-
-returns Standard_True if <self> contains a root named <aName>") IsRoot;
+	:param aName:
+	:type aName: TCollection_AsciiString &
+	:rtype: bool
+") IsRoot;
 		Standard_Boolean IsRoot (const TCollection_AsciiString & aName);
-		%feature("autodoc", "Args:
-	aName(TCollection_AsciiString)
+		%feature("autodoc", "	* remove the root named <aName>.
 
-Returns:
-	None
-
-remove the root named <aName>.") RemoveRoot;
+	:param aName:
+	:type aName: TCollection_AsciiString &
+	:rtype: None
+") RemoveRoot;
 		void RemoveRoot (const TCollection_AsciiString & aName);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Storage_Error
-
-No detailed docstring for this function.") ErrorStatus;
+		%feature("autodoc", "	:rtype: Storage_Error
+") ErrorStatus;
 		Storage_Error ErrorStatus ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") ErrorStatusExtension;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") ErrorStatusExtension;
 		TCollection_AsciiString ErrorStatusExtension ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ClearErrorStatus;
+		%feature("autodoc", "	:rtype: None
+") ClearErrorStatus;
 		void ClearErrorStatus ();
 };
 
@@ -4205,335 +3069,221 @@ def __del__(self):
 %nodefaultctor Storage_Schema;
 class Storage_Schema : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Builds a storage/retrieval algorithm based on a given data schema. Example For example, if ShapeSchema is the class inheriting from Storage_Schema and containing the description of your application data schema, you create a storage/retrieval algorithm as follows: Handle_ShapeSchema s = new ShapeSchema; -------- -- USER API -- -------------------------------------------------------------- -------- --
 
-Builds a storage/retrieval algorithm based on a  
-given data schema.  
-Example  
-  For example, if ShapeSchema is the class  
-inheriting from Storage_Schema and containing  
-the description of your application data schema,  
-you create a storage/retrieval algorithm as follows:  
-Handle_ShapeSchema s = new  
-ShapeSchema;  
--------- --  
-USER API -- --------------------------------------------------------------  
--------- --") Storage_Schema;
+	:rtype: None
+") Storage_Schema;
 		 Storage_Schema ();
-		%feature("autodoc", "Args:
-	aVersion(TCollection_AsciiString)
+		%feature("autodoc", "	* returns version of the schema
 
-Returns:
-	None
-
-returns version of the schema") SetVersion;
+	:param aVersion:
+	:type aVersion: TCollection_AsciiString &
+	:rtype: None
+") SetVersion;
 		void SetVersion (const TCollection_AsciiString & aVersion);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* returns the version of the schema
 
-returns the version of the schema") Version;
+	:rtype: TCollection_AsciiString
+") Version;
 		TCollection_AsciiString Version ();
-		%feature("autodoc", "Args:
-	aSchemaName(TCollection_AsciiString)
+		%feature("autodoc", "	* set the schema's name
 
-Returns:
-	None
-
-set the schema's name") SetName;
+	:param aSchemaName:
+	:type aSchemaName: TCollection_AsciiString &
+	:rtype: None
+") SetName;
 		void SetName (const TCollection_AsciiString & aSchemaName);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* returns the schema's name
 
-returns the schema's name") Name;
+	:rtype: TCollection_AsciiString
+") Name;
 		TCollection_AsciiString Name ();
-		%feature("autodoc", "Args:
-	s(Storage_BaseDriver)
-	aData(Handle_Storage_Data)
+		%feature("autodoc", "	* Writes the data aggregated in aData into the container defined by the driver s. The storage operation is performed according to the data schema with which this algorithm is working. Note: aData may aggregate several root objects to be stored together.
 
-Returns:
-	None
-
-Writes the data aggregated in aData into the  
-container defined by the driver s. The storage  
-operation is performed according to the data  
-schema with which this algorithm is working.  
-Note: aData may aggregate several root objects  
-to be stored together.") Write;
+	:param s:
+	:type s: Storage_BaseDriver &
+	:param aData:
+	:type aData: Handle_Storage_Data &
+	:rtype: None
+") Write;
 		void Write (Storage_BaseDriver & s,const Handle_Storage_Data & aData);
-		%feature("autodoc", "Args:
-	s(Storage_BaseDriver)
+		%feature("autodoc", "	* Returns the data read from the container defined by the driver s. The retrieval operation is performed according to the data schema with which this algorithm is working. These data are aggregated in a Storage_Data object which may be browsed in order to extract the root objects from the container.
 
-Returns:
-	Handle_Storage_Data
-
-Returns the data read from the container defined  
-by the driver s. The retrieval operation is  
-performed according to the data schema with  
-which this algorithm is working.  
-These data are aggregated in a Storage_Data  
-object which may be browsed in order to extract  
-the root objects from the container.") Read;
+	:param s:
+	:type s: Storage_BaseDriver &
+	:rtype: Handle_Storage_Data
+") Read;
 		Handle_Storage_Data Read (Storage_BaseDriver & s);
-		%feature("autodoc", "Args:
-	s(Storage_BaseDriver)
+		%feature("autodoc", "	* read the header part of the stream Arguments: s: driver to read
 
-Returns:
-	Handle_Storage_HeaderData
-
-read the header part of the stream  
- Arguments:  
-  s: driver to read") ReadHeaderSection;
+	:param s:
+	:type s: Storage_BaseDriver &
+	:rtype: Handle_Storage_HeaderData
+") ReadHeaderSection;
 		Handle_Storage_HeaderData ReadHeaderSection (Storage_BaseDriver & s);
-		%feature("autodoc", "Args:
-	s(Storage_BaseDriver)
+		%feature("autodoc", "	* fill the TypeData with the names of the type used in a stream Arguments: s: driver to read
 
-Returns:
-	Handle_Storage_TypeData
-
-fill the TypeData with the  names of the type used  
-         in a stream  
- Arguments:  
-  s: driver to read") ReadTypeSection;
+	:param s:
+	:type s: Storage_BaseDriver &
+	:rtype: Handle_Storage_TypeData
+") ReadTypeSection;
 		Handle_Storage_TypeData ReadTypeSection (Storage_BaseDriver & s);
-		%feature("autodoc", "Args:
-	s(Storage_BaseDriver)
+		%feature("autodoc", "	* read root part of the file Arguments: s: driver to read
 
-Returns:
-	Handle_Storage_RootData
-
-read root part of the file  
- Arguments:  
-  s: driver to read") ReadRootSection;
+	:param s:
+	:type s: Storage_BaseDriver &
+	:rtype: Handle_Storage_RootData
+") ReadRootSection;
 		Handle_Storage_RootData ReadRootSection (Storage_BaseDriver & s);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  TColStd_SequenceOfAsciiString
+		%feature("autodoc", "	* returns the known types of a schema
 
-returns the known types of a schema") SchemaKnownTypes;
+	:rtype: TColStd_SequenceOfAsciiString
+") SchemaKnownTypes;
 		virtual const TColStd_SequenceOfAsciiString & SchemaKnownTypes ();
-		%feature("autodoc", "Args:
-	aDriver(Storage_BaseDriver)
-	theUnknownTypes(TColStd_SequenceOfAsciiString)
+		%feature("autodoc", "	* indicates whether the are types in the driver which are not known from the schema and for which no callbacks have been set. The unknown types can be read in <theUnknownTypes>.
 
-Returns:
-	Standard_Boolean
-
-indicates whether  the  are  types  in  the driver  
-         which are not known from  the schema and for which  
-         no callbacks have been set. The unknown types can  
-         be read in <theUnknownTypes>.") HasUnknownType;
+	:param aDriver:
+	:type aDriver: Storage_BaseDriver &
+	:param theUnknownTypes:
+	:type theUnknownTypes: TColStd_SequenceOfAsciiString &
+	:rtype: bool
+") HasUnknownType;
 		Standard_Boolean HasUnknownType (Storage_BaseDriver & aDriver,TColStd_SequenceOfAsciiString & theUnknownTypes);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColStd_HSequenceOfAsciiString
+		%feature("autodoc", "	* returns the all known types of a schema and their nested schemes.
 
-returns the all known types  of a schema and their  
-         nested schemes.") GetAllSchemaKnownTypes;
+	:rtype: Handle_TColStd_HSequenceOfAsciiString
+") GetAllSchemaKnownTypes;
 		Handle_TColStd_HSequenceOfAsciiString GetAllSchemaKnownTypes ();
-		%feature("autodoc", "Args:
-	theSchemas(Handle_Storage_HArrayOfSchema)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetNestedSchemas;
+		%feature("autodoc", "	:param theSchemas:
+	:type theSchemas: Handle_Storage_HArrayOfSchema &
+	:rtype: None
+") SetNestedSchemas;
 		void SetNestedSchemas (const Handle_Storage_HArrayOfSchema & theSchemas);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ClearNestedSchemas;
+		%feature("autodoc", "	:rtype: None
+") ClearNestedSchemas;
 		void ClearNestedSchemas ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Storage_HArrayOfSchema
-
-No detailed docstring for this function.") NestedSchemas;
+		%feature("autodoc", "	:rtype: Handle_Storage_HArrayOfSchema
+") NestedSchemas;
 		Handle_Storage_HArrayOfSchema NestedSchemas ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static TCollection_AsciiString
+		%feature("autodoc", "	* return a current date string
 
-return a current date string") ICreationDate;
+	:rtype: TCollection_AsciiString
+") ICreationDate;
 		static TCollection_AsciiString ICreationDate ();
-		%feature("autodoc", "Args:
-	theTypeName(TCollection_AsciiString)
-	theNewName(TCollection_AsciiString)
+		%feature("autodoc", "	* returns True if theType migration is identified the callback support provides a way to read a file with a incomplete schema. ex. : A file contains 3 types a,b and c. The application's schema contains only 2 type a and b. If you try to read the file in the application, you will have an error.To bypass this problem you can give to your application's schema a callback used when the schema dosent know how to handle this type.
 
-Returns:
-	static Standard_Boolean
-
-returns True if theType migration is identified  the callback support provides a way to read a file  
-         with a incomplete schema.  
-         ex. : A file contains 3 types a,b and c.  
-               The  application's  schema  contains  only 2  
-               type a and b. If you try to read the file in  
-               the application, you  will  have an error.To  
-               bypass this  problem  you  can  give to your  
-               application's schema  a  callback  used when  
-               the schema dosent  know  how  to handle this  
-               type.") CheckTypeMigration;
+	:param theTypeName:
+	:type theTypeName: TCollection_AsciiString &
+	:param theNewName:
+	:type theNewName: TCollection_AsciiString &
+	:rtype: bool
+") CheckTypeMigration;
 		static Standard_Boolean CheckTypeMigration (const TCollection_AsciiString & theTypeName,TCollection_AsciiString & theNewName);
-		%feature("autodoc", "Args:
-	aTypeName(TCollection_AsciiString)
-	aCallBack(Handle_Storage_CallBack)
+		%feature("autodoc", "	* add two functions to the callback list
 
-Returns:
-	None
-
-add two functions to the callback list") AddReadUnknownTypeCallBack;
+	:param aTypeName:
+	:type aTypeName: TCollection_AsciiString &
+	:param aCallBack:
+	:type aCallBack: Handle_Storage_CallBack &
+	:rtype: None
+") AddReadUnknownTypeCallBack;
 		void AddReadUnknownTypeCallBack (const TCollection_AsciiString & aTypeName,const Handle_Storage_CallBack & aCallBack);
-		%feature("autodoc", "Args:
-	aTypeName(TCollection_AsciiString)
+		%feature("autodoc", "	* remove a callback for a type
 
-Returns:
-	None
-
-remove a callback for a type") RemoveReadUnknownTypeCallBack;
+	:param aTypeName:
+	:type aTypeName: TCollection_AsciiString &
+	:rtype: None
+") RemoveReadUnknownTypeCallBack;
 		void RemoveReadUnknownTypeCallBack (const TCollection_AsciiString & aTypeName);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColStd_HSequenceOfAsciiString
+		%feature("autodoc", "	* returns a list of type name with installed callback.
 
-returns  a  list  of   type  name  with  installed  
-         callback.") InstalledCallBackList;
+	:rtype: Handle_TColStd_HSequenceOfAsciiString
+") InstalledCallBackList;
 		Handle_TColStd_HSequenceOfAsciiString InstalledCallBackList ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* clear all callback from schema instance.
 
-clear all callback from schema instance.") ClearCallBackList;
+	:rtype: None
+") ClearCallBackList;
 		void ClearCallBackList ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* install a callback for all unknown type. the objects with unknown types will be skipped. (look SkipObject method in BaseDriver)
 
-install  a  callback  for  all  unknown  type. the  
-         objects with unknown types  will be skipped. (look  
-         SkipObject method in BaseDriver)") UseDefaultCallBack;
+	:rtype: None
+") UseDefaultCallBack;
 		void UseDefaultCallBack ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* tells schema to uninstall the default callback.
 
-tells schema to uninstall the default callback.") DontUseDefaultCallBack;
+	:rtype: None
+") DontUseDefaultCallBack;
 		void DontUseDefaultCallBack ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* ask if the schema is using the default callback.
 
-ask if the schema is using the default callback.") IsUsingDefaultCallBack;
+	:rtype: bool
+") IsUsingDefaultCallBack;
 		Standard_Boolean IsUsingDefaultCallBack ();
-		%feature("autodoc", "Args:
-	f(Handle_Storage_CallBack)
+		%feature("autodoc", "	* overload the default function for build.(use to set an error message or skip an object while reading an unknown type).
 
-Returns:
-	None
-
-overload the  default  function  for build.(use to  
-         set an  error  message  or  skip  an  object while  
-         reading an unknown type).") SetDefaultCallBack;
+	:param f:
+	:type f: Handle_Storage_CallBack &
+	:rtype: None
+") SetDefaultCallBack;
 		void SetDefaultCallBack (const Handle_Storage_CallBack & f);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* reset the default function defined by Storage package.
 
-reset  the  default  function  defined  by Storage  
-         package.") ResetDefaultCallBack;
+	:rtype: None
+") ResetDefaultCallBack;
 		void ResetDefaultCallBack ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Storage_CallBack
+		%feature("autodoc", "	* returns the read function used when the UseDefaultCallBack() is set.
 
-returns   the   read   function   used   when  the  
-         UseDefaultCallBack() is set.") DefaultCallBack;
+	:rtype: Handle_Storage_CallBack
+") DefaultCallBack;
 		Handle_Storage_CallBack DefaultCallBack ();
-		%feature("autodoc", "Args:
-	tName(TCollection_AsciiString)
-
-Returns:
-	virtual Handle_Storage_CallBack
-
-No detailed docstring for this function.") CallBackSelection;
+		%feature("autodoc", "	:param tName:
+	:type tName: TCollection_AsciiString &
+	:rtype: Handle_Storage_CallBack
+") CallBackSelection;
 		virtual Handle_Storage_CallBack CallBackSelection (const TCollection_AsciiString & tName);
-		%feature("autodoc", "Args:
-	sp(Handle_Standard_Persistent)
-
-Returns:
-	virtual Handle_Storage_CallBack
-
-No detailed docstring for this function.") AddTypeSelection;
+		%feature("autodoc", "	:param sp:
+	:type sp: Handle_Standard_Persistent &
+	:rtype: Handle_Storage_CallBack
+") AddTypeSelection;
 		virtual Handle_Storage_CallBack AddTypeSelection (const Handle_Standard_Persistent & sp);
-		%feature("autodoc", "Args:
-	sp(Handle_Standard_Persistent)
-	s(Storage_BaseDriver)
-
-Returns:
-	None
-
-No detailed docstring for this function.") WritePersistentObjectHeader;
+		%feature("autodoc", "	:param sp:
+	:type sp: Handle_Standard_Persistent &
+	:param s:
+	:type s: Storage_BaseDriver &
+	:rtype: None
+") WritePersistentObjectHeader;
 		void WritePersistentObjectHeader (const Handle_Standard_Persistent & sp,Storage_BaseDriver & s);
-		%feature("autodoc", "Args:
-	s(Storage_BaseDriver)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReadPersistentObjectHeader;
+		%feature("autodoc", "	:param s:
+	:type s: Storage_BaseDriver &
+	:rtype: None
+") ReadPersistentObjectHeader;
 		void ReadPersistentObjectHeader (Storage_BaseDriver & s);
-		%feature("autodoc", "Args:
-	sp(Handle_Standard_Persistent)
-	s(Storage_BaseDriver)
-
-Returns:
-	None
-
-No detailed docstring for this function.") WritePersistentReference;
+		%feature("autodoc", "	:param sp:
+	:type sp: Handle_Standard_Persistent &
+	:param s:
+	:type s: Storage_BaseDriver &
+	:rtype: None
+") WritePersistentReference;
 		void WritePersistentReference (const Handle_Standard_Persistent & sp,Storage_BaseDriver & s);
-		%feature("autodoc", "Args:
-	sp(Handle_Standard_Persistent)
-	s(Storage_BaseDriver)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReadPersistentReference;
+		%feature("autodoc", "	:param sp:
+	:type sp: Handle_Standard_Persistent &
+	:param s:
+	:type s: Storage_BaseDriver &
+	:rtype: None
+") ReadPersistentReference;
 		void ReadPersistentReference (Handle_Standard_Persistent & sp,Storage_BaseDriver & s);
-		%feature("autodoc", "Args:
-	sp(Handle_Standard_Persistent)
-	tName(char *)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") AddPersistent;
+		%feature("autodoc", "	:param sp:
+	:type sp: Handle_Standard_Persistent &
+	:param tName:
+	:type tName: char *
+	:rtype: bool
+") AddPersistent;
 		Standard_Boolean AddPersistent (const Handle_Standard_Persistent & sp,const char * tName);
-		%feature("autodoc", "Args:
-	sp(Handle_Standard_Persistent)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") PersistentToAdd;
+		%feature("autodoc", "	:param sp:
+	:type sp: Handle_Standard_Persistent &
+	:rtype: bool
+") PersistentToAdd;
 		Standard_Boolean PersistentToAdd (const Handle_Standard_Persistent & sp);
 };
 
@@ -4594,168 +3344,111 @@ def __del__(self):
 %nodefaultctor Storage_SeqOfCallBack;
 class Storage_SeqOfCallBack : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_SeqOfCallBack;
+		%feature("autodoc", "	:rtype: None
+") Storage_SeqOfCallBack;
 		 Storage_SeqOfCallBack ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Storage_SeqOfCallBack)
-
-Returns:
-	Storage_SeqOfCallBack
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Storage_SeqOfCallBack &
+	:rtype: Storage_SeqOfCallBack
+") Assign;
 		const Storage_SeqOfCallBack & Assign (const Storage_SeqOfCallBack & Other);
-		%feature("autodoc", "Args:
-	Other(Storage_SeqOfCallBack)
-
-Returns:
-	Storage_SeqOfCallBack
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Storage_SeqOfCallBack &
+	:rtype: Storage_SeqOfCallBack
+") operator=;
 		const Storage_SeqOfCallBack & operator = (const Storage_SeqOfCallBack & Other);
-		%feature("autodoc", "Args:
-	T(Handle_Storage_CallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Storage_CallBack &
+	:rtype: None
+") Append;
 		void Append (const Handle_Storage_CallBack & T);
-		%feature("autodoc", "Args:
-	S(Storage_SeqOfCallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Storage_SeqOfCallBack &
+	:rtype: None
+") Append;
 		void Append (Storage_SeqOfCallBack & S);
-		%feature("autodoc", "Args:
-	T(Handle_Storage_CallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Storage_CallBack &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Storage_CallBack & T);
-		%feature("autodoc", "Args:
-	S(Storage_SeqOfCallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Storage_SeqOfCallBack &
+	:rtype: None
+") Prepend;
 		void Prepend (Storage_SeqOfCallBack & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Storage_CallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Storage_CallBack &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_Storage_CallBack & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Storage_SeqOfCallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Storage_SeqOfCallBack &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Storage_SeqOfCallBack & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Storage_CallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Storage_CallBack &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_Storage_CallBack & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Storage_SeqOfCallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Storage_SeqOfCallBack &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Storage_SeqOfCallBack & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Storage_CallBack
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_Storage_CallBack
+") First;
 		const Handle_Storage_CallBack & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Storage_CallBack
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_Storage_CallBack
+") Last;
 		const Handle_Storage_CallBack & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Storage_SeqOfCallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Storage_SeqOfCallBack &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Storage_SeqOfCallBack & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Storage_CallBack
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Storage_CallBack
+") Value;
 		const Handle_Storage_CallBack & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_Storage_CallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_Storage_CallBack &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Storage_CallBack & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Storage_CallBack
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Storage_CallBack
+") ChangeValue;
 		Handle_Storage_CallBack & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -4777,168 +3470,111 @@ def __del__(self):
 %nodefaultctor Storage_SeqOfPersistent;
 class Storage_SeqOfPersistent : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_SeqOfPersistent;
+		%feature("autodoc", "	:rtype: None
+") Storage_SeqOfPersistent;
 		 Storage_SeqOfPersistent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Storage_SeqOfPersistent)
-
-Returns:
-	Storage_SeqOfPersistent
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Storage_SeqOfPersistent &
+	:rtype: Storage_SeqOfPersistent
+") Assign;
 		const Storage_SeqOfPersistent & Assign (const Storage_SeqOfPersistent & Other);
-		%feature("autodoc", "Args:
-	Other(Storage_SeqOfPersistent)
-
-Returns:
-	Storage_SeqOfPersistent
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Storage_SeqOfPersistent &
+	:rtype: Storage_SeqOfPersistent
+") operator=;
 		const Storage_SeqOfPersistent & operator = (const Storage_SeqOfPersistent & Other);
-		%feature("autodoc", "Args:
-	T(Handle_Standard_Persistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Standard_Persistent &
+	:rtype: None
+") Append;
 		void Append (const Handle_Standard_Persistent & T);
-		%feature("autodoc", "Args:
-	S(Storage_SeqOfPersistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Storage_SeqOfPersistent &
+	:rtype: None
+") Append;
 		void Append (Storage_SeqOfPersistent & S);
-		%feature("autodoc", "Args:
-	T(Handle_Standard_Persistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Standard_Persistent &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Standard_Persistent & T);
-		%feature("autodoc", "Args:
-	S(Storage_SeqOfPersistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Storage_SeqOfPersistent &
+	:rtype: None
+") Prepend;
 		void Prepend (Storage_SeqOfPersistent & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Standard_Persistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Standard_Persistent &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_Standard_Persistent & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Storage_SeqOfPersistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Storage_SeqOfPersistent &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Storage_SeqOfPersistent & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Standard_Persistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Standard_Persistent &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_Standard_Persistent & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Storage_SeqOfPersistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Storage_SeqOfPersistent &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Storage_SeqOfPersistent & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Persistent
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_Standard_Persistent
+") First;
 		const Handle_Standard_Persistent & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Persistent
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_Standard_Persistent
+") Last;
 		const Handle_Standard_Persistent & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Storage_SeqOfPersistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Storage_SeqOfPersistent &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Storage_SeqOfPersistent & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Standard_Persistent
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Standard_Persistent
+") Value;
 		const Handle_Standard_Persistent & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_Standard_Persistent)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_Standard_Persistent &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Standard_Persistent & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Standard_Persistent
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Standard_Persistent
+") ChangeValue;
 		Handle_Standard_Persistent & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -4960,168 +3596,111 @@ def __del__(self):
 %nodefaultctor Storage_SeqOfRoot;
 class Storage_SeqOfRoot : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_SeqOfRoot;
+		%feature("autodoc", "	:rtype: None
+") Storage_SeqOfRoot;
 		 Storage_SeqOfRoot ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Storage_SeqOfRoot)
-
-Returns:
-	Storage_SeqOfRoot
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Storage_SeqOfRoot &
+	:rtype: Storage_SeqOfRoot
+") Assign;
 		const Storage_SeqOfRoot & Assign (const Storage_SeqOfRoot & Other);
-		%feature("autodoc", "Args:
-	Other(Storage_SeqOfRoot)
-
-Returns:
-	Storage_SeqOfRoot
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Storage_SeqOfRoot &
+	:rtype: Storage_SeqOfRoot
+") operator=;
 		const Storage_SeqOfRoot & operator = (const Storage_SeqOfRoot & Other);
-		%feature("autodoc", "Args:
-	T(Handle_Storage_Root)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Storage_Root &
+	:rtype: None
+") Append;
 		void Append (const Handle_Storage_Root & T);
-		%feature("autodoc", "Args:
-	S(Storage_SeqOfRoot)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Storage_SeqOfRoot &
+	:rtype: None
+") Append;
 		void Append (Storage_SeqOfRoot & S);
-		%feature("autodoc", "Args:
-	T(Handle_Storage_Root)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Storage_Root &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Storage_Root & T);
-		%feature("autodoc", "Args:
-	S(Storage_SeqOfRoot)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Storage_SeqOfRoot &
+	:rtype: None
+") Prepend;
 		void Prepend (Storage_SeqOfRoot & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Storage_Root)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Storage_Root &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_Storage_Root & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Storage_SeqOfRoot)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Storage_SeqOfRoot &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Storage_SeqOfRoot & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Storage_Root)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Storage_Root &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_Storage_Root & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Storage_SeqOfRoot)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Storage_SeqOfRoot &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Storage_SeqOfRoot & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Storage_Root
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_Storage_Root
+") First;
 		const Handle_Storage_Root & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Storage_Root
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_Storage_Root
+") Last;
 		const Handle_Storage_Root & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Storage_SeqOfRoot)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Storage_SeqOfRoot &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Storage_SeqOfRoot & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Storage_Root
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Storage_Root
+") Value;
 		const Handle_Storage_Root & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_Storage_Root)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_Storage_Root &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Storage_Root & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Storage_Root
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Storage_Root
+") ChangeValue;
 		Handle_Storage_Root & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -5143,22 +3722,17 @@ def __del__(self):
 %nodefaultctor Storage_SequenceNodeOfSeqOfCallBack;
 class Storage_SequenceNodeOfSeqOfCallBack : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Storage_CallBack)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_SequenceNodeOfSeqOfCallBack;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Storage_CallBack &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Storage_SequenceNodeOfSeqOfCallBack;
 		 Storage_SequenceNodeOfSeqOfCallBack (const Handle_Storage_CallBack & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Storage_CallBack
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Storage_CallBack
+") Value;
 		Handle_Storage_CallBack & Value ();
 };
 
@@ -5219,22 +3793,17 @@ def __del__(self):
 %nodefaultctor Storage_SequenceNodeOfSeqOfPersistent;
 class Storage_SequenceNodeOfSeqOfPersistent : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Standard_Persistent)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_SequenceNodeOfSeqOfPersistent;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Standard_Persistent &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Storage_SequenceNodeOfSeqOfPersistent;
 		 Storage_SequenceNodeOfSeqOfPersistent (const Handle_Standard_Persistent & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Persistent
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Standard_Persistent
+") Value;
 		Handle_Standard_Persistent & Value ();
 };
 
@@ -5295,22 +3864,17 @@ def __del__(self):
 %nodefaultctor Storage_SequenceNodeOfSeqOfRoot;
 class Storage_SequenceNodeOfSeqOfRoot : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Storage_Root)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_SequenceNodeOfSeqOfRoot;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Storage_Root &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Storage_SequenceNodeOfSeqOfRoot;
 		 Storage_SequenceNodeOfSeqOfRoot (const Handle_Storage_Root & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Storage_Root
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Storage_Root
+") Value;
 		Handle_Storage_Root & Value ();
 };
 
@@ -5371,62 +3935,31 @@ def __del__(self):
 %nodefaultctor Storage_TypeData;
 class Storage_TypeData : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_TypeData;
+		%feature("autodoc", "	:rtype: None
+") Storage_TypeData;
 		 Storage_TypeData ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NumberOfTypes;
+		%feature("autodoc", "	:rtype: int
+") NumberOfTypes;
 		Standard_Integer NumberOfTypes ();
-		%feature("autodoc", "Args:
-	aName(TCollection_AsciiString)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsType;
+		%feature("autodoc", "	:param aName:
+	:type aName: TCollection_AsciiString &
+	:rtype: bool
+") IsType;
 		Standard_Boolean IsType (const TCollection_AsciiString & aName);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColStd_HSequenceOfAsciiString
-
-No detailed docstring for this function.") Types;
+		%feature("autodoc", "	:rtype: Handle_TColStd_HSequenceOfAsciiString
+") Types;
 		Handle_TColStd_HSequenceOfAsciiString Types ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Storage_Error
-
-No detailed docstring for this function.") ErrorStatus;
+		%feature("autodoc", "	:rtype: Storage_Error
+") ErrorStatus;
 		Storage_Error ErrorStatus ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") ErrorStatusExtension;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") ErrorStatusExtension;
 		TCollection_AsciiString ErrorStatusExtension ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ClearErrorStatus;
+		%feature("autodoc", "	:rtype: None
+") ClearErrorStatus;
 		void ClearErrorStatus ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
 };
 
@@ -5487,66 +4020,39 @@ def __del__(self):
 %nodefaultctor Storage_TypedCallBack;
 class Storage_TypedCallBack : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_TypedCallBack;
+		%feature("autodoc", "	:rtype: None
+") Storage_TypedCallBack;
 		 Storage_TypedCallBack ();
-		%feature("autodoc", "Args:
-	aTypeName(TCollection_AsciiString)
-	aCallBack(Handle_Storage_CallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_TypedCallBack;
+		%feature("autodoc", "	:param aTypeName:
+	:type aTypeName: TCollection_AsciiString &
+	:param aCallBack:
+	:type aCallBack: Handle_Storage_CallBack &
+	:rtype: None
+") Storage_TypedCallBack;
 		 Storage_TypedCallBack (const TCollection_AsciiString & aTypeName,const Handle_Storage_CallBack & aCallBack);
-		%feature("autodoc", "Args:
-	aType(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetType;
+		%feature("autodoc", "	:param aType:
+	:type aType: TCollection_AsciiString &
+	:rtype: None
+") SetType;
 		void SetType (const TCollection_AsciiString & aType);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") Type;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") Type;
 		TCollection_AsciiString Type ();
-		%feature("autodoc", "Args:
-	aCallBack(Handle_Storage_CallBack)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetCallBack;
+		%feature("autodoc", "	:param aCallBack:
+	:type aCallBack: Handle_Storage_CallBack &
+	:rtype: None
+") SetCallBack;
 		void SetCallBack (const Handle_Storage_CallBack & aCallBack);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Storage_CallBack
-
-No detailed docstring for this function.") CallBack;
+		%feature("autodoc", "	:rtype: Handle_Storage_CallBack
+") CallBack;
 		Handle_Storage_CallBack CallBack ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetIndex;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") SetIndex;
 		void SetIndex (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Index;
+		%feature("autodoc", "	:rtype: int
+") Index;
 		Standard_Integer Index ();
 };
 
@@ -5627,48 +4133,36 @@ def __del__(self):
 %nodefaultctor Storage_DefaultCallBack;
 class Storage_DefaultCallBack : public Storage_CallBack {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Storage_DefaultCallBack;
+		%feature("autodoc", "	:rtype: None
+") Storage_DefaultCallBack;
 		 Storage_DefaultCallBack ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Persistent
-
-No detailed docstring for this function.") New;
+		%feature("autodoc", "	:rtype: Handle_Standard_Persistent
+") New;
 		Handle_Standard_Persistent New ();
-		%feature("autodoc", "Args:
-	aPers(Handle_Standard_Persistent)
-	aSchema(Handle_Storage_Schema)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param aPers:
+	:type aPers: Handle_Standard_Persistent &
+	:param aSchema:
+	:type aSchema: Handle_Storage_Schema &
+	:rtype: None
+") Add;
 		void Add (const Handle_Standard_Persistent & aPers,const Handle_Storage_Schema & aSchema);
-		%feature("autodoc", "Args:
-	aPers(Handle_Standard_Persistent)
-	aDriver(Storage_BaseDriver)
-	aSchema(Handle_Storage_Schema)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Write;
+		%feature("autodoc", "	:param aPers:
+	:type aPers: Handle_Standard_Persistent &
+	:param aDriver:
+	:type aDriver: Storage_BaseDriver &
+	:param aSchema:
+	:type aSchema: Handle_Storage_Schema &
+	:rtype: None
+") Write;
 		void Write (const Handle_Standard_Persistent & aPers,Storage_BaseDriver & aDriver,const Handle_Storage_Schema & aSchema);
-		%feature("autodoc", "Args:
-	aPers(Handle_Standard_Persistent)
-	aDriver(Storage_BaseDriver)
-	aSchema(Handle_Storage_Schema)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Read;
+		%feature("autodoc", "	:param aPers:
+	:type aPers: Handle_Standard_Persistent &
+	:param aDriver:
+	:type aDriver: Storage_BaseDriver &
+	:param aSchema:
+	:type aSchema: Handle_Storage_Schema &
+	:rtype: None
+") Read;
 		void Read (const Handle_Standard_Persistent & aPers,Storage_BaseDriver & aDriver,const Handle_Storage_Schema & aSchema);
 };
 

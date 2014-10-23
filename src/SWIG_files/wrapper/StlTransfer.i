@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -45,16 +45,16 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor StlTransfer;
 class StlTransfer {
 	public:
-		%feature("autodoc", "Args:
-	Shape(TopoDS_Shape)
-	Deflection(Standard_Real)
-	InParallel(Standard_Boolean)
-	Mesh(Handle_StlMesh_Mesh)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") BuildIncrementalMesh;
+		%feature("autodoc", "	:param Shape:
+	:type Shape: TopoDS_Shape &
+	:param Deflection:
+	:type Deflection: float
+	:param InParallel:
+	:type InParallel: bool
+	:param Mesh:
+	:type Mesh: Handle_StlMesh_Mesh &
+	:rtype: void
+") BuildIncrementalMesh;
 		static void BuildIncrementalMesh (const TopoDS_Shape & Shape,const Standard_Real Deflection,const Standard_Boolean InParallel,const Handle_StlMesh_Mesh & Mesh);
 };
 

@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -46,26 +46,21 @@ typedef TopTools_LocationSet * TopTools_LocationSetPtr;
 %nodefaultctor TopTools;
 class TopTools {
 	public:
-		%feature("autodoc", "Args:
-	Sh(TopoDS_Shape)
-	S(Standard_OStream)
+		%feature("autodoc", "	* A set of Shapes. Can be dump, wrote or read. Dumps the topological structure of <Sh> on the stream <S>.
 
-Returns:
-	static void
-
-A set of Shapes. Can be dump, wrote or read.  Dumps the topological structure  of <Sh>  on the  
-         stream <S>.") Dump;
+	:param Sh:
+	:type Sh: TopoDS_Shape &
+	:param S:
+	:type S: Standard_OStream &
+	:rtype: void
+") Dump;
 		static void Dump (const TopoDS_Shape & Sh,Standard_OStream & S);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* This is to bypass an extraction bug. It will force the inclusion of Standard_Integer.hxx itself including Standard_OStream.hxx at the correct position.
 
-Returns:
-	static void
-
-This is to bypass an extraction bug. It will force  
-         the  inclusion    of  Standard_Integer.hxx  itself  
-         including Standard_OStream.hxx  at   the   correct  
-         position.") Dummy;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: void
+") Dummy;
 		static void Dummy (const Standard_Integer I);
 };
 
@@ -87,108 +82,68 @@ def __del__(self):
 %nodefaultctor TopTools_Array1OfListOfShape;
 class TopTools_Array1OfListOfShape {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_Array1OfListOfShape;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TopTools_Array1OfListOfShape;
 		 TopTools_Array1OfListOfShape (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(TopTools_ListOfShape)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_Array1OfListOfShape;
+		%feature("autodoc", "	:param Item:
+	:type Item: TopTools_ListOfShape &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TopTools_Array1OfListOfShape;
 		 TopTools_Array1OfListOfShape (const TopTools_ListOfShape & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(TopTools_ListOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: TopTools_ListOfShape &
+	:rtype: None
+") Init;
 		void Init (const TopTools_ListOfShape & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(TopTools_Array1OfListOfShape)
-
-Returns:
-	TopTools_Array1OfListOfShape
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_Array1OfListOfShape &
+	:rtype: TopTools_Array1OfListOfShape
+") Assign;
 		const TopTools_Array1OfListOfShape & Assign (const TopTools_Array1OfListOfShape & Other);
-		%feature("autodoc", "Args:
-	Other(TopTools_Array1OfListOfShape)
-
-Returns:
-	TopTools_Array1OfListOfShape
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_Array1OfListOfShape &
+	:rtype: TopTools_Array1OfListOfShape
+") operator=;
 		const TopTools_Array1OfListOfShape & operator = (const TopTools_Array1OfListOfShape & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(TopTools_ListOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: TopTools_ListOfShape &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const TopTools_ListOfShape & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopTools_ListOfShape
+") Value;
 		const TopTools_ListOfShape & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopTools_ListOfShape
+") ChangeValue;
 		TopTools_ListOfShape & ChangeValue (const Standard_Integer Index);
 };
 
@@ -210,108 +165,68 @@ def __del__(self):
 %nodefaultctor TopTools_Array1OfShape;
 class TopTools_Array1OfShape {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_Array1OfShape;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TopTools_Array1OfShape;
 		 TopTools_Array1OfShape (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(TopoDS_Shape)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_Array1OfShape;
+		%feature("autodoc", "	:param Item:
+	:type Item: TopoDS_Shape &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TopTools_Array1OfShape;
 		 TopTools_Array1OfShape (const TopoDS_Shape & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: TopoDS_Shape &
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Shape & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(TopTools_Array1OfShape)
-
-Returns:
-	TopTools_Array1OfShape
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_Array1OfShape &
+	:rtype: TopTools_Array1OfShape
+") Assign;
 		const TopTools_Array1OfShape & Assign (const TopTools_Array1OfShape & Other);
-		%feature("autodoc", "Args:
-	Other(TopTools_Array1OfShape)
-
-Returns:
-	TopTools_Array1OfShape
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_Array1OfShape &
+	:rtype: TopTools_Array1OfShape
+") operator=;
 		const TopTools_Array1OfShape & operator = (const TopTools_Array1OfShape & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: TopoDS_Shape &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const TopoDS_Shape & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopoDS_Shape
+") Value;
 		const TopoDS_Shape & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopoDS_Shape
+") ChangeValue;
 		TopoDS_Shape & ChangeValue (const Standard_Integer Index);
 };
 
@@ -333,129 +248,88 @@ def __del__(self):
 %nodefaultctor TopTools_Array2OfShape;
 class TopTools_Array2OfShape {
 	public:
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_Array2OfShape;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") TopTools_Array2OfShape;
 		 TopTools_Array2OfShape (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	Item(TopoDS_Shape)
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_Array2OfShape;
+		%feature("autodoc", "	:param Item:
+	:type Item: TopoDS_Shape &
+	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") TopTools_Array2OfShape;
 		 TopTools_Array2OfShape (const TopoDS_Shape & Item,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	V(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: TopoDS_Shape &
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Shape & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	Other(TopTools_Array2OfShape)
-
-Returns:
-	TopTools_Array2OfShape
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_Array2OfShape &
+	:rtype: TopTools_Array2OfShape
+") Assign;
 		const TopTools_Array2OfShape & Assign (const TopTools_Array2OfShape & Other);
-		%feature("autodoc", "Args:
-	Other(TopTools_Array2OfShape)
-
-Returns:
-	TopTools_Array2OfShape
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_Array2OfShape &
+	:rtype: TopTools_Array2OfShape
+") operator=;
 		const TopTools_Array2OfShape & operator = (const TopTools_Array2OfShape & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ColLength;
+		%feature("autodoc", "	:rtype: int
+") ColLength;
 		Standard_Integer ColLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") RowLength;
+		%feature("autodoc", "	:rtype: int
+") RowLength;
 		Standard_Integer RowLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerCol;
+		%feature("autodoc", "	:rtype: int
+") LowerCol;
 		Standard_Integer LowerCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerRow;
+		%feature("autodoc", "	:rtype: int
+") LowerRow;
 		Standard_Integer LowerRow ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperCol;
+		%feature("autodoc", "	:rtype: int
+") UpperCol;
 		Standard_Integer UpperCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperRow;
+		%feature("autodoc", "	:rtype: int
+") UpperRow;
 		Standard_Integer UpperRow ();
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-	Value(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:param Value:
+	:type Value: TopoDS_Shape &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const TopoDS_Shape & Value);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: TopoDS_Shape
+") Value;
 		const TopoDS_Shape & Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: TopoDS_Shape
+") ChangeValue;
 		TopoDS_Shape & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 };
 
@@ -477,42 +351,24 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape;
 class TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape;
+		%feature("autodoc", "	:rtype: None
+") TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape;
 		 TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape ();
-		%feature("autodoc", "Args:
-	aMap(TopTools_DataMapOfIntegerListOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TopTools_DataMapOfIntegerListOfShape &
+	:rtype: None
+") TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape;
 		 TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape (const TopTools_DataMapOfIntegerListOfShape & aMap);
-		%feature("autodoc", "Args:
-	aMap(TopTools_DataMapOfIntegerListOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TopTools_DataMapOfIntegerListOfShape &
+	:rtype: None
+") Initialize;
 		void Initialize (const TopTools_DataMapOfIntegerListOfShape & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: int
+") Key;
 		const Standard_Integer & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TopTools_ListOfShape
+") Value;
 		const TopTools_ListOfShape & Value ();
 };
 
@@ -534,42 +390,24 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfIntegerShape;
 class TopTools_DataMapIteratorOfDataMapOfIntegerShape : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapIteratorOfDataMapOfIntegerShape;
+		%feature("autodoc", "	:rtype: None
+") TopTools_DataMapIteratorOfDataMapOfIntegerShape;
 		 TopTools_DataMapIteratorOfDataMapOfIntegerShape ();
-		%feature("autodoc", "Args:
-	aMap(TopTools_DataMapOfIntegerShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapIteratorOfDataMapOfIntegerShape;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TopTools_DataMapOfIntegerShape &
+	:rtype: None
+") TopTools_DataMapIteratorOfDataMapOfIntegerShape;
 		 TopTools_DataMapIteratorOfDataMapOfIntegerShape (const TopTools_DataMapOfIntegerShape & aMap);
-		%feature("autodoc", "Args:
-	aMap(TopTools_DataMapOfIntegerShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TopTools_DataMapOfIntegerShape &
+	:rtype: None
+") Initialize;
 		void Initialize (const TopTools_DataMapOfIntegerShape & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: int
+") Key;
 		const Standard_Integer & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Value;
 		const TopoDS_Shape & Value ();
 };
 
@@ -591,42 +429,24 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfOrientedShapeInteger;
 class TopTools_DataMapIteratorOfDataMapOfOrientedShapeInteger : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapIteratorOfDataMapOfOrientedShapeInteger;
+		%feature("autodoc", "	:rtype: None
+") TopTools_DataMapIteratorOfDataMapOfOrientedShapeInteger;
 		 TopTools_DataMapIteratorOfDataMapOfOrientedShapeInteger ();
-		%feature("autodoc", "Args:
-	aMap(TopTools_DataMapOfOrientedShapeInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapIteratorOfDataMapOfOrientedShapeInteger;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TopTools_DataMapOfOrientedShapeInteger &
+	:rtype: None
+") TopTools_DataMapIteratorOfDataMapOfOrientedShapeInteger;
 		 TopTools_DataMapIteratorOfDataMapOfOrientedShapeInteger (const TopTools_DataMapOfOrientedShapeInteger & aMap);
-		%feature("autodoc", "Args:
-	aMap(TopTools_DataMapOfOrientedShapeInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TopTools_DataMapOfOrientedShapeInteger &
+	:rtype: None
+") Initialize;
 		void Initialize (const TopTools_DataMapOfOrientedShapeInteger & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		const TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: int
+") Value;
 		const Standard_Integer & Value ();
 };
 
@@ -648,42 +468,24 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfOrientedShapeShape;
 class TopTools_DataMapIteratorOfDataMapOfOrientedShapeShape : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapIteratorOfDataMapOfOrientedShapeShape;
+		%feature("autodoc", "	:rtype: None
+") TopTools_DataMapIteratorOfDataMapOfOrientedShapeShape;
 		 TopTools_DataMapIteratorOfDataMapOfOrientedShapeShape ();
-		%feature("autodoc", "Args:
-	aMap(TopTools_DataMapOfOrientedShapeShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapIteratorOfDataMapOfOrientedShapeShape;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TopTools_DataMapOfOrientedShapeShape &
+	:rtype: None
+") TopTools_DataMapIteratorOfDataMapOfOrientedShapeShape;
 		 TopTools_DataMapIteratorOfDataMapOfOrientedShapeShape (const TopTools_DataMapOfOrientedShapeShape & aMap);
-		%feature("autodoc", "Args:
-	aMap(TopTools_DataMapOfOrientedShapeShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TopTools_DataMapOfOrientedShapeShape &
+	:rtype: None
+") Initialize;
 		void Initialize (const TopTools_DataMapOfOrientedShapeShape & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		const TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Value;
 		const TopoDS_Shape & Value ();
 };
 
@@ -705,42 +507,24 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfShapeInteger;
 class TopTools_DataMapIteratorOfDataMapOfShapeInteger : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapIteratorOfDataMapOfShapeInteger;
+		%feature("autodoc", "	:rtype: None
+") TopTools_DataMapIteratorOfDataMapOfShapeInteger;
 		 TopTools_DataMapIteratorOfDataMapOfShapeInteger ();
-		%feature("autodoc", "Args:
-	aMap(TopTools_DataMapOfShapeInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapIteratorOfDataMapOfShapeInteger;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TopTools_DataMapOfShapeInteger &
+	:rtype: None
+") TopTools_DataMapIteratorOfDataMapOfShapeInteger;
 		 TopTools_DataMapIteratorOfDataMapOfShapeInteger (const TopTools_DataMapOfShapeInteger & aMap);
-		%feature("autodoc", "Args:
-	aMap(TopTools_DataMapOfShapeInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TopTools_DataMapOfShapeInteger &
+	:rtype: None
+") Initialize;
 		void Initialize (const TopTools_DataMapOfShapeInteger & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		const TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: int
+") Value;
 		const Standard_Integer & Value ();
 };
 
@@ -762,42 +546,24 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfShapeListOfInteger;
 class TopTools_DataMapIteratorOfDataMapOfShapeListOfInteger : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapIteratorOfDataMapOfShapeListOfInteger;
+		%feature("autodoc", "	:rtype: None
+") TopTools_DataMapIteratorOfDataMapOfShapeListOfInteger;
 		 TopTools_DataMapIteratorOfDataMapOfShapeListOfInteger ();
-		%feature("autodoc", "Args:
-	aMap(TopTools_DataMapOfShapeListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapIteratorOfDataMapOfShapeListOfInteger;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TopTools_DataMapOfShapeListOfInteger &
+	:rtype: None
+") TopTools_DataMapIteratorOfDataMapOfShapeListOfInteger;
 		 TopTools_DataMapIteratorOfDataMapOfShapeListOfInteger (const TopTools_DataMapOfShapeListOfInteger & aMap);
-		%feature("autodoc", "Args:
-	aMap(TopTools_DataMapOfShapeListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TopTools_DataMapOfShapeListOfInteger &
+	:rtype: None
+") Initialize;
 		void Initialize (const TopTools_DataMapOfShapeListOfInteger & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		const TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_ListOfInteger
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TColStd_ListOfInteger
+") Value;
 		const TColStd_ListOfInteger & Value ();
 };
 
@@ -819,42 +585,24 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfShapeListOfShape;
 class TopTools_DataMapIteratorOfDataMapOfShapeListOfShape : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapIteratorOfDataMapOfShapeListOfShape;
+		%feature("autodoc", "	:rtype: None
+") TopTools_DataMapIteratorOfDataMapOfShapeListOfShape;
 		 TopTools_DataMapIteratorOfDataMapOfShapeListOfShape ();
-		%feature("autodoc", "Args:
-	aMap(TopTools_DataMapOfShapeListOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapIteratorOfDataMapOfShapeListOfShape;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TopTools_DataMapOfShapeListOfShape &
+	:rtype: None
+") TopTools_DataMapIteratorOfDataMapOfShapeListOfShape;
 		 TopTools_DataMapIteratorOfDataMapOfShapeListOfShape (const TopTools_DataMapOfShapeListOfShape & aMap);
-		%feature("autodoc", "Args:
-	aMap(TopTools_DataMapOfShapeListOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TopTools_DataMapOfShapeListOfShape &
+	:rtype: None
+") Initialize;
 		void Initialize (const TopTools_DataMapOfShapeListOfShape & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		const TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TopTools_ListOfShape
+") Value;
 		const TopTools_ListOfShape & Value ();
 };
 
@@ -876,42 +624,24 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfShapeReal;
 class TopTools_DataMapIteratorOfDataMapOfShapeReal : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapIteratorOfDataMapOfShapeReal;
+		%feature("autodoc", "	:rtype: None
+") TopTools_DataMapIteratorOfDataMapOfShapeReal;
 		 TopTools_DataMapIteratorOfDataMapOfShapeReal ();
-		%feature("autodoc", "Args:
-	aMap(TopTools_DataMapOfShapeReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapIteratorOfDataMapOfShapeReal;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TopTools_DataMapOfShapeReal &
+	:rtype: None
+") TopTools_DataMapIteratorOfDataMapOfShapeReal;
 		 TopTools_DataMapIteratorOfDataMapOfShapeReal (const TopTools_DataMapOfShapeReal & aMap);
-		%feature("autodoc", "Args:
-	aMap(TopTools_DataMapOfShapeReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TopTools_DataMapOfShapeReal &
+	:rtype: None
+") Initialize;
 		void Initialize (const TopTools_DataMapOfShapeReal & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		const TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: float
+") Value;
 		const Standard_Real & Value ();
 };
 
@@ -933,42 +663,24 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfShapeSequenceOfShape;
 class TopTools_DataMapIteratorOfDataMapOfShapeSequenceOfShape : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapIteratorOfDataMapOfShapeSequenceOfShape;
+		%feature("autodoc", "	:rtype: None
+") TopTools_DataMapIteratorOfDataMapOfShapeSequenceOfShape;
 		 TopTools_DataMapIteratorOfDataMapOfShapeSequenceOfShape ();
-		%feature("autodoc", "Args:
-	aMap(TopTools_DataMapOfShapeSequenceOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapIteratorOfDataMapOfShapeSequenceOfShape;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TopTools_DataMapOfShapeSequenceOfShape &
+	:rtype: None
+") TopTools_DataMapIteratorOfDataMapOfShapeSequenceOfShape;
 		 TopTools_DataMapIteratorOfDataMapOfShapeSequenceOfShape (const TopTools_DataMapOfShapeSequenceOfShape & aMap);
-		%feature("autodoc", "Args:
-	aMap(TopTools_DataMapOfShapeSequenceOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TopTools_DataMapOfShapeSequenceOfShape &
+	:rtype: None
+") Initialize;
 		void Initialize (const TopTools_DataMapOfShapeSequenceOfShape & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		const TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_SequenceOfShape
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TopTools_SequenceOfShape
+") Value;
 		const TopTools_SequenceOfShape & Value ();
 };
 
@@ -990,42 +702,24 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapIteratorOfDataMapOfShapeShape;
 class TopTools_DataMapIteratorOfDataMapOfShapeShape : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapIteratorOfDataMapOfShapeShape;
+		%feature("autodoc", "	:rtype: None
+") TopTools_DataMapIteratorOfDataMapOfShapeShape;
 		 TopTools_DataMapIteratorOfDataMapOfShapeShape ();
-		%feature("autodoc", "Args:
-	aMap(TopTools_DataMapOfShapeShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapIteratorOfDataMapOfShapeShape;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TopTools_DataMapOfShapeShape &
+	:rtype: None
+") TopTools_DataMapIteratorOfDataMapOfShapeShape;
 		 TopTools_DataMapIteratorOfDataMapOfShapeShape (const TopTools_DataMapOfShapeShape & aMap);
-		%feature("autodoc", "Args:
-	aMap(TopTools_DataMapOfShapeShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TopTools_DataMapOfShapeShape &
+	:rtype: None
+") Initialize;
 		void Initialize (const TopTools_DataMapOfShapeShape & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		const TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Value;
 		const TopoDS_Shape & Value ();
 };
 
@@ -1047,15 +741,14 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapNodeOfDataMapOfIntegerListOfShape;
 class TopTools_DataMapNodeOfDataMapOfIntegerListOfShape : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(TopTools_ListOfShape)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapNodeOfDataMapOfIntegerListOfShape;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: TopTools_ListOfShape &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TopTools_DataMapNodeOfDataMapOfIntegerListOfShape;
 		 TopTools_DataMapNodeOfDataMapOfIntegerListOfShape (Standard_Integer &OutValue,const TopTools_ListOfShape & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
@@ -1070,12 +763,8 @@ No detailed docstring for this function.") TopTools_DataMapNodeOfDataMapOfIntege
                 $self->Key()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") Value;
+            		%feature("autodoc", "	:rtype: TopTools_ListOfShape
+") Value;
 		TopTools_ListOfShape & Value ();
 };
 
@@ -1136,15 +825,14 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapNodeOfDataMapOfIntegerShape;
 class TopTools_DataMapNodeOfDataMapOfIntegerShape : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(TopoDS_Shape)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapNodeOfDataMapOfIntegerShape;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: TopoDS_Shape &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TopTools_DataMapNodeOfDataMapOfIntegerShape;
 		 TopTools_DataMapNodeOfDataMapOfIntegerShape (Standard_Integer &OutValue,const TopoDS_Shape & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
@@ -1159,12 +847,8 @@ No detailed docstring for this function.") TopTools_DataMapNodeOfDataMapOfIntege
                 $self->Key()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Value;
+            		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Value;
 		TopoDS_Shape & Value ();
 };
 
@@ -1225,22 +909,17 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger;
 class TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(Standard_Integer)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: Standard_Integer &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger;
 		 TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger (const TopoDS_Shape & K,Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		TopoDS_Shape & Key ();
 
             %feature("autodoc","1");
@@ -1314,29 +993,20 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapNodeOfDataMapOfOrientedShapeShape;
 class TopTools_DataMapNodeOfDataMapOfOrientedShapeShape : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(TopoDS_Shape)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapNodeOfDataMapOfOrientedShapeShape;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: TopoDS_Shape &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TopTools_DataMapNodeOfDataMapOfOrientedShapeShape;
 		 TopTools_DataMapNodeOfDataMapOfOrientedShapeShape (const TopoDS_Shape & K,const TopoDS_Shape & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Value;
 		TopoDS_Shape & Value ();
 };
 
@@ -1397,22 +1067,17 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapNodeOfDataMapOfShapeInteger;
 class TopTools_DataMapNodeOfDataMapOfShapeInteger : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(Standard_Integer)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapNodeOfDataMapOfShapeInteger;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: Standard_Integer &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TopTools_DataMapNodeOfDataMapOfShapeInteger;
 		 TopTools_DataMapNodeOfDataMapOfShapeInteger (const TopoDS_Shape & K,Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		TopoDS_Shape & Key ();
 
             %feature("autodoc","1");
@@ -1486,29 +1151,20 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapNodeOfDataMapOfShapeListOfInteger;
 class TopTools_DataMapNodeOfDataMapOfShapeListOfInteger : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(TColStd_ListOfInteger)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapNodeOfDataMapOfShapeListOfInteger;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: TColStd_ListOfInteger &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TopTools_DataMapNodeOfDataMapOfShapeListOfInteger;
 		 TopTools_DataMapNodeOfDataMapOfShapeListOfInteger (const TopoDS_Shape & K,const TColStd_ListOfInteger & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_ListOfInteger
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TColStd_ListOfInteger
+") Value;
 		TColStd_ListOfInteger & Value ();
 };
 
@@ -1569,29 +1225,20 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapNodeOfDataMapOfShapeListOfShape;
 class TopTools_DataMapNodeOfDataMapOfShapeListOfShape : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(TopTools_ListOfShape)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapNodeOfDataMapOfShapeListOfShape;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: TopTools_ListOfShape &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TopTools_DataMapNodeOfDataMapOfShapeListOfShape;
 		 TopTools_DataMapNodeOfDataMapOfShapeListOfShape (const TopoDS_Shape & K,const TopTools_ListOfShape & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TopTools_ListOfShape
+") Value;
 		TopTools_ListOfShape & Value ();
 };
 
@@ -1652,22 +1299,17 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapNodeOfDataMapOfShapeReal;
 class TopTools_DataMapNodeOfDataMapOfShapeReal : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(Standard_Real)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapNodeOfDataMapOfShapeReal;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: float &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TopTools_DataMapNodeOfDataMapOfShapeReal;
 		 TopTools_DataMapNodeOfDataMapOfShapeReal (const TopoDS_Shape & K,const Standard_Real & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		TopoDS_Shape & Key ();
 
             %feature("autodoc","1");
@@ -1741,29 +1383,20 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape;
 class TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(TopTools_SequenceOfShape)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: TopTools_SequenceOfShape &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape;
 		 TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape (const TopoDS_Shape & K,const TopTools_SequenceOfShape & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_SequenceOfShape
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TopTools_SequenceOfShape
+") Value;
 		TopTools_SequenceOfShape & Value ();
 };
 
@@ -1824,29 +1457,20 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapNodeOfDataMapOfShapeShape;
 class TopTools_DataMapNodeOfDataMapOfShapeShape : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(TopoDS_Shape)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapNodeOfDataMapOfShapeShape;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: TopoDS_Shape &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TopTools_DataMapNodeOfDataMapOfShapeShape;
 		 TopTools_DataMapNodeOfDataMapOfShapeShape (const TopoDS_Shape & K,const TopoDS_Shape & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Value;
 		TopoDS_Shape & Value ();
 };
 
@@ -1907,101 +1531,65 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapOfIntegerListOfShape;
 class TopTools_DataMapOfIntegerListOfShape : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapOfIntegerListOfShape;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TopTools_DataMapOfIntegerListOfShape;
 		 TopTools_DataMapOfIntegerListOfShape (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TopTools_DataMapOfIntegerListOfShape)
-
-Returns:
-	TopTools_DataMapOfIntegerListOfShape
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_DataMapOfIntegerListOfShape &
+	:rtype: TopTools_DataMapOfIntegerListOfShape
+") Assign;
 		TopTools_DataMapOfIntegerListOfShape & Assign (const TopTools_DataMapOfIntegerListOfShape & Other);
-		%feature("autodoc", "Args:
-	Other(TopTools_DataMapOfIntegerListOfShape)
-
-Returns:
-	TopTools_DataMapOfIntegerListOfShape
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_DataMapOfIntegerListOfShape &
+	:rtype: TopTools_DataMapOfIntegerListOfShape
+") operator=;
 		TopTools_DataMapOfIntegerListOfShape & operator = (const TopTools_DataMapOfIntegerListOfShape & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(TopTools_ListOfShape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: TopTools_ListOfShape &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (Standard_Integer &OutValue,const TopTools_ListOfShape & I);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: TopTools_ListOfShape
+") Find;
 		const TopTools_ListOfShape & Find (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: TopTools_ListOfShape
+") ChangeFind;
 		TopTools_ListOfShape & ChangeFind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
 };
 
@@ -2023,101 +1611,65 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapOfIntegerShape;
 class TopTools_DataMapOfIntegerShape : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapOfIntegerShape;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TopTools_DataMapOfIntegerShape;
 		 TopTools_DataMapOfIntegerShape (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TopTools_DataMapOfIntegerShape)
-
-Returns:
-	TopTools_DataMapOfIntegerShape
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_DataMapOfIntegerShape &
+	:rtype: TopTools_DataMapOfIntegerShape
+") Assign;
 		TopTools_DataMapOfIntegerShape & Assign (const TopTools_DataMapOfIntegerShape & Other);
-		%feature("autodoc", "Args:
-	Other(TopTools_DataMapOfIntegerShape)
-
-Returns:
-	TopTools_DataMapOfIntegerShape
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_DataMapOfIntegerShape &
+	:rtype: TopTools_DataMapOfIntegerShape
+") operator=;
 		TopTools_DataMapOfIntegerShape & operator = (const TopTools_DataMapOfIntegerShape & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: TopoDS_Shape &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (Standard_Integer &OutValue,const TopoDS_Shape & I);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: TopoDS_Shape
+") Find;
 		const TopoDS_Shape & Find (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: TopoDS_Shape
+") ChangeFind;
 		TopoDS_Shape & ChangeFind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
 };
 
@@ -2139,101 +1691,65 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapOfOrientedShapeInteger;
 class TopTools_DataMapOfOrientedShapeInteger : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapOfOrientedShapeInteger;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TopTools_DataMapOfOrientedShapeInteger;
 		 TopTools_DataMapOfOrientedShapeInteger (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TopTools_DataMapOfOrientedShapeInteger)
-
-Returns:
-	TopTools_DataMapOfOrientedShapeInteger
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_DataMapOfOrientedShapeInteger &
+	:rtype: TopTools_DataMapOfOrientedShapeInteger
+") Assign;
 		TopTools_DataMapOfOrientedShapeInteger & Assign (const TopTools_DataMapOfOrientedShapeInteger & Other);
-		%feature("autodoc", "Args:
-	Other(TopTools_DataMapOfOrientedShapeInteger)
-
-Returns:
-	TopTools_DataMapOfOrientedShapeInteger
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_DataMapOfOrientedShapeInteger &
+	:rtype: TopTools_DataMapOfOrientedShapeInteger
+") operator=;
 		TopTools_DataMapOfOrientedShapeInteger & operator = (const TopTools_DataMapOfOrientedShapeInteger & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: Standard_Integer &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const TopoDS_Shape & K,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: int
+") Find;
 		const Standard_Integer & Find (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: int
+") ChangeFind;
 		Standard_Integer & ChangeFind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const TopoDS_Shape & K);
 };
 
@@ -2255,101 +1771,65 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapOfOrientedShapeShape;
 class TopTools_DataMapOfOrientedShapeShape : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapOfOrientedShapeShape;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TopTools_DataMapOfOrientedShapeShape;
 		 TopTools_DataMapOfOrientedShapeShape (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TopTools_DataMapOfOrientedShapeShape)
-
-Returns:
-	TopTools_DataMapOfOrientedShapeShape
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_DataMapOfOrientedShapeShape &
+	:rtype: TopTools_DataMapOfOrientedShapeShape
+") Assign;
 		TopTools_DataMapOfOrientedShapeShape & Assign (const TopTools_DataMapOfOrientedShapeShape & Other);
-		%feature("autodoc", "Args:
-	Other(TopTools_DataMapOfOrientedShapeShape)
-
-Returns:
-	TopTools_DataMapOfOrientedShapeShape
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_DataMapOfOrientedShapeShape &
+	:rtype: TopTools_DataMapOfOrientedShapeShape
+") operator=;
 		TopTools_DataMapOfOrientedShapeShape & operator = (const TopTools_DataMapOfOrientedShapeShape & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: TopoDS_Shape &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const TopoDS_Shape & K,const TopoDS_Shape & I);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: TopoDS_Shape
+") Find;
 		const TopoDS_Shape & Find (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: TopoDS_Shape
+") ChangeFind;
 		TopoDS_Shape & ChangeFind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const TopoDS_Shape & K);
 };
 
@@ -2371,101 +1851,65 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapOfShapeInteger;
 class TopTools_DataMapOfShapeInteger : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapOfShapeInteger;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TopTools_DataMapOfShapeInteger;
 		 TopTools_DataMapOfShapeInteger (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TopTools_DataMapOfShapeInteger)
-
-Returns:
-	TopTools_DataMapOfShapeInteger
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_DataMapOfShapeInteger &
+	:rtype: TopTools_DataMapOfShapeInteger
+") Assign;
 		TopTools_DataMapOfShapeInteger & Assign (const TopTools_DataMapOfShapeInteger & Other);
-		%feature("autodoc", "Args:
-	Other(TopTools_DataMapOfShapeInteger)
-
-Returns:
-	TopTools_DataMapOfShapeInteger
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_DataMapOfShapeInteger &
+	:rtype: TopTools_DataMapOfShapeInteger
+") operator=;
 		TopTools_DataMapOfShapeInteger & operator = (const TopTools_DataMapOfShapeInteger & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: Standard_Integer &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const TopoDS_Shape & K,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: int
+") Find;
 		const Standard_Integer & Find (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: int
+") ChangeFind;
 		Standard_Integer & ChangeFind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const TopoDS_Shape & K);
 };
 
@@ -2487,101 +1931,65 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapOfShapeListOfInteger;
 class TopTools_DataMapOfShapeListOfInteger : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapOfShapeListOfInteger;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TopTools_DataMapOfShapeListOfInteger;
 		 TopTools_DataMapOfShapeListOfInteger (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TopTools_DataMapOfShapeListOfInteger)
-
-Returns:
-	TopTools_DataMapOfShapeListOfInteger
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_DataMapOfShapeListOfInteger &
+	:rtype: TopTools_DataMapOfShapeListOfInteger
+") Assign;
 		TopTools_DataMapOfShapeListOfInteger & Assign (const TopTools_DataMapOfShapeListOfInteger & Other);
-		%feature("autodoc", "Args:
-	Other(TopTools_DataMapOfShapeListOfInteger)
-
-Returns:
-	TopTools_DataMapOfShapeListOfInteger
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_DataMapOfShapeListOfInteger &
+	:rtype: TopTools_DataMapOfShapeListOfInteger
+") operator=;
 		TopTools_DataMapOfShapeListOfInteger & operator = (const TopTools_DataMapOfShapeListOfInteger & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(TColStd_ListOfInteger)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: TColStd_ListOfInteger &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const TopoDS_Shape & K,const TColStd_ListOfInteger & I);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	TColStd_ListOfInteger
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: TColStd_ListOfInteger
+") Find;
 		const TColStd_ListOfInteger & Find (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	TColStd_ListOfInteger
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: TColStd_ListOfInteger
+") ChangeFind;
 		TColStd_ListOfInteger & ChangeFind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const TopoDS_Shape & K);
 };
 
@@ -2603,101 +2011,65 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapOfShapeListOfShape;
 class TopTools_DataMapOfShapeListOfShape : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapOfShapeListOfShape;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TopTools_DataMapOfShapeListOfShape;
 		 TopTools_DataMapOfShapeListOfShape (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TopTools_DataMapOfShapeListOfShape)
-
-Returns:
-	TopTools_DataMapOfShapeListOfShape
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_DataMapOfShapeListOfShape &
+	:rtype: TopTools_DataMapOfShapeListOfShape
+") Assign;
 		TopTools_DataMapOfShapeListOfShape & Assign (const TopTools_DataMapOfShapeListOfShape & Other);
-		%feature("autodoc", "Args:
-	Other(TopTools_DataMapOfShapeListOfShape)
-
-Returns:
-	TopTools_DataMapOfShapeListOfShape
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_DataMapOfShapeListOfShape &
+	:rtype: TopTools_DataMapOfShapeListOfShape
+") operator=;
 		TopTools_DataMapOfShapeListOfShape & operator = (const TopTools_DataMapOfShapeListOfShape & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(TopTools_ListOfShape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: TopTools_ListOfShape &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const TopoDS_Shape & K,const TopTools_ListOfShape & I);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") Find;
 		const TopTools_ListOfShape & Find (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") ChangeFind;
 		TopTools_ListOfShape & ChangeFind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const TopoDS_Shape & K);
 };
 
@@ -2719,101 +2091,65 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapOfShapeReal;
 class TopTools_DataMapOfShapeReal : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapOfShapeReal;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TopTools_DataMapOfShapeReal;
 		 TopTools_DataMapOfShapeReal (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TopTools_DataMapOfShapeReal)
-
-Returns:
-	TopTools_DataMapOfShapeReal
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_DataMapOfShapeReal &
+	:rtype: TopTools_DataMapOfShapeReal
+") Assign;
 		TopTools_DataMapOfShapeReal & Assign (const TopTools_DataMapOfShapeReal & Other);
-		%feature("autodoc", "Args:
-	Other(TopTools_DataMapOfShapeReal)
-
-Returns:
-	TopTools_DataMapOfShapeReal
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_DataMapOfShapeReal &
+	:rtype: TopTools_DataMapOfShapeReal
+") operator=;
 		TopTools_DataMapOfShapeReal & operator = (const TopTools_DataMapOfShapeReal & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: float &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const TopoDS_Shape & K,const Standard_Real & I);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: float
+") Find;
 		const Standard_Real & Find (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: float
+") ChangeFind;
 		Standard_Real & ChangeFind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const TopoDS_Shape & K);
 };
 
@@ -2835,101 +2171,65 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapOfShapeSequenceOfShape;
 class TopTools_DataMapOfShapeSequenceOfShape : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapOfShapeSequenceOfShape;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TopTools_DataMapOfShapeSequenceOfShape;
 		 TopTools_DataMapOfShapeSequenceOfShape (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TopTools_DataMapOfShapeSequenceOfShape)
-
-Returns:
-	TopTools_DataMapOfShapeSequenceOfShape
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_DataMapOfShapeSequenceOfShape &
+	:rtype: TopTools_DataMapOfShapeSequenceOfShape
+") Assign;
 		TopTools_DataMapOfShapeSequenceOfShape & Assign (const TopTools_DataMapOfShapeSequenceOfShape & Other);
-		%feature("autodoc", "Args:
-	Other(TopTools_DataMapOfShapeSequenceOfShape)
-
-Returns:
-	TopTools_DataMapOfShapeSequenceOfShape
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_DataMapOfShapeSequenceOfShape &
+	:rtype: TopTools_DataMapOfShapeSequenceOfShape
+") operator=;
 		TopTools_DataMapOfShapeSequenceOfShape & operator = (const TopTools_DataMapOfShapeSequenceOfShape & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(TopTools_SequenceOfShape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: TopTools_SequenceOfShape &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const TopoDS_Shape & K,const TopTools_SequenceOfShape & I);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	TopTools_SequenceOfShape
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: TopTools_SequenceOfShape
+") Find;
 		const TopTools_SequenceOfShape & Find (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	TopTools_SequenceOfShape
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: TopTools_SequenceOfShape
+") ChangeFind;
 		TopTools_SequenceOfShape & ChangeFind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const TopoDS_Shape & K);
 };
 
@@ -2951,101 +2251,65 @@ def __del__(self):
 %nodefaultctor TopTools_DataMapOfShapeShape;
 class TopTools_DataMapOfShapeShape : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_DataMapOfShapeShape;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TopTools_DataMapOfShapeShape;
 		 TopTools_DataMapOfShapeShape (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TopTools_DataMapOfShapeShape)
-
-Returns:
-	TopTools_DataMapOfShapeShape
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_DataMapOfShapeShape &
+	:rtype: TopTools_DataMapOfShapeShape
+") Assign;
 		TopTools_DataMapOfShapeShape & Assign (const TopTools_DataMapOfShapeShape & Other);
-		%feature("autodoc", "Args:
-	Other(TopTools_DataMapOfShapeShape)
-
-Returns:
-	TopTools_DataMapOfShapeShape
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_DataMapOfShapeShape &
+	:rtype: TopTools_DataMapOfShapeShape
+") operator=;
 		TopTools_DataMapOfShapeShape & operator = (const TopTools_DataMapOfShapeShape & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: TopoDS_Shape &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const TopoDS_Shape & K,const TopoDS_Shape & I);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: TopoDS_Shape
+") Find;
 		const TopoDS_Shape & Find (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: TopoDS_Shape
+") ChangeFind;
 		TopoDS_Shape & ChangeFind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const TopoDS_Shape & K);
 };
 
@@ -3067,92 +2331,58 @@ def __del__(self):
 %nodefaultctor TopTools_HArray1OfListOfShape;
 class TopTools_HArray1OfListOfShape : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_HArray1OfListOfShape;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TopTools_HArray1OfListOfShape;
 		 TopTools_HArray1OfListOfShape (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(TopTools_ListOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_HArray1OfListOfShape;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: TopTools_ListOfShape &
+	:rtype: None
+") TopTools_HArray1OfListOfShape;
 		 TopTools_HArray1OfListOfShape (const Standard_Integer Low,const Standard_Integer Up,const TopTools_ListOfShape & V);
-		%feature("autodoc", "Args:
-	V(TopTools_ListOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: TopTools_ListOfShape &
+	:rtype: None
+") Init;
 		void Init (const TopTools_ListOfShape & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(TopTools_ListOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: TopTools_ListOfShape &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const TopTools_ListOfShape & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopTools_ListOfShape
+") Value;
 		const TopTools_ListOfShape & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopTools_ListOfShape
+") ChangeValue;
 		TopTools_ListOfShape & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_Array1OfListOfShape
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: TopTools_Array1OfListOfShape
+") Array1;
 		const TopTools_Array1OfListOfShape & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_Array1OfListOfShape
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: TopTools_Array1OfListOfShape
+") ChangeArray1;
 		TopTools_Array1OfListOfShape & ChangeArray1 ();
 };
 
@@ -3213,92 +2443,58 @@ def __del__(self):
 %nodefaultctor TopTools_HArray1OfShape;
 class TopTools_HArray1OfShape : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_HArray1OfShape;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TopTools_HArray1OfShape;
 		 TopTools_HArray1OfShape (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_HArray1OfShape;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: TopoDS_Shape &
+	:rtype: None
+") TopTools_HArray1OfShape;
 		 TopTools_HArray1OfShape (const Standard_Integer Low,const Standard_Integer Up,const TopoDS_Shape & V);
-		%feature("autodoc", "Args:
-	V(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: TopoDS_Shape &
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Shape & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: TopoDS_Shape &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const TopoDS_Shape & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopoDS_Shape
+") Value;
 		const TopoDS_Shape & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopoDS_Shape
+") ChangeValue;
 		TopoDS_Shape & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_Array1OfShape
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: TopTools_Array1OfShape
+") Array1;
 		const TopTools_Array1OfShape & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_Array1OfShape
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: TopTools_Array1OfShape
+") ChangeArray1;
 		TopTools_Array1OfShape & ChangeArray1 ();
 };
 
@@ -3359,120 +2555,81 @@ def __del__(self):
 %nodefaultctor TopTools_HArray2OfShape;
 class TopTools_HArray2OfShape : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_HArray2OfShape;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") TopTools_HArray2OfShape;
 		 TopTools_HArray2OfShape (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-	V(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_HArray2OfShape;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:param V:
+	:type V: TopoDS_Shape &
+	:rtype: None
+") TopTools_HArray2OfShape;
 		 TopTools_HArray2OfShape (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const TopoDS_Shape & V);
-		%feature("autodoc", "Args:
-	V(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: TopoDS_Shape &
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Shape & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ColLength;
+		%feature("autodoc", "	:rtype: int
+") ColLength;
 		Standard_Integer ColLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") RowLength;
+		%feature("autodoc", "	:rtype: int
+") RowLength;
 		Standard_Integer RowLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerCol;
+		%feature("autodoc", "	:rtype: int
+") LowerCol;
 		Standard_Integer LowerCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerRow;
+		%feature("autodoc", "	:rtype: int
+") LowerRow;
 		Standard_Integer LowerRow ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperCol;
+		%feature("autodoc", "	:rtype: int
+") UpperCol;
 		Standard_Integer UpperCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperRow;
+		%feature("autodoc", "	:rtype: int
+") UpperRow;
 		Standard_Integer UpperRow ();
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-	Value(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:param Value:
+	:type Value: TopoDS_Shape &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const TopoDS_Shape & Value);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: TopoDS_Shape
+") Value;
 		const TopoDS_Shape & Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: TopoDS_Shape
+") ChangeValue;
 		TopoDS_Shape & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_Array2OfShape
-
-No detailed docstring for this function.") Array2;
+		%feature("autodoc", "	:rtype: TopTools_Array2OfShape
+") Array2;
 		const TopTools_Array2OfShape & Array2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_Array2OfShape
-
-No detailed docstring for this function.") ChangeArray2;
+		%feature("autodoc", "	:rtype: TopTools_Array2OfShape
+") ChangeArray2;
 		TopTools_Array2OfShape & ChangeArray2 ();
 };
 
@@ -3533,188 +2690,118 @@ def __del__(self):
 %nodefaultctor TopTools_HSequenceOfShape;
 class TopTools_HSequenceOfShape : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_HSequenceOfShape;
+		%feature("autodoc", "	:rtype: None
+") TopTools_HSequenceOfShape;
 		 TopTools_HSequenceOfShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	anItem(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: TopoDS_Shape &
+	:rtype: None
+") Append;
 		void Append (const TopoDS_Shape & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_TopTools_HSequenceOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_TopTools_HSequenceOfShape &
+	:rtype: None
+") Append;
 		void Append (const Handle_TopTools_HSequenceOfShape & aSequence);
-		%feature("autodoc", "Args:
-	anItem(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: TopoDS_Shape &
+	:rtype: None
+") Prepend;
 		void Prepend (const TopoDS_Shape & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_TopTools_HSequenceOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_TopTools_HSequenceOfShape &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_TopTools_HSequenceOfShape & aSequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: TopoDS_Shape &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const TopoDS_Shape & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_TopTools_HSequenceOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_TopTools_HSequenceOfShape &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_TopTools_HSequenceOfShape & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: TopoDS_Shape &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const TopoDS_Shape & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_TopTools_HSequenceOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_TopTools_HSequenceOfShape &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_TopTools_HSequenceOfShape & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anOtherIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Exchange;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anOtherIndex:
+	:type anOtherIndex: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_TopTools_HSequenceOfShape
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_TopTools_HSequenceOfShape
+") Split;
 		Handle_TopTools_HSequenceOfShape Split (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: TopoDS_Shape &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex,const TopoDS_Shape & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: TopoDS_Shape
+") Value;
 		const TopoDS_Shape & Value (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: TopoDS_Shape
+") ChangeValue;
 		TopoDS_Shape & ChangeValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	fromIndex(Standard_Integer)
-	toIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param fromIndex:
+	:type fromIndex: Standard_Integer
+	:param toIndex:
+	:type toIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_SequenceOfShape
-
-No detailed docstring for this function.") Sequence;
+		%feature("autodoc", "	:rtype: TopTools_SequenceOfShape
+") Sequence;
 		const TopTools_SequenceOfShape & Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_SequenceOfShape
-
-No detailed docstring for this function.") ChangeSequence;
+		%feature("autodoc", "	:rtype: TopTools_SequenceOfShape
+") ChangeSequence;
 		TopTools_SequenceOfShape & ChangeSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TopTools_HSequenceOfShape
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_TopTools_HSequenceOfShape
+") ShallowCopy;
 		Handle_TopTools_HSequenceOfShape ShallowCopy ();
 };
 
@@ -3775,24 +2862,21 @@ def __del__(self):
 %nodefaultctor TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress;
 class TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K1(TopoDS_Shape)
-	K2(Standard_Integer)
-	I(Standard_Address)
-	n1(TCollection_MapNodePtr)
-	n2(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress;
+		%feature("autodoc", "	:param K1:
+	:type K1: TopoDS_Shape &
+	:param K2:
+	:type K2: Standard_Integer
+	:param I:
+	:type I: Standard_Address &
+	:param n1:
+	:type n1: TCollection_MapNodePtr &
+	:param n2:
+	:type n2: TCollection_MapNodePtr &
+	:rtype: None
+") TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress;
 		 TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress (const TopoDS_Shape & K1,const Standard_Integer K2,const Standard_Address & I,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key1;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key1;
 		TopoDS_Shape & Key1 ();
 
             %feature("autodoc","1");
@@ -3807,19 +2891,11 @@ No detailed docstring for this function.") Key1;
                 $self->Key2()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_MapNodePtr
-
-No detailed docstring for this function.") Next2;
+            		%feature("autodoc", "	:rtype: TCollection_MapNodePtr
+") Next2;
 		TCollection_MapNodePtr & Next2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Standard_Address
+") Value;
 		Standard_Address & Value ();
 };
 
@@ -3880,24 +2956,21 @@ def __del__(self):
 %nodefaultctor TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape;
 class TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K1(TopoDS_Shape)
-	K2(Standard_Integer)
-	I(TopTools_ListOfShape)
-	n1(TCollection_MapNodePtr)
-	n2(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape;
+		%feature("autodoc", "	:param K1:
+	:type K1: TopoDS_Shape &
+	:param K2:
+	:type K2: Standard_Integer
+	:param I:
+	:type I: TopTools_ListOfShape &
+	:param n1:
+	:type n1: TCollection_MapNodePtr &
+	:param n2:
+	:type n2: TCollection_MapNodePtr &
+	:rtype: None
+") TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape;
 		 TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape (const TopoDS_Shape & K1,const Standard_Integer K2,const TopTools_ListOfShape & I,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key1;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key1;
 		TopoDS_Shape & Key1 ();
 
             %feature("autodoc","1");
@@ -3912,19 +2985,11 @@ No detailed docstring for this function.") Key1;
                 $self->Key2()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_MapNodePtr
-
-No detailed docstring for this function.") Next2;
+            		%feature("autodoc", "	:rtype: TCollection_MapNodePtr
+") Next2;
 		TCollection_MapNodePtr & Next2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TopTools_ListOfShape
+") Value;
 		TopTools_ListOfShape & Value ();
 };
 
@@ -3985,24 +3050,21 @@ def __del__(self):
 %nodefaultctor TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape;
 class TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K1(TopoDS_Shape)
-	K2(Standard_Integer)
-	I(TopoDS_Shape)
-	n1(TCollection_MapNodePtr)
-	n2(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape;
+		%feature("autodoc", "	:param K1:
+	:type K1: TopoDS_Shape &
+	:param K2:
+	:type K2: Standard_Integer
+	:param I:
+	:type I: TopoDS_Shape &
+	:param n1:
+	:type n1: TCollection_MapNodePtr &
+	:param n2:
+	:type n2: TCollection_MapNodePtr &
+	:rtype: None
+") TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape;
 		 TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape (const TopoDS_Shape & K1,const Standard_Integer K2,const TopoDS_Shape & I,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key1;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key1;
 		TopoDS_Shape & Key1 ();
 
             %feature("autodoc","1");
@@ -4017,19 +3079,11 @@ No detailed docstring for this function.") Key1;
                 $self->Key2()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_MapNodePtr
-
-No detailed docstring for this function.") Next2;
+            		%feature("autodoc", "	:rtype: TCollection_MapNodePtr
+") Next2;
 		TCollection_MapNodePtr & Next2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Value;
 		TopoDS_Shape & Value ();
 };
 
@@ -4090,142 +3144,92 @@ def __del__(self):
 %nodefaultctor TopTools_IndexedDataMapOfShapeAddress;
 class TopTools_IndexedDataMapOfShapeAddress : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_IndexedDataMapOfShapeAddress;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TopTools_IndexedDataMapOfShapeAddress;
 		 TopTools_IndexedDataMapOfShapeAddress (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TopTools_IndexedDataMapOfShapeAddress)
-
-Returns:
-	TopTools_IndexedDataMapOfShapeAddress
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_IndexedDataMapOfShapeAddress &
+	:rtype: TopTools_IndexedDataMapOfShapeAddress
+") Assign;
 		TopTools_IndexedDataMapOfShapeAddress & Assign (const TopTools_IndexedDataMapOfShapeAddress & Other);
-		%feature("autodoc", "Args:
-	Other(TopTools_IndexedDataMapOfShapeAddress)
-
-Returns:
-	TopTools_IndexedDataMapOfShapeAddress
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_IndexedDataMapOfShapeAddress &
+	:rtype: TopTools_IndexedDataMapOfShapeAddress
+") operator=;
 		TopTools_IndexedDataMapOfShapeAddress & operator = (const TopTools_IndexedDataMapOfShapeAddress & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(Standard_Address)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: Standard_Address &
+	:rtype: int
+") Add;
 		Standard_Integer Add (const TopoDS_Shape & K,const Standard_Address & I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	K(TopoDS_Shape)
-	T(Standard_Address)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Substitute;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param K:
+	:type K: TopoDS_Shape &
+	:param T:
+	:type T: Standard_Address &
+	:rtype: None
+") Substitute;
 		void Substitute (const Standard_Integer I,const TopoDS_Shape & K,const Standard_Address & T);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveLast;
+		%feature("autodoc", "	:rtype: None
+") RemoveLast;
 		void RemoveLast ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") FindKey;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopoDS_Shape
+") FindKey;
 		const TopoDS_Shape & FindKey (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") FindFromIndex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: Standard_Address
+") FindFromIndex;
 		const Standard_Address & FindFromIndex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFromIndex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: Standard_Address
+") ChangeFromIndex;
 		Standard_Address & ChangeFromIndex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FindIndex;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: int
+") FindIndex;
 		Standard_Integer FindIndex (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") FindFromKey;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") FindFromKey;
 		const Standard_Address & FindFromKey (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFromKey;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") ChangeFromKey;
 		Standard_Address & ChangeFromKey (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") FindFromKey1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") FindFromKey1;
 		Standard_Address FindFromKey1 (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFromKey1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") ChangeFromKey1;
 		Standard_Address ChangeFromKey1 (const TopoDS_Shape & K);
 };
 
@@ -4247,142 +3251,92 @@ def __del__(self):
 %nodefaultctor TopTools_IndexedDataMapOfShapeListOfShape;
 class TopTools_IndexedDataMapOfShapeListOfShape : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_IndexedDataMapOfShapeListOfShape;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TopTools_IndexedDataMapOfShapeListOfShape;
 		 TopTools_IndexedDataMapOfShapeListOfShape (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TopTools_IndexedDataMapOfShapeListOfShape)
-
-Returns:
-	TopTools_IndexedDataMapOfShapeListOfShape
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_IndexedDataMapOfShapeListOfShape &
+	:rtype: TopTools_IndexedDataMapOfShapeListOfShape
+") Assign;
 		TopTools_IndexedDataMapOfShapeListOfShape & Assign (const TopTools_IndexedDataMapOfShapeListOfShape & Other);
-		%feature("autodoc", "Args:
-	Other(TopTools_IndexedDataMapOfShapeListOfShape)
-
-Returns:
-	TopTools_IndexedDataMapOfShapeListOfShape
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_IndexedDataMapOfShapeListOfShape &
+	:rtype: TopTools_IndexedDataMapOfShapeListOfShape
+") operator=;
 		TopTools_IndexedDataMapOfShapeListOfShape & operator = (const TopTools_IndexedDataMapOfShapeListOfShape & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(TopTools_ListOfShape)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: TopTools_ListOfShape &
+	:rtype: int
+") Add;
 		Standard_Integer Add (const TopoDS_Shape & K,const TopTools_ListOfShape & I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	K(TopoDS_Shape)
-	T(TopTools_ListOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Substitute;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param K:
+	:type K: TopoDS_Shape &
+	:param T:
+	:type T: TopTools_ListOfShape &
+	:rtype: None
+") Substitute;
 		void Substitute (const Standard_Integer I,const TopoDS_Shape & K,const TopTools_ListOfShape & T);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveLast;
+		%feature("autodoc", "	:rtype: None
+") RemoveLast;
 		void RemoveLast ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") FindKey;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopoDS_Shape
+") FindKey;
 		const TopoDS_Shape & FindKey (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") FindFromIndex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopTools_ListOfShape
+") FindFromIndex;
 		const TopTools_ListOfShape & FindFromIndex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") ChangeFromIndex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopTools_ListOfShape
+") ChangeFromIndex;
 		TopTools_ListOfShape & ChangeFromIndex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FindIndex;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: int
+") FindIndex;
 		Standard_Integer FindIndex (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") FindFromKey;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") FindFromKey;
 		const TopTools_ListOfShape & FindFromKey (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") ChangeFromKey;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") ChangeFromKey;
 		TopTools_ListOfShape & ChangeFromKey (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") FindFromKey1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") FindFromKey1;
 		Standard_Address FindFromKey1 (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFromKey1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") ChangeFromKey1;
 		Standard_Address ChangeFromKey1 (const TopoDS_Shape & K);
 };
 
@@ -4404,142 +3358,92 @@ def __del__(self):
 %nodefaultctor TopTools_IndexedDataMapOfShapeShape;
 class TopTools_IndexedDataMapOfShapeShape : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_IndexedDataMapOfShapeShape;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TopTools_IndexedDataMapOfShapeShape;
 		 TopTools_IndexedDataMapOfShapeShape (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TopTools_IndexedDataMapOfShapeShape)
-
-Returns:
-	TopTools_IndexedDataMapOfShapeShape
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_IndexedDataMapOfShapeShape &
+	:rtype: TopTools_IndexedDataMapOfShapeShape
+") Assign;
 		TopTools_IndexedDataMapOfShapeShape & Assign (const TopTools_IndexedDataMapOfShapeShape & Other);
-		%feature("autodoc", "Args:
-	Other(TopTools_IndexedDataMapOfShapeShape)
-
-Returns:
-	TopTools_IndexedDataMapOfShapeShape
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_IndexedDataMapOfShapeShape &
+	:rtype: TopTools_IndexedDataMapOfShapeShape
+") operator=;
 		TopTools_IndexedDataMapOfShapeShape & operator = (const TopTools_IndexedDataMapOfShapeShape & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(TopoDS_Shape)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: TopoDS_Shape &
+	:rtype: int
+") Add;
 		Standard_Integer Add (const TopoDS_Shape & K,const TopoDS_Shape & I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	K(TopoDS_Shape)
-	T(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Substitute;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param K:
+	:type K: TopoDS_Shape &
+	:param T:
+	:type T: TopoDS_Shape &
+	:rtype: None
+") Substitute;
 		void Substitute (const Standard_Integer I,const TopoDS_Shape & K,const TopoDS_Shape & T);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveLast;
+		%feature("autodoc", "	:rtype: None
+") RemoveLast;
 		void RemoveLast ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") FindKey;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopoDS_Shape
+") FindKey;
 		const TopoDS_Shape & FindKey (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") FindFromIndex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopoDS_Shape
+") FindFromIndex;
 		const TopoDS_Shape & FindFromIndex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") ChangeFromIndex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopoDS_Shape
+") ChangeFromIndex;
 		TopoDS_Shape & ChangeFromIndex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FindIndex;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: int
+") FindIndex;
 		Standard_Integer FindIndex (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") FindFromKey;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: TopoDS_Shape
+") FindFromKey;
 		const TopoDS_Shape & FindFromKey (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") ChangeFromKey;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: TopoDS_Shape
+") ChangeFromKey;
 		TopoDS_Shape & ChangeFromKey (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") FindFromKey1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") FindFromKey1;
 		Standard_Address FindFromKey1 (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFromKey1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") ChangeFromKey1;
 		Standard_Address ChangeFromKey1 (const TopoDS_Shape & K);
 };
 
@@ -4561,23 +3465,19 @@ def __del__(self):
 %nodefaultctor TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape;
 class TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K1(TopoDS_Shape)
-	K2(Standard_Integer)
-	n1(TCollection_MapNodePtr)
-	n2(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape;
+		%feature("autodoc", "	:param K1:
+	:type K1: TopoDS_Shape &
+	:param K2:
+	:type K2: Standard_Integer
+	:param n1:
+	:type n1: TCollection_MapNodePtr &
+	:param n2:
+	:type n2: TCollection_MapNodePtr &
+	:rtype: None
+") TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape;
 		 TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape (const TopoDS_Shape & K1,const Standard_Integer K2,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key1;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key1;
 		TopoDS_Shape & Key1 ();
 
             %feature("autodoc","1");
@@ -4592,12 +3492,8 @@ No detailed docstring for this function.") Key1;
                 $self->Key2()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_MapNodePtr
-
-No detailed docstring for this function.") Next2;
+            		%feature("autodoc", "	:rtype: TCollection_MapNodePtr
+") Next2;
 		TCollection_MapNodePtr & Next2 ();
 };
 
@@ -4658,23 +3554,19 @@ def __del__(self):
 %nodefaultctor TopTools_IndexedMapNodeOfIndexedMapOfShape;
 class TopTools_IndexedMapNodeOfIndexedMapOfShape : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K1(TopoDS_Shape)
-	K2(Standard_Integer)
-	n1(TCollection_MapNodePtr)
-	n2(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_IndexedMapNodeOfIndexedMapOfShape;
+		%feature("autodoc", "	:param K1:
+	:type K1: TopoDS_Shape &
+	:param K2:
+	:type K2: Standard_Integer
+	:param n1:
+	:type n1: TCollection_MapNodePtr &
+	:param n2:
+	:type n2: TCollection_MapNodePtr &
+	:rtype: None
+") TopTools_IndexedMapNodeOfIndexedMapOfShape;
 		 TopTools_IndexedMapNodeOfIndexedMapOfShape (const TopoDS_Shape & K1,const Standard_Integer K2,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key1;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key1;
 		TopoDS_Shape & Key1 ();
 
             %feature("autodoc","1");
@@ -4689,12 +3581,8 @@ No detailed docstring for this function.") Key1;
                 $self->Key2()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_MapNodePtr
-
-No detailed docstring for this function.") Next2;
+            		%feature("autodoc", "	:rtype: TCollection_MapNodePtr
+") Next2;
 		TCollection_MapNodePtr & Next2 ();
 };
 
@@ -4755,92 +3643,58 @@ def __del__(self):
 %nodefaultctor TopTools_IndexedMapOfOrientedShape;
 class TopTools_IndexedMapOfOrientedShape : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_IndexedMapOfOrientedShape;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TopTools_IndexedMapOfOrientedShape;
 		 TopTools_IndexedMapOfOrientedShape (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TopTools_IndexedMapOfOrientedShape)
-
-Returns:
-	TopTools_IndexedMapOfOrientedShape
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_IndexedMapOfOrientedShape &
+	:rtype: TopTools_IndexedMapOfOrientedShape
+") Assign;
 		TopTools_IndexedMapOfOrientedShape & Assign (const TopTools_IndexedMapOfOrientedShape & Other);
-		%feature("autodoc", "Args:
-	Other(TopTools_IndexedMapOfOrientedShape)
-
-Returns:
-	TopTools_IndexedMapOfOrientedShape
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_IndexedMapOfOrientedShape &
+	:rtype: TopTools_IndexedMapOfOrientedShape
+") operator=;
 		TopTools_IndexedMapOfOrientedShape & operator = (const TopTools_IndexedMapOfOrientedShape & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: int
+") Add;
 		Standard_Integer Add (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	K(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Substitute;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: None
+") Substitute;
 		void Substitute (const Standard_Integer I,const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveLast;
+		%feature("autodoc", "	:rtype: None
+") RemoveLast;
 		void RemoveLast ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") FindKey;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopoDS_Shape
+") FindKey;
 		const TopoDS_Shape & FindKey (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FindIndex;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: int
+") FindIndex;
 		Standard_Integer FindIndex (const TopoDS_Shape & K);
 };
 
@@ -4862,92 +3716,58 @@ def __del__(self):
 %nodefaultctor TopTools_IndexedMapOfShape;
 class TopTools_IndexedMapOfShape : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_IndexedMapOfShape;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TopTools_IndexedMapOfShape;
 		 TopTools_IndexedMapOfShape (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TopTools_IndexedMapOfShape)
-
-Returns:
-	TopTools_IndexedMapOfShape
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_IndexedMapOfShape &
+	:rtype: TopTools_IndexedMapOfShape
+") Assign;
 		TopTools_IndexedMapOfShape & Assign (const TopTools_IndexedMapOfShape & Other);
-		%feature("autodoc", "Args:
-	Other(TopTools_IndexedMapOfShape)
-
-Returns:
-	TopTools_IndexedMapOfShape
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_IndexedMapOfShape &
+	:rtype: TopTools_IndexedMapOfShape
+") operator=;
 		TopTools_IndexedMapOfShape & operator = (const TopTools_IndexedMapOfShape & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: int
+") Add;
 		Standard_Integer Add (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	K(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Substitute;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: None
+") Substitute;
 		void Substitute (const Standard_Integer I,const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveLast;
+		%feature("autodoc", "	:rtype: None
+") RemoveLast;
 		void RemoveLast ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") FindKey;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopoDS_Shape
+") FindKey;
 		const TopoDS_Shape & FindKey (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FindIndex;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: int
+") FindIndex;
 		Standard_Integer FindIndex (const TopoDS_Shape & K);
 };
 
@@ -4969,49 +3789,27 @@ def __del__(self):
 %nodefaultctor TopTools_ListIteratorOfListOfShape;
 class TopTools_ListIteratorOfListOfShape {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_ListIteratorOfListOfShape;
+		%feature("autodoc", "	:rtype: None
+") TopTools_ListIteratorOfListOfShape;
 		 TopTools_ListIteratorOfListOfShape ();
-		%feature("autodoc", "Args:
-	L(TopTools_ListOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_ListIteratorOfListOfShape;
+		%feature("autodoc", "	:param L:
+	:type L: TopTools_ListOfShape &
+	:rtype: None
+") TopTools_ListIteratorOfListOfShape;
 		 TopTools_ListIteratorOfListOfShape (const TopTools_ListOfShape & L);
-		%feature("autodoc", "Args:
-	L(TopTools_ListOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: TopTools_ListOfShape &
+	:rtype: None
+") Initialize;
 		void Initialize (const TopTools_ListOfShape & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Value;
 		TopoDS_Shape & Value ();
 };
 
@@ -5033,21 +3831,15 @@ def __del__(self):
 %nodefaultctor TopTools_ListNodeOfListOfShape;
 class TopTools_ListNodeOfListOfShape : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(TopoDS_Shape)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_ListNodeOfListOfShape;
+		%feature("autodoc", "	:param I:
+	:type I: TopoDS_Shape &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TopTools_ListNodeOfListOfShape;
 		 TopTools_ListNodeOfListOfShape (const TopoDS_Shape & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Value;
 		TopoDS_Shape & Value ();
 };
 
@@ -5108,164 +3900,103 @@ def __del__(self):
 %nodefaultctor TopTools_ListOfShape;
 class TopTools_ListOfShape {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_ListOfShape;
+		%feature("autodoc", "	:rtype: None
+") TopTools_ListOfShape;
 		 TopTools_ListOfShape ();
-		%feature("autodoc", "Args:
-	Other(TopTools_ListOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_ListOfShape &
+	:rtype: None
+") Assign;
 		void Assign (const TopTools_ListOfShape & Other);
-		%feature("autodoc", "Args:
-	Other(TopTools_ListOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_ListOfShape &
+	:rtype: None
+") operator=;
 		void operator = (const TopTools_ListOfShape & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: TopoDS_Shape &
+	:rtype: None
+") Prepend;
 		void Prepend (const TopoDS_Shape & I);
-		%feature("autodoc", "Args:
-	I(TopoDS_Shape)
-	theIt(TopTools_ListIteratorOfListOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: TopoDS_Shape &
+	:param theIt:
+	:type theIt: TopTools_ListIteratorOfListOfShape &
+	:rtype: None
+") Prepend;
 		void Prepend (const TopoDS_Shape & I,TopTools_ListIteratorOfListOfShape & theIt);
-		%feature("autodoc", "Args:
-	Other(TopTools_ListOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_ListOfShape &
+	:rtype: None
+") Prepend;
 		void Prepend (TopTools_ListOfShape & Other);
-		%feature("autodoc", "Args:
-	I(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: TopoDS_Shape &
+	:rtype: None
+") Append;
 		void Append (const TopoDS_Shape & I);
-		%feature("autodoc", "Args:
-	I(TopoDS_Shape)
-	theIt(TopTools_ListIteratorOfListOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: TopoDS_Shape &
+	:param theIt:
+	:type theIt: TopTools_ListIteratorOfListOfShape &
+	:rtype: None
+") Append;
 		void Append (const TopoDS_Shape & I,TopTools_ListIteratorOfListOfShape & theIt);
-		%feature("autodoc", "Args:
-	Other(TopTools_ListOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_ListOfShape &
+	:rtype: None
+") Append;
 		void Append (TopTools_ListOfShape & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") First;
 		TopoDS_Shape & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Last;
 		TopoDS_Shape & Last ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(TopTools_ListIteratorOfListOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: TopTools_ListIteratorOfListOfShape &
+	:rtype: None
+") Remove;
 		void Remove (TopTools_ListIteratorOfListOfShape & It);
-		%feature("autodoc", "Args:
-	I(TopoDS_Shape)
-	It(TopTools_ListIteratorOfListOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: TopoDS_Shape &
+	:param It:
+	:type It: TopTools_ListIteratorOfListOfShape &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const TopoDS_Shape & I,TopTools_ListIteratorOfListOfShape & It);
-		%feature("autodoc", "Args:
-	Other(TopTools_ListOfShape)
-	It(TopTools_ListIteratorOfListOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_ListOfShape &
+	:param It:
+	:type It: TopTools_ListIteratorOfListOfShape &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (TopTools_ListOfShape & Other,TopTools_ListIteratorOfListOfShape & It);
-		%feature("autodoc", "Args:
-	I(TopoDS_Shape)
-	It(TopTools_ListIteratorOfListOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: TopoDS_Shape &
+	:param It:
+	:type It: TopTools_ListIteratorOfListOfShape &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const TopoDS_Shape & I,TopTools_ListIteratorOfListOfShape & It);
-		%feature("autodoc", "Args:
-	Other(TopTools_ListOfShape)
-	It(TopTools_ListIteratorOfListOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_ListOfShape &
+	:param It:
+	:type It: TopTools_ListIteratorOfListOfShape &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (TopTools_ListOfShape & Other,TopTools_ListIteratorOfListOfShape & It);
 };
 
@@ -5287,44 +4018,36 @@ def __del__(self):
 %nodefaultctor TopTools_LocationSet;
 class TopTools_LocationSet {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Returns an empty set of locations.
 
-Returns an empty set of locations.") TopTools_LocationSet;
+	:rtype: None
+") TopTools_LocationSet;
 		 TopTools_LocationSet ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Clears the content of the set.
 
-Clears the content of the set.") Clear;
+	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	L(TopLoc_Location)
+		%feature("autodoc", "	* Incorporate a new Location in the set and returns its index.
 
-Returns:
-	Standard_Integer
-
-Incorporate a new Location in the  set and returns  
-         its index.") Add;
+	:param L:
+	:type L: TopLoc_Location &
+	:rtype: int
+") Add;
 		Standard_Integer Add (const TopLoc_Location & L);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* Returns the location of index <I>.
 
-Returns:
-	TopLoc_Location
-
-Returns the location of index <I>.") Location;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: TopLoc_Location
+") Location;
 		const TopLoc_Location & Location (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	L(TopLoc_Location)
+		%feature("autodoc", "	* Returns the index of <L>.
 
-Returns:
-	Standard_Integer
-
-Returns the index of <L>.") Index;
+	:param L:
+	:type L: TopLoc_Location &
+	:rtype: int
+") Index;
 		Standard_Integer Index (const TopLoc_Location & L);
 
         %feature("autodoc", "1");
@@ -5349,20 +4072,13 @@ Returns the index of <L>.") Index;
             std::stringstream s(src);
             self->Read(s);}
         };
-        		%feature("autodoc", "Args:
-	PR(Handle_Message_ProgressIndicator)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetProgress;
+        		%feature("autodoc", "	:param PR:
+	:type PR: Handle_Message_ProgressIndicator &
+	:rtype: None
+") SetProgress;
 		void SetProgress (const Handle_Message_ProgressIndicator & PR);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Message_ProgressIndicator
-
-No detailed docstring for this function.") GetProgress;
+		%feature("autodoc", "	:rtype: Handle_Message_ProgressIndicator
+") GetProgress;
 		Handle_Message_ProgressIndicator GetProgress ();
 };
 
@@ -5384,35 +4100,21 @@ def __del__(self):
 %nodefaultctor TopTools_MapIteratorOfMapOfOrientedShape;
 class TopTools_MapIteratorOfMapOfOrientedShape : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_MapIteratorOfMapOfOrientedShape;
+		%feature("autodoc", "	:rtype: None
+") TopTools_MapIteratorOfMapOfOrientedShape;
 		 TopTools_MapIteratorOfMapOfOrientedShape ();
-		%feature("autodoc", "Args:
-	aMap(TopTools_MapOfOrientedShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_MapIteratorOfMapOfOrientedShape;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TopTools_MapOfOrientedShape &
+	:rtype: None
+") TopTools_MapIteratorOfMapOfOrientedShape;
 		 TopTools_MapIteratorOfMapOfOrientedShape (const TopTools_MapOfOrientedShape & aMap);
-		%feature("autodoc", "Args:
-	aMap(TopTools_MapOfOrientedShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TopTools_MapOfOrientedShape &
+	:rtype: None
+") Initialize;
 		void Initialize (const TopTools_MapOfOrientedShape & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		const TopoDS_Shape & Key ();
 };
 
@@ -5434,35 +4136,21 @@ def __del__(self):
 %nodefaultctor TopTools_MapIteratorOfMapOfShape;
 class TopTools_MapIteratorOfMapOfShape : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_MapIteratorOfMapOfShape;
+		%feature("autodoc", "	:rtype: None
+") TopTools_MapIteratorOfMapOfShape;
 		 TopTools_MapIteratorOfMapOfShape ();
-		%feature("autodoc", "Args:
-	aMap(TopTools_MapOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_MapIteratorOfMapOfShape;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TopTools_MapOfShape &
+	:rtype: None
+") TopTools_MapIteratorOfMapOfShape;
 		 TopTools_MapIteratorOfMapOfShape (const TopTools_MapOfShape & aMap);
-		%feature("autodoc", "Args:
-	aMap(TopTools_MapOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TopTools_MapOfShape &
+	:rtype: None
+") Initialize;
 		void Initialize (const TopTools_MapOfShape & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		const TopoDS_Shape & Key ();
 };
 
@@ -5484,68 +4172,43 @@ def __del__(self):
 %nodefaultctor TopTools_MapOfOrientedShape;
 class TopTools_MapOfOrientedShape : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_MapOfOrientedShape;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TopTools_MapOfOrientedShape;
 		 TopTools_MapOfOrientedShape (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TopTools_MapOfOrientedShape)
-
-Returns:
-	TopTools_MapOfOrientedShape
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_MapOfOrientedShape &
+	:rtype: TopTools_MapOfOrientedShape
+") Assign;
 		TopTools_MapOfOrientedShape & Assign (const TopTools_MapOfOrientedShape & Other);
-		%feature("autodoc", "Args:
-	Other(TopTools_MapOfOrientedShape)
-
-Returns:
-	TopTools_MapOfOrientedShape
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_MapOfOrientedShape &
+	:rtype: TopTools_MapOfOrientedShape
+") operator=;
 		TopTools_MapOfOrientedShape & operator = (const TopTools_MapOfOrientedShape & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	aKey(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: TopoDS_Shape &
+	:rtype: bool
+") Add;
 		Standard_Boolean Add (const TopoDS_Shape & aKey);
-		%feature("autodoc", "Args:
-	aKey(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: TopoDS_Shape &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const TopoDS_Shape & aKey);
-		%feature("autodoc", "Args:
-	aKey(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: TopoDS_Shape &
+	:rtype: bool
+") Remove;
 		Standard_Boolean Remove (const TopoDS_Shape & aKey);
 };
 
@@ -5567,68 +4230,43 @@ def __del__(self):
 %nodefaultctor TopTools_MapOfShape;
 class TopTools_MapOfShape : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_MapOfShape;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TopTools_MapOfShape;
 		 TopTools_MapOfShape (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(TopTools_MapOfShape)
-
-Returns:
-	TopTools_MapOfShape
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_MapOfShape &
+	:rtype: TopTools_MapOfShape
+") Assign;
 		TopTools_MapOfShape & Assign (const TopTools_MapOfShape & Other);
-		%feature("autodoc", "Args:
-	Other(TopTools_MapOfShape)
-
-Returns:
-	TopTools_MapOfShape
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_MapOfShape &
+	:rtype: TopTools_MapOfShape
+") operator=;
 		TopTools_MapOfShape & operator = (const TopTools_MapOfShape & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	aKey(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: TopoDS_Shape &
+	:rtype: bool
+") Add;
 		Standard_Boolean Add (const TopoDS_Shape & aKey);
-		%feature("autodoc", "Args:
-	aKey(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: TopoDS_Shape &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const TopoDS_Shape & aKey);
-		%feature("autodoc", "Args:
-	aKey(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: TopoDS_Shape &
+	:rtype: bool
+") Remove;
 		Standard_Boolean Remove (const TopoDS_Shape & aKey);
 };
 
@@ -5650,45 +4288,38 @@ def __del__(self):
 %nodefaultctor TopTools_MutexForShapeProvider;
 class TopTools_MutexForShapeProvider {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Constructor
 
-Constructor") TopTools_MutexForShapeProvider;
+	:rtype: None
+") TopTools_MutexForShapeProvider;
 		 TopTools_MutexForShapeProvider ();
-		%feature("autodoc", "Args:
-	theShape(TopoDS_Shape)
-	theType(TopAbs_ShapeEnum)
+		%feature("autodoc", "	* Creates and associates mutexes with each sub-shape of type theType in theShape.
 
-Returns:
-	None
-
-Creates and associates mutexes with each sub-shape of type theType in theShape.") CreateMutexesForSubShapes;
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:param theType:
+	:type theType: TopAbs_ShapeEnum
+	:rtype: None
+") CreateMutexesForSubShapes;
 		void CreateMutexesForSubShapes (const TopoDS_Shape & theShape,const TopAbs_ShapeEnum theType);
-		%feature("autodoc", "Args:
-	theShape(TopoDS_Shape)
+		%feature("autodoc", "	* Creates and associates mutex with theShape
 
-Returns:
-	None
-
-Creates and associates mutex with theShape") CreateMutexForShape;
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:rtype: None
+") CreateMutexForShape;
 		void CreateMutexForShape (const TopoDS_Shape & theShape);
-		%feature("autodoc", "Args:
-	theShape(TopoDS_Shape)
+		%feature("autodoc", "	* Returns pointer to mutex associated with theShape. In case when mutex not found returns NULL.
 
-Returns:
-	Standard_Mutex *
-
-Returns pointer to mutex associated with theShape.
-In case when mutex not found returns NULL.") GetMutex;
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:rtype: Standard_Mutex *
+") GetMutex;
 		Standard_Mutex * GetMutex (const TopoDS_Shape & theShape);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Removes all mutexes
 
-Removes all mutexes") RemoveAllMutexes;
+	:rtype: None
+") RemoveAllMutexes;
 		void RemoveAllMutexes ();
 };
 
@@ -5710,26 +4341,23 @@ def __del__(self):
 %nodefaultctor TopTools_OrientedShapeMapHasher;
 class TopTools_OrientedShapeMapHasher {
 	public:
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-	Upper(Standard_Integer)
+		%feature("autodoc", "	* Returns a HasCode value for the Key <K> in the range 0..Upper.
 
-Returns:
-	static Standard_Integer
-
-Returns a HasCode value  for  the  Key <K>  in the  
-         range 0..Upper.") HashCode;
+	:param S:
+	:type S: TopoDS_Shape &
+	:param Upper:
+	:type Upper: Standard_Integer
+	:rtype: int
+") HashCode;
 		static Standard_Integer HashCode (const TopoDS_Shape & S,const Standard_Integer Upper);
-		%feature("autodoc", "Args:
-	S1(TopoDS_Shape)
-	S2(TopoDS_Shape)
+		%feature("autodoc", "	* Returns True when the two keys are equal. Two same keys must have the same hashcode, the contrary is not necessary.
 
-Returns:
-	static Standard_Boolean
-
-Returns True when the two keys are equal. Two same  
-         keys must have the same hashcode,  the contrary is  
-         not necessary.") IsEqual;
+	:param S1:
+	:type S1: TopoDS_Shape &
+	:param S2:
+	:type S2: TopoDS_Shape &
+	:rtype: bool
+") IsEqual;
 		static Standard_Boolean IsEqual (const TopoDS_Shape & S1,const TopoDS_Shape & S2);
 };
 
@@ -5751,22 +4379,17 @@ def __del__(self):
 %nodefaultctor TopTools_SequenceNodeOfSequenceOfShape;
 class TopTools_SequenceNodeOfSequenceOfShape : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(TopoDS_Shape)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_SequenceNodeOfSequenceOfShape;
+		%feature("autodoc", "	:param I:
+	:type I: TopoDS_Shape &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") TopTools_SequenceNodeOfSequenceOfShape;
 		 TopTools_SequenceNodeOfSequenceOfShape (const TopoDS_Shape & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Value;
 		TopoDS_Shape & Value ();
 };
 
@@ -5827,168 +4450,111 @@ def __del__(self):
 %nodefaultctor TopTools_SequenceOfShape;
 class TopTools_SequenceOfShape : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_SequenceOfShape;
+		%feature("autodoc", "	:rtype: None
+") TopTools_SequenceOfShape;
 		 TopTools_SequenceOfShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(TopTools_SequenceOfShape)
-
-Returns:
-	TopTools_SequenceOfShape
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_SequenceOfShape &
+	:rtype: TopTools_SequenceOfShape
+") Assign;
 		const TopTools_SequenceOfShape & Assign (const TopTools_SequenceOfShape & Other);
-		%feature("autodoc", "Args:
-	Other(TopTools_SequenceOfShape)
-
-Returns:
-	TopTools_SequenceOfShape
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_SequenceOfShape &
+	:rtype: TopTools_SequenceOfShape
+") operator=;
 		const TopTools_SequenceOfShape & operator = (const TopTools_SequenceOfShape & Other);
-		%feature("autodoc", "Args:
-	T(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: TopoDS_Shape &
+	:rtype: None
+") Append;
 		void Append (const TopoDS_Shape & T);
-		%feature("autodoc", "Args:
-	S(TopTools_SequenceOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: TopTools_SequenceOfShape &
+	:rtype: None
+") Append;
 		void Append (TopTools_SequenceOfShape & S);
-		%feature("autodoc", "Args:
-	T(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: TopoDS_Shape &
+	:rtype: None
+") Prepend;
 		void Prepend (const TopoDS_Shape & T);
-		%feature("autodoc", "Args:
-	S(TopTools_SequenceOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: TopTools_SequenceOfShape &
+	:rtype: None
+") Prepend;
 		void Prepend (TopTools_SequenceOfShape & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: TopoDS_Shape &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const TopoDS_Shape & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TopTools_SequenceOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TopTools_SequenceOfShape &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,TopTools_SequenceOfShape & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: TopoDS_Shape &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const TopoDS_Shape & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TopTools_SequenceOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TopTools_SequenceOfShape &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,TopTools_SequenceOfShape & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") First;
 		const TopoDS_Shape & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Last;
 		const TopoDS_Shape & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(TopTools_SequenceOfShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: TopTools_SequenceOfShape &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,TopTools_SequenceOfShape & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopoDS_Shape
+") Value;
 		const TopoDS_Shape & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: TopoDS_Shape &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const TopoDS_Shape & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TopoDS_Shape
+") ChangeValue;
 		TopoDS_Shape & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -6010,26 +4576,23 @@ def __del__(self):
 %nodefaultctor TopTools_ShapeMapHasher;
 class TopTools_ShapeMapHasher {
 	public:
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-	Upper(Standard_Integer)
+		%feature("autodoc", "	* Returns a HasCode value for the Key <K> in the range 0..Upper.
 
-Returns:
-	static Standard_Integer
-
-Returns a HasCode value  for  the  Key <K>  in the  
-         range 0..Upper.") HashCode;
+	:param S:
+	:type S: TopoDS_Shape &
+	:param Upper:
+	:type Upper: Standard_Integer
+	:rtype: int
+") HashCode;
 		static Standard_Integer HashCode (const TopoDS_Shape & S,const Standard_Integer Upper);
-		%feature("autodoc", "Args:
-	S1(TopoDS_Shape)
-	S2(TopoDS_Shape)
+		%feature("autodoc", "	* Returns True when the two keys are the same. Two same keys must have the same hashcode, the contrary is not necessary.
 
-Returns:
-	static Standard_Boolean
-
-Returns True  when the two  keys are the same. Two  
-         same  keys  must   have  the  same  hashcode,  the  
-         contrary is not necessary.") IsEqual;
+	:param S1:
+	:type S1: TopoDS_Shape &
+	:param S2:
+	:type S2: TopoDS_Shape &
+	:rtype: bool
+") IsEqual;
 		static Standard_Boolean IsEqual (const TopoDS_Shape & S1,const TopoDS_Shape & S2);
 };
 
@@ -6051,85 +4614,55 @@ def __del__(self):
 %nodefaultctor TopTools_ShapeSet;
 class TopTools_ShapeSet {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Builds an empty ShapeSet.
 
-Builds an empty ShapeSet.") TopTools_ShapeSet;
+	:rtype: None
+") TopTools_ShapeSet;
 		 TopTools_ShapeSet ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Delete;
+		%feature("autodoc", "	:rtype: void
+") Delete;
 		virtual void Delete ();
-		%feature("autodoc", "Args:
-	theFormatNb(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetFormatNb;
+		%feature("autodoc", "	:param theFormatNb:
+	:type theFormatNb: Standard_Integer
+	:rtype: None
+") SetFormatNb;
 		void SetFormatNb (const Standard_Integer theFormatNb);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* two formats available for the moment: First: does not write CurveOnSurface UV Points into the file  on reading calls Check() method. Second: stores CurveOnSurface UV Points. On reading format is recognized from Version string.
 
-two formats available for the moment:  
-         First: does not write CurveOnSurface UV Points into the file  
-                on reading calls Check() method.  
-         Second: stores CurveOnSurface UV Points.  
-         On reading format is recognized from Version string.") FormatNb;
+	:rtype: int
+") FormatNb;
 		Standard_Integer FormatNb ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Clears the content of the set. This method can be redefined.
 
-Clears the content of the set.  This method can be  
-         redefined.") Clear;
+	:rtype: void
+") Clear;
 		virtual void Clear ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* Stores <S> and its sub-shape. Returns the index of <S>. The method AddGeometry is called on each sub-shape.
 
-Returns:
-	Standard_Integer
-
-Stores <S> and its sub-shape. Returns the index of <S>.  
-         The method AddGeometry is called on each sub-shape.") Add;
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: int
+") Add;
 		Standard_Integer Add (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* Returns the sub-shape of index <I>.
 
-Returns:
-	TopoDS_Shape
-
-Returns the sub-shape of index <I>.") Shape;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: TopoDS_Shape
+") Shape;
 		const TopoDS_Shape & Shape (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* Returns the index of <S>.
 
-Returns:
-	Standard_Integer
-
-Returns the index of <S>.") Index;
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: int
+") Index;
 		Standard_Integer Index (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_LocationSet
-
-No detailed docstring for this function.") Locations;
+		%feature("autodoc", "	:rtype: TopTools_LocationSet
+") Locations;
 		const TopTools_LocationSet & Locations ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_LocationSet
-
-No detailed docstring for this function.") ChangeLocations;
+		%feature("autodoc", "	:rtype: TopTools_LocationSet
+") ChangeLocations;
 		TopTools_LocationSet & ChangeLocations ();
 
         %feature("autodoc", "1");
@@ -6139,14 +4672,12 @@ No detailed docstring for this function.") ChangeLocations;
             self->DumpExtent(s);
             return s.str();}
         };
-        		%feature("autodoc", "Args:
-	S(TCollection_AsciiString)
+        		%feature("autodoc", "	* Dumps the number of objects in me in the string S (Number of shapes of each type)
 
-Returns:
-	None
-
-Dumps the number of objects in me in the string S  
-(Number of shapes of each type)") DumpExtent;
+	:param S:
+	:type S: TCollection_AsciiString &
+	:rtype: None
+") DumpExtent;
 		void DumpExtent (TCollection_AsciiString & S);
 
         %feature("autodoc", "1");
@@ -6171,44 +4702,39 @@ Dumps the number of objects in me in the string S
             std::stringstream s(src);
             self->Read(s);}
         };
-        		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-	OS(Standard_OStream)
+        		%feature("autodoc", "	* Dumps on <OS> the shape <S>. Dumps the orientation, the index of the TShape and the index of the Location.
 
-Returns:
-	None
-
-Dumps   on  <OS>    the  shape  <S>.   Dumps   the  
-         orientation, the index of the TShape and the index  
-         of the Location.") Dump;
+	:param S:
+	:type S: TopoDS_Shape &
+	:param OS:
+	:type OS: Standard_OStream &
+	:rtype: None
+") Dump;
 		void Dump (const TopoDS_Shape & S,Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-	OS(Standard_OStream)
+		%feature("autodoc", "	* Writes on <OS> the shape <S>. Writes the orientation, the index of the TShape and the index of the Location.
 
-Returns:
-	None
-
-Writes   on  <OS>   the shape   <S>.    Writes the  
-         orientation, the index of the TShape and the index  
-         of the Location.") Write;
+	:param S:
+	:type S: TopoDS_Shape &
+	:param OS:
+	:type OS: Standard_OStream &
+	:rtype: None
+") Write;
 		void Write (const TopoDS_Shape & S,Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-	IS(Standard_IStream)
+		%feature("autodoc", "	* Reads from <IS> a shape and returns it in S.
 
-Returns:
-	None
-
-Reads from <IS> a shape and returns it in S.") Read;
+	:param S:
+	:type S: TopoDS_Shape &
+	:param IS:
+	:type IS: Standard_IStream &
+	:rtype: None
+") Read;
 		void Read (TopoDS_Shape & S,Standard_IStream & IS);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* Stores the geometry of <S>.
 
-Returns:
-	virtual void
-
-Stores the geometry of <S>.") AddGeometry;
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: void
+") AddGeometry;
 		virtual void AddGeometry (const TopoDS_Shape & S);
 
         %feature("autodoc", "1");
@@ -6233,81 +4759,65 @@ Stores the geometry of <S>.") AddGeometry;
             std::stringstream s(src);
             self->ReadGeometry(s);}
         };
-        		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-	OS(Standard_OStream)
+        		%feature("autodoc", "	* Dumps the geometry of <S> on the stream <OS>.
 
-Returns:
-	virtual void
-
-Dumps the geometry of <S> on the stream <OS>.") DumpGeometry;
+	:param S:
+	:type S: TopoDS_Shape &
+	:param OS:
+	:type OS: Standard_OStream &
+	:rtype: void
+") DumpGeometry;
 		virtual void DumpGeometry (const TopoDS_Shape & S,Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-	OS(Standard_OStream)
+		%feature("autodoc", "	* Writes the geometry of <S> on the stream <OS> in a format that can be read back by Read.
 
-Returns:
-	virtual void
-
-Writes the geometry of <S>  on the stream <OS> in a  
-         format that can be read back by Read.") WriteGeometry;
+	:param S:
+	:type S: TopoDS_Shape &
+	:param OS:
+	:type OS: Standard_OStream &
+	:rtype: void
+") WriteGeometry;
 		virtual void WriteGeometry (const TopoDS_Shape & S,Standard_OStream & OS);
-		%feature("autodoc", "Args:
-	T(TopAbs_ShapeEnum)
-	IS(Standard_IStream)
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* Reads the geometry of a shape of type <T> from the stream <IS> and returns it in <S>.
 
-Returns:
-	virtual void
-
-Reads the geometry of a shape of type <T> from the  
-         stream <IS> and returns it in <S>.") ReadGeometry;
+	:param T:
+	:type T: TopAbs_ShapeEnum
+	:param IS:
+	:type IS: Standard_IStream &
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: void
+") ReadGeometry;
 		virtual void ReadGeometry (const TopAbs_ShapeEnum T,Standard_IStream & IS,TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	S1(TopoDS_Shape)
-	S2(TopoDS_Shape)
+		%feature("autodoc", "	* Inserts the shape <S2> in the shape <S1>. This method must be redefined to use the correct builder.
 
-Returns:
-	virtual void
-
-Inserts  the shape <S2> in  the  shape <S1>.  This  
-         method must be   redefined  to  use   the  correct  
-         builder.") AddShapes;
+	:param S1:
+	:type S1: TopoDS_Shape &
+	:param S2:
+	:type S2: TopoDS_Shape &
+	:rtype: void
+") AddShapes;
 		virtual void AddShapes (TopoDS_Shape & S1,const TopoDS_Shape & S2);
-		%feature("autodoc", "Args:
-	T(TopAbs_ShapeEnum)
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* This method is called after each new completed shape. <T> is the type. <S> is the shape. In this class it does nothing, but it gives the opportunity in derived classes to perform extra treatment on shapes.
 
-Returns:
-	virtual void
-
-This method is   called after  each  new  completed  
-         shape. <T> is the  type. <S> is  the shape. In this  
-         class it does nothing, but it gives the opportunity  
-         in derived  classes to perform  extra  treatment on  
-         shapes.") Check;
+	:param T:
+	:type T: TopAbs_ShapeEnum
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: void
+") Check;
 		virtual void Check (const TopAbs_ShapeEnum T,TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* //!Returns number of shapes read from file.
 
-//!Returns number of shapes read from file.") NbShapes;
+	:rtype: int
+") NbShapes;
 		Standard_Integer NbShapes ();
-		%feature("autodoc", "Args:
-	PR(Handle_Message_ProgressIndicator)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetProgress;
+		%feature("autodoc", "	:param PR:
+	:type PR: Handle_Message_ProgressIndicator &
+	:rtype: None
+") SetProgress;
 		void SetProgress (const Handle_Message_ProgressIndicator & PR);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Message_ProgressIndicator
-
-No detailed docstring for this function.") GetProgress;
+		%feature("autodoc", "	:rtype: Handle_Message_ProgressIndicator
+") GetProgress;
 		Handle_Message_ProgressIndicator GetProgress ();
 };
 
@@ -6329,21 +4839,15 @@ def __del__(self):
 %nodefaultctor TopTools_StdMapNodeOfMapOfOrientedShape;
 class TopTools_StdMapNodeOfMapOfOrientedShape : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_StdMapNodeOfMapOfOrientedShape;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TopTools_StdMapNodeOfMapOfOrientedShape;
 		 TopTools_StdMapNodeOfMapOfOrientedShape (const TopoDS_Shape & K,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		TopoDS_Shape & Key ();
 };
 
@@ -6404,21 +4908,15 @@ def __del__(self):
 %nodefaultctor TopTools_StdMapNodeOfMapOfShape;
 class TopTools_StdMapNodeOfMapOfShape : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTools_StdMapNodeOfMapOfShape;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TopTools_StdMapNodeOfMapOfShape;
 		 TopTools_StdMapNodeOfMapOfShape (const TopoDS_Shape & K,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		TopoDS_Shape & Key ();
 };
 

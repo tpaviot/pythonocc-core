@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -94,169 +94,110 @@ typedef NCollection_List <BOPDS_PassKeyBoolean> BOPDS_ListOfPassKeyBoolean;
 %nodefaultctor BOPDS_CommonBlock;
 class BOPDS_CommonBlock : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty contructor
 
-Empty contructor") BOPDS_CommonBlock;
+	:rtype: None
+") BOPDS_CommonBlock;
 		 BOPDS_CommonBlock ();
-		%feature("autodoc", "Args:
-	theAllocator(BOPCol_BaseAllocator)
+		%feature("autodoc", "	* Contructor <theAllocator> - the allocator to manage the memory
 
-Returns:
-	None
-
-Contructor  
- <theAllocator> - the allocator to manage the memory") BOPDS_CommonBlock;
+	:param theAllocator:
+	:type theAllocator: BOPCol_BaseAllocator &
+	:rtype: None
+") BOPDS_CommonBlock;
 		 BOPDS_CommonBlock (const BOPCol_BaseAllocator & theAllocator);
-		%feature("autodoc", "Args:
-	aPB(Handle_BOPDS_PaveBlock)
+		%feature("autodoc", "	* Modifier Adds the pave block <aPB> to the list of pave blocks of the common block
 
-Returns:
-	None
-
-Modifier  
-Adds the pave block <aPB> to the list of pave blocks  
-of the common block") AddPaveBlock;
+	:param aPB:
+	:type aPB: Handle_BOPDS_PaveBlock &
+	:rtype: None
+") AddPaveBlock;
 		void AddPaveBlock (const Handle_BOPDS_PaveBlock & aPB);
-		%feature("autodoc", "Args:
-	aLPB(BOPDS_ListOfPaveBlock)
+		%feature("autodoc", "	* Modifier Adds the list of pave blocks <aLPB> to the list of pave blocks of the common block
 
-Returns:
-	None
-
-Modifier  
-Adds the list of pave blocks <aLPB>  
-to the list of pave blocks  
-of the common block") AddPaveBlocks;
+	:param aLPB:
+	:type aLPB: BOPDS_ListOfPaveBlock &
+	:rtype: None
+") AddPaveBlocks;
 		void AddPaveBlocks (const BOPDS_ListOfPaveBlock & aLPB);
-		%feature("autodoc", "Args:
-	aF(Standard_Integer)
+		%feature("autodoc", "	* Modifier Adds the index of the face <aF> to the list of indices of faces of the common block
 
-Returns:
-	None
-
-Modifier  
-Adds the index of the face <aF>  
-to the list of indices of faces  
-of the common block") AddFace;
+	:param aF:
+	:type aF: Standard_Integer
+	:rtype: None
+") AddFace;
 		void AddFace (const Standard_Integer aF);
-		%feature("autodoc", "Args:
-	aLF(BOPCol_ListOfInteger)
+		%feature("autodoc", "	* Modifier Adds the list of indices of faces <aLF> to the list of indices of faces of the common block
 
-Returns:
-	None
-
-Modifier  
-Adds the list of indices of faces <aLF>  
-to the list of indices of faces  
-of the common block") AddFaces;
+	:param aLF:
+	:type aLF: BOPCol_ListOfInteger &
+	:rtype: None
+") AddFaces;
 		void AddFaces (const BOPCol_ListOfInteger & aLF);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_ListOfPaveBlock
+		%feature("autodoc", "	* Selector Returns the list of pave blocks of the common block
 
-Selector  
-Returns the list of pave blocks  
-of the common block") PaveBlocks;
+	:rtype: BOPDS_ListOfPaveBlock
+") PaveBlocks;
 		const BOPDS_ListOfPaveBlock & PaveBlocks ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPCol_ListOfInteger
+		%feature("autodoc", "	* Selector Returns the list of indices of faces of the common block
 
-Selector  
-Returns the list of indices of faces  
-of the common block") Faces;
+	:rtype: BOPCol_ListOfInteger
+") Faces;
 		const BOPCol_ListOfInteger & Faces ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_BOPDS_PaveBlock
+		%feature("autodoc", "	* Selector Returns the first pave block of the common block
 
-Selector  
-Returns the first pave block  
-of the common block") PaveBlock1;
+	:rtype: Handle_BOPDS_PaveBlock
+") PaveBlock1;
 		const Handle_BOPDS_PaveBlock & PaveBlock1 ();
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Selector Returns the pave block that belongs to the edge with index <theIx>
 
-Returns:
-	Handle_BOPDS_PaveBlock
-
-Selector  
-Returns the pave block that belongs  
-to the edge with index <theIx>") PaveBlockOnEdge;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: Handle_BOPDS_PaveBlock
+") PaveBlockOnEdge;
 		Handle_BOPDS_PaveBlock & PaveBlockOnEdge (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Query Returns true if the common block contains a pave block that belongs to the face with index <theIx>
 
-Returns:
-	Standard_Boolean
-
-Query  
-Returns true if the common block contains  
- a pave block that belongs  
-to the face with index <theIx>") IsPaveBlockOnFace;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: bool
+") IsPaveBlockOnFace;
 		Standard_Boolean IsPaveBlockOnFace (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Query Returns true if the common block contains a pave block that belongs to the edge with index <theIx>
 
-Returns:
-	Standard_Boolean
-
-Query  
-Returns true if the common block contains  
- a pave block that belongs  
-to the edge with index <theIx>") IsPaveBlockOnEdge;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: bool
+") IsPaveBlockOnEdge;
 		Standard_Boolean IsPaveBlockOnEdge (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	thePB(Handle_BOPDS_PaveBlock)
+		%feature("autodoc", "	* Query Returns true if the common block contains a pave block that is equal to <thePB>
 
-Returns:
-	Standard_Boolean
-
-Query  
-Returns true if the common block contains  
- a pave block that is equal  to <thePB>") Contains;
+	:param thePB:
+	:type thePB: Handle_BOPDS_PaveBlock &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const Handle_BOPDS_PaveBlock & thePB);
-		%feature("autodoc", "Args:
-	theF(Standard_Integer)
+		%feature("autodoc", "	* Query Returns true if the common block contains the face with index equal to <theF>
 
-Returns:
-	Standard_Boolean
-
-Query  
-Returns true if the common block contains  
- the face with index equal  to <theF>") Contains;
+	:param theF:
+	:type theF: Standard_Integer
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const Standard_Integer theF);
-		%feature("autodoc", "Args:
-	theEdge(Standard_Integer)
+		%feature("autodoc", "	* Modifier Assign the index <theEdge> as the edge index to all pave blocks of the common block
 
-Returns:
-	None
-
-Modifier  
-Assign the index <theEdge> as the edge index  
-to all pave blocks of the common block") SetEdge;
+	:param theEdge:
+	:type theEdge: Standard_Integer
+	:rtype: None
+") SetEdge;
 		void SetEdge (const Standard_Integer theEdge);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Selector Returns the index of the edge of all pave blocks of the common block
 
-Selector  
-Returns the index of the edge  
-of  all pave blocks of the common block") Edge;
+	:rtype: int
+") Edge;
 		Standard_Integer Edge ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
 };
 
@@ -317,151 +258,85 @@ def __del__(self):
 %nodefaultctor BOPDS_CoupleOfPaveBlocks;
 class BOPDS_CoupleOfPaveBlocks {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* /** * Constructor */
 
-/**
-* Constructor
-*/") BOPDS_CoupleOfPaveBlocks;
+	:rtype: None
+") BOPDS_CoupleOfPaveBlocks;
 		 BOPDS_CoupleOfPaveBlocks ();
-		%feature("autodoc", "Args:
-	thePB1(Handle_BOPDS_PaveBlock)
-	thePB2(Handle_BOPDS_PaveBlock)
+		%feature("autodoc", "	* /** * Constructor * @param thePB1 * first pave block * @param thePB2 * secondt pave block */
 
-Returns:
-	None
-
-/**
-* Constructor
-* @param thePB1
-*  first pave block
-* @param thePB2
-*  secondt pave block
-*/") BOPDS_CoupleOfPaveBlocks;
+	:param thePB1:
+	:type thePB1: Handle_BOPDS_PaveBlock &
+	:param thePB2:
+	:type thePB2: Handle_BOPDS_PaveBlock &
+	:rtype: None
+") BOPDS_CoupleOfPaveBlocks;
 		 BOPDS_CoupleOfPaveBlocks (const Handle_BOPDS_PaveBlock & thePB1,const Handle_BOPDS_PaveBlock & thePB2);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* /** * Sets an index * @param theIndex * index */
 
-Returns:
-	None
-
-/**
-* Sets an index
-* @param theIndex
-*  index
-*/") SetIndex;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: None
+") SetIndex;
 		void SetIndex (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* /** * Returns the index * returns * index */
 
-/**
-* Returns the index
-* @return 
-*   index
-*/") Index;
+	:rtype: int
+") Index;
 		Standard_Integer Index ();
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* /** * Sets an index of an interference * @param theIndex * index of an interference */
 
-Returns:
-	None
-
-/**
-* Sets an index of an interference 
-* @param theIndex
-*  index of an interference 
-*/") SetIndexInterf;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: None
+") SetIndexInterf;
 		void SetIndexInterf (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* /** * Returns the index of an interference * returns * index of an interference */
 
-/**
-* Returns the index of an interference 
-* @return 
-*   index of an interference 
-*/") IndexInterf;
+	:rtype: int
+") IndexInterf;
 		Standard_Integer IndexInterf ();
-		%feature("autodoc", "Args:
-	thePB1(Handle_BOPDS_PaveBlock)
-	thePB2(Handle_BOPDS_PaveBlock)
+		%feature("autodoc", "	* /** * Sets pave blocks * @param thePB1 * first pave block * @param thePB2 * secondt pave block */
 
-Returns:
-	None
-
-/**
-* Sets pave blocks
-* @param thePB1
-*  first pave block
-* @param thePB2
-*  secondt pave block
-*/") SetPaveBlocks;
+	:param thePB1:
+	:type thePB1: Handle_BOPDS_PaveBlock &
+	:param thePB2:
+	:type thePB2: Handle_BOPDS_PaveBlock &
+	:rtype: None
+") SetPaveBlocks;
 		void SetPaveBlocks (const Handle_BOPDS_PaveBlock & thePB1,const Handle_BOPDS_PaveBlock & thePB2);
-		%feature("autodoc", "Args:
-	thePB1(Handle_BOPDS_PaveBlock)
-	thePB2(Handle_BOPDS_PaveBlock)
+		%feature("autodoc", "	* /** * Returns pave blocks * @param thePB1 * the first pave block * @param thePB2 * the second pave block */
 
-Returns:
-	None
-
-/**
-* Returns pave blocks
-* @param thePB1
-*  the first pave block
-* @param thePB2
-*  the second pave block
-*/") PaveBlocks;
+	:param thePB1:
+	:type thePB1: Handle_BOPDS_PaveBlock &
+	:param thePB2:
+	:type thePB2: Handle_BOPDS_PaveBlock &
+	:rtype: None
+") PaveBlocks;
 		void PaveBlocks (Handle_BOPDS_PaveBlock & thePB1,Handle_BOPDS_PaveBlock & thePB2);
-		%feature("autodoc", "Args:
-	thePB(Handle_BOPDS_PaveBlock)
+		%feature("autodoc", "	* /** * Sets the first pave block * @param thePB * the first pave block */
 
-Returns:
-	None
-
-/**
-* Sets the first pave block
-* @param thePB
-*  the first pave block
-*/") SetPaveBlock1;
+	:param thePB:
+	:type thePB: Handle_BOPDS_PaveBlock &
+	:rtype: None
+") SetPaveBlock1;
 		void SetPaveBlock1 (const Handle_BOPDS_PaveBlock & thePB);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_BOPDS_PaveBlock
+		%feature("autodoc", "	* /** * Returns the first pave block * returns * the first pave block */
 
-/**
-* Returns the first pave block
-* @return 
-* the first pave block
-*/") PaveBlock1;
+	:rtype: Handle_BOPDS_PaveBlock
+") PaveBlock1;
 		const Handle_BOPDS_PaveBlock & PaveBlock1 ();
-		%feature("autodoc", "Args:
-	thePB(Handle_BOPDS_PaveBlock)
+		%feature("autodoc", "	* /** * Sets the second pave block * @param thePB * the second pave block */
 
-Returns:
-	None
-
-/**
-* Sets the second pave block
-* @param thePB
-*  the second pave block
-*/") SetPaveBlock2;
+	:param thePB:
+	:type thePB: Handle_BOPDS_PaveBlock &
+	:rtype: None
+") SetPaveBlock2;
 		void SetPaveBlock2 (const Handle_BOPDS_PaveBlock & thePB);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_BOPDS_PaveBlock
+		%feature("autodoc", "	* /** * Returns the second pave block * returns * the second pave block */
 
-/**
-* Returns the second pave block
-* @return 
-* the second pave block
-*/") PaveBlock2;
+	:rtype: Handle_BOPDS_PaveBlock
+") PaveBlock2;
 		const Handle_BOPDS_PaveBlock & PaveBlock2 ();
 };
 
@@ -483,133 +358,86 @@ def __del__(self):
 %nodefaultctor BOPDS_Curve;
 class BOPDS_Curve {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty contructor
 
-Empty contructor") BOPDS_Curve;
+	:rtype: None
+") BOPDS_Curve;
 		 BOPDS_Curve ();
-		%feature("autodoc", "Args:
-	theAllocator(BOPCol_BaseAllocator)
+		%feature("autodoc", "	* Contructor <theAllocator> - the allocator to manage the memory
 
-Returns:
-	None
-
-Contructor  
- <theAllocator> - the allocator to manage the memory") BOPDS_Curve;
+	:param theAllocator:
+	:type theAllocator: BOPCol_BaseAllocator &
+	:rtype: None
+") BOPDS_Curve;
 		 BOPDS_Curve (const BOPCol_BaseAllocator & theAllocator);
-		%feature("autodoc", "Args:
-	theC(IntTools_Curve)
+		%feature("autodoc", "	* Modifier Sets the curve <theC>
 
-Returns:
-	None
-
-Modifier  
-Sets the curve <theC>") SetCurve;
+	:param theC:
+	:type theC: IntTools_Curve &
+	:rtype: None
+") SetCurve;
 		void SetCurve (const IntTools_Curve & theC);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_Curve
+		%feature("autodoc", "	* Selector Returns the curve
 
-Selector  
-Returns the curve") Curve;
+	:rtype: IntTools_Curve
+") Curve;
 		const IntTools_Curve & Curve ();
-		%feature("autodoc", "Args:
-	theBox(Bnd_Box)
+		%feature("autodoc", "	* Modifier Sets the bounding box <theBox> of the curve
 
-Returns:
-	None
-
-Modifier  
-Sets the bounding box <theBox> of the curve") SetBox;
+	:param theBox:
+	:type theBox: Bnd_Box &
+	:rtype: None
+") SetBox;
 		void SetBox (const Bnd_Box & theBox);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Box
+		%feature("autodoc", "	* Selector Returns the bounding box of the curve
 
-Selector  
-Returns the bounding box of the curve") Box;
+	:rtype: Bnd_Box
+") Box;
 		const Bnd_Box & Box ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Box
+		%feature("autodoc", "	* Selector/Modifier Returns the bounding box of the curve
 
-Selector/Modifier  
-Returns the bounding box of the curve") ChangeBox;
+	:rtype: Bnd_Box
+") ChangeBox;
 		Bnd_Box & ChangeBox ();
-		%feature("autodoc", "Args:
-	theLPB(BOPDS_ListOfPaveBlock)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetPaveBlocks;
+		%feature("autodoc", "	:param theLPB:
+	:type theLPB: BOPDS_ListOfPaveBlock &
+	:rtype: None
+") SetPaveBlocks;
 		void SetPaveBlocks (const BOPDS_ListOfPaveBlock & theLPB);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_ListOfPaveBlock
+		%feature("autodoc", "	* Selector Returns the list of pave blocks of the curve
 
-Selector  
-Returns the list of pave blocks  
-of the curve") PaveBlocks;
+	:rtype: BOPDS_ListOfPaveBlock
+") PaveBlocks;
 		const BOPDS_ListOfPaveBlock & PaveBlocks ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_ListOfPaveBlock
+		%feature("autodoc", "	* Selector/Modifier Returns the list of pave blocks of the curve
 
-Selector/Modifier  
-Returns the list of pave blocks  
-of the curve") ChangePaveBlocks;
+	:rtype: BOPDS_ListOfPaveBlock
+") ChangePaveBlocks;
 		BOPDS_ListOfPaveBlock & ChangePaveBlocks ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates initial pave block of the curve
 
-Creates  initial pave block  
-of the curve") InitPaveBlock1;
+	:rtype: None
+") InitPaveBlock1;
 		void InitPaveBlock1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_BOPDS_PaveBlock
+		%feature("autodoc", "	* Selector/Modifier Returns initial pave block of the curve
 
-Selector/Modifier  
-Returns  initial pave block  
-of the curve") ChangePaveBlock1;
+	:rtype: Handle_BOPDS_PaveBlock
+") ChangePaveBlock1;
 		Handle_BOPDS_PaveBlock & ChangePaveBlock1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPCol_ListOfInteger
+		%feature("autodoc", "	* Selector Returns list of indices of technologic vertices of the curve
 
-Selector  
-Returns list of indices of technologic vertices  
-of the curve") TechnoVertices;
+	:rtype: BOPCol_ListOfInteger
+") TechnoVertices;
 		const BOPCol_ListOfInteger & TechnoVertices ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPCol_ListOfInteger
+		%feature("autodoc", "	* Selector/Modifier Returns list of indices of technologic vertices of the curve
 
-Selector/Modifier  
-Returns list of indices of technologic vertices  
-of the curve") ChangeTechnoVertices;
+	:rtype: BOPCol_ListOfInteger
+") ChangeTechnoVertices;
 		BOPCol_ListOfInteger & ChangeTechnoVertices ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Query Returns true if at least one pave block of the curve has edge
 
-Query  
-Returns true if at least one pave block of the curve  
- has edge") HasEdge;
+	:rtype: bool
+") HasEdge;
 		Standard_Boolean HasEdge ();
 };
 
@@ -631,648 +459,479 @@ def __del__(self):
 %nodefaultctor BOPDS_DS;
 class BOPDS_DS {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty contructor
 
-Empty contructor") BOPDS_DS;
+	:rtype: None
+") BOPDS_DS;
 		 BOPDS_DS ();
-		%feature("autodoc", "Args:
-	theAllocator(BOPCol_BaseAllocator)
+		%feature("autodoc", "	* Contructor theAllocator - the allocator to manage the memory
 
-Returns:
-	None
-
-Contructor  
- theAllocator - the allocator to manage the memory") BOPDS_DS;
+	:param theAllocator:
+	:type theAllocator: BOPCol_BaseAllocator &
+	:rtype: None
+") BOPDS_DS;
 		 BOPDS_DS (const BOPCol_BaseAllocator & theAllocator);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Clears the contents
 
-Clears the contents") Clear;
+	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPCol_BaseAllocator
+		%feature("autodoc", "	* Selector
 
-Selector") Allocator;
+	:rtype: BOPCol_BaseAllocator
+") Allocator;
 		const BOPCol_BaseAllocator & Allocator ();
-		%feature("autodoc", "Args:
-	theLS(BOPCol_ListOfShape)
+		%feature("autodoc", "	* Modifier Sets the arguments [theLS] of an operation
 
-Returns:
-	None
-
-Modifier  
-Sets the arguments [theLS] of an operation") SetArguments;
+	:param theLS:
+	:type theLS: BOPCol_ListOfShape &
+	:rtype: None
+") SetArguments;
 		void SetArguments (const BOPCol_ListOfShape & theLS);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPCol_ListOfShape
+		%feature("autodoc", "	* Selector Returns the arguments of an operation
 
-Selector  
-Returns the arguments of an operation") Arguments;
+	:rtype: BOPCol_ListOfShape
+") Arguments;
 		const BOPCol_ListOfShape & Arguments ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Initializes the data structure for the arguments
 
-Initializes the data structure for  
- the arguments") Init;
+	:rtype: None
+") Init;
 		void Init ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Selector Returns the total number of shapes stored
 
-Selector  
-Returns the total number of shapes stored") NbShapes;
+	:rtype: int
+") NbShapes;
 		Standard_Integer NbShapes ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Selector Returns the total number of source shapes stored
 
-Selector  
-Returns the total number of source shapes stored") NbSourceShapes;
+	:rtype: int
+") NbSourceShapes;
 		Standard_Integer NbSourceShapes ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Selector Returns the number of index ranges
 
-Selector  
-Returns the number of index ranges") NbRanges;
+	:rtype: int
+") NbRanges;
 		Standard_Integer NbRanges ();
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Selector Returns the index range 'i'
 
-Returns:
-	BOPDS_IndexRange
-
-Selector  
-Returns the index range 'i'") Range;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: BOPDS_IndexRange
+") Range;
 		const BOPDS_IndexRange & Range (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Selector Returns the rank of the shape of index 'i'
 
-Returns:
-	Standard_Integer
-
-Selector  
-Returns the rank of the shape of index 'i'") Rank;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: int
+") Rank;
 		Standard_Integer Rank (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns true if the shape of index 'i' is not the source shape/sub-shape
 
-Returns:
-	Standard_Boolean
-
-Returns true if the shape of index 'i' is not  
-the source shape/sub-shape") IsNewShape;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: bool
+") IsNewShape;
 		Standard_Boolean IsNewShape (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theSI(BOPDS_ShapeInfo)
+		%feature("autodoc", "	* Modifier Appends the information about the shape [theSI] to the data structure Returns the index of theSI in the data structure
 
-Returns:
-	Standard_Integer
-
-Modifier  
-Appends the information about the shape [theSI]  
-to the data structure  
-Returns the index of theSI in the data structure") Append;
+	:param theSI:
+	:type theSI: BOPDS_ShapeInfo &
+	:rtype: int
+") Append;
 		Standard_Integer Append (const BOPDS_ShapeInfo & theSI);
-		%feature("autodoc", "Args:
-	theS(TopoDS_Shape)
+		%feature("autodoc", "	* Modifier Appends the default information about the shape [theS] to the data structure Returns the index of theS in the data structure
 
-Returns:
-	Standard_Integer
-
-Modifier  
-Appends the default information about the shape [theS]  
-to the data structure  
-Returns the index of theS in the data structure") Append;
+	:param theS:
+	:type theS: TopoDS_Shape &
+	:rtype: int
+") Append;
 		Standard_Integer Append (const TopoDS_Shape & theS);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Selector Returns the information about the shape with index theIndex
 
-Returns:
-	BOPDS_ShapeInfo
-
-Selector  
-Returns the information about the shape  
-with index theIndex") ShapeInfo;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: BOPDS_ShapeInfo
+") ShapeInfo;
 		const BOPDS_ShapeInfo & ShapeInfo (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Selector/Modifier Returns the information about the shape with index theIndex
 
-Returns:
-	BOPDS_ShapeInfo
-
-Selector/Modifier  
-Returns the information about the shape  
-with index theIndex") ChangeShapeInfo;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: BOPDS_ShapeInfo
+") ChangeShapeInfo;
 		BOPDS_ShapeInfo & ChangeShapeInfo (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Selector Returns the shape with index theIndex
 
-Returns:
-	TopoDS_Shape
-
-Selector  
-Returns the shape  
- with index theIndex") Shape;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: TopoDS_Shape
+") Shape;
 		const TopoDS_Shape & Shape (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theS(TopoDS_Shape)
+		%feature("autodoc", "	* Selector Returns the index of the shape theS
 
-Returns:
-	Standard_Integer
-
-Selector  
-Returns the index  of the shape theS") Index;
+	:param theS:
+	:type theS: TopoDS_Shape &
+	:rtype: int
+") Index;
 		Standard_Integer Index (const TopoDS_Shape & theS);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_VectorOfListOfPaveBlock
+		%feature("autodoc", "	* Selector Returns the information about pave blocks on source edges
 
-Selector  
-Returns the information about pave blocks on source edges") PaveBlocksPool;
+	:rtype: BOPDS_VectorOfListOfPaveBlock
+") PaveBlocksPool;
 		const BOPDS_VectorOfListOfPaveBlock & PaveBlocksPool ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_VectorOfListOfPaveBlock
+		%feature("autodoc", "	* Selector/Modifier Returns the information about pave blocks on source edges
 
-Selector/Modifier  
-Returns the information about pave blocks on source edges") ChangePaveBlocksPool;
+	:rtype: BOPDS_VectorOfListOfPaveBlock
+") ChangePaveBlocksPool;
 		BOPDS_VectorOfListOfPaveBlock & ChangePaveBlocksPool ();
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Query Returns true if the shape with index theIndex has the information about pave blocks
 
-Returns:
-	Standard_Boolean
-
-Query  
-Returns true if the shape with index theIndex has the  
-information about pave blocks") HasPaveBlocks;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: bool
+") HasPaveBlocks;
 		Standard_Boolean HasPaveBlocks (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Selector Returns the pave blocks for the shape with index theIndex
 
-Returns:
-	BOPDS_ListOfPaveBlock
-
-Selector  
-Returns the pave blocks for the shape with index theIndex") PaveBlocks;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: BOPDS_ListOfPaveBlock
+") PaveBlocks;
 		const BOPDS_ListOfPaveBlock & PaveBlocks (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Selector/Modifier Returns the pave blocks for the shape with index theIndex
 
-Returns:
-	BOPDS_ListOfPaveBlock
-
-Selector/Modifier  
-Returns the pave blocks for the shape with index theIndex") ChangePaveBlocks;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: BOPDS_ListOfPaveBlock
+") ChangePaveBlocks;
 		BOPDS_ListOfPaveBlock & ChangePaveBlocks (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Update the pave blocks for the all shapes in data structure
 
-Update the pave blocks for the all shapes in data structure") UpdatePaveBlocks;
+	:rtype: None
+") UpdatePaveBlocks;
 		void UpdatePaveBlocks ();
-		%feature("autodoc", "Args:
-	thePB(Handle_BOPDS_PaveBlock)
+		%feature("autodoc", "	* Update the pave block thePB
 
-Returns:
-	None
-
-Update the pave block thePB") UpdatePaveBlock;
+	:param thePB:
+	:type thePB: Handle_BOPDS_PaveBlock &
+	:rtype: None
+") UpdatePaveBlock;
 		void UpdatePaveBlock (const Handle_BOPDS_PaveBlock & thePB);
-		%feature("autodoc", "Args:
-	theCB(Handle_BOPDS_CommonBlock)
+		%feature("autodoc", "	* Update the common block theCB
 
-Returns:
-	None
-
-Update the common block theCB") UpdateCommonBlock;
+	:param theCB:
+	:type theCB: Handle_BOPDS_CommonBlock &
+	:rtype: None
+") UpdateCommonBlock;
 		void UpdateCommonBlock (const Handle_BOPDS_CommonBlock & theCB);
-		%feature("autodoc", "Args:
-	thePB(Handle_BOPDS_PaveBlock)
+		%feature("autodoc", "	* Query Returns true if the pave block is common block
 
-Returns:
-	Standard_Boolean
-
-Query  
-Returns true if the pave block is common block") IsCommonBlock;
+	:param thePB:
+	:type thePB: Handle_BOPDS_PaveBlock &
+	:rtype: bool
+") IsCommonBlock;
 		Standard_Boolean IsCommonBlock (const Handle_BOPDS_PaveBlock & thePB);
-		%feature("autodoc", "Args:
-	thePB(Handle_BOPDS_PaveBlock)
+		%feature("autodoc", "	* Selector Returns the common block
 
-Returns:
-	Handle_BOPDS_CommonBlock
-
-Selector  
-Returns the common block") CommonBlock;
+	:param thePB:
+	:type thePB: Handle_BOPDS_PaveBlock &
+	:rtype: Handle_BOPDS_CommonBlock
+") CommonBlock;
 		Handle_BOPDS_CommonBlock CommonBlock (const Handle_BOPDS_PaveBlock & thePB);
-		%feature("autodoc", "Args:
-	thePB(Handle_BOPDS_PaveBlock)
-	theCB(Handle_BOPDS_CommonBlock)
+		%feature("autodoc", "	* Modifier Sets the common block <theCB>
 
-Returns:
-	None
-
-Modifier  
-Sets the common block <theCB>") SetCommonBlock;
+	:param thePB:
+	:type thePB: Handle_BOPDS_PaveBlock &
+	:param theCB:
+	:type theCB: Handle_BOPDS_CommonBlock &
+	:rtype: None
+") SetCommonBlock;
 		void SetCommonBlock (const Handle_BOPDS_PaveBlock & thePB,const Handle_BOPDS_CommonBlock & theCB);
-		%feature("autodoc", "Args:
-	thePB(Handle_BOPDS_PaveBlock)
+		%feature("autodoc", "	* Selector Returns the real first pave block
 
-Returns:
-	Handle_BOPDS_PaveBlock
-
-Selector  
-Returns the real first pave block") RealPaveBlock;
+	:param thePB:
+	:type thePB: Handle_BOPDS_PaveBlock &
+	:rtype: Handle_BOPDS_PaveBlock
+") RealPaveBlock;
 		Handle_BOPDS_PaveBlock RealPaveBlock (const Handle_BOPDS_PaveBlock & thePB);
-		%feature("autodoc", "Args:
-	thePB(Handle_BOPDS_PaveBlock)
+		%feature("autodoc", "	* Query Returns true if common block contains more then one pave block
 
-Returns:
-	Standard_Boolean
-
-Query  
-Returns true if common block contains more then one pave block") IsCommonBlockOnEdge;
+	:param thePB:
+	:type thePB: Handle_BOPDS_PaveBlock &
+	:rtype: bool
+") IsCommonBlockOnEdge;
 		Standard_Boolean IsCommonBlockOnEdge (const Handle_BOPDS_PaveBlock & thePB);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_VectorOfFaceInfo
+		%feature("autodoc", "	* Selector Returns the information about state of faces
 
-Selector  
-Returns the information about state of faces") FaceInfoPool;
+	:rtype: BOPDS_VectorOfFaceInfo
+") FaceInfoPool;
 		const BOPDS_VectorOfFaceInfo & FaceInfoPool ();
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Query Returns true if the shape with index theIndex has the information about state of face
 
-Returns:
-	Standard_Boolean
-
-Query  
-Returns true if the shape with index theIndex has the  
-information about state of face") HasFaceInfo;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: bool
+") HasFaceInfo;
 		Standard_Boolean HasFaceInfo (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Selector Returns the state of face with index theIndex
 
-Returns:
-	BOPDS_FaceInfo
-
-Selector  
-Returns the state of face with index theIndex") FaceInfo;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: BOPDS_FaceInfo
+") FaceInfo;
 		const BOPDS_FaceInfo & FaceInfo (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Selector/Modifier Returns the state of face with index theIndex
 
-Returns:
-	BOPDS_FaceInfo
-
-Selector/Modifier  
-Returns the state of face with index theIndex") ChangeFaceInfo;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: BOPDS_FaceInfo
+") ChangeFaceInfo;
 		BOPDS_FaceInfo & ChangeFaceInfo (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Update the state In of face with index theIndex
 
-Returns:
-	None
-
-Update the state In of face with index theIndex") UpdateFaceInfoIn;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: None
+") UpdateFaceInfoIn;
 		void UpdateFaceInfoIn (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Update the state On of face with index theIndex
 
-Returns:
-	None
-
-Update the state On of face with index theIndex") UpdateFaceInfoOn;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: None
+") UpdateFaceInfoOn;
 		void UpdateFaceInfoOn (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
-	theMPB(BOPDS_IndexedMapOfPaveBlock)
-	theMVP(BOPCol_MapOfInteger)
+		%feature("autodoc", "	* Selector Returns the state On [theMPB,theMVP] of face with index theIndex
 
-Returns:
-	None
-
-Selector  
-Returns the state On  
-[theMPB,theMVP] of face with index theIndex") FaceInfoOn;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:param theMPB:
+	:type theMPB: BOPDS_IndexedMapOfPaveBlock &
+	:param theMVP:
+	:type theMVP: BOPCol_MapOfInteger &
+	:rtype: None
+") FaceInfoOn;
 		void FaceInfoOn (const Standard_Integer theIndex,BOPDS_IndexedMapOfPaveBlock & theMPB,BOPCol_MapOfInteger & theMVP);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
-	theMPB(BOPDS_IndexedMapOfPaveBlock)
-	theMVP(BOPCol_MapOfInteger)
+		%feature("autodoc", "	* Selector Returns the state In [theMPB,theMVP] of face with index theIndex
 
-Returns:
-	None
-
-Selector  
-Returns the state In  
-[theMPB,theMVP] of face with index theIndex") FaceInfoIn;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:param theMPB:
+	:type theMPB: BOPDS_IndexedMapOfPaveBlock &
+	:param theMVP:
+	:type theMVP: BOPCol_MapOfInteger &
+	:rtype: None
+") FaceInfoIn;
 		void FaceInfoIn (const Standard_Integer theIndex,BOPDS_IndexedMapOfPaveBlock & theMPB,BOPCol_MapOfInteger & theMVP);
-		%feature("autodoc", "Args:
-	theF(Standard_Integer)
-	theLI(BOPCol_ListOfInteger)
+		%feature("autodoc", "	* Selector Returns the indices of alone vertices for the face with index theIndex
 
-Returns:
-	None
-
-Selector  
-Returns the indices of alone vertices  
-for the face with index theIndex") AloneVertices;
+	:param theF:
+	:type theF: Standard_Integer
+	:param theLI:
+	:type theLI: BOPCol_ListOfInteger &
+	:rtype: None
+") AloneVertices;
 		void AloneVertices (const Standard_Integer theF,BOPCol_ListOfInteger & theLI);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Refine the state On for the all faces having state information ++
 
-Refine the state On for the all faces having  
-state information  
- 
- ++") RefineFaceInfoOn;
+	:rtype: None
+") RefineFaceInfoOn;
 		void RefineFaceInfoOn ();
-		%feature("autodoc", "Args:
-	theF1(Standard_Integer)
-	theF2(Standard_Integer)
-	theMI(BOPCol_MapOfInteger)
-	aMPB(BOPDS_IndexedMapOfPaveBlock)
+		%feature("autodoc", "	* Returns the indices of vertices and pave blocks that are On/In for the faces with indices theF1, theF2
 
-Returns:
-	None
-
-Returns the indices of vertices and pave blocks  
-that  are On/In for the faces with indices theF1, theF2") VerticesOnIn;
+	:param theF1:
+	:type theF1: Standard_Integer
+	:param theF2:
+	:type theF2: Standard_Integer
+	:param theMI:
+	:type theMI: BOPCol_MapOfInteger &
+	:param aMPB:
+	:type aMPB: BOPDS_IndexedMapOfPaveBlock &
+	:rtype: None
+") VerticesOnIn;
 		void VerticesOnIn (const Standard_Integer theF1,const Standard_Integer theF2,BOPCol_MapOfInteger & theMI,BOPDS_IndexedMapOfPaveBlock & aMPB);
-		%feature("autodoc", "Args:
-	theF1(Standard_Integer)
-	theF2(Standard_Integer)
-	theLI(BOPCol_ListOfInteger)
-	theAllocator(BOPCol_BaseAllocator)
+		%feature("autodoc", "	* Returns the indices of edges that are shared for the faces with indices theF1, theF2 same domain shapes
 
-Returns:
-	None
-
-Returns the indices of edges that are  shared  
-for the faces with indices theF1, theF2  
- 
-same domain shapes") SharedEdges;
+	:param theF1:
+	:type theF1: Standard_Integer
+	:param theF2:
+	:type theF2: Standard_Integer
+	:param theLI:
+	:type theLI: BOPCol_ListOfInteger &
+	:param theAllocator:
+	:type theAllocator: BOPCol_BaseAllocator &
+	:rtype: None
+") SharedEdges;
 		void SharedEdges (const Standard_Integer theF1,const Standard_Integer theF2,BOPCol_ListOfInteger & theLI,const BOPCol_BaseAllocator & theAllocator);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPCol_DataMapOfIntegerInteger
+		%feature("autodoc", "	* Selector Returns the collection same domain shapes
 
-Selector  
-Returns the collection same domain shapes") ShapesSD;
+	:rtype: BOPCol_DataMapOfIntegerInteger
+") ShapesSD;
 		BOPCol_DataMapOfIntegerInteger & ShapesSD ();
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
-	theIndexSD(Standard_Integer)
+		%feature("autodoc", "	* Modifier Adds the information about same domain shapes with indices theIndex, theIndexSD
 
-Returns:
-	None
-
-Modifier  
-Adds the information about same domain shapes  
-with indices theIndex, theIndexSD") AddShapeSD;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:param theIndexSD:
+	:type theIndexSD: Standard_Integer
+	:rtype: None
+") AddShapeSD;
 		void AddShapeSD (const Standard_Integer theIndex,const Standard_Integer theIndexSD);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
-	theIndexSD(Standard_Integer)
+		%feature("autodoc", "	* Query Returns true if the shape with index theIndex has the same domain shape. In this case theIndexSD will contain the index of same domain shape found interferences
 
-Returns:
-	Standard_Boolean
-
-Query  
-Returns true if the shape with index theIndex has the  
-same domain shape. In this case theIndexSD will contain  
- the index of same domain shape found  
- 
-interferences") HasShapeSD;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:param theIndexSD:
+	:type theIndexSD: Standard_Integer &
+	:rtype: bool
+") HasShapeSD;
 		Standard_Boolean HasShapeSD (const Standard_Integer theIndex,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_VectorOfInterfVV
+		%feature("autodoc", "	* Selector/Modifier Returns the collection of interferences Vertex/Vertex
 
-Selector/Modifier  
-Returns the collection of interferences Vertex/Vertex") InterfVV;
+	:rtype: BOPDS_VectorOfInterfVV
+") InterfVV;
 		BOPDS_VectorOfInterfVV & InterfVV ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_VectorOfInterfVE
+		%feature("autodoc", "	* Selector/Modifier Returns the collection of interferences Vertex/Edge
 
-Selector/Modifier  
-Returns the collection of interferences Vertex/Edge") InterfVE;
+	:rtype: BOPDS_VectorOfInterfVE
+") InterfVE;
 		BOPDS_VectorOfInterfVE & InterfVE ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_VectorOfInterfVF
+		%feature("autodoc", "	* Selector/Modifier Returns the collection of interferences Vertex/Face
 
-Selector/Modifier  
-Returns the collection of interferences Vertex/Face") InterfVF;
+	:rtype: BOPDS_VectorOfInterfVF
+") InterfVF;
 		BOPDS_VectorOfInterfVF & InterfVF ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_VectorOfInterfEE
+		%feature("autodoc", "	* Selector/Modifier Returns the collection of interferences Edge/Edge
 
-Selector/Modifier  
-Returns the collection of interferences Edge/Edge") InterfEE;
+	:rtype: BOPDS_VectorOfInterfEE
+") InterfEE;
 		BOPDS_VectorOfInterfEE & InterfEE ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_VectorOfInterfEF
+		%feature("autodoc", "	* Selector/Modifier Returns the collection of interferences Edge/Face
 
-Selector/Modifier  
-Returns the collection of interferences Edge/Face") InterfEF;
+	:rtype: BOPDS_VectorOfInterfEF
+") InterfEF;
 		BOPDS_VectorOfInterfEF & InterfEF ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_VectorOfInterfFF
+		%feature("autodoc", "	* Selector/Modifier Returns the collection of interferences Face/Face
 
-Selector/Modifier  
-Returns the collection of interferences Face/Face") InterfFF;
+	:rtype: BOPDS_VectorOfInterfFF
+") InterfFF;
 		BOPDS_VectorOfInterfFF & InterfFF ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_VectorOfInterfVZ
+		%feature("autodoc", "	* Selector/Modifier Returns the collection of interferences Vertex/Solid
 
-Selector/Modifier  
-Returns the collection of interferences Vertex/Solid") InterfVZ;
+	:rtype: BOPDS_VectorOfInterfVZ
+") InterfVZ;
 		BOPDS_VectorOfInterfVZ & InterfVZ ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_VectorOfInterfEZ
+		%feature("autodoc", "	* Selector/Modifier Returns the collection of interferences Edge/Solid
 
-Selector/Modifier  
-Returns the collection of interferences Edge/Solid") InterfEZ;
+	:rtype: BOPDS_VectorOfInterfEZ
+") InterfEZ;
 		BOPDS_VectorOfInterfEZ & InterfEZ ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_VectorOfInterfFZ
+		%feature("autodoc", "	* Selector/Modifier Returns the collection of interferences Face/Solid
 
-Selector/Modifier  
-Returns the collection of interferences Face/Solid") InterfFZ;
+	:rtype: BOPDS_VectorOfInterfFZ
+") InterfFZ;
 		BOPDS_VectorOfInterfFZ & InterfFZ ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_VectorOfInterfZZ
+		%feature("autodoc", "	* Selector/Modifier Returns the collection of interferences Solid/Solid
 
-Selector/Modifier  
-Returns the collection of interferences Solid/Solid") InterfZZ;
+	:rtype: BOPDS_VectorOfInterfZZ
+") InterfZZ;
 		BOPDS_VectorOfInterfZZ & InterfZZ ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static Standard_Integer
+		%feature("autodoc", "	* Returns the number of types of the interferences
 
-Returns the number of types of the interferences") NbInterfTypes;
+	:rtype: int
+") NbInterfTypes;
 		static Standard_Integer NbInterfTypes ();
-		%feature("autodoc", "Args:
-	theI1(Standard_Integer)
-	theI2(Standard_Integer)
+		%feature("autodoc", "	* Modifier Adds the information about an interference between shapes with indices theI1, theI2 to the summary table of interferences
 
-Returns:
-	None
-
-Modifier  
-Adds the information about an interference between  
-shapes with indices theI1, theI2 to the summary  
-table of interferences") AddInterf;
+	:param theI1:
+	:type theI1: Standard_Integer
+	:param theI2:
+	:type theI2: Standard_Integer
+	:rtype: None
+") AddInterf;
 		void AddInterf (const Standard_Integer theI1,const Standard_Integer theI2);
-		%feature("autodoc", "Args:
-	theI(Standard_Integer)
+		%feature("autodoc", "	* Query Returns true if the shape with index theI is interferred
 
-Returns:
-	Standard_Boolean
-
-Query  
-Returns true if the shape with index theI  
-is interferred") HasInterf;
+	:param theI:
+	:type theI: Standard_Integer
+	:rtype: bool
+") HasInterf;
 		Standard_Boolean HasInterf (const Standard_Integer theI);
-		%feature("autodoc", "Args:
-	theI1(Standard_Integer)
-	theI2(Standard_Integer)
+		%feature("autodoc", "	* Query Returns true if the shapes with indices theI1, theI2 are interferred
 
-Returns:
-	Standard_Boolean
-
-Query  
-Returns true if the shapes with indices theI1, theI2  
-are interferred") HasInterf;
+	:param theI1:
+	:type theI1: Standard_Integer
+	:param theI2:
+	:type theI2: Standard_Integer
+	:rtype: bool
+") HasInterf;
 		Standard_Boolean HasInterf (const Standard_Integer theI1,const Standard_Integer theI2);
-		%feature("autodoc", "Args:
-	theI1(Standard_Integer)
-	theI2(Standard_Integer)
-	theFlag(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Query Returns true if the shape with index theI1 is interfered with any sub-shape of the shape with index theI2 (theFlag=true) all sub-shapes of the shape with index theI2 (theFlag=false)
 
-Returns:
-	Standard_Boolean
-
-Query  
-Returns true if the shape with index theI1 is interfered  
-with  
-   any sub-shape of the shape with index theI2  (theFlag=true)  
-   all sub-shapes of the shape with index theI2 (theFlag=false)") HasInterfShapeSubShapes;
+	:param theI1:
+	:type theI1: Standard_Integer
+	:param theI2:
+	:type theI2: Standard_Integer
+	:param theFlag: default value is Standard_True
+	:type theFlag: bool
+	:rtype: bool
+") HasInterfShapeSubShapes;
 		Standard_Boolean HasInterfShapeSubShapes (const Standard_Integer theI1,const Standard_Integer theI2,const Standard_Boolean theFlag = Standard_True);
-		%feature("autodoc", "Args:
-	theI1(Standard_Integer)
-	theI2(Standard_Integer)
+		%feature("autodoc", "	* Query Returns true if the shapes with indices theI1, theI2 have interferred sub-shapes
 
-Returns:
-	Standard_Boolean
-
-Query  
-Returns true if the shapes with indices theI1, theI2  
-have interferred sub-shapes") HasInterfSubShapes;
+	:param theI1:
+	:type theI1: Standard_Integer
+	:param theI2:
+	:type theI2: Standard_Integer
+	:rtype: bool
+") HasInterfSubShapes;
 		Standard_Boolean HasInterfSubShapes (const Standard_Integer theI1,const Standard_Integer theI2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_MapOfPassKey
+		%feature("autodoc", "	* Selector Returns the table of interferences debug
 
-Selector  
-Returns the table of interferences  
- 
-debug") Interferences;
+	:rtype: BOPDS_MapOfPassKey
+") Interferences;
 		const BOPDS_MapOfPassKey & Interferences ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
-		%feature("autodoc", "Args:
-	theCB(Handle_BOPDS_CommonBlock)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SortPaveBlocks;
+		%feature("autodoc", "	:param theCB:
+	:type theCB: Handle_BOPDS_CommonBlock &
+	:rtype: None
+") SortPaveBlocks;
 		void SortPaveBlocks (const Handle_BOPDS_CommonBlock & theCB);
-		%feature("autodoc", "Args:
-	theCB(Handle_BOPDS_CommonBlock)
-	theI(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsToSort;
+		%feature("autodoc", "	:param theCB:
+	:type theCB: Handle_BOPDS_CommonBlock &
+	:param theI:
+	:type theI: Standard_Integer &
+	:rtype: bool
+") IsToSort;
 		Standard_Boolean IsToSort (const Handle_BOPDS_CommonBlock & theCB,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	theI1(Standard_Integer)
-	theI2(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsSubShape;
+		%feature("autodoc", "	:param theI1:
+	:type theI1: Standard_Integer
+	:param theI2:
+	:type theI2: Standard_Integer
+	:rtype: bool
+") IsSubShape;
 		Standard_Boolean IsSubShape (const Standard_Integer theI1,const Standard_Integer theI2);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
-	theLP(BOPDS_ListOfPave)
+		%feature("autodoc", "	* Fills theLP with sorted paves of the shape with index theIndex
 
-Returns:
-	None
-
-Fills theLP with sorted paves  
-of the shape with index theIndex") Paves;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:param theLP:
+	:type theLP: BOPDS_ListOfPave &
+	:rtype: None
+") Paves;
 		void Paves (const Standard_Integer theIndex,BOPDS_ListOfPave & theLP);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
-	theTolerance(Standard_Real)
+		%feature("autodoc", "	* Updates tolerance of the sub-shapes of the shape with index <theIndex>.
 
-Returns:
-	None
-
-Updates tolerance of the sub-shapes of the shape with index <theIndex>.") UpdateEdgeTolerance;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:param theTolerance:
+	:type theTolerance: float
+	:rtype: None
+") UpdateEdgeTolerance;
 		void UpdateEdgeTolerance (const Standard_Integer theIndex,const Standard_Real theTolerance);
 };
 
@@ -1294,165 +953,92 @@ def __del__(self):
 %nodefaultctor BOPDS_FaceInfo;
 class BOPDS_FaceInfo {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty contructor
 
-Empty contructor") BOPDS_FaceInfo;
+	:rtype: None
+") BOPDS_FaceInfo;
 		 BOPDS_FaceInfo ();
-		%feature("autodoc", "Args:
-	theAllocator(BOPCol_BaseAllocator)
+		%feature("autodoc", "	* Contructor theAllocator - the allocator to manage the memory
 
-Returns:
-	None
-
-Contructor  
- theAllocator - the allocator to manage the memory") BOPDS_FaceInfo;
+	:param theAllocator:
+	:type theAllocator: BOPCol_BaseAllocator &
+	:rtype: None
+") BOPDS_FaceInfo;
 		 BOPDS_FaceInfo (const BOPCol_BaseAllocator & theAllocator);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Clears the contents
 
-Clears the contents") Clear;
+	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	theI(Standard_Integer)
+		%feature("autodoc", "	* Modifier Sets the index of the face <theI>
 
-Returns:
-	None
-
-Modifier  
-Sets the index of the face <theI>") SetIndex;
+	:param theI:
+	:type theI: Standard_Integer
+	:rtype: None
+") SetIndex;
 		void SetIndex (const Standard_Integer theI);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Selector Returns the index of the face In
 
-Selector  
-Returns the index of the face  
- 
-In") Index;
+	:rtype: int
+") Index;
 		Standard_Integer Index ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_IndexedMapOfPaveBlock
+		%feature("autodoc", "	* Selector Returns the pave blocks of the face that have state In
 
-Selector  
-Returns the pave blocks of the face  
-that  have state In") PaveBlocksIn;
+	:rtype: BOPDS_IndexedMapOfPaveBlock
+") PaveBlocksIn;
 		const BOPDS_IndexedMapOfPaveBlock & PaveBlocksIn ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_IndexedMapOfPaveBlock
+		%feature("autodoc", "	* Selector/Modifier Returns the pave blocks of the face that have state In
 
-Selector/Modifier  
-Returns the pave blocks  
- of the face  
-that  have state In") ChangePaveBlocksIn;
+	:rtype: BOPDS_IndexedMapOfPaveBlock
+") ChangePaveBlocksIn;
 		BOPDS_IndexedMapOfPaveBlock & ChangePaveBlocksIn ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPCol_MapOfInteger
+		%feature("autodoc", "	* Selector Returns the list of indices for vertices of the face that have state In
 
-Selector  
-Returns the list of indices for vertices  
- of the face  
-that have state In") VerticesIn;
+	:rtype: BOPCol_MapOfInteger
+") VerticesIn;
 		const BOPCol_MapOfInteger & VerticesIn ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPCol_MapOfInteger
+		%feature("autodoc", "	* Selector/Modifier Returns the list of indices for vertices of the face that have state In On
 
-Selector/Modifier  
-Returns the list of indices for vertices  
- of the face  
-that have state In  
- 
-On") ChangeVerticesIn;
+	:rtype: BOPCol_MapOfInteger
+") ChangeVerticesIn;
 		BOPCol_MapOfInteger & ChangeVerticesIn ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_IndexedMapOfPaveBlock
+		%feature("autodoc", "	* Selector Returns the pave blocks of the face that have state On
 
-Selector  
-Returns the pave blocks of the face  
-that  have state On") PaveBlocksOn;
+	:rtype: BOPDS_IndexedMapOfPaveBlock
+") PaveBlocksOn;
 		const BOPDS_IndexedMapOfPaveBlock & PaveBlocksOn ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_IndexedMapOfPaveBlock
+		%feature("autodoc", "	* Selector/Modifier Returns the pave blocks of the face that have state On
 
-Selector/Modifier  
-Returns the pave blocks  
- of the face  
-that  have state On") ChangePaveBlocksOn;
+	:rtype: BOPDS_IndexedMapOfPaveBlock
+") ChangePaveBlocksOn;
 		BOPDS_IndexedMapOfPaveBlock & ChangePaveBlocksOn ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPCol_MapOfInteger
+		%feature("autodoc", "	* Selector Returns the list of indices for vertices of the face that have state On
 
-Selector  
-Returns the list of indices for vertices  
- of the face  
-that have state On") VerticesOn;
+	:rtype: BOPCol_MapOfInteger
+") VerticesOn;
 		const BOPCol_MapOfInteger & VerticesOn ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPCol_MapOfInteger
+		%feature("autodoc", "	* Selector/Modifier Returns the list of indices for vertices of the face that have state On Sections
 
-Selector/Modifier  
-Returns the list of indices for vertices  
- of the face  
-that have state On  
- 
-Sections") ChangeVerticesOn;
+	:rtype: BOPCol_MapOfInteger
+") ChangeVerticesOn;
 		BOPCol_MapOfInteger & ChangeVerticesOn ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_IndexedMapOfPaveBlock
+		%feature("autodoc", "	* Selector Returns the pave blocks of the face that are pave blocks of section edges
 
-Selector  
-Returns the pave blocks of the face  
-that are  pave blocks of section edges") PaveBlocksSc;
+	:rtype: BOPDS_IndexedMapOfPaveBlock
+") PaveBlocksSc;
 		const BOPDS_IndexedMapOfPaveBlock & PaveBlocksSc ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_IndexedMapOfPaveBlock
-
-No detailed docstring for this function.") ChangePaveBlocksSc;
+		%feature("autodoc", "	:rtype: BOPDS_IndexedMapOfPaveBlock
+") ChangePaveBlocksSc;
 		BOPDS_IndexedMapOfPaveBlock & ChangePaveBlocksSc ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPCol_MapOfInteger
+		%feature("autodoc", "	* Selector Returns the list of indices for section vertices of the face
 
-Selector  
-Returns the list of indices for section  vertices  
- of the face") VerticesSc;
+	:rtype: BOPCol_MapOfInteger
+") VerticesSc;
 		const BOPCol_MapOfInteger & VerticesSc ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPCol_MapOfInteger
+		%feature("autodoc", "	* Selector/Modifier Returns the list of indices for section vertices of the face Others
 
-Selector/Modifier  
-Returns the list of indices for section  vertices  
- of the face  
- 
-Others") ChangeVerticesSc;
+	:rtype: BOPCol_MapOfInteger
+") ChangeVerticesSc;
 		BOPCol_MapOfInteger & ChangeVerticesSc ();
 };
 
@@ -1474,84 +1060,62 @@ def __del__(self):
 %nodefaultctor BOPDS_IndexRange;
 class BOPDS_IndexRange {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty contructor
 
-Empty contructor") BOPDS_IndexRange;
+	:rtype: None
+") BOPDS_IndexRange;
 		 BOPDS_IndexRange ();
-		%feature("autodoc", "Args:
-	theI1(Standard_Integer)
+		%feature("autodoc", "	* Modifier Sets the first index <theI1> of the range
 
-Returns:
-	None
-
-Modifier  
-Sets the first index <theI1>  of the range") SetFirst;
+	:param theI1:
+	:type theI1: Standard_Integer
+	:rtype: None
+") SetFirst;
 		void SetFirst (const Standard_Integer theI1);
-		%feature("autodoc", "Args:
-	theI2(Standard_Integer)
+		%feature("autodoc", "	* Modifier Sets the second index <theI2> of the range
 
-Returns:
-	None
-
-Modifier  
-Sets the second index <theI2>  of the range") SetLast;
+	:param theI2:
+	:type theI2: Standard_Integer
+	:rtype: None
+") SetLast;
 		void SetLast (const Standard_Integer theI2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Selector Returns the first index of the range
 
-Selector  
-Returns the first index of the range") First;
+	:rtype: int
+") First;
 		Standard_Integer First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Selector Returns the second index of the range
 
-Selector  
-Returns the second index of the range") Last;
+	:rtype: int
+") Last;
 		Standard_Integer Last ();
-		%feature("autodoc", "Args:
-	theI1(Standard_Integer)
-	theI2(Standard_Integer)
+		%feature("autodoc", "	* Modifier Sets the first index of the range <theI1> Sets the second index of the range <theI2>
 
-Returns:
-	None
-
-Modifier  
-Sets the first index of the range  <theI1>  
-Sets the second index of the range <theI2>") SetIndices;
+	:param theI1:
+	:type theI1: Standard_Integer
+	:param theI2:
+	:type theI2: Standard_Integer
+	:rtype: None
+") SetIndices;
 		void SetIndices (const Standard_Integer theI1,const Standard_Integer theI2);
-		%feature("autodoc", "Args:
-	theI1(Standard_Integer)
-	theI2(Standard_Integer)
+		%feature("autodoc", "	* Selector Returns the first index of the range <theI1> Returns the second index of the range <theI2>
 
-Returns:
-	None
-
-Selector  
-Returns the first index of the range  <theI1>  
-Returns the second index of the range <theI2>") Indices;
+	:param theI1:
+	:type theI1: Standard_Integer &
+	:param theI2:
+	:type theI2: Standard_Integer &
+	:rtype: None
+") Indices;
 		void Indices (Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Query Returns true if the range contains <theIndex>
 
-Returns:
-	Standard_Boolean
-
-Query  
-Returns true if the range contains <theIndex>") Contains;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
 };
 
@@ -1573,100 +1137,74 @@ def __del__(self):
 %nodefaultctor BOPDS_Iterator;
 class BOPDS_Iterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty contructor
 
-Empty contructor") BOPDS_Iterator;
+	:rtype: None
+") BOPDS_Iterator;
 		 BOPDS_Iterator ();
-		%feature("autodoc", "Args:
-	theAllocator(BOPCol_BaseAllocator)
+		%feature("autodoc", "	* Contructor theAllocator - the allocator to manage the memory
 
-Returns:
-	None
-
-Contructor  
- theAllocator - the allocator to manage the memory") BOPDS_Iterator;
+	:param theAllocator:
+	:type theAllocator: BOPCol_BaseAllocator &
+	:rtype: None
+") BOPDS_Iterator;
 		 BOPDS_Iterator (const BOPCol_BaseAllocator & theAllocator);
-		%feature("autodoc", "Args:
-	pDS(BOPDS_PDS)
+		%feature("autodoc", "	* Modifier Sets the data structure <pDS> to process
 
-Returns:
-	None
-
-Modifier  
-Sets the data structure <pDS> to process") SetDS;
+	:param pDS:
+	:type pDS: BOPDS_PDS &
+	:rtype: None
+") SetDS;
 		void SetDS (const BOPDS_PDS & pDS);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_DS
+		%feature("autodoc", "	* Selector Returns the data structure
 
-Selector  
-Returns the data structure") DS;
+	:rtype: BOPDS_DS
+") DS;
 		const BOPDS_DS & DS ();
-		%feature("autodoc", "Args:
-	theType1(TopAbs_ShapeEnum)
-	theType2(TopAbs_ShapeEnum)
+		%feature("autodoc", "	* Initializes the iterator theType1 - the first type of shape theType2 - the second type of shape
 
-Returns:
-	None
-
-Initializes the  iterator  
-theType1 - the first type of shape  
-theType2 - the second type of shape") Initialize;
+	:param theType1:
+	:type theType1: TopAbs_ShapeEnum
+	:param theType2:
+	:type theType2: TopAbs_ShapeEnum
+	:rtype: None
+") Initialize;
 		void Initialize (const TopAbs_ShapeEnum theType1,const TopAbs_ShapeEnum theType2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if still there are pairs of intersected shapes
 
-Returns  true if still there are pairs  
- of intersected shapes") More;
+	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Moves iterations ahead
 
-Moves iterations ahead") Next;
+	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	theIndex1(Standard_Integer)
-	theIndex2(Standard_Integer)
-	theWithSubShape(Standard_Boolean)
+		%feature("autodoc", "	* Returns indices (DS) of intersected shapes theIndex1 - the index of the first shape theIndex2 - the index of the second shape theWithSubShape - flag. True if the sub-shapes of shapes are intersected
 
-Returns:
-	None
-
-Returns indices (DS) of intersected shapes  
-theIndex1 - the index of the first shape  
-theIndex2 - the index of the second shape  
-theWithSubShape - flag. True if the sub-shapes of  
- shapes are intersected") Value;
+	:param theIndex1:
+	:type theIndex1: Standard_Integer &
+	:param theIndex2:
+	:type theIndex2: Standard_Integer &
+	:param theWithSubShape:
+	:type theWithSubShape: bool
+	:rtype: None
+") Value;
 		void Value (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Boolean & theWithSubShape);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Perform the intersection algorithm and prepare the results to be used
 
-Perform the intersection algorithm and prepare  
-the results to be used") Prepare;
+	:rtype: void
+") Prepare;
 		virtual void Prepare ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of intersections founded
 
-Returns the number of intersections founded") ExpectedLength;
+	:rtype: int
+") ExpectedLength;
 		Standard_Integer ExpectedLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the block length
 
-Returns the block length") BlockLength;
+	:rtype: int
+") BlockLength;
 		Standard_Integer BlockLength ();
 };
 
@@ -1688,121 +1226,100 @@ def __del__(self):
 %nodefaultctor BOPDS_PassKey;
 class BOPDS_PassKey {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty contructor
 
-Empty contructor") BOPDS_PassKey;
+	:rtype: None
+") BOPDS_PassKey;
 		 BOPDS_PassKey ();
-		%feature("autodoc", "Args:
-	theAllocator(BOPCol_BaseAllocator)
+		%feature("autodoc", "	* Contructor theAllocator - the allocator to manage the memory
 
-Returns:
-	None
-
-Contructor  
- theAllocator - the allocator to manage the memory") BOPDS_PassKey;
+	:param theAllocator:
+	:type theAllocator: BOPCol_BaseAllocator &
+	:rtype: None
+") BOPDS_PassKey;
 		 BOPDS_PassKey (const BOPCol_BaseAllocator & theAllocator);
-		%feature("autodoc", "Args:
-	Other(BOPDS_PassKey)
+		%feature("autodoc", "	* Copy Contructor
 
-Returns:
-	None
-
-Copy Contructor") BOPDS_PassKey;
+	:param Other:
+	:type Other: BOPDS_PassKey &
+	:rtype: None
+") BOPDS_PassKey;
 		 BOPDS_PassKey (const BOPDS_PassKey & Other);
-		%feature("autodoc", "Args:
-	Other(BOPDS_PassKey)
-
-Returns:
-	BOPDS_PassKey
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: BOPDS_PassKey &
+	:rtype: BOPDS_PassKey
+") operator=;
 		BOPDS_PassKey & operator = (const BOPDS_PassKey & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Clear the contents
 
-Clear the contents") Clear;
+	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	theI1(Standard_Integer)
+		%feature("autodoc", "	* Modifier Sets one Id <theI1>
 
-Returns:
-	None
-
-Modifier  
-Sets one Id <theI1>") SetIds;
+	:param theI1:
+	:type theI1: Standard_Integer
+	:rtype: None
+") SetIds;
 		void SetIds (const Standard_Integer theI1);
-		%feature("autodoc", "Args:
-	theI1(Standard_Integer)
-	theI2(Standard_Integer)
+		%feature("autodoc", "	* Modifier Sets two Id <theI1>,<theI2>
 
-Returns:
-	None
-
-Modifier  
-Sets two Id <theI1>,<theI2>") SetIds;
+	:param theI1:
+	:type theI1: Standard_Integer
+	:param theI2:
+	:type theI2: Standard_Integer
+	:rtype: None
+") SetIds;
 		void SetIds (const Standard_Integer theI1,const Standard_Integer theI2);
-		%feature("autodoc", "Args:
-	theI1(Standard_Integer)
-	theI2(Standard_Integer)
-	theI3(Standard_Integer)
+		%feature("autodoc", "	* Modifier Sets three Id <theI1>,<theI2>,<theI3>
 
-Returns:
-	None
-
-Modifier  
-Sets three Id <theI1>,<theI2>,<theI3>") SetIds;
+	:param theI1:
+	:type theI1: Standard_Integer
+	:param theI2:
+	:type theI2: Standard_Integer
+	:param theI3:
+	:type theI3: Standard_Integer
+	:rtype: None
+") SetIds;
 		void SetIds (const Standard_Integer theI1,const Standard_Integer theI2,const Standard_Integer theI3);
-		%feature("autodoc", "Args:
-	theI1(Standard_Integer)
-	theI2(Standard_Integer)
-	theI3(Standard_Integer)
-	theI4(Standard_Integer)
+		%feature("autodoc", "	* Modifier Sets four Id <theI1>,<theI2>,<theI3>,<theI4>
 
-Returns:
-	None
-
-Modifier  
-Sets four Id <theI1>,<theI2>,<theI3>,<theI4>") SetIds;
+	:param theI1:
+	:type theI1: Standard_Integer
+	:param theI2:
+	:type theI2: Standard_Integer
+	:param theI3:
+	:type theI3: Standard_Integer
+	:param theI4:
+	:type theI4: Standard_Integer
+	:rtype: None
+") SetIds;
 		void SetIds (const Standard_Integer theI1,const Standard_Integer theI2,const Standard_Integer theI3,const Standard_Integer theI4);
-		%feature("autodoc", "Args:
-	theLI(BOPCol_ListOfInteger)
+		%feature("autodoc", "	* Modifier Sets the list of Id <theLI>
 
-Returns:
-	None
-
-Modifier  
-Sets the list of Id <theLI>") SetIds;
+	:param theLI:
+	:type theLI: BOPCol_ListOfInteger &
+	:rtype: None
+") SetIds;
 		void SetIds (const BOPCol_ListOfInteger & theLI);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Selector Returns the number of Ids>
 
-Selector  
-Returns the number of Ids>") NbIds;
+	:rtype: int
+") NbIds;
 		Standard_Integer NbIds ();
-		%feature("autodoc", "Args:
-	theOther(BOPDS_PassKey)
+		%feature("autodoc", "	* Query Returns true if the PassKey is equal to <the theOther>
 
-Returns:
-	Standard_Boolean
-
-Query  
-Returns true if the PassKey is equal to <the theOther>") IsEqual;
+	:param theOther:
+	:type theOther: BOPDS_PassKey &
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const BOPDS_PassKey & theOther);
-		%feature("autodoc", "Args:
-	theUpper(Standard_Integer)
+		%feature("autodoc", "	* Query Returns hash code
 
-Returns:
-	Standard_Integer
-
-Query  
-Returns hash  code") HashCode;
+	:param theUpper:
+	:type theUpper: Standard_Integer
+	:rtype: int
+") HashCode;
 		Standard_Integer HashCode (const Standard_Integer theUpper);
 
         %extend {
@@ -1810,32 +1327,26 @@ Returns hash  code") HashCode;
             return $self->HashCode(2147483647);
             }
         };
-        		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+        		%feature("autodoc", "	* Selector Returns Id of index <theIndex>
 
-Returns:
-	Standard_Integer
-
-Selector  
-Returns Id of index <theIndex>") Id;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: int
+") Id;
 		Standard_Integer Id (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theI1(Standard_Integer)
-	theI2(Standard_Integer)
+		%feature("autodoc", "	* Selector Returns the first two Ids <theI1>,<theI2>
 
-Returns:
-	None
-
-Selector  
-Returns the first two Ids <theI1>,<theI2>") Ids;
+	:param theI1:
+	:type theI1: Standard_Integer &
+	:param theI2:
+	:type theI2: Standard_Integer &
+	:rtype: None
+") Ids;
 		void Ids (Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	aHex(Standard_Integer)=0
-
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param aHex: default value is 0
+	:type aHex: Standard_Integer
+	:rtype: None
+") Dump;
 		void Dump (const Standard_Integer aHex = 0);
 };
 
@@ -1857,23 +1368,19 @@ def __del__(self):
 %nodefaultctor BOPDS_PassKeyMapHasher;
 class BOPDS_PassKeyMapHasher {
 	public:
-		%feature("autodoc", "Args:
-	aPKey(BOPDS_PassKey)
-	Upper(Standard_Integer)
-
-Returns:
-	static Standard_Integer
-
-No detailed docstring for this function.") HashCode;
+		%feature("autodoc", "	:param aPKey:
+	:type aPKey: BOPDS_PassKey &
+	:param Upper:
+	:type Upper: Standard_Integer
+	:rtype: int
+") HashCode;
 		static Standard_Integer HashCode (const BOPDS_PassKey & aPKey,const Standard_Integer Upper);
-		%feature("autodoc", "Args:
-	aPKey1(BOPDS_PassKey)
-	aPKey2(BOPDS_PassKey)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") IsEqual;
+		%feature("autodoc", "	:param aPKey1:
+	:type aPKey1: BOPDS_PassKey &
+	:param aPKey2:
+	:type aPKey2: BOPDS_PassKey &
+	:rtype: bool
+") IsEqual;
 		static Standard_Boolean IsEqual (const BOPDS_PassKey & aPKey1,const BOPDS_PassKey & aPKey2);
 };
 
@@ -1895,85 +1402,62 @@ def __del__(self):
 %nodefaultctor BOPDS_Pave;
 class BOPDS_Pave {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty contructor
 
-Empty contructor") BOPDS_Pave;
+	:rtype: None
+") BOPDS_Pave;
 		 BOPDS_Pave ();
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Modifier Sets the index of vertex <theIndex>
 
-Returns:
-	None
-
-Modifier  
-Sets the index of vertex <theIndex>") SetIndex;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: None
+") SetIndex;
 		void SetIndex (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Selector Returns the index of vertex
 
-Selector  
-Returns the index of vertex") Index;
+	:rtype: int
+") Index;
 		Standard_Integer Index ();
-		%feature("autodoc", "Args:
-	theParameter(Standard_Real)
+		%feature("autodoc", "	* Modifier Sets the parameter of vertex <theParameter>
 
-Returns:
-	None
-
-Modifier  
-Sets the parameter of vertex <theParameter>") SetParameter;
+	:param theParameter:
+	:type theParameter: float
+	:rtype: None
+") SetParameter;
 		void SetParameter (const Standard_Real theParameter);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Selector Returns the parameter of vertex
 
-Selector  
-Returns the parameter of vertex") Parameter;
+	:rtype: float
+") Parameter;
 		Standard_Real Parameter ();
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
-	theParameter(Standard_Real)
+		%feature("autodoc", "	* Selector Returns the index of vertex <theIndex> Returns the parameter of vertex <theParameter>
 
-Returns:
-	None
-
-Selector  
-Returns the index of vertex <theIndex>  
-Returns the parameter of vertex <theParameter>") Contents;
+	:param theIndex:
+	:type theIndex: Standard_Integer &
+	:param theParameter:
+	:type theParameter: float &
+	:rtype: None
+") Contents;
 		void Contents (Standard_Integer &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	theOther(BOPDS_Pave)
+		%feature("autodoc", "	* Query Returns true if thr parameter od this is less than the parameter of <theOther>
 
-Returns:
-	Standard_Boolean
-
-Query  
-Returns true if thr parameter od this is less  
- than the parameter of  <theOther>") IsLess;
+	:param theOther:
+	:type theOther: BOPDS_Pave &
+	:rtype: bool
+") IsLess;
 		Standard_Boolean IsLess (const BOPDS_Pave & theOther);
-		%feature("autodoc", "Args:
-	theOther(BOPDS_Pave)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") operator<;
+		%feature("autodoc", "	:param theOther:
+	:type theOther: BOPDS_Pave &
+	:rtype: bool
+") operator<;
 		Standard_Boolean operator < (const BOPDS_Pave & theOther);
-		%feature("autodoc", "Args:
-	theOther(BOPDS_Pave)
+		%feature("autodoc", "	* Query Returns true if thr parameter od this is equal to the parameter of <theOther>
 
-Returns:
-	Standard_Boolean
-
-Query  
-Returns true if thr parameter od this is equal  
- to the parameter of  <theOther>") IsEqual;
+	:param theOther:
+	:type theOther: BOPDS_Pave &
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const BOPDS_Pave & theOther);
 
         %extend{
@@ -1989,12 +1473,8 @@ Returns true if thr parameter od this is equal
             except:
                 return False
         }
-        		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+        		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
 };
 
@@ -2016,259 +1496,184 @@ def __del__(self):
 %nodefaultctor BOPDS_PaveBlock;
 class BOPDS_PaveBlock : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty contructor
 
-Empty contructor") BOPDS_PaveBlock;
+	:rtype: None
+") BOPDS_PaveBlock;
 		 BOPDS_PaveBlock ();
-		%feature("autodoc", "Args:
-	theAllocator(BOPCol_BaseAllocator)
+		%feature("autodoc", "	* Contructor <theAllocator> - the allocator to manage the memory
 
-Returns:
-	None
-
-Contructor  
- <theAllocator> - the allocator to manage the memory") BOPDS_PaveBlock;
+	:param theAllocator:
+	:type theAllocator: BOPCol_BaseAllocator &
+	:rtype: None
+") BOPDS_PaveBlock;
 		 BOPDS_PaveBlock (const BOPCol_BaseAllocator & theAllocator);
-		%feature("autodoc", "Args:
-	thePave(BOPDS_Pave)
+		%feature("autodoc", "	* Modifier Sets the first pave <thePave>
 
-Returns:
-	None
-
-Modifier  
-Sets the first pave <thePave>") SetPave1;
+	:param thePave:
+	:type thePave: BOPDS_Pave &
+	:rtype: None
+") SetPave1;
 		void SetPave1 (const BOPDS_Pave & thePave);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_Pave
+		%feature("autodoc", "	* Selector Returns the first pave
 
-Selector  
-Returns the first pave") Pave1;
+	:rtype: BOPDS_Pave
+") Pave1;
 		const BOPDS_Pave & Pave1 ();
-		%feature("autodoc", "Args:
-	thePave(BOPDS_Pave)
+		%feature("autodoc", "	* Modifier Sets the second pave <thePave>
 
-Returns:
-	None
-
-Modifier  
-Sets the second pave <thePave>") SetPave2;
+	:param thePave:
+	:type thePave: BOPDS_Pave &
+	:rtype: None
+") SetPave2;
 		void SetPave2 (const BOPDS_Pave & thePave);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_Pave
+		%feature("autodoc", "	* Selector Returns the second pave
 
-Selector  
-Returns the second pave") Pave2;
+	:rtype: BOPDS_Pave
+") Pave2;
 		const BOPDS_Pave & Pave2 ();
-		%feature("autodoc", "Args:
-	theEdge(Standard_Integer)
+		%feature("autodoc", "	* Modifier Sets the index of edge of pave block <theEdge>
 
-Returns:
-	None
-
-Modifier  
-Sets the index of edge of pave block <theEdge>") SetEdge;
+	:param theEdge:
+	:type theEdge: Standard_Integer
+	:rtype: None
+") SetEdge;
 		void SetEdge (const Standard_Integer theEdge);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Selector Returns the index of edge of pave block
 
-Selector  
-Returns the index of edge of pave block") Edge;
+	:rtype: int
+") Edge;
 		Standard_Integer Edge ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Query Returns true if the pave block has edge
 
-Query  
-Returns true if the pave block has edge") HasEdge;
+	:rtype: bool
+") HasEdge;
 		Standard_Boolean HasEdge ();
-		%feature("autodoc", "Args:
-	theEdge(Standard_Integer)
+		%feature("autodoc", "	* Query Returns true if the pave block has edge Returns the index of edge <theEdge>
 
-Returns:
-	Standard_Boolean
-
-Query  
-Returns true if the pave block has edge  
-Returns the index of edge <theEdge>") HasEdge;
+	:param theEdge:
+	:type theEdge: Standard_Integer &
+	:rtype: bool
+") HasEdge;
 		Standard_Boolean HasEdge (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	theEdge(Standard_Integer)
+		%feature("autodoc", "	* Modifier Sets the index of original edge of the pave block <theEdge>
 
-Returns:
-	None
-
-Modifier  
-Sets the index of original edge  
-of the pave block <theEdge>") SetOriginalEdge;
+	:param theEdge:
+	:type theEdge: Standard_Integer
+	:rtype: None
+") SetOriginalEdge;
 		void SetOriginalEdge (const Standard_Integer theEdge);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Selector Returns the index of original edge of pave block
 
-Selector  
-Returns the index of original edge of pave block") OriginalEdge;
+	:rtype: int
+") OriginalEdge;
 		Standard_Integer OriginalEdge ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Query Returns true if the edge is equal to the original edge of the pave block
 
-Query  
-Returns true if the edge is equal to the original edge  
-of the pave block") IsSplitEdge;
+	:rtype: bool
+") IsSplitEdge;
 		Standard_Boolean IsSplitEdge ();
-		%feature("autodoc", "Args:
-	theT1(Standard_Real)
-	theT2(Standard_Real)
+		%feature("autodoc", "	* Selector Returns the parametric range <theT1,theT2> of the pave block
 
-Returns:
-	None
-
-Selector  
-Returns the parametric range <theT1,theT2>  
-of the pave block") Range;
+	:param theT1:
+	:type theT1: float &
+	:param theT2:
+	:type theT2: float &
+	:rtype: None
+") Range;
 		void Range (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	theOther(Handle_BOPDS_PaveBlock)
+		%feature("autodoc", "	* Query Returns true if the pave block has pave indices that equal to the pave indices of the pave block <theOther>
 
-Returns:
-	Standard_Boolean
-
-Query  
-Returns true if the pave block has pave indices  
-that equal to the  pave indices of the pave block  
-<theOther>") HasSameBounds;
+	:param theOther:
+	:type theOther: Handle_BOPDS_PaveBlock &
+	:rtype: bool
+") HasSameBounds;
 		Standard_Boolean HasSameBounds (const Handle_BOPDS_PaveBlock & theOther);
-		%feature("autodoc", "Args:
-	theIndex1(Standard_Integer)
-	theIndex2(Standard_Integer)
+		%feature("autodoc", "	* Selector Returns the pave indices <theIndex1,theIndex2> of the pave block
 
-Returns:
-	None
-
-Selector  
-Returns the pave indices  <theIndex1,theIndex2>  
-of the pave block") Indices;
+	:param theIndex1:
+	:type theIndex1: Standard_Integer &
+	:param theIndex2:
+	:type theIndex2: Standard_Integer &
+	:rtype: None
+") Indices;
 		void Indices (Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Query Returns true if the pave block contains extra paves
 
-Query  
-Returns true if the pave block contains extra paves") IsToUpdate;
+	:rtype: bool
+") IsToUpdate;
 		Standard_Boolean IsToUpdate ();
-		%feature("autodoc", "Args:
-	theLP(BOPDS_Pave)
+		%feature("autodoc", "	* Modifier Appends extra paves <theLP>
 
-Returns:
-	None
-
-Modifier  
-Appends extra paves <theLP>") AppendExtPave;
+	:param theLP:
+	:type theLP: BOPDS_Pave &
+	:rtype: None
+") AppendExtPave;
 		void AppendExtPave (const BOPDS_Pave & theLP);
-		%feature("autodoc", "Args:
-	thePave(BOPDS_Pave)
+		%feature("autodoc", "	* Modifier Appends extra pave <thePave>
 
-Returns:
-	None
-
-Modifier  
-Appends extra pave <thePave>") AppendExtPave1;
+	:param thePave:
+	:type thePave: BOPDS_Pave &
+	:rtype: None
+") AppendExtPave1;
 		void AppendExtPave1 (const BOPDS_Pave & thePave);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_ListOfPave
+		%feature("autodoc", "	* Selector Returns the extra paves
 
-Selector  
-Returns the  extra paves") ExtPaves;
+	:rtype: BOPDS_ListOfPave
+") ExtPaves;
 		const BOPDS_ListOfPave & ExtPaves ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_ListOfPave
+		%feature("autodoc", "	* Selector / Modifier Returns the extra paves
 
-Selector / Modifier  
-Returns the extra paves") ChangeExtPaves;
+	:rtype: BOPDS_ListOfPave
+") ChangeExtPaves;
 		BOPDS_ListOfPave & ChangeExtPaves ();
-		%feature("autodoc", "Args:
-	theLPB(BOPDS_ListOfPaveBlock)
-	theFlag(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Modifier Updates the pave block. The extra paves are used to create new pave blocks <theLPB>. <theFlag> - if true, the first pave and the second pave are used to produce new pave blocks.
 
-Returns:
-	None
-
-Modifier  
-Updates the pave block. The extra paves are used  
-to create new pave blocks <theLPB>.  
-<theFlag> - if true, the first pave and the second  
-pave are used to produce new pave blocks.") Update;
+	:param theLPB:
+	:type theLPB: BOPDS_ListOfPaveBlock &
+	:param theFlag: default value is Standard_True
+	:type theFlag: bool
+	:rtype: None
+") Update;
 		void Update (BOPDS_ListOfPaveBlock & theLPB,const Standard_Boolean theFlag = Standard_True);
-		%feature("autodoc", "Args:
-	thePrm(Standard_Real)
-	theTol(Standard_Real)
+		%feature("autodoc", "	* Query Returns true if the extra paves contain the pave with given value of the parameter <thePrm> <theTol> - the value of the tolerance to compare
 
-Returns:
-	Standard_Boolean
-
-Query  
-Returns true if the extra paves contain the pave  
-with given value of the parameter <thePrm>  
- <theTol>  - the value of the tolerance to compare") ContainsParameter;
+	:param thePrm:
+	:type thePrm: float
+	:param theTol:
+	:type theTol: float
+	:rtype: bool
+") ContainsParameter;
 		Standard_Boolean ContainsParameter (const Standard_Real thePrm,const Standard_Real theTol);
-		%feature("autodoc", "Args:
-	theTS1(Standard_Real)
-	theTS2(Standard_Real)
-	theBox(Bnd_Box)
+		%feature("autodoc", "	* Modifier Sets the shrunk data for the pave block <theTS1>, <theTS2> - shrunk range <theBox> - the bounding box
 
-Returns:
-	None
-
-Modifier  
-Sets the shrunk data for the pave block  
-<theTS1>,  <theTS2> - shrunk range  
-<theBox> - the bounding box") SetShrunkData;
+	:param theTS1:
+	:type theTS1: float
+	:param theTS2:
+	:type theTS2: float
+	:param theBox:
+	:type theBox: Bnd_Box &
+	:rtype: None
+") SetShrunkData;
 		void SetShrunkData (const Standard_Real theTS1,const Standard_Real theTS2,const Bnd_Box & theBox);
-		%feature("autodoc", "Args:
-	theTS1(Standard_Real)
-	theTS2(Standard_Real)
-	theBox(Bnd_Box)
+		%feature("autodoc", "	* Selector Returns the shrunk data for the pave block <theTS1>, <theTS2> - shrunk range <theBox> - the bounding box
 
-Returns:
-	None
-
-Selector  
-Returns  the shrunk data for the pave block  
-<theTS1>,  <theTS2> - shrunk range  
-<theBox> - the bounding box") ShrunkData;
+	:param theTS1:
+	:type theTS1: float &
+	:param theTS2:
+	:type theTS2: float &
+	:param theBox:
+	:type theBox: Bnd_Box &
+	:rtype: None
+") ShrunkData;
 		void ShrunkData (Standard_Real &OutValue,Standard_Real &OutValue,Bnd_Box & theBox);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Query Returns true if the pave block contains the shrunk data
 
-Query  
-Returns true if the pave block contains  
-the shrunk data") HasShrunkData;
+	:rtype: bool
+") HasShrunkData;
 		Standard_Boolean HasShrunkData ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
 };
 
@@ -2329,23 +1734,19 @@ def __del__(self):
 %nodefaultctor BOPDS_PaveMapHasher;
 class BOPDS_PaveMapHasher {
 	public:
-		%feature("autodoc", "Args:
-	aPave(BOPDS_Pave)
-	Upper(Standard_Integer)
-
-Returns:
-	static Standard_Integer
-
-No detailed docstring for this function.") HashCode;
+		%feature("autodoc", "	:param aPave:
+	:type aPave: BOPDS_Pave &
+	:param Upper:
+	:type Upper: Standard_Integer
+	:rtype: int
+") HashCode;
 		static Standard_Integer HashCode (const BOPDS_Pave & aPave,const Standard_Integer Upper);
-		%feature("autodoc", "Args:
-	aPave1(BOPDS_Pave)
-	aPave2(BOPDS_Pave)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") IsEqual;
+		%feature("autodoc", "	:param aPave1:
+	:type aPave1: BOPDS_Pave &
+	:param aPave2:
+	:type aPave2: BOPDS_Pave &
+	:rtype: bool
+") IsEqual;
 		static Standard_Boolean IsEqual (const BOPDS_Pave & aPave1,const BOPDS_Pave & aPave2);
 };
 
@@ -2367,80 +1768,58 @@ def __del__(self):
 %nodefaultctor BOPDS_Point;
 class BOPDS_Point {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty contructor
 
-Empty contructor") BOPDS_Point;
+	:rtype: None
+") BOPDS_Point;
 		 BOPDS_Point ();
-		%feature("autodoc", "Args:
-	thePnt(gp_Pnt)
+		%feature("autodoc", "	* Modifier Sets 3D point <thePnt>
 
-Returns:
-	None
-
-Modifier  
-Sets 3D point <thePnt>") SetPnt;
+	:param thePnt:
+	:type thePnt: gp_Pnt
+	:rtype: None
+") SetPnt;
 		void SetPnt (const gp_Pnt & thePnt);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
+		%feature("autodoc", "	* Selector Returns 3D point
 
-Selector  
-Returns 3D point") Pnt;
+	:rtype: gp_Pnt
+") Pnt;
 		const gp_Pnt & Pnt ();
-		%feature("autodoc", "Args:
-	thePnt(gp_Pnt2d)
+		%feature("autodoc", "	* Modifier Sets 2D point on the first face <thePnt>
 
-Returns:
-	None
-
-Modifier  
-Sets 2D point on the first face <thePnt>") SetPnt2D1;
+	:param thePnt:
+	:type thePnt: gp_Pnt2d
+	:rtype: None
+") SetPnt2D1;
 		void SetPnt2D1 (const gp_Pnt2d & thePnt);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt2d
+		%feature("autodoc", "	* Selector Returns 2D point on the first face <thePnt>
 
-Selector  
-Returns 2D point on the first face <thePnt>") Pnt2D1;
+	:rtype: gp_Pnt2d
+") Pnt2D1;
 		const gp_Pnt2d & Pnt2D1 ();
-		%feature("autodoc", "Args:
-	thePnt(gp_Pnt2d)
+		%feature("autodoc", "	* Modifier Sets 2D point on the second face <thePnt>
 
-Returns:
-	None
-
-Modifier  
-Sets 2D point on the second face <thePnt>") SetPnt2D2;
+	:param thePnt:
+	:type thePnt: gp_Pnt2d
+	:rtype: None
+") SetPnt2D2;
 		void SetPnt2D2 (const gp_Pnt2d & thePnt);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt2d
+		%feature("autodoc", "	* Selector Returns 2D point on the second face <thePnt>
 
-Selector  
-Returns 2D point on the second face <thePnt>") Pnt2D2;
+	:rtype: gp_Pnt2d
+") Pnt2D2;
 		const gp_Pnt2d & Pnt2D2 ();
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Modifier Sets the index of the vertex <theIndex>
 
-Returns:
-	None
-
-Modifier  
-Sets the index of the vertex <theIndex>") SetIndex;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: None
+") SetIndex;
 		void SetIndex (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Selector Returns index of the vertex
 
-Selector  
-Returns index of the vertex") Index;
+	:rtype: int
+") Index;
 		Standard_Integer Index ();
 };
 
@@ -2462,189 +1841,127 @@ def __del__(self):
 %nodefaultctor BOPDS_ShapeInfo;
 class BOPDS_ShapeInfo {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty contructor
 
-Empty contructor") BOPDS_ShapeInfo;
+	:rtype: None
+") BOPDS_ShapeInfo;
 		 BOPDS_ShapeInfo ();
-		%feature("autodoc", "Args:
-	theAllocator(BOPCol_BaseAllocator)
+		%feature("autodoc", "	* Contructor theAllocator - the allocator to manage the memory
 
-Returns:
-	None
-
-Contructor  
- theAllocator - the allocator to manage the memory") BOPDS_ShapeInfo;
+	:param theAllocator:
+	:type theAllocator: BOPCol_BaseAllocator &
+	:rtype: None
+") BOPDS_ShapeInfo;
 		 BOPDS_ShapeInfo (const BOPCol_BaseAllocator & theAllocator);
-		%feature("autodoc", "Args:
-	theS(TopoDS_Shape)
+		%feature("autodoc", "	* Modifier Sets the shape <theS>
 
-Returns:
-	None
-
-Modifier  
-Sets the shape <theS>") SetShape;
+	:param theS:
+	:type theS: TopoDS_Shape &
+	:rtype: None
+") SetShape;
 		void SetShape (const TopoDS_Shape & theS);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Selector Returns the shape
 
-Selector  
-Returns the shape") Shape;
+	:rtype: TopoDS_Shape
+") Shape;
 		const TopoDS_Shape & Shape ();
-		%feature("autodoc", "Args:
-	theType(TopAbs_ShapeEnum)
+		%feature("autodoc", "	* Modifier Sets the type of shape theType
 
-Returns:
-	None
-
-Modifier  
-Sets the type of shape theType") SetShapeType;
+	:param theType:
+	:type theType: TopAbs_ShapeEnum
+	:rtype: None
+") SetShapeType;
 		void SetShapeType (const TopAbs_ShapeEnum theType);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_ShapeEnum
+		%feature("autodoc", "	* Selector Returns the type of shape
 
-Selector  
-Returns the type of shape") ShapeType;
+	:rtype: TopAbs_ShapeEnum
+") ShapeType;
 		TopAbs_ShapeEnum ShapeType ();
-		%feature("autodoc", "Args:
-	theBox(Bnd_Box)
+		%feature("autodoc", "	* Modifier Sets the boundung box of the shape theBox
 
-Returns:
-	None
-
-Modifier  
-Sets the boundung box of the shape theBox") SetBox;
+	:param theBox:
+	:type theBox: Bnd_Box &
+	:rtype: None
+") SetBox;
 		void SetBox (const Bnd_Box & theBox);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Box
+		%feature("autodoc", "	* Selector Returns the boundung box of the shape
 
-Selector  
-Returns the boundung box of the shape") Box;
+	:rtype: Bnd_Box
+") Box;
 		const Bnd_Box & Box ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Box
+		%feature("autodoc", "	* Selector/Modifier Returns the boundung box of the shape
 
-Selector/Modifier  
-Returns the boundung box of the shape") ChangeBox;
+	:rtype: Bnd_Box
+") ChangeBox;
 		Bnd_Box & ChangeBox ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPCol_ListOfInteger
+		%feature("autodoc", "	* Selector Returns the list of indices of sub-shapes
 
-Selector  
-Returns the list of indices of sub-shapes") SubShapes;
+	:rtype: BOPCol_ListOfInteger
+") SubShapes;
 		const BOPCol_ListOfInteger & SubShapes ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPCol_ListOfInteger
+		%feature("autodoc", "	* Selector/ Modifier Returns the list of indices of sub-shapes
 
-Selector/ Modifier  
-Returns the list of indices of sub-shapes") ChangeSubShapes;
+	:rtype: BOPCol_ListOfInteger
+") ChangeSubShapes;
 		BOPCol_ListOfInteger & ChangeSubShapes ();
-		%feature("autodoc", "Args:
-	theI(Standard_Integer)
+		%feature("autodoc", "	* Query Returns true if the shape has sub-shape with index theI
 
-Returns:
-	Standard_Boolean
-
-Query  
-Returns true if the shape has sub-shape with  
-index theI") HasSubShape;
+	:param theI:
+	:type theI: Standard_Integer
+	:rtype: bool
+") HasSubShape;
 		Standard_Boolean HasSubShape (const Standard_Integer theI);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasReference;
+		%feature("autodoc", "	:rtype: bool
+") HasReference;
 		Standard_Boolean HasReference ();
-		%feature("autodoc", "Args:
-	theI(Standard_Integer)
+		%feature("autodoc", "	* Modifier Sets the index of a reference information
 
-Returns:
-	None
-
-Modifier  
-Sets the index of a reference information") SetReference;
+	:param theI:
+	:type theI: Standard_Integer
+	:rtype: None
+") SetReference;
 		void SetReference (const Standard_Integer theI);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Selector Returns the index of a reference information
 
-Selector  
-Returns the index of a reference information") Reference;
+	:rtype: int
+") Reference;
 		Standard_Integer Reference ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Query Returns true if the shape has boundary representation
 
-Query  
-Returns true if the shape has boundary representation") HasBRep;
+	:rtype: bool
+") HasBRep;
 		Standard_Boolean HasBRep ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the shape can be participant of an interference Flag
 
-Returns true if the shape can be participant of  
-an interference  
- 
- Flag") IsInterfering;
+	:rtype: bool
+") IsInterfering;
 		Standard_Boolean IsInterfering ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Query Returns true if there is flag.
 
-Query  
-Returns true if there is flag.") HasFlag;
+	:rtype: bool
+") HasFlag;
 		Standard_Boolean HasFlag ();
-		%feature("autodoc", "Args:
-	theFlag(Standard_Integer)
+		%feature("autodoc", "	* Query Returns true if there is flag. Returns the the flag theFlag
 
-Returns:
-	Standard_Boolean
-
-Query  
-Returns true if there is flag.  
-Returns the the  flag theFlag") HasFlag;
+	:param theFlag:
+	:type theFlag: Standard_Integer &
+	:rtype: bool
+") HasFlag;
 		Standard_Boolean HasFlag (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	theI(Standard_Integer)
+		%feature("autodoc", "	* Modifier Sets the flag
 
-Returns:
-	None
-
-Modifier  
-Sets the flag") SetFlag;
+	:param theI:
+	:type theI: Standard_Integer
+	:rtype: None
+") SetFlag;
 		void SetFlag (const Standard_Integer theI);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the flag
 
-Returns the flag") Flag;
+	:rtype: int
+") Flag;
 		Standard_Integer Flag ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
 };
 
@@ -2666,113 +1983,82 @@ def __del__(self):
 %nodefaultctor BOPDS_SubIterator;
 class BOPDS_SubIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty contructor
 
-Empty contructor") BOPDS_SubIterator;
+	:rtype: None
+") BOPDS_SubIterator;
 		 BOPDS_SubIterator ();
-		%feature("autodoc", "Args:
-	theAllocator(BOPCol_BaseAllocator)
+		%feature("autodoc", "	* Contructor theAllocator - the allocator to manage the memory
 
-Returns:
-	None
-
-Contructor  
- theAllocator - the allocator to manage the memory") BOPDS_SubIterator;
+	:param theAllocator:
+	:type theAllocator: BOPCol_BaseAllocator &
+	:rtype: None
+") BOPDS_SubIterator;
 		 BOPDS_SubIterator (const BOPCol_BaseAllocator & theAllocator);
-		%feature("autodoc", "Args:
-	pDS(BOPDS_PDS)
+		%feature("autodoc", "	* Modifier Sets the data structure <pDS> to process
 
-Returns:
-	None
-
-Modifier  
-Sets the data structure <pDS> to process") SetDS;
+	:param pDS:
+	:type pDS: BOPDS_PDS &
+	:rtype: None
+") SetDS;
 		void SetDS (const BOPDS_PDS & pDS);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_DS
+		%feature("autodoc", "	* Selector Returns the data structure
 
-Selector  
-Returns the data structure") DS;
+	:rtype: BOPDS_DS
+") DS;
 		const BOPDS_DS & DS ();
-		%feature("autodoc", "Args:
-	theLI(BOPCol_ListOfInteger)
+		%feature("autodoc", "	* Modifier Sets the first set of indices <theLI> to process
 
-Returns:
-	None
-
-Modifier  
-Sets the first set of indices  <theLI> to process") SetSubSet1;
+	:param theLI:
+	:type theLI: BOPCol_ListOfInteger &
+	:rtype: None
+") SetSubSet1;
 		void SetSubSet1 (const BOPCol_ListOfInteger & theLI);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPCol_ListOfInteger
+		%feature("autodoc", "	* Selector Returns the first set of indices to process
 
-Selector  
-Returns the first set of indices to process") SubSet1;
+	:rtype: BOPCol_ListOfInteger
+") SubSet1;
 		const BOPCol_ListOfInteger & SubSet1 ();
-		%feature("autodoc", "Args:
-	theLI(BOPCol_ListOfInteger)
+		%feature("autodoc", "	* Modifier Sets the second set of indices <theLI> to process
 
-Returns:
-	None
-
-Modifier  
-Sets the second set of indices  <theLI> to process") SetSubSet2;
+	:param theLI:
+	:type theLI: BOPCol_ListOfInteger &
+	:rtype: None
+") SetSubSet2;
 		void SetSubSet2 (const BOPCol_ListOfInteger & theLI);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPCol_ListOfInteger
+		%feature("autodoc", "	* Selector Returns the second set of indices to process
 
-Selector  
-Returns the second set of indices to process") SubSet2;
+	:rtype: BOPCol_ListOfInteger
+") SubSet2;
 		const BOPCol_ListOfInteger & SubSet2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Initializes the iterator
 
-Initializes the  iterator") Initialize;
+	:rtype: None
+") Initialize;
 		void Initialize ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if still there are pairs of intersected shapes
 
-Returns  true if still there are pairs  
- of intersected shapes") More;
+	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Moves iterations ahead
 
-Moves iterations ahead") Next;
+	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	theIndex1(Standard_Integer)
-	theIndex2(Standard_Integer)
+		%feature("autodoc", "	* Returns indices (DS) of intersected shapes theIndex1 - the index of the first shape theIndex2 - the index of the second shape
 
-Returns:
-	None
-
-Returns indices (DS) of intersected shapes  
-theIndex1 - the index of the first shape  
-theIndex2 - the index of the second shape") Value;
+	:param theIndex1:
+	:type theIndex1: Standard_Integer &
+	:param theIndex2:
+	:type theIndex2: Standard_Integer &
+	:rtype: None
+") Value;
 		void Value (Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Perform the intersection algorithm and prepare the results to be used
 
-Perform the intersection algorithm and prepare  
-the results to be used") Prepare;
+	:rtype: void
+") Prepare;
 		virtual void Prepare ();
 };
 
@@ -2794,43 +2080,35 @@ def __del__(self):
 %nodefaultctor BOPDS_Tools;
 class BOPDS_Tools {
 	public:
-		%feature("autodoc", "Args:
-	theT1(TopAbs_ShapeEnum)
-	theT2(TopAbs_ShapeEnum)
+		%feature("autodoc", "	* Converts the conmbination of two types of shape <theT1>,<theT2> to the one integer value, that is returned
 
-Returns:
-	static Standard_Integer
-
-Converts the conmbination of two types  
- of shape <theT1>,<theT2>  
-to the one integer value, that is returned") TypeToInteger;
+	:param theT1:
+	:type theT1: TopAbs_ShapeEnum
+	:param theT2:
+	:type theT2: TopAbs_ShapeEnum
+	:rtype: int
+") TypeToInteger;
 		static Standard_Integer TypeToInteger (const TopAbs_ShapeEnum theT1,const TopAbs_ShapeEnum theT2);
-		%feature("autodoc", "Args:
-	theT(TopAbs_ShapeEnum)
+		%feature("autodoc", "	* Converts the type of shape <theT>, to integer value, that is returned
 
-Returns:
-	static Standard_Integer
-
-Converts the type of shape <theT>,  
-to integer value, that is returned") TypeToInteger;
+	:param theT:
+	:type theT: TopAbs_ShapeEnum
+	:rtype: int
+") TypeToInteger;
 		static Standard_Integer TypeToInteger (const TopAbs_ShapeEnum theT);
-		%feature("autodoc", "Args:
-	theT(TopAbs_ShapeEnum)
+		%feature("autodoc", "	* Returns true if the type <theT> correspond to a shape having boundary representation
 
-Returns:
-	static Standard_Boolean
-
-Returns true if the type  <theT> correspond  
-to a shape having boundary representation") HasBRep;
+	:param theT:
+	:type theT: TopAbs_ShapeEnum
+	:rtype: bool
+") HasBRep;
 		static Standard_Boolean HasBRep (const TopAbs_ShapeEnum theT);
-		%feature("autodoc", "Args:
-	theT(TopAbs_ShapeEnum)
+		%feature("autodoc", "	* Returns true if the type <theT> can be participant of an interference
 
-Returns:
-	static Standard_Boolean
-
-Returns true if the type <theT> can be participant of  
-an interference") IsInterfering;
+	:param theT:
+	:type theT: TopAbs_ShapeEnum
+	:rtype: bool
+") IsInterfering;
 		static Standard_Boolean IsInterfering (const TopAbs_ShapeEnum theT);
 };
 
@@ -2852,51 +2130,29 @@ def __del__(self):
 %nodefaultctor BOPDS_InterfEE;
 class BOPDS_InterfEE : public BOPDS_Interf {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* /** * Constructor */
 
-/**
-*  Constructor
-*/") BOPDS_InterfEE;
+	:rtype: None
+") BOPDS_InterfEE;
 		 BOPDS_InterfEE ();
-		%feature("autodoc", "Args:
-	theAllocator(Handle_NCollection_BaseAllocator)
+		%feature("autodoc", "	* /** * Constructor * @param theAllocator * allocator to manage the memory */
 
-Returns:
-	None
-
-/**
-*  Constructor
-* @param theAllocator
-*   allocator to manage the memory
-*/") BOPDS_InterfEE;
+	:param theAllocator:
+	:type theAllocator: Handle_NCollection_BaseAllocator &
+	:rtype: None
+") BOPDS_InterfEE;
 		 BOPDS_InterfEE (const Handle_NCollection_BaseAllocator & theAllocator);
-		%feature("autodoc", "Args:
-	theCP(IntTools_CommonPrt)
+		%feature("autodoc", "	* /** * Modifier * Sets the info of common part * @param theCP * common part */
 
-Returns:
-	None
-
-/**
-*  Modifier
-* Sets the info of common part 
-* @param theCP
-*   common part
-*/") SetCommonPart;
+	:param theCP:
+	:type theCP: IntTools_CommonPrt &
+	:rtype: None
+") SetCommonPart;
 		void SetCommonPart (const IntTools_CommonPrt & theCP);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_CommonPrt
+		%feature("autodoc", "	* /** * Selector * Returns the info of common part * returns * common part */
 
-/**
-*  Selector
-* Returns the info of common part 
-* @return
-*   common part
-*/") CommonPart;
+	:rtype: IntTools_CommonPrt
+") CommonPart;
 		const IntTools_CommonPrt & CommonPart ();
 };
 
@@ -2918,55 +2174,29 @@ def __del__(self):
 %nodefaultctor BOPDS_InterfEF;
 class BOPDS_InterfEF : public BOPDS_Interf {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* /** * Constructor */
 
-/**
-*  Constructor
-*/") BOPDS_InterfEF;
+	:rtype: None
+") BOPDS_InterfEF;
 		 BOPDS_InterfEF ();
-		%feature("autodoc", "Args:
-	theAllocator(Handle_NCollection_BaseAllocator)
+		%feature("autodoc", "	* /** * Constructor * @param theAllocator * allocator to manage the memory *//** * Constructor * @param theAllocator * allocator to manage the memory */
 
-Returns:
-	None
-
-/**
-*  Constructor
-* @param theAllocator
-*   allocator to manage the memory
-*//**
-*  Constructor
-* @param theAllocator
-*   allocator to manage the memory
-*/") BOPDS_InterfEF;
+	:param theAllocator:
+	:type theAllocator: Handle_NCollection_BaseAllocator &
+	:rtype: None
+") BOPDS_InterfEF;
 		 BOPDS_InterfEF (const Handle_NCollection_BaseAllocator & theAllocator);
-		%feature("autodoc", "Args:
-	theCP(IntTools_CommonPrt)
+		%feature("autodoc", "	* /** * Modifier * Sets the info of common part * @param theCP * common part */
 
-Returns:
-	None
-
-/**
-* Modifier
-* Sets the info of common part 
-* @param theCP
-*   common part
-*/") SetCommonPart;
+	:param theCP:
+	:type theCP: IntTools_CommonPrt &
+	:rtype: None
+") SetCommonPart;
 		void SetCommonPart (const IntTools_CommonPrt & theCP);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_CommonPrt
+		%feature("autodoc", "	* /** * Selector * Returns the info of common part * returns * common part */
 
-/**
-*  Selector
-* Returns the info of common part 
-* @return
-*   common part
-*/") CommonPart;
+	:rtype: IntTools_CommonPrt
+") CommonPart;
 		const IntTools_CommonPrt & CommonPart ();
 };
 
@@ -2988,26 +2218,17 @@ def __del__(self):
 %nodefaultctor BOPDS_InterfEZ;
 class BOPDS_InterfEZ : public BOPDS_Interf {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* /** * Constructor */
 
-/**
-*  Constructor
-*/") BOPDS_InterfEZ;
+	:rtype: None
+") BOPDS_InterfEZ;
 		 BOPDS_InterfEZ ();
-		%feature("autodoc", "Args:
-	theAllocator(Handle_NCollection_BaseAllocator)
+		%feature("autodoc", "	* /** * Constructor * @param theAllocator * allocator to manage the memory */
 
-Returns:
-	None
-
-/**
-*  Constructor
-* @param theAllocator
-*   allocator to manage the memory
-*/") BOPDS_InterfEZ;
+	:param theAllocator:
+	:type theAllocator: Handle_NCollection_BaseAllocator &
+	:rtype: None
+") BOPDS_InterfEZ;
 		 BOPDS_InterfEZ (const Handle_NCollection_BaseAllocator & theAllocator);
 };
 
@@ -3029,152 +2250,75 @@ def __del__(self):
 %nodefaultctor BOPDS_InterfFF;
 class BOPDS_InterfFF : public BOPDS_Interf {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* /** * Constructor */
 
-/**
-*  Constructor
-*/") BOPDS_InterfFF;
+	:rtype: None
+") BOPDS_InterfFF;
 		 BOPDS_InterfFF ();
-		%feature("autodoc", "Args:
-	theNbCurves(Standard_Integer)
-	theNbPoints(Standard_Integer)
+		%feature("autodoc", "	* /** * Initializer * @param theNbCurves * number of intersection curves * @param theNbPoints * number of intersection points */
 
-Returns:
-	None
-
-/**
-* Initializer
-* @param theNbCurves
-*   number of intersection curves
-* @param theNbPoints
-*   number of intersection points
-*/") Init;
+	:param theNbCurves:
+	:type theNbCurves: Standard_Integer
+	:param theNbPoints:
+	:type theNbPoints: Standard_Integer
+	:rtype: None
+") Init;
 		void Init (const Standard_Integer theNbCurves,const Standard_Integer theNbPoints);
-		%feature("autodoc", "Args:
-	theFlag(Standard_Boolean)
+		%feature("autodoc", "	* /** * Modifier * Sets the flag of whether the faces are tangent * @param theFlag * the flag */
 
-Returns:
-	None
-
-/**
-* Modifier
-* Sets the flag of whether the faces are tangent  
-* @param theFlag
-*   the flag 
-*/") SetTangentFaces;
+	:param theFlag:
+	:type theFlag: bool
+	:rtype: None
+") SetTangentFaces;
 		void SetTangentFaces (const Standard_Boolean theFlag);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* /** * Selector * Returns the flag whether the faces are tangent * returns * the flag */
 
-/**
-* Selector
-* Returns the flag whether the faces are tangent  
-* @return
-*   the flag 
-*/") TangentFaces;
+	:rtype: bool
+") TangentFaces;
 		Standard_Boolean TangentFaces ();
-		%feature("autodoc", "Args:
-	theTol(Standard_Real)
+		%feature("autodoc", "	* /** * Modifier * Sets the value of 3D tolerance * @param theTol * 3D tolerance */
 
-Returns:
-	None
-
-/**
-* Modifier
-* Sets the value of 3D tolerance  
-* @param theTol
-*   3D tolerance
-*/") SetTolR3D;
+	:param theTol:
+	:type theTol: float
+	:rtype: None
+") SetTolR3D;
 		void SetTolR3D (const Standard_Real theTol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* /** * Selector * Returns the value of 3D tolerance * returns * 3D tolerance */
 
-/**
-* Selector
-* Returns the value of 3D tolerance  
-* @return
-*   3D tolerance
-*/") TolR3D;
+	:rtype: float
+") TolR3D;
 		Standard_Real TolR3D ();
-		%feature("autodoc", "Args:
-	theTol(Standard_Real)
+		%feature("autodoc", "	* /** * Modifier * Sets the value of 2D tolerance * @param theTol * 2D tolerance */
 
-Returns:
-	None
-
-/**
-* Modifier
-* Sets the value of 2D tolerance  
-* @param theTol
-*   2D tolerance
-*/") SetTolR2D;
+	:param theTol:
+	:type theTol: float
+	:rtype: None
+") SetTolR2D;
 		void SetTolR2D (const Standard_Real theTol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* /** * Selector * Returns the value of 2D tolerance * returns * 2D tolerance */
 
-/**
-* Selector 
-* Returns the value of 2D tolerance  
-* @return
-*   2D tolerance
-*/") TolR2D;
+	:rtype: float
+") TolR2D;
 		Standard_Real TolR2D ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_VectorOfCurve
+		%feature("autodoc", "	* /** * Selector * Returns the intersection curves * returns * intersection curves */
 
-/**
-* Selector
-* Returns the intersection curves  
-* @return
-*   intersection curves 
-*/") Curves;
+	:rtype: BOPDS_VectorOfCurve
+") Curves;
 		const BOPDS_VectorOfCurve & Curves ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_VectorOfCurve
+		%feature("autodoc", "	* /** * Selector/Modifier * Returns the intersection curves * returns * intersection curves */
 
-/**
-* Selector/Modifier
-* Returns the intersection curves  
-* @return
-*   intersection curves 
-*/") ChangeCurves;
+	:rtype: BOPDS_VectorOfCurve
+") ChangeCurves;
 		BOPDS_VectorOfCurve & ChangeCurves ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_VectorOfPoint
+		%feature("autodoc", "	* /** * Selector * Returns the intersection points * returns * intersection points */
 
-/**
-* Selector
-* Returns the intersection points  
-* @return
-*   intersection points
-*/") Points;
+	:rtype: BOPDS_VectorOfPoint
+") Points;
 		const BOPDS_VectorOfPoint & Points ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPDS_VectorOfPoint
+		%feature("autodoc", "	* /** * Selector/Modifier * Returns the intersection points * returns * intersection points */
 
-/**
-* Selector/Modifier
-* Returns the intersection points  
-* @return
-*   intersection points
-*/") ChangePoints;
+	:rtype: BOPDS_VectorOfPoint
+") ChangePoints;
 		BOPDS_VectorOfPoint & ChangePoints ();
 };
 
@@ -3196,26 +2340,17 @@ def __del__(self):
 %nodefaultctor BOPDS_InterfFZ;
 class BOPDS_InterfFZ : public BOPDS_Interf {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* /** * Constructor */
 
-/**
-*  Constructor
-*/") BOPDS_InterfFZ;
+	:rtype: None
+") BOPDS_InterfFZ;
 		 BOPDS_InterfFZ ();
-		%feature("autodoc", "Args:
-	theAllocator(Handle_NCollection_BaseAllocator)
+		%feature("autodoc", "	* /** * Constructor * @param theAllocator * allocator to manage the memory */
 
-Returns:
-	None
-
-/**
-*  Constructor
-* @param theAllocator
-*   allocator to manage the memory
-*/") BOPDS_InterfFZ;
+	:param theAllocator:
+	:type theAllocator: Handle_NCollection_BaseAllocator &
+	:rtype: None
+") BOPDS_InterfFZ;
 		 BOPDS_InterfFZ (const Handle_NCollection_BaseAllocator & theAllocator);
 };
 
@@ -3237,55 +2372,29 @@ def __del__(self):
 %nodefaultctor BOPDS_InterfVE;
 class BOPDS_InterfVE : public BOPDS_Interf {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* /** * Constructor */
 
-/**
-*  Constructor
-*/") BOPDS_InterfVE;
+	:rtype: None
+") BOPDS_InterfVE;
 		 BOPDS_InterfVE ();
-		%feature("autodoc", "Args:
-	theAllocator(Handle_NCollection_BaseAllocator)
+		%feature("autodoc", "	* /** * Constructor * @param theAllocator * allocator to manage the memory */
 
-Returns:
-	None
-
-/**
-*  Constructor
-* @param theAllocator
-*   allocator to manage the memory
-*/") BOPDS_InterfVE;
+	:param theAllocator:
+	:type theAllocator: Handle_NCollection_BaseAllocator &
+	:rtype: None
+") BOPDS_InterfVE;
 		 BOPDS_InterfVE (const Handle_NCollection_BaseAllocator & theAllocator);
-		%feature("autodoc", "Args:
-	theT(Standard_Real)
+		%feature("autodoc", "	* /** * Modifier * Sets the value of parameter * of the point of the vertex * on the curve of the edge * @param theT * value of parameter */
 
-Returns:
-	None
-
-/**
-*  Modifier
-* Sets the value of parameter 
-* of the point of the vertex 
-* on the curve of the edge
-* @param theT
-*   value of parameter 
-*/") SetParameter;
+	:param theT:
+	:type theT: float
+	:rtype: None
+") SetParameter;
 		void SetParameter (const Standard_Real theT);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* /** * Selector * Returrns the value of parameter * of the point of the vertex * on the curve of the edge * returns * value of parameter */
 
-/**
-*  Selector
-* Returrns the value of parameter 
-* of the point of the vertex 
-* on the curve of the edge
-* @return
-*   value of parameter 
-*/") Parameter;
+	:rtype: float
+") Parameter;
 		Standard_Real Parameter ();
 };
 
@@ -3307,62 +2416,35 @@ def __del__(self):
 %nodefaultctor BOPDS_InterfVF;
 class BOPDS_InterfVF : public BOPDS_Interf {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* /** * Constructor */
 
-/**
-*  Constructor
-*/") BOPDS_InterfVF;
+	:rtype: None
+") BOPDS_InterfVF;
 		 BOPDS_InterfVF ();
-		%feature("autodoc", "Args:
-	theAllocator(Handle_NCollection_BaseAllocator)
+		%feature("autodoc", "	* /** * Constructor * @param theAllocator * allocator to manage the memory */
 
-Returns:
-	None
-
-/**
-*  Constructor
-* @param theAllocator
-*   allocator to manage the memory
-*/") BOPDS_InterfVF;
+	:param theAllocator:
+	:type theAllocator: Handle_NCollection_BaseAllocator &
+	:rtype: None
+") BOPDS_InterfVF;
 		 BOPDS_InterfVF (const Handle_NCollection_BaseAllocator & theAllocator);
-		%feature("autodoc", "Args:
-	theU(Standard_Real)
-	theV(Standard_Real)
+		%feature("autodoc", "	* /** * Modifier * Sets the value of parameters * of the point of the vertex * on the surface of of the face * @param theU * value of U parameter * @param theV * value of U parameter */
 
-Returns:
-	None
-
-/**
-* Modifier
-* Sets the value of parameters 
-* of the point of the vertex 
-* on the surface of of the face
-* @param theU
-*   value of U parameter
-* @param theV 
-*   value of U parameter 
-*/") SetUV;
+	:param theU:
+	:type theU: float
+	:param theV:
+	:type theV: float
+	:rtype: None
+") SetUV;
 		void SetUV (const Standard_Real theU,const Standard_Real theV);
-		%feature("autodoc", "Args:
-	theU(Standard_Real)
-	theV(Standard_Real)
+		%feature("autodoc", "	* /** * Selector * Returns the value of parameters * of the point of the vertex * on the surface of of the face * @param theU * value of U parameter * @param theV * value of U parameter */
 
-Returns:
-	None
-
-/**
-* Selector
-* Returns the value of parameters 
-* of the point of the vertex 
-* on the surface of of the face
-* @param theU
-*   value of U parameter
-* @param theV 
-*   value of U parameter 
-*/") UV;
+	:param theU:
+	:type theU: float &
+	:param theV:
+	:type theV: float &
+	:rtype: None
+") UV;
 		void UV (Standard_Real &OutValue,Standard_Real &OutValue);
 };
 
@@ -3384,26 +2466,17 @@ def __del__(self):
 %nodefaultctor BOPDS_InterfVV;
 class BOPDS_InterfVV : public BOPDS_Interf {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* /** * Constructor */
 
-/**
-*  Constructor
-*/") BOPDS_InterfVV;
+	:rtype: None
+") BOPDS_InterfVV;
 		 BOPDS_InterfVV ();
-		%feature("autodoc", "Args:
-	theAllocator(Handle_NCollection_BaseAllocator)
+		%feature("autodoc", "	* /** * Constructor * @param theAllocator * allocator to manage the memory */
 
-Returns:
-	None
-
-/**
-*  Constructor
-* @param theAllocator
-*   allocator to manage the memory
-*/") BOPDS_InterfVV;
+	:param theAllocator:
+	:type theAllocator: Handle_NCollection_BaseAllocator &
+	:rtype: None
+") BOPDS_InterfVV;
 		 BOPDS_InterfVV (const Handle_NCollection_BaseAllocator & theAllocator);
 };
 
@@ -3425,26 +2498,17 @@ def __del__(self):
 %nodefaultctor BOPDS_InterfVZ;
 class BOPDS_InterfVZ : public BOPDS_Interf {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* /** * Constructor */
 
-/**
-*  Constructor
-*/") BOPDS_InterfVZ;
+	:rtype: None
+") BOPDS_InterfVZ;
 		 BOPDS_InterfVZ ();
-		%feature("autodoc", "Args:
-	theAllocator(Handle_NCollection_BaseAllocator)
+		%feature("autodoc", "	* /** * Constructor * @param theAllocator * allocator to manage the memory */
 
-Returns:
-	None
-
-/**
-*  Constructor
-* @param theAllocator
-*   allocator to manage the memory
-*/") BOPDS_InterfVZ;
+	:param theAllocator:
+	:type theAllocator: Handle_NCollection_BaseAllocator &
+	:rtype: None
+") BOPDS_InterfVZ;
 		 BOPDS_InterfVZ (const Handle_NCollection_BaseAllocator & theAllocator);
 };
 
@@ -3466,26 +2530,17 @@ def __del__(self):
 %nodefaultctor BOPDS_InterfZZ;
 class BOPDS_InterfZZ : public BOPDS_Interf {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* /** * Constructor */
 
-/**
-*  Constructor
-*/") BOPDS_InterfZZ;
+	:rtype: None
+") BOPDS_InterfZZ;
 		 BOPDS_InterfZZ ();
-		%feature("autodoc", "Args:
-	theAllocator(Handle_NCollection_BaseAllocator)
+		%feature("autodoc", "	* /** * Constructor * @param theAllocator * allocator to manage the memory */
 
-Returns:
-	None
-
-/**
-*  Constructor
-* @param theAllocator
-*   allocator to manage the memory
-*/") BOPDS_InterfZZ;
+	:param theAllocator:
+	:type theAllocator: Handle_NCollection_BaseAllocator &
+	:rtype: None
+") BOPDS_InterfZZ;
 		 BOPDS_InterfZZ (const Handle_NCollection_BaseAllocator & theAllocator);
 };
 
@@ -3507,37 +2562,24 @@ def __del__(self):
 %nodefaultctor BOPDS_IteratorSI;
 class BOPDS_IteratorSI : public BOPDS_Iterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty contructor
 
-Empty contructor") BOPDS_IteratorSI;
+	:rtype: None
+") BOPDS_IteratorSI;
 		 BOPDS_IteratorSI ();
-		%feature("autodoc", "Args:
-	theAllocator(BOPCol_BaseAllocator)
+		%feature("autodoc", "	* Contructor theAllocator - the allocator to manage the memory
 
-Returns:
-	None
-
-Contructor  
- theAllocator - the allocator to manage the memory") BOPDS_IteratorSI;
+	:param theAllocator:
+	:type theAllocator: BOPCol_BaseAllocator &
+	:rtype: None
+") BOPDS_IteratorSI;
 		 BOPDS_IteratorSI (const BOPCol_BaseAllocator & theAllocator);
-		%feature("autodoc", "Args:
-	theLevel(Standard_Integer)
+		%feature("autodoc", "	* Updates the lists of possible intersections according to the value of <theLevel>. It defines which interferferences will be checked: 0 - only V/V; 1 - V/V and V/E; 2 - V/V, V/E and E/E; 3 - V/V, V/E, E/E and V/F; 4 - V/V, V/E, E/E, V/F and E/F; other - all interferences.
 
-Returns:
-	None
-
-Updates the lists of possible intersections  
-          according to the value of <theLevel>.  
-          It defines which interferferences will be checked:  
-          0 - only V/V;  
-          1 - V/V and V/E;  
-          2 - V/V, V/E and E/E;  
-          3 - V/V, V/E, E/E and V/F;  
-          4 - V/V, V/E, E/E, V/F and E/F;  
-          other - all interferences.") UpdateByLevelOfCheck;
+	:param theLevel:
+	:type theLevel: Standard_Integer
+	:rtype: None
+") UpdateByLevelOfCheck;
 		void UpdateByLevelOfCheck (const Standard_Integer theLevel);
 };
 
@@ -3559,51 +2601,31 @@ def __del__(self):
 %nodefaultctor BOPDS_PassKeyBoolean;
 class BOPDS_PassKeyBoolean : public BOPDS_PassKey {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BOPDS_PassKeyBoolean;
+		%feature("autodoc", "	:rtype: None
+") BOPDS_PassKeyBoolean;
 		 BOPDS_PassKeyBoolean ();
-		%feature("autodoc", "Args:
-	theAllocator(BOPCol_BaseAllocator)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BOPDS_PassKeyBoolean;
+		%feature("autodoc", "	:param theAllocator:
+	:type theAllocator: BOPCol_BaseAllocator &
+	:rtype: None
+") BOPDS_PassKeyBoolean;
 		 BOPDS_PassKeyBoolean (const BOPCol_BaseAllocator & theAllocator);
-		%feature("autodoc", "Args:
-	Other(BOPDS_PassKeyBoolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BOPDS_PassKeyBoolean;
+		%feature("autodoc", "	:param Other:
+	:type Other: BOPDS_PassKeyBoolean &
+	:rtype: None
+") BOPDS_PassKeyBoolean;
 		 BOPDS_PassKeyBoolean (const BOPDS_PassKeyBoolean & Other);
-		%feature("autodoc", "Args:
-	theFlag(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetFlag;
+		%feature("autodoc", "	:param theFlag:
+	:type theFlag: bool
+	:rtype: None
+") SetFlag;
 		void SetFlag (const Standard_Boolean theFlag);
-		%feature("autodoc", "Args:
-	&(BOPDS_PassKeyBoolean)
-
-Returns:
-	BOPDS_PassKeyBoolean
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param &:
+	:type &: BOPDS_PassKeyBoolean
+	:rtype: BOPDS_PassKeyBoolean
+") operator=;
 		BOPDS_PassKeyBoolean & operator = (const BOPDS_PassKeyBoolean &);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Flag;
+		%feature("autodoc", "	:rtype: bool
+") Flag;
 		Standard_Boolean Flag ();
 };
 
