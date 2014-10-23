@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -44,129 +44,88 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor TopTrans_Array2OfOrientation;
 class TopTrans_Array2OfOrientation {
 	public:
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTrans_Array2OfOrientation;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") TopTrans_Array2OfOrientation;
 		 TopTrans_Array2OfOrientation (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	Item(TopAbs_Orientation)
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TopTrans_Array2OfOrientation;
+		%feature("autodoc", "	:param Item:
+	:type Item: TopAbs_Orientation &
+	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") TopTrans_Array2OfOrientation;
 		 TopTrans_Array2OfOrientation (const TopAbs_Orientation & Item,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	V(TopAbs_Orientation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: TopAbs_Orientation &
+	:rtype: None
+") Init;
 		void Init (const TopAbs_Orientation & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	Other(TopTrans_Array2OfOrientation)
-
-Returns:
-	TopTrans_Array2OfOrientation
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTrans_Array2OfOrientation &
+	:rtype: TopTrans_Array2OfOrientation
+") Assign;
 		const TopTrans_Array2OfOrientation & Assign (const TopTrans_Array2OfOrientation & Other);
-		%feature("autodoc", "Args:
-	Other(TopTrans_Array2OfOrientation)
-
-Returns:
-	TopTrans_Array2OfOrientation
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTrans_Array2OfOrientation &
+	:rtype: TopTrans_Array2OfOrientation
+") operator=;
 		const TopTrans_Array2OfOrientation & operator = (const TopTrans_Array2OfOrientation & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ColLength;
+		%feature("autodoc", "	:rtype: int
+") ColLength;
 		Standard_Integer ColLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") RowLength;
+		%feature("autodoc", "	:rtype: int
+") RowLength;
 		Standard_Integer RowLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerCol;
+		%feature("autodoc", "	:rtype: int
+") LowerCol;
 		Standard_Integer LowerCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerRow;
+		%feature("autodoc", "	:rtype: int
+") LowerRow;
 		Standard_Integer LowerRow ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperCol;
+		%feature("autodoc", "	:rtype: int
+") UpperCol;
 		Standard_Integer UpperCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperRow;
+		%feature("autodoc", "	:rtype: int
+") UpperRow;
 		Standard_Integer UpperRow ();
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-	Value(TopAbs_Orientation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:param Value:
+	:type Value: TopAbs_Orientation &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const TopAbs_Orientation & Value);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	TopAbs_Orientation
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: TopAbs_Orientation
+") Value;
 		const TopAbs_Orientation & Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	TopAbs_Orientation
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: TopAbs_Orientation
+") ChangeValue;
 		TopAbs_Orientation & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 };
 
@@ -188,69 +147,55 @@ def __del__(self):
 %nodefaultctor TopTrans_CurveTransition;
 class TopTrans_CurveTransition {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Create an empty Curve Transition.
 
-Create an empty  Curve Transition.") TopTrans_CurveTransition;
+	:rtype: None
+") TopTrans_CurveTransition;
 		 TopTrans_CurveTransition ();
-		%feature("autodoc", "Args:
-	Tgt(gp_Dir)
-	Norm(gp_Dir)
-	Curv(Standard_Real)
+		%feature("autodoc", "	* Initialize a Transition with the local description of a Curve.
 
-Returns:
-	None
-
-Initialize a Transition with the local description  
-         of a Curve.") Reset;
+	:param Tgt:
+	:type Tgt: gp_Dir
+	:param Norm:
+	:type Norm: gp_Dir
+	:param Curv:
+	:type Curv: float
+	:rtype: None
+") Reset;
 		void Reset (const gp_Dir & Tgt,const gp_Dir & Norm,const Standard_Real Curv);
-		%feature("autodoc", "Args:
-	Tgt(gp_Dir)
+		%feature("autodoc", "	* Initialize a Transition with the local description of a straigth line.
 
-Returns:
-	None
-
-Initialize a Transition with the local description  
-         of a straigth line.") Reset;
+	:param Tgt:
+	:type Tgt: gp_Dir
+	:rtype: None
+") Reset;
 		void Reset (const gp_Dir & Tgt);
-		%feature("autodoc", "Args:
-	Tole(Standard_Real)
-	Tang(gp_Dir)
-	Norm(gp_Dir)
-	Curv(Standard_Real)
-	S(TopAbs_Orientation)
-	Or(TopAbs_Orientation)
+		%feature("autodoc", "	* Add a curve element to the boundary. If Or is REVERSED the curve is before the intersection, else if Or is FORWARD the curv is after the intersection and if Or is INTERNAL the intersection is in the middle of the curv.
 
-Returns:
-	None
-
-Add  a curve element to the  boundary.    If Or is  
-         REVERSED  the curve  is   before the intersection,  
-         else if  Or  is FORWARD  the   curv  is after  the  
-         intersection   and    if   Or  is   INTERNAL   the  
-         intersection is in the middle of the curv.") Compare;
+	:param Tole:
+	:type Tole: float
+	:param Tang:
+	:type Tang: gp_Dir
+	:param Norm:
+	:type Norm: gp_Dir
+	:param Curv:
+	:type Curv: float
+	:param S:
+	:type S: TopAbs_Orientation
+	:param Or:
+	:type Or: TopAbs_Orientation
+	:rtype: None
+") Compare;
 		void Compare (const Standard_Real Tole,const gp_Dir & Tang,const gp_Dir & Norm,const Standard_Real Curv,const TopAbs_Orientation S,const TopAbs_Orientation Or);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_State
+		%feature("autodoc", "	* returns the state of the curve before the intersection, this is the position relative to the boundary of a point very close to the intersection on the negative side of the tangent.
 
-returns   the  state   of  the   curve  before the  
-         intersection, this is the position relative to the  
-         boundary of a point very close to the intersection  
-         on the negative side of the tangent.") StateBefore;
+	:rtype: TopAbs_State
+") StateBefore;
 		TopAbs_State StateBefore ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_State
+		%feature("autodoc", "	* returns the state of the curve after the intersection, this is the position relative to the boundary of a point very close to the intersection on the positive side of the tangent.
 
-returns  the    state of  the  curve   after   the  
-         intersection, this is the position relative to the  
-         boundary of a point very close to the intersection  
-         on the positive side of the tangent.") StateAfter;
+	:rtype: TopAbs_State
+") StateAfter;
 		TopAbs_State StateAfter ();
 };
 
@@ -272,113 +217,90 @@ def __del__(self):
 %nodefaultctor TopTrans_SurfaceTransition;
 class TopTrans_SurfaceTransition {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Create an empty Surface Transition.
 
-Create an empty Surface Transition.") TopTrans_SurfaceTransition;
+	:rtype: None
+") TopTrans_SurfaceTransition;
 		 TopTrans_SurfaceTransition ();
-		%feature("autodoc", "Args:
-	Tgt(gp_Dir)
-	Norm(gp_Dir)
-	MaxD(gp_Dir)
-	MinD(gp_Dir)
-	MaxCurv(Standard_Real)
-	MinCurv(Standard_Real)
+		%feature("autodoc", "	* Initialize a Surface Transition with the local description of the intersection curve and of the reference surface. PREQUESITORY : Norm oriented OUTSIDE 'geometric matter'
 
-Returns:
-	None
-
-Initialize  a  Surface Transition with the local  
-         description of the intersection curve and of the  
-         reference surface.  
-         PREQUESITORY : Norm oriented OUTSIDE 'geometric matter'") Reset;
+	:param Tgt:
+	:type Tgt: gp_Dir
+	:param Norm:
+	:type Norm: gp_Dir
+	:param MaxD:
+	:type MaxD: gp_Dir
+	:param MinD:
+	:type MinD: gp_Dir
+	:param MaxCurv:
+	:type MaxCurv: float
+	:param MinCurv:
+	:type MinCurv: float
+	:rtype: None
+") Reset;
 		void Reset (const gp_Dir & Tgt,const gp_Dir & Norm,const gp_Dir & MaxD,const gp_Dir & MinD,const Standard_Real MaxCurv,const Standard_Real MinCurv);
-		%feature("autodoc", "Args:
-	Tgt(gp_Dir)
-	Norm(gp_Dir)
+		%feature("autodoc", "	* Initialize a Surface Transition with the local description of a straight line.
 
-Returns:
-	None
-
-Initialize  a  Surface Transition  with the  local  
-         description of a straight line.") Reset;
+	:param Tgt:
+	:type Tgt: gp_Dir
+	:param Norm:
+	:type Norm: gp_Dir
+	:rtype: None
+") Reset;
 		void Reset (const gp_Dir & Tgt,const gp_Dir & Norm);
-		%feature("autodoc", "Args:
-	Tole(Standard_Real)
-	Norm(gp_Dir)
-	MaxD(gp_Dir)
-	MinD(gp_Dir)
-	MaxCurv(Standard_Real)
-	MinCurv(Standard_Real)
-	S(TopAbs_Orientation)
-	O(TopAbs_Orientation)
+		%feature("autodoc", "	* Add a face element to the boundary.  - S defines topological orientation for the face : S FORWARD means: along the intersection curve on the reference surface, transition states while crossing the face are OUT,IN. S REVERSED means states are IN,OUT. S INTERNAL means states are IN,IN.  - O defines curve's position on face : O FORWARD means the face is before the intersection O REVERSED means the face is AFTER O INTERNAL means the curve intersection is in the face. PREQUESITORY : Norm oriented OUTSIDE 'geometric matter'
 
-Returns:
-	None
-
-Add a face element to the boundary.  
- 
-         - S defines topological orientation for the face :  
-         S FORWARD means: along the intersection curve on the  
-         reference surface, transition states while crossing  
-         the face are OUT,IN.  
-         S REVERSED means states are IN,OUT.  
-         S INTERNAL means states are IN,IN.  
- 
-         - O defines curve's position on face :  
-         O FORWARD means the face is before the intersection  
-         O REVERSED means the face is AFTER  
-         O INTERNAL means the curve intersection is in the face.  
-         PREQUESITORY : Norm oriented OUTSIDE 'geometric matter'") Compare;
+	:param Tole:
+	:type Tole: float
+	:param Norm:
+	:type Norm: gp_Dir
+	:param MaxD:
+	:type MaxD: gp_Dir
+	:param MinD:
+	:type MinD: gp_Dir
+	:param MaxCurv:
+	:type MaxCurv: float
+	:param MinCurv:
+	:type MinCurv: float
+	:param S:
+	:type S: TopAbs_Orientation
+	:param O:
+	:type O: TopAbs_Orientation
+	:rtype: None
+") Compare;
 		void Compare (const Standard_Real Tole,const gp_Dir & Norm,const gp_Dir & MaxD,const gp_Dir & MinD,const Standard_Real MaxCurv,const Standard_Real MinCurv,const TopAbs_Orientation S,const TopAbs_Orientation O);
-		%feature("autodoc", "Args:
-	Tole(Standard_Real)
-	Norm(gp_Dir)
-	S(TopAbs_Orientation)
-	O(TopAbs_Orientation)
+		%feature("autodoc", "	* Add a plane or a cylindric face to the boundary.
 
-Returns:
-	None
-
-Add a plane or a cylindric face to the boundary.") Compare;
+	:param Tole:
+	:type Tole: float
+	:param Norm:
+	:type Norm: gp_Dir
+	:param S:
+	:type S: TopAbs_Orientation
+	:param O:
+	:type O: TopAbs_Orientation
+	:rtype: None
+") Compare;
 		void Compare (const Standard_Real Tole,const gp_Dir & Norm,const TopAbs_Orientation S,const TopAbs_Orientation O);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_State
+		%feature("autodoc", "	* Returns the state of the reference surface before the interference, this is the position relative to the surface of a point very close to the intersection on the negative side of the tangent.
 
-Returns the state of the reference surface before  
-         the interference, this is the position relative to  
-         the surface of a  point very close to the intersection  
-         on the negative side of the tangent.") StateBefore;
+	:rtype: TopAbs_State
+") StateBefore;
 		TopAbs_State StateBefore ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_State
+		%feature("autodoc", "	* Returns the state of the reference surface after interference, this is the position relative to the surface of a point very close to the intersection on the positive side of the tangent.
 
-Returns the state of the reference surface after  
-         interference, this is the position relative to the  
-         surface of a point very  close to the intersection  
-         on the positive side of the tangent.") StateAfter;
+	:rtype: TopAbs_State
+") StateAfter;
 		TopAbs_State StateAfter ();
-		%feature("autodoc", "Args:
-	Tran(TopAbs_Orientation)
-
-Returns:
-	static TopAbs_State
-
-No detailed docstring for this function.") GetBefore;
+		%feature("autodoc", "	:param Tran:
+	:type Tran: TopAbs_Orientation
+	:rtype: TopAbs_State
+") GetBefore;
 		static TopAbs_State GetBefore (const TopAbs_Orientation Tran);
-		%feature("autodoc", "Args:
-	Tran(TopAbs_Orientation)
-
-Returns:
-	static TopAbs_State
-
-No detailed docstring for this function.") GetAfter;
+		%feature("autodoc", "	:param Tran:
+	:type Tran: TopAbs_Orientation
+	:rtype: TopAbs_State
+") GetAfter;
 		static TopAbs_State GetAfter (const TopAbs_Orientation Tran);
 };
 

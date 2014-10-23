@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -44,43 +44,37 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor AppCont_FitFunction;
 class AppCont_FitFunction {
 	public:
-		%feature("autodoc", "Args:
-	SSP(AppCont_Function)
-	U0(Standard_Real)
-	U1(Standard_Real)
-	FirstCons(AppParCurves_Constraint)
-	LastCons(AppParCurves_Constraint)
-	Deg(Standard_Integer)
-	NbPoints(Standard_Integer)=24
-
-Returns:
-	None
-
-No detailed docstring for this function.") AppCont_FitFunction;
+		%feature("autodoc", "	:param SSP:
+	:type SSP: AppCont_Function &
+	:param U0:
+	:type U0: float
+	:param U1:
+	:type U1: float
+	:param FirstCons:
+	:type FirstCons: AppParCurves_Constraint
+	:param LastCons:
+	:type LastCons: AppParCurves_Constraint
+	:param Deg:
+	:type Deg: Standard_Integer
+	:param NbPoints: default value is 24
+	:type NbPoints: Standard_Integer
+	:rtype: None
+") AppCont_FitFunction;
 		 AppCont_FitFunction (const AppCont_Function & SSP,const Standard_Real U0,const Standard_Real U1,const AppParCurves_Constraint FirstCons,const AppParCurves_Constraint LastCons,const Standard_Integer Deg,const Standard_Integer NbPoints = 24);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	AppParCurves_MultiCurve
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: AppParCurves_MultiCurve
+") Value;
 		const AppParCurves_MultiCurve & Value ();
-		%feature("autodoc", "Args:
-	F(Standard_Real)
-	MaxE3d(Standard_Real)
-	MaxE2d(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Error;
+		%feature("autodoc", "	:param F:
+	:type F: float &
+	:param MaxE3d:
+	:type MaxE3d: float &
+	:param MaxE2d:
+	:type MaxE2d: float &
+	:rtype: None
+") Error;
 		void Error (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 };
 
@@ -102,43 +96,37 @@ def __del__(self):
 %nodefaultctor AppCont_FitFunction2d;
 class AppCont_FitFunction2d {
 	public:
-		%feature("autodoc", "Args:
-	SSP(AppCont_Function2d)
-	U0(Standard_Real)
-	U1(Standard_Real)
-	FirstCons(AppParCurves_Constraint)
-	LastCons(AppParCurves_Constraint)
-	Deg(Standard_Integer)
-	NbPoints(Standard_Integer)=24
-
-Returns:
-	None
-
-No detailed docstring for this function.") AppCont_FitFunction2d;
+		%feature("autodoc", "	:param SSP:
+	:type SSP: AppCont_Function2d &
+	:param U0:
+	:type U0: float
+	:param U1:
+	:type U1: float
+	:param FirstCons:
+	:type FirstCons: AppParCurves_Constraint
+	:param LastCons:
+	:type LastCons: AppParCurves_Constraint
+	:param Deg:
+	:type Deg: Standard_Integer
+	:param NbPoints: default value is 24
+	:type NbPoints: Standard_Integer
+	:rtype: None
+") AppCont_FitFunction2d;
 		 AppCont_FitFunction2d (const AppCont_Function2d & SSP,const Standard_Real U0,const Standard_Real U1,const AppParCurves_Constraint FirstCons,const AppParCurves_Constraint LastCons,const Standard_Integer Deg,const Standard_Integer NbPoints = 24);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	AppParCurves_MultiCurve
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: AppParCurves_MultiCurve
+") Value;
 		const AppParCurves_MultiCurve & Value ();
-		%feature("autodoc", "Args:
-	F(Standard_Real)
-	MaxE3d(Standard_Real)
-	MaxE2d(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Error;
+		%feature("autodoc", "	:param F:
+	:type F: float &
+	:param MaxE3d:
+	:type MaxE3d: float &
+	:param MaxE2d:
+	:type MaxE2d: float &
+	:rtype: None
+") Error;
 		void Error (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 };
 
@@ -160,45 +148,36 @@ def __del__(self):
 %nodefaultctor AppCont_Function;
 class AppCont_Function {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Delete;
+		%feature("autodoc", "	:rtype: void
+") Delete;
 		virtual void Delete ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Real
+		%feature("autodoc", "	* returns the first parameter of the function.
 
-returns the first parameter of the function.") FirstParameter;
+	:rtype: float
+") FirstParameter;
 		virtual Standard_Real FirstParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Real
+		%feature("autodoc", "	* returns the last parameter of the function.
 
-returns the last parameter of the function.") LastParameter;
+	:rtype: float
+") LastParameter;
 		virtual Standard_Real LastParameter ();
-		%feature("autodoc", "Args:
-	U(Standard_Real)
+		%feature("autodoc", "	* returns the point at parameter <U>.
 
-Returns:
-	virtual gp_Pnt
-
-returns the point at parameter <U>.") Value;
+	:param U:
+	:type U: float
+	:rtype: gp_Pnt
+") Value;
 		virtual gp_Pnt Value (const Standard_Real U);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	P(gp_Pnt)
-	V(gp_Vec)
+		%feature("autodoc", "	* returns the point and the derivative values at the parameter <U>.
 
-Returns:
-	virtual Standard_Boolean
-
-returns the point and the derivative values at  
-         the parameter <U>.") D1;
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt
+	:param V:
+	:type V: gp_Vec
+	:rtype: bool
+") D1;
 		virtual Standard_Boolean D1 (const Standard_Real U,gp_Pnt & P,gp_Vec & V);
 };
 
@@ -220,45 +199,36 @@ def __del__(self):
 %nodefaultctor AppCont_Function2d;
 class AppCont_Function2d {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Delete;
+		%feature("autodoc", "	:rtype: void
+") Delete;
 		virtual void Delete ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Real
+		%feature("autodoc", "	* returns the first parameter of the function.
 
-returns the first parameter of the function.") FirstParameter;
+	:rtype: float
+") FirstParameter;
 		virtual Standard_Real FirstParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Real
+		%feature("autodoc", "	* returns the last parameter of the function.
 
-returns the last parameter of the function.") LastParameter;
+	:rtype: float
+") LastParameter;
 		virtual Standard_Real LastParameter ();
-		%feature("autodoc", "Args:
-	U(Standard_Real)
+		%feature("autodoc", "	* returns the point at parameter <U>.
 
-Returns:
-	virtual gp_Pnt2d
-
-returns the point at parameter <U>.") Value;
+	:param U:
+	:type U: float
+	:rtype: gp_Pnt2d
+") Value;
 		virtual gp_Pnt2d Value (const Standard_Real U);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	P(gp_Pnt2d)
-	V(gp_Vec2d)
+		%feature("autodoc", "	* returns the point and the derivative values at the parameter <U>.
 
-Returns:
-	virtual Standard_Boolean
-
-returns the point and the derivative values at  
-         the parameter <U>.") D1;
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt2d
+	:param V:
+	:type V: gp_Vec2d
+	:rtype: bool
+") D1;
 		virtual Standard_Boolean D1 (const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V);
 };
 
@@ -280,102 +250,95 @@ def __del__(self):
 %nodefaultctor AppCont_FunctionTool;
 class AppCont_FunctionTool {
 	public:
-		%feature("autodoc", "Args:
-	C(AppCont_Function)
+		%feature("autodoc", "	* returns the first parameter of the Function.
 
-Returns:
-	static Standard_Real
-
-returns the first parameter of the Function.") FirstParameter;
+	:param C:
+	:type C: AppCont_Function &
+	:rtype: float
+") FirstParameter;
 		static Standard_Real FirstParameter (const AppCont_Function & C);
-		%feature("autodoc", "Args:
-	C(AppCont_Function)
+		%feature("autodoc", "	* returns the last parameter of the Function.
 
-Returns:
-	static Standard_Real
-
-returns the last parameter of the Function.") LastParameter;
+	:param C:
+	:type C: AppCont_Function &
+	:rtype: float
+") LastParameter;
 		static Standard_Real LastParameter (const AppCont_Function & C);
-		%feature("autodoc", "Args:
-	C(AppCont_Function)
+		%feature("autodoc", "	* Returns 0.
 
-Returns:
-	static Standard_Integer
-
-Returns 0.") NbP2d;
+	:param C:
+	:type C: AppCont_Function &
+	:rtype: int
+") NbP2d;
 		static Standard_Integer NbP2d (const AppCont_Function & C);
-		%feature("autodoc", "Args:
-	C(AppCont_Function)
+		%feature("autodoc", "	* Returns 1. (the approximation will be done only for one function.
 
-Returns:
-	static Standard_Integer
-
-Returns 1. (the approximation will be done only for one  
-         function.") NbP3d;
+	:param C:
+	:type C: AppCont_Function &
+	:rtype: int
+") NbP3d;
 		static Standard_Integer NbP3d (const AppCont_Function & C);
-		%feature("autodoc", "Args:
-	C(AppCont_Function)
-	U(Standard_Real)
-	tabPt(TColgp_Array1OfPnt)
+		%feature("autodoc", "	* <tabP> is an array of only 1 element, the point value at the parameter <U>.
 
-Returns:
-	static void
-
-<tabP> is an array of only 1 element, the point value at  
-         the parameter <U>.") Value;
+	:param C:
+	:type C: AppCont_Function &
+	:param U:
+	:type U: float
+	:param tabPt:
+	:type tabPt: TColgp_Array1OfPnt
+	:rtype: void
+") Value;
 		static void Value (const AppCont_Function & C,const Standard_Real U,TColgp_Array1OfPnt & tabPt);
-		%feature("autodoc", "Args:
-	C(AppCont_Function)
-	U(Standard_Real)
-	tabV(TColgp_Array1OfVec)
+		%feature("autodoc", "	* <tabV> is an array of only 1 element, the derivative value at the parameter <U>.
 
-Returns:
-	static Standard_Boolean
-
-<tabV> is an array of only 1 element, the derivative  
-         value at the parameter <U>.") D1;
+	:param C:
+	:type C: AppCont_Function &
+	:param U:
+	:type U: float
+	:param tabV:
+	:type tabV: TColgp_Array1OfVec
+	:rtype: bool
+") D1;
 		static Standard_Boolean D1 (const AppCont_Function & C,const Standard_Real U,TColgp_Array1OfVec & tabV);
-		%feature("autodoc", "Args:
-	C(AppCont_Function)
-	U(Standard_Real)
-	tabPt2d(TColgp_Array1OfPnt2d)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param C:
+	:type C: AppCont_Function &
+	:param U:
+	:type U: float
+	:param tabPt2d:
+	:type tabPt2d: TColgp_Array1OfPnt2d
+	:rtype: void
+") Value;
 		static void Value (const AppCont_Function & C,const Standard_Real U,TColgp_Array1OfPnt2d & tabPt2d);
-		%feature("autodoc", "Args:
-	C(AppCont_Function)
-	U(Standard_Real)
-	tabPt(TColgp_Array1OfPnt)
-	tabPt2d(TColgp_Array1OfPnt2d)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param C:
+	:type C: AppCont_Function &
+	:param U:
+	:type U: float
+	:param tabPt:
+	:type tabPt: TColgp_Array1OfPnt
+	:param tabPt2d:
+	:type tabPt2d: TColgp_Array1OfPnt2d
+	:rtype: void
+") Value;
 		static void Value (const AppCont_Function & C,const Standard_Real U,TColgp_Array1OfPnt & tabPt,TColgp_Array1OfPnt2d & tabPt2d);
-		%feature("autodoc", "Args:
-	C(AppCont_Function)
-	U(Standard_Real)
-	tabV2d(TColgp_Array1OfVec2d)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") D1;
+		%feature("autodoc", "	:param C:
+	:type C: AppCont_Function &
+	:param U:
+	:type U: float
+	:param tabV2d:
+	:type tabV2d: TColgp_Array1OfVec2d
+	:rtype: bool
+") D1;
 		static Standard_Boolean D1 (const AppCont_Function & C,const Standard_Real U,TColgp_Array1OfVec2d & tabV2d);
-		%feature("autodoc", "Args:
-	C(AppCont_Function)
-	U(Standard_Real)
-	tabV(TColgp_Array1OfVec)
-	tabV2d(TColgp_Array1OfVec2d)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") D1;
+		%feature("autodoc", "	:param C:
+	:type C: AppCont_Function &
+	:param U:
+	:type U: float
+	:param tabV:
+	:type tabV: TColgp_Array1OfVec
+	:param tabV2d:
+	:type tabV2d: TColgp_Array1OfVec2d
+	:rtype: bool
+") D1;
 		static Standard_Boolean D1 (const AppCont_Function & C,const Standard_Real U,TColgp_Array1OfVec & tabV,TColgp_Array1OfVec2d & tabV2d);
 };
 
@@ -397,102 +360,95 @@ def __del__(self):
 %nodefaultctor AppCont_FunctionTool2d;
 class AppCont_FunctionTool2d {
 	public:
-		%feature("autodoc", "Args:
-	C(AppCont_Function2d)
+		%feature("autodoc", "	* returns the first parameter of the Function.
 
-Returns:
-	static Standard_Real
-
-returns the first parameter of the Function.") FirstParameter;
+	:param C:
+	:type C: AppCont_Function2d &
+	:rtype: float
+") FirstParameter;
 		static Standard_Real FirstParameter (const AppCont_Function2d & C);
-		%feature("autodoc", "Args:
-	C(AppCont_Function2d)
+		%feature("autodoc", "	* returns the last parameter of the Function.
 
-Returns:
-	static Standard_Real
-
-returns the last parameter of the Function.") LastParameter;
+	:param C:
+	:type C: AppCont_Function2d &
+	:rtype: float
+") LastParameter;
 		static Standard_Real LastParameter (const AppCont_Function2d & C);
-		%feature("autodoc", "Args:
-	C(AppCont_Function2d)
+		%feature("autodoc", "	* Returns 1. (the approximation will be done only for one function.
 
-Returns:
-	static Standard_Integer
-
-Returns 1. (the approximation will be done only for one  
-         function.") NbP2d;
+	:param C:
+	:type C: AppCont_Function2d &
+	:rtype: int
+") NbP2d;
 		static Standard_Integer NbP2d (const AppCont_Function2d & C);
-		%feature("autodoc", "Args:
-	C(AppCont_Function2d)
+		%feature("autodoc", "	* Returns 0.
 
-Returns:
-	static Standard_Integer
-
-Returns 0.") NbP3d;
+	:param C:
+	:type C: AppCont_Function2d &
+	:rtype: int
+") NbP3d;
 		static Standard_Integer NbP3d (const AppCont_Function2d & C);
-		%feature("autodoc", "Args:
-	C(AppCont_Function2d)
-	U(Standard_Real)
-	tabPt(TColgp_Array1OfPnt2d)
+		%feature("autodoc", "	* <tabP> is an array of only 1 element, the point value at the parameter <U>.
 
-Returns:
-	static void
-
-<tabP> is an array of only 1 element, the point value at  
-         the parameter <U>.") Value;
+	:param C:
+	:type C: AppCont_Function2d &
+	:param U:
+	:type U: float
+	:param tabPt:
+	:type tabPt: TColgp_Array1OfPnt2d
+	:rtype: void
+") Value;
 		static void Value (const AppCont_Function2d & C,const Standard_Real U,TColgp_Array1OfPnt2d & tabPt);
-		%feature("autodoc", "Args:
-	C(AppCont_Function2d)
-	U(Standard_Real)
-	tabV(TColgp_Array1OfVec2d)
+		%feature("autodoc", "	* <tabV> is an array of only 1 element, the derivative value at the parameter <U>.
 
-Returns:
-	static Standard_Boolean
-
-<tabV> is an array of only 1 element, the derivative  
-         value at the parameter <U>.") D1;
+	:param C:
+	:type C: AppCont_Function2d &
+	:param U:
+	:type U: float
+	:param tabV:
+	:type tabV: TColgp_Array1OfVec2d
+	:rtype: bool
+") D1;
 		static Standard_Boolean D1 (const AppCont_Function2d & C,const Standard_Real U,TColgp_Array1OfVec2d & tabV);
-		%feature("autodoc", "Args:
-	C(AppCont_Function2d)
-	U(Standard_Real)
-	tabPt2d(TColgp_Array1OfPnt)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param C:
+	:type C: AppCont_Function2d &
+	:param U:
+	:type U: float
+	:param tabPt2d:
+	:type tabPt2d: TColgp_Array1OfPnt
+	:rtype: void
+") Value;
 		static void Value (const AppCont_Function2d & C,const Standard_Real U,TColgp_Array1OfPnt & tabPt2d);
-		%feature("autodoc", "Args:
-	C(AppCont_Function2d)
-	U(Standard_Real)
-	tabPt(TColgp_Array1OfPnt)
-	tabPt2d(TColgp_Array1OfPnt2d)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param C:
+	:type C: AppCont_Function2d &
+	:param U:
+	:type U: float
+	:param tabPt:
+	:type tabPt: TColgp_Array1OfPnt
+	:param tabPt2d:
+	:type tabPt2d: TColgp_Array1OfPnt2d
+	:rtype: void
+") Value;
 		static void Value (const AppCont_Function2d & C,const Standard_Real U,TColgp_Array1OfPnt & tabPt,TColgp_Array1OfPnt2d & tabPt2d);
-		%feature("autodoc", "Args:
-	C(AppCont_Function2d)
-	U(Standard_Real)
-	tabV2d(TColgp_Array1OfVec)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") D1;
+		%feature("autodoc", "	:param C:
+	:type C: AppCont_Function2d &
+	:param U:
+	:type U: float
+	:param tabV2d:
+	:type tabV2d: TColgp_Array1OfVec
+	:rtype: bool
+") D1;
 		static Standard_Boolean D1 (const AppCont_Function2d & C,const Standard_Real U,TColgp_Array1OfVec & tabV2d);
-		%feature("autodoc", "Args:
-	C(AppCont_Function2d)
-	U(Standard_Real)
-	tabV(TColgp_Array1OfVec)
-	tabV2d(TColgp_Array1OfVec2d)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") D1;
+		%feature("autodoc", "	:param C:
+	:type C: AppCont_Function2d &
+	:param U:
+	:type U: float
+	:param tabV:
+	:type tabV: TColgp_Array1OfVec
+	:param tabV2d:
+	:type tabV2d: TColgp_Array1OfVec2d
+	:rtype: bool
+") D1;
 		static Standard_Boolean D1 (const AppCont_Function2d & C,const Standard_Real U,TColgp_Array1OfVec & tabV,TColgp_Array1OfVec2d & tabV2d);
 };
 

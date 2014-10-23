@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -50,59 +50,39 @@ enum IntCurveSurface_TransitionOnCurve {
 %nodefaultctor IntCurveSurface_Intersection;
 class IntCurveSurface_Intersection {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns the <done> field.
 
-returns the <done> field.") IsDone;
+	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* returns the number of IntersectionPoint if IsDone returns True. else NotDone is raised.
 
-returns the number of IntersectionPoint  
-         if IsDone returns True.  
-         else NotDone is raised.") NbPoints;
+	:rtype: int
+") NbPoints;
 		Standard_Integer NbPoints ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* returns the IntersectionPoint of range <Index> raises NotDone if the computation has failed or if the computation has not been done raises OutOfRange if Index is not in the range <1..NbPoints>
 
-Returns:
-	IntCurveSurface_IntersectionPoint
-
-returns the IntersectionPoint of range <Index>  
-         raises NotDone if the computation has failed or if  
-         the computation has not been done  
-         raises OutOfRange if Index is not in the range <1..NbPoints>") Point;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: IntCurveSurface_IntersectionPoint
+") Point;
 		const IntCurveSurface_IntersectionPoint & Point (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* returns the number of IntersectionSegment if IsDone returns True. else NotDone is raised.
 
-returns the number of IntersectionSegment  
-         if IsDone returns True.  
-         else NotDone is raised.") NbSegments;
+	:rtype: int
+") NbSegments;
 		Standard_Integer NbSegments ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* returns the IntersectionSegment of range <Index> raises NotDone if the computation has failed or if the computation has not been done raises OutOfRange if Index is not in the range <1..NbSegment>
 
-Returns:
-	IntCurveSurface_IntersectionSegment
-
-returns the IntersectionSegment of range <Index>  
-         raises NotDone if the computation has failed or if  
-         the computation has not been done  
-         raises OutOfRange if Index is not in the range <1..NbSegment>") Segment;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: IntCurveSurface_IntersectionSegment
+") Segment;
 		const IntCurveSurface_IntersectionSegment & Segment (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Dump all the fields.
 
-Dump all the fields.") Dump;
+	:rtype: None
+") Dump;
 		void Dump ();
 };
 
@@ -124,90 +104,85 @@ def __del__(self):
 %nodefaultctor IntCurveSurface_IntersectionPoint;
 class IntCurveSurface_IntersectionPoint {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty Constructor.
 
-Empty Constructor.") IntCurveSurface_IntersectionPoint;
+	:rtype: None
+") IntCurveSurface_IntersectionPoint;
 		 IntCurveSurface_IntersectionPoint ();
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
-	USurf(Standard_Real)
-	VSurf(Standard_Real)
-	UCurv(Standard_Real)
-	TrCurv(IntCurveSurface_TransitionOnCurve)
+		%feature("autodoc", "	* Create an IntersectionPoint.
 
-Returns:
-	None
-
-Create an IntersectionPoint.") IntCurveSurface_IntersectionPoint;
+	:param P:
+	:type P: gp_Pnt
+	:param USurf:
+	:type USurf: float
+	:param VSurf:
+	:type VSurf: float
+	:param UCurv:
+	:type UCurv: float
+	:param TrCurv:
+	:type TrCurv: IntCurveSurface_TransitionOnCurve
+	:rtype: None
+") IntCurveSurface_IntersectionPoint;
 		 IntCurveSurface_IntersectionPoint (const gp_Pnt & P,const Standard_Real USurf,const Standard_Real VSurf,const Standard_Real UCurv,const IntCurveSurface_TransitionOnCurve TrCurv);
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
-	USurf(Standard_Real)
-	VSurf(Standard_Real)
-	UCurv(Standard_Real)
-	TrCurv(IntCurveSurface_TransitionOnCurve)
+		%feature("autodoc", "	* Set the fields of the current IntersectionPoint.
 
-Returns:
-	None
-
-Set the fields of the current IntersectionPoint.") SetValues;
+	:param P:
+	:type P: gp_Pnt
+	:param USurf:
+	:type USurf: float
+	:param VSurf:
+	:type VSurf: float
+	:param UCurv:
+	:type UCurv: float
+	:param TrCurv:
+	:type TrCurv: IntCurveSurface_TransitionOnCurve
+	:rtype: None
+") SetValues;
 		void SetValues (const gp_Pnt & P,const Standard_Real USurf,const Standard_Real VSurf,const Standard_Real UCurv,const IntCurveSurface_TransitionOnCurve TrCurv);
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
-	USurf(Standard_Real)
-	VSurf(Standard_Real)
-	UCurv(Standard_Real)
-	TrCurv(IntCurveSurface_TransitionOnCurve)
+		%feature("autodoc", "	* Get the fields of the current IntersectionPoint.
 
-Returns:
-	None
-
-Get the fields of the current IntersectionPoint.") Values;
+	:param P:
+	:type P: gp_Pnt
+	:param USurf:
+	:type USurf: float &
+	:param VSurf:
+	:type VSurf: float &
+	:param UCurv:
+	:type UCurv: float &
+	:param TrCurv:
+	:type TrCurv: IntCurveSurface_TransitionOnCurve &
+	:rtype: None
+") Values;
 		void Values (gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,IntCurveSurface_TransitionOnCurve & TrCurv);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
+		%feature("autodoc", "	* returns the geometric point.
 
-returns the geometric point.") Pnt;
+	:rtype: gp_Pnt
+") Pnt;
 		const gp_Pnt & Pnt ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns the U parameter on the surface.
 
-returns the U parameter on the surface.") U;
+	:rtype: float
+") U;
 		Standard_Real U ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns the V parameter on the surface.
 
-returns the V parameter on the surface.") V;
+	:rtype: float
+") V;
 		Standard_Real V ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns the parameter on the curve.
 
-returns the parameter on the curve.") W;
+	:rtype: float
+") W;
 		Standard_Real W ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntCurveSurface_TransitionOnCurve
+		%feature("autodoc", "	* returns the Transition of the point.
 
-returns the Transition of the point.") Transition;
+	:rtype: IntCurveSurface_TransitionOnCurve
+") Transition;
 		IntCurveSurface_TransitionOnCurve Transition ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Dump all the fields.
 
-Dump all the fields.") Dump;
+	:rtype: None
+") Dump;
 		void Dump ();
 };
 
@@ -229,76 +204,48 @@ def __del__(self):
 %nodefaultctor IntCurveSurface_IntersectionSegment;
 class IntCurveSurface_IntersectionSegment {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntCurveSurface_IntersectionSegment;
+		%feature("autodoc", "	:rtype: None
+") IntCurveSurface_IntersectionSegment;
 		 IntCurveSurface_IntersectionSegment ();
-		%feature("autodoc", "Args:
-	P1(IntCurveSurface_IntersectionPoint)
-	P2(IntCurveSurface_IntersectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntCurveSurface_IntersectionSegment;
+		%feature("autodoc", "	:param P1:
+	:type P1: IntCurveSurface_IntersectionPoint &
+	:param P2:
+	:type P2: IntCurveSurface_IntersectionPoint &
+	:rtype: None
+") IntCurveSurface_IntersectionSegment;
 		 IntCurveSurface_IntersectionSegment (const IntCurveSurface_IntersectionPoint & P1,const IntCurveSurface_IntersectionPoint & P2);
-		%feature("autodoc", "Args:
-	P1(IntCurveSurface_IntersectionPoint)
-	P2(IntCurveSurface_IntersectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValues;
+		%feature("autodoc", "	:param P1:
+	:type P1: IntCurveSurface_IntersectionPoint &
+	:param P2:
+	:type P2: IntCurveSurface_IntersectionPoint &
+	:rtype: None
+") SetValues;
 		void SetValues (const IntCurveSurface_IntersectionPoint & P1,const IntCurveSurface_IntersectionPoint & P2);
-		%feature("autodoc", "Args:
-	P1(IntCurveSurface_IntersectionPoint)
-	P2(IntCurveSurface_IntersectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Values;
+		%feature("autodoc", "	:param P1:
+	:type P1: IntCurveSurface_IntersectionPoint &
+	:param P2:
+	:type P2: IntCurveSurface_IntersectionPoint &
+	:rtype: None
+") Values;
 		void Values (IntCurveSurface_IntersectionPoint & P1,IntCurveSurface_IntersectionPoint & P2);
-		%feature("autodoc", "Args:
-	P1(IntCurveSurface_IntersectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FirstPoint;
+		%feature("autodoc", "	:param P1:
+	:type P1: IntCurveSurface_IntersectionPoint &
+	:rtype: None
+") FirstPoint;
 		void FirstPoint (IntCurveSurface_IntersectionPoint & P1);
-		%feature("autodoc", "Args:
-	P2(IntCurveSurface_IntersectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SecondPoint;
+		%feature("autodoc", "	:param P2:
+	:type P2: IntCurveSurface_IntersectionPoint &
+	:rtype: None
+") SecondPoint;
 		void SecondPoint (IntCurveSurface_IntersectionPoint & P2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntCurveSurface_IntersectionPoint
-
-No detailed docstring for this function.") FirstPoint;
+		%feature("autodoc", "	:rtype: IntCurveSurface_IntersectionPoint
+") FirstPoint;
 		const IntCurveSurface_IntersectionPoint & FirstPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntCurveSurface_IntersectionPoint
-
-No detailed docstring for this function.") SecondPoint;
+		%feature("autodoc", "	:rtype: IntCurveSurface_IntersectionPoint
+") SecondPoint;
 		const IntCurveSurface_IntersectionPoint & SecondPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
 };
 
@@ -320,22 +267,17 @@ def __del__(self):
 %nodefaultctor IntCurveSurface_SequenceNodeOfSequenceOfPnt;
 class IntCurveSurface_SequenceNodeOfSequenceOfPnt : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(IntCurveSurface_IntersectionPoint)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntCurveSurface_SequenceNodeOfSequenceOfPnt;
+		%feature("autodoc", "	:param I:
+	:type I: IntCurveSurface_IntersectionPoint &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") IntCurveSurface_SequenceNodeOfSequenceOfPnt;
 		 IntCurveSurface_SequenceNodeOfSequenceOfPnt (const IntCurveSurface_IntersectionPoint & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntCurveSurface_IntersectionPoint
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: IntCurveSurface_IntersectionPoint
+") Value;
 		IntCurveSurface_IntersectionPoint & Value ();
 };
 
@@ -396,22 +338,17 @@ def __del__(self):
 %nodefaultctor IntCurveSurface_SequenceNodeOfSequenceOfSeg;
 class IntCurveSurface_SequenceNodeOfSequenceOfSeg : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(IntCurveSurface_IntersectionSegment)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntCurveSurface_SequenceNodeOfSequenceOfSeg;
+		%feature("autodoc", "	:param I:
+	:type I: IntCurveSurface_IntersectionSegment &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") IntCurveSurface_SequenceNodeOfSequenceOfSeg;
 		 IntCurveSurface_SequenceNodeOfSequenceOfSeg (const IntCurveSurface_IntersectionSegment & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntCurveSurface_IntersectionSegment
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: IntCurveSurface_IntersectionSegment
+") Value;
 		IntCurveSurface_IntersectionSegment & Value ();
 };
 
@@ -472,168 +409,111 @@ def __del__(self):
 %nodefaultctor IntCurveSurface_SequenceOfPnt;
 class IntCurveSurface_SequenceOfPnt : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntCurveSurface_SequenceOfPnt;
+		%feature("autodoc", "	:rtype: None
+") IntCurveSurface_SequenceOfPnt;
 		 IntCurveSurface_SequenceOfPnt ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(IntCurveSurface_SequenceOfPnt)
-
-Returns:
-	IntCurveSurface_SequenceOfPnt
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntCurveSurface_SequenceOfPnt &
+	:rtype: IntCurveSurface_SequenceOfPnt
+") Assign;
 		const IntCurveSurface_SequenceOfPnt & Assign (const IntCurveSurface_SequenceOfPnt & Other);
-		%feature("autodoc", "Args:
-	Other(IntCurveSurface_SequenceOfPnt)
-
-Returns:
-	IntCurveSurface_SequenceOfPnt
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntCurveSurface_SequenceOfPnt &
+	:rtype: IntCurveSurface_SequenceOfPnt
+") operator=;
 		const IntCurveSurface_SequenceOfPnt & operator = (const IntCurveSurface_SequenceOfPnt & Other);
-		%feature("autodoc", "Args:
-	T(IntCurveSurface_IntersectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: IntCurveSurface_IntersectionPoint &
+	:rtype: None
+") Append;
 		void Append (const IntCurveSurface_IntersectionPoint & T);
-		%feature("autodoc", "Args:
-	S(IntCurveSurface_SequenceOfPnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: IntCurveSurface_SequenceOfPnt &
+	:rtype: None
+") Append;
 		void Append (IntCurveSurface_SequenceOfPnt & S);
-		%feature("autodoc", "Args:
-	T(IntCurveSurface_IntersectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: IntCurveSurface_IntersectionPoint &
+	:rtype: None
+") Prepend;
 		void Prepend (const IntCurveSurface_IntersectionPoint & T);
-		%feature("autodoc", "Args:
-	S(IntCurveSurface_SequenceOfPnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: IntCurveSurface_SequenceOfPnt &
+	:rtype: None
+") Prepend;
 		void Prepend (IntCurveSurface_SequenceOfPnt & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(IntCurveSurface_IntersectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: IntCurveSurface_IntersectionPoint &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const IntCurveSurface_IntersectionPoint & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(IntCurveSurface_SequenceOfPnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: IntCurveSurface_SequenceOfPnt &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,IntCurveSurface_SequenceOfPnt & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(IntCurveSurface_IntersectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: IntCurveSurface_IntersectionPoint &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const IntCurveSurface_IntersectionPoint & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(IntCurveSurface_SequenceOfPnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: IntCurveSurface_SequenceOfPnt &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,IntCurveSurface_SequenceOfPnt & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntCurveSurface_IntersectionPoint
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: IntCurveSurface_IntersectionPoint
+") First;
 		const IntCurveSurface_IntersectionPoint & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntCurveSurface_IntersectionPoint
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: IntCurveSurface_IntersectionPoint
+") Last;
 		const IntCurveSurface_IntersectionPoint & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(IntCurveSurface_SequenceOfPnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: IntCurveSurface_SequenceOfPnt &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,IntCurveSurface_SequenceOfPnt & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	IntCurveSurface_IntersectionPoint
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: IntCurveSurface_IntersectionPoint
+") Value;
 		const IntCurveSurface_IntersectionPoint & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(IntCurveSurface_IntersectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: IntCurveSurface_IntersectionPoint &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const IntCurveSurface_IntersectionPoint & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	IntCurveSurface_IntersectionPoint
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: IntCurveSurface_IntersectionPoint
+") ChangeValue;
 		IntCurveSurface_IntersectionPoint & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -655,168 +535,111 @@ def __del__(self):
 %nodefaultctor IntCurveSurface_SequenceOfSeg;
 class IntCurveSurface_SequenceOfSeg : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntCurveSurface_SequenceOfSeg;
+		%feature("autodoc", "	:rtype: None
+") IntCurveSurface_SequenceOfSeg;
 		 IntCurveSurface_SequenceOfSeg ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(IntCurveSurface_SequenceOfSeg)
-
-Returns:
-	IntCurveSurface_SequenceOfSeg
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntCurveSurface_SequenceOfSeg &
+	:rtype: IntCurveSurface_SequenceOfSeg
+") Assign;
 		const IntCurveSurface_SequenceOfSeg & Assign (const IntCurveSurface_SequenceOfSeg & Other);
-		%feature("autodoc", "Args:
-	Other(IntCurveSurface_SequenceOfSeg)
-
-Returns:
-	IntCurveSurface_SequenceOfSeg
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntCurveSurface_SequenceOfSeg &
+	:rtype: IntCurveSurface_SequenceOfSeg
+") operator=;
 		const IntCurveSurface_SequenceOfSeg & operator = (const IntCurveSurface_SequenceOfSeg & Other);
-		%feature("autodoc", "Args:
-	T(IntCurveSurface_IntersectionSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: IntCurveSurface_IntersectionSegment &
+	:rtype: None
+") Append;
 		void Append (const IntCurveSurface_IntersectionSegment & T);
-		%feature("autodoc", "Args:
-	S(IntCurveSurface_SequenceOfSeg)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: IntCurveSurface_SequenceOfSeg &
+	:rtype: None
+") Append;
 		void Append (IntCurveSurface_SequenceOfSeg & S);
-		%feature("autodoc", "Args:
-	T(IntCurveSurface_IntersectionSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: IntCurveSurface_IntersectionSegment &
+	:rtype: None
+") Prepend;
 		void Prepend (const IntCurveSurface_IntersectionSegment & T);
-		%feature("autodoc", "Args:
-	S(IntCurveSurface_SequenceOfSeg)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: IntCurveSurface_SequenceOfSeg &
+	:rtype: None
+") Prepend;
 		void Prepend (IntCurveSurface_SequenceOfSeg & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(IntCurveSurface_IntersectionSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: IntCurveSurface_IntersectionSegment &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const IntCurveSurface_IntersectionSegment & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(IntCurveSurface_SequenceOfSeg)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: IntCurveSurface_SequenceOfSeg &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,IntCurveSurface_SequenceOfSeg & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(IntCurveSurface_IntersectionSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: IntCurveSurface_IntersectionSegment &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const IntCurveSurface_IntersectionSegment & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(IntCurveSurface_SequenceOfSeg)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: IntCurveSurface_SequenceOfSeg &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,IntCurveSurface_SequenceOfSeg & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntCurveSurface_IntersectionSegment
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: IntCurveSurface_IntersectionSegment
+") First;
 		const IntCurveSurface_IntersectionSegment & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntCurveSurface_IntersectionSegment
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: IntCurveSurface_IntersectionSegment
+") Last;
 		const IntCurveSurface_IntersectionSegment & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(IntCurveSurface_SequenceOfSeg)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: IntCurveSurface_SequenceOfSeg &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,IntCurveSurface_SequenceOfSeg & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	IntCurveSurface_IntersectionSegment
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: IntCurveSurface_IntersectionSegment
+") Value;
 		const IntCurveSurface_IntersectionSegment & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(IntCurveSurface_IntersectionSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: IntCurveSurface_IntersectionSegment &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const IntCurveSurface_IntersectionSegment & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	IntCurveSurface_IntersectionSegment
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: IntCurveSurface_IntersectionSegment
+") ChangeValue;
 		IntCurveSurface_IntersectionSegment & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -838,84 +661,53 @@ def __del__(self):
 %nodefaultctor IntCurveSurface_TheCSFunctionOfHInter;
 class IntCurveSurface_TheCSFunctionOfHInter : public math_FunctionSetWithDerivatives {
 	public:
-		%feature("autodoc", "Args:
-	S(Handle_Adaptor3d_HSurface)
-	C(Handle_Adaptor3d_HCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntCurveSurface_TheCSFunctionOfHInter;
+		%feature("autodoc", "	:param S:
+	:type S: Handle_Adaptor3d_HSurface &
+	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:rtype: None
+") IntCurveSurface_TheCSFunctionOfHInter;
 		 IntCurveSurface_TheCSFunctionOfHInter (const Handle_Adaptor3d_HSurface & S,const Handle_Adaptor3d_HCurve & C);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbVariables;
+		%feature("autodoc", "	:rtype: int
+") NbVariables;
 		Standard_Integer NbVariables ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbEquations;
+		%feature("autodoc", "	:rtype: int
+") NbEquations;
 		Standard_Integer NbEquations ();
-		%feature("autodoc", "Args:
-	X(math_Vector)
-	F(math_Vector)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param X:
+	:type X: math_Vector &
+	:param F:
+	:type F: math_Vector &
+	:rtype: bool
+") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
-		%feature("autodoc", "Args:
-	X(math_Vector)
-	D(math_Matrix)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Derivatives;
+		%feature("autodoc", "	:param X:
+	:type X: math_Vector &
+	:param D:
+	:type D: math_Matrix &
+	:rtype: bool
+") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
-		%feature("autodoc", "Args:
-	X(math_Vector)
-	F(math_Vector)
-	D(math_Matrix)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Values;
+		%feature("autodoc", "	:param X:
+	:type X: math_Vector &
+	:param F:
+	:type F: math_Vector &
+	:param D:
+	:type D: math_Matrix &
+	:rtype: bool
+") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
-
-No detailed docstring for this function.") Point;
+		%feature("autodoc", "	:rtype: gp_Pnt
+") Point;
 		const gp_Pnt & Point ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Root;
+		%feature("autodoc", "	:rtype: float
+") Root;
 		Standard_Real Root ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Adaptor3d_HSurface
-
-No detailed docstring for this function.") AuxillarSurface;
+		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HSurface
+") AuxillarSurface;
 		const Handle_Adaptor3d_HSurface & AuxillarSurface ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Adaptor3d_HCurve
-
-No detailed docstring for this function.") AuxillarCurve;
+		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HCurve
+") AuxillarCurve;
 		const Handle_Adaptor3d_HCurve & AuxillarCurve ();
 };
 
@@ -937,88 +729,72 @@ def __del__(self):
 %nodefaultctor IntCurveSurface_TheExactHInter;
 class IntCurveSurface_TheExactHInter {
 	public:
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	W(Standard_Real)
-	F(IntCurveSurface_TheCSFunctionOfHInter)
-	TolTangency(Standard_Real)
-	MarginCoef(Standard_Real)=0.0
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntCurveSurface_TheExactHInter;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param W:
+	:type W: float
+	:param F:
+	:type F: IntCurveSurface_TheCSFunctionOfHInter &
+	:param TolTangency:
+	:type TolTangency: float
+	:param MarginCoef: default value is 0.0
+	:type MarginCoef: float
+	:rtype: None
+") IntCurveSurface_TheExactHInter;
 		 IntCurveSurface_TheExactHInter (const Standard_Real U,const Standard_Real V,const Standard_Real W,const IntCurveSurface_TheCSFunctionOfHInter & F,const Standard_Real TolTangency,const Standard_Real MarginCoef = 0.0);
-		%feature("autodoc", "Args:
-	F(IntCurveSurface_TheCSFunctionOfHInter)
-	TolTangency(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntCurveSurface_TheExactHInter;
+		%feature("autodoc", "	:param F:
+	:type F: IntCurveSurface_TheCSFunctionOfHInter &
+	:param TolTangency:
+	:type TolTangency: float
+	:rtype: None
+") IntCurveSurface_TheExactHInter;
 		 IntCurveSurface_TheExactHInter (const IntCurveSurface_TheCSFunctionOfHInter & F,const Standard_Real TolTangency);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	W(Standard_Real)
-	Rsnld(math_FunctionSetRoot)
-	u0(Standard_Real)
-	v0(Standard_Real)
-	u1(Standard_Real)
-	v1(Standard_Real)
-	w0(Standard_Real)
-	w1(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param W:
+	:type W: float
+	:param Rsnld:
+	:type Rsnld: math_FunctionSetRoot &
+	:param u0:
+	:type u0: float
+	:param v0:
+	:type v0: float
+	:param u1:
+	:type u1: float
+	:param v1:
+	:type v1: float
+	:param w0:
+	:type w0: float
+	:param w1:
+	:type w1: float
+	:rtype: None
+") Perform;
 		void Perform (const Standard_Real U,const Standard_Real V,const Standard_Real W,math_FunctionSetRoot & Rsnld,const Standard_Real u0,const Standard_Real v0,const Standard_Real u1,const Standard_Real v1,const Standard_Real w0,const Standard_Real w1);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
-
-No detailed docstring for this function.") Point;
+		%feature("autodoc", "	:rtype: gp_Pnt
+") Point;
 		const gp_Pnt & Point ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") ParameterOnCurve;
+		%feature("autodoc", "	:rtype: float
+") ParameterOnCurve;
 		Standard_Real ParameterOnCurve ();
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ParameterOnSurface;
+		%feature("autodoc", "	:param U:
+	:type U: float &
+	:param V:
+	:type V: float &
+	:rtype: None
+") ParameterOnSurface;
 		void ParameterOnSurface (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntCurveSurface_TheCSFunctionOfHInter
-
-No detailed docstring for this function.") Function;
+		%feature("autodoc", "	:rtype: IntCurveSurface_TheCSFunctionOfHInter
+") Function;
 		IntCurveSurface_TheCSFunctionOfHInter & Function ();
 };
 
@@ -1040,233 +816,186 @@ def __del__(self):
 %nodefaultctor IntCurveSurface_TheHCurveTool;
 class IntCurveSurface_TheHCurveTool {
 	public:
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-
-Returns:
-	static Standard_Real
-
-No detailed docstring for this function.") FirstParameter;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:rtype: float
+") FirstParameter;
 		static Standard_Real FirstParameter (const Handle_Adaptor3d_HCurve & C);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-
-Returns:
-	static Standard_Real
-
-No detailed docstring for this function.") LastParameter;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:rtype: float
+") LastParameter;
 		static Standard_Real LastParameter (const Handle_Adaptor3d_HCurve & C);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-
-Returns:
-	static GeomAbs_Shape
-
-No detailed docstring for this function.") Continuity;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:rtype: GeomAbs_Shape
+") Continuity;
 		static GeomAbs_Shape Continuity (const Handle_Adaptor3d_HCurve & C);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-	S(GeomAbs_Shape)
-
-Returns:
-	static Standard_Integer
-
-No detailed docstring for this function.") NbIntervals;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: int
+") NbIntervals;
 		static Standard_Integer NbIntervals (const Handle_Adaptor3d_HCurve & C,const GeomAbs_Shape S);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-	T(TColStd_Array1OfReal)
-	S(GeomAbs_Shape)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") Intervals;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:param T:
+	:type T: TColStd_Array1OfReal &
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: void
+") Intervals;
 		static void Intervals (const Handle_Adaptor3d_HCurve & C,TColStd_Array1OfReal & T,const GeomAbs_Shape S);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") IsClosed;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:rtype: bool
+") IsClosed;
 		static Standard_Boolean IsClosed (const Handle_Adaptor3d_HCurve & C);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") IsPeriodic;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:rtype: bool
+") IsPeriodic;
 		static Standard_Boolean IsPeriodic (const Handle_Adaptor3d_HCurve & C);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-
-Returns:
-	static Standard_Real
-
-No detailed docstring for this function.") Period;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:rtype: float
+") Period;
 		static Standard_Real Period (const Handle_Adaptor3d_HCurve & C);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-	U(Standard_Real)
-
-Returns:
-	static gp_Pnt
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:param U:
+	:type U: float
+	:rtype: gp_Pnt
+") Value;
 		static gp_Pnt Value (const Handle_Adaptor3d_HCurve & C,const Standard_Real U);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-	U(Standard_Real)
-	P(gp_Pnt)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") D0;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt
+	:rtype: void
+") D0;
 		static void D0 (const Handle_Adaptor3d_HCurve & C,const Standard_Real U,gp_Pnt & P);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-	U(Standard_Real)
-	P(gp_Pnt)
-	V(gp_Vec)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") D1;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt
+	:param V:
+	:type V: gp_Vec
+	:rtype: void
+") D1;
 		static void D1 (const Handle_Adaptor3d_HCurve & C,const Standard_Real U,gp_Pnt & P,gp_Vec & V);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-	U(Standard_Real)
-	P(gp_Pnt)
-	V1(gp_Vec)
-	V2(gp_Vec)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") D2;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt
+	:param V1:
+	:type V1: gp_Vec
+	:param V2:
+	:type V2: gp_Vec
+	:rtype: void
+") D2;
 		static void D2 (const Handle_Adaptor3d_HCurve & C,const Standard_Real U,gp_Pnt & P,gp_Vec & V1,gp_Vec & V2);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-	U(Standard_Real)
-	P(gp_Pnt)
-	V1(gp_Vec)
-	V2(gp_Vec)
-	V3(gp_Vec)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") D3;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt
+	:param V1:
+	:type V1: gp_Vec
+	:param V2:
+	:type V2: gp_Vec
+	:param V3:
+	:type V3: gp_Vec
+	:rtype: void
+") D3;
 		static void D3 (const Handle_Adaptor3d_HCurve & C,const Standard_Real U,gp_Pnt & P,gp_Vec & V1,gp_Vec & V2,gp_Vec & V3);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-	U(Standard_Real)
-	N(Standard_Integer)
-
-Returns:
-	static gp_Vec
-
-No detailed docstring for this function.") DN;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:param U:
+	:type U: float
+	:param N:
+	:type N: Standard_Integer
+	:rtype: gp_Vec
+") DN;
 		static gp_Vec DN (const Handle_Adaptor3d_HCurve & C,const Standard_Real U,const Standard_Integer N);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-	R3d(Standard_Real)
-
-Returns:
-	static Standard_Real
-
-No detailed docstring for this function.") Resolution;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:param R3d:
+	:type R3d: float
+	:rtype: float
+") Resolution;
 		static Standard_Real Resolution (const Handle_Adaptor3d_HCurve & C,const Standard_Real R3d);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-
-Returns:
-	static GeomAbs_CurveType
-
-No detailed docstring for this function.") GetType;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:rtype: GeomAbs_CurveType
+") GetType;
 		static GeomAbs_CurveType GetType (const Handle_Adaptor3d_HCurve & C);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-
-Returns:
-	static gp_Lin
-
-No detailed docstring for this function.") Line;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:rtype: gp_Lin
+") Line;
 		static gp_Lin Line (const Handle_Adaptor3d_HCurve & C);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-
-Returns:
-	static gp_Circ
-
-No detailed docstring for this function.") Circle;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:rtype: gp_Circ
+") Circle;
 		static gp_Circ Circle (const Handle_Adaptor3d_HCurve & C);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-
-Returns:
-	static gp_Elips
-
-No detailed docstring for this function.") Ellipse;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:rtype: gp_Elips
+") Ellipse;
 		static gp_Elips Ellipse (const Handle_Adaptor3d_HCurve & C);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-
-Returns:
-	static gp_Hypr
-
-No detailed docstring for this function.") Hyperbola;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:rtype: gp_Hypr
+") Hyperbola;
 		static gp_Hypr Hyperbola (const Handle_Adaptor3d_HCurve & C);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-
-Returns:
-	static gp_Parab
-
-No detailed docstring for this function.") Parabola;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:rtype: gp_Parab
+") Parabola;
 		static gp_Parab Parabola (const Handle_Adaptor3d_HCurve & C);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-
-Returns:
-	static Handle_Geom_BezierCurve
-
-No detailed docstring for this function.") Bezier;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:rtype: Handle_Geom_BezierCurve
+") Bezier;
 		static Handle_Geom_BezierCurve Bezier (const Handle_Adaptor3d_HCurve & C);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-
-Returns:
-	static Handle_Geom_BSplineCurve
-
-No detailed docstring for this function.") BSpline;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:rtype: Handle_Geom_BSplineCurve
+") BSpline;
 		static Handle_Geom_BSplineCurve BSpline (const Handle_Adaptor3d_HCurve & C);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-	U0(Standard_Real)
-	U1(Standard_Real)
-
-Returns:
-	static Standard_Integer
-
-No detailed docstring for this function.") NbSamples;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:param U0:
+	:type U0: float
+	:param U1:
+	:type U1: float
+	:rtype: int
+") NbSamples;
 		static Standard_Integer NbSamples (const Handle_Adaptor3d_HCurve & C,const Standard_Real U0,const Standard_Real U1);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-	U0(Standard_Real)
-	U1(Standard_Real)
-	Defl(Standard_Real)
-	NbMin(Standard_Integer)
-	Pars(Handle_TColStd_HArray1OfReal)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") SamplePars;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:param U0:
+	:type U0: float
+	:param U1:
+	:type U1: float
+	:param Defl:
+	:type Defl: float
+	:param NbMin:
+	:type NbMin: Standard_Integer
+	:param Pars:
+	:type Pars: Handle_TColStd_HArray1OfReal &
+	:rtype: void
+") SamplePars;
 		static void SamplePars (const Handle_Adaptor3d_HCurve & C,const Standard_Real U0,const Standard_Real U1,const Standard_Real Defl,const Standard_Integer NbMin,Handle_TColStd_HArray1OfReal & Pars);
 };
 
@@ -1288,145 +1017,120 @@ def __del__(self):
 %nodefaultctor IntCurveSurface_TheInterferenceOfHInter;
 class IntCurveSurface_TheInterferenceOfHInter : public Intf_Interference {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntCurveSurface_TheInterferenceOfHInter;
+		%feature("autodoc", "	:rtype: None
+") IntCurveSurface_TheInterferenceOfHInter;
 		 IntCurveSurface_TheInterferenceOfHInter ();
-		%feature("autodoc", "Args:
-	thePolyg(IntCurveSurface_ThePolygonOfHInter)
-	thePolyh(IntCurveSurface_ThePolyhedronOfHInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntCurveSurface_TheInterferenceOfHInter;
+		%feature("autodoc", "	:param thePolyg:
+	:type thePolyg: IntCurveSurface_ThePolygonOfHInter &
+	:param thePolyh:
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:rtype: None
+") IntCurveSurface_TheInterferenceOfHInter;
 		 IntCurveSurface_TheInterferenceOfHInter (const IntCurveSurface_ThePolygonOfHInter & thePolyg,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
-		%feature("autodoc", "Args:
-	theLin(gp_Lin)
-	thePolyh(IntCurveSurface_ThePolyhedronOfHInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntCurveSurface_TheInterferenceOfHInter;
+		%feature("autodoc", "	:param theLin:
+	:type theLin: gp_Lin
+	:param thePolyh:
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:rtype: None
+") IntCurveSurface_TheInterferenceOfHInter;
 		 IntCurveSurface_TheInterferenceOfHInter (const gp_Lin & theLin,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
-		%feature("autodoc", "Args:
-	theLins(Intf_Array1OfLin)
-	thePolyh(IntCurveSurface_ThePolyhedronOfHInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntCurveSurface_TheInterferenceOfHInter;
+		%feature("autodoc", "	:param theLins:
+	:type theLins: Intf_Array1OfLin &
+	:param thePolyh:
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:rtype: None
+") IntCurveSurface_TheInterferenceOfHInter;
 		 IntCurveSurface_TheInterferenceOfHInter (const Intf_Array1OfLin & theLins,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
-		%feature("autodoc", "Args:
-	thePolyg(IntCurveSurface_ThePolygonOfHInter)
-	thePolyh(IntCurveSurface_ThePolyhedronOfHInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param thePolyg:
+	:type thePolyg: IntCurveSurface_ThePolygonOfHInter &
+	:param thePolyh:
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:rtype: None
+") Perform;
 		void Perform (const IntCurveSurface_ThePolygonOfHInter & thePolyg,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
-		%feature("autodoc", "Args:
-	theLin(gp_Lin)
-	thePolyh(IntCurveSurface_ThePolyhedronOfHInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param theLin:
+	:type theLin: gp_Lin
+	:param thePolyh:
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:rtype: None
+") Perform;
 		void Perform (const gp_Lin & theLin,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
-		%feature("autodoc", "Args:
-	theLins(Intf_Array1OfLin)
-	thePolyh(IntCurveSurface_ThePolyhedronOfHInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param theLins:
+	:type theLins: Intf_Array1OfLin &
+	:param thePolyh:
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:rtype: None
+") Perform;
 		void Perform (const Intf_Array1OfLin & theLins,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
-		%feature("autodoc", "Args:
-	thePolyg(IntCurveSurface_ThePolygonOfHInter)
-	thePolyh(IntCurveSurface_ThePolyhedronOfHInter)
-	theBoundSB(Bnd_BoundSortBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntCurveSurface_TheInterferenceOfHInter;
+		%feature("autodoc", "	:param thePolyg:
+	:type thePolyg: IntCurveSurface_ThePolygonOfHInter &
+	:param thePolyh:
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:param theBoundSB:
+	:type theBoundSB: Bnd_BoundSortBox &
+	:rtype: None
+") IntCurveSurface_TheInterferenceOfHInter;
 		 IntCurveSurface_TheInterferenceOfHInter (const IntCurveSurface_ThePolygonOfHInter & thePolyg,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh,Bnd_BoundSortBox & theBoundSB);
-		%feature("autodoc", "Args:
-	theLin(gp_Lin)
-	thePolyh(IntCurveSurface_ThePolyhedronOfHInter)
-	theBoundSB(Bnd_BoundSortBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntCurveSurface_TheInterferenceOfHInter;
+		%feature("autodoc", "	:param theLin:
+	:type theLin: gp_Lin
+	:param thePolyh:
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:param theBoundSB:
+	:type theBoundSB: Bnd_BoundSortBox &
+	:rtype: None
+") IntCurveSurface_TheInterferenceOfHInter;
 		 IntCurveSurface_TheInterferenceOfHInter (const gp_Lin & theLin,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh,Bnd_BoundSortBox & theBoundSB);
-		%feature("autodoc", "Args:
-	theLins(Intf_Array1OfLin)
-	thePolyh(IntCurveSurface_ThePolyhedronOfHInter)
-	theBoundSB(Bnd_BoundSortBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntCurveSurface_TheInterferenceOfHInter;
+		%feature("autodoc", "	:param theLins:
+	:type theLins: Intf_Array1OfLin &
+	:param thePolyh:
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:param theBoundSB:
+	:type theBoundSB: Bnd_BoundSortBox &
+	:rtype: None
+") IntCurveSurface_TheInterferenceOfHInter;
 		 IntCurveSurface_TheInterferenceOfHInter (const Intf_Array1OfLin & theLins,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh,Bnd_BoundSortBox & theBoundSB);
-		%feature("autodoc", "Args:
-	thePolyg(IntCurveSurface_ThePolygonOfHInter)
-	thePolyh(IntCurveSurface_ThePolyhedronOfHInter)
-	theBoundSB(Bnd_BoundSortBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param thePolyg:
+	:type thePolyg: IntCurveSurface_ThePolygonOfHInter &
+	:param thePolyh:
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:param theBoundSB:
+	:type theBoundSB: Bnd_BoundSortBox &
+	:rtype: None
+") Perform;
 		void Perform (const IntCurveSurface_ThePolygonOfHInter & thePolyg,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh,Bnd_BoundSortBox & theBoundSB);
-		%feature("autodoc", "Args:
-	theLin(gp_Lin)
-	thePolyh(IntCurveSurface_ThePolyhedronOfHInter)
-	theBoundSB(Bnd_BoundSortBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param theLin:
+	:type theLin: gp_Lin
+	:param thePolyh:
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:param theBoundSB:
+	:type theBoundSB: Bnd_BoundSortBox &
+	:rtype: None
+") Perform;
 		void Perform (const gp_Lin & theLin,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh,Bnd_BoundSortBox & theBoundSB);
-		%feature("autodoc", "Args:
-	theLins(Intf_Array1OfLin)
-	thePolyh(IntCurveSurface_ThePolyhedronOfHInter)
-	theBoundSB(Bnd_BoundSortBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param theLins:
+	:type theLins: Intf_Array1OfLin &
+	:param thePolyh:
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:param theBoundSB:
+	:type theBoundSB: Bnd_BoundSortBox &
+	:rtype: None
+") Perform;
 		void Perform (const Intf_Array1OfLin & theLins,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh,Bnd_BoundSortBox & theBoundSB);
-		%feature("autodoc", "Args:
-	thePolyg(IntCurveSurface_ThePolygonOfHInter)
-	thePolyh(IntCurveSurface_ThePolyhedronOfHInter)
-	theBoundSB(Bnd_BoundSortBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Interference;
+		%feature("autodoc", "	:param thePolyg:
+	:type thePolyg: IntCurveSurface_ThePolygonOfHInter &
+	:param thePolyh:
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:param theBoundSB:
+	:type theBoundSB: Bnd_BoundSortBox &
+	:rtype: None
+") Interference;
 		void Interference (const IntCurveSurface_ThePolygonOfHInter & thePolyg,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh,Bnd_BoundSortBox & theBoundSB);
-		%feature("autodoc", "Args:
-	thePolyg(IntCurveSurface_ThePolygonOfHInter)
-	thePolyh(IntCurveSurface_ThePolyhedronOfHInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Interference;
+		%feature("autodoc", "	:param thePolyg:
+	:type thePolyg: IntCurveSurface_ThePolygonOfHInter &
+	:param thePolyh:
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:rtype: None
+") Interference;
 		void Interference (const IntCurveSurface_ThePolygonOfHInter & thePolyg,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 };
 
@@ -1448,124 +1152,78 @@ def __del__(self):
 %nodefaultctor IntCurveSurface_ThePolygonOfHInter;
 class IntCurveSurface_ThePolygonOfHInter {
 	public:
-		%feature("autodoc", "Args:
-	Curve(Handle_Adaptor3d_HCurve)
-	NbPnt(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntCurveSurface_ThePolygonOfHInter;
+		%feature("autodoc", "	:param Curve:
+	:type Curve: Handle_Adaptor3d_HCurve &
+	:param NbPnt:
+	:type NbPnt: Standard_Integer
+	:rtype: None
+") IntCurveSurface_ThePolygonOfHInter;
 		 IntCurveSurface_ThePolygonOfHInter (const Handle_Adaptor3d_HCurve & Curve,const Standard_Integer NbPnt);
-		%feature("autodoc", "Args:
-	Curve(Handle_Adaptor3d_HCurve)
-	U1(Standard_Real)
-	U2(Standard_Real)
-	NbPnt(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntCurveSurface_ThePolygonOfHInter;
+		%feature("autodoc", "	:param Curve:
+	:type Curve: Handle_Adaptor3d_HCurve &
+	:param U1:
+	:type U1: float
+	:param U2:
+	:type U2: float
+	:param NbPnt:
+	:type NbPnt: Standard_Integer
+	:rtype: None
+") IntCurveSurface_ThePolygonOfHInter;
 		 IntCurveSurface_ThePolygonOfHInter (const Handle_Adaptor3d_HCurve & Curve,const Standard_Real U1,const Standard_Real U2,const Standard_Integer NbPnt);
-		%feature("autodoc", "Args:
-	Curve(Handle_Adaptor3d_HCurve)
-	Upars(TColStd_Array1OfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntCurveSurface_ThePolygonOfHInter;
+		%feature("autodoc", "	:param Curve:
+	:type Curve: Handle_Adaptor3d_HCurve &
+	:param Upars:
+	:type Upars: TColStd_Array1OfReal &
+	:rtype: None
+") IntCurveSurface_ThePolygonOfHInter;
 		 IntCurveSurface_ThePolygonOfHInter (const Handle_Adaptor3d_HCurve & Curve,const TColStd_Array1OfReal & Upars);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") Bounding;
+		%feature("autodoc", "	:rtype: Bnd_Box
+") Bounding;
 		const Bnd_Box & Bounding ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") DeflectionOverEstimation;
+		%feature("autodoc", "	:rtype: float
+") DeflectionOverEstimation;
 		Standard_Real DeflectionOverEstimation ();
-		%feature("autodoc", "Args:
-	x(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetDeflectionOverEstimation;
+		%feature("autodoc", "	:param x:
+	:type x: float
+	:rtype: None
+") SetDeflectionOverEstimation;
 		void SetDeflectionOverEstimation (const Standard_Real x);
-		%feature("autodoc", "Args:
-	clos(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Closed;
+		%feature("autodoc", "	:param clos:
+	:type clos: bool
+	:rtype: None
+") Closed;
 		void Closed (const Standard_Boolean clos);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Closed;
+		%feature("autodoc", "	:rtype: bool
+") Closed;
 		Standard_Boolean Closed ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbSegments;
+		%feature("autodoc", "	:rtype: int
+") NbSegments;
 		Standard_Integer NbSegments ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	gp_Pnt
-
-No detailed docstring for this function.") BeginOfSeg;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: gp_Pnt
+") BeginOfSeg;
 		const gp_Pnt & BeginOfSeg (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	gp_Pnt
-
-No detailed docstring for this function.") EndOfSeg;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: gp_Pnt
+") EndOfSeg;
 		const gp_Pnt & EndOfSeg (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") InfParameter;
+		%feature("autodoc", "	:rtype: float
+") InfParameter;
 		Standard_Real InfParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") SupParameter;
+		%feature("autodoc", "	:rtype: float
+") SupParameter;
 		Standard_Real SupParameter ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	ParamOnLine(Standard_Real)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") ApproxParamOnCurve;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param ParamOnLine:
+	:type ParamOnLine: float
+	:rtype: float
+") ApproxParamOnCurve;
 		Standard_Real ApproxParamOnCurve (const Standard_Integer Index,const Standard_Real ParamOnLine);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
 };
 
@@ -1587,63 +1245,44 @@ def __del__(self):
 %nodefaultctor IntCurveSurface_ThePolygonToolOfHInter;
 class IntCurveSurface_ThePolygonToolOfHInter {
 	public:
-		%feature("autodoc", "Args:
-	thePolygon(IntCurveSurface_ThePolygonOfHInter)
-
-Returns:
-	static  Bnd_Box
-
-No detailed docstring for this function.") Bounding;
+		%feature("autodoc", "	:param thePolygon:
+	:type thePolygon: IntCurveSurface_ThePolygonOfHInter &
+	:rtype: Bnd_Box
+") Bounding;
 		static const Bnd_Box & Bounding (const IntCurveSurface_ThePolygonOfHInter & thePolygon);
-		%feature("autodoc", "Args:
-	thePolygon(IntCurveSurface_ThePolygonOfHInter)
-
-Returns:
-	static Standard_Real
-
-No detailed docstring for this function.") DeflectionOverEstimation;
+		%feature("autodoc", "	:param thePolygon:
+	:type thePolygon: IntCurveSurface_ThePolygonOfHInter &
+	:rtype: float
+") DeflectionOverEstimation;
 		static Standard_Real DeflectionOverEstimation (const IntCurveSurface_ThePolygonOfHInter & thePolygon);
-		%feature("autodoc", "Args:
-	thePolygon(IntCurveSurface_ThePolygonOfHInter)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") Closed;
+		%feature("autodoc", "	:param thePolygon:
+	:type thePolygon: IntCurveSurface_ThePolygonOfHInter &
+	:rtype: bool
+") Closed;
 		static Standard_Boolean Closed (const IntCurveSurface_ThePolygonOfHInter & thePolygon);
-		%feature("autodoc", "Args:
-	thePolygon(IntCurveSurface_ThePolygonOfHInter)
-
-Returns:
-	static Standard_Integer
-
-No detailed docstring for this function.") NbSegments;
+		%feature("autodoc", "	:param thePolygon:
+	:type thePolygon: IntCurveSurface_ThePolygonOfHInter &
+	:rtype: int
+") NbSegments;
 		static Standard_Integer NbSegments (const IntCurveSurface_ThePolygonOfHInter & thePolygon);
-		%feature("autodoc", "Args:
-	thePolygon(IntCurveSurface_ThePolygonOfHInter)
-	Index(Standard_Integer)
-
-Returns:
-	static  gp_Pnt
-
-No detailed docstring for this function.") BeginOfSeg;
+		%feature("autodoc", "	:param thePolygon:
+	:type thePolygon: IntCurveSurface_ThePolygonOfHInter &
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: gp_Pnt
+") BeginOfSeg;
 		static const gp_Pnt & BeginOfSeg (const IntCurveSurface_ThePolygonOfHInter & thePolygon,const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	thePolygon(IntCurveSurface_ThePolygonOfHInter)
-	Index(Standard_Integer)
-
-Returns:
-	static  gp_Pnt
-
-No detailed docstring for this function.") EndOfSeg;
+		%feature("autodoc", "	:param thePolygon:
+	:type thePolygon: IntCurveSurface_ThePolygonOfHInter &
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: gp_Pnt
+") EndOfSeg;
 		static const gp_Pnt & EndOfSeg (const IntCurveSurface_ThePolygonOfHInter & thePolygon,const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	thePolygon(IntCurveSurface_ThePolygonOfHInter)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param thePolygon:
+	:type thePolygon: IntCurveSurface_ThePolygonOfHInter &
+	:rtype: void
+") Dump;
 		static void Dump (const IntCurveSurface_ThePolygonOfHInter & thePolygon);
 };
 
@@ -1665,97 +1304,79 @@ def __del__(self):
 %nodefaultctor IntCurveSurface_ThePolyhedronToolOfHInter;
 class IntCurveSurface_ThePolyhedronToolOfHInter {
 	public:
-		%feature("autodoc", "Args:
-	thePolyh(IntCurveSurface_ThePolyhedronOfHInter)
-
-Returns:
-	static  Bnd_Box
-
-No detailed docstring for this function.") Bounding;
+		%feature("autodoc", "	:param thePolyh:
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:rtype: Bnd_Box
+") Bounding;
 		static const Bnd_Box & Bounding (const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
-		%feature("autodoc", "Args:
-	thePolyh(IntCurveSurface_ThePolyhedronOfHInter)
-
-Returns:
-	static  Handle_Bnd_HArray1OfBox
-
-No detailed docstring for this function.") ComponentsBounding;
+		%feature("autodoc", "	:param thePolyh:
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:rtype: Handle_Bnd_HArray1OfBox
+") ComponentsBounding;
 		static const Handle_Bnd_HArray1OfBox & ComponentsBounding (const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
-		%feature("autodoc", "Args:
-	thePolyh(IntCurveSurface_ThePolyhedronOfHInter)
-
-Returns:
-	static Standard_Real
-
-No detailed docstring for this function.") DeflectionOverEstimation;
+		%feature("autodoc", "	:param thePolyh:
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:rtype: float
+") DeflectionOverEstimation;
 		static Standard_Real DeflectionOverEstimation (const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
-		%feature("autodoc", "Args:
-	thePolyh(IntCurveSurface_ThePolyhedronOfHInter)
-
-Returns:
-	static Standard_Integer
-
-No detailed docstring for this function.") NbTriangles;
+		%feature("autodoc", "	:param thePolyh:
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:rtype: int
+") NbTriangles;
 		static Standard_Integer NbTriangles (const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
-		%feature("autodoc", "Args:
-	thePolyh(IntCurveSurface_ThePolyhedronOfHInter)
-	Index(Standard_Integer)
-	P1(Standard_Integer)
-	P2(Standard_Integer)
-	P3(Standard_Integer)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") Triangle;
+		%feature("autodoc", "	:param thePolyh:
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:param Index:
+	:type Index: Standard_Integer
+	:param P1:
+	:type P1: Standard_Integer &
+	:param P2:
+	:type P2: Standard_Integer &
+	:param P3:
+	:type P3: Standard_Integer &
+	:rtype: void
+") Triangle;
 		static void Triangle (const IntCurveSurface_ThePolyhedronOfHInter & thePolyh,const Standard_Integer Index,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	thePolyh(IntCurveSurface_ThePolyhedronOfHInter)
-	Index(Standard_Integer)
-
-Returns:
-	static  gp_Pnt
-
-No detailed docstring for this function.") Point;
+		%feature("autodoc", "	:param thePolyh:
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: gp_Pnt
+") Point;
 		static const gp_Pnt & Point (const IntCurveSurface_ThePolyhedronOfHInter & thePolyh,const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	thePolyh(IntCurveSurface_ThePolyhedronOfHInter)
-	Triang(Standard_Integer)
-	Pivot(Standard_Integer)
-	Pedge(Standard_Integer)
-	TriCon(Standard_Integer)
-	OtherP(Standard_Integer)
-
-Returns:
-	static Standard_Integer
-
-No detailed docstring for this function.") TriConnex;
+		%feature("autodoc", "	:param thePolyh:
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:param Triang:
+	:type Triang: Standard_Integer
+	:param Pivot:
+	:type Pivot: Standard_Integer
+	:param Pedge:
+	:type Pedge: Standard_Integer
+	:param TriCon:
+	:type TriCon: Standard_Integer &
+	:param OtherP:
+	:type OtherP: Standard_Integer &
+	:rtype: int
+") TriConnex;
 		static Standard_Integer TriConnex (const IntCurveSurface_ThePolyhedronOfHInter & thePolyh,const Standard_Integer Triang,const Standard_Integer Pivot,const Standard_Integer Pedge,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	thePolyh(IntCurveSurface_ThePolyhedronOfHInter)
-	Index1(Standard_Integer)
-	Index2(Standard_Integer)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") IsOnBound;
+		%feature("autodoc", "	:param thePolyh:
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:param Index1:
+	:type Index1: Standard_Integer
+	:param Index2:
+	:type Index2: Standard_Integer
+	:rtype: bool
+") IsOnBound;
 		static Standard_Boolean IsOnBound (const IntCurveSurface_ThePolyhedronOfHInter & thePolyh,const Standard_Integer Index1,const Standard_Integer Index2);
-		%feature("autodoc", "Args:
-	thePolyh(IntCurveSurface_ThePolyhedronOfHInter)
-
-Returns:
-	static Standard_Real
-
-No detailed docstring for this function.") GetBorderDeflection;
+		%feature("autodoc", "	:param thePolyh:
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:rtype: float
+") GetBorderDeflection;
 		static Standard_Real GetBorderDeflection (const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
-		%feature("autodoc", "Args:
-	thePolyh(IntCurveSurface_ThePolyhedronOfHInter)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param thePolyh:
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:rtype: void
+") Dump;
 		static void Dump (const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 };
 
@@ -1777,53 +1398,35 @@ def __del__(self):
 %nodefaultctor IntCurveSurface_TheQuadCurvExactHInter;
 class IntCurveSurface_TheQuadCurvExactHInter {
 	public:
-		%feature("autodoc", "Args:
-	S(Handle_Adaptor3d_HSurface)
-	C(Handle_Adaptor3d_HCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntCurveSurface_TheQuadCurvExactHInter;
+		%feature("autodoc", "	:param S:
+	:type S: Handle_Adaptor3d_HSurface &
+	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:rtype: None
+") IntCurveSurface_TheQuadCurvExactHInter;
 		 IntCurveSurface_TheQuadCurvExactHInter (const Handle_Adaptor3d_HSurface & S,const Handle_Adaptor3d_HCurve & C);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbRoots;
+		%feature("autodoc", "	:rtype: int
+") NbRoots;
 		Standard_Integer NbRoots ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Root;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: float
+") Root;
 		Standard_Real Root (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbIntervals;
+		%feature("autodoc", "	:rtype: int
+") NbIntervals;
 		Standard_Integer NbIntervals ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	U1(Standard_Real)
-	U2(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Intervals;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param U1:
+	:type U1: float &
+	:param U2:
+	:type U2: float &
+	:rtype: None
+") Intervals;
 		void Intervals (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
 };
 
@@ -1845,42 +1448,35 @@ def __del__(self):
 %nodefaultctor IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter;
 class IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter : public math_FunctionWithDerivative {
 	public:
-		%feature("autodoc", "Args:
-	Q(IntSurf_Quadric)
-	C(Handle_Adaptor3d_HCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter;
+		%feature("autodoc", "	:param Q:
+	:type Q: IntSurf_Quadric &
+	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:rtype: None
+") IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter;
 		 IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter (const IntSurf_Quadric & Q,const Handle_Adaptor3d_HCurve & C);
-		%feature("autodoc", "Args:
-	Param(Standard_Real)
-	F(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Param:
+	:type Param: float
+	:param F:
+	:type F: float &
+	:rtype: bool
+") Value;
 		Standard_Boolean Value (const Standard_Real Param,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Param(Standard_Real)
-	D(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Derivative;
+		%feature("autodoc", "	:param Param:
+	:type Param: float
+	:param D:
+	:type D: float &
+	:rtype: bool
+") Derivative;
 		Standard_Boolean Derivative (const Standard_Real Param,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Param(Standard_Real)
-	F(Standard_Real)
-	D(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Values;
+		%feature("autodoc", "	:param Param:
+	:type Param: float
+	:param F:
+	:type F: float &
+	:param D:
+	:type D: float &
+	:rtype: bool
+") Values;
 		Standard_Boolean Values (const Standard_Real Param,Standard_Real &OutValue,Standard_Real &OutValue);
 };
 
@@ -1902,64 +1498,57 @@ def __del__(self):
 %nodefaultctor IntCurveSurface_HInter;
 class IntCurveSurface_HInter : public IntCurveSurface_Intersection {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntCurveSurface_HInter;
+		%feature("autodoc", "	:rtype: None
+") IntCurveSurface_HInter;
 		 IntCurveSurface_HInter ();
-		%feature("autodoc", "Args:
-	Curve(Handle_Adaptor3d_HCurve)
-	Surface(Handle_Adaptor3d_HSurface)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param Curve:
+	:type Curve: Handle_Adaptor3d_HCurve &
+	:param Surface:
+	:type Surface: Handle_Adaptor3d_HSurface &
+	:rtype: None
+") Perform;
 		void Perform (const Handle_Adaptor3d_HCurve & Curve,const Handle_Adaptor3d_HSurface & Surface);
-		%feature("autodoc", "Args:
-	Curve(Handle_Adaptor3d_HCurve)
-	Polygon(IntCurveSurface_ThePolygonOfHInter)
-	Surface(Handle_Adaptor3d_HSurface)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param Curve:
+	:type Curve: Handle_Adaptor3d_HCurve &
+	:param Polygon:
+	:type Polygon: IntCurveSurface_ThePolygonOfHInter &
+	:param Surface:
+	:type Surface: Handle_Adaptor3d_HSurface &
+	:rtype: None
+") Perform;
 		void Perform (const Handle_Adaptor3d_HCurve & Curve,const IntCurveSurface_ThePolygonOfHInter & Polygon,const Handle_Adaptor3d_HSurface & Surface);
-		%feature("autodoc", "Args:
-	Curve(Handle_Adaptor3d_HCurve)
-	ThePolygon(IntCurveSurface_ThePolygonOfHInter)
-	Surface(Handle_Adaptor3d_HSurface)
-	Polyhedron(IntCurveSurface_ThePolyhedronOfHInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param Curve:
+	:type Curve: Handle_Adaptor3d_HCurve &
+	:param ThePolygon:
+	:type ThePolygon: IntCurveSurface_ThePolygonOfHInter &
+	:param Surface:
+	:type Surface: Handle_Adaptor3d_HSurface &
+	:param Polyhedron:
+	:type Polyhedron: IntCurveSurface_ThePolyhedronOfHInter &
+	:rtype: None
+") Perform;
 		void Perform (const Handle_Adaptor3d_HCurve & Curve,const IntCurveSurface_ThePolygonOfHInter & ThePolygon,const Handle_Adaptor3d_HSurface & Surface,const IntCurveSurface_ThePolyhedronOfHInter & Polyhedron);
-		%feature("autodoc", "Args:
-	Curve(Handle_Adaptor3d_HCurve)
-	ThePolygon(IntCurveSurface_ThePolygonOfHInter)
-	Surface(Handle_Adaptor3d_HSurface)
-	Polyhedron(IntCurveSurface_ThePolyhedronOfHInter)
-	BndBSB(Bnd_BoundSortBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param Curve:
+	:type Curve: Handle_Adaptor3d_HCurve &
+	:param ThePolygon:
+	:type ThePolygon: IntCurveSurface_ThePolygonOfHInter &
+	:param Surface:
+	:type Surface: Handle_Adaptor3d_HSurface &
+	:param Polyhedron:
+	:type Polyhedron: IntCurveSurface_ThePolyhedronOfHInter &
+	:param BndBSB:
+	:type BndBSB: Bnd_BoundSortBox &
+	:rtype: None
+") Perform;
 		void Perform (const Handle_Adaptor3d_HCurve & Curve,const IntCurveSurface_ThePolygonOfHInter & ThePolygon,const Handle_Adaptor3d_HSurface & Surface,const IntCurveSurface_ThePolyhedronOfHInter & Polyhedron,Bnd_BoundSortBox & BndBSB);
-		%feature("autodoc", "Args:
-	Curve(Handle_Adaptor3d_HCurve)
-	Surface(Handle_Adaptor3d_HSurface)
-	Polyhedron(IntCurveSurface_ThePolyhedronOfHInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param Curve:
+	:type Curve: Handle_Adaptor3d_HCurve &
+	:param Surface:
+	:type Surface: Handle_Adaptor3d_HSurface &
+	:param Polyhedron:
+	:type Polyhedron: IntCurveSurface_ThePolyhedronOfHInter &
+	:rtype: None
+") Perform;
 		void Perform (const Handle_Adaptor3d_HCurve & Curve,const Handle_Adaptor3d_HSurface & Surface,const IntCurveSurface_ThePolyhedronOfHInter & Polyhedron);
 };
 

@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -44,59 +44,45 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor ShapeProcessAPI_ApplySequence;
 class ShapeProcessAPI_ApplySequence {
 	public:
-		%feature("autodoc", "Args:
-	rscName(char *)
-	seqName(char *)=
+		%feature("autodoc", "	* Creates an object and loads resource file and sequence of operators given by their names.
 
-Returns:
-	None
-
-Creates an object and loads resource file and sequence of  
-         operators given by their names.") ShapeProcessAPI_ApplySequence;
+	:param rscName:
+	:type rscName: char *
+	:param seqName: default value is 
+	:type seqName: char *
+	:rtype: None
+") ShapeProcessAPI_ApplySequence;
 		 ShapeProcessAPI_ApplySequence (const char * rscName,const char * seqName = "");
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ShapeProcess_ShapeContext
+		%feature("autodoc", "	* Returns object for managing resource file and sequence of operators.
 
-Returns object for managing resource file and sequence of  
-         operators.") Context;
+	:rtype: Handle_ShapeProcess_ShapeContext
+") Context;
 		Handle_ShapeProcess_ShapeContext & Context ();
-		%feature("autodoc", "Args:
-	shape(TopoDS_Shape)
-	fillmap(Standard_Boolean)=Standard_False
-	until(TopAbs_ShapeEnum)=TopAbs_SHAPE
+		%feature("autodoc", "	* Performs sequence of operators stored in myRsc. If <fillmap> is True adds history 'shape-shape' into myMap for shape and its subshapes until level <until> (included). If <until> is TopAbs_SHAPE, all the subshapes are considered.
 
-Returns:
-	TopoDS_Shape
-
-Performs sequence of operators stored in myRsc.  
-         If <fillmap> is True adds history 'shape-shape' into myMap  
-         for shape and its subshapes until level <until> (included).  
-         If <until> is TopAbs_SHAPE,  all the subshapes are considered.") PrepareShape;
+	:param shape:
+	:type shape: TopoDS_Shape &
+	:param fillmap: default value is Standard_False
+	:type fillmap: bool
+	:param until: default value is TopAbs_SHAPE
+	:type until: TopAbs_ShapeEnum
+	:rtype: TopoDS_Shape
+") PrepareShape;
 		TopoDS_Shape PrepareShape (const TopoDS_Shape & shape,const Standard_Boolean fillmap = Standard_False,const TopAbs_ShapeEnum until = TopAbs_SHAPE);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Clears myMap with accumulated history.
 
-Clears myMap with accumulated history.") ClearMap;
+	:rtype: None
+") ClearMap;
 		void ClearMap ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_DataMapOfShapeShape
+		%feature("autodoc", "	* Returns myMap with accumulated history.
 
-Returns myMap with accumulated history.") Map;
+	:rtype: TopTools_DataMapOfShapeShape
+") Map;
 		const TopTools_DataMapOfShapeShape & Map ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Prints result of preparation onto the messenger of the context. Note that results can be accumulated from previous preparations it method ClearMap was not called before PrepareShape.
 
-Prints result of preparation onto the messenger of the context.  
-         Note that results can be accumulated from previous preparations  
-         it method ClearMap was not called before PrepareShape.") PrintPreparationResult;
+	:rtype: None
+") PrintPreparationResult;
 		void PrintPreparationResult ();
 };
 

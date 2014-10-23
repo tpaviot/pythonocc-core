@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -50,220 +50,183 @@ enum Hatch_LineForm {
 %nodefaultctor Hatch_Hatcher;
 class Hatch_Hatcher {
 	public:
-		%feature("autodoc", "Args:
-	Tol(Standard_Real)
-	Oriented(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Returns a empty hatcher. <Tol> is the tolerance for intersections.
 
-Returns:
-	None
-
-Returns a empty  hatcher.  <Tol> is the  tolerance  
-         for intersections.") Hatch_Hatcher;
+	:param Tol:
+	:type Tol: float
+	:param Oriented: default value is Standard_True
+	:type Oriented: bool
+	:rtype: None
+") Hatch_Hatcher;
 		 Hatch_Hatcher (const Standard_Real Tol,const Standard_Boolean Oriented = Standard_True);
-		%feature("autodoc", "Args:
-	Tol(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Tolerance;
+		%feature("autodoc", "	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Tolerance;
 		void Tolerance (const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Tolerance;
+		%feature("autodoc", "	:rtype: float
+") Tolerance;
 		Standard_Real Tolerance ();
-		%feature("autodoc", "Args:
-	L(gp_Lin2d)
-	T(Hatch_LineForm)=Hatch_ANYLINE
+		%feature("autodoc", "	* Add a line <L> to be trimmed. <T> the type is only kept from information. It is not used in the computation.
 
-Returns:
-	None
-
-Add a line <L>  to  be trimmed.   <T> the  type is  
-         only kept from information. It is not used  in the  
-         computation.") AddLine;
+	:param L:
+	:type L: gp_Lin2d
+	:param T: default value is Hatch_ANYLINE
+	:type T: Hatch_LineForm
+	:rtype: None
+") AddLine;
 		void AddLine (const gp_Lin2d & L,const Hatch_LineForm T = Hatch_ANYLINE);
-		%feature("autodoc", "Args:
-	D(gp_Dir2d)
-	Dist(Standard_Real)
+		%feature("autodoc", "	* Add an infinite line on direction <D> at distance <Dist> from the origin to be trimmed. <Dist> may be negative.  If O is the origin of the 2D plane, and V the vector perpendicular to D (in the direct direction).  A point P is on the line if :  OP dot V = Dist The parameter of P on the line is  OP dot D
 
-Returns:
-	None
-
-Add an infinite line on  direction <D> at distance  
-         <Dist> from the origin  to be  trimmed. <Dist> may  
-         be negative.  
- 
-         If O  is the origin  of the  2D plane, and   V the  
-         vector perpendicular to D (in the direct direction).  
- 
-         A point P is on the line if :  
-           OP dot V = Dist  
-         The parameter of P on the line is  
-           OP dot D") AddLine;
+	:param D:
+	:type D: gp_Dir2d
+	:param Dist:
+	:type Dist: float
+	:rtype: None
+") AddLine;
 		void AddLine (const gp_Dir2d & D,const Standard_Real Dist);
-		%feature("autodoc", "Args:
-	X(Standard_Real)
+		%feature("autodoc", "	* Add an infinite line parallel to the Y-axis at abciss <X>.
 
-Returns:
-	None
-
-Add an infinite line   parallel to the Y-axis   at  
-         abciss <X>.") AddXLine;
+	:param X:
+	:type X: float
+	:rtype: None
+") AddXLine;
 		void AddXLine (const Standard_Real X);
-		%feature("autodoc", "Args:
-	Y(Standard_Real)
+		%feature("autodoc", "	* Add an infinite line parallel to the X-axis at ordinate <Y>.
 
-Returns:
-	None
-
-Add an infinite line   parallel to the X-axis   at  
-         ordinate <Y>.") AddYLine;
+	:param Y:
+	:type Y: float
+	:rtype: None
+") AddYLine;
 		void AddYLine (const Standard_Real Y);
-		%feature("autodoc", "Args:
-	L(gp_Lin2d)
-	Index(Standard_Integer)=0
+		%feature("autodoc", "	* Trims the lines at intersections with <L>.
 
-Returns:
-	None
-
-Trims the lines at intersections with  <L>.") Trim;
+	:param L:
+	:type L: gp_Lin2d
+	:param Index: default value is 0
+	:type Index: Standard_Integer
+	:rtype: None
+") Trim;
 		void Trim (const gp_Lin2d & L,const Standard_Integer Index = 0);
-		%feature("autodoc", "Args:
-	L(gp_Lin2d)
-	Start(Standard_Real)
-	End(Standard_Real)
-	Index(Standard_Integer)=0
+		%feature("autodoc", "	* Trims the lines at intersections with <L> in the parameter range <Start>, <End>
 
-Returns:
-	None
-
-Trims the lines at intersections  with <L>  in the  
-         parameter range <Start>, <End>") Trim;
+	:param L:
+	:type L: gp_Lin2d
+	:param Start:
+	:type Start: float
+	:param End:
+	:type End: float
+	:param Index: default value is 0
+	:type Index: Standard_Integer
+	:rtype: None
+") Trim;
 		void Trim (const gp_Lin2d & L,const Standard_Real Start,const Standard_Real End,const Standard_Integer Index = 0);
-		%feature("autodoc", "Args:
-	P1(gp_Pnt2d)
-	P2(gp_Pnt2d)
-	Index(Standard_Integer)=0
+		%feature("autodoc", "	* Trims the line at intersection with the oriented segment P1,P2.
 
-Returns:
-	None
-
-Trims the line at  intersection with  the oriented  
-         segment P1,P2.") Trim;
+	:param P1:
+	:type P1: gp_Pnt2d
+	:param P2:
+	:type P2: gp_Pnt2d
+	:param Index: default value is 0
+	:type Index: Standard_Integer
+	:rtype: None
+") Trim;
 		void Trim (const gp_Pnt2d & P1,const gp_Pnt2d & P2,const Standard_Integer Index = 0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the total number of intervals on all the lines.
 
-Returns the total number  of intervals on  all the  
-         lines.") NbIntervals;
+	:rtype: int
+") NbIntervals;
 		Standard_Integer NbIntervals ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of lines.
 
-Returns the number of lines.") NbLines;
+	:rtype: int
+") NbLines;
 		Standard_Integer NbLines ();
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* Returns the line of index <I>.
 
-Returns:
-	gp_Lin2d
-
-Returns the line of index <I>.") Line;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: gp_Lin2d
+") Line;
 		const gp_Lin2d & Line (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* Returns the type of the line of index <I>.
 
-Returns:
-	Hatch_LineForm
-
-Returns  the type of the  line   of  index <I>.") LineForm;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: Hatch_LineForm
+") LineForm;
 		Hatch_LineForm LineForm (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* Returns True if the line of index <I> has a constant X value.
 
-Returns:
-	Standard_Boolean
-
-Returns  True if the  line   of  index <I>  has  a  
-         constant X value.") IsXLine;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: bool
+") IsXLine;
 		Standard_Boolean IsXLine (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* Returns True if the line of index <I> has a constant Y value.
 
-Returns:
-	Standard_Boolean
-
-Returns  True if the  line   of  index <I>  has  a  
-         constant Y value.") IsYLine;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: bool
+") IsYLine;
 		Standard_Boolean IsYLine (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* Returns the X or Y coordinate of the line of index <I> if it is a X or a Y line.
 
-Returns:
-	Standard_Real
-
-Returns the X or Y coordinate of the line of index  
-         <I> if it is a X or a Y line.") Coordinate;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: float
+") Coordinate;
 		Standard_Real Coordinate (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* Returns the number of intervals on line of index <I>.
 
-Returns:
-	Standard_Integer
-
-Returns the number of intervals on line of index <I>.") NbIntervals;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: int
+") NbIntervals;
 		Standard_Integer NbIntervals (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	J(Standard_Integer)
+		%feature("autodoc", "	* Returns the first parameter of interval <J> on line <I>.
 
-Returns:
-	Standard_Real
-
-Returns the first   parameter of  interval <J>  on  
-         line  <I>.") Start;
+	:param I:
+	:type I: Standard_Integer
+	:param J:
+	:type J: Standard_Integer
+	:rtype: float
+") Start;
 		Standard_Real Start (const Standard_Integer I,const Standard_Integer J);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	J(Standard_Integer)
-	Index(Standard_Integer)
-	Par2(Standard_Real)
+		%feature("autodoc", "	* Returns the first Index and Par2 of interval <J> on line <I>.
 
-Returns:
-	None
-
-Returns the first Index and Par2 of  interval <J>  on  
-         line  <I>.") StartIndex;
+	:param I:
+	:type I: Standard_Integer
+	:param J:
+	:type J: Standard_Integer
+	:param Index:
+	:type Index: Standard_Integer &
+	:param Par2:
+	:type Par2: float &
+	:rtype: None
+") StartIndex;
 		void StartIndex (const Standard_Integer I,const Standard_Integer J,Standard_Integer &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	J(Standard_Integer)
+		%feature("autodoc", "	* Returns the last parameter of interval <J> on line <I>.
 
-Returns:
-	Standard_Real
-
-Returns the last   parameter of  interval <J>  on  
-         line  <I>.") End;
+	:param I:
+	:type I: Standard_Integer
+	:param J:
+	:type J: Standard_Integer
+	:rtype: float
+") End;
 		Standard_Real End (const Standard_Integer I,const Standard_Integer J);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	J(Standard_Integer)
-	Index(Standard_Integer)
-	Par2(Standard_Real)
+		%feature("autodoc", "	* Returns the last Index and Par2 of interval <J> on line <I>.
 
-Returns:
-	None
-
-Returns the last Index and Par2 of  interval <J>  on  
-         line  <I>.") EndIndex;
+	:param I:
+	:type I: Standard_Integer
+	:param J:
+	:type J: Standard_Integer
+	:param Index:
+	:type Index: Standard_Integer &
+	:param Par2:
+	:type Par2: float &
+	:rtype: None
+") EndIndex;
 		void EndIndex (const Standard_Integer I,const Standard_Integer J,Standard_Integer &OutValue,Standard_Real &OutValue);
 };
 
@@ -285,33 +248,30 @@ def __del__(self):
 %nodefaultctor Hatch_Line;
 class Hatch_Line {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Hatch_Line;
+		%feature("autodoc", "	:rtype: None
+") Hatch_Line;
 		 Hatch_Line ();
-		%feature("autodoc", "Args:
-	L(gp_Lin2d)
-	T(Hatch_LineForm)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Hatch_Line;
+		%feature("autodoc", "	:param L:
+	:type L: gp_Lin2d
+	:param T:
+	:type T: Hatch_LineForm
+	:rtype: None
+") Hatch_Line;
 		 Hatch_Line (const gp_Lin2d & L,const Hatch_LineForm T);
-		%feature("autodoc", "Args:
-	Par1(Standard_Real)
-	Start(Standard_Boolean)
-	Index(Standard_Integer)
-	Par2(Standard_Real)
-	theToler(Standard_Real)
+		%feature("autodoc", "	* Insert a new intersection in the sorted list.
 
-Returns:
-	None
-
-Insert a new intersection in the sorted list.") AddIntersection;
+	:param Par1:
+	:type Par1: float
+	:param Start:
+	:type Start: bool
+	:param Index:
+	:type Index: Standard_Integer
+	:param Par2:
+	:type Par2: float
+	:param theToler:
+	:type theToler: float
+	:rtype: None
+") AddIntersection;
 		void AddIntersection (const Standard_Real Par1,const Standard_Boolean Start,const Standard_Integer Index,const Standard_Real Par2,const Standard_Real theToler);
 };
 
@@ -333,23 +293,19 @@ def __del__(self):
 %nodefaultctor Hatch_Parameter;
 class Hatch_Parameter {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Hatch_Parameter;
+		%feature("autodoc", "	:rtype: None
+") Hatch_Parameter;
 		 Hatch_Parameter ();
-		%feature("autodoc", "Args:
-	Par1(Standard_Real)
-	Start(Standard_Boolean)
-	Index(Standard_Integer)=0
-	Par2(Standard_Real)=0
-
-Returns:
-	None
-
-No detailed docstring for this function.") Hatch_Parameter;
+		%feature("autodoc", "	:param Par1:
+	:type Par1: float
+	:param Start:
+	:type Start: bool
+	:param Index: default value is 0
+	:type Index: Standard_Integer
+	:param Par2: default value is 0
+	:type Par2: float
+	:rtype: None
+") Hatch_Parameter;
 		 Hatch_Parameter (const Standard_Real Par1,const Standard_Boolean Start,const Standard_Integer Index = 0,const Standard_Real Par2 = 0);
 };
 
@@ -371,22 +327,17 @@ def __del__(self):
 %nodefaultctor Hatch_SequenceNodeOfSequenceOfLine;
 class Hatch_SequenceNodeOfSequenceOfLine : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Hatch_Line)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Hatch_SequenceNodeOfSequenceOfLine;
+		%feature("autodoc", "	:param I:
+	:type I: Hatch_Line &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Hatch_SequenceNodeOfSequenceOfLine;
 		 Hatch_SequenceNodeOfSequenceOfLine (const Hatch_Line & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Hatch_Line
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Hatch_Line
+") Value;
 		Hatch_Line & Value ();
 };
 
@@ -447,22 +398,17 @@ def __del__(self):
 %nodefaultctor Hatch_SequenceNodeOfSequenceOfParameter;
 class Hatch_SequenceNodeOfSequenceOfParameter : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Hatch_Parameter)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Hatch_SequenceNodeOfSequenceOfParameter;
+		%feature("autodoc", "	:param I:
+	:type I: Hatch_Parameter &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Hatch_SequenceNodeOfSequenceOfParameter;
 		 Hatch_SequenceNodeOfSequenceOfParameter (const Hatch_Parameter & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Hatch_Parameter
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Hatch_Parameter
+") Value;
 		Hatch_Parameter & Value ();
 };
 
@@ -523,168 +469,111 @@ def __del__(self):
 %nodefaultctor Hatch_SequenceOfLine;
 class Hatch_SequenceOfLine : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Hatch_SequenceOfLine;
+		%feature("autodoc", "	:rtype: None
+") Hatch_SequenceOfLine;
 		 Hatch_SequenceOfLine ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Hatch_SequenceOfLine)
-
-Returns:
-	Hatch_SequenceOfLine
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Hatch_SequenceOfLine &
+	:rtype: Hatch_SequenceOfLine
+") Assign;
 		const Hatch_SequenceOfLine & Assign (const Hatch_SequenceOfLine & Other);
-		%feature("autodoc", "Args:
-	Other(Hatch_SequenceOfLine)
-
-Returns:
-	Hatch_SequenceOfLine
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Hatch_SequenceOfLine &
+	:rtype: Hatch_SequenceOfLine
+") operator=;
 		const Hatch_SequenceOfLine & operator = (const Hatch_SequenceOfLine & Other);
-		%feature("autodoc", "Args:
-	T(Hatch_Line)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Hatch_Line &
+	:rtype: None
+") Append;
 		void Append (const Hatch_Line & T);
-		%feature("autodoc", "Args:
-	S(Hatch_SequenceOfLine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Hatch_SequenceOfLine &
+	:rtype: None
+") Append;
 		void Append (Hatch_SequenceOfLine & S);
-		%feature("autodoc", "Args:
-	T(Hatch_Line)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Hatch_Line &
+	:rtype: None
+") Prepend;
 		void Prepend (const Hatch_Line & T);
-		%feature("autodoc", "Args:
-	S(Hatch_SequenceOfLine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Hatch_SequenceOfLine &
+	:rtype: None
+") Prepend;
 		void Prepend (Hatch_SequenceOfLine & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Hatch_Line)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Hatch_Line &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Hatch_Line & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Hatch_SequenceOfLine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Hatch_SequenceOfLine &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Hatch_SequenceOfLine & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Hatch_Line)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Hatch_Line &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Hatch_Line & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Hatch_SequenceOfLine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Hatch_SequenceOfLine &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Hatch_SequenceOfLine & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Hatch_Line
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Hatch_Line
+") First;
 		const Hatch_Line & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Hatch_Line
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Hatch_Line
+") Last;
 		const Hatch_Line & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Hatch_SequenceOfLine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Hatch_SequenceOfLine &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Hatch_SequenceOfLine & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Hatch_Line
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Hatch_Line
+") Value;
 		const Hatch_Line & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Hatch_Line)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Hatch_Line &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Hatch_Line & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Hatch_Line
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Hatch_Line
+") ChangeValue;
 		Hatch_Line & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -706,168 +595,111 @@ def __del__(self):
 %nodefaultctor Hatch_SequenceOfParameter;
 class Hatch_SequenceOfParameter : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Hatch_SequenceOfParameter;
+		%feature("autodoc", "	:rtype: None
+") Hatch_SequenceOfParameter;
 		 Hatch_SequenceOfParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Hatch_SequenceOfParameter)
-
-Returns:
-	Hatch_SequenceOfParameter
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Hatch_SequenceOfParameter &
+	:rtype: Hatch_SequenceOfParameter
+") Assign;
 		const Hatch_SequenceOfParameter & Assign (const Hatch_SequenceOfParameter & Other);
-		%feature("autodoc", "Args:
-	Other(Hatch_SequenceOfParameter)
-
-Returns:
-	Hatch_SequenceOfParameter
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Hatch_SequenceOfParameter &
+	:rtype: Hatch_SequenceOfParameter
+") operator=;
 		const Hatch_SequenceOfParameter & operator = (const Hatch_SequenceOfParameter & Other);
-		%feature("autodoc", "Args:
-	T(Hatch_Parameter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Hatch_Parameter &
+	:rtype: None
+") Append;
 		void Append (const Hatch_Parameter & T);
-		%feature("autodoc", "Args:
-	S(Hatch_SequenceOfParameter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Hatch_SequenceOfParameter &
+	:rtype: None
+") Append;
 		void Append (Hatch_SequenceOfParameter & S);
-		%feature("autodoc", "Args:
-	T(Hatch_Parameter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Hatch_Parameter &
+	:rtype: None
+") Prepend;
 		void Prepend (const Hatch_Parameter & T);
-		%feature("autodoc", "Args:
-	S(Hatch_SequenceOfParameter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Hatch_SequenceOfParameter &
+	:rtype: None
+") Prepend;
 		void Prepend (Hatch_SequenceOfParameter & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Hatch_Parameter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Hatch_Parameter &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Hatch_Parameter & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Hatch_SequenceOfParameter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Hatch_SequenceOfParameter &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Hatch_SequenceOfParameter & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Hatch_Parameter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Hatch_Parameter &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Hatch_Parameter & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Hatch_SequenceOfParameter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Hatch_SequenceOfParameter &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Hatch_SequenceOfParameter & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Hatch_Parameter
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Hatch_Parameter
+") First;
 		const Hatch_Parameter & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Hatch_Parameter
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Hatch_Parameter
+") Last;
 		const Hatch_Parameter & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Hatch_SequenceOfParameter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Hatch_SequenceOfParameter &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Hatch_SequenceOfParameter & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Hatch_Parameter
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Hatch_Parameter
+") Value;
 		const Hatch_Parameter & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Hatch_Parameter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Hatch_Parameter &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Hatch_Parameter & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Hatch_Parameter
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Hatch_Parameter
+") ChangeValue;
 		Hatch_Parameter & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 

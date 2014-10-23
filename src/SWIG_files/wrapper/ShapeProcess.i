@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -46,34 +46,32 @@ typedef Standard_Boolean ( * ShapeProcess_OperFunc ) ( const Handle_ShapeProcess
 %nodefaultctor ShapeProcess;
 class ShapeProcess {
 	public:
-		%feature("autodoc", "Args:
-	name(char *)
-	op(Handle_ShapeProcess_Operator)
+		%feature("autodoc", "	* Registers operator to make it visible for Performer
 
-Returns:
-	static Standard_Boolean
-
-Registers operator to make it visible for Performer") RegisterOperator;
+	:param name:
+	:type name: char *
+	:param op:
+	:type op: Handle_ShapeProcess_Operator &
+	:rtype: bool
+") RegisterOperator;
 		static Standard_Boolean RegisterOperator (const char * name,const Handle_ShapeProcess_Operator & op);
-		%feature("autodoc", "Args:
-	name(char *)
-	op(Handle_ShapeProcess_Operator)
+		%feature("autodoc", "	* Finds operator by its name
 
-Returns:
-	static Standard_Boolean
-
-Finds operator by its name") FindOperator;
+	:param name:
+	:type name: char *
+	:param op:
+	:type op: Handle_ShapeProcess_Operator &
+	:rtype: bool
+") FindOperator;
 		static Standard_Boolean FindOperator (const char * name,Handle_ShapeProcess_Operator & op);
-		%feature("autodoc", "Args:
-	context(Handle_ShapeProcess_Context)
-	seq(char *)
+		%feature("autodoc", "	* Performs a specified sequence of operators on Context Resource file and other data should be already loaded to Context (including description of sequence seq)
 
-Returns:
-	static Standard_Boolean
-
-Performs a specified sequence of operators on Context  
-         Resource file and other data should be already loaded  
-         to Context (including description of sequence seq)") Perform;
+	:param context:
+	:type context: Handle_ShapeProcess_Context &
+	:param seq:
+	:type seq: char *
+	:rtype: bool
+") Perform;
 		static Standard_Boolean Perform (const Handle_ShapeProcess_Context & context,const char * seq);
 };
 
@@ -95,199 +93,155 @@ def __del__(self):
 %nodefaultctor ShapeProcess_Context;
 class ShapeProcess_Context : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates an empty tool
 
-Creates an empty tool") ShapeProcess_Context;
+	:rtype: None
+") ShapeProcess_Context;
 		 ShapeProcess_Context ();
-		%feature("autodoc", "Args:
-	file(char *)
-	scope(char *)=
+		%feature("autodoc", "	* Creates a new tool and initialises by name of resource file and (if specified) starting scope Calls method Init()
 
-Returns:
-	None
-
-Creates a new tool and initialises by name of  
-         resource file and (if specified) starting scope  
-         Calls method Init()") ShapeProcess_Context;
+	:param file:
+	:type file: char *
+	:param scope: default value is 
+	:type scope: char *
+	:rtype: None
+") ShapeProcess_Context;
 		 ShapeProcess_Context (const char * file,const char * scope = "");
-		%feature("autodoc", "Args:
-	file(char *)
-	scope(char *)=
+		%feature("autodoc", "	* Initialises a tool by loading resource file and (if specified) sets starting scope Returns False if resource file not found
 
-Returns:
-	Standard_Boolean
-
-Initialises a tool by loading resource file and  
-         (if specified) sets starting scope  
-         Returns False if resource file not found") Init;
+	:param file:
+	:type file: char *
+	:param scope: default value is 
+	:type scope: char *
+	:rtype: bool
+") Init;
 		Standard_Boolean Init (const char * file,const char * scope = "");
-		%feature("autodoc", "Args:
-	file(char *)
+		%feature("autodoc", "	* Loading Resource_Manager object if this object not equal internal static Resource_Manager object or internal static Resource_Manager object is null
 
-Returns:
-	Handle_Resource_Manager
-
-Loading Resource_Manager object if this object not  
-         equal internal static Resource_Manager object or  
-         internal static Resource_Manager object is null") LoadResourceManager;
+	:param file:
+	:type file: char *
+	:rtype: Handle_Resource_Manager
+") LoadResourceManager;
 		Handle_Resource_Manager LoadResourceManager (const char * file);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Resource_Manager
+		%feature("autodoc", "	* Returns internal Resource_Manager object
 
-Returns internal Resource_Manager object") ResourceManager;
+	:rtype: Handle_Resource_Manager
+") ResourceManager;
 		const Handle_Resource_Manager & ResourceManager ();
-		%feature("autodoc", "Args:
-	scope(char *)
+		%feature("autodoc", "	* Set a new (sub)scope
 
-Returns:
-	None
-
-Set a new (sub)scope") SetScope;
+	:param scope:
+	:type scope: char *
+	:rtype: None
+") SetScope;
 		void SetScope (const char * scope);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Go out of current scope
 
-Go out of current scope") UnSetScope;
+	:rtype: None
+") UnSetScope;
 		void UnSetScope ();
-		%feature("autodoc", "Args:
-	param(char *)
+		%feature("autodoc", "	* Returns True if parameter is defined in the resource file
 
-Returns:
-	Standard_Boolean
-
-Returns True if parameter is defined in the resource file") IsParamSet;
+	:param param:
+	:type param: char *
+	:rtype: bool
+") IsParamSet;
 		Standard_Boolean IsParamSet (const char * param);
-		%feature("autodoc", "Args:
-	param(char *)
-	val(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") GetReal;
+		%feature("autodoc", "	:param param:
+	:type param: char *
+	:param val:
+	:type val: float &
+	:rtype: bool
+") GetReal;
 		Standard_Boolean GetReal (const char * param,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	param(char *)
-	val(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") GetInteger;
+		%feature("autodoc", "	:param param:
+	:type param: char *
+	:param val:
+	:type val: Standard_Integer &
+	:rtype: bool
+") GetInteger;
 		Standard_Boolean GetInteger (const char * param,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	param(char *)
-	val(Standard_Boolean)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") GetBoolean;
+		%feature("autodoc", "	:param param:
+	:type param: char *
+	:param val:
+	:type val: bool
+	:rtype: bool
+") GetBoolean;
 		Standard_Boolean GetBoolean (const char * param,Standard_Boolean & val);
-		%feature("autodoc", "Args:
-	param(char *)
-	val(TCollection_AsciiString)
+		%feature("autodoc", "	* Get value of parameter as being of specific type Returns False if parameter is not defined or has a wrong type
 
-Returns:
-	Standard_Boolean
-
-Get value of parameter as being of specific type  
-         Returns False if parameter is not defined or has a wrong type") GetString;
+	:param param:
+	:type param: char *
+	:param val:
+	:type val: TCollection_AsciiString &
+	:rtype: bool
+") GetString;
 		Standard_Boolean GetString (const char * param,TCollection_AsciiString & val);
-		%feature("autodoc", "Args:
-	param(char *)
-	def(Standard_Real)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") RealVal;
+		%feature("autodoc", "	:param param:
+	:type param: char *
+	:param def:
+	:type def: float
+	:rtype: float
+") RealVal;
 		Standard_Real RealVal (const char * param,const Standard_Real def);
-		%feature("autodoc", "Args:
-	param(char *)
-	def(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") IntegerVal;
+		%feature("autodoc", "	:param param:
+	:type param: char *
+	:param def:
+	:type def: Standard_Integer
+	:rtype: int
+") IntegerVal;
 		Standard_Integer IntegerVal (const char * param,const Standard_Integer def);
-		%feature("autodoc", "Args:
-	param(char *)
-	def(Standard_Boolean)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") BooleanVal;
+		%feature("autodoc", "	:param param:
+	:type param: char *
+	:param def:
+	:type def: bool
+	:rtype: bool
+") BooleanVal;
 		Standard_Boolean BooleanVal (const char * param,const Standard_Boolean def);
-		%feature("autodoc", "Args:
-	param(char *)
-	def(char *)
+		%feature("autodoc", "	* Get value of parameter as being of specific type If parameter is not defined or does not have expected type, returns default value as specified
 
-Returns:
-	char *
-
-Get value of parameter as being of specific type  
-         If parameter is not defined or does not have expected  
-         type, returns default value as specified") StringVal;
+	:param param:
+	:type param: char *
+	:param def:
+	:type def: char *
+	:rtype: char *
+") StringVal;
 		char * StringVal (const char * param,const char * def);
-		%feature("autodoc", "Args:
-	messenger(Handle_Message_Messenger)
+		%feature("autodoc", "	* Sets Messenger used for outputting messages.
 
-Returns:
-	None
-
-Sets Messenger used for outputting messages.") SetMessenger;
+	:param messenger:
+	:type messenger: Handle_Message_Messenger &
+	:rtype: None
+") SetMessenger;
 		void SetMessenger (const Handle_Message_Messenger & messenger);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Message_Messenger
+		%feature("autodoc", "	* Returns Messenger used for outputting messages.
 
-Returns Messenger used for outputting messages.") Messenger;
+	:rtype: Handle_Message_Messenger
+") Messenger;
 		Handle_Message_Messenger Messenger ();
-		%feature("autodoc", "Args:
-	theProgress(Handle_Message_ProgressIndicator)
+		%feature("autodoc", "	* Sets Progress Indicator.
 
-Returns:
-	None
-
-Sets Progress Indicator.") SetProgress;
+	:param theProgress:
+	:type theProgress: Handle_Message_ProgressIndicator &
+	:rtype: None
+") SetProgress;
 		void SetProgress (const Handle_Message_ProgressIndicator & theProgress);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Message_ProgressIndicator
+		%feature("autodoc", "	* Returns Progress Indicator.
 
-Returns Progress Indicator.") Progress;
+	:rtype: Handle_Message_ProgressIndicator
+") Progress;
 		Handle_Message_ProgressIndicator Progress ();
-		%feature("autodoc", "Args:
-	tracelev(Standard_Integer)
+		%feature("autodoc", "	* Sets trace level used for outputting messages - 0: no trace at all - 1: errors - 2: errors and warnings - 3: all messages Default is 1 : Errors traced
 
-Returns:
-	None
-
-Sets trace level used for outputting messages  
-          - 0: no trace at all  
-          - 1: errors  
-          - 2: errors and warnings  
-          - 3: all messages  
-          Default is 1 : Errors traced") SetTraceLevel;
+	:param tracelev:
+	:type tracelev: Standard_Integer
+	:rtype: None
+") SetTraceLevel;
 		void SetTraceLevel (const Standard_Integer tracelev);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns trace level used for outputting messages.
 
-Returns trace level used for outputting messages.") TraceLevel;
+	:rtype: int
+") TraceLevel;
 		Standard_Integer TraceLevel ();
 };
 
@@ -348,164 +302,125 @@ def __del__(self):
 %nodefaultctor ShapeProcess_DictionaryOfOperator;
 class ShapeProcess_DictionaryOfOperator : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ShapeProcess_DictionaryOfOperator;
+		%feature("autodoc", "	:rtype: None
+") ShapeProcess_DictionaryOfOperator;
 		 ShapeProcess_DictionaryOfOperator ();
-		%feature("autodoc", "Args:
-	name(char *)
-	exact(Standard_Boolean)=Standard_False
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasItem;
+		%feature("autodoc", "	:param name:
+	:type name: char *
+	:param exact: default value is Standard_False
+	:type exact: bool
+	:rtype: bool
+") HasItem;
 		Standard_Boolean HasItem (const char * name,const Standard_Boolean exact = Standard_False);
-		%feature("autodoc", "Args:
-	name(TCollection_AsciiString)
-	exact(Standard_Boolean)=Standard_True
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasItem;
+		%feature("autodoc", "	:param name:
+	:type name: TCollection_AsciiString &
+	:param exact: default value is Standard_True
+	:type exact: bool
+	:rtype: bool
+") HasItem;
 		Standard_Boolean HasItem (const TCollection_AsciiString & name,const Standard_Boolean exact = Standard_True);
-		%feature("autodoc", "Args:
-	name(char *)
-	exact(Standard_Boolean)=Standard_True
-
-Returns:
-	Handle_ShapeProcess_Operator
-
-No detailed docstring for this function.") Item;
+		%feature("autodoc", "	:param name:
+	:type name: char *
+	:param exact: default value is Standard_True
+	:type exact: bool
+	:rtype: Handle_ShapeProcess_Operator
+") Item;
 		const Handle_ShapeProcess_Operator & Item (const char * name,const Standard_Boolean exact = Standard_True);
-		%feature("autodoc", "Args:
-	name(TCollection_AsciiString)
-	exact(Standard_Boolean)=Standard_True
-
-Returns:
-	Handle_ShapeProcess_Operator
-
-No detailed docstring for this function.") Item;
+		%feature("autodoc", "	:param name:
+	:type name: TCollection_AsciiString &
+	:param exact: default value is Standard_True
+	:type exact: bool
+	:rtype: Handle_ShapeProcess_Operator
+") Item;
 		const Handle_ShapeProcess_Operator & Item (const TCollection_AsciiString & name,const Standard_Boolean exact = Standard_True);
-		%feature("autodoc", "Args:
-	name(char *)
-	anitem(Handle_ShapeProcess_Operator)
-	exact(Standard_Boolean)=Standard_True
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") GetItem;
+		%feature("autodoc", "	:param name:
+	:type name: char *
+	:param anitem:
+	:type anitem: Handle_ShapeProcess_Operator &
+	:param exact: default value is Standard_True
+	:type exact: bool
+	:rtype: bool
+") GetItem;
 		Standard_Boolean GetItem (const char * name,Handle_ShapeProcess_Operator & anitem,const Standard_Boolean exact = Standard_True);
-		%feature("autodoc", "Args:
-	name(TCollection_AsciiString)
-	anitem(Handle_ShapeProcess_Operator)
-	exact(Standard_Boolean)=Standard_True
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") GetItem;
+		%feature("autodoc", "	:param name:
+	:type name: TCollection_AsciiString &
+	:param anitem:
+	:type anitem: Handle_ShapeProcess_Operator &
+	:param exact: default value is Standard_True
+	:type exact: bool
+	:rtype: bool
+") GetItem;
 		Standard_Boolean GetItem (const TCollection_AsciiString & name,Handle_ShapeProcess_Operator & anitem,const Standard_Boolean exact = Standard_True);
-		%feature("autodoc", "Args:
-	name(char *)
-	anitem(Handle_ShapeProcess_Operator)
-	exact(Standard_Boolean)=Standard_True
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetItem;
+		%feature("autodoc", "	:param name:
+	:type name: char *
+	:param anitem:
+	:type anitem: Handle_ShapeProcess_Operator &
+	:param exact: default value is Standard_True
+	:type exact: bool
+	:rtype: None
+") SetItem;
 		void SetItem (const char * name,const Handle_ShapeProcess_Operator & anitem,const Standard_Boolean exact = Standard_True);
-		%feature("autodoc", "Args:
-	name(TCollection_AsciiString)
-	anitem(Handle_ShapeProcess_Operator)
-	exact(Standard_Boolean)=Standard_True
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetItem;
+		%feature("autodoc", "	:param name:
+	:type name: TCollection_AsciiString &
+	:param anitem:
+	:type anitem: Handle_ShapeProcess_Operator &
+	:param exact: default value is Standard_True
+	:type exact: bool
+	:rtype: None
+") SetItem;
 		void SetItem (const TCollection_AsciiString & name,const Handle_ShapeProcess_Operator & anitem,const Standard_Boolean exact = Standard_True);
-		%feature("autodoc", "Args:
-	name(char *)
-	isvalued(Standard_Boolean)
-	exact(Standard_Boolean)=Standard_True
-
-Returns:
-	Handle_ShapeProcess_Operator
-
-No detailed docstring for this function.") NewItem;
+		%feature("autodoc", "	:param name:
+	:type name: char *
+	:param isvalued:
+	:type isvalued: bool
+	:param exact: default value is Standard_True
+	:type exact: bool
+	:rtype: Handle_ShapeProcess_Operator
+") NewItem;
 		Handle_ShapeProcess_Operator & NewItem (const char * name,Standard_Boolean & isvalued,const Standard_Boolean exact = Standard_True);
-		%feature("autodoc", "Args:
-	name(TCollection_AsciiString)
-	isvalued(Standard_Boolean)
-	exact(Standard_Boolean)=Standard_True
-
-Returns:
-	Handle_ShapeProcess_Operator
-
-No detailed docstring for this function.") NewItem;
+		%feature("autodoc", "	:param name:
+	:type name: TCollection_AsciiString &
+	:param isvalued:
+	:type isvalued: bool
+	:param exact: default value is Standard_True
+	:type exact: bool
+	:rtype: Handle_ShapeProcess_Operator
+") NewItem;
 		Handle_ShapeProcess_Operator & NewItem (const TCollection_AsciiString & name,Standard_Boolean & isvalued,const Standard_Boolean exact = Standard_True);
-		%feature("autodoc", "Args:
-	name(char *)
-	cln(Standard_Boolean)=Standard_True
-	exact(Standard_Boolean)=Standard_True
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") RemoveItem;
+		%feature("autodoc", "	:param name:
+	:type name: char *
+	:param cln: default value is Standard_True
+	:type cln: bool
+	:param exact: default value is Standard_True
+	:type exact: bool
+	:rtype: bool
+") RemoveItem;
 		Standard_Boolean RemoveItem (const char * name,const Standard_Boolean cln = Standard_True,const Standard_Boolean exact = Standard_True);
-		%feature("autodoc", "Args:
-	name(TCollection_AsciiString)
-	cln(Standard_Boolean)=Standard_True
-	exact(Standard_Boolean)=Standard_True
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") RemoveItem;
+		%feature("autodoc", "	:param name:
+	:type name: TCollection_AsciiString &
+	:param cln: default value is Standard_True
+	:type cln: bool
+	:param exact: default value is Standard_True
+	:type exact: bool
+	:rtype: bool
+") RemoveItem;
 		Standard_Boolean RemoveItem (const TCollection_AsciiString & name,const Standard_Boolean cln = Standard_True,const Standard_Boolean exact = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clean;
+		%feature("autodoc", "	:rtype: None
+") Clean;
 		void Clean ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ShapeProcess_DictionaryOfOperator
-
-No detailed docstring for this function.") Copy;
+		%feature("autodoc", "	:rtype: Handle_ShapeProcess_DictionaryOfOperator
+") Copy;
 		Handle_ShapeProcess_DictionaryOfOperator Copy ();
-		%feature("autodoc", "Args:
-	acell(Handle_ShapeProcess_DictionaryOfOperator)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Complete;
+		%feature("autodoc", "	:param acell:
+	:type acell: Handle_ShapeProcess_DictionaryOfOperator &
+	:rtype: bool
+") Complete;
 		Standard_Boolean Complete (Handle_ShapeProcess_DictionaryOfOperator & acell);
 };
 
@@ -566,66 +481,39 @@ def __del__(self):
 %nodefaultctor ShapeProcess_IteratorOfDictionaryOfOperator;
 class ShapeProcess_IteratorOfDictionaryOfOperator {
 	public:
-		%feature("autodoc", "Args:
-	acell(Handle_ShapeProcess_DictionaryOfOperator)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ShapeProcess_IteratorOfDictionaryOfOperator;
+		%feature("autodoc", "	:param acell:
+	:type acell: Handle_ShapeProcess_DictionaryOfOperator &
+	:rtype: None
+") ShapeProcess_IteratorOfDictionaryOfOperator;
 		 ShapeProcess_IteratorOfDictionaryOfOperator (const Handle_ShapeProcess_DictionaryOfOperator & acell);
-		%feature("autodoc", "Args:
-	acell(Handle_ShapeProcess_DictionaryOfOperator)
-	basename(char *)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ShapeProcess_IteratorOfDictionaryOfOperator;
+		%feature("autodoc", "	:param acell:
+	:type acell: Handle_ShapeProcess_DictionaryOfOperator &
+	:param basename:
+	:type basename: char *
+	:rtype: None
+") ShapeProcess_IteratorOfDictionaryOfOperator;
 		 ShapeProcess_IteratorOfDictionaryOfOperator (const Handle_ShapeProcess_DictionaryOfOperator & acell,const char * basename);
-		%feature("autodoc", "Args:
-	acell(Handle_ShapeProcess_DictionaryOfOperator)
-	basename(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ShapeProcess_IteratorOfDictionaryOfOperator;
+		%feature("autodoc", "	:param acell:
+	:type acell: Handle_ShapeProcess_DictionaryOfOperator &
+	:param basename:
+	:type basename: TCollection_AsciiString &
+	:rtype: None
+") ShapeProcess_IteratorOfDictionaryOfOperator;
 		 ShapeProcess_IteratorOfDictionaryOfOperator (const Handle_ShapeProcess_DictionaryOfOperator & acell,const TCollection_AsciiString & basename);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Start;
+		%feature("autodoc", "	:rtype: None
+") Start;
 		void Start ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ShapeProcess_Operator
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_ShapeProcess_Operator
+") Value;
 		const Handle_ShapeProcess_Operator & Value ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") Name;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") Name;
 		TCollection_AsciiString Name ();
 };
 
@@ -647,24 +535,23 @@ def __del__(self):
 %nodefaultctor ShapeProcess_OperLibrary;
 class ShapeProcess_OperLibrary {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static void
+		%feature("autodoc", "	* Registers all the operators
 
-Registers all the operators") Init;
+	:rtype: void
+") Init;
 		static void Init ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-	context(Handle_ShapeProcess_ShapeContext)
-	M(Handle_BRepTools_Modification)
-	map(TopTools_DataMapOfShapeShape)
+		%feature("autodoc", "	* Applies BRepTools_Modification to a shape, taking into account sharing of components of compounds.
 
-Returns:
-	static TopoDS_Shape
-
-Applies BRepTools_Modification to a shape,  
-         taking into account sharing of components of compounds.") ApplyModifier;
+	:param S:
+	:type S: TopoDS_Shape &
+	:param context:
+	:type context: Handle_ShapeProcess_ShapeContext &
+	:param M:
+	:type M: Handle_BRepTools_Modification &
+	:param map:
+	:type map: TopTools_DataMapOfShapeShape &
+	:rtype: TopoDS_Shape
+") ApplyModifier;
 		static TopoDS_Shape ApplyModifier (const TopoDS_Shape & S,const Handle_ShapeProcess_ShapeContext & context,const Handle_BRepTools_Modification & M,TopTools_DataMapOfShapeShape & map);
 };
 
@@ -686,14 +573,12 @@ def __del__(self):
 %nodefaultctor ShapeProcess_Operator;
 class ShapeProcess_Operator : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	context(Handle_ShapeProcess_Context)
+		%feature("autodoc", "	* Performs operation and eventually records changes in the context
 
-Returns:
-	virtual Standard_Boolean
-
-Performs operation and eventually records  
-         changes in the context") Perform;
+	:param context:
+	:type context: Handle_ShapeProcess_Context &
+	:rtype: bool
+") Perform;
 		virtual Standard_Boolean Perform (const Handle_ShapeProcess_Context & context);
 };
 
@@ -754,42 +639,24 @@ def __del__(self):
 %nodefaultctor ShapeProcess_StackItemOfDictionaryOfOperator;
 class ShapeProcess_StackItemOfDictionaryOfOperator : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ShapeProcess_StackItemOfDictionaryOfOperator;
+		%feature("autodoc", "	:rtype: None
+") ShapeProcess_StackItemOfDictionaryOfOperator;
 		 ShapeProcess_StackItemOfDictionaryOfOperator ();
-		%feature("autodoc", "Args:
-	previous(Handle_ShapeProcess_StackItemOfDictionaryOfOperator)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ShapeProcess_StackItemOfDictionaryOfOperator;
+		%feature("autodoc", "	:param previous:
+	:type previous: Handle_ShapeProcess_StackItemOfDictionaryOfOperator &
+	:rtype: None
+") ShapeProcess_StackItemOfDictionaryOfOperator;
 		 ShapeProcess_StackItemOfDictionaryOfOperator (const Handle_ShapeProcess_StackItemOfDictionaryOfOperator & previous);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ShapeProcess_StackItemOfDictionaryOfOperator
-
-No detailed docstring for this function.") Previous;
+		%feature("autodoc", "	:rtype: Handle_ShapeProcess_StackItemOfDictionaryOfOperator
+") Previous;
 		Handle_ShapeProcess_StackItemOfDictionaryOfOperator Previous ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ShapeProcess_DictionaryOfOperator
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_ShapeProcess_DictionaryOfOperator
+") Value;
 		Handle_ShapeProcess_DictionaryOfOperator Value ();
-		%feature("autodoc", "Args:
-	cval(Handle_ShapeProcess_DictionaryOfOperator)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param cval:
+	:type cval: Handle_ShapeProcess_DictionaryOfOperator &
+	:rtype: None
+") SetValue;
 		void SetValue (const Handle_ShapeProcess_DictionaryOfOperator & cval);
 };
 
@@ -850,188 +717,130 @@ def __del__(self):
 %nodefaultctor ShapeProcess_ShapeContext;
 class ShapeProcess_ShapeContext : public ShapeProcess_Context {
 	public:
-		%feature("autodoc", "Args:
-	file(char *)
-	seq(char *)=
-
-Returns:
-	None
-
-No detailed docstring for this function.") ShapeProcess_ShapeContext;
+		%feature("autodoc", "	:param file:
+	:type file: char *
+	:param seq: default value is 
+	:type seq: char *
+	:rtype: None
+") ShapeProcess_ShapeContext;
 		 ShapeProcess_ShapeContext (const char * file,const char * seq = "");
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-	file(char *)
-	seq(char *)=
+		%feature("autodoc", "	* Initializes a tool by resource file and shape to be processed
 
-Returns:
-	None
-
-Initializes a tool by resource file and shape  
-         to be processed") ShapeProcess_ShapeContext;
+	:param S:
+	:type S: TopoDS_Shape &
+	:param file:
+	:type file: char *
+	:param seq: default value is 
+	:type seq: char *
+	:rtype: None
+") ShapeProcess_ShapeContext;
 		 ShapeProcess_ShapeContext (const TopoDS_Shape & S,const char * file,const char * seq = "");
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* Initializes tool by a new shape and clears all results
 
-Returns:
-	None
-
-Initializes tool by a new shape and clears all results") Init;
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Returns shape being processed
 
-Returns shape being processed") Shape;
+	:rtype: TopoDS_Shape
+") Shape;
 		const TopoDS_Shape & Shape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Returns current result
 
-Returns current result") Result;
+	:rtype: TopoDS_Shape
+") Result;
 		const TopoDS_Shape & Result ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_DataMapOfShapeShape
+		%feature("autodoc", "	* Returns map of replacements shape -> shape This map is not recursive
 
-Returns map of replacements shape -> shape  
-         This map is not recursive") Map;
+	:rtype: TopTools_DataMapOfShapeShape
+") Map;
 		const TopTools_DataMapOfShapeShape & Map ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ShapeExtend_MsgRegistrator
-
-No detailed docstring for this function.") Messages;
+		%feature("autodoc", "	:rtype: Handle_ShapeExtend_MsgRegistrator
+") Messages;
 		const Handle_ShapeExtend_MsgRegistrator & Messages ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ShapeExtend_MsgRegistrator
+		%feature("autodoc", "	* Returns messages recorded during shape processing It can be nullified before processing in order to avoid recording messages
 
-Returns messages recorded during shape processing  
-         It can be nullified before processing in order to  
-         avoid recording messages") Messages;
+	:rtype: Handle_ShapeExtend_MsgRegistrator
+") Messages;
 		Handle_ShapeExtend_MsgRegistrator & Messages ();
-		%feature("autodoc", "Args:
-	level(TopAbs_ShapeEnum)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetDetalisation;
+		%feature("autodoc", "	:param level:
+	:type level: TopAbs_ShapeEnum
+	:rtype: None
+") SetDetalisation;
 		void SetDetalisation (const TopAbs_ShapeEnum level);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_ShapeEnum
+		%feature("autodoc", "	* Set and get value for detalisation level Only shapes of types from TopoDS_COMPOUND and until specified detalisation level will be recorded in maps To cancel mapping, use TopAbs_SHAPE To force full mapping, use TopAbs_VERTEX The default level is TopAbs_FACE
 
-Set and get value for detalisation level  
-         Only shapes of types from TopoDS_COMPOUND and until  
-         specified detalisation level will be recorded in maps  
-         To cancel mapping, use TopAbs_SHAPE  
-         To force full mapping, use TopAbs_VERTEX  
-         The default level is TopAbs_FACE") GetDetalisation;
+	:rtype: TopAbs_ShapeEnum
+") GetDetalisation;
 		TopAbs_ShapeEnum GetDetalisation ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* Sets a new result shape NOTE: this method should be used very carefully to keep consistency of modifications It is recommended to use RecordModification() methods with explicit definition of mapping from current result to a new one
 
-Returns:
-	None
-
-Sets a new result shape  
-         NOTE: this method should be used very carefully  
-         to keep consistency of modifications  
-         It is recommended to use RecordModification() methods  
-         with explicit definition of mapping from current  
-         result to a new one") SetResult;
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") SetResult;
 		void SetResult (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	repl(TopTools_DataMapOfShapeShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") RecordModification;
+		%feature("autodoc", "	:param repl:
+	:type repl: TopTools_DataMapOfShapeShape &
+	:rtype: None
+") RecordModification;
 		void RecordModification (const TopTools_DataMapOfShapeShape & repl);
-		%feature("autodoc", "Args:
-	repl(Handle_ShapeBuild_ReShape)
-	msg(Handle_ShapeExtend_MsgRegistrator)
-
-Returns:
-	None
-
-No detailed docstring for this function.") RecordModification;
+		%feature("autodoc", "	:param repl:
+	:type repl: Handle_ShapeBuild_ReShape &
+	:param msg:
+	:type msg: Handle_ShapeExtend_MsgRegistrator &
+	:rtype: None
+") RecordModification;
 		void RecordModification (const Handle_ShapeBuild_ReShape & repl,const Handle_ShapeExtend_MsgRegistrator & msg);
-		%feature("autodoc", "Args:
-	repl(Handle_ShapeBuild_ReShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") RecordModification;
+		%feature("autodoc", "	:param repl:
+	:type repl: Handle_ShapeBuild_ReShape &
+	:rtype: None
+") RecordModification;
 		void RecordModification (const Handle_ShapeBuild_ReShape & repl);
-		%feature("autodoc", "Args:
-	sh(TopoDS_Shape)
-	repl(BRepTools_Modifier)
+		%feature("autodoc", "	* Records modifications and resets result accordingly NOTE: modification of resulting shape should be explicitly defined in the maps along with modifications of subshapes  In the last function, sh is the shape on which Modifier was run. It can be different from the whole shape, but in that case result as a whole should be reset later either by call to SetResult(), or by another call to RecordModification() which contains mapping of current result to a new one explicitly
 
-Returns:
-	None
-
-Records modifications and resets result accordingly  
-         NOTE: modification of resulting shape should be explicitly  
-         defined in the maps along with modifications of subshapes  
- 
-         In the last function, sh is the shape on which Modifier  
-         was run. It can be different from the whole shape,  
-         but in that case result as a whole should be reset later  
-         either by call to SetResult(), or by another call to  
-         RecordModification() which contains mapping of current  
-         result to a new one explicitly") RecordModification;
+	:param sh:
+	:type sh: TopoDS_Shape &
+	:param repl:
+	:type repl: BRepTools_Modifier &
+	:rtype: None
+") RecordModification;
 		void RecordModification (const TopoDS_Shape & sh,const BRepTools_Modifier & repl);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-	msg(Message_Msg)
-	gravity(Message_Gravity)=Message_Warning
+		%feature("autodoc", "	* Record a message for shape S Shape S should be one of subshapes of original shape (or whole one), but not one of intermediate shapes Records only if Message() is not Null
 
-Returns:
-	None
-
-Record a message for shape S  
-         Shape S should be one of subshapes of original shape  
-         (or whole one), but not one of intermediate shapes  
-         Records only if Message() is not Null") AddMessage;
+	:param S:
+	:type S: TopoDS_Shape &
+	:param msg:
+	:type msg: Message_Msg &
+	:param gravity: default value is Message_Warning
+	:type gravity: Message_Gravity
+	:rtype: None
+") AddMessage;
 		void AddMessage (const TopoDS_Shape & S,const Message_Msg & msg,const Message_Gravity gravity = Message_Warning);
-		%feature("autodoc", "Args:
-	param(char *)
-	val(GeomAbs_Shape)
+		%feature("autodoc", "	* Get value of parameter as being of the type GeomAbs_Shape Returns False if parameter is not defined or has a wrong type
 
-Returns:
-	Standard_Boolean
-
-Get value of parameter as being of the type GeomAbs_Shape  
-         Returns False if parameter is not defined or has a wrong type") GetContinuity;
+	:param param:
+	:type param: char *
+	:param val:
+	:type val: GeomAbs_Shape &
+	:rtype: bool
+") GetContinuity;
 		Standard_Boolean GetContinuity (const char * param,GeomAbs_Shape & val);
-		%feature("autodoc", "Args:
-	param(char *)
-	def(GeomAbs_Shape)
+		%feature("autodoc", "	* Get value of parameter as being of the type GeomAbs_Shape If parameter is not defined or does not have expected type, returns default value as specified
 
-Returns:
-	GeomAbs_Shape
-
-Get value of parameter as being of the type GeomAbs_Shape  
-         If parameter is not defined or does not have expected  
-         type, returns default value as specified") ContinuityVal;
+	:param param:
+	:type param: char *
+	:param def:
+	:type def: GeomAbs_Shape
+	:rtype: GeomAbs_Shape
+") ContinuityVal;
 		GeomAbs_Shape ContinuityVal (const char * param,const GeomAbs_Shape def);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Prints statistics on Shape Processing onto the current Messenger.
 
-Prints statistics on Shape Processing onto the current Messenger.") PrintStatistics;
+	:rtype: None
+") PrintStatistics;
 		void PrintStatistics ();
 };
 
@@ -1092,22 +901,19 @@ def __del__(self):
 %nodefaultctor ShapeProcess_UOperator;
 class ShapeProcess_UOperator : public ShapeProcess_Operator {
 	public:
-		%feature("autodoc", "Args:
-	func(ShapeProcess_OperFunc)
+		%feature("autodoc", "	* Creates operator with implementation defined as OperFunc (static function)
 
-Returns:
-	None
-
-Creates operator with implementation defined as  
-         OperFunc (static function)") ShapeProcess_UOperator;
+	:param func:
+	:type func: ShapeProcess_OperFunc
+	:rtype: None
+") ShapeProcess_UOperator;
 		 ShapeProcess_UOperator (const ShapeProcess_OperFunc func);
-		%feature("autodoc", "Args:
-	context(Handle_ShapeProcess_Context)
+		%feature("autodoc", "	* Performs operation and records changes in the context
 
-Returns:
-	virtual Standard_Boolean
-
-Performs operation and records changes in the context") Perform;
+	:param context:
+	:type context: Handle_ShapeProcess_Context &
+	:rtype: bool
+") Perform;
 		virtual Standard_Boolean Perform (const Handle_ShapeProcess_Context & context);
 };
 

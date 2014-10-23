@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -311,13 +311,12 @@ enum Graphic3d_ZLayerSetting {
 %nodefaultctor Graphic3d;
 class Graphic3d {
 	public:
-		%feature("autodoc", "Args:
-	theDisplayConnection(Aspect_DisplayConnection_Handle)
+		%feature("autodoc", "	* Initialize graphic driver and returns Handle to it.
 
-Returns:
-	static Handle_Graphic3d_GraphicDriver
-
-Initialize graphic driver and returns Handle to it.") InitGraphicDriver;
+	:param theDisplayConnection:
+	:type theDisplayConnection: Aspect_DisplayConnection_Handle &
+	:rtype: Handle_Graphic3d_GraphicDriver
+") InitGraphicDriver;
 		static Handle_Graphic3d_GraphicDriver InitGraphicDriver (const Aspect_DisplayConnection_Handle & theDisplayConnection);
 };
 
@@ -339,108 +338,68 @@ def __del__(self):
 %nodefaultctor Graphic3d_Array1OfVector;
 class Graphic3d_Array1OfVector {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_Array1OfVector;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Graphic3d_Array1OfVector;
 		 Graphic3d_Array1OfVector (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Graphic3d_Vector)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_Array1OfVector;
+		%feature("autodoc", "	:param Item:
+	:type Item: Graphic3d_Vector &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Graphic3d_Array1OfVector;
 		 Graphic3d_Array1OfVector (const Graphic3d_Vector & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Graphic3d_Vector)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Graphic3d_Vector &
+	:rtype: None
+") Init;
 		void Init (const Graphic3d_Vector & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(Graphic3d_Array1OfVector)
-
-Returns:
-	Graphic3d_Array1OfVector
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_Array1OfVector &
+	:rtype: Graphic3d_Array1OfVector
+") Assign;
 		const Graphic3d_Array1OfVector & Assign (const Graphic3d_Array1OfVector & Other);
-		%feature("autodoc", "Args:
-	Other(Graphic3d_Array1OfVector)
-
-Returns:
-	Graphic3d_Array1OfVector
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_Array1OfVector &
+	:rtype: Graphic3d_Array1OfVector
+") operator=;
 		const Graphic3d_Array1OfVector & operator = (const Graphic3d_Array1OfVector & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Graphic3d_Vector)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Graphic3d_Vector &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Graphic3d_Vector & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Graphic3d_Vector
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Graphic3d_Vector
+") Value;
 		const Graphic3d_Vector & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Graphic3d_Vector
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Graphic3d_Vector
+") ChangeValue;
 		Graphic3d_Vector & ChangeValue (const Standard_Integer Index);
 };
 
@@ -462,108 +421,68 @@ def __del__(self):
 %nodefaultctor Graphic3d_Array1OfVertex;
 class Graphic3d_Array1OfVertex {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_Array1OfVertex;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Graphic3d_Array1OfVertex;
 		 Graphic3d_Array1OfVertex (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Graphic3d_Vertex)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_Array1OfVertex;
+		%feature("autodoc", "	:param Item:
+	:type Item: Graphic3d_Vertex &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Graphic3d_Array1OfVertex;
 		 Graphic3d_Array1OfVertex (const Graphic3d_Vertex & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Graphic3d_Vertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Graphic3d_Vertex &
+	:rtype: None
+") Init;
 		void Init (const Graphic3d_Vertex & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(Graphic3d_Array1OfVertex)
-
-Returns:
-	Graphic3d_Array1OfVertex
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_Array1OfVertex &
+	:rtype: Graphic3d_Array1OfVertex
+") Assign;
 		const Graphic3d_Array1OfVertex & Assign (const Graphic3d_Array1OfVertex & Other);
-		%feature("autodoc", "Args:
-	Other(Graphic3d_Array1OfVertex)
-
-Returns:
-	Graphic3d_Array1OfVertex
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_Array1OfVertex &
+	:rtype: Graphic3d_Array1OfVertex
+") operator=;
 		const Graphic3d_Array1OfVertex & operator = (const Graphic3d_Array1OfVertex & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Graphic3d_Vertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Graphic3d_Vertex &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Graphic3d_Vertex & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Graphic3d_Vertex
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Graphic3d_Vertex
+") Value;
 		const Graphic3d_Vertex & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Graphic3d_Vertex
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Graphic3d_Vertex
+") ChangeValue;
 		Graphic3d_Vertex & ChangeValue (const Standard_Integer Index);
 };
 
@@ -585,129 +504,88 @@ def __del__(self):
 %nodefaultctor Graphic3d_Array2OfVertex;
 class Graphic3d_Array2OfVertex {
 	public:
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_Array2OfVertex;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") Graphic3d_Array2OfVertex;
 		 Graphic3d_Array2OfVertex (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	Item(Graphic3d_Vertex)
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_Array2OfVertex;
+		%feature("autodoc", "	:param Item:
+	:type Item: Graphic3d_Vertex &
+	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") Graphic3d_Array2OfVertex;
 		 Graphic3d_Array2OfVertex (const Graphic3d_Vertex & Item,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	V(Graphic3d_Vertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Graphic3d_Vertex &
+	:rtype: None
+") Init;
 		void Init (const Graphic3d_Vertex & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	Other(Graphic3d_Array2OfVertex)
-
-Returns:
-	Graphic3d_Array2OfVertex
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_Array2OfVertex &
+	:rtype: Graphic3d_Array2OfVertex
+") Assign;
 		const Graphic3d_Array2OfVertex & Assign (const Graphic3d_Array2OfVertex & Other);
-		%feature("autodoc", "Args:
-	Other(Graphic3d_Array2OfVertex)
-
-Returns:
-	Graphic3d_Array2OfVertex
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_Array2OfVertex &
+	:rtype: Graphic3d_Array2OfVertex
+") operator=;
 		const Graphic3d_Array2OfVertex & operator = (const Graphic3d_Array2OfVertex & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ColLength;
+		%feature("autodoc", "	:rtype: int
+") ColLength;
 		Standard_Integer ColLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") RowLength;
+		%feature("autodoc", "	:rtype: int
+") RowLength;
 		Standard_Integer RowLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerCol;
+		%feature("autodoc", "	:rtype: int
+") LowerCol;
 		Standard_Integer LowerCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerRow;
+		%feature("autodoc", "	:rtype: int
+") LowerRow;
 		Standard_Integer LowerRow ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperCol;
+		%feature("autodoc", "	:rtype: int
+") UpperCol;
 		Standard_Integer UpperCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperRow;
+		%feature("autodoc", "	:rtype: int
+") UpperRow;
 		Standard_Integer UpperRow ();
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-	Value(Graphic3d_Vertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:param Value:
+	:type Value: Graphic3d_Vertex &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Graphic3d_Vertex & Value);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Graphic3d_Vertex
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: Graphic3d_Vertex
+") Value;
 		const Graphic3d_Vertex & Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Graphic3d_Vertex
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: Graphic3d_Vertex
+") ChangeValue;
 		Graphic3d_Vertex & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 };
 
@@ -729,666 +607,576 @@ def __del__(self):
 %nodefaultctor Graphic3d_ArrayOfPrimitives;
 class Graphic3d_ArrayOfPrimitives : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	aVertice(gp_Pnt)
+		%feature("autodoc", "	* Adds a vertice in the array. returns the actual vertex number.
 
-Returns:
-	Standard_Integer
-
-Adds a vertice in the array.  
-returns the actual vertex number.") AddVertex;
+	:param aVertice:
+	:type aVertice: gp_Pnt
+	:rtype: int
+") AddVertex;
 		Standard_Integer AddVertex (const gp_Pnt & aVertice);
-		%feature("autodoc", "Args:
-	X(Standard_Real)
-	Y(Standard_Real)
-	Z(Standard_Real)
+		%feature("autodoc", "	* Adds a vertice in the array. returns the actual vertex number.
 
-Returns:
-	Standard_Integer
-
-Adds a vertice in the array.  
-returns the actual vertex number.") AddVertex;
+	:param X:
+	:type X: float
+	:param Y:
+	:type Y: float
+	:param Z:
+	:type Z: float
+	:rtype: int
+") AddVertex;
 		Standard_Integer AddVertex (const Standard_Real X,const Standard_Real Y,const Standard_Real Z);
-		%feature("autodoc", "Args:
-	X(Standard_ShortReal)
-	Y(Standard_ShortReal)
-	Z(Standard_ShortReal)
+		%feature("autodoc", "	* Adds a vertice in the array. returns the actual vertex number.
 
-Returns:
-	Standard_Integer
-
-Adds a vertice in the array.  
-returns the actual vertex number.") AddVertex;
+	:param X:
+	:type X: Standard_ShortReal
+	:param Y:
+	:type Y: Standard_ShortReal
+	:param Z:
+	:type Z: Standard_ShortReal
+	:rtype: int
+") AddVertex;
 		Standard_Integer AddVertex (const Standard_ShortReal X,const Standard_ShortReal Y,const Standard_ShortReal Z);
-		%feature("autodoc", "Args:
-	aVertice(gp_Pnt)
-	aColor(Quantity_Color)
+		%feature("autodoc", "	* Adds a vertice and vertex color in the vertex array. returns the actual vertex number. Warning: <aColor> is ignored when the <hasVColors> constructor parameter is False
 
-Returns:
-	Standard_Integer
-
-Adds a vertice and vertex color in the vertex array.  
-returns the actual vertex number.  
- Warning: <aColor> is ignored when the <hasVColors>  
-constructor parameter is FALSE") AddVertex;
+	:param aVertice:
+	:type aVertice: gp_Pnt
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: int
+") AddVertex;
 		Standard_Integer AddVertex (const gp_Pnt & aVertice,const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	aVertice(gp_Pnt)
-	aColor(Standard_Integer)
+		%feature("autodoc", "	* Adds a vertice and vertex color in the vertex array. returns the actual vertex number. Warning: <aColor> is ignored when the <hasVColors> constructor parameter is False aColor = Alpha << 24 + Blue << 16 + Green << 8 + Red On all architecture proccers type (x86 or SPARC) you can use this byte order.
 
-Returns:
-	Standard_Integer
-
-Adds a vertice and vertex color in the vertex array.  
-returns the actual vertex number.  
-Warning: <aColor> is ignored when the <hasVColors>  
-constructor parameter is FALSE  
-aColor = Alpha << 24 + Blue << 16 + Green << 8 + Red  
-On all architecture proccers type (x86 or SPARC) you can  
-use this byte order.") AddVertex;
+	:param aVertice:
+	:type aVertice: gp_Pnt
+	:param aColor:
+	:type aColor: Standard_Integer
+	:rtype: int
+") AddVertex;
 		Standard_Integer AddVertex (const gp_Pnt & aVertice,const Standard_Integer aColor);
-		%feature("autodoc", "Args:
-	aVertice(gp_Pnt)
-	aNormal(gp_Dir)
+		%feature("autodoc", "	* Adds a vertice and vertex normal in the vertex array. returns the actual vertex number. Warning: <aNormal> is ignored when the <hasVNormals> constructor parameter is False.
 
-Returns:
-	Standard_Integer
-
-Adds a vertice and vertex normal in the vertex array.  
-returns the actual vertex number.  
- Warning: <aNormal> is ignored when the <hasVNormals>  
-constructor parameter is FALSE.") AddVertex;
+	:param aVertice:
+	:type aVertice: gp_Pnt
+	:param aNormal:
+	:type aNormal: gp_Dir
+	:rtype: int
+") AddVertex;
 		Standard_Integer AddVertex (const gp_Pnt & aVertice,const gp_Dir & aNormal);
-		%feature("autodoc", "Args:
-	X(Standard_Real)
-	Y(Standard_Real)
-	Z(Standard_Real)
-	NX(Standard_Real)
-	NY(Standard_Real)
-	NZ(Standard_Real)
+		%feature("autodoc", "	* Adds a vertice and vertex normal in the vertex array. returns the actual vertex number. Warning: <aNormal> is ignored when the <hasVNormals> constructor parameter is False.
 
-Returns:
-	Standard_Integer
-
-Adds a vertice and vertex normal in the vertex array.  
-returns the actual vertex number.  
- Warning: <aNormal> is ignored when the <hasVNormals>  
-constructor parameter is FALSE.") AddVertex;
+	:param X:
+	:type X: float
+	:param Y:
+	:type Y: float
+	:param Z:
+	:type Z: float
+	:param NX:
+	:type NX: float
+	:param NY:
+	:type NY: float
+	:param NZ:
+	:type NZ: float
+	:rtype: int
+") AddVertex;
 		Standard_Integer AddVertex (const Standard_Real X,const Standard_Real Y,const Standard_Real Z,const Standard_Real NX,const Standard_Real NY,const Standard_Real NZ);
-		%feature("autodoc", "Args:
-	X(Standard_ShortReal)
-	Y(Standard_ShortReal)
-	Z(Standard_ShortReal)
-	NX(Standard_ShortReal)
-	NY(Standard_ShortReal)
-	NZ(Standard_ShortReal)
+		%feature("autodoc", "	* Adds a vertice and vertex normal in the vertex array. returns the actual vertex number. Warning: <aNormal> is ignored when the <hasVNormals> constructor parameter is False.
 
-Returns:
-	Standard_Integer
-
-Adds a vertice and vertex normal in the vertex array.  
-returns the actual vertex number.  
- Warning: <aNormal> is ignored when the <hasVNormals>  
-constructor parameter is FALSE.") AddVertex;
+	:param X:
+	:type X: Standard_ShortReal
+	:param Y:
+	:type Y: Standard_ShortReal
+	:param Z:
+	:type Z: Standard_ShortReal
+	:param NX:
+	:type NX: Standard_ShortReal
+	:param NY:
+	:type NY: Standard_ShortReal
+	:param NZ:
+	:type NZ: Standard_ShortReal
+	:rtype: int
+") AddVertex;
 		Standard_Integer AddVertex (const Standard_ShortReal X,const Standard_ShortReal Y,const Standard_ShortReal Z,const Standard_ShortReal NX,const Standard_ShortReal NY,const Standard_ShortReal NZ);
-		%feature("autodoc", "Args:
-	aVertice(gp_Pnt)
-	aNormal(gp_Dir)
-	aColor(Quantity_Color)
+		%feature("autodoc", "	* Adds a vertice,vertex normal and color in the vertex array. returns the actual vertex number. Warning: <aNormal> is ignored when the <hasVNormals> constructor parameter is False. <aColor> is ignored when the <hasVColors> constructor parameter is False
 
-Returns:
-	Standard_Integer
-
-Adds a vertice,vertex normal and color in the vertex array.  
-returns the actual vertex number.  
- Warning: <aNormal> is ignored when the <hasVNormals>  
-constructor parameter is FALSE.  
-         <aColor> is ignored when the <hasVColors>  
-constructor parameter is FALSE") AddVertex;
+	:param aVertice:
+	:type aVertice: gp_Pnt
+	:param aNormal:
+	:type aNormal: gp_Dir
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: int
+") AddVertex;
 		Standard_Integer AddVertex (const gp_Pnt & aVertice,const gp_Dir & aNormal,const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	aVertice(gp_Pnt)
-	aNormal(gp_Dir)
-	aColor(Standard_Integer)
+		%feature("autodoc", "	* Adds a vertice,vertex normal and color in the vertex array. returns the actual vertex number. Warning: <aNormal> is ignored when the <hasVNormals> constructor parameter is False. <aColor> is ignored when the <hasVColors> constructor parameter is False aColor = Alpha << 24 + Blue << 16 + Green << 8 + Red On all architecture proccers type (x86 or SPARC) you can use this byte order.
 
-Returns:
-	Standard_Integer
-
-Adds a vertice,vertex normal and color in the vertex array.  
-returns the actual vertex number.  
- Warning: <aNormal> is ignored when the <hasVNormals>  
-constructor parameter is FALSE.  
-         <aColor> is ignored when the <hasVColors>  
-constructor parameter is FALSE  
-aColor = Alpha << 24 + Blue << 16 + Green << 8 + Red  
-On all architecture proccers type (x86 or SPARC) you can  
-use this byte order.") AddVertex;
+	:param aVertice:
+	:type aVertice: gp_Pnt
+	:param aNormal:
+	:type aNormal: gp_Dir
+	:param aColor:
+	:type aColor: Standard_Integer
+	:rtype: int
+") AddVertex;
 		Standard_Integer AddVertex (const gp_Pnt & aVertice,const gp_Dir & aNormal,const Standard_Integer aColor);
-		%feature("autodoc", "Args:
-	aVertice(gp_Pnt)
-	aTexel(gp_Pnt2d)
+		%feature("autodoc", "	* Adds a vertice and vertex texture in the vertex array. returns the actual vertex number. <aTexel> is ignored when the <hasVTexels> constructor parameter is False.
 
-Returns:
-	Standard_Integer
-
-Adds a vertice and vertex texture in the vertex array.  
-returns the actual vertex number.  
-<aTexel> is ignored when the <hasVTexels>  
-constructor parameter is FALSE.") AddVertex;
+	:param aVertice:
+	:type aVertice: gp_Pnt
+	:param aTexel:
+	:type aTexel: gp_Pnt2d
+	:rtype: int
+") AddVertex;
 		Standard_Integer AddVertex (const gp_Pnt & aVertice,const gp_Pnt2d & aTexel);
-		%feature("autodoc", "Args:
-	X(Standard_Real)
-	Y(Standard_Real)
-	Z(Standard_Real)
-	TX(Standard_Real)
-	TY(Standard_Real)
+		%feature("autodoc", "	* Adds a vertice and vertex texture coordinates in the vertex array. returns the actual vertex number. <aTexel> is ignored when the <hasVTexels> constructor parameter is False.
 
-Returns:
-	Standard_Integer
-
-Adds a vertice and vertex texture coordinates in the vertex array.  
-returns the actual vertex number.  
-<aTexel> is ignored when the <hasVTexels>  
-constructor parameter is FALSE.") AddVertex;
+	:param X:
+	:type X: float
+	:param Y:
+	:type Y: float
+	:param Z:
+	:type Z: float
+	:param TX:
+	:type TX: float
+	:param TY:
+	:type TY: float
+	:rtype: int
+") AddVertex;
 		Standard_Integer AddVertex (const Standard_Real X,const Standard_Real Y,const Standard_Real Z,const Standard_Real TX,const Standard_Real TY);
-		%feature("autodoc", "Args:
-	X(Standard_ShortReal)
-	Y(Standard_ShortReal)
-	Z(Standard_ShortReal)
-	TX(Standard_ShortReal)
-	TY(Standard_ShortReal)
+		%feature("autodoc", "	* Adds a vertice and vertex texture coordinates in the vertex array. returns the actual vertex number. <aTexel> is ignored when the <hasVTexels> constructor parameter is False.
 
-Returns:
-	Standard_Integer
-
-Adds a vertice and vertex texture coordinates in the vertex array.  
-returns the actual vertex number.  
-<aTexel> is ignored when the <hasVTexels>  
-constructor parameter is FALSE.") AddVertex;
+	:param X:
+	:type X: Standard_ShortReal
+	:param Y:
+	:type Y: Standard_ShortReal
+	:param Z:
+	:type Z: Standard_ShortReal
+	:param TX:
+	:type TX: Standard_ShortReal
+	:param TY:
+	:type TY: Standard_ShortReal
+	:rtype: int
+") AddVertex;
 		Standard_Integer AddVertex (const Standard_ShortReal X,const Standard_ShortReal Y,const Standard_ShortReal Z,const Standard_ShortReal TX,const Standard_ShortReal TY);
-		%feature("autodoc", "Args:
-	aVertice(gp_Pnt)
-	aNormal(gp_Dir)
-	aTexel(gp_Pnt2d)
+		%feature("autodoc", "	* Adds a vertice,vertex normal and texture in the vertex array. returns the actual vertex number. Warning: <aNormal> is ignored when the <hasVNormals> constructor parameter is False. <aTexel> is ignored when the <hasVTexels> constructor parameter is False.
 
-Returns:
-	Standard_Integer
-
-Adds a vertice,vertex normal and texture in the vertex array.  
-returns the actual vertex number.  
- Warning: <aNormal> is ignored when the <hasVNormals>  
-constructor parameter is FALSE.  
-<aTexel> is ignored when the <hasVTexels>  
-constructor parameter is FALSE.") AddVertex;
+	:param aVertice:
+	:type aVertice: gp_Pnt
+	:param aNormal:
+	:type aNormal: gp_Dir
+	:param aTexel:
+	:type aTexel: gp_Pnt2d
+	:rtype: int
+") AddVertex;
 		Standard_Integer AddVertex (const gp_Pnt & aVertice,const gp_Dir & aNormal,const gp_Pnt2d & aTexel);
-		%feature("autodoc", "Args:
-	X(Standard_Real)
-	Y(Standard_Real)
-	Z(Standard_Real)
-	NX(Standard_Real)
-	NY(Standard_Real)
-	NZ(Standard_Real)
-	TX(Standard_Real)
-	TY(Standard_Real)
+		%feature("autodoc", "	* Adds a vertice,vertex normal and texture in the vertex array. returns the actual vertex number. Warning: <aNormal> is ignored when the <hasVNormals> constructor parameter is False. <aTexel> is ignored when the <hasVTexels> constructor parameter is False.
 
-Returns:
-	Standard_Integer
-
-Adds a vertice,vertex normal and texture in the vertex array.  
-returns the actual vertex number.  
- Warning: <aNormal> is ignored when the <hasVNormals>  
-constructor parameter is FALSE.  
-<aTexel> is ignored when the <hasVTexels>  
-constructor parameter is FALSE.") AddVertex;
+	:param X:
+	:type X: float
+	:param Y:
+	:type Y: float
+	:param Z:
+	:type Z: float
+	:param NX:
+	:type NX: float
+	:param NY:
+	:type NY: float
+	:param NZ:
+	:type NZ: float
+	:param TX:
+	:type TX: float
+	:param TY:
+	:type TY: float
+	:rtype: int
+") AddVertex;
 		Standard_Integer AddVertex (const Standard_Real X,const Standard_Real Y,const Standard_Real Z,const Standard_Real NX,const Standard_Real NY,const Standard_Real NZ,const Standard_Real TX,const Standard_Real TY);
-		%feature("autodoc", "Args:
-	X(Standard_ShortReal)
-	Y(Standard_ShortReal)
-	Z(Standard_ShortReal)
-	NX(Standard_ShortReal)
-	NY(Standard_ShortReal)
-	NZ(Standard_ShortReal)
-	TX(Standard_ShortReal)
-	TY(Standard_ShortReal)
+		%feature("autodoc", "	* Adds a vertice,vertex normal and texture in the vertex array. returns the actual vertex number. Warning: <aNormal> is ignored when the <hasVNormals> constructor parameter is False. <aTexel> is ignored when the <hasVTexels> constructor parameter is False.
 
-Returns:
-	Standard_Integer
-
-Adds a vertice,vertex normal and texture in the vertex array.  
-returns the actual vertex number.  
- Warning: <aNormal> is ignored when the <hasVNormals>  
-constructor parameter is FALSE.  
-<aTexel> is ignored when the <hasVTexels>  
-constructor parameter is FALSE.") AddVertex;
+	:param X:
+	:type X: Standard_ShortReal
+	:param Y:
+	:type Y: Standard_ShortReal
+	:param Z:
+	:type Z: Standard_ShortReal
+	:param NX:
+	:type NX: Standard_ShortReal
+	:param NY:
+	:type NY: Standard_ShortReal
+	:param NZ:
+	:type NZ: Standard_ShortReal
+	:param TX:
+	:type TX: Standard_ShortReal
+	:param TY:
+	:type TY: Standard_ShortReal
+	:rtype: int
+") AddVertex;
 		Standard_Integer AddVertex (const Standard_ShortReal X,const Standard_ShortReal Y,const Standard_ShortReal Z,const Standard_ShortReal NX,const Standard_ShortReal NY,const Standard_ShortReal NZ,const Standard_ShortReal TX,const Standard_ShortReal TY);
-		%feature("autodoc", "Args:
-	edgeNumber(Standard_Integer)
+		%feature("autodoc", "	* Adds a bound of length <edgeNumber> in the bound array returns the actual bounds number.
 
-Returns:
-	Standard_Integer
-
-Adds a bound of length <edgeNumber> in the bound array  
-returns the actual bounds number.") AddBound;
+	:param edgeNumber:
+	:type edgeNumber: Standard_Integer
+	:rtype: int
+") AddBound;
 		Standard_Integer AddBound (const Standard_Integer edgeNumber);
-		%feature("autodoc", "Args:
-	edgeNumber(Standard_Integer)
-	aBColor(Quantity_Color)
+		%feature("autodoc", "	* Adds a bound of length <edgeNumber> and bound color <aBColor> in the bound array. returns the actual bounds number. Warning: <aBColor> is ignored when the <hasBColors> constructor parameter is False
 
-Returns:
-	Standard_Integer
-
-Adds a bound of length <edgeNumber> and bound color  
-<aBColor> in the bound array.  
-returns the actual bounds number.  
- Warning: <aBColor> is ignored when the <hasBColors>  
-constructor parameter is FALSE") AddBound;
+	:param edgeNumber:
+	:type edgeNumber: Standard_Integer
+	:param aBColor:
+	:type aBColor: Quantity_Color &
+	:rtype: int
+") AddBound;
 		Standard_Integer AddBound (const Standard_Integer edgeNumber,const Quantity_Color & aBColor);
-		%feature("autodoc", "Args:
-	edgeNumber(Standard_Integer)
-	R(Standard_Real)
-	G(Standard_Real)
-	B(Standard_Real)
+		%feature("autodoc", "	* Adds a bound of length <edgeNumber> and bound color coordinates in the bound array. returns the actual bounds number. Warning: <R,G,B> are ignored when the <hasBColors> constructor parameter is False
 
-Returns:
-	Standard_Integer
-
-Adds a bound of length <edgeNumber> and bound color  
-coordinates in the bound array.  
-returns the actual bounds number.  
- Warning: <R,G,B> are ignored when the <hasBColors>  
-constructor parameter is FALSE") AddBound;
+	:param edgeNumber:
+	:type edgeNumber: Standard_Integer
+	:param R:
+	:type R: float
+	:param G:
+	:type G: float
+	:param B:
+	:type B: float
+	:rtype: int
+") AddBound;
 		Standard_Integer AddBound (const Standard_Integer edgeNumber,const Standard_Real R,const Standard_Real G,const Standard_Real B);
-		%feature("autodoc", "Args:
-	vertexIndex(Standard_Integer)
-	isVisible(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Adds an edge in the range [1,VertexNumber()] in the array, if <isVisible> is False the edge between <vertexIndex> and the next edge will not be visible even if the SetEdgeOn() method is activated in Graphic3d_AspectFillArea3d class. returns the actual edges number. Warning: <isVisible> is ignored when the <hasEdgeInfos> constructor parameter is False.
 
-Returns:
-	Standard_Integer
-
-Adds an edge in the range [1,VertexNumber()] in the array,  
-if <isVisible> is FALSE the edge between <vertexIndex> and  
-the next edge will not be visible even if the SetEdgeOn() method  
-is activated in Graphic3d_AspectFillArea3d class.  
-returns the actual edges number.  
- Warning: <isVisible> is ignored when the <hasEdgeInfos>  
-constructor parameter is FALSE.") AddEdge;
+	:param vertexIndex:
+	:type vertexIndex: Standard_Integer
+	:param isVisible: default value is Standard_True
+	:type isVisible: bool
+	:rtype: int
+") AddEdge;
 		Standard_Integer AddEdge (const Standard_Integer vertexIndex,const Standard_Boolean isVisible = Standard_True);
-		%feature("autodoc", "Args:
-	aNormal(gp_Dir)
+		%feature("autodoc", "	* Orientate correctly all vertexs & normals of this array according to the <aNormal> parameter and returns True when something has change in the array. Warning: When the array has edges this method is apply on edge sub array instead on vertex sub array.
 
-Returns:
-	Standard_Boolean
-
-Orientate correctly all vertexs & normals of this array  
-according to the <aNormal> parameter and  
-returns TRUE when something has change in the array.  
- Warning: When the array has edges this method is apply  
-on edge sub array instead on vertex sub array.") Orientate;
+	:param aNormal:
+	:type aNormal: gp_Dir
+	:rtype: bool
+") Orientate;
 		Standard_Boolean Orientate (const gp_Dir & aNormal);
-		%feature("autodoc", "Args:
-	aBoundIndex(Standard_Integer)
-	aNormal(gp_Dir)
+		%feature("autodoc", "	* Orientate correctly all vertexs & normal of the bound <aBound> according to the <aNormal> parameter and returns True when something has change in the array. Warning: When the array has edges this method is apply on edge sub array instead on vertex sub array. When this array has no bound, <aBoundIndex> design the item number
 
-Returns:
-	Standard_Boolean
-
-Orientate correctly all vertexs & normal of the bound <aBound>  
-according to the <aNormal> parameter and  
-returns TRUE when something has change in the array.  
- Warning: When the array has edges this method is apply  
-on edge sub array instead on vertex sub array.  
-When this array has no bound, <aBoundIndex> design the item number") Orientate;
+	:param aBoundIndex:
+	:type aBoundIndex: Standard_Integer
+	:param aNormal:
+	:type aNormal: gp_Dir
+	:rtype: bool
+") Orientate;
 		Standard_Boolean Orientate (const Standard_Integer aBoundIndex,const gp_Dir & aNormal);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aVertice(gp_Pnt)
+		%feature("autodoc", "	* Change the vertice of rank <anIndex> in the array.
 
-Returns:
-	None
-
-Change the vertice of rank <anIndex> in the array.") SetVertice;
+	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aVertice:
+	:type aVertice: gp_Pnt
+	:rtype: None
+") SetVertice;
 		void SetVertice (const Standard_Integer anIndex,const gp_Pnt & aVertice);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	X(Standard_ShortReal)
-	Y(Standard_ShortReal)
-	Z(Standard_ShortReal)
+		%feature("autodoc", "	* Change the vertice of rank <anIndex> in the array.
 
-Returns:
-	None
-
-Change the vertice of rank <anIndex> in the array.") SetVertice;
+	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param X:
+	:type X: Standard_ShortReal
+	:param Y:
+	:type Y: Standard_ShortReal
+	:param Z:
+	:type Z: Standard_ShortReal
+	:rtype: None
+") SetVertice;
 		void SetVertice (const Standard_Integer anIndex,const Standard_ShortReal X,const Standard_ShortReal Y,const Standard_ShortReal Z);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aColor(Quantity_Color)
+		%feature("autodoc", "	* Change the vertex color of rank <anIndex> in the array.
 
-Returns:
-	None
-
-Change the vertex color of rank <anIndex> in the array.") SetVertexColor;
+	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: None
+") SetVertexColor;
 		void SetVertexColor (const Standard_Integer anIndex,const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	R(Standard_Real)
-	G(Standard_Real)
-	B(Standard_Real)
+		%feature("autodoc", "	* Change the vertex color of rank <anIndex> in the array.
 
-Returns:
-	None
-
-Change the vertex color of rank <anIndex> in the array.") SetVertexColor;
+	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param R:
+	:type R: float
+	:param G:
+	:type G: float
+	:param B:
+	:type B: float
+	:rtype: None
+") SetVertexColor;
 		void SetVertexColor (const Standard_Integer anIndex,const Standard_Real R,const Standard_Real G,const Standard_Real B);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aColor(Standard_Integer)
+		%feature("autodoc", "	* Change the vertex color of rank <anIndex> in the array. aColor = Alpha << 24 + Blue << 16 + Green << 8 + Red On all architecture proccers type (x86 or SPARC) you can use this byte order.
 
-Returns:
-	None
-
-Change the vertex color of rank <anIndex> in the array.  
-aColor = Alpha << 24 + Blue << 16 + Green << 8 + Red  
-On all architecture proccers type (x86 or SPARC) you can  
-use this byte order.") SetVertexColor;
+	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aColor:
+	:type aColor: Standard_Integer
+	:rtype: None
+") SetVertexColor;
 		void SetVertexColor (const Standard_Integer anIndex,const Standard_Integer aColor);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aNormal(gp_Dir)
+		%feature("autodoc", "	* Change the vertex normal of rank <anIndex> in the array.
 
-Returns:
-	None
-
-Change the vertex normal of rank <anIndex> in the array.") SetVertexNormal;
+	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aNormal:
+	:type aNormal: gp_Dir
+	:rtype: None
+") SetVertexNormal;
 		void SetVertexNormal (const Standard_Integer anIndex,const gp_Dir & aNormal);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	NX(Standard_Real)
-	NY(Standard_Real)
-	NZ(Standard_Real)
+		%feature("autodoc", "	* Change the vertex normal of rank <anIndex> in the array.
 
-Returns:
-	None
-
-Change the vertex normal of rank <anIndex> in the array.") SetVertexNormal;
+	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param NX:
+	:type NX: float
+	:param NY:
+	:type NY: float
+	:param NZ:
+	:type NZ: float
+	:rtype: None
+") SetVertexNormal;
 		void SetVertexNormal (const Standard_Integer anIndex,const Standard_Real NX,const Standard_Real NY,const Standard_Real NZ);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aTexel(gp_Pnt2d)
+		%feature("autodoc", "	* Change the vertex texel of rank <anIndex> in the array.
 
-Returns:
-	None
-
-Change the vertex texel of rank <anIndex> in the array.") SetVertexTexel;
+	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aTexel:
+	:type aTexel: gp_Pnt2d
+	:rtype: None
+") SetVertexTexel;
 		void SetVertexTexel (const Standard_Integer anIndex,const gp_Pnt2d & aTexel);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	TX(Standard_Real)
-	TY(Standard_Real)
+		%feature("autodoc", "	* Change the vertex texel of rank <anIndex> in the array.
 
-Returns:
-	None
-
-Change the vertex texel of rank <anIndex> in the array.") SetVertexTexel;
+	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param TX:
+	:type TX: float
+	:param TY:
+	:type TY: float
+	:rtype: None
+") SetVertexTexel;
 		void SetVertexTexel (const Standard_Integer anIndex,const Standard_Real TX,const Standard_Real TY);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aColor(Quantity_Color)
+		%feature("autodoc", "	* Change the bound color of rank <anIndex> in the array.
 
-Returns:
-	None
-
-Change the bound color of rank <anIndex> in the array.") SetBoundColor;
+	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: None
+") SetBoundColor;
 		void SetBoundColor (const Standard_Integer anIndex,const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	R(Standard_Real)
-	G(Standard_Real)
-	B(Standard_Real)
+		%feature("autodoc", "	* Change the bound color of rank <anIndex> in the array.
 
-Returns:
-	None
-
-Change the bound color of rank <anIndex> in the array.") SetBoundColor;
+	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param R:
+	:type R: float
+	:param G:
+	:type G: float
+	:param B:
+	:type B: float
+	:rtype: None
+") SetBoundColor;
 		void SetBoundColor (const Standard_Integer anIndex,const Standard_Real R,const Standard_Real G,const Standard_Real B);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_PrimitiveArray
+		%feature("autodoc", "	* Returns the array address.
 
-Returns the array address.") Array;
+	:rtype: Graphic3d_PrimitiveArray
+") Array;
 		Graphic3d_PrimitiveArray Array ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_TypeOfPrimitiveArray
+		%feature("autodoc", "	* Returns the type of this primitive
 
-Returns the type of this primitive") Type;
+	:rtype: Graphic3d_TypeOfPrimitiveArray
+") Type;
 		Graphic3d_TypeOfPrimitiveArray Type ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	char *
+		%feature("autodoc", "	* Returns the string type of this primitive
 
-Returns the string type of this primitive") StringType;
+	:rtype: char *
+") StringType;
 		char * StringType ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True when vertex normals array is defined.
 
-Returns TRUE when vertex normals array is defined.") HasVertexNormals;
+	:rtype: bool
+") HasVertexNormals;
 		Standard_Boolean HasVertexNormals ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True when vertex colors array is defined.
 
-Returns TRUE when vertex colors array is defined.") HasVertexColors;
+	:rtype: bool
+") HasVertexColors;
 		Standard_Boolean HasVertexColors ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True when vertex texels array is defined.
 
-Returns TRUE when vertex texels array is defined.") HasVertexTexels;
+	:rtype: bool
+") HasVertexTexels;
 		Standard_Boolean HasVertexTexels ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of defined vertex
 
-Returns the number of defined vertex") VertexNumber;
+	:rtype: int
+") VertexNumber;
 		Standard_Integer VertexNumber ();
-		%feature("autodoc", "Args:
-	aRank(Standard_Integer)
+		%feature("autodoc", "	* Returns the vertice at rank <aRank> from the vertex table if defined.
 
-Returns:
-	gp_Pnt
-
-Returns the vertice at rank <aRank>  
-from the vertex table if defined.") Vertice;
+	:param aRank:
+	:type aRank: Standard_Integer
+	:rtype: gp_Pnt
+") Vertice;
 		gp_Pnt Vertice (const Standard_Integer aRank);
-		%feature("autodoc", "Args:
-	aRank(Standard_Integer)
-	X(Standard_Real)
-	Y(Standard_Real)
-	Z(Standard_Real)
+		%feature("autodoc", "	* Returns the vertice coordinates at rank <aRank> from the vertex table if defined.
 
-Returns:
-	None
-
-Returns the vertice coordinates at rank <aRank>  
-from the vertex table if defined.") Vertice;
+	:param aRank:
+	:type aRank: Standard_Integer
+	:param X:
+	:type X: float &
+	:param Y:
+	:type Y: float &
+	:param Z:
+	:type Z: float &
+	:rtype: None
+") Vertice;
 		void Vertice (const Standard_Integer aRank,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	aRank(Standard_Integer)
+		%feature("autodoc", "	* Returns the vertex color at rank <aRank> from the vertex table if defined.
 
-Returns:
-	Quantity_Color
-
-Returns the vertex color at rank <aRank>  
-from the vertex table if defined.") VertexColor;
+	:param aRank:
+	:type aRank: Standard_Integer
+	:rtype: Quantity_Color
+") VertexColor;
 		Quantity_Color VertexColor (const Standard_Integer aRank);
-		%feature("autodoc", "Args:
-	aRank(Standard_Integer)
-	R(Standard_Real)
-	G(Standard_Real)
-	B(Standard_Real)
+		%feature("autodoc", "	* Returns the vertex color values at rank <aRank> from the vertex table if defined.
 
-Returns:
-	None
-
-Returns the vertex color values at rank <aRank>  
-from the vertex table if defined.") VertexColor;
+	:param aRank:
+	:type aRank: Standard_Integer
+	:param R:
+	:type R: float &
+	:param G:
+	:type G: float &
+	:param B:
+	:type B: float &
+	:rtype: None
+") VertexColor;
 		void VertexColor (const Standard_Integer aRank,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	aRank(Standard_Integer)
-	aColor(Standard_Integer)
+		%feature("autodoc", "	* Returns the vertex color values at rank <aRank> from the vertex table if defined.
 
-Returns:
-	None
-
-Returns the vertex color values at rank <aRank>  
-from the vertex table if defined.") VertexColor;
+	:param aRank:
+	:type aRank: Standard_Integer
+	:param aColor:
+	:type aColor: Standard_Integer &
+	:rtype: None
+") VertexColor;
 		void VertexColor (const Standard_Integer aRank,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	aRank(Standard_Integer)
+		%feature("autodoc", "	* Returns the vertex normal at rank <aRank> from the vertex table if defined.
 
-Returns:
-	gp_Dir
-
-Returns the vertex normal at rank <aRank>  
-from the vertex table if defined.") VertexNormal;
+	:param aRank:
+	:type aRank: Standard_Integer
+	:rtype: gp_Dir
+") VertexNormal;
 		gp_Dir VertexNormal (const Standard_Integer aRank);
-		%feature("autodoc", "Args:
-	aRank(Standard_Integer)
-	NX(Standard_Real)
-	NY(Standard_Real)
-	NZ(Standard_Real)
+		%feature("autodoc", "	* Returns the vertex normal coordinates at rank <aRank> from the vertex table if defined.
 
-Returns:
-	None
-
-Returns the vertex normal coordinates at rank <aRank>  
-from the vertex table if defined.") VertexNormal;
+	:param aRank:
+	:type aRank: Standard_Integer
+	:param NX:
+	:type NX: float &
+	:param NY:
+	:type NY: float &
+	:param NZ:
+	:type NZ: float &
+	:rtype: None
+") VertexNormal;
 		void VertexNormal (const Standard_Integer aRank,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	aRank(Standard_Integer)
+		%feature("autodoc", "	* Returns the vertex texture at rank <aRank> from the vertex table if defined.
 
-Returns:
-	gp_Pnt2d
-
-Returns the vertex texture at rank <aRank>  
-from the vertex table if defined.") VertexTexel;
+	:param aRank:
+	:type aRank: Standard_Integer
+	:rtype: gp_Pnt2d
+") VertexTexel;
 		gp_Pnt2d VertexTexel (const Standard_Integer aRank);
-		%feature("autodoc", "Args:
-	aRank(Standard_Integer)
-	TX(Standard_Real)
-	TY(Standard_Real)
+		%feature("autodoc", "	* Returns the vertex texture coordinates at rank <aRank> from the vertex table if defined.
 
-Returns:
-	None
-
-Returns the vertex texture coordinates at rank <aRank>  
-from the vertex table if defined.") VertexTexel;
+	:param aRank:
+	:type aRank: Standard_Integer
+	:param TX:
+	:type TX: float &
+	:param TY:
+	:type TY: float &
+	:rtype: None
+") VertexTexel;
 		void VertexTexel (const Standard_Integer aRank,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True when edge visibillity array is defined.
 
-Returns TRUE when edge visibillity array is defined.") HasEdgeInfos;
+	:rtype: bool
+") HasEdgeInfos;
 		Standard_Boolean HasEdgeInfos ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of defined edges
 
-Returns the number of defined edges") EdgeNumber;
+	:rtype: int
+") EdgeNumber;
 		Standard_Integer EdgeNumber ();
-		%feature("autodoc", "Args:
-	aRank(Standard_Integer)
+		%feature("autodoc", "	* Returns the vertex index at rank <aRank> in the range [1,VertexNumber()]
 
-Returns:
-	Standard_Integer
-
-Returns the vertex index at rank <aRank>  
-in the range [1,VertexNumber()]") Edge;
+	:param aRank:
+	:type aRank: Standard_Integer
+	:rtype: int
+") Edge;
 		Standard_Integer Edge (const Standard_Integer aRank);
-		%feature("autodoc", "Args:
-	aRank(Standard_Integer)
+		%feature("autodoc", "	* Returns True when the edge at rank <aRank> is visible.
 
-Returns:
-	Standard_Boolean
-
-Returns TRUE when the edge at rank <aRank>  
-is visible.") EdgeIsVisible;
+	:param aRank:
+	:type aRank: Standard_Integer
+	:rtype: bool
+") EdgeIsVisible;
 		Standard_Boolean EdgeIsVisible (const Standard_Integer aRank);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True when bound colors array is defined.
 
-Returns TRUE when bound colors array is defined.") HasBoundColors;
+	:rtype: bool
+") HasBoundColors;
 		Standard_Boolean HasBoundColors ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of defined bounds
 
-Returns the number of defined bounds") BoundNumber;
+	:rtype: int
+") BoundNumber;
 		Standard_Integer BoundNumber ();
-		%feature("autodoc", "Args:
-	aRank(Standard_Integer)
+		%feature("autodoc", "	* Returns the edge number at rank <aRank>.
 
-Returns:
-	Standard_Integer
-
-Returns the edge number at rank <aRank>.") Bound;
+	:param aRank:
+	:type aRank: Standard_Integer
+	:rtype: int
+") Bound;
 		Standard_Integer Bound (const Standard_Integer aRank);
-		%feature("autodoc", "Args:
-	aRank(Standard_Integer)
+		%feature("autodoc", "	* Returns the bound color at rank <aRank> from the bound table if defined.
 
-Returns:
-	Quantity_Color
-
-Returns the bound color at rank <aRank>  
-from the bound table if defined.") BoundColor;
+	:param aRank:
+	:type aRank: Standard_Integer
+	:rtype: Quantity_Color
+") BoundColor;
 		Quantity_Color BoundColor (const Standard_Integer aRank);
-		%feature("autodoc", "Args:
-	aRank(Standard_Integer)
-	R(Standard_Real)
-	G(Standard_Real)
-	B(Standard_Real)
+		%feature("autodoc", "	* Returns the bound color values at rank <aRank> from the bound table if defined.
 
-Returns:
-	None
-
-Returns the bound color values at rank <aRank>  
-from the bound table if defined.") BoundColor;
+	:param aRank:
+	:type aRank: Standard_Integer
+	:param R:
+	:type R: float &
+	:param G:
+	:type G: float &
+	:param B:
+	:type B: float &
+	:rtype: None
+") BoundColor;
 		void BoundColor (const Standard_Integer aRank,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of total items according to the array type.
 
-Returns the number of total items according to  
- the array type.") ItemNumber;
+	:rtype: int
+") ItemNumber;
 		Standard_Integer ItemNumber ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True only when the contains of this array is available.
 
-Returns TRUE only when the contains of this array is  
-available.") IsValid;
+	:rtype: bool
+") IsValid;
 		Standard_Boolean IsValid ();
 };
 
@@ -1449,242 +1237,147 @@ def __del__(self):
 %nodefaultctor Graphic3d_AspectFillArea3d;
 class Graphic3d_AspectFillArea3d : public Aspect_AspectFillArea {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates a context table for fill area primitives defined with the following default values:  InteriorStyle : IS_EMPTY InteriorColor : NOC_CYAN1 EdgeColor  : NOC_WHITE EdgeLineType : TOL_SOLID EdgeWidth  : 1.0 FrontMaterial : NOM_BRASS BackMaterial : NOM_BRASS  Display of back-facing filled polygons. No distinction between external and internal faces of FillAreas. The edges are not drawn. Polygon offset parameters: mode = Aspect_POM_None, factor = 1., units = 0.
 
-Creates a context table for fill area primitives  
-         defined with the following default values:  
- 
-         InteriorStyle       : IS_EMPTY  
-         InteriorColor       : NOC_CYAN1  
-         EdgeColor           : NOC_WHITE  
-         EdgeLineType        : TOL_SOLID  
-         EdgeWidth           : 1.0  
-         FrontMaterial       : NOM_BRASS  
-         BackMaterial        : NOM_BRASS  
- 
-         Display of back-facing filled polygons.  
-         No distinction between external and internal  
-         faces of FillAreas.  
-         The edges are not drawn.  
-         Polygon offset parameters: mode = Aspect_POM_None, factor = 1., units = 0.") Graphic3d_AspectFillArea3d;
+	:rtype: None
+") Graphic3d_AspectFillArea3d;
 		 Graphic3d_AspectFillArea3d ();
-		%feature("autodoc", "Args:
-	Interior(Aspect_InteriorStyle)
-	InteriorColor(Quantity_Color)
-	EdgeColor(Quantity_Color)
-	EdgeLineType(Aspect_TypeOfLine)
-	EdgeWidth(Standard_Real)
-	FrontMaterial(Graphic3d_MaterialAspect)
-	BackMaterial(Graphic3d_MaterialAspect)
+		%feature("autodoc", "	* Creates a context table for fill area primitives defined with the specified values.  Display of back-facing filled polygons. No distinction between external and internal faces of FillAreas. The edges are not drawn. Polygon offset parameters: mode = Aspect_POM_None, factor = 1., units = 0. Warning EdgeWidth is the 'line width scale factor'. The nominal line width is 1 pixel. The width of the line is determined by applying the line width scale factor to this nominal line width. The supported line widths vary by 1-pixel units.
 
-Returns:
-	None
-
-Creates a context table for fill area primitives  
-         defined with the specified values.  
- 
-         Display of back-facing filled polygons.  
-         No distinction between external and internal  
-         faces of FillAreas.  
-         The edges are not drawn.  
-         Polygon offset parameters: mode = Aspect_POM_None, factor = 1., units = 0.  
-Warning  
-EdgeWidth is the 'line width scale factor'.   The  
-nominal line width is 1 pixel.   The width of the line is  
-determined by applying the line width scale factor to  
-this nominal line width.   The supported line widths  
-vary by 1-pixel units.") Graphic3d_AspectFillArea3d;
+	:param Interior:
+	:type Interior: Aspect_InteriorStyle
+	:param InteriorColor:
+	:type InteriorColor: Quantity_Color &
+	:param EdgeColor:
+	:type EdgeColor: Quantity_Color &
+	:param EdgeLineType:
+	:type EdgeLineType: Aspect_TypeOfLine
+	:param EdgeWidth:
+	:type EdgeWidth: float
+	:param FrontMaterial:
+	:type FrontMaterial: Graphic3d_MaterialAspect &
+	:param BackMaterial:
+	:type BackMaterial: Graphic3d_MaterialAspect &
+	:rtype: None
+") Graphic3d_AspectFillArea3d;
 		 Graphic3d_AspectFillArea3d (const Aspect_InteriorStyle Interior,const Quantity_Color & InteriorColor,const Quantity_Color & EdgeColor,const Aspect_TypeOfLine EdgeLineType,const Standard_Real EdgeWidth,const Graphic3d_MaterialAspect & FrontMaterial,const Graphic3d_MaterialAspect & BackMaterial);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Allows the display of back-facing filled polygons.
 
-Allows the display of back-facing filled  
-         polygons.") AllowBackFace;
+	:rtype: None
+") AllowBackFace;
 		void AllowBackFace ();
-		%feature("autodoc", "Args:
-	AMaterial(Graphic3d_MaterialAspect)
+		%feature("autodoc", "	* Modifies the surface material of internal faces
 
-Returns:
-	None
-
-Modifies the surface material of internal faces") SetBackMaterial;
+	:param AMaterial:
+	:type AMaterial: Graphic3d_MaterialAspect &
+	:rtype: None
+") SetBackMaterial;
 		void SetBackMaterial (const Graphic3d_MaterialAspect & AMaterial);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Allows distinction between external and internal faces of FillAreas.
 
-Allows distinction between external and internal  
-         faces of FillAreas.") SetDistinguishOn;
+	:rtype: None
+") SetDistinguishOn;
 		void SetDistinguishOn ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Forbids distinction between external and internal faces of FillAreas.
 
-Forbids distinction between external and internal  
-         faces of FillAreas.") SetDistinguishOff;
+	:rtype: None
+") SetDistinguishOff;
 		void SetDistinguishOff ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* The edges of FillAreas are drawn.
 
-The edges of FillAreas are drawn.") SetEdgeOn;
+	:rtype: None
+") SetEdgeOn;
 		void SetEdgeOn ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* The edges of FillAreas are not drawn.
 
-The edges of FillAreas are not drawn.") SetEdgeOff;
+	:rtype: None
+") SetEdgeOff;
 		void SetEdgeOff ();
-		%feature("autodoc", "Args:
-	AMaterial(Graphic3d_MaterialAspect)
+		%feature("autodoc", "	* Modifies the surface material of external faces
 
-Returns:
-	None
-
-Modifies the surface material of external faces") SetFrontMaterial;
+	:param AMaterial:
+	:type AMaterial: Graphic3d_MaterialAspect &
+	:rtype: None
+") SetFrontMaterial;
 		void SetFrontMaterial (const Graphic3d_MaterialAspect & AMaterial);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Suppress the display of back-facing filled polygons. A back-facing polygon is defined as a polygon whose vertices are in a clockwise order with respect to screen coordinates.
 
-Suppress the display of back-facing filled  
-         polygons.  
-         A back-facing polygon is defined as a polygon whose  
-         vertices are in a clockwise order with respect  
-         to screen coordinates.") SuppressBackFace;
+	:rtype: None
+") SuppressBackFace;
 		void SuppressBackFace ();
-		%feature("autodoc", "Args:
-	ATexture(Handle_Graphic3d_TextureMap)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetTextureMap;
+		%feature("autodoc", "	:param ATexture:
+	:type ATexture: Handle_Graphic3d_TextureMap &
+	:rtype: None
+") SetTextureMap;
 		void SetTextureMap (const Handle_Graphic3d_TextureMap & ATexture);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") SetTextureMapOn;
+		%feature("autodoc", "	:rtype: None
+") SetTextureMapOn;
 		void SetTextureMapOn ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") SetTextureMapOff;
+		%feature("autodoc", "	:rtype: None
+") SetTextureMapOff;
 		void SetTextureMapOff ();
-		%feature("autodoc", "Args:
-	aMode(Standard_Integer)
-	aFactor(Standard_ShortReal)=1.0
-	aUnits(Standard_ShortReal)=0.0
+		%feature("autodoc", "	* Sets up OpenGL polygon offsets mechanism. <aMode> parameter can contain various combinations of Aspect_PolygonOffsetMode enumeration elements (Aspect_POM_None means that polygon offsets are not changed). If <aMode> is different from Aspect_POM_Off and Aspect_POM_None, then <aFactor> and <aUnits> arguments are used by graphic renderer to calculate a depth offset value:  offset = <aFactor> * m + <aUnits> * r, where m - maximum depth slope for the polygon currently being displayed, r - minimum window coordinates depth resolution (implementation-specific)  Deafult settings for OCC 3D viewer: mode = Aspect_POM_Fill, factor = 1., units = 0.  Negative offset values move polygons closer to the viewport, while positive values shift polygons away. Consult OpenGL reference for details (glPolygonOffset function description).
 
-Returns:
-	None
-
-Sets up OpenGL polygon offsets mechanism.  
-         <aMode> parameter can contain various combinations of  
-         Aspect_PolygonOffsetMode enumeration elements (Aspect_POM_None means  
-         that polygon offsets are not changed).  
-         If <aMode> is different from Aspect_POM_Off and Aspect_POM_None, then <aFactor> and <aUnits>  
-         arguments are used by graphic renderer to calculate a depth offset value:  
- 
-         offset = <aFactor> * m + <aUnits> * r, where  
-         m - maximum depth slope for the polygon currently being displayed,  
-         r - minimum window coordinates depth resolution (implementation-specific)  
- 
-         Deafult settings for OCC 3D viewer: mode = Aspect_POM_Fill, factor = 1., units = 0.  
- 
-         Negative offset values move polygons closer to the viewport,  
-         while positive values shift polygons away.  
-         Consult OpenGL reference for details (glPolygonOffset function description).") SetPolygonOffsets;
+	:param aMode:
+	:type aMode: Standard_Integer
+	:param aFactor: default value is 1.0
+	:type aFactor: Standard_ShortReal
+	:param aUnits: default value is 0.0
+	:type aUnits: Standard_ShortReal
+	:rtype: None
+") SetPolygonOffsets;
 		void SetPolygonOffsets (const Standard_Integer aMode,const Standard_ShortReal aFactor = 1.0,const Standard_ShortReal aUnits = 0.0);
-		%feature("autodoc", "Args:
-	theProgram(Graphic3d_ShaderProgram_Handle)
+		%feature("autodoc", "	* Sets up OpenGL/GLSL shader program.
 
-Returns:
-	None
-
-Sets up OpenGL/GLSL shader program.") SetShaderProgram;
+	:param theProgram:
+	:type theProgram: Graphic3d_ShaderProgram_Handle &
+	:rtype: None
+") SetShaderProgram;
 		void SetShaderProgram (const Graphic3d_ShaderProgram_Handle & theProgram);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns the Back Face Removal status. Standard_True if SuppressBackFace is activated.
 
-Returns the Back Face Removal status.  
-         Standard_True if SuppressBackFace is activated.") BackFace;
+	:rtype: bool
+") BackFace;
 		Standard_Boolean BackFace ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns the Distinguish Mode status.
 
-Returns the Distinguish Mode status.") Distinguish;
+	:rtype: bool
+") Distinguish;
 		Standard_Boolean Distinguish ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns Standard_True if the edges are drawn and Standard_False if the edges are not drawn.
 
-Returns Standard_True if the edges are drawn and  
-         Standard_False if the edges are not drawn.") Edge;
+	:rtype: bool
+") Edge;
 		Standard_Boolean Edge ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_MaterialAspect
+		%feature("autodoc", "	* Returns the surface material of internal faces
 
-Returns the surface material of internal faces") BackMaterial;
+	:rtype: Graphic3d_MaterialAspect
+") BackMaterial;
 		Graphic3d_MaterialAspect BackMaterial ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_MaterialAspect
+		%feature("autodoc", "	* Returns the surface material of external faces
 
-Returns the surface material of external faces") FrontMaterial;
+	:rtype: Graphic3d_MaterialAspect
+") FrontMaterial;
 		Graphic3d_MaterialAspect FrontMaterial ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_TextureMap
-
-No detailed docstring for this function.") TextureMap;
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_TextureMap
+") TextureMap;
 		Handle_Graphic3d_TextureMap TextureMap ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") TextureMapState;
+		%feature("autodoc", "	:rtype: bool
+") TextureMapState;
 		Standard_Boolean TextureMapState ();
-		%feature("autodoc", "Args:
-	aMode(Standard_Integer)
-	aFactor(Standard_ShortReal)
-	aUnits(Standard_ShortReal)
+		%feature("autodoc", "	* Returns current polygon offsets settings.
 
-Returns:
-	None
-
-Returns current polygon offsets settings.") PolygonOffsets;
+	:param aMode:
+	:type aMode: Standard_Integer &
+	:param aFactor:
+	:type aFactor: Standard_ShortReal &
+	:param aUnits:
+	:type aUnits: Standard_ShortReal &
+	:rtype: None
+") PolygonOffsets;
 		void PolygonOffsets (Standard_Integer &OutValue,Standard_ShortReal & aFactor,Standard_ShortReal & aUnits);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_ShaderProgram_Handle
-
-No detailed docstring for this function.") ShaderProgram;
+		%feature("autodoc", "	:rtype: Graphic3d_ShaderProgram_Handle
+") ShaderProgram;
 		const Graphic3d_ShaderProgram_Handle & ShaderProgram ();
 };
 
@@ -1745,48 +1438,31 @@ def __del__(self):
 %nodefaultctor Graphic3d_AspectLine3d;
 class Graphic3d_AspectLine3d : public Aspect_AspectLine {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates a context table for line primitives //!	 defined with the following default values: //!	 Colour	: NOC_YELLOW //!	 Line type	: TOL_SOLID //!	 Width	: 1.0
 
-Creates a context table for line primitives  
-//!	    defined with the following default values:  
- 
-//!	    Colour	: NOC_YELLOW  
-//!	    Line type	: TOL_SOLID  
-//!	    Width	: 1.0") Graphic3d_AspectLine3d;
+	:rtype: None
+") Graphic3d_AspectLine3d;
 		 Graphic3d_AspectLine3d ();
-		%feature("autodoc", "Args:
-	AColor(Quantity_Color)
-	AType(Aspect_TypeOfLine)
-	AWidth(Standard_Real)
+		%feature("autodoc", "	* Creates a context table for line primitives //!	 defined with the specified values. Warning: <AWidth> is the 'linewidth scale factor'. //!	 The nominal line width is 1 pixel. The width of //!	 the line is determined by applying the linewidth scale //!	 factor to this nominal line width. //!	 The supported linewidths vary by 1-pixel units.
 
-Returns:
-	None
-
-Creates a context table for line primitives  
-//!	    defined with the specified values.  
- Warning: <AWidth> is the 'linewidth scale factor'.  
-//!	    The nominal line width is 1 pixel. The width of  
-//!	    the line is determined by applying the linewidth scale  
-//!	    factor to this nominal line width.  
-//!	    The supported linewidths vary by 1-pixel units.") Graphic3d_AspectLine3d;
+	:param AColor:
+	:type AColor: Quantity_Color &
+	:param AType:
+	:type AType: Aspect_TypeOfLine
+	:param AWidth:
+	:type AWidth: float
+	:rtype: None
+") Graphic3d_AspectLine3d;
 		 Graphic3d_AspectLine3d (const Quantity_Color & AColor,const Aspect_TypeOfLine AType,const Standard_Real AWidth);
-		%feature("autodoc", "Args:
-	theProgram(Graphic3d_ShaderProgram_Handle)
+		%feature("autodoc", "	* Sets up OpenGL/GLSL shader program.
 
-Returns:
-	None
-
-Sets up OpenGL/GLSL shader program.") SetShaderProgram;
+	:param theProgram:
+	:type theProgram: Graphic3d_ShaderProgram_Handle &
+	:rtype: None
+") SetShaderProgram;
 		void SetShaderProgram (const Graphic3d_ShaderProgram_Handle & theProgram);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_ShaderProgram_Handle
-
-No detailed docstring for this function.") ShaderProgram;
+		%feature("autodoc", "	:rtype: Graphic3d_ShaderProgram_Handle
+") ShaderProgram;
 		const Graphic3d_ShaderProgram_Handle & ShaderProgram ();
 };
 
@@ -1847,91 +1523,72 @@ def __del__(self):
 %nodefaultctor Graphic3d_AspectMarker3d;
 class Graphic3d_AspectMarker3d : public Aspect_AspectMarker {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates a context table for marker primitives defined with the following default values:  Marker type : TOM_X Colour : YELLOW Scale factor: 1.0
 
-Creates a context table for marker primitives  
-         defined with the following default values:  
- 
-         Marker type : TOM_X  
-         Colour      : YELLOW  
-         Scale factor: 1.0") Graphic3d_AspectMarker3d;
+	:rtype: None
+") Graphic3d_AspectMarker3d;
 		 Graphic3d_AspectMarker3d ();
-		%feature("autodoc", "Args:
-	theType(Aspect_TypeOfMarker)
-	theColor(Quantity_Color)
-	theScale(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_AspectMarker3d;
+		%feature("autodoc", "	:param theType:
+	:type theType: Aspect_TypeOfMarker
+	:param theColor:
+	:type theColor: Quantity_Color &
+	:param theScale:
+	:type theScale: float
+	:rtype: None
+") Graphic3d_AspectMarker3d;
 		 Graphic3d_AspectMarker3d (const Aspect_TypeOfMarker theType,const Quantity_Color & theColor,const Standard_Real theScale);
-		%feature("autodoc", "Args:
-	theColor(Quantity_Color)
-	theWidth(Standard_Integer)
-	theHeight(Standard_Integer)
-	theTextureBitmap(Handle_TColStd_HArray1OfByte)
+		%feature("autodoc", "	* Creates a context table for marker primitives defined with the specified values.
 
-Returns:
-	None
-
-Creates a context table for marker primitives  
-         defined with the specified values.") Graphic3d_AspectMarker3d;
+	:param theColor:
+	:type theColor: Quantity_Color &
+	:param theWidth:
+	:type theWidth: Standard_Integer
+	:param theHeight:
+	:type theHeight: Standard_Integer
+	:param theTextureBitmap:
+	:type theTextureBitmap: Handle_TColStd_HArray1OfByte &
+	:rtype: None
+") Graphic3d_AspectMarker3d;
 		 Graphic3d_AspectMarker3d (const Quantity_Color & theColor,const Standard_Integer theWidth,const Standard_Integer theHeight,const Handle_TColStd_HArray1OfByte & theTextureBitmap);
-		%feature("autodoc", "Args:
-	theTextureImage(Image_PixMap_Handle)
+		%feature("autodoc", "	* Creates a context table for marker primitives defined with the specified values.
 
-Returns:
-	None
-
-Creates a context table for marker primitives  
-         defined with the specified values.") Graphic3d_AspectMarker3d;
+	:param theTextureImage:
+	:type theTextureImage: Image_PixMap_Handle &
+	:rtype: None
+") Graphic3d_AspectMarker3d;
 		 Graphic3d_AspectMarker3d (const Image_PixMap_Handle & theTextureImage);
-		%feature("autodoc", "Args:
-	theWidth(Standard_Integer)
-	theHeight(Standard_Integer)
+		%feature("autodoc", "	* Returns marker's texture size.
 
-Returns:
-	None
-
-Returns marker's texture size.") GetTextureSize;
+	:param theWidth:
+	:type theWidth: Standard_Integer &
+	:param theHeight:
+	:type theHeight: Standard_Integer &
+	:rtype: None
+") GetTextureSize;
 		void GetTextureSize (Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_MarkerImage_Handle
+		%feature("autodoc", "	* Returns marker's image texture. Could be null handle if marker aspect has been initialized as default type of marker.
 
-Returns marker's image texture.  
-Could be null handle if marker aspect has been initialized as  
-default type of marker.") GetMarkerImage;
+	:rtype: Graphic3d_MarkerImage_Handle
+") GetMarkerImage;
 		const Graphic3d_MarkerImage_Handle & GetMarkerImage ();
-		%feature("autodoc", "Args:
-	theWidth(Standard_Integer)
-	theHeight(Standard_Integer)
-	theTexture(Handle_TColStd_HArray1OfByte)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetBitMap;
+		%feature("autodoc", "	:param theWidth:
+	:type theWidth: Standard_Integer
+	:param theHeight:
+	:type theHeight: Standard_Integer
+	:param theTexture:
+	:type theTexture: Handle_TColStd_HArray1OfByte &
+	:rtype: None
+") SetBitMap;
 		void SetBitMap (const Standard_Integer theWidth,const Standard_Integer theHeight,const Handle_TColStd_HArray1OfByte & theTexture);
-		%feature("autodoc", "Args:
-	theProgram(Graphic3d_ShaderProgram_Handle)
+		%feature("autodoc", "	* Sets up OpenGL/GLSL shader program.
 
-Returns:
-	None
-
-Sets up OpenGL/GLSL shader program.") SetShaderProgram;
+	:param theProgram:
+	:type theProgram: Graphic3d_ShaderProgram_Handle &
+	:rtype: None
+") SetShaderProgram;
 		void SetShaderProgram (const Graphic3d_ShaderProgram_Handle & theProgram);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_ShaderProgram_Handle
-
-No detailed docstring for this function.") ShaderProgram;
+		%feature("autodoc", "	:rtype: Graphic3d_ShaderProgram_Handle
+") ShaderProgram;
 		const Graphic3d_ShaderProgram_Handle & ShaderProgram ();
 };
 
@@ -1992,167 +1649,122 @@ def __del__(self):
 %nodefaultctor Graphic3d_AspectText3d;
 class Graphic3d_AspectText3d : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates a context table for text primitives defined with the following default values: Colour  : NOC_YELLOW Font  : NOF_ASCII_MONO Expansion factor : 1. Space between characters : 0. The style  : TOST_NORMAL The display type : TODT_NORMAL
 
-Creates a context table for text primitives  
-     defined with the following default values:  
- 
-     Colour                    : NOC_YELLOW  
-     Font                      : NOF_ASCII_MONO  
-     Expansion factor          : 1.  
-     Space between characters  : 0.  
-     The style                 : TOST_NORMAL  
-     The display type          : TODT_NORMAL") Graphic3d_AspectText3d;
+	:rtype: None
+") Graphic3d_AspectText3d;
 		 Graphic3d_AspectText3d ();
-		%feature("autodoc", "Args:
-	AColor(Quantity_Color)
-	AFont(char *)
-	AExpansionFactor(Standard_Real)
-	ASpace(Standard_Real)
-	AStyle(Aspect_TypeOfStyleText)=Aspect_TOST_NORMAL
-	ADisplayType(Aspect_TypeOfDisplayText)=Aspect_TODT_NORMAL
+		%feature("autodoc", "	* Creates a context table for text primitives defined with the specified values. AFont may be to take means from User(example 'Courier New') or Font name defined in Font_NameOfFont(example Font_NOF_ASCII_MONO) or use default font('Courier')
 
-Returns:
-	None
-
-Creates a context table for text primitives  
-     defined with the specified values.  
-         AFont may be to take means from User(example 'Courier New')  
-     or Font name defined in Font_NameOfFont(example Font_NOF_ASCII_MONO)  
-     or use default font('Courier')") Graphic3d_AspectText3d;
+	:param AColor:
+	:type AColor: Quantity_Color &
+	:param AFont:
+	:type AFont: char *
+	:param AExpansionFactor:
+	:type AExpansionFactor: float
+	:param ASpace:
+	:type ASpace: float
+	:param AStyle: default value is Aspect_TOST_NORMAL
+	:type AStyle: Aspect_TypeOfStyleText
+	:param ADisplayType: default value is Aspect_TODT_NORMAL
+	:type ADisplayType: Aspect_TypeOfDisplayText
+	:rtype: None
+") Graphic3d_AspectText3d;
 		 Graphic3d_AspectText3d (const Quantity_Color & AColor,const char * AFont,const Standard_Real AExpansionFactor,const Standard_Real ASpace,const Aspect_TypeOfStyleText AStyle = Aspect_TOST_NORMAL,const Aspect_TypeOfDisplayText ADisplayType = Aspect_TODT_NORMAL);
-		%feature("autodoc", "Args:
-	AColor(Quantity_Color)
+		%feature("autodoc", "	* Modifies the colour of <self>.
 
-Returns:
-	None
-
-Modifies the colour of <self>.") SetColor;
+	:param AColor:
+	:type AColor: Quantity_Color &
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_Color & AColor);
-		%feature("autodoc", "Args:
-	AFactor(Standard_Real)
+		%feature("autodoc", "	* Modifies the expansion factor (height/width ratio) If the factor is less than 1, the characters will be higher than they are wide.
 
-Returns:
-	None
-
-Modifies the expansion factor (height/width ratio)  
- If the factor is less than 1, the characters will  
- be higher than they are wide.") SetExpansionFactor;
+	:param AFactor:
+	:type AFactor: float
+	:rtype: None
+") SetExpansionFactor;
 		void SetExpansionFactor (const Standard_Real AFactor);
-		%feature("autodoc", "Args:
-	AFont(char *)
+		%feature("autodoc", "	* Modifies the font of <self>.
 
-Returns:
-	None
-
-Modifies the font of <self>.") SetFont;
+	:param AFont:
+	:type AFont: char *
+	:rtype: None
+") SetFont;
 		void SetFont (const char * AFont);
-		%feature("autodoc", "Args:
-	ASpace(Standard_Real)
+		%feature("autodoc", "	* Modifies the space between the characters.
 
-Returns:
-	None
-
-Modifies the space between the characters.") SetSpace;
+	:param ASpace:
+	:type ASpace: float
+	:rtype: None
+") SetSpace;
 		void SetSpace (const Standard_Real ASpace);
-		%feature("autodoc", "Args:
-	AStyle(Aspect_TypeOfStyleText)
+		%feature("autodoc", "	* Modifies the style of the text. TOST_NORMAL Default text. The text is displayed like any other graphic object. This text can be hidden by another object that is nearest from the point of view. TOST_ANNOTATION The text is always visible. The texte is displayed over the other object according to the priority.
 
-Returns:
-	None
-
-Modifies the style of the text.  
-     TOST_NORMAL     Default text. The text is displayed like any other graphic object.  
-             This text can be hidden by another object that is nearest from the  
-             point of view.  
-     TOST_ANNOTATION The text is always visible. The texte is displayed  
-             over the other object according to the priority.") SetStyle;
+	:param AStyle:
+	:type AStyle: Aspect_TypeOfStyleText
+	:rtype: None
+") SetStyle;
 		void SetStyle (const Aspect_TypeOfStyleText AStyle);
-		%feature("autodoc", "Args:
-	ADisplayType(Aspect_TypeOfDisplayText)
+		%feature("autodoc", "	* Define the display type of the text. TODT_NORMAL Default display. Text only. TODT_SUBTITLE There is a subtitle under the text. TODT_DEKALE The text is displayed with a 3D style. TODT_BLEND The text is displayed in XOR. TODT_DIMENSION Dimension line under text will be invisible.
 
-Returns:
-	None
-
-Define the display type of the text.  
- 
-     TODT_NORMAL     Default display. Text only.  
-     TODT_SUBTITLE   There is a subtitle under the text.  
-     TODT_DEKALE     The text is displayed with a 3D style.  
-     TODT_BLEND      The text is displayed in XOR.  
-     TODT_DIMENSION  Dimension line under text will be invisible.") SetDisplayType;
+	:param ADisplayType:
+	:type ADisplayType: Aspect_TypeOfDisplayText
+	:rtype: None
+") SetDisplayType;
 		void SetDisplayType (const Aspect_TypeOfDisplayText ADisplayType);
-		%feature("autodoc", "Args:
-	AColor(Quantity_Color)
+		%feature("autodoc", "	* Modifies the colour of the subtitle for the TODT_SUBTITLE TextDisplayType  and the colour of backgroubd for the TODT_DEKALE TextDisplayType.
 
-Returns:
-	None
-
-Modifies the colour of the subtitle for the TODT_SUBTITLE TextDisplayType  
-        and the colour of backgroubd for the TODT_DEKALE TextDisplayType.") SetColorSubTitle;
+	:param AColor:
+	:type AColor: Quantity_Color &
+	:rtype: None
+") SetColorSubTitle;
 		void SetColorSubTitle (const Quantity_Color & AColor);
-		%feature("autodoc", "Args:
-	AFlag(Standard_Boolean)
+		%feature("autodoc", "	* Turns usage of text zoomable on/off
 
-Returns:
-	None
-
-Turns usage of text zoomable on/off") SetTextZoomable;
+	:param AFlag:
+	:type AFlag: bool
+	:rtype: None
+") SetTextZoomable;
 		void SetTextZoomable (const Standard_Boolean AFlag);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True when the Text Zoomable is on.
 
-Returns TRUE when the Text Zoomable is on.") GetTextZoomable;
+	:rtype: bool
+") GetTextZoomable;
 		Standard_Boolean GetTextZoomable ();
-		%feature("autodoc", "Args:
-	AAngle(Standard_Real)
+		%feature("autodoc", "	* Turns usage of text rotated
 
-Returns:
-	None
-
-Turns usage of text rotated") SetTextAngle;
+	:param AAngle:
+	:type AAngle: float
+	:rtype: None
+") SetTextAngle;
 		void SetTextAngle (const Standard_Real AAngle);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns Angle of degree
 
-Returns Angle of degree") GetTextAngle;
+	:rtype: float
+") GetTextAngle;
 		Standard_Real GetTextAngle ();
-		%feature("autodoc", "Args:
-	AFontAspect(Font_FontAspect)
+		%feature("autodoc", "	* Turns usage of Aspect text
 
-Returns:
-	None
-
-Turns usage of Aspect text") SetTextFontAspect;
+	:param AFontAspect:
+	:type AFontAspect: Font_FontAspect
+	:rtype: None
+") SetTextFontAspect;
 		void SetTextFontAspect (const Font_FontAspect AFontAspect);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Font_FontAspect
+		%feature("autodoc", "	* Returns text FontAspect
 
-Returns text FontAspect") GetTextFontAspect;
+	:rtype: Font_FontAspect
+") GetTextFontAspect;
 		Font_FontAspect GetTextFontAspect ();
-		%feature("autodoc", "Args:
-	theProgram(Graphic3d_ShaderProgram_Handle)
+		%feature("autodoc", "	* Sets up OpenGL/GLSL shader program.
 
-Returns:
-	None
-
-Sets up OpenGL/GLSL shader program.") SetShaderProgram;
+	:param theProgram:
+	:type theProgram: Graphic3d_ShaderProgram_Handle &
+	:rtype: None
+") SetShaderProgram;
 		void SetShaderProgram (const Graphic3d_ShaderProgram_Handle & theProgram);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_ShaderProgram_Handle
-
-No detailed docstring for this function.") ShaderProgram;
+		%feature("autodoc", "	:rtype: Graphic3d_ShaderProgram_Handle
+") ShaderProgram;
 		const Graphic3d_ShaderProgram_Handle & ShaderProgram ();
 };
 
@@ -2293,12 +1905,8 @@ def __del__(self):
 %nodefaultctor Graphic3d_CGraduatedTrihedron;
 class Graphic3d_CGraduatedTrihedron {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_CGraduatedTrihedron;
+		%feature("autodoc", "	:rtype: None
+") Graphic3d_CGraduatedTrihedron;
 		 Graphic3d_CGraduatedTrihedron ();
 };
 
@@ -2340,83 +1948,50 @@ def __del__(self):
 %nodefaultctor Graphic3d_CLight;
 class Graphic3d_CLight {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ShortReal
+		%feature("autodoc", "	* //!< flag to mark head light Const attenuation factor of positional light source
 
-//!< flag to mark head light
-Const attenuation factor of positional light source") ConstAttenuation;
+	:rtype: Standard_ShortReal
+") ConstAttenuation;
 		Standard_ShortReal ConstAttenuation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ShortReal
+		%feature("autodoc", "	* Linear attenuation factor of positional light source
 
-Linear attenuation factor of positional light source") LinearAttenuation;
+	:rtype: Standard_ShortReal
+") LinearAttenuation;
 		Standard_ShortReal LinearAttenuation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_Vec2
+		%feature("autodoc", "	* Const, Linear attenuation factors of positional light source
 
-Const, Linear attenuation factors of positional light source") Attenuation;
+	:rtype: Graphic3d_Vec2
+") Attenuation;
 		Graphic3d_Vec2 Attenuation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ShortReal
+		%feature("autodoc", "	* Angle in radians of the cone created by the spot
 
-Angle in radians of the cone created by the spot") Angle;
+	:rtype: Standard_ShortReal
+") Angle;
 		Standard_ShortReal Angle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ShortReal
+		%feature("autodoc", "	* Intensity distribution of the spot light, with 0..1 range.
 
-Intensity distribution of the spot light, with 0..1 range.") Concentration;
+	:rtype: Standard_ShortReal
+") Concentration;
 		Standard_ShortReal Concentration ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") ChangeConstAttenuation;
+		%feature("autodoc", "	:rtype: Standard_ShortReal
+") ChangeConstAttenuation;
 		Standard_ShortReal & ChangeConstAttenuation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") ChangeLinearAttenuation;
+		%feature("autodoc", "	:rtype: Standard_ShortReal
+") ChangeLinearAttenuation;
 		Standard_ShortReal & ChangeLinearAttenuation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_Vec2
-
-No detailed docstring for this function.") ChangeAttenuation;
+		%feature("autodoc", "	:rtype: Graphic3d_Vec2
+") ChangeAttenuation;
 		Graphic3d_Vec2 & ChangeAttenuation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") ChangeAngle;
+		%feature("autodoc", "	:rtype: Standard_ShortReal
+") ChangeAngle;
 		Standard_ShortReal & ChangeAngle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") ChangeConcentration;
+		%feature("autodoc", "	:rtype: Standard_ShortReal
+") ChangeConcentration;
 		Standard_ShortReal & ChangeConcentration ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor
 
-Empty constructor") Graphic3d_CLight;
+	:rtype: None
+") Graphic3d_CLight;
 		 Graphic3d_CLight ();
 };
 
@@ -2458,12 +2033,8 @@ def __del__(self):
 %nodefaultctor Graphic3d_CTexture;
 class Graphic3d_CTexture {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_CTexture;
+		%feature("autodoc", "	:rtype: None
+") Graphic3d_CTexture;
 		 Graphic3d_CTexture ();
 };
 
@@ -2485,12 +2056,8 @@ def __del__(self):
 %nodefaultctor Graphic3d_CView;
 class Graphic3d_CView {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_CView;
+		%feature("autodoc", "	:rtype: None
+") Graphic3d_CView;
 		 Graphic3d_CView ();
 };
 
@@ -2512,12 +2079,10 @@ def __del__(self):
 %nodefaultctor Graphic3d_DataStructureManager;
 class Graphic3d_DataStructureManager : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Deletes the manager <self>.
 
-Deletes the manager <self>.") Destroy;
+	:rtype: void
+") Destroy;
 		virtual void Destroy ();
 };
 
@@ -2578,1269 +2143,1232 @@ def __del__(self):
 %nodefaultctor Graphic3d_GraphicDriver;
 class Graphic3d_GraphicDriver : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	theDisplayConnection(Aspect_DisplayConnection_Handle)
+		%feature("autodoc", "	* Starts graphic driver with given connection
 
-Returns:
-	virtual Standard_Boolean
-
-Starts graphic driver with given connection") Begin;
+	:param theDisplayConnection:
+	:type theDisplayConnection: Aspect_DisplayConnection_Handle &
+	:rtype: bool
+") Begin;
 		virtual Standard_Boolean Begin (const Aspect_DisplayConnection_Handle & theDisplayConnection);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* call_togl_end
 
-call_togl_end") End;
+	:rtype: void
+") End;
 		virtual void End ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
+		%feature("autodoc", "	* call_togl_inquirelight
 
-call_togl_inquirelight") InquireLightLimit;
+	:rtype: int
+") InquireLightLimit;
 		virtual Standard_Integer InquireLightLimit ();
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
-	AMatO(TColStd_Array2OfReal)
-	AMatM(TColStd_Array2OfReal)
+		%feature("autodoc", "	* call_togl_inquiremat
 
-Returns:
-	virtual void
-
-call_togl_inquiremat") InquireMat;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:param AMatO:
+	:type AMatO: TColStd_Array2OfReal &
+	:param AMatM:
+	:type AMatM: TColStd_Array2OfReal &
+	:rtype: void
+") InquireMat;
 		virtual void InquireMat (const Graphic3d_CView & ACView,TColStd_Array2OfReal & AMatO,TColStd_Array2OfReal & AMatM);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
+		%feature("autodoc", "	* call_togl_inquireplane
 
-call_togl_inquireplane") InquirePlaneLimit;
+	:rtype: int
+") InquirePlaneLimit;
 		virtual Standard_Integer InquirePlaneLimit ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
+		%feature("autodoc", "	* call_togl_inquireview
 
-call_togl_inquireview") InquireViewLimit;
+	:rtype: int
+") InquireViewLimit;
 		virtual Standard_Integer InquireViewLimit ();
-		%feature("autodoc", "Args:
-	ACStructure(Graphic3d_CStructure)
-	Create(Standard_Boolean)
+		%feature("autodoc", "	* call_togl_blink
 
-Returns:
-	virtual void
-
-call_togl_blink") Blink;
+	:param ACStructure:
+	:type ACStructure: Graphic3d_CStructure &
+	:param Create:
+	:type Create: bool
+	:rtype: void
+") Blink;
 		virtual void Blink (const Graphic3d_CStructure & ACStructure,const Standard_Boolean Create);
-		%feature("autodoc", "Args:
-	ACStructure(Graphic3d_CStructure)
-	Create(Standard_Boolean)
+		%feature("autodoc", "	* call_togl_boundarybox
 
-Returns:
-	virtual void
-
-call_togl_boundarybox") BoundaryBox;
+	:param ACStructure:
+	:type ACStructure: Graphic3d_CStructure &
+	:param Create:
+	:type Create: bool
+	:rtype: void
+") BoundaryBox;
 		virtual void BoundaryBox (const Graphic3d_CStructure & ACStructure,const Standard_Boolean Create);
-		%feature("autodoc", "Args:
-	ACStructure(Graphic3d_CStructure)
-	R(Standard_ShortReal)
-	G(Standard_ShortReal)
-	B(Standard_ShortReal)
-	Create(Standard_Boolean)
+		%feature("autodoc", "	* call_togl_highlightcolor
 
-Returns:
-	virtual void
-
-call_togl_highlightcolor") HighlightColor;
+	:param ACStructure:
+	:type ACStructure: Graphic3d_CStructure &
+	:param R:
+	:type R: Standard_ShortReal
+	:param G:
+	:type G: Standard_ShortReal
+	:param B:
+	:type B: Standard_ShortReal
+	:param Create:
+	:type Create: bool
+	:rtype: void
+") HighlightColor;
 		virtual void HighlightColor (const Graphic3d_CStructure & ACStructure,const Standard_ShortReal R,const Standard_ShortReal G,const Standard_ShortReal B,const Standard_Boolean Create);
-		%feature("autodoc", "Args:
-	ACStructure(Graphic3d_CStructure)
+		%feature("autodoc", "	* call_togl_namesetstructure
 
-Returns:
-	virtual void
-
-call_togl_namesetstructure") NameSetStructure;
+	:param ACStructure:
+	:type ACStructure: Graphic3d_CStructure &
+	:rtype: void
+") NameSetStructure;
 		virtual void NameSetStructure (const Graphic3d_CStructure & ACStructure);
-		%feature("autodoc", "Args:
-	ACGroup(Graphic3d_CGroup)
+		%feature("autodoc", "	* call_togl_cleargroup
 
-Returns:
-	virtual void
-
-call_togl_cleargroup") ClearGroup;
+	:param ACGroup:
+	:type ACGroup: Graphic3d_CGroup &
+	:rtype: void
+") ClearGroup;
 		virtual void ClearGroup (const Graphic3d_CGroup & ACGroup);
-		%feature("autodoc", "Args:
-	ACGroup(Graphic3d_CGroup)
-	NoInsert(Standard_Integer)
+		%feature("autodoc", "	* call_togl_facecontextgroup
 
-Returns:
-	virtual void
-
-call_togl_facecontextgroup") FaceContextGroup;
+	:param ACGroup:
+	:type ACGroup: Graphic3d_CGroup &
+	:param NoInsert:
+	:type NoInsert: Standard_Integer
+	:rtype: void
+") FaceContextGroup;
 		virtual void FaceContextGroup (const Graphic3d_CGroup & ACGroup,const Standard_Integer NoInsert);
-		%feature("autodoc", "Args:
-	ACGroup(Graphic3d_CGroup)
+		%feature("autodoc", "	* call_togl_group
 
-Returns:
-	virtual void
-
-call_togl_group") Group;
+	:param ACGroup:
+	:type ACGroup: Graphic3d_CGroup &
+	:rtype: void
+") Group;
 		virtual void Group (Graphic3d_CGroup & ACGroup);
-		%feature("autodoc", "Args:
-	ACGroup(Graphic3d_CGroup)
-	NoInsert(Standard_Integer)
+		%feature("autodoc", "	* call_togl_linecontextgroup
 
-Returns:
-	virtual void
-
-call_togl_linecontextgroup") LineContextGroup;
+	:param ACGroup:
+	:type ACGroup: Graphic3d_CGroup &
+	:param NoInsert:
+	:type NoInsert: Standard_Integer
+	:rtype: void
+") LineContextGroup;
 		virtual void LineContextGroup (const Graphic3d_CGroup & ACGroup,const Standard_Integer NoInsert);
-		%feature("autodoc", "Args:
-	ACGroup(Graphic3d_CGroup)
-	NoInsert(Standard_Integer)
+		%feature("autodoc", "	* call_togl_markercontextgroup
 
-Returns:
-	virtual void
-
-call_togl_markercontextgroup") MarkerContextGroup;
+	:param ACGroup:
+	:type ACGroup: Graphic3d_CGroup &
+	:param NoInsert:
+	:type NoInsert: Standard_Integer
+	:rtype: void
+") MarkerContextGroup;
 		virtual void MarkerContextGroup (const Graphic3d_CGroup & ACGroup,const Standard_Integer NoInsert);
-		%feature("autodoc", "Args:
-	ACGroup(Graphic3d_CGroup)
+		%feature("autodoc", "	* call_togl_removegroup
 
-Returns:
-	virtual void
-
-call_togl_removegroup") RemoveGroup;
+	:param ACGroup:
+	:type ACGroup: Graphic3d_CGroup &
+	:rtype: void
+") RemoveGroup;
 		virtual void RemoveGroup (const Graphic3d_CGroup & ACGroup);
-		%feature("autodoc", "Args:
-	ACGroup(Graphic3d_CGroup)
-	NoInsert(Standard_Integer)
+		%feature("autodoc", "	* call_togl_textcontextgroup
 
-Returns:
-	virtual void
-
-call_togl_textcontextgroup") TextContextGroup;
+	:param ACGroup:
+	:type ACGroup: Graphic3d_CGroup &
+	:param NoInsert:
+	:type NoInsert: Standard_Integer
+	:rtype: void
+") TextContextGroup;
 		virtual void TextContextGroup (const Graphic3d_CGroup & ACGroup,const Standard_Integer NoInsert);
-		%feature("autodoc", "Args:
-	ACStructure(Graphic3d_CStructure)
+		%feature("autodoc", "	* call_togl_clearstructure
 
-Returns:
-	virtual void
-
-call_togl_clearstructure") ClearStructure;
+	:param ACStructure:
+	:type ACStructure: Graphic3d_CStructure &
+	:rtype: void
+") ClearStructure;
 		virtual void ClearStructure (const Graphic3d_CStructure & ACStructure);
-		%feature("autodoc", "Args:
-	AFather(Graphic3d_CStructure)
-	ASon(Graphic3d_CStructure)
+		%feature("autodoc", "	* call_togl_connect
 
-Returns:
-	virtual void
-
-call_togl_connect") Connect;
+	:param AFather:
+	:type AFather: Graphic3d_CStructure &
+	:param ASon:
+	:type ASon: Graphic3d_CStructure &
+	:rtype: void
+") Connect;
 		virtual void Connect (const Graphic3d_CStructure & AFather,const Graphic3d_CStructure & ASon);
-		%feature("autodoc", "Args:
-	ACStructure(Graphic3d_CStructure)
+		%feature("autodoc", "	* call_togl_contextstructure
 
-Returns:
-	virtual void
-
-call_togl_contextstructure") ContextStructure;
+	:param ACStructure:
+	:type ACStructure: Graphic3d_CStructure &
+	:rtype: void
+") ContextStructure;
 		virtual void ContextStructure (const Graphic3d_CStructure & ACStructure);
-		%feature("autodoc", "Args:
-	AFather(Graphic3d_CStructure)
-	ASon(Graphic3d_CStructure)
+		%feature("autodoc", "	* call_togl_disconnect
 
-Returns:
-	virtual void
-
-call_togl_disconnect") Disconnect;
+	:param AFather:
+	:type AFather: Graphic3d_CStructure &
+	:param ASon:
+	:type ASon: Graphic3d_CStructure &
+	:rtype: void
+") Disconnect;
 		virtual void Disconnect (const Graphic3d_CStructure & AFather,const Graphic3d_CStructure & ASon);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
-	ACStructure(Graphic3d_CStructure)
-	APriority(Standard_Integer)
+		%feature("autodoc", "	* call_togl_displaystructure
 
-Returns:
-	virtual void
-
-call_togl_displaystructure") DisplayStructure;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:param ACStructure:
+	:type ACStructure: Graphic3d_CStructure &
+	:param APriority:
+	:type APriority: Standard_Integer
+	:rtype: void
+") DisplayStructure;
 		virtual void DisplayStructure (const Graphic3d_CView & ACView,const Graphic3d_CStructure & ACStructure,const Standard_Integer APriority);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
-	ACStructure(Graphic3d_CStructure)
+		%feature("autodoc", "	* call_togl_erasestructure
 
-Returns:
-	virtual void
-
-call_togl_erasestructure") EraseStructure;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:param ACStructure:
+	:type ACStructure: Graphic3d_CStructure &
+	:rtype: void
+") EraseStructure;
 		virtual void EraseStructure (const Graphic3d_CView & ACView,const Graphic3d_CStructure & ACStructure);
-		%feature("autodoc", "Args:
-	ACStructure(Graphic3d_CStructure)
+		%feature("autodoc", "	* call_togl_removestructure
 
-Returns:
-	virtual void
-
-call_togl_removestructure") RemoveStructure;
+	:param ACStructure:
+	:type ACStructure: Graphic3d_CStructure &
+	:rtype: void
+") RemoveStructure;
 		virtual void RemoveStructure (const Graphic3d_CStructure & ACStructure);
-		%feature("autodoc", "Args:
-	ACStructure(Graphic3d_CStructure)
+		%feature("autodoc", "	* call_togl_structure
 
-Returns:
-	virtual void
-
-call_togl_structure") Structure;
+	:param ACStructure:
+	:type ACStructure: Graphic3d_CStructure &
+	:rtype: void
+") Structure;
 		virtual void Structure (Graphic3d_CStructure & ACStructure);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
+		%feature("autodoc", "	* call_togl_activateview
 
-Returns:
-	virtual void
-
-call_togl_activateview") ActivateView;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:rtype: void
+") ActivateView;
 		virtual void ActivateView (const Graphic3d_CView & ACView);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
-	AFlag(Standard_Boolean)
+		%feature("autodoc", "	* call_togl_antialiasing
 
-Returns:
-	virtual void
-
-call_togl_antialiasing") AntiAliasing;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:param AFlag:
+	:type AFlag: bool
+	:rtype: void
+") AntiAliasing;
 		virtual void AntiAliasing (const Graphic3d_CView & ACView,const Standard_Boolean AFlag);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
+		%feature("autodoc", "	* call_togl_background
 
-Returns:
-	virtual void
-
-call_togl_background") Background;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:rtype: void
+") Background;
 		virtual void Background (const Graphic3d_CView & ACView);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
-	AColor1(Quantity_Color)
-	AColor2(Quantity_Color)
-	FillStyle(Aspect_GradientFillMethod)
+		%feature("autodoc", "	* call_togl_gradient_background
 
-Returns:
-	virtual void
-
-call_togl_gradient_background") GradientBackground;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:param AColor1:
+	:type AColor1: Quantity_Color &
+	:param AColor2:
+	:type AColor2: Quantity_Color &
+	:param FillStyle:
+	:type FillStyle: Aspect_GradientFillMethod
+	:rtype: void
+") GradientBackground;
 		virtual void GradientBackground (const Graphic3d_CView & ACView,const Quantity_Color & AColor1,const Quantity_Color & AColor2,const Aspect_GradientFillMethod FillStyle);
-		%feature("autodoc", "Args:
-	FileName(char *)
-	ACView(Graphic3d_CView)
-	FillStyle(Aspect_FillMethod)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") BackgroundImage;
+		%feature("autodoc", "	:param FileName:
+	:type FileName: char *
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:param FillStyle:
+	:type FillStyle: Aspect_FillMethod
+	:rtype: void
+") BackgroundImage;
 		virtual void BackgroundImage (const char * FileName,const Graphic3d_CView & ACView,const Aspect_FillMethod FillStyle);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
-	FillStyle(Aspect_FillMethod)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetBgImageStyle;
+		%feature("autodoc", "	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:param FillStyle:
+	:type FillStyle: Aspect_FillMethod
+	:rtype: void
+") SetBgImageStyle;
 		virtual void SetBgImageStyle (const Graphic3d_CView & ACView,const Aspect_FillMethod FillStyle);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
-	FillStyle(Aspect_GradientFillMethod)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetBgGradientStyle;
+		%feature("autodoc", "	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:param FillStyle:
+	:type FillStyle: Aspect_GradientFillMethod
+	:rtype: void
+") SetBgGradientStyle;
 		virtual void SetBgGradientStyle (const Graphic3d_CView & ACView,const Aspect_GradientFillMethod FillStyle);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
-	AWait(Standard_Boolean)
+		%feature("autodoc", "	* call_togl_cliplimit
 
-Returns:
-	virtual void
-
-call_togl_cliplimit") ClipLimit;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:param AWait:
+	:type AWait: bool
+	:rtype: void
+") ClipLimit;
 		virtual void ClipLimit (const Graphic3d_CView & ACView,const Standard_Boolean AWait);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
+		%feature("autodoc", "	* call_togl_deactivateview
 
-Returns:
-	virtual void
-
-call_togl_deactivateview") DeactivateView;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:rtype: void
+") DeactivateView;
 		virtual void DeactivateView (const Graphic3d_CView & ACView);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
-	AFlag(Standard_Boolean)
+		%feature("autodoc", "	* call_togl_cliplimit
 
-Returns:
-	virtual void
-
-call_togl_cliplimit") DepthCueing;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:param AFlag:
+	:type AFlag: bool
+	:rtype: void
+") DepthCueing;
 		virtual void DepthCueing (const Graphic3d_CView & ACView,const Standard_Boolean AFlag);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
-	AX(Standard_ShortReal)
-	AY(Standard_ShortReal)
-	AZ(Standard_ShortReal)
-	AU(Standard_Integer)
-	AV(Standard_Integer)
+		%feature("autodoc", "	* call_togl_unproject_raster
 
-Returns:
-	virtual Standard_Boolean
-
-call_togl_unproject_raster") ProjectRaster;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:param AX:
+	:type AX: Standard_ShortReal
+	:param AY:
+	:type AY: Standard_ShortReal
+	:param AZ:
+	:type AZ: Standard_ShortReal
+	:param AU:
+	:type AU: Standard_Integer &
+	:param AV:
+	:type AV: Standard_Integer &
+	:rtype: bool
+") ProjectRaster;
 		virtual Standard_Boolean ProjectRaster (const Graphic3d_CView & ACView,const Standard_ShortReal AX,const Standard_ShortReal AY,const Standard_ShortReal AZ,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
-	Axm(Standard_Integer)
-	Aym(Standard_Integer)
-	AXM(Standard_Integer)
-	AYM(Standard_Integer)
-	AU(Standard_Integer)
-	AV(Standard_Integer)
-	AX(Standard_ShortReal)
-	AY(Standard_ShortReal)
-	AZ(Standard_ShortReal)
+		%feature("autodoc", "	* call_togl_unproject_raster
 
-Returns:
-	virtual Standard_Boolean
-
-call_togl_unproject_raster") UnProjectRaster;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:param Axm:
+	:type Axm: Standard_Integer
+	:param Aym:
+	:type Aym: Standard_Integer
+	:param AXM:
+	:type AXM: Standard_Integer
+	:param AYM:
+	:type AYM: Standard_Integer
+	:param AU:
+	:type AU: Standard_Integer
+	:param AV:
+	:type AV: Standard_Integer
+	:param AX:
+	:type AX: Standard_ShortReal &
+	:param AY:
+	:type AY: Standard_ShortReal &
+	:param AZ:
+	:type AZ: Standard_ShortReal &
+	:rtype: bool
+") UnProjectRaster;
 		virtual Standard_Boolean UnProjectRaster (const Graphic3d_CView & ACView,const Standard_Integer Axm,const Standard_Integer Aym,const Standard_Integer AXM,const Standard_Integer AYM,const Standard_Integer AU,const Standard_Integer AV,Standard_ShortReal & AX,Standard_ShortReal & AY,Standard_ShortReal & AZ);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
-	Axm(Standard_Integer)
-	Aym(Standard_Integer)
-	AXM(Standard_Integer)
-	AYM(Standard_Integer)
-	AU(Standard_Integer)
-	AV(Standard_Integer)
-	AX(Standard_ShortReal)
-	AY(Standard_ShortReal)
-	AZ(Standard_ShortReal)
-	DX(Standard_ShortReal)
-	DY(Standard_ShortReal)
-	DZ(Standard_ShortReal)
+		%feature("autodoc", "	* call_togl_unproject_raster_with_ray
 
-Returns:
-	virtual Standard_Boolean
-
-call_togl_unproject_raster_with_ray") UnProjectRasterWithRay;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:param Axm:
+	:type Axm: Standard_Integer
+	:param Aym:
+	:type Aym: Standard_Integer
+	:param AXM:
+	:type AXM: Standard_Integer
+	:param AYM:
+	:type AYM: Standard_Integer
+	:param AU:
+	:type AU: Standard_Integer
+	:param AV:
+	:type AV: Standard_Integer
+	:param AX:
+	:type AX: Standard_ShortReal &
+	:param AY:
+	:type AY: Standard_ShortReal &
+	:param AZ:
+	:type AZ: Standard_ShortReal &
+	:param DX:
+	:type DX: Standard_ShortReal &
+	:param DY:
+	:type DY: Standard_ShortReal &
+	:param DZ:
+	:type DZ: Standard_ShortReal &
+	:rtype: bool
+") UnProjectRasterWithRay;
 		virtual Standard_Boolean UnProjectRasterWithRay (const Graphic3d_CView & ACView,const Standard_Integer Axm,const Standard_Integer Aym,const Standard_Integer AXM,const Standard_Integer AYM,const Standard_Integer AU,const Standard_Integer AV,Standard_ShortReal & AX,Standard_ShortReal & AY,Standard_ShortReal & AZ,Standard_ShortReal & DX,Standard_ShortReal & DY,Standard_ShortReal & DZ);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
+		%feature("autodoc", "	* call_togl_ratio_window
 
-Returns:
-	virtual void
-
-call_togl_ratio_window") RatioWindow;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:rtype: void
+") RatioWindow;
 		virtual void RatioWindow (const Graphic3d_CView & ACView);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
-	ACUnderLayer(Aspect_CLayer2d)
-	ACOverLayer(Aspect_CLayer2d)
-	x(Standard_Integer)=0
-	y(Standard_Integer)=0
-	width(Standard_Integer)=0
-	height(Standard_Integer)=0
+		%feature("autodoc", "	* call_togl_redraw Warning: when the redraw area has a null size, the full view is redrawn
 
-Returns:
-	virtual void
-
-call_togl_redraw  
- Warning: when the redraw area has a null size, the full view is redrawn") Redraw;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:param ACUnderLayer:
+	:type ACUnderLayer: Aspect_CLayer2d &
+	:param ACOverLayer:
+	:type ACOverLayer: Aspect_CLayer2d &
+	:param x: default value is 0
+	:type x: Standard_Integer
+	:param y: default value is 0
+	:type y: Standard_Integer
+	:param width: default value is 0
+	:type width: Standard_Integer
+	:param height: default value is 0
+	:type height: Standard_Integer
+	:rtype: void
+") Redraw;
 		virtual void Redraw (const Graphic3d_CView & ACView,const Aspect_CLayer2d & ACUnderLayer,const Aspect_CLayer2d & ACOverLayer,const Standard_Integer x = 0,const Standard_Integer y = 0,const Standard_Integer width = 0,const Standard_Integer height = 0);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
+		%feature("autodoc", "	* call_togl_removeview
 
-Returns:
-	virtual void
-
-call_togl_removeview") RemoveView;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:rtype: void
+") RemoveView;
 		virtual void RemoveView (const Graphic3d_CView & ACView);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
+		%feature("autodoc", "	* call_togl_setlight
 
-Returns:
-	virtual void
-
-call_togl_setlight") SetLight;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:rtype: void
+") SetLight;
 		virtual void SetLight (const Graphic3d_CView & ACView);
-		%feature("autodoc", "Args:
-	theCView(Graphic3d_CView)
+		%feature("autodoc", "	* Pass clip planes to the associated graphic driver view.
 
-Returns:
-	virtual void
-
-Pass clip planes to the associated graphic driver view.") SetClipPlanes;
+	:param theCView:
+	:type theCView: Graphic3d_CView &
+	:rtype: void
+") SetClipPlanes;
 		virtual void SetClipPlanes (const Graphic3d_CView & theCView);
-		%feature("autodoc", "Args:
-	theCStructure(Graphic3d_CStructure)
+		%feature("autodoc", "	* Pass clip planes to the associated graphic driver structure.
 
-Returns:
-	virtual void
-
-Pass clip planes to the associated graphic driver structure.") SetClipPlanes;
+	:param theCStructure:
+	:type theCStructure: Graphic3d_CStructure &
+	:rtype: void
+") SetClipPlanes;
 		virtual void SetClipPlanes (const Graphic3d_CStructure & theCStructure);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
+		%feature("autodoc", "	* call_togl_setvisualisation
 
-Returns:
-	virtual void
-
-call_togl_setvisualisation") SetVisualisation;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:rtype: void
+") SetVisualisation;
 		virtual void SetVisualisation (const Graphic3d_CView & ACView);
-		%feature("autodoc", "Args:
-	ACStructure(Graphic3d_CStructure)
+		%feature("autodoc", "	* call_togl_transformstructure
 
-Returns:
-	virtual void
-
-call_togl_transformstructure") TransformStructure;
+	:param ACStructure:
+	:type ACStructure: Graphic3d_CStructure &
+	:rtype: void
+") TransformStructure;
 		virtual void TransformStructure (const Graphic3d_CStructure & ACStructure);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
-	AFlag(Standard_Boolean)
+		%feature("autodoc", "	* call_togl_transparency
 
-Returns:
-	virtual void
-
-call_togl_transparency") Transparency;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:param AFlag:
+	:type AFlag: bool
+	:rtype: void
+") Transparency;
 		virtual void Transparency (const Graphic3d_CView & ACView,const Standard_Boolean AFlag);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
-	ACUnderLayer(Aspect_CLayer2d)
-	ACOverLayer(Aspect_CLayer2d)
+		%feature("autodoc", "	* call_togl_update
 
-Returns:
-	virtual void
-
-call_togl_update") Update;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:param ACUnderLayer:
+	:type ACUnderLayer: Aspect_CLayer2d &
+	:param ACOverLayer:
+	:type ACOverLayer: Aspect_CLayer2d &
+	:rtype: void
+") Update;
 		virtual void Update (const Graphic3d_CView & ACView,const Aspect_CLayer2d & ACUnderLayer,const Aspect_CLayer2d & ACOverLayer);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
+		%feature("autodoc", "	* call_togl_view
 
-Returns:
-	virtual Standard_Boolean
-
-call_togl_view") View;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:rtype: bool
+") View;
 		virtual Standard_Boolean View (Graphic3d_CView & ACView);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
-	AWait(Standard_Boolean)
+		%feature("autodoc", "	* call_togl_viewmapping
 
-Returns:
-	virtual void
-
-call_togl_viewmapping") ViewMapping;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:param AWait:
+	:type AWait: bool
+	:rtype: void
+") ViewMapping;
 		virtual void ViewMapping (const Graphic3d_CView & ACView,const Standard_Boolean AWait);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
-	AWait(Standard_Boolean)
+		%feature("autodoc", "	* call_togl_vieworientation
 
-Returns:
-	virtual void
-
-call_togl_vieworientation") ViewOrientation;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:param AWait:
+	:type AWait: bool
+	:rtype: void
+") ViewOrientation;
 		virtual void ViewOrientation (const Graphic3d_CView & ACView,const Standard_Boolean AWait);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Environment;
+		%feature("autodoc", "	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:rtype: void
+") Environment;
 		virtual void Environment (const Graphic3d_CView & ACView);
-		%feature("autodoc", "Args:
-	theCGroup(Graphic3d_CGroup)
-	theIsEnabled(Standard_Boolean)
+		%feature("autodoc", "	* sets the stencil test to theIsEnabled state;
 
-Returns:
-	virtual void
-
-sets the stencil test to theIsEnabled state;") SetStencilTestOptions;
+	:param theCGroup:
+	:type theCGroup: Graphic3d_CGroup &
+	:param theIsEnabled:
+	:type theIsEnabled: bool
+	:rtype: void
+") SetStencilTestOptions;
 		virtual void SetStencilTestOptions (const Graphic3d_CGroup & theCGroup,const Standard_Boolean theIsEnabled);
-		%feature("autodoc", "Args:
-	theCGroup(Graphic3d_CGroup)
-	theIsEnabled(Standard_Boolean)
-	theRefPlane(gp_Ax2)
+		%feature("autodoc", "	* sets the flipping to theIsEnabled state for the given graphic group.
 
-Returns:
-	virtual void
-
-sets the flipping to theIsEnabled state for the given graphic group.") SetFlippingOptions;
+	:param theCGroup:
+	:type theCGroup: Graphic3d_CGroup &
+	:param theIsEnabled:
+	:type theIsEnabled: bool
+	:param theRefPlane:
+	:type theRefPlane: gp_Ax2
+	:rtype: void
+") SetFlippingOptions;
 		virtual void SetFlippingOptions (const Graphic3d_CGroup & theCGroup,const Standard_Boolean theIsEnabled,const gp_Ax2 & theRefPlane);
-		%feature("autodoc", "Args:
-	ACGroup(Graphic3d_CGroup)
-	AText(char *)
-	APoint(Graphic3d_Vertex)
-	AHeight(Standard_Real)
-	AAngle(Quantity_PlaneAngle)
-	ATp(Graphic3d_TextPath)
-	AHta(Graphic3d_HorizontalTextAlignment)
-	AVta(Graphic3d_VerticalTextAlignment)
-	EvalMinMax(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* call_togl_text
 
-Returns:
-	virtual void
-
-call_togl_text") Text;
+	:param ACGroup:
+	:type ACGroup: Graphic3d_CGroup &
+	:param AText:
+	:type AText: char *
+	:param APoint:
+	:type APoint: Graphic3d_Vertex &
+	:param AHeight:
+	:type AHeight: float
+	:param AAngle:
+	:type AAngle: Quantity_PlaneAngle
+	:param ATp:
+	:type ATp: Graphic3d_TextPath
+	:param AHta:
+	:type AHta: Graphic3d_HorizontalTextAlignment
+	:param AVta:
+	:type AVta: Graphic3d_VerticalTextAlignment
+	:param EvalMinMax: default value is Standard_True
+	:type EvalMinMax: bool
+	:rtype: void
+") Text;
 		virtual void Text (const Graphic3d_CGroup & ACGroup,const char * AText,const Graphic3d_Vertex & APoint,const Standard_Real AHeight,const Quantity_PlaneAngle AAngle,const Graphic3d_TextPath ATp,const Graphic3d_HorizontalTextAlignment AHta,const Graphic3d_VerticalTextAlignment AVta,const Standard_Boolean EvalMinMax = Standard_True);
-		%feature("autodoc", "Args:
-	ACGroup(Graphic3d_CGroup)
-	AText(char *)
-	APoint(Graphic3d_Vertex)
-	AHeight(Standard_Real)
-	EvalMinMax(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* call_togl_text
 
-Returns:
-	virtual void
-
-call_togl_text") Text;
+	:param ACGroup:
+	:type ACGroup: Graphic3d_CGroup &
+	:param AText:
+	:type AText: char *
+	:param APoint:
+	:type APoint: Graphic3d_Vertex &
+	:param AHeight:
+	:type AHeight: float
+	:param EvalMinMax: default value is Standard_True
+	:type EvalMinMax: bool
+	:rtype: void
+") Text;
 		virtual void Text (const Graphic3d_CGroup & ACGroup,const char * AText,const Graphic3d_Vertex & APoint,const Standard_Real AHeight,const Standard_Boolean EvalMinMax = Standard_True);
-		%feature("autodoc", "Args:
-	ACGroup(Graphic3d_CGroup)
-	AText(TCollection_ExtendedString)
-	APoint(Graphic3d_Vertex)
-	AHeight(Standard_Real)
-	AAngle(Quantity_PlaneAngle)
-	ATp(Graphic3d_TextPath)
-	AHta(Graphic3d_HorizontalTextAlignment)
-	AVta(Graphic3d_VerticalTextAlignment)
-	EvalMinMax(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* call_togl_text
 
-Returns:
-	virtual void
-
-call_togl_text") Text;
+	:param ACGroup:
+	:type ACGroup: Graphic3d_CGroup &
+	:param AText:
+	:type AText: TCollection_ExtendedString &
+	:param APoint:
+	:type APoint: Graphic3d_Vertex &
+	:param AHeight:
+	:type AHeight: float
+	:param AAngle:
+	:type AAngle: Quantity_PlaneAngle
+	:param ATp:
+	:type ATp: Graphic3d_TextPath
+	:param AHta:
+	:type AHta: Graphic3d_HorizontalTextAlignment
+	:param AVta:
+	:type AVta: Graphic3d_VerticalTextAlignment
+	:param EvalMinMax: default value is Standard_True
+	:type EvalMinMax: bool
+	:rtype: void
+") Text;
 		virtual void Text (const Graphic3d_CGroup & ACGroup,const TCollection_ExtendedString & AText,const Graphic3d_Vertex & APoint,const Standard_Real AHeight,const Quantity_PlaneAngle AAngle,const Graphic3d_TextPath ATp,const Graphic3d_HorizontalTextAlignment AHta,const Graphic3d_VerticalTextAlignment AVta,const Standard_Boolean EvalMinMax = Standard_True);
-		%feature("autodoc", "Args:
-	ACGroup(Graphic3d_CGroup)
-	AText(TCollection_ExtendedString)
-	APoint(Graphic3d_Vertex)
-	AHeight(Standard_Real)
-	EvalMinMax(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* call_togl_text
 
-Returns:
-	virtual void
-
-call_togl_text") Text;
+	:param ACGroup:
+	:type ACGroup: Graphic3d_CGroup &
+	:param AText:
+	:type AText: TCollection_ExtendedString &
+	:param APoint:
+	:type APoint: Graphic3d_Vertex &
+	:param AHeight:
+	:type AHeight: float
+	:param EvalMinMax: default value is Standard_True
+	:type EvalMinMax: bool
+	:rtype: void
+") Text;
 		virtual void Text (const Graphic3d_CGroup & ACGroup,const TCollection_ExtendedString & AText,const Graphic3d_Vertex & APoint,const Standard_Real AHeight,const Standard_Boolean EvalMinMax = Standard_True);
-		%feature("autodoc", "Args:
-	ACGroup(Graphic3d_CGroup)
-	parray(Graphic3d_PrimitiveArray)
-	EvalMinMax(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* call_togl_parray
 
-Returns:
-	virtual void
-
-call_togl_parray") PrimitiveArray;
+	:param ACGroup:
+	:type ACGroup: Graphic3d_CGroup &
+	:param parray:
+	:type parray: Graphic3d_PrimitiveArray &
+	:param EvalMinMax: default value is Standard_True
+	:type EvalMinMax: bool
+	:rtype: void
+") PrimitiveArray;
 		virtual void PrimitiveArray (const Graphic3d_CGroup & ACGroup,const Graphic3d_PrimitiveArray & parray,const Standard_Boolean EvalMinMax = Standard_True);
-		%feature("autodoc", "Args:
-	ACGroup(Graphic3d_CGroup)
-	AUserDraw(Graphic3d_CUserDraw)
+		%feature("autodoc", "	* call_togl_userdraw
 
-Returns:
-	virtual void
-
-call_togl_userdraw") UserDraw;
+	:param ACGroup:
+	:type ACGroup: Graphic3d_CGroup &
+	:param AUserDraw:
+	:type AUserDraw: Graphic3d_CUserDraw &
+	:rtype: void
+") UserDraw;
 		virtual void UserDraw (const Graphic3d_CGroup & ACGroup,const Graphic3d_CUserDraw & AUserDraw);
-		%feature("autodoc", "Args:
-	status(Standard_Boolean)
+		%feature("autodoc", "	* enables/disables usage of OpenGL vertex buffer arrays while drawing primitiev arrays
 
-Returns:
-	virtual void
-
-enables/disables usage of OpenGL vertex buffer arrays while drawing primitiev arrays") EnableVBO;
+	:param status:
+	:type status: bool
+	:rtype: void
+") EnableVBO;
 		virtual void EnableVBO (const Standard_Boolean status);
-		%feature("autodoc", "Args:
-	theFreeBytes(Standard_Size)
-	theInfo(TCollection_AsciiString)
+		%feature("autodoc", "	* Returns information about GPU memory usage.
 
-Returns:
-	virtual Standard_Boolean
-
-Returns information about GPU memory usage.") MemoryInfo;
+	:param theFreeBytes:
+	:type theFreeBytes: Standard_Size &
+	:param theInfo:
+	:type theInfo: TCollection_AsciiString &
+	:rtype: bool
+") MemoryInfo;
 		virtual Standard_Boolean MemoryInfo (Standard_Size & theFreeBytes,TCollection_AsciiString & theInfo);
-		%feature("autodoc", "Args:
-	XColor(Quantity_NameOfColor)=Quantity_NOC_RED
-	YColor(Quantity_NameOfColor)=Quantity_NOC_GREEN
-	ZColor(Quantity_NameOfColor)=Quantity_NOC_BLUE1
-	SizeRatio(Standard_Real)=0.8
-	AxisDiametr(Standard_Real)=0.05
-	NbFacettes(Standard_Integer)=12
+		%feature("autodoc", "	* call_togl_ztriedron_setup
 
-Returns:
-	virtual void
-
-call_togl_ztriedron_setup") ZBufferTriedronSetup;
+	:param XColor: default value is Quantity_NOC_RED
+	:type XColor: Quantity_NameOfColor
+	:param YColor: default value is Quantity_NOC_GREEN
+	:type YColor: Quantity_NameOfColor
+	:param ZColor: default value is Quantity_NOC_BLUE1
+	:type ZColor: Quantity_NameOfColor
+	:param SizeRatio: default value is 0.8
+	:type SizeRatio: float
+	:param AxisDiametr: default value is 0.05
+	:type AxisDiametr: float
+	:param NbFacettes: default value is 12
+	:type NbFacettes: Standard_Integer
+	:rtype: void
+") ZBufferTriedronSetup;
 		virtual void ZBufferTriedronSetup (const Quantity_NameOfColor XColor = Quantity_NOC_RED,const Quantity_NameOfColor YColor = Quantity_NOC_GREEN,const Quantity_NameOfColor ZColor = Quantity_NOC_BLUE1,const Standard_Real SizeRatio = 0.8,const Standard_Real AxisDiametr = 0.05,const Standard_Integer NbFacettes = 12);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
-	APosition(Aspect_TypeOfTriedronPosition)=Aspect_TOTP_CENTER
-	AColor(Quantity_NameOfColor)=Quantity_NOC_WHITE
-	AScale(Standard_Real)=0.02
-	AsWireframe(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* call_togl_triedron_display
 
-Returns:
-	virtual void
-
-call_togl_triedron_display") TriedronDisplay;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:param APosition: default value is Aspect_TOTP_CENTER
+	:type APosition: Aspect_TypeOfTriedronPosition
+	:param AColor: default value is Quantity_NOC_WHITE
+	:type AColor: Quantity_NameOfColor
+	:param AScale: default value is 0.02
+	:type AScale: float
+	:param AsWireframe: default value is Standard_True
+	:type AsWireframe: bool
+	:rtype: void
+") TriedronDisplay;
 		virtual void TriedronDisplay (const Graphic3d_CView & ACView,const Aspect_TypeOfTriedronPosition APosition = Aspect_TOTP_CENTER,const Quantity_NameOfColor AColor = Quantity_NOC_WHITE,const Standard_Real AScale = 0.02,const Standard_Boolean AsWireframe = Standard_True);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
+		%feature("autodoc", "	* call_togl_triedron_erase
 
-Returns:
-	virtual void
-
-call_togl_triedron_erase") TriedronErase;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:rtype: void
+") TriedronErase;
 		virtual void TriedronErase (const Graphic3d_CView & ACView);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
-	AType(Aspect_TypeOfTriedronEcho)=Aspect_TOTE_NONE
+		%feature("autodoc", "	* call_togl_triedron_echo
 
-Returns:
-	virtual void
-
-call_togl_triedron_echo") TriedronEcho;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:param AType: default value is Aspect_TOTE_NONE
+	:type AType: Aspect_TypeOfTriedronEcho
+	:rtype: void
+") TriedronEcho;
 		virtual void TriedronEcho (const Graphic3d_CView & ACView,const Aspect_TypeOfTriedronEcho AType = Aspect_TOTE_NONE);
-		%feature("autodoc", "Args:
-	view(Graphic3d_CView)
-	cubic(Graphic3d_CGraduatedTrihedron)
+		%feature("autodoc", "	* call_togl_graduatedtrihedron_display
 
-Returns:
-	virtual void
-
-call_togl_graduatedtrihedron_display") GraduatedTrihedronDisplay;
+	:param view:
+	:type view: Graphic3d_CView &
+	:param cubic:
+	:type cubic: Graphic3d_CGraduatedTrihedron &
+	:rtype: void
+") GraduatedTrihedronDisplay;
 		virtual void GraduatedTrihedronDisplay (const Graphic3d_CView & view,const Graphic3d_CGraduatedTrihedron & cubic);
-		%feature("autodoc", "Args:
-	view(Graphic3d_CView)
+		%feature("autodoc", "	* call_togl_graduatedtrihedron_erase
 
-Returns:
-	virtual void
-
-call_togl_graduatedtrihedron_erase") GraduatedTrihedronErase;
+	:param view:
+	:type view: Graphic3d_CView &
+	:rtype: void
+") GraduatedTrihedronErase;
 		virtual void GraduatedTrihedronErase (const Graphic3d_CView & view);
-		%feature("autodoc", "Args:
-	xmin(Standard_ShortReal)
-	ymin(Standard_ShortReal)
-	zmin(Standard_ShortReal)
-	xmax(Standard_ShortReal)
-	ymax(Standard_ShortReal)
-	zmax(Standard_ShortReal)
+		%feature("autodoc", "	* call_togl_graduatedtrihedron_minmaxvalues
 
-Returns:
-	virtual void
-
-call_togl_graduatedtrihedron_minmaxvalues") GraduatedTrihedronMinMaxValues;
+	:param xmin:
+	:type xmin: Standard_ShortReal
+	:param ymin:
+	:type ymin: Standard_ShortReal
+	:param zmin:
+	:type zmin: Standard_ShortReal
+	:param xmax:
+	:type xmax: Standard_ShortReal
+	:param ymax:
+	:type ymax: Standard_ShortReal
+	:param zmax:
+	:type zmax: Standard_ShortReal
+	:rtype: void
+") GraduatedTrihedronMinMaxValues;
 		virtual void GraduatedTrihedronMinMaxValues (const Standard_ShortReal xmin,const Standard_ShortReal ymin,const Standard_ShortReal zmin,const Standard_ShortReal xmax,const Standard_ShortReal ymax,const Standard_ShortReal zmax);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
+		%feature("autodoc", "	* call_togl_begin_ajout_mode
 
-Returns:
-	virtual Standard_Boolean
-
-call_togl_begin_ajout_mode") BeginAddMode;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:rtype: bool
+") BeginAddMode;
 		virtual Standard_Boolean BeginAddMode (const Graphic3d_CView & ACView);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* call_togl_end_ajout_mode
 
-call_togl_end_ajout_mode") EndAddMode;
+	:rtype: void
+") EndAddMode;
 		virtual void EndAddMode ();
-		%feature("autodoc", "Args:
-	theCView(Graphic3d_CView)
-	theDrawToFrontBuffer(Standard_Boolean)
+		%feature("autodoc", "	* @param theDrawToFrontBuffer Advanced option to modify rendering mode: 1. True. Drawing immediate mode structures directly to the front buffer over the scene image. Fast, so preferred for interactive work (used by default). However these extra drawings will be missed in image dump since it is performed from back buffer. Notice that since no pre-buffering used the V-Sync will be ignored and rendering could be seen in run-time (in case of slow hardware) and/or tearing may appear. So this is strongly recommended to draw only simple (fast) structures. 2. False. Drawing immediate mode structures to the back buffer. The complete scene is redrawn first, so this mode is slower if scene contains complex data and/or V-Sync is turned on. But it works in any case and is especially useful for view dump because the dump image is read from the back buffer. returns previous mode.
 
-Returns:
-	virtual Standard_Boolean
-
-@param theDrawToFrontBuffer Advanced option to modify rendering mode:  
-1. TRUE.  Drawing immediate mode structures directly to the front buffer over the scene image.  
-   Fast, so preferred for interactive work (used by default).  
-   However these extra drawings will be missed in image dump since it is performed from back buffer.  
-   Notice that since no pre-buffering used the V-Sync will be ignored and rendering could be seen  
-   in run-time (in case of slow hardware) and/or tearing may appear.  
-   So this is strongly recommended to draw only simple (fast) structures.  
-2. FALSE. Drawing immediate mode structures to the back buffer.  
-   The complete scene is redrawn first, so this mode is slower if scene contains complex data and/or V-Sync is turned on.  
-   But it works in any case and is especially useful for view dump because the dump image is read from the back buffer.  
-@return previous mode.") SetImmediateModeDrawToFront;
+	:param theCView:
+	:type theCView: Graphic3d_CView &
+	:param theDrawToFrontBuffer:
+	:type theDrawToFrontBuffer: bool
+	:rtype: bool
+") SetImmediateModeDrawToFront;
 		virtual Standard_Boolean SetImmediateModeDrawToFront (const Graphic3d_CView & theCView,const Standard_Boolean theDrawToFrontBuffer);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
-	ACUnderLayer(Aspect_CLayer2d)
-	ACOverLayer(Aspect_CLayer2d)
-	DoubleBuffer(Standard_Boolean)
-	RetainMode(Standard_Boolean)
+		%feature("autodoc", "	* call_togl_begin_immediat_mode
 
-Returns:
-	virtual Standard_Boolean
-
-call_togl_begin_immediat_mode") BeginImmediatMode;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:param ACUnderLayer:
+	:type ACUnderLayer: Aspect_CLayer2d &
+	:param ACOverLayer:
+	:type ACOverLayer: Aspect_CLayer2d &
+	:param DoubleBuffer:
+	:type DoubleBuffer: bool
+	:param RetainMode:
+	:type RetainMode: bool
+	:rtype: bool
+") BeginImmediatMode;
 		virtual Standard_Boolean BeginImmediatMode (const Graphic3d_CView & ACView,const Aspect_CLayer2d & ACUnderLayer,const Aspect_CLayer2d & ACOverLayer,const Standard_Boolean DoubleBuffer,const Standard_Boolean RetainMode);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
-	aFlush(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* call_togl_clear_immediat_mode
 
-Returns:
-	virtual void
-
-call_togl_clear_immediat_mode") ClearImmediatMode;
+	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:param aFlush: default value is Standard_True
+	:type aFlush: bool
+	:rtype: void
+") ClearImmediatMode;
 		virtual void ClearImmediatMode (const Graphic3d_CView & ACView,const Standard_Boolean aFlush = Standard_True);
-		%feature("autodoc", "Args:
-	ACStructure(Graphic3d_CStructure)
+		%feature("autodoc", "	* call_togl_draw_structure
 
-Returns:
-	virtual void
-
-call_togl_draw_structure") DrawStructure;
+	:param ACStructure:
+	:type ACStructure: Graphic3d_CStructure &
+	:rtype: void
+") DrawStructure;
 		virtual void DrawStructure (const Graphic3d_CStructure & ACStructure);
-		%feature("autodoc", "Args:
-	Synchronize(Standard_Integer)
+		%feature("autodoc", "	* call_togl_end_immediat_mode
 
-Returns:
-	virtual void
-
-call_togl_end_immediat_mode") EndImmediatMode;
+	:param Synchronize:
+	:type Synchronize: Standard_Integer
+	:rtype: void
+") EndImmediatMode;
 		virtual void EndImmediatMode (const Standard_Integer Synchronize);
-		%feature("autodoc", "Args:
-	ACLayer(Aspect_CLayer2d)
+		%feature("autodoc", "	* call_togl_layer2d
 
-Returns:
-	virtual void
-
-call_togl_layer2d") Layer;
+	:param ACLayer:
+	:type ACLayer: Aspect_CLayer2d &
+	:rtype: void
+") Layer;
 		virtual void Layer (Aspect_CLayer2d & ACLayer);
-		%feature("autodoc", "Args:
-	ACLayer(Aspect_CLayer2d)
+		%feature("autodoc", "	* call_togl_removelayer2d
 
-Returns:
-	virtual void
-
-call_togl_removelayer2d") RemoveLayer;
+	:param ACLayer:
+	:type ACLayer: Aspect_CLayer2d &
+	:rtype: void
+") RemoveLayer;
 		virtual void RemoveLayer (const Aspect_CLayer2d & ACLayer);
-		%feature("autodoc", "Args:
-	ACLayer(Aspect_CLayer2d)
+		%feature("autodoc", "	* call_togl_begin_layer2d
 
-Returns:
-	virtual void
-
-call_togl_begin_layer2d") BeginLayer;
+	:param ACLayer:
+	:type ACLayer: Aspect_CLayer2d &
+	:rtype: void
+") BeginLayer;
 		virtual void BeginLayer (const Aspect_CLayer2d & ACLayer);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* call_togl_begin_polygon2d
 
-call_togl_begin_polygon2d") BeginPolygon2d;
+	:rtype: void
+") BeginPolygon2d;
 		virtual void BeginPolygon2d ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* call_togl_begin_polyline2d
 
-call_togl_begin_polyline2d") BeginPolyline2d;
+	:rtype: void
+") BeginPolyline2d;
 		virtual void BeginPolyline2d ();
-		%feature("autodoc", "Args:
-	ACLayer(Aspect_CLayer2d)
+		%feature("autodoc", "	* call_togl_clear_layer2d
 
-Returns:
-	virtual void
-
-call_togl_clear_layer2d") ClearLayer;
+	:param ACLayer:
+	:type ACLayer: Aspect_CLayer2d &
+	:rtype: void
+") ClearLayer;
 		virtual void ClearLayer (const Aspect_CLayer2d & ACLayer);
-		%feature("autodoc", "Args:
-	X(Standard_ShortReal)
-	Y(Standard_ShortReal)
+		%feature("autodoc", "	* call_togl_draw2d
 
-Returns:
-	virtual void
-
-call_togl_draw2d") Draw;
+	:param X:
+	:type X: Standard_ShortReal
+	:param Y:
+	:type Y: Standard_ShortReal
+	:rtype: void
+") Draw;
 		virtual void Draw (const Standard_ShortReal X,const Standard_ShortReal Y);
-		%feature("autodoc", "Args:
-	X(Standard_ShortReal)
-	Y(Standard_ShortReal)
+		%feature("autodoc", "	* call_togl_edge2d
 
-Returns:
-	virtual void
-
-call_togl_edge2d") Edge;
+	:param X:
+	:type X: Standard_ShortReal
+	:param Y:
+	:type Y: Standard_ShortReal
+	:rtype: void
+") Edge;
 		virtual void Edge (const Standard_ShortReal X,const Standard_ShortReal Y);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* call_togl_end_layer2d
 
-call_togl_end_layer2d") EndLayer;
+	:rtype: void
+") EndLayer;
 		virtual void EndLayer ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* call_togl_end_polygon2d
 
-call_togl_end_polygon2d") EndPolygon2d;
+	:rtype: void
+") EndPolygon2d;
 		virtual void EndPolygon2d ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* call_togl_end_polyline2d
 
-call_togl_end_polyline2d") EndPolyline2d;
+	:rtype: void
+") EndPolyline2d;
 		virtual void EndPolyline2d ();
-		%feature("autodoc", "Args:
-	X(Standard_ShortReal)
-	Y(Standard_ShortReal)
+		%feature("autodoc", "	* call_togl_move2d
 
-Returns:
-	virtual void
-
-call_togl_move2d") Move;
+	:param X:
+	:type X: Standard_ShortReal
+	:param Y:
+	:type Y: Standard_ShortReal
+	:rtype: void
+") Move;
 		virtual void Move (const Standard_ShortReal X,const Standard_ShortReal Y);
-		%feature("autodoc", "Args:
-	X(Standard_ShortReal)
-	Y(Standard_ShortReal)
-	Width(Standard_ShortReal)
-	Height(Standard_ShortReal)
+		%feature("autodoc", "	* call_togl_rectangle2d
 
-Returns:
-	virtual void
-
-call_togl_rectangle2d") Rectangle;
+	:param X:
+	:type X: Standard_ShortReal
+	:param Y:
+	:type Y: Standard_ShortReal
+	:param Width:
+	:type Width: Standard_ShortReal
+	:param Height:
+	:type Height: Standard_ShortReal
+	:rtype: void
+") Rectangle;
 		virtual void Rectangle (const Standard_ShortReal X,const Standard_ShortReal Y,const Standard_ShortReal Width,const Standard_ShortReal Height);
-		%feature("autodoc", "Args:
-	R(Standard_ShortReal)
-	G(Standard_ShortReal)
-	B(Standard_ShortReal)
+		%feature("autodoc", "	* call_togl_set_color
 
-Returns:
-	virtual void
-
-call_togl_set_color") SetColor;
+	:param R:
+	:type R: Standard_ShortReal
+	:param G:
+	:type G: Standard_ShortReal
+	:param B:
+	:type B: Standard_ShortReal
+	:rtype: void
+") SetColor;
 		virtual void SetColor (const Standard_ShortReal R,const Standard_ShortReal G,const Standard_ShortReal B);
-		%feature("autodoc", "Args:
-	ATransparency(Standard_ShortReal)
+		%feature("autodoc", "	* call_togl_set_transparency
 
-Returns:
-	virtual void
-
-call_togl_set_transparency") SetTransparency;
+	:param ATransparency:
+	:type ATransparency: Standard_ShortReal
+	:rtype: void
+") SetTransparency;
 		virtual void SetTransparency (const Standard_ShortReal ATransparency);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* call_togl_unset_transparency
 
-call_togl_unset_transparency") UnsetTransparency;
+	:rtype: void
+") UnsetTransparency;
 		virtual void UnsetTransparency ();
-		%feature("autodoc", "Args:
-	Type(Standard_Integer)
-	Width(Standard_ShortReal)
+		%feature("autodoc", "	* call_togl_set_line_attributes
 
-Returns:
-	virtual void
-
-call_togl_set_line_attributes") SetLineAttributes;
+	:param Type:
+	:type Type: Standard_Integer
+	:param Width:
+	:type Width: Standard_ShortReal
+	:rtype: void
+") SetLineAttributes;
 		virtual void SetLineAttributes (const Standard_Integer Type,const Standard_ShortReal Width);
-		%feature("autodoc", "Args:
-	Font(char *)
-	Type(Standard_Integer)
-	R(Standard_ShortReal)
-	G(Standard_ShortReal)
-	B(Standard_ShortReal)
+		%feature("autodoc", "	* Set text attributes for under-/overlayer. <Font> argument defines the name of the font to be used, <Type> argument defines the display type of the text, <R> <G> <B> values define the color of decal or subtitle background. To set the color of the text you can use the SetColor method.
 
-Returns:
-	virtual void
-
-Set text attributes for under-/overlayer.  
-<Font> argument defines the name of the font to be used,  
-<Type> argument defines the display type of the text,  
-<R> <G> <B> values define the color of decal or subtitle background.  
-To set the color of the text you can use the SetColor method.") SetTextAttributes;
+	:param Font:
+	:type Font: char *
+	:param Type:
+	:type Type: Standard_Integer
+	:param R:
+	:type R: Standard_ShortReal
+	:param G:
+	:type G: Standard_ShortReal
+	:param B:
+	:type B: Standard_ShortReal
+	:rtype: void
+") SetTextAttributes;
 		virtual void SetTextAttributes (const char * Font,const Standard_Integer Type,const Standard_ShortReal R,const Standard_ShortReal G,const Standard_ShortReal B);
-		%feature("autodoc", "Args:
-	AText(char *)
-	X(Standard_ShortReal)
-	Y(Standard_ShortReal)
-	AHeight(Standard_ShortReal)
+		%feature("autodoc", "	* call_togl_text2d If AHeight < 0 default text height is used by driver (DefaultTextHeight method)
 
-Returns:
-	virtual void
-
-call_togl_text2d  
-If AHeight < 0 default text height is used by driver (DefaultTextHeight method)") Text;
+	:param AText:
+	:type AText: char *
+	:param X:
+	:type X: Standard_ShortReal
+	:param Y:
+	:type Y: Standard_ShortReal
+	:param AHeight:
+	:type AHeight: Standard_ShortReal
+	:rtype: void
+") Text;
 		virtual void Text (const char * AText,const Standard_ShortReal X,const Standard_ShortReal Y,const Standard_ShortReal AHeight);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_ShortReal
-
-No detailed docstring for this function.") DefaultTextHeight;
+		%feature("autodoc", "	:rtype: Standard_ShortReal
+") DefaultTextHeight;
 		virtual Standard_ShortReal DefaultTextHeight ();
-		%feature("autodoc", "Args:
-	AText(char *)
-	AHeight(Standard_ShortReal)
-	AWidth(Standard_ShortReal)
-	AnAscent(Standard_ShortReal)
-	ADescent(Standard_ShortReal)
+		%feature("autodoc", "	* call_togl_textsize2d
 
-Returns:
-	virtual void
-
-call_togl_textsize2d") TextSize;
+	:param AText:
+	:type AText: char *
+	:param AHeight:
+	:type AHeight: Standard_ShortReal
+	:param AWidth:
+	:type AWidth: Standard_ShortReal &
+	:param AnAscent:
+	:type AnAscent: Standard_ShortReal &
+	:param ADescent:
+	:type ADescent: Standard_ShortReal &
+	:rtype: void
+") TextSize;
 		virtual void TextSize (const char * AText,const Standard_ShortReal AHeight,Standard_ShortReal & AWidth,Standard_ShortReal & AnAscent,Standard_ShortReal & ADescent);
-		%feature("autodoc", "Args:
-	aView(Graphic3d_CView)
+		%feature("autodoc", "	* call_togl_backfacing
 
-Returns:
-	virtual void
-
-call_togl_backfacing") SetBackFacingModel;
+	:param aView:
+	:type aView: Graphic3d_CView &
+	:rtype: void
+") SetBackFacingModel;
 		virtual void SetBackFacingModel (const Graphic3d_CView & aView);
-		%feature("autodoc", "Args:
-	view(Graphic3d_CView)
-	isEnabled(Standard_Boolean)
+		%feature("autodoc", "	* call_togl_depthtest
 
-Returns:
-	virtual void
-
-call_togl_depthtest") SetDepthTestEnabled;
+	:param view:
+	:type view: Graphic3d_CView &
+	:param isEnabled:
+	:type isEnabled: bool
+	:rtype: void
+") SetDepthTestEnabled;
 		virtual void SetDepthTestEnabled (const Graphic3d_CView & view,const Standard_Boolean isEnabled);
-		%feature("autodoc", "Args:
-	view(Graphic3d_CView)
+		%feature("autodoc", "	* call_togl_isdepthtest
 
-Returns:
-	virtual Standard_Boolean
-
-call_togl_isdepthtest") IsDepthTestEnabled;
+	:param view:
+	:type view: Graphic3d_CView &
+	:rtype: bool
+") IsDepthTestEnabled;
 		virtual Standard_Boolean IsDepthTestEnabled (const Graphic3d_CView & view);
-		%feature("autodoc", "Args:
-	view(Graphic3d_CView)
-	x(Standard_Integer)
-	y(Standard_Integer)
-	width(Standard_Integer)
-	height(Standard_Integer)
-	buffer(Standard_Address)
+		%feature("autodoc", "	* Reads depths of shown pixels of the given rectangle (glReadPixels with GL_DEPTH_COMPONENT)
 
-Returns:
-	virtual void
-
-Reads depths of shown pixels of the given  
-         rectangle (glReadPixels with GL_DEPTH_COMPONENT)") ReadDepths;
+	:param view:
+	:type view: Graphic3d_CView &
+	:param x:
+	:type x: Standard_Integer
+	:param y:
+	:type y: Standard_Integer
+	:param width:
+	:type width: Standard_Integer
+	:param height:
+	:type height: Standard_Integer
+	:param buffer:
+	:type buffer: Standard_Address
+	:rtype: void
+") ReadDepths;
 		virtual void ReadDepths (const Graphic3d_CView & view,const Standard_Integer x,const Standard_Integer y,const Standard_Integer width,const Standard_Integer height,const Standard_Address buffer);
-		%feature("autodoc", "Args:
-	view(Graphic3d_CView)
-	width(Standard_Integer)
-	height(Standard_Integer)
+		%feature("autodoc", "	* Generate offscreen FBO in the graphic library. If not supported on hardware returns NULL.
 
-Returns:
-	virtual Graphic3d_PtrFrameBuffer
-
-Generate offscreen FBO in the graphic library.  
-         If not supported on hardware returns NULL.") FBOCreate;
+	:param view:
+	:type view: Graphic3d_CView &
+	:param width:
+	:type width: Standard_Integer
+	:param height:
+	:type height: Standard_Integer
+	:rtype: Graphic3d_PtrFrameBuffer
+") FBOCreate;
 		virtual Graphic3d_PtrFrameBuffer FBOCreate (const Graphic3d_CView & view,const Standard_Integer width,const Standard_Integer height);
-		%feature("autodoc", "Args:
-	view(Graphic3d_CView)
-	fboPtr(Graphic3d_PtrFrameBuffer)
+		%feature("autodoc", "	* Remove offscreen FBO from the graphic library
 
-Returns:
-	virtual void
-
-Remove offscreen FBO from the graphic library") FBORelease;
+	:param view:
+	:type view: Graphic3d_CView &
+	:param fboPtr:
+	:type fboPtr: Graphic3d_PtrFrameBuffer &
+	:rtype: void
+") FBORelease;
 		virtual void FBORelease (const Graphic3d_CView & view,Graphic3d_PtrFrameBuffer & fboPtr);
-		%feature("autodoc", "Args:
-	view(Graphic3d_CView)
-	fboPtr(Graphic3d_PtrFrameBuffer)
-	width(Standard_Integer)
-	height(Standard_Integer)
-	widthMax(Standard_Integer)
-	heightMax(Standard_Integer)
+		%feature("autodoc", "	* Read offscreen FBO configuration.
 
-Returns:
-	virtual void
-
-Read offscreen FBO configuration.") FBOGetDimensions;
+	:param view:
+	:type view: Graphic3d_CView &
+	:param fboPtr:
+	:type fboPtr: Graphic3d_PtrFrameBuffer
+	:param width:
+	:type width: Standard_Integer &
+	:param height:
+	:type height: Standard_Integer &
+	:param widthMax:
+	:type widthMax: Standard_Integer &
+	:param heightMax:
+	:type heightMax: Standard_Integer &
+	:rtype: void
+") FBOGetDimensions;
 		virtual void FBOGetDimensions (const Graphic3d_CView & view,const Graphic3d_PtrFrameBuffer fboPtr,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	view(Graphic3d_CView)
-	fboPtr(Graphic3d_PtrFrameBuffer)
-	width(Standard_Integer)
-	height(Standard_Integer)
+		%feature("autodoc", "	* Change offscreen FBO viewport.
 
-Returns:
-	virtual void
-
-Change offscreen FBO viewport.") FBOChangeViewport;
+	:param view:
+	:type view: Graphic3d_CView &
+	:param fboPtr:
+	:type fboPtr: Graphic3d_PtrFrameBuffer &
+	:param width:
+	:type width: Standard_Integer
+	:param height:
+	:type height: Standard_Integer
+	:rtype: void
+") FBOChangeViewport;
 		virtual void FBOChangeViewport (const Graphic3d_CView & view,Graphic3d_PtrFrameBuffer & fboPtr,const Standard_Integer width,const Standard_Integer height);
-		%feature("autodoc", "Args:
-	theCView(Graphic3d_CView)
-	theImage(Image_PixMap)
-	theBufferType(Graphic3d_BufferType)
+		%feature("autodoc", "	* Dump active rendering buffer into specified memory buffer.
 
-Returns:
-	virtual Standard_Boolean
-
-Dump active rendering buffer into specified memory buffer.") BufferDump;
+	:param theCView:
+	:type theCView: Graphic3d_CView &
+	:param theImage:
+	:type theImage: Image_PixMap &
+	:param theBufferType:
+	:type theBufferType: Graphic3d_BufferType &
+	:rtype: bool
+") BufferDump;
 		virtual Standard_Boolean BufferDump (const Graphic3d_CView & theCView,Image_PixMap & theImage,const Graphic3d_BufferType & theBufferType);
-		%feature("autodoc", "Args:
-	view(Graphic3d_CView)
-	isEnabled(Standard_Boolean)
+		%feature("autodoc", "	* call_togl_gllight
 
-Returns:
-	virtual void
-
-call_togl_gllight") SetGLLightEnabled;
+	:param view:
+	:type view: Graphic3d_CView &
+	:param isEnabled:
+	:type isEnabled: bool
+	:rtype: void
+") SetGLLightEnabled;
 		virtual void SetGLLightEnabled (const Graphic3d_CView & view,const Standard_Boolean isEnabled);
-		%feature("autodoc", "Args:
-	view(Graphic3d_CView)
+		%feature("autodoc", "	* call_togl_isgllight
 
-Returns:
-	virtual Standard_Boolean
-
-call_togl_isgllight") IsGLLightEnabled;
+	:param view:
+	:type view: Graphic3d_CView &
+	:rtype: bool
+") IsGLLightEnabled;
 		virtual Standard_Boolean IsGLLightEnabled (const Graphic3d_CView & view);
-		%feature("autodoc", "Args:
-	theFileName(char *)
-	theFormat(Graphic3d_ExportFormat)
-	theSortType(Graphic3d_SortType)
-	theWidth(Standard_Integer)
-	theHeight(Standard_Integer)
-	theView(Graphic3d_CView)
-	theLayerUnder(Aspect_CLayer2d)
-	theLayerOver(Aspect_CLayer2d)
-	thePrecision(Standard_Real)=0.005
-	theProgressBarFunc(Standard_Address)=NULL
-	theProgressObject(Standard_Address)=NULL
+		%feature("autodoc", "	* Export scene into the one of the Vector graphics formats (SVG, PS, PDF...). In contrast to Bitmaps, Vector graphics is scalable (so you may got quality benefits on printing to laser printer). Notice however that results may differ a lot and do not contain some elements.
 
-Returns:
-	virtual Standard_Boolean
-
-Export scene into the one of the Vector graphics formats (SVG, PS, PDF...).  
-In contrast to Bitmaps, Vector graphics is scalable (so you may got quality benefits on printing to laser printer).  
-Notice however that results may differ a lot and do not contain some elements.") Export;
+	:param theFileName:
+	:type theFileName: char *
+	:param theFormat:
+	:type theFormat: Graphic3d_ExportFormat
+	:param theSortType:
+	:type theSortType: Graphic3d_SortType
+	:param theWidth:
+	:type theWidth: Standard_Integer
+	:param theHeight:
+	:type theHeight: Standard_Integer
+	:param theView:
+	:type theView: Graphic3d_CView &
+	:param theLayerUnder:
+	:type theLayerUnder: Aspect_CLayer2d &
+	:param theLayerOver:
+	:type theLayerOver: Aspect_CLayer2d &
+	:param thePrecision: default value is 0.005
+	:type thePrecision: float
+	:param theProgressBarFunc: default value is NULL
+	:type theProgressBarFunc: Standard_Address
+	:param theProgressObject: default value is NULL
+	:type theProgressObject: Standard_Address
+	:rtype: bool
+") Export;
 		virtual Standard_Boolean Export (const char * theFileName,const Graphic3d_ExportFormat theFormat,const Graphic3d_SortType theSortType,const Standard_Integer theWidth,const Standard_Integer theHeight,const Graphic3d_CView & theView,const Aspect_CLayer2d & theLayerUnder,const Aspect_CLayer2d & theLayerOver,const Standard_Real thePrecision = 0.005,const Standard_Address theProgressBarFunc = NULL,const Standard_Address theProgressObject = NULL);
-		%feature("autodoc", "Args:
-	theCView(Graphic3d_CView)
-	theLayerId(Standard_Integer)
+		%feature("autodoc", "	* Add a new top-level z layer with ID <theLayerId> for the view. Z layers allow drawing structures in higher layers in foreground of structures in lower layers. To add a structure to desired layer on display it is necessary to set the layer ID for the structure.
 
-Returns:
-	virtual void
-
-Add a new top-level z layer with ID <theLayerId> for  
-the view. Z layers allow drawing structures in higher layers  
-in foreground of structures in lower layers. To add a structure  
-to desired layer on display it is necessary to set the layer  
-ID for the structure.") AddZLayer;
+	:param theCView:
+	:type theCView: Graphic3d_CView &
+	:param theLayerId:
+	:type theLayerId: Standard_Integer
+	:rtype: void
+") AddZLayer;
 		virtual void AddZLayer (const Graphic3d_CView & theCView,const Standard_Integer theLayerId);
-		%feature("autodoc", "Args:
-	theCView(Graphic3d_CView)
-	theLayerId(Standard_Integer)
+		%feature("autodoc", "	* Remove Z layer from the specified view. All structures displayed at the moment in layer will be displayed in default layer ( the bottom-level z layer ). To unset layer ID from associated structures use method UnsetZLayer (...).
 
-Returns:
-	virtual void
-
-Remove Z layer from the specified view. All structures  
-displayed at the moment in layer will be displayed in default layer  
-( the bottom-level z layer ). To unset layer ID from associated  
-structures use method UnsetZLayer (...).") RemoveZLayer;
+	:param theCView:
+	:type theCView: Graphic3d_CView &
+	:param theLayerId:
+	:type theLayerId: Standard_Integer
+	:rtype: void
+") RemoveZLayer;
 		virtual void RemoveZLayer (const Graphic3d_CView & theCView,const Standard_Integer theLayerId);
-		%feature("autodoc", "Args:
-	theLayerId(Standard_Integer)
+		%feature("autodoc", "	* Unset Z layer ID for all structures. The structure indexes will be set to default layer ( the bottom-level z layer with ID = 0 ).
 
-Returns:
-	virtual void
-
-Unset Z layer ID for all structures. The structure  
-indexes will be set to default layer ( the bottom-level z layer  
-with ID = 0 ).") UnsetZLayer;
+	:param theLayerId:
+	:type theLayerId: Standard_Integer
+	:rtype: void
+") UnsetZLayer;
 		virtual void UnsetZLayer (const Standard_Integer theLayerId);
-		%feature("autodoc", "Args:
-	theCStructure(Graphic3d_CStructure)
-	theLayerId(Standard_Integer)
+		%feature("autodoc", "	* Change Z layer of a structure. The new z layer ID will be used to define the associated layer for structure on display.
 
-Returns:
-	virtual void
-
-Change Z layer of a structure. The new z layer ID will  
-be used to define the associated layer for structure on display.") ChangeZLayer;
+	:param theCStructure:
+	:type theCStructure: Graphic3d_CStructure &
+	:param theLayerId:
+	:type theLayerId: Standard_Integer
+	:rtype: void
+") ChangeZLayer;
 		virtual void ChangeZLayer (const Graphic3d_CStructure & theCStructure,const Standard_Integer theLayerId);
-		%feature("autodoc", "Args:
-	theCStructure(Graphic3d_CStructure)
-	theCView(Graphic3d_CView)
-	theNewLayerId(Standard_Integer)
+		%feature("autodoc", "	* Change Z layer of a structure already presented in view.
 
-Returns:
-	virtual void
-
-Change Z layer of a structure already presented in view.") ChangeZLayer;
+	:param theCStructure:
+	:type theCStructure: Graphic3d_CStructure &
+	:param theCView:
+	:type theCView: Graphic3d_CView &
+	:param theNewLayerId:
+	:type theNewLayerId: Standard_Integer
+	:rtype: void
+") ChangeZLayer;
 		virtual void ChangeZLayer (const Graphic3d_CStructure & theCStructure,const Graphic3d_CView & theCView,const Standard_Integer theNewLayerId);
-		%feature("autodoc", "Args:
-	theCStructure(Graphic3d_CStructure)
+		%feature("autodoc", "	* Get Z layer ID of structure. If the structure doesn't exists in graphic driver, the method returns -1.
 
-Returns:
-	virtual Standard_Integer
-
-Get Z layer ID of structure. If the structure doesn't  
-exists in graphic driver, the method returns -1.") GetZLayer;
+	:param theCStructure:
+	:type theCStructure: Graphic3d_CStructure &
+	:rtype: int
+") GetZLayer;
 		virtual Standard_Integer GetZLayer (const Graphic3d_CStructure & theCStructure);
-		%feature("autodoc", "Args:
-	theCView(Graphic3d_CView)
-	theLayerId(Standard_Integer)
-	theSettings(Graphic3d_ZLayerSettings)
+		%feature("autodoc", "	* Sets the settings for a single Z layer of specified view.
 
-Returns:
-	virtual void
-
-Sets the settings for a single Z layer of specified view.") SetZLayerSettings;
+	:param theCView:
+	:type theCView: Graphic3d_CView &
+	:param theLayerId:
+	:type theLayerId: Standard_Integer
+	:param theSettings:
+	:type theSettings: Graphic3d_ZLayerSettings
+	:rtype: void
+") SetZLayerSettings;
 		virtual void SetZLayerSettings (const Graphic3d_CView & theCView,const Standard_Integer theLayerId,const Graphic3d_ZLayerSettings theSettings);
-		%feature("autodoc", "Args:
-	AComment(char *)
-	AValue(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") PrintBoolean;
+		%feature("autodoc", "	:param AComment:
+	:type AComment: char *
+	:param AValue:
+	:type AValue: bool
+	:rtype: None
+") PrintBoolean;
 		void PrintBoolean (const char * AComment,const Standard_Boolean AValue);
-		%feature("autodoc", "Args:
-	ACGroup(Graphic3d_CGroup)
-	AField(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") PrintCGroup;
+		%feature("autodoc", "	:param ACGroup:
+	:type ACGroup: Graphic3d_CGroup &
+	:param AField:
+	:type AField: Standard_Integer
+	:rtype: None
+") PrintCGroup;
 		void PrintCGroup (const Graphic3d_CGroup & ACGroup,const Standard_Integer AField);
-		%feature("autodoc", "Args:
-	ACLight(Graphic3d_CLight)
-	AField(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") PrintCLight;
+		%feature("autodoc", "	:param ACLight:
+	:type ACLight: Graphic3d_CLight &
+	:param AField:
+	:type AField: Standard_Integer
+	:rtype: None
+") PrintCLight;
 		void PrintCLight (const Graphic3d_CLight & ACLight,const Standard_Integer AField);
-		%feature("autodoc", "Args:
-	ACPick(Graphic3d_CPick)
-	AField(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") PrintCPick;
+		%feature("autodoc", "	:param ACPick:
+	:type ACPick: Graphic3d_CPick &
+	:param AField:
+	:type AField: Standard_Integer
+	:rtype: None
+") PrintCPick;
 		void PrintCPick (const Graphic3d_CPick & ACPick,const Standard_Integer AField);
-		%feature("autodoc", "Args:
-	ACStructure(Graphic3d_CStructure)
-	AField(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") PrintCStructure;
+		%feature("autodoc", "	:param ACStructure:
+	:type ACStructure: Graphic3d_CStructure &
+	:param AField:
+	:type AField: Standard_Integer
+	:rtype: None
+") PrintCStructure;
 		void PrintCStructure (const Graphic3d_CStructure & ACStructure,const Standard_Integer AField);
-		%feature("autodoc", "Args:
-	ACView(Graphic3d_CView)
-	AField(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") PrintCView;
+		%feature("autodoc", "	:param ACView:
+	:type ACView: Graphic3d_CView &
+	:param AField:
+	:type AField: Standard_Integer
+	:rtype: None
+") PrintCView;
 		void PrintCView (const Graphic3d_CView & ACView,const Standard_Integer AField);
-		%feature("autodoc", "Args:
-	AFunc(char *)
-
-Returns:
-	None
-
-No detailed docstring for this function.") PrintFunction;
+		%feature("autodoc", "	:param AFunc:
+	:type AFunc: char *
+	:rtype: None
+") PrintFunction;
 		void PrintFunction (const char * AFunc);
-		%feature("autodoc", "Args:
-	AComment(char *)
-	AValue(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") PrintInteger;
+		%feature("autodoc", "	:param AComment:
+	:type AComment: char *
+	:param AValue:
+	:type AValue: Standard_Integer
+	:rtype: None
+") PrintInteger;
 		void PrintInteger (const char * AComment,const Standard_Integer AValue);
-		%feature("autodoc", "Args:
-	AFunc(char *)
-	AResult(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") PrintIResult;
+		%feature("autodoc", "	:param AFunc:
+	:type AFunc: char *
+	:param AResult:
+	:type AResult: Standard_Integer
+	:rtype: None
+") PrintIResult;
 		void PrintIResult (const char * AFunc,const Standard_Integer AResult);
-		%feature("autodoc", "Args:
-	AComment(char *)
-	AValue(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") PrintShortReal;
+		%feature("autodoc", "	:param AComment:
+	:type AComment: char *
+	:param AValue:
+	:type AValue: Standard_ShortReal
+	:rtype: None
+") PrintShortReal;
 		void PrintShortReal (const char * AComment,const Standard_ShortReal AValue);
-		%feature("autodoc", "Args:
-	AComment(char *)
-	AMatrix(TColStd_Array2OfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") PrintMatrix;
+		%feature("autodoc", "	:param AComment:
+	:type AComment: char *
+	:param AMatrix:
+	:type AMatrix: TColStd_Array2OfReal &
+	:rtype: None
+") PrintMatrix;
 		void PrintMatrix (const char * AComment,const TColStd_Array2OfReal & AMatrix);
-		%feature("autodoc", "Args:
-	AComment(char *)
-	AString(char *)
-
-Returns:
-	None
-
-No detailed docstring for this function.") PrintString;
+		%feature("autodoc", "	:param AComment:
+	:type AComment: char *
+	:param AString:
+	:type AString: char *
+	:rtype: None
+") PrintString;
 		void PrintString (const char * AComment,const char * AString);
-		%feature("autodoc", "Args:
-	ALevel(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetTrace;
+		%feature("autodoc", "	:param ALevel:
+	:type ALevel: Standard_Integer
+	:rtype: None
+") SetTrace;
 		void SetTrace (const Standard_Integer ALevel);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Trace;
+		%feature("autodoc", "	:rtype: int
+") Trace;
 		Standard_Integer Trace ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_DisplayConnection_Handle
+		%feature("autodoc", "	* returns Handle to display connection
 
-returns Handle to display connection") GetDisplayConnection;
+	:rtype: Aspect_DisplayConnection_Handle
+") GetDisplayConnection;
 		const Aspect_DisplayConnection_Handle & GetDisplayConnection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDeviceLost;
+		%feature("autodoc", "	:rtype: bool
+") IsDeviceLost;
 		Standard_Boolean IsDeviceLost ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ResetDeviceLostFlag;
+		%feature("autodoc", "	:rtype: None
+") ResetDeviceLostFlag;
 		void ResetDeviceLostFlag ();
 };
 
@@ -3901,290 +3429,231 @@ def __del__(self):
 %nodefaultctor Graphic3d_Group;
 class Graphic3d_Group : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	AStructure(Handle_Graphic3d_Structure)
+		%feature("autodoc", "	* Creates a group in the structure <AStructure>.
 
-Returns:
-	None
-
-Creates a group in the structure <AStructure>.") Graphic3d_Group;
+	:param AStructure:
+	:type AStructure: Handle_Graphic3d_Structure &
+	:rtype: None
+") Graphic3d_Group;
 		 Graphic3d_Group (const Handle_Graphic3d_Structure & AStructure);
-		%feature("autodoc", "Args:
-	theUpdateStructureMgr(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Supress all primitives and attributes of <self>. To clear group without update in Graphic3d_StructureManager pass Standard_False as <theUpdateStructureMgr>. This used on context and viewer destruction, when the pointer to structure manager in Graphic3d_Structure could be already released (pointers are used here to avoid handle cross-reference);
 
-Returns:
-	None
-
-Supress all primitives and attributes of <self>.  
-         To clear group without update in Graphic3d_StructureManager  
-         pass Standard_False as <theUpdateStructureMgr>. This  
-         used on context and viewer destruction, when the pointer  
-         to structure manager in Graphic3d_Structure could be  
-         already released (pointers are used here to avoid handle  
-         cross-reference);") Clear;
+	:param theUpdateStructureMgr: default value is Standard_True
+	:type theUpdateStructureMgr: bool
+	:rtype: None
+") Clear;
 		void Clear (const Standard_Boolean theUpdateStructureMgr = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Supress the group <self> in the structure.
 
-Supress the group <self> in the structure.") Destroy;
+	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Supress the group <self> in the structure. Warning: No more graphic operations in <self> after this call. Modifies the current modelling transform persistence (pan, zoom or rotate) Get the current modelling transform persistence (pan, zoom or rotate)
 
-Supress the group <self> in the structure.  
- Warning: No more graphic operations in <self> after this call.  Modifies the current modelling transform persistence (pan, zoom or rotate)  Get the current modelling transform persistence (pan, zoom or rotate)") Remove;
+	:rtype: None
+") Remove;
 		void Remove ();
-		%feature("autodoc", "Args:
-	CTX(Handle_Graphic3d_AspectLine3d)
+		%feature("autodoc", "	* Modifies the current context of the group to give another aspect for all the line primitives created after this call in the group.
 
-Returns:
-	None
-
-Modifies the current context of the group to give  
-     another aspect for all the line primitives created  
-     after this call in the group.") SetPrimitivesAspect;
+	:param CTX:
+	:type CTX: Handle_Graphic3d_AspectLine3d &
+	:rtype: None
+") SetPrimitivesAspect;
 		void SetPrimitivesAspect (const Handle_Graphic3d_AspectLine3d & CTX);
-		%feature("autodoc", "Args:
-	CTX(Handle_Graphic3d_AspectFillArea3d)
+		%feature("autodoc", "	* Modifies the current context of the group to give another aspect for all the face primitives created after this call in the group.
 
-Returns:
-	None
-
-Modifies the current context of the group to give  
-     another aspect for all the face primitives created  
-     after this call in the group.") SetPrimitivesAspect;
+	:param CTX:
+	:type CTX: Handle_Graphic3d_AspectFillArea3d &
+	:rtype: None
+") SetPrimitivesAspect;
 		void SetPrimitivesAspect (const Handle_Graphic3d_AspectFillArea3d & CTX);
-		%feature("autodoc", "Args:
-	CTX(Handle_Graphic3d_AspectText3d)
+		%feature("autodoc", "	* Modifies the current context of the group to give another aspect for all the text primitives created after this call in the group.
 
-Returns:
-	None
-
-Modifies the current context of the group to give  
-     another aspect for all the text primitives created  
-     after this call in the group.") SetPrimitivesAspect;
+	:param CTX:
+	:type CTX: Handle_Graphic3d_AspectText3d &
+	:rtype: None
+") SetPrimitivesAspect;
 		void SetPrimitivesAspect (const Handle_Graphic3d_AspectText3d & CTX);
-		%feature("autodoc", "Args:
-	CTX(Handle_Graphic3d_AspectMarker3d)
+		%feature("autodoc", "	* Modifies the current context of the group to give another aspect for all the marker primitives created after this call in the group.
 
-Returns:
-	None
-
-Modifies the current context of the group to give  
-     another aspect for all the marker primitives created  
-     after this call in the group.") SetPrimitivesAspect;
+	:param CTX:
+	:type CTX: Handle_Graphic3d_AspectMarker3d &
+	:rtype: None
+") SetPrimitivesAspect;
 		void SetPrimitivesAspect (const Handle_Graphic3d_AspectMarker3d & CTX);
-		%feature("autodoc", "Args:
-	XMin(Standard_Real)
-	YMin(Standard_Real)
-	ZMin(Standard_Real)
-	XMax(Standard_Real)
-	YMax(Standard_Real)
-	ZMax(Standard_Real)
+		%feature("autodoc", "	* Sets the coordinates of the boundary box of the group <self>.
 
-Returns:
-	None
-
-Sets the coordinates of the boundary box of the  
-     group <self>.") SetMinMaxValues;
+	:param XMin:
+	:type XMin: float
+	:param YMin:
+	:type YMin: float
+	:param ZMin:
+	:type ZMin: float
+	:param XMax:
+	:type XMax: float
+	:param YMax:
+	:type YMax: float
+	:param ZMax:
+	:type ZMax: float
+	:rtype: None
+") SetMinMaxValues;
 		void SetMinMaxValues (const Standard_Real XMin,const Standard_Real YMin,const Standard_Real ZMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real ZMax);
-		%feature("autodoc", "Args:
-	AText(char *)
-	APoint(Graphic3d_Vertex)
-	AHeight(Standard_Real)
-	AAngle(Quantity_PlaneAngle)
-	ATp(Graphic3d_TextPath)
-	AHta(Graphic3d_HorizontalTextAlignment)
-	AVta(Graphic3d_VerticalTextAlignment)
-	EvalMinMax(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Creates the string <AText> at position <APoint>. The 3D point of attachment is projected. The text is written in the plane of projection. The attributes are given with respect to the plane of projection. AHeight : Height of text.  (Relative to the Normalized Projection Coordinates (NPC) Space). AAngle : Orientation of the text  (with respect to the horizontal).
 
-Returns:
-	None
-
-Creates the string <AText> at position <APoint>.  
-     The 3D point of attachment is projected. The text is  
-     written in the plane of projection.  
-     The attributes are given with respect to the plane of  
-     projection.  
-     AHeight : Height of text.  
-           (Relative to the Normalized Projection  
-             Coordinates (NPC) Space).  
-     AAngle  : Orientation of the text  
-           (with respect to the horizontal).") Text;
+	:param AText:
+	:type AText: char *
+	:param APoint:
+	:type APoint: Graphic3d_Vertex &
+	:param AHeight:
+	:type AHeight: float
+	:param AAngle:
+	:type AAngle: Quantity_PlaneAngle
+	:param ATp:
+	:type ATp: Graphic3d_TextPath
+	:param AHta:
+	:type AHta: Graphic3d_HorizontalTextAlignment
+	:param AVta:
+	:type AVta: Graphic3d_VerticalTextAlignment
+	:param EvalMinMax: default value is Standard_True
+	:type EvalMinMax: bool
+	:rtype: None
+") Text;
 		void Text (const char * AText,const Graphic3d_Vertex & APoint,const Standard_Real AHeight,const Quantity_PlaneAngle AAngle,const Graphic3d_TextPath ATp,const Graphic3d_HorizontalTextAlignment AHta,const Graphic3d_VerticalTextAlignment AVta,const Standard_Boolean EvalMinMax = Standard_True);
-		%feature("autodoc", "Args:
-	AText(char *)
-	APoint(Graphic3d_Vertex)
-	AHeight(Standard_Real)
-	EvalMinMax(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Creates the string <AText> at position <APoint>. The 3D point of attachment is projected. The text is written in the plane of projection. The attributes are given with respect to the plane of projection. AHeight : Height of text.  (Relative to the Normalized Projection Coordinates (NPC) Space). The other attributes have the following default values: AAngle : PI / 2. ATp : TP_RIGHT AHta : HTA_LEFT AVta : VTA_BOTTOM
 
-Returns:
-	None
-
-Creates the string <AText> at position <APoint>.  
-     The 3D point of attachment is projected. The text is  
-     written in the plane of projection.  
-     The attributes are given with respect to the plane of  
-     projection.  
-     AHeight : Height of text.  
-           (Relative to the Normalized Projection  
-             Coordinates (NPC) Space).  
-     The other attributes have the following default values:  
-     AAngle  : PI / 2.  
-     ATp     : TP_RIGHT  
-     AHta    : HTA_LEFT  
-     AVta    : VTA_BOTTOM") Text;
+	:param AText:
+	:type AText: char *
+	:param APoint:
+	:type APoint: Graphic3d_Vertex &
+	:param AHeight:
+	:type AHeight: float
+	:param EvalMinMax: default value is Standard_True
+	:type EvalMinMax: bool
+	:rtype: None
+") Text;
 		void Text (const char * AText,const Graphic3d_Vertex & APoint,const Standard_Real AHeight,const Standard_Boolean EvalMinMax = Standard_True);
-		%feature("autodoc", "Args:
-	AText(TCollection_ExtendedString)
-	APoint(Graphic3d_Vertex)
-	AHeight(Standard_Real)
-	AAngle(Quantity_PlaneAngle)
-	ATp(Graphic3d_TextPath)
-	AHta(Graphic3d_HorizontalTextAlignment)
-	AVta(Graphic3d_VerticalTextAlignment)
-	EvalMinMax(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Creates the string <AText> at position <APoint>. The 3D point of attachment is projected. The text is written in the plane of projection. The attributes are given with respect to the plane of projection. AHeight : Height of text.  (Relative to the Normalized Projection Coordinates (NPC) Space). AAngle : Orientation of the text  (with respect to the horizontal).
 
-Returns:
-	None
-
-Creates the string <AText> at position <APoint>.  
-     The 3D point of attachment is projected. The text is  
-     written in the plane of projection.  
-     The attributes are given with respect to the plane of  
-     projection.  
-     AHeight : Height of text.  
-           (Relative to the Normalized Projection  
-             Coordinates (NPC) Space).  
-     AAngle  : Orientation of the text  
-           (with respect to the horizontal).") Text;
+	:param AText:
+	:type AText: TCollection_ExtendedString &
+	:param APoint:
+	:type APoint: Graphic3d_Vertex &
+	:param AHeight:
+	:type AHeight: float
+	:param AAngle:
+	:type AAngle: Quantity_PlaneAngle
+	:param ATp:
+	:type ATp: Graphic3d_TextPath
+	:param AHta:
+	:type AHta: Graphic3d_HorizontalTextAlignment
+	:param AVta:
+	:type AVta: Graphic3d_VerticalTextAlignment
+	:param EvalMinMax: default value is Standard_True
+	:type EvalMinMax: bool
+	:rtype: None
+") Text;
 		void Text (const TCollection_ExtendedString & AText,const Graphic3d_Vertex & APoint,const Standard_Real AHeight,const Quantity_PlaneAngle AAngle,const Graphic3d_TextPath ATp,const Graphic3d_HorizontalTextAlignment AHta,const Graphic3d_VerticalTextAlignment AVta,const Standard_Boolean EvalMinMax = Standard_True);
-		%feature("autodoc", "Args:
-	AText(TCollection_ExtendedString)
-	APoint(Graphic3d_Vertex)
-	AHeight(Standard_Real)
-	EvalMinMax(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Creates the string <AText> at position <APoint>. The 3D point of attachment is projected. The text is written in the plane of projection. The attributes are given with respect to the plane of projection. AHeight : Height of text.  (Relative to the Normalized Projection Coordinates (NPC) Space). The other attributes have the following default values: AAngle : PI / 2. ATp : TP_RIGHT AHta : HTA_LEFT AVta : VTA_BOTTOM
 
-Returns:
-	None
-
-Creates the string <AText> at position <APoint>.  
-     The 3D point of attachment is projected. The text is  
-     written in the plane of projection.  
-     The attributes are given with respect to the plane of  
-     projection.  
-     AHeight : Height of text.  
-           (Relative to the Normalized Projection  
-             Coordinates (NPC) Space).  
-     The other attributes have the following default values:  
-     AAngle  : PI / 2.  
-     ATp     : TP_RIGHT  
-     AHta    : HTA_LEFT  
-     AVta    : VTA_BOTTOM") Text;
+	:param AText:
+	:type AText: TCollection_ExtendedString &
+	:param APoint:
+	:type APoint: Graphic3d_Vertex &
+	:param AHeight:
+	:type AHeight: float
+	:param EvalMinMax: default value is Standard_True
+	:type EvalMinMax: bool
+	:rtype: None
+") Text;
 		void Text (const TCollection_ExtendedString & AText,const Graphic3d_Vertex & APoint,const Standard_Real AHeight,const Standard_Boolean EvalMinMax = Standard_True);
-		%feature("autodoc", "Args:
-	elem(Handle_Graphic3d_ArrayOfPrimitives)
-	EvalMinMax(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Adds an array of primitives for display
 
-Returns:
-	None
-
-Adds an array of primitives for display") AddPrimitiveArray;
+	:param elem:
+	:type elem: Handle_Graphic3d_ArrayOfPrimitives &
+	:param EvalMinMax: default value is Standard_True
+	:type EvalMinMax: bool
+	:rtype: None
+") AddPrimitiveArray;
 		void AddPrimitiveArray (const Handle_Graphic3d_ArrayOfPrimitives & elem,const Standard_Boolean EvalMinMax = Standard_True);
-		%feature("autodoc", "Args:
-	thePoint(Graphic3d_Vertex)
-	theToEvalMinMax(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Creates a primitive array with single marker using AddPrimitiveArray().
 
-Returns:
-	None
-
-Creates a primitive array with single marker using AddPrimitiveArray().") Marker;
+	:param thePoint:
+	:type thePoint: Graphic3d_Vertex &
+	:param theToEvalMinMax: default value is Standard_True
+	:type theToEvalMinMax: bool
+	:rtype: None
+") Marker;
 		void Marker (const Graphic3d_Vertex & thePoint,const Standard_Boolean theToEvalMinMax = Standard_True);
-		%feature("autodoc", "Args:
-	AnObject(Standard_Address)
-	EvalMinMax(Standard_Boolean)=Standard_True
-	ContainsFacet(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Creates an UserDraw primitive Category: Methods to create UserDraw Warning: Raises GroupDefinitionError if ...
 
-Returns:
-	None
-
-Creates an UserDraw primitive  
- Category: Methods to create UserDraw  
- Warning: Raises GroupDefinitionError if ...") UserDraw;
+	:param AnObject:
+	:type AnObject: Standard_Address
+	:param EvalMinMax: default value is Standard_True
+	:type EvalMinMax: bool
+	:param ContainsFacet: default value is Standard_False
+	:type ContainsFacet: bool
+	:rtype: None
+") UserDraw;
 		void UserDraw (const Standard_Address AnObject,const Standard_Boolean EvalMinMax = Standard_True,const Standard_Boolean ContainsFacet = Standard_False);
-		%feature("autodoc", "Args:
-	theIsEnabled(Standard_Boolean)
+		%feature("autodoc", "	* sets the stencil test to theIsEnabled state;
 
-Returns:
-	None
-
-sets the stencil test to theIsEnabled state;") SetStencilTestOptions;
+	:param theIsEnabled:
+	:type theIsEnabled: bool
+	:rtype: None
+") SetStencilTestOptions;
 		void SetStencilTestOptions (const Standard_Boolean theIsEnabled);
-		%feature("autodoc", "Args:
-	theIsEnabled(Standard_Boolean)
-	theRefPlane(gp_Ax2)
+		%feature("autodoc", "	* sets the flipping to theIsEnabled state.
 
-Returns:
-	None
-
-sets the flipping to theIsEnabled state.") SetFlippingOptions;
+	:param theIsEnabled:
+	:type theIsEnabled: bool
+	:param theRefPlane:
+	:type theRefPlane: gp_Ax2
+	:rtype: None
+") SetFlippingOptions;
 		void SetFlippingOptions (const Standard_Boolean theIsEnabled,const gp_Ax2 & theRefPlane);
-		%feature("autodoc", "Args:
-	theAspect(Graphic3d_GroupAspect)
+		%feature("autodoc", "	* Returns True if aspect is set for the group.
 
-Returns:
-	Standard_Boolean
-
-Returns TRUE if aspect is set for the group.") IsGroupPrimitivesAspectSet;
+	:param theAspect:
+	:type theAspect: Graphic3d_GroupAspect
+	:rtype: bool
+") IsGroupPrimitivesAspectSet;
 		Standard_Boolean IsGroupPrimitivesAspectSet (const Graphic3d_GroupAspect theAspect);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns Standard_True if the group <self> contains Polygons, Triangles or Quadrangles.
 
-Returns Standard_True if the group <self> contains  
-     Polygons, Triangles or Quadrangles.") ContainsFacet;
+	:rtype: bool
+") ContainsFacet;
 		Standard_Boolean ContainsFacet ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns Standard_True if the group <self> is deleted. <self> is deleted after the call Remove (me) or the associated structure is deleted.
 
-Returns Standard_True if the group <self> is deleted.  
-     <self> is deleted after the call Remove (me) or the  
-     associated structure is deleted.") IsDeleted;
+	:rtype: bool
+") IsDeleted;
 		Standard_Boolean IsDeleted ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns Standard_True if the group <self> is empty.
 
-Returns Standard_True if the group <self> is empty.") IsEmpty;
+	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	XMin(Standard_Real)
-	YMin(Standard_Real)
-	ZMin(Standard_Real)
-	XMax(Standard_Real)
-	YMax(Standard_Real)
-	ZMax(Standard_Real)
+		%feature("autodoc", "	* Returns the coordinates of the boundary box of the group <self>.
 
-Returns:
-	None
-
-Returns the coordinates of the boundary box of the  
-     group <self>.") MinMaxValues;
+	:param XMin:
+	:type XMin: float &
+	:param YMin:
+	:type YMin: float &
+	:param ZMin:
+	:type ZMin: float &
+	:param XMax:
+	:type XMax: float &
+	:param YMax:
+	:type YMax: float &
+	:param ZMax:
+	:type ZMax: float &
+	:rtype: None
+") MinMaxValues;
 		void MinMaxValues (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_Structure
+		%feature("autodoc", "	* Returns the structure containing the group <self>.
 
-Returns the structure containing the group <self>.") Structure;
+	:rtype: Handle_Graphic3d_Structure
+") Structure;
 		Handle_Graphic3d_Structure Structure ();
 };
 
@@ -4245,188 +3714,118 @@ def __del__(self):
 %nodefaultctor Graphic3d_HSequenceOfGroup;
 class Graphic3d_HSequenceOfGroup : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_HSequenceOfGroup;
+		%feature("autodoc", "	:rtype: None
+") Graphic3d_HSequenceOfGroup;
 		 Graphic3d_HSequenceOfGroup ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	anItem(Handle_Graphic3d_Group)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Graphic3d_Group &
+	:rtype: None
+") Append;
 		void Append (const Handle_Graphic3d_Group & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_Graphic3d_HSequenceOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_Graphic3d_HSequenceOfGroup &
+	:rtype: None
+") Append;
 		void Append (const Handle_Graphic3d_HSequenceOfGroup & aSequence);
-		%feature("autodoc", "Args:
-	anItem(Handle_Graphic3d_Group)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Graphic3d_Group &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Graphic3d_Group & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_Graphic3d_HSequenceOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_Graphic3d_HSequenceOfGroup &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Graphic3d_HSequenceOfGroup & aSequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Graphic3d_Group)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Graphic3d_Group &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Graphic3d_Group & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_Graphic3d_HSequenceOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_Graphic3d_HSequenceOfGroup &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Graphic3d_HSequenceOfGroup & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Graphic3d_Group)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Graphic3d_Group &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Graphic3d_Group & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_Graphic3d_HSequenceOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_Graphic3d_HSequenceOfGroup &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Graphic3d_HSequenceOfGroup & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anOtherIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Exchange;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anOtherIndex:
+	:type anOtherIndex: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Graphic3d_HSequenceOfGroup
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Graphic3d_HSequenceOfGroup
+") Split;
 		Handle_Graphic3d_HSequenceOfGroup Split (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Graphic3d_Group)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Graphic3d_Group &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Handle_Graphic3d_Group & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Graphic3d_Group
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Graphic3d_Group
+") Value;
 		const Handle_Graphic3d_Group & Value (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Graphic3d_Group
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Graphic3d_Group
+") ChangeValue;
 		Handle_Graphic3d_Group & ChangeValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	fromIndex(Standard_Integer)
-	toIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param fromIndex:
+	:type fromIndex: Standard_Integer
+	:param toIndex:
+	:type toIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_SequenceOfGroup
-
-No detailed docstring for this function.") Sequence;
+		%feature("autodoc", "	:rtype: Graphic3d_SequenceOfGroup
+") Sequence;
 		const Graphic3d_SequenceOfGroup & Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_SequenceOfGroup
-
-No detailed docstring for this function.") ChangeSequence;
+		%feature("autodoc", "	:rtype: Graphic3d_SequenceOfGroup
+") ChangeSequence;
 		Graphic3d_SequenceOfGroup & ChangeSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_HSequenceOfGroup
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_HSequenceOfGroup
+") ShallowCopy;
 		Handle_Graphic3d_HSequenceOfGroup ShallowCopy ();
 };
 
@@ -4487,188 +3886,118 @@ def __del__(self):
 %nodefaultctor Graphic3d_HSequenceOfStructure;
 class Graphic3d_HSequenceOfStructure : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_HSequenceOfStructure;
+		%feature("autodoc", "	:rtype: None
+") Graphic3d_HSequenceOfStructure;
 		 Graphic3d_HSequenceOfStructure ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	anItem(Handle_Graphic3d_Structure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Graphic3d_Structure &
+	:rtype: None
+") Append;
 		void Append (const Handle_Graphic3d_Structure & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_Graphic3d_HSequenceOfStructure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_Graphic3d_HSequenceOfStructure &
+	:rtype: None
+") Append;
 		void Append (const Handle_Graphic3d_HSequenceOfStructure & aSequence);
-		%feature("autodoc", "Args:
-	anItem(Handle_Graphic3d_Structure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Graphic3d_Structure &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Graphic3d_Structure & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_Graphic3d_HSequenceOfStructure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_Graphic3d_HSequenceOfStructure &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Graphic3d_HSequenceOfStructure & aSequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Graphic3d_Structure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Graphic3d_Structure &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Graphic3d_Structure & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_Graphic3d_HSequenceOfStructure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_Graphic3d_HSequenceOfStructure &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Graphic3d_HSequenceOfStructure & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Graphic3d_Structure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Graphic3d_Structure &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Graphic3d_Structure & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_Graphic3d_HSequenceOfStructure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_Graphic3d_HSequenceOfStructure &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Graphic3d_HSequenceOfStructure & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anOtherIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Exchange;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anOtherIndex:
+	:type anOtherIndex: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Graphic3d_HSequenceOfStructure
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Graphic3d_HSequenceOfStructure
+") Split;
 		Handle_Graphic3d_HSequenceOfStructure Split (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Graphic3d_Structure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Graphic3d_Structure &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Handle_Graphic3d_Structure & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Graphic3d_Structure
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Graphic3d_Structure
+") Value;
 		const Handle_Graphic3d_Structure & Value (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Graphic3d_Structure
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Graphic3d_Structure
+") ChangeValue;
 		Handle_Graphic3d_Structure & ChangeValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	fromIndex(Standard_Integer)
-	toIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param fromIndex:
+	:type fromIndex: Standard_Integer
+	:param toIndex:
+	:type toIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_SequenceOfStructure
-
-No detailed docstring for this function.") Sequence;
+		%feature("autodoc", "	:rtype: Graphic3d_SequenceOfStructure
+") Sequence;
 		const Graphic3d_SequenceOfStructure & Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_SequenceOfStructure
-
-No detailed docstring for this function.") ChangeSequence;
+		%feature("autodoc", "	:rtype: Graphic3d_SequenceOfStructure
+") ChangeSequence;
 		Graphic3d_SequenceOfStructure & ChangeSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_HSequenceOfStructure
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_HSequenceOfStructure
+") ShallowCopy;
 		Handle_Graphic3d_HSequenceOfStructure ShallowCopy ();
 };
 
@@ -4729,118 +4058,66 @@ def __del__(self):
 %nodefaultctor Graphic3d_HSetOfGroup;
 class Graphic3d_HSetOfGroup : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_HSetOfGroup;
+		%feature("autodoc", "	:rtype: None
+") Graphic3d_HSetOfGroup;
 		 Graphic3d_HSetOfGroup ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	T(Handle_Graphic3d_Group)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Graphic3d_Group &
+	:rtype: bool
+") Add;
 		Standard_Boolean Add (const Handle_Graphic3d_Group & T);
-		%feature("autodoc", "Args:
-	T(Handle_Graphic3d_Group)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Graphic3d_Group &
+	:rtype: bool
+") Remove;
 		Standard_Boolean Remove (const Handle_Graphic3d_Group & T);
-		%feature("autodoc", "Args:
-	B(Handle_Graphic3d_HSetOfGroup)
-
-Returns:
-	Handle_Graphic3d_HSetOfGroup
-
-No detailed docstring for this function.") Union;
+		%feature("autodoc", "	:param B:
+	:type B: Handle_Graphic3d_HSetOfGroup &
+	:rtype: Handle_Graphic3d_HSetOfGroup
+") Union;
 		Handle_Graphic3d_HSetOfGroup Union (const Handle_Graphic3d_HSetOfGroup & B);
-		%feature("autodoc", "Args:
-	B(Handle_Graphic3d_HSetOfGroup)
-
-Returns:
-	Handle_Graphic3d_HSetOfGroup
-
-No detailed docstring for this function.") Intersection;
+		%feature("autodoc", "	:param B:
+	:type B: Handle_Graphic3d_HSetOfGroup &
+	:rtype: Handle_Graphic3d_HSetOfGroup
+") Intersection;
 		Handle_Graphic3d_HSetOfGroup Intersection (const Handle_Graphic3d_HSetOfGroup & B);
-		%feature("autodoc", "Args:
-	B(Handle_Graphic3d_HSetOfGroup)
-
-Returns:
-	Handle_Graphic3d_HSetOfGroup
-
-No detailed docstring for this function.") Difference;
+		%feature("autodoc", "	:param B:
+	:type B: Handle_Graphic3d_HSetOfGroup &
+	:rtype: Handle_Graphic3d_HSetOfGroup
+") Difference;
 		Handle_Graphic3d_HSetOfGroup Difference (const Handle_Graphic3d_HSetOfGroup & B);
-		%feature("autodoc", "Args:
-	T(Handle_Graphic3d_Group)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Graphic3d_Group &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const Handle_Graphic3d_Group & T);
-		%feature("autodoc", "Args:
-	S(Handle_Graphic3d_HSetOfGroup)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsASubset;
+		%feature("autodoc", "	:param S:
+	:type S: Handle_Graphic3d_HSetOfGroup &
+	:rtype: bool
+") IsASubset;
 		Standard_Boolean IsASubset (const Handle_Graphic3d_HSetOfGroup & S);
-		%feature("autodoc", "Args:
-	S(Handle_Graphic3d_HSetOfGroup)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAProperSubset;
+		%feature("autodoc", "	:param S:
+	:type S: Handle_Graphic3d_HSetOfGroup &
+	:rtype: bool
+") IsAProperSubset;
 		Standard_Boolean IsAProperSubset (const Handle_Graphic3d_HSetOfGroup & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_HSetOfGroup
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_HSetOfGroup
+") ShallowCopy;
 		Handle_Graphic3d_HSetOfGroup ShallowCopy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_SetOfGroup
-
-No detailed docstring for this function.") Set;
+		%feature("autodoc", "	:rtype: Graphic3d_SetOfGroup
+") Set;
 		const Graphic3d_SetOfGroup & Set ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_SetOfGroup
-
-No detailed docstring for this function.") ChangeSet;
+		%feature("autodoc", "	:rtype: Graphic3d_SetOfGroup
+") ChangeSet;
 		Graphic3d_SetOfGroup & ChangeSet ();
 };
 
@@ -4901,49 +4178,27 @@ def __del__(self):
 %nodefaultctor Graphic3d_ListIteratorOfListOfPArray;
 class Graphic3d_ListIteratorOfListOfPArray {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_ListIteratorOfListOfPArray;
+		%feature("autodoc", "	:rtype: None
+") Graphic3d_ListIteratorOfListOfPArray;
 		 Graphic3d_ListIteratorOfListOfPArray ();
-		%feature("autodoc", "Args:
-	L(Graphic3d_ListOfPArray)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_ListIteratorOfListOfPArray;
+		%feature("autodoc", "	:param L:
+	:type L: Graphic3d_ListOfPArray &
+	:rtype: None
+") Graphic3d_ListIteratorOfListOfPArray;
 		 Graphic3d_ListIteratorOfListOfPArray (const Graphic3d_ListOfPArray & L);
-		%feature("autodoc", "Args:
-	L(Graphic3d_ListOfPArray)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: Graphic3d_ListOfPArray &
+	:rtype: None
+") Initialize;
 		void Initialize (const Graphic3d_ListOfPArray & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_ArrayOfPrimitives
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_ArrayOfPrimitives
+") Value;
 		Handle_Graphic3d_ArrayOfPrimitives & Value ();
 };
 
@@ -4965,49 +4220,27 @@ def __del__(self):
 %nodefaultctor Graphic3d_ListIteratorOfListOfShortReal;
 class Graphic3d_ListIteratorOfListOfShortReal {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_ListIteratorOfListOfShortReal;
+		%feature("autodoc", "	:rtype: None
+") Graphic3d_ListIteratorOfListOfShortReal;
 		 Graphic3d_ListIteratorOfListOfShortReal ();
-		%feature("autodoc", "Args:
-	L(Graphic3d_ListOfShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_ListIteratorOfListOfShortReal;
+		%feature("autodoc", "	:param L:
+	:type L: Graphic3d_ListOfShortReal &
+	:rtype: None
+") Graphic3d_ListIteratorOfListOfShortReal;
 		 Graphic3d_ListIteratorOfListOfShortReal (const Graphic3d_ListOfShortReal & L);
-		%feature("autodoc", "Args:
-	L(Graphic3d_ListOfShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: Graphic3d_ListOfShortReal &
+	:rtype: None
+") Initialize;
 		void Initialize (const Graphic3d_ListOfShortReal & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Standard_ShortReal
+") Value;
 		Standard_ShortReal & Value ();
 };
 
@@ -5029,49 +4262,27 @@ def __del__(self):
 %nodefaultctor Graphic3d_ListIteratorOfSetListOfSetOfGroup;
 class Graphic3d_ListIteratorOfSetListOfSetOfGroup {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_ListIteratorOfSetListOfSetOfGroup;
+		%feature("autodoc", "	:rtype: None
+") Graphic3d_ListIteratorOfSetListOfSetOfGroup;
 		 Graphic3d_ListIteratorOfSetListOfSetOfGroup ();
-		%feature("autodoc", "Args:
-	L(Graphic3d_SetListOfSetOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_ListIteratorOfSetListOfSetOfGroup;
+		%feature("autodoc", "	:param L:
+	:type L: Graphic3d_SetListOfSetOfGroup &
+	:rtype: None
+") Graphic3d_ListIteratorOfSetListOfSetOfGroup;
 		 Graphic3d_ListIteratorOfSetListOfSetOfGroup (const Graphic3d_SetListOfSetOfGroup & L);
-		%feature("autodoc", "Args:
-	L(Graphic3d_SetListOfSetOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: Graphic3d_SetListOfSetOfGroup &
+	:rtype: None
+") Initialize;
 		void Initialize (const Graphic3d_SetListOfSetOfGroup & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_Group
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_Group
+") Value;
 		Handle_Graphic3d_Group & Value ();
 };
 
@@ -5093,21 +4304,15 @@ def __del__(self):
 %nodefaultctor Graphic3d_ListNodeOfListOfPArray;
 class Graphic3d_ListNodeOfListOfPArray : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Graphic3d_ArrayOfPrimitives)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_ListNodeOfListOfPArray;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Graphic3d_ArrayOfPrimitives &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") Graphic3d_ListNodeOfListOfPArray;
 		 Graphic3d_ListNodeOfListOfPArray (const Handle_Graphic3d_ArrayOfPrimitives & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_ArrayOfPrimitives
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_ArrayOfPrimitives
+") Value;
 		Handle_Graphic3d_ArrayOfPrimitives & Value ();
 };
 
@@ -5168,21 +4373,15 @@ def __del__(self):
 %nodefaultctor Graphic3d_ListNodeOfListOfShortReal;
 class Graphic3d_ListNodeOfListOfShortReal : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Standard_ShortReal)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_ListNodeOfListOfShortReal;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_ShortReal &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") Graphic3d_ListNodeOfListOfShortReal;
 		 Graphic3d_ListNodeOfListOfShortReal (const Standard_ShortReal & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Standard_ShortReal
+") Value;
 		Standard_ShortReal & Value ();
 };
 
@@ -5243,21 +4442,15 @@ def __del__(self):
 %nodefaultctor Graphic3d_ListNodeOfSetListOfSetOfGroup;
 class Graphic3d_ListNodeOfSetListOfSetOfGroup : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Graphic3d_Group)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_ListNodeOfSetListOfSetOfGroup;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Graphic3d_Group &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") Graphic3d_ListNodeOfSetListOfSetOfGroup;
 		 Graphic3d_ListNodeOfSetListOfSetOfGroup (const Handle_Graphic3d_Group & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_Group
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_Group
+") Value;
 		Handle_Graphic3d_Group & Value ();
 };
 
@@ -5318,164 +4511,103 @@ def __del__(self):
 %nodefaultctor Graphic3d_ListOfPArray;
 class Graphic3d_ListOfPArray {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_ListOfPArray;
+		%feature("autodoc", "	:rtype: None
+") Graphic3d_ListOfPArray;
 		 Graphic3d_ListOfPArray ();
-		%feature("autodoc", "Args:
-	Other(Graphic3d_ListOfPArray)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_ListOfPArray &
+	:rtype: None
+") Assign;
 		void Assign (const Graphic3d_ListOfPArray & Other);
-		%feature("autodoc", "Args:
-	Other(Graphic3d_ListOfPArray)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_ListOfPArray &
+	:rtype: None
+") operator=;
 		void operator = (const Graphic3d_ListOfPArray & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(Handle_Graphic3d_ArrayOfPrimitives)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Graphic3d_ArrayOfPrimitives &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Graphic3d_ArrayOfPrimitives & I);
-		%feature("autodoc", "Args:
-	I(Handle_Graphic3d_ArrayOfPrimitives)
-	theIt(Graphic3d_ListIteratorOfListOfPArray)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Graphic3d_ArrayOfPrimitives &
+	:param theIt:
+	:type theIt: Graphic3d_ListIteratorOfListOfPArray &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Graphic3d_ArrayOfPrimitives & I,Graphic3d_ListIteratorOfListOfPArray & theIt);
-		%feature("autodoc", "Args:
-	Other(Graphic3d_ListOfPArray)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_ListOfPArray &
+	:rtype: None
+") Prepend;
 		void Prepend (Graphic3d_ListOfPArray & Other);
-		%feature("autodoc", "Args:
-	I(Handle_Graphic3d_ArrayOfPrimitives)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Graphic3d_ArrayOfPrimitives &
+	:rtype: None
+") Append;
 		void Append (const Handle_Graphic3d_ArrayOfPrimitives & I);
-		%feature("autodoc", "Args:
-	I(Handle_Graphic3d_ArrayOfPrimitives)
-	theIt(Graphic3d_ListIteratorOfListOfPArray)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Graphic3d_ArrayOfPrimitives &
+	:param theIt:
+	:type theIt: Graphic3d_ListIteratorOfListOfPArray &
+	:rtype: None
+") Append;
 		void Append (const Handle_Graphic3d_ArrayOfPrimitives & I,Graphic3d_ListIteratorOfListOfPArray & theIt);
-		%feature("autodoc", "Args:
-	Other(Graphic3d_ListOfPArray)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_ListOfPArray &
+	:rtype: None
+") Append;
 		void Append (Graphic3d_ListOfPArray & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_ArrayOfPrimitives
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_ArrayOfPrimitives
+") First;
 		Handle_Graphic3d_ArrayOfPrimitives & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_ArrayOfPrimitives
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_ArrayOfPrimitives
+") Last;
 		Handle_Graphic3d_ArrayOfPrimitives & Last ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(Graphic3d_ListIteratorOfListOfPArray)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: Graphic3d_ListIteratorOfListOfPArray &
+	:rtype: None
+") Remove;
 		void Remove (Graphic3d_ListIteratorOfListOfPArray & It);
-		%feature("autodoc", "Args:
-	I(Handle_Graphic3d_ArrayOfPrimitives)
-	It(Graphic3d_ListIteratorOfListOfPArray)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Graphic3d_ArrayOfPrimitives &
+	:param It:
+	:type It: Graphic3d_ListIteratorOfListOfPArray &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Handle_Graphic3d_ArrayOfPrimitives & I,Graphic3d_ListIteratorOfListOfPArray & It);
-		%feature("autodoc", "Args:
-	Other(Graphic3d_ListOfPArray)
-	It(Graphic3d_ListIteratorOfListOfPArray)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_ListOfPArray &
+	:param It:
+	:type It: Graphic3d_ListIteratorOfListOfPArray &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (Graphic3d_ListOfPArray & Other,Graphic3d_ListIteratorOfListOfPArray & It);
-		%feature("autodoc", "Args:
-	I(Handle_Graphic3d_ArrayOfPrimitives)
-	It(Graphic3d_ListIteratorOfListOfPArray)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Graphic3d_ArrayOfPrimitives &
+	:param It:
+	:type It: Graphic3d_ListIteratorOfListOfPArray &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Handle_Graphic3d_ArrayOfPrimitives & I,Graphic3d_ListIteratorOfListOfPArray & It);
-		%feature("autodoc", "Args:
-	Other(Graphic3d_ListOfPArray)
-	It(Graphic3d_ListIteratorOfListOfPArray)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_ListOfPArray &
+	:param It:
+	:type It: Graphic3d_ListIteratorOfListOfPArray &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (Graphic3d_ListOfPArray & Other,Graphic3d_ListIteratorOfListOfPArray & It);
 };
 
@@ -5497,164 +4629,103 @@ def __del__(self):
 %nodefaultctor Graphic3d_ListOfShortReal;
 class Graphic3d_ListOfShortReal {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_ListOfShortReal;
+		%feature("autodoc", "	:rtype: None
+") Graphic3d_ListOfShortReal;
 		 Graphic3d_ListOfShortReal ();
-		%feature("autodoc", "Args:
-	Other(Graphic3d_ListOfShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_ListOfShortReal &
+	:rtype: None
+") Assign;
 		void Assign (const Graphic3d_ListOfShortReal & Other);
-		%feature("autodoc", "Args:
-	Other(Graphic3d_ListOfShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_ListOfShortReal &
+	:rtype: None
+") operator=;
 		void operator = (const Graphic3d_ListOfShortReal & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_ShortReal &
+	:rtype: None
+") Prepend;
 		void Prepend (const Standard_ShortReal & I);
-		%feature("autodoc", "Args:
-	I(Standard_ShortReal)
-	theIt(Graphic3d_ListIteratorOfListOfShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_ShortReal &
+	:param theIt:
+	:type theIt: Graphic3d_ListIteratorOfListOfShortReal &
+	:rtype: None
+") Prepend;
 		void Prepend (const Standard_ShortReal & I,Graphic3d_ListIteratorOfListOfShortReal & theIt);
-		%feature("autodoc", "Args:
-	Other(Graphic3d_ListOfShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_ListOfShortReal &
+	:rtype: None
+") Prepend;
 		void Prepend (Graphic3d_ListOfShortReal & Other);
-		%feature("autodoc", "Args:
-	I(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_ShortReal &
+	:rtype: None
+") Append;
 		void Append (const Standard_ShortReal & I);
-		%feature("autodoc", "Args:
-	I(Standard_ShortReal)
-	theIt(Graphic3d_ListIteratorOfListOfShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_ShortReal &
+	:param theIt:
+	:type theIt: Graphic3d_ListIteratorOfListOfShortReal &
+	:rtype: None
+") Append;
 		void Append (const Standard_ShortReal & I,Graphic3d_ListIteratorOfListOfShortReal & theIt);
-		%feature("autodoc", "Args:
-	Other(Graphic3d_ListOfShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_ListOfShortReal &
+	:rtype: None
+") Append;
 		void Append (Graphic3d_ListOfShortReal & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Standard_ShortReal
+") First;
 		Standard_ShortReal & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Standard_ShortReal
+") Last;
 		Standard_ShortReal & Last ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(Graphic3d_ListIteratorOfListOfShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: Graphic3d_ListIteratorOfListOfShortReal &
+	:rtype: None
+") Remove;
 		void Remove (Graphic3d_ListIteratorOfListOfShortReal & It);
-		%feature("autodoc", "Args:
-	I(Standard_ShortReal)
-	It(Graphic3d_ListIteratorOfListOfShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_ShortReal &
+	:param It:
+	:type It: Graphic3d_ListIteratorOfListOfShortReal &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_ShortReal & I,Graphic3d_ListIteratorOfListOfShortReal & It);
-		%feature("autodoc", "Args:
-	Other(Graphic3d_ListOfShortReal)
-	It(Graphic3d_ListIteratorOfListOfShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_ListOfShortReal &
+	:param It:
+	:type It: Graphic3d_ListIteratorOfListOfShortReal &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (Graphic3d_ListOfShortReal & Other,Graphic3d_ListIteratorOfListOfShortReal & It);
-		%feature("autodoc", "Args:
-	I(Standard_ShortReal)
-	It(Graphic3d_ListIteratorOfListOfShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_ShortReal &
+	:param It:
+	:type It: Graphic3d_ListIteratorOfListOfShortReal &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_ShortReal & I,Graphic3d_ListIteratorOfListOfShortReal & It);
-		%feature("autodoc", "Args:
-	Other(Graphic3d_ListOfShortReal)
-	It(Graphic3d_ListIteratorOfListOfShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_ListOfShortReal &
+	:param It:
+	:type It: Graphic3d_ListIteratorOfListOfShortReal &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (Graphic3d_ListOfShortReal & Other,Graphic3d_ListIteratorOfListOfShortReal & It);
 };
 
@@ -5676,35 +4747,21 @@ def __del__(self):
 %nodefaultctor Graphic3d_MapIteratorOfMapOfStructure;
 class Graphic3d_MapIteratorOfMapOfStructure : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_MapIteratorOfMapOfStructure;
+		%feature("autodoc", "	:rtype: None
+") Graphic3d_MapIteratorOfMapOfStructure;
 		 Graphic3d_MapIteratorOfMapOfStructure ();
-		%feature("autodoc", "Args:
-	aMap(Graphic3d_MapOfStructure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_MapIteratorOfMapOfStructure;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: Graphic3d_MapOfStructure &
+	:rtype: None
+") Graphic3d_MapIteratorOfMapOfStructure;
 		 Graphic3d_MapIteratorOfMapOfStructure (const Graphic3d_MapOfStructure & aMap);
-		%feature("autodoc", "Args:
-	aMap(Graphic3d_MapOfStructure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: Graphic3d_MapOfStructure &
+	:rtype: None
+") Initialize;
 		void Initialize (const Graphic3d_MapOfStructure & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_Structure
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_Structure
+") Key;
 		const Handle_Graphic3d_Structure & Key ();
 };
 
@@ -5726,68 +4783,43 @@ def __del__(self):
 %nodefaultctor Graphic3d_MapOfStructure;
 class Graphic3d_MapOfStructure : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_MapOfStructure;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") Graphic3d_MapOfStructure;
 		 Graphic3d_MapOfStructure (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(Graphic3d_MapOfStructure)
-
-Returns:
-	Graphic3d_MapOfStructure
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_MapOfStructure &
+	:rtype: Graphic3d_MapOfStructure
+") Assign;
 		Graphic3d_MapOfStructure & Assign (const Graphic3d_MapOfStructure & Other);
-		%feature("autodoc", "Args:
-	Other(Graphic3d_MapOfStructure)
-
-Returns:
-	Graphic3d_MapOfStructure
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_MapOfStructure &
+	:rtype: Graphic3d_MapOfStructure
+") operator=;
 		Graphic3d_MapOfStructure & operator = (const Graphic3d_MapOfStructure & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	aKey(Handle_Graphic3d_Structure)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: Handle_Graphic3d_Structure &
+	:rtype: bool
+") Add;
 		Standard_Boolean Add (const Handle_Graphic3d_Structure & aKey);
-		%feature("autodoc", "Args:
-	aKey(Handle_Graphic3d_Structure)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: Handle_Graphic3d_Structure &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const Handle_Graphic3d_Structure & aKey);
-		%feature("autodoc", "Args:
-	aKey(Handle_Graphic3d_Structure)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: Handle_Graphic3d_Structure &
+	:rtype: bool
+") Remove;
 		Standard_Boolean Remove (const Handle_Graphic3d_Structure & aKey);
 };
 
@@ -5809,78 +4841,59 @@ def __del__(self):
 %nodefaultctor Graphic3d_MarkerImage;
 class Graphic3d_MarkerImage : public Standard_Transient {
 	public:
-		%feature("autodoc", "Args:
-	theImage(Handle_Image_PixMap)
+		%feature("autodoc", "	* @param theImage - source image
 
-Returns:
-	None
-
-@param theImage - source image") Graphic3d_MarkerImage;
+	:param theImage:
+	:type theImage: Handle_Image_PixMap &
+	:rtype: None
+") Graphic3d_MarkerImage;
 		 Graphic3d_MarkerImage (const Handle_Image_PixMap & theImage);
-		%feature("autodoc", "Args:
-	theBitMap(Handle_TColStd_HArray1OfByte)
-	theWidth(Standard_Integer)
-	theHeight(Standard_Integer)
+		%feature("autodoc", "	* Creates marker image from array of bytes (method for compatibility with old markers definition). @param theBitMap - source bitmap stored as array of bytes @param theWidth - number of bits in a row @param theHeight - number of bits in a column
 
-Returns:
-	None
-
-Creates marker image from array of bytes
-(method for compatibility with old markers definition).
-@param theBitMap - source bitmap stored as array of bytes
-@param theWidth  - number of bits in a row
-@param theHeight - number of bits in a column") Graphic3d_MarkerImage;
+	:param theBitMap:
+	:type theBitMap: Handle_TColStd_HArray1OfByte &
+	:param theWidth:
+	:type theWidth: Standard_Integer &
+	:param theHeight:
+	:type theHeight: Standard_Integer &
+	:rtype: None
+") Graphic3d_MarkerImage;
 		 Graphic3d_MarkerImage (const Handle_TColStd_HArray1OfByte & theBitMap,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	theAlphaValue(Standard_Real)=0.5
+		%feature("autodoc", "	* @param theAlphaValue pixels in the image that have alpha value greater than  or equal to this parameter will be stored in bitmap as '1',  others will be stored as '0' returns marker image as array of bytes. If an instance of the class has been initialized with image, it will be converted to bitmap based on the parameter theAlphaValue.
 
-Returns:
-	Handle_TColStd_HArray1OfByte
-
-@param theAlphaValue pixels in the image that have alpha value greater than
-                     or equal to this parameter will be stored in bitmap as '1',
-                     others will be stored as '0'
-@return marker image as array of bytes. If an instance of the class has been
-initialized with image, it will be converted to bitmap based on the parameter theAlphaValue.") GetBitMapArray;
+	:param theAlphaValue: default value is 0.5
+	:type theAlphaValue: float &
+	:rtype: Handle_TColStd_HArray1OfByte
+") GetBitMapArray;
 		Handle_TColStd_HArray1OfByte GetBitMapArray (const Standard_Real & theAlphaValue = 0.5);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Image_PixMap
+		%feature("autodoc", "	* returns marker image. If an instance of the class has been initialized with a bitmap, it will be converted to image.
 
-@return marker image. If an instance of the class has been initialized with a bitmap, it will be
-converted to image.") GetImage;
+	:rtype: Handle_Image_PixMap
+") GetImage;
 		const Handle_Image_PixMap & GetImage ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Image_PixMap
+		%feature("autodoc", "	* returns image alpha as grayscale image. Note that if an instance of the class has been initialized with a bitmap or with grayscale image this method will return exactly the same image as GetImage()
 
-@return image alpha as grayscale image. Note that if an instance of the class has been initialized
-with a bitmap or with grayscale image this method will return exactly the same image as GetImage()") GetImageAlpha;
+	:rtype: Handle_Image_PixMap
+") GetImageAlpha;
 		const Handle_Image_PixMap & GetImageAlpha ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* returns an unique ID. This ID will be used to manage resource in graphic driver.
 
-@return an unique ID. This ID will be used to manage resource in graphic driver.") GetImageId;
+	:rtype: TCollection_AsciiString
+") GetImageId;
 		const TCollection_AsciiString & GetImageId ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* returns an unique ID. This ID will be used to manage resource in graphic driver.
 
-@return an unique ID. This ID will be used to manage resource in graphic driver.") GetImageAlphaId;
+	:rtype: TCollection_AsciiString
+") GetImageAlphaId;
 		const TCollection_AsciiString & GetImageAlphaId ();
-		%feature("autodoc", "Args:
-	theWidth(Standard_Integer)
-	theHeight(Standard_Integer)
+		%feature("autodoc", "	* returns texture size
 
-Returns:
-	None
-
-@return texture size") GetTextureSize;
+	:param theWidth:
+	:type theWidth: Standard_Integer &
+	:param theHeight:
+	:type theHeight: Standard_Integer &
+	:rtype: None
+") GetTextureSize;
 		void GetTextureSize (Standard_Integer &OutValue,Standard_Integer &OutValue);
 };
 
@@ -5902,341 +4915,223 @@ def __del__(self):
 %nodefaultctor Graphic3d_MaterialAspect;
 class Graphic3d_MaterialAspect {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates a material from default values.
 
-Creates a material from default values.") Graphic3d_MaterialAspect;
+	:rtype: None
+") Graphic3d_MaterialAspect;
 		 Graphic3d_MaterialAspect ();
-		%feature("autodoc", "Args:
-	AName(Graphic3d_NameOfMaterial)
+		%feature("autodoc", "	* Creates a generic material calls <AName>
 
-Returns:
-	None
-
-Creates a generic material calls <AName>") Graphic3d_MaterialAspect;
+	:param AName:
+	:type AName: Graphic3d_NameOfMaterial
+	:rtype: None
+") Graphic3d_MaterialAspect;
 		 Graphic3d_MaterialAspect (const Graphic3d_NameOfMaterial AName);
-		%feature("autodoc", "Args:
-	ADelta(Standard_Real)
+		%feature("autodoc", "	* Increases or decreases the luminosity of <self>. //!	 <ADelta> is a signed percentage.
 
-Returns:
-	None
-
-Increases or decreases the luminosity of <self>.  
-//!	    <ADelta> is a signed percentage.") IncreaseShine;
+	:param ADelta:
+	:type ADelta: float
+	:rtype: None
+") IncreaseShine;
 		void IncreaseShine (const Standard_Real ADelta);
-		%feature("autodoc", "Args:
-	AValue(Standard_Real)
+		%feature("autodoc", "	* Modifies the reflection properties of the surface. Category: Methods to modify the class definition Warning: Raises MaterialDefinitionError if <AValue> is //!	 a negative value or greater than 1.0.
 
-Returns:
-	None
-
-Modifies the reflection properties of the surface.  
- Category: Methods to modify the class definition  
- Warning: Raises MaterialDefinitionError if <AValue> is  
-//!	    a negative value or greater than 1.0.") SetAmbient;
+	:param AValue:
+	:type AValue: float
+	:rtype: None
+") SetAmbient;
 		void SetAmbient (const Standard_Real AValue);
-		%feature("autodoc", "Args:
-	AValue(Standard_Real)
+		%feature("autodoc", "	* Modifies the reflection properties of the surface. Category: Methods to modify the class definition Warning: Raises MaterialDefinitionError if <AValue> is a //!	 negative value or greater than 1.0.
 
-Returns:
-	None
-
-Modifies the reflection properties of the surface.  
- Category: Methods to modify the class definition  
- Warning: Raises MaterialDefinitionError if <AValue> is a  
-//!	    negative value or greater than 1.0.") SetDiffuse;
+	:param AValue:
+	:type AValue: float
+	:rtype: None
+") SetDiffuse;
 		void SetDiffuse (const Standard_Real AValue);
-		%feature("autodoc", "Args:
-	AValue(Standard_Real)
+		%feature("autodoc", "	* Modifies the reflection properties of the surface. Category: Methods to modify the class definition Warning: Raises MaterialDefinitionError if <AValue> is a //!	 negative value or greater than 1.0.
 
-Returns:
-	None
-
-Modifies the reflection properties of the surface.  
- Category: Methods to modify the class definition  
- Warning: Raises MaterialDefinitionError if <AValue> is a  
-//!	    negative value or greater than 1.0.") SetEmissive;
+	:param AValue:
+	:type AValue: float
+	:rtype: None
+") SetEmissive;
 		void SetEmissive (const Standard_Real AValue);
-		%feature("autodoc", "Args:
-	AValue(Standard_Real)
+		%feature("autodoc", "	* Modifies the luminosity of the surface. Category: Methods to modify the class definition Warning: Raises MaterialDefinitionError if <AValue> is a //!	 negative value or greater than 1.0.
 
-Returns:
-	None
-
-Modifies the luminosity of the surface.  
- Category: Methods to modify the class definition  
- Warning: Raises MaterialDefinitionError if <AValue> is a  
-//!	    negative value or greater than 1.0.") SetShininess;
+	:param AValue:
+	:type AValue: float
+	:rtype: None
+") SetShininess;
 		void SetShininess (const Standard_Real AValue);
-		%feature("autodoc", "Args:
-	AValue(Standard_Real)
+		%feature("autodoc", "	* Modifies the reflection properties of the surface. Category: Methods to modify the class definition Warning: Raises MaterialDefinitionError if <AValue> is a //!	 negative value or greater than 1.0.
 
-Returns:
-	None
-
-Modifies the reflection properties of the surface.  
- Category: Methods to modify the class definition  
- Warning: Raises MaterialDefinitionError if <AValue> is a  
-//!	    negative value or greater than 1.0.") SetSpecular;
+	:param AValue:
+	:type AValue: float
+	:rtype: None
+") SetSpecular;
 		void SetSpecular (const Standard_Real AValue);
-		%feature("autodoc", "Args:
-	AValue(Standard_Real)
+		%feature("autodoc", "	* Modifies the transparency coefficient of the surface. <AValue> = 0. opaque. (default) <AValue> = 1. transparent. Transparency is applicable to materials that have at least one of reflection modes (ambient, diffuse, specular or emissive) enabled. See also SetReflectionModeOn() and SetReflectionModeOff() methods. NOTE: In order for transparency specified through this method to take effect, it is necessary to enable transparency in the viewer. This can be done either directly - see Visual3d_ViewManager::SetTransparency(Standard_Boolean), or indirectly - by calling AIS_InteractiveObject::SetTransparency() before an object is added to an interactive context, or by calling AIS_InteractiveContext::SetTransparency() for a given interactive object already displayed. Category: Methods to modify the class definition Warning: Raises MaterialDefinitionError if <AValue> is a //!	 negative value or greater than 1.0.
 
-Returns:
-	None
-
-Modifies the transparency coefficient of the surface.  
- <AValue> = 0. opaque. (default)  
- <AValue> = 1. transparent.  
- Transparency is applicable to materials that have at least  
- one of reflection modes (ambient, diffuse, specular or emissive)  
- enabled. See also SetReflectionModeOn() and SetReflectionModeOff() methods.  
- 
- NOTE: In order for transparency specified through this method to  
- take effect, it is necessary to enable transparency  
- in the viewer. This can be done either directly -  
- see Visual3d_ViewManager::SetTransparency(Standard_Boolean),  
- or indirectly - by calling AIS_InteractiveObject::SetTransparency()  
- before an object is added to an interactive context, or by  
- calling AIS_InteractiveContext::SetTransparency() for a given  
- interactive object already displayed.  
- Category: Methods to modify the class definition  
- Warning: Raises MaterialDefinitionError if <AValue> is a  
-//!	    negative value or greater than 1.0.") SetTransparency;
+	:param AValue:
+	:type AValue: float
+	:rtype: None
+") SetTransparency;
 		void SetTransparency (const Standard_Real AValue);
-		%feature("autodoc", "Args:
-	AColor(Quantity_Color)
+		%feature("autodoc", "	* Modifies the ambient colour of the surface. Category: Methods to modify the class definition
 
-Returns:
-	None
-
-Modifies the ambient colour of the surface.  
- Category: Methods to modify the class definition") SetColor;
+	:param AColor:
+	:type AColor: Quantity_Color &
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_Color & AColor);
-		%feature("autodoc", "Args:
-	AColor(Quantity_Color)
+		%feature("autodoc", "	* Modifies the ambient colour of the surface.
 
-Returns:
-	None
-
-Modifies the ambient colour of the surface.") SetAmbientColor;
+	:param AColor:
+	:type AColor: Quantity_Color &
+	:rtype: None
+") SetAmbientColor;
 		void SetAmbientColor (const Quantity_Color & AColor);
-		%feature("autodoc", "Args:
-	AColor(Quantity_Color)
+		%feature("autodoc", "	* Modifies the difuse colour of the surface.
 
-Returns:
-	None
-
-Modifies the difuse colour of the surface.") SetDiffuseColor;
+	:param AColor:
+	:type AColor: Quantity_Color &
+	:rtype: None
+") SetDiffuseColor;
 		void SetDiffuseColor (const Quantity_Color & AColor);
-		%feature("autodoc", "Args:
-	AColor(Quantity_Color)
+		%feature("autodoc", "	* Modifies the specular colour of the surface.
 
-Returns:
-	None
-
-Modifies the specular colour of the surface.") SetSpecularColor;
+	:param AColor:
+	:type AColor: Quantity_Color &
+	:rtype: None
+") SetSpecularColor;
 		void SetSpecularColor (const Quantity_Color & AColor);
-		%feature("autodoc", "Args:
-	AColor(Quantity_Color)
+		%feature("autodoc", "	* Modifies the emissive colour of the surface.
 
-Returns:
-	None
-
-Modifies the emissive colour of the surface.") SetEmissiveColor;
+	:param AColor:
+	:type AColor: Quantity_Color &
+	:rtype: None
+") SetEmissiveColor;
 		void SetEmissiveColor (const Quantity_Color & AColor);
-		%feature("autodoc", "Args:
-	AType(Graphic3d_TypeOfReflection)
+		%feature("autodoc", "	* Activates the reflective properties of the surface <AType>. //!	 TypeOfReflection : TOR_AMBIENT //!			 TOR_DIFFUSE //!			 TOR_SPECULAR  TOR_EMISSION 1, 2, 3 or 4 types of reflection can be set for a given surface.
 
-Returns:
-	None
-
-Activates the reflective properties of the surface <AType>.  
- 
-//!	    TypeOfReflection : TOR_AMBIENT  
-//!			       TOR_DIFFUSE  
-//!			       TOR_SPECULAR  
-                            TOR_EMISSION  
-1, 2, 3 or 4 types of reflection can be set for a given surface.") SetReflectionModeOn;
+	:param AType:
+	:type AType: Graphic3d_TypeOfReflection
+	:rtype: None
+") SetReflectionModeOn;
 		void SetReflectionModeOn (const Graphic3d_TypeOfReflection AType);
-		%feature("autodoc", "Args:
-	AType(Graphic3d_TypeOfReflection)
+		%feature("autodoc", "	* Deactivates the reflective properties of //!	 the surface <AType>. //!	 TypeOfReflection : TOR_AMBIENT //!			 TOR_DIFFUSE //!			 TOR_SPECULAR  TOR_EMISSION 1, 2, 3 or 4 types of reflection can be set off for a given surface. Disabling diffuse and specular reflectance is useful for efficient visualization of large amounts of data as definition of normals for graphic primitives is not needed when only 'all-directional' reflectance is active. NOTE: Disabling all four reflection modes also turns off the following effects: 1. Lighting. Colors of primitives are not affected by the material properties when lighting is off. 2. Transparency.
 
-Returns:
-	None
-
-Deactivates the reflective properties of  
-//!	    the surface <AType>.  
- 
-//!	    TypeOfReflection : TOR_AMBIENT  
-//!			       TOR_DIFFUSE  
-//!			       TOR_SPECULAR  
-                            TOR_EMISSION  
- 1, 2, 3 or 4 types of reflection can be set off for a given surface.  
- Disabling diffuse and specular reflectance is useful for efficient visualization  
- of large amounts of data as definition of normals for graphic primitives is not needed  
- when only 'all-directional' reflectance is active.  
- 
- NOTE: Disabling all four reflection modes also turns off the following effects:  
- 1. Lighting. Colors of primitives are not affected by the material properties when lighting is off.  
- 2. Transparency.") SetReflectionModeOff;
+	:param AType:
+	:type AType: Graphic3d_TypeOfReflection
+	:rtype: None
+") SetReflectionModeOff;
 		void SetReflectionModeOff (const Graphic3d_TypeOfReflection AType);
-		%feature("autodoc", "Args:
-	AType(Graphic3d_TypeOfMaterial)
+		%feature("autodoc", "	* Set MyMaterialType to the value of parameter <AType> //!	 TypeOfMaterial : MATERIAL_ASPECT //!			 MATERIAL_PHYSIC
 
-Returns:
-	None
-
-Set MyMaterialType to the value of parameter <AType>  
- 
-//!	    TypeOfMaterial :   MATERIAL_ASPECT  
-//!			       MATERIAL_PHYSIC") SetMaterialType;
+	:param AType:
+	:type AType: Graphic3d_TypeOfMaterial
+	:rtype: None
+") SetMaterialType;
 		void SetMaterialType (const Graphic3d_TypeOfMaterial AType);
-		%feature("autodoc", "Args:
-	AName(char *)
+		%feature("autodoc", "	* The current matarial become a 'UserDefined' material. //!	 Set the name of the 'UserDefined' material.
 
-Returns:
-	None
-
-The current matarial become a 'UserDefined' material.  
-//!	    Set the name of the 'UserDefined' material.") SetMaterialName;
+	:param AName:
+	:type AName: char *
+	:rtype: None
+") SetMaterialName;
 		void SetMaterialName (const char * AName);
-		%feature("autodoc", "Args:
-	AValue(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetEnvReflexion;
+		%feature("autodoc", "	:param AValue:
+	:type AValue: Standard_ShortReal
+	:rtype: None
+") SetEnvReflexion;
 		void SetEnvReflexion (const Standard_ShortReal AValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Resets the material with the original values according to the material name but leave the current color values untouched for the material of type ASPECT.
 
-Resets the material with the original values according to  
-the material name but leave the current color values untouched  
-for the material of type ASPECT.") Reset;
+	:rtype: None
+") Reset;
 		void Reset ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Color
+		%feature("autodoc", "	* Returns the ambient colour of the surface.
 
-Returns the ambient colour of the surface.") Color;
+	:rtype: Quantity_Color
+") Color;
 		Quantity_Color Color ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Color
+		%feature("autodoc", "	* Returns the ambient colour of the surface.
 
-Returns the ambient colour of the surface.") AmbientColor;
+	:rtype: Quantity_Color
+") AmbientColor;
 		Quantity_Color AmbientColor ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Color
+		%feature("autodoc", "	* Returns the diffuse colour of the surface.
 
-Returns the diffuse colour of the surface.") DiffuseColor;
+	:rtype: Quantity_Color
+") DiffuseColor;
 		Quantity_Color DiffuseColor ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Color
+		%feature("autodoc", "	* Returns the specular colour of the surface.
 
-Returns the specular colour of the surface.") SpecularColor;
+	:rtype: Quantity_Color
+") SpecularColor;
 		Quantity_Color SpecularColor ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Color
+		%feature("autodoc", "	* Returns the emissive colour of the surface.
 
-Returns the emissive colour of the surface.") EmissiveColor;
+	:rtype: Quantity_Color
+") EmissiveColor;
 		Quantity_Color EmissiveColor ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the reflection properties of the surface.
 
-Returns the reflection properties of the surface.") Ambient;
+	:rtype: float
+") Ambient;
 		Standard_Real Ambient ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the reflection properties of the surface.
 
-Returns the reflection properties of the surface.") Diffuse;
+	:rtype: float
+") Diffuse;
 		Standard_Real Diffuse ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the reflection properties of the surface.
 
-Returns the reflection properties of the surface.") Specular;
+	:rtype: float
+") Specular;
 		Standard_Real Specular ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the transparency coefficient of the surface.
 
-Returns the transparency coefficient of the surface.") Transparency;
+	:rtype: float
+") Transparency;
 		Standard_Real Transparency ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the emissive coefficient of the surface.
 
-Returns the emissive coefficient of the surface.") Emissive;
+	:rtype: float
+") Emissive;
 		Standard_Real Emissive ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the luminosity of the surface.
 
-Returns the luminosity of the surface.") Shininess;
+	:rtype: float
+") Shininess;
 		Standard_Real Shininess ();
-		%feature("autodoc", "Args:
-	AType(Graphic3d_TypeOfReflection)
+		%feature("autodoc", "	* Returns Standard_True if the reflection mode is active, //!	 Standard_False otherwise.
 
-Returns:
-	Standard_Boolean
-
-Returns Standard_True if the reflection mode is active,  
-//!	    Standard_False otherwise.") ReflectionMode;
+	:param AType:
+	:type AType: Graphic3d_TypeOfReflection
+	:rtype: bool
+") ReflectionMode;
 		Standard_Boolean ReflectionMode (const Graphic3d_TypeOfReflection AType);
-		%feature("autodoc", "Args:
-	AType(Graphic3d_TypeOfMaterial)
+		%feature("autodoc", "	* Returns Standard_True if MyMaterialType equal the parameter AType, //!	 Standard_False otherwise.
 
-Returns:
-	Standard_Boolean
-
-Returns Standard_True if MyMaterialType equal the parameter AType,  
-//!	    Standard_False otherwise.") MaterialType;
+	:param AType:
+	:type AType: Graphic3d_TypeOfMaterial
+	:rtype: bool
+") MaterialType;
 		Standard_Boolean MaterialType (const Graphic3d_TypeOfMaterial AType);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") EnvReflexion;
+		%feature("autodoc", "	:rtype: Standard_ShortReal
+") EnvReflexion;
 		Standard_ShortReal EnvReflexion ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_NameOfMaterial
+		%feature("autodoc", "	* Returns the material name.
 
-Returns the material name.") Name;
+	:rtype: Graphic3d_NameOfMaterial
+") Name;
 		Graphic3d_NameOfMaterial Name ();
-		%feature("autodoc", "Args:
-	Other(Graphic3d_MaterialAspect)
+		%feature("autodoc", "	* Returns Standard_True if the materials <self> and <Other> are different.
 
-Returns:
-	Standard_Boolean
-
-Returns Standard_True if the materials <self> and  
-         <Other> are different.") IsDifferent;
+	:param Other:
+	:type Other: Graphic3d_MaterialAspect &
+	:rtype: bool
+") IsDifferent;
 		Standard_Boolean IsDifferent (const Graphic3d_MaterialAspect & Other);
 
         %extend{
@@ -6252,14 +5147,12 @@ Returns Standard_True if the materials <self> and
             except:
                 return True
         }
-        		%feature("autodoc", "Args:
-	Other(Graphic3d_MaterialAspect)
+        		%feature("autodoc", "	* Returns Standard_True if the materials <self> and <Other> are identical.
 
-Returns:
-	Standard_Boolean
-
-Returns Standard_True if the materials <self> and  
-         <Other> are identical.") IsEqual;
+	:param Other:
+	:type Other: Graphic3d_MaterialAspect &
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const Graphic3d_MaterialAspect & Other);
 
         %extend{
@@ -6275,45 +5168,36 @@ Returns Standard_True if the materials <self> and
             except:
                 return False
         }
-        		%feature("autodoc", "Args:
-	None
-Returns:
-	static Standard_Integer
+        		%feature("autodoc", "	* Returns the number of predefined textures.
 
-Returns the number of predefined textures.") NumberOfMaterials;
+	:rtype: int
+") NumberOfMaterials;
 		static Standard_Integer NumberOfMaterials ();
-		%feature("autodoc", "Args:
-	aRank(Standard_Integer)
+		%feature("autodoc", "	* Returns the name of the predefined material of rank <aRank> Trigger: when <aRank> is < 1 or > NumberOfMaterials.
 
-Returns:
-	static char *
-
-Returns the name of the predefined material of rank <aRank>  
- Trigger: when <aRank> is < 1 or > NumberOfMaterials.") MaterialName;
+	:param aRank:
+	:type aRank: Standard_Integer
+	:rtype: char *
+") MaterialName;
 		static char * MaterialName (const Standard_Integer aRank);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	char *
+		%feature("autodoc", "	* Returns the name of this material
 
-Returns the name of this material") MaterialName;
+	:rtype: char *
+") MaterialName;
 		char * MaterialName ();
-		%feature("autodoc", "Args:
-	aRank(Standard_Integer)
+		%feature("autodoc", "	* Returns the type of the predefined material of rank <aRank> Trigger: when <aRank> is < 1 or > NumberOfMaterials.
 
-Returns:
-	static Graphic3d_TypeOfMaterial
-
-Returns the type of the predefined material of rank <aRank>  
- Trigger: when <aRank> is < 1 or > NumberOfMaterials.") MaterialType;
+	:param aRank:
+	:type aRank: Standard_Integer
+	:rtype: Graphic3d_TypeOfMaterial
+") MaterialType;
 		static Graphic3d_TypeOfMaterial MaterialType (const Standard_Integer aRank);
-		%feature("autodoc", "Args:
-	theName(char *)
+		%feature("autodoc", "	* Returns the material for specified name or Graphic3d_NOM_DEFAULT if name is unknown.
 
-Returns:
-	static Graphic3d_NameOfMaterial
-
-Returns the material for specified name or Graphic3d_NOM_DEFAULT if name is unknown.") MaterialFromName;
+	:param theName:
+	:type theName: char *
+	:rtype: Graphic3d_NameOfMaterial
+") MaterialFromName;
 		static Graphic3d_NameOfMaterial MaterialFromName (const char * theName);
 };
 
@@ -6335,38 +5219,25 @@ def __del__(self):
 %nodefaultctor Graphic3d_Plotter;
 class Graphic3d_Plotter : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Deletes the plotter <self>.
 
-Deletes the plotter <self>.") Destroy;
+	:rtype: void
+") Destroy;
 		virtual void Destroy ();
-		%feature("autodoc", "Args:
-	aProjector(Handle_Graphic3d_DataStructureManager)
+		%feature("autodoc", "	* Warning: Returns Standard_True if plotting is enabled in the view. //!	 Raises PlotterDefinitionError from Graphic3d //!	 if plotting has already started.
 
-Returns:
-	virtual Standard_Boolean
-
-Warning: Returns Standard_True if plotting is enabled in the view.  
-//!	    Raises PlotterDefinitionError from Graphic3d  
-//!	    if plotting has already started.") BeginPlot;
+	:param aProjector:
+	:type aProjector: Handle_Graphic3d_DataStructureManager &
+	:rtype: bool
+") BeginPlot;
 		virtual Standard_Boolean BeginPlot (const Handle_Graphic3d_DataStructureManager & aProjector);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Stops the plotting. Warning: Raises PlotterDefinitionError from Graphic3d //!	 if plotting has not started yet.
 
-Stops the plotting.  
- Warning: Raises PlotterDefinitionError from Graphic3d  
-//!	    if plotting has not started yet.") EndPlot;
+	:rtype: void
+") EndPlot;
 		virtual void EndPlot ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") PlottingState;
+		%feature("autodoc", "	:rtype: bool
+") PlottingState;
 		virtual Standard_Boolean PlottingState ();
 };
 
@@ -6427,22 +5298,17 @@ def __del__(self):
 %nodefaultctor Graphic3d_SequenceNodeOfSequenceOfAddress;
 class Graphic3d_SequenceNodeOfSequenceOfAddress : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Standard_Address)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_SequenceNodeOfSequenceOfAddress;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Address &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Graphic3d_SequenceNodeOfSequenceOfAddress;
 		 Graphic3d_SequenceNodeOfSequenceOfAddress (const Standard_Address & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Standard_Address
+") Value;
 		Standard_Address & Value ();
 };
 
@@ -6503,22 +5369,17 @@ def __del__(self):
 %nodefaultctor Graphic3d_SequenceNodeOfSequenceOfGroup;
 class Graphic3d_SequenceNodeOfSequenceOfGroup : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Graphic3d_Group)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_SequenceNodeOfSequenceOfGroup;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Graphic3d_Group &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Graphic3d_SequenceNodeOfSequenceOfGroup;
 		 Graphic3d_SequenceNodeOfSequenceOfGroup (const Handle_Graphic3d_Group & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_Group
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_Group
+") Value;
 		Handle_Graphic3d_Group & Value ();
 };
 
@@ -6579,22 +5440,17 @@ def __del__(self):
 %nodefaultctor Graphic3d_SequenceNodeOfSequenceOfStructure;
 class Graphic3d_SequenceNodeOfSequenceOfStructure : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Graphic3d_Structure)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_SequenceNodeOfSequenceOfStructure;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Graphic3d_Structure &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Graphic3d_SequenceNodeOfSequenceOfStructure;
 		 Graphic3d_SequenceNodeOfSequenceOfStructure (const Handle_Graphic3d_Structure & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_Structure
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_Structure
+") Value;
 		Handle_Graphic3d_Structure & Value ();
 };
 
@@ -6655,168 +5511,111 @@ def __del__(self):
 %nodefaultctor Graphic3d_SequenceOfAddress;
 class Graphic3d_SequenceOfAddress : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_SequenceOfAddress;
+		%feature("autodoc", "	:rtype: None
+") Graphic3d_SequenceOfAddress;
 		 Graphic3d_SequenceOfAddress ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Graphic3d_SequenceOfAddress)
-
-Returns:
-	Graphic3d_SequenceOfAddress
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_SequenceOfAddress &
+	:rtype: Graphic3d_SequenceOfAddress
+") Assign;
 		const Graphic3d_SequenceOfAddress & Assign (const Graphic3d_SequenceOfAddress & Other);
-		%feature("autodoc", "Args:
-	Other(Graphic3d_SequenceOfAddress)
-
-Returns:
-	Graphic3d_SequenceOfAddress
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_SequenceOfAddress &
+	:rtype: Graphic3d_SequenceOfAddress
+") operator=;
 		const Graphic3d_SequenceOfAddress & operator = (const Graphic3d_SequenceOfAddress & Other);
-		%feature("autodoc", "Args:
-	T(Standard_Address)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Standard_Address &
+	:rtype: None
+") Append;
 		void Append (const Standard_Address & T);
-		%feature("autodoc", "Args:
-	S(Graphic3d_SequenceOfAddress)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Graphic3d_SequenceOfAddress &
+	:rtype: None
+") Append;
 		void Append (Graphic3d_SequenceOfAddress & S);
-		%feature("autodoc", "Args:
-	T(Standard_Address)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Standard_Address &
+	:rtype: None
+") Prepend;
 		void Prepend (const Standard_Address & T);
-		%feature("autodoc", "Args:
-	S(Graphic3d_SequenceOfAddress)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Graphic3d_SequenceOfAddress &
+	:rtype: None
+") Prepend;
 		void Prepend (Graphic3d_SequenceOfAddress & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Standard_Address)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Standard_Address &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Standard_Address & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Graphic3d_SequenceOfAddress)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Graphic3d_SequenceOfAddress &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Graphic3d_SequenceOfAddress & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Standard_Address)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Standard_Address &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Standard_Address & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Graphic3d_SequenceOfAddress)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Graphic3d_SequenceOfAddress &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Graphic3d_SequenceOfAddress & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Standard_Address
+") First;
 		const Standard_Address & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Standard_Address
+") Last;
 		const Standard_Address & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Graphic3d_SequenceOfAddress)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Graphic3d_SequenceOfAddress &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Graphic3d_SequenceOfAddress & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Standard_Address
+") Value;
 		const Standard_Address & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Standard_Address)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Standard_Address &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Standard_Address & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Standard_Address
+") ChangeValue;
 		Standard_Address & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -6838,168 +5637,111 @@ def __del__(self):
 %nodefaultctor Graphic3d_SequenceOfGroup;
 class Graphic3d_SequenceOfGroup : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_SequenceOfGroup;
+		%feature("autodoc", "	:rtype: None
+") Graphic3d_SequenceOfGroup;
 		 Graphic3d_SequenceOfGroup ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Graphic3d_SequenceOfGroup)
-
-Returns:
-	Graphic3d_SequenceOfGroup
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_SequenceOfGroup &
+	:rtype: Graphic3d_SequenceOfGroup
+") Assign;
 		const Graphic3d_SequenceOfGroup & Assign (const Graphic3d_SequenceOfGroup & Other);
-		%feature("autodoc", "Args:
-	Other(Graphic3d_SequenceOfGroup)
-
-Returns:
-	Graphic3d_SequenceOfGroup
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_SequenceOfGroup &
+	:rtype: Graphic3d_SequenceOfGroup
+") operator=;
 		const Graphic3d_SequenceOfGroup & operator = (const Graphic3d_SequenceOfGroup & Other);
-		%feature("autodoc", "Args:
-	T(Handle_Graphic3d_Group)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Graphic3d_Group &
+	:rtype: None
+") Append;
 		void Append (const Handle_Graphic3d_Group & T);
-		%feature("autodoc", "Args:
-	S(Graphic3d_SequenceOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Graphic3d_SequenceOfGroup &
+	:rtype: None
+") Append;
 		void Append (Graphic3d_SequenceOfGroup & S);
-		%feature("autodoc", "Args:
-	T(Handle_Graphic3d_Group)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Graphic3d_Group &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Graphic3d_Group & T);
-		%feature("autodoc", "Args:
-	S(Graphic3d_SequenceOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Graphic3d_SequenceOfGroup &
+	:rtype: None
+") Prepend;
 		void Prepend (Graphic3d_SequenceOfGroup & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Graphic3d_Group)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Graphic3d_Group &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_Graphic3d_Group & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Graphic3d_SequenceOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Graphic3d_SequenceOfGroup &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Graphic3d_SequenceOfGroup & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Graphic3d_Group)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Graphic3d_Group &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_Graphic3d_Group & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Graphic3d_SequenceOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Graphic3d_SequenceOfGroup &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Graphic3d_SequenceOfGroup & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_Group
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_Group
+") First;
 		const Handle_Graphic3d_Group & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_Group
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_Group
+") Last;
 		const Handle_Graphic3d_Group & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Graphic3d_SequenceOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Graphic3d_SequenceOfGroup &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Graphic3d_SequenceOfGroup & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Graphic3d_Group
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Graphic3d_Group
+") Value;
 		const Handle_Graphic3d_Group & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_Graphic3d_Group)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_Graphic3d_Group &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Graphic3d_Group & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Graphic3d_Group
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Graphic3d_Group
+") ChangeValue;
 		Handle_Graphic3d_Group & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -7021,168 +5763,111 @@ def __del__(self):
 %nodefaultctor Graphic3d_SequenceOfStructure;
 class Graphic3d_SequenceOfStructure : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_SequenceOfStructure;
+		%feature("autodoc", "	:rtype: None
+") Graphic3d_SequenceOfStructure;
 		 Graphic3d_SequenceOfStructure ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Graphic3d_SequenceOfStructure)
-
-Returns:
-	Graphic3d_SequenceOfStructure
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_SequenceOfStructure &
+	:rtype: Graphic3d_SequenceOfStructure
+") Assign;
 		const Graphic3d_SequenceOfStructure & Assign (const Graphic3d_SequenceOfStructure & Other);
-		%feature("autodoc", "Args:
-	Other(Graphic3d_SequenceOfStructure)
-
-Returns:
-	Graphic3d_SequenceOfStructure
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_SequenceOfStructure &
+	:rtype: Graphic3d_SequenceOfStructure
+") operator=;
 		const Graphic3d_SequenceOfStructure & operator = (const Graphic3d_SequenceOfStructure & Other);
-		%feature("autodoc", "Args:
-	T(Handle_Graphic3d_Structure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Graphic3d_Structure &
+	:rtype: None
+") Append;
 		void Append (const Handle_Graphic3d_Structure & T);
-		%feature("autodoc", "Args:
-	S(Graphic3d_SequenceOfStructure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Graphic3d_SequenceOfStructure &
+	:rtype: None
+") Append;
 		void Append (Graphic3d_SequenceOfStructure & S);
-		%feature("autodoc", "Args:
-	T(Handle_Graphic3d_Structure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Graphic3d_Structure &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Graphic3d_Structure & T);
-		%feature("autodoc", "Args:
-	S(Graphic3d_SequenceOfStructure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Graphic3d_SequenceOfStructure &
+	:rtype: None
+") Prepend;
 		void Prepend (Graphic3d_SequenceOfStructure & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Graphic3d_Structure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Graphic3d_Structure &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_Graphic3d_Structure & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Graphic3d_SequenceOfStructure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Graphic3d_SequenceOfStructure &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Graphic3d_SequenceOfStructure & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Graphic3d_Structure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Graphic3d_Structure &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_Graphic3d_Structure & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Graphic3d_SequenceOfStructure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Graphic3d_SequenceOfStructure &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Graphic3d_SequenceOfStructure & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_Structure
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_Structure
+") First;
 		const Handle_Graphic3d_Structure & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_Structure
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_Structure
+") Last;
 		const Handle_Graphic3d_Structure & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Graphic3d_SequenceOfStructure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Graphic3d_SequenceOfStructure &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Graphic3d_SequenceOfStructure & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Graphic3d_Structure
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Graphic3d_Structure
+") Value;
 		const Handle_Graphic3d_Structure & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_Graphic3d_Structure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_Graphic3d_Structure &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Graphic3d_Structure & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Graphic3d_Structure
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Graphic3d_Structure
+") ChangeValue;
 		Handle_Graphic3d_Structure & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -7204,49 +5889,27 @@ def __del__(self):
 %nodefaultctor Graphic3d_SetIteratorOfSetOfGroup;
 class Graphic3d_SetIteratorOfSetOfGroup {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_SetIteratorOfSetOfGroup;
+		%feature("autodoc", "	:rtype: None
+") Graphic3d_SetIteratorOfSetOfGroup;
 		 Graphic3d_SetIteratorOfSetOfGroup ();
-		%feature("autodoc", "Args:
-	S(Graphic3d_SetOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_SetIteratorOfSetOfGroup;
+		%feature("autodoc", "	:param S:
+	:type S: Graphic3d_SetOfGroup &
+	:rtype: None
+") Graphic3d_SetIteratorOfSetOfGroup;
 		 Graphic3d_SetIteratorOfSetOfGroup (const Graphic3d_SetOfGroup & S);
-		%feature("autodoc", "Args:
-	S(Graphic3d_SetOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param S:
+	:type S: Graphic3d_SetOfGroup &
+	:rtype: None
+") Initialize;
 		void Initialize (const Graphic3d_SetOfGroup & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_Group
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_Group
+") Value;
 		const Handle_Graphic3d_Group & Value ();
 };
 
@@ -7268,164 +5931,103 @@ def __del__(self):
 %nodefaultctor Graphic3d_SetListOfSetOfGroup;
 class Graphic3d_SetListOfSetOfGroup {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_SetListOfSetOfGroup;
+		%feature("autodoc", "	:rtype: None
+") Graphic3d_SetListOfSetOfGroup;
 		 Graphic3d_SetListOfSetOfGroup ();
-		%feature("autodoc", "Args:
-	Other(Graphic3d_SetListOfSetOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_SetListOfSetOfGroup &
+	:rtype: None
+") Assign;
 		void Assign (const Graphic3d_SetListOfSetOfGroup & Other);
-		%feature("autodoc", "Args:
-	Other(Graphic3d_SetListOfSetOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_SetListOfSetOfGroup &
+	:rtype: None
+") operator=;
 		void operator = (const Graphic3d_SetListOfSetOfGroup & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(Handle_Graphic3d_Group)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Graphic3d_Group &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Graphic3d_Group & I);
-		%feature("autodoc", "Args:
-	I(Handle_Graphic3d_Group)
-	theIt(Graphic3d_ListIteratorOfSetListOfSetOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Graphic3d_Group &
+	:param theIt:
+	:type theIt: Graphic3d_ListIteratorOfSetListOfSetOfGroup &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Graphic3d_Group & I,Graphic3d_ListIteratorOfSetListOfSetOfGroup & theIt);
-		%feature("autodoc", "Args:
-	Other(Graphic3d_SetListOfSetOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_SetListOfSetOfGroup &
+	:rtype: None
+") Prepend;
 		void Prepend (Graphic3d_SetListOfSetOfGroup & Other);
-		%feature("autodoc", "Args:
-	I(Handle_Graphic3d_Group)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Graphic3d_Group &
+	:rtype: None
+") Append;
 		void Append (const Handle_Graphic3d_Group & I);
-		%feature("autodoc", "Args:
-	I(Handle_Graphic3d_Group)
-	theIt(Graphic3d_ListIteratorOfSetListOfSetOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Graphic3d_Group &
+	:param theIt:
+	:type theIt: Graphic3d_ListIteratorOfSetListOfSetOfGroup &
+	:rtype: None
+") Append;
 		void Append (const Handle_Graphic3d_Group & I,Graphic3d_ListIteratorOfSetListOfSetOfGroup & theIt);
-		%feature("autodoc", "Args:
-	Other(Graphic3d_SetListOfSetOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_SetListOfSetOfGroup &
+	:rtype: None
+") Append;
 		void Append (Graphic3d_SetListOfSetOfGroup & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_Group
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_Group
+") First;
 		Handle_Graphic3d_Group & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_Group
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_Group
+") Last;
 		Handle_Graphic3d_Group & Last ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(Graphic3d_ListIteratorOfSetListOfSetOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: Graphic3d_ListIteratorOfSetListOfSetOfGroup &
+	:rtype: None
+") Remove;
 		void Remove (Graphic3d_ListIteratorOfSetListOfSetOfGroup & It);
-		%feature("autodoc", "Args:
-	I(Handle_Graphic3d_Group)
-	It(Graphic3d_ListIteratorOfSetListOfSetOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Graphic3d_Group &
+	:param It:
+	:type It: Graphic3d_ListIteratorOfSetListOfSetOfGroup &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Handle_Graphic3d_Group & I,Graphic3d_ListIteratorOfSetListOfSetOfGroup & It);
-		%feature("autodoc", "Args:
-	Other(Graphic3d_SetListOfSetOfGroup)
-	It(Graphic3d_ListIteratorOfSetListOfSetOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_SetListOfSetOfGroup &
+	:param It:
+	:type It: Graphic3d_ListIteratorOfSetListOfSetOfGroup &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (Graphic3d_SetListOfSetOfGroup & Other,Graphic3d_ListIteratorOfSetListOfSetOfGroup & It);
-		%feature("autodoc", "Args:
-	I(Handle_Graphic3d_Group)
-	It(Graphic3d_ListIteratorOfSetListOfSetOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Graphic3d_Group &
+	:param It:
+	:type It: Graphic3d_ListIteratorOfSetListOfSetOfGroup &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Handle_Graphic3d_Group & I,Graphic3d_ListIteratorOfSetListOfSetOfGroup & It);
-		%feature("autodoc", "Args:
-	Other(Graphic3d_SetListOfSetOfGroup)
-	It(Graphic3d_ListIteratorOfSetListOfSetOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: Graphic3d_SetListOfSetOfGroup &
+	:param It:
+	:type It: Graphic3d_ListIteratorOfSetListOfSetOfGroup &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (Graphic3d_SetListOfSetOfGroup & Other,Graphic3d_ListIteratorOfSetListOfSetOfGroup & It);
 };
 
@@ -7447,97 +6049,57 @@ def __del__(self):
 %nodefaultctor Graphic3d_SetOfGroup;
 class Graphic3d_SetOfGroup {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_SetOfGroup;
+		%feature("autodoc", "	:rtype: None
+") Graphic3d_SetOfGroup;
 		 Graphic3d_SetOfGroup ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	T(Handle_Graphic3d_Group)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Graphic3d_Group &
+	:rtype: bool
+") Add;
 		Standard_Boolean Add (const Handle_Graphic3d_Group & T);
-		%feature("autodoc", "Args:
-	T(Handle_Graphic3d_Group)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Graphic3d_Group &
+	:rtype: bool
+") Remove;
 		Standard_Boolean Remove (const Handle_Graphic3d_Group & T);
-		%feature("autodoc", "Args:
-	B(Graphic3d_SetOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Union;
+		%feature("autodoc", "	:param B:
+	:type B: Graphic3d_SetOfGroup &
+	:rtype: None
+") Union;
 		void Union (const Graphic3d_SetOfGroup & B);
-		%feature("autodoc", "Args:
-	B(Graphic3d_SetOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Intersection;
+		%feature("autodoc", "	:param B:
+	:type B: Graphic3d_SetOfGroup &
+	:rtype: None
+") Intersection;
 		void Intersection (const Graphic3d_SetOfGroup & B);
-		%feature("autodoc", "Args:
-	B(Graphic3d_SetOfGroup)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Difference;
+		%feature("autodoc", "	:param B:
+	:type B: Graphic3d_SetOfGroup &
+	:rtype: None
+") Difference;
 		void Difference (const Graphic3d_SetOfGroup & B);
-		%feature("autodoc", "Args:
-	T(Handle_Graphic3d_Group)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Graphic3d_Group &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const Handle_Graphic3d_Group & T);
-		%feature("autodoc", "Args:
-	S(Graphic3d_SetOfGroup)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsASubset;
+		%feature("autodoc", "	:param S:
+	:type S: Graphic3d_SetOfGroup &
+	:rtype: bool
+") IsASubset;
 		Standard_Boolean IsASubset (const Graphic3d_SetOfGroup & S);
-		%feature("autodoc", "Args:
-	S(Graphic3d_SetOfGroup)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAProperSubset;
+		%feature("autodoc", "	:param S:
+	:type S: Graphic3d_SetOfGroup &
+	:rtype: bool
+") IsAProperSubset;
 		Standard_Boolean IsAProperSubset (const Graphic3d_SetOfGroup & S);
 };
 
@@ -7559,58 +6121,48 @@ def __del__(self):
 %nodefaultctor Graphic3d_ShaderObject;
 class Graphic3d_ShaderObject : public Standard_Transient {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Checks if the shader object is valid or not.
 
-Checks if the shader object is valid or not.") IsDone;
+	:rtype: bool
+") IsDone;
 		virtual Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	OSD_Path
+		%feature("autodoc", "	* Returns the full path to the shader source.
 
-Returns the full path to the shader source.") Path;
+	:rtype: OSD_Path
+") Path;
 		const OSD_Path & Path ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* Returns the source code of the shader object.
 
-Returns the source code of the shader object.") Source;
+	:rtype: TCollection_AsciiString
+") Source;
 		const TCollection_AsciiString & Source ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_TypeOfShaderObject
+		%feature("autodoc", "	* Returns type of the shader object.
 
-Returns type of the shader object.") Type;
+	:rtype: Graphic3d_TypeOfShaderObject
+") Type;
 		Graphic3d_TypeOfShaderObject Type ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* Returns unique ID used to manage resource in graphic driver.
 
-Returns unique ID used to manage resource in graphic driver.") GetId;
+	:rtype: TCollection_AsciiString
+") GetId;
 		const TCollection_AsciiString & GetId ();
-		%feature("autodoc", "Args:
-	theType(Graphic3d_TypeOfShaderObject)
-	thePath(TCollection_AsciiString)
+		%feature("autodoc", "	* Creates new shader object from specified file.
 
-Returns:
-	static Handle_Graphic3d_ShaderObject
-
-Creates new shader object from specified file.") CreateFromFile;
+	:param theType:
+	:type theType: Graphic3d_TypeOfShaderObject
+	:param thePath:
+	:type thePath: TCollection_AsciiString &
+	:rtype: Handle_Graphic3d_ShaderObject
+") CreateFromFile;
 		static Handle_Graphic3d_ShaderObject CreateFromFile (const Graphic3d_TypeOfShaderObject theType,const TCollection_AsciiString & thePath);
-		%feature("autodoc", "Args:
-	theType(Graphic3d_TypeOfShaderObject)
-	theSource(TCollection_AsciiString)
+		%feature("autodoc", "	* Creates new shader object from specified source.
 
-Returns:
-	static Handle_Graphic3d_ShaderObject
-
-Creates new shader object from specified source.") CreateFromSource;
+	:param theType:
+	:type theType: Graphic3d_TypeOfShaderObject
+	:param theSource:
+	:type theSource: TCollection_AsciiString &
+	:rtype: Handle_Graphic3d_ShaderObject
+") CreateFromSource;
 		static Handle_Graphic3d_ShaderObject CreateFromSource (const Graphic3d_TypeOfShaderObject theType,const TCollection_AsciiString & theSource);
 };
 
@@ -7632,87 +6184,66 @@ def __del__(self):
 %nodefaultctor Graphic3d_ShaderProgram;
 class Graphic3d_ShaderProgram : public Standard_Transient {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates new empty program object.
 
-Creates new empty program object.") Graphic3d_ShaderProgram;
+	:rtype: None
+") Graphic3d_ShaderProgram;
 		 Graphic3d_ShaderProgram ();
-		%feature("autodoc", "Args:
-	theName(Graphic3d_ShaderProgram::ShaderName)
+		%feature("autodoc", "	* Creates program object from pre-defined shaders. Raises Standard_Failure exception if shader resources are unavailable.
 
-Returns:
-	None
-
-Creates program object from pre-defined shaders.
-Raises Standard_Failure exception if shader resources are unavailable.") Graphic3d_ShaderProgram;
+	:param theName:
+	:type theName: Graphic3d_ShaderProgram::ShaderName
+	:rtype: None
+") Graphic3d_ShaderProgram;
 		 Graphic3d_ShaderProgram (const Graphic3d_ShaderProgram::ShaderName theName);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Releases resources of program object.
 
-Releases resources of program object.") Destroy;
+	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Checks if the program object is valid or not.
 
-Checks if the program object is valid or not.") IsDone;
+	:rtype: bool
+") IsDone;
 		virtual Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* Returns unique ID used to manage resource in graphic driver.
 
-Returns unique ID used to manage resource in graphic driver.") GetId;
+	:rtype: TCollection_AsciiString
+") GetId;
 		const TCollection_AsciiString & GetId ();
-		%feature("autodoc", "Args:
-	theShader(Handle_Graphic3d_ShaderObject)
+		%feature("autodoc", "	* Attaches shader object to the program object.
 
-Returns:
-	Standard_Boolean
-
-Attaches shader object to the program object.") AttachShader;
+	:param theShader:
+	:type theShader: Handle_Graphic3d_ShaderObject &
+	:rtype: bool
+") AttachShader;
 		Standard_Boolean AttachShader (const Handle_Graphic3d_ShaderObject & theShader);
-		%feature("autodoc", "Args:
-	theShader(Handle_Graphic3d_ShaderObject)
+		%feature("autodoc", "	* Detaches shader object from the program object.
 
-Returns:
-	Standard_Boolean
-
-Detaches shader object from the program object.") DetachShader;
+	:param theShader:
+	:type theShader: Handle_Graphic3d_ShaderObject &
+	:rtype: bool
+") DetachShader;
 		Standard_Boolean DetachShader (const Handle_Graphic3d_ShaderObject & theShader);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_ShaderObjectList
+		%feature("autodoc", "	* Returns list of attached shader objects.
 
-Returns list of attached shader objects.") ShaderObjects;
+	:rtype: Graphic3d_ShaderObjectList
+") ShaderObjects;
 		const Graphic3d_ShaderObjectList & ShaderObjects ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_ShaderVariableList
+		%feature("autodoc", "	* Returns list of custom uniform variables.
 
-Returns list of custom uniform variables.") Variables;
+	:rtype: Graphic3d_ShaderVariableList
+") Variables;
 		const Graphic3d_ShaderVariableList & Variables ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Removes all custom uniform variables from the program.
 
-Removes all custom uniform variables from the program.") ClearVariables;
+	:rtype: None
+") ClearVariables;
 		void ClearVariables ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static  TCollection_AsciiString
+		%feature("autodoc", "	* The path to GLSL programs determined from CSF_ShadersDirectory or CASROOT environment variables. returns the root folder with default GLSL programs.
 
-The path to GLSL programs determined from CSF_ShadersDirectory or CASROOT environment variables.
-@return the root folder with default GLSL programs.") ShadersFolder;
+	:rtype: TCollection_AsciiString
+") ShadersFolder;
 		static const TCollection_AsciiString & ShadersFolder ();
 };
 
@@ -7734,26 +6265,20 @@ def __del__(self):
 %nodefaultctor Graphic3d_ShaderVariable;
 class Graphic3d_ShaderVariable : public Standard_Transient {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* Returns name of shader variable.
 
-Returns name of shader variable.") Name;
+	:rtype: TCollection_AsciiString
+") Name;
 		const TCollection_AsciiString & Name ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Checks if the shader variable is valid or not.
 
-Checks if the shader variable is valid or not.") IsDone;
+	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_ValueInterface *
+		%feature("autodoc", "	* Returns interface of shader variable value.
 
-Returns interface of shader variable value.") Value;
+	:rtype: Graphic3d_ValueInterface *
+") Value;
 		Graphic3d_ValueInterface * Value ();
 };
 
@@ -7775,21 +6300,15 @@ def __del__(self):
 %nodefaultctor Graphic3d_StdMapNodeOfMapOfStructure;
 class Graphic3d_StdMapNodeOfMapOfStructure : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(Handle_Graphic3d_Structure)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_StdMapNodeOfMapOfStructure;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Graphic3d_Structure &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") Graphic3d_StdMapNodeOfMapOfStructure;
 		 Graphic3d_StdMapNodeOfMapOfStructure (const Handle_Graphic3d_Structure & K,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_Structure
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_Structure
+") Key;
 		Handle_Graphic3d_Structure & Key ();
 };
 
@@ -7850,880 +6369,585 @@ def __del__(self):
 %nodefaultctor Graphic3d_Structure;
 class Graphic3d_Structure : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	AManager(Handle_Graphic3d_StructureManager)
+		%feature("autodoc", "	* Creates a graphic object in the manager <AManager>. //!	 It will appear in all the views of the visualiser. Warning: The default values AspectLine, AspectFillArea, //!	 AspectText and AspectMarker are NOT applied to the //!	 structure. //!	 The structure is not displayed when it is created.
 
-Returns:
-	None
-
-Creates a graphic object in the manager <AManager>.  
-//!	    It will appear in all the views of the visualiser.  
- Warning: The default values AspectLine, AspectFillArea,  
-//!	    AspectText and AspectMarker are NOT applied to the  
-//!	    structure.  
-//!	    The structure is not displayed when it is created.") Graphic3d_Structure;
+	:param AManager:
+	:type AManager: Handle_Graphic3d_StructureManager &
+	:rtype: None
+") Graphic3d_Structure;
 		 Graphic3d_Structure (const Handle_Graphic3d_StructureManager & AManager);
-		%feature("autodoc", "Args:
-	WithDestruction(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* if WithDestruction == Standard_True then //!		suppress all the groups of primitives in the structure. //!	 and it is mandatory to create a new group in <self>. //!	 if WithDestruction == Standard_False then //!		clears all the groups of primitives in the structure. //!	 and all the groups are conserved and empty. //!	 They will be erased at the next screen update. //!	 The structure itself is conserved. //!	 The transformation and the attributes of <self> are conserved. //!	 The childs of <self> are conserved.
 
-Returns:
-	virtual void
-
-if WithDestruction == Standard_True then  
-//!		suppress all the groups of primitives in the structure.  
-//!	        and it is mandatory to create a new group in <self>.  
-//!	    if WithDestruction == Standard_False then  
-//!		clears all the groups of primitives in the structure.  
-//!	        and all the groups are conserved and empty.  
-//!	    They will be erased at the next screen update.  
-//!	    The structure itself is conserved.  
-//!	    The transformation and the attributes of <self> are conserved.  
-//!	    The childs of <self> are conserved.") Clear;
+	:param WithDestruction: default value is Standard_True
+	:type WithDestruction: bool
+	:rtype: void
+") Clear;
 		virtual void Clear (const Standard_Boolean WithDestruction = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Suppresses the structure <self>. //!	 It will be erased at the next screen update.
 
-Suppresses the structure <self>.  
-//!	    It will be erased at the next screen update.") Destroy;
+	:rtype: void
+") Destroy;
 		virtual void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Displays the structure <self> in all the views of //!	 the visualiser.
 
-Displays the structure <self> in all the views of  
-//!	    the visualiser.") Display;
+	:rtype: void
+") Display;
 		virtual void Display ();
-		%feature("autodoc", "Args:
-	Priority(Standard_Integer)
+		%feature("autodoc", "	* Displays the structure <self> in all the views of //!	 the visualiser, while modifying its current priority. Note: Display Priorities Structure display priorities control the order in which structures are redrawn. When you display a structure, you specify its priority. The lower the value, the lower the display priority. When the display is regenerated, the structures with the lowest priority are drawn first. For structures with the same display priority, the order in which they were displayed determines the drawing order. Open CASCADE supports 11 structure display priorities, 0 to 10. Warning: Raises PriorityDefinitionError if <Priority> is //!	 greater than 10 or a negative value.
 
-Returns:
-	None
-
-Displays the structure <self> in all the views of  
-//!	    the visualiser, while modifying its current priority.  
-         Note: Display Priorities  
-         Structure display priorities control the order in which  
-         structures are redrawn.   When you display a  
-         structure, you specify its priority. The lower the value,  
-         the lower the display priority. When the display is  
-         regenerated, the structures with the lowest priority  
-         are drawn first. For structures with the same display  
-         priority, the order in which they were displayed  
-         determines the drawing order. Open CASCADE  
-         supports 11 structure display priorities, 0 to 10.  
-         Warning: Raises PriorityDefinitionError if <Priority> is  
-//!	    greater than 10 or a negative value.") Display;
+	:param Priority:
+	:type Priority: Standard_Integer
+	:rtype: None
+") Display;
 		void Display (const Standard_Integer Priority);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the current display priority for the //!	 structure <self>.
 
-Returns the current display priority for the  
-//!	    structure <self>.") DisplayPriority;
+	:rtype: int
+") DisplayPriority;
 		Standard_Integer DisplayPriority ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Erases the structure <self> in all the views //!	 of the visualiser.
 
-Erases the structure <self> in all the views  
-//!	    of the visualiser.") Erase;
+	:rtype: void
+") Erase;
 		virtual void Erase ();
-		%feature("autodoc", "Args:
-	Method(Aspect_TypeOfHighlightMethod)
+		%feature("autodoc", "	* Highlights the structure <self> in all the //!	 views of the visualiser, using the following methods: TOHM_COLOR		= drawn in the highlight color //!				 (default white) //!	 TOHM_BLINK		= blinking TOHM_BOUNDBOX	= enclosed by the boundary box //!				 (default white)
 
-Returns:
-	None
-
-Highlights the structure <self> in all the  
-//!	    views of the visualiser, using the following methods:  
- 
-  TOHM_COLOR		= drawn in the highlight color  
-//!				  (default white)  
-//!	    TOHM_BLINK		= blinking  
-  TOHM_BOUNDBOX	= enclosed by the boundary box  
-//!				  (default white)") Highlight;
+	:param Method:
+	:type Method: Aspect_TypeOfHighlightMethod
+	:rtype: None
+") Highlight;
 		void Highlight (const Aspect_TypeOfHighlightMethod Method);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Suppress the structure <self>. //!	 It will be erased at the next screen update. Warning: No more graphic operations in <self> after this call. Category: Methods to modify the class definition
 
-Suppress the structure <self>.  
-//!	    It will be erased at the next screen update.  
- Warning: No more graphic operations in <self> after this call.  
- Category: Methods to modify the class definition") Remove;
+	:rtype: None
+") Remove;
 		void Remove ();
-		%feature("autodoc", "Args:
-	AColor(Quantity_Color)
+		%feature("autodoc", "	* Modifies the highlight color for the Highlight method //!	 with the highlight method TOHM_COLOR or TOHM_BOUNDBOX.
 
-Returns:
-	None
-
-Modifies the highlight color for the Highlight method  
-//!	    with the highlight method TOHM_COLOR or TOHM_BOUNDBOX.") SetHighlightColor;
+	:param AColor:
+	:type AColor: Quantity_Color &
+	:rtype: None
+") SetHighlightColor;
 		void SetHighlightColor (const Quantity_Color & AColor);
-		%feature("autodoc", "Args:
-	AFlag(Standard_Boolean)
+		%feature("autodoc", "	* Modifies the coordinates of the boundary box //!	 of the structure <self>. //!	 if <AFlag> is Standard_True then <self> is infinite and //!	 the MinMaxValues method or the MinMaxCoord method return : //!	 XMin = YMin = ZMin = RealFirst (). //!	 XMax = YMax = ZMax = RealLast (). //!	 By default, <self> is not infinite but empty.
 
-Returns:
-	None
-
-Modifies the coordinates of the boundary box  
-//!	    of the structure <self>.  
-//!	    if <AFlag> is Standard_True then <self> is infinite and  
-//!	    the MinMaxValues method or the MinMaxCoord method return :  
-//!	    XMin = YMin = ZMin = RealFirst ().  
-//!	    XMax = YMax = ZMax = RealLast ().  
-//!	    By default, <self> is not infinite but empty.") SetInfiniteState;
+	:param AFlag:
+	:type AFlag: bool
+	:rtype: None
+") SetInfiniteState;
 		void SetInfiniteState (const Standard_Boolean AFlag);
-		%feature("autodoc", "Args:
-	Priority(Standard_Integer)
+		%feature("autodoc", "	* Modifies the order of displaying the structure. //!	 Values are between 0 and 10. Structures are drawn according to their display priorities in ascending order. //!	 A structure of priority 10 is displayed the last and appears over the others. //!	 The default value is 5. Category: Methods to modify the class definition Warning: If <self> is displayed then the SetDisplayPriority //!	 method erase <self> and display <self> with the //!	 new priority. //!	 Raises PriorityDefinitionError if <Priority> is //!	 greater than 10 or a negative value.
 
-Returns:
-	None
-
-Modifies the order of displaying the structure.  
-//!	    Values are between 0 and 10.  
-         Structures are drawn according to their display priorities  
-         in ascending order.  
-//!	    A structure of priority 10 is displayed the last and appears over the others.  
-//!	    The default value is 5.  
- Category: Methods to modify the class definition  
- Warning: If <self> is displayed then the SetDisplayPriority  
-//!	    method erase <self> and display <self> with the  
-//!	    new priority.  
-//!	    Raises PriorityDefinitionError if <Priority> is  
-//!	    greater than 10 or a negative value.") SetDisplayPriority;
+	:param Priority:
+	:type Priority: Standard_Integer
+	:rtype: None
+") SetDisplayPriority;
 		void SetDisplayPriority (const Standard_Integer Priority);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Reset the current priority of the structure to the //!	 previous priority. Category: Methods to modify the class definition Warning: If <self> is displayed then the SetDisplayPriority //!	 method erase <self> and display <self> with the //!	 previous priority.
 
-Reset the current priority of the structure to the  
-//!	    previous priority.  
- Category: Methods to modify the class definition  
- Warning: If <self> is displayed then the SetDisplayPriority  
-//!	    method erase <self> and display <self> with the  
-//!	    previous priority.") ResetDisplayPriority;
+	:rtype: None
+") ResetDisplayPriority;
 		void ResetDisplayPriority ();
-		%feature("autodoc", "Args:
-	theLayerId(Standard_Integer)
+		%feature("autodoc", "	* Set Z layer ID for the structure. The Z layer mechanism allows to display structures presented in higher layers in overlay of structures in lower layers by switching off z buffer depth test between layers
 
-Returns:
-	None
-
-Set Z layer ID for the structure. The Z layer mechanism  
-allows to display structures presented in higher layers in overlay  
-of structures in lower layers by switching off z buffer depth  
-test between layers") SetZLayer;
+	:param theLayerId:
+	:type theLayerId: Standard_Integer
+	:rtype: None
+") SetZLayer;
 		void SetZLayer (const Standard_Integer theLayerId);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Get Z layer ID of displayed structure. The method returns -1 if the structure has no ID (deleted from graphic driver).
 
-Get Z layer ID of displayed structure. The method  
-returns -1 if the structure has no ID (deleted from graphic driver).") GetZLayer;
+	:rtype: int
+") GetZLayer;
 		Standard_Integer GetZLayer ();
-		%feature("autodoc", "Args:
-	thePlanes(Graphic3d_SequenceOfHClipPlane)
+		%feature("autodoc", "	* Changes a sequence of clip planes slicing the structure on rendering. @param thePlanes [in] the set of clip planes.
 
-Returns:
-	None
-
-Changes a sequence of clip planes slicing the structure on rendering.  
-@param thePlanes [in] the set of clip planes.") SetClipPlanes;
+	:param thePlanes:
+	:type thePlanes: Graphic3d_SequenceOfHClipPlane &
+	:rtype: None
+") SetClipPlanes;
 		void SetClipPlanes (const Graphic3d_SequenceOfHClipPlane & thePlanes);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_SequenceOfHClipPlane
+		%feature("autodoc", "	* Get clip planes slicing the structure on rendering. returns set of clip planes.
 
-Get clip planes slicing the structure on rendering.  
-@return set of clip planes.") GetClipPlanes;
+	:rtype: Graphic3d_SequenceOfHClipPlane
+") GetClipPlanes;
 		const Graphic3d_SequenceOfHClipPlane & GetClipPlanes ();
-		%feature("autodoc", "Args:
-	AValue(Standard_Boolean)
+		%feature("autodoc", "	* Modifies the detectability indicator to Standard_True //!	 or Standard_False for the structure <self>. //!	 The default value at the definition of <self> is //!	 Standard_True.
 
-Returns:
-	None
-
-Modifies the detectability indicator to Standard_True  
-//!	    or Standard_False for the structure <self>.  
-//!	    The default value at the definition of <self> is  
-//!	    Standard_True.") SetPick;
+	:param AValue:
+	:type AValue: bool
+	:rtype: None
+") SetPick;
 		void SetPick (const Standard_Boolean AValue);
-		%feature("autodoc", "Args:
-	CTX(Handle_Graphic3d_AspectLine3d)
+		%feature("autodoc", "	* Modifies the default attributes for lines //!	 in the structure <self>.
 
-Returns:
-	None
-
-Modifies the default attributes for lines  
-//!	    in the structure <self>.") SetPrimitivesAspect;
+	:param CTX:
+	:type CTX: Handle_Graphic3d_AspectLine3d &
+	:rtype: None
+") SetPrimitivesAspect;
 		void SetPrimitivesAspect (const Handle_Graphic3d_AspectLine3d & CTX);
-		%feature("autodoc", "Args:
-	CTX(Handle_Graphic3d_AspectFillArea3d)
+		%feature("autodoc", "	* Modifies the default attributes for faces //!	 in the structure <self>.
 
-Returns:
-	None
-
-Modifies the default attributes for faces  
-//!	    in the structure <self>.") SetPrimitivesAspect;
+	:param CTX:
+	:type CTX: Handle_Graphic3d_AspectFillArea3d &
+	:rtype: None
+") SetPrimitivesAspect;
 		void SetPrimitivesAspect (const Handle_Graphic3d_AspectFillArea3d & CTX);
-		%feature("autodoc", "Args:
-	CTX(Handle_Graphic3d_AspectText3d)
+		%feature("autodoc", "	* Modifies the default attributes for text //!	 in the structure <self>.
 
-Returns:
-	None
-
-Modifies the default attributes for text  
-//!	    in the structure <self>.") SetPrimitivesAspect;
+	:param CTX:
+	:type CTX: Handle_Graphic3d_AspectText3d &
+	:rtype: None
+") SetPrimitivesAspect;
 		void SetPrimitivesAspect (const Handle_Graphic3d_AspectText3d & CTX);
-		%feature("autodoc", "Args:
-	CTX(Handle_Graphic3d_AspectMarker3d)
+		%feature("autodoc", "	* Modifies the default attributes for markers //!	 in the structure <self>.
 
-Returns:
-	None
-
-Modifies the default attributes for markers  
-//!	    in the structure <self>.") SetPrimitivesAspect;
+	:param CTX:
+	:type CTX: Handle_Graphic3d_AspectMarker3d &
+	:rtype: None
+") SetPrimitivesAspect;
 		void SetPrimitivesAspect (const Handle_Graphic3d_AspectMarker3d & CTX);
-		%feature("autodoc", "Args:
-	AValue(Standard_Boolean)
+		%feature("autodoc", "	* Modifies the visibility indicator to Standard_True or //!	 Standard_False for the structure <self>. //!	 The default value at the definition of <self> is //!	 Standard_True.
 
-Returns:
-	None
-
-Modifies the visibility indicator to Standard_True or  
-//!	    Standard_False for the structure <self>.  
-//!	    The default value at the definition of <self> is  
-//!	    Standard_True.") SetVisible;
+	:param AValue:
+	:type AValue: bool
+	:rtype: None
+") SetVisible;
 		void SetVisible (const Standard_Boolean AValue);
-		%feature("autodoc", "Args:
-	AManager(Handle_Graphic3d_StructureManager)
-	WithPropagation(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Moves the graphic object <self> in the manager <AManager>. //!	 If <WithPropagation> is Standard_True then all the connected //!	 graphic objects to <self> are moved.
 
-Returns:
-	None
-
-Moves the graphic object <self> in the manager <AManager>.  
-//!	    If <WithPropagation> is Standard_True then all the connected  
-//!	    graphic objects to <self> are moved.") SetManager;
+	:param AManager:
+	:type AManager: Handle_Graphic3d_StructureManager &
+	:param WithPropagation: default value is Standard_False
+	:type WithPropagation: bool
+	:rtype: None
+") SetManager;
 		void SetManager (const Handle_Graphic3d_StructureManager & AManager,const Standard_Boolean WithPropagation = Standard_False);
-		%feature("autodoc", "Args:
-	AVisual(Graphic3d_TypeOfStructure)
+		%feature("autodoc", "	* Modifies the visualisation mode for the structure <self>.
 
-Returns:
-	virtual void
-
-Modifies the visualisation mode for the structure <self>.") SetVisual;
+	:param AVisual:
+	:type AVisual: Graphic3d_TypeOfStructure
+	:rtype: void
+") SetVisual;
 		virtual void SetVisual (const Graphic3d_TypeOfStructure AVisual);
-		%feature("autodoc", "Args:
-	LimitInf(Standard_Real)
-	LimitSup(Standard_Real)
+		%feature("autodoc", "	* Modifies the minimum and maximum zoom coefficients //!	 for the structure <self>. //!	 The default value at the definition of <self> is unlimited. Category: Methods to modify the class definition Warning: Raises StructureDefinitionError if <LimitInf> is //!	 greater than <LimitSup> or if <LimitInf> or //!	 <LimitSup> is a negative value.
 
-Returns:
-	None
-
-Modifies the minimum and maximum zoom coefficients  
-//!	    for the structure <self>.  
-//!	    The default value at the definition of <self> is unlimited.  
- Category: Methods to modify the class definition  
- Warning: Raises StructureDefinitionError if <LimitInf> is  
-//!	    greater than <LimitSup> or if <LimitInf> or  
-//!	    <LimitSup> is a negative value.") SetZoomLimit;
+	:param LimitInf:
+	:type LimitInf: float
+	:param LimitSup:
+	:type LimitSup: float
+	:rtype: None
+") SetZoomLimit;
 		void SetZoomLimit (const Standard_Real LimitInf,const Standard_Real LimitSup);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Suppresses the highlight for the structure <self> //!	 in all the views of the visualiser.
 
-Suppresses the highlight for the structure <self>  
-//!	     in all the views of the visualiser.") UnHighlight;
+	:rtype: None
+") UnHighlight;
 		void UnHighlight ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Compute;
+		%feature("autodoc", "	:rtype: void
+") Compute;
 		virtual void Compute ();
-		%feature("autodoc", "Args:
-	aProjector(Handle_Graphic3d_DataStructureManager)
+		%feature("autodoc", "	* Returns the new Structure defined for the new visualization
 
-Returns:
-	virtual Handle_Graphic3d_Structure
-
-Returns the new Structure defined for the new visualization") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Graphic3d_DataStructureManager &
+	:rtype: Handle_Graphic3d_Structure
+") Compute;
 		virtual Handle_Graphic3d_Structure Compute (const Handle_Graphic3d_DataStructureManager & aProjector);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Graphic3d_DataStructureManager)
-	AMatrix(TColStd_Array2OfReal)
+		%feature("autodoc", "	* Returns the new Structure defined for the new visualization
 
-Returns:
-	virtual Handle_Graphic3d_Structure
-
-Returns the new Structure defined for the new visualization") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Graphic3d_DataStructureManager &
+	:param AMatrix:
+	:type AMatrix: TColStd_Array2OfReal &
+	:rtype: Handle_Graphic3d_Structure
+") Compute;
 		virtual Handle_Graphic3d_Structure Compute (const Handle_Graphic3d_DataStructureManager & aProjector,const TColStd_Array2OfReal & AMatrix);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Graphic3d_DataStructureManager)
-	aStructure(Handle_Graphic3d_Structure)
+		%feature("autodoc", "	* Returns the new Structure defined for the new visualization
 
-Returns:
-	virtual void
-
-Returns the new Structure defined for the new visualization") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Graphic3d_DataStructureManager &
+	:param aStructure:
+	:type aStructure: Handle_Graphic3d_Structure &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Graphic3d_DataStructureManager & aProjector,Handle_Graphic3d_Structure & aStructure);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Graphic3d_DataStructureManager)
-	AMatrix(TColStd_Array2OfReal)
-	aStructure(Handle_Graphic3d_Structure)
+		%feature("autodoc", "	* Returns the new Structure defined for the new visualization
 
-Returns:
-	virtual void
-
-Returns the new Structure defined for the new visualization") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Graphic3d_DataStructureManager &
+	:param AMatrix:
+	:type AMatrix: TColStd_Array2OfReal &
+	:param aStructure:
+	:type aStructure: Handle_Graphic3d_Structure &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Graphic3d_DataStructureManager & aProjector,const TColStd_Array2OfReal & AMatrix,Handle_Graphic3d_Structure & aStructure);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Forces a new construction of the structure <self> //!	 if <self> is displayed and TOS_COMPUTED.
 
-Forces a new construction of the structure <self>  
-//!	    if <self> is displayed and TOS_COMPUTED.") ReCompute;
+	:rtype: None
+") ReCompute;
 		void ReCompute ();
-		%feature("autodoc", "Args:
-	aProjector(Handle_Graphic3d_DataStructureManager)
+		%feature("autodoc", "	* Forces a new construction of the structure <self> //!	 if <self> is displayed in <aProjetor> and TOS_COMPUTED.
 
-Returns:
-	None
-
-Forces a new construction of the structure <self>  
-//!	    if <self> is displayed in <aProjetor> and TOS_COMPUTED.") ReCompute;
+	:param aProjector:
+	:type aProjector: Handle_Graphic3d_DataStructureManager &
+	:rtype: None
+") ReCompute;
 		void ReCompute (const Handle_Graphic3d_DataStructureManager & aProjector);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns Standard_True if the structure <self> contains //!	 Polygons, Triangles or Quadrangles.
 
-Returns Standard_True if the structure <self> contains  
-//!	    Polygons, Triangles or Quadrangles.") ContainsFacet;
+	:rtype: bool
+") ContainsFacet;
 		Standard_Boolean ContainsFacet ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_AspectFillArea3d
+		%feature("autodoc", "	* Returns the values of the current default attributes.
 
-Returns the values of the current default attributes.") FillArea3dAspect;
+	:rtype: Handle_Graphic3d_AspectFillArea3d
+") FillArea3dAspect;
 		Handle_Graphic3d_AspectFillArea3d FillArea3dAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_SequenceOfGroup
+		%feature("autodoc", "	* Returns the groups sequence included in the structure <self> (internal storage).
 
-Returns the groups sequence included in the structure <self> (internal storage).") Groups;
+	:rtype: Graphic3d_SequenceOfGroup
+") Groups;
 		const Graphic3d_SequenceOfGroup & Groups ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the current number of groups in the //!	 structure <self>.
 
-Returns the current number of groups in the  
-//!	    structure <self>.") NumberOfGroups;
+	:rtype: int
+") NumberOfGroups;
 		Standard_Integer NumberOfGroups ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Color
+		%feature("autodoc", "	* Returns the highlight color for the Highlight method //!	 with the highlight method TOHM_COLOR or TOHM_BOUNDBOX.
 
-Returns the highlight color for the Highlight method  
-//!	    with the highlight method TOHM_COLOR or TOHM_BOUNDBOX.") HighlightColor;
+	:rtype: Quantity_Color
+") HighlightColor;
 		Quantity_Color HighlightColor ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns Standard_True if the structure <self> is deleted. //!	 <self> is deleted after the call Remove (me).
 
-Returns Standard_True if the structure <self> is deleted.  
-//!	    <self> is deleted after the call Remove (me).") IsDeleted;
+	:rtype: bool
+") IsDeleted;
 		Standard_Boolean IsDeleted ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Returns the display indicator for the structure <self>.
 
-Returns the display indicator for the structure <self>.") IsDisplayed;
+	:rtype: bool
+") IsDisplayed;
 		virtual Standard_Boolean IsDisplayed ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns Standard_True if the structure <self> is empty. Warning: A structure is empty if : //!		it do not have group or all the groups are empties //!		and it do not have descendant or all the descendants //!		are empties.
 
-Returns Standard_True if the structure <self> is empty.  
- Warning: A structure is empty if :  
-//!		it do not have group or all the groups are empties  
-//!		and it do not have descendant or all the descendants  
-//!		are empties.") IsEmpty;
+	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns Standard_True if the structure <self> is infinite.
 
-Returns Standard_True if the structure <self> is infinite.") IsInfinite;
+	:rtype: bool
+") IsInfinite;
 		Standard_Boolean IsInfinite ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Returns the highlight indicator for the structure <self>.
 
-Returns the highlight indicator for the structure <self>.") IsHighlighted;
+	:rtype: bool
+") IsHighlighted;
 		virtual Standard_Boolean IsHighlighted ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns the detectability indicator for the structure <self>.
 
-Returns the detectability indicator for the structure <self>.") IsSelectable;
+	:rtype: bool
+") IsSelectable;
 		Standard_Boolean IsSelectable ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns Standard_True if the structure <self> is rotated. //!	 <=> The transformation != Identity, != Scale, != Translation.
 
-Returns Standard_True if the structure <self> is rotated.  
-//!	    <=> The transformation != Identity, != Scale, != Translation.") IsRotated;
+	:rtype: bool
+") IsRotated;
 		Standard_Boolean IsRotated ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns Standard_True if the structure <self> is transformed. //!	 <=> The transformation != Identity.
 
-Returns Standard_True if the structure <self> is transformed.  
-//!	    <=> The transformation != Identity.") IsTransformed;
+	:rtype: bool
+") IsTransformed;
 		Standard_Boolean IsTransformed ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns the visibility indicator for the structure <self>.
 
-Returns the visibility indicator for the structure <self>.") IsVisible;
+	:rtype: bool
+") IsVisible;
 		Standard_Boolean IsVisible ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_AspectLine3d
+		%feature("autodoc", "	* Returns the values of the current default attributes.
 
-Returns the values of the current default attributes.") Line3dAspect;
+	:rtype: Handle_Graphic3d_AspectLine3d
+") Line3dAspect;
 		Handle_Graphic3d_AspectLine3d Line3dAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_AspectMarker3d
+		%feature("autodoc", "	* Returns the current group of graphic attributes used for 3d marker primitives.
 
-Returns the current group of graphic attributes used  
-for 3d marker primitives.") Marker3dAspect;
+	:rtype: Handle_Graphic3d_AspectMarker3d
+") Marker3dAspect;
 		Handle_Graphic3d_AspectMarker3d Marker3dAspect ();
-		%feature("autodoc", "Args:
-	XMin(Standard_Real)
-	YMin(Standard_Real)
-	ZMin(Standard_Real)
-	XMax(Standard_Real)
-	YMax(Standard_Real)
-	ZMax(Standard_Real)
+		%feature("autodoc", "	* Returns the coordinates of the boundary box //!	 of the structure <self>. Warning: If the structure <self> is empty or infinite then : //!	 XMin = YMin = ZMin = RealFirst (). //!	 XMax = YMax = ZMax = RealLast ().
 
-Returns:
-	None
-
-Returns the coordinates of the boundary box  
-//!	    of the structure <self>.  
- Warning: If the structure <self> is empty or infinite then :  
-//!	    XMin = YMin = ZMin = RealFirst ().  
-//!	    XMax = YMax = ZMax = RealLast ().") MinMaxValues;
+	:param XMin:
+	:type XMin: float &
+	:param YMin:
+	:type YMin: float &
+	:param ZMin:
+	:type ZMin: float &
+	:param XMax:
+	:type XMax: float &
+	:param YMax:
+	:type YMax: float &
+	:param ZMax:
+	:type ZMax: float &
+	:rtype: None
+") MinMaxValues;
 		void MinMaxValues (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	CTXL(Handle_Graphic3d_AspectLine3d)
-	CTXT(Handle_Graphic3d_AspectText3d)
-	CTXM(Handle_Graphic3d_AspectMarker3d)
-	CTXF(Handle_Graphic3d_AspectFillArea3d)
+		%feature("autodoc", "	* Returns the current values of the default attributes.
 
-Returns:
-	None
-
-Returns the current values of the default attributes.") PrimitivesAspect;
+	:param CTXL:
+	:type CTXL: Handle_Graphic3d_AspectLine3d &
+	:param CTXT:
+	:type CTXT: Handle_Graphic3d_AspectText3d &
+	:param CTXM:
+	:type CTXM: Handle_Graphic3d_AspectMarker3d &
+	:param CTXF:
+	:type CTXF: Handle_Graphic3d_AspectFillArea3d &
+	:rtype: None
+") PrimitivesAspect;
 		void PrimitivesAspect (Handle_Graphic3d_AspectLine3d & CTXL,Handle_Graphic3d_AspectText3d & CTXT,Handle_Graphic3d_AspectMarker3d & CTXM,Handle_Graphic3d_AspectFillArea3d & CTXF);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_AspectText3d
+		%feature("autodoc", "	* Returns the values of the current default attributes.
 
-Returns the values of the current default attributes.") Text3dAspect;
+	:rtype: Handle_Graphic3d_AspectText3d
+") Text3dAspect;
 		Handle_Graphic3d_AspectText3d Text3dAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_TypeOfStructure
+		%feature("autodoc", "	* Returns the visualisation mode for the structure <self>.
 
-Returns the visualisation mode for the structure <self>.") Visual;
+	:rtype: Graphic3d_TypeOfStructure
+") Visual;
 		Graphic3d_TypeOfStructure Visual ();
-		%feature("autodoc", "Args:
-	AStructure1(Handle_Graphic3d_Structure)
-	AStructure2(Handle_Graphic3d_Structure)
-	AType(Graphic3d_TypeOfConnection)
+		%feature("autodoc", "	* Returns Standard_True if the connection is possible between //!	 <AStructure1> and <AStructure2> without a creation //!	 of a cycle. //!	 It's not possible to call the method //!	 AStructure1->Connect (AStructure2, TypeOfConnection) //!	 if //!	 - the set of all ancestors of <AStructure1> contains //!	 <AStructure1> and if the //!	 TypeOfConnection == TOC_DESCENDANT //!	 - the set of all descendants of <AStructure1> contains //!	 <AStructure2> and if the //!	 TypeOfConnection == TOC_ANCESTOR
 
-Returns:
-	static Standard_Boolean
-
-Returns Standard_True if the connection is possible between  
-//!	    <AStructure1> and <AStructure2> without a creation  
-//!	    of a cycle.  
- 
-//!	    It's not possible to call the method  
-//!	       AStructure1->Connect (AStructure2, TypeOfConnection)  
-//!	    if  
-//!	    - the set of all ancestors of <AStructure1> contains  
-//!	      <AStructure1> and if the  
-//!	      TypeOfConnection == TOC_DESCENDANT  
-//!	    - the set of all descendants of <AStructure1> contains  
-//!	      <AStructure2> and if the  
-//!	      TypeOfConnection == TOC_ANCESTOR") AcceptConnection;
+	:param AStructure1:
+	:type AStructure1: Handle_Graphic3d_Structure &
+	:param AStructure2:
+	:type AStructure2: Handle_Graphic3d_Structure &
+	:param AType:
+	:type AType: Graphic3d_TypeOfConnection
+	:rtype: bool
+") AcceptConnection;
 		static Standard_Boolean AcceptConnection (const Handle_Graphic3d_Structure & AStructure1,const Handle_Graphic3d_Structure & AStructure2,const Graphic3d_TypeOfConnection AType);
-		%feature("autodoc", "Args:
-	SG(Graphic3d_MapOfStructure)
+		%feature("autodoc", "	* Returns the group of structures to which <self> is connected.
 
-Returns:
-	None
-
-Returns the group of structures to which <self> is connected.") Ancestors;
+	:param SG:
+	:type SG: Graphic3d_MapOfStructure &
+	:rtype: None
+") Ancestors;
 		void Ancestors (Graphic3d_MapOfStructure & SG);
-		%feature("autodoc", "Args:
-	AStructure(Handle_Graphic3d_Structure)
-	AType(Graphic3d_TypeOfConnection)
-	WithCheck(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* If Atype is TOC_DESCENDANT then add <AStructure> //!	 as a child structure of <self>. //!	 If Atype is TOC_ANCESTOR then add <AStructure> //!	 as a parent structure of <self>. //!	 The connection propagates Display, Highlight, Erase, //!	 Remove, and stacks the transformations. //!	 No connection if the graph of the structures //!	 contains a cycle and <WithCheck> is Standard_True;
 
-Returns:
-	None
-
-If Atype is TOC_DESCENDANT then add <AStructure>  
-//!	    as a child structure of  <self>.  
-//!	    If Atype is TOC_ANCESTOR then add <AStructure>  
-//!	    as a parent structure of <self>.  
-//!	    The connection propagates Display, Highlight, Erase,  
-//!	    Remove, and stacks the transformations.  
-//!	    No connection if the graph of the structures  
-//!	    contains a cycle and <WithCheck> is Standard_True;") Connect;
+	:param AStructure:
+	:type AStructure: Handle_Graphic3d_Structure &
+	:param AType:
+	:type AType: Graphic3d_TypeOfConnection
+	:param WithCheck: default value is Standard_False
+	:type WithCheck: bool
+	:rtype: None
+") Connect;
 		void Connect (const Handle_Graphic3d_Structure & AStructure,const Graphic3d_TypeOfConnection AType,const Standard_Boolean WithCheck = Standard_False);
-		%feature("autodoc", "Args:
-	SG(Graphic3d_MapOfStructure)
+		%feature("autodoc", "	* Returns the group of structures connected to <self>.
 
-Returns:
-	None
-
-Returns the group of structures connected to <self>.") Descendants;
+	:param SG:
+	:type SG: Graphic3d_MapOfStructure &
+	:rtype: None
+") Descendants;
 		void Descendants (Graphic3d_MapOfStructure & SG);
-		%feature("autodoc", "Args:
-	AStructure(Handle_Graphic3d_Structure)
+		%feature("autodoc", "	* Suppress the connection between <AStructure> and <self>.
 
-Returns:
-	None
-
-Suppress the connection between <AStructure> and <self>.") Disconnect;
+	:param AStructure:
+	:type AStructure: Handle_Graphic3d_Structure &
+	:rtype: None
+") Disconnect;
 		void Disconnect (const Handle_Graphic3d_Structure & AStructure);
-		%feature("autodoc", "Args:
-	AType(Graphic3d_TypeOfConnection)
+		%feature("autodoc", "	* If Atype is TOC_DESCENDANT then suppress all //!	 the connections with the child structures of <self>. //!	 If Atype is TOC_ANCESTOR then suppress all //!	 the connections with the parent structures of <self>.
 
-Returns:
-	None
-
-If Atype is TOC_DESCENDANT then suppress all  
-//!	    the connections with the child structures of <self>.  
-//!	    If Atype is TOC_ANCESTOR then suppress all  
-//!	    the connections with the parent structures of <self>.") DisconnectAll;
+	:param AType:
+	:type AType: Graphic3d_TypeOfConnection
+	:rtype: None
+") DisconnectAll;
 		void DisconnectAll (const Graphic3d_TypeOfConnection AType);
-		%feature("autodoc", "Args:
-	AStructure(Handle_Graphic3d_Structure)
-	AType(Graphic3d_TypeOfConnection)
-	ASet(Graphic3d_MapOfStructure)
+		%feature("autodoc", "	* Returns <ASet> the group of structures : //!	 - directly or indirectly connected to <AStructure> if the //!	 TypeOfConnection == TOC_DESCENDANT //!	 - to which <AStructure> is directly or indirectly connected //!	 if the TypeOfConnection == TOC_ANCESTOR
 
-Returns:
-	static void
-
-Returns <ASet> the group of structures :  
-//!	    - directly or indirectly connected to <AStructure> if the  
-//!	      TypeOfConnection == TOC_DESCENDANT  
-//!	    - to which <AStructure> is directly or indirectly connected  
-//!	      if the TypeOfConnection == TOC_ANCESTOR") Network;
+	:param AStructure:
+	:type AStructure: Handle_Graphic3d_Structure &
+	:param AType:
+	:type AType: Graphic3d_TypeOfConnection
+	:param ASet:
+	:type ASet: Graphic3d_MapOfStructure &
+	:rtype: void
+") Network;
 		static void Network (const Handle_Graphic3d_Structure & AStructure,const Graphic3d_TypeOfConnection AType,Graphic3d_MapOfStructure & ASet);
-		%feature("autodoc", "Args:
-	Owner(Standard_Address)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetOwner;
+		%feature("autodoc", "	:param Owner:
+	:type Owner: Standard_Address
+	:rtype: None
+") SetOwner;
 		void SetOwner (const Standard_Address Owner);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Owner;
+		%feature("autodoc", "	:rtype: Standard_Address
+") Owner;
 		Standard_Address Owner ();
-		%feature("autodoc", "Args:
-	AFlag(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetHLRValidation;
+		%feature("autodoc", "	:param AFlag:
+	:type AFlag: bool
+	:rtype: None
+") SetHLRValidation;
 		void SetHLRValidation (const Standard_Boolean AFlag);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HLRValidation;
+		%feature("autodoc", "	:rtype: bool
+") HLRValidation;
 		Standard_Boolean HLRValidation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_TypeOfComposition
+		%feature("autodoc", "	* Returns the type of composition applied to matrices //!	 of transformation of <self>.
 
-Returns the type of composition applied to matrices  
-//!	    of transformation of <self>.") Composition;
+	:rtype: Graphic3d_TypeOfComposition
+") Composition;
 		Graphic3d_TypeOfComposition Composition ();
-		%feature("autodoc", "Args:
-	AMatrix(TColStd_Array2OfReal)
-	AType(Graphic3d_TypeOfComposition)
+		%feature("autodoc", "	* Modifies the current local modelling transformation //!	 in the structure <self>. //!	 It is defined as a 4*4 real matrix. //!	 ------------------- //!	 | a11 a12 a13 t1 | //!	 | a21 a22 a23 t2 | //!	 | a31 a32 a33 t3 | //!	 | 0 0 0 1 | //!	 ------------------- //!	 TypeOfComposition : TOC_REPLACE //!				TOC_POSTCONCATENATE Then the modified Local Modelling Transformation is composed with the current Global Modelling Transformation to create a new Composite Modelling Transformation. The compose type specifies the role of the current local modelling transformation (L) in composing the new value for the current local modelling transformation (L'), which is then combined with the current global modelling transforma- tion (G) to calculate the new composite modelling transfor- mation (C). TOC_REPLACE The transformation matrix (T) replaces the value of current local modelling transformation (L). //!	L' <- T //!	C <- G x L' TOC_POSTCONCATENATE The current local modelling transformation (L) is multiplied by the transformation matrix (T): //!	L' <- T x L //!	C <- G x L' Category: Methods to manage the structure transformation Warning: Raises TransformError if the matrix is not a 4x4 matrix.
 
-Returns:
-	None
-
-Modifies the current local modelling transformation  
-//!	    in the structure <self>.  
- 
-//!	    It is defined as a 4*4 real matrix.  
- 
-//!	    -------------------  
-//!	    | a11 a12 a13  t1 |  
-//!	    | a21 a22 a23  t2 |  
-//!	    | a31 a32 a33  t3 |  
-//!	    |  0   0   0   1  |  
-//!	    -------------------  
- 
-//!	    TypeOfComposition : TOC_REPLACE  
-//!				TOC_POSTCONCATENATE  
- 
-Then the modified Local Modelling Transformation is composed  
-with the current Global Modelling Transformation to create a  
-new Composite Modelling Transformation.  
- 
-The compose type specifies the role of the current local  
-modelling transformation (L) in composing the new value for  
-the current local modelling transformation (L'), which is  
-then combined with the current global modelling transforma-  
-tion (G) to calculate the new composite modelling transfor-  
-mation (C).  
- 
-TOC_REPLACE  
-The transformation matrix (T) replaces the value of  
-current local modelling transformation (L).  
- 
-//!	L' <- T  
-//!	C <- G x L'  
- 
-TOC_POSTCONCATENATE  
-The current local modelling transformation (L) is multiplied  
-by the transformation matrix (T):  
- 
-//!	L' <- T x L  
-//!	C <- G x L'  
- 
- Category: Methods to manage the structure transformation  
- Warning: Raises TransformError if the matrix is not a 4x4 matrix.") SetTransform;
+	:param AMatrix:
+	:type AMatrix: TColStd_Array2OfReal &
+	:param AType:
+	:type AType: Graphic3d_TypeOfComposition
+	:rtype: None
+") SetTransform;
 		void SetTransform (const TColStd_Array2OfReal & AMatrix,const Graphic3d_TypeOfComposition AType);
-		%feature("autodoc", "Args:
-	AMatrix(TColStd_Array2OfReal)
+		%feature("autodoc", "	* Returns the transformation associated with //!	 the structure <self>.
 
-Returns:
-	None
-
-Returns the transformation associated with  
-//!	    the structure <self>.") Transform;
+	:param AMatrix:
+	:type AMatrix: TColStd_Array2OfReal &
+	:rtype: None
+") Transform;
 		void Transform (TColStd_Array2OfReal & AMatrix);
-		%feature("autodoc", "Args:
-	AFlag(Graphic3d_TransModeFlags)
-	APoint(gp_Pnt)
+		%feature("autodoc", "	* Modifies the current modelling transform persistence (pan, zoom or rotate)
 
-Returns:
-	None
-
-Modifies the current modelling transform persistence (pan, zoom or rotate)") SetTransformPersistence;
+	:param AFlag:
+	:type AFlag: Graphic3d_TransModeFlags &
+	:param APoint:
+	:type APoint: gp_Pnt
+	:rtype: None
+") SetTransformPersistence;
 		void SetTransformPersistence (const Graphic3d_TransModeFlags & AFlag,const gp_Pnt & APoint);
-		%feature("autodoc", "Args:
-	AFlag(Graphic3d_TransModeFlags)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetTransformPersistence;
+		%feature("autodoc", "	:param AFlag:
+	:type AFlag: Graphic3d_TransModeFlags &
+	:rtype: None
+") SetTransformPersistence;
 		void SetTransformPersistence (const Graphic3d_TransModeFlags & AFlag);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_TransModeFlags
+		%feature("autodoc", "	* Get the current modelling transform persistence (pan, zoom or rotate)
 
-Get the current modelling transform persistence (pan, zoom or rotate)") TransformPersistenceMode;
+	:rtype: Graphic3d_TransModeFlags
+") TransformPersistenceMode;
 		Graphic3d_TransModeFlags TransformPersistenceMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
+		%feature("autodoc", "	* Get the current point of relative modelling transform persistence
 
-Get the current point of relative modelling transform persistence") TransformPersistencePoint;
+	:rtype: gp_Pnt
+") TransformPersistencePoint;
 		gp_Pnt TransformPersistencePoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_TypeOfStructure
-
-No detailed docstring for this function.") ComputeVisual;
+		%feature("autodoc", "	:rtype: Graphic3d_TypeOfStructure
+") ComputeVisual;
 		Graphic3d_TypeOfStructure ComputeVisual ();
-		%feature("autodoc", "Args:
-	WithDestruction(Standard_Boolean)
+		%feature("autodoc", "	* Clears the structure <self>.
 
-Returns:
-	None
-
-Clears the structure <self>.") GraphicClear;
+	:param WithDestruction:
+	:type WithDestruction: bool
+	:rtype: None
+") GraphicClear;
 		void GraphicClear (const Standard_Boolean WithDestruction);
-		%feature("autodoc", "Args:
-	ADaughter(Handle_Graphic3d_Structure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GraphicConnect;
+		%feature("autodoc", "	:param ADaughter:
+	:type ADaughter: Handle_Graphic3d_Structure &
+	:rtype: None
+") GraphicConnect;
 		void GraphicConnect (const Handle_Graphic3d_Structure & ADaughter);
-		%feature("autodoc", "Args:
-	ADaughter(Handle_Graphic3d_Structure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GraphicDisconnect;
+		%feature("autodoc", "	:param ADaughter:
+	:type ADaughter: Handle_Graphic3d_Structure &
+	:rtype: None
+") GraphicDisconnect;
 		void GraphicDisconnect (const Handle_Graphic3d_Structure & ADaughter);
-		%feature("autodoc", "Args:
-	Method(Aspect_TypeOfHighlightMethod)
+		%feature("autodoc", "	* Highlights the structure <self>.
 
-Returns:
-	None
-
-Highlights the structure <self>.") GraphicHighlight;
+	:param Method:
+	:type Method: Aspect_TypeOfHighlightMethod
+	:rtype: None
+") GraphicHighlight;
 		void GraphicHighlight (const Aspect_TypeOfHighlightMethod Method);
-		%feature("autodoc", "Args:
-	AMatrix(TColStd_Array2OfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GraphicTransform;
+		%feature("autodoc", "	:param AMatrix:
+	:type AMatrix: TColStd_Array2OfReal &
+	:rtype: None
+") GraphicTransform;
 		void GraphicTransform (const TColStd_Array2OfReal & AMatrix);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Suppress the highlight for the structure <self>.
 
-Suppress the highlight for the structure <self>.") GraphicUnHighlight;
+	:rtype: None
+") GraphicUnHighlight;
 		void GraphicUnHighlight ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the identification number of the structure <self>.
 
-Returns the identification number of the structure <self>.") Identification;
+	:rtype: int
+") Identification;
 		Standard_Integer Identification ();
-		%feature("autodoc", "Args:
-	aPlotter(Handle_Graphic3d_Plotter)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Plot;
+		%feature("autodoc", "	:param aPlotter:
+	:type aPlotter: Handle_Graphic3d_Plotter &
+	:rtype: void
+") Plot;
 		virtual void Plot (const Handle_Graphic3d_Plotter & aPlotter);
-		%feature("autodoc", "Args:
-	AStructure(Handle_Graphic3d_Structure)
-	AType(Graphic3d_TypeOfConnection)
+		%feature("autodoc", "	* Prints informations about the network associated //!	 with the structure <AStructure>.
 
-Returns:
-	static void
-
-Prints informations about the network associated  
-//!	    with the structure <AStructure>.") PrintNetwork;
+	:param AStructure:
+	:type AStructure: Handle_Graphic3d_Structure &
+	:param AType:
+	:type AType: Graphic3d_TypeOfConnection
+	:rtype: void
+") PrintNetwork;
 		static void PrintNetwork (const Handle_Graphic3d_Structure & AStructure,const Graphic3d_TypeOfConnection AType);
-		%feature("autodoc", "Args:
-	APtr(Standard_Address)
-	AType(Graphic3d_TypeOfConnection)
+		%feature("autodoc", "	* Suppress the adress <APtr> in the list //!	 of descendants or in the list of ancestors.
 
-Returns:
-	None
-
-Suppress the adress <APtr> in the list  
-//!	    of descendants or in the list of ancestors.") Remove;
+	:param APtr:
+	:type APtr: Standard_Address
+	:param AType:
+	:type AType: Graphic3d_TypeOfConnection
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Address APtr,const Graphic3d_TypeOfConnection AType);
-		%feature("autodoc", "Args:
-	AVisual(Graphic3d_TypeOfStructure)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetComputeVisual;
+		%feature("autodoc", "	:param AVisual:
+	:type AVisual: Graphic3d_TypeOfStructure
+	:rtype: None
+") SetComputeVisual;
 		void SetComputeVisual (const Graphic3d_TypeOfStructure AVisual);
-		%feature("autodoc", "Args:
-	ATrsf(TColStd_Array2OfReal)
-	X(Standard_Real)
-	Y(Standard_Real)
-	Z(Standard_Real)
-	NewX(Standard_Real)
-	NewY(Standard_Real)
-	NewZ(Standard_Real)
+		%feature("autodoc", "	* Transforms <X>, <Y>, <Z> with the transformation <ATrsf>.
 
-Returns:
-	static void
-
-Transforms <X>, <Y>, <Z> with the transformation <ATrsf>.") Transforms;
+	:param ATrsf:
+	:type ATrsf: TColStd_Array2OfReal &
+	:param X:
+	:type X: float
+	:param Y:
+	:type Y: float
+	:param Z:
+	:type Z: float
+	:param NewX:
+	:type NewX: float &
+	:param NewY:
+	:type NewY: float &
+	:param NewZ:
+	:type NewZ: float &
+	:rtype: void
+") Transforms;
 		static void Transforms (const TColStd_Array2OfReal & ATrsf,const Standard_Real X,const Standard_Real Y,const Standard_Real Z,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	ATrsf(TColStd_Array2OfReal)
-	Coord(Graphic3d_Vector)
+		%feature("autodoc", "	* Transforms <Coord> with the transformation <ATrsf>.
 
-Returns:
-	static Graphic3d_Vector
-
-Transforms <Coord> with the transformation <ATrsf>.") Transforms;
+	:param ATrsf:
+	:type ATrsf: TColStd_Array2OfReal &
+	:param Coord:
+	:type Coord: Graphic3d_Vector &
+	:rtype: Graphic3d_Vector
+") Transforms;
 		static Graphic3d_Vector Transforms (const TColStd_Array2OfReal & ATrsf,const Graphic3d_Vector & Coord);
-		%feature("autodoc", "Args:
-	ATrsf(TColStd_Array2OfReal)
-	Coord(Graphic3d_Vertex)
+		%feature("autodoc", "	* Transforms <Coord> with the transformation <ATrsf>.
 
-Returns:
-	static Graphic3d_Vertex
-
-Transforms <Coord> with the transformation <ATrsf>.") Transforms;
+	:param ATrsf:
+	:type ATrsf: TColStd_Array2OfReal &
+	:param Coord:
+	:type Coord: Graphic3d_Vertex &
+	:rtype: Graphic3d_Vertex
+") Transforms;
 		static Graphic3d_Vertex Transforms (const TColStd_Array2OfReal & ATrsf,const Graphic3d_Vertex & Coord);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_CStructure *
+		%feature("autodoc", "	* Returns the c structure associated to <self>.
 
-Returns the c structure associated to <self>.") CStructure;
+	:rtype: Graphic3d_CStructure *
+") CStructure;
 		Graphic3d_CStructure * CStructure ();
 };
 
@@ -8784,384 +7008,307 @@ def __del__(self):
 %nodefaultctor Graphic3d_StructureManager;
 class Graphic3d_StructureManager : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Deletes the manager <self>.
 
-Deletes the manager <self>.") Destroy;
+	:rtype: void
+") Destroy;
 		virtual void Destroy ();
-		%feature("autodoc", "Args:
-	CTX(Handle_Graphic3d_AspectLine3d)
+		%feature("autodoc", "	* Modifies the default attributes for lines //!	 in the visualiser.
 
-Returns:
-	None
-
-Modifies the default attributes for lines  
-//!	    in the visualiser.") SetPrimitivesAspect;
+	:param CTX:
+	:type CTX: Handle_Graphic3d_AspectLine3d &
+	:rtype: None
+") SetPrimitivesAspect;
 		void SetPrimitivesAspect (const Handle_Graphic3d_AspectLine3d & CTX);
-		%feature("autodoc", "Args:
-	CTX(Handle_Graphic3d_AspectFillArea3d)
+		%feature("autodoc", "	* Modifies the default attributes for faces //!	 in the visualiser.
 
-Returns:
-	None
-
-Modifies the default attributes for faces  
-//!	    in the visualiser.") SetPrimitivesAspect;
+	:param CTX:
+	:type CTX: Handle_Graphic3d_AspectFillArea3d &
+	:rtype: None
+") SetPrimitivesAspect;
 		void SetPrimitivesAspect (const Handle_Graphic3d_AspectFillArea3d & CTX);
-		%feature("autodoc", "Args:
-	CTX(Handle_Graphic3d_AspectText3d)
+		%feature("autodoc", "	* Modifies the default attributes for text //!	 in the visualiser.
 
-Returns:
-	None
-
-Modifies the default attributes for text  
-//!	    in the visualiser.") SetPrimitivesAspect;
+	:param CTX:
+	:type CTX: Handle_Graphic3d_AspectText3d &
+	:rtype: None
+") SetPrimitivesAspect;
 		void SetPrimitivesAspect (const Handle_Graphic3d_AspectText3d & CTX);
-		%feature("autodoc", "Args:
-	CTX(Handle_Graphic3d_AspectMarker3d)
+		%feature("autodoc", "	* Modifies the default attributes for markers //!	 in the visualiser.
 
-Returns:
-	None
-
-Modifies the default attributes for markers  
-//!	    in the visualiser.") SetPrimitivesAspect;
+	:param CTX:
+	:type CTX: Handle_Graphic3d_AspectMarker3d &
+	:rtype: None
+") SetPrimitivesAspect;
 		void SetPrimitivesAspect (const Handle_Graphic3d_AspectMarker3d & CTX);
-		%feature("autodoc", "Args:
-	AType(Aspect_TypeOfUpdate)
+		%feature("autodoc", "	* Modifies the screen update mode. //!	 TOU_ASAP	as soon as possible //!	 TOU_WAIT	on demand (with the Update function) Note : Dynamic Operations and Update Mode Use SetUpdateMode to control when changes to the display are made. Use one of the following functions to update one or more views: - Update all views of the viewer: Visual3d_ViewManager::Update () - Update one view of the viewer: Visual3d_View::Update () Use one of the following functions to update the entire display: - Redraw all structures in all views: Visual3d_ViewManager::Redraw () - Redraw all structures in one view: Visual3d_View::Redraw () Update)
 
-Returns:
-	None
-
-Modifies the screen update mode.  
- 
-//!	    TOU_ASAP	as soon as possible  
-//!	    TOU_WAIT	on demand (with the Update function)  
- Note : Dynamic Operations and Update Mode  
-Use SetUpdateMode to control when changes to  
-the display are made.   Use one of the   following  
-functions to update one or more views:  
--   Update all views of the viewer:   Visual3d_ViewManager::Update ()  
--   Update one view of the viewer:   Visual3d_View::Update () Use one of  
-  the   following functions to update the entire display:  
--   Redraw all structures in all views:   Visual3d_ViewManager::Redraw ()  
--   Redraw all structures in one view:   Visual3d_View::Redraw ()  Update)") SetUpdateMode;
+	:param AType:
+	:type AType: Aspect_TypeOfUpdate
+	:rtype: None
+") SetUpdateMode;
 		void SetUpdateMode (const Aspect_TypeOfUpdate AType);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Updates screen in function of modifications of //!	 the structures. Warning: Not necessary if the update mode is TOU_ASAP.
 
-Updates screen in function of modifications of  
-//!	    the structures.  
-Warning: Not necessary if the update mode is TOU_ASAP.") Update;
+	:rtype: void
+") Update;
 		virtual void Update ();
-		%feature("autodoc", "Args:
-	SG(Graphic3d_MapOfStructure)
+		%feature("autodoc", "	* Returns the set of structures displayed in //!	 visualiser <self>.
 
-Returns:
-	None
-
-Returns the set of structures displayed in  
-//!	    visualiser <self>.") DisplayedStructures;
+	:param SG:
+	:type SG: Graphic3d_MapOfStructure &
+	:rtype: None
+") DisplayedStructures;
 		void DisplayedStructures (Graphic3d_MapOfStructure & SG);
-		%feature("autodoc", "Args:
-	SG(Graphic3d_MapOfStructure)
+		%feature("autodoc", "	* Returns the set of highlighted structures //!	 in a visualiser <self>.
 
-Returns:
-	None
-
-Returns the set of highlighted structures  
-//!	    in a visualiser <self>.") HighlightedStructures;
+	:param SG:
+	:type SG: Graphic3d_MapOfStructure &
+	:rtype: None
+") HighlightedStructures;
 		void HighlightedStructures (Graphic3d_MapOfStructure & SG);
-		%feature("autodoc", "Args:
-	SG(Graphic3d_MapOfStructure)
+		%feature("autodoc", "	* Returns the set of detectable structures //!	 in a visualiser <self>.
 
-Returns:
-	None
-
-Returns the set of detectable structures  
-//!	    in a visualiser <self>.") PickStructures;
+	:param SG:
+	:type SG: Graphic3d_MapOfStructure &
+	:rtype: None
+") PickStructures;
 		void PickStructures (Graphic3d_MapOfStructure & SG);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_AspectFillArea3d
+		%feature("autodoc", "	* Returns the values of the current default attributes.
 
-Returns the values of the current default attributes.") FillArea3dAspect;
+	:rtype: Handle_Graphic3d_AspectFillArea3d
+") FillArea3dAspect;
 		Handle_Graphic3d_AspectFillArea3d FillArea3dAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static Standard_Integer
+		%feature("autodoc", "	* Returns maximum number of managers defineable.
 
-Returns maximum number of managers defineable.") Limit;
+	:rtype: int
+") Limit;
 		static Standard_Integer Limit ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_AspectLine3d
+		%feature("autodoc", "	* Returns the values of the current default attributes.
 
-Returns the values of the current default attributes.") Line3dAspect;
+	:rtype: Handle_Graphic3d_AspectLine3d
+") Line3dAspect;
 		Handle_Graphic3d_AspectLine3d Line3dAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_AspectMarker3d
+		%feature("autodoc", "	* Returns the values of the current default attributes.
 
-Returns the values of the current default attributes.") Marker3dAspect;
+	:rtype: Handle_Graphic3d_AspectMarker3d
+") Marker3dAspect;
 		Handle_Graphic3d_AspectMarker3d Marker3dAspect ();
-		%feature("autodoc", "Args:
-	XMin(Standard_Real)
-	YMin(Standard_Real)
-	ZMin(Standard_Real)
-	XMax(Standard_Real)
-	YMax(Standard_Real)
-	ZMax(Standard_Real)
+		%feature("autodoc", "	* Returns the coordinates of the boundary box of all //!	 structures displayed in the manager <self>.
 
-Returns:
-	None
-
-Returns the coordinates of the boundary box of all  
-//!	    structures displayed in the manager <self>.") MinMaxValues;
+	:param XMin:
+	:type XMin: float &
+	:param YMin:
+	:type YMin: float &
+	:param ZMin:
+	:type ZMin: float &
+	:param XMax:
+	:type XMax: float &
+	:param YMax:
+	:type YMax: float &
+	:param ZMax:
+	:type ZMax: float &
+	:rtype: None
+") MinMaxValues;
 		void MinMaxValues (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	CTXL(Handle_Graphic3d_AspectLine3d)
-	CTXT(Handle_Graphic3d_AspectText3d)
-	CTXM(Handle_Graphic3d_AspectMarker3d)
-	CTXF(Handle_Graphic3d_AspectFillArea3d)
+		%feature("autodoc", "	* Returns the values of the current default attributes.
 
-Returns:
-	None
-
-Returns the values of the current default attributes.") PrimitivesAspect;
+	:param CTXL:
+	:type CTXL: Handle_Graphic3d_AspectLine3d &
+	:param CTXT:
+	:type CTXT: Handle_Graphic3d_AspectText3d &
+	:param CTXM:
+	:type CTXM: Handle_Graphic3d_AspectMarker3d &
+	:param CTXF:
+	:type CTXF: Handle_Graphic3d_AspectFillArea3d &
+	:rtype: None
+") PrimitivesAspect;
 		void PrimitivesAspect (Handle_Graphic3d_AspectLine3d & CTXL,Handle_Graphic3d_AspectText3d & CTXT,Handle_Graphic3d_AspectMarker3d & CTXM,Handle_Graphic3d_AspectFillArea3d & CTXF);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_AspectText3d
+		%feature("autodoc", "	* Returns the values of the current default attributes.
 
-Returns the values of the current default attributes.") Text3dAspect;
+	:rtype: Handle_Graphic3d_AspectText3d
+") Text3dAspect;
 		Handle_Graphic3d_AspectText3d Text3dAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_TypeOfUpdate
+		%feature("autodoc", "	* Returns the screen update mode. //!	 TOU_ASAP	as soon as possible //!	 TOU_WAIT	on demand (Update)
 
-Returns the screen update mode.  
- 
-//!	    TOU_ASAP	as soon as possible  
-//!	    TOU_WAIT	on demand (Update)") UpdateMode;
+	:rtype: Aspect_TypeOfUpdate
+") UpdateMode;
 		Aspect_TypeOfUpdate UpdateMode ();
-		%feature("autodoc", "Args:
-	AStructure(Handle_Graphic3d_Structure)
-	OldPriority(Standard_Integer)
-	NewPriority(Standard_Integer)
+		%feature("autodoc", "	* Changes the display priority of the structure <AStructure>.
 
-Returns:
-	virtual void
-
-Changes the display priority of the structure <AStructure>.") ChangeDisplayPriority;
+	:param AStructure:
+	:type AStructure: Handle_Graphic3d_Structure &
+	:param OldPriority:
+	:type OldPriority: Standard_Integer
+	:param NewPriority:
+	:type NewPriority: Standard_Integer
+	:rtype: void
+") ChangeDisplayPriority;
 		virtual void ChangeDisplayPriority (const Handle_Graphic3d_Structure & AStructure,const Standard_Integer OldPriority,const Standard_Integer NewPriority);
-		%feature("autodoc", "Args:
-	theStructure(Handle_Graphic3d_Structure)
-	theLayerId(Standard_Integer)
+		%feature("autodoc", "	* Change Z layer for structure. The z layer mechanism allows to display structures in higher layers in overlay of structures in lower layers.
 
-Returns:
-	virtual void
-
-Change Z layer for structure. The z layer mechanism allows  
-to display structures in higher layers in overlay of structures in  
-lower layers.") ChangeZLayer;
+	:param theStructure:
+	:type theStructure: Handle_Graphic3d_Structure &
+	:param theLayerId:
+	:type theLayerId: Standard_Integer
+	:rtype: void
+") ChangeZLayer;
 		virtual void ChangeZLayer (const Handle_Graphic3d_Structure & theStructure,const Standard_Integer theLayerId);
-		%feature("autodoc", "Args:
-	theStructure(Handle_Graphic3d_Structure)
+		%feature("autodoc", "	* Get Z layer ID assigned to structure. If the structure has no layer ID (deleted from graphic driver), the method returns -1.
 
-Returns:
-	virtual Standard_Integer
-
-Get Z layer ID assigned to structure. If the structure  
-has no layer ID (deleted from graphic driver), the method returns -1.") GetZLayer;
+	:param theStructure:
+	:type theStructure: Handle_Graphic3d_Structure &
+	:rtype: int
+") GetZLayer;
 		virtual Standard_Integer GetZLayer (const Handle_Graphic3d_Structure & theStructure);
-		%feature("autodoc", "Args:
-	theLayerId(Standard_Integer)
-	theSettings(Graphic3d_ZLayerSettings)
+		%feature("autodoc", "	* Sets the settings for a single Z layer for all managed views.
 
-Returns:
-	virtual void
-
-Sets the settings for a single Z layer for all managed views.") SetZLayerSettings;
+	:param theLayerId:
+	:type theLayerId: Standard_Integer
+	:param theSettings:
+	:type theSettings: Graphic3d_ZLayerSettings
+	:rtype: void
+") SetZLayerSettings;
 		virtual void SetZLayerSettings (const Standard_Integer theLayerId,const Graphic3d_ZLayerSettings theSettings);
-		%feature("autodoc", "Args:
-	theLayerId(Standard_Integer)
+		%feature("autodoc", "	* Returns the settings of a single Z layer.
 
-Returns:
-	virtual Graphic3d_ZLayerSettings
-
-Returns the settings of a single Z layer.") ZLayerSettings;
+	:param theLayerId:
+	:type theLayerId: Standard_Integer
+	:rtype: Graphic3d_ZLayerSettings
+") ZLayerSettings;
 		virtual Graphic3d_ZLayerSettings ZLayerSettings (const Standard_Integer theLayerId);
-		%feature("autodoc", "Args:
-	theLayerId(Standard_Integer)
+		%feature("autodoc", "	* Add a new top-level Z layer and get its ID as <theLayerId> value. The method returns Standard_False if the layer can not be created. The z layer mechanism allows to display structures in higher layers in overlay of structures in lower layers.
 
-Returns:
-	virtual Standard_Boolean
-
-Add a new top-level Z layer and get its ID as  
-<theLayerId> value. The method returns Standard_False if the layer  
-can not be created. The z layer mechanism allows to display  
-structures in higher layers in overlay of structures in lower layers.") AddZLayer;
+	:param theLayerId:
+	:type theLayerId: Standard_Integer &
+	:rtype: bool
+") AddZLayer;
 		virtual Standard_Boolean AddZLayer (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	theLayerId(Standard_Integer)
+		%feature("autodoc", "	* Remove Z layer with ID <theLayerId>. Method returns Standard_False if the layer can not be removed or doesn't exists. By default, there is always a default bottom-level layer that can't be removed.
 
-Returns:
-	virtual Standard_Boolean
-
-Remove Z layer with ID <theLayerId>. Method returns  
-Standard_False if the layer can not be removed or doesn't exists.  
-By default, there is always a default bottom-level layer that can't  
-be removed.") RemoveZLayer;
+	:param theLayerId:
+	:type theLayerId: Standard_Integer
+	:rtype: bool
+") RemoveZLayer;
 		virtual Standard_Boolean RemoveZLayer (const Standard_Integer theLayerId);
-		%feature("autodoc", "Args:
-	theLayerSeq(TColStd_SequenceOfInteger)
+		%feature("autodoc", "	* Return all Z layer ids in sequence ordered by level from lowest layer to highest. The first layer ID in sequence is the default layer that can't be removed.
 
-Returns:
-	virtual void
-
-Return all Z layer ids in sequence ordered by level  
-from lowest layer to highest. The first layer ID in sequence is  
-the default layer that can't be removed.") GetAllZLayers;
+	:param theLayerSeq:
+	:type theLayerSeq: TColStd_SequenceOfInteger &
+	:rtype: void
+") GetAllZLayers;
 		virtual void GetAllZLayers (TColStd_SequenceOfInteger & theLayerSeq);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static Standard_Integer
+		%feature("autodoc", "	* Returns a current identifier available.
 
-Returns a current identifier available.") CurrentId;
+	:rtype: int
+") CurrentId;
 		static Standard_Integer CurrentId ();
-		%feature("autodoc", "Args:
-	AStructure(Handle_Graphic3d_Structure)
+		%feature("autodoc", "	* Forces a new construction of the structure <AStructure> //!	 if <AStructure> is displayed and TOS_COMPUTED.
 
-Returns:
-	virtual void
-
-Forces a new construction of the structure <AStructure>  
-//!	    if <AStructure> is displayed and TOS_COMPUTED.") ReCompute;
+	:param AStructure:
+	:type AStructure: Handle_Graphic3d_Structure &
+	:rtype: void
+") ReCompute;
 		virtual void ReCompute (const Handle_Graphic3d_Structure & AStructure);
-		%feature("autodoc", "Args:
-	AStructure(Handle_Graphic3d_Structure)
-	AProjector(Handle_Graphic3d_DataStructureManager)
+		%feature("autodoc", "	* Forces a new construction of the structure <AStructure> //!	 if <AStructure> is displayed in <AProjector> and TOS_COMPUTED.
 
-Returns:
-	virtual void
-
-Forces a new construction of the structure <AStructure>  
-//!	    if <AStructure> is displayed in <AProjector> and TOS_COMPUTED.") ReCompute;
+	:param AStructure:
+	:type AStructure: Handle_Graphic3d_Structure &
+	:param AProjector:
+	:type AProjector: Handle_Graphic3d_DataStructureManager &
+	:rtype: void
+") ReCompute;
 		virtual void ReCompute (const Handle_Graphic3d_Structure & AStructure,const Handle_Graphic3d_DataStructureManager & AProjector);
-		%feature("autodoc", "Args:
-	AStructure(Handle_Graphic3d_Structure)
-	WithDestruction(Standard_Boolean)
+		%feature("autodoc", "	* Clears the structure <AStructure>.
 
-Returns:
-	virtual void
-
-Clears the structure <AStructure>.") Clear;
+	:param AStructure:
+	:type AStructure: Handle_Graphic3d_Structure &
+	:param WithDestruction:
+	:type WithDestruction: bool
+	:rtype: void
+") Clear;
 		virtual void Clear (const Handle_Graphic3d_Structure & AStructure,const Standard_Boolean WithDestruction);
-		%feature("autodoc", "Args:
-	AMother(Handle_Graphic3d_Structure)
-	ADaughter(Handle_Graphic3d_Structure)
+		%feature("autodoc", "	* Connects the structures <AMother> and <ADaughter>.
 
-Returns:
-	virtual void
-
-Connects the structures <AMother> and <ADaughter>.") Connect;
+	:param AMother:
+	:type AMother: Handle_Graphic3d_Structure &
+	:param ADaughter:
+	:type ADaughter: Handle_Graphic3d_Structure &
+	:rtype: void
+") Connect;
 		virtual void Connect (const Handle_Graphic3d_Structure & AMother,const Handle_Graphic3d_Structure & ADaughter);
-		%feature("autodoc", "Args:
-	AMother(Handle_Graphic3d_Structure)
-	ADaughter(Handle_Graphic3d_Structure)
+		%feature("autodoc", "	* Disconnects the structures <AMother> and <ADaughter>.
 
-Returns:
-	virtual void
-
-Disconnects the structures <AMother> and <ADaughter>.") Disconnect;
+	:param AMother:
+	:type AMother: Handle_Graphic3d_Structure &
+	:param ADaughter:
+	:type ADaughter: Handle_Graphic3d_Structure &
+	:rtype: void
+") Disconnect;
 		virtual void Disconnect (const Handle_Graphic3d_Structure & AMother,const Handle_Graphic3d_Structure & ADaughter);
-		%feature("autodoc", "Args:
-	AStructure(Handle_Graphic3d_Structure)
+		%feature("autodoc", "	* Display the structure <AStructure>.
 
-Returns:
-	virtual void
-
-Display the structure <AStructure>.") Display;
+	:param AStructure:
+	:type AStructure: Handle_Graphic3d_Structure &
+	:rtype: void
+") Display;
 		virtual void Display (const Handle_Graphic3d_Structure & AStructure);
-		%feature("autodoc", "Args:
-	AStructure(Handle_Graphic3d_Structure)
+		%feature("autodoc", "	* Erases the structure <AStructure>.
 
-Returns:
-	virtual void
-
-Erases the structure <AStructure>.") Erase;
+	:param AStructure:
+	:type AStructure: Handle_Graphic3d_Structure &
+	:rtype: void
+") Erase;
 		virtual void Erase (const Handle_Graphic3d_Structure & AStructure);
-		%feature("autodoc", "Args:
-	AStructure(Handle_Graphic3d_Structure)
-	AMethod(Aspect_TypeOfHighlightMethod)
+		%feature("autodoc", "	* Highlights the structure <AStructure>.
 
-Returns:
-	virtual void
-
-Highlights the structure <AStructure>.") Highlight;
+	:param AStructure:
+	:type AStructure: Handle_Graphic3d_Structure &
+	:param AMethod:
+	:type AMethod: Aspect_TypeOfHighlightMethod
+	:rtype: void
+") Highlight;
 		virtual void Highlight (const Handle_Graphic3d_Structure & AStructure,const Aspect_TypeOfHighlightMethod AMethod);
-		%feature("autodoc", "Args:
-	AStructure(Handle_Graphic3d_Structure)
-	ATrsf(TColStd_Array2OfReal)
+		%feature("autodoc", "	* Transforms the structure <AStructure>.
 
-Returns:
-	virtual void
-
-Transforms the structure <AStructure>.") SetTransform;
+	:param AStructure:
+	:type AStructure: Handle_Graphic3d_Structure &
+	:param ATrsf:
+	:type ATrsf: TColStd_Array2OfReal &
+	:rtype: void
+") SetTransform;
 		virtual void SetTransform (const Handle_Graphic3d_Structure & AStructure,const TColStd_Array2OfReal & ATrsf);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_GraphicDriver
+		%feature("autodoc", "	* Returns the graphic driver of <self>.
 
-Returns the graphic driver of <self>.") GraphicDriver;
+	:rtype: Handle_Graphic3d_GraphicDriver
+") GraphicDriver;
 		const Handle_Graphic3d_GraphicDriver & GraphicDriver ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
+		%feature("autodoc", "	* Returns the identification number of the manager.
 
-Returns the identification number of the manager.") Identification;
+	:rtype: int
+") Identification;
 		virtual Standard_Integer Identification ();
-		%feature("autodoc", "Args:
-	AId(Standard_Integer)
+		%feature("autodoc", "	* Returns the structure with the identification number <AId>.
 
-Returns:
-	virtual Handle_Graphic3d_Structure
-
-Returns the structure with the identification number <AId>.") Identification;
+	:param AId:
+	:type AId: Standard_Integer
+	:rtype: Handle_Graphic3d_Structure
+") Identification;
 		virtual Handle_Graphic3d_Structure Identification (const Standard_Integer AId);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Suppresses the highlighting on all the structures in <self>.
 
-Suppresses the highlighting on all the structures in <self>.") UnHighlight;
+	:rtype: void
+") UnHighlight;
 		virtual void UnHighlight ();
-		%feature("autodoc", "Args:
-	AStructure(Handle_Graphic3d_Structure)
+		%feature("autodoc", "	* Suppress the highlighting on the structure <AStructure>.
 
-Returns:
-	virtual void
-
-Suppress the highlighting on the structure <AStructure>.") UnHighlight;
+	:param AStructure:
+	:type AStructure: Handle_Graphic3d_Structure &
+	:rtype: void
+") UnHighlight;
 		virtual void UnHighlight (const Handle_Graphic3d_Structure & AStructure);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RecomputeStructures;
+		%feature("autodoc", "	:rtype: None
+") RecomputeStructures;
 		void RecomputeStructures ();
 };
 
@@ -9222,163 +7369,123 @@ def __del__(self):
 %nodefaultctor Graphic3d_TextureParams;
 class Graphic3d_TextureParams : public Standard_Transient {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Default constructor.
 
-Default constructor.") Graphic3d_TextureParams;
+	:rtype: None
+") Graphic3d_TextureParams;
 		 Graphic3d_TextureParams ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns True if the texture is modulate. Default value is False.
 
-@return TRUE if the texture is modulate.  
-Default value is FALSE.") IsModulate;
+	:rtype: bool
+") IsModulate;
 		Standard_Boolean IsModulate ();
-		%feature("autodoc", "Args:
-	theToModulate(Standard_Boolean)
+		%feature("autodoc", "	* @param theToModulate turn modulation on/off.
 
-Returns:
-	None
-
-@param theToModulate turn modulation on/off.") SetModulate;
+	:param theToModulate:
+	:type theToModulate: bool
+	:rtype: None
+") SetModulate;
 		void SetModulate (const Standard_Boolean theToModulate);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns True if the texture repeat is enabled. Default value is False.
 
-@return TRUE if the texture repeat is enabled.  
-Default value is FALSE.") IsRepeat;
+	:rtype: bool
+") IsRepeat;
 		Standard_Boolean IsRepeat ();
-		%feature("autodoc", "Args:
-	theToRepeat(Standard_Boolean)
+		%feature("autodoc", "	* @param theToRepeat turn texture repeat mode ON or OFF (clamping).
 
-Returns:
-	None
-
-@param theToRepeat turn texture repeat mode ON or OFF (clamping).") SetRepeat;
+	:param theToRepeat:
+	:type theToRepeat: bool
+	:rtype: None
+") SetRepeat;
 		void SetRepeat (const Standard_Boolean theToRepeat);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_TypeOfTextureFilter
+		%feature("autodoc", "	* returns texture interpolation filter. Default value is Graphic3d_TOTF_NEAREST.
 
-@return texture interpolation filter.  
-Default value is Graphic3d_TOTF_NEAREST.") Filter;
+	:rtype: Graphic3d_TypeOfTextureFilter
+") Filter;
 		Graphic3d_TypeOfTextureFilter Filter ();
-		%feature("autodoc", "Args:
-	theFilter(Graphic3d_TypeOfTextureFilter)
+		%feature("autodoc", "	* @param theFilter texture interpolation filter.
 
-Returns:
-	None
-
-@param theFilter texture interpolation filter.") SetFilter;
+	:param theFilter:
+	:type theFilter: Graphic3d_TypeOfTextureFilter
+	:rtype: None
+") SetFilter;
 		void SetFilter (const Graphic3d_TypeOfTextureFilter theFilter);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_LevelOfTextureAnisotropy
+		%feature("autodoc", "	* returns level of anisontropy texture filter. Default value is Graphic3d_LOTA_OFF.
 
-@return level of anisontropy texture filter.  
-Default value is Graphic3d_LOTA_OFF.") AnisoFilter;
+	:rtype: Graphic3d_LevelOfTextureAnisotropy
+") AnisoFilter;
 		Graphic3d_LevelOfTextureAnisotropy AnisoFilter ();
-		%feature("autodoc", "Args:
-	theLevel(Graphic3d_LevelOfTextureAnisotropy)
+		%feature("autodoc", "	* @param theLevel level of anisontropy texture filter.
 
-Returns:
-	None
-
-@param theLevel level of anisontropy texture filter.") SetAnisoFilter;
+	:param theLevel:
+	:type theLevel: Graphic3d_LevelOfTextureAnisotropy
+	:rtype: None
+") SetAnisoFilter;
 		void SetAnisoFilter (const Graphic3d_LevelOfTextureAnisotropy theLevel);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ShortReal
+		%feature("autodoc", "	* returns rotation angle in degrees Default value is 0.
 
-@return rotation angle in degrees  
-Default value is 0.") Rotation;
+	:rtype: Standard_ShortReal
+") Rotation;
 		Standard_ShortReal Rotation ();
-		%feature("autodoc", "Args:
-	theAngleDegrees(Standard_ShortReal)
+		%feature("autodoc", "	* @param theAngleDegrees rotation angle.
 
-Returns:
-	None
-
-@param theAngleDegrees rotation angle.") SetRotation;
+	:param theAngleDegrees:
+	:type theAngleDegrees: Standard_ShortReal
+	:rtype: None
+") SetRotation;
 		void SetRotation (const Standard_ShortReal theAngleDegrees);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_Vec2
+		%feature("autodoc", "	* returns scale factor Default value is no scaling (1.0; 1.0).
 
-@return scale factor  
-Default value is no scaling (1.0; 1.0).") Scale;
+	:rtype: Graphic3d_Vec2
+") Scale;
 		const Graphic3d_Vec2 & Scale ();
-		%feature("autodoc", "Args:
-	theScale(Graphic3d_Vec2)
+		%feature("autodoc", "	* @param theScale scale factor.
 
-Returns:
-	None
-
-@param theScale scale factor.") SetScale;
+	:param theScale:
+	:type theScale: Graphic3d_Vec2
+	:rtype: None
+") SetScale;
 		void SetScale (const Graphic3d_Vec2 theScale);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_Vec2
+		%feature("autodoc", "	* returns translation vector Default value is no translation (0.0; 0.0).
 
-@return translation vector  
-Default value is no translation (0.0; 0.0).") Translation;
+	:rtype: Graphic3d_Vec2
+") Translation;
 		const Graphic3d_Vec2 & Translation ();
-		%feature("autodoc", "Args:
-	theVec(Graphic3d_Vec2)
+		%feature("autodoc", "	* @param theVec translation vector.
 
-Returns:
-	None
-
-@param theVec translation vector.") SetTranslation;
+	:param theVec:
+	:type theVec: Graphic3d_Vec2
+	:rtype: None
+") SetTranslation;
 		void SetTranslation (const Graphic3d_Vec2 theVec);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_TypeOfTextureMode
+		%feature("autodoc", "	* returns texture coordinates generation mode. Default value is Graphic3d_TOTM_MANUAL.
 
-@return texture coordinates generation mode.  
-Default value is Graphic3d_TOTM_MANUAL.") GenMode;
+	:rtype: Graphic3d_TypeOfTextureMode
+") GenMode;
 		Graphic3d_TypeOfTextureMode GenMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_Vec4
+		%feature("autodoc", "	* returns texture coordinates generation plane S.
 
-@return texture coordinates generation plane S.") GenPlaneS;
+	:rtype: Graphic3d_Vec4
+") GenPlaneS;
 		const Graphic3d_Vec4 & GenPlaneS ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_Vec4
+		%feature("autodoc", "	* returns texture coordinates generation plane T.
 
-@return texture coordinates generation plane T.") GenPlaneT;
+	:rtype: Graphic3d_Vec4
+") GenPlaneT;
 		const Graphic3d_Vec4 & GenPlaneT ();
-		%feature("autodoc", "Args:
-	theMode(Graphic3d_TypeOfTextureMode)
-	thePlaneS(Graphic3d_Vec4)
-	thePlaneT(Graphic3d_Vec4)
+		%feature("autodoc", "	* Setup texture coordinates generation mode.
 
-Returns:
-	None
-
-Setup texture coordinates generation mode.") SetGenMode;
+	:param theMode:
+	:type theMode: Graphic3d_TypeOfTextureMode
+	:param thePlaneS:
+	:type thePlaneS: Graphic3d_Vec4
+	:param thePlaneT:
+	:type thePlaneT: Graphic3d_Vec4
+	:rtype: None
+") SetGenMode;
 		void SetGenMode (const Graphic3d_TypeOfTextureMode theMode,const Graphic3d_Vec4 thePlaneS,const Graphic3d_Vec4 thePlaneT);
 };
 
@@ -9439,83 +7546,43 @@ def __del__(self):
 %nodefaultctor Graphic3d_TextureRoot;
 class Graphic3d_TextureRoot : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Checks if a texture class is valid or not. returns true if the construction of the class is correct
 
-Checks if a texture class is valid or not.  
-@return true if the construction of the class is correct") IsDone;
+	:rtype: bool
+") IsDone;
 		virtual Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	OSD_Path
+		%feature("autodoc", "	* Returns the full path of the defined texture. It could be empty path if GetImage() is overridden to load image not from file.
 
-Returns the full path of the defined texture.  
-It could be empty path if GetImage() is overridden to load image not from file.") Path;
+	:rtype: OSD_Path
+") Path;
 		const OSD_Path & Path ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_TypeOfTexture
+		%feature("autodoc", "	* returns the texture type.
 
-@return the texture type.") Type;
+	:rtype: Graphic3d_TypeOfTexture
+") Type;
 		Graphic3d_TypeOfTexture Type ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* This ID will be used to manage resource in graphic driver. . Default implementation generates unique ID although inheritors may re-initialize it. . Multiple Graphic3d_TextureRoot instancies with same ID will be treated as single texture with different parameters to optimize memory usage though this will be more natural to use same instance of Graphic3d_TextureRoot when possible. . Notice that inheritor may set this ID to empty string. In this case independent graphical resource will be created for each instance of Graphic3d_AspectFillArea3d where texture will be used. . returns texture identifier.
 
-This ID will be used to manage resource in graphic driver.  
-.  
-Default implementation generates unique ID although inheritors may re-initialize it.  
-.  
-Multiple Graphic3d_TextureRoot instancies with same ID  
-will be treated as single texture with different parameters  
-to optimize memory usage though this will be more natural  
-to use same instance of Graphic3d_TextureRoot when possible.  
-.  
-Notice that inheritor may set this ID to empty string.  
-In this case independent graphical resource will be created  
-for each instance of Graphic3d_AspectFillArea3d where texture will be used.  
-.  
-@return texture identifier.") GetId;
+	:rtype: TCollection_AsciiString
+") GetId;
 		const TCollection_AsciiString & GetId ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Image_PixMap_Handle
+		%feature("autodoc", "	* This method will be called by graphic driver each time when texture resource should be created. Default constructors allow defining the texture source as path to texture image or directly as pixmap. If the source is defined as path, then the image will be dynamically loaded when this method is called (and no copy will be preserved in this class instance). Inheritors may dynamically generate the image. Notice, image data should be in Bottom-Up order (see Image_PixMap::IsTopDown())! returns the image for texture.
 
-This method will be called by graphic driver each time when texture resource should be created.  
-Default constructors allow defining the texture source as path to texture image or directly as pixmap.  
-If the source is defined as path, then the image will be dynamically loaded when this method is called  
-(and no copy will be preserved in this class instance).  
-Inheritors may dynamically generate the image.  
-Notice, image data should be in Bottom-Up order (see Image_PixMap::IsTopDown())!  
-@return the image for texture.") GetImage;
+	:rtype: Image_PixMap_Handle
+") GetImage;
 		virtual Image_PixMap_Handle GetImage ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_TextureParams
+		%feature("autodoc", "	* returns low-level texture parameters
 
-@return low-level texture parameters") GetParams;
+	:rtype: Handle_Graphic3d_TextureParams
+") GetParams;
 		const Handle_Graphic3d_TextureParams & GetParams ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static TCollection_AsciiString
+		%feature("autodoc", "	* The path to textures determined from CSF_MDTVTexturesDirectory or CASROOT environment variables. returns the root folder with default textures.
 
-The path to textures determined from CSF_MDTVTexturesDirectory or CASROOT environment variables.  
-@return the root folder with default textures.") TexturesFolder;
+	:rtype: TCollection_AsciiString
+") TexturesFolder;
 		static TCollection_AsciiString TexturesFolder ();
 };
 
@@ -9736,12 +7803,10 @@ def __del__(self):
 %nodefaultctor Graphic3d_ValueInterface;
 class Graphic3d_ValueInterface {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Size
+		%feature("autodoc", "	* Returns unique identifier of value type.
 
-Returns unique identifier of value type.") TypeID;
+	:rtype: Standard_Size
+") TypeID;
 		Standard_Size TypeID ();
 };
 
@@ -9763,147 +7828,130 @@ def __del__(self):
 %nodefaultctor Graphic3d_Vector;
 class Graphic3d_Vector {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates a vector with 1.0, 0.0, 0.0 coordinates.
 
-Creates a vector with 1.0, 0.0, 0.0 coordinates.") Graphic3d_Vector;
+	:rtype: None
+") Graphic3d_Vector;
 		 Graphic3d_Vector ();
-		%feature("autodoc", "Args:
-	AX(Standard_Real)
-	AY(Standard_Real)
-	AZ(Standard_Real)
+		%feature("autodoc", "	* Creates a vector with <AX>, <AY>, <AZ> coordinates.
 
-Returns:
-	None
-
-Creates a vector with <AX>, <AY>, <AZ> coordinates.") Graphic3d_Vector;
+	:param AX:
+	:type AX: float
+	:param AY:
+	:type AY: float
+	:param AZ:
+	:type AZ: float
+	:rtype: None
+") Graphic3d_Vector;
 		 Graphic3d_Vector (const Standard_Real AX,const Standard_Real AY,const Standard_Real AZ);
-		%feature("autodoc", "Args:
-	APoint1(Graphic3d_Vertex)
-	APoint2(Graphic3d_Vertex)
+		%feature("autodoc", "	* Creates a vector from 2 points <APoint1> and <APoint2>.
 
-Returns:
-	None
-
-Creates a vector from 2 points <APoint1> and <APoint2>.") Graphic3d_Vector;
+	:param APoint1:
+	:type APoint1: Graphic3d_Vertex &
+	:param APoint2:
+	:type APoint2: Graphic3d_Vertex &
+	:rtype: None
+") Graphic3d_Vector;
 		 Graphic3d_Vector (const Graphic3d_Vertex & APoint1,const Graphic3d_Vertex & APoint2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Normalises <self>. Category: Methods to modify the class definition Warning: Raises VectorError if <self> is null.
 
-Normalises <self>.  
- Category: Methods to modify the class definition  
- Warning: Raises VectorError if <self> is null.") Normalize;
+	:rtype: None
+") Normalize;
 		void Normalize ();
-		%feature("autodoc", "Args:
-	Xnew(Standard_Real)
-	Ynew(Standard_Real)
-	Znew(Standard_Real)
+		%feature("autodoc", "	* Modifies the coordinates of the vector <self>.
 
-Returns:
-	None
-
-Modifies the coordinates of the vector <self>.") SetCoord;
+	:param Xnew:
+	:type Xnew: float
+	:param Ynew:
+	:type Ynew: float
+	:param Znew:
+	:type Znew: float
+	:rtype: None
+") SetCoord;
 		void SetCoord (const Standard_Real Xnew,const Standard_Real Ynew,const Standard_Real Znew);
-		%feature("autodoc", "Args:
-	Xnew(Standard_Real)
+		%feature("autodoc", "	* Modifies the X coordinate of the vector <self>.
 
-Returns:
-	None
-
-Modifies the X coordinate of the vector <self>.") SetXCoord;
+	:param Xnew:
+	:type Xnew: float
+	:rtype: None
+") SetXCoord;
 		void SetXCoord (const Standard_Real Xnew);
-		%feature("autodoc", "Args:
-	Ynew(Standard_Real)
+		%feature("autodoc", "	* Modifies the Y coordinate of the vector <self>.
 
-Returns:
-	None
-
-Modifies the Y coordinate of the vector <self>.") SetYCoord;
+	:param Ynew:
+	:type Ynew: float
+	:rtype: None
+") SetYCoord;
 		void SetYCoord (const Standard_Real Ynew);
-		%feature("autodoc", "Args:
-	Znew(Standard_Real)
+		%feature("autodoc", "	* Modifies the Z coordinate of the vector <self>.
 
-Returns:
-	None
-
-Modifies the Z coordinate of the vector <self>.") SetZCoord;
+	:param Znew:
+	:type Znew: float
+	:rtype: None
+") SetZCoord;
 		void SetZCoord (const Standard_Real Znew);
-		%feature("autodoc", "Args:
-	AX(Standard_Real)
-	AY(Standard_Real)
-	AZ(Standard_Real)
+		%feature("autodoc", "	* Returns the coordinates of the vector <self>.
 
-Returns:
-	None
-
-Returns the coordinates of the vector <self>.") Coord;
+	:param AX:
+	:type AX: float &
+	:param AY:
+	:type AY: float &
+	:param AZ:
+	:type AZ: float &
+	:rtype: None
+") Coord;
 		void Coord (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns Standard_True if <self> has length 1.
 
-Returns Standard_True if <self> has length 1.") IsNormalized;
+	:rtype: bool
+") IsNormalized;
 		Standard_Boolean IsNormalized ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns Standard_True if <self> has length zero.
 
-Returns Standard_True if <self> has length zero.") LengthZero;
+	:rtype: bool
+") LengthZero;
 		Standard_Boolean LengthZero ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the X coordinates of the vector <self>.
 
-Returns the X coordinates of the vector <self>.") X;
+	:rtype: float
+") X;
 		Standard_Real X ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the Y coordinate of the vector <self>.
 
-Returns the Y coordinate of the vector <self>.") Y;
+	:rtype: float
+") Y;
 		Standard_Real Y ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the Z coordinate of the vector <self>.
 
-Returns the Z coordinate of the vector <self>.") Z;
+	:rtype: float
+") Z;
 		Standard_Real Z ();
-		%feature("autodoc", "Args:
-	AV1(Graphic3d_Vector)
-	AV2(Graphic3d_Vector)
+		%feature("autodoc", "	* Returns Standard_True if the vector <AV1> and //!	 <AV2> are parallel.
 
-Returns:
-	static Standard_Boolean
-
-Returns Standard_True if the vector <AV1> and  
-//!	    <AV2> are parallel.") IsParallel;
+	:param AV1:
+	:type AV1: Graphic3d_Vector &
+	:param AV2:
+	:type AV2: Graphic3d_Vector &
+	:rtype: bool
+") IsParallel;
 		static Standard_Boolean IsParallel (const Graphic3d_Vector & AV1,const Graphic3d_Vector & AV2);
-		%feature("autodoc", "Args:
-	AX(Standard_Real)
-	AY(Standard_Real)
-	AZ(Standard_Real)
+		%feature("autodoc", "	* Returns the norm of the vector <AX>, <AY>, <AZ>.
 
-Returns:
-	static Standard_Real
-
-Returns the norm of the vector <AX>, <AY>, <AZ>.") NormeOf;
+	:param AX:
+	:type AX: float
+	:param AY:
+	:type AY: float
+	:param AZ:
+	:type AZ: float
+	:rtype: float
+") NormeOf;
 		static Standard_Real NormeOf (const Standard_Real AX,const Standard_Real AY,const Standard_Real AZ);
-		%feature("autodoc", "Args:
-	AVector(Graphic3d_Vector)
+		%feature("autodoc", "	* Returns the norm of the vector <AVector>.
 
-Returns:
-	static Standard_Real
-
-Returns the norm of the vector <AVector>.") NormeOf;
+	:param AVector:
+	:type AVector: Graphic3d_Vector &
+	:rtype: float
+") NormeOf;
 		static Standard_Real NormeOf (const Graphic3d_Vector & AVector);
 };
 
@@ -9925,109 +7973,105 @@ def __del__(self):
 %nodefaultctor Graphic3d_Vertex;
 class Graphic3d_Vertex : public TEL_POINT {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates a point with 0.0, 0.0, 0.0 coordinates.
 
-Creates a point with 0.0, 0.0, 0.0 coordinates.") Graphic3d_Vertex;
+	:rtype: None
+") Graphic3d_Vertex;
 		 Graphic3d_Vertex ();
-		%feature("autodoc", "Args:
-	APoint(Graphic3d_Vertex)
+		%feature("autodoc", "	* Creates a point with coordinates identical to <APoint>.
 
-Returns:
-	None
-
-Creates a point with coordinates identical to <APoint>.") Graphic3d_Vertex;
+	:param APoint:
+	:type APoint: Graphic3d_Vertex &
+	:rtype: None
+") Graphic3d_Vertex;
 		 Graphic3d_Vertex (const Graphic3d_Vertex & APoint);
-		%feature("autodoc", "Args:
-	AX(Standard_ShortReal)
-	AY(Standard_ShortReal)
-	AZ(Standard_ShortReal)
+		%feature("autodoc", "	* Creates a point with <AX>, <AY> and <AZ> coordinates.
 
-Returns:
-	None
-
-Creates a point with <AX>, <AY> and <AZ> coordinates.") Graphic3d_Vertex;
+	:param AX:
+	:type AX: Standard_ShortReal
+	:param AY:
+	:type AY: Standard_ShortReal
+	:param AZ:
+	:type AZ: Standard_ShortReal
+	:rtype: None
+") Graphic3d_Vertex;
 		 Graphic3d_Vertex (const Standard_ShortReal AX,const Standard_ShortReal AY,const Standard_ShortReal AZ);
-		%feature("autodoc", "Args:
-	AX(Standard_Real)
-	AY(Standard_Real)
-	AZ(Standard_Real)
+		%feature("autodoc", "	* Creates a point with <AX>, <AY> and <AZ> coordinates.
 
-Returns:
-	None
-
-Creates a point with <AX>, <AY> and <AZ> coordinates.") Graphic3d_Vertex;
+	:param AX:
+	:type AX: float
+	:param AY:
+	:type AY: float
+	:param AZ:
+	:type AZ: float
+	:rtype: None
+") Graphic3d_Vertex;
 		 Graphic3d_Vertex (const Standard_Real AX,const Standard_Real AY,const Standard_Real AZ);
-		%feature("autodoc", "Args:
-	AX(Standard_ShortReal)
-	AY(Standard_ShortReal)
-	AZ(Standard_ShortReal)
+		%feature("autodoc", "	* Modifies the coordinates of the point <self>.
 
-Returns:
-	None
-
-Modifies the coordinates of the point <self>.") SetCoord;
+	:param AX:
+	:type AX: Standard_ShortReal
+	:param AY:
+	:type AY: Standard_ShortReal
+	:param AZ:
+	:type AZ: Standard_ShortReal
+	:rtype: None
+") SetCoord;
 		void SetCoord (const Standard_ShortReal AX,const Standard_ShortReal AY,const Standard_ShortReal AZ);
-		%feature("autodoc", "Args:
-	AX(Standard_Real)
-	AY(Standard_Real)
-	AZ(Standard_Real)
+		%feature("autodoc", "	* Modifies the coordinates of the point <self>.
 
-Returns:
-	None
-
-Modifies the coordinates of the point <self>.") SetCoord;
+	:param AX:
+	:type AX: float
+	:param AY:
+	:type AY: float
+	:param AZ:
+	:type AZ: float
+	:rtype: None
+") SetCoord;
 		void SetCoord (const Standard_Real AX,const Standard_Real AY,const Standard_Real AZ);
-		%feature("autodoc", "Args:
-	AX(Standard_ShortReal)
-	AY(Standard_ShortReal)
-	AZ(Standard_ShortReal)
+		%feature("autodoc", "	* Returns the coordinates of the point <self>.
 
-Returns:
-	None
-
-Returns the coordinates of the point <self>.") Coord;
+	:param AX:
+	:type AX: Standard_ShortReal &
+	:param AY:
+	:type AY: Standard_ShortReal &
+	:param AZ:
+	:type AZ: Standard_ShortReal &
+	:rtype: None
+") Coord;
 		void Coord (Standard_ShortReal & AX,Standard_ShortReal & AY,Standard_ShortReal & AZ);
-		%feature("autodoc", "Args:
-	AX(Standard_Real)
-	AY(Standard_Real)
-	AZ(Standard_Real)
+		%feature("autodoc", "	* Returns the coordinates of the point <self>.
 
-Returns:
-	None
-
-Returns the coordinates of the point <self>.") Coord;
+	:param AX:
+	:type AX: float &
+	:param AY:
+	:type AY: float &
+	:param AZ:
+	:type AZ: float &
+	:rtype: None
+") Coord;
 		void Coord (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ShortReal
+		%feature("autodoc", "	* Returns the X coordinates of the point <self>.
 
-Returns the X coordinates of the point <self>.") X;
+	:rtype: Standard_ShortReal
+") X;
 		Standard_ShortReal X ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ShortReal
+		%feature("autodoc", "	* Returns the Y coordinate of the point <self>.
 
-Returns the Y coordinate of the point <self>.") Y;
+	:rtype: Standard_ShortReal
+") Y;
 		Standard_ShortReal Y ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ShortReal
+		%feature("autodoc", "	* Returns the Z coordinate of the point <self>.
 
-Returns the Z coordinate of the point <self>.") Z;
+	:rtype: Standard_ShortReal
+") Z;
 		Standard_ShortReal Z ();
-		%feature("autodoc", "Args:
-	AOther(Graphic3d_Vertex)
+		%feature("autodoc", "	* Returns the distance between <AV1> and <AV2>.
 
-Returns:
-	Standard_ShortReal
-
-Returns the distance between <AV1> and <AV2>.") Distance;
+	:param AOther:
+	:type AOther: Graphic3d_Vertex &
+	:rtype: Standard_ShortReal
+") Distance;
 		Standard_ShortReal Distance (const Graphic3d_Vertex & AOther);
 };
 
@@ -10049,52 +8093,39 @@ def __del__(self):
 %nodefaultctor Graphic3d_ZLayerSettings;
 class Graphic3d_ZLayerSettings {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Graphic3d_ZLayerSettings;
+		%feature("autodoc", "	:rtype: None
+") Graphic3d_ZLayerSettings;
 		 Graphic3d_ZLayerSettings ();
-		%feature("autodoc", "Args:
-	theSetting(Graphic3d_ZLayerSetting)
+		%feature("autodoc", "	* Returns true if theSetting is enabled.
 
-Returns:
-	Standard_Boolean
-
-Returns true if theSetting is enabled.") IsSettingEnabled;
+	:param theSetting:
+	:type theSetting: Graphic3d_ZLayerSetting
+	:rtype: bool
+") IsSettingEnabled;
 		const Standard_Boolean IsSettingEnabled (const Graphic3d_ZLayerSetting theSetting);
-		%feature("autodoc", "Args:
-	theSetting(Graphic3d_ZLayerSetting)
+		%feature("autodoc", "	* Enables theSetting
 
-Returns:
-	None
-
-Enables theSetting") EnableSetting;
+	:param theSetting:
+	:type theSetting: Graphic3d_ZLayerSetting
+	:rtype: None
+") EnableSetting;
 		void EnableSetting (const Graphic3d_ZLayerSetting theSetting);
-		%feature("autodoc", "Args:
-	theSetting(Graphic3d_ZLayerSetting)
+		%feature("autodoc", "	* Disables theSetting
 
-Returns:
-	None
-
-Disables theSetting") DisableSetting;
+	:param theSetting:
+	:type theSetting: Graphic3d_ZLayerSetting
+	:rtype: None
+") DisableSetting;
 		void DisableSetting (const Graphic3d_ZLayerSetting theSetting);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Sets minimal possible positive depth offset. Access DepthOffsetFactor and DepthOffsetUnits values for manual offset control.
 
-Sets minimal possible positive depth offset.
-Access DepthOffsetFactor and DepthOffsetUnits values for manual offset control.") SetDepthOffsetPositive;
+	:rtype: None
+") SetDepthOffsetPositive;
 		void SetDepthOffsetPositive ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Sets minimal possible negative depth offset. Access DepthOffsetFactor and DepthOffsetUnits values for manual offset control.
 
-Sets minimal possible negative depth offset.
-Access DepthOffsetFactor and DepthOffsetUnits values for manual offset control.") SetDepthOffsetNegative;
+	:rtype: None
+") SetDepthOffsetNegative;
 		void SetDepthOffsetNegative ();
 };
 
@@ -10116,17 +8147,14 @@ def __del__(self):
 %nodefaultctor Graphic3d_ArrayOfPoints;
 class Graphic3d_ArrayOfPoints : public Graphic3d_ArrayOfPrimitives {
 	public:
-		%feature("autodoc", "Args:
-	maxVertexs(Standard_Integer)
-	hasVColors(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Creates an array of points, a single pixel point is drawn at each vertex. The array must be filled using the AddVertex(Point) method. When <hasVColors> is True , you must use only AddVertex(Point,Color) method.
 
-Returns:
-	None
-
-Creates an array of points,  
-a single pixel point is drawn at each vertex.  
-The array must be filled using the AddVertex(Point) method.  
-When <hasVColors> is TRUE , you must use only AddVertex(Point,Color) method.") Graphic3d_ArrayOfPoints;
+	:param maxVertexs:
+	:type maxVertexs: Standard_Integer
+	:param hasVColors: default value is Standard_False
+	:type hasVColors: bool
+	:rtype: None
+") Graphic3d_ArrayOfPoints;
 		 Graphic3d_ArrayOfPoints (const Standard_Integer maxVertexs,const Standard_Boolean hasVColors = Standard_False);
 };
 
@@ -10187,105 +8215,26 @@ def __del__(self):
 %nodefaultctor Graphic3d_ArrayOfPolygons;
 class Graphic3d_ArrayOfPolygons : public Graphic3d_ArrayOfPrimitives {
 	public:
-		%feature("autodoc", "Args:
-	maxVertexs(Standard_Integer)
-	maxBounds(Standard_Integer)=0
-	maxEdges(Standard_Integer)=0
-	hasVNormals(Standard_Boolean)=Standard_False
-	hasVColors(Standard_Boolean)=Standard_False
-	hasBColors(Standard_Boolean)=Standard_False
-	hasTexels(Standard_Boolean)=Standard_False
-	hasEdgeInfos(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Creates an array of polygons, a polygon can be filled as: 1) creating a single polygon defined with his vertexs. i.e: myArray = Graphic3d_ArrayOfPolygons(7) myArray->AddVertex(x1,y1,z1) //!	.... myArray->AddVertex(x7,y7,z7) 2) creating separate polygons defined with a predefined number of bounds and the number of vertex per bound. i.e: myArray = Graphic3d_ArrayOfPolygons(7,2) myArray->AddBound(4) myArray->AddVertex(x1,y1,z1) //!	.... myArray->AddVertex(x4,y4,z4) myArray->AddBound(3) myArray->AddVertex(x5,y5,z5) //!	.... myArray->AddVertex(x7,y7,z7) 3) creating a single indexed polygon defined with his vertex ans edges. i.e: myArray = Graphic3d_ArrayOfPolygons(4,0,6) myArray->AddVertex(x1,y1,z1) //!	.... myArray->AddVertex(x4,y4,z4) myArray->AddEdge(1) myArray->AddEdge(2) myArray->AddEdge(3) myArray->AddEdge(1) myArray->AddEdge(2) myArray->AddEdge(4) 4) creating separate polygons defined with a predefined number of bounds and the number of edges per bound. i.e: myArray = Graphic3d_ArrayOfPolygons(6,4,14) myArray->AddBound(3) myArray->AddVertex(x1,y1,z1) myArray->AddVertex(x2,y2,z2) myArray->AddVertex(x3,y3,z3) myArray->AddEdge(1) myArray->AddEdge(2) myArray->AddEdge(3) myArray->AddBound(3) myArray->AddVertex(x4,y4,z4) myArray->AddVertex(x5,y5,z5) myArray->AddVertex(x6,y6,z6) myArray->AddEdge(4) myArray->AddEdge(5) myArray->AddEdge(6) myArray->AddBound(4) myArray->AddEdge(2) myArray->AddEdge(3) myArray->AddEdge(5) myArray->AddEdge(6) myArray->AddBound(4) myArray->AddEdge(1) myArray->AddEdge(3) myArray->AddEdge(5) myArray->AddEdge(4) <maxVertexs> defined the maximun allowed vertex number in the array. <maxBounds> defined the maximun allowed bound number in the array. <maxEdges> defined the maximun allowed edge number in the array. Warning: When <hasVNormals> is True , you must use one of //!	AddVertex(Point,Normal) or AddVertex(Point,Normal,Color) or AddVertex(Point,Normal,Texel) methods. When <hasVColors> is True , you must use one of //!	AddVertex(Point,Color) or AddVertex(Point,Normal,Color) methods. When <hasTexels> is True , you must use one of //!	AddVertex(Point,Texel) or AddVertex(Point,Normal,Texel) methods. When <hasBColors> is True , <maxBounds> must be > 0 and //!	you must use the //!	AddBound(number,Color) method. When <hasEdgeInfos> is True , <maxEdges> must be > 0 and //!	you must use the //!	AddEdge(number,visibillity) method. Warning: the user is responsible about the orientation of the polygon depending of the order of the created vertex or edges and this orientation must be coherent with the vertex normal optionnaly given at each vertex (See the Orientate() methods).
 
-Returns:
-	None
-
-Creates an array of polygons,  
-a polygon can be filled as:  
-1) creating a single polygon defined with his vertexs.  
-   i.e:  
-   myArray = Graphic3d_ArrayOfPolygons(7)  
-   myArray->AddVertex(x1,y1,z1)  
-//!	....  
-   myArray->AddVertex(x7,y7,z7)  
-2) creating separate polygons defined with a predefined  
-   number of bounds and the number of vertex per bound.  
-   i.e:  
-   myArray = Graphic3d_ArrayOfPolygons(7,2)  
-   myArray->AddBound(4)  
-   myArray->AddVertex(x1,y1,z1)  
-//!	....  
-   myArray->AddVertex(x4,y4,z4)  
-   myArray->AddBound(3)  
-   myArray->AddVertex(x5,y5,z5)  
-//!	....  
-   myArray->AddVertex(x7,y7,z7)  
-3) creating a single indexed polygon defined with his vertex  
-   ans edges.  
-   i.e:  
-   myArray = Graphic3d_ArrayOfPolygons(4,0,6)  
-   myArray->AddVertex(x1,y1,z1)  
-//!	....  
-   myArray->AddVertex(x4,y4,z4)  
-   myArray->AddEdge(1)  
-   myArray->AddEdge(2)  
-   myArray->AddEdge(3)  
-   myArray->AddEdge(1)  
-   myArray->AddEdge(2)  
-   myArray->AddEdge(4)  
-4) creating separate polygons defined with a predefined  
-   number of bounds and the number of edges per bound.  
-   i.e:  
-   myArray = Graphic3d_ArrayOfPolygons(6,4,14)  
-   myArray->AddBound(3)  
-   myArray->AddVertex(x1,y1,z1)  
-   myArray->AddVertex(x2,y2,z2)  
-   myArray->AddVertex(x3,y3,z3)  
-   myArray->AddEdge(1)  
-   myArray->AddEdge(2)  
-   myArray->AddEdge(3)  
-   myArray->AddBound(3)  
-   myArray->AddVertex(x4,y4,z4)  
-   myArray->AddVertex(x5,y5,z5)  
-   myArray->AddVertex(x6,y6,z6)  
-   myArray->AddEdge(4)  
-   myArray->AddEdge(5)  
-   myArray->AddEdge(6)  
-   myArray->AddBound(4)  
-   myArray->AddEdge(2)  
-   myArray->AddEdge(3)  
-   myArray->AddEdge(5)  
-   myArray->AddEdge(6)  
-   myArray->AddBound(4)  
-   myArray->AddEdge(1)  
-   myArray->AddEdge(3)  
-   myArray->AddEdge(5)  
-   myArray->AddEdge(4)  
-<maxVertexs> defined the maximun allowed vertex number in the array.  
-<maxBounds> defined the maximun allowed bound number in the array.  
-<maxEdges> defined the maximun allowed edge number in the array.  
- Warning:  
-When <hasVNormals> is TRUE , you must use one of  
-//!	AddVertex(Point,Normal)  
- or  AddVertex(Point,Normal,Color)  
- or  AddVertex(Point,Normal,Texel) methods.  
-When <hasVColors> is TRUE , you must use one of  
-//!	AddVertex(Point,Color)  
- or  AddVertex(Point,Normal,Color) methods.  
-When <hasTexels> is TRUE , you must use one of  
-//!	AddVertex(Point,Texel)  
- or  AddVertex(Point,Normal,Texel) methods.  
-When <hasBColors> is TRUE , <maxBounds> must be > 0 and  
-//!	you must use the  
-//!	AddBound(number,Color) method.  
-When <hasEdgeInfos> is TRUE , <maxEdges> must be > 0 and  
-//!	you must use the  
-//!	AddEdge(number,visibillity) method.  
- Warning:  
-the user is responsible about the orientation of the polygon  
-depending of the order of the created vertex or edges and this  
-orientation must be coherent with the vertex normal optionnaly  
-given at each vertex (See the Orientate() methods).") Graphic3d_ArrayOfPolygons;
+	:param maxVertexs:
+	:type maxVertexs: Standard_Integer
+	:param maxBounds: default value is 0
+	:type maxBounds: Standard_Integer
+	:param maxEdges: default value is 0
+	:type maxEdges: Standard_Integer
+	:param hasVNormals: default value is Standard_False
+	:type hasVNormals: bool
+	:param hasVColors: default value is Standard_False
+	:type hasVColors: bool
+	:param hasBColors: default value is Standard_False
+	:type hasBColors: bool
+	:param hasTexels: default value is Standard_False
+	:type hasTexels: bool
+	:param hasEdgeInfos: default value is Standard_False
+	:type hasEdgeInfos: bool
+	:rtype: None
+") Graphic3d_ArrayOfPolygons;
 		 Graphic3d_ArrayOfPolygons (const Standard_Integer maxVertexs,const Standard_Integer maxBounds = 0,const Standard_Integer maxEdges = 0,const Standard_Boolean hasVNormals = Standard_False,const Standard_Boolean hasVColors = Standard_False,const Standard_Boolean hasBColors = Standard_False,const Standard_Boolean hasTexels = Standard_False,const Standard_Boolean hasEdgeInfos = Standard_False);
 };
 
@@ -10346,92 +8295,22 @@ def __del__(self):
 %nodefaultctor Graphic3d_ArrayOfPolylines;
 class Graphic3d_ArrayOfPolylines : public Graphic3d_ArrayOfPrimitives {
 	public:
-		%feature("autodoc", "Args:
-	maxVertexs(Standard_Integer)
-	maxBounds(Standard_Integer)=0
-	maxEdges(Standard_Integer)=0
-	hasVColors(Standard_Boolean)=Standard_False
-	hasBColors(Standard_Boolean)=Standard_False
-	hasEdgeInfos(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Creates an array of polylines, a polyline can be filled as: 1) creating a single polyline defined with his vertexs. i.e: myArray = Graphic3d_ArrayOfPolylines(7) myArray->AddVertex(x1,y1,z1) .... myArray->AddVertex(x7,y7,z7) 2) creating separate polylines defined with a predefined number of bounds and the number of vertex per bound. i.e: myArray = Graphic3d_ArrayOfPolylines(7,2) myArray->AddBound(4) myArray->AddVertex(x1,y1,z1) .... myArray->AddVertex(x4,y4,z4) myArray->AddBound(3) myArray->AddVertex(x5,y5,z5) .... myArray->AddVertex(x7,y7,z7) 3) creating a single indexed polyline defined with his vertex ans edges. i.e: myArray = Graphic3d_ArrayOfPolylines(4,0,6) myArray->AddVertex(x1,y1,z1) .... myArray->AddVertex(x4,y4,z4) myArray->AddEdge(1) myArray->AddEdge(2) myArray->AddEdge(3) myArray->AddEdge(1) myArray->AddEdge(2) myArray->AddEdge(4) 4) creating separate polylines defined with a predefined number of bounds and the number of edges per bound. i.e: myArray = Graphic3d_ArrayOfPolylines(6,4,14) myArray->AddBound(3) myArray->AddVertex(x1,y1,z1) myArray->AddVertex(x2,y2,z2) myArray->AddVertex(x3,y3,z3) myArray->AddEdge(1) myArray->AddEdge(2) myArray->AddEdge(3) myArray->AddBound(3) myArray->AddVertex(x4,y4,z4) myArray->AddVertex(x5,y5,z5) myArray->AddVertex(x6,y6,z6) myArray->AddEdge(4) myArray->AddEdge(5) myArray->AddEdge(6) myArray->AddBound(4) myArray->AddEdge(2) myArray->AddEdge(3) myArray->AddEdge(5) myArray->AddEdge(6) myArray->AddBound(4) myArray->AddEdge(1) myArray->AddEdge(3) myArray->AddEdge(5) myArray->AddEdge(4) <maxVertexs> defined the maximun allowed vertex number in the array. <maxBounds> defined the maximun allowed bound number in the array. <maxEdges> defined the maximun allowed edge number in the array. Warning: When <hasVColors> is True , you must use one of AddVertex(Point,Color) or AddVertex(Point,Normal,Color) methods. When <hasBColors> is True , <maxBounds> must be > 0 and you must use the AddBound(number,Color) method. When <hasEdgeInfos> is True , <maxEdges> must be > 0 and you must use the AddEdge(number,visibillity) method.
 
-Returns:
-	None
-
-Creates an array of polylines,  
-a polyline can be filled as:  
-1) creating a single polyline defined with his vertexs.  
-   i.e:  
-   myArray = Graphic3d_ArrayOfPolylines(7)  
-   myArray->AddVertex(x1,y1,z1)  
-     ....  
-   myArray->AddVertex(x7,y7,z7)  
-2) creating separate polylines defined with a predefined  
-   number of bounds and the number of vertex per bound.  
-   i.e:  
-   myArray = Graphic3d_ArrayOfPolylines(7,2)  
-   myArray->AddBound(4)  
-   myArray->AddVertex(x1,y1,z1)  
-     ....  
-   myArray->AddVertex(x4,y4,z4)  
-   myArray->AddBound(3)  
-   myArray->AddVertex(x5,y5,z5)  
-     ....  
-   myArray->AddVertex(x7,y7,z7)  
-3) creating a single indexed polyline defined with his vertex  
-   ans edges.  
-   i.e:  
-   myArray = Graphic3d_ArrayOfPolylines(4,0,6)  
-   myArray->AddVertex(x1,y1,z1)  
-     ....  
-   myArray->AddVertex(x4,y4,z4)  
-   myArray->AddEdge(1)  
-   myArray->AddEdge(2)  
-   myArray->AddEdge(3)  
-   myArray->AddEdge(1)  
-   myArray->AddEdge(2)  
-   myArray->AddEdge(4)  
-4) creating separate polylines defined with a predefined  
-   number of bounds and the number of edges per bound.  
-   i.e:  
-   myArray = Graphic3d_ArrayOfPolylines(6,4,14)  
-   myArray->AddBound(3)  
-   myArray->AddVertex(x1,y1,z1)  
-   myArray->AddVertex(x2,y2,z2)  
-   myArray->AddVertex(x3,y3,z3)  
-   myArray->AddEdge(1)  
-   myArray->AddEdge(2)  
-   myArray->AddEdge(3)  
-   myArray->AddBound(3)  
-   myArray->AddVertex(x4,y4,z4)  
-   myArray->AddVertex(x5,y5,z5)  
-   myArray->AddVertex(x6,y6,z6)  
-   myArray->AddEdge(4)  
-   myArray->AddEdge(5)  
-   myArray->AddEdge(6)  
-   myArray->AddBound(4)  
-   myArray->AddEdge(2)  
-   myArray->AddEdge(3)  
-   myArray->AddEdge(5)  
-   myArray->AddEdge(6)  
-   myArray->AddBound(4)  
-   myArray->AddEdge(1)  
-   myArray->AddEdge(3)  
-   myArray->AddEdge(5)  
-   myArray->AddEdge(4)  
- 
-<maxVertexs> defined the maximun allowed vertex number in the array.  
-<maxBounds> defined the maximun allowed bound number in the array.  
-<maxEdges> defined the maximun allowed edge number in the array.  
- Warning:  
-When <hasVColors> is TRUE , you must use one of  
-     AddVertex(Point,Color)  
- or  AddVertex(Point,Normal,Color) methods.  
-When <hasBColors> is TRUE , <maxBounds> must be > 0 and  
-     you must use the  
-     AddBound(number,Color) method.  
-When <hasEdgeInfos> is TRUE , <maxEdges> must be > 0 and  
-     you must use the  
-     AddEdge(number,visibillity) method.") Graphic3d_ArrayOfPolylines;
+	:param maxVertexs:
+	:type maxVertexs: Standard_Integer
+	:param maxBounds: default value is 0
+	:type maxBounds: Standard_Integer
+	:param maxEdges: default value is 0
+	:type maxEdges: Standard_Integer
+	:param hasVColors: default value is Standard_False
+	:type hasVColors: bool
+	:param hasBColors: default value is Standard_False
+	:type hasBColors: bool
+	:param hasEdgeInfos: default value is Standard_False
+	:type hasEdgeInfos: bool
+	:rtype: None
+") Graphic3d_ArrayOfPolylines;
 		 Graphic3d_ArrayOfPolylines (const Standard_Integer maxVertexs,const Standard_Integer maxBounds = 0,const Standard_Integer maxEdges = 0,const Standard_Boolean hasVColors = Standard_False,const Standard_Boolean hasBColors = Standard_False,const Standard_Boolean hasEdgeInfos = Standard_False);
 };
 
@@ -10492,42 +8371,22 @@ def __del__(self):
 %nodefaultctor Graphic3d_ArrayOfQuadrangleStrips;
 class Graphic3d_ArrayOfQuadrangleStrips : public Graphic3d_ArrayOfPrimitives {
 	public:
-		%feature("autodoc", "Args:
-	maxVertexs(Standard_Integer)
-	maxStrips(Standard_Integer)=0
-	hasVNormals(Standard_Boolean)=Standard_False
-	hasVColors(Standard_Boolean)=Standard_False
-	hasSColors(Standard_Boolean)=Standard_False
-	hasTexels(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Creates an array of quadrangle strips, a polygon can be filled as: 1) creating a single strip defined with his vertexs. i.e: myArray = Graphic3d_ArrayOfQuadrangleStrips(7) myArray->AddVertex(x1,y1,z1) //!	.... myArray->AddVertex(x7,y7,z7) 2) creating separate strips defined with a predefined number of strips and the number of vertex per strip. i.e: myArray = Graphic3d_ArrayOfQuadrangleStrips(8,2) myArray->AddBound(4) myArray->AddVertex(x1,y1,z1) //!	.... myArray->AddVertex(x4,y4,z4) myArray->AddBound(4) myArray->AddVertex(x5,y5,z5) //!	.... myArray->AddVertex(x8,y8,z8) <maxVertexs> defined the maximun allowed vertex number in the array. <maxStrips> defined the maximun allowed strip number in the array. The number of quadrangle really drawn is : VertexNumber()/2-Min(1,BoundNumber())
 
-Returns:
-	None
-
-Creates an array of quadrangle strips,  
-a polygon can be filled as:  
-1) creating a single strip defined with his vertexs.  
-   i.e:  
-   myArray = Graphic3d_ArrayOfQuadrangleStrips(7)  
-   myArray->AddVertex(x1,y1,z1)  
-//!	....  
-   myArray->AddVertex(x7,y7,z7)  
-2) creating separate strips defined with a predefined  
-   number of strips and the number of vertex per strip.  
-   i.e:  
-   myArray = Graphic3d_ArrayOfQuadrangleStrips(8,2)  
-   myArray->AddBound(4)  
-   myArray->AddVertex(x1,y1,z1)  
-//!	....  
-   myArray->AddVertex(x4,y4,z4)  
-   myArray->AddBound(4)  
-   myArray->AddVertex(x5,y5,z5)  
-//!	....  
-   myArray->AddVertex(x8,y8,z8)  
- 
-<maxVertexs> defined the maximun allowed vertex number in the array.  
-<maxStrips> defined the maximun allowed strip number in the array.  
-The number of quadrangle really drawn is :  
-VertexNumber()/2-Min(1,BoundNumber())") Graphic3d_ArrayOfQuadrangleStrips;
+	:param maxVertexs:
+	:type maxVertexs: Standard_Integer
+	:param maxStrips: default value is 0
+	:type maxStrips: Standard_Integer
+	:param hasVNormals: default value is Standard_False
+	:type hasVNormals: bool
+	:param hasVColors: default value is Standard_False
+	:type hasVColors: bool
+	:param hasSColors: default value is Standard_False
+	:type hasSColors: bool
+	:param hasTexels: default value is Standard_False
+	:type hasTexels: bool
+	:rtype: None
+") Graphic3d_ArrayOfQuadrangleStrips;
 		 Graphic3d_ArrayOfQuadrangleStrips (const Standard_Integer maxVertexs,const Standard_Integer maxStrips = 0,const Standard_Boolean hasVNormals = Standard_False,const Standard_Boolean hasVColors = Standard_False,const Standard_Boolean hasSColors = Standard_False,const Standard_Boolean hasTexels = Standard_False);
 };
 
@@ -10588,62 +8447,22 @@ def __del__(self):
 %nodefaultctor Graphic3d_ArrayOfQuadrangles;
 class Graphic3d_ArrayOfQuadrangles : public Graphic3d_ArrayOfPrimitives {
 	public:
-		%feature("autodoc", "Args:
-	maxVertexs(Standard_Integer)
-	maxEdges(Standard_Integer)=0
-	hasVNormals(Standard_Boolean)=Standard_False
-	hasVColors(Standard_Boolean)=Standard_False
-	hasTexels(Standard_Boolean)=Standard_False
-	hasEdgeInfos(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Creates an array of quadrangles, a quadrangle can be filled as: 1) creating a set of quadrangles defined with his vertexs. i.e: myArray = Graphic3d_ArrayOfQuadrangles(8) myArray->AddVertex(x1,y1,z1) //!	.... myArray->AddVertex(x8,y8,z8) 3) creating a set of indexed quadrangles defined with his vertex ans edges. i.e: myArray = Graphic3d_ArrayOfQuadrangles(6,8) myArray->AddVertex(x1,y1,z1) //!	.... myArray->AddVertex(x6,y6,z6) myArray->AddEdge(1) myArray->AddEdge(2) myArray->AddEdge(3) myArray->AddEdge(4) myArray->AddEdge(3) myArray->AddEdge(4) myArray->AddEdge(5) myArray->AddEdge(6) <maxVertexs> defined the maximun allowed vertex number in the array. <maxEdges> defined the maximun allowed edge number in the array. Warning: When <hasVNormals> is True , you must use one of //!	AddVertex(Point,Normal) or AddVertex(Point,Normal,Color) or AddVertex(Point,Normal,Texel) methods. When <hasVColors> is True , you must use one of //!	AddVertex(Point,Color) or AddVertex(Point,Normal,Color) methods. When <hasTexels> is True , you must use one of //!	AddVertex(Point,Texel) or AddVertex(Point,Normal,Texel) methods. When <hasEdgeInfos> is True , <maxEdges> must be > 0 and //!	you must use the //!	AddEdge(number,visibillity) method. Warning: the user is responsible about the orientation of the quadrangle depending of the order of the created vertex or edges and this orientation must be coherent with the vertex normal optionnaly given at each vertex (See the Orientate() methods).
 
-Returns:
-	None
-
-Creates an array of quadrangles,  
-a quadrangle can be filled as:  
-1) creating a set of quadrangles defined with his vertexs.  
-   i.e:  
-   myArray = Graphic3d_ArrayOfQuadrangles(8)  
-   myArray->AddVertex(x1,y1,z1)  
-//!	....  
-   myArray->AddVertex(x8,y8,z8)  
-3) creating a set of indexed quadrangles defined with his vertex  
-   ans edges.  
-   i.e:  
-   myArray = Graphic3d_ArrayOfQuadrangles(6,8)  
-   myArray->AddVertex(x1,y1,z1)  
-//!	....  
-   myArray->AddVertex(x6,y6,z6)  
-   myArray->AddEdge(1)  
-   myArray->AddEdge(2)  
-   myArray->AddEdge(3)  
-   myArray->AddEdge(4)  
-   myArray->AddEdge(3)  
-   myArray->AddEdge(4)  
-   myArray->AddEdge(5)  
-   myArray->AddEdge(6)  
- 
-<maxVertexs> defined the maximun allowed vertex number in the array.  
-<maxEdges> defined the maximun allowed edge number in the array.  
- Warning:  
-When <hasVNormals> is TRUE , you must use one of  
-//!	AddVertex(Point,Normal)  
- or  AddVertex(Point,Normal,Color)  
- or  AddVertex(Point,Normal,Texel) methods.  
-When <hasVColors> is TRUE , you must use one of  
-//!	AddVertex(Point,Color)  
- or  AddVertex(Point,Normal,Color) methods.  
-When <hasTexels> is TRUE , you must use one of  
-//!	AddVertex(Point,Texel)  
- or  AddVertex(Point,Normal,Texel) methods.  
-When <hasEdgeInfos> is TRUE , <maxEdges> must be > 0 and  
-//!	you must use the  
-//!	AddEdge(number,visibillity) method.  
- Warning:  
-the user is responsible about the orientation of the quadrangle  
-depending of the order of the created vertex or edges and this  
-orientation must be coherent with the vertex normal optionnaly  
-given at each vertex (See the Orientate() methods).") Graphic3d_ArrayOfQuadrangles;
+	:param maxVertexs:
+	:type maxVertexs: Standard_Integer
+	:param maxEdges: default value is 0
+	:type maxEdges: Standard_Integer
+	:param hasVNormals: default value is Standard_False
+	:type hasVNormals: bool
+	:param hasVColors: default value is Standard_False
+	:type hasVColors: bool
+	:param hasTexels: default value is Standard_False
+	:type hasTexels: bool
+	:param hasEdgeInfos: default value is Standard_False
+	:type hasEdgeInfos: bool
+	:rtype: None
+") Graphic3d_ArrayOfQuadrangles;
 		 Graphic3d_ArrayOfQuadrangles (const Standard_Integer maxVertexs,const Standard_Integer maxEdges = 0,const Standard_Boolean hasVNormals = Standard_False,const Standard_Boolean hasVColors = Standard_False,const Standard_Boolean hasTexels = Standard_False,const Standard_Boolean hasEdgeInfos = Standard_False);
 };
 
@@ -10704,43 +8523,16 @@ def __del__(self):
 %nodefaultctor Graphic3d_ArrayOfSegments;
 class Graphic3d_ArrayOfSegments : public Graphic3d_ArrayOfPrimitives {
 	public:
-		%feature("autodoc", "Args:
-	maxVertexs(Standard_Integer)
-	maxEdges(Standard_Integer)=0
-	hasVColors(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Creates an array of segments, a segment can be filled as: 1) creating a set of segments defined with his vertexs. i.e: myArray = Graphic3d_ArrayOfSegments(4) myArray->AddVertex(x1,y1,z1) //!	.... myArray->AddVertex(x4,y4,z4) 2) creating a set of indexed segments defined with his vertex ans edges. i.e: myArray = Graphic3d_ArrayOfSegments(4,0,8) myArray->AddVertex(x1,y1,z1) //!	.... myArray->AddVertex(x4,y4,z4) myArray->AddEdge(1) myArray->AddEdge(2) myArray->AddEdge(3) myArray->AddEdge(4) myArray->AddEdge(2) myArray->AddEdge(4) myArray->AddEdge(1) myArray->AddEdge(3) <maxVertexs> defined the maximun allowed vertex number in the array. <maxEdges> defined the maximun allowed edge number in the array. Warning: When <hasVColors> is True , you must use only //!	AddVertex(Point,Color) method
 
-Returns:
-	None
-
-Creates an array of segments,  
-a segment can be filled as:  
-1) creating a set of segments defined with his vertexs.  
-   i.e:  
-   myArray = Graphic3d_ArrayOfSegments(4)  
-   myArray->AddVertex(x1,y1,z1)  
-//!	....  
-   myArray->AddVertex(x4,y4,z4)  
-2) creating a set of indexed segments defined with his vertex  
-   ans edges.  
-   i.e:  
-   myArray = Graphic3d_ArrayOfSegments(4,0,8)  
-   myArray->AddVertex(x1,y1,z1)  
-//!	....  
-   myArray->AddVertex(x4,y4,z4)  
-   myArray->AddEdge(1)  
-   myArray->AddEdge(2)  
-   myArray->AddEdge(3)  
-   myArray->AddEdge(4)  
-   myArray->AddEdge(2)  
-   myArray->AddEdge(4)  
-   myArray->AddEdge(1)  
-   myArray->AddEdge(3)  
- 
-<maxVertexs> defined the maximun allowed vertex number in the array.  
-<maxEdges> defined the maximun allowed edge number in the array.  
- Warning:  
-When <hasVColors> is TRUE , you must use only  
-//!	AddVertex(Point,Color) method") Graphic3d_ArrayOfSegments;
+	:param maxVertexs:
+	:type maxVertexs: Standard_Integer
+	:param maxEdges: default value is 0
+	:type maxEdges: Standard_Integer
+	:param hasVColors: default value is Standard_False
+	:type hasVColors: bool
+	:rtype: None
+") Graphic3d_ArrayOfSegments;
 		 Graphic3d_ArrayOfSegments (const Standard_Integer maxVertexs,const Standard_Integer maxEdges = 0,const Standard_Boolean hasVColors = Standard_False);
 };
 
@@ -10801,42 +8593,22 @@ def __del__(self):
 %nodefaultctor Graphic3d_ArrayOfTriangleFans;
 class Graphic3d_ArrayOfTriangleFans : public Graphic3d_ArrayOfPrimitives {
 	public:
-		%feature("autodoc", "Args:
-	maxVertexs(Standard_Integer)
-	maxFans(Standard_Integer)=0
-	hasVNormals(Standard_Boolean)=Standard_False
-	hasVColors(Standard_Boolean)=Standard_False
-	hasFColors(Standard_Boolean)=Standard_False
-	hasTexels(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Creates an array of triangle fans, a polygon can be filled as: 1) creating a single fan defined with his vertexs. i.e: myArray = Graphic3d_ArrayOfTriangleFans(7) myArray->AddVertex(x1,y1,z1) .... myArray->AddVertex(x7,y7,z7) 2) creating separate fans defined with a predefined number of fans and the number of vertex per fan. i.e: myArray = Graphic3d_ArrayOfTriangleFans(8,2) myArray->AddBound(4) myArray->AddVertex(x1,y1,z1) .... myArray->AddVertex(x4,y4,z4) myArray->AddBound(4) myArray->AddVertex(x5,y5,z5) .... myArray->AddVertex(x8,y8,z8) <maxVertexs> defined the maximun allowed vertex number in the array. <maxFans> defined the maximun allowed fan number in the array. The number of triangle really drawn is : VertexNumber()-2*Min(1,BoundNumber())
 
-Returns:
-	None
-
-Creates an array of triangle fans,  
-a polygon can be filled as:  
-1) creating a single fan defined with his vertexs.  
-   i.e:  
-   myArray = Graphic3d_ArrayOfTriangleFans(7)  
-   myArray->AddVertex(x1,y1,z1)  
-     ....  
-   myArray->AddVertex(x7,y7,z7)  
-2) creating separate fans defined with a predefined  
-   number of fans and the number of vertex per fan.  
-   i.e:  
-   myArray = Graphic3d_ArrayOfTriangleFans(8,2)  
-   myArray->AddBound(4)  
-   myArray->AddVertex(x1,y1,z1)  
-     ....  
-   myArray->AddVertex(x4,y4,z4)  
-   myArray->AddBound(4)  
-   myArray->AddVertex(x5,y5,z5)  
-     ....  
-   myArray->AddVertex(x8,y8,z8)  
- 
-<maxVertexs> defined the maximun allowed vertex number in the array.  
-<maxFans> defined the maximun allowed fan number in the array.  
-The number of triangle really drawn is :  
-VertexNumber()-2*Min(1,BoundNumber())") Graphic3d_ArrayOfTriangleFans;
+	:param maxVertexs:
+	:type maxVertexs: Standard_Integer
+	:param maxFans: default value is 0
+	:type maxFans: Standard_Integer
+	:param hasVNormals: default value is Standard_False
+	:type hasVNormals: bool
+	:param hasVColors: default value is Standard_False
+	:type hasVColors: bool
+	:param hasFColors: default value is Standard_False
+	:type hasFColors: bool
+	:param hasTexels: default value is Standard_False
+	:type hasTexels: bool
+	:rtype: None
+") Graphic3d_ArrayOfTriangleFans;
 		 Graphic3d_ArrayOfTriangleFans (const Standard_Integer maxVertexs,const Standard_Integer maxFans = 0,const Standard_Boolean hasVNormals = Standard_False,const Standard_Boolean hasVColors = Standard_False,const Standard_Boolean hasFColors = Standard_False,const Standard_Boolean hasTexels = Standard_False);
 };
 
@@ -10897,61 +8669,22 @@ def __del__(self):
 %nodefaultctor Graphic3d_ArrayOfTriangleStrips;
 class Graphic3d_ArrayOfTriangleStrips : public Graphic3d_ArrayOfPrimitives {
 	public:
-		%feature("autodoc", "Args:
-	maxVertexs(Standard_Integer)
-	maxStrips(Standard_Integer)=0
-	hasVNormals(Standard_Boolean)=Standard_False
-	hasVColors(Standard_Boolean)=Standard_False
-	hasSColors(Standard_Boolean)=Standard_False
-	hasTexels(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Creates an array of triangle strips, a polygon can be filled as: 1) creating a single strip defined with his vertexs. i.e: myArray = Graphic3d_ArrayOfTriangleStrips(7) myArray->AddVertex(x1,y1,z1) .... myArray->AddVertex(x7,y7,z7) 2) creating separate strips defined with a predefined number of strips and the number of vertex per strip. i.e: myArray = Graphic3d_ArrayOfTriangleStrips(8,2) myArray->AddBound(4) myArray->AddVertex(x1,y1,z1) .... myArray->AddVertex(x4,y4,z4) myArray->AddBound(4) myArray->AddVertex(x5,y5,z5) .... myArray->AddVertex(x8,y8,z8) <maxVertexs> defined the maximun allowed vertex number in the array. <maxStrips> defined the maximun allowed strip number in the array. The number of triangle really drawn is : VertexNumber()-2*Min(1,BoundNumber()) Warning: When <hasVNormals> is True , you must use one of AddVertex(Point,Normal) or AddVertex(Point,Normal,Color) or AddVertex(Point,Normal,Texel) methods. When <hasVColors> is True , you must use one of AddVertex(Point,Color) or AddVertex(Point,Normal,Color) methods. When <hasTexels> is True , you must use one of AddVertex(Point,Texel) or AddVertex(Point,Normal,Texel) methods. When <hasBColors> is True , <maxBounds> must be > 0 and you must use the AddBound(number,Color) method. Warning: the user is responsible about the orientation of the strip depending of the order of the created vertex and this orientation must be coherent with the vertex normal optionnaly given at each vertex (See the Orientate() methods).
 
-Returns:
-	None
-
-Creates an array of triangle strips,  
-a polygon can be filled as:  
-1) creating a single strip defined with his vertexs.  
-   i.e:  
-   myArray = Graphic3d_ArrayOfTriangleStrips(7)  
-   myArray->AddVertex(x1,y1,z1)  
-     ....  
-   myArray->AddVertex(x7,y7,z7)  
-2) creating separate strips defined with a predefined  
-   number of strips and the number of vertex per strip.  
-   i.e:  
-   myArray = Graphic3d_ArrayOfTriangleStrips(8,2)  
-   myArray->AddBound(4)  
-   myArray->AddVertex(x1,y1,z1)  
-     ....  
-   myArray->AddVertex(x4,y4,z4)  
-   myArray->AddBound(4)  
-   myArray->AddVertex(x5,y5,z5)  
-     ....  
-   myArray->AddVertex(x8,y8,z8)  
- 
-<maxVertexs> defined the maximun allowed vertex number in the array.  
-<maxStrips> defined the maximun allowed strip number in the array.  
-The number of triangle really drawn is :  
-VertexNumber()-2*Min(1,BoundNumber())  
- Warning:  
-When <hasVNormals> is TRUE , you must use one of  
-     AddVertex(Point,Normal)  
- or  AddVertex(Point,Normal,Color)  
- or  AddVertex(Point,Normal,Texel) methods.  
-When <hasVColors> is TRUE , you must use one of  
-     AddVertex(Point,Color)  
- or  AddVertex(Point,Normal,Color) methods.  
-When <hasTexels> is TRUE , you must use one of  
-     AddVertex(Point,Texel)  
- or  AddVertex(Point,Normal,Texel) methods.  
-When <hasBColors> is TRUE , <maxBounds> must be > 0 and  
-     you must use the  
-     AddBound(number,Color) method.  
- Warning:  
-the user is responsible about the orientation of the strip  
-depending of the order of the created vertex and this  
-orientation must be coherent with the vertex normal optionnaly  
-given at each vertex (See the Orientate() methods).") Graphic3d_ArrayOfTriangleStrips;
+	:param maxVertexs:
+	:type maxVertexs: Standard_Integer
+	:param maxStrips: default value is 0
+	:type maxStrips: Standard_Integer
+	:param hasVNormals: default value is Standard_False
+	:type hasVNormals: bool
+	:param hasVColors: default value is Standard_False
+	:type hasVColors: bool
+	:param hasSColors: default value is Standard_False
+	:type hasSColors: bool
+	:param hasTexels: default value is Standard_False
+	:type hasTexels: bool
+	:rtype: None
+") Graphic3d_ArrayOfTriangleStrips;
 		 Graphic3d_ArrayOfTriangleStrips (const Standard_Integer maxVertexs,const Standard_Integer maxStrips = 0,const Standard_Boolean hasVNormals = Standard_False,const Standard_Boolean hasVColors = Standard_False,const Standard_Boolean hasSColors = Standard_False,const Standard_Boolean hasTexels = Standard_False);
 };
 
@@ -11012,60 +8745,22 @@ def __del__(self):
 %nodefaultctor Graphic3d_ArrayOfTriangles;
 class Graphic3d_ArrayOfTriangles : public Graphic3d_ArrayOfPrimitives {
 	public:
-		%feature("autodoc", "Args:
-	maxVertexs(Standard_Integer)
-	maxEdges(Standard_Integer)=0
-	hasVNormals(Standard_Boolean)=Standard_False
-	hasVColors(Standard_Boolean)=Standard_False
-	hasTexels(Standard_Boolean)=Standard_False
-	hasEdgeInfos(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Creates an array of triangles, a triangle can be filled as: 1) creating a set of triangles defined with his vertexs. i.e: myArray = Graphic3d_ArrayOfTriangles(6) myArray->AddVertex(x1,y1,z1) .... myArray->AddVertex(x6,y6,z6) 3) creating a set of indexed triangles defined with his vertex ans edges. i.e: myArray = Graphic3d_ArrayOfTriangles(4,6) myArray->AddVertex(x1,y1,z1) .... myArray->AddVertex(x4,y4,z4) myArray->AddEdge(1) myArray->AddEdge(2) myArray->AddEdge(3) myArray->AddEdge(2) myArray->AddEdge(3) myArray->AddEdge(4) <maxVertexs> defined the maximun allowed vertex number in the array. <maxEdges> defined the maximun allowed edge number in the array. Warning: When <hasVNormals> is True , you must use one of AddVertex(Point,Normal) or AddVertex(Point,Normal,Color) or AddVertex(Point,Normal,Texel) methods. When <hasVColors> is True , you must use one of AddVertex(Point,Color) or AddVertex(Point,Normal,Color) methods. When <hasTexels> is True , you must use one of AddVertex(Point,Texel) or AddVertex(Point,Normal,Texel) methods. When <hasEdgeInfos> is True , <maxEdges> must be > 0 and you must use the AddEdge(number,visibillity) method. Warning: the user is responsible about the orientation of the triangle depending of the order of the created vertex or edges and this orientation must be coherent with the vertex normal optionnaly given at each vertex (See the Orientate() methods).
 
-Returns:
-	None
-
-Creates an array of triangles,  
-a triangle can be filled as:  
-1) creating a set of triangles defined with his vertexs.  
-   i.e:  
-   myArray = Graphic3d_ArrayOfTriangles(6)  
-   myArray->AddVertex(x1,y1,z1)  
-     ....  
-   myArray->AddVertex(x6,y6,z6)  
-3) creating a set of indexed triangles defined with his vertex  
-   ans edges.  
-   i.e:  
-   myArray = Graphic3d_ArrayOfTriangles(4,6)  
-   myArray->AddVertex(x1,y1,z1)  
-     ....  
-   myArray->AddVertex(x4,y4,z4)  
-   myArray->AddEdge(1)  
-   myArray->AddEdge(2)  
-   myArray->AddEdge(3)  
-   myArray->AddEdge(2)  
-   myArray->AddEdge(3)  
-   myArray->AddEdge(4)  
- 
-<maxVertexs> defined the maximun allowed vertex number in the array.  
-<maxEdges> defined the maximun allowed edge number in the array.  
- Warning:  
-When <hasVNormals> is TRUE , you must use one of  
-     AddVertex(Point,Normal)  
- or  AddVertex(Point,Normal,Color)  
- or  AddVertex(Point,Normal,Texel) methods.  
-When <hasVColors> is TRUE , you must use one of  
-     AddVertex(Point,Color)  
- or  AddVertex(Point,Normal,Color) methods.  
-When <hasTexels> is TRUE , you must use one of  
-     AddVertex(Point,Texel)  
- or  AddVertex(Point,Normal,Texel) methods.  
-When <hasEdgeInfos> is TRUE , <maxEdges> must be > 0 and  
-     you must use the  
-     AddEdge(number,visibillity) method.  
- Warning:  
-the user is responsible about the orientation of the triangle  
-depending of the order of the created vertex or edges and this  
-orientation must be coherent with the vertex normal optionnaly  
-given at each vertex (See the Orientate() methods).") Graphic3d_ArrayOfTriangles;
+	:param maxVertexs:
+	:type maxVertexs: Standard_Integer
+	:param maxEdges: default value is 0
+	:type maxEdges: Standard_Integer
+	:param hasVNormals: default value is Standard_False
+	:type hasVNormals: bool
+	:param hasVColors: default value is Standard_False
+	:type hasVColors: bool
+	:param hasTexels: default value is Standard_False
+	:type hasTexels: bool
+	:param hasEdgeInfos: default value is Standard_False
+	:type hasEdgeInfos: bool
+	:rtype: None
+") Graphic3d_ArrayOfTriangles;
 		 Graphic3d_ArrayOfTriangles (const Standard_Integer maxVertexs,const Standard_Integer maxEdges = 0,const Standard_Boolean hasVNormals = Standard_False,const Standard_Boolean hasVColors = Standard_False,const Standard_Boolean hasTexels = Standard_False,const Standard_Boolean hasEdgeInfos = Standard_False);
 };
 
@@ -11126,44 +8821,36 @@ def __del__(self):
 %nodefaultctor Graphic3d_TextureEnv;
 class Graphic3d_TextureEnv : public Graphic3d_TextureRoot {
 	public:
-		%feature("autodoc", "Args:
-	theFileName(TCollection_AsciiString)
+		%feature("autodoc", "	* Creates an environment texture from a file.
 
-Returns:
-	None
-
-Creates an environment texture from a file.") Graphic3d_TextureEnv;
+	:param theFileName:
+	:type theFileName: TCollection_AsciiString &
+	:rtype: None
+") Graphic3d_TextureEnv;
 		 Graphic3d_TextureEnv (const TCollection_AsciiString & theFileName);
-		%feature("autodoc", "Args:
-	theName(Graphic3d_NameOfTextureEnv)
+		%feature("autodoc", "	* Creates an environment texture from a predefined texture name set.
 
-Returns:
-	None
-
-Creates an environment texture from a predefined texture name set.") Graphic3d_TextureEnv;
+	:param theName:
+	:type theName: Graphic3d_NameOfTextureEnv
+	:rtype: None
+") Graphic3d_TextureEnv;
 		 Graphic3d_TextureEnv (const Graphic3d_NameOfTextureEnv theName);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_NameOfTextureEnv
+		%feature("autodoc", "	* Returns the name of the predefined textures or NOT_ENV_UNKNOWN when the name is given as a filename.
 
-Returns the name of the predefined textures or NOT_ENV_UNKNOWN  
-when the name is given as a filename.") Name;
+	:rtype: Graphic3d_NameOfTextureEnv
+") Name;
 		Graphic3d_NameOfTextureEnv Name ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static Standard_Integer
+		%feature("autodoc", "	* Returns the number of predefined textures.
 
-Returns the number of predefined textures.") NumberOfTextures;
+	:rtype: int
+") NumberOfTextures;
 		static Standard_Integer NumberOfTextures ();
-		%feature("autodoc", "Args:
-	theRank(Standard_Integer)
+		%feature("autodoc", "	* Returns the name of the predefined texture of rank <aRank>
 
-Returns:
-	static TCollection_AsciiString
-
-Returns the name of the predefined texture of rank <aRank>") TextureName;
+	:param theRank:
+	:type theRank: Standard_Integer
+	:rtype: TCollection_AsciiString
+") TextureName;
 		static TCollection_AsciiString TextureName (const Standard_Integer theRank);
 };
 
@@ -11224,88 +8911,62 @@ def __del__(self):
 %nodefaultctor Graphic3d_TextureMap;
 class Graphic3d_TextureMap : public Graphic3d_TextureRoot {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* enable texture smoothing
 
-enable texture smoothing") EnableSmooth;
+	:rtype: None
+") EnableSmooth;
 		void EnableSmooth ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the texture is smoothed.
 
-Returns TRUE if the texture is smoothed.") IsSmoothed;
+	:rtype: bool
+") IsSmoothed;
 		Standard_Boolean IsSmoothed ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* disable texture smoothing
 
-disable texture smoothing") DisableSmooth;
+	:rtype: None
+") DisableSmooth;
 		void DisableSmooth ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* enable texture modulate mode. the image is modulate with the shading of the surface.
 
-enable texture modulate mode.  
-the image is modulate with the shading of the surface.") EnableModulate;
+	:rtype: None
+") EnableModulate;
 		void EnableModulate ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* disable texture modulate mode. the image is directly decal on the surface.
 
-disable texture modulate mode.  
-the image is directly decal on the surface.") DisableModulate;
+	:rtype: None
+") DisableModulate;
 		void DisableModulate ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the texture is modulate.
 
-Returns TRUE if the texture is modulate.") IsModulate;
+	:rtype: bool
+") IsModulate;
 		Standard_Boolean IsModulate ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* use this methods if you want to enable texture repetition on your objects.
 
-use this methods if you want to enable  
-texture repetition on your objects.") EnableRepeat;
+	:rtype: None
+") EnableRepeat;
 		void EnableRepeat ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* use this methods if you want to disable texture repetition on your objects.
 
-use this methods if you want to disable  
-texture repetition on your objects.") DisableRepeat;
+	:rtype: None
+") DisableRepeat;
 		void DisableRepeat ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the texture repeat is enable.
 
-Returns TRUE if the texture repeat is enable.") IsRepeat;
+	:rtype: bool
+") IsRepeat;
 		Standard_Boolean IsRepeat ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_LevelOfTextureAnisotropy
+		%feature("autodoc", "	* returns level of anisontropy texture filter. Default value is Graphic3d_LOTA_OFF.
 
-@return level of anisontropy texture filter.  
-Default value is Graphic3d_LOTA_OFF.") AnisoFilter;
+	:rtype: Graphic3d_LevelOfTextureAnisotropy
+") AnisoFilter;
 		Graphic3d_LevelOfTextureAnisotropy AnisoFilter ();
-		%feature("autodoc", "Args:
-	theLevel(Graphic3d_LevelOfTextureAnisotropy)
+		%feature("autodoc", "	* @param theLevel level of anisontropy texture filter.
 
-Returns:
-	None
-
-@param theLevel level of anisontropy texture filter.") SetAnisoFilter;
+	:param theLevel:
+	:type theLevel: Graphic3d_LevelOfTextureAnisotropy
+	:rtype: None
+") SetAnisoFilter;
 		void SetAnisoFilter (const Graphic3d_LevelOfTextureAnisotropy theLevel);
 };
 
@@ -11366,28 +9027,22 @@ def __del__(self):
 %nodefaultctor Graphic3d_Texture1D;
 class Graphic3d_Texture1D : public Graphic3d_TextureMap {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_NameOfTexture1D
+		%feature("autodoc", "	* Returns the name of the predefined textures or NOT_1D_UNKNOWN when the name is given as a filename.
 
-Returns the name of the predefined textures or NOT_1D_UNKNOWN  
-when the name is given as a filename.") Name;
+	:rtype: Graphic3d_NameOfTexture1D
+") Name;
 		Graphic3d_NameOfTexture1D Name ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static Standard_Integer
+		%feature("autodoc", "	* Returns the number of predefined textures.
 
-Returns the number of predefined textures.") NumberOfTextures;
+	:rtype: int
+") NumberOfTextures;
 		static Standard_Integer NumberOfTextures ();
-		%feature("autodoc", "Args:
-	aRank(Standard_Integer)
+		%feature("autodoc", "	* Returns the name of the predefined texture of rank <aRank>
 
-Returns:
-	static TCollection_AsciiString
-
-Returns the name of the predefined texture of rank <aRank>") TextureName;
+	:param aRank:
+	:type aRank: Standard_Integer
+	:rtype: TCollection_AsciiString
+") TextureName;
 		static TCollection_AsciiString TextureName (const Standard_Integer aRank);
 };
 
@@ -11448,28 +9103,22 @@ def __del__(self):
 %nodefaultctor Graphic3d_Texture2D;
 class Graphic3d_Texture2D : public Graphic3d_TextureMap {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_NameOfTexture2D
+		%feature("autodoc", "	* Returns the name of the predefined textures or NOT_2D_UNKNOWN when the name is given as a filename.
 
-Returns the name of the predefined textures or NOT_2D_UNKNOWN  
-when the name is given as a filename.") Name;
+	:rtype: Graphic3d_NameOfTexture2D
+") Name;
 		Graphic3d_NameOfTexture2D Name ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static Standard_Integer
+		%feature("autodoc", "	* Returns the number of predefined textures.
 
-Returns the number of predefined textures.") NumberOfTextures;
+	:rtype: int
+") NumberOfTextures;
 		static Standard_Integer NumberOfTextures ();
-		%feature("autodoc", "Args:
-	theRank(Standard_Integer)
+		%feature("autodoc", "	* Returns the name of the predefined texture of rank <aRank>
 
-Returns:
-	static TCollection_AsciiString
-
-Returns the name of the predefined texture of rank <aRank>") TextureName;
+	:param theRank:
+	:type theRank: Standard_Integer
+	:rtype: TCollection_AsciiString
+") TextureName;
 		static TCollection_AsciiString TextureName (const Standard_Integer theRank);
 };
 
@@ -11530,29 +9179,26 @@ def __del__(self):
 %nodefaultctor Graphic3d_Texture1Dmanual;
 class Graphic3d_Texture1Dmanual : public Graphic3d_Texture1D {
 	public:
-		%feature("autodoc", "Args:
-	theFileName(TCollection_AsciiString)
+		%feature("autodoc", "	* Creates a texture from the file FileName.
 
-Returns:
-	None
-
-Creates a texture from the file FileName.") Graphic3d_Texture1Dmanual;
+	:param theFileName:
+	:type theFileName: TCollection_AsciiString &
+	:rtype: None
+") Graphic3d_Texture1Dmanual;
 		 Graphic3d_Texture1Dmanual (const TCollection_AsciiString & theFileName);
-		%feature("autodoc", "Args:
-	theNOT(Graphic3d_NameOfTexture1D)
+		%feature("autodoc", "	* Create a texture from a predefined texture name set.
 
-Returns:
-	None
-
-Create a texture from a predefined texture name set.") Graphic3d_Texture1Dmanual;
+	:param theNOT:
+	:type theNOT: Graphic3d_NameOfTexture1D
+	:rtype: None
+") Graphic3d_Texture1Dmanual;
 		 Graphic3d_Texture1Dmanual (const Graphic3d_NameOfTexture1D theNOT);
-		%feature("autodoc", "Args:
-	thePixMap(Image_PixMap_Handle)
+		%feature("autodoc", "	* Creates a texture from the pixmap.
 
-Returns:
-	None
-
-Creates a texture from the pixmap.") Graphic3d_Texture1Dmanual;
+	:param thePixMap:
+	:type thePixMap: Image_PixMap_Handle &
+	:rtype: None
+") Graphic3d_Texture1Dmanual;
 		 Graphic3d_Texture1Dmanual (const Image_PixMap_Handle & thePixMap);
 };
 
@@ -11613,57 +9259,60 @@ def __del__(self):
 %nodefaultctor Graphic3d_Texture1Dsegment;
 class Graphic3d_Texture1Dsegment : public Graphic3d_Texture1D {
 	public:
-		%feature("autodoc", "Args:
-	theFileName(TCollection_AsciiString)
+		%feature("autodoc", "	* Creates a texture from a file
 
-Returns:
-	None
-
-Creates a texture from a file") Graphic3d_Texture1Dsegment;
+	:param theFileName:
+	:type theFileName: TCollection_AsciiString &
+	:rtype: None
+") Graphic3d_Texture1Dsegment;
 		 Graphic3d_Texture1Dsegment (const TCollection_AsciiString & theFileName);
-		%feature("autodoc", "Args:
-	theNOT(Graphic3d_NameOfTexture1D)
+		%feature("autodoc", "	* Creates a texture from a predefined texture name set.
 
-Returns:
-	None
-
-Creates a texture from a predefined texture name set.") Graphic3d_Texture1Dsegment;
+	:param theNOT:
+	:type theNOT: Graphic3d_NameOfTexture1D
+	:rtype: None
+") Graphic3d_Texture1Dsegment;
 		 Graphic3d_Texture1Dsegment (const Graphic3d_NameOfTexture1D theNOT);
-		%feature("autodoc", "Args:
-	thePixMap(Image_PixMap_Handle)
+		%feature("autodoc", "	* Creates a texture from the pixmap.
 
-Returns:
-	None
-
-Creates a texture from the pixmap.") Graphic3d_Texture1Dsegment;
+	:param thePixMap:
+	:type thePixMap: Image_PixMap_Handle &
+	:rtype: None
+") Graphic3d_Texture1Dsegment;
 		 Graphic3d_Texture1Dsegment (const Image_PixMap_Handle & thePixMap);
-		%feature("autodoc", "Args:
-	theX1(Standard_ShortReal)
-	theY1(Standard_ShortReal)
-	theZ1(Standard_ShortReal)
-	theX2(Standard_ShortReal)
-	theY2(Standard_ShortReal)
-	theZ2(Standard_ShortReal)
+		%feature("autodoc", "	* Sets the texture application bounds. Defines the way the texture is stretched across facets. Default values are <0.0, 0.0, 0.0> , <0.0, 0.0, 1.0>
 
-Returns:
-	None
-
-Sets the texture application bounds. Defines the way  
-the texture is stretched across facets.  
-Default values are <0.0, 0.0, 0.0> , <0.0, 0.0, 1.0>") SetSegment;
+	:param theX1:
+	:type theX1: Standard_ShortReal
+	:param theY1:
+	:type theY1: Standard_ShortReal
+	:param theZ1:
+	:type theZ1: Standard_ShortReal
+	:param theX2:
+	:type theX2: Standard_ShortReal
+	:param theY2:
+	:type theY2: Standard_ShortReal
+	:param theZ2:
+	:type theZ2: Standard_ShortReal
+	:rtype: None
+") SetSegment;
 		void SetSegment (const Standard_ShortReal theX1,const Standard_ShortReal theY1,const Standard_ShortReal theZ1,const Standard_ShortReal theX2,const Standard_ShortReal theY2,const Standard_ShortReal theZ2);
-		%feature("autodoc", "Args:
-	theX1(Standard_ShortReal)
-	theY1(Standard_ShortReal)
-	theZ1(Standard_ShortReal)
-	theX2(Standard_ShortReal)
-	theY2(Standard_ShortReal)
-	theZ2(Standard_ShortReal)
+		%feature("autodoc", "	* Returns the values of the current segment X1, Y1, Z1 , X2, Y2, Z2.
 
-Returns:
-	None
-
-Returns the values of the current segment X1, Y1, Z1 , X2, Y2, Z2.") Segment;
+	:param theX1:
+	:type theX1: Standard_ShortReal &
+	:param theY1:
+	:type theY1: Standard_ShortReal &
+	:param theZ1:
+	:type theZ1: Standard_ShortReal &
+	:param theX2:
+	:type theX2: Standard_ShortReal &
+	:param theY2:
+	:type theY2: Standard_ShortReal &
+	:param theZ2:
+	:type theZ2: Standard_ShortReal &
+	:rtype: None
+") Segment;
 		void Segment (Standard_ShortReal & theX1,Standard_ShortReal & theY1,Standard_ShortReal & theZ1,Standard_ShortReal & theX2,Standard_ShortReal & theY2,Standard_ShortReal & theZ2);
 };
 
@@ -11724,29 +9373,26 @@ def __del__(self):
 %nodefaultctor Graphic3d_Texture2Dmanual;
 class Graphic3d_Texture2Dmanual : public Graphic3d_Texture2D {
 	public:
-		%feature("autodoc", "Args:
-	theFileName(TCollection_AsciiString)
+		%feature("autodoc", "	* Creates a texture from a file
 
-Returns:
-	None
-
-Creates a texture from a file") Graphic3d_Texture2Dmanual;
+	:param theFileName:
+	:type theFileName: TCollection_AsciiString &
+	:rtype: None
+") Graphic3d_Texture2Dmanual;
 		 Graphic3d_Texture2Dmanual (const TCollection_AsciiString & theFileName);
-		%feature("autodoc", "Args:
-	theNOT(Graphic3d_NameOfTexture2D)
+		%feature("autodoc", "	* Creates a texture from a predefined texture name set.
 
-Returns:
-	None
-
-Creates a texture from a predefined texture name set.") Graphic3d_Texture2Dmanual;
+	:param theNOT:
+	:type theNOT: Graphic3d_NameOfTexture2D
+	:rtype: None
+") Graphic3d_Texture2Dmanual;
 		 Graphic3d_Texture2Dmanual (const Graphic3d_NameOfTexture2D theNOT);
-		%feature("autodoc", "Args:
-	thePixMap(Image_PixMap_Handle)
+		%feature("autodoc", "	* Creates a texture from the pixmap.
 
-Returns:
-	None
-
-Creates a texture from the pixmap.") Graphic3d_Texture2Dmanual;
+	:param thePixMap:
+	:type thePixMap: Image_PixMap_Handle &
+	:rtype: None
+") Graphic3d_Texture2Dmanual;
 		 Graphic3d_Texture2Dmanual (const Image_PixMap_Handle & thePixMap);
 };
 
@@ -11807,190 +9453,160 @@ def __del__(self):
 %nodefaultctor Graphic3d_Texture2Dplane;
 class Graphic3d_Texture2Dplane : public Graphic3d_Texture2D {
 	public:
-		%feature("autodoc", "Args:
-	theFileName(TCollection_AsciiString)
+		%feature("autodoc", "	* Creates a texture from a file
 
-Returns:
-	None
-
-Creates a texture from a file") Graphic3d_Texture2Dplane;
+	:param theFileName:
+	:type theFileName: TCollection_AsciiString &
+	:rtype: None
+") Graphic3d_Texture2Dplane;
 		 Graphic3d_Texture2Dplane (const TCollection_AsciiString & theFileName);
-		%feature("autodoc", "Args:
-	theNOT(Graphic3d_NameOfTexture2D)
+		%feature("autodoc", "	* Creates a texture from a predefined texture name set.
 
-Returns:
-	None
-
-Creates a texture from a predefined texture name set.") Graphic3d_Texture2Dplane;
+	:param theNOT:
+	:type theNOT: Graphic3d_NameOfTexture2D
+	:rtype: None
+") Graphic3d_Texture2Dplane;
 		 Graphic3d_Texture2Dplane (const Graphic3d_NameOfTexture2D theNOT);
-		%feature("autodoc", "Args:
-	thePixMap(Image_PixMap_Handle)
+		%feature("autodoc", "	* Creates a texture from the pixmap.
 
-Returns:
-	None
-
-Creates a texture from the pixmap.") Graphic3d_Texture2Dplane;
+	:param thePixMap:
+	:type thePixMap: Image_PixMap_Handle &
+	:rtype: None
+") Graphic3d_Texture2Dplane;
 		 Graphic3d_Texture2Dplane (const Image_PixMap_Handle & thePixMap);
-		%feature("autodoc", "Args:
-	A(Standard_ShortReal)
-	B(Standard_ShortReal)
-	C(Standard_ShortReal)
-	D(Standard_ShortReal)
+		%feature("autodoc", "	* Defines the texture projection plane for texture coordinate S default is <1.0, 0.0, 0.0, 0.0>
 
-Returns:
-	None
-
-Defines the texture projection plane for texture coordinate S  
-default is <1.0, 0.0, 0.0, 0.0>") SetPlaneS;
+	:param A:
+	:type A: Standard_ShortReal
+	:param B:
+	:type B: Standard_ShortReal
+	:param C:
+	:type C: Standard_ShortReal
+	:param D:
+	:type D: Standard_ShortReal
+	:rtype: None
+") SetPlaneS;
 		void SetPlaneS (const Standard_ShortReal A,const Standard_ShortReal B,const Standard_ShortReal C,const Standard_ShortReal D);
-		%feature("autodoc", "Args:
-	A(Standard_ShortReal)
-	B(Standard_ShortReal)
-	C(Standard_ShortReal)
-	D(Standard_ShortReal)
+		%feature("autodoc", "	* Defines the texture projection plane for texture coordinate T default is <0.0, 1.0, 0.0, 0.0>
 
-Returns:
-	None
-
-Defines the texture projection plane for texture coordinate T  
-default is <0.0, 1.0, 0.0, 0.0>") SetPlaneT;
+	:param A:
+	:type A: Standard_ShortReal
+	:param B:
+	:type B: Standard_ShortReal
+	:param C:
+	:type C: Standard_ShortReal
+	:param D:
+	:type D: Standard_ShortReal
+	:rtype: None
+") SetPlaneT;
 		void SetPlaneT (const Standard_ShortReal A,const Standard_ShortReal B,const Standard_ShortReal C,const Standard_ShortReal D);
-		%feature("autodoc", "Args:
-	thePlane(Graphic3d_NameOfTexturePlane)
+		%feature("autodoc", "	* Defines the texture projection plane for both S and T texture coordinate default is NOTP_XY meaning: <1.0, 0.0, 0.0, 0.0> for S and <0.0, 1.0, 0.0, 0.0> for T
 
-Returns:
-	None
-
-Defines the texture projection plane for both S and T texture coordinate  
-default is NOTP_XY meaning:  
-     <1.0, 0.0, 0.0, 0.0> for S  
-and  <0.0, 1.0, 0.0, 0.0> for T") SetPlane;
+	:param thePlane:
+	:type thePlane: Graphic3d_NameOfTexturePlane
+	:rtype: None
+") SetPlane;
 		void SetPlane (const Graphic3d_NameOfTexturePlane thePlane);
-		%feature("autodoc", "Args:
-	theVal(Standard_ShortReal)
+		%feature("autodoc", "	* Defines the texture scale for the S texture coordinate much easier than recomputing the S plane equation but the result is the same default to 1.0
 
-Returns:
-	None
-
-Defines the texture scale for the S texture coordinate  
-much easier than recomputing the S plane equation  
-but the result is the same  
-default to 1.0") SetScaleS;
+	:param theVal:
+	:type theVal: Standard_ShortReal
+	:rtype: None
+") SetScaleS;
 		void SetScaleS (const Standard_ShortReal theVal);
-		%feature("autodoc", "Args:
-	theVal(Standard_ShortReal)
+		%feature("autodoc", "	* Defines the texture scale for the T texture coordinate much easier than recompution the T plane equation but the result is the same default to 1.0
 
-Returns:
-	None
-
-Defines the texture scale for the T texture coordinate  
-much easier than recompution the T plane equation  
-but the result is the same  
-default to 1.0") SetScaleT;
+	:param theVal:
+	:type theVal: Standard_ShortReal
+	:rtype: None
+") SetScaleT;
 		void SetScaleT (const Standard_ShortReal theVal);
-		%feature("autodoc", "Args:
-	theVal(Standard_ShortReal)
+		%feature("autodoc", "	* Defines the texture translation for the S texture coordinate you can obtain the same effect by modifying the S plane equation but its not easier. default to 0.0
 
-Returns:
-	None
-
-Defines the texture translation for the S texture coordinate  
-you can obtain the same effect by modifying the S plane  
-equation but its not easier.  
-default to 0.0") SetTranslateS;
+	:param theVal:
+	:type theVal: Standard_ShortReal
+	:rtype: None
+") SetTranslateS;
 		void SetTranslateS (const Standard_ShortReal theVal);
-		%feature("autodoc", "Args:
-	theVal(Standard_ShortReal)
+		%feature("autodoc", "	* Defines the texture translation for the T texture coordinate you can obtain the same effect by modifying the T plane equation but its not easier. default to 0.0
 
-Returns:
-	None
-
-Defines the texture translation for the T texture coordinate  
-you can obtain the same effect by modifying the T plane  
-equation but its not easier.  
-default to 0.0") SetTranslateT;
+	:param theVal:
+	:type theVal: Standard_ShortReal
+	:rtype: None
+") SetTranslateT;
 		void SetTranslateT (const Standard_ShortReal theVal);
-		%feature("autodoc", "Args:
-	theVal(Standard_ShortReal)
+		%feature("autodoc", "	* Sets the rotation angle of the whole texture. the same result might be achieved by recomputing the S and T plane equation but it's not the easiest way... the angle is expressed in degrees default is 0.0
 
-Returns:
-	None
-
-Sets the rotation angle of the whole texture.  
-the same result might be achieved by recomputing the  
-S and T plane equation but it's not the easiest way...  
-the angle is expressed in degrees  
-default is 0.0") SetRotation;
+	:param theVal:
+	:type theVal: Standard_ShortReal
+	:rtype: None
+") SetRotation;
 		void SetRotation (const Standard_ShortReal theVal);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_NameOfTexturePlane
+		%feature("autodoc", "	* Returns the current texture plane name or NOTP_UNKNOWN when the plane is user defined.
 
-Returns the current texture plane name or NOTP_UNKNOWN  
-when the plane is user defined.") Plane;
+	:rtype: Graphic3d_NameOfTexturePlane
+") Plane;
 		Graphic3d_NameOfTexturePlane Plane ();
-		%feature("autodoc", "Args:
-	A(Standard_ShortReal)
-	B(Standard_ShortReal)
-	C(Standard_ShortReal)
-	D(Standard_ShortReal)
+		%feature("autodoc", "	* Returns the current texture plane S equation
 
-Returns:
-	None
-
-Returns the current texture plane S equation") PlaneS;
+	:param A:
+	:type A: Standard_ShortReal &
+	:param B:
+	:type B: Standard_ShortReal &
+	:param C:
+	:type C: Standard_ShortReal &
+	:param D:
+	:type D: Standard_ShortReal &
+	:rtype: None
+") PlaneS;
 		void PlaneS (Standard_ShortReal & A,Standard_ShortReal & B,Standard_ShortReal & C,Standard_ShortReal & D);
-		%feature("autodoc", "Args:
-	A(Standard_ShortReal)
-	B(Standard_ShortReal)
-	C(Standard_ShortReal)
-	D(Standard_ShortReal)
+		%feature("autodoc", "	* Returns the current texture plane T equation
 
-Returns:
-	None
-
-Returns   the current texture plane T equation") PlaneT;
+	:param A:
+	:type A: Standard_ShortReal &
+	:param B:
+	:type B: Standard_ShortReal &
+	:param C:
+	:type C: Standard_ShortReal &
+	:param D:
+	:type D: Standard_ShortReal &
+	:rtype: None
+") PlaneT;
 		void PlaneT (Standard_ShortReal & A,Standard_ShortReal & B,Standard_ShortReal & C,Standard_ShortReal & D);
-		%feature("autodoc", "Args:
-	theVal(Standard_ShortReal)
+		%feature("autodoc", "	* Returns the current texture S translation value
 
-Returns:
-	None
-
-Returns  the current texture S translation value") TranslateS;
+	:param theVal:
+	:type theVal: Standard_ShortReal &
+	:rtype: None
+") TranslateS;
 		void TranslateS (Standard_ShortReal & theVal);
-		%feature("autodoc", "Args:
-	theVal(Standard_ShortReal)
+		%feature("autodoc", "	* Returns the current texture T translation value
 
-Returns:
-	None
-
-Returns the current texture T translation value") TranslateT;
+	:param theVal:
+	:type theVal: Standard_ShortReal &
+	:rtype: None
+") TranslateT;
 		void TranslateT (Standard_ShortReal & theVal);
-		%feature("autodoc", "Args:
-	theVal(Standard_ShortReal)
+		%feature("autodoc", "	* Returns the current texture S scale value
 
-Returns:
-	None
-
-Returns the current texture S scale value") ScaleS;
+	:param theVal:
+	:type theVal: Standard_ShortReal &
+	:rtype: None
+") ScaleS;
 		void ScaleS (Standard_ShortReal & theVal);
-		%feature("autodoc", "Args:
-	theVal(Standard_ShortReal)
+		%feature("autodoc", "	* Returns the current texture T scale value
 
-Returns:
-	None
-
-Returns the current texture T scale value") ScaleT;
+	:param theVal:
+	:type theVal: Standard_ShortReal &
+	:rtype: None
+") ScaleT;
 		void ScaleT (Standard_ShortReal & theVal);
-		%feature("autodoc", "Args:
-	theVal(Standard_ShortReal)
+		%feature("autodoc", "	* Returns the current texture rotation angle
 
-Returns:
-	None
-
-Returns the current texture rotation angle") Rotation;
+	:param theVal:
+	:type theVal: Standard_ShortReal &
+	:rtype: None
+") Rotation;
 		void Rotation (Standard_ShortReal & theVal);
 };
 

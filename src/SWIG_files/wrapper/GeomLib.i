@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -53,268 +53,223 @@ enum GeomLib_InterpolationErrors {
 %nodefaultctor GeomLib;
 class GeomLib {
 	public:
-		%feature("autodoc", "Args:
-	Position(gp_Ax2)
-	Curve2d(Handle_Geom2d_Curve)
+		%feature("autodoc", "	* Computes the curve 3d from package Geom corresponding to curve 2d from package Geom2d, on the plan defined with the local coordinate system Position.
 
-Returns:
-	static Handle_Geom_Curve
-
-Computes     the  curve  3d    from  package  Geom  
-         corresponding to curve 2d  from package Geom2d, on  
-         the plan defined with the local coordinate system  
-         Position.") To3d;
+	:param Position:
+	:type Position: gp_Ax2
+	:param Curve2d:
+	:type Curve2d: Handle_Geom2d_Curve &
+	:rtype: Handle_Geom_Curve
+") To3d;
 		static Handle_Geom_Curve To3d (const gp_Ax2 & Position,const Handle_Geom2d_Curve & Curve2d);
-		%feature("autodoc", "Args:
-	Curve(Handle_Geom2d_Curve)
-	GTrsf(gp_GTrsf2d)
+		%feature("autodoc", "	* Computes the curve 3d from package Geom corresponding to the curve 3d from package Geom, transformed with the transformation <GTrsf> WARNING : this method may return a null Handle if it's impossible to compute the transformation of a curve. It's not implemented when : 1) the curve is an infinite parabola or hyperbola 2) the curve is an offsetcurve
 
-Returns:
-	static Handle_Geom2d_Curve
-
-Computes the    curve    3d  from   package   Geom  
-         corresponding  to the curve  3d from package Geom,  
-         transformed with the transformation <GTrsf>  
-         WARNING : this method may return a null Handle if  
-         it's impossible to compute the transformation of  
-         a curve. It's not implemented when :  
-         1) the curve is an infinite parabola or hyperbola  
-         2) the curve is an offsetcurve") GTransform;
+	:param Curve:
+	:type Curve: Handle_Geom2d_Curve &
+	:param GTrsf:
+	:type GTrsf: gp_GTrsf2d
+	:rtype: Handle_Geom2d_Curve
+") GTransform;
 		static Handle_Geom2d_Curve GTransform (const Handle_Geom2d_Curve & Curve,const gp_GTrsf2d & GTrsf);
-		%feature("autodoc", "Args:
-	Tolerance(Standard_Real)
-	Curve2dPtr(Handle_Geom2d_Curve)
-	First(Standard_Real)
-	Last(Standard_Real)
-	RequestedFirst(Standard_Real)
-	RequestedLast(Standard_Real)
-	NewCurve2dPtr(Handle_Geom2d_Curve)
+		%feature("autodoc", "	* Make the curve Curve2dPtr have the imposed range First to List the most economic way, that is if it can change the range without changing the nature of the curve it will try to do that. Otherwise it will produce a Bspline curve that has the required range
 
-Returns:
-	static void
-
-Make the curve Curve2dPtr have the imposed  
-         range First to List the most economic way,  
-         that is if it can change the range without  
-         changing the nature of the curve it will try  
-         to do that. Otherwise it will produce a Bspline  
-         curve that has the required range") SameRange;
+	:param Tolerance:
+	:type Tolerance: float
+	:param Curve2dPtr:
+	:type Curve2dPtr: Handle_Geom2d_Curve &
+	:param First:
+	:type First: float
+	:param Last:
+	:type Last: float
+	:param RequestedFirst:
+	:type RequestedFirst: float
+	:param RequestedLast:
+	:type RequestedLast: float
+	:param NewCurve2dPtr:
+	:type NewCurve2dPtr: Handle_Geom2d_Curve &
+	:rtype: void
+") SameRange;
 		static void SameRange (const Standard_Real Tolerance,const Handle_Geom2d_Curve & Curve2dPtr,const Standard_Real First,const Standard_Real Last,const Standard_Real RequestedFirst,const Standard_Real RequestedLast,Handle_Geom2d_Curve & NewCurve2dPtr);
-		%feature("autodoc", "Args:
-	Tolerance(Standard_Real)
-	CurvePtr(Adaptor3d_CurveOnSurface)
-	FirstParameter(Standard_Real)
-	LastParameter(Standard_Real)
-	NewCurvePtr(Handle_Geom_Curve)
-	MaxDeviation(Standard_Real)
-	AverageDeviation(Standard_Real)
-	Continuity(GeomAbs_Shape)=GeomAbs_C1
-	MaxDegree(Standard_Integer)=14
-	MaxSegment(Standard_Integer)=30
-
-Returns:
-	static void
-
-No detailed docstring for this function.") BuildCurve3d;
+		%feature("autodoc", "	:param Tolerance:
+	:type Tolerance: float
+	:param CurvePtr:
+	:type CurvePtr: Adaptor3d_CurveOnSurface &
+	:param FirstParameter:
+	:type FirstParameter: float
+	:param LastParameter:
+	:type LastParameter: float
+	:param NewCurvePtr:
+	:type NewCurvePtr: Handle_Geom_Curve &
+	:param MaxDeviation:
+	:type MaxDeviation: float &
+	:param AverageDeviation:
+	:type AverageDeviation: float &
+	:param Continuity: default value is GeomAbs_C1
+	:type Continuity: GeomAbs_Shape
+	:param MaxDegree: default value is 14
+	:type MaxDegree: Standard_Integer
+	:param MaxSegment: default value is 30
+	:type MaxSegment: Standard_Integer
+	:rtype: void
+") BuildCurve3d;
 		static void BuildCurve3d (const Standard_Real Tolerance,Adaptor3d_CurveOnSurface & CurvePtr,const Standard_Real FirstParameter,const Standard_Real LastParameter,Handle_Geom_Curve & NewCurvePtr,Standard_Real &OutValue,Standard_Real &OutValue,const GeomAbs_Shape Continuity = GeomAbs_C1,const Standard_Integer MaxDegree = 14,const Standard_Integer MaxSegment = 30);
-		%feature("autodoc", "Args:
-	Curve(Handle_Geom_BoundedCurve)
-	P1(gp_Pnt)
-	P2(gp_Pnt)
-	T1(gp_Vec)
-	T2(gp_Vec)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") AdjustExtremity;
+		%feature("autodoc", "	:param Curve:
+	:type Curve: Handle_Geom_BoundedCurve &
+	:param P1:
+	:type P1: gp_Pnt
+	:param P2:
+	:type P2: gp_Pnt
+	:param T1:
+	:type T1: gp_Vec
+	:param T2:
+	:type T2: gp_Vec
+	:rtype: void
+") AdjustExtremity;
 		static void AdjustExtremity (Handle_Geom_BoundedCurve & Curve,const gp_Pnt & P1,const gp_Pnt & P2,const gp_Vec & T1,const gp_Vec & T2);
-		%feature("autodoc", "Args:
-	Curve(Handle_Geom_BoundedCurve)
-	Point(gp_Pnt)
-	Cont(Standard_Integer)
-	After(Standard_Boolean)
+		%feature("autodoc", "	* Extends the bounded curve Curve to the point Point. The extension is built: - at the end of the curve if After equals true, or - at the beginning of the curve if After equals false. The extension is performed according to a degree of continuity equal to Cont, which in its turn must be equal to 1, 2 or 3. This function converts the bounded curve Curve into a BSpline curve. Warning - Nothing is done, and Curve is not modified if Cont is not equal to 1, 2 or 3. - It is recommended that the extension should not be too large with respect to the size of the bounded curve Curve: Point must not be located too far from one of the extremities of Curve.
 
-Returns:
-	static void
-
-Extends the bounded curve Curve to the point Point.  
-The extension is built:  
--      at the end of the curve if After equals true, or  
--      at the beginning of the curve if After equals false.  
-  The extension is performed according to a degree of  
-continuity equal to Cont, which in its turn must be equal to 1, 2 or 3.  
-This function converts the bounded curve Curve into a BSpline curve.  
-Warning  
--   Nothing is done, and Curve is not modified if Cont is  
-  not equal to 1, 2 or 3.  
--   It is recommended that the extension should not be  
-  too large with respect to the size of the bounded  
-  curve Curve: Point must not be located too far from  
-  one of the extremities of Curve.") ExtendCurveToPoint;
+	:param Curve:
+	:type Curve: Handle_Geom_BoundedCurve &
+	:param Point:
+	:type Point: gp_Pnt
+	:param Cont:
+	:type Cont: Standard_Integer
+	:param After:
+	:type After: bool
+	:rtype: void
+") ExtendCurveToPoint;
 		static void ExtendCurveToPoint (Handle_Geom_BoundedCurve & Curve,const gp_Pnt & Point,const Standard_Integer Cont,const Standard_Boolean After);
-		%feature("autodoc", "Args:
-	Surf(Handle_Geom_BoundedSurface)
-	Length(Standard_Real)
-	Cont(Standard_Integer)
-	InU(Standard_Boolean)
-	After(Standard_Boolean)
+		%feature("autodoc", "	* Extends the bounded surface Surf along one of its boundaries. The chord length of the extension is equal to Length. The direction of the extension is given as: - the u parametric direction of Surf, if InU equals true, or - the v parametric direction of Surf, if InU equals false. In this parametric direction, the extension is built on the side of: - the last parameter of Surf, if After equals true, or - the first parameter of Surf, if After equals false. The extension is performed according to a degree of continuity equal to Cont, which in its turn must be equal to 1, 2 or 3. This function converts the bounded surface Surf into a BSpline surface. Warning - Nothing is done, and Surf is not modified if Cont is not equal to 1, 2 or 3. - It is recommended that Length, the size of the extension should not be too large with respect to the size of the bounded surface Surf. - Surf must not be a periodic BSpline surface in the parametric direction corresponding to the direction of extension.
 
-Returns:
-	static void
-
-Extends the bounded surface Surf along one of its  
-boundaries. The chord length of the extension is equal to Length.  
-The direction of the extension is given as:  
--   the u parametric direction of Surf, if InU equals true,   or  
--   the v parametric direction of Surf, if InU equals false.  
-In this parametric direction, the extension is built on the side of:  
--   the last parameter of Surf, if After equals true, or  
--   the first parameter of Surf, if After equals false.  
-The extension is performed according to a degree of  
-continuity equal to Cont, which in its turn must be equal to 1, 2 or 3.  
-This function converts the bounded surface Surf into a BSpline surface.  
-Warning  
--   Nothing is done, and Surf is not modified if Cont is  
-  not equal to 1, 2 or 3.  
--   It is recommended that Length, the size of the  
-  extension should not be too large with respect to the  
- size of the bounded surface Surf.  
--   Surf must not be a periodic BSpline surface in the  
-  parametric direction corresponding to the direction of extension.") ExtendSurfByLength;
+	:param Surf:
+	:type Surf: Handle_Geom_BoundedSurface &
+	:param Length:
+	:type Length: float
+	:param Cont:
+	:type Cont: Standard_Integer
+	:param InU:
+	:type InU: bool
+	:param After:
+	:type After: bool
+	:rtype: void
+") ExtendSurfByLength;
 		static void ExtendSurfByLength (Handle_Geom_BoundedSurface & Surf,const Standard_Real Length,const Standard_Integer Cont,const Standard_Boolean InU,const Standard_Boolean After);
-		%feature("autodoc", "Args:
-	Points(TColgp_Array1OfPnt)
-	Axe(gp_Ax2)
-	IsSingular(Standard_Boolean)
-	Tol(Standard_Real)=1.0e-7
+		%feature("autodoc", "	* Compute axes of inertia, of some points -- -- -- <Axe>.Location() is the BaryCentre -- -- -- -- -- <Axe>.XDirection is the axe of upper inertia -- -- -- -- <Axe>.Direction is the Normal to the average plane -- -- -- IsSingular is True if points are on line -- Tol is used to determine singular cases.
 
-Returns:
-	static void
-
-Compute   axes of inertia,  of some  points --  -- --  
-         <Axe>.Location() is the   BaryCentre -- -- --   -- --  
-         <Axe>.XDirection is the axe of upper inertia -- -- --  
-         -- <Axe>.Direction is the Normal to the average plane  
-         -- -- -- IsSingular is True if  points are on line --  
-         Tol is used to determine singular cases.") AxeOfInertia;
+	:param Points:
+	:type Points: TColgp_Array1OfPnt
+	:param Axe:
+	:type Axe: gp_Ax2
+	:param IsSingular:
+	:type IsSingular: bool
+	:param Tol: default value is 1.0e-7
+	:type Tol: float
+	:rtype: void
+") AxeOfInertia;
 		static void AxeOfInertia (const TColgp_Array1OfPnt & Points,gp_Ax2 & Axe,Standard_Boolean & IsSingular,const Standard_Real Tol = 1.0e-7);
-		%feature("autodoc", "Args:
-	Points(TColgp_Array1OfPnt)
-	Bary(gp_Pnt)
-	XDir(gp_Dir)
-	YDir(gp_Dir)
-	Xgap(Standard_Real)
-	YGap(Standard_Real)
-	ZGap(Standard_Real)
+		%feature("autodoc", "	* Compute principale axes of inertia, and dispertion  value of some points.
 
-Returns:
-	static void
-
-Compute principale axes  of  inertia, and dispertion  
-           value  of some  points.") Inertia;
+	:param Points:
+	:type Points: TColgp_Array1OfPnt
+	:param Bary:
+	:type Bary: gp_Pnt
+	:param XDir:
+	:type XDir: gp_Dir
+	:param YDir:
+	:type YDir: gp_Dir
+	:param Xgap:
+	:type Xgap: float &
+	:param YGap:
+	:type YGap: float &
+	:param ZGap:
+	:type ZGap: float &
+	:rtype: void
+") Inertia;
 		static void Inertia (const TColgp_Array1OfPnt & Points,gp_Pnt & Bary,gp_Dir & XDir,gp_Dir & YDir,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	NumPoints(Standard_Integer)
-	InParameters(TColStd_Array1OfReal)
-	OutParameters(Handle_TColStd_HArray1OfReal)
+		%feature("autodoc", "	* Warning! This assume that the InParameter is an increasing sequence of real number and it will not check for that : Unpredictable result can happen if this is not satisfied. It is the caller responsability to check for that property. This method makes uniform NumPoints segments S1,...SNumPoints out of the segment defined by the first parameter and the last parameter ofthe InParameter ; keeps only one point of the InParameters set of parameter in each of the uniform segments taking care of the first and the last parameters. For the ith segment the element of the InParameter is the one that is the first to exceed the midpoint of the segment and to fall before the midpoint of the next segment  There will be at the end at most NumPoints + 1 if NumPoints > 2 in the OutParameters Array
 
-Returns:
-	static void
-
-Warning!  This assume that the InParameter is an increasing sequence  
-         of real number and it will not check for that : Unpredictable  
-         result can happen if this is not satisfied. It is the caller  
-         responsability to check for that property.  
- 
- This  method makes uniform NumPoints segments S1,...SNumPoints out  
-         of the segment defined by the first parameter and the  
-         last  parameter ofthe  InParameter ; keeps   only one  
-         point of the InParameters set of parameter in each of  
-         the uniform segments taking care of the first and the  
-         last   parameters. For the ith segment the element of  
-         the InParameter is the one that is the first to exceed  
-         the midpoint of the segment and to fall before the  
-         midpoint of the next segment  
-           There  will be  at  the  end at   most NumPoints + 1  if  
-         NumPoints > 2 in the OutParameters Array") RemovePointsFromArray;
+	:param NumPoints:
+	:type NumPoints: Standard_Integer
+	:param InParameters:
+	:type InParameters: TColStd_Array1OfReal &
+	:param OutParameters:
+	:type OutParameters: Handle_TColStd_HArray1OfReal &
+	:rtype: void
+") RemovePointsFromArray;
 		static void RemovePointsFromArray (const Standard_Integer NumPoints,const TColStd_Array1OfReal & InParameters,Handle_TColStd_HArray1OfReal & OutParameters);
-		%feature("autodoc", "Args:
-	MinNumPoints(Standard_Integer)
-	InParameters(TColStd_Array1OfReal)
-	OutParameters(Handle_TColStd_HArray1OfReal)
+		%feature("autodoc", "	* this makes sure that there is at least MinNumPoints in OutParameters taking into account the parameters in the InParameters array provided those are in order, that is the sequence of real in the InParameter is strictly non decreasing
 
-Returns:
-	static void
-
-this  makes sure that there  is at least MinNumPoints  
-         in OutParameters taking into account the parameters in  
-         the InParameters array provided those are in order,  
-         that is the sequence of real in the InParameter is strictly  
-         non decreasing") DensifyArray1OfReal;
+	:param MinNumPoints:
+	:type MinNumPoints: Standard_Integer
+	:param InParameters:
+	:type InParameters: TColStd_Array1OfReal &
+	:param OutParameters:
+	:type OutParameters: Handle_TColStd_HArray1OfReal &
+	:rtype: void
+") DensifyArray1OfReal;
 		static void DensifyArray1OfReal (const Standard_Integer MinNumPoints,const TColStd_Array1OfReal & InParameters,Handle_TColStd_HArray1OfReal & OutParameters);
-		%feature("autodoc", "Args:
-	Interval1(TColStd_Array1OfReal)
-	Interval2(TColStd_Array1OfReal)
-	Fusion(TColStd_SequenceOfReal)
-	Confusion(Standard_Real)=1.0e-9
-
-Returns:
-	static void
-
-No detailed docstring for this function.") FuseIntervals;
+		%feature("autodoc", "	:param Interval1:
+	:type Interval1: TColStd_Array1OfReal &
+	:param Interval2:
+	:type Interval2: TColStd_Array1OfReal &
+	:param Fusion:
+	:type Fusion: TColStd_SequenceOfReal &
+	:param Confusion: default value is 1.0e-9
+	:type Confusion: float
+	:rtype: void
+") FuseIntervals;
 		static void FuseIntervals (const TColStd_Array1OfReal & Interval1,const TColStd_Array1OfReal & Interval2,TColStd_SequenceOfReal & Fusion,const Standard_Real Confusion = 1.0e-9);
-		%feature("autodoc", "Args:
-	Curve(Adaptor3d_Curve)
-	AReferenceCurve(Adaptor3d_Curve)
-	Tolerance(Standard_Real)
-	Parameters(TColStd_Array1OfReal)
-	MaxDistance(Standard_Real)
+		%feature("autodoc", "	* this will compute the maximum distance at the parameters given in the Parameters array by evaluating each parameter the two curves and taking the maximum of the evaluated distance
 
-Returns:
-	static void
-
-this  will compute   the   maximum distance  at  the  
-         parameters  given    in   the Parameters  array    by  
-         evaluating each parameter  the two curves  and taking  
-         the maximum of the evaluated distance") EvalMaxParametricDistance;
+	:param Curve:
+	:type Curve: Adaptor3d_Curve &
+	:param AReferenceCurve:
+	:type AReferenceCurve: Adaptor3d_Curve &
+	:param Tolerance:
+	:type Tolerance: float
+	:param Parameters:
+	:type Parameters: TColStd_Array1OfReal &
+	:param MaxDistance:
+	:type MaxDistance: float &
+	:rtype: void
+") EvalMaxParametricDistance;
 		static void EvalMaxParametricDistance (const Adaptor3d_Curve & Curve,const Adaptor3d_Curve & AReferenceCurve,const Standard_Real Tolerance,const TColStd_Array1OfReal & Parameters,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Curve(Adaptor3d_Curve)
-	AReferenceCurve(Adaptor3d_Curve)
-	Tolerance(Standard_Real)
-	Parameters(TColStd_Array1OfReal)
-	MaxDistance(Standard_Real)
+		%feature("autodoc", "	* this will compute the maximum distancef at the parameters given in the Parameters array by projecting from the Curve to the reference curve and taking the minimum distance Than the maximum will be taken on those minimas.
 
-Returns:
-	static void
-
-this will compute the maximum distancef at the parameters  
-         given in the Parameters array by projecting from the Curve  
-         to the reference curve and taking the minimum distance  
-         Than the maximum will be taken on those minimas.") EvalMaxDistanceAlongParameter;
+	:param Curve:
+	:type Curve: Adaptor3d_Curve &
+	:param AReferenceCurve:
+	:type AReferenceCurve: Adaptor3d_Curve &
+	:param Tolerance:
+	:type Tolerance: float
+	:param Parameters:
+	:type Parameters: TColStd_Array1OfReal &
+	:param MaxDistance:
+	:type MaxDistance: float &
+	:rtype: void
+") EvalMaxDistanceAlongParameter;
 		static void EvalMaxDistanceAlongParameter (const Adaptor3d_Curve & Curve,const Adaptor3d_Curve & AReferenceCurve,const Standard_Real Tolerance,const TColStd_Array1OfReal & Parameters,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	BSurf(Handle_Geom_BSplineSurface)
-	UDirection(Standard_Boolean)
-	VDirection(Standard_Boolean)
+		%feature("autodoc", "	* Cancel,on the boudaries,the denominator first derivative in the directions wished by the user and set its value to 1.
 
-Returns:
-	static void
-
-Cancel,on the boudaries,the denominator  first derivative  
-         in  the directions wished by the user and set its value to 1.") CancelDenominatorDerivative;
+	:param BSurf:
+	:type BSurf: Handle_Geom_BSplineSurface &
+	:param UDirection:
+	:type UDirection: bool
+	:param VDirection:
+	:type VDirection: bool
+	:rtype: void
+") CancelDenominatorDerivative;
 		static void CancelDenominatorDerivative (Handle_Geom_BSplineSurface & BSurf,const Standard_Boolean UDirection,const Standard_Boolean VDirection);
-		%feature("autodoc", "Args:
-	S(Handle_Geom_Surface)
-	UV(gp_Pnt2d)
-	Tol(Standard_Real)
-	N(gp_Dir)
-
-Returns:
-	static Standard_Integer
-
-No detailed docstring for this function.") NormEstim;
+		%feature("autodoc", "	:param S:
+	:type S: Handle_Geom_Surface &
+	:param UV:
+	:type UV: gp_Pnt2d
+	:param Tol:
+	:type Tol: float
+	:param N:
+	:type N: gp_Dir
+	:rtype: int
+") NormEstim;
 		static Standard_Integer NormEstim (const Handle_Geom_Surface & S,const gp_Pnt2d & UV,const Standard_Real Tol,gp_Dir & N);
 };
 
@@ -336,108 +291,68 @@ def __del__(self):
 %nodefaultctor GeomLib_Array1OfMat;
 class GeomLib_Array1OfMat {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GeomLib_Array1OfMat;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") GeomLib_Array1OfMat;
 		 GeomLib_Array1OfMat (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(gp_Mat)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GeomLib_Array1OfMat;
+		%feature("autodoc", "	:param Item:
+	:type Item: gp_Mat
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") GeomLib_Array1OfMat;
 		 GeomLib_Array1OfMat (const gp_Mat & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(gp_Mat)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: gp_Mat
+	:rtype: None
+") Init;
 		void Init (const gp_Mat & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(GeomLib_Array1OfMat)
-
-Returns:
-	GeomLib_Array1OfMat
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: GeomLib_Array1OfMat &
+	:rtype: GeomLib_Array1OfMat
+") Assign;
 		const GeomLib_Array1OfMat & Assign (const GeomLib_Array1OfMat & Other);
-		%feature("autodoc", "Args:
-	Other(GeomLib_Array1OfMat)
-
-Returns:
-	GeomLib_Array1OfMat
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: GeomLib_Array1OfMat &
+	:rtype: GeomLib_Array1OfMat
+") operator=;
 		const GeomLib_Array1OfMat & operator = (const GeomLib_Array1OfMat & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(gp_Mat)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: gp_Mat
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const gp_Mat & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	gp_Mat
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: gp_Mat
+") Value;
 		const gp_Mat & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	gp_Mat
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: gp_Mat
+") ChangeValue;
 		gp_Mat & ChangeValue (const Standard_Integer Index);
 };
 
@@ -459,51 +374,40 @@ def __del__(self):
 %nodefaultctor GeomLib_Check2dBSplineCurve;
 class GeomLib_Check2dBSplineCurve {
 	public:
-		%feature("autodoc", "Args:
-	Curve(Handle_Geom2d_BSplineCurve)
-	Tolerance(Standard_Real)
-	AngularTolerance(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GeomLib_Check2dBSplineCurve;
+		%feature("autodoc", "	:param Curve:
+	:type Curve: Handle_Geom2d_BSplineCurve &
+	:param Tolerance:
+	:type Tolerance: float
+	:param AngularTolerance:
+	:type AngularTolerance: float
+	:rtype: None
+") GeomLib_Check2dBSplineCurve;
 		 GeomLib_Check2dBSplineCurve (const Handle_Geom2d_BSplineCurve & Curve,const Standard_Real Tolerance,const Standard_Real AngularTolerance);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	FirstFlag(Standard_Boolean)
-	SecondFlag(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") NeedTangentFix;
+		%feature("autodoc", "	:param FirstFlag:
+	:type FirstFlag: bool
+	:param SecondFlag:
+	:type SecondFlag: bool
+	:rtype: None
+") NeedTangentFix;
 		void NeedTangentFix (Standard_Boolean & FirstFlag,Standard_Boolean & SecondFlag);
-		%feature("autodoc", "Args:
-	FirstFlag(Standard_Boolean)
-	LastFlag(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FixTangent;
+		%feature("autodoc", "	:param FirstFlag:
+	:type FirstFlag: bool
+	:param LastFlag:
+	:type LastFlag: bool
+	:rtype: None
+") FixTangent;
 		void FixTangent (const Standard_Boolean FirstFlag,const Standard_Boolean LastFlag);
-		%feature("autodoc", "Args:
-	FirstFlag(Standard_Boolean)
-	LastFlag(Standard_Boolean)
+		%feature("autodoc", "	* modifies the curve by fixing the first or the last tangencies if Index3D not in the Range [1,Nb3dSpaces] if the Approx is not Done
 
-Returns:
-	Handle_Geom2d_BSplineCurve
-
-modifies the curve  
-by fixing the first or the last tangencies  
- if Index3D not in the Range [1,Nb3dSpaces]  if the Approx is not Done") FixedTangent;
+	:param FirstFlag:
+	:type FirstFlag: bool
+	:param LastFlag:
+	:type LastFlag: bool
+	:rtype: Handle_Geom2d_BSplineCurve
+") FixedTangent;
 		Handle_Geom2d_BSplineCurve FixedTangent (const Standard_Boolean FirstFlag,const Standard_Boolean LastFlag);
 };
 
@@ -525,51 +429,40 @@ def __del__(self):
 %nodefaultctor GeomLib_CheckBSplineCurve;
 class GeomLib_CheckBSplineCurve {
 	public:
-		%feature("autodoc", "Args:
-	Curve(Handle_Geom_BSplineCurve)
-	Tolerance(Standard_Real)
-	AngularTolerance(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GeomLib_CheckBSplineCurve;
+		%feature("autodoc", "	:param Curve:
+	:type Curve: Handle_Geom_BSplineCurve &
+	:param Tolerance:
+	:type Tolerance: float
+	:param AngularTolerance:
+	:type AngularTolerance: float
+	:rtype: None
+") GeomLib_CheckBSplineCurve;
 		 GeomLib_CheckBSplineCurve (const Handle_Geom_BSplineCurve & Curve,const Standard_Real Tolerance,const Standard_Real AngularTolerance);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	FirstFlag(Standard_Boolean)
-	SecondFlag(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") NeedTangentFix;
+		%feature("autodoc", "	:param FirstFlag:
+	:type FirstFlag: bool
+	:param SecondFlag:
+	:type SecondFlag: bool
+	:rtype: None
+") NeedTangentFix;
 		void NeedTangentFix (Standard_Boolean & FirstFlag,Standard_Boolean & SecondFlag);
-		%feature("autodoc", "Args:
-	FirstFlag(Standard_Boolean)
-	LastFlag(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FixTangent;
+		%feature("autodoc", "	:param FirstFlag:
+	:type FirstFlag: bool
+	:param LastFlag:
+	:type LastFlag: bool
+	:rtype: None
+") FixTangent;
 		void FixTangent (const Standard_Boolean FirstFlag,const Standard_Boolean LastFlag);
-		%feature("autodoc", "Args:
-	FirstFlag(Standard_Boolean)
-	LastFlag(Standard_Boolean)
+		%feature("autodoc", "	* modifies the curve by fixing the first or the last tangencies if Index3D not in the Range [1,Nb3dSpaces] if the Approx is not Done
 
-Returns:
-	Handle_Geom_BSplineCurve
-
-modifies the curve  
-by fixing the first or the last tangencies  
- if Index3D not in the Range [1,Nb3dSpaces]  if the Approx is not Done") FixedTangent;
+	:param FirstFlag:
+	:type FirstFlag: bool
+	:param LastFlag:
+	:type LastFlag: bool
+	:rtype: Handle_Geom_BSplineCurve
+") FixedTangent;
 		Handle_Geom_BSplineCurve FixedTangent (const Standard_Boolean FirstFlag,const Standard_Boolean LastFlag);
 };
 
@@ -591,41 +484,23 @@ def __del__(self):
 %nodefaultctor GeomLib_DenominatorMultiplier;
 class GeomLib_DenominatorMultiplier {
 	public:
-		%feature("autodoc", "Args:
-	Surface(Handle_Geom_BSplineSurface)
-	KnotVector(TColStd_Array1OfReal)
+		%feature("autodoc", "	* if the surface is rational this will define the evaluator of a real function of 2 variables a(u,v) such that if we define a new surface by :  a(u,v) * N(u,v) NewF(u,v) = ----------------  a(u,v) * D(u,v)
 
-Returns:
-	None
-
-if the surface is rational this will define the evaluator  
-         of a real function of 2 variables a(u,v) such that  
-         if we define a new surface by :  
-                      a(u,v) * N(u,v)  
-         NewF(u,v) = ----------------  
-                      a(u,v) * D(u,v)") GeomLib_DenominatorMultiplier;
+	:param Surface:
+	:type Surface: Handle_Geom_BSplineSurface &
+	:param KnotVector:
+	:type KnotVector: TColStd_Array1OfReal &
+	:rtype: None
+") GeomLib_DenominatorMultiplier;
 		 GeomLib_DenominatorMultiplier (const Handle_Geom_BSplineSurface & Surface,const TColStd_Array1OfReal & KnotVector);
-		%feature("autodoc", "Args:
-	UParameter(Standard_Real)
-	VParameter(Standard_Real)
+		%feature("autodoc", "	* Returns the value of a(UParameter,VParameter)= H0(UParameter)/Denominator(Umin,Vparameter) D Denominator(Umin,Vparameter) - ------------------------------[H1(u)]/(Denominator(Umin,Vparameter)^2)  D U  + H3(UParameter)/Denominator(Umax,Vparameter) D Denominator(Umax,Vparameter) - ------------------------------[H2(u)]/(Denominator(Umax,Vparameter)^2)  D U
 
-Returns:
-	Standard_Real
-
-Returns the value of  
-         a(UParameter,VParameter)=  
- 
-           H0(UParameter)/Denominator(Umin,Vparameter)  
- 
-           D Denominator(Umin,Vparameter)  
-         - ------------------------------[H1(u)]/(Denominator(Umin,Vparameter)^2)  
-           D U  
- 
-         + H3(UParameter)/Denominator(Umax,Vparameter)  
- 
-           D Denominator(Umax,Vparameter)  
-         - ------------------------------[H2(u)]/(Denominator(Umax,Vparameter)^2)  
-           D U") Value;
+	:param UParameter:
+	:type UParameter: float
+	:param VParameter:
+	:type VParameter: float
+	:rtype: float
+") Value;
 		Standard_Real Value (const Standard_Real UParameter,const Standard_Real VParameter);
 };
 
@@ -647,37 +522,31 @@ def __del__(self):
 %nodefaultctor GeomLib_Interpolate;
 class GeomLib_Interpolate {
 	public:
-		%feature("autodoc", "Args:
-	Degree(Standard_Integer)
-	NumPoints(Standard_Integer)
-	Points(TColgp_Array1OfPnt)
-	Parameters(TColStd_Array1OfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GeomLib_Interpolate;
+		%feature("autodoc", "	:param Degree:
+	:type Degree: Standard_Integer
+	:param NumPoints:
+	:type NumPoints: Standard_Integer
+	:param Points:
+	:type Points: TColgp_Array1OfPnt
+	:param Parameters:
+	:type Parameters: TColStd_Array1OfReal &
+	:rtype: None
+") GeomLib_Interpolate;
 		 GeomLib_Interpolate (const Standard_Integer Degree,const Standard_Integer NumPoints,const TColgp_Array1OfPnt & Points,const TColStd_Array1OfReal & Parameters);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns if everything went OK
 
-returns if everything went OK") IsDone;
+	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	GeomLib_InterpolationErrors
+		%feature("autodoc", "	* returns the error type if any
 
-returns the error type if any") Error;
+	:rtype: GeomLib_InterpolationErrors
+") Error;
 		GeomLib_InterpolationErrors Error ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_BSplineCurve
+		%feature("autodoc", "	* returns the interpolated curve of the requested degree
 
-returns the interpolated curve of the requested degree") Curve;
+	:rtype: Handle_Geom_BSplineCurve
+") Curve;
 		Handle_Geom_BSplineCurve Curve ();
 };
 
@@ -699,28 +568,22 @@ def __del__(self):
 %nodefaultctor GeomLib_IsPlanarSurface;
 class GeomLib_IsPlanarSurface {
 	public:
-		%feature("autodoc", "Args:
-	S(Handle_Geom_Surface)
-	Tol(Standard_Real)=1.0e-7
-
-Returns:
-	None
-
-No detailed docstring for this function.") GeomLib_IsPlanarSurface;
+		%feature("autodoc", "	:param S:
+	:type S: Handle_Geom_Surface &
+	:param Tol: default value is 1.0e-7
+	:type Tol: float
+	:rtype: None
+") GeomLib_IsPlanarSurface;
 		 GeomLib_IsPlanarSurface (const Handle_Geom_Surface & S,const Standard_Real Tol = 1.0e-7);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Return if the Surface is a plan
 
-Return if the Surface is a plan") IsPlanar;
+	:rtype: bool
+") IsPlanar;
 		Standard_Boolean IsPlanar ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pln
+		%feature("autodoc", "	* Return the plan definition
 
-Return the plan definition") Plan;
+	:rtype: gp_Pln
+") Plan;
 		const gp_Pln & Plan ();
 };
 
@@ -742,25 +605,21 @@ def __del__(self):
 %nodefaultctor GeomLib_LogSample;
 class GeomLib_LogSample : public math_FunctionSample {
 	public:
-		%feature("autodoc", "Args:
-	A(Standard_Real)
-	B(Standard_Real)
-	N(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GeomLib_LogSample;
+		%feature("autodoc", "	:param A:
+	:type A: float
+	:param B:
+	:type B: float
+	:param N:
+	:type N: Standard_Integer
+	:rtype: None
+") GeomLib_LogSample;
 		 GeomLib_LogSample (const Standard_Real A,const Standard_Real B,const Standard_Integer N);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Returns the value of parameter of the point of range Index : A + ((Index-1)/(NbPoints-1))*B. An exception is raised if Index<=0 or Index>NbPoints.
 
-Returns:
-	virtual Standard_Real
-
-Returns the value of parameter of the point of  
-         range Index : A + ((Index-1)/(NbPoints-1))*B.  
-         An exception is raised if Index<=0 or Index>NbPoints.") GetParameter;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: float
+") GetParameter;
 		virtual Standard_Real GetParameter (const Standard_Integer Index);
 };
 
@@ -782,95 +641,69 @@ def __del__(self):
 %nodefaultctor GeomLib_MakeCurvefromApprox;
 class GeomLib_MakeCurvefromApprox {
 	public:
-		%feature("autodoc", "Args:
-	Approx(AdvApprox_ApproxAFunction)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GeomLib_MakeCurvefromApprox;
+		%feature("autodoc", "	:param Approx:
+	:type Approx: AdvApprox_ApproxAFunction &
+	:rtype: None
+") GeomLib_MakeCurvefromApprox;
 		 GeomLib_MakeCurvefromApprox (const AdvApprox_ApproxAFunction & Approx);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* returns the number of 1D spaces of the Approx
 
-returns the number of 1D spaces of the Approx") Nb1DSpaces;
+	:rtype: int
+") Nb1DSpaces;
 		Standard_Integer Nb1DSpaces ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* returns the number of 3D spaces of the Approx
 
-returns the number of 3D spaces of the Approx") Nb2DSpaces;
+	:rtype: int
+") Nb2DSpaces;
 		Standard_Integer Nb2DSpaces ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* returns the number of 3D spaces of the Approx
 
-returns the number of 3D spaces of the Approx") Nb3DSpaces;
+	:rtype: int
+") Nb3DSpaces;
 		Standard_Integer Nb3DSpaces ();
-		%feature("autodoc", "Args:
-	Index2d(Standard_Integer)
+		%feature("autodoc", "	* returns a polynomial curve whose poles correspond to the Index2d 2D space if Index2d not in the Range [1,Nb2dSpaces] if the Approx is not Done
 
-Returns:
-	Handle_Geom2d_BSplineCurve
-
-returns a polynomial curve whose poles correspond to  
-the Index2d 2D space  if Index2d not in the Range [1,Nb2dSpaces]  if the Approx is not Done") Curve2d;
+	:param Index2d:
+	:type Index2d: Standard_Integer
+	:rtype: Handle_Geom2d_BSplineCurve
+") Curve2d;
 		Handle_Geom2d_BSplineCurve Curve2d (const Standard_Integer Index2d);
-		%feature("autodoc", "Args:
-	Index1d(Standard_Integer)
-	Index2d(Standard_Integer)
+		%feature("autodoc", "	* returns a 2D curve building it from the 1D curve in x at Index1d and y at Index2d amongst the 1D curves if Index1d not in the Range [1,Nb1dSpaces] if Index2d not in the Range [1,Nb1dSpaces] if the Approx is not Done
 
-Returns:
-	Handle_Geom2d_BSplineCurve
-
-returns a 2D curve building it from the 1D curve  
-         in x at Index1d and y at Index2d amongst the  
-         1D curves  if Index1d not in the Range [1,Nb1dSpaces]  
-         if Index2d not in the Range [1,Nb1dSpaces]  if the Approx is not Done") Curve2dFromTwo1d;
+	:param Index1d:
+	:type Index1d: Standard_Integer
+	:param Index2d:
+	:type Index2d: Standard_Integer
+	:rtype: Handle_Geom2d_BSplineCurve
+") Curve2dFromTwo1d;
 		Handle_Geom2d_BSplineCurve Curve2dFromTwo1d (const Standard_Integer Index1d,const Standard_Integer Index2d);
-		%feature("autodoc", "Args:
-	Index1d(Standard_Integer)
-	Index2d(Standard_Integer)
+		%feature("autodoc", "	* returns a rational curve whose poles correspond to the index2d of the 2D space and whose weights correspond to one dimensional space of index 1d if Index1d not in the Range [1,Nb1dSpaces] if Index2d not in the Range [1,Nb2dSpaces] if the Approx is not Done
 
-Returns:
-	Handle_Geom2d_BSplineCurve
-
-returns a rational curve whose poles correspond to  
-the index2d of the 2D space and whose weights correspond  
-to one dimensional space of index 1d  if Index1d not in the Range [1,Nb1dSpaces]  
-         if Index2d not in the Range [1,Nb2dSpaces]  if the Approx is not Done") Curve2d;
+	:param Index1d:
+	:type Index1d: Standard_Integer
+	:param Index2d:
+	:type Index2d: Standard_Integer
+	:rtype: Handle_Geom2d_BSplineCurve
+") Curve2d;
 		Handle_Geom2d_BSplineCurve Curve2d (const Standard_Integer Index1d,const Standard_Integer Index2d);
-		%feature("autodoc", "Args:
-	Index3d(Standard_Integer)
+		%feature("autodoc", "	* returns a polynomial curve whose poles correspond to the Index3D 3D space if Index3D not in the Range [1,Nb3dSpaces] if the Approx is not Done
 
-Returns:
-	Handle_Geom_BSplineCurve
-
-returns a polynomial curve whose poles correspond to  
-the Index3D 3D space  if Index3D not in the Range [1,Nb3dSpaces]  if the Approx is not Done") Curve;
+	:param Index3d:
+	:type Index3d: Standard_Integer
+	:rtype: Handle_Geom_BSplineCurve
+") Curve;
 		Handle_Geom_BSplineCurve Curve (const Standard_Integer Index3d);
-		%feature("autodoc", "Args:
-	Index1D(Standard_Integer)
-	Index3D(Standard_Integer)
+		%feature("autodoc", "	* returns a rational curve whose poles correspond to the index3D of the 3D space and whose weights correspond to the index1d 1D space. if Index1D not in the Range [1,Nb1dSpaces] if Index3D not in the Range [1,Nb3dSpaces] if the Approx is not Done
 
-Returns:
-	Handle_Geom_BSplineCurve
-
-returns a rational curve whose poles correspond to  
-the index3D of the 3D space and whose weights correspond  
-to the index1d 1D space.  if Index1D not in the Range [1,Nb1dSpaces]  
-         if Index3D not in the Range [1,Nb3dSpaces]  if the Approx is not Done") Curve;
+	:param Index1D:
+	:type Index1D: Standard_Integer
+	:param Index3D:
+	:type Index3D: Standard_Integer
+	:rtype: Handle_Geom_BSplineCurve
+") Curve;
 		Handle_Geom_BSplineCurve Curve (const Standard_Integer Index1D,const Standard_Integer Index3D);
 };
 
@@ -892,49 +725,39 @@ def __del__(self):
 %nodefaultctor GeomLib_PolyFunc;
 class GeomLib_PolyFunc : public math_FunctionWithDerivative {
 	public:
-		%feature("autodoc", "Args:
-	Coeffs(math_Vector)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GeomLib_PolyFunc;
+		%feature("autodoc", "	:param Coeffs:
+	:type Coeffs: math_Vector &
+	:rtype: None
+") GeomLib_PolyFunc;
 		 GeomLib_PolyFunc (const math_Vector & Coeffs);
-		%feature("autodoc", "Args:
-	X(Standard_Real)
-	F(Standard_Real)
+		%feature("autodoc", "	* computes the value <F>of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
 
-Returns:
-	virtual Standard_Boolean
-
-computes the value <F>of the function for the variable <X>.  
-         Returns True if the calculation were successfully done,  
-         False otherwise.") Value;
+	:param X:
+	:type X: float
+	:param F:
+	:type F: float &
+	:rtype: bool
+") Value;
 		virtual Standard_Boolean Value (const Standard_Real X,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	X(Standard_Real)
-	D(Standard_Real)
+		%feature("autodoc", "	* computes the derivative <D> of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
 
-Returns:
-	virtual Standard_Boolean
-
-computes the derivative <D> of the function  
-         for the variable <X>.  
-          Returns True if the calculation were successfully done,  
-          False otherwise.") Derivative;
+	:param X:
+	:type X: float
+	:param D:
+	:type D: float &
+	:rtype: bool
+") Derivative;
 		virtual Standard_Boolean Derivative (const Standard_Real X,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	X(Standard_Real)
-	F(Standard_Real)
-	D(Standard_Real)
+		%feature("autodoc", "	* computes the value <F> and the derivative <D> of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
 
-Returns:
-	virtual Standard_Boolean
-
-computes the value <F> and the derivative <D> of the  
-         function for the variable <X>.  
-         Returns True if the calculation were successfully done,  
-         False otherwise.") Values;
+	:param X:
+	:type X: float
+	:param F:
+	:type F: float &
+	:param D:
+	:type D: float &
+	:rtype: bool
+") Values;
 		virtual Standard_Boolean Values (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue);
 };
 
@@ -956,42 +779,46 @@ def __del__(self):
 %nodefaultctor GeomLib_Tool;
 class GeomLib_Tool {
 	public:
-		%feature("autodoc", "Args:
-	Curve(Handle_Geom_Curve)
-	Point(gp_Pnt)
-	Tolerance(Standard_Real)
-	U(Standard_Real)
+		%feature("autodoc", "	* Extracts the parameter of a 3D point lying on a 3D curve or at a distance less than the tolerance value.
 
-Returns:
-	static Standard_Boolean
-
-Extracts the parameter of a 3D point lying on a 3D curve  
-or at a distance less than the tolerance value.") Parameter;
+	:param Curve:
+	:type Curve: Handle_Geom_Curve &
+	:param Point:
+	:type Point: gp_Pnt
+	:param Tolerance:
+	:type Tolerance: float
+	:param U:
+	:type U: float &
+	:rtype: bool
+") Parameter;
 		static Standard_Boolean Parameter (const Handle_Geom_Curve & Curve,const gp_Pnt & Point,const Standard_Real Tolerance,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Surface(Handle_Geom_Surface)
-	Point(gp_Pnt)
-	Tolerance(Standard_Real)
-	U(Standard_Real)
-	V(Standard_Real)
+		%feature("autodoc", "	* Extracts the parameter of a 3D point lying on a surface or at a distance less than the tolerance value.
 
-Returns:
-	static Standard_Boolean
-
-Extracts the parameter of a 3D point lying on a surface  
-or at a distance less than the tolerance value.") Parameters;
+	:param Surface:
+	:type Surface: Handle_Geom_Surface &
+	:param Point:
+	:type Point: gp_Pnt
+	:param Tolerance:
+	:type Tolerance: float
+	:param U:
+	:type U: float &
+	:param V:
+	:type V: float &
+	:rtype: bool
+") Parameters;
 		static Standard_Boolean Parameters (const Handle_Geom_Surface & Surface,const gp_Pnt & Point,const Standard_Real Tolerance,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Curve(Handle_Geom2d_Curve)
-	Point(gp_Pnt2d)
-	Tolerance(Standard_Real)
-	U(Standard_Real)
+		%feature("autodoc", "	* Extracts the parameter of a 2D point lying on a 2D curve or at a distance less than the tolerance value.
 
-Returns:
-	static Standard_Boolean
-
-Extracts the parameter of a 2D point lying on a 2D curve  
-or at a distance less than the tolerance value.") Parameter;
+	:param Curve:
+	:type Curve: Handle_Geom2d_Curve &
+	:param Point:
+	:type Point: gp_Pnt2d
+	:param Tolerance:
+	:type Tolerance: float
+	:param U:
+	:type U: float &
+	:rtype: bool
+") Parameter;
 		static Standard_Boolean Parameter (const Handle_Geom2d_Curve & Curve,const gp_Pnt2d & Point,const Standard_Real Tolerance,Standard_Real &OutValue);
 };
 

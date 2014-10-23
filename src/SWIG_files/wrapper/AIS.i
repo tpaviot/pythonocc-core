@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -213,361 +213,392 @@ enum AIS_TypeOfPlane {
 %nodefaultctor AIS;
 class AIS {
 	public:
-		%feature("autodoc", "Args:
-	aShape(TopoDS_Shape)
-	aPoint(gp_Pnt)
+		%feature("autodoc", "	* Returns the nearest point in a shape. This is used by several classes in calculation of dimensions.
 
-Returns:
-	static gp_Pnt
-
-Returns the nearest point in a shape. This is used by  
-several classes in calculation of dimensions.") Nearest;
+	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:param aPoint:
+	:type aPoint: gp_Pnt
+	:rtype: gp_Pnt
+") Nearest;
 		static gp_Pnt Nearest (const TopoDS_Shape & aShape,const gp_Pnt & aPoint);
-		%feature("autodoc", "Args:
-	theLine(gp_Lin)
-	thePoint(gp_Pnt)
+		%feature("autodoc", "	* returns the nearest point on the line.
 
-Returns:
-	static gp_Pnt
-
-@return the nearest point on the line.") Nearest;
+	:param theLine:
+	:type theLine: gp_Lin
+	:param thePoint:
+	:type thePoint: gp_Pnt
+	:rtype: gp_Pnt
+") Nearest;
 		static gp_Pnt Nearest (const gp_Lin & theLine,const gp_Pnt & thePoint);
-		%feature("autodoc", "Args:
-	theCurve(Handle_Geom_Curve)
-	thePoint(gp_Pnt)
-	theFirstPoint(gp_Pnt)
-	theLastPoint(gp_Pnt)
-	theNearestPoint(gp_Pnt)
+		%feature("autodoc", "	* For the given point finds nearest point on the curve, returns True if found point is belongs to the curve and False otherwise.
 
-Returns:
-	static Standard_Boolean
-
-For the given point finds nearest point on the curve,  
-@return TRUE if found point is belongs to the curve  
-and FALSE otherwise.") Nearest;
+	:param theCurve:
+	:type theCurve: Handle_Geom_Curve &
+	:param thePoint:
+	:type thePoint: gp_Pnt
+	:param theFirstPoint:
+	:type theFirstPoint: gp_Pnt
+	:param theLastPoint:
+	:type theLastPoint: gp_Pnt
+	:param theNearestPoint:
+	:type theNearestPoint: gp_Pnt
+	:rtype: bool
+") Nearest;
 		static Standard_Boolean Nearest (const Handle_Geom_Curve & theCurve,const gp_Pnt & thePoint,const gp_Pnt & theFirstPoint,const gp_Pnt & theLastPoint,gp_Pnt & theNearestPoint);
-		%feature("autodoc", "Args:
-	aShape(TopoDS_Shape)
-	aPoint(gp_Pnt)
-
-Returns:
-	static gp_Pnt
-
-No detailed docstring for this function.") Farest;
+		%feature("autodoc", "	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:param aPoint:
+	:type aPoint: gp_Pnt
+	:rtype: gp_Pnt
+") Farest;
 		static gp_Pnt Farest (const TopoDS_Shape & aShape,const gp_Pnt & aPoint);
-		%feature("autodoc", "Args:
-	theEdge(TopoDS_Edge)
-	theCurve(Handle_Geom_Curve)
-	theFirstPnt(gp_Pnt)
-	theLastPnt(gp_Pnt)
+		%feature("autodoc", "	* Used by 2d Relation only Computes the 3d geometry of <anEdge> in the current WorkingPlane and the extremities if any Return True if ok.
 
-Returns:
-	static Standard_Boolean
-
-Used by 2d Relation only  
-         Computes the 3d geometry of <anEdge> in the current WorkingPlane  
-         and the extremities if any  
-         Return TRUE if ok.") ComputeGeometry;
+	:param theEdge:
+	:type theEdge: TopoDS_Edge &
+	:param theCurve:
+	:type theCurve: Handle_Geom_Curve &
+	:param theFirstPnt:
+	:type theFirstPnt: gp_Pnt
+	:param theLastPnt:
+	:type theLastPnt: gp_Pnt
+	:rtype: bool
+") ComputeGeometry;
 		static Standard_Boolean ComputeGeometry (const TopoDS_Edge & theEdge,Handle_Geom_Curve & theCurve,gp_Pnt & theFirstPnt,gp_Pnt & theLastPnt);
-		%feature("autodoc", "Args:
-	theEdge(TopoDS_Edge)
-	theCurve(Handle_Geom_Curve)
-	theFirstPnt(gp_Pnt)
-	theLastPnt(gp_Pnt)
-	theIsInfinite(Standard_Boolean)
+		%feature("autodoc", "	* Used by dimensions only. Computes the 3d geometry of <anEdge>. Return True if ok.
 
-Returns:
-	static Standard_Boolean
-
-Used by dimensions only.  
-         Computes the 3d geometry of <anEdge>.  
-         Return TRUE if ok.") ComputeGeometry;
+	:param theEdge:
+	:type theEdge: TopoDS_Edge &
+	:param theCurve:
+	:type theCurve: Handle_Geom_Curve &
+	:param theFirstPnt:
+	:type theFirstPnt: gp_Pnt
+	:param theLastPnt:
+	:type theLastPnt: gp_Pnt
+	:param theIsInfinite:
+	:type theIsInfinite: bool
+	:rtype: bool
+") ComputeGeometry;
 		static Standard_Boolean ComputeGeometry (const TopoDS_Edge & theEdge,Handle_Geom_Curve & theCurve,gp_Pnt & theFirstPnt,gp_Pnt & theLastPnt,Standard_Boolean & theIsInfinite);
-		%feature("autodoc", "Args:
-	theEdge(TopoDS_Edge)
-	theCurve(Handle_Geom_Curve)
-	theFirstPnt(gp_Pnt)
-	theLastPnt(gp_Pnt)
-	theExtCurve(Handle_Geom_Curve)
-	theIsInfinite(Standard_Boolean)
-	theIsOnPlane(Standard_Boolean)
-	thePlane(Handle_Geom_Plane)
+		%feature("autodoc", "	* Used by 2d Relation only Computes the 3d geometry of <anEdge> in the current WorkingPlane and the extremities if any. If <aCurve> is not in the current plane, <extCurve> contains the not projected curve associated to <anEdge>. If <anEdge> is infinite, <isinfinite> = true and the 2 parameters <FirstPnt> and <LastPnt> have no signification. Return True if ok.
 
-Returns:
-	static Standard_Boolean
-
-Used by 2d Relation only  
-         Computes the 3d geometry of <anEdge> in the current WorkingPlane  
-         and the extremities if any.  
-         If <aCurve> is not in the current plane, <extCurve> contains  
-         the not projected curve associated to <anEdge>.  
-         If <anEdge> is infinite, <isinfinite> = true and the 2  
-         parameters <FirstPnt> and <LastPnt> have no signification.  
-         Return TRUE if ok.") ComputeGeometry;
+	:param theEdge:
+	:type theEdge: TopoDS_Edge &
+	:param theCurve:
+	:type theCurve: Handle_Geom_Curve &
+	:param theFirstPnt:
+	:type theFirstPnt: gp_Pnt
+	:param theLastPnt:
+	:type theLastPnt: gp_Pnt
+	:param theExtCurve:
+	:type theExtCurve: Handle_Geom_Curve &
+	:param theIsInfinite:
+	:type theIsInfinite: bool
+	:param theIsOnPlane:
+	:type theIsOnPlane: bool
+	:param thePlane:
+	:type thePlane: Handle_Geom_Plane &
+	:rtype: bool
+") ComputeGeometry;
 		static Standard_Boolean ComputeGeometry (const TopoDS_Edge & theEdge,Handle_Geom_Curve & theCurve,gp_Pnt & theFirstPnt,gp_Pnt & theLastPnt,Handle_Geom_Curve & theExtCurve,Standard_Boolean & theIsInfinite,Standard_Boolean & theIsOnPlane,const Handle_Geom_Plane & thePlane);
-		%feature("autodoc", "Args:
-	theFirstEdge(TopoDS_Edge)
-	theSecondEdge(TopoDS_Edge)
-	theFirstCurve(Handle_Geom_Curve)
-	theSecondCurve(Handle_Geom_Curve)
-	theFirstPnt1(gp_Pnt)
-	theLastPnt1(gp_Pnt)
-	theFirstPnt2(gp_Pnt)
-	theLastPnt2(gp_Pnt)
-	thePlane(Handle_Geom_Plane)
+		%feature("autodoc", "	* Used by 2d Relation only Computes the 3d geometry of <anEdge> in the current WorkingPlane and the extremities if any Return True if ok.
 
-Returns:
-	static Standard_Boolean
-
-Used by 2d Relation only  
-         Computes the 3d geometry of <anEdge> in the current WorkingPlane  
-         and the extremities if any  
-         Return TRUE if ok.") ComputeGeometry;
+	:param theFirstEdge:
+	:type theFirstEdge: TopoDS_Edge &
+	:param theSecondEdge:
+	:type theSecondEdge: TopoDS_Edge &
+	:param theFirstCurve:
+	:type theFirstCurve: Handle_Geom_Curve &
+	:param theSecondCurve:
+	:type theSecondCurve: Handle_Geom_Curve &
+	:param theFirstPnt1:
+	:type theFirstPnt1: gp_Pnt
+	:param theLastPnt1:
+	:type theLastPnt1: gp_Pnt
+	:param theFirstPnt2:
+	:type theFirstPnt2: gp_Pnt
+	:param theLastPnt2:
+	:type theLastPnt2: gp_Pnt
+	:param thePlane:
+	:type thePlane: Handle_Geom_Plane &
+	:rtype: bool
+") ComputeGeometry;
 		static Standard_Boolean ComputeGeometry (const TopoDS_Edge & theFirstEdge,const TopoDS_Edge & theSecondEdge,Handle_Geom_Curve & theFirstCurve,Handle_Geom_Curve & theSecondCurve,gp_Pnt & theFirstPnt1,gp_Pnt & theLastPnt1,gp_Pnt & theFirstPnt2,gp_Pnt & theLastPnt2,const Handle_Geom_Plane & thePlane);
-		%feature("autodoc", "Args:
-	theFirstEdge(TopoDS_Edge)
-	theSecondEdge(TopoDS_Edge)
-	theFirstCurve(Handle_Geom_Curve)
-	theSecondCurve(Handle_Geom_Curve)
-	theFirstPnt1(gp_Pnt)
-	theLastPnt1(gp_Pnt)
-	theFirstPnt2(gp_Pnt)
-	theLastPnt2(gp_Pnt)
-	theIsinfinite1(Standard_Boolean)
-	theIsinfinite2(Standard_Boolean)
+		%feature("autodoc", "	* Used by dimensions only.Computes the 3d geometry of<anEdge1> and <anEdge2> and checks if they are infinite.
 
-Returns:
-	static Standard_Boolean
-
-Used  by  dimensions  only.Computes  the  3d geometry  
-         of<anEdge1> and <anEdge2> and checks if they are infinite.") ComputeGeometry;
+	:param theFirstEdge:
+	:type theFirstEdge: TopoDS_Edge &
+	:param theSecondEdge:
+	:type theSecondEdge: TopoDS_Edge &
+	:param theFirstCurve:
+	:type theFirstCurve: Handle_Geom_Curve &
+	:param theSecondCurve:
+	:type theSecondCurve: Handle_Geom_Curve &
+	:param theFirstPnt1:
+	:type theFirstPnt1: gp_Pnt
+	:param theLastPnt1:
+	:type theLastPnt1: gp_Pnt
+	:param theFirstPnt2:
+	:type theFirstPnt2: gp_Pnt
+	:param theLastPnt2:
+	:type theLastPnt2: gp_Pnt
+	:param theIsinfinite1:
+	:type theIsinfinite1: bool
+	:param theIsinfinite2:
+	:type theIsinfinite2: bool
+	:rtype: bool
+") ComputeGeometry;
 		static Standard_Boolean ComputeGeometry (const TopoDS_Edge & theFirstEdge,const TopoDS_Edge & theSecondEdge,Handle_Geom_Curve & theFirstCurve,Handle_Geom_Curve & theSecondCurve,gp_Pnt & theFirstPnt1,gp_Pnt & theLastPnt1,gp_Pnt & theFirstPnt2,gp_Pnt & theLastPnt2,Standard_Boolean & theIsinfinite1,Standard_Boolean & theIsinfinite2);
-		%feature("autodoc", "Args:
-	theFirstEdge(TopoDS_Edge)
-	theSecondEdge(TopoDS_Edge)
-	theExtIndex(Standard_Integer)
-	theFirstCurve(Handle_Geom_Curve)
-	theSecondCurve(Handle_Geom_Curve)
-	theFirstPnt1(gp_Pnt)
-	theLastPnt1(gp_Pnt)
-	theFirstPnt2(gp_Pnt)
-	theLastPnt2(gp_Pnt)
-	theExtCurve(Handle_Geom_Curve)
-	theIsinfinite1(Standard_Boolean)
-	theIsinfinite2(Standard_Boolean)
-	thePlane(Handle_Geom_Plane)
+		%feature("autodoc", "	* Used by 2d Relation only Computes the 3d geometry of<anEdge1> and <anEdge2> in the current Plane and the extremities if any. Return in ExtCurve the 3d curve (not projected in the plane) of the first edge if <indexExt> =1 or of the 2nd edge if <indexExt> = 2. If <indexExt> = 0, ExtCurve is Null. if there is an edge external to the plane, <isinfinite> is true if this edge is infinite. So, the extremities of it are not significant. Return True if ok
 
-Returns:
-	static Standard_Boolean
-
-Used  by  2d Relation  only Computes  the  3d geometry  
-         of<anEdge1> and <anEdge2> in the current Plane and the  
-         extremities if any.   Return in ExtCurve  the 3d curve  
-         (not projected  in the  plane)  of the  first edge  if  
-         <indexExt> =1 or of the 2nd edge if <indexExt> = 2. If  
-         <indexExt> = 0, ExtCurve is Null.  if there is an edge  
-         external to the  plane,  <isinfinite> is true if  this  
-         edge is infinite.  So, the extremities of it are not  
-         significant.  Return TRUE if ok") ComputeGeometry;
+	:param theFirstEdge:
+	:type theFirstEdge: TopoDS_Edge &
+	:param theSecondEdge:
+	:type theSecondEdge: TopoDS_Edge &
+	:param theExtIndex:
+	:type theExtIndex: Standard_Integer &
+	:param theFirstCurve:
+	:type theFirstCurve: Handle_Geom_Curve &
+	:param theSecondCurve:
+	:type theSecondCurve: Handle_Geom_Curve &
+	:param theFirstPnt1:
+	:type theFirstPnt1: gp_Pnt
+	:param theLastPnt1:
+	:type theLastPnt1: gp_Pnt
+	:param theFirstPnt2:
+	:type theFirstPnt2: gp_Pnt
+	:param theLastPnt2:
+	:type theLastPnt2: gp_Pnt
+	:param theExtCurve:
+	:type theExtCurve: Handle_Geom_Curve &
+	:param theIsinfinite1:
+	:type theIsinfinite1: bool
+	:param theIsinfinite2:
+	:type theIsinfinite2: bool
+	:param thePlane:
+	:type thePlane: Handle_Geom_Plane &
+	:rtype: bool
+") ComputeGeometry;
 		static Standard_Boolean ComputeGeometry (const TopoDS_Edge & theFirstEdge,const TopoDS_Edge & theSecondEdge,Standard_Integer &OutValue,Handle_Geom_Curve & theFirstCurve,Handle_Geom_Curve & theSecondCurve,gp_Pnt & theFirstPnt1,gp_Pnt & theLastPnt1,gp_Pnt & theFirstPnt2,gp_Pnt & theLastPnt2,Handle_Geom_Curve & theExtCurve,Standard_Boolean & theIsinfinite1,Standard_Boolean & theIsinfinite2,const Handle_Geom_Plane & thePlane);
-		%feature("autodoc", "Args:
-	aCurve(Handle_Geom_Curve)
-	first1(Standard_Real)
-	last1(Standard_Real)
-	FirstPnt1(gp_Pnt)
-	LastPnt1(gp_Pnt)
-	aPlane(Handle_Geom_Plane)
-	isOnPlane(Standard_Boolean)
+		%feature("autodoc", "	* Checks if aCurve belongs to aPlane; if not, projects aCurve in aPlane and returns aCurve; Return True if ok
 
-Returns:
-	static Standard_Boolean
-
-Checks if aCurve belongs to aPlane; if not, projects aCurve in aPlane  
-         and returns aCurve;  
-         Return TRUE if ok") ComputeGeomCurve;
+	:param aCurve:
+	:type aCurve: Handle_Geom_Curve &
+	:param first1:
+	:type first1: float
+	:param last1:
+	:type last1: float
+	:param FirstPnt1:
+	:type FirstPnt1: gp_Pnt
+	:param LastPnt1:
+	:type LastPnt1: gp_Pnt
+	:param aPlane:
+	:type aPlane: Handle_Geom_Plane &
+	:param isOnPlane:
+	:type isOnPlane: bool
+	:rtype: bool
+") ComputeGeomCurve;
 		static Standard_Boolean ComputeGeomCurve (Handle_Geom_Curve & aCurve,const Standard_Real first1,const Standard_Real last1,gp_Pnt & FirstPnt1,gp_Pnt & LastPnt1,const Handle_Geom_Plane & aPlane,Standard_Boolean & isOnPlane);
-		%feature("autodoc", "Args:
-	aVertex(TopoDS_Vertex)
-	point(gp_Pnt)
-	aPlane(Handle_Geom_Plane)
-	isOnPlane(Standard_Boolean)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") ComputeGeometry;
+		%feature("autodoc", "	:param aVertex:
+	:type aVertex: TopoDS_Vertex &
+	:param point:
+	:type point: gp_Pnt
+	:param aPlane:
+	:type aPlane: Handle_Geom_Plane &
+	:param isOnPlane:
+	:type isOnPlane: bool
+	:rtype: bool
+") ComputeGeometry;
 		static Standard_Boolean ComputeGeometry (const TopoDS_Vertex & aVertex,gp_Pnt & point,const Handle_Geom_Plane & aPlane,Standard_Boolean & isOnPlane);
-		%feature("autodoc", "Args:
-	aFace(TopoDS_Face)
-	aPlane(gp_Pln)
-	aSurf(Handle_Geom_Surface)
-	aSurfType(AIS_KindOfSurface)
-	Offset(Standard_Real)
+		%feature("autodoc", "	* Tryes to get Plane from Face. Returns Surface of Face in aSurf. Returns Standard_True and Plane of Face in aPlane in following cases: Face is Plane, Offset of Plane,  Extrusion of Line and Offset of Extrusion of Line Returns pure type of Surface which can be: Plane, Cylinder, Cone, Sphere, Torus, SurfaceOfRevolution, SurfaceOfExtrusion
 
-Returns:
-	static Standard_Boolean
-
-Tryes to get Plane from Face.  Returns Surface of Face  
-         in aSurf.  Returns Standard_True  and Plane of Face in  
-          aPlane in following  cases:  
-         Face is Plane, Offset of Plane,  
-                 Extrusion of Line  and Offset of  Extrusion of Line  
-         Returns pure type of Surface which can be:  
-         Plane, Cylinder, Cone, Sphere, Torus,  
-         SurfaceOfRevolution, SurfaceOfExtrusion") GetPlaneFromFace;
+	:param aFace:
+	:type aFace: TopoDS_Face &
+	:param aPlane:
+	:type aPlane: gp_Pln
+	:param aSurf:
+	:type aSurf: Handle_Geom_Surface &
+	:param aSurfType:
+	:type aSurfType: AIS_KindOfSurface &
+	:param Offset:
+	:type Offset: float &
+	:rtype: bool
+") GetPlaneFromFace;
 		static Standard_Boolean GetPlaneFromFace (const TopoDS_Face & aFace,gp_Pln & aPlane,Handle_Geom_Surface & aSurf,AIS_KindOfSurface & aSurfType,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	aFace(TopoDS_Face)
-	aPlane(gp_Pln)
-	aSurface(Handle_Geom_Surface)
-	aSurfaceType(AIS_KindOfSurface)
-	anOffset(Standard_Real)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") InitFaceLength;
+		%feature("autodoc", "	:param aFace:
+	:type aFace: TopoDS_Face &
+	:param aPlane:
+	:type aPlane: gp_Pln
+	:param aSurface:
+	:type aSurface: Handle_Geom_Surface &
+	:param aSurfaceType:
+	:type aSurfaceType: AIS_KindOfSurface &
+	:param anOffset:
+	:type anOffset: float &
+	:rtype: void
+") InitFaceLength;
 		static void InitFaceLength (const TopoDS_Face & aFace,gp_Pln & aPlane,Handle_Geom_Surface & aSurface,AIS_KindOfSurface & aSurfaceType,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	theFirstFace(TopoDS_Face)
-	theSecondFace(TopoDS_Face)
-	theFirstSurf(Handle_Geom_Surface)
-	theSecondSurf(Handle_Geom_Surface)
-	theFirstAttach(gp_Pnt)
-	theSecondAttach(gp_Pnt)
-	theDirOnPlane(gp_Dir)
+		%feature("autodoc", "	* Finds attachment points on two curvilinear faces for length dimension. @param thePlaneDir [in] the direction on the dimension plane to compute the plane automatically. It will not be taken into account if plane is defined by user.
 
-Returns:
-	static void
-
-Finds attachment points on two curvilinear faces for length dimension.  
-@param thePlaneDir [in] the direction on the dimension plane to  
-compute the plane automatically. It will not be taken into account if  
-plane is defined by user.") InitLengthBetweenCurvilinearFaces;
+	:param theFirstFace:
+	:type theFirstFace: TopoDS_Face &
+	:param theSecondFace:
+	:type theSecondFace: TopoDS_Face &
+	:param theFirstSurf:
+	:type theFirstSurf: Handle_Geom_Surface &
+	:param theSecondSurf:
+	:type theSecondSurf: Handle_Geom_Surface &
+	:param theFirstAttach:
+	:type theFirstAttach: gp_Pnt
+	:param theSecondAttach:
+	:type theSecondAttach: gp_Pnt
+	:param theDirOnPlane:
+	:type theDirOnPlane: gp_Dir
+	:rtype: void
+") InitLengthBetweenCurvilinearFaces;
 		static void InitLengthBetweenCurvilinearFaces (const TopoDS_Face & theFirstFace,const TopoDS_Face & theSecondFace,Handle_Geom_Surface & theFirstSurf,Handle_Geom_Surface & theSecondSurf,gp_Pnt & theFirstAttach,gp_Pnt & theSecondAttach,gp_Dir & theDirOnPlane);
-		%feature("autodoc", "Args:
-	theFirstFace(TopoDS_Face)
-	theSecondFace(TopoDS_Face)
-	theCenter(gp_Pnt)
-	theFirstAttach(gp_Pnt)
-	theSecondAttach(gp_Pnt)
-	theIsFirstPointSet(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Finds three points for the angle dimension between two planes.
 
-Returns:
-	static Standard_Boolean
-
-Finds three points for the angle dimension between  
-two planes.") InitAngleBetweenPlanarFaces;
+	:param theFirstFace:
+	:type theFirstFace: TopoDS_Face &
+	:param theSecondFace:
+	:type theSecondFace: TopoDS_Face &
+	:param theCenter:
+	:type theCenter: gp_Pnt
+	:param theFirstAttach:
+	:type theFirstAttach: gp_Pnt
+	:param theSecondAttach:
+	:type theSecondAttach: gp_Pnt
+	:param theIsFirstPointSet: default value is Standard_False
+	:type theIsFirstPointSet: bool
+	:rtype: bool
+") InitAngleBetweenPlanarFaces;
 		static Standard_Boolean InitAngleBetweenPlanarFaces (const TopoDS_Face & theFirstFace,const TopoDS_Face & theSecondFace,gp_Pnt & theCenter,gp_Pnt & theFirstAttach,gp_Pnt & theSecondAttach,const Standard_Boolean theIsFirstPointSet = Standard_False);
-		%feature("autodoc", "Args:
-	theFirstFace(TopoDS_Face)
-	theSecondFace(TopoDS_Face)
-	theFirstSurfType(AIS_KindOfSurface)
-	theSecondSurfType(AIS_KindOfSurface)
-	theCenter(gp_Pnt)
-	theFirstAttach(gp_Pnt)
-	theSecondAttach(gp_Pnt)
-	theIsFirstPointSet(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Finds three points for the angle dimension between two curvilinear surfaces.
 
-Returns:
-	static Standard_Boolean
-
-Finds three points for the angle dimension between  
-two curvilinear surfaces.") InitAngleBetweenCurvilinearFaces;
+	:param theFirstFace:
+	:type theFirstFace: TopoDS_Face &
+	:param theSecondFace:
+	:type theSecondFace: TopoDS_Face &
+	:param theFirstSurfType:
+	:type theFirstSurfType: AIS_KindOfSurface
+	:param theSecondSurfType:
+	:type theSecondSurfType: AIS_KindOfSurface
+	:param theCenter:
+	:type theCenter: gp_Pnt
+	:param theFirstAttach:
+	:type theFirstAttach: gp_Pnt
+	:param theSecondAttach:
+	:type theSecondAttach: gp_Pnt
+	:param theIsFirstPointSet: default value is Standard_False
+	:type theIsFirstPointSet: bool
+	:rtype: bool
+") InitAngleBetweenCurvilinearFaces;
 		static Standard_Boolean InitAngleBetweenCurvilinearFaces (const TopoDS_Face & theFirstFace,const TopoDS_Face & theSecondFace,const AIS_KindOfSurface theFirstSurfType,const AIS_KindOfSurface theSecondSurfType,gp_Pnt & theCenter,gp_Pnt & theFirstAttach,gp_Pnt & theSecondAttach,const Standard_Boolean theIsFirstPointSet = Standard_False);
-		%feature("autodoc", "Args:
-	aPoint(gp_Pnt)
-	aPlane(gp_Pln)
-
-Returns:
-	static gp_Pnt
-
-No detailed docstring for this function.") ProjectPointOnPlane;
+		%feature("autodoc", "	:param aPoint:
+	:type aPoint: gp_Pnt
+	:param aPlane:
+	:type aPlane: gp_Pln
+	:rtype: gp_Pnt
+") ProjectPointOnPlane;
 		static gp_Pnt ProjectPointOnPlane (const gp_Pnt & aPoint,const gp_Pln & aPlane);
-		%feature("autodoc", "Args:
-	aPoint(gp_Pnt)
-	aLine(gp_Lin)
-
-Returns:
-	static gp_Pnt
-
-No detailed docstring for this function.") ProjectPointOnLine;
+		%feature("autodoc", "	:param aPoint:
+	:type aPoint: gp_Pnt
+	:param aLine:
+	:type aLine: gp_Lin
+	:rtype: gp_Pnt
+") ProjectPointOnLine;
 		static gp_Pnt ProjectPointOnLine (const gp_Pnt & aPoint,const gp_Lin & aLine);
-		%feature("autodoc", "Args:
-	aPoint(gp_Pnt)
-	aDir(gp_Dir)
-	aBndBox(Bnd_Box)
-
-Returns:
-	static gp_Pnt
-
-No detailed docstring for this function.") TranslatePointToBound;
+		%feature("autodoc", "	:param aPoint:
+	:type aPoint: gp_Pnt
+	:param aDir:
+	:type aDir: gp_Dir
+	:param aBndBox:
+	:type aBndBox: Bnd_Box &
+	:rtype: gp_Pnt
+") TranslatePointToBound;
 		static gp_Pnt TranslatePointToBound (const gp_Pnt & aPoint,const gp_Dir & aDir,const Bnd_Box & aBndBox);
-		%feature("autodoc", "Args:
-	aFirstPar(Standard_Real)
-	aLastPar(Standard_Real)
-	anAttachPar(Standard_Real)
+		%feature("autodoc", "	* returns True if point with anAttachPar is in domain of arc
 
-Returns:
-	static Standard_Boolean
-
-returns  True  if  point  with anAttachPar  is  
-         in  domain  of  arc") InDomain;
+	:param aFirstPar:
+	:type aFirstPar: float
+	:param aLastPar:
+	:type aLastPar: float
+	:param anAttachPar:
+	:type anAttachPar: float
+	:rtype: bool
+") InDomain;
 		static Standard_Boolean InDomain (const Standard_Real aFirstPar,const Standard_Real aLastPar,const Standard_Real anAttachPar);
-		%feature("autodoc", "Args:
-	elips(gp_Elips)
-	pApex(gp_Pnt)
-	nApex(gp_Pnt)
-	fpara(Standard_Real)
-	lpara(Standard_Real)
-	IsInDomain(Standard_Boolean)
+		%feature("autodoc", "	* computes nearest to ellipse arc apex
 
-Returns:
-	static gp_Pnt
-
-computes  nearest  to  ellipse  arc  apex") NearestApex;
+	:param elips:
+	:type elips: gp_Elips
+	:param pApex:
+	:type pApex: gp_Pnt
+	:param nApex:
+	:type nApex: gp_Pnt
+	:param fpara:
+	:type fpara: float
+	:param lpara:
+	:type lpara: float
+	:param IsInDomain:
+	:type IsInDomain: bool
+	:rtype: gp_Pnt
+") NearestApex;
 		static gp_Pnt NearestApex (const gp_Elips & elips,const gp_Pnt & pApex,const gp_Pnt & nApex,const Standard_Real fpara,const Standard_Real lpara,Standard_Boolean & IsInDomain);
-		%feature("autodoc", "Args:
-	elips(gp_Elips)
-	Apex(gp_Pnt)
-	par(Standard_Real)
+		%feature("autodoc", "	* computes length of ellipse arc in parametric units
 
-Returns:
-	static Standard_Real
-
-computes  length  of  ellipse  arc  in  parametric  units") DistanceFromApex;
+	:param elips:
+	:type elips: gp_Elips
+	:param Apex:
+	:type Apex: gp_Pnt
+	:param par:
+	:type par: float
+	:rtype: float
+") DistanceFromApex;
 		static Standard_Real DistanceFromApex (const gp_Elips & elips,const gp_Pnt & Apex,const Standard_Real par);
-		%feature("autodoc", "Args:
-	aPres(Handle_Prs3d_Presentation)
-	aDrawer(Handle_AIS_Drawer)
-	anEdge(TopoDS_Edge)
-	ProjCurve(Handle_Geom_Curve)
-	FirstP(gp_Pnt)
-	LastP(gp_Pnt)
-	aColor(Quantity_NameOfColor)=Quantity_NOC_PURPLE
-	aWidth(Standard_Real)=2
-	aProjTOL(Aspect_TypeOfLine)=Aspect_TOL_DASH
-	aCallTOL(Aspect_TypeOfLine)=Aspect_TOL_DOT
-
-Returns:
-	static void
-
-No detailed docstring for this function.") ComputeProjEdgePresentation;
+		%feature("autodoc", "	:param aPres:
+	:type aPres: Handle_Prs3d_Presentation &
+	:param aDrawer:
+	:type aDrawer: Handle_AIS_Drawer &
+	:param anEdge:
+	:type anEdge: TopoDS_Edge &
+	:param ProjCurve:
+	:type ProjCurve: Handle_Geom_Curve &
+	:param FirstP:
+	:type FirstP: gp_Pnt
+	:param LastP:
+	:type LastP: gp_Pnt
+	:param aColor: default value is Quantity_NOC_PURPLE
+	:type aColor: Quantity_NameOfColor
+	:param aWidth: default value is 2
+	:type aWidth: float
+	:param aProjTOL: default value is Aspect_TOL_DASH
+	:type aProjTOL: Aspect_TypeOfLine
+	:param aCallTOL: default value is Aspect_TOL_DOT
+	:type aCallTOL: Aspect_TypeOfLine
+	:rtype: void
+") ComputeProjEdgePresentation;
 		static void ComputeProjEdgePresentation (const Handle_Prs3d_Presentation & aPres,const Handle_AIS_Drawer & aDrawer,const TopoDS_Edge & anEdge,const Handle_Geom_Curve & ProjCurve,const gp_Pnt & FirstP,const gp_Pnt & LastP,const Quantity_NameOfColor aColor = Quantity_NOC_PURPLE,const Standard_Real aWidth = 2,const Aspect_TypeOfLine aProjTOL = Aspect_TOL_DASH,const Aspect_TypeOfLine aCallTOL = Aspect_TOL_DOT);
-		%feature("autodoc", "Args:
-	aPres(Handle_Prs3d_Presentation)
-	aDrawer(Handle_AIS_Drawer)
-	aVertex(TopoDS_Vertex)
-	ProjPoint(gp_Pnt)
-	aColor(Quantity_NameOfColor)=Quantity_NOC_PURPLE
-	aWidth(Standard_Real)=2
-	aProjTOM(Aspect_TypeOfMarker)=Aspect_TOM_PLUS
-	aCallTOL(Aspect_TypeOfLine)=Aspect_TOL_DOT
-
-Returns:
-	static void
-
-No detailed docstring for this function.") ComputeProjVertexPresentation;
+		%feature("autodoc", "	:param aPres:
+	:type aPres: Handle_Prs3d_Presentation &
+	:param aDrawer:
+	:type aDrawer: Handle_AIS_Drawer &
+	:param aVertex:
+	:type aVertex: TopoDS_Vertex &
+	:param ProjPoint:
+	:type ProjPoint: gp_Pnt
+	:param aColor: default value is Quantity_NOC_PURPLE
+	:type aColor: Quantity_NameOfColor
+	:param aWidth: default value is 2
+	:type aWidth: float
+	:param aProjTOM: default value is Aspect_TOM_PLUS
+	:type aProjTOM: Aspect_TypeOfMarker
+	:param aCallTOL: default value is Aspect_TOL_DOT
+	:type aCallTOL: Aspect_TypeOfLine
+	:rtype: void
+") ComputeProjVertexPresentation;
 		static void ComputeProjVertexPresentation (const Handle_Prs3d_Presentation & aPres,const Handle_AIS_Drawer & aDrawer,const TopoDS_Vertex & aVertex,const gp_Pnt & ProjPoint,const Quantity_NameOfColor aColor = Quantity_NOC_PURPLE,const Standard_Real aWidth = 2,const Aspect_TypeOfMarker aProjTOM = Aspect_TOM_PLUS,const Aspect_TypeOfLine aCallTOL = Aspect_TOL_DOT);
 };
 
@@ -589,95 +620,65 @@ def __del__(self):
 %nodefaultctor AIS_AttributeFilter;
 class AIS_AttributeFilter : public SelectMgr_Filter {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Constructs an empty attribute filter object. This filter object determines whether selectable interactive objects have a non-null owner.
 
-Constructs an empty attribute filter object.  
-This filter object determines whether selectable  
-interactive objects have a non-null owner.") AIS_AttributeFilter;
+	:rtype: None
+") AIS_AttributeFilter;
 		 AIS_AttributeFilter ();
-		%feature("autodoc", "Args:
-	aCol(Quantity_NameOfColor)
+		%feature("autodoc", "	* Constructs an attribute filter object defined by the color attribute aCol.
 
-Returns:
-	None
-
-Constructs an attribute filter object defined by the  
-color attribute aCol.") AIS_AttributeFilter;
+	:param aCol:
+	:type aCol: Quantity_NameOfColor
+	:rtype: None
+") AIS_AttributeFilter;
 		 AIS_AttributeFilter (const Quantity_NameOfColor aCol);
-		%feature("autodoc", "Args:
-	aWidth(Standard_Real)
+		%feature("autodoc", "	* Constructs an attribute filter object defined by the line width attribute aWidth.
 
-Returns:
-	None
-
-Constructs an attribute filter object defined by the line  
-width attribute aWidth.") AIS_AttributeFilter;
+	:param aWidth:
+	:type aWidth: float
+	:rtype: None
+") AIS_AttributeFilter;
 		 AIS_AttributeFilter (const Standard_Real aWidth);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Indicates that the Interactive Object has the color setting specified by the argument aCol at construction time.
 
-Indicates that the Interactive Object has the color  
-setting specified by the argument aCol at construction time.") HasColor;
+	:rtype: bool
+") HasColor;
 		Standard_Boolean HasColor ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Indicates that the Interactive Object has the width setting specified by the argument aWidth at construction time.
 
-Indicates that the Interactive Object has the width  
-setting specified by the argument aWidth at  
-construction time.") HasWidth;
+	:rtype: bool
+") HasWidth;
 		Standard_Boolean HasWidth ();
-		%feature("autodoc", "Args:
-	aCol(Quantity_NameOfColor)
+		%feature("autodoc", "	* Sets the color aCol. This must be chosen from the list of colors in Quantity_NameOfColor.
 
-Returns:
-	None
-
-Sets the color aCol.  
-This must be chosen from the list of colors in Quantity_NameOfColor.") SetColor;
+	:param aCol:
+	:type aCol: Quantity_NameOfColor
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_NameOfColor aCol);
-		%feature("autodoc", "Args:
-	aWidth(Standard_Real)
+		%feature("autodoc", "	* Sets the line width aWidth.
 
-Returns:
-	None
-
-Sets the line width aWidth.") SetWidth;
+	:param aWidth:
+	:type aWidth: float
+	:rtype: None
+") SetWidth;
 		void SetWidth (const Standard_Real aWidth);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Removes the setting for color from the filter.
 
-Removes the setting for color from the filter.") UnsetColor;
+	:rtype: None
+") UnsetColor;
 		void UnsetColor ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Removes the setting for width from the filter.
 
-Removes the setting for width from the filter.") UnsetWidth;
+	:rtype: None
+") UnsetWidth;
 		void UnsetWidth ();
-		%feature("autodoc", "Args:
-	anObj(Handle_SelectMgr_EntityOwner)
+		%feature("autodoc", "	* Indicates that the selected Interactive Object passes the filter. The owner, anObj, can be either direct or user. A direct owner is the corresponding construction element, whereas a user is the compound shape of which the entity forms a part. If the Interactive Object returns Standard_True when detected by the Local Context selector through the mouse, the object is kept; if not, it is rejected.
 
-Returns:
-	virtual Standard_Boolean
-
-Indicates that the selected Interactive Object passes  
-the filter. The owner, anObj, can be either direct or  
-user. A direct owner is the corresponding  
-construction element, whereas a user is the  
-compound shape of which the entity forms a part.  
-If the Interactive Object returns Standard_True  
-when detected by the Local Context selector through  
-the mouse, the object is kept; if not, it is rejected.") IsOk;
+	:param anObj:
+	:type anObj: Handle_SelectMgr_EntityOwner &
+	:rtype: bool
+") IsOk;
 		virtual Standard_Boolean IsOk (const Handle_SelectMgr_EntityOwner & anObj);
 };
 
@@ -738,56 +739,43 @@ def __del__(self):
 %nodefaultctor AIS_BadEdgeFilter;
 class AIS_BadEdgeFilter : public SelectMgr_Filter {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Constructs an empty filter object for bad edges.
 
-Constructs an empty filter object for bad edges.") AIS_BadEdgeFilter;
+	:rtype: None
+") AIS_BadEdgeFilter;
 		 AIS_BadEdgeFilter ();
-		%feature("autodoc", "Args:
-	aType(TopAbs_ShapeEnum)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") ActsOn;
+		%feature("autodoc", "	:param aType:
+	:type aType: TopAbs_ShapeEnum
+	:rtype: bool
+") ActsOn;
 		virtual Standard_Boolean ActsOn (const TopAbs_ShapeEnum aType);
-		%feature("autodoc", "Args:
-	EO(Handle_SelectMgr_EntityOwner)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") IsOk;
+		%feature("autodoc", "	:param EO:
+	:type EO: Handle_SelectMgr_EntityOwner &
+	:rtype: bool
+") IsOk;
 		virtual Standard_Boolean IsOk (const Handle_SelectMgr_EntityOwner & EO);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* sets <myContour> with current contour. used by IsOk.
 
-Returns:
-	None
-
-sets  <myContour> with  current  contour. used  by  
-         IsOk.") SetContour;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") SetContour;
 		void SetContour (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	anEdge(TopoDS_Edge)
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Adds an edge to the list of non-selectionnable edges.
 
-Returns:
-	None
-
-Adds an  edge  to the list  of non-selectionnable  
-         edges.") AddEdge;
+	:param anEdge:
+	:type anEdge: TopoDS_Edge &
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") AddEdge;
 		void AddEdge (const TopoDS_Edge & anEdge,const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* removes from the list of non-selectionnable edges all edges in the contour <Index>.
 
-Returns:
-	None
-
-removes from the  list of non-selectionnable edges  
-         all edges in the contour <Index>.") RemoveEdges;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") RemoveEdges;
 		void RemoveEdges (const Standard_Integer Index);
 };
 
@@ -848,29 +836,20 @@ def __del__(self):
 %nodefaultctor AIS_C0RegularityFilter;
 class AIS_C0RegularityFilter : public SelectMgr_Filter {
 	public:
-		%feature("autodoc", "Args:
-	aShape(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_C0RegularityFilter;
+		%feature("autodoc", "	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:rtype: None
+") AIS_C0RegularityFilter;
 		 AIS_C0RegularityFilter (const TopoDS_Shape & aShape);
-		%feature("autodoc", "Args:
-	aType(TopAbs_ShapeEnum)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") ActsOn;
+		%feature("autodoc", "	:param aType:
+	:type aType: TopAbs_ShapeEnum
+	:rtype: bool
+") ActsOn;
 		virtual Standard_Boolean ActsOn (const TopAbs_ShapeEnum aType);
-		%feature("autodoc", "Args:
-	EO(Handle_SelectMgr_EntityOwner)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") IsOk;
+		%feature("autodoc", "	:param EO:
+	:type EO: Handle_SelectMgr_EntityOwner &
+	:rtype: bool
+") IsOk;
 		virtual Standard_Boolean IsOk (const Handle_SelectMgr_EntityOwner & EO);
 };
 
@@ -931,42 +910,24 @@ def __del__(self):
 %nodefaultctor AIS_DataMapIteratorOfDataMapOfILC;
 class AIS_DataMapIteratorOfDataMapOfILC : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_DataMapIteratorOfDataMapOfILC;
+		%feature("autodoc", "	:rtype: None
+") AIS_DataMapIteratorOfDataMapOfILC;
 		 AIS_DataMapIteratorOfDataMapOfILC ();
-		%feature("autodoc", "Args:
-	aMap(AIS_DataMapOfILC)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_DataMapIteratorOfDataMapOfILC;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: AIS_DataMapOfILC &
+	:rtype: None
+") AIS_DataMapIteratorOfDataMapOfILC;
 		 AIS_DataMapIteratorOfDataMapOfILC (const AIS_DataMapOfILC & aMap);
-		%feature("autodoc", "Args:
-	aMap(AIS_DataMapOfILC)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: AIS_DataMapOfILC &
+	:rtype: None
+") Initialize;
 		void Initialize (const AIS_DataMapOfILC & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: int
+") Key;
 		const Standard_Integer & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_LocalContext
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_AIS_LocalContext
+") Value;
 		const Handle_AIS_LocalContext & Value ();
 };
 
@@ -988,42 +949,24 @@ def __del__(self):
 %nodefaultctor AIS_DataMapIteratorOfDataMapOfIOStatus;
 class AIS_DataMapIteratorOfDataMapOfIOStatus : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_DataMapIteratorOfDataMapOfIOStatus;
+		%feature("autodoc", "	:rtype: None
+") AIS_DataMapIteratorOfDataMapOfIOStatus;
 		 AIS_DataMapIteratorOfDataMapOfIOStatus ();
-		%feature("autodoc", "Args:
-	aMap(AIS_DataMapOfIOStatus)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_DataMapIteratorOfDataMapOfIOStatus;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: AIS_DataMapOfIOStatus &
+	:rtype: None
+") AIS_DataMapIteratorOfDataMapOfIOStatus;
 		 AIS_DataMapIteratorOfDataMapOfIOStatus (const AIS_DataMapOfIOStatus & aMap);
-		%feature("autodoc", "Args:
-	aMap(AIS_DataMapOfIOStatus)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: AIS_DataMapOfIOStatus &
+	:rtype: None
+") Initialize;
 		void Initialize (const AIS_DataMapOfIOStatus & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_InteractiveObject
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
+") Key;
 		const Handle_AIS_InteractiveObject & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_GlobalStatus
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_AIS_GlobalStatus
+") Value;
 		const Handle_AIS_GlobalStatus & Value ();
 };
 
@@ -1045,42 +988,24 @@ def __del__(self):
 %nodefaultctor AIS_DataMapIteratorOfDataMapOfSelStat;
 class AIS_DataMapIteratorOfDataMapOfSelStat : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_DataMapIteratorOfDataMapOfSelStat;
+		%feature("autodoc", "	:rtype: None
+") AIS_DataMapIteratorOfDataMapOfSelStat;
 		 AIS_DataMapIteratorOfDataMapOfSelStat ();
-		%feature("autodoc", "Args:
-	aMap(AIS_DataMapOfSelStat)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_DataMapIteratorOfDataMapOfSelStat;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: AIS_DataMapOfSelStat &
+	:rtype: None
+") AIS_DataMapIteratorOfDataMapOfSelStat;
 		 AIS_DataMapIteratorOfDataMapOfSelStat (const AIS_DataMapOfSelStat & aMap);
-		%feature("autodoc", "Args:
-	aMap(AIS_DataMapOfSelStat)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: AIS_DataMapOfSelStat &
+	:rtype: None
+") Initialize;
 		void Initialize (const AIS_DataMapOfSelStat & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_SelectMgr_SelectableObject
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: Handle_SelectMgr_SelectableObject
+") Key;
 		const Handle_SelectMgr_SelectableObject & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_LocalStatus
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_AIS_LocalStatus
+") Value;
 		const Handle_AIS_LocalStatus & Value ();
 };
 
@@ -1102,42 +1027,24 @@ def __del__(self):
 %nodefaultctor AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive;
 class AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive;
+		%feature("autodoc", "	:rtype: None
+") AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive;
 		 AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive ();
-		%feature("autodoc", "Args:
-	aMap(AIS_DataMapofIntegerListOfinteractive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: AIS_DataMapofIntegerListOfinteractive &
+	:rtype: None
+") AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive;
 		 AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive (const AIS_DataMapofIntegerListOfinteractive & aMap);
-		%feature("autodoc", "Args:
-	aMap(AIS_DataMapofIntegerListOfinteractive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: AIS_DataMapofIntegerListOfinteractive &
+	:rtype: None
+") Initialize;
 		void Initialize (const AIS_DataMapofIntegerListOfinteractive & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: int
+") Key;
 		const Standard_Integer & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	AIS_ListOfInteractive
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: AIS_ListOfInteractive
+") Value;
 		const AIS_ListOfInteractive & Value ();
 };
 
@@ -1159,15 +1066,14 @@ def __del__(self):
 %nodefaultctor AIS_DataMapNodeOfDataMapOfILC;
 class AIS_DataMapNodeOfDataMapOfILC : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(Handle_AIS_LocalContext)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_DataMapNodeOfDataMapOfILC;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: Handle_AIS_LocalContext &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") AIS_DataMapNodeOfDataMapOfILC;
 		 AIS_DataMapNodeOfDataMapOfILC (Standard_Integer &OutValue,const Handle_AIS_LocalContext & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
@@ -1182,12 +1088,8 @@ No detailed docstring for this function.") AIS_DataMapNodeOfDataMapOfILC;
                 $self->Key()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_LocalContext
-
-No detailed docstring for this function.") Value;
+            		%feature("autodoc", "	:rtype: Handle_AIS_LocalContext
+") Value;
 		Handle_AIS_LocalContext & Value ();
 };
 
@@ -1248,29 +1150,20 @@ def __del__(self):
 %nodefaultctor AIS_DataMapNodeOfDataMapOfIOStatus;
 class AIS_DataMapNodeOfDataMapOfIOStatus : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(Handle_AIS_InteractiveObject)
-	I(Handle_AIS_GlobalStatus)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_DataMapNodeOfDataMapOfIOStatus;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_AIS_InteractiveObject &
+	:param I:
+	:type I: Handle_AIS_GlobalStatus &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") AIS_DataMapNodeOfDataMapOfIOStatus;
 		 AIS_DataMapNodeOfDataMapOfIOStatus (const Handle_AIS_InteractiveObject & K,const Handle_AIS_GlobalStatus & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_InteractiveObject
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
+") Key;
 		Handle_AIS_InteractiveObject & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_GlobalStatus
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_AIS_GlobalStatus
+") Value;
 		Handle_AIS_GlobalStatus & Value ();
 };
 
@@ -1331,29 +1224,20 @@ def __del__(self):
 %nodefaultctor AIS_DataMapNodeOfDataMapOfSelStat;
 class AIS_DataMapNodeOfDataMapOfSelStat : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(Handle_SelectMgr_SelectableObject)
-	I(Handle_AIS_LocalStatus)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_DataMapNodeOfDataMapOfSelStat;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_SelectMgr_SelectableObject &
+	:param I:
+	:type I: Handle_AIS_LocalStatus &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") AIS_DataMapNodeOfDataMapOfSelStat;
 		 AIS_DataMapNodeOfDataMapOfSelStat (const Handle_SelectMgr_SelectableObject & K,const Handle_AIS_LocalStatus & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_SelectMgr_SelectableObject
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: Handle_SelectMgr_SelectableObject
+") Key;
 		Handle_SelectMgr_SelectableObject & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_LocalStatus
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_AIS_LocalStatus
+") Value;
 		Handle_AIS_LocalStatus & Value ();
 };
 
@@ -1414,15 +1298,14 @@ def __del__(self):
 %nodefaultctor AIS_DataMapNodeOfDataMapofIntegerListOfinteractive;
 class AIS_DataMapNodeOfDataMapofIntegerListOfinteractive : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(AIS_ListOfInteractive)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_DataMapNodeOfDataMapofIntegerListOfinteractive;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: AIS_ListOfInteractive &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") AIS_DataMapNodeOfDataMapofIntegerListOfinteractive;
 		 AIS_DataMapNodeOfDataMapofIntegerListOfinteractive (Standard_Integer &OutValue,const AIS_ListOfInteractive & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
@@ -1437,12 +1320,8 @@ No detailed docstring for this function.") AIS_DataMapNodeOfDataMapofIntegerList
                 $self->Key()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	AIS_ListOfInteractive
-
-No detailed docstring for this function.") Value;
+            		%feature("autodoc", "	:rtype: AIS_ListOfInteractive
+") Value;
 		AIS_ListOfInteractive & Value ();
 };
 
@@ -1503,101 +1382,65 @@ def __del__(self):
 %nodefaultctor AIS_DataMapOfILC;
 class AIS_DataMapOfILC : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_DataMapOfILC;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") AIS_DataMapOfILC;
 		 AIS_DataMapOfILC (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(AIS_DataMapOfILC)
-
-Returns:
-	AIS_DataMapOfILC
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: AIS_DataMapOfILC &
+	:rtype: AIS_DataMapOfILC
+") Assign;
 		AIS_DataMapOfILC & Assign (const AIS_DataMapOfILC & Other);
-		%feature("autodoc", "Args:
-	Other(AIS_DataMapOfILC)
-
-Returns:
-	AIS_DataMapOfILC
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: AIS_DataMapOfILC &
+	:rtype: AIS_DataMapOfILC
+") operator=;
 		AIS_DataMapOfILC & operator = (const AIS_DataMapOfILC & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(Handle_AIS_LocalContext)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: Handle_AIS_LocalContext &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (Standard_Integer &OutValue,const Handle_AIS_LocalContext & I);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Handle_AIS_LocalContext
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Handle_AIS_LocalContext
+") Find;
 		const Handle_AIS_LocalContext & Find (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Handle_AIS_LocalContext
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Handle_AIS_LocalContext
+") ChangeFind;
 		Handle_AIS_LocalContext & ChangeFind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
 };
 
@@ -1619,101 +1462,65 @@ def __del__(self):
 %nodefaultctor AIS_DataMapOfIOStatus;
 class AIS_DataMapOfIOStatus : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_DataMapOfIOStatus;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") AIS_DataMapOfIOStatus;
 		 AIS_DataMapOfIOStatus (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(AIS_DataMapOfIOStatus)
-
-Returns:
-	AIS_DataMapOfIOStatus
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: AIS_DataMapOfIOStatus &
+	:rtype: AIS_DataMapOfIOStatus
+") Assign;
 		AIS_DataMapOfIOStatus & Assign (const AIS_DataMapOfIOStatus & Other);
-		%feature("autodoc", "Args:
-	Other(AIS_DataMapOfIOStatus)
-
-Returns:
-	AIS_DataMapOfIOStatus
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: AIS_DataMapOfIOStatus &
+	:rtype: AIS_DataMapOfIOStatus
+") operator=;
 		AIS_DataMapOfIOStatus & operator = (const AIS_DataMapOfIOStatus & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(Handle_AIS_InteractiveObject)
-	I(Handle_AIS_GlobalStatus)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_AIS_InteractiveObject &
+	:param I:
+	:type I: Handle_AIS_GlobalStatus &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const Handle_AIS_InteractiveObject & K,const Handle_AIS_GlobalStatus & I);
-		%feature("autodoc", "Args:
-	K(Handle_AIS_InteractiveObject)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_AIS_InteractiveObject &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const Handle_AIS_InteractiveObject & K);
-		%feature("autodoc", "Args:
-	K(Handle_AIS_InteractiveObject)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_AIS_InteractiveObject &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const Handle_AIS_InteractiveObject & K);
-		%feature("autodoc", "Args:
-	K(Handle_AIS_InteractiveObject)
-
-Returns:
-	Handle_AIS_GlobalStatus
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_AIS_InteractiveObject &
+	:rtype: Handle_AIS_GlobalStatus
+") Find;
 		const Handle_AIS_GlobalStatus & Find (const Handle_AIS_InteractiveObject & K);
-		%feature("autodoc", "Args:
-	K(Handle_AIS_InteractiveObject)
-
-Returns:
-	Handle_AIS_GlobalStatus
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_AIS_InteractiveObject &
+	:rtype: Handle_AIS_GlobalStatus
+") ChangeFind;
 		Handle_AIS_GlobalStatus & ChangeFind (const Handle_AIS_InteractiveObject & K);
-		%feature("autodoc", "Args:
-	K(Handle_AIS_InteractiveObject)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_AIS_InteractiveObject &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const Handle_AIS_InteractiveObject & K);
-		%feature("autodoc", "Args:
-	K(Handle_AIS_InteractiveObject)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_AIS_InteractiveObject &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const Handle_AIS_InteractiveObject & K);
 };
 
@@ -1735,101 +1542,65 @@ def __del__(self):
 %nodefaultctor AIS_DataMapOfSelStat;
 class AIS_DataMapOfSelStat : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_DataMapOfSelStat;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") AIS_DataMapOfSelStat;
 		 AIS_DataMapOfSelStat (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(AIS_DataMapOfSelStat)
-
-Returns:
-	AIS_DataMapOfSelStat
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: AIS_DataMapOfSelStat &
+	:rtype: AIS_DataMapOfSelStat
+") Assign;
 		AIS_DataMapOfSelStat & Assign (const AIS_DataMapOfSelStat & Other);
-		%feature("autodoc", "Args:
-	Other(AIS_DataMapOfSelStat)
-
-Returns:
-	AIS_DataMapOfSelStat
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: AIS_DataMapOfSelStat &
+	:rtype: AIS_DataMapOfSelStat
+") operator=;
 		AIS_DataMapOfSelStat & operator = (const AIS_DataMapOfSelStat & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(Handle_SelectMgr_SelectableObject)
-	I(Handle_AIS_LocalStatus)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_SelectMgr_SelectableObject &
+	:param I:
+	:type I: Handle_AIS_LocalStatus &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const Handle_SelectMgr_SelectableObject & K,const Handle_AIS_LocalStatus & I);
-		%feature("autodoc", "Args:
-	K(Handle_SelectMgr_SelectableObject)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_SelectMgr_SelectableObject &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const Handle_SelectMgr_SelectableObject & K);
-		%feature("autodoc", "Args:
-	K(Handle_SelectMgr_SelectableObject)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_SelectMgr_SelectableObject &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const Handle_SelectMgr_SelectableObject & K);
-		%feature("autodoc", "Args:
-	K(Handle_SelectMgr_SelectableObject)
-
-Returns:
-	Handle_AIS_LocalStatus
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_SelectMgr_SelectableObject &
+	:rtype: Handle_AIS_LocalStatus
+") Find;
 		const Handle_AIS_LocalStatus & Find (const Handle_SelectMgr_SelectableObject & K);
-		%feature("autodoc", "Args:
-	K(Handle_SelectMgr_SelectableObject)
-
-Returns:
-	Handle_AIS_LocalStatus
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_SelectMgr_SelectableObject &
+	:rtype: Handle_AIS_LocalStatus
+") ChangeFind;
 		Handle_AIS_LocalStatus & ChangeFind (const Handle_SelectMgr_SelectableObject & K);
-		%feature("autodoc", "Args:
-	K(Handle_SelectMgr_SelectableObject)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_SelectMgr_SelectableObject &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const Handle_SelectMgr_SelectableObject & K);
-		%feature("autodoc", "Args:
-	K(Handle_SelectMgr_SelectableObject)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_SelectMgr_SelectableObject &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const Handle_SelectMgr_SelectableObject & K);
 };
 
@@ -1851,101 +1622,65 @@ def __del__(self):
 %nodefaultctor AIS_DataMapofIntegerListOfinteractive;
 class AIS_DataMapofIntegerListOfinteractive : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_DataMapofIntegerListOfinteractive;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") AIS_DataMapofIntegerListOfinteractive;
 		 AIS_DataMapofIntegerListOfinteractive (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(AIS_DataMapofIntegerListOfinteractive)
-
-Returns:
-	AIS_DataMapofIntegerListOfinteractive
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: AIS_DataMapofIntegerListOfinteractive &
+	:rtype: AIS_DataMapofIntegerListOfinteractive
+") Assign;
 		AIS_DataMapofIntegerListOfinteractive & Assign (const AIS_DataMapofIntegerListOfinteractive & Other);
-		%feature("autodoc", "Args:
-	Other(AIS_DataMapofIntegerListOfinteractive)
-
-Returns:
-	AIS_DataMapofIntegerListOfinteractive
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: AIS_DataMapofIntegerListOfinteractive &
+	:rtype: AIS_DataMapofIntegerListOfinteractive
+") operator=;
 		AIS_DataMapofIntegerListOfinteractive & operator = (const AIS_DataMapofIntegerListOfinteractive & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(AIS_ListOfInteractive)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: AIS_ListOfInteractive &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (Standard_Integer &OutValue,const AIS_ListOfInteractive & I);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	AIS_ListOfInteractive
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: AIS_ListOfInteractive
+") Find;
 		const AIS_ListOfInteractive & Find (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	AIS_ListOfInteractive
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: AIS_ListOfInteractive
+") ChangeFind;
 		AIS_ListOfInteractive & ChangeFind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
 };
 
@@ -1967,61 +1702,53 @@ def __del__(self):
 %nodefaultctor AIS_DimensionOwner;
 class AIS_DimensionOwner : public SelectMgr_EntityOwner {
 	public:
-		%feature("autodoc", "Args:
-	theSelObject(Handle_SelectMgr_SelectableObject)
-	theSelMode(AIS_DimensionSelectionMode)
-	thePriority(Standard_Integer)=0
+		%feature("autodoc", "	* Initializes the dimension owner, theSO, and attributes it the priority, thePriority.
 
-Returns:
-	None
-
-Initializes the dimension owner, theSO, and attributes it  
-the priority, thePriority.") AIS_DimensionOwner;
+	:param theSelObject:
+	:type theSelObject: Handle_SelectMgr_SelectableObject &
+	:param theSelMode:
+	:type theSelMode: AIS_DimensionSelectionMode
+	:param thePriority: default value is 0
+	:type thePriority: Standard_Integer
+	:rtype: None
+") AIS_DimensionOwner;
 		 AIS_DimensionOwner (const Handle_SelectMgr_SelectableObject & theSelObject,const AIS_DimensionSelectionMode theSelMode,const Standard_Integer thePriority = 0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	AIS_DimensionSelectionMode
-
-No detailed docstring for this function.") SelectionMode;
+		%feature("autodoc", "	:rtype: AIS_DimensionSelectionMode
+") SelectionMode;
 		AIS_DimensionSelectionMode SelectionMode ();
-		%feature("autodoc", "Args:
-	thePM(Handle_PrsMgr_PresentationManager3d)
-	theColor(Quantity_NameOfColor)
-	theMode(Standard_Integer)=0
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") HilightWithColor;
+		%feature("autodoc", "	:param thePM:
+	:type thePM: Handle_PrsMgr_PresentationManager3d &
+	:param theColor:
+	:type theColor: Quantity_NameOfColor
+	:param theMode: default value is 0
+	:type theMode: Standard_Integer
+	:rtype: void
+") HilightWithColor;
 		virtual void HilightWithColor (const Handle_PrsMgr_PresentationManager3d & thePM,const Quantity_NameOfColor theColor,const Standard_Integer theMode = 0);
-		%feature("autodoc", "Args:
-	thePM(Handle_PrsMgr_PresentationManager)
-	theMode(Standard_Integer)=0
+		%feature("autodoc", "	* Returns true if an object with the selection mode aMode is highlighted in the presentation manager aPM.
 
-Returns:
-	virtual Standard_Boolean
-
-Returns true if an object with the selection mode  
-aMode is highlighted in the presentation manager aPM.") IsHilighted;
+	:param thePM:
+	:type thePM: Handle_PrsMgr_PresentationManager &
+	:param theMode: default value is 0
+	:type theMode: Standard_Integer
+	:rtype: bool
+") IsHilighted;
 		virtual Standard_Boolean IsHilighted (const Handle_PrsMgr_PresentationManager & thePM,const Standard_Integer theMode = 0);
-		%feature("autodoc", "Args:
-	thePM(Handle_PrsMgr_PresentationManager)
-	theMode(Standard_Integer)=0
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Hilight;
+		%feature("autodoc", "	:param thePM:
+	:type thePM: Handle_PrsMgr_PresentationManager &
+	:param theMode: default value is 0
+	:type theMode: Standard_Integer
+	:rtype: void
+") Hilight;
 		virtual void Hilight (const Handle_PrsMgr_PresentationManager & thePM,const Standard_Integer theMode = 0);
-		%feature("autodoc", "Args:
-	thePM(Handle_PrsMgr_PresentationManager)
-	theMode(Standard_Integer)=0
+		%feature("autodoc", "	* Removes highlighting from the selected part of dimension.
 
-Returns:
-	virtual void
-
-Removes highlighting from the selected part of dimension.") Unhilight;
+	:param thePM:
+	:type thePM: Handle_PrsMgr_PresentationManager &
+	:param theMode: default value is 0
+	:type theMode: Standard_Integer
+	:rtype: void
+") Unhilight;
 		virtual void Unhilight (const Handle_PrsMgr_PresentationManager & thePM,const Standard_Integer theMode = 0);
 };
 
@@ -2082,743 +1809,406 @@ def __del__(self):
 %nodefaultctor AIS_Drawer;
 class AIS_Drawer : public Prs3d_Drawer {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Constructs an empty attribute management framework.
 
-Constructs an empty attribute management framework.") AIS_Drawer;
+	:rtype: None
+") AIS_Drawer;
 		 AIS_Drawer ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_TypeOfDeflection
+		%feature("autodoc", "	* Returns the type of chordal deflection: relative to the size of the object or absolute.
 
-Returns the type of chordal deflection: relative to the  
-size of the object or absolute.") TypeOfDeflection;
+	:rtype: Aspect_TypeOfDeflection
+") TypeOfDeflection;
 		Aspect_TypeOfDeflection TypeOfDeflection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Length
+		%feature("autodoc", "	* Returns the maximal chordal deviation. The default value is 0.1. Drawings of curves or patches are made with respect to an absolute maximal chordal deviation.
 
-Returns the maximal chordal deviation. The default  
-value is 0.1. Drawings of curves or patches are  
-made with respect to an absolute maximal chordal deviation.") MaximalChordialDeviation;
+	:rtype: Quantity_Length
+") MaximalChordialDeviation;
 		Quantity_Length MaximalChordialDeviation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Sets the hasOwnDeviationCoefficient flag to Standard_False
 
-Sets the hasOwnDeviationCoefficient flag to Standard_False") SetDeviationCoefficient;
+	:rtype: None
+") SetDeviationCoefficient;
 		void SetDeviationCoefficient ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Sets the deviation coefficient aCoefficient for removal of hidden lines created by different viewpoints in different presentations. The Default value is 0.02.
 
-Sets the deviation coefficient aCoefficient for  
-removal of hidden lines created by different  
-viewpoints in different presentations. The Default value is 0.02.") SetHLRDeviationCoefficient;
+	:rtype: None
+") SetHLRDeviationCoefficient;
 		void SetHLRDeviationCoefficient ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Sets the hasOwnDeviationAngle flag to Standard_False
 
-Sets the hasOwnDeviationAngle flag to Standard_False") SetDeviationAngle;
+	:rtype: None
+") SetDeviationAngle;
 		void SetDeviationAngle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Sets the angle of maximum chordal deviation for removal of hidden lines created by different viewpoints in different presentations. The default value is 20*PI/180.
 
-Sets the angle of maximum chordal deviation for  
-removal of hidden lines created by different viewpoints  
-in different presentations. The default value is 20*PI/180.") SetHLRAngle;
+	:rtype: None
+") SetHLRAngle;
 		void SetHLRAngle ();
-		%feature("autodoc", "Args:
-	aCoefficient(Standard_Real)
+		%feature("autodoc", "	* Sets the hasOwnDeviationCoefficient flag to Standard_True, sets myOwnDeviationCoefficient and myPreviousDeviationCoefficient
 
-Returns:
-	None
-
-Sets the hasOwnDeviationCoefficient flag to Standard_True,  
-         sets myOwnDeviationCoefficient and  myPreviousDeviationCoefficient") SetDeviationCoefficient;
+	:param aCoefficient:
+	:type aCoefficient: float
+	:rtype: None
+") SetDeviationCoefficient;
 		void SetDeviationCoefficient (const Standard_Real aCoefficient);
-		%feature("autodoc", "Args:
-	aCoefficient(Standard_Real)
+		%feature("autodoc", "	* Sets the hasOwnHLRDeviationCoefficient flag to Standard_True, sets myOwnHLRDeviationCoefficient and myPreviousHLRDeviationCoefficient
 
-Returns:
-	None
-
-Sets the hasOwnHLRDeviationCoefficient flag to Standard_True,  
-         sets myOwnHLRDeviationCoefficient and  myPreviousHLRDeviationCoefficient") SetHLRDeviationCoefficient;
+	:param aCoefficient:
+	:type aCoefficient: float
+	:rtype: None
+") SetHLRDeviationCoefficient;
 		void SetHLRDeviationCoefficient (const Standard_Real aCoefficient);
-		%feature("autodoc", "Args:
-	anAngle(Standard_Real)
+		%feature("autodoc", "	* Sets the hasOwnDeviationAngle flag to Standard_True, sets myOwnDeviationAngle and myPreviousDeviationAngle
 
-Returns:
-	virtual void
-
-Sets the hasOwnDeviationAngle flag to Standard_True,  
-         sets myOwnDeviationAngle and  myPreviousDeviationAngle") SetDeviationAngle;
+	:param anAngle:
+	:type anAngle: float
+	:rtype: void
+") SetDeviationAngle;
 		virtual void SetDeviationAngle (const Standard_Real anAngle);
-		%feature("autodoc", "Args:
-	anAngle(Standard_Real)
+		%feature("autodoc", "	* Sets the hasOwnHLRDeviationAngle flag to Standard_True, sets myOwnHLRDeviationAngle and myPreviousHLRDeviationAngle
 
-Returns:
-	None
-
-Sets the hasOwnHLRDeviationAngle flag to Standard_True,  
-         sets myOwnHLRDeviationAngle and  myPreviousHLRDeviationAngle") SetHLRAngle;
+	:param anAngle:
+	:type anAngle: float
+	:rtype: None
+") SetHLRAngle;
 		void SetHLRAngle (const Standard_Real anAngle);
-		%feature("autodoc", "Args:
-	theTypeOfHLR(Prs3d_TypeOfHLR)
+		%feature("autodoc", "	* Sets the type of HLR algorithm used by drawer's interactive objects
 
-Returns:
-	None
-
-Sets the type of HLR algorithm  
-         used by drawer's interactive objects") SetTypeOfHLR;
+	:param theTypeOfHLR:
+	:type theTypeOfHLR: Prs3d_TypeOfHLR
+	:rtype: None
+") SetTypeOfHLR;
 		void SetTypeOfHLR (const Prs3d_TypeOfHLR theTypeOfHLR);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Prs3d_TypeOfHLR
+		%feature("autodoc", "	* Returns the type of HLR algorithm currently in use.
 
-Returns the type of HLR algorithm currently in use.") TypeOfHLR;
+	:rtype: Prs3d_TypeOfHLR
+") TypeOfHLR;
 		Prs3d_TypeOfHLR TypeOfHLR ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Drawings of curves or patches are made with respect to a maximal chordal deviation. A Deviation coefficient is used in the shading display mode. The shape is seen decomposed into triangles. These are used to calculate reflection of light from the surface of the object. The triangles are formed from chords of the curves in the shape. The deviation coefficient gives the highest value of the angle with which a chord can deviate from a tangent to a curve. If this limit is reached, a new triangle is begun. This deviation is absolute and is set through the method: SetMaximalChordialDeviation. The default value is 0.001. In drawing shapes, however, you are allowed to ask for a relative deviation. This deviation will be: SizeOfObject * DeviationCoefficient.
 
-Drawings of curves or patches are made with respect  
-to a maximal chordal deviation. A Deviation coefficient  
-is used in the shading display mode. The shape is  
-seen decomposed into triangles. These are used to  
-calculate reflection of light from the surface of the  
-object. The triangles are formed from chords of the  
-curves in the shape. The deviation coefficient gives  
-the highest value of the angle with which a chord can  
-deviate from a tangent to a   curve. If this limit is  
-reached, a new triangle is begun.  
-This deviation is absolute and is set through the  
-method: SetMaximalChordialDeviation. The default value is 0.001.  
-In drawing shapes, however, you are allowed to ask  
-for a relative deviation. This deviation will be:  
-SizeOfObject * DeviationCoefficient.") DeviationCoefficient;
+	:rtype: float
+") DeviationCoefficient;
 		Standard_Real DeviationCoefficient ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the real number value of the HLR deviation coefficient in this framework, if the flag hasOwnHLRDeviationCoefficient is true. If hasOwnHLRDeviationCoefficient is false, the shape's HLR deviation coefficient is used. A Deviation coefficient is used in the shading display mode. The shape is seen decomposed into triangles. These are used to calculate reflection of light from the surface of the object. The triangles are formed from chords of the curves in the shape. The deviation coefficient give the highest value of the angle with which a chord can deviate from a tangent to a curve. If this limit is reached, a new triangle is begun. To find the hidden lines, hidden line display mode entails recalculation of the view at each different projector perspective. Since hidden lines entail calculations of more than usual complexity to decompose them into these triangles, a deviation coefficient allowing greater tolerance is used. This increases efficiency in calculation. The Default value is 0.02.
 
-Returns the real number value of the HLR deviation  
-coefficient in this framework, if the flag  
-hasOwnHLRDeviationCoefficient is true.  
-If hasOwnHLRDeviationCoefficient is false, the  
-shape's HLR deviation coefficient is used.  
-A Deviation coefficient is used in the shading display  
-mode. The shape is seen decomposed into triangles.  
-These are used to calculate reflection of light from the  
-surface of the object.  
-The triangles are formed from chords of the curves in  
-the shape. The deviation coefficient give the highest  
-value of the angle with which a chord can deviate  
-from a tangent to a curve. If this limit is reached, a  
-new triangle is begun.  
-To find the hidden lines, hidden line display mode  
-entails recalculation of the view at each different  
-projector perspective.  
-Since hidden lines entail calculations of more than  
-usual complexity to decompose them into these  
-triangles, a deviation coefficient allowing greater  
-tolerance is used. This increases efficiency in calculation.  
-The Default value is 0.02.") HLRDeviationCoefficient;
+	:rtype: float
+") HLRDeviationCoefficient;
 		Standard_Real HLRDeviationCoefficient ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Real
+		%feature("autodoc", "	* Returns myOwnDeviationAngle if hasOwnDeviationAngle is True else gets myDeviationAngle field from Prs3d_Drawer
 
-Returns myOwnDeviationAngle if hasOwnDeviationAngle is True  
-         else gets myDeviationAngle field from Prs3d_Drawer") DeviationAngle;
+	:rtype: float
+") DeviationAngle;
 		virtual Standard_Real DeviationAngle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the real number value of the deviation angle in hidden line removal views. The default value is 20*PI/180.
 
-Returns the real number value of the deviation angle  
-in hidden line removal views. The default value is 20*PI/180.") HLRAngle;
+	:rtype: float
+") HLRAngle;
 		Standard_Real HLRAngle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Saves the previous value used for the chordal deviation coefficient. The default value is 0.1.
 
-Saves the previous value used for the chordal  
-deviation coefficient. The default value is 0.1.") PreviousDeviationCoefficient;
+	:rtype: float
+") PreviousDeviationCoefficient;
 		Standard_Real PreviousDeviationCoefficient ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns myPreviousHLRDeviationCoefficient
 
-returns myPreviousHLRDeviationCoefficient") PreviousHLRDeviationCoefficient;
+	:rtype: float
+") PreviousHLRDeviationCoefficient;
 		Standard_Real PreviousHLRDeviationCoefficient ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns myPreviousDeviationAngle
 
-returns myPreviousDeviationAngle") PreviousDeviationAngle;
+	:rtype: float
+") PreviousDeviationAngle;
 		Standard_Real PreviousDeviationAngle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns myPreviousHLRDeviationAngle
 
-returns myPreviousHLRDeviationAngle") PreviousHLRDeviationAngle;
+	:rtype: float
+") PreviousHLRDeviationAngle;
 		Standard_Real PreviousHLRDeviationAngle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the there is a local setting for deviation coefficient in this framework for a specific interactive object.
 
-Returns true if the there is a local setting for deviation  
-coefficient in this framework for a specific interactive object.") IsOwnDeviationCoefficient;
+	:rtype: bool
+") IsOwnDeviationCoefficient;
 		Standard_Boolean IsOwnDeviationCoefficient ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the there is a setting for HLR deviation coefficient in this framework for a specific interactive object.
 
-Returns true if the there is a setting for HLR deviation  
-coefficient in this framework for a specific interactive object.") IsOwnHLRDeviationCoefficient;
+	:rtype: bool
+") IsOwnHLRDeviationCoefficient;
 		Standard_Boolean IsOwnHLRDeviationCoefficient ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the there is a local setting for deviation angle in this framework for a specific interactive object.
 
-Returns true if the there is a local setting for deviation  
-angle in this framework for a specific interactive object.") IsOwnDeviationAngle;
+	:rtype: bool
+") IsOwnDeviationAngle;
 		Standard_Boolean IsOwnDeviationAngle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the there is a setting for HLR deviation angle in this framework for a specific interactive object.
 
-Returns true if the there is a setting for HLR deviation  
-angle in this framework for a specific interactive object.") IsOwnHLRDeviationAngle;
+	:rtype: bool
+") IsOwnHLRDeviationAngle;
 		Standard_Boolean IsOwnHLRDeviationAngle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Draws algorithms using discretisation, a default number of points has been set to 17. You can use the method Prs3d_Drawer_SetDiscretisation to change this value.
 
-Draws algorithms using discretisation, a default  
-number of points has been set to 17. You can use the  
-method Prs3d_Drawer_SetDiscretisation to change this value.") Discretisation;
+	:rtype: int
+") Discretisation;
 		Standard_Integer Discretisation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Sets the maximum value allowed for the first and last parameters of an infinite curve. By default, this value is 500000.
 
-Sets the maximum value allowed for the first and last  
-parameters of an infinite curve. By default, this value is 500000.") MaximalParameterValue;
+	:rtype: float
+") MaximalParameterValue;
 		Standard_Real MaximalParameterValue ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns True if the drawing of isos on planes is enabled.
 
-returns True if the drawing of isos on planes is enabled.") IsoOnPlane;
+	:rtype: bool
+") IsoOnPlane;
 		Standard_Boolean IsoOnPlane ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_IsoAspect
+		%feature("autodoc", "	* Defines the attributes which are used when drawing an U isoparametric curve of a face. Defines the number of U isoparametric curves to be drawn for a single face. The LineAspect for U isoparametric lines can be edited (methods SetColor, SetTypeOfLine, SetWidth, SetNumber) The default values are: COLOR : Quantity_NOC_GRAY75 TYPE OF LINE: Aspect_TOL_SOLID WIDTH : 0.5 These attributes are used by the following algorithms: Prs3d_WFDeflectionSurface Prs3d_WFDeflectionRestrictedFace
 
-Defines the attributes which are used when drawing an  
-         U isoparametric curve of a face. Defines the number  
-         of U isoparametric curves to be drawn for a single face.  
-         The LineAspect for U isoparametric lines can be edited  
-         (methods SetColor, SetTypeOfLine, SetWidth, SetNumber)  
-         The default values are:  
-         COLOR       : Quantity_NOC_GRAY75  
-         TYPE OF LINE: Aspect_TOL_SOLID  
-         WIDTH       : 0.5  
-These attributes are used by the following algorithms:  
-         Prs3d_WFDeflectionSurface  
-         Prs3d_WFDeflectionRestrictedFace") UIsoAspect;
+	:rtype: Handle_Prs3d_IsoAspect
+") UIsoAspect;
 		Handle_Prs3d_IsoAspect UIsoAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_IsoAspect
+		%feature("autodoc", "	* Defines the attributes which are used when drawing an V isoparametric curve of a face. Defines the number of V isoparametric curves to be drawn for a single face. The LineAspect for V isoparametric lines can be edited (methods SetColor, SetTypeOfLine, SetWidth, SetNumber) The default values are: COLOR : Quantity_NOC_GRAY82 TYPE OF LINE: Aspect_TOL_SOLID WIDTH : 0.5 These attributes are used by the following algorithms: Prs3d_WFDeflectionSurface Prs3d_WFDeflectionRestrictedFace
 
-Defines the attributes which are used when drawing an  
-         V isoparametric curve of a face. Defines the number  
-         of V isoparametric curves to be drawn for a single face.  
-         The LineAspect for V isoparametric lines can be edited  
-         (methods SetColor, SetTypeOfLine, SetWidth, SetNumber)  
-         The default values are:  
-         COLOR       : Quantity_NOC_GRAY82  
-         TYPE OF LINE: Aspect_TOL_SOLID  
-         WIDTH       : 0.5  
-         These attributes are used by the following algorithms:  
-         Prs3d_WFDeflectionSurface  
-         Prs3d_WFDeflectionRestrictedFace") VIsoAspect;
+	:rtype: Handle_Prs3d_IsoAspect
+") VIsoAspect;
 		Handle_Prs3d_IsoAspect VIsoAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_LineAspect
+		%feature("autodoc", "	* Returns a link with Prs3d_Drawer_FreeBoundaryAspect. Stores the values for presentation of free boundaries, in other words, boundaries which are not shared . The LineAspect for the free boundaries can be edited. The default values are: Color: Quantity_NOC_GREEN Type of line: Aspect_TOL_SOLID Width: 1. These attributes are used by Prs3d_WFShape.
 
-Returns a link with  
-Prs3d_Drawer_FreeBoundaryAspect. Stores the  
-values for presentation of free boundaries, in other  
-words, boundaries which are not shared . The  
-LineAspect for the free boundaries can be edited. The  
-default values are: Color: Quantity_NOC_GREEN  
-Type of line: Aspect_TOL_SOLID Width: 1.  
-These attributes are used by Prs3d_WFShape.") FreeBoundaryAspect;
+	:rtype: Handle_Prs3d_LineAspect
+") FreeBoundaryAspect;
 		Handle_Prs3d_LineAspect FreeBoundaryAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns True if the drawing of the free boundaries is enabled.
 
-returns True if the drawing of the free boundaries is enabled.") FreeBoundaryDraw;
+	:rtype: bool
+") FreeBoundaryDraw;
 		Standard_Boolean FreeBoundaryDraw ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_LineAspect
+		%feature("autodoc", "	* Returns a link with Prs3d_Drawer_WireAspect. This method provides wire aspect settings. The LineAspect for wires can be edited. The default values are: Color: Quantity_NOC_RED Type of line: Aspect_TOL_SOLID Width: 1. These attributes are used by the following algorithms: Prs3d_WFShape
 
-Returns a link with Prs3d_Drawer_WireAspect.  
-This method provides wire aspect settings.  
-The LineAspect for wires can be edited. The default values are:  
-         Color: Quantity_NOC_RED  
-         Type of line: Aspect_TOL_SOLID  
-         Width: 1.  
-         These attributes are used by the following algorithms:  
-         Prs3d_WFShape") WireAspect;
+	:rtype: Handle_Prs3d_LineAspect
+") WireAspect;
 		Handle_Prs3d_LineAspect WireAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the Interactive Object has a line visualization aspect.
 
-Returns true if the Interactive Object has a line  
-visualization aspect.") HasLineAspect;
+	:rtype: bool
+") HasLineAspect;
 		Standard_Boolean HasLineAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the Drawer has a wire aspect setting active.
 
-Returns true if the Drawer has a wire aspect setting active.") HasWireAspect;
+	:rtype: bool
+") HasWireAspect;
 		Standard_Boolean HasWireAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns a link with Prs3d_Drawer_WireDraw. This method returns true if drawing of wires is enabled. The default setting is true.
 
-Returns a link   with Prs3d_Drawer_WireDraw. This  
-method returns true if drawing of wires is enabled.  
-The default setting is true.") WireDraw;
+	:rtype: bool
+") WireDraw;
 		Standard_Boolean WireDraw ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_LineAspect
+		%feature("autodoc", "	* Returns a link with Prs3d_Drawer_UnFreeBoundaryAspect, which provides settings for shared boundary line aspects. The LineAspect for shared boundaries can be edited. The default values are: Color: Quantity_NOC_YELLOW Type of line: Aspect_TOL_SOLID Width: 1. These attributes are used by the following algorithms: Prs3d_WFShape
 
-Returns a link with  
-Prs3d_Drawer_UnFreeBoundaryAspect, which  
-provides settings for shared boundary line aspects.  
-The LineAspect for shared boundaries can be edited.  
-The default values are:  
-         Color: Quantity_NOC_YELLOW  
-         Type of line: Aspect_TOL_SOLID  
-         Width: 1.  
-         These attributes are used by the following algorithms:  
-         Prs3d_WFShape") UnFreeBoundaryAspect;
+	:rtype: Handle_Prs3d_LineAspect
+") UnFreeBoundaryAspect;
 		Handle_Prs3d_LineAspect UnFreeBoundaryAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the drawing of the shared boundaries is enabled. True is the default setting.
 
-Returns True if the drawing of the shared boundaries  
-is enabled. True is the default setting.") UnFreeBoundaryDraw;
+	:rtype: bool
+") UnFreeBoundaryDraw;
 		Standard_Boolean UnFreeBoundaryDraw ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_LineAspect
+		%feature("autodoc", "	* Returns a link with Prs3d_Drawer_LineAspect, which provides settings for line aspects. These settings can be edited. The default values are: Color: Quantity_NOC_YELLOW Type of line: Aspect_TOL_SOLID Width: 1. These attributes are used by the following algorithms: Prs3d_Curve Prs3d_Line Prs3d_HLRShape
 
-Returns a link with Prs3d_Drawer_LineAspect,  
-which provides settings for line aspects. These  
-settings can be edited. The default values are:  
-         Color: Quantity_NOC_YELLOW  
-         Type of line: Aspect_TOL_SOLID  
-         Width: 1.  
-These attributes are used by the following algorithms:  
-         Prs3d_Curve  
-         Prs3d_Line  
-         Prs3d_HLRShape") LineAspect;
+	:rtype: Handle_Prs3d_LineAspect
+") LineAspect;
 		Handle_Prs3d_LineAspect LineAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasTextAspect;
+		%feature("autodoc", "	:rtype: bool
+") HasTextAspect;
 		Standard_Boolean HasTextAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_TextAspect
-
-No detailed docstring for this function.") TextAspect;
+		%feature("autodoc", "	:rtype: Handle_Prs3d_TextAspect
+") TextAspect;
 		Handle_Prs3d_TextAspect TextAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the drawing of an arrow at the end of each line is enabled. The default setting is False.
 
-Returns True if the drawing of an arrow at the end of  
-each line is enabled. The default setting is False.") LineArrowDraw;
+	:rtype: bool
+") LineArrowDraw;
 		Standard_Boolean LineArrowDraw ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_ArrowAspect
-
-No detailed docstring for this function.") ArrowAspect;
+		%feature("autodoc", "	:rtype: Handle_Prs3d_ArrowAspect
+") ArrowAspect;
 		Handle_Prs3d_ArrowAspect ArrowAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_PointAspect
+		%feature("autodoc", "	* Returns the point aspect setting. The default values are: Color: Quantity_NOC_YELLOW Type of marker: Aspect_TOM_PLUS Scale: 1. These attributes are used by the following algorithms: Prs3d_Point
 
-Returns the point aspect setting. The default values  
-are:        Color: Quantity_NOC_YELLOW  
-         Type of marker: Aspect_TOM_PLUS  
-         Scale: 1.  
-         These attributes are used by the following algorithms:  
-         Prs3d_Point") PointAspect;
+	:rtype: Handle_Prs3d_PointAspect
+") PointAspect;
 		Handle_Prs3d_PointAspect PointAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the Drawer has a point aspect setting active.
 
-Returns true if the Drawer has a point aspect setting active.") HasPointAspect;
+	:rtype: bool
+") HasPointAspect;
 		Standard_Boolean HasPointAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_ShadingAspect
+		%feature("autodoc", "	* Returns a link with Prs3d_Drawer_ShadingAspect, which provides settings for shading aspects. These settings can be edited. The default values are: Color: Quantity_NOC_YELLOW Material: Graphic3d_NOM_BRASS hading aspect is obtained through decomposition of 3D faces into triangles, each side of each triangle being a chord of the corresponding curved edge in the face. Reflection of light in each projector perspective is then calculated for each of the resultant triangular planes.
 
-Returns a link with Prs3d_Drawer_ShadingAspect,  
-which provides settings for shading aspects.  
-These settings can be edited. The default values are:  
-   Color: Quantity_NOC_YELLOW  
-         Material: Graphic3d_NOM_BRASS  
-hading aspect is obtained through decomposition of  
-3D faces into triangles, each side of each triangle  
-being a chord of the corresponding curved edge in  
-the face. Reflection of light in each projector  
-perspective is then calculated for each of the  
-resultant triangular planes.") ShadingAspect;
+	:rtype: Handle_Prs3d_ShadingAspect
+") ShadingAspect;
 		Handle_Prs3d_ShadingAspect ShadingAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the Drawer has shading aspect active.
 
-Returns True if the   Drawer has shading aspect active.") HasShadingAspect;
+	:rtype: bool
+") HasShadingAspect;
 		Standard_Boolean HasShadingAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Provides the attributes for hidden line removal.
 
-Provides the attributes for hidden line removal.") ShadingAspectGlobal;
+	:rtype: bool
+") ShadingAspectGlobal;
 		Standard_Boolean ShadingAspectGlobal ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns Standard_True if the hidden lines are to be drawn. By default the hidden lines are not drawn.
 
-Returns Standard_True if the hidden lines are to be drawn.  
-         By default the hidden lines are not drawn.") DrawHiddenLine;
+	:rtype: bool
+") DrawHiddenLine;
 		Standard_Boolean DrawHiddenLine ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_LineAspect
+		%feature("autodoc", "	* Returns a link with Prs3d_Drawer_HiddenLineAspect, which provides settings for hidden line aspects. These settings can be edited. The default values are: Color: Quantity_NOC_YELLOW Type of line: Aspect_TOL_DASH Width: 1.
 
-Returns a link with  
-Prs3d_Drawer_HiddenLineAspect, which provides  
-settings for hidden line aspects.  
-These settings can be edited. The default values are:  
-         Color: Quantity_NOC_YELLOW  
-         Type of line: Aspect_TOL_DASH  
-         Width: 1.") HiddenLineAspect;
+	:rtype: Handle_Prs3d_LineAspect
+") HiddenLineAspect;
 		Handle_Prs3d_LineAspect HiddenLineAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_LineAspect
+		%feature("autodoc", "	* Returns a link with Prs3d_Drawer_SeenLineAspect, which provides settings for seen line aspects. These settings can be edited. The default values are: Color: Quantity_NOC_YELLOW Type of line: Aspect_TOL_SOLID Width: 1.
 
-Returns a link with  
-Prs3d_Drawer_SeenLineAspect, which provides  
-settings for seen line aspects.  
-These settings can be edited. The default values are:  
-         Color: Quantity_NOC_YELLOW  
-         Type of line: Aspect_TOL_SOLID  
-         Width: 1.") SeenLineAspect;
+	:rtype: Handle_Prs3d_LineAspect
+") SeenLineAspect;
 		Handle_Prs3d_LineAspect SeenLineAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasPlaneAspect;
+		%feature("autodoc", "	:rtype: bool
+") HasPlaneAspect;
 		Standard_Boolean HasPlaneAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_PlaneAspect
+		%feature("autodoc", "	* Returns a link with Prs3d_Drawer_PlaneAspect. This method provides settings for the appearance of planes.
 
-Returns a link with Prs3d_Drawer_PlaneAspect.  
-This method provides settings for the appearance of planes.") PlaneAspect;
+	:rtype: Handle_Prs3d_PlaneAspect
+") PlaneAspect;
 		Handle_Prs3d_PlaneAspect PlaneAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_LineAspect
+		%feature("autodoc", "	* Returns a link with Prs3d_Drawer_VectorAspect, which provides settings for the appearance of vectors. These settings can be edited. The default values are: Color: Quantity_NOC_SKYBLUE Type of line: Aspect_TOL_SOLID Width: 1.
 
-Returns a link with Prs3d_Drawer_VectorAspect,  
-which provides settings for the appearance of vectors.  
-These settings can be edited. The default values are:  
-         Color: Quantity_NOC_SKYBLUE  
-         Type of line: Aspect_TOL_SOLID Width: 1.") VectorAspect;
+	:rtype: Handle_Prs3d_LineAspect
+") VectorAspect;
 		Handle_Prs3d_LineAspect VectorAspect ();
-		%feature("autodoc", "Args:
-	theIsEnabled(Standard_Boolean)
+		%feature("autodoc", "	* Enables or disables drawing of face boundaries for shading presentations. The method sets drawing flag owned by the drawer that will be used during visualization instead of the one set in link. theIsEnabled is a boolean flag indicating whether the face boundaries should be drawn or not.
 
-Returns:
-	None
-
-Enables or disables drawing of face boundaries for shading presentations.  
-The method sets drawing flag owned by the drawer that will be used during  
-visualization instead of the one set in link.  
-theIsEnabled is a boolean flag indicating whether the face boundaries should be  
-drawn or not.") SetFaceBoundaryDraw;
+	:param theIsEnabled:
+	:type theIsEnabled: bool
+	:rtype: None
+") SetFaceBoundaryDraw;
 		void SetFaceBoundaryDraw (const Standard_Boolean theIsEnabled);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Checks whether the drawing of face boundaries is enabled or not.
 
-Checks whether the drawing of face boundaries is enabled or not.") IsFaceBoundaryDraw;
+	:rtype: bool
+") IsFaceBoundaryDraw;
 		Standard_Boolean IsFaceBoundaryDraw ();
-		%feature("autodoc", "Args:
-	theAspect(Handle_Prs3d_LineAspect)
+		%feature("autodoc", "	* Sets line aspect for face boundaries. The method sets line aspect owned by the drawer that will be used during visualization instead of the one set in link. theAspect is the line aspect that determines the look of the face boundaries.
 
-Returns:
-	None
-
-Sets line aspect for face boundaries.  
-The method sets line aspect owned by the drawer that will be used during  
-visualization instead of the one set in link.  
-theAspect is the line aspect that determines the look of the face boundaries.") SetFaceBoundaryAspect;
+	:param theAspect:
+	:type theAspect: Handle_Prs3d_LineAspect &
+	:rtype: None
+") SetFaceBoundaryAspect;
 		void SetFaceBoundaryAspect (const Handle_Prs3d_LineAspect & theAspect);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_LineAspect
+		%feature("autodoc", "	* Returns line aspect of face boundaries.
 
-Returns line aspect of face boundaries.") FaceBoundaryAspect;
+	:rtype: Handle_Prs3d_LineAspect
+") FaceBoundaryAspect;
 		Handle_Prs3d_LineAspect FaceBoundaryAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for 'draw face boundaries' flag that overrides the one in the link.
 
-Returns true if the drawer has its own attribute for  
-'draw face boundaries' flag that overrides the one in the link.") IsOwnFaceBoundaryDraw;
+	:rtype: bool
+") IsOwnFaceBoundaryDraw;
 		Standard_Boolean IsOwnFaceBoundaryDraw ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the drawer has its own attribute for face boundaries aspect that overrides the one in the link.
 
-Returns true if the drawer has its own attribute for  
-face boundaries aspect that overrides the one in the link.") IsOwnFaceBoundaryAspect;
+	:rtype: bool
+") IsOwnFaceBoundaryAspect;
 		Standard_Boolean IsOwnFaceBoundaryAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasDatumAspect;
+		%feature("autodoc", "	:rtype: bool
+") HasDatumAspect;
 		Standard_Boolean HasDatumAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_DatumAspect
+		%feature("autodoc", "	* Returns a link with Prs3d_Drawer_DatumAspect, which provides settings for the appearance of datums. These settings can be edited. The default values for the three axes are: Color: Quantity_NOC_PEACHPUFF Type of line: Aspect_TOL_SOLID Width: 1.
 
-Returns a link with Prs3d_Drawer_DatumAspect,  
-which provides settings for the appearance of datums.  
-These settings can be edited. The default values for  
-the three axes are:  
-         Color: Quantity_NOC_PEACHPUFF  
-         Type of line: Aspect_TOL_SOLID Width: 1.") DatumAspect;
+	:rtype: Handle_Prs3d_DatumAspect
+") DatumAspect;
 		Handle_Prs3d_DatumAspect DatumAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_DimensionAspect
+		%feature("autodoc", "	* Returns a link with Prs3d_Drawer_DimensionAspect, which provides settings for the appearance of dimensions.
 
-Returns a link with Prs3d_Drawer_DimensionAspect,  
-which provides settings for the appearance of dimensions.") DimensionAspect;
+	:rtype: Handle_Prs3d_DimensionAspect
+") DimensionAspect;
 		Handle_Prs3d_DimensionAspect DimensionAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasDimensionAspect;
+		%feature("autodoc", "	:rtype: bool
+") HasDimensionAspect;
 		Standard_Boolean HasDimensionAspect ();
-		%feature("autodoc", "Args:
-	theUnits(TCollection_AsciiString)
+		%feature("autodoc", "	* Sets dimension length model units for computing of dimension presentation.
 
-Returns:
-	None
-
-Sets dimension length model units for computing of dimension presentation.") SetDimLengthModelUnits;
+	:param theUnits:
+	:type theUnits: TCollection_AsciiString &
+	:rtype: None
+") SetDimLengthModelUnits;
 		void SetDimLengthModelUnits (const TCollection_AsciiString & theUnits);
-		%feature("autodoc", "Args:
-	theUnits(TCollection_AsciiString)
+		%feature("autodoc", "	* Sets dimension angle model units for computing of dimension presentation.
 
-Returns:
-	None
-
-Sets dimension angle model units for computing of dimension presentation.") SetDimAngleModelUnits;
+	:param theUnits:
+	:type theUnits: TCollection_AsciiString &
+	:rtype: None
+") SetDimAngleModelUnits;
 		void SetDimAngleModelUnits (const TCollection_AsciiString & theUnits);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* Returns angle model units for the dimension presentation.
 
-Returns angle model units for the dimension presentation.") DimAngleModelUnits;
+	:rtype: TCollection_AsciiString
+") DimAngleModelUnits;
 		const TCollection_AsciiString & DimAngleModelUnits ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* Returns length model units for the dimension presentation.
 
-Returns length model units for the dimension presentation.") DimLengthModelUnits;
+	:rtype: TCollection_AsciiString
+") DimLengthModelUnits;
 		const TCollection_AsciiString & DimLengthModelUnits ();
-		%feature("autodoc", "Args:
-	theUnits(TCollection_AsciiString)
+		%feature("autodoc", "	* Sets length units in which value for dimension presentation is displayed.
 
-Returns:
-	None
-
-Sets length units in which value for dimension presentation is displayed.") SetDimLengthDisplayUnits;
+	:param theUnits:
+	:type theUnits: TCollection_AsciiString &
+	:rtype: None
+") SetDimLengthDisplayUnits;
 		void SetDimLengthDisplayUnits (const TCollection_AsciiString & theUnits);
-		%feature("autodoc", "Args:
-	theUnits(TCollection_AsciiString)
+		%feature("autodoc", "	* Sets angle units in which value for dimension presentation is displayed.
 
-Returns:
-	None
-
-Sets angle units in which value for dimension presentation is displayed.") SetDimAngleDisplayUnits;
+	:param theUnits:
+	:type theUnits: TCollection_AsciiString &
+	:rtype: None
+") SetDimAngleDisplayUnits;
 		void SetDimAngleDisplayUnits (const TCollection_AsciiString & theUnits);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* Returns length units in which dimension presentation is displayed.
 
-Returns length units in which dimension presentation is displayed.") DimLengthDisplayUnits;
+	:rtype: TCollection_AsciiString
+") DimLengthDisplayUnits;
 		const TCollection_AsciiString & DimLengthDisplayUnits ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* Returns angle units in which dimension presentation is displayed.
 
-Returns angle units in which dimension presentation is displayed.") DimAngleDisplayUnits;
+	:rtype: TCollection_AsciiString
+") DimAngleDisplayUnits;
 		const TCollection_AsciiString & DimAngleDisplayUnits ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_LineAspect
+		%feature("autodoc", "	* Returns a link with Prs3d_Drawer_SectionAspect, which provides settings for wires which highlight sections. The LineAspect for the wire can be edited. The default values are: Color: Quantity_NOC_ORANGE Type of line: Aspect_TOL_SOLID Width: 1. These attributes are used by the following algorithms: Prs3d_WFShape
 
-Returns a link with Prs3d_Drawer_SectionAspect,  
-which provides settings for wires which highlight sections.  
-The LineAspect for the wire can be edited.  
-The default values are:  
-Color: Quantity_NOC_ORANGE  
-Type of line: Aspect_TOL_SOLID  
-Width: 1.  
-These attributes are used by the following algorithms:  
-Prs3d_WFShape") SectionAspect;
+	:rtype: Handle_Prs3d_LineAspect
+") SectionAspect;
 		Handle_Prs3d_LineAspect SectionAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_Drawer
-
-No detailed docstring for this function.") Link;
+		%feature("autodoc", "	:rtype: Handle_Prs3d_Drawer
+") Link;
 		const Handle_Prs3d_Drawer & Link ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasLink;
+		%feature("autodoc", "	:rtype: bool
+") HasLink;
 		Standard_Boolean HasLink ();
-		%feature("autodoc", "Args:
-	aDrawer(Handle_Prs3d_Drawer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Link;
+		%feature("autodoc", "	:param aDrawer:
+	:type aDrawer: Handle_Prs3d_Drawer &
+	:rtype: None
+") Link;
 		void Link (const Handle_Prs3d_Drawer & aDrawer);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Removes attributes stored in a Local Context.
 
-Removes attributes stored in a Local Context.") ClearLocalAttributes;
+	:rtype: void
+") ClearLocalAttributes;
 		virtual void ClearLocalAttributes ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the last called attribute was local; false if it was global.
 
-Returns true if the last called attribute was local; false if it was global.") WasLastLocal;
+	:rtype: bool
+") WasLastLocal;
 		Standard_Boolean WasLastLocal ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if a Local Context has stored attributes for Interactive Objects.
 
-Returns true if a Local Context has stored attributes  
-for Interactive Objects.") HasLocalAttributes;
+	:rtype: bool
+") HasLocalAttributes;
 		Standard_Boolean HasLocalAttributes ();
 };
 
@@ -2879,127 +2269,91 @@ def __del__(self):
 %nodefaultctor AIS_ExclusionFilter;
 class AIS_ExclusionFilter : public SelectMgr_Filter {
 	public:
-		%feature("autodoc", "Args:
-	ExclusionFlagOn(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Constructs an empty exclusion filter object defined by the flag setting ExclusionFlagOn. By default, the flag is set to true.
 
-Returns:
-	None
-
-Constructs an empty exclusion filter object defined by  
-the flag setting ExclusionFlagOn.  
-By default, the flag is set to true.") AIS_ExclusionFilter;
+	:param ExclusionFlagOn: default value is Standard_True
+	:type ExclusionFlagOn: bool
+	:rtype: None
+") AIS_ExclusionFilter;
 		 AIS_ExclusionFilter (const Standard_Boolean ExclusionFlagOn = Standard_True);
-		%feature("autodoc", "Args:
-	TypeToExclude(AIS_KindOfInteractive)
-	ExclusionFlagOn(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* All the AIS objects of <TypeToExclude> Will be rejected by the IsOk Method.
 
-Returns:
-	None
-
-All the AIS objects of <TypeToExclude>  
-         Will be rejected by the IsOk Method.") AIS_ExclusionFilter;
+	:param TypeToExclude:
+	:type TypeToExclude: AIS_KindOfInteractive
+	:param ExclusionFlagOn: default value is Standard_True
+	:type ExclusionFlagOn: bool
+	:rtype: None
+") AIS_ExclusionFilter;
 		 AIS_ExclusionFilter (const AIS_KindOfInteractive TypeToExclude,const Standard_Boolean ExclusionFlagOn = Standard_True);
-		%feature("autodoc", "Args:
-	TypeToExclude(AIS_KindOfInteractive)
-	SignatureInType(Standard_Integer)
-	ExclusionFlagOn(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Constructs an exclusion filter object defined by the enumeration value TypeToExclude, the signature SignatureInType, and the flag setting ExclusionFlagOn. By default, the flag is set to true.
 
-Returns:
-	None
-
-Constructs an exclusion filter object defined by the  
-enumeration value TypeToExclude, the signature  
-SignatureInType, and the flag setting ExclusionFlagOn.  
-By default, the flag is set to true.") AIS_ExclusionFilter;
+	:param TypeToExclude:
+	:type TypeToExclude: AIS_KindOfInteractive
+	:param SignatureInType:
+	:type SignatureInType: Standard_Integer
+	:param ExclusionFlagOn: default value is Standard_True
+	:type ExclusionFlagOn: bool
+	:rtype: None
+") AIS_ExclusionFilter;
 		 AIS_ExclusionFilter (const AIS_KindOfInteractive TypeToExclude,const Standard_Integer SignatureInType,const Standard_Boolean ExclusionFlagOn = Standard_True);
-		%feature("autodoc", "Args:
-	anObj(Handle_SelectMgr_EntityOwner)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") IsOk;
+		%feature("autodoc", "	:param anObj:
+	:type anObj: Handle_SelectMgr_EntityOwner &
+	:rtype: bool
+") IsOk;
 		virtual Standard_Boolean IsOk (const Handle_SelectMgr_EntityOwner & anObj);
-		%feature("autodoc", "Args:
-	TypeToExclude(AIS_KindOfInteractive)
+		%feature("autodoc", "	* Adds the type TypeToExclude to the list of types.
 
-Returns:
-	Standard_Boolean
-
-Adds the type TypeToExclude to the list of types.") Add;
+	:param TypeToExclude:
+	:type TypeToExclude: AIS_KindOfInteractive
+	:rtype: bool
+") Add;
 		Standard_Boolean Add (const AIS_KindOfInteractive TypeToExclude);
-		%feature("autodoc", "Args:
-	TypeToExclude(AIS_KindOfInteractive)
-	SignatureInType(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param TypeToExclude:
+	:type TypeToExclude: AIS_KindOfInteractive
+	:param SignatureInType:
+	:type SignatureInType: Standard_Integer
+	:rtype: bool
+") Add;
 		Standard_Boolean Add (const AIS_KindOfInteractive TypeToExclude,const Standard_Integer SignatureInType);
-		%feature("autodoc", "Args:
-	TypeToExclude(AIS_KindOfInteractive)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param TypeToExclude:
+	:type TypeToExclude: AIS_KindOfInteractive
+	:rtype: bool
+") Remove;
 		Standard_Boolean Remove (const AIS_KindOfInteractive TypeToExclude);
-		%feature("autodoc", "Args:
-	TypeToExclude(AIS_KindOfInteractive)
-	SignatureInType(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param TypeToExclude:
+	:type TypeToExclude: AIS_KindOfInteractive
+	:param SignatureInType:
+	:type SignatureInType: Standard_Integer
+	:rtype: bool
+") Remove;
 		Standard_Boolean Remove (const AIS_KindOfInteractive TypeToExclude,const Standard_Integer SignatureInType);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsExclusionFlagOn;
+		%feature("autodoc", "	:rtype: bool
+") IsExclusionFlagOn;
 		Standard_Boolean IsExclusionFlagOn ();
-		%feature("autodoc", "Args:
-	Status(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetExclusionFlag;
+		%feature("autodoc", "	:param Status:
+	:type Status: bool
+	:rtype: None
+") SetExclusionFlag;
 		void SetExclusionFlag (const Standard_Boolean Status);
-		%feature("autodoc", "Args:
-	aType(AIS_KindOfInteractive)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsStored;
+		%feature("autodoc", "	:param aType:
+	:type aType: AIS_KindOfInteractive
+	:rtype: bool
+") IsStored;
 		Standard_Boolean IsStored (const AIS_KindOfInteractive aType);
-		%feature("autodoc", "Args:
-	TheList(TColStd_ListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ListOfStoredTypes;
+		%feature("autodoc", "	:param TheList:
+	:type TheList: TColStd_ListOfInteger &
+	:rtype: None
+") ListOfStoredTypes;
 		void ListOfStoredTypes (TColStd_ListOfInteger & TheList);
-		%feature("autodoc", "Args:
-	aType(AIS_KindOfInteractive)
-	TheStoredList(TColStd_ListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ListOfSignature;
+		%feature("autodoc", "	:param aType:
+	:type aType: AIS_KindOfInteractive
+	:param TheStoredList:
+	:type TheStoredList: TColStd_ListOfInteger &
+	:rtype: None
+") ListOfSignature;
 		void ListOfSignature (const AIS_KindOfInteractive aType,TColStd_ListOfInteger & TheStoredList);
 };
 
@@ -3060,170 +2414,104 @@ def __del__(self):
 %nodefaultctor AIS_GlobalStatus;
 class AIS_GlobalStatus : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_GlobalStatus;
+		%feature("autodoc", "	:rtype: None
+") AIS_GlobalStatus;
 		 AIS_GlobalStatus ();
-		%feature("autodoc", "Args:
-	aStat(AIS_DisplayStatus)
-	aDispMode(Standard_Integer)
-	aSelMode(Standard_Integer)
-	ishilighted(Standard_Boolean)=Standard_False
-	TheHiCol(Quantity_NameOfColor)=Quantity_NOC_WHITE
-	aLayerIndex(Standard_Integer)=0
-
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_GlobalStatus;
+		%feature("autodoc", "	:param aStat:
+	:type aStat: AIS_DisplayStatus
+	:param aDispMode:
+	:type aDispMode: Standard_Integer
+	:param aSelMode:
+	:type aSelMode: Standard_Integer
+	:param ishilighted: default value is Standard_False
+	:type ishilighted: bool
+	:param TheHiCol: default value is Quantity_NOC_WHITE
+	:type TheHiCol: Quantity_NameOfColor
+	:param aLayerIndex: default value is 0
+	:type aLayerIndex: Standard_Integer
+	:rtype: None
+") AIS_GlobalStatus;
 		 AIS_GlobalStatus (const AIS_DisplayStatus aStat,const Standard_Integer aDispMode,const Standard_Integer aSelMode,const Standard_Boolean ishilighted = Standard_False,const Quantity_NameOfColor TheHiCol = Quantity_NOC_WHITE,const Standard_Integer aLayerIndex = 0);
-		%feature("autodoc", "Args:
-	aStat(AIS_DisplayStatus)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetGraphicStatus;
+		%feature("autodoc", "	:param aStat:
+	:type aStat: AIS_DisplayStatus
+	:rtype: None
+") SetGraphicStatus;
 		void SetGraphicStatus (const AIS_DisplayStatus aStat);
-		%feature("autodoc", "Args:
-	aMode(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AddDisplayMode;
+		%feature("autodoc", "	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: None
+") AddDisplayMode;
 		void AddDisplayMode (const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	aMode(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AddSelectionMode;
+		%feature("autodoc", "	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: None
+") AddSelectionMode;
 		void AddSelectionMode (const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	AnIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetLayerIndex;
+		%feature("autodoc", "	:param AnIndex:
+	:type AnIndex: Standard_Integer
+	:rtype: None
+") SetLayerIndex;
 		void SetLayerIndex (const Standard_Integer AnIndex);
-		%feature("autodoc", "Args:
-	aStat(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetHilightStatus;
+		%feature("autodoc", "	:param aStat:
+	:type aStat: bool
+	:rtype: None
+") SetHilightStatus;
 		void SetHilightStatus (const Standard_Boolean aStat);
-		%feature("autodoc", "Args:
-	aHiCol(Quantity_NameOfColor)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetHilightColor;
+		%feature("autodoc", "	:param aHiCol:
+	:type aHiCol: Quantity_NameOfColor
+	:rtype: None
+") SetHilightColor;
 		void SetHilightColor (const Quantity_NameOfColor aHiCol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsSubIntensityOn;
+		%feature("autodoc", "	:rtype: bool
+") IsSubIntensityOn;
 		Standard_Boolean IsSubIntensityOn ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") SubIntensityOn;
+		%feature("autodoc", "	:rtype: None
+") SubIntensityOn;
 		void SubIntensityOn ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") SubIntensityOff;
+		%feature("autodoc", "	:rtype: None
+") SubIntensityOff;
 		void SubIntensityOff ();
-		%feature("autodoc", "Args:
-	aMode(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveDisplayMode;
+		%feature("autodoc", "	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: None
+") RemoveDisplayMode;
 		void RemoveDisplayMode (const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	aMode(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveSelectionMode;
+		%feature("autodoc", "	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: None
+") RemoveSelectionMode;
 		void RemoveSelectionMode (const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ClearSelectionModes;
+		%feature("autodoc", "	:rtype: None
+") ClearSelectionModes;
 		void ClearSelectionModes ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	AIS_DisplayStatus
-
-No detailed docstring for this function.") GraphicStatus;
+		%feature("autodoc", "	:rtype: AIS_DisplayStatus
+") GraphicStatus;
 		AIS_DisplayStatus GraphicStatus ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_ListOfInteger
+		%feature("autodoc", "	* keeps the information of displayed modes in the main viewer.
 
-keeps the information of displayed modes in the  
-         main viewer.") DisplayedModes;
+	:rtype: TColStd_ListOfInteger
+") DisplayedModes;
 		const TColStd_ListOfInteger & DisplayedModes ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_ListOfInteger
+		%feature("autodoc", "	* keeps the active selection modes of the object in the main viewer.
 
-keeps the active selection modes of the object  
-         in the main viewer.") SelectionModes;
+	:rtype: TColStd_ListOfInteger
+") SelectionModes;
 		const TColStd_ListOfInteger & SelectionModes ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsHilighted;
+		%feature("autodoc", "	:rtype: bool
+") IsHilighted;
 		Standard_Boolean IsHilighted ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_NameOfColor
-
-No detailed docstring for this function.") HilightColor;
+		%feature("autodoc", "	:rtype: Quantity_NameOfColor
+") HilightColor;
 		Quantity_NameOfColor HilightColor ();
-		%feature("autodoc", "Args:
-	aMode(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDModeIn;
+		%feature("autodoc", "	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: bool
+") IsDModeIn;
 		Standard_Boolean IsDModeIn (const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	aMode(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsSModeIn;
+		%feature("autodoc", "	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: bool
+") IsSModeIn;
 		Standard_Boolean IsSModeIn (const Standard_Integer aMode);
 };
 
@@ -3284,79 +2572,65 @@ def __del__(self):
 %nodefaultctor AIS_GraphicTool;
 class AIS_GraphicTool {
 	public:
-		%feature("autodoc", "Args:
-	aDrawer(Handle_Prs3d_Drawer)
-	TheTypeOfAttributes(AIS_TypeOfAttribute)
-
-Returns:
-	static Quantity_NameOfColor
-
-No detailed docstring for this function.") GetLineColor;
+		%feature("autodoc", "	:param aDrawer:
+	:type aDrawer: Handle_Prs3d_Drawer &
+	:param TheTypeOfAttributes:
+	:type TheTypeOfAttributes: AIS_TypeOfAttribute
+	:rtype: Quantity_NameOfColor
+") GetLineColor;
 		static Quantity_NameOfColor GetLineColor (const Handle_Prs3d_Drawer & aDrawer,const AIS_TypeOfAttribute TheTypeOfAttributes);
-		%feature("autodoc", "Args:
-	aDrawer(Handle_Prs3d_Drawer)
-	TheTypeOfAttributes(AIS_TypeOfAttribute)
-	TheLineColor(Quantity_Color)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") GetLineColor;
+		%feature("autodoc", "	:param aDrawer:
+	:type aDrawer: Handle_Prs3d_Drawer &
+	:param TheTypeOfAttributes:
+	:type TheTypeOfAttributes: AIS_TypeOfAttribute
+	:param TheLineColor:
+	:type TheLineColor: Quantity_Color &
+	:rtype: void
+") GetLineColor;
 		static void GetLineColor (const Handle_Prs3d_Drawer & aDrawer,const AIS_TypeOfAttribute TheTypeOfAttributes,Quantity_Color & TheLineColor);
-		%feature("autodoc", "Args:
-	aDrawer(Handle_Prs3d_Drawer)
-	TheTypeOfAttributes(AIS_TypeOfAttribute)
-
-Returns:
-	static Standard_Real
-
-No detailed docstring for this function.") GetLineWidth;
+		%feature("autodoc", "	:param aDrawer:
+	:type aDrawer: Handle_Prs3d_Drawer &
+	:param TheTypeOfAttributes:
+	:type TheTypeOfAttributes: AIS_TypeOfAttribute
+	:rtype: float
+") GetLineWidth;
 		static Standard_Real GetLineWidth (const Handle_Prs3d_Drawer & aDrawer,const AIS_TypeOfAttribute TheTypeOfAttributes);
-		%feature("autodoc", "Args:
-	aDrawer(Handle_Prs3d_Drawer)
-	TheTypeOfAttributes(AIS_TypeOfAttribute)
-
-Returns:
-	static Aspect_TypeOfLine
-
-No detailed docstring for this function.") GetLineType;
+		%feature("autodoc", "	:param aDrawer:
+	:type aDrawer: Handle_Prs3d_Drawer &
+	:param TheTypeOfAttributes:
+	:type TheTypeOfAttributes: AIS_TypeOfAttribute
+	:rtype: Aspect_TypeOfLine
+") GetLineType;
 		static Aspect_TypeOfLine GetLineType (const Handle_Prs3d_Drawer & aDrawer,const AIS_TypeOfAttribute TheTypeOfAttributes);
-		%feature("autodoc", "Args:
-	aDrawer(Handle_Prs3d_Drawer)
-	TheTypeOfAttributes(AIS_TypeOfAttribute)
-	aCol(Quantity_NameOfColor)
-	aWidth(Standard_Real)
-	aTyp(Aspect_TypeOfLine)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") GetLineAtt;
+		%feature("autodoc", "	:param aDrawer:
+	:type aDrawer: Handle_Prs3d_Drawer &
+	:param TheTypeOfAttributes:
+	:type TheTypeOfAttributes: AIS_TypeOfAttribute
+	:param aCol:
+	:type aCol: Quantity_NameOfColor &
+	:param aWidth:
+	:type aWidth: float &
+	:param aTyp:
+	:type aTyp: Aspect_TypeOfLine &
+	:rtype: void
+") GetLineAtt;
 		static void GetLineAtt (const Handle_Prs3d_Drawer & aDrawer,const AIS_TypeOfAttribute TheTypeOfAttributes,Quantity_NameOfColor & aCol,Standard_Real &OutValue,Aspect_TypeOfLine & aTyp);
-		%feature("autodoc", "Args:
-	aDrawer(Handle_Prs3d_Drawer)
-
-Returns:
-	static Quantity_NameOfColor
-
-No detailed docstring for this function.") GetInteriorColor;
+		%feature("autodoc", "	:param aDrawer:
+	:type aDrawer: Handle_Prs3d_Drawer &
+	:rtype: Quantity_NameOfColor
+") GetInteriorColor;
 		static Quantity_NameOfColor GetInteriorColor (const Handle_Prs3d_Drawer & aDrawer);
-		%feature("autodoc", "Args:
-	aDrawer(Handle_Prs3d_Drawer)
-	aColor(Quantity_Color)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") GetInteriorColor;
+		%feature("autodoc", "	:param aDrawer:
+	:type aDrawer: Handle_Prs3d_Drawer &
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: void
+") GetInteriorColor;
 		static void GetInteriorColor (const Handle_Prs3d_Drawer & aDrawer,Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	aDrawer(Handle_Prs3d_Drawer)
-
-Returns:
-	static Graphic3d_MaterialAspect
-
-No detailed docstring for this function.") GetMaterial;
+		%feature("autodoc", "	:param aDrawer:
+	:type aDrawer: Handle_Prs3d_Drawer &
+	:rtype: Graphic3d_MaterialAspect
+") GetMaterial;
 		static Graphic3d_MaterialAspect GetMaterial (const Handle_Prs3d_Drawer & aDrawer);
 };
 
@@ -3378,24 +2652,21 @@ def __del__(self):
 %nodefaultctor AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs;
 class AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K1(Handle_SelectMgr_EntityOwner)
-	K2(Standard_Integer)
-	I(Handle_Prs3d_Presentation)
-	n1(TCollection_MapNodePtr)
-	n2(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs;
+		%feature("autodoc", "	:param K1:
+	:type K1: Handle_SelectMgr_EntityOwner &
+	:param K2:
+	:type K2: Standard_Integer
+	:param I:
+	:type I: Handle_Prs3d_Presentation &
+	:param n1:
+	:type n1: TCollection_MapNodePtr &
+	:param n2:
+	:type n2: TCollection_MapNodePtr &
+	:rtype: None
+") AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs;
 		 AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs (const Handle_SelectMgr_EntityOwner & K1,const Standard_Integer K2,const Handle_Prs3d_Presentation & I,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_SelectMgr_EntityOwner
-
-No detailed docstring for this function.") Key1;
+		%feature("autodoc", "	:rtype: Handle_SelectMgr_EntityOwner
+") Key1;
 		Handle_SelectMgr_EntityOwner & Key1 ();
 
             %feature("autodoc","1");
@@ -3410,19 +2681,11 @@ No detailed docstring for this function.") Key1;
                 $self->Key2()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_MapNodePtr
-
-No detailed docstring for this function.") Next2;
+            		%feature("autodoc", "	:rtype: TCollection_MapNodePtr
+") Next2;
 		TCollection_MapNodePtr & Next2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_Presentation
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Prs3d_Presentation
+") Value;
 		Handle_Prs3d_Presentation & Value ();
 };
 
@@ -3483,142 +2746,92 @@ def __del__(self):
 %nodefaultctor AIS_IndexedDataMapOfOwnerPrs;
 class AIS_IndexedDataMapOfOwnerPrs : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_IndexedDataMapOfOwnerPrs;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") AIS_IndexedDataMapOfOwnerPrs;
 		 AIS_IndexedDataMapOfOwnerPrs (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(AIS_IndexedDataMapOfOwnerPrs)
-
-Returns:
-	AIS_IndexedDataMapOfOwnerPrs
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: AIS_IndexedDataMapOfOwnerPrs &
+	:rtype: AIS_IndexedDataMapOfOwnerPrs
+") Assign;
 		AIS_IndexedDataMapOfOwnerPrs & Assign (const AIS_IndexedDataMapOfOwnerPrs & Other);
-		%feature("autodoc", "Args:
-	Other(AIS_IndexedDataMapOfOwnerPrs)
-
-Returns:
-	AIS_IndexedDataMapOfOwnerPrs
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: AIS_IndexedDataMapOfOwnerPrs &
+	:rtype: AIS_IndexedDataMapOfOwnerPrs
+") operator=;
 		AIS_IndexedDataMapOfOwnerPrs & operator = (const AIS_IndexedDataMapOfOwnerPrs & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(Handle_SelectMgr_EntityOwner)
-	I(Handle_Prs3d_Presentation)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_SelectMgr_EntityOwner &
+	:param I:
+	:type I: Handle_Prs3d_Presentation &
+	:rtype: int
+") Add;
 		Standard_Integer Add (const Handle_SelectMgr_EntityOwner & K,const Handle_Prs3d_Presentation & I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	K(Handle_SelectMgr_EntityOwner)
-	T(Handle_Prs3d_Presentation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Substitute;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param K:
+	:type K: Handle_SelectMgr_EntityOwner &
+	:param T:
+	:type T: Handle_Prs3d_Presentation &
+	:rtype: None
+") Substitute;
 		void Substitute (const Standard_Integer I,const Handle_SelectMgr_EntityOwner & K,const Handle_Prs3d_Presentation & T);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveLast;
+		%feature("autodoc", "	:rtype: None
+") RemoveLast;
 		void RemoveLast ();
-		%feature("autodoc", "Args:
-	K(Handle_SelectMgr_EntityOwner)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_SelectMgr_EntityOwner &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const Handle_SelectMgr_EntityOwner & K);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Handle_SelectMgr_EntityOwner
-
-No detailed docstring for this function.") FindKey;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: Handle_SelectMgr_EntityOwner
+") FindKey;
 		const Handle_SelectMgr_EntityOwner & FindKey (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Handle_Prs3d_Presentation
-
-No detailed docstring for this function.") FindFromIndex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: Handle_Prs3d_Presentation
+") FindFromIndex;
 		const Handle_Prs3d_Presentation & FindFromIndex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Handle_Prs3d_Presentation
-
-No detailed docstring for this function.") ChangeFromIndex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: Handle_Prs3d_Presentation
+") ChangeFromIndex;
 		Handle_Prs3d_Presentation & ChangeFromIndex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	K(Handle_SelectMgr_EntityOwner)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FindIndex;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_SelectMgr_EntityOwner &
+	:rtype: int
+") FindIndex;
 		Standard_Integer FindIndex (const Handle_SelectMgr_EntityOwner & K);
-		%feature("autodoc", "Args:
-	K(Handle_SelectMgr_EntityOwner)
-
-Returns:
-	Handle_Prs3d_Presentation
-
-No detailed docstring for this function.") FindFromKey;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_SelectMgr_EntityOwner &
+	:rtype: Handle_Prs3d_Presentation
+") FindFromKey;
 		const Handle_Prs3d_Presentation & FindFromKey (const Handle_SelectMgr_EntityOwner & K);
-		%feature("autodoc", "Args:
-	K(Handle_SelectMgr_EntityOwner)
-
-Returns:
-	Handle_Prs3d_Presentation
-
-No detailed docstring for this function.") ChangeFromKey;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_SelectMgr_EntityOwner &
+	:rtype: Handle_Prs3d_Presentation
+") ChangeFromKey;
 		Handle_Prs3d_Presentation & ChangeFromKey (const Handle_SelectMgr_EntityOwner & K);
-		%feature("autodoc", "Args:
-	K(Handle_SelectMgr_EntityOwner)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") FindFromKey1;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_SelectMgr_EntityOwner &
+	:rtype: Standard_Address
+") FindFromKey1;
 		Standard_Address FindFromKey1 (const Handle_SelectMgr_EntityOwner & K);
-		%feature("autodoc", "Args:
-	K(Handle_SelectMgr_EntityOwner)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFromKey1;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_SelectMgr_EntityOwner &
+	:rtype: Standard_Address
+") ChangeFromKey1;
 		Standard_Address ChangeFromKey1 (const Handle_SelectMgr_EntityOwner & K);
 };
 
@@ -3640,2648 +2853,1694 @@ def __del__(self):
 %nodefaultctor AIS_InteractiveContext;
 class AIS_InteractiveContext : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	MainViewer(Handle_V3d_Viewer)
+		%feature("autodoc", "	* Constructs the interactive context object defined by the principal viewer MainViewer.
 
-Returns:
-	None
-
-Constructs the interactive context object defined by  
-the principal viewer MainViewer.") AIS_InteractiveContext;
+	:param MainViewer:
+	:type MainViewer: Handle_V3d_Viewer &
+	:rtype: None
+") AIS_InteractiveContext;
 		 AIS_InteractiveContext (const Handle_V3d_Viewer & MainViewer);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Delete;
+		%feature("autodoc", "	:rtype: void
+") Delete;
 		virtual void Delete ();
-		%feature("autodoc", "Args:
-	Auto(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetAutoActivateSelection;
+		%feature("autodoc", "	:param Auto:
+	:type Auto: bool
+	:rtype: None
+") SetAutoActivateSelection;
 		void SetAutoActivateSelection (const Standard_Boolean Auto);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") GetAutoActivateSelection;
+		%feature("autodoc", "	:rtype: bool
+") GetAutoActivateSelection;
 		Standard_Boolean GetAutoActivateSelection ();
-		%feature("autodoc", "Args:
-	anIobj(Handle_AIS_InteractiveObject)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Controls the choice between the using the display and selection modes of open local context which you have defined and activating those available by default. If a local context is open and if updateviewer equals Standard_False, the Interactive Object anIobj is displayed in the default active mode. This will be the object's default display mode, if there is one. Otherwise, it will be the context mode. The Interactive Object's default selection mode is activated. In general, this is 0. This syntax has the same behavior as local context, open or closed. If you want to view the object in open local context without selection, use the syntax below, setting aSelectionMode to -1.
 
-Returns:
-	None
-
-Controls the choice between the using the display  
-and selection modes of open local context which you  
-have defined and activating those available by default.  
-If a local context is open and if updateviewer equals  
-Standard_False, the Interactive Object anIobj is  
-displayed in the default active mode. This will be the  
-object's default display mode, if there is one.  
-Otherwise, it will be the context mode. The Interactive  
-Object's default selection mode is activated. In  
-general, this is 0.  
-This syntax has the same behavior as local context,  
-open or closed. If you want to view the object in open  
-local context without selection, use the syntax below,  
-setting aSelectionMode to -1.") Display;
+	:param anIobj:
+	:type anIobj: Handle_AIS_InteractiveObject &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") Display;
 		void Display (const Handle_AIS_InteractiveObject & anIobj,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	anIobj(Handle_AIS_InteractiveObject)
-	amode(Standard_Integer)
-	aSelectionMode(Standard_Integer)
-	updateviewer(Standard_Boolean)=Standard_True
-	allowdecomposition(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Controls the choice between the using the display and selection modes of open local context which you have defined and activating those available by default. If no Local Context is opened. and the Interactive Object aniobj has no display mode of its own, the default display mode, 0, is used. Likewise, if aniobj has no selection mode of its own, the default one, 0, is used. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated. If aSelectionMode equals -1, anIobj will not be activated: it will be displayed but will not be selectable. Use this if you want to view the object in open local context without selection. Note: This option is only available in Local Context. If allowDecomposition equals true, anIObj can have subshapes detected by selection mechanisms. anIObj must be able to give a shape selection modes which fit the AIS_Shape selection modes: - vertices: 1 - edges: 2 - wires: 3.
 
-Returns:
-	None
-
-Controls the choice between the using the display  
-and selection modes of open local context which you  
-have defined and activating those available by default.  
-If no Local Context is opened. and the Interactive  
-Object aniobj has no display mode of its own, the  
-default display mode, 0, is used. Likewise, if aniobj  
-has no selection mode of its own, the default one, 0, is used.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.  
-If aSelectionMode equals -1, anIobj will not be  
-activated: it will be displayed but will not be selectable.  
-Use this if you want to view the object in open local  
-context without selection. Note: This option is only  
-available in Local Context.  
-If allowDecomposition equals true, anIObj can have  
-subshapes detected by selection mechanisms. anIObj  
-must be able to give a shape selection modes which  
-fit the AIS_Shape selection modes:  
--   vertices: 1  
--   edges: 2  
--   wires: 3.") Display;
+	:param anIobj:
+	:type anIobj: Handle_AIS_InteractiveObject &
+	:param amode:
+	:type amode: Standard_Integer
+	:param aSelectionMode:
+	:type aSelectionMode: Standard_Integer
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:param allowdecomposition: default value is Standard_True
+	:type allowdecomposition: bool
+	:rtype: None
+") Display;
 		void Display (const Handle_AIS_InteractiveObject & anIobj,const Standard_Integer amode,const Standard_Integer aSelectionMode,const Standard_Boolean updateviewer = Standard_True,const Standard_Boolean allowdecomposition = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	SelectionMode(Standard_Integer)=- 1
-	AllowDecomp(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Allows you to load the Interactive Object aniobj with a given selection mode SelectionMode, and/or with the desired decomposition option, whether the object is visualized or not. If AllowDecomp = Standard_True and, if the interactive object is of the 'Shape' type, these 'standard' selection modes will be automatically activated as a function of the modes present in the Local Context. The loaded objects will be selectable but displayable in highlighting only when detected by the Selector. This method is available only when Local Contexts are open.
 
-Returns:
-	None
-
-Allows you to load the Interactive Object aniobj  
-with a given selection mode SelectionMode, and/or  
-with the desired decomposition option, whether the  
-object is visualized or not. If AllowDecomp =  
-Standard_True and, if the interactive object is of  
-the 'Shape' type, these 'standard' selection  
-modes will be automatically activated as a function  
-of the modes present in the Local Context.  
-The loaded objects will be selectable but  
-displayable in highlighting only when detected by the Selector.  
-This method is available only when Local Contexts are open.") Load;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param SelectionMode: default value is - 1
+	:type SelectionMode: Standard_Integer
+	:param AllowDecomp: default value is Standard_False
+	:type AllowDecomp: bool
+	:rtype: None
+") Load;
 		void Load (const Handle_AIS_InteractiveObject & aniobj,const Standard_Integer SelectionMode = - 1,const Standard_Boolean AllowDecomp = Standard_False);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Hides the object. The object's presentations are simply flagged as invisible and therefore excluded from redrawing. To show hidden objects, use Display().
 
-Returns:
-	None
-
-Hides the object. The object's presentations are simply  
-flagged as invisible and therefore excluded from redrawing.  
-To show hidden objects, use Display().") Erase;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") Erase;
 		void Erase (const Handle_AIS_InteractiveObject & aniobj,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Hides all objects. The object's presentations are simply flagged as invisible and therefore excluded from redrawing. To show all hidden objects, use DisplayAll().
 
-Returns:
-	None
-
-Hides all objects. The object's presentations are simply  
-flagged as invisible and therefore excluded from redrawing.  
-To show all hidden objects, use DisplayAll().") EraseAll;
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") EraseAll;
 		void EraseAll (const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Displays all hidden objects.
 
-Returns:
-	None
-
-Displays all hidden objects.") DisplayAll;
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") DisplayAll;
 		void DisplayAll (const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Hides selected objects. The object's presentations are simply flagged as invisible and therefore excluded from redrawing. To show hidden objects, use Display().
 
-Returns:
-	None
-
-Hides selected objects. The object's presentations are simply  
-flagged as invisible and therefore excluded from redrawing.  
-To show hidden objects, use Display().") EraseSelected;
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") EraseSelected;
 		void EraseSelected (const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Displays selected objects if a local context is open. Displays current objects if there is no active local context. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Displays selected objects if a local context is open.  
-Displays current objects if there is no active local context.  
-Objects selected when there is no open local context  
-are called current objects; those selected in open  
-local context, selected objects.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation   of the Interactive  
-Object activates   the   selection   mode; the   object is  
-displayed but no viewer will be updated.") DisplaySelected;
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") DisplaySelected;
 		void DisplaySelected (const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	anIObj(Handle_AIS_InteractiveObject)
-	InWhichLocal(Standard_Integer)=- 1
+		%feature("autodoc", "	* Changes the status of a temporary object. It will be kept at the neutral point, i.e. put in the list of displayed objects along withwith its temporary attributes. These include display mode and selection mode, for example. Returns true if done. inWhichLocal gives the local context in which anIObj is displayed. By default, the index -1 refers to the last Local Context opened.
 
-Returns:
-	Standard_Boolean
-
-Changes the status of a temporary object. It will be  
-kept at the neutral point, i.e. put in the list of  
-displayed   objects along withwith   its temporary  
-attributes. These include display mode and  
-selection   mode, for example.  
-Returns true if done.  
-inWhichLocal gives the local context in which anIObj  
-is displayed. By default, the index -1 refers to the last  
-Local Context opened.") KeepTemporary;
+	:param anIObj:
+	:type anIObj: Handle_AIS_InteractiveObject &
+	:param InWhichLocal: default value is - 1
+	:type InWhichLocal: Standard_Integer
+	:rtype: bool
+") KeepTemporary;
 		Standard_Boolean KeepTemporary (const Handle_AIS_InteractiveObject & anIObj,const Standard_Integer InWhichLocal = - 1);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Removes the interactive object aniobj from all viewers. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Removes the interactive object aniobj from all viewers.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") Clear;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") Clear;
 		void Clear (const Handle_AIS_InteractiveObject & aniobj,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	aMode(Standard_Integer)=0
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Empties the graphic presentation of the mode indexed by aMode. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated. Warning Removes anIobj. anIobj is still active if it was previously activated.
 
-Returns:
-	None
-
-Empties the graphic presentation of the mode  
-indexed by aMode.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.  
-Warning  
-Removes anIobj. anIobj is still active if it was  
-previously activated.") ClearPrs;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") ClearPrs;
 		void ClearPrs (const Handle_AIS_InteractiveObject & aniobj,const Standard_Integer aMode = 0,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Removes aniobj from every viewer. aniobj is no longer referenced in the Context. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Removes aniobj from every viewer. aniobj is no  
-longer referenced in the Context.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation   of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") Remove;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") Remove;
 		void Remove (const Handle_AIS_InteractiveObject & aniobj,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Removes all the objects from all opened Local Contexts and from the Neutral Point
 
-Returns:
-	None
-
-Removes all the objects from all opened Local Contexts  
-         and from the Neutral Point") RemoveAll;
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") RemoveAll;
 		void RemoveAll (const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Updates the display in the viewer to take dynamic detection into account. On dynamic detection by the mouse cursor, sensitive primitives are highlighted. The highlight color of entities detected by mouse movement is white by default. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Updates the display in the viewer to take dynamic  
-detection into account. On dynamic detection by the  
-mouse cursor, sensitive primitives are highlighted.  
-The highlight color of entities detected by mouse  
-movement is white by default.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") Hilight;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") Hilight;
 		void Hilight (const Handle_AIS_InteractiveObject & aniobj,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	aCol(Quantity_NameOfColor)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Changes the color of all the lines of the object in view, aniobj. It paints these lines the color passed as the argument, aCol. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Changes the color of all the lines of the object in view,  
-aniobj. It paints these lines the color passed as the  
-argument, aCol.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") HilightWithColor;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param aCol:
+	:type aCol: Quantity_NameOfColor
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") HilightWithColor;
 		void HilightWithColor (const Handle_AIS_InteractiveObject & aniobj,const Quantity_NameOfColor aCol,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Removes hilighting from the entity aniobj. Updates the viewer. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Removes hilighting from the entity aniobj. Updates the viewer.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") Unhilight;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") Unhilight;
 		void Unhilight (const Handle_AIS_InteractiveObject & aniobj,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	anIobj(Handle_AIS_InteractiveObject)
-	aPriority(Standard_Integer)
+		%feature("autodoc", "	* Sets the display priority aPriority of the seen parts presentation of the entity anIobj.
 
-Returns:
-	None
-
-Sets the display priority aPriority of the seen parts  
-presentation of the entity anIobj.") SetDisplayPriority;
+	:param anIobj:
+	:type anIobj: Handle_AIS_InteractiveObject &
+	:param aPriority:
+	:type aPriority: Standard_Integer
+	:rtype: None
+") SetDisplayPriority;
 		void SetDisplayPriority (const Handle_AIS_InteractiveObject & anIobj,const Standard_Integer aPriority);
-		%feature("autodoc", "Args:
-	theIObj(Handle_AIS_InteractiveObject)
-	theLayerId(Standard_Integer)
+		%feature("autodoc", "	* Set Z layer id for interactive object. The layer can be specified for displayed object only. The Z layers can be used to display temporarily presentations of some object in front of the other objects in the scene. The ids for Z layers are generated by V3d_Viewer. Note that Z layers differ from under-/overlayer in V3d_View: under-/overlayer are intended for specific 2D drawings that appear behind/in front of all 3D presentations, while SetZLayer() method applies to regular 3D presentations and does not imply any specific drawing methods.
 
-Returns:
-	None
-
-Set Z layer id for interactive object. The layer can be  
-specified for displayed object only. The Z layers can be used to display  
-temporarily presentations of some object in front of the other objects  
-in the scene. The ids for Z layers are generated by V3d_Viewer.  
-Note that Z layers differ from under-/overlayer in V3d_View:  
-under-/overlayer are intended for specific 2D drawings that appear  
-behind/in front of all 3D presentations, while SetZLayer() method  
-applies to regular 3D presentations and does not imply any specific  
-drawing methods.") SetZLayer;
+	:param theIObj:
+	:type theIObj: Handle_AIS_InteractiveObject &
+	:param theLayerId:
+	:type theLayerId: Standard_Integer
+	:rtype: None
+") SetZLayer;
 		void SetZLayer (const Handle_AIS_InteractiveObject & theIObj,const Standard_Integer theLayerId);
-		%feature("autodoc", "Args:
-	theIObj(Handle_AIS_InteractiveObject)
+		%feature("autodoc", "	* Get Z layer id set for displayed interactive object. If the object doesn't exists in context or has no computed presentations, the method returns -1.
 
-Returns:
-	Standard_Integer
-
-Get Z layer id set for displayed interactive object.  
-If the object doesn't exists in context or has no computed presentations,  
-the method returns -1.") GetZLayer;
+	:param theIObj:
+	:type theIObj: Handle_AIS_InteractiveObject &
+	:rtype: int
+") GetZLayer;
 		Standard_Integer GetZLayer (const Handle_AIS_InteractiveObject & theIObj);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	updateviewer(Standard_Boolean)=Standard_True
-	allmodes(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Recomputes the seen parts presentation of the entity aniobj. If allmodes equals true, all presentations are present in the object even if unseen. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Recomputes the seen parts presentation of the entity  
-aniobj. If allmodes equals true, all presentations are  
-present in the object even if unseen.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") Redisplay;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:param allmodes: default value is Standard_False
+	:type allmodes: bool
+	:rtype: None
+") Redisplay;
 		void Redisplay (const Handle_AIS_InteractiveObject & aniobj,const Standard_Boolean updateviewer = Standard_True,const Standard_Boolean allmodes = Standard_False);
-		%feature("autodoc", "Args:
-	aTypeOfObject(AIS_KindOfInteractive)
-	Signature(Standard_Integer)=- 1
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Recomputes the Prs/Selection of displayed objects of a given type and a given signature. if signature = -1 doesnt take signature criterion.
 
-Returns:
-	None
-
-Recomputes the Prs/Selection of displayed objects of  
-         a given type and a given signature.  
-         if signature = -1  doesnt take signature criterion.") Redisplay;
+	:param aTypeOfObject:
+	:type aTypeOfObject: AIS_KindOfInteractive
+	:param Signature: default value is - 1
+	:type Signature: Standard_Integer
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") Redisplay;
 		void Redisplay (const AIS_KindOfInteractive aTypeOfObject,const Standard_Integer Signature = - 1,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	anIobj(Handle_AIS_InteractiveObject)
-	updateviewer(Standard_Boolean)=Standard_True
-	allmodes(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Recomputes the displayed presentations, flags the others Doesn't update presentations
 
-Returns:
-	None
-
-Recomputes the displayed presentations, flags the others  
-         Doesn't update presentations") RecomputePrsOnly;
+	:param anIobj:
+	:type anIobj: Handle_AIS_InteractiveObject &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:param allmodes: default value is Standard_False
+	:type allmodes: bool
+	:rtype: None
+") RecomputePrsOnly;
 		void RecomputePrsOnly (const Handle_AIS_InteractiveObject & anIobj,const Standard_Boolean updateviewer = Standard_True,const Standard_Boolean allmodes = Standard_False);
-		%feature("autodoc", "Args:
-	anIObj(Handle_AIS_InteractiveObject)
+		%feature("autodoc", "	* Recomputes the active selections, flags the others Doesn't update presentations
 
-Returns:
-	None
-
-Recomputes the active selections, flags the others  
-         Doesn't update presentations") RecomputeSelectionOnly;
+	:param anIObj:
+	:type anIObj: Handle_AIS_InteractiveObject &
+	:rtype: None
+") RecomputeSelectionOnly;
 		void RecomputeSelectionOnly (const Handle_AIS_InteractiveObject & anIObj);
-		%feature("autodoc", "Args:
-	theIObj(Handle_AIS_InteractiveObject)
-	theUpdateViewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Updates displayed interactive object by checking and recomputing its flagged as 'to be recomputed' presentation and selection structures. This method does not force any recomputation on its own. The method recomputes selections even if they are loaded without activation in particular selector.
 
-Returns:
-	None
-
-Updates displayed interactive object by checking and  
-         recomputing its flagged as 'to be recomputed' presentation  
-         and selection structures. This method does not force any  
-         recomputation on its own. The method recomputes selections  
-         even if they are loaded without activation in particular selector.") Update;
+	:param theIObj:
+	:type theIObj: Handle_AIS_InteractiveObject &
+	:param theUpdateViewer: default value is Standard_True
+	:type theUpdateViewer: bool
+	:rtype: None
+") Update;
 		void Update (const Handle_AIS_InteractiveObject & theIObj,const Standard_Boolean theUpdateViewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	aMode(Standard_Integer)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Sets the display mode of seen Interactive Objects. aMode provides the display mode index of the entity aniobj. If updateviewer equals Standard_True, the predominant mode aMode will overule the context mode. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object returns to the default selection mode; the object is displayed but no viewer will be updated. Note that display mode 3 is only used if you have an AIS_Textured Shape.
 
-Returns:
-	None
-
-Sets the display mode of seen Interactive Objects.  
-aMode provides the display mode index of the entity aniobj.  
-If updateviewer equals Standard_True, the  
-predominant mode aMode will overule the context mode.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object returns to the default selection mode; the  
-object is displayed but no viewer will be updated.  
-Note that display mode 3 is only used if you have an  
-AIS_Textured Shape.") SetDisplayMode;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param aMode:
+	:type aMode: Standard_Integer
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") SetDisplayMode;
 		void SetDisplayMode (const Handle_AIS_InteractiveObject & aniobj,const Standard_Integer aMode,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Unsets the display mode of seen Interactive Objects. aMode provides the display mode index of the entity aniobj. If updateviewer equals Standard_True, the predominant mode aMode will overule the context mode. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object returns to the default selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Unsets the display mode of seen Interactive Objects.  
-aMode provides the display mode index of the entity aniobj.  
-If updateviewer equals Standard_True, the  
-predominant mode aMode will overule the context mode.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object returns to the default selection mode; the  
-object is displayed but no viewer will be updated.") UnsetDisplayMode;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") UnsetDisplayMode;
 		void UnsetDisplayMode (const Handle_AIS_InteractiveObject & aniobj,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	aMode(Standard_Integer)
+		%feature("autodoc", "	* Sets the selection mode of Interactive Objects. aMode provides the selection mode index of the entity aniobj.
 
-Returns:
-	None
-
-Sets the selection mode of Interactive Objects.  
-aMode provides the selection mode index of the entity aniobj.") SetSelectionMode;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: None
+") SetSelectionMode;
 		void SetSelectionMode (const Handle_AIS_InteractiveObject & aniobj,const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
+		%feature("autodoc", "	* Removes selection mode from Interactive Objects. aMode provides the selection mode index of the entity aniobj.
 
-Returns:
-	None
-
-Removes selection mode from Interactive Objects.  
-aMode provides the selection mode index of the entity aniobj.") UnsetSelectionMode;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:rtype: None
+") UnsetSelectionMode;
 		void UnsetSelectionMode (const Handle_AIS_InteractiveObject & aniobj);
-		%feature("autodoc", "Args:
-	aMode(StdSelect_SensitivityMode)
+		%feature("autodoc", "	* Sets the selection sensitivity mode. SM_WINDOW mode uses the specified pixel tolerance to compute the sensitivity value, SM_VIEW mode allows to define the sensitivity manually.
 
-Returns:
-	None
-
-Sets the selection sensitivity mode. SM_WINDOW mode  
-uses the specified pixel tolerance to compute the sensitivity  
-value, SM_VIEW mode allows to define the sensitivity manually.") SetSensitivityMode;
+	:param aMode:
+	:type aMode: StdSelect_SensitivityMode
+	:rtype: None
+") SetSensitivityMode;
 		void SetSensitivityMode (const StdSelect_SensitivityMode aMode);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	StdSelect_SensitivityMode
+		%feature("autodoc", "	* Returns the selection sensitivity mode.
 
-Returns the selection sensitivity mode.") SensitivityMode;
+	:rtype: StdSelect_SensitivityMode
+") SensitivityMode;
 		StdSelect_SensitivityMode SensitivityMode ();
-		%feature("autodoc", "Args:
-	aPrecision(Standard_Real)
+		%feature("autodoc", "	* Sets the sensitivity aPrecision according to the view size for the current context or local context if any is activated. Sets the sensitivity aPrecision in pixels for the current context or local context if any is activated. By default, this sensitivity is equal to 4 pixels. When a local context is open, the defined sensitivity applies to this local context instead of the main context.
 
-Returns:
-	None
-
-Sets the sensitivity aPrecision  
-according to the view size for the current context or local  
-context if any is activated.  
-  Sets the sensitivity aPrecision in pixels for the current context  
-or local context if any is activated. By default, this  
-sensitivity is equal to 4 pixels.  
-  When a local context is open, the defined sensitivity applies to  
-this local context instead of the main context.") SetSensitivity;
+	:param aPrecision:
+	:type aPrecision: float
+	:rtype: None
+") SetSensitivity;
 		void SetSensitivity (const Standard_Real aPrecision);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the selection sensitivity value.
 
-Returns the selection sensitivity value.") Sensitivity;
+	:rtype: float
+") Sensitivity;
 		Standard_Real Sensitivity ();
-		%feature("autodoc", "Args:
-	aPrecision(Standard_Integer)=4
+		%feature("autodoc", "	* Define the current selection pixel sensitivity //!		for this context or local context if any one is activated. Warning: When a local context is open the sensitivity is apply on it instead on the main context.
 
-Returns:
-	None
-
-Define the current selection pixel sensitivity  
-//!		for this context or local context if any one is activated.  
- Warning: When a local context is open the sensitivity is apply on it  
-         instead on the main context.") SetPixelTolerance;
+	:param aPrecision: default value is 4
+	:type aPrecision: Standard_Integer
+	:rtype: None
+") SetPixelTolerance;
 		void SetPixelTolerance (const Standard_Integer aPrecision = 4);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the pixel tolerance.
 
-Returns the pixel tolerance.") PixelTolerance;
+	:rtype: int
+") PixelTolerance;
 		Standard_Integer PixelTolerance ();
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	aLocation(TopLoc_Location)
+		%feature("autodoc", "	* Puts the location aLocation on the initial graphic representation and the selection for the entity aniobj. In other words, aniobj is visible and selectable at a position other than initial position. Graphic and selection primitives are not recomputed. To clean the view correctly, you must reset the previous location.
 
-Returns:
-	None
-
-Puts the location aLocation on the initial graphic  
-representation and the selection for the entity aniobj.  
-In other words, aniobj is visible and selectable at a  
-position other than initial position.  
-Graphic and selection primitives are not recomputed.  
-To clean the view correctly, you must reset the previous location.") SetLocation;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param aLocation:
+	:type aLocation: TopLoc_Location &
+	:rtype: None
+") SetLocation;
 		void SetLocation (const Handle_AIS_InteractiveObject & aniobj,const TopLoc_Location & aLocation);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
+		%feature("autodoc", "	* Puts the entity aniobj back into its initial position.
 
-Returns:
-	None
-
-Puts the entity aniobj back into its initial position.") ResetLocation;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:rtype: None
+") ResetLocation;
 		void ResetLocation (const Handle_AIS_InteractiveObject & aniobj);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
+		%feature("autodoc", "	* Returns true if the entity aniobj has a location.
 
-Returns:
-	Standard_Boolean
-
-Returns true if the entity aniobj has a location.") HasLocation;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:rtype: bool
+") HasLocation;
 		Standard_Boolean HasLocation (const Handle_AIS_InteractiveObject & aniobj);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
+		%feature("autodoc", "	* Returns the location of the entity aniobj.
 
-Returns:
-	TopLoc_Location
-
-Returns the location of the entity aniobj.") Location;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:rtype: TopLoc_Location
+") Location;
 		const TopLoc_Location & Location (const Handle_AIS_InteractiveObject & aniobj);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	aModel(Aspect_TypeOfFacingModel)=Aspect_TOFM_BOTH_SIDE
+		%feature("autodoc", "	* change the current facing model apply on polygons for SetColor(), SetTransparency(), SetMaterial() methods default facing model is Aspect_TOFM_TWO_SIDE. This mean that attributes is applying both on the front and back face.
 
-Returns:
-	None
-
-change the current facing model apply on polygons for  
-SetColor(), SetTransparency(), SetMaterial() methods  
-default facing model is Aspect_TOFM_TWO_SIDE. This mean that attributes is  
-applying both on the front and back face.") SetCurrentFacingModel;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param aModel: default value is Aspect_TOFM_BOTH_SIDE
+	:type aModel: Aspect_TypeOfFacingModel
+	:rtype: None
+") SetCurrentFacingModel;
 		void SetCurrentFacingModel (const Handle_AIS_InteractiveObject & aniobj,const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_BOTH_SIDE);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	aColor(Quantity_NameOfColor)
-	updateviewer(Standard_Boolean)=Standard_True
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetColor;
+		%feature("autodoc", "	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param aColor:
+	:type aColor: Quantity_NameOfColor
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") SetColor;
 		void SetColor (const Handle_AIS_InteractiveObject & aniobj,const Quantity_NameOfColor aColor,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	aColor(Quantity_Color)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Sets the color of the selected entity. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Sets the color of the selected entity.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation   of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") SetColor;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") SetColor;
 		void SetColor (const Handle_AIS_InteractiveObject & aniobj,const Quantity_Color & aColor,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Removes the color selection for the selected entity. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Removes the color selection for the selected entity.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") UnsetColor;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") UnsetColor;
 		void UnsetColor (const Handle_AIS_InteractiveObject & aniobj,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	aValue(Standard_Real)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Sets the width of the entity aniobj. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	virtual void
-
-Sets the width of the entity aniobj.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") SetWidth;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param aValue:
+	:type aValue: float
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: void
+") SetWidth;
 		virtual void SetWidth (const Handle_AIS_InteractiveObject & aniobj,const Standard_Real aValue,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Removes the width setting of the entity aniobj. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	virtual void
-
-Removes the width setting of the entity aniobj.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") UnsetWidth;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: void
+") UnsetWidth;
 		virtual void UnsetWidth (const Handle_AIS_InteractiveObject & aniobj,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	aName(Graphic3d_NameOfMaterial)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Provides the type of material setting for the view of the entity aniobj. The range of settings includes: BRASS, BRONZE, GOLD, PEWTER, SILVER, STONE. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Provides the type of material setting for the view of  
-the entity aniobj.  
-The range of settings includes: BRASS, BRONZE,  
-GOLD, PEWTER, SILVER, STONE.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") SetMaterial;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param aName:
+	:type aName: Graphic3d_NameOfMaterial
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") SetMaterial;
 		void SetMaterial (const Handle_AIS_InteractiveObject & aniobj,const Graphic3d_NameOfMaterial aName,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	anObj(Handle_AIS_InteractiveObject)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Removes the type of material setting for viewing the entity aniobj. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Removes the type of material setting for viewing the  
-entity aniobj.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") UnsetMaterial;
+	:param anObj:
+	:type anObj: Handle_AIS_InteractiveObject &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") UnsetMaterial;
 		void UnsetMaterial (const Handle_AIS_InteractiveObject & anObj,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	aValue(Standard_Real)=0.6
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Provides the transparency settings for viewing the entity aniobj. The transparency value aValue may be between 0.0, opaque, and 1.0, fully transparent. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Provides the transparency settings for viewing the  
-entity aniobj. The transparency value aValue may be  
-between 0.0, opaque, and 1.0, fully transparent.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") SetTransparency;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param aValue: default value is 0.6
+	:type aValue: float
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") SetTransparency;
 		void SetTransparency (const Handle_AIS_InteractiveObject & aniobj,const Standard_Real aValue = 0.6,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Removes the transparency settings for viewing the entity aniobj. The transparency value aValue may be between 0.0, opaque, and 1.0, fully transparent. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Removes   the transparency settings for viewing the  
-entity aniobj. The transparency value aValue may be  
-between 0.0, opaque, and 1.0, fully transparent.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") UnsetTransparency;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") UnsetTransparency;
 		void UnsetTransparency (const Handle_AIS_InteractiveObject & aniobj,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	aDrawer(Handle_AIS_Drawer)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Sets the attributes of the interactive object aniobj by plugging the attribute manager aDrawer into the local context. The graphic attributes of aDrawer such as visualization mode, color, and material, are then used to display aniobj. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Sets the attributes of the interactive object aniobj by  
-plugging the attribute manager aDrawer into the local  
-context. The graphic attributes of aDrawer such as  
-visualization mode, color, and material, are then used  
-to display aniobj.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") SetLocalAttributes;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param aDrawer:
+	:type aDrawer: Handle_AIS_Drawer &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") SetLocalAttributes;
 		void SetLocalAttributes (const Handle_AIS_InteractiveObject & aniobj,const Handle_AIS_Drawer & aDrawer,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	anObj(Handle_AIS_InteractiveObject)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Removes the settings for local attributes of the entity anObj and returns to the Neutral Point attributes or those of the previous local context. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Removes the settings for local attributes of the entity  
-anObj   and returns to the Neutral Point attributes or  
-those of the previous local context.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") UnsetLocalAttributes;
+	:param anObj:
+	:type anObj: Handle_AIS_InteractiveObject &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") UnsetLocalAttributes;
 		void UnsetLocalAttributes (const Handle_AIS_InteractiveObject & anObj,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	anObj(Handle_AIS_InteractiveObject)
-	aMode(Standard_Integer)
-	aFactor(Standard_ShortReal)=1.0
-	aUnits(Standard_ShortReal)=0.0
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Sets up polygon offsets for the given AIS_InteractiveObject. It simply calls anObj->SetPolygonOffsets()
 
-Returns:
-	None
-
-Sets up polygon offsets for the given AIS_InteractiveObject.  
-         It simply calls anObj->SetPolygonOffsets()") SetPolygonOffsets;
+	:param anObj:
+	:type anObj: Handle_AIS_InteractiveObject &
+	:param aMode:
+	:type aMode: Standard_Integer
+	:param aFactor: default value is 1.0
+	:type aFactor: Standard_ShortReal
+	:param aUnits: default value is 0.0
+	:type aUnits: Standard_ShortReal
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") SetPolygonOffsets;
 		void SetPolygonOffsets (const Handle_AIS_InteractiveObject & anObj,const Standard_Integer aMode,const Standard_ShortReal aFactor = 1.0,const Standard_ShortReal aUnits = 0.0,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	anObj(Handle_AIS_InteractiveObject)
+		%feature("autodoc", "	* simply calls anObj->HasPolygonOffsets()
 
-Returns:
-	Standard_Boolean
-
-simply calls anObj->HasPolygonOffsets()") HasPolygonOffsets;
+	:param anObj:
+	:type anObj: Handle_AIS_InteractiveObject &
+	:rtype: bool
+") HasPolygonOffsets;
 		Standard_Boolean HasPolygonOffsets (const Handle_AIS_InteractiveObject & anObj);
-		%feature("autodoc", "Args:
-	anObj(Handle_AIS_InteractiveObject)
-	aMode(Standard_Integer)
-	aFactor(Standard_ShortReal)
-	aUnits(Standard_ShortReal)
+		%feature("autodoc", "	* Retrieves current polygon offsets settings for <anObj>.
 
-Returns:
-	None
-
-Retrieves current polygon offsets settings for <anObj>.") PolygonOffsets;
+	:param anObj:
+	:type anObj: Handle_AIS_InteractiveObject &
+	:param aMode:
+	:type aMode: Standard_Integer &
+	:param aFactor:
+	:type aFactor: Standard_ShortReal &
+	:param aUnits:
+	:type aUnits: Standard_ShortReal &
+	:rtype: None
+") PolygonOffsets;
 		void PolygonOffsets (const Handle_AIS_InteractiveObject & anObj,Standard_Integer &OutValue,Standard_ShortReal & aFactor,Standard_ShortReal & aUnits);
-		%feature("autodoc", "Args:
-	aSize(Standard_Real)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Sets the size aSize of the trihedron. Is used to change the default value 100 mm for display of trihedra. Use of this function in one of your own interactive objects requires a call to the Compute function of the new class. This will recalculate the presentation for every trihedron displayed. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Sets the size aSize of the trihedron.  
-Is used to change the default value 100 mm for  
-display of trihedra.  
-Use of this function in one of your own interactive  
-objects requires a call to the Compute function of the  
-new class. This will recalculate the presentation for  
-every trihedron displayed.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") SetTrihedronSize;
+	:param aSize:
+	:type aSize: float
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") SetTrihedronSize;
 		void SetTrihedronSize (const Standard_Real aSize,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns the current value of trihedron size.
 
-returns the current value of trihedron size.") TrihedronSize;
+	:rtype: float
+") TrihedronSize;
 		Standard_Real TrihedronSize ();
-		%feature("autodoc", "Args:
-	aSizeX(Standard_Real)
-	aSizeY(Standard_Real)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Sets the plane size defined by the length in the X direction XSize and that in the Y direction YSize. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Sets the plane size defined by the length in the X  
-direction XSize and that in the Y direction YSize.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") SetPlaneSize;
+	:param aSizeX:
+	:type aSizeX: float
+	:param aSizeY:
+	:type aSizeY: float
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") SetPlaneSize;
 		void SetPlaneSize (const Standard_Real aSizeX,const Standard_Real aSizeY,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aSize(Standard_Real)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Sets the plane size aSize. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated. May be used if PlaneSize returns true.
 
-Returns:
-	None
-
-Sets the plane size aSize.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.  
-May be used if PlaneSize returns true.") SetPlaneSize;
+	:param aSize:
+	:type aSize: float
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") SetPlaneSize;
 		void SetPlaneSize (const Standard_Real aSize,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	XSize(Standard_Real)
-	YSize(Standard_Real)
+		%feature("autodoc", "	* Returns true if the length in the X direction XSize is the same as that in the Y direction YSize.
 
-Returns:
-	Standard_Boolean
-
-Returns true if the length in the X direction XSize is  
-the same as that in the Y direction YSize.") PlaneSize;
+	:param XSize:
+	:type XSize: float &
+	:param YSize:
+	:type YSize: float &
+	:rtype: bool
+") PlaneSize;
 		Standard_Boolean PlaneSize (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	anIobj(Handle_AIS_InteractiveObject)
+		%feature("autodoc", "	* Returns the display status of the entity anIobj. This will be one of the following: - DS_Displayed displayed in main viewer - DS_Erased hidden in main viewer - DS_Temporary temporarily displayed - DS_None nowhere displayed.
 
-Returns:
-	AIS_DisplayStatus
-
-Returns the display status of the entity anIobj.  
-This will be one of the following:  
--   DS_Displayed   displayed in main viewer  
--   DS_Erased   hidden in main viewer  
--   DS_Temporary   temporarily displayed  
--   DS_None   nowhere displayed.") DisplayStatus;
+	:param anIobj:
+	:type anIobj: Handle_AIS_InteractiveObject &
+	:rtype: AIS_DisplayStatus
+") DisplayStatus;
 		AIS_DisplayStatus DisplayStatus (const Handle_AIS_InteractiveObject & anIobj);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
+		%feature("autodoc", "	* Returns the list of active display modes for the entity aniobj.
 
-Returns:
-	TColStd_ListOfInteger
-
-Returns the list of active display modes for the entity aniobj.") DisplayedModes;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:rtype: TColStd_ListOfInteger
+") DisplayedModes;
 		const TColStd_ListOfInteger & DisplayedModes (const Handle_AIS_InteractiveObject & aniobj);
-		%feature("autodoc", "Args:
-	anIobj(Handle_AIS_InteractiveObject)
+		%feature("autodoc", "	* Returns true if anIobj is displayed in the interactive context.
 
-Returns:
-	Standard_Boolean
-
-Returns true if anIobj is displayed in the interactive context.") IsDisplayed;
+	:param anIobj:
+	:type anIobj: Handle_AIS_InteractiveObject &
+	:rtype: bool
+") IsDisplayed;
 		Standard_Boolean IsDisplayed (const Handle_AIS_InteractiveObject & anIobj);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	aMode(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDisplayed;
+		%feature("autodoc", "	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: bool
+") IsDisplayed;
 		Standard_Boolean IsDisplayed (const Handle_AIS_InteractiveObject & aniobj,const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsHilighted;
+		%feature("autodoc", "	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:rtype: bool
+") IsHilighted;
 		Standard_Boolean IsHilighted (const Handle_AIS_InteractiveObject & aniobj);
-		%feature("autodoc", "Args:
-	anIobj(Handle_AIS_InteractiveObject)
-	WithColor(Standard_Boolean)
-	theHiCol(Quantity_NameOfColor)
+		%feature("autodoc", "	* if <anIObj> is hilighted with a specific color <WithColor> will be returned True <theHiCol> gives the name of the hilightcolor
 
-Returns:
-	Standard_Boolean
-
-if <anIObj> is hilighted with a specific color  
-         <WithColor> will be returned TRUE  
-         <theHiCol> gives the name of the hilightcolor") IsHilighted;
+	:param anIobj:
+	:type anIobj: Handle_AIS_InteractiveObject &
+	:param WithColor:
+	:type WithColor: bool
+	:param theHiCol:
+	:type theHiCol: Quantity_NameOfColor &
+	:rtype: bool
+") IsHilighted;
 		Standard_Boolean IsHilighted (const Handle_AIS_InteractiveObject & anIobj,Standard_Boolean & WithColor,Quantity_NameOfColor & theHiCol);
-		%feature("autodoc", "Args:
-	anIobj(Handle_AIS_InteractiveObject)
+		%feature("autodoc", "	* Returns the display priority of the entity anIobj. This will be display mode of anIobj if it is in the main viewer.
 
-Returns:
-	Standard_Integer
-
-Returns the display priority of the entity anIobj. This  
-will be display   mode of anIobj if it is in the main  
-viewer.") DisplayPriority;
+	:param anIobj:
+	:type anIobj: Handle_AIS_InteractiveObject &
+	:rtype: int
+") DisplayPriority;
 		Standard_Integer DisplayPriority (const Handle_AIS_InteractiveObject & anIobj);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
+		%feature("autodoc", "	* Returns true if a view of the Interactive Object aniobj has color.
 
-Returns:
-	Standard_Boolean
-
-Returns true if a view of the Interactive Object aniobj has color.") HasColor;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:rtype: bool
+") HasColor;
 		Standard_Boolean HasColor (const Handle_AIS_InteractiveObject & aniobj);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-
-Returns:
-	Quantity_NameOfColor
-
-No detailed docstring for this function.") Color;
+		%feature("autodoc", "	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:rtype: Quantity_NameOfColor
+") Color;
 		Quantity_NameOfColor Color (const Handle_AIS_InteractiveObject & aniobj);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	acolor(Quantity_Color)
+		%feature("autodoc", "	* Returns the color Color of the entity aniobj in the interactive context.
 
-Returns:
-	None
-
-Returns the color Color of the entity aniobj in the interactive context.") Color;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param acolor:
+	:type acolor: Quantity_Color &
+	:rtype: None
+") Color;
 		void Color (const Handle_AIS_InteractiveObject & aniobj,Quantity_Color & acolor);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
+		%feature("autodoc", "	* Returns the width of the Interactive Object aniobj in the interactive context.
 
-Returns:
-	virtual Standard_Real
-
-Returns the width of the Interactive Object aniobj in  
-the interactive context.") Width;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:rtype: float
+") Width;
 		virtual Standard_Real Width (const Handle_AIS_InteractiveObject & aniobj);
-		%feature("autodoc", "Args:
-	anObj(Handle_AIS_InteractiveObject)
-	astatus(TCollection_ExtendedString)
+		%feature("autodoc", "	* Returns the status astatus of the Interactive Context for the view of the Interactive Object anObj.
 
-Returns:
-	None
-
-Returns the status astatus of the Interactive Context  
-for the view of the Interactive Object anObj.") Status;
+	:param anObj:
+	:type anObj: Handle_AIS_InteractiveObject &
+	:param astatus:
+	:type astatus: TCollection_ExtendedString &
+	:rtype: None
+") Status;
 		void Status (const Handle_AIS_InteractiveObject & anObj,TCollection_ExtendedString & astatus);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Updates the current viewer, the viewer in Neutral Point. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
 
-Updates the current viewer, the viewer in Neutral Point.  
-Objects selected when there is no open local context  
-are called current objects; those selected in open  
-local context, selected objects.") UpdateCurrentViewer;
+	:rtype: None
+") UpdateCurrentViewer;
 		void UpdateCurrentViewer ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the display mode setting. Note that mode 3 is only used.
 
-Returns the display mode setting.  
-Note that mode 3 is only used.") DisplayMode;
+	:rtype: int
+") DisplayMode;
 		Standard_Integer DisplayMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_NameOfColor
+		%feature("autodoc", "	* Returns the name of the color used to show highlighted entities, that is, entities picked out by the mouse.
 
-Returns the name of the color used to show  
-highlighted entities, that is, entities picked out by the mouse.") HilightColor;
+	:rtype: Quantity_NameOfColor
+") HilightColor;
 		Quantity_NameOfColor HilightColor ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_NameOfColor
+		%feature("autodoc", "	* Returns the name of the color used to show selected entities. By default, this is Quantity_NOC_GRAY80.
 
-Returns the name of the color used to show selected entities.  
-By default, this is Quantity_NOC_GRAY80.") SelectionColor;
+	:rtype: Quantity_NameOfColor
+") SelectionColor;
 		Quantity_NameOfColor SelectionColor ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_NameOfColor
+		%feature("autodoc", "	* Returns the name of the color used to show preselection. By default, this is Quantity_NOC_GREEN.
 
-Returns the name of the color used to show preselection.  
-By default, this is Quantity_NOC_GREEN.") PreSelectionColor;
+	:rtype: Quantity_NameOfColor
+") PreSelectionColor;
 		Quantity_NameOfColor PreSelectionColor ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_NameOfColor
+		%feature("autodoc", "	* Returns the name of the color used by default. By default, this is Quantity_NOC_GOLDENROD.
 
-Returns the name of the color used by default.  
-By default, this is Quantity_NOC_GOLDENROD.") DefaultColor;
+	:rtype: Quantity_NameOfColor
+") DefaultColor;
 		Quantity_NameOfColor DefaultColor ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_NameOfColor
+		%feature("autodoc", "	* Returns the name of the color used to show that an object is not currently selected. By default, this is Quantity_NOC_GRAY40.
 
-Returns the name of the color used to show that an  
-object is not currently selected.  
-By default, this is Quantity_NOC_GRAY40.") SubIntensityColor;
+	:rtype: Quantity_NameOfColor
+") SubIntensityColor;
 		Quantity_NameOfColor SubIntensityColor ();
-		%feature("autodoc", "Args:
-	aHiCol(Quantity_NameOfColor)
+		%feature("autodoc", "	* Sets the color used to show highlighted entities, that is, entities picked by the mouse. By default, this is Quantity_NOC_CYAN1.
 
-Returns:
-	None
-
-Sets the color used to show highlighted entities, that  
-is, entities picked by the mouse.  
-By default, this is Quantity_NOC_CYAN1.") SetHilightColor;
+	:param aHiCol:
+	:type aHiCol: Quantity_NameOfColor
+	:rtype: None
+") SetHilightColor;
 		void SetHilightColor (const Quantity_NameOfColor aHiCol);
-		%feature("autodoc", "Args:
-	aCol(Quantity_NameOfColor)
+		%feature("autodoc", "	* Sets the color used to show selected entities. By default, this is Quantity_NOC_GRAY80.
 
-Returns:
-	None
-
-Sets the color used to show selected entities.  
-By default, this is Quantity_NOC_GRAY80.") SelectionColor;
+	:param aCol:
+	:type aCol: Quantity_NameOfColor
+	:rtype: None
+") SelectionColor;
 		void SelectionColor (const Quantity_NameOfColor aCol);
-		%feature("autodoc", "Args:
-	aCol(Quantity_NameOfColor)
+		%feature("autodoc", "	* Allows you to set the color used to show preselection. By default, this is Quantity_NOC_GREEN. A preselected entity is one which has been selected as the domain of application of a function such as a fillet.
 
-Returns:
-	None
-
-Allows you to set the color used to show preselection.  
-By default, this is Quantity_NOC_GREEN.  
-A preselected entity is one which has been selected  
-as the domain of application of a function such as a fillet.") SetPreselectionColor;
+	:param aCol:
+	:type aCol: Quantity_NameOfColor
+	:rtype: None
+") SetPreselectionColor;
 		void SetPreselectionColor (const Quantity_NameOfColor aCol);
-		%feature("autodoc", "Args:
-	aCol(Quantity_NameOfColor)
+		%feature("autodoc", "	* Sets the color used to show that an object is not currently selected. By default, this is Quantity_NOC_GRAY40.
 
-Returns:
-	None
-
-Sets the color used to show that an object is not currently selected.  
-By default, this is Quantity_NOC_GRAY40.") SetSubIntensityColor;
+	:param aCol:
+	:type aCol: Quantity_NameOfColor
+	:rtype: None
+") SetSubIntensityColor;
 		void SetSubIntensityColor (const Quantity_NameOfColor aCol);
-		%feature("autodoc", "Args:
-	AMode(AIS_DisplayMode)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Sets the display mode of seen Interactive Objects. aMode provides the display mode index of the entity aniobj. If updateviewer equals Standard_True, the predominant mode aMode will overule the context mode. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object returns to the default selection mode; the object is displayed but no viewer will be updated. Note that display mode 3 is only used if you have an AIS_Textured Shape.
 
-Returns:
-	None
-
-Sets the display mode of seen Interactive Objects.  
-aMode provides the display mode index of the entity aniobj.  
-If updateviewer equals Standard_True, the  
-predominant mode aMode will overule the context mode.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object returns to the default selection mode; the  
-object is displayed but no viewer will be updated.  
-Note that display mode 3 is only used if you have an  
-AIS_Textured Shape.") SetDisplayMode;
+	:param AMode:
+	:type AMode: AIS_DisplayMode
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") SetDisplayMode;
 		void SetDisplayMode (const AIS_DisplayMode AMode,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	aCoefficient(Standard_Real)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Sets the deviation coefficient aCoefficient. Drawings of curves or patches are made with respect to a maximal chordal deviation. A Deviation coefficient is used in the shading display mode. The shape is seen decomposed into triangles. These are used to calculate reflection of light from the surface of the object. The triangles are formed from chords of the curves in the shape. The deviation coefficient aCoefficient gives the highest value of the angle with which a chord can deviate from a tangent to a curve. If this limit is reached, a new triangle is begun. This deviation is absolute and is set through the method: SetMaximalChordialDeviation. The default value is 0.001. In drawing shapes, however, you are allowed to ask for a relative deviation. This deviation will be: SizeOfObject * DeviationCoefficient. default 0.001
 
-Returns:
-	None
-
-Sets the deviation coefficient aCoefficient.  
-Drawings of curves or patches are made with respect  
-to a maximal chordal deviation. A Deviation coefficient  
-is used in the shading display mode. The shape is  
-seen decomposed into triangles. These are used to  
-calculate reflection of light from the surface of the  
-object. The triangles are formed from chords of the  
-curves in the shape. The deviation coefficient  
-aCoefficient gives the highest value of the angle with  
-which a chord can deviate from a tangent to a   curve.  
-If this limit is reached, a new triangle is begun.  
-This deviation is absolute and is set through the  
-method: SetMaximalChordialDeviation. The default  
-value is 0.001.  
-In drawing shapes, however, you are allowed to ask  
-for a relative deviation. This deviation will be:  
-SizeOfObject * DeviationCoefficient.  
-default 0.001") SetDeviationCoefficient;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param aCoefficient:
+	:type aCoefficient: float
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") SetDeviationCoefficient;
 		void SetDeviationCoefficient (const Handle_AIS_InteractiveObject & aniobj,const Standard_Real aCoefficient,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	anAngle(Standard_Real)
-	updateviewer(Standard_Boolean)=Standard_True
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetDeviationAngle;
+		%feature("autodoc", "	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param anAngle:
+	:type anAngle: float
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") SetDeviationAngle;
 		void SetDeviationAngle (const Handle_AIS_InteractiveObject & aniobj,const Standard_Real anAngle,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	anAngle(Standard_Real)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Calls the AIS_Shape SetAngleAndDeviation to set both Angle and Deviation coefficients
 
-Returns:
-	None
-
-Calls the AIS_Shape SetAngleAndDeviation to set  
-         both Angle and Deviation coefficients") SetAngleAndDeviation;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param anAngle:
+	:type anAngle: float
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") SetAngleAndDeviation;
 		void SetAngleAndDeviation (const Handle_AIS_InteractiveObject & aniobj,const Standard_Real anAngle,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	aCoefficient(Standard_Real)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Sets the deviation coefficient aCoefficient for removal of hidden lines created by different viewpoints in different presentations. The Default value is 0.02.
 
-Returns:
-	None
-
-Sets the deviation coefficient aCoefficient for  
-removal of hidden lines created by different  
-viewpoints in different presentations. The Default value is 0.02.") SetHLRDeviationCoefficient;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param aCoefficient:
+	:type aCoefficient: float
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") SetHLRDeviationCoefficient;
 		void SetHLRDeviationCoefficient (const Handle_AIS_InteractiveObject & aniobj,const Standard_Real aCoefficient,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	anAngle(Standard_Real)
-	updateviewer(Standard_Boolean)=Standard_True
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetHLRDeviationAngle;
+		%feature("autodoc", "	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param anAngle:
+	:type anAngle: float
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") SetHLRDeviationAngle;
 		void SetHLRDeviationAngle (const Handle_AIS_InteractiveObject & aniobj,const Standard_Real anAngle,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	anAngle(Standard_Real)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Computes a HLRAngle and a HLRDeviationCoefficient by means of the angle anAngle and sets the corresponding methods in the default drawing tool with these values.
 
-Returns:
-	None
-
-Computes a HLRAngle and a  
-HLRDeviationCoefficient by means of the angle  
-anAngle and sets the corresponding methods in the  
-default drawing tool with these values.") SetHLRAngleAndDeviation;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param anAngle:
+	:type anAngle: float
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") SetHLRAngleAndDeviation;
 		void SetHLRAngleAndDeviation (const Handle_AIS_InteractiveObject & aniobj,const Standard_Real anAngle,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aCoefficient(Standard_Real)
+		%feature("autodoc", "	* Sets the deviation coefficient aCoefficient. Drawings of curves or patches are made with respect to a maximal chordal deviation. A Deviation coefficient is used in the shading display mode. The shape is seen decomposed into triangles. These are used to calculate reflection of light from the surface of the object. The triangles are formed from chords of the curves in the shape. The deviation coefficient aCoefficient gives the highest value of the angle with which a chord can deviate from a tangent to a curve. If this limit is reached, a new triangle is begun. This deviation is absolute and is set through the method: SetMaximalChordialDeviation. The default value is 0.001. In drawing shapes, however, you are allowed to ask for a relative deviation. This deviation will be: SizeOfObject * DeviationCoefficient. default 0.001
 
-Returns:
-	None
-
-Sets the deviation coefficient aCoefficient.  
-Drawings of curves or patches are made with respect  
-to a maximal chordal deviation. A Deviation coefficient  
-is used in the shading display mode. The shape is  
-seen decomposed into triangles. These are used to  
-calculate reflection of light from the surface of the  
-object. The triangles are formed from chords of the  
-curves in the shape. The deviation coefficient  
-aCoefficient gives the highest value of the angle with  
-which a chord can deviate from a tangent to a   curve.  
-If this limit is reached, a new triangle is begun.  
-This deviation is absolute and is set through the  
-method: SetMaximalChordialDeviation. The default  
-value is 0.001.  
-In drawing shapes, however, you are allowed to ask  
-for a relative deviation. This deviation will be:  
-SizeOfObject * DeviationCoefficient.  
-default 0.001") SetDeviationCoefficient;
+	:param aCoefficient:
+	:type aCoefficient: float
+	:rtype: None
+") SetDeviationCoefficient;
 		void SetDeviationCoefficient (const Standard_Real aCoefficient);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the deviation coefficient. Drawings of curves or patches are made with respect to a maximal chordal deviation. A Deviation coefficient is used in the shading display mode. The shape is seen decomposed into triangles. These are used to calculate reflection of light from the surface of the object. The triangles are formed from chords of the curves in the shape. The deviation coefficient gives the highest value of the angle with which a chord can deviate from a tangent to a curve. If this limit is reached, a new triangle is begun. This deviation is absolute and is set through AIS_Drawer::SetMaximalChordialDeviation. The default value is 0.001. In drawing shapes, however, you are allowed to ask for a relative deviation. This deviation will be: SizeOfObject * DeviationCoefficient.
 
-Returns the deviation coefficient.  
-Drawings of curves or patches are made with respect  
-to a maximal chordal deviation. A Deviation coefficient  
-is used in the shading display mode. The shape is  
-seen decomposed into triangles. These are used to  
-calculate reflection of light from the surface of the  
-object. The triangles are formed from chords of the  
-curves in the shape. The deviation coefficient gives  
-the highest value of the angle with which a chord can  
-deviate from a tangent to a   curve. If this limit is  
-reached, a new triangle is begun.  
-This deviation is absolute and is set through  
-AIS_Drawer::SetMaximalChordialDeviation. The  
-default value is 0.001.  
-In drawing shapes, however, you are allowed to ask  
-for a relative deviation. This deviation will be:  
-SizeOfObject * DeviationCoefficient.") DeviationCoefficient;
+	:rtype: float
+") DeviationCoefficient;
 		Standard_Real DeviationCoefficient ();
-		%feature("autodoc", "Args:
-	anAngle(Standard_Real)
+		%feature("autodoc", "	* default 6degrees
 
-Returns:
-	None
-
-default 6degrees") SetDeviationAngle;
+	:param anAngle:
+	:type anAngle: float
+	:rtype: None
+") SetDeviationAngle;
 		void SetDeviationAngle (const Standard_Real anAngle);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") DeviationAngle;
+		%feature("autodoc", "	:rtype: float
+") DeviationAngle;
 		Standard_Real DeviationAngle ();
-		%feature("autodoc", "Args:
-	aCoefficient(Standard_Real)
+		%feature("autodoc", "	* Sets the deviation coefficient aCoefficient for removal of hidden lines created by different viewpoints in different presentations. The Default value is 0.02.
 
-Returns:
-	None
-
-Sets the deviation coefficient aCoefficient for  
-removal of hidden lines created by different  
-viewpoints in different presentations. The Default value is 0.02.") SetHLRDeviationCoefficient;
+	:param aCoefficient:
+	:type aCoefficient: float
+	:rtype: None
+") SetHLRDeviationCoefficient;
 		void SetHLRDeviationCoefficient (const Standard_Real aCoefficient);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the real number value of the hidden line removal deviation coefficient. A Deviation coefficient is used in the shading display mode. The shape is seen decomposed into triangles. These are used to calculate reflection of light from the surface of the object. The triangles are formed from chords of the curves in the shape. The deviation coefficient give the highest value of the angle with which a chord can deviate from a tangent to a curve. If this limit is reached, a new triangle is begun. To find the hidden lines, hidden line display mode entails recalculation of the view at each different projector perspective. Because hidden lines entail calculations of more than usual complexity to decompose them into these triangles, a deviation coefficient allowing greater tolerance is used. This increases efficiency in calculation. The Default value is 0.02.
 
-Returns the real number value of the hidden line  
-removal deviation coefficient.  
-A Deviation coefficient is used in the shading display  
-mode. The shape is seen decomposed into triangles.  
-These are used to calculate reflection of light from the  
-surface of the object.  
-The triangles are formed from chords of the curves in  
-the shape. The deviation coefficient give the highest  
-value of the angle with which a chord can deviate  
-from a tangent to a curve. If this limit is reached, a  
-new triangle is begun.  
-To find the hidden lines, hidden line display mode  
-entails recalculation of the view at each different  
-projector perspective.  
-Because hidden lines entail calculations of more than  
-usual complexity to decompose them into these  
-triangles, a deviation coefficient allowing greater  
-tolerance is used. This increases efficiency in calculation.  
-The Default value is 0.02.") HLRDeviationCoefficient;
+	:rtype: float
+") HLRDeviationCoefficient;
 		Standard_Real HLRDeviationCoefficient ();
-		%feature("autodoc", "Args:
-	anAngle(Standard_Real)
+		%feature("autodoc", "	* Sets the HLR angle anAngle.
 
-Returns:
-	None
-
-Sets the HLR angle anAngle.") SetHLRAngle;
+	:param anAngle:
+	:type anAngle: float
+	:rtype: None
+") SetHLRAngle;
 		void SetHLRAngle (const Standard_Real anAngle);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the real number value of the deviation angle in hidden line removal views in this interactive context. The default value is 20*PI/180.
 
-Returns the real number value of the deviation angle  
-in hidden line removal views in this interactive context.  
-The default value is 20*PI/180.") HLRAngle;
+	:rtype: float
+") HLRAngle;
 		Standard_Real HLRAngle ();
-		%feature("autodoc", "Args:
-	anAngle(Standard_Real)
+		%feature("autodoc", "	* compute with anangle a HLRAngle and a HLRDeviationCoefficient and set them in myHLRAngle and in myHLRDeviationCoefficient of myDefaultDrawer ; anAngle is in radian ; ( 1 deg < angle in deg < 20 deg)
 
-Returns:
-	None
-
-compute with anangle a HLRAngle and a HLRDeviationCoefficient  
-         and set them in myHLRAngle and in myHLRDeviationCoefficient  
-         of myDefaultDrawer ;  
-         anAngle is in radian ; ( 1 deg < angle in deg < 20 deg)") SetHLRAngleAndDeviation;
+	:param anAngle:
+	:type anAngle: float
+	:rtype: None
+") SetHLRAngleAndDeviation;
 		void SetHLRAngleAndDeviation (const Standard_Real anAngle);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_LineAspect
+		%feature("autodoc", "	* Initializes hidden line aspect in the default drawing tool, or Drawer. The default values are: Color: Quantity_NOC_YELLOW Type of line: Aspect_TOL_DASH Width: 1.
 
-Initializes hidden line aspect in the default drawing tool, or Drawer.  
-The default values are:  
-         Color: Quantity_NOC_YELLOW  
-         Type of line: Aspect_TOL_DASH  
-         Width: 1.") HiddenLineAspect;
+	:rtype: Handle_Prs3d_LineAspect
+") HiddenLineAspect;
 		Handle_Prs3d_LineAspect HiddenLineAspect ();
-		%feature("autodoc", "Args:
-	anAspect(Handle_Prs3d_LineAspect)
+		%feature("autodoc", "	* Sets the hidden line aspect anAspect. anAspect defines display attributes for hidden lines in HLR projections.
 
-Returns:
-	None
-
-Sets the hidden line aspect anAspect.  
-anAspect defines display attributes for hidden lines in  
-HLR projections.") SetHiddenLineAspect;
+	:param anAspect:
+	:type anAspect: Handle_Prs3d_LineAspect &
+	:rtype: None
+") SetHiddenLineAspect;
 		void SetHiddenLineAspect (const Handle_Prs3d_LineAspect & anAspect);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns Standard_True if the hidden lines are to be drawn. By default the hidden lines are not drawn.
 
-returns Standard_True if the hidden lines are to be drawn.  
-         By default the hidden lines are not drawn.") DrawHiddenLine;
+	:rtype: bool
+") DrawHiddenLine;
 		Standard_Boolean DrawHiddenLine ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") EnableDrawHiddenLine;
+		%feature("autodoc", "	:rtype: None
+") EnableDrawHiddenLine;
 		void EnableDrawHiddenLine ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") DisableDrawHiddenLine;
+		%feature("autodoc", "	:rtype: None
+") DisableDrawHiddenLine;
 		void DisableDrawHiddenLine ();
-		%feature("autodoc", "Args:
-	NbIsos(Standard_Integer)
-	WhichIsos(AIS_TypeOfIso)=AIS_TOI_Both
+		%feature("autodoc", "	* Sets the number of U and V isoparameters displayed.
 
-Returns:
-	None
-
-Sets the number of U and V isoparameters displayed.") SetIsoNumber;
+	:param NbIsos:
+	:type NbIsos: Standard_Integer
+	:param WhichIsos: default value is AIS_TOI_Both
+	:type WhichIsos: AIS_TypeOfIso
+	:rtype: None
+") SetIsoNumber;
 		void SetIsoNumber (const Standard_Integer NbIsos,const AIS_TypeOfIso WhichIsos = AIS_TOI_Both);
-		%feature("autodoc", "Args:
-	WhichIsos(AIS_TypeOfIso)=AIS_TOI_Both
+		%feature("autodoc", "	* Returns the number of U and V isoparameters displayed.
 
-Returns:
-	Standard_Integer
-
-Returns the number of U and V isoparameters displayed.") IsoNumber;
+	:param WhichIsos: default value is AIS_TOI_Both
+	:type WhichIsos: AIS_TypeOfIso
+	:rtype: int
+") IsoNumber;
 		Standard_Integer IsoNumber (const AIS_TypeOfIso WhichIsos = AIS_TOI_Both);
-		%feature("autodoc", "Args:
-	SwitchOn(Standard_Boolean)
+		%feature("autodoc", "	* Returns True if drawing isoparameters on planes is enabled.
 
-Returns:
-	None
-
-Returns True if drawing isoparameters on planes is enabled.") IsoOnPlane;
+	:param SwitchOn:
+	:type SwitchOn: bool
+	:rtype: None
+") IsoOnPlane;
 		void IsoOnPlane (const Standard_Boolean SwitchOn);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if drawing isoparameters on planes is enabled. if <forUIsos> = False,
 
-Returns True if drawing isoparameters on planes is enabled.  if <forUIsos> = False,") IsoOnPlane;
+	:rtype: bool
+") IsoOnPlane;
 		Standard_Boolean IsoOnPlane ();
-		%feature("autodoc", "Args:
-	anAspect(Handle_Prs3d_BasicAspect)
-	globalChange(Standard_Boolean)=Standard_True
-	updateViewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Sets the graphic basic aspect to the current presentation of //!		ALL selected objects. When <globalChange> is True , the full object presentation is changed. When <globalChange> is False , only the current group of the object presentation is changed. //!	 	Updates the viewer when <updateViewer> is True
 
-Returns:
-	None
-
-Sets the graphic basic aspect to the current presentation of  
-//!		ALL selected objects.  
-         When <globalChange> is TRUE , the full object presentation  
-         is changed.  
-         When <globalChange> is FALSE , only the current group  
-         of the object presentation is changed.  
-//!	  	Updates the viewer when <updateViewer> is TRUE") SetSelectedAspect;
+	:param anAspect:
+	:type anAspect: Handle_Prs3d_BasicAspect &
+	:param globalChange: default value is Standard_True
+	:type globalChange: bool
+	:param updateViewer: default value is Standard_True
+	:type updateViewer: bool
+	:rtype: None
+") SetSelectedAspect;
 		void SetSelectedAspect (const Handle_Prs3d_BasicAspect & anAspect,const Standard_Boolean globalChange = Standard_True,const Standard_Boolean updateViewer = Standard_True);
-		%feature("autodoc", "Args:
-	XPix(Standard_Integer)
-	YPix(Standard_Integer)
-	aView(Handle_V3d_View)
+		%feature("autodoc", "	* Relays mouse position in pixels XPix and YPix to the interactive context selectors. This is done by the view aView passing this position to the main viewer and updating it. Functions in both Neutral Point and local contexts.
 
-Returns:
-	AIS_StatusOfDetection
-
-Relays mouse position in pixels XPix and YPix to the  
-interactive context selectors. This is done by the view  
-aView passing this position to the main viewer and updating it.  
-Functions in both Neutral Point and local contexts.") MoveTo;
+	:param XPix:
+	:type XPix: Standard_Integer
+	:param YPix:
+	:type YPix: Standard_Integer
+	:param aView:
+	:type aView: Handle_V3d_View &
+	:rtype: AIS_StatusOfDetection
+") MoveTo;
 		AIS_StatusOfDetection MoveTo (const Standard_Integer XPix,const Standard_Integer YPix,const Handle_V3d_View & aView);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns True if other entities were detected in the last mouse detection
 
-returns True  if other entities  were detected  in the  
-         last mouse detection") HasNextDetected;
+	:rtype: bool
+") HasNextDetected;
 		Standard_Boolean HasNextDetected ();
-		%feature("autodoc", "Args:
-	aView(Handle_V3d_View)
+		%feature("autodoc", "	* if more than 1 object is detected by the selector, only the 'best' owner is hilighted at the mouse position. This Method allows the user to hilight one after another the other detected entities. if The method select is called, the selected entity will be the hilighted one! returns the Rank of hilighted entity WARNING : Loop Method. When all the detected entities  have been hilighted , the next call will hilight  the first one again
 
-Returns:
-	Standard_Integer
-
-if more than 1 object is detected by the selector,  
-         only the 'best' owner is hilighted at the mouse position.  
-         This Method allows the user to hilight one after another  
-         the other detected entities.  
-         if The method select is called, the selected entity  
-         will be the hilighted one!  
-         returns the Rank of hilighted entity  
-         WARNING : Loop Method. When all the detected entities  
-                   have been hilighted , the next call will hilight  
-                   the first one again") HilightNextDetected;
+	:param aView:
+	:type aView: Handle_V3d_View &
+	:rtype: int
+") HilightNextDetected;
 		Standard_Integer HilightNextDetected (const Handle_V3d_View & aView);
-		%feature("autodoc", "Args:
-	aView(Handle_V3d_View)
+		%feature("autodoc", "	* Same as previous methods in reverse direction...
 
-Returns:
-	Standard_Integer
-
-Same as previous methods in reverse direction...") HilightPreviousDetected;
+	:param aView:
+	:type aView: Handle_V3d_View &
+	:rtype: int
+") HilightPreviousDetected;
 		Standard_Integer HilightPreviousDetected (const Handle_V3d_View & aView);
-		%feature("autodoc", "Args:
-	XPMin(Standard_Integer)
-	YPMin(Standard_Integer)
-	XPMax(Standard_Integer)
-	YPMax(Standard_Integer)
-	aView(Handle_V3d_View)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Selects everything found in the bounding rectangle defined by the pixel minima and maxima, XPMin, YPMin, XPMax, and YPMax in the view, aView The objects detected are passed to the main viewer, which is then updated.
 
-Returns:
-	AIS_StatusOfPick
-
-Selects everything found in the bounding rectangle  
-defined by the pixel minima and maxima, XPMin,  
-YPMin, XPMax, and YPMax in the view, aView  
-The objects detected are passed to the main viewer,  
-which is then updated.") Select;
+	:param XPMin:
+	:type XPMin: Standard_Integer
+	:param YPMin:
+	:type YPMin: Standard_Integer
+	:param XPMax:
+	:type XPMax: Standard_Integer
+	:param YPMax:
+	:type YPMax: Standard_Integer
+	:param aView:
+	:type aView: Handle_V3d_View &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: AIS_StatusOfPick
+") Select;
 		AIS_StatusOfPick Select (const Standard_Integer XPMin,const Standard_Integer YPMin,const Standard_Integer XPMax,const Standard_Integer YPMax,const Handle_V3d_View & aView,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	Polyline(TColgp_Array1OfPnt2d)
-	aView(Handle_V3d_View)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* polyline selection; clears the previous picked list
 
-Returns:
-	AIS_StatusOfPick
-
-polyline selection; clears the previous picked list") Select;
+	:param Polyline:
+	:type Polyline: TColgp_Array1OfPnt2d
+	:param aView:
+	:type aView: Handle_V3d_View &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: AIS_StatusOfPick
+") Select;
 		AIS_StatusOfPick Select (const TColgp_Array1OfPnt2d & Polyline,const Handle_V3d_View & aView,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Stores and hilights the previous detected; Unhilights the previous picked.
 
-Returns:
-	AIS_StatusOfPick
-
-Stores  and hilights the previous detected; Unhilights  
-         the previous picked.") Select;
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: AIS_StatusOfPick
+") Select;
 		AIS_StatusOfPick Select (const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* adds the last detected to the list of previous picked. if the last detected was already declared as picked, removes it from the Picked List.
 
-Returns:
-	AIS_StatusOfPick
-
-adds the last detected to the list of previous picked.  
-         if the last detected was already declared as picked,  
-         removes it from the Picked List.") ShiftSelect;
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: AIS_StatusOfPick
+") ShiftSelect;
 		AIS_StatusOfPick ShiftSelect (const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	Polyline(TColgp_Array1OfPnt2d)
-	aView(Handle_V3d_View)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* adds the last detected to the list of previous picked. if the last detected was already declared as picked, removes it from the Picked List.
 
-Returns:
-	AIS_StatusOfPick
-
-adds the last detected to the list of previous picked.  
-         if the last detected was already declared as picked,  
-         removes it from the Picked List.") ShiftSelect;
+	:param Polyline:
+	:type Polyline: TColgp_Array1OfPnt2d
+	:param aView:
+	:type aView: Handle_V3d_View &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: AIS_StatusOfPick
+") ShiftSelect;
 		AIS_StatusOfPick ShiftSelect (const TColgp_Array1OfPnt2d & Polyline,const Handle_V3d_View & aView,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	XPMin(Standard_Integer)
-	YPMin(Standard_Integer)
-	XPMax(Standard_Integer)
-	YPMax(Standard_Integer)
-	aView(Handle_V3d_View)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* rectangle of selection ; adds new detected entities into the picked list, removes the detected entities that were already stored...
 
-Returns:
-	AIS_StatusOfPick
-
-rectangle  of selection  ; adds new detected entities into the  
-         picked list, removes the detected entities that were already stored...") ShiftSelect;
+	:param XPMin:
+	:type XPMin: Standard_Integer
+	:param YPMin:
+	:type YPMin: Standard_Integer
+	:param XPMax:
+	:type XPMax: Standard_Integer
+	:param YPMax:
+	:type YPMax: Standard_Integer
+	:param aView:
+	:type aView: Handle_V3d_View &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: AIS_StatusOfPick
+") ShiftSelect;
 		AIS_StatusOfPick ShiftSelect (const Standard_Integer XPMin,const Standard_Integer YPMin,const Standard_Integer XPMax,const Standard_Integer YPMax,const Handle_V3d_View & aView,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	toHilight(Standard_Boolean)
+		%feature("autodoc", "	* Specify whether selected object must be hilighted when mouse cursor is moved above it (in MoveTo method). By default this value is false and selected object is not hilighted in this case.
 
-Returns:
-	None
-
-Specify whether selected object must be hilighted when mouse cursor  
-is moved above it (in MoveTo method). By default this value is false and  
-selected object is not hilighted in this case.") SetToHilightSelected;
+	:param toHilight:
+	:type toHilight: bool
+	:rtype: None
+") SetToHilightSelected;
 		void SetToHilightSelected (const Standard_Boolean toHilight);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Return value specified whether selected object must be hilighted when mouse cursor is moved above it
 
-Return value specified whether selected object must be hilighted  
-when mouse cursor is moved above it") ToHilightSelected;
+	:rtype: bool
+") ToHilightSelected;
 		Standard_Boolean ToHilightSelected ();
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Updates the view of the current object in open context. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Updates the view of the current object in open context.  
-Objects selected when there is no open local context  
-are called current objects; those selected in open  
-local context, selected objects.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") SetCurrentObject;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") SetCurrentObject;
 		void SetCurrentObject (const Handle_AIS_InteractiveObject & aniobj,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Allows you to add a current object to the list of current objects or remove it from that list. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Allows you to add a current object to the list of current  
-objects or remove it from that list.  
-Objects selected when there is no open local context  
-are called current objects; those selected in open  
-local context, selected objects.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") AddOrRemoveCurrentObject;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") AddOrRemoveCurrentObject;
 		void AddOrRemoveCurrentObject (const Handle_AIS_InteractiveObject & aniobj,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Updates the list of current objects, i.e. hilights new current objects, removes hilighting from former current objects. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
 
-Updates the list of current objects, i.e. hilights new  
-current objects, removes hilighting from former current objects.  
-Objects selected when there is no open local context  
-are called current objects; those selected in open  
-local context, selected objects.") UpdateCurrent;
+	:rtype: None
+") UpdateCurrent;
 		void UpdateCurrent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns the current selection touched by the cursor. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
 
-Returns the current selection touched by the cursor.  
-Objects selected when there is no open local context  
-are called current objects; those selected in open  
-local context, selected objects.") WasCurrentTouched;
+	:rtype: bool
+") WasCurrentTouched;
 		Standard_Boolean WasCurrentTouched ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") SetOkCurrent;
+		%feature("autodoc", "	:rtype: None
+") SetOkCurrent;
 		void SetOkCurrent ();
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
+		%feature("autodoc", "	* Returns true if there is a non-null interactive object in Neutral Point. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
 
-Returns:
-	Standard_Boolean
-
-Returns true if there is a non-null interactive object in Neutral Point.  
-Objects selected when there is no open local context  
-are called current objects; those selected in open  
-local context, selected objects.") IsCurrent;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:rtype: bool
+") IsCurrent;
 		Standard_Boolean IsCurrent (const Handle_AIS_InteractiveObject & aniobj);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Initializes a scan of the current selected objects in Neutral Point. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
 
-Initializes a scan of the current selected objects in  
-Neutral Point.  
-Objects selected when there is no open local context  
-are called current objects; those selected in open  
-local context, selected objects.") InitCurrent;
+	:rtype: None
+") InitCurrent;
 		void InitCurrent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if there is another object found by the scan of the list of current objects. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
 
-Returns true if there is another object found by the  
-scan of the list of current objects.  
-Objects selected when there is no open local context  
-are called current objects; those selected in open  
-local context, selected objects.") MoreCurrent;
+	:rtype: bool
+") MoreCurrent;
 		Standard_Boolean MoreCurrent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Continues the scan to the next object in the list of current objects. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
 
-Continues the scan to the next object in the list of  
-current objects.  
-Objects selected when there is no open local context  
-are called current objects; those selected in open  
-local context, selected objects.") NextCurrent;
+	:rtype: None
+") NextCurrent;
 		void NextCurrent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_InteractiveObject
+		%feature("autodoc", "	* Returns the current interactive object. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
 
-Returns the current interactive object.  
-Objects selected when there is no open local context  
-are called current objects; those selected in open  
-local context, selected objects.") Current;
+	:rtype: Handle_AIS_InteractiveObject
+") Current;
 		Handle_AIS_InteractiveObject Current ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbCurrents;
+		%feature("autodoc", "	:rtype: int
+") NbCurrents;
 		Standard_Integer NbCurrents ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_InteractiveObject
+		%feature("autodoc", "	* Returns the first current object in the list of current objects. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
 
-Returns the first current object in the list of current objects.  
-Objects selected when there is no open local context  
-are called current objects; those selected in open  
-local context, selected objects.") FirstCurrentObject;
+	:rtype: Handle_AIS_InteractiveObject
+") FirstCurrentObject;
 		Handle_AIS_InteractiveObject FirstCurrentObject ();
-		%feature("autodoc", "Args:
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Highlights current objects. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Highlights current objects.  
-Objects selected when there is no open local context  
-are called current objects; those selected in open  
-local context, selected objects.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") HilightCurrents;
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") HilightCurrents;
 		void HilightCurrents (const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Removes highlighting from current objects. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Removes highlighting from current objects.  
-Objects selected when there is no open local context  
-are called current objects; those selected in open  
-local context, selected objects.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") UnhilightCurrents;
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") UnhilightCurrents;
 		void UnhilightCurrents (const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Empties previous current objects in order to get the current objects detected by the selector using UpdateCurrent. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Empties previous current objects in order to get the  
-current objects detected by the selector using  
-UpdateCurrent.  
-Objects selected when there is no open local context  
-are called current objects; those selected in open  
-local context, selected objects.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") ClearCurrents;
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") ClearCurrents;
 		void ClearCurrents (const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniObj(Handle_AIS_InteractiveObject)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Puts the interactive object aniObj in the list of selected objects. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Puts the interactive object aniObj in the list of  
-selected objects.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") SetSelected;
+	:param aniObj:
+	:type aniObj: Handle_AIS_InteractiveObject &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") SetSelected;
 		void SetSelected (const Handle_AIS_InteractiveObject & aniObj,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* puts the selected list in the current objects List.
 
-puts the selected list in the current objects List.") SetSelectedCurrent;
+	:rtype: None
+") SetSelectedCurrent;
 		void SetSelectedCurrent ();
-		%feature("autodoc", "Args:
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* updates the list of selected objects i.e. hilights the new selected unhilights old selected objects
 
-Returns:
-	None
-
-updates the list of selected objects  
-         i.e. hilights the new selected  
-         unhilights old selected objects") UpdateSelected;
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") UpdateSelected;
 		void UpdateSelected (const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* //!Allows you to add a selected object to the list of selected objects or remove it from that list. This entity can be an Interactive Object aniobj or its owner aShape as can be seen in the two syntaxes above. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-//!Allows you to add a selected object to the list of  
-selected objects or remove it from that list. This entity  
-can be an Interactive Object aniobj or its owner  
-aShape as can be seen in the two syntaxes above.  
-Objects selected when there is no open local context  
-are called current objects; those selected in open  
-local context, selected objects.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") AddOrRemoveSelected;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") AddOrRemoveSelected;
 		void AddOrRemoveSelected (const Handle_AIS_InteractiveObject & aniobj,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Highlights selected objects. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Highlights selected objects.  
-Objects selected when there is no open local context  
-are called current objects; those selected in open  
-local context, selected objects.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") HilightSelected;
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") HilightSelected;
 		void HilightSelected (const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Removes highlighting from selected objects. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Removes highlighting from selected objects.  
-Objects selected when there is no open local context  
-are called current objects; those selected in open  
-local context, selected objects.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") UnhilightSelected;
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") UnhilightSelected;
 		void UnhilightSelected (const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Empties previous selected objects in order to get the selected objects detected by the selector using UpdateSelected. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Empties previous selected objects in order to get the  
-selected objects detected by the selector using  
-UpdateSelected.  
-Objects selected when there is no open local context  
-are called current objects; those selected in open  
-local context, selected objects.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") ClearSelected;
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") ClearSelected;
 		void ClearSelected (const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aShape(TopoDS_Shape)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* No right to Add a selected Shape (Internal Management of shape Selection). A Previous selected shape may only be removed.
 
-Returns:
-	None
-
-No right to Add a selected Shape (Internal Management  
-          of shape Selection).  
-          A Previous selected shape may only be removed.") AddOrRemoveSelected;
+	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") AddOrRemoveSelected;
 		void AddOrRemoveSelected (const TopoDS_Shape & aShape,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	anOwner(Handle_SelectMgr_EntityOwner)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* allows to add/remove in the selected list the entities represented by <anOwner> in the selection process.
 
-Returns:
-	None
-
-allows to add/remove in the selected list the entities  
-         represented by <anOwner> in the selection process.") AddOrRemoveSelected;
+	:param anOwner:
+	:type anOwner: Handle_SelectMgr_EntityOwner &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") AddOrRemoveSelected;
 		void AddOrRemoveSelected (const Handle_SelectMgr_EntityOwner & anOwner,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
+		%feature("autodoc", "	* Finds the selected object aniobj in local context and returns its name. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
 
-Returns:
-	Standard_Boolean
-
-Finds the selected object aniobj in local context and  
-returns its name.  
-Objects selected when there is no open local context  
-are called current objects; those selected in open  
- local context, selected objects.") IsSelected;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:rtype: bool
+") IsSelected;
 		Standard_Boolean IsSelected (const Handle_AIS_InteractiveObject & aniobj);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Initializes a scan of the selected objects in local context. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
 
-Initializes a scan of the selected objects in local context.  
-Objects selected when there is no open local context  
-are called current objects; those selected in open  
-local context, selected objects.") InitSelected;
+	:rtype: None
+") InitSelected;
 		void InitSelected ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if there is another object found by the scan of the list of selected objects. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
 
-Returns true if there is another object found by the  
-scan of the list of selected objects.  
-Objects selected when there is no open local context  
-are called current objects; those selected in open  
-local context, selected objects.") MoreSelected;
+	:rtype: bool
+") MoreSelected;
 		Standard_Boolean MoreSelected ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Continues the scan to the next object in the list of selected objects. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
 
-Continues the scan to the next object in the list of  
-selected objects.  
-Objects selected when there is no open local context  
-are called current objects; those selected in open  
-local context, selected objects.") NextSelected;
+	:rtype: None
+") NextSelected;
 		void NextSelected ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbSelected;
+		%feature("autodoc", "	:rtype: int
+") NbSelected;
 		Standard_Integer NbSelected ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the interactive context has a shape selected in it which results from the decomposition of another entity in local context. If HasSelectedShape returns true, SelectedShape returns the shape which has been shown to be selected. Interactive returns the Interactive Object from which the shape has been selected. If HasSelectedShape returns false, Interactive returns the interactive entity selected by the click of the mouse.
 
-Returns true if the interactive context has a shape  
-selected in it which results from the decomposition of  
-another entity in local context.  
-If HasSelectedShape returns true, SelectedShape  
-returns the shape which has been shown to be  
-selected. Interactive returns the Interactive Object  
-from which the shape has been selected.  
-If HasSelectedShape returns false, Interactive  
-returns the interactive entity selected by the click of the mouse.") HasSelectedShape;
+	:rtype: bool
+") HasSelectedShape;
 		Standard_Boolean HasSelectedShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Returns the selected shape in the open local context. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
 
-Returns the selected shape in the open local context.  
-Objects selected when there is no open local context  
-are called current objects; those selected in open  
-local context, selected objects.") SelectedShape;
+	:rtype: TopoDS_Shape
+") SelectedShape;
 		TopoDS_Shape SelectedShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_SelectMgr_EntityOwner
+		%feature("autodoc", "	* Returns the owner of the selected entity resulting from the decomposition of another entity in local context.
 
-Returns the owner of the selected entity resulting  
-from the decomposition of another entity in local context.") SelectedOwner;
+	:rtype: Handle_SelectMgr_EntityOwner
+") SelectedOwner;
 		Handle_SelectMgr_EntityOwner SelectedOwner ();
-		%feature("autodoc", "Args:
-	theOwners(SelectMgr_IndexedMapOfOwner)
-	theIObj(Handle_AIS_InteractiveObject)
-	theMode(Standard_Integer)=- 1
+		%feature("autodoc", "	* Returns a collection containing all entity owners  created for the interactive object <theIObj> in  the selection mode theMode (in all active modes  if the Mode == -1)
 
-Returns:
-	None
-
-Returns a collection containing all entity owners  
-        created for the interactive object <theIObj> in  
-        the selection mode theMode (in all active modes  
-        if the Mode == -1)") EntityOwners;
+	:param theOwners:
+	:type theOwners: SelectMgr_IndexedMapOfOwner &
+	:param theIObj:
+	:type theIObj: Handle_AIS_InteractiveObject &
+	:param theMode: default value is - 1
+	:type theMode: Standard_Integer
+	:rtype: None
+") EntityOwners;
 		void EntityOwners (SelectMgr_IndexedMapOfOwner & theOwners,const Handle_AIS_InteractiveObject & theIObj,const Standard_Integer theMode = - 1);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_InteractiveObject
+		%feature("autodoc", "	* Returns the location of the selected Interactive Object.
 
-Returns the location of the selected Interactive Object.") Interactive;
+	:rtype: Handle_AIS_InteractiveObject
+") Interactive;
 		Handle_AIS_InteractiveObject Interactive ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_InteractiveObject
-
-No detailed docstring for this function.") SelectedInteractive;
+		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
+") SelectedInteractive;
 		Handle_AIS_InteractiveObject SelectedInteractive ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the applicative object has an owner from Interactive attributed to it.
 
-Returns true if the applicative object has an owner  
-from Interactive attributed to it.") HasApplicative;
+	:rtype: bool
+") HasApplicative;
 		Standard_Boolean HasApplicative ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
+		%feature("autodoc", "	* Returns the owner of the applicative entity detected in interactive context. The owner can be a shape for a set of sub-shapes or a sub-shape for sub-shapes which it is composed of.
 
-Returns the owner of the applicative entity detected  
-in interactive context. The owner can be a shape for  
-a set of sub-shapes or a sub-shape for sub-shapes  
-which it is composed of.") Applicative;
+	:rtype: Handle_Standard_Transient
+") Applicative;
 		Handle_Standard_Transient Applicative ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if there is a mouse-detected entity in local context. If there is no open local context, the objects selected are called current objects; selected objects if there is one. Iterators allow entities to be recovered in either case. This method is one of a set which allows you to manipulate the objects which have been placed in these two lists.
 
-Returns true if there is a mouse-detected entity in local context.  
-If there is no open local context, the objects selected  
-are called current objects; selected objects if there is  
-one. Iterators allow entities to be recovered in either  
-case. This method is one of a set which allows you to  
-manipulate the objects which have been placed in these two lists.") HasDetected;
+	:rtype: bool
+") HasDetected;
 		Standard_Boolean HasDetected ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if there is a detected shape in local context. If there is no open local context, the objects selected are called current objects; selected objects if there is one. Iterators allow entities to be recovered in either case. This method is one of a set which allows you to manipulate the objects which have been placed in these two lists.
 
-Returns true if there is a detected shape in local context.  
-If there is no open local context, the objects selected  
-are called current objects; selected objects if there is  
-one. Iterators allow entities to be recovered in either  
-case. This method is one of a set which allows you to  
-manipulate the objects which have been placed in these two lists.") HasDetectedShape;
+	:rtype: bool
+") HasDetectedShape;
 		Standard_Boolean HasDetectedShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Returns the shape detected in local context. If there is no open local context, the objects selected are called current objects; selected objects if there is one. Iterators allow entities to be recovered in either case. This method is one of a set which allows you to manipulate the objects which have been placed in these two lists.
 
-Returns the shape detected in local context.  
-If there is no open local context, the objects selected  
-are called current objects; selected objects if there is  
-one. Iterators allow entities to be recovered in either  
-case. This method is one of a set which allows you to  
-manipulate the objects which have been placed in these two lists.") DetectedShape;
+	:rtype: TopoDS_Shape
+") DetectedShape;
 		const TopoDS_Shape & DetectedShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_InteractiveObject
+		%feature("autodoc", "	* Returns the interactive objects last detected in open context. If there is no open local context, the objects selected are called current objects; selected objects if there is one. Iterators allow entities to be recovered in either case. This method is one of a set which allows you to manipulate the objects which have been placed in these two lists.
 
-Returns the interactive objects last detected in open context.  
-If there is no open local context, the objects selected  
-are called current objects; selected objects if there is  
-one. Iterators allow entities to be recovered in either  
-case. This method is one of a set which allows you to  
-manipulate the objects which have been placed in these two lists.") DetectedInteractive;
+	:rtype: Handle_AIS_InteractiveObject
+") DetectedInteractive;
 		Handle_AIS_InteractiveObject DetectedInteractive ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_SelectMgr_EntityOwner
+		%feature("autodoc", "	* returns the owner of the detected sensitive primitive.
 
-returns the owner of the detected sensitive primitive.") DetectedOwner;
+	:rtype: Handle_SelectMgr_EntityOwner
+") DetectedOwner;
 		Handle_SelectMgr_EntityOwner DetectedOwner ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") InitDetected;
+		%feature("autodoc", "	:rtype: None
+") InitDetected;
 		void InitDetected ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") MoreDetected;
+		%feature("autodoc", "	:rtype: bool
+") MoreDetected;
 		Standard_Boolean MoreDetected ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") NextDetected;
+		%feature("autodoc", "	:rtype: None
+") NextDetected;
 		void NextDetected ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") DetectedCurrentShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") DetectedCurrentShape;
 		const TopoDS_Shape & DetectedCurrentShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_InteractiveObject
-
-No detailed docstring for this function.") DetectedCurrentObject;
+		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
+") DetectedCurrentObject;
 		Handle_AIS_InteractiveObject DetectedCurrentObject ();
-		%feature("autodoc", "Args:
-	UseDisplayedObjects(Standard_Boolean)=Standard_True
-	AllowShapeDecomposition(Standard_Boolean)=Standard_True
-	AcceptEraseOfObjects(Standard_Boolean)=Standard_False
-	BothViewers(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Opens local contexts and specifies how this is to be done. The options listed above function in the following manner: - UseDisplayedObjects -allows you to load or not load the interactive objects visualized at Neutral Point in the local context which you open. If false, the local context is empty after being opened. If true, the objects at Neutral Point are loaded by their default selection mode. - AllowShapeDecomposition -AIS_Shape allows or prevents decomposition in standard shape location mode of objects at Neutral Point which are type-'privileged'. This Flag is only taken into account when UseDisplayedObjects is true. - AcceptEraseOfObjects -authorises other local contexts to erase the interactive objects present in this context. This option is rarely used. - BothViewers - Has no use currently defined. This method returns the index of the created local context. It should be kept and used to close the context. Opening a local context allows you to prepare an environment for temporary presentations and selections which will disappear once the local context is closed. You can open several local contexts, but only the last one will be active.
 
-Returns:
-	Standard_Integer
-
-Opens local contexts and specifies how this is to be  
-done. The options listed above function in the following manner:  
--   UseDisplayedObjects -allows you to load or not  
-  load the interactive objects visualized at Neutral  
-  Point in the local context which you open. If false,  
-  the local context is empty after being opened. If  
-  true, the objects at Neutral Point are loaded by their  
-  default selection mode.  
--   AllowShapeDecomposition -AIS_Shape allows or  
-  prevents decomposition in standard shape location  
-  mode of objects at Neutral Point which are  
-  type-'privileged'. This Flag is only taken into  
-  account when UseDisplayedObjects is true.  
--   AcceptEraseOfObjects -authorises other local  
-  contexts to erase the interactive objects present in  
-  this context. This option is rarely used.  
--   BothViewers - Has no use currently defined.  
-  This method returns the index of the created local  
-context. It should be kept and used to close the context.  
-Opening a local context allows you to prepare an  
-environment for temporary presentations and  
-selections which will disappear once the local context is closed.  
-You can open several local contexts, but only the last  
-one will be active.") OpenLocalContext;
+	:param UseDisplayedObjects: default value is Standard_True
+	:type UseDisplayedObjects: bool
+	:param AllowShapeDecomposition: default value is Standard_True
+	:type AllowShapeDecomposition: bool
+	:param AcceptEraseOfObjects: default value is Standard_False
+	:type AcceptEraseOfObjects: bool
+	:param BothViewers: default value is Standard_False
+	:type BothViewers: bool
+	:rtype: int
+") OpenLocalContext;
 		Standard_Integer OpenLocalContext (const Standard_Boolean UseDisplayedObjects = Standard_True,const Standard_Boolean AllowShapeDecomposition = Standard_True,const Standard_Boolean AcceptEraseOfObjects = Standard_False,const Standard_Boolean BothViewers = Standard_False);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)=- 1
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Allows you to close local contexts. For greater security, you should close the context with the index Index given on opening. When you close a local context, the one before, which is still on the stack, reactivates. If none is left, you return to Neutral Point. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated. Warning When the index isn't specified, the current context is closed. This option can be dangerous, as other Interactive Functions can open local contexts without necessarily warning the user.
 
-Returns:
-	None
-
-Allows you to close local contexts. For greater  
-security, you should close the context with the  
-index Index given on opening.  
-When you close a local context, the one before,  
-which is still on the stack,   reactivates. If none is  
-left, you return to Neutral Point.  
-If a local context is open and if updateviewer  
-equals Standard_False, the presentation of the  
-Interactive Object activates the selection mode; the  
-object is displayed but no viewer will be updated.  
-Warning  
-When the index isn't specified, the current context  
-is closed. This option can be dangerous, as other  
-Interactive Functions can open local contexts  
-without necessarily warning the user.") CloseLocalContext;
+	:param Index: default value is - 1
+	:type Index: Standard_Integer
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") CloseLocalContext;
 		void CloseLocalContext (const Standard_Integer Index = - 1,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* returns -1 if no opened local context.
 
-returns -1 if no opened local context.") IndexOfCurrentLocal;
+	:rtype: int
+") IndexOfCurrentLocal;
 		Standard_Integer IndexOfCurrentLocal ();
-		%feature("autodoc", "Args:
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Allows you to close all local contexts at one go and return to Neutral Point. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Allows you to close all local contexts at one go and  
-return to Neutral Point.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") CloseAllContexts;
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") CloseAllContexts;
 		void CloseAllContexts (const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* to be used only with no opened local context.. displays and activates objects in their original state before local contexts were opened...
 
-Returns:
-	None
-
-to   be  used only with no  opened  
-       local context..  displays and activates objects in their  
-       original state before local contexts were opened...") ResetOriginalState;
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") ResetOriginalState;
 		void ResetOriginalState (const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	TheMode(AIS_ClearMode)=AIS_CM_All
+		%feature("autodoc", "	* clears Objects/Filters/Activated Modes list in the current opened local context.
 
-Returns:
-	None
-
-clears Objects/Filters/Activated Modes list in the current opened  
-         local context.") ClearLocalContext;
+	:param TheMode: default value is AIS_CM_All
+	:type TheMode: AIS_ClearMode
+	:rtype: None
+") ClearLocalContext;
 		void ClearLocalContext (const AIS_ClearMode TheMode = AIS_CM_All);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") UseDisplayedObjects;
+		%feature("autodoc", "	:rtype: None
+") UseDisplayedObjects;
 		void UseDisplayedObjects ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* when a local Context is opened, one is able to use/not use the displayed objects at neutral point at anytime.
 
-when a local Context is opened, one is able to  
-         use/not use the displayed objects at neutral point  
-         at anytime.") NotUseDisplayedObjects;
+	:rtype: None
+") NotUseDisplayedObjects;
 		void NotUseDisplayedObjects ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* initializes the list of presentations to be displayed returns False if No Local COnte
 
-initializes the list of presentations to be displayed  
-         returns False if No Local COnte") BeginImmediateDraw;
+	:rtype: bool
+") BeginImmediateDraw;
 		Standard_Boolean BeginImmediateDraw ();
-		%feature("autodoc", "Args:
-	anIObj(Handle_AIS_InteractiveObject)
-	aMode(Standard_Integer)=0
+		%feature("autodoc", "	* returns True if <anIObj> has been stored in the list.
 
-Returns:
-	Standard_Boolean
-
-returns True if <anIObj> has been stored in the list.") ImmediateAdd;
+	:param anIObj:
+	:type anIObj: Handle_AIS_InteractiveObject &
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:rtype: bool
+") ImmediateAdd;
 		Standard_Boolean ImmediateAdd (const Handle_AIS_InteractiveObject & anIObj,const Standard_Integer aMode = 0);
-		%feature("autodoc", "Args:
-	anIObj(Handle_AIS_InteractiveObject)
-	aMode(Standard_Integer)=0
+		%feature("autodoc", "	* returns True if <anIObj> has been removed from the list.
 
-Returns:
-	Standard_Boolean
-
-returns True if <anIObj> has been removed from the list.") ImmediateRemove;
+	:param anIObj:
+	:type anIObj: Handle_AIS_InteractiveObject &
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:rtype: bool
+") ImmediateRemove;
 		Standard_Boolean ImmediateRemove (const Handle_AIS_InteractiveObject & anIObj,const Standard_Integer aMode = 0);
-		%feature("autodoc", "Args:
-	aView(Handle_V3d_View)
-	DoubleBuf(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* returns True if the immediate display has been done.
 
-Returns:
-	Standard_Boolean
-
-returns True if the immediate display has been done.") EndImmediateDraw;
+	:param aView:
+	:type aView: Handle_V3d_View &
+	:param DoubleBuf: default value is Standard_False
+	:type DoubleBuf: bool
+	:rtype: bool
+") EndImmediateDraw;
 		Standard_Boolean EndImmediateDraw (const Handle_V3d_View & aView,const Standard_Boolean DoubleBuf = Standard_False);
-		%feature("autodoc", "Args:
-	DoubleBuf(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Uses the First Active View of Main Viewer!!! returns True if the immediate display has been done.
 
-Returns:
-	Standard_Boolean
-
-Uses the First Active View of Main Viewer!!!  
-         returns True if the immediate display has been done.") EndImmediateDraw;
+	:param DoubleBuf: default value is Standard_False
+	:type DoubleBuf: bool
+	:rtype: bool
+") EndImmediateDraw;
 		Standard_Boolean EndImmediateDraw (const Standard_Boolean DoubleBuf = Standard_False);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsImmediateModeOn;
+		%feature("autodoc", "	:rtype: bool
+") IsImmediateModeOn;
 		Standard_Boolean IsImmediateModeOn ();
-		%feature("autodoc", "Args:
-	aView(Handle_V3d_View)
-	anObject(Handle_AIS_InteractiveObject)
-	aTranformation(Handle_Geom_Transformation)
-	postConcatenate(Standard_Boolean)=Standard_False
-	update(Standard_Boolean)=Standard_False
-	zBuffer(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Transforms the current presentation of the object <anObject> using the transient graphic space of the view <aView> in immediat mode graphics.
 
-Returns:
-	None
-
-Transforms the current presentation of the object <anObject>  
-         using the transient graphic space of the view <aView> in  
-         immediat mode graphics.") Drag;
+	:param aView:
+	:type aView: Handle_V3d_View &
+	:param anObject:
+	:type anObject: Handle_AIS_InteractiveObject &
+	:param aTranformation:
+	:type aTranformation: Handle_Geom_Transformation &
+	:param postConcatenate: default value is Standard_False
+	:type postConcatenate: bool
+	:param update: default value is Standard_False
+	:type update: bool
+	:param zBuffer: default value is Standard_False
+	:type zBuffer: bool
+	:rtype: None
+") Drag;
 		void Drag (const Handle_V3d_View & aView,const Handle_AIS_InteractiveObject & anObject,const Handle_Geom_Transformation & aTranformation,const Standard_Boolean postConcatenate = Standard_False,const Standard_Boolean update = Standard_False,const Standard_Boolean zBuffer = Standard_False);
-		%feature("autodoc", "Args:
-	aStatus(Standard_Boolean)
+		%feature("autodoc", "	* Sets the highlighting status aStatus of detected and selected entities. Whether you are in Neutral Point or local context, this is automatically managed by the Interactive Context. This function allows you to disconnect the automatic mode.
 
-Returns:
-	None
-
-Sets the highlighting status aStatus of detected and  
-selected entities.  
-Whether you are in Neutral Point or local context, this  
-is automatically managed by the Interactive Context.  
-This function allows you to disconnect the automatic mode.") SetAutomaticHilight;
+	:param aStatus:
+	:type aStatus: bool
+	:rtype: None
+") SetAutomaticHilight;
 		void SetAutomaticHilight (const Standard_Boolean aStatus);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the automatic highlight mode is active in an open context.
 
-Returns true if the automatic highlight mode is active  
-in an open context.") AutomaticHilight;
+	:rtype: bool
+") AutomaticHilight;
 		Standard_Boolean AutomaticHilight ();
-		%feature("autodoc", "Args:
-	aStatus(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Enables/Disables the Z detection. //!		If True the detection echo can be partially hidden by the //!		detected object.
 
-Returns:
-	None
-
-Enables/Disables the Z detection.  
-//!		If TRUE the detection echo can be partially hidden by the  
-//!		detected object.") SetZDetection;
+	:param aStatus: default value is Standard_False
+	:type aStatus: bool
+	:rtype: None
+") SetZDetection;
 		void SetZDetection (const Standard_Boolean aStatus = Standard_False);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Retrieves the Z detection state.
 
-Retrieves the Z detection state.") ZDetection;
+	:rtype: bool
+") ZDetection;
 		Standard_Boolean ZDetection ();
-		%feature("autodoc", "Args:
-	anIobj(Handle_AIS_InteractiveObject)
-	aMode(Standard_Integer)=0
+		%feature("autodoc", "	* Activates the selection mode aMode whose index is given, for the given interactive entity anIobj.
 
-Returns:
-	None
-
-Activates the selection mode aMode whose index is  
-given, for the given interactive entity anIobj.") Activate;
+	:param anIobj:
+	:type anIobj: Handle_AIS_InteractiveObject &
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:rtype: None
+") Activate;
 		void Activate (const Handle_AIS_InteractiveObject & anIobj,const Standard_Integer aMode = 0);
-		%feature("autodoc", "Args:
-	anIObj(Handle_AIS_InteractiveObject)
+		%feature("autodoc", "	* Deactivates all the activated selection modes of an object.
 
-Returns:
-	None
-
-Deactivates all the activated selection modes  
-         of an object.") Deactivate;
+	:param anIObj:
+	:type anIObj: Handle_AIS_InteractiveObject &
+	:rtype: None
+") Deactivate;
 		void Deactivate (const Handle_AIS_InteractiveObject & anIObj);
-		%feature("autodoc", "Args:
-	anIobj(Handle_AIS_InteractiveObject)
-	aMode(Standard_Integer)
+		%feature("autodoc", "	* Deactivates all the activated selection modes of the interactive object anIobj with a given selection mode aMode.
 
-Returns:
-	None
-
-Deactivates all the activated selection modes of the  
-interactive object anIobj with a given selection mode aMode.") Deactivate;
+	:param anIobj:
+	:type anIobj: Handle_AIS_InteractiveObject &
+	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: None
+") Deactivate;
 		void Deactivate (const Handle_AIS_InteractiveObject & anIobj,const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	anIobj(Handle_AIS_InteractiveObject)
-	theList(TColStd_ListOfInteger)
+		%feature("autodoc", "	* Returns the list of activated selection modes in an open context.
 
-Returns:
-	None
-
-Returns the list of activated selection modes in an open context.") ActivatedModes;
+	:param anIobj:
+	:type anIobj: Handle_AIS_InteractiveObject &
+	:param theList:
+	:type theList: TColStd_ListOfInteger &
+	:rtype: None
+") ActivatedModes;
 		void ActivatedModes (const Handle_AIS_InteractiveObject & anIobj,TColStd_ListOfInteger & theList);
-		%feature("autodoc", "Args:
-	anIobj(Handle_AIS_InteractiveObject)
-	aStatus(Standard_Boolean)
+		%feature("autodoc", "	* to be Used only with opened local context and if <anIobj> is of type shape... if <aStatus> = True <anIobj> will be sensitive to  shape selection modes activation.  = False, <anIobj> will not be senstive  any more.
 
-Returns:
-	None
-
-to be Used only with opened local context and  
-         if <anIobj> is of type shape...  
-         if <aStatus> = True <anIobj> will be sensitive to  
-                        shape selection modes activation.  
-                      = False, <anIobj> will not be senstive  
-                      any more.") SetShapeDecomposition;
+	:param anIobj:
+	:type anIobj: Handle_AIS_InteractiveObject &
+	:param aStatus:
+	:type aStatus: bool
+	:rtype: None
+") SetShapeDecomposition;
 		void SetShapeDecomposition (const Handle_AIS_InteractiveObject & anIobj,const Standard_Boolean aStatus);
-		%feature("autodoc", "Args:
-	anObj(Handle_AIS_InteractiveObject)
-	aDrawer(Handle_Prs3d_Drawer)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Sets the temporary graphic attributes of the entity anObj. These are provided by the attribute manager aDrawer and are valid for a particular local context only. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Sets the temporary graphic attributes of the entity  
-anObj. These are provided by the attribute manager  
-aDrawer and are valid for a particular local context only.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") SetTemporaryAttributes;
+	:param anObj:
+	:type anObj: Handle_AIS_InteractiveObject &
+	:param aDrawer:
+	:type aDrawer: Handle_Prs3d_Drawer &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") SetTemporaryAttributes;
 		void SetTemporaryAttributes (const Handle_AIS_InteractiveObject & anObj,const Handle_Prs3d_Drawer & aDrawer,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Highlights, and removes highlights from, the displayed object aniobj which is displayed at Neutral Point with subintensity color; available only for active local context. There is no effect if there is no local context. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Highlights, and removes highlights from, the displayed  
-object aniobj which is displayed at Neutral Point with  
-subintensity color; available only for active local  
-context. There is no effect if there is no local context.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") SubIntensityOn;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") SubIntensityOn;
 		void SubIntensityOn (const Handle_AIS_InteractiveObject & aniobj,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Removes the subintensity option for the entity aniobj. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
-Returns:
-	None
-
-Removes the subintensity option for the entity aniobj.  
-If a local context is open and if updateviewer equals  
-Standard_False, the presentation of the Interactive  
-Object activates the selection mode; the object is  
-displayed but no viewer will be updated.") SubIntensityOff;
+	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") SubIntensityOff;
 		void SubIntensityOff (const Handle_AIS_InteractiveObject & aniobj,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* hilights/unhilights displayed objects which are displayed at neutral state with subintensity color; available only for active local context. No effect if no local context.
 
-Returns:
-	None
-
-hilights/unhilights displayed objects which are displayed at  
-         neutral state with subintensity color;  
-         available only for active local context.  
-         No effect if no local context.") SubIntensityOn;
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") SubIntensityOn;
 		void SubIntensityOn (const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* removes subintensity option for all objects.
 
-Returns:
-	None
-
-removes subintensity option for all objects.") SubIntensityOff;
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") SubIntensityOff;
 		void SubIntensityOff (const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aFilter(Handle_SelectMgr_Filter)
+		%feature("autodoc", "	* Allows you to add the filter aFilter to Neutral Point or to a local context if one or more selection modes have been activated. Only type filters may be active in Neutral Point.
 
-Returns:
-	None
-
-Allows you to add the filter aFilter to Neutral Point or  
-to a local context if one or more selection modes have been activated.  
-Only type filters may be active in Neutral Point.") AddFilter;
+	:param aFilter:
+	:type aFilter: Handle_SelectMgr_Filter &
+	:rtype: None
+") AddFilter;
 		void AddFilter (const Handle_SelectMgr_Filter & aFilter);
-		%feature("autodoc", "Args:
-	aFilter(Handle_SelectMgr_Filter)
+		%feature("autodoc", "	* Removes a filter from Neutral Point or a local context if one or more selection modes have been activated. Only type filters are activated in Neutral Point.
 
-Returns:
-	None
-
-Removes a filter from Neutral Point or a local context  
-if one or more selection modes have been activated.  
-Only type filters are activated in Neutral Point.") RemoveFilter;
+	:param aFilter:
+	:type aFilter: Handle_SelectMgr_Filter &
+	:rtype: None
+") RemoveFilter;
 		void RemoveFilter (const Handle_SelectMgr_Filter & aFilter);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Remove a filter to Neutral Point or a local context if one or more selection modes have been activated. Only type filters are active in Neutral Point.
 
-Remove a filter to Neutral Point or a local context if  
-one or more selection modes have been activated.  
-Only type filters are active in Neutral Point.") RemoveFilters;
+	:rtype: None
+") RemoveFilters;
 		void RemoveFilters ();
-		%feature("autodoc", "Args:
-	aStandardActivation(TopAbs_ShapeEnum)
+		%feature("autodoc", "	* Provides an alternative to the Display methods when activating specific selection modes. This has the effect of activating the corresponding selection mode aStandardActivation for all objects in Local Context which accept decomposition into sub-shapes. Every new Object which has been loaded into the interactive context and which answers these decomposition criteria is automatically activated according to these modes. Warning If you have opened a local context by loading an object with the default options (<AllowShapeDecomposition >= Standard_True), all objects of the 'Shape' type are also activated with the same modes. You can act on the state of these 'Standard' objects by using SetShapeDecomposition(Status).
 
-Returns:
-	None
-
-Provides an alternative to the Display methods when  
-activating specific selection modes. This has the  
-effect of activating the corresponding selection mode  
-aStandardActivation for all objects in Local Context  
-which accept decomposition into sub-shapes.  
-Every new Object which has been loaded into the  
-interactive context and which answers these  
-decomposition criteria is automatically activated  
-according to these modes.  
-Warning  
-If you have opened a local context by loading an  
-object with the default options  
-(<AllowShapeDecomposition >= Standard_True), all  
-objects of the 'Shape' type are also activated with  
-the same modes. You can act on the state of these  
-'Standard' objects by using SetShapeDecomposition(Status).") ActivateStandardMode;
+	:param aStandardActivation:
+	:type aStandardActivation: TopAbs_ShapeEnum
+	:rtype: None
+") ActivateStandardMode;
 		void ActivateStandardMode (const TopAbs_ShapeEnum aStandardActivation);
-		%feature("autodoc", "Args:
-	aStandardActivation(TopAbs_ShapeEnum)
+		%feature("autodoc", "	* Provides an alternative to the Display methods when deactivating specific selection modes. This has the effect of deactivating the corresponding selection mode aStandardActivation for all objects in Local Context which accept decomposition into sub-shapes.
 
-Returns:
-	None
-
-Provides an alternative to the Display methods when  
-deactivating specific selection modes. This has the  
-effect of deactivating the corresponding selection  
-mode aStandardActivation for all objects in Local  
-Context which accept decomposition into sub-shapes.") DeactivateStandardMode;
+	:param aStandardActivation:
+	:type aStandardActivation: TopAbs_ShapeEnum
+	:rtype: None
+") DeactivateStandardMode;
 		void DeactivateStandardMode (const TopAbs_ShapeEnum aStandardActivation);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_ListOfInteger
+		%feature("autodoc", "	* Returns the list of activated standard selection modes available in a local context.
 
-Returns the list of activated standard selection modes  
-available in a local context.") ActivatedStandardModes;
+	:rtype: TColStd_ListOfInteger
+") ActivatedStandardModes;
 		const TColStd_ListOfInteger & ActivatedStandardModes ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	SelectMgr_ListOfFilter
+		%feature("autodoc", "	* Returns the list of filters active in a local context.
 
-Returns the list of filters active in a local context.") Filters;
+	:rtype: SelectMgr_ListOfFilter
+") Filters;
 		const SelectMgr_ListOfFilter & Filters ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_Drawer
+		%feature("autodoc", "	* Returns the default attribute manager. This contains all the color and line attributes which can be used by interactive objects which do not have their own attributes.
 
-Returns the default attribute manager.  
-This contains all the color and line attributes which  
-can be used by interactive objects which do not have  
-their own attributes.") DefaultDrawer;
+	:rtype: Handle_Prs3d_Drawer
+") DefaultDrawer;
 		const Handle_Prs3d_Drawer & DefaultDrawer ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_V3d_Viewer
+		%feature("autodoc", "	* Returns the current viewer.
 
-Returns the current viewer.") CurrentViewer;
+	:rtype: Handle_V3d_Viewer
+") CurrentViewer;
 		const Handle_V3d_Viewer & CurrentViewer ();
-		%feature("autodoc", "Args:
-	aListOfIO(AIS_ListOfInteractive)
-	OnlyFromNeutral(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Returns the list of displayed objects of a particular Type WhichKind and Signature WhichSignature. By Default, WhichSignature equals -1. This means that there is a check on type only.
 
-Returns:
-	None
-
-Returns the list of displayed objects of a particular  
-Type WhichKind and Signature WhichSignature. By  
-Default, WhichSignature equals -1. This means that  
-there is a check on type only.") DisplayedObjects;
+	:param aListOfIO:
+	:type aListOfIO: AIS_ListOfInteractive &
+	:param OnlyFromNeutral: default value is Standard_False
+	:type OnlyFromNeutral: bool
+	:rtype: None
+") DisplayedObjects;
 		void DisplayedObjects (AIS_ListOfInteractive & aListOfIO,const Standard_Boolean OnlyFromNeutral = Standard_False);
-		%feature("autodoc", "Args:
-	WhichKind(AIS_KindOfInteractive)
-	WhichSignature(Standard_Integer)
-	aListOfIO(AIS_ListOfInteractive)
-	OnlyFromNeutral(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* gives the list of displayed objects of a particular Type and signature. by Default, <WhichSignature> = -1 means control only on <WhichKind>.
 
-Returns:
-	None
-
-gives the list of displayed objects of a particular  
-         Type and signature.  
-         by Default, <WhichSignature> = -1 means  
-         control only on <WhichKind>.") DisplayedObjects;
+	:param WhichKind:
+	:type WhichKind: AIS_KindOfInteractive
+	:param WhichSignature:
+	:type WhichSignature: Standard_Integer
+	:param aListOfIO:
+	:type aListOfIO: AIS_ListOfInteractive &
+	:param OnlyFromNeutral: default value is Standard_False
+	:type OnlyFromNeutral: bool
+	:rtype: None
+") DisplayedObjects;
 		void DisplayedObjects (const AIS_KindOfInteractive WhichKind,const Standard_Integer WhichSignature,AIS_ListOfInteractive & aListOfIO,const Standard_Boolean OnlyFromNeutral = Standard_False);
-		%feature("autodoc", "Args:
-	theListOfIO(AIS_ListOfInteractive)
+		%feature("autodoc", "	* Returns the list theListOfIO of erased objects (hidden objects) particular Type WhichKind and Signature WhichSignature. By Default, WhichSignature equals 1. This means that there is a check on type only.
 
-Returns:
-	None
-
-Returns the list theListOfIO of erased objects (hidden objects)  
-particular Type WhichKind and Signature WhichSignature.  
-By Default, WhichSignature equals 1. This means  
-that there is a check on type only.") ErasedObjects;
+	:param theListOfIO:
+	:type theListOfIO: AIS_ListOfInteractive &
+	:rtype: None
+") ErasedObjects;
 		void ErasedObjects (AIS_ListOfInteractive & theListOfIO);
-		%feature("autodoc", "Args:
-	WhichKind(AIS_KindOfInteractive)
-	WhichSignature(Standard_Integer)
-	theListOfIO(AIS_ListOfInteractive)
+		%feature("autodoc", "	* gives the list of erased objects (hidden objects) Type and signature by Default, <WhichSignature> = -1 means control only on <WhichKind>.
 
-Returns:
-	None
-
-gives the list of erased objects (hidden objects)  
-         Type and signature  
-         by Default, <WhichSignature> = -1 means  
-         control only on <WhichKind>.") ErasedObjects;
+	:param WhichKind:
+	:type WhichKind: AIS_KindOfInteractive
+	:param WhichSignature:
+	:type WhichSignature: Standard_Integer
+	:param theListOfIO:
+	:type theListOfIO: AIS_ListOfInteractive &
+	:rtype: None
+") ErasedObjects;
 		void ErasedObjects (const AIS_KindOfInteractive WhichKind,const Standard_Integer WhichSignature,AIS_ListOfInteractive & theListOfIO);
-		%feature("autodoc", "Args:
-	theStatus(AIS_DisplayStatus)
-	theListOfIO(AIS_ListOfInteractive)
+		%feature("autodoc", "	* Returns the list theListOfIO of objects with indicated display status particular Type WhichKind and Signature WhichSignature. By Default, WhichSignature equals 1. This means that there is a check on type only.
 
-Returns:
-	None
-
-Returns the list theListOfIO of objects with indicated display status  
-particular Type WhichKind and Signature WhichSignature.  
-By Default, WhichSignature equals 1. This means  
-that there is a check on type only.") ObjectsByDisplayStatus;
+	:param theStatus:
+	:type theStatus: AIS_DisplayStatus
+	:param theListOfIO:
+	:type theListOfIO: AIS_ListOfInteractive &
+	:rtype: None
+") ObjectsByDisplayStatus;
 		void ObjectsByDisplayStatus (const AIS_DisplayStatus theStatus,AIS_ListOfInteractive & theListOfIO);
-		%feature("autodoc", "Args:
-	WhichKind(AIS_KindOfInteractive)
-	WhichSignature(Standard_Integer)
-	theStatus(AIS_DisplayStatus)
-	theListOfIO(AIS_ListOfInteractive)
+		%feature("autodoc", "	* gives the list of objects with indicated display status Type and signature by Default, <WhichSignature> = -1 means control only on <WhichKind>.
 
-Returns:
-	None
-
-gives the list of objects with indicated display status  
-         Type and signature  
-         by Default, <WhichSignature> = -1 means  
-         control only on <WhichKind>.") ObjectsByDisplayStatus;
+	:param WhichKind:
+	:type WhichKind: AIS_KindOfInteractive
+	:param WhichSignature:
+	:type WhichSignature: Standard_Integer
+	:param theStatus:
+	:type theStatus: AIS_DisplayStatus
+	:param theListOfIO:
+	:type theListOfIO: AIS_ListOfInteractive &
+	:rtype: None
+") ObjectsByDisplayStatus;
 		void ObjectsByDisplayStatus (const AIS_KindOfInteractive WhichKind,const Standard_Integer WhichSignature,const AIS_DisplayStatus theStatus,AIS_ListOfInteractive & theListOfIO);
-		%feature("autodoc", "Args:
-	aListOfIO(AIS_ListOfInteractive)
-	WhichKind(AIS_KindOfInteractive)=AIS_KOI_None
-	WhichSignature(Standard_Integer)=- 1
+		%feature("autodoc", "	* fills <aListOfIO> with objects of a particular Type and Signature with no consideration of display status. by Default, <WhichSignature> = -1 means control only on <WhichKind>. if <WhichKind> = AIS_KOI_None and <WhichSignature> = -1, all the objects are put into the list.
 
-Returns:
-	None
-
-fills <aListOfIO> with objects of a particular  
-         Type and Signature with no consideration of display status.  
-         by Default, <WhichSignature> = -1 means  
-         control only on <WhichKind>.  
-         if <WhichKind> = AIS_KOI_None and <WhichSignature> = -1,  
-         all the objects are put into the list.") ObjectsInside;
+	:param aListOfIO:
+	:type aListOfIO: AIS_ListOfInteractive &
+	:param WhichKind: default value is AIS_KOI_None
+	:type WhichKind: AIS_KindOfInteractive
+	:param WhichSignature: default value is - 1
+	:type WhichSignature: Standard_Integer
+	:rtype: None
+") ObjectsInside;
 		void ObjectsInside (AIS_ListOfInteractive & aListOfIO,const AIS_KindOfInteractive WhichKind = AIS_KOI_None,const Standard_Integer WhichSignature = - 1);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if there is an open context.
 
-Returns true if there is an open context.") HasOpenedContext;
+	:rtype: bool
+") HasOpenedContext;
 		Standard_Boolean HasOpenedContext ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* Returns the name of the current selected entity in Neutral Point. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
 
-Returns the name of the current selected entity in Neutral Point.  
-Objects selected when there is no open local context  
-are called current objects; those selected in open  
-local context, selected objects.") CurrentName;
+	:rtype: TCollection_AsciiString
+") CurrentName;
 		const TCollection_AsciiString & CurrentName ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* Returns the name of the current selected entity in open local context. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
 
-Returns the name of the current selected entity in  
-open local context.  
-Objects selected when there is no open local context  
-are called current objects; those selected in open  
-local context, selected objects.") SelectionName;
+	:rtype: TCollection_AsciiString
+") SelectionName;
 		const TCollection_AsciiString & SelectionName ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	char *
+		%feature("autodoc", "	* Returns the domain name of the main viewer.
 
-Returns the domain name of the main viewer.") DomainOfMainViewer;
+	:rtype: char *
+") DomainOfMainViewer;
 		char * DomainOfMainViewer ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_LocalContext
+		%feature("autodoc", "	* This method is only intended for advanced operation, particularly with the aim to improve performance when many objects have to be selected together. Otherwise, you should use other (non-internal) methods of class AIS_InteractiveContext without trying to obtain an instance of AIS_LocalContext.
 
-This method is only intended for advanced operation, particularly with  
-the aim to improve performance when many objects have to be selected  
-together. Otherwise, you should use other (non-internal) methods of  
-class AIS_InteractiveContext without trying to obtain an instance of  
-AIS_LocalContext.") LocalContext;
+	:rtype: Handle_AIS_LocalContext
+") LocalContext;
 		Handle_AIS_LocalContext LocalContext ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_SelectMgr_SelectionManager
-
-No detailed docstring for this function.") SelectionManager;
+		%feature("autodoc", "	:rtype: Handle_SelectMgr_SelectionManager
+") SelectionManager;
 		const Handle_SelectMgr_SelectionManager & SelectionManager ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_PrsMgr_PresentationManager3d
-
-No detailed docstring for this function.") MainPrsMgr;
+		%feature("autodoc", "	:rtype: Handle_PrsMgr_PresentationManager3d
+") MainPrsMgr;
 		const Handle_PrsMgr_PresentationManager3d & MainPrsMgr ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_StdSelect_ViewerSelector3d
-
-No detailed docstring for this function.") MainSelector;
+		%feature("autodoc", "	:rtype: Handle_StdSelect_ViewerSelector3d
+") MainSelector;
 		const Handle_StdSelect_ViewerSelector3d & MainSelector ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_StdSelect_ViewerSelector3d
-
-No detailed docstring for this function.") LocalSelector;
+		%feature("autodoc", "	:rtype: Handle_StdSelect_ViewerSelector3d
+") LocalSelector;
 		Handle_StdSelect_ViewerSelector3d LocalSelector ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Clears all the structures which don't belong to objects displayed at neutral point only effective when no Local Context is opened... returns the number of removed structures from the viewers.
 
-Clears all the structures which don't  
-         belong to objects displayed at neutral point  
-         only effective when no Local Context is opened...  
-         returns the number of removed  structures from the viewers.") PurgeDisplay;
+	:rtype: int
+") PurgeDisplay;
 		Standard_Integer PurgeDisplay ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") HighestIndex;
+		%feature("autodoc", "	:rtype: int
+") HighestIndex;
 		Standard_Integer HighestIndex ();
-		%feature("autodoc", "Args:
-	aView(Handle_V3d_View)
-
-Returns:
-	None
-
-No detailed docstring for this function.") DisplayActiveAreas;
+		%feature("autodoc", "	:param aView:
+	:type aView: Handle_V3d_View &
+	:rtype: None
+") DisplayActiveAreas;
 		void DisplayActiveAreas (const Handle_V3d_View & aView);
-		%feature("autodoc", "Args:
-	aView(Handle_V3d_View)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ClearActiveAreas;
+		%feature("autodoc", "	:param aView:
+	:type aView: Handle_V3d_View &
+	:rtype: None
+") ClearActiveAreas;
 		void ClearActiveAreas (const Handle_V3d_View & aView);
-		%feature("autodoc", "Args:
-	aView(Handle_V3d_View)
-
-Returns:
-	None
-
-No detailed docstring for this function.") DisplayActiveSensitive;
+		%feature("autodoc", "	:param aView:
+	:type aView: Handle_V3d_View &
+	:rtype: None
+") DisplayActiveSensitive;
 		void DisplayActiveSensitive (const Handle_V3d_View & aView);
-		%feature("autodoc", "Args:
-	aView(Handle_V3d_View)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ClearActiveSensitive;
+		%feature("autodoc", "	:param aView:
+	:type aView: Handle_V3d_View &
+	:rtype: None
+") ClearActiveSensitive;
 		void ClearActiveSensitive (const Handle_V3d_View & aView);
-		%feature("autodoc", "Args:
-	anObject(Handle_AIS_InteractiveObject)
-	aView(Handle_V3d_View)
-
-Returns:
-	None
-
-No detailed docstring for this function.") DisplayActiveSensitive;
+		%feature("autodoc", "	:param anObject:
+	:type anObject: Handle_AIS_InteractiveObject &
+	:param aView:
+	:type aView: Handle_V3d_View &
+	:rtype: None
+") DisplayActiveSensitive;
 		void DisplayActiveSensitive (const Handle_AIS_InteractiveObject & anObject,const Handle_V3d_View & aView);
-		%feature("autodoc", "Args:
-	anObject(Handle_AIS_InteractiveObject)
-	aView(Handle_V3d_View)
-
-Returns:
-	None
-
-No detailed docstring for this function.") DisplayActiveAreas;
+		%feature("autodoc", "	:param anObject:
+	:type anObject: Handle_AIS_InteractiveObject &
+	:param aView:
+	:type aView: Handle_V3d_View &
+	:rtype: None
+") DisplayActiveAreas;
 		void DisplayActiveAreas (const Handle_AIS_InteractiveObject & anObject,const Handle_V3d_View & aView);
-		%feature("autodoc", "Args:
-	anObject(Handle_AIS_InteractiveObject)
-	TheIndex(Standard_Integer)
+		%feature("autodoc", "	* returns if possible, the first local context where the object is seen
 
-Returns:
-	Standard_Boolean
-
-returns if possible,  
-         the first local context where the object is seen") IsInLocal;
+	:param anObject:
+	:type anObject: Handle_AIS_InteractiveObject &
+	:param TheIndex:
+	:type TheIndex: Standard_Integer &
+	:rtype: bool
+") IsInLocal;
 		Standard_Boolean IsInLocal (const Handle_AIS_InteractiveObject & anObject,Standard_Integer &OutValue);
 };
 
@@ -6342,751 +4601,404 @@ def __del__(self):
 %nodefaultctor AIS_InteractiveObject;
 class AIS_InteractiveObject : public SelectMgr_SelectableObject {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual AIS_KindOfInteractive
+		%feature("autodoc", "	* Returns the kind of Interactive Object: - None - Datum - Relation - Object By default, the interactive object has a None type. Because specific shapes entail different behavior according to their sub-shapes, you may need to create a Local Context. This will allow you to specify the additional characteristics which you need to handle these shapes.
 
-Returns the kind of Interactive Object:  
--   None  
--   Datum  
--   Relation  
--   Object  
-  By default, the   interactive object has a None type.  
-Because specific shapes entail different behavior  
-according to their sub-shapes, you may need to  
-create a Local Context. This will allow you to  
-specify the additional characteristics which you  
-need to handle these shapes.") Type;
+	:rtype: AIS_KindOfInteractive
+") Type;
 		virtual AIS_KindOfInteractive Type ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
+		%feature("autodoc", "	* Specifies additional characteristics of Interactive Objects. A signature is, in fact, an index with integer values assigned different properties. This method is frequently used in conjuction with Type to give a particular type and signature to an Interactive Object. By default, the Interactive Object has a None type and a signature of 0. Among the datums, this signature is attributed to the shape The remaining datums have the following default signatures: - Point  signature 1 - Axis signature 2 - Trihedron signature 3 - PlaneTrihedron signature 4 - Line signature 5 - Circle signature 6 - Plane  signature 7.
 
-Specifies additional characteristics of Interactive  
-Objects. A signature is, in fact, an index with integer  
-values assigned different properties.  
-This method is frequently used in conjuction with  
-Type to give a particular type and signature to an  
-Interactive Object. By default, the Interactive Object  
-has a None type and a signature of 0. Among the  
-datums, this signature is attributed to the shape  
-The remaining datums have the following default signatures:  
--   Point                   signature 1  
--   Axis                     signature 2  
--   Trihedron                signature 3  
--   PlaneTrihedron            signature 4  
--   Line                     signature 5  
--   Circle                  signature 6  
--   Plane                   signature 7.") Signature;
+	:rtype: int
+") Signature;
 		virtual Standard_Integer Signature ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Informs the graphic context that the interactive Object may be decomposed into sub-shapes for dynamic selection. The most used Interactive Object is AIS_Shape. Activation methods for standard selection modes are proposed in the Interactive Context. These include selection by vertex or by edges. For datums with the same behavior as AIS_Shape, such as vetices and edges, we must redefine the virtual method so that AcceptShapeDecomposition returns false. Rule for selection : Mode 0 : Selection of the interactive Object itself Mode 1 : Selection of vertices Mode 2 : Selection Of Edges Mode 3 : Selection Of Wires Mode 4 : Selection Of Faces ...
 
-Informs the graphic context that the interactive Object  
-may be decomposed into sub-shapes for dynamic selection.  
-The most used Interactive Object is AIS_Shape.  
-Activation methods for standard selection modes are  
-proposed in the Interactive Context. These include  
-selection by vertex or by edges. For datums with the  
-same behavior as AIS_Shape, such as vetices and  
-edges, we must redefine the virtual method so that  
-AcceptShapeDecomposition returns false.  
-     Rule for selection :  
-       Mode 0 :  Selection of  the interactive Object itself  
-       Mode 1 :  Selection of vertices  
-       Mode 2 :  Selection Of Edges  
-       Mode 3 :  Selection Of Wires  
-       Mode 4 :  Selection Of Faces ...") AcceptShapeDecomposition;
+	:rtype: bool
+") AcceptShapeDecomposition;
 		Standard_Boolean AcceptShapeDecomposition ();
-		%feature("autodoc", "Args:
-	aModel(Aspect_TypeOfFacingModel)=Aspect_TOFM_BOTH_SIDE
+		%feature("autodoc", "	* change the current facing model apply on polygons for SetColor(), SetTransparency(), SetMaterial() methods default facing model is Aspect_TOFM_TWO_SIDE. This mean that attributes is applying both on the front and back face.
 
-Returns:
-	None
-
-change the current facing model apply on polygons for  
-SetColor(), SetTransparency(), SetMaterial() methods  
-default facing model is Aspect_TOFM_TWO_SIDE. This mean that attributes is  
-applying both on the front and back face.") SetCurrentFacingModel;
+	:param aModel: default value is Aspect_TOFM_BOTH_SIDE
+	:type aModel: Aspect_TypeOfFacingModel
+	:rtype: None
+") SetCurrentFacingModel;
 		void SetCurrentFacingModel (const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_BOTH_SIDE);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_TypeOfFacingModel
+		%feature("autodoc", "	* Returns the current facing model which is in effect.
 
-Returns the current facing model which is in effect.") CurrentFacingModel;
+	:rtype: Aspect_TypeOfFacingModel
+") CurrentFacingModel;
 		Aspect_TypeOfFacingModel CurrentFacingModel ();
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetColor;
+		%feature("autodoc", "	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: void
+") SetColor;
 		virtual void SetColor (const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	aColor(Quantity_NameOfColor)
+		%feature("autodoc", "	* only the interactive obj knowns which Drawer attribute is affected by the color (ex: for a wire, it's the wireaspect field of the drawer, but for a vertex, only the point aspect field is affected by the color) WARNING : Do not forget to set the corresponding fields here (hasOwnColor and myOwnColor)
 
-Returns:
-	virtual void
-
-only the interactive obj knowns which Drawer attribute  
-         is  affected by the color  (ex:  for a  wire, it's the  
-         wireaspect field of the drawer, but  for a vertex, only  
-         the point aspect field is affected by the color)  
-         WARNING : Do not forget to set the corresponding fields  
-         here (hasOwnColor and myOwnColor)") SetColor;
+	:param aColor:
+	:type aColor: Quantity_NameOfColor
+	:rtype: void
+") SetColor;
 		virtual void SetColor (const Quantity_NameOfColor aColor);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Removes color settings. Only the Interactive Object knows which Drawer attribute is affected by the color setting. For a wire, for example, wire aspect is the attribute affected. For a vertex, however, only point aspect is affected by the color setting.
 
-Removes color settings. Only the Interactive Object  
-knows which Drawer attribute is   affected by the color  
-setting. For a wire, for example, wire aspect is the  
-attribute affected. For a vertex, however, only point  
-aspect is affected by the color setting.") UnsetColor;
+	:rtype: void
+") UnsetColor;
 		virtual void UnsetColor ();
-		%feature("autodoc", "Args:
-	aValue(Standard_Real)
+		%feature("autodoc", "	* Allows you to provide the setting aValue for width. Only the Interactive Object knows which Drawer attribute is affected by the width setting.
 
-Returns:
-	virtual void
-
-Allows you to provide the setting aValue for width.  
-Only the Interactive Object knows which Drawer  
-attribute is affected by the width setting.") SetWidth;
+	:param aValue:
+	:type aValue: float
+	:rtype: void
+") SetWidth;
 		virtual void SetWidth (const Standard_Real aValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") UnsetWidth;
+		%feature("autodoc", "	:rtype: void
+") UnsetWidth;
 		virtual void UnsetWidth ();
-		%feature("autodoc", "Args:
-	aMode(Standard_Integer)
+		%feature("autodoc", "	* Returns true if the class of objects accepts the display mode aMode. The interactive context can have a default mode of representation for the set of Interactive Objects. This mode may not be accepted by a given class of objects. Consequently, this virtual method allowing us to get information about the class in question must be implemented.
 
-Returns:
-	virtual Standard_Boolean
-
-Returns true if the class of objects accepts the display mode aMode.  
-The interactive context can have a default mode of  
-representation for the set of Interactive Objects. This  
-mode may not be accepted by a given class of  
-objects. Consequently, this virtual method allowing us  
-to get information about the class in question must be implemented.") AcceptDisplayMode;
+	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: bool
+") AcceptDisplayMode;
 		virtual Standard_Boolean AcceptDisplayMode (const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
+		%feature("autodoc", "	* Returns the default display mode. This method is to be implemented when the main mode is not mode 0.
 
-Returns the default display mode. This method is to  
-be implemented when the main mode is not mode 0.") DefaultDisplayMode;
+	:rtype: int
+") DefaultDisplayMode;
 		virtual Standard_Integer DefaultDisplayMode ();
-		%feature("autodoc", "Args:
-	AllModes(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Updates the active presentation; if <AllModes> = Standard_True all the presentations inside are recomputed.
 
-Returns:
-	None
-
-Updates the active presentation; if <AllModes> = Standard_True  
-         all the presentations inside are recomputed.") Redisplay;
+	:param AllModes: default value is Standard_False
+	:type AllModes: bool
+	:rtype: None
+") Redisplay;
 		void Redisplay (const Standard_Boolean AllModes = Standard_False);
-		%feature("autodoc", "Args:
-	aFlag(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Sets the infinite state flag aFlage. if <aFlag> = True , the interactiveObject is considered as infinite, i.e. its graphic presentations are not taken in account for View FitAll...
 
-Returns:
-	None
-
-Sets the infinite state flag aFlage.  
-if   <aFlag>   = True  ,  the   interactiveObject  is  
-         considered as infinite, i.e. its graphic presentations  
-         are not taken in account for View FitAll...") SetInfiniteState;
+	:param aFlag: default value is Standard_True
+	:type aFlag: bool
+	:rtype: None
+") SetInfiniteState;
 		void SetInfiniteState (const Standard_Boolean aFlag = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the interactive object is infinite. In this case, its graphic presentations are not taken into account in the fit-all view.
 
-Returns true if the interactive object is infinite. In this  
-case, its graphic presentations are not taken into  
-account in the fit-all view.") IsInfinite;
+	:rtype: bool
+") IsInfinite;
 		Standard_Boolean IsInfinite ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Indicates whether the Interactive Object has a pointer to an interactive context.
 
-Indicates whether the Interactive Object has a pointer  
-to an interactive context.") HasInteractiveContext;
+	:rtype: bool
+") HasInteractiveContext;
 		Standard_Boolean HasInteractiveContext ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_InteractiveContext
+		%feature("autodoc", "	* Returns the context pointer to the interactive context.
 
-Returns the context pointer to the interactive context.") GetContext;
+	:rtype: Handle_AIS_InteractiveContext
+") GetContext;
 		Handle_AIS_InteractiveContext GetContext ();
-		%feature("autodoc", "Args:
-	aCtx(Handle_AIS_InteractiveContext)
+		%feature("autodoc", "	* Sets the interactive context aCtx and provides a link to the default drawing tool or 'Drawer' if there is none.
 
-Returns:
-	virtual void
-
-Sets the interactive context aCtx and provides a link  
-to the default drawing tool or 'Drawer' if there is none.") SetContext;
+	:param aCtx:
+	:type aCtx: Handle_AIS_InteractiveContext &
+	:rtype: void
+") SetContext;
 		virtual void SetContext (const Handle_AIS_InteractiveContext & aCtx);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the object has an owner attributed to it. The owner can be a shape for a set of sub-shapes or a sub-shape for sub-shapes which it is composed of, and takes the form of a transient.
 
-Returns true if the object has an owner attributed to it.  
-The owner can be a shape for a set of sub-shapes or  
-a sub-shape for sub-shapes which it is composed of,  
-and takes the form of a transient.") HasOwner;
+	:rtype: bool
+") HasOwner;
 		Standard_Boolean HasOwner ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
+		%feature("autodoc", "	* Returns the owner of the Interactive Object. The owner can be a shape for a set of sub-shapes or a sub-shape for sub-shapes which it is composed of, and takes the form of a transient. There are two types of owners: - Direct owners, decomposition shapes such as edges, wires, and faces. - Users, presentable objects connecting to sensitive primitives, or a shape which has been decomposed.
 
-Returns the owner of the Interactive Object.  
-The owner can be a shape for a set of sub-shapes or  
-a sub-shape for sub-shapes which it is composed of,  
-and takes the form of a transient.  
-There are two types of owners:  
--   Direct owners, decomposition shapes such as  
-  edges, wires, and faces.  
--   Users, presentable objects connecting to sensitive  
-  primitives, or a shape which has been decomposed.") GetOwner;
+	:rtype: Handle_Standard_Transient
+") GetOwner;
 		const Handle_Standard_Transient & GetOwner ();
-		%feature("autodoc", "Args:
-	ApplicativeEntity(Handle_Standard_Transient)
+		%feature("autodoc", "	* Allows you to attribute the owner ApplicativeEntity to an Interactive Object. This can be a shape for a set of sub-shapes or a sub-shape for sub-shapes which it is composed of. The owner takes the form of a transient.
 
-Returns:
-	None
-
-Allows you to attribute the owner ApplicativeEntity to  
-an Interactive Object. This can be a shape for a set of  
-sub-shapes or a sub-shape for sub-shapes which it  
-is composed of. The owner takes the form of a transient.") SetOwner;
+	:param ApplicativeEntity:
+	:type ApplicativeEntity: Handle_Standard_Transient &
+	:rtype: None
+") SetOwner;
 		void SetOwner (const Handle_Standard_Transient & ApplicativeEntity);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Each Interactive Object has methods which allow us to attribute an Owner to it in the form of a Transient. This method removes the owner from the graphic entity.
 
-Each Interactive Object has methods which allow us  
-to attribute an Owner to it in the form of a Transient.  
-This method removes the owner from the graphic entity.") ClearOwner;
+	:rtype: None
+") ClearOwner;
 		void ClearOwner ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasUsers;
+		%feature("autodoc", "	:rtype: bool
+") HasUsers;
 		Standard_Boolean HasUsers ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_ListOfTransient
-
-No detailed docstring for this function.") Users;
+		%feature("autodoc", "	:rtype: TColStd_ListOfTransient
+") Users;
 		const TColStd_ListOfTransient & Users ();
-		%feature("autodoc", "Args:
-	aUser(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AddUser;
+		%feature("autodoc", "	:param aUser:
+	:type aUser: Handle_Standard_Transient &
+	:rtype: None
+") AddUser;
 		void AddUser (const Handle_Standard_Transient & aUser);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ClearUsers;
+		%feature("autodoc", "	:rtype: None
+") ClearUsers;
 		void ClearUsers ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the Interactive Object has a display mode setting. Otherwise, it is displayed in Neutral Point.
 
-Returns true if the Interactive Object has a display  
-mode setting. Otherwise, it is displayed in Neutral Point.") HasDisplayMode;
+	:rtype: bool
+") HasDisplayMode;
 		Standard_Boolean HasDisplayMode ();
-		%feature("autodoc", "Args:
-	aMode(Standard_Integer)
+		%feature("autodoc", "	* Sets the display mode aMode for the interactive object. An object can have its own temporary display mode, which is different from that proposed by the interactive context. The range of possibilities currently proposed is the following: - AIS_WireFrame - AIS_Shaded This range can, however, be extended through the creation of new display modes.
 
-Returns:
-	None
-
-Sets the display mode aMode for the interactive object.  
-An object can have its own temporary display mode,  
-which is different from that proposed by the interactive context.  
-The range of possibilities currently proposed is the following:  
--   AIS_WireFrame  
--   AIS_Shaded  
-  This range can, however, be extended through the creation of new display modes.") SetDisplayMode;
+	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: None
+") SetDisplayMode;
 		void SetDisplayMode (const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Removes display mode settings from the interactive object.
 
-Removes display mode settings from the interactive object.") UnsetDisplayMode;
+	:rtype: None
+") UnsetDisplayMode;
 		void UnsetDisplayMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the display mode setting of the Interactive Object. The range of possibilities is the following: - AIS_WireFrame - AIS_Shaded This range can, however, be extended through the creation of new display modes.
 
-Returns the display mode setting of the Interactive Object.  
-The range of possibilities is the following:  
--   AIS_WireFrame  
--   AIS_Shaded  
-  This range can, however, be extended through the  
-creation of new display modes.") DisplayMode;
+	:rtype: int
+") DisplayMode;
 		Standard_Integer DisplayMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Allows you to change the selection mode of an Interactive Object. The default selection mode setting is 0. For shapes, for example, the selection modes are as follows: - mode 0 - selection of the shape itself - mode 1 - selection of vertices - mode 2 - selection of edges - mode 3 - selection of wires - mode 4 - selection of faces - mode 5 - selection of shells - mode 6 - selection of solids - mode 7 - selection of compounds For trihedra, on the other hand, the selection modes are the following four: - mode 0 - selection of a trihedron - mode 1 - selection of its origin - mode 2 - selection of its axes - mode 3 - selection of its planes
 
-Allows you to change the selection mode of an  
-Interactive Object.  
-The default selection mode setting is 0.  
-For shapes, for example, the selection modes are as follows:  
--   mode 0 - selection of the shape itself  
--   mode 1 - selection of vertices  
--   mode 2 - selection of edges  
--   mode 3 - selection of wires  
--   mode 4 - selection of faces  
--   mode 5 - selection of shells  
--   mode 6 - selection of solids  
--   mode 7 - selection of compounds  
-  For trihedra, on the other hand, the selection modes are the following four:  
--   mode 0 - selection of a trihedron  
--   mode 1 - selection of its origin  
--   mode 2 - selection of its axes  
--   mode 3 - selection of its planes") HasSelectionMode;
+	:rtype: bool
+") HasSelectionMode;
 		Standard_Boolean HasSelectionMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the selection mode of the interactive object.
 
-Returns the selection mode of the interactive object.") SelectionMode;
+	:rtype: int
+") SelectionMode;
 		Standard_Integer SelectionMode ();
-		%feature("autodoc", "Args:
-	aMode(Standard_Integer)
+		%feature("autodoc", "	* You can change the default selection mode index aMode of an Interactive Object. This is only of interest if you decide that mode 0 adopted by convention will not do.
 
-Returns:
-	None
-
-You can change the default selection mode index  
-aMode of an Interactive Object.  
-This is only of interest if you decide that mode 0  
-adopted by convention will not do.") SetSelectionMode;
+	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: None
+") SetSelectionMode;
 		void SetSelectionMode (const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* You can change the default selection mode index of an Interactive Object. This is only of interest if you decide that the 0 mode adopted by convention will not do.
 
-You can change the default selection mode index of  
-an Interactive Object.  
-This is only of interest if you decide that the 0 mode  
-adopted by convention will not do.") UnsetSelectionMode;
+	:rtype: None
+") UnsetSelectionMode;
 		void UnsetSelectionMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the selection priority setting. -1 indicates that there is none. You can modify the selection priority of an owner to make one entity more selectionable than another one. The default selection priority for an owner is 5, for example. To increase selection priority, choose a setting between 5 and 10. An entity with priority 7 will take priority over one with a setting of 6 if both objects are selected at the same time. You could give vertices priority 8, edges priority 7, faces priority 6, and shapes priority 5. If a vertex, an edge and a face are simultaneously detected during selection, only the vertex will then be highlighted. For trihedra, for example, the default priorities are the following four: - priority 1 - a trihedron - priority 5 - its origin - priority 3 - its axes - priority 2 - its planes
 
-Returns the selection priority setting. -1 indicates that there is none.  
-You can modify the selection priority of an owner to  
-make one entity more selectionable than another one.  
-The default selection priority for an owner is 5, for  
-example. To increase selection priority, choose a  
-setting between 5 and 10. An entity with priority 7 will  
-take priority over one with a setting of 6 if both  
-objects are selected at the same time.  
-You could give vertices priority 8, edges priority 7,  
-faces priority 6, and shapes priority 5. If a vertex, an  
-edge and a face are simultaneously detected during  
-selection, only the vertex will then be highlighted.  
-For trihedra, for example, the default priorities are the following four:  
--   priority 1 - a trihedron  
--   priority 5 - its origin  
--   priority 3 - its axes  
--   priority 2 - its planes") SelectionPriority;
+	:rtype: int
+") SelectionPriority;
 		Standard_Integer SelectionPriority ();
-		%feature("autodoc", "Args:
-	aPriority(Standard_Integer)
+		%feature("autodoc", "	* Allows you to provide a setting aPriority for selection priority. You can modify selection priority of an owner to make one entity more selectionable than another one. The default selection priority for an owner is 5, for example. To increase selection priority, choose a setting between 5 and 10. An entity with priority 7 will take priority over one with a setting of 6.
 
-Returns:
-	None
-
-Allows you to provide a setting aPriority for selection priority.  
-You can modify selection priority of an owner to make  
-one entity more selectionable than another one. The  
-default selection priority for an owner is 5, for  
-example. To increase selection priority, choose a  
-setting between 5 and 10. An entity with priority 7 will  
-take priority over one with a setting of 6.") SetSelectionPriority;
+	:param aPriority:
+	:type aPriority: Standard_Integer
+	:rtype: None
+") SetSelectionPriority;
 		void SetSelectionPriority (const Standard_Integer aPriority);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Removes the setting for selection priority. SelectionPriority then returns -1.
 
-Removes the setting for selection priority. SelectionPriority then returns -1.") UnsetSelectionPriority;
+	:rtype: None
+") UnsetSelectionPriority;
 		void UnsetSelectionPriority ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if there is a setting for selection priority. You can modify selection priority of an owner to make one entity more selectionable than another one. The default selection priority for an owner is 5, for example. To increase selection priority, choose a setting between 5 and 10. An entity with priority 7 will take priority over one with a setting of 6.
 
-Returns true if there is a setting for selection priority.  
-You can modify selection priority of an owner to make  
-one entity more selectionable than another one. The  
-default selection priority for an owner is 5, for  
-example. To increase selection priority, choose a  
-setting between 5 and 10. An entity with priority 7 will  
-take priority over one with a setting of 6.") HasSelectionPriority;
+	:rtype: bool
+") HasSelectionPriority;
 		Standard_Boolean HasSelectionPriority ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the Interactive Object is in highlight mode.
 
-Returns true if the Interactive Object is in highlight mode.") HasHilightMode;
+	:rtype: bool
+") HasHilightMode;
 		Standard_Boolean HasHilightMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the setting for highlight mode. At dynamic detection, the presentation echoed by the Interactive Context, is by default the presentation already on the screen. You can specify a Highlight presentation mode which is valid no matter what the active representation of the object. It makes no difference whether this choice is temporary or definitive. To do this, we use the following functions: - SetHilightMode - UnSetHilightMode In the case of a shape, whether it is visualized in wireframe presentation or with shading, we want to systematically highlight the wireframe presentation. Consequently, we set the highlight mode to 0.
 
-Returns the setting for highlight mode.  
-At dynamic detection, the presentation echoed by the  
-Interactive Context, is by default the presentation  
-already on the screen. You can specify a Highlight  
-presentation mode which is valid no matter what the  
-active representation of the object. It makes no  
-difference whether this choice is temporary or  
-definitive.   To do this, we use the following functions:  
--   SetHilightMode  
--   UnSetHilightMode  
-  In the case of a shape, whether it is visualized in  
-wireframe presentation or with shading, we want to  
-systematically highlight the wireframe presentation.  
-Consequently, we set the highlight mode to 0.") HilightMode;
+	:rtype: int
+") HilightMode;
 		Standard_Integer HilightMode ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
+		%feature("autodoc", "	* Sets the highlight mode anIndex for the interactive object. If, for example, you want to systematically highlight the wireframe presentation of a shape - whether visualized in wireframe presentation or with shading - you set the highlight mode to 0.
 
-Returns:
-	None
-
-Sets the highlight mode anIndex for the interactive object.  
-If, for example, you want to systematically highlight  
-the wireframe presentation of a shape - whether  
-visualized in wireframe presentation or with shading -  
-you set the highlight mode to 0.") SetHilightMode;
+	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") SetHilightMode;
 		void SetHilightMode (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Allows the user to take a given Prs for hilight ex : for a shape which would be displayed in shading mode the hilight Prs is the wireframe mode. if No specific hilight mode is defined, the displayed Prs will be the hilighted one.
 
-Allows the user to take a given Prs for hilight  
-         ex : for a shape which would be displayed in shading mode  
-         the hilight Prs is the wireframe mode.  
-         if No specific hilight mode is defined, the displayed Prs  
-         will be the hilighted one.") UnsetHilightMode;
+	:rtype: None
+") UnsetHilightMode;
 		void UnsetHilightMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the Interactive Object has color.
 
-Returns true if the Interactive Object has color.") HasColor;
+	:rtype: bool
+") HasColor;
 		Standard_Boolean HasColor ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_NameOfColor
+		%feature("autodoc", "	* Returns the color setting of the Interactive Object.
 
-Returns the color setting of the Interactive Object.") Color;
+	:rtype: Quantity_NameOfColor
+") Color;
 		Quantity_NameOfColor Color ();
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Color;
+		%feature("autodoc", "	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: None
+") Color;
 		void Color (Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the Interactive Object has width.
 
-Returns true if the Interactive Object has width.") HasWidth;
+	:rtype: bool
+") HasWidth;
 		Standard_Boolean HasWidth ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the width setting of the Interactive Object.
 
-Returns the width setting of the Interactive Object.") Width;
+	:rtype: float
+") Width;
 		Standard_Real Width ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the Interactive Object has a setting for material.
 
-Returns true if the Interactive Object has a setting for material.") HasMaterial;
+	:rtype: bool
+") HasMaterial;
 		Standard_Boolean HasMaterial ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Graphic3d_NameOfMaterial
+		%feature("autodoc", "	* Returns the current material setting. This will be on of the following materials: - Brass - Bronze - Gold - Pewter - Silver - Stone.
 
-Returns the current material setting.  
-This will be on of the following materials:  
--   Brass  
--   Bronze  
--   Gold  
--   Pewter  
--   Silver  
--   Stone.") Material;
+	:rtype: Graphic3d_NameOfMaterial
+") Material;
 		virtual Graphic3d_NameOfMaterial Material ();
-		%feature("autodoc", "Args:
-	aName(Graphic3d_NameOfMaterial)
+		%feature("autodoc", "	* Sets the name aName for material defining this display attribute for the interactive object. Material aspect determines shading aspect, color and transparency of visible entities.
 
-Returns:
-	virtual void
-
-Sets the name aName for material defining this  
-display attribute for the interactive object.  
-Material aspect determines shading aspect, color and  
-transparency of visible entities.") SetMaterial;
+	:param aName:
+	:type aName: Graphic3d_NameOfMaterial
+	:rtype: void
+") SetMaterial;
 		virtual void SetMaterial (const Graphic3d_NameOfMaterial aName);
-		%feature("autodoc", "Args:
-	aName(Graphic3d_MaterialAspect)
+		%feature("autodoc", "	* Sets the material aMat defining this display attribute for the interactive object. Material aspect determines shading aspect, color and transparency of visible entities.
 
-Returns:
-	virtual void
-
-Sets the material aMat defining this display attribute  
-for the interactive object.  
-Material aspect determines shading aspect, color and  
-transparency of visible entities.") SetMaterial;
+	:param aName:
+	:type aName: Graphic3d_MaterialAspect &
+	:rtype: void
+") SetMaterial;
 		virtual void SetMaterial (const Graphic3d_MaterialAspect & aName);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Removes the setting for material.
 
-Removes the setting for material.") UnsetMaterial;
+	:rtype: void
+") UnsetMaterial;
 		virtual void UnsetMaterial ();
-		%feature("autodoc", "Args:
-	aValue(Standard_Real)=0.6
+		%feature("autodoc", "	* Attributes a setting aValue for transparency. The transparency value should be between 0.0 and 1.0. At 0.0 an object will be totally opaque, and at 1.0, fully transparent. Warning At a value of 1.0, there may be nothing visible.
 
-Returns:
-	virtual void
-
-Attributes a setting aValue for transparency.  
-The transparency value should be between 0.0 and 1.0.  
-At 0.0 an object will be totally opaque, and at 1.0, fully transparent.  
-Warning At a value of 1.0, there may be nothing visible.") SetTransparency;
+	:param aValue: default value is 0.6
+	:type aValue: float
+	:rtype: void
+") SetTransparency;
 		virtual void SetTransparency (const Standard_Real aValue = 0.6);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if there is a transparency setting.
 
-Returns true if there is a transparency setting.") IsTransparent;
+	:rtype: bool
+") IsTransparent;
 		Standard_Boolean IsTransparent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Real
+		%feature("autodoc", "	* Returns the transparency setting. This will be between 0.0 and 1.0. At 0.0 an object will be totally opaque, and at 1.0, fully transparent.
 
-Returns the transparency setting.  
-This will be between 0.0 and 1.0.  
-At 0.0 an object will be totally opaque, and at 1.0, fully transparent.") Transparency;
+	:rtype: float
+") Transparency;
 		virtual Standard_Real Transparency ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Removes the transparency setting. The object is opaque by default.
 
-Removes the transparency setting. The object is opaque by default.") UnsetTransparency;
+	:rtype: void
+") UnsetTransparency;
 		virtual void UnsetTransparency ();
-		%feature("autodoc", "Args:
-	aDrawer(Handle_AIS_Drawer)
+		%feature("autodoc", "	* Initializes the drawing tool aDrawer.
 
-Returns:
-	virtual void
-
-Initializes the drawing tool aDrawer.") SetAttributes;
+	:param aDrawer:
+	:type aDrawer: Handle_AIS_Drawer &
+	:rtype: void
+") SetAttributes;
 		virtual void SetAttributes (const Handle_AIS_Drawer & aDrawer);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_Drawer
+		%feature("autodoc", "	* Returns the attributes settings.
 
-Returns the attributes settings.") Attributes;
+	:rtype: Handle_AIS_Drawer
+") Attributes;
 		const Handle_AIS_Drawer & Attributes ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Clears settings provided by the drawing tool aDrawer.
 
-Clears settings provided by the drawing tool aDrawer.") UnsetAttributes;
+	:rtype: void
+") UnsetAttributes;
 		virtual void UnsetAttributes ();
-		%feature("autodoc", "Args:
-	theState(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") State;
+		%feature("autodoc", "	:param theState:
+	:type theState: Standard_Integer
+	:rtype: None
+") State;
 		void State (const Standard_Integer theState);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") State;
+		%feature("autodoc", "	:rtype: int
+") State;
 		Standard_Integer State ();
-		%feature("autodoc", "Args:
-	aTranformation(Handle_Geom_Transformation)
-	postConcatenate(Standard_Boolean)=Standard_False
-	updateSelection(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Transforms all presentations of the object and replace the actual transformation matrix if <postConcatenate> is False. Note that the selection must be updated only at the end of object animation when <updateSelection> is True
 
-Returns:
-	None
-
-Transforms all presentations of the object  
- and replace the actual transformation matrix if <postConcatenate> is FALSE.  
-Note that the selection  must be updated only at the end of  
-object animation when <updateSelection> is TRUE") SetTransformation;
+	:param aTranformation:
+	:type aTranformation: Handle_Geom_Transformation &
+	:param postConcatenate: default value is Standard_False
+	:type postConcatenate: bool
+	:param updateSelection: default value is Standard_True
+	:type updateSelection: bool
+	:rtype: None
+") SetTransformation;
 		void SetTransformation (const Handle_Geom_Transformation & aTranformation,const Standard_Boolean postConcatenate = Standard_False,const Standard_Boolean updateSelection = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Deactivate the current transformation
 
-Deactivate the current transformation") UnsetTransformation;
+	:rtype: None
+") UnsetTransformation;
 		void UnsetTransformation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_Transformation
+		%feature("autodoc", "	* Returns the current transformation associated to the first available presentation of this object.
 
-Returns the current transformation associated  
-to the first available presentation of this object.") Transformation;
+	:rtype: Handle_Geom_Transformation
+") Transformation;
 		Handle_Geom_Transformation Transformation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True when this object is transformed
 
-Returns TRUE when this object is transformed") HasTransformation;
+	:rtype: bool
+") HasTransformation;
 		Standard_Boolean HasTransformation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True when this object has a presentation in the current DisplayMode()
 
-Returns TRUE when this object has a presentation  
-         in the current DisplayMode()") HasPresentation;
+	:rtype: bool
+") HasPresentation;
 		Standard_Boolean HasPresentation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_Presentation
+		%feature("autodoc", "	* Returns the current presentation of this object according to the current DisplayMode()
 
-Returns the current presentation of this object  
-         according to the current DisplayMode()") Presentation;
+	:rtype: Handle_Prs3d_Presentation
+") Presentation;
 		Handle_Prs3d_Presentation Presentation ();
-		%feature("autodoc", "Args:
-	anAspect(Handle_Prs3d_BasicAspect)
-	globalChange(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Sets the graphic basic aspect to the current presentation. When <globalChange> is True , the full object presentation is changed. When <globalChange> is False , only the current group of the object presentation is changed.
 
-Returns:
-	None
-
-Sets the graphic basic aspect to the current presentation.  
-         When <globalChange> is TRUE , the full object presentation  
-         is changed.  
-         When <globalChange> is FALSE , only the current group  
-         of the object presentation is changed.") SetAspect;
+	:param anAspect:
+	:type anAspect: Handle_Prs3d_BasicAspect &
+	:param globalChange: default value is Standard_True
+	:type globalChange: bool
+	:rtype: None
+") SetAspect;
 		void SetAspect (const Handle_Prs3d_BasicAspect & anAspect,const Standard_Boolean globalChange = Standard_True);
-		%feature("autodoc", "Args:
-	aMode(Standard_Integer)
-	aFactor(Standard_ShortReal)=1.0
-	aUnits(Standard_ShortReal)=0.0
+		%feature("autodoc", "	* Sets up polygon offsets for this object. It modifies all existing presentations of <anObj> (if any), so it is reasonable to call this method after <anObj> has been displayed. Otherwise, Compute() method should pass Graphic3d_AspectFillArea3d aspect from <myDrawer> to Graphic3d_Group to make polygon offsets work.  <aMode> parameter can contain various combinations of Aspect_PolygonOffsetMode enumeration elements (Aspect_POM_None means that polygon offsets are not changed). If <aMode> is different from Aspect_POM_Off and Aspect_POM_None, then <aFactor> and <aUnits> arguments are used by graphic renderer to calculate a depth offset value:  offset = <aFactor> * m + <aUnits> * r, where m - maximum depth slope for the polygon currently being displayed, r - minimum window coordinates depth resolution (implementation-specific).  Deafult settings for OCC 3D viewer: mode = Aspect_POM_Fill, factor = 1., units = 0.  Negative offset values move polygons closer to the viewport, while positive values shift polygons away. Consult OpenGL reference for details (glPolygonOffset function description).  NOTE: This method has a side effect - it creates own shading aspect if not yet created, so it is better to set up object material, color, etc. first.
 
-Returns:
-	virtual void
-
-Sets up polygon offsets for this object.  
-         It modifies all existing presentations of <anObj> (if any),  
-         so it is reasonable to call this method after <anObj> has been displayed.  
-         Otherwise, Compute() method should pass Graphic3d_AspectFillArea3d  
-         aspect from <myDrawer> to Graphic3d_Group to make polygon offsets work.  
- 
-         <aMode> parameter can contain various combinations of  
-         Aspect_PolygonOffsetMode enumeration elements (Aspect_POM_None means  
-         that polygon offsets are not changed).  
-         If <aMode> is different from Aspect_POM_Off and Aspect_POM_None, then <aFactor> and <aUnits>  
-         arguments are used by graphic renderer to calculate a depth offset value:  
- 
-         offset = <aFactor> * m + <aUnits> * r, where  
-         m - maximum depth slope for the polygon currently being displayed,  
-         r - minimum window coordinates depth resolution (implementation-specific).  
- 
-         Deafult settings for OCC 3D viewer: mode = Aspect_POM_Fill, factor = 1., units = 0.  
- 
-         Negative offset values move polygons closer to the viewport,  
-         while positive values shift polygons away.  
-         Consult OpenGL reference for details (glPolygonOffset function description).  
- 
-         NOTE: This method has a side effect - it creates own shading aspect  
-         if not yet created, so it is better to set up object material,  
-         color, etc. first.") SetPolygonOffsets;
+	:param aMode:
+	:type aMode: Standard_Integer
+	:param aFactor: default value is 1.0
+	:type aFactor: Standard_ShortReal
+	:param aUnits: default value is 0.0
+	:type aUnits: Standard_ShortReal
+	:rtype: void
+") SetPolygonOffsets;
 		virtual void SetPolygonOffsets (const Standard_Integer aMode,const Standard_ShortReal aFactor = 1.0,const Standard_ShortReal aUnits = 0.0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Returns Standard_True if <myDrawer> has non-null shading aspect
 
-Returns Standard_True if <myDrawer> has non-null shading aspect") HasPolygonOffsets;
+	:rtype: bool
+") HasPolygonOffsets;
 		virtual Standard_Boolean HasPolygonOffsets ();
-		%feature("autodoc", "Args:
-	aMode(Standard_Integer)
-	aFactor(Standard_ShortReal)
-	aUnits(Standard_ShortReal)
+		%feature("autodoc", "	* Retrieves current polygon offsets settings from <myDrawer>.
 
-Returns:
-	virtual void
-
-Retrieves current polygon offsets settings from <myDrawer>.") PolygonOffsets;
+	:param aMode:
+	:type aMode: Standard_Integer &
+	:param aFactor:
+	:type aFactor: Standard_ShortReal &
+	:param aUnits:
+	:type aUnits: Standard_ShortReal &
+	:rtype: void
+") PolygonOffsets;
 		virtual void PolygonOffsets (Standard_Integer &OutValue,Standard_ShortReal & aFactor,Standard_ShortReal & aUnits);
 };
 
@@ -7147,49 +5059,27 @@ def __del__(self):
 %nodefaultctor AIS_ListIteratorOfListOfInteractive;
 class AIS_ListIteratorOfListOfInteractive {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_ListIteratorOfListOfInteractive;
+		%feature("autodoc", "	:rtype: None
+") AIS_ListIteratorOfListOfInteractive;
 		 AIS_ListIteratorOfListOfInteractive ();
-		%feature("autodoc", "Args:
-	L(AIS_ListOfInteractive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_ListIteratorOfListOfInteractive;
+		%feature("autodoc", "	:param L:
+	:type L: AIS_ListOfInteractive &
+	:rtype: None
+") AIS_ListIteratorOfListOfInteractive;
 		 AIS_ListIteratorOfListOfInteractive (const AIS_ListOfInteractive & L);
-		%feature("autodoc", "Args:
-	L(AIS_ListOfInteractive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: AIS_ListOfInteractive &
+	:rtype: None
+") Initialize;
 		void Initialize (const AIS_ListOfInteractive & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_InteractiveObject
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
+") Value;
 		Handle_AIS_InteractiveObject & Value ();
 };
 
@@ -7211,21 +5101,15 @@ def __del__(self):
 %nodefaultctor AIS_ListNodeOfListOfInteractive;
 class AIS_ListNodeOfListOfInteractive : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_AIS_InteractiveObject)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_ListNodeOfListOfInteractive;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_AIS_InteractiveObject &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") AIS_ListNodeOfListOfInteractive;
 		 AIS_ListNodeOfListOfInteractive (const Handle_AIS_InteractiveObject & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_InteractiveObject
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
+") Value;
 		Handle_AIS_InteractiveObject & Value ();
 };
 
@@ -7286,164 +5170,103 @@ def __del__(self):
 %nodefaultctor AIS_ListOfInteractive;
 class AIS_ListOfInteractive {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_ListOfInteractive;
+		%feature("autodoc", "	:rtype: None
+") AIS_ListOfInteractive;
 		 AIS_ListOfInteractive ();
-		%feature("autodoc", "Args:
-	Other(AIS_ListOfInteractive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: AIS_ListOfInteractive &
+	:rtype: None
+") Assign;
 		void Assign (const AIS_ListOfInteractive & Other);
-		%feature("autodoc", "Args:
-	Other(AIS_ListOfInteractive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: AIS_ListOfInteractive &
+	:rtype: None
+") operator=;
 		void operator = (const AIS_ListOfInteractive & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(Handle_AIS_InteractiveObject)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_AIS_InteractiveObject &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_AIS_InteractiveObject & I);
-		%feature("autodoc", "Args:
-	I(Handle_AIS_InteractiveObject)
-	theIt(AIS_ListIteratorOfListOfInteractive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_AIS_InteractiveObject &
+	:param theIt:
+	:type theIt: AIS_ListIteratorOfListOfInteractive &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_AIS_InteractiveObject & I,AIS_ListIteratorOfListOfInteractive & theIt);
-		%feature("autodoc", "Args:
-	Other(AIS_ListOfInteractive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: AIS_ListOfInteractive &
+	:rtype: None
+") Prepend;
 		void Prepend (AIS_ListOfInteractive & Other);
-		%feature("autodoc", "Args:
-	I(Handle_AIS_InteractiveObject)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_AIS_InteractiveObject &
+	:rtype: None
+") Append;
 		void Append (const Handle_AIS_InteractiveObject & I);
-		%feature("autodoc", "Args:
-	I(Handle_AIS_InteractiveObject)
-	theIt(AIS_ListIteratorOfListOfInteractive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_AIS_InteractiveObject &
+	:param theIt:
+	:type theIt: AIS_ListIteratorOfListOfInteractive &
+	:rtype: None
+") Append;
 		void Append (const Handle_AIS_InteractiveObject & I,AIS_ListIteratorOfListOfInteractive & theIt);
-		%feature("autodoc", "Args:
-	Other(AIS_ListOfInteractive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: AIS_ListOfInteractive &
+	:rtype: None
+") Append;
 		void Append (AIS_ListOfInteractive & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_InteractiveObject
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
+") First;
 		Handle_AIS_InteractiveObject & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_InteractiveObject
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
+") Last;
 		Handle_AIS_InteractiveObject & Last ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(AIS_ListIteratorOfListOfInteractive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: AIS_ListIteratorOfListOfInteractive &
+	:rtype: None
+") Remove;
 		void Remove (AIS_ListIteratorOfListOfInteractive & It);
-		%feature("autodoc", "Args:
-	I(Handle_AIS_InteractiveObject)
-	It(AIS_ListIteratorOfListOfInteractive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_AIS_InteractiveObject &
+	:param It:
+	:type It: AIS_ListIteratorOfListOfInteractive &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Handle_AIS_InteractiveObject & I,AIS_ListIteratorOfListOfInteractive & It);
-		%feature("autodoc", "Args:
-	Other(AIS_ListOfInteractive)
-	It(AIS_ListIteratorOfListOfInteractive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: AIS_ListOfInteractive &
+	:param It:
+	:type It: AIS_ListIteratorOfListOfInteractive &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (AIS_ListOfInteractive & Other,AIS_ListIteratorOfListOfInteractive & It);
-		%feature("autodoc", "Args:
-	I(Handle_AIS_InteractiveObject)
-	It(AIS_ListIteratorOfListOfInteractive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_AIS_InteractiveObject &
+	:param It:
+	:type It: AIS_ListIteratorOfListOfInteractive &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Handle_AIS_InteractiveObject & I,AIS_ListIteratorOfListOfInteractive & It);
-		%feature("autodoc", "Args:
-	Other(AIS_ListOfInteractive)
-	It(AIS_ListIteratorOfListOfInteractive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: AIS_ListOfInteractive &
+	:param It:
+	:type It: AIS_ListIteratorOfListOfInteractive &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (AIS_ListOfInteractive & Other,AIS_ListIteratorOfListOfInteractive & It);
 };
 
@@ -7465,891 +5288,608 @@ def __del__(self):
 %nodefaultctor AIS_LocalContext;
 class AIS_LocalContext : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_LocalContext;
+		%feature("autodoc", "	:rtype: None
+") AIS_LocalContext;
 		 AIS_LocalContext ();
-		%feature("autodoc", "Args:
-	aCtx(Handle_AIS_InteractiveContext)
-	anIndex(Standard_Integer)
-	LoadDisplayed(Standard_Boolean)=Standard_True
-	AcceptStandardModes(Standard_Boolean)=Standard_True
-	AcceptErase(Standard_Boolean)=Standard_False
-	UseBothViewers(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Constructor By Default, the displayed objects are automatically loaded.
 
-Returns:
-	None
-
-Constructor By Default, the  displayed objects are  
-         automatically loaded.") AIS_LocalContext;
+	:param aCtx:
+	:type aCtx: Handle_AIS_InteractiveContext &
+	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param LoadDisplayed: default value is Standard_True
+	:type LoadDisplayed: bool
+	:param AcceptStandardModes: default value is Standard_True
+	:type AcceptStandardModes: bool
+	:param AcceptErase: default value is Standard_False
+	:type AcceptErase: bool
+	:param UseBothViewers: default value is Standard_False
+	:type UseBothViewers: bool
+	:rtype: None
+") AIS_LocalContext;
 		 AIS_LocalContext (const Handle_AIS_InteractiveContext & aCtx,const Standard_Integer anIndex,const Standard_Boolean LoadDisplayed = Standard_True,const Standard_Boolean AcceptStandardModes = Standard_True,const Standard_Boolean AcceptErase = Standard_False,const Standard_Boolean UseBothViewers = Standard_False);
-		%feature("autodoc", "Args:
-	aStatus(Standard_Boolean)
+		%feature("autodoc", "	* authorize or not others contexts to erase temporary displayed objects here;
 
-Returns:
-	None
-
-authorize or not others contexts to erase  
-         temporary displayed objects here;") AcceptErase;
+	:param aStatus:
+	:type aStatus: bool
+	:rtype: None
+") AcceptErase;
 		void AcceptErase (const Standard_Boolean aStatus);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") AcceptErase;
+		%feature("autodoc", "	:rtype: bool
+") AcceptErase;
 		Standard_Boolean AcceptErase ();
-		%feature("autodoc", "Args:
-	aCtx(Handle_AIS_InteractiveContext)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetContext;
+		%feature("autodoc", "	:param aCtx:
+	:type aCtx: Handle_AIS_InteractiveContext &
+	:rtype: None
+") SetContext;
 		void SetContext (const Handle_AIS_InteractiveContext & aCtx);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
-
-No detailed docstring for this function.") SelectionName;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") SelectionName;
 		const TCollection_AsciiString & SelectionName ();
-		%feature("autodoc", "Args:
-	updateviewer(Standard_Boolean)=Standard_True
-
-Returns:
-	None
-
-No detailed docstring for this function.") Terminate;
+		%feature("autodoc", "	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") Terminate;
 		void Terminate (const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aPrj(Handle_Select3D_Projector)
+		%feature("autodoc", "	* compares the current projector of the localContext with <aPrj> returns True if the projectors are identical. (no need to update projection of selection primitives when closing the local context)....
 
-Returns:
-	Standard_Boolean
-
-compares the current projector of the localContext  
-         with <aPrj>  
-         returns True if the projectors are identical.  
-         (no need to update projection of selection primitives  
-         when closing the local context)....") HasSameProjector;
+	:param aPrj:
+	:type aPrj: Handle_Select3D_Projector &
+	:rtype: bool
+") HasSameProjector;
 		Standard_Boolean HasSameProjector (const Handle_Select3D_Projector & aPrj);
-		%feature("autodoc", "Args:
-	anInteractive(Handle_AIS_InteractiveObject)
-	DisplayMode(Standard_Integer)=0
-	AllowShapeDecomposition(Standard_Boolean)=Standard_True
-	ActivationMode(Standard_Integer)=0
+		%feature("autodoc", "	* returns true if done...
 
-Returns:
-	Standard_Boolean
-
-returns true if done...") Display;
+	:param anInteractive:
+	:type anInteractive: Handle_AIS_InteractiveObject &
+	:param DisplayMode: default value is 0
+	:type DisplayMode: Standard_Integer
+	:param AllowShapeDecomposition: default value is Standard_True
+	:type AllowShapeDecomposition: bool
+	:param ActivationMode: default value is 0
+	:type ActivationMode: Standard_Integer
+	:rtype: bool
+") Display;
 		Standard_Boolean Display (const Handle_AIS_InteractiveObject & anInteractive,const Standard_Integer DisplayMode = 0,const Standard_Boolean AllowShapeDecomposition = Standard_True,const Standard_Integer ActivationMode = 0);
-		%feature("autodoc", "Args:
-	anInteractive(Handle_AIS_InteractiveObject)
-	AllowShapeDecomposition(Standard_Boolean)=Standard_True
-	ActivationMode(Standard_Integer)=0
+		%feature("autodoc", "	* loads <anInteractive> with nodisplay... returns true if done
 
-Returns:
-	Standard_Boolean
-
-loads <anInteractive> with nodisplay...  
-         returns true if done") Load;
+	:param anInteractive:
+	:type anInteractive: Handle_AIS_InteractiveObject &
+	:param AllowShapeDecomposition: default value is Standard_True
+	:type AllowShapeDecomposition: bool
+	:param ActivationMode: default value is 0
+	:type ActivationMode: Standard_Integer
+	:rtype: bool
+") Load;
 		Standard_Boolean Load (const Handle_AIS_InteractiveObject & anInteractive,const Standard_Boolean AllowShapeDecomposition = Standard_True,const Standard_Integer ActivationMode = 0);
-		%feature("autodoc", "Args:
-	anInteractive(Handle_AIS_InteractiveObject)
+		%feature("autodoc", "	* returns true if done...
 
-Returns:
-	Standard_Boolean
-
-returns true if done...") Erase;
+	:param anInteractive:
+	:type anInteractive: Handle_AIS_InteractiveObject &
+	:rtype: bool
+") Erase;
 		Standard_Boolean Erase (const Handle_AIS_InteractiveObject & anInteractive);
-		%feature("autodoc", "Args:
-	aSelectable(Handle_AIS_InteractiveObject)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param aSelectable:
+	:type aSelectable: Handle_AIS_InteractiveObject &
+	:rtype: bool
+") Remove;
 		Standard_Boolean Remove (const Handle_AIS_InteractiveObject & aSelectable);
-		%feature("autodoc", "Args:
-	anInteractive(Handle_AIS_InteractiveObject)
-	aMode(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") ClearPrs;
+		%feature("autodoc", "	:param anInteractive:
+	:type anInteractive: Handle_AIS_InteractiveObject &
+	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: bool
+") ClearPrs;
 		Standard_Boolean ClearPrs (const Handle_AIS_InteractiveObject & anInteractive,const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	aStoredObject(Handle_AIS_InteractiveObject)
-	aStatus(Standard_Boolean)
+		%feature("autodoc", "	* allows or forbids the shape decomposition into Activated Standard Mode for <aStoredObject> does nothing if the object doesn't inherits BasicShape from AIS
 
-Returns:
-	None
-
-allows  or  forbids   the   shape  decomposition  into  
-         Activated Standard   Mode  for   <aStoredObject>  
-         does nothing if the object doesn't inherits  
-         BasicShape from AIS") SetShapeDecomposition;
+	:param aStoredObject:
+	:type aStoredObject: Handle_AIS_InteractiveObject &
+	:param aStatus:
+	:type aStatus: bool
+	:rtype: None
+") SetShapeDecomposition;
 		void SetShapeDecomposition (const Handle_AIS_InteractiveObject & aStoredObject,const Standard_Boolean aStatus);
-		%feature("autodoc", "Args:
-	atype(AIS_ClearMode)=AIS_CM_All
+		%feature("autodoc", "	* according to <atype> , clears the different parts of the selector (filters, modeof activation, objects...)
 
-Returns:
-	None
-
-according to <atype>  , clears the  different parts of  
-         the selector (filters, modeof activation, objects...)") Clear;
+	:param atype: default value is AIS_CM_All
+	:type atype: AIS_ClearMode
+	:rtype: None
+") Clear;
 		void Clear (const AIS_ClearMode atype = AIS_CM_All);
-		%feature("autodoc", "Args:
-	aSelectable(Handle_AIS_InteractiveObject)
-	aMode(Standard_Integer)
+		%feature("autodoc", "	* optional : activation of a mode which is not 0 for a selectable...
 
-Returns:
-	None
-
-optional : activation of a mode which is not 0 for a selectable...") ActivateMode;
+	:param aSelectable:
+	:type aSelectable: Handle_AIS_InteractiveObject &
+	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: None
+") ActivateMode;
 		void ActivateMode (const Handle_AIS_InteractiveObject & aSelectable,const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	aSelectable(Handle_AIS_InteractiveObject)
-	aMode(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") DeactivateMode;
+		%feature("autodoc", "	:param aSelectable:
+	:type aSelectable: Handle_AIS_InteractiveObject &
+	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: None
+") DeactivateMode;
 		void DeactivateMode (const Handle_AIS_InteractiveObject & aSelectable,const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	aSelectable(Handle_AIS_InteractiveObject)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Deactivate;
+		%feature("autodoc", "	:param aSelectable:
+	:type aSelectable: Handle_AIS_InteractiveObject &
+	:rtype: None
+") Deactivate;
 		void Deactivate (const Handle_AIS_InteractiveObject & aSelectable);
-		%feature("autodoc", "Args:
-	aType(TopAbs_ShapeEnum)
+		%feature("autodoc", "	* decomposition of shapes into <aType>
 
-Returns:
-	None
-
-decomposition of shapes into <aType>") ActivateStandardMode;
+	:param aType:
+	:type aType: TopAbs_ShapeEnum
+	:rtype: None
+") ActivateStandardMode;
 		void ActivateStandardMode (const TopAbs_ShapeEnum aType);
-		%feature("autodoc", "Args:
-	aType(TopAbs_ShapeEnum)
-
-Returns:
-	None
-
-No detailed docstring for this function.") DeactivateStandardMode;
+		%feature("autodoc", "	:param aType:
+	:type aType: TopAbs_ShapeEnum
+	:rtype: None
+") DeactivateStandardMode;
 		void DeactivateStandardMode (const TopAbs_ShapeEnum aType);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_ListOfInteger
-
-No detailed docstring for this function.") StandardModes;
+		%feature("autodoc", "	:rtype: TColStd_ListOfInteger
+") StandardModes;
 		const TColStd_ListOfInteger & StandardModes ();
-		%feature("autodoc", "Args:
-	aFilter(Handle_SelectMgr_Filter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AddFilter;
+		%feature("autodoc", "	:param aFilter:
+	:type aFilter: Handle_SelectMgr_Filter &
+	:rtype: None
+") AddFilter;
 		void AddFilter (const Handle_SelectMgr_Filter & aFilter);
-		%feature("autodoc", "Args:
-	aFilter(Handle_SelectMgr_Filter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFilter;
+		%feature("autodoc", "	:param aFilter:
+	:type aFilter: Handle_SelectMgr_Filter &
+	:rtype: None
+") RemoveFilter;
 		void RemoveFilter (const Handle_SelectMgr_Filter & aFilter);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	SelectMgr_ListOfFilter
-
-No detailed docstring for this function.") ListOfFilter;
+		%feature("autodoc", "	:rtype: SelectMgr_ListOfFilter
+") ListOfFilter;
 		const SelectMgr_ListOfFilter & ListOfFilter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_SelectMgr_OrFilter
-
-No detailed docstring for this function.") Filter;
+		%feature("autodoc", "	:rtype: Handle_SelectMgr_OrFilter
+") Filter;
 		const Handle_SelectMgr_OrFilter & Filter ();
-		%feature("autodoc", "Args:
-	aStatus(Standard_Boolean)
+		%feature("autodoc", "	* if <aStatus> = True , the shapes or subshapes detected by the selector will be automatically hilighted in the main viewer. Else the user has to manage the detected shape outside the Shape Selector....
 
-Returns:
-	None
-
-if <aStatus> = True , the shapes or subshapes detected  
-         by the selector will be automatically hilighted in the  
-         main viewer.  
-         Else the user has to manage the detected shape outside the  
-         Shape Selector....") SetAutomaticHilight;
+	:param aStatus:
+	:type aStatus: bool
+	:rtype: None
+") SetAutomaticHilight;
 		void SetAutomaticHilight (const Standard_Boolean aStatus);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") AutomaticHilight;
+		%feature("autodoc", "	:rtype: bool
+") AutomaticHilight;
 		Standard_Boolean AutomaticHilight ();
-		%feature("autodoc", "Args:
-	Xpix(Standard_Integer)
-	Ypix(Standard_Integer)
-	aview(Handle_V3d_View)
-
-Returns:
-	AIS_StatusOfDetection
-
-No detailed docstring for this function.") MoveTo;
+		%feature("autodoc", "	:param Xpix:
+	:type Xpix: Standard_Integer
+	:param Ypix:
+	:type Ypix: Standard_Integer
+	:param aview:
+	:type aview: Handle_V3d_View &
+	:rtype: AIS_StatusOfDetection
+") MoveTo;
 		AIS_StatusOfDetection MoveTo (const Standard_Integer Xpix,const Standard_Integer Ypix,const Handle_V3d_View & aview);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns True if more than one entity was detected at the last Mouse position.
 
-returns True if more than one entity  
-         was detected at the last Mouse position.") HasNextDetected;
+	:rtype: bool
+") HasNextDetected;
 		Standard_Boolean HasNextDetected ();
-		%feature("autodoc", "Args:
-	aView(Handle_V3d_View)
+		%feature("autodoc", "	* returns True if last detected. the next detected will be first one (endless loop)
 
-Returns:
-	Standard_Integer
-
-returns True if  last detected. the next detected will  
-         be first one (endless loop)") HilightNextDetected;
+	:param aView:
+	:type aView: Handle_V3d_View &
+	:rtype: int
+") HilightNextDetected;
 		Standard_Integer HilightNextDetected (const Handle_V3d_View & aView);
-		%feature("autodoc", "Args:
-	aView(Handle_V3d_View)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") HilightPreviousDetected;
+		%feature("autodoc", "	:param aView:
+	:type aView: Handle_V3d_View &
+	:rtype: int
+") HilightPreviousDetected;
 		Standard_Integer HilightPreviousDetected (const Handle_V3d_View & aView);
-		%feature("autodoc", "Args:
-	aView(Handle_V3d_View)
+		%feature("autodoc", "	* returns True if something was done...
 
-Returns:
-	Standard_Boolean
-
-returns True if something was done...") UnhilightLastDetected;
+	:param aView:
+	:type aView: Handle_V3d_View &
+	:rtype: bool
+") UnhilightLastDetected;
 		Standard_Boolean UnhilightLastDetected (const Handle_V3d_View & aView);
-		%feature("autodoc", "Args:
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* returns the number of selected
 
-Returns:
-	AIS_StatusOfPick
-
-returns the number of selected") Select;
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: AIS_StatusOfPick
+") Select;
 		AIS_StatusOfPick Select (const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	updateviewer(Standard_Boolean)=Standard_True
-
-Returns:
-	AIS_StatusOfPick
-
-No detailed docstring for this function.") ShiftSelect;
+		%feature("autodoc", "	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: AIS_StatusOfPick
+") ShiftSelect;
 		AIS_StatusOfPick ShiftSelect (const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	XPMin(Standard_Integer)
-	YPMin(Standard_Integer)
-	XPMax(Standard_Integer)
-	YPMax(Standard_Integer)
-	aView(Handle_V3d_View)
-	updateviewer(Standard_Boolean)=Standard_True
-
-Returns:
-	AIS_StatusOfPick
-
-No detailed docstring for this function.") Select;
+		%feature("autodoc", "	:param XPMin:
+	:type XPMin: Standard_Integer
+	:param YPMin:
+	:type YPMin: Standard_Integer
+	:param XPMax:
+	:type XPMax: Standard_Integer
+	:param YPMax:
+	:type YPMax: Standard_Integer
+	:param aView:
+	:type aView: Handle_V3d_View &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: AIS_StatusOfPick
+") Select;
 		AIS_StatusOfPick Select (const Standard_Integer XPMin,const Standard_Integer YPMin,const Standard_Integer XPMax,const Standard_Integer YPMax,const Handle_V3d_View & aView,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	XPMin(Standard_Integer)
-	YPMin(Standard_Integer)
-	XPMax(Standard_Integer)
-	YPMax(Standard_Integer)
-	aView(Handle_V3d_View)
-	updateviewer(Standard_Boolean)=Standard_True
-
-Returns:
-	AIS_StatusOfPick
-
-No detailed docstring for this function.") ShiftSelect;
+		%feature("autodoc", "	:param XPMin:
+	:type XPMin: Standard_Integer
+	:param YPMin:
+	:type YPMin: Standard_Integer
+	:param XPMax:
+	:type XPMax: Standard_Integer
+	:param YPMax:
+	:type YPMax: Standard_Integer
+	:param aView:
+	:type aView: Handle_V3d_View &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: AIS_StatusOfPick
+") ShiftSelect;
 		AIS_StatusOfPick ShiftSelect (const Standard_Integer XPMin,const Standard_Integer YPMin,const Standard_Integer XPMax,const Standard_Integer YPMax,const Handle_V3d_View & aView,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	Polyline(TColgp_Array1OfPnt2d)
-	aView(Handle_V3d_View)
-	updateviewer(Standard_Boolean)=Standard_True
-
-Returns:
-	AIS_StatusOfPick
-
-No detailed docstring for this function.") Select;
+		%feature("autodoc", "	:param Polyline:
+	:type Polyline: TColgp_Array1OfPnt2d
+	:param aView:
+	:type aView: Handle_V3d_View &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: AIS_StatusOfPick
+") Select;
 		AIS_StatusOfPick Select (const TColgp_Array1OfPnt2d & Polyline,const Handle_V3d_View & aView,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	Polyline(TColgp_Array1OfPnt2d)
-	aView(Handle_V3d_View)
-	updateviewer(Standard_Boolean)=Standard_True
-
-Returns:
-	AIS_StatusOfPick
-
-No detailed docstring for this function.") ShiftSelect;
+		%feature("autodoc", "	:param Polyline:
+	:type Polyline: TColgp_Array1OfPnt2d
+	:param aView:
+	:type aView: Handle_V3d_View &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: AIS_StatusOfPick
+") ShiftSelect;
 		AIS_StatusOfPick ShiftSelect (const TColgp_Array1OfPnt2d & Polyline,const Handle_V3d_View & aView,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	updateviewer(Standard_Boolean)=Standard_True
-
-Returns:
-	None
-
-No detailed docstring for this function.") HilightPicked;
+		%feature("autodoc", "	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") HilightPicked;
 		void HilightPicked (const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	updateviewer(Standard_Boolean)=Standard_True
-
-Returns:
-	None
-
-No detailed docstring for this function.") UnhilightPicked;
+		%feature("autodoc", "	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") UnhilightPicked;
 		void UnhilightPicked (const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	updateviewer(Standard_Boolean)=Standard_True
-
-Returns:
-	None
-
-No detailed docstring for this function.") UpdateSelected;
+		%feature("autodoc", "	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") UpdateSelected;
 		void UpdateSelected (const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	anobj(Handle_AIS_InteractiveObject)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Part of advanced selection highlighting mechanism. If no owners belonging to anobj are selected, calls anobj->ClearSelected(), otherwise calls anobj->HilightSelected(). This method can be used to avoid redrawing the whole selection belonging to several Selectable Objects.
 
-Returns:
-	None
-
-Part of advanced selection highlighting mechanism.  
-         If no owners belonging to anobj are selected, calls anobj->ClearSelected(),  
-         otherwise calls anobj->HilightSelected(). This method can be used to avoid  
-         redrawing the whole selection belonging to several Selectable Objects.") UpdateSelected;
+	:param anobj:
+	:type anobj: Handle_AIS_InteractiveObject &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") UpdateSelected;
 		void UpdateSelected (const Handle_AIS_InteractiveObject & anobj,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	anobj(Handle_AIS_InteractiveObject)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* useful to update selection with objects coming from Collector or stack
 
-Returns:
-	None
-
-useful  to  update selection with objects  coming from  
-         Collector or stack") SetSelected;
+	:param anobj:
+	:type anobj: Handle_AIS_InteractiveObject &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") SetSelected;
 		void SetSelected (const Handle_AIS_InteractiveObject & anobj,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	anobj(Handle_AIS_InteractiveObject)
-	updateviewer(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* useful to update selection with objects coming from Collector or stack
 
-Returns:
-	None
-
-useful  to  update selection with objects  coming from  
-         Collector or stack") AddOrRemoveSelected;
+	:param anobj:
+	:type anobj: Handle_AIS_InteractiveObject &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") AddOrRemoveSelected;
 		void AddOrRemoveSelected (const Handle_AIS_InteractiveObject & anobj,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	aShape(TopoDS_Shape)
-	updateviewer(Standard_Boolean)=Standard_True
-
-Returns:
-	None
-
-No detailed docstring for this function.") AddOrRemoveSelected;
+		%feature("autodoc", "	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") AddOrRemoveSelected;
 		void AddOrRemoveSelected (const TopoDS_Shape & aShape,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	Ownr(Handle_SelectMgr_EntityOwner)
-	updateviewer(Standard_Boolean)=Standard_True
-
-Returns:
-	None
-
-No detailed docstring for this function.") AddOrRemoveSelected;
+		%feature("autodoc", "	:param Ownr:
+	:type Ownr: Handle_SelectMgr_EntityOwner &
+	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") AddOrRemoveSelected;
 		void AddOrRemoveSelected (const Handle_SelectMgr_EntityOwner & Ownr,const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	updateviewer(Standard_Boolean)=Standard_True
-
-Returns:
-	None
-
-No detailed docstring for this function.") ClearSelected;
+		%feature("autodoc", "	:param updateviewer: default value is Standard_True
+	:type updateviewer: bool
+	:rtype: None
+") ClearSelected;
 		void ClearSelected (const Standard_Boolean updateviewer = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasDetected;
+		%feature("autodoc", "	:rtype: bool
+") HasDetected;
 		Standard_Boolean HasDetected ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") InitDetected;
+		%feature("autodoc", "	:rtype: None
+") InitDetected;
 		void InitDetected ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") MoreDetected;
+		%feature("autodoc", "	:rtype: bool
+") MoreDetected;
 		Standard_Boolean MoreDetected ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") NextDetected;
+		%feature("autodoc", "	:rtype: None
+") NextDetected;
 		void NextDetected ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") DetectedCurrentShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") DetectedCurrentShape;
 		const TopoDS_Shape & DetectedCurrentShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_InteractiveObject
-
-No detailed docstring for this function.") DetectedCurrentObject;
+		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
+") DetectedCurrentObject;
 		Handle_AIS_InteractiveObject DetectedCurrentObject ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasDetectedShape;
+		%feature("autodoc", "	:rtype: bool
+") HasDetectedShape;
 		Standard_Boolean HasDetectedShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") DetectedShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") DetectedShape;
 		const TopoDS_Shape & DetectedShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_InteractiveObject
-
-No detailed docstring for this function.") DetectedInteractive;
+		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
+") DetectedInteractive;
 		Handle_AIS_InteractiveObject DetectedInteractive ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_SelectMgr_EntityOwner
-
-No detailed docstring for this function.") DetectedOwner;
+		%feature("autodoc", "	:rtype: Handle_SelectMgr_EntityOwner
+") DetectedOwner;
 		Handle_SelectMgr_EntityOwner DetectedOwner ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") InitSelected;
+		%feature("autodoc", "	:rtype: None
+") InitSelected;
 		void InitSelected ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") MoreSelected;
+		%feature("autodoc", "	:rtype: bool
+") MoreSelected;
 		Standard_Boolean MoreSelected ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") NextSelected;
+		%feature("autodoc", "	:rtype: None
+") NextSelected;
 		void NextSelected ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns True if the detected entity is a shape coming from a Decomposition of an element.
 
-returns TRUE if the detected entity is a shape  
-         coming from a Decomposition of an element.") HasShape;
+	:rtype: bool
+") HasShape;
 		Standard_Boolean HasShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") SelectedShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") SelectedShape;
 		const TopoDS_Shape & SelectedShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_SelectMgr_EntityOwner
-
-No detailed docstring for this function.") SelectedOwner;
+		%feature("autodoc", "	:rtype: Handle_SelectMgr_EntityOwner
+") SelectedOwner;
 		Handle_SelectMgr_EntityOwner SelectedOwner ();
-		%feature("autodoc", "Args:
-	aniobj(Handle_AIS_InteractiveObject)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsSelected;
+		%feature("autodoc", "	:param aniobj:
+	:type aniobj: Handle_AIS_InteractiveObject &
+	:rtype: bool
+") IsSelected;
 		Standard_Boolean IsSelected (const Handle_AIS_InteractiveObject & aniobj);
-		%feature("autodoc", "Args:
-	anOwner(Handle_SelectMgr_EntityOwner)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsSelected;
+		%feature("autodoc", "	:param anOwner:
+	:type anOwner: Handle_SelectMgr_EntityOwner &
+	:rtype: bool
+") IsSelected;
 		Standard_Boolean IsSelected (const Handle_SelectMgr_EntityOwner & anOwner);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_InteractiveObject
-
-No detailed docstring for this function.") SelectedInteractive;
+		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
+") SelectedInteractive;
 		Handle_AIS_InteractiveObject SelectedInteractive ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns True if an interactive element was associated with the current picked entity.
 
-returns TRUE if an interactive element  
-         was associated with the current picked entity.") HasApplicative;
+	:rtype: bool
+") HasApplicative;
 		Standard_Boolean HasApplicative ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") SelectedApplicative;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") SelectedApplicative;
 		const Handle_Standard_Transient & SelectedApplicative ();
-		%feature("autodoc", "Args:
-	anObject(Handle_AIS_InteractiveObject)
-	Prior(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetDisplayPriority;
+		%feature("autodoc", "	:param anObject:
+	:type anObject: Handle_AIS_InteractiveObject &
+	:param Prior:
+	:type Prior: Standard_Integer
+	:rtype: None
+") SetDisplayPriority;
 		void SetDisplayPriority (const Handle_AIS_InteractiveObject & anObject,const Standard_Integer Prior);
-		%feature("autodoc", "Args:
-	theIObj(Handle_AIS_InteractiveObject)
-	theLayerId(Standard_Integer)
+		%feature("autodoc", "	* Set Z layer id for interactive object. The layer can be specified for displayed object only. The Z layers can be used to display temporarily presentations of some object in front of the other objects in the scene. The ids for Z layers are generated by V3d_Viewer. Note that Z layers differ from under-/overlayer in V3d_View: under-/overlayer are intended for specific 2D drawings that appear behind/in front of all 3D presentations, while SetZLayer() method applies to regular 3D presentations and does not imply any specific drawing methods.
 
-Returns:
-	None
-
-Set Z layer id for interactive object. The layer can be  
-specified for displayed object only. The Z layers can be used to display  
-temporarily presentations of some object in front of the other objects  
-in the scene. The ids for Z layers are generated by V3d_Viewer.  
-Note that Z layers differ from under-/overlayer in V3d_View:  
-under-/overlayer are intended for specific 2D drawings that appear  
-behind/in front of all 3D presentations, while SetZLayer() method  
-applies to regular 3D presentations and does not imply any specific  
-drawing methods.") SetZLayer;
+	:param theIObj:
+	:type theIObj: Handle_AIS_InteractiveObject &
+	:param theLayerId:
+	:type theLayerId: Standard_Integer
+	:rtype: None
+") SetZLayer;
 		void SetZLayer (const Handle_AIS_InteractiveObject & theIObj,const Standard_Integer theLayerId);
-		%feature("autodoc", "Args:
-	theIObj(Handle_AIS_InteractiveObject)
+		%feature("autodoc", "	* Get Z layer id set for displayed interactive object. If the object doesn't exists in context or has no computed presentations, the method returns -1.
 
-Returns:
-	Standard_Integer
-
-Get Z layer id set for displayed interactive object.  
-If the object doesn't exists in context or has no computed presentations,  
-the method returns -1.") GetZLayer;
+	:param theIObj:
+	:type theIObj: Handle_AIS_InteractiveObject &
+	:rtype: int
+") GetZLayer;
 		Standard_Integer GetZLayer (const Handle_AIS_InteractiveObject & theIObj);
-		%feature("autodoc", "Args:
-	theMapToFill(TColStd_MapOfTransient)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") DisplayedObjects;
+		%feature("autodoc", "	:param theMapToFill:
+	:type theMapToFill: TColStd_MapOfTransient &
+	:rtype: int
+") DisplayedObjects;
 		Standard_Integer DisplayedObjects (TColStd_MapOfTransient & theMapToFill);
-		%feature("autodoc", "Args:
-	anObject(Handle_AIS_InteractiveObject)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsIn;
+		%feature("autodoc", "	:param anObject:
+	:type anObject: Handle_AIS_InteractiveObject &
+	:rtype: bool
+") IsIn;
 		Standard_Boolean IsIn (const Handle_AIS_InteractiveObject & anObject);
-		%feature("autodoc", "Args:
-	anObject(Handle_AIS_InteractiveObject)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDisplayed;
+		%feature("autodoc", "	:param anObject:
+	:type anObject: Handle_AIS_InteractiveObject &
+	:rtype: bool
+") IsDisplayed;
 		Standard_Boolean IsDisplayed (const Handle_AIS_InteractiveObject & anObject);
-		%feature("autodoc", "Args:
-	anObject(Handle_AIS_InteractiveObject)
-	aMode(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDisplayed;
+		%feature("autodoc", "	:param anObject:
+	:type anObject: Handle_AIS_InteractiveObject &
+	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: bool
+") IsDisplayed;
 		Standard_Boolean IsDisplayed (const Handle_AIS_InteractiveObject & anObject,const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	anObject(Handle_AIS_InteractiveObject)
-
-Returns:
-	TColStd_ListOfInteger
-
-No detailed docstring for this function.") SelectionModes;
+		%feature("autodoc", "	:param anObject:
+	:type anObject: Handle_AIS_InteractiveObject &
+	:rtype: TColStd_ListOfInteger
+") SelectionModes;
 		const TColStd_ListOfInteger & SelectionModes (const Handle_AIS_InteractiveObject & anObject);
-		%feature("autodoc", "Args:
-	anObject(Handle_AIS_InteractiveObject)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SubIntensityOn;
+		%feature("autodoc", "	:param anObject:
+	:type anObject: Handle_AIS_InteractiveObject &
+	:rtype: None
+") SubIntensityOn;
 		void SubIntensityOn (const Handle_AIS_InteractiveObject & anObject);
-		%feature("autodoc", "Args:
-	anObject(Handle_AIS_InteractiveObject)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SubIntensityOff;
+		%feature("autodoc", "	:param anObject:
+	:type anObject: Handle_AIS_InteractiveObject &
+	:rtype: None
+") SubIntensityOff;
 		void SubIntensityOff (const Handle_AIS_InteractiveObject & anObject);
-		%feature("autodoc", "Args:
-	anObject(Handle_AIS_InteractiveObject)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Hilight;
+		%feature("autodoc", "	:param anObject:
+	:type anObject: Handle_AIS_InteractiveObject &
+	:rtype: None
+") Hilight;
 		void Hilight (const Handle_AIS_InteractiveObject & anObject);
-		%feature("autodoc", "Args:
-	anObject(Handle_AIS_InteractiveObject)
-	aCol(Quantity_NameOfColor)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Hilight;
+		%feature("autodoc", "	:param anObject:
+	:type anObject: Handle_AIS_InteractiveObject &
+	:param aCol:
+	:type aCol: Quantity_NameOfColor
+	:rtype: None
+") Hilight;
 		void Hilight (const Handle_AIS_InteractiveObject & anObject,const Quantity_NameOfColor aCol);
-		%feature("autodoc", "Args:
-	anObject(Handle_AIS_InteractiveObject)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Unhilight;
+		%feature("autodoc", "	:param anObject:
+	:type anObject: Handle_AIS_InteractiveObject &
+	:rtype: None
+") Unhilight;
 		void Unhilight (const Handle_AIS_InteractiveObject & anObject);
-		%feature("autodoc", "Args:
-	anObject(Handle_AIS_InteractiveObject)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsHilighted;
+		%feature("autodoc", "	:param anObject:
+	:type anObject: Handle_AIS_InteractiveObject &
+	:rtype: bool
+") IsHilighted;
 		Standard_Boolean IsHilighted (const Handle_AIS_InteractiveObject & anObject);
-		%feature("autodoc", "Args:
-	anObject(Handle_AIS_InteractiveObject)
-	WithColor(Standard_Boolean)
-	HiCol(Quantity_NameOfColor)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsHilighted;
+		%feature("autodoc", "	:param anObject:
+	:type anObject: Handle_AIS_InteractiveObject &
+	:param WithColor:
+	:type WithColor: bool
+	:param HiCol:
+	:type HiCol: Quantity_NameOfColor &
+	:rtype: bool
+") IsHilighted;
 		Standard_Boolean IsHilighted (const Handle_AIS_InteractiveObject & anObject,Standard_Boolean & WithColor,Quantity_NameOfColor & HiCol);
-		%feature("autodoc", "Args:
-	aMode(StdSelect_SensitivityMode)
+		%feature("autodoc", "	* Sets the selection sensitivity mode. SM_WINDOW mode uses the specified pixel tolerance to compute the sensitivity value, SM_VIEW mode allows to define the sensitivity manually.
 
-Returns:
-	None
-
-Sets the selection sensitivity mode. SM_WINDOW mode  
-uses the specified pixel tolerance to compute the sensitivity  
-value, SM_VIEW mode allows to define the sensitivity manually.") SetSensitivityMode;
+	:param aMode:
+	:type aMode: StdSelect_SensitivityMode
+	:rtype: None
+") SetSensitivityMode;
 		void SetSensitivityMode (const StdSelect_SensitivityMode aMode);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	StdSelect_SensitivityMode
+		%feature("autodoc", "	* Returns the selection sensitivity mode.
 
-Returns the selection sensitivity mode.") SensitivityMode;
+	:rtype: StdSelect_SensitivityMode
+") SensitivityMode;
 		StdSelect_SensitivityMode SensitivityMode ();
-		%feature("autodoc", "Args:
-	aPrecision(Standard_Real)
+		%feature("autodoc", "	* Define the current selection sensitivity for this local context according to the view size.
 
-Returns:
-	None
-
-Define the current selection sensitivity for  
-         this local context according to the view size.") SetSensitivity;
+	:param aPrecision:
+	:type aPrecision: float
+	:rtype: None
+") SetSensitivity;
 		void SetSensitivity (const Standard_Real aPrecision);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the selection sensitivity value.
 
-Returns the selection sensitivity value.") Sensitivity;
+	:rtype: float
+") Sensitivity;
 		Standard_Real Sensitivity ();
-		%feature("autodoc", "Args:
-	aPrecision(Standard_Integer)=2
+		%feature("autodoc", "	* Define the current selection sensitivity for this local context according to the view size.
 
-Returns:
-	None
-
-Define the current selection sensitivity for  
-         this local context according to the view size.") SetPixelTolerance;
+	:param aPrecision: default value is 2
+	:type aPrecision: Standard_Integer
+	:rtype: None
+") SetPixelTolerance;
 		void SetPixelTolerance (const Standard_Integer aPrecision = 2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the pixel tolerance.
 
-Returns the pixel tolerance.") PixelTolerance;
+	:rtype: int
+") PixelTolerance;
 		Standard_Integer PixelTolerance ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* initializes the list of presentations to be displayed returns False if No Local COnte
 
-initializes the list of presentations to be displayed  
-         returns False if No Local COnte") BeginImmediateDraw;
+	:rtype: bool
+") BeginImmediateDraw;
 		Standard_Boolean BeginImmediateDraw ();
-		%feature("autodoc", "Args:
-	anIObj(Handle_AIS_InteractiveObject)
-	aMode(Standard_Integer)=0
+		%feature("autodoc", "	* returns True if <anIObj> has been stored in the list.
 
-Returns:
-	Standard_Boolean
-
-returns True if <anIObj> has been stored in the list.") ImmediateAdd;
+	:param anIObj:
+	:type anIObj: Handle_AIS_InteractiveObject &
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:rtype: bool
+") ImmediateAdd;
 		Standard_Boolean ImmediateAdd (const Handle_AIS_InteractiveObject & anIObj,const Standard_Integer aMode = 0);
-		%feature("autodoc", "Args:
-	anIObj(Handle_AIS_InteractiveObject)
-	aMode(Standard_Integer)=0
+		%feature("autodoc", "	* returns True if <anIObj> has been removed from the list.
 
-Returns:
-	Standard_Boolean
-
-returns True if <anIObj> has been removed from the list.") ImmediateRemove;
+	:param anIObj:
+	:type anIObj: Handle_AIS_InteractiveObject &
+	:param aMode: default value is 0
+	:type aMode: Standard_Integer
+	:rtype: bool
+") ImmediateRemove;
 		Standard_Boolean ImmediateRemove (const Handle_AIS_InteractiveObject & anIObj,const Standard_Integer aMode = 0);
-		%feature("autodoc", "Args:
-	aView(Handle_V3d_View)
-	DoubleBuf(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* returns True if the immediate display has been done.
 
-Returns:
-	Standard_Boolean
-
-returns True if the immediate display has been done.") EndImmediateDraw;
+	:param aView:
+	:type aView: Handle_V3d_View &
+	:param DoubleBuf: default value is Standard_False
+	:type DoubleBuf: bool
+	:rtype: bool
+") EndImmediateDraw;
 		Standard_Boolean EndImmediateDraw (const Handle_V3d_View & aView,const Standard_Boolean DoubleBuf = Standard_False);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsImmediateModeOn;
+		%feature("autodoc", "	:rtype: bool
+") IsImmediateModeOn;
 		Standard_Boolean IsImmediateModeOn ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") UpdateConversion;
+		%feature("autodoc", "	:rtype: None
+") UpdateConversion;
 		void UpdateConversion ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") UpdateSort;
+		%feature("autodoc", "	:rtype: None
+") UpdateSort;
 		void UpdateSort ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") LoadContextObjects;
+		%feature("autodoc", "	:rtype: None
+") LoadContextObjects;
 		void LoadContextObjects ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") UnloadContextObjects;
+		%feature("autodoc", "	:rtype: None
+") UnloadContextObjects;
 		void UnloadContextObjects ();
-		%feature("autodoc", "Args:
-	aviou(Handle_V3d_View)
-
-Returns:
-	None
-
-No detailed docstring for this function.") DisplayAreas;
+		%feature("autodoc", "	:param aviou:
+	:type aviou: Handle_V3d_View &
+	:rtype: None
+") DisplayAreas;
 		void DisplayAreas (const Handle_V3d_View & aviou);
-		%feature("autodoc", "Args:
-	aView(Handle_V3d_View)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ClearAreas;
+		%feature("autodoc", "	:param aView:
+	:type aView: Handle_V3d_View &
+	:rtype: None
+") ClearAreas;
 		void ClearAreas (const Handle_V3d_View & aView);
-		%feature("autodoc", "Args:
-	aView(Handle_V3d_View)
-
-Returns:
-	None
-
-No detailed docstring for this function.") DisplaySensitive;
+		%feature("autodoc", "	:param aView:
+	:type aView: Handle_V3d_View &
+	:rtype: None
+") DisplaySensitive;
 		void DisplaySensitive (const Handle_V3d_View & aView);
-		%feature("autodoc", "Args:
-	aView(Handle_V3d_View)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ClearSensitive;
+		%feature("autodoc", "	:param aView:
+	:type aView: Handle_V3d_View &
+	:rtype: None
+") ClearSensitive;
 		void ClearSensitive (const Handle_V3d_View & aView);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_StdSelect_ViewerSelector3d
-
-No detailed docstring for this function.") MainSelector;
+		%feature("autodoc", "	:rtype: Handle_StdSelect_ViewerSelector3d
+") MainSelector;
 		const Handle_StdSelect_ViewerSelector3d & MainSelector ();
-		%feature("autodoc", "Args:
-	anIObj(Handle_AIS_InteractiveObject)
-
-Returns:
-	Handle_SelectMgr_EntityOwner
-
-No detailed docstring for this function.") FindSelectedOwnerFromIO;
+		%feature("autodoc", "	:param anIObj:
+	:type anIObj: Handle_AIS_InteractiveObject &
+	:rtype: Handle_SelectMgr_EntityOwner
+") FindSelectedOwnerFromIO;
 		Handle_SelectMgr_EntityOwner FindSelectedOwnerFromIO (const Handle_AIS_InteractiveObject & anIObj);
-		%feature("autodoc", "Args:
-	aShape(TopoDS_Shape)
-
-Returns:
-	Handle_SelectMgr_EntityOwner
-
-No detailed docstring for this function.") FindSelectedOwnerFromShape;
+		%feature("autodoc", "	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:rtype: Handle_SelectMgr_EntityOwner
+") FindSelectedOwnerFromShape;
 		Handle_SelectMgr_EntityOwner FindSelectedOwnerFromShape (const TopoDS_Shape & aShape);
 };
 
@@ -8410,191 +5950,113 @@ def __del__(self):
 %nodefaultctor AIS_LocalStatus;
 class AIS_LocalStatus : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	IsTemporary(Standard_Boolean)=Standard_True
-	Decompose(Standard_Boolean)=Standard_False
-	DisplayMode(Standard_Integer)=- 1
-	SelectionMode(Standard_Integer)=- 1
-	HilightMode(Standard_Integer)=0
-	SubIntensity(Standard_Boolean)=0
-	TheHiCol(Quantity_NameOfColor)=Quantity_NOC_WHITE
-
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_LocalStatus;
+		%feature("autodoc", "	:param IsTemporary: default value is Standard_True
+	:type IsTemporary: bool
+	:param Decompose: default value is Standard_False
+	:type Decompose: bool
+	:param DisplayMode: default value is - 1
+	:type DisplayMode: Standard_Integer
+	:param SelectionMode: default value is - 1
+	:type SelectionMode: Standard_Integer
+	:param HilightMode: default value is 0
+	:type HilightMode: Standard_Integer
+	:param SubIntensity: default value is 0
+	:type SubIntensity: bool
+	:param TheHiCol: default value is Quantity_NOC_WHITE
+	:type TheHiCol: Quantity_NameOfColor
+	:rtype: None
+") AIS_LocalStatus;
 		 AIS_LocalStatus (const Standard_Boolean IsTemporary = Standard_True,const Standard_Boolean Decompose = Standard_False,const Standard_Integer DisplayMode = - 1,const Standard_Integer SelectionMode = - 1,const Standard_Integer HilightMode = 0,const Standard_Boolean SubIntensity = 0,const Quantity_NameOfColor TheHiCol = Quantity_NOC_WHITE);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Decomposed;
+		%feature("autodoc", "	:rtype: bool
+") Decomposed;
 		Standard_Boolean Decomposed ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsTemporary;
+		%feature("autodoc", "	:rtype: bool
+") IsTemporary;
 		Standard_Boolean IsTemporary ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") DisplayMode;
+		%feature("autodoc", "	:rtype: int
+") DisplayMode;
 		Standard_Integer DisplayMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_ListOfInteger
-
-No detailed docstring for this function.") SelectionModes;
+		%feature("autodoc", "	:rtype: TColStd_ListOfInteger
+") SelectionModes;
 		const TColStd_ListOfInteger & SelectionModes ();
-		%feature("autodoc", "Args:
-	aSelMode(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsActivated;
+		%feature("autodoc", "	:param aSelMode:
+	:type aSelMode: Standard_Integer
+	:rtype: bool
+") IsActivated;
 		Standard_Boolean IsActivated (const Standard_Integer aSelMode);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") HilightMode;
+		%feature("autodoc", "	:rtype: int
+") HilightMode;
 		Standard_Integer HilightMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsSubIntensityOn;
+		%feature("autodoc", "	:rtype: bool
+") IsSubIntensityOn;
 		Standard_Boolean IsSubIntensityOn ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_NameOfColor
-
-No detailed docstring for this function.") HilightColor;
+		%feature("autodoc", "	:rtype: Quantity_NameOfColor
+") HilightColor;
 		Quantity_NameOfColor HilightColor ();
-		%feature("autodoc", "Args:
-	astatus(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetDecomposition;
+		%feature("autodoc", "	:param astatus:
+	:type astatus: bool
+	:rtype: None
+") SetDecomposition;
 		void SetDecomposition (const Standard_Boolean astatus);
-		%feature("autodoc", "Args:
-	astatus(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetTemporary;
+		%feature("autodoc", "	:param astatus:
+	:type astatus: bool
+	:rtype: None
+") SetTemporary;
 		void SetTemporary (const Standard_Boolean astatus);
-		%feature("autodoc", "Args:
-	aMode(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetDisplayMode;
+		%feature("autodoc", "	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: None
+") SetDisplayMode;
 		void SetDisplayMode (const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	aStatus(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetFirstDisplay;
+		%feature("autodoc", "	:param aStatus:
+	:type aStatus: bool
+	:rtype: None
+") SetFirstDisplay;
 		void SetFirstDisplay (const Standard_Boolean aStatus);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsFirstDisplay;
+		%feature("autodoc", "	:rtype: bool
+") IsFirstDisplay;
 		Standard_Boolean IsFirstDisplay ();
-		%feature("autodoc", "Args:
-	aMode(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AddSelectionMode;
+		%feature("autodoc", "	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: None
+") AddSelectionMode;
 		void AddSelectionMode (const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	aMode(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveSelectionMode;
+		%feature("autodoc", "	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: None
+") RemoveSelectionMode;
 		void RemoveSelectionMode (const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ClearSelectionModes;
+		%feature("autodoc", "	:rtype: None
+") ClearSelectionModes;
 		void ClearSelectionModes ();
-		%feature("autodoc", "Args:
-	aMode(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsSelModeIn;
+		%feature("autodoc", "	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: bool
+") IsSelModeIn;
 		Standard_Boolean IsSelModeIn (const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	aMode(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetHilightMode;
+		%feature("autodoc", "	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: None
+") SetHilightMode;
 		void SetHilightMode (const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	aHiCol(Quantity_NameOfColor)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetHilightColor;
+		%feature("autodoc", "	:param aHiCol:
+	:type aHiCol: Quantity_NameOfColor
+	:rtype: None
+") SetHilightColor;
 		void SetHilightColor (const Quantity_NameOfColor aHiCol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") SubIntensityOn;
+		%feature("autodoc", "	:rtype: None
+") SubIntensityOn;
 		void SubIntensityOn ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") SubIntensityOff;
+		%feature("autodoc", "	:rtype: None
+") SubIntensityOff;
 		void SubIntensityOff ();
-		%feature("autodoc", "Args:
-	aStatus(Handle_Standard_Transient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetPreviousState;
+		%feature("autodoc", "	:param aStatus:
+	:type aStatus: Handle_Standard_Transient &
+	:rtype: None
+") SetPreviousState;
 		void SetPreviousState (const Handle_Standard_Transient & aStatus);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") PreviousState;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") PreviousState;
 		const Handle_Standard_Transient & PreviousState ();
 };
 
@@ -8655,35 +6117,21 @@ def __del__(self):
 %nodefaultctor AIS_MapIteratorOfMapOfInteractive;
 class AIS_MapIteratorOfMapOfInteractive : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_MapIteratorOfMapOfInteractive;
+		%feature("autodoc", "	:rtype: None
+") AIS_MapIteratorOfMapOfInteractive;
 		 AIS_MapIteratorOfMapOfInteractive ();
-		%feature("autodoc", "Args:
-	aMap(AIS_MapOfInteractive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_MapIteratorOfMapOfInteractive;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: AIS_MapOfInteractive &
+	:rtype: None
+") AIS_MapIteratorOfMapOfInteractive;
 		 AIS_MapIteratorOfMapOfInteractive (const AIS_MapOfInteractive & aMap);
-		%feature("autodoc", "Args:
-	aMap(AIS_MapOfInteractive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: AIS_MapOfInteractive &
+	:rtype: None
+") Initialize;
 		void Initialize (const AIS_MapOfInteractive & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_InteractiveObject
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
+") Key;
 		const Handle_AIS_InteractiveObject & Key ();
 };
 
@@ -8705,68 +6153,43 @@ def __del__(self):
 %nodefaultctor AIS_MapOfInteractive;
 class AIS_MapOfInteractive : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_MapOfInteractive;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") AIS_MapOfInteractive;
 		 AIS_MapOfInteractive (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(AIS_MapOfInteractive)
-
-Returns:
-	AIS_MapOfInteractive
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: AIS_MapOfInteractive &
+	:rtype: AIS_MapOfInteractive
+") Assign;
 		AIS_MapOfInteractive & Assign (const AIS_MapOfInteractive & Other);
-		%feature("autodoc", "Args:
-	Other(AIS_MapOfInteractive)
-
-Returns:
-	AIS_MapOfInteractive
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: AIS_MapOfInteractive &
+	:rtype: AIS_MapOfInteractive
+") operator=;
 		AIS_MapOfInteractive & operator = (const AIS_MapOfInteractive & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	aKey(Handle_AIS_InteractiveObject)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: Handle_AIS_InteractiveObject &
+	:rtype: bool
+") Add;
 		Standard_Boolean Add (const Handle_AIS_InteractiveObject & aKey);
-		%feature("autodoc", "Args:
-	aKey(Handle_AIS_InteractiveObject)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: Handle_AIS_InteractiveObject &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const Handle_AIS_InteractiveObject & aKey);
-		%feature("autodoc", "Args:
-	aKey(Handle_AIS_InteractiveObject)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: Handle_AIS_InteractiveObject &
+	:rtype: bool
+") Remove;
 		Standard_Boolean Remove (const Handle_AIS_InteractiveObject & aKey);
 };
 
@@ -8788,187 +6211,115 @@ def __del__(self):
 %nodefaultctor AIS_Selection;
 class AIS_Selection : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	aName(char *)
+		%feature("autodoc", "	* creates a new selection and make it current in the session. the selection will be accessible later through its name to make it again current.  Note that if a session has been created, a session with the name 'default' is created.  In this case, the is always a current selection which is the last one created until SetCurrentSelection is used.  The class methods deals with the current selection.  Warning : Better Call AIS_Selection::CreateSelection.
 
-Returns:
-	None
-
-creates a new selection and make it current in the session.  
-         the selection will be accessible later through its name  
-         to make it again current.  
- 
-         Note that if a session has been created, a session with  
-         the name  'default' is created.  
- 
-         In this case, the is always a current selection which  
-         is the last one created  until SetCurrentSelection is used.  
- 
-         The class methods deals with the current selection.  
- 
-         Warning : Better Call AIS_Selection::CreateSelection.") AIS_Selection;
+	:param aName:
+	:type aName: char *
+	:rtype: None
+") AIS_Selection;
 		 AIS_Selection (const char * aName);
-		%feature("autodoc", "Args:
-	aName(char *)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param aName:
+	:type aName: char *
+	:rtype: void
+") Remove;
 		static void Remove (const char * aName);
-		%feature("autodoc", "Args:
-	aName(char *)
+		%feature("autodoc", "	* returns True if a selection having this name exsits.
 
-Returns:
-	static Standard_Boolean
-
-returns True if a selection having this name exsits.") Find;
+	:param aName:
+	:type aName: char *
+	:rtype: bool
+") Find;
 		static Standard_Boolean Find (const char * aName);
-		%feature("autodoc", "Args:
-	aName(char *)
+		%feature("autodoc", "	* calls the private constructor and puts the new Selection in the list of existing selections. returns False if the selection exists.
 
-Returns:
-	static Standard_Boolean
-
-calls the private constructor and puts the new Selection  
-         in the list of existing selections.  
-         returns False if the selection exists.") CreateSelection;
+	:param aName:
+	:type aName: char *
+	:rtype: bool
+") CreateSelection;
 		static Standard_Boolean CreateSelection (const char * aName);
-		%feature("autodoc", "Args:
-	aName(char *)
-
-Returns:
-	static Handle_AIS_Selection
-
-No detailed docstring for this function.") Selection;
+		%feature("autodoc", "	:param aName:
+	:type aName: char *
+	:rtype: Handle_AIS_Selection
+") Selection;
 		static Handle_AIS_Selection Selection (const char * aName);
-		%feature("autodoc", "Args:
-	aName(char *)
+		%feature("autodoc", "	* returns False if There is no selection of name <aName>
 
-Returns:
-	static Standard_Boolean
-
-returns False if There is no selection of name <aName>") SetCurrentSelection;
+	:param aName:
+	:type aName: char *
+	:rtype: bool
+") SetCurrentSelection;
 		static Standard_Boolean SetCurrentSelection (const char * aName);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static Handle_AIS_Selection
-
-No detailed docstring for this function.") CurrentSelection;
+		%feature("autodoc", "	:rtype: Handle_AIS_Selection
+") CurrentSelection;
 		static Handle_AIS_Selection CurrentSelection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static void
+		%feature("autodoc", "	* Clears selection.
 
-Clears selection.") ClearCurrentSelection;
+	:rtype: void
+") ClearCurrentSelection;
 		static void ClearCurrentSelection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static void
+		%feature("autodoc", "	* removes all the object of the currentselection.
 
-removes all the object of the currentselection.") Select;
+	:rtype: void
+") Select;
 		static void Select ();
-		%feature("autodoc", "Args:
-	anObject(Handle_Standard_Transient)
+		%feature("autodoc", "	* if the object is not yet in the current selection, it will be added. if the object is already in the current selection, it will be removed.
 
-Returns:
-	static AIS_SelectStatus
-
-if the object is not yet in the current selection, it will be added.  
-          if the object is already in the current selection, it will be removed.") Select;
+	:param anObject:
+	:type anObject: Handle_Standard_Transient &
+	:rtype: AIS_SelectStatus
+") Select;
 		static AIS_SelectStatus Select (const Handle_Standard_Transient & anObject);
-		%feature("autodoc", "Args:
-	anObject(Handle_Standard_Transient)
+		%feature("autodoc", "	* the object is always add int the selection. faster when the number of objects selected is great.
 
-Returns:
-	static AIS_SelectStatus
-
-the object is always add int the selection.  
-          faster when the number of objects selected is great.") AddSelect;
+	:param anObject:
+	:type anObject: Handle_Standard_Transient &
+	:rtype: AIS_SelectStatus
+") AddSelect;
 		static AIS_SelectStatus AddSelect (const Handle_Standard_Transient & anObject);
-		%feature("autodoc", "Args:
-	anObject(Handle_Standard_Transient)
+		%feature("autodoc", "	* clears the selection and adds the object in the selection.
 
-Returns:
-	static void
-
-clears the selection and adds the object in the selection.") ClearAndSelect;
+	:param anObject:
+	:type anObject: Handle_Standard_Transient &
+	:rtype: void
+") ClearAndSelect;
 		static void ClearAndSelect (const Handle_Standard_Transient & anObject);
-		%feature("autodoc", "Args:
-	anObject(Handle_Standard_Transient)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") IsSelected;
+		%feature("autodoc", "	:param anObject:
+	:type anObject: Handle_Standard_Transient &
+	:rtype: bool
+") IsSelected;
 		static Standard_Boolean IsSelected (const Handle_Standard_Transient & anObject);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static Standard_Integer
+		%feature("autodoc", "	* returns the number of objects selected.
 
-returns the number of objects selected.") Extent;
+	:rtype: int
+") Extent;
 		static Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static Handle_Standard_Transient
+		%feature("autodoc", "	* returns the single object selected. Warning: raises TypeMismatch from Standard if Extent is not equal to 1.
 
-returns the single object selected.  
- Warning: raises TypeMismatch from Standard if Extent is not equal to 1.") Single;
+	:rtype: Handle_Standard_Transient
+") Single;
 		static Handle_Standard_Transient Single ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:rtype: None
+") Init;
 		void Init ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Value;
 		const Handle_Standard_Transient & Value ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbStored;
+		%feature("autodoc", "	:rtype: int
+") NbStored;
 		Standard_Integer NbStored ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	AIS_NListTransient
-
-No detailed docstring for this function.") Objects;
+		%feature("autodoc", "	:rtype: AIS_NListTransient
+") Objects;
 		const AIS_NListTransient & Objects ();
-		%feature("autodoc", "Args:
-	aName(char *)
-
-Returns:
-	static Standard_Integer
-
-No detailed docstring for this function.") Index;
+		%feature("autodoc", "	:param aName:
+	:type aName: char *
+	:rtype: int
+") Index;
 		static Standard_Integer Index (const char * aName);
 };
 
@@ -9029,22 +6380,17 @@ def __del__(self):
 %nodefaultctor AIS_SequenceNodeOfSequenceOfDimension;
 class AIS_SequenceNodeOfSequenceOfDimension : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_AIS_Relation)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_SequenceNodeOfSequenceOfDimension;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_AIS_Relation &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") AIS_SequenceNodeOfSequenceOfDimension;
 		 AIS_SequenceNodeOfSequenceOfDimension (const Handle_AIS_Relation & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_Relation
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_AIS_Relation
+") Value;
 		Handle_AIS_Relation & Value ();
 };
 
@@ -9105,22 +6451,17 @@ def __del__(self):
 %nodefaultctor AIS_SequenceNodeOfSequenceOfInteractive;
 class AIS_SequenceNodeOfSequenceOfInteractive : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_AIS_InteractiveObject)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_SequenceNodeOfSequenceOfInteractive;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_AIS_InteractiveObject &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") AIS_SequenceNodeOfSequenceOfInteractive;
 		 AIS_SequenceNodeOfSequenceOfInteractive (const Handle_AIS_InteractiveObject & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_InteractiveObject
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
+") Value;
 		Handle_AIS_InteractiveObject & Value ();
 };
 
@@ -9181,168 +6522,111 @@ def __del__(self):
 %nodefaultctor AIS_SequenceOfDimension;
 class AIS_SequenceOfDimension : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_SequenceOfDimension;
+		%feature("autodoc", "	:rtype: None
+") AIS_SequenceOfDimension;
 		 AIS_SequenceOfDimension ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(AIS_SequenceOfDimension)
-
-Returns:
-	AIS_SequenceOfDimension
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: AIS_SequenceOfDimension &
+	:rtype: AIS_SequenceOfDimension
+") Assign;
 		const AIS_SequenceOfDimension & Assign (const AIS_SequenceOfDimension & Other);
-		%feature("autodoc", "Args:
-	Other(AIS_SequenceOfDimension)
-
-Returns:
-	AIS_SequenceOfDimension
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: AIS_SequenceOfDimension &
+	:rtype: AIS_SequenceOfDimension
+") operator=;
 		const AIS_SequenceOfDimension & operator = (const AIS_SequenceOfDimension & Other);
-		%feature("autodoc", "Args:
-	T(Handle_AIS_Relation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_AIS_Relation &
+	:rtype: None
+") Append;
 		void Append (const Handle_AIS_Relation & T);
-		%feature("autodoc", "Args:
-	S(AIS_SequenceOfDimension)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: AIS_SequenceOfDimension &
+	:rtype: None
+") Append;
 		void Append (AIS_SequenceOfDimension & S);
-		%feature("autodoc", "Args:
-	T(Handle_AIS_Relation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_AIS_Relation &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_AIS_Relation & T);
-		%feature("autodoc", "Args:
-	S(AIS_SequenceOfDimension)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: AIS_SequenceOfDimension &
+	:rtype: None
+") Prepend;
 		void Prepend (AIS_SequenceOfDimension & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_AIS_Relation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_AIS_Relation &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_AIS_Relation & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(AIS_SequenceOfDimension)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: AIS_SequenceOfDimension &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,AIS_SequenceOfDimension & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_AIS_Relation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_AIS_Relation &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_AIS_Relation & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(AIS_SequenceOfDimension)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: AIS_SequenceOfDimension &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,AIS_SequenceOfDimension & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_Relation
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_AIS_Relation
+") First;
 		const Handle_AIS_Relation & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_Relation
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_AIS_Relation
+") Last;
 		const Handle_AIS_Relation & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(AIS_SequenceOfDimension)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: AIS_SequenceOfDimension &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,AIS_SequenceOfDimension & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_AIS_Relation
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_AIS_Relation
+") Value;
 		const Handle_AIS_Relation & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_AIS_Relation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_AIS_Relation &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_AIS_Relation & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_AIS_Relation
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_AIS_Relation
+") ChangeValue;
 		Handle_AIS_Relation & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -9364,168 +6648,111 @@ def __del__(self):
 %nodefaultctor AIS_SequenceOfInteractive;
 class AIS_SequenceOfInteractive : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_SequenceOfInteractive;
+		%feature("autodoc", "	:rtype: None
+") AIS_SequenceOfInteractive;
 		 AIS_SequenceOfInteractive ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(AIS_SequenceOfInteractive)
-
-Returns:
-	AIS_SequenceOfInteractive
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: AIS_SequenceOfInteractive &
+	:rtype: AIS_SequenceOfInteractive
+") Assign;
 		const AIS_SequenceOfInteractive & Assign (const AIS_SequenceOfInteractive & Other);
-		%feature("autodoc", "Args:
-	Other(AIS_SequenceOfInteractive)
-
-Returns:
-	AIS_SequenceOfInteractive
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: AIS_SequenceOfInteractive &
+	:rtype: AIS_SequenceOfInteractive
+") operator=;
 		const AIS_SequenceOfInteractive & operator = (const AIS_SequenceOfInteractive & Other);
-		%feature("autodoc", "Args:
-	T(Handle_AIS_InteractiveObject)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_AIS_InteractiveObject &
+	:rtype: None
+") Append;
 		void Append (const Handle_AIS_InteractiveObject & T);
-		%feature("autodoc", "Args:
-	S(AIS_SequenceOfInteractive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: AIS_SequenceOfInteractive &
+	:rtype: None
+") Append;
 		void Append (AIS_SequenceOfInteractive & S);
-		%feature("autodoc", "Args:
-	T(Handle_AIS_InteractiveObject)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_AIS_InteractiveObject &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_AIS_InteractiveObject & T);
-		%feature("autodoc", "Args:
-	S(AIS_SequenceOfInteractive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: AIS_SequenceOfInteractive &
+	:rtype: None
+") Prepend;
 		void Prepend (AIS_SequenceOfInteractive & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_AIS_InteractiveObject)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_AIS_InteractiveObject &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_AIS_InteractiveObject & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(AIS_SequenceOfInteractive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: AIS_SequenceOfInteractive &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,AIS_SequenceOfInteractive & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_AIS_InteractiveObject)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_AIS_InteractiveObject &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_AIS_InteractiveObject & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(AIS_SequenceOfInteractive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: AIS_SequenceOfInteractive &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,AIS_SequenceOfInteractive & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_InteractiveObject
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
+") First;
 		const Handle_AIS_InteractiveObject & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_InteractiveObject
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
+") Last;
 		const Handle_AIS_InteractiveObject & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(AIS_SequenceOfInteractive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: AIS_SequenceOfInteractive &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,AIS_SequenceOfInteractive & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_AIS_InteractiveObject
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_AIS_InteractiveObject
+") Value;
 		const Handle_AIS_InteractiveObject & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_AIS_InteractiveObject)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_AIS_InteractiveObject &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_AIS_InteractiveObject & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_AIS_InteractiveObject
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_AIS_InteractiveObject
+") ChangeValue;
 		Handle_AIS_InteractiveObject & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -9547,21 +6774,15 @@ def __del__(self):
 %nodefaultctor AIS_StdMapNodeOfMapOfInteractive;
 class AIS_StdMapNodeOfMapOfInteractive : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(Handle_AIS_InteractiveObject)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_StdMapNodeOfMapOfInteractive;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_AIS_InteractiveObject &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") AIS_StdMapNodeOfMapOfInteractive;
 		 AIS_StdMapNodeOfMapOfInteractive (const Handle_AIS_InteractiveObject & K,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_InteractiveObject
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
+") Key;
 		Handle_AIS_InteractiveObject & Key ();
 };
 
@@ -9622,23 +6843,19 @@ def __del__(self):
 %nodefaultctor AIS_TypeFilter;
 class AIS_TypeFilter : public SelectMgr_Filter {
 	public:
-		%feature("autodoc", "Args:
-	aGivenKind(AIS_KindOfInteractive)
+		%feature("autodoc", "	* Initializes filter for type, aGivenKind.
 
-Returns:
-	None
-
-Initializes filter for type, aGivenKind.") AIS_TypeFilter;
+	:param aGivenKind:
+	:type aGivenKind: AIS_KindOfInteractive
+	:rtype: None
+") AIS_TypeFilter;
 		 AIS_TypeFilter (const AIS_KindOfInteractive aGivenKind);
-		%feature("autodoc", "Args:
-	anobj(Handle_SelectMgr_EntityOwner)
+		%feature("autodoc", "	* Returns False if the transient is not an Interactive Object, or if the type of the Interactive Object is not the same as that stored in the filter.
 
-Returns:
-	virtual Standard_Boolean
-
-Returns False if the transient is not an Interactive  
-Object, or if the type of the Interactive Object is not  
-the same as that stored in the filter.") IsOk;
+	:param anobj:
+	:type anobj: Handle_SelectMgr_EntityOwner &
+	:rtype: bool
+") IsOk;
 		virtual Standard_Boolean IsOk (const Handle_SelectMgr_EntityOwner & anobj);
 };
 
@@ -9699,176 +6916,123 @@ def __del__(self):
 %nodefaultctor AIS_Axis;
 class AIS_Axis : public AIS_InteractiveObject {
 	public:
-		%feature("autodoc", "Args:
-	aComponent(Handle_Geom_Line)
+		%feature("autodoc", "	* Initializes the line aComponent
 
-Returns:
-	None
-
-Initializes the line aComponent") AIS_Axis;
+	:param aComponent:
+	:type aComponent: Handle_Geom_Line &
+	:rtype: None
+") AIS_Axis;
 		 AIS_Axis (const Handle_Geom_Line & aComponent);
-		%feature("autodoc", "Args:
-	aComponent(Handle_Geom_Axis2Placement)
-	anAxisType(AIS_TypeOfAxis)
+		%feature("autodoc", "	* initializes the axis2 position aComponent. The coordinate system used is right-handed.
 
-Returns:
-	None
-
-initializes the axis2 position  
-  aComponent. The coordinate system used is right-handed.") AIS_Axis;
+	:param aComponent:
+	:type aComponent: Handle_Geom_Axis2Placement &
+	:param anAxisType:
+	:type anAxisType: AIS_TypeOfAxis
+	:rtype: None
+") AIS_Axis;
 		 AIS_Axis (const Handle_Geom_Axis2Placement & aComponent,const AIS_TypeOfAxis anAxisType);
-		%feature("autodoc", "Args:
-	anAxis(Handle_Geom_Axis1Placement)
+		%feature("autodoc", "	* Initializes the axis1 position anAxis.
 
-Returns:
-	None
-
-Initializes the axis1 position anAxis.") AIS_Axis;
+	:param anAxis:
+	:type anAxis: Handle_Geom_Axis1Placement &
+	:rtype: None
+") AIS_Axis;
 		 AIS_Axis (const Handle_Geom_Axis1Placement & anAxis);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_Line
+		%feature("autodoc", "	* Returns the axis entity aComponent and identifies it as a component of a shape.
 
-Returns the axis entity aComponent and identifies it  
-as a component of a shape.") Component;
+	:rtype: Handle_Geom_Line
+") Component;
 		const Handle_Geom_Line & Component ();
-		%feature("autodoc", "Args:
-	aComponent(Handle_Geom_Line)
+		%feature("autodoc", "	* Sets the coordinates of the lin aComponent.
 
-Returns:
-	None
-
-Sets the coordinates of the lin aComponent.") SetComponent;
+	:param aComponent:
+	:type aComponent: Handle_Geom_Line &
+	:rtype: None
+") SetComponent;
 		void SetComponent (const Handle_Geom_Line & aComponent);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_Axis2Placement
+		%feature("autodoc", "	* Returns the position of axis2 and positions it by identifying it as the x, y, or z axis and giving its direction in 3D space. The coordinate system used is right-handed.
 
-Returns the position of axis2 and   positions it by  
-identifying it as the x, y, or z axis and giving its  
-direction in 3D space. The coordinate system used is right-handed.") Axis2Placement;
+	:rtype: Handle_Geom_Axis2Placement
+") Axis2Placement;
 		const Handle_Geom_Axis2Placement & Axis2Placement ();
-		%feature("autodoc", "Args:
-	aComponent(Handle_Geom_Axis2Placement)
-	anAxisType(AIS_TypeOfAxis)
+		%feature("autodoc", "	* Allows you to provide settings for aComponent:the position and direction of an axis in 3D space. The coordinate system used is right-handed.
 
-Returns:
-	None
-
-Allows you to provide settings for aComponent:the  
-position and direction of an axis in 3D space. The  
-coordinate system used is right-handed.") SetAxis2Placement;
+	:param aComponent:
+	:type aComponent: Handle_Geom_Axis2Placement &
+	:param anAxisType:
+	:type anAxisType: AIS_TypeOfAxis
+	:rtype: None
+") SetAxis2Placement;
 		void SetAxis2Placement (const Handle_Geom_Axis2Placement & aComponent,const AIS_TypeOfAxis anAxisType);
-		%feature("autodoc", "Args:
-	anAxis(Handle_Geom_Axis1Placement)
+		%feature("autodoc", "	* Constructs a new line to serve as the axis anAxis in 3D space.
 
-Returns:
-	None
-
-Constructs a new line to serve as the axis anAxis in 3D space.") SetAxis1Placement;
+	:param anAxis:
+	:type anAxis: Handle_Geom_Axis1Placement &
+	:rtype: None
+") SetAxis1Placement;
 		void SetAxis1Placement (const Handle_Geom_Axis1Placement & anAxis);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	AIS_TypeOfAxis
+		%feature("autodoc", "	* Returns the type of axis.
 
-Returns the type of axis.") TypeOfAxis;
+	:rtype: AIS_TypeOfAxis
+") TypeOfAxis;
 		AIS_TypeOfAxis TypeOfAxis ();
-		%feature("autodoc", "Args:
-	aTypeAxis(AIS_TypeOfAxis)
+		%feature("autodoc", "	* Constructs the entity aTypeAxis to stock information concerning type of axis.
 
-Returns:
-	None
-
-Constructs the entity aTypeAxis to stock information  
-concerning type of axis.") SetTypeOfAxis;
+	:param aTypeAxis:
+	:type aTypeAxis: AIS_TypeOfAxis
+	:rtype: None
+") SetTypeOfAxis;
 		void SetTypeOfAxis (const AIS_TypeOfAxis aTypeAxis);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns a signature of 2 for axis datums. When you activate mode 2 by a signature, you pick AIS objects of type AIS_Axis.
 
-Returns a signature of 2 for axis datums. When you  
-activate mode 2 by a signature, you pick AIS objects  
-of type AIS_Axis.") IsXYZAxis;
+	:rtype: bool
+") IsXYZAxis;
 		Standard_Boolean IsXYZAxis ();
-		%feature("autodoc", "Args:
-	aMode(Standard_Integer)
+		%feature("autodoc", "	* Returns true if the interactive object accepts the display mode aMode.
 
-Returns:
-	Standard_Boolean
-
-Returns true if the interactive object accepts the display mode aMode.") AcceptDisplayMode;
+	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: bool
+") AcceptDisplayMode;
 		Standard_Boolean AcceptDisplayMode (const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Prs3d_Projector)
-	aTrsf(Handle_Geom_Transformation)
-	aPresentation(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
-Returns:
-	virtual void
-
-computes the presentation according to a point of view  
-         given by <aProjector>.  
-         To be Used when the associated degenerated Presentations  
-         have been transformed by <aTrsf> which is not a Pure  
-         Translation. The HLR Prs can't be deducted automatically  
-         WARNING :<aTrsf> must be applied  
-          to the object to display before computation  !!!") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Prs3d_Projector &
+	:param aTrsf:
+	:type aTrsf: Handle_Geom_Transformation &
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Prs3d_Projector & aProjector,const Handle_Geom_Transformation & aTrsf,const Handle_Prs3d_Presentation & aPresentation);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Signature;
+		%feature("autodoc", "	:rtype: int
+") Signature;
 		Standard_Integer Signature ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	AIS_KindOfInteractive
-
-No detailed docstring for this function.") Type;
+		%feature("autodoc", "	:rtype: AIS_KindOfInteractive
+") Type;
 		AIS_KindOfInteractive Type ();
-		%feature("autodoc", "Args:
-	aColor(Quantity_NameOfColor)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetColor;
+		%feature("autodoc", "	:param aColor:
+	:type aColor: Quantity_NameOfColor
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_NameOfColor aColor);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetColor;
+		%feature("autodoc", "	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	aValue(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetWidth;
+		%feature("autodoc", "	:param aValue:
+	:type aValue: float
+	:rtype: None
+") SetWidth;
 		void SetWidth (const Standard_Real aValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") UnsetColor;
+		%feature("autodoc", "	:rtype: None
+") UnsetColor;
 		void UnsetColor ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") UnsetWidth;
+		%feature("autodoc", "	:rtype: None
+") UnsetWidth;
 		void UnsetWidth ();
 };
 
@@ -9929,153 +7093,122 @@ def __del__(self):
 %nodefaultctor AIS_Circle;
 class AIS_Circle : public AIS_InteractiveObject {
 	public:
-		%feature("autodoc", "Args:
-	aCircle(Handle_Geom_Circle)
+		%feature("autodoc", "	* Initializes this algorithm for constructing AIS circle datums initializes the circle aCircle
 
-Returns:
-	None
-
-Initializes this algorithm for constructing AIS circle  
-datums initializes the circle aCircle") AIS_Circle;
+	:param aCircle:
+	:type aCircle: Handle_Geom_Circle &
+	:rtype: None
+") AIS_Circle;
 		 AIS_Circle (const Handle_Geom_Circle & aCircle);
-		%feature("autodoc", "Args:
-	theCircle(Handle_Geom_Circle)
-	theUStart(Standard_Real)
-	theUEnd(Standard_Real)
-	theIsFilledCircleSens(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Initializes this algorithm for constructing AIS circle datums. Initializes the circle theCircle, the arc starting point theUStart, the arc ending point theUEnd, and the type of sensitivity theIsFilledCircleSens.
 
-Returns:
-	None
-
-Initializes this algorithm for constructing AIS circle datums.  
-Initializes the circle theCircle, the arc  
-  starting point theUStart, the arc ending point theUEnd,  
-  and the type of sensitivity theIsFilledCircleSens.") AIS_Circle;
+	:param theCircle:
+	:type theCircle: Handle_Geom_Circle &
+	:param theUStart:
+	:type theUStart: float
+	:param theUEnd:
+	:type theUEnd: float
+	:param theIsFilledCircleSens: default value is Standard_False
+	:type theIsFilledCircleSens: bool
+	:rtype: None
+") AIS_Circle;
 		 AIS_Circle (const Handle_Geom_Circle & theCircle,const Standard_Real theUStart,const Standard_Real theUEnd,const Standard_Boolean theIsFilledCircleSens = Standard_False);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Prs3d_Projector)
-	aTrsf(Handle_Geom_Transformation)
-	aPresentation(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
-Returns:
-	virtual void
-
-computes the presentation according to a point of view  
-         given by <aProjector>.  
-         To be Used when the associated degenerated Presentations  
-         have been transformed by <aTrsf> which is not a Pure  
-         Translation. The HLR Prs can't be deducted automatically  
-         WARNING :<aTrsf> must be applied  
-          to the object to display before computation  !!!") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Prs3d_Projector &
+	:param aTrsf:
+	:type aTrsf: Handle_Geom_Transformation &
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Prs3d_Projector & aProjector,const Handle_Geom_Transformation & aTrsf,const Handle_Prs3d_Presentation & aPresentation);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns index 6 by default.
 
-Returns index 6 by default.") Signature;
+	:rtype: int
+") Signature;
 		Standard_Integer Signature ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	AIS_KindOfInteractive
+		%feature("autodoc", "	* Indicates that the type of Interactive Object is a datum.
 
-Indicates that the type of Interactive Object is a datum.") Type;
+	:rtype: AIS_KindOfInteractive
+") Type;
 		AIS_KindOfInteractive Type ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_Circle
+		%feature("autodoc", "	* Returns the circle component defined in SetCircle.
 
-Returns the circle component defined in SetCircle.") Circle;
+	:rtype: Handle_Geom_Circle
+") Circle;
 		const Handle_Geom_Circle & Circle ();
-		%feature("autodoc", "Args:
-	u1(Standard_Real)
-	u2(Standard_Real)
+		%feature("autodoc", "	* Constructs instances of the starting point and the end point parameters, u1 and u2.
 
-Returns:
-	None
-
-Constructs instances of the starting point and the end  
-point parameters, u1 and u2.") Parameters;
+	:param u1:
+	:type u1: float &
+	:param u2:
+	:type u2: float &
+	:rtype: None
+") Parameters;
 		void Parameters (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	aCircle(Handle_Geom_Circle)
+		%feature("autodoc", "	* Allows you to provide settings for the circle datum aCircle.
 
-Returns:
-	None
-
-Allows you to provide settings for the circle datum aCircle.") SetCircle;
+	:param aCircle:
+	:type aCircle: Handle_Geom_Circle &
+	:rtype: None
+") SetCircle;
 		void SetCircle (const Handle_Geom_Circle & aCircle);
-		%feature("autodoc", "Args:
-	u(Standard_Real)
+		%feature("autodoc", "	* Allows you to set the parameter u for the starting point of an arc.
 
-Returns:
-	None
-
-Allows you to set the parameter u for the starting point of an arc.") SetFirstParam;
+	:param u:
+	:type u: float
+	:rtype: None
+") SetFirstParam;
 		void SetFirstParam (const Standard_Real u);
-		%feature("autodoc", "Args:
-	u(Standard_Real)
+		%feature("autodoc", "	* Allows you to provide the parameter u for the end point of an arc.
 
-Returns:
-	None
-
-Allows you to provide the parameter u for the end point of an arc.") SetLastParam;
+	:param u:
+	:type u: float
+	:rtype: None
+") SetLastParam;
 		void SetLastParam (const Standard_Real u);
-		%feature("autodoc", "Args:
-	aColor(Quantity_NameOfColor)
+		%feature("autodoc", "	* Assigns the color aColor to the solid line boundary of the circle datum.
 
-Returns:
-	None
-
-Assigns the color aColor to the solid line boundary of the circle datum.") SetColor;
+	:param aColor:
+	:type aColor: Quantity_NameOfColor
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_NameOfColor aColor);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetColor;
+		%feature("autodoc", "	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	aValue(Standard_Real)
+		%feature("autodoc", "	* Assigns the width aValue to the solid line boundary of the circle datum.
 
-Returns:
-	None
-
-Assigns the width aValue to the solid line boundary of the circle datum.") SetWidth;
+	:param aValue:
+	:type aValue: float
+	:rtype: None
+") SetWidth;
 		void SetWidth (const Standard_Real aValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Removes color from the solid line boundary of the circle datum.
 
-Removes color from the solid line boundary of the circle datum.") UnsetColor;
+	:rtype: None
+") UnsetColor;
 		void UnsetColor ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Removes width settings from the solid line boundary of the circle datum.
 
-Removes width settings from the solid line boundary of the circle datum.") UnsetWidth;
+	:rtype: None
+") UnsetWidth;
 		void UnsetWidth ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns the type of sensitivity for the circle;
 
-Returns the type of sensitivity for the circle;") IsFilledCircleSens;
+	:rtype: bool
+") IsFilledCircleSens;
 		Standard_Boolean IsFilledCircleSens ();
-		%feature("autodoc", "Args:
-	theIsFilledCircleSens(Standard_Boolean)
+		%feature("autodoc", "	* Sets the type of sensitivity for the circle. If theIsFilledCircleSens set to Standard_True then the whole circle will be detectable, otherwise only the boundary of the circle.
 
-Returns:
-	None
-
-Sets the type of sensitivity for the circle. If theIsFilledCircleSens set to Standard_True  
-then the whole circle will be detectable, otherwise only the boundary of the circle.") SetFilledCircleSens;
+	:param theIsFilledCircleSens:
+	:type theIsFilledCircleSens: bool
+	:rtype: None
+") SetFilledCircleSens;
 		void SetFilledCircleSens (const Standard_Boolean theIsFilledCircleSens);
 };
 
@@ -10136,125 +7269,82 @@ def __del__(self):
 %nodefaultctor AIS_ConnectedInteractive;
 class AIS_ConnectedInteractive : public AIS_InteractiveObject {
 	public:
-		%feature("autodoc", "Args:
-	aTypeOfPresentation3d(PrsMgr_TypeOfPresentation3d)=PrsMgr_TOP_AllView
+		%feature("autodoc", "	* Disconnects the previous view and sets highlight mode to 0. This highlights the wireframe presentation aTypeOfPresentation3d. Top_AllView deactivates hidden line removal.
 
-Returns:
-	None
-
-Disconnects the previous view and sets highlight  
-mode to 0. This highlights the wireframe presentation  
-aTypeOfPresentation3d.  
-Top_AllView deactivates hidden line removal.") AIS_ConnectedInteractive;
+	:param aTypeOfPresentation3d: default value is PrsMgr_TOP_AllView
+	:type aTypeOfPresentation3d: PrsMgr_TypeOfPresentation3d
+	:rtype: None
+") AIS_ConnectedInteractive;
 		 AIS_ConnectedInteractive (const PrsMgr_TypeOfPresentation3d aTypeOfPresentation3d = PrsMgr_TOP_AllView);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual AIS_KindOfInteractive
+		%feature("autodoc", "	* Returns KOI_Object
 
-Returns KOI_Object") Type;
+	:rtype: AIS_KindOfInteractive
+") Type;
 		virtual AIS_KindOfInteractive Type ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
+		%feature("autodoc", "	* Returns 1
 
-Returns 1") Signature;
+	:rtype: int
+") Signature;
 		virtual Standard_Integer Signature ();
-		%feature("autodoc", "Args:
-	anotherIObj(Handle_AIS_InteractiveObject)
+		%feature("autodoc", "	* Establishes the connection between the Connected Interactive Object, anotherIobj, and its reference entity. If a previous connection with an Interactive Object already exists, it is removed by Disconnect. The second syntax also initiates the location of the Connected Interactive Object.
 
-Returns:
-	virtual void
-
-Establishes the connection between the Connected  
-Interactive Object, anotherIobj, and its reference  
-entity. If a previous connection with an Interactive  
-Object already exists, it is removed by Disconnect.  
-The second syntax also initiates the location of the  
-Connected Interactive Object.") Connect;
+	:param anotherIObj:
+	:type anotherIObj: Handle_AIS_InteractiveObject &
+	:rtype: void
+") Connect;
 		virtual void Connect (const Handle_AIS_InteractiveObject & anotherIObj);
-		%feature("autodoc", "Args:
-	anotherIobj(Handle_AIS_InteractiveObject)
-	aLocation(TopLoc_Location)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Connect;
+		%feature("autodoc", "	:param anotherIobj:
+	:type anotherIobj: Handle_AIS_InteractiveObject &
+	:param aLocation:
+	:type aLocation: TopLoc_Location &
+	:rtype: void
+") Connect;
 		virtual void Connect (const Handle_AIS_InteractiveObject & anotherIobj,const TopLoc_Location & aLocation);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if there is a connection established between the presentation and its source reference.
 
-Returns true if there is a connection established  
-between the presentation and its source reference.") HasConnection;
+	:rtype: bool
+") HasConnection;
 		Standard_Boolean HasConnection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_InteractiveObject
+		%feature("autodoc", "	* Returns the connection with the reference Interactive Object.
 
-Returns the connection with the reference Interactive Object.") ConnectedTo;
+	:rtype: Handle_AIS_InteractiveObject
+") ConnectedTo;
 		const Handle_AIS_InteractiveObject & ConnectedTo ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Clears the connection with a source reference. The presentation will no longer be displayed. Warning Must be done before deleting the presentation.
 
-Clears the connection with a source reference. The  
-presentation will no longer be displayed.  
-Warning Must be done before deleting the presentation.") Disconnect;
+	:rtype: None
+") Disconnect;
 		void Disconnect ();
-		%feature("autodoc", "Args:
-	aProjector(Handle_Prs3d_Projector)
-	aTrsf(Handle_Geom_Transformation)
-	aPresentation(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* Computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
-Returns:
-	virtual void
-
-Computes the presentation according to a point of view  
-         given by <aProjector>.  
-         To be Used when the associated degenerated Presentations  
-         have been transformed by <aTrsf> which is not a Pure  
-         Translation. The HLR Prs can't be deducted automatically  
-         WARNING :<aTrsf> must be applied  
-          to the object to display before computation  !!!") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Prs3d_Projector &
+	:param aTrsf:
+	:type aTrsf: Handle_Geom_Transformation &
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Prs3d_Projector & aProjector,const Handle_Geom_Transformation & aTrsf,const Handle_Prs3d_Presentation & aPresentation);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Prs3d_Projector)
-	aPresentation(Handle_Prs3d_Presentation)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Compute;
+		%feature("autodoc", "	:param aProjector:
+	:type aProjector: Handle_Prs3d_Projector &
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Prs3d_Projector & aProjector,const Handle_Prs3d_Presentation & aPresentation);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") AcceptShapeDecomposition;
+		%feature("autodoc", "	:rtype: bool
+") AcceptShapeDecomposition;
 		Standard_Boolean AcceptShapeDecomposition ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") UpdateLocation;
+		%feature("autodoc", "	:rtype: void
+") UpdateLocation;
 		virtual void UpdateLocation ();
-		%feature("autodoc", "Args:
-	aSel(Handle_SelectMgr_Selection)
+		%feature("autodoc", "	* For this class, the location effect is treated in the compute & computeSelection methods. So the UpdateLocation Methods are redefined to do nothing else
 
-Returns:
-	virtual void
-
-For this class, the  location effect is treated in the  
-          compute   &     computeSelection  methods.  So     the  
-       UpdateLocation Methods are redefined to do nothing else") UpdateLocation;
+	:param aSel:
+	:type aSel: Handle_SelectMgr_Selection &
+	:rtype: void
+") UpdateLocation;
 		virtual void UpdateLocation (const Handle_SelectMgr_Selection & aSel);
 };
 
@@ -10315,258 +7405,166 @@ def __del__(self):
 %nodefaultctor AIS_Dimension;
 class AIS_Dimension : public AIS_InteractiveObject {
 	public:
-		%feature("autodoc", "Args:
-	theType(AIS_KindOfDimension)
+		%feature("autodoc", "	* Constructor with default parameters values. @param theType [in] the type of dimension.
 
-Returns:
-	None
-
-Constructor with default parameters values.
-@param theType [in] the type of dimension.") AIS_Dimension;
+	:param theType:
+	:type theType: AIS_KindOfDimension
+	:rtype: None
+") AIS_Dimension;
 		 AIS_Dimension (const AIS_KindOfDimension theType);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Gets dimension measurement value. If the value to display is not specified by user, then the dimension object is responsible to compute it on its own in model space coordinates. returns the dimension value (in model units) which is used during display of the presentation.
 
-Gets dimension measurement value. If the value to display is not
-specified by user, then the dimension object is responsible to
-compute it on its own in model space coordinates.
-@return the dimension value (in model units) which is used
-during display of the presentation.") GetValue;
+	:rtype: float
+") GetValue;
 		Standard_Real GetValue ();
-		%feature("autodoc", "Args:
-	theValue(Standard_Real)
+		%feature("autodoc", "	* Sets user-defined dimension value. The user-defined dimension value is specified in model space, and affect by unit conversion during the display. @param theValue [in] the user-defined value to display.
 
-Returns:
-	None
-
-Sets user-defined dimension value.
-The user-defined dimension value is specified in model space,
-and affect by unit conversion during the display.
-@param theValue [in] the user-defined value to display.") SetCustomValue;
+	:param theValue:
+	:type theValue: float
+	:rtype: None
+") SetCustomValue;
 		void SetCustomValue (const Standard_Real theValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pln
+		%feature("autodoc", "	* Get the dimension plane in which the 2D dimension presentation is computed. By default, if plane is not defined by user, it is computed automatically after dimension geometry is computed. If computed dimension geometry (points) can't be placed on the user-defined plane, dimension geometry was set as invalid (validity flag is set to false) and dimension presentation will not be computed. If user-defined plane allow geometry placement on it, it will be used for computing of the dimension presentation. returns dimension plane used for presentation computing.
 
-Get the dimension plane in which the 2D dimension presentation is computed.
-By default, if plane is not defined by user, it is computed automatically
-after dimension geometry is computed.
-If computed dimension geometry (points) can't be placed on the user-defined
-plane, dimension geometry was set as invalid (validity flag is set to false)
-and dimension presentation will not be computed.
-If user-defined plane allow geometry placement on it, it will be used for
-computing of the dimension presentation.
-@return dimension plane used for presentation computing.") GetPlane;
+	:rtype: gp_Pln
+") GetPlane;
 		const gp_Pln & GetPlane ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Geometry type defines type of shapes on which the dimension is to be built. returns type of geometry on which the dimension will be built.
 
-Geometry type defines type of shapes on which the dimension is to be built. 
-@return type of geometry on which the dimension will be built.") GetGeometryType;
+	:rtype: int
+") GetGeometryType;
 		Standard_Integer GetGeometryType ();
-		%feature("autodoc", "Args:
-	thePlane(gp_Pln)
+		%feature("autodoc", "	* Sets user-defined plane where the 2D dimension presentation will be placed. Checks validity of this plane if geometry has been set already. Validity of the plane is checked according to the geometry set and has different criteria for different kinds of dimensions.
 
-Returns:
-	virtual void
-
-Sets user-defined plane where the 2D dimension presentation will be placed.
-Checks validity of this plane if geometry has been set already.
-Validity of the plane is checked according to the geometry set
-and has different criteria for different kinds of dimensions.") SetCustomPlane;
+	:param thePlane:
+	:type thePlane: gp_Pln
+	:rtype: void
+") SetCustomPlane;
 		virtual void SetCustomPlane (const gp_Pln & thePlane);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Unsets user-defined plane. Therefore the plane for dimension will be computed automatically.
 
-Unsets user-defined plane. Therefore the plane for dimension will be
-computed automatically.") UnsetCustomPlane;
+	:rtype: None
+") UnsetCustomPlane;
 		void UnsetCustomPlane ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns True if text position is set by user with method SetTextPosition().
 
-@return TRUE if text position is set by user with method SetTextPosition().") IsTextPositionCustom;
+	:rtype: bool
+") IsTextPositionCustom;
 		Standard_Boolean IsTextPositionCustom ();
-		%feature("autodoc", "Args:
-	&(gp_Pnt)
+		%feature("autodoc", "	* Fixes the absolute text position and adjusts flyout, plane and text alignment according to it. Updates presentation if the text position is valid. ATTENTION! It does not change vertical text alignment. @param theTextPos [in] the point of text position.
 
-Returns:
-	None
-
-Fixes the absolute text position and adjusts flyout, plane and text alignment
-according to it. Updates presentation if the text position is valid.
-ATTENTION! It does not change vertical text alignment.
-@param theTextPos [in] the point of text position.") SetTextPosition;
+	:param &:
+	:type &: gp_Pnt
+	:rtype: None
+") SetTextPosition;
 		void SetTextPosition (const gp_Pnt &);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
+		%feature("autodoc", "	* Computes absolute text position from dimension parameters (flyout, plane and text alignment).
 
-Computes absolute text position from dimension parameters
-(flyout, plane and text alignment).") GetTextPosition;
+	:rtype: gp_Pnt
+") GetTextPosition;
 		const gp_Pnt GetTextPosition ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_DimensionAspect
+		%feature("autodoc", "	* Gets the dimension aspect from AIS object drawer. Dimension aspect contains aspects of line, text and arrows for dimension presentation.
 
-Gets the dimension aspect from AIS object drawer.
-Dimension aspect contains aspects of line, text and arrows for dimension presentation.") DimensionAspect;
+	:rtype: Handle_Prs3d_DimensionAspect
+") DimensionAspect;
 		Handle_Prs3d_DimensionAspect DimensionAspect ();
-		%feature("autodoc", "Args:
-	theDimensionAspect(Handle_Prs3d_DimensionAspect)
+		%feature("autodoc", "	* Sets new dimension aspect for the interactive object drawer. The dimension aspect provides dynamic properties which are generally used during computation of dimension presentations.
 
-Returns:
-	None
-
-Sets new dimension aspect for the interactive object drawer.
-The dimension aspect provides dynamic properties which are generally
-used during computation of dimension presentations.") SetDimensionAspect;
+	:param theDimensionAspect:
+	:type theDimensionAspect: Handle_Prs3d_DimensionAspect &
+	:rtype: None
+") SetDimensionAspect;
 		void SetDimensionAspect (const Handle_Prs3d_DimensionAspect & theDimensionAspect);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	AIS_KindOfDimension
+		%feature("autodoc", "	* returns the kind of dimension.
 
-@return the kind of dimension.") KindOfDimension;
+	:rtype: AIS_KindOfDimension
+") KindOfDimension;
 		AIS_KindOfDimension KindOfDimension ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	AIS_KindOfInteractive
+		%feature("autodoc", "	* returns the kind of interactive.
 
-@return the kind of interactive.") Type;
+	:rtype: AIS_KindOfInteractive
+") Type;
 		AIS_KindOfInteractive Type ();
-		%feature("autodoc", "Args:
-	theMode(Standard_Integer)
+		%feature("autodoc", "	* Returns true if the class of objects accepts the display mode theMode. The interactive context can have a default mode of representation for the set of Interactive Objects. This mode may not be accepted by object.
 
-Returns:
-	Standard_Boolean
-
-Returns true if the class of objects accepts the display mode theMode.
-The interactive context can have a default mode of representation for
-the set of Interactive Objects. This mode may not be accepted by object.") AcceptDisplayMode;
+	:param theMode:
+	:type theMode: Standard_Integer
+	:rtype: bool
+") AcceptDisplayMode;
 		Standard_Boolean AcceptDisplayMode (const Standard_Integer theMode);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	AIS_DisplaySpecialSymbol
+		%feature("autodoc", "	* returns dimension special symbol display options.
 
-@return dimension special symbol display options.") DisplaySpecialSymbol;
+	:rtype: AIS_DisplaySpecialSymbol
+") DisplaySpecialSymbol;
 		AIS_DisplaySpecialSymbol DisplaySpecialSymbol ();
-		%feature("autodoc", "Args:
-	theDisplaySpecSymbol(AIS_DisplaySpecialSymbol)
+		%feature("autodoc", "	* Specifies whether to display special symbol or not.
 
-Returns:
-	None
-
-Specifies whether to display special symbol or not.") SetDisplaySpecialSymbol;
+	:param theDisplaySpecSymbol:
+	:type theDisplaySpecSymbol: AIS_DisplaySpecialSymbol
+	:rtype: None
+") SetDisplaySpecialSymbol;
 		void SetDisplaySpecialSymbol (const AIS_DisplaySpecialSymbol theDisplaySpecSymbol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ExtCharacter
+		%feature("autodoc", "	* returns special symbol.
 
-@return special symbol.") SpecialSymbol;
+	:rtype: Standard_ExtCharacter
+") SpecialSymbol;
 		Standard_ExtCharacter SpecialSymbol ();
-		%feature("autodoc", "Args:
-	theSpecialSymbol(Standard_ExtCharacter)
+		%feature("autodoc", "	* Specifies special symbol.
 
-Returns:
-	None
-
-Specifies special symbol.") SetSpecialSymbol;
+	:param theSpecialSymbol:
+	:type theSpecialSymbol: Standard_ExtCharacter
+	:rtype: None
+") SetSpecialSymbol;
 		void SetSpecialSymbol (const Standard_ExtCharacter theSpecialSymbol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  TCollection_AsciiString
-
-No detailed docstring for this function.") GetDisplayUnits;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") GetDisplayUnits;
 		virtual const TCollection_AsciiString & GetDisplayUnits ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  TCollection_AsciiString
-
-No detailed docstring for this function.") GetModelUnits;
+		%feature("autodoc", "	:rtype: TCollection_AsciiString
+") GetModelUnits;
 		virtual const TCollection_AsciiString & GetModelUnits ();
-		%feature("autodoc", "Args:
-	&(TCollection_AsciiString)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetDisplayUnits;
+		%feature("autodoc", "	:param &:
+	:type &: TCollection_AsciiString
+	:rtype: void
+") SetDisplayUnits;
 		virtual void SetDisplayUnits (const TCollection_AsciiString &);
-		%feature("autodoc", "Args:
-	&(TCollection_AsciiString)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetModelUnits;
+		%feature("autodoc", "	:param &:
+	:type &: TCollection_AsciiString
+	:rtype: void
+") SetModelUnits;
 		virtual void SetModelUnits (const TCollection_AsciiString &);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Unsets user defined text positioning and enables text positioning by other parameters: text alignment, extension size, flyout and custom plane.
 
-Unsets user defined text positioning and enables text positioning
- by other parameters: text alignment, extension size, flyout and custom plane.") UnsetFixedTextPosition;
+	:rtype: None
+") UnsetFixedTextPosition;
 		void UnsetFixedTextPosition ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns selection tolerance for text2d: For 2d text selection detection sensitive point with tolerance is used Important! Only for 2d text.
 
-Returns selection tolerance for text2d:
-For 2d text selection detection sensitive point with tolerance is used
-Important! Only for 2d text.") SelToleranceForText2d;
+	:rtype: float
+") SelToleranceForText2d;
 		Standard_Real SelToleranceForText2d ();
-		%feature("autodoc", "Args:
-	theTol(Standard_Real)
+		%feature("autodoc", "	* Sets selection tolerance for text2d: For 2d text selection detection sensitive point with tolerance is used to change this tolerance use this method Important! Only for 2d text.
 
-Returns:
-	None
-
-Sets selection tolerance for text2d:
-For 2d text selection detection sensitive point with tolerance is used
-to change this tolerance use this method
-Important! Only for 2d text.") SetSelToleranceForText2d;
+	:param theTol:
+	:type theTol: float
+	:rtype: None
+") SetSelToleranceForText2d;
 		void SetSelToleranceForText2d (const Standard_Real theTol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns flyout value for dimension.
 
-@return flyout value for dimension.") GetFlyout;
+	:rtype: float
+") GetFlyout;
 		Standard_Real GetFlyout ();
-		%feature("autodoc", "Args:
-	theFlyout(Standard_Real)
+		%feature("autodoc", "	* Sets flyout value for dimension.
 
-Returns:
-	None
-
-Sets flyout value for dimension.") SetFlyout;
+	:param theFlyout:
+	:type theFlyout: float
+	:rtype: None
+") SetFlyout;
 		void SetFlyout (const Standard_Real theFlyout);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Check that the input geometry for dimension is valid and the presentation can be successfully computed. returns True if dimension geometry is ok.
 
-Check that the input geometry for dimension is valid and the
-presentation can be successfully computed.
-@return TRUE if dimension geometry is ok.") IsValid;
+	:rtype: bool
+") IsValid;
 		Standard_Boolean IsValid ();
 };
 
@@ -10588,128 +7586,101 @@ def __del__(self):
 %nodefaultctor AIS_Line;
 class AIS_Line : public AIS_InteractiveObject {
 	public:
-		%feature("autodoc", "Args:
-	aLine(Handle_Geom_Line)
+		%feature("autodoc", "	* Initializes the line aLine.
 
-Returns:
-	None
-
-Initializes the line aLine.") AIS_Line;
+	:param aLine:
+	:type aLine: Handle_Geom_Line &
+	:rtype: None
+") AIS_Line;
 		 AIS_Line (const Handle_Geom_Line & aLine);
-		%feature("autodoc", "Args:
-	aStartPoint(Handle_Geom_Point)
-	aEndPoint(Handle_Geom_Point)
+		%feature("autodoc", "	* Initializes a starting point aStartPoint and a finishing point aEndPoint for the line.
 
-Returns:
-	None
-
-Initializes a starting point aStartPoint  
-  and a finishing point aEndPoint for the line.") AIS_Line;
+	:param aStartPoint:
+	:type aStartPoint: Handle_Geom_Point &
+	:param aEndPoint:
+	:type aEndPoint: Handle_Geom_Point &
+	:rtype: None
+") AIS_Line;
 		 AIS_Line (const Handle_Geom_Point & aStartPoint,const Handle_Geom_Point & aEndPoint);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Prs3d_Projector)
-	aTrsf(Handle_Geom_Transformation)
-	aPresentation(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
-Returns:
-	virtual void
-
-computes the presentation according to a point of view  
-         given by <aProjector>.  
-         To be Used when the associated degenerated Presentations  
-         have been transformed by <aTrsf> which is not a Pure  
-         Translation. The HLR Prs can't be deducted automatically  
-         WARNING :<aTrsf> must be applied  
-          to the object to display before computation  !!!") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Prs3d_Projector &
+	:param aTrsf:
+	:type aTrsf: Handle_Geom_Transformation &
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Prs3d_Projector & aProjector,const Handle_Geom_Transformation & aTrsf,const Handle_Prs3d_Presentation & aPresentation);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the signature 5.
 
-Returns the signature 5.") Signature;
+	:rtype: int
+") Signature;
 		Standard_Integer Signature ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	AIS_KindOfInteractive
+		%feature("autodoc", "	* Returns the type Datum.
 
-Returns the type Datum.") Type;
+	:rtype: AIS_KindOfInteractive
+") Type;
 		AIS_KindOfInteractive Type ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_Line
+		%feature("autodoc", "	* Constructs an infinite line.
 
-Constructs an infinite line.") Line;
+	:rtype: Handle_Geom_Line
+") Line;
 		const Handle_Geom_Line & Line ();
-		%feature("autodoc", "Args:
-	PStart(Handle_Geom_Point)
-	PEnd(Handle_Geom_Point)
+		%feature("autodoc", "	* Returns the starting point PStart and the end point PEnd of the line set by SetPoints.
 
-Returns:
-	None
-
-Returns the starting point PStart and the end point  
-PEnd of the line set by SetPoints.") Points;
+	:param PStart:
+	:type PStart: Handle_Geom_Point &
+	:param PEnd:
+	:type PEnd: Handle_Geom_Point &
+	:rtype: None
+") Points;
 		void Points (Handle_Geom_Point & PStart,Handle_Geom_Point & PEnd);
-		%feature("autodoc", "Args:
-	L(Handle_Geom_Line)
+		%feature("autodoc", "	* instantiates an infinite line.
 
-Returns:
-	None
-
-instantiates an infinite line.") SetLine;
+	:param L:
+	:type L: Handle_Geom_Line &
+	:rtype: None
+") SetLine;
 		void SetLine (const Handle_Geom_Line & L);
-		%feature("autodoc", "Args:
-	P1(Handle_Geom_Point)
-	P2(Handle_Geom_Point)
+		%feature("autodoc", "	* Sets the starting point P1 and ending point P2 of the infinite line to create a finite line segment.
 
-Returns:
-	None
-
-Sets the starting point P1 and ending point P2 of the  
-infinite line to create a finite line segment.") SetPoints;
+	:param P1:
+	:type P1: Handle_Geom_Point &
+	:param P2:
+	:type P2: Handle_Geom_Point &
+	:rtype: None
+") SetPoints;
 		void SetPoints (const Handle_Geom_Point & P1,const Handle_Geom_Point & P2);
-		%feature("autodoc", "Args:
-	aColor(Quantity_NameOfColor)
+		%feature("autodoc", "	* Provides a new color setting aColor for the line in the drawing tool, or 'Drawer'.
 
-Returns:
-	None
-
-Provides a new color setting aColor for the line in the  
-drawing tool, or 'Drawer'.") SetColor;
+	:param aColor:
+	:type aColor: Quantity_NameOfColor
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_NameOfColor aColor);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetColor;
+		%feature("autodoc", "	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	aValue(Standard_Real)
+		%feature("autodoc", "	* Provides the new width setting aValue for the line in the drawing tool, or 'Drawer'.
 
-Returns:
-	None
-
-Provides the new width setting aValue for the line in  
-the drawing tool, or 'Drawer'.") SetWidth;
+	:param aValue:
+	:type aValue: float
+	:rtype: None
+") SetWidth;
 		void SetWidth (const Standard_Real aValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Removes the color setting and returns the original color.
 
-Removes the color setting and returns the original color.") UnsetColor;
+	:rtype: None
+") UnsetColor;
 		void UnsetColor ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Removes the width setting and returns the original width.
 
-Removes the width setting and returns the original width.") UnsetWidth;
+	:rtype: None
+") UnsetWidth;
 		void UnsetWidth ();
 };
 
@@ -10770,93 +7741,65 @@ def __del__(self):
 %nodefaultctor AIS_MultipleConnectedInteractive;
 class AIS_MultipleConnectedInteractive : public AIS_InteractiveObject {
 	public:
-		%feature("autodoc", "Args:
-	aTypeOfPresentation3d(PrsMgr_TypeOfPresentation3d)=PrsMgr_TOP_AllView
+		%feature("autodoc", "	* Initializes the Interactive Object with multiple presentation connections. If aTypeOfPresentation3d does not have the affectation PrsMgr_TOP_AllView, it is projector dependent.
 
-Returns:
-	None
-
-Initializes the Interactive Object with multiple  
-presentation connections. If aTypeOfPresentation3d  
-does not have the affectation PrsMgr_TOP_AllView,  
-it is projector dependent.") AIS_MultipleConnectedInteractive;
+	:param aTypeOfPresentation3d: default value is PrsMgr_TOP_AllView
+	:type aTypeOfPresentation3d: PrsMgr_TypeOfPresentation3d
+	:rtype: None
+") AIS_MultipleConnectedInteractive;
 		 AIS_MultipleConnectedInteractive (const PrsMgr_TypeOfPresentation3d aTypeOfPresentation3d = PrsMgr_TOP_AllView);
-		%feature("autodoc", "Args:
-	anotherIObj(Handle_AIS_InteractiveObject)
+		%feature("autodoc", "	* Add anotherIObj in the presentation of me
 
-Returns:
-	None
-
-Add anotherIObj in the presentation of me") Connect;
+	:param anotherIObj:
+	:type anotherIObj: Handle_AIS_InteractiveObject &
+	:rtype: None
+") Connect;
 		void Connect (const Handle_AIS_InteractiveObject & anotherIObj);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual AIS_KindOfInteractive
-
-No detailed docstring for this function.") Type;
+		%feature("autodoc", "	:rtype: AIS_KindOfInteractive
+") Type;
 		virtual AIS_KindOfInteractive Type ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
-
-No detailed docstring for this function.") Signature;
+		%feature("autodoc", "	:rtype: int
+") Signature;
 		virtual Standard_Integer Signature ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the object is connected to others.
 
-Returns true if the object is connected to others.") HasConnection;
+	:rtype: bool
+") HasConnection;
 		Standard_Boolean HasConnection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	AIS_SequenceOfInteractive
+		%feature("autodoc", "	* Returns the connection references of the previous Interactive Objects in view.
 
-Returns the connection references of the previous  
-Interactive Objects in view.") ConnectedTo;
+	:rtype: AIS_SequenceOfInteractive
+") ConnectedTo;
 		const AIS_SequenceOfInteractive & ConnectedTo ();
-		%feature("autodoc", "Args:
-	anotherIObj(Handle_AIS_InteractiveObject)
+		%feature("autodoc", "	* Removes the connection anotherIObj to an entity.
 
-Returns:
-	None
-
-Removes the connection anotherIObj to an entity.") Disconnect;
+	:param anotherIObj:
+	:type anotherIObj: Handle_AIS_InteractiveObject &
+	:rtype: None
+") Disconnect;
 		void Disconnect (const Handle_AIS_InteractiveObject & anotherIObj);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Clears all the connections to objects.
 
-Clears all the connections to objects.") DisconnectAll;
+	:rtype: None
+") DisconnectAll;
 		void DisconnectAll ();
-		%feature("autodoc", "Args:
-	aProjector(Handle_Prs3d_Projector)
-	aTrsf(Handle_Geom_Transformation)
-	aPresentation(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
-Returns:
-	virtual void
-
-computes the presentation according to a point of view  
-         given by <aProjector>.  
-         To be Used when the associated degenerated Presentations  
-         have been transformed by <aTrsf> which is not a Pure  
-         Translation. The HLR Prs can't be deducted automatically  
-         WARNING :<aTrsf> must be applied  
-          to the object to display before computation  !!!") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Prs3d_Projector &
+	:param aTrsf:
+	:type aTrsf: Handle_Geom_Transformation &
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Prs3d_Projector & aProjector,const Handle_Geom_Transformation & aTrsf,const Handle_Prs3d_Presentation & aPresentation);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Prs3d_Projector)
-	aPresentation(Handle_Prs3d_Presentation)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Compute;
+		%feature("autodoc", "	:param aProjector:
+	:type aProjector: Handle_Prs3d_Projector &
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Prs3d_Projector & aProjector,const Handle_Prs3d_Presentation & aPresentation);
 };
 
@@ -10917,300 +7860,227 @@ def __del__(self):
 %nodefaultctor AIS_Plane;
 class AIS_Plane : public AIS_InteractiveObject {
 	public:
-		%feature("autodoc", "Args:
-	aComponent(Handle_Geom_Plane)
-	aCurrentMode(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* initializes the plane aComponent. If the mode aCurrentMode equals true, the drawing tool, 'Drawer' is not initialized.
 
-Returns:
-	None
-
-initializes the plane aComponent. If  
-  the mode aCurrentMode equals true, the drawing  
-  tool, 'Drawer' is not initialized.") AIS_Plane;
+	:param aComponent:
+	:type aComponent: Handle_Geom_Plane &
+	:param aCurrentMode: default value is Standard_False
+	:type aCurrentMode: bool
+	:rtype: None
+") AIS_Plane;
 		 AIS_Plane (const Handle_Geom_Plane & aComponent,const Standard_Boolean aCurrentMode = Standard_False);
-		%feature("autodoc", "Args:
-	aComponent(Handle_Geom_Plane)
-	aCenter(gp_Pnt)
-	aCurrentMode(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* initializes the plane aComponent and the point aCenter. If the mode aCurrentMode equals true, the drawing tool, 'Drawer' is not initialized. aCurrentMode equals true, the drawing tool, 'Drawer' is not initialized.
 
-Returns:
-	None
-
-initializes the plane aComponent and  
-  the point aCenter. If the mode aCurrentMode  
-  equals true, the drawing tool, 'Drawer' is not  
-  initialized. aCurrentMode equals true, the drawing  
-  tool, 'Drawer' is not initialized.") AIS_Plane;
+	:param aComponent:
+	:type aComponent: Handle_Geom_Plane &
+	:param aCenter:
+	:type aCenter: gp_Pnt
+	:param aCurrentMode: default value is Standard_False
+	:type aCurrentMode: bool
+	:rtype: None
+") AIS_Plane;
 		 AIS_Plane (const Handle_Geom_Plane & aComponent,const gp_Pnt & aCenter,const Standard_Boolean aCurrentMode = Standard_False);
-		%feature("autodoc", "Args:
-	aComponent(Handle_Geom_Plane)
-	aCenter(gp_Pnt)
-	aPmin(gp_Pnt)
-	aPmax(gp_Pnt)
-	aCurrentMode(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* initializes the plane aComponent, the point aCenter, and the minimum and maximum points, aPmin and aPmax. If the mode aCurrentMode equals true, the drawing tool, 'Drawer' is not initialized.
 
-Returns:
-	None
-
-initializes the plane aComponent, the  
-  point aCenter, and the minimum and maximum  
-  points, aPmin and aPmax. If the mode  
-aCurrentMode equals true, the drawing tool, 'Drawer' is not initialized.") AIS_Plane;
+	:param aComponent:
+	:type aComponent: Handle_Geom_Plane &
+	:param aCenter:
+	:type aCenter: gp_Pnt
+	:param aPmin:
+	:type aPmin: gp_Pnt
+	:param aPmax:
+	:type aPmax: gp_Pnt
+	:param aCurrentMode: default value is Standard_False
+	:type aCurrentMode: bool
+	:rtype: None
+") AIS_Plane;
 		 AIS_Plane (const Handle_Geom_Plane & aComponent,const gp_Pnt & aCenter,const gp_Pnt & aPmin,const gp_Pnt & aPmax,const Standard_Boolean aCurrentMode = Standard_False);
-		%feature("autodoc", "Args:
-	aComponent(Handle_Geom_Axis2Placement)
-	aPlaneType(AIS_TypeOfPlane)
-	aCurrentMode(Standard_Boolean)=Standard_False
-
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_Plane;
+		%feature("autodoc", "	:param aComponent:
+	:type aComponent: Handle_Geom_Axis2Placement &
+	:param aPlaneType:
+	:type aPlaneType: AIS_TypeOfPlane
+	:param aCurrentMode: default value is Standard_False
+	:type aCurrentMode: bool
+	:rtype: None
+") AIS_Plane;
 		 AIS_Plane (const Handle_Geom_Axis2Placement & aComponent,const AIS_TypeOfPlane aPlaneType,const Standard_Boolean aCurrentMode = Standard_False);
-		%feature("autodoc", "Args:
-	aValue(Standard_Real)
+		%feature("autodoc", "	* Same value for x and y directions
 
-Returns:
-	None
-
-Same value for x and y directions") SetSize;
+	:param aValue:
+	:type aValue: float
+	:rtype: None
+") SetSize;
 		void SetSize (const Standard_Real aValue);
-		%feature("autodoc", "Args:
-	Xval(Standard_Real)
-	YVal(Standard_Real)
+		%feature("autodoc", "	* Sets the size defined by the length along the X axis XVal and the length along the Y axis YVal.
 
-Returns:
-	None
-
-Sets the size defined by the length along the X axis  
-XVal and the length along the Y axis YVal.") SetSize;
+	:param Xval:
+	:type Xval: float
+	:param YVal:
+	:type YVal: float
+	:rtype: None
+") SetSize;
 		void SetSize (const Standard_Real Xval,const Standard_Real YVal);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") UnsetSize;
+		%feature("autodoc", "	:rtype: None
+") UnsetSize;
 		void UnsetSize ();
-		%feature("autodoc", "Args:
-	X(Standard_Real)
-	Y(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Size;
+		%feature("autodoc", "	:param X:
+	:type X: float &
+	:param Y:
+	:type Y: float &
+	:rtype: bool
+") Size;
 		Standard_Boolean Size (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasOwnSize;
+		%feature("autodoc", "	:rtype: bool
+") HasOwnSize;
 		Standard_Boolean HasOwnSize ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
-
-No detailed docstring for this function.") Signature;
+		%feature("autodoc", "	:rtype: int
+") Signature;
 		virtual Standard_Integer Signature ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual AIS_KindOfInteractive
-
-No detailed docstring for this function.") Type;
+		%feature("autodoc", "	:rtype: AIS_KindOfInteractive
+") Type;
 		virtual AIS_KindOfInteractive Type ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_Plane
+		%feature("autodoc", "	* Returns the component specified in SetComponent.
 
-Returns the component specified in SetComponent.") Component;
+	:rtype: Handle_Geom_Plane
+") Component;
 		const Handle_Geom_Plane & Component ();
-		%feature("autodoc", "Args:
-	aComponent(Handle_Geom_Plane)
+		%feature("autodoc", "	* Creates an instance of the plane aComponent.
 
-Returns:
-	None
-
-Creates an instance of the plane aComponent.") SetComponent;
+	:param aComponent:
+	:type aComponent: Handle_Geom_Plane &
+	:rtype: None
+") SetComponent;
 		void SetComponent (const Handle_Geom_Plane & aComponent);
-		%feature("autodoc", "Args:
-	aComponent(Handle_Geom_Plane)
-	aCenter(gp_Pnt)
-	aPmin(gp_Pnt)
-	aPmax(gp_Pnt)
+		%feature("autodoc", "	* Returns the settings for the selected plane aComponent, provided in SetPlaneAttributes. These include the points aCenter, aPmin, and aPmax
 
-Returns:
-	Standard_Boolean
-
-Returns the settings for the selected plane  
-aComponent, provided in SetPlaneAttributes.  
-These include the points aCenter, aPmin, and aPmax") PlaneAttributes;
+	:param aComponent:
+	:type aComponent: Handle_Geom_Plane &
+	:param aCenter:
+	:type aCenter: gp_Pnt
+	:param aPmin:
+	:type aPmin: gp_Pnt
+	:param aPmax:
+	:type aPmax: gp_Pnt
+	:rtype: bool
+") PlaneAttributes;
 		Standard_Boolean PlaneAttributes (Handle_Geom_Plane & aComponent,gp_Pnt & aCenter,gp_Pnt & aPmin,gp_Pnt & aPmax);
-		%feature("autodoc", "Args:
-	aComponent(Handle_Geom_Plane)
-	aCenter(gp_Pnt)
-	aPmin(gp_Pnt)
-	aPmax(gp_Pnt)
+		%feature("autodoc", "	* Allows you to provide settings other than default ones for the selected plane. These include: center point aCenter, maximum aPmax and minimum aPmin.
 
-Returns:
-	None
-
-Allows you to provide settings other than default ones  
-for the selected plane. These include: center point  
-aCenter, maximum aPmax and minimum aPmin.") SetPlaneAttributes;
+	:param aComponent:
+	:type aComponent: Handle_Geom_Plane &
+	:param aCenter:
+	:type aCenter: gp_Pnt
+	:param aPmin:
+	:type aPmin: gp_Pnt
+	:param aPmax:
+	:type aPmax: gp_Pnt
+	:rtype: None
+") SetPlaneAttributes;
 		void SetPlaneAttributes (const Handle_Geom_Plane & aComponent,const gp_Pnt & aCenter,const gp_Pnt & aPmin,const gp_Pnt & aPmax);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
+		%feature("autodoc", "	* Returns the coordinates of the center point.
 
-Returns the coordinates of the center point.") Center;
+	:rtype: gp_Pnt
+") Center;
 		const gp_Pnt & Center ();
-		%feature("autodoc", "Args:
-	aCenter(gp_Pnt)
+		%feature("autodoc", "	* Provides settings for the center aCenter other than (0, 0, 0).
 
-Returns:
-	None
-
-Provides settings for the center aCenter other than (0, 0, 0).") SetCenter;
+	:param aCenter:
+	:type aCenter: gp_Pnt
+	:rtype: None
+") SetCenter;
 		void SetCenter (const gp_Pnt & aCenter);
-		%feature("autodoc", "Args:
-	aComponent(Handle_Geom_Axis2Placement)
-	aPlaneType(AIS_TypeOfPlane)
+		%feature("autodoc", "	* Allows you to provide settings for the position and direction of one of the plane's axes, aComponent, in 3D space. The coordinate system used is right-handed, and the type of plane aPlaneType is one of: - AIS_ TOPL_Unknown - AIS_ TOPL_XYPlane - AIS_ TOPL_XZPlane - AIS_ TOPL_YZPlane}.
 
-Returns:
-	None
-
-Allows you to provide settings for the position and  
-direction of one of the plane's axes, aComponent, in  
-3D space. The coordinate system used is  
-right-handed, and the type of plane aPlaneType is one of:  
--   AIS_ TOPL_Unknown  
--   AIS_ TOPL_XYPlane  
--   AIS_ TOPL_XZPlane  
--   AIS_ TOPL_YZPlane}.") SetAxis2Placement;
+	:param aComponent:
+	:type aComponent: Handle_Geom_Axis2Placement &
+	:param aPlaneType:
+	:type aPlaneType: AIS_TypeOfPlane
+	:rtype: None
+") SetAxis2Placement;
 		void SetAxis2Placement (const Handle_Geom_Axis2Placement & aComponent,const AIS_TypeOfPlane aPlaneType);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_Axis2Placement
+		%feature("autodoc", "	* Returns the position of the plane's axis2 system identifying the x, y, or z axis and giving the plane a direction in 3D space. An axis2 system is a right-handed coordinate system.
 
-Returns the position of the plane's axis2 system  
-identifying the x, y, or z axis and giving the plane a  
-direction in 3D space. An axis2 system is a right-handed coordinate system.") Axis2Placement;
+	:rtype: Handle_Geom_Axis2Placement
+") Axis2Placement;
 		Handle_Geom_Axis2Placement Axis2Placement ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	AIS_TypeOfPlane
+		%feature("autodoc", "	* Returns the type of plane - xy, yz, xz or unknown.
 
-Returns the type of plane - xy, yz, xz or unknown.") TypeOfPlane;
+	:rtype: AIS_TypeOfPlane
+") TypeOfPlane;
 		AIS_TypeOfPlane TypeOfPlane ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns the type of plane - xy, yz, or xz.
 
-Returns the type of plane - xy, yz, or xz.") IsXYZPlane;
+	:rtype: bool
+") IsXYZPlane;
 		Standard_Boolean IsXYZPlane ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns the non-default current display mode set by SetCurrentMode.
 
-Returns the non-default current display mode set by SetCurrentMode.") CurrentMode;
+	:rtype: bool
+") CurrentMode;
 		Standard_Boolean CurrentMode ();
-		%feature("autodoc", "Args:
-	aCurrentMode(Standard_Boolean)
+		%feature("autodoc", "	* Allows you to provide settings for a non-default current display mode.
 
-Returns:
-	None
-
-Allows you to provide settings for a non-default  
-current display mode.") SetCurrentMode;
+	:param aCurrentMode:
+	:type aCurrentMode: bool
+	:rtype: None
+") SetCurrentMode;
 		void SetCurrentMode (const Standard_Boolean aCurrentMode);
-		%feature("autodoc", "Args:
-	aMode(Standard_Integer)
+		%feature("autodoc", "	* Returns true if the display mode selected, aMode, is valid for planes.
 
-Returns:
-	virtual Standard_Boolean
-
-Returns true if the display mode selected, aMode, is valid for planes.") AcceptDisplayMode;
+	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: bool
+") AcceptDisplayMode;
 		virtual Standard_Boolean AcceptDisplayMode (const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	aCtx(Handle_AIS_InteractiveContext)
+		%feature("autodoc", "	* connection to <aCtx> default drawer implies a recomputation of Frame values.
 
-Returns:
-	virtual void
-
-connection to <aCtx> default drawer implies a recomputation of Frame values.") SetContext;
+	:param aCtx:
+	:type aCtx: Handle_AIS_InteractiveContext &
+	:rtype: void
+") SetContext;
 		virtual void SetContext (const Handle_AIS_InteractiveContext & aCtx);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Select3D_TypeOfSensitivity
+		%feature("autodoc", "	* Returns the type of sensitivity for the plane;
 
-Returns the type of sensitivity for the plane;") TypeOfSensitivity;
+	:rtype: Select3D_TypeOfSensitivity
+") TypeOfSensitivity;
 		Select3D_TypeOfSensitivity TypeOfSensitivity ();
-		%feature("autodoc", "Args:
-	theTypeOfSensitivity(Select3D_TypeOfSensitivity)
+		%feature("autodoc", "	* Sets the type of sensitivity for the plane.
 
-Returns:
-	None
-
-Sets the type of sensitivity for the plane.") SetTypeOfSensitivity;
+	:param theTypeOfSensitivity:
+	:type theTypeOfSensitivity: Select3D_TypeOfSensitivity
+	:rtype: None
+") SetTypeOfSensitivity;
 		void SetTypeOfSensitivity (const Select3D_TypeOfSensitivity theTypeOfSensitivity);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Prs3d_Projector)
-	aTrsf(Handle_Geom_Transformation)
-	aPresentation(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
-Returns:
-	virtual void
-
-computes the presentation according to a point of view  
-         given by <aProjector>.  
-         To be Used when the associated degenerated Presentations  
-         have been transformed by <aTrsf> which is not a Pure  
-         Translation. The HLR Prs can't be deducted automatically  
-         WARNING :<aTrsf> must be applied  
-          to the object to display before computation  !!!") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Prs3d_Projector &
+	:param aTrsf:
+	:type aTrsf: Handle_Geom_Transformation &
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Prs3d_Projector & aProjector,const Handle_Geom_Transformation & aTrsf,const Handle_Prs3d_Presentation & aPresentation);
-		%feature("autodoc", "Args:
-	theSelection(Handle_SelectMgr_Selection)
-	theMode(Standard_Integer)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") ComputeSelection;
+		%feature("autodoc", "	:param theSelection:
+	:type theSelection: Handle_SelectMgr_Selection &
+	:param theMode:
+	:type theMode: Standard_Integer
+	:rtype: void
+") ComputeSelection;
 		virtual void ComputeSelection (const Handle_SelectMgr_Selection & theSelection,const Standard_Integer theMode);
-		%feature("autodoc", "Args:
-	aColor(Quantity_NameOfColor)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetColor;
+		%feature("autodoc", "	:param aColor:
+	:type aColor: Quantity_NameOfColor
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_NameOfColor aColor);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetColor;
+		%feature("autodoc", "	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") UnsetColor;
+		%feature("autodoc", "	:rtype: None
+") UnsetColor;
 		void UnsetColor ();
 };
 
@@ -11271,135 +8141,99 @@ def __del__(self):
 %nodefaultctor AIS_PlaneTrihedron;
 class AIS_PlaneTrihedron : public AIS_InteractiveObject {
 	public:
-		%feature("autodoc", "Args:
-	aPlane(Handle_Geom_Plane)
+		%feature("autodoc", "	* Initializes the plane aPlane. The plane trihedron is constructed from this and an axis.
 
-Returns:
-	None
-
-Initializes the plane aPlane. The plane trihedron is  
- constructed from this and an axis.") AIS_PlaneTrihedron;
+	:param aPlane:
+	:type aPlane: Handle_Geom_Plane &
+	:rtype: None
+") AIS_PlaneTrihedron;
 		 AIS_PlaneTrihedron (const Handle_Geom_Plane & aPlane);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_Plane
+		%feature("autodoc", "	* Returns the component specified in SetComponent.
 
-Returns the component specified in SetComponent.") Component;
+	:rtype: Handle_Geom_Plane
+") Component;
 		Handle_Geom_Plane Component ();
-		%feature("autodoc", "Args:
-	aPlane(Handle_Geom_Plane)
+		%feature("autodoc", "	* Creates an instance of the component object aPlane.
 
-Returns:
-	None
-
-Creates an instance of the component object aPlane.") SetComponent;
+	:param aPlane:
+	:type aPlane: Handle_Geom_Plane &
+	:rtype: None
+") SetComponent;
 		void SetComponent (const Handle_Geom_Plane & aPlane);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_Line
+		%feature("autodoc", "	* Returns the 'XAxis'.
 
-Returns the 'XAxis'.") XAxis;
+	:rtype: Handle_AIS_Line
+") XAxis;
 		Handle_AIS_Line XAxis ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_Line
+		%feature("autodoc", "	* Returns the 'YAxis'.
 
-Returns the 'YAxis'.") YAxis;
+	:rtype: Handle_AIS_Line
+") YAxis;
 		Handle_AIS_Line YAxis ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_Point
+		%feature("autodoc", "	* Returns the point of origin of the plane trihedron.
 
-Returns the point of origin of the plane trihedron.") Position;
+	:rtype: Handle_AIS_Point
+") Position;
 		Handle_AIS_Point Position ();
-		%feature("autodoc", "Args:
-	theLength(Standard_Real)
+		%feature("autodoc", "	* Sets the length of the X and Y axes.
 
-Returns:
-	None
-
-Sets the length of the X and Y axes.") SetLength;
+	:param theLength:
+	:type theLength: float
+	:rtype: None
+") SetLength;
 		void SetLength (const Standard_Real theLength);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the length of X and Y axes.
 
-Returns the length of X and Y axes.") GetLength;
+	:rtype: float
+") GetLength;
 		Standard_Real GetLength ();
-		%feature("autodoc", "Args:
-	aMode(Standard_Integer)
+		%feature("autodoc", "	* Returns true if the display mode selected, aMode, is valid.
 
-Returns:
-	Standard_Boolean
-
-Returns true if the display mode selected, aMode, is valid.") AcceptDisplayMode;
+	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: bool
+") AcceptDisplayMode;
 		Standard_Boolean AcceptDisplayMode (const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Prs3d_Projector)
-	aTrsf(Handle_Geom_Transformation)
-	aPresentation(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
-Returns:
-	virtual void
-
-computes the presentation according to a point of view  
-         given by <aProjector>.  
-         To be Used when the associated degenerated Presentations  
-         have been transformed by <aTrsf> which is not a Pure  
-         Translation. The HLR Prs can't be deducted automatically  
-         WARNING :<aTrsf> must be applied  
-          to the object to display before computation  !!!") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Prs3d_Projector &
+	:param aTrsf:
+	:type aTrsf: Handle_Geom_Transformation &
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Prs3d_Projector & aProjector,const Handle_Geom_Transformation & aTrsf,const Handle_Prs3d_Presentation & aPresentation);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Signature;
+		%feature("autodoc", "	:rtype: int
+") Signature;
 		Standard_Integer Signature ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	AIS_KindOfInteractive
+		%feature("autodoc", "	* Returns datum as the type of Interactive Object.
 
-Returns datum as the type of Interactive Object.") Type;
+	:rtype: AIS_KindOfInteractive
+") Type;
 		AIS_KindOfInteractive Type ();
-		%feature("autodoc", "Args:
-	aColor(Quantity_NameOfColor)
+		%feature("autodoc", "	* Allows you to provide settings for the color aColor.
 
-Returns:
-	None
-
-Allows you to provide settings for the color aColor.") SetColor;
+	:param aColor:
+	:type aColor: Quantity_NameOfColor
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_NameOfColor aColor);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetColor;
+		%feature("autodoc", "	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	aLabel(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetXLabel;
+		%feature("autodoc", "	:param aLabel:
+	:type aLabel: TCollection_AsciiString &
+	:rtype: None
+") SetXLabel;
 		void SetXLabel (const TCollection_AsciiString & aLabel);
-		%feature("autodoc", "Args:
-	aLabel(TCollection_AsciiString)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetYLabel;
+		%feature("autodoc", "	:param aLabel:
+	:type aLabel: TCollection_AsciiString &
+	:rtype: None
+") SetYLabel;
 		void SetYLabel (const TCollection_AsciiString & aLabel);
 };
 
@@ -11460,122 +8294,91 @@ def __del__(self):
 %nodefaultctor AIS_Point;
 class AIS_Point : public AIS_InteractiveObject {
 	public:
-		%feature("autodoc", "Args:
-	aComponent(Handle_Geom_Point)
+		%feature("autodoc", "	* Initializes the point aComponent from which the point datum will be built.
 
-Returns:
-	None
-
-Initializes the point aComponent from which the point  
-datum will be built.") AIS_Point;
+	:param aComponent:
+	:type aComponent: Handle_Geom_Point &
+	:rtype: None
+") AIS_Point;
 		 AIS_Point (const Handle_Geom_Point & aComponent);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns index 1, the default index for a point.
 
-Returns index 1, the default index for a point.") Signature;
+	:rtype: int
+") Signature;
 		Standard_Integer Signature ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	AIS_KindOfInteractive
+		%feature("autodoc", "	* Indicates that a point is a datum.
 
-Indicates that a point is a datum.") Type;
+	:rtype: AIS_KindOfInteractive
+") Type;
 		AIS_KindOfInteractive Type ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_Point
+		%feature("autodoc", "	* Returns the component specified in SetComponent.
 
-Returns the component specified in SetComponent.") Component;
+	:rtype: Handle_Geom_Point
+") Component;
 		Handle_Geom_Point Component ();
-		%feature("autodoc", "Args:
-	aComponent(Handle_Geom_Point)
+		%feature("autodoc", "	* Constructs an instance of the point aComponent.
 
-Returns:
-	None
-
-Constructs an instance of the point aComponent.") SetComponent;
+	:param aComponent:
+	:type aComponent: Handle_Geom_Point &
+	:rtype: None
+") SetComponent;
 		void SetComponent (const Handle_Geom_Point & aComponent);
-		%feature("autodoc", "Args:
-	aMode(Standard_Integer)
+		%feature("autodoc", "	* Returns true if the display mode selected is valid for point datums.
 
-Returns:
-	Standard_Boolean
-
-Returns true if the display mode selected is valid for point datums.") AcceptDisplayMode;
+	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: bool
+") AcceptDisplayMode;
 		Standard_Boolean AcceptDisplayMode (const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Prs3d_Projector)
-	aTrsf(Handle_Geom_Transformation)
-	aPresentation(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
-Returns:
-	virtual void
-
-computes the presentation according to a point of view  
-         given by <aProjector>.  
-         To be Used when the associated degenerated Presentations  
-         have been transformed by <aTrsf> which is not a Pure  
-         Translation. The HLR Prs can't be deducted automatically  
-         WARNING :<aTrsf> must be applied  
-          to the object to display before computation  !!!") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Prs3d_Projector &
+	:param aTrsf:
+	:type aTrsf: Handle_Geom_Transformation &
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Prs3d_Projector & aProjector,const Handle_Geom_Transformation & aTrsf,const Handle_Prs3d_Presentation & aPresentation);
-		%feature("autodoc", "Args:
-	aColor(Quantity_NameOfColor)
+		%feature("autodoc", "	* Allows you to provide settings for the cp;pr aColor.
 
-Returns:
-	None
-
-Allows you to provide settings for the cp;pr aColor.") SetColor;
+	:param aColor:
+	:type aColor: Quantity_NameOfColor
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_NameOfColor aColor);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetColor;
+		%feature("autodoc", "	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Allows you to remove color settings.
 
-Allows you to remove color settings.") UnsetColor;
+	:rtype: None
+") UnsetColor;
 		void UnsetColor ();
-		%feature("autodoc", "Args:
-	aType(Aspect_TypeOfMarker)
+		%feature("autodoc", "	* Allows you to provide settings for a marker. These include - type of marker, - marker color, - scale factor.
 
-Returns:
-	None
-
-Allows you to provide settings for a marker. These include  
--   type of marker,  
--   marker color,  
--   scale factor.") SetMarker;
+	:param aType:
+	:type aType: Aspect_TypeOfMarker
+	:rtype: None
+") SetMarker;
 		void SetMarker (const Aspect_TypeOfMarker aType);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Removes the marker settings.
 
-Removes the marker settings.") UnsetMarker;
+	:rtype: None
+") UnsetMarker;
 		void UnsetMarker ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the point datum has a marker.
 
-Returns true if the point datum has a marker.") HasMarker;
+	:rtype: bool
+") HasMarker;
 		Standard_Boolean HasMarker ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Vertex
+		%feature("autodoc", "	* Converts a point into a vertex.
 
-Converts a point into a vertex.") Vertex;
+	:rtype: TopoDS_Vertex
+") Vertex;
 		TopoDS_Vertex Vertex ();
 };
 
@@ -11636,262 +8439,172 @@ def __del__(self):
 %nodefaultctor AIS_Relation;
 class AIS_Relation : public AIS_InteractiveObject {
 	public:
-		%feature("autodoc", "Args:
-	aColor(Quantity_NameOfColor)
+		%feature("autodoc", "	* Allows you to provide settings for the color aColor of the lines representing the relation between the two shapes.
 
-Returns:
-	None
-
-Allows you to provide settings for the color aColor  
-of the lines representing the relation between the two shapes.") SetColor;
+	:param aColor:
+	:type aColor: Quantity_NameOfColor
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_NameOfColor aColor);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetColor;
+		%feature("autodoc", "	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Allows you to remove settings for the color of the lines representing the relation between the two shapes.
 
-Allows you to remove settings for the color of the  
-lines representing the relation between the two shapes.") UnsetColor;
+	:rtype: None
+") UnsetColor;
 		void UnsetColor ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	AIS_KindOfInteractive
-
-No detailed docstring for this function.") Type;
+		%feature("autodoc", "	:rtype: AIS_KindOfInteractive
+") Type;
 		AIS_KindOfInteractive Type ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual AIS_KindOfDimension
+		%feature("autodoc", "	* Indicates that the type of dimension is unknown.
 
-Indicates that the type of dimension is unknown.") KindOfDimension;
+	:rtype: AIS_KindOfDimension
+") KindOfDimension;
 		virtual AIS_KindOfDimension KindOfDimension ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Returns true if the interactive object is movable.
 
-Returns true if the interactive object is movable.") IsMovable;
+	:rtype: bool
+") IsMovable;
 		virtual Standard_Boolean IsMovable ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") FirstShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") FirstShape;
 		const TopoDS_Shape & FirstShape ();
-		%feature("autodoc", "Args:
-	aFShape(TopoDS_Shape)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetFirstShape;
+		%feature("autodoc", "	:param aFShape:
+	:type aFShape: TopoDS_Shape &
+	:rtype: void
+") SetFirstShape;
 		virtual void SetFirstShape (const TopoDS_Shape & aFShape);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Returns the second shape.
 
-Returns the second shape.") SecondShape;
+	:rtype: TopoDS_Shape
+") SecondShape;
 		const TopoDS_Shape & SecondShape ();
-		%feature("autodoc", "Args:
-	aSShape(TopoDS_Shape)
+		%feature("autodoc", "	* Allows you to identify the second shape aSShape relative to the first.
 
-Returns:
-	virtual void
-
-Allows you to identify the second shape aSShape  
-relative to the first.") SetSecondShape;
+	:param aSShape:
+	:type aSShape: TopoDS_Shape &
+	:rtype: void
+") SetSecondShape;
 		virtual void SetSecondShape (const TopoDS_Shape & aSShape);
-		%feature("autodoc", "Args:
-	Xmin(Standard_Real)
-	Ymin(Standard_Real)
-	Zmin(Standard_Real)
-	Xmax(Standard_Real)
-	Ymax(Standard_Real)
-	Zmax(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetBndBox;
+		%feature("autodoc", "	:param Xmin:
+	:type Xmin: float
+	:param Ymin:
+	:type Ymin: float
+	:param Zmin:
+	:type Zmin: float
+	:param Xmax:
+	:type Xmax: float
+	:param Ymax:
+	:type Ymax: float
+	:param Zmax:
+	:type Zmax: float
+	:rtype: None
+") SetBndBox;
 		void SetBndBox (const Standard_Real Xmin,const Standard_Real Ymin,const Standard_Real Zmin,const Standard_Real Xmax,const Standard_Real Ymax,const Standard_Real Zmax);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") UnsetBndBox;
+		%feature("autodoc", "	:rtype: None
+") UnsetBndBox;
 		void UnsetBndBox ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_Plane
+		%feature("autodoc", "	* Returns the plane.
 
-Returns the plane.") Plane;
+	:rtype: Handle_Geom_Plane
+") Plane;
 		const Handle_Geom_Plane & Plane ();
-		%feature("autodoc", "Args:
-	aPlane(Handle_Geom_Plane)
+		%feature("autodoc", "	* Allows you to set the plane aPlane. This is used to define relations and dimensions in several daughter classes.
 
-Returns:
-	None
-
-Allows you to set the plane aPlane. This is used to  
-define relations and dimensions in several daughter classes.") SetPlane;
+	:param aPlane:
+	:type aPlane: Handle_Geom_Plane &
+	:rtype: None
+") SetPlane;
 		void SetPlane (const Handle_Geom_Plane & aPlane);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the value of each object in the relation.
 
-Returns the value of each object in the relation.") Value;
+	:rtype: float
+") Value;
 		Standard_Real Value ();
-		%feature("autodoc", "Args:
-	aVal(Standard_Real)
+		%feature("autodoc", "	* Allows you to provide settings for the value aVal for each object in the relation.
 
-Returns:
-	None
-
-Allows you to provide settings for the value aVal for  
-each object in the relation.") SetValue;
+	:param aVal:
+	:type aVal: float
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Real aVal);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
+		%feature("autodoc", "	* Returns the position set using SetPosition.
 
-Returns the position set using SetPosition.") Position;
+	:rtype: gp_Pnt
+") Position;
 		const gp_Pnt & Position ();
-		%feature("autodoc", "Args:
-	aPosition(gp_Pnt)
+		%feature("autodoc", "	* Allows you to provide the objects in the relation with settings for a non-default position.
 
-Returns:
-	None
-
-Allows you to provide the objects in the relation with  
-settings for a non-default position.") SetPosition;
+	:param aPosition:
+	:type aPosition: gp_Pnt
+	:rtype: None
+") SetPosition;
 		void SetPosition (const gp_Pnt & aPosition);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_ExtendedString
+		%feature("autodoc", "	* Returns settings for text aspect.
 
-Returns settings for text aspect.") Text;
+	:rtype: TCollection_ExtendedString
+") Text;
 		const TCollection_ExtendedString & Text ();
-		%feature("autodoc", "Args:
-	aText(TCollection_ExtendedString)
+		%feature("autodoc", "	* Allows you to provide the settings aText for text aspect.
 
-Returns:
-	None
-
-Allows you to provide the settings aText for text aspect.") SetText;
+	:param aText:
+	:type aText: TCollection_ExtendedString &
+	:rtype: None
+") SetText;
 		void SetText (const TCollection_ExtendedString & aText);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the value for the size of the arrow identifying the relation between the two shapes.
 
-Returns the value for the size of the arrow identifying  
-the relation between the two shapes.") ArrowSize;
+	:rtype: float
+") ArrowSize;
 		Standard_Real ArrowSize ();
-		%feature("autodoc", "Args:
-	anArrowSize(Standard_Real)
+		%feature("autodoc", "	* Allows you to provide settings for the size of the arrow anArrowsize identifying the relation between the two shapes.
 
-Returns:
-	None
-
-Allows you to provide settings for the size of the  
-arrow anArrowsize identifying the relation between the two shapes.") SetArrowSize;
+	:param anArrowSize:
+	:type anArrowSize: float
+	:rtype: None
+") SetArrowSize;
 		void SetArrowSize (const Standard_Real anArrowSize);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	DsgPrs_ArrowSide
+		%feature("autodoc", "	* Returns the value of the symbol presentation. This will be one of: - AS_NONE - none - AS_FIRSTAR - first arrow - AS_LASTAR - last arrow - AS_BOTHAR - both arrows - AS_FIRSTPT - first point - AS_LASTPT - last point - AS_BOTHPT - both points - AS_FIRSTAR_LASTPT - first arrow, last point - AS_FIRSTPT_LASTAR - first point, last arrow
 
-Returns the value of the symbol presentation. This will be one of:  
--   AS_NONE - none  
--   AS_FIRSTAR - first arrow  
--   AS_LASTAR - last arrow  
--   AS_BOTHAR - both arrows  
--   AS_FIRSTPT - first point  
--   AS_LASTPT - last point  
--   AS_BOTHPT - both points  
--   AS_FIRSTAR_LASTPT - first arrow, last point  
--   AS_FIRSTPT_LASTAR - first point, last arrow") SymbolPrs;
+	:rtype: DsgPrs_ArrowSide
+") SymbolPrs;
 		DsgPrs_ArrowSide SymbolPrs ();
-		%feature("autodoc", "Args:
-	aSymbolPrs(DsgPrs_ArrowSide)
+		%feature("autodoc", "	* Allows you to provide settings for the symbol presentation.
 
-Returns:
-	None
-
-Allows you to provide settings for the symbol presentation.") SetSymbolPrs;
+	:param aSymbolPrs:
+	:type aSymbolPrs: DsgPrs_ArrowSide
+	:rtype: None
+") SetSymbolPrs;
 		void SetSymbolPrs (const DsgPrs_ArrowSide aSymbolPrs);
-		%feature("autodoc", "Args:
-	aIndex(Standard_Integer)
+		%feature("autodoc", "	* Allows you to set the status of the extension shape by the index aIndex. The status will be one of the following: - 0 - there is no connection to a shape; - 1 - there is a connection to the first shape; - 2 - there is a connection to the second shape.
 
-Returns:
-	None
-
-Allows you to set the status of the extension shape by  
-the index aIndex.  
-The status will be one of the following:  
--   0 - there is no connection to a shape;  
--   1 - there is a connection to the first shape;  
--   2 - there is a connection to the second shape.") SetExtShape;
+	:param aIndex:
+	:type aIndex: Standard_Integer
+	:rtype: None
+") SetExtShape;
 		void SetExtShape (const Standard_Integer aIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the status index of the extension shape.
 
-Returns the status index of the extension shape.") ExtShape;
+	:rtype: int
+") ExtShape;
 		Standard_Integer ExtShape ();
-		%feature("autodoc", "Args:
-	aMode(Standard_Integer)
+		%feature("autodoc", "	* Returns true if the display mode aMode is accepted for the Interactive Objects in the relation. ComputeProjPresentation(me; 	 	 	 aPres : mutable Presentation from Prs3d; //!		 Curve1 : Curve from Geom; //!		 Curve2 : Curve from Geom; //!		 FirstP1 : Pnt from gp; //!		 LastP1 : Pnt from gp; //!		 FirstP2 : Pnt from gp; //!		 LastP2 : Pnt from gp; //!		 aColor : NameOfColor from Quantity = Quantity_NOC_PURPLE; //!		 aWidth : Real  from Standard = 2; 	 	 aProjTOL : TypeOfLine  from Aspect = Aspect_TOL_DASH; //!		 aCallTOL : TypeOfLine  from Aspect = Aspect_TOL_DOT)
 
-Returns:
-	virtual Standard_Boolean
-
-Returns true if the display mode aMode is accepted  
-for the Interactive Objects in the relation.  
-ComputeProjPresentation(me;  
-	    	    	    aPres    : mutable Presentation from Prs3d;  
-//!		    Curve1   : Curve                from Geom;  
-//!		    Curve2   : Curve                from Geom;  
-//!		    FirstP1  : Pnt                  from gp;  
-//!		    LastP1   : Pnt                  from gp;  
-//!		    FirstP2  : Pnt                  from gp;  
-//!		    LastP2   : Pnt                  from gp;  
-//!		    aColor   : NameOfColor          from Quantity = Quantity_NOC_PURPLE;  
-//!		    aWidth   : Real                 from Standard = 2;  
-   	    	    aProjTOL : TypeOfLine           from Aspect   = Aspect_TOL_DASH;  
-//!		    aCallTOL : TypeOfLine           from Aspect   = Aspect_TOL_DOT)") AcceptDisplayMode;
+	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: bool
+") AcceptDisplayMode;
 		virtual Standard_Boolean AcceptDisplayMode (const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	aStatus(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetAutomaticPosition;
+		%feature("autodoc", "	:param aStatus:
+	:type aStatus: bool
+	:rtype: None
+") SetAutomaticPosition;
 		void SetAutomaticPosition (const Standard_Boolean aStatus);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") AutomaticPosition;
+		%feature("autodoc", "	:rtype: bool
+") AutomaticPosition;
 		Standard_Boolean AutomaticPosition ();
 };
 
@@ -11952,364 +8665,260 @@ def __del__(self):
 %nodefaultctor AIS_Shape;
 class AIS_Shape : public AIS_InteractiveObject {
 	public:
-		%feature("autodoc", "Args:
-	shap(TopoDS_Shape)
+		%feature("autodoc", "	* Initializes construction of the shape shap from wires, edges and vertices.
 
-Returns:
-	None
-
-Initializes construction of the shape shap from wires,  
-edges and vertices.") AIS_Shape;
+	:param shap:
+	:type shap: TopoDS_Shape &
+	:rtype: None
+") AIS_Shape;
 		 AIS_Shape (const TopoDS_Shape & shap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
+		%feature("autodoc", "	* Returns index 0. This value refers to SHAPE from TopAbs_ShapeEnum
 
-Returns index 0. This value refers to SHAPE from TopAbs_ShapeEnum") Signature;
+	:rtype: int
+") Signature;
 		virtual Standard_Integer Signature ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual AIS_KindOfInteractive
+		%feature("autodoc", "	* Returns Object as the type of Interactive Object.
 
-Returns Object as the type of Interactive Object.") Type;
+	:rtype: AIS_KindOfInteractive
+") Type;
 		virtual AIS_KindOfInteractive Type ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Returns true if the Interactive Object accepts shape decomposition.
 
-Returns true if the Interactive Object accepts shape decomposition.") AcceptShapeDecomposition;
+	:rtype: bool
+") AcceptShapeDecomposition;
 		virtual Standard_Boolean AcceptShapeDecomposition ();
-		%feature("autodoc", "Args:
-	ashap(TopoDS_Shape)
+		%feature("autodoc", "	* Constructs an instance of the shape object ashape.
 
-Returns:
-	None
-
-Constructs an instance of the shape object ashape.") Set;
+	:param ashap:
+	:type ashap: TopoDS_Shape &
+	:rtype: None
+") Set;
 		void Set (const TopoDS_Shape & ashap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Returns this shape object.
 
-Returns this shape object.") Shape;
+	:rtype: TopoDS_Shape
+") Shape;
 		const TopoDS_Shape & Shape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Sets a local value for deviation coefficient for this specific shape.
 
-Sets a local value for deviation coefficient for this specific shape.") SetOwnDeviationCoefficient;
+	:rtype: bool
+") SetOwnDeviationCoefficient;
 		Standard_Boolean SetOwnDeviationCoefficient ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Sets a local value for HLR deviation coefficient for this specific shape.
 
-Sets a local value for HLR deviation coefficient for this specific shape.") SetOwnHLRDeviationCoefficient;
+	:rtype: bool
+") SetOwnHLRDeviationCoefficient;
 		Standard_Boolean SetOwnHLRDeviationCoefficient ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Sets a local value for deviation angle for this specific shape.
 
-Sets a local value for deviation angle for this specific shape.") SetOwnDeviationAngle;
+	:rtype: bool
+") SetOwnDeviationAngle;
 		Standard_Boolean SetOwnDeviationAngle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Sets a local value for HLR deviation angle for this specific shape.
 
-Sets a local value for HLR deviation angle for this specific shape.") SetOwnHLRDeviationAngle;
+	:rtype: bool
+") SetOwnHLRDeviationAngle;
 		Standard_Boolean SetOwnHLRDeviationAngle ();
-		%feature("autodoc", "Args:
-	aCoefficient(Standard_Real)
+		%feature("autodoc", "	* Sets a local value for deviation coefficient for this specific shape.
 
-Returns:
-	None
-
-Sets a local value for deviation coefficient for this specific shape.") SetOwnDeviationCoefficient;
+	:param aCoefficient:
+	:type aCoefficient: float
+	:rtype: None
+") SetOwnDeviationCoefficient;
 		void SetOwnDeviationCoefficient (const Standard_Real aCoefficient);
-		%feature("autodoc", "Args:
-	aCoefficient(Standard_Real)
+		%feature("autodoc", "	* sets myOwnHLRDeviationCoefficient field in AIS_Drawer & recomputes presentation
 
-Returns:
-	None
-
-sets myOwnHLRDeviationCoefficient field in AIS_Drawer &  
-         recomputes presentation") SetOwnHLRDeviationCoefficient;
+	:param aCoefficient:
+	:type aCoefficient: float
+	:rtype: None
+") SetOwnHLRDeviationCoefficient;
 		void SetOwnHLRDeviationCoefficient (const Standard_Real aCoefficient);
-		%feature("autodoc", "Args:
-	anAngle(Standard_Real)
+		%feature("autodoc", "	* this compute a new angle and Deviation from the value anAngle and set the values stored in myDrawer with these that become local to the shape
 
-Returns:
-	None
-
-this compute a new angle and Deviation from the value anAngle  
-  and set the values stored in myDrawer with these that become local to the shape") SetAngleAndDeviation;
+	:param anAngle:
+	:type anAngle: float
+	:rtype: None
+") SetAngleAndDeviation;
 		void SetAngleAndDeviation (const Standard_Real anAngle);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* gives back the angle initial value put by the User.
 
-gives back the angle initial value put by the User.") UserAngle;
+	:rtype: float
+") UserAngle;
 		Standard_Real UserAngle ();
-		%feature("autodoc", "Args:
-	anAngle(Standard_Real)
+		%feature("autodoc", "	* sets myOwnDeviationAngle field in AIS_Drawer & recomputes presentation
 
-Returns:
-	None
-
-sets myOwnDeviationAngle field in AIS_Drawer & recomputes presentation") SetOwnDeviationAngle;
+	:param anAngle:
+	:type anAngle: float
+	:rtype: None
+") SetOwnDeviationAngle;
 		void SetOwnDeviationAngle (const Standard_Real anAngle);
-		%feature("autodoc", "Args:
-	anAngle(Standard_Real)
+		%feature("autodoc", "	* this compute a new Angle and Deviation from the value anAngle for HLR and set the values stored in myDrawer for with these that become local to the shape
 
-Returns:
-	None
-
-this compute a new Angle and Deviation from the value anAngle for HLR  
-  and set the values stored in myDrawer for with these that become local to the shape") SetHLRAngleAndDeviation;
+	:param anAngle:
+	:type anAngle: float
+	:rtype: None
+") SetHLRAngleAndDeviation;
 		void SetHLRAngleAndDeviation (const Standard_Real anAngle);
-		%feature("autodoc", "Args:
-	anAngle(Standard_Real)
+		%feature("autodoc", "	* sets myOwnHLRDeviationAngle field in AIS_Drawer & recomputes presentation
 
-Returns:
-	None
-
-sets myOwnHLRDeviationAngle field in AIS_Drawer & recomputes presentation") SetOwnHLRDeviationAngle;
+	:param anAngle:
+	:type anAngle: float
+	:rtype: None
+") SetOwnHLRDeviationAngle;
 		void SetOwnHLRDeviationAngle (const Standard_Real anAngle);
-		%feature("autodoc", "Args:
-	aCoefficient(Standard_Real)
-	aPreviousCoefficient(Standard_Real)
+		%feature("autodoc", "	* Returns true and the values of the deviation coefficient aCoefficient and the previous deviation coefficient aPreviousCoefficient. If these values are not already set, false is returned.
 
-Returns:
-	Standard_Boolean
-
-Returns true and the values of the deviation  
-coefficient aCoefficient and the previous deviation  
-coefficient aPreviousCoefficient. If these values are  
-not already set, false is returned.") OwnDeviationCoefficient;
+	:param aCoefficient:
+	:type aCoefficient: float &
+	:param aPreviousCoefficient:
+	:type aPreviousCoefficient: float &
+	:rtype: bool
+") OwnDeviationCoefficient;
 		Standard_Boolean OwnDeviationCoefficient (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	aCoefficient(Standard_Real)
-	aPreviousCoefficient(Standard_Real)
+		%feature("autodoc", "	* Returns true and the values of the HLR deviation coefficient aCoefficient and the previous HLR deviation coefficient aPreviousCoefficient. If these values are not already set, false is returned.
 
-Returns:
-	Standard_Boolean
-
-Returns   true and the values of the HLR deviation  
-coefficient aCoefficient and the previous HLR  
-deviation coefficient aPreviousCoefficient. If these  
-values are not already set, false is returned.") OwnHLRDeviationCoefficient;
+	:param aCoefficient:
+	:type aCoefficient: float &
+	:param aPreviousCoefficient:
+	:type aPreviousCoefficient: float &
+	:rtype: bool
+") OwnHLRDeviationCoefficient;
 		Standard_Boolean OwnHLRDeviationCoefficient (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	anAngle(Standard_Real)
-	aPreviousAngle(Standard_Real)
+		%feature("autodoc", "	* Returns true and the values of the deviation angle anAngle and the previous deviation angle aPreviousAngle. If these values are not already set, false is returned.
 
-Returns:
-	Standard_Boolean
-
-Returns true and the values of the deviation angle  
-anAngle and the previous deviation angle aPreviousAngle.  
-If these values are not already set, false is returned.") OwnDeviationAngle;
+	:param anAngle:
+	:type anAngle: float &
+	:param aPreviousAngle:
+	:type aPreviousAngle: float &
+	:rtype: bool
+") OwnDeviationAngle;
 		Standard_Boolean OwnDeviationAngle (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	anAngle(Standard_Real)
-	aPreviousAngle(Standard_Real)
+		%feature("autodoc", "	* Returns true and the values of the HLR deviation angle anAngle and of the previous HLR deviation angle aPreviousAngle. If these values are not already set, false is returned.
 
-Returns:
-	Standard_Boolean
-
-Returns true and the values   of the HLR deviation  
-angle anAngle and of the previous HLR deviation  
-angle aPreviousAngle. If these values are not  
-already set, false is returned.") OwnHLRDeviationAngle;
+	:param anAngle:
+	:type anAngle: float &
+	:param aPreviousAngle:
+	:type aPreviousAngle: float &
+	:rtype: bool
+") OwnHLRDeviationAngle;
 		Standard_Boolean OwnHLRDeviationAngle (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	theTypeOfHLR(Prs3d_TypeOfHLR)
+		%feature("autodoc", "	* Sets the type of HLR algorithm used by the shape
 
-Returns:
-	None
-
-Sets the type of HLR algorithm used by the shape") SetTypeOfHLR;
+	:param theTypeOfHLR:
+	:type theTypeOfHLR: Prs3d_TypeOfHLR
+	:rtype: None
+") SetTypeOfHLR;
 		void SetTypeOfHLR (const Prs3d_TypeOfHLR theTypeOfHLR);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Prs3d_TypeOfHLR
+		%feature("autodoc", "	* Gets the type of HLR algorithm
 
-Gets the type of HLR algorithm") TypeOfHLR;
+	:rtype: Prs3d_TypeOfHLR
+") TypeOfHLR;
 		Prs3d_TypeOfHLR TypeOfHLR ();
-		%feature("autodoc", "Args:
-	aColor(Quantity_NameOfColor)
+		%feature("autodoc", "	* Sets the color aColor in the reconstructed compound shape. Acts via the Drawer methods below on the appearance of: - free boundaries: AIS_Drawer_FreeBoundaryAspect, - isos: AIS_Drawer_UIsoAspect, AIS_Drawer_VIsoAspect, - shared boundaries: AIS_Drawer_UnFreeBoundaryAspect, - shading: AIS_Drawer_ShadingAspect, - visible line color in hidden line mode: AIS_Drawer_SeenLineAspect - hidden line color in hidden line mode: AIS_Drawer_HiddenLineAspect.
 
-Returns:
-	virtual void
-
-Sets the color aColor in the reconstructed  
-compound shape. Acts via the Drawer methods below on the appearance of:  
--   free boundaries:  
-  AIS_Drawer_FreeBoundaryAspect,  
--   isos: AIS_Drawer_UIsoAspect,  
-  AIS_Drawer_VIsoAspect,  
--   shared boundaries:  
-  AIS_Drawer_UnFreeBoundaryAspect,  
--   shading: AIS_Drawer_ShadingAspect,  
--   visible line color in hidden line mode:  
-  AIS_Drawer_SeenLineAspect  
--   hidden line color in hidden line mode:  
-  AIS_Drawer_HiddenLineAspect.") SetColor;
+	:param aColor:
+	:type aColor: Quantity_NameOfColor
+	:rtype: void
+") SetColor;
 		virtual void SetColor (const Quantity_NameOfColor aColor);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetColor;
+		%feature("autodoc", "	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: void
+") SetColor;
 		virtual void SetColor (const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Removes settings for color in the reconstructed compound shape.
 
-Removes settings for color in the reconstructed compound shape.") UnsetColor;
+	:rtype: void
+") UnsetColor;
 		virtual void UnsetColor ();
-		%feature("autodoc", "Args:
-	aValue(Standard_Real)
+		%feature("autodoc", "	* Sets the value aValue for line width in the reconstructed compound shape.
 
-Returns:
-	virtual void
-
-Sets the value aValue for line width in the reconstructed compound shape.") SetWidth;
+	:param aValue:
+	:type aValue: float
+	:rtype: void
+") SetWidth;
 		virtual void SetWidth (const Standard_Real aValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Removes the setting for line width in the reconstructed compound shape.
 
-Removes the setting for line width in the reconstructed compound shape.") UnsetWidth;
+	:rtype: void
+") UnsetWidth;
 		virtual void UnsetWidth ();
-		%feature("autodoc", "Args:
-	aName(Graphic3d_NameOfMaterial)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetMaterial;
+		%feature("autodoc", "	:param aName:
+	:type aName: Graphic3d_NameOfMaterial
+	:rtype: void
+") SetMaterial;
 		virtual void SetMaterial (const Graphic3d_NameOfMaterial aName);
-		%feature("autodoc", "Args:
-	aName(Graphic3d_MaterialAspect)
+		%feature("autodoc", "	* Allows you to provide settings for the material aName in the reconstructed compound shape.
 
-Returns:
-	virtual void
-
-Allows you to provide settings for the material aName  
-in the reconstructed compound shape.") SetMaterial;
+	:param aName:
+	:type aName: Graphic3d_MaterialAspect &
+	:rtype: void
+") SetMaterial;
 		virtual void SetMaterial (const Graphic3d_MaterialAspect & aName);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Removes settings for material in the reconstructed compound shape.
 
-Removes settings for material in the reconstructed compound shape.") UnsetMaterial;
+	:rtype: void
+") UnsetMaterial;
 		virtual void UnsetMaterial ();
-		%feature("autodoc", "Args:
-	aValue(Standard_Real)=0.6
+		%feature("autodoc", "	* Sets the value aValue for transparency in the reconstructed compound shape.
 
-Returns:
-	virtual void
-
-Sets the value aValue for transparency in the reconstructed compound shape.") SetTransparency;
+	:param aValue: default value is 0.6
+	:type aValue: float
+	:rtype: void
+") SetTransparency;
 		virtual void SetTransparency (const Standard_Real aValue = 0.6);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Removes the setting for transparency in the reconstructed compound shape.
 
-Removes the setting for transparency in the reconstructed compound shape.") UnsetTransparency;
+	:rtype: void
+") UnsetTransparency;
 		virtual void UnsetTransparency ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  Bnd_Box
+		%feature("autodoc", "	* Constructs a bounding box with which to reconstruct compound topological shapes for presentation.
 
-Constructs a bounding box with which to reconstruct  
-compound topological shapes for presentation.") BoundingBox;
+	:rtype: Bnd_Box
+") BoundingBox;
 		virtual const Bnd_Box & BoundingBox ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Quantity_NameOfColor
+		%feature("autodoc", "	* Returns the NameOfColor attributes of the shape accordingly to the current facing model;
 
-Returns the NameOfColor attributes of the shape accordingly to  
- the current facing model;") Color;
+	:rtype: Quantity_NameOfColor
+") Color;
 		virtual Quantity_NameOfColor Color ();
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
+		%feature("autodoc", "	* Returns the Color attributes of the shape accordingly to the current facing model;
 
-Returns:
-	virtual void
-
-Returns the Color attributes of the shape accordingly to  
- the current facing model;") Color;
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: void
+") Color;
 		virtual void Color (Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Graphic3d_NameOfMaterial
+		%feature("autodoc", "	* Returns the NameOfMaterial attributes of the shape accordingly to the current facing model;
 
-Returns the NameOfMaterial attributes of the shape accordingly to  
- the current facing model;") Material;
+	:rtype: Graphic3d_NameOfMaterial
+") Material;
 		virtual Graphic3d_NameOfMaterial Material ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Real
+		%feature("autodoc", "	* Returns the transparency attributes of the shape accordingly to the current facing model;
 
-Returns the transparency attributes of the shape accordingly to  
- the current facing model;") Transparency;
+	:rtype: float
+") Transparency;
 		virtual Standard_Real Transparency ();
-		%feature("autodoc", "Args:
-	aDecompositionMode(Standard_Integer)
+		%feature("autodoc", "	* Activates the same TopAbs shape enumerations as those used by SelectionMode assigning a type to the mode aDecompositionMode.
 
-Returns:
-	static TopAbs_ShapeEnum
-
-Activates the same TopAbs shape enumerations as  
-those used by SelectionMode assigning a type to the mode aDecompositionMode.") SelectionType;
+	:param aDecompositionMode:
+	:type aDecompositionMode: Standard_Integer
+	:rtype: TopAbs_ShapeEnum
+") SelectionType;
 		static TopAbs_ShapeEnum SelectionType (const Standard_Integer aDecompositionMode);
-		%feature("autodoc", "Args:
-	aShapeType(TopAbs_ShapeEnum)
+		%feature("autodoc", "	* Establishes an equivalence between a mode and the type, aShapeType, of selection. The correspondences are as follows: - mode 0 - Shape - mode 1 - Vertex - mode 2 - Edge - mode 3 - Wire - mode 4 - Face - mode 5 - Shell - mode 6 - Solid - mode 7 - Compsolid - mode 8 - Compound
 
-Returns:
-	static Standard_Integer
-
-Establishes an equivalence between a mode and the  
-type, aShapeType,   of selection. The correspondences are as follows:  
--   mode 0 - Shape  
--   mode 1 - Vertex  
--   mode 2 - Edge  
--   mode 3 - Wire  
--   mode 4 - Face  
--   mode 5 - Shell  
--   mode 6 - Solid  
--   mode 7 - Compsolid  
--   mode 8 - Compound") SelectionMode;
+	:param aShapeType:
+	:type aShapeType: TopAbs_ShapeEnum
+	:rtype: int
+") SelectionMode;
 		static Standard_Integer SelectionMode (const TopAbs_ShapeEnum aShapeType);
-		%feature("autodoc", "Args:
-	aShape(TopoDS_Shape)
-	aDrawer(Handle_Prs3d_Drawer)
-
-Returns:
-	static Standard_Real
-
-No detailed docstring for this function.") GetDeflection;
+		%feature("autodoc", "	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:param aDrawer:
+	:type aDrawer: Handle_Prs3d_Drawer &
+	:rtype: float
+") GetDeflection;
 		static Standard_Real GetDeflection (const TopoDS_Shape & aShape,const Handle_Prs3d_Drawer & aDrawer);
 };
 
@@ -12370,26 +8979,21 @@ def __del__(self):
 %nodefaultctor AIS_SignatureFilter;
 class AIS_SignatureFilter : public AIS_TypeFilter {
 	public:
-		%feature("autodoc", "Args:
-	aGivenKind(AIS_KindOfInteractive)
-	aGivenSignature(Standard_Integer)
+		%feature("autodoc", "	* Initializes the signature filter, adding the signature specification, aGivenSignature, to that for type, aGivenKind, in AIS_TypeFilter.
 
-Returns:
-	None
-
-Initializes the signature filter, adding the signature  
-specification, aGivenSignature, to that for type,  
-aGivenKind, in AIS_TypeFilter.") AIS_SignatureFilter;
+	:param aGivenKind:
+	:type aGivenKind: AIS_KindOfInteractive
+	:param aGivenSignature:
+	:type aGivenSignature: Standard_Integer
+	:rtype: None
+") AIS_SignatureFilter;
 		 AIS_SignatureFilter (const AIS_KindOfInteractive aGivenKind,const Standard_Integer aGivenSignature);
-		%feature("autodoc", "Args:
-	anobj(Handle_SelectMgr_EntityOwner)
+		%feature("autodoc", "	* Returns False if the transient is not an AIS_InteractiveObject. Returns False if the signature of InteractiveObject is not the same as the stored one in the filter...
 
-Returns:
-	Standard_Boolean
-
-Returns False if the transient is not an AIS_InteractiveObject.  
-         Returns False if the signature of InteractiveObject  
-         is not the same as the stored one in the filter...") IsOk;
+	:param anobj:
+	:type anobj: Handle_SelectMgr_EntityOwner &
+	:rtype: bool
+") IsOk;
 		Standard_Boolean IsOk (const Handle_SelectMgr_EntityOwner & anobj);
 };
 
@@ -12450,46 +9054,34 @@ def __del__(self):
 %nodefaultctor AIS_Triangulation;
 class AIS_Triangulation : public AIS_InteractiveObject {
 	public:
-		%feature("autodoc", "Args:
-	aTriangulation(Handle_Poly_Triangulation)
+		%feature("autodoc", "	* Constructs the Triangulation display object
 
-Returns:
-	None
-
-Constructs the Triangulation display object") AIS_Triangulation;
+	:param aTriangulation:
+	:type aTriangulation: Handle_Poly_Triangulation &
+	:rtype: None
+") AIS_Triangulation;
 		 AIS_Triangulation (const Handle_Poly_Triangulation & aTriangulation);
-		%feature("autodoc", "Args:
-	aColor(Handle_TColStd_HArray1OfInteger)
+		%feature("autodoc", "	* Set the color for each node. Each 32-bit color is Alpha << 24 + Blue << 16 + Green << 8 + Red Order of color components is essential for further usage by OpenGL
 
-Returns:
-	None
-
-Set the color for each node.  
-Each 32-bit color is Alpha << 24 + Blue << 16 + Green << 8 + Red  
-Order of color components is essential for further usage by OpenGL") SetColors;
+	:param aColor:
+	:type aColor: Handle_TColStd_HArray1OfInteger &
+	:rtype: None
+") SetColors;
 		void SetColors (const Handle_TColStd_HArray1OfInteger & aColor);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColStd_HArray1OfInteger
+		%feature("autodoc", "	* Get the color for each node. Each 32-bit color is Alpha << 24 + Blue << 16 + Green << 8 + Red
 
-Get the color for each node.  
-Each 32-bit color is Alpha << 24 + Blue << 16 + Green << 8 + Red") GetColors;
+	:rtype: Handle_TColStd_HArray1OfInteger
+") GetColors;
 		Handle_TColStd_HArray1OfInteger GetColors ();
-		%feature("autodoc", "Args:
-	aTriangulation(Handle_Poly_Triangulation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetTriangulation;
+		%feature("autodoc", "	:param aTriangulation:
+	:type aTriangulation: Handle_Poly_Triangulation &
+	:rtype: None
+") SetTriangulation;
 		void SetTriangulation (const Handle_Poly_Triangulation & aTriangulation);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Poly_Triangulation
+		%feature("autodoc", "	* Returns Poly_Triangulation .
 
-Returns Poly_Triangulation .") GetTriangulation;
+	:rtype: Handle_Poly_Triangulation
+") GetTriangulation;
 		Handle_Poly_Triangulation GetTriangulation ();
 };
 
@@ -12550,248 +9142,170 @@ def __del__(self):
 %nodefaultctor AIS_Trihedron;
 class AIS_Trihedron : public AIS_InteractiveObject {
 	public:
-		%feature("autodoc", "Args:
-	aComponent(Handle_Geom_Axis2Placement)
+		%feature("autodoc", "	* Initializes a trihedron entity.
 
-Returns:
-	None
-
-Initializes a trihedron entity.") AIS_Trihedron;
+	:param aComponent:
+	:type aComponent: Handle_Geom_Axis2Placement &
+	:rtype: None
+") AIS_Trihedron;
 		 AIS_Trihedron (const Handle_Geom_Axis2Placement & aComponent);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_Axis2Placement
+		%feature("autodoc", "	* Returns the right-handed coordinate system set in SetComponent.
 
-Returns the right-handed coordinate system set in SetComponent.") Component;
+	:rtype: Handle_Geom_Axis2Placement
+") Component;
 		const Handle_Geom_Axis2Placement & Component ();
-		%feature("autodoc", "Args:
-	aComponent(Handle_Geom_Axis2Placement)
+		%feature("autodoc", "	* Constructs the right-handed coordinate system aComponent.
 
-Returns:
-	None
-
-Constructs the right-handed coordinate system aComponent.") SetComponent;
+	:param aComponent:
+	:type aComponent: Handle_Geom_Axis2Placement &
+	:rtype: None
+") SetComponent;
 		void SetComponent (const Handle_Geom_Axis2Placement & aComponent);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the trihedron object has a size other than the default size of 100 mm. along each axis.
 
-Returns true if the trihedron object has a size other  
-than the default size of 100 mm. along each axis.") HasOwnSize;
+	:rtype: bool
+") HasOwnSize;
 		Standard_Boolean HasOwnSize ();
-		%feature("autodoc", "Args:
-	aValue(Standard_Real)
+		%feature("autodoc", "	* Sets the size aValue for the trihedron object. The default value is 100 mm.
 
-Returns:
-	None
-
-Sets the size aValue for the trihedron object.  
-The default value is 100 mm.") SetSize;
+	:param aValue:
+	:type aValue: float
+	:rtype: None
+") SetSize;
 		void SetSize (const Standard_Real aValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Removes any non-default settings for size of this trihedron object.
 
-Removes any non-default settings for size of this  
-trihedron object.") UnsetSize;
+	:rtype: None
+") UnsetSize;
 		void UnsetSize ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Size;
+		%feature("autodoc", "	:rtype: float
+") Size;
 		Standard_Real Size ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_Axis
+		%feature("autodoc", "	* Returns the 'XAxis'.
 
-Returns the 'XAxis'.") XAxis;
+	:rtype: Handle_AIS_Axis
+") XAxis;
 		Handle_AIS_Axis XAxis ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_Axis
+		%feature("autodoc", "	* Returns the 'YAxis'.
 
-Returns the 'YAxis'.") YAxis;
+	:rtype: Handle_AIS_Axis
+") YAxis;
 		Handle_AIS_Axis YAxis ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_Axis
+		%feature("autodoc", "	* Returns the main Axis.
 
-Returns the main Axis.") Axis;
+	:rtype: Handle_AIS_Axis
+") Axis;
 		Handle_AIS_Axis Axis ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_Point
+		%feature("autodoc", "	* Returns the origine.
 
-Returns the origine.") Position;
+	:rtype: Handle_AIS_Point
+") Position;
 		Handle_AIS_Point Position ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_Plane
+		%feature("autodoc", "	* Returns the 'XYPlane'.
 
-Returns the 'XYPlane'.") XYPlane;
+	:rtype: Handle_AIS_Plane
+") XYPlane;
 		Handle_AIS_Plane XYPlane ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_Plane
+		%feature("autodoc", "	* Returns the 'XZPlane'.
 
-Returns the 'XZPlane'.") XZPlane;
+	:rtype: Handle_AIS_Plane
+") XZPlane;
 		Handle_AIS_Plane XZPlane ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_AIS_Plane
+		%feature("autodoc", "	* Returns the 'YZPlane'.
 
-Returns the 'YZPlane'.") YZPlane;
+	:rtype: Handle_AIS_Plane
+") YZPlane;
 		Handle_AIS_Plane YZPlane ();
-		%feature("autodoc", "Args:
-	aCtx(Handle_AIS_InteractiveContext)
+		%feature("autodoc", "	* connection to <aCtx> default drawer implies a recomputation of SubObjects values.
 
-Returns:
-	virtual void
-
-connection to <aCtx> default drawer implies a recomputation  
-         of SubObjects values.") SetContext;
+	:param aCtx:
+	:type aCtx: Handle_AIS_InteractiveContext &
+	:rtype: void
+") SetContext;
 		virtual void SetContext (const Handle_AIS_InteractiveContext & aCtx);
-		%feature("autodoc", "Args:
-	aMode(Standard_Integer)
+		%feature("autodoc", "	* Returns true if the display mode selected, aMode, is valid for trihedron datums.
 
-Returns:
-	Standard_Boolean
-
-Returns true if the display mode selected, aMode, is  
-valid for trihedron datums.") AcceptDisplayMode;
+	:param aMode:
+	:type aMode: Standard_Integer
+	:rtype: bool
+") AcceptDisplayMode;
 		Standard_Boolean AcceptDisplayMode (const Standard_Integer aMode);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Prs3d_Projector)
-	aTrsf(Handle_Geom_Transformation)
-	aPresentation(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* Computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
-Returns:
-	virtual void
-
-Computes the presentation according to a point of view  
-         given by <aProjector>.  
-         To be Used when the associated degenerated Presentations  
-         have been transformed by <aTrsf> which is not a Pure  
-         Translation. The HLR Prs can't be deducted automatically  
-         WARNING :<aTrsf> must be applied  
-          to the object to display before computation  !!!") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Prs3d_Projector &
+	:param aTrsf:
+	:type aTrsf: Handle_Geom_Transformation &
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Prs3d_Projector & aProjector,const Handle_Geom_Transformation & aTrsf,const Handle_Prs3d_Presentation & aPresentation);
-		%feature("autodoc", "Args:
-	aLoc(TopLoc_Location)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetLocation;
+		%feature("autodoc", "	:param aLoc:
+	:type aLoc: TopLoc_Location &
+	:rtype: None
+") SetLocation;
 		void SetLocation (const TopLoc_Location & aLoc);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
+		%feature("autodoc", "	* Returns index 3, selection of the planes XOY, YOZ, XOZ.
 
-Returns index 3, selection of the planes XOY, YOZ, XOZ.") Signature;
+	:rtype: int
+") Signature;
 		virtual Standard_Integer Signature ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual AIS_KindOfInteractive
+		%feature("autodoc", "	* Indicates that the type of Interactive Object is datum.
 
-Indicates that the type of Interactive Object is datum.") Type;
+	:rtype: AIS_KindOfInteractive
+") Type;
 		virtual AIS_KindOfInteractive Type ();
-		%feature("autodoc", "Args:
-	aColor(Quantity_NameOfColor)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetColor;
+		%feature("autodoc", "	:param aColor:
+	:type aColor: Quantity_NameOfColor
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_NameOfColor aColor);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
+		%feature("autodoc", "	* Sets the color aColor for this trihedron object.
 
-Returns:
-	None
-
-Sets the color aColor for this trihedron object.") SetColor;
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	aColor(Quantity_NameOfColor)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetTextColor;
+		%feature("autodoc", "	:param aColor:
+	:type aColor: Quantity_NameOfColor
+	:rtype: None
+") SetTextColor;
 		void SetTextColor (const Quantity_NameOfColor aColor);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasTextColor;
+		%feature("autodoc", "	:rtype: bool
+") HasTextColor;
 		Standard_Boolean HasTextColor ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_NameOfColor
-
-No detailed docstring for this function.") TextColor;
+		%feature("autodoc", "	:rtype: Quantity_NameOfColor
+") TextColor;
 		Quantity_NameOfColor TextColor ();
-		%feature("autodoc", "Args:
-	aColor(Quantity_NameOfColor)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetArrowColor;
+		%feature("autodoc", "	:param aColor:
+	:type aColor: Quantity_NameOfColor
+	:rtype: None
+") SetArrowColor;
 		void SetArrowColor (const Quantity_NameOfColor aColor);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasArrowColor;
+		%feature("autodoc", "	:rtype: bool
+") HasArrowColor;
 		Standard_Boolean HasArrowColor ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_NameOfColor
-
-No detailed docstring for this function.") ArrowColor;
+		%feature("autodoc", "	:rtype: Quantity_NameOfColor
+") ArrowColor;
 		Quantity_NameOfColor ArrowColor ();
-		%feature("autodoc", "Args:
-	TheExtrem(TColgp_Array1OfPnt)
+		%feature("autodoc", "	* Returns the four extremities of the trihedron from the array of points, TheExtrem.
 
-Returns:
-	None
-
-Returns the four extremities of the trihedron from the  
-array of points, TheExtrem.") ExtremityPoints;
+	:param TheExtrem:
+	:type TheExtrem: TColgp_Array1OfPnt
+	:rtype: None
+") ExtremityPoints;
 		void ExtremityPoints (TColgp_Array1OfPnt & TheExtrem);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Removes the settings for color.
 
-Removes the settings for color.") UnsetColor;
+	:rtype: None
+") UnsetColor;
 		void UnsetColor ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Removes the non-default settings for width set in SetWidth.
 
-Removes the non-default settings for width set in SetWidth.") UnsetWidth;
+	:rtype: None
+") UnsetWidth;
 		void UnsetWidth ();
 };
 
@@ -12852,241 +9366,181 @@ def __del__(self):
 %nodefaultctor AIS_AngleDimension;
 class AIS_AngleDimension : public AIS_Dimension {
 	public:
-		%feature("autodoc", "Args:
-	theFirstEdge(TopoDS_Edge)
-	theSecondEdge(TopoDS_Edge)
+		%feature("autodoc", "	* Constructs minimum angle dimension between two linear edges (where possible). These two edges should be intersected by each other. Otherwise the geometry is not valid. @param theFirstEdge [in] the first edge. @param theSecondEdge [in] the second edge.
 
-Returns:
-	None
-
-Constructs minimum angle dimension between two linear edges (where possible).
-These two edges should be intersected by each other. Otherwise the geometry is not valid.
-@param theFirstEdge [in] the first edge.
-@param theSecondEdge [in] the second edge.") AIS_AngleDimension;
+	:param theFirstEdge:
+	:type theFirstEdge: TopoDS_Edge &
+	:param theSecondEdge:
+	:type theSecondEdge: TopoDS_Edge &
+	:rtype: None
+") AIS_AngleDimension;
 		 AIS_AngleDimension (const TopoDS_Edge & theFirstEdge,const TopoDS_Edge & theSecondEdge);
-		%feature("autodoc", "Args:
-	theFirstPoint(gp_Pnt)
-	theSecondPoint(gp_Pnt)
-	theThirdPoint(gp_Pnt)
+		%feature("autodoc", "	* Constructs the angle display object defined by three points. @param theFirstPoint [in] the first point (point on first angle flyout). @param theSecondPoint [in] the center point of angle dimension. @param theThirdPoint [in] the second point (point on second angle flyout).
 
-Returns:
-	None
-
-Constructs the angle display object defined by three points.
-@param theFirstPoint [in] the first point (point on first angle flyout).
-@param theSecondPoint [in] the center point of angle dimension.
-@param theThirdPoint [in] the second point (point on second angle flyout).") AIS_AngleDimension;
+	:param theFirstPoint:
+	:type theFirstPoint: gp_Pnt
+	:param theSecondPoint:
+	:type theSecondPoint: gp_Pnt
+	:param theThirdPoint:
+	:type theThirdPoint: gp_Pnt
+	:rtype: None
+") AIS_AngleDimension;
 		 AIS_AngleDimension (const gp_Pnt & theFirstPoint,const gp_Pnt & theSecondPoint,const gp_Pnt & theThirdPoint);
-		%feature("autodoc", "Args:
-	theFirstVertex(TopoDS_Vertex)
-	theSecondVertex(TopoDS_Vertex)
-	theThirdVertex(TopoDS_Vertex)
+		%feature("autodoc", "	* Constructs the angle display object defined by three vertices. @param theFirstVertex [in] the first vertex (vertex for first angle flyout). @param theSecondVertex [in] the center vertex of angle dimension. @param theThirdPoint [in] the second vertex (vertex for second angle flyout).
 
-Returns:
-	None
-
-Constructs the angle display object defined by three vertices.
-@param theFirstVertex [in] the first vertex (vertex for first angle flyout).
-@param theSecondVertex [in] the center vertex of angle dimension.
-@param theThirdPoint [in] the second vertex (vertex for second angle flyout).") AIS_AngleDimension;
+	:param theFirstVertex:
+	:type theFirstVertex: TopoDS_Vertex &
+	:param theSecondVertex:
+	:type theSecondVertex: TopoDS_Vertex &
+	:param theThirdVertex:
+	:type theThirdVertex: TopoDS_Vertex &
+	:rtype: None
+") AIS_AngleDimension;
 		 AIS_AngleDimension (const TopoDS_Vertex & theFirstVertex,const TopoDS_Vertex & theSecondVertex,const TopoDS_Vertex & theThirdVertex);
-		%feature("autodoc", "Args:
-	theCone(TopoDS_Face)
+		%feature("autodoc", "	* Constructs angle dimension for the cone face. @param theCone [in] the conical face.
 
-Returns:
-	None
-
-Constructs angle dimension for the cone face.
-@param theCone [in] the conical face.") AIS_AngleDimension;
+	:param theCone:
+	:type theCone: TopoDS_Face &
+	:rtype: None
+") AIS_AngleDimension;
 		 AIS_AngleDimension (const TopoDS_Face & theCone);
-		%feature("autodoc", "Args:
-	theFirstFace(TopoDS_Face)
-	theSecondFace(TopoDS_Face)
+		%feature("autodoc", "	* Constructs angle dimension between two planar faces. @param theFirstFace [in] the first face. @param theSecondFace [in] the second face.
 
-Returns:
-	None
-
-Constructs angle dimension between two planar faces.
-@param theFirstFace [in] the first face.
-@param theSecondFace [in] the second face.") AIS_AngleDimension;
+	:param theFirstFace:
+	:type theFirstFace: TopoDS_Face &
+	:param theSecondFace:
+	:type theSecondFace: TopoDS_Face &
+	:rtype: None
+") AIS_AngleDimension;
 		 AIS_AngleDimension (const TopoDS_Face & theFirstFace,const TopoDS_Face & theSecondFace);
-		%feature("autodoc", "Args:
-	theFirstFace(TopoDS_Face)
-	theSecondFace(TopoDS_Face)
-	thePoint(gp_Pnt)
+		%feature("autodoc", "	* Constructs angle dimension between two planar faces. @param theFirstFace [in] the first face. @param theSecondFace [in] the second face. @param thePoint [in] the point which the dimension plane should pass through. This point can lay on the one of the faces or not.
 
-Returns:
-	None
-
-Constructs angle dimension between two planar faces.
-@param theFirstFace [in] the first face.
-@param theSecondFace [in] the second face.
-@param thePoint [in] the point which the dimension plane should pass through.
-This point can lay on the one of the faces or not.") AIS_AngleDimension;
+	:param theFirstFace:
+	:type theFirstFace: TopoDS_Face &
+	:param theSecondFace:
+	:type theSecondFace: TopoDS_Face &
+	:param thePoint:
+	:type thePoint: gp_Pnt
+	:rtype: None
+") AIS_AngleDimension;
 		 AIS_AngleDimension (const TopoDS_Face & theFirstFace,const TopoDS_Face & theSecondFace,const gp_Pnt & thePoint);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
+		%feature("autodoc", "	* returns first point forming the angle.
 
-@return first point forming the angle.") FirstPoint;
+	:rtype: gp_Pnt
+") FirstPoint;
 		const gp_Pnt & FirstPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
+		%feature("autodoc", "	* returns second point forming the angle.
 
-@return second point forming the angle.") SecondPoint;
+	:rtype: gp_Pnt
+") SecondPoint;
 		const gp_Pnt & SecondPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
+		%feature("autodoc", "	* returns center point forming the angle.
 
-@return center point forming the angle.") CenterPoint;
+	:rtype: gp_Pnt
+") CenterPoint;
 		const gp_Pnt & CenterPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* returns first argument shape.
 
-@return first argument shape.") FirstShape;
+	:rtype: TopoDS_Shape
+") FirstShape;
 		const TopoDS_Shape & FirstShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* returns second argument shape.
 
-@return second argument shape.") SecondShape;
+	:rtype: TopoDS_Shape
+") SecondShape;
 		const TopoDS_Shape & SecondShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* returns third argument shape.
 
-@return third argument shape.") ThirdShape;
+	:rtype: TopoDS_Shape
+") ThirdShape;
 		const TopoDS_Shape & ThirdShape ();
-		%feature("autodoc", "Args:
-	theFirstEdge(TopoDS_Edge)
-	theSecondEdge(TopoDS_Edge)
+		%feature("autodoc", "	* Measures minimum angle dimension between two linear edges. These two edges should be intersected by each other. Otherwise the geometry is not valid. @param theFirstEdge [in] the first edge. @param theSecondEdge [in] the second edge.
 
-Returns:
-	None
-
-Measures minimum angle dimension between two linear edges.
-These two edges should be intersected by each other. Otherwise the geometry is not valid.
-@param theFirstEdge [in] the first edge.
-@param theSecondEdge [in] the second edge.") SetMeasuredGeometry;
+	:param theFirstEdge:
+	:type theFirstEdge: TopoDS_Edge &
+	:param theSecondEdge:
+	:type theSecondEdge: TopoDS_Edge &
+	:rtype: None
+") SetMeasuredGeometry;
 		void SetMeasuredGeometry (const TopoDS_Edge & theFirstEdge,const TopoDS_Edge & theSecondEdge);
-		%feature("autodoc", "Args:
-	theFirstPoint(gp_Pnt)
-	theSecondPoint(gp_Pnt)
-	theThridPoint(gp_Pnt)
+		%feature("autodoc", "	* Measures angle defined by three points. @param theFirstPoint [in] the first point (point on first angle flyout). @param theSecondPoint [in] the center point of angle dimension. @param theThirdPoint [in] the second point (point on second angle flyout).
 
-Returns:
-	None
-
-Measures angle defined by three points.
-@param theFirstPoint [in] the first point (point on first angle flyout).
-@param theSecondPoint [in] the center point of angle dimension.
-@param theThirdPoint [in] the second point (point on second angle flyout).") SetMeasuredGeometry;
+	:param theFirstPoint:
+	:type theFirstPoint: gp_Pnt
+	:param theSecondPoint:
+	:type theSecondPoint: gp_Pnt
+	:param theThridPoint:
+	:type theThridPoint: gp_Pnt
+	:rtype: None
+") SetMeasuredGeometry;
 		void SetMeasuredGeometry (const gp_Pnt & theFirstPoint,const gp_Pnt & theSecondPoint,const gp_Pnt & theThridPoint);
-		%feature("autodoc", "Args:
-	theFirstVertex(TopoDS_Vertex)
-	theSecondVertex(TopoDS_Vertex)
-	theThirdVertex(TopoDS_Vertex)
+		%feature("autodoc", "	* Measures angle defined by three vertices. @param theFirstVertex [in] the first vertex (vertex for first angle flyout). @param theSecondVertex [in] the center vertex of angle dimension. @param theThirdPoint [in] the second vertex (vertex for second angle flyout).
 
-Returns:
-	None
-
-Measures angle defined by three vertices.
-@param theFirstVertex [in] the first vertex (vertex for first angle flyout).
-@param theSecondVertex [in] the center vertex of angle dimension.
-@param theThirdPoint [in] the second vertex (vertex for second angle flyout).") SetMeasuredGeometry;
+	:param theFirstVertex:
+	:type theFirstVertex: TopoDS_Vertex &
+	:param theSecondVertex:
+	:type theSecondVertex: TopoDS_Vertex &
+	:param theThirdVertex:
+	:type theThirdVertex: TopoDS_Vertex &
+	:rtype: None
+") SetMeasuredGeometry;
 		void SetMeasuredGeometry (const TopoDS_Vertex & theFirstVertex,const TopoDS_Vertex & theSecondVertex,const TopoDS_Vertex & theThirdVertex);
-		%feature("autodoc", "Args:
-	theCone(TopoDS_Face)
+		%feature("autodoc", "	* Measures angle of conical face. @param theCone [in] the shape to measure.
 
-Returns:
-	None
-
-Measures angle of conical face.
-@param theCone [in] the shape to measure.") SetMeasuredGeometry;
+	:param theCone:
+	:type theCone: TopoDS_Face &
+	:rtype: None
+") SetMeasuredGeometry;
 		void SetMeasuredGeometry (const TopoDS_Face & theCone);
-		%feature("autodoc", "Args:
-	theFirstFace(TopoDS_Face)
-	theSecondFace(TopoDS_Face)
+		%feature("autodoc", "	* Measures angle between two planar faces. @param theFirstFace [in] the first face. @param theSecondFace [in] the second face..
 
-Returns:
-	None
-
-Measures angle between two planar faces.
-@param theFirstFace [in] the first face.
-@param theSecondFace [in] the second face..") SetMeasuredGeometry;
+	:param theFirstFace:
+	:type theFirstFace: TopoDS_Face &
+	:param theSecondFace:
+	:type theSecondFace: TopoDS_Face &
+	:rtype: None
+") SetMeasuredGeometry;
 		void SetMeasuredGeometry (const TopoDS_Face & theFirstFace,const TopoDS_Face & theSecondFace);
-		%feature("autodoc", "Args:
-	theFirstFace(TopoDS_Face)
-	theSecondFace(TopoDS_Face)
-	thePoint(gp_Pnt)
+		%feature("autodoc", "	* Measures angle between two planar faces. @param theFirstFace [in] the first face. @param theSecondFace [in] the second face. @param thePoint [in] the point which the dimension plane should pass through. This point can lay on the one of the faces or not.
 
-Returns:
-	None
-
-Measures angle between two planar faces.
-@param theFirstFace [in] the first face.
-@param theSecondFace [in] the second face.
-@param thePoint [in] the point which the dimension plane should pass through.
-This point can lay on the one of the faces or not.") SetMeasuredGeometry;
+	:param theFirstFace:
+	:type theFirstFace: TopoDS_Face &
+	:param theSecondFace:
+	:type theSecondFace: TopoDS_Face &
+	:param thePoint:
+	:type thePoint: gp_Pnt
+	:rtype: None
+") SetMeasuredGeometry;
 		void SetMeasuredGeometry (const TopoDS_Face & theFirstFace,const TopoDS_Face & theSecondFace,const gp_Pnt & thePoint);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  TCollection_AsciiString
+		%feature("autodoc", "	* returns the display units string.
 
-@return the display units string.") GetDisplayUnits;
+	:rtype: TCollection_AsciiString
+") GetDisplayUnits;
 		virtual const TCollection_AsciiString & GetDisplayUnits ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  TCollection_AsciiString
+		%feature("autodoc", "	* returns the model units string.
 
-@return the model units string.") GetModelUnits;
+	:rtype: TCollection_AsciiString
+") GetModelUnits;
 		virtual const TCollection_AsciiString & GetModelUnits ();
-		%feature("autodoc", "Args:
-	theUnits(TCollection_AsciiString)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetDisplayUnits;
+		%feature("autodoc", "	:param theUnits:
+	:type theUnits: TCollection_AsciiString &
+	:rtype: void
+") SetDisplayUnits;
 		virtual void SetDisplayUnits (const TCollection_AsciiString & theUnits);
-		%feature("autodoc", "Args:
-	theUnits(TCollection_AsciiString)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetModelUnits;
+		%feature("autodoc", "	:param theUnits:
+	:type theUnits: TCollection_AsciiString &
+	:rtype: void
+") SetModelUnits;
 		virtual void SetModelUnits (const TCollection_AsciiString & theUnits);
-		%feature("autodoc", "Args:
-	theTextPos(gp_Pnt)
+		%feature("autodoc", "	* Principle of horizontal text alignment settings: - divide circle into two halves according to attachment points - if aTextPos is between attach points -> Center + positive flyout - if aTextPos is not between attach points but in this half -> Left or Right + positive flyout - if aTextPos is between reflections of attach points -> Center + negative flyout - if aTextPos is not between reflections of attach points -> Left or Right + negative flyout
 
-Returns:
-	virtual void
-
-Principle of horizontal text alignment settings:
-- divide circle into two halves according to attachment points
-- if aTextPos is between attach points -> Center + positive flyout
-- if aTextPos is not between attach points but in this half -> Left or Right + positive flyout
-- if aTextPos is between reflections of attach points -> Center + negative flyout
-- if aTextPos is not between reflections of attach points -> Left or Right + negative flyout") SetTextPosition;
+	:param theTextPos:
+	:type theTextPos: gp_Pnt
+	:rtype: void
+") SetTextPosition;
 		virtual void SetTextPosition (const gp_Pnt & theTextPos);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  gp_Pnt
-
-No detailed docstring for this function.") GetTextPosition;
+		%feature("autodoc", "	:rtype: gp_Pnt
+") GetTextPosition;
 		virtual const gp_Pnt GetTextPosition ();
 };
 
@@ -13108,66 +9562,58 @@ def __del__(self):
 %nodefaultctor AIS_Chamf2dDimension;
 class AIS_Chamf2dDimension : public AIS_Relation {
 	public:
-		%feature("autodoc", "Args:
-	aFShape(TopoDS_Shape)
-	aPlane(Handle_Geom_Plane)
-	aVal(Standard_Real)
-	aText(TCollection_ExtendedString)
+		%feature("autodoc", "	* Constructs the display object for 2D chamfers. This object is defined by the face aFShape, the dimension aVal, the plane aPlane and the text aText.
 
-Returns:
-	None
-
-Constructs the display object for 2D chamfers.  
-This object is defined by the face aFShape, the  
-dimension aVal, the plane aPlane and the text aText.") AIS_Chamf2dDimension;
+	:param aFShape:
+	:type aFShape: TopoDS_Shape &
+	:param aPlane:
+	:type aPlane: Handle_Geom_Plane &
+	:param aVal:
+	:type aVal: float
+	:param aText:
+	:type aText: TCollection_ExtendedString &
+	:rtype: None
+") AIS_Chamf2dDimension;
 		 AIS_Chamf2dDimension (const TopoDS_Shape & aFShape,const Handle_Geom_Plane & aPlane,const Standard_Real aVal,const TCollection_ExtendedString & aText);
-		%feature("autodoc", "Args:
-	aFShape(TopoDS_Shape)
-	aPlane(Handle_Geom_Plane)
-	aVal(Standard_Real)
-	aText(TCollection_ExtendedString)
-	aPosition(gp_Pnt)
-	aSymbolPrs(DsgPrs_ArrowSide)
-	anArrowSize(Standard_Real)=0.0
+		%feature("autodoc", "	* Constructs the display object for 2D chamfers. This object is defined by the face aFShape, the plane aPlane, the dimension aVal, the position aPosition, the type of arrow aSymbolPrs with the size anArrowSize, and the text aText.
 
-Returns:
-	None
-
-Constructs the display object for 2D chamfers.  
-This object is defined by the face aFShape, the plane  
-aPlane, the dimension aVal, the position aPosition,  
-the type of arrow aSymbolPrs with the size  
-anArrowSize, and the text aText.") AIS_Chamf2dDimension;
+	:param aFShape:
+	:type aFShape: TopoDS_Shape &
+	:param aPlane:
+	:type aPlane: Handle_Geom_Plane &
+	:param aVal:
+	:type aVal: float
+	:param aText:
+	:type aText: TCollection_ExtendedString &
+	:param aPosition:
+	:type aPosition: gp_Pnt
+	:param aSymbolPrs:
+	:type aSymbolPrs: DsgPrs_ArrowSide
+	:param anArrowSize: default value is 0.0
+	:type anArrowSize: float
+	:rtype: None
+") AIS_Chamf2dDimension;
 		 AIS_Chamf2dDimension (const TopoDS_Shape & aFShape,const Handle_Geom_Plane & aPlane,const Standard_Real aVal,const TCollection_ExtendedString & aText,const gp_Pnt & aPosition,const DsgPrs_ArrowSide aSymbolPrs,const Standard_Real anArrowSize = 0.0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	AIS_KindOfDimension
+		%feature("autodoc", "	* Indicates that we are concerned with a 2d length.
 
-Indicates that we are concerned with a 2d length.") KindOfDimension;
+	:rtype: AIS_KindOfDimension
+") KindOfDimension;
 		AIS_KindOfDimension KindOfDimension ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the 2d chamfer dimension is movable.
 
-Returns true if the 2d chamfer dimension is movable.") IsMovable;
+	:rtype: bool
+") IsMovable;
 		Standard_Boolean IsMovable ();
-		%feature("autodoc", "Args:
-	aProjector(Handle_Prs3d_Projector)
-	aTrsf(Handle_Geom_Transformation)
-	aPresentation(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
-Returns:
-	virtual void
-
-computes the presentation according to a point of view  
-         given by <aProjector>.  
-         To be Used when the associated degenerated Presentations  
-         have been transformed by <aTrsf> which is not a Pure  
-         Translation. The HLR Prs can't be deducted automatically  
-         WARNING :<aTrsf> must be applied  
-         to the object to display before computation  !!!") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Prs3d_Projector &
+	:param aTrsf:
+	:type aTrsf: Handle_Geom_Transformation &
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Prs3d_Projector & aProjector,const Handle_Geom_Transformation & aTrsf,const Handle_Prs3d_Presentation & aPresentation);
 };
 
@@ -13228,64 +9674,54 @@ def __del__(self):
 %nodefaultctor AIS_Chamf3dDimension;
 class AIS_Chamf3dDimension : public AIS_Relation {
 	public:
-		%feature("autodoc", "Args:
-	aFShape(TopoDS_Shape)
-	aVal(Standard_Real)
-	aText(TCollection_ExtendedString)
+		%feature("autodoc", "	* Constructs a display object for 3D chamfers. This object is defined by the shape aFShape, the dimension aVal and the text aText.
 
-Returns:
-	None
-
-Constructs a display object for 3D chamfers.  
-This object is defined by the shape aFShape, the  
-dimension aVal and the text aText.") AIS_Chamf3dDimension;
+	:param aFShape:
+	:type aFShape: TopoDS_Shape &
+	:param aVal:
+	:type aVal: float
+	:param aText:
+	:type aText: TCollection_ExtendedString &
+	:rtype: None
+") AIS_Chamf3dDimension;
 		 AIS_Chamf3dDimension (const TopoDS_Shape & aFShape,const Standard_Real aVal,const TCollection_ExtendedString & aText);
-		%feature("autodoc", "Args:
-	aFShape(TopoDS_Shape)
-	aVal(Standard_Real)
-	aText(TCollection_ExtendedString)
-	aPosition(gp_Pnt)
-	aSymbolPrs(DsgPrs_ArrowSide)
-	anArrowSize(Standard_Real)=0.0
+		%feature("autodoc", "	* Constructs a display object for 3D chamfers. This object is defined by the shape aFShape, the dimension aVal, the text aText, the point of origin of the chamfer aPosition, the type of arrow aSymbolPrs with the size anArrowSize.
 
-Returns:
-	None
-
-Constructs a display object for 3D chamfers.  
-This object is defined by the shape aFShape, the  
-dimension aVal, the text aText, the point of origin of  
-the chamfer aPosition, the type of arrow aSymbolPrs  
-with the size anArrowSize.") AIS_Chamf3dDimension;
+	:param aFShape:
+	:type aFShape: TopoDS_Shape &
+	:param aVal:
+	:type aVal: float
+	:param aText:
+	:type aText: TCollection_ExtendedString &
+	:param aPosition:
+	:type aPosition: gp_Pnt
+	:param aSymbolPrs:
+	:type aSymbolPrs: DsgPrs_ArrowSide
+	:param anArrowSize: default value is 0.0
+	:type anArrowSize: float
+	:rtype: None
+") AIS_Chamf3dDimension;
 		 AIS_Chamf3dDimension (const TopoDS_Shape & aFShape,const Standard_Real aVal,const TCollection_ExtendedString & aText,const gp_Pnt & aPosition,const DsgPrs_ArrowSide aSymbolPrs,const Standard_Real anArrowSize = 0.0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	AIS_KindOfDimension
+		%feature("autodoc", "	* Indicates that we are concerned with a 3d length.
 
-Indicates that we are concerned with a 3d length.") KindOfDimension;
+	:rtype: AIS_KindOfDimension
+") KindOfDimension;
 		AIS_KindOfDimension KindOfDimension ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the 3d chamfer dimension is movable.
 
-Returns true if the 3d chamfer dimension is movable.") IsMovable;
+	:rtype: bool
+") IsMovable;
 		Standard_Boolean IsMovable ();
-		%feature("autodoc", "Args:
-	aProjector(Handle_Prs3d_Projector)
-	aTrsf(Handle_Geom_Transformation)
-	aPresentation(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
-Returns:
-	virtual void
-
-computes the presentation according to a point of view  
-         given by <aProjector>.  
-         To be Used when the associated degenerated Presentations  
-         have been transformed by <aTrsf> which is not a Pure  
-         Translation. The HLR Prs can't be deducted automatically  
-         WARNING :<aTrsf> must be applied  
-          to the object to display before computation  !!!") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Prs3d_Projector &
+	:param aTrsf:
+	:type aTrsf: Handle_Geom_Transformation &
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Prs3d_Projector & aProjector,const Handle_Geom_Transformation & aTrsf,const Handle_Prs3d_Presentation & aPresentation);
 };
 
@@ -13346,36 +9782,27 @@ def __del__(self):
 %nodefaultctor AIS_ConcentricRelation;
 class AIS_ConcentricRelation : public AIS_Relation {
 	public:
-		%feature("autodoc", "Args:
-	aFShape(TopoDS_Shape)
-	aSShape(TopoDS_Shape)
-	aPlane(Handle_Geom_Plane)
+		%feature("autodoc", "	* Constructs the display object for concentric relations between shapes. This object is defined by the two shapes, aFShape and aSShape and the plane aPlane. aPlane is provided to create an axis along which the relation of concentricity can be extended.
 
-Returns:
-	None
-
-Constructs the display object for concentric relations  
-between shapes.  
-This object is defined by the two shapes, aFShape  
-and aSShape and the plane aPlane.  
-aPlane is provided to create an axis along which the  
-relation of concentricity can be extended.") AIS_ConcentricRelation;
+	:param aFShape:
+	:type aFShape: TopoDS_Shape &
+	:param aSShape:
+	:type aSShape: TopoDS_Shape &
+	:param aPlane:
+	:type aPlane: Handle_Geom_Plane &
+	:rtype: None
+") AIS_ConcentricRelation;
 		 AIS_ConcentricRelation (const TopoDS_Shape & aFShape,const TopoDS_Shape & aSShape,const Handle_Geom_Plane & aPlane);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Prs3d_Projector)
-	aTrsf(Handle_Geom_Transformation)
-	aPresentation(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
-Returns:
-	virtual void
-
-computes the presentation according to a point of view  
-         given by <aProjector>.  
-         To be Used when the associated degenerated Presentations  
-         have been transformed by <aTrsf> which is not a Pure  
-         Translation. The HLR Prs can't be deducted automatically  
-         WARNING :<aTrsf> must be applied  
-          to the object to display before computation  !!!") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Prs3d_Projector &
+	:param aTrsf:
+	:type aTrsf: Handle_Geom_Transformation &
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Prs3d_Projector & aProjector,const Handle_Geom_Transformation & aTrsf,const Handle_Prs3d_Presentation & aPresentation);
 };
 
@@ -13436,85 +9863,60 @@ def __del__(self):
 %nodefaultctor AIS_ConnectedShape;
 class AIS_ConnectedShape : public AIS_ConnectedInteractive {
 	public:
-		%feature("autodoc", "Args:
-	aTypeOfPresentation(PrsMgr_TypeOfPresentation3d)=PrsMgr_TOP_ProjectorDependant
+		%feature("autodoc", "	* Initializes the type of 3d presentation aTypeOfPresentation
 
-Returns:
-	None
-
-Initializes the type of 3d presentation aTypeOfPresentation") AIS_ConnectedShape;
+	:param aTypeOfPresentation: default value is PrsMgr_TOP_ProjectorDependant
+	:type aTypeOfPresentation: PrsMgr_TypeOfPresentation3d
+	:rtype: None
+") AIS_ConnectedShape;
 		 AIS_ConnectedShape (const PrsMgr_TypeOfPresentation3d aTypeOfPresentation = PrsMgr_TOP_ProjectorDependant);
-		%feature("autodoc", "Args:
-	aInteractiveShape(Handle_AIS_Shape)
-	aTypeOfPresentation(PrsMgr_TypeOfPresentation3d)=PrsMgr_TOP_ProjectorDependant
+		%feature("autodoc", "	* Initializes the entity aInteractiveShape and the type of 3d presentation aTypeOfPresentation.
 
-Returns:
-	None
-
-Initializes the entity aInteractiveShape and the type of 3d presentation aTypeOfPresentation.") AIS_ConnectedShape;
+	:param aInteractiveShape:
+	:type aInteractiveShape: Handle_AIS_Shape &
+	:param aTypeOfPresentation: default value is PrsMgr_TOP_ProjectorDependant
+	:type aTypeOfPresentation: PrsMgr_TypeOfPresentation3d
+	:rtype: None
+") AIS_ConnectedShape;
 		 AIS_ConnectedShape (const Handle_AIS_Shape & aInteractiveShape,const PrsMgr_TypeOfPresentation3d aTypeOfPresentation = PrsMgr_TOP_ProjectorDependant);
-		%feature("autodoc", "Args:
-	aConnectedShape(Handle_AIS_ConnectedShape)
-	aTypeOfPresentation(PrsMgr_TypeOfPresentation3d)=PrsMgr_TOP_ProjectorDependant
+		%feature("autodoc", "	* Initializes the entity aConnectedShape and the type of 3d presentation aTypeOfPresentation.
 
-Returns:
-	None
-
-Initializes the entity aConnectedShape and the type of 3d presentation aTypeOfPresentation.") AIS_ConnectedShape;
+	:param aConnectedShape:
+	:type aConnectedShape: Handle_AIS_ConnectedShape &
+	:param aTypeOfPresentation: default value is PrsMgr_TOP_ProjectorDependant
+	:type aTypeOfPresentation: PrsMgr_TypeOfPresentation3d
+	:rtype: None
+") AIS_ConnectedShape;
 		 AIS_ConnectedShape (const Handle_AIS_ConnectedShape & aConnectedShape,const PrsMgr_TypeOfPresentation3d aTypeOfPresentation = PrsMgr_TOP_ProjectorDependant);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual AIS_KindOfInteractive
-
-No detailed docstring for this function.") Type;
+		%feature("autodoc", "	:rtype: AIS_KindOfInteractive
+") Type;
 		virtual AIS_KindOfInteractive Type ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
-
-No detailed docstring for this function.") Signature;
+		%feature("autodoc", "	:rtype: int
+") Signature;
 		virtual Standard_Integer Signature ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") AcceptShapeDecomposition;
+		%feature("autodoc", "	:rtype: bool
+") AcceptShapeDecomposition;
 		virtual Standard_Boolean AcceptShapeDecomposition ();
-		%feature("autodoc", "Args:
-	anotherIObj(Handle_AIS_InteractiveObject)
+		%feature("autodoc", "	* Establishes the connection between the Connected Interactive Object, anotherIobj, and its reference entity. If there is already a previous connection with an Interactive Object, this connection is removed.
 
-Returns:
-	virtual void
-
-Establishes the connection between the Connected  
-Interactive Object, anotherIobj, and its reference  
-entity. If there is already a previous connection with  
-an Interactive Object, this connection is removed.") Connect;
+	:param anotherIObj:
+	:type anotherIObj: Handle_AIS_InteractiveObject &
+	:rtype: void
+") Connect;
 		virtual void Connect (const Handle_AIS_InteractiveObject & anotherIObj);
-		%feature("autodoc", "Args:
-	anotherIobj(Handle_AIS_InteractiveObject)
-	aLocation(TopLoc_Location)
+		%feature("autodoc", "	* Establishes the connection between the Connected Interactive Object, anotherIobj, and its reference entity. If there is already a previous connection with an Interactive Object, this connection is removed. This syntax also initiates the location of the Connected Interactive Object.
 
-Returns:
-	virtual void
-
-Establishes the connection between the Connected  
-Interactive Object, anotherIobj, and its reference  
-entity. If there is already a previous connection with  
-an Interactive Object, this connection is removed.  
-This syntax also initiates the location of the Connected Interactive Object.") Connect;
+	:param anotherIobj:
+	:type anotherIobj: Handle_AIS_InteractiveObject &
+	:param aLocation:
+	:type aLocation: TopLoc_Location &
+	:rtype: void
+") Connect;
 		virtual void Connect (const Handle_AIS_InteractiveObject & anotherIobj,const TopLoc_Location & aLocation);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Returns the topological shape which is the reference for the connected shape. Sets hilight mode to index 0. This returns a wireframe presentation.
 
-Returns the topological shape which is the reference  
-for the connected shape. Sets hilight mode to index  
-0. This returns a wireframe presentation.") Shape;
+	:rtype: TopoDS_Shape
+") Shape;
 		const TopoDS_Shape & Shape ();
 };
 
@@ -13575,139 +9977,94 @@ def __del__(self):
 %nodefaultctor AIS_DiameterDimension;
 class AIS_DiameterDimension : public AIS_Dimension {
 	public:
-		%feature("autodoc", "Args:
-	theCircle(gp_Circ)
+		%feature("autodoc", "	* Construct diameter dimension for the circle. @param theCircle [in] the circle to measure.
 
-Returns:
-	None
-
-Construct diameter dimension for the circle.
-@param theCircle [in] the circle to measure.") AIS_DiameterDimension;
+	:param theCircle:
+	:type theCircle: gp_Circ
+	:rtype: None
+") AIS_DiameterDimension;
 		 AIS_DiameterDimension (const gp_Circ & theCircle);
-		%feature("autodoc", "Args:
-	theCircle(gp_Circ)
-	thePlane(gp_Pln)
+		%feature("autodoc", "	* Construct diameter dimension for the circle and orient it correspondingly to the passed plane. @param theCircle [in] the circle to measure. @param thePlane [in] the plane defining preferred orientation for dimension.
 
-Returns:
-	None
-
-Construct diameter dimension for the circle and orient it correspondingly
-to the passed plane.
-@param theCircle [in] the circle to measure.
-@param thePlane [in] the plane defining preferred orientation
-       for dimension.") AIS_DiameterDimension;
+	:param theCircle:
+	:type theCircle: gp_Circ
+	:param thePlane:
+	:type thePlane: gp_Pln
+	:rtype: None
+") AIS_DiameterDimension;
 		 AIS_DiameterDimension (const gp_Circ & theCircle,const gp_Pln & thePlane);
-		%feature("autodoc", "Args:
-	theShape(TopoDS_Shape)
+		%feature("autodoc", "	* Construct diameter on the passed shape, if applicable. @param theShape [in] the shape to measure.
 
-Returns:
-	None
-
-Construct diameter on the passed shape, if applicable.
-@param theShape [in] the shape to measure.") AIS_DiameterDimension;
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:rtype: None
+") AIS_DiameterDimension;
 		 AIS_DiameterDimension (const TopoDS_Shape & theShape);
-		%feature("autodoc", "Args:
-	theShape(TopoDS_Shape)
-	thePlane(gp_Pln)
+		%feature("autodoc", "	* Construct diameter on the passed shape, if applicable - and define the preferred plane to orient the dimension. @param theShape [in] the shape to measure. @param thePlane [in] the plane defining preferred orientation for dimension.
 
-Returns:
-	None
-
-Construct diameter on the passed shape, if applicable - and
-define the preferred plane to orient the dimension.
-@param theShape [in] the shape to measure.
-@param thePlane [in] the plane defining preferred orientation
-       for dimension.") AIS_DiameterDimension;
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:param thePlane:
+	:type thePlane: gp_Pln
+	:rtype: None
+") AIS_DiameterDimension;
 		 AIS_DiameterDimension (const TopoDS_Shape & theShape,const gp_Pln & thePlane);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Circ
+		%feature("autodoc", "	* returns measured geometry circle.
 
-@return measured geometry circle.") Circle;
+	:rtype: gp_Circ
+") Circle;
 		const gp_Circ & Circle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
+		%feature("autodoc", "	* returns anchor point on circle for diameter dimension.
 
-@return anchor point on circle for diameter dimension.") AnchorPoint;
+	:rtype: gp_Pnt
+") AnchorPoint;
 		gp_Pnt AnchorPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* returns the measured shape.
 
-@return the measured shape.") Shape;
+	:rtype: TopoDS_Shape
+") Shape;
 		const TopoDS_Shape & Shape ();
-		%feature("autodoc", "Args:
-	theCircle(gp_Circ)
+		%feature("autodoc", "	* Measure diameter of the circle. The actual dimension plane is used for determining anchor points on the circle to attach the dimension lines to. The dimension will become invalid if the diameter of the circle is less than Precision::Confusion(). @param theCircle [in] the circle to measure.
 
-Returns:
-	None
-
-Measure diameter of the circle.
-The actual dimension plane is used for determining anchor points
-on the circle to attach the dimension lines to.
-The dimension will become invalid if the diameter of the circle
-is less than Precision::Confusion().
-@param theCircle [in] the circle to measure.") SetMeasuredGeometry;
+	:param theCircle:
+	:type theCircle: gp_Circ
+	:rtype: None
+") SetMeasuredGeometry;
 		void SetMeasuredGeometry (const gp_Circ & theCircle);
-		%feature("autodoc", "Args:
-	theShape(TopoDS_Shape)
+		%feature("autodoc", "	* Measure diameter on the passed shape, if applicable. The dimension will become invalid if the passed shape is not measurable or if measured diameter value is less than Precision::Confusion(). @param theShape [in] the shape to measure.
 
-Returns:
-	None
-
-Measure diameter on the passed shape, if applicable.
-The dimension will become invalid if the passed shape is not
-measurable or if measured diameter value is less than Precision::Confusion().
-@param theShape [in] the shape to measure.") SetMeasuredGeometry;
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:rtype: None
+") SetMeasuredGeometry;
 		void SetMeasuredGeometry (const TopoDS_Shape & theShape);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  TCollection_AsciiString
+		%feature("autodoc", "	* returns the display units string.
 
-@return the display units string.") GetDisplayUnits;
+	:rtype: TCollection_AsciiString
+") GetDisplayUnits;
 		virtual const TCollection_AsciiString & GetDisplayUnits ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  TCollection_AsciiString
+		%feature("autodoc", "	* returns the model units string.
 
-@return the model units string.") GetModelUnits;
+	:rtype: TCollection_AsciiString
+") GetModelUnits;
 		virtual const TCollection_AsciiString & GetModelUnits ();
-		%feature("autodoc", "Args:
-	theUnits(TCollection_AsciiString)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetDisplayUnits;
+		%feature("autodoc", "	:param theUnits:
+	:type theUnits: TCollection_AsciiString &
+	:rtype: void
+") SetDisplayUnits;
 		virtual void SetDisplayUnits (const TCollection_AsciiString & theUnits);
-		%feature("autodoc", "Args:
-	theUnits(TCollection_AsciiString)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetModelUnits;
+		%feature("autodoc", "	:param theUnits:
+	:type theUnits: TCollection_AsciiString &
+	:rtype: void
+") SetModelUnits;
 		virtual void SetModelUnits (const TCollection_AsciiString & theUnits);
-		%feature("autodoc", "Args:
-	theTextPos(gp_Pnt)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetTextPosition;
+		%feature("autodoc", "	:param theTextPos:
+	:type theTextPos: gp_Pnt
+	:rtype: void
+") SetTextPosition;
 		virtual void SetTextPosition (const gp_Pnt & theTextPos);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  gp_Pnt
-
-No detailed docstring for this function.") GetTextPosition;
+		%feature("autodoc", "	:rtype: gp_Pnt
+") GetTextPosition;
 		virtual const gp_Pnt GetTextPosition ();
 };
 
@@ -13729,26 +10086,14 @@ def __del__(self):
 %nodefaultctor AIS_EllipseRadiusDimension;
 class AIS_EllipseRadiusDimension : public AIS_Relation {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual AIS_KindOfDimension
-
-No detailed docstring for this function.") KindOfDimension;
+		%feature("autodoc", "	:rtype: AIS_KindOfDimension
+") KindOfDimension;
 		virtual AIS_KindOfDimension KindOfDimension ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") IsMovable;
+		%feature("autodoc", "	:rtype: bool
+") IsMovable;
 		virtual Standard_Boolean IsMovable ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ComputeGeometry;
+		%feature("autodoc", "	:rtype: None
+") ComputeGeometry;
 		void ComputeGeometry ();
 };
 
@@ -13809,142 +10154,162 @@ def __del__(self):
 %nodefaultctor AIS_EqualDistanceRelation;
 class AIS_EqualDistanceRelation : public AIS_Relation {
 	public:
-		%feature("autodoc", "Args:
-	aShape1(TopoDS_Shape)
-	aShape2(TopoDS_Shape)
-	aShape3(TopoDS_Shape)
-	aShape4(TopoDS_Shape)
-	aPlane(Handle_Geom_Plane)
+		%feature("autodoc", "	* Constructs a framework to display equivalent distances between the shapes aShape1, aShape2, aShape3, aShape4 and the plane aPlane. The distance is the length of a projection from the shape to the plane.
 
-Returns:
-	None
-
-Constructs a framework to display equivalent  
-distances between the shapes aShape1, aShape2,  
-aShape3, aShape4 and the plane aPlane.  
-The distance is the length of a projection from the  
-shape to the plane.") AIS_EqualDistanceRelation;
+	:param aShape1:
+	:type aShape1: TopoDS_Shape &
+	:param aShape2:
+	:type aShape2: TopoDS_Shape &
+	:param aShape3:
+	:type aShape3: TopoDS_Shape &
+	:param aShape4:
+	:type aShape4: TopoDS_Shape &
+	:param aPlane:
+	:type aPlane: Handle_Geom_Plane &
+	:rtype: None
+") AIS_EqualDistanceRelation;
 		 AIS_EqualDistanceRelation (const TopoDS_Shape & aShape1,const TopoDS_Shape & aShape2,const TopoDS_Shape & aShape3,const TopoDS_Shape & aShape4,const Handle_Geom_Plane & aPlane);
-		%feature("autodoc", "Args:
-	aShape(TopoDS_Shape)
+		%feature("autodoc", "	* Sets the shape aShape to be used as the shape aShape3 in the framework created at construction time.
 
-Returns:
-	None
-
-Sets the shape aShape to be used as the shape  
-aShape3 in the framework created at construction time.") SetShape3;
+	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:rtype: None
+") SetShape3;
 		void SetShape3 (const TopoDS_Shape & aShape);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Returns the shape aShape3 from the framework created at construction time.
 
-Returns the shape aShape3 from the framework  
-created at construction time.") Shape3;
+	:rtype: TopoDS_Shape
+") Shape3;
 		const TopoDS_Shape & Shape3 ();
-		%feature("autodoc", "Args:
-	aShape(TopoDS_Shape)
+		%feature("autodoc", "	* Sets the shape aShape to be used as the shape aShape4 in the framework created at construction time.
 
-Returns:
-	None
-
-Sets the shape aShape to be used as the shape  
-aShape4 in the framework created at construction time.") SetShape4;
+	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:rtype: None
+") SetShape4;
 		void SetShape4 (const TopoDS_Shape & aShape);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Returns the shape aShape4 from the framework created at construction time.
 
-Returns the shape aShape4 from the framework  
-created at construction time.") Shape4;
+	:rtype: TopoDS_Shape
+") Shape4;
 		const TopoDS_Shape & Shape4 ();
-		%feature("autodoc", "Args:
-	aProjector(Handle_Prs3d_Projector)
-	aTrsf(Handle_Geom_Transformation)
-	aPresentation(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* Computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
-Returns:
-	virtual void
-
-Computes the presentation according to a point of view  
-         given by <aProjector>.  
-         To be Used when the associated degenerated Presentations  
-         have been transformed by <aTrsf> which is not a Pure  
-         Translation. The HLR Prs can't be deducted automatically  
-         WARNING :<aTrsf> must be applied  
-          to the object to display before computation  !!!") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Prs3d_Projector &
+	:param aTrsf:
+	:type aTrsf: Handle_Geom_Transformation &
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Prs3d_Projector & aProjector,const Handle_Geom_Transformation & aTrsf,const Handle_Prs3d_Presentation & aPresentation);
-		%feature("autodoc", "Args:
-	aPresentation(Handle_Prs3d_Presentation)
-	aDrawer(Handle_AIS_Drawer)
-	ArrowSize(Standard_Real)
-	FirstEdge(TopoDS_Edge)
-	SecondEdge(TopoDS_Edge)
-	Plane(Handle_Geom_Plane)
-	AutomaticPos(Standard_Boolean)
-	IsSetBndBox(Standard_Boolean)
-	BndBox(Bnd_Box)
-	Position(gp_Pnt)
-	FirstAttach(gp_Pnt)
-	SecondAttach(gp_Pnt)
-	FirstExtreme(gp_Pnt)
-	SecondExtreme(gp_Pnt)
-	SymbolPrs(DsgPrs_ArrowSide)
+		%feature("autodoc", "	* Computes the location of an intreval between between two edges. FirstAttach , SecondAttach are the returned extreme points of the interval.
 
-Returns:
-	static void
-
-Computes the location of an intreval between  
-         between two edges. FirstAttach , SecondAttach  
-         are the returned extreme points of the interval.") ComputeTwoEdgesLength;
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:param aDrawer:
+	:type aDrawer: Handle_AIS_Drawer &
+	:param ArrowSize:
+	:type ArrowSize: float
+	:param FirstEdge:
+	:type FirstEdge: TopoDS_Edge &
+	:param SecondEdge:
+	:type SecondEdge: TopoDS_Edge &
+	:param Plane:
+	:type Plane: Handle_Geom_Plane &
+	:param AutomaticPos:
+	:type AutomaticPos: bool
+	:param IsSetBndBox:
+	:type IsSetBndBox: bool
+	:param BndBox:
+	:type BndBox: Bnd_Box &
+	:param Position:
+	:type Position: gp_Pnt
+	:param FirstAttach:
+	:type FirstAttach: gp_Pnt
+	:param SecondAttach:
+	:type SecondAttach: gp_Pnt
+	:param FirstExtreme:
+	:type FirstExtreme: gp_Pnt
+	:param SecondExtreme:
+	:type SecondExtreme: gp_Pnt
+	:param SymbolPrs:
+	:type SymbolPrs: DsgPrs_ArrowSide &
+	:rtype: void
+") ComputeTwoEdgesLength;
 		static void ComputeTwoEdgesLength (const Handle_Prs3d_Presentation & aPresentation,const Handle_AIS_Drawer & aDrawer,const Standard_Real ArrowSize,const TopoDS_Edge & FirstEdge,const TopoDS_Edge & SecondEdge,const Handle_Geom_Plane & Plane,const Standard_Boolean AutomaticPos,const Standard_Boolean IsSetBndBox,const Bnd_Box & BndBox,gp_Pnt & Position,gp_Pnt & FirstAttach,gp_Pnt & SecondAttach,gp_Pnt & FirstExtreme,gp_Pnt & SecondExtreme,DsgPrs_ArrowSide & SymbolPrs);
-		%feature("autodoc", "Args:
-	aPresentation(Handle_Prs3d_Presentation)
-	aDrawer(Handle_AIS_Drawer)
-	ArrowSize(Standard_Real)
-	FirstVertex(TopoDS_Vertex)
-	SecondVertex(TopoDS_Vertex)
-	Plane(Handle_Geom_Plane)
-	AutomaticPos(Standard_Boolean)
-	IsSetBndBox(Standard_Boolean)
-	BndBox(Bnd_Box)
-	TypeDist(AIS_TypeOfDist)
-	Position(gp_Pnt)
-	FirstAttach(gp_Pnt)
-	SecondAttach(gp_Pnt)
-	FirstExtreme(gp_Pnt)
-	SecondExtreme(gp_Pnt)
-	SymbolPrs(DsgPrs_ArrowSide)
+		%feature("autodoc", "	* Computes the interval position between two vertexs. FirstAttach, SecondAttach are the returned extreme points of the interval.
 
-Returns:
-	static void
-
-Computes the interval position between two vertexs. FirstAttach,  
-         SecondAttach are the returned extreme points of the interval.") ComputeTwoVerticesLength;
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:param aDrawer:
+	:type aDrawer: Handle_AIS_Drawer &
+	:param ArrowSize:
+	:type ArrowSize: float
+	:param FirstVertex:
+	:type FirstVertex: TopoDS_Vertex &
+	:param SecondVertex:
+	:type SecondVertex: TopoDS_Vertex &
+	:param Plane:
+	:type Plane: Handle_Geom_Plane &
+	:param AutomaticPos:
+	:type AutomaticPos: bool
+	:param IsSetBndBox:
+	:type IsSetBndBox: bool
+	:param BndBox:
+	:type BndBox: Bnd_Box &
+	:param TypeDist:
+	:type TypeDist: AIS_TypeOfDist
+	:param Position:
+	:type Position: gp_Pnt
+	:param FirstAttach:
+	:type FirstAttach: gp_Pnt
+	:param SecondAttach:
+	:type SecondAttach: gp_Pnt
+	:param FirstExtreme:
+	:type FirstExtreme: gp_Pnt
+	:param SecondExtreme:
+	:type SecondExtreme: gp_Pnt
+	:param SymbolPrs:
+	:type SymbolPrs: DsgPrs_ArrowSide &
+	:rtype: void
+") ComputeTwoVerticesLength;
 		static void ComputeTwoVerticesLength (const Handle_Prs3d_Presentation & aPresentation,const Handle_AIS_Drawer & aDrawer,const Standard_Real ArrowSize,const TopoDS_Vertex & FirstVertex,const TopoDS_Vertex & SecondVertex,const Handle_Geom_Plane & Plane,const Standard_Boolean AutomaticPos,const Standard_Boolean IsSetBndBox,const Bnd_Box & BndBox,const AIS_TypeOfDist TypeDist,gp_Pnt & Position,gp_Pnt & FirstAttach,gp_Pnt & SecondAttach,gp_Pnt & FirstExtreme,gp_Pnt & SecondExtreme,DsgPrs_ArrowSide & SymbolPrs);
-		%feature("autodoc", "Args:
-	aPresentation(Handle_Prs3d_Presentation)
-	aDrawer(Handle_AIS_Drawer)
-	ArrowSize(Standard_Real)
-	FirstShape(TopoDS_Shape)
-	SecondShape(TopoDS_Shape)
-	Plane(Handle_Geom_Plane)
-	AutomaticPos(Standard_Boolean)
-	IsSetBndBox(Standard_Boolean)
-	BndBox(Bnd_Box)
-	Position(gp_Pnt)
-	FirstAttach(gp_Pnt)
-	SecondAttach(gp_Pnt)
-	FirstExtreme(gp_Pnt)
-	SecondExtreme(gp_Pnt)
-	SymbolPrs(DsgPrs_ArrowSide)
+		%feature("autodoc", "	* Compute the interval location between a vertex and an edge. Edge may be a line or a circle.
 
-Returns:
-	static void
-
-Compute the interval location between a vertex and an edge. Edge may be  
-         a line or a circle.") ComputeOneEdgeOneVertexLength;
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:param aDrawer:
+	:type aDrawer: Handle_AIS_Drawer &
+	:param ArrowSize:
+	:type ArrowSize: float
+	:param FirstShape:
+	:type FirstShape: TopoDS_Shape &
+	:param SecondShape:
+	:type SecondShape: TopoDS_Shape &
+	:param Plane:
+	:type Plane: Handle_Geom_Plane &
+	:param AutomaticPos:
+	:type AutomaticPos: bool
+	:param IsSetBndBox:
+	:type IsSetBndBox: bool
+	:param BndBox:
+	:type BndBox: Bnd_Box &
+	:param Position:
+	:type Position: gp_Pnt
+	:param FirstAttach:
+	:type FirstAttach: gp_Pnt
+	:param SecondAttach:
+	:type SecondAttach: gp_Pnt
+	:param FirstExtreme:
+	:type FirstExtreme: gp_Pnt
+	:param SecondExtreme:
+	:type SecondExtreme: gp_Pnt
+	:param SymbolPrs:
+	:type SymbolPrs: DsgPrs_ArrowSide &
+	:rtype: void
+") ComputeOneEdgeOneVertexLength;
 		static void ComputeOneEdgeOneVertexLength (const Handle_Prs3d_Presentation & aPresentation,const Handle_AIS_Drawer & aDrawer,const Standard_Real ArrowSize,const TopoDS_Shape & FirstShape,const TopoDS_Shape & SecondShape,const Handle_Geom_Plane & Plane,const Standard_Boolean AutomaticPos,const Standard_Boolean IsSetBndBox,const Bnd_Box & BndBox,gp_Pnt & Position,gp_Pnt & FirstAttach,gp_Pnt & SecondAttach,gp_Pnt & FirstExtreme,gp_Pnt & SecondExtreme,DsgPrs_ArrowSide & SymbolPrs);
 };
 
@@ -14005,33 +10370,27 @@ def __del__(self):
 %nodefaultctor AIS_EqualRadiusRelation;
 class AIS_EqualRadiusRelation : public AIS_Relation {
 	public:
-		%feature("autodoc", "Args:
-	aFirstEdge(TopoDS_Edge)
-	aSecondEdge(TopoDS_Edge)
-	aPlane(Handle_Geom_Plane)
+		%feature("autodoc", "	* Creates equal relation of two arc's radiuses. If one of edges is not in the given plane, //!	 the presentation method projects it onto the plane.
 
-Returns:
-	None
-
-Creates equal relation of two arc's radiuses.  
-         If one of edges is not in the given plane,  
-//!	        the presentation method projects it onto the plane.") AIS_EqualRadiusRelation;
+	:param aFirstEdge:
+	:type aFirstEdge: TopoDS_Edge &
+	:param aSecondEdge:
+	:type aSecondEdge: TopoDS_Edge &
+	:param aPlane:
+	:type aPlane: Handle_Geom_Plane &
+	:rtype: None
+") AIS_EqualRadiusRelation;
 		 AIS_EqualRadiusRelation (const TopoDS_Edge & aFirstEdge,const TopoDS_Edge & aSecondEdge,const Handle_Geom_Plane & aPlane);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Prs3d_Projector)
-	aTrsf(Handle_Geom_Transformation)
-	aPresentation(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
-Returns:
-	virtual void
-
-computes the presentation according to a point of view  
-         given by <aProjector>.  
-         To be Used when the associated degenerated Presentations  
-         have been transformed by <aTrsf> which is not a Pure  
-         Translation. The HLR Prs can't be deducted automatically  
-         WARNING :<aTrsf> must be applied  
-         to the object to display before computation  !!!") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Prs3d_Projector &
+	:param aTrsf:
+	:type aTrsf: Handle_Geom_Transformation &
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Prs3d_Projector & aProjector,const Handle_Geom_Transformation & aTrsf,const Handle_Prs3d_Presentation & aPresentation);
 };
 
@@ -14092,94 +10451,81 @@ def __del__(self):
 %nodefaultctor AIS_FixRelation;
 class AIS_FixRelation : public AIS_Relation {
 	public:
-		%feature("autodoc", "Args:
-	aShape(TopoDS_Shape)
-	aPlane(Handle_Geom_Plane)
-	aWire(TopoDS_Wire)
+		%feature("autodoc", "	* initializes the vertex aShape, the plane aPlane and the wire aWire, which connects the two vertices in a fixed relation.
 
-Returns:
-	None
-
-initializes the vertex aShape, the  
-  plane aPlane and the wire aWire, which connects  
-  the two vertices in a fixed relation.") AIS_FixRelation;
+	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:param aPlane:
+	:type aPlane: Handle_Geom_Plane &
+	:param aWire:
+	:type aWire: TopoDS_Wire &
+	:rtype: None
+") AIS_FixRelation;
 		 AIS_FixRelation (const TopoDS_Shape & aShape,const Handle_Geom_Plane & aPlane,const TopoDS_Wire & aWire);
-		%feature("autodoc", "Args:
-	aShape(TopoDS_Shape)
-	aPlane(Handle_Geom_Plane)
-	aWire(TopoDS_Wire)
-	aPosition(gp_Pnt)
-	anArrowSize(Standard_Real)=0.01
+		%feature("autodoc", "	* initializes the vertex aShape, the plane aPlane and the wire aWire, the position aPosition, the arrow size anArrowSize and the wire aWire, which connects the two vertices in a fixed relation.
 
-Returns:
-	None
-
-initializes the vertex aShape, the  
-  plane aPlane and the wire aWire, the position  
-  aPosition, the arrow size anArrowSize and the  
-wire aWire, which connects the two vertices in a fixed relation.") AIS_FixRelation;
+	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:param aPlane:
+	:type aPlane: Handle_Geom_Plane &
+	:param aWire:
+	:type aWire: TopoDS_Wire &
+	:param aPosition:
+	:type aPosition: gp_Pnt
+	:param anArrowSize: default value is 0.01
+	:type anArrowSize: float
+	:rtype: None
+") AIS_FixRelation;
 		 AIS_FixRelation (const TopoDS_Shape & aShape,const Handle_Geom_Plane & aPlane,const TopoDS_Wire & aWire,const gp_Pnt & aPosition,const Standard_Real anArrowSize = 0.01);
-		%feature("autodoc", "Args:
-	aShape(TopoDS_Shape)
-	aPlane(Handle_Geom_Plane)
+		%feature("autodoc", "	* initializes the edge aShape and the plane aPlane.
 
-Returns:
-	None
-
-initializes the edge aShape and the plane aPlane.") AIS_FixRelation;
+	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:param aPlane:
+	:type aPlane: Handle_Geom_Plane &
+	:rtype: None
+") AIS_FixRelation;
 		 AIS_FixRelation (const TopoDS_Shape & aShape,const Handle_Geom_Plane & aPlane);
-		%feature("autodoc", "Args:
-	aShape(TopoDS_Shape)
-	aPlane(Handle_Geom_Plane)
-	aPosition(gp_Pnt)
-	anArrowSize(Standard_Real)=0.01
+		%feature("autodoc", "	* initializes the edge aShape, the plane aPlane, the position aPosition and the arrow size anArrowSize.
 
-Returns:
-	None
-
-initializes the edge aShape, the  
-  plane aPlane, the position aPosition and the arrow  
-  size anArrowSize.") AIS_FixRelation;
+	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:param aPlane:
+	:type aPlane: Handle_Geom_Plane &
+	:param aPosition:
+	:type aPosition: gp_Pnt
+	:param anArrowSize: default value is 0.01
+	:type anArrowSize: float
+	:rtype: None
+") AIS_FixRelation;
 		 AIS_FixRelation (const TopoDS_Shape & aShape,const Handle_Geom_Plane & aPlane,const gp_Pnt & aPosition,const Standard_Real anArrowSize = 0.01);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Wire
+		%feature("autodoc", "	* Returns the wire which connects vertices in a fixed relation.
 
-Returns the wire which connects vertices in a fixed relation.") Wire;
+	:rtype: TopoDS_Wire
+") Wire;
 		TopoDS_Wire Wire ();
-		%feature("autodoc", "Args:
-	aWire(TopoDS_Wire)
+		%feature("autodoc", "	* Constructs the wire aWire. This connects vertices which are in a fixed relation.
 
-Returns:
-	None
-
-Constructs the wire aWire. This connects vertices  
-which are in a fixed relation.") SetWire;
+	:param aWire:
+	:type aWire: TopoDS_Wire &
+	:rtype: None
+") SetWire;
 		void SetWire (const TopoDS_Wire & aWire);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the Interactive Objects in the relation are movable.
 
-Returns true if the Interactive Objects in the relation  
-are movable.") IsMovable;
+	:rtype: bool
+") IsMovable;
 		Standard_Boolean IsMovable ();
-		%feature("autodoc", "Args:
-	aProjector(Handle_Prs3d_Projector)
-	aTrsf(Handle_Geom_Transformation)
-	aPresentation(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
-Returns:
-	virtual void
-
-computes the presentation according to a point of view  
-         given by <aProjector>.  
-         To be Used when the associated degenerated Presentations  
-         have been transformed by <aTrsf> which is not a Pure  
-         Translation. The HLR Prs can't be deducted automatically  
-         WARNING :<aTrsf> must be applied  
-          to the object to display before computation  !!!") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Prs3d_Projector &
+	:param aTrsf:
+	:type aTrsf: Handle_Geom_Transformation &
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Prs3d_Projector & aProjector,const Handle_Geom_Transformation & aTrsf,const Handle_Prs3d_Presentation & aPresentation);
 };
 
@@ -14240,41 +10586,32 @@ def __del__(self):
 %nodefaultctor AIS_IdenticRelation;
 class AIS_IdenticRelation : public AIS_Relation {
 	public:
-		%feature("autodoc", "Args:
-	FirstShape(TopoDS_Shape)
-	SecondShape(TopoDS_Shape)
-	aPlane(Handle_Geom_Plane)
+		%feature("autodoc", "	* Initializes the relation of identity between the two entities, FirstShape and SecondShape. The plane aPlane is initialized in case a visual reference is needed to show identity.
 
-Returns:
-	None
-
-Initializes the relation of identity between the two  
-entities, FirstShape and SecondShape. The plane  
-aPlane is initialized in case a visual reference is  
-needed to show identity.") AIS_IdenticRelation;
+	:param FirstShape:
+	:type FirstShape: TopoDS_Shape &
+	:param SecondShape:
+	:type SecondShape: TopoDS_Shape &
+	:param aPlane:
+	:type aPlane: Handle_Geom_Plane &
+	:rtype: None
+") AIS_IdenticRelation;
 		 AIS_IdenticRelation (const TopoDS_Shape & FirstShape,const TopoDS_Shape & SecondShape,const Handle_Geom_Plane & aPlane);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the interactive object is movable.
 
-Returns true if the interactive object is movable.") IsMovable;
+	:rtype: bool
+") IsMovable;
 		Standard_Boolean IsMovable ();
-		%feature("autodoc", "Args:
-	aProjector(Handle_Prs3d_Projector)
-	aTrsf(Handle_Geom_Transformation)
-	aPresentation(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
-Returns:
-	virtual void
-
-computes the presentation according to a point of view  
-         given by <aProjector>.  
-         To be Used when the associated degenerated Presentations  
-         have been transformed by <aTrsf> which is not a Pure  
-         Translation. The HLR Prs can't be deducted automatically  
-         WARNING :<aTrsf> must be applied  
-          to the object to display before computation  !!!") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Prs3d_Projector &
+	:param aTrsf:
+	:type aTrsf: Handle_Geom_Transformation &
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Prs3d_Projector & aProjector,const Handle_Geom_Transformation & aTrsf,const Handle_Prs3d_Presentation & aPresentation);
 };
 
@@ -14335,206 +10672,149 @@ def __del__(self):
 %nodefaultctor AIS_LengthDimension;
 class AIS_LengthDimension : public AIS_Dimension {
 	public:
-		%feature("autodoc", "Args:
-	theFace(TopoDS_Face)
-	theEdge(TopoDS_Edge)
+		%feature("autodoc", "	* Construct length dimension between face and edge. Here dimension can be built without user-defined plane. @param theFace [in] the face (first shape). @param theEdge [in] the edge (second shape).
 
-Returns:
-	None
-
-Construct length dimension between face and edge.
-Here dimension can be built without user-defined plane.
-@param theFace [in] the face (first shape).
-@param theEdge [in] the edge (second shape).") AIS_LengthDimension;
+	:param theFace:
+	:type theFace: TopoDS_Face &
+	:param theEdge:
+	:type theEdge: TopoDS_Edge &
+	:rtype: None
+") AIS_LengthDimension;
 		 AIS_LengthDimension (const TopoDS_Face & theFace,const TopoDS_Edge & theEdge);
-		%feature("autodoc", "Args:
-	theFirstFace(TopoDS_Face)
-	theSecondFace(TopoDS_Face)
+		%feature("autodoc", "	* Construct length dimension between two faces. @param theFirstFace [in] the first face (first shape). @param theSecondFace [in] the second face (second shape).
 
-Returns:
-	None
-
-Construct length dimension between two faces.
-@param theFirstFace [in] the first face (first shape).
-@param theSecondFace [in] the second face (second shape).") AIS_LengthDimension;
+	:param theFirstFace:
+	:type theFirstFace: TopoDS_Face &
+	:param theSecondFace:
+	:type theSecondFace: TopoDS_Face &
+	:rtype: None
+") AIS_LengthDimension;
 		 AIS_LengthDimension (const TopoDS_Face & theFirstFace,const TopoDS_Face & theSecondFace);
-		%feature("autodoc", "Args:
-	theFirstPoint(gp_Pnt)
-	theSecondPoint(gp_Pnt)
-	thePlane(gp_Pln)
+		%feature("autodoc", "	* Construct length dimension between two points in the specified plane. @param theFirstPoint [in] the first point. @param theSecondPoint [in] the second point. @param thePlane [in] the plane to orient dimension.
 
-Returns:
-	None
-
-Construct length dimension between two points in
-the specified plane.
-@param theFirstPoint [in] the first point.
-@param theSecondPoint [in] the second point.
-@param thePlane [in] the plane to orient dimension.") AIS_LengthDimension;
+	:param theFirstPoint:
+	:type theFirstPoint: gp_Pnt
+	:param theSecondPoint:
+	:type theSecondPoint: gp_Pnt
+	:param thePlane:
+	:type thePlane: gp_Pln
+	:rtype: None
+") AIS_LengthDimension;
 		 AIS_LengthDimension (const gp_Pnt & theFirstPoint,const gp_Pnt & theSecondPoint,const gp_Pln & thePlane);
-		%feature("autodoc", "Args:
-	theFirstShape(TopoDS_Shape)
-	theSecondShape(TopoDS_Shape)
-	thePlane(gp_Pln)
+		%feature("autodoc", "	* Construct length dimension between two arbitrary shapes in the specified plane. @param theFirstShape [in] the first shape. @param theSecondShape [in] the second shape. @param thePlane [in] the plane to orient dimension.
 
-Returns:
-	None
-
-Construct length dimension between two arbitrary shapes in
-the specified plane.
-@param theFirstShape [in] the first shape.
-@param theSecondShape [in] the second shape.
-@param thePlane [in] the plane to orient dimension.") AIS_LengthDimension;
+	:param theFirstShape:
+	:type theFirstShape: TopoDS_Shape &
+	:param theSecondShape:
+	:type theSecondShape: TopoDS_Shape &
+	:param thePlane:
+	:type thePlane: gp_Pln
+	:rtype: None
+") AIS_LengthDimension;
 		 AIS_LengthDimension (const TopoDS_Shape & theFirstShape,const TopoDS_Shape & theSecondShape,const gp_Pln & thePlane);
-		%feature("autodoc", "Args:
-	theEdge(TopoDS_Edge)
-	thePlane(gp_Pln)
+		%feature("autodoc", "	* Construct length dimension of linear edge. @param theEdge [in] the edge to measure. @param thePlane [in] the plane to orient dimension.
 
-Returns:
-	None
-
-Construct length dimension of linear edge.
-@param theEdge [in] the edge to measure.
-@param thePlane [in] the plane to orient dimension.") AIS_LengthDimension;
+	:param theEdge:
+	:type theEdge: TopoDS_Edge &
+	:param thePlane:
+	:type thePlane: gp_Pln
+	:rtype: None
+") AIS_LengthDimension;
 		 AIS_LengthDimension (const TopoDS_Edge & theEdge,const gp_Pln & thePlane);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
+		%feature("autodoc", "	* returns first attachement point.
 
-@return first attachement point.") FirstPoint;
+	:rtype: gp_Pnt
+") FirstPoint;
 		const gp_Pnt & FirstPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
+		%feature("autodoc", "	* returns second attachement point.
 
-@return second attachement point.") SecondPoint;
+	:rtype: gp_Pnt
+") SecondPoint;
 		const gp_Pnt & SecondPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* returns first attachement shape.
 
-@return first attachement shape.") FirstShape;
+	:rtype: TopoDS_Shape
+") FirstShape;
 		const TopoDS_Shape & FirstShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* returns second attachement shape.
 
-@return second attachement shape.") SecondShape;
+	:rtype: TopoDS_Shape
+") SecondShape;
 		const TopoDS_Shape & SecondShape ();
-		%feature("autodoc", "Args:
-	theFirstPoint(gp_Pnt)
-	theSecondPoint(gp_Pnt)
-	thePlane(gp_Pln)
+		%feature("autodoc", "	* Measure distance between two points. The dimension will become invalid if the new distance between attachement points is less than Precision::Confusion(). @param theFirstPoint [in] the first point. @param theSecondPoint [in] the second point. @param thePlane [in] the user-defined plane
 
-Returns:
-	None
-
-Measure distance between two points.
-The dimension will become invalid if the new distance between
-attachement points is less than Precision::Confusion().
-@param theFirstPoint [in] the first point.
-@param theSecondPoint [in] the second point.
-@param thePlane [in] the user-defined plane") SetMeasuredGeometry;
+	:param theFirstPoint:
+	:type theFirstPoint: gp_Pnt
+	:param theSecondPoint:
+	:type theSecondPoint: gp_Pnt
+	:param thePlane:
+	:type thePlane: gp_Pln
+	:rtype: None
+") SetMeasuredGeometry;
 		void SetMeasuredGeometry (const gp_Pnt & theFirstPoint,const gp_Pnt & theSecondPoint,const gp_Pln & thePlane);
-		%feature("autodoc", "Args:
-	theEdge(TopoDS_Edge)
-	thePlane(gp_Pln)
+		%feature("autodoc", "	* Measure length of edge. The dimension will become invalid if the new length of edge is less than Precision::Confusion(). @param theEdge [in] the edge to measure. @param thePlane [in] the user-defined plane
 
-Returns:
-	None
-
-Measure length of edge.
-The dimension will become invalid if the new length of edge
-is less than Precision::Confusion().
-@param theEdge [in] the edge to measure.
-@param thePlane [in] the user-defined plane") SetMeasuredGeometry;
+	:param theEdge:
+	:type theEdge: TopoDS_Edge &
+	:param thePlane:
+	:type thePlane: gp_Pln
+	:rtype: None
+") SetMeasuredGeometry;
 		void SetMeasuredGeometry (const TopoDS_Edge & theEdge,const gp_Pln & thePlane);
-		%feature("autodoc", "Args:
-	theFirstFace(TopoDS_Face)
-	theSecondFace(TopoDS_Face)
+		%feature("autodoc", "	* Measure distance between two faces. The dimension will become invalid if the distance can not be measured or it is less than Precision::Confusion(). @param theFirstFace [in] the first face (first shape). @param theSecondFace [in] the second face (second shape).
 
-Returns:
-	None
-
-Measure distance between two faces.
-The dimension will become invalid if the distance can not
-be measured or it is less than Precision::Confusion().
-@param theFirstFace [in] the first face (first shape).
-@param theSecondFace [in] the second face (second shape).") SetMeasuredGeometry;
+	:param theFirstFace:
+	:type theFirstFace: TopoDS_Face &
+	:param theSecondFace:
+	:type theSecondFace: TopoDS_Face &
+	:rtype: None
+") SetMeasuredGeometry;
 		void SetMeasuredGeometry (const TopoDS_Face & theFirstFace,const TopoDS_Face & theSecondFace);
-		%feature("autodoc", "Args:
-	theFace(TopoDS_Face)
-	theEdge(TopoDS_Edge)
+		%feature("autodoc", "	* Measure distance between face and edge. The dimension will become invalid if the distance can not be measured or it is less than Precision::Confusion(). @param theFace [in] the face (first shape). @param theEdge [in] the edge (second shape).
 
-Returns:
-	None
-
-Measure distance between face and edge.
-The dimension will become invalid if the distance can not
-be measured or it is less than Precision::Confusion().
-@param theFace [in] the face (first shape).
-@param theEdge [in] the edge (second shape).") SetMeasuredGeometry;
+	:param theFace:
+	:type theFace: TopoDS_Face &
+	:param theEdge:
+	:type theEdge: TopoDS_Edge &
+	:rtype: None
+") SetMeasuredGeometry;
 		void SetMeasuredGeometry (const TopoDS_Face & theFace,const TopoDS_Edge & theEdge);
-		%feature("autodoc", "Args:
-	theFirstShape(TopoDS_Shape)
-	theSecondShape(TopoDS_Shape)
+		%feature("autodoc", "	* Measure distance between generic pair of shapes (edges, vertices, length), where measuring is applicable. @param theFirstShape [in] the first shape. @param theSecondShape [in] the second shape.
 
-Returns:
-	None
-
-Measure distance between generic pair of shapes (edges, vertices, length),
-where measuring is applicable.
-@param theFirstShape [in] the first shape.
-@param theSecondShape [in] the second shape.") SetMeasuredShapes;
+	:param theFirstShape:
+	:type theFirstShape: TopoDS_Shape &
+	:param theSecondShape:
+	:type theSecondShape: TopoDS_Shape &
+	:rtype: None
+") SetMeasuredShapes;
 		void SetMeasuredShapes (const TopoDS_Shape & theFirstShape,const TopoDS_Shape & theSecondShape);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  TCollection_AsciiString
+		%feature("autodoc", "	* returns the display units string.
 
-@return the display units string.") GetDisplayUnits;
+	:rtype: TCollection_AsciiString
+") GetDisplayUnits;
 		virtual const TCollection_AsciiString & GetDisplayUnits ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  TCollection_AsciiString
+		%feature("autodoc", "	* returns the model units string.
 
-@return the model units string.") GetModelUnits;
+	:rtype: TCollection_AsciiString
+") GetModelUnits;
 		virtual const TCollection_AsciiString & GetModelUnits ();
-		%feature("autodoc", "Args:
-	theUnits(TCollection_AsciiString)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetDisplayUnits;
+		%feature("autodoc", "	:param theUnits:
+	:type theUnits: TCollection_AsciiString &
+	:rtype: void
+") SetDisplayUnits;
 		virtual void SetDisplayUnits (const TCollection_AsciiString & theUnits);
-		%feature("autodoc", "Args:
-	theUnits(TCollection_AsciiString)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetModelUnits;
+		%feature("autodoc", "	:param theUnits:
+	:type theUnits: TCollection_AsciiString &
+	:rtype: void
+") SetModelUnits;
 		virtual void SetModelUnits (const TCollection_AsciiString & theUnits);
-		%feature("autodoc", "Args:
-	theTextPos(gp_Pnt)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetTextPosition;
+		%feature("autodoc", "	:param theTextPos:
+	:type theTextPos: gp_Pnt
+	:rtype: void
+") SetTextPosition;
 		virtual void SetTextPosition (const gp_Pnt & theTextPos);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  gp_Pnt
-
-No detailed docstring for this function.") GetTextPosition;
+		%feature("autodoc", "	:rtype: gp_Pnt
+") GetTextPosition;
 		virtual const gp_Pnt GetTextPosition ();
 };
 
@@ -14556,54 +10836,38 @@ def __del__(self):
 %nodefaultctor AIS_MidPointRelation;
 class AIS_MidPointRelation : public AIS_Relation {
 	public:
-		%feature("autodoc", "Args:
-	aSymmTool(TopoDS_Shape)
-	FirstShape(TopoDS_Shape)
-	SecondShape(TopoDS_Shape)
-	aPlane(Handle_Geom_Plane)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AIS_MidPointRelation;
+		%feature("autodoc", "	:param aSymmTool:
+	:type aSymmTool: TopoDS_Shape &
+	:param FirstShape:
+	:type FirstShape: TopoDS_Shape &
+	:param SecondShape:
+	:type SecondShape: TopoDS_Shape &
+	:param aPlane:
+	:type aPlane: Handle_Geom_Plane &
+	:rtype: None
+") AIS_MidPointRelation;
 		 AIS_MidPointRelation (const TopoDS_Shape & aSymmTool,const TopoDS_Shape & FirstShape,const TopoDS_Shape & SecondShape,const Handle_Geom_Plane & aPlane);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsMovable;
+		%feature("autodoc", "	:rtype: bool
+") IsMovable;
 		Standard_Boolean IsMovable ();
-		%feature("autodoc", "Args:
-	aMidPointTool(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetTool;
+		%feature("autodoc", "	:param aMidPointTool:
+	:type aMidPointTool: TopoDS_Shape &
+	:rtype: None
+") SetTool;
 		void SetTool (const TopoDS_Shape & aMidPointTool);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") GetTool;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") GetTool;
 		const TopoDS_Shape & GetTool ();
-		%feature("autodoc", "Args:
-	aProjector(Handle_Prs3d_Projector)
-	aTrsf(Handle_Geom_Transformation)
-	aPresentation(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* Computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
-Returns:
-	virtual void
-
-Computes the presentation according to a point of view  
-         given by <aProjector>.  
-         To be Used when the associated degenerated Presentations  
-         have been transformed by <aTrsf> which is not a Pure  
-         Translation. The HLR Prs can't be deducted automatically  
-         WARNING :<aTrsf> must be applied  
-          to the object to display before computation  !!!") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Prs3d_Projector &
+	:param aTrsf:
+	:type aTrsf: Handle_Geom_Transformation &
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Prs3d_Projector & aProjector,const Handle_Geom_Transformation & aTrsf,const Handle_Prs3d_Presentation & aPresentation);
 };
 
@@ -14664,51 +10928,35 @@ def __del__(self):
 %nodefaultctor AIS_MultipleConnectedShape;
 class AIS_MultipleConnectedShape : public AIS_MultipleConnectedInteractive {
 	public:
-		%feature("autodoc", "Args:
-	aShape(TopoDS_Shape)
+		%feature("autodoc", "	* Initializes the shape aShape, a multiple connected Interactive Object grouping different projector-dependent representations of an entity.
 
-Returns:
-	None
-
-Initializes the shape aShape, a multiple connected  
-Interactive Object grouping different  
-projector-dependent representations of an entity.") AIS_MultipleConnectedShape;
+	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:rtype: None
+") AIS_MultipleConnectedShape;
 		 AIS_MultipleConnectedShape (const TopoDS_Shape & aShape);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual AIS_KindOfInteractive
-
-No detailed docstring for this function.") Type;
+		%feature("autodoc", "	:rtype: AIS_KindOfInteractive
+") Type;
 		virtual AIS_KindOfInteractive Type ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
-
-No detailed docstring for this function.") Signature;
+		%feature("autodoc", "	:rtype: int
+") Signature;
 		virtual Standard_Integer Signature ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Returns true is shape decomposition is accepted.
 
-Returns true is shape decomposition is accepted.") AcceptShapeDecomposition;
+	:rtype: bool
+") AcceptShapeDecomposition;
 		virtual Standard_Boolean AcceptShapeDecomposition ();
-		%feature("autodoc", "Args:
-	ashap(TopoDS_Shape)
+		%feature("autodoc", "	* Constructs the reference shape ashap.
 
-Returns:
-	None
-
-Constructs the reference shape ashap.") Set;
+	:param ashap:
+	:type ashap: TopoDS_Shape &
+	:rtype: None
+") Set;
 		void Set (const TopoDS_Shape & ashap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Returns the shape which is constructed in Set.
 
-Returns the shape which is constructed in Set.") Shape;
+	:rtype: TopoDS_Shape
+") Shape;
 		const TopoDS_Shape & Shape ();
 };
 
@@ -14769,57 +11017,46 @@ def __del__(self):
 %nodefaultctor AIS_OffsetDimension;
 class AIS_OffsetDimension : public AIS_Relation {
 	public:
-		%feature("autodoc", "Args:
-	FistShape(TopoDS_Shape)
-	SecondShape(TopoDS_Shape)
-	aVal(Standard_Real)
-	aText(TCollection_ExtendedString)
+		%feature("autodoc", "	* Constructs the offset display object defined by the first shape aFShape, the second shape aSShape, the dimension aVal, and the text aText.
 
-Returns:
-	None
-
-Constructs the offset display object defined by the  
-first shape aFShape, the second shape aSShape, the  
-dimension aVal, and the text aText.") AIS_OffsetDimension;
+	:param FistShape:
+	:type FistShape: TopoDS_Shape &
+	:param SecondShape:
+	:type SecondShape: TopoDS_Shape &
+	:param aVal:
+	:type aVal: float
+	:param aText:
+	:type aText: TCollection_ExtendedString &
+	:rtype: None
+") AIS_OffsetDimension;
 		 AIS_OffsetDimension (const TopoDS_Shape & FistShape,const TopoDS_Shape & SecondShape,const Standard_Real aVal,const TCollection_ExtendedString & aText);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Prs3d_Projector)
-	aTrsf(Handle_Geom_Transformation)
-	aPresentation(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
-Returns:
-	virtual void
-
-computes the presentation according to a point of view  
-         given by <aProjector>.  
-         To be Used when the associated degenerated Presentations  
-         have been transformed by <aTrsf> which is not a Pure  
-         Translation. The HLR Prs can't be deducted automatically  
-         WARNING :<aTrsf> must be applied  
-          to the object to display before computation  !!!") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Prs3d_Projector &
+	:param aTrsf:
+	:type aTrsf: Handle_Geom_Transformation &
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Prs3d_Projector & aProjector,const Handle_Geom_Transformation & aTrsf,const Handle_Prs3d_Presentation & aPresentation);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	AIS_KindOfDimension
+		%feature("autodoc", "	* Indicates that the dimension we are concerned with is an offset.
 
-Indicates that the dimension we are concerned with is an offset.") KindOfDimension;
+	:rtype: AIS_KindOfDimension
+") KindOfDimension;
 		AIS_KindOfDimension KindOfDimension ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the offset datum is movable.
 
-Returns true if the offset datum is movable.") IsMovable;
+	:rtype: bool
+") IsMovable;
 		Standard_Boolean IsMovable ();
-		%feature("autodoc", "Args:
-	aTrsf(gp_Trsf)
+		%feature("autodoc", "	* Sets a transformation aTrsf for presentation and selection to a relative position.
 
-Returns:
-	None
-
-Sets a transformation aTrsf for presentation and  
-selection to a relative position.") SetRelativePos;
+	:param aTrsf:
+	:type aTrsf: gp_Trsf
+	:rtype: None
+") SetRelativePos;
 		void SetRelativePos (const gp_Trsf & aTrsf);
 };
 
@@ -14880,57 +11117,49 @@ def __del__(self):
 %nodefaultctor AIS_ParallelRelation;
 class AIS_ParallelRelation : public AIS_Relation {
 	public:
-		%feature("autodoc", "Args:
-	aFShape(TopoDS_Shape)
-	aSShape(TopoDS_Shape)
-	aPlane(Handle_Geom_Plane)
+		%feature("autodoc", "	* Constructs an object to display parallel constraints. This object is defined by the first shape aFShape and the second shape aSShape and the plane aPlane.
 
-Returns:
-	None
-
-Constructs an object to display parallel constraints.  
-This object is defined by the first shape aFShape and  
-the second shape aSShape and the plane aPlane.") AIS_ParallelRelation;
+	:param aFShape:
+	:type aFShape: TopoDS_Shape &
+	:param aSShape:
+	:type aSShape: TopoDS_Shape &
+	:param aPlane:
+	:type aPlane: Handle_Geom_Plane &
+	:rtype: None
+") AIS_ParallelRelation;
 		 AIS_ParallelRelation (const TopoDS_Shape & aFShape,const TopoDS_Shape & aSShape,const Handle_Geom_Plane & aPlane);
-		%feature("autodoc", "Args:
-	aFShape(TopoDS_Shape)
-	aSShape(TopoDS_Shape)
-	aPlane(Handle_Geom_Plane)
-	aPosition(gp_Pnt)
-	aSymbolPrs(DsgPrs_ArrowSide)
-	anArrowSize(Standard_Real)=0.01
+		%feature("autodoc", "	* Constructs an object to display parallel constraints. This object is defined by the first shape aFShape and the second shape aSShape the plane aPlane, the position aPosition, the type of arrow, aSymbolPrs and its size anArrowSize.
 
-Returns:
-	None
-
-Constructs an object to display parallel constraints.  
-This object is defined by the first shape aFShape and  
-the second shape aSShape the plane aPlane, the  
-position aPosition, the type of arrow, aSymbolPrs and  
-its size anArrowSize.") AIS_ParallelRelation;
+	:param aFShape:
+	:type aFShape: TopoDS_Shape &
+	:param aSShape:
+	:type aSShape: TopoDS_Shape &
+	:param aPlane:
+	:type aPlane: Handle_Geom_Plane &
+	:param aPosition:
+	:type aPosition: gp_Pnt
+	:param aSymbolPrs:
+	:type aSymbolPrs: DsgPrs_ArrowSide
+	:param anArrowSize: default value is 0.01
+	:type anArrowSize: float
+	:rtype: None
+") AIS_ParallelRelation;
 		 AIS_ParallelRelation (const TopoDS_Shape & aFShape,const TopoDS_Shape & aSShape,const Handle_Geom_Plane & aPlane,const gp_Pnt & aPosition,const DsgPrs_ArrowSide aSymbolPrs,const Standard_Real anArrowSize = 0.01);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the parallelism is movable.
 
-Returns true if the parallelism is movable.") IsMovable;
+	:rtype: bool
+") IsMovable;
 		Standard_Boolean IsMovable ();
-		%feature("autodoc", "Args:
-	aProjector(Handle_Prs3d_Projector)
-	aTrsf(Handle_Geom_Transformation)
-	aPresentation(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
-Returns:
-	virtual void
-
-computes the presentation according to a point of view  
-         given by <aProjector>.  
-         To be Used when the associated degenerated Presentations  
-         have been transformed by <aTrsf> which is not a Pure  
-         Translation. The HLR Prs can't be deducted automatically  
-         WARNING :<aTrsf> must be applied  
-          to the object to display before computation  !!!") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Prs3d_Projector &
+	:param aTrsf:
+	:type aTrsf: Handle_Geom_Transformation &
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Prs3d_Projector & aProjector,const Handle_Geom_Transformation & aTrsf,const Handle_Prs3d_Presentation & aPresentation);
 };
 
@@ -14991,49 +11220,36 @@ def __del__(self):
 %nodefaultctor AIS_PerpendicularRelation;
 class AIS_PerpendicularRelation : public AIS_Relation {
 	public:
-		%feature("autodoc", "Args:
-	aFShape(TopoDS_Shape)
-	aSShape(TopoDS_Shape)
-	aPlane(Handle_Geom_Plane)
+		%feature("autodoc", "	* Constructs an object to display constraints of perpendicularity on shapes. This object is defined by a first shape aFShape, a second shape aSShape, and a plane aPlane. aPlane is the plane of reference to show and test the perpendicular relation between two shapes, at least one of which has a revolved surface.
 
-Returns:
-	None
-
-Constructs an object to display constraints of  
-perpendicularity on shapes.  
-This object is defined by a first shape aFShape, a  
-second shape aSShape, and a plane aPlane.  
-aPlane is the plane of reference to show and test the  
-perpendicular relation between two shapes, at least  
-one of which has a revolved surface.") AIS_PerpendicularRelation;
+	:param aFShape:
+	:type aFShape: TopoDS_Shape &
+	:param aSShape:
+	:type aSShape: TopoDS_Shape &
+	:param aPlane:
+	:type aPlane: Handle_Geom_Plane &
+	:rtype: None
+") AIS_PerpendicularRelation;
 		 AIS_PerpendicularRelation (const TopoDS_Shape & aFShape,const TopoDS_Shape & aSShape,const Handle_Geom_Plane & aPlane);
-		%feature("autodoc", "Args:
-	aFShape(TopoDS_Shape)
-	aSShape(TopoDS_Shape)
+		%feature("autodoc", "	* Constructs an object to display constraints of perpendicularity on shapes. This object is defined by a first shape aFShape and a second shape aSShape.
 
-Returns:
-	None
-
-Constructs an object to display constraints of  
-perpendicularity on shapes.  
-This object is defined by a first shape aFShape and a  
-second shape aSShape.") AIS_PerpendicularRelation;
+	:param aFShape:
+	:type aFShape: TopoDS_Shape &
+	:param aSShape:
+	:type aSShape: TopoDS_Shape &
+	:rtype: None
+") AIS_PerpendicularRelation;
 		 AIS_PerpendicularRelation (const TopoDS_Shape & aFShape,const TopoDS_Shape & aSShape);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Prs3d_Projector)
-	aTrsf(Handle_Geom_Transformation)
-	aPresentation(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
-Returns:
-	virtual void
-
-computes the presentation according to a point of view  
-         given by <aProjector>.  
-         To be Used when the associated degenerated Presentations  
-         have been transformed by <aTrsf> which is not a Pure  
-         Translation. The HLR Prs can't be deducted automatically  
-         WARNING :<aTrsf> must be applied  
-          to the object to display before computation  !!!") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Prs3d_Projector &
+	:param aTrsf:
+	:type aTrsf: Handle_Geom_Transformation &
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Prs3d_Projector & aProjector,const Handle_Geom_Transformation & aTrsf,const Handle_Prs3d_Presentation & aPresentation);
 };
 
@@ -15094,138 +11310,94 @@ def __del__(self):
 %nodefaultctor AIS_RadiusDimension;
 class AIS_RadiusDimension : public AIS_Dimension {
 	public:
-		%feature("autodoc", "Args:
-	theCircle(gp_Circ)
+		%feature("autodoc", "	* Create radius dimension for the circle geometry. @param theCircle [in] the circle to measure.
 
-Returns:
-	None
-
-Create radius dimension for the circle geometry.
-@param theCircle [in] the circle to measure.") AIS_RadiusDimension;
+	:param theCircle:
+	:type theCircle: gp_Circ
+	:rtype: None
+") AIS_RadiusDimension;
 		 AIS_RadiusDimension (const gp_Circ & theCircle);
-		%feature("autodoc", "Args:
-	theCircle(gp_Circ)
-	theAnchorPoint(gp_Pnt)
+		%feature("autodoc", "	* Create radius dimension for the circle geometry and define its orientation by location of the first point on that circle. @param theCircle [in] the circle to measure. @param theAnchorPoint [in] the point to define the position of the dimension attachment on the circle.
 
-Returns:
-	None
-
-Create radius dimension for the circle geometry and define its
-orientation by location of the first point on that circle.
-@param theCircle [in] the circle to measure.
-@param theAnchorPoint [in] the point to define the position
-       of the dimension attachment on the circle.") AIS_RadiusDimension;
+	:param theCircle:
+	:type theCircle: gp_Circ
+	:param theAnchorPoint:
+	:type theAnchorPoint: gp_Pnt
+	:rtype: None
+") AIS_RadiusDimension;
 		 AIS_RadiusDimension (const gp_Circ & theCircle,const gp_Pnt & theAnchorPoint);
-		%feature("autodoc", "Args:
-	theShape(TopoDS_Shape)
+		%feature("autodoc", "	* Create radius dimension for the arbitrary shape (if possible). @param theShape [in] the shape to measure.
 
-Returns:
-	None
-
-Create radius dimension for the arbitrary shape (if possible).
-@param theShape [in] the shape to measure.") AIS_RadiusDimension;
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:rtype: None
+") AIS_RadiusDimension;
 		 AIS_RadiusDimension (const TopoDS_Shape & theShape);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Circ
+		%feature("autodoc", "	* returns measured geometry circle.
 
-@return measured geometry circle.") Circle;
+	:rtype: gp_Circ
+") Circle;
 		const gp_Circ & Circle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
+		%feature("autodoc", "	* returns anchor point on circle for radius dimension.
 
-@return anchor point on circle for radius dimension.") AnchorPoint;
+	:rtype: gp_Pnt
+") AnchorPoint;
 		const gp_Pnt & AnchorPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* returns the measured shape.
 
-@return the measured shape.") Shape;
+	:rtype: TopoDS_Shape
+") Shape;
 		const TopoDS_Shape & Shape ();
-		%feature("autodoc", "Args:
-	theCircle(gp_Circ)
+		%feature("autodoc", "	* Measure radius of the circle. The dimension will become invalid if the radius of the circle is less than Precision::Confusion(). @param theCircle [in] the circle to measure.
 
-Returns:
-	None
-
-Measure radius of the circle.
-The dimension will become invalid if the radius of the circle
-is less than Precision::Confusion().
-@param theCircle [in] the circle to measure.") SetMeasuredGeometry;
+	:param theCircle:
+	:type theCircle: gp_Circ
+	:rtype: None
+") SetMeasuredGeometry;
 		void SetMeasuredGeometry (const gp_Circ & theCircle);
-		%feature("autodoc", "Args:
-	theCircle(gp_Circ)
-	theAnchorPoint(gp_Pnt)
+		%feature("autodoc", "	* Measure radius of the circle and orient the dimension so the dimension lines attaches to anchor point on the circle. The dimension will become invalid if the radius of the circle is less than Precision::Confusion(). @param theCircle [in] the circle to measure. @param theAnchorPoint [in] the point to attach the dimension lines.
 
-Returns:
-	None
-
-Measure radius of the circle and orient the dimension so
-the dimension lines attaches to anchor point on the circle.
-The dimension will become invalid if the radius of the circle
-is less than Precision::Confusion().
-@param theCircle [in] the circle to measure.
-@param theAnchorPoint [in] the point to attach the dimension lines.") SetMeasuredGeometry;
+	:param theCircle:
+	:type theCircle: gp_Circ
+	:param theAnchorPoint:
+	:type theAnchorPoint: gp_Pnt
+	:rtype: None
+") SetMeasuredGeometry;
 		void SetMeasuredGeometry (const gp_Circ & theCircle,const gp_Pnt & theAnchorPoint);
-		%feature("autodoc", "Args:
-	theShape(TopoDS_Shape)
+		%feature("autodoc", "	* Measure radius on the passed shape, if applicable. The dimension will become invalid if the passed shape is not measurable or if measured diameter value is less than Precision::Confusion(). @param theShape [in] the shape to measure.
 
-Returns:
-	None
-
-Measure radius on the passed shape, if applicable.
-The dimension will become invalid if the passed shape is not
-measurable or if measured diameter value is less than Precision::Confusion().
-@param theShape [in] the shape to measure.") SetMeasuredGeometry;
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:rtype: None
+") SetMeasuredGeometry;
 		void SetMeasuredGeometry (const TopoDS_Shape & theShape);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  TCollection_AsciiString
+		%feature("autodoc", "	* returns the display units string.
 
-@return the display units string.") GetDisplayUnits;
+	:rtype: TCollection_AsciiString
+") GetDisplayUnits;
 		virtual const TCollection_AsciiString & GetDisplayUnits ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  TCollection_AsciiString
+		%feature("autodoc", "	* returns the model units string.
 
-@return the model units string.") GetModelUnits;
+	:rtype: TCollection_AsciiString
+") GetModelUnits;
 		virtual const TCollection_AsciiString & GetModelUnits ();
-		%feature("autodoc", "Args:
-	theUnits(TCollection_AsciiString)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetDisplayUnits;
+		%feature("autodoc", "	:param theUnits:
+	:type theUnits: TCollection_AsciiString &
+	:rtype: void
+") SetDisplayUnits;
 		virtual void SetDisplayUnits (const TCollection_AsciiString & theUnits);
-		%feature("autodoc", "Args:
-	theUnits(TCollection_AsciiString)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetModelUnits;
+		%feature("autodoc", "	:param theUnits:
+	:type theUnits: TCollection_AsciiString &
+	:rtype: void
+") SetModelUnits;
 		virtual void SetModelUnits (const TCollection_AsciiString & theUnits);
-		%feature("autodoc", "Args:
-	theTextPos(gp_Pnt)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetTextPosition;
+		%feature("autodoc", "	:param theTextPos:
+	:type theTextPos: gp_Pnt
+	:rtype: void
+") SetTextPosition;
 		virtual void SetTextPosition (const gp_Pnt & theTextPos);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  gp_Pnt
-
-No detailed docstring for this function.") GetTextPosition;
+		%feature("autodoc", "	:rtype: gp_Pnt
+") GetTextPosition;
 		virtual const gp_Pnt GetTextPosition ();
 };
 
@@ -15247,64 +11419,46 @@ def __del__(self):
 %nodefaultctor AIS_SymmetricRelation;
 class AIS_SymmetricRelation : public AIS_Relation {
 	public:
-		%feature("autodoc", "Args:
-	aSymmTool(TopoDS_Shape)
-	FirstShape(TopoDS_Shape)
-	SecondShape(TopoDS_Shape)
-	aPlane(Handle_Geom_Plane)
+		%feature("autodoc", "	* Constructs an object to display constraints of symmetricity. This object is defined by a tool aSymmTool, a first shape FirstShape, a second shape SecondShape, and a plane aPlane. aPlane serves as the axis of symmetry. aSymmTool is the shape composed of FirstShape SecondShape and aPlane. It may be queried and edited using the functions GetTool and SetTool. The two shapes are typically two edges, two vertices or two points.
 
-Returns:
-	None
-
-Constructs an object to display constraints of symmetricity.  
-This object is defined by a tool aSymmTool, a first  
-shape FirstShape, a second shape SecondShape, and a plane aPlane.  
-aPlane serves as the axis of symmetry.  
-aSymmTool is the shape composed of FirstShape  
-SecondShape and aPlane. It may be queried and  
-edited using the functions GetTool and SetTool.  
-The two shapes are typically two edges, two vertices or two points.") AIS_SymmetricRelation;
+	:param aSymmTool:
+	:type aSymmTool: TopoDS_Shape &
+	:param FirstShape:
+	:type FirstShape: TopoDS_Shape &
+	:param SecondShape:
+	:type SecondShape: TopoDS_Shape &
+	:param aPlane:
+	:type aPlane: Handle_Geom_Plane &
+	:rtype: None
+") AIS_SymmetricRelation;
 		 AIS_SymmetricRelation (const TopoDS_Shape & aSymmTool,const TopoDS_Shape & FirstShape,const TopoDS_Shape & SecondShape,const Handle_Geom_Plane & aPlane);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the symmetric constraint display is movable.
 
-Returns true if the symmetric constraint display is movable.") IsMovable;
+	:rtype: bool
+") IsMovable;
 		Standard_Boolean IsMovable ();
-		%feature("autodoc", "Args:
-	aSymmetricTool(TopoDS_Shape)
+		%feature("autodoc", "	* Sets the tool aSymmetricTool composed of a first shape, a second shape, and a plane. This tool is initially created at construction time.
 
-Returns:
-	None
-
-Sets the tool aSymmetricTool composed of a first  
-shape, a second shape, and a plane.  
-This tool is initially created at construction time.") SetTool;
+	:param aSymmetricTool:
+	:type aSymmetricTool: TopoDS_Shape &
+	:rtype: None
+") SetTool;
 		void SetTool (const TopoDS_Shape & aSymmetricTool);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Returns the tool composed of a first shape, a second shape, and a plane. This tool is created at construction time.
 
-Returns the tool composed of a first shape, a second  
-shape, and a plane. This tool is created at construction time.") GetTool;
+	:rtype: TopoDS_Shape
+") GetTool;
 		const TopoDS_Shape & GetTool ();
-		%feature("autodoc", "Args:
-	aProjector(Handle_Prs3d_Projector)
-	aTrsf(Handle_Geom_Transformation)
-	aPresentation(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
-Returns:
-	virtual void
-
-computes the presentation according to a point of view  
-         given by <aProjector>.  
-         To be Used when the associated degenerated Presentations  
-         have been transformed by <aTrsf> which is not a Pure  
-         Translation. The HLR Prs can't be deducted automatically  
-         WARNING :<aTrsf> must be applied  
-          to the object to display before computation  !!!") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Prs3d_Projector &
+	:param aTrsf:
+	:type aTrsf: Handle_Geom_Transformation &
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Prs3d_Projector & aProjector,const Handle_Geom_Transformation & aTrsf,const Handle_Prs3d_Presentation & aPresentation);
 };
 
@@ -15365,61 +11519,41 @@ def __del__(self):
 %nodefaultctor AIS_TangentRelation;
 class AIS_TangentRelation : public AIS_Relation {
 	public:
-		%feature("autodoc", "Args:
-	aFShape(TopoDS_Shape)
-	aSShape(TopoDS_Shape)
-	aPlane(Handle_Geom_Plane)
-	anExternRef(Standard_Integer)=0
+		%feature("autodoc", "	* TwoFacesTangent or TwoEdgesTangent relation Constructs an object to display tangency constraints. This object is defined by the first shape aFShape, the second shape aSShape, the plane aPlane and the index anExternRef. aPlane serves as an optional axis. anExternRef set to 0 indicates that there is no relation.
 
-Returns:
-	None
-
-TwoFacesTangent or TwoEdgesTangent relation  Constructs an object to display tangency constraints.  
-This object is defined by the first shape aFShape, the  
-second shape aSShape, the plane aPlane and the index anExternRef.  
-aPlane serves as an optional axis.  
-anExternRef set to 0 indicates that there is no relation.") AIS_TangentRelation;
+	:param aFShape:
+	:type aFShape: TopoDS_Shape &
+	:param aSShape:
+	:type aSShape: TopoDS_Shape &
+	:param aPlane:
+	:type aPlane: Handle_Geom_Plane &
+	:param anExternRef: default value is 0
+	:type anExternRef: Standard_Integer
+	:rtype: None
+") AIS_TangentRelation;
 		 AIS_TangentRelation (const TopoDS_Shape & aFShape,const TopoDS_Shape & aSShape,const Handle_Geom_Plane & aPlane,const Standard_Integer anExternRef = 0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the external reference for tangency. The values are as follows: - 0 - there is no connection; - 1 - there is a connection to the first shape; - 2 - there is a connection to the second shape. This reference is defined at construction time.
 
-Returns the external reference for tangency.  
-The values are as follows:  
--   0 - there is no connection;  
--   1 - there is a connection to the first shape;  
--   2 - there is a connection to the second shape.  
-  This reference is defined at construction time.") ExternRef;
+	:rtype: int
+") ExternRef;
 		Standard_Integer ExternRef ();
-		%feature("autodoc", "Args:
-	aRef(Standard_Integer)
+		%feature("autodoc", "	* Sets the external reference for tangency, aRef. The values are as follows: - 0 - there is no connection; - 1 - there is a connection to the first shape; - 2 - there is a connection to the second shape. This reference is initially defined at construction time.
 
-Returns:
-	None
-
-Sets the external reference for tangency, aRef.  
-The values are as follows:  
--   0 - there is no connection;  
--   1 - there is a connection to the first shape;  
--   2 - there is a connection to the second shape.  
-This reference is initially defined at construction time.") SetExternRef;
+	:param aRef:
+	:type aRef: Standard_Integer
+	:rtype: None
+") SetExternRef;
 		void SetExternRef (const Standard_Integer aRef);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Prs3d_Projector)
-	aTrsf(Handle_Geom_Transformation)
-	aPresentation(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
-Returns:
-	virtual void
-
-computes the presentation according to a point of view  
-         given by <aProjector>.  
-         To be Used when the associated degenerated Presentations  
-         have been transformed by <aTrsf> which is not a Pure  
-         Translation. The HLR Prs can't be deducted automatically  
-         WARNING :<aTrsf> must be applied  
-          to the object to display before computation  !!!") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Prs3d_Projector &
+	:param aTrsf:
+	:type aTrsf: Handle_Geom_Transformation &
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Prs3d_Projector & aProjector,const Handle_Geom_Transformation & aTrsf,const Handle_Prs3d_Presentation & aPresentation);
 };
 
@@ -15480,210 +11614,149 @@ def __del__(self):
 %nodefaultctor AIS_TexturedShape;
 class AIS_TexturedShape : public AIS_Shape {
 	public:
-		%feature("autodoc", "Args:
-	theShape(TopoDS_Shape)
+		%feature("autodoc", "	* @name main methods Initializes the textured shape.
 
-Returns:
-	None
-
-@name main methods
-Initializes the textured shape.") AIS_TexturedShape;
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:rtype: None
+") AIS_TexturedShape;
 		 AIS_TexturedShape (const TopoDS_Shape & theShape);
-		%feature("autodoc", "Args:
-	theTextureFileName(TCollection_AsciiString)
+		%feature("autodoc", "	* Sets the texture source. <theTextureFileName> can specify path to texture image or one of the standard predefined textures. The accepted file types are those used in Image_AlienPixMap with extensions such as rgb, png, jpg and more. To specify the standard predefined texture, the <theTextureFileName> should contain integer - the Graphic3d_NameOfTexture2D enumeration index. Setting texture source using this method resets the source pixmap (if was set previously).
 
-Returns:
-	virtual void
-
-Sets the texture source. <theTextureFileName> can specify path to texture image or one of the standard predefined textures.
-The accepted file types are those used in Image_AlienPixMap with extensions such as rgb, png, jpg and more.
-To specify the standard predefined texture, the <theTextureFileName> should contain integer - the Graphic3d_NameOfTexture2D enumeration index.
-Setting texture source using this method resets the source pixmap (if was set previously).") SetTextureFileName;
+	:param theTextureFileName:
+	:type theTextureFileName: TCollection_AsciiString &
+	:rtype: void
+") SetTextureFileName;
 		virtual void SetTextureFileName (const TCollection_AsciiString & theTextureFileName);
-		%feature("autodoc", "Args:
-	theTexturePixMap(Image_PixMap_Handle)
+		%feature("autodoc", "	* Sets the texture source. <theTexturePixMap> specifies image data. Please note that the data should be in Bottom-Up order, the flag of Image_PixMap::IsTopDown() will be ignored by graphic driver. Setting texture source using this method resets the source by filename (if was set previously).
 
-Returns:
-	virtual void
-
-Sets the texture source. <theTexturePixMap> specifies image data.
-Please note that the data should be in Bottom-Up order, the flag of Image_PixMap::IsTopDown() will be ignored by graphic driver.
-Setting texture source using this method resets the source by filename (if was set previously).") SetTexturePixMap;
+	:param theTexturePixMap:
+	:type theTexturePixMap: Image_PixMap_Handle &
+	:rtype: void
+") SetTexturePixMap;
 		virtual void SetTexturePixMap (const Image_PixMap_Handle & theTexturePixMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns flag to control texture mapping (for presentation mode 3)
 
-@return flag to control texture mapping (for presentation mode 3)") TextureMapState;
+	:rtype: bool
+") TextureMapState;
 		Standard_Boolean TextureMapState ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Enables texture mapping
 
-Enables texture mapping") SetTextureMapOn;
+	:rtype: None
+") SetTextureMapOn;
 		void SetTextureMapOn ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Disables texture mapping
 
-Disables texture mapping") SetTextureMapOff;
+	:rtype: None
+") SetTextureMapOff;
 		void SetTextureMapOff ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	char *
+		%feature("autodoc", "	* returns path to the texture file
 
-@return path to the texture file") TextureFile;
+	:rtype: char *
+") TextureFile;
 		char * TextureFile ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Image_PixMap
+		%feature("autodoc", "	* returns the source pixmap for texture map
 
-@return the source pixmap for texture map") TexturePixMap;
+	:rtype: Handle_Image_PixMap
+") TexturePixMap;
 		const Handle_Image_PixMap & TexturePixMap ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* @name methods to alter texture mapping properties Use this method to display the textured shape without recomputing the whole presentation. Use this method when ONLY the texture content has been changed. If other parameters (ie: scale factors, texture origin, texture repeat...) have changed, the whole presentation has to be recomputed: @code if (myShape->DisplayMode() == 3) { myAISContext->RecomputePrsOnly (myShape); } else { myAISContext->SetDisplayMode (myShape, 3, Standard_False); myAISContext->Display (myShape, Standard_True); } @endcode
 
-@name methods to alter texture mapping properties
-Use this method to display the textured shape without recomputing the whole presentation.
-Use this method when ONLY the texture content has been changed.
-If other parameters (ie: scale factors, texture origin, texture repeat...) have changed, the whole presentation has to be recomputed:
-@code
-if (myShape->DisplayMode() == 3)
-{
-  myAISContext->RecomputePrsOnly (myShape);
-}
-else
-{
-  myAISContext->SetDisplayMode (myShape, 3, Standard_False);
-  myAISContext->Display        (myShape, Standard_True);
-}
-@endcode") UpdateAttributes;
+	:rtype: None
+") UpdateAttributes;
 		void UpdateAttributes ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Enables texture modulation
 
-Enables texture modulation") EnableTextureModulate;
+	:rtype: None
+") EnableTextureModulate;
 		void EnableTextureModulate ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Disables texture modulation
 
-Disables texture modulation") DisableTextureModulate;
+	:rtype: None
+") DisableTextureModulate;
 		void DisableTextureModulate ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns texture repeat flag
 
-@return texture repeat flag") TextureRepeat;
+	:rtype: bool
+") TextureRepeat;
 		Standard_Boolean TextureRepeat ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns texture repeat U value
 
-@return texture repeat U value") URepeat;
+	:rtype: float
+") URepeat;
 		Standard_Real URepeat ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns texture repeat V value
 
-@return texture repeat V value") VRepeat;
+	:rtype: float
+") VRepeat;
 		Standard_Real VRepeat ();
-		%feature("autodoc", "Args:
-	theToRepeat(Standard_Boolean)
-	theURepeat(Standard_Real)=1.0
-	theVRepeat(Standard_Real)=1.0
+		%feature("autodoc", "	* Sets the number of occurrences of the texture on each face. The texture itself is parameterized in (0,1) by (0,1). Each face of the shape to be textured is parameterized in UV space (Umin,Umax) by (Vmin,Vmax). If RepeatYN is set to false, texture coordinates are clamped in the range (0,1)x(0,1) of the face.
 
-Returns:
-	None
-
-Sets the number of occurrences of the texture on each face. The texture itself is parameterized in (0,1) by (0,1).
-Each face of the shape to be textured is parameterized in UV space (Umin,Umax) by (Vmin,Vmax).
-If RepeatYN is set to false, texture coordinates are clamped in the range (0,1)x(0,1) of the face.") SetTextureRepeat;
+	:param theToRepeat:
+	:type theToRepeat: bool
+	:param theURepeat: default value is 1.0
+	:type theURepeat: float
+	:param theVRepeat: default value is 1.0
+	:type theVRepeat: float
+	:rtype: None
+") SetTextureRepeat;
 		void SetTextureRepeat (const Standard_Boolean theToRepeat,const Standard_Real theURepeat = 1.0,const Standard_Real theVRepeat = 1.0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns true if texture UV origin has been modified
 
-@return true if texture UV origin has been modified") TextureOrigin;
+	:rtype: bool
+") TextureOrigin;
 		Standard_Boolean TextureOrigin ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns texture origin U position (0.0 by default)
 
-@return texture origin U position (0.0 by default)") TextureUOrigin;
+	:rtype: float
+") TextureUOrigin;
 		Standard_Real TextureUOrigin ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns texture origin V position (0.0 by default)
 
-@return texture origin V position (0.0 by default)") TextureVOrigin;
+	:rtype: float
+") TextureVOrigin;
 		Standard_Real TextureVOrigin ();
-		%feature("autodoc", "Args:
-	theToSetTextureOrigin(Standard_Boolean)
-	theUOrigin(Standard_Real)=0.0
-	theVOrigin(Standard_Real)=0.0
+		%feature("autodoc", "	* Use this method to change the origin of the texture. The texel (0,0) will be mapped to the surface (UOrigin,VOrigin)
 
-Returns:
-	None
-
-Use this method to change the origin of the texture. The texel (0,0) will be mapped to the surface (UOrigin,VOrigin)") SetTextureOrigin;
+	:param theToSetTextureOrigin:
+	:type theToSetTextureOrigin: bool
+	:param theUOrigin: default value is 0.0
+	:type theUOrigin: float
+	:param theVOrigin: default value is 0.0
+	:type theVOrigin: float
+	:rtype: None
+") SetTextureOrigin;
 		void SetTextureOrigin (const Standard_Boolean theToSetTextureOrigin,const Standard_Real theUOrigin = 0.0,const Standard_Real theVOrigin = 0.0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns true if scale factor should be applied to texture mapping
 
-@return true if scale factor should be applied to texture mapping") TextureScale;
+	:rtype: bool
+") TextureScale;
 		Standard_Boolean TextureScale ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns scale factor for U coordinate (1.0 by default)
 
-@return scale factor for U coordinate (1.0 by default)") TextureScaleU;
+	:rtype: float
+") TextureScaleU;
 		Standard_Real TextureScaleU ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns scale factor for V coordinate (1.0 by default)
 
-@return scale factor for V coordinate (1.0 by default)") TextureScaleV;
+	:rtype: float
+") TextureScaleV;
 		Standard_Real TextureScaleV ();
-		%feature("autodoc", "Args:
-	theToSetTextureScale(Standard_Boolean)
-	theScaleU(Standard_Real)=1.0
-	theScaleV(Standard_Real)=1.0
+		%feature("autodoc", "	* Use this method to scale the texture (percent of the face). You can specify a scale factor for both U and V. Example: if you set ScaleU and ScaleV to 0.5 and you enable texture repeat, the texture will appear twice on the face in each direction.
 
-Returns:
-	None
-
-Use this method to scale the texture (percent of the face).
-You can specify a scale factor for both U and V.
-Example: if you set ScaleU and ScaleV to 0.5 and you enable texture repeat,
-         the texture will appear twice on the face in each direction.") SetTextureScale;
+	:param theToSetTextureScale:
+	:type theToSetTextureScale: bool
+	:param theScaleU: default value is 1.0
+	:type theScaleU: float
+	:param theScaleV: default value is 1.0
+	:type theScaleV: float
+	:rtype: None
+") SetTextureScale;
 		void SetTextureScale (const Standard_Boolean theToSetTextureScale,const Standard_Real theScaleU = 1.0,const Standard_Real theScaleV = 1.0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns true if texture color modulation is turned on
 
-@return true if texture color modulation is turned on") TextureModulate;
+	:rtype: bool
+") TextureModulate;
 		Standard_Boolean TextureModulate ();
 };
 
@@ -15705,46 +11778,44 @@ def __del__(self):
 %nodefaultctor AIS_MaxRadiusDimension;
 class AIS_MaxRadiusDimension : public AIS_EllipseRadiusDimension {
 	public:
-		%feature("autodoc", "Args:
-	aShape(TopoDS_Shape)
-	aVal(Standard_Real)
-	aText(TCollection_ExtendedString)
+		%feature("autodoc", "	* Max Ellipse radius dimension Shape can be edge , planar face or cylindrical face
 
-Returns:
-	None
-
-Max  Ellipse  radius dimension  
- Shape  can  be  edge  ,  planar  face  or  cylindrical  face") AIS_MaxRadiusDimension;
+	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:param aVal:
+	:type aVal: float
+	:param aText:
+	:type aText: TCollection_ExtendedString &
+	:rtype: None
+") AIS_MaxRadiusDimension;
 		 AIS_MaxRadiusDimension (const TopoDS_Shape & aShape,const Standard_Real aVal,const TCollection_ExtendedString & aText);
-		%feature("autodoc", "Args:
-	aShape(TopoDS_Shape)
-	aVal(Standard_Real)
-	aText(TCollection_ExtendedString)
-	aPosition(gp_Pnt)
-	aSymbolPrs(DsgPrs_ArrowSide)
-	anArrowSize(Standard_Real)=0.0
+		%feature("autodoc", "	* Max Ellipse radius dimension with position Shape can be edge , planar face or cylindrical face
 
-Returns:
-	None
-
-Max  Ellipse  radius dimension with  position  
- Shape  can  be  edge  ,  planar  face  or  cylindrical  face") AIS_MaxRadiusDimension;
+	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:param aVal:
+	:type aVal: float
+	:param aText:
+	:type aText: TCollection_ExtendedString &
+	:param aPosition:
+	:type aPosition: gp_Pnt
+	:param aSymbolPrs:
+	:type aSymbolPrs: DsgPrs_ArrowSide
+	:param anArrowSize: default value is 0.0
+	:type anArrowSize: float
+	:rtype: None
+") AIS_MaxRadiusDimension;
 		 AIS_MaxRadiusDimension (const TopoDS_Shape & aShape,const Standard_Real aVal,const TCollection_ExtendedString & aText,const gp_Pnt & aPosition,const DsgPrs_ArrowSide aSymbolPrs,const Standard_Real anArrowSize = 0.0);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Prs3d_Projector)
-	aTrsf(Handle_Geom_Transformation)
-	aPresentation(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
-Returns:
-	virtual void
-
-computes the presentation according to a point of view  
-         given by <aProjector>.  
-         To be Used when the associated degenerated Presentations  
-         have been transformed by <aTrsf> which is not a Pure  
-         Translation. The HLR Prs can't be deducted automatically  
-         WARNING :<aTrsf> must be applied  
-          to the object to display before computation  !!!") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Prs3d_Projector &
+	:param aTrsf:
+	:type aTrsf: Handle_Geom_Transformation &
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Prs3d_Projector & aProjector,const Handle_Geom_Transformation & aTrsf,const Handle_Prs3d_Presentation & aPresentation);
 };
 
@@ -15805,46 +11876,44 @@ def __del__(self):
 %nodefaultctor AIS_MinRadiusDimension;
 class AIS_MinRadiusDimension : public AIS_EllipseRadiusDimension {
 	public:
-		%feature("autodoc", "Args:
-	aShape(TopoDS_Shape)
-	aVal(Standard_Real)
-	aText(TCollection_ExtendedString)
+		%feature("autodoc", "	* Max Ellipse radius dimension Shape can be edge , planar face or cylindrical face
 
-Returns:
-	None
-
-Max  Ellipse  radius dimension  
- Shape  can  be  edge  ,  planar  face  or  cylindrical  face") AIS_MinRadiusDimension;
+	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:param aVal:
+	:type aVal: float
+	:param aText:
+	:type aText: TCollection_ExtendedString &
+	:rtype: None
+") AIS_MinRadiusDimension;
 		 AIS_MinRadiusDimension (const TopoDS_Shape & aShape,const Standard_Real aVal,const TCollection_ExtendedString & aText);
-		%feature("autodoc", "Args:
-	aShape(TopoDS_Shape)
-	aVal(Standard_Real)
-	aText(TCollection_ExtendedString)
-	aPosition(gp_Pnt)
-	aSymbolPrs(DsgPrs_ArrowSide)
-	anArrowSize(Standard_Real)=0.0
+		%feature("autodoc", "	* Max Ellipse radius dimension with position Shape can be edge , planar face or cylindrical face
 
-Returns:
-	None
-
-Max  Ellipse  radius dimension with  position  
- Shape  can  be  edge  ,  planar  face  or  cylindrical  face") AIS_MinRadiusDimension;
+	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:param aVal:
+	:type aVal: float
+	:param aText:
+	:type aText: TCollection_ExtendedString &
+	:param aPosition:
+	:type aPosition: gp_Pnt
+	:param aSymbolPrs:
+	:type aSymbolPrs: DsgPrs_ArrowSide
+	:param anArrowSize: default value is 0.0
+	:type anArrowSize: float
+	:rtype: None
+") AIS_MinRadiusDimension;
 		 AIS_MinRadiusDimension (const TopoDS_Shape & aShape,const Standard_Real aVal,const TCollection_ExtendedString & aText,const gp_Pnt & aPosition,const DsgPrs_ArrowSide aSymbolPrs,const Standard_Real anArrowSize = 0.0);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Prs3d_Projector)
-	aTrsf(Handle_Geom_Transformation)
-	aPresentation(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
-Returns:
-	virtual void
-
-computes the presentation according to a point of view  
-         given by <aProjector>.  
-         To be Used when the associated degenerated Presentations  
-         have been transformed by <aTrsf> which is not a Pure  
-         Translation. The HLR Prs can't be deducted automatically  
-         WARNING :<aTrsf> must be applied  
-          to the object to display before computation  !!!") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Prs3d_Projector &
+	:param aTrsf:
+	:type aTrsf: Handle_Geom_Transformation &
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Prs3d_Projector & aProjector,const Handle_Geom_Transformation & aTrsf,const Handle_Prs3d_Presentation & aPresentation);
 };
 

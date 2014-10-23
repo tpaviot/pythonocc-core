@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -44,108 +44,68 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor TColGeom2d_Array1OfBSplineCurve;
 class TColGeom2d_Array1OfBSplineCurve {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_Array1OfBSplineCurve;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColGeom2d_Array1OfBSplineCurve;
 		 TColGeom2d_Array1OfBSplineCurve (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Handle_Geom2d_BSplineCurve)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_Array1OfBSplineCurve;
+		%feature("autodoc", "	:param Item:
+	:type Item: Handle_Geom2d_BSplineCurve &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColGeom2d_Array1OfBSplineCurve;
 		 TColGeom2d_Array1OfBSplineCurve (const Handle_Geom2d_BSplineCurve & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Handle_Geom2d_BSplineCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_Geom2d_BSplineCurve &
+	:rtype: None
+") Init;
 		void Init (const Handle_Geom2d_BSplineCurve & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(TColGeom2d_Array1OfBSplineCurve)
-
-Returns:
-	TColGeom2d_Array1OfBSplineCurve
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColGeom2d_Array1OfBSplineCurve &
+	:rtype: TColGeom2d_Array1OfBSplineCurve
+") Assign;
 		const TColGeom2d_Array1OfBSplineCurve & Assign (const TColGeom2d_Array1OfBSplineCurve & Other);
-		%feature("autodoc", "Args:
-	Other(TColGeom2d_Array1OfBSplineCurve)
-
-Returns:
-	TColGeom2d_Array1OfBSplineCurve
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColGeom2d_Array1OfBSplineCurve &
+	:rtype: TColGeom2d_Array1OfBSplineCurve
+") operator=;
 		const TColGeom2d_Array1OfBSplineCurve & operator = (const TColGeom2d_Array1OfBSplineCurve & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Handle_Geom2d_BSplineCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Handle_Geom2d_BSplineCurve &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Geom2d_BSplineCurve & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_BSplineCurve
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_BSplineCurve
+") Value;
 		const Handle_Geom2d_BSplineCurve & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_BSplineCurve
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_BSplineCurve
+") ChangeValue;
 		Handle_Geom2d_BSplineCurve & ChangeValue (const Standard_Integer Index);
 };
 
@@ -167,108 +127,68 @@ def __del__(self):
 %nodefaultctor TColGeom2d_Array1OfBezierCurve;
 class TColGeom2d_Array1OfBezierCurve {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_Array1OfBezierCurve;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColGeom2d_Array1OfBezierCurve;
 		 TColGeom2d_Array1OfBezierCurve (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Handle_Geom2d_BezierCurve)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_Array1OfBezierCurve;
+		%feature("autodoc", "	:param Item:
+	:type Item: Handle_Geom2d_BezierCurve &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColGeom2d_Array1OfBezierCurve;
 		 TColGeom2d_Array1OfBezierCurve (const Handle_Geom2d_BezierCurve & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Handle_Geom2d_BezierCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_Geom2d_BezierCurve &
+	:rtype: None
+") Init;
 		void Init (const Handle_Geom2d_BezierCurve & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(TColGeom2d_Array1OfBezierCurve)
-
-Returns:
-	TColGeom2d_Array1OfBezierCurve
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColGeom2d_Array1OfBezierCurve &
+	:rtype: TColGeom2d_Array1OfBezierCurve
+") Assign;
 		const TColGeom2d_Array1OfBezierCurve & Assign (const TColGeom2d_Array1OfBezierCurve & Other);
-		%feature("autodoc", "Args:
-	Other(TColGeom2d_Array1OfBezierCurve)
-
-Returns:
-	TColGeom2d_Array1OfBezierCurve
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColGeom2d_Array1OfBezierCurve &
+	:rtype: TColGeom2d_Array1OfBezierCurve
+") operator=;
 		const TColGeom2d_Array1OfBezierCurve & operator = (const TColGeom2d_Array1OfBezierCurve & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Handle_Geom2d_BezierCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Handle_Geom2d_BezierCurve &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Geom2d_BezierCurve & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_BezierCurve
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_BezierCurve
+") Value;
 		const Handle_Geom2d_BezierCurve & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_BezierCurve
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_BezierCurve
+") ChangeValue;
 		Handle_Geom2d_BezierCurve & ChangeValue (const Standard_Integer Index);
 };
 
@@ -290,108 +210,68 @@ def __del__(self):
 %nodefaultctor TColGeom2d_Array1OfBoundedCurve;
 class TColGeom2d_Array1OfBoundedCurve {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_Array1OfBoundedCurve;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColGeom2d_Array1OfBoundedCurve;
 		 TColGeom2d_Array1OfBoundedCurve (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Handle_Geom2d_BoundedCurve)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_Array1OfBoundedCurve;
+		%feature("autodoc", "	:param Item:
+	:type Item: Handle_Geom2d_BoundedCurve &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColGeom2d_Array1OfBoundedCurve;
 		 TColGeom2d_Array1OfBoundedCurve (const Handle_Geom2d_BoundedCurve & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Handle_Geom2d_BoundedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_Geom2d_BoundedCurve &
+	:rtype: None
+") Init;
 		void Init (const Handle_Geom2d_BoundedCurve & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(TColGeom2d_Array1OfBoundedCurve)
-
-Returns:
-	TColGeom2d_Array1OfBoundedCurve
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColGeom2d_Array1OfBoundedCurve &
+	:rtype: TColGeom2d_Array1OfBoundedCurve
+") Assign;
 		const TColGeom2d_Array1OfBoundedCurve & Assign (const TColGeom2d_Array1OfBoundedCurve & Other);
-		%feature("autodoc", "Args:
-	Other(TColGeom2d_Array1OfBoundedCurve)
-
-Returns:
-	TColGeom2d_Array1OfBoundedCurve
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColGeom2d_Array1OfBoundedCurve &
+	:rtype: TColGeom2d_Array1OfBoundedCurve
+") operator=;
 		const TColGeom2d_Array1OfBoundedCurve & operator = (const TColGeom2d_Array1OfBoundedCurve & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Handle_Geom2d_BoundedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Handle_Geom2d_BoundedCurve &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Geom2d_BoundedCurve & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_BoundedCurve
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_BoundedCurve
+") Value;
 		const Handle_Geom2d_BoundedCurve & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_BoundedCurve
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_BoundedCurve
+") ChangeValue;
 		Handle_Geom2d_BoundedCurve & ChangeValue (const Standard_Integer Index);
 };
 
@@ -413,108 +293,68 @@ def __del__(self):
 %nodefaultctor TColGeom2d_Array1OfCurve;
 class TColGeom2d_Array1OfCurve {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_Array1OfCurve;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColGeom2d_Array1OfCurve;
 		 TColGeom2d_Array1OfCurve (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Handle_Geom2d_Curve)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_Array1OfCurve;
+		%feature("autodoc", "	:param Item:
+	:type Item: Handle_Geom2d_Curve &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColGeom2d_Array1OfCurve;
 		 TColGeom2d_Array1OfCurve (const Handle_Geom2d_Curve & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Handle_Geom2d_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_Geom2d_Curve &
+	:rtype: None
+") Init;
 		void Init (const Handle_Geom2d_Curve & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(TColGeom2d_Array1OfCurve)
-
-Returns:
-	TColGeom2d_Array1OfCurve
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColGeom2d_Array1OfCurve &
+	:rtype: TColGeom2d_Array1OfCurve
+") Assign;
 		const TColGeom2d_Array1OfCurve & Assign (const TColGeom2d_Array1OfCurve & Other);
-		%feature("autodoc", "Args:
-	Other(TColGeom2d_Array1OfCurve)
-
-Returns:
-	TColGeom2d_Array1OfCurve
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColGeom2d_Array1OfCurve &
+	:rtype: TColGeom2d_Array1OfCurve
+") operator=;
 		const TColGeom2d_Array1OfCurve & operator = (const TColGeom2d_Array1OfCurve & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Handle_Geom2d_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Handle_Geom2d_Curve &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Geom2d_Curve & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_Curve
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_Curve
+") Value;
 		const Handle_Geom2d_Curve & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_Curve
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_Curve
+") ChangeValue;
 		Handle_Geom2d_Curve & ChangeValue (const Standard_Integer Index);
 };
 
@@ -536,108 +376,68 @@ def __del__(self):
 %nodefaultctor TColGeom2d_Array1OfGeometry;
 class TColGeom2d_Array1OfGeometry {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_Array1OfGeometry;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColGeom2d_Array1OfGeometry;
 		 TColGeom2d_Array1OfGeometry (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Handle_Geom2d_Geometry)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_Array1OfGeometry;
+		%feature("autodoc", "	:param Item:
+	:type Item: Handle_Geom2d_Geometry &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColGeom2d_Array1OfGeometry;
 		 TColGeom2d_Array1OfGeometry (const Handle_Geom2d_Geometry & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Handle_Geom2d_Geometry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_Geom2d_Geometry &
+	:rtype: None
+") Init;
 		void Init (const Handle_Geom2d_Geometry & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(TColGeom2d_Array1OfGeometry)
-
-Returns:
-	TColGeom2d_Array1OfGeometry
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColGeom2d_Array1OfGeometry &
+	:rtype: TColGeom2d_Array1OfGeometry
+") Assign;
 		const TColGeom2d_Array1OfGeometry & Assign (const TColGeom2d_Array1OfGeometry & Other);
-		%feature("autodoc", "Args:
-	Other(TColGeom2d_Array1OfGeometry)
-
-Returns:
-	TColGeom2d_Array1OfGeometry
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColGeom2d_Array1OfGeometry &
+	:rtype: TColGeom2d_Array1OfGeometry
+") operator=;
 		const TColGeom2d_Array1OfGeometry & operator = (const TColGeom2d_Array1OfGeometry & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Handle_Geom2d_Geometry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Handle_Geom2d_Geometry &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Geom2d_Geometry & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_Geometry
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_Geometry
+") Value;
 		const Handle_Geom2d_Geometry & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_Geometry
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_Geometry
+") ChangeValue;
 		Handle_Geom2d_Geometry & ChangeValue (const Standard_Integer Index);
 };
 
@@ -659,92 +459,58 @@ def __del__(self):
 %nodefaultctor TColGeom2d_HArray1OfBSplineCurve;
 class TColGeom2d_HArray1OfBSplineCurve : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_HArray1OfBSplineCurve;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColGeom2d_HArray1OfBSplineCurve;
 		 TColGeom2d_HArray1OfBSplineCurve (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(Handle_Geom2d_BSplineCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_HArray1OfBSplineCurve;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: Handle_Geom2d_BSplineCurve &
+	:rtype: None
+") TColGeom2d_HArray1OfBSplineCurve;
 		 TColGeom2d_HArray1OfBSplineCurve (const Standard_Integer Low,const Standard_Integer Up,const Handle_Geom2d_BSplineCurve & V);
-		%feature("autodoc", "Args:
-	V(Handle_Geom2d_BSplineCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_Geom2d_BSplineCurve &
+	:rtype: None
+") Init;
 		void Init (const Handle_Geom2d_BSplineCurve & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Handle_Geom2d_BSplineCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Handle_Geom2d_BSplineCurve &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Geom2d_BSplineCurve & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_BSplineCurve
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_BSplineCurve
+") Value;
 		const Handle_Geom2d_BSplineCurve & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_BSplineCurve
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_BSplineCurve
+") ChangeValue;
 		Handle_Geom2d_BSplineCurve & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColGeom2d_Array1OfBSplineCurve
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: TColGeom2d_Array1OfBSplineCurve
+") Array1;
 		const TColGeom2d_Array1OfBSplineCurve & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColGeom2d_Array1OfBSplineCurve
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: TColGeom2d_Array1OfBSplineCurve
+") ChangeArray1;
 		TColGeom2d_Array1OfBSplineCurve & ChangeArray1 ();
 };
 
@@ -805,92 +571,58 @@ def __del__(self):
 %nodefaultctor TColGeom2d_HArray1OfBezierCurve;
 class TColGeom2d_HArray1OfBezierCurve : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_HArray1OfBezierCurve;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColGeom2d_HArray1OfBezierCurve;
 		 TColGeom2d_HArray1OfBezierCurve (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(Handle_Geom2d_BezierCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_HArray1OfBezierCurve;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: Handle_Geom2d_BezierCurve &
+	:rtype: None
+") TColGeom2d_HArray1OfBezierCurve;
 		 TColGeom2d_HArray1OfBezierCurve (const Standard_Integer Low,const Standard_Integer Up,const Handle_Geom2d_BezierCurve & V);
-		%feature("autodoc", "Args:
-	V(Handle_Geom2d_BezierCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_Geom2d_BezierCurve &
+	:rtype: None
+") Init;
 		void Init (const Handle_Geom2d_BezierCurve & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Handle_Geom2d_BezierCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Handle_Geom2d_BezierCurve &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Geom2d_BezierCurve & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_BezierCurve
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_BezierCurve
+") Value;
 		const Handle_Geom2d_BezierCurve & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_BezierCurve
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_BezierCurve
+") ChangeValue;
 		Handle_Geom2d_BezierCurve & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColGeom2d_Array1OfBezierCurve
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: TColGeom2d_Array1OfBezierCurve
+") Array1;
 		const TColGeom2d_Array1OfBezierCurve & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColGeom2d_Array1OfBezierCurve
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: TColGeom2d_Array1OfBezierCurve
+") ChangeArray1;
 		TColGeom2d_Array1OfBezierCurve & ChangeArray1 ();
 };
 
@@ -951,92 +683,58 @@ def __del__(self):
 %nodefaultctor TColGeom2d_HArray1OfBoundedCurve;
 class TColGeom2d_HArray1OfBoundedCurve : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_HArray1OfBoundedCurve;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColGeom2d_HArray1OfBoundedCurve;
 		 TColGeom2d_HArray1OfBoundedCurve (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(Handle_Geom2d_BoundedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_HArray1OfBoundedCurve;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: Handle_Geom2d_BoundedCurve &
+	:rtype: None
+") TColGeom2d_HArray1OfBoundedCurve;
 		 TColGeom2d_HArray1OfBoundedCurve (const Standard_Integer Low,const Standard_Integer Up,const Handle_Geom2d_BoundedCurve & V);
-		%feature("autodoc", "Args:
-	V(Handle_Geom2d_BoundedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_Geom2d_BoundedCurve &
+	:rtype: None
+") Init;
 		void Init (const Handle_Geom2d_BoundedCurve & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Handle_Geom2d_BoundedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Handle_Geom2d_BoundedCurve &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Geom2d_BoundedCurve & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_BoundedCurve
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_BoundedCurve
+") Value;
 		const Handle_Geom2d_BoundedCurve & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_BoundedCurve
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_BoundedCurve
+") ChangeValue;
 		Handle_Geom2d_BoundedCurve & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColGeom2d_Array1OfBoundedCurve
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: TColGeom2d_Array1OfBoundedCurve
+") Array1;
 		const TColGeom2d_Array1OfBoundedCurve & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColGeom2d_Array1OfBoundedCurve
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: TColGeom2d_Array1OfBoundedCurve
+") ChangeArray1;
 		TColGeom2d_Array1OfBoundedCurve & ChangeArray1 ();
 };
 
@@ -1097,92 +795,58 @@ def __del__(self):
 %nodefaultctor TColGeom2d_HArray1OfCurve;
 class TColGeom2d_HArray1OfCurve : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_HArray1OfCurve;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColGeom2d_HArray1OfCurve;
 		 TColGeom2d_HArray1OfCurve (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(Handle_Geom2d_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_HArray1OfCurve;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: Handle_Geom2d_Curve &
+	:rtype: None
+") TColGeom2d_HArray1OfCurve;
 		 TColGeom2d_HArray1OfCurve (const Standard_Integer Low,const Standard_Integer Up,const Handle_Geom2d_Curve & V);
-		%feature("autodoc", "Args:
-	V(Handle_Geom2d_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_Geom2d_Curve &
+	:rtype: None
+") Init;
 		void Init (const Handle_Geom2d_Curve & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Handle_Geom2d_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Handle_Geom2d_Curve &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Geom2d_Curve & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_Curve
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_Curve
+") Value;
 		const Handle_Geom2d_Curve & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_Curve
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_Curve
+") ChangeValue;
 		Handle_Geom2d_Curve & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColGeom2d_Array1OfCurve
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: TColGeom2d_Array1OfCurve
+") Array1;
 		const TColGeom2d_Array1OfCurve & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColGeom2d_Array1OfCurve
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: TColGeom2d_Array1OfCurve
+") ChangeArray1;
 		TColGeom2d_Array1OfCurve & ChangeArray1 ();
 };
 
@@ -1243,92 +907,58 @@ def __del__(self):
 %nodefaultctor TColGeom2d_HArray1OfGeometry;
 class TColGeom2d_HArray1OfGeometry : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_HArray1OfGeometry;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColGeom2d_HArray1OfGeometry;
 		 TColGeom2d_HArray1OfGeometry (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(Handle_Geom2d_Geometry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_HArray1OfGeometry;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: Handle_Geom2d_Geometry &
+	:rtype: None
+") TColGeom2d_HArray1OfGeometry;
 		 TColGeom2d_HArray1OfGeometry (const Standard_Integer Low,const Standard_Integer Up,const Handle_Geom2d_Geometry & V);
-		%feature("autodoc", "Args:
-	V(Handle_Geom2d_Geometry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_Geom2d_Geometry &
+	:rtype: None
+") Init;
 		void Init (const Handle_Geom2d_Geometry & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Handle_Geom2d_Geometry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Handle_Geom2d_Geometry &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Geom2d_Geometry & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_Geometry
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_Geometry
+") Value;
 		const Handle_Geom2d_Geometry & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_Geometry
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_Geometry
+") ChangeValue;
 		Handle_Geom2d_Geometry & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColGeom2d_Array1OfGeometry
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: TColGeom2d_Array1OfGeometry
+") Array1;
 		const TColGeom2d_Array1OfGeometry & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColGeom2d_Array1OfGeometry
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: TColGeom2d_Array1OfGeometry
+") ChangeArray1;
 		TColGeom2d_Array1OfGeometry & ChangeArray1 ();
 };
 
@@ -1389,188 +1019,118 @@ def __del__(self):
 %nodefaultctor TColGeom2d_HSequenceOfBoundedCurve;
 class TColGeom2d_HSequenceOfBoundedCurve : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_HSequenceOfBoundedCurve;
+		%feature("autodoc", "	:rtype: None
+") TColGeom2d_HSequenceOfBoundedCurve;
 		 TColGeom2d_HSequenceOfBoundedCurve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	anItem(Handle_Geom2d_BoundedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Geom2d_BoundedCurve &
+	:rtype: None
+") Append;
 		void Append (const Handle_Geom2d_BoundedCurve & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_TColGeom2d_HSequenceOfBoundedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_TColGeom2d_HSequenceOfBoundedCurve &
+	:rtype: None
+") Append;
 		void Append (const Handle_TColGeom2d_HSequenceOfBoundedCurve & aSequence);
-		%feature("autodoc", "Args:
-	anItem(Handle_Geom2d_BoundedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Geom2d_BoundedCurve &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Geom2d_BoundedCurve & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_TColGeom2d_HSequenceOfBoundedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_TColGeom2d_HSequenceOfBoundedCurve &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_TColGeom2d_HSequenceOfBoundedCurve & aSequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Geom2d_BoundedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Geom2d_BoundedCurve &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Geom2d_BoundedCurve & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_TColGeom2d_HSequenceOfBoundedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_TColGeom2d_HSequenceOfBoundedCurve &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_TColGeom2d_HSequenceOfBoundedCurve & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Geom2d_BoundedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Geom2d_BoundedCurve &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Geom2d_BoundedCurve & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_TColGeom2d_HSequenceOfBoundedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_TColGeom2d_HSequenceOfBoundedCurve &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_TColGeom2d_HSequenceOfBoundedCurve & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anOtherIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Exchange;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anOtherIndex:
+	:type anOtherIndex: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_TColGeom2d_HSequenceOfBoundedCurve
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_TColGeom2d_HSequenceOfBoundedCurve
+") Split;
 		Handle_TColGeom2d_HSequenceOfBoundedCurve Split (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Geom2d_BoundedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Geom2d_BoundedCurve &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Handle_Geom2d_BoundedCurve & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_BoundedCurve
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Geom2d_BoundedCurve
+") Value;
 		const Handle_Geom2d_BoundedCurve & Value (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_BoundedCurve
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Geom2d_BoundedCurve
+") ChangeValue;
 		Handle_Geom2d_BoundedCurve & ChangeValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	fromIndex(Standard_Integer)
-	toIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param fromIndex:
+	:type fromIndex: Standard_Integer
+	:param toIndex:
+	:type toIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColGeom2d_SequenceOfBoundedCurve
-
-No detailed docstring for this function.") Sequence;
+		%feature("autodoc", "	:rtype: TColGeom2d_SequenceOfBoundedCurve
+") Sequence;
 		const TColGeom2d_SequenceOfBoundedCurve & Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColGeom2d_SequenceOfBoundedCurve
-
-No detailed docstring for this function.") ChangeSequence;
+		%feature("autodoc", "	:rtype: TColGeom2d_SequenceOfBoundedCurve
+") ChangeSequence;
 		TColGeom2d_SequenceOfBoundedCurve & ChangeSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColGeom2d_HSequenceOfBoundedCurve
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_TColGeom2d_HSequenceOfBoundedCurve
+") ShallowCopy;
 		Handle_TColGeom2d_HSequenceOfBoundedCurve ShallowCopy ();
 };
 
@@ -1631,188 +1191,118 @@ def __del__(self):
 %nodefaultctor TColGeom2d_HSequenceOfCurve;
 class TColGeom2d_HSequenceOfCurve : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_HSequenceOfCurve;
+		%feature("autodoc", "	:rtype: None
+") TColGeom2d_HSequenceOfCurve;
 		 TColGeom2d_HSequenceOfCurve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	anItem(Handle_Geom2d_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Geom2d_Curve &
+	:rtype: None
+") Append;
 		void Append (const Handle_Geom2d_Curve & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_TColGeom2d_HSequenceOfCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_TColGeom2d_HSequenceOfCurve &
+	:rtype: None
+") Append;
 		void Append (const Handle_TColGeom2d_HSequenceOfCurve & aSequence);
-		%feature("autodoc", "Args:
-	anItem(Handle_Geom2d_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Geom2d_Curve &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Geom2d_Curve & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_TColGeom2d_HSequenceOfCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_TColGeom2d_HSequenceOfCurve &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_TColGeom2d_HSequenceOfCurve & aSequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Geom2d_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Geom2d_Curve &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Geom2d_Curve & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_TColGeom2d_HSequenceOfCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_TColGeom2d_HSequenceOfCurve &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_TColGeom2d_HSequenceOfCurve & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Geom2d_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Geom2d_Curve &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Geom2d_Curve & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_TColGeom2d_HSequenceOfCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_TColGeom2d_HSequenceOfCurve &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_TColGeom2d_HSequenceOfCurve & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anOtherIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Exchange;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anOtherIndex:
+	:type anOtherIndex: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_TColGeom2d_HSequenceOfCurve
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_TColGeom2d_HSequenceOfCurve
+") Split;
 		Handle_TColGeom2d_HSequenceOfCurve Split (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Geom2d_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Geom2d_Curve &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Handle_Geom2d_Curve & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_Curve
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Geom2d_Curve
+") Value;
 		const Handle_Geom2d_Curve & Value (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_Curve
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Geom2d_Curve
+") ChangeValue;
 		Handle_Geom2d_Curve & ChangeValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	fromIndex(Standard_Integer)
-	toIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param fromIndex:
+	:type fromIndex: Standard_Integer
+	:param toIndex:
+	:type toIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColGeom2d_SequenceOfCurve
-
-No detailed docstring for this function.") Sequence;
+		%feature("autodoc", "	:rtype: TColGeom2d_SequenceOfCurve
+") Sequence;
 		const TColGeom2d_SequenceOfCurve & Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColGeom2d_SequenceOfCurve
-
-No detailed docstring for this function.") ChangeSequence;
+		%feature("autodoc", "	:rtype: TColGeom2d_SequenceOfCurve
+") ChangeSequence;
 		TColGeom2d_SequenceOfCurve & ChangeSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColGeom2d_HSequenceOfCurve
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_TColGeom2d_HSequenceOfCurve
+") ShallowCopy;
 		Handle_TColGeom2d_HSequenceOfCurve ShallowCopy ();
 };
 
@@ -1873,188 +1363,118 @@ def __del__(self):
 %nodefaultctor TColGeom2d_HSequenceOfGeometry;
 class TColGeom2d_HSequenceOfGeometry : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_HSequenceOfGeometry;
+		%feature("autodoc", "	:rtype: None
+") TColGeom2d_HSequenceOfGeometry;
 		 TColGeom2d_HSequenceOfGeometry ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	anItem(Handle_Geom2d_Geometry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Geom2d_Geometry &
+	:rtype: None
+") Append;
 		void Append (const Handle_Geom2d_Geometry & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_TColGeom2d_HSequenceOfGeometry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_TColGeom2d_HSequenceOfGeometry &
+	:rtype: None
+") Append;
 		void Append (const Handle_TColGeom2d_HSequenceOfGeometry & aSequence);
-		%feature("autodoc", "Args:
-	anItem(Handle_Geom2d_Geometry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_Geom2d_Geometry &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Geom2d_Geometry & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_TColGeom2d_HSequenceOfGeometry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_TColGeom2d_HSequenceOfGeometry &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_TColGeom2d_HSequenceOfGeometry & aSequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Geom2d_Geometry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Geom2d_Geometry &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Geom2d_Geometry & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_TColGeom2d_HSequenceOfGeometry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_TColGeom2d_HSequenceOfGeometry &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_TColGeom2d_HSequenceOfGeometry & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Geom2d_Geometry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Geom2d_Geometry &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Geom2d_Geometry & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_TColGeom2d_HSequenceOfGeometry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_TColGeom2d_HSequenceOfGeometry &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_TColGeom2d_HSequenceOfGeometry & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anOtherIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Exchange;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anOtherIndex:
+	:type anOtherIndex: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_TColGeom2d_HSequenceOfGeometry
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_TColGeom2d_HSequenceOfGeometry
+") Split;
 		Handle_TColGeom2d_HSequenceOfGeometry Split (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_Geom2d_Geometry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_Geom2d_Geometry &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Handle_Geom2d_Geometry & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_Geometry
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Geom2d_Geometry
+") Value;
 		const Handle_Geom2d_Geometry & Value (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_Geometry
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_Geom2d_Geometry
+") ChangeValue;
 		Handle_Geom2d_Geometry & ChangeValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	fromIndex(Standard_Integer)
-	toIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param fromIndex:
+	:type fromIndex: Standard_Integer
+	:param toIndex:
+	:type toIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColGeom2d_SequenceOfGeometry
-
-No detailed docstring for this function.") Sequence;
+		%feature("autodoc", "	:rtype: TColGeom2d_SequenceOfGeometry
+") Sequence;
 		const TColGeom2d_SequenceOfGeometry & Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColGeom2d_SequenceOfGeometry
-
-No detailed docstring for this function.") ChangeSequence;
+		%feature("autodoc", "	:rtype: TColGeom2d_SequenceOfGeometry
+") ChangeSequence;
 		TColGeom2d_SequenceOfGeometry & ChangeSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColGeom2d_HSequenceOfGeometry
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_TColGeom2d_HSequenceOfGeometry
+") ShallowCopy;
 		Handle_TColGeom2d_HSequenceOfGeometry ShallowCopy ();
 };
 
@@ -2115,22 +1535,17 @@ def __del__(self):
 %nodefaultctor TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve;
 class TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Geom2d_BoundedCurve)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Geom2d_BoundedCurve &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve;
 		 TColGeom2d_SequenceNodeOfSequenceOfBoundedCurve (const Handle_Geom2d_BoundedCurve & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_BoundedCurve
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_BoundedCurve
+") Value;
 		Handle_Geom2d_BoundedCurve & Value ();
 };
 
@@ -2191,22 +1606,17 @@ def __del__(self):
 %nodefaultctor TColGeom2d_SequenceNodeOfSequenceOfCurve;
 class TColGeom2d_SequenceNodeOfSequenceOfCurve : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Geom2d_Curve)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_SequenceNodeOfSequenceOfCurve;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Geom2d_Curve &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") TColGeom2d_SequenceNodeOfSequenceOfCurve;
 		 TColGeom2d_SequenceNodeOfSequenceOfCurve (const Handle_Geom2d_Curve & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_Curve
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_Curve
+") Value;
 		Handle_Geom2d_Curve & Value ();
 };
 
@@ -2267,22 +1677,17 @@ def __del__(self):
 %nodefaultctor TColGeom2d_SequenceNodeOfSequenceOfGeometry;
 class TColGeom2d_SequenceNodeOfSequenceOfGeometry : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Geom2d_Geometry)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_SequenceNodeOfSequenceOfGeometry;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Geom2d_Geometry &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") TColGeom2d_SequenceNodeOfSequenceOfGeometry;
 		 TColGeom2d_SequenceNodeOfSequenceOfGeometry (const Handle_Geom2d_Geometry & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_Geometry
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_Geometry
+") Value;
 		Handle_Geom2d_Geometry & Value ();
 };
 
@@ -2343,168 +1748,111 @@ def __del__(self):
 %nodefaultctor TColGeom2d_SequenceOfBoundedCurve;
 class TColGeom2d_SequenceOfBoundedCurve : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_SequenceOfBoundedCurve;
+		%feature("autodoc", "	:rtype: None
+") TColGeom2d_SequenceOfBoundedCurve;
 		 TColGeom2d_SequenceOfBoundedCurve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(TColGeom2d_SequenceOfBoundedCurve)
-
-Returns:
-	TColGeom2d_SequenceOfBoundedCurve
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColGeom2d_SequenceOfBoundedCurve &
+	:rtype: TColGeom2d_SequenceOfBoundedCurve
+") Assign;
 		const TColGeom2d_SequenceOfBoundedCurve & Assign (const TColGeom2d_SequenceOfBoundedCurve & Other);
-		%feature("autodoc", "Args:
-	Other(TColGeom2d_SequenceOfBoundedCurve)
-
-Returns:
-	TColGeom2d_SequenceOfBoundedCurve
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColGeom2d_SequenceOfBoundedCurve &
+	:rtype: TColGeom2d_SequenceOfBoundedCurve
+") operator=;
 		const TColGeom2d_SequenceOfBoundedCurve & operator = (const TColGeom2d_SequenceOfBoundedCurve & Other);
-		%feature("autodoc", "Args:
-	T(Handle_Geom2d_BoundedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Geom2d_BoundedCurve &
+	:rtype: None
+") Append;
 		void Append (const Handle_Geom2d_BoundedCurve & T);
-		%feature("autodoc", "Args:
-	S(TColGeom2d_SequenceOfBoundedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: TColGeom2d_SequenceOfBoundedCurve &
+	:rtype: None
+") Append;
 		void Append (TColGeom2d_SequenceOfBoundedCurve & S);
-		%feature("autodoc", "Args:
-	T(Handle_Geom2d_BoundedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Geom2d_BoundedCurve &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Geom2d_BoundedCurve & T);
-		%feature("autodoc", "Args:
-	S(TColGeom2d_SequenceOfBoundedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: TColGeom2d_SequenceOfBoundedCurve &
+	:rtype: None
+") Prepend;
 		void Prepend (TColGeom2d_SequenceOfBoundedCurve & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Geom2d_BoundedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Geom2d_BoundedCurve &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_Geom2d_BoundedCurve & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TColGeom2d_SequenceOfBoundedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TColGeom2d_SequenceOfBoundedCurve &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,TColGeom2d_SequenceOfBoundedCurve & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Geom2d_BoundedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Geom2d_BoundedCurve &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_Geom2d_BoundedCurve & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TColGeom2d_SequenceOfBoundedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TColGeom2d_SequenceOfBoundedCurve &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,TColGeom2d_SequenceOfBoundedCurve & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_BoundedCurve
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_BoundedCurve
+") First;
 		const Handle_Geom2d_BoundedCurve & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_BoundedCurve
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_BoundedCurve
+") Last;
 		const Handle_Geom2d_BoundedCurve & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(TColGeom2d_SequenceOfBoundedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: TColGeom2d_SequenceOfBoundedCurve &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,TColGeom2d_SequenceOfBoundedCurve & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_BoundedCurve
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_BoundedCurve
+") Value;
 		const Handle_Geom2d_BoundedCurve & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_Geom2d_BoundedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_Geom2d_BoundedCurve &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Geom2d_BoundedCurve & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_BoundedCurve
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_BoundedCurve
+") ChangeValue;
 		Handle_Geom2d_BoundedCurve & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -2526,168 +1874,111 @@ def __del__(self):
 %nodefaultctor TColGeom2d_SequenceOfCurve;
 class TColGeom2d_SequenceOfCurve : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_SequenceOfCurve;
+		%feature("autodoc", "	:rtype: None
+") TColGeom2d_SequenceOfCurve;
 		 TColGeom2d_SequenceOfCurve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(TColGeom2d_SequenceOfCurve)
-
-Returns:
-	TColGeom2d_SequenceOfCurve
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColGeom2d_SequenceOfCurve &
+	:rtype: TColGeom2d_SequenceOfCurve
+") Assign;
 		const TColGeom2d_SequenceOfCurve & Assign (const TColGeom2d_SequenceOfCurve & Other);
-		%feature("autodoc", "Args:
-	Other(TColGeom2d_SequenceOfCurve)
-
-Returns:
-	TColGeom2d_SequenceOfCurve
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColGeom2d_SequenceOfCurve &
+	:rtype: TColGeom2d_SequenceOfCurve
+") operator=;
 		const TColGeom2d_SequenceOfCurve & operator = (const TColGeom2d_SequenceOfCurve & Other);
-		%feature("autodoc", "Args:
-	T(Handle_Geom2d_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Geom2d_Curve &
+	:rtype: None
+") Append;
 		void Append (const Handle_Geom2d_Curve & T);
-		%feature("autodoc", "Args:
-	S(TColGeom2d_SequenceOfCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: TColGeom2d_SequenceOfCurve &
+	:rtype: None
+") Append;
 		void Append (TColGeom2d_SequenceOfCurve & S);
-		%feature("autodoc", "Args:
-	T(Handle_Geom2d_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Geom2d_Curve &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Geom2d_Curve & T);
-		%feature("autodoc", "Args:
-	S(TColGeom2d_SequenceOfCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: TColGeom2d_SequenceOfCurve &
+	:rtype: None
+") Prepend;
 		void Prepend (TColGeom2d_SequenceOfCurve & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Geom2d_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Geom2d_Curve &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_Geom2d_Curve & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TColGeom2d_SequenceOfCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TColGeom2d_SequenceOfCurve &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,TColGeom2d_SequenceOfCurve & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Geom2d_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Geom2d_Curve &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_Geom2d_Curve & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TColGeom2d_SequenceOfCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TColGeom2d_SequenceOfCurve &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,TColGeom2d_SequenceOfCurve & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_Curve
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_Curve
+") First;
 		const Handle_Geom2d_Curve & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_Curve
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_Curve
+") Last;
 		const Handle_Geom2d_Curve & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(TColGeom2d_SequenceOfCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: TColGeom2d_SequenceOfCurve &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,TColGeom2d_SequenceOfCurve & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_Curve
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_Curve
+") Value;
 		const Handle_Geom2d_Curve & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_Geom2d_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_Geom2d_Curve &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Geom2d_Curve & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_Curve
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_Curve
+") ChangeValue;
 		Handle_Geom2d_Curve & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -2709,168 +2000,111 @@ def __del__(self):
 %nodefaultctor TColGeom2d_SequenceOfGeometry;
 class TColGeom2d_SequenceOfGeometry : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TColGeom2d_SequenceOfGeometry;
+		%feature("autodoc", "	:rtype: None
+") TColGeom2d_SequenceOfGeometry;
 		 TColGeom2d_SequenceOfGeometry ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(TColGeom2d_SequenceOfGeometry)
-
-Returns:
-	TColGeom2d_SequenceOfGeometry
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColGeom2d_SequenceOfGeometry &
+	:rtype: TColGeom2d_SequenceOfGeometry
+") Assign;
 		const TColGeom2d_SequenceOfGeometry & Assign (const TColGeom2d_SequenceOfGeometry & Other);
-		%feature("autodoc", "Args:
-	Other(TColGeom2d_SequenceOfGeometry)
-
-Returns:
-	TColGeom2d_SequenceOfGeometry
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColGeom2d_SequenceOfGeometry &
+	:rtype: TColGeom2d_SequenceOfGeometry
+") operator=;
 		const TColGeom2d_SequenceOfGeometry & operator = (const TColGeom2d_SequenceOfGeometry & Other);
-		%feature("autodoc", "Args:
-	T(Handle_Geom2d_Geometry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Geom2d_Geometry &
+	:rtype: None
+") Append;
 		void Append (const Handle_Geom2d_Geometry & T);
-		%feature("autodoc", "Args:
-	S(TColGeom2d_SequenceOfGeometry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: TColGeom2d_SequenceOfGeometry &
+	:rtype: None
+") Append;
 		void Append (TColGeom2d_SequenceOfGeometry & S);
-		%feature("autodoc", "Args:
-	T(Handle_Geom2d_Geometry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Geom2d_Geometry &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Geom2d_Geometry & T);
-		%feature("autodoc", "Args:
-	S(TColGeom2d_SequenceOfGeometry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: TColGeom2d_SequenceOfGeometry &
+	:rtype: None
+") Prepend;
 		void Prepend (TColGeom2d_SequenceOfGeometry & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Geom2d_Geometry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Geom2d_Geometry &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_Geom2d_Geometry & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TColGeom2d_SequenceOfGeometry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TColGeom2d_SequenceOfGeometry &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,TColGeom2d_SequenceOfGeometry & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Geom2d_Geometry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Geom2d_Geometry &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_Geom2d_Geometry & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TColGeom2d_SequenceOfGeometry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TColGeom2d_SequenceOfGeometry &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,TColGeom2d_SequenceOfGeometry & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_Geometry
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_Geometry
+") First;
 		const Handle_Geom2d_Geometry & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_Geometry
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_Geometry
+") Last;
 		const Handle_Geom2d_Geometry & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(TColGeom2d_SequenceOfGeometry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: TColGeom2d_SequenceOfGeometry &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,TColGeom2d_SequenceOfGeometry & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_Geometry
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_Geometry
+") Value;
 		const Handle_Geom2d_Geometry & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_Geom2d_Geometry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_Geom2d_Geometry &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Geom2d_Geometry & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Geom2d_Geometry
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Geom2d_Geometry
+") ChangeValue;
 		Handle_Geom2d_Geometry & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 

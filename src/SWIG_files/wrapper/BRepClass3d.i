@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -45,15 +45,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor BRepClass3d;
 class BRepClass3d {
 	public:
-		%feature("autodoc", "Args:
-	S(TopoDS_Solid)
+		%feature("autodoc", "	* Returns the outer most shell of <S>. Returns a Null shell if <S> has no outer shell. If <S> has only one shell, then it will return, without checking orientation.
 
-Returns:
-	static TopoDS_Shell
-
-Returns the outer most shell of <S>. Returns a Null  
-         shell if <S> has no outer shell.  
-         If <S> has only one shell, then it will return, without checking orientation.") OuterShell;
+	:param S:
+	:type S: TopoDS_Solid &
+	:rtype: TopoDS_Shell
+") OuterShell;
 		static TopoDS_Shell OuterShell (const TopoDS_Solid & S);
 };
 
@@ -75,42 +72,24 @@ def __del__(self):
 %nodefaultctor BRepClass3d_DataMapIteratorOfMapOfInter;
 class BRepClass3d_DataMapIteratorOfMapOfInter : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepClass3d_DataMapIteratorOfMapOfInter;
+		%feature("autodoc", "	:rtype: None
+") BRepClass3d_DataMapIteratorOfMapOfInter;
 		 BRepClass3d_DataMapIteratorOfMapOfInter ();
-		%feature("autodoc", "Args:
-	aMap(BRepClass3d_MapOfInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepClass3d_DataMapIteratorOfMapOfInter;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: BRepClass3d_MapOfInter &
+	:rtype: None
+") BRepClass3d_DataMapIteratorOfMapOfInter;
 		 BRepClass3d_DataMapIteratorOfMapOfInter (const BRepClass3d_MapOfInter & aMap);
-		%feature("autodoc", "Args:
-	aMap(BRepClass3d_MapOfInter)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: BRepClass3d_MapOfInter &
+	:rtype: None
+") Initialize;
 		void Initialize (const BRepClass3d_MapOfInter & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		const TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Standard_Address
+") Value;
 		const Standard_Address & Value ();
 };
 
@@ -132,29 +111,20 @@ def __del__(self):
 %nodefaultctor BRepClass3d_DataMapNodeOfMapOfInter;
 class BRepClass3d_DataMapNodeOfMapOfInter : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(Standard_Address)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepClass3d_DataMapNodeOfMapOfInter;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: Standard_Address &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") BRepClass3d_DataMapNodeOfMapOfInter;
 		 BRepClass3d_DataMapNodeOfMapOfInter (const TopoDS_Shape & K,const Standard_Address & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Standard_Address
+") Value;
 		Standard_Address & Value ();
 };
 
@@ -215,104 +185,68 @@ def __del__(self):
 %nodefaultctor BRepClass3d_Intersector3d;
 class BRepClass3d_Intersector3d {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor.
 
-Empty constructor.") BRepClass3d_Intersector3d;
+	:rtype: None
+") BRepClass3d_Intersector3d;
 		 BRepClass3d_Intersector3d ();
-		%feature("autodoc", "Args:
-	L(gp_Lin)
-	Prm(Standard_Real)
-	Tol(Standard_Real)
-	F(TopoDS_Face)
+		%feature("autodoc", "	* Perform the intersection between the segment L(0) ... L(Prm) and the Shape <Sh>.  Only the point with the smallest parameter on the line is returned.  The Tolerance <Tol> is used to determine if the first point of the segment is near the face. In that case, the parameter of the intersection point on the line can be a negative value (greater than -Tol).
 
-Returns:
-	None
-
-Perform the intersection between the  
-         segment L(0) ... L(Prm) and the Shape <Sh>.  
- 
-         Only the point with the smallest parameter on the  
-         line is returned.  
- 
-         The Tolerance <Tol> is used to determine if the  
-         first point of the segment is near the face. In  
-         that case, the parameter of the intersection point  
-         on the line can be a negative value (greater than -Tol).") Perform;
+	:param L:
+	:type L: gp_Lin
+	:param Prm:
+	:type Prm: float
+	:param Tol:
+	:type Tol: float
+	:param F:
+	:type F: TopoDS_Face &
+	:rtype: None
+") Perform;
 		void Perform (const gp_Lin & L,const Standard_Real Prm,const Standard_Real Tol,const TopoDS_Face & F);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* True is returned when the intersection have been computed.
 
-True is returned when the intersection have been computed.") IsDone;
+	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* True is returned if a point has been found.
 
-True is returned if a point has been found.") HasAPoint;
+	:rtype: bool
+") HasAPoint;
 		Standard_Boolean HasAPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the U parameter of the intersection point on the surface.
 
-Returns the U parameter of the intersection point  
-         on the surface.") UParameter;
+	:rtype: float
+") UParameter;
 		Standard_Real UParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the V parameter of the intersection point on the surface.
 
-Returns the V parameter of the intersection point  
-         on the surface.") VParameter;
+	:rtype: float
+") VParameter;
 		Standard_Real VParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the parameter of the intersection point on the line.
 
-Returns the parameter of the intersection point  
-         on the line.") WParameter;
+	:rtype: float
+") WParameter;
 		Standard_Real WParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
+		%feature("autodoc", "	* Returns the geometric point of the intersection between the line and the surface.
 
-Returns the geometric point of the intersection  
-         between the line and the surface.") Pnt;
+	:rtype: gp_Pnt
+") Pnt;
 		const gp_Pnt & Pnt ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntCurveSurface_TransitionOnCurve
+		%feature("autodoc", "	* Returns the transition of the line on the surface.
 
-Returns the transition of the line on the surface.") Transition;
+	:rtype: IntCurveSurface_TransitionOnCurve
+") Transition;
 		IntCurveSurface_TransitionOnCurve Transition ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_State
+		%feature("autodoc", "	* Returns the state of the point on the face. The values can be either TopAbs_IN ( the point is in the face) or TopAbs_ON ( the point is on a boudary of the face).
 
-Returns the state of the point on the face.  
-         The values can be either TopAbs_IN  
-            ( the point is in the face)  
-          or TopAbs_ON  
-            ( the point is on a boudary of the face).") State;
+	:rtype: TopAbs_State
+") State;
 		TopAbs_State State ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Face
+		%feature("autodoc", "	* Returns the significant face used to determine the intersection.
 
-Returns the significant face used to determine  
-         the intersection.") Face;
+	:rtype: TopoDS_Face
+") Face;
 		const TopoDS_Face & Face ();
 };
 
@@ -334,101 +268,65 @@ def __del__(self):
 %nodefaultctor BRepClass3d_MapOfInter;
 class BRepClass3d_MapOfInter : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepClass3d_MapOfInter;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") BRepClass3d_MapOfInter;
 		 BRepClass3d_MapOfInter (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(BRepClass3d_MapOfInter)
-
-Returns:
-	BRepClass3d_MapOfInter
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepClass3d_MapOfInter &
+	:rtype: BRepClass3d_MapOfInter
+") Assign;
 		BRepClass3d_MapOfInter & Assign (const BRepClass3d_MapOfInter & Other);
-		%feature("autodoc", "Args:
-	Other(BRepClass3d_MapOfInter)
-
-Returns:
-	BRepClass3d_MapOfInter
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepClass3d_MapOfInter &
+	:rtype: BRepClass3d_MapOfInter
+") operator=;
 		BRepClass3d_MapOfInter & operator = (const BRepClass3d_MapOfInter & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(Standard_Address)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: Standard_Address &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const TopoDS_Shape & K,const Standard_Address & I);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") Find;
 		const Standard_Address & Find (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") ChangeFind;
 		Standard_Address & ChangeFind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const TopoDS_Shape & K);
 };
 
@@ -450,78 +348,61 @@ def __del__(self):
 %nodefaultctor BRepClass3d_SClassifier;
 class BRepClass3d_SClassifier {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor.
 
-Empty constructor.") BRepClass3d_SClassifier;
+	:rtype: None
+") BRepClass3d_SClassifier;
 		 BRepClass3d_SClassifier ();
-		%feature("autodoc", "Args:
-	S(BRepClass3d_SolidExplorer)
-	P(gp_Pnt)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Constructor to classify the point P with the tolerance Tol on the solid S.
 
-Returns:
-	None
-
-Constructor to classify the point P with the  
-         tolerance Tol on the solid S.") BRepClass3d_SClassifier;
+	:param S:
+	:type S: BRepClass3d_SolidExplorer &
+	:param P:
+	:type P: gp_Pnt
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") BRepClass3d_SClassifier;
 		 BRepClass3d_SClassifier (BRepClass3d_SolidExplorer & S,const gp_Pnt & P,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	S(BRepClass3d_SolidExplorer)
-	P(gp_Pnt)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Classify the point P with the tolerance Tol on the solid S.
 
-Returns:
-	None
-
-Classify the point P with the  
-         tolerance Tol on the solid S.") Perform;
+	:param S:
+	:type S: BRepClass3d_SolidExplorer &
+	:param P:
+	:type P: gp_Pnt
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Perform;
 		void Perform (BRepClass3d_SolidExplorer & S,const gp_Pnt & P,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	S(BRepClass3d_SolidExplorer)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Classify an infinite point with the tolerance Tol on the solid S.
 
-Returns:
-	None
-
-Classify an infinite point with the  
-         tolerance Tol on the solid S.") PerformInfinitePoint;
+	:param S:
+	:type S: BRepClass3d_SolidExplorer &
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") PerformInfinitePoint;
 		void PerformInfinitePoint (BRepClass3d_SolidExplorer & S,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the classification has been computed by rejection. The State is then OUT.
 
-Returns True if the classification has been  
-         computed by rejection.  
-         The State is then OUT.") Rejected;
+	:rtype: bool
+") Rejected;
 		Standard_Boolean Rejected ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_State
+		%feature("autodoc", "	* Returns the result of the classification.
 
-Returns the result of the classification.") State;
+	:rtype: TopAbs_State
+") State;
 		TopAbs_State State ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True when the point is a point of a face.
 
-Returns True when the point is a point of a face.") IsOnAFace;
+	:rtype: bool
+") IsOnAFace;
 		Standard_Boolean IsOnAFace ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Face
+		%feature("autodoc", "	* Returns the face used to determine the classification. When the state is ON, this is the face containing the point.  When Rejected() returns True, Face() has no signification.
 
-Returns the face used to determine the  
-         classification. When the state is ON, this is the  
-         face containing the point.  
- 
-         When Rejected() returns True, Face() has no signification.") Face;
+	:rtype: TopoDS_Face
+") Face;
 		TopoDS_Face Face ();
 };
 
@@ -543,313 +424,277 @@ def __del__(self):
 %nodefaultctor BRepClass3d_SolidExplorer;
 class BRepClass3d_SolidExplorer {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepClass3d_SolidExplorer;
+		%feature("autodoc", "	:rtype: None
+") BRepClass3d_SolidExplorer;
 		 BRepClass3d_SolidExplorer ();
-		%feature("autodoc", "Args:
-	Oth(BRepClass3d_SolidExplorer)
+		%feature("autodoc", "	* Raise if called.
 
-Returns:
-	None
-
-Raise if called.") BRepClass3d_SolidExplorer;
+	:param Oth:
+	:type Oth: BRepClass3d_SolidExplorer &
+	:rtype: None
+") BRepClass3d_SolidExplorer;
 		 BRepClass3d_SolidExplorer (const BRepClass3d_SolidExplorer & Oth);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepClass3d_SolidExplorer;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") BRepClass3d_SolidExplorer;
 		 BRepClass3d_SolidExplorer (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Delete;
+		%feature("autodoc", "	:rtype: void
+") Delete;
 		virtual void Delete ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InitShape;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") InitShape;
 		void InitShape (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
+		%feature("autodoc", "	* Should return True if P outside of bounding vol. of the shape
 
-Returns:
-	virtual Standard_Boolean
-
-Should return True if P outside of bounding vol. of the shape") Reject;
+	:param P:
+	:type P: gp_Pnt
+	:rtype: bool
+") Reject;
 		virtual Standard_Boolean Reject (const gp_Pnt & P);
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-	P(gp_Pnt)
-	Param(Standard_Real)
+		%feature("autodoc", "	* compute a point P in the face F. Param is a Real in  ]0,1[ and is used to initialise the algorithm. For  different values , different points are returned.
 
-Returns:
-	static Standard_Boolean
-
-compute a point P in the face  F. Param is a Real in  
-        ]0,1[ and   is  used to  initialise  the algorithm. For  
-        different values , different points are returned.") FindAPointInTheFace;
+	:param F:
+	:type F: TopoDS_Face &
+	:param P:
+	:type P: gp_Pnt
+	:param Param:
+	:type Param: float &
+	:rtype: bool
+") FindAPointInTheFace;
 		static Standard_Boolean FindAPointInTheFace (const TopoDS_Face & F,gp_Pnt & P,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-	P(gp_Pnt)
-	u(Standard_Real)
-	v(Standard_Real)
-	Param(Standard_Real)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") FindAPointInTheFace;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:param P:
+	:type P: gp_Pnt
+	:param u:
+	:type u: float &
+	:param v:
+	:type v: float &
+	:param Param:
+	:type Param: float &
+	:rtype: bool
+") FindAPointInTheFace;
 		static Standard_Boolean FindAPointInTheFace (const TopoDS_Face & F,gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-	P(gp_Pnt)
-	u(Standard_Real)
-	v(Standard_Real)
-	Param(Standard_Real)
-	theVecD1U(gp_Vec)
-	theVecD1V(gp_Vec)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") FindAPointInTheFace;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:param P:
+	:type P: gp_Pnt
+	:param u:
+	:type u: float &
+	:param v:
+	:type v: float &
+	:param Param:
+	:type Param: float &
+	:param theVecD1U:
+	:type theVecD1U: gp_Vec
+	:param theVecD1V:
+	:type theVecD1V: gp_Vec
+	:rtype: bool
+") FindAPointInTheFace;
 		static Standard_Boolean FindAPointInTheFace (const TopoDS_Face & F,gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,gp_Vec & theVecD1U,gp_Vec & theVecD1V);
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-	P(gp_Pnt)
-	u(Standard_Real)
-	v(Standard_Real)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") FindAPointInTheFace;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:param P:
+	:type P: gp_Pnt
+	:param u:
+	:type u: float &
+	:param v:
+	:type v: float &
+	:rtype: bool
+") FindAPointInTheFace;
 		static Standard_Boolean FindAPointInTheFace (const TopoDS_Face & F,gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-	P(gp_Pnt)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") FindAPointInTheFace;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:param P:
+	:type P: gp_Pnt
+	:rtype: bool
+") FindAPointInTheFace;
 		static Standard_Boolean FindAPointInTheFace (const TopoDS_Face & F,gp_Pnt & P);
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-	u(Standard_Real)
-	v(Standard_Real)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") FindAPointInTheFace;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:param u:
+	:type u: float &
+	:param v:
+	:type v: float &
+	:rtype: bool
+") FindAPointInTheFace;
 		static Standard_Boolean FindAPointInTheFace (const TopoDS_Face & F,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-	P(gp_Pnt)
-	u(Standard_Real)
-	v(Standard_Real)
-	Param(Standard_Real)
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") PointInTheFace;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:param P:
+	:type P: gp_Pnt
+	:param u:
+	:type u: float &
+	:param v:
+	:type v: float &
+	:param Param:
+	:type Param: float &
+	:param Index:
+	:type Index: Standard_Integer &
+	:rtype: bool
+") PointInTheFace;
 		Standard_Boolean PointInTheFace (const TopoDS_Face & F,gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-	P(gp_Pnt)
-	u(Standard_Real)
-	v(Standard_Real)
-	Param(Standard_Real)
-	Index(Standard_Integer)
-	surf(Handle_BRepAdaptor_HSurface)
-	u1(Standard_Real)
-	v1(Standard_Real)
-	u2(Standard_Real)
-	v2(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") PointInTheFace;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:param P:
+	:type P: gp_Pnt
+	:param u:
+	:type u: float &
+	:param v:
+	:type v: float &
+	:param Param:
+	:type Param: float &
+	:param Index:
+	:type Index: Standard_Integer &
+	:param surf:
+	:type surf: Handle_BRepAdaptor_HSurface &
+	:param u1:
+	:type u1: float
+	:param v1:
+	:type v1: float
+	:param u2:
+	:type u2: float
+	:param v2:
+	:type v2: float
+	:rtype: bool
+") PointInTheFace;
 		Standard_Boolean PointInTheFace (const TopoDS_Face & F,gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Integer &OutValue,const Handle_BRepAdaptor_HSurface & surf,const Standard_Real u1,const Standard_Real v1,const Standard_Real u2,const Standard_Real v2);
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-	P(gp_Pnt)
-	u(Standard_Real)
-	v(Standard_Real)
-	Param(Standard_Real)
-	Index(Standard_Integer)
-	surf(Handle_BRepAdaptor_HSurface)
-	u1(Standard_Real)
-	v1(Standard_Real)
-	u2(Standard_Real)
-	v2(Standard_Real)
-	theVecD1U(gp_Vec)
-	theVecD1V(gp_Vec)
+		%feature("autodoc", "	* <Index> gives point index to search from and returns point index of succeseful search
 
-Returns:
-	Standard_Boolean
-
-<Index> gives point index  to  search from and returns  
-         point index of succeseful search") PointInTheFace;
+	:param F:
+	:type F: TopoDS_Face &
+	:param P:
+	:type P: gp_Pnt
+	:param u:
+	:type u: float &
+	:param v:
+	:type v: float &
+	:param Param:
+	:type Param: float &
+	:param Index:
+	:type Index: Standard_Integer &
+	:param surf:
+	:type surf: Handle_BRepAdaptor_HSurface &
+	:param u1:
+	:type u1: float
+	:param v1:
+	:type v1: float
+	:param u2:
+	:type u2: float
+	:param v2:
+	:type v2: float
+	:param theVecD1U:
+	:type theVecD1U: gp_Vec
+	:param theVecD1V:
+	:type theVecD1V: gp_Vec
+	:rtype: bool
+") PointInTheFace;
 		Standard_Boolean PointInTheFace (const TopoDS_Face & F,gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Integer &OutValue,const Handle_BRepAdaptor_HSurface & surf,const Standard_Real u1,const Standard_Real v1,const Standard_Real u2,const Standard_Real v2,gp_Vec & theVecD1U,gp_Vec & theVecD1V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Starts an exploration of the shells.
 
-Starts an exploration of the shells.") InitShell;
+	:rtype: None
+") InitShell;
 		void InitShell ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if there is a current shell.
 
-Returns True if there is a current shell.") MoreShell;
+	:rtype: bool
+") MoreShell;
 		Standard_Boolean MoreShell ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Sets the explorer to the next shell.
 
-Sets the explorer to the next shell.") NextShell;
+	:rtype: None
+") NextShell;
 		void NextShell ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shell
+		%feature("autodoc", "	* Returns the current shell.
 
-Returns the current shell.") CurrentShell;
+	:rtype: TopoDS_Shell
+") CurrentShell;
 		TopoDS_Shell CurrentShell ();
-		%feature("autodoc", "Args:
-	L(gp_Lin)
+		%feature("autodoc", "	* Returns True if the Shell is rejected.
 
-Returns:
-	virtual Standard_Boolean
-
-Returns True if the Shell is rejected.") RejectShell;
+	:param L:
+	:type L: gp_Lin
+	:rtype: bool
+") RejectShell;
 		virtual Standard_Boolean RejectShell (const gp_Lin & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Starts an exploration of the faces of the current shell.
 
-Starts an exploration of the faces of the current shell.") InitFace;
+	:rtype: None
+") InitFace;
 		void InitFace ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if current face in current shell.
 
-Returns True if current face in current shell.") MoreFace;
+	:rtype: bool
+") MoreFace;
 		Standard_Boolean MoreFace ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Sets the explorer to the next Face of the current shell.
 
-Sets the explorer to the next Face of the current shell.") NextFace;
+	:rtype: None
+") NextFace;
 		void NextFace ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Face
+		%feature("autodoc", "	* Returns the current face.
 
-Returns the current face.") CurrentFace;
+	:rtype: TopoDS_Face
+") CurrentFace;
 		TopoDS_Face CurrentFace ();
-		%feature("autodoc", "Args:
-	L(gp_Lin)
+		%feature("autodoc", "	* returns True if the face is rejected.
 
-Returns:
-	virtual Standard_Boolean
-
-returns True if the face is rejected.") RejectFace;
+	:param L:
+	:type L: gp_Lin
+	:rtype: bool
+") RejectFace;
 		virtual Standard_Boolean RejectFace (const gp_Lin & L);
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
-	L(gp_Lin)
-	Par(Standard_Real)
+		%feature("autodoc", "	* Returns in <L>, <Par> a segment having at least one intersection with the shape boundary to compute intersections.
 
-Returns:
-	Standard_Integer
-
-Returns  in <L>, <Par>  a segment having at least  
-         one  intersection  with  the  shape  boundary  to  
-         compute  intersections.") Segment;
+	:param P:
+	:type P: gp_Pnt
+	:param L:
+	:type L: gp_Lin
+	:param Par:
+	:type Par: float &
+	:rtype: int
+") Segment;
 		Standard_Integer Segment (const gp_Pnt & P,gp_Lin & L,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
-	L(gp_Lin)
-	Par(Standard_Real)
+		%feature("autodoc", "	* Returns in <L>, <Par> a segment having at least one intersection with the shape boundary to compute intersections.  The First Call to this method returns a line which point to a point of the first face of the shape. The Second Call provide a line to the second face and so on.
 
-Returns:
-	Standard_Integer
-
-Returns  in <L>, <Par>  a segment having at least  
-         one  intersection  with  the  shape  boundary  to  
-         compute  intersections.  
- 
-         The First Call to this method returns a line which  
-         point to a point of the first face of the shape.  
-         The Second Call provide a line to the second face  
-         and so on.") OtherSegment;
+	:param P:
+	:type P: gp_Pnt
+	:param L:
+	:type L: gp_Lin
+	:param Par:
+	:type Par: float &
+	:rtype: int
+") OtherSegment;
 		Standard_Integer OtherSegment (const gp_Pnt & P,gp_Lin & L,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the index of face for which last segment is calculated.
 
-Returns the index of face for which  
-         last segment is calculated.") GetFaceSegmentIndex;
+	:rtype: int
+") GetFaceSegmentIndex;
 		Standard_Integer GetFaceSegmentIndex ();
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
-	L(gp_Lin)
-	Par(Standard_Real)
-	S(TopAbs_State)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") DumpSegment;
+		%feature("autodoc", "	:param P:
+	:type P: gp_Pnt
+	:param L:
+	:type L: gp_Lin
+	:param Par:
+	:type Par: float
+	:param S:
+	:type S: TopAbs_State
+	:rtype: void
+") DumpSegment;
 		virtual void DumpSegment (const gp_Pnt & P,const gp_Lin & L,const Standard_Real Par,const TopAbs_State S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") Box;
+		%feature("autodoc", "	:rtype: Bnd_Box
+") Box;
 		const Bnd_Box & Box ();
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-
-Returns:
-	IntCurvesFace_Intersector
-
-No detailed docstring for this function.") Intersector;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:rtype: IntCurvesFace_Intersector
+") Intersector;
 		IntCurvesFace_Intersector & Intersector (const TopoDS_Face & F);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
 };
 
@@ -871,59 +716,36 @@ def __del__(self):
 %nodefaultctor BRepClass3d_SolidPassiveClassifier;
 class BRepClass3d_SolidPassiveClassifier {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepClass3d_SolidPassiveClassifier;
+		%feature("autodoc", "	:rtype: None
+") BRepClass3d_SolidPassiveClassifier;
 		 BRepClass3d_SolidPassiveClassifier ();
-		%feature("autodoc", "Args:
-	L(gp_Lin)
-	P(Standard_Real)
-	Tol(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Reset;
+		%feature("autodoc", "	:param L:
+	:type L: gp_Lin
+	:param P:
+	:type P: float
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Reset;
 		void Reset (const gp_Lin & L,const Standard_Real P,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-	Or(TopAbs_Orientation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Compare;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:param Or:
+	:type Or: TopAbs_Orientation
+	:rtype: None
+") Compare;
 		void Compare (const TopoDS_Face & F,const TopAbs_Orientation Or);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Parameter;
+		%feature("autodoc", "	:rtype: float
+") Parameter;
 		Standard_Real Parameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasIntersection;
+		%feature("autodoc", "	:rtype: bool
+") HasIntersection;
 		Standard_Boolean HasIntersection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepClass3d_Intersector3d
-
-No detailed docstring for this function.") Intersector;
+		%feature("autodoc", "	:rtype: BRepClass3d_Intersector3d
+") Intersector;
 		BRepClass3d_Intersector3d & Intersector ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_State
-
-No detailed docstring for this function.") State;
+		%feature("autodoc", "	:rtype: TopAbs_State
+") State;
 		TopAbs_State State ();
 };
 
@@ -945,66 +767,52 @@ def __del__(self):
 %nodefaultctor BRepClass3d_SolidClassifier;
 class BRepClass3d_SolidClassifier : public BRepClass3d_SClassifier {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* empty constructor
 
-empty constructor") BRepClass3d_SolidClassifier;
+	:rtype: None
+") BRepClass3d_SolidClassifier;
 		 BRepClass3d_SolidClassifier ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Load;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") Load;
 		void Load (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* Constructor from a Shape.
 
-Returns:
-	None
-
-Constructor from a Shape.") BRepClass3d_SolidClassifier;
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") BRepClass3d_SolidClassifier;
 		 BRepClass3d_SolidClassifier (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-	P(gp_Pnt)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Constructor to classify the point P with the tolerance Tol on the solid S.
 
-Returns:
-	None
-
-Constructor to classify the point P with the  
-         tolerance Tol on the solid S.") BRepClass3d_SolidClassifier;
+	:param S:
+	:type S: TopoDS_Shape &
+	:param P:
+	:type P: gp_Pnt
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") BRepClass3d_SolidClassifier;
 		 BRepClass3d_SolidClassifier (const TopoDS_Shape & S,const gp_Pnt & P,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Classify the point P with the tolerance Tol on the solid S.
 
-Returns:
-	None
-
-Classify the point P with the  
-         tolerance Tol on the solid S.") Perform;
+	:param P:
+	:type P: gp_Pnt
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Perform;
 		void Perform (const gp_Pnt & P,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Classify an infinite point with the tolerance Tol on the solid S. Useful for compute the orientation of a solid.
 
-Returns:
-	None
-
-Classify an infinite point with the  
-         tolerance Tol on the solid S.  
-         Useful for compute the orientation of a solid.") PerformInfinitePoint;
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") PerformInfinitePoint;
 		void PerformInfinitePoint (const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
 };
 

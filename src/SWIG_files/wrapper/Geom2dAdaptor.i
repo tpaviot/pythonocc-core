@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -45,15 +45,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor Geom2dAdaptor;
 class Geom2dAdaptor {
 	public:
-		%feature("autodoc", "Args:
-	HC(Adaptor2d_Curve2d)
+		%feature("autodoc", "	* Inherited from GHCurve. Provides a curve handled by reference. Creates a 2d curve from a HCurve2d. This cannot process the OtherCurves.
 
-Returns:
-	static Handle_Geom2d_Curve
-
-Inherited  from    GHCurve.   Provides a  curve  
-         handled by reference.  Creates  a 2d  curve  from  a  HCurve2d.  This  
-         cannot process the OtherCurves.") MakeCurve;
+	:param HC:
+	:type HC: Adaptor2d_Curve2d &
+	:rtype: Handle_Geom2d_Curve
+") MakeCurve;
 		static Handle_Geom2d_Curve MakeCurve (const Adaptor2d_Curve2d & HC);
 };
 
@@ -75,298 +72,198 @@ def __del__(self):
 %nodefaultctor Geom2dAdaptor_Curve;
 class Geom2dAdaptor_Curve : public Adaptor2d_Curve2d {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Geom2dAdaptor_Curve;
+		%feature("autodoc", "	:rtype: None
+") Geom2dAdaptor_Curve;
 		 Geom2dAdaptor_Curve ();
-		%feature("autodoc", "Args:
-	C(Handle_Geom2d_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Geom2dAdaptor_Curve;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Geom2d_Curve &
+	:rtype: None
+") Geom2dAdaptor_Curve;
 		 Geom2dAdaptor_Curve (const Handle_Geom2d_Curve & C);
-		%feature("autodoc", "Args:
-	C(Handle_Geom2d_Curve)
-	UFirst(Standard_Real)
-	ULast(Standard_Real)
+		%feature("autodoc", "	* ConstructionError is raised if Ufirst>Ulast
 
-Returns:
-	None
-
-ConstructionError is raised if Ufirst>Ulast") Geom2dAdaptor_Curve;
+	:param C:
+	:type C: Handle_Geom2d_Curve &
+	:param UFirst:
+	:type UFirst: float
+	:param ULast:
+	:type ULast: float
+	:rtype: None
+") Geom2dAdaptor_Curve;
 		 Geom2dAdaptor_Curve (const Handle_Geom2d_Curve & C,const Standard_Real UFirst,const Standard_Real ULast);
-		%feature("autodoc", "Args:
-	C(Handle_Geom2d_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Load;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Geom2d_Curve &
+	:rtype: None
+") Load;
 		void Load (const Handle_Geom2d_Curve & C);
-		%feature("autodoc", "Args:
-	C(Handle_Geom2d_Curve)
-	UFirst(Standard_Real)
-	ULast(Standard_Real)
+		%feature("autodoc", "	* ConstructionError is raised if Ufirst>Ulast
 
-Returns:
-	None
-
-ConstructionError is raised if Ufirst>Ulast") Load;
+	:param C:
+	:type C: Handle_Geom2d_Curve &
+	:param UFirst:
+	:type UFirst: float
+	:param ULast:
+	:type ULast: float
+	:rtype: None
+") Load;
 		void Load (const Handle_Geom2d_Curve & C,const Standard_Real UFirst,const Standard_Real ULast);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_Curve
-
-No detailed docstring for this function.") Curve;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_Curve
+") Curve;
 		const Handle_Geom2d_Curve & Curve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") FirstParameter;
+		%feature("autodoc", "	:rtype: float
+") FirstParameter;
 		Standard_Real FirstParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") LastParameter;
+		%feature("autodoc", "	:rtype: float
+") LastParameter;
 		Standard_Real LastParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	GeomAbs_Shape
-
-No detailed docstring for this function.") Continuity;
+		%feature("autodoc", "	:rtype: GeomAbs_Shape
+") Continuity;
 		GeomAbs_Shape Continuity ();
-		%feature("autodoc", "Args:
-	S(GeomAbs_Shape)
+		%feature("autodoc", "	* If necessary, breaks the curve in intervals of continuity <S>. And returns the number of intervals.
 
-Returns:
-	Standard_Integer
-
-If necessary,  breaks the  curve in  intervals  of  
-         continuity  <S>.    And  returns   the number   of  
-         intervals.") NbIntervals;
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: int
+") NbIntervals;
 		Standard_Integer NbIntervals (const GeomAbs_Shape S);
-		%feature("autodoc", "Args:
-	T(TColStd_Array1OfReal)
-	S(GeomAbs_Shape)
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
-Returns:
-	None
-
-Stores in <T> the  parameters bounding the intervals  
-         of continuity <S>.  
- 
-         The array must provide  enough room to  accomodate  
-         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+	:param T:
+	:type T: TColStd_Array1OfReal &
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: None
+") Intervals;
 		void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
-		%feature("autodoc", "Args:
-	First(Standard_Real)
-	Last(Standard_Real)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>
 
-Returns:
-	Handle_Adaptor2d_HCurve2d
-
-Returns    a  curve equivalent   of  <self>  between  
-         parameters <First>  and <Last>. <Tol>  is used  to  
-         test for 3d points confusion.  If <First> >= <Last>") Trim;
+	:param First:
+	:type First: float
+	:param Last:
+	:type Last: float
+	:param Tol:
+	:type Tol: float
+	:rtype: Handle_Adaptor2d_HCurve2d
+") Trim;
 		Handle_Adaptor2d_HCurve2d Trim (const Standard_Real First,const Standard_Real Last,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsClosed;
+		%feature("autodoc", "	:rtype: bool
+") IsClosed;
 		Standard_Boolean IsClosed ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsPeriodic;
+		%feature("autodoc", "	:rtype: bool
+") IsPeriodic;
 		Standard_Boolean IsPeriodic ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Period;
+		%feature("autodoc", "	:rtype: float
+") Period;
 		Standard_Real Period ();
-		%feature("autodoc", "Args:
-	U(Standard_Real)
+		%feature("autodoc", "	* Computes the point of parameter U on the curve
 
-Returns:
-	gp_Pnt2d
-
-Computes the point of parameter U on the curve") Value;
+	:param U:
+	:type U: float
+	:rtype: gp_Pnt2d
+") Value;
 		gp_Pnt2d Value (const Standard_Real U);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	P(gp_Pnt2d)
+		%feature("autodoc", "	* Computes the point of parameter U.
 
-Returns:
-	None
-
-Computes the point of parameter U.") D0;
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt2d
+	:rtype: None
+") D0;
 		void D0 (const Standard_Real U,gp_Pnt2d & P);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	P(gp_Pnt2d)
-	V(gp_Vec2d)
+		%feature("autodoc", "	* Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 
-Returns:
-	None
-
-Computes the point of parameter U on the curve with its  
- first derivative.  Raised if the continuity of the current interval  
- is not C1.") D1;
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt2d
+	:param V:
+	:type V: gp_Vec2d
+	:rtype: None
+") D1;
 		void D1 (const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	P(gp_Pnt2d)
-	V1(gp_Vec2d)
-	V2(gp_Vec2d)
+		%feature("autodoc", "	* Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 
-Returns:
-	None
-
-Returns the point P of parameter U, the first and second  
- derivatives V1 and V2.  Raised if the continuity of the current interval  
- is not C2.") D2;
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt2d
+	:param V1:
+	:type V1: gp_Vec2d
+	:param V2:
+	:type V2: gp_Vec2d
+	:rtype: None
+") D2;
 		void D2 (const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	P(gp_Pnt2d)
-	V1(gp_Vec2d)
-	V2(gp_Vec2d)
-	V3(gp_Vec2d)
+		%feature("autodoc", "	* Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 
-Returns:
-	None
-
-Returns the point P of parameter U, the first, the second  
- and the third derivative.  Raised if the continuity of the current interval  
- is not C3.") D3;
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt2d
+	:param V1:
+	:type V1: gp_Vec2d
+	:param V2:
+	:type V2: gp_Vec2d
+	:param V3:
+	:type V3: gp_Vec2d
+	:rtype: None
+") D3;
 		void D3 (const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2,gp_Vec2d & V3);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	N(Standard_Integer)
+		%feature("autodoc", "	* The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 
-Returns:
-	gp_Vec2d
-
-The returned vector gives the value of the derivative for the  
- order of derivation N.  Raised if the continuity of the current interval  
- is not CN.  Raised if N < 1.") DN;
+	:param U:
+	:type U: float
+	:param N:
+	:type N: Standard_Integer
+	:rtype: gp_Vec2d
+") DN;
 		gp_Vec2d DN (const Standard_Real U,const Standard_Integer N);
-		%feature("autodoc", "Args:
-	Ruv(Standard_Real)
+		%feature("autodoc", "	* returns the parametric resolution
 
-Returns:
-	Standard_Real
-
-returns the parametric resolution") Resolution;
+	:param Ruv:
+	:type Ruv: float
+	:rtype: float
+") Resolution;
 		Standard_Real Resolution (const Standard_Real Ruv);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	GeomAbs_CurveType
-
-No detailed docstring for this function.") GetType;
+		%feature("autodoc", "	:rtype: GeomAbs_CurveType
+") GetType;
 		GeomAbs_CurveType GetType ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Lin2d
-
-No detailed docstring for this function.") Line;
+		%feature("autodoc", "	:rtype: gp_Lin2d
+") Line;
 		gp_Lin2d Line ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Circ2d
-
-No detailed docstring for this function.") Circle;
+		%feature("autodoc", "	:rtype: gp_Circ2d
+") Circle;
 		gp_Circ2d Circle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Elips2d
-
-No detailed docstring for this function.") Ellipse;
+		%feature("autodoc", "	:rtype: gp_Elips2d
+") Ellipse;
 		gp_Elips2d Ellipse ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Hypr2d
-
-No detailed docstring for this function.") Hyperbola;
+		%feature("autodoc", "	:rtype: gp_Hypr2d
+") Hyperbola;
 		gp_Hypr2d Hyperbola ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Parab2d
-
-No detailed docstring for this function.") Parabola;
+		%feature("autodoc", "	:rtype: gp_Parab2d
+") Parabola;
 		gp_Parab2d Parabola ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Degree;
+		%feature("autodoc", "	:rtype: int
+") Degree;
 		Standard_Integer Degree ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsRational;
+		%feature("autodoc", "	:rtype: bool
+") IsRational;
 		Standard_Boolean IsRational ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbPoles;
+		%feature("autodoc", "	:rtype: int
+") NbPoles;
 		Standard_Integer NbPoles ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbKnots;
+		%feature("autodoc", "	:rtype: int
+") NbKnots;
 		Standard_Integer NbKnots ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
-
-No detailed docstring for this function.") NbSamples;
+		%feature("autodoc", "	:rtype: int
+") NbSamples;
 		virtual Standard_Integer NbSamples ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_BezierCurve
-
-No detailed docstring for this function.") Bezier;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_BezierCurve
+") Bezier;
 		Handle_Geom2d_BezierCurve Bezier ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_BSplineCurve
-
-No detailed docstring for this function.") BSpline;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_BSplineCurve
+") BSpline;
 		Handle_Geom2d_BSplineCurve BSpline ();
 };
 
@@ -388,42 +285,24 @@ def __del__(self):
 %nodefaultctor Geom2dAdaptor_GHCurve;
 class Geom2dAdaptor_GHCurve : public Adaptor2d_HCurve2d {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Geom2dAdaptor_GHCurve;
+		%feature("autodoc", "	:rtype: None
+") Geom2dAdaptor_GHCurve;
 		 Geom2dAdaptor_GHCurve ();
-		%feature("autodoc", "Args:
-	C(Geom2dAdaptor_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Geom2dAdaptor_GHCurve;
+		%feature("autodoc", "	:param C:
+	:type C: Geom2dAdaptor_Curve &
+	:rtype: None
+") Geom2dAdaptor_GHCurve;
 		 Geom2dAdaptor_GHCurve (const Geom2dAdaptor_Curve & C);
-		%feature("autodoc", "Args:
-	C(Geom2dAdaptor_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Set;
+		%feature("autodoc", "	:param C:
+	:type C: Geom2dAdaptor_Curve &
+	:rtype: None
+") Set;
 		void Set (const Geom2dAdaptor_Curve & C);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Adaptor2d_Curve2d
-
-No detailed docstring for this function.") Curve2d;
+		%feature("autodoc", "	:rtype: Adaptor2d_Curve2d
+") Curve2d;
 		const Adaptor2d_Curve2d & Curve2d ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Geom2dAdaptor_Curve
-
-No detailed docstring for this function.") ChangeCurve2d;
+		%feature("autodoc", "	:rtype: Geom2dAdaptor_Curve
+") ChangeCurve2d;
 		Geom2dAdaptor_Curve & ChangeCurve2d ();
 };
 
@@ -484,38 +363,29 @@ def __del__(self):
 %nodefaultctor Geom2dAdaptor_HCurve;
 class Geom2dAdaptor_HCurve : public Geom2dAdaptor_GHCurve {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Geom2dAdaptor_HCurve;
+		%feature("autodoc", "	:rtype: None
+") Geom2dAdaptor_HCurve;
 		 Geom2dAdaptor_HCurve ();
-		%feature("autodoc", "Args:
-	AS(Geom2dAdaptor_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Geom2dAdaptor_HCurve;
+		%feature("autodoc", "	:param AS:
+	:type AS: Geom2dAdaptor_Curve &
+	:rtype: None
+") Geom2dAdaptor_HCurve;
 		 Geom2dAdaptor_HCurve (const Geom2dAdaptor_Curve & AS);
-		%feature("autodoc", "Args:
-	S(Handle_Geom2d_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Geom2dAdaptor_HCurve;
+		%feature("autodoc", "	:param S:
+	:type S: Handle_Geom2d_Curve &
+	:rtype: None
+") Geom2dAdaptor_HCurve;
 		 Geom2dAdaptor_HCurve (const Handle_Geom2d_Curve & S);
-		%feature("autodoc", "Args:
-	S(Handle_Geom2d_Curve)
-	UFirst(Standard_Real)
-	ULast(Standard_Real)
+		%feature("autodoc", "	* ConstructionError is raised if UFirst>ULast or VFirst>VLast
 
-Returns:
-	None
-
-ConstructionError is raised if UFirst>ULast or VFirst>VLast") Geom2dAdaptor_HCurve;
+	:param S:
+	:type S: Handle_Geom2d_Curve &
+	:param UFirst:
+	:type UFirst: float
+	:param ULast:
+	:type ULast: float
+	:rtype: None
+") Geom2dAdaptor_HCurve;
 		 Geom2dAdaptor_HCurve (const Handle_Geom2d_Curve & S,const Standard_Real UFirst,const Standard_Real ULast);
 };
 

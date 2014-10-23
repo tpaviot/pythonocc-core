@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -57,23 +57,19 @@ enum LProp_Status {
 %nodefaultctor LProp_AnalyticCurInf;
 class LProp_AnalyticCurInf {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") LProp_AnalyticCurInf;
+		%feature("autodoc", "	:rtype: None
+") LProp_AnalyticCurInf;
 		 LProp_AnalyticCurInf ();
-		%feature("autodoc", "Args:
-	T(GeomAbs_CurveType)
-	UFirst(Standard_Real)
-	ULast(Standard_Real)
-	Result(LProp_CurAndInf)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param T:
+	:type T: GeomAbs_CurveType
+	:param UFirst:
+	:type UFirst: float
+	:param ULast:
+	:type ULast: float
+	:param Result:
+	:type Result: LProp_CurAndInf &
+	:rtype: None
+") Perform;
 		void Perform (const GeomAbs_CurveType T,const Standard_Real UFirst,const Standard_Real ULast,LProp_CurAndInf & Result);
 };
 
@@ -95,73 +91,45 @@ def __del__(self):
 %nodefaultctor LProp_CurAndInf;
 class LProp_CurAndInf {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") LProp_CurAndInf;
+		%feature("autodoc", "	:rtype: None
+") LProp_CurAndInf;
 		 LProp_CurAndInf ();
-		%feature("autodoc", "Args:
-	Param(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AddInflection;
+		%feature("autodoc", "	:param Param:
+	:type Param: float
+	:rtype: None
+") AddInflection;
 		void AddInflection (const Standard_Real Param);
-		%feature("autodoc", "Args:
-	Param(Standard_Real)
-	IsMin(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AddExtCur;
+		%feature("autodoc", "	:param Param:
+	:type Param: float
+	:param IsMin:
+	:type IsMin: bool
+	:rtype: None
+") AddExtCur;
 		void AddExtCur (const Standard_Real Param,const Standard_Boolean IsMin);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of points. The Points are stored to increasing parameter.
 
-Returns the number of points.  
-         The Points are stored to increasing parameter.") NbPoints;
+	:rtype: int
+") NbPoints;
 		Standard_Integer NbPoints ();
-		%feature("autodoc", "Args:
-	N(Standard_Integer)
+		%feature("autodoc", "	* Returns the parameter of the Nth point. raises if N not in the range [1,NbPoints()]
 
-Returns:
-	Standard_Real
-
-Returns the parameter of the Nth point.  raises if N not in the range [1,NbPoints()]") Parameter;
+	:param N:
+	:type N: Standard_Integer
+	:rtype: float
+") Parameter;
 		Standard_Real Parameter (const Standard_Integer N);
-		%feature("autodoc", "Args:
-	N(Standard_Integer)
+		%feature("autodoc", "	* Returns - MinCur if the Nth parameter corresponds to a minimum of the radius of curvature. - MaxCur if the Nth parameter corresponds to a maximum of the radius of curvature. - Inflection if the parameter corresponds to a point of inflection. raises if N not in the range [1,NbPoints()]
 
-Returns:
-	LProp_CIType
-
-Returns  
-         - MinCur if the Nth parameter corresponds to  
-         a minimum of the radius of curvature.  
-         - MaxCur if the Nth parameter corresponds to  
-         a maximum of the radius of curvature.  
-         - Inflection if the parameter corresponds to  
-         a point of inflection.  raises if N not in the range [1,NbPoints()]") Type;
+	:param N:
+	:type N: Standard_Integer
+	:rtype: LProp_CIType
+") Type;
 		LProp_CIType Type (const Standard_Integer N);
 };
 
@@ -183,22 +151,17 @@ def __del__(self):
 %nodefaultctor LProp_SequenceNodeOfSequenceOfCIType;
 class LProp_SequenceNodeOfSequenceOfCIType : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(LProp_CIType)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LProp_SequenceNodeOfSequenceOfCIType;
+		%feature("autodoc", "	:param I:
+	:type I: LProp_CIType &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") LProp_SequenceNodeOfSequenceOfCIType;
 		 LProp_SequenceNodeOfSequenceOfCIType (const LProp_CIType & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	LProp_CIType
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: LProp_CIType
+") Value;
 		LProp_CIType & Value ();
 };
 
@@ -259,168 +222,111 @@ def __del__(self):
 %nodefaultctor LProp_SequenceOfCIType;
 class LProp_SequenceOfCIType : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") LProp_SequenceOfCIType;
+		%feature("autodoc", "	:rtype: None
+") LProp_SequenceOfCIType;
 		 LProp_SequenceOfCIType ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(LProp_SequenceOfCIType)
-
-Returns:
-	LProp_SequenceOfCIType
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: LProp_SequenceOfCIType &
+	:rtype: LProp_SequenceOfCIType
+") Assign;
 		const LProp_SequenceOfCIType & Assign (const LProp_SequenceOfCIType & Other);
-		%feature("autodoc", "Args:
-	Other(LProp_SequenceOfCIType)
-
-Returns:
-	LProp_SequenceOfCIType
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: LProp_SequenceOfCIType &
+	:rtype: LProp_SequenceOfCIType
+") operator=;
 		const LProp_SequenceOfCIType & operator = (const LProp_SequenceOfCIType & Other);
-		%feature("autodoc", "Args:
-	T(LProp_CIType)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: LProp_CIType &
+	:rtype: None
+") Append;
 		void Append (const LProp_CIType & T);
-		%feature("autodoc", "Args:
-	S(LProp_SequenceOfCIType)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: LProp_SequenceOfCIType &
+	:rtype: None
+") Append;
 		void Append (LProp_SequenceOfCIType & S);
-		%feature("autodoc", "Args:
-	T(LProp_CIType)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: LProp_CIType &
+	:rtype: None
+") Prepend;
 		void Prepend (const LProp_CIType & T);
-		%feature("autodoc", "Args:
-	S(LProp_SequenceOfCIType)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: LProp_SequenceOfCIType &
+	:rtype: None
+") Prepend;
 		void Prepend (LProp_SequenceOfCIType & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(LProp_CIType)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: LProp_CIType &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const LProp_CIType & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(LProp_SequenceOfCIType)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: LProp_SequenceOfCIType &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,LProp_SequenceOfCIType & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(LProp_CIType)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: LProp_CIType &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const LProp_CIType & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(LProp_SequenceOfCIType)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: LProp_SequenceOfCIType &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,LProp_SequenceOfCIType & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	LProp_CIType
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: LProp_CIType
+") First;
 		const LProp_CIType & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	LProp_CIType
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: LProp_CIType
+") Last;
 		const LProp_CIType & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(LProp_SequenceOfCIType)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: LProp_SequenceOfCIType &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,LProp_SequenceOfCIType & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	LProp_CIType
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: LProp_CIType
+") Value;
 		const LProp_CIType & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(LProp_CIType)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: LProp_CIType &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const LProp_CIType & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	LProp_CIType
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: LProp_CIType
+") ChangeValue;
 		LProp_CIType & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 

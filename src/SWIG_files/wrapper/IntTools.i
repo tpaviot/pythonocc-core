@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -45,77 +45,74 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor IntTools;
 class IntTools {
 	public:
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
+		%feature("autodoc", "	* returns the length of the edge;
 
-Returns:
-	static Standard_Real
-
-returns the length of the edge;") Length;
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: float
+") Length;
 		static Standard_Real Length (const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	aSeq(IntTools_SequenceOfRoots)
-	anEpsT(Standard_Real)
+		%feature("autodoc", "	* Remove from the sequence aSeq the Roots that have values ti and tj such as |ti-tj] < anEpsT.
 
-Returns:
-	static void
-
-Remove from  the  sequence aSeq the Roots  that  have  
-         values ti and tj such as  |ti-tj]  <  anEpsT.") RemoveIdenticalRoots;
+	:param aSeq:
+	:type aSeq: IntTools_SequenceOfRoots &
+	:param anEpsT:
+	:type anEpsT: float
+	:rtype: void
+") RemoveIdenticalRoots;
 		static void RemoveIdenticalRoots (IntTools_SequenceOfRoots & aSeq,const Standard_Real anEpsT);
-		%feature("autodoc", "Args:
-	aSeq(IntTools_SequenceOfRoots)
-	anEpsT(Standard_Real)
+		%feature("autodoc", "	* Sort the sequence aSeq of the Roots to arrange the Roons in increasing order
 
-Returns:
-	static void
-
-Sort the sequence aSeq of the Roots to arrange the  
-         Roons  in  increasing  order") SortRoots;
+	:param aSeq:
+	:type aSeq: IntTools_SequenceOfRoots &
+	:param anEpsT:
+	:type anEpsT: float
+	:rtype: void
+") SortRoots;
 		static void SortRoots (IntTools_SequenceOfRoots & aSeq,const Standard_Real anEpsT);
-		%feature("autodoc", "Args:
-	aSeq(IntTools_SequenceOfRoots)
-	anEpsNull(Standard_Real)
+		%feature("autodoc", "	* Find the states (before and after) for each Root from the sequence aSeq
 
-Returns:
-	static void
-
-Find the states (before  and  after) for  each  Root  
-         from  the sequence aSeq") FindRootStates;
+	:param aSeq:
+	:type aSeq: IntTools_SequenceOfRoots &
+	:param anEpsNull:
+	:type anEpsNull: float
+	:rtype: void
+") FindRootStates;
 		static void FindRootStates (IntTools_SequenceOfRoots & aSeq,const Standard_Real anEpsNull);
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
-	Curve(Handle_Geom_Curve)
-	aParm(Standard_Real)
-
-Returns:
-	static Standard_Integer
-
-No detailed docstring for this function.") Parameter;
+		%feature("autodoc", "	:param P:
+	:type P: gp_Pnt
+	:param Curve:
+	:type Curve: Handle_Geom_Curve &
+	:param aParm:
+	:type aParm: float &
+	:rtype: int
+") Parameter;
 		static Standard_Integer Parameter (const gp_Pnt & P,const Handle_Geom_Curve & Curve,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	C(BRepAdaptor_Curve)
-	t1(Standard_Real)
-	t3(Standard_Real)
-	R(Standard_Real)
-
-Returns:
-	static Standard_Integer
-
-No detailed docstring for this function.") GetRadius;
+		%feature("autodoc", "	:param C:
+	:type C: BRepAdaptor_Curve &
+	:param t1:
+	:type t1: float
+	:param t3:
+	:type t3: float
+	:param R:
+	:type R: float &
+	:rtype: int
+") GetRadius;
 		static Standard_Integer GetRadius (const BRepAdaptor_Curve & C,const Standard_Real t1,const Standard_Real t3,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	C(BRepAdaptor_Curve)
-	tMax(Standard_Real)
-	tMin(Standard_Real)
-	Discret(Standard_Integer)
-	Deflect(Standard_Real)
-	anArgs(IntTools_CArray1OfReal)
-
-Returns:
-	static Standard_Integer
-
-No detailed docstring for this function.") PrepareArgs;
+		%feature("autodoc", "	:param C:
+	:type C: BRepAdaptor_Curve &
+	:param tMax:
+	:type tMax: float
+	:param tMin:
+	:type tMin: float
+	:param Discret:
+	:type Discret: Standard_Integer
+	:param Deflect:
+	:type Deflect: float
+	:param anArgs:
+	:type anArgs: IntTools_CArray1OfReal &
+	:rtype: int
+") PrepareArgs;
 		static Standard_Integer PrepareArgs (BRepAdaptor_Curve & C,const Standard_Real tMax,const Standard_Real tMin,const Standard_Integer Discret,const Standard_Real Deflect,IntTools_CArray1OfReal & anArgs);
 };
 
@@ -137,108 +134,68 @@ def __del__(self):
 %nodefaultctor IntTools_Array1OfRange;
 class IntTools_Array1OfRange {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_Array1OfRange;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") IntTools_Array1OfRange;
 		 IntTools_Array1OfRange (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(IntTools_Range)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_Array1OfRange;
+		%feature("autodoc", "	:param Item:
+	:type Item: IntTools_Range &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") IntTools_Array1OfRange;
 		 IntTools_Array1OfRange (const IntTools_Range & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(IntTools_Range)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: IntTools_Range &
+	:rtype: None
+") Init;
 		void Init (const IntTools_Range & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(IntTools_Array1OfRange)
-
-Returns:
-	IntTools_Array1OfRange
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_Array1OfRange &
+	:rtype: IntTools_Array1OfRange
+") Assign;
 		const IntTools_Array1OfRange & Assign (const IntTools_Array1OfRange & Other);
-		%feature("autodoc", "Args:
-	Other(IntTools_Array1OfRange)
-
-Returns:
-	IntTools_Array1OfRange
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_Array1OfRange &
+	:rtype: IntTools_Array1OfRange
+") operator=;
 		const IntTools_Array1OfRange & operator = (const IntTools_Array1OfRange & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(IntTools_Range)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: IntTools_Range &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const IntTools_Range & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	IntTools_Range
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: IntTools_Range
+") Value;
 		const IntTools_Range & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	IntTools_Range
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: IntTools_Range
+") ChangeValue;
 		IntTools_Range & ChangeValue (const Standard_Integer Index);
 };
 
@@ -260,108 +217,68 @@ def __del__(self):
 %nodefaultctor IntTools_Array1OfRoots;
 class IntTools_Array1OfRoots {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_Array1OfRoots;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") IntTools_Array1OfRoots;
 		 IntTools_Array1OfRoots (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(IntTools_Root)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_Array1OfRoots;
+		%feature("autodoc", "	:param Item:
+	:type Item: IntTools_Root &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") IntTools_Array1OfRoots;
 		 IntTools_Array1OfRoots (const IntTools_Root & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(IntTools_Root)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: IntTools_Root &
+	:rtype: None
+") Init;
 		void Init (const IntTools_Root & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(IntTools_Array1OfRoots)
-
-Returns:
-	IntTools_Array1OfRoots
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_Array1OfRoots &
+	:rtype: IntTools_Array1OfRoots
+") Assign;
 		const IntTools_Array1OfRoots & Assign (const IntTools_Array1OfRoots & Other);
-		%feature("autodoc", "Args:
-	Other(IntTools_Array1OfRoots)
-
-Returns:
-	IntTools_Array1OfRoots
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_Array1OfRoots &
+	:rtype: IntTools_Array1OfRoots
+") operator=;
 		const IntTools_Array1OfRoots & operator = (const IntTools_Array1OfRoots & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(IntTools_Root)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: IntTools_Root &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const IntTools_Root & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	IntTools_Root
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: IntTools_Root
+") Value;
 		const IntTools_Root & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	IntTools_Root
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: IntTools_Root
+") ChangeValue;
 		IntTools_Root & ChangeValue (const Standard_Integer Index);
 };
 
@@ -383,35 +300,21 @@ def __del__(self):
 %nodefaultctor IntTools_BaseRangeSample;
 class IntTools_BaseRangeSample {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_BaseRangeSample;
+		%feature("autodoc", "	:rtype: None
+") IntTools_BaseRangeSample;
 		 IntTools_BaseRangeSample ();
-		%feature("autodoc", "Args:
-	theDepth(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_BaseRangeSample;
+		%feature("autodoc", "	:param theDepth:
+	:type theDepth: Standard_Integer
+	:rtype: None
+") IntTools_BaseRangeSample;
 		 IntTools_BaseRangeSample (const Standard_Integer theDepth);
-		%feature("autodoc", "Args:
-	theDepth(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetDepth;
+		%feature("autodoc", "	:param theDepth:
+	:type theDepth: Standard_Integer
+	:rtype: None
+") SetDepth;
 		void SetDepth (const Standard_Integer theDepth);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") GetDepth;
+		%feature("autodoc", "	:rtype: int
+") GetDepth;
 		Standard_Integer GetDepth ();
 };
 
@@ -433,166 +336,152 @@ def __del__(self):
 %nodefaultctor IntTools_BeanFaceIntersector;
 class IntTools_BeanFaceIntersector {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_BeanFaceIntersector;
+		%feature("autodoc", "	:rtype: None
+") IntTools_BeanFaceIntersector;
 		 IntTools_BeanFaceIntersector ();
-		%feature("autodoc", "Args:
-	theEdge(TopoDS_Edge)
-	theFace(TopoDS_Face)
+		%feature("autodoc", "	* Initializes the algorithm Warning: The parts of the edge which are on the surface of the face and belong to the whole in the face (if there is) is considered as result
 
-Returns:
-	None
-
-Initializes the algorithm  
- 
- Warning:  
-The parts of the edge which are on  
-the surface of the face and belong to  
-the whole in the face (if there is)  
-is considered as result") IntTools_BeanFaceIntersector;
+	:param theEdge:
+	:type theEdge: TopoDS_Edge &
+	:param theFace:
+	:type theFace: TopoDS_Face &
+	:rtype: None
+") IntTools_BeanFaceIntersector;
 		 IntTools_BeanFaceIntersector (const TopoDS_Edge & theEdge,const TopoDS_Face & theFace);
-		%feature("autodoc", "Args:
-	theCurve(BRepAdaptor_Curve)
-	theSurface(BRepAdaptor_Surface)
-	theBeanTolerance(Standard_Real)
-	theFaceTolerance(Standard_Real)
+		%feature("autodoc", "	* Initializes the algorithm
 
-Returns:
-	None
-
-Initializes the algorithm") IntTools_BeanFaceIntersector;
+	:param theCurve:
+	:type theCurve: BRepAdaptor_Curve &
+	:param theSurface:
+	:type theSurface: BRepAdaptor_Surface &
+	:param theBeanTolerance:
+	:type theBeanTolerance: float
+	:param theFaceTolerance:
+	:type theFaceTolerance: float
+	:rtype: None
+") IntTools_BeanFaceIntersector;
 		 IntTools_BeanFaceIntersector (const BRepAdaptor_Curve & theCurve,const BRepAdaptor_Surface & theSurface,const Standard_Real theBeanTolerance,const Standard_Real theFaceTolerance);
-		%feature("autodoc", "Args:
-	theCurve(BRepAdaptor_Curve)
-	theSurface(BRepAdaptor_Surface)
-	theFirstParOnCurve(Standard_Real)
-	theLastParOnCurve(Standard_Real)
-	theUMinParameter(Standard_Real)
-	theUMaxParameter(Standard_Real)
-	theVMinParameter(Standard_Real)
-	theVMaxParameter(Standard_Real)
-	theBeanTolerance(Standard_Real)
-	theFaceTolerance(Standard_Real)
+		%feature("autodoc", "	* Initializes the algorithm theUMinParameter, ... are used for optimization purposes
 
-Returns:
-	None
-
-Initializes the algorithm  
-theUMinParameter, ... are used for  
-optimization purposes") IntTools_BeanFaceIntersector;
+	:param theCurve:
+	:type theCurve: BRepAdaptor_Curve &
+	:param theSurface:
+	:type theSurface: BRepAdaptor_Surface &
+	:param theFirstParOnCurve:
+	:type theFirstParOnCurve: float
+	:param theLastParOnCurve:
+	:type theLastParOnCurve: float
+	:param theUMinParameter:
+	:type theUMinParameter: float
+	:param theUMaxParameter:
+	:type theUMaxParameter: float
+	:param theVMinParameter:
+	:type theVMinParameter: float
+	:param theVMaxParameter:
+	:type theVMaxParameter: float
+	:param theBeanTolerance:
+	:type theBeanTolerance: float
+	:param theFaceTolerance:
+	:type theFaceTolerance: float
+	:rtype: None
+") IntTools_BeanFaceIntersector;
 		 IntTools_BeanFaceIntersector (const BRepAdaptor_Curve & theCurve,const BRepAdaptor_Surface & theSurface,const Standard_Real theFirstParOnCurve,const Standard_Real theLastParOnCurve,const Standard_Real theUMinParameter,const Standard_Real theUMaxParameter,const Standard_Real theVMinParameter,const Standard_Real theVMaxParameter,const Standard_Real theBeanTolerance,const Standard_Real theFaceTolerance);
-		%feature("autodoc", "Args:
-	theEdge(TopoDS_Edge)
-	theFace(TopoDS_Face)
+		%feature("autodoc", "	* Initializes the algorithm Warning: The parts of the edge which are on the surface of the face and belong to the whole in the face (if there is) is considered as result
 
-Returns:
-	None
-
-Initializes the algorithm  
- 
- Warning:  
-The parts of the edge which are on  
-the surface of the face and belong to  
-the whole in the face (if there is)  
-is considered as result") Init;
+	:param theEdge:
+	:type theEdge: TopoDS_Edge &
+	:param theFace:
+	:type theFace: TopoDS_Face &
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Edge & theEdge,const TopoDS_Face & theFace);
-		%feature("autodoc", "Args:
-	theCurve(BRepAdaptor_Curve)
-	theSurface(BRepAdaptor_Surface)
-	theBeanTolerance(Standard_Real)
-	theFaceTolerance(Standard_Real)
+		%feature("autodoc", "	* Initializes the algorithm
 
-Returns:
-	None
-
-Initializes the algorithm") Init;
+	:param theCurve:
+	:type theCurve: BRepAdaptor_Curve &
+	:param theSurface:
+	:type theSurface: BRepAdaptor_Surface &
+	:param theBeanTolerance:
+	:type theBeanTolerance: float
+	:param theFaceTolerance:
+	:type theFaceTolerance: float
+	:rtype: None
+") Init;
 		void Init (const BRepAdaptor_Curve & theCurve,const BRepAdaptor_Surface & theSurface,const Standard_Real theBeanTolerance,const Standard_Real theFaceTolerance);
-		%feature("autodoc", "Args:
-	theCurve(BRepAdaptor_Curve)
-	theSurface(BRepAdaptor_Surface)
-	theFirstParOnCurve(Standard_Real)
-	theLastParOnCurve(Standard_Real)
-	theUMinParameter(Standard_Real)
-	theUMaxParameter(Standard_Real)
-	theVMinParameter(Standard_Real)
-	theVMaxParameter(Standard_Real)
-	theBeanTolerance(Standard_Real)
-	theFaceTolerance(Standard_Real)
+		%feature("autodoc", "	* Initializes the algorithm theUMinParameter, ... are used for optimization purposes
 
-Returns:
-	None
-
-Initializes the algorithm  
-theUMinParameter, ... are used for  
-optimization purposes") Init;
+	:param theCurve:
+	:type theCurve: BRepAdaptor_Curve &
+	:param theSurface:
+	:type theSurface: BRepAdaptor_Surface &
+	:param theFirstParOnCurve:
+	:type theFirstParOnCurve: float
+	:param theLastParOnCurve:
+	:type theLastParOnCurve: float
+	:param theUMinParameter:
+	:type theUMinParameter: float
+	:param theUMaxParameter:
+	:type theUMaxParameter: float
+	:param theVMinParameter:
+	:type theVMinParameter: float
+	:param theVMaxParameter:
+	:type theVMaxParameter: float
+	:param theBeanTolerance:
+	:type theBeanTolerance: float
+	:param theFaceTolerance:
+	:type theFaceTolerance: float
+	:rtype: None
+") Init;
 		void Init (const BRepAdaptor_Curve & theCurve,const BRepAdaptor_Surface & theSurface,const Standard_Real theFirstParOnCurve,const Standard_Real theLastParOnCurve,const Standard_Real theUMinParameter,const Standard_Real theUMaxParameter,const Standard_Real theVMinParameter,const Standard_Real theVMaxParameter,const Standard_Real theBeanTolerance,const Standard_Real theFaceTolerance);
-		%feature("autodoc", "Args:
-	theContext(Handle_BOPInt_Context)
+		%feature("autodoc", "	* Sets the intersecton context
 
-Returns:
-	None
-
-Sets the intersecton context") SetContext;
+	:param theContext:
+	:type theContext: Handle_BOPInt_Context &
+	:rtype: None
+") SetContext;
 		void SetContext (const Handle_BOPInt_Context & theContext);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_BOPInt_Context
+		%feature("autodoc", "	* Gets the intersecton context
 
-Gets the intersecton context") Context;
+	:rtype: Handle_BOPInt_Context
+") Context;
 		const Handle_BOPInt_Context & Context ();
-		%feature("autodoc", "Args:
-	theFirstParOnCurve(Standard_Real)
-	theLastParOnCurve(Standard_Real)
+		%feature("autodoc", "	* Set restrictions for curve
 
-Returns:
-	None
-
-Set restrictions for curve") SetBeanParameters;
+	:param theFirstParOnCurve:
+	:type theFirstParOnCurve: float
+	:param theLastParOnCurve:
+	:type theLastParOnCurve: float
+	:rtype: None
+") SetBeanParameters;
 		void SetBeanParameters (const Standard_Real theFirstParOnCurve,const Standard_Real theLastParOnCurve);
-		%feature("autodoc", "Args:
-	theUMinParameter(Standard_Real)
-	theUMaxParameter(Standard_Real)
-	theVMinParameter(Standard_Real)
-	theVMaxParameter(Standard_Real)
+		%feature("autodoc", "	* Set restrictions for surface
 
-Returns:
-	None
-
-Set restrictions for surface") SetSurfaceParameters;
+	:param theUMinParameter:
+	:type theUMinParameter: float
+	:param theUMaxParameter:
+	:type theUMaxParameter: float
+	:param theVMinParameter:
+	:type theVMinParameter: float
+	:param theVMaxParameter:
+	:type theVMaxParameter: float
+	:rtype: None
+") SetSurfaceParameters;
 		void SetSurfaceParameters (const Standard_Real theUMinParameter,const Standard_Real theUMaxParameter,const Standard_Real theVMinParameter,const Standard_Real theVMaxParameter);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Launches the algorithm
 
-Launches the algorithm") Perform;
+	:rtype: None
+") Perform;
 		void Perform ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_SequenceOfRanges
-
-No detailed docstring for this function.") Result;
+		%feature("autodoc", "	:rtype: IntTools_SequenceOfRanges
+") Result;
 		const IntTools_SequenceOfRanges & Result ();
-		%feature("autodoc", "Args:
-	theResults(IntTools_SequenceOfRanges)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Result;
+		%feature("autodoc", "	:param theResults:
+	:type theResults: IntTools_SequenceOfRanges &
+	:rtype: None
+") Result;
 		void Result (IntTools_SequenceOfRanges & theResults);
 };
 
@@ -614,217 +503,180 @@ def __del__(self):
 %nodefaultctor IntTools_CommonPrt;
 class IntTools_CommonPrt {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor
 
-Empty constructor") IntTools_CommonPrt;
+	:rtype: None
+") IntTools_CommonPrt;
 		 IntTools_CommonPrt ();
-		%feature("autodoc", "Args:
-	aCPrt(IntTools_CommonPrt)
+		%feature("autodoc", "	* Copy constructor
 
-Returns:
-	None
-
-Copy  constructor") IntTools_CommonPrt;
+	:param aCPrt:
+	:type aCPrt: IntTools_CommonPrt &
+	:rtype: None
+") IntTools_CommonPrt;
 		 IntTools_CommonPrt (const IntTools_CommonPrt & aCPrt);
-		%feature("autodoc", "Args:
-	Other(IntTools_CommonPrt)
-
-Returns:
-	IntTools_CommonPrt
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_CommonPrt &
+	:rtype: IntTools_CommonPrt
+") Assign;
 		IntTools_CommonPrt & Assign (const IntTools_CommonPrt & Other);
-		%feature("autodoc", "Args:
-	Other(IntTools_CommonPrt)
-
-Returns:
-	IntTools_CommonPrt
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_CommonPrt &
+	:rtype: IntTools_CommonPrt
+") operator=;
 		IntTools_CommonPrt & operator = (const IntTools_CommonPrt & Other);
-		%feature("autodoc", "Args:
-	anE(TopoDS_Edge)
+		%feature("autodoc", "	* Sets the first edge.
 
-Returns:
-	None
-
-Sets the first edge.") SetEdge1;
+	:param anE:
+	:type anE: TopoDS_Edge &
+	:rtype: None
+") SetEdge1;
 		void SetEdge1 (const TopoDS_Edge & anE);
-		%feature("autodoc", "Args:
-	anE(TopoDS_Edge)
+		%feature("autodoc", "	* Sets the second edge.
 
-Returns:
-	None
-
-Sets the second edge.") SetEdge2;
+	:param anE:
+	:type anE: TopoDS_Edge &
+	:rtype: None
+") SetEdge2;
 		void SetEdge2 (const TopoDS_Edge & anE);
-		%feature("autodoc", "Args:
-	aType(TopAbs_ShapeEnum)
+		%feature("autodoc", "	* Sets the type of the common part Vertex or Edge
 
-Returns:
-	None
-
-Sets the type of  the common  part  
-Vertex  or  Edge") SetType;
+	:param aType:
+	:type aType: TopAbs_ShapeEnum
+	:rtype: None
+") SetType;
 		void SetType (const TopAbs_ShapeEnum aType);
-		%feature("autodoc", "Args:
-	aR(IntTools_Range)
+		%feature("autodoc", "	* Sets the range of first edge.
 
-Returns:
-	None
-
-Sets the range of first edge.") SetRange1;
+	:param aR:
+	:type aR: IntTools_Range &
+	:rtype: None
+") SetRange1;
 		void SetRange1 (const IntTools_Range & aR);
-		%feature("autodoc", "Args:
-	tf(Standard_Real)
-	tl(Standard_Real)
+		%feature("autodoc", "	* Sets the range of first edge.
 
-Returns:
-	None
-
-Sets the range of first edge.") SetRange1;
+	:param tf:
+	:type tf: float
+	:param tl:
+	:type tl: float
+	:rtype: None
+") SetRange1;
 		void SetRange1 (const Standard_Real tf,const Standard_Real tl);
-		%feature("autodoc", "Args:
-	aR(IntTools_Range)
+		%feature("autodoc", "	* Appends the range of second edge.
 
-Returns:
-	None
-
-Appends the range of second edge.") AppendRange2;
+	:param aR:
+	:type aR: IntTools_Range &
+	:rtype: None
+") AppendRange2;
 		void AppendRange2 (const IntTools_Range & aR);
-		%feature("autodoc", "Args:
-	tf(Standard_Real)
-	tl(Standard_Real)
+		%feature("autodoc", "	* Appends the range of second edge.
 
-Returns:
-	None
-
-Appends the range of second edge.") AppendRange2;
+	:param tf:
+	:type tf: float
+	:param tl:
+	:type tl: float
+	:rtype: None
+") AppendRange2;
 		void AppendRange2 (const Standard_Real tf,const Standard_Real tl);
-		%feature("autodoc", "Args:
-	tV(Standard_Real)
+		%feature("autodoc", "	* Sets a parameter of first vertex
 
-Returns:
-	None
-
-Sets a parameter of first vertex") SetVertexParameter1;
+	:param tV:
+	:type tV: float
+	:rtype: None
+") SetVertexParameter1;
 		void SetVertexParameter1 (const Standard_Real tV);
-		%feature("autodoc", "Args:
-	tV(Standard_Real)
+		%feature("autodoc", "	* Sets a parameter of second vertex
 
-Returns:
-	None
-
-Sets a parameter of second vertex") SetVertexParameter2;
+	:param tV:
+	:type tV: float
+	:rtype: None
+") SetVertexParameter2;
 		void SetVertexParameter2 (const Standard_Real tV);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Edge
+		%feature("autodoc", "	* Returns the first edge.
 
-Returns the first edge.") Edge1;
+	:rtype: TopoDS_Edge
+") Edge1;
 		const TopoDS_Edge & Edge1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Edge
+		%feature("autodoc", "	* Returns the second edge
 
-Returns the second edge") Edge2;
+	:rtype: TopoDS_Edge
+") Edge2;
 		const TopoDS_Edge & Edge2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_ShapeEnum
+		%feature("autodoc", "	* Returns the type of the common part
 
-Returns the type of  the common  part") Type;
+	:rtype: TopAbs_ShapeEnum
+") Type;
 		TopAbs_ShapeEnum Type ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_Range
+		%feature("autodoc", "	* Returns the range of first edge
 
-Returns the range of first edge") Range1;
+	:rtype: IntTools_Range
+") Range1;
 		const IntTools_Range & Range1 ();
-		%feature("autodoc", "Args:
-	tf(Standard_Real)
-	tl(Standard_Real)
+		%feature("autodoc", "	* Returns the range of first edge.
 
-Returns:
-	None
-
-Returns the range of first edge.") Range1;
+	:param tf:
+	:type tf: float &
+	:param tl:
+	:type tl: float &
+	:rtype: None
+") Range1;
 		void Range1 (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_SequenceOfRanges
+		%feature("autodoc", "	* Returns the ranges of second edge.
 
-Returns the  ranges of second edge.") Ranges2;
+	:rtype: IntTools_SequenceOfRanges
+") Ranges2;
 		const IntTools_SequenceOfRanges & Ranges2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_SequenceOfRanges
+		%feature("autodoc", "	* Returns the ranges of second edge.
 
-Returns the  ranges of second edge.") ChangeRanges2;
+	:rtype: IntTools_SequenceOfRanges
+") ChangeRanges2;
 		IntTools_SequenceOfRanges & ChangeRanges2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns parameter of first vertex
 
-Returns parameter of first vertex") VertexParameter1;
+	:rtype: float
+") VertexParameter1;
 		Standard_Real VertexParameter1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns parameter of second vertex
 
-Returns parameter of second vertex") VertexParameter2;
+	:rtype: float
+") VertexParameter2;
 		Standard_Real VertexParameter2 ();
-		%feature("autodoc", "Args:
-	anOther(IntTools_CommonPrt)
+		%feature("autodoc", "	* Copies me to anOther
 
-Returns:
-	None
-
-Copies me to anOther") Copy;
+	:param anOther:
+	:type anOther: IntTools_CommonPrt &
+	:rtype: None
+") Copy;
 		void Copy (IntTools_CommonPrt & anOther);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Modifier
 
-Modifier") AllNullFlag;
+	:rtype: bool
+") AllNullFlag;
 		Standard_Boolean AllNullFlag ();
-		%feature("autodoc", "Args:
-	aFlag(Standard_Boolean)
+		%feature("autodoc", "	* Selector
 
-Returns:
-	None
-
-Selector") SetAllNullFlag;
+	:param aFlag:
+	:type aFlag: bool
+	:rtype: None
+") SetAllNullFlag;
 		void SetAllNullFlag (const Standard_Boolean aFlag);
-		%feature("autodoc", "Args:
-	aP1(gp_Pnt)
-	aP2(gp_Pnt)
+		%feature("autodoc", "	* Modifier
 
-Returns:
-	None
-
-Modifier") SetBoundingPoints;
+	:param aP1:
+	:type aP1: gp_Pnt
+	:param aP2:
+	:type aP2: gp_Pnt
+	:rtype: None
+") SetBoundingPoints;
 		void SetBoundingPoints (const gp_Pnt & aP1,const gp_Pnt & aP2);
-		%feature("autodoc", "Args:
-	aP1(gp_Pnt)
-	aP2(gp_Pnt)
+		%feature("autodoc", "	* Selector
 
-Returns:
-	None
-
-Selector") BoundingPoints;
+	:param aP1:
+	:type aP1: gp_Pnt
+	:param aP2:
+	:type aP2: gp_Pnt
+	:rtype: None
+") BoundingPoints;
 		void BoundingPoints (gp_Pnt & aP1,gp_Pnt & aP2);
 };
 
@@ -846,47 +698,44 @@ def __del__(self):
 %nodefaultctor IntTools_Compare;
 class IntTools_Compare {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor
 
-Empty constructor") IntTools_Compare;
+	:rtype: None
+") IntTools_Compare;
 		 IntTools_Compare ();
-		%feature("autodoc", "Args:
-	aTol(Standard_Real)
+		%feature("autodoc", "	* Initializes me by tolerance
 
-Returns:
-	None
-
-Initializes me by tolerance") IntTools_Compare;
+	:param aTol:
+	:type aTol: float
+	:rtype: None
+") IntTools_Compare;
 		 IntTools_Compare (const Standard_Real aTol);
-		%feature("autodoc", "Args:
-	Left(IntTools_Root)
-	Right(IntTools_Root)
+		%feature("autodoc", "	* Returns True if <Left> is lower than <Right>.
 
-Returns:
-	Standard_Boolean
-
-Returns True if <Left> is lower than <Right>.") IsLower;
+	:param Left:
+	:type Left: IntTools_Root &
+	:param Right:
+	:type Right: IntTools_Root &
+	:rtype: bool
+") IsLower;
 		Standard_Boolean IsLower (const IntTools_Root & Left,const IntTools_Root & Right);
-		%feature("autodoc", "Args:
-	Left(IntTools_Root)
-	Right(IntTools_Root)
+		%feature("autodoc", "	* Returns True if <Left> is greater than <Right>.
 
-Returns:
-	Standard_Boolean
-
-Returns True if <Left> is greater than <Right>.") IsGreater;
+	:param Left:
+	:type Left: IntTools_Root &
+	:param Right:
+	:type Right: IntTools_Root &
+	:rtype: bool
+") IsGreater;
 		Standard_Boolean IsGreater (const IntTools_Root & Left,const IntTools_Root & Right);
-		%feature("autodoc", "Args:
-	Left(IntTools_Root)
-	Right(IntTools_Root)
+		%feature("autodoc", "	* Returns True when <Right> and <Left> are equal.
 
-Returns:
-	Standard_Boolean
-
-Returns True when <Right> and <Left> are equal.") IsEqual;
+	:param Left:
+	:type Left: IntTools_Root &
+	:param Right:
+	:type Right: IntTools_Root &
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const IntTools_Root & Left,const IntTools_Root & Right);
 };
 
@@ -908,47 +757,44 @@ def __del__(self):
 %nodefaultctor IntTools_CompareRange;
 class IntTools_CompareRange {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor
 
-Empty constructor") IntTools_CompareRange;
+	:rtype: None
+") IntTools_CompareRange;
 		 IntTools_CompareRange ();
-		%feature("autodoc", "Args:
-	aTol(Standard_Real)
+		%feature("autodoc", "	* Initializes me by tolerance
 
-Returns:
-	None
-
-Initializes me by tolerance") IntTools_CompareRange;
+	:param aTol:
+	:type aTol: float
+	:rtype: None
+") IntTools_CompareRange;
 		 IntTools_CompareRange (const Standard_Real aTol);
-		%feature("autodoc", "Args:
-	Left(IntTools_Range)
-	Right(IntTools_Range)
+		%feature("autodoc", "	* Returns True if <Left> is lower than <Right>.
 
-Returns:
-	Standard_Boolean
-
-Returns True if <Left> is lower than <Right>.") IsLower;
+	:param Left:
+	:type Left: IntTools_Range &
+	:param Right:
+	:type Right: IntTools_Range &
+	:rtype: bool
+") IsLower;
 		Standard_Boolean IsLower (const IntTools_Range & Left,const IntTools_Range & Right);
-		%feature("autodoc", "Args:
-	Left(IntTools_Range)
-	Right(IntTools_Range)
+		%feature("autodoc", "	* Returns True if <Left> is greater than <Right>.
 
-Returns:
-	Standard_Boolean
-
-Returns True if <Left> is greater than <Right>.") IsGreater;
+	:param Left:
+	:type Left: IntTools_Range &
+	:param Right:
+	:type Right: IntTools_Range &
+	:rtype: bool
+") IsGreater;
 		Standard_Boolean IsGreater (const IntTools_Range & Left,const IntTools_Range & Right);
-		%feature("autodoc", "Args:
-	Left(IntTools_Range)
-	Right(IntTools_Range)
+		%feature("autodoc", "	* Returns True when <Right> and <Left> are equal.
 
-Returns:
-	Standard_Boolean
-
-Returns True when <Right> and <Left> are equal.") IsEqual;
+	:param Left:
+	:type Left: IntTools_Range &
+	:param Right:
+	:type Right: IntTools_Range &
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const IntTools_Range & Left,const IntTools_Range & Right);
 };
 
@@ -970,120 +816,100 @@ def __del__(self):
 %nodefaultctor IntTools_Curve;
 class IntTools_Curve {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor
 
-Empty constructor") IntTools_Curve;
+	:rtype: None
+") IntTools_Curve;
 		 IntTools_Curve ();
-		%feature("autodoc", "Args:
-	Curve3d(Handle_Geom_Curve)
-	FirstCurve2d(Handle_Geom2d_Curve)
-	SecondCurve2d(Handle_Geom2d_Curve)
+		%feature("autodoc", "	* Initializes me by a 3d curve and two 2d curves
 
-Returns:
-	None
-
-Initializes me by a 3d curve  
-and two 2d curves") IntTools_Curve;
+	:param Curve3d:
+	:type Curve3d: Handle_Geom_Curve &
+	:param FirstCurve2d:
+	:type FirstCurve2d: Handle_Geom2d_Curve &
+	:param SecondCurve2d:
+	:type SecondCurve2d: Handle_Geom2d_Curve &
+	:rtype: None
+") IntTools_Curve;
 		 IntTools_Curve (const Handle_Geom_Curve & Curve3d,const Handle_Geom2d_Curve & FirstCurve2d,const Handle_Geom2d_Curve & SecondCurve2d);
-		%feature("autodoc", "Args:
-	Curve3d(Handle_Geom_Curve)
-	FirstCurve2d(Handle_Geom2d_Curve)
-	SecondCurve2d(Handle_Geom2d_Curve)
+		%feature("autodoc", "	* Modifier
 
-Returns:
-	None
-
-Modifier") SetCurves;
+	:param Curve3d:
+	:type Curve3d: Handle_Geom_Curve &
+	:param FirstCurve2d:
+	:type FirstCurve2d: Handle_Geom2d_Curve &
+	:param SecondCurve2d:
+	:type SecondCurve2d: Handle_Geom2d_Curve &
+	:rtype: None
+") SetCurves;
 		void SetCurves (const Handle_Geom_Curve & Curve3d,const Handle_Geom2d_Curve & FirstCurve2d,const Handle_Geom2d_Curve & SecondCurve2d);
-		%feature("autodoc", "Args:
-	Curve3d(Handle_Geom_Curve)
+		%feature("autodoc", "	* Modifier
 
-Returns:
-	None
-
-Modifier") SetCurve;
+	:param Curve3d:
+	:type Curve3d: Handle_Geom_Curve &
+	:rtype: None
+") SetCurve;
 		void SetCurve (const Handle_Geom_Curve & Curve3d);
-		%feature("autodoc", "Args:
-	FirstCurve2d(Handle_Geom2d_Curve)
+		%feature("autodoc", "	* Modifier
 
-Returns:
-	None
-
-Modifier") SetFirstCurve2d;
+	:param FirstCurve2d:
+	:type FirstCurve2d: Handle_Geom2d_Curve &
+	:rtype: None
+") SetFirstCurve2d;
 		void SetFirstCurve2d (const Handle_Geom2d_Curve & FirstCurve2d);
-		%feature("autodoc", "Args:
-	SecondCurve2d(Handle_Geom2d_Curve)
+		%feature("autodoc", "	* Modifier
 
-Returns:
-	None
-
-Modifier") SetSecondCurve2d;
+	:param SecondCurve2d:
+	:type SecondCurve2d: Handle_Geom2d_Curve &
+	:rtype: None
+") SetSecondCurve2d;
 		void SetSecondCurve2d (const Handle_Geom2d_Curve & SecondCurve2d);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_Curve
+		%feature("autodoc", "	* Selector
 
-Selector") Curve;
+	:rtype: Handle_Geom_Curve
+") Curve;
 		const Handle_Geom_Curve & Curve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_Curve
+		%feature("autodoc", "	* Selector
 
-Selector") FirstCurve2d;
+	:rtype: Handle_Geom2d_Curve
+") FirstCurve2d;
 		const Handle_Geom2d_Curve & FirstCurve2d ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_Curve
+		%feature("autodoc", "	* Selector
 
-Selector") SecondCurve2d;
+	:rtype: Handle_Geom2d_Curve
+") SecondCurve2d;
 		const Handle_Geom2d_Curve & SecondCurve2d ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if 3d curve is BoundedCurve from Geom
 
-Returns true if 3d curve is BoundedCurve from Geom") HasBounds;
+	:rtype: bool
+") HasBounds;
 		Standard_Boolean HasBounds ();
-		%feature("autodoc", "Args:
-	aT1(Standard_Real)
-	aT2(Standard_Real)
-	aP1(gp_Pnt)
-	aP2(gp_Pnt)
+		%feature("autodoc", "	* Returns boundary parameters and corresponded 3d point. Warning: If HasBounds returns false the returned parameters are equal to zero.
 
-Returns:
-	None
-
-Returns boundary parameters  
-and corresponded 3d point.  
- 
- Warning:  
-If HasBounds returns false  
-the returned parameters are equal  
-to zero.") Bounds;
+	:param aT1:
+	:type aT1: float &
+	:param aT2:
+	:type aT2: float &
+	:param aP1:
+	:type aP1: gp_Pnt
+	:param aP2:
+	:type aP2: gp_Pnt
+	:rtype: None
+") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt & aP1,gp_Pnt & aP2);
-		%feature("autodoc", "Args:
-	aT1(Standard_Real)
-	aP1(gp_Pnt)
+		%feature("autodoc", "	* Computes 3d point corresponded to parameter aT1 Returns true if given parameter aT1 is inside the boundaries of the curve
 
-Returns:
-	Standard_Boolean
-
-Computes 3d point corresponded to parameter aT1  
-Returns true if given parameter aT1  
-is inside the boundaries of the curve") D0;
+	:param aT1:
+	:type aT1: float &
+	:param aP1:
+	:type aP1: gp_Pnt
+	:rtype: bool
+") D0;
 		Standard_Boolean D0 (Standard_Real &OutValue,gp_Pnt & aP1);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	GeomAbs_CurveType
+		%feature("autodoc", "	* Returns the type of 3d curve
 
-Returns the type of 3d curve") Type;
+	:rtype: GeomAbs_CurveType
+") Type;
 		GeomAbs_CurveType Type ();
 };
 
@@ -1105,70 +931,47 @@ def __del__(self):
 %nodefaultctor IntTools_CurveRangeLocalizeData;
 class IntTools_CurveRangeLocalizeData {
 	public:
-		%feature("autodoc", "Args:
-	theNbSample(Standard_Integer)
-	theMinRange(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_CurveRangeLocalizeData;
+		%feature("autodoc", "	:param theNbSample:
+	:type theNbSample: Standard_Integer
+	:param theMinRange:
+	:type theMinRange: float
+	:rtype: None
+") IntTools_CurveRangeLocalizeData;
 		 IntTools_CurveRangeLocalizeData (const Standard_Integer theNbSample,const Standard_Real theMinRange);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") GetNbSample;
+		%feature("autodoc", "	:rtype: int
+") GetNbSample;
 		Standard_Integer GetNbSample ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") GetMinRange;
+		%feature("autodoc", "	:rtype: float
+") GetMinRange;
 		Standard_Real GetMinRange ();
-		%feature("autodoc", "Args:
-	theRange(IntTools_CurveRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AddOutRange;
+		%feature("autodoc", "	:param theRange:
+	:type theRange: IntTools_CurveRangeSample &
+	:rtype: None
+") AddOutRange;
 		void AddOutRange (const IntTools_CurveRangeSample & theRange);
-		%feature("autodoc", "Args:
-	theRange(IntTools_CurveRangeSample)
-	theBox(Bnd_Box)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AddBox;
+		%feature("autodoc", "	:param theRange:
+	:type theRange: IntTools_CurveRangeSample &
+	:param theBox:
+	:type theBox: Bnd_Box &
+	:rtype: None
+") AddBox;
 		void AddBox (const IntTools_CurveRangeSample & theRange,const Bnd_Box & theBox);
-		%feature("autodoc", "Args:
-	theRange(IntTools_CurveRangeSample)
-	theBox(Bnd_Box)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") FindBox;
+		%feature("autodoc", "	:param theRange:
+	:type theRange: IntTools_CurveRangeSample &
+	:param theBox:
+	:type theBox: Bnd_Box &
+	:rtype: bool
+") FindBox;
 		Standard_Boolean FindBox (const IntTools_CurveRangeSample & theRange,Bnd_Box & theBox);
-		%feature("autodoc", "Args:
-	theRange(IntTools_CurveRangeSample)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsRangeOut;
+		%feature("autodoc", "	:param theRange:
+	:type theRange: IntTools_CurveRangeSample &
+	:rtype: bool
+") IsRangeOut;
 		Standard_Boolean IsRangeOut (const IntTools_CurveRangeSample & theRange);
-		%feature("autodoc", "Args:
-	theList(IntTools_ListOfCurveRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ListRangeOut;
+		%feature("autodoc", "	:param theList:
+	:type theList: IntTools_ListOfCurveRangeSample &
+	:rtype: None
+") ListRangeOut;
 		void ListRangeOut (IntTools_ListOfCurveRangeSample & theList);
 };
 
@@ -1190,26 +993,23 @@ def __del__(self):
 %nodefaultctor IntTools_CurveRangeSampleMapHasher;
 class IntTools_CurveRangeSampleMapHasher {
 	public:
-		%feature("autodoc", "Args:
-	K(IntTools_CurveRangeSample)
-	Upper(Standard_Integer)
+		%feature("autodoc", "	* Returns a HasCode value for the Key <K> in the range 0..Upper.
 
-Returns:
-	static Standard_Integer
-
-Returns a HasCode value  for  the  Key <K>  in the  
-         range 0..Upper.") HashCode;
+	:param K:
+	:type K: IntTools_CurveRangeSample &
+	:param Upper:
+	:type Upper: Standard_Integer
+	:rtype: int
+") HashCode;
 		static Standard_Integer HashCode (const IntTools_CurveRangeSample & K,const Standard_Integer Upper);
-		%feature("autodoc", "Args:
-	S1(IntTools_CurveRangeSample)
-	S2(IntTools_CurveRangeSample)
+		%feature("autodoc", "	* Returns True when the two keys are the same. Two same keys must have the same hashcode, the contrary is not necessary.
 
-Returns:
-	static Standard_Boolean
-
-Returns True  when the two  keys are the same. Two  
-         same  keys  must   have  the  same  hashcode,  the  
-         contrary is not necessary.") IsEqual;
+	:param S1:
+	:type S1: IntTools_CurveRangeSample &
+	:param S2:
+	:type S2: IntTools_CurveRangeSample &
+	:rtype: bool
+") IsEqual;
 		static Standard_Boolean IsEqual (const IntTools_CurveRangeSample & S1,const IntTools_CurveRangeSample & S2);
 };
 
@@ -1231,42 +1031,24 @@ def __del__(self):
 %nodefaultctor IntTools_DataMapIteratorOfDataMapOfCurveSampleBox;
 class IntTools_DataMapIteratorOfDataMapOfCurveSampleBox : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_DataMapIteratorOfDataMapOfCurveSampleBox;
+		%feature("autodoc", "	:rtype: None
+") IntTools_DataMapIteratorOfDataMapOfCurveSampleBox;
 		 IntTools_DataMapIteratorOfDataMapOfCurveSampleBox ();
-		%feature("autodoc", "Args:
-	aMap(IntTools_DataMapOfCurveSampleBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_DataMapIteratorOfDataMapOfCurveSampleBox;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: IntTools_DataMapOfCurveSampleBox &
+	:rtype: None
+") IntTools_DataMapIteratorOfDataMapOfCurveSampleBox;
 		 IntTools_DataMapIteratorOfDataMapOfCurveSampleBox (const IntTools_DataMapOfCurveSampleBox & aMap);
-		%feature("autodoc", "Args:
-	aMap(IntTools_DataMapOfCurveSampleBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: IntTools_DataMapOfCurveSampleBox &
+	:rtype: None
+") Initialize;
 		void Initialize (const IntTools_DataMapOfCurveSampleBox & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_CurveRangeSample
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: IntTools_CurveRangeSample
+") Key;
 		const IntTools_CurveRangeSample & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Bnd_Box
+") Value;
 		const Bnd_Box & Value ();
 };
 
@@ -1288,42 +1070,24 @@ def __del__(self):
 %nodefaultctor IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox;
 class IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox;
+		%feature("autodoc", "	:rtype: None
+") IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox;
 		 IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox ();
-		%feature("autodoc", "Args:
-	aMap(IntTools_DataMapOfSurfaceSampleBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: IntTools_DataMapOfSurfaceSampleBox &
+	:rtype: None
+") IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox;
 		 IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox (const IntTools_DataMapOfSurfaceSampleBox & aMap);
-		%feature("autodoc", "Args:
-	aMap(IntTools_DataMapOfSurfaceSampleBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: IntTools_DataMapOfSurfaceSampleBox &
+	:rtype: None
+") Initialize;
 		void Initialize (const IntTools_DataMapOfSurfaceSampleBox & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_SurfaceRangeSample
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: IntTools_SurfaceRangeSample
+") Key;
 		const IntTools_SurfaceRangeSample & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Bnd_Box
+") Value;
 		const Bnd_Box & Value ();
 };
 
@@ -1345,29 +1109,20 @@ def __del__(self):
 %nodefaultctor IntTools_DataMapNodeOfDataMapOfCurveSampleBox;
 class IntTools_DataMapNodeOfDataMapOfCurveSampleBox : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(IntTools_CurveRangeSample)
-	I(Bnd_Box)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_DataMapNodeOfDataMapOfCurveSampleBox;
+		%feature("autodoc", "	:param K:
+	:type K: IntTools_CurveRangeSample &
+	:param I:
+	:type I: Bnd_Box &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") IntTools_DataMapNodeOfDataMapOfCurveSampleBox;
 		 IntTools_DataMapNodeOfDataMapOfCurveSampleBox (const IntTools_CurveRangeSample & K,const Bnd_Box & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_CurveRangeSample
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: IntTools_CurveRangeSample
+") Key;
 		IntTools_CurveRangeSample & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Bnd_Box
+") Value;
 		Bnd_Box & Value ();
 };
 
@@ -1428,29 +1183,20 @@ def __del__(self):
 %nodefaultctor IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox;
 class IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(IntTools_SurfaceRangeSample)
-	I(Bnd_Box)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox;
+		%feature("autodoc", "	:param K:
+	:type K: IntTools_SurfaceRangeSample &
+	:param I:
+	:type I: Bnd_Box &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox;
 		 IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox (const IntTools_SurfaceRangeSample & K,const Bnd_Box & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_SurfaceRangeSample
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: IntTools_SurfaceRangeSample
+") Key;
 		IntTools_SurfaceRangeSample & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Bnd_Box
+") Value;
 		Bnd_Box & Value ();
 };
 
@@ -1511,101 +1257,65 @@ def __del__(self):
 %nodefaultctor IntTools_DataMapOfCurveSampleBox;
 class IntTools_DataMapOfCurveSampleBox : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_DataMapOfCurveSampleBox;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") IntTools_DataMapOfCurveSampleBox;
 		 IntTools_DataMapOfCurveSampleBox (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(IntTools_DataMapOfCurveSampleBox)
-
-Returns:
-	IntTools_DataMapOfCurveSampleBox
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_DataMapOfCurveSampleBox &
+	:rtype: IntTools_DataMapOfCurveSampleBox
+") Assign;
 		IntTools_DataMapOfCurveSampleBox & Assign (const IntTools_DataMapOfCurveSampleBox & Other);
-		%feature("autodoc", "Args:
-	Other(IntTools_DataMapOfCurveSampleBox)
-
-Returns:
-	IntTools_DataMapOfCurveSampleBox
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_DataMapOfCurveSampleBox &
+	:rtype: IntTools_DataMapOfCurveSampleBox
+") operator=;
 		IntTools_DataMapOfCurveSampleBox & operator = (const IntTools_DataMapOfCurveSampleBox & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(IntTools_CurveRangeSample)
-	I(Bnd_Box)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: IntTools_CurveRangeSample &
+	:param I:
+	:type I: Bnd_Box &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const IntTools_CurveRangeSample & K,const Bnd_Box & I);
-		%feature("autodoc", "Args:
-	K(IntTools_CurveRangeSample)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: IntTools_CurveRangeSample &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const IntTools_CurveRangeSample & K);
-		%feature("autodoc", "Args:
-	K(IntTools_CurveRangeSample)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: IntTools_CurveRangeSample &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const IntTools_CurveRangeSample & K);
-		%feature("autodoc", "Args:
-	K(IntTools_CurveRangeSample)
-
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: IntTools_CurveRangeSample &
+	:rtype: Bnd_Box
+") Find;
 		const Bnd_Box & Find (const IntTools_CurveRangeSample & K);
-		%feature("autodoc", "Args:
-	K(IntTools_CurveRangeSample)
-
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: IntTools_CurveRangeSample &
+	:rtype: Bnd_Box
+") ChangeFind;
 		Bnd_Box & ChangeFind (const IntTools_CurveRangeSample & K);
-		%feature("autodoc", "Args:
-	K(IntTools_CurveRangeSample)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: IntTools_CurveRangeSample &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const IntTools_CurveRangeSample & K);
-		%feature("autodoc", "Args:
-	K(IntTools_CurveRangeSample)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: IntTools_CurveRangeSample &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const IntTools_CurveRangeSample & K);
 };
 
@@ -1627,101 +1337,65 @@ def __del__(self):
 %nodefaultctor IntTools_DataMapOfSurfaceSampleBox;
 class IntTools_DataMapOfSurfaceSampleBox : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_DataMapOfSurfaceSampleBox;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") IntTools_DataMapOfSurfaceSampleBox;
 		 IntTools_DataMapOfSurfaceSampleBox (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(IntTools_DataMapOfSurfaceSampleBox)
-
-Returns:
-	IntTools_DataMapOfSurfaceSampleBox
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_DataMapOfSurfaceSampleBox &
+	:rtype: IntTools_DataMapOfSurfaceSampleBox
+") Assign;
 		IntTools_DataMapOfSurfaceSampleBox & Assign (const IntTools_DataMapOfSurfaceSampleBox & Other);
-		%feature("autodoc", "Args:
-	Other(IntTools_DataMapOfSurfaceSampleBox)
-
-Returns:
-	IntTools_DataMapOfSurfaceSampleBox
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_DataMapOfSurfaceSampleBox &
+	:rtype: IntTools_DataMapOfSurfaceSampleBox
+") operator=;
 		IntTools_DataMapOfSurfaceSampleBox & operator = (const IntTools_DataMapOfSurfaceSampleBox & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(IntTools_SurfaceRangeSample)
-	I(Bnd_Box)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: IntTools_SurfaceRangeSample &
+	:param I:
+	:type I: Bnd_Box &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const IntTools_SurfaceRangeSample & K,const Bnd_Box & I);
-		%feature("autodoc", "Args:
-	K(IntTools_SurfaceRangeSample)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: IntTools_SurfaceRangeSample &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const IntTools_SurfaceRangeSample & K);
-		%feature("autodoc", "Args:
-	K(IntTools_SurfaceRangeSample)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: IntTools_SurfaceRangeSample &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const IntTools_SurfaceRangeSample & K);
-		%feature("autodoc", "Args:
-	K(IntTools_SurfaceRangeSample)
-
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: IntTools_SurfaceRangeSample &
+	:rtype: Bnd_Box
+") Find;
 		const Bnd_Box & Find (const IntTools_SurfaceRangeSample & K);
-		%feature("autodoc", "Args:
-	K(IntTools_SurfaceRangeSample)
-
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: IntTools_SurfaceRangeSample &
+	:rtype: Bnd_Box
+") ChangeFind;
 		Bnd_Box & ChangeFind (const IntTools_SurfaceRangeSample & K);
-		%feature("autodoc", "Args:
-	K(IntTools_SurfaceRangeSample)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: IntTools_SurfaceRangeSample &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const IntTools_SurfaceRangeSample & K);
-		%feature("autodoc", "Args:
-	K(IntTools_SurfaceRangeSample)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: IntTools_SurfaceRangeSample &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const IntTools_SurfaceRangeSample & K);
 };
 
@@ -1743,125 +1417,119 @@ def __del__(self):
 %nodefaultctor IntTools_EdgeEdge;
 class IntTools_EdgeEdge {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty contructor
 
-Empty contructor") IntTools_EdgeEdge;
+	:rtype: None
+") IntTools_EdgeEdge;
 		 IntTools_EdgeEdge ();
-		%feature("autodoc", "Args:
-	theEdge1(TopoDS_Edge)
-	theEdge2(TopoDS_Edge)
+		%feature("autodoc", "	* Contructor
 
-Returns:
-	None
-
-Contructor") IntTools_EdgeEdge;
+	:param theEdge1:
+	:type theEdge1: TopoDS_Edge &
+	:param theEdge2:
+	:type theEdge2: TopoDS_Edge &
+	:rtype: None
+") IntTools_EdgeEdge;
 		 IntTools_EdgeEdge (const TopoDS_Edge & theEdge1,const TopoDS_Edge & theEdge2);
-		%feature("autodoc", "Args:
-	theEdge1(TopoDS_Edge)
-	aT11(Standard_Real)
-	aT12(Standard_Real)
-	theEdge2(TopoDS_Edge)
-	aT21(Standard_Real)
-	aT22(Standard_Real)
+		%feature("autodoc", "	* Contructor
 
-Returns:
-	None
-
-Contructor") IntTools_EdgeEdge;
+	:param theEdge1:
+	:type theEdge1: TopoDS_Edge &
+	:param aT11:
+	:type aT11: float
+	:param aT12:
+	:type aT12: float
+	:param theEdge2:
+	:type theEdge2: TopoDS_Edge &
+	:param aT21:
+	:type aT21: float
+	:param aT22:
+	:type aT22: float
+	:rtype: None
+") IntTools_EdgeEdge;
 		 IntTools_EdgeEdge (const TopoDS_Edge & theEdge1,const Standard_Real aT11,const Standard_Real aT12,const TopoDS_Edge & theEdge2,const Standard_Real aT21,const Standard_Real aT22);
-		%feature("autodoc", "Args:
-	theEdge(TopoDS_Edge)
+		%feature("autodoc", "	* Sets the first edge
 
-Returns:
-	None
-
-Sets the first edge") SetEdge1;
+	:param theEdge:
+	:type theEdge: TopoDS_Edge &
+	:rtype: None
+") SetEdge1;
 		void SetEdge1 (const TopoDS_Edge & theEdge);
-		%feature("autodoc", "Args:
-	theEdge(TopoDS_Edge)
-	aT1(Standard_Real)
-	aT2(Standard_Real)
+		%feature("autodoc", "	* Sets the first edge and its range
 
-Returns:
-	None
-
-Sets the first edge and its range") SetEdge1;
+	:param theEdge:
+	:type theEdge: TopoDS_Edge &
+	:param aT1:
+	:type aT1: float
+	:param aT2:
+	:type aT2: float
+	:rtype: None
+") SetEdge1;
 		void SetEdge1 (const TopoDS_Edge & theEdge,const Standard_Real aT1,const Standard_Real aT2);
-		%feature("autodoc", "Args:
-	theRange1(IntTools_Range)
+		%feature("autodoc", "	* Sets the range for the first edge
 
-Returns:
-	None
-
-Sets the range for the first edge") SetRange1;
+	:param theRange1:
+	:type theRange1: IntTools_Range &
+	:rtype: None
+") SetRange1;
 		void SetRange1 (const IntTools_Range & theRange1);
-		%feature("autodoc", "Args:
-	aT1(Standard_Real)
-	aT2(Standard_Real)
+		%feature("autodoc", "	* Sets the range for the first edge
 
-Returns:
-	None
-
-Sets the range for the first edge") SetRange1;
+	:param aT1:
+	:type aT1: float
+	:param aT2:
+	:type aT2: float
+	:rtype: None
+") SetRange1;
 		void SetRange1 (const Standard_Real aT1,const Standard_Real aT2);
-		%feature("autodoc", "Args:
-	theEdge(TopoDS_Edge)
+		%feature("autodoc", "	* Sets the second edge
 
-Returns:
-	None
-
-Sets the second edge") SetEdge2;
+	:param theEdge:
+	:type theEdge: TopoDS_Edge &
+	:rtype: None
+") SetEdge2;
 		void SetEdge2 (const TopoDS_Edge & theEdge);
-		%feature("autodoc", "Args:
-	theEdge(TopoDS_Edge)
-	aT1(Standard_Real)
-	aT2(Standard_Real)
+		%feature("autodoc", "	* Sets the first edge and its range
 
-Returns:
-	None
-
-Sets the first edge and its range") SetEdge2;
+	:param theEdge:
+	:type theEdge: TopoDS_Edge &
+	:param aT1:
+	:type aT1: float
+	:param aT2:
+	:type aT2: float
+	:rtype: None
+") SetEdge2;
 		void SetEdge2 (const TopoDS_Edge & theEdge,const Standard_Real aT1,const Standard_Real aT2);
-		%feature("autodoc", "Args:
-	theRange(IntTools_Range)
+		%feature("autodoc", "	* Sets the range for the second edge
 
-Returns:
-	None
-
-Sets the range for the second edge") SetRange2;
+	:param theRange:
+	:type theRange: IntTools_Range &
+	:rtype: None
+") SetRange2;
 		void SetRange2 (const IntTools_Range & theRange);
-		%feature("autodoc", "Args:
-	aT1(Standard_Real)
-	aT2(Standard_Real)
+		%feature("autodoc", "	* Sets the range for the second edge
 
-Returns:
-	None
-
-Sets the range for the second edge") SetRange2;
+	:param aT1:
+	:type aT1: float
+	:param aT2:
+	:type aT2: float
+	:rtype: None
+") SetRange2;
 		void SetRange2 (const Standard_Real aT1,const Standard_Real aT2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Performs the intersection between edges
 
-Performs the intersection between edges") Perform;
+	:rtype: None
+") Perform;
 		void Perform ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if common part(s) is(are) found
 
-Returns TRUE if common part(s) is(are) found") IsDone;
+	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_SequenceOfCommonPrts
+		%feature("autodoc", "	* Returns common parts
 
-Returns common parts") CommonParts;
+	:rtype: IntTools_SequenceOfCommonPrts
+") CommonParts;
 		const IntTools_SequenceOfCommonPrts & CommonParts ();
 };
 
@@ -1883,162 +1551,131 @@ def __del__(self):
 %nodefaultctor IntTools_EdgeFace;
 class IntTools_EdgeFace {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty Constructor
 
-Empty Constructor") IntTools_EdgeFace;
+	:rtype: None
+") IntTools_EdgeFace;
 		 IntTools_EdgeFace ();
-		%feature("autodoc", "Args:
-	anEdge(TopoDS_Edge)
+		%feature("autodoc", "	* Initializes algorithm by the edge anEdge
 
-Returns:
-	None
-
-Initializes algorithm by the edge anEdge") SetEdge;
+	:param anEdge:
+	:type anEdge: TopoDS_Edge &
+	:rtype: None
+") SetEdge;
 		void SetEdge (const TopoDS_Edge & anEdge);
-		%feature("autodoc", "Args:
-	aTolEdge1(Standard_Real)
+		%feature("autodoc", "	* Initializes algorithm by edge tolerance
 
-Returns:
-	None
-
-Initializes algorithm by edge tolerance") SetTolE;
+	:param aTolEdge1:
+	:type aTolEdge1: float
+	:rtype: None
+") SetTolE;
 		void SetTolE (const Standard_Real aTolEdge1);
-		%feature("autodoc", "Args:
-	aFace(TopoDS_Face)
+		%feature("autodoc", "	* Initializes algorithm by the face aFace
 
-Returns:
-	None
-
-Initializes algorithm by the face aFace") SetFace;
+	:param aFace:
+	:type aFace: TopoDS_Face &
+	:rtype: None
+") SetFace;
 		void SetFace (const TopoDS_Face & aFace);
-		%feature("autodoc", "Args:
-	aTolFace(Standard_Real)
+		%feature("autodoc", "	* Initializes algorithm by face tolerance
 
-Returns:
-	None
-
-Initializes algorithm by face tolerance") SetTolF;
+	:param aTolFace:
+	:type aTolFace: float
+	:rtype: None
+") SetTolF;
 		void SetTolF (const Standard_Real aTolFace);
-		%feature("autodoc", "Args:
-	aDiscret(Standard_Integer)
+		%feature("autodoc", "	* Initializes algorithm by discretization value
 
-Returns:
-	None
-
-Initializes algorithm by discretization value") SetDiscretize;
+	:param aDiscret:
+	:type aDiscret: Standard_Integer
+	:rtype: None
+") SetDiscretize;
 		void SetDiscretize (const Standard_Integer aDiscret);
-		%feature("autodoc", "Args:
-	aDeflection(Standard_Real)
+		%feature("autodoc", "	* Initializes algorithm by deflection value
 
-Returns:
-	None
-
-Initializes algorithm by deflection value") SetDeflection;
+	:param aDeflection:
+	:type aDeflection: float
+	:rtype: None
+") SetDeflection;
 		void SetDeflection (const Standard_Real aDeflection);
-		%feature("autodoc", "Args:
-	anEpsT(Standard_Real)
+		%feature("autodoc", "	* Initializes algorithm by parameter tolerance
 
-Returns:
-	None
-
-Initializes algorithm by parameter tolerance") SetEpsilonT;
+	:param anEpsT:
+	:type anEpsT: float
+	:rtype: None
+") SetEpsilonT;
 		void SetEpsilonT (const Standard_Real anEpsT);
-		%feature("autodoc", "Args:
-	anEpsNull(Standard_Real)
+		%feature("autodoc", "	* Initializes algorithm by distance tolerance
 
-Returns:
-	None
-
-Initializes algorithm by distance tolerance") SetEpsilonNull;
+	:param anEpsNull:
+	:type anEpsNull: float
+	:rtype: None
+") SetEpsilonNull;
 		void SetEpsilonNull (const Standard_Real anEpsNull);
-		%feature("autodoc", "Args:
-	aRange(IntTools_Range)
+		%feature("autodoc", "	* Sets boundaries for edge. The algorithm processes edge inside these boundaries.
 
-Returns:
-	None
-
-Sets boundaries for edge.  
-The algorithm processes edge inside these boundaries.") SetRange;
+	:param aRange:
+	:type aRange: IntTools_Range &
+	:rtype: None
+") SetRange;
 		void SetRange (const IntTools_Range & aRange);
-		%feature("autodoc", "Args:
-	aFirst(Standard_Real)
-	aLast(Standard_Real)
+		%feature("autodoc", "	* Sets boundaries for edge. The algorithm processes edge inside these boundaries.
 
-Returns:
-	None
-
-Sets boundaries for edge.  
-The algorithm processes edge inside these boundaries.") SetRange;
+	:param aFirst:
+	:type aFirst: float
+	:param aLast:
+	:type aLast: float
+	:rtype: None
+") SetRange;
 		void SetRange (const Standard_Real aFirst,const Standard_Real aLast);
-		%feature("autodoc", "Args:
-	theContext(Handle_BOPInt_Context)
+		%feature("autodoc", "	* Sets the intersecton context
 
-Returns:
-	None
-
-Sets the intersecton context") SetContext;
+	:param theContext:
+	:type theContext: Handle_BOPInt_Context &
+	:rtype: None
+") SetContext;
 		void SetContext (const Handle_BOPInt_Context & theContext);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_BOPInt_Context
+		%feature("autodoc", "	* Gets the intersecton context
 
-Gets the intersecton context") Context;
+	:rtype: Handle_BOPInt_Context
+") Context;
 		const Handle_BOPInt_Context & Context ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Launches the process
 
-Launches the process") Perform;
+	:rtype: None
+") Perform;
 		void Perform ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if computation was done successfully, otherwise returns false
 
-Returns true if computation was done  
-successfully, otherwise returns false") IsDone;
+	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns code of completion 0 - means successful completion 1 - the process was not started 2,3,4,5 - invalid source data for the algorithm 6 - discretization failed 7 - no projectable ranges found 11 - distance computing error
 
-Returns code of completion  
-0 - means successful completion  
-1 - the process was not started  
-2,3,4,5 - invalid source data for the algorithm  
-6 - discretization failed  
-7 - no projectable ranges found  
-11 - distance computing error") ErrorStatus;
+	:rtype: int
+") ErrorStatus;
 		Standard_Integer ErrorStatus ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_SequenceOfCommonPrts
+		%feature("autodoc", "	* Returns results
 
-Returns results") CommonParts;
+	:rtype: IntTools_SequenceOfCommonPrts
+") CommonParts;
 		const IntTools_SequenceOfCommonPrts & CommonParts ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_Range
+		%feature("autodoc", "	* Returns boundaries for edge
 
-Returns boundaries for edge") Range;
+	:rtype: IntTools_Range
+") Range;
 		const IntTools_Range & Range ();
-		%feature("autodoc", "Args:
-	aP(gp_Pnt)
-	aS(BRepAdaptor_Surface)
-	aT(Standard_Real)
-	aD(Standard_Real)
+		%feature("autodoc", "	* 
 
-Returns:
-	static Standard_Boolean
-
+	:param aP:
+	:type aP: gp_Pnt
+	:param aS:
+	:type aS: BRepAdaptor_Surface &
+	:param aT:
+	:type aT: float
+	:param aD:
+	:type aD: float &
+	:rtype: bool
 ") IsEqDistance;
 		static Standard_Boolean IsEqDistance (const gp_Pnt & aP,const BRepAdaptor_Surface & aS,const Standard_Real aT,Standard_Real &OutValue);
 };
@@ -2061,77 +1698,61 @@ def __del__(self):
 %nodefaultctor IntTools_FClass2d;
 class IntTools_FClass2d {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor
 
-Empty constructor") IntTools_FClass2d;
+	:rtype: None
+") IntTools_FClass2d;
 		 IntTools_FClass2d ();
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Initializes algorithm by the face F and tolerance Tol
 
-Returns:
-	None
-
-Initializes algorithm by the face F  
-and tolerance Tol") IntTools_FClass2d;
+	:param F:
+	:type F: TopoDS_Face &
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") IntTools_FClass2d;
 		 IntTools_FClass2d (const TopoDS_Face & F,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Initializes algorithm by the face F and tolerance Tol
 
-Returns:
-	None
-
-Initializes algorithm by the face F  
-and tolerance Tol") Init;
+	:param F:
+	:type F: TopoDS_Face &
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Face & F,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_State
+		%feature("autodoc", "	* Returns state of infinite 2d point relatively to (0, 0)
 
-Returns state of infinite 2d point relatively to (0, 0)") PerformInfinitePoint;
+	:rtype: TopAbs_State
+") PerformInfinitePoint;
 		TopAbs_State PerformInfinitePoint ();
-		%feature("autodoc", "Args:
-	Puv(gp_Pnt2d)
-	RecadreOnPeriodic(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Returns state of the 2d point Puv. If RecadreOnPeriodic is true (defalut value), for the periodic surface 2d point, adjusted to period, is classified.
 
-Returns:
-	TopAbs_State
-
-Returns state of the 2d point Puv.  
-If RecadreOnPeriodic is true (defalut value),  
-for the periodic surface 2d point, adjusted to period, is  
-classified.") Perform;
+	:param Puv:
+	:type Puv: gp_Pnt2d
+	:param RecadreOnPeriodic: default value is Standard_True
+	:type RecadreOnPeriodic: bool
+	:rtype: TopAbs_State
+") Perform;
 		TopAbs_State Perform (const gp_Pnt2d & Puv,const Standard_Boolean RecadreOnPeriodic = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Destructor
 
-Destructor") Destroy;
+	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	Puv(gp_Pnt2d)
-	Tol(Standard_Real)
-	RecadreOnPeriodic(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Test a point with +- an offset (Tol) and returns On if some points are OUT an some are IN (Caution: Internal use . see the code for more details)
 
-Returns:
-	TopAbs_State
-
-Test a point with +- an offset (Tol) and returns  
-On if some points are OUT an some are IN  
- (Caution: Internal use . see the code for more details)") TestOnRestriction;
+	:param Puv:
+	:type Puv: gp_Pnt2d
+	:param Tol:
+	:type Tol: float
+	:param RecadreOnPeriodic: default value is Standard_True
+	:type RecadreOnPeriodic: bool
+	:rtype: TopAbs_State
+") TestOnRestriction;
 		TopAbs_State TestOnRestriction (const gp_Pnt2d & Puv,const Standard_Real Tol,const Standard_Boolean RecadreOnPeriodic = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsHole;
+		%feature("autodoc", "	:rtype: bool
+") IsHole;
 		Standard_Boolean IsHole ();
 };
 
@@ -2153,127 +1774,96 @@ def __del__(self):
 %nodefaultctor IntTools_FaceFace;
 class IntTools_FaceFace {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor.
 
-Empty constructor.") IntTools_FaceFace;
+	:rtype: None
+") IntTools_FaceFace;
 		 IntTools_FaceFace ();
-		%feature("autodoc", "Args:
-	ApproxCurves(Standard_Boolean)
-	ComputeCurveOnS1(Standard_Boolean)
-	ComputeCurveOnS2(Standard_Boolean)
-	ApproximationTolerance(Standard_Real)
+		%feature("autodoc", "	* Modifier
 
-Returns:
-	None
-
-Modifier") SetParameters;
+	:param ApproxCurves:
+	:type ApproxCurves: bool
+	:param ComputeCurveOnS1:
+	:type ComputeCurveOnS1: bool
+	:param ComputeCurveOnS2:
+	:type ComputeCurveOnS2: bool
+	:param ApproximationTolerance:
+	:type ApproximationTolerance: float
+	:rtype: None
+") SetParameters;
 		void SetParameters (const Standard_Boolean ApproxCurves,const Standard_Boolean ComputeCurveOnS1,const Standard_Boolean ComputeCurveOnS2,const Standard_Real ApproximationTolerance);
-		%feature("autodoc", "Args:
-	F1(TopoDS_Face)
-	F2(TopoDS_Face)
+		%feature("autodoc", "	* Intersects underliing surfaces of F1 and F2 Use sum of tolerance of F1 and F2 as intersection criteria
 
-Returns:
-	None
-
-Intersects underliing surfaces of F1 and F2  
-Use sum of tolerance of F1 and F2 as intersection  
-criteria") Perform;
+	:param F1:
+	:type F1: TopoDS_Face &
+	:param F2:
+	:type F2: TopoDS_Face &
+	:rtype: None
+") Perform;
 		void Perform (const TopoDS_Face & F1,const TopoDS_Face & F2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the intersection was successful
 
-Returns True if the intersection was successful") IsDone;
+	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_SequenceOfCurves
+		%feature("autodoc", "	* Returns sequence of 3d curves as result of intersection
 
-Returns sequence of 3d curves as result of intersection") Lines;
+	:rtype: IntTools_SequenceOfCurves
+") Lines;
 		const IntTools_SequenceOfCurves & Lines ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_SequenceOfPntOn2Faces
+		%feature("autodoc", "	* Returns sequence of 3d curves as result of intersection
 
-Returns sequence of 3d curves as result of intersection") Points;
+	:rtype: IntTools_SequenceOfPntOn2Faces
+") Points;
 		const IntTools_SequenceOfPntOn2Faces & Points ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns tolerance reached during approximation. If approximation was not done, returns zero.
 
-Returns tolerance reached during approximation.  
-If approximation was not done, returns zero.") TolReached3d;
+	:rtype: float
+") TolReached3d;
 		Standard_Real TolReached3d ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns tolerance reached during approximation. If approximation was not done, returns zero.
 
-Returns tolerance reached during approximation.  
-If approximation was not done, returns zero.") TolReached2d;
+	:rtype: float
+") TolReached2d;
 		Standard_Real TolReached2d ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Face
+		%feature("autodoc", "	* Returns first of processed faces
 
-Returns first of processed faces") Face1;
+	:rtype: TopoDS_Face
+") Face1;
 		const TopoDS_Face & Face1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Face
+		%feature("autodoc", "	* Returns second of processed faces
 
-Returns second of processed faces") Face2;
+	:rtype: TopoDS_Face
+") Face2;
 		const TopoDS_Face & Face2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if faces are tangent
 
-Returns True if faces are tangent") TangentFaces;
+	:rtype: bool
+") TangentFaces;
 		Standard_Boolean TangentFaces ();
-		%feature("autodoc", "Args:
-	bToSplit(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Provides post-processing the result lines. <bToSplit> - the flag. In case of <bToSplit> is true the closed 3D-curves will be splitted on parts. In case of <bToSplit> is false the closed 3D-curves remain untouched.
 
-Returns:
-	None
-
-Provides post-processing the result lines.  
-<bToSplit> - the flag.  
- In case of <bToSplit> is true the closed 3D-curves will be splitted  
- on parts.  
- In case of <bToSplit> is false the closed 3D-curves remain untouched.") PrepareLines3D;
+	:param bToSplit: default value is Standard_True
+	:type bToSplit: bool
+	:rtype: None
+") PrepareLines3D;
 		void PrepareLines3D (const Standard_Boolean bToSplit = Standard_True);
-		%feature("autodoc", "Args:
-	ListOfPnts(IntSurf_ListOfPntOn2S)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetList;
+		%feature("autodoc", "	:param ListOfPnts:
+	:type ListOfPnts: IntSurf_ListOfPntOn2S &
+	:rtype: None
+") SetList;
 		void SetList (IntSurf_ListOfPntOn2S & ListOfPnts);
-		%feature("autodoc", "Args:
-	aContext(Handle_BOPInt_Context)
+		%feature("autodoc", "	* Sets the intersecton context
 
-Returns:
-	None
-
-Sets the intersecton context") SetContext;
+	:param aContext:
+	:type aContext: Handle_BOPInt_Context &
+	:rtype: None
+") SetContext;
 		void SetContext (const Handle_BOPInt_Context & aContext);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_BOPInt_Context
+		%feature("autodoc", "	* Gets the intersecton context
 
-Gets the intersecton context") Context;
+	:rtype: Handle_BOPInt_Context
+") Context;
 		const Handle_BOPInt_Context & Context ();
 };
 
@@ -2295,24 +1885,21 @@ def __del__(self):
 %nodefaultctor IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress;
 class IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K1(Handle_Standard_Transient)
-	K2(Standard_Integer)
-	I(Standard_Address)
-	n1(TCollection_MapNodePtr)
-	n2(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress;
+		%feature("autodoc", "	:param K1:
+	:type K1: Handle_Standard_Transient &
+	:param K2:
+	:type K2: Standard_Integer
+	:param I:
+	:type I: Standard_Address &
+	:param n1:
+	:type n1: TCollection_MapNodePtr &
+	:param n2:
+	:type n2: TCollection_MapNodePtr &
+	:rtype: None
+") IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress;
 		 IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress (const Handle_Standard_Transient & K1,const Standard_Integer K2,const Standard_Address & I,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") Key1;
+		%feature("autodoc", "	:rtype: Handle_Standard_Transient
+") Key1;
 		Handle_Standard_Transient & Key1 ();
 
             %feature("autodoc","1");
@@ -2327,19 +1914,11 @@ No detailed docstring for this function.") Key1;
                 $self->Key2()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_MapNodePtr
-
-No detailed docstring for this function.") Next2;
+            		%feature("autodoc", "	:rtype: TCollection_MapNodePtr
+") Next2;
 		TCollection_MapNodePtr & Next2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Standard_Address
+") Value;
 		Standard_Address & Value ();
 };
 
@@ -2400,142 +1979,92 @@ def __del__(self):
 %nodefaultctor IntTools_IndexedDataMapOfTransientAddress;
 class IntTools_IndexedDataMapOfTransientAddress : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_IndexedDataMapOfTransientAddress;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") IntTools_IndexedDataMapOfTransientAddress;
 		 IntTools_IndexedDataMapOfTransientAddress (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(IntTools_IndexedDataMapOfTransientAddress)
-
-Returns:
-	IntTools_IndexedDataMapOfTransientAddress
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_IndexedDataMapOfTransientAddress &
+	:rtype: IntTools_IndexedDataMapOfTransientAddress
+") Assign;
 		IntTools_IndexedDataMapOfTransientAddress & Assign (const IntTools_IndexedDataMapOfTransientAddress & Other);
-		%feature("autodoc", "Args:
-	Other(IntTools_IndexedDataMapOfTransientAddress)
-
-Returns:
-	IntTools_IndexedDataMapOfTransientAddress
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_IndexedDataMapOfTransientAddress &
+	:rtype: IntTools_IndexedDataMapOfTransientAddress
+") operator=;
 		IntTools_IndexedDataMapOfTransientAddress & operator = (const IntTools_IndexedDataMapOfTransientAddress & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-	I(Standard_Address)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:param I:
+	:type I: Standard_Address &
+	:rtype: int
+") Add;
 		Standard_Integer Add (const Handle_Standard_Transient & K,const Standard_Address & I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	K(Handle_Standard_Transient)
-	T(Standard_Address)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Substitute;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param K:
+	:type K: Handle_Standard_Transient &
+	:param T:
+	:type T: Standard_Address &
+	:rtype: None
+") Substitute;
 		void Substitute (const Standard_Integer I,const Handle_Standard_Transient & K,const Standard_Address & T);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveLast;
+		%feature("autodoc", "	:rtype: None
+") RemoveLast;
 		void RemoveLast ();
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const Handle_Standard_Transient & K);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Handle_Standard_Transient
-
-No detailed docstring for this function.") FindKey;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: Handle_Standard_Transient
+") FindKey;
 		const Handle_Standard_Transient & FindKey (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") FindFromIndex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: Standard_Address
+") FindFromIndex;
 		const Standard_Address & FindFromIndex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFromIndex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: Standard_Address
+") ChangeFromIndex;
 		Standard_Address & ChangeFromIndex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FindIndex;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:rtype: int
+") FindIndex;
 		Standard_Integer FindIndex (const Handle_Standard_Transient & K);
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") FindFromKey;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:rtype: Standard_Address
+") FindFromKey;
 		const Standard_Address & FindFromKey (const Handle_Standard_Transient & K);
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFromKey;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:rtype: Standard_Address
+") ChangeFromKey;
 		Standard_Address & ChangeFromKey (const Handle_Standard_Transient & K);
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") FindFromKey1;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:rtype: Standard_Address
+") FindFromKey1;
 		Standard_Address FindFromKey1 (const Handle_Standard_Transient & K);
-		%feature("autodoc", "Args:
-	K(Handle_Standard_Transient)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFromKey1;
+		%feature("autodoc", "	:param K:
+	:type K: Handle_Standard_Transient &
+	:rtype: Standard_Address
+") ChangeFromKey1;
 		Standard_Address ChangeFromKey1 (const Handle_Standard_Transient & K);
 };
 
@@ -2557,49 +2086,27 @@ def __del__(self):
 %nodefaultctor IntTools_ListIteratorOfListOfBox;
 class IntTools_ListIteratorOfListOfBox {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_ListIteratorOfListOfBox;
+		%feature("autodoc", "	:rtype: None
+") IntTools_ListIteratorOfListOfBox;
 		 IntTools_ListIteratorOfListOfBox ();
-		%feature("autodoc", "Args:
-	L(IntTools_ListOfBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_ListIteratorOfListOfBox;
+		%feature("autodoc", "	:param L:
+	:type L: IntTools_ListOfBox &
+	:rtype: None
+") IntTools_ListIteratorOfListOfBox;
 		 IntTools_ListIteratorOfListOfBox (const IntTools_ListOfBox & L);
-		%feature("autodoc", "Args:
-	L(IntTools_ListOfBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: IntTools_ListOfBox &
+	:rtype: None
+") Initialize;
 		void Initialize (const IntTools_ListOfBox & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Bnd_Box
+") Value;
 		Bnd_Box & Value ();
 };
 
@@ -2621,49 +2128,27 @@ def __del__(self):
 %nodefaultctor IntTools_ListIteratorOfListOfCurveRangeSample;
 class IntTools_ListIteratorOfListOfCurveRangeSample {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_ListIteratorOfListOfCurveRangeSample;
+		%feature("autodoc", "	:rtype: None
+") IntTools_ListIteratorOfListOfCurveRangeSample;
 		 IntTools_ListIteratorOfListOfCurveRangeSample ();
-		%feature("autodoc", "Args:
-	L(IntTools_ListOfCurveRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_ListIteratorOfListOfCurveRangeSample;
+		%feature("autodoc", "	:param L:
+	:type L: IntTools_ListOfCurveRangeSample &
+	:rtype: None
+") IntTools_ListIteratorOfListOfCurveRangeSample;
 		 IntTools_ListIteratorOfListOfCurveRangeSample (const IntTools_ListOfCurveRangeSample & L);
-		%feature("autodoc", "Args:
-	L(IntTools_ListOfCurveRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: IntTools_ListOfCurveRangeSample &
+	:rtype: None
+") Initialize;
 		void Initialize (const IntTools_ListOfCurveRangeSample & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_CurveRangeSample
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: IntTools_CurveRangeSample
+") Value;
 		IntTools_CurveRangeSample & Value ();
 };
 
@@ -2685,49 +2170,27 @@ def __del__(self):
 %nodefaultctor IntTools_ListIteratorOfListOfSurfaceRangeSample;
 class IntTools_ListIteratorOfListOfSurfaceRangeSample {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_ListIteratorOfListOfSurfaceRangeSample;
+		%feature("autodoc", "	:rtype: None
+") IntTools_ListIteratorOfListOfSurfaceRangeSample;
 		 IntTools_ListIteratorOfListOfSurfaceRangeSample ();
-		%feature("autodoc", "Args:
-	L(IntTools_ListOfSurfaceRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_ListIteratorOfListOfSurfaceRangeSample;
+		%feature("autodoc", "	:param L:
+	:type L: IntTools_ListOfSurfaceRangeSample &
+	:rtype: None
+") IntTools_ListIteratorOfListOfSurfaceRangeSample;
 		 IntTools_ListIteratorOfListOfSurfaceRangeSample (const IntTools_ListOfSurfaceRangeSample & L);
-		%feature("autodoc", "Args:
-	L(IntTools_ListOfSurfaceRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: IntTools_ListOfSurfaceRangeSample &
+	:rtype: None
+") Initialize;
 		void Initialize (const IntTools_ListOfSurfaceRangeSample & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_SurfaceRangeSample
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: IntTools_SurfaceRangeSample
+") Value;
 		IntTools_SurfaceRangeSample & Value ();
 };
 
@@ -2749,21 +2212,15 @@ def __del__(self):
 %nodefaultctor IntTools_ListNodeOfListOfBox;
 class IntTools_ListNodeOfListOfBox : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Bnd_Box)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_ListNodeOfListOfBox;
+		%feature("autodoc", "	:param I:
+	:type I: Bnd_Box &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") IntTools_ListNodeOfListOfBox;
 		 IntTools_ListNodeOfListOfBox (const Bnd_Box & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Bnd_Box
+") Value;
 		Bnd_Box & Value ();
 };
 
@@ -2824,21 +2281,15 @@ def __del__(self):
 %nodefaultctor IntTools_ListNodeOfListOfCurveRangeSample;
 class IntTools_ListNodeOfListOfCurveRangeSample : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(IntTools_CurveRangeSample)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_ListNodeOfListOfCurveRangeSample;
+		%feature("autodoc", "	:param I:
+	:type I: IntTools_CurveRangeSample &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") IntTools_ListNodeOfListOfCurveRangeSample;
 		 IntTools_ListNodeOfListOfCurveRangeSample (const IntTools_CurveRangeSample & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_CurveRangeSample
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: IntTools_CurveRangeSample
+") Value;
 		IntTools_CurveRangeSample & Value ();
 };
 
@@ -2899,21 +2350,15 @@ def __del__(self):
 %nodefaultctor IntTools_ListNodeOfListOfSurfaceRangeSample;
 class IntTools_ListNodeOfListOfSurfaceRangeSample : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(IntTools_SurfaceRangeSample)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_ListNodeOfListOfSurfaceRangeSample;
+		%feature("autodoc", "	:param I:
+	:type I: IntTools_SurfaceRangeSample &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") IntTools_ListNodeOfListOfSurfaceRangeSample;
 		 IntTools_ListNodeOfListOfSurfaceRangeSample (const IntTools_SurfaceRangeSample & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_SurfaceRangeSample
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: IntTools_SurfaceRangeSample
+") Value;
 		IntTools_SurfaceRangeSample & Value ();
 };
 
@@ -2974,164 +2419,103 @@ def __del__(self):
 %nodefaultctor IntTools_ListOfBox;
 class IntTools_ListOfBox {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_ListOfBox;
+		%feature("autodoc", "	:rtype: None
+") IntTools_ListOfBox;
 		 IntTools_ListOfBox ();
-		%feature("autodoc", "Args:
-	Other(IntTools_ListOfBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_ListOfBox &
+	:rtype: None
+") Assign;
 		void Assign (const IntTools_ListOfBox & Other);
-		%feature("autodoc", "Args:
-	Other(IntTools_ListOfBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_ListOfBox &
+	:rtype: None
+") operator=;
 		void operator = (const IntTools_ListOfBox & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(Bnd_Box)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Bnd_Box &
+	:rtype: None
+") Prepend;
 		void Prepend (const Bnd_Box & I);
-		%feature("autodoc", "Args:
-	I(Bnd_Box)
-	theIt(IntTools_ListIteratorOfListOfBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Bnd_Box &
+	:param theIt:
+	:type theIt: IntTools_ListIteratorOfListOfBox &
+	:rtype: None
+") Prepend;
 		void Prepend (const Bnd_Box & I,IntTools_ListIteratorOfListOfBox & theIt);
-		%feature("autodoc", "Args:
-	Other(IntTools_ListOfBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_ListOfBox &
+	:rtype: None
+") Prepend;
 		void Prepend (IntTools_ListOfBox & Other);
-		%feature("autodoc", "Args:
-	I(Bnd_Box)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Bnd_Box &
+	:rtype: None
+") Append;
 		void Append (const Bnd_Box & I);
-		%feature("autodoc", "Args:
-	I(Bnd_Box)
-	theIt(IntTools_ListIteratorOfListOfBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Bnd_Box &
+	:param theIt:
+	:type theIt: IntTools_ListIteratorOfListOfBox &
+	:rtype: None
+") Append;
 		void Append (const Bnd_Box & I,IntTools_ListIteratorOfListOfBox & theIt);
-		%feature("autodoc", "Args:
-	Other(IntTools_ListOfBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_ListOfBox &
+	:rtype: None
+") Append;
 		void Append (IntTools_ListOfBox & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Bnd_Box
+") First;
 		Bnd_Box & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Bnd_Box
+") Last;
 		Bnd_Box & Last ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(IntTools_ListIteratorOfListOfBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: IntTools_ListIteratorOfListOfBox &
+	:rtype: None
+") Remove;
 		void Remove (IntTools_ListIteratorOfListOfBox & It);
-		%feature("autodoc", "Args:
-	I(Bnd_Box)
-	It(IntTools_ListIteratorOfListOfBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: Bnd_Box &
+	:param It:
+	:type It: IntTools_ListIteratorOfListOfBox &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Bnd_Box & I,IntTools_ListIteratorOfListOfBox & It);
-		%feature("autodoc", "Args:
-	Other(IntTools_ListOfBox)
-	It(IntTools_ListIteratorOfListOfBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_ListOfBox &
+	:param It:
+	:type It: IntTools_ListIteratorOfListOfBox &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (IntTools_ListOfBox & Other,IntTools_ListIteratorOfListOfBox & It);
-		%feature("autodoc", "Args:
-	I(Bnd_Box)
-	It(IntTools_ListIteratorOfListOfBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: Bnd_Box &
+	:param It:
+	:type It: IntTools_ListIteratorOfListOfBox &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Bnd_Box & I,IntTools_ListIteratorOfListOfBox & It);
-		%feature("autodoc", "Args:
-	Other(IntTools_ListOfBox)
-	It(IntTools_ListIteratorOfListOfBox)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_ListOfBox &
+	:param It:
+	:type It: IntTools_ListIteratorOfListOfBox &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (IntTools_ListOfBox & Other,IntTools_ListIteratorOfListOfBox & It);
 };
 
@@ -3153,164 +2537,103 @@ def __del__(self):
 %nodefaultctor IntTools_ListOfCurveRangeSample;
 class IntTools_ListOfCurveRangeSample {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_ListOfCurveRangeSample;
+		%feature("autodoc", "	:rtype: None
+") IntTools_ListOfCurveRangeSample;
 		 IntTools_ListOfCurveRangeSample ();
-		%feature("autodoc", "Args:
-	Other(IntTools_ListOfCurveRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_ListOfCurveRangeSample &
+	:rtype: None
+") Assign;
 		void Assign (const IntTools_ListOfCurveRangeSample & Other);
-		%feature("autodoc", "Args:
-	Other(IntTools_ListOfCurveRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_ListOfCurveRangeSample &
+	:rtype: None
+") operator=;
 		void operator = (const IntTools_ListOfCurveRangeSample & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(IntTools_CurveRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: IntTools_CurveRangeSample &
+	:rtype: None
+") Prepend;
 		void Prepend (const IntTools_CurveRangeSample & I);
-		%feature("autodoc", "Args:
-	I(IntTools_CurveRangeSample)
-	theIt(IntTools_ListIteratorOfListOfCurveRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: IntTools_CurveRangeSample &
+	:param theIt:
+	:type theIt: IntTools_ListIteratorOfListOfCurveRangeSample &
+	:rtype: None
+") Prepend;
 		void Prepend (const IntTools_CurveRangeSample & I,IntTools_ListIteratorOfListOfCurveRangeSample & theIt);
-		%feature("autodoc", "Args:
-	Other(IntTools_ListOfCurveRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_ListOfCurveRangeSample &
+	:rtype: None
+") Prepend;
 		void Prepend (IntTools_ListOfCurveRangeSample & Other);
-		%feature("autodoc", "Args:
-	I(IntTools_CurveRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: IntTools_CurveRangeSample &
+	:rtype: None
+") Append;
 		void Append (const IntTools_CurveRangeSample & I);
-		%feature("autodoc", "Args:
-	I(IntTools_CurveRangeSample)
-	theIt(IntTools_ListIteratorOfListOfCurveRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: IntTools_CurveRangeSample &
+	:param theIt:
+	:type theIt: IntTools_ListIteratorOfListOfCurveRangeSample &
+	:rtype: None
+") Append;
 		void Append (const IntTools_CurveRangeSample & I,IntTools_ListIteratorOfListOfCurveRangeSample & theIt);
-		%feature("autodoc", "Args:
-	Other(IntTools_ListOfCurveRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_ListOfCurveRangeSample &
+	:rtype: None
+") Append;
 		void Append (IntTools_ListOfCurveRangeSample & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_CurveRangeSample
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: IntTools_CurveRangeSample
+") First;
 		IntTools_CurveRangeSample & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_CurveRangeSample
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: IntTools_CurveRangeSample
+") Last;
 		IntTools_CurveRangeSample & Last ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(IntTools_ListIteratorOfListOfCurveRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: IntTools_ListIteratorOfListOfCurveRangeSample &
+	:rtype: None
+") Remove;
 		void Remove (IntTools_ListIteratorOfListOfCurveRangeSample & It);
-		%feature("autodoc", "Args:
-	I(IntTools_CurveRangeSample)
-	It(IntTools_ListIteratorOfListOfCurveRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: IntTools_CurveRangeSample &
+	:param It:
+	:type It: IntTools_ListIteratorOfListOfCurveRangeSample &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const IntTools_CurveRangeSample & I,IntTools_ListIteratorOfListOfCurveRangeSample & It);
-		%feature("autodoc", "Args:
-	Other(IntTools_ListOfCurveRangeSample)
-	It(IntTools_ListIteratorOfListOfCurveRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_ListOfCurveRangeSample &
+	:param It:
+	:type It: IntTools_ListIteratorOfListOfCurveRangeSample &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (IntTools_ListOfCurveRangeSample & Other,IntTools_ListIteratorOfListOfCurveRangeSample & It);
-		%feature("autodoc", "Args:
-	I(IntTools_CurveRangeSample)
-	It(IntTools_ListIteratorOfListOfCurveRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: IntTools_CurveRangeSample &
+	:param It:
+	:type It: IntTools_ListIteratorOfListOfCurveRangeSample &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const IntTools_CurveRangeSample & I,IntTools_ListIteratorOfListOfCurveRangeSample & It);
-		%feature("autodoc", "Args:
-	Other(IntTools_ListOfCurveRangeSample)
-	It(IntTools_ListIteratorOfListOfCurveRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_ListOfCurveRangeSample &
+	:param It:
+	:type It: IntTools_ListIteratorOfListOfCurveRangeSample &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (IntTools_ListOfCurveRangeSample & Other,IntTools_ListIteratorOfListOfCurveRangeSample & It);
 };
 
@@ -3332,164 +2655,103 @@ def __del__(self):
 %nodefaultctor IntTools_ListOfSurfaceRangeSample;
 class IntTools_ListOfSurfaceRangeSample {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_ListOfSurfaceRangeSample;
+		%feature("autodoc", "	:rtype: None
+") IntTools_ListOfSurfaceRangeSample;
 		 IntTools_ListOfSurfaceRangeSample ();
-		%feature("autodoc", "Args:
-	Other(IntTools_ListOfSurfaceRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_ListOfSurfaceRangeSample &
+	:rtype: None
+") Assign;
 		void Assign (const IntTools_ListOfSurfaceRangeSample & Other);
-		%feature("autodoc", "Args:
-	Other(IntTools_ListOfSurfaceRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_ListOfSurfaceRangeSample &
+	:rtype: None
+") operator=;
 		void operator = (const IntTools_ListOfSurfaceRangeSample & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(IntTools_SurfaceRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: IntTools_SurfaceRangeSample &
+	:rtype: None
+") Prepend;
 		void Prepend (const IntTools_SurfaceRangeSample & I);
-		%feature("autodoc", "Args:
-	I(IntTools_SurfaceRangeSample)
-	theIt(IntTools_ListIteratorOfListOfSurfaceRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: IntTools_SurfaceRangeSample &
+	:param theIt:
+	:type theIt: IntTools_ListIteratorOfListOfSurfaceRangeSample &
+	:rtype: None
+") Prepend;
 		void Prepend (const IntTools_SurfaceRangeSample & I,IntTools_ListIteratorOfListOfSurfaceRangeSample & theIt);
-		%feature("autodoc", "Args:
-	Other(IntTools_ListOfSurfaceRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_ListOfSurfaceRangeSample &
+	:rtype: None
+") Prepend;
 		void Prepend (IntTools_ListOfSurfaceRangeSample & Other);
-		%feature("autodoc", "Args:
-	I(IntTools_SurfaceRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: IntTools_SurfaceRangeSample &
+	:rtype: None
+") Append;
 		void Append (const IntTools_SurfaceRangeSample & I);
-		%feature("autodoc", "Args:
-	I(IntTools_SurfaceRangeSample)
-	theIt(IntTools_ListIteratorOfListOfSurfaceRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: IntTools_SurfaceRangeSample &
+	:param theIt:
+	:type theIt: IntTools_ListIteratorOfListOfSurfaceRangeSample &
+	:rtype: None
+") Append;
 		void Append (const IntTools_SurfaceRangeSample & I,IntTools_ListIteratorOfListOfSurfaceRangeSample & theIt);
-		%feature("autodoc", "Args:
-	Other(IntTools_ListOfSurfaceRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_ListOfSurfaceRangeSample &
+	:rtype: None
+") Append;
 		void Append (IntTools_ListOfSurfaceRangeSample & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_SurfaceRangeSample
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: IntTools_SurfaceRangeSample
+") First;
 		IntTools_SurfaceRangeSample & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_SurfaceRangeSample
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: IntTools_SurfaceRangeSample
+") Last;
 		IntTools_SurfaceRangeSample & Last ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(IntTools_ListIteratorOfListOfSurfaceRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: IntTools_ListIteratorOfListOfSurfaceRangeSample &
+	:rtype: None
+") Remove;
 		void Remove (IntTools_ListIteratorOfListOfSurfaceRangeSample & It);
-		%feature("autodoc", "Args:
-	I(IntTools_SurfaceRangeSample)
-	It(IntTools_ListIteratorOfListOfSurfaceRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: IntTools_SurfaceRangeSample &
+	:param It:
+	:type It: IntTools_ListIteratorOfListOfSurfaceRangeSample &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const IntTools_SurfaceRangeSample & I,IntTools_ListIteratorOfListOfSurfaceRangeSample & It);
-		%feature("autodoc", "Args:
-	Other(IntTools_ListOfSurfaceRangeSample)
-	It(IntTools_ListIteratorOfListOfSurfaceRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_ListOfSurfaceRangeSample &
+	:param It:
+	:type It: IntTools_ListIteratorOfListOfSurfaceRangeSample &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (IntTools_ListOfSurfaceRangeSample & Other,IntTools_ListIteratorOfListOfSurfaceRangeSample & It);
-		%feature("autodoc", "Args:
-	I(IntTools_SurfaceRangeSample)
-	It(IntTools_ListIteratorOfListOfSurfaceRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: IntTools_SurfaceRangeSample &
+	:param It:
+	:type It: IntTools_ListIteratorOfListOfSurfaceRangeSample &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const IntTools_SurfaceRangeSample & I,IntTools_ListIteratorOfListOfSurfaceRangeSample & It);
-		%feature("autodoc", "Args:
-	Other(IntTools_ListOfSurfaceRangeSample)
-	It(IntTools_ListIteratorOfListOfSurfaceRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_ListOfSurfaceRangeSample &
+	:param It:
+	:type It: IntTools_ListIteratorOfListOfSurfaceRangeSample &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (IntTools_ListOfSurfaceRangeSample & Other,IntTools_ListIteratorOfListOfSurfaceRangeSample & It);
 };
 
@@ -3511,35 +2773,21 @@ def __del__(self):
 %nodefaultctor IntTools_MapIteratorOfMapOfCurveSample;
 class IntTools_MapIteratorOfMapOfCurveSample : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_MapIteratorOfMapOfCurveSample;
+		%feature("autodoc", "	:rtype: None
+") IntTools_MapIteratorOfMapOfCurveSample;
 		 IntTools_MapIteratorOfMapOfCurveSample ();
-		%feature("autodoc", "Args:
-	aMap(IntTools_MapOfCurveSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_MapIteratorOfMapOfCurveSample;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: IntTools_MapOfCurveSample &
+	:rtype: None
+") IntTools_MapIteratorOfMapOfCurveSample;
 		 IntTools_MapIteratorOfMapOfCurveSample (const IntTools_MapOfCurveSample & aMap);
-		%feature("autodoc", "Args:
-	aMap(IntTools_MapOfCurveSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: IntTools_MapOfCurveSample &
+	:rtype: None
+") Initialize;
 		void Initialize (const IntTools_MapOfCurveSample & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_CurveRangeSample
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: IntTools_CurveRangeSample
+") Key;
 		const IntTools_CurveRangeSample & Key ();
 };
 
@@ -3561,35 +2809,21 @@ def __del__(self):
 %nodefaultctor IntTools_MapIteratorOfMapOfSurfaceSample;
 class IntTools_MapIteratorOfMapOfSurfaceSample : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_MapIteratorOfMapOfSurfaceSample;
+		%feature("autodoc", "	:rtype: None
+") IntTools_MapIteratorOfMapOfSurfaceSample;
 		 IntTools_MapIteratorOfMapOfSurfaceSample ();
-		%feature("autodoc", "Args:
-	aMap(IntTools_MapOfSurfaceSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_MapIteratorOfMapOfSurfaceSample;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: IntTools_MapOfSurfaceSample &
+	:rtype: None
+") IntTools_MapIteratorOfMapOfSurfaceSample;
 		 IntTools_MapIteratorOfMapOfSurfaceSample (const IntTools_MapOfSurfaceSample & aMap);
-		%feature("autodoc", "Args:
-	aMap(IntTools_MapOfSurfaceSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: IntTools_MapOfSurfaceSample &
+	:rtype: None
+") Initialize;
 		void Initialize (const IntTools_MapOfSurfaceSample & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_SurfaceRangeSample
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: IntTools_SurfaceRangeSample
+") Key;
 		const IntTools_SurfaceRangeSample & Key ();
 };
 
@@ -3611,68 +2845,43 @@ def __del__(self):
 %nodefaultctor IntTools_MapOfCurveSample;
 class IntTools_MapOfCurveSample : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_MapOfCurveSample;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") IntTools_MapOfCurveSample;
 		 IntTools_MapOfCurveSample (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(IntTools_MapOfCurveSample)
-
-Returns:
-	IntTools_MapOfCurveSample
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_MapOfCurveSample &
+	:rtype: IntTools_MapOfCurveSample
+") Assign;
 		IntTools_MapOfCurveSample & Assign (const IntTools_MapOfCurveSample & Other);
-		%feature("autodoc", "Args:
-	Other(IntTools_MapOfCurveSample)
-
-Returns:
-	IntTools_MapOfCurveSample
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_MapOfCurveSample &
+	:rtype: IntTools_MapOfCurveSample
+") operator=;
 		IntTools_MapOfCurveSample & operator = (const IntTools_MapOfCurveSample & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	aKey(IntTools_CurveRangeSample)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: IntTools_CurveRangeSample &
+	:rtype: bool
+") Add;
 		Standard_Boolean Add (const IntTools_CurveRangeSample & aKey);
-		%feature("autodoc", "Args:
-	aKey(IntTools_CurveRangeSample)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: IntTools_CurveRangeSample &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const IntTools_CurveRangeSample & aKey);
-		%feature("autodoc", "Args:
-	aKey(IntTools_CurveRangeSample)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: IntTools_CurveRangeSample &
+	:rtype: bool
+") Remove;
 		Standard_Boolean Remove (const IntTools_CurveRangeSample & aKey);
 };
 
@@ -3694,68 +2903,43 @@ def __del__(self):
 %nodefaultctor IntTools_MapOfSurfaceSample;
 class IntTools_MapOfSurfaceSample : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_MapOfSurfaceSample;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") IntTools_MapOfSurfaceSample;
 		 IntTools_MapOfSurfaceSample (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(IntTools_MapOfSurfaceSample)
-
-Returns:
-	IntTools_MapOfSurfaceSample
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_MapOfSurfaceSample &
+	:rtype: IntTools_MapOfSurfaceSample
+") Assign;
 		IntTools_MapOfSurfaceSample & Assign (const IntTools_MapOfSurfaceSample & Other);
-		%feature("autodoc", "Args:
-	Other(IntTools_MapOfSurfaceSample)
-
-Returns:
-	IntTools_MapOfSurfaceSample
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_MapOfSurfaceSample &
+	:rtype: IntTools_MapOfSurfaceSample
+") operator=;
 		IntTools_MapOfSurfaceSample & operator = (const IntTools_MapOfSurfaceSample & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	aKey(IntTools_SurfaceRangeSample)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: IntTools_SurfaceRangeSample &
+	:rtype: bool
+") Add;
 		Standard_Boolean Add (const IntTools_SurfaceRangeSample & aKey);
-		%feature("autodoc", "Args:
-	aKey(IntTools_SurfaceRangeSample)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: IntTools_SurfaceRangeSample &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const IntTools_SurfaceRangeSample & aKey);
-		%feature("autodoc", "Args:
-	aKey(IntTools_SurfaceRangeSample)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param aKey:
+	:type aKey: IntTools_SurfaceRangeSample &
+	:rtype: bool
+") Remove;
 		Standard_Boolean Remove (const IntTools_SurfaceRangeSample & aKey);
 };
 
@@ -3777,181 +2961,143 @@ def __del__(self):
 %nodefaultctor IntTools_MarkedRangeSet;
 class IntTools_MarkedRangeSet {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor
 
-Empty constructor") IntTools_MarkedRangeSet;
+	:rtype: None
+") IntTools_MarkedRangeSet;
 		 IntTools_MarkedRangeSet ();
-		%feature("autodoc", "Args:
-	theFirstBoundary(Standard_Real)
-	theLastBoundary(Standard_Real)
-	theInitFlag(Standard_Integer)
+		%feature("autodoc", "	* build set of ranges which consists of one range with boundary values theFirstBoundary and theLastBoundary
 
-Returns:
-	None
-
-build set of ranges which consists of one range with  
-boundary values theFirstBoundary and theLastBoundary") IntTools_MarkedRangeSet;
+	:param theFirstBoundary:
+	:type theFirstBoundary: float
+	:param theLastBoundary:
+	:type theLastBoundary: float
+	:param theInitFlag:
+	:type theInitFlag: Standard_Integer
+	:rtype: None
+") IntTools_MarkedRangeSet;
 		 IntTools_MarkedRangeSet (const Standard_Real theFirstBoundary,const Standard_Real theLastBoundary,const Standard_Integer theInitFlag);
-		%feature("autodoc", "Args:
-	theSortedArray(IntTools_CArray1OfReal)
-	theInitFlag(Standard_Integer)
+		%feature("autodoc", "	* Build set of ranges based on the array of progressive sorted values Warning: The constructor do not check if the values of array are not sorted It should be checked before function invocation
 
-Returns:
-	None
-
-Build set of ranges based on the array of progressive sorted values  
- 
- Warning:  
-The constructor do not check if the values of array are not sorted  
-It should be checked before function invocation") IntTools_MarkedRangeSet;
+	:param theSortedArray:
+	:type theSortedArray: IntTools_CArray1OfReal &
+	:param theInitFlag:
+	:type theInitFlag: Standard_Integer
+	:rtype: None
+") IntTools_MarkedRangeSet;
 		 IntTools_MarkedRangeSet (const IntTools_CArray1OfReal & theSortedArray,const Standard_Integer theInitFlag);
-		%feature("autodoc", "Args:
-	theFirstBoundary(Standard_Real)
-	theLastBoundary(Standard_Real)
-	theInitFlag(Standard_Integer)
+		%feature("autodoc", "	* build set of ranges which consists of one range with boundary values theFirstBoundary and theLastBoundary
 
-Returns:
-	None
-
-build set of ranges which consists of one range with  
-boundary values theFirstBoundary and theLastBoundary") SetBoundaries;
+	:param theFirstBoundary:
+	:type theFirstBoundary: float
+	:param theLastBoundary:
+	:type theLastBoundary: float
+	:param theInitFlag:
+	:type theInitFlag: Standard_Integer
+	:rtype: None
+") SetBoundaries;
 		void SetBoundaries (const Standard_Real theFirstBoundary,const Standard_Real theLastBoundary,const Standard_Integer theInitFlag);
-		%feature("autodoc", "Args:
-	theSortedArray(IntTools_CArray1OfReal)
-	theInitFlag(Standard_Integer)
+		%feature("autodoc", "	* Build set of ranges based on the array of progressive sorted values Warning: The function do not check if the values of array are not sorted It should be checked before function invocation
 
-Returns:
-	None
-
-Build set of ranges based on the array of progressive sorted values  
- 
- Warning:  
-The function do not check if the values of array are not sorted  
-It should be checked before function invocation") SetRanges;
+	:param theSortedArray:
+	:type theSortedArray: IntTools_CArray1OfReal &
+	:param theInitFlag:
+	:type theInitFlag: Standard_Integer
+	:rtype: None
+") SetRanges;
 		void SetRanges (const IntTools_CArray1OfReal & theSortedArray,const Standard_Integer theInitFlag);
-		%feature("autodoc", "Args:
-	theFirstBoundary(Standard_Real)
-	theLastBoundary(Standard_Real)
-	theFlag(Standard_Integer)
+		%feature("autodoc", "	* Inserts a new range marked with flag theFlag It replace the existing ranges or parts of ranges and their flags. Returns True if the range is inside the initial boundaries, otherwise or in case of some error returns False
 
-Returns:
-	Standard_Boolean
-
-Inserts a new range marked with flag theFlag  
-It replace the existing ranges or parts of ranges  
-and their flags.  
-Returns True if the range is inside the initial boundaries,  
-otherwise or in case of some error returns False") InsertRange;
+	:param theFirstBoundary:
+	:type theFirstBoundary: float
+	:param theLastBoundary:
+	:type theLastBoundary: float
+	:param theFlag:
+	:type theFlag: Standard_Integer
+	:rtype: bool
+") InsertRange;
 		Standard_Boolean InsertRange (const Standard_Real theFirstBoundary,const Standard_Real theLastBoundary,const Standard_Integer theFlag);
-		%feature("autodoc", "Args:
-	theRange(IntTools_Range)
-	theFlag(Standard_Integer)
+		%feature("autodoc", "	* Inserts a new range marked with flag theFlag It replace the existing ranges or parts of ranges and their flags. Returns True if the range is inside the initial boundaries, otherwise or in case of some error returns False
 
-Returns:
-	Standard_Boolean
-
-Inserts a new range marked with flag theFlag  
-It replace the existing ranges or parts of ranges  
-and their flags.  
-Returns True if the range is inside the initial boundaries,  
-otherwise or in case of some error returns False") InsertRange;
+	:param theRange:
+	:type theRange: IntTools_Range &
+	:param theFlag:
+	:type theFlag: Standard_Integer
+	:rtype: bool
+") InsertRange;
 		Standard_Boolean InsertRange (const IntTools_Range & theRange,const Standard_Integer theFlag);
-		%feature("autodoc", "Args:
-	theFirstBoundary(Standard_Real)
-	theLastBoundary(Standard_Real)
-	theFlag(Standard_Integer)
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Inserts a new range marked with flag theFlag It replace the existing ranges or parts of ranges and their flags. The index theIndex is a position where the range will be inserted. Returns True if the range is inside the initial boundaries, otherwise or in case of some error returns False
 
-Returns:
-	Standard_Boolean
-
-Inserts a new range marked with flag theFlag  
-It replace the existing ranges or parts of ranges  
-and their flags.  
-The index theIndex is a position where the range will be inserted.  
-Returns True if the range is inside the initial boundaries,  
-otherwise or in case of some error returns False") InsertRange;
+	:param theFirstBoundary:
+	:type theFirstBoundary: float
+	:param theLastBoundary:
+	:type theLastBoundary: float
+	:param theFlag:
+	:type theFlag: Standard_Integer
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: bool
+") InsertRange;
 		Standard_Boolean InsertRange (const Standard_Real theFirstBoundary,const Standard_Real theLastBoundary,const Standard_Integer theFlag,const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theRange(IntTools_Range)
-	theFlag(Standard_Integer)
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Inserts a new range marked with flag theFlag It replace the existing ranges or parts of ranges and their flags. The index theIndex is a position where the range will be inserted. Returns True if the range is inside the initial boundaries, otherwise or in case of some error returns False
 
-Returns:
-	Standard_Boolean
-
-Inserts a new range marked with flag theFlag  
-It replace the existing ranges or parts of ranges  
-and their flags.  
-The index theIndex is a position where the range will be inserted.  
-Returns True if the range is inside the initial boundaries,  
-otherwise or in case of some error returns False") InsertRange;
+	:param theRange:
+	:type theRange: IntTools_Range &
+	:param theFlag:
+	:type theFlag: Standard_Integer
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: bool
+") InsertRange;
 		Standard_Boolean InsertRange (const IntTools_Range & theRange,const Standard_Integer theFlag,const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
-	theFlag(Standard_Integer)
+		%feature("autodoc", "	* Set flag theFlag for range with index theIndex
 
-Returns:
-	None
-
-Set flag theFlag for range with index theIndex") SetFlag;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:param theFlag:
+	:type theFlag: Standard_Integer
+	:rtype: None
+") SetFlag;
 		void SetFlag (const Standard_Integer theIndex,const Standard_Integer theFlag);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns flag of the range with index theIndex
 
-Returns:
-	Standard_Integer
-
-Returns flag of the range with index theIndex") Flag;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: int
+") Flag;
 		Standard_Integer Flag (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theValue(Standard_Real)
+		%feature("autodoc", "	* Returns index of range which contains theValue. If theValue do not belong any range returns 0.
 
-Returns:
-	Standard_Integer
-
-Returns index of range which contains theValue.  
-If theValue do not belong any range returns 0.") GetIndex;
+	:param theValue:
+	:type theValue: float
+	:rtype: int
+") GetIndex;
 		Standard_Integer GetIndex (const Standard_Real theValue);
-		%feature("autodoc", "Args:
-	theValue(Standard_Real)
-
-Returns:
-	TColStd_SequenceOfInteger
-
-No detailed docstring for this function.") GetIndices;
+		%feature("autodoc", "	:param theValue:
+	:type theValue: float
+	:rtype: TColStd_SequenceOfInteger
+") GetIndices;
 		const TColStd_SequenceOfInteger & GetIndices (const Standard_Real theValue);
-		%feature("autodoc", "Args:
-	theValue(Standard_Real)
-	UseLower(Standard_Boolean)
+		%feature("autodoc", "	* Returns index of range which contains theValue If theValue do not belong any range returns 0. If UseLower is Standard_True then lower boundary of the range can be equal to theValue, otherwise upper boundary of the range can be equal to theValue.
 
-Returns:
-	Standard_Integer
-
-Returns index of range which contains theValue  
-If theValue do not belong any range returns 0.  
-If UseLower is Standard_True then lower boundary of the range  
-can be equal to theValue, otherwise upper boundary of the range  
-can be equal to theValue.") GetIndex;
+	:param theValue:
+	:type theValue: float
+	:param UseLower:
+	:type UseLower: bool
+	:rtype: int
+") GetIndex;
 		Standard_Integer GetIndex (const Standard_Real theValue,const Standard_Boolean UseLower);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns number of ranges
 
-Returns number of ranges") Length;
+	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the range with index theIndex. the Index can be from 1 to Length()
 
-Returns:
-	IntTools_Range
-
-Returns the range with index theIndex.  
-the Index can be from 1 to Length()") Range;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: IntTools_Range
+") Range;
 		IntTools_Range Range (const Standard_Integer theIndex);
 };
 
@@ -3973,66 +3119,55 @@ def __del__(self):
 %nodefaultctor IntTools_PntOn2Faces;
 class IntTools_PntOn2Faces {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor
 
-Empty constructor") IntTools_PntOn2Faces;
+	:rtype: None
+") IntTools_PntOn2Faces;
 		 IntTools_PntOn2Faces ();
-		%feature("autodoc", "Args:
-	aP1(IntTools_PntOnFace)
-	aP2(IntTools_PntOnFace)
+		%feature("autodoc", "	* Initializes me by two points aP1 and aP2
 
-Returns:
-	None
-
-Initializes me by two points aP1 and aP2") IntTools_PntOn2Faces;
+	:param aP1:
+	:type aP1: IntTools_PntOnFace &
+	:param aP2:
+	:type aP2: IntTools_PntOnFace &
+	:rtype: None
+") IntTools_PntOn2Faces;
 		 IntTools_PntOn2Faces (const IntTools_PntOnFace & aP1,const IntTools_PntOnFace & aP2);
-		%feature("autodoc", "Args:
-	aP1(IntTools_PntOnFace)
+		%feature("autodoc", "	* Modifier
 
-Returns:
-	None
-
-Modifier") SetP1;
+	:param aP1:
+	:type aP1: IntTools_PntOnFace &
+	:rtype: None
+") SetP1;
 		void SetP1 (const IntTools_PntOnFace & aP1);
-		%feature("autodoc", "Args:
-	aP2(IntTools_PntOnFace)
+		%feature("autodoc", "	* Modifier
 
-Returns:
-	None
-
-Modifier") SetP2;
+	:param aP2:
+	:type aP2: IntTools_PntOnFace &
+	:rtype: None
+") SetP2;
 		void SetP2 (const IntTools_PntOnFace & aP2);
-		%feature("autodoc", "Args:
-	bF(Standard_Boolean)
+		%feature("autodoc", "	* Modifier
 
-Returns:
-	None
-
-Modifier") SetValid;
+	:param bF:
+	:type bF: bool
+	:rtype: None
+") SetValid;
 		void SetValid (const Standard_Boolean bF);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_PntOnFace
+		%feature("autodoc", "	* Selector
 
-Selector") P1;
+	:rtype: IntTools_PntOnFace
+") P1;
 		const IntTools_PntOnFace & P1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_PntOnFace
+		%feature("autodoc", "	* Selector
 
-Selector") P2;
+	:rtype: IntTools_PntOnFace
+") P2;
 		const IntTools_PntOnFace & P2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Selector
 
-Selector") IsValid;
+	:rtype: bool
+") IsValid;
 		Standard_Boolean IsValid ();
 };
 
@@ -4054,80 +3189,72 @@ def __del__(self):
 %nodefaultctor IntTools_PntOnFace;
 class IntTools_PntOnFace {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor
 
-Empty constructor") IntTools_PntOnFace;
+	:rtype: None
+") IntTools_PntOnFace;
 		 IntTools_PntOnFace ();
-		%feature("autodoc", "Args:
-	aF(TopoDS_Face)
-	aP(gp_Pnt)
-	U(Standard_Real)
-	V(Standard_Real)
+		%feature("autodoc", "	* Initializes me by aFace, a 3d point and it's UV parameters on face
 
-Returns:
-	None
-
-Initializes me by aFace, a 3d point  
-and it's UV parameters on face") Init;
+	:param aF:
+	:type aF: TopoDS_Face &
+	:param aP:
+	:type aP: gp_Pnt
+	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Face & aF,const gp_Pnt & aP,const Standard_Real U,const Standard_Real V);
-		%feature("autodoc", "Args:
-	aF(TopoDS_Face)
+		%feature("autodoc", "	* Modifier
 
-Returns:
-	None
-
-Modifier") SetFace;
+	:param aF:
+	:type aF: TopoDS_Face &
+	:rtype: None
+") SetFace;
 		void SetFace (const TopoDS_Face & aF);
-		%feature("autodoc", "Args:
-	aP(gp_Pnt)
+		%feature("autodoc", "	* Modifier
 
-Returns:
-	None
-
-Modifier") SetPnt;
+	:param aP:
+	:type aP: gp_Pnt
+	:rtype: None
+") SetPnt;
 		void SetPnt (const gp_Pnt & aP);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
+		%feature("autodoc", "	* Modifier
 
-Returns:
-	None
-
-Modifier") SetParameters;
+	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:rtype: None
+") SetParameters;
 		void SetParameters (const Standard_Real U,const Standard_Real V);
-		%feature("autodoc", "Args:
-	bF(Standard_Boolean)
+		%feature("autodoc", "	* Modifier
 
-Returns:
-	None
-
-Modifier") SetValid;
+	:param bF:
+	:type bF: bool
+	:rtype: None
+") SetValid;
 		void SetValid (const Standard_Boolean bF);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Face
+		%feature("autodoc", "	* Selector
 
-Selector") Face;
+	:rtype: TopoDS_Face
+") Face;
 		const TopoDS_Face & Face ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
+		%feature("autodoc", "	* Selector
 
-Selector") Pnt;
+	:rtype: gp_Pnt
+") Pnt;
 		const gp_Pnt & Pnt ();
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
+		%feature("autodoc", "	* Selector
 
-Returns:
-	None
-
-Selector") Parameters;
+	:param U:
+	:type U: float &
+	:param V:
+	:type V: float &
+	:rtype: None
+") Parameters;
 		void Parameters (Standard_Real &OutValue,Standard_Real &OutValue);
 };
 
@@ -4149,14 +3276,12 @@ def __del__(self):
 %nodefaultctor IntTools_QuickSort;
 class IntTools_QuickSort {
 	public:
-		%feature("autodoc", "Args:
-	TheArray(IntTools_Array1OfRoots)
-	Comp(IntTools_Compare)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") Sort;
+		%feature("autodoc", "	:param TheArray:
+	:type TheArray: IntTools_Array1OfRoots &
+	:param Comp:
+	:type Comp: IntTools_Compare &
+	:rtype: void
+") Sort;
 		static void Sort (IntTools_Array1OfRoots & TheArray,const IntTools_Compare & Comp);
 };
 
@@ -4178,14 +3303,12 @@ def __del__(self):
 %nodefaultctor IntTools_QuickSortRange;
 class IntTools_QuickSortRange {
 	public:
-		%feature("autodoc", "Args:
-	TheArray(IntTools_Array1OfRange)
-	Comp(IntTools_CompareRange)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") Sort;
+		%feature("autodoc", "	:param TheArray:
+	:type TheArray: IntTools_Array1OfRange &
+	:param Comp:
+	:type Comp: IntTools_CompareRange &
+	:rtype: void
+") Sort;
 		static void Sort (IntTools_Array1OfRange & TheArray,const IntTools_CompareRange & Comp);
 };
 
@@ -4207,60 +3330,52 @@ def __del__(self):
 %nodefaultctor IntTools_Range;
 class IntTools_Range {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor
 
-Empty constructor") IntTools_Range;
+	:rtype: None
+") IntTools_Range;
 		 IntTools_Range ();
-		%feature("autodoc", "Args:
-	aFirst(Standard_Real)
-	aLast(Standard_Real)
+		%feature("autodoc", "	* Initialize me by range boundaries
 
-Returns:
-	None
-
-Initialize me by range boundaries") IntTools_Range;
+	:param aFirst:
+	:type aFirst: float
+	:param aLast:
+	:type aLast: float
+	:rtype: None
+") IntTools_Range;
 		 IntTools_Range (const Standard_Real aFirst,const Standard_Real aLast);
-		%feature("autodoc", "Args:
-	aFirst(Standard_Real)
+		%feature("autodoc", "	* Modifier
 
-Returns:
-	None
-
-Modifier") SetFirst;
+	:param aFirst:
+	:type aFirst: float
+	:rtype: None
+") SetFirst;
 		void SetFirst (const Standard_Real aFirst);
-		%feature("autodoc", "Args:
-	aLast(Standard_Real)
+		%feature("autodoc", "	* Modifier
 
-Returns:
-	None
-
-Modifier") SetLast;
+	:param aLast:
+	:type aLast: float
+	:rtype: None
+") SetLast;
 		void SetLast (const Standard_Real aLast);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Selector
 
-Selector") First;
+	:rtype: float
+") First;
 		Standard_Real First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Selector
 
-Selector") Last;
+	:rtype: float
+") Last;
 		Standard_Real Last ();
-		%feature("autodoc", "Args:
-	aFirst(Standard_Real)
-	aLast(Standard_Real)
+		%feature("autodoc", "	* Selector
 
-Returns:
-	None
-
-Selector") Range;
+	:param aFirst:
+	:type aFirst: float &
+	:param aLast:
+	:type aLast: float &
+	:rtype: None
+") Range;
 		void Range (Standard_Real &OutValue,Standard_Real &OutValue);
 };
 
@@ -4282,142 +3397,110 @@ def __del__(self):
 %nodefaultctor IntTools_Root;
 class IntTools_Root {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor
 
-Empty constructor") IntTools_Root;
+	:rtype: None
+") IntTools_Root;
 		 IntTools_Root ();
-		%feature("autodoc", "Args:
-	aRoot(Standard_Real)
-	aType(Standard_Integer)
+		%feature("autodoc", "	* Initializes my by range of parameters and type of root
 
-Returns:
-	None
-
-Initializes my by range of parameters  
-and type of root") IntTools_Root;
+	:param aRoot:
+	:type aRoot: float
+	:param aType:
+	:type aType: Standard_Integer
+	:rtype: None
+") IntTools_Root;
 		 IntTools_Root (const Standard_Real aRoot,const Standard_Integer aType);
-		%feature("autodoc", "Args:
-	aRoot(Standard_Real)
+		%feature("autodoc", "	* Sets the Root's value
 
-Returns:
-	None
-
-Sets the Root's value") SetRoot;
+	:param aRoot:
+	:type aRoot: float
+	:rtype: None
+") SetRoot;
 		void SetRoot (const Standard_Real aRoot);
-		%feature("autodoc", "Args:
-	aType(Standard_Integer)
+		%feature("autodoc", "	* Sets the Root's Type
 
-Returns:
-	None
-
-Sets the Root's Type") SetType;
+	:param aType:
+	:type aType: Standard_Integer
+	:rtype: None
+") SetType;
 		void SetType (const Standard_Integer aType);
-		%feature("autodoc", "Args:
-	aState(TopAbs_State)
+		%feature("autodoc", "	* Set the value of the state before the root (at t=Root-dt)
 
-Returns:
-	None
-
-Set  the  value of the state before the root  
-(at  t=Root-dt)") SetStateBefore;
+	:param aState:
+	:type aState: TopAbs_State
+	:rtype: None
+") SetStateBefore;
 		void SetStateBefore (const TopAbs_State aState);
-		%feature("autodoc", "Args:
-	aState(TopAbs_State)
+		%feature("autodoc", "	* Set the value of the state after the root (at t=Root-dt)
 
-Returns:
-	None
-
-Set  the  value of the state after the root  
-(at  t=Root-dt)") SetStateAfter;
+	:param aState:
+	:type aState: TopAbs_State
+	:rtype: None
+") SetStateAfter;
 		void SetStateAfter (const TopAbs_State aState);
-		%feature("autodoc", "Args:
-	aHeight(Standard_Real)
+		%feature("autodoc", "	* Not used in Edge/Edge algorithm
 
-Returns:
-	None
-
-Not  used  in  Edge/Edge  algorithm") SetLayerHeight;
+	:param aHeight:
+	:type aHeight: float
+	:rtype: None
+") SetLayerHeight;
 		void SetLayerHeight (const Standard_Real aHeight);
-		%feature("autodoc", "Args:
-	t1(Standard_Real)
-	t2(Standard_Real)
-	f1(Standard_Real)
-	f2(Standard_Real)
+		%feature("autodoc", "	* Sets the interval from which the Root was found [t1,t2] and the corresponding values of the function on the bounds f(t1), f(t2).
 
-Returns:
-	None
-
-Sets the  interval  from which the Root was  
-found [t1,t2] and the  corresponding  values  
-of  the  function  on  the  bounds f(t1), f(t2).") SetInterval;
+	:param t1:
+	:type t1: float
+	:param t2:
+	:type t2: float
+	:param f1:
+	:type f1: float
+	:param f2:
+	:type f2: float
+	:rtype: None
+") SetInterval;
 		void SetInterval (const Standard_Real t1,const Standard_Real t2,const Standard_Real f1,const Standard_Real f2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the Root value
 
-Returns the Root  value") Root;
+	:rtype: float
+") Root;
 		Standard_Real Root ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the type of the root =0 - Simple (was found by bisection method); =2 - Smart when f1=0, f2!=0 or vice versa (was found by Fibbonacci method); =1 - Pure (pure zero for all t [t1,t2] );
 
-Returns the  type  of  the  root  
-=0  -  Simple (was  found  by  bisection  method);  
-=2  -  Smart when f1=0, f2!=0 or  vice  versa  
-       (was  found  by  Fibbonacci method);  
-=1  -  Pure   (pure  zero  for all t [t1,t2] );") Type;
+	:rtype: int
+") Type;
 		Standard_Integer Type ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_State
+		%feature("autodoc", "	* Returns the state before the root
 
-Returns the state before the root") StateBefore;
+	:rtype: TopAbs_State
+") StateBefore;
 		TopAbs_State StateBefore ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_State
+		%feature("autodoc", "	* Returns the state after the root
 
-Returns the state after the root") StateAfter;
+	:rtype: TopAbs_State
+") StateAfter;
 		TopAbs_State StateAfter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Not used in Edge/Edge algorithm
 
-Not  used  in  Edge/Edge  algorithm") LayerHeight;
+	:rtype: float
+") LayerHeight;
 		Standard_Real LayerHeight ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns the validity flag for the root, True if myStateBefore==TopAbs_OUT && myStateAfter==TopAbs_IN or myStateBefore==TopAbs_OUT && myStateAfter==TopAbs_ON or myStateBefore==TopAbs_ON && myStateAfter==TopAbs_OUT or myStateBefore==TopAbs_IN && myStateAfter==TopAbs_OUT . For other cases it returns False.
 
-Returns the validity flag for the root,  
-True if  
-myStateBefore==TopAbs_OUT && myStateAfter==TopAbs_IN or  
-myStateBefore==TopAbs_OUT && myStateAfter==TopAbs_ON or  
-myStateBefore==TopAbs_ON  && myStateAfter==TopAbs_OUT or  
-myStateBefore==TopAbs_IN  && myStateAfter==TopAbs_OUT  .  
-For  other  cases it  returns  False.") IsValid;
+	:rtype: bool
+") IsValid;
 		Standard_Boolean IsValid ();
-		%feature("autodoc", "Args:
-	t1(Standard_Real)
-	t2(Standard_Real)
-	f1(Standard_Real)
-	f2(Standard_Real)
+		%feature("autodoc", "	* Returns the values of interval from which the Root was found [t1,t2] and the corresponding values of the function on the bounds f(t1), f(t2).
 
-Returns:
-	None
-
-Returns the values of interval  from which the Root was  
-found [t1,t2] and the  corresponding  values  
-of  the  function  on  the  bounds f(t1), f(t2).") Interval;
+	:param t1:
+	:type t1: float &
+	:param t2:
+	:type t2: float &
+	:param f1:
+	:type f1: float &
+	:param f2:
+	:type f2: float &
+	:rtype: None
+") Interval;
 		void Interval (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 };
 
@@ -4439,22 +3522,17 @@ def __del__(self):
 %nodefaultctor IntTools_SequenceNodeOfSequenceOfCommonPrts;
 class IntTools_SequenceNodeOfSequenceOfCommonPrts : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(IntTools_CommonPrt)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_SequenceNodeOfSequenceOfCommonPrts;
+		%feature("autodoc", "	:param I:
+	:type I: IntTools_CommonPrt &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") IntTools_SequenceNodeOfSequenceOfCommonPrts;
 		 IntTools_SequenceNodeOfSequenceOfCommonPrts (const IntTools_CommonPrt & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_CommonPrt
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: IntTools_CommonPrt
+") Value;
 		IntTools_CommonPrt & Value ();
 };
 
@@ -4515,22 +3593,17 @@ def __del__(self):
 %nodefaultctor IntTools_SequenceNodeOfSequenceOfCurves;
 class IntTools_SequenceNodeOfSequenceOfCurves : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(IntTools_Curve)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_SequenceNodeOfSequenceOfCurves;
+		%feature("autodoc", "	:param I:
+	:type I: IntTools_Curve &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") IntTools_SequenceNodeOfSequenceOfCurves;
 		 IntTools_SequenceNodeOfSequenceOfCurves (const IntTools_Curve & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_Curve
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: IntTools_Curve
+") Value;
 		IntTools_Curve & Value ();
 };
 
@@ -4591,22 +3664,17 @@ def __del__(self):
 %nodefaultctor IntTools_SequenceNodeOfSequenceOfPntOn2Faces;
 class IntTools_SequenceNodeOfSequenceOfPntOn2Faces : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(IntTools_PntOn2Faces)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_SequenceNodeOfSequenceOfPntOn2Faces;
+		%feature("autodoc", "	:param I:
+	:type I: IntTools_PntOn2Faces &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") IntTools_SequenceNodeOfSequenceOfPntOn2Faces;
 		 IntTools_SequenceNodeOfSequenceOfPntOn2Faces (const IntTools_PntOn2Faces & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_PntOn2Faces
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: IntTools_PntOn2Faces
+") Value;
 		IntTools_PntOn2Faces & Value ();
 };
 
@@ -4667,22 +3735,17 @@ def __del__(self):
 %nodefaultctor IntTools_SequenceNodeOfSequenceOfRanges;
 class IntTools_SequenceNodeOfSequenceOfRanges : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(IntTools_Range)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_SequenceNodeOfSequenceOfRanges;
+		%feature("autodoc", "	:param I:
+	:type I: IntTools_Range &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") IntTools_SequenceNodeOfSequenceOfRanges;
 		 IntTools_SequenceNodeOfSequenceOfRanges (const IntTools_Range & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_Range
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: IntTools_Range
+") Value;
 		IntTools_Range & Value ();
 };
 
@@ -4743,22 +3806,17 @@ def __del__(self):
 %nodefaultctor IntTools_SequenceNodeOfSequenceOfRoots;
 class IntTools_SequenceNodeOfSequenceOfRoots : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(IntTools_Root)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_SequenceNodeOfSequenceOfRoots;
+		%feature("autodoc", "	:param I:
+	:type I: IntTools_Root &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") IntTools_SequenceNodeOfSequenceOfRoots;
 		 IntTools_SequenceNodeOfSequenceOfRoots (const IntTools_Root & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_Root
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: IntTools_Root
+") Value;
 		IntTools_Root & Value ();
 };
 
@@ -4819,168 +3877,111 @@ def __del__(self):
 %nodefaultctor IntTools_SequenceOfCommonPrts;
 class IntTools_SequenceOfCommonPrts : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_SequenceOfCommonPrts;
+		%feature("autodoc", "	:rtype: None
+") IntTools_SequenceOfCommonPrts;
 		 IntTools_SequenceOfCommonPrts ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(IntTools_SequenceOfCommonPrts)
-
-Returns:
-	IntTools_SequenceOfCommonPrts
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_SequenceOfCommonPrts &
+	:rtype: IntTools_SequenceOfCommonPrts
+") Assign;
 		const IntTools_SequenceOfCommonPrts & Assign (const IntTools_SequenceOfCommonPrts & Other);
-		%feature("autodoc", "Args:
-	Other(IntTools_SequenceOfCommonPrts)
-
-Returns:
-	IntTools_SequenceOfCommonPrts
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_SequenceOfCommonPrts &
+	:rtype: IntTools_SequenceOfCommonPrts
+") operator=;
 		const IntTools_SequenceOfCommonPrts & operator = (const IntTools_SequenceOfCommonPrts & Other);
-		%feature("autodoc", "Args:
-	T(IntTools_CommonPrt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: IntTools_CommonPrt &
+	:rtype: None
+") Append;
 		void Append (const IntTools_CommonPrt & T);
-		%feature("autodoc", "Args:
-	S(IntTools_SequenceOfCommonPrts)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: IntTools_SequenceOfCommonPrts &
+	:rtype: None
+") Append;
 		void Append (IntTools_SequenceOfCommonPrts & S);
-		%feature("autodoc", "Args:
-	T(IntTools_CommonPrt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: IntTools_CommonPrt &
+	:rtype: None
+") Prepend;
 		void Prepend (const IntTools_CommonPrt & T);
-		%feature("autodoc", "Args:
-	S(IntTools_SequenceOfCommonPrts)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: IntTools_SequenceOfCommonPrts &
+	:rtype: None
+") Prepend;
 		void Prepend (IntTools_SequenceOfCommonPrts & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(IntTools_CommonPrt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: IntTools_CommonPrt &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const IntTools_CommonPrt & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(IntTools_SequenceOfCommonPrts)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: IntTools_SequenceOfCommonPrts &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,IntTools_SequenceOfCommonPrts & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(IntTools_CommonPrt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: IntTools_CommonPrt &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const IntTools_CommonPrt & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(IntTools_SequenceOfCommonPrts)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: IntTools_SequenceOfCommonPrts &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,IntTools_SequenceOfCommonPrts & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_CommonPrt
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: IntTools_CommonPrt
+") First;
 		const IntTools_CommonPrt & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_CommonPrt
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: IntTools_CommonPrt
+") Last;
 		const IntTools_CommonPrt & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(IntTools_SequenceOfCommonPrts)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: IntTools_SequenceOfCommonPrts &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,IntTools_SequenceOfCommonPrts & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	IntTools_CommonPrt
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: IntTools_CommonPrt
+") Value;
 		const IntTools_CommonPrt & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(IntTools_CommonPrt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: IntTools_CommonPrt &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const IntTools_CommonPrt & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	IntTools_CommonPrt
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: IntTools_CommonPrt
+") ChangeValue;
 		IntTools_CommonPrt & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -5002,168 +4003,111 @@ def __del__(self):
 %nodefaultctor IntTools_SequenceOfCurves;
 class IntTools_SequenceOfCurves : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_SequenceOfCurves;
+		%feature("autodoc", "	:rtype: None
+") IntTools_SequenceOfCurves;
 		 IntTools_SequenceOfCurves ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(IntTools_SequenceOfCurves)
-
-Returns:
-	IntTools_SequenceOfCurves
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_SequenceOfCurves &
+	:rtype: IntTools_SequenceOfCurves
+") Assign;
 		const IntTools_SequenceOfCurves & Assign (const IntTools_SequenceOfCurves & Other);
-		%feature("autodoc", "Args:
-	Other(IntTools_SequenceOfCurves)
-
-Returns:
-	IntTools_SequenceOfCurves
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_SequenceOfCurves &
+	:rtype: IntTools_SequenceOfCurves
+") operator=;
 		const IntTools_SequenceOfCurves & operator = (const IntTools_SequenceOfCurves & Other);
-		%feature("autodoc", "Args:
-	T(IntTools_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: IntTools_Curve &
+	:rtype: None
+") Append;
 		void Append (const IntTools_Curve & T);
-		%feature("autodoc", "Args:
-	S(IntTools_SequenceOfCurves)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: IntTools_SequenceOfCurves &
+	:rtype: None
+") Append;
 		void Append (IntTools_SequenceOfCurves & S);
-		%feature("autodoc", "Args:
-	T(IntTools_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: IntTools_Curve &
+	:rtype: None
+") Prepend;
 		void Prepend (const IntTools_Curve & T);
-		%feature("autodoc", "Args:
-	S(IntTools_SequenceOfCurves)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: IntTools_SequenceOfCurves &
+	:rtype: None
+") Prepend;
 		void Prepend (IntTools_SequenceOfCurves & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(IntTools_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: IntTools_Curve &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const IntTools_Curve & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(IntTools_SequenceOfCurves)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: IntTools_SequenceOfCurves &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,IntTools_SequenceOfCurves & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(IntTools_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: IntTools_Curve &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const IntTools_Curve & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(IntTools_SequenceOfCurves)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: IntTools_SequenceOfCurves &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,IntTools_SequenceOfCurves & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_Curve
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: IntTools_Curve
+") First;
 		const IntTools_Curve & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_Curve
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: IntTools_Curve
+") Last;
 		const IntTools_Curve & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(IntTools_SequenceOfCurves)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: IntTools_SequenceOfCurves &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,IntTools_SequenceOfCurves & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	IntTools_Curve
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: IntTools_Curve
+") Value;
 		const IntTools_Curve & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(IntTools_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: IntTools_Curve &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const IntTools_Curve & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	IntTools_Curve
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: IntTools_Curve
+") ChangeValue;
 		IntTools_Curve & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -5185,168 +4129,111 @@ def __del__(self):
 %nodefaultctor IntTools_SequenceOfPntOn2Faces;
 class IntTools_SequenceOfPntOn2Faces : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_SequenceOfPntOn2Faces;
+		%feature("autodoc", "	:rtype: None
+") IntTools_SequenceOfPntOn2Faces;
 		 IntTools_SequenceOfPntOn2Faces ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(IntTools_SequenceOfPntOn2Faces)
-
-Returns:
-	IntTools_SequenceOfPntOn2Faces
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_SequenceOfPntOn2Faces &
+	:rtype: IntTools_SequenceOfPntOn2Faces
+") Assign;
 		const IntTools_SequenceOfPntOn2Faces & Assign (const IntTools_SequenceOfPntOn2Faces & Other);
-		%feature("autodoc", "Args:
-	Other(IntTools_SequenceOfPntOn2Faces)
-
-Returns:
-	IntTools_SequenceOfPntOn2Faces
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_SequenceOfPntOn2Faces &
+	:rtype: IntTools_SequenceOfPntOn2Faces
+") operator=;
 		const IntTools_SequenceOfPntOn2Faces & operator = (const IntTools_SequenceOfPntOn2Faces & Other);
-		%feature("autodoc", "Args:
-	T(IntTools_PntOn2Faces)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: IntTools_PntOn2Faces &
+	:rtype: None
+") Append;
 		void Append (const IntTools_PntOn2Faces & T);
-		%feature("autodoc", "Args:
-	S(IntTools_SequenceOfPntOn2Faces)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: IntTools_SequenceOfPntOn2Faces &
+	:rtype: None
+") Append;
 		void Append (IntTools_SequenceOfPntOn2Faces & S);
-		%feature("autodoc", "Args:
-	T(IntTools_PntOn2Faces)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: IntTools_PntOn2Faces &
+	:rtype: None
+") Prepend;
 		void Prepend (const IntTools_PntOn2Faces & T);
-		%feature("autodoc", "Args:
-	S(IntTools_SequenceOfPntOn2Faces)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: IntTools_SequenceOfPntOn2Faces &
+	:rtype: None
+") Prepend;
 		void Prepend (IntTools_SequenceOfPntOn2Faces & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(IntTools_PntOn2Faces)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: IntTools_PntOn2Faces &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const IntTools_PntOn2Faces & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(IntTools_SequenceOfPntOn2Faces)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: IntTools_SequenceOfPntOn2Faces &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,IntTools_SequenceOfPntOn2Faces & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(IntTools_PntOn2Faces)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: IntTools_PntOn2Faces &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const IntTools_PntOn2Faces & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(IntTools_SequenceOfPntOn2Faces)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: IntTools_SequenceOfPntOn2Faces &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,IntTools_SequenceOfPntOn2Faces & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_PntOn2Faces
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: IntTools_PntOn2Faces
+") First;
 		const IntTools_PntOn2Faces & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_PntOn2Faces
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: IntTools_PntOn2Faces
+") Last;
 		const IntTools_PntOn2Faces & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(IntTools_SequenceOfPntOn2Faces)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: IntTools_SequenceOfPntOn2Faces &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,IntTools_SequenceOfPntOn2Faces & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	IntTools_PntOn2Faces
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: IntTools_PntOn2Faces
+") Value;
 		const IntTools_PntOn2Faces & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(IntTools_PntOn2Faces)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: IntTools_PntOn2Faces &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const IntTools_PntOn2Faces & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	IntTools_PntOn2Faces
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: IntTools_PntOn2Faces
+") ChangeValue;
 		IntTools_PntOn2Faces & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -5368,168 +4255,111 @@ def __del__(self):
 %nodefaultctor IntTools_SequenceOfRanges;
 class IntTools_SequenceOfRanges : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_SequenceOfRanges;
+		%feature("autodoc", "	:rtype: None
+") IntTools_SequenceOfRanges;
 		 IntTools_SequenceOfRanges ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(IntTools_SequenceOfRanges)
-
-Returns:
-	IntTools_SequenceOfRanges
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_SequenceOfRanges &
+	:rtype: IntTools_SequenceOfRanges
+") Assign;
 		const IntTools_SequenceOfRanges & Assign (const IntTools_SequenceOfRanges & Other);
-		%feature("autodoc", "Args:
-	Other(IntTools_SequenceOfRanges)
-
-Returns:
-	IntTools_SequenceOfRanges
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_SequenceOfRanges &
+	:rtype: IntTools_SequenceOfRanges
+") operator=;
 		const IntTools_SequenceOfRanges & operator = (const IntTools_SequenceOfRanges & Other);
-		%feature("autodoc", "Args:
-	T(IntTools_Range)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: IntTools_Range &
+	:rtype: None
+") Append;
 		void Append (const IntTools_Range & T);
-		%feature("autodoc", "Args:
-	S(IntTools_SequenceOfRanges)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: IntTools_SequenceOfRanges &
+	:rtype: None
+") Append;
 		void Append (IntTools_SequenceOfRanges & S);
-		%feature("autodoc", "Args:
-	T(IntTools_Range)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: IntTools_Range &
+	:rtype: None
+") Prepend;
 		void Prepend (const IntTools_Range & T);
-		%feature("autodoc", "Args:
-	S(IntTools_SequenceOfRanges)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: IntTools_SequenceOfRanges &
+	:rtype: None
+") Prepend;
 		void Prepend (IntTools_SequenceOfRanges & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(IntTools_Range)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: IntTools_Range &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const IntTools_Range & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(IntTools_SequenceOfRanges)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: IntTools_SequenceOfRanges &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,IntTools_SequenceOfRanges & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(IntTools_Range)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: IntTools_Range &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const IntTools_Range & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(IntTools_SequenceOfRanges)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: IntTools_SequenceOfRanges &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,IntTools_SequenceOfRanges & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_Range
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: IntTools_Range
+") First;
 		const IntTools_Range & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_Range
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: IntTools_Range
+") Last;
 		const IntTools_Range & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(IntTools_SequenceOfRanges)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: IntTools_SequenceOfRanges &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,IntTools_SequenceOfRanges & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	IntTools_Range
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: IntTools_Range
+") Value;
 		const IntTools_Range & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(IntTools_Range)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: IntTools_Range &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const IntTools_Range & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	IntTools_Range
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: IntTools_Range
+") ChangeValue;
 		IntTools_Range & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -5551,168 +4381,111 @@ def __del__(self):
 %nodefaultctor IntTools_SequenceOfRoots;
 class IntTools_SequenceOfRoots : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_SequenceOfRoots;
+		%feature("autodoc", "	:rtype: None
+") IntTools_SequenceOfRoots;
 		 IntTools_SequenceOfRoots ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(IntTools_SequenceOfRoots)
-
-Returns:
-	IntTools_SequenceOfRoots
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_SequenceOfRoots &
+	:rtype: IntTools_SequenceOfRoots
+") Assign;
 		const IntTools_SequenceOfRoots & Assign (const IntTools_SequenceOfRoots & Other);
-		%feature("autodoc", "Args:
-	Other(IntTools_SequenceOfRoots)
-
-Returns:
-	IntTools_SequenceOfRoots
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_SequenceOfRoots &
+	:rtype: IntTools_SequenceOfRoots
+") operator=;
 		const IntTools_SequenceOfRoots & operator = (const IntTools_SequenceOfRoots & Other);
-		%feature("autodoc", "Args:
-	T(IntTools_Root)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: IntTools_Root &
+	:rtype: None
+") Append;
 		void Append (const IntTools_Root & T);
-		%feature("autodoc", "Args:
-	S(IntTools_SequenceOfRoots)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: IntTools_SequenceOfRoots &
+	:rtype: None
+") Append;
 		void Append (IntTools_SequenceOfRoots & S);
-		%feature("autodoc", "Args:
-	T(IntTools_Root)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: IntTools_Root &
+	:rtype: None
+") Prepend;
 		void Prepend (const IntTools_Root & T);
-		%feature("autodoc", "Args:
-	S(IntTools_SequenceOfRoots)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: IntTools_SequenceOfRoots &
+	:rtype: None
+") Prepend;
 		void Prepend (IntTools_SequenceOfRoots & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(IntTools_Root)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: IntTools_Root &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const IntTools_Root & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(IntTools_SequenceOfRoots)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: IntTools_SequenceOfRoots &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,IntTools_SequenceOfRoots & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(IntTools_Root)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: IntTools_Root &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const IntTools_Root & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(IntTools_SequenceOfRoots)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: IntTools_SequenceOfRoots &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,IntTools_SequenceOfRoots & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_Root
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: IntTools_Root
+") First;
 		const IntTools_Root & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_Root
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: IntTools_Root
+") Last;
 		const IntTools_Root & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(IntTools_SequenceOfRoots)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: IntTools_SequenceOfRoots &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,IntTools_SequenceOfRoots & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	IntTools_Root
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: IntTools_Root
+") Value;
 		const IntTools_Root & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(IntTools_Root)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: IntTools_Root &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const IntTools_Root & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	IntTools_Root
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: IntTools_Root
+") ChangeValue;
 		IntTools_Root & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -5734,21 +4507,15 @@ def __del__(self):
 %nodefaultctor IntTools_StdMapNodeOfMapOfCurveSample;
 class IntTools_StdMapNodeOfMapOfCurveSample : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(IntTools_CurveRangeSample)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_StdMapNodeOfMapOfCurveSample;
+		%feature("autodoc", "	:param K:
+	:type K: IntTools_CurveRangeSample &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") IntTools_StdMapNodeOfMapOfCurveSample;
 		 IntTools_StdMapNodeOfMapOfCurveSample (const IntTools_CurveRangeSample & K,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_CurveRangeSample
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: IntTools_CurveRangeSample
+") Key;
 		IntTools_CurveRangeSample & Key ();
 };
 
@@ -5809,21 +4576,15 @@ def __del__(self):
 %nodefaultctor IntTools_StdMapNodeOfMapOfSurfaceSample;
 class IntTools_StdMapNodeOfMapOfSurfaceSample : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(IntTools_SurfaceRangeSample)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_StdMapNodeOfMapOfSurfaceSample;
+		%feature("autodoc", "	:param K:
+	:type K: IntTools_SurfaceRangeSample &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") IntTools_StdMapNodeOfMapOfSurfaceSample;
 		 IntTools_StdMapNodeOfMapOfSurfaceSample (const IntTools_SurfaceRangeSample & K,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_SurfaceRangeSample
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: IntTools_SurfaceRangeSample
+") Key;
 		IntTools_SurfaceRangeSample & Key ();
 };
 
@@ -5884,281 +4645,217 @@ def __del__(self):
 %nodefaultctor IntTools_SurfaceRangeLocalizeData;
 class IntTools_SurfaceRangeLocalizeData {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_SurfaceRangeLocalizeData;
+		%feature("autodoc", "	:rtype: None
+") IntTools_SurfaceRangeLocalizeData;
 		 IntTools_SurfaceRangeLocalizeData ();
-		%feature("autodoc", "Args:
-	theNbSampleU(Standard_Integer)
-	theNbSampleV(Standard_Integer)
-	theMinRangeU(Standard_Real)
-	theMinRangeV(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_SurfaceRangeLocalizeData;
+		%feature("autodoc", "	:param theNbSampleU:
+	:type theNbSampleU: Standard_Integer
+	:param theNbSampleV:
+	:type theNbSampleV: Standard_Integer
+	:param theMinRangeU:
+	:type theMinRangeU: float
+	:param theMinRangeV:
+	:type theMinRangeV: float
+	:rtype: None
+") IntTools_SurfaceRangeLocalizeData;
 		 IntTools_SurfaceRangeLocalizeData (const Standard_Integer theNbSampleU,const Standard_Integer theNbSampleV,const Standard_Real theMinRangeU,const Standard_Real theMinRangeV);
-		%feature("autodoc", "Args:
-	Other(IntTools_SurfaceRangeLocalizeData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_SurfaceRangeLocalizeData;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_SurfaceRangeLocalizeData &
+	:rtype: None
+") IntTools_SurfaceRangeLocalizeData;
 		 IntTools_SurfaceRangeLocalizeData (const IntTools_SurfaceRangeLocalizeData & Other);
-		%feature("autodoc", "Args:
-	Other(IntTools_SurfaceRangeLocalizeData)
-
-Returns:
-	IntTools_SurfaceRangeLocalizeData
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_SurfaceRangeLocalizeData &
+	:rtype: IntTools_SurfaceRangeLocalizeData
+") Assign;
 		IntTools_SurfaceRangeLocalizeData & Assign (const IntTools_SurfaceRangeLocalizeData & Other);
-		%feature("autodoc", "Args:
-	Other(IntTools_SurfaceRangeLocalizeData)
-
-Returns:
-	IntTools_SurfaceRangeLocalizeData
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_SurfaceRangeLocalizeData &
+	:rtype: IntTools_SurfaceRangeLocalizeData
+") operator=;
 		IntTools_SurfaceRangeLocalizeData & operator = (const IntTools_SurfaceRangeLocalizeData & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") GetNbSampleU;
+		%feature("autodoc", "	:rtype: int
+") GetNbSampleU;
 		Standard_Integer GetNbSampleU ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") GetNbSampleV;
+		%feature("autodoc", "	:rtype: int
+") GetNbSampleV;
 		Standard_Integer GetNbSampleV ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") GetMinRangeU;
+		%feature("autodoc", "	:rtype: float
+") GetMinRangeU;
 		Standard_Real GetMinRangeU ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") GetMinRangeV;
+		%feature("autodoc", "	:rtype: float
+") GetMinRangeV;
 		Standard_Real GetMinRangeV ();
-		%feature("autodoc", "Args:
-	theRange(IntTools_SurfaceRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AddOutRange;
+		%feature("autodoc", "	:param theRange:
+	:type theRange: IntTools_SurfaceRangeSample &
+	:rtype: None
+") AddOutRange;
 		void AddOutRange (const IntTools_SurfaceRangeSample & theRange);
-		%feature("autodoc", "Args:
-	theRange(IntTools_SurfaceRangeSample)
-	theBox(Bnd_Box)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AddBox;
+		%feature("autodoc", "	:param theRange:
+	:type theRange: IntTools_SurfaceRangeSample &
+	:param theBox:
+	:type theBox: Bnd_Box &
+	:rtype: None
+") AddBox;
 		void AddBox (const IntTools_SurfaceRangeSample & theRange,const Bnd_Box & theBox);
-		%feature("autodoc", "Args:
-	theRange(IntTools_SurfaceRangeSample)
-	theBox(Bnd_Box)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") FindBox;
+		%feature("autodoc", "	:param theRange:
+	:type theRange: IntTools_SurfaceRangeSample &
+	:param theBox:
+	:type theBox: Bnd_Box &
+	:rtype: bool
+") FindBox;
 		Standard_Boolean FindBox (const IntTools_SurfaceRangeSample & theRange,Bnd_Box & theBox);
-		%feature("autodoc", "Args:
-	theRange(IntTools_SurfaceRangeSample)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsRangeOut;
+		%feature("autodoc", "	:param theRange:
+	:type theRange: IntTools_SurfaceRangeSample &
+	:rtype: bool
+") IsRangeOut;
 		Standard_Boolean IsRangeOut (const IntTools_SurfaceRangeSample & theRange);
-		%feature("autodoc", "Args:
-	theList(IntTools_ListOfSurfaceRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ListRangeOut;
+		%feature("autodoc", "	:param theList:
+	:type theList: IntTools_ListOfSurfaceRangeSample &
+	:rtype: None
+") ListRangeOut;
 		void ListRangeOut (IntTools_ListOfSurfaceRangeSample & theList);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveRangeOutAll;
+		%feature("autodoc", "	:rtype: None
+") RemoveRangeOutAll;
 		void RemoveRangeOutAll ();
-		%feature("autodoc", "Args:
-	theDeflection(Standard_Real)
+		%feature("autodoc", "	* Set the grid deflection.
 
-Returns:
-	None
-
-Set the grid deflection.") SetGridDeflection;
+	:param theDeflection:
+	:type theDeflection: float
+	:rtype: None
+") SetGridDeflection;
 		void SetGridDeflection (const Standard_Real theDeflection);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Query the grid deflection.
 
-Query the grid deflection.") GetGridDeflection;
+	:rtype: float
+") GetGridDeflection;
 		Standard_Real GetGridDeflection ();
-		%feature("autodoc", "Args:
-	theNbUGrid(Standard_Integer)
+		%feature("autodoc", "	* Set the range U of the grid of points.
 
-Returns:
-	None
-
-Set the range U of the grid of points.") SetRangeUGrid;
+	:param theNbUGrid:
+	:type theNbUGrid: Standard_Integer
+	:rtype: None
+") SetRangeUGrid;
 		void SetRangeUGrid (const Standard_Integer theNbUGrid);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Query the range U of the grid of points.
 
-Query the range U of the grid of points.") GetRangeUGrid;
+	:rtype: int
+") GetRangeUGrid;
 		Standard_Integer GetRangeUGrid ();
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
-	theUParam(Standard_Real)
+		%feature("autodoc", "	* Set the U parameter of the grid points at that index.
 
-Returns:
-	None
-
-Set the U parameter of the grid points at that index.") SetUParam;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:param theUParam:
+	:type theUParam: float
+	:rtype: None
+") SetUParam;
 		void SetUParam (const Standard_Integer theIndex,const Standard_Real theUParam);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Query the U parameter of the grid points at that index.
 
-Returns:
-	Standard_Real
-
-Query the U parameter of the grid points at that index.") GetUParam;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: float
+") GetUParam;
 		Standard_Real GetUParam (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theNbVGrid(Standard_Integer)
+		%feature("autodoc", "	* Set the range V of the grid of points.
 
-Returns:
-	None
-
-Set the range V of the grid of points.") SetRangeVGrid;
+	:param theNbVGrid:
+	:type theNbVGrid: Standard_Integer
+	:rtype: None
+") SetRangeVGrid;
 		void SetRangeVGrid (const Standard_Integer theNbVGrid);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Query the range V of the grid of points.
 
-Query the range V of the grid of points.") GetRangeVGrid;
+	:rtype: int
+") GetRangeVGrid;
 		Standard_Integer GetRangeVGrid ();
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
-	theVParam(Standard_Real)
+		%feature("autodoc", "	* Set the V parameter of the grid points at that index.
 
-Returns:
-	None
-
-Set the V parameter of the grid points at that index.") SetVParam;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:param theVParam:
+	:type theVParam: float
+	:rtype: None
+") SetVParam;
 		void SetVParam (const Standard_Integer theIndex,const Standard_Real theVParam);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Query the V parameter of the grid points at that index.
 
-Returns:
-	Standard_Real
-
-Query the V parameter of the grid points at that index.") GetVParam;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: float
+") GetVParam;
 		Standard_Real GetVParam (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theUIndex(Standard_Integer)
-	theVIndex(Standard_Integer)
-	thePoint(gp_Pnt)
+		%feature("autodoc", "	* Set the grid point.
 
-Returns:
-	None
-
-Set the grid point.") SetGridPoint;
+	:param theUIndex:
+	:type theUIndex: Standard_Integer
+	:param theVIndex:
+	:type theVIndex: Standard_Integer
+	:param thePoint:
+	:type thePoint: gp_Pnt
+	:rtype: None
+") SetGridPoint;
 		void SetGridPoint (const Standard_Integer theUIndex,const Standard_Integer theVIndex,const gp_Pnt & thePoint);
-		%feature("autodoc", "Args:
-	theUIndex(Standard_Integer)
-	theVIndex(Standard_Integer)
+		%feature("autodoc", "	* Set the grid point.
 
-Returns:
-	gp_Pnt
-
-Set the grid point.") GetGridPoint;
+	:param theUIndex:
+	:type theUIndex: Standard_Integer
+	:param theVIndex:
+	:type theVIndex: Standard_Integer
+	:rtype: gp_Pnt
+") GetGridPoint;
 		const gp_Pnt & GetGridPoint (const Standard_Integer theUIndex,const Standard_Integer theVIndex);
-		%feature("autodoc", "Args:
-	theUMin(Standard_Real)
-	theUMax(Standard_Real)
-	theVMin(Standard_Real)
-	theVMax(Standard_Real)
+		%feature("autodoc", "	* Sets the frame area. Used to work with grid points.
 
-Returns:
-	None
-
-Sets the frame area. Used to work with grid points.") SetFrame;
+	:param theUMin:
+	:type theUMin: float
+	:param theUMax:
+	:type theUMax: float
+	:param theVMin:
+	:type theVMin: float
+	:param theVMax:
+	:type theVMax: float
+	:rtype: None
+") SetFrame;
 		void SetFrame (const Standard_Real theUMin,const Standard_Real theUMax,const Standard_Real theVMin,const Standard_Real theVMax);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of grid points on U direction in frame.
 
-Returns the number of grid points on U direction in frame.") GetNBUPointsInFrame;
+	:rtype: int
+") GetNBUPointsInFrame;
 		Standard_Integer GetNBUPointsInFrame ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of grid points on V direction in frame.
 
-Returns the number of grid points on V direction in frame.") GetNBVPointsInFrame;
+	:rtype: int
+") GetNBVPointsInFrame;
 		Standard_Integer GetNBVPointsInFrame ();
-		%feature("autodoc", "Args:
-	theUIndex(Standard_Integer)
-	theVIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the grid point in frame.
 
-Returns:
-	gp_Pnt
-
-Returns the grid point in frame.") GetPointInFrame;
+	:param theUIndex:
+	:type theUIndex: Standard_Integer
+	:param theVIndex:
+	:type theVIndex: Standard_Integer
+	:rtype: gp_Pnt
+") GetPointInFrame;
 		const gp_Pnt & GetPointInFrame (const Standard_Integer theUIndex,const Standard_Integer theVIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Query the U parameter of the grid points at that index in frame.
 
-Returns:
-	Standard_Real
-
-Query the U parameter of the grid points  
-         at that index in frame.") GetUParamInFrame;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: float
+") GetUParamInFrame;
 		Standard_Real GetUParamInFrame (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Query the V parameter of the grid points at that index in frame.
 
-Returns:
-	Standard_Real
-
-Query the V parameter of the grid points  
-         at that index in frame.") GetVParamInFrame;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: float
+") GetVParamInFrame;
 		Standard_Real GetVParamInFrame (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Clears the grid of points.
 
-Clears the grid of points.") ClearGrid;
+	:rtype: None
+") ClearGrid;
 		void ClearGrid ();
 };
 
@@ -6180,235 +4877,157 @@ def __del__(self):
 %nodefaultctor IntTools_SurfaceRangeSample;
 class IntTools_SurfaceRangeSample {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_SurfaceRangeSample;
+		%feature("autodoc", "	:rtype: None
+") IntTools_SurfaceRangeSample;
 		 IntTools_SurfaceRangeSample ();
-		%feature("autodoc", "Args:
-	theIndexU(Standard_Integer)
-	theDepthU(Standard_Integer)
-	theIndexV(Standard_Integer)
-	theDepthV(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_SurfaceRangeSample;
+		%feature("autodoc", "	:param theIndexU:
+	:type theIndexU: Standard_Integer
+	:param theDepthU:
+	:type theDepthU: Standard_Integer
+	:param theIndexV:
+	:type theIndexV: Standard_Integer
+	:param theDepthV:
+	:type theDepthV: Standard_Integer
+	:rtype: None
+") IntTools_SurfaceRangeSample;
 		 IntTools_SurfaceRangeSample (const Standard_Integer theIndexU,const Standard_Integer theDepthU,const Standard_Integer theIndexV,const Standard_Integer theDepthV);
-		%feature("autodoc", "Args:
-	theRangeU(IntTools_CurveRangeSample)
-	theRangeV(IntTools_CurveRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_SurfaceRangeSample;
+		%feature("autodoc", "	:param theRangeU:
+	:type theRangeU: IntTools_CurveRangeSample &
+	:param theRangeV:
+	:type theRangeV: IntTools_CurveRangeSample &
+	:rtype: None
+") IntTools_SurfaceRangeSample;
 		 IntTools_SurfaceRangeSample (const IntTools_CurveRangeSample & theRangeU,const IntTools_CurveRangeSample & theRangeV);
-		%feature("autodoc", "Args:
-	Other(IntTools_SurfaceRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_SurfaceRangeSample;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_SurfaceRangeSample &
+	:rtype: None
+") IntTools_SurfaceRangeSample;
 		 IntTools_SurfaceRangeSample (const IntTools_SurfaceRangeSample & Other);
-		%feature("autodoc", "Args:
-	Other(IntTools_SurfaceRangeSample)
-
-Returns:
-	IntTools_SurfaceRangeSample
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_SurfaceRangeSample &
+	:rtype: IntTools_SurfaceRangeSample
+") Assign;
 		IntTools_SurfaceRangeSample & Assign (const IntTools_SurfaceRangeSample & Other);
-		%feature("autodoc", "Args:
-	Other(IntTools_SurfaceRangeSample)
-
-Returns:
-	IntTools_SurfaceRangeSample
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_SurfaceRangeSample &
+	:rtype: IntTools_SurfaceRangeSample
+") operator=;
 		IntTools_SurfaceRangeSample & operator = (const IntTools_SurfaceRangeSample & Other);
-		%feature("autodoc", "Args:
-	theRangeU(IntTools_CurveRangeSample)
-	theRangeV(IntTools_CurveRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetRanges;
+		%feature("autodoc", "	:param theRangeU:
+	:type theRangeU: IntTools_CurveRangeSample &
+	:param theRangeV:
+	:type theRangeV: IntTools_CurveRangeSample &
+	:rtype: None
+") SetRanges;
 		void SetRanges (const IntTools_CurveRangeSample & theRangeU,const IntTools_CurveRangeSample & theRangeV);
-		%feature("autodoc", "Args:
-	theRangeU(IntTools_CurveRangeSample)
-	theRangeV(IntTools_CurveRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GetRanges;
+		%feature("autodoc", "	:param theRangeU:
+	:type theRangeU: IntTools_CurveRangeSample &
+	:param theRangeV:
+	:type theRangeV: IntTools_CurveRangeSample &
+	:rtype: None
+") GetRanges;
 		void GetRanges (IntTools_CurveRangeSample & theRangeU,IntTools_CurveRangeSample & theRangeV);
-		%feature("autodoc", "Args:
-	theIndexU(Standard_Integer)
-	theIndexV(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetIndexes;
+		%feature("autodoc", "	:param theIndexU:
+	:type theIndexU: Standard_Integer
+	:param theIndexV:
+	:type theIndexV: Standard_Integer
+	:rtype: None
+") SetIndexes;
 		void SetIndexes (const Standard_Integer theIndexU,const Standard_Integer theIndexV);
-		%feature("autodoc", "Args:
-	theIndexU(Standard_Integer)
-	theIndexV(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GetIndexes;
+		%feature("autodoc", "	:param theIndexU:
+	:type theIndexU: Standard_Integer &
+	:param theIndexV:
+	:type theIndexV: Standard_Integer &
+	:rtype: None
+") GetIndexes;
 		void GetIndexes (Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	theDepthU(Standard_Integer)
-	theDepthV(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GetDepths;
+		%feature("autodoc", "	:param theDepthU:
+	:type theDepthU: Standard_Integer &
+	:param theDepthV:
+	:type theDepthV: Standard_Integer &
+	:rtype: None
+") GetDepths;
 		void GetDepths (Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	theRangeSampleU(IntTools_CurveRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetSampleRangeU;
+		%feature("autodoc", "	:param theRangeSampleU:
+	:type theRangeSampleU: IntTools_CurveRangeSample &
+	:rtype: None
+") SetSampleRangeU;
 		void SetSampleRangeU (const IntTools_CurveRangeSample & theRangeSampleU);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_CurveRangeSample
-
-No detailed docstring for this function.") GetSampleRangeU;
+		%feature("autodoc", "	:rtype: IntTools_CurveRangeSample
+") GetSampleRangeU;
 		const IntTools_CurveRangeSample & GetSampleRangeU ();
-		%feature("autodoc", "Args:
-	theRangeSampleV(IntTools_CurveRangeSample)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetSampleRangeV;
+		%feature("autodoc", "	:param theRangeSampleV:
+	:type theRangeSampleV: IntTools_CurveRangeSample &
+	:rtype: None
+") SetSampleRangeV;
 		void SetSampleRangeV (const IntTools_CurveRangeSample & theRangeSampleV);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntTools_CurveRangeSample
-
-No detailed docstring for this function.") GetSampleRangeV;
+		%feature("autodoc", "	:rtype: IntTools_CurveRangeSample
+") GetSampleRangeV;
 		const IntTools_CurveRangeSample & GetSampleRangeV ();
-		%feature("autodoc", "Args:
-	theIndexU(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetIndexU;
+		%feature("autodoc", "	:param theIndexU:
+	:type theIndexU: Standard_Integer
+	:rtype: None
+") SetIndexU;
 		void SetIndexU (const Standard_Integer theIndexU);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") GetIndexU;
+		%feature("autodoc", "	:rtype: int
+") GetIndexU;
 		Standard_Integer GetIndexU ();
-		%feature("autodoc", "Args:
-	theIndexV(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetIndexV;
+		%feature("autodoc", "	:param theIndexV:
+	:type theIndexV: Standard_Integer
+	:rtype: None
+") SetIndexV;
 		void SetIndexV (const Standard_Integer theIndexV);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") GetIndexV;
+		%feature("autodoc", "	:rtype: int
+") GetIndexV;
 		Standard_Integer GetIndexV ();
-		%feature("autodoc", "Args:
-	theDepthU(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetDepthU;
+		%feature("autodoc", "	:param theDepthU:
+	:type theDepthU: Standard_Integer
+	:rtype: None
+") SetDepthU;
 		void SetDepthU (const Standard_Integer theDepthU);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") GetDepthU;
+		%feature("autodoc", "	:rtype: int
+") GetDepthU;
 		Standard_Integer GetDepthU ();
-		%feature("autodoc", "Args:
-	theDepthV(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetDepthV;
+		%feature("autodoc", "	:param theDepthV:
+	:type theDepthV: Standard_Integer
+	:rtype: None
+") SetDepthV;
 		void SetDepthV (const Standard_Integer theDepthV);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") GetDepthV;
+		%feature("autodoc", "	:rtype: int
+") GetDepthV;
 		Standard_Integer GetDepthV ();
-		%feature("autodoc", "Args:
-	theFirstU(Standard_Real)
-	theLastU(Standard_Real)
-	theNbSampleU(Standard_Integer)
-
-Returns:
-	IntTools_Range
-
-No detailed docstring for this function.") GetRangeU;
+		%feature("autodoc", "	:param theFirstU:
+	:type theFirstU: float
+	:param theLastU:
+	:type theLastU: float
+	:param theNbSampleU:
+	:type theNbSampleU: Standard_Integer
+	:rtype: IntTools_Range
+") GetRangeU;
 		IntTools_Range GetRangeU (const Standard_Real theFirstU,const Standard_Real theLastU,const Standard_Integer theNbSampleU);
-		%feature("autodoc", "Args:
-	theFirstV(Standard_Real)
-	theLastV(Standard_Real)
-	theNbSampleV(Standard_Integer)
-
-Returns:
-	IntTools_Range
-
-No detailed docstring for this function.") GetRangeV;
+		%feature("autodoc", "	:param theFirstV:
+	:type theFirstV: float
+	:param theLastV:
+	:type theLastV: float
+	:param theNbSampleV:
+	:type theNbSampleV: Standard_Integer
+	:rtype: IntTools_Range
+") GetRangeV;
 		IntTools_Range GetRangeV (const Standard_Real theFirstV,const Standard_Real theLastV,const Standard_Integer theNbSampleV);
-		%feature("autodoc", "Args:
-	Other(IntTools_SurfaceRangeSample)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEqual;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_SurfaceRangeSample &
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const IntTools_SurfaceRangeSample & Other);
-		%feature("autodoc", "Args:
-	theNbSampleU(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") GetRangeIndexUDeeper;
+		%feature("autodoc", "	:param theNbSampleU:
+	:type theNbSampleU: Standard_Integer
+	:rtype: int
+") GetRangeIndexUDeeper;
 		Standard_Integer GetRangeIndexUDeeper (const Standard_Integer theNbSampleU);
-		%feature("autodoc", "Args:
-	theNbSampleV(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") GetRangeIndexVDeeper;
+		%feature("autodoc", "	:param theNbSampleV:
+	:type theNbSampleV: Standard_Integer
+	:rtype: int
+") GetRangeIndexVDeeper;
 		Standard_Integer GetRangeIndexVDeeper (const Standard_Integer theNbSampleV);
 };
 
@@ -6430,26 +5049,23 @@ def __del__(self):
 %nodefaultctor IntTools_SurfaceRangeSampleMapHasher;
 class IntTools_SurfaceRangeSampleMapHasher {
 	public:
-		%feature("autodoc", "Args:
-	K(IntTools_SurfaceRangeSample)
-	Upper(Standard_Integer)
+		%feature("autodoc", "	* Returns a HasCode value for the Key <K> in the range 0..Upper.
 
-Returns:
-	static Standard_Integer
-
-Returns a HasCode value  for  the  Key <K>  in the  
-         range 0..Upper.") HashCode;
+	:param K:
+	:type K: IntTools_SurfaceRangeSample &
+	:param Upper:
+	:type Upper: Standard_Integer
+	:rtype: int
+") HashCode;
 		static Standard_Integer HashCode (const IntTools_SurfaceRangeSample & K,const Standard_Integer Upper);
-		%feature("autodoc", "Args:
-	S1(IntTools_SurfaceRangeSample)
-	S2(IntTools_SurfaceRangeSample)
+		%feature("autodoc", "	* Returns True when the two keys are the same. Two same keys must have the same hashcode, the contrary is not necessary.
 
-Returns:
-	static Standard_Boolean
-
-Returns True  when the two  keys are the same. Two  
-         same  keys  must   have  the  same  hashcode,  the  
-         contrary is not necessary.") IsEqual;
+	:param S1:
+	:type S1: IntTools_SurfaceRangeSample &
+	:param S2:
+	:type S2: IntTools_SurfaceRangeSample &
+	:rtype: bool
+") IsEqual;
 		static Standard_Boolean IsEqual (const IntTools_SurfaceRangeSample & S1,const IntTools_SurfaceRangeSample & S2);
 };
 
@@ -6471,177 +5087,151 @@ def __del__(self):
 %nodefaultctor IntTools_Tools;
 class IntTools_Tools {
 	public:
-		%feature("autodoc", "Args:
-	V1(TopoDS_Vertex)
-	V2(TopoDS_Vertex)
+		%feature("autodoc", "	* Computes distance between vertex V1 and vertex V2, if the distance is less than sum of vertex tolerances returns zero, otherwise returns negative value
 
-Returns:
-	static Standard_Integer
-
-Computes distance between vertex V1 and vertex V2,  
-if the distance is less than sum of vertex tolerances  
-returns zero,  
-otherwise returns negative value") ComputeVV;
+	:param V1:
+	:type V1: TopoDS_Vertex &
+	:param V2:
+	:type V2: TopoDS_Vertex &
+	:rtype: int
+") ComputeVV;
 		static Standard_Integer ComputeVV (const TopoDS_Vertex & V1,const TopoDS_Vertex & V2);
-		%feature("autodoc", "Args:
-	aW(TopoDS_Wire)
+		%feature("autodoc", "	* Returns True if wire aW contains edges with INTERNAL orientation
 
-Returns:
-	static Standard_Boolean
-
-Returns True if wire aW contains edges  
-with INTERNAL orientation") HasInternalEdge;
+	:param aW:
+	:type aW: TopoDS_Wire &
+	:rtype: bool
+") HasInternalEdge;
 		static Standard_Boolean HasInternalEdge (const TopoDS_Wire & aW);
-		%feature("autodoc", "Args:
-	aW(TopoDS_Wire)
-	aF(TopoDS_Face)
-	aFNew(TopoDS_Face)
+		%feature("autodoc", "	* Build a face based on surface of given face aF and bounded by wire aW
 
-Returns:
-	static void
-
-Build a face based on surface of given face aF  
-and bounded by wire aW") MakeFaceFromWireAndFace;
+	:param aW:
+	:type aW: TopoDS_Wire &
+	:param aF:
+	:type aF: TopoDS_Face &
+	:param aFNew:
+	:type aFNew: TopoDS_Face &
+	:rtype: void
+") MakeFaceFromWireAndFace;
 		static void MakeFaceFromWireAndFace (const TopoDS_Wire & aW,const TopoDS_Face & aF,TopoDS_Face & aFNew);
-		%feature("autodoc", "Args:
-	aF(TopoDS_Face)
-	P(gp_Pnt2d)
+		%feature("autodoc", "	* 
 
-Returns:
-	static TopAbs_State
-
+	:param aF:
+	:type aF: TopoDS_Face &
+	:param P:
+	:type P: gp_Pnt2d
+	:rtype: TopAbs_State
 ") ClassifyPointByFace;
 		static TopAbs_State ClassifyPointByFace (const TopoDS_Face & aF,const gp_Pnt2d & P);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
-	t(Standard_Real)
+		%feature("autodoc", "	* Computes square distance between a point on the edge E corresponded to parameter t and vertices of edge E. Returns True if this distance is less than square tolerance of vertex, otherwise returns false.
 
-Returns:
-	static Standard_Boolean
-
-Computes square distance between a point on the edge E  
-corresponded to parameter t and vertices of edge E.  
-Returns True if this distance is less than square  
-tolerance of vertex, otherwise returns false.") IsVertex;
+	:param E:
+	:type E: TopoDS_Edge &
+	:param t:
+	:type t: float
+	:rtype: bool
+") IsVertex;
 		static Standard_Boolean IsVertex (const TopoDS_Edge & E,const Standard_Real t);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
-	V(TopoDS_Vertex)
-	t(Standard_Real)
+		%feature("autodoc", "	* Returns True if square distance between vertex V and a point on the edge E corresponded to parameter t is less than square tolerance of V
 
-Returns:
-	static Standard_Boolean
-
-Returns True if square distance between vertex V  
-and a point on the edge E corresponded to parameter t  
-is less than square tolerance of V") IsVertex;
+	:param E:
+	:type E: TopoDS_Edge &
+	:param V:
+	:type V: TopoDS_Vertex &
+	:param t:
+	:type t: float
+	:rtype: bool
+") IsVertex;
 		static Standard_Boolean IsVertex (const TopoDS_Edge & E,const TopoDS_Vertex & V,const Standard_Real t);
-		%feature("autodoc", "Args:
-	aCmnPrt(IntTools_CommonPrt)
+		%feature("autodoc", "	* Returns True if IsVertx for middle parameter of fist range and first edge returns True and if IsVertex for middle parameter of second range and second range returns True, otherwise returns False
 
-Returns:
-	static Standard_Boolean
-
-Returns True if IsVertx for middle parameter of fist range  
-and first edge returns True  
-and if IsVertex for middle parameter of second range and  
-second range returns True,  
-otherwise returns False") IsVertex;
+	:param aCmnPrt:
+	:type aCmnPrt: IntTools_CommonPrt &
+	:rtype: bool
+") IsVertex;
 		static Standard_Boolean IsVertex (const IntTools_CommonPrt & aCmnPrt);
-		%feature("autodoc", "Args:
-	E1(TopoDS_Edge)
-	E2(TopoDS_Edge)
+		%feature("autodoc", "	* Gets boundary of parameters of E1 and E2. Computes 3d points on each corresponded to average parameters. Returns True if distance between computed points is less than sum of edge tolerance, otherwise returns False.
 
-Returns:
-	static Standard_Boolean
-
-Gets boundary of parameters of E1 and E2.  
-Computes 3d points on each corresponded to average parameters.  
-Returns True if distance between computed points is less than  
-sum of edge tolerance, otherwise returns False.") IsMiddlePointsEqual;
+	:param E1:
+	:type E1: TopoDS_Edge &
+	:param E2:
+	:type E2: TopoDS_Edge &
+	:rtype: bool
+") IsMiddlePointsEqual;
 		static Standard_Boolean IsMiddlePointsEqual (const TopoDS_Edge & E1,const TopoDS_Edge & E2);
-		%feature("autodoc", "Args:
-	aP(gp_Pnt)
-	aTolPV(Standard_Real)
-	aV(TopoDS_Vertex)
+		%feature("autodoc", "	* Returns True if the distance between point aP and vertex aV is less or equal to sum of aTolPV and vertex tolerance, otherwise returns False
 
-Returns:
-	static Standard_Boolean
-
-Returns True if the distance between point aP and  
-vertex aV is less or equal to sum of aTolPV and  
-vertex tolerance, otherwise returns False") IsVertex;
+	:param aP:
+	:type aP: gp_Pnt
+	:param aTolPV:
+	:type aTolPV: float
+	:param aV:
+	:type aV: TopoDS_Vertex &
+	:rtype: bool
+") IsVertex;
 		static Standard_Boolean IsVertex (const gp_Pnt & aP,const Standard_Real aTolPV,const TopoDS_Vertex & aV);
-		%feature("autodoc", "Args:
-	aFirst(Standard_Real)
-	aLast(Standard_Real)
+		%feature("autodoc", "	* Returns some value between aFirst and aLast
 
-Returns:
-	static Standard_Real
-
-Returns some value between aFirst and aLast") IntermediatePoint;
+	:param aFirst:
+	:type aFirst: float
+	:param aLast:
+	:type aLast: float
+	:rtype: float
+") IntermediatePoint;
 		static Standard_Real IntermediatePoint (const Standard_Real aFirst,const Standard_Real aLast);
-		%feature("autodoc", "Args:
-	aC(IntTools_Curve)
-	aS(IntTools_SequenceOfCurves)
+		%feature("autodoc", "	* Split aC by average parameter if aC is closed in 3D. Returns positive value if splitting has been done, otherwise returns zero.
 
-Returns:
-	static Standard_Integer
-
-Split aC by average parameter if aC is closed in 3D.  
-Returns positive value if splitting has been done,  
-otherwise returns zero.") SplitCurve;
+	:param aC:
+	:type aC: IntTools_Curve &
+	:param aS:
+	:type aS: IntTools_SequenceOfCurves &
+	:rtype: int
+") SplitCurve;
 		static Standard_Integer SplitCurve (const IntTools_Curve & aC,IntTools_SequenceOfCurves & aS);
-		%feature("autodoc", "Args:
-	aSIn(IntTools_SequenceOfCurves)
-	aSOut(IntTools_SequenceOfCurves)
+		%feature("autodoc", "	* Puts curves from aSIn to aSOut except those curves that are coincide with first curve from aSIn.
 
-Returns:
-	static void
-
-Puts curves from aSIn to aSOut except those curves that  
-are coincide with first curve from aSIn.") RejectLines;
+	:param aSIn:
+	:type aSIn: IntTools_SequenceOfCurves &
+	:param aSOut:
+	:type aSOut: IntTools_SequenceOfCurves &
+	:rtype: void
+") RejectLines;
 		static void RejectLines (const IntTools_SequenceOfCurves & aSIn,IntTools_SequenceOfCurves & aSOut);
-		%feature("autodoc", "Args:
-	D1(gp_Dir)
-	D2(gp_Dir)
+		%feature("autodoc", "	* Returns True if D1 and D2 coinside
 
-Returns:
-	static Standard_Boolean
-
-Returns True if D1 and D2 coinside") IsDirsCoinside;
+	:param D1:
+	:type D1: gp_Dir
+	:param D2:
+	:type D2: gp_Dir
+	:rtype: bool
+") IsDirsCoinside;
 		static Standard_Boolean IsDirsCoinside (const gp_Dir & D1,const gp_Dir & D2);
-		%feature("autodoc", "Args:
-	D1(gp_Dir)
-	D2(gp_Dir)
-	aTol(Standard_Real)
+		%feature("autodoc", "	* Returns True if D1 and D2 coinside with given tolerance
 
-Returns:
-	static Standard_Boolean
-
-Returns True if D1 and D2 coinside with given tolerance") IsDirsCoinside;
+	:param D1:
+	:type D1: gp_Dir
+	:param D2:
+	:type D2: gp_Dir
+	:param aTol:
+	:type aTol: float
+	:rtype: bool
+") IsDirsCoinside;
 		static Standard_Boolean IsDirsCoinside (const gp_Dir & D1,const gp_Dir & D2,const Standard_Real aTol);
-		%feature("autodoc", "Args:
-	aC(Handle_Geom_Curve)
+		%feature("autodoc", "	* Returns True if aC is BoundedCurve from Geom and the distance between first point of the curve aC and last point is less than 1.e-12
 
-Returns:
-	static Standard_Boolean
-
-Returns True if aC is BoundedCurve from Geom and  
-the distance between first point  
-of the curve aC and last point  
-is less than 1.e-12") IsClosed;
+	:param aC:
+	:type aC: Handle_Geom_Curve &
+	:rtype: bool
+") IsClosed;
 		static Standard_Boolean IsClosed (const Handle_Geom_Curve & aC);
-		%feature("autodoc", "Args:
-	aC(Handle_Geom_Curve)
-	aTolBase(Standard_Real)
+		%feature("autodoc", "	* Returns adaptive tolerance for given aTolBase if aC is trimmed curve and basis curve is parabola, otherwise returns value of aTolBase
 
-Returns:
-	static Standard_Real
-
-Returns adaptive tolerance for given aTolBase  
-if aC is trimmed curve and basis curve is parabola,  
-otherwise returns value of aTolBase") CurveTolerance;
+	:param aC:
+	:type aC: Handle_Geom_Curve &
+	:param aTolBase:
+	:type aTolBase: float
+	:rtype: float
+") CurveTolerance;
 		static Standard_Real CurveTolerance (const Handle_Geom_Curve & aC,const Standard_Real aTolBase);
 };
 
@@ -6663,94 +5253,71 @@ def __del__(self):
 %nodefaultctor IntTools_TopolTool;
 class IntTools_TopolTool : public Adaptor3d_TopolTool {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor
 
-Empty constructor") IntTools_TopolTool;
+	:rtype: None
+") IntTools_TopolTool;
 		 IntTools_TopolTool ();
-		%feature("autodoc", "Args:
-	theSurface(Handle_Adaptor3d_HSurface)
+		%feature("autodoc", "	* Initializes me by surface
 
-Returns:
-	None
-
-Initializes me by surface") IntTools_TopolTool;
+	:param theSurface:
+	:type theSurface: Handle_Adaptor3d_HSurface &
+	:rtype: None
+") IntTools_TopolTool;
 		 IntTools_TopolTool (const Handle_Adaptor3d_HSurface & theSurface);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Redefined empty initializer Warning: Raises the exception NotImplemented
 
-Redefined empty initializer  
- 
- Warning:  
-Raises the exception NotImplemented") Initialize;
+	:rtype: void
+") Initialize;
 		virtual void Initialize ();
-		%feature("autodoc", "Args:
-	theSurface(Handle_Adaptor3d_HSurface)
+		%feature("autodoc", "	* Initializes me by surface
 
-Returns:
-	virtual void
-
-Initializes me by surface") Initialize;
+	:param theSurface:
+	:type theSurface: Handle_Adaptor3d_HSurface &
+	:rtype: void
+") Initialize;
 		virtual void Initialize (const Handle_Adaptor3d_HSurface & theSurface);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* 
 
+	:rtype: void
 ") ComputeSamplePoints;
 		virtual void ComputeSamplePoints ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
+		%feature("autodoc", "	* Computes the sample-points for the intersections algorithms
 
-Computes the sample-points for the intersections algorithms") NbSamplesU;
+	:rtype: int
+") NbSamplesU;
 		virtual Standard_Integer NbSamplesU ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
+		%feature("autodoc", "	* Computes the sample-points for the intersections algorithms
 
-Computes the sample-points for the intersections algorithms") NbSamplesV;
+	:rtype: int
+") NbSamplesV;
 		virtual Standard_Integer NbSamplesV ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
+		%feature("autodoc", "	* Computes the sample-points for the intersections algorithms
 
-Computes the sample-points for the intersections algorithms") NbSamples;
+	:rtype: int
+") NbSamples;
 		virtual Standard_Integer NbSamples ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	P2d(gp_Pnt2d)
-	P3d(gp_Pnt)
+		%feature("autodoc", "	* Returns a 2d point from surface myS and a corresponded 3d point for given index. The index should be from 1 to NbSamples()
 
-Returns:
-	virtual void
-
-Returns a 2d point from surface myS  
-and a corresponded 3d point  
-for given index.  
-The index should be from 1 to NbSamples()") SamplePoint;
+	:param Index:
+	:type Index: Standard_Integer
+	:param P2d:
+	:type P2d: gp_Pnt2d
+	:param P3d:
+	:type P3d: gp_Pnt
+	:rtype: void
+") SamplePoint;
 		virtual void SamplePoint (const Standard_Integer Index,gp_Pnt2d & P2d,gp_Pnt & P3d);
-		%feature("autodoc", "Args:
-	theDefl(Standard_Real)
-	theNUmin(Standard_Integer)
-	theNVmin(Standard_Integer)
+		%feature("autodoc", "	* compute the sample-points for the intersections algorithms by adaptive algorithm for BSpline surfaces. For other surfaces algorithm is the same as in method ComputeSamplePoints(), but only fill arrays of U and V sample parameters; theDefl is a requred deflection theNUmin, theNVmin are minimal nb points for U and V.
 
-Returns:
-	virtual void
-
-compute the sample-points for the intersections algorithms  
-by adaptive algorithm for BSpline surfaces. For other surfaces algorithm  
-is the same as in method ComputeSamplePoints(), but only fill arrays of U  
-and V sample parameters;  
-theDefl is a requred deflection  
-theNUmin, theNVmin are minimal nb points for U and V.") SamplePnts;
+	:param theDefl:
+	:type theDefl: float
+	:param theNUmin:
+	:type theNUmin: Standard_Integer
+	:param theNVmin:
+	:type theNVmin: Standard_Integer
+	:rtype: void
+") SamplePnts;
 		virtual void SamplePnts (const Standard_Real theDefl,const Standard_Integer theNUmin,const Standard_Integer theNVmin);
 };
 
@@ -6811,61 +5378,40 @@ def __del__(self):
 %nodefaultctor IntTools_CurveRangeSample;
 class IntTools_CurveRangeSample : public IntTools_BaseRangeSample {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_CurveRangeSample;
+		%feature("autodoc", "	:rtype: None
+") IntTools_CurveRangeSample;
 		 IntTools_CurveRangeSample ();
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntTools_CurveRangeSample;
+		%feature("autodoc", "	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: None
+") IntTools_CurveRangeSample;
 		 IntTools_CurveRangeSample (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetRangeIndex;
+		%feature("autodoc", "	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: None
+") SetRangeIndex;
 		void SetRangeIndex (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") GetRangeIndex;
+		%feature("autodoc", "	:rtype: int
+") GetRangeIndex;
 		Standard_Integer GetRangeIndex ();
-		%feature("autodoc", "Args:
-	Other(IntTools_CurveRangeSample)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEqual;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntTools_CurveRangeSample &
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const IntTools_CurveRangeSample & Other);
-		%feature("autodoc", "Args:
-	theFirst(Standard_Real)
-	theLast(Standard_Real)
-	theNbSample(Standard_Integer)
-
-Returns:
-	IntTools_Range
-
-No detailed docstring for this function.") GetRange;
+		%feature("autodoc", "	:param theFirst:
+	:type theFirst: float
+	:param theLast:
+	:type theLast: float
+	:param theNbSample:
+	:type theNbSample: Standard_Integer
+	:rtype: IntTools_Range
+") GetRange;
 		IntTools_Range GetRange (const Standard_Real theFirst,const Standard_Real theLast,const Standard_Integer theNbSample);
-		%feature("autodoc", "Args:
-	theNbSample(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") GetRangeIndexDeeper;
+		%feature("autodoc", "	:param theNbSample:
+	:type theNbSample: Standard_Integer
+	:rtype: int
+") GetRangeIndexDeeper;
 		Standard_Integer GetRangeIndexDeeper (const Standard_Integer theNbSample);
 };
 

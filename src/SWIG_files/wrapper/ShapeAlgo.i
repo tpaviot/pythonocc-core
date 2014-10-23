@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -45,27 +45,22 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor ShapeAlgo;
 class ShapeAlgo {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static void
+		%feature("autodoc", "	* Provides initerface to the algorithms from Shape Healing. Creates and initializes default AlgoContainer.
 
-Provides initerface to the algorithms from Shape Healing.  Creates and initializes default AlgoContainer.") Init;
+	:rtype: void
+") Init;
 		static void Init ();
-		%feature("autodoc", "Args:
-	aContainer(Handle_ShapeAlgo_AlgoContainer)
+		%feature("autodoc", "	* Sets default AlgoContainer
 
-Returns:
-	static void
-
-Sets default AlgoContainer") SetAlgoContainer;
+	:param aContainer:
+	:type aContainer: Handle_ShapeAlgo_AlgoContainer &
+	:rtype: void
+") SetAlgoContainer;
 		static void SetAlgoContainer (const Handle_ShapeAlgo_AlgoContainer & aContainer);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static Handle_ShapeAlgo_AlgoContainer
+		%feature("autodoc", "	* Returns default AlgoContainer
 
-Returns default AlgoContainer") AlgoContainer;
+	:rtype: Handle_ShapeAlgo_AlgoContainer
+") AlgoContainer;
 		static Handle_ShapeAlgo_AlgoContainer AlgoContainer ();
 };
 
@@ -87,26 +82,20 @@ def __del__(self):
 %nodefaultctor ShapeAlgo_ToolContainer;
 class ShapeAlgo_ToolContainer : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor
 
-Empty constructor") ShapeAlgo_ToolContainer;
+	:rtype: None
+") ShapeAlgo_ToolContainer;
 		 ShapeAlgo_ToolContainer ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_ShapeFix_Shape
+		%feature("autodoc", "	* Returns ShapeFix_Shape
 
-Returns ShapeFix_Shape") FixShape;
+	:rtype: Handle_ShapeFix_Shape
+") FixShape;
 		virtual Handle_ShapeFix_Shape FixShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_ShapeFix_EdgeProjAux
+		%feature("autodoc", "	* Returns ShapeFix_EdgeProjAux
 
-Returns ShapeFix_EdgeProjAux") EdgeProjAux;
+	:rtype: Handle_ShapeFix_EdgeProjAux
+") EdgeProjAux;
 		virtual Handle_ShapeFix_EdgeProjAux EdgeProjAux ();
 };
 

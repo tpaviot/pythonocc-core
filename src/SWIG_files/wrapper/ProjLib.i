@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -45,149 +45,119 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor ProjLib;
 class ProjLib {
 	public:
-		%feature("autodoc", "Args:
-	Pl(gp_Pln)
-	P(gp_Pnt)
+		%feature("autodoc", "	* Projection on a torus.
 
-Returns:
-	static gp_Pnt2d
-
-Projection on a torus.") Project;
+	:param Pl:
+	:type Pl: gp_Pln
+	:param P:
+	:type P: gp_Pnt
+	:rtype: gp_Pnt2d
+") Project;
 		static gp_Pnt2d Project (const gp_Pln & Pl,const gp_Pnt & P);
-		%feature("autodoc", "Args:
-	Pl(gp_Pln)
-	L(gp_Lin)
-
-Returns:
-	static gp_Lin2d
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param Pl:
+	:type Pl: gp_Pln
+	:param L:
+	:type L: gp_Lin
+	:rtype: gp_Lin2d
+") Project;
 		static gp_Lin2d Project (const gp_Pln & Pl,const gp_Lin & L);
-		%feature("autodoc", "Args:
-	Pl(gp_Pln)
-	C(gp_Circ)
-
-Returns:
-	static gp_Circ2d
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param Pl:
+	:type Pl: gp_Pln
+	:param C:
+	:type C: gp_Circ
+	:rtype: gp_Circ2d
+") Project;
 		static gp_Circ2d Project (const gp_Pln & Pl,const gp_Circ & C);
-		%feature("autodoc", "Args:
-	Pl(gp_Pln)
-	E(gp_Elips)
-
-Returns:
-	static gp_Elips2d
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param Pl:
+	:type Pl: gp_Pln
+	:param E:
+	:type E: gp_Elips
+	:rtype: gp_Elips2d
+") Project;
 		static gp_Elips2d Project (const gp_Pln & Pl,const gp_Elips & E);
-		%feature("autodoc", "Args:
-	Pl(gp_Pln)
-	P(gp_Parab)
-
-Returns:
-	static gp_Parab2d
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param Pl:
+	:type Pl: gp_Pln
+	:param P:
+	:type P: gp_Parab
+	:rtype: gp_Parab2d
+") Project;
 		static gp_Parab2d Project (const gp_Pln & Pl,const gp_Parab & P);
-		%feature("autodoc", "Args:
-	Pl(gp_Pln)
-	H(gp_Hypr)
-
-Returns:
-	static gp_Hypr2d
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param Pl:
+	:type Pl: gp_Pln
+	:param H:
+	:type H: gp_Hypr
+	:rtype: gp_Hypr2d
+") Project;
 		static gp_Hypr2d Project (const gp_Pln & Pl,const gp_Hypr & H);
-		%feature("autodoc", "Args:
-	Cy(gp_Cylinder)
-	P(gp_Pnt)
-
-Returns:
-	static gp_Pnt2d
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param Cy:
+	:type Cy: gp_Cylinder
+	:param P:
+	:type P: gp_Pnt
+	:rtype: gp_Pnt2d
+") Project;
 		static gp_Pnt2d Project (const gp_Cylinder & Cy,const gp_Pnt & P);
-		%feature("autodoc", "Args:
-	Cy(gp_Cylinder)
-	L(gp_Lin)
-
-Returns:
-	static gp_Lin2d
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param Cy:
+	:type Cy: gp_Cylinder
+	:param L:
+	:type L: gp_Lin
+	:rtype: gp_Lin2d
+") Project;
 		static gp_Lin2d Project (const gp_Cylinder & Cy,const gp_Lin & L);
-		%feature("autodoc", "Args:
-	Cy(gp_Cylinder)
-	Ci(gp_Circ)
-
-Returns:
-	static gp_Lin2d
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param Cy:
+	:type Cy: gp_Cylinder
+	:param Ci:
+	:type Ci: gp_Circ
+	:rtype: gp_Lin2d
+") Project;
 		static gp_Lin2d Project (const gp_Cylinder & Cy,const gp_Circ & Ci);
-		%feature("autodoc", "Args:
-	Co(gp_Cone)
-	P(gp_Pnt)
-
-Returns:
-	static gp_Pnt2d
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param Co:
+	:type Co: gp_Cone
+	:param P:
+	:type P: gp_Pnt
+	:rtype: gp_Pnt2d
+") Project;
 		static gp_Pnt2d Project (const gp_Cone & Co,const gp_Pnt & P);
-		%feature("autodoc", "Args:
-	Co(gp_Cone)
-	L(gp_Lin)
-
-Returns:
-	static gp_Lin2d
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param Co:
+	:type Co: gp_Cone
+	:param L:
+	:type L: gp_Lin
+	:rtype: gp_Lin2d
+") Project;
 		static gp_Lin2d Project (const gp_Cone & Co,const gp_Lin & L);
-		%feature("autodoc", "Args:
-	Co(gp_Cone)
-	Ci(gp_Circ)
-
-Returns:
-	static gp_Lin2d
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param Co:
+	:type Co: gp_Cone
+	:param Ci:
+	:type Ci: gp_Circ
+	:rtype: gp_Lin2d
+") Project;
 		static gp_Lin2d Project (const gp_Cone & Co,const gp_Circ & Ci);
-		%feature("autodoc", "Args:
-	Sp(gp_Sphere)
-	P(gp_Pnt)
-
-Returns:
-	static gp_Pnt2d
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param Sp:
+	:type Sp: gp_Sphere
+	:param P:
+	:type P: gp_Pnt
+	:rtype: gp_Pnt2d
+") Project;
 		static gp_Pnt2d Project (const gp_Sphere & Sp,const gp_Pnt & P);
-		%feature("autodoc", "Args:
-	Sp(gp_Sphere)
-	Ci(gp_Circ)
-
-Returns:
-	static gp_Lin2d
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param Sp:
+	:type Sp: gp_Sphere
+	:param Ci:
+	:type Ci: gp_Circ
+	:rtype: gp_Lin2d
+") Project;
 		static gp_Lin2d Project (const gp_Sphere & Sp,const gp_Circ & Ci);
-		%feature("autodoc", "Args:
-	To(gp_Torus)
-	P(gp_Pnt)
-
-Returns:
-	static gp_Pnt2d
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param To:
+	:type To: gp_Torus
+	:param P:
+	:type P: gp_Pnt
+	:rtype: gp_Pnt2d
+") Project;
 		static gp_Pnt2d Project (const gp_Torus & To,const gp_Pnt & P);
-		%feature("autodoc", "Args:
-	To(gp_Torus)
-	Ci(gp_Circ)
-
-Returns:
-	static gp_Lin2d
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param To:
+	:type To: gp_Torus
+	:param Ci:
+	:type Ci: gp_Circ
+	:rtype: gp_Lin2d
+") Project;
 		static gp_Lin2d Project (const gp_Torus & To,const gp_Circ & Ci);
 };
 
@@ -209,258 +179,212 @@ def __del__(self):
 %nodefaultctor ProjLib_CompProjectedCurve;
 class ProjLib_CompProjectedCurve : public Adaptor2d_Curve2d {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ProjLib_CompProjectedCurve;
+		%feature("autodoc", "	:rtype: None
+") ProjLib_CompProjectedCurve;
 		 ProjLib_CompProjectedCurve ();
-		%feature("autodoc", "Args:
-	S(Handle_Adaptor3d_HSurface)
-	C(Handle_Adaptor3d_HCurve)
-	TolU(Standard_Real)
-	TolV(Standard_Real)
+		%feature("autodoc", "	* try to find all solutions
 
-Returns:
-	None
-
-try to find all solutions") ProjLib_CompProjectedCurve;
+	:param S:
+	:type S: Handle_Adaptor3d_HSurface &
+	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:param TolU:
+	:type TolU: float
+	:param TolV:
+	:type TolV: float
+	:rtype: None
+") ProjLib_CompProjectedCurve;
 		 ProjLib_CompProjectedCurve (const Handle_Adaptor3d_HSurface & S,const Handle_Adaptor3d_HCurve & C,const Standard_Real TolU,const Standard_Real TolV);
-		%feature("autodoc", "Args:
-	S(Handle_Adaptor3d_HSurface)
-	C(Handle_Adaptor3d_HCurve)
-	TolU(Standard_Real)
-	TolV(Standard_Real)
-	MaxDist(Standard_Real)
+		%feature("autodoc", "	* this constructor tries to optimize the search using the assamption that maximum distance between surface and curve less or equal then MaxDist. if MaxDist < 0 then algorithm works as above.
 
-Returns:
-	None
-
-this constructor tries to optimize the search using the  
-assamption that maximum distance between surface and curve less or  
-equal then MaxDist.  
-if MaxDist < 0 then algorithm works as above.") ProjLib_CompProjectedCurve;
+	:param S:
+	:type S: Handle_Adaptor3d_HSurface &
+	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:param TolU:
+	:type TolU: float
+	:param TolV:
+	:type TolV: float
+	:param MaxDist:
+	:type MaxDist: float
+	:rtype: None
+") ProjLib_CompProjectedCurve;
 		 ProjLib_CompProjectedCurve (const Handle_Adaptor3d_HSurface & S,const Handle_Adaptor3d_HCurve & C,const Standard_Real TolU,const Standard_Real TolV,const Standard_Real MaxDist);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* computes a set of projected point and determine the continuous parts of the projected curves. The points corresponding to a projection on the bounds of the surface are included in this set of points.
 
-computes a set of projected point and determine the  
-continuous parts of the projected  curves. The  points  
-corresponding to a projection on the bounds of the surface are  
-included  in this set of points.") Init;
+	:rtype: None
+") Init;
 		void Init ();
-		%feature("autodoc", "Args:
-	S(Handle_Adaptor3d_HSurface)
+		%feature("autodoc", "	* Changes the surface.
 
-Returns:
-	None
-
-Changes the surface.") Load;
+	:param S:
+	:type S: Handle_Adaptor3d_HSurface &
+	:rtype: None
+") Load;
 		void Load (const Handle_Adaptor3d_HSurface & S);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
+		%feature("autodoc", "	* Changes the curve.
 
-Returns:
-	None
-
-Changes the  curve.") Load;
+	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:rtype: None
+") Load;
 		void Load (const Handle_Adaptor3d_HCurve & C);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Adaptor3d_HSurface
-
-No detailed docstring for this function.") GetSurface;
+		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HSurface
+") GetSurface;
 		const Handle_Adaptor3d_HSurface & GetSurface ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Adaptor3d_HCurve
-
-No detailed docstring for this function.") GetCurve;
+		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HCurve
+") GetCurve;
 		const Handle_Adaptor3d_HCurve & GetCurve ();
-		%feature("autodoc", "Args:
-	TolU(Standard_Real)
-	TolV(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GetTolerance;
+		%feature("autodoc", "	:param TolU:
+	:type TolU: float &
+	:param TolV:
+	:type TolV: float &
+	:rtype: None
+") GetTolerance;
 		void GetTolerance (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* returns the number of continuous part of the projected curve
 
-returns the number of continuous part of the projected curve") NbCurves;
+	:rtype: int
+") NbCurves;
 		Standard_Integer NbCurves ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Udeb(Standard_Real)
-	Ufin(Standard_Real)
+		%feature("autodoc", "	* returns the bounds of the continuous part corresponding to Index
 
-Returns:
-	None
-
-returns the bounds of the continuous part corresponding to Index") Bounds;
+	:param Index:
+	:type Index: Standard_Integer
+	:param Udeb:
+	:type Udeb: float &
+	:param Ufin:
+	:type Ufin: float &
+	:rtype: None
+") Bounds;
 		void Bounds (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	P(gp_Pnt2d)
+		%feature("autodoc", "	* returns True if part of projection with number Index is a single point and writes its coordinats in P
 
-Returns:
-	Standard_Boolean
-
-returns  True  if  part  of  projection with  number  Index is  a  single  point  and  writes  its  coordinats in  P") IsSinglePnt;
+	:param Index:
+	:type Index: Standard_Integer
+	:param P:
+	:type P: gp_Pnt2d
+	:rtype: bool
+") IsSinglePnt;
 		Standard_Boolean IsSinglePnt (const Standard_Integer Index,gp_Pnt2d & P);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	U(Standard_Real)
+		%feature("autodoc", "	* returns True if part of projection with number Index is an u-isoparametric curve of input surface
 
-Returns:
-	Standard_Boolean
-
-returns  True  if  part  of  projection with  number  Index is  an  u-isoparametric curve  of  input  surface") IsUIso;
+	:param Index:
+	:type Index: Standard_Integer
+	:param U:
+	:type U: float &
+	:rtype: bool
+") IsUIso;
 		Standard_Boolean IsUIso (const Standard_Integer Index,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	V(Standard_Real)
+		%feature("autodoc", "	* returns True if part of projection with number Index is an v-isoparametric curve of input surface
 
-Returns:
-	Standard_Boolean
-
-returns  True  if  part  of  projection with  number  Index is  an  v-isoparametric curve  of  input  surface") IsVIso;
+	:param Index:
+	:type Index: Standard_Integer
+	:param V:
+	:type V: float &
+	:rtype: bool
+") IsVIso;
 		Standard_Boolean IsVIso (const Standard_Integer Index,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
+		%feature("autodoc", "	* Computes the point of parameter U on the curve.
 
-Returns:
-	gp_Pnt2d
-
-Computes the point of parameter U on the curve.") Value;
+	:param U:
+	:type U: float
+	:rtype: gp_Pnt2d
+") Value;
 		gp_Pnt2d Value (const Standard_Real U);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	P(gp_Pnt2d)
+		%feature("autodoc", "	* Computes the point of parameter U on the curve.
 
-Returns:
-	None
-
-Computes the point of parameter U on the curve.") D0;
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt2d
+	:rtype: None
+") D0;
 		void D0 (const Standard_Real U,gp_Pnt2d & P);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	P(gp_Pnt2d)
-	V(gp_Vec2d)
+		%feature("autodoc", "	* Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 
-Returns:
-	None
-
-Computes the point of parameter U on the curve with its  
- first derivative.  Raised if the continuity of the current interval  
- is not C1.") D1;
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt2d
+	:param V:
+	:type V: gp_Vec2d
+	:rtype: None
+") D1;
 		void D1 (const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	P(gp_Pnt2d)
-	V1(gp_Vec2d)
-	V2(gp_Vec2d)
+		%feature("autodoc", "	* Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 
-Returns:
-	None
-
-Returns the point P of parameter U, the first and second  
- derivatives V1 and V2.  Raised if the continuity of the current interval  
- is not C2.") D2;
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt2d
+	:param V1:
+	:type V1: gp_Vec2d
+	:param V2:
+	:type V2: gp_Vec2d
+	:rtype: None
+") D2;
 		void D2 (const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	N(Standard_Integer)
+		%feature("autodoc", "	* The returned vector gives the value of the derivative for the order of derivation N. Raised if N < 1. Raised if N > 2.
 
-Returns:
-	gp_Vec2d
-
-The returned vector gives the value of the derivative for the  
- order of derivation N.  Raised if N < 1.  Raised if N > 2.") DN;
+	:param U:
+	:type U: float
+	:param N:
+	:type N: Standard_Integer
+	:rtype: gp_Vec2d
+") DN;
 		gp_Vec2d DN (const Standard_Real U,const Standard_Integer N);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the first parameter of the curve C which has a projection on S.
 
-Returns  the  first  parameter of  the  curve  C  
- which  has  a  projection  on  S.") FirstParameter;
+	:rtype: float
+") FirstParameter;
 		Standard_Real FirstParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the last parameter of the curve C which has a projection on S.
 
-Returns  the  last  parameter of  the  curve  C  
- which  has  a  projection  on  S.") LastParameter;
+	:rtype: float
+") LastParameter;
 		Standard_Real LastParameter ();
-		%feature("autodoc", "Args:
-	S(GeomAbs_Shape)
+		%feature("autodoc", "	* Returns the number of intervals which define an S continuous part of the projected curve
 
-Returns:
-	Standard_Integer
-
-Returns  the number  of  intervals which  define  
- an  S  continuous  part  of  the  projected  curve") NbIntervals;
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: int
+") NbIntervals;
 		Standard_Integer NbIntervals (const GeomAbs_Shape S);
-		%feature("autodoc", "Args:
-	FirstParam(Standard_Real)
-	LastParam(Standard_Real)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 2d points confusion. If <First> >= <Last>
 
-Returns:
-	Handle_Adaptor2d_HCurve2d
-
-Returns    a  curve equivalent   of  <self>  between  
-         parameters <First>  and <Last>. <Tol>  is used  to  
-         test for 2d points confusion.  If <First> >= <Last>") Trim;
+	:param FirstParam:
+	:type FirstParam: float
+	:param LastParam:
+	:type LastParam: float
+	:param Tol:
+	:type Tol: float
+	:rtype: Handle_Adaptor2d_HCurve2d
+") Trim;
 		Handle_Adaptor2d_HCurve2d Trim (const Standard_Real FirstParam,const Standard_Real LastParam,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	T(TColStd_Array1OfReal)
-	S(GeomAbs_Shape)
+		%feature("autodoc", "	* Returns the parameters corresponding to S discontinuities.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
-Returns:
-	None
-
-Returns  the  parameters  corresponding  to  
-         S  discontinuities.  
- 
-         The array must provide  enough room to  accomodate  
-         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+	:param T:
+	:type T: TColStd_Array1OfReal &
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: None
+") Intervals;
 		void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* returns the maximum distance between curve to project and surface
 
-Returns:
-	Standard_Real
-
-returns  the  maximum  distance  between  
- curve  to  project  and  surface") MaxDistance;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: float
+") MaxDistance;
 		Standard_Real MaxDistance (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ProjLib_HSequenceOfHSequenceOfPnt
-
-No detailed docstring for this function.") GetSequence;
+		%feature("autodoc", "	:rtype: Handle_ProjLib_HSequenceOfHSequenceOfPnt
+") GetSequence;
 		const Handle_ProjLib_HSequenceOfHSequenceOfPnt & GetSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	GeomAbs_CurveType
+		%feature("autodoc", "	* Returns the type of the curve in the current interval : Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 
-Returns  the  type of the   curve  in the  current  
-         interval :   Line,   Circle,   Ellipse, Hyperbola,  
-         Parabola, BezierCurve, BSplineCurve, OtherCurve.") GetType;
+	:rtype: GeomAbs_CurveType
+") GetType;
 		GeomAbs_CurveType GetType ();
 };
 
@@ -482,37 +406,27 @@ def __del__(self):
 %nodefaultctor ProjLib_ComputeApprox;
 class ProjLib_ComputeApprox {
 	public:
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-	S(Handle_Adaptor3d_HSurface)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* <Tol> is the tolerance with which the approximation is performed.
 
-Returns:
-	None
-
-<Tol>    is   the   tolerance   with  which    the  
-         approximation is performed.") ProjLib_ComputeApprox;
+	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:param S:
+	:type S: Handle_Adaptor3d_HSurface &
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") ProjLib_ComputeApprox;
 		 ProjLib_ComputeApprox (const Handle_Adaptor3d_HCurve & C,const Handle_Adaptor3d_HSurface & S,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_BSplineCurve
-
-No detailed docstring for this function.") BSpline;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_BSplineCurve
+") BSpline;
 		Handle_Geom2d_BSplineCurve BSpline ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_BezierCurve
-
-No detailed docstring for this function.") Bezier;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_BezierCurve
+") Bezier;
 		Handle_Geom2d_BezierCurve Bezier ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns the reached Tolerance.
 
-returns the reached Tolerance.") Tolerance;
+	:rtype: float
+") Tolerance;
 		Standard_Real Tolerance ();
 };
 
@@ -534,95 +448,75 @@ def __del__(self):
 %nodefaultctor ProjLib_ComputeApproxOnPolarSurface;
 class ProjLib_ComputeApproxOnPolarSurface {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ProjLib_ComputeApproxOnPolarSurface;
+		%feature("autodoc", "	:rtype: None
+") ProjLib_ComputeApproxOnPolarSurface;
 		 ProjLib_ComputeApproxOnPolarSurface ();
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-	S(Handle_Adaptor3d_HSurface)
-	Tol(Standard_Real)=1.0e-4
-
-Returns:
-	None
-
-No detailed docstring for this function.") ProjLib_ComputeApproxOnPolarSurface;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:param S:
+	:type S: Handle_Adaptor3d_HSurface &
+	:param Tol: default value is 1.0e-4
+	:type Tol: float
+	:rtype: None
+") ProjLib_ComputeApproxOnPolarSurface;
 		 ProjLib_ComputeApproxOnPolarSurface (const Handle_Adaptor3d_HCurve & C,const Handle_Adaptor3d_HSurface & S,const Standard_Real Tol = 1.0e-4);
-		%feature("autodoc", "Args:
-	InitCurve2d(Handle_Adaptor2d_HCurve2d)
-	C(Handle_Adaptor3d_HCurve)
-	S(Handle_Adaptor3d_HSurface)
-	Tol(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ProjLib_ComputeApproxOnPolarSurface;
+		%feature("autodoc", "	:param InitCurve2d:
+	:type InitCurve2d: Handle_Adaptor2d_HCurve2d &
+	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:param S:
+	:type S: Handle_Adaptor3d_HSurface &
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") ProjLib_ComputeApproxOnPolarSurface;
 		 ProjLib_ComputeApproxOnPolarSurface (const Handle_Adaptor2d_HCurve2d & InitCurve2d,const Handle_Adaptor3d_HCurve & C,const Handle_Adaptor3d_HSurface & S,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	InitCurve2d(Handle_Adaptor2d_HCurve2d)
-	InitCurve2dBis(Handle_Adaptor2d_HCurve2d)
-	C(Handle_Adaptor3d_HCurve)
-	S(Handle_Adaptor3d_HSurface)
-	Tol(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ProjLib_ComputeApproxOnPolarSurface;
+		%feature("autodoc", "	:param InitCurve2d:
+	:type InitCurve2d: Handle_Adaptor2d_HCurve2d &
+	:param InitCurve2dBis:
+	:type InitCurve2dBis: Handle_Adaptor2d_HCurve2d &
+	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:param S:
+	:type S: Handle_Adaptor3d_HSurface &
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") ProjLib_ComputeApproxOnPolarSurface;
 		 ProjLib_ComputeApproxOnPolarSurface (const Handle_Adaptor2d_HCurve2d & InitCurve2d,const Handle_Adaptor2d_HCurve2d & InitCurve2dBis,const Handle_Adaptor3d_HCurve & C,const Handle_Adaptor3d_HSurface & S,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	InitCurve2d(Handle_Adaptor2d_HCurve2d)
-	C(Handle_Adaptor3d_HCurve)
-	S(Handle_Adaptor3d_HSurface)
-
-Returns:
-	Handle_Geom2d_BSplineCurve
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param InitCurve2d:
+	:type InitCurve2d: Handle_Adaptor2d_HCurve2d &
+	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:param S:
+	:type S: Handle_Adaptor3d_HSurface &
+	:rtype: Handle_Geom2d_BSplineCurve
+") Perform;
 		Handle_Geom2d_BSplineCurve Perform (const Handle_Adaptor2d_HCurve2d & InitCurve2d,const Handle_Adaptor3d_HCurve & C,const Handle_Adaptor3d_HSurface & S);
-		%feature("autodoc", "Args:
-	Curve(Handle_Adaptor3d_HCurve)
-	S(Handle_Adaptor3d_HSurface)
-
-Returns:
-	Handle_Adaptor2d_HCurve2d
-
-No detailed docstring for this function.") BuildInitialCurve2d;
+		%feature("autodoc", "	:param Curve:
+	:type Curve: Handle_Adaptor3d_HCurve &
+	:param S:
+	:type S: Handle_Adaptor3d_HSurface &
+	:rtype: Handle_Adaptor2d_HCurve2d
+") BuildInitialCurve2d;
 		Handle_Adaptor2d_HCurve2d BuildInitialCurve2d (const Handle_Adaptor3d_HCurve & Curve,const Handle_Adaptor3d_HSurface & S);
-		%feature("autodoc", "Args:
-	Curve(Handle_Adaptor3d_HCurve)
-	S(Handle_Adaptor3d_HSurface)
-	InitCurve2d(Handle_Adaptor2d_HCurve2d)
-
-Returns:
-	Handle_Geom2d_BSplineCurve
-
-No detailed docstring for this function.") ProjectUsingInitialCurve2d;
+		%feature("autodoc", "	:param Curve:
+	:type Curve: Handle_Adaptor3d_HCurve &
+	:param S:
+	:type S: Handle_Adaptor3d_HSurface &
+	:param InitCurve2d:
+	:type InitCurve2d: Handle_Adaptor2d_HCurve2d &
+	:rtype: Handle_Geom2d_BSplineCurve
+") ProjectUsingInitialCurve2d;
 		Handle_Geom2d_BSplineCurve ProjectUsingInitialCurve2d (const Handle_Adaptor3d_HCurve & Curve,const Handle_Adaptor3d_HSurface & S,const Handle_Adaptor2d_HCurve2d & InitCurve2d);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_BSplineCurve
-
-No detailed docstring for this function.") BSpline;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_BSplineCurve
+") BSpline;
 		Handle_Geom2d_BSplineCurve BSpline ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_Curve
-
-No detailed docstring for this function.") Curve2d;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_Curve
+") Curve2d;
 		Handle_Geom2d_Curve Curve2d ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
 };
 
@@ -644,42 +538,24 @@ def __del__(self):
 %nodefaultctor ProjLib_HCompProjectedCurve;
 class ProjLib_HCompProjectedCurve : public Adaptor2d_HCurve2d {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ProjLib_HCompProjectedCurve;
+		%feature("autodoc", "	:rtype: None
+") ProjLib_HCompProjectedCurve;
 		 ProjLib_HCompProjectedCurve ();
-		%feature("autodoc", "Args:
-	C(ProjLib_CompProjectedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ProjLib_HCompProjectedCurve;
+		%feature("autodoc", "	:param C:
+	:type C: ProjLib_CompProjectedCurve &
+	:rtype: None
+") ProjLib_HCompProjectedCurve;
 		 ProjLib_HCompProjectedCurve (const ProjLib_CompProjectedCurve & C);
-		%feature("autodoc", "Args:
-	C(ProjLib_CompProjectedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Set;
+		%feature("autodoc", "	:param C:
+	:type C: ProjLib_CompProjectedCurve &
+	:rtype: None
+") Set;
 		void Set (const ProjLib_CompProjectedCurve & C);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Adaptor2d_Curve2d
-
-No detailed docstring for this function.") Curve2d;
+		%feature("autodoc", "	:rtype: Adaptor2d_Curve2d
+") Curve2d;
 		const Adaptor2d_Curve2d & Curve2d ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ProjLib_CompProjectedCurve
-
-No detailed docstring for this function.") ChangeCurve2d;
+		%feature("autodoc", "	:rtype: ProjLib_CompProjectedCurve
+") ChangeCurve2d;
 		ProjLib_CompProjectedCurve & ChangeCurve2d ();
 };
 
@@ -740,42 +616,24 @@ def __del__(self):
 %nodefaultctor ProjLib_HProjectedCurve;
 class ProjLib_HProjectedCurve : public Adaptor2d_HCurve2d {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ProjLib_HProjectedCurve;
+		%feature("autodoc", "	:rtype: None
+") ProjLib_HProjectedCurve;
 		 ProjLib_HProjectedCurve ();
-		%feature("autodoc", "Args:
-	C(ProjLib_ProjectedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ProjLib_HProjectedCurve;
+		%feature("autodoc", "	:param C:
+	:type C: ProjLib_ProjectedCurve &
+	:rtype: None
+") ProjLib_HProjectedCurve;
 		 ProjLib_HProjectedCurve (const ProjLib_ProjectedCurve & C);
-		%feature("autodoc", "Args:
-	C(ProjLib_ProjectedCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Set;
+		%feature("autodoc", "	:param C:
+	:type C: ProjLib_ProjectedCurve &
+	:rtype: None
+") Set;
 		void Set (const ProjLib_ProjectedCurve & C);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Adaptor2d_Curve2d
-
-No detailed docstring for this function.") Curve2d;
+		%feature("autodoc", "	:rtype: Adaptor2d_Curve2d
+") Curve2d;
 		const Adaptor2d_Curve2d & Curve2d ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ProjLib_ProjectedCurve
-
-No detailed docstring for this function.") ChangeCurve2d;
+		%feature("autodoc", "	:rtype: ProjLib_ProjectedCurve
+") ChangeCurve2d;
 		ProjLib_ProjectedCurve & ChangeCurve2d ();
 };
 
@@ -836,188 +694,118 @@ def __del__(self):
 %nodefaultctor ProjLib_HSequenceOfHSequenceOfPnt;
 class ProjLib_HSequenceOfHSequenceOfPnt : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ProjLib_HSequenceOfHSequenceOfPnt;
+		%feature("autodoc", "	:rtype: None
+") ProjLib_HSequenceOfHSequenceOfPnt;
 		 ProjLib_HSequenceOfHSequenceOfPnt ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	anItem(Handle_TColgp_HSequenceOfPnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_TColgp_HSequenceOfPnt
+	:rtype: None
+") Append;
 		void Append (const Handle_TColgp_HSequenceOfPnt & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_ProjLib_HSequenceOfHSequenceOfPnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_ProjLib_HSequenceOfHSequenceOfPnt &
+	:rtype: None
+") Append;
 		void Append (const Handle_ProjLib_HSequenceOfHSequenceOfPnt & aSequence);
-		%feature("autodoc", "Args:
-	anItem(Handle_TColgp_HSequenceOfPnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_TColgp_HSequenceOfPnt
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_TColgp_HSequenceOfPnt & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_ProjLib_HSequenceOfHSequenceOfPnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_ProjLib_HSequenceOfHSequenceOfPnt &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_ProjLib_HSequenceOfHSequenceOfPnt & aSequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_TColgp_HSequenceOfPnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_TColgp_HSequenceOfPnt
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_TColgp_HSequenceOfPnt & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_ProjLib_HSequenceOfHSequenceOfPnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_ProjLib_HSequenceOfHSequenceOfPnt &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_ProjLib_HSequenceOfHSequenceOfPnt & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_TColgp_HSequenceOfPnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_TColgp_HSequenceOfPnt
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_TColgp_HSequenceOfPnt & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_ProjLib_HSequenceOfHSequenceOfPnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_ProjLib_HSequenceOfHSequenceOfPnt &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_ProjLib_HSequenceOfHSequenceOfPnt & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anOtherIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Exchange;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anOtherIndex:
+	:type anOtherIndex: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_ProjLib_HSequenceOfHSequenceOfPnt
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_ProjLib_HSequenceOfHSequenceOfPnt
+") Split;
 		Handle_ProjLib_HSequenceOfHSequenceOfPnt Split (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_TColgp_HSequenceOfPnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_TColgp_HSequenceOfPnt
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Handle_TColgp_HSequenceOfPnt & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_TColgp_HSequenceOfPnt
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_TColgp_HSequenceOfPnt
+") Value;
 		const Handle_TColgp_HSequenceOfPnt & Value (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_TColgp_HSequenceOfPnt
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_TColgp_HSequenceOfPnt
+") ChangeValue;
 		Handle_TColgp_HSequenceOfPnt & ChangeValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	fromIndex(Standard_Integer)
-	toIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param fromIndex:
+	:type fromIndex: Standard_Integer
+	:param toIndex:
+	:type toIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ProjLib_SequenceOfHSequenceOfPnt
-
-No detailed docstring for this function.") Sequence;
+		%feature("autodoc", "	:rtype: ProjLib_SequenceOfHSequenceOfPnt
+") Sequence;
 		const ProjLib_SequenceOfHSequenceOfPnt & Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ProjLib_SequenceOfHSequenceOfPnt
-
-No detailed docstring for this function.") ChangeSequence;
+		%feature("autodoc", "	:rtype: ProjLib_SequenceOfHSequenceOfPnt
+") ChangeSequence;
 		ProjLib_SequenceOfHSequenceOfPnt & ChangeSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ProjLib_HSequenceOfHSequenceOfPnt
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_ProjLib_HSequenceOfHSequenceOfPnt
+") ShallowCopy;
 		Handle_ProjLib_HSequenceOfHSequenceOfPnt ShallowCopy ();
 };
 
@@ -1078,74 +866,60 @@ def __del__(self):
 %nodefaultctor ProjLib_PrjFunc;
 class ProjLib_PrjFunc : public math_FunctionSetWithDerivatives {
 	public:
-		%feature("autodoc", "Args:
-	C(Adaptor3d_CurvePtr)
-	FixVal(Standard_Real)
-	S(Adaptor3d_SurfacePtr)
-	Fix(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ProjLib_PrjFunc;
+		%feature("autodoc", "	:param C:
+	:type C: Adaptor3d_CurvePtr &
+	:param FixVal:
+	:type FixVal: float
+	:param S:
+	:type S: Adaptor3d_SurfacePtr &
+	:param Fix:
+	:type Fix: Standard_Integer
+	:rtype: None
+") ProjLib_PrjFunc;
 		 ProjLib_PrjFunc (const Adaptor3d_CurvePtr & C,const Standard_Real FixVal,const Adaptor3d_SurfacePtr & S,const Standard_Integer Fix);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* returns the number of variables of the function.
 
-returns the number of variables of the function.") NbVariables;
+	:rtype: int
+") NbVariables;
 		Standard_Integer NbVariables ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* returns the number of equations of the function.
 
-returns the number of equations of the function.") NbEquations;
+	:rtype: int
+") NbEquations;
 		Standard_Integer NbEquations ();
-		%feature("autodoc", "Args:
-	X(math_Vector)
-	F(math_Vector)
+		%feature("autodoc", "	* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 
-Returns:
-	Standard_Boolean
-
-computes the values <F> of the Functions for the  
-         variable <X>.  
-         Returns True if the computation was done successfully,  
-         False otherwise.") Value;
+	:param X:
+	:type X: math_Vector &
+	:param F:
+	:type F: math_Vector &
+	:rtype: bool
+") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
-		%feature("autodoc", "Args:
-	X(math_Vector)
-	D(math_Matrix)
+		%feature("autodoc", "	* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 
-Returns:
-	Standard_Boolean
-
-returns the values <D> of the derivatives for the  
-         variable <X>.  
-         Returns True if the computation was done successfully,  
-         False otherwise.") Derivatives;
+	:param X:
+	:type X: math_Vector &
+	:param D:
+	:type D: math_Matrix &
+	:rtype: bool
+") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
-		%feature("autodoc", "Args:
-	X(math_Vector)
-	F(math_Vector)
-	D(math_Matrix)
+		%feature("autodoc", "	* returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 
-Returns:
-	Standard_Boolean
-
-returns the values <F> of the functions and the derivatives  
-         <D> for the variable <X>.  
-         Returns True if the computation was done successfully,  
-         False otherwise.") Values;
+	:param X:
+	:type X: math_Vector &
+	:param F:
+	:type F: math_Vector &
+	:param D:
+	:type D: math_Matrix &
+	:rtype: bool
+") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt2d
+		%feature("autodoc", "	* returns point on surface
 
-returns  point  on  surface") Solution;
+	:rtype: gp_Pnt2d
+") Solution;
 		gp_Pnt2d Solution ();
 };
 
@@ -1167,49 +941,45 @@ def __del__(self):
 %nodefaultctor ProjLib_PrjResolve;
 class ProjLib_PrjResolve {
 	public:
-		%feature("autodoc", "Args:
-	C(Adaptor3d_Curve)
-	S(Adaptor3d_Surface)
-	Fix(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ProjLib_PrjResolve;
+		%feature("autodoc", "	:param C:
+	:type C: Adaptor3d_Curve &
+	:param S:
+	:type S: Adaptor3d_Surface &
+	:param Fix:
+	:type Fix: Standard_Integer
+	:rtype: None
+") ProjLib_PrjResolve;
 		 ProjLib_PrjResolve (const Adaptor3d_Curve & C,const Adaptor3d_Surface & S,const Standard_Integer Fix);
-		%feature("autodoc", "Args:
-	t(Standard_Real)
-	U(Standard_Real)
-	V(Standard_Real)
-	Tol(gp_Pnt2d)
-	Inf(gp_Pnt2d)
-	Sup(gp_Pnt2d)
-	FTol(Standard_Real)=- 1
-	StrictInside(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Calculates the ort from C(t) to S with a close point. The close point is defined by the parameter values U0 and V0. The function F(u,v)=distance(S(u,v),C(t)) has an extremum when gradient(F)=0. The algorithm searchs a zero near the close point.
 
-Returns:
-	None
-
-Calculates the ort from  C(t)  to  S  with a close point.  
-         The close point is defined by the parameter values  
-         U0 and V0.  
-         The function F(u,v)=distance(S(u,v),C(t)) has an  
-         extremum when gradient(F)=0. The algorithm searchs  
-         a zero near the close point.") Perform;
+	:param t:
+	:type t: float
+	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Tol:
+	:type Tol: gp_Pnt2d
+	:param Inf:
+	:type Inf: gp_Pnt2d
+	:param Sup:
+	:type Sup: gp_Pnt2d
+	:param FTol: default value is - 1
+	:type FTol: float
+	:param StrictInside: default value is Standard_False
+	:type StrictInside: bool
+	:rtype: None
+") Perform;
 		void Perform (const Standard_Real t,const Standard_Real U,const Standard_Real V,const gp_Pnt2d & Tol,const gp_Pnt2d & Inf,const gp_Pnt2d & Sup,const Standard_Real FTol = - 1,const Standard_Boolean StrictInside = Standard_False);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the distance is found.
 
-Returns True if the distance is found.") IsDone;
+	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt2d
+		%feature("autodoc", "	* Returns the point of the extremum distance.
 
-Returns the point of the extremum distance.") Solution;
+	:rtype: gp_Pnt2d
+") Solution;
 		gp_Pnt2d Solution ();
 };
 
@@ -1231,315 +1001,204 @@ def __del__(self):
 %nodefaultctor ProjLib_ProjectOnPlane;
 class ProjLib_ProjectOnPlane : public Adaptor3d_Curve {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor.
 
-Empty constructor.") ProjLib_ProjectOnPlane;
+	:rtype: None
+") ProjLib_ProjectOnPlane;
 		 ProjLib_ProjectOnPlane ();
-		%feature("autodoc", "Args:
-	Pl(gp_Ax3)
+		%feature("autodoc", "	* The projection will be normal to the Plane defined by the Ax3 <Pl>.
 
-Returns:
-	None
-
-The projection will be normal to the Plane defined  
-         by the Ax3 <Pl>.") ProjLib_ProjectOnPlane;
+	:param Pl:
+	:type Pl: gp_Ax3
+	:rtype: None
+") ProjLib_ProjectOnPlane;
 		 ProjLib_ProjectOnPlane (const gp_Ax3 & Pl);
-		%feature("autodoc", "Args:
-	Pl(gp_Ax3)
-	D(gp_Dir)
+		%feature("autodoc", "	* The projection will be along the direction <D> on the plane defined by the Ax3 <Pl>. raises if the direction <D> is parallel to the plane <Pl>.
 
-Returns:
-	None
-
-The projection will be  along the direction <D> on  
-         the plane defined by the Ax3 <Pl>.  raises  if the direction  <D>  is parallel  to the  
-         plane <Pl>.") ProjLib_ProjectOnPlane;
+	:param Pl:
+	:type Pl: gp_Ax3
+	:param D:
+	:type D: gp_Dir
+	:rtype: None
+") ProjLib_ProjectOnPlane;
 		 ProjLib_ProjectOnPlane (const gp_Ax3 & Pl,const gp_Dir & D);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-	Tolerance(Standard_Real)
-	KeepParametrization(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Sets the Curve and perform the projection. if <KeepParametrization> is true, the parametrization of the Projected Curve <PC> will be the same as the parametrization of the initial curve <C>. It meens: proj(C(u)) = PC(u) for each u. Otherwize, the parametrization may change.
 
-Returns:
-	None
-
-Sets the  Curve  and perform  the projection.   if  
-         <KeepParametrization> is true, the parametrization  
-         of the Projected Curve <PC>  will  be the same  as  
-         the parametrization of the initial  curve <C>.  It  
-         meens: proj(C(u)) = PC(u) for  each u.  Otherwize,  
-         the parametrization may change.") Load;
+	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:param Tolerance:
+	:type Tolerance: float
+	:param KeepParametrization: default value is Standard_True
+	:type KeepParametrization: bool
+	:rtype: None
+") Load;
 		void Load (const Handle_Adaptor3d_HCurve & C,const Standard_Real Tolerance,const Standard_Boolean KeepParametrization = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Ax3
-
-No detailed docstring for this function.") GetPlane;
+		%feature("autodoc", "	:rtype: gp_Ax3
+") GetPlane;
 		const gp_Ax3 & GetPlane ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Dir
-
-No detailed docstring for this function.") GetDirection;
+		%feature("autodoc", "	:rtype: gp_Dir
+") GetDirection;
 		const gp_Dir & GetDirection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Adaptor3d_HCurve
-
-No detailed docstring for this function.") GetCurve;
+		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HCurve
+") GetCurve;
 		const Handle_Adaptor3d_HCurve & GetCurve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") FirstParameter;
+		%feature("autodoc", "	:rtype: float
+") FirstParameter;
 		Standard_Real FirstParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") LastParameter;
+		%feature("autodoc", "	:rtype: float
+") LastParameter;
 		Standard_Real LastParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	GeomAbs_Shape
-
-No detailed docstring for this function.") Continuity;
+		%feature("autodoc", "	:rtype: GeomAbs_Shape
+") Continuity;
 		GeomAbs_Shape Continuity ();
-		%feature("autodoc", "Args:
-	S(GeomAbs_Shape)
+		%feature("autodoc", "	* If necessary, breaks the curve in intervals of continuity <S>. And returns the number of intervals.
 
-Returns:
-	Standard_Integer
-
-If necessary,  breaks the  curve in  intervals  of  
-         continuity  <S>.    And  returns   the number   of  
-         intervals.") NbIntervals;
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: int
+") NbIntervals;
 		Standard_Integer NbIntervals (const GeomAbs_Shape S);
-		%feature("autodoc", "Args:
-	T(TColStd_Array1OfReal)
-	S(GeomAbs_Shape)
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
-Returns:
-	None
-
-Stores in <T> the  parameters bounding the intervals  
-         of continuity <S>.  
- 
-         The array must provide  enough room to  accomodate  
-         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+	:param T:
+	:type T: TColStd_Array1OfReal &
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: None
+") Intervals;
 		void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
-		%feature("autodoc", "Args:
-	First(Standard_Real)
-	Last(Standard_Real)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>
 
-Returns:
-	Handle_Adaptor3d_HCurve
-
-Returns    a  curve equivalent   of  <self>  between  
-         parameters <First>  and <Last>. <Tol>  is used  to  
-         test for 3d points confusion.  If <First> >= <Last>") Trim;
+	:param First:
+	:type First: float
+	:param Last:
+	:type Last: float
+	:param Tol:
+	:type Tol: float
+	:rtype: Handle_Adaptor3d_HCurve
+") Trim;
 		Handle_Adaptor3d_HCurve Trim (const Standard_Real First,const Standard_Real Last,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsClosed;
+		%feature("autodoc", "	:rtype: bool
+") IsClosed;
 		Standard_Boolean IsClosed ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsPeriodic;
+		%feature("autodoc", "	:rtype: bool
+") IsPeriodic;
 		Standard_Boolean IsPeriodic ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Period;
+		%feature("autodoc", "	:rtype: float
+") Period;
 		Standard_Real Period ();
-		%feature("autodoc", "Args:
-	U(Standard_Real)
+		%feature("autodoc", "	* Computes the point of parameter U on the curve.
 
-Returns:
-	gp_Pnt
-
-Computes the point of parameter U on the curve.") Value;
+	:param U:
+	:type U: float
+	:rtype: gp_Pnt
+") Value;
 		gp_Pnt Value (const Standard_Real U);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	P(gp_Pnt)
+		%feature("autodoc", "	* Computes the point of parameter U on the curve.
 
-Returns:
-	None
-
-Computes the point of parameter U on the curve.") D0;
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt
+	:rtype: None
+") D0;
 		void D0 (const Standard_Real U,gp_Pnt & P);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	P(gp_Pnt)
-	V(gp_Vec)
+		%feature("autodoc", "	* Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 
-Returns:
-	None
-
-Computes the point of parameter U on the curve with its  
- first derivative.  Raised if the continuity of the current interval  
- is not C1.") D1;
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt
+	:param V:
+	:type V: gp_Vec
+	:rtype: None
+") D1;
 		void D1 (const Standard_Real U,gp_Pnt & P,gp_Vec & V);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	P(gp_Pnt)
-	V1(gp_Vec)
-	V2(gp_Vec)
+		%feature("autodoc", "	* Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 
-Returns:
-	None
-
-Returns the point P of parameter U, the first and second  
- derivatives V1 and V2.  Raised if the continuity of the current interval  
- is not C2.") D2;
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt
+	:param V1:
+	:type V1: gp_Vec
+	:param V2:
+	:type V2: gp_Vec
+	:rtype: None
+") D2;
 		void D2 (const Standard_Real U,gp_Pnt & P,gp_Vec & V1,gp_Vec & V2);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	P(gp_Pnt)
-	V1(gp_Vec)
-	V2(gp_Vec)
-	V3(gp_Vec)
+		%feature("autodoc", "	* Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 
-Returns:
-	None
-
-Returns the point P of parameter U, the first, the second  
- and the third derivative.  Raised if the continuity of the current interval  
- is not C3.") D3;
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt
+	:param V1:
+	:type V1: gp_Vec
+	:param V2:
+	:type V2: gp_Vec
+	:param V3:
+	:type V3: gp_Vec
+	:rtype: None
+") D3;
 		void D3 (const Standard_Real U,gp_Pnt & P,gp_Vec & V1,gp_Vec & V2,gp_Vec & V3);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	N(Standard_Integer)
+		%feature("autodoc", "	* The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 
-Returns:
-	gp_Vec
-
-The returned vector gives the value of the derivative for the  
- order of derivation N.  Raised if the continuity of the current interval  
- is not CN.  Raised if N < 1.") DN;
+	:param U:
+	:type U: float
+	:param N:
+	:type N: Standard_Integer
+	:rtype: gp_Vec
+") DN;
 		gp_Vec DN (const Standard_Real U,const Standard_Integer N);
-		%feature("autodoc", "Args:
-	R3d(Standard_Real)
+		%feature("autodoc", "	* Returns the parametric resolution corresponding  to the real space resolution <R3d>.
 
-Returns:
-	Standard_Real
-
-Returns the parametric  resolution corresponding  
-        to the real space resolution <R3d>.") Resolution;
+	:param R3d:
+	:type R3d: float
+	:rtype: float
+") Resolution;
 		Standard_Real Resolution (const Standard_Real R3d);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	GeomAbs_CurveType
+		%feature("autodoc", "	* Returns the type of the curve in the current interval : Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 
-Returns  the  type of the   curve  in the  current  
-         interval :   Line,   Circle,   Ellipse, Hyperbola,  
-         Parabola, BezierCurve, BSplineCurve, OtherCurve.") GetType;
+	:rtype: GeomAbs_CurveType
+") GetType;
 		GeomAbs_CurveType GetType ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Lin
-
-No detailed docstring for this function.") Line;
+		%feature("autodoc", "	:rtype: gp_Lin
+") Line;
 		gp_Lin Line ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Circ
-
-No detailed docstring for this function.") Circle;
+		%feature("autodoc", "	:rtype: gp_Circ
+") Circle;
 		gp_Circ Circle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Elips
-
-No detailed docstring for this function.") Ellipse;
+		%feature("autodoc", "	:rtype: gp_Elips
+") Ellipse;
 		gp_Elips Ellipse ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Hypr
-
-No detailed docstring for this function.") Hyperbola;
+		%feature("autodoc", "	:rtype: gp_Hypr
+") Hyperbola;
 		gp_Hypr Hyperbola ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Parab
-
-No detailed docstring for this function.") Parabola;
+		%feature("autodoc", "	:rtype: gp_Parab
+") Parabola;
 		gp_Parab Parabola ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Degree;
+		%feature("autodoc", "	:rtype: int
+") Degree;
 		Standard_Integer Degree ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsRational;
+		%feature("autodoc", "	:rtype: bool
+") IsRational;
 		Standard_Boolean IsRational ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbPoles;
+		%feature("autodoc", "	:rtype: int
+") NbPoles;
 		Standard_Integer NbPoles ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbKnots;
+		%feature("autodoc", "	:rtype: int
+") NbKnots;
 		Standard_Integer NbKnots ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_BezierCurve
+		%feature("autodoc", "	* Warning ! this will NOT make a copy of the  Bezier Curve : If you want to modify  the Curve please make a copy yourself  Also it will NOT trim the surface to  myFirst/Last.
 
-Warning ! this will NOT make a copy of the  
-        Bezier Curve : If you want to modify  
-        the Curve please make a copy yourself  
-        Also it will NOT trim the surface to  
-        myFirst/Last.") Bezier;
+	:rtype: Handle_Geom_BezierCurve
+") Bezier;
 		Handle_Geom_BezierCurve Bezier ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_BSplineCurve
+		%feature("autodoc", "	* Warning ! this will NOT make a copy of the  BSpline Curve : If you want to modify  the Curve please make a copy yourself  Also it will NOT trim the surface to  myFirst/Last.
 
-Warning ! this will NOT make a copy of the  
-        BSpline Curve : If you want to modify  
-        the Curve please make a copy yourself  
-        Also it will NOT trim the surface to  
-        myFirst/Last.") BSpline;
+	:rtype: Handle_Geom_BSplineCurve
+") BSpline;
 		Handle_Geom_BSplineCurve BSpline ();
 };
 
@@ -1561,41 +1220,26 @@ def __del__(self):
 %nodefaultctor ProjLib_ProjectOnSurface;
 class ProjLib_ProjectOnSurface {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Create an empty projector.
 
-Create an empty projector.") ProjLib_ProjectOnSurface;
+	:rtype: None
+") ProjLib_ProjectOnSurface;
 		 ProjLib_ProjectOnSurface ();
-		%feature("autodoc", "Args:
-	S(Handle_Adaptor3d_HSurface)
+		%feature("autodoc", "	* Create a projector normaly to the surface <S>.
 
-Returns:
-	None
-
-Create a projector normaly to the surface <S>.") ProjLib_ProjectOnSurface;
+	:param S:
+	:type S: Handle_Adaptor3d_HSurface &
+	:rtype: None
+") ProjLib_ProjectOnSurface;
 		 ProjLib_ProjectOnSurface (const Handle_Adaptor3d_HSurface & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Delete;
+		%feature("autodoc", "	:rtype: void
+") Delete;
 		virtual void Delete ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_BSplineCurve
-
-No detailed docstring for this function.") BSpline;
+		%feature("autodoc", "	:rtype: Handle_Geom_BSplineCurve
+") BSpline;
 		Handle_Geom_BSplineCurve BSpline ();
 };
 
@@ -1617,306 +1261,198 @@ def __del__(self):
 %nodefaultctor ProjLib_ProjectedCurve;
 class ProjLib_ProjectedCurve : public Adaptor2d_Curve2d {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ProjLib_ProjectedCurve;
+		%feature("autodoc", "	:rtype: None
+") ProjLib_ProjectedCurve;
 		 ProjLib_ProjectedCurve ();
-		%feature("autodoc", "Args:
-	S(Handle_Adaptor3d_HSurface)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ProjLib_ProjectedCurve;
+		%feature("autodoc", "	:param S:
+	:type S: Handle_Adaptor3d_HSurface &
+	:rtype: None
+") ProjLib_ProjectedCurve;
 		 ProjLib_ProjectedCurve (const Handle_Adaptor3d_HSurface & S);
-		%feature("autodoc", "Args:
-	S(Handle_Adaptor3d_HSurface)
-	C(Handle_Adaptor3d_HCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ProjLib_ProjectedCurve;
+		%feature("autodoc", "	:param S:
+	:type S: Handle_Adaptor3d_HSurface &
+	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:rtype: None
+") ProjLib_ProjectedCurve;
 		 ProjLib_ProjectedCurve (const Handle_Adaptor3d_HSurface & S,const Handle_Adaptor3d_HCurve & C);
-		%feature("autodoc", "Args:
-	S(Handle_Adaptor3d_HSurface)
-	C(Handle_Adaptor3d_HCurve)
-	Tol(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ProjLib_ProjectedCurve;
+		%feature("autodoc", "	:param S:
+	:type S: Handle_Adaptor3d_HSurface &
+	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") ProjLib_ProjectedCurve;
 		 ProjLib_ProjectedCurve (const Handle_Adaptor3d_HSurface & S,const Handle_Adaptor3d_HCurve & C,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Adaptor3d_HSurface
-
-No detailed docstring for this function.") GetSurface;
+		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HSurface
+") GetSurface;
 		const Handle_Adaptor3d_HSurface & GetSurface ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Adaptor3d_HCurve
-
-No detailed docstring for this function.") GetCurve;
+		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HCurve
+") GetCurve;
 		const Handle_Adaptor3d_HCurve & GetCurve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns the tolerance reached if an approximation is Done.
 
-returns the tolerance reached if an approximation  
-         is Done.") GetTolerance;
+	:rtype: float
+") GetTolerance;
 		Standard_Real GetTolerance ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") FirstParameter;
+		%feature("autodoc", "	:rtype: float
+") FirstParameter;
 		Standard_Real FirstParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") LastParameter;
+		%feature("autodoc", "	:rtype: float
+") LastParameter;
 		Standard_Real LastParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	GeomAbs_Shape
-
-No detailed docstring for this function.") Continuity;
+		%feature("autodoc", "	:rtype: GeomAbs_Shape
+") Continuity;
 		GeomAbs_Shape Continuity ();
-		%feature("autodoc", "Args:
-	S(GeomAbs_Shape)
+		%feature("autodoc", "	* If necessary, breaks the curve in intervals of continuity <S>. And returns the number of intervals.
 
-Returns:
-	Standard_Integer
-
-If necessary,  breaks the  curve in  intervals  of  
-         continuity  <S>.    And  returns   the number   of  
-         intervals.") NbIntervals;
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: int
+") NbIntervals;
 		Standard_Integer NbIntervals (const GeomAbs_Shape S);
-		%feature("autodoc", "Args:
-	T(TColStd_Array1OfReal)
-	S(GeomAbs_Shape)
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
-Returns:
-	None
-
-Stores in <T> the  parameters bounding the intervals  
-         of continuity <S>.  
- 
-         The array must provide  enough room to  accomodate  
-         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+	:param T:
+	:type T: TColStd_Array1OfReal &
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: None
+") Intervals;
 		void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
-		%feature("autodoc", "Args:
-	First(Standard_Real)
-	Last(Standard_Real)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>
 
-Returns:
-	Handle_Adaptor2d_HCurve2d
-
-Returns    a  curve equivalent   of  <self>  between  
-         parameters <First>  and <Last>. <Tol>  is used  to  
-         test for 3d points confusion.  If <First> >= <Last>") Trim;
+	:param First:
+	:type First: float
+	:param Last:
+	:type Last: float
+	:param Tol:
+	:type Tol: float
+	:rtype: Handle_Adaptor2d_HCurve2d
+") Trim;
 		Handle_Adaptor2d_HCurve2d Trim (const Standard_Real First,const Standard_Real Last,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsClosed;
+		%feature("autodoc", "	:rtype: bool
+") IsClosed;
 		Standard_Boolean IsClosed ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsPeriodic;
+		%feature("autodoc", "	:rtype: bool
+") IsPeriodic;
 		Standard_Boolean IsPeriodic ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Period;
+		%feature("autodoc", "	:rtype: float
+") Period;
 		Standard_Real Period ();
-		%feature("autodoc", "Args:
-	U(Standard_Real)
+		%feature("autodoc", "	* Computes the point of parameter U on the curve.
 
-Returns:
-	gp_Pnt2d
-
-Computes the point of parameter U on the curve.") Value;
+	:param U:
+	:type U: float
+	:rtype: gp_Pnt2d
+") Value;
 		gp_Pnt2d Value (const Standard_Real U);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	P(gp_Pnt2d)
+		%feature("autodoc", "	* Computes the point of parameter U on the curve.
 
-Returns:
-	None
-
-Computes the point of parameter U on the curve.") D0;
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt2d
+	:rtype: None
+") D0;
 		void D0 (const Standard_Real U,gp_Pnt2d & P);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	P(gp_Pnt2d)
-	V(gp_Vec2d)
+		%feature("autodoc", "	* Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 
-Returns:
-	None
-
-Computes the point of parameter U on the curve with its  
- first derivative.  Raised if the continuity of the current interval  
- is not C1.") D1;
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt2d
+	:param V:
+	:type V: gp_Vec2d
+	:rtype: None
+") D1;
 		void D1 (const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	P(gp_Pnt2d)
-	V1(gp_Vec2d)
-	V2(gp_Vec2d)
+		%feature("autodoc", "	* Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 
-Returns:
-	None
-
-Returns the point P of parameter U, the first and second  
- derivatives V1 and V2.  Raised if the continuity of the current interval  
- is not C2.") D2;
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt2d
+	:param V1:
+	:type V1: gp_Vec2d
+	:param V2:
+	:type V2: gp_Vec2d
+	:rtype: None
+") D2;
 		void D2 (const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	P(gp_Pnt2d)
-	V1(gp_Vec2d)
-	V2(gp_Vec2d)
-	V3(gp_Vec2d)
+		%feature("autodoc", "	* Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 
-Returns:
-	None
-
-Returns the point P of parameter U, the first, the second  
- and the third derivative.  Raised if the continuity of the current interval  
- is not C3.") D3;
+	:param U:
+	:type U: float
+	:param P:
+	:type P: gp_Pnt2d
+	:param V1:
+	:type V1: gp_Vec2d
+	:param V2:
+	:type V2: gp_Vec2d
+	:param V3:
+	:type V3: gp_Vec2d
+	:rtype: None
+") D3;
 		void D3 (const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2,gp_Vec2d & V3);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	N(Standard_Integer)
+		%feature("autodoc", "	* The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 
-Returns:
-	gp_Vec2d
-
-The returned vector gives the value of the derivative for the  
- order of derivation N.  Raised if the continuity of the current interval  
- is not CN.  Raised if N < 1.") DN;
+	:param U:
+	:type U: float
+	:param N:
+	:type N: Standard_Integer
+	:rtype: gp_Vec2d
+") DN;
 		gp_Vec2d DN (const Standard_Real U,const Standard_Integer N);
-		%feature("autodoc", "Args:
-	R3d(Standard_Real)
+		%feature("autodoc", "	* Returns the parametric resolution corresponding  to the real space resolution <R3d>.
 
-Returns:
-	Standard_Real
-
-Returns the parametric  resolution corresponding  
-        to the real space resolution <R3d>.") Resolution;
+	:param R3d:
+	:type R3d: float
+	:rtype: float
+") Resolution;
 		Standard_Real Resolution (const Standard_Real R3d);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	GeomAbs_CurveType
+		%feature("autodoc", "	* Returns the type of the curve in the current interval : Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 
-Returns  the  type of the   curve  in the  current  
-         interval :   Line,   Circle,   Ellipse, Hyperbola,  
-         Parabola, BezierCurve, BSplineCurve, OtherCurve.") GetType;
+	:rtype: GeomAbs_CurveType
+") GetType;
 		GeomAbs_CurveType GetType ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Lin2d
-
-No detailed docstring for this function.") Line;
+		%feature("autodoc", "	:rtype: gp_Lin2d
+") Line;
 		gp_Lin2d Line ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Circ2d
-
-No detailed docstring for this function.") Circle;
+		%feature("autodoc", "	:rtype: gp_Circ2d
+") Circle;
 		gp_Circ2d Circle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Elips2d
-
-No detailed docstring for this function.") Ellipse;
+		%feature("autodoc", "	:rtype: gp_Elips2d
+") Ellipse;
 		gp_Elips2d Ellipse ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Hypr2d
-
-No detailed docstring for this function.") Hyperbola;
+		%feature("autodoc", "	:rtype: gp_Hypr2d
+") Hyperbola;
 		gp_Hypr2d Hyperbola ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Parab2d
-
-No detailed docstring for this function.") Parabola;
+		%feature("autodoc", "	:rtype: gp_Parab2d
+") Parabola;
 		gp_Parab2d Parabola ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Degree;
+		%feature("autodoc", "	:rtype: int
+") Degree;
 		Standard_Integer Degree ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsRational;
+		%feature("autodoc", "	:rtype: bool
+") IsRational;
 		Standard_Boolean IsRational ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbPoles;
+		%feature("autodoc", "	:rtype: int
+") NbPoles;
 		Standard_Integer NbPoles ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbKnots;
+		%feature("autodoc", "	:rtype: int
+") NbKnots;
 		Standard_Integer NbKnots ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_BezierCurve
+		%feature("autodoc", "	* Warning ! This will NOT make a copy of the -- Bezier Curve -  If you want to modify -- the Curve please make a copy  yourself -- Also it will NOT trim the surface to --  myFirst/Last.
 
-Warning ! This will  NOT make a copy  of the -- Bezier Curve -  
-        If you want to modify -- the Curve  please make a copy  
-        yourself --  Also it will  NOT trim the surface  to --  
-        myFirst/Last.") Bezier;
+	:rtype: Handle_Geom2d_BezierCurve
+") Bezier;
 		Handle_Geom2d_BezierCurve Bezier ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_BSplineCurve
+		%feature("autodoc", "	* Warning ! This will NOT make a copy of the BSpline Curve - If  you want to modify the Curve please make a copy  yourself Also it will NOT trim the surface to  myFirst/Last.
 
-Warning ! This will NOT make a copy of the BSpline Curve - If  
-        you want to  modify the   Curve  please make a   copy  
-        yourself Also it   will  NOT  trim   the surface   to  
-        myFirst/Last.") BSpline;
+	:rtype: Handle_Geom2d_BSplineCurve
+") BSpline;
 		Handle_Geom2d_BSplineCurve BSpline ();
 };
 
@@ -1938,193 +1474,117 @@ def __del__(self):
 %nodefaultctor ProjLib_Projector;
 class ProjLib_Projector {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Sets the type to OtherCurve
 
-Sets the type to OtherCurve") ProjLib_Projector;
+	:rtype: None
+") ProjLib_Projector;
 		 ProjLib_Projector ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Delete;
+		%feature("autodoc", "	:rtype: void
+") Delete;
 		virtual void Delete ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Set isDone = Standard_True;
 
-Set isDone = Standard_True;") Done;
+	:rtype: None
+") Done;
 		void Done ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	GeomAbs_CurveType
-
-No detailed docstring for this function.") GetType;
+		%feature("autodoc", "	:rtype: GeomAbs_CurveType
+") GetType;
 		GeomAbs_CurveType GetType ();
-		%feature("autodoc", "Args:
-	C(Handle_Geom2d_BSplineCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetBSpline;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Geom2d_BSplineCurve &
+	:rtype: None
+") SetBSpline;
 		void SetBSpline (const Handle_Geom2d_BSplineCurve & C);
-		%feature("autodoc", "Args:
-	C(Handle_Geom2d_BezierCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetBezier;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Geom2d_BezierCurve &
+	:rtype: None
+") SetBezier;
 		void SetBezier (const Handle_Geom2d_BezierCurve & C);
-		%feature("autodoc", "Args:
-	Type(GeomAbs_CurveType)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetType;
+		%feature("autodoc", "	:param Type:
+	:type Type: GeomAbs_CurveType
+	:rtype: None
+") SetType;
 		void SetType (const GeomAbs_CurveType Type);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsPeriodic;
+		%feature("autodoc", "	:rtype: bool
+") IsPeriodic;
 		Standard_Boolean IsPeriodic ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") SetPeriodic;
+		%feature("autodoc", "	:rtype: None
+") SetPeriodic;
 		void SetPeriodic ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Lin2d
-
-No detailed docstring for this function.") Line;
+		%feature("autodoc", "	:rtype: gp_Lin2d
+") Line;
 		const gp_Lin2d & Line ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Circ2d
-
-No detailed docstring for this function.") Circle;
+		%feature("autodoc", "	:rtype: gp_Circ2d
+") Circle;
 		const gp_Circ2d & Circle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Elips2d
-
-No detailed docstring for this function.") Ellipse;
+		%feature("autodoc", "	:rtype: gp_Elips2d
+") Ellipse;
 		const gp_Elips2d & Ellipse ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Hypr2d
-
-No detailed docstring for this function.") Hyperbola;
+		%feature("autodoc", "	:rtype: gp_Hypr2d
+") Hyperbola;
 		const gp_Hypr2d & Hyperbola ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Parab2d
-
-No detailed docstring for this function.") Parabola;
+		%feature("autodoc", "	:rtype: gp_Parab2d
+") Parabola;
 		const gp_Parab2d & Parabola ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_BezierCurve
-
-No detailed docstring for this function.") Bezier;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_BezierCurve
+") Bezier;
 		Handle_Geom2d_BezierCurve Bezier ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_BSplineCurve
-
-No detailed docstring for this function.") BSpline;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_BSplineCurve
+") BSpline;
 		Handle_Geom2d_BSplineCurve BSpline ();
-		%feature("autodoc", "Args:
-	L(gp_Lin)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param L:
+	:type L: gp_Lin
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Lin & L);
-		%feature("autodoc", "Args:
-	C(gp_Circ)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param C:
+	:type C: gp_Circ
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Circ & C);
-		%feature("autodoc", "Args:
-	E(gp_Elips)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param E:
+	:type E: gp_Elips
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Elips & E);
-		%feature("autodoc", "Args:
-	P(gp_Parab)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param P:
+	:type P: gp_Parab
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Parab & P);
-		%feature("autodoc", "Args:
-	H(gp_Hypr)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param H:
+	:type H: gp_Hypr
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Hypr & H);
-		%feature("autodoc", "Args:
-	CFirst(Standard_Real)
-	CLast(Standard_Real)
-	UFirst(Standard_Real)
-	Period(Standard_Real)
+		%feature("autodoc", "	* Translates the 2d curve to set the part of the curve [CFirst, CLast] in the range [ UFirst, UFirst + Period [
 
-Returns:
-	None
-
-Translates the 2d curve  
-         to set the part of the curve [CFirst, CLast]  
-         in the range [ UFirst, UFirst + Period [") UFrame;
+	:param CFirst:
+	:type CFirst: float
+	:param CLast:
+	:type CLast: float
+	:param UFirst:
+	:type UFirst: float
+	:param Period:
+	:type Period: float
+	:rtype: None
+") UFrame;
 		void UFrame (const Standard_Real CFirst,const Standard_Real CLast,const Standard_Real UFirst,const Standard_Real Period);
-		%feature("autodoc", "Args:
-	CFirst(Standard_Real)
-	CLast(Standard_Real)
-	VFirst(Standard_Real)
-	Period(Standard_Real)
+		%feature("autodoc", "	* Translates the 2d curve to set the part of the curve [CFirst, CLast] in the range [ VFirst, VFirst + Period [
 
-Returns:
-	None
-
-Translates the 2d curve  
-         to set the part of the curve [CFirst, CLast]  
-         in the range [ VFirst, VFirst + Period [") VFrame;
+	:param CFirst:
+	:type CFirst: float
+	:param CLast:
+	:type CLast: float
+	:param VFirst:
+	:type VFirst: float
+	:param Period:
+	:type Period: float
+	:rtype: None
+") VFrame;
 		void VFrame (const Standard_Real CFirst,const Standard_Real CLast,const Standard_Real VFirst,const Standard_Real Period);
 };
 
@@ -2146,22 +1606,17 @@ def __del__(self):
 %nodefaultctor ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt;
 class ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_TColgp_HSequenceOfPnt)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_TColgp_HSequenceOfPnt
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt;
 		 ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt (const Handle_TColgp_HSequenceOfPnt & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColgp_HSequenceOfPnt
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_TColgp_HSequenceOfPnt
+") Value;
 		Handle_TColgp_HSequenceOfPnt & Value ();
 };
 
@@ -2222,168 +1677,111 @@ def __del__(self):
 %nodefaultctor ProjLib_SequenceOfHSequenceOfPnt;
 class ProjLib_SequenceOfHSequenceOfPnt : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ProjLib_SequenceOfHSequenceOfPnt;
+		%feature("autodoc", "	:rtype: None
+") ProjLib_SequenceOfHSequenceOfPnt;
 		 ProjLib_SequenceOfHSequenceOfPnt ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(ProjLib_SequenceOfHSequenceOfPnt)
-
-Returns:
-	ProjLib_SequenceOfHSequenceOfPnt
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: ProjLib_SequenceOfHSequenceOfPnt &
+	:rtype: ProjLib_SequenceOfHSequenceOfPnt
+") Assign;
 		const ProjLib_SequenceOfHSequenceOfPnt & Assign (const ProjLib_SequenceOfHSequenceOfPnt & Other);
-		%feature("autodoc", "Args:
-	Other(ProjLib_SequenceOfHSequenceOfPnt)
-
-Returns:
-	ProjLib_SequenceOfHSequenceOfPnt
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: ProjLib_SequenceOfHSequenceOfPnt &
+	:rtype: ProjLib_SequenceOfHSequenceOfPnt
+") operator=;
 		const ProjLib_SequenceOfHSequenceOfPnt & operator = (const ProjLib_SequenceOfHSequenceOfPnt & Other);
-		%feature("autodoc", "Args:
-	T(Handle_TColgp_HSequenceOfPnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_TColgp_HSequenceOfPnt
+	:rtype: None
+") Append;
 		void Append (const Handle_TColgp_HSequenceOfPnt & T);
-		%feature("autodoc", "Args:
-	S(ProjLib_SequenceOfHSequenceOfPnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: ProjLib_SequenceOfHSequenceOfPnt &
+	:rtype: None
+") Append;
 		void Append (ProjLib_SequenceOfHSequenceOfPnt & S);
-		%feature("autodoc", "Args:
-	T(Handle_TColgp_HSequenceOfPnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_TColgp_HSequenceOfPnt
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_TColgp_HSequenceOfPnt & T);
-		%feature("autodoc", "Args:
-	S(ProjLib_SequenceOfHSequenceOfPnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: ProjLib_SequenceOfHSequenceOfPnt &
+	:rtype: None
+") Prepend;
 		void Prepend (ProjLib_SequenceOfHSequenceOfPnt & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_TColgp_HSequenceOfPnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_TColgp_HSequenceOfPnt
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_TColgp_HSequenceOfPnt & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(ProjLib_SequenceOfHSequenceOfPnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: ProjLib_SequenceOfHSequenceOfPnt &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,ProjLib_SequenceOfHSequenceOfPnt & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_TColgp_HSequenceOfPnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_TColgp_HSequenceOfPnt
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_TColgp_HSequenceOfPnt & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(ProjLib_SequenceOfHSequenceOfPnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: ProjLib_SequenceOfHSequenceOfPnt &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,ProjLib_SequenceOfHSequenceOfPnt & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColgp_HSequenceOfPnt
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_TColgp_HSequenceOfPnt
+") First;
 		const Handle_TColgp_HSequenceOfPnt & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColgp_HSequenceOfPnt
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_TColgp_HSequenceOfPnt
+") Last;
 		const Handle_TColgp_HSequenceOfPnt & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(ProjLib_SequenceOfHSequenceOfPnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: ProjLib_SequenceOfHSequenceOfPnt &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,ProjLib_SequenceOfHSequenceOfPnt & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_TColgp_HSequenceOfPnt
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_TColgp_HSequenceOfPnt
+") Value;
 		const Handle_TColgp_HSequenceOfPnt & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_TColgp_HSequenceOfPnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_TColgp_HSequenceOfPnt
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_TColgp_HSequenceOfPnt & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_TColgp_HSequenceOfPnt
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_TColgp_HSequenceOfPnt
+") ChangeValue;
 		Handle_TColgp_HSequenceOfPnt & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -2405,86 +1803,65 @@ def __del__(self):
 %nodefaultctor ProjLib_Cone;
 class ProjLib_Cone : public ProjLib_Projector {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Undefined projection.
 
-Undefined projection.") ProjLib_Cone;
+	:rtype: None
+") ProjLib_Cone;
 		 ProjLib_Cone ();
-		%feature("autodoc", "Args:
-	Co(gp_Cone)
+		%feature("autodoc", "	* Projection on the cone <Co>.
 
-Returns:
-	None
-
-Projection on the cone <Co>.") ProjLib_Cone;
+	:param Co:
+	:type Co: gp_Cone
+	:rtype: None
+") ProjLib_Cone;
 		 ProjLib_Cone (const gp_Cone & Co);
-		%feature("autodoc", "Args:
-	Co(gp_Cone)
-	L(gp_Lin)
+		%feature("autodoc", "	* Projection of the line <L> on the cone <Co>.
 
-Returns:
-	None
-
-Projection of the line <L> on the cone <Co>.") ProjLib_Cone;
+	:param Co:
+	:type Co: gp_Cone
+	:param L:
+	:type L: gp_Lin
+	:rtype: None
+") ProjLib_Cone;
 		 ProjLib_Cone (const gp_Cone & Co,const gp_Lin & L);
-		%feature("autodoc", "Args:
-	Co(gp_Cone)
-	C(gp_Circ)
+		%feature("autodoc", "	* Projection of the circle <C> on the cone <Co>.
 
-Returns:
-	None
-
-Projection of the circle <C> on the cone <Co>.") ProjLib_Cone;
+	:param Co:
+	:type Co: gp_Cone
+	:param C:
+	:type C: gp_Circ
+	:rtype: None
+") ProjLib_Cone;
 		 ProjLib_Cone (const gp_Cone & Co,const gp_Circ & C);
-		%feature("autodoc", "Args:
-	Co(gp_Cone)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param Co:
+	:type Co: gp_Cone
+	:rtype: None
+") Init;
 		void Init (const gp_Cone & Co);
-		%feature("autodoc", "Args:
-	L(gp_Lin)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param L:
+	:type L: gp_Lin
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Lin & L);
-		%feature("autodoc", "Args:
-	C(gp_Circ)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param C:
+	:type C: gp_Circ
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Circ & C);
-		%feature("autodoc", "Args:
-	E(gp_Elips)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param E:
+	:type E: gp_Elips
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Elips & E);
-		%feature("autodoc", "Args:
-	P(gp_Parab)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param P:
+	:type P: gp_Parab
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Parab & P);
-		%feature("autodoc", "Args:
-	H(gp_Hypr)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param H:
+	:type H: gp_Hypr
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Hypr & H);
 };
 
@@ -2506,95 +1883,74 @@ def __del__(self):
 %nodefaultctor ProjLib_Cylinder;
 class ProjLib_Cylinder : public ProjLib_Projector {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Undefined projection.
 
-Undefined projection.") ProjLib_Cylinder;
+	:rtype: None
+") ProjLib_Cylinder;
 		 ProjLib_Cylinder ();
-		%feature("autodoc", "Args:
-	Cyl(gp_Cylinder)
+		%feature("autodoc", "	* Projection on the cylinder <Cyl>.
 
-Returns:
-	None
-
-Projection on the cylinder <Cyl>.") ProjLib_Cylinder;
+	:param Cyl:
+	:type Cyl: gp_Cylinder
+	:rtype: None
+") ProjLib_Cylinder;
 		 ProjLib_Cylinder (const gp_Cylinder & Cyl);
-		%feature("autodoc", "Args:
-	Cyl(gp_Cylinder)
-	L(gp_Lin)
+		%feature("autodoc", "	* Projection of the line <L> on the cylinder <Cyl>.
 
-Returns:
-	None
-
-Projection of the line <L> on the cylinder <Cyl>.") ProjLib_Cylinder;
+	:param Cyl:
+	:type Cyl: gp_Cylinder
+	:param L:
+	:type L: gp_Lin
+	:rtype: None
+") ProjLib_Cylinder;
 		 ProjLib_Cylinder (const gp_Cylinder & Cyl,const gp_Lin & L);
-		%feature("autodoc", "Args:
-	Cyl(gp_Cylinder)
-	C(gp_Circ)
+		%feature("autodoc", "	* Projection of the circle <C> on the cylinder <Cyl>.
 
-Returns:
-	None
-
-Projection of the circle <C> on the cylinder <Cyl>.") ProjLib_Cylinder;
+	:param Cyl:
+	:type Cyl: gp_Cylinder
+	:param C:
+	:type C: gp_Circ
+	:rtype: None
+") ProjLib_Cylinder;
 		 ProjLib_Cylinder (const gp_Cylinder & Cyl,const gp_Circ & C);
-		%feature("autodoc", "Args:
-	Cyl(gp_Cylinder)
-	E(gp_Elips)
+		%feature("autodoc", "	* Projection of the ellipse <E> on the cylinder <Cyl>.
 
-Returns:
-	None
-
-Projection of the ellipse <E> on the cylinder <Cyl>.") ProjLib_Cylinder;
+	:param Cyl:
+	:type Cyl: gp_Cylinder
+	:param E:
+	:type E: gp_Elips
+	:rtype: None
+") ProjLib_Cylinder;
 		 ProjLib_Cylinder (const gp_Cylinder & Cyl,const gp_Elips & E);
-		%feature("autodoc", "Args:
-	Cyl(gp_Cylinder)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param Cyl:
+	:type Cyl: gp_Cylinder
+	:rtype: None
+") Init;
 		void Init (const gp_Cylinder & Cyl);
-		%feature("autodoc", "Args:
-	L(gp_Lin)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param L:
+	:type L: gp_Lin
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Lin & L);
-		%feature("autodoc", "Args:
-	C(gp_Circ)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param C:
+	:type C: gp_Circ
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Circ & C);
-		%feature("autodoc", "Args:
-	E(gp_Elips)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param E:
+	:type E: gp_Elips
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Elips & E);
-		%feature("autodoc", "Args:
-	P(gp_Parab)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param P:
+	:type P: gp_Parab
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Parab & P);
-		%feature("autodoc", "Args:
-	H(gp_Hypr)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param H:
+	:type H: gp_Hypr
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Hypr & H);
 };
 
@@ -2616,113 +1972,92 @@ def __del__(self):
 %nodefaultctor ProjLib_Plane;
 class ProjLib_Plane : public ProjLib_Projector {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Undefined projection.
 
-Undefined projection.") ProjLib_Plane;
+	:rtype: None
+") ProjLib_Plane;
 		 ProjLib_Plane ();
-		%feature("autodoc", "Args:
-	Pl(gp_Pln)
+		%feature("autodoc", "	* Projection on the plane <Pl>.
 
-Returns:
-	None
-
-Projection on the plane <Pl>.") ProjLib_Plane;
+	:param Pl:
+	:type Pl: gp_Pln
+	:rtype: None
+") ProjLib_Plane;
 		 ProjLib_Plane (const gp_Pln & Pl);
-		%feature("autodoc", "Args:
-	Pl(gp_Pln)
-	L(gp_Lin)
+		%feature("autodoc", "	* Projection of the line <L> on the plane <Pl>.
 
-Returns:
-	None
-
-Projection of the line <L> on the plane <Pl>.") ProjLib_Plane;
+	:param Pl:
+	:type Pl: gp_Pln
+	:param L:
+	:type L: gp_Lin
+	:rtype: None
+") ProjLib_Plane;
 		 ProjLib_Plane (const gp_Pln & Pl,const gp_Lin & L);
-		%feature("autodoc", "Args:
-	Pl(gp_Pln)
-	C(gp_Circ)
+		%feature("autodoc", "	* Projection of the circle <C> on the plane <Pl>.
 
-Returns:
-	None
-
-Projection of the circle <C> on the plane <Pl>.") ProjLib_Plane;
+	:param Pl:
+	:type Pl: gp_Pln
+	:param C:
+	:type C: gp_Circ
+	:rtype: None
+") ProjLib_Plane;
 		 ProjLib_Plane (const gp_Pln & Pl,const gp_Circ & C);
-		%feature("autodoc", "Args:
-	Pl(gp_Pln)
-	E(gp_Elips)
+		%feature("autodoc", "	* Projection of the ellipse <E> on the plane <Pl>.
 
-Returns:
-	None
-
-Projection of the ellipse <E> on the plane <Pl>.") ProjLib_Plane;
+	:param Pl:
+	:type Pl: gp_Pln
+	:param E:
+	:type E: gp_Elips
+	:rtype: None
+") ProjLib_Plane;
 		 ProjLib_Plane (const gp_Pln & Pl,const gp_Elips & E);
-		%feature("autodoc", "Args:
-	Pl(gp_Pln)
-	P(gp_Parab)
+		%feature("autodoc", "	* Projection of the parabola <P> on the plane <Pl>.
 
-Returns:
-	None
-
-Projection of the parabola <P> on the plane <Pl>.") ProjLib_Plane;
+	:param Pl:
+	:type Pl: gp_Pln
+	:param P:
+	:type P: gp_Parab
+	:rtype: None
+") ProjLib_Plane;
 		 ProjLib_Plane (const gp_Pln & Pl,const gp_Parab & P);
-		%feature("autodoc", "Args:
-	Pl(gp_Pln)
-	H(gp_Hypr)
+		%feature("autodoc", "	* Projection of the hyperbola <H> on the plane <Pl>.
 
-Returns:
-	None
-
-Projection of the hyperbola <H> on the plane <Pl>.") ProjLib_Plane;
+	:param Pl:
+	:type Pl: gp_Pln
+	:param H:
+	:type H: gp_Hypr
+	:rtype: None
+") ProjLib_Plane;
 		 ProjLib_Plane (const gp_Pln & Pl,const gp_Hypr & H);
-		%feature("autodoc", "Args:
-	Pl(gp_Pln)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param Pl:
+	:type Pl: gp_Pln
+	:rtype: None
+") Init;
 		void Init (const gp_Pln & Pl);
-		%feature("autodoc", "Args:
-	L(gp_Lin)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param L:
+	:type L: gp_Lin
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Lin & L);
-		%feature("autodoc", "Args:
-	C(gp_Circ)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param C:
+	:type C: gp_Circ
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Circ & C);
-		%feature("autodoc", "Args:
-	E(gp_Elips)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param E:
+	:type E: gp_Elips
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Elips & E);
-		%feature("autodoc", "Args:
-	P(gp_Parab)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param P:
+	:type P: gp_Parab
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Parab & P);
-		%feature("autodoc", "Args:
-	H(gp_Hypr)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param H:
+	:type H: gp_Hypr
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Hypr & H);
 };
 
@@ -2744,86 +2079,63 @@ def __del__(self):
 %nodefaultctor ProjLib_Sphere;
 class ProjLib_Sphere : public ProjLib_Projector {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Undefined projection.
 
-Undefined projection.") ProjLib_Sphere;
+	:rtype: None
+") ProjLib_Sphere;
 		 ProjLib_Sphere ();
-		%feature("autodoc", "Args:
-	Sp(gp_Sphere)
+		%feature("autodoc", "	* Projection on the sphere <Sp>.
 
-Returns:
-	None
-
-Projection on the sphere <Sp>.") ProjLib_Sphere;
+	:param Sp:
+	:type Sp: gp_Sphere
+	:rtype: None
+") ProjLib_Sphere;
 		 ProjLib_Sphere (const gp_Sphere & Sp);
-		%feature("autodoc", "Args:
-	Sp(gp_Sphere)
-	C(gp_Circ)
+		%feature("autodoc", "	* Projection of the circle <C> on the sphere <Sp>.
 
-Returns:
-	None
-
-Projection of the circle <C> on the sphere <Sp>.") ProjLib_Sphere;
+	:param Sp:
+	:type Sp: gp_Sphere
+	:param C:
+	:type C: gp_Circ
+	:rtype: None
+") ProjLib_Sphere;
 		 ProjLib_Sphere (const gp_Sphere & Sp,const gp_Circ & C);
-		%feature("autodoc", "Args:
-	Sp(gp_Sphere)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param Sp:
+	:type Sp: gp_Sphere
+	:rtype: None
+") Init;
 		void Init (const gp_Sphere & Sp);
-		%feature("autodoc", "Args:
-	L(gp_Lin)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param L:
+	:type L: gp_Lin
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Lin & L);
-		%feature("autodoc", "Args:
-	C(gp_Circ)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param C:
+	:type C: gp_Circ
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Circ & C);
-		%feature("autodoc", "Args:
-	E(gp_Elips)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param E:
+	:type E: gp_Elips
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Elips & E);
-		%feature("autodoc", "Args:
-	P(gp_Parab)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param P:
+	:type P: gp_Parab
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Parab & P);
-		%feature("autodoc", "Args:
-	H(gp_Hypr)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param H:
+	:type H: gp_Hypr
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Hypr & H);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
+		%feature("autodoc", "	* Set the point of parameter U on C in the natural restrictions of the sphere.
 
-Returns:
-	None
-
-Set the point of parameter U on C in the natural  
-         restrictions of the sphere.") SetInBounds;
+	:param U:
+	:type U: float
+	:rtype: None
+") SetInBounds;
 		void SetInBounds (const Standard_Real U);
 };
 
@@ -2845,77 +2157,56 @@ def __del__(self):
 %nodefaultctor ProjLib_Torus;
 class ProjLib_Torus : public ProjLib_Projector {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Undefined projection.
 
-Undefined projection.") ProjLib_Torus;
+	:rtype: None
+") ProjLib_Torus;
 		 ProjLib_Torus ();
-		%feature("autodoc", "Args:
-	To(gp_Torus)
+		%feature("autodoc", "	* Projection on the torus <To>.
 
-Returns:
-	None
-
-Projection on the torus <To>.") ProjLib_Torus;
+	:param To:
+	:type To: gp_Torus
+	:rtype: None
+") ProjLib_Torus;
 		 ProjLib_Torus (const gp_Torus & To);
-		%feature("autodoc", "Args:
-	To(gp_Torus)
-	C(gp_Circ)
+		%feature("autodoc", "	* Projection of the circle <C> on the torus <To>.
 
-Returns:
-	None
-
-Projection of the circle <C> on the torus <To>.") ProjLib_Torus;
+	:param To:
+	:type To: gp_Torus
+	:param C:
+	:type C: gp_Circ
+	:rtype: None
+") ProjLib_Torus;
 		 ProjLib_Torus (const gp_Torus & To,const gp_Circ & C);
-		%feature("autodoc", "Args:
-	To(gp_Torus)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param To:
+	:type To: gp_Torus
+	:rtype: None
+") Init;
 		void Init (const gp_Torus & To);
-		%feature("autodoc", "Args:
-	L(gp_Lin)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param L:
+	:type L: gp_Lin
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Lin & L);
-		%feature("autodoc", "Args:
-	C(gp_Circ)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param C:
+	:type C: gp_Circ
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Circ & C);
-		%feature("autodoc", "Args:
-	E(gp_Elips)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param E:
+	:type E: gp_Elips
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Elips & E);
-		%feature("autodoc", "Args:
-	P(gp_Parab)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param P:
+	:type P: gp_Parab
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Parab & P);
-		%feature("autodoc", "Args:
-	H(gp_Hypr)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param H:
+	:type H: gp_Hypr
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Hypr & H);
 };
 

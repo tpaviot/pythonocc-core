@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -45,19 +45,22 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor BRepAlgoAPI;
 class BRepAlgoAPI {
 	public:
-		%feature("autodoc", "Args:
-	theFilePath(char *)
-	theShape1(TopoDS_Shape)
-	theShape2(TopoDS_Shape)
-	theResult(TopoDS_Shape)
-	theOperation(BOPAlgo_Operation)
-	isNonValidArgs(Standard_Boolean)
+		%feature("autodoc", "	* Check shapes on validity for boolean operation. Dump arguments and result of boolean operation in the file specified by path.
 
-Returns:
-	static void
-
-Check shapes on validity for boolean  
-operation.  Dump arguments and result of boolean operation in the file specified by path.") DumpOper;
+	:param theFilePath:
+	:type theFilePath: char *
+	:param theShape1:
+	:type theShape1: TopoDS_Shape &
+	:param theShape2:
+	:type theShape2: TopoDS_Shape &
+	:param theResult:
+	:type theResult: TopoDS_Shape &
+	:param theOperation:
+	:type theOperation: BOPAlgo_Operation
+	:param isNonValidArgs:
+	:type isNonValidArgs: bool
+	:rtype: void
+") DumpOper;
 		static void DumpOper (const char * theFilePath,const TopoDS_Shape & theShape1,const TopoDS_Shape & theShape2,const TopoDS_Shape & theResult,const BOPAlgo_Operation theOperation,const Standard_Boolean isNonValidArgs);
 };
 
@@ -79,151 +82,94 @@ def __del__(self):
 %nodefaultctor BRepAlgoAPI_BooleanOperation;
 class BRepAlgoAPI_BooleanOperation : public BRepBuilderAPI_MakeShape {
 	public:
-		%feature("autodoc", "Args:
-	anOp(BOPAlgo_Operation)
+		%feature("autodoc", "	* Sets the type of Boolean operation to perform It can be BOPAlgo_SECTION  BOPAlgo_COMMON  BOPAlgo_FUSE  BOPAlgo_CUT  BOPAlgo_CUT21
 
-Returns:
-	None
-
-Sets the type of Boolean operation to perform  
-         It can be BOPAlgo_SECTION  
-                   BOPAlgo_COMMON  
-                   BOPAlgo_FUSE  
-                   BOPAlgo_CUT  
-                   BOPAlgo_CUT21") SetOperation;
+	:param anOp:
+	:type anOp: BOPAlgo_Operation
+	:rtype: None
+") SetOperation;
 		void SetOperation (const BOPAlgo_Operation anOp);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Provides the algorithm of Boolean Operations - Filling interference Data Structure (if it is necessary) - Building the result of the operation.
 
-Provides the algorithm of Boolean Operations  
--      Filling interference Data Structure (if it is necessary)  
--      Building the result of the operation.") Build;
+	:rtype: void
+") Build;
 		virtual void Build ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Returns the first shape involved in this Boolean operation.
 
-Returns the first shape involved in this Boolean operation.") Shape1;
+	:rtype: TopoDS_Shape
+") Shape1;
 		const TopoDS_Shape & Shape1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Returns the second shape involved in this Boolean operation.
 
-Returns the second shape involved in this Boolean operation.") Shape2;
+	:rtype: TopoDS_Shape
+") Shape2;
 		const TopoDS_Shape & Shape2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPAlgo_Operation
+		%feature("autodoc", "	* Returns the type of Boolean Operation that has been performed.
 
-Returns the type of Boolean Operation that has been performed.") Operation;
+	:rtype: BOPAlgo_Operation
+") Operation;
 		BOPAlgo_Operation Operation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns the flag of edge refining
 
-Returns the flag of edge refining") FuseEdges;
+	:rtype: bool
+") FuseEdges;
 		Standard_Boolean FuseEdges ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Fuse C1 edges
 
-Fuse C1 edges") RefineEdges;
+	:rtype: None
+") RefineEdges;
 		void RefineEdges ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") BuilderCanWork;
+		%feature("autodoc", "	:rtype: bool
+") BuilderCanWork;
 		Standard_Boolean BuilderCanWork ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the error status of operation. 0 - Ok 1 - The Object is created but Nothing is Done 2 - Null source shapes is not allowed 3 - Check types of the arguments 4 - Can not allocate memory for the DSFiller 5 - The Builder can not work with such types of arguments 6 - Unknown operation is not allowed 7 - Can not allocate memory for the Builder > 100 - See the Builder's ErrorStatus
 
-Returns the error status of operation.  
-0 - Ok  
-1 - The Object is created but Nothing is Done  
-2 - Null source shapes is not allowed  
-3 - Check types of the arguments  
-4 - Can not allocate memory for the DSFiller  
-5 - The Builder can not work with such types of arguments  
-6 - Unknown operation is not allowed  
-7 - Can not allocate memory for the Builder  
- > 100 - See the Builder's  ErrorStatus") ErrorStatus;
+	:rtype: int
+") ErrorStatus;
 		Standard_Integer ErrorStatus ();
-		%feature("autodoc", "Args:
-	aS(TopoDS_Shape)
+		%feature("autodoc", "	* Returns the list of shapes modified from the shape <S>.
 
-Returns:
-	virtual  TopTools_ListOfShape
-
-Returns the list  of shapes modified from the shape <S>.") Modified;
+	:param aS:
+	:type aS: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") Modified;
 		virtual const TopTools_ListOfShape & Modified (const TopoDS_Shape & aS);
-		%feature("autodoc", "Args:
-	aS(TopoDS_Shape)
+		%feature("autodoc", "	* Returns true if the shape S has been deleted. The result shape of the operation does not contain the shape S.
 
-Returns:
-	virtual Standard_Boolean
-
-Returns true if the shape S has been deleted. The  
-result shape of the operation does not contain the shape S.") IsDeleted;
+	:param aS:
+	:type aS: TopoDS_Shape &
+	:rtype: bool
+") IsDeleted;
 		virtual Standard_Boolean IsDeleted (const TopoDS_Shape & aS);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* Returns the list of shapes generated from the shape <S>.  For use in BRepNaming.
 
-Returns:
-	virtual  TopTools_ListOfShape
-
-Returns the list  of shapes generated from the shape <S>.  
-        For use in BRepNaming.") Generated;
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") Generated;
 		virtual const TopTools_ListOfShape & Generated (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Returns true if there is at least one modified shape.  For use in BRepNaming.
 
-Returns true if there is at least one modified shape.  
-        For use in BRepNaming.") HasModified;
+	:rtype: bool
+") HasModified;
 		virtual Standard_Boolean HasModified ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Returns true if there is at least one generated shape.  For use in BRepNaming.
 
-Returns true if there is at least one generated shape.  
-        For use in BRepNaming.") HasGenerated;
+	:rtype: bool
+") HasGenerated;
 		virtual Standard_Boolean HasGenerated ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Returns true if there is at least one deleted shape.  For use in BRepNaming.
 
-Returns true if there is at least one deleted shape.  
-        For use in BRepNaming.") HasDeleted;
+	:rtype: bool
+") HasDeleted;
 		virtual Standard_Boolean HasDeleted ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_ListOfShape
+		%feature("autodoc", "	* Returns a list of section edges. The edges represent the result of intersection between arguments of Boolean Operation. They are computed during operation execution.
 
-Returns a list of section edges.  
-The edges represent the result of intersection between arguments of  
-Boolean Operation. They are computed during operation execution.") SectionEdges;
+	:rtype: TopTools_ListOfShape
+") SectionEdges;
 		const TopTools_ListOfShape & SectionEdges ();
 };
 
@@ -245,99 +191,77 @@ def __del__(self):
 %nodefaultctor BRepAlgoAPI_Check;
 class BRepAlgoAPI_Check {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor.
 
-Empty constructor.") BRepAlgoAPI_Check;
+	:rtype: None
+") BRepAlgoAPI_Check;
 		 BRepAlgoAPI_Check ();
-		%feature("autodoc", "Args:
-	theS(TopoDS_Shape)
-	bTestSE(Standard_Boolean)=Standard_True
-	bTestSI(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Constructor for checking single shape. It calls methods Init(theS, TopoDS_Shape(), BOPAlgo_UNKNOWN, bTestSE, bTestSI) and Perform(). Params: theS - the shape that should be checked; bTestSE - flag that specifies whether check on small edges  should be performed; by default it is set to True; bTestSI - flag that specifies whether check on self-interference  should be performed; by default it is set to True;
 
-Returns:
-	None
-
-Constructor for checking single shape.  
-It calls methods  
-Init(theS, TopoDS_Shape(), BOPAlgo_UNKNOWN, bTestSE, bTestSI)  
-and Perform().  
-Params:  
- theS   - the shape that should be checked;  
- bTestSE - flag that specifies whether check on small edges  
-           should be performed; by default it is set to TRUE;  
- bTestSI - flag that specifies whether check on self-interference  
-           should be performed; by default it is set to TRUE;") BRepAlgoAPI_Check;
+	:param theS:
+	:type theS: TopoDS_Shape &
+	:param bTestSE: default value is Standard_True
+	:type bTestSE: bool
+	:param bTestSI: default value is Standard_True
+	:type bTestSI: bool
+	:rtype: None
+") BRepAlgoAPI_Check;
 		 BRepAlgoAPI_Check (const TopoDS_Shape & theS,const Standard_Boolean bTestSE = Standard_True,const Standard_Boolean bTestSI = Standard_True);
-		%feature("autodoc", "Args:
-	theS1(TopoDS_Shape)
-	theS2(TopoDS_Shape)
-	theOp(BOPAlgo_Operation)=BOPAlgo_UNKNOWN
-	bTestSE(Standard_Boolean)=Standard_True
-	bTestSI(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Constructor for couple of shapes. It calls methods Init(theS1, theS2, theOp, bTestSE, bTestSI) and Perform(). Params: theS1, theS2 - the initial shapes. theOp - the type of Boolean Operation; if it is not defined (set to UNKNOWN) for each shape performed check as for single shape. bTestSE - flag that specifies whether check on small edges  should be performed; by default it is set to True; bTestSI - flag that specifies whether check on self-interference  should be performed; by default it is set to True;
 
-Returns:
-	None
-
-Constructor for couple of shapes.  
-It calls methods  
-Init(theS1, theS2, theOp, bTestSE, bTestSI) and Perform().  
-Params:  
- theS1, theS2 - the initial shapes.  
- theOp - the type of Boolean Operation;  
-         if it is not defined (set to UNKNOWN) for each shape  
-         performed check as for single shape.  
- bTestSE - flag that specifies whether check on small edges  
-           should be performed; by default it is set to TRUE;  
- bTestSI - flag that specifies whether check on self-interference  
-           should be performed; by default it is set to TRUE;") BRepAlgoAPI_Check;
+	:param theS1:
+	:type theS1: TopoDS_Shape &
+	:param theS2:
+	:type theS2: TopoDS_Shape &
+	:param theOp: default value is BOPAlgo_UNKNOWN
+	:type theOp: BOPAlgo_Operation
+	:param bTestSE: default value is Standard_True
+	:type bTestSE: bool
+	:param bTestSI: default value is Standard_True
+	:type bTestSI: bool
+	:rtype: None
+") BRepAlgoAPI_Check;
 		 BRepAlgoAPI_Check (const TopoDS_Shape & theS1,const TopoDS_Shape & theS2,const BOPAlgo_Operation theOp = BOPAlgo_UNKNOWN,const Standard_Boolean bTestSE = Standard_True,const Standard_Boolean bTestSI = Standard_True);
-		%feature("autodoc", "Args:
-	theS(TopoDS_Shape)
-	bTestSE(Standard_Boolean)=Standard_True
-	bTestSI(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Sets data for check by Init method. The method provides alternative way for checking single shape.
 
-Returns:
-	None
-
-Sets data for check by Init method.  
-The method provides alternative way for checking single shape.") SetData;
+	:param theS:
+	:type theS: TopoDS_Shape &
+	:param bTestSE: default value is Standard_True
+	:type bTestSE: bool
+	:param bTestSI: default value is Standard_True
+	:type bTestSI: bool
+	:rtype: None
+") SetData;
 		void SetData (const TopoDS_Shape & theS,const Standard_Boolean bTestSE = Standard_True,const Standard_Boolean bTestSI = Standard_True);
-		%feature("autodoc", "Args:
-	theS1(TopoDS_Shape)
-	theS2(TopoDS_Shape)
-	theOp(BOPAlgo_Operation)=BOPAlgo_UNKNOWN
-	bTestSE(Standard_Boolean)=Standard_True
-	bTestSI(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Sets data for check by Init method. The method provides alternative way for checking couple of shapes.
 
-Returns:
-	None
-
-Sets data for check by Init method.  
-The method provides alternative way for checking couple of shapes.") SetData;
+	:param theS1:
+	:type theS1: TopoDS_Shape &
+	:param theS2:
+	:type theS2: TopoDS_Shape &
+	:param theOp: default value is BOPAlgo_UNKNOWN
+	:type theOp: BOPAlgo_Operation
+	:param bTestSE: default value is Standard_True
+	:type bTestSE: bool
+	:param bTestSI: default value is Standard_True
+	:type bTestSI: bool
+	:rtype: None
+") SetData;
 		void SetData (const TopoDS_Shape & theS1,const TopoDS_Shape & theS2,const BOPAlgo_Operation theOp = BOPAlgo_UNKNOWN,const Standard_Boolean bTestSE = Standard_True,const Standard_Boolean bTestSI = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Performs the check.
 
-Performs the check.") Perform;
+	:rtype: None
+") Perform;
 		void Perform ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Shows whether shape(s) valid or not.
 
-Shows whether shape(s) valid or not.") IsValid;
+	:rtype: bool
+") IsValid;
 		Standard_Boolean IsValid ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BOPAlgo_ListOfCheckResult
+		%feature("autodoc", "	* Returns faulty shapes.
 
-Returns faulty shapes.") Result;
+	:rtype: BOPAlgo_ListOfCheckResult
+") Result;
 		const BOPAlgo_ListOfCheckResult & Result ();
 };
 
@@ -359,24 +283,23 @@ def __del__(self):
 %nodefaultctor BRepAlgoAPI_Common;
 class BRepAlgoAPI_Common : public BRepAlgoAPI_BooleanOperation {
 	public:
-		%feature("autodoc", "Args:
-	S1(TopoDS_Shape)
-	S2(TopoDS_Shape)
+		%feature("autodoc", "	* Constructs a common part for shapes aS1 and aS2 .
 
-Returns:
-	None
-
-Constructs a common part for shapes aS1 and aS2 .") BRepAlgoAPI_Common;
+	:param S1:
+	:type S1: TopoDS_Shape &
+	:param S2:
+	:type S2: TopoDS_Shape &
+	:rtype: None
+") BRepAlgoAPI_Common;
 		 BRepAlgoAPI_Common (const TopoDS_Shape & S1,const TopoDS_Shape & S2);
-		%feature("autodoc", "Args:
-	S1(TopoDS_Shape)
-	S2(TopoDS_Shape)
-	aDSF(BOPAlgo_PaveFiller)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepAlgoAPI_Common;
+		%feature("autodoc", "	:param S1:
+	:type S1: TopoDS_Shape &
+	:param S2:
+	:type S2: TopoDS_Shape &
+	:param aDSF:
+	:type aDSF: BOPAlgo_PaveFiller &
+	:rtype: None
+") BRepAlgoAPI_Common;
 		 BRepAlgoAPI_Common (const TopoDS_Shape & S1,const TopoDS_Shape & S2,const BOPAlgo_PaveFiller & aDSF);
 };
 
@@ -398,28 +321,27 @@ def __del__(self):
 %nodefaultctor BRepAlgoAPI_Cut;
 class BRepAlgoAPI_Cut : public BRepAlgoAPI_BooleanOperation {
 	public:
-		%feature("autodoc", "Args:
-	S1(TopoDS_Shape)
-	S2(TopoDS_Shape)
+		%feature("autodoc", "	* Shape aS2 cuts shape aS1. The resulting shape is a new shape produced by the cut operation.
 
-Returns:
-	None
-
-Shape aS2 cuts shape aS1. The  
-resulting shape is a new shape produced by the cut operation.") BRepAlgoAPI_Cut;
+	:param S1:
+	:type S1: TopoDS_Shape &
+	:param S2:
+	:type S2: TopoDS_Shape &
+	:rtype: None
+") BRepAlgoAPI_Cut;
 		 BRepAlgoAPI_Cut (const TopoDS_Shape & S1,const TopoDS_Shape & S2);
-		%feature("autodoc", "Args:
-	S1(TopoDS_Shape)
-	S2(TopoDS_Shape)
-	aDSF(BOPAlgo_PaveFiller)
-	bFWD(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Constructs a new shape cut from shape aS1 by shape aS2 using aDSFiller (see BRepAlgoAPI_BooleanOperation Constructor).
 
-Returns:
-	None
-
-Constructs a new shape cut from  
-shape aS1 by shape aS2 using aDSFiller (see  
-BRepAlgoAPI_BooleanOperation Constructor).") BRepAlgoAPI_Cut;
+	:param S1:
+	:type S1: TopoDS_Shape &
+	:param S2:
+	:type S2: TopoDS_Shape &
+	:param aDSF:
+	:type aDSF: BOPAlgo_PaveFiller &
+	:param bFWD: default value is Standard_True
+	:type bFWD: bool
+	:rtype: None
+") BRepAlgoAPI_Cut;
 		 BRepAlgoAPI_Cut (const TopoDS_Shape & S1,const TopoDS_Shape & S2,const BOPAlgo_PaveFiller & aDSF,const Standard_Boolean bFWD = Standard_True);
 };
 
@@ -441,24 +363,25 @@ def __del__(self):
 %nodefaultctor BRepAlgoAPI_Fuse;
 class BRepAlgoAPI_Fuse : public BRepAlgoAPI_BooleanOperation {
 	public:
-		%feature("autodoc", "Args:
-	S1(TopoDS_Shape)
-	S2(TopoDS_Shape)
+		%feature("autodoc", "	* Constructs a fuse of shapes aS1 and aS2.
 
-Returns:
-	None
-
-Constructs a fuse of shapes aS1 and aS2.") BRepAlgoAPI_Fuse;
+	:param S1:
+	:type S1: TopoDS_Shape &
+	:param S2:
+	:type S2: TopoDS_Shape &
+	:rtype: None
+") BRepAlgoAPI_Fuse;
 		 BRepAlgoAPI_Fuse (const TopoDS_Shape & S1,const TopoDS_Shape & S2);
-		%feature("autodoc", "Args:
-	S1(TopoDS_Shape)
-	S2(TopoDS_Shape)
-	aDSF(BOPAlgo_PaveFiller)
+		%feature("autodoc", "	* Constructs a new shape that is a fuse of shapes aS1 and aS2 using aDSFiller.
 
-Returns:
-	None
-
-Constructs a new shape that is a fuse of shapes aS1 and aS2 using aDSFiller.") BRepAlgoAPI_Fuse;
+	:param S1:
+	:type S1: TopoDS_Shape &
+	:param S2:
+	:type S2: TopoDS_Shape &
+	:param aDSF:
+	:type aDSF: BOPAlgo_PaveFiller &
+	:rtype: None
+") BRepAlgoAPI_Fuse;
 		 BRepAlgoAPI_Fuse (const TopoDS_Shape & S1,const TopoDS_Shape & S2,const BOPAlgo_PaveFiller & aDSF);
 };
 
@@ -480,329 +403,157 @@ def __del__(self):
 %nodefaultctor BRepAlgoAPI_Section;
 class BRepAlgoAPI_Section : public BRepAlgoAPI_BooleanOperation {
 	public:
-		%feature("autodoc", "Args:
-	S1(TopoDS_Shape)
-	S2(TopoDS_Shape)
-	aDSF(BOPAlgo_PaveFiller)
-	PerformNow(Standard_Boolean)=Standard_True
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepAlgoAPI_Section;
+		%feature("autodoc", "	:param S1:
+	:type S1: TopoDS_Shape &
+	:param S2:
+	:type S2: TopoDS_Shape &
+	:param aDSF:
+	:type aDSF: BOPAlgo_PaveFiller &
+	:param PerformNow: default value is Standard_True
+	:type PerformNow: bool
+	:rtype: None
+") BRepAlgoAPI_Section;
 		 BRepAlgoAPI_Section (const TopoDS_Shape & S1,const TopoDS_Shape & S2,const BOPAlgo_PaveFiller & aDSF,const Standard_Boolean PerformNow = Standard_True);
-		%feature("autodoc", "Args:
-	Sh1(TopoDS_Shape)
-	Sh2(TopoDS_Shape)
-	PerformNow(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* see upper
 
-Returns:
-	None
-
-see upper") BRepAlgoAPI_Section;
+	:param Sh1:
+	:type Sh1: TopoDS_Shape &
+	:param Sh2:
+	:type Sh2: TopoDS_Shape &
+	:param PerformNow: default value is Standard_True
+	:type PerformNow: bool
+	:rtype: None
+") BRepAlgoAPI_Section;
 		 BRepAlgoAPI_Section (const TopoDS_Shape & Sh1,const TopoDS_Shape & Sh2,const Standard_Boolean PerformNow = Standard_True);
-		%feature("autodoc", "Args:
-	Sh(TopoDS_Shape)
-	Pl(gp_Pln)
-	PerformNow(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* see upper
 
-Returns:
-	None
-
-see upper") BRepAlgoAPI_Section;
+	:param Sh:
+	:type Sh: TopoDS_Shape &
+	:param Pl:
+	:type Pl: gp_Pln
+	:param PerformNow: default value is Standard_True
+	:type PerformNow: bool
+	:rtype: None
+") BRepAlgoAPI_Section;
 		 BRepAlgoAPI_Section (const TopoDS_Shape & Sh,const gp_Pln & Pl,const Standard_Boolean PerformNow = Standard_True);
-		%feature("autodoc", "Args:
-	Sh(TopoDS_Shape)
-	Sf(Handle_Geom_Surface)
-	PerformNow(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* see upper
 
-Returns:
-	None
-
-see upper") BRepAlgoAPI_Section;
+	:param Sh:
+	:type Sh: TopoDS_Shape &
+	:param Sf:
+	:type Sf: Handle_Geom_Surface &
+	:param PerformNow: default value is Standard_True
+	:type PerformNow: bool
+	:rtype: None
+") BRepAlgoAPI_Section;
 		 BRepAlgoAPI_Section (const TopoDS_Shape & Sh,const Handle_Geom_Surface & Sf,const Standard_Boolean PerformNow = Standard_True);
-		%feature("autodoc", "Args:
-	Sf(Handle_Geom_Surface)
-	Sh(TopoDS_Shape)
-	PerformNow(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* see upper
 
-Returns:
-	None
-
-see upper") BRepAlgoAPI_Section;
+	:param Sf:
+	:type Sf: Handle_Geom_Surface &
+	:param Sh:
+	:type Sh: TopoDS_Shape &
+	:param PerformNow: default value is Standard_True
+	:type PerformNow: bool
+	:rtype: None
+") BRepAlgoAPI_Section;
 		 BRepAlgoAPI_Section (const Handle_Geom_Surface & Sf,const TopoDS_Shape & Sh,const Standard_Boolean PerformNow = Standard_True);
-		%feature("autodoc", "Args:
-	Sf1(Handle_Geom_Surface)
-	Sf2(Handle_Geom_Surface)
-	PerformNow(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* This and the above classes construct a framework for computing the section lines of: - two shapes Sh1 and Sh2, or - shape Sh and plane Pl, or - shape Sh and surface Sf, or - surface Sf and shape Sh, or - two surfaces Sf1 and Sf2, and builds a result if PerformNow equals true, its default value. If PerformNow equals false, the intersection will be computed later by the function Build. The constructed shape will be returned by the function Shape. This is a compound object composed of edges. These intersection edges may be built: - on new intersection lines, or - on coincident portions of edges in the two intersected shapes. These intersection edges are independent: they are not chained or grouped in wires. If no intersection edge exists, the result is an empty compound object. Note that other objects than TopoDS_Shape shapes involved in these syntaxes are converted into faces or shells before performing the computation of the intersection. A shape resulting from this conversion can be retrieved with the function Shape1 or Shape2. Parametric 2D curves on intersection edges No parametric 2D curve (pcurve) is defined for each elementary edge of the result. To attach such parametric curves to the constructed edges you may use a constructor with the PerformNow flag equal to false; then you use: - the function ComputePCurveOn1 to ask for the additional computation of a pcurve in the parametric space of the first shape, - the function ComputePCurveOn2 to ask for the additional computation of a pcurve in the parametric space of the second shape, in the end, - the function Build to construct the result. Approximation of intersection edges The underlying 3D geometry attached to each elementary edge of the result is: - analytic where possible, provided the corresponding geometry corresponds to a type of analytic curve defined in the Geom package; for example, the intersection of a cylindrical shape with a plane gives an ellipse or a circle; - or elsewhere, given as a succession of points grouped together in a BSpline curve of degree 1. If you prefer to have an attached 3D geometry which is a BSpline approximation of the computed set of points on computed elementary intersection edges whose underlying geometry is not analytic, you may use a constructor with the PerformNow flag equal to false. Then you use: - the function Approximation to ask for this computation option, and - the function Build to construct the result. - Note that as a result, approximations will only be computed on edges built on new intersection lines. - Example You may also combine these computation options. In the following example: - each elementary edge of the computed intersection, built on a new intersection line, which does not correspond to an analytic Geom curve, will be approximated by a BSpline curve whose degree is not greater than 8. - each elementary edge built on a new intersection line, will have: - a pcurve in the parametric space of the intersected face of shape S1, - no pcurve in the parametric space of the intersected face of shape S2. // TopoDS_Shape S1 = ... , S2 = ... ; Standard_Boolean PerformNow = Standard_False; BRepAlgoAPI_Section S ( S1, S2, PerformNow ); S.ComputePCurveOn1 (Standard_True); S.Approximation (Standard_True); S.Build(); TopoDS_Shape R = S.Shape();
 
-Returns:
-	None
-
-This and the above classes construct a framework for  
-computing the section lines of:  
--       two shapes Sh1 and Sh2, or  
--       shape Sh and plane Pl,  or  
--       shape Sh and surface Sf, or  
--       surface Sf and shape Sh, or  
--       two surfaces Sf1 and Sf2,  
-  and builds a result if PerformNow equals true, its  
-default value. If PerformNow equals false, the intersection  
-will be computed later by the function Build.  
- The constructed shape will be returned by the function Shape.  
-This is a compound object composed of edges. These  
-intersection edges may be built:  
--      on new intersection lines, or  
--      on coincident portions of edges in the two intersected    shapes.  
-  These intersection edges are independent: they are not  
-chained or grouped in wires. If no intersection edge exists, the  
-result is an empty compound object.  
-Note that other objects than TopoDS_Shape shapes involved in  
-these syntaxes are converted into faces or shells before  
-performing the computation of the intersection. A shape  
-resulting from this conversion can be retrieved with the  
-function Shape1 or Shape2.  
-Parametric 2D curves on intersection edges  
-No parametric 2D curve (pcurve) is defined for each elementary  
-edge of the result. To attach such parametric curves to the  
-constructed edges you may use a constructor with the PerformNow  
-flag equal to false; then you use:  
--      the function ComputePCurveOn1 to ask for  
-   the additional computation of a pcurve in the parametric  
-   space of the first shape,  
--      the function ComputePCurveOn2 to ask for  
-   the additional computation of a pcurve in the parametric  
-   space of the second shape, in the end,  
--      the function Build to construct the result.  
-  Approximation of intersection edges  
-  The underlying 3D geometry attached to each elementary edge  
-of the result is:  
--       analytic where possible, provided the corresponding  
-   geometry corresponds to a type of analytic curve  
-   defined in the Geom package; for example, the intersection  
-   of a cylindrical shape with a plane gives an ellipse or a    circle;  
--       or elsewhere, given as a succession of points grouped  
-   together in a BSpline curve of degree 1.  
-If you prefer to have an attached 3D geometry which is a  
-BSpline approximation of the computed set of points on  
-computed elementary intersection edges whose underlying geometry  
-is not analytic, you may use a constructor with the PerformNow  
-flag equal to false. Then you use:  
--      the function Approximation to ask for this  
-   computation option, and  
--      the function Build to construct the result.  
--      Note that as a result, approximations will only be  
-   computed on edges built on new intersection lines.  
--      Example  
-You may also combine these computation options. In the following example:  
-- each elementary edge of the computed intersection,  
-  built on a new intersection line, which does not  
- correspond to an analytic Geom curve, will be approximated by  
-  a BSpline curve whose degree is not greater than 8.  
-- each elementary edge built on a new intersection line, will have:  
-- a pcurve in the parametric space of the intersected face of shape S1,  
-- no pcurve in the parametric space of the intersected face of shape S2.  
-      // TopoDS_Shape S1 = ... , S2 = ... ;  
-Standard_Boolean PerformNow = Standard_False;  
-BRepAlgoAPI_Section S ( S1, S2, PerformNow );  
-S.ComputePCurveOn1 (Standard_True);  
-S.Approximation (Standard_True);  
-S.Build();  
-TopoDS_Shape R = S.Shape();") BRepAlgoAPI_Section;
+	:param Sf1:
+	:type Sf1: Handle_Geom_Surface &
+	:param Sf2:
+	:type Sf2: Handle_Geom_Surface &
+	:param PerformNow: default value is Standard_True
+	:type PerformNow: bool
+	:rtype: None
+") BRepAlgoAPI_Section;
 		 BRepAlgoAPI_Section (const Handle_Geom_Surface & Sf1,const Handle_Geom_Surface & Sf2,const Standard_Boolean PerformNow = Standard_True);
-		%feature("autodoc", "Args:
-	S1(TopoDS_Shape)
+		%feature("autodoc", "	* initialize first part
 
-Returns:
-	None
-
-initialize first part") Init1;
+	:param S1:
+	:type S1: TopoDS_Shape &
+	:rtype: None
+") Init1;
 		void Init1 (const TopoDS_Shape & S1);
-		%feature("autodoc", "Args:
-	Pl(gp_Pln)
+		%feature("autodoc", "	* initialize first part
 
-Returns:
-	None
-
-initialize first part") Init1;
+	:param Pl:
+	:type Pl: gp_Pln
+	:rtype: None
+") Init1;
 		void Init1 (const gp_Pln & Pl);
-		%feature("autodoc", "Args:
-	Sf(Handle_Geom_Surface)
+		%feature("autodoc", "	* initialize first part
 
-Returns:
-	None
-
-initialize first part") Init1;
+	:param Sf:
+	:type Sf: Handle_Geom_Surface &
+	:rtype: None
+") Init1;
 		void Init1 (const Handle_Geom_Surface & Sf);
-		%feature("autodoc", "Args:
-	S2(TopoDS_Shape)
+		%feature("autodoc", "	* initialize second part
 
-Returns:
-	None
-
-initialize second part") Init2;
+	:param S2:
+	:type S2: TopoDS_Shape &
+	:rtype: None
+") Init2;
 		void Init2 (const TopoDS_Shape & S2);
-		%feature("autodoc", "Args:
-	Pl(gp_Pln)
+		%feature("autodoc", "	* initialize second part
 
-Returns:
-	None
-
-initialize second part") Init2;
+	:param Pl:
+	:type Pl: gp_Pln
+	:rtype: None
+") Init2;
 		void Init2 (const gp_Pln & Pl);
-		%feature("autodoc", "Args:
-	Sf(Handle_Geom_Surface)
+		%feature("autodoc", "	* Reinitializes the first and the second parts on which this algorithm is going to perform the intersection computation. This is done with either: the surface Sf, the plane Pl or the shape Sh. You use the function Build to construct the result.
 
-Returns:
-	None
-
-Reinitializes the first and the  
-second parts on which this algorithm is going to perform  
-the intersection computation. This is done with either: the  
-surface Sf, the plane Pl or the shape Sh.  
-You use the function Build to construct the result.") Init2;
+	:param Sf:
+	:type Sf: Handle_Geom_Surface &
+	:rtype: None
+") Init2;
 		void Init2 (const Handle_Geom_Surface & Sf);
-		%feature("autodoc", "Args:
-	B(Standard_Boolean)
+		%feature("autodoc", "	* Defines an option for computation of further intersections. This computation will be performed by the function Build in this framework. By default, the underlying 3D geometry attached to each elementary edge of the result of a computed intersection is: - analytic where possible, provided the corresponding geometry corresponds to a type of analytic curve defined in the Geom package; for example the intersection of a cylindrical shape with a plane gives an ellipse or a circle; - or elsewhere, given as a succession of points grouped together in a BSpline curve of degree 1. If Approx equals true, when further computations are performed in this framework with the function Build, these edges will have an attached 3D geometry which is a BSpline approximation of the computed set of points. Note that as a result, approximations will be computed on edges built only on new intersection lines.
 
-Returns:
-	None
-
-Defines an option for computation  
-of further intersections. This computation will be performed by  
-the function Build in this framework.  
-By default, the underlying 3D geometry attached to each  
-elementary edge of the result of a computed intersection is:  
-- analytic where possible, provided the corresponding  
-   geometry corresponds to a type of analytic curve defined in  
-   the Geom package; for example the intersection of a  
-   cylindrical shape with a plane gives an ellipse or a circle;  
--      or elsewhere, given as a succession of points grouped  
-together in a BSpline curve of degree 1. If Approx equals  
-true, when further computations are performed in this framework  
-with the function Build, these edges will have an attached 3D  
-   geometry which is a BSpline approximation of the computed  
-   set of points.  
-  Note that as a result, approximations will be computed  
-on edges built only on new intersection lines.") Approximation;
+	:param B:
+	:type B: bool
+	:rtype: None
+") Approximation;
 		void Approximation (const Standard_Boolean B);
-		%feature("autodoc", "Args:
-	B(Standard_Boolean)
+		%feature("autodoc", "	* Indicates if the Pcurve must be (or not) performed on first part.
 
-Returns:
-	None
-
-Indicates if the Pcurve must be (or not) performed on first part.") ComputePCurveOn1;
+	:param B:
+	:type B: bool
+	:rtype: None
+") ComputePCurveOn1;
 		void ComputePCurveOn1 (const Standard_Boolean B);
-		%feature("autodoc", "Args:
-	B(Standard_Boolean)
+		%feature("autodoc", "	* Define options for the computation of further intersections, which will be performed by the function Build in this framework. By default, no parametric 2D curve (pcurve) is defined for the elementary edges of the result. If ComputePCurve1 equals true, further computations performed in this framework with the function Build will attach an additional pcurve in the parametric space of the first shape to the constructed edges. If ComputePCurve2 equals true, the additional pcurve will be attached to the constructed edges in the parametric space of the second shape. These two functions may be used together.
 
-Returns:
-	None
-
-Define options for the computation of further  
-intersections, which will be performed by the function Build  
-in this framework.  
-By default, no parametric 2D curve (pcurve) is defined for the  
-elementary edges of the result. If ComputePCurve1 equals true,  
-further computations performed in this framework with the function  
-Build will attach an additional pcurve in the parametric space of  
-the first shape to the constructed edges.  
-If ComputePCurve2 equals true, the additional pcurve will be  
-attached to the constructed edges in the parametric space of the  
-second shape.  
-These two functions may be used together.") ComputePCurveOn2;
+	:param B:
+	:type B: bool
+	:rtype: None
+") ComputePCurveOn2;
 		void ComputePCurveOn2 (const Standard_Boolean B);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Performs the computation of section lines between two parts defined at the time of construction of this framework or reinitialized with the Init1 and Init2 functions. The constructed shape will be returned by the function Shape. This is a compound object composed of edges. These intersection edges may be built: - on new intersection lines, or - on coincident portions of edges in the two intersected shapes. These intersection edges are independent: they are not chained or grouped into wires. If no intersection edge exists, the result is an empty compound object. The shapes involved in the construction of section lines can be retrieved with the function Shape1 or Shape2. Note that other objects than TopoDS_Shape shapes given as arguments at the construction time of this framework, or to the Init1 or Init2 function, are converted into faces or shells before performing the computation of the intersection. Parametric 2D curves on intersection edges No parametric 2D curve (pcurve) is defined for the elementary edges of the result. To attach parametric curves like this to the constructed edges you have to use: - the function ComputePCurveOn1 to ask for the additional computation of a pcurve in the parametric space of the first shape, - the function ComputePCurveOn2 to ask for the additional computation of a pcurve in the parametric space of the second shape. This must be done before calling this function. Approximation of intersection edges The underlying 3D geometry attached to each elementary edge of the result is: - analytic (where possible) provided the corresponding geometry corresponds to a type of analytic curve defined in the Geom package; for example, the intersection of a cylindrical shape with a plane gives an ellipse or a circle; or - elsewhere, given as a succession of points grouped together in a BSpline curve of degree 1. If, on computed elementary intersection edges whose underlying geometry is not analytic, you prefer to have an attached 3D geometry which is a Bspline approximation of the computed set of points, you have to use the function Approximation to ask for this computation option before calling this function. You may also have combined these computation options: look at the example given above to illustrate the use of the constructors.
 
-Performs the computation of  
-section lines between two parts defined at the time of  
-construction of this framework or reinitialized with the Init1 and  
-Init2 functions.  
-The constructed shape will be returned by the function Shape.  
-This is a compound object composed of edges. These  
-intersection edges may be built:  
--      on new intersection lines, or  
--      on coincident portions of edges in the two intersected shapes.  
-These intersection edges are independent: they are not chained  
-or grouped into wires.  
-If no intersection edge exists, the result is an empty compound object.  
-The shapes involved in the construction of section lines can  
-be retrieved with the function Shape1 or Shape2. Note that other  
-objects than TopoDS_Shape shapes given as arguments at the  
-construction time of this framework, or to the Init1 or  
-Init2 function, are converted into faces or shells before  
-performing the computation of the intersection.  
-Parametric 2D curves on intersection edges  
-No parametric 2D curve (pcurve) is defined for the elementary  
-edges of the result. To attach parametric curves like this to  
-the constructed edges you have to use:  
--      the function  
-ComputePCurveOn1 to ask for the additional computation of a  
-pcurve in the parametric space of the first shape,  
--      the function  
-   ComputePCurveOn2 to ask for the additional computation of a  
-   pcurve in the parametric space of the second shape.  
-This must be done before calling this function.  
-  Approximation of intersection edges  
-The underlying 3D geometry attached to each elementary edge of the result is:  
--      analytic (where possible) provided the corresponding  
-geometry corresponds to a type of analytic curve defined in  
-   the Geom package; for example, the intersection of a  
-   cylindrical shape with a plane gives an ellipse or a circle;    or  
--      elsewhere, given as a succession of points grouped  
-   together in a BSpline curve of degree 1.  
-  If, on computed elementary intersection edges whose  
-underlying geometry is not analytic, you prefer to have an  
-attached 3D geometry which is a Bspline approximation of the  
-computed set of points, you have to use the function Approximation  
-to ask for this computation option before calling this function.  
-You may also have combined these computation options: look at the  
-example given above to illustrate the use of the constructors.") Build;
+	:rtype: None
+") Build;
 		void Build ();
-		%feature("autodoc", "Args:
-	E(TopoDS_Shape)
-	F(TopoDS_Shape)
+		%feature("autodoc", "	* get the face of the first part giving section edge <E>. Returns True on the 3 following conditions : 1/ <E> is an edge returned by the Shape() method. 2/ First part of section performed is a shape. 3/ <E> is built on a intersection curve (i.e <E> 	 is not the result of common edges) When False, F remains untouched.
 
-Returns:
-	Standard_Boolean
-
-get the face of the first part giving section edge <E>.  
-Returns True on the 3 following conditions :  
-1/ <E> is an edge returned by the Shape() method.  
-2/ First part of section performed is a shape.  
-3/ <E> is built on a intersection curve (i.e <E>  
-	 is not the result of common edges)  
-When False, F remains untouched.") HasAncestorFaceOn1;
+	:param E:
+	:type E: TopoDS_Shape &
+	:param F:
+	:type F: TopoDS_Shape &
+	:rtype: bool
+") HasAncestorFaceOn1;
 		Standard_Boolean HasAncestorFaceOn1 (const TopoDS_Shape & E,TopoDS_Shape & F);
-		%feature("autodoc", "Args:
-	E(TopoDS_Shape)
-	F(TopoDS_Shape)
+		%feature("autodoc", "	* Identifies the ancestor faces of the intersection edge E resulting from the last computation performed in this framework, that is, the faces of the two original shapes on which the edge E lies: - HasAncestorFaceOn1 gives the ancestor face in the first shape, and - HasAncestorFaceOn2 gives the ancestor face in the second shape. These functions return true if an ancestor face F is found, or false if not. An ancestor face is identifiable for the edge E if the following conditions are satisfied: - the first part on which this algorithm performed its last computation is a shape, that is, it was not given as a surface or a plane at the time of construction of this algorithm or at a later time by the Init1 function, - E is one of the elementary edges built by the last computation of this section algorithm. To use these functions properly, you have to test the returned Boolean value before using the ancestor face: F is significant only if the returned Boolean value equals true.
 
-Returns:
-	Standard_Boolean
-
-Identifies the ancestor faces of  
-the intersection edge E resulting from the last  
-computation performed in this framework, that is, the faces of  
-the two original shapes on which the edge E lies:  
--      HasAncestorFaceOn1 gives the ancestor face in the first shape, and  
--      HasAncestorFaceOn2 gives the ancestor face in the second shape.  
-  These functions return true if an ancestor face F is found, or false if not.  
-  An ancestor face is identifiable for the edge E if the following  
-conditions are satisfied:  
--  the first part on which this algorithm performed its  
-   last computation is a shape, that is, it was not given as  
-a surface or a plane at the time of construction of this  
-algorithm or at a later time by the Init1 function,  
-- E is one of the elementary edges built by the  
-last computation of this section algorithm.  
-To use these functions properly, you have to test the returned  
-Boolean value before using the ancestor face: F is significant  
-only if the returned Boolean value equals true.") HasAncestorFaceOn2;
+	:param E:
+	:type E: TopoDS_Shape &
+	:param F:
+	:type F: TopoDS_Shape &
+	:rtype: bool
+") HasAncestorFaceOn2;
 		Standard_Boolean HasAncestorFaceOn2 (const TopoDS_Shape & E,TopoDS_Shape & F);
 };
 

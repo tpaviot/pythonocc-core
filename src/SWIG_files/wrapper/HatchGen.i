@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -59,121 +59,93 @@ enum HatchGen_IntersectionType {
 %nodefaultctor HatchGen_Domain;
 class HatchGen_Domain {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates an infinite domain.
 
-Creates an infinite domain.") HatchGen_Domain;
+	:rtype: None
+") HatchGen_Domain;
 		 HatchGen_Domain ();
-		%feature("autodoc", "Args:
-	P1(HatchGen_PointOnHatching)
-	P2(HatchGen_PointOnHatching)
+		%feature("autodoc", "	* Creates a domain for the curve associated to a hatching.
 
-Returns:
-	None
-
-Creates a domain for the curve associated to a hatching.") HatchGen_Domain;
+	:param P1:
+	:type P1: HatchGen_PointOnHatching &
+	:param P2:
+	:type P2: HatchGen_PointOnHatching &
+	:rtype: None
+") HatchGen_Domain;
 		 HatchGen_Domain (const HatchGen_PointOnHatching & P1,const HatchGen_PointOnHatching & P2);
-		%feature("autodoc", "Args:
-	P(HatchGen_PointOnHatching)
-	First(Standard_Boolean)
+		%feature("autodoc", "	* Creates a semi-infinite domain for the curve associated to a hatching. The `First' flag means that the given point is the first one.
 
-Returns:
-	None
-
-Creates a semi-infinite domain for the curve associated  
-         to a hatching. The `First' flag means that the given  
-         point is the first one.") HatchGen_Domain;
+	:param P:
+	:type P: HatchGen_PointOnHatching &
+	:param First:
+	:type First: bool
+	:rtype: None
+") HatchGen_Domain;
 		 HatchGen_Domain (const HatchGen_PointOnHatching & P,const Standard_Boolean First);
-		%feature("autodoc", "Args:
-	P1(HatchGen_PointOnHatching)
-	P2(HatchGen_PointOnHatching)
+		%feature("autodoc", "	* Sets the first and the second points of the domain.
 
-Returns:
-	None
-
-Sets the first and the second points of the domain.") SetPoints;
+	:param P1:
+	:type P1: HatchGen_PointOnHatching &
+	:param P2:
+	:type P2: HatchGen_PointOnHatching &
+	:rtype: None
+") SetPoints;
 		void SetPoints (const HatchGen_PointOnHatching & P1,const HatchGen_PointOnHatching & P2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Sets the first and the second points of the domain as the infinite.
 
-Sets the first and the second points of the domain  
-         as the infinite.") SetPoints;
+	:rtype: None
+") SetPoints;
 		void SetPoints ();
-		%feature("autodoc", "Args:
-	P(HatchGen_PointOnHatching)
+		%feature("autodoc", "	* Sets the first point of the domain.
 
-Returns:
-	None
-
-Sets the first point of the domain.") SetFirstPoint;
+	:param P:
+	:type P: HatchGen_PointOnHatching &
+	:rtype: None
+") SetFirstPoint;
 		void SetFirstPoint (const HatchGen_PointOnHatching & P);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Sets the first point of the domain at the infinite.
 
-Sets the first point of the domain at the  
-         infinite.") SetFirstPoint;
+	:rtype: None
+") SetFirstPoint;
 		void SetFirstPoint ();
-		%feature("autodoc", "Args:
-	P(HatchGen_PointOnHatching)
+		%feature("autodoc", "	* Sets the second point of the domain.
 
-Returns:
-	None
-
-Sets the second point of the domain.") SetSecondPoint;
+	:param P:
+	:type P: HatchGen_PointOnHatching &
+	:rtype: None
+") SetSecondPoint;
 		void SetSecondPoint (const HatchGen_PointOnHatching & P);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Sets the second point of the domain at the infinite.
 
-Sets the second point of the domain at the  
-         infinite.") SetSecondPoint;
+	:rtype: None
+") SetSecondPoint;
 		void SetSecondPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the domain has a first point.
 
-Returns True if the domain has a first point.") HasFirstPoint;
+	:rtype: bool
+") HasFirstPoint;
 		Standard_Boolean HasFirstPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HatchGen_PointOnHatching
+		%feature("autodoc", "	* Returns the first point of the domain. The exception DomainError is raised if HasFirstPoint returns False.
 
-Returns the first point of the domain.  
-         The exception DomainError is raised if  
-         HasFirstPoint returns False.") FirstPoint;
+	:rtype: HatchGen_PointOnHatching
+") FirstPoint;
 		const HatchGen_PointOnHatching & FirstPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the domain has a second point.
 
-Returns True if the domain has a second point.") HasSecondPoint;
+	:rtype: bool
+") HasSecondPoint;
 		Standard_Boolean HasSecondPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HatchGen_PointOnHatching
+		%feature("autodoc", "	* Returns the second point of the domain. The exception DomainError is raised if HasSecondPoint returns False.
 
-Returns the second point of the domain.  
-         The exception DomainError is raised if  
-         HasSecondPoint returns False.") SecondPoint;
+	:rtype: HatchGen_PointOnHatching
+") SecondPoint;
 		const HatchGen_PointOnHatching & SecondPoint ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)=0
+		%feature("autodoc", "	* Dump of the domain.
 
-Returns:
-	None
-
-Dump of the domain.") Dump;
+	:param Index: default value is 0
+	:type Index: Standard_Integer
+	:rtype: None
+") Dump;
 		void Dump (const Standard_Integer Index = 0);
 };
 
@@ -195,168 +167,111 @@ def __del__(self):
 %nodefaultctor HatchGen_Domains;
 class HatchGen_Domains : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") HatchGen_Domains;
+		%feature("autodoc", "	:rtype: None
+") HatchGen_Domains;
 		 HatchGen_Domains ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(HatchGen_Domains)
-
-Returns:
-	HatchGen_Domains
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: HatchGen_Domains &
+	:rtype: HatchGen_Domains
+") Assign;
 		const HatchGen_Domains & Assign (const HatchGen_Domains & Other);
-		%feature("autodoc", "Args:
-	Other(HatchGen_Domains)
-
-Returns:
-	HatchGen_Domains
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: HatchGen_Domains &
+	:rtype: HatchGen_Domains
+") operator=;
 		const HatchGen_Domains & operator = (const HatchGen_Domains & Other);
-		%feature("autodoc", "Args:
-	T(HatchGen_Domain)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: HatchGen_Domain &
+	:rtype: None
+") Append;
 		void Append (const HatchGen_Domain & T);
-		%feature("autodoc", "Args:
-	S(HatchGen_Domains)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: HatchGen_Domains &
+	:rtype: None
+") Append;
 		void Append (HatchGen_Domains & S);
-		%feature("autodoc", "Args:
-	T(HatchGen_Domain)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: HatchGen_Domain &
+	:rtype: None
+") Prepend;
 		void Prepend (const HatchGen_Domain & T);
-		%feature("autodoc", "Args:
-	S(HatchGen_Domains)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: HatchGen_Domains &
+	:rtype: None
+") Prepend;
 		void Prepend (HatchGen_Domains & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(HatchGen_Domain)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: HatchGen_Domain &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const HatchGen_Domain & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(HatchGen_Domains)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: HatchGen_Domains &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,HatchGen_Domains & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(HatchGen_Domain)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: HatchGen_Domain &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const HatchGen_Domain & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(HatchGen_Domains)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: HatchGen_Domains &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,HatchGen_Domains & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HatchGen_Domain
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: HatchGen_Domain
+") First;
 		const HatchGen_Domain & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HatchGen_Domain
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: HatchGen_Domain
+") Last;
 		const HatchGen_Domain & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(HatchGen_Domains)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: HatchGen_Domains &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,HatchGen_Domains & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	HatchGen_Domain
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: HatchGen_Domain
+") Value;
 		const HatchGen_Domain & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(HatchGen_Domain)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: HatchGen_Domain &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const HatchGen_Domain & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	HatchGen_Domain
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: HatchGen_Domain
+") ChangeValue;
 		HatchGen_Domain & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -378,118 +293,96 @@ def __del__(self):
 %nodefaultctor HatchGen_IntersectionPoint;
 class HatchGen_IntersectionPoint {
 	public:
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Sets the index of the supporting curve.
 
-Returns:
-	None
-
-Sets the index of the supporting curve.") SetIndex;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") SetIndex;
 		void SetIndex (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the index of the supporting curve.
 
-Returns the index of the supporting curve.") Index;
+	:rtype: int
+") Index;
 		Standard_Integer Index ();
-		%feature("autodoc", "Args:
-	Parameter(Standard_Real)
+		%feature("autodoc", "	* Sets the parameter on the curve.
 
-Returns:
-	None
-
-Sets the parameter on the curve.") SetParameter;
+	:param Parameter:
+	:type Parameter: float
+	:rtype: None
+") SetParameter;
 		void SetParameter (const Standard_Real Parameter);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the parameter on the curve.
 
-Returns the parameter on the curve.") Parameter;
+	:rtype: float
+") Parameter;
 		Standard_Real Parameter ();
-		%feature("autodoc", "Args:
-	Position(TopAbs_Orientation)
+		%feature("autodoc", "	* Sets the position of the point on the curve.
 
-Returns:
-	None
-
-Sets the position of the point on the curve.") SetPosition;
+	:param Position:
+	:type Position: TopAbs_Orientation
+	:rtype: None
+") SetPosition;
 		void SetPosition (const TopAbs_Orientation Position);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_Orientation
+		%feature("autodoc", "	* Returns the position of the point on the curve.
 
-Returns the position of the point on the curve.") Position;
+	:rtype: TopAbs_Orientation
+") Position;
 		TopAbs_Orientation Position ();
-		%feature("autodoc", "Args:
-	State(TopAbs_State)
+		%feature("autodoc", "	* Sets the transition state before the intersection.
 
-Returns:
-	None
-
-Sets the transition state before the intersection.") SetStateBefore;
+	:param State:
+	:type State: TopAbs_State
+	:rtype: None
+") SetStateBefore;
 		void SetStateBefore (const TopAbs_State State);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_State
+		%feature("autodoc", "	* Returns the transition state before the intersection.
 
-Returns the transition state before the intersection.") StateBefore;
+	:rtype: TopAbs_State
+") StateBefore;
 		TopAbs_State StateBefore ();
-		%feature("autodoc", "Args:
-	State(TopAbs_State)
+		%feature("autodoc", "	* Sets the transition state after the intersection.
 
-Returns:
-	None
-
-Sets the transition state after the intersection.") SetStateAfter;
+	:param State:
+	:type State: TopAbs_State
+	:rtype: None
+") SetStateAfter;
 		void SetStateAfter (const TopAbs_State State);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_State
+		%feature("autodoc", "	* Returns the transition state after of the intersection.
 
-Returns the transition state after of the intersection.") StateAfter;
+	:rtype: TopAbs_State
+") StateAfter;
 		TopAbs_State StateAfter ();
-		%feature("autodoc", "Args:
-	State(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Sets the flag that the point is the beginning of a segment.
 
-Returns:
-	None
-
-Sets the flag that the point is the beginning of a segment.") SetSegmentBeginning;
+	:param State: default value is Standard_True
+	:type State: bool
+	:rtype: None
+") SetSegmentBeginning;
 		void SetSegmentBeginning (const Standard_Boolean State = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns the flag that the point is the beginning of a segment.
 
-Returns the flag that the point is the beginning of a segment.") SegmentBeginning;
+	:rtype: bool
+") SegmentBeginning;
 		Standard_Boolean SegmentBeginning ();
-		%feature("autodoc", "Args:
-	State(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Sets the flag that the point is the end of a segment.
 
-Returns:
-	None
-
-Sets the flag that the point is the end of a segment.") SetSegmentEnd;
+	:param State: default value is Standard_True
+	:type State: bool
+	:rtype: None
+") SetSegmentEnd;
 		void SetSegmentEnd (const Standard_Boolean State = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns the flag that the point is the end of a segment.
 
-Returns the flag that the point is the end of a segment.") SegmentEnd;
+	:rtype: bool
+") SegmentEnd;
 		Standard_Boolean SegmentEnd ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)=0
+		%feature("autodoc", "	* Dump of the point on element.
 
-Returns:
-	virtual void
-
-Dump of the point on element.") Dump;
+	:param Index: default value is 0
+	:type Index: Standard_Integer
+	:rtype: void
+") Dump;
 		virtual void Dump (const Standard_Integer Index = 0);
 };
 
@@ -511,168 +404,111 @@ def __del__(self):
 %nodefaultctor HatchGen_PointsOnElement;
 class HatchGen_PointsOnElement : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") HatchGen_PointsOnElement;
+		%feature("autodoc", "	:rtype: None
+") HatchGen_PointsOnElement;
 		 HatchGen_PointsOnElement ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(HatchGen_PointsOnElement)
-
-Returns:
-	HatchGen_PointsOnElement
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: HatchGen_PointsOnElement &
+	:rtype: HatchGen_PointsOnElement
+") Assign;
 		const HatchGen_PointsOnElement & Assign (const HatchGen_PointsOnElement & Other);
-		%feature("autodoc", "Args:
-	Other(HatchGen_PointsOnElement)
-
-Returns:
-	HatchGen_PointsOnElement
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: HatchGen_PointsOnElement &
+	:rtype: HatchGen_PointsOnElement
+") operator=;
 		const HatchGen_PointsOnElement & operator = (const HatchGen_PointsOnElement & Other);
-		%feature("autodoc", "Args:
-	T(HatchGen_PointOnElement)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: HatchGen_PointOnElement &
+	:rtype: None
+") Append;
 		void Append (const HatchGen_PointOnElement & T);
-		%feature("autodoc", "Args:
-	S(HatchGen_PointsOnElement)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: HatchGen_PointsOnElement &
+	:rtype: None
+") Append;
 		void Append (HatchGen_PointsOnElement & S);
-		%feature("autodoc", "Args:
-	T(HatchGen_PointOnElement)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: HatchGen_PointOnElement &
+	:rtype: None
+") Prepend;
 		void Prepend (const HatchGen_PointOnElement & T);
-		%feature("autodoc", "Args:
-	S(HatchGen_PointsOnElement)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: HatchGen_PointsOnElement &
+	:rtype: None
+") Prepend;
 		void Prepend (HatchGen_PointsOnElement & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(HatchGen_PointOnElement)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: HatchGen_PointOnElement &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const HatchGen_PointOnElement & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(HatchGen_PointsOnElement)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: HatchGen_PointsOnElement &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,HatchGen_PointsOnElement & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(HatchGen_PointOnElement)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: HatchGen_PointOnElement &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const HatchGen_PointOnElement & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(HatchGen_PointsOnElement)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: HatchGen_PointsOnElement &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,HatchGen_PointsOnElement & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HatchGen_PointOnElement
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: HatchGen_PointOnElement
+") First;
 		const HatchGen_PointOnElement & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HatchGen_PointOnElement
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: HatchGen_PointOnElement
+") Last;
 		const HatchGen_PointOnElement & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(HatchGen_PointsOnElement)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: HatchGen_PointsOnElement &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,HatchGen_PointsOnElement & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	HatchGen_PointOnElement
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: HatchGen_PointOnElement
+") Value;
 		const HatchGen_PointOnElement & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(HatchGen_PointOnElement)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: HatchGen_PointOnElement &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const HatchGen_PointOnElement & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	HatchGen_PointOnElement
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: HatchGen_PointOnElement
+") ChangeValue;
 		HatchGen_PointOnElement & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -694,168 +530,111 @@ def __del__(self):
 %nodefaultctor HatchGen_PointsOnHatching;
 class HatchGen_PointsOnHatching : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") HatchGen_PointsOnHatching;
+		%feature("autodoc", "	:rtype: None
+") HatchGen_PointsOnHatching;
 		 HatchGen_PointsOnHatching ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(HatchGen_PointsOnHatching)
-
-Returns:
-	HatchGen_PointsOnHatching
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: HatchGen_PointsOnHatching &
+	:rtype: HatchGen_PointsOnHatching
+") Assign;
 		const HatchGen_PointsOnHatching & Assign (const HatchGen_PointsOnHatching & Other);
-		%feature("autodoc", "Args:
-	Other(HatchGen_PointsOnHatching)
-
-Returns:
-	HatchGen_PointsOnHatching
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: HatchGen_PointsOnHatching &
+	:rtype: HatchGen_PointsOnHatching
+") operator=;
 		const HatchGen_PointsOnHatching & operator = (const HatchGen_PointsOnHatching & Other);
-		%feature("autodoc", "Args:
-	T(HatchGen_PointOnHatching)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: HatchGen_PointOnHatching &
+	:rtype: None
+") Append;
 		void Append (const HatchGen_PointOnHatching & T);
-		%feature("autodoc", "Args:
-	S(HatchGen_PointsOnHatching)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: HatchGen_PointsOnHatching &
+	:rtype: None
+") Append;
 		void Append (HatchGen_PointsOnHatching & S);
-		%feature("autodoc", "Args:
-	T(HatchGen_PointOnHatching)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: HatchGen_PointOnHatching &
+	:rtype: None
+") Prepend;
 		void Prepend (const HatchGen_PointOnHatching & T);
-		%feature("autodoc", "Args:
-	S(HatchGen_PointsOnHatching)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: HatchGen_PointsOnHatching &
+	:rtype: None
+") Prepend;
 		void Prepend (HatchGen_PointsOnHatching & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(HatchGen_PointOnHatching)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: HatchGen_PointOnHatching &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const HatchGen_PointOnHatching & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(HatchGen_PointsOnHatching)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: HatchGen_PointsOnHatching &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,HatchGen_PointsOnHatching & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(HatchGen_PointOnHatching)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: HatchGen_PointOnHatching &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const HatchGen_PointOnHatching & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(HatchGen_PointsOnHatching)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: HatchGen_PointsOnHatching &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,HatchGen_PointsOnHatching & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HatchGen_PointOnHatching
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: HatchGen_PointOnHatching
+") First;
 		const HatchGen_PointOnHatching & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HatchGen_PointOnHatching
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: HatchGen_PointOnHatching
+") Last;
 		const HatchGen_PointOnHatching & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(HatchGen_PointsOnHatching)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: HatchGen_PointsOnHatching &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,HatchGen_PointsOnHatching & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	HatchGen_PointOnHatching
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: HatchGen_PointOnHatching
+") Value;
 		const HatchGen_PointOnHatching & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(HatchGen_PointOnHatching)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: HatchGen_PointOnHatching &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const HatchGen_PointOnHatching & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	HatchGen_PointOnHatching
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: HatchGen_PointOnHatching
+") ChangeValue;
 		HatchGen_PointOnHatching & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -877,22 +656,17 @@ def __del__(self):
 %nodefaultctor HatchGen_SequenceNodeOfDomains;
 class HatchGen_SequenceNodeOfDomains : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(HatchGen_Domain)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HatchGen_SequenceNodeOfDomains;
+		%feature("autodoc", "	:param I:
+	:type I: HatchGen_Domain &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") HatchGen_SequenceNodeOfDomains;
 		 HatchGen_SequenceNodeOfDomains (const HatchGen_Domain & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HatchGen_Domain
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: HatchGen_Domain
+") Value;
 		HatchGen_Domain & Value ();
 };
 
@@ -953,22 +727,17 @@ def __del__(self):
 %nodefaultctor HatchGen_SequenceNodeOfPointsOnElement;
 class HatchGen_SequenceNodeOfPointsOnElement : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(HatchGen_PointOnElement)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HatchGen_SequenceNodeOfPointsOnElement;
+		%feature("autodoc", "	:param I:
+	:type I: HatchGen_PointOnElement &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") HatchGen_SequenceNodeOfPointsOnElement;
 		 HatchGen_SequenceNodeOfPointsOnElement (const HatchGen_PointOnElement & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HatchGen_PointOnElement
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: HatchGen_PointOnElement
+") Value;
 		HatchGen_PointOnElement & Value ();
 };
 
@@ -1029,22 +798,17 @@ def __del__(self):
 %nodefaultctor HatchGen_SequenceNodeOfPointsOnHatching;
 class HatchGen_SequenceNodeOfPointsOnHatching : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(HatchGen_PointOnHatching)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HatchGen_SequenceNodeOfPointsOnHatching;
+		%feature("autodoc", "	:param I:
+	:type I: HatchGen_PointOnHatching &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") HatchGen_SequenceNodeOfPointsOnHatching;
 		 HatchGen_SequenceNodeOfPointsOnHatching (const HatchGen_PointOnHatching & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HatchGen_PointOnHatching
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: HatchGen_PointOnHatching
+") Value;
 		HatchGen_PointOnHatching & Value ();
 };
 
@@ -1105,78 +869,61 @@ def __del__(self):
 %nodefaultctor HatchGen_PointOnElement;
 class HatchGen_PointOnElement : public HatchGen_IntersectionPoint {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* //!---Purpose; Creates an empty point on element
 
-//!---Purpose; Creates an empty point on element") HatchGen_PointOnElement;
+	:rtype: None
+") HatchGen_PointOnElement;
 		 HatchGen_PointOnElement ();
-		%feature("autodoc", "Args:
-	Point(HatchGen_PointOnElement)
+		%feature("autodoc", "	* Creates a point from an other.
 
-Returns:
-	None
-
-Creates a point from an other.") HatchGen_PointOnElement;
+	:param Point:
+	:type Point: HatchGen_PointOnElement &
+	:rtype: None
+") HatchGen_PointOnElement;
 		 HatchGen_PointOnElement (const HatchGen_PointOnElement & Point);
-		%feature("autodoc", "Args:
-	Point(IntRes2d_IntersectionPoint)
+		%feature("autodoc", "	* Creates a point from an intersection point.
 
-Returns:
-	None
-
-Creates a point from an intersection point.") HatchGen_PointOnElement;
+	:param Point:
+	:type Point: IntRes2d_IntersectionPoint &
+	:rtype: None
+") HatchGen_PointOnElement;
 		 HatchGen_PointOnElement (const IntRes2d_IntersectionPoint & Point);
-		%feature("autodoc", "Args:
-	Type(HatchGen_IntersectionType)
+		%feature("autodoc", "	* Sets the intersection type at this point.
 
-Returns:
-	None
-
-Sets the intersection type at this point.") SetIntersectionType;
+	:param Type:
+	:type Type: HatchGen_IntersectionType
+	:rtype: None
+") SetIntersectionType;
 		void SetIntersectionType (const HatchGen_IntersectionType Type);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HatchGen_IntersectionType
+		%feature("autodoc", "	* Returns the intersection type at this point.
 
-Returns the intersection type at this point.") IntersectionType;
+	:rtype: HatchGen_IntersectionType
+") IntersectionType;
 		HatchGen_IntersectionType IntersectionType ();
-		%feature("autodoc", "Args:
-	Point(HatchGen_PointOnElement)
-	Confusion(Standard_Real)
+		%feature("autodoc", "	* Tests if the point is identical to an other. That is to say :  P1.myIndex = P2.myIndex  Abs (P1.myParam - P2.myParam) <= Confusion  P1.myPosit = P2.myPosit  P1.myBefore = P2.myBefore  P1.myAfter = P2.myAfter  P1.mySegBeg = P2.mySegBeg  P1.mySegEnd = P2.mySegEnd  P1.myType = P2.myType
 
-Returns:
-	Standard_Boolean
-
-Tests if the point is identical to an other.  
-         That is to say :  
-           P1.myIndex  = P2.myIndex  
-           Abs (P1.myParam - P2.myParam) <= Confusion  
-           P1.myPosit  = P2.myPosit  
-           P1.myBefore = P2.myBefore  
-           P1.myAfter  = P2.myAfter  
-           P1.mySegBeg = P2.mySegBeg  
-           P1.mySegEnd = P2.mySegEnd  
-           P1.myType   = P2.myType") IsIdentical;
+	:param Point:
+	:type Point: HatchGen_PointOnElement &
+	:param Confusion:
+	:type Confusion: float
+	:rtype: bool
+") IsIdentical;
 		Standard_Boolean IsIdentical (const HatchGen_PointOnElement & Point,const Standard_Real Confusion);
-		%feature("autodoc", "Args:
-	Point(HatchGen_PointOnElement)
-	Confusion(Standard_Real)
+		%feature("autodoc", "	* Tests if the point is different from an other.
 
-Returns:
-	Standard_Boolean
-
-Tests if the point is different from an other.") IsDifferent;
+	:param Point:
+	:type Point: HatchGen_PointOnElement &
+	:param Confusion:
+	:type Confusion: float
+	:rtype: bool
+") IsDifferent;
 		Standard_Boolean IsDifferent (const HatchGen_PointOnElement & Point,const Standard_Real Confusion);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)=0
+		%feature("autodoc", "	* Dump of the point on element.
 
-Returns:
-	None
-
-Dump of the point on element.") Dump;
+	:param Index: default value is 0
+	:type Index: Standard_Integer
+	:rtype: None
+") Dump;
 		void Dump (const Standard_Integer Index = 0);
 };
 
@@ -1198,123 +945,96 @@ def __del__(self):
 %nodefaultctor HatchGen_PointOnHatching;
 class HatchGen_PointOnHatching : public HatchGen_IntersectionPoint {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates an empty point.
 
-Creates an empty point.") HatchGen_PointOnHatching;
+	:rtype: None
+") HatchGen_PointOnHatching;
 		 HatchGen_PointOnHatching ();
-		%feature("autodoc", "Args:
-	Point(HatchGen_PointOnHatching)
+		%feature("autodoc", "	* Creates a point from an other.
 
-Returns:
-	None
-
-Creates a point from an other.") HatchGen_PointOnHatching;
+	:param Point:
+	:type Point: HatchGen_PointOnHatching &
+	:rtype: None
+") HatchGen_PointOnHatching;
 		 HatchGen_PointOnHatching (const HatchGen_PointOnHatching & Point);
-		%feature("autodoc", "Args:
-	Point(IntRes2d_IntersectionPoint)
+		%feature("autodoc", "	* Creates a point from an intersection point.
 
-Returns:
-	None
-
-Creates a point from an intersection point.") HatchGen_PointOnHatching;
+	:param Point:
+	:type Point: IntRes2d_IntersectionPoint &
+	:rtype: None
+") HatchGen_PointOnHatching;
 		 HatchGen_PointOnHatching (const IntRes2d_IntersectionPoint & Point);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* linux porting
 
-linux porting") Delete;
+	:rtype: void
+") Delete;
 		virtual void Delete ();
-		%feature("autodoc", "Args:
-	Point(HatchGen_PointOnElement)
-	Confusion(Standard_Real)
+		%feature("autodoc", "	* Adds a point on element to the point.
 
-Returns:
-	None
-
-Adds a point on element to the point.") AddPoint;
+	:param Point:
+	:type Point: HatchGen_PointOnElement &
+	:param Confusion:
+	:type Confusion: float
+	:rtype: None
+") AddPoint;
 		void AddPoint (const HatchGen_PointOnElement & Point,const Standard_Real Confusion);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of elements intersecting the hatching at this point.
 
-Returns the number of elements intersecting the  
-         hatching at this point.") NbPoints;
+	:rtype: int
+") NbPoints;
 		Standard_Integer NbPoints ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Returns the Index-th point on element of the point. The exception OutOfRange is raised if Index > NbPoints.
 
-Returns:
-	HatchGen_PointOnElement
-
-Returns the Index-th point on element of the point.  
-         The exception OutOfRange is raised if  
-         Index > NbPoints.") Point;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: HatchGen_PointOnElement
+") Point;
 		const HatchGen_PointOnElement & Point (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Removes the Index-th point on element of the point. The exception OutOfRange is raised if Index > NbPoints.
 
-Returns:
-	None
-
-Removes the Index-th point on element of the point.  
-         The exception OutOfRange is raised if  
-         Index > NbPoints.") RemPoint;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") RemPoint;
 		void RemPoint (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Removes all the points on element of the point.
 
-Removes all the points on element of the point.") ClrPoints;
+	:rtype: None
+") ClrPoints;
 		void ClrPoints ();
-		%feature("autodoc", "Args:
-	Point(HatchGen_PointOnHatching)
-	Confusion(Standard_Real)
+		%feature("autodoc", "	* Tests if the point is lower than an other. A point on hatching P1 is said to be lower than an other P2 if :  P2.myParam - P1.myParam > Confusion
 
-Returns:
-	Standard_Boolean
-
-Tests if the point is lower than an other.  
-         A point on hatching P1 is said to be lower than an  
-         other P2 if :  
-           P2.myParam - P1.myParam > Confusion") IsLower;
+	:param Point:
+	:type Point: HatchGen_PointOnHatching &
+	:param Confusion:
+	:type Confusion: float
+	:rtype: bool
+") IsLower;
 		Standard_Boolean IsLower (const HatchGen_PointOnHatching & Point,const Standard_Real Confusion);
-		%feature("autodoc", "Args:
-	Point(HatchGen_PointOnHatching)
-	Confusion(Standard_Real)
+		%feature("autodoc", "	* Tests if the point is equal to an other. A point on hatching P1 is said to be equal to an other P2 if :  | P2.myParam - P1.myParam | <= Confusion
 
-Returns:
-	Standard_Boolean
-
-Tests if the  point is equal to an other.  
-         A  point on hatching P1 is said to be equal to an  
-         other P2 if :  
-           | P2.myParam - P1.myParam | <= Confusion") IsEqual;
+	:param Point:
+	:type Point: HatchGen_PointOnHatching &
+	:param Confusion:
+	:type Confusion: float
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const HatchGen_PointOnHatching & Point,const Standard_Real Confusion);
-		%feature("autodoc", "Args:
-	Point(HatchGen_PointOnHatching)
-	Confusion(Standard_Real)
+		%feature("autodoc", "	* Tests if the point is greater than an other. A point on hatching P1 is said to be greater than an other P2 if :  P1.myParam - P2.myParam > Confusion
 
-Returns:
-	Standard_Boolean
-
-Tests if the point is greater than an other.  
-         A point on hatching P1 is said to be greater than an  
-         other P2 if :  
-           P1.myParam - P2.myParam > Confusion") IsGreater;
+	:param Point:
+	:type Point: HatchGen_PointOnHatching &
+	:param Confusion:
+	:type Confusion: float
+	:rtype: bool
+") IsGreater;
 		Standard_Boolean IsGreater (const HatchGen_PointOnHatching & Point,const Standard_Real Confusion);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)=0
+		%feature("autodoc", "	* Dump of the point.
 
-Returns:
-	None
-
-Dump of the point.") Dump;
+	:param Index: default value is 0
+	:type Index: Standard_Integer
+	:rtype: None
+") Dump;
 		void Dump (const Standard_Integer Index = 0);
 };
 

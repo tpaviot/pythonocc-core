@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -82,14 +82,14 @@ enum BRepMesh_Status {
 %nodefaultctor BRepMesh;
 class BRepMesh {
 	public:
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-	d(Standard_Real)
+		%feature("autodoc", "	* call to incremental mesh.
 
-Returns:
-	static void
-
-call to incremental mesh.") Mesh;
+	:param S:
+	:type S: TopoDS_Shape &
+	:param d:
+	:type d: float
+	:rtype: void
+") Mesh;
 		static void Mesh (const TopoDS_Shape & S,const Standard_Real d);
 };
 
@@ -111,108 +111,68 @@ def __del__(self):
 %nodefaultctor BRepMesh_Array1OfBiPoint;
 class BRepMesh_Array1OfBiPoint {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_Array1OfBiPoint;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") BRepMesh_Array1OfBiPoint;
 		 BRepMesh_Array1OfBiPoint (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(BRepMesh_BiPoint)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_Array1OfBiPoint;
+		%feature("autodoc", "	:param Item:
+	:type Item: BRepMesh_BiPoint &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") BRepMesh_Array1OfBiPoint;
 		 BRepMesh_Array1OfBiPoint (const BRepMesh_BiPoint & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(BRepMesh_BiPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: BRepMesh_BiPoint &
+	:rtype: None
+") Init;
 		void Init (const BRepMesh_BiPoint & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(BRepMesh_Array1OfBiPoint)
-
-Returns:
-	BRepMesh_Array1OfBiPoint
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_Array1OfBiPoint &
+	:rtype: BRepMesh_Array1OfBiPoint
+") Assign;
 		const BRepMesh_Array1OfBiPoint & Assign (const BRepMesh_Array1OfBiPoint & Other);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_Array1OfBiPoint)
-
-Returns:
-	BRepMesh_Array1OfBiPoint
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_Array1OfBiPoint &
+	:rtype: BRepMesh_Array1OfBiPoint
+") operator=;
 		const BRepMesh_Array1OfBiPoint & operator = (const BRepMesh_Array1OfBiPoint & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(BRepMesh_BiPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: BRepMesh_BiPoint &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const BRepMesh_BiPoint & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	BRepMesh_BiPoint
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: BRepMesh_BiPoint
+") Value;
 		const BRepMesh_BiPoint & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	BRepMesh_BiPoint
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: BRepMesh_BiPoint
+") ChangeValue;
 		BRepMesh_BiPoint & ChangeValue (const Standard_Integer Index);
 };
 
@@ -234,108 +194,68 @@ def __del__(self):
 %nodefaultctor BRepMesh_Array1OfVertexOfDelaun;
 class BRepMesh_Array1OfVertexOfDelaun {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_Array1OfVertexOfDelaun;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") BRepMesh_Array1OfVertexOfDelaun;
 		 BRepMesh_Array1OfVertexOfDelaun (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(BRepMesh_Vertex)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_Array1OfVertexOfDelaun;
+		%feature("autodoc", "	:param Item:
+	:type Item: BRepMesh_Vertex &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") BRepMesh_Array1OfVertexOfDelaun;
 		 BRepMesh_Array1OfVertexOfDelaun (const BRepMesh_Vertex & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(BRepMesh_Vertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: BRepMesh_Vertex &
+	:rtype: None
+") Init;
 		void Init (const BRepMesh_Vertex & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(BRepMesh_Array1OfVertexOfDelaun)
-
-Returns:
-	BRepMesh_Array1OfVertexOfDelaun
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_Array1OfVertexOfDelaun &
+	:rtype: BRepMesh_Array1OfVertexOfDelaun
+") Assign;
 		const BRepMesh_Array1OfVertexOfDelaun & Assign (const BRepMesh_Array1OfVertexOfDelaun & Other);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_Array1OfVertexOfDelaun)
-
-Returns:
-	BRepMesh_Array1OfVertexOfDelaun
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_Array1OfVertexOfDelaun &
+	:rtype: BRepMesh_Array1OfVertexOfDelaun
+") operator=;
 		const BRepMesh_Array1OfVertexOfDelaun & operator = (const BRepMesh_Array1OfVertexOfDelaun & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(BRepMesh_Vertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: BRepMesh_Vertex &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const BRepMesh_Vertex & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	BRepMesh_Vertex
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: BRepMesh_Vertex
+") Value;
 		const BRepMesh_Vertex & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	BRepMesh_Vertex
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: BRepMesh_Vertex
+") ChangeValue;
 		BRepMesh_Vertex & ChangeValue (const Standard_Integer Index);
 };
 
@@ -357,37 +277,25 @@ def __del__(self):
 %nodefaultctor BRepMesh_BiPoint;
 class BRepMesh_BiPoint {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_BiPoint;
+		%feature("autodoc", "	:rtype: None
+") BRepMesh_BiPoint;
 		 BRepMesh_BiPoint ();
-		%feature("autodoc", "Args:
-	X1(Standard_Real)
-	Y1(Standard_Real)
-	X2(Standard_Real)
-	Y2(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_BiPoint;
+		%feature("autodoc", "	:param X1:
+	:type X1: float
+	:param Y1:
+	:type Y1: float
+	:param X2:
+	:type X2: float
+	:param Y2:
+	:type Y2: float
+	:rtype: None
+") BRepMesh_BiPoint;
 		 BRepMesh_BiPoint (const Standard_Real X1,const Standard_Real Y1,const Standard_Real X2,const Standard_Real Y2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Indices;
+		%feature("autodoc", "	:rtype: Standard_Address
+") Indices;
 		Standard_Address Indices ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Coordinates;
+		%feature("autodoc", "	:rtype: Standard_Address
+") Coordinates;
 		Standard_Address Coordinates ();
 };
 
@@ -409,51 +317,31 @@ def __del__(self):
 %nodefaultctor BRepMesh_Circ;
 class BRepMesh_Circ {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_Circ;
+		%feature("autodoc", "	:rtype: None
+") BRepMesh_Circ;
 		 BRepMesh_Circ ();
-		%feature("autodoc", "Args:
-	loc(gp_XY)
-	rad(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_Circ;
+		%feature("autodoc", "	:param loc:
+	:type loc: gp_XY
+	:param rad:
+	:type rad: float
+	:rtype: None
+") BRepMesh_Circ;
 		 BRepMesh_Circ (const gp_XY & loc,const Standard_Real rad);
-		%feature("autodoc", "Args:
-	loc(gp_XY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetLocation;
+		%feature("autodoc", "	:param loc:
+	:type loc: gp_XY
+	:rtype: None
+") SetLocation;
 		void SetLocation (const gp_XY & loc);
-		%feature("autodoc", "Args:
-	rad(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetRadius;
+		%feature("autodoc", "	:param rad:
+	:type rad: float
+	:rtype: None
+") SetRadius;
 		void SetRadius (const Standard_Real rad);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_XY
-
-No detailed docstring for this function.") Location;
+		%feature("autodoc", "	:rtype: gp_XY
+") Location;
 		const gp_XY & Location ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Radius;
+		%feature("autodoc", "	:rtype: float
+") Radius;
 		const Standard_Real & Radius ();
 };
 
@@ -475,80 +363,60 @@ def __del__(self):
 %nodefaultctor BRepMesh_CircleInspector;
 class BRepMesh_CircleInspector : public NCollection_CellFilter_InspectorXY {
 	public:
-		%feature("autodoc", "Args:
-	theTol(Standard_Real)
-	nbComp(Standard_Integer)
-	theAlloc(BRepMesh_BaseAllocator)
+		%feature("autodoc", "	* Constructor; remembers tolerance and collector data structure. All the found points are put in the map and excluded from further consideration.
 
-Returns:
-	None
-
-Constructor; remembers tolerance and collector data structure.
-All the found points are put in the map and excluded from further
-consideration.") BRepMesh_CircleInspector;
+	:param theTol:
+	:type theTol: float
+	:param nbComp:
+	:type nbComp: Standard_Integer
+	:param theAlloc:
+	:type theAlloc: BRepMesh_BaseAllocator &
+	:rtype: None
+") BRepMesh_CircleInspector;
 		 BRepMesh_CircleInspector (Standard_Real theTol,Standard_Integer nbComp,const BRepMesh_BaseAllocator & theAlloc);
-		%feature("autodoc", "Args:
-	theInd(Standard_Integer)
-	theCircle(BRepMesh_Circ)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param theInd:
+	:type theInd: Standard_Integer
+	:param theCircle:
+	:type theCircle: BRepMesh_Circ &
+	:rtype: None
+") Add;
 		void Add (Standard_Integer theInd,const BRepMesh_Circ & theCircle);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ClerResList;
+		%feature("autodoc", "	:rtype: None
+") ClerResList;
 		void ClerResList ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	CircVector
-
-No detailed docstring for this function.") MapOfCirc;
+		%feature("autodoc", "	:rtype: CircVector
+") MapOfCirc;
 		CircVector & MapOfCirc ();
-		%feature("autodoc", "Args:
-	theInd(Standard_Integer)
-
-Returns:
-	BRepMesh_Circ
-
-No detailed docstring for this function.") GetCirc;
+		%feature("autodoc", "	:param theInd:
+	:type theInd: Standard_Integer
+	:rtype: BRepMesh_Circ
+") GetCirc;
 		BRepMesh_Circ & GetCirc (Standard_Integer theInd);
-		%feature("autodoc", "Args:
-	theCurCircle(gp_XY)
+		%feature("autodoc", "	* Set current node to be checked
 
-Returns:
-	None
-
-Set current node to be checked") SetCurrent;
+	:param theCurCircle:
+	:type theCurCircle: gp_XY
+	:rtype: None
+") SetCurrent;
 		void SetCurrent (const gp_XY & theCurCircle);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_ListOfInteger
+		%feature("autodoc", "	* //!Get result index of node
 
-//!Get result index of node") GetCoincidentInd;
+	:rtype: BRepMesh_ListOfInteger
+") GetCoincidentInd;
 		BRepMesh_ListOfInteger & GetCoincidentInd ();
-		%feature("autodoc", "Args:
-	theTarget(Standard_Integer)
+		%feature("autodoc", "	* Implementation of inspection method
 
-Returns:
-	NCollection_CellFilter_Action
-
-Implementation of inspection method") Inspect;
+	:param theTarget:
+	:type theTarget: Standard_Integer
+	:rtype: NCollection_CellFilter_Action
+") Inspect;
 		NCollection_CellFilter_Action Inspect (const Standard_Integer theTarget);
-		%feature("autodoc", "Args:
-	theIdx(Standard_Integer)
-	theTarget(Standard_Integer)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") IsEqual;
+		%feature("autodoc", "	:param theIdx:
+	:type theIdx: Standard_Integer
+	:param theTarget:
+	:type theTarget: Standard_Integer
+	:rtype: bool
+") IsEqual;
 		static Standard_Boolean IsEqual (Standard_Integer theIdx,const Standard_Integer theTarget);
 };
 
@@ -570,104 +438,94 @@ def __del__(self):
 %nodefaultctor BRepMesh_CircleTool;
 class BRepMesh_CircleTool {
 	public:
-		%feature("autodoc", "Args:
-	theAlloc(BRepMesh_BaseAllocator)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_CircleTool;
+		%feature("autodoc", "	:param theAlloc:
+	:type theAlloc: BRepMesh_BaseAllocator &
+	:rtype: None
+") BRepMesh_CircleTool;
 		 BRepMesh_CircleTool (const BRepMesh_BaseAllocator & theAlloc);
-		%feature("autodoc", "Args:
-	numberOfComponents(Standard_Integer)
-	theAlloc(BRepMesh_BaseAllocator)
+		%feature("autodoc", "	* Constructs a CircleTool with the maximal dimension of the occuped space and an evaluation of the number of circles.
 
-Returns:
-	None
-
-Constructs a CircleTool with the maximal dimension  
-         of  the occuped  space and  an  evaluation of  the  
-         number of circles.") BRepMesh_CircleTool;
+	:param numberOfComponents:
+	:type numberOfComponents: Standard_Integer
+	:param theAlloc:
+	:type theAlloc: BRepMesh_BaseAllocator &
+	:rtype: None
+") BRepMesh_CircleTool;
 		 BRepMesh_CircleTool (const Standard_Integer numberOfComponents,const BRepMesh_BaseAllocator & theAlloc);
-		%feature("autodoc", "Args:
-	numberOfComponents(Standard_Integer)
+		%feature("autodoc", "	* Constructs a CircleTool with the maximal dimension of the occuped space and an evaluation of the number of circles.
 
-Returns:
-	None
-
-Constructs a CircleTool with the maximal dimension  
-         of  the occuped  space and  an  evaluation of  the  
-         number of circles.") Initialize;
+	:param numberOfComponents:
+	:type numberOfComponents: Standard_Integer
+	:rtype: None
+") Initialize;
 		void Initialize (const Standard_Integer numberOfComponents);
-		%feature("autodoc", "Args:
-	theSize(Standard_Real)
+		%feature("autodoc", "	* Sets new size for cellfilter
 
-Returns:
-	None
-
-Sets new size for cellfilter") SetCellSize;
+	:param theSize:
+	:type theSize: float
+	:rtype: None
+") SetCellSize;
 		void SetCellSize (const Standard_Real theSize);
-		%feature("autodoc", "Args:
-	theXSize(Standard_Real)
-	theYSize(Standard_Real)
+		%feature("autodoc", "	* Sets new size for cellfilter
 
-Returns:
-	None
-
-Sets new size for cellfilter") SetCellSize;
+	:param theXSize:
+	:type theXSize: float
+	:param theYSize:
+	:type theYSize: float
+	:rtype: None
+") SetCellSize;
 		void SetCellSize (const Standard_Real theXSize,const Standard_Real theYSize);
-		%feature("autodoc", "Args:
-	theMin(gp_XY)
-	theMax(gp_XY)
+		%feature("autodoc", "	* Sets min and max size for circle
 
-Returns:
-	None
-
-Sets min and max size for circle") SetMinMaxSize;
+	:param theMin:
+	:type theMin: gp_XY
+	:param theMax:
+	:type theMax: gp_XY
+	:rtype: None
+") SetMinMaxSize;
 		void SetMinMaxSize (const gp_XY & theMin,const gp_XY & theMax);
-		%feature("autodoc", "Args:
-	theCirc(gp_Circ2d)
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Adds and binds circle to the tool.
 
-Returns:
-	None
-
-Adds and binds circle to the tool.") Add;
+	:param theCirc:
+	:type theCirc: gp_Circ2d
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: None
+") Add;
 		void Add (const gp_Circ2d & theCirc,const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	p1(gp_XY)
-	p2(gp_XY)
-	p3(gp_XY)
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Computes adds and binds circle to the tool.
 
-Returns:
-	Standard_Boolean
-
-Computes adds and binds circle to the tool.") Add;
+	:param p1:
+	:type p1: gp_XY
+	:param p2:
+	:type p2: gp_XY
+	:param p3:
+	:type p3: gp_XY
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: bool
+") Add;
 		Standard_Boolean Add (const gp_XY & p1,const gp_XY & p2,const gp_XY & p3,const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Adds implicit zero circle
 
-Returns:
-	None
-
-Adds implicit zero circle") MocAdd;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: None
+") MocAdd;
 		void MocAdd (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Deletes a circle from the tool.
 
-Returns:
-	None
-
-Deletes a circle from the tool.") Delete;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: None
+") Delete;
 		void Delete (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	thePnt(gp_XY)
+		%feature("autodoc", "	* Select the circles which contains thePnt.
 
-Returns:
-	BRepMesh_ListOfInteger
-
-Select the circles which contains thePnt.") Select;
+	:param thePnt:
+	:type thePnt: gp_XY
+	:rtype: BRepMesh_ListOfInteger
+") Select;
 		BRepMesh_ListOfInteger & Select (const gp_XY & thePnt);
 };
 
@@ -689,43 +547,37 @@ def __del__(self):
 %nodefaultctor BRepMesh_Classifier;
 class BRepMesh_Classifier {
 	public:
-		%feature("autodoc", "Args:
-	theFace(TopoDS_Face)
-	theTolUV(Standard_Real)
-	theEdges(BRepMesh_DataMapOfShapePairOfPolygon)
-	theMap(TColStd_IndexedMapOfInteger)
-	theStructure(Handle_BRepMesh_DataStructureOfDelaun)
-	theUmin(Standard_Real)
-	theUmax(Standard_Real)
-	theVmin(Standard_Real)
-	theVmax(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_Classifier;
+		%feature("autodoc", "	:param theFace:
+	:type theFace: TopoDS_Face &
+	:param theTolUV:
+	:type theTolUV: float
+	:param theEdges:
+	:type theEdges: BRepMesh_DataMapOfShapePairOfPolygon &
+	:param theMap:
+	:type theMap: TColStd_IndexedMapOfInteger &
+	:param theStructure:
+	:type theStructure: Handle_BRepMesh_DataStructureOfDelaun &
+	:param theUmin:
+	:type theUmin: float
+	:param theUmax:
+	:type theUmax: float
+	:param theVmin:
+	:type theVmin: float
+	:param theVmax:
+	:type theVmax: float
+	:rtype: None
+") BRepMesh_Classifier;
 		 BRepMesh_Classifier (const TopoDS_Face & theFace,const Standard_Real theTolUV,const BRepMesh_DataMapOfShapePairOfPolygon & theEdges,const TColStd_IndexedMapOfInteger & theMap,const Handle_BRepMesh_DataStructureOfDelaun & theStructure,const Standard_Real theUmin,const Standard_Real theUmax,const Standard_Real theVmin,const Standard_Real theVmax);
-		%feature("autodoc", "Args:
-	thePoint(gp_Pnt2d)
-
-Returns:
-	TopAbs_State
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param thePoint:
+	:type thePoint: gp_Pnt2d
+	:rtype: TopAbs_State
+") Perform;
 		TopAbs_State Perform (const gp_Pnt2d & thePoint);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_Status
-
-No detailed docstring for this function.") State;
+		%feature("autodoc", "	:rtype: BRepMesh_Status
+") State;
 		BRepMesh_Status State ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
 };
 
@@ -747,42 +599,41 @@ def __del__(self):
 %nodefaultctor BRepMesh_ComparatorOfIndexedVertexOfDelaun;
 class BRepMesh_ComparatorOfIndexedVertexOfDelaun {
 	public:
-		%feature("autodoc", "Args:
-	theDir(gp_XY)
-	TheTol(Standard_Real)
-	HDS(Handle_BRepMesh_DataStructureOfDelaun)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_ComparatorOfIndexedVertexOfDelaun;
+		%feature("autodoc", "	:param theDir:
+	:type theDir: gp_XY
+	:param TheTol:
+	:type TheTol: float
+	:param HDS:
+	:type HDS: Handle_BRepMesh_DataStructureOfDelaun &
+	:rtype: None
+") BRepMesh_ComparatorOfIndexedVertexOfDelaun;
 		 BRepMesh_ComparatorOfIndexedVertexOfDelaun (const gp_XY & theDir,const Standard_Real TheTol,const Handle_BRepMesh_DataStructureOfDelaun & HDS);
-		%feature("autodoc", "Args:
-	Left(Standard_Integer)
-	Right(Standard_Integer)
+		%feature("autodoc", "	* returns True if <Left> is lower than <Right>
 
-Returns:
-	Standard_Boolean
-
-returns True if <Left> is lower than <Right>") IsLower;
+	:param Left:
+	:type Left: Standard_Integer
+	:param Right:
+	:type Right: Standard_Integer
+	:rtype: bool
+") IsLower;
 		Standard_Boolean IsLower (const Standard_Integer Left,const Standard_Integer Right);
-		%feature("autodoc", "Args:
-	Left(Standard_Integer)
-	Right(Standard_Integer)
+		%feature("autodoc", "	* returns True if <Left> is greater than <Right>
 
-Returns:
-	Standard_Boolean
-
-returns True if <Left> is greater than <Right>") IsGreater;
+	:param Left:
+	:type Left: Standard_Integer
+	:param Right:
+	:type Right: Standard_Integer
+	:rtype: bool
+") IsGreater;
 		Standard_Boolean IsGreater (const Standard_Integer Left,const Standard_Integer Right);
-		%feature("autodoc", "Args:
-	Left(Standard_Integer)
-	Right(Standard_Integer)
+		%feature("autodoc", "	* returns True when <Right> and <Left> are equal.
 
-Returns:
-	Standard_Boolean
-
-returns True when <Right> and <Left> are equal.") IsEqual;
+	:param Left:
+	:type Left: Standard_Integer
+	:param Right:
+	:type Right: Standard_Integer
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const Standard_Integer Left,const Standard_Integer Right);
 };
 
@@ -804,40 +655,37 @@ def __del__(self):
 %nodefaultctor BRepMesh_ComparatorOfVertexOfDelaun;
 class BRepMesh_ComparatorOfVertexOfDelaun {
 	public:
-		%feature("autodoc", "Args:
-	theDir(gp_XY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_ComparatorOfVertexOfDelaun;
+		%feature("autodoc", "	:param theDir:
+	:type theDir: gp_XY
+	:rtype: None
+") BRepMesh_ComparatorOfVertexOfDelaun;
 		 BRepMesh_ComparatorOfVertexOfDelaun (const gp_XY & theDir);
-		%feature("autodoc", "Args:
-	Left(BRepMesh_Vertex)
-	Right(BRepMesh_Vertex)
+		%feature("autodoc", "	* returns True if <Left> is lower than <Right>
 
-Returns:
-	Standard_Boolean
-
-returns True if <Left> is lower than <Right>") IsLower;
+	:param Left:
+	:type Left: BRepMesh_Vertex &
+	:param Right:
+	:type Right: BRepMesh_Vertex &
+	:rtype: bool
+") IsLower;
 		Standard_Boolean IsLower (const BRepMesh_Vertex & Left,const BRepMesh_Vertex & Right);
-		%feature("autodoc", "Args:
-	Left(BRepMesh_Vertex)
-	Right(BRepMesh_Vertex)
+		%feature("autodoc", "	* returns True if <Left> is greater than <Right>
 
-Returns:
-	Standard_Boolean
-
-returns True if <Left> is greater than <Right>") IsGreater;
+	:param Left:
+	:type Left: BRepMesh_Vertex &
+	:param Right:
+	:type Right: BRepMesh_Vertex &
+	:rtype: bool
+") IsGreater;
 		Standard_Boolean IsGreater (const BRepMesh_Vertex & Left,const BRepMesh_Vertex & Right);
-		%feature("autodoc", "Args:
-	Left(BRepMesh_Vertex)
-	Right(BRepMesh_Vertex)
+		%feature("autodoc", "	* returns True when <Right> and <Left> are equal.
 
-Returns:
-	Standard_Boolean
-
-returns True when <Right> and <Left> are equal.") IsEqual;
+	:param Left:
+	:type Left: BRepMesh_Vertex &
+	:param Right:
+	:type Right: BRepMesh_Vertex &
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const BRepMesh_Vertex & Left,const BRepMesh_Vertex & Right);
 };
 
@@ -859,42 +707,24 @@ def __del__(self):
 %nodefaultctor BRepMesh_DataMapIteratorOfDataMapOfFaceAttribute;
 class BRepMesh_DataMapIteratorOfDataMapOfFaceAttribute : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapIteratorOfDataMapOfFaceAttribute;
+		%feature("autodoc", "	:rtype: None
+") BRepMesh_DataMapIteratorOfDataMapOfFaceAttribute;
 		 BRepMesh_DataMapIteratorOfDataMapOfFaceAttribute ();
-		%feature("autodoc", "Args:
-	aMap(BRepMesh_DataMapOfFaceAttribute)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapIteratorOfDataMapOfFaceAttribute;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: BRepMesh_DataMapOfFaceAttribute &
+	:rtype: None
+") BRepMesh_DataMapIteratorOfDataMapOfFaceAttribute;
 		 BRepMesh_DataMapIteratorOfDataMapOfFaceAttribute (const BRepMesh_DataMapOfFaceAttribute & aMap);
-		%feature("autodoc", "Args:
-	aMap(BRepMesh_DataMapOfFaceAttribute)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: BRepMesh_DataMapOfFaceAttribute &
+	:rtype: None
+") Initialize;
 		void Initialize (const BRepMesh_DataMapOfFaceAttribute & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Face
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Face
+") Key;
 		const TopoDS_Face & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_BRepMesh_FaceAttribute
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_BRepMesh_FaceAttribute
+") Value;
 		const Handle_BRepMesh_FaceAttribute & Value ();
 };
 
@@ -916,42 +746,24 @@ def __del__(self):
 %nodefaultctor BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfInteger;
 class BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfInteger : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfInteger;
+		%feature("autodoc", "	:rtype: None
+") BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfInteger;
 		 BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfInteger ();
-		%feature("autodoc", "Args:
-	aMap(BRepMesh_DataMapOfIntegerListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfInteger;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: BRepMesh_DataMapOfIntegerListOfInteger &
+	:rtype: None
+") BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfInteger;
 		 BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfInteger (const BRepMesh_DataMapOfIntegerListOfInteger & aMap);
-		%feature("autodoc", "Args:
-	aMap(BRepMesh_DataMapOfIntegerListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: BRepMesh_DataMapOfIntegerListOfInteger &
+	:rtype: None
+") Initialize;
 		void Initialize (const BRepMesh_DataMapOfIntegerListOfInteger & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: int
+") Key;
 		const Standard_Integer & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_ListOfInteger
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: BRepMesh_ListOfInteger
+") Value;
 		const BRepMesh_ListOfInteger & Value ();
 };
 
@@ -973,42 +785,24 @@ def __del__(self):
 %nodefaultctor BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfXY;
 class BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfXY : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfXY;
+		%feature("autodoc", "	:rtype: None
+") BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfXY;
 		 BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfXY ();
-		%feature("autodoc", "Args:
-	aMap(BRepMesh_DataMapOfIntegerListOfXY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfXY;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: BRepMesh_DataMapOfIntegerListOfXY &
+	:rtype: None
+") BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfXY;
 		 BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfXY (const BRepMesh_DataMapOfIntegerListOfXY & aMap);
-		%feature("autodoc", "Args:
-	aMap(BRepMesh_DataMapOfIntegerListOfXY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: BRepMesh_DataMapOfIntegerListOfXY &
+	:rtype: None
+") Initialize;
 		void Initialize (const BRepMesh_DataMapOfIntegerListOfXY & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: int
+") Key;
 		const Standard_Integer & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_ListOfXY
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: BRepMesh_ListOfXY
+") Value;
 		const BRepMesh_ListOfXY & Value ();
 };
 
@@ -1030,42 +824,24 @@ def __del__(self):
 %nodefaultctor BRepMesh_DataMapIteratorOfDataMapOfIntegerPnt;
 class BRepMesh_DataMapIteratorOfDataMapOfIntegerPnt : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapIteratorOfDataMapOfIntegerPnt;
+		%feature("autodoc", "	:rtype: None
+") BRepMesh_DataMapIteratorOfDataMapOfIntegerPnt;
 		 BRepMesh_DataMapIteratorOfDataMapOfIntegerPnt ();
-		%feature("autodoc", "Args:
-	aMap(BRepMesh_DataMapOfIntegerPnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapIteratorOfDataMapOfIntegerPnt;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: BRepMesh_DataMapOfIntegerPnt &
+	:rtype: None
+") BRepMesh_DataMapIteratorOfDataMapOfIntegerPnt;
 		 BRepMesh_DataMapIteratorOfDataMapOfIntegerPnt (const BRepMesh_DataMapOfIntegerPnt & aMap);
-		%feature("autodoc", "Args:
-	aMap(BRepMesh_DataMapOfIntegerPnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: BRepMesh_DataMapOfIntegerPnt &
+	:rtype: None
+") Initialize;
 		void Initialize (const BRepMesh_DataMapOfIntegerPnt & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: int
+") Key;
 		const Standard_Integer & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: gp_Pnt
+") Value;
 		const gp_Pnt & Value ();
 };
 
@@ -1087,42 +863,24 @@ def __del__(self):
 %nodefaultctor BRepMesh_DataMapIteratorOfDataMapOfShapePairOfPolygon;
 class BRepMesh_DataMapIteratorOfDataMapOfShapePairOfPolygon : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapIteratorOfDataMapOfShapePairOfPolygon;
+		%feature("autodoc", "	:rtype: None
+") BRepMesh_DataMapIteratorOfDataMapOfShapePairOfPolygon;
 		 BRepMesh_DataMapIteratorOfDataMapOfShapePairOfPolygon ();
-		%feature("autodoc", "Args:
-	aMap(BRepMesh_DataMapOfShapePairOfPolygon)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapIteratorOfDataMapOfShapePairOfPolygon;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: BRepMesh_DataMapOfShapePairOfPolygon &
+	:rtype: None
+") BRepMesh_DataMapIteratorOfDataMapOfShapePairOfPolygon;
 		 BRepMesh_DataMapIteratorOfDataMapOfShapePairOfPolygon (const BRepMesh_DataMapOfShapePairOfPolygon & aMap);
-		%feature("autodoc", "Args:
-	aMap(BRepMesh_DataMapOfShapePairOfPolygon)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: BRepMesh_DataMapOfShapePairOfPolygon &
+	:rtype: None
+") Initialize;
 		void Initialize (const BRepMesh_DataMapOfShapePairOfPolygon & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		const TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_PairOfPolygon
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: BRepMesh_PairOfPolygon
+") Value;
 		const BRepMesh_PairOfPolygon & Value ();
 };
 
@@ -1144,42 +902,24 @@ def __del__(self):
 %nodefaultctor BRepMesh_DataMapIteratorOfDataMapOfShapeReal;
 class BRepMesh_DataMapIteratorOfDataMapOfShapeReal : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapIteratorOfDataMapOfShapeReal;
+		%feature("autodoc", "	:rtype: None
+") BRepMesh_DataMapIteratorOfDataMapOfShapeReal;
 		 BRepMesh_DataMapIteratorOfDataMapOfShapeReal ();
-		%feature("autodoc", "Args:
-	aMap(BRepMesh_DataMapOfShapeReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapIteratorOfDataMapOfShapeReal;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: BRepMesh_DataMapOfShapeReal &
+	:rtype: None
+") BRepMesh_DataMapIteratorOfDataMapOfShapeReal;
 		 BRepMesh_DataMapIteratorOfDataMapOfShapeReal (const BRepMesh_DataMapOfShapeReal & aMap);
-		%feature("autodoc", "Args:
-	aMap(BRepMesh_DataMapOfShapeReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: BRepMesh_DataMapOfShapeReal &
+	:rtype: None
+") Initialize;
 		void Initialize (const BRepMesh_DataMapOfShapeReal & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		const TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: float
+") Value;
 		const Standard_Real & Value ();
 };
 
@@ -1201,42 +941,24 @@ def __del__(self):
 %nodefaultctor BRepMesh_DataMapIteratorOfDataMapOfVertexInteger;
 class BRepMesh_DataMapIteratorOfDataMapOfVertexInteger : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapIteratorOfDataMapOfVertexInteger;
+		%feature("autodoc", "	:rtype: None
+") BRepMesh_DataMapIteratorOfDataMapOfVertexInteger;
 		 BRepMesh_DataMapIteratorOfDataMapOfVertexInteger ();
-		%feature("autodoc", "Args:
-	aMap(BRepMesh_DataMapOfVertexInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapIteratorOfDataMapOfVertexInteger;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: BRepMesh_DataMapOfVertexInteger &
+	:rtype: None
+") BRepMesh_DataMapIteratorOfDataMapOfVertexInteger;
 		 BRepMesh_DataMapIteratorOfDataMapOfVertexInteger (const BRepMesh_DataMapOfVertexInteger & aMap);
-		%feature("autodoc", "Args:
-	aMap(BRepMesh_DataMapOfVertexInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: BRepMesh_DataMapOfVertexInteger &
+	:rtype: None
+") Initialize;
 		void Initialize (const BRepMesh_DataMapOfVertexInteger & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Vertex
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Vertex
+") Key;
 		const TopoDS_Vertex & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: int
+") Value;
 		const Standard_Integer & Value ();
 };
 
@@ -1258,29 +980,20 @@ def __del__(self):
 %nodefaultctor BRepMesh_DataMapNodeOfDataMapOfFaceAttribute;
 class BRepMesh_DataMapNodeOfDataMapOfFaceAttribute : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(TopoDS_Face)
-	I(Handle_BRepMesh_FaceAttribute)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapNodeOfDataMapOfFaceAttribute;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Face &
+	:param I:
+	:type I: Handle_BRepMesh_FaceAttribute &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") BRepMesh_DataMapNodeOfDataMapOfFaceAttribute;
 		 BRepMesh_DataMapNodeOfDataMapOfFaceAttribute (const TopoDS_Face & K,const Handle_BRepMesh_FaceAttribute & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Face
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Face
+") Key;
 		TopoDS_Face & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_BRepMesh_FaceAttribute
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_BRepMesh_FaceAttribute
+") Value;
 		Handle_BRepMesh_FaceAttribute & Value ();
 };
 
@@ -1341,15 +1054,14 @@ def __del__(self):
 %nodefaultctor BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger;
 class BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(BRepMesh_ListOfInteger)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: BRepMesh_ListOfInteger &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger;
 		 BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger (Standard_Integer &OutValue,const BRepMesh_ListOfInteger & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
@@ -1364,12 +1076,8 @@ No detailed docstring for this function.") BRepMesh_DataMapNodeOfDataMapOfIntege
                 $self->Key()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_ListOfInteger
-
-No detailed docstring for this function.") Value;
+            		%feature("autodoc", "	:rtype: BRepMesh_ListOfInteger
+") Value;
 		BRepMesh_ListOfInteger & Value ();
 };
 
@@ -1430,15 +1138,14 @@ def __del__(self):
 %nodefaultctor BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY;
 class BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(BRepMesh_ListOfXY)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: BRepMesh_ListOfXY &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY;
 		 BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY (Standard_Integer &OutValue,const BRepMesh_ListOfXY & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
@@ -1453,12 +1160,8 @@ No detailed docstring for this function.") BRepMesh_DataMapNodeOfDataMapOfIntege
                 $self->Key()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_ListOfXY
-
-No detailed docstring for this function.") Value;
+            		%feature("autodoc", "	:rtype: BRepMesh_ListOfXY
+") Value;
 		BRepMesh_ListOfXY & Value ();
 };
 
@@ -1519,15 +1222,14 @@ def __del__(self):
 %nodefaultctor BRepMesh_DataMapNodeOfDataMapOfIntegerPnt;
 class BRepMesh_DataMapNodeOfDataMapOfIntegerPnt : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(gp_Pnt)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapNodeOfDataMapOfIntegerPnt;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: gp_Pnt
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") BRepMesh_DataMapNodeOfDataMapOfIntegerPnt;
 		 BRepMesh_DataMapNodeOfDataMapOfIntegerPnt (Standard_Integer &OutValue,const gp_Pnt & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
@@ -1542,12 +1244,8 @@ No detailed docstring for this function.") BRepMesh_DataMapNodeOfDataMapOfIntege
                 $self->Key()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
-
-No detailed docstring for this function.") Value;
+            		%feature("autodoc", "	:rtype: gp_Pnt
+") Value;
 		gp_Pnt & Value ();
 };
 
@@ -1608,29 +1306,20 @@ def __del__(self):
 %nodefaultctor BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon;
 class BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(BRepMesh_PairOfPolygon)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: BRepMesh_PairOfPolygon &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon;
 		 BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon (const TopoDS_Shape & K,const BRepMesh_PairOfPolygon & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_PairOfPolygon
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: BRepMesh_PairOfPolygon
+") Value;
 		BRepMesh_PairOfPolygon & Value ();
 };
 
@@ -1691,22 +1380,17 @@ def __del__(self):
 %nodefaultctor BRepMesh_DataMapNodeOfDataMapOfShapeReal;
 class BRepMesh_DataMapNodeOfDataMapOfShapeReal : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(Standard_Real)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapNodeOfDataMapOfShapeReal;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: float &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") BRepMesh_DataMapNodeOfDataMapOfShapeReal;
 		 BRepMesh_DataMapNodeOfDataMapOfShapeReal (const TopoDS_Shape & K,const Standard_Real & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		TopoDS_Shape & Key ();
 
             %feature("autodoc","1");
@@ -1780,22 +1464,17 @@ def __del__(self):
 %nodefaultctor BRepMesh_DataMapNodeOfDataMapOfVertexInteger;
 class BRepMesh_DataMapNodeOfDataMapOfVertexInteger : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(TopoDS_Vertex)
-	I(Standard_Integer)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapNodeOfDataMapOfVertexInteger;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Vertex &
+	:param I:
+	:type I: Standard_Integer &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") BRepMesh_DataMapNodeOfDataMapOfVertexInteger;
 		 BRepMesh_DataMapNodeOfDataMapOfVertexInteger (const TopoDS_Vertex & K,Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Vertex
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Vertex
+") Key;
 		TopoDS_Vertex & Key ();
 
             %feature("autodoc","1");
@@ -1869,101 +1548,65 @@ def __del__(self):
 %nodefaultctor BRepMesh_DataMapOfFaceAttribute;
 class BRepMesh_DataMapOfFaceAttribute : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapOfFaceAttribute;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") BRepMesh_DataMapOfFaceAttribute;
 		 BRepMesh_DataMapOfFaceAttribute (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_DataMapOfFaceAttribute)
-
-Returns:
-	BRepMesh_DataMapOfFaceAttribute
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_DataMapOfFaceAttribute &
+	:rtype: BRepMesh_DataMapOfFaceAttribute
+") Assign;
 		BRepMesh_DataMapOfFaceAttribute & Assign (const BRepMesh_DataMapOfFaceAttribute & Other);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_DataMapOfFaceAttribute)
-
-Returns:
-	BRepMesh_DataMapOfFaceAttribute
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_DataMapOfFaceAttribute &
+	:rtype: BRepMesh_DataMapOfFaceAttribute
+") operator=;
 		BRepMesh_DataMapOfFaceAttribute & operator = (const BRepMesh_DataMapOfFaceAttribute & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Face)
-	I(Handle_BRepMesh_FaceAttribute)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Face &
+	:param I:
+	:type I: Handle_BRepMesh_FaceAttribute &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const TopoDS_Face & K,const Handle_BRepMesh_FaceAttribute & I);
-		%feature("autodoc", "Args:
-	K(TopoDS_Face)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Face &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const TopoDS_Face & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Face)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Face &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const TopoDS_Face & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Face)
-
-Returns:
-	Handle_BRepMesh_FaceAttribute
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Face &
+	:rtype: Handle_BRepMesh_FaceAttribute
+") Find;
 		const Handle_BRepMesh_FaceAttribute & Find (const TopoDS_Face & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Face)
-
-Returns:
-	Handle_BRepMesh_FaceAttribute
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Face &
+	:rtype: Handle_BRepMesh_FaceAttribute
+") ChangeFind;
 		Handle_BRepMesh_FaceAttribute & ChangeFind (const TopoDS_Face & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Face)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Face &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const TopoDS_Face & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Face)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Face &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const TopoDS_Face & K);
 };
 
@@ -1985,101 +1628,65 @@ def __del__(self):
 %nodefaultctor BRepMesh_DataMapOfIntegerListOfInteger;
 class BRepMesh_DataMapOfIntegerListOfInteger : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapOfIntegerListOfInteger;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") BRepMesh_DataMapOfIntegerListOfInteger;
 		 BRepMesh_DataMapOfIntegerListOfInteger (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_DataMapOfIntegerListOfInteger)
-
-Returns:
-	BRepMesh_DataMapOfIntegerListOfInteger
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_DataMapOfIntegerListOfInteger &
+	:rtype: BRepMesh_DataMapOfIntegerListOfInteger
+") Assign;
 		BRepMesh_DataMapOfIntegerListOfInteger & Assign (const BRepMesh_DataMapOfIntegerListOfInteger & Other);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_DataMapOfIntegerListOfInteger)
-
-Returns:
-	BRepMesh_DataMapOfIntegerListOfInteger
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_DataMapOfIntegerListOfInteger &
+	:rtype: BRepMesh_DataMapOfIntegerListOfInteger
+") operator=;
 		BRepMesh_DataMapOfIntegerListOfInteger & operator = (const BRepMesh_DataMapOfIntegerListOfInteger & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(BRepMesh_ListOfInteger)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: BRepMesh_ListOfInteger &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (Standard_Integer &OutValue,const BRepMesh_ListOfInteger & I);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	BRepMesh_ListOfInteger
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: BRepMesh_ListOfInteger
+") Find;
 		const BRepMesh_ListOfInteger & Find (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	BRepMesh_ListOfInteger
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: BRepMesh_ListOfInteger
+") ChangeFind;
 		BRepMesh_ListOfInteger & ChangeFind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
 };
 
@@ -2101,101 +1708,65 @@ def __del__(self):
 %nodefaultctor BRepMesh_DataMapOfIntegerListOfXY;
 class BRepMesh_DataMapOfIntegerListOfXY : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapOfIntegerListOfXY;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") BRepMesh_DataMapOfIntegerListOfXY;
 		 BRepMesh_DataMapOfIntegerListOfXY (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_DataMapOfIntegerListOfXY)
-
-Returns:
-	BRepMesh_DataMapOfIntegerListOfXY
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_DataMapOfIntegerListOfXY &
+	:rtype: BRepMesh_DataMapOfIntegerListOfXY
+") Assign;
 		BRepMesh_DataMapOfIntegerListOfXY & Assign (const BRepMesh_DataMapOfIntegerListOfXY & Other);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_DataMapOfIntegerListOfXY)
-
-Returns:
-	BRepMesh_DataMapOfIntegerListOfXY
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_DataMapOfIntegerListOfXY &
+	:rtype: BRepMesh_DataMapOfIntegerListOfXY
+") operator=;
 		BRepMesh_DataMapOfIntegerListOfXY & operator = (const BRepMesh_DataMapOfIntegerListOfXY & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(BRepMesh_ListOfXY)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: BRepMesh_ListOfXY &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (Standard_Integer &OutValue,const BRepMesh_ListOfXY & I);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	BRepMesh_ListOfXY
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: BRepMesh_ListOfXY
+") Find;
 		const BRepMesh_ListOfXY & Find (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	BRepMesh_ListOfXY
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: BRepMesh_ListOfXY
+") ChangeFind;
 		BRepMesh_ListOfXY & ChangeFind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
 };
 
@@ -2217,101 +1788,65 @@ def __del__(self):
 %nodefaultctor BRepMesh_DataMapOfIntegerPnt;
 class BRepMesh_DataMapOfIntegerPnt : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapOfIntegerPnt;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") BRepMesh_DataMapOfIntegerPnt;
 		 BRepMesh_DataMapOfIntegerPnt (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_DataMapOfIntegerPnt)
-
-Returns:
-	BRepMesh_DataMapOfIntegerPnt
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_DataMapOfIntegerPnt &
+	:rtype: BRepMesh_DataMapOfIntegerPnt
+") Assign;
 		BRepMesh_DataMapOfIntegerPnt & Assign (const BRepMesh_DataMapOfIntegerPnt & Other);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_DataMapOfIntegerPnt)
-
-Returns:
-	BRepMesh_DataMapOfIntegerPnt
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_DataMapOfIntegerPnt &
+	:rtype: BRepMesh_DataMapOfIntegerPnt
+") operator=;
 		BRepMesh_DataMapOfIntegerPnt & operator = (const BRepMesh_DataMapOfIntegerPnt & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-	I(gp_Pnt)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:param I:
+	:type I: gp_Pnt
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (Standard_Integer &OutValue,const gp_Pnt & I);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	gp_Pnt
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: gp_Pnt
+") Find;
 		const gp_Pnt & Find (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	gp_Pnt
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: gp_Pnt
+") ChangeFind;
 		gp_Pnt & ChangeFind (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(Standard_Integer)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
 };
 
@@ -2333,101 +1868,65 @@ def __del__(self):
 %nodefaultctor BRepMesh_DataMapOfShapePairOfPolygon;
 class BRepMesh_DataMapOfShapePairOfPolygon : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapOfShapePairOfPolygon;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") BRepMesh_DataMapOfShapePairOfPolygon;
 		 BRepMesh_DataMapOfShapePairOfPolygon (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_DataMapOfShapePairOfPolygon)
-
-Returns:
-	BRepMesh_DataMapOfShapePairOfPolygon
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_DataMapOfShapePairOfPolygon &
+	:rtype: BRepMesh_DataMapOfShapePairOfPolygon
+") Assign;
 		BRepMesh_DataMapOfShapePairOfPolygon & Assign (const BRepMesh_DataMapOfShapePairOfPolygon & Other);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_DataMapOfShapePairOfPolygon)
-
-Returns:
-	BRepMesh_DataMapOfShapePairOfPolygon
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_DataMapOfShapePairOfPolygon &
+	:rtype: BRepMesh_DataMapOfShapePairOfPolygon
+") operator=;
 		BRepMesh_DataMapOfShapePairOfPolygon & operator = (const BRepMesh_DataMapOfShapePairOfPolygon & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(BRepMesh_PairOfPolygon)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: BRepMesh_PairOfPolygon &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const TopoDS_Shape & K,const BRepMesh_PairOfPolygon & I);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	BRepMesh_PairOfPolygon
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: BRepMesh_PairOfPolygon
+") Find;
 		const BRepMesh_PairOfPolygon & Find (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	BRepMesh_PairOfPolygon
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: BRepMesh_PairOfPolygon
+") ChangeFind;
 		BRepMesh_PairOfPolygon & ChangeFind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const TopoDS_Shape & K);
 };
 
@@ -2449,101 +1948,65 @@ def __del__(self):
 %nodefaultctor BRepMesh_DataMapOfShapeReal;
 class BRepMesh_DataMapOfShapeReal : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapOfShapeReal;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") BRepMesh_DataMapOfShapeReal;
 		 BRepMesh_DataMapOfShapeReal (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_DataMapOfShapeReal)
-
-Returns:
-	BRepMesh_DataMapOfShapeReal
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_DataMapOfShapeReal &
+	:rtype: BRepMesh_DataMapOfShapeReal
+") Assign;
 		BRepMesh_DataMapOfShapeReal & Assign (const BRepMesh_DataMapOfShapeReal & Other);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_DataMapOfShapeReal)
-
-Returns:
-	BRepMesh_DataMapOfShapeReal
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_DataMapOfShapeReal &
+	:rtype: BRepMesh_DataMapOfShapeReal
+") operator=;
 		BRepMesh_DataMapOfShapeReal & operator = (const BRepMesh_DataMapOfShapeReal & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: float &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const TopoDS_Shape & K,const Standard_Real & I);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: float
+") Find;
 		const Standard_Real & Find (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: float
+") ChangeFind;
 		Standard_Real & ChangeFind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const TopoDS_Shape & K);
 };
 
@@ -2565,101 +2028,65 @@ def __del__(self):
 %nodefaultctor BRepMesh_DataMapOfVertexInteger;
 class BRepMesh_DataMapOfVertexInteger : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_DataMapOfVertexInteger;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") BRepMesh_DataMapOfVertexInteger;
 		 BRepMesh_DataMapOfVertexInteger (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_DataMapOfVertexInteger)
-
-Returns:
-	BRepMesh_DataMapOfVertexInteger
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_DataMapOfVertexInteger &
+	:rtype: BRepMesh_DataMapOfVertexInteger
+") Assign;
 		BRepMesh_DataMapOfVertexInteger & Assign (const BRepMesh_DataMapOfVertexInteger & Other);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_DataMapOfVertexInteger)
-
-Returns:
-	BRepMesh_DataMapOfVertexInteger
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_DataMapOfVertexInteger &
+	:rtype: BRepMesh_DataMapOfVertexInteger
+") operator=;
 		BRepMesh_DataMapOfVertexInteger & operator = (const BRepMesh_DataMapOfVertexInteger & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Vertex)
-	I(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Vertex &
+	:param I:
+	:type I: Standard_Integer &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const TopoDS_Vertex & K,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	K(TopoDS_Vertex)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Vertex &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const TopoDS_Vertex & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Vertex)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Vertex &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const TopoDS_Vertex & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Vertex)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Vertex &
+	:rtype: int
+") Find;
 		const Standard_Integer & Find (const TopoDS_Vertex & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Vertex)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Vertex &
+	:rtype: int
+") ChangeFind;
 		Standard_Integer & ChangeFind (const TopoDS_Vertex & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Vertex)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Vertex &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const TopoDS_Vertex & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Vertex)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Vertex &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const TopoDS_Vertex & K);
 };
 
@@ -2681,258 +2108,202 @@ def __del__(self):
 %nodefaultctor BRepMesh_DataStructureOfDelaun;
 class BRepMesh_DataStructureOfDelaun : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	theAllocator(BRepMesh_BaseAllocator)
-	NodeNumber(Standard_Integer)=100
+		%feature("autodoc", "	* <NodeNumber> is just an evaluation of the presumed number of nodes in this mesh. The Mesh data structure will be automatically redimensioned if necessary.
 
-Returns:
-	None
-
-<NodeNumber>   is just  an   evaluation of the  
-         presumed  number of nodes  in this mesh.   The  
-         Mesh   data  structure will   be automatically  
-         redimensioned if necessary.") BRepMesh_DataStructureOfDelaun;
+	:param theAllocator:
+	:type theAllocator: BRepMesh_BaseAllocator &
+	:param NodeNumber: default value is 100
+	:type NodeNumber: Standard_Integer
+	:rtype: None
+") BRepMesh_DataStructureOfDelaun;
 		 BRepMesh_DataStructureOfDelaun (const BRepMesh_BaseAllocator & theAllocator,const Standard_Integer NodeNumber = 100);
-		%feature("autodoc", "Args:
-	theNode(BRepMesh_Vertex)
+		%feature("autodoc", "	* Adds a node to the mesh if the node is not already in the Mesh. Returns the index of the node in the structure.
 
-Returns:
-	Standard_Integer
-
-Adds a node to the  mesh  if  the node is  not  
-         already in the Mesh.  Returns the index of the  
-         node in the structure.") AddNode;
+	:param theNode:
+	:type theNode: BRepMesh_Vertex &
+	:rtype: int
+") AddNode;
 		Standard_Integer AddNode (const BRepMesh_Vertex & theNode);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Get the value of node <Index>.
 
-Returns:
-	BRepMesh_Vertex
-
-Get the value of node <Index>.") GetNode;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: BRepMesh_Vertex
+") GetNode;
 		const BRepMesh_Vertex & GetNode (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Get the list of node <Index>.
 
-Returns:
-	BRepMesh_ListOfInteger
-
-Get the list of node <Index>.") GetNodeList;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: BRepMesh_ListOfInteger
+") GetNodeList;
 		const BRepMesh_ListOfInteger & GetNodeList (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Removes the node of index <index> from the mesh.
 
-Returns:
-	None
-
-Removes the node of index <index> from the mesh.") ForceRemoveNode;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") ForceRemoveNode;
 		void ForceRemoveNode (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Removes the link of index <index> from the mesh.
 
-Returns:
-	None
-
-Removes the link of index <index> from the mesh.") ForceRemoveLink;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") ForceRemoveLink;
 		void ForceRemoveLink (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	NewNodes(BRepMesh_VertexTool)
+		%feature("autodoc", "	* Removes the all nodes and sets new map of nodes from the mesh. For internal use only.
 
-Returns:
-	None
-
-Removes the all nodes and sets new map of  
-nodes from the mesh.  
-For internal use only.") ReplaceNodes;
+	:param NewNodes:
+	:type NewNodes: BRepMesh_VertexTool &
+	:rtype: None
+") ReplaceNodes;
 		void ReplaceNodes (const BRepMesh_VertexTool & NewNodes);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Removes the node of index <index> from the mesh.
 
-Returns:
-	None
-
-Removes the node of index <index> from the mesh.") RemoveNode;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") RemoveNode;
 		void RemoveNode (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	newNode(BRepMesh_Vertex)
+		%feature("autodoc", "	* Changes the UV value of node of index <Index> by <newNode>. Returns false if <newnode> is already in the structure.
 
-Returns:
-	Standard_Boolean
-
-Changes the UV  value of node of index <Index>  by  
-         <newNode>. Returns false if <newnode> is already in  
-         the structure.") MoveNode;
+	:param Index:
+	:type Index: Standard_Integer
+	:param newNode:
+	:type newNode: BRepMesh_Vertex &
+	:rtype: bool
+") MoveNode;
 		Standard_Boolean MoveNode (const Standard_Integer Index,const BRepMesh_Vertex & newNode);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Gives the number of nodes in this mesh.
 
-Gives the number of nodes in this mesh.") NbNodes;
+	:rtype: int
+") NbNodes;
 		Standard_Integer NbNodes ();
-		%feature("autodoc", "Args:
-	theLink(BRepMesh_Edge)
+		%feature("autodoc", "	* Adds a Link to the mesh if the Link is not already in the structure. Returns the index of the link in the structure.
 
-Returns:
-	Standard_Integer
-
-Adds a Link  to the  mesh if  the Link is  not  
-         already in the structure. Returns the index of  
-         the link in the structure.") AddLink;
+	:param theLink:
+	:type theLink: BRepMesh_Edge &
+	:rtype: int
+") AddLink;
 		Standard_Integer AddLink (const BRepMesh_Edge & theLink);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Get the value of Link <Index>.
 
-Returns:
-	BRepMesh_Edge
-
-Get the value of Link <Index>.") GetLink;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: BRepMesh_Edge
+") GetLink;
 		const BRepMesh_Edge & GetLink (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Removes the Link of index <Index> from the mesh.
 
-Returns:
-	None
-
-Removes the Link of  index  <Index> from the  
-         mesh.") RemoveLink;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") RemoveLink;
 		void RemoveLink (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	newLink(BRepMesh_Edge)
+		%feature("autodoc", "	* Substitutes the Link of index <Index> by <newLink> clear the connectivity.
 
-Returns:
-	Standard_Boolean
-
-Substitutes  the  Link  of  index  <Index>  by  
-         <newLink> clear the connectivity.") SubstituteLink;
+	:param Index:
+	:type Index: Standard_Integer
+	:param newLink:
+	:type newLink: BRepMesh_Edge &
+	:rtype: bool
+") SubstituteLink;
 		Standard_Boolean SubstituteLink (const Standard_Integer Index,const BRepMesh_Edge & newLink);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Gives the number of elements in this mesh.
 
-Gives the number of elements in this mesh.") NbLinks;
+	:rtype: int
+") NbLinks;
 		Standard_Integer NbLinks ();
-		%feature("autodoc", "Args:
-	theElement(BRepMesh_Triangle)
+		%feature("autodoc", "	* Adds an element to the mesh if it is not already in the Mesh. Returns the index of the element in the structure.
 
-Returns:
-	Standard_Integer
-
-Adds an element  to  the mesh  if it    is not  
-         already in the  Mesh. Returns the index of the  
-         element in the structure.") AddElement;
+	:param theElement:
+	:type theElement: BRepMesh_Triangle &
+	:rtype: int
+") AddElement;
 		Standard_Integer AddElement (const BRepMesh_Triangle & theElement);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Get the value of Element <Index>.
 
-Returns:
-	BRepMesh_Triangle
-
-Get the value of Element <Index>.") GetElement;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: BRepMesh_Triangle
+") GetElement;
 		const BRepMesh_Triangle & GetElement (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Removes the element of index <Index> in the mesh.
 
-Returns:
-	None
-
-Removes the element of index <Index> in the mesh.") RemoveElement;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") RemoveElement;
 		void RemoveElement (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	newElement(BRepMesh_Triangle)
+		%feature("autodoc", "	* Substitutes the element of index <Index> by <newElement>. The links connectivity is updated.
 
-Returns:
-	Standard_Boolean
-
-Substitutes  the  element   of  index  <Index>  by  
-         <newElement>. The links connectivity is updated.") SubstituteElement;
+	:param Index:
+	:type Index: Standard_Integer
+	:param newElement:
+	:type newElement: BRepMesh_Triangle &
+	:rtype: bool
+") SubstituteElement;
 		Standard_Boolean SubstituteElement (const Standard_Integer Index,const BRepMesh_Triangle & newElement);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Gives the number of elements in this mesh.
 
-Gives the number of elements in this mesh.") NbElements;
+	:rtype: int
+") NbElements;
 		Standard_Integer NbElements ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Removes all elements
 
-Removes all elements") ClearDomain;
+	:rtype: None
+") ClearDomain;
 		void ClearDomain ();
-		%feature("autodoc", "Args:
-	aNode(BRepMesh_Vertex)
+		%feature("autodoc", "	* Finds the index of the node. Returns 0 if the node is not in the mesh.
 
-Returns:
-	Standard_Integer
-
-Finds the index of the node.  Returns 0 if the  
-         node is not in the mesh.") IndexOf;
+	:param aNode:
+	:type aNode: BRepMesh_Vertex &
+	:rtype: int
+") IndexOf;
 		Standard_Integer IndexOf (const BRepMesh_Vertex & aNode);
-		%feature("autodoc", "Args:
-	aLink(BRepMesh_Edge)
+		%feature("autodoc", "	* Finds the index of the Link. Returns 0 if the Link is not in the mesh.
 
-Returns:
-	Standard_Integer
-
-Finds the index of the Link.  Returns 0 if the  
-         Link is not in the mesh.") IndexOf;
+	:param aLink:
+	:type aLink: BRepMesh_Edge &
+	:rtype: int
+") IndexOf;
 		Standard_Integer IndexOf (const BRepMesh_Edge & aLink);
-		%feature("autodoc", "Args:
-	anElement(BRepMesh_Triangle)
+		%feature("autodoc", "	* Finds the index of the Element. Returns 0 if the Element is not in the mesh.
 
-Returns:
-	Standard_Integer
-
-Finds the index  of the Element.  Returns 0 if  
-         the Element is not in the mesh.") IndexOf;
+	:param anElement:
+	:type anElement: BRepMesh_Triangle &
+	:rtype: int
+") IndexOf;
 		Standard_Integer IndexOf (const BRepMesh_Triangle & anElement);
-		%feature("autodoc", "Args:
-	theNode(Standard_Integer)
+		%feature("autodoc", "	* Gives the list of Link's indices handling the node <theNode>.
 
-Returns:
-	BRepMesh_ListOfInteger
-
-Gives the list of  Link's indices handling the  
-         node <theNode>.") LinkNeighboursOf;
+	:param theNode:
+	:type theNode: Standard_Integer
+	:rtype: BRepMesh_ListOfInteger
+") LinkNeighboursOf;
 		const BRepMesh_ListOfInteger & LinkNeighboursOf (const Standard_Integer theNode);
-		%feature("autodoc", "Args:
-	theLink(Standard_Integer)
+		%feature("autodoc", "	* Gives the element's indices conected to <theLink>.
 
-Returns:
-	BRepMesh_PairOfIndex
-
-Gives the element's indices conected  
-         to <theLink>.") ElemConnectedTo;
+	:param theLink:
+	:type theLink: Standard_Integer
+	:rtype: BRepMesh_PairOfIndex
+") ElemConnectedTo;
 		const BRepMesh_PairOfIndex & ElemConnectedTo (const Standard_Integer theLink);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_MapOfInteger
+		%feature("autodoc", "	* Gives the list of element's indices
 
-Gives  the  list  of element's indices") ElemOfDomain;
+	:rtype: BRepMesh_MapOfInteger
+") ElemOfDomain;
 		const BRepMesh_MapOfInteger & ElemOfDomain ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_MapOfInteger
+		%feature("autodoc", "	* Gives the list of link's indices
 
-Gives  the  list  of link's indices") LinkOfDomain;
+	:rtype: BRepMesh_MapOfInteger
+") LinkOfDomain;
 		const BRepMesh_MapOfInteger & LinkOfDomain ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* This method substitute the deleted items by the last in Indexed Data Maps to have only non-deleted elements, links or nodes in the structure.
 
-This method  substitute the deleted  items  by  
-         the last in  Indexed Data  Maps  to  have only  
-         non-deleted  elements, links  or  nodes in the  
-         structure.") ClearDeleted;
+	:rtype: None
+") ClearDeleted;
 		void ClearDeleted ();
 
         %feature("autodoc", "1");
@@ -2942,20 +2313,13 @@ This method  substitute the deleted  items  by
             self->Statistics(s);
             return s.str();}
         };
-        		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_BaseAllocator
-
-No detailed docstring for this function.") Allocator;
+        		%feature("autodoc", "	:rtype: BRepMesh_BaseAllocator
+") Allocator;
 		const BRepMesh_BaseAllocator & Allocator ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_VertexTool
+		%feature("autodoc", "	* Give the data structure for cell size and tolerance initialization.
 
-Give the data structure for cell size and  
-         tolerance initialization.") Data;
+	:rtype: BRepMesh_VertexTool
+") Data;
 		BRepMesh_VertexTool & Data ();
 };
 
@@ -3016,134 +2380,116 @@ def __del__(self):
 %nodefaultctor BRepMesh_Delaun;
 class BRepMesh_Delaun {
 	public:
-		%feature("autodoc", "Args:
-	theVertices(BRepMesh_Array1OfVertexOfDelaun)
-	isPositive(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Creates the triangulation with an empty Mesh data structure.
 
-Returns:
-	None
-
-Creates the triangulation with an empty Mesh  
-data structure.") BRepMesh_Delaun;
+	:param theVertices:
+	:type theVertices: BRepMesh_Array1OfVertexOfDelaun &
+	:param isPositive: default value is Standard_True
+	:type isPositive: bool
+	:rtype: None
+") BRepMesh_Delaun;
 		 BRepMesh_Delaun (BRepMesh_Array1OfVertexOfDelaun & theVertices,const Standard_Boolean isPositive = Standard_True);
-		%feature("autodoc", "Args:
-	theOldMesh(Handle_BRepMesh_DataStructureOfDelaun)
-	theVertices(BRepMesh_Array1OfVertexOfDelaun)
-	isPositive(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Creates the triangulation with and existent Mesh data structure.
 
-Returns:
-	None
-
-Creates the triangulation with and existent  
-Mesh data structure.") BRepMesh_Delaun;
+	:param theOldMesh:
+	:type theOldMesh: Handle_BRepMesh_DataStructureOfDelaun &
+	:param theVertices:
+	:type theVertices: BRepMesh_Array1OfVertexOfDelaun &
+	:param isPositive: default value is Standard_True
+	:type isPositive: bool
+	:rtype: None
+") BRepMesh_Delaun;
 		 BRepMesh_Delaun (const Handle_BRepMesh_DataStructureOfDelaun & theOldMesh,BRepMesh_Array1OfVertexOfDelaun & theVertices,const Standard_Boolean isPositive = Standard_True);
-		%feature("autodoc", "Args:
-	theOldMesh(Handle_BRepMesh_DataStructureOfDelaun)
-	theVertexIndices(TColStd_Array1OfInteger)
-	isPositive(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Creates the triangulation with and existant Mesh data structure.
 
-Returns:
-	None
-
-Creates the triangulation with and existant  
-Mesh data structure.") BRepMesh_Delaun;
+	:param theOldMesh:
+	:type theOldMesh: Handle_BRepMesh_DataStructureOfDelaun &
+	:param theVertexIndices:
+	:type theVertexIndices: TColStd_Array1OfInteger &
+	:param isPositive: default value is Standard_True
+	:type isPositive: bool
+	:rtype: None
+") BRepMesh_Delaun;
 		 BRepMesh_Delaun (const Handle_BRepMesh_DataStructureOfDelaun & theOldMesh,TColStd_Array1OfInteger & theVertexIndices,const Standard_Boolean isPositive = Standard_True);
-		%feature("autodoc", "Args:
-	theVertices(BRepMesh_Array1OfVertexOfDelaun)
+		%feature("autodoc", "	* Initializes the triangulation with an array of vertices.
 
-Returns:
-	None
-
-Initializes the triangulation with an array of  
-vertices.") Init;
+	:param theVertices:
+	:type theVertices: BRepMesh_Array1OfVertexOfDelaun &
+	:rtype: None
+") Init;
 		void Init (BRepMesh_Array1OfVertexOfDelaun & theVertices);
-		%feature("autodoc", "Args:
-	theVertex(BRepMesh_Vertex)
+		%feature("autodoc", "	* Removes a vertex from the triangulation.
 
-Returns:
-	None
-
-Removes a vertex from the triangulation.") RemoveVertex;
+	:param theVertex:
+	:type theVertex: BRepMesh_Vertex &
+	:rtype: None
+") RemoveVertex;
 		void RemoveVertex (const BRepMesh_Vertex & theVertex);
-		%feature("autodoc", "Args:
-	theVertices(BRepMesh_Array1OfVertexOfDelaun)
+		%feature("autodoc", "	* Adds some vertices into the triangulation.
 
-Returns:
-	None
-
-Adds some vertices into the triangulation.") AddVertices;
+	:param theVertices:
+	:type theVertices: BRepMesh_Array1OfVertexOfDelaun &
+	:rtype: None
+") AddVertices;
 		void AddVertices (BRepMesh_Array1OfVertexOfDelaun & theVertices);
-		%feature("autodoc", "Args:
-	theEdge(Standard_Integer)
+		%feature("autodoc", "	* Modify mesh to use the edge. Return True if done.
 
-Returns:
-	Standard_Boolean
-
-Modify mesh to use the edge. Return True if done.") UseEdge;
+	:param theEdge:
+	:type theEdge: Standard_Integer
+	:rtype: bool
+") UseEdge;
 		Standard_Boolean UseEdge (const Standard_Integer theEdge);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_BRepMesh_DataStructureOfDelaun
+		%feature("autodoc", "	* Gives the Mesh data structure.
 
-Gives the Mesh data structure.") Result;
+	:rtype: Handle_BRepMesh_DataStructureOfDelaun
+") Result;
 		const Handle_BRepMesh_DataStructureOfDelaun & Result ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	inline Handle_BRepMesh_MapOfInteger
+		%feature("autodoc", "	* Gives the list of frontier edges
 
-Gives the list of frontier edges") Frontier;
+	:rtype: inline Handle_BRepMesh_MapOfInteger
+") Frontier;
 		inline Handle_BRepMesh_MapOfInteger Frontier ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	inline Handle_BRepMesh_MapOfInteger
+		%feature("autodoc", "	* Gives the list of internal edges
 
-Gives the list of internal edges") InternalEdges;
+	:rtype: inline Handle_BRepMesh_MapOfInteger
+") InternalEdges;
 		inline Handle_BRepMesh_MapOfInteger InternalEdges ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	inline Handle_BRepMesh_MapOfInteger
+		%feature("autodoc", "	* Gives the list of free edges used only one time
 
-Gives the list of free edges used only one time") FreeEdges;
+	:rtype: inline Handle_BRepMesh_MapOfInteger
+") FreeEdges;
 		inline Handle_BRepMesh_MapOfInteger FreeEdges ();
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Gives vertex with the given index
 
-Returns:
-	inline  BRepMesh_Vertex
-
-Gives vertex with the given index") GetVertex;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: inline  BRepMesh_Vertex
+") GetVertex;
 		inline const BRepMesh_Vertex & GetVertex (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Gives edge with the given index
 
-Returns:
-	inline  BRepMesh_Edge
-
-Gives edge with the given index") GetEdge;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: inline  BRepMesh_Edge
+") GetEdge;
 		inline const BRepMesh_Edge & GetEdge (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Gives triangle with the given index
 
-Returns:
-	inline  BRepMesh_Triangle
-
-Gives triangle with the given index") GetTriangle;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: inline  BRepMesh_Triangle
+") GetTriangle;
 		inline const BRepMesh_Triangle & GetTriangle (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theTriangleId(Standard_Integer)
-	theVertex(BRepMesh_Vertex)
-	theEdgeOn(Standard_Integer)
+		%feature("autodoc", "	* Test is the given triangle contains the given vertex. If <theEdgeOn> != 0 the vertex lies onto the edge index returned through this parameter.
 
-Returns:
-	Standard_Boolean
-
-Test is the given triangle contains the given vertex.  
-If <theEdgeOn> != 0 the vertex lies onto the edge index  
-returned through this parameter.") Contains;
+	:param theTriangleId:
+	:type theTriangleId: Standard_Integer
+	:param theVertex:
+	:type theVertex: BRepMesh_Vertex &
+	:param theEdgeOn:
+	:type theEdgeOn: Standard_Integer &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const Standard_Integer theTriangleId,const BRepMesh_Vertex & theVertex,Standard_Integer &OutValue);
 };
 
@@ -3165,64 +2511,49 @@ def __del__(self):
 %nodefaultctor BRepMesh_DiscretRoot;
 class BRepMesh_DiscretRoot : public Standard_Transient {
 	public:
-		%feature("autodoc", "Args:
-	theDeflection(Standard_Real)
+		%feature("autodoc", "	* Setup linear deflection.
 
-Returns:
-	None
-
-Setup linear deflection.") SetDeflection;
+	:param theDeflection:
+	:type theDeflection: float
+	:rtype: None
+") SetDeflection;
 		void SetDeflection (const Standard_Real theDeflection);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns linear deflection.
 
-Returns linear deflection.") Deflection;
+	:rtype: float
+") Deflection;
 		Standard_Real Deflection ();
-		%feature("autodoc", "Args:
-	theAngle(Standard_Real)
+		%feature("autodoc", "	* Setup angular deflection.
 
-Returns:
-	None
-
-Setup angular deflection.") SetAngle;
+	:param theAngle:
+	:type theAngle: float
+	:rtype: None
+") SetAngle;
 		void SetAngle (const Standard_Real theAngle);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns angular deflection.
 
-Returns angular deflection.") Angle;
+	:rtype: float
+") Angle;
 		Standard_Real Angle ();
-		%feature("autodoc", "Args:
-	theShape(TopoDS_Shape)
+		%feature("autodoc", "	* Set the shape to triangulate.
 
-Returns:
-	None
-
-Set the shape to triangulate.") SetShape;
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:rtype: None
+") SetShape;
 		void SetShape (const TopoDS_Shape & theShape);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Shape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Shape;
 		const TopoDS_Shape & Shape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Compute triangulation for set shape.
 
-Compute triangulation for set shape.") Perform;
+	:rtype: void
+") Perform;
 		virtual void Perform ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if triangualtion was performed and has success.
 
-Returns true if triangualtion was performed and has success.") IsDone;
+	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
 };
 
@@ -3283,59 +2614,42 @@ def __del__(self):
 %nodefaultctor BRepMesh_Edge;
 class BRepMesh_Edge {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_Edge;
+		%feature("autodoc", "	:rtype: None
+") BRepMesh_Edge;
 		 BRepMesh_Edge ();
-		%feature("autodoc", "Args:
-	vDebut(Standard_Integer)
-	vFin(Standard_Integer)
-	canMove(BRepMesh_DegreeOfFreedom)
+		%feature("autodoc", "	* Contructs a link beetween to vertices.
 
-Returns:
-	None
-
-Contructs a link beetween to vertices.") BRepMesh_Edge;
+	:param vDebut:
+	:type vDebut: Standard_Integer
+	:param vFin:
+	:type vFin: Standard_Integer
+	:param canMove:
+	:type canMove: BRepMesh_DegreeOfFreedom
+	:rtype: None
+") BRepMesh_Edge;
 		 BRepMesh_Edge (const Standard_Integer vDebut,const Standard_Integer vFin,const BRepMesh_DegreeOfFreedom canMove);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Give the index of first node of the Link.
 
-Give the index of first node of the Link.") FirstNode;
+	:rtype: int
+") FirstNode;
 		Standard_Integer FirstNode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Give the index of Last node of the Link.
 
-Give the index of Last node of the Link.") LastNode;
+	:rtype: int
+") LastNode;
 		Standard_Integer LastNode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_DegreeOfFreedom
-
-No detailed docstring for this function.") Movability;
+		%feature("autodoc", "	:rtype: BRepMesh_DegreeOfFreedom
+") Movability;
 		BRepMesh_DegreeOfFreedom Movability ();
-		%feature("autodoc", "Args:
-	Move(BRepMesh_DegreeOfFreedom)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetMovability;
+		%feature("autodoc", "	:param Move:
+	:type Move: BRepMesh_DegreeOfFreedom
+	:rtype: None
+") SetMovability;
 		void SetMovability (const BRepMesh_DegreeOfFreedom Move);
-		%feature("autodoc", "Args:
-	Upper(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") HashCode;
+		%feature("autodoc", "	:param Upper:
+	:type Upper: Standard_Integer
+	:rtype: int
+") HashCode;
 		Standard_Integer HashCode (const Standard_Integer Upper);
 
         %extend {
@@ -3343,21 +2657,15 @@ No detailed docstring for this function.") HashCode;
             return $self->HashCode(2147483647);
             }
         };
-        		%feature("autodoc", "Args:
-	Other(BRepMesh_Edge)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") SameOrientation;
+        		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_Edge &
+	:rtype: bool
+") SameOrientation;
 		Standard_Boolean SameOrientation (const BRepMesh_Edge & Other);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_Edge)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEqual;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_Edge &
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const BRepMesh_Edge & Other);
 
         %extend{
@@ -3393,23 +2701,19 @@ def __del__(self):
 %nodefaultctor BRepMesh_ElemHasherOfDataStructureOfDelaun;
 class BRepMesh_ElemHasherOfDataStructureOfDelaun {
 	public:
-		%feature("autodoc", "Args:
-	K(BRepMesh_Triangle)
-	Upper(Standard_Integer)
-
-Returns:
-	static Standard_Integer
-
-No detailed docstring for this function.") HashCode;
+		%feature("autodoc", "	:param K:
+	:type K: BRepMesh_Triangle &
+	:param Upper:
+	:type Upper: Standard_Integer
+	:rtype: int
+") HashCode;
 		static Standard_Integer HashCode (const BRepMesh_Triangle & K,const Standard_Integer Upper);
-		%feature("autodoc", "Args:
-	K1(BRepMesh_Triangle)
-	K2(BRepMesh_Triangle)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") IsEqual;
+		%feature("autodoc", "	:param K1:
+	:type K1: BRepMesh_Triangle &
+	:param K2:
+	:type K2: BRepMesh_Triangle &
+	:rtype: bool
+") IsEqual;
 		static Standard_Boolean IsEqual (const BRepMesh_Triangle & K1,const BRepMesh_Triangle & K2);
 };
 
@@ -3431,12 +2735,8 @@ def __del__(self):
 %nodefaultctor BRepMesh_FaceAttribute;
 class BRepMesh_FaceAttribute : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_FaceAttribute;
+		%feature("autodoc", "	:rtype: None
+") BRepMesh_FaceAttribute;
 		 BRepMesh_FaceAttribute ();
 
             %feature("autodoc","1");
@@ -3555,12 +2855,8 @@ No detailed docstring for this function.") BRepMesh_FaceAttribute;
                 $self->GetMinY()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_ClassifierPtr
-
-No detailed docstring for this function.") GetClassifier;
+            		%feature("autodoc", "	:rtype: BRepMesh_ClassifierPtr
+") GetClassifier;
 		BRepMesh_ClassifierPtr & GetClassifier ();
 };
 
@@ -3621,287 +2917,231 @@ def __del__(self):
 %nodefaultctor BRepMesh_FastDiscret;
 class BRepMesh_FastDiscret : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	defle(Standard_Real)
-	angle(Standard_Real)
-	B(Bnd_Box)
-	withShare(Standard_Boolean)=Standard_True
-	inshape(Standard_Boolean)=Standard_False
-	relative(Standard_Boolean)=Standard_False
-	shapetrigu(Standard_Boolean)=Standard_False
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_FastDiscret;
+		%feature("autodoc", "	:param defle:
+	:type defle: float
+	:param angle:
+	:type angle: float
+	:param B:
+	:type B: Bnd_Box &
+	:param withShare: default value is Standard_True
+	:type withShare: bool
+	:param inshape: default value is Standard_False
+	:type inshape: bool
+	:param relative: default value is Standard_False
+	:type relative: bool
+	:param shapetrigu: default value is Standard_False
+	:type shapetrigu: bool
+	:rtype: None
+") BRepMesh_FastDiscret;
 		 BRepMesh_FastDiscret (const Standard_Real defle,const Standard_Real angle,const Bnd_Box & B,const Standard_Boolean withShare = Standard_True,const Standard_Boolean inshape = Standard_False,const Standard_Boolean relative = Standard_False,const Standard_Boolean shapetrigu = Standard_False);
-		%feature("autodoc", "Args:
-	defle(Standard_Real)
-	shape(TopoDS_Shape)
-	B(Bnd_Box)
-	angle(Standard_Real)
-	withShare(Standard_Boolean)=Standard_True
-	inshape(Standard_Boolean)=Standard_False
-	relative(Standard_Boolean)=Standard_False
-	shapetrigu(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* if the boolean <relative> is True, the deflection used for the polygonalisation of each edge will be <defle> * Size of Edge. the deflection used for the faces will be the maximum deflection of their edges.  if <shapetrigu> is True, the triangulation, if exists with a correct deflection, can be used to re-triangulate the shape.  if <inshape> is True, the calculated triangulation will be stored in the shape.
 
-Returns:
-	None
-
-if the  boolean    <relative>   is  True,    the  
-         deflection used   for the polygonalisation   of  
-         each edge will be <defle> * Size of Edge.  
-         the deflection used for the faces will be the maximum  
-         deflection of their edges.  
- 
-         if <shapetrigu> is True, the triangulation, if exists  
-         with a correct deflection, can be used to re-triangulate  
-         the shape.  
- 
-         if   <inshape>   is   True, the      calculated  
-         triangulation will be stored in the shape.") BRepMesh_FastDiscret;
+	:param defle:
+	:type defle: float
+	:param shape:
+	:type shape: TopoDS_Shape &
+	:param B:
+	:type B: Bnd_Box &
+	:param angle:
+	:type angle: float
+	:param withShare: default value is Standard_True
+	:type withShare: bool
+	:param inshape: default value is Standard_False
+	:type inshape: bool
+	:param relative: default value is Standard_False
+	:type relative: bool
+	:param shapetrigu: default value is Standard_False
+	:type shapetrigu: bool
+	:rtype: None
+") BRepMesh_FastDiscret;
 		 BRepMesh_FastDiscret (const Standard_Real defle,const TopoDS_Shape & shape,const Bnd_Box & B,const Standard_Real angle,const Standard_Boolean withShare = Standard_True,const Standard_Boolean inshape = Standard_False,const Standard_Boolean relative = Standard_False,const Standard_Boolean shapetrigu = Standard_False);
-		%feature("autodoc", "Args:
-	shape(TopoDS_Shape)
+		%feature("autodoc", "	* Build triangulation on the whole shape
 
-Returns:
-	None
-
-Build triangulation on the whole shape") Perform;
+	:param shape:
+	:type shape: TopoDS_Shape &
+	:rtype: None
+") Perform;
 		void Perform (const TopoDS_Shape & shape);
-		%feature("autodoc", "Args:
-	face(TopoDS_Face)
-	ancestor(TopTools_IndexedDataMapOfShapeListOfShape)
+		%feature("autodoc", "	* Record a face for further processing.
 
-Returns:
-	None
-
-Record a face for further processing.") Add;
+	:param face:
+	:type face: TopoDS_Face &
+	:param ancestor:
+	:type ancestor: TopTools_IndexedDataMapOfShapeListOfShape &
+	:rtype: None
+") Add;
 		void Add (const TopoDS_Face & face,const TopTools_IndexedDataMapOfShapeListOfShape & ancestor);
-		%feature("autodoc", "Args:
-	face(TopoDS_Face)
+		%feature("autodoc", "	* Triangulate a face previously recorded for processing by call to Add(). Can be executed in parallel threads.
 
-Returns:
-	None
-
-Triangulate a face previously recorded for  
-         processing by call to Add(). Can be executed in  
-         parallel threads.") Process;
+	:param face:
+	:type face: TopoDS_Face &
+	:rtype: None
+") Process;
 		void Process (const TopoDS_Face & face);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_Status
-
-No detailed docstring for this function.") CurrentFaceStatus;
+		%feature("autodoc", "	:rtype: BRepMesh_Status
+") CurrentFaceStatus;
 		BRepMesh_Status CurrentFaceStatus ();
-		%feature("autodoc", "Args:
-	edge(TopoDS_Edge)
-	defle(Standard_Real)
-	dtotale(Standard_Real)
-	cdef(Standard_Real)
+		%feature("autodoc", "	* Returns computed relative deflection for edge
 
-Returns:
-	static Standard_Real
-
-Returns computed relative deflection for edge") RelativeEdgeDeflection;
+	:param edge:
+	:type edge: TopoDS_Edge &
+	:param defle:
+	:type defle: float
+	:param dtotale:
+	:type dtotale: float
+	:param cdef:
+	:type cdef: float &
+	:rtype: float
+") RelativeEdgeDeflection;
 		static Standard_Real RelativeEdgeDeflection (const TopoDS_Edge & edge,const Standard_Real defle,const Standard_Real dtotale,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	box(Bnd_Box)
-	maxdim(Standard_Real)
+		%feature("autodoc", "	* Returns the maximal dimension of Bnd_Box
 
-Returns:
-	static void
-
-Returns the maximal dimension of Bnd_Box") BoxMaxDimension;
+	:param box:
+	:type box: Bnd_Box &
+	:param maxdim:
+	:type maxdim: float &
+	:rtype: void
+") BoxMaxDimension;
 		static void BoxMaxDimension (const Bnd_Box & box,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	theInParallel(Standard_Boolean)
+		%feature("autodoc", "	* Request algorithm to launch in multiple threads to improve performance (should be supported by plugin).
 
-Returns:
-	None
-
-Request algorithm to launch in multiple threads  
-to improve performance (should be supported by plugin).") SetParallel;
+	:param theInParallel:
+	:type theInParallel: bool
+	:rtype: None
+") SetParallel;
 		void SetParallel (const Standard_Boolean theInParallel);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns the multi-threading usage flag.
 
-Returns the multi-threading usage flag.") IsParallel;
+	:rtype: bool
+") IsParallel;
 		Standard_Boolean IsParallel ();
-		%feature("autodoc", "Args:
-	theShape(TopoDS_Shape)
-	theType(TopAbs_ShapeEnum)
+		%feature("autodoc", "	* Creates mutexes for each sub-shape of type theType in theShape. Used to avoid data races.
 
-Returns:
-	None
-
-Creates mutexes for each sub-shape of type theType in theShape.  
-Used to avoid data races.") CreateMutexesForSubShapes;
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:param theType:
+	:type theType: TopAbs_ShapeEnum
+	:rtype: None
+") CreateMutexesForSubShapes;
 		void CreateMutexesForSubShapes (const TopoDS_Shape & theShape,const TopAbs_ShapeEnum theType);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Removes all created mutexes
 
-Removes all created mutexes") RemoveAllMutexes;
+	:rtype: None
+") RemoveAllMutexes;
 		void RemoveAllMutexes ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Gives the number of built triangles.
 
-Gives the number of built triangles.") NbTriangles;
+	:rtype: int
+") NbTriangles;
 		Standard_Integer NbTriangles ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Gives the triangle of <Index>.
 
-Returns:
-	BRepMesh_Triangle
-
-Gives the triangle of <Index>.") Triangle;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: BRepMesh_Triangle
+") Triangle;
 		const BRepMesh_Triangle & Triangle (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Gives the number of built Edges
 
-Gives the number of built Edges") NbEdges;
+	:rtype: int
+") NbEdges;
 		Standard_Integer NbEdges ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Gives the edge of index <Index>.
 
-Returns:
-	BRepMesh_Edge
-
-Gives the edge of index <Index>.") Edge;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: BRepMesh_Edge
+") Edge;
 		const BRepMesh_Edge & Edge (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Gives the number of built Vertices.
 
-Gives the number of built Vertices.") NbVertices;
+	:rtype: int
+") NbVertices;
 		Standard_Integer NbVertices ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Gives the vertex of <Index>.
 
-Returns:
-	BRepMesh_Vertex
-
-Gives the vertex of <Index>.") Vertex;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: BRepMesh_Vertex
+") Vertex;
 		const BRepMesh_Vertex & Vertex (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Gives the location3d of the vertex of <Index>.
 
-Returns:
-	gp_Pnt
-
-Gives the location3d of the vertex of <Index>.") Pnt;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: gp_Pnt
+") Pnt;
 		const gp_Pnt & Pnt (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Indices(BRepMesh_MapOfInteger)
+		%feature("autodoc", "	* Gives the list of indices of the vertices
 
-Returns:
-	None
-
-Gives the list of indices of the vertices") VerticesOfDomain;
+	:param Indices:
+	:type Indices: BRepMesh_MapOfInteger &
+	:rtype: None
+") VerticesOfDomain;
 		void VerticesOfDomain (BRepMesh_MapOfInteger & Indices);
-		%feature("autodoc", "Args:
-	Indices(BRepMesh_MapOfInteger)
+		%feature("autodoc", "	* Gives the list of indices of the edges
 
-Returns:
-	None
-
-Gives the list of indices of the edges") EdgesOfDomain;
+	:param Indices:
+	:type Indices: BRepMesh_MapOfInteger &
+	:rtype: None
+") EdgesOfDomain;
 		void EdgesOfDomain (BRepMesh_MapOfInteger & Indices);
-		%feature("autodoc", "Args:
-	Indices(BRepMesh_MapOfInteger)
+		%feature("autodoc", "	* Gives the list of indices of the triangles
 
-Returns:
-	None
-
-Gives the list of indices of the triangles") TrianglesOfDomain;
+	:param Indices:
+	:type Indices: BRepMesh_MapOfInteger &
+	:rtype: None
+") TrianglesOfDomain;
 		void TrianglesOfDomain (BRepMesh_MapOfInteger & Indices);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Gives the number of different location in 3d space. It is different of the number of vertices if there is more than one surface. Even for one surface, the number can be different if an edge is shared.
 
-Gives the  number of different  location in 3d  
-         space.  It  is  different    of the number  of  
-         vertices if there is more than one surface.  
-         Even for one surface, the number can be different  
-         if an edge is shared.") NbPoint3d;
+	:rtype: int
+") NbPoint3d;
 		Standard_Integer NbPoint3d ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Gives the 3d space location of the vertex <Index>.
 
-Returns:
-	gp_Pnt
-
-Gives the 3d space location of the vertex <Index>.") Point3d;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: gp_Pnt
+") Point3d;
 		const gp_Pnt & Point3d (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns the deflection value.
 
-returns the deflection value.") GetDeflection;
+	:rtype: float
+") GetDeflection;
 		Standard_Real GetDeflection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns the deflection value.
 
-returns the deflection value.") GetAngle;
+	:rtype: float
+") GetAngle;
 		Standard_Real GetAngle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") WithShare;
+		%feature("autodoc", "	:rtype: bool
+") WithShare;
 		Standard_Boolean WithShare ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") InShape;
+		%feature("autodoc", "	:rtype: bool
+") InShape;
 		Standard_Boolean InShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") ShapeTrigu;
+		%feature("autodoc", "	:rtype: bool
+") ShapeTrigu;
 		Standard_Boolean ShapeTrigu ();
-		%feature("autodoc", "Args:
-	face(TopoDS_Face)
-	fattrib(Handle_BRepMesh_FaceAttribute)
+		%feature("autodoc", "	* returns the face deflection value.
 
-Returns:
-	Standard_Boolean
-
-returns the face deflection value.") GetFaceAttribute;
+	:param face:
+	:type face: TopoDS_Face &
+	:param fattrib:
+	:type fattrib: Handle_BRepMesh_FaceAttribute &
+	:rtype: bool
+") GetFaceAttribute;
 		Standard_Boolean GetFaceAttribute (const TopoDS_Face & face,Handle_BRepMesh_FaceAttribute & fattrib);
-		%feature("autodoc", "Args:
-	face(TopoDS_Face)
+		%feature("autodoc", "	* remove face attribute as useless to free locate memory
 
-Returns:
-	None
-
-remove face attribute as useless to free locate memory") RemoveFaceAttribute;
+	:param face:
+	:type face: TopoDS_Face &
+	:rtype: None
+") RemoveFaceAttribute;
 		void RemoveFaceAttribute (const TopoDS_Face & face);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_DataMapOfShapeReal
-
-No detailed docstring for this function.") GetMapOfDefEdge;
+		%feature("autodoc", "	:rtype: TopTools_DataMapOfShapeReal
+") GetMapOfDefEdge;
 		const TopTools_DataMapOfShapeReal & GetMapOfDefEdge ();
 };
 
@@ -3962,85 +3202,85 @@ def __del__(self):
 %nodefaultctor BRepMesh_FastDiscretFace;
 class BRepMesh_FastDiscretFace : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	theAngle(Standard_Real)
-	theWithShare(Standard_Boolean)=Standard_True
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_FastDiscretFace;
+		%feature("autodoc", "	:param theAngle:
+	:type theAngle: float
+	:param theWithShare: default value is Standard_True
+	:type theWithShare: bool
+	:rtype: None
+") BRepMesh_FastDiscretFace;
 		 BRepMesh_FastDiscretFace (const Standard_Real theAngle,const Standard_Boolean theWithShare = Standard_True);
-		%feature("autodoc", "Args:
-	theFace(TopoDS_Face)
-	theAttrib(Handle_BRepMesh_FaceAttribute)
-	theMapDefle(TopTools_DataMapOfShapeReal)
-	theMutexProvider(TopTools_MutexForShapeProvider)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param theFace:
+	:type theFace: TopoDS_Face &
+	:param theAttrib:
+	:type theAttrib: Handle_BRepMesh_FaceAttribute &
+	:param theMapDefle:
+	:type theMapDefle: TopTools_DataMapOfShapeReal &
+	:param theMutexProvider:
+	:type theMutexProvider: TopTools_MutexForShapeProvider &
+	:rtype: None
+") Add;
 		void Add (const TopoDS_Face & theFace,const Handle_BRepMesh_FaceAttribute & theAttrib,const TopTools_DataMapOfShapeReal & theMapDefle,const TopTools_MutexForShapeProvider & theMutexProvider);
-		%feature("autodoc", "Args:
-	theCaro(Handle_BRepAdaptor_HSurface)
-	theDefFace(Standard_Real)
-	theInternalV(BRepMesh_ListOfVertex)
-	theBadTriangles(TColStd_ListOfInteger)
-	theNulTriangles(TColStd_ListOfInteger)
-	theTrigu(BRepMesh_Delaun)
-	theIsFirst(Standard_Boolean)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Control;
+		%feature("autodoc", "	:param theCaro:
+	:type theCaro: Handle_BRepAdaptor_HSurface &
+	:param theDefFace:
+	:type theDefFace: float
+	:param theInternalV:
+	:type theInternalV: BRepMesh_ListOfVertex &
+	:param theBadTriangles:
+	:type theBadTriangles: TColStd_ListOfInteger &
+	:param theNulTriangles:
+	:type theNulTriangles: TColStd_ListOfInteger &
+	:param theTrigu:
+	:type theTrigu: BRepMesh_Delaun &
+	:param theIsFirst:
+	:type theIsFirst: bool
+	:rtype: float
+") Control;
 		Standard_Real Control (const Handle_BRepAdaptor_HSurface & theCaro,const Standard_Real theDefFace,BRepMesh_ListOfVertex & theInternalV,TColStd_ListOfInteger & theBadTriangles,TColStd_ListOfInteger & theNulTriangles,BRepMesh_Delaun & theTrigu,const Standard_Boolean theIsFirst);
-		%feature("autodoc", "Args:
-	theV(TopoDS_Vertex)
-	theXY(gp_Pnt2d)
-	theIp(Standard_Integer)
-	theSFace(Handle_BRepAdaptor_HSurface)
-	theMinDist(Standard_Real)
-	theFaceAttribute(Handle_BRepMesh_FaceAttribute)
-	theLocation2dMap(BRepMesh_DataMapOfIntegerListOfXY)
-
-Returns:
-	static gp_XY
-
-No detailed docstring for this function.") FindUV;
+		%feature("autodoc", "	:param theV:
+	:type theV: TopoDS_Vertex &
+	:param theXY:
+	:type theXY: gp_Pnt2d
+	:param theIp:
+	:type theIp: Standard_Integer
+	:param theSFace:
+	:type theSFace: Handle_BRepAdaptor_HSurface &
+	:param theMinDist:
+	:type theMinDist: float
+	:param theFaceAttribute:
+	:type theFaceAttribute: Handle_BRepMesh_FaceAttribute &
+	:param theLocation2dMap:
+	:type theLocation2dMap: BRepMesh_DataMapOfIntegerListOfXY &
+	:rtype: gp_XY
+") FindUV;
 		static gp_XY FindUV (const TopoDS_Vertex & theV,const gp_Pnt2d & theXY,const Standard_Integer theIp,const Handle_BRepAdaptor_HSurface & theSFace,const Standard_Real theMinDist,const Handle_BRepMesh_FaceAttribute & theFaceAttribute,BRepMesh_DataMapOfIntegerListOfXY & theLocation2dMap);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Gives the triangle of <Index>.
 
-Returns:
-	BRepMesh_Triangle
-
-Gives the triangle of <Index>.") Triangle;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: BRepMesh_Triangle
+") Triangle;
 		const BRepMesh_Triangle & Triangle (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Gives the edge of index <Index>.
 
-Returns:
-	BRepMesh_Edge
-
-Gives the edge of index <Index>.") Edge;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: BRepMesh_Edge
+") Edge;
 		const BRepMesh_Edge & Edge (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Gives the vertex of <Index>.
 
-Returns:
-	BRepMesh_Vertex
-
-Gives the vertex of <Index>.") Vertex;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: BRepMesh_Vertex
+") Vertex;
 		const BRepMesh_Vertex & Vertex (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Gives the location3d of the vertex of <Index>.
 
-Returns:
-	gp_Pnt
-
-Gives the location3d of the vertex of <Index>.") Pnt;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: gp_Pnt
+") Pnt;
 		const gp_Pnt & Pnt (const Standard_Integer theIndex);
 };
 
@@ -4101,100 +3341,107 @@ def __del__(self):
 %nodefaultctor BRepMesh_GeomTool;
 class BRepMesh_GeomTool {
 	public:
-		%feature("autodoc", "Args:
-	C(BRepAdaptor_Curve)
-	Ufirst(Standard_Real)
-	Ulast(Standard_Real)
-	AngDefl(Standard_Real)
-	Deflection(Standard_Real)
-	nbpointsmin(Standard_Integer)=2
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_GeomTool;
+		%feature("autodoc", "	:param C:
+	:type C: BRepAdaptor_Curve &
+	:param Ufirst:
+	:type Ufirst: float
+	:param Ulast:
+	:type Ulast: float
+	:param AngDefl:
+	:type AngDefl: float
+	:param Deflection:
+	:type Deflection: float
+	:param nbpointsmin: default value is 2
+	:type nbpointsmin: Standard_Integer
+	:rtype: None
+") BRepMesh_GeomTool;
 		 BRepMesh_GeomTool (BRepAdaptor_Curve & C,const Standard_Real Ufirst,const Standard_Real Ulast,const Standard_Real AngDefl,const Standard_Real Deflection,const Standard_Integer nbpointsmin = 2);
-		%feature("autodoc", "Args:
-	S(Handle_BRepAdaptor_HSurface)
-	ParamIso(Standard_Real)
-	Type(GeomAbs_IsoType)
-	Ufirst(Standard_Real)
-	Ulast(Standard_Real)
-	AngDefl(Standard_Real)
-	Deflection(Standard_Real)
-	nbpointsmin(Standard_Integer)=2
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_GeomTool;
+		%feature("autodoc", "	:param S:
+	:type S: Handle_BRepAdaptor_HSurface &
+	:param ParamIso:
+	:type ParamIso: float
+	:param Type:
+	:type Type: GeomAbs_IsoType
+	:param Ufirst:
+	:type Ufirst: float
+	:param Ulast:
+	:type Ulast: float
+	:param AngDefl:
+	:type AngDefl: float
+	:param Deflection:
+	:type Deflection: float
+	:param nbpointsmin: default value is 2
+	:type nbpointsmin: Standard_Integer
+	:rtype: None
+") BRepMesh_GeomTool;
 		 BRepMesh_GeomTool (const Handle_BRepAdaptor_HSurface & S,const Standard_Real ParamIso,const GeomAbs_IsoType Type,const Standard_Real Ufirst,const Standard_Real Ulast,const Standard_Real AngDefl,const Standard_Real Deflection,const Standard_Integer nbpointsmin = 2);
-		%feature("autodoc", "Args:
-	thePnt(gp_Pnt)
-	theParam(Standard_Real)
-	theIsReplace(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Add point to already calculated points (or replace existing) Returns index of new added point or founded with parametric tolerance (replaced if theIsReplace is true)
 
-Returns:
-	Standard_Integer
-
-Add point to already calculated points (or replace existing)  
-         Returns index of new added point  
-          or founded with parametric tolerance (replaced if theIsReplace is true)") AddPoint;
+	:param thePnt:
+	:type thePnt: gp_Pnt
+	:param theParam:
+	:type theParam: float
+	:param theIsReplace: default value is Standard_True
+	:type theIsReplace: bool
+	:rtype: int
+") AddPoint;
 		Standard_Integer AddPoint (const gp_Pnt & thePnt,const Standard_Real theParam,const Standard_Boolean theIsReplace = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbPoints;
+		%feature("autodoc", "	:rtype: int
+") NbPoints;
 		Standard_Integer NbPoints ();
-		%feature("autodoc", "Args:
-	IsoParam(Standard_Real)
-	Index(Standard_Integer)
-	W(Standard_Real)
-	P(gp_Pnt)
-	UV(gp_Pnt2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param IsoParam:
+	:type IsoParam: float
+	:param Index:
+	:type Index: Standard_Integer
+	:param W:
+	:type W: float &
+	:param P:
+	:type P: gp_Pnt
+	:param UV:
+	:type UV: gp_Pnt2d
+	:rtype: None
+") Value;
 		void Value (const Standard_Real IsoParam,const Standard_Integer Index,Standard_Real &OutValue,gp_Pnt & P,gp_Pnt2d & UV);
-		%feature("autodoc", "Args:
-	C(BRepAdaptor_Curve)
-	S(Handle_BRepAdaptor_HSurface)
-	Index(Standard_Integer)
-	W(Standard_Real)
-	P(gp_Pnt)
-	UV(gp_Pnt2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param C:
+	:type C: BRepAdaptor_Curve &
+	:param S:
+	:type S: Handle_BRepAdaptor_HSurface &
+	:param Index:
+	:type Index: Standard_Integer
+	:param W:
+	:type W: float &
+	:param P:
+	:type P: gp_Pnt
+	:param UV:
+	:type UV: gp_Pnt2d
+	:rtype: None
+") Value;
 		void Value (const BRepAdaptor_Curve & C,const Handle_BRepAdaptor_HSurface & S,const Standard_Integer Index,Standard_Real &OutValue,gp_Pnt & P,gp_Pnt2d & UV);
-		%feature("autodoc", "Args:
-	F(Handle_BRepAdaptor_HSurface)
-	U(Standard_Real)
-	V(Standard_Real)
-	P(gp_Pnt)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") D0;
+		%feature("autodoc", "	:param F:
+	:type F: Handle_BRepAdaptor_HSurface &
+	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param P:
+	:type P: gp_Pnt
+	:rtype: void
+") D0;
 		static void D0 (const Handle_BRepAdaptor_HSurface & F,const Standard_Real U,const Standard_Real V,gp_Pnt & P);
-		%feature("autodoc", "Args:
-	F(Handle_BRepAdaptor_HSurface)
-	U(Standard_Real)
-	V(Standard_Real)
-	P(gp_Pnt)
-	Nor(gp_Dir)
+		%feature("autodoc", "	* return false if the normal can not be computed
 
-Returns:
-	static Standard_Boolean
-
-return false if the normal can not be computed") Normal;
+	:param F:
+	:type F: Handle_BRepAdaptor_HSurface &
+	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param P:
+	:type P: gp_Pnt
+	:param Nor:
+	:type Nor: gp_Dir
+	:rtype: bool
+") Normal;
 		static Standard_Boolean Normal (const Handle_BRepAdaptor_HSurface & F,const Standard_Real U,const Standard_Real V,gp_Pnt & P,gp_Dir & Nor);
 };
 
@@ -4216,92 +3463,58 @@ def __del__(self):
 %nodefaultctor BRepMesh_HArray1OfVertexOfDelaun;
 class BRepMesh_HArray1OfVertexOfDelaun : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_HArray1OfVertexOfDelaun;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") BRepMesh_HArray1OfVertexOfDelaun;
 		 BRepMesh_HArray1OfVertexOfDelaun (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(BRepMesh_Vertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_HArray1OfVertexOfDelaun;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: BRepMesh_Vertex &
+	:rtype: None
+") BRepMesh_HArray1OfVertexOfDelaun;
 		 BRepMesh_HArray1OfVertexOfDelaun (const Standard_Integer Low,const Standard_Integer Up,const BRepMesh_Vertex & V);
-		%feature("autodoc", "Args:
-	V(BRepMesh_Vertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: BRepMesh_Vertex &
+	:rtype: None
+") Init;
 		void Init (const BRepMesh_Vertex & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(BRepMesh_Vertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: BRepMesh_Vertex &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const BRepMesh_Vertex & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	BRepMesh_Vertex
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: BRepMesh_Vertex
+") Value;
 		const BRepMesh_Vertex & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	BRepMesh_Vertex
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: BRepMesh_Vertex
+") ChangeValue;
 		BRepMesh_Vertex & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_Array1OfVertexOfDelaun
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: BRepMesh_Array1OfVertexOfDelaun
+") Array1;
 		const BRepMesh_Array1OfVertexOfDelaun & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_Array1OfVertexOfDelaun
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: BRepMesh_Array1OfVertexOfDelaun
+") ChangeArray1;
 		BRepMesh_Array1OfVertexOfDelaun & ChangeArray1 ();
 };
 
@@ -4362,14 +3575,12 @@ def __del__(self):
 %nodefaultctor BRepMesh_HeapSortIndexedVertexOfDelaun;
 class BRepMesh_HeapSortIndexedVertexOfDelaun {
 	public:
-		%feature("autodoc", "Args:
-	TheArray(TColStd_Array1OfInteger)
-	Comp(BRepMesh_ComparatorOfIndexedVertexOfDelaun)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") Sort;
+		%feature("autodoc", "	:param TheArray:
+	:type TheArray: TColStd_Array1OfInteger &
+	:param Comp:
+	:type Comp: BRepMesh_ComparatorOfIndexedVertexOfDelaun &
+	:rtype: void
+") Sort;
 		static void Sort (TColStd_Array1OfInteger & TheArray,const BRepMesh_ComparatorOfIndexedVertexOfDelaun & Comp);
 };
 
@@ -4391,14 +3602,12 @@ def __del__(self):
 %nodefaultctor BRepMesh_HeapSortVertexOfDelaun;
 class BRepMesh_HeapSortVertexOfDelaun {
 	public:
-		%feature("autodoc", "Args:
-	TheArray(BRepMesh_Array1OfVertexOfDelaun)
-	Comp(BRepMesh_ComparatorOfVertexOfDelaun)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") Sort;
+		%feature("autodoc", "	:param TheArray:
+	:type TheArray: BRepMesh_Array1OfVertexOfDelaun &
+	:param Comp:
+	:type Comp: BRepMesh_ComparatorOfVertexOfDelaun &
+	:rtype: void
+") Sort;
 		static void Sort (BRepMesh_Array1OfVertexOfDelaun & TheArray,const BRepMesh_ComparatorOfVertexOfDelaun & Comp);
 };
 
@@ -4420,142 +3629,92 @@ def __del__(self):
 %nodefaultctor BRepMesh_IDMapOfLinkOfDataStructureOfDelaun;
 class BRepMesh_IDMapOfLinkOfDataStructureOfDelaun : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_IDMapOfLinkOfDataStructureOfDelaun;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") BRepMesh_IDMapOfLinkOfDataStructureOfDelaun;
 		 BRepMesh_IDMapOfLinkOfDataStructureOfDelaun (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_IDMapOfLinkOfDataStructureOfDelaun)
-
-Returns:
-	BRepMesh_IDMapOfLinkOfDataStructureOfDelaun
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_IDMapOfLinkOfDataStructureOfDelaun &
+	:rtype: BRepMesh_IDMapOfLinkOfDataStructureOfDelaun
+") Assign;
 		BRepMesh_IDMapOfLinkOfDataStructureOfDelaun & Assign (const BRepMesh_IDMapOfLinkOfDataStructureOfDelaun & Other);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_IDMapOfLinkOfDataStructureOfDelaun)
-
-Returns:
-	BRepMesh_IDMapOfLinkOfDataStructureOfDelaun
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_IDMapOfLinkOfDataStructureOfDelaun &
+	:rtype: BRepMesh_IDMapOfLinkOfDataStructureOfDelaun
+") operator=;
 		BRepMesh_IDMapOfLinkOfDataStructureOfDelaun & operator = (const BRepMesh_IDMapOfLinkOfDataStructureOfDelaun & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(BRepMesh_Edge)
-	I(BRepMesh_PairOfIndex)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param K:
+	:type K: BRepMesh_Edge &
+	:param I:
+	:type I: BRepMesh_PairOfIndex &
+	:rtype: int
+") Add;
 		Standard_Integer Add (const BRepMesh_Edge & K,const BRepMesh_PairOfIndex & I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	K(BRepMesh_Edge)
-	T(BRepMesh_PairOfIndex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Substitute;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param K:
+	:type K: BRepMesh_Edge &
+	:param T:
+	:type T: BRepMesh_PairOfIndex &
+	:rtype: None
+") Substitute;
 		void Substitute (const Standard_Integer I,const BRepMesh_Edge & K,const BRepMesh_PairOfIndex & T);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveLast;
+		%feature("autodoc", "	:rtype: None
+") RemoveLast;
 		void RemoveLast ();
-		%feature("autodoc", "Args:
-	K(BRepMesh_Edge)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param K:
+	:type K: BRepMesh_Edge &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const BRepMesh_Edge & K);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	BRepMesh_Edge
-
-No detailed docstring for this function.") FindKey;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: BRepMesh_Edge
+") FindKey;
 		const BRepMesh_Edge & FindKey (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	BRepMesh_PairOfIndex
-
-No detailed docstring for this function.") FindFromIndex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: BRepMesh_PairOfIndex
+") FindFromIndex;
 		const BRepMesh_PairOfIndex & FindFromIndex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	BRepMesh_PairOfIndex
-
-No detailed docstring for this function.") ChangeFromIndex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: BRepMesh_PairOfIndex
+") ChangeFromIndex;
 		BRepMesh_PairOfIndex & ChangeFromIndex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	K(BRepMesh_Edge)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FindIndex;
+		%feature("autodoc", "	:param K:
+	:type K: BRepMesh_Edge &
+	:rtype: int
+") FindIndex;
 		Standard_Integer FindIndex (const BRepMesh_Edge & K);
-		%feature("autodoc", "Args:
-	K(BRepMesh_Edge)
-
-Returns:
-	BRepMesh_PairOfIndex
-
-No detailed docstring for this function.") FindFromKey;
+		%feature("autodoc", "	:param K:
+	:type K: BRepMesh_Edge &
+	:rtype: BRepMesh_PairOfIndex
+") FindFromKey;
 		const BRepMesh_PairOfIndex & FindFromKey (const BRepMesh_Edge & K);
-		%feature("autodoc", "Args:
-	K(BRepMesh_Edge)
-
-Returns:
-	BRepMesh_PairOfIndex
-
-No detailed docstring for this function.") ChangeFromKey;
+		%feature("autodoc", "	:param K:
+	:type K: BRepMesh_Edge &
+	:rtype: BRepMesh_PairOfIndex
+") ChangeFromKey;
 		BRepMesh_PairOfIndex & ChangeFromKey (const BRepMesh_Edge & K);
-		%feature("autodoc", "Args:
-	K(BRepMesh_Edge)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") FindFromKey1;
+		%feature("autodoc", "	:param K:
+	:type K: BRepMesh_Edge &
+	:rtype: Standard_Address
+") FindFromKey1;
 		Standard_Address FindFromKey1 (const BRepMesh_Edge & K);
-		%feature("autodoc", "Args:
-	K(BRepMesh_Edge)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFromKey1;
+		%feature("autodoc", "	:param K:
+	:type K: BRepMesh_Edge &
+	:rtype: Standard_Address
+") ChangeFromKey1;
 		Standard_Address ChangeFromKey1 (const BRepMesh_Edge & K);
 };
 
@@ -4577,142 +3736,92 @@ def __del__(self):
 %nodefaultctor BRepMesh_IDMapOfNodeOfDataStructureOfDelaun;
 class BRepMesh_IDMapOfNodeOfDataStructureOfDelaun : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_IDMapOfNodeOfDataStructureOfDelaun;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") BRepMesh_IDMapOfNodeOfDataStructureOfDelaun;
 		 BRepMesh_IDMapOfNodeOfDataStructureOfDelaun (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_IDMapOfNodeOfDataStructureOfDelaun)
-
-Returns:
-	BRepMesh_IDMapOfNodeOfDataStructureOfDelaun
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_IDMapOfNodeOfDataStructureOfDelaun &
+	:rtype: BRepMesh_IDMapOfNodeOfDataStructureOfDelaun
+") Assign;
 		BRepMesh_IDMapOfNodeOfDataStructureOfDelaun & Assign (const BRepMesh_IDMapOfNodeOfDataStructureOfDelaun & Other);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_IDMapOfNodeOfDataStructureOfDelaun)
-
-Returns:
-	BRepMesh_IDMapOfNodeOfDataStructureOfDelaun
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_IDMapOfNodeOfDataStructureOfDelaun &
+	:rtype: BRepMesh_IDMapOfNodeOfDataStructureOfDelaun
+") operator=;
 		BRepMesh_IDMapOfNodeOfDataStructureOfDelaun & operator = (const BRepMesh_IDMapOfNodeOfDataStructureOfDelaun & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(BRepMesh_Vertex)
-	I(BRepMesh_ListOfInteger)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param K:
+	:type K: BRepMesh_Vertex &
+	:param I:
+	:type I: BRepMesh_ListOfInteger &
+	:rtype: int
+") Add;
 		Standard_Integer Add (const BRepMesh_Vertex & K,const BRepMesh_ListOfInteger & I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	K(BRepMesh_Vertex)
-	T(BRepMesh_ListOfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Substitute;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param K:
+	:type K: BRepMesh_Vertex &
+	:param T:
+	:type T: BRepMesh_ListOfInteger &
+	:rtype: None
+") Substitute;
 		void Substitute (const Standard_Integer I,const BRepMesh_Vertex & K,const BRepMesh_ListOfInteger & T);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveLast;
+		%feature("autodoc", "	:rtype: None
+") RemoveLast;
 		void RemoveLast ();
-		%feature("autodoc", "Args:
-	K(BRepMesh_Vertex)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param K:
+	:type K: BRepMesh_Vertex &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const BRepMesh_Vertex & K);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	BRepMesh_Vertex
-
-No detailed docstring for this function.") FindKey;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: BRepMesh_Vertex
+") FindKey;
 		const BRepMesh_Vertex & FindKey (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	BRepMesh_ListOfInteger
-
-No detailed docstring for this function.") FindFromIndex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: BRepMesh_ListOfInteger
+") FindFromIndex;
 		const BRepMesh_ListOfInteger & FindFromIndex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	BRepMesh_ListOfInteger
-
-No detailed docstring for this function.") ChangeFromIndex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: BRepMesh_ListOfInteger
+") ChangeFromIndex;
 		BRepMesh_ListOfInteger & ChangeFromIndex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	K(BRepMesh_Vertex)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FindIndex;
+		%feature("autodoc", "	:param K:
+	:type K: BRepMesh_Vertex &
+	:rtype: int
+") FindIndex;
 		Standard_Integer FindIndex (const BRepMesh_Vertex & K);
-		%feature("autodoc", "Args:
-	K(BRepMesh_Vertex)
-
-Returns:
-	BRepMesh_ListOfInteger
-
-No detailed docstring for this function.") FindFromKey;
+		%feature("autodoc", "	:param K:
+	:type K: BRepMesh_Vertex &
+	:rtype: BRepMesh_ListOfInteger
+") FindFromKey;
 		const BRepMesh_ListOfInteger & FindFromKey (const BRepMesh_Vertex & K);
-		%feature("autodoc", "Args:
-	K(BRepMesh_Vertex)
-
-Returns:
-	BRepMesh_ListOfInteger
-
-No detailed docstring for this function.") ChangeFromKey;
+		%feature("autodoc", "	:param K:
+	:type K: BRepMesh_Vertex &
+	:rtype: BRepMesh_ListOfInteger
+") ChangeFromKey;
 		BRepMesh_ListOfInteger & ChangeFromKey (const BRepMesh_Vertex & K);
-		%feature("autodoc", "Args:
-	K(BRepMesh_Vertex)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") FindFromKey1;
+		%feature("autodoc", "	:param K:
+	:type K: BRepMesh_Vertex &
+	:rtype: Standard_Address
+") FindFromKey1;
 		Standard_Address FindFromKey1 (const BRepMesh_Vertex & K);
-		%feature("autodoc", "Args:
-	K(BRepMesh_Vertex)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFromKey1;
+		%feature("autodoc", "	:param K:
+	:type K: BRepMesh_Vertex &
+	:rtype: Standard_Address
+") ChangeFromKey1;
 		Standard_Address ChangeFromKey1 (const BRepMesh_Vertex & K);
 };
 
@@ -4734,92 +3843,58 @@ def __del__(self):
 %nodefaultctor BRepMesh_IMapOfElementOfDataStructureOfDelaun;
 class BRepMesh_IMapOfElementOfDataStructureOfDelaun : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_IMapOfElementOfDataStructureOfDelaun;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") BRepMesh_IMapOfElementOfDataStructureOfDelaun;
 		 BRepMesh_IMapOfElementOfDataStructureOfDelaun (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_IMapOfElementOfDataStructureOfDelaun)
-
-Returns:
-	BRepMesh_IMapOfElementOfDataStructureOfDelaun
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_IMapOfElementOfDataStructureOfDelaun &
+	:rtype: BRepMesh_IMapOfElementOfDataStructureOfDelaun
+") Assign;
 		BRepMesh_IMapOfElementOfDataStructureOfDelaun & Assign (const BRepMesh_IMapOfElementOfDataStructureOfDelaun & Other);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_IMapOfElementOfDataStructureOfDelaun)
-
-Returns:
-	BRepMesh_IMapOfElementOfDataStructureOfDelaun
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_IMapOfElementOfDataStructureOfDelaun &
+	:rtype: BRepMesh_IMapOfElementOfDataStructureOfDelaun
+") operator=;
 		BRepMesh_IMapOfElementOfDataStructureOfDelaun & operator = (const BRepMesh_IMapOfElementOfDataStructureOfDelaun & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(BRepMesh_Triangle)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param K:
+	:type K: BRepMesh_Triangle &
+	:rtype: int
+") Add;
 		Standard_Integer Add (const BRepMesh_Triangle & K);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	K(BRepMesh_Triangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Substitute;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param K:
+	:type K: BRepMesh_Triangle &
+	:rtype: None
+") Substitute;
 		void Substitute (const Standard_Integer I,const BRepMesh_Triangle & K);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveLast;
+		%feature("autodoc", "	:rtype: None
+") RemoveLast;
 		void RemoveLast ();
-		%feature("autodoc", "Args:
-	K(BRepMesh_Triangle)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param K:
+	:type K: BRepMesh_Triangle &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const BRepMesh_Triangle & K);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	BRepMesh_Triangle
-
-No detailed docstring for this function.") FindKey;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: BRepMesh_Triangle
+") FindKey;
 		const BRepMesh_Triangle & FindKey (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	K(BRepMesh_Triangle)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FindIndex;
+		%feature("autodoc", "	:param K:
+	:type K: BRepMesh_Triangle &
+	:rtype: int
+") FindIndex;
 		Standard_Integer FindIndex (const BRepMesh_Triangle & K);
 };
 
@@ -4841,24 +3916,21 @@ def __del__(self):
 %nodefaultctor BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun;
 class BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K1(BRepMesh_Edge)
-	K2(Standard_Integer)
-	I(BRepMesh_PairOfIndex)
-	n1(TCollection_MapNodePtr)
-	n2(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun;
+		%feature("autodoc", "	:param K1:
+	:type K1: BRepMesh_Edge &
+	:param K2:
+	:type K2: Standard_Integer
+	:param I:
+	:type I: BRepMesh_PairOfIndex &
+	:param n1:
+	:type n1: TCollection_MapNodePtr &
+	:param n2:
+	:type n2: TCollection_MapNodePtr &
+	:rtype: None
+") BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun;
 		 BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun (const BRepMesh_Edge & K1,const Standard_Integer K2,const BRepMesh_PairOfIndex & I,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_Edge
-
-No detailed docstring for this function.") Key1;
+		%feature("autodoc", "	:rtype: BRepMesh_Edge
+") Key1;
 		BRepMesh_Edge & Key1 ();
 
             %feature("autodoc","1");
@@ -4873,19 +3945,11 @@ No detailed docstring for this function.") Key1;
                 $self->Key2()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_MapNodePtr
-
-No detailed docstring for this function.") Next2;
+            		%feature("autodoc", "	:rtype: TCollection_MapNodePtr
+") Next2;
 		TCollection_MapNodePtr & Next2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_PairOfIndex
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: BRepMesh_PairOfIndex
+") Value;
 		BRepMesh_PairOfIndex & Value ();
 };
 
@@ -4946,24 +4010,21 @@ def __del__(self):
 %nodefaultctor BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun;
 class BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K1(BRepMesh_Vertex)
-	K2(Standard_Integer)
-	I(BRepMesh_ListOfInteger)
-	n1(TCollection_MapNodePtr)
-	n2(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun;
+		%feature("autodoc", "	:param K1:
+	:type K1: BRepMesh_Vertex &
+	:param K2:
+	:type K2: Standard_Integer
+	:param I:
+	:type I: BRepMesh_ListOfInteger &
+	:param n1:
+	:type n1: TCollection_MapNodePtr &
+	:param n2:
+	:type n2: TCollection_MapNodePtr &
+	:rtype: None
+") BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun;
 		 BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun (const BRepMesh_Vertex & K1,const Standard_Integer K2,const BRepMesh_ListOfInteger & I,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_Vertex
-
-No detailed docstring for this function.") Key1;
+		%feature("autodoc", "	:rtype: BRepMesh_Vertex
+") Key1;
 		BRepMesh_Vertex & Key1 ();
 
             %feature("autodoc","1");
@@ -4978,19 +4039,11 @@ No detailed docstring for this function.") Key1;
                 $self->Key2()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_MapNodePtr
-
-No detailed docstring for this function.") Next2;
+            		%feature("autodoc", "	:rtype: TCollection_MapNodePtr
+") Next2;
 		TCollection_MapNodePtr & Next2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_ListOfInteger
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: BRepMesh_ListOfInteger
+") Value;
 		BRepMesh_ListOfInteger & Value ();
 };
 
@@ -5051,23 +4104,19 @@ def __del__(self):
 %nodefaultctor BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun;
 class BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K1(BRepMesh_Triangle)
-	K2(Standard_Integer)
-	n1(TCollection_MapNodePtr)
-	n2(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun;
+		%feature("autodoc", "	:param K1:
+	:type K1: BRepMesh_Triangle &
+	:param K2:
+	:type K2: Standard_Integer
+	:param n1:
+	:type n1: TCollection_MapNodePtr &
+	:param n2:
+	:type n2: TCollection_MapNodePtr &
+	:rtype: None
+") BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun;
 		 BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun (const BRepMesh_Triangle & K1,const Standard_Integer K2,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_Triangle
-
-No detailed docstring for this function.") Key1;
+		%feature("autodoc", "	:rtype: BRepMesh_Triangle
+") Key1;
 		BRepMesh_Triangle & Key1 ();
 
             %feature("autodoc","1");
@@ -5082,12 +4131,8 @@ No detailed docstring for this function.") Key1;
                 $self->Key2()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_MapNodePtr
-
-No detailed docstring for this function.") Next2;
+            		%feature("autodoc", "	:rtype: TCollection_MapNodePtr
+") Next2;
 		TCollection_MapNodePtr & Next2 ();
 };
 
@@ -5148,23 +4193,19 @@ def __del__(self):
 %nodefaultctor BRepMesh_IndexedMapNodeOfIndexedMapOfVertex;
 class BRepMesh_IndexedMapNodeOfIndexedMapOfVertex : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K1(BRepMesh_Vertex)
-	K2(Standard_Integer)
-	n1(TCollection_MapNodePtr)
-	n2(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_IndexedMapNodeOfIndexedMapOfVertex;
+		%feature("autodoc", "	:param K1:
+	:type K1: BRepMesh_Vertex &
+	:param K2:
+	:type K2: Standard_Integer
+	:param n1:
+	:type n1: TCollection_MapNodePtr &
+	:param n2:
+	:type n2: TCollection_MapNodePtr &
+	:rtype: None
+") BRepMesh_IndexedMapNodeOfIndexedMapOfVertex;
 		 BRepMesh_IndexedMapNodeOfIndexedMapOfVertex (const BRepMesh_Vertex & K1,const Standard_Integer K2,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_Vertex
-
-No detailed docstring for this function.") Key1;
+		%feature("autodoc", "	:rtype: BRepMesh_Vertex
+") Key1;
 		BRepMesh_Vertex & Key1 ();
 
             %feature("autodoc","1");
@@ -5179,12 +4220,8 @@ No detailed docstring for this function.") Key1;
                 $self->Key2()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_MapNodePtr
-
-No detailed docstring for this function.") Next2;
+            		%feature("autodoc", "	:rtype: TCollection_MapNodePtr
+") Next2;
 		TCollection_MapNodePtr & Next2 ();
 };
 
@@ -5245,92 +4282,58 @@ def __del__(self):
 %nodefaultctor BRepMesh_IndexedMapOfVertex;
 class BRepMesh_IndexedMapOfVertex : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_IndexedMapOfVertex;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") BRepMesh_IndexedMapOfVertex;
 		 BRepMesh_IndexedMapOfVertex (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_IndexedMapOfVertex)
-
-Returns:
-	BRepMesh_IndexedMapOfVertex
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_IndexedMapOfVertex &
+	:rtype: BRepMesh_IndexedMapOfVertex
+") Assign;
 		BRepMesh_IndexedMapOfVertex & Assign (const BRepMesh_IndexedMapOfVertex & Other);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_IndexedMapOfVertex)
-
-Returns:
-	BRepMesh_IndexedMapOfVertex
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_IndexedMapOfVertex &
+	:rtype: BRepMesh_IndexedMapOfVertex
+") operator=;
 		BRepMesh_IndexedMapOfVertex & operator = (const BRepMesh_IndexedMapOfVertex & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(BRepMesh_Vertex)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param K:
+	:type K: BRepMesh_Vertex &
+	:rtype: int
+") Add;
 		Standard_Integer Add (const BRepMesh_Vertex & K);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	K(BRepMesh_Vertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Substitute;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param K:
+	:type K: BRepMesh_Vertex &
+	:rtype: None
+") Substitute;
 		void Substitute (const Standard_Integer I,const BRepMesh_Vertex & K);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveLast;
+		%feature("autodoc", "	:rtype: None
+") RemoveLast;
 		void RemoveLast ();
-		%feature("autodoc", "Args:
-	K(BRepMesh_Vertex)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param K:
+	:type K: BRepMesh_Vertex &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const BRepMesh_Vertex & K);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	BRepMesh_Vertex
-
-No detailed docstring for this function.") FindKey;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: BRepMesh_Vertex
+") FindKey;
 		const BRepMesh_Vertex & FindKey (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	K(BRepMesh_Vertex)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FindIndex;
+		%feature("autodoc", "	:param K:
+	:type K: BRepMesh_Vertex &
+	:rtype: int
+") FindIndex;
 		Standard_Integer FindIndex (const BRepMesh_Vertex & K);
 };
 
@@ -5352,23 +4355,19 @@ def __del__(self):
 %nodefaultctor BRepMesh_LinkHasherOfDataStructureOfDelaun;
 class BRepMesh_LinkHasherOfDataStructureOfDelaun {
 	public:
-		%feature("autodoc", "Args:
-	K(BRepMesh_Edge)
-	Upper(Standard_Integer)
-
-Returns:
-	static Standard_Integer
-
-No detailed docstring for this function.") HashCode;
+		%feature("autodoc", "	:param K:
+	:type K: BRepMesh_Edge &
+	:param Upper:
+	:type Upper: Standard_Integer
+	:rtype: int
+") HashCode;
 		static Standard_Integer HashCode (const BRepMesh_Edge & K,const Standard_Integer Upper);
-		%feature("autodoc", "Args:
-	K1(BRepMesh_Edge)
-	K2(BRepMesh_Edge)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") IsEqual;
+		%feature("autodoc", "	:param K1:
+	:type K1: BRepMesh_Edge &
+	:param K2:
+	:type K2: BRepMesh_Edge &
+	:rtype: bool
+") IsEqual;
 		static Standard_Boolean IsEqual (const BRepMesh_Edge & K1,const BRepMesh_Edge & K2);
 };
 
@@ -5390,49 +4389,27 @@ def __del__(self):
 %nodefaultctor BRepMesh_ListIteratorOfListOfVertex;
 class BRepMesh_ListIteratorOfListOfVertex {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_ListIteratorOfListOfVertex;
+		%feature("autodoc", "	:rtype: None
+") BRepMesh_ListIteratorOfListOfVertex;
 		 BRepMesh_ListIteratorOfListOfVertex ();
-		%feature("autodoc", "Args:
-	L(BRepMesh_ListOfVertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_ListIteratorOfListOfVertex;
+		%feature("autodoc", "	:param L:
+	:type L: BRepMesh_ListOfVertex &
+	:rtype: None
+") BRepMesh_ListIteratorOfListOfVertex;
 		 BRepMesh_ListIteratorOfListOfVertex (const BRepMesh_ListOfVertex & L);
-		%feature("autodoc", "Args:
-	L(BRepMesh_ListOfVertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: BRepMesh_ListOfVertex &
+	:rtype: None
+") Initialize;
 		void Initialize (const BRepMesh_ListOfVertex & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_Vertex
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: BRepMesh_Vertex
+") Value;
 		BRepMesh_Vertex & Value ();
 };
 
@@ -5454,49 +4431,27 @@ def __del__(self):
 %nodefaultctor BRepMesh_ListIteratorOfListOfXY;
 class BRepMesh_ListIteratorOfListOfXY {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_ListIteratorOfListOfXY;
+		%feature("autodoc", "	:rtype: None
+") BRepMesh_ListIteratorOfListOfXY;
 		 BRepMesh_ListIteratorOfListOfXY ();
-		%feature("autodoc", "Args:
-	L(BRepMesh_ListOfXY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_ListIteratorOfListOfXY;
+		%feature("autodoc", "	:param L:
+	:type L: BRepMesh_ListOfXY &
+	:rtype: None
+") BRepMesh_ListIteratorOfListOfXY;
 		 BRepMesh_ListIteratorOfListOfXY (const BRepMesh_ListOfXY & L);
-		%feature("autodoc", "Args:
-	L(BRepMesh_ListOfXY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: BRepMesh_ListOfXY &
+	:rtype: None
+") Initialize;
 		void Initialize (const BRepMesh_ListOfXY & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_XY
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: gp_XY
+") Value;
 		gp_XY & Value ();
 };
 
@@ -5518,21 +4473,15 @@ def __del__(self):
 %nodefaultctor BRepMesh_ListNodeOfListOfVertex;
 class BRepMesh_ListNodeOfListOfVertex : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(BRepMesh_Vertex)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_ListNodeOfListOfVertex;
+		%feature("autodoc", "	:param I:
+	:type I: BRepMesh_Vertex &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") BRepMesh_ListNodeOfListOfVertex;
 		 BRepMesh_ListNodeOfListOfVertex (const BRepMesh_Vertex & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_Vertex
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: BRepMesh_Vertex
+") Value;
 		BRepMesh_Vertex & Value ();
 };
 
@@ -5593,21 +4542,15 @@ def __del__(self):
 %nodefaultctor BRepMesh_ListNodeOfListOfXY;
 class BRepMesh_ListNodeOfListOfXY : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(gp_XY)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_ListNodeOfListOfXY;
+		%feature("autodoc", "	:param I:
+	:type I: gp_XY
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") BRepMesh_ListNodeOfListOfXY;
 		 BRepMesh_ListNodeOfListOfXY (const gp_XY & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_XY
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: gp_XY
+") Value;
 		gp_XY & Value ();
 };
 
@@ -5668,164 +4611,103 @@ def __del__(self):
 %nodefaultctor BRepMesh_ListOfVertex;
 class BRepMesh_ListOfVertex {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_ListOfVertex;
+		%feature("autodoc", "	:rtype: None
+") BRepMesh_ListOfVertex;
 		 BRepMesh_ListOfVertex ();
-		%feature("autodoc", "Args:
-	Other(BRepMesh_ListOfVertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_ListOfVertex &
+	:rtype: None
+") Assign;
 		void Assign (const BRepMesh_ListOfVertex & Other);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_ListOfVertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_ListOfVertex &
+	:rtype: None
+") operator=;
 		void operator = (const BRepMesh_ListOfVertex & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(BRepMesh_Vertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: BRepMesh_Vertex &
+	:rtype: None
+") Prepend;
 		void Prepend (const BRepMesh_Vertex & I);
-		%feature("autodoc", "Args:
-	I(BRepMesh_Vertex)
-	theIt(BRepMesh_ListIteratorOfListOfVertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: BRepMesh_Vertex &
+	:param theIt:
+	:type theIt: BRepMesh_ListIteratorOfListOfVertex &
+	:rtype: None
+") Prepend;
 		void Prepend (const BRepMesh_Vertex & I,BRepMesh_ListIteratorOfListOfVertex & theIt);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_ListOfVertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_ListOfVertex &
+	:rtype: None
+") Prepend;
 		void Prepend (BRepMesh_ListOfVertex & Other);
-		%feature("autodoc", "Args:
-	I(BRepMesh_Vertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: BRepMesh_Vertex &
+	:rtype: None
+") Append;
 		void Append (const BRepMesh_Vertex & I);
-		%feature("autodoc", "Args:
-	I(BRepMesh_Vertex)
-	theIt(BRepMesh_ListIteratorOfListOfVertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: BRepMesh_Vertex &
+	:param theIt:
+	:type theIt: BRepMesh_ListIteratorOfListOfVertex &
+	:rtype: None
+") Append;
 		void Append (const BRepMesh_Vertex & I,BRepMesh_ListIteratorOfListOfVertex & theIt);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_ListOfVertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_ListOfVertex &
+	:rtype: None
+") Append;
 		void Append (BRepMesh_ListOfVertex & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_Vertex
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: BRepMesh_Vertex
+") First;
 		BRepMesh_Vertex & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_Vertex
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: BRepMesh_Vertex
+") Last;
 		BRepMesh_Vertex & Last ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(BRepMesh_ListIteratorOfListOfVertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: BRepMesh_ListIteratorOfListOfVertex &
+	:rtype: None
+") Remove;
 		void Remove (BRepMesh_ListIteratorOfListOfVertex & It);
-		%feature("autodoc", "Args:
-	I(BRepMesh_Vertex)
-	It(BRepMesh_ListIteratorOfListOfVertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: BRepMesh_Vertex &
+	:param It:
+	:type It: BRepMesh_ListIteratorOfListOfVertex &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const BRepMesh_Vertex & I,BRepMesh_ListIteratorOfListOfVertex & It);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_ListOfVertex)
-	It(BRepMesh_ListIteratorOfListOfVertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_ListOfVertex &
+	:param It:
+	:type It: BRepMesh_ListIteratorOfListOfVertex &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (BRepMesh_ListOfVertex & Other,BRepMesh_ListIteratorOfListOfVertex & It);
-		%feature("autodoc", "Args:
-	I(BRepMesh_Vertex)
-	It(BRepMesh_ListIteratorOfListOfVertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: BRepMesh_Vertex &
+	:param It:
+	:type It: BRepMesh_ListIteratorOfListOfVertex &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const BRepMesh_Vertex & I,BRepMesh_ListIteratorOfListOfVertex & It);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_ListOfVertex)
-	It(BRepMesh_ListIteratorOfListOfVertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_ListOfVertex &
+	:param It:
+	:type It: BRepMesh_ListIteratorOfListOfVertex &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (BRepMesh_ListOfVertex & Other,BRepMesh_ListIteratorOfListOfVertex & It);
 };
 
@@ -5847,164 +4729,103 @@ def __del__(self):
 %nodefaultctor BRepMesh_ListOfXY;
 class BRepMesh_ListOfXY {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_ListOfXY;
+		%feature("autodoc", "	:rtype: None
+") BRepMesh_ListOfXY;
 		 BRepMesh_ListOfXY ();
-		%feature("autodoc", "Args:
-	Other(BRepMesh_ListOfXY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_ListOfXY &
+	:rtype: None
+") Assign;
 		void Assign (const BRepMesh_ListOfXY & Other);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_ListOfXY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_ListOfXY &
+	:rtype: None
+") operator=;
 		void operator = (const BRepMesh_ListOfXY & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(gp_XY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: gp_XY
+	:rtype: None
+") Prepend;
 		void Prepend (const gp_XY & I);
-		%feature("autodoc", "Args:
-	I(gp_XY)
-	theIt(BRepMesh_ListIteratorOfListOfXY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: gp_XY
+	:param theIt:
+	:type theIt: BRepMesh_ListIteratorOfListOfXY &
+	:rtype: None
+") Prepend;
 		void Prepend (const gp_XY & I,BRepMesh_ListIteratorOfListOfXY & theIt);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_ListOfXY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_ListOfXY &
+	:rtype: None
+") Prepend;
 		void Prepend (BRepMesh_ListOfXY & Other);
-		%feature("autodoc", "Args:
-	I(gp_XY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: gp_XY
+	:rtype: None
+") Append;
 		void Append (const gp_XY & I);
-		%feature("autodoc", "Args:
-	I(gp_XY)
-	theIt(BRepMesh_ListIteratorOfListOfXY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: gp_XY
+	:param theIt:
+	:type theIt: BRepMesh_ListIteratorOfListOfXY &
+	:rtype: None
+") Append;
 		void Append (const gp_XY & I,BRepMesh_ListIteratorOfListOfXY & theIt);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_ListOfXY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_ListOfXY &
+	:rtype: None
+") Append;
 		void Append (BRepMesh_ListOfXY & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_XY
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: gp_XY
+") First;
 		gp_XY & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_XY
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: gp_XY
+") Last;
 		gp_XY & Last ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(BRepMesh_ListIteratorOfListOfXY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: BRepMesh_ListIteratorOfListOfXY &
+	:rtype: None
+") Remove;
 		void Remove (BRepMesh_ListIteratorOfListOfXY & It);
-		%feature("autodoc", "Args:
-	I(gp_XY)
-	It(BRepMesh_ListIteratorOfListOfXY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: gp_XY
+	:param It:
+	:type It: BRepMesh_ListIteratorOfListOfXY &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const gp_XY & I,BRepMesh_ListIteratorOfListOfXY & It);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_ListOfXY)
-	It(BRepMesh_ListIteratorOfListOfXY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_ListOfXY &
+	:param It:
+	:type It: BRepMesh_ListIteratorOfListOfXY &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (BRepMesh_ListOfXY & Other,BRepMesh_ListIteratorOfListOfXY & It);
-		%feature("autodoc", "Args:
-	I(gp_XY)
-	It(BRepMesh_ListIteratorOfListOfXY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: gp_XY
+	:param It:
+	:type It: BRepMesh_ListIteratorOfListOfXY &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const gp_XY & I,BRepMesh_ListIteratorOfListOfXY & It);
-		%feature("autodoc", "Args:
-	Other(BRepMesh_ListOfXY)
-	It(BRepMesh_ListIteratorOfListOfXY)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_ListOfXY &
+	:param It:
+	:type It: BRepMesh_ListIteratorOfListOfXY &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (BRepMesh_ListOfXY & Other,BRepMesh_ListIteratorOfListOfXY & It);
 };
 
@@ -6026,23 +4847,19 @@ def __del__(self):
 %nodefaultctor BRepMesh_NodeHasherOfDataStructureOfDelaun;
 class BRepMesh_NodeHasherOfDataStructureOfDelaun {
 	public:
-		%feature("autodoc", "Args:
-	K(BRepMesh_Vertex)
-	Upper(Standard_Integer)
-
-Returns:
-	static Standard_Integer
-
-No detailed docstring for this function.") HashCode;
+		%feature("autodoc", "	:param K:
+	:type K: BRepMesh_Vertex &
+	:param Upper:
+	:type Upper: Standard_Integer
+	:rtype: int
+") HashCode;
 		static Standard_Integer HashCode (const BRepMesh_Vertex & K,const Standard_Integer Upper);
-		%feature("autodoc", "Args:
-	K1(BRepMesh_Vertex)
-	K2(BRepMesh_Vertex)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") IsEqual;
+		%feature("autodoc", "	:param K1:
+	:type K1: BRepMesh_Vertex &
+	:param K2:
+	:type K2: BRepMesh_Vertex &
+	:rtype: bool
+") IsEqual;
 		static Standard_Boolean IsEqual (const BRepMesh_Vertex & K1,const BRepMesh_Vertex & K2);
 };
 
@@ -6064,96 +4881,71 @@ def __del__(self):
 %nodefaultctor BRepMesh_PairOfIndex;
 class BRepMesh_PairOfIndex {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_PairOfIndex;
+		%feature("autodoc", "	:rtype: None
+") BRepMesh_PairOfIndex;
 		 BRepMesh_PairOfIndex ();
-		%feature("autodoc", "Args:
-	theOther(BRepMesh_PairOfIndex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_PairOfIndex;
+		%feature("autodoc", "	:param theOther:
+	:type theOther: BRepMesh_PairOfIndex &
+	:rtype: None
+") BRepMesh_PairOfIndex;
 		 BRepMesh_PairOfIndex (const BRepMesh_PairOfIndex & theOther);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Clear indices
 
-Clear indices") Clear;
+	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	theIndx(Standard_Integer)
+		%feature("autodoc", "	* append index (store first of last index of pair)
 
-Returns:
-	None
-
-append index (store first of last index of pair)") Append;
+	:param theIndx:
+	:type theIndx: Standard_Integer
+	:rtype: None
+") Append;
 		void Append (const Standard_Integer theIndx);
-		%feature("autodoc", "Args:
-	theIndx(Standard_Integer)
+		%feature("autodoc", "	* prepend index (store first index)
 
-Returns:
-	None
-
-prepend index (store first index)") Prepend;
+	:param theIndx:
+	:type theIndx: Standard_Integer
+	:rtype: None
+") Prepend;
 		void Prepend (const Standard_Integer theIndx);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns is pair not initialized by index
 
-returns is pair not initialized by index") IsEmpty;
+	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* returns numner of initialized indeces
 
-returns numner of initialized indeces") Extent;
+	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* returns first index from pair
 
-returns first index from pair") FirstIndex;
+	:rtype: int
+") FirstIndex;
 		Standard_Integer FirstIndex ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* returns last index
 
-returns last index") LastIndex;
+	:rtype: int
+") LastIndex;
 		Standard_Integer LastIndex ();
-		%feature("autodoc", "Args:
-	theNum(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Index;
+		%feature("autodoc", "	:param theNum:
+	:type theNum: Standard_Integer
+	:rtype: int
+") Index;
 		Standard_Integer Index (const Standard_Integer theNum);
-		%feature("autodoc", "Args:
-	theNum(Standard_Integer)
-	theIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetIndex;
+		%feature("autodoc", "	:param theNum:
+	:type theNum: Standard_Integer
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: None
+") SetIndex;
 		void SetIndex (const Standard_Integer theNum,const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theNum(Standard_Integer)
+		%feature("autodoc", "	* remove indicated
 
-Returns:
-	None
-
-remove indicated") RemoveIndex;
+	:param theNum:
+	:type theNum: Standard_Integer
+	:rtype: None
+") RemoveIndex;
 		void RemoveIndex (const Standard_Integer theNum);
 };
 
@@ -6175,49 +4967,35 @@ def __del__(self):
 %nodefaultctor BRepMesh_PairOfPolygon;
 class BRepMesh_PairOfPolygon {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Create empty pair with null fileds
 
-Create empty pair with null fileds") BRepMesh_PairOfPolygon;
+	:rtype: None
+") BRepMesh_PairOfPolygon;
 		 BRepMesh_PairOfPolygon ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Clear pair handles
 
-Clear pair handles") Clear;
+	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	thePoly(Handle_Poly_PolygonOnTriangulation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param thePoly:
+	:type thePoly: Handle_Poly_PolygonOnTriangulation &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Poly_PolygonOnTriangulation & thePoly);
-		%feature("autodoc", "Args:
-	thePoly(Handle_Poly_PolygonOnTriangulation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param thePoly:
+	:type thePoly: Handle_Poly_PolygonOnTriangulation &
+	:rtype: None
+") Append;
 		void Append (const Handle_Poly_PolygonOnTriangulation & thePoly);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Poly_PolygonOnTriangulation
+		%feature("autodoc", "	* Returns first polygon on triangulation
 
-Returns first polygon on triangulation") First;
+	:rtype: Handle_Poly_PolygonOnTriangulation
+") First;
 		const Handle_Poly_PolygonOnTriangulation & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Poly_PolygonOnTriangulation
+		%feature("autodoc", "	* Returns last polygon on triangulation
 
-Returns last polygon on triangulation") Last;
+	:rtype: Handle_Poly_PolygonOnTriangulation
+") Last;
 		const Handle_Poly_PolygonOnTriangulation & Last ();
 };
 
@@ -6239,131 +5017,83 @@ def __del__(self):
 %nodefaultctor BRepMesh_SelectorOfDataStructureOfDelaun;
 class BRepMesh_SelectorOfDataStructureOfDelaun {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_SelectorOfDataStructureOfDelaun;
+		%feature("autodoc", "	:rtype: None
+") BRepMesh_SelectorOfDataStructureOfDelaun;
 		 BRepMesh_SelectorOfDataStructureOfDelaun ();
-		%feature("autodoc", "Args:
-	theMesh(Handle_BRepMesh_DataStructureOfDelaun)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_SelectorOfDataStructureOfDelaun;
+		%feature("autodoc", "	:param theMesh:
+	:type theMesh: Handle_BRepMesh_DataStructureOfDelaun &
+	:rtype: None
+") BRepMesh_SelectorOfDataStructureOfDelaun;
 		 BRepMesh_SelectorOfDataStructureOfDelaun (const Handle_BRepMesh_DataStructureOfDelaun & theMesh);
-		%feature("autodoc", "Args:
-	theMesh(Handle_BRepMesh_DataStructureOfDelaun)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param theMesh:
+	:type theMesh: Handle_BRepMesh_DataStructureOfDelaun &
+	:rtype: None
+") Initialize;
 		void Initialize (const Handle_BRepMesh_DataStructureOfDelaun & theMesh);
-		%feature("autodoc", "Args:
-	theNode(BRepMesh_Vertex)
-
-Returns:
-	None
-
-No detailed docstring for this function.") NeighboursOf;
+		%feature("autodoc", "	:param theNode:
+	:type theNode: BRepMesh_Vertex &
+	:rtype: None
+") NeighboursOf;
 		void NeighboursOf (const BRepMesh_Vertex & theNode);
-		%feature("autodoc", "Args:
-	indexNode(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") NeighboursOfNode;
+		%feature("autodoc", "	:param indexNode:
+	:type indexNode: Standard_Integer
+	:rtype: None
+") NeighboursOfNode;
 		void NeighboursOfNode (const Standard_Integer indexNode);
-		%feature("autodoc", "Args:
-	theLink(BRepMesh_Edge)
-
-Returns:
-	None
-
-No detailed docstring for this function.") NeighboursOf;
+		%feature("autodoc", "	:param theLink:
+	:type theLink: BRepMesh_Edge &
+	:rtype: None
+") NeighboursOf;
 		void NeighboursOf (const BRepMesh_Edge & theLink);
-		%feature("autodoc", "Args:
-	indexLink(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") NeighboursOfLink;
+		%feature("autodoc", "	:param indexLink:
+	:type indexLink: Standard_Integer
+	:rtype: None
+") NeighboursOfLink;
 		void NeighboursOfLink (const Standard_Integer indexLink);
-		%feature("autodoc", "Args:
-	theElem(BRepMesh_Triangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") NeighboursOf;
+		%feature("autodoc", "	:param theElem:
+	:type theElem: BRepMesh_Triangle &
+	:rtype: None
+") NeighboursOf;
 		void NeighboursOf (const BRepMesh_Triangle & theElem);
-		%feature("autodoc", "Args:
-	indexElem(Standard_Integer)
+		%feature("autodoc", "	* All Neighbours Of the Element. By edge or by vertices.
 
-Returns:
-	None
-
-All Neighbours  Of the Element. By  
-         edge or by vertices.") NeighboursOfElement;
+	:param indexElem:
+	:type indexElem: Standard_Integer
+	:rtype: None
+") NeighboursOfElement;
 		void NeighboursOfElement (const Standard_Integer indexElem);
-		%feature("autodoc", "Args:
-	theElem(BRepMesh_Triangle)
+		%feature("autodoc", "	* Neighbours by edge Of the Element.
 
-Returns:
-	None
-
-Neighbours by edge Of the Element.") NeighboursByEdgeOf;
+	:param theElem:
+	:type theElem: BRepMesh_Triangle &
+	:rtype: None
+") NeighboursByEdgeOf;
 		void NeighboursByEdgeOf (const BRepMesh_Triangle & theElem);
-		%feature("autodoc", "Args:
-	theSelector(BRepMesh_SelectorOfDataStructureOfDelaun)
+		%feature("autodoc", "	* Adds a level of Neighbours by edge to the selector <theSelector>.
 
-Returns:
-	None
-
-Adds a level of Neighbours by edge  
-         to the selector <theSelector>.") NeighboursOf;
+	:param theSelector:
+	:type theSelector: BRepMesh_SelectorOfDataStructureOfDelaun &
+	:rtype: None
+") NeighboursOf;
 		void NeighboursOf (const BRepMesh_SelectorOfDataStructureOfDelaun & theSelector);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Adds a level of Neighbours by edge to the selector <self>.
 
-Adds a level of Neighbours by edge  
-         to the selector <self>.") AddNeighbours;
+	:rtype: None
+") AddNeighbours;
 		void AddNeighbours ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_MapOfInteger
-
-No detailed docstring for this function.") Nodes;
+		%feature("autodoc", "	:rtype: BRepMesh_MapOfInteger
+") Nodes;
 		const BRepMesh_MapOfInteger & Nodes ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_MapOfInteger
-
-No detailed docstring for this function.") Links;
+		%feature("autodoc", "	:rtype: BRepMesh_MapOfInteger
+") Links;
 		const BRepMesh_MapOfInteger & Links ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_MapOfInteger
-
-No detailed docstring for this function.") Elements;
+		%feature("autodoc", "	:rtype: BRepMesh_MapOfInteger
+") Elements;
 		const BRepMesh_MapOfInteger & Elements ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_MapOfInteger
+		%feature("autodoc", "	* Gives the list of links incices frontier of the selector <self>.
 
-Gives the  list  of links  incices  
-         frontier  of  the  selector  <self>.") FrontierLinks;
+	:rtype: BRepMesh_MapOfInteger
+") FrontierLinks;
 		const BRepMesh_MapOfInteger & FrontierLinks ();
 };
 
@@ -6385,246 +5115,168 @@ def __del__(self):
 %nodefaultctor BRepMesh_ShapeTool;
 class BRepMesh_ShapeTool {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_ShapeTool;
+		%feature("autodoc", "	:rtype: None
+") BRepMesh_ShapeTool;
 		 BRepMesh_ShapeTool ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") MoreFace;
+		%feature("autodoc", "	:rtype: bool
+") MoreFace;
 		Standard_Boolean MoreFace ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") NextFace;
+		%feature("autodoc", "	:rtype: None
+") NextFace;
 		void NextFace ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Face
-
-No detailed docstring for this function.") CurrentFace;
+		%feature("autodoc", "	:rtype: TopoDS_Face
+") CurrentFace;
 		const TopoDS_Face & CurrentFace ();
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Face & F);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") MoreEdge;
+		%feature("autodoc", "	:rtype: bool
+") MoreEdge;
 		Standard_Boolean MoreEdge ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") NextEdge;
+		%feature("autodoc", "	:rtype: None
+") NextEdge;
 		void NextEdge ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Edge
-
-No detailed docstring for this function.") CurrentEdge;
+		%feature("autodoc", "	:rtype: TopoDS_Edge
+") CurrentEdge;
 		const TopoDS_Edge & CurrentEdge ();
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") MoreInternalVertex;
+		%feature("autodoc", "	:rtype: bool
+") MoreInternalVertex;
 		Standard_Boolean MoreInternalVertex ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") NextInternalVertex;
+		%feature("autodoc", "	:rtype: None
+") NextInternalVertex;
 		void NextInternalVertex ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Vertex
-
-No detailed docstring for this function.") CurrentInternalVertex;
+		%feature("autodoc", "	:rtype: TopoDS_Vertex
+") CurrentInternalVertex;
 		const TopoDS_Vertex & CurrentInternalVertex ();
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-
-Returns:
-	static TopAbs_Orientation
-
-No detailed docstring for this function.") Orientation;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:rtype: TopAbs_Orientation
+") Orientation;
 		static TopAbs_Orientation Orientation (const TopoDS_Face & F);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
-
-Returns:
-	static TopAbs_Orientation
-
-No detailed docstring for this function.") Orientation;
+		%feature("autodoc", "	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: TopAbs_Orientation
+") Orientation;
 		static TopAbs_Orientation Orientation (const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-
-Returns:
-	static Bnd_Box
-
-No detailed docstring for this function.") Bound;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:rtype: Bnd_Box
+") Bound;
 		static Bnd_Box Bound (const TopoDS_Face & F);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
-
-Returns:
-	static Bnd_Box
-
-No detailed docstring for this function.") Bound;
+		%feature("autodoc", "	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: Bnd_Box
+") Bound;
 		static Bnd_Box Bound (const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
-
-Returns:
-	static TopoDS_Vertex
-
-No detailed docstring for this function.") FirstVertex;
+		%feature("autodoc", "	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: TopoDS_Vertex
+") FirstVertex;
 		static TopoDS_Vertex FirstVertex (const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
-
-Returns:
-	static TopoDS_Vertex
-
-No detailed docstring for this function.") LastVertex;
+		%feature("autodoc", "	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: TopoDS_Vertex
+") LastVertex;
 		static TopoDS_Vertex LastVertex (const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
-	Vfirst(TopoDS_Vertex)
-	Vlast(TopoDS_Vertex)
+		%feature("autodoc", "	* If there is not First or Last vertex (infinite or semi-infinite edge) return null shapes.
 
-Returns:
-	static void
-
-If there is  not First or Last vertex (infinite or  
-         semi-infinite edge) return null shapes.") Vertices;
+	:param E:
+	:type E: TopoDS_Edge &
+	:param Vfirst:
+	:type Vfirst: TopoDS_Vertex &
+	:param Vlast:
+	:type Vlast: TopoDS_Vertex &
+	:rtype: void
+") Vertices;
 		static void Vertices (const TopoDS_Edge & E,TopoDS_Vertex & Vfirst,TopoDS_Vertex & Vlast);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
-	F(TopoDS_Face)
-	wFirst(Standard_Real)
-	wLast(Standard_Real)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") Range;
+		%feature("autodoc", "	:param E:
+	:type E: TopoDS_Edge &
+	:param F:
+	:type F: TopoDS_Face &
+	:param wFirst:
+	:type wFirst: float &
+	:param wLast:
+	:type wLast: float &
+	:rtype: void
+") Range;
 		static void Range (const TopoDS_Edge & E,const TopoDS_Face & F,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
-	F(TopoDS_Face)
-	uvFirst(gp_Pnt2d)
-	uvLast(gp_Pnt2d)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") UVPoints;
+		%feature("autodoc", "	:param E:
+	:type E: TopoDS_Edge &
+	:param F:
+	:type F: TopoDS_Face &
+	:param uvFirst:
+	:type uvFirst: gp_Pnt2d
+	:param uvLast:
+	:type uvLast: gp_Pnt2d
+	:rtype: void
+") UVPoints;
 		static void UVPoints (const TopoDS_Edge & E,const TopoDS_Face & F,gp_Pnt2d & uvFirst,gp_Pnt2d & uvLast);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") Degenerated;
+		%feature("autodoc", "	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: bool
+") Degenerated;
 		static Standard_Boolean Degenerated (const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	V(TopoDS_Vertex)
-
-Returns:
-	static Standard_Real
-
-No detailed docstring for this function.") Tolerance;
+		%feature("autodoc", "	:param V:
+	:type V: TopoDS_Vertex &
+	:rtype: float
+") Tolerance;
 		static Standard_Real Tolerance (const TopoDS_Vertex & V);
-		%feature("autodoc", "Args:
-	V(TopoDS_Vertex)
-	E(TopoDS_Edge)
-	F(TopoDS_Face)
-
-Returns:
-	static Standard_Real
-
-No detailed docstring for this function.") Parameter;
+		%feature("autodoc", "	:param V:
+	:type V: TopoDS_Vertex &
+	:param E:
+	:type E: TopoDS_Edge &
+	:param F:
+	:type F: TopoDS_Face &
+	:rtype: float
+") Parameter;
 		static Standard_Real Parameter (const TopoDS_Vertex & V,const TopoDS_Edge & E,const TopoDS_Face & F);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
-	F(TopoDS_Face)
-	W(Standard_Real)
-	UV(gp_Pnt2d)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") Parameters;
+		%feature("autodoc", "	:param E:
+	:type E: TopoDS_Edge &
+	:param F:
+	:type F: TopoDS_Face &
+	:param W:
+	:type W: float
+	:param UV:
+	:type UV: gp_Pnt2d
+	:rtype: void
+") Parameters;
 		static void Parameters (const TopoDS_Edge & E,const TopoDS_Face & F,const Standard_Real W,gp_Pnt2d & UV);
-		%feature("autodoc", "Args:
-	C(BRepAdaptor_Curve)
-	W(Standard_Real)
-	WFound(Standard_Real)
-	p3d(gp_Pnt)
-	UV(gp_Pnt2d)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") Locate;
+		%feature("autodoc", "	:param C:
+	:type C: BRepAdaptor_Curve &
+	:param W:
+	:type W: float
+	:param WFound:
+	:type WFound: float &
+	:param p3d:
+	:type p3d: gp_Pnt
+	:param UV:
+	:type UV: gp_Pnt2d
+	:rtype: void
+") Locate;
 		static void Locate (const BRepAdaptor_Curve & C,const Standard_Real W,Standard_Real &OutValue,const gp_Pnt & p3d,gp_Pnt2d & UV);
-		%feature("autodoc", "Args:
-	V(TopoDS_Vertex)
-
-Returns:
-	static gp_Pnt
-
-No detailed docstring for this function.") Pnt;
+		%feature("autodoc", "	:param V:
+	:type V: TopoDS_Vertex &
+	:rtype: gp_Pnt
+") Pnt;
 		static gp_Pnt Pnt (const TopoDS_Vertex & V);
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-	T(Handle_Poly_Triangulation)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") AddInFace;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:param T:
+	:type T: Handle_Poly_Triangulation &
+	:rtype: void
+") AddInFace;
 		static void AddInFace (const TopoDS_Face & F,Handle_Poly_Triangulation & T);
 };
 
@@ -6646,76 +5298,70 @@ def __del__(self):
 %nodefaultctor BRepMesh_Triangle;
 class BRepMesh_Triangle {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_Triangle;
+		%feature("autodoc", "	:rtype: None
+") BRepMesh_Triangle;
 		 BRepMesh_Triangle ();
-		%feature("autodoc", "Args:
-	theEdge1(Standard_Integer)
-	theEdge2(Standard_Integer)
-	theEdge3(Standard_Integer)
-	theOrientation1(Standard_Boolean)
-	theOrientation2(Standard_Boolean)
-	theOrientation3(Standard_Boolean)
-	isCanMove(BRepMesh_DegreeOfFreedom)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_Triangle;
+		%feature("autodoc", "	:param theEdge1:
+	:type theEdge1: Standard_Integer
+	:param theEdge2:
+	:type theEdge2: Standard_Integer
+	:param theEdge3:
+	:type theEdge3: Standard_Integer
+	:param theOrientation1:
+	:type theOrientation1: bool
+	:param theOrientation2:
+	:type theOrientation2: bool
+	:param theOrientation3:
+	:type theOrientation3: bool
+	:param isCanMove:
+	:type isCanMove: BRepMesh_DegreeOfFreedom
+	:rtype: None
+") BRepMesh_Triangle;
 		 BRepMesh_Triangle (const Standard_Integer theEdge1,const Standard_Integer theEdge2,const Standard_Integer theEdge3,const Standard_Boolean theOrientation1,const Standard_Boolean theOrientation2,const Standard_Boolean theOrientation3,const BRepMesh_DegreeOfFreedom isCanMove);
-		%feature("autodoc", "Args:
-	theEdge1(Standard_Integer)
-	theEdge2(Standard_Integer)
-	theEdge3(Standard_Integer)
-	theOrientation1(Standard_Boolean)
-	theOrientation2(Standard_Boolean)
-	theOrientation3(Standard_Boolean)
-	isCanMove(BRepMesh_DegreeOfFreedom)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param theEdge1:
+	:type theEdge1: Standard_Integer
+	:param theEdge2:
+	:type theEdge2: Standard_Integer
+	:param theEdge3:
+	:type theEdge3: Standard_Integer
+	:param theOrientation1:
+	:type theOrientation1: bool
+	:param theOrientation2:
+	:type theOrientation2: bool
+	:param theOrientation3:
+	:type theOrientation3: bool
+	:param isCanMove:
+	:type isCanMove: BRepMesh_DegreeOfFreedom
+	:rtype: None
+") Initialize;
 		void Initialize (const Standard_Integer theEdge1,const Standard_Integer theEdge2,const Standard_Integer theEdge3,const Standard_Boolean theOrientation1,const Standard_Boolean theOrientation2,const Standard_Boolean theOrientation3,const BRepMesh_DegreeOfFreedom isCanMove);
-		%feature("autodoc", "Args:
-	theEdge1(Standard_Integer)
-	theEdge2(Standard_Integer)
-	theEdge3(Standard_Integer)
-	theOrientation1(Standard_Boolean)
-	theOrientation2(Standard_Boolean)
-	theOrientation3(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Edges;
+		%feature("autodoc", "	:param theEdge1:
+	:type theEdge1: Standard_Integer &
+	:param theEdge2:
+	:type theEdge2: Standard_Integer &
+	:param theEdge3:
+	:type theEdge3: Standard_Integer &
+	:param theOrientation1:
+	:type theOrientation1: bool
+	:param theOrientation2:
+	:type theOrientation2: bool
+	:param theOrientation3:
+	:type theOrientation3: bool
+	:rtype: None
+") Edges;
 		void Edges (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Boolean & theOrientation1,Standard_Boolean & theOrientation2,Standard_Boolean & theOrientation3);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	inline BRepMesh_DegreeOfFreedom
-
-No detailed docstring for this function.") Movability;
+		%feature("autodoc", "	:rtype: inline BRepMesh_DegreeOfFreedom
+") Movability;
 		inline BRepMesh_DegreeOfFreedom Movability ();
-		%feature("autodoc", "Args:
-	theMovability(BRepMesh_DegreeOfFreedom)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetMovability;
+		%feature("autodoc", "	:param theMovability:
+	:type theMovability: BRepMesh_DegreeOfFreedom
+	:rtype: None
+") SetMovability;
 		void SetMovability (const BRepMesh_DegreeOfFreedom theMovability);
-		%feature("autodoc", "Args:
-	theUpper(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") HashCode;
+		%feature("autodoc", "	:param theUpper:
+	:type theUpper: Standard_Integer
+	:rtype: int
+") HashCode;
 		Standard_Integer HashCode (const Standard_Integer theUpper);
 
         %extend {
@@ -6723,13 +5369,10 @@ No detailed docstring for this function.") HashCode;
             return $self->HashCode(2147483647);
             }
         };
-        		%feature("autodoc", "Args:
-	theOther(BRepMesh_Triangle)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEqual;
+        		%feature("autodoc", "	:param theOther:
+	:type theOther: BRepMesh_Triangle &
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const BRepMesh_Triangle & theOther);
 
         %extend{
@@ -6765,79 +5408,54 @@ def __del__(self):
 %nodefaultctor BRepMesh_Vertex;
 class BRepMesh_Vertex {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_Vertex;
+		%feature("autodoc", "	:rtype: None
+") BRepMesh_Vertex;
 		 BRepMesh_Vertex ();
-		%feature("autodoc", "Args:
-	UV(gp_XY)
-	Locat3d(Standard_Integer)
-	Move(BRepMesh_DegreeOfFreedom)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_Vertex;
+		%feature("autodoc", "	:param UV:
+	:type UV: gp_XY
+	:param Locat3d:
+	:type Locat3d: Standard_Integer
+	:param Move:
+	:type Move: BRepMesh_DegreeOfFreedom
+	:rtype: None
+") BRepMesh_Vertex;
 		 BRepMesh_Vertex (const gp_XY & UV,const Standard_Integer Locat3d,const BRepMesh_DegreeOfFreedom Move);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Move(BRepMesh_DegreeOfFreedom)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_Vertex;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Move:
+	:type Move: BRepMesh_DegreeOfFreedom
+	:rtype: None
+") BRepMesh_Vertex;
 		 BRepMesh_Vertex (const Standard_Real U,const Standard_Real V,const BRepMesh_DegreeOfFreedom Move);
-		%feature("autodoc", "Args:
-	UV(gp_XY)
-	Locat3d(Standard_Integer)
-	Move(BRepMesh_DegreeOfFreedom)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param UV:
+	:type UV: gp_XY
+	:param Locat3d:
+	:type Locat3d: Standard_Integer
+	:param Move:
+	:type Move: BRepMesh_DegreeOfFreedom
+	:rtype: None
+") Initialize;
 		void Initialize (const gp_XY & UV,const Standard_Integer Locat3d,const BRepMesh_DegreeOfFreedom Move);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_XY
-
-No detailed docstring for this function.") Coord;
+		%feature("autodoc", "	:rtype: gp_XY
+") Coord;
 		const gp_XY & Coord ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Location3d;
+		%feature("autodoc", "	:rtype: int
+") Location3d;
 		Standard_Integer Location3d ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_DegreeOfFreedom
-
-No detailed docstring for this function.") Movability;
+		%feature("autodoc", "	:rtype: BRepMesh_DegreeOfFreedom
+") Movability;
 		BRepMesh_DegreeOfFreedom Movability ();
-		%feature("autodoc", "Args:
-	Move(BRepMesh_DegreeOfFreedom)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetMovability;
+		%feature("autodoc", "	:param Move:
+	:type Move: BRepMesh_DegreeOfFreedom
+	:rtype: None
+") SetMovability;
 		void SetMovability (const BRepMesh_DegreeOfFreedom Move);
-		%feature("autodoc", "Args:
-	Upper(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") HashCode;
+		%feature("autodoc", "	:param Upper:
+	:type Upper: Standard_Integer
+	:rtype: int
+") HashCode;
 		Standard_Integer HashCode (const Standard_Integer Upper);
 
         %extend {
@@ -6845,13 +5463,10 @@ No detailed docstring for this function.") HashCode;
             return $self->HashCode(2147483647);
             }
         };
-        		%feature("autodoc", "Args:
-	Other(BRepMesh_Vertex)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEqual;
+        		%feature("autodoc", "	:param Other:
+	:type Other: BRepMesh_Vertex &
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const BRepMesh_Vertex & Other);
 
         %extend{
@@ -6887,23 +5502,19 @@ def __del__(self):
 %nodefaultctor BRepMesh_VertexHasher;
 class BRepMesh_VertexHasher {
 	public:
-		%feature("autodoc", "Args:
-	K(BRepMesh_Vertex)
-	Upper(Standard_Integer)
-
-Returns:
-	static Standard_Integer
-
-No detailed docstring for this function.") HashCode;
+		%feature("autodoc", "	:param K:
+	:type K: BRepMesh_Vertex &
+	:param Upper:
+	:type Upper: Standard_Integer
+	:rtype: int
+") HashCode;
 		static Standard_Integer HashCode (const BRepMesh_Vertex & K,const Standard_Integer Upper);
-		%feature("autodoc", "Args:
-	K1(BRepMesh_Vertex)
-	K2(BRepMesh_Vertex)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") IsEqual;
+		%feature("autodoc", "	:param K1:
+	:type K1: BRepMesh_Vertex &
+	:param K2:
+	:type K2: BRepMesh_Vertex &
+	:rtype: bool
+") IsEqual;
 		static Standard_Boolean IsEqual (const BRepMesh_Vertex & K1,const BRepMesh_Vertex & K2);
 };
 
@@ -6925,132 +5536,98 @@ def __del__(self):
 %nodefaultctor BRepMesh_VertexInspector;
 class BRepMesh_VertexInspector : public NCollection_CellFilter_InspectorXY {
 	public:
-		%feature("autodoc", "Args:
-	nbComp(Standard_Integer)
-	theAlloc(BRepMesh_BaseAllocator)
+		%feature("autodoc", "	* Constructor; remembers tolerance and collector data structure. theTol can be Real or Array1OfReal with two elements which describe tolerance for each dimension.
 
-Returns:
-	None
-
-Constructor; remembers tolerance and collector data structure.
-theTol can be Real or Array1OfReal with two elements which describe
-tolerance for each dimension.") BRepMesh_VertexInspector;
+	:param nbComp:
+	:type nbComp: Standard_Integer
+	:param theAlloc:
+	:type theAlloc: BRepMesh_BaseAllocator &
+	:rtype: None
+") BRepMesh_VertexInspector;
 		 BRepMesh_VertexInspector (const Standard_Integer nbComp,const BRepMesh_BaseAllocator & theAlloc);
-		%feature("autodoc", "Args:
-	nbComp(Standard_Integer)
-	theTol(Standard_Real)
-	theAlloc(BRepMesh_BaseAllocator)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_VertexInspector;
+		%feature("autodoc", "	:param nbComp:
+	:type nbComp: Standard_Integer
+	:param theTol:
+	:type theTol: float
+	:param theAlloc:
+	:type theAlloc: BRepMesh_BaseAllocator &
+	:rtype: None
+") BRepMesh_VertexInspector;
 		 BRepMesh_VertexInspector (const Standard_Integer nbComp,const Standard_Real theTol,const BRepMesh_BaseAllocator & theAlloc);
-		%feature("autodoc", "Args:
-	nbComp(Standard_Integer)
-	aTolX(Standard_Real)
-	aTolY(Standard_Real)
-	theAlloc(BRepMesh_BaseAllocator)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_VertexInspector;
+		%feature("autodoc", "	:param nbComp:
+	:type nbComp: Standard_Integer
+	:param aTolX:
+	:type aTolX: float
+	:param aTolY:
+	:type aTolY: float
+	:param theAlloc:
+	:type theAlloc: BRepMesh_BaseAllocator &
+	:rtype: None
+") BRepMesh_VertexInspector;
 		 BRepMesh_VertexInspector (const Standard_Integer nbComp,const Standard_Real aTolX,const Standard_Real aTolY,const BRepMesh_BaseAllocator & theAlloc);
-		%feature("autodoc", "Args:
-	theVertex(BRepMesh_Vertex)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param theVertex:
+	:type theVertex: BRepMesh_Vertex &
+	:rtype: int
+") Add;
 		Standard_Integer Add (const BRepMesh_Vertex & theVertex);
-		%feature("autodoc", "Args:
-	theTol(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetTolerance;
+		%feature("autodoc", "	:param theTol:
+	:type theTol: float
+	:rtype: None
+") SetTolerance;
 		void SetTolerance (const Standard_Real theTol);
-		%feature("autodoc", "Args:
-	theTolX(Standard_Real)
-	theTolY(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetTolerance;
+		%feature("autodoc", "	:param theTolX:
+	:type theTolX: float
+	:param theTolY:
+	:type theTolY: float
+	:rtype: None
+") SetTolerance;
 		void SetTolerance (const Standard_Real theTolX,const Standard_Real theTolY);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Delete;
+		%feature("autodoc", "	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: None
+") Delete;
 		void Delete (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") GetNbVertices;
+		%feature("autodoc", "	:rtype: int
+") GetNbVertices;
 		Standard_Integer GetNbVertices ();
-		%feature("autodoc", "Args:
-	theInd(Standard_Integer)
-
-Returns:
-	BRepMesh_Vertex
-
-No detailed docstring for this function.") GetVertex;
+		%feature("autodoc", "	:param theInd:
+	:type theInd: Standard_Integer
+	:rtype: BRepMesh_Vertex
+") GetVertex;
 		BRepMesh_Vertex & GetVertex (Standard_Integer theInd);
-		%feature("autodoc", "Args:
-	theCurVertex(gp_XY)
-	Standard_Boolean()
+		%feature("autodoc", "	* Set current node to be checked
 
-Returns:
-	None
-
-Set current node to be checked") SetCurrent;
+	:param theCurVertex:
+	:type theCurVertex: gp_XY
+	:param Standard_Boolean:
+	:type Standard_Boolean: 
+	:rtype: None
+") SetCurrent;
 		void SetCurrent (const gp_XY & theCurVertex,const Standard_Boolean);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* //!Get result index of node
 
-//!Get result index of node") GetCoincidentInd;
+	:rtype: int
+") GetCoincidentInd;
 		Standard_Integer GetCoincidentInd ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_ListOfInteger
-
-No detailed docstring for this function.") GetListOfDelNodes;
+		%feature("autodoc", "	:rtype: BRepMesh_ListOfInteger
+") GetListOfDelNodes;
 		const BRepMesh_ListOfInteger & GetListOfDelNodes ();
-		%feature("autodoc", "Args:
-	theTarget(Standard_Integer)
+		%feature("autodoc", "	* Implementation of inspection method
 
-Returns:
-	NCollection_CellFilter_Action
-
-Implementation of inspection method") Inspect;
+	:param theTarget:
+	:type theTarget: Standard_Integer
+	:rtype: NCollection_CellFilter_Action
+") Inspect;
 		NCollection_CellFilter_Action Inspect (const Standard_Integer theTarget);
-		%feature("autodoc", "Args:
-	theIdx(Standard_Integer)
-	theTarget(Standard_Integer)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") IsEqual;
+		%feature("autodoc", "	:param theIdx:
+	:type theIdx: Standard_Integer
+	:param theTarget:
+	:type theTarget: Standard_Integer
+	:rtype: bool
+") IsEqual;
 		static Standard_Boolean IsEqual (Standard_Integer theIdx,const Standard_Integer theTarget);
 };
 
@@ -7072,148 +5649,126 @@ def __del__(self):
 %nodefaultctor BRepMesh_VertexTool;
 class BRepMesh_VertexTool {
 	public:
-		%feature("autodoc", "Args:
-	theAlloc(BRepMesh_BaseAllocator)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_VertexTool;
+		%feature("autodoc", "	:param theAlloc:
+	:type theAlloc: BRepMesh_BaseAllocator &
+	:rtype: None
+") BRepMesh_VertexTool;
 		 BRepMesh_VertexTool (const BRepMesh_BaseAllocator & theAlloc);
-		%feature("autodoc", "Args:
-	nbComp(Standard_Integer)
-	theAlloc(BRepMesh_BaseAllocator)
+		%feature("autodoc", "	* Constructs a VertexTool with an evaluation of the number of vertices.
 
-Returns:
-	None
-
-Constructs a VertexTool with an  evaluation of the  
-         number of vertices.") BRepMesh_VertexTool;
+	:param nbComp:
+	:type nbComp: Standard_Integer
+	:param theAlloc:
+	:type theAlloc: BRepMesh_BaseAllocator &
+	:rtype: None
+") BRepMesh_VertexTool;
 		 BRepMesh_VertexTool (const Standard_Integer nbComp,const BRepMesh_BaseAllocator & theAlloc);
-		%feature("autodoc", "Args:
-	theSize(Standard_Real)
+		%feature("autodoc", "	* Sets new size for cellfilter.
 
-Returns:
-	None
-
-Sets new size for cellfilter.") SetCellSize;
+	:param theSize:
+	:type theSize: float
+	:rtype: None
+") SetCellSize;
 		void SetCellSize (const Standard_Real theSize);
-		%feature("autodoc", "Args:
-	theXSize(Standard_Real)
-	theYSize(Standard_Real)
+		%feature("autodoc", "	* Sets new size for cellfilter.
 
-Returns:
-	None
-
-Sets new size for cellfilter.") SetCellSize;
+	:param theXSize:
+	:type theXSize: float
+	:param theYSize:
+	:type theYSize: float
+	:rtype: None
+") SetCellSize;
 		void SetCellSize (const Standard_Real theXSize,const Standard_Real theYSize);
-		%feature("autodoc", "Args:
-	theTol(Standard_Real)
+		%feature("autodoc", "	* Sets new size for cellfilter.
 
-Returns:
-	None
-
-Sets new size for cellfilter.") SetTolerance;
+	:param theTol:
+	:type theTol: float
+	:rtype: None
+") SetTolerance;
 		void SetTolerance (const Standard_Real theTol);
-		%feature("autodoc", "Args:
-	theTolX(Standard_Real)
-	theTolY(Standard_Real)
+		%feature("autodoc", "	* Sets new size for cellfilter.
 
-Returns:
-	None
-
-Sets new size for cellfilter.") SetTolerance;
+	:param theTolX:
+	:type theTolX: float
+	:param theTolY:
+	:type theTolY: float
+	:rtype: None
+") SetTolerance;
 		void SetTolerance (const Standard_Real theTolX,const Standard_Real theTolY);
-		%feature("autodoc", "Args:
-	theVertex(BRepMesh_Vertex)
-	theParams(BRepMesh_ListOfInteger)
+		%feature("autodoc", "	* Adds a vertex to the tool.
 
-Returns:
-	Standard_Integer
-
-Adds a vertex to the tool.") Add;
+	:param theVertex:
+	:type theVertex: BRepMesh_Vertex &
+	:param theParams:
+	:type theParams: BRepMesh_ListOfInteger &
+	:rtype: int
+") Add;
 		Standard_Integer Add (const BRepMesh_Vertex & theVertex,const BRepMesh_ListOfInteger & theParams);
-		%feature("autodoc", "Args:
-	theVertex(BRepMesh_Vertex)
+		%feature("autodoc", "	* Adds a vertex to the tool.
 
-Returns:
-	Standard_Integer
-
-Adds a vertex to the tool.") Add;
+	:param theVertex:
+	:type theVertex: BRepMesh_Vertex &
+	:rtype: int
+") Add;
 		Standard_Integer Add (const BRepMesh_Vertex & theVertex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Deletes a vertex from the tool.
 
-Returns:
-	None
-
-Deletes a vertex from the tool.") Delete;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: None
+") Delete;
 		void Delete (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns data assigned to theIndex.
 
-Returns:
-	BRepMesh_ListOfInteger
-
-Returns data assigned to theIndex.") FindFromIndex;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: BRepMesh_ListOfInteger
+") FindFromIndex;
 		BRepMesh_ListOfInteger & FindFromIndex (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
+		%feature("autodoc", "	* Selects the vertex by theIndex.
 
-Returns:
-	BRepMesh_Vertex
-
-Selects the vertex by theIndex.") FindKey;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: BRepMesh_Vertex
+") FindKey;
 		const BRepMesh_Vertex & FindKey (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theVertex(BRepMesh_Vertex)
+		%feature("autodoc", "	* Returns an index of theVertex.
 
-Returns:
-	Standard_Integer
-
-Returns an index of theVertex.") FindIndex;
+	:param theVertex:
+	:type theVertex: BRepMesh_Vertex &
+	:rtype: int
+") FindIndex;
 		Standard_Integer FindIndex (const BRepMesh_Vertex & theVertex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns a number of vertices.
 
-Returns a number of vertices.") Extent;
+	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True when the map contains no keys.
 
-Returns True when the map contains no keys.") IsEmpty;
+	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	theVertex(BRepMesh_Vertex)
-	theData(BRepMesh_ListOfInteger)
+		%feature("autodoc", "	* Substitutes vertex with Index on theVertex with attributes theData.
 
-Returns:
-	None
-
-Substitutes vertex with Index on  
-         theVertex with attributes theData.") Substitute;
+	:param Index:
+	:type Index: Standard_Integer
+	:param theVertex:
+	:type theVertex: BRepMesh_Vertex &
+	:param theData:
+	:type theData: BRepMesh_ListOfInteger &
+	:rtype: None
+") Substitute;
 		void Substitute (const Standard_Integer Index,const BRepMesh_Vertex & theVertex,const BRepMesh_ListOfInteger & theData);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Remove last node from the structure.
 
-Remove last node from the structure.") RemoveLast;
+	:rtype: None
+") RemoveLast;
 		void RemoveLast ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepMesh_ListOfInteger
+		%feature("autodoc", "	* Returns the list with indexes of vertices that have Movability attribute equal to BRepMesh_Deleted and can be replaced with another node.
 
-Returns the list with indexes of  
-         vertices that have Movability attribute  
-         equal to BRepMesh_Deleted and can be  
-         replaced with another node.") GetListOfDelNodes;
+	:rtype: BRepMesh_ListOfInteger
+") GetListOfDelNodes;
 		const BRepMesh_ListOfInteger & GetListOfDelNodes ();
 
         %feature("autodoc", "1");
@@ -7243,115 +5798,84 @@ def __del__(self):
 %nodefaultctor BRepMesh_IncrementalMesh;
 class BRepMesh_IncrementalMesh : public BRepMesh_DiscretRoot {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepMesh_IncrementalMesh;
+		%feature("autodoc", "	:rtype: None
+") BRepMesh_IncrementalMesh;
 		 BRepMesh_IncrementalMesh ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-	D(Standard_Real)
-	Relatif(Standard_Boolean)=Standard_False
-	Ang(Standard_Real)=0.5
-	InParallel(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* If the boolean <Relatif> is True, the deflection used for the polygonalisation of each edge will be <D> * Size of Edge. the deflection used for the faces will be the maximum deflection of their edges.
 
-Returns:
-	None
-
-If the  boolean    <Relatif>   is  True,    the  
-         deflection used   for the polygonalisation   of  
-         each edge will be <D> * Size of Edge.  
-         the deflection used for the faces will be the maximum  
-         deflection of their edges.") BRepMesh_IncrementalMesh;
+	:param S:
+	:type S: TopoDS_Shape &
+	:param D:
+	:type D: float
+	:param Relatif: default value is Standard_False
+	:type Relatif: bool
+	:param Ang: default value is 0.5
+	:type Ang: float
+	:param InParallel: default value is Standard_False
+	:type InParallel: bool
+	:rtype: None
+") BRepMesh_IncrementalMesh;
 		 BRepMesh_IncrementalMesh (const TopoDS_Shape & S,const Standard_Real D,const Standard_Boolean Relatif = Standard_False,const Standard_Real Ang = 0.5,const Standard_Boolean InParallel = Standard_False);
-		%feature("autodoc", "Args:
-	theFlag(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetRelative;
+		%feature("autodoc", "	:param theFlag:
+	:type theFlag: bool
+	:rtype: None
+") SetRelative;
 		void SetRelative (const Standard_Boolean theFlag);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Relative;
+		%feature("autodoc", "	:rtype: bool
+") Relative;
 		Standard_Boolean Relative ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:rtype: void
+") Perform;
 		virtual void Perform ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* Builds the incremental mesh of the shape
 
-Returns:
-	None
-
-Builds the incremental mesh of the shape") Update;
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") Update;
 		void Update (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsModified;
+		%feature("autodoc", "	:rtype: bool
+") IsModified;
 		Standard_Boolean IsModified ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") GetStatusFlags;
+		%feature("autodoc", "	:rtype: int
+") GetStatusFlags;
 		Standard_Integer GetStatusFlags ();
-		%feature("autodoc", "Args:
-	theInParallel(Standard_Boolean)
+		%feature("autodoc", "	* Request algorithm to launch in multiple threads to improve performance.
 
-Returns:
-	None
-
-Request algorithm to launch in multiple threads to improve performance.") SetParallel;
+	:param theInParallel:
+	:type theInParallel: bool
+	:rtype: None
+") SetParallel;
 		void SetParallel (const Standard_Boolean theInParallel);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns the multi-threading usage flag.
 
-Returns the multi-threading usage flag.") IsParallel;
+	:rtype: bool
+") IsParallel;
 		Standard_Boolean IsParallel ();
-		%feature("autodoc", "Args:
-	theShape(TopoDS_Shape)
-	theDeflection(Standard_Real)
-	theAngle(Standard_Real)
-	theAlgo(BRepMesh_PDiscretRoot)
+		%feature("autodoc", "	* Plugin interface for the Mesh Factories.
 
-Returns:
-	static Standard_Integer
-
-Plugin interface for the Mesh Factories.") Discret;
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:param theDeflection:
+	:type theDeflection: float
+	:param theAngle:
+	:type theAngle: float
+	:param theAlgo:
+	:type theAlgo: BRepMesh_PDiscretRoot &
+	:rtype: int
+") Discret;
 		static Standard_Integer Discret (const TopoDS_Shape & theShape,const Standard_Real theDeflection,const Standard_Real theAngle,BRepMesh_PDiscretRoot & theAlgo);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	static Standard_Boolean
+		%feature("autodoc", "	* Returns multi-threading usage flag set by default in Discret() static method (thus applied only to Mesh Factories).
 
-Returns multi-threading usage flag set by default in  
-Discret() static method (thus applied only to Mesh Factories).") IsParallelDefault;
+	:rtype: bool
+") IsParallelDefault;
 		static Standard_Boolean IsParallelDefault ();
-		%feature("autodoc", "Args:
-	theInParallel(Standard_Boolean)
+		%feature("autodoc", "	* Setup multi-threading usage flag set by default in Discret() static method (thus applied only to Mesh Factories).
 
-Returns:
-	static void
-
-Setup multi-threading usage flag set by default in  
-Discret() static method (thus applied only to Mesh Factories).") SetParallelDefault;
+	:param theInParallel:
+	:type theInParallel: bool
+	:rtype: void
+") SetParallelDefault;
 		static void SetParallelDefault (const Standard_Boolean theInParallel);
 };
 

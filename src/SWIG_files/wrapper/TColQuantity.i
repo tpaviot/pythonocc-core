@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -44,108 +44,68 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor TColQuantity_Array1OfLength;
 class TColQuantity_Array1OfLength {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColQuantity_Array1OfLength;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColQuantity_Array1OfLength;
 		 TColQuantity_Array1OfLength (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Quantity_Length)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColQuantity_Array1OfLength;
+		%feature("autodoc", "	:param Item:
+	:type Item: Quantity_Length &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColQuantity_Array1OfLength;
 		 TColQuantity_Array1OfLength (const Quantity_Length & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Quantity_Length)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Quantity_Length &
+	:rtype: None
+") Init;
 		void Init (const Quantity_Length & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(TColQuantity_Array1OfLength)
-
-Returns:
-	TColQuantity_Array1OfLength
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColQuantity_Array1OfLength &
+	:rtype: TColQuantity_Array1OfLength
+") Assign;
 		const TColQuantity_Array1OfLength & Assign (const TColQuantity_Array1OfLength & Other);
-		%feature("autodoc", "Args:
-	Other(TColQuantity_Array1OfLength)
-
-Returns:
-	TColQuantity_Array1OfLength
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColQuantity_Array1OfLength &
+	:rtype: TColQuantity_Array1OfLength
+") operator=;
 		const TColQuantity_Array1OfLength & operator = (const TColQuantity_Array1OfLength & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Quantity_Length)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Quantity_Length &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Quantity_Length & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Quantity_Length
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Quantity_Length
+") Value;
 		const Quantity_Length & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Quantity_Length
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Quantity_Length
+") ChangeValue;
 		Quantity_Length & ChangeValue (const Standard_Integer Index);
 };
 
@@ -167,129 +127,88 @@ def __del__(self):
 %nodefaultctor TColQuantity_Array2OfLength;
 class TColQuantity_Array2OfLength {
 	public:
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColQuantity_Array2OfLength;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") TColQuantity_Array2OfLength;
 		 TColQuantity_Array2OfLength (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	Item(Quantity_Length)
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColQuantity_Array2OfLength;
+		%feature("autodoc", "	:param Item:
+	:type Item: Quantity_Length &
+	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") TColQuantity_Array2OfLength;
 		 TColQuantity_Array2OfLength (const Quantity_Length & Item,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	V(Quantity_Length)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Quantity_Length &
+	:rtype: None
+") Init;
 		void Init (const Quantity_Length & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	Other(TColQuantity_Array2OfLength)
-
-Returns:
-	TColQuantity_Array2OfLength
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColQuantity_Array2OfLength &
+	:rtype: TColQuantity_Array2OfLength
+") Assign;
 		const TColQuantity_Array2OfLength & Assign (const TColQuantity_Array2OfLength & Other);
-		%feature("autodoc", "Args:
-	Other(TColQuantity_Array2OfLength)
-
-Returns:
-	TColQuantity_Array2OfLength
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColQuantity_Array2OfLength &
+	:rtype: TColQuantity_Array2OfLength
+") operator=;
 		const TColQuantity_Array2OfLength & operator = (const TColQuantity_Array2OfLength & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ColLength;
+		%feature("autodoc", "	:rtype: int
+") ColLength;
 		Standard_Integer ColLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") RowLength;
+		%feature("autodoc", "	:rtype: int
+") RowLength;
 		Standard_Integer RowLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerCol;
+		%feature("autodoc", "	:rtype: int
+") LowerCol;
 		Standard_Integer LowerCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerRow;
+		%feature("autodoc", "	:rtype: int
+") LowerRow;
 		Standard_Integer LowerRow ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperCol;
+		%feature("autodoc", "	:rtype: int
+") UpperCol;
 		Standard_Integer UpperCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperRow;
+		%feature("autodoc", "	:rtype: int
+") UpperRow;
 		Standard_Integer UpperRow ();
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-	Value(Quantity_Length)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:param Value:
+	:type Value: Quantity_Length &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Quantity_Length & Value);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Quantity_Length
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: Quantity_Length
+") Value;
 		const Quantity_Length & Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Quantity_Length
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: Quantity_Length
+") ChangeValue;
 		Quantity_Length & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 };
 
@@ -311,92 +230,58 @@ def __del__(self):
 %nodefaultctor TColQuantity_HArray1OfLength;
 class TColQuantity_HArray1OfLength : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColQuantity_HArray1OfLength;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TColQuantity_HArray1OfLength;
 		 TColQuantity_HArray1OfLength (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(Quantity_Length)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColQuantity_HArray1OfLength;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: Quantity_Length &
+	:rtype: None
+") TColQuantity_HArray1OfLength;
 		 TColQuantity_HArray1OfLength (const Standard_Integer Low,const Standard_Integer Up,const Quantity_Length & V);
-		%feature("autodoc", "Args:
-	V(Quantity_Length)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Quantity_Length &
+	:rtype: None
+") Init;
 		void Init (const Quantity_Length & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Quantity_Length)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Quantity_Length &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Quantity_Length & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Quantity_Length
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Quantity_Length
+") Value;
 		const Quantity_Length & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Quantity_Length
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Quantity_Length
+") ChangeValue;
 		Quantity_Length & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColQuantity_Array1OfLength
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: TColQuantity_Array1OfLength
+") Array1;
 		const TColQuantity_Array1OfLength & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColQuantity_Array1OfLength
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: TColQuantity_Array1OfLength
+") ChangeArray1;
 		TColQuantity_Array1OfLength & ChangeArray1 ();
 };
 
@@ -457,120 +342,81 @@ def __del__(self):
 %nodefaultctor TColQuantity_HArray2OfLength;
 class TColQuantity_HArray2OfLength : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColQuantity_HArray2OfLength;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") TColQuantity_HArray2OfLength;
 		 TColQuantity_HArray2OfLength (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-	V(Quantity_Length)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TColQuantity_HArray2OfLength;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:param V:
+	:type V: Quantity_Length &
+	:rtype: None
+") TColQuantity_HArray2OfLength;
 		 TColQuantity_HArray2OfLength (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Quantity_Length & V);
-		%feature("autodoc", "Args:
-	V(Quantity_Length)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Quantity_Length &
+	:rtype: None
+") Init;
 		void Init (const Quantity_Length & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ColLength;
+		%feature("autodoc", "	:rtype: int
+") ColLength;
 		Standard_Integer ColLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") RowLength;
+		%feature("autodoc", "	:rtype: int
+") RowLength;
 		Standard_Integer RowLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerCol;
+		%feature("autodoc", "	:rtype: int
+") LowerCol;
 		Standard_Integer LowerCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerRow;
+		%feature("autodoc", "	:rtype: int
+") LowerRow;
 		Standard_Integer LowerRow ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperCol;
+		%feature("autodoc", "	:rtype: int
+") UpperCol;
 		Standard_Integer UpperCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperRow;
+		%feature("autodoc", "	:rtype: int
+") UpperRow;
 		Standard_Integer UpperRow ();
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-	Value(Quantity_Length)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:param Value:
+	:type Value: Quantity_Length &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Quantity_Length & Value);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Quantity_Length
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: Quantity_Length
+") Value;
 		const Quantity_Length & Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Quantity_Length
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: Quantity_Length
+") ChangeValue;
 		Quantity_Length & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColQuantity_Array2OfLength
-
-No detailed docstring for this function.") Array2;
+		%feature("autodoc", "	:rtype: TColQuantity_Array2OfLength
+") Array2;
 		const TColQuantity_Array2OfLength & Array2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColQuantity_Array2OfLength
-
-No detailed docstring for this function.") ChangeArray2;
+		%feature("autodoc", "	:rtype: TColQuantity_Array2OfLength
+") ChangeArray2;
 		TColQuantity_Array2OfLength & ChangeArray2 ();
 };
 

@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -45,42 +45,24 @@ typedef TColStd_SequenceOfAddress BRepTopAdaptor_SeqOfPtr;
 %nodefaultctor BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool;
 class BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool;
+		%feature("autodoc", "	:rtype: None
+") BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool;
 		 BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool ();
-		%feature("autodoc", "Args:
-	aMap(BRepTopAdaptor_MapOfShapeTool)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: BRepTopAdaptor_MapOfShapeTool &
+	:rtype: None
+") BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool;
 		 BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool (const BRepTopAdaptor_MapOfShapeTool & aMap);
-		%feature("autodoc", "Args:
-	aMap(BRepTopAdaptor_MapOfShapeTool)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: BRepTopAdaptor_MapOfShapeTool &
+	:rtype: None
+") Initialize;
 		void Initialize (const BRepTopAdaptor_MapOfShapeTool & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		const TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepTopAdaptor_Tool
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: BRepTopAdaptor_Tool
+") Value;
 		const BRepTopAdaptor_Tool & Value ();
 };
 
@@ -102,29 +84,20 @@ def __del__(self):
 %nodefaultctor BRepTopAdaptor_DataMapNodeOfMapOfShapeTool;
 class BRepTopAdaptor_DataMapNodeOfMapOfShapeTool : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(BRepTopAdaptor_Tool)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepTopAdaptor_DataMapNodeOfMapOfShapeTool;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: BRepTopAdaptor_Tool &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") BRepTopAdaptor_DataMapNodeOfMapOfShapeTool;
 		 BRepTopAdaptor_DataMapNodeOfMapOfShapeTool (const TopoDS_Shape & K,const BRepTopAdaptor_Tool & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	BRepTopAdaptor_Tool
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: BRepTopAdaptor_Tool
+") Value;
 		BRepTopAdaptor_Tool & Value ();
 };
 
@@ -185,65 +158,46 @@ def __del__(self):
 %nodefaultctor BRepTopAdaptor_FClass2d;
 class BRepTopAdaptor_FClass2d {
 	public:
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-	Tol(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepTopAdaptor_FClass2d;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") BRepTopAdaptor_FClass2d;
 		 BRepTopAdaptor_FClass2d (const TopoDS_Face & F,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_State
-
-No detailed docstring for this function.") PerformInfinitePoint;
+		%feature("autodoc", "	:rtype: TopAbs_State
+") PerformInfinitePoint;
 		TopAbs_State PerformInfinitePoint ();
-		%feature("autodoc", "Args:
-	Puv(gp_Pnt2d)
-	RecadreOnPeriodic(Standard_Boolean)=Standard_True
-
-Returns:
-	TopAbs_State
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param Puv:
+	:type Puv: gp_Pnt2d
+	:param RecadreOnPeriodic: default value is Standard_True
+	:type RecadreOnPeriodic: bool
+	:rtype: TopAbs_State
+") Perform;
 		TopAbs_State Perform (const gp_Pnt2d & Puv,const Standard_Boolean RecadreOnPeriodic = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	Other(BRepTopAdaptor_FClass2d)
-
-Returns:
-	BRepTopAdaptor_FClass2d
-
-No detailed docstring for this function.") Copy;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepTopAdaptor_FClass2d &
+	:rtype: BRepTopAdaptor_FClass2d
+") Copy;
 		const BRepTopAdaptor_FClass2d & Copy (const BRepTopAdaptor_FClass2d & Other);
-		%feature("autodoc", "Args:
-	Other(BRepTopAdaptor_FClass2d)
-
-Returns:
-	BRepTopAdaptor_FClass2d
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepTopAdaptor_FClass2d &
+	:rtype: BRepTopAdaptor_FClass2d
+") operator=;
 		const BRepTopAdaptor_FClass2d & operator = (const BRepTopAdaptor_FClass2d & Other);
-		%feature("autodoc", "Args:
-	Puv(gp_Pnt2d)
-	Tol(Standard_Real)
-	RecadreOnPeriodic(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Test a point with +- an offset (Tol) and returns On if some points are OUT an some are IN (Caution: Internal use . see the code for more details)
 
-Returns:
-	TopAbs_State
-
-Test a point with +- an offset (Tol) and returns  
-         On if some points are OUT an some are IN  
-         (Caution: Internal use . see the code for more details)") TestOnRestriction;
+	:param Puv:
+	:type Puv: gp_Pnt2d
+	:param Tol:
+	:type Tol: float
+	:param RecadreOnPeriodic: default value is Standard_True
+	:type RecadreOnPeriodic: bool
+	:rtype: TopAbs_State
+") TestOnRestriction;
 		TopAbs_State TestOnRestriction (const gp_Pnt2d & Puv,const Standard_Real Tol,const Standard_Boolean RecadreOnPeriodic = Standard_True);
 };
 
@@ -265,66 +219,41 @@ def __del__(self):
 %nodefaultctor BRepTopAdaptor_HVertex;
 class BRepTopAdaptor_HVertex : public Adaptor3d_HVertex {
 	public:
-		%feature("autodoc", "Args:
-	Vtx(TopoDS_Vertex)
-	Curve(Handle_BRepAdaptor_HCurve2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepTopAdaptor_HVertex;
+		%feature("autodoc", "	:param Vtx:
+	:type Vtx: TopoDS_Vertex &
+	:param Curve:
+	:type Curve: Handle_BRepAdaptor_HCurve2d &
+	:rtype: None
+") BRepTopAdaptor_HVertex;
 		 BRepTopAdaptor_HVertex (const TopoDS_Vertex & Vtx,const Handle_BRepAdaptor_HCurve2d & Curve);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Vertex
-
-No detailed docstring for this function.") Vertex;
+		%feature("autodoc", "	:rtype: TopoDS_Vertex
+") Vertex;
 		const TopoDS_Vertex & Vertex ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Vertex
-
-No detailed docstring for this function.") ChangeVertex;
+		%feature("autodoc", "	:rtype: TopoDS_Vertex
+") ChangeVertex;
 		TopoDS_Vertex & ChangeVertex ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual gp_Pnt2d
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: gp_Pnt2d
+") Value;
 		virtual gp_Pnt2d Value ();
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor2d_HCurve2d)
-
-Returns:
-	virtual Standard_Real
-
-No detailed docstring for this function.") Parameter;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor2d_HCurve2d &
+	:rtype: float
+") Parameter;
 		virtual Standard_Real Parameter (const Handle_Adaptor2d_HCurve2d & C);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor2d_HCurve2d)
+		%feature("autodoc", "	* Parametric resolution (2d).
 
-Returns:
-	virtual Standard_Real
-
-Parametric resolution (2d).") Resolution;
+	:param C:
+	:type C: Handle_Adaptor2d_HCurve2d &
+	:rtype: float
+") Resolution;
 		virtual Standard_Real Resolution (const Handle_Adaptor2d_HCurve2d & C);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual TopAbs_Orientation
-
-No detailed docstring for this function.") Orientation;
+		%feature("autodoc", "	:rtype: TopAbs_Orientation
+") Orientation;
 		virtual TopAbs_Orientation Orientation ();
-		%feature("autodoc", "Args:
-	Other(Handle_Adaptor3d_HVertex)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") IsSame;
+		%feature("autodoc", "	:param Other:
+	:type Other: Handle_Adaptor3d_HVertex &
+	:rtype: bool
+") IsSame;
 		virtual Standard_Boolean IsSame (const Handle_Adaptor3d_HVertex & Other);
 };
 
@@ -385,101 +314,65 @@ def __del__(self):
 %nodefaultctor BRepTopAdaptor_MapOfShapeTool;
 class BRepTopAdaptor_MapOfShapeTool : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepTopAdaptor_MapOfShapeTool;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") BRepTopAdaptor_MapOfShapeTool;
 		 BRepTopAdaptor_MapOfShapeTool (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(BRepTopAdaptor_MapOfShapeTool)
-
-Returns:
-	BRepTopAdaptor_MapOfShapeTool
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepTopAdaptor_MapOfShapeTool &
+	:rtype: BRepTopAdaptor_MapOfShapeTool
+") Assign;
 		BRepTopAdaptor_MapOfShapeTool & Assign (const BRepTopAdaptor_MapOfShapeTool & Other);
-		%feature("autodoc", "Args:
-	Other(BRepTopAdaptor_MapOfShapeTool)
-
-Returns:
-	BRepTopAdaptor_MapOfShapeTool
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepTopAdaptor_MapOfShapeTool &
+	:rtype: BRepTopAdaptor_MapOfShapeTool
+") operator=;
 		BRepTopAdaptor_MapOfShapeTool & operator = (const BRepTopAdaptor_MapOfShapeTool & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(BRepTopAdaptor_Tool)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: BRepTopAdaptor_Tool &
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const TopoDS_Shape & K,const BRepTopAdaptor_Tool & I);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	BRepTopAdaptor_Tool
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: BRepTopAdaptor_Tool
+") Find;
 		const BRepTopAdaptor_Tool & Find (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	BRepTopAdaptor_Tool
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: BRepTopAdaptor_Tool
+") ChangeFind;
 		BRepTopAdaptor_Tool & ChangeFind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const TopoDS_Shape & K);
 };
 
@@ -501,77 +394,50 @@ def __del__(self):
 %nodefaultctor BRepTopAdaptor_Tool;
 class BRepTopAdaptor_Tool {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepTopAdaptor_Tool;
+		%feature("autodoc", "	:rtype: None
+") BRepTopAdaptor_Tool;
 		 BRepTopAdaptor_Tool ();
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-	Tol2d(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepTopAdaptor_Tool;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:param Tol2d:
+	:type Tol2d: float
+	:rtype: None
+") BRepTopAdaptor_Tool;
 		 BRepTopAdaptor_Tool (const TopoDS_Face & F,const Standard_Real Tol2d);
-		%feature("autodoc", "Args:
-	Surface(Handle_Adaptor3d_HSurface)
-	Tol2d(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepTopAdaptor_Tool;
+		%feature("autodoc", "	:param Surface:
+	:type Surface: Handle_Adaptor3d_HSurface &
+	:param Tol2d:
+	:type Tol2d: float
+	:rtype: None
+") BRepTopAdaptor_Tool;
 		 BRepTopAdaptor_Tool (const Handle_Adaptor3d_HSurface & Surface,const Standard_Real Tol2d);
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-	Tol2d(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:param Tol2d:
+	:type Tol2d: float
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Face & F,const Standard_Real Tol2d);
-		%feature("autodoc", "Args:
-	Surface(Handle_Adaptor3d_HSurface)
-	Tol2d(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param Surface:
+	:type Surface: Handle_Adaptor3d_HSurface &
+	:param Tol2d:
+	:type Tol2d: float
+	:rtype: None
+") Init;
 		void Init (const Handle_Adaptor3d_HSurface & Surface,const Standard_Real Tol2d);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_BRepTopAdaptor_TopolTool
-
-No detailed docstring for this function.") GetTopolTool;
+		%feature("autodoc", "	:rtype: Handle_BRepTopAdaptor_TopolTool
+") GetTopolTool;
 		Handle_BRepTopAdaptor_TopolTool GetTopolTool ();
-		%feature("autodoc", "Args:
-	TT(Handle_BRepTopAdaptor_TopolTool)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetTopolTool;
+		%feature("autodoc", "	:param TT:
+	:type TT: Handle_BRepTopAdaptor_TopolTool &
+	:rtype: None
+") SetTopolTool;
 		void SetTopolTool (const Handle_BRepTopAdaptor_TopolTool & TT);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Adaptor3d_HSurface
-
-No detailed docstring for this function.") GetSurface;
+		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HSurface
+") GetSurface;
 		Handle_Adaptor3d_HSurface GetSurface ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
 };
 
@@ -593,234 +459,146 @@ def __del__(self):
 %nodefaultctor BRepTopAdaptor_TopolTool;
 class BRepTopAdaptor_TopolTool : public Adaptor3d_TopolTool {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BRepTopAdaptor_TopolTool;
+		%feature("autodoc", "	:rtype: None
+") BRepTopAdaptor_TopolTool;
 		 BRepTopAdaptor_TopolTool ();
-		%feature("autodoc", "Args:
-	Surface(Handle_Adaptor3d_HSurface)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BRepTopAdaptor_TopolTool;
+		%feature("autodoc", "	:param Surface:
+	:type Surface: Handle_Adaptor3d_HSurface &
+	:rtype: None
+") BRepTopAdaptor_TopolTool;
 		 BRepTopAdaptor_TopolTool (const Handle_Adaptor3d_HSurface & Surface);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:rtype: void
+") Initialize;
 		virtual void Initialize ();
-		%feature("autodoc", "Args:
-	S(Handle_Adaptor3d_HSurface)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param S:
+	:type S: Handle_Adaptor3d_HSurface &
+	:rtype: void
+") Initialize;
 		virtual void Initialize (const Handle_Adaptor3d_HSurface & S);
-		%feature("autodoc", "Args:
-	Curve(Handle_Adaptor2d_HCurve2d)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param Curve:
+	:type Curve: Handle_Adaptor2d_HCurve2d &
+	:rtype: void
+") Initialize;
 		virtual void Initialize (const Handle_Adaptor2d_HCurve2d & Curve);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:rtype: void
+") Init;
 		virtual void Init ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		virtual Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Adaptor2d_HCurve2d
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Adaptor2d_HCurve2d
+") Value;
 		virtual Handle_Adaptor2d_HCurve2d Value ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: void
+") Next;
 		virtual void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Address
-
-No detailed docstring for this function.") Edge;
+		%feature("autodoc", "	:rtype: Standard_Address
+") Edge;
 		virtual Standard_Address Edge ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") InitVertexIterator;
+		%feature("autodoc", "	:rtype: void
+") InitVertexIterator;
 		virtual void InitVertexIterator ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") MoreVertex;
+		%feature("autodoc", "	:rtype: bool
+") MoreVertex;
 		virtual Standard_Boolean MoreVertex ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Adaptor3d_HVertex
-
-No detailed docstring for this function.") Vertex;
+		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HVertex
+") Vertex;
 		virtual Handle_Adaptor3d_HVertex Vertex ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") NextVertex;
+		%feature("autodoc", "	:rtype: void
+") NextVertex;
 		virtual void NextVertex ();
-		%feature("autodoc", "Args:
-	P2d(gp_Pnt2d)
-	Tol(Standard_Real)
-	RecadreOnPeriodic(Standard_Boolean)=Standard_True
-
-Returns:
-	virtual TopAbs_State
-
-No detailed docstring for this function.") Classify;
+		%feature("autodoc", "	:param P2d:
+	:type P2d: gp_Pnt2d
+	:param Tol:
+	:type Tol: float
+	:param RecadreOnPeriodic: default value is Standard_True
+	:type RecadreOnPeriodic: bool
+	:rtype: TopAbs_State
+") Classify;
 		virtual TopAbs_State Classify (const gp_Pnt2d & P2d,const Standard_Real Tol,const Standard_Boolean RecadreOnPeriodic = Standard_True);
-		%feature("autodoc", "Args:
-	P2d(gp_Pnt2d)
-	Tol(Standard_Real)
-	RecadreOnPeriodic(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* see the code for specifications)
 
-Returns:
-	virtual Standard_Boolean
-
-see the code for specifications)") IsThePointOn;
+	:param P2d:
+	:type P2d: gp_Pnt2d
+	:param Tol:
+	:type Tol: float
+	:param RecadreOnPeriodic: default value is Standard_True
+	:type RecadreOnPeriodic: bool
+	:rtype: bool
+") IsThePointOn;
 		virtual Standard_Boolean IsThePointOn (const gp_Pnt2d & P2d,const Standard_Real Tol,const Standard_Boolean RecadreOnPeriodic = Standard_True);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor2d_HCurve2d)
+		%feature("autodoc", "	* If the function returns the orientation of the arc. If the orientation is FORWARD or REVERSED, the arc is a 'real' limit of the surface. If the orientation is INTERNAL or EXTERNAL, the arc is considered as an arc on the surface.
 
-Returns:
-	virtual TopAbs_Orientation
-
-If the function returns the orientation of the arc.  
-         If the orientation is FORWARD or REVERSED, the arc is  
-         a 'real' limit of the surface.  
-         If the orientation is INTERNAL or EXTERNAL, the arc is  
-         considered as an arc on the surface.") Orientation;
+	:param C:
+	:type C: Handle_Adaptor2d_HCurve2d &
+	:rtype: TopAbs_Orientation
+") Orientation;
 		virtual TopAbs_Orientation Orientation (const Handle_Adaptor2d_HCurve2d & C);
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HVertex)
+		%feature("autodoc", "	* If the function returns the orientation of the arc. If the orientation is FORWARD or REVERSED, the arc is a 'real' limit of the surface. If the orientation is INTERNAL or EXTERNAL, the arc is considered as an arc on the surface.
 
-Returns:
-	virtual TopAbs_Orientation
-
-If the function returns the orientation of the arc.  
-         If the orientation is FORWARD or REVERSED, the arc is  
-         a 'real' limit of the surface.  
-         If the orientation is INTERNAL or EXTERNAL, the arc is  
-         considered as an arc on the surface.") Orientation;
+	:param C:
+	:type C: Handle_Adaptor3d_HVertex &
+	:rtype: TopAbs_Orientation
+") Orientation;
 		virtual TopAbs_Orientation Orientation (const Handle_Adaptor3d_HVertex & C);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* answers if arcs and vertices may have 3d representations, so that we could use Tol3d and Pnt methods.
 
-answers if arcs and vertices may have 3d representations,  
-         so that we could use Tol3d and Pnt methods.") Has3d;
+	:rtype: bool
+") Has3d;
 		virtual Standard_Boolean Has3d ();
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor2d_HCurve2d)
+		%feature("autodoc", "	* returns 3d tolerance of the arc C
 
-Returns:
-	virtual Standard_Real
-
-returns 3d tolerance of the arc C") Tol3d;
+	:param C:
+	:type C: Handle_Adaptor2d_HCurve2d &
+	:rtype: float
+") Tol3d;
 		virtual Standard_Real Tol3d (const Handle_Adaptor2d_HCurve2d & C);
-		%feature("autodoc", "Args:
-	V(Handle_Adaptor3d_HVertex)
+		%feature("autodoc", "	* returns 3d tolerance of the vertex V
 
-Returns:
-	virtual Standard_Real
-
-returns 3d tolerance of the vertex V") Tol3d;
+	:param V:
+	:type V: Handle_Adaptor3d_HVertex &
+	:rtype: float
+") Tol3d;
 		virtual Standard_Real Tol3d (const Handle_Adaptor3d_HVertex & V);
-		%feature("autodoc", "Args:
-	V(Handle_Adaptor3d_HVertex)
+		%feature("autodoc", "	* returns 3d point of the vertex V
 
-Returns:
-	virtual gp_Pnt
-
-returns 3d point of the vertex V") Pnt;
+	:param V:
+	:type V: Handle_Adaptor3d_HVertex &
+	:rtype: gp_Pnt
+") Pnt;
 		virtual gp_Pnt Pnt (const Handle_Adaptor3d_HVertex & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") ComputeSamplePoints;
+		%feature("autodoc", "	:rtype: void
+") ComputeSamplePoints;
 		virtual void ComputeSamplePoints ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
+		%feature("autodoc", "	* compute the sample-points for the intersections algorithms
 
-compute the sample-points for the intersections algorithms") NbSamplesU;
+	:rtype: int
+") NbSamplesU;
 		virtual Standard_Integer NbSamplesU ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
+		%feature("autodoc", "	* compute the sample-points for the intersections algorithms
 
-compute the sample-points for the intersections algorithms") NbSamplesV;
+	:rtype: int
+") NbSamplesV;
 		virtual Standard_Integer NbSamplesV ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
+		%feature("autodoc", "	* compute the sample-points for the intersections algorithms
 
-compute the sample-points for the intersections algorithms") NbSamples;
+	:rtype: int
+") NbSamples;
 		virtual Standard_Integer NbSamples ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	P2d(gp_Pnt2d)
-	P3d(gp_Pnt)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SamplePoint;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param P2d:
+	:type P2d: gp_Pnt2d
+	:param P3d:
+	:type P3d: gp_Pnt
+	:rtype: void
+") SamplePoint;
 		virtual void SamplePoint (const Standard_Integer Index,gp_Pnt2d & P2d,gp_Pnt & P3d);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") DomainIsInfinite;
+		%feature("autodoc", "	:rtype: bool
+") DomainIsInfinite;
 		virtual Standard_Boolean DomainIsInfinite ();
 };
 

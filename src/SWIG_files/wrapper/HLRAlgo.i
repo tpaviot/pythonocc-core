@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -45,89 +45,85 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor HLRAlgo;
 class HLRAlgo {
 	public:
-		%feature("autodoc", "Args:
-	x(Standard_Real)
-	y(Standard_Real)
-	z(Standard_Real)
-	Min(Standard_Address)
-	Max(Standard_Address)
+		%feature("autodoc", "	* Iterator on the visible or hidden parts of an EdgeStatus.
 
-Returns:
-	static void
-
-Iterator  on the  visible or  hidden  parts of  an  
-         EdgeStatus.") UpdateMinMax;
+	:param x:
+	:type x: float
+	:param y:
+	:type y: float
+	:param z:
+	:type z: float
+	:param Min:
+	:type Min: Standard_Address
+	:param Max:
+	:type Max: Standard_Address
+	:rtype: void
+") UpdateMinMax;
 		static void UpdateMinMax (const Standard_Real x,const Standard_Real y,const Standard_Real z,const Standard_Address Min,const Standard_Address Max);
-		%feature("autodoc", "Args:
-	tol(Standard_Real)
-	Min(Standard_Address)
-	Max(Standard_Address)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") EnlargeMinMax;
+		%feature("autodoc", "	:param tol:
+	:type tol: float
+	:param Min:
+	:type Min: Standard_Address
+	:param Max:
+	:type Max: Standard_Address
+	:rtype: void
+") EnlargeMinMax;
 		static void EnlargeMinMax (const Standard_Real tol,const Standard_Address Min,const Standard_Address Max);
-		%feature("autodoc", "Args:
-	Big(Standard_Real)
-	Min(Standard_Address)
-	Max(Standard_Address)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") InitMinMax;
+		%feature("autodoc", "	:param Big:
+	:type Big: float
+	:param Min:
+	:type Min: Standard_Address
+	:param Max:
+	:type Max: Standard_Address
+	:rtype: void
+") InitMinMax;
 		static void InitMinMax (const Standard_Real Big,const Standard_Address Min,const Standard_Address Max);
-		%feature("autodoc", "Args:
-	Min(Standard_Address)
-	Max(Standard_Address)
-	MinMax(Standard_Address)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") EncodeMinMax;
+		%feature("autodoc", "	:param Min:
+	:type Min: Standard_Address
+	:param Max:
+	:type Max: Standard_Address
+	:param MinMax:
+	:type MinMax: Standard_Address
+	:rtype: void
+") EncodeMinMax;
 		static void EncodeMinMax (const Standard_Address Min,const Standard_Address Max,const Standard_Address MinMax);
-		%feature("autodoc", "Args:
-	Min(Standard_Address)
-	Max(Standard_Address)
-
-Returns:
-	static Standard_Real
-
-No detailed docstring for this function.") SizeBox;
+		%feature("autodoc", "	:param Min:
+	:type Min: Standard_Address
+	:param Max:
+	:type Max: Standard_Address
+	:rtype: float
+") SizeBox;
 		static Standard_Real SizeBox (const Standard_Address Min,const Standard_Address Max);
-		%feature("autodoc", "Args:
-	MinMax(Standard_Address)
-	Min(Standard_Address)
-	Max(Standard_Address)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") DecodeMinMax;
+		%feature("autodoc", "	:param MinMax:
+	:type MinMax: Standard_Address
+	:param Min:
+	:type Min: Standard_Address
+	:param Max:
+	:type Max: Standard_Address
+	:rtype: void
+") DecodeMinMax;
 		static void DecodeMinMax (const Standard_Address MinMax,const Standard_Address Min,const Standard_Address Max);
-		%feature("autodoc", "Args:
-	IMin(Standard_Address)
-	IMax(Standard_Address)
-	OMin(Standard_Address)
-	OMax(Standard_Address)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") CopyMinMax;
+		%feature("autodoc", "	:param IMin:
+	:type IMin: Standard_Address
+	:param IMax:
+	:type IMax: Standard_Address
+	:param OMin:
+	:type OMin: Standard_Address
+	:param OMax:
+	:type OMax: Standard_Address
+	:rtype: void
+") CopyMinMax;
 		static void CopyMinMax (const Standard_Address IMin,const Standard_Address IMax,const Standard_Address OMin,const Standard_Address OMax);
-		%feature("autodoc", "Args:
-	IMin(Standard_Address)
-	IMax(Standard_Address)
-	OMin(Standard_Address)
-	OMax(Standard_Address)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") AddMinMax;
+		%feature("autodoc", "	:param IMin:
+	:type IMin: Standard_Address
+	:param IMax:
+	:type IMax: Standard_Address
+	:param OMin:
+	:type OMin: Standard_Address
+	:param OMax:
+	:type OMax: Standard_Address
+	:rtype: void
+") AddMinMax;
 		static void AddMinMax (const Standard_Address IMin,const Standard_Address IMax,const Standard_Address OMin,const Standard_Address OMax);
 };
 
@@ -149,108 +145,68 @@ def __del__(self):
 %nodefaultctor HLRAlgo_Array1OfPHDat;
 class HLRAlgo_Array1OfPHDat {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_Array1OfPHDat;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") HLRAlgo_Array1OfPHDat;
 		 HLRAlgo_Array1OfPHDat (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(HLRAlgo_PolyHidingData)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_Array1OfPHDat;
+		%feature("autodoc", "	:param Item:
+	:type Item: HLRAlgo_PolyHidingData &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") HLRAlgo_Array1OfPHDat;
 		 HLRAlgo_Array1OfPHDat (const HLRAlgo_PolyHidingData & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(HLRAlgo_PolyHidingData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: HLRAlgo_PolyHidingData &
+	:rtype: None
+") Init;
 		void Init (const HLRAlgo_PolyHidingData & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(HLRAlgo_Array1OfPHDat)
-
-Returns:
-	HLRAlgo_Array1OfPHDat
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: HLRAlgo_Array1OfPHDat &
+	:rtype: HLRAlgo_Array1OfPHDat
+") Assign;
 		const HLRAlgo_Array1OfPHDat & Assign (const HLRAlgo_Array1OfPHDat & Other);
-		%feature("autodoc", "Args:
-	Other(HLRAlgo_Array1OfPHDat)
-
-Returns:
-	HLRAlgo_Array1OfPHDat
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: HLRAlgo_Array1OfPHDat &
+	:rtype: HLRAlgo_Array1OfPHDat
+") operator=;
 		const HLRAlgo_Array1OfPHDat & operator = (const HLRAlgo_Array1OfPHDat & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(HLRAlgo_PolyHidingData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: HLRAlgo_PolyHidingData &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const HLRAlgo_PolyHidingData & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	HLRAlgo_PolyHidingData
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: HLRAlgo_PolyHidingData
+") Value;
 		const HLRAlgo_PolyHidingData & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	HLRAlgo_PolyHidingData
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: HLRAlgo_PolyHidingData
+") ChangeValue;
 		HLRAlgo_PolyHidingData & ChangeValue (const Standard_Integer Index);
 };
 
@@ -272,108 +228,68 @@ def __del__(self):
 %nodefaultctor HLRAlgo_Array1OfPINod;
 class HLRAlgo_Array1OfPINod {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_Array1OfPINod;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") HLRAlgo_Array1OfPINod;
 		 HLRAlgo_Array1OfPINod (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Handle_HLRAlgo_PolyInternalNode)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_Array1OfPINod;
+		%feature("autodoc", "	:param Item:
+	:type Item: Handle_HLRAlgo_PolyInternalNode &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") HLRAlgo_Array1OfPINod;
 		 HLRAlgo_Array1OfPINod (const Handle_HLRAlgo_PolyInternalNode & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Handle_HLRAlgo_PolyInternalNode)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_HLRAlgo_PolyInternalNode &
+	:rtype: None
+") Init;
 		void Init (const Handle_HLRAlgo_PolyInternalNode & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(HLRAlgo_Array1OfPINod)
-
-Returns:
-	HLRAlgo_Array1OfPINod
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: HLRAlgo_Array1OfPINod &
+	:rtype: HLRAlgo_Array1OfPINod
+") Assign;
 		const HLRAlgo_Array1OfPINod & Assign (const HLRAlgo_Array1OfPINod & Other);
-		%feature("autodoc", "Args:
-	Other(HLRAlgo_Array1OfPINod)
-
-Returns:
-	HLRAlgo_Array1OfPINod
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: HLRAlgo_Array1OfPINod &
+	:rtype: HLRAlgo_Array1OfPINod
+") operator=;
 		const HLRAlgo_Array1OfPINod & operator = (const HLRAlgo_Array1OfPINod & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Handle_HLRAlgo_PolyInternalNode)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Handle_HLRAlgo_PolyInternalNode &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_HLRAlgo_PolyInternalNode & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_HLRAlgo_PolyInternalNode
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_HLRAlgo_PolyInternalNode
+") Value;
 		const Handle_HLRAlgo_PolyInternalNode & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_HLRAlgo_PolyInternalNode
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_HLRAlgo_PolyInternalNode
+") ChangeValue;
 		Handle_HLRAlgo_PolyInternalNode & ChangeValue (const Standard_Integer Index);
 };
 
@@ -395,108 +311,68 @@ def __del__(self):
 %nodefaultctor HLRAlgo_Array1OfPISeg;
 class HLRAlgo_Array1OfPISeg {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_Array1OfPISeg;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") HLRAlgo_Array1OfPISeg;
 		 HLRAlgo_Array1OfPISeg (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(HLRAlgo_PolyInternalSegment)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_Array1OfPISeg;
+		%feature("autodoc", "	:param Item:
+	:type Item: HLRAlgo_PolyInternalSegment &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") HLRAlgo_Array1OfPISeg;
 		 HLRAlgo_Array1OfPISeg (const HLRAlgo_PolyInternalSegment & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(HLRAlgo_PolyInternalSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: HLRAlgo_PolyInternalSegment &
+	:rtype: None
+") Init;
 		void Init (const HLRAlgo_PolyInternalSegment & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(HLRAlgo_Array1OfPISeg)
-
-Returns:
-	HLRAlgo_Array1OfPISeg
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: HLRAlgo_Array1OfPISeg &
+	:rtype: HLRAlgo_Array1OfPISeg
+") Assign;
 		const HLRAlgo_Array1OfPISeg & Assign (const HLRAlgo_Array1OfPISeg & Other);
-		%feature("autodoc", "Args:
-	Other(HLRAlgo_Array1OfPISeg)
-
-Returns:
-	HLRAlgo_Array1OfPISeg
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: HLRAlgo_Array1OfPISeg &
+	:rtype: HLRAlgo_Array1OfPISeg
+") operator=;
 		const HLRAlgo_Array1OfPISeg & operator = (const HLRAlgo_Array1OfPISeg & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(HLRAlgo_PolyInternalSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: HLRAlgo_PolyInternalSegment &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const HLRAlgo_PolyInternalSegment & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	HLRAlgo_PolyInternalSegment
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: HLRAlgo_PolyInternalSegment
+") Value;
 		const HLRAlgo_PolyInternalSegment & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	HLRAlgo_PolyInternalSegment
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: HLRAlgo_PolyInternalSegment
+") ChangeValue;
 		HLRAlgo_PolyInternalSegment & ChangeValue (const Standard_Integer Index);
 };
 
@@ -518,108 +394,68 @@ def __del__(self):
 %nodefaultctor HLRAlgo_Array1OfTData;
 class HLRAlgo_Array1OfTData {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_Array1OfTData;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") HLRAlgo_Array1OfTData;
 		 HLRAlgo_Array1OfTData (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(HLRAlgo_TriangleData)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_Array1OfTData;
+		%feature("autodoc", "	:param Item:
+	:type Item: HLRAlgo_TriangleData &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") HLRAlgo_Array1OfTData;
 		 HLRAlgo_Array1OfTData (const HLRAlgo_TriangleData & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(HLRAlgo_TriangleData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: HLRAlgo_TriangleData &
+	:rtype: None
+") Init;
 		void Init (const HLRAlgo_TriangleData & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(HLRAlgo_Array1OfTData)
-
-Returns:
-	HLRAlgo_Array1OfTData
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: HLRAlgo_Array1OfTData &
+	:rtype: HLRAlgo_Array1OfTData
+") Assign;
 		const HLRAlgo_Array1OfTData & Assign (const HLRAlgo_Array1OfTData & Other);
-		%feature("autodoc", "Args:
-	Other(HLRAlgo_Array1OfTData)
-
-Returns:
-	HLRAlgo_Array1OfTData
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: HLRAlgo_Array1OfTData &
+	:rtype: HLRAlgo_Array1OfTData
+") operator=;
 		const HLRAlgo_Array1OfTData & operator = (const HLRAlgo_Array1OfTData & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(HLRAlgo_TriangleData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: HLRAlgo_TriangleData &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const HLRAlgo_TriangleData & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	HLRAlgo_TriangleData
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: HLRAlgo_TriangleData
+") Value;
 		const HLRAlgo_TriangleData & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	HLRAlgo_TriangleData
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: HLRAlgo_TriangleData
+") ChangeValue;
 		HLRAlgo_TriangleData & ChangeValue (const Standard_Integer Index);
 };
 
@@ -641,254 +477,294 @@ def __del__(self):
 %nodefaultctor HLRAlgo_BiPoint;
 class HLRAlgo_BiPoint {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_BiPoint;
+		%feature("autodoc", "	:rtype: None
+") HLRAlgo_BiPoint;
 		 HLRAlgo_BiPoint ();
-		%feature("autodoc", "Args:
-	X1(Standard_Real)
-	Y1(Standard_Real)
-	Z1(Standard_Real)
-	X2(Standard_Real)
-	Y2(Standard_Real)
-	Z2(Standard_Real)
-	XT1(Standard_Real)
-	YT1(Standard_Real)
-	ZT1(Standard_Real)
-	XT2(Standard_Real)
-	YT2(Standard_Real)
-	ZT2(Standard_Real)
-	Index(Standard_Integer)
-	reg1(Standard_Boolean)
-	regn(Standard_Boolean)
-	outl(Standard_Boolean)
-	intl(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_BiPoint;
+		%feature("autodoc", "	:param X1:
+	:type X1: float
+	:param Y1:
+	:type Y1: float
+	:param Z1:
+	:type Z1: float
+	:param X2:
+	:type X2: float
+	:param Y2:
+	:type Y2: float
+	:param Z2:
+	:type Z2: float
+	:param XT1:
+	:type XT1: float
+	:param YT1:
+	:type YT1: float
+	:param ZT1:
+	:type ZT1: float
+	:param XT2:
+	:type XT2: float
+	:param YT2:
+	:type YT2: float
+	:param ZT2:
+	:type ZT2: float
+	:param Index:
+	:type Index: Standard_Integer
+	:param reg1:
+	:type reg1: bool
+	:param regn:
+	:type regn: bool
+	:param outl:
+	:type outl: bool
+	:param intl:
+	:type intl: bool
+	:rtype: None
+") HLRAlgo_BiPoint;
 		 HLRAlgo_BiPoint (const Standard_Real X1,const Standard_Real Y1,const Standard_Real Z1,const Standard_Real X2,const Standard_Real Y2,const Standard_Real Z2,const Standard_Real XT1,const Standard_Real YT1,const Standard_Real ZT1,const Standard_Real XT2,const Standard_Real YT2,const Standard_Real ZT2,const Standard_Integer Index,const Standard_Boolean reg1,const Standard_Boolean regn,const Standard_Boolean outl,const Standard_Boolean intl);
-		%feature("autodoc", "Args:
-	X1(Standard_Real)
-	Y1(Standard_Real)
-	Z1(Standard_Real)
-	X2(Standard_Real)
-	Y2(Standard_Real)
-	Z2(Standard_Real)
-	XT1(Standard_Real)
-	YT1(Standard_Real)
-	ZT1(Standard_Real)
-	XT2(Standard_Real)
-	YT2(Standard_Real)
-	ZT2(Standard_Real)
-	Index(Standard_Integer)
-	flag(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_BiPoint;
+		%feature("autodoc", "	:param X1:
+	:type X1: float
+	:param Y1:
+	:type Y1: float
+	:param Z1:
+	:type Z1: float
+	:param X2:
+	:type X2: float
+	:param Y2:
+	:type Y2: float
+	:param Z2:
+	:type Z2: float
+	:param XT1:
+	:type XT1: float
+	:param YT1:
+	:type YT1: float
+	:param ZT1:
+	:type ZT1: float
+	:param XT2:
+	:type XT2: float
+	:param YT2:
+	:type YT2: float
+	:param ZT2:
+	:type ZT2: float
+	:param Index:
+	:type Index: Standard_Integer
+	:param flag:
+	:type flag: Standard_Integer
+	:rtype: None
+") HLRAlgo_BiPoint;
 		 HLRAlgo_BiPoint (const Standard_Real X1,const Standard_Real Y1,const Standard_Real Z1,const Standard_Real X2,const Standard_Real Y2,const Standard_Real Z2,const Standard_Real XT1,const Standard_Real YT1,const Standard_Real ZT1,const Standard_Real XT2,const Standard_Real YT2,const Standard_Real ZT2,const Standard_Integer Index,const Standard_Integer flag);
-		%feature("autodoc", "Args:
-	X1(Standard_Real)
-	Y1(Standard_Real)
-	Z1(Standard_Real)
-	X2(Standard_Real)
-	Y2(Standard_Real)
-	Z2(Standard_Real)
-	XT1(Standard_Real)
-	YT1(Standard_Real)
-	ZT1(Standard_Real)
-	XT2(Standard_Real)
-	YT2(Standard_Real)
-	ZT2(Standard_Real)
-	Index(Standard_Integer)
-	i1(Standard_Integer)
-	i1p1(Standard_Integer)
-	i1p2(Standard_Integer)
-	reg1(Standard_Boolean)
-	regn(Standard_Boolean)
-	outl(Standard_Boolean)
-	intl(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_BiPoint;
+		%feature("autodoc", "	:param X1:
+	:type X1: float
+	:param Y1:
+	:type Y1: float
+	:param Z1:
+	:type Z1: float
+	:param X2:
+	:type X2: float
+	:param Y2:
+	:type Y2: float
+	:param Z2:
+	:type Z2: float
+	:param XT1:
+	:type XT1: float
+	:param YT1:
+	:type YT1: float
+	:param ZT1:
+	:type ZT1: float
+	:param XT2:
+	:type XT2: float
+	:param YT2:
+	:type YT2: float
+	:param ZT2:
+	:type ZT2: float
+	:param Index:
+	:type Index: Standard_Integer
+	:param i1:
+	:type i1: Standard_Integer
+	:param i1p1:
+	:type i1p1: Standard_Integer
+	:param i1p2:
+	:type i1p2: Standard_Integer
+	:param reg1:
+	:type reg1: bool
+	:param regn:
+	:type regn: bool
+	:param outl:
+	:type outl: bool
+	:param intl:
+	:type intl: bool
+	:rtype: None
+") HLRAlgo_BiPoint;
 		 HLRAlgo_BiPoint (const Standard_Real X1,const Standard_Real Y1,const Standard_Real Z1,const Standard_Real X2,const Standard_Real Y2,const Standard_Real Z2,const Standard_Real XT1,const Standard_Real YT1,const Standard_Real ZT1,const Standard_Real XT2,const Standard_Real YT2,const Standard_Real ZT2,const Standard_Integer Index,const Standard_Integer i1,const Standard_Integer i1p1,const Standard_Integer i1p2,const Standard_Boolean reg1,const Standard_Boolean regn,const Standard_Boolean outl,const Standard_Boolean intl);
-		%feature("autodoc", "Args:
-	X1(Standard_Real)
-	Y1(Standard_Real)
-	Z1(Standard_Real)
-	X2(Standard_Real)
-	Y2(Standard_Real)
-	Z2(Standard_Real)
-	XT1(Standard_Real)
-	YT1(Standard_Real)
-	ZT1(Standard_Real)
-	XT2(Standard_Real)
-	YT2(Standard_Real)
-	ZT2(Standard_Real)
-	Index(Standard_Integer)
-	i1(Standard_Integer)
-	i1p1(Standard_Integer)
-	i1p2(Standard_Integer)
-	flag(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_BiPoint;
+		%feature("autodoc", "	:param X1:
+	:type X1: float
+	:param Y1:
+	:type Y1: float
+	:param Z1:
+	:type Z1: float
+	:param X2:
+	:type X2: float
+	:param Y2:
+	:type Y2: float
+	:param Z2:
+	:type Z2: float
+	:param XT1:
+	:type XT1: float
+	:param YT1:
+	:type YT1: float
+	:param ZT1:
+	:type ZT1: float
+	:param XT2:
+	:type XT2: float
+	:param YT2:
+	:type YT2: float
+	:param ZT2:
+	:type ZT2: float
+	:param Index:
+	:type Index: Standard_Integer
+	:param i1:
+	:type i1: Standard_Integer
+	:param i1p1:
+	:type i1p1: Standard_Integer
+	:param i1p2:
+	:type i1p2: Standard_Integer
+	:param flag:
+	:type flag: Standard_Integer
+	:rtype: None
+") HLRAlgo_BiPoint;
 		 HLRAlgo_BiPoint (const Standard_Real X1,const Standard_Real Y1,const Standard_Real Z1,const Standard_Real X2,const Standard_Real Y2,const Standard_Real Z2,const Standard_Real XT1,const Standard_Real YT1,const Standard_Real ZT1,const Standard_Real XT2,const Standard_Real YT2,const Standard_Real ZT2,const Standard_Integer Index,const Standard_Integer i1,const Standard_Integer i1p1,const Standard_Integer i1p2,const Standard_Integer flag);
-		%feature("autodoc", "Args:
-	X1(Standard_Real)
-	Y1(Standard_Real)
-	Z1(Standard_Real)
-	X2(Standard_Real)
-	Y2(Standard_Real)
-	Z2(Standard_Real)
-	XT1(Standard_Real)
-	YT1(Standard_Real)
-	ZT1(Standard_Real)
-	XT2(Standard_Real)
-	YT2(Standard_Real)
-	ZT2(Standard_Real)
-	Index(Standard_Integer)
-	i1(Standard_Integer)
-	i1p1(Standard_Integer)
-	i1p2(Standard_Integer)
-	i2(Standard_Integer)
-	i2p1(Standard_Integer)
-	i2p2(Standard_Integer)
-	reg1(Standard_Boolean)
-	regn(Standard_Boolean)
-	outl(Standard_Boolean)
-	intl(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_BiPoint;
+		%feature("autodoc", "	:param X1:
+	:type X1: float
+	:param Y1:
+	:type Y1: float
+	:param Z1:
+	:type Z1: float
+	:param X2:
+	:type X2: float
+	:param Y2:
+	:type Y2: float
+	:param Z2:
+	:type Z2: float
+	:param XT1:
+	:type XT1: float
+	:param YT1:
+	:type YT1: float
+	:param ZT1:
+	:type ZT1: float
+	:param XT2:
+	:type XT2: float
+	:param YT2:
+	:type YT2: float
+	:param ZT2:
+	:type ZT2: float
+	:param Index:
+	:type Index: Standard_Integer
+	:param i1:
+	:type i1: Standard_Integer
+	:param i1p1:
+	:type i1p1: Standard_Integer
+	:param i1p2:
+	:type i1p2: Standard_Integer
+	:param i2:
+	:type i2: Standard_Integer
+	:param i2p1:
+	:type i2p1: Standard_Integer
+	:param i2p2:
+	:type i2p2: Standard_Integer
+	:param reg1:
+	:type reg1: bool
+	:param regn:
+	:type regn: bool
+	:param outl:
+	:type outl: bool
+	:param intl:
+	:type intl: bool
+	:rtype: None
+") HLRAlgo_BiPoint;
 		 HLRAlgo_BiPoint (const Standard_Real X1,const Standard_Real Y1,const Standard_Real Z1,const Standard_Real X2,const Standard_Real Y2,const Standard_Real Z2,const Standard_Real XT1,const Standard_Real YT1,const Standard_Real ZT1,const Standard_Real XT2,const Standard_Real YT2,const Standard_Real ZT2,const Standard_Integer Index,const Standard_Integer i1,const Standard_Integer i1p1,const Standard_Integer i1p2,const Standard_Integer i2,const Standard_Integer i2p1,const Standard_Integer i2p2,const Standard_Boolean reg1,const Standard_Boolean regn,const Standard_Boolean outl,const Standard_Boolean intl);
-		%feature("autodoc", "Args:
-	X1(Standard_Real)
-	Y1(Standard_Real)
-	Z1(Standard_Real)
-	X2(Standard_Real)
-	Y2(Standard_Real)
-	Z2(Standard_Real)
-	XT1(Standard_Real)
-	YT1(Standard_Real)
-	ZT1(Standard_Real)
-	XT2(Standard_Real)
-	YT2(Standard_Real)
-	ZT2(Standard_Real)
-	Index(Standard_Integer)
-	i1(Standard_Integer)
-	i1p1(Standard_Integer)
-	i1p2(Standard_Integer)
-	i2(Standard_Integer)
-	i2p1(Standard_Integer)
-	i2p2(Standard_Integer)
-	flag(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_BiPoint;
+		%feature("autodoc", "	:param X1:
+	:type X1: float
+	:param Y1:
+	:type Y1: float
+	:param Z1:
+	:type Z1: float
+	:param X2:
+	:type X2: float
+	:param Y2:
+	:type Y2: float
+	:param Z2:
+	:type Z2: float
+	:param XT1:
+	:type XT1: float
+	:param YT1:
+	:type YT1: float
+	:param ZT1:
+	:type ZT1: float
+	:param XT2:
+	:type XT2: float
+	:param YT2:
+	:type YT2: float
+	:param ZT2:
+	:type ZT2: float
+	:param Index:
+	:type Index: Standard_Integer
+	:param i1:
+	:type i1: Standard_Integer
+	:param i1p1:
+	:type i1p1: Standard_Integer
+	:param i1p2:
+	:type i1p2: Standard_Integer
+	:param i2:
+	:type i2: Standard_Integer
+	:param i2p1:
+	:type i2p1: Standard_Integer
+	:param i2p2:
+	:type i2p2: Standard_Integer
+	:param flag:
+	:type flag: Standard_Integer
+	:rtype: None
+") HLRAlgo_BiPoint;
 		 HLRAlgo_BiPoint (const Standard_Real X1,const Standard_Real Y1,const Standard_Real Z1,const Standard_Real X2,const Standard_Real Y2,const Standard_Real Z2,const Standard_Real XT1,const Standard_Real YT1,const Standard_Real ZT1,const Standard_Real XT2,const Standard_Real YT2,const Standard_Real ZT2,const Standard_Integer Index,const Standard_Integer i1,const Standard_Integer i1p1,const Standard_Integer i1p2,const Standard_Integer i2,const Standard_Integer i2p1,const Standard_Integer i2p2,const Standard_Integer flag);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Rg1Line;
+		%feature("autodoc", "	:rtype: bool
+") Rg1Line;
 		Standard_Boolean Rg1Line ();
-		%feature("autodoc", "Args:
-	B(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Rg1Line;
+		%feature("autodoc", "	:param B:
+	:type B: bool
+	:rtype: None
+") Rg1Line;
 		void Rg1Line (const Standard_Boolean B);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") RgNLine;
+		%feature("autodoc", "	:rtype: bool
+") RgNLine;
 		Standard_Boolean RgNLine ();
-		%feature("autodoc", "Args:
-	B(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") RgNLine;
+		%feature("autodoc", "	:param B:
+	:type B: bool
+	:rtype: None
+") RgNLine;
 		void RgNLine (const Standard_Boolean B);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") OutLine;
+		%feature("autodoc", "	:rtype: bool
+") OutLine;
 		Standard_Boolean OutLine ();
-		%feature("autodoc", "Args:
-	B(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") OutLine;
+		%feature("autodoc", "	:param B:
+	:type B: bool
+	:rtype: None
+") OutLine;
 		void OutLine (const Standard_Boolean B);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IntLine;
+		%feature("autodoc", "	:rtype: bool
+") IntLine;
 		Standard_Boolean IntLine ();
-		%feature("autodoc", "Args:
-	B(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntLine;
+		%feature("autodoc", "	:param B:
+	:type B: bool
+	:rtype: None
+") IntLine;
 		void IntLine (const Standard_Boolean B);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Hidden;
+		%feature("autodoc", "	:rtype: bool
+") Hidden;
 		Standard_Boolean Hidden ();
-		%feature("autodoc", "Args:
-	B(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Hidden;
+		%feature("autodoc", "	:param B:
+	:type B: bool
+	:rtype: None
+") Hidden;
 		void Hidden (const Standard_Boolean B);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Indices;
+		%feature("autodoc", "	:rtype: Standard_Address
+") Indices;
 		Standard_Address Indices ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Coordinates;
+		%feature("autodoc", "	:rtype: Standard_Address
+") Coordinates;
 		Standard_Address Coordinates ();
 };
 
@@ -910,48 +786,36 @@ def __del__(self):
 %nodefaultctor HLRAlgo_Coincidence;
 class HLRAlgo_Coincidence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_Coincidence;
+		%feature("autodoc", "	:rtype: None
+") HLRAlgo_Coincidence;
 		 HLRAlgo_Coincidence ();
-		%feature("autodoc", "Args:
-	FE(Standard_Integer)
-	Param(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Set2D;
+		%feature("autodoc", "	:param FE:
+	:type FE: Standard_Integer
+	:param Param:
+	:type Param: float
+	:rtype: None
+") Set2D;
 		void Set2D (const Standard_Integer FE,const Standard_Real Param);
-		%feature("autodoc", "Args:
-	stbef(TopAbs_State)
-	staft(TopAbs_State)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetState3D;
+		%feature("autodoc", "	:param stbef:
+	:type stbef: TopAbs_State
+	:param staft:
+	:type staft: TopAbs_State
+	:rtype: None
+") SetState3D;
 		void SetState3D (const TopAbs_State stbef,const TopAbs_State staft);
-		%feature("autodoc", "Args:
-	FE(Standard_Integer)
-	Param(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Value2D;
+		%feature("autodoc", "	:param FE:
+	:type FE: Standard_Integer &
+	:param Param:
+	:type Param: float &
+	:rtype: None
+") Value2D;
 		void Value2D (Standard_Integer &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	stbef(TopAbs_State)
-	staft(TopAbs_State)
-
-Returns:
-	None
-
-No detailed docstring for this function.") State3D;
+		%feature("autodoc", "	:param stbef:
+	:type stbef: TopAbs_State &
+	:param staft:
+	:type staft: TopAbs_State &
+	:rtype: None
+") State3D;
 		void State3D (TopAbs_State & stbef,TopAbs_State & staft);
 };
 
@@ -973,81 +837,58 @@ def __del__(self):
 %nodefaultctor HLRAlgo_EdgeIterator;
 class HLRAlgo_EdgeIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Iterator on the visible or hidden parts of an edge.
 
-Iterator  on the  visible or  hidden  parts of  an  
-         edge.") HLRAlgo_EdgeIterator;
+	:rtype: None
+") HLRAlgo_EdgeIterator;
 		 HLRAlgo_EdgeIterator ();
-		%feature("autodoc", "Args:
-	status(HLRAlgo_EdgeStatus)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InitHidden;
+		%feature("autodoc", "	:param status:
+	:type status: HLRAlgo_EdgeStatus &
+	:rtype: None
+") InitHidden;
 		void InitHidden (const HLRAlgo_EdgeStatus & status);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") MoreHidden;
+		%feature("autodoc", "	:rtype: bool
+") MoreHidden;
 		Standard_Boolean MoreHidden ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") NextHidden;
+		%feature("autodoc", "	:rtype: None
+") NextHidden;
 		void NextHidden ();
-		%feature("autodoc", "Args:
-	Start(Standard_Real)
-	TolStart(Standard_ShortReal)
-	End(Standard_Real)
-	TolEnd(Standard_ShortReal)
+		%feature("autodoc", "	* Returns the bounds and the tolerances of the current Hidden Interval
 
-Returns:
-	None
-
-Returns the bounds and the tolerances  
-         of the current Hidden Interval") Hidden;
+	:param Start:
+	:type Start: float &
+	:param TolStart:
+	:type TolStart: Standard_ShortReal &
+	:param End:
+	:type End: float &
+	:param TolEnd:
+	:type TolEnd: Standard_ShortReal &
+	:rtype: None
+") Hidden;
 		void Hidden (Standard_Real &OutValue,Standard_ShortReal & TolStart,Standard_Real &OutValue,Standard_ShortReal & TolEnd);
-		%feature("autodoc", "Args:
-	status(HLRAlgo_EdgeStatus)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InitVisible;
+		%feature("autodoc", "	:param status:
+	:type status: HLRAlgo_EdgeStatus &
+	:rtype: None
+") InitVisible;
 		void InitVisible (const HLRAlgo_EdgeStatus & status);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") MoreVisible;
+		%feature("autodoc", "	:rtype: bool
+") MoreVisible;
 		Standard_Boolean MoreVisible ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") NextVisible;
+		%feature("autodoc", "	:rtype: None
+") NextVisible;
 		void NextVisible ();
-		%feature("autodoc", "Args:
-	Start(Standard_Real)
-	TolStart(Standard_ShortReal)
-	End(Standard_Real)
-	TolEnd(Standard_ShortReal)
+		%feature("autodoc", "	* Returns the bounds and the tolerances of the current Visible Interval
 
-Returns:
-	None
-
-Returns the bounds and the tolerances  
-         of the current Visible Interval") Visible;
+	:param Start:
+	:type Start: float &
+	:param TolStart:
+	:type TolStart: Standard_ShortReal &
+	:param End:
+	:type End: float &
+	:param TolEnd:
+	:type TolEnd: Standard_ShortReal &
+	:rtype: None
+") Visible;
 		void Visible (Standard_Real &OutValue,Standard_ShortReal & TolStart,Standard_Real &OutValue,Standard_ShortReal & TolEnd);
 };
 
@@ -1069,131 +910,104 @@ def __del__(self):
 %nodefaultctor HLRAlgo_EdgeStatus;
 class HLRAlgo_EdgeStatus {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_EdgeStatus;
+		%feature("autodoc", "	:rtype: None
+") HLRAlgo_EdgeStatus;
 		 HLRAlgo_EdgeStatus ();
-		%feature("autodoc", "Args:
-	Start(Standard_Real)
-	TolStart(Standard_ShortReal)
-	End(Standard_Real)
-	TolEnd(Standard_ShortReal)
+		%feature("autodoc", "	* Creates a new EdgeStatus. Default visible. The Edge is bounded by the interval <Start>, <End> with the tolerances <TolStart>, <TolEnd>.
 
-Returns:
-	None
-
-Creates a  new  EdgeStatus.  Default visible.  The  
-         Edge is   bounded by the  interval  <Start>, <End>  
-         with the tolerances <TolStart>, <TolEnd>.") HLRAlgo_EdgeStatus;
+	:param Start:
+	:type Start: float
+	:param TolStart:
+	:type TolStart: Standard_ShortReal
+	:param End:
+	:type End: float
+	:param TolEnd:
+	:type TolEnd: Standard_ShortReal
+	:rtype: None
+") HLRAlgo_EdgeStatus;
 		 HLRAlgo_EdgeStatus (const Standard_Real Start,const Standard_ShortReal TolStart,const Standard_Real End,const Standard_ShortReal TolEnd);
-		%feature("autodoc", "Args:
-	Start(Standard_Real)
-	TolStart(Standard_ShortReal)
-	End(Standard_Real)
-	TolEnd(Standard_ShortReal)
+		%feature("autodoc", "	* Initialize an EdgeStatus. Default visible. The Edge is bounded by the interval <Start>, <End> with the tolerances <TolStart>, <TolEnd>.
 
-Returns:
-	None
-
-Initialize  an  EdgeStatus.  Default visible.  The  
-         Edge is   bounded by the  interval  <Start>, <End>  
-         with the tolerances <TolStart>, <TolEnd>.") Initialize;
+	:param Start:
+	:type Start: float
+	:param TolStart:
+	:type TolStart: Standard_ShortReal
+	:param End:
+	:type End: float
+	:param TolEnd:
+	:type TolEnd: Standard_ShortReal
+	:rtype: None
+") Initialize;
 		void Initialize (const Standard_Real Start,const Standard_ShortReal TolStart,const Standard_Real End,const Standard_ShortReal TolEnd);
-		%feature("autodoc", "Args:
-	Start(Standard_Real)
-	TolStart(Standard_ShortReal)
-	End(Standard_Real)
-	TolEnd(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Bounds;
+		%feature("autodoc", "	:param Start:
+	:type Start: float &
+	:param TolStart:
+	:type TolStart: Standard_ShortReal &
+	:param End:
+	:type End: float &
+	:param TolEnd:
+	:type TolEnd: Standard_ShortReal &
+	:rtype: None
+") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_ShortReal & TolStart,Standard_Real &OutValue,Standard_ShortReal & TolEnd);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbVisiblePart;
+		%feature("autodoc", "	:rtype: int
+") NbVisiblePart;
 		Standard_Integer NbVisiblePart ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Start(Standard_Real)
-	TolStart(Standard_ShortReal)
-	End(Standard_Real)
-	TolEnd(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") VisiblePart;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Start:
+	:type Start: float &
+	:param TolStart:
+	:type TolStart: Standard_ShortReal &
+	:param End:
+	:type End: float &
+	:param TolEnd:
+	:type TolEnd: Standard_ShortReal &
+	:rtype: None
+") VisiblePart;
 		void VisiblePart (const Standard_Integer Index,Standard_Real &OutValue,Standard_ShortReal & TolStart,Standard_Real &OutValue,Standard_ShortReal & TolEnd);
-		%feature("autodoc", "Args:
-	Start(Standard_Real)
-	TolStart(Standard_ShortReal)
-	End(Standard_Real)
-	TolEnd(Standard_ShortReal)
-	OnFace(Standard_Boolean)
-	OnBoundary(Standard_Boolean)
+		%feature("autodoc", "	* Hides the interval <Start>, <End> with the tolerances <TolStart>, <TolEnd>. This interval is subtracted from the visible parts. If the hidden part is on ( or under ) the face the flag <OnFace> is True ( or False ). If the hidden part is on ( or inside ) the boundary of the face the flag <OnBoundary> is True ( or False ).
 
-Returns:
-	None
-
-Hides  the  interval  <Start>,    <End>   with the  
-         tolerances <TolStart>,  <TolEnd>. This interval is  
-         subtracted from the visible  parts.  If the hidden  
-         part is on ( or under ) the face the flag <OnFace>  
-         is True ( or False ).  If the hidden  part is on (  
-         or  inside  ) the boundary  of  the  face the flag  
-         <OnBoundary> is True ( or False ).") Hide;
+	:param Start:
+	:type Start: float
+	:param TolStart:
+	:type TolStart: Standard_ShortReal
+	:param End:
+	:type End: float
+	:param TolEnd:
+	:type TolEnd: Standard_ShortReal
+	:param OnFace:
+	:type OnFace: bool
+	:param OnBoundary:
+	:type OnBoundary: bool
+	:rtype: None
+") Hide;
 		void Hide (const Standard_Real Start,const Standard_ShortReal TolStart,const Standard_Real End,const Standard_ShortReal TolEnd,const Standard_Boolean OnFace,const Standard_Boolean OnBoundary);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Hide the whole Edge.
 
-Hide the whole Edge.") HideAll;
+	:rtype: None
+") HideAll;
 		void HideAll ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Show the whole Edge.
 
-Show the whole Edge.") ShowAll;
+	:rtype: None
+") ShowAll;
 		void ShowAll ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") AllHidden;
+		%feature("autodoc", "	:rtype: bool
+") AllHidden;
 		Standard_Boolean AllHidden ();
-		%feature("autodoc", "Args:
-	B(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AllHidden;
+		%feature("autodoc", "	:param B:
+	:type B: bool
+	:rtype: None
+") AllHidden;
 		void AllHidden (const Standard_Boolean B);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") AllVisible;
+		%feature("autodoc", "	:rtype: bool
+") AllVisible;
 		Standard_Boolean AllVisible ();
-		%feature("autodoc", "Args:
-	B(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AllVisible;
+		%feature("autodoc", "	:param B:
+	:type B: bool
+	:rtype: None
+") AllVisible;
 		void AllVisible (const Standard_Boolean B);
 };
 
@@ -1215,137 +1029,95 @@ def __del__(self):
 %nodefaultctor HLRAlgo_EdgesBlock;
 class HLRAlgo_EdgesBlock : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	NbEdges(Standard_Integer)
+		%feature("autodoc", "	* Create a Block of Edges for a wire.
 
-Returns:
-	None
-
-Create a Block of Edges for a wire.") HLRAlgo_EdgesBlock;
+	:param NbEdges:
+	:type NbEdges: Standard_Integer
+	:rtype: None
+") HLRAlgo_EdgesBlock;
 		 HLRAlgo_EdgesBlock (const Standard_Integer NbEdges);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbEdges;
+		%feature("autodoc", "	:rtype: int
+") NbEdges;
 		Standard_Integer NbEdges ();
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	EI(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Edge;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param EI:
+	:type EI: Standard_Integer
+	:rtype: None
+") Edge;
 		void Edge (const Standard_Integer I,const Standard_Integer EI);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Edge;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: int
+") Edge;
 		Standard_Integer Edge (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	Or(TopAbs_Orientation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Orientation;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param Or:
+	:type Or: TopAbs_Orientation
+	:rtype: None
+") Orientation;
 		void Orientation (const Standard_Integer I,const TopAbs_Orientation Or);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopAbs_Orientation
-
-No detailed docstring for this function.") Orientation;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopAbs_Orientation
+") Orientation;
 		TopAbs_Orientation Orientation (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") OutLine;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: bool
+") OutLine;
 		Standard_Boolean OutLine (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	B(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") OutLine;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param B:
+	:type B: bool
+	:rtype: None
+") OutLine;
 		void OutLine (const Standard_Integer I,const Standard_Boolean B);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Internal;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: bool
+") Internal;
 		Standard_Boolean Internal (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	B(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Internal;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param B:
+	:type B: bool
+	:rtype: None
+") Internal;
 		void Internal (const Standard_Integer I,const Standard_Boolean B);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Double;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: bool
+") Double;
 		Standard_Boolean Double (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	B(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Double;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param B:
+	:type B: bool
+	:rtype: None
+") Double;
 		void Double (const Standard_Integer I,const Standard_Boolean B);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsoLine;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: bool
+") IsoLine;
 		Standard_Boolean IsoLine (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	B(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IsoLine;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param B:
+	:type B: bool
+	:rtype: None
+") IsoLine;
 		void IsoLine (const Standard_Integer I,const Standard_Boolean B);
-		%feature("autodoc", "Args:
-	TotMinMax(Standard_Address)
-
-Returns:
-	None
-
-No detailed docstring for this function.") UpdateMinMax;
+		%feature("autodoc", "	:param TotMinMax:
+	:type TotMinMax: Standard_Address
+	:rtype: None
+") UpdateMinMax;
 		void UpdateMinMax (const Standard_Address TotMinMax);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") MinMax;
+		%feature("autodoc", "	:rtype: Standard_Address
+") MinMax;
 		Standard_Address MinMax ();
 };
 
@@ -1406,92 +1178,58 @@ def __del__(self):
 %nodefaultctor HLRAlgo_HArray1OfPHDat;
 class HLRAlgo_HArray1OfPHDat : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_HArray1OfPHDat;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") HLRAlgo_HArray1OfPHDat;
 		 HLRAlgo_HArray1OfPHDat (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(HLRAlgo_PolyHidingData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_HArray1OfPHDat;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: HLRAlgo_PolyHidingData &
+	:rtype: None
+") HLRAlgo_HArray1OfPHDat;
 		 HLRAlgo_HArray1OfPHDat (const Standard_Integer Low,const Standard_Integer Up,const HLRAlgo_PolyHidingData & V);
-		%feature("autodoc", "Args:
-	V(HLRAlgo_PolyHidingData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: HLRAlgo_PolyHidingData &
+	:rtype: None
+") Init;
 		void Init (const HLRAlgo_PolyHidingData & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(HLRAlgo_PolyHidingData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: HLRAlgo_PolyHidingData &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const HLRAlgo_PolyHidingData & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	HLRAlgo_PolyHidingData
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: HLRAlgo_PolyHidingData
+") Value;
 		const HLRAlgo_PolyHidingData & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	HLRAlgo_PolyHidingData
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: HLRAlgo_PolyHidingData
+") ChangeValue;
 		HLRAlgo_PolyHidingData & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_Array1OfPHDat
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: HLRAlgo_Array1OfPHDat
+") Array1;
 		const HLRAlgo_Array1OfPHDat & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_Array1OfPHDat
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: HLRAlgo_Array1OfPHDat
+") ChangeArray1;
 		HLRAlgo_Array1OfPHDat & ChangeArray1 ();
 };
 
@@ -1552,92 +1290,58 @@ def __del__(self):
 %nodefaultctor HLRAlgo_HArray1OfPINod;
 class HLRAlgo_HArray1OfPINod : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_HArray1OfPINod;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") HLRAlgo_HArray1OfPINod;
 		 HLRAlgo_HArray1OfPINod (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(Handle_HLRAlgo_PolyInternalNode)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_HArray1OfPINod;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: Handle_HLRAlgo_PolyInternalNode &
+	:rtype: None
+") HLRAlgo_HArray1OfPINod;
 		 HLRAlgo_HArray1OfPINod (const Standard_Integer Low,const Standard_Integer Up,const Handle_HLRAlgo_PolyInternalNode & V);
-		%feature("autodoc", "Args:
-	V(Handle_HLRAlgo_PolyInternalNode)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_HLRAlgo_PolyInternalNode &
+	:rtype: None
+") Init;
 		void Init (const Handle_HLRAlgo_PolyInternalNode & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Handle_HLRAlgo_PolyInternalNode)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Handle_HLRAlgo_PolyInternalNode &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_HLRAlgo_PolyInternalNode & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_HLRAlgo_PolyInternalNode
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_HLRAlgo_PolyInternalNode
+") Value;
 		const Handle_HLRAlgo_PolyInternalNode & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_HLRAlgo_PolyInternalNode
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_HLRAlgo_PolyInternalNode
+") ChangeValue;
 		Handle_HLRAlgo_PolyInternalNode & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_Array1OfPINod
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: HLRAlgo_Array1OfPINod
+") Array1;
 		const HLRAlgo_Array1OfPINod & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_Array1OfPINod
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: HLRAlgo_Array1OfPINod
+") ChangeArray1;
 		HLRAlgo_Array1OfPINod & ChangeArray1 ();
 };
 
@@ -1698,92 +1402,58 @@ def __del__(self):
 %nodefaultctor HLRAlgo_HArray1OfPISeg;
 class HLRAlgo_HArray1OfPISeg : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_HArray1OfPISeg;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") HLRAlgo_HArray1OfPISeg;
 		 HLRAlgo_HArray1OfPISeg (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(HLRAlgo_PolyInternalSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_HArray1OfPISeg;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: HLRAlgo_PolyInternalSegment &
+	:rtype: None
+") HLRAlgo_HArray1OfPISeg;
 		 HLRAlgo_HArray1OfPISeg (const Standard_Integer Low,const Standard_Integer Up,const HLRAlgo_PolyInternalSegment & V);
-		%feature("autodoc", "Args:
-	V(HLRAlgo_PolyInternalSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: HLRAlgo_PolyInternalSegment &
+	:rtype: None
+") Init;
 		void Init (const HLRAlgo_PolyInternalSegment & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(HLRAlgo_PolyInternalSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: HLRAlgo_PolyInternalSegment &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const HLRAlgo_PolyInternalSegment & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	HLRAlgo_PolyInternalSegment
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: HLRAlgo_PolyInternalSegment
+") Value;
 		const HLRAlgo_PolyInternalSegment & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	HLRAlgo_PolyInternalSegment
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: HLRAlgo_PolyInternalSegment
+") ChangeValue;
 		HLRAlgo_PolyInternalSegment & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_Array1OfPISeg
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: HLRAlgo_Array1OfPISeg
+") Array1;
 		const HLRAlgo_Array1OfPISeg & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_Array1OfPISeg
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: HLRAlgo_Array1OfPISeg
+") ChangeArray1;
 		HLRAlgo_Array1OfPISeg & ChangeArray1 ();
 };
 
@@ -1844,92 +1514,58 @@ def __del__(self):
 %nodefaultctor HLRAlgo_HArray1OfTData;
 class HLRAlgo_HArray1OfTData : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_HArray1OfTData;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") HLRAlgo_HArray1OfTData;
 		 HLRAlgo_HArray1OfTData (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(HLRAlgo_TriangleData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_HArray1OfTData;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: HLRAlgo_TriangleData &
+	:rtype: None
+") HLRAlgo_HArray1OfTData;
 		 HLRAlgo_HArray1OfTData (const Standard_Integer Low,const Standard_Integer Up,const HLRAlgo_TriangleData & V);
-		%feature("autodoc", "Args:
-	V(HLRAlgo_TriangleData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: HLRAlgo_TriangleData &
+	:rtype: None
+") Init;
 		void Init (const HLRAlgo_TriangleData & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(HLRAlgo_TriangleData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: HLRAlgo_TriangleData &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const HLRAlgo_TriangleData & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	HLRAlgo_TriangleData
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: HLRAlgo_TriangleData
+") Value;
 		const HLRAlgo_TriangleData & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	HLRAlgo_TriangleData
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: HLRAlgo_TriangleData
+") ChangeValue;
 		HLRAlgo_TriangleData & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_Array1OfTData
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: HLRAlgo_Array1OfTData
+") Array1;
 		const HLRAlgo_Array1OfTData & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_Array1OfTData
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: HLRAlgo_Array1OfTData
+") ChangeArray1;
 		HLRAlgo_Array1OfTData & ChangeArray1 ();
 };
 
@@ -1990,113 +1626,67 @@ def __del__(self):
 %nodefaultctor HLRAlgo_Interference;
 class HLRAlgo_Interference {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_Interference;
+		%feature("autodoc", "	:rtype: None
+") HLRAlgo_Interference;
 		 HLRAlgo_Interference ();
-		%feature("autodoc", "Args:
-	Inters(HLRAlgo_Intersection)
-	Bound(HLRAlgo_Coincidence)
-	Orient(TopAbs_Orientation)
-	Trans(TopAbs_Orientation)
-	BTrans(TopAbs_Orientation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_Interference;
+		%feature("autodoc", "	:param Inters:
+	:type Inters: HLRAlgo_Intersection &
+	:param Bound:
+	:type Bound: HLRAlgo_Coincidence &
+	:param Orient:
+	:type Orient: TopAbs_Orientation
+	:param Trans:
+	:type Trans: TopAbs_Orientation
+	:param BTrans:
+	:type BTrans: TopAbs_Orientation
+	:rtype: None
+") HLRAlgo_Interference;
 		 HLRAlgo_Interference (const HLRAlgo_Intersection & Inters,const HLRAlgo_Coincidence & Bound,const TopAbs_Orientation Orient,const TopAbs_Orientation Trans,const TopAbs_Orientation BTrans);
-		%feature("autodoc", "Args:
-	I(HLRAlgo_Intersection)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Intersection;
+		%feature("autodoc", "	:param I:
+	:type I: HLRAlgo_Intersection &
+	:rtype: None
+") Intersection;
 		void Intersection (const HLRAlgo_Intersection & I);
-		%feature("autodoc", "Args:
-	B(HLRAlgo_Coincidence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Boundary;
+		%feature("autodoc", "	:param B:
+	:type B: HLRAlgo_Coincidence &
+	:rtype: None
+") Boundary;
 		void Boundary (const HLRAlgo_Coincidence & B);
-		%feature("autodoc", "Args:
-	O(TopAbs_Orientation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Orientation;
+		%feature("autodoc", "	:param O:
+	:type O: TopAbs_Orientation
+	:rtype: None
+") Orientation;
 		void Orientation (const TopAbs_Orientation O);
-		%feature("autodoc", "Args:
-	Tr(TopAbs_Orientation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Transition;
+		%feature("autodoc", "	:param Tr:
+	:type Tr: TopAbs_Orientation
+	:rtype: None
+") Transition;
 		void Transition (const TopAbs_Orientation Tr);
-		%feature("autodoc", "Args:
-	BTr(TopAbs_Orientation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") BoundaryTransition;
+		%feature("autodoc", "	:param BTr:
+	:type BTr: TopAbs_Orientation
+	:rtype: None
+") BoundaryTransition;
 		void BoundaryTransition (const TopAbs_Orientation BTr);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_Intersection
-
-No detailed docstring for this function.") Intersection;
+		%feature("autodoc", "	:rtype: HLRAlgo_Intersection
+") Intersection;
 		const HLRAlgo_Intersection & Intersection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_Intersection
-
-No detailed docstring for this function.") ChangeIntersection;
+		%feature("autodoc", "	:rtype: HLRAlgo_Intersection
+") ChangeIntersection;
 		HLRAlgo_Intersection & ChangeIntersection ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_Coincidence
-
-No detailed docstring for this function.") Boundary;
+		%feature("autodoc", "	:rtype: HLRAlgo_Coincidence
+") Boundary;
 		const HLRAlgo_Coincidence & Boundary ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_Coincidence
-
-No detailed docstring for this function.") ChangeBoundary;
+		%feature("autodoc", "	:rtype: HLRAlgo_Coincidence
+") ChangeBoundary;
 		HLRAlgo_Coincidence & ChangeBoundary ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_Orientation
-
-No detailed docstring for this function.") Orientation;
+		%feature("autodoc", "	:rtype: TopAbs_Orientation
+") Orientation;
 		TopAbs_Orientation Orientation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_Orientation
-
-No detailed docstring for this function.") Transition;
+		%feature("autodoc", "	:rtype: TopAbs_Orientation
+") Transition;
 		TopAbs_Orientation Transition ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_Orientation
-
-No detailed docstring for this function.") BoundaryTransition;
+		%feature("autodoc", "	:rtype: TopAbs_Orientation
+") BoundaryTransition;
 		TopAbs_Orientation BoundaryTransition ();
 };
 
@@ -2118,164 +1708,103 @@ def __del__(self):
 %nodefaultctor HLRAlgo_InterferenceList;
 class HLRAlgo_InterferenceList {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_InterferenceList;
+		%feature("autodoc", "	:rtype: None
+") HLRAlgo_InterferenceList;
 		 HLRAlgo_InterferenceList ();
-		%feature("autodoc", "Args:
-	Other(HLRAlgo_InterferenceList)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: HLRAlgo_InterferenceList &
+	:rtype: None
+") Assign;
 		void Assign (const HLRAlgo_InterferenceList & Other);
-		%feature("autodoc", "Args:
-	Other(HLRAlgo_InterferenceList)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: HLRAlgo_InterferenceList &
+	:rtype: None
+") operator=;
 		void operator = (const HLRAlgo_InterferenceList & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(HLRAlgo_Interference)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: HLRAlgo_Interference &
+	:rtype: None
+") Prepend;
 		void Prepend (const HLRAlgo_Interference & I);
-		%feature("autodoc", "Args:
-	I(HLRAlgo_Interference)
-	theIt(HLRAlgo_ListIteratorOfInterferenceList)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: HLRAlgo_Interference &
+	:param theIt:
+	:type theIt: HLRAlgo_ListIteratorOfInterferenceList &
+	:rtype: None
+") Prepend;
 		void Prepend (const HLRAlgo_Interference & I,HLRAlgo_ListIteratorOfInterferenceList & theIt);
-		%feature("autodoc", "Args:
-	Other(HLRAlgo_InterferenceList)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: HLRAlgo_InterferenceList &
+	:rtype: None
+") Prepend;
 		void Prepend (HLRAlgo_InterferenceList & Other);
-		%feature("autodoc", "Args:
-	I(HLRAlgo_Interference)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: HLRAlgo_Interference &
+	:rtype: None
+") Append;
 		void Append (const HLRAlgo_Interference & I);
-		%feature("autodoc", "Args:
-	I(HLRAlgo_Interference)
-	theIt(HLRAlgo_ListIteratorOfInterferenceList)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: HLRAlgo_Interference &
+	:param theIt:
+	:type theIt: HLRAlgo_ListIteratorOfInterferenceList &
+	:rtype: None
+") Append;
 		void Append (const HLRAlgo_Interference & I,HLRAlgo_ListIteratorOfInterferenceList & theIt);
-		%feature("autodoc", "Args:
-	Other(HLRAlgo_InterferenceList)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: HLRAlgo_InterferenceList &
+	:rtype: None
+") Append;
 		void Append (HLRAlgo_InterferenceList & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_Interference
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: HLRAlgo_Interference
+") First;
 		HLRAlgo_Interference & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_Interference
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: HLRAlgo_Interference
+") Last;
 		HLRAlgo_Interference & Last ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(HLRAlgo_ListIteratorOfInterferenceList)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: HLRAlgo_ListIteratorOfInterferenceList &
+	:rtype: None
+") Remove;
 		void Remove (HLRAlgo_ListIteratorOfInterferenceList & It);
-		%feature("autodoc", "Args:
-	I(HLRAlgo_Interference)
-	It(HLRAlgo_ListIteratorOfInterferenceList)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: HLRAlgo_Interference &
+	:param It:
+	:type It: HLRAlgo_ListIteratorOfInterferenceList &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const HLRAlgo_Interference & I,HLRAlgo_ListIteratorOfInterferenceList & It);
-		%feature("autodoc", "Args:
-	Other(HLRAlgo_InterferenceList)
-	It(HLRAlgo_ListIteratorOfInterferenceList)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: HLRAlgo_InterferenceList &
+	:param It:
+	:type It: HLRAlgo_ListIteratorOfInterferenceList &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (HLRAlgo_InterferenceList & Other,HLRAlgo_ListIteratorOfInterferenceList & It);
-		%feature("autodoc", "Args:
-	I(HLRAlgo_Interference)
-	It(HLRAlgo_ListIteratorOfInterferenceList)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: HLRAlgo_Interference &
+	:param It:
+	:type It: HLRAlgo_ListIteratorOfInterferenceList &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const HLRAlgo_Interference & I,HLRAlgo_ListIteratorOfInterferenceList & It);
-		%feature("autodoc", "Args:
-	Other(HLRAlgo_InterferenceList)
-	It(HLRAlgo_ListIteratorOfInterferenceList)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: HLRAlgo_InterferenceList &
+	:param It:
+	:type It: HLRAlgo_ListIteratorOfInterferenceList &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (HLRAlgo_InterferenceList & Other,HLRAlgo_ListIteratorOfInterferenceList & It);
 };
 
@@ -2297,131 +1826,81 @@ def __del__(self):
 %nodefaultctor HLRAlgo_Intersection;
 class HLRAlgo_Intersection {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_Intersection;
+		%feature("autodoc", "	:rtype: None
+") HLRAlgo_Intersection;
 		 HLRAlgo_Intersection ();
-		%feature("autodoc", "Args:
-	Ori(TopAbs_Orientation)
-	Lev(Standard_Integer)
-	SegInd(Standard_Integer)
-	Ind(Standard_Integer)
-	P(Standard_Real)
-	Tol(Standard_ShortReal)
-	S(TopAbs_State)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_Intersection;
+		%feature("autodoc", "	:param Ori:
+	:type Ori: TopAbs_Orientation
+	:param Lev:
+	:type Lev: Standard_Integer
+	:param SegInd:
+	:type SegInd: Standard_Integer
+	:param Ind:
+	:type Ind: Standard_Integer
+	:param P:
+	:type P: float
+	:param Tol:
+	:type Tol: Standard_ShortReal
+	:param S:
+	:type S: TopAbs_State
+	:rtype: None
+") HLRAlgo_Intersection;
 		 HLRAlgo_Intersection (const TopAbs_Orientation Ori,const Standard_Integer Lev,const Standard_Integer SegInd,const Standard_Integer Ind,const Standard_Real P,const Standard_ShortReal Tol,const TopAbs_State S);
-		%feature("autodoc", "Args:
-	Ori(TopAbs_Orientation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Orientation;
+		%feature("autodoc", "	:param Ori:
+	:type Ori: TopAbs_Orientation
+	:rtype: None
+") Orientation;
 		void Orientation (const TopAbs_Orientation Ori);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_Orientation
-
-No detailed docstring for this function.") Orientation;
+		%feature("autodoc", "	:rtype: TopAbs_Orientation
+") Orientation;
 		TopAbs_Orientation Orientation ();
-		%feature("autodoc", "Args:
-	Lev(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Level;
+		%feature("autodoc", "	:param Lev:
+	:type Lev: Standard_Integer
+	:rtype: None
+") Level;
 		void Level (const Standard_Integer Lev);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Level;
+		%feature("autodoc", "	:rtype: int
+") Level;
 		Standard_Integer Level ();
-		%feature("autodoc", "Args:
-	SegInd(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SegIndex;
+		%feature("autodoc", "	:param SegInd:
+	:type SegInd: Standard_Integer
+	:rtype: None
+") SegIndex;
 		void SegIndex (const Standard_Integer SegInd);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") SegIndex;
+		%feature("autodoc", "	:rtype: int
+") SegIndex;
 		Standard_Integer SegIndex ();
-		%feature("autodoc", "Args:
-	Ind(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Index;
+		%feature("autodoc", "	:param Ind:
+	:type Ind: Standard_Integer
+	:rtype: None
+") Index;
 		void Index (const Standard_Integer Ind);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Index;
+		%feature("autodoc", "	:rtype: int
+") Index;
 		Standard_Integer Index ();
-		%feature("autodoc", "Args:
-	P(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Parameter;
+		%feature("autodoc", "	:param P:
+	:type P: float
+	:rtype: None
+") Parameter;
 		void Parameter (const Standard_Real P);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Parameter;
+		%feature("autodoc", "	:rtype: float
+") Parameter;
 		Standard_Real Parameter ();
-		%feature("autodoc", "Args:
-	T(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Tolerance;
+		%feature("autodoc", "	:param T:
+	:type T: Standard_ShortReal
+	:rtype: None
+") Tolerance;
 		void Tolerance (const Standard_ShortReal T);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") Tolerance;
+		%feature("autodoc", "	:rtype: Standard_ShortReal
+") Tolerance;
 		Standard_ShortReal Tolerance ();
-		%feature("autodoc", "Args:
-	S(TopAbs_State)
-
-Returns:
-	None
-
-No detailed docstring for this function.") State;
+		%feature("autodoc", "	:param S:
+	:type S: TopAbs_State
+	:rtype: None
+") State;
 		void State (const TopAbs_State S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_State
-
-No detailed docstring for this function.") State;
+		%feature("autodoc", "	:rtype: TopAbs_State
+") State;
 		TopAbs_State State ();
 };
 
@@ -2443,49 +1922,27 @@ def __del__(self):
 %nodefaultctor HLRAlgo_ListIteratorOfInterferenceList;
 class HLRAlgo_ListIteratorOfInterferenceList {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_ListIteratorOfInterferenceList;
+		%feature("autodoc", "	:rtype: None
+") HLRAlgo_ListIteratorOfInterferenceList;
 		 HLRAlgo_ListIteratorOfInterferenceList ();
-		%feature("autodoc", "Args:
-	L(HLRAlgo_InterferenceList)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_ListIteratorOfInterferenceList;
+		%feature("autodoc", "	:param L:
+	:type L: HLRAlgo_InterferenceList &
+	:rtype: None
+") HLRAlgo_ListIteratorOfInterferenceList;
 		 HLRAlgo_ListIteratorOfInterferenceList (const HLRAlgo_InterferenceList & L);
-		%feature("autodoc", "Args:
-	L(HLRAlgo_InterferenceList)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: HLRAlgo_InterferenceList &
+	:rtype: None
+") Initialize;
 		void Initialize (const HLRAlgo_InterferenceList & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_Interference
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: HLRAlgo_Interference
+") Value;
 		HLRAlgo_Interference & Value ();
 };
 
@@ -2507,49 +1964,27 @@ def __del__(self):
 %nodefaultctor HLRAlgo_ListIteratorOfListOfBPoint;
 class HLRAlgo_ListIteratorOfListOfBPoint {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_ListIteratorOfListOfBPoint;
+		%feature("autodoc", "	:rtype: None
+") HLRAlgo_ListIteratorOfListOfBPoint;
 		 HLRAlgo_ListIteratorOfListOfBPoint ();
-		%feature("autodoc", "Args:
-	L(HLRAlgo_ListOfBPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_ListIteratorOfListOfBPoint;
+		%feature("autodoc", "	:param L:
+	:type L: HLRAlgo_ListOfBPoint &
+	:rtype: None
+") HLRAlgo_ListIteratorOfListOfBPoint;
 		 HLRAlgo_ListIteratorOfListOfBPoint (const HLRAlgo_ListOfBPoint & L);
-		%feature("autodoc", "Args:
-	L(HLRAlgo_ListOfBPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: HLRAlgo_ListOfBPoint &
+	:rtype: None
+") Initialize;
 		void Initialize (const HLRAlgo_ListOfBPoint & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_BiPoint
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: HLRAlgo_BiPoint
+") Value;
 		HLRAlgo_BiPoint & Value ();
 };
 
@@ -2571,21 +2006,15 @@ def __del__(self):
 %nodefaultctor HLRAlgo_ListNodeOfInterferenceList;
 class HLRAlgo_ListNodeOfInterferenceList : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(HLRAlgo_Interference)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_ListNodeOfInterferenceList;
+		%feature("autodoc", "	:param I:
+	:type I: HLRAlgo_Interference &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") HLRAlgo_ListNodeOfInterferenceList;
 		 HLRAlgo_ListNodeOfInterferenceList (const HLRAlgo_Interference & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_Interference
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: HLRAlgo_Interference
+") Value;
 		HLRAlgo_Interference & Value ();
 };
 
@@ -2646,21 +2075,15 @@ def __del__(self):
 %nodefaultctor HLRAlgo_ListNodeOfListOfBPoint;
 class HLRAlgo_ListNodeOfListOfBPoint : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(HLRAlgo_BiPoint)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_ListNodeOfListOfBPoint;
+		%feature("autodoc", "	:param I:
+	:type I: HLRAlgo_BiPoint &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") HLRAlgo_ListNodeOfListOfBPoint;
 		 HLRAlgo_ListNodeOfListOfBPoint (const HLRAlgo_BiPoint & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_BiPoint
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: HLRAlgo_BiPoint
+") Value;
 		HLRAlgo_BiPoint & Value ();
 };
 
@@ -2721,164 +2144,103 @@ def __del__(self):
 %nodefaultctor HLRAlgo_ListOfBPoint;
 class HLRAlgo_ListOfBPoint {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_ListOfBPoint;
+		%feature("autodoc", "	:rtype: None
+") HLRAlgo_ListOfBPoint;
 		 HLRAlgo_ListOfBPoint ();
-		%feature("autodoc", "Args:
-	Other(HLRAlgo_ListOfBPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: HLRAlgo_ListOfBPoint &
+	:rtype: None
+") Assign;
 		void Assign (const HLRAlgo_ListOfBPoint & Other);
-		%feature("autodoc", "Args:
-	Other(HLRAlgo_ListOfBPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: HLRAlgo_ListOfBPoint &
+	:rtype: None
+") operator=;
 		void operator = (const HLRAlgo_ListOfBPoint & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(HLRAlgo_BiPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: HLRAlgo_BiPoint &
+	:rtype: None
+") Prepend;
 		void Prepend (const HLRAlgo_BiPoint & I);
-		%feature("autodoc", "Args:
-	I(HLRAlgo_BiPoint)
-	theIt(HLRAlgo_ListIteratorOfListOfBPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: HLRAlgo_BiPoint &
+	:param theIt:
+	:type theIt: HLRAlgo_ListIteratorOfListOfBPoint &
+	:rtype: None
+") Prepend;
 		void Prepend (const HLRAlgo_BiPoint & I,HLRAlgo_ListIteratorOfListOfBPoint & theIt);
-		%feature("autodoc", "Args:
-	Other(HLRAlgo_ListOfBPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: HLRAlgo_ListOfBPoint &
+	:rtype: None
+") Prepend;
 		void Prepend (HLRAlgo_ListOfBPoint & Other);
-		%feature("autodoc", "Args:
-	I(HLRAlgo_BiPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: HLRAlgo_BiPoint &
+	:rtype: None
+") Append;
 		void Append (const HLRAlgo_BiPoint & I);
-		%feature("autodoc", "Args:
-	I(HLRAlgo_BiPoint)
-	theIt(HLRAlgo_ListIteratorOfListOfBPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: HLRAlgo_BiPoint &
+	:param theIt:
+	:type theIt: HLRAlgo_ListIteratorOfListOfBPoint &
+	:rtype: None
+") Append;
 		void Append (const HLRAlgo_BiPoint & I,HLRAlgo_ListIteratorOfListOfBPoint & theIt);
-		%feature("autodoc", "Args:
-	Other(HLRAlgo_ListOfBPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: HLRAlgo_ListOfBPoint &
+	:rtype: None
+") Append;
 		void Append (HLRAlgo_ListOfBPoint & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_BiPoint
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: HLRAlgo_BiPoint
+") First;
 		HLRAlgo_BiPoint & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_BiPoint
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: HLRAlgo_BiPoint
+") Last;
 		HLRAlgo_BiPoint & Last ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(HLRAlgo_ListIteratorOfListOfBPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: HLRAlgo_ListIteratorOfListOfBPoint &
+	:rtype: None
+") Remove;
 		void Remove (HLRAlgo_ListIteratorOfListOfBPoint & It);
-		%feature("autodoc", "Args:
-	I(HLRAlgo_BiPoint)
-	It(HLRAlgo_ListIteratorOfListOfBPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: HLRAlgo_BiPoint &
+	:param It:
+	:type It: HLRAlgo_ListIteratorOfListOfBPoint &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const HLRAlgo_BiPoint & I,HLRAlgo_ListIteratorOfListOfBPoint & It);
-		%feature("autodoc", "Args:
-	Other(HLRAlgo_ListOfBPoint)
-	It(HLRAlgo_ListIteratorOfListOfBPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: HLRAlgo_ListOfBPoint &
+	:param It:
+	:type It: HLRAlgo_ListIteratorOfListOfBPoint &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (HLRAlgo_ListOfBPoint & Other,HLRAlgo_ListIteratorOfListOfBPoint & It);
-		%feature("autodoc", "Args:
-	I(HLRAlgo_BiPoint)
-	It(HLRAlgo_ListIteratorOfListOfBPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: HLRAlgo_BiPoint &
+	:param It:
+	:type It: HLRAlgo_ListIteratorOfListOfBPoint &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const HLRAlgo_BiPoint & I,HLRAlgo_ListIteratorOfListOfBPoint & It);
-		%feature("autodoc", "Args:
-	Other(HLRAlgo_ListOfBPoint)
-	It(HLRAlgo_ListIteratorOfListOfBPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: HLRAlgo_ListOfBPoint &
+	:param It:
+	:type It: HLRAlgo_ListIteratorOfListOfBPoint &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (HLRAlgo_ListOfBPoint & Other,HLRAlgo_ListIteratorOfListOfBPoint & It);
 };
 
@@ -2900,110 +2262,78 @@ def __del__(self):
 %nodefaultctor HLRAlgo_PolyAlgo;
 class HLRAlgo_PolyAlgo : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_PolyAlgo;
+		%feature("autodoc", "	:rtype: None
+") HLRAlgo_PolyAlgo;
 		 HLRAlgo_PolyAlgo ();
-		%feature("autodoc", "Args:
-	HShell(Handle_TColStd_HArray1OfTransient)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param HShell:
+	:type HShell: Handle_TColStd_HArray1OfTransient &
+	:rtype: None
+") Init;
 		void Init (const Handle_TColStd_HArray1OfTransient & HShell);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfTransient
-
-No detailed docstring for this function.") PolyShell;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfTransient
+") PolyShell;
 		TColStd_Array1OfTransient & PolyShell ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Prepare all the data to process the algo.
 
-Prepare all the data to process the algo.") Update;
+	:rtype: None
+") Update;
 		void Update ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") InitHide;
+		%feature("autodoc", "	:rtype: None
+") InitHide;
 		void InitHide ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") MoreHide;
+		%feature("autodoc", "	:rtype: bool
+") MoreHide;
 		Standard_Boolean MoreHide ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") NextHide;
+		%feature("autodoc", "	:rtype: None
+") NextHide;
 		void NextHide ();
-		%feature("autodoc", "Args:
-	Coordinates(Standard_Address)
-	status(HLRAlgo_EdgeStatus)
-	Index(Standard_Integer)
-	reg1(Standard_Boolean)
-	regn(Standard_Boolean)
-	outl(Standard_Boolean)
-	intl(Standard_Boolean)
+		%feature("autodoc", "	* process hiding between <Pt1> and <Pt2>.
 
-Returns:
-	None
-
-process hiding between <Pt1> and <Pt2>.") Hide;
+	:param Coordinates:
+	:type Coordinates: Standard_Address &
+	:param status:
+	:type status: HLRAlgo_EdgeStatus &
+	:param Index:
+	:type Index: Standard_Integer &
+	:param reg1:
+	:type reg1: bool
+	:param regn:
+	:type regn: bool
+	:param outl:
+	:type outl: bool
+	:param intl:
+	:type intl: bool
+	:rtype: None
+") Hide;
 		void Hide (Standard_Address & Coordinates,HLRAlgo_EdgeStatus & status,Standard_Integer &OutValue,Standard_Boolean & reg1,Standard_Boolean & regn,Standard_Boolean & outl,Standard_Boolean & intl);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") InitShow;
+		%feature("autodoc", "	:rtype: None
+") InitShow;
 		void InitShow ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") MoreShow;
+		%feature("autodoc", "	:rtype: bool
+") MoreShow;
 		Standard_Boolean MoreShow ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") NextShow;
+		%feature("autodoc", "	:rtype: None
+") NextShow;
 		void NextShow ();
-		%feature("autodoc", "Args:
-	Coordinates(Standard_Address)
-	Index(Standard_Integer)
-	reg1(Standard_Boolean)
-	regn(Standard_Boolean)
-	outl(Standard_Boolean)
-	intl(Standard_Boolean)
+		%feature("autodoc", "	* process hiding between <Pt1> and <Pt2>.
 
-Returns:
-	None
-
-process hiding between <Pt1> and <Pt2>.") Show;
+	:param Coordinates:
+	:type Coordinates: Standard_Address &
+	:param Index:
+	:type Index: Standard_Integer &
+	:param reg1:
+	:type reg1: bool
+	:param regn:
+	:type regn: bool
+	:param outl:
+	:type outl: bool
+	:param intl:
+	:type intl: bool
+	:rtype: None
+") Show;
 		void Show (Standard_Address & Coordinates,Standard_Integer &OutValue,Standard_Boolean & reg1,Standard_Boolean & regn,Standard_Boolean & outl,Standard_Boolean & intl);
 };
 
@@ -3064,106 +2394,66 @@ def __del__(self):
 %nodefaultctor HLRAlgo_PolyData;
 class HLRAlgo_PolyData : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_PolyData;
+		%feature("autodoc", "	:rtype: None
+") HLRAlgo_PolyData;
 		 HLRAlgo_PolyData ();
-		%feature("autodoc", "Args:
-	HNodes(Handle_TColgp_HArray1OfXYZ)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HNodes;
+		%feature("autodoc", "	:param HNodes:
+	:type HNodes: Handle_TColgp_HArray1OfXYZ
+	:rtype: None
+") HNodes;
 		void HNodes (const Handle_TColgp_HArray1OfXYZ & HNodes);
-		%feature("autodoc", "Args:
-	HTData(Handle_HLRAlgo_HArray1OfTData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HTData;
+		%feature("autodoc", "	:param HTData:
+	:type HTData: Handle_HLRAlgo_HArray1OfTData &
+	:rtype: None
+") HTData;
 		void HTData (const Handle_HLRAlgo_HArray1OfTData & HTData);
-		%feature("autodoc", "Args:
-	HPHDat(Handle_HLRAlgo_HArray1OfPHDat)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HPHDat;
+		%feature("autodoc", "	:param HPHDat:
+	:type HPHDat: Handle_HLRAlgo_HArray1OfPHDat &
+	:rtype: None
+") HPHDat;
 		void HPHDat (const Handle_HLRAlgo_HArray1OfPHDat & HPHDat);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FaceIndex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: None
+") FaceIndex;
 		void FaceIndex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FaceIndex;
+		%feature("autodoc", "	:rtype: int
+") FaceIndex;
 		Standard_Integer FaceIndex ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColgp_Array1OfXYZ
-
-No detailed docstring for this function.") Nodes;
+		%feature("autodoc", "	:rtype: TColgp_Array1OfXYZ
+") Nodes;
 		TColgp_Array1OfXYZ & Nodes ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_Array1OfTData
-
-No detailed docstring for this function.") TData;
+		%feature("autodoc", "	:rtype: HLRAlgo_Array1OfTData
+") TData;
 		HLRAlgo_Array1OfTData & TData ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_Array1OfPHDat
-
-No detailed docstring for this function.") PHDat;
+		%feature("autodoc", "	:rtype: HLRAlgo_Array1OfPHDat
+") PHDat;
 		HLRAlgo_Array1OfPHDat & PHDat ();
-		%feature("autodoc", "Args:
-	ToTMinMax(Standard_Address)
-
-Returns:
-	None
-
-No detailed docstring for this function.") UpdateGlobalMinMax;
+		%feature("autodoc", "	:param ToTMinMax:
+	:type ToTMinMax: Standard_Address
+	:rtype: None
+") UpdateGlobalMinMax;
 		void UpdateGlobalMinMax (const Standard_Address ToTMinMax);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Hiding;
+		%feature("autodoc", "	:rtype: bool
+") Hiding;
 		Standard_Boolean Hiding ();
-		%feature("autodoc", "Args:
-	Coordinates(Standard_Address)
-	RealPtr(Standard_Address)
-	Indices(Standard_Address)
-	HidingShell(Standard_Boolean)
-	status(HLRAlgo_EdgeStatus)
+		%feature("autodoc", "	* process hiding between <Pt1> and <Pt2>.
 
-Returns:
-	None
-
-process hiding between <Pt1> and <Pt2>.") HideByPolyData;
+	:param Coordinates:
+	:type Coordinates: Standard_Address
+	:param RealPtr:
+	:type RealPtr: Standard_Address
+	:param Indices:
+	:type Indices: Standard_Address
+	:param HidingShell:
+	:type HidingShell: bool
+	:param status:
+	:type status: HLRAlgo_EdgeStatus &
+	:rtype: None
+") HideByPolyData;
 		void HideByPolyData (const Standard_Address Coordinates,const Standard_Address RealPtr,const Standard_Address Indices,const Standard_Boolean HidingShell,HLRAlgo_EdgeStatus & status);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Indices;
+		%feature("autodoc", "	:rtype: Standard_Address
+") Indices;
 		Standard_Address Indices ();
 };
 
@@ -3224,40 +2514,31 @@ def __del__(self):
 %nodefaultctor HLRAlgo_PolyHidingData;
 class HLRAlgo_PolyHidingData {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_PolyHidingData;
+		%feature("autodoc", "	:rtype: None
+") HLRAlgo_PolyHidingData;
 		 HLRAlgo_PolyHidingData ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Minim(Standard_Integer)
-	Maxim(Standard_Integer)
-	A(Standard_Real)
-	B(Standard_Real)
-	C(Standard_Real)
-	D(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Set;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Minim:
+	:type Minim: Standard_Integer
+	:param Maxim:
+	:type Maxim: Standard_Integer
+	:param A:
+	:type A: float
+	:param B:
+	:type B: float
+	:param C:
+	:type C: float
+	:param D:
+	:type D: float
+	:rtype: None
+") Set;
 		void Set (const Standard_Integer Index,const Standard_Integer Minim,const Standard_Integer Maxim,const Standard_Real A,const Standard_Real B,const Standard_Real C,const Standard_Real D);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") IndexAndMinMax;
+		%feature("autodoc", "	:rtype: Standard_Address
+") IndexAndMinMax;
 		Standard_Address IndexAndMinMax ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Plan;
+		%feature("autodoc", "	:rtype: Standard_Address
+") Plan;
 		Standard_Address Plan ();
 };
 
@@ -3279,182 +2560,128 @@ def __del__(self):
 %nodefaultctor HLRAlgo_PolyInternalData;
 class HLRAlgo_PolyInternalData : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	nbNod(Standard_Integer)
-	nbTri(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_PolyInternalData;
+		%feature("autodoc", "	:param nbNod:
+	:type nbNod: Standard_Integer
+	:param nbTri:
+	:type nbTri: Standard_Integer
+	:rtype: None
+") HLRAlgo_PolyInternalData;
 		 HLRAlgo_PolyInternalData (const Standard_Integer nbNod,const Standard_Integer nbTri);
-		%feature("autodoc", "Args:
-	TData(Standard_Address)
-	PISeg(Standard_Address)
-	PINod(Standard_Address)
-
-Returns:
-	None
-
-No detailed docstring for this function.") UpdateLinks;
+		%feature("autodoc", "	:param TData:
+	:type TData: Standard_Address &
+	:param PISeg:
+	:type PISeg: Standard_Address &
+	:param PINod:
+	:type PINod: Standard_Address &
+	:rtype: None
+") UpdateLinks;
 		void UpdateLinks (Standard_Address & TData,Standard_Address & PISeg,Standard_Address & PINod);
-		%feature("autodoc", "Args:
-	Nod1RValues(Standard_Address)
-	Nod2RValues(Standard_Address)
-	PINod1(Standard_Address)
-	PINod2(Standard_Address)
-	coef1(Standard_Real)
-	X3(Standard_Real)
-	Y3(Standard_Real)
-	Z3(Standard_Real)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") AddNode;
+		%feature("autodoc", "	:param Nod1RValues:
+	:type Nod1RValues: Standard_Address
+	:param Nod2RValues:
+	:type Nod2RValues: Standard_Address
+	:param PINod1:
+	:type PINod1: Standard_Address &
+	:param PINod2:
+	:type PINod2: Standard_Address &
+	:param coef1:
+	:type coef1: float
+	:param X3:
+	:type X3: float
+	:param Y3:
+	:type Y3: float
+	:param Z3:
+	:type Z3: float
+	:rtype: int
+") AddNode;
 		Standard_Integer AddNode (const Standard_Address Nod1RValues,const Standard_Address Nod2RValues,Standard_Address & PINod1,Standard_Address & PINod2,const Standard_Real coef1,const Standard_Real X3,const Standard_Real Y3,const Standard_Real Z3);
-		%feature("autodoc", "Args:
-	ip1(Standard_Integer)
-	ip2(Standard_Integer)
-	ip3(Standard_Integer)
-	TData1(Standard_Address)
-	TData2(Standard_Address)
-	PISeg1(Standard_Address)
-	PISeg2(Standard_Address)
-	PINod1(Standard_Address)
-	PINod2(Standard_Address)
-
-Returns:
-	None
-
-No detailed docstring for this function.") UpdateLinks;
+		%feature("autodoc", "	:param ip1:
+	:type ip1: Standard_Integer
+	:param ip2:
+	:type ip2: Standard_Integer
+	:param ip3:
+	:type ip3: Standard_Integer
+	:param TData1:
+	:type TData1: Standard_Address &
+	:param TData2:
+	:type TData2: Standard_Address &
+	:param PISeg1:
+	:type PISeg1: Standard_Address &
+	:param PISeg2:
+	:type PISeg2: Standard_Address &
+	:param PINod1:
+	:type PINod1: Standard_Address &
+	:param PINod2:
+	:type PINod2: Standard_Address &
+	:rtype: None
+") UpdateLinks;
 		void UpdateLinks (const Standard_Integer ip1,const Standard_Integer ip2,const Standard_Integer ip3,Standard_Address & TData1,Standard_Address & TData2,Standard_Address & PISeg1,Standard_Address & PISeg2,Standard_Address & PINod1,Standard_Address & PINod2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
-		%feature("autodoc", "Args:
-	TData1(Standard_Address)
-	TData2(Standard_Address)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IncTData;
+		%feature("autodoc", "	:param TData1:
+	:type TData1: Standard_Address &
+	:param TData2:
+	:type TData2: Standard_Address &
+	:rtype: None
+") IncTData;
 		void IncTData (Standard_Address & TData1,Standard_Address & TData2);
-		%feature("autodoc", "Args:
-	PISeg1(Standard_Address)
-	PISeg2(Standard_Address)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IncPISeg;
+		%feature("autodoc", "	:param PISeg1:
+	:type PISeg1: Standard_Address &
+	:param PISeg2:
+	:type PISeg2: Standard_Address &
+	:rtype: None
+") IncPISeg;
 		void IncPISeg (Standard_Address & PISeg1,Standard_Address & PISeg2);
-		%feature("autodoc", "Args:
-	PINod1(Standard_Address)
-	PINod2(Standard_Address)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IncPINod;
+		%feature("autodoc", "	:param PINod1:
+	:type PINod1: Standard_Address &
+	:param PINod2:
+	:type PINod2: Standard_Address &
+	:rtype: None
+") IncPINod;
 		void IncPINod (Standard_Address & PINod1,Standard_Address & PINod2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") DecTData;
+		%feature("autodoc", "	:rtype: None
+") DecTData;
 		void DecTData ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") DecPISeg;
+		%feature("autodoc", "	:rtype: None
+") DecPISeg;
 		void DecPISeg ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") DecPINod;
+		%feature("autodoc", "	:rtype: None
+") DecPINod;
 		void DecPINod ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbTData;
+		%feature("autodoc", "	:rtype: int
+") NbTData;
 		Standard_Integer NbTData ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbPISeg;
+		%feature("autodoc", "	:rtype: int
+") NbPISeg;
 		Standard_Integer NbPISeg ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbPINod;
+		%feature("autodoc", "	:rtype: int
+") NbPINod;
 		Standard_Integer NbPINod ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Planar;
+		%feature("autodoc", "	:rtype: bool
+") Planar;
 		Standard_Boolean Planar ();
-		%feature("autodoc", "Args:
-	B(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Planar;
+		%feature("autodoc", "	:param B:
+	:type B: bool
+	:rtype: None
+") Planar;
 		void Planar (const Standard_Boolean B);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IntOutL;
+		%feature("autodoc", "	:rtype: bool
+") IntOutL;
 		Standard_Boolean IntOutL ();
-		%feature("autodoc", "Args:
-	B(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntOutL;
+		%feature("autodoc", "	:param B:
+	:type B: bool
+	:rtype: None
+") IntOutL;
 		void IntOutL (const Standard_Boolean B);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_Array1OfTData
-
-No detailed docstring for this function.") TData;
+		%feature("autodoc", "	:rtype: HLRAlgo_Array1OfTData
+") TData;
 		HLRAlgo_Array1OfTData & TData ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_Array1OfPISeg
-
-No detailed docstring for this function.") PISeg;
+		%feature("autodoc", "	:rtype: HLRAlgo_Array1OfPISeg
+") PISeg;
 		HLRAlgo_Array1OfPISeg & PISeg ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_Array1OfPINod
-
-No detailed docstring for this function.") PINod;
+		%feature("autodoc", "	:rtype: HLRAlgo_Array1OfPINod
+") PINod;
 		HLRAlgo_Array1OfPINod & PINod ();
 };
 
@@ -3515,26 +2742,14 @@ def __del__(self):
 %nodefaultctor HLRAlgo_PolyInternalNode;
 class HLRAlgo_PolyInternalNode : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_PolyInternalNode;
+		%feature("autodoc", "	:rtype: None
+") HLRAlgo_PolyInternalNode;
 		 HLRAlgo_PolyInternalNode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Indices;
+		%feature("autodoc", "	:rtype: Standard_Address
+") Indices;
 		Standard_Address Indices ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") RValues;
+		%feature("autodoc", "	:rtype: Standard_Address
+") RValues;
 		Standard_Address RValues ();
 };
 
@@ -3595,19 +2810,11 @@ def __del__(self):
 %nodefaultctor HLRAlgo_PolyInternalSegment;
 class HLRAlgo_PolyInternalSegment {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_PolyInternalSegment;
+		%feature("autodoc", "	:rtype: None
+") HLRAlgo_PolyInternalSegment;
 		 HLRAlgo_PolyInternalSegment ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Indices;
+		%feature("autodoc", "	:rtype: Standard_Address
+") Indices;
 		Standard_Address Indices ();
 };
 
@@ -3629,64 +2836,35 @@ def __del__(self):
 %nodefaultctor HLRAlgo_PolyShellData;
 class HLRAlgo_PolyShellData : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	nbFace(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_PolyShellData;
+		%feature("autodoc", "	:param nbFace:
+	:type nbFace: Standard_Integer
+	:rtype: None
+") HLRAlgo_PolyShellData;
 		 HLRAlgo_PolyShellData (const Standard_Integer nbFace);
-		%feature("autodoc", "Args:
-	TotMinMax(Standard_Address)
-
-Returns:
-	None
-
-No detailed docstring for this function.") UpdateGlobalMinMax;
+		%feature("autodoc", "	:param TotMinMax:
+	:type TotMinMax: Standard_Address
+	:rtype: None
+") UpdateGlobalMinMax;
 		void UpdateGlobalMinMax (const Standard_Address TotMinMax);
-		%feature("autodoc", "Args:
-	nbHiding(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") UpdateHiding;
+		%feature("autodoc", "	:param nbHiding:
+	:type nbHiding: Standard_Integer
+	:rtype: None
+") UpdateHiding;
 		void UpdateHiding (const Standard_Integer nbHiding);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Hiding;
+		%feature("autodoc", "	:rtype: bool
+") Hiding;
 		Standard_Boolean Hiding ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfTransient
-
-No detailed docstring for this function.") PolyData;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfTransient
+") PolyData;
 		TColStd_Array1OfTransient & PolyData ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfTransient
-
-No detailed docstring for this function.") HidingPolyData;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfTransient
+") HidingPolyData;
 		TColStd_Array1OfTransient & HidingPolyData ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_ListOfBPoint
-
-No detailed docstring for this function.") Edges;
+		%feature("autodoc", "	:rtype: HLRAlgo_ListOfBPoint
+") Edges;
 		HLRAlgo_ListOfBPoint & Edges ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Indices;
+		%feature("autodoc", "	:rtype: Standard_Address
+") Indices;
 		Standard_Address Indices ();
 };
 
@@ -3747,174 +2925,156 @@ def __del__(self):
 %nodefaultctor HLRAlgo_Projector;
 class HLRAlgo_Projector {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_Projector;
+		%feature("autodoc", "	:rtype: None
+") HLRAlgo_Projector;
 		 HLRAlgo_Projector ();
-		%feature("autodoc", "Args:
-	CS(gp_Ax2)
+		%feature("autodoc", "	* Creates an axonometric projector. <CS> is the viewing coordinate system.
 
-Returns:
-	None
-
-Creates   an axonometric  projector.   <CS> is the  
-         viewing coordinate system.") HLRAlgo_Projector;
+	:param CS:
+	:type CS: gp_Ax2
+	:rtype: None
+") HLRAlgo_Projector;
 		 HLRAlgo_Projector (const gp_Ax2 & CS);
-		%feature("autodoc", "Args:
-	CS(gp_Ax2)
-	Focus(Standard_Real)
+		%feature("autodoc", "	* Creates a perspective projector. <CS> is the viewing coordinate system.
 
-Returns:
-	None
-
-Creates  a  perspective  projector.   <CS>  is the  
-         viewing coordinate system.") HLRAlgo_Projector;
+	:param CS:
+	:type CS: gp_Ax2
+	:param Focus:
+	:type Focus: float
+	:rtype: None
+") HLRAlgo_Projector;
 		 HLRAlgo_Projector (const gp_Ax2 & CS,const Standard_Real Focus);
-		%feature("autodoc", "Args:
-	T(gp_Trsf)
-	Persp(Standard_Boolean)
-	Focus(Standard_Real)
+		%feature("autodoc", "	* build a Projector with automatic minmax directions.
 
-Returns:
-	None
-
-build a Projector with automatic minmax directions.") HLRAlgo_Projector;
+	:param T:
+	:type T: gp_Trsf
+	:param Persp:
+	:type Persp: bool
+	:param Focus:
+	:type Focus: float
+	:rtype: None
+") HLRAlgo_Projector;
 		 HLRAlgo_Projector (const gp_Trsf & T,const Standard_Boolean Persp,const Standard_Real Focus);
-		%feature("autodoc", "Args:
-	T(gp_Trsf)
-	Persp(Standard_Boolean)
-	Focus(Standard_Real)
-	v1(gp_Vec2d)
-	v2(gp_Vec2d)
-	v3(gp_Vec2d)
+		%feature("autodoc", "	* build a Projector with given minmax directions.
 
-Returns:
-	None
-
-build a Projector with given minmax directions.") HLRAlgo_Projector;
+	:param T:
+	:type T: gp_Trsf
+	:param Persp:
+	:type Persp: bool
+	:param Focus:
+	:type Focus: float
+	:param v1:
+	:type v1: gp_Vec2d
+	:param v2:
+	:type v2: gp_Vec2d
+	:param v3:
+	:type v3: gp_Vec2d
+	:rtype: None
+") HLRAlgo_Projector;
 		 HLRAlgo_Projector (const gp_Trsf & T,const Standard_Boolean Persp,const Standard_Real Focus,const gp_Vec2d & v1,const gp_Vec2d & v2,const gp_Vec2d & v3);
-		%feature("autodoc", "Args:
-	T(gp_Trsf)
-	Persp(Standard_Boolean)
-	Focus(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Set;
+		%feature("autodoc", "	:param T:
+	:type T: gp_Trsf
+	:param Persp:
+	:type Persp: bool
+	:param Focus:
+	:type Focus: float
+	:rtype: None
+") Set;
 		void Set (const gp_Trsf & T,const Standard_Boolean Persp,const Standard_Real Focus);
-		%feature("autodoc", "Args:
-	D1(gp_Vec2d)
-	D2(gp_Vec2d)
-	D3(gp_Vec2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Directions;
+		%feature("autodoc", "	:param D1:
+	:type D1: gp_Vec2d
+	:param D2:
+	:type D2: gp_Vec2d
+	:param D3:
+	:type D3: gp_Vec2d
+	:rtype: None
+") Directions;
 		void Directions (gp_Vec2d & D1,gp_Vec2d & D2,gp_Vec2d & D3);
-		%feature("autodoc", "Args:
-	On(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* to compute with the given scale and translation.
 
-Returns:
-	None
-
-to compute with the given scale and translation.") Scaled;
+	:param On: default value is Standard_False
+	:type On: bool
+	:rtype: None
+") Scaled;
 		void Scaled (const Standard_Boolean On = Standard_False);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if there is a perspective transformation.
 
-Returns True if there is a perspective transformation.") Perspective;
+	:rtype: bool
+") Perspective;
 		Standard_Boolean Perspective ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Trsf
+		%feature("autodoc", "	* Returns the active transformation.
 
-Returns the active transformation.") Transformation;
+	:rtype: gp_Trsf
+") Transformation;
 		const gp_Trsf & Transformation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Trsf
+		%feature("autodoc", "	* Returns the active inverted transformation.
 
-Returns the active inverted transformation.") InvertedTransformation;
+	:rtype: gp_Trsf
+") InvertedTransformation;
 		const gp_Trsf & InvertedTransformation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Trsf
+		%feature("autodoc", "	* Returns the original transformation.
 
-Returns the original transformation.") FullTransformation;
+	:rtype: gp_Trsf
+") FullTransformation;
 		const gp_Trsf & FullTransformation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the focal length.
 
-Returns the focal length.") Focus;
+	:rtype: float
+") Focus;
 		Standard_Real Focus ();
-		%feature("autodoc", "Args:
-	D(gp_Vec)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Transform;
+		%feature("autodoc", "	:param D:
+	:type D: gp_Vec
+	:rtype: None
+") Transform;
 		void Transform (gp_Vec & D);
-		%feature("autodoc", "Args:
-	Pnt(gp_Pnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Transform;
+		%feature("autodoc", "	:param Pnt:
+	:type Pnt: gp_Pnt
+	:rtype: None
+") Transform;
 		void Transform (gp_Pnt & Pnt);
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
-	Pout(gp_Pnt2d)
+		%feature("autodoc", "	* Transform and apply perspective if needed.
 
-Returns:
-	None
-
-Transform and apply perspective if needed.") Project;
+	:param P:
+	:type P: gp_Pnt
+	:param Pout:
+	:type Pout: gp_Pnt2d
+	:rtype: None
+") Project;
 		void Project (const gp_Pnt & P,gp_Pnt2d & Pout);
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
-	X(Standard_Real)
-	Y(Standard_Real)
-	Z(Standard_Real)
+		%feature("autodoc", "	* Transform and apply perspective if needed.
 
-Returns:
-	None
-
-Transform and apply perspective if needed.") Project;
+	:param P:
+	:type P: gp_Pnt
+	:param X:
+	:type X: float &
+	:param Y:
+	:type Y: float &
+	:param Z:
+	:type Z: float &
+	:rtype: None
+") Project;
 		void Project (const gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
-	D1(gp_Vec)
-	Pout(gp_Pnt2d)
-	D1out(gp_Vec2d)
+		%feature("autodoc", "	* Transform and apply perspective if needed.
 
-Returns:
-	None
-
-Transform and apply perspective if needed.") Project;
+	:param P:
+	:type P: gp_Pnt
+	:param D1:
+	:type D1: gp_Vec
+	:param Pout:
+	:type Pout: gp_Pnt2d
+	:param D1out:
+	:type D1out: gp_Vec2d
+	:rtype: None
+") Project;
 		void Project (const gp_Pnt & P,const gp_Vec & D1,gp_Pnt2d & Pout,gp_Vec2d & D1out);
-		%feature("autodoc", "Args:
-	X(Standard_Real)
-	Y(Standard_Real)
+		%feature("autodoc", "	* return a line going through the eye towards the 2d point <X,Y>.
 
-Returns:
-	gp_Lin
-
-return a line going through the eye towards the  
-         2d point <X,Y>.") Shoot;
+	:param X:
+	:type X: float
+	:param Y:
+	:type Y: float
+	:rtype: gp_Lin
+") Shoot;
 		gp_Lin Shoot (const Standard_Real X,const Standard_Real Y);
 };
 
@@ -3936,19 +3096,11 @@ def __del__(self):
 %nodefaultctor HLRAlgo_TriangleData;
 class HLRAlgo_TriangleData {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") HLRAlgo_TriangleData;
+		%feature("autodoc", "	:rtype: None
+") HLRAlgo_TriangleData;
 		 HLRAlgo_TriangleData ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Indices;
+		%feature("autodoc", "	:rtype: Standard_Address
+") Indices;
 		Standard_Address Indices ();
 };
 
@@ -3970,52 +3122,35 @@ def __del__(self):
 %nodefaultctor HLRAlgo_WiresBlock;
 class HLRAlgo_WiresBlock : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	NbWires(Standard_Integer)
+		%feature("autodoc", "	* Create a Block of Blocks.
 
-Returns:
-	None
-
-Create a Block of Blocks.") HLRAlgo_WiresBlock;
+	:param NbWires:
+	:type NbWires: Standard_Integer
+	:rtype: None
+") HLRAlgo_WiresBlock;
 		 HLRAlgo_WiresBlock (const Standard_Integer NbWires);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbWires;
+		%feature("autodoc", "	:rtype: int
+") NbWires;
 		Standard_Integer NbWires ();
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	W(Handle_HLRAlgo_EdgesBlock)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Set;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param W:
+	:type W: Handle_HLRAlgo_EdgesBlock &
+	:rtype: None
+") Set;
 		void Set (const Standard_Integer I,const Handle_HLRAlgo_EdgesBlock & W);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	Handle_HLRAlgo_EdgesBlock
-
-No detailed docstring for this function.") Wire;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: Handle_HLRAlgo_EdgesBlock
+") Wire;
 		Handle_HLRAlgo_EdgesBlock & Wire (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	TotMinMax(Standard_Address)
-
-Returns:
-	None
-
-No detailed docstring for this function.") UpdateMinMax;
+		%feature("autodoc", "	:param TotMinMax:
+	:type TotMinMax: Standard_Address
+	:rtype: None
+") UpdateMinMax;
 		void UpdateMinMax (const Standard_Address TotMinMax);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") MinMax;
+		%feature("autodoc", "	:rtype: Standard_Address
+") MinMax;
 		Standard_Address MinMax ();
 };
 

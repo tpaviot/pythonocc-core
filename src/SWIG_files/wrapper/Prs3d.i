@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -76,20 +76,24 @@ enum Prs3d_TypeOfLinePicking {
 %nodefaultctor Prs3d;
 class Prs3d {
 	public:
-		%feature("autodoc", "Args:
-	X(Quantity_Length)
-	Y(Quantity_Length)
-	Z(Quantity_Length)
-	aDistance(Quantity_Length)
-	p1(gp_Pnt)
-	p2(gp_Pnt)
-	dist(Quantity_Length)
+		%feature("autodoc", "	* draws an arrow at a given location, with respect to a given direction.
 
-Returns:
-	static Standard_Boolean
-
-draws an arrow at a given location, with respect  
-         to a given direction.") MatchSegment;
+	:param X:
+	:type X: Quantity_Length
+	:param Y:
+	:type Y: Quantity_Length
+	:param Z:
+	:type Z: Quantity_Length
+	:param aDistance:
+	:type aDistance: Quantity_Length
+	:param p1:
+	:type p1: gp_Pnt
+	:param p2:
+	:type p2: gp_Pnt
+	:param dist:
+	:type dist: Quantity_Length &
+	:rtype: bool
+") MatchSegment;
 		static Standard_Boolean MatchSegment (const Quantity_Length X,const Quantity_Length Y,const Quantity_Length Z,const Quantity_Length aDistance,const gp_Pnt & p1,const gp_Pnt & p2,Standard_Real &OutValue);
 };
 
@@ -170,51 +174,39 @@ def __del__(self):
 %nodefaultctor Prs3d_DimensionUnits;
 class Prs3d_DimensionUnits {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Default constructor. Sets meters as default length units and radians as default angle units.
 
-Default constructor. Sets meters as default length units
-and radians as default angle units.") Prs3d_DimensionUnits;
+	:rtype: None
+") Prs3d_DimensionUnits;
 		 Prs3d_DimensionUnits ();
-		%feature("autodoc", "Args:
-	theUnits(Prs3d_DimensionUnits)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prs3d_DimensionUnits;
+		%feature("autodoc", "	:param theUnits:
+	:type theUnits: Prs3d_DimensionUnits &
+	:rtype: None
+") Prs3d_DimensionUnits;
 		 Prs3d_DimensionUnits (const Prs3d_DimensionUnits & theUnits);
-		%feature("autodoc", "Args:
-	theUnits(TCollection_AsciiString)
+		%feature("autodoc", "	* Sets angle units
 
-Returns:
-	None
-
-Sets angle units") SetAngleUnits;
+	:param theUnits:
+	:type theUnits: TCollection_AsciiString &
+	:rtype: None
+") SetAngleUnits;
 		void SetAngleUnits (const TCollection_AsciiString & theUnits);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* returns angle units
 
-@return angle units") GetAngleUnits;
+	:rtype: TCollection_AsciiString
+") GetAngleUnits;
 		const TCollection_AsciiString & GetAngleUnits ();
-		%feature("autodoc", "Args:
-	theUnits(TCollection_AsciiString)
+		%feature("autodoc", "	* Sets length units
 
-Returns:
-	None
-
-Sets length units") SetLengthUnits;
+	:param theUnits:
+	:type theUnits: TCollection_AsciiString &
+	:rtype: None
+") SetLengthUnits;
 		void SetLengthUnits (const TCollection_AsciiString & theUnits);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* returns length units
 
-@return length units") GetLengthUnits;
+	:rtype: TCollection_AsciiString
+") GetLengthUnits;
 		const TCollection_AsciiString & GetLengthUnits ();
 };
 
@@ -236,730 +228,475 @@ def __del__(self):
 %nodefaultctor Prs3d_Drawer;
 class Prs3d_Drawer : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Prs3d_Drawer;
+		%feature("autodoc", "	:rtype: None
+") Prs3d_Drawer;
 		 Prs3d_Drawer ();
-		%feature("autodoc", "Args:
-	aTypeOfDeflection(Aspect_TypeOfDeflection)
+		%feature("autodoc", "	* Sets the type of chordal deflection. This indicates whether the deflection value is absolute or relative to the size of the object.
 
-Returns:
-	virtual void
-
-Sets the type of chordal deflection.  
-This indicates whether the deflection value is absolute  
-or relative to the size of the object.") SetTypeOfDeflection;
+	:param aTypeOfDeflection:
+	:type aTypeOfDeflection: Aspect_TypeOfDeflection
+	:rtype: void
+") SetTypeOfDeflection;
 		virtual void SetTypeOfDeflection (const Aspect_TypeOfDeflection aTypeOfDeflection);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Aspect_TypeOfDeflection
+		%feature("autodoc", "	* Returns the type of chordal deflection. This indicates whether the deflection value is absolute or relative to the size of the object.
 
-Returns the type of chordal deflection.  
-This indicates whether the deflection value is absolute  
-or relative to the size of the object.") TypeOfDeflection;
+	:rtype: Aspect_TypeOfDeflection
+") TypeOfDeflection;
 		virtual Aspect_TypeOfDeflection TypeOfDeflection ();
-		%feature("autodoc", "Args:
-	aChordialDeviation(Quantity_Length)
+		%feature("autodoc", "	* Defines the maximal chordial deviation when drawing any curve; Even if the type of deviation is set to TOD_Relative, this value is used by:  Prs3d_DeflectionCurve Prs3d_WFDeflectionSurface Prs3d_WFDeflectionRestrictedFace
 
-Returns:
-	virtual void
-
-Defines the maximal chordial deviation when drawing any curve;  
-         Even if the type of deviation is set to TOD_Relative,  
-         this value is used by:  
- 
-                  Prs3d_DeflectionCurve  
-                  Prs3d_WFDeflectionSurface  
-                  Prs3d_WFDeflectionRestrictedFace") SetMaximalChordialDeviation;
+	:param aChordialDeviation:
+	:type aChordialDeviation: Quantity_Length
+	:rtype: void
+") SetMaximalChordialDeviation;
 		virtual void SetMaximalChordialDeviation (const Quantity_Length aChordialDeviation);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Quantity_Length
+		%feature("autodoc", "	* returns the maximal chordial deviation. Default value is 0.1
 
-returns the maximal chordial deviation. Default value is 0.1") MaximalChordialDeviation;
+	:rtype: Quantity_Length
+") MaximalChordialDeviation;
 		virtual Quantity_Length MaximalChordialDeviation ();
-		%feature("autodoc", "Args:
-	aCoefficient(Standard_Real)
+		%feature("autodoc", "	* Sets the deviation coefficient aCoefficient.
 
-Returns:
-	virtual void
-
-Sets the deviation coefficient aCoefficient.") SetDeviationCoefficient;
+	:param aCoefficient:
+	:type aCoefficient: float
+	:rtype: void
+") SetDeviationCoefficient;
 		virtual void SetDeviationCoefficient (const Standard_Real aCoefficient);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Real
+		%feature("autodoc", "	* Returns the deviation coefficient.
 
-Returns the deviation coefficient.") DeviationCoefficient;
+	:rtype: float
+") DeviationCoefficient;
 		virtual Standard_Real DeviationCoefficient ();
-		%feature("autodoc", "Args:
-	aCoefficient(Standard_Real)
+		%feature("autodoc", "	* Sets the deviation coefficient aCoefficient for removal of hidden lines created by different viewpoints in different presentations. The Default value is 0.02.
 
-Returns:
-	virtual void
-
-Sets the deviation coefficient aCoefficient for removal  
-of hidden lines created by different viewpoints in  
-different presentations. The Default value is 0.02.") SetHLRDeviationCoefficient;
+	:param aCoefficient:
+	:type aCoefficient: float
+	:rtype: void
+") SetHLRDeviationCoefficient;
 		virtual void SetHLRDeviationCoefficient (const Standard_Real aCoefficient);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Real
+		%feature("autodoc", "	* Returns the real number value of the hidden line removal deviation coefficient.
 
-Returns the real number value of the hidden line  
-removal deviation coefficient.") HLRDeviationCoefficient;
+	:rtype: float
+") HLRDeviationCoefficient;
 		virtual Standard_Real HLRDeviationCoefficient ();
-		%feature("autodoc", "Args:
-	anAngle(Standard_Real)
+		%feature("autodoc", "	* Sets anAngle, the angle of maximum chordal deviation for removal of hidden lines created by different viewpoints in different presentations. The default value is 20*PI/180.
 
-Returns:
-	virtual void
-
-Sets anAngle, the angle of maximum chordal  
-deviation for removal of hidden lines created by  
-different viewpoints in different presentations. The  
-default value is 20*PI/180.") SetHLRAngle;
+	:param anAngle:
+	:type anAngle: float
+	:rtype: void
+") SetHLRAngle;
 		virtual void SetHLRAngle (const Standard_Real anAngle);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Real
+		%feature("autodoc", "	* Returns the real number value of the deviation angle in hidden line removal views. The default value is 20*PI/180.
 
-Returns the real number value of the deviation angle  
-in hidden line removal views. The default value is 20*PI/180.") HLRAngle;
+	:rtype: float
+") HLRAngle;
 		virtual Standard_Real HLRAngle ();
-		%feature("autodoc", "Args:
-	anAngle(Standard_Real)
+		%feature("autodoc", "	* Sets deviation angle
 
-Returns:
-	virtual void
-
-Sets deviation angle") SetDeviationAngle;
+	:param anAngle:
+	:type anAngle: float
+	:rtype: void
+") SetDeviationAngle;
 		virtual void SetDeviationAngle (const Standard_Real anAngle);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Real
+		%feature("autodoc", "	* Returns the value for deviation angle.
 
-Returns the value for deviation angle.") DeviationAngle;
+	:rtype: float
+") DeviationAngle;
 		virtual Standard_Real DeviationAngle ();
-		%feature("autodoc", "Args:
-	d(Standard_Integer)
+		%feature("autodoc", "	* Sets the discretisation parameter d.
 
-Returns:
-	virtual void
-
-Sets the discretisation parameter d.") SetDiscretisation;
+	:param d:
+	:type d: Standard_Integer
+	:rtype: void
+") SetDiscretisation;
 		virtual void SetDiscretisation (const Standard_Integer d);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
+		%feature("autodoc", "	* Returns the discretisation setting.
 
-Returns the discretisation setting.") Discretisation;
+	:rtype: int
+") Discretisation;
 		virtual Standard_Integer Discretisation ();
-		%feature("autodoc", "Args:
-	Value(Standard_Real)
+		%feature("autodoc", "	* defines the maximum value allowed for the first and last parameters of an infinite curve. Default value: 500.
 
-Returns:
-	virtual void
-
-defines the maximum value allowed  for the first and last  
-         parameters of an infinite curve. Default value: 500.") SetMaximalParameterValue;
+	:param Value:
+	:type Value: float
+	:rtype: void
+") SetMaximalParameterValue;
 		virtual void SetMaximalParameterValue (const Standard_Real Value);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Real
+		%feature("autodoc", "	* Sets the maximum value allowed for the first and last parameters of an infinite curve. By default, this value is 500000.
 
-Sets the maximum value allowed for the first and last  
-parameters of an infinite curve. By default, this value is 500000.") MaximalParameterValue;
+	:rtype: float
+") MaximalParameterValue;
 		virtual Standard_Real MaximalParameterValue ();
-		%feature("autodoc", "Args:
-	OnOff(Standard_Boolean)
+		%feature("autodoc", "	* Sets IsoOnPlane on or off by setting the parameter OnOff to true or false.
 
-Returns:
-	virtual void
-
-Sets IsoOnPlane on or off   by setting the parameter  
-OnOff to true or false.") SetIsoOnPlane;
+	:param OnOff:
+	:type OnOff: bool
+	:rtype: void
+") SetIsoOnPlane;
 		virtual void SetIsoOnPlane (const Standard_Boolean OnOff);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Returns True if the drawing of isos on planes is enabled.
 
-Returns True if the drawing of isos on planes is enabled.") IsoOnPlane;
+	:rtype: bool
+") IsoOnPlane;
 		virtual Standard_Boolean IsoOnPlane ();
-		%feature("autodoc", "Args:
-	theTypeOfHLR(Prs3d_TypeOfHLR)
+		%feature("autodoc", "	* Sets the type of HLR algorithm used by drawer's interactive objects
 
-Returns:
-	virtual void
-
-Sets the type of HLR algorithm  
-         used by drawer's interactive objects") SetTypeOfHLR;
+	:param theTypeOfHLR:
+	:type theTypeOfHLR: Prs3d_TypeOfHLR
+	:rtype: void
+") SetTypeOfHLR;
 		virtual void SetTypeOfHLR (const Prs3d_TypeOfHLR theTypeOfHLR);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Prs3d_TypeOfHLR
+		%feature("autodoc", "	* Gets the myTypeOfHLR value
 
-Gets the myTypeOfHLR value") TypeOfHLR;
+	:rtype: Prs3d_TypeOfHLR
+") TypeOfHLR;
 		virtual Prs3d_TypeOfHLR TypeOfHLR ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Prs3d_IsoAspect
+		%feature("autodoc", "	* Defines the attributes which are used when drawing an U isoparametric curve of a face. Defines the number of U isoparametric curves to be drawn for a single face. The LineAspect for U isoparametric lines can be edited (methods SetColor, SetTypeOfLine, SetWidth, SetNumber) The default values are: COLOR : Quantity_NOC_GRAY75 TYPE OF LINE: Aspect_TOL_SOLID WIDTH : 0.5 These attributes are used by the following algorithms: Prs3d_WFDeflectionSurface Prs3d_WFDeflectionRestrictedFace
 
-Defines the attributes which are used when drawing an  
-         U isoparametric curve of a face. Defines the number  
-         of U isoparametric curves to be drawn for a single face.  
-         The LineAspect for U isoparametric lines can be edited  
-         (methods SetColor, SetTypeOfLine, SetWidth, SetNumber)  
-         The default values are:  
-         COLOR       : Quantity_NOC_GRAY75  
-         TYPE OF LINE: Aspect_TOL_SOLID  
-         WIDTH       : 0.5  
- 
- 
-         These attributes are used by the following algorithms:  
-         Prs3d_WFDeflectionSurface  
-         Prs3d_WFDeflectionRestrictedFace") UIsoAspect;
+	:rtype: Handle_Prs3d_IsoAspect
+") UIsoAspect;
 		virtual Handle_Prs3d_IsoAspect UIsoAspect ();
-		%feature("autodoc", "Args:
-	anAspect(Handle_Prs3d_IsoAspect)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetUIsoAspect;
+		%feature("autodoc", "	:param anAspect:
+	:type anAspect: Handle_Prs3d_IsoAspect &
+	:rtype: void
+") SetUIsoAspect;
 		virtual void SetUIsoAspect (const Handle_Prs3d_IsoAspect & anAspect);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Prs3d_IsoAspect
+		%feature("autodoc", "	* Defines the attributes which are used when drawing an V isoparametric curve of a face. Defines the number of V isoparametric curves to be drawn for a single face. The LineAspect for V isoparametric lines can be edited (methods SetColor, SetTypeOfLine, SetWidth, SetNumber) The default values are: COLOR : Quantity_NOC_GRAY82 TYPE OF LINE: Aspect_TOL_SOLID WIDTH : 0.5 These attributes are used by the following algorithms: Prs3d_WFDeflectionSurface Prs3d_WFDeflectionRestrictedFace
 
-Defines the attributes which are used when drawing an  
-         V isoparametric curve of a face. Defines the number  
-         of V isoparametric curves to be drawn for a single face.  
-         The LineAspect for V isoparametric lines can be edited  
-         (methods SetColor, SetTypeOfLine, SetWidth, SetNumber)  
-         The default values are:  
-         COLOR       : Quantity_NOC_GRAY82  
-         TYPE OF LINE: Aspect_TOL_SOLID  
-         WIDTH       : 0.5  
- 
- 
-         These attributes are used by the following algorithms:  
-         Prs3d_WFDeflectionSurface  
-         Prs3d_WFDeflectionRestrictedFace") VIsoAspect;
+	:rtype: Handle_Prs3d_IsoAspect
+") VIsoAspect;
 		virtual Handle_Prs3d_IsoAspect VIsoAspect ();
-		%feature("autodoc", "Args:
-	anAspect(Handle_Prs3d_IsoAspect)
+		%feature("autodoc", "	* Sets the appearance of V isoparameters - anAspect.
 
-Returns:
-	virtual void
-
-Sets the appearance of V isoparameters - anAspect.") SetVIsoAspect;
+	:param anAspect:
+	:type anAspect: Handle_Prs3d_IsoAspect &
+	:rtype: void
+") SetVIsoAspect;
 		virtual void SetVIsoAspect (const Handle_Prs3d_IsoAspect & anAspect);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Prs3d_LineAspect
+		%feature("autodoc", "	* Stores the values for presentation of free boundaries, in other words, boundaries which are not shared. The LineAspect for the free boundaries can be edited. The default values are: Color: Quantity_NOC_GREEN Type of line: Aspect_TOL_SOLID Width: 1. These attributes are used by the algorithm Prs3d_WFShape
 
-Stores the values for presentation of free boundaries,  
-in other words, boundaries which are not shared.  
-         The LineAspect for the  free boundaries can be edited.  
-         The default values are:  
-         Color: Quantity_NOC_GREEN  
-         Type of line: Aspect_TOL_SOLID  
-         Width: 1.  
-         These attributes are used by the algorithm Prs3d_WFShape") FreeBoundaryAspect;
+	:rtype: Handle_Prs3d_LineAspect
+") FreeBoundaryAspect;
 		virtual Handle_Prs3d_LineAspect FreeBoundaryAspect ();
-		%feature("autodoc", "Args:
-	anAspect(Handle_Prs3d_LineAspect)
+		%feature("autodoc", "	* Sets the parameter anAspect for the display of free boundaries.
 
-Returns:
-	virtual void
-
-Sets the parameter anAspect for the display of free boundaries.") SetFreeBoundaryAspect;
+	:param anAspect:
+	:type anAspect: Handle_Prs3d_LineAspect &
+	:rtype: void
+") SetFreeBoundaryAspect;
 		virtual void SetFreeBoundaryAspect (const Handle_Prs3d_LineAspect & anAspect);
-		%feature("autodoc", "Args:
-	OnOff(Standard_Boolean)
+		%feature("autodoc", "	* Sets free boundary drawing on or off by setting the parameter OnOff to true or false.
 
-Returns:
-	virtual void
-
-Sets free boundary drawing on or off by setting the  
-parameter OnOff to true or false.") SetFreeBoundaryDraw;
+	:param OnOff:
+	:type OnOff: bool
+	:rtype: void
+") SetFreeBoundaryDraw;
 		virtual void SetFreeBoundaryDraw (const Standard_Boolean OnOff);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Returns True if the drawing of the shared boundaries is disabled. True is the default setting.
 
-Returns True if the drawing of the shared boundaries  
-is disabled. True is the default setting.") FreeBoundaryDraw;
+	:rtype: bool
+") FreeBoundaryDraw;
 		virtual Standard_Boolean FreeBoundaryDraw ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Prs3d_LineAspect
+		%feature("autodoc", "	* Returns wire aspect settings. The LineAspect for the wire can be edited. The default values are: Color: Quantity_NOC_RED Type of line: Aspect_TOL_SOLID Width: 1. These attributes are used by the algorithm Prs3d_WFShape
 
-Returns wire aspect settings.  
-         The LineAspect for the wire can be edited.  
-         The default values are:  
-         Color: Quantity_NOC_RED  
-         Type of line: Aspect_TOL_SOLID  
-         Width: 1.  
-         These attributes are used by the algorithm Prs3d_WFShape") WireAspect;
+	:rtype: Handle_Prs3d_LineAspect
+") WireAspect;
 		virtual Handle_Prs3d_LineAspect WireAspect ();
-		%feature("autodoc", "Args:
-	anAspect(Handle_Prs3d_LineAspect)
+		%feature("autodoc", "	* Sets the parameter anAspect for display of wires.
 
-Returns:
-	virtual void
-
-Sets the parameter anAspect for display of wires.") SetWireAspect;
+	:param anAspect:
+	:type anAspect: Handle_Prs3d_LineAspect &
+	:rtype: void
+") SetWireAspect;
 		virtual void SetWireAspect (const Handle_Prs3d_LineAspect & anAspect);
-		%feature("autodoc", "Args:
-	OnOff(Standard_Boolean)
+		%feature("autodoc", "	* Sets WireDraw on or off by setting the parameter OnOff to true or false.
 
-Returns:
-	virtual void
-
-Sets WireDraw on or off   by setting the parameter  
-OnOff to true or false.") SetWireDraw;
+	:param OnOff:
+	:type OnOff: bool
+	:rtype: void
+") SetWireDraw;
 		virtual void SetWireDraw (const Standard_Boolean OnOff);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* returns True if the drawing of the wire is enabled.
 
-returns True if the drawing of the wire is enabled.") WireDraw;
+	:rtype: bool
+") WireDraw;
 		virtual Standard_Boolean WireDraw ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Prs3d_LineAspect
+		%feature("autodoc", "	* Returns settings for shared boundary line aspects. The LineAspect for the unfree boundaries can be edited. The default values are: Color: Quantity_NOC_YELLOW Type of line: Aspect_TOL_SOLID Width: 1. These attributes are used by the algorithm Prs3d_WFShape
 
-Returns settings for shared boundary line aspects.  
-         The LineAspect for the unfree boundaries can be edited.  
-         The default values are:  
-         Color: Quantity_NOC_YELLOW  
-         Type of line: Aspect_TOL_SOLID  
-         Width: 1.  
-         These attributes are used by the algorithm Prs3d_WFShape") UnFreeBoundaryAspect;
+	:rtype: Handle_Prs3d_LineAspect
+") UnFreeBoundaryAspect;
 		virtual Handle_Prs3d_LineAspect UnFreeBoundaryAspect ();
-		%feature("autodoc", "Args:
-	anAspect(Handle_Prs3d_LineAspect)
+		%feature("autodoc", "	* Sets the parameter anAspect for the display of shared boundaries.
 
-Returns:
-	virtual void
-
-Sets the parameter anAspect for the display of shared boundaries.") SetUnFreeBoundaryAspect;
+	:param anAspect:
+	:type anAspect: Handle_Prs3d_LineAspect &
+	:rtype: void
+") SetUnFreeBoundaryAspect;
 		virtual void SetUnFreeBoundaryAspect (const Handle_Prs3d_LineAspect & anAspect);
-		%feature("autodoc", "Args:
-	OnOff(Standard_Boolean)
+		%feature("autodoc", "	* Sets FreeBoundaryDraw on or off by setting the parameter OnOff to true or false. By default the unfree boundaries are drawn.
 
-Returns:
-	virtual void
-
-Sets FreeBoundaryDraw on or off by setting the  
-parameter OnOff to true or false.  
-         By default the unfree boundaries  are drawn.") SetUnFreeBoundaryDraw;
+	:param OnOff:
+	:type OnOff: bool
+	:rtype: void
+") SetUnFreeBoundaryDraw;
 		virtual void SetUnFreeBoundaryDraw (const Standard_Boolean OnOff);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Returns True if the drawing of the shared boundaries is enabled. True is the default setting.
 
-Returns True if the drawing of the shared boundaries is enabled.  
-True is the default setting.") UnFreeBoundaryDraw;
+	:rtype: bool
+") UnFreeBoundaryDraw;
 		virtual Standard_Boolean UnFreeBoundaryDraw ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Prs3d_LineAspect
+		%feature("autodoc", "	* Returns settings for line aspects. These settings can be edited. The default values are: Color: Quantity_NOC_YELLOW Type of line: Aspect_TOL_SOLID Width: 1. These attributes are used by the following algorithms: Prs3d_Curve Prs3d_Line Prs3d_HLRShape
 
-Returns settings for line aspects.  
-These settings can be edited. The default values are:  
-         Color: Quantity_NOC_YELLOW  
-         Type of line: Aspect_TOL_SOLID  
-         Width: 1.  
-         These attributes are used by the following algorithms:  
-         Prs3d_Curve  
-         Prs3d_Line  
-         Prs3d_HLRShape") LineAspect;
+	:rtype: Handle_Prs3d_LineAspect
+") LineAspect;
 		virtual Handle_Prs3d_LineAspect LineAspect ();
-		%feature("autodoc", "Args:
-	anAspect(Handle_Prs3d_LineAspect)
+		%feature("autodoc", "	* Sets the parameter anAspect for display attributes of lines.
 
-Returns:
-	virtual void
-
-Sets the parameter anAspect for display attributes of lines.") SetLineAspect;
+	:param anAspect:
+	:type anAspect: Handle_Prs3d_LineAspect &
+	:rtype: void
+") SetLineAspect;
 		virtual void SetLineAspect (const Handle_Prs3d_LineAspect & anAspect);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Prs3d_TextAspect
+		%feature("autodoc", "	* Returns settings for text aspect. These settings can be edited. The default value is: - Color: Quantity_NOC_YELLOW
 
-Returns settings for text aspect.  
-These settings can be edited. The default value is:  
--   Color: Quantity_NOC_YELLOW") TextAspect;
+	:rtype: Handle_Prs3d_TextAspect
+") TextAspect;
 		virtual Handle_Prs3d_TextAspect TextAspect ();
-		%feature("autodoc", "Args:
-	anAspect(Handle_Prs3d_TextAspect)
+		%feature("autodoc", "	* Sets the parameter anAspect for display attributes of text.
 
-Returns:
-	virtual void
-
-Sets the parameter anAspect for display attributes of text.") SetTextAspect;
+	:param anAspect:
+	:type anAspect: Handle_Prs3d_TextAspect &
+	:rtype: void
+") SetTextAspect;
 		virtual void SetTextAspect (const Handle_Prs3d_TextAspect & anAspect);
-		%feature("autodoc", "Args:
-	OnOff(Standard_Boolean)
+		%feature("autodoc", "	* enables the drawing of an arrow at the end of each line. By default the arrows are not drawn.
 
-Returns:
-	virtual void
-
-enables the drawing of an arrow at the end of each line.  
-         By default the arrows are not drawn.") SetLineArrowDraw;
+	:param OnOff:
+	:type OnOff: bool
+	:rtype: void
+") SetLineArrowDraw;
 		virtual void SetLineArrowDraw (const Standard_Boolean OnOff);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Sets LineArrowDraw on or off by setting the parameter OnOff to true or false.
 
-Sets LineArrowDraw on or off by setting the  
-parameter OnOff to true or false.") LineArrowDraw;
+	:rtype: bool
+") LineArrowDraw;
 		virtual Standard_Boolean LineArrowDraw ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Prs3d_ArrowAspect
+		%feature("autodoc", "	* Returns the attributes for display of arrows.
 
-Returns the attributes for display of arrows.") ArrowAspect;
+	:rtype: Handle_Prs3d_ArrowAspect
+") ArrowAspect;
 		virtual Handle_Prs3d_ArrowAspect ArrowAspect ();
-		%feature("autodoc", "Args:
-	anAspect(Handle_Prs3d_ArrowAspect)
+		%feature("autodoc", "	* Sets the parameter anAspect for display attributes of arrows.
 
-Returns:
-	virtual void
-
-Sets the parameter anAspect for display attributes of arrows.") SetArrowAspect;
+	:param anAspect:
+	:type anAspect: Handle_Prs3d_ArrowAspect &
+	:rtype: void
+") SetArrowAspect;
 		virtual void SetArrowAspect (const Handle_Prs3d_ArrowAspect & anAspect);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Prs3d_PointAspect
+		%feature("autodoc", "	* Returns the point aspect setting. The default values are Color: Quantity_NOC_YELLOW Type of marker: Aspect_TOM_PLUS Scale: 1. These attributes are used by the algorithms Prs3d_Point.
 
-Returns the point aspect setting. The default values are  
-       Color: Quantity_NOC_YELLOW  
-         Type of marker: Aspect_TOM_PLUS  
-         Scale: 1.  
-         These attributes are used by the algorithms Prs3d_Point.") PointAspect;
+	:rtype: Handle_Prs3d_PointAspect
+") PointAspect;
 		virtual Handle_Prs3d_PointAspect PointAspect ();
-		%feature("autodoc", "Args:
-	anAspect(Handle_Prs3d_PointAspect)
+		%feature("autodoc", "	* Sets the parameter anAspect for display attributes of points
 
-Returns:
-	virtual void
-
-Sets the parameter anAspect for display attributes of points") SetPointAspect;
+	:param anAspect:
+	:type anAspect: Handle_Prs3d_PointAspect &
+	:rtype: void
+") SetPointAspect;
 		virtual void SetPointAspect (const Handle_Prs3d_PointAspect & anAspect);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Prs3d_ShadingAspect
+		%feature("autodoc", "	* Returns settings for shading aspects. These settings can be edited. The default values are: - Color: Quantity_NOC_YELLOW - Material: Graphic3d_NOM_BRASS Shading aspect is obtained through decomposition of 3d faces into triangles, each side of each triangle being a chord of the corresponding curved edge in the face. Reflection of light in each projector perspective is then calculated for each of the resultant triangular planes.
 
-Returns settings for shading aspects.  
-These settings can be edited. The default values are:  
--   Color: Quantity_NOC_YELLOW  
--   Material: Graphic3d_NOM_BRASS  
-  Shading aspect is obtained through decomposition of  
-3d faces into triangles, each side of each triangle  
-being a chord of the corresponding curved edge in  
-the face. Reflection of light in each projector  
-perspective is then calculated for each of the  
-resultant triangular planes.") ShadingAspect;
+	:rtype: Handle_Prs3d_ShadingAspect
+") ShadingAspect;
 		virtual Handle_Prs3d_ShadingAspect ShadingAspect ();
-		%feature("autodoc", "Args:
-	anAspect(Handle_Prs3d_ShadingAspect)
+		%feature("autodoc", "	* Sets the parameter anAspect for display attributes of shading.
 
-Returns:
-	virtual void
-
-Sets the parameter anAspect for display attributes of shading.") SetShadingAspect;
+	:param anAspect:
+	:type anAspect: Handle_Prs3d_ShadingAspect &
+	:rtype: void
+") SetShadingAspect;
 		virtual void SetShadingAspect (const Handle_Prs3d_ShadingAspect & anAspect);
-		%feature("autodoc", "Args:
-	aValue(Standard_Boolean)
+		%feature("autodoc", "	* indicates that the ShadingAspect will be apply to the whole presentation. This allows to modify the aspect without recomputing the content of the presentation.
 
-Returns:
-	virtual void
-
-indicates that the ShadingAspect will be apply  
-         to the whole presentation. This allows to modify  
-         the aspect without recomputing the content of the presentation.") SetShadingAspectGlobal;
+	:param aValue:
+	:type aValue: bool
+	:rtype: void
+") SetShadingAspectGlobal;
 		virtual void SetShadingAspectGlobal (const Standard_Boolean aValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") ShadingAspectGlobal;
+		%feature("autodoc", "	:rtype: bool
+") ShadingAspectGlobal;
 		virtual Standard_Boolean ShadingAspectGlobal ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* returns Standard_True if the hidden lines are to be drawn. By default the hidden lines are not drawn.
 
-returns Standard_True if the hidden lines are to be drawn.  
-         By default the hidden lines are not drawn.") DrawHiddenLine;
+	:rtype: bool
+") DrawHiddenLine;
 		virtual Standard_Boolean DrawHiddenLine ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Enables the DrawHiddenLine function.
 
-Enables the DrawHiddenLine function.") EnableDrawHiddenLine;
+	:rtype: void
+") EnableDrawHiddenLine;
 		virtual void EnableDrawHiddenLine ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Disables the DrawHiddenLine function.
 
-Disables the DrawHiddenLine function.") DisableDrawHiddenLine;
+	:rtype: void
+") DisableDrawHiddenLine;
 		virtual void DisableDrawHiddenLine ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Prs3d_LineAspect
+		%feature("autodoc", "	* Returns settings for hidden line aspects. These settings can be edited. The default values are: Color: Quantity_NOC_YELLOW Type of line: Aspect_TOL_DASH Width: 1.
 
-Returns settings for hidden line aspects.  
-These settings can be edited. The default values are:  
-         Color: Quantity_NOC_YELLOW  
-         Type of line: Aspect_TOL_DASH  
-         Width: 1.") HiddenLineAspect;
+	:rtype: Handle_Prs3d_LineAspect
+") HiddenLineAspect;
 		virtual Handle_Prs3d_LineAspect HiddenLineAspect ();
-		%feature("autodoc", "Args:
-	anAspect(Handle_Prs3d_LineAspect)
+		%feature("autodoc", "	* Sets the parameter anAspect for the display of hidden lines in hidden line removal mode.
 
-Returns:
-	virtual void
-
-Sets the parameter anAspect for the display of  
-hidden lines in hidden line removal mode.") SetHiddenLineAspect;
+	:param anAspect:
+	:type anAspect: Handle_Prs3d_LineAspect &
+	:rtype: void
+") SetHiddenLineAspect;
 		virtual void SetHiddenLineAspect (const Handle_Prs3d_LineAspect & anAspect);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Prs3d_LineAspect
+		%feature("autodoc", "	* Returns settings for seen line aspects. These settings can be edited. The default values are: Color: Quantity_NOC_YELLOW Type of line: Aspect_TOL_SOLID Width: 1.
 
-Returns settings for seen line aspects.  
-These settings can be edited. The default values are:  
-         Color: Quantity_NOC_YELLOW  
-         Type of line: Aspect_TOL_SOLID  
-         Width: 1.") SeenLineAspect;
+	:rtype: Handle_Prs3d_LineAspect
+") SeenLineAspect;
 		virtual Handle_Prs3d_LineAspect SeenLineAspect ();
-		%feature("autodoc", "Args:
-	anAspect(Handle_Prs3d_LineAspect)
+		%feature("autodoc", "	* Sets the parameter anAspect for the display of seen lines in hidden line removal mode.
 
-Returns:
-	virtual void
-
-Sets the parameter anAspect for the display of seen  
-lines in hidden line removal mode.") SetSeenLineAspect;
+	:param anAspect:
+	:type anAspect: Handle_Prs3d_LineAspect &
+	:rtype: void
+") SetSeenLineAspect;
 		virtual void SetSeenLineAspect (const Handle_Prs3d_LineAspect & anAspect);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Prs3d_PlaneAspect
+		%feature("autodoc", "	* Returns settings for the appearance of planes.
 
-Returns settings for the appearance of planes.") PlaneAspect;
+	:rtype: Handle_Prs3d_PlaneAspect
+") PlaneAspect;
 		virtual Handle_Prs3d_PlaneAspect PlaneAspect ();
-		%feature("autodoc", "Args:
-	anAspect(Handle_Prs3d_PlaneAspect)
+		%feature("autodoc", "	* Sets the parameter anAspect for the display of planes.
 
-Returns:
-	virtual void
-
-Sets the parameter anAspect for the display of planes.") SetPlaneAspect;
+	:param anAspect:
+	:type anAspect: Handle_Prs3d_PlaneAspect &
+	:rtype: void
+") SetPlaneAspect;
 		virtual void SetPlaneAspect (const Handle_Prs3d_PlaneAspect & anAspect);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Prs3d_LineAspect
+		%feature("autodoc", "	* Returns settings for the appearance of vectors. These settings can be edited. The default values are: Color: Quantity_NOC_SKYBLUE Type of line: Aspect_TOL_SOLID Width: 1.
 
-Returns settings for the appearance of vectors.  
-These settings can be edited. The default values are:  
-         Color: Quantity_NOC_SKYBLUE  
-         Type of line: Aspect_TOL_SOLID  
-         Width: 1.") VectorAspect;
+	:rtype: Handle_Prs3d_LineAspect
+") VectorAspect;
 		virtual Handle_Prs3d_LineAspect VectorAspect ();
-		%feature("autodoc", "Args:
-	anAspect(Handle_Prs3d_LineAspect)
+		%feature("autodoc", "	* Sets the modality anAspect for the display of vectors.
 
-Returns:
-	virtual void
-
-Sets the modality anAspect for the display of vectors.") SetVectorAspect;
+	:param anAspect:
+	:type anAspect: Handle_Prs3d_LineAspect &
+	:rtype: void
+") SetVectorAspect;
 		virtual void SetVectorAspect (const Handle_Prs3d_LineAspect & anAspect);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Prs3d_DatumAspect
+		%feature("autodoc", "	* Returns settings for the appearance of datums. These settings can be edited. The default values for the three axes are: Color: Quantity_NOC_PEACHPUFF Type of line: Aspect_TOL_SOLID Width: 1.
 
-Returns settings for the appearance of datums.  
-These settings can be edited. The default values for  
-the three axes are:  
-         Color: Quantity_NOC_PEACHPUFF  
-         Type of line: Aspect_TOL_SOLID  
-         Width: 1.") DatumAspect;
+	:rtype: Handle_Prs3d_DatumAspect
+") DatumAspect;
 		virtual Handle_Prs3d_DatumAspect DatumAspect ();
-		%feature("autodoc", "Args:
-	anAspect(Handle_Prs3d_DatumAspect)
+		%feature("autodoc", "	* Sets the modality anAspect for the display of datums.
 
-Returns:
-	virtual void
-
-Sets the modality anAspect for the display of datums.") SetDatumAspect;
+	:param anAspect:
+	:type anAspect: Handle_Prs3d_DatumAspect &
+	:rtype: void
+") SetDatumAspect;
 		virtual void SetDatumAspect (const Handle_Prs3d_DatumAspect & anAspect);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Prs3d_DimensionAspect
+		%feature("autodoc", "	* Returns settings for the appearance of dimensions.
 
-Returns settings for the appearance of dimensions.") DimensionAspect;
+	:rtype: Handle_Prs3d_DimensionAspect
+") DimensionAspect;
 		virtual Handle_Prs3d_DimensionAspect DimensionAspect ();
-		%feature("autodoc", "Args:
-	theAspect(Handle_Prs3d_DimensionAspect)
+		%feature("autodoc", "	* Sets the settings for the appearance of dimensions.
 
-Returns:
-	virtual void
-
-Sets the settings for the appearance of dimensions.") SetDimensionAspect;
+	:param theAspect:
+	:type theAspect: Handle_Prs3d_DimensionAspect &
+	:rtype: void
+") SetDimensionAspect;
 		virtual void SetDimensionAspect (const Handle_Prs3d_DimensionAspect & theAspect);
-		%feature("autodoc", "Args:
-	theUnits(TCollection_AsciiString)
+		%feature("autodoc", "	* Sets dimension length model units for computing of dimension presentation.
 
-Returns:
-	virtual void
-
-Sets dimension length model units for computing of dimension presentation.") SetDimLengthModelUnits;
+	:param theUnits:
+	:type theUnits: TCollection_AsciiString &
+	:rtype: void
+") SetDimLengthModelUnits;
 		virtual void SetDimLengthModelUnits (const TCollection_AsciiString & theUnits);
-		%feature("autodoc", "Args:
-	theUnits(TCollection_AsciiString)
+		%feature("autodoc", "	* Sets dimension angle model units for computing of dimension presentation.
 
-Returns:
-	virtual void
-
-Sets dimension angle model units for computing of dimension presentation.") SetDimAngleModelUnits;
+	:param theUnits:
+	:type theUnits: TCollection_AsciiString &
+	:rtype: void
+") SetDimAngleModelUnits;
 		virtual void SetDimAngleModelUnits (const TCollection_AsciiString & theUnits);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  TCollection_AsciiString
+		%feature("autodoc", "	* Returns length model units for the dimension presentation.
 
-Returns length model units for the dimension presentation.") DimLengthModelUnits;
+	:rtype: TCollection_AsciiString
+") DimLengthModelUnits;
 		virtual const TCollection_AsciiString & DimLengthModelUnits ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  TCollection_AsciiString
+		%feature("autodoc", "	* Returns angle model units for the dimension presentation.
 
-Returns angle model units for the dimension presentation.") DimAngleModelUnits;
+	:rtype: TCollection_AsciiString
+") DimAngleModelUnits;
 		virtual const TCollection_AsciiString & DimAngleModelUnits ();
-		%feature("autodoc", "Args:
-	theUnits(TCollection_AsciiString)
+		%feature("autodoc", "	* Sets length units in which value for dimension presentation is displayed.
 
-Returns:
-	virtual void
-
-Sets length units in which value for dimension presentation is displayed.") SetDimLengthDisplayUnits;
+	:param theUnits:
+	:type theUnits: TCollection_AsciiString &
+	:rtype: void
+") SetDimLengthDisplayUnits;
 		virtual void SetDimLengthDisplayUnits (const TCollection_AsciiString & theUnits);
-		%feature("autodoc", "Args:
-	theUnits(TCollection_AsciiString)
+		%feature("autodoc", "	* Sets angle units in which value for dimension presentation is displayed.
 
-Returns:
-	virtual void
-
-Sets angle units in which value for dimension presentation is displayed.") SetDimAngleDisplayUnits;
+	:param theUnits:
+	:type theUnits: TCollection_AsciiString &
+	:rtype: void
+") SetDimAngleDisplayUnits;
 		virtual void SetDimAngleDisplayUnits (const TCollection_AsciiString & theUnits);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  TCollection_AsciiString
+		%feature("autodoc", "	* Returns length units in which dimension presentation is displayed.
 
-Returns length units in which dimension presentation is displayed.") DimLengthDisplayUnits;
+	:rtype: TCollection_AsciiString
+") DimLengthDisplayUnits;
 		virtual const TCollection_AsciiString & DimLengthDisplayUnits ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  TCollection_AsciiString
+		%feature("autodoc", "	* Returns angle units in which dimension presentation is displayed.
 
-Returns angle units in which dimension presentation is displayed.") DimAngleDisplayUnits;
+	:rtype: TCollection_AsciiString
+") DimAngleDisplayUnits;
 		virtual const TCollection_AsciiString & DimAngleDisplayUnits ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Prs3d_LineAspect
+		%feature("autodoc", "	* The LineAspect for the wire can be edited. The default values are: Color: Quantity_NOC_ORANGE Type of line: Aspect_TOL_SOLID Width: 1. These attributes are used by the algorithm Prs3d_WFShape.
 
-The LineAspect for the wire can be edited.  
-         The default values are:  
-         Color: Quantity_NOC_ORANGE  
-         Type of line: Aspect_TOL_SOLID  
-         Width: 1.  
-         These attributes are used by the algorithm Prs3d_WFShape.") SectionAspect;
+	:rtype: Handle_Prs3d_LineAspect
+") SectionAspect;
 		virtual Handle_Prs3d_LineAspect SectionAspect ();
-		%feature("autodoc", "Args:
-	theAspect(Handle_Prs3d_LineAspect)
+		%feature("autodoc", "	* Sets the parameter theAspect for display attributes of sections.
 
-Returns:
-	virtual void
-
-Sets the parameter theAspect for display attributes of sections.") SetSectionAspect;
+	:param theAspect:
+	:type theAspect: Handle_Prs3d_LineAspect &
+	:rtype: void
+") SetSectionAspect;
 		virtual void SetSectionAspect (const Handle_Prs3d_LineAspect & theAspect);
-		%feature("autodoc", "Args:
-	theIsEnabled(Standard_Boolean)
+		%feature("autodoc", "	* Enables or disables face boundary drawing for shading presentations. theIsEnabled is a boolean flag indicating whether the face boundaries should be drawn or not.
 
-Returns:
-	virtual void
-
-Enables or disables face boundary drawing for shading presentations.  
-theIsEnabled is a boolean flag indicating whether the face boundaries should be  
-drawn or not.") SetFaceBoundaryDraw;
+	:param theIsEnabled:
+	:type theIsEnabled: bool
+	:rtype: void
+") SetFaceBoundaryDraw;
 		virtual void SetFaceBoundaryDraw (const Standard_Boolean theIsEnabled);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Checks whether the face boundary drawing is enabled or not.
 
-Checks whether the face boundary drawing is enabled or not.") IsFaceBoundaryDraw;
+	:rtype: bool
+") IsFaceBoundaryDraw;
 		virtual Standard_Boolean IsFaceBoundaryDraw ();
-		%feature("autodoc", "Args:
-	theAspect(Handle_Prs3d_LineAspect)
+		%feature("autodoc", "	* Sets line aspect for face boundaries. theAspect is the line aspect that determines the look of the face boundaries.
 
-Returns:
-	virtual void
-
-Sets line aspect for face boundaries.  
-theAspect is the line aspect that determines the look of the face boundaries.") SetFaceBoundaryAspect;
+	:param theAspect:
+	:type theAspect: Handle_Prs3d_LineAspect &
+	:rtype: void
+") SetFaceBoundaryAspect;
 		virtual void SetFaceBoundaryAspect (const Handle_Prs3d_LineAspect & theAspect);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_Prs3d_LineAspect
+		%feature("autodoc", "	* Returns line aspect of face boundaries.
 
-Returns line aspect of face boundaries.") FaceBoundaryAspect;
+	:rtype: Handle_Prs3d_LineAspect
+") FaceBoundaryAspect;
 		virtual Handle_Prs3d_LineAspect FaceBoundaryAspect ();
 };
 
@@ -1020,81 +757,69 @@ def __del__(self):
 %nodefaultctor Prs3d_PlaneSet;
 class Prs3d_PlaneSet : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Xdir(Standard_Real)
-	Ydir(Standard_Real)
-	Zdir(Standard_Real)
-	Xloc(Quantity_Length)
-	Yloc(Quantity_Length)
-	Zloc(Quantity_Length)
-	anOffset(Quantity_Length)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prs3d_PlaneSet;
+		%feature("autodoc", "	:param Xdir:
+	:type Xdir: float
+	:param Ydir:
+	:type Ydir: float
+	:param Zdir:
+	:type Zdir: float
+	:param Xloc:
+	:type Xloc: Quantity_Length
+	:param Yloc:
+	:type Yloc: Quantity_Length
+	:param Zloc:
+	:type Zloc: Quantity_Length
+	:param anOffset:
+	:type anOffset: Quantity_Length
+	:rtype: None
+") Prs3d_PlaneSet;
 		 Prs3d_PlaneSet (const Standard_Real Xdir,const Standard_Real Ydir,const Standard_Real Zdir,const Quantity_Length Xloc,const Quantity_Length Yloc,const Quantity_Length Zloc,const Quantity_Length anOffset);
-		%feature("autodoc", "Args:
-	X(Standard_Real)
-	Y(Standard_Real)
-	Z(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetDirection;
+		%feature("autodoc", "	:param X:
+	:type X: float
+	:param Y:
+	:type Y: float
+	:param Z:
+	:type Z: float
+	:rtype: None
+") SetDirection;
 		void SetDirection (const Standard_Real X,const Standard_Real Y,const Standard_Real Z);
-		%feature("autodoc", "Args:
-	X(Quantity_Length)
-	Y(Quantity_Length)
-	Z(Quantity_Length)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetLocation;
+		%feature("autodoc", "	:param X:
+	:type X: Quantity_Length
+	:param Y:
+	:type Y: Quantity_Length
+	:param Z:
+	:type Z: Quantity_Length
+	:rtype: None
+") SetLocation;
 		void SetLocation (const Quantity_Length X,const Quantity_Length Y,const Quantity_Length Z);
-		%feature("autodoc", "Args:
-	anOffset(Quantity_Length)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetOffset;
+		%feature("autodoc", "	:param anOffset:
+	:type anOffset: Quantity_Length
+	:rtype: None
+") SetOffset;
 		void SetOffset (const Quantity_Length anOffset);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pln
-
-No detailed docstring for this function.") Plane;
+		%feature("autodoc", "	:rtype: gp_Pln
+") Plane;
 		gp_Pln Plane ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Length
-
-No detailed docstring for this function.") Offset;
+		%feature("autodoc", "	:rtype: Quantity_Length
+") Offset;
 		Quantity_Length Offset ();
-		%feature("autodoc", "Args:
-	X(Quantity_Length)
-	Y(Quantity_Length)
-	Z(Quantity_Length)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Location;
+		%feature("autodoc", "	:param X:
+	:type X: Quantity_Length &
+	:param Y:
+	:type Y: Quantity_Length &
+	:param Z:
+	:type Z: Quantity_Length &
+	:rtype: None
+") Location;
 		void Location (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	X(Quantity_Length)
-	Y(Quantity_Length)
-	Z(Quantity_Length)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Direction;
+		%feature("autodoc", "	:param X:
+	:type X: Quantity_Length &
+	:param Y:
+	:type Y: Quantity_Length &
+	:param Z:
+	:type Z: Quantity_Length &
+	:rtype: None
+") Direction;
 		void Direction (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 };
 
@@ -1155,186 +880,131 @@ def __del__(self):
 %nodefaultctor Prs3d_Presentation;
 class Prs3d_Presentation : public Graphic3d_Structure {
 	public:
-		%feature("autodoc", "Args:
-	aStructureManager(Handle_Graphic3d_StructureManager)
-	Init(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Constructs a presentation object if <Init> is false, no color initialization is done.
 
-Returns:
-	None
-
-Constructs a presentation object  
-if <Init> is false, no color initialization is done.") Prs3d_Presentation;
+	:param aStructureManager:
+	:type aStructureManager: Handle_Graphic3d_StructureManager &
+	:param Init: default value is Standard_True
+	:type Init: bool
+	:rtype: None
+") Prs3d_Presentation;
 		 Prs3d_Presentation (const Handle_Graphic3d_StructureManager & aStructureManager,const Standard_Boolean Init = Standard_True);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Graphic3d_DataStructureManager)
-
-Returns:
-	virtual Handle_Graphic3d_Structure
-
-No detailed docstring for this function.") Compute;
+		%feature("autodoc", "	:param aProjector:
+	:type aProjector: Handle_Graphic3d_DataStructureManager &
+	:rtype: Handle_Graphic3d_Structure
+") Compute;
 		virtual Handle_Graphic3d_Structure Compute (const Handle_Graphic3d_DataStructureManager & aProjector);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Graphic3d_DataStructureManager)
-	AMatrix(TColStd_Array2OfReal)
+		%feature("autodoc", "	* Returns the new Structure defined for the new visualization
 
-Returns:
-	virtual Handle_Graphic3d_Structure
-
-Returns the new Structure defined for the new visualization") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Graphic3d_DataStructureManager &
+	:param AMatrix:
+	:type AMatrix: TColStd_Array2OfReal &
+	:rtype: Handle_Graphic3d_Structure
+") Compute;
 		virtual Handle_Graphic3d_Structure Compute (const Handle_Graphic3d_DataStructureManager & aProjector,const TColStd_Array2OfReal & AMatrix);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Graphic3d_DataStructureManager)
-	aStructure(Handle_Graphic3d_Structure)
+		%feature("autodoc", "	* Returns the new Structure defined for the new visualization
 
-Returns:
-	virtual void
-
-Returns the new Structure defined for the new visualization") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Graphic3d_DataStructureManager &
+	:param aStructure:
+	:type aStructure: Handle_Graphic3d_Structure &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Graphic3d_DataStructureManager & aProjector,Handle_Graphic3d_Structure & aStructure);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Graphic3d_DataStructureManager)
-	AMatrix(TColStd_Array2OfReal)
-	aStructure(Handle_Graphic3d_Structure)
+		%feature("autodoc", "	* Returns the new Structure defined for the new visualization
 
-Returns:
-	virtual void
-
-Returns the new Structure defined for the new visualization") Compute;
+	:param aProjector:
+	:type aProjector: Handle_Graphic3d_DataStructureManager &
+	:param AMatrix:
+	:type AMatrix: TColStd_Array2OfReal &
+	:param aStructure:
+	:type aStructure: Handle_Graphic3d_Structure &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Handle_Graphic3d_DataStructureManager & aProjector,const TColStd_Array2OfReal & AMatrix,Handle_Graphic3d_Structure & aStructure);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* displays the whole content of the presentation in white.
 
-displays the whole content of the presentation in white.") Highlight;
+	:rtype: None
+") Highlight;
 		void Highlight ();
-		%feature("autodoc", "Args:
-	aColor(Quantity_NameOfColor)
+		%feature("autodoc", "	* displays the whole content of the presentation in the specified color.
 
-Returns:
-	None
-
-displays the whole content of the presentation in the specified color.") Color;
+	:param aColor:
+	:type aColor: Quantity_NameOfColor
+	:rtype: None
+") Color;
 		void Color (const Quantity_NameOfColor aColor);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BoundBox;
+		%feature("autodoc", "	:rtype: None
+") BoundBox;
 		void BoundBox ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Display;
+		%feature("autodoc", "	:rtype: None
+") Display;
 		void Display ();
-		%feature("autodoc", "Args:
-	aShadingAspect(Handle_Prs3d_ShadingAspect)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetShadingAspect;
+		%feature("autodoc", "	:param aShadingAspect:
+	:type aShadingAspect: Handle_Prs3d_ShadingAspect &
+	:rtype: None
+") SetShadingAspect;
 		void SetShadingAspect (const Handle_Prs3d_ShadingAspect & aShadingAspect);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsPickable;
+		%feature("autodoc", "	:rtype: bool
+") IsPickable;
 		Standard_Boolean IsPickable ();
-		%feature("autodoc", "Args:
-	aTransformation(Handle_Geom_Transformation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Transform;
+		%feature("autodoc", "	:param aTransformation:
+	:type aTransformation: Handle_Geom_Transformation &
+	:rtype: None
+") Transform;
 		void Transform (const Handle_Geom_Transformation & aTransformation);
-		%feature("autodoc", "Args:
-	X(Quantity_Length)
-	Y(Quantity_Length)
-	Z(Quantity_Length)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Place;
+		%feature("autodoc", "	:param X:
+	:type X: Quantity_Length
+	:param Y:
+	:type Y: Quantity_Length
+	:param Z:
+	:type Z: Quantity_Length
+	:rtype: None
+") Place;
 		void Place (const Quantity_Length X,const Quantity_Length Y,const Quantity_Length Z);
-		%feature("autodoc", "Args:
-	aTransformation(Handle_Geom_Transformation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Multiply;
+		%feature("autodoc", "	:param aTransformation:
+	:type aTransformation: Handle_Geom_Transformation &
+	:rtype: None
+") Multiply;
 		void Multiply (const Handle_Geom_Transformation & aTransformation);
-		%feature("autodoc", "Args:
-	X(Quantity_Length)
-	Y(Quantity_Length)
-	Z(Quantity_Length)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Move;
+		%feature("autodoc", "	:param X:
+	:type X: Quantity_Length
+	:param Y:
+	:type Y: Quantity_Length
+	:param Z:
+	:type Z: Quantity_Length
+	:rtype: None
+") Move;
 		void Move (const Quantity_Length X,const Quantity_Length Y,const Quantity_Length Z);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_Transformation
-
-No detailed docstring for this function.") Transformation;
+		%feature("autodoc", "	:rtype: Handle_Geom_Transformation
+") Transformation;
 		Handle_Geom_Transformation Transformation ();
-		%feature("autodoc", "Args:
-	WithDestruction(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* removes the whole content of the presentation. Does not remove the other connected presentations. //!	 if WithDestruction == Standard_False then //!		clears all the groups of primitives in the structure.
 
-Returns:
-	virtual void
-
-removes the whole content of the presentation.  
-         Does not remove the other connected presentations.  
-//!	        if WithDestruction == Standard_False then  
-//!		clears all the groups of primitives in the structure.") Clear;
+	:param WithDestruction: default value is Standard_True
+	:type WithDestruction: bool
+	:rtype: void
+") Clear;
 		virtual void Clear (const Standard_Boolean WithDestruction = Standard_True);
-		%feature("autodoc", "Args:
-	aPresentation(Handle_Prs3d_Presentation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Connect;
+		%feature("autodoc", "	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: None
+") Connect;
 		void Connect (const Handle_Prs3d_Presentation & aPresentation);
-		%feature("autodoc", "Args:
-	aPresentation(Handle_Prs3d_Presentation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:rtype: None
+") Remove;
 		void Remove (const Handle_Prs3d_Presentation & aPresentation);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveAll;
+		%feature("autodoc", "	:rtype: None
+") RemoveAll;
 		void RemoveAll ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") SetPickable;
+		%feature("autodoc", "	:rtype: None
+") SetPickable;
 		void SetPickable ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") SetUnPickable;
+		%feature("autodoc", "	:rtype: None
+") SetUnPickable;
 		void SetUnPickable ();
 };
 
@@ -1395,46 +1065,42 @@ def __del__(self):
 %nodefaultctor Prs3d_Projector;
 class Prs3d_Projector : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Pr(HLRAlgo_Projector)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prs3d_Projector;
+		%feature("autodoc", "	:param Pr:
+	:type Pr: HLRAlgo_Projector &
+	:rtype: None
+") Prs3d_Projector;
 		 Prs3d_Projector (const HLRAlgo_Projector & Pr);
-		%feature("autodoc", "Args:
-	Pers(Standard_Boolean)
-	Focus(Quantity_Length)
-	DX(Quantity_Length)
-	DY(Quantity_Length)
-	DZ(Quantity_Length)
-	XAt(Quantity_Length)
-	YAt(Quantity_Length)
-	ZAt(Quantity_Length)
-	XUp(Quantity_Length)
-	YUp(Quantity_Length)
-	ZUp(Quantity_Length)
+		%feature("autodoc", "	* Constructs a projector framework from the following parameters - Pers is true if the view is a perspective view and false if it is an axonometric one; - Focus is the focal length if a perspective view is defined; - DX, DY and DZ are the coordinates of the projection vector; - XAt, YAt and ZAt are the coordinates of the view point; - XUp, YUp and ZUp are the coordinates of the vertical direction vector.
 
-Returns:
-	None
-
-Constructs a projector framework from the following parameters  
--   Pers is true if the view is a perspective view and  
-  false if it is an axonometric one;  
--   Focus is the focal length if a perspective view is defined;  
--   DX, DY and DZ are the coordinates of the  
-  projection vector;  
--   XAt, YAt and ZAt are the coordinates of the view point;  
--   XUp, YUp and ZUp are the coordinates of the  
-  vertical direction vector.") Prs3d_Projector;
+	:param Pers:
+	:type Pers: bool
+	:param Focus:
+	:type Focus: Quantity_Length
+	:param DX:
+	:type DX: Quantity_Length
+	:param DY:
+	:type DY: Quantity_Length
+	:param DZ:
+	:type DZ: Quantity_Length
+	:param XAt:
+	:type XAt: Quantity_Length
+	:param YAt:
+	:type YAt: Quantity_Length
+	:param ZAt:
+	:type ZAt: Quantity_Length
+	:param XUp:
+	:type XUp: Quantity_Length
+	:param YUp:
+	:type YUp: Quantity_Length
+	:param ZUp:
+	:type ZUp: Quantity_Length
+	:rtype: None
+") Prs3d_Projector;
 		 Prs3d_Projector (const Standard_Boolean Pers,const Quantity_Length Focus,const Quantity_Length DX,const Quantity_Length DY,const Quantity_Length DZ,const Quantity_Length XAt,const Quantity_Length YAt,const Quantity_Length ZAt,const Quantity_Length XUp,const Quantity_Length YUp,const Quantity_Length ZUp);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	HLRAlgo_Projector
+		%feature("autodoc", "	* Returns a projector object for use in a hidden line removal algorithm.
 
-Returns a projector object for use in a hidden line removal algorithm.") Projector;
+	:rtype: HLRAlgo_Projector
+") Projector;
 		HLRAlgo_Projector Projector ();
 };
 
@@ -1495,26 +1161,19 @@ def __del__(self):
 %nodefaultctor Prs3d_Root;
 class Prs3d_Root {
 	public:
-		%feature("autodoc", "Args:
-	Prs3d(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* Returns the current group of primititves inside graphic objects in the display. A group also contains the attributes whose ranges are limited to the primitives in it.
 
-Returns:
-	static Handle_Graphic3d_Group
-
-Returns the current group of primititves inside graphic  
-objects in the display.  
-A group also contains the attributes whose ranges are  
-limited to the primitives in it.") CurrentGroup;
+	:param Prs3d:
+	:type Prs3d: Handle_Prs3d_Presentation &
+	:rtype: Handle_Graphic3d_Group
+") CurrentGroup;
 		static Handle_Graphic3d_Group CurrentGroup (const Handle_Prs3d_Presentation & Prs3d);
-		%feature("autodoc", "Args:
-	Prs3d(Handle_Prs3d_Presentation)
+		%feature("autodoc", "	* Returns the new group of primitives inside graphic objects in the display. A group also contains the attributes whose ranges are limited to the primitives in it.
 
-Returns:
-	static Handle_Graphic3d_Group
-
-Returns the new group of primitives inside graphic  
-objects in the display.  
-A group also contains the attributes whose ranges are limited to the primitives in it.") NewGroup;
+	:param Prs3d:
+	:type Prs3d: Handle_Prs3d_Presentation &
+	:rtype: Handle_Graphic3d_Group
+") NewGroup;
 		static Handle_Graphic3d_Group NewGroup (const Handle_Prs3d_Presentation & Prs3d);
 };
 
@@ -1536,172 +1195,86 @@ def __del__(self):
 %nodefaultctor Prs3d_ShapeTool;
 class Prs3d_ShapeTool {
 	public:
-		%feature("autodoc", "Args:
-	TheShape(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prs3d_ShapeTool;
+		%feature("autodoc", "	:param TheShape:
+	:type TheShape: TopoDS_Shape &
+	:rtype: None
+") Prs3d_ShapeTool;
 		 Prs3d_ShapeTool (const TopoDS_Shape & TheShape);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") InitFace;
+		%feature("autodoc", "	:rtype: None
+") InitFace;
 		void InitFace ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") MoreFace;
+		%feature("autodoc", "	:rtype: bool
+") MoreFace;
 		Standard_Boolean MoreFace ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") NextFace;
+		%feature("autodoc", "	:rtype: None
+") NextFace;
 		void NextFace ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Face
-
-No detailed docstring for this function.") GetFace;
+		%feature("autodoc", "	:rtype: TopoDS_Face
+") GetFace;
 		const TopoDS_Face & GetFace ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") FaceBound;
+		%feature("autodoc", "	:rtype: Bnd_Box
+") FaceBound;
 		Bnd_Box FaceBound ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsPlanarFace;
+		%feature("autodoc", "	:rtype: bool
+") IsPlanarFace;
 		Standard_Boolean IsPlanarFace ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") InitCurve;
+		%feature("autodoc", "	:rtype: None
+") InitCurve;
 		void InitCurve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") MoreCurve;
+		%feature("autodoc", "	:rtype: bool
+") MoreCurve;
 		Standard_Boolean MoreCurve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") NextCurve;
+		%feature("autodoc", "	:rtype: None
+") NextCurve;
 		void NextCurve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Edge
-
-No detailed docstring for this function.") GetCurve;
+		%feature("autodoc", "	:rtype: TopoDS_Edge
+") GetCurve;
 		const TopoDS_Edge & GetCurve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Box
-
-No detailed docstring for this function.") CurveBound;
+		%feature("autodoc", "	:rtype: Bnd_Box
+") CurveBound;
 		Bnd_Box CurveBound ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Neighbours;
+		%feature("autodoc", "	:rtype: int
+") Neighbours;
 		Standard_Integer Neighbours ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TopTools_HSequenceOfShape
-
-No detailed docstring for this function.") FacesOfEdge;
+		%feature("autodoc", "	:rtype: Handle_TopTools_HSequenceOfShape
+") FacesOfEdge;
 		Handle_TopTools_HSequenceOfShape FacesOfEdge ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") InitVertex;
+		%feature("autodoc", "	:rtype: None
+") InitVertex;
 		void InitVertex ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") MoreVertex;
+		%feature("autodoc", "	:rtype: bool
+") MoreVertex;
 		Standard_Boolean MoreVertex ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") NextVertex;
+		%feature("autodoc", "	:rtype: None
+") NextVertex;
 		void NextVertex ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Vertex
-
-No detailed docstring for this function.") GetVertex;
+		%feature("autodoc", "	:rtype: TopoDS_Vertex
+") GetVertex;
 		const TopoDS_Vertex & GetVertex ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasSurface;
+		%feature("autodoc", "	:rtype: bool
+") HasSurface;
 		Standard_Boolean HasSurface ();
-		%feature("autodoc", "Args:
-	l(TopLoc_Location)
-
-Returns:
-	Handle_Poly_Triangulation
-
-No detailed docstring for this function.") CurrentTriangulation;
+		%feature("autodoc", "	:param l:
+	:type l: TopLoc_Location &
+	:rtype: Handle_Poly_Triangulation
+") CurrentTriangulation;
 		Handle_Poly_Triangulation CurrentTriangulation (TopLoc_Location & l);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasCurve;
+		%feature("autodoc", "	:rtype: bool
+") HasCurve;
 		Standard_Boolean HasCurve ();
-		%feature("autodoc", "Args:
-	Indices(Handle_Poly_PolygonOnTriangulation)
-	T(Handle_Poly_Triangulation)
-	l(TopLoc_Location)
-
-Returns:
-	None
-
-No detailed docstring for this function.") PolygonOnTriangulation;
+		%feature("autodoc", "	:param Indices:
+	:type Indices: Handle_Poly_PolygonOnTriangulation &
+	:param T:
+	:type T: Handle_Poly_Triangulation &
+	:param l:
+	:type l: TopLoc_Location &
+	:rtype: None
+") PolygonOnTriangulation;
 		void PolygonOnTriangulation (Handle_Poly_PolygonOnTriangulation & Indices,Handle_Poly_Triangulation & T,TopLoc_Location & l);
-		%feature("autodoc", "Args:
-	l(TopLoc_Location)
-
-Returns:
-	Handle_Poly_Polygon3D
-
-No detailed docstring for this function.") Polygon3D;
+		%feature("autodoc", "	:param l:
+	:type l: TopLoc_Location &
+	:rtype: Handle_Poly_Polygon3D
+") Polygon3D;
 		Handle_Poly_Polygon3D Polygon3D (TopLoc_Location & l);
 };
 
@@ -1723,40 +1296,35 @@ def __del__(self):
 %nodefaultctor Prs3d_Arrow;
 class Prs3d_Arrow : public Prs3d_Root {
 	public:
-		%feature("autodoc", "Args:
-	aPresentation(Handle_Prs3d_Presentation)
-	aLocation(gp_Pnt)
-	aDirection(gp_Dir)
-	anAngle(Quantity_PlaneAngle)
-	aLength(Quantity_Length)
+		%feature("autodoc", "	* Defines the representation of the arrow defined by the location point aLocation, the direction aDirection and the length aLength. The angle anAngle defines the angle of opening of the arrow head. The presentation object aPresentation stores the information defined in this framework.
 
-Returns:
-	static void
-
-Defines the representation of the arrow defined by  
-the location point aLocation, the direction  
-aDirection and the length aLength.  
-The angle anAngle defines the angle of opening of the arrow head.  
-The presentation object aPresentation stores the  
-information defined in this framework.") Draw;
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:param aLocation:
+	:type aLocation: gp_Pnt
+	:param aDirection:
+	:type aDirection: gp_Dir
+	:param anAngle:
+	:type anAngle: Quantity_PlaneAngle
+	:param aLength:
+	:type aLength: Quantity_Length
+	:rtype: void
+") Draw;
 		static void Draw (const Handle_Prs3d_Presentation & aPresentation,const gp_Pnt & aLocation,const gp_Dir & aDirection,const Quantity_PlaneAngle anAngle,const Quantity_Length aLength);
-		%feature("autodoc", "Args:
-	aPresentation(Handle_Prs3d_Presentation)
-	aLocation(gp_Pnt)
-	aDirection(gp_Dir)
-	anAngle(Quantity_PlaneAngle)
-	aLength(Quantity_Length)
+		%feature("autodoc", "	* Defines the representation of the arrow defined by the location point aLocation, the direction vector aDirection and the length aLength. The angle anAngle defines the angle of opening of the arrow head, and the drawer aDrawer specifies the display attributes which arrows will have. With this syntax, no presentation object is created.
 
-Returns:
-	static void
-
-Defines the representation of the arrow defined by  
-the location point aLocation, the direction vector  
-aDirection and the length aLength.  
-The angle anAngle defines the angle of opening of  
-the arrow head, and the drawer aDrawer specifies  
-the display attributes which arrows will have.  
- With this syntax, no presentation object is created.") Fill;
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:param aLocation:
+	:type aLocation: gp_Pnt
+	:param aDirection:
+	:type aDirection: gp_Dir
+	:param anAngle:
+	:type anAngle: Quantity_PlaneAngle
+	:param aLength:
+	:type aLength: Quantity_Length
+	:rtype: void
+") Fill;
 		static void Fill (const Handle_Prs3d_Presentation & aPresentation,const gp_Pnt & aLocation,const gp_Dir & aDirection,const Quantity_PlaneAngle anAngle,const Quantity_Length aLength);
 };
 
@@ -1778,79 +1346,56 @@ def __del__(self):
 %nodefaultctor Prs3d_ArrowAspect;
 class Prs3d_ArrowAspect : public Prs3d_BasicAspect {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Constructs an empty framework for displaying arrows in representations of lengths. The lengths displayed are either on their own or in chamfers, fillets, diameters and radii.
 
-Constructs an empty framework for displaying arrows  
-in representations of lengths. The lengths displayed  
-are either on their own or in chamfers, fillets,  
-diameters and radii.") Prs3d_ArrowAspect;
+	:rtype: None
+") Prs3d_ArrowAspect;
 		 Prs3d_ArrowAspect ();
-		%feature("autodoc", "Args:
-	anAngle(Quantity_PlaneAngle)
-	aLength(Quantity_Length)
+		%feature("autodoc", "	* Constructs a framework to display an arrow with a shaft of the length aLength and having a head with sides at the angle anAngle from each other.
 
-Returns:
-	None
-
-Constructs a framework to display an arrow with a  
-shaft of the length aLength and having a head with  
-sides at the angle anAngle from each other.") Prs3d_ArrowAspect;
+	:param anAngle:
+	:type anAngle: Quantity_PlaneAngle
+	:param aLength:
+	:type aLength: Quantity_Length
+	:rtype: None
+") Prs3d_ArrowAspect;
 		 Prs3d_ArrowAspect (const Quantity_PlaneAngle anAngle,const Quantity_Length aLength);
-		%feature("autodoc", "Args:
-	anAngle(Quantity_PlaneAngle)
+		%feature("autodoc", "	* defines the angle of the arrows.
 
-Returns:
-	None
-
-defines the angle of the arrows.") SetAngle;
+	:param anAngle:
+	:type anAngle: Quantity_PlaneAngle
+	:rtype: None
+") SetAngle;
 		void SetAngle (const Quantity_PlaneAngle anAngle);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_PlaneAngle
+		%feature("autodoc", "	* returns the current value of the angle used when drawing an arrow.
 
-returns the current value of the angle used when drawing an arrow.") Angle;
+	:rtype: Quantity_PlaneAngle
+") Angle;
 		Quantity_PlaneAngle Angle ();
-		%feature("autodoc", "Args:
-	aLength(Quantity_Length)
+		%feature("autodoc", "	* defines the length of the arrows.
 
-Returns:
-	None
-
-defines the length of the arrows.") SetLength;
+	:param aLength:
+	:type aLength: Quantity_Length
+	:rtype: None
+") SetLength;
 		void SetLength (const Quantity_Length aLength);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Length
+		%feature("autodoc", "	* returns the current value of the length used when drawing an arrow.
 
-returns the current value of the length used when drawing an arrow.") Length;
+	:rtype: Quantity_Length
+") Length;
 		Quantity_Length Length ();
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetColor;
+		%feature("autodoc", "	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	aColor(Quantity_NameOfColor)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetColor;
+		%feature("autodoc", "	:param aColor:
+	:type aColor: Quantity_NameOfColor
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_NameOfColor aColor);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_AspectLine3d
-
-No detailed docstring for this function.") Aspect;
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_AspectLine3d
+") Aspect;
 		Handle_Graphic3d_AspectLine3d Aspect ();
 };
 
@@ -1911,94 +1456,75 @@ def __del__(self):
 %nodefaultctor Prs3d_DatumAspect;
 class Prs3d_DatumAspect : public Prs3d_BasicAspect {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* An empty framework to define the display of datums.
 
-An empty framework to define the display of datums.") Prs3d_DatumAspect;
+	:rtype: None
+") Prs3d_DatumAspect;
 		 Prs3d_DatumAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_LineAspect
+		%feature("autodoc", "	* Returns the attributes for display of the first axis.
 
-Returns the attributes for display of the first axis.") FirstAxisAspect;
+	:rtype: Handle_Prs3d_LineAspect
+") FirstAxisAspect;
 		Handle_Prs3d_LineAspect FirstAxisAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_LineAspect
+		%feature("autodoc", "	* Returns the attributes for display of the second axis.
 
-Returns the attributes for display of the second axis.") SecondAxisAspect;
+	:rtype: Handle_Prs3d_LineAspect
+") SecondAxisAspect;
 		Handle_Prs3d_LineAspect SecondAxisAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_LineAspect
+		%feature("autodoc", "	* Returns the attributes for display of the third axis.
 
-Returns the attributes for display of the third axis.") ThirdAxisAspect;
+	:rtype: Handle_Prs3d_LineAspect
+") ThirdAxisAspect;
 		Handle_Prs3d_LineAspect ThirdAxisAspect ();
-		%feature("autodoc", "Args:
-	draw(Standard_Boolean)
+		%feature("autodoc", "	* Sets the DrawFirstAndSecondAxis attributes to active.
 
-Returns:
-	None
-
-Sets the DrawFirstAndSecondAxis attributes to active.") SetDrawFirstAndSecondAxis;
+	:param draw:
+	:type draw: bool
+	:rtype: None
+") SetDrawFirstAndSecondAxis;
 		void SetDrawFirstAndSecondAxis (const Standard_Boolean draw);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the first and second axes can be drawn.
 
-Returns true if the first and second axes can be drawn.") DrawFirstAndSecondAxis;
+	:rtype: bool
+") DrawFirstAndSecondAxis;
 		Standard_Boolean DrawFirstAndSecondAxis ();
-		%feature("autodoc", "Args:
-	draw(Standard_Boolean)
+		%feature("autodoc", "	* Sets the DrawThirdAxis attributes to active.
 
-Returns:
-	None
-
-Sets the DrawThirdAxis attributes to active.") SetDrawThirdAxis;
+	:param draw:
+	:type draw: bool
+	:rtype: None
+") SetDrawThirdAxis;
 		void SetDrawThirdAxis (const Standard_Boolean draw);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the third axis can be drawn.
 
-Returns true if the third axis can be drawn.") DrawThirdAxis;
+	:rtype: bool
+") DrawThirdAxis;
 		Standard_Boolean DrawThirdAxis ();
-		%feature("autodoc", "Args:
-	L1(Standard_Real)
-	L2(Standard_Real)
-	L3(Standard_Real)
+		%feature("autodoc", "	* Sets the lengths L1, L2 and L3 of the three axes.
 
-Returns:
-	None
-
-Sets the lengths L1, L2 and L3 of the three axes.") SetAxisLength;
+	:param L1:
+	:type L1: float
+	:param L2:
+	:type L2: float
+	:param L3:
+	:type L3: float
+	:rtype: None
+") SetAxisLength;
 		void SetAxisLength (const Standard_Real L1,const Standard_Real L2,const Standard_Real L3);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Length
+		%feature("autodoc", "	* Returns the length of the displayed first axis.
 
-Returns the length of the displayed first axis.") FirstAxisLength;
+	:rtype: Quantity_Length
+") FirstAxisLength;
 		Quantity_Length FirstAxisLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Length
+		%feature("autodoc", "	* Returns the length of the displayed second axis.
 
-Returns the length of the displayed second axis.") SecondAxisLength;
+	:rtype: Quantity_Length
+") SecondAxisLength;
 		Quantity_Length SecondAxisLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Length
+		%feature("autodoc", "	* Returns the length of the displayed third axis.
 
-Returns the length of the displayed third axis.") ThirdAxisLength;
+	:rtype: Quantity_Length
+") ThirdAxisLength;
 		Quantity_Length ThirdAxisLength ();
 };
 
@@ -2059,217 +1585,173 @@ def __del__(self):
 %nodefaultctor Prs3d_DimensionAspect;
 class Prs3d_DimensionAspect : public Prs3d_BasicAspect {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Constructs an empty framework to define the display of dimensions.
 
-Constructs an empty framework to define the display of dimensions.") Prs3d_DimensionAspect;
+	:rtype: None
+") Prs3d_DimensionAspect;
 		 Prs3d_DimensionAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_LineAspect
+		%feature("autodoc", "	* Returns the settings for the display of lines used in presentation of dimensions.
 
-Returns the settings for the display of lines used in presentation of dimensions.") LineAspect;
+	:rtype: Handle_Prs3d_LineAspect
+") LineAspect;
 		Handle_Prs3d_LineAspect LineAspect ();
-		%feature("autodoc", "Args:
-	theAspect(Handle_Prs3d_LineAspect)
+		%feature("autodoc", "	* Sets the display attributes of lines used in presentation of dimensions.
 
-Returns:
-	None
-
-Sets the display attributes of lines used in presentation of dimensions.") SetLineAspect;
+	:param theAspect:
+	:type theAspect: Handle_Prs3d_LineAspect &
+	:rtype: None
+") SetLineAspect;
 		void SetLineAspect (const Handle_Prs3d_LineAspect & theAspect);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_TextAspect
+		%feature("autodoc", "	* Returns the settings for the display of text used in presentation of dimensions.
 
-Returns the settings for the display of text used in presentation of dimensions.") TextAspect;
+	:rtype: Handle_Prs3d_TextAspect
+") TextAspect;
 		Handle_Prs3d_TextAspect TextAspect ();
-		%feature("autodoc", "Args:
-	theAspect(Handle_Prs3d_TextAspect)
+		%feature("autodoc", "	* Sets the display attributes of text used in presentation of dimensions.
 
-Returns:
-	None
-
-Sets the display attributes of text used in presentation of dimensions.") SetTextAspect;
+	:param theAspect:
+	:type theAspect: Handle_Prs3d_TextAspect &
+	:rtype: None
+") SetTextAspect;
 		void SetTextAspect (const Handle_Prs3d_TextAspect & theAspect);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Check if text for dimension label is 3d.
 
-Check if text for dimension label is 3d.") IsText3d;
+	:rtype: bool
+") IsText3d;
 		Standard_Boolean IsText3d ();
-		%feature("autodoc", "Args:
-	isText3d(Standard_Boolean)
+		%feature("autodoc", "	* Sets type of text.
 
-Returns:
-	None
-
-Sets type of text.") MakeText3d;
+	:param isText3d:
+	:type isText3d: bool
+	:rtype: None
+") MakeText3d;
 		void MakeText3d (const Standard_Boolean isText3d);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Check if 3d text for dimension label is shaded.
 
-Check if 3d text for dimension label is shaded.") IsTextShaded;
+	:rtype: bool
+") IsTextShaded;
 		Standard_Boolean IsTextShaded ();
-		%feature("autodoc", "Args:
-	isTextShaded(Standard_Boolean)
+		%feature("autodoc", "	* Turns on/off text shading for 3d text.
 
-Returns:
-	None
-
-Turns on/off text shading for 3d text.") MakeTextShaded;
+	:param isTextShaded:
+	:type isTextShaded: bool
+	:rtype: None
+") MakeTextShaded;
 		void MakeTextShaded (const Standard_Boolean isTextShaded);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Gets type of arrows.
 
-Gets type of arrows.") IsArrows3d;
+	:rtype: bool
+") IsArrows3d;
 		Standard_Boolean IsArrows3d ();
-		%feature("autodoc", "Args:
-	isArrows3d(Standard_Boolean)
+		%feature("autodoc", "	* Sets type of arrows.
 
-Returns:
-	None
-
-Sets type of arrows.") MakeArrows3d;
+	:param isArrows3d:
+	:type isArrows3d: bool
+	:rtype: None
+") MakeArrows3d;
 		void MakeArrows3d (const Standard_Boolean isArrows3d);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Shows if Units are to be displayed along with dimension value.
 
-Shows if Units are to be displayed along with dimension value.") IsUnitsDisplayed;
+	:rtype: bool
+") IsUnitsDisplayed;
 		Standard_Boolean IsUnitsDisplayed ();
-		%feature("autodoc", "Args:
-	theIsDisplayed(Standard_Boolean)
+		%feature("autodoc", "	* Specifies whether the units string should be displayed along with value label or not.
 
-Returns:
-	None
-
-Specifies whether the units string should be displayed  
-along with value label or not.") MakeUnitsDisplayed;
+	:param theIsDisplayed:
+	:type theIsDisplayed: bool
+	:rtype: None
+") MakeUnitsDisplayed;
 		void MakeUnitsDisplayed (const Standard_Boolean theIsDisplayed);
-		%feature("autodoc", "Args:
-	theArrowOrient(Prs3d_DimensionArrowOrientation)
+		%feature("autodoc", "	* Sets orientation of arrows (external or internal). By default orientation is chosen automatically according to situation and text label size.
 
-Returns:
-	None
-
-Sets orientation of arrows (external or internal).  
-By default orientation is chosen automatically according to situation and text label size.") SetArrowOrientation;
+	:param theArrowOrient:
+	:type theArrowOrient: Prs3d_DimensionArrowOrientation
+	:rtype: None
+") SetArrowOrientation;
 		void SetArrowOrientation (const Prs3d_DimensionArrowOrientation theArrowOrient);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Prs3d_DimensionArrowOrientation
+		%feature("autodoc", "	* Gets orientation of arrows (external or internal).
 
-Gets orientation of arrows (external or internal).") ArrowOrientation;
+	:rtype: Prs3d_DimensionArrowOrientation
+") ArrowOrientation;
 		Prs3d_DimensionArrowOrientation ArrowOrientation ();
-		%feature("autodoc", "Args:
-	thePosition(Prs3d_DimensionTextVerticalPosition)
+		%feature("autodoc", "	* Sets vertical text alignment for text label.
 
-Returns:
-	None
-
-Sets vertical text alignment for text label.") SetTextVerticalPosition;
+	:param thePosition:
+	:type thePosition: Prs3d_DimensionTextVerticalPosition
+	:rtype: None
+") SetTextVerticalPosition;
 		void SetTextVerticalPosition (const Prs3d_DimensionTextVerticalPosition thePosition);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Prs3d_DimensionTextVerticalPosition
+		%feature("autodoc", "	* Gets vertical text alignment for text label.
 
-Gets vertical text alignment for text label.") TextVerticalPosition;
+	:rtype: Prs3d_DimensionTextVerticalPosition
+") TextVerticalPosition;
 		Prs3d_DimensionTextVerticalPosition TextVerticalPosition ();
-		%feature("autodoc", "Args:
-	thePosition(Prs3d_DimensionTextHorizontalPosition)
+		%feature("autodoc", "	* Sets horizontal text alignment for text label.
 
-Returns:
-	None
-
-Sets horizontal text alignment for text label.") SetTextHorizontalPosition;
+	:param thePosition:
+	:type thePosition: Prs3d_DimensionTextHorizontalPosition
+	:rtype: None
+") SetTextHorizontalPosition;
 		void SetTextHorizontalPosition (const Prs3d_DimensionTextHorizontalPosition thePosition);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Prs3d_DimensionTextHorizontalPosition
+		%feature("autodoc", "	* Gets horizontal text alignment for text label.
 
-Gets horizontal text alignment for text label.") TextHorizontalPosition;
+	:rtype: Prs3d_DimensionTextHorizontalPosition
+") TextHorizontalPosition;
 		Prs3d_DimensionTextHorizontalPosition TextHorizontalPosition ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_ArrowAspect
+		%feature("autodoc", "	* Returns the settings for displaying arrows.
 
-Returns the settings for displaying arrows.") ArrowAspect;
+	:rtype: Handle_Prs3d_ArrowAspect
+") ArrowAspect;
 		Handle_Prs3d_ArrowAspect ArrowAspect ();
-		%feature("autodoc", "Args:
-	theAspect(Handle_Prs3d_ArrowAspect)
+		%feature("autodoc", "	* Sets the display attributes of arrows used in presentation of dimensions.
 
-Returns:
-	None
-
-Sets the display attributes of arrows used in presentation of dimensions.") SetArrowAspect;
+	:param theAspect:
+	:type theAspect: Handle_Prs3d_ArrowAspect &
+	:rtype: None
+") SetArrowAspect;
 		void SetArrowAspect (const Handle_Prs3d_ArrowAspect & theAspect);
-		%feature("autodoc", "Args:
-	theColor(Quantity_Color)
+		%feature("autodoc", "	* Sets the same color for all parts of dimension: lines, arrows and text.
 
-Returns:
-	None
-
-Sets the same color for all parts of dimension: lines, arrows and text.") SetCommonColor;
+	:param theColor:
+	:type theColor: Quantity_Color &
+	:rtype: None
+") SetCommonColor;
 		void SetCommonColor (const Quantity_Color & theColor);
-		%feature("autodoc", "Args:
-	theSize(Standard_Real)
+		%feature("autodoc", "	* Sets extension size.
 
-Returns:
-	None
-
-Sets extension size.") SetExtensionSize;
+	:param theSize:
+	:type theSize: float
+	:rtype: None
+") SetExtensionSize;
 		void SetExtensionSize (const Standard_Real theSize);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns extension size.
 
-Returns extension size.") ExtensionSize;
+	:rtype: float
+") ExtensionSize;
 		Standard_Real ExtensionSize ();
-		%feature("autodoc", "Args:
-	theSize(Standard_Real)
+		%feature("autodoc", "	* Set size for arrow tail (extension without text).
 
-Returns:
-	None
-
-Set size for arrow tail (extension without text).") SetArrowTailSize;
+	:param theSize:
+	:type theSize: float
+	:rtype: None
+") SetArrowTailSize;
 		void SetArrowTailSize (const Standard_Real theSize);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns arrow tail size.
 
-Returns arrow tail size.") ArrowTailSize;
+	:rtype: float
+") ArrowTailSize;
 		Standard_Real ArrowTailSize ();
-		%feature("autodoc", "Args:
-	theFormat(TCollection_AsciiString)
+		%feature("autodoc", "	* Sets 'sprintf'-syntax format for formatting dimension value labels.
 
-Returns:
-	None
-
-Sets 'sprintf'-syntax format for formatting dimension value labels.") SetValueStringFormat;
+	:param theFormat:
+	:type theFormat: TCollection_AsciiString &
+	:rtype: None
+") SetValueStringFormat;
 		void SetValueStringFormat (const TCollection_AsciiString & theFormat);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* Returns format.
 
-Returns format.") ValueStringFormat;
+	:rtype: TCollection_AsciiString
+") ValueStringFormat;
 		TCollection_AsciiString ValueStringFormat ();
 };
 
@@ -2330,73 +1812,56 @@ def __del__(self):
 %nodefaultctor Prs3d_LineAspect;
 class Prs3d_LineAspect : public Prs3d_BasicAspect {
 	public:
-		%feature("autodoc", "Args:
-	aColor(Quantity_NameOfColor)
-	aType(Aspect_TypeOfLine)
-	aWidth(Standard_Real)
+		%feature("autodoc", "	* Constructs a framework for line aspect defined by - the color aColor - the type of line aType and - the line thickness aWidth. Type of line refers to whether the line is solid or dotted, for example.
 
-Returns:
-	None
-
-Constructs a framework for line aspect defined by  
--   the color aColor  
--   the type of line aType and  
--   the line thickness aWidth.  
-  Type of line refers to whether the line is solid or dotted, for example.") Prs3d_LineAspect;
+	:param aColor:
+	:type aColor: Quantity_NameOfColor
+	:param aType:
+	:type aType: Aspect_TypeOfLine
+	:param aWidth:
+	:type aWidth: float
+	:rtype: None
+") Prs3d_LineAspect;
 		 Prs3d_LineAspect (const Quantity_NameOfColor aColor,const Aspect_TypeOfLine aType,const Standard_Real aWidth);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
-	aType(Aspect_TypeOfLine)
-	aWidth(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prs3d_LineAspect;
+		%feature("autodoc", "	:param aColor:
+	:type aColor: Quantity_Color &
+	:param aType:
+	:type aType: Aspect_TypeOfLine
+	:param aWidth:
+	:type aWidth: float
+	:rtype: None
+") Prs3d_LineAspect;
 		 Prs3d_LineAspect (const Quantity_Color & aColor,const Aspect_TypeOfLine aType,const Standard_Real aWidth);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetColor;
+		%feature("autodoc", "	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	aColor(Quantity_NameOfColor)
+		%feature("autodoc", "	* Sets the line color defined at the time of construction. Default value: Quantity_NOC_YELLOW
 
-Returns:
-	None
-
-Sets the line color defined at the time of construction.  
-         Default value: Quantity_NOC_YELLOW") SetColor;
+	:param aColor:
+	:type aColor: Quantity_NameOfColor
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_NameOfColor aColor);
-		%feature("autodoc", "Args:
-	aType(Aspect_TypeOfLine)
+		%feature("autodoc", "	* Sets the type of line defined at the time of construction. This could, for example, be solid, dotted or made up of dashes. Default value: Aspect_TOL_SOLID
 
-Returns:
-	None
-
-Sets the type of line defined at the time of construction.  
-This could, for example, be solid, dotted or made up of dashes.  
-         Default value: Aspect_TOL_SOLID") SetTypeOfLine;
+	:param aType:
+	:type aType: Aspect_TypeOfLine
+	:rtype: None
+") SetTypeOfLine;
 		void SetTypeOfLine (const Aspect_TypeOfLine aType);
-		%feature("autodoc", "Args:
-	aWidth(Standard_Real)
+		%feature("autodoc", "	* Sets the line width defined at the time of construction. Default value: 1.
 
-Returns:
-	None
-
-Sets the line width defined at the time of construction.  
-         Default value: 1.") SetWidth;
+	:param aWidth:
+	:type aWidth: float
+	:rtype: None
+") SetWidth;
 		void SetWidth (const Standard_Real aWidth);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_AspectLine3d
+		%feature("autodoc", "	* Returns the line aspect. This is defined as the set of color, type and thickness attributes.
 
-Returns the line aspect. This is defined as the set of  
-color, type and thickness attributes.") Aspect;
+	:rtype: Handle_Graphic3d_AspectLine3d
+") Aspect;
 		Handle_Graphic3d_AspectLine3d Aspect ();
 };
 
@@ -2457,178 +1922,132 @@ def __del__(self):
 %nodefaultctor Prs3d_PlaneAspect;
 class Prs3d_PlaneAspect : public Prs3d_BasicAspect {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Constructs an empty framework for the display of planes.
 
-Constructs an empty framework for the display of planes.") Prs3d_PlaneAspect;
+	:rtype: None
+") Prs3d_PlaneAspect;
 		 Prs3d_PlaneAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_LineAspect
+		%feature("autodoc", "	* Returns the attributes of displayed edges involved in the presentation of planes.
 
-Returns the attributes of displayed edges involved in the presentation of planes.") EdgesAspect;
+	:rtype: Handle_Prs3d_LineAspect
+") EdgesAspect;
 		Handle_Prs3d_LineAspect EdgesAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_LineAspect
+		%feature("autodoc", "	* Returns the attributes of displayed isoparameters involved in the presentation of planes.
 
-Returns the attributes of displayed isoparameters involved in the presentation of planes.") IsoAspect;
+	:rtype: Handle_Prs3d_LineAspect
+") IsoAspect;
 		Handle_Prs3d_LineAspect IsoAspect ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Prs3d_LineAspect
+		%feature("autodoc", "	* Returns the settings for displaying an arrow.
 
-Returns the settings for displaying an arrow.") ArrowAspect;
+	:rtype: Handle_Prs3d_LineAspect
+") ArrowAspect;
 		Handle_Prs3d_LineAspect ArrowAspect ();
-		%feature("autodoc", "Args:
-	L(Quantity_Length)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetArrowsLength;
+		%feature("autodoc", "	:param L:
+	:type L: Quantity_Length
+	:rtype: None
+") SetArrowsLength;
 		void SetArrowsLength (const Quantity_Length L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Length
+		%feature("autodoc", "	* Returns the length of the arrow shaft used in the display of arrows.
 
-Returns the length of the arrow shaft used in the display of arrows.") ArrowsLength;
+	:rtype: Quantity_Length
+") ArrowsLength;
 		Quantity_Length ArrowsLength ();
-		%feature("autodoc", "Args:
-	L(Quantity_Length)
+		%feature("autodoc", "	* Sets the angle of the arrowhead used in the display of planes.
 
-Returns:
-	None
-
-Sets the angle of the arrowhead used in the display of planes.") SetArrowsSize;
+	:param L:
+	:type L: Quantity_Length
+	:rtype: None
+") SetArrowsSize;
 		void SetArrowsSize (const Quantity_Length L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Length
+		%feature("autodoc", "	* Returns the size of arrows used in the display of planes.
 
-Returns the size of arrows used in the display of planes.") ArrowsSize;
+	:rtype: Quantity_Length
+") ArrowsSize;
 		Quantity_Length ArrowsSize ();
-		%feature("autodoc", "Args:
-	ang(Quantity_PlaneAngle)
+		%feature("autodoc", "	* Sets the angle of the arrowhead used in the display of arrows involved in the presentation of planes.
 
-Returns:
-	None
-
-Sets the angle of the arrowhead used in the display  
-of arrows involved in the presentation of planes.") SetArrowsAngle;
+	:param ang:
+	:type ang: Quantity_PlaneAngle
+	:rtype: None
+") SetArrowsAngle;
 		void SetArrowsAngle (const Quantity_PlaneAngle ang);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_PlaneAngle
+		%feature("autodoc", "	* Returns the angle of the arrowhead used in the display of arrows involved in the presentation of planes.
 
-Returns the angle of the arrowhead used in the  
-display of arrows involved in the presentation of planes.") ArrowsAngle;
+	:rtype: Quantity_PlaneAngle
+") ArrowsAngle;
 		Quantity_PlaneAngle ArrowsAngle ();
-		%feature("autodoc", "Args:
-	draw(Standard_Boolean)
+		%feature("autodoc", "	* Sets the display attributes defined in DisplayCenterArrow to active.
 
-Returns:
-	None
-
-Sets the display attributes defined in DisplayCenterArrow to active.") SetDisplayCenterArrow;
+	:param draw:
+	:type draw: bool
+	:rtype: None
+") SetDisplayCenterArrow;
 		void SetDisplayCenterArrow (const Standard_Boolean draw);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the display of center arrows is allowed.
 
-Returns true if the display of center arrows is allowed.") DisplayCenterArrow;
+	:rtype: bool
+") DisplayCenterArrow;
 		Standard_Boolean DisplayCenterArrow ();
-		%feature("autodoc", "Args:
-	draw(Standard_Boolean)
+		%feature("autodoc", "	* Sets the display attributes defined in DisplayEdgesArrows to active.
 
-Returns:
-	None
-
-Sets the display attributes defined in DisplayEdgesArrows to active.") SetDisplayEdgesArrows;
+	:param draw:
+	:type draw: bool
+	:rtype: None
+") SetDisplayEdgesArrows;
 		void SetDisplayEdgesArrows (const Standard_Boolean draw);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the display of edge arrows is allowed.
 
-Returns true if the display of edge arrows is allowed.") DisplayEdgesArrows;
+	:rtype: bool
+") DisplayEdgesArrows;
 		Standard_Boolean DisplayEdgesArrows ();
-		%feature("autodoc", "Args:
-	draw(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetDisplayEdges;
+		%feature("autodoc", "	:param draw:
+	:type draw: bool
+	:rtype: None
+") SetDisplayEdges;
 		void SetDisplayEdges (const Standard_Boolean draw);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") DisplayEdges;
+		%feature("autodoc", "	:rtype: bool
+") DisplayEdges;
 		Standard_Boolean DisplayEdges ();
-		%feature("autodoc", "Args:
-	draw(Standard_Boolean)
+		%feature("autodoc", "	* Sets the display attributes defined in DisplayIso to active.
 
-Returns:
-	None
-
-Sets the display attributes defined in DisplayIso to active.") SetDisplayIso;
+	:param draw:
+	:type draw: bool
+	:rtype: None
+") SetDisplayIso;
 		void SetDisplayIso (const Standard_Boolean draw);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the display of isoparameters is allowed.
 
-Returns true if the display of isoparameters is allowed.") DisplayIso;
+	:rtype: bool
+") DisplayIso;
 		Standard_Boolean DisplayIso ();
-		%feature("autodoc", "Args:
-	LX(Quantity_Length)
-	LY(Quantity_Length)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetPlaneLength;
+		%feature("autodoc", "	:param LX:
+	:type LX: Quantity_Length
+	:param LY:
+	:type LY: Quantity_Length
+	:rtype: None
+") SetPlaneLength;
 		void SetPlaneLength (const Quantity_Length LX,const Quantity_Length LY);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Length
+		%feature("autodoc", "	* Returns the length of the x axis used in the display of planes.
 
-Returns the length of the x axis used in the display of planes.") PlaneXLength;
+	:rtype: Quantity_Length
+") PlaneXLength;
 		Quantity_Length PlaneXLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Length
+		%feature("autodoc", "	* Returns the length of the y axis used in the display of planes.
 
-Returns the length of the y axis used in the display of planes.") PlaneYLength;
+	:rtype: Quantity_Length
+") PlaneYLength;
 		Quantity_Length PlaneYLength ();
-		%feature("autodoc", "Args:
-	L(Quantity_Length)
+		%feature("autodoc", "	* Sets the distance L between isoparameters used in the display of planes.
 
-Returns:
-	None
-
-Sets the distance L between isoparameters used in the display of planes.") SetIsoDistance;
+	:param L:
+	:type L: Quantity_Length
+	:rtype: None
+") SetIsoDistance;
 		void SetIsoDistance (const Quantity_Length L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Length
+		%feature("autodoc", "	* Returns the distance between isoparameters used in the display of planes.
 
-Returns the distance between isoparameters used in the display of planes.") IsoDistance;
+	:rtype: Quantity_Length
+") IsoDistance;
 		Quantity_Length IsoDistance ();
 };
 
@@ -2689,94 +2108,79 @@ def __del__(self):
 %nodefaultctor Prs3d_PointAspect;
 class Prs3d_PointAspect : public Prs3d_BasicAspect {
 	public:
-		%feature("autodoc", "Args:
-	aType(Aspect_TypeOfMarker)
-	aColor(Quantity_Color)
-	aScale(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prs3d_PointAspect;
+		%feature("autodoc", "	:param aType:
+	:type aType: Aspect_TypeOfMarker
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:param aScale:
+	:type aScale: float
+	:rtype: None
+") Prs3d_PointAspect;
 		 Prs3d_PointAspect (const Aspect_TypeOfMarker aType,const Quantity_Color & aColor,const Standard_Real aScale);
-		%feature("autodoc", "Args:
-	aType(Aspect_TypeOfMarker)
-	aColor(Quantity_NameOfColor)
-	aScale(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prs3d_PointAspect;
+		%feature("autodoc", "	:param aType:
+	:type aType: Aspect_TypeOfMarker
+	:param aColor:
+	:type aColor: Quantity_NameOfColor
+	:param aScale:
+	:type aScale: float
+	:rtype: None
+") Prs3d_PointAspect;
 		 Prs3d_PointAspect (const Aspect_TypeOfMarker aType,const Quantity_NameOfColor aColor,const Standard_Real aScale);
-		%feature("autodoc", "Args:
-	AColor(Quantity_Color)
-	AWidth(Standard_Integer)
-	AHeight(Standard_Integer)
-	ATexture(Handle_TColStd_HArray1OfByte)
+		%feature("autodoc", "	* defines only the urer defined marker point.
 
-Returns:
-	None
-
-defines only the urer defined marker point.") Prs3d_PointAspect;
+	:param AColor:
+	:type AColor: Quantity_Color &
+	:param AWidth:
+	:type AWidth: Standard_Integer
+	:param AHeight:
+	:type AHeight: Standard_Integer
+	:param ATexture:
+	:type ATexture: Handle_TColStd_HArray1OfByte &
+	:rtype: None
+") Prs3d_PointAspect;
 		 Prs3d_PointAspect (const Quantity_Color & AColor,const Standard_Integer AWidth,const Standard_Integer AHeight,const Handle_TColStd_HArray1OfByte & ATexture);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetColor;
+		%feature("autodoc", "	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	aColor(Quantity_NameOfColor)
+		%feature("autodoc", "	* defines the color to be used when drawing a point. Default value: Quantity_NOC_YELLOW
 
-Returns:
-	None
-
-defines the color to be used when drawing a point.  
-         Default value: Quantity_NOC_YELLOW") SetColor;
+	:param aColor:
+	:type aColor: Quantity_NameOfColor
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_NameOfColor aColor);
-		%feature("autodoc", "Args:
-	aType(Aspect_TypeOfMarker)
+		%feature("autodoc", "	* defines the type of representation to be used when drawing a point. Default value: Aspect_TOM_PLUS
 
-Returns:
-	None
-
-defines the type of representation to be used when drawing a point.  
-         Default value: Aspect_TOM_PLUS") SetTypeOfMarker;
+	:param aType:
+	:type aType: Aspect_TypeOfMarker
+	:rtype: None
+") SetTypeOfMarker;
 		void SetTypeOfMarker (const Aspect_TypeOfMarker aType);
-		%feature("autodoc", "Args:
-	aScale(Standard_Real)
+		%feature("autodoc", "	* defines the size of the marker used when drawing a point. Default value: 1.
 
-Returns:
-	None
-
-defines the size of the marker used when drawing a point.  
-         Default value: 1.") SetScale;
+	:param aScale:
+	:type aScale: float
+	:rtype: None
+") SetScale;
 		void SetScale (const Standard_Real aScale);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_AspectMarker3d
-
-No detailed docstring for this function.") Aspect;
+		%feature("autodoc", "	:rtype: Handle_Graphic3d_AspectMarker3d
+") Aspect;
 		Handle_Graphic3d_AspectMarker3d Aspect ();
-		%feature("autodoc", "Args:
-	AWidth(Standard_Integer)
-	AHeight(Standard_Integer)
+		%feature("autodoc", "	* Returns marker's texture size.
 
-Returns:
-	None
-
-Returns marker's texture size.") GetTextureSize;
+	:param AWidth:
+	:type AWidth: Standard_Integer &
+	:param AHeight:
+	:type AHeight: Standard_Integer &
+	:rtype: None
+") GetTextureSize;
 		void GetTextureSize (Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_MarkerImage_Handle
+		%feature("autodoc", "	* Returns marker's texture.
 
-Returns marker's texture.") GetTexture;
+	:rtype: Graphic3d_MarkerImage_Handle
+") GetTexture;
 		const Graphic3d_MarkerImage_Handle & GetTexture ();
 };
 
@@ -2837,97 +2241,86 @@ def __del__(self):
 %nodefaultctor Prs3d_ShadingAspect;
 class Prs3d_ShadingAspect : public Prs3d_BasicAspect {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Constructs an empty framework to display shading.
 
-Constructs an empty framework to display shading.") Prs3d_ShadingAspect;
+	:rtype: None
+") Prs3d_ShadingAspect;
 		 Prs3d_ShadingAspect ();
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
-	aModel(Aspect_TypeOfFacingModel)=Aspect_TOFM_BOTH_SIDE
+		%feature("autodoc", "	* Change the polygons interior color and material ambient color.
 
-Returns:
-	None
-
-Change the polygons interior color and material ambient color.") SetColor;
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:param aModel: default value is Aspect_TOFM_BOTH_SIDE
+	:type aModel: Aspect_TypeOfFacingModel
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_Color & aColor,const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_BOTH_SIDE);
-		%feature("autodoc", "Args:
-	aColor(Quantity_NameOfColor)
-	aModel(Aspect_TypeOfFacingModel)=Aspect_TOFM_BOTH_SIDE
+		%feature("autodoc", "	* Change the polygons interior color and material ambient color.
 
-Returns:
-	None
-
-Change the polygons interior color and material ambient color.") SetColor;
+	:param aColor:
+	:type aColor: Quantity_NameOfColor
+	:param aModel: default value is Aspect_TOFM_BOTH_SIDE
+	:type aModel: Aspect_TypeOfFacingModel
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_NameOfColor aColor,const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_BOTH_SIDE);
-		%feature("autodoc", "Args:
-	aMaterial(Graphic3d_MaterialAspect)
-	aModel(Aspect_TypeOfFacingModel)=Aspect_TOFM_BOTH_SIDE
+		%feature("autodoc", "	* Change the polygons material aspect.
 
-Returns:
-	None
-
-Change the polygons material aspect.") SetMaterial;
+	:param aMaterial:
+	:type aMaterial: Graphic3d_MaterialAspect &
+	:param aModel: default value is Aspect_TOFM_BOTH_SIDE
+	:type aModel: Aspect_TypeOfFacingModel
+	:rtype: None
+") SetMaterial;
 		void SetMaterial (const Graphic3d_MaterialAspect & aMaterial,const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_BOTH_SIDE);
-		%feature("autodoc", "Args:
-	aMaterial(Graphic3d_NameOfMaterial)
-	aModel(Aspect_TypeOfFacingModel)=Aspect_TOFM_BOTH_SIDE
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetMaterial;
+		%feature("autodoc", "	:param aMaterial:
+	:type aMaterial: Graphic3d_NameOfMaterial
+	:param aModel: default value is Aspect_TOFM_BOTH_SIDE
+	:type aModel: Aspect_TypeOfFacingModel
+	:rtype: None
+") SetMaterial;
 		void SetMaterial (const Graphic3d_NameOfMaterial aMaterial,const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_BOTH_SIDE);
-		%feature("autodoc", "Args:
-	aValue(Standard_Real)
-	aModel(Aspect_TypeOfFacingModel)=Aspect_TOFM_BOTH_SIDE
+		%feature("autodoc", "	* Change the polygons transparency value. Warning : aValue must be in the range 0,1. 0 is the default (NO transparent)
 
-Returns:
-	None
-
-Change the polygons transparency value.  
- Warning : aValue must be in the range 0,1. 0 is the default (NO transparent)") SetTransparency;
+	:param aValue:
+	:type aValue: float
+	:param aModel: default value is Aspect_TOFM_BOTH_SIDE
+	:type aModel: Aspect_TypeOfFacingModel
+	:rtype: None
+") SetTransparency;
 		void SetTransparency (const Standard_Real aValue,const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_BOTH_SIDE);
-		%feature("autodoc", "Args:
-	Asp(Handle_Graphic3d_AspectFillArea3d)
+		%feature("autodoc", "	* Change the polygons aspect properties.
 
-Returns:
-	None
-
-Change the polygons aspect properties.") SetAspect;
+	:param Asp:
+	:type Asp: Handle_Graphic3d_AspectFillArea3d &
+	:rtype: None
+") SetAspect;
 		void SetAspect (const Handle_Graphic3d_AspectFillArea3d & Asp);
-		%feature("autodoc", "Args:
-	aModel(Aspect_TypeOfFacingModel)=Aspect_TOFM_FRONT_SIDE
+		%feature("autodoc", "	* Returns the polygons color.
 
-Returns:
-	Quantity_Color
-
-Returns the polygons color.") Color;
+	:param aModel: default value is Aspect_TOFM_FRONT_SIDE
+	:type aModel: Aspect_TypeOfFacingModel
+	:rtype: Quantity_Color
+") Color;
 		Quantity_Color Color (const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_FRONT_SIDE);
-		%feature("autodoc", "Args:
-	aModel(Aspect_TypeOfFacingModel)=Aspect_TOFM_FRONT_SIDE
+		%feature("autodoc", "	* Returns the polygons material aspect.
 
-Returns:
-	Graphic3d_MaterialAspect
-
-Returns the polygons material aspect.") Material;
+	:param aModel: default value is Aspect_TOFM_FRONT_SIDE
+	:type aModel: Aspect_TypeOfFacingModel
+	:rtype: Graphic3d_MaterialAspect
+") Material;
 		Graphic3d_MaterialAspect Material (const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_FRONT_SIDE);
-		%feature("autodoc", "Args:
-	aModel(Aspect_TypeOfFacingModel)=Aspect_TOFM_FRONT_SIDE
+		%feature("autodoc", "	* Returns the polygons transparency value.
 
-Returns:
-	Standard_Real
-
-Returns the polygons transparency value.") Transparency;
+	:param aModel: default value is Aspect_TOFM_FRONT_SIDE
+	:type aModel: Aspect_TypeOfFacingModel
+	:rtype: float
+") Transparency;
 		Standard_Real Transparency (const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_FRONT_SIDE);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_AspectFillArea3d
+		%feature("autodoc", "	* Returns the polygons aspect properties.
 
-Returns the polygons aspect properties.") Aspect;
+	:rtype: Handle_Graphic3d_AspectFillArea3d
+") Aspect;
 		Handle_Graphic3d_AspectFillArea3d Aspect ();
 };
 
@@ -2988,43 +2381,31 @@ def __del__(self):
 %nodefaultctor Prs3d_Text;
 class Prs3d_Text : public Prs3d_Root {
 	public:
-		%feature("autodoc", "Args:
-	aPresentation(Handle_Prs3d_Presentation)
-	aDrawer(Handle_Prs3d_Drawer)
-	aText(TCollection_ExtendedString)
-	AttachmentPoint(gp_Pnt)
+		%feature("autodoc", "	* Defines the display of the text aText at the point AttachmentPoint. The drawer aDrawer specifies the display attributes which texts will have. The presentation object aPresentation stores the information defined in this framework. static void Draw (const Handle_Prs3d_Presentation& aPresentation, const Handle_Prs3d_TextAspect& anAspect, const TCollection_ExtendedString& aText, const gp_Pnt& AttachmentPoint);
 
-Returns:
-	static void
-
-Defines the display of the text aText at the point AttachmentPoint.  
-The drawer aDrawer specifies the display attributes which texts will have.  
-The presentation object aPresentation stores the  
-information defined in this framework.  
-static void Draw (const Handle_Prs3d_Presentation&  
-aPresentation, const Handle_Prs3d_TextAspect&  
-anAspect, const TCollection_ExtendedString& aText,  
-const gp_Pnt& AttachmentPoint);") Draw;
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:param aDrawer:
+	:type aDrawer: Handle_Prs3d_Drawer &
+	:param aText:
+	:type aText: TCollection_ExtendedString &
+	:param AttachmentPoint:
+	:type AttachmentPoint: gp_Pnt
+	:rtype: void
+") Draw;
 		static void Draw (const Handle_Prs3d_Presentation & aPresentation,const Handle_Prs3d_Drawer & aDrawer,const TCollection_ExtendedString & aText,const gp_Pnt & AttachmentPoint);
-		%feature("autodoc", "Args:
-	aPresentation(Handle_Prs3d_Presentation)
-	anAspect(Handle_Prs3d_TextAspect)
-	aText(TCollection_ExtendedString)
-	AttachmentPoint(gp_Pnt)
+		%feature("autodoc", "	* Defines the display of the text aText at the point AttachmentPoint. The text aspect object anAspect specifies the display attributes which texts will have. The presentation object aPresentation stores the information defined in this framework. This syntax could be used if you had not already defined text display attributes in a drawer or if you wanted to exceptionally overide the definition provided in your drawer.
 
-Returns:
-	static void
-
-Defines the display of the text aText at the point  
-AttachmentPoint.  
-The text aspect object anAspect specifies the display  
-attributes which texts will have.  
-The presentation object aPresentation stores the  
-information defined in this framework.  
-This syntax could be used if you had not already  
-defined text display attributes in a drawer or if you  
-wanted to exceptionally overide the definition  
-provided in your drawer.") Draw;
+	:param aPresentation:
+	:type aPresentation: Handle_Prs3d_Presentation &
+	:param anAspect:
+	:type anAspect: Handle_Prs3d_TextAspect &
+	:param aText:
+	:type aText: TCollection_ExtendedString &
+	:param AttachmentPoint:
+	:type AttachmentPoint: gp_Pnt
+	:rtype: void
+") Draw;
 		static void Draw (const Handle_Prs3d_Presentation & aPresentation,const Handle_Prs3d_TextAspect & anAspect,const TCollection_ExtendedString & aText,const gp_Pnt & AttachmentPoint);
 };
 
@@ -3046,156 +2427,108 @@ def __del__(self):
 %nodefaultctor Prs3d_TextAspect;
 class Prs3d_TextAspect : public Prs3d_BasicAspect {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Constructs an empty framework for defining display attributes of text.
 
-Constructs an empty framework for defining display attributes of text.") Prs3d_TextAspect;
+	:rtype: None
+") Prs3d_TextAspect;
 		 Prs3d_TextAspect ();
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetColor;
+		%feature("autodoc", "	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	aColor(Quantity_NameOfColor)
+		%feature("autodoc", "	* Sets the color of the type used in text display.
 
-Returns:
-	None
-
-Sets the color of the type used in text display.") SetColor;
+	:param aColor:
+	:type aColor: Quantity_NameOfColor
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_NameOfColor aColor);
-		%feature("autodoc", "Args:
-	aFont(char *)
+		%feature("autodoc", "	* Sets the font used in text display.
 
-Returns:
-	None
-
-Sets the font used in text display.") SetFont;
+	:param aFont:
+	:type aFont: char *
+	:rtype: None
+") SetFont;
 		void SetFont (const char * aFont);
-		%feature("autodoc", "Args:
-	aRatio(Standard_Real)
+		%feature("autodoc", "	* Returns the height-width ratio, also known as the expansion factor.
 
-Returns:
-	None
-
-Returns the height-width ratio, also known as the expansion factor.") SetHeightWidthRatio;
+	:param aRatio:
+	:type aRatio: float
+	:rtype: None
+") SetHeightWidthRatio;
 		void SetHeightWidthRatio (const Standard_Real aRatio);
-		%feature("autodoc", "Args:
-	aSpace(Quantity_Length)
+		%feature("autodoc", "	* Sets the length of the box which text will occupy.
 
-Returns:
-	None
-
-Sets the length of the box which text will occupy.") SetSpace;
+	:param aSpace:
+	:type aSpace: Quantity_Length
+	:rtype: None
+") SetSpace;
 		void SetSpace (const Quantity_Length aSpace);
-		%feature("autodoc", "Args:
-	aHeight(Standard_Real)
+		%feature("autodoc", "	* Sets the height of the text.
 
-Returns:
-	None
-
-Sets the height of the text.") SetHeight;
+	:param aHeight:
+	:type aHeight: float
+	:rtype: None
+") SetHeight;
 		void SetHeight (const Standard_Real aHeight);
-		%feature("autodoc", "Args:
-	anAngle(Quantity_PlaneAngle)
+		%feature("autodoc", "	* Sets the angle
 
-Returns:
-	None
-
-Sets the angle") SetAngle;
+	:param anAngle:
+	:type anAngle: Quantity_PlaneAngle
+	:rtype: None
+") SetAngle;
 		void SetAngle (const Quantity_PlaneAngle anAngle);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the height of the text box.
 
-Returns the height of the text box.") Height;
+	:rtype: float
+") Height;
 		Standard_Real Height ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_PlaneAngle
+		%feature("autodoc", "	* Returns the angle
 
-Returns the angle") Angle;
+	:rtype: Quantity_PlaneAngle
+") Angle;
 		Quantity_PlaneAngle Angle ();
-		%feature("autodoc", "Args:
-	aJustification(Graphic3d_HorizontalTextAlignment)
+		%feature("autodoc", "	* Sets horizontal alignment of text.
 
-Returns:
-	None
-
-Sets horizontal alignment of text.") SetHorizontalJustification;
+	:param aJustification:
+	:type aJustification: Graphic3d_HorizontalTextAlignment
+	:rtype: None
+") SetHorizontalJustification;
 		void SetHorizontalJustification (const Graphic3d_HorizontalTextAlignment aJustification);
-		%feature("autodoc", "Args:
-	aJustification(Graphic3d_VerticalTextAlignment)
+		%feature("autodoc", "	* Sets the vertical alignment of text.
 
-Returns:
-	None
-
-Sets the vertical alignment of text.") SetVerticalJustification;
+	:param aJustification:
+	:type aJustification: Graphic3d_VerticalTextAlignment
+	:rtype: None
+") SetVerticalJustification;
 		void SetVerticalJustification (const Graphic3d_VerticalTextAlignment aJustification);
-		%feature("autodoc", "Args:
-	anOrientation(Graphic3d_TextPath)
+		%feature("autodoc", "	* Sets the orientation of text.
 
-Returns:
-	None
-
-Sets the orientation of text.") SetOrientation;
+	:param anOrientation:
+	:type anOrientation: Graphic3d_TextPath
+	:rtype: None
+") SetOrientation;
 		void SetOrientation (const Graphic3d_TextPath anOrientation);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_HorizontalTextAlignment
+		%feature("autodoc", "	* Returns the horizontal alignment of the text. The range of values includes: - left - center - right, and - normal (justified).
 
-Returns the horizontal alignment of the text.  
-The range of values includes:  
--   left  
--   center  
--   right, and  
--   normal (justified).") HorizontalJustification;
+	:rtype: Graphic3d_HorizontalTextAlignment
+") HorizontalJustification;
 		Graphic3d_HorizontalTextAlignment HorizontalJustification ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_VerticalTextAlignment
+		%feature("autodoc", "	* Returns the vertical alignment of the text. The range of values includes: - normal - top - cap - half - base - bottom
 
-Returns the vertical alignment of the text.  
-The range of values includes:  
--   normal  
--   top  
--   cap  
--   half  
--   base  
--   bottom") VerticalJustification;
+	:rtype: Graphic3d_VerticalTextAlignment
+") VerticalJustification;
 		Graphic3d_VerticalTextAlignment VerticalJustification ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Graphic3d_TextPath
+		%feature("autodoc", "	* Returns the orientation of the text. Text can be displayed in the following directions: - up - down - left, or - right
 
-Returns the orientation of the text.  
-Text can be displayed in the following directions:  
--   up  
--   down  
--   left, or  
--   right") Orientation;
+	:rtype: Graphic3d_TextPath
+") Orientation;
 		Graphic3d_TextPath Orientation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Graphic3d_AspectText3d
+		%feature("autodoc", "	* Returns the purely textual attributes used in the display of text. These include: - color - font - height/width ratio, that is, the expansion factor, and - space between characters.
 
-Returns the purely textual attributes used in the display of text.  
-These include:  
--   color  
--   font  
--   height/width ratio, that is, the expansion factor, and  
--   space between characters.") Aspect;
+	:rtype: Handle_Graphic3d_AspectText3d
+") Aspect;
 		Handle_Graphic3d_AspectText3d Aspect ();
 };
 
@@ -3256,49 +2589,41 @@ def __del__(self):
 %nodefaultctor Prs3d_IsoAspect;
 class Prs3d_IsoAspect : public Prs3d_LineAspect {
 	public:
-		%feature("autodoc", "Args:
-	aColor(Quantity_NameOfColor)
-	aType(Aspect_TypeOfLine)
-	aWidth(Standard_Real)
-	aNumber(Standard_Integer)
+		%feature("autodoc", "	* Constructs a framework to define display attributes of isoparameters. These include: - the color attribute aColor - the type of line aType - the width value aWidth - aNumber, the number of isoparameters to be displayed.
 
-Returns:
-	None
-
-Constructs a framework to define display attributes of isoparameters.  
-These include:  
--   the color attribute aColor  
--   the type of line aType  
--   the width value aWidth  
--   aNumber, the number of isoparameters to be   displayed.") Prs3d_IsoAspect;
+	:param aColor:
+	:type aColor: Quantity_NameOfColor
+	:param aType:
+	:type aType: Aspect_TypeOfLine
+	:param aWidth:
+	:type aWidth: float
+	:param aNumber:
+	:type aNumber: Standard_Integer
+	:rtype: None
+") Prs3d_IsoAspect;
 		 Prs3d_IsoAspect (const Quantity_NameOfColor aColor,const Aspect_TypeOfLine aType,const Standard_Real aWidth,const Standard_Integer aNumber);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
-	aType(Aspect_TypeOfLine)
-	aWidth(Standard_Real)
-	aNumber(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prs3d_IsoAspect;
+		%feature("autodoc", "	:param aColor:
+	:type aColor: Quantity_Color &
+	:param aType:
+	:type aType: Aspect_TypeOfLine
+	:param aWidth:
+	:type aWidth: float
+	:param aNumber:
+	:type aNumber: Standard_Integer
+	:rtype: None
+") Prs3d_IsoAspect;
 		 Prs3d_IsoAspect (const Quantity_Color & aColor,const Aspect_TypeOfLine aType,const Standard_Real aWidth,const Standard_Integer aNumber);
-		%feature("autodoc", "Args:
-	aNumber(Standard_Integer)
+		%feature("autodoc", "	* defines the number of U or V isoparametric curves  to be drawn for a single face. Default value: 10
 
-Returns:
-	None
-
-defines the number of U or V isoparametric curves  
-        to be drawn for a single face.  
-         Default value: 10") SetNumber;
+	:param aNumber:
+	:type aNumber: Standard_Integer
+	:rtype: None
+") SetNumber;
 		void SetNumber (const Standard_Integer aNumber);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* returns the number of U or V isoparametric curves drawn for a single face.
 
-returns the number of U or V isoparametric curves drawn for a single face.") Number;
+	:rtype: int
+") Number;
 		Standard_Integer Number ();
 };
 
