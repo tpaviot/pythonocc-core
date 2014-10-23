@@ -31,6 +31,8 @@ from OCC.ShapeFix import ShapeFix_Solid, ShapeFix_Wire
 from OCC.TopoDS import TopoDS_Compound, TopoDS_Builder
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeCylinder
 from OCC.TColStd import TColStd_Array1OfReal
+from OCC.TopExp import TopExp_Explorer
+from OCC.TopAbs import TopAbs_FACE
 
 
 class TestWrapperFeatures(unittest.TestCase):
@@ -99,6 +101,25 @@ class TestWrapperFeatures(unittest.TestCase):
             return shape
         returned_shape = get_shape()
         self.assertEqual(returned_shape.IsNull(), False)
+
+    def test_traverse_box_topology(self):
+        '''
+        Test traversing faces for a box. Assert 6 faces are returned
+        '''
+        box_shp = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
+
+        def get_faces(shp):
+            ex = TopExp_Explorer(shp, TopAbs_FACE)
+            seq = []
+            while ex.More():
+                s1 = ex.Current()
+                seq.append(s1)
+                ex.Next()
+            return seq
+        faces = get_faces(box_shp)
+        self.assertEqual(len(faces), 6)
+        for f in faces:
+            self.assertEqual(f.IsNull(), False)
 
     def test_static_method(self):
         '''
@@ -244,13 +265,12 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertEqual(vec.Magnitude(), 1.)
         self.assertEqual(vec.get_attribute(), "something")
 
-    # TODO : doesn't work
-    # def testProtectedConstructor(self):
-    #     """ Test: protected constructor """
-    #     # 1st, class with no subclass
-    #     from OCC.TopoDS import TopoDS_Builder
-    #     tds_builder = TopoDS_Builder()
-    #     self.assertTrue(hasattr(tds_builder, "MakeCompound"))
+    def testProtectedConstructor(self):
+        """ Test: protected constructor """
+        # 1st, class with no subclass
+        from OCC.TopoDS import TopoDS_Builder
+        tds_builder = TopoDS_Builder()
+        self.assertTrue(hasattr(tds_builder, "MakeCompound"))
 
     def testAutoImportOfDependentModules(self):
         """ Test: automatic import of dependent modules """
