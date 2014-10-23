@@ -1232,6 +1232,22 @@ Draws the rectangle at position <X,Y>.") DrawRectangle;
 		void DrawRectangle (const Standard_Real X,const Standard_Real Y,const Standard_Real Width,const Standard_Real Height);
 		%feature("autodoc", "Args:
 	AText(char *)
+	X(Standard_Real)
+	Y(Standard_Real)
+	AHeight(Standard_Real)
+
+Returns:
+	None
+
+Draws the string <AText> at position <X,Y>.  
+     The attributes are given with respect to the plane of  
+     projection.  
+     <AHeight>   : Height of text.  
+           (Relative to the Normalized Projection  
+         Coordinates (NPC) Space).") DrawText;
+		void DrawText (const char * AText,const Standard_Real X,const Standard_Real Y,const Standard_Real AHeight);
+		%feature("autodoc", "Args:
+	AText(char *)
 	AHeight(Standard_Real)
 	AWidth(Standard_Real)
 	AnAscent(Standard_Real)
