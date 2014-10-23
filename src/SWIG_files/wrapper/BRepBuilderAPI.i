@@ -339,7 +339,7 @@ class BRepBuilderAPI_Sewing : public MMgt_TShared {
 
 	:rtype: TopoDS_Shape
 ") SewedShape;
-		const TopoDS_Shape & SewedShape ();
+		const TopoDS_Shape  SewedShape ();
 		%feature("autodoc", "	* set context
 
 	:param theContext:
@@ -363,7 +363,7 @@ class BRepBuilderAPI_Sewing : public MMgt_TShared {
 	:type index: Standard_Integer
 	:rtype: TopoDS_Edge
 ") FreeEdge;
-		const TopoDS_Edge & FreeEdge (const Standard_Integer index);
+		const TopoDS_Edge  FreeEdge (const Standard_Integer index);
 		%feature("autodoc", "	* Gives the number of multiple edges (edge shared by more than two faces)
 
 	:rtype: int
@@ -375,7 +375,7 @@ class BRepBuilderAPI_Sewing : public MMgt_TShared {
 	:type index: Standard_Integer
 	:rtype: TopoDS_Edge
 ") MultipleEdge;
-		const TopoDS_Edge & MultipleEdge (const Standard_Integer index);
+		const TopoDS_Edge  MultipleEdge (const Standard_Integer index);
 		%feature("autodoc", "	* Gives the number of contigous edges (edge shared by two faces)
 
 	:rtype: int
@@ -387,7 +387,7 @@ class BRepBuilderAPI_Sewing : public MMgt_TShared {
 	:type index: Standard_Integer
 	:rtype: TopoDS_Edge
 ") ContigousEdge;
-		const TopoDS_Edge & ContigousEdge (const Standard_Integer index);
+		const TopoDS_Edge  ContigousEdge (const Standard_Integer index);
 		%feature("autodoc", "	* Gives the sections (edge) belonging to a contigous edge
 
 	:param index:
@@ -408,7 +408,7 @@ class BRepBuilderAPI_Sewing : public MMgt_TShared {
 	:type section: TopoDS_Edge &
 	:rtype: TopoDS_Edge
 ") SectionToBoundary;
-		const TopoDS_Edge & SectionToBoundary (const TopoDS_Edge & section);
+		const TopoDS_Edge  SectionToBoundary (const TopoDS_Edge & section);
 		%feature("autodoc", "	* Gives the number of degenerated shapes
 
 	:rtype: int
@@ -420,7 +420,7 @@ class BRepBuilderAPI_Sewing : public MMgt_TShared {
 	:type index: Standard_Integer
 	:rtype: TopoDS_Shape
 ") DegeneratedShape;
-		const TopoDS_Shape & DegeneratedShape (const Standard_Integer index);
+		const TopoDS_Shape  DegeneratedShape (const Standard_Integer index);
 		%feature("autodoc", "	* Indicates if a input shape is degenerated
 
 	:param shape:
@@ -441,7 +441,7 @@ class BRepBuilderAPI_Sewing : public MMgt_TShared {
 	:type shape: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") Modified;
-		const TopoDS_Shape & Modified (const TopoDS_Shape & shape);
+		const TopoDS_Shape  Modified (const TopoDS_Shape & shape);
 		%feature("autodoc", "	* Indicates if a input subshape has been modified
 
 	:param shape:
@@ -472,7 +472,7 @@ class BRepBuilderAPI_Sewing : public MMgt_TShared {
 	:type index: Standard_Integer
 	:rtype: TopoDS_Face
 ") DeletedFace;
-		const TopoDS_Face & DeletedFace (const Standard_Integer index);
+		const TopoDS_Face  DeletedFace (const Standard_Integer index);
 		%feature("autodoc", "	* Gives a modified shape
 
 	:param theEdg:
@@ -763,7 +763,7 @@ class BRepBuilderAPI_MakeShape : public BRepBuilderAPI_Command {
 
 	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape ();
+		const TopoDS_Shape  Shape ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Shape;
 		 operator TopoDS_Shape ();
@@ -1259,7 +1259,7 @@ class BRepBuilderAPI_MakeEdge : public BRepBuilderAPI_MakeShape {
 
 	:rtype: TopoDS_Edge
 ") Edge;
-		const TopoDS_Edge & Edge ();
+		const TopoDS_Edge  Edge ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Edge;
 		 operator TopoDS_Edge ();
@@ -1267,12 +1267,12 @@ class BRepBuilderAPI_MakeEdge : public BRepBuilderAPI_MakeShape {
 
 	:rtype: TopoDS_Vertex
 ") Vertex1;
-		const TopoDS_Vertex & Vertex1 ();
+		const TopoDS_Vertex  Vertex1 ();
 		%feature("autodoc", "	* Returns the second vertex of the edge. May be Null. Warning The returned vertex in each function corresponds respectively to - the lowest, or - the highest parameter on the curve along which the edge is built. It does not correspond to the first or second vertex given at the time of the construction, if the edge is oriented reversed. Exceptions StdFail_NotDone if the edge is not built.
 
 	:rtype: TopoDS_Vertex
 ") Vertex2;
-		const TopoDS_Vertex & Vertex2 ();
+		const TopoDS_Vertex  Vertex2 ();
 };
 
 
@@ -1593,7 +1593,7 @@ class BRepBuilderAPI_MakeEdge2d : public BRepBuilderAPI_MakeShape {
 		BRepBuilderAPI_EdgeError Error ();
 		%feature("autodoc", "	:rtype: TopoDS_Edge
 ") Edge;
-		const TopoDS_Edge & Edge ();
+		const TopoDS_Edge  Edge ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Edge;
 		 operator TopoDS_Edge ();
@@ -1601,12 +1601,12 @@ class BRepBuilderAPI_MakeEdge2d : public BRepBuilderAPI_MakeShape {
 
 	:rtype: TopoDS_Vertex
 ") Vertex1;
-		const TopoDS_Vertex & Vertex1 ();
+		const TopoDS_Vertex  Vertex1 ();
 		%feature("autodoc", "	* Returns the second vertex of the edge. May be Null.
 
 	:rtype: TopoDS_Vertex
 ") Vertex2;
-		const TopoDS_Vertex & Vertex2 ();
+		const TopoDS_Vertex  Vertex2 ();
 };
 
 
@@ -1915,7 +1915,7 @@ class BRepBuilderAPI_MakeFace : public BRepBuilderAPI_MakeShape {
 
 	:rtype: TopoDS_Face
 ") Face;
-		const TopoDS_Face & Face ();
+		const TopoDS_Face  Face ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Face;
 		 operator TopoDS_Face ();
@@ -2034,12 +2034,12 @@ class BRepBuilderAPI_MakePolygon : public BRepBuilderAPI_MakeShape {
 		void Close ();
 		%feature("autodoc", "	:rtype: TopoDS_Vertex
 ") FirstVertex;
-		const TopoDS_Vertex & FirstVertex ();
+		const TopoDS_Vertex  FirstVertex ();
 		%feature("autodoc", "	* Returns the first or the last vertex of the polygonal wire under construction. If the constructed polygonal wire is closed, the first and the last vertices are identical.
 
 	:rtype: TopoDS_Vertex
 ") LastVertex;
-		const TopoDS_Vertex & LastVertex ();
+		const TopoDS_Vertex  LastVertex ();
 		%feature("autodoc", "	* Returns true if this algorithm contains a valid polygonal wire (i.e. if there is at least one edge). IsDone returns false if fewer than two vertices have been chained together by this construction algorithm.
 
 	:rtype: bool
@@ -2049,7 +2049,7 @@ class BRepBuilderAPI_MakePolygon : public BRepBuilderAPI_MakeShape {
 
 	:rtype: TopoDS_Edge
 ") Edge;
-		const TopoDS_Edge & Edge ();
+		const TopoDS_Edge  Edge ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Edge;
 		 operator TopoDS_Edge ();
@@ -2057,7 +2057,7 @@ class BRepBuilderAPI_MakePolygon : public BRepBuilderAPI_MakeShape {
 
 	:rtype: TopoDS_Wire
 ") Wire;
-		const TopoDS_Wire & Wire ();
+		const TopoDS_Wire  Wire ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Wire;
 		 operator TopoDS_Wire ();
@@ -2143,7 +2143,7 @@ class BRepBuilderAPI_MakeShell : public BRepBuilderAPI_MakeShape {
 
 	:rtype: TopoDS_Shell
 ") Shell;
-		const TopoDS_Shell & Shell ();
+		const TopoDS_Shell  Shell ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Shell;
 		 operator TopoDS_Shell ();
@@ -2238,7 +2238,7 @@ class BRepBuilderAPI_MakeSolid : public BRepBuilderAPI_MakeShape {
 
 	:rtype: TopoDS_Solid
 ") Solid;
-		const TopoDS_Solid & Solid ();
+		const TopoDS_Solid  Solid ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Solid;
 		 operator TopoDS_Solid ();
@@ -2278,7 +2278,7 @@ class BRepBuilderAPI_MakeVertex : public BRepBuilderAPI_MakeShape {
 
 	:rtype: TopoDS_Vertex
 ") Vertex;
-		const TopoDS_Vertex & Vertex ();
+		const TopoDS_Vertex  Vertex ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Vertex;
 		 operator TopoDS_Vertex ();
@@ -2398,7 +2398,7 @@ class BRepBuilderAPI_MakeWire : public BRepBuilderAPI_MakeShape {
 
 	:rtype: TopoDS_Wire
 ") Wire;
-		const TopoDS_Wire & Wire ();
+		const TopoDS_Wire  Wire ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Wire;
 		 operator TopoDS_Wire ();
@@ -2406,12 +2406,12 @@ class BRepBuilderAPI_MakeWire : public BRepBuilderAPI_MakeShape {
 
 	:rtype: TopoDS_Edge
 ") Edge;
-		const TopoDS_Edge & Edge ();
+		const TopoDS_Edge  Edge ();
 		%feature("autodoc", "	* Returns the last vertex of the last edge added to the wire under construction. Warning A null vertex is returned if there are no edges in the wire under construction, or if the last edge which you tried to add was not connectableR
 
 	:rtype: TopoDS_Vertex
 ") Vertex;
-		const TopoDS_Vertex & Vertex ();
+		const TopoDS_Vertex  Vertex ();
 };
 
 
@@ -2445,7 +2445,7 @@ class BRepBuilderAPI_ModifyShape : public BRepBuilderAPI_MakeShape {
 	:type S: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") ModifiedShape;
-		virtual const TopoDS_Shape & ModifiedShape (const TopoDS_Shape & S);
+		virtual const TopoDS_Shape  ModifiedShape (const TopoDS_Shape & S);
 };
 
 
@@ -2549,7 +2549,7 @@ class BRepBuilderAPI_GTransform : public BRepBuilderAPI_ModifyShape {
 	:type S: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") ModifiedShape;
-		virtual const TopoDS_Shape & ModifiedShape (const TopoDS_Shape & S);
+		virtual const TopoDS_Shape  ModifiedShape (const TopoDS_Shape & S);
 };
 
 
@@ -2646,7 +2646,7 @@ class BRepBuilderAPI_Transform : public BRepBuilderAPI_ModifyShape {
 	:type S: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") ModifiedShape;
-		virtual const TopoDS_Shape & ModifiedShape (const TopoDS_Shape & S);
+		virtual const TopoDS_Shape  ModifiedShape (const TopoDS_Shape & S);
 		%feature("autodoc", "	* Returns the list of shapes modified from the shape <S>.
 
 	:param S:

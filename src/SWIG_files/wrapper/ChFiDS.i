@@ -199,7 +199,7 @@ class ChFiDS_CommonPoint {
 
 	:rtype: TopoDS_Vertex
 ") Vertex;
-		const TopoDS_Vertex & Vertex ();
+		const TopoDS_Vertex  Vertex ();
 		%feature("autodoc", "	* Returns True if the point is a on an edge of the initial restriction facet of the surface.
 
 	:rtype: bool
@@ -209,7 +209,7 @@ class ChFiDS_CommonPoint {
 
 	:rtype: TopoDS_Edge
 ") Arc;
-		const TopoDS_Edge & Arc ();
+		const TopoDS_Edge  Arc ();
 		%feature("autodoc", "	* Returns the transition of the point on the arc returned by Arc().
 
 	:rtype: TopAbs_Orientation
@@ -229,7 +229,7 @@ class ChFiDS_CommonPoint {
 
 	:rtype: gp_Pnt
 ") Point;
-		const gp_Pnt & Point ();
+		const gp_Pnt  Point ();
 		%feature("autodoc", "	* Returns True if the output vector is stored.
 
 	:rtype: bool
@@ -239,7 +239,7 @@ class ChFiDS_CommonPoint {
 
 	:rtype: gp_Vec
 ") Vector;
-		const gp_Vec & Vector ();
+		const gp_Vec  Vector ();
 };
 
 
@@ -818,7 +818,7 @@ class ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe : public TCo
 		 ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe (const TopoDS_Vertex & K1,const Standard_Integer K2,const ChFiDS_ListOfStripe & I,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
 		%feature("autodoc", "	:rtype: TopoDS_Vertex
 ") Key1;
-		TopoDS_Vertex & Key1 ();
+		TopoDS_Vertex  Key1 ();
 
             %feature("autodoc","1");
             %extend {
@@ -948,7 +948,7 @@ class ChFiDS_IndexedDataMapOfVertexListOfStripe : public TCollection_BasicMap {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Vertex
 ") FindKey;
-		const TopoDS_Vertex & FindKey (const Standard_Integer I);
+		const TopoDS_Vertex  FindKey (const Standard_Integer I);
 		%feature("autodoc", "	:param I:
 	:type I: Standard_Integer
 	:rtype: ChFiDS_ListOfStripe
@@ -2417,7 +2417,7 @@ class ChFiDS_Spine : public MMgt_TShared {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Edge
 ") Edges;
-		const TopoDS_Edge & Edges (const Standard_Integer I);
+		const TopoDS_Edge  Edges (const Standard_Integer I);
 		%feature("autodoc", "	* stores if the start of a set of edges starts on a section of free border or forms a closed contour
 
 	:param S:
@@ -3192,7 +3192,7 @@ class ChFiDS_StripeMap {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Vertex
 ") FindKey;
-		const TopoDS_Vertex & FindKey (const Standard_Integer I);
+		const TopoDS_Vertex  FindKey (const Standard_Integer I);
 		%feature("autodoc", "	:rtype: None
 ") Clear;
 		void Clear ();

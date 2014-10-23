@@ -168,7 +168,7 @@ class IntSurf_InteriorPoint {
 
 	:rtype: gp_Pnt
 ") Value;
-		const gp_Pnt & Value ();
+		const gp_Pnt  Value ();
 		%feature("autodoc", "	* Returns the parameters of the interior point on the parametric surface.
 
 	:param U:
@@ -192,12 +192,12 @@ class IntSurf_InteriorPoint {
 
 	:rtype: gp_Vec
 ") Direction;
-		const gp_Vec & Direction ();
+		const gp_Vec  Direction ();
 		%feature("autodoc", "	* Returns the tangent at the intersection in the parametric space of the parametric surface.
 
 	:rtype: gp_Vec2d
 ") Direction2d;
-		const gp_Vec2d & Direction2d ();
+		const gp_Vec2d  Direction2d ();
 };
 
 
@@ -678,7 +678,7 @@ class IntSurf_PathPoint {
 		void SetPassing (const Standard_Boolean Pass);
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") Value;
-		const gp_Pnt & Value ();
+		const gp_Pnt  Value ();
 		%feature("autodoc", "	:param U:
 	:type U: float &
 	:param V:
@@ -694,10 +694,10 @@ class IntSurf_PathPoint {
 		Standard_Boolean IsTangent ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") Direction3d;
-		const gp_Vec & Direction3d ();
+		const gp_Vec  Direction3d ();
 		%feature("autodoc", "	:rtype: gp_Dir2d
 ") Direction2d;
-		const gp_Dir2d & Direction2d ();
+		const gp_Dir2d  Direction2d ();
 		%feature("autodoc", "	:rtype: int
 ") Multiplicity;
 		Standard_Integer Multiplicity ();
@@ -884,7 +884,7 @@ class IntSurf_PntOn2S {
 
 	:rtype: gp_Pnt
 ") Value;
-		const gp_Pnt & Value ();
+		const gp_Pnt  Value ();
 		%feature("autodoc", "	* Returns the parameters of the point on the first surface.
 
 	:param U1:

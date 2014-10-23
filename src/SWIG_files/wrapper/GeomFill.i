@@ -1668,7 +1668,7 @@ class GeomFill_CoonsAlgPatch : public MMgt_TShared {
 	:type I: Standard_Integer
 	:rtype: gp_Pnt
 ") Corner;
-		const gp_Pnt & Corner (const Standard_Integer I);
+		const gp_Pnt  Corner (const Standard_Integer I);
 		%feature("autodoc", "	:param I:
 	:type I: Standard_Integer
 	:rtype: Handle_GeomFill_Boundary
@@ -2365,12 +2365,12 @@ class GeomFill_HSequenceOfAx2 : public MMgt_TShared {
 	:type anIndex: Standard_Integer
 	:rtype: gp_Ax2
 ") Value;
-		const gp_Ax2 & Value (const Standard_Integer anIndex);
+		const gp_Ax2  Value (const Standard_Integer anIndex);
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: Standard_Integer
 	:rtype: gp_Ax2
 ") ChangeValue;
-		gp_Ax2 & ChangeValue (const Standard_Integer anIndex);
+		gp_Ax2  ChangeValue (const Standard_Integer anIndex);
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: Standard_Integer
 	:rtype: None
@@ -3878,7 +3878,7 @@ class GeomFill_SequenceNodeOfSequenceOfAx2 : public TCollection_SeqNode {
 		 GeomFill_SequenceNodeOfSequenceOfAx2 (const gp_Ax2 & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
 		%feature("autodoc", "	:rtype: gp_Ax2
 ") Value;
-		gp_Ax2 & Value ();
+		gp_Ax2  Value ();
 };
 
 
@@ -3949,7 +3949,7 @@ class GeomFill_SequenceNodeOfSequenceOfTrsf : public TCollection_SeqNode {
 		 GeomFill_SequenceNodeOfSequenceOfTrsf (const gp_Trsf & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
 		%feature("autodoc", "	:rtype: gp_Trsf
 ") Value;
-		gp_Trsf & Value ();
+		gp_Trsf  Value ();
 };
 
 
@@ -4075,10 +4075,10 @@ class GeomFill_SequenceOfAx2 : public TCollection_BaseSequence {
 		void InsertAfter (const Standard_Integer Index,GeomFill_SequenceOfAx2 & S);
 		%feature("autodoc", "	:rtype: gp_Ax2
 ") First;
-		const gp_Ax2 & First ();
+		const gp_Ax2  First ();
 		%feature("autodoc", "	:rtype: gp_Ax2
 ") Last;
-		const gp_Ax2 & Last ();
+		const gp_Ax2  Last ();
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:param Sub:
@@ -4090,7 +4090,7 @@ class GeomFill_SequenceOfAx2 : public TCollection_BaseSequence {
 	:type Index: Standard_Integer
 	:rtype: gp_Ax2
 ") Value;
-		const gp_Ax2 & Value (const Standard_Integer Index);
+		const gp_Ax2  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:param I:
@@ -4102,7 +4102,7 @@ class GeomFill_SequenceOfAx2 : public TCollection_BaseSequence {
 	:type Index: Standard_Integer
 	:rtype: gp_Ax2
 ") ChangeValue;
-		gp_Ax2 & ChangeValue (const Standard_Integer Index);
+		gp_Ax2  ChangeValue (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: None
@@ -4201,10 +4201,10 @@ class GeomFill_SequenceOfTrsf : public TCollection_BaseSequence {
 		void InsertAfter (const Standard_Integer Index,GeomFill_SequenceOfTrsf & S);
 		%feature("autodoc", "	:rtype: gp_Trsf
 ") First;
-		const gp_Trsf & First ();
+		const gp_Trsf  First ();
 		%feature("autodoc", "	:rtype: gp_Trsf
 ") Last;
-		const gp_Trsf & Last ();
+		const gp_Trsf  Last ();
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:param Sub:
@@ -4216,7 +4216,7 @@ class GeomFill_SequenceOfTrsf : public TCollection_BaseSequence {
 	:type Index: Standard_Integer
 	:rtype: gp_Trsf
 ") Value;
-		const gp_Trsf & Value (const Standard_Integer Index);
+		const gp_Trsf  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:param I:
@@ -4228,7 +4228,7 @@ class GeomFill_SequenceOfTrsf : public TCollection_BaseSequence {
 	:type Index: Standard_Integer
 	:rtype: gp_Trsf
 ") ChangeValue;
-		gp_Trsf & ChangeValue (const Standard_Integer Index);
+		gp_Trsf  ChangeValue (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: None

@@ -767,17 +767,17 @@ class Select3D_Projector : public Standard_Transient {
 
 	:rtype: gp_GTrsf
 ") Transformation;
-		const gp_GTrsf & Transformation ();
+		const gp_GTrsf  Transformation ();
 		%feature("autodoc", "	* Returns the active inverted transformation.
 
 	:rtype: gp_GTrsf
 ") InvertedTransformation;
-		const gp_GTrsf & InvertedTransformation ();
+		const gp_GTrsf  InvertedTransformation ();
 		%feature("autodoc", "	* Returns the original transformation.
 
 	:rtype: gp_Trsf
 ") FullTransformation;
-		const gp_Trsf & FullTransformation ();
+		const gp_Trsf  FullTransformation ();
 		%feature("autodoc", "	* Returns the focal length.
 
 	:rtype: float

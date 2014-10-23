@@ -4077,7 +4077,7 @@ class AIS_InteractiveContext : public MMgt_TShared {
 
 	:rtype: TopoDS_Shape
 ") DetectedShape;
-		const TopoDS_Shape & DetectedShape ();
+		const TopoDS_Shape  DetectedShape ();
 		%feature("autodoc", "	* Returns the interactive objects last detected in open context. If there is no open local context, the objects selected are called current objects; selected objects if there is one. Iterators allow entities to be recovered in either case. This method is one of a set which allows you to manipulate the objects which have been placed in these two lists.
 
 	:rtype: Handle_AIS_InteractiveObject
@@ -4099,7 +4099,7 @@ class AIS_InteractiveContext : public MMgt_TShared {
 		void NextDetected ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") DetectedCurrentShape;
-		const TopoDS_Shape & DetectedCurrentShape ();
+		const TopoDS_Shape  DetectedCurrentShape ();
 		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
 ") DetectedCurrentObject;
 		Handle_AIS_InteractiveObject DetectedCurrentObject ();
@@ -5627,7 +5627,7 @@ class AIS_LocalContext : public MMgt_TShared {
 		void NextDetected ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") DetectedCurrentShape;
-		const TopoDS_Shape & DetectedCurrentShape ();
+		const TopoDS_Shape  DetectedCurrentShape ();
 		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
 ") DetectedCurrentObject;
 		Handle_AIS_InteractiveObject DetectedCurrentObject ();
@@ -5636,7 +5636,7 @@ class AIS_LocalContext : public MMgt_TShared {
 		Standard_Boolean HasDetectedShape ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") DetectedShape;
-		const TopoDS_Shape & DetectedShape ();
+		const TopoDS_Shape  DetectedShape ();
 		%feature("autodoc", "	:rtype: Handle_AIS_InteractiveObject
 ") DetectedInteractive;
 		Handle_AIS_InteractiveObject DetectedInteractive ();
@@ -5659,7 +5659,7 @@ class AIS_LocalContext : public MMgt_TShared {
 		Standard_Boolean HasShape ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") SelectedShape;
-		const TopoDS_Shape & SelectedShape ();
+		const TopoDS_Shape  SelectedShape ();
 		%feature("autodoc", "	:rtype: Handle_SelectMgr_EntityOwner
 ") SelectedOwner;
 		Handle_SelectMgr_EntityOwner SelectedOwner ();
@@ -7428,7 +7428,7 @@ class AIS_Dimension : public AIS_InteractiveObject {
 
 	:rtype: gp_Pln
 ") GetPlane;
-		const gp_Pln & GetPlane ();
+		const gp_Pln  GetPlane ();
 		%feature("autodoc", "	* Geometry type defines type of shapes on which the dimension is to be built. returns type of geometry on which the dimension will be built.
 
 	:rtype: int
@@ -7981,7 +7981,7 @@ class AIS_Plane : public AIS_InteractiveObject {
 
 	:rtype: gp_Pnt
 ") Center;
-		const gp_Pnt & Center ();
+		const gp_Pnt  Center ();
 		%feature("autodoc", "	* Provides settings for the center aCenter other than (0, 0, 0).
 
 	:param aCenter:
@@ -8471,7 +8471,7 @@ class AIS_Relation : public AIS_InteractiveObject {
 		virtual Standard_Boolean IsMovable ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") FirstShape;
-		const TopoDS_Shape & FirstShape ();
+		const TopoDS_Shape  FirstShape ();
 		%feature("autodoc", "	:param aFShape:
 	:type aFShape: TopoDS_Shape &
 	:rtype: void
@@ -8481,7 +8481,7 @@ class AIS_Relation : public AIS_InteractiveObject {
 
 	:rtype: TopoDS_Shape
 ") SecondShape;
-		const TopoDS_Shape & SecondShape ();
+		const TopoDS_Shape  SecondShape ();
 		%feature("autodoc", "	* Allows you to identify the second shape aSShape relative to the first.
 
 	:param aSShape:
@@ -8535,7 +8535,7 @@ class AIS_Relation : public AIS_InteractiveObject {
 
 	:rtype: gp_Pnt
 ") Position;
-		const gp_Pnt & Position ();
+		const gp_Pnt  Position ();
 		%feature("autodoc", "	* Allows you to provide the objects in the relation with settings for a non-default position.
 
 	:param aPosition:
@@ -8698,7 +8698,7 @@ class AIS_Shape : public AIS_InteractiveObject {
 
 	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape ();
+		const TopoDS_Shape  Shape ();
 		%feature("autodoc", "	* Sets a local value for deviation coefficient for this specific shape.
 
 	:rtype: bool
@@ -9428,32 +9428,32 @@ class AIS_AngleDimension : public AIS_Dimension {
 
 	:rtype: gp_Pnt
 ") FirstPoint;
-		const gp_Pnt & FirstPoint ();
+		const gp_Pnt  FirstPoint ();
 		%feature("autodoc", "	* returns second point forming the angle.
 
 	:rtype: gp_Pnt
 ") SecondPoint;
-		const gp_Pnt & SecondPoint ();
+		const gp_Pnt  SecondPoint ();
 		%feature("autodoc", "	* returns center point forming the angle.
 
 	:rtype: gp_Pnt
 ") CenterPoint;
-		const gp_Pnt & CenterPoint ();
+		const gp_Pnt  CenterPoint ();
 		%feature("autodoc", "	* returns first argument shape.
 
 	:rtype: TopoDS_Shape
 ") FirstShape;
-		const TopoDS_Shape & FirstShape ();
+		const TopoDS_Shape  FirstShape ();
 		%feature("autodoc", "	* returns second argument shape.
 
 	:rtype: TopoDS_Shape
 ") SecondShape;
-		const TopoDS_Shape & SecondShape ();
+		const TopoDS_Shape  SecondShape ();
 		%feature("autodoc", "	* returns third argument shape.
 
 	:rtype: TopoDS_Shape
 ") ThirdShape;
-		const TopoDS_Shape & ThirdShape ();
+		const TopoDS_Shape  ThirdShape ();
 		%feature("autodoc", "	* Measures minimum angle dimension between two linear edges. These two edges should be intersected by each other. Otherwise the geometry is not valid. @param theFirstEdge [in] the first edge. @param theSecondEdge [in] the second edge.
 
 	:param theFirstEdge:
@@ -9917,7 +9917,7 @@ class AIS_ConnectedShape : public AIS_ConnectedInteractive {
 
 	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape ();
+		const TopoDS_Shape  Shape ();
 };
 
 
@@ -10013,7 +10013,7 @@ class AIS_DiameterDimension : public AIS_Dimension {
 
 	:rtype: gp_Circ
 ") Circle;
-		const gp_Circ & Circle ();
+		const gp_Circ  Circle ();
 		%feature("autodoc", "	* returns anchor point on circle for diameter dimension.
 
 	:rtype: gp_Pnt
@@ -10023,7 +10023,7 @@ class AIS_DiameterDimension : public AIS_Dimension {
 
 	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape ();
+		const TopoDS_Shape  Shape ();
 		%feature("autodoc", "	* Measure diameter of the circle. The actual dimension plane is used for determining anchor points on the circle to attach the dimension lines to. The dimension will become invalid if the diameter of the circle is less than Precision::Confusion(). @param theCircle [in] the circle to measure.
 
 	:param theCircle:
@@ -10180,7 +10180,7 @@ class AIS_EqualDistanceRelation : public AIS_Relation {
 
 	:rtype: TopoDS_Shape
 ") Shape3;
-		const TopoDS_Shape & Shape3 ();
+		const TopoDS_Shape  Shape3 ();
 		%feature("autodoc", "	* Sets the shape aShape to be used as the shape aShape4 in the framework created at construction time.
 
 	:param aShape:
@@ -10192,7 +10192,7 @@ class AIS_EqualDistanceRelation : public AIS_Relation {
 
 	:rtype: TopoDS_Shape
 ") Shape4;
-		const TopoDS_Shape & Shape4 ();
+		const TopoDS_Shape  Shape4 ();
 		%feature("autodoc", "	* Computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
 	:param aProjector:
@@ -10725,22 +10725,22 @@ class AIS_LengthDimension : public AIS_Dimension {
 
 	:rtype: gp_Pnt
 ") FirstPoint;
-		const gp_Pnt & FirstPoint ();
+		const gp_Pnt  FirstPoint ();
 		%feature("autodoc", "	* returns second attachement point.
 
 	:rtype: gp_Pnt
 ") SecondPoint;
-		const gp_Pnt & SecondPoint ();
+		const gp_Pnt  SecondPoint ();
 		%feature("autodoc", "	* returns first attachement shape.
 
 	:rtype: TopoDS_Shape
 ") FirstShape;
-		const TopoDS_Shape & FirstShape ();
+		const TopoDS_Shape  FirstShape ();
 		%feature("autodoc", "	* returns second attachement shape.
 
 	:rtype: TopoDS_Shape
 ") SecondShape;
-		const TopoDS_Shape & SecondShape ();
+		const TopoDS_Shape  SecondShape ();
 		%feature("autodoc", "	* Measure distance between two points. The dimension will become invalid if the new distance between attachement points is less than Precision::Confusion(). @param theFirstPoint [in] the first point. @param theSecondPoint [in] the second point. @param thePlane [in] the user-defined plane
 
 	:param theFirstPoint:
@@ -10857,7 +10857,7 @@ class AIS_MidPointRelation : public AIS_Relation {
 		void SetTool (const TopoDS_Shape & aMidPointTool);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") GetTool;
-		const TopoDS_Shape & GetTool ();
+		const TopoDS_Shape  GetTool ();
 		%feature("autodoc", "	* Computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
 	:param aProjector:
@@ -10957,7 +10957,7 @@ class AIS_MultipleConnectedShape : public AIS_MultipleConnectedInteractive {
 
 	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape ();
+		const TopoDS_Shape  Shape ();
 };
 
 
@@ -11337,17 +11337,17 @@ class AIS_RadiusDimension : public AIS_Dimension {
 
 	:rtype: gp_Circ
 ") Circle;
-		const gp_Circ & Circle ();
+		const gp_Circ  Circle ();
 		%feature("autodoc", "	* returns anchor point on circle for radius dimension.
 
 	:rtype: gp_Pnt
 ") AnchorPoint;
-		const gp_Pnt & AnchorPoint ();
+		const gp_Pnt  AnchorPoint ();
 		%feature("autodoc", "	* returns the measured shape.
 
 	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape ();
+		const TopoDS_Shape  Shape ();
 		%feature("autodoc", "	* Measure radius of the circle. The dimension will become invalid if the radius of the circle is less than Precision::Confusion(). @param theCircle [in] the circle to measure.
 
 	:param theCircle:
@@ -11448,7 +11448,7 @@ class AIS_SymmetricRelation : public AIS_Relation {
 
 	:rtype: TopoDS_Shape
 ") GetTool;
-		const TopoDS_Shape & GetTool ();
+		const TopoDS_Shape  GetTool ();
 		%feature("autodoc", "	* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 
 	:param aProjector:

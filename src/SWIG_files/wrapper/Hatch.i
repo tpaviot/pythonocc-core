@@ -148,7 +148,7 @@ class Hatch_Hatcher {
 	:type I: Standard_Integer
 	:rtype: gp_Lin2d
 ") Line;
-		const gp_Lin2d & Line (const Standard_Integer I);
+		const gp_Lin2d  Line (const Standard_Integer I);
 		%feature("autodoc", "	* Returns the type of the line of index <I>.
 
 	:param I:

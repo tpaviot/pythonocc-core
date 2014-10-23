@@ -934,7 +934,7 @@ class ShapeExtend_DataMapIteratorOfDataMapOfShapeListOfMsg : public TCollection_
 		void Initialize (const ShapeExtend_DataMapOfShapeListOfMsg & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: Message_ListOfMsg
 ") Value;
 		const Message_ListOfMsg & Value ();
@@ -1008,7 +1008,7 @@ class ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg : public TCollection_MapN
 		 ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg (const TopoDS_Shape & K,const Message_ListOfMsg & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: Message_ListOfMsg
 ") Value;
 		Message_ListOfMsg & Value ();

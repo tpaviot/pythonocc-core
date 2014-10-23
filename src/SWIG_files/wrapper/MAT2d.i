@@ -694,7 +694,7 @@ class MAT2d_DataMapIteratorOfDataMapOfIntegerPnt2d : public TCollection_BasicMap
 		const Standard_Integer & Key ();
 		%feature("autodoc", "	:rtype: gp_Pnt2d
 ") Value;
-		const gp_Pnt2d & Value ();
+		const gp_Pnt2d  Value ();
 };
 
 
@@ -772,7 +772,7 @@ class MAT2d_DataMapIteratorOfDataMapOfIntegerVec2d : public TCollection_BasicMap
 		const Standard_Integer & Key ();
 		%feature("autodoc", "	:rtype: gp_Vec2d
 ") Value;
-		const gp_Vec2d & Value ();
+		const gp_Vec2d  Value ();
 };
 
 
@@ -1143,7 +1143,7 @@ class MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d : public TCollection_MapNode {
             };
             		%feature("autodoc", "	:rtype: gp_Pnt2d
 ") Value;
-		gp_Pnt2d & Value ();
+		gp_Pnt2d  Value ();
 };
 
 
@@ -1311,7 +1311,7 @@ class MAT2d_DataMapNodeOfDataMapOfIntegerVec2d : public TCollection_MapNode {
             };
             		%feature("autodoc", "	:rtype: gp_Vec2d
 ") Value;
-		gp_Vec2d & Value ();
+		gp_Vec2d  Value ();
 };
 
 
@@ -1735,12 +1735,12 @@ class MAT2d_DataMapOfIntegerPnt2d : public TCollection_BasicMap {
 	:type K: Standard_Integer &
 	:rtype: gp_Pnt2d
 ") Find;
-		const gp_Pnt2d & Find (Standard_Integer &OutValue);
+		const gp_Pnt2d  Find (Standard_Integer &OutValue);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: gp_Pnt2d
 ") ChangeFind;
-		gp_Pnt2d & ChangeFind (Standard_Integer &OutValue);
+		gp_Pnt2d  ChangeFind (Standard_Integer &OutValue);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
@@ -1895,12 +1895,12 @@ class MAT2d_DataMapOfIntegerVec2d : public TCollection_BasicMap {
 	:type K: Standard_Integer &
 	:rtype: gp_Vec2d
 ") Find;
-		const gp_Vec2d & Find (Standard_Integer &OutValue);
+		const gp_Vec2d  Find (Standard_Integer &OutValue);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: gp_Vec2d
 ") ChangeFind;
-		gp_Vec2d & ChangeFind (Standard_Integer &OutValue);
+		gp_Vec2d  ChangeFind (Standard_Integer &OutValue);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
@@ -2810,14 +2810,14 @@ class MAT2d_Tool2d {
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt2d
 ") GeomPnt;
-		const gp_Pnt2d & GeomPnt (const Standard_Integer Index);
+		const gp_Pnt2d  GeomPnt (const Standard_Integer Index);
 		%feature("autodoc", "	* Returns the vector of index <Index> in the  <theGeomVecs>.
 
 	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_Vec2d
 ") GeomVec;
-		const gp_Vec2d & GeomVec (const Standard_Integer Index);
+		const gp_Vec2d  GeomVec (const Standard_Integer Index);
 		%feature("autodoc", "	* 
 
 	:rtype: Handle_MAT2d_Circuit

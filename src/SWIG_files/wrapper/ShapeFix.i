@@ -131,7 +131,7 @@ class ShapeFix_DataMapIteratorOfDataMapOfShapeBox2d : public TCollection_BasicMa
 		void Initialize (const ShapeFix_DataMapOfShapeBox2d & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: Bnd_Box2d
 ") Value;
 		const Bnd_Box2d & Value ();
@@ -166,7 +166,7 @@ class ShapeFix_DataMapNodeOfDataMapOfShapeBox2d : public TCollection_MapNode {
 		 ShapeFix_DataMapNodeOfDataMapOfShapeBox2d (const TopoDS_Shape & K,const Bnd_Box2d & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: Bnd_Box2d
 ") Value;
 		Bnd_Box2d & Value ();
@@ -746,17 +746,17 @@ class ShapeFix_FreeBounds {
 
 	:rtype: TopoDS_Compound
 ") GetClosedWires;
-		const TopoDS_Compound & GetClosedWires ();
+		const TopoDS_Compound  GetClosedWires ();
 		%feature("autodoc", "	* Returns compound of open wires out of free edges.
 
 	:rtype: TopoDS_Compound
 ") GetOpenWires;
-		const TopoDS_Compound & GetOpenWires ();
+		const TopoDS_Compound  GetOpenWires ();
 		%feature("autodoc", "	* Returns modified source shape.
 
 	:rtype: TopoDS_Shape
 ") GetShape;
-		const TopoDS_Shape & GetShape ();
+		const TopoDS_Shape  GetShape ();
 };
 
 
@@ -1528,7 +1528,7 @@ class ShapeFix_ComposeShell : public ShapeFix_Root {
 
 	:rtype: TopoDS_Shape
 ") Result;
-		const TopoDS_Shape & Result ();
+		const TopoDS_Shape  Result ();
 		%feature("autodoc", "	* Queries status of last call to Perform() OK : nothing done (some kind of error) DONE1: splitting is done, at least one new face created DONE2: splitting is done, several new faces obtained FAIL1: misoriented wire encountered (handled) FAIL2: recoverable parity error FAIL3: edge with no pcurve on supporting face FAIL4: unrecoverable algorithm error (parity check)
 
 	:param status:
@@ -2924,7 +2924,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
 
 	:rtype: TopoDS_Face
 ") Face;
-		const TopoDS_Face & Face ();
+		const TopoDS_Face  Face ();
 
             %feature("autodoc","1");
             %extend {

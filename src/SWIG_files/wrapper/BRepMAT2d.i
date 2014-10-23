@@ -139,7 +139,7 @@ class BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape : public TCollection_Bas
 		const Handle_MAT_BasicElt & Key ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Value;
-		const TopoDS_Shape & Value ();
+		const TopoDS_Shape  Value ();
 };
 
 
@@ -175,7 +175,7 @@ class BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt : public TColl
 		void Initialize (const BRepMAT2d_DataMapOfShapeSequenceOfBasicElt & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: BRepMAT2d_SequenceOfBasicElt
 ") Value;
 		const BRepMAT2d_SequenceOfBasicElt & Value ();
@@ -213,7 +213,7 @@ class BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape : public TCollection_MapNode
 		Handle_MAT_BasicElt & Key ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Value;
-		TopoDS_Shape & Value ();
+		TopoDS_Shape  Value ();
 };
 
 
@@ -284,7 +284,7 @@ class BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt : public TCollecti
 		 BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt (const TopoDS_Shape & K,const BRepMAT2d_SequenceOfBasicElt & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: BRepMAT2d_SequenceOfBasicElt
 ") Value;
 		BRepMAT2d_SequenceOfBasicElt & Value ();
@@ -391,12 +391,12 @@ class BRepMAT2d_DataMapOfBasicEltShape : public TCollection_BasicMap {
 	:type K: Handle_MAT_BasicElt &
 	:rtype: TopoDS_Shape
 ") Find;
-		const TopoDS_Shape & Find (const Handle_MAT_BasicElt & K);
+		const TopoDS_Shape  Find (const Handle_MAT_BasicElt & K);
 		%feature("autodoc", "	:param K:
 	:type K: Handle_MAT_BasicElt &
 	:rtype: TopoDS_Shape
 ") ChangeFind;
-		TopoDS_Shape & ChangeFind (const Handle_MAT_BasicElt & K);
+		TopoDS_Shape  ChangeFind (const Handle_MAT_BasicElt & K);
 		%feature("autodoc", "	:param K:
 	:type K: Handle_MAT_BasicElt &
 	:rtype: Standard_Address

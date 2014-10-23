@@ -891,7 +891,7 @@ class IntCurve_PConic {
 		GeomAbs_CurveType TypeCurve ();
 		%feature("autodoc", "	:rtype: gp_Ax22d
 ") Axis2;
-		const gp_Ax22d & Axis2 ();
+		const gp_Ax22d  Axis2 ();
 		%feature("autodoc", "	:rtype: float
 ") Param1;
 		Standard_Real Param1 ();

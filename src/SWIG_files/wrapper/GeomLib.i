@@ -348,12 +348,12 @@ class GeomLib_Array1OfMat {
 	:type Index: Standard_Integer
 	:rtype: gp_Mat
 ") Value;
-		const gp_Mat & Value (const Standard_Integer Index);
+		const gp_Mat  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_Mat
 ") ChangeValue;
-		gp_Mat & ChangeValue (const Standard_Integer Index);
+		gp_Mat  ChangeValue (const Standard_Integer Index);
 };
 
 
@@ -584,7 +584,7 @@ class GeomLib_IsPlanarSurface {
 
 	:rtype: gp_Pln
 ") Plan;
-		const gp_Pln & Plan ();
+		const gp_Pln  Plan ();
 };
 
 

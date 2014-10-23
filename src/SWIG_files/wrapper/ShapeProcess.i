@@ -746,12 +746,12 @@ class ShapeProcess_ShapeContext : public ShapeProcess_Context {
 
 	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape ();
+		const TopoDS_Shape  Shape ();
 		%feature("autodoc", "	* Returns current result
 
 	:rtype: TopoDS_Shape
 ") Result;
-		const TopoDS_Shape & Result ();
+		const TopoDS_Shape  Result ();
 		%feature("autodoc", "	* Returns map of replacements shape -> shape This map is not recursive
 
 	:rtype: TopTools_DataMapOfShapeShape

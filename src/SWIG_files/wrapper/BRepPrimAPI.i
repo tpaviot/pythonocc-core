@@ -104,7 +104,7 @@ class BRepPrimAPI_MakeBox : public BRepBuilderAPI_MakeShape {
 
 	:rtype: TopoDS_Shell
 ") Shell;
-		const TopoDS_Shell & Shell ();
+		const TopoDS_Shell  Shell ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Shell;
 		 operator TopoDS_Shell ();
@@ -112,7 +112,7 @@ class BRepPrimAPI_MakeBox : public BRepBuilderAPI_MakeShape {
 
 	:rtype: TopoDS_Solid
 ") Solid;
-		const TopoDS_Solid & Solid ();
+		const TopoDS_Solid  Solid ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Solid;
 		 operator TopoDS_Solid ();
@@ -120,32 +120,32 @@ class BRepPrimAPI_MakeBox : public BRepBuilderAPI_MakeShape {
 
 	:rtype: TopoDS_Face
 ") BottomFace;
-		const TopoDS_Face & BottomFace ();
+		const TopoDS_Face  BottomFace ();
 		%feature("autodoc", "	* Returns XMin face
 
 	:rtype: TopoDS_Face
 ") BackFace;
-		const TopoDS_Face & BackFace ();
+		const TopoDS_Face  BackFace ();
 		%feature("autodoc", "	* Returns XMax face
 
 	:rtype: TopoDS_Face
 ") FrontFace;
-		const TopoDS_Face & FrontFace ();
+		const TopoDS_Face  FrontFace ();
 		%feature("autodoc", "	* Returns YMin face
 
 	:rtype: TopoDS_Face
 ") LeftFace;
-		const TopoDS_Face & LeftFace ();
+		const TopoDS_Face  LeftFace ();
 		%feature("autodoc", "	* Returns YMax face
 
 	:rtype: TopoDS_Face
 ") RightFace;
-		const TopoDS_Face & RightFace ();
+		const TopoDS_Face  RightFace ();
 		%feature("autodoc", "	* Returns ZMax face
 
 	:rtype: TopoDS_Face
 ") TopFace;
-		const TopoDS_Face & TopFace ();
+		const TopoDS_Face  TopFace ();
 };
 
 
@@ -188,7 +188,7 @@ class BRepPrimAPI_MakeHalfSpace : public BRepBuilderAPI_MakeShape {
 
 	:rtype: TopoDS_Solid
 ") Solid;
-		const TopoDS_Solid & Solid ();
+		const TopoDS_Solid  Solid ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Solid;
 		 operator TopoDS_Solid ();
@@ -226,7 +226,7 @@ class BRepPrimAPI_MakeOneAxis : public BRepBuilderAPI_MakeShape {
 
 	:rtype: TopoDS_Face
 ") Face;
-		const TopoDS_Face & Face ();
+		const TopoDS_Face  Face ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Face;
 		 operator TopoDS_Face ();
@@ -234,7 +234,7 @@ class BRepPrimAPI_MakeOneAxis : public BRepBuilderAPI_MakeShape {
 
 	:rtype: TopoDS_Shell
 ") Shell;
-		const TopoDS_Shell & Shell ();
+		const TopoDS_Shell  Shell ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Shell;
 		 operator TopoDS_Shell ();
@@ -242,7 +242,7 @@ class BRepPrimAPI_MakeOneAxis : public BRepBuilderAPI_MakeShape {
 
 	:rtype: TopoDS_Solid
 ") Solid;
-		const TopoDS_Solid & Solid ();
+		const TopoDS_Solid  Solid ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Solid;
 		 operator TopoDS_Solid ();
@@ -378,7 +378,7 @@ class BRepPrimAPI_MakeWedge : public BRepBuilderAPI_MakeShape {
 
 	:rtype: TopoDS_Shell
 ") Shell;
-		const TopoDS_Shell & Shell ();
+		const TopoDS_Shell  Shell ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Shell;
 		 operator TopoDS_Shell ();
@@ -386,7 +386,7 @@ class BRepPrimAPI_MakeWedge : public BRepBuilderAPI_MakeShape {
 
 	:rtype: TopoDS_Solid
 ") Solid;
-		const TopoDS_Solid & Solid ();
+		const TopoDS_Solid  Solid ();
 		%feature("autodoc", "	:rtype: 
 ") operatorTopoDS_Solid;
 		 operator TopoDS_Solid ();

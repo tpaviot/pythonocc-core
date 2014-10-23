@@ -101,12 +101,12 @@ class TColgp_Array1OfCirc2d {
 	:type Index: Standard_Integer
 	:rtype: gp_Circ2d
 ") Value;
-		const gp_Circ2d & Value (const Standard_Integer Index);
+		const gp_Circ2d  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_Circ2d
 ") ChangeValue;
-		gp_Circ2d & ChangeValue (const Standard_Integer Index);
+		gp_Circ2d  ChangeValue (const Standard_Integer Index);
 };
 
 
@@ -184,12 +184,12 @@ class TColgp_Array1OfDir {
 	:type Index: Standard_Integer
 	:rtype: gp_Dir
 ") Value;
-		const gp_Dir & Value (const Standard_Integer Index);
+		const gp_Dir  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_Dir
 ") ChangeValue;
-		gp_Dir & ChangeValue (const Standard_Integer Index);
+		gp_Dir  ChangeValue (const Standard_Integer Index);
 };
 
 
@@ -267,12 +267,12 @@ class TColgp_Array1OfDir2d {
 	:type Index: Standard_Integer
 	:rtype: gp_Dir2d
 ") Value;
-		const gp_Dir2d & Value (const Standard_Integer Index);
+		const gp_Dir2d  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_Dir2d
 ") ChangeValue;
-		gp_Dir2d & ChangeValue (const Standard_Integer Index);
+		gp_Dir2d  ChangeValue (const Standard_Integer Index);
 };
 
 
@@ -350,12 +350,12 @@ class TColgp_Array1OfLin2d {
 	:type Index: Standard_Integer
 	:rtype: gp_Lin2d
 ") Value;
-		const gp_Lin2d & Value (const Standard_Integer Index);
+		const gp_Lin2d  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_Lin2d
 ") ChangeValue;
-		gp_Lin2d & ChangeValue (const Standard_Integer Index);
+		gp_Lin2d  ChangeValue (const Standard_Integer Index);
 };
 
 
@@ -433,12 +433,12 @@ class TColgp_Array1OfPnt {
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt
 ") Value;
-		const gp_Pnt & Value (const Standard_Integer Index);
+		const gp_Pnt  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt
 ") ChangeValue;
-		gp_Pnt & ChangeValue (const Standard_Integer Index);
+		gp_Pnt  ChangeValue (const Standard_Integer Index);
 };
 
 
@@ -516,12 +516,12 @@ class TColgp_Array1OfPnt2d {
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt2d
 ") Value;
-		const gp_Pnt2d & Value (const Standard_Integer Index);
+		const gp_Pnt2d  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt2d
 ") ChangeValue;
-		gp_Pnt2d & ChangeValue (const Standard_Integer Index);
+		gp_Pnt2d  ChangeValue (const Standard_Integer Index);
 };
 
 
@@ -599,12 +599,12 @@ class TColgp_Array1OfVec {
 	:type Index: Standard_Integer
 	:rtype: gp_Vec
 ") Value;
-		const gp_Vec & Value (const Standard_Integer Index);
+		const gp_Vec  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_Vec
 ") ChangeValue;
-		gp_Vec & ChangeValue (const Standard_Integer Index);
+		gp_Vec  ChangeValue (const Standard_Integer Index);
 };
 
 
@@ -682,12 +682,12 @@ class TColgp_Array1OfVec2d {
 	:type Index: Standard_Integer
 	:rtype: gp_Vec2d
 ") Value;
-		const gp_Vec2d & Value (const Standard_Integer Index);
+		const gp_Vec2d  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_Vec2d
 ") ChangeValue;
-		gp_Vec2d & ChangeValue (const Standard_Integer Index);
+		gp_Vec2d  ChangeValue (const Standard_Integer Index);
 };
 
 
@@ -765,12 +765,12 @@ class TColgp_Array1OfXY {
 	:type Index: Standard_Integer
 	:rtype: gp_XY
 ") Value;
-		const gp_XY & Value (const Standard_Integer Index);
+		const gp_XY  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_XY
 ") ChangeValue;
-		gp_XY & ChangeValue (const Standard_Integer Index);
+		gp_XY  ChangeValue (const Standard_Integer Index);
 };
 
 
@@ -848,12 +848,12 @@ class TColgp_Array1OfXYZ {
 	:type Index: Standard_Integer
 	:rtype: gp_XYZ
 ") Value;
-		const gp_XYZ & Value (const Standard_Integer Index);
+		const gp_XYZ  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_XYZ
 ") ChangeValue;
-		gp_XYZ & ChangeValue (const Standard_Integer Index);
+		gp_XYZ  ChangeValue (const Standard_Integer Index);
 };
 
 
@@ -949,14 +949,14 @@ class TColgp_Array2OfCirc2d {
 	:type Col: Standard_Integer
 	:rtype: gp_Circ2d
 ") Value;
-		const gp_Circ2d & Value (const Standard_Integer Row,const Standard_Integer Col);
+		const gp_Circ2d  Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:param Row:
 	:type Row: Standard_Integer
 	:param Col:
 	:type Col: Standard_Integer
 	:rtype: gp_Circ2d
 ") ChangeValue;
-		gp_Circ2d & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
+		gp_Circ2d  ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 };
 
 
@@ -1052,14 +1052,14 @@ class TColgp_Array2OfDir {
 	:type Col: Standard_Integer
 	:rtype: gp_Dir
 ") Value;
-		const gp_Dir & Value (const Standard_Integer Row,const Standard_Integer Col);
+		const gp_Dir  Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:param Row:
 	:type Row: Standard_Integer
 	:param Col:
 	:type Col: Standard_Integer
 	:rtype: gp_Dir
 ") ChangeValue;
-		gp_Dir & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
+		gp_Dir  ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 };
 
 
@@ -1155,14 +1155,14 @@ class TColgp_Array2OfDir2d {
 	:type Col: Standard_Integer
 	:rtype: gp_Dir2d
 ") Value;
-		const gp_Dir2d & Value (const Standard_Integer Row,const Standard_Integer Col);
+		const gp_Dir2d  Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:param Row:
 	:type Row: Standard_Integer
 	:param Col:
 	:type Col: Standard_Integer
 	:rtype: gp_Dir2d
 ") ChangeValue;
-		gp_Dir2d & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
+		gp_Dir2d  ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 };
 
 
@@ -1258,14 +1258,14 @@ class TColgp_Array2OfLin2d {
 	:type Col: Standard_Integer
 	:rtype: gp_Lin2d
 ") Value;
-		const gp_Lin2d & Value (const Standard_Integer Row,const Standard_Integer Col);
+		const gp_Lin2d  Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:param Row:
 	:type Row: Standard_Integer
 	:param Col:
 	:type Col: Standard_Integer
 	:rtype: gp_Lin2d
 ") ChangeValue;
-		gp_Lin2d & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
+		gp_Lin2d  ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 };
 
 
@@ -1361,14 +1361,14 @@ class TColgp_Array2OfPnt {
 	:type Col: Standard_Integer
 	:rtype: gp_Pnt
 ") Value;
-		const gp_Pnt & Value (const Standard_Integer Row,const Standard_Integer Col);
+		const gp_Pnt  Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:param Row:
 	:type Row: Standard_Integer
 	:param Col:
 	:type Col: Standard_Integer
 	:rtype: gp_Pnt
 ") ChangeValue;
-		gp_Pnt & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
+		gp_Pnt  ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 };
 
 
@@ -1464,14 +1464,14 @@ class TColgp_Array2OfPnt2d {
 	:type Col: Standard_Integer
 	:rtype: gp_Pnt2d
 ") Value;
-		const gp_Pnt2d & Value (const Standard_Integer Row,const Standard_Integer Col);
+		const gp_Pnt2d  Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:param Row:
 	:type Row: Standard_Integer
 	:param Col:
 	:type Col: Standard_Integer
 	:rtype: gp_Pnt2d
 ") ChangeValue;
-		gp_Pnt2d & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
+		gp_Pnt2d  ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 };
 
 
@@ -1567,14 +1567,14 @@ class TColgp_Array2OfVec {
 	:type Col: Standard_Integer
 	:rtype: gp_Vec
 ") Value;
-		const gp_Vec & Value (const Standard_Integer Row,const Standard_Integer Col);
+		const gp_Vec  Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:param Row:
 	:type Row: Standard_Integer
 	:param Col:
 	:type Col: Standard_Integer
 	:rtype: gp_Vec
 ") ChangeValue;
-		gp_Vec & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
+		gp_Vec  ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 };
 
 
@@ -1670,14 +1670,14 @@ class TColgp_Array2OfVec2d {
 	:type Col: Standard_Integer
 	:rtype: gp_Vec2d
 ") Value;
-		const gp_Vec2d & Value (const Standard_Integer Row,const Standard_Integer Col);
+		const gp_Vec2d  Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:param Row:
 	:type Row: Standard_Integer
 	:param Col:
 	:type Col: Standard_Integer
 	:rtype: gp_Vec2d
 ") ChangeValue;
-		gp_Vec2d & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
+		gp_Vec2d  ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 };
 
 
@@ -1773,14 +1773,14 @@ class TColgp_Array2OfXY {
 	:type Col: Standard_Integer
 	:rtype: gp_XY
 ") Value;
-		const gp_XY & Value (const Standard_Integer Row,const Standard_Integer Col);
+		const gp_XY  Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:param Row:
 	:type Row: Standard_Integer
 	:param Col:
 	:type Col: Standard_Integer
 	:rtype: gp_XY
 ") ChangeValue;
-		gp_XY & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
+		gp_XY  ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 };
 
 
@@ -1876,14 +1876,14 @@ class TColgp_Array2OfXYZ {
 	:type Col: Standard_Integer
 	:rtype: gp_XYZ
 ") Value;
-		const gp_XYZ & Value (const Standard_Integer Row,const Standard_Integer Col);
+		const gp_XYZ  Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:param Row:
 	:type Row: Standard_Integer
 	:param Col:
 	:type Col: Standard_Integer
 	:rtype: gp_XYZ
 ") ChangeValue;
-		gp_XYZ & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
+		gp_XYZ  ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 };
 
 
@@ -1922,7 +1922,7 @@ class TColgp_DataMapIteratorOfDataMapOfIntegerCirc2d : public TCollection_BasicM
 		const Standard_Integer & Key ();
 		%feature("autodoc", "	:rtype: gp_Circ2d
 ") Value;
-		const gp_Circ2d & Value ();
+		const gp_Circ2d  Value ();
 };
 
 
@@ -1967,7 +1967,7 @@ class TColgp_DataMapNodeOfDataMapOfIntegerCirc2d : public TCollection_MapNode {
             };
             		%feature("autodoc", "	:rtype: gp_Circ2d
 ") Value;
-		gp_Circ2d & Value ();
+		gp_Circ2d  Value ();
 };
 
 
@@ -2071,12 +2071,12 @@ class TColgp_DataMapOfIntegerCirc2d : public TCollection_BasicMap {
 	:type K: Standard_Integer &
 	:rtype: gp_Circ2d
 ") Find;
-		const gp_Circ2d & Find (Standard_Integer &OutValue);
+		const gp_Circ2d  Find (Standard_Integer &OutValue);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: gp_Circ2d
 ") ChangeFind;
-		gp_Circ2d & ChangeFind (Standard_Integer &OutValue);
+		gp_Circ2d  ChangeFind (Standard_Integer &OutValue);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
@@ -2148,12 +2148,12 @@ class TColgp_HArray1OfCirc2d : public MMgt_TShared {
 	:type Index: Standard_Integer
 	:rtype: gp_Circ2d
 ") Value;
-		const gp_Circ2d & Value (const Standard_Integer Index);
+		const gp_Circ2d  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_Circ2d
 ") ChangeValue;
-		gp_Circ2d & ChangeValue (const Standard_Integer Index);
+		gp_Circ2d  ChangeValue (const Standard_Integer Index);
 		%feature("autodoc", "	:rtype: TColgp_Array1OfCirc2d
 ") Array1;
 		const TColgp_Array1OfCirc2d & Array1 ();
@@ -2260,12 +2260,12 @@ class TColgp_HArray1OfDir : public MMgt_TShared {
 	:type Index: Standard_Integer
 	:rtype: gp_Dir
 ") Value;
-		const gp_Dir & Value (const Standard_Integer Index);
+		const gp_Dir  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_Dir
 ") ChangeValue;
-		gp_Dir & ChangeValue (const Standard_Integer Index);
+		gp_Dir  ChangeValue (const Standard_Integer Index);
 		%feature("autodoc", "	:rtype: TColgp_Array1OfDir
 ") Array1;
 		const TColgp_Array1OfDir & Array1 ();
@@ -2372,12 +2372,12 @@ class TColgp_HArray1OfDir2d : public MMgt_TShared {
 	:type Index: Standard_Integer
 	:rtype: gp_Dir2d
 ") Value;
-		const gp_Dir2d & Value (const Standard_Integer Index);
+		const gp_Dir2d  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_Dir2d
 ") ChangeValue;
-		gp_Dir2d & ChangeValue (const Standard_Integer Index);
+		gp_Dir2d  ChangeValue (const Standard_Integer Index);
 		%feature("autodoc", "	:rtype: TColgp_Array1OfDir2d
 ") Array1;
 		const TColgp_Array1OfDir2d & Array1 ();
@@ -2484,12 +2484,12 @@ class TColgp_HArray1OfLin2d : public MMgt_TShared {
 	:type Index: Standard_Integer
 	:rtype: gp_Lin2d
 ") Value;
-		const gp_Lin2d & Value (const Standard_Integer Index);
+		const gp_Lin2d  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_Lin2d
 ") ChangeValue;
-		gp_Lin2d & ChangeValue (const Standard_Integer Index);
+		gp_Lin2d  ChangeValue (const Standard_Integer Index);
 		%feature("autodoc", "	:rtype: TColgp_Array1OfLin2d
 ") Array1;
 		const TColgp_Array1OfLin2d & Array1 ();
@@ -2596,12 +2596,12 @@ class TColgp_HArray1OfPnt : public MMgt_TShared {
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt
 ") Value;
-		const gp_Pnt & Value (const Standard_Integer Index);
+		const gp_Pnt  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt
 ") ChangeValue;
-		gp_Pnt & ChangeValue (const Standard_Integer Index);
+		gp_Pnt  ChangeValue (const Standard_Integer Index);
 		%feature("autodoc", "	:rtype: TColgp_Array1OfPnt
 ") Array1;
 		const TColgp_Array1OfPnt & Array1 ();
@@ -2708,12 +2708,12 @@ class TColgp_HArray1OfPnt2d : public MMgt_TShared {
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt2d
 ") Value;
-		const gp_Pnt2d & Value (const Standard_Integer Index);
+		const gp_Pnt2d  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt2d
 ") ChangeValue;
-		gp_Pnt2d & ChangeValue (const Standard_Integer Index);
+		gp_Pnt2d  ChangeValue (const Standard_Integer Index);
 		%feature("autodoc", "	:rtype: TColgp_Array1OfPnt2d
 ") Array1;
 		const TColgp_Array1OfPnt2d & Array1 ();
@@ -2820,12 +2820,12 @@ class TColgp_HArray1OfVec : public MMgt_TShared {
 	:type Index: Standard_Integer
 	:rtype: gp_Vec
 ") Value;
-		const gp_Vec & Value (const Standard_Integer Index);
+		const gp_Vec  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_Vec
 ") ChangeValue;
-		gp_Vec & ChangeValue (const Standard_Integer Index);
+		gp_Vec  ChangeValue (const Standard_Integer Index);
 		%feature("autodoc", "	:rtype: TColgp_Array1OfVec
 ") Array1;
 		const TColgp_Array1OfVec & Array1 ();
@@ -2932,12 +2932,12 @@ class TColgp_HArray1OfVec2d : public MMgt_TShared {
 	:type Index: Standard_Integer
 	:rtype: gp_Vec2d
 ") Value;
-		const gp_Vec2d & Value (const Standard_Integer Index);
+		const gp_Vec2d  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_Vec2d
 ") ChangeValue;
-		gp_Vec2d & ChangeValue (const Standard_Integer Index);
+		gp_Vec2d  ChangeValue (const Standard_Integer Index);
 		%feature("autodoc", "	:rtype: TColgp_Array1OfVec2d
 ") Array1;
 		const TColgp_Array1OfVec2d & Array1 ();
@@ -3044,12 +3044,12 @@ class TColgp_HArray1OfXY : public MMgt_TShared {
 	:type Index: Standard_Integer
 	:rtype: gp_XY
 ") Value;
-		const gp_XY & Value (const Standard_Integer Index);
+		const gp_XY  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_XY
 ") ChangeValue;
-		gp_XY & ChangeValue (const Standard_Integer Index);
+		gp_XY  ChangeValue (const Standard_Integer Index);
 		%feature("autodoc", "	:rtype: TColgp_Array1OfXY
 ") Array1;
 		const TColgp_Array1OfXY & Array1 ();
@@ -3156,12 +3156,12 @@ class TColgp_HArray1OfXYZ : public MMgt_TShared {
 	:type Index: Standard_Integer
 	:rtype: gp_XYZ
 ") Value;
-		const gp_XYZ & Value (const Standard_Integer Index);
+		const gp_XYZ  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_XYZ
 ") ChangeValue;
-		gp_XYZ & ChangeValue (const Standard_Integer Index);
+		gp_XYZ  ChangeValue (const Standard_Integer Index);
 		%feature("autodoc", "	:rtype: TColgp_Array1OfXYZ
 ") Array1;
 		const TColgp_Array1OfXYZ & Array1 ();
@@ -3289,14 +3289,14 @@ class TColgp_HArray2OfCirc2d : public MMgt_TShared {
 	:type Col: Standard_Integer
 	:rtype: gp_Circ2d
 ") Value;
-		const gp_Circ2d & Value (const Standard_Integer Row,const Standard_Integer Col);
+		const gp_Circ2d  Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:param Row:
 	:type Row: Standard_Integer
 	:param Col:
 	:type Col: Standard_Integer
 	:rtype: gp_Circ2d
 ") ChangeValue;
-		gp_Circ2d & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
+		gp_Circ2d  ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:rtype: TColgp_Array2OfCirc2d
 ") Array2;
 		const TColgp_Array2OfCirc2d & Array2 ();
@@ -3424,14 +3424,14 @@ class TColgp_HArray2OfDir : public MMgt_TShared {
 	:type Col: Standard_Integer
 	:rtype: gp_Dir
 ") Value;
-		const gp_Dir & Value (const Standard_Integer Row,const Standard_Integer Col);
+		const gp_Dir  Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:param Row:
 	:type Row: Standard_Integer
 	:param Col:
 	:type Col: Standard_Integer
 	:rtype: gp_Dir
 ") ChangeValue;
-		gp_Dir & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
+		gp_Dir  ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:rtype: TColgp_Array2OfDir
 ") Array2;
 		const TColgp_Array2OfDir & Array2 ();
@@ -3559,14 +3559,14 @@ class TColgp_HArray2OfDir2d : public MMgt_TShared {
 	:type Col: Standard_Integer
 	:rtype: gp_Dir2d
 ") Value;
-		const gp_Dir2d & Value (const Standard_Integer Row,const Standard_Integer Col);
+		const gp_Dir2d  Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:param Row:
 	:type Row: Standard_Integer
 	:param Col:
 	:type Col: Standard_Integer
 	:rtype: gp_Dir2d
 ") ChangeValue;
-		gp_Dir2d & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
+		gp_Dir2d  ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:rtype: TColgp_Array2OfDir2d
 ") Array2;
 		const TColgp_Array2OfDir2d & Array2 ();
@@ -3694,14 +3694,14 @@ class TColgp_HArray2OfLin2d : public MMgt_TShared {
 	:type Col: Standard_Integer
 	:rtype: gp_Lin2d
 ") Value;
-		const gp_Lin2d & Value (const Standard_Integer Row,const Standard_Integer Col);
+		const gp_Lin2d  Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:param Row:
 	:type Row: Standard_Integer
 	:param Col:
 	:type Col: Standard_Integer
 	:rtype: gp_Lin2d
 ") ChangeValue;
-		gp_Lin2d & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
+		gp_Lin2d  ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:rtype: TColgp_Array2OfLin2d
 ") Array2;
 		const TColgp_Array2OfLin2d & Array2 ();
@@ -3829,14 +3829,14 @@ class TColgp_HArray2OfPnt : public MMgt_TShared {
 	:type Col: Standard_Integer
 	:rtype: gp_Pnt
 ") Value;
-		const gp_Pnt & Value (const Standard_Integer Row,const Standard_Integer Col);
+		const gp_Pnt  Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:param Row:
 	:type Row: Standard_Integer
 	:param Col:
 	:type Col: Standard_Integer
 	:rtype: gp_Pnt
 ") ChangeValue;
-		gp_Pnt & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
+		gp_Pnt  ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:rtype: TColgp_Array2OfPnt
 ") Array2;
 		const TColgp_Array2OfPnt & Array2 ();
@@ -3964,14 +3964,14 @@ class TColgp_HArray2OfPnt2d : public MMgt_TShared {
 	:type Col: Standard_Integer
 	:rtype: gp_Pnt2d
 ") Value;
-		const gp_Pnt2d & Value (const Standard_Integer Row,const Standard_Integer Col);
+		const gp_Pnt2d  Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:param Row:
 	:type Row: Standard_Integer
 	:param Col:
 	:type Col: Standard_Integer
 	:rtype: gp_Pnt2d
 ") ChangeValue;
-		gp_Pnt2d & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
+		gp_Pnt2d  ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:rtype: TColgp_Array2OfPnt2d
 ") Array2;
 		const TColgp_Array2OfPnt2d & Array2 ();
@@ -4099,14 +4099,14 @@ class TColgp_HArray2OfVec : public MMgt_TShared {
 	:type Col: Standard_Integer
 	:rtype: gp_Vec
 ") Value;
-		const gp_Vec & Value (const Standard_Integer Row,const Standard_Integer Col);
+		const gp_Vec  Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:param Row:
 	:type Row: Standard_Integer
 	:param Col:
 	:type Col: Standard_Integer
 	:rtype: gp_Vec
 ") ChangeValue;
-		gp_Vec & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
+		gp_Vec  ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:rtype: TColgp_Array2OfVec
 ") Array2;
 		const TColgp_Array2OfVec & Array2 ();
@@ -4234,14 +4234,14 @@ class TColgp_HArray2OfVec2d : public MMgt_TShared {
 	:type Col: Standard_Integer
 	:rtype: gp_Vec2d
 ") Value;
-		const gp_Vec2d & Value (const Standard_Integer Row,const Standard_Integer Col);
+		const gp_Vec2d  Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:param Row:
 	:type Row: Standard_Integer
 	:param Col:
 	:type Col: Standard_Integer
 	:rtype: gp_Vec2d
 ") ChangeValue;
-		gp_Vec2d & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
+		gp_Vec2d  ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:rtype: TColgp_Array2OfVec2d
 ") Array2;
 		const TColgp_Array2OfVec2d & Array2 ();
@@ -4369,14 +4369,14 @@ class TColgp_HArray2OfXY : public MMgt_TShared {
 	:type Col: Standard_Integer
 	:rtype: gp_XY
 ") Value;
-		const gp_XY & Value (const Standard_Integer Row,const Standard_Integer Col);
+		const gp_XY  Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:param Row:
 	:type Row: Standard_Integer
 	:param Col:
 	:type Col: Standard_Integer
 	:rtype: gp_XY
 ") ChangeValue;
-		gp_XY & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
+		gp_XY  ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:rtype: TColgp_Array2OfXY
 ") Array2;
 		const TColgp_Array2OfXY & Array2 ();
@@ -4504,14 +4504,14 @@ class TColgp_HArray2OfXYZ : public MMgt_TShared {
 	:type Col: Standard_Integer
 	:rtype: gp_XYZ
 ") Value;
-		const gp_XYZ & Value (const Standard_Integer Row,const Standard_Integer Col);
+		const gp_XYZ  Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:param Row:
 	:type Row: Standard_Integer
 	:param Col:
 	:type Col: Standard_Integer
 	:rtype: gp_XYZ
 ") ChangeValue;
-		gp_XYZ & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
+		gp_XYZ  ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:rtype: TColgp_Array2OfXYZ
 ") Array2;
 		const TColgp_Array2OfXYZ & Array2 ();
@@ -4663,12 +4663,12 @@ class TColgp_HSequenceOfDir : public MMgt_TShared {
 	:type anIndex: Standard_Integer
 	:rtype: gp_Dir
 ") Value;
-		const gp_Dir & Value (const Standard_Integer anIndex);
+		const gp_Dir  Value (const Standard_Integer anIndex);
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: Standard_Integer
 	:rtype: gp_Dir
 ") ChangeValue;
-		gp_Dir & ChangeValue (const Standard_Integer anIndex);
+		gp_Dir  ChangeValue (const Standard_Integer anIndex);
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: Standard_Integer
 	:rtype: None
@@ -4835,12 +4835,12 @@ class TColgp_HSequenceOfDir2d : public MMgt_TShared {
 	:type anIndex: Standard_Integer
 	:rtype: gp_Dir2d
 ") Value;
-		const gp_Dir2d & Value (const Standard_Integer anIndex);
+		const gp_Dir2d  Value (const Standard_Integer anIndex);
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: Standard_Integer
 	:rtype: gp_Dir2d
 ") ChangeValue;
-		gp_Dir2d & ChangeValue (const Standard_Integer anIndex);
+		gp_Dir2d  ChangeValue (const Standard_Integer anIndex);
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: Standard_Integer
 	:rtype: None
@@ -5007,12 +5007,12 @@ class TColgp_HSequenceOfPnt : public MMgt_TShared {
 	:type anIndex: Standard_Integer
 	:rtype: gp_Pnt
 ") Value;
-		const gp_Pnt & Value (const Standard_Integer anIndex);
+		const gp_Pnt  Value (const Standard_Integer anIndex);
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: Standard_Integer
 	:rtype: gp_Pnt
 ") ChangeValue;
-		gp_Pnt & ChangeValue (const Standard_Integer anIndex);
+		gp_Pnt  ChangeValue (const Standard_Integer anIndex);
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: Standard_Integer
 	:rtype: None
@@ -5179,12 +5179,12 @@ class TColgp_HSequenceOfPnt2d : public MMgt_TShared {
 	:type anIndex: Standard_Integer
 	:rtype: gp_Pnt2d
 ") Value;
-		const gp_Pnt2d & Value (const Standard_Integer anIndex);
+		const gp_Pnt2d  Value (const Standard_Integer anIndex);
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: Standard_Integer
 	:rtype: gp_Pnt2d
 ") ChangeValue;
-		gp_Pnt2d & ChangeValue (const Standard_Integer anIndex);
+		gp_Pnt2d  ChangeValue (const Standard_Integer anIndex);
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: Standard_Integer
 	:rtype: None
@@ -5351,12 +5351,12 @@ class TColgp_HSequenceOfVec : public MMgt_TShared {
 	:type anIndex: Standard_Integer
 	:rtype: gp_Vec
 ") Value;
-		const gp_Vec & Value (const Standard_Integer anIndex);
+		const gp_Vec  Value (const Standard_Integer anIndex);
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: Standard_Integer
 	:rtype: gp_Vec
 ") ChangeValue;
-		gp_Vec & ChangeValue (const Standard_Integer anIndex);
+		gp_Vec  ChangeValue (const Standard_Integer anIndex);
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: Standard_Integer
 	:rtype: None
@@ -5523,12 +5523,12 @@ class TColgp_HSequenceOfVec2d : public MMgt_TShared {
 	:type anIndex: Standard_Integer
 	:rtype: gp_Vec2d
 ") Value;
-		const gp_Vec2d & Value (const Standard_Integer anIndex);
+		const gp_Vec2d  Value (const Standard_Integer anIndex);
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: Standard_Integer
 	:rtype: gp_Vec2d
 ") ChangeValue;
-		gp_Vec2d & ChangeValue (const Standard_Integer anIndex);
+		gp_Vec2d  ChangeValue (const Standard_Integer anIndex);
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: Standard_Integer
 	:rtype: None
@@ -5695,12 +5695,12 @@ class TColgp_HSequenceOfXY : public MMgt_TShared {
 	:type anIndex: Standard_Integer
 	:rtype: gp_XY
 ") Value;
-		const gp_XY & Value (const Standard_Integer anIndex);
+		const gp_XY  Value (const Standard_Integer anIndex);
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: Standard_Integer
 	:rtype: gp_XY
 ") ChangeValue;
-		gp_XY & ChangeValue (const Standard_Integer anIndex);
+		gp_XY  ChangeValue (const Standard_Integer anIndex);
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: Standard_Integer
 	:rtype: None
@@ -5867,12 +5867,12 @@ class TColgp_HSequenceOfXYZ : public MMgt_TShared {
 	:type anIndex: Standard_Integer
 	:rtype: gp_XYZ
 ") Value;
-		const gp_XYZ & Value (const Standard_Integer anIndex);
+		const gp_XYZ  Value (const Standard_Integer anIndex);
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: Standard_Integer
 	:rtype: gp_XYZ
 ") ChangeValue;
-		gp_XYZ & ChangeValue (const Standard_Integer anIndex);
+		gp_XYZ  ChangeValue (const Standard_Integer anIndex);
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: Standard_Integer
 	:rtype: None
@@ -6035,7 +6035,7 @@ class TColgp_SequenceNodeOfSequenceOfDir : public TCollection_SeqNode {
 		 TColgp_SequenceNodeOfSequenceOfDir (const gp_Dir & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
 		%feature("autodoc", "	:rtype: gp_Dir
 ") Value;
-		gp_Dir & Value ();
+		gp_Dir  Value ();
 };
 
 
@@ -6106,7 +6106,7 @@ class TColgp_SequenceNodeOfSequenceOfDir2d : public TCollection_SeqNode {
 		 TColgp_SequenceNodeOfSequenceOfDir2d (const gp_Dir2d & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
 		%feature("autodoc", "	:rtype: gp_Dir2d
 ") Value;
-		gp_Dir2d & Value ();
+		gp_Dir2d  Value ();
 };
 
 
@@ -6177,7 +6177,7 @@ class TColgp_SequenceNodeOfSequenceOfPnt : public TCollection_SeqNode {
 		 TColgp_SequenceNodeOfSequenceOfPnt (const gp_Pnt & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") Value;
-		gp_Pnt & Value ();
+		gp_Pnt  Value ();
 };
 
 
@@ -6248,7 +6248,7 @@ class TColgp_SequenceNodeOfSequenceOfPnt2d : public TCollection_SeqNode {
 		 TColgp_SequenceNodeOfSequenceOfPnt2d (const gp_Pnt2d & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
 		%feature("autodoc", "	:rtype: gp_Pnt2d
 ") Value;
-		gp_Pnt2d & Value ();
+		gp_Pnt2d  Value ();
 };
 
 
@@ -6319,7 +6319,7 @@ class TColgp_SequenceNodeOfSequenceOfVec : public TCollection_SeqNode {
 		 TColgp_SequenceNodeOfSequenceOfVec (const gp_Vec & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
 		%feature("autodoc", "	:rtype: gp_Vec
 ") Value;
-		gp_Vec & Value ();
+		gp_Vec  Value ();
 };
 
 
@@ -6390,7 +6390,7 @@ class TColgp_SequenceNodeOfSequenceOfVec2d : public TCollection_SeqNode {
 		 TColgp_SequenceNodeOfSequenceOfVec2d (const gp_Vec2d & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
 		%feature("autodoc", "	:rtype: gp_Vec2d
 ") Value;
-		gp_Vec2d & Value ();
+		gp_Vec2d  Value ();
 };
 
 
@@ -6461,7 +6461,7 @@ class TColgp_SequenceNodeOfSequenceOfXY : public TCollection_SeqNode {
 		 TColgp_SequenceNodeOfSequenceOfXY (const gp_XY & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
 		%feature("autodoc", "	:rtype: gp_XY
 ") Value;
-		gp_XY & Value ();
+		gp_XY  Value ();
 };
 
 
@@ -6532,7 +6532,7 @@ class TColgp_SequenceNodeOfSequenceOfXYZ : public TCollection_SeqNode {
 		 TColgp_SequenceNodeOfSequenceOfXYZ (const gp_XYZ & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
 		%feature("autodoc", "	:rtype: gp_XYZ
 ") Value;
-		gp_XYZ & Value ();
+		gp_XYZ  Value ();
 };
 
 
@@ -6784,10 +6784,10 @@ class TColgp_SequenceOfDir : public TCollection_BaseSequence {
 		void InsertAfter (const Standard_Integer Index,TColgp_SequenceOfDir & S);
 		%feature("autodoc", "	:rtype: gp_Dir
 ") First;
-		const gp_Dir & First ();
+		const gp_Dir  First ();
 		%feature("autodoc", "	:rtype: gp_Dir
 ") Last;
-		const gp_Dir & Last ();
+		const gp_Dir  Last ();
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:param Sub:
@@ -6799,7 +6799,7 @@ class TColgp_SequenceOfDir : public TCollection_BaseSequence {
 	:type Index: Standard_Integer
 	:rtype: gp_Dir
 ") Value;
-		const gp_Dir & Value (const Standard_Integer Index);
+		const gp_Dir  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:param I:
@@ -6811,7 +6811,7 @@ class TColgp_SequenceOfDir : public TCollection_BaseSequence {
 	:type Index: Standard_Integer
 	:rtype: gp_Dir
 ") ChangeValue;
-		gp_Dir & ChangeValue (const Standard_Integer Index);
+		gp_Dir  ChangeValue (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: None
@@ -6910,10 +6910,10 @@ class TColgp_SequenceOfDir2d : public TCollection_BaseSequence {
 		void InsertAfter (const Standard_Integer Index,TColgp_SequenceOfDir2d & S);
 		%feature("autodoc", "	:rtype: gp_Dir2d
 ") First;
-		const gp_Dir2d & First ();
+		const gp_Dir2d  First ();
 		%feature("autodoc", "	:rtype: gp_Dir2d
 ") Last;
-		const gp_Dir2d & Last ();
+		const gp_Dir2d  Last ();
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:param Sub:
@@ -6925,7 +6925,7 @@ class TColgp_SequenceOfDir2d : public TCollection_BaseSequence {
 	:type Index: Standard_Integer
 	:rtype: gp_Dir2d
 ") Value;
-		const gp_Dir2d & Value (const Standard_Integer Index);
+		const gp_Dir2d  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:param I:
@@ -6937,7 +6937,7 @@ class TColgp_SequenceOfDir2d : public TCollection_BaseSequence {
 	:type Index: Standard_Integer
 	:rtype: gp_Dir2d
 ") ChangeValue;
-		gp_Dir2d & ChangeValue (const Standard_Integer Index);
+		gp_Dir2d  ChangeValue (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: None
@@ -7036,10 +7036,10 @@ class TColgp_SequenceOfPnt : public TCollection_BaseSequence {
 		void InsertAfter (const Standard_Integer Index,TColgp_SequenceOfPnt & S);
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") First;
-		const gp_Pnt & First ();
+		const gp_Pnt  First ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") Last;
-		const gp_Pnt & Last ();
+		const gp_Pnt  Last ();
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:param Sub:
@@ -7051,7 +7051,7 @@ class TColgp_SequenceOfPnt : public TCollection_BaseSequence {
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt
 ") Value;
-		const gp_Pnt & Value (const Standard_Integer Index);
+		const gp_Pnt  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:param I:
@@ -7063,7 +7063,7 @@ class TColgp_SequenceOfPnt : public TCollection_BaseSequence {
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt
 ") ChangeValue;
-		gp_Pnt & ChangeValue (const Standard_Integer Index);
+		gp_Pnt  ChangeValue (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: None
@@ -7162,10 +7162,10 @@ class TColgp_SequenceOfPnt2d : public TCollection_BaseSequence {
 		void InsertAfter (const Standard_Integer Index,TColgp_SequenceOfPnt2d & S);
 		%feature("autodoc", "	:rtype: gp_Pnt2d
 ") First;
-		const gp_Pnt2d & First ();
+		const gp_Pnt2d  First ();
 		%feature("autodoc", "	:rtype: gp_Pnt2d
 ") Last;
-		const gp_Pnt2d & Last ();
+		const gp_Pnt2d  Last ();
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:param Sub:
@@ -7177,7 +7177,7 @@ class TColgp_SequenceOfPnt2d : public TCollection_BaseSequence {
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt2d
 ") Value;
-		const gp_Pnt2d & Value (const Standard_Integer Index);
+		const gp_Pnt2d  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:param I:
@@ -7189,7 +7189,7 @@ class TColgp_SequenceOfPnt2d : public TCollection_BaseSequence {
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt2d
 ") ChangeValue;
-		gp_Pnt2d & ChangeValue (const Standard_Integer Index);
+		gp_Pnt2d  ChangeValue (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: None
@@ -7288,10 +7288,10 @@ class TColgp_SequenceOfVec : public TCollection_BaseSequence {
 		void InsertAfter (const Standard_Integer Index,TColgp_SequenceOfVec & S);
 		%feature("autodoc", "	:rtype: gp_Vec
 ") First;
-		const gp_Vec & First ();
+		const gp_Vec  First ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") Last;
-		const gp_Vec & Last ();
+		const gp_Vec  Last ();
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:param Sub:
@@ -7303,7 +7303,7 @@ class TColgp_SequenceOfVec : public TCollection_BaseSequence {
 	:type Index: Standard_Integer
 	:rtype: gp_Vec
 ") Value;
-		const gp_Vec & Value (const Standard_Integer Index);
+		const gp_Vec  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:param I:
@@ -7315,7 +7315,7 @@ class TColgp_SequenceOfVec : public TCollection_BaseSequence {
 	:type Index: Standard_Integer
 	:rtype: gp_Vec
 ") ChangeValue;
-		gp_Vec & ChangeValue (const Standard_Integer Index);
+		gp_Vec  ChangeValue (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: None
@@ -7414,10 +7414,10 @@ class TColgp_SequenceOfVec2d : public TCollection_BaseSequence {
 		void InsertAfter (const Standard_Integer Index,TColgp_SequenceOfVec2d & S);
 		%feature("autodoc", "	:rtype: gp_Vec2d
 ") First;
-		const gp_Vec2d & First ();
+		const gp_Vec2d  First ();
 		%feature("autodoc", "	:rtype: gp_Vec2d
 ") Last;
-		const gp_Vec2d & Last ();
+		const gp_Vec2d  Last ();
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:param Sub:
@@ -7429,7 +7429,7 @@ class TColgp_SequenceOfVec2d : public TCollection_BaseSequence {
 	:type Index: Standard_Integer
 	:rtype: gp_Vec2d
 ") Value;
-		const gp_Vec2d & Value (const Standard_Integer Index);
+		const gp_Vec2d  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:param I:
@@ -7441,7 +7441,7 @@ class TColgp_SequenceOfVec2d : public TCollection_BaseSequence {
 	:type Index: Standard_Integer
 	:rtype: gp_Vec2d
 ") ChangeValue;
-		gp_Vec2d & ChangeValue (const Standard_Integer Index);
+		gp_Vec2d  ChangeValue (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: None
@@ -7540,10 +7540,10 @@ class TColgp_SequenceOfXY : public TCollection_BaseSequence {
 		void InsertAfter (const Standard_Integer Index,TColgp_SequenceOfXY & S);
 		%feature("autodoc", "	:rtype: gp_XY
 ") First;
-		const gp_XY & First ();
+		const gp_XY  First ();
 		%feature("autodoc", "	:rtype: gp_XY
 ") Last;
-		const gp_XY & Last ();
+		const gp_XY  Last ();
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:param Sub:
@@ -7555,7 +7555,7 @@ class TColgp_SequenceOfXY : public TCollection_BaseSequence {
 	:type Index: Standard_Integer
 	:rtype: gp_XY
 ") Value;
-		const gp_XY & Value (const Standard_Integer Index);
+		const gp_XY  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:param I:
@@ -7567,7 +7567,7 @@ class TColgp_SequenceOfXY : public TCollection_BaseSequence {
 	:type Index: Standard_Integer
 	:rtype: gp_XY
 ") ChangeValue;
-		gp_XY & ChangeValue (const Standard_Integer Index);
+		gp_XY  ChangeValue (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: None
@@ -7666,10 +7666,10 @@ class TColgp_SequenceOfXYZ : public TCollection_BaseSequence {
 		void InsertAfter (const Standard_Integer Index,TColgp_SequenceOfXYZ & S);
 		%feature("autodoc", "	:rtype: gp_XYZ
 ") First;
-		const gp_XYZ & First ();
+		const gp_XYZ  First ();
 		%feature("autodoc", "	:rtype: gp_XYZ
 ") Last;
-		const gp_XYZ & Last ();
+		const gp_XYZ  Last ();
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:param Sub:
@@ -7681,7 +7681,7 @@ class TColgp_SequenceOfXYZ : public TCollection_BaseSequence {
 	:type Index: Standard_Integer
 	:rtype: gp_XYZ
 ") Value;
-		const gp_XYZ & Value (const Standard_Integer Index);
+		const gp_XYZ  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:param I:
@@ -7693,7 +7693,7 @@ class TColgp_SequenceOfXYZ : public TCollection_BaseSequence {
 	:type Index: Standard_Integer
 	:rtype: gp_XYZ
 ") ChangeValue;
-		gp_XYZ & ChangeValue (const Standard_Integer Index);
+		gp_XYZ  ChangeValue (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: None

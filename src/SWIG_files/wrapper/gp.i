@@ -95,77 +95,77 @@ class gp {
 
 	:rtype: gp_Pnt
 ") Origin;
-		static const gp_Pnt & Origin ();
+		static const gp_Pnt  Origin ();
 		%feature("autodoc", "	* Returns a unit vector with the combination (1,0,0)
 
 	:rtype: gp_Dir
 ") DX;
-		static const gp_Dir & DX ();
+		static const gp_Dir  DX ();
 		%feature("autodoc", "	* Returns a unit vector with the combination (0,1,0)
 
 	:rtype: gp_Dir
 ") DY;
-		static const gp_Dir & DY ();
+		static const gp_Dir  DY ();
 		%feature("autodoc", "	* Returns a unit vector with the combination (0,0,1)
 
 	:rtype: gp_Dir
 ") DZ;
-		static const gp_Dir & DZ ();
+		static const gp_Dir  DZ ();
 		%feature("autodoc", "	* //!Identifies an axis where its origin is Origin and its unit vector coordinates X = 1.0, Y = Z = 0.0
 
 	:rtype: gp_Ax1
 ") OX;
-		static const gp_Ax1 & OX ();
+		static const gp_Ax1  OX ();
 		%feature("autodoc", "	* //!Identifies an axis where its origin is Origin and its unit vector coordinates Y = 1.0, X = Z = 0.0
 
 	:rtype: gp_Ax1
 ") OY;
-		static const gp_Ax1 & OY ();
+		static const gp_Ax1  OY ();
 		%feature("autodoc", "	* //!Identifies an axis where its origin is Origin and its unit vector coordinates Z = 1.0, Y = X = 0.0
 
 	:rtype: gp_Ax1
 ") OZ;
-		static const gp_Ax1 & OZ ();
+		static const gp_Ax1  OZ ();
 		%feature("autodoc", "	* //!Identifies a coordinate system where its origin is Origin, and its 'main Direction' and 'X Direction' coordinates Z = 1.0, X = Y =0.0 and X direction coordinates X = 1.0, Y = Z = 0.0
 
 	:rtype: gp_Ax2
 ") XOY;
-		static const gp_Ax2 & XOY ();
+		static const gp_Ax2  XOY ();
 		%feature("autodoc", "	* //!Identifies a coordinate system where its origin is Origin, and its 'main Direction' and 'X Direction' coordinates Y = 1.0, X = Z =0.0 and X direction coordinates Z = 1.0, X = Y = 0.0
 
 	:rtype: gp_Ax2
 ") ZOX;
-		static const gp_Ax2 & ZOX ();
+		static const gp_Ax2  ZOX ();
 		%feature("autodoc", "	* //!Identifies a coordinate system where its origin is Origin, and its 'main Direction' and 'X Direction' coordinates X = 1.0, Z = Y =0.0 and X direction coordinates Y = 1.0, X = Z = 0.0 In 2D space
 
 	:rtype: gp_Ax2
 ") YOZ;
-		static const gp_Ax2 & YOZ ();
+		static const gp_Ax2  YOZ ();
 		%feature("autodoc", "	* Identifies a Cartesian point with coordinates X = Y = 0.0
 
 	:rtype: gp_Pnt2d
 ") Origin2d;
-		static const gp_Pnt2d & Origin2d ();
+		static const gp_Pnt2d  Origin2d ();
 		%feature("autodoc", "	* Returns a unit vector with the combinations (1,0)
 
 	:rtype: gp_Dir2d
 ") DX2d;
-		static const gp_Dir2d & DX2d ();
+		static const gp_Dir2d  DX2d ();
 		%feature("autodoc", "	* Returns a unit vector with the combinations (0,1)
 
 	:rtype: gp_Dir2d
 ") DY2d;
-		static const gp_Dir2d & DY2d ();
+		static const gp_Dir2d  DY2d ();
 		%feature("autodoc", "	* Identifies an axis where its origin is Origin2d and its unit vector coordinates are: X = 1.0, Y = 0.0
 
 	:rtype: gp_Ax2d
 ") OX2d;
-		static const gp_Ax2d & OX2d ();
+		static const gp_Ax2d  OX2d ();
 		%feature("autodoc", "	* Identifies an axis where its origin is Origin2d and its unit vector coordinates are Y = 1.0, X = 0.0
 
 	:rtype: gp_Ax2d
 ") OY2d;
-		static const gp_Ax2d & OY2d ();
+		static const gp_Ax2d  OY2d ();
 };
 
 
@@ -218,12 +218,12 @@ class gp_Ax1 {
 
 	:rtype: gp_Dir
 ") Direction;
-		const gp_Dir & Direction ();
+		const gp_Dir  Direction ();
 		%feature("autodoc", "	* Returns the location point of <self>.
 
 	:rtype: gp_Pnt
 ") Location;
-		const gp_Pnt & Location ();
+		const gp_Pnt  Location ();
 		%feature("autodoc", "	* Returns True if : . the angle between <self> and <Other> is lower or equal to <AngularTolerance> and . the distance between <self>.Location() and <Other> is lower or equal to <LinearTolerance> and . the distance between <Other>.Location() and <self> is lower or equal to LinearTolerance.
 
 	:param Other:
@@ -405,10 +405,10 @@ class gp_Ax1 {
 		gp_Ax1 Translated (const gp_Pnt  P1,const gp_Pnt  P2);
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") _CSFDB_Getgp_Ax1loc;
-		const gp_Pnt & _CSFDB_Getgp_Ax1loc ();
+		const gp_Pnt  _CSFDB_Getgp_Ax1loc ();
 		%feature("autodoc", "	:rtype: gp_Dir
 ") _CSFDB_Getgp_Ax1vdir;
-		const gp_Dir & _CSFDB_Getgp_Ax1vdir ();
+		const gp_Dir  _CSFDB_Getgp_Ax1vdir ();
 };
 
 
@@ -500,27 +500,27 @@ class gp_Ax2 {
 
 	:rtype: gp_Ax1
 ") Axis;
-		const gp_Ax1 & Axis ();
+		const gp_Ax1  Axis ();
 		%feature("autodoc", "	* Returns the main direction of <self>.
 
 	:rtype: gp_Dir
 ") Direction;
-		const gp_Dir & Direction ();
+		const gp_Dir  Direction ();
 		%feature("autodoc", "	* Returns the 'Location' point (origin) of <self>.
 
 	:rtype: gp_Pnt
 ") Location;
-		const gp_Pnt & Location ();
+		const gp_Pnt  Location ();
 		%feature("autodoc", "	* Returns the 'XDirection' of <self>.
 
 	:rtype: gp_Dir
 ") XDirection;
-		const gp_Dir & XDirection ();
+		const gp_Dir  XDirection ();
 		%feature("autodoc", "	* Returns the 'YDirection' of <self>.
 
 	:rtype: gp_Dir
 ") YDirection;
-		const gp_Dir & YDirection ();
+		const gp_Dir  YDirection ();
 		%feature("autodoc", "	:param Other:
 	:type Other: gp_Ax2
 	:param LinearTolerance:
@@ -657,13 +657,13 @@ class gp_Ax2 {
 		gp_Ax2 Translated (const gp_Pnt  P1,const gp_Pnt  P2);
 		%feature("autodoc", "	:rtype: gp_Ax1
 ") _CSFDB_Getgp_Ax2axis;
-		const gp_Ax1 & _CSFDB_Getgp_Ax2axis ();
+		const gp_Ax1  _CSFDB_Getgp_Ax2axis ();
 		%feature("autodoc", "	:rtype: gp_Dir
 ") _CSFDB_Getgp_Ax2vydir;
-		const gp_Dir & _CSFDB_Getgp_Ax2vydir ();
+		const gp_Dir  _CSFDB_Getgp_Ax2vydir ();
 		%feature("autodoc", "	:rtype: gp_Dir
 ") _CSFDB_Getgp_Ax2vxdir;
-		const gp_Dir & _CSFDB_Getgp_Ax2vxdir ();
+		const gp_Dir  _CSFDB_Getgp_Ax2vxdir ();
 };
 
 
@@ -776,17 +776,17 @@ class gp_Ax22d {
 
 	:rtype: gp_Pnt2d
 ") Location;
-		const gp_Pnt2d & Location ();
+		const gp_Pnt2d  Location ();
 		%feature("autodoc", "	* Returns the 'XDirection' of <self>.
 
 	:rtype: gp_Dir2d
 ") XDirection;
-		const gp_Dir2d & XDirection ();
+		const gp_Dir2d  XDirection ();
 		%feature("autodoc", "	* Returns the 'YDirection' of <self>.
 
 	:rtype: gp_Dir2d
 ") YDirection;
-		const gp_Dir2d & YDirection ();
+		const gp_Dir2d  YDirection ();
 		%feature("autodoc", "	:param P:
 	:type P: gp_Pnt2d
 	:rtype: None
@@ -885,13 +885,13 @@ class gp_Ax22d {
 		gp_Ax22d Translated (const gp_Pnt2d  P1,const gp_Pnt2d  P2);
 		%feature("autodoc", "	:rtype: gp_Pnt2d
 ") _CSFDB_Getgp_Ax22dpoint;
-		const gp_Pnt2d & _CSFDB_Getgp_Ax22dpoint ();
+		const gp_Pnt2d  _CSFDB_Getgp_Ax22dpoint ();
 		%feature("autodoc", "	:rtype: gp_Dir2d
 ") _CSFDB_Getgp_Ax22dvydir;
-		const gp_Dir2d & _CSFDB_Getgp_Ax22dvydir ();
+		const gp_Dir2d  _CSFDB_Getgp_Ax22dvydir ();
 		%feature("autodoc", "	:rtype: gp_Dir2d
 ") _CSFDB_Getgp_Ax22dvxdir;
-		const gp_Dir2d & _CSFDB_Getgp_Ax22dvxdir ();
+		const gp_Dir2d  _CSFDB_Getgp_Ax22dvxdir ();
 };
 
 
@@ -944,12 +944,12 @@ class gp_Ax2d {
 
 	:rtype: gp_Pnt2d
 ") Location;
-		const gp_Pnt2d & Location ();
+		const gp_Pnt2d  Location ();
 		%feature("autodoc", "	* Returns the direction of <self>.
 
 	:rtype: gp_Dir2d
 ") Direction;
-		const gp_Dir2d & Direction ();
+		const gp_Dir2d  Direction ();
 		%feature("autodoc", "	* Returns True if : . the angle between <self> and <Other> is lower or equal to <AngularTolerance> and . the distance between <self>.Location() and <Other> is lower or equal to <LinearTolerance> and . the distance between <Other>.Location() and <self> is lower or equal to LinearTolerance.
 
 	:param Other:
@@ -1103,10 +1103,10 @@ class gp_Ax2d {
 		gp_Ax2d Translated (const gp_Pnt2d  P1,const gp_Pnt2d  P2);
 		%feature("autodoc", "	:rtype: gp_Pnt2d
 ") _CSFDB_Getgp_Ax2dloc;
-		const gp_Pnt2d & _CSFDB_Getgp_Ax2dloc ();
+		const gp_Pnt2d  _CSFDB_Getgp_Ax2dloc ();
 		%feature("autodoc", "	:rtype: gp_Dir2d
 ") _CSFDB_Getgp_Ax2dvdir;
-		const gp_Dir2d & _CSFDB_Getgp_Ax2dvdir ();
+		const gp_Dir2d  _CSFDB_Getgp_Ax2dvdir ();
 };
 
 
@@ -1220,7 +1220,7 @@ class gp_Ax3 {
 
 	:rtype: gp_Ax1
 ") Axis;
-		const gp_Ax1 & Axis ();
+		const gp_Ax1  Axis ();
 		%feature("autodoc", "	* Computes a right-handed coordinate system with the same 'X Direction' and 'Y Direction' as those of this coordinate system, then recomputes the 'main Direction'. If this coordinate system is right-handed, the result returned is the same coordinate system. If this coordinate system is left-handed, the result is reversed.
 
 	:rtype: gp_Ax2
@@ -1230,22 +1230,22 @@ class gp_Ax3 {
 
 	:rtype: gp_Dir
 ") Direction;
-		const gp_Dir & Direction ();
+		const gp_Dir  Direction ();
 		%feature("autodoc", "	* Returns the 'Location' point (origin) of <self>.
 
 	:rtype: gp_Pnt
 ") Location;
-		const gp_Pnt & Location ();
+		const gp_Pnt  Location ();
 		%feature("autodoc", "	* Returns the 'XDirection' of <self>.
 
 	:rtype: gp_Dir
 ") XDirection;
-		const gp_Dir & XDirection ();
+		const gp_Dir  XDirection ();
 		%feature("autodoc", "	* Returns the 'YDirection' of <self>.
 
 	:rtype: gp_Dir
 ") YDirection;
-		const gp_Dir & YDirection ();
+		const gp_Dir  YDirection ();
 		%feature("autodoc", "	* Returns True if the coordinate system is right-handed. i.e. XDirection().Crossed(YDirection()).Dot(Direction()) > 0
 
 	:rtype: bool
@@ -1383,13 +1383,13 @@ class gp_Ax3 {
 		gp_Ax3 Translated (const gp_Pnt  P1,const gp_Pnt  P2);
 		%feature("autodoc", "	:rtype: gp_Ax1
 ") _CSFDB_Getgp_Ax3axis;
-		const gp_Ax1 & _CSFDB_Getgp_Ax3axis ();
+		const gp_Ax1  _CSFDB_Getgp_Ax3axis ();
 		%feature("autodoc", "	:rtype: gp_Dir
 ") _CSFDB_Getgp_Ax3vydir;
-		const gp_Dir & _CSFDB_Getgp_Ax3vydir ();
+		const gp_Dir  _CSFDB_Getgp_Ax3vydir ();
 		%feature("autodoc", "	:rtype: gp_Dir
 ") _CSFDB_Getgp_Ax3vxdir;
-		const gp_Dir & _CSFDB_Getgp_Ax3vxdir ();
+		const gp_Dir  _CSFDB_Getgp_Ax3vxdir ();
 };
 
 
@@ -1461,7 +1461,7 @@ class gp_Circ {
 
 	:rtype: gp_Ax1
 ") Axis;
-		const gp_Ax1 & Axis ();
+		const gp_Ax1  Axis ();
 		%feature("autodoc", "	* Computes the circumference of the circle.
 
 	:rtype: float
@@ -1471,12 +1471,12 @@ class gp_Circ {
 
 	:rtype: gp_Pnt
 ") Location;
-		const gp_Pnt & Location ();
+		const gp_Pnt  Location ();
 		%feature("autodoc", "	* Returns the position of the circle. It is the local coordinate system of the circle.
 
 	:rtype: gp_Ax2
 ") Position;
-		const gp_Ax2 & Position ();
+		const gp_Ax2  Position ();
 		%feature("autodoc", "	* Returns the radius of this circle.
 
 	:rtype: float
@@ -1625,7 +1625,7 @@ class gp_Circ {
 		gp_Circ Translated (const gp_Pnt  P1,const gp_Pnt  P2);
 		%feature("autodoc", "	:rtype: gp_Ax2
 ") _CSFDB_Getgp_Circpos;
-		const gp_Ax2 & _CSFDB_Getgp_Circpos ();
+		const gp_Ax2  _CSFDB_Getgp_Circpos ();
 		%feature("autodoc", "	:rtype: float
 ") _CSFDB_Getgp_Circradius;
 		Standard_Real _CSFDB_Getgp_Circradius ();
@@ -1768,7 +1768,7 @@ class gp_Circ2d {
 
 	:rtype: gp_Pnt2d
 ") Location;
-		const gp_Pnt2d & Location ();
+		const gp_Pnt2d  Location ();
 		%feature("autodoc", "	* Returns the radius value of the circle.
 
 	:rtype: float
@@ -1778,12 +1778,12 @@ class gp_Circ2d {
 
 	:rtype: gp_Ax22d
 ") Axis;
-		const gp_Ax22d & Axis ();
+		const gp_Ax22d  Axis ();
 		%feature("autodoc", "	* returns the position of the circle. Idem Axis(me).
 
 	:rtype: gp_Ax22d
 ") Position;
-		const gp_Ax22d & Position ();
+		const gp_Ax22d  Position ();
 		%feature("autodoc", "	* returns the X axis of the circle.
 
 	:rtype: gp_Ax2d
@@ -1907,7 +1907,7 @@ class gp_Circ2d {
 		gp_Circ2d Translated (const gp_Pnt2d  P1,const gp_Pnt2d  P2);
 		%feature("autodoc", "	:rtype: gp_Ax22d
 ") _CSFDB_Getgp_Circ2dpos;
-		const gp_Ax22d & _CSFDB_Getgp_Circ2dpos ();
+		const gp_Ax22d  _CSFDB_Getgp_Circ2dpos ();
 		%feature("autodoc", "	:rtype: float
 ") _CSFDB_Getgp_Circ2dradius;
 		Standard_Real _CSFDB_Getgp_Circ2dradius ();
@@ -2011,7 +2011,7 @@ class gp_Cone {
 
 	:rtype: gp_Ax1
 ") Axis;
-		const gp_Ax1 & Axis ();
+		const gp_Ax1  Axis ();
 		%feature("autodoc", "	* Computes the coefficients of the implicit equation of the quadric in the absolute cartesian coordinates system : A1.X**2 + A2.Y**2 + A3.Z**2 + 2.(B1.X.Y + B2.X.Z + B3.Y.Z) + 2.(C1.X + C2.Y + C3.Z) + D = 0.0
 
 	:param A1:
@@ -2041,12 +2041,12 @@ class gp_Cone {
 
 	:rtype: gp_Pnt
 ") Location;
-		const gp_Pnt & Location ();
+		const gp_Pnt  Location ();
 		%feature("autodoc", "	* Returns the local coordinates system of the cone.
 
 	:rtype: gp_Ax3
 ") Position;
-		const gp_Ax3 & Position ();
+		const gp_Ax3  Position ();
 		%feature("autodoc", "	* Returns the radius of the cone in the reference plane.
 
 	:rtype: float
@@ -2177,7 +2177,7 @@ class gp_Cone {
 		gp_Cone Translated (const gp_Pnt  P1,const gp_Pnt  P2);
 		%feature("autodoc", "	:rtype: gp_Ax3
 ") _CSFDB_Getgp_Conepos;
-		const gp_Ax3 & _CSFDB_Getgp_Conepos ();
+		const gp_Ax3  _CSFDB_Getgp_Conepos ();
 		%feature("autodoc", "	:rtype: float
 ") _CSFDB_Getgp_Coneradius;
 		Standard_Real _CSFDB_Getgp_Coneradius ();
@@ -2275,7 +2275,7 @@ class gp_Cylinder {
 
 	:rtype: gp_Ax1
 ") Axis;
-		const gp_Ax1 & Axis ();
+		const gp_Ax1  Axis ();
 		%feature("autodoc", "	* Computes the coefficients of the implicit equation of the quadric in the absolute cartesian coordinate system : A1.X**2 + A2.Y**2 + A3.Z**2 + 2.(B1.X.Y + B2.X.Z + B3.Y.Z) + 2.(C1.X + C2.Y + C3.Z) + D = 0.0
 
 	:param A1:
@@ -2305,12 +2305,12 @@ class gp_Cylinder {
 
 	:rtype: gp_Pnt
 ") Location;
-		const gp_Pnt & Location ();
+		const gp_Pnt  Location ();
 		%feature("autodoc", "	* Returns the local coordinate system of the cylinder.
 
 	:rtype: gp_Ax3
 ") Position;
-		const gp_Ax3 & Position ();
+		const gp_Ax3  Position ();
 		%feature("autodoc", "	* Returns the radius of the cylinder.
 
 	:rtype: float
@@ -2436,7 +2436,7 @@ class gp_Cylinder {
 		gp_Cylinder Translated (const gp_Pnt  P1,const gp_Pnt  P2);
 		%feature("autodoc", "	:rtype: gp_Ax3
 ") _CSFDB_Getgp_Cylinderpos;
-		const gp_Ax3 & _CSFDB_Getgp_Cylinderpos ();
+		const gp_Ax3  _CSFDB_Getgp_Cylinderpos ();
 		%feature("autodoc", "	:rtype: float
 ") _CSFDB_Getgp_Cylinderradius;
 		Standard_Real _CSFDB_Getgp_Cylinderradius ();
@@ -2580,7 +2580,7 @@ class gp_Dir {
 
 	:rtype: gp_XYZ
 ") XYZ;
-		const gp_XYZ & XYZ ();
+		const gp_XYZ  XYZ ();
 		%feature("autodoc", "	* Returns True if the angle between the two directions is lower or equal to AngularTolerance.
 
 	:param Other:
@@ -2771,7 +2771,7 @@ class gp_Dir {
 		gp_Dir Transformed (const gp_Trsf  T);
 		%feature("autodoc", "	:rtype: gp_XYZ
 ") _CSFDB_Getgp_Dircoord;
-		const gp_XYZ & _CSFDB_Getgp_Dircoord ();
+		const gp_XYZ  _CSFDB_Getgp_Dircoord ();
 };
 
 
@@ -2889,7 +2889,7 @@ class gp_Dir2d {
 
 	:rtype: gp_XY
 ") XY;
-		const gp_XY & XY ();
+		const gp_XY  XY ();
 		%feature("autodoc", "	* Returns True if the two vectors have the same direction i.e. the angle between this unit vector and the unit vector Other is less than or equal to AngularTolerance.
 
 	:param Other:
@@ -3018,7 +3018,7 @@ class gp_Dir2d {
 		gp_Dir2d Transformed (const gp_Trsf2d  T);
 		%feature("autodoc", "	:rtype: gp_XY
 ") _CSFDB_Getgp_Dir2dcoord;
-		const gp_XY & _CSFDB_Getgp_Dir2dcoord ();
+		const gp_XY  _CSFDB_Getgp_Dir2dcoord ();
 };
 
 
@@ -3099,7 +3099,7 @@ class gp_Elips {
 
 	:rtype: gp_Ax1
 ") Axis;
-		const gp_Ax1 & Axis ();
+		const gp_Ax1  Axis ();
 		%feature("autodoc", "	* Computes the first or second directrix of this ellipse. These are the lines, in the plane of the ellipse, normal to the major axis, at a distance equal to MajorRadius/e from the center of the ellipse, where e is the eccentricity of the ellipse. The first directrix (Directrix1) is on the positive side of the major axis. The second directrix (Directrix2) is on the negative side. The directrix is returned as an axis (gp_Ax1 object), the origin of which is situated on the 'X Axis' of the local coordinate system of this ellipse. Exceptions Standard_ConstructionError if the eccentricity is null (the ellipse has degenerated into a circle).
 
 	:rtype: gp_Ax1
@@ -3134,7 +3134,7 @@ class gp_Elips {
 
 	:rtype: gp_Pnt
 ") Location;
-		const gp_Pnt & Location ();
+		const gp_Pnt  Location ();
 		%feature("autodoc", "	* Returns the major radius of the ellipse.
 
 	:rtype: float
@@ -3154,7 +3154,7 @@ class gp_Elips {
 
 	:rtype: gp_Ax2
 ") Position;
-		const gp_Ax2 & Position ();
+		const gp_Ax2  Position ();
 		%feature("autodoc", "	* Returns the 'XAxis' of the ellipse whose origin is the center of this ellipse. It is the major axis of the ellipse.
 
 	:rtype: gp_Ax1
@@ -3275,7 +3275,7 @@ class gp_Elips {
 		gp_Elips Translated (const gp_Pnt  P1,const gp_Pnt  P2);
 		%feature("autodoc", "	:rtype: gp_Ax2
 ") _CSFDB_Getgp_Elipspos;
-		const gp_Ax2 & _CSFDB_Getgp_Elipspos ();
+		const gp_Ax2  _CSFDB_Getgp_Elipspos ();
 		%feature("autodoc", "	:rtype: float
 ") _CSFDB_Getgp_ElipsmajorRadius;
 		Standard_Real _CSFDB_Getgp_ElipsmajorRadius ();
@@ -3439,7 +3439,7 @@ class gp_Elips2d {
 
 	:rtype: gp_Pnt2d
 ") Location;
-		const gp_Pnt2d & Location ();
+		const gp_Pnt2d  Location ();
 		%feature("autodoc", "	* Returns the major radius of the Ellipse.
 
 	:rtype: float
@@ -3459,7 +3459,7 @@ class gp_Elips2d {
 
 	:rtype: gp_Ax22d
 ") Axis;
-		const gp_Ax22d & Axis ();
+		const gp_Ax22d  Axis ();
 		%feature("autodoc", "	* Returns the major axis of the ellipse.
 
 	:rtype: gp_Ax2d
@@ -3577,7 +3577,7 @@ class gp_Elips2d {
 		gp_Elips2d Translated (const gp_Pnt2d  P1,const gp_Pnt2d  P2);
 		%feature("autodoc", "	:rtype: gp_Ax22d
 ") _CSFDB_Getgp_Elips2dpos;
-		const gp_Ax22d & _CSFDB_Getgp_Elips2dpos ();
+		const gp_Ax22d  _CSFDB_Getgp_Elips2dpos ();
 		%feature("autodoc", "	:rtype: float
 ") _CSFDB_Getgp_Elips2dmajorRadius;
 		Standard_Real _CSFDB_Getgp_Elips2dmajorRadius ();
@@ -3709,12 +3709,12 @@ class gp_GTrsf {
 
 	:rtype: gp_XYZ
 ") TranslationPart;
-		const gp_XYZ & TranslationPart ();
+		const gp_XYZ  TranslationPart ();
 		%feature("autodoc", "	* Computes the vectorial part of the GTrsf. The returned Matrix is a 3*3 matrix.
 
 	:rtype: gp_Mat
 ") VectorialPart;
-		const gp_Mat & VectorialPart ();
+		const gp_Mat  VectorialPart ();
 		%feature("autodoc", "	* Returns the coefficients of the global matrix of transformation. Raises OutOfRange if Row < 1 or Row > 3 or Col < 1 or Col > 4
 
 	:param Row:
@@ -3786,10 +3786,10 @@ class gp_GTrsf {
 		gp_Trsf Trsf ();
 		%feature("autodoc", "	:rtype: gp_Mat
 ") _CSFDB_Getgp_GTrsfmatrix;
-		const gp_Mat & _CSFDB_Getgp_GTrsfmatrix ();
+		const gp_Mat  _CSFDB_Getgp_GTrsfmatrix ();
 		%feature("autodoc", "	:rtype: gp_XYZ
 ") _CSFDB_Getgp_GTrsfloc;
-		const gp_XYZ & _CSFDB_Getgp_GTrsfloc ();
+		const gp_XYZ  _CSFDB_Getgp_GTrsfloc ();
 		%feature("autodoc", "	:rtype: gp_TrsfForm
 ") _CSFDB_Getgp_GTrsfshape;
 		gp_TrsfForm _CSFDB_Getgp_GTrsfshape ();
@@ -3907,12 +3907,12 @@ class gp_GTrsf2d {
 
 	:rtype: gp_XY
 ") TranslationPart;
-		const gp_XY & TranslationPart ();
+		const gp_XY  TranslationPart ();
 		%feature("autodoc", "	* Computes the vectorial part of the GTrsf2d. The returned Matrix is a 2*2 matrix.
 
 	:rtype: gp_Mat2d
 ") VectorialPart;
-		const gp_Mat2d & VectorialPart ();
+		const gp_Mat2d  VectorialPart ();
 		%feature("autodoc", "	* Returns the coefficients of the global matrix of transformation. Raised OutOfRange if Row < 1 or Row > 2 or Col < 1 or Col > 3
 
 	:param Row:
@@ -3997,10 +3997,10 @@ class gp_GTrsf2d {
 		gp_Trsf2d Trsf2d ();
 		%feature("autodoc", "	:rtype: gp_Mat2d
 ") _CSFDB_Getgp_GTrsf2dmatrix;
-		const gp_Mat2d & _CSFDB_Getgp_GTrsf2dmatrix ();
+		const gp_Mat2d  _CSFDB_Getgp_GTrsf2dmatrix ();
 		%feature("autodoc", "	:rtype: gp_XY
 ") _CSFDB_Getgp_GTrsf2dloc;
-		const gp_XY & _CSFDB_Getgp_GTrsf2dloc ();
+		const gp_XY  _CSFDB_Getgp_GTrsf2dloc ();
 		%feature("autodoc", "	:rtype: gp_TrsfForm
 ") _CSFDB_Getgp_GTrsf2dshape;
 		gp_TrsfForm _CSFDB_Getgp_GTrsf2dshape ();
@@ -4102,7 +4102,7 @@ class gp_Hypr {
 
 	:rtype: gp_Ax1
 ") Axis;
-		const gp_Ax1 & Axis ();
+		const gp_Ax1  Axis ();
 		%feature("autodoc", "	* Computes the branch of hyperbola which is on the positive side of the 'YAxis' of <self>.
 
 	:rtype: gp_Hypr
@@ -4147,7 +4147,7 @@ class gp_Hypr {
 
 	:rtype: gp_Pnt
 ") Location;
-		const gp_Pnt & Location ();
+		const gp_Pnt  Location ();
 		%feature("autodoc", "	* Returns the major radius of the hyperbola. It is the radius on the 'XAxis' of the hyperbola.
 
 	:rtype: float
@@ -4172,7 +4172,7 @@ class gp_Hypr {
 
 	:rtype: gp_Ax2
 ") Position;
-		const gp_Ax2 & Position ();
+		const gp_Ax2  Position ();
 		%feature("autodoc", "	* Computes an axis, whose - the origin is the center of this hyperbola, and - the unit vector is the 'X Direction' of the local coordinate system of this hyperbola. These axes are, the major axis (the 'X Axis') and of this hyperboReturns the 'XAxis' of the hyperbola.
 
 	:rtype: gp_Ax1
@@ -4293,7 +4293,7 @@ class gp_Hypr {
 		gp_Hypr Translated (const gp_Pnt  P1,const gp_Pnt  P2);
 		%feature("autodoc", "	:rtype: gp_Ax2
 ") _CSFDB_Getgp_Hyprpos;
-		const gp_Ax2 & _CSFDB_Getgp_Hyprpos ();
+		const gp_Ax2  _CSFDB_Getgp_Hyprpos ();
 		%feature("autodoc", "	:rtype: float
 ") _CSFDB_Getgp_HyprmajorRadius;
 		Standard_Real _CSFDB_Getgp_HyprmajorRadius ();
@@ -4472,7 +4472,7 @@ class gp_Hypr2d {
 
 	:rtype: gp_Pnt2d
 ") Location;
-		const gp_Pnt2d & Location ();
+		const gp_Pnt2d  Location ();
 		%feature("autodoc", "	* Returns the major radius of the hyperbola (it is the radius corresponding to the 'XAxis' of the hyperbola).
 
 	:rtype: float
@@ -4497,7 +4497,7 @@ class gp_Hypr2d {
 
 	:rtype: gp_Ax22d
 ") Axis;
-		const gp_Ax22d & Axis ();
+		const gp_Ax22d  Axis ();
 		%feature("autodoc", "	* Computes an axis whose - the origin is the center of this hyperbola, and - the unit vector is the 'X Direction' or 'Y Direction' respectively of the local coordinate system of this hyperbola Returns the major axis of the hyperbola.
 
 	:rtype: gp_Ax2d
@@ -4619,7 +4619,7 @@ class gp_Hypr2d {
 		gp_Hypr2d Translated (const gp_Pnt2d  P1,const gp_Pnt2d  P2);
 		%feature("autodoc", "	:rtype: gp_Ax22d
 ") _CSFDB_Getgp_Hypr2dpos;
-		const gp_Ax22d & _CSFDB_Getgp_Hypr2dpos ();
+		const gp_Ax22d  _CSFDB_Getgp_Hypr2dpos ();
 		%feature("autodoc", "	:rtype: float
 ") _CSFDB_Getgp_Hypr2dmajorRadius;
 		Standard_Real _CSFDB_Getgp_Hypr2dmajorRadius ();
@@ -4710,17 +4710,17 @@ class gp_Lin {
 
 	:rtype: gp_Dir
 ") Direction;
-		const gp_Dir & Direction ();
+		const gp_Dir  Direction ();
 		%feature("autodoc", "	* Returns the location point (origin) of the line.
 
 	:rtype: gp_Pnt
 ") Location;
-		const gp_Pnt & Location ();
+		const gp_Pnt  Location ();
 		%feature("autodoc", "	* Returns the axis placement one axis whith the same location and direction as <self>.
 
 	:rtype: gp_Ax1
 ") Position;
-		const gp_Ax1 & Position ();
+		const gp_Ax1  Position ();
 		%feature("autodoc", "	* Computes the angle between two lines in radians.
 
 	:param Other:
@@ -4882,7 +4882,7 @@ class gp_Lin {
 		gp_Lin Translated (const gp_Pnt  P1,const gp_Pnt  P2);
 		%feature("autodoc", "	:rtype: gp_Ax1
 ") _CSFDB_Getgp_Linpos;
-		const gp_Ax1 & _CSFDB_Getgp_Linpos ();
+		const gp_Ax1  _CSFDB_Getgp_Linpos ();
 };
 
 
@@ -4979,17 +4979,17 @@ class gp_Lin2d {
 
 	:rtype: gp_Dir2d
 ") Direction;
-		const gp_Dir2d & Direction ();
+		const gp_Dir2d  Direction ();
 		%feature("autodoc", "	* Returns the location point (origin) of the line.
 
 	:rtype: gp_Pnt2d
 ") Location;
-		const gp_Pnt2d & Location ();
+		const gp_Pnt2d  Location ();
 		%feature("autodoc", "	* Returns the axis placement one axis whith the same location and direction as <self>.
 
 	:rtype: gp_Ax2d
 ") Position;
-		const gp_Ax2d & Position ();
+		const gp_Ax2d  Position ();
 		%feature("autodoc", "	* Computes the angle between two lines in radians.
 
 	:param Other:
@@ -5139,7 +5139,7 @@ class gp_Lin2d {
 		gp_Lin2d Translated (const gp_Pnt2d  P1,const gp_Pnt2d  P2);
 		%feature("autodoc", "	:rtype: gp_Ax2d
 ") _CSFDB_Getgp_Lin2dpos;
-		const gp_Ax2d & _CSFDB_Getgp_Lin2dpos ();
+		const gp_Ax2d  _CSFDB_Getgp_Lin2dpos ();
 };
 
 
@@ -5871,7 +5871,7 @@ class gp_Parab {
 
 	:rtype: gp_Ax1
 ") Axis;
-		const gp_Ax1 & Axis ();
+		const gp_Ax1  Axis ();
 		%feature("autodoc", "	* Computes the directrix of this parabola. The directrix is: - a line parallel to the 'Y Direction' of the local coordinate system of this parabola, and - located on the negative side of the axis of symmetry, at a distance from the apex which is equal to the focal length of this parabola. The directrix is returned as an axis (a gp_Ax1 object), the origin of which is situated on the 'X Axis' of this parabola.
 
 	:rtype: gp_Ax1
@@ -5891,7 +5891,7 @@ class gp_Parab {
 
 	:rtype: gp_Pnt
 ") Location;
-		const gp_Pnt & Location ();
+		const gp_Pnt  Location ();
 		%feature("autodoc", "	* Computes the parameter of the parabola. It is the distance between the focus and the directrix of the parabola. This distance is twice the focal length.
 
 	:rtype: float
@@ -5901,7 +5901,7 @@ class gp_Parab {
 
 	:rtype: gp_Ax2
 ") Position;
-		const gp_Ax2 & Position ();
+		const gp_Ax2  Position ();
 		%feature("autodoc", "	* Returns the symmetry axis of the parabola. The location point of the axis is the vertex of the parabola.
 
 	:rtype: gp_Ax1
@@ -6022,7 +6022,7 @@ class gp_Parab {
 		gp_Parab Translated (const gp_Pnt  P1,const gp_Pnt  P2);
 		%feature("autodoc", "	:rtype: gp_Ax2
 ") _CSFDB_Getgp_Parabpos;
-		const gp_Ax2 & _CSFDB_Getgp_Parabpos ();
+		const gp_Ax2  _CSFDB_Getgp_Parabpos ();
 		%feature("autodoc", "	:rtype: float
 ") _CSFDB_Getgp_ParabfocalLength;
 		Standard_Real _CSFDB_Getgp_ParabfocalLength ();
@@ -6287,7 +6287,7 @@ class gp_Parab2d {
 		gp_Parab2d Translated (const gp_Pnt2d  P1,const gp_Pnt2d  P2);
 		%feature("autodoc", "	:rtype: gp_Ax22d
 ") _CSFDB_Getgp_Parab2dpos;
-		const gp_Ax22d & _CSFDB_Getgp_Parab2dpos ();
+		const gp_Ax22d  _CSFDB_Getgp_Parab2dpos ();
 		%feature("autodoc", "	:rtype: float
 ") _CSFDB_Getgp_Parab2dfocalLength;
 		Standard_Real _CSFDB_Getgp_Parab2dfocalLength ();
@@ -6403,17 +6403,17 @@ class gp_Pln {
 
 	:rtype: gp_Ax1
 ") Axis;
-		const gp_Ax1 & Axis ();
+		const gp_Ax1  Axis ();
 		%feature("autodoc", "	* Returns the plane's location (origin).
 
 	:rtype: gp_Pnt
 ") Location;
-		const gp_Pnt & Location ();
+		const gp_Pnt  Location ();
 		%feature("autodoc", "	* Returns the local coordinate system of the plane .
 
 	:rtype: gp_Ax3
 ") Position;
-		const gp_Ax3 & Position ();
+		const gp_Ax3  Position ();
 		%feature("autodoc", "	* Computes the distance between <self> and the point <P>.
 
 	:param P:
@@ -6596,7 +6596,7 @@ class gp_Pln {
 		gp_Pln Translated (const gp_Pnt  P1,const gp_Pnt  P2);
 		%feature("autodoc", "	:rtype: gp_Ax3
 ") _CSFDB_Getgp_Plnpos;
-		const gp_Ax3 & _CSFDB_Getgp_Plnpos ();
+		const gp_Ax3  _CSFDB_Getgp_Plnpos ();
 };
 
 
@@ -6725,17 +6725,17 @@ class gp_Pnt {
 
 	:rtype: gp_XYZ
 ") XYZ;
-		const gp_XYZ & XYZ ();
+		const gp_XYZ  XYZ ();
 		%feature("autodoc", "	* For this point, returns its three coordinates as a XYZ object.
 
 	:rtype: gp_XYZ
 ") Coord;
-		const gp_XYZ & Coord ();
+		const gp_XYZ  Coord ();
 		%feature("autodoc", "	* Returns the coordinates of this point. Note: This syntax allows direct modification of the returned value.
 
 	:rtype: gp_XYZ
 ") ChangeCoord;
-		gp_XYZ & ChangeCoord ();
+		gp_XYZ  ChangeCoord ();
 		%feature("autodoc", "	* Assigns the result of the following expression to this point (Alpha*this + Beta*P) / (Alpha + Beta)
 
 	:param Alpha:
@@ -6880,7 +6880,7 @@ class gp_Pnt {
 		gp_Pnt Translated (const gp_Pnt  P1,const gp_Pnt  P2);
 		%feature("autodoc", "	:rtype: gp_XYZ
 ") _CSFDB_Getgp_Pntcoord;
-		const gp_XYZ & _CSFDB_Getgp_Pntcoord ();
+		const gp_XYZ  _CSFDB_Getgp_Pntcoord ();
 };
 
 
@@ -6991,17 +6991,17 @@ class gp_Pnt2d {
 
 	:rtype: gp_XY
 ") XY;
-		const gp_XY & XY ();
+		const gp_XY  XY ();
 		%feature("autodoc", "	* For this point, returns its two coordinates as a number pair.
 
 	:rtype: gp_XY
 ") Coord;
-		const gp_XY & Coord ();
+		const gp_XY  Coord ();
 		%feature("autodoc", "	* Returns the coordinates of this point. Note: This syntax allows direct modification of the returned value.
 
 	:rtype: gp_XY
 ") ChangeCoord;
-		gp_XY & ChangeCoord ();
+		gp_XY  ChangeCoord ();
 		%feature("autodoc", "	* Comparison Returns True if the distance between the two points is lower or equal to LinearTolerance.
 
 	:param Other:
@@ -7123,7 +7123,7 @@ class gp_Pnt2d {
 		gp_Pnt2d Translated (const gp_Pnt2d  P1,const gp_Pnt2d  P2);
 		%feature("autodoc", "	:rtype: gp_XY
 ") _CSFDB_Getgp_Pnt2dcoord;
-		const gp_XY & _CSFDB_Getgp_Pnt2dcoord ();
+		const gp_XY  _CSFDB_Getgp_Pnt2dcoord ();
 };
 
 
@@ -7713,12 +7713,12 @@ class gp_Sphere {
 
 	:rtype: gp_Pnt
 ") Location;
-		const gp_Pnt & Location ();
+		const gp_Pnt  Location ();
 		%feature("autodoc", "	* Returns the local coordinates system of the sphere.
 
 	:rtype: gp_Ax3
 ") Position;
-		const gp_Ax3 & Position ();
+		const gp_Ax3  Position ();
 		%feature("autodoc", "	* Returns the radius of the sphere.
 
 	:rtype: float
@@ -7849,7 +7849,7 @@ class gp_Sphere {
 		gp_Sphere Translated (const gp_Pnt  P1,const gp_Pnt  P2);
 		%feature("autodoc", "	:rtype: gp_Ax3
 ") _CSFDB_Getgp_Spherepos;
-		const gp_Ax3 & _CSFDB_Getgp_Spherepos ();
+		const gp_Ax3  _CSFDB_Getgp_Spherepos ();
 		%feature("autodoc", "	:rtype: float
 ") _CSFDB_Getgp_Sphereradius;
 		Standard_Real _CSFDB_Getgp_Sphereradius ();
@@ -7953,17 +7953,17 @@ class gp_Torus {
 
 	:rtype: gp_Ax1
 ") Axis;
-		const gp_Ax1 & Axis ();
+		const gp_Ax1  Axis ();
 		%feature("autodoc", "	* Returns the Torus's location.
 
 	:rtype: gp_Pnt
 ") Location;
-		const gp_Pnt & Location ();
+		const gp_Pnt  Location ();
 		%feature("autodoc", "	* Returns the local coordinates system of the torus.
 
 	:rtype: gp_Ax3
 ") Position;
-		const gp_Ax3 & Position ();
+		const gp_Ax3  Position ();
 		%feature("autodoc", "	* returns the major radius of the torus.
 
 	:rtype: float
@@ -8099,7 +8099,7 @@ class gp_Torus {
 		gp_Torus Translated (const gp_Pnt  P1,const gp_Pnt  P2);
 		%feature("autodoc", "	:rtype: gp_Ax3
 ") _CSFDB_Getgp_Toruspos;
-		const gp_Ax3 & _CSFDB_Getgp_Toruspos ();
+		const gp_Ax3  _CSFDB_Getgp_Toruspos ();
 		%feature("autodoc", "	:rtype: float
 ") _CSFDB_Getgp_TorusmajorRadius;
 		Standard_Real _CSFDB_Getgp_TorusmajorRadius ();
@@ -8310,7 +8310,7 @@ class gp_Trsf {
 
 	:rtype: gp_XYZ
 ") TranslationPart;
-		const gp_XYZ & TranslationPart ();
+		const gp_XYZ  TranslationPart ();
 		%feature("autodoc", "	* Returns the boolean True if there is non-zero rotation. In the presence of rotation, the output parameters store the axis and the angle of rotation. The method always returns positive value 'theAngle', i.e., 0. < theAngle <= PI. Note that this rotation is defined only by the vectorial part of the transformation; generally you would need to check also the translational part to obtain the axis (gp_Ax1) of rotation.
 
 	:param theAxis:
@@ -8334,7 +8334,7 @@ class gp_Trsf {
 
 	:rtype: gp_Mat
 ") HVectorialPart;
-		const gp_Mat & HVectorialPart ();
+		const gp_Mat  HVectorialPart ();
 		%feature("autodoc", "	* Returns the coefficients of the transformation's matrix. It is a 3 rows * 4 columns matrix. This coefficient includes the scale factor. Raises OutOfRanged if Row < 1 or Row > 3 or Col < 1 or Col > 4
 
 	:param Row:
@@ -8427,10 +8427,10 @@ class gp_Trsf {
 		void _CSFDB_Setgp_Trsfshape (const gp_TrsfForm p);
 		%feature("autodoc", "	:rtype: gp_Mat
 ") _CSFDB_Getgp_Trsfmatrix;
-		const gp_Mat & _CSFDB_Getgp_Trsfmatrix ();
+		const gp_Mat  _CSFDB_Getgp_Trsfmatrix ();
 		%feature("autodoc", "	:rtype: gp_XYZ
 ") _CSFDB_Getgp_Trsfloc;
-		const gp_XYZ & _CSFDB_Getgp_Trsfloc ();
+		const gp_XYZ  _CSFDB_Getgp_Trsfloc ();
 };
 
 
@@ -8560,7 +8560,7 @@ class gp_Trsf2d {
 
 	:rtype: gp_XY
 ") TranslationPart;
-		const gp_XY & TranslationPart ();
+		const gp_XY  TranslationPart ();
 		%feature("autodoc", "	* Returns the vectorial part of the transformation. It is a 2*2 matrix which includes the scale factor.
 
 	:rtype: gp_Mat2d
@@ -8570,7 +8570,7 @@ class gp_Trsf2d {
 
 	:rtype: gp_Mat2d
 ") HVectorialPart;
-		const gp_Mat2d & HVectorialPart ();
+		const gp_Mat2d  HVectorialPart ();
 		%feature("autodoc", "	* Returns the angle corresponding to the rotational component of the transformation matrix (operation opposite to SetRotation()).
 
 	:rtype: float
@@ -8666,10 +8666,10 @@ class gp_Trsf2d {
 		void _CSFDB_Setgp_Trsf2dshape (const gp_TrsfForm p);
 		%feature("autodoc", "	:rtype: gp_Mat2d
 ") _CSFDB_Getgp_Trsf2dmatrix;
-		const gp_Mat2d & _CSFDB_Getgp_Trsf2dmatrix ();
+		const gp_Mat2d  _CSFDB_Getgp_Trsf2dmatrix ();
 		%feature("autodoc", "	:rtype: gp_XY
 ") _CSFDB_Getgp_Trsf2dloc;
-		const gp_XY & _CSFDB_Getgp_Trsf2dloc ();
+		const gp_XY  _CSFDB_Getgp_Trsf2dloc ();
 };
 
 
@@ -8814,7 +8814,7 @@ class gp_Vec {
 
 	:rtype: gp_XYZ
 ") XYZ;
-		const gp_XYZ & XYZ ();
+		const gp_XYZ  XYZ ();
 		%feature("autodoc", "	* Returns True if the two vectors have the same magnitude value and the same direction. The precision values are LinearTolerance for the magnitude and AngularTolerance for the direction.
 
 	:param Other:
@@ -9221,7 +9221,7 @@ class gp_Vec {
 		gp_Vec Transformed (const gp_Trsf  T);
 		%feature("autodoc", "	:rtype: gp_XYZ
 ") _CSFDB_Getgp_Veccoord;
-		const gp_XYZ & _CSFDB_Getgp_Veccoord ();
+		const gp_XYZ  _CSFDB_Getgp_Veccoord ();
 };
 
 
@@ -9348,7 +9348,7 @@ class gp_Vec2d {
 
 	:rtype: gp_XY
 ") XY;
-		const gp_XY & XY ();
+		const gp_XY  XY ();
 		%feature("autodoc", "	* Returns True if the two vectors have the same magnitude value and the same direction. The precision values are LinearTolerance for the magnitude and AngularTolerance for the direction.
 
 	:param Other:
@@ -9662,7 +9662,7 @@ class gp_Vec2d {
 		gp_Vec2d Transformed (const gp_Trsf2d  T);
 		%feature("autodoc", "	:rtype: gp_XY
 ") _CSFDB_Getgp_Vec2dcoord;
-		const gp_XY & _CSFDB_Getgp_Vec2dcoord ();
+		const gp_XY  _CSFDB_Getgp_Vec2dcoord ();
 };
 
 

@@ -249,7 +249,7 @@ class GccEnt_QualifiedCirc {
 		 GccEnt_QualifiedCirc ();
 		%feature("autodoc", "	:rtype: gp_Circ2d
 ") _CSFDB_GetGccEnt_QualifiedCircTheQualified;
-		const gp_Circ2d & _CSFDB_GetGccEnt_QualifiedCircTheQualified ();
+		const gp_Circ2d  _CSFDB_GetGccEnt_QualifiedCircTheQualified ();
 		%feature("autodoc", "	:rtype: GccEnt_Position
 ") _CSFDB_GetGccEnt_QualifiedCircTheQualifier;
 		GccEnt_Position _CSFDB_GetGccEnt_QualifiedCircTheQualifier ();
@@ -325,7 +325,7 @@ class GccEnt_QualifiedLin {
 		void _CSFDB_SetGccEnt_QualifiedLinTheQualifier (const GccEnt_Position p);
 		%feature("autodoc", "	:rtype: gp_Lin2d
 ") _CSFDB_GetGccEnt_QualifiedLinTheQualified;
-		const gp_Lin2d & _CSFDB_GetGccEnt_QualifiedLinTheQualified ();
+		const gp_Lin2d  _CSFDB_GetGccEnt_QualifiedLinTheQualified ();
 };
 
 

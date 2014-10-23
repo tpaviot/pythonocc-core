@@ -1457,7 +1457,7 @@ class Contap_TheArcFunctionOfContour : public math_FunctionWithDerivative {
 	:type Index: Standard_Integer
 	:rtype: gp_Pnt
 ") Valpoint;
-		const gp_Pnt & Valpoint (const Standard_Integer Index);
+		const gp_Pnt  Valpoint (const Standard_Integer Index);
 		%feature("autodoc", "	:rtype: IntSurf_Quadric
 ") Quadric;
 		const IntSurf_Quadric & Quadric ();
@@ -1782,7 +1782,7 @@ class Contap_TheIWLineOfTheIWalkingOfContour : public MMgt_TShared {
 	:type Index: Standard_Integer &
 	:rtype: gp_Vec
 ") TangentVector;
-		const gp_Vec & TangentVector (Standard_Integer &OutValue);
+		const gp_Vec  TangentVector (Standard_Integer &OutValue);
 		%feature("autodoc", "	:rtype: bool
 ") IsTangentAtBegining;
 		Standard_Boolean IsTangentAtBegining ();
@@ -2080,7 +2080,7 @@ class Contap_ThePathPointOfTheSearchOfContour {
 		void SetValue (const gp_Pnt & P,const Standard_Real Tol,const Handle_Adaptor2d_HCurve2d & A,const Standard_Real Parameter);
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") Value;
-		const gp_Pnt & Value ();
+		const gp_Pnt  Value ();
 		%feature("autodoc", "	:rtype: float
 ") Tolerance;
 		Standard_Real Tolerance ();
@@ -2166,7 +2166,7 @@ class Contap_ThePointOfContour {
 		void SetInternal ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") Value;
-		const gp_Pnt & Value ();
+		const gp_Pnt  Value ();
 		%feature("autodoc", "	:rtype: float
 ") ParameterOnLine;
 		Standard_Real ParameterOnLine ();
@@ -2725,25 +2725,25 @@ class Contap_TheSurfFunctionOfContour : public math_FunctionSetWithDerivatives {
 		Standard_Real Tolerance ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") Point;
-		const gp_Pnt & Point ();
+		const gp_Pnt  Point ();
 		%feature("autodoc", "	:rtype: bool
 ") IsTangent;
 		Standard_Boolean IsTangent ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") Direction3d;
-		const gp_Vec & Direction3d ();
+		const gp_Vec  Direction3d ();
 		%feature("autodoc", "	:rtype: gp_Dir2d
 ") Direction2d;
-		const gp_Dir2d & Direction2d ();
+		const gp_Dir2d  Direction2d ();
 		%feature("autodoc", "	:rtype: Contap_TFunction
 ") FunctionType;
 		Contap_TFunction FunctionType ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") Eye;
-		const gp_Pnt & Eye ();
+		const gp_Pnt  Eye ();
 		%feature("autodoc", "	:rtype: gp_Dir
 ") Direction;
-		const gp_Dir & Direction ();
+		const gp_Dir  Direction ();
 		%feature("autodoc", "	:rtype: float
 ") Angle;
 		Standard_Real Angle ();

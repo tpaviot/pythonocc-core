@@ -596,12 +596,12 @@ class IntTools_CommonPrt {
 
 	:rtype: TopoDS_Edge
 ") Edge1;
-		const TopoDS_Edge & Edge1 ();
+		const TopoDS_Edge  Edge1 ();
 		%feature("autodoc", "	* Returns the second edge
 
 	:rtype: TopoDS_Edge
 ") Edge2;
-		const TopoDS_Edge & Edge2 ();
+		const TopoDS_Edge  Edge2 ();
 		%feature("autodoc", "	* Returns the type of the common part
 
 	:rtype: TopAbs_ShapeEnum
@@ -1830,12 +1830,12 @@ class IntTools_FaceFace {
 
 	:rtype: TopoDS_Face
 ") Face1;
-		const TopoDS_Face & Face1 ();
+		const TopoDS_Face  Face1 ();
 		%feature("autodoc", "	* Returns second of processed faces
 
 	:rtype: TopoDS_Face
 ") Face2;
-		const TopoDS_Face & Face2 ();
+		const TopoDS_Face  Face2 ();
 		%feature("autodoc", "	* Returns True if faces are tangent
 
 	:rtype: bool
@@ -3241,12 +3241,12 @@ class IntTools_PntOnFace {
 
 	:rtype: TopoDS_Face
 ") Face;
-		const TopoDS_Face & Face ();
+		const TopoDS_Face  Face ();
 		%feature("autodoc", "	* Selector
 
 	:rtype: gp_Pnt
 ") Pnt;
-		const gp_Pnt & Pnt ();
+		const gp_Pnt  Pnt ();
 		%feature("autodoc", "	* Selector
 
 	:param U:
@@ -4805,7 +4805,7 @@ class IntTools_SurfaceRangeLocalizeData {
 	:type theVIndex: Standard_Integer
 	:rtype: gp_Pnt
 ") GetGridPoint;
-		const gp_Pnt & GetGridPoint (const Standard_Integer theUIndex,const Standard_Integer theVIndex);
+		const gp_Pnt  GetGridPoint (const Standard_Integer theUIndex,const Standard_Integer theVIndex);
 		%feature("autodoc", "	* Sets the frame area. Used to work with grid points.
 
 	:param theUMin:
@@ -4837,7 +4837,7 @@ class IntTools_SurfaceRangeLocalizeData {
 	:type theVIndex: Standard_Integer
 	:rtype: gp_Pnt
 ") GetPointInFrame;
-		const gp_Pnt & GetPointInFrame (const Standard_Integer theUIndex,const Standard_Integer theVIndex);
+		const gp_Pnt  GetPointInFrame (const Standard_Integer theUIndex,const Standard_Integer theVIndex);
 		%feature("autodoc", "	* Query the U parameter of the grid points at that index in frame.
 
 	:param theIndex:

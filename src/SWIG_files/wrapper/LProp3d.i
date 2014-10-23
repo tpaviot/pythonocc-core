@@ -83,16 +83,16 @@ class LProp3d_CLProps {
 		void SetCurve (const Handle_Adaptor3d_HCurve & C);
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") Value;
-		const gp_Pnt & Value ();
+		const gp_Pnt  Value ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") D1;
-		const gp_Vec & D1 ();
+		const gp_Vec  D1 ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") D2;
-		const gp_Vec & D2 ();
+		const gp_Vec  D2 ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") D3;
-		const gp_Vec & D3 ();
+		const gp_Vec  D3 ();
 		%feature("autodoc", "	:rtype: bool
 ") IsTangentDefined;
 		Standard_Boolean IsTangentDefined ();
@@ -274,22 +274,22 @@ class LProp3d_SLProps {
 		void SetParameters (const Standard_Real U,const Standard_Real V);
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") Value;
-		const gp_Pnt & Value ();
+		const gp_Pnt  Value ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") D1U;
-		const gp_Vec & D1U ();
+		const gp_Vec  D1U ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") D1V;
-		const gp_Vec & D1V ();
+		const gp_Vec  D1V ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") D2U;
-		const gp_Vec & D2U ();
+		const gp_Vec  D2U ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") D2V;
-		const gp_Vec & D2V ();
+		const gp_Vec  D2V ();
 		%feature("autodoc", "	:rtype: gp_Vec
 ") DUV;
-		const gp_Vec & DUV ();
+		const gp_Vec  DUV ();
 		%feature("autodoc", "	:rtype: bool
 ") IsTangentUDefined;
 		Standard_Boolean IsTangentUDefined ();
@@ -311,7 +311,7 @@ class LProp3d_SLProps {
 		Standard_Boolean IsNormalDefined ();
 		%feature("autodoc", "	:rtype: gp_Dir
 ") Normal;
-		const gp_Dir & Normal ();
+		const gp_Dir  Normal ();
 		%feature("autodoc", "	:rtype: bool
 ") IsCurvatureDefined;
 		Standard_Boolean IsCurvatureDefined ();

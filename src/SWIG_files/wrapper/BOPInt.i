@@ -362,7 +362,7 @@ class BOPInt_ShrunkRange {
 		const Bnd_Box & BndBox ();
 		%feature("autodoc", "	:rtype: TopoDS_Edge
 ") Edge;
-		const TopoDS_Edge & Edge ();
+		const TopoDS_Edge  Edge ();
 		%feature("autodoc", "	:rtype: None
 ") Perform;
 		void Perform ();

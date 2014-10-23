@@ -119,14 +119,14 @@ class BRepSweep_Array2OfShapesOfNumLinearRegularSweep {
 	:type Col: Standard_Integer
 	:rtype: TopoDS_Shape
 ") Value;
-		const TopoDS_Shape & Value (const Standard_Integer Row,const Standard_Integer Col);
+		const TopoDS_Shape  Value (const Standard_Integer Row,const Standard_Integer Col);
 		%feature("autodoc", "	:param Row:
 	:type Row: Standard_Integer
 	:param Col:
 	:type Col: Standard_Integer
 	:rtype: TopoDS_Shape
 ") ChangeValue;
-		TopoDS_Shape & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
+		TopoDS_Shape  ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 };
 
 
@@ -256,7 +256,7 @@ class BRepSweep_Iterator {
 
 	:rtype: TopoDS_Shape
 ") Value;
-		const TopoDS_Shape & Value ();
+		const TopoDS_Shape  Value ();
 		%feature("autodoc", "	* Returns the orientation of the current sub-shape.
 
 	:rtype: TopAbs_Orientation
@@ -706,7 +706,7 @@ class BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep : public T
 		 BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep (const TopoDS_Shape & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Value;
-		TopoDS_Shape & Value ();
+		TopoDS_Shape  Value ();
 };
 
 
@@ -832,10 +832,10 @@ class BRepSweep_SequenceOfShapesOfNumLinearRegularSweep : public TCollection_Bas
 		void InsertAfter (const Standard_Integer Index,BRepSweep_SequenceOfShapesOfNumLinearRegularSweep & S);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") First;
-		const TopoDS_Shape & First ();
+		const TopoDS_Shape  First ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Last;
-		const TopoDS_Shape & Last ();
+		const TopoDS_Shape  Last ();
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:param Sub:
@@ -847,7 +847,7 @@ class BRepSweep_SequenceOfShapesOfNumLinearRegularSweep : public TCollection_Bas
 	:type Index: Standard_Integer
 	:rtype: TopoDS_Shape
 ") Value;
-		const TopoDS_Shape & Value (const Standard_Integer Index);
+		const TopoDS_Shape  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:param I:
@@ -859,7 +859,7 @@ class BRepSweep_SequenceOfShapesOfNumLinearRegularSweep : public TCollection_Bas
 	:type Index: Standard_Integer
 	:rtype: TopoDS_Shape
 ") ChangeValue;
-		TopoDS_Shape & ChangeValue (const Standard_Integer Index);
+		TopoDS_Shape  ChangeValue (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: None

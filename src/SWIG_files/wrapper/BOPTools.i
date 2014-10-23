@@ -1106,7 +1106,7 @@ class BOPTools_CoupleOfShape {
 		void SetShape1 (const TopoDS_Shape & theShape);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Shape1;
-		const TopoDS_Shape & Shape1 ();
+		const TopoDS_Shape  Shape1 ();
 		%feature("autodoc", "	:param theShape:
 	:type theShape: TopoDS_Shape &
 	:rtype: None
@@ -1114,7 +1114,7 @@ class BOPTools_CoupleOfShape {
 		void SetShape2 (const TopoDS_Shape & theShape);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Shape2;
-		const TopoDS_Shape & Shape2 ();
+		const TopoDS_Shape  Shape2 ();
 };
 
 
@@ -1150,7 +1150,7 @@ class BOPTools_EdgeSet {
 		void SetShape (const TopoDS_Shape & theS);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape ();
+		const TopoDS_Shape  Shape ();
 		%feature("autodoc", "	:param theEdge:
 	:type theEdge: TopoDS_Edge &
 	:rtype: None
@@ -1219,7 +1219,7 @@ class BOPTools_Set {
 		BOPTools_Set & operator = (const BOPTools_Set & Other);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape ();
+		const TopoDS_Shape  Shape ();
 		%feature("autodoc", "	:param theS:
 	:type theS: TopoDS_Shape &
 	:param theType:
@@ -1315,7 +1315,7 @@ class BOPTools_ShapeSet {
 		void SetShape (const TopoDS_Shape & theS);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape ();
+		const TopoDS_Shape  Shape ();
 		%feature("autodoc", "	:param theLS:
 	:type theLS: BOPCol_ListOfShape &
 	:rtype: None

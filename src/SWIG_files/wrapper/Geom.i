@@ -1134,7 +1134,7 @@ class Geom_Transformation : public MMgt_TShared {
 
 	:rtype: gp_Trsf
 ") Trsf;
-		const gp_Trsf & Trsf ();
+		const gp_Trsf  Trsf ();
 		%feature("autodoc", "	* Returns the coefficients of the global matrix of tranformation. It is a 3 rows X 4 columns matrix. Raised if Row < 1 or Row > 3 or Col < 1 or Col > 4 Computes the reverse transformation.
 
 	:param Row:
@@ -1296,7 +1296,7 @@ class Geom_AxisPlacement : public Geom_Geometry {
 
 	:rtype: gp_Ax1
 ") Axis;
-		const gp_Ax1 & Axis ();
+		const gp_Ax1  Axis ();
 		%feature("autodoc", "	* Returns the main 'Direction' of an axis placement.
 
 	:rtype: gp_Dir
@@ -2062,7 +2062,7 @@ class Geom_Vector : public Geom_Geometry {
 
 	:rtype: gp_Vec
 ") Vec;
-		const gp_Vec & Vec ();
+		const gp_Vec  Vec ();
 };
 
 
@@ -2142,7 +2142,7 @@ class Geom_Axis1Placement : public Geom_AxisPlacement {
 
 	:rtype: gp_Ax1
 ") Ax1;
-		const gp_Ax1 & Ax1 ();
+		const gp_Ax1  Ax1 ();
 		%feature("autodoc", "	* Reverses the direction of the axis placement.
 
 	:rtype: None
@@ -2286,12 +2286,12 @@ class Geom_Axis2Placement : public Geom_AxisPlacement {
 
 	:rtype: gp_Dir
 ") XDirection;
-		const gp_Dir & XDirection ();
+		const gp_Dir  XDirection ();
 		%feature("autodoc", "	* Returns the 'YDirection'. This is a unit vector.
 
 	:rtype: gp_Dir
 ") YDirection;
-		const gp_Dir & YDirection ();
+		const gp_Dir  YDirection ();
 		%feature("autodoc", "	* Transforms an axis placement with a Trsf. The 'Location' point, the 'XDirection' and the 'YDirection' are transformed with T. The resulting main 'Direction' of <self> is the cross product between the 'XDirection' and the 'YDirection' after transformation.
 
 	:param T:
@@ -2690,7 +2690,7 @@ class Geom_Conic : public Geom_Curve {
 
 	:rtype: gp_Ax2
 ") Position;
-		const gp_Ax2 & Position ();
+		const gp_Ax2  Position ();
 		%feature("autodoc", "	* Returns the XAxis of the conic. This axis defines the origin of parametrization of the conic. This axis is perpendicular to the Axis of the conic. This axis and the Yaxis define the plane of the conic.
 
 	:rtype: gp_Ax1
@@ -2994,7 +2994,7 @@ class Geom_ElementarySurface : public Geom_Surface {
 
 	:rtype: gp_Ax3
 ") Position;
-		const gp_Ax3 & Position ();
+		const gp_Ax3  Position ();
 		%feature("autodoc", "	* Reverses the U parametric direction of the surface.
 
 	:rtype: void
@@ -3157,7 +3157,7 @@ class Geom_Line : public Geom_Curve {
 
 	:rtype: gp_Ax1
 ") Position;
-		const gp_Ax1 & Position ();
+		const gp_Ax1  Position ();
 		%feature("autodoc", "	* Changes the orientation of this line. As a result, the unit vector of the positioning axis of this line is reversed.
 
 	:rtype: None
@@ -3404,7 +3404,7 @@ class Geom_OffsetCurve : public Geom_Curve {
 
 	:rtype: gp_Dir
 ") Direction;
-		const gp_Dir & Direction ();
+		const gp_Dir  Direction ();
 		%feature("autodoc", "	* Warning! this should not be called if the basis curve is not at least C1. Nevertheless if used on portion where the curve is C1, it is OK
 
 	:param U:
@@ -4181,7 +4181,7 @@ class Geom_SweptSurface : public Geom_Surface {
 
 	:rtype: gp_Dir
 ") Direction;
-		const gp_Dir & Direction ();
+		const gp_Dir  Direction ();
 		%feature("autodoc", "	* Returns the referenced curve of the surface. For a surface of revolution it is the revolution curve, for a surface of linear extrusion it is the extruded curve.
 
 	:rtype: Handle_Geom_Curve
@@ -10062,7 +10062,7 @@ class Geom_SurfaceOfRevolution : public Geom_SweptSurface {
 
 	:rtype: gp_Pnt
 ") Location;
-		const gp_Pnt & Location ();
+		const gp_Pnt  Location ();
 		%feature("autodoc", "	* Computes the position of the reference plane of the surface defined by the basis curve and the symmetry axis. The location point is the location point of the revolution's axis, the XDirection of the plane is given by the revolution's axis and the orientation of the normal to the plane is given by the sense of revolution. Raised if the revolved curve is not planar or if the revolved curve and the symmetry axis are not in the same plane or if the maximum of distance between the axis and the revolved curve is lower or equal to Resolution from gp.
 
 	:rtype: gp_Ax2

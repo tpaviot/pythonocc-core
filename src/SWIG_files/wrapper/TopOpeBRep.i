@@ -483,7 +483,7 @@ class TopOpeBRep_DataMapIteratorOfDataMapOfTopolTool : public TCollection_BasicM
 		void Initialize (const TopOpeBRep_DataMapOfTopolTool & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: Handle_BRepTopAdaptor_TopolTool
 ") Value;
 		const Handle_BRepTopAdaptor_TopolTool & Value ();
@@ -518,7 +518,7 @@ class TopOpeBRep_DataMapNodeOfDataMapOfTopolTool : public TCollection_MapNode {
 		 TopOpeBRep_DataMapNodeOfDataMapOfTopolTool (const TopoDS_Shape & K,const Handle_BRepTopAdaptor_TopolTool & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: Handle_BRepTopAdaptor_TopolTool
 ") Value;
 		Handle_BRepTopAdaptor_TopolTool & Value ();
@@ -686,7 +686,7 @@ class TopOpeBRep_EdgesFiller {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") Face;
-		const TopoDS_Shape & Face (const Standard_Integer I);
+		const TopoDS_Shape  Face (const Standard_Integer I);
 };
 
 
@@ -774,7 +774,7 @@ class TopOpeBRep_EdgesIntersector {
 	:type Index: Standard_Integer
 	:rtype: TopoDS_Shape
 ") Edge;
-		const TopoDS_Shape & Edge (const Standard_Integer Index);
+		const TopoDS_Shape  Edge (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: Geom2dAdaptor_Curve
@@ -784,7 +784,7 @@ class TopOpeBRep_EdgesIntersector {
 	:type Index: Standard_Integer
 	:rtype: TopoDS_Shape
 ") Face;
-		const TopoDS_Shape & Face (const Standard_Integer Index);
+		const TopoDS_Shape  Face (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: BRepAdaptor_Surface
@@ -1109,7 +1109,7 @@ class TopOpeBRep_FaceEdgeIntersector {
 	:type Index: Standard_Integer
 	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape (const Standard_Integer Index);
+		const TopoDS_Shape  Shape (const Standard_Integer Index);
 		%feature("autodoc", "	* Force the tolerance values used by the next Perform(S1,S2) call.
 
 	:param tol:
@@ -1477,7 +1477,7 @@ class TopOpeBRep_FacesFiller {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Face
 ") Face;
-		const TopoDS_Face & Face (const Standard_Integer I);
+		const TopoDS_Face  Face (const Standard_Integer I);
 		%feature("autodoc", "	:param L:
 	:type L: TopOpeBRep_LineInter &
 	:param I:
@@ -1639,7 +1639,7 @@ class TopOpeBRep_FacesIntersector {
 	:type Index: Standard_Integer
 	:rtype: TopoDS_Shape
 ") Face;
-		const TopoDS_Shape & Face (const Standard_Integer Index);
+		const TopoDS_Shape  Face (const Standard_Integer Index);
 		%feature("autodoc", "	* Returns True if Perform() arguments are two faces SameDomain() and normals on both side. Raise if SameDomain is False
 
 	:rtype: bool
@@ -2030,7 +2030,7 @@ class TopOpeBRep_Hctxee2d : public MMgt_TShared {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") Edge;
-		const TopoDS_Shape & Edge (const Standard_Integer I);
+		const TopoDS_Shape  Edge (const Standard_Integer I);
 		%feature("autodoc", "	:param I:
 	:type I: Standard_Integer
 	:rtype: Geom2dAdaptor_Curve
@@ -2138,7 +2138,7 @@ class TopOpeBRep_Hctxff2d : public MMgt_TShared {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Face
 ") Face;
-		const TopoDS_Face & Face (const Standard_Integer I);
+		const TopoDS_Face  Face (const Standard_Integer I);
 		%feature("autodoc", "	:param I:
 	:type I: Standard_Integer
 	:rtype: Handle_BRepAdaptor_HSurface
@@ -2337,7 +2337,7 @@ class TopOpeBRep_LineInter {
 
 	:rtype: TopoDS_Shape
 ") Arc;
-		const TopoDS_Shape & Arc ();
+		const TopoDS_Shape  Arc ();
 		%feature("autodoc", "	* returns true if Arc() edge (of a RESTRICTION line) is an edge of the original face <Index> (1 or 2).
 
 	:param I:
@@ -2712,7 +2712,7 @@ class TopOpeBRep_Point2d {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Vertex
 ") Vertex;
-		const TopoDS_Vertex & Vertex (const Standard_Integer I);
+		const TopoDS_Vertex  Vertex (const Standard_Integer I);
 		%feature("autodoc", "	:param I:
 	:type I: Standard_Integer
 	:param T:
@@ -2787,7 +2787,7 @@ class TopOpeBRep_Point2d {
 		void SetValue (const gp_Pnt & P);
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") Value;
-		const gp_Pnt & Value ();
+		const gp_Pnt  Value ();
 		%feature("autodoc", "	:param P:
 	:type P: gp_Pnt2d
 	:rtype: None
@@ -2795,7 +2795,7 @@ class TopOpeBRep_Point2d {
 		void SetValue2d (const gp_Pnt2d & P);
 		%feature("autodoc", "	:rtype: gp_Pnt2d
 ") Value2d;
-		const gp_Pnt2d & Value2d ();
+		const gp_Pnt2d  Value2d ();
 		%feature("autodoc", "	:param B:
 	:type B: bool
 	:rtype: None
@@ -3176,7 +3176,7 @@ class TopOpeBRep_ShapeIntersector {
 	:type Index: Standard_Integer
 	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape (const Standard_Integer Index);
+		const TopoDS_Shape  Shape (const Standard_Integer Index);
 		%feature("autodoc", "	* returns True if there are more intersection between two the shapes.
 
 	:rtype: bool
@@ -3208,7 +3208,7 @@ class TopOpeBRep_ShapeIntersector {
 	:type Index: Standard_Integer
 	:rtype: TopoDS_Shape
 ") CurrentGeomShape;
-		const TopoDS_Shape & CurrentGeomShape (const Standard_Integer Index);
+		const TopoDS_Shape  CurrentGeomShape (const Standard_Integer Index);
 		%feature("autodoc", "	* return MAX of intersection tolerances with which FacesIntersector from TopOpeBRep was working.
 
 	:param tol1:
@@ -3275,7 +3275,7 @@ class TopOpeBRep_ShapeIntersector2d {
 	:type Index: Standard_Integer
 	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape (const Standard_Integer Index);
+		const TopoDS_Shape  Shape (const Standard_Integer Index);
 		%feature("autodoc", "	* returns True if there are more intersection between two the shapes.
 
 	:rtype: bool
@@ -3297,7 +3297,7 @@ class TopOpeBRep_ShapeIntersector2d {
 	:type Index: Standard_Integer
 	:rtype: TopoDS_Shape
 ") CurrentGeomShape;
-		const TopoDS_Shape & CurrentGeomShape (const Standard_Integer Index);
+		const TopoDS_Shape  CurrentGeomShape (const Standard_Integer Index);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer
 	:rtype: None
@@ -3361,7 +3361,7 @@ class TopOpeBRep_ShapeScanner {
 		void Next ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Current;
-		const TopoDS_Shape & Current ();
+		const TopoDS_Shape  Current ();
 		%feature("autodoc", "	:rtype: TopOpeBRepTool_BoxSort
 ") BoxSort;
 		const TopOpeBRepTool_BoxSort & BoxSort ();
@@ -3455,16 +3455,16 @@ class TopOpeBRep_VPointInter {
 		void ParametersOnS2 (Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") Value;
-		const gp_Pnt & Value ();
+		const gp_Pnt  Value ();
 		%feature("autodoc", "	:rtype: float
 ") Tolerance;
 		Standard_Real Tolerance ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") ArcOnS1;
-		const TopoDS_Shape & ArcOnS1 ();
+		const TopoDS_Shape  ArcOnS1 ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") ArcOnS2;
-		const TopoDS_Shape & ArcOnS2 ();
+		const TopoDS_Shape  ArcOnS2 ();
 		%feature("autodoc", "	:rtype: float
 ") ParameterOnLine;
 		Standard_Real ParameterOnLine ();
@@ -3480,7 +3480,7 @@ class TopOpeBRep_VPointInter {
 
 	:rtype: TopoDS_Shape
 ") VertexOnS1;
-		const TopoDS_Shape & VertexOnS1 ();
+		const TopoDS_Shape  VertexOnS1 ();
 		%feature("autodoc", "	:rtype: float
 ") ParameterOnArc2;
 		Standard_Real ParameterOnArc2 ();
@@ -3493,7 +3493,7 @@ class TopOpeBRep_VPointInter {
 
 	:rtype: TopoDS_Shape
 ") VertexOnS2;
-		const TopoDS_Shape & VertexOnS2 ();
+		const TopoDS_Shape  VertexOnS2 ();
 		%feature("autodoc", "	:rtype: bool
 ") IsInternal;
 		Standard_Boolean IsInternal ();
@@ -3535,7 +3535,7 @@ class TopOpeBRep_VPointInter {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") EdgeON;
-		const TopoDS_Shape & EdgeON (const Standard_Integer I);
+		const TopoDS_Shape  EdgeON (const Standard_Integer I);
 		%feature("autodoc", "	* get the parameter on edge of shape I (1,2) containing the point.
 
 	:param I:
@@ -3561,7 +3561,7 @@ class TopOpeBRep_VPointInter {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") Edge;
-		const TopoDS_Shape & Edge (const Standard_Integer I);
+		const TopoDS_Shape  Edge (const Standard_Integer I);
 		%feature("autodoc", "	* get the parameter on edge of shape I (1,2) containing the point
 
 	:param I:
@@ -3585,7 +3585,7 @@ class TopOpeBRep_VPointInter {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") Vertex;
-		const TopoDS_Shape & Vertex (const Standard_Integer I);
+		const TopoDS_Shape  Vertex (const Standard_Integer I);
 		%feature("autodoc", "	* set myKeep value according to current states.
 
 	:rtype: None
@@ -3692,7 +3692,7 @@ class TopOpeBRep_VPointInterClassifier {
 
 	:rtype: TopoDS_Shape
 ") Edge;
-		const TopoDS_Shape & Edge ();
+		const TopoDS_Shape  Edge ();
 		%feature("autodoc", "	* returns the parameter of the VPoint <VP> on Edge()
 
 	:rtype: float
@@ -3815,7 +3815,7 @@ class TopOpeBRep_WPointInter {
 		gp_Pnt2d ValueOnS2 ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") Value;
-		const gp_Pnt & Value ();
+		const gp_Pnt  Value ();
 		%feature("autodoc", "	:rtype: TopOpeBRep_PPntOn2S
 ") PPntOn2SDummy;
 		TopOpeBRep_PPntOn2S PPntOn2SDummy ();

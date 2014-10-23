@@ -156,7 +156,7 @@ class IntRes2d_Domain {
 
 	:rtype: gp_Pnt2d
 ") FirstPoint;
-		const gp_Pnt2d & FirstPoint ();
+		const gp_Pnt2d  FirstPoint ();
 		%feature("autodoc", "	* Returns the tolerance of the first (left) bound. The exception DomainError is raised if HasFirstPoint returns False.
 
 	:rtype: float
@@ -176,7 +176,7 @@ class IntRes2d_Domain {
 
 	:rtype: gp_Pnt2d
 ") LastPoint;
-		const gp_Pnt2d & LastPoint ();
+		const gp_Pnt2d  LastPoint ();
 		%feature("autodoc", "	* Returns the tolerance of the last (right) bound. The exception DomainError is raised if HasLastPoint returns False.
 
 	:rtype: float
@@ -318,7 +318,7 @@ class IntRes2d_IntersectionPoint {
 
 	:rtype: gp_Pnt2d
 ") Value;
-		const gp_Pnt2d & Value ();
+		const gp_Pnt2d  Value ();
 		%feature("autodoc", "	* Returns the parameter on the first curve.
 
 	:rtype: float
@@ -341,7 +341,7 @@ class IntRes2d_IntersectionPoint {
 		const IntRes2d_Transition & TransitionOfSecond ();
 		%feature("autodoc", "	:rtype: gp_Pnt2d
 ") _CSFDB_GetIntRes2d_IntersectionPointpt;
-		const gp_Pnt2d & _CSFDB_GetIntRes2d_IntersectionPointpt ();
+		const gp_Pnt2d  _CSFDB_GetIntRes2d_IntersectionPointpt ();
 		%feature("autodoc", "	:rtype: float
 ") _CSFDB_GetIntRes2d_IntersectionPointp1;
 		Standard_Real _CSFDB_GetIntRes2d_IntersectionPointp1 ();

@@ -196,12 +196,12 @@ class Approx_Array1OfGTrsf2d {
 	:type Index: Standard_Integer
 	:rtype: gp_GTrsf2d
 ") Value;
-		const gp_GTrsf2d & Value (const Standard_Integer Index);
+		const gp_GTrsf2d  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_GTrsf2d
 ") ChangeValue;
-		gp_GTrsf2d & ChangeValue (const Standard_Integer Index);
+		gp_GTrsf2d  ChangeValue (const Standard_Integer Index);
 };
 
 
@@ -1099,12 +1099,12 @@ class Approx_HArray1OfGTrsf2d : public MMgt_TShared {
 	:type Index: Standard_Integer
 	:rtype: gp_GTrsf2d
 ") Value;
-		const gp_GTrsf2d & Value (const Standard_Integer Index);
+		const gp_GTrsf2d  Value (const Standard_Integer Index);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: gp_GTrsf2d
 ") ChangeValue;
-		gp_GTrsf2d & ChangeValue (const Standard_Integer Index);
+		gp_GTrsf2d  ChangeValue (const Standard_Integer Index);
 		%feature("autodoc", "	:rtype: Approx_Array1OfGTrsf2d
 ") Array1;
 		const Approx_Array1OfGTrsf2d & Array1 ();

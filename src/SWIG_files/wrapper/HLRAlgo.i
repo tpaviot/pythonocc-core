@@ -3006,17 +3006,17 @@ class HLRAlgo_Projector {
 
 	:rtype: gp_Trsf
 ") Transformation;
-		const gp_Trsf & Transformation ();
+		const gp_Trsf  Transformation ();
 		%feature("autodoc", "	* Returns the active inverted transformation.
 
 	:rtype: gp_Trsf
 ") InvertedTransformation;
-		const gp_Trsf & InvertedTransformation ();
+		const gp_Trsf  InvertedTransformation ();
 		%feature("autodoc", "	* Returns the original transformation.
 
 	:rtype: gp_Trsf
 ") FullTransformation;
-		const gp_Trsf & FullTransformation ();
+		const gp_Trsf  FullTransformation ();
 		%feature("autodoc", "	* Returns the focal length.
 
 	:rtype: float

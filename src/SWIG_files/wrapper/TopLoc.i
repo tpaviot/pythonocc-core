@@ -61,7 +61,7 @@ class TopLoc_Datum3D : public MMgt_TShared {
 
 	:rtype: gp_Trsf
 ") Transformation;
-		const gp_Trsf & Transformation ();
+		const gp_Trsf  Transformation ();
 
         %feature("autodoc", "1");
         %extend{
@@ -388,7 +388,7 @@ class TopLoc_Location {
 
 	:rtype: gp_Trsf
 ") Transformation;
-		const gp_Trsf & Transformation ();
+		const gp_Trsf  Transformation ();
 		%feature("autodoc", "	:rtype: 
 ") operatorgp_Trsf;
 		 operator gp_Trsf ();

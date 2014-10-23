@@ -1775,7 +1775,7 @@ class BRep_TVertex : public TopoDS_TVertex {
 		void UpdateTolerance (const Standard_Real T);
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") Pnt;
-		const gp_Pnt & Pnt ();
+		const gp_Pnt  Pnt ();
 		%feature("autodoc", "	:param P:
 	:type P: gp_Pnt
 	:rtype: None

@@ -412,7 +412,7 @@ class IntAna2d_IntPoint {
 
 	:rtype: gp_Pnt2d
 ") Value;
-		const gp_Pnt2d & Value ();
+		const gp_Pnt2d  Value ();
 		%feature("autodoc", "	* Returns True if the second curve is implicit.
 
 	:rtype: bool
@@ -446,7 +446,7 @@ class IntAna2d_IntPoint {
 		void _CSFDB_SetIntAna2d_IntPointmyu2 (const Standard_Real p);
 		%feature("autodoc", "	:rtype: gp_Pnt2d
 ") _CSFDB_GetIntAna2d_IntPointmyp;
-		const gp_Pnt2d & _CSFDB_GetIntAna2d_IntPointmyp ();
+		const gp_Pnt2d  _CSFDB_GetIntAna2d_IntPointmyp ();
 		%feature("autodoc", "	:rtype: bool
 ") _CSFDB_GetIntAna2d_IntPointmyimplicit;
 		Standard_Boolean _CSFDB_GetIntAna2d_IntPointmyimplicit ();

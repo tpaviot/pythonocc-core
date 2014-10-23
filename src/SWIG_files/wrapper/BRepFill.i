@@ -502,7 +502,7 @@ class BRepFill_DataMapIteratorOfDataMapOfNodeShape : public TCollection_BasicMap
 		const Handle_MAT_Node & Key ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Value;
-		const TopoDS_Shape & Value ();
+		const TopoDS_Shape  Value ();
 };
 
 
@@ -538,7 +538,7 @@ class BRepFill_DataMapIteratorOfDataMapOfOrientedShapeListOfShape : public TColl
 		void Initialize (const BRepFill_DataMapOfOrientedShapeListOfShape & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TopTools_ListOfShape
 ") Value;
 		const TopTools_ListOfShape & Value ();
@@ -577,7 +577,7 @@ class BRepFill_DataMapIteratorOfDataMapOfShapeDataMapOfShapeListOfShape : public
 		void Initialize (const BRepFill_DataMapOfShapeDataMapOfShapeListOfShape & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TopTools_DataMapOfShapeListOfShape
 ") Value;
 		const TopTools_DataMapOfShapeListOfShape & Value ();
@@ -616,7 +616,7 @@ class BRepFill_DataMapIteratorOfDataMapOfShapeHArray2OfShape : public TCollectio
 		void Initialize (const BRepFill_DataMapOfShapeHArray2OfShape & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: Handle_TopTools_HArray2OfShape
 ") Value;
 		const Handle_TopTools_HArray2OfShape & Value ();
@@ -655,7 +655,7 @@ class BRepFill_DataMapIteratorOfDataMapOfShapeSequenceOfPnt : public TCollection
 		void Initialize (const BRepFill_DataMapOfShapeSequenceOfPnt & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TColgp_SequenceOfPnt
 ") Value;
 		const TColgp_SequenceOfPnt & Value ();
@@ -694,7 +694,7 @@ class BRepFill_DataMapIteratorOfDataMapOfShapeSequenceOfReal : public TCollectio
 		void Initialize (const BRepFill_DataMapOfShapeSequenceOfReal & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TColStd_SequenceOfReal
 ") Value;
 		const TColStd_SequenceOfReal & Value ();
@@ -806,7 +806,7 @@ class BRepFill_DataMapNodeOfDataMapOfNodeShape : public TCollection_MapNode {
 		Handle_MAT_Node & Key ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Value;
-		TopoDS_Shape & Value ();
+		TopoDS_Shape  Value ();
 };
 
 
@@ -877,7 +877,7 @@ class BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape : public TCollecti
 		 BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape (const TopoDS_Shape & K,const TopTools_ListOfShape & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TopTools_ListOfShape
 ") Value;
 		TopTools_ListOfShape & Value ();
@@ -951,7 +951,7 @@ class BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape : public TCo
 		 BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape (const TopoDS_Shape & K,const TopTools_DataMapOfShapeListOfShape & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TopTools_DataMapOfShapeListOfShape
 ") Value;
 		TopTools_DataMapOfShapeListOfShape & Value ();
@@ -1025,7 +1025,7 @@ class BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape : public TCollection_Ma
 		 BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape (const TopoDS_Shape & K,const Handle_TopTools_HArray2OfShape & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: Handle_TopTools_HArray2OfShape
 ") Value;
 		Handle_TopTools_HArray2OfShape & Value ();
@@ -1099,7 +1099,7 @@ class BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt : public TCollection_Map
 		 BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt (const TopoDS_Shape & K,const TColgp_SequenceOfPnt & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TColgp_SequenceOfPnt
 ") Value;
 		TColgp_SequenceOfPnt & Value ();
@@ -1173,7 +1173,7 @@ class BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal : public TCollection_Ma
 		 BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfReal (const TopoDS_Shape & K,const TColStd_SequenceOfReal & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TColStd_SequenceOfReal
 ") Value;
 		TColStd_SequenceOfReal & Value ();
@@ -1360,12 +1360,12 @@ class BRepFill_DataMapOfNodeShape : public TCollection_BasicMap {
 	:type K: Handle_MAT_Node &
 	:rtype: TopoDS_Shape
 ") Find;
-		const TopoDS_Shape & Find (const Handle_MAT_Node & K);
+		const TopoDS_Shape  Find (const Handle_MAT_Node & K);
 		%feature("autodoc", "	:param K:
 	:type K: Handle_MAT_Node &
 	:rtype: TopoDS_Shape
 ") ChangeFind;
-		TopoDS_Shape & ChangeFind (const Handle_MAT_Node & K);
+		TopoDS_Shape  ChangeFind (const Handle_MAT_Node & K);
 		%feature("autodoc", "	:param K:
 	:type K: Handle_MAT_Node &
 	:rtype: Standard_Address
@@ -1978,7 +1978,7 @@ class BRepFill_Evolved {
 
 	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape ();
+		const TopoDS_Shape  Shape ();
 		%feature("autodoc", "	* Returns the shapes created from a subshape <SpineShape> of the spine and a subshape <ProfShape> on the profile.
 
 	:param SpineShape:
@@ -1995,12 +1995,12 @@ class BRepFill_Evolved {
 
 	:rtype: TopoDS_Shape
 ") Top;
-		const TopoDS_Shape & Top ();
+		const TopoDS_Shape  Top ();
 		%feature("autodoc", "	* Return the face Bottom if <Solid> is True in the constructor.
 
 	:rtype: TopoDS_Shape
 ") Bottom;
-		const TopoDS_Shape & Bottom ();
+		const TopoDS_Shape  Bottom ();
 };
 
 
@@ -2248,7 +2248,7 @@ class BRepFill_Generator {
 		void Perform ();
 		%feature("autodoc", "	:rtype: TopoDS_Shell
 ") Shell;
-		const TopoDS_Shell & Shell ();
+		const TopoDS_Shell  Shell ();
 		%feature("autodoc", "	* Returns all the shapes created
 
 	:rtype: TopTools_DataMapOfShapeListOfShape
@@ -2296,7 +2296,7 @@ class BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape : pu
 		 BRepFill_IndexedDataMapNodeOfIndexedDataMapOfOrientedShapeListOfShape (const TopoDS_Shape & K1,const Standard_Integer K2,const TopTools_ListOfShape & I,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key1;
-		TopoDS_Shape & Key1 ();
+		TopoDS_Shape  Key1 ();
 
             %feature("autodoc","1");
             %extend {
@@ -2426,7 +2426,7 @@ class BRepFill_IndexedDataMapOfOrientedShapeListOfShape : public TCollection_Bas
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") FindKey;
-		const TopoDS_Shape & FindKey (const Standard_Integer I);
+		const TopoDS_Shape  FindKey (const Standard_Integer I);
 		%feature("autodoc", "	:param I:
 	:type I: Standard_Integer
 	:rtype: TopTools_ListOfShape
@@ -2757,14 +2757,14 @@ class BRepFill_LocationLaw : public MMgt_TShared {
 
 	:rtype: TopoDS_Wire
 ") Wire;
-		const TopoDS_Wire & Wire ();
+		const TopoDS_Wire  Wire ();
 		%feature("autodoc", "	* Return the Edge of rank <Index> in the path <Index> have to be in [1, NbLaw()]
 
 	:param Index:
 	:type Index: Standard_Integer
 	:rtype: TopoDS_Edge
 ") Edge;
-		const TopoDS_Edge & Edge (const Standard_Integer Index);
+		const TopoDS_Edge  Edge (const Standard_Integer Index);
 		%feature("autodoc", "	* Return the vertex of rank <Index> in the path <Index> have to be in [0, NbLaw()]
 
 	:param Index:
@@ -3200,7 +3200,7 @@ class BRepFill_OffsetAncestors {
 	:type S1: TopoDS_Edge &
 	:rtype: TopoDS_Shape
 ") Ancestor;
-		const TopoDS_Shape & Ancestor (const TopoDS_Edge & S1);
+		const TopoDS_Shape  Ancestor (const TopoDS_Edge & S1);
 };
 
 
@@ -3271,12 +3271,12 @@ class BRepFill_OffsetWire {
 		Standard_Boolean IsDone ();
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") Spine;
-		const TopoDS_Face & Spine ();
+		const TopoDS_Face  Spine ();
 		%feature("autodoc", "	* returns the generated shape.
 
 	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape ();
+		const TopoDS_Shape  Shape ();
 		%feature("autodoc", "	* Returns the shapes created from a subshape <SpineShape> of the spine. Returns the last computed Offset.
 
 	:param SpineShape:
@@ -3334,19 +3334,19 @@ class BRepFill_Pipe {
 		void Perform (const TopoDS_Wire & Spine,const TopoDS_Shape & Profile,const Standard_Boolean GeneratePartCase = Standard_False);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Spine;
-		const TopoDS_Shape & Spine ();
+		const TopoDS_Shape  Spine ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Profile;
-		const TopoDS_Shape & Profile ();
+		const TopoDS_Shape  Profile ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape ();
+		const TopoDS_Shape  Shape ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") FirstShape;
-		const TopoDS_Shape & FirstShape ();
+		const TopoDS_Shape  FirstShape ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") LastShape;
-		const TopoDS_Shape & LastShape ();
+		const TopoDS_Shape  LastShape ();
 		%feature("autodoc", "	* Returns the face created from an edge of the spine and an edge of the profile. if the edges are not in the spine or the profile
 
 	:param ESpine:
@@ -3569,17 +3569,17 @@ class BRepFill_PipeShell : public MMgt_TShared {
 
 	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape ();
+		const TopoDS_Shape  Shape ();
 		%feature("autodoc", "	* Returns the TopoDS Shape of the bottom of the sweep.
 
 	:rtype: TopoDS_Shape
 ") FirstShape;
-		const TopoDS_Shape & FirstShape ();
+		const TopoDS_Shape  FirstShape ();
 		%feature("autodoc", "	* Returns the TopoDS Shape of the top of the sweep.
 
 	:rtype: TopoDS_Shape
 ") LastShape;
-		const TopoDS_Shape & LastShape ();
+		const TopoDS_Shape  LastShape ();
 		%feature("autodoc", "	* Returns the list of shapes generated from the shape <S>.
 
 	:param S:
@@ -3669,10 +3669,10 @@ class BRepFill_Section {
 		void Set (const Standard_Boolean IsLaw);
 		%feature("autodoc", "	:rtype: TopoDS_Wire
 ") Wire;
-		const TopoDS_Wire & Wire ();
+		const TopoDS_Wire  Wire ();
 		%feature("autodoc", "	:rtype: TopoDS_Vertex
 ") Vertex;
-		const TopoDS_Vertex & Vertex ();
+		const TopoDS_Vertex  Vertex ();
 		%feature("autodoc", "	:rtype: bool
 ") IsLaw;
 		Standard_Boolean IsLaw ();
@@ -3852,7 +3852,7 @@ class BRepFill_SectionPlacement {
 		 BRepFill_SectionPlacement (const Handle_BRepFill_LocationLaw & Law,const TopoDS_Shape & Section,const TopoDS_Shape & Vertex,const Standard_Boolean WithContact = Standard_False,const Standard_Boolean WithCorrection = Standard_False);
 		%feature("autodoc", "	:rtype: gp_Trsf
 ") Transformation;
-		const gp_Trsf & Transformation ();
+		const gp_Trsf  Transformation ();
 		%feature("autodoc", "	:rtype: float
 ") AbscissaOnPath;
 		Standard_Real AbscissaOnPath ();
@@ -5191,7 +5191,7 @@ class BRepFill_ShapeLaw : public BRepFill_SectionLaw {
 	:type Index: Standard_Integer
 	:rtype: TopoDS_Edge
 ") Edge;
-		const TopoDS_Edge & Edge (const Standard_Integer Index);
+		const TopoDS_Edge  Edge (const Standard_Integer Index);
 };
 
 

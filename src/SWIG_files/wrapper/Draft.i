@@ -96,7 +96,7 @@ class Draft_DataMapIteratorOfDataMapOfEdgeEdgeInfo : public TCollection_BasicMap
 		void Initialize (const Draft_DataMapOfEdgeEdgeInfo & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Edge
 ") Key;
-		const TopoDS_Edge & Key ();
+		const TopoDS_Edge  Key ();
 		%feature("autodoc", "	:rtype: Draft_EdgeInfo
 ") Value;
 		const Draft_EdgeInfo & Value ();
@@ -135,7 +135,7 @@ class Draft_DataMapIteratorOfDataMapOfFaceFaceInfo : public TCollection_BasicMap
 		void Initialize (const Draft_DataMapOfFaceFaceInfo & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") Key;
-		const TopoDS_Face & Key ();
+		const TopoDS_Face  Key ();
 		%feature("autodoc", "	:rtype: Draft_FaceInfo
 ") Value;
 		const Draft_FaceInfo & Value ();
@@ -174,7 +174,7 @@ class Draft_DataMapIteratorOfDataMapOfVertexVertexInfo : public TCollection_Basi
 		void Initialize (const Draft_DataMapOfVertexVertexInfo & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Vertex
 ") Key;
-		const TopoDS_Vertex & Key ();
+		const TopoDS_Vertex  Key ();
 		%feature("autodoc", "	:rtype: Draft_VertexInfo
 ") Value;
 		const Draft_VertexInfo & Value ();
@@ -209,7 +209,7 @@ class Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo : public TCollection_MapNode {
 		 Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo (const TopoDS_Edge & K,const Draft_EdgeInfo & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Edge
 ") Key;
-		TopoDS_Edge & Key ();
+		TopoDS_Edge  Key ();
 		%feature("autodoc", "	:rtype: Draft_EdgeInfo
 ") Value;
 		Draft_EdgeInfo & Value ();
@@ -283,7 +283,7 @@ class Draft_DataMapNodeOfDataMapOfFaceFaceInfo : public TCollection_MapNode {
 		 Draft_DataMapNodeOfDataMapOfFaceFaceInfo (const TopoDS_Face & K,const Draft_FaceInfo & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") Key;
-		TopoDS_Face & Key ();
+		TopoDS_Face  Key ();
 		%feature("autodoc", "	:rtype: Draft_FaceInfo
 ") Value;
 		Draft_FaceInfo & Value ();
@@ -357,7 +357,7 @@ class Draft_DataMapNodeOfDataMapOfVertexVertexInfo : public TCollection_MapNode 
 		 Draft_DataMapNodeOfDataMapOfVertexVertexInfo (const TopoDS_Vertex & K,const Draft_VertexInfo & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Vertex
 ") Key;
-		TopoDS_Vertex & Key ();
+		TopoDS_Vertex  Key ();
 		%feature("autodoc", "	:rtype: Draft_VertexInfo
 ") Value;
 		Draft_VertexInfo & Value ();
@@ -701,10 +701,10 @@ class Draft_EdgeInfo {
 		const Handle_Geom_Curve & Geometry ();
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") FirstFace;
-		const TopoDS_Face & FirstFace ();
+		const TopoDS_Face  FirstFace ();
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") SecondFace;
-		const TopoDS_Face & SecondFace ();
+		const TopoDS_Face  SecondFace ();
 		%feature("autodoc", "	:rtype: Handle_Geom2d_Curve
 ") FirstPC;
 		const Handle_Geom2d_Curve & FirstPC ();
@@ -722,7 +722,7 @@ class Draft_EdgeInfo {
 		Handle_Geom2d_Curve & ChangeSecondPC ();
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") RootFace;
-		const TopoDS_Face & RootFace ();
+		const TopoDS_Face  RootFace ();
 		%feature("autodoc", "	:param tol:
 	:type tol: float
 	:rtype: None
@@ -776,10 +776,10 @@ class Draft_FaceInfo {
 		void Add (const TopoDS_Face & F);
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") FirstFace;
-		const TopoDS_Face & FirstFace ();
+		const TopoDS_Face  FirstFace ();
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") SecondFace;
-		const TopoDS_Face & SecondFace ();
+		const TopoDS_Face  SecondFace ();
 		%feature("autodoc", "	:rtype: Handle_Geom_Surface
 ") Geometry;
 		const Handle_Geom_Surface & Geometry ();
@@ -788,7 +788,7 @@ class Draft_FaceInfo {
 		Handle_Geom_Surface & ChangeGeometry ();
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") RootFace;
-		const TopoDS_Face & RootFace ();
+		const TopoDS_Face  RootFace ();
 		%feature("autodoc", "	:rtype: Handle_Geom_Curve
 ") ChangeCurve;
 		Handle_Geom_Curve & ChangeCurve ();
@@ -871,7 +871,7 @@ class Draft_Modification : public BRepTools_Modification {
 
 	:rtype: TopoDS_Shape
 ") ProblematicShape;
-		const TopoDS_Shape & ProblematicShape ();
+		const TopoDS_Shape  ProblematicShape ();
 		%feature("autodoc", "	* Returns all the faces which have been added together with the face <F>.
 
 	:param F:
@@ -1041,7 +1041,7 @@ class Draft_VertexInfo {
 		void Add (const TopoDS_Edge & E);
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") Geometry;
-		const gp_Pnt & Geometry ();
+		const gp_Pnt  Geometry ();
 		%feature("autodoc", "	:param E:
 	:type E: TopoDS_Edge &
 	:rtype: float
@@ -1052,7 +1052,7 @@ class Draft_VertexInfo {
 		void InitEdgeIterator ();
 		%feature("autodoc", "	:rtype: TopoDS_Edge
 ") Edge;
-		const TopoDS_Edge & Edge ();
+		const TopoDS_Edge  Edge ();
 		%feature("autodoc", "	:rtype: None
 ") NextEdge;
 		void NextEdge ();
@@ -1061,7 +1061,7 @@ class Draft_VertexInfo {
 		Standard_Boolean MoreEdge ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") ChangeGeometry;
-		gp_Pnt & ChangeGeometry ();
+		gp_Pnt  ChangeGeometry ();
 		%feature("autodoc", "	:param E:
 	:type E: TopoDS_Edge &
 	:rtype: float

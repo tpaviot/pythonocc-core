@@ -255,7 +255,7 @@ class TopOpeBRepTool_BoxSort {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") HABShape;
-		const TopoDS_Shape & HABShape (const Standard_Integer I);
+		const TopoDS_Shape  HABShape (const Standard_Integer I);
 		%feature("autodoc", "	:param S:
 	:type S: TopoDS_Shape &
 	:param TS:
@@ -283,7 +283,7 @@ class TopOpeBRepTool_BoxSort {
 	:type I: TColStd_ListIteratorOfListOfInteger &
 	:rtype: TopoDS_Shape
 ") TouchedShape;
-		const TopoDS_Shape & TouchedShape (const TColStd_ListIteratorOfListOfInteger & I);
+		const TopoDS_Shape  TouchedShape (const TColStd_ListIteratorOfListOfInteger & I);
 		%feature("autodoc", "	:param S:
 	:type S: TopoDS_Shape &
 	:rtype: Bnd_Box
@@ -355,7 +355,7 @@ class TopOpeBRepTool_C2DF {
 		const Handle_Geom2d_Curve & PC (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") Face;
-		const TopoDS_Face & Face ();
+		const TopoDS_Face  Face ();
 		%feature("autodoc", "	:param PC:
 	:type PC: Handle_Geom2d_Curve &
 	:rtype: bool
@@ -473,7 +473,7 @@ class TopOpeBRepTool_CORRISO {
 		 TopOpeBRepTool_CORRISO (const TopoDS_Face & FRef);
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") Fref;
-		const TopoDS_Face & Fref ();
+		const TopoDS_Face  Fref ();
 		%feature("autodoc", "	:rtype: GeomAdaptor_Surface
 ") GASref;
 		const GeomAdaptor_Surface & GASref ();
@@ -491,7 +491,7 @@ class TopOpeBRepTool_CORRISO {
 		Standard_Boolean Init (const TopoDS_Shape & S);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") S;
-		const TopoDS_Shape & S ();
+		const TopoDS_Shape  S ();
 		%feature("autodoc", "	:rtype: TopTools_ListOfShape
 ") Eds;
 		const TopTools_ListOfShape & Eds ();
@@ -755,7 +755,7 @@ class TopOpeBRepTool_DataMapIteratorOfDataMapOfOrientedShapeC2DF : public TColle
 		void Initialize (const TopOpeBRepTool_DataMapOfOrientedShapeC2DF & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TopOpeBRepTool_C2DF
 ") Value;
 		const TopOpeBRepTool_C2DF & Value ();
@@ -794,7 +794,7 @@ class TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeListOfC2DF : public TCollect
 		void Initialize (const TopOpeBRepTool_DataMapOfShapeListOfC2DF & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TopOpeBRepTool_ListOfC2DF
 ") Value;
 		const TopOpeBRepTool_ListOfC2DF & Value ();
@@ -833,7 +833,7 @@ class TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeface : public TCollection_Ba
 		void Initialize (const TopOpeBRepTool_DataMapOfShapeface & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TopOpeBRepTool_face
 ") Value;
 		const TopOpeBRepTool_face & Value ();
@@ -868,7 +868,7 @@ class TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF : public TCollectio
 		 TopOpeBRepTool_DataMapNodeOfDataMapOfOrientedShapeC2DF (const TopoDS_Shape & K,const TopOpeBRepTool_C2DF & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TopOpeBRepTool_C2DF
 ") Value;
 		TopOpeBRepTool_C2DF & Value ();
@@ -942,7 +942,7 @@ class TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF : public TCollection_
 		 TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF (const TopoDS_Shape & K,const TopOpeBRepTool_ListOfC2DF & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TopOpeBRepTool_ListOfC2DF
 ") Value;
 		TopOpeBRepTool_ListOfC2DF & Value ();
@@ -1016,7 +1016,7 @@ class TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface : public TCollection_MapNod
 		 TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface (const TopoDS_Shape & K,const TopOpeBRepTool_face & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TopOpeBRepTool_face
 ") Value;
 		TopOpeBRepTool_face & Value ();
@@ -1360,7 +1360,7 @@ class TopOpeBRepTool_FuseEdges {
 
 	:rtype: TopoDS_Shape
 ") Shape;
-		TopoDS_Shape & Shape ();
+		TopoDS_Shape  Shape ();
 		%feature("autodoc", "	* returns the number of vertices candidate to be removed
 
 	:rtype: int
@@ -1570,7 +1570,7 @@ class TopOpeBRepTool_HBoxTool : public MMgt_TShared {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape (const Standard_Integer I);
+		const TopoDS_Shape  Shape (const Standard_Integer I);
 		%feature("autodoc", "	:param S:
 	:type S: TopoDS_Shape &
 	:rtype: int
@@ -1659,7 +1659,7 @@ class TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox : public TColl
 		 TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox (const TopoDS_Shape & K1,const Standard_Integer K2,const Bnd_Box & I,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key1;
-		TopoDS_Shape & Key1 ();
+		TopoDS_Shape  Key1 ();
 
             %feature("autodoc","1");
             %extend {
@@ -1753,7 +1753,7 @@ class TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d : public TCo
 		 TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d (const TopoDS_Shape & K1,const Standard_Integer K2,const Bnd_Box2d & I,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key1;
-		TopoDS_Shape & Key1 ();
+		TopoDS_Shape  Key1 ();
 
             %feature("autodoc","1");
             %extend {
@@ -1847,7 +1847,7 @@ class TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity : public
 		 TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity (const TopoDS_Shape & K1,const Standard_Integer K2,const TopOpeBRepTool_connexity & I,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key1;
-		TopoDS_Shape & Key1 ();
+		TopoDS_Shape  Key1 ();
 
             %feature("autodoc","1");
             %extend {
@@ -1941,7 +1941,7 @@ class TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier : publi
 		 TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier (const TopoDS_Shape & K1,const Standard_Integer K2,const BRepClass3d_SolidClassifier & I,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key1;
-		TopoDS_Shape & Key1 ();
+		TopoDS_Shape  Key1 ();
 
             %feature("autodoc","1");
             %extend {
@@ -2071,7 +2071,7 @@ class TopOpeBRepTool_IndexedDataMapOfShapeBox : public TCollection_BasicMap {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") FindKey;
-		const TopoDS_Shape & FindKey (const Standard_Integer I);
+		const TopoDS_Shape  FindKey (const Standard_Integer I);
 		%feature("autodoc", "	:param I:
 	:type I: Standard_Integer
 	:rtype: Bnd_Box
@@ -2178,7 +2178,7 @@ class TopOpeBRepTool_IndexedDataMapOfShapeBox2d : public TCollection_BasicMap {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") FindKey;
-		const TopoDS_Shape & FindKey (const Standard_Integer I);
+		const TopoDS_Shape  FindKey (const Standard_Integer I);
 		%feature("autodoc", "	:param I:
 	:type I: Standard_Integer
 	:rtype: Bnd_Box2d
@@ -2285,7 +2285,7 @@ class TopOpeBRepTool_IndexedDataMapOfShapeconnexity : public TCollection_BasicMa
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") FindKey;
-		const TopoDS_Shape & FindKey (const Standard_Integer I);
+		const TopoDS_Shape  FindKey (const Standard_Integer I);
 		%feature("autodoc", "	:param I:
 	:type I: Standard_Integer
 	:rtype: TopOpeBRepTool_connexity
@@ -2392,7 +2392,7 @@ class TopOpeBRepTool_IndexedDataMapOfSolidClassifier : public TCollection_BasicM
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") FindKey;
-		const TopoDS_Shape & FindKey (const Standard_Integer I);
+		const TopoDS_Shape  FindKey (const Standard_Integer I);
 		%feature("autodoc", "	:param I:
 	:type I: Standard_Integer
 	:rtype: BRepClass3d_SolidClassifier
@@ -2697,7 +2697,7 @@ class TopOpeBRepTool_PurgeInternalEdges {
 
 	:rtype: TopoDS_Shape
 ") Shape;
-		TopoDS_Shape & Shape ();
+		TopoDS_Shape  Shape ();
 		%feature("autodoc", "	* returns the number of edges candidate to be removed
 
 	:rtype: int
@@ -2743,7 +2743,7 @@ class TopOpeBRepTool_REGUS {
 		void Init (const TopoDS_Shape & S);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") S;
-		const TopoDS_Shape & S ();
+		const TopoDS_Shape  S ();
 		%feature("autodoc", "	:rtype: bool
 ") MapS;
 		Standard_Boolean MapS ();
@@ -2831,7 +2831,7 @@ class TopOpeBRepTool_REGUW {
 		 TopOpeBRepTool_REGUW (const TopoDS_Face & FRef);
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") Fref;
-		const TopoDS_Face & Fref ();
+		const TopoDS_Face  Fref ();
 		%feature("autodoc", "	:param Esplits:
 	:type Esplits: TopTools_DataMapOfShapeListOfShape &
 	:rtype: None
@@ -2862,7 +2862,7 @@ class TopOpeBRepTool_REGUW {
 		void Init (const TopoDS_Shape & S);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") S;
-		const TopoDS_Shape & S ();
+		const TopoDS_Shape  S ();
 		%feature("autodoc", "	:rtype: bool
 ") HasInit;
 		Standard_Boolean HasInit ();
@@ -3061,10 +3061,10 @@ class TopOpeBRepTool_ShapeClassifier {
 		TopAbs_State State ();
 		%feature("autodoc", "	:rtype: gp_Pnt2d
 ") P2D;
-		const gp_Pnt2d & P2D ();
+		const gp_Pnt2d  P2D ();
 		%feature("autodoc", "	:rtype: gp_Pnt
 ") P3D;
-		const gp_Pnt & P3D ();
+		const gp_Pnt  P3D ();
 };
 
 
@@ -3124,7 +3124,7 @@ class TopOpeBRepTool_ShapeExplorer {
 
 	:rtype: TopoDS_Shape
 ") Current;
-		const TopoDS_Shape & Current ();
+		const TopoDS_Shape  Current ();
 		%feature("autodoc", "	:rtype: int
 ") NbShapes;
 		Standard_Integer NbShapes ();
@@ -3988,7 +3988,7 @@ class TopOpeBRepTool_connexity {
 		void SetKey (const TopoDS_Shape & Key);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:param OriKey:
 	:type OriKey: Standard_Integer
 	:param Item:
@@ -4075,7 +4075,7 @@ class TopOpeBRepTool_face {
 		Standard_Boolean Init (const TopoDS_Wire & W,const TopoDS_Face & Fref);
 		%feature("autodoc", "	:rtype: TopoDS_Wire
 ") W;
-		const TopoDS_Wire & W ();
+		const TopoDS_Wire  W ();
 		%feature("autodoc", "	:rtype: bool
 ") IsDone;
 		Standard_Boolean IsDone ();
@@ -4084,7 +4084,7 @@ class TopOpeBRepTool_face {
 		Standard_Boolean Finite ();
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") Ffinite;
-		const TopoDS_Face & Ffinite ();
+		const TopoDS_Face  Ffinite ();
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") RealF;
 		TopoDS_Face RealF ();

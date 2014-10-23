@@ -56,16 +56,16 @@ class BRepClass_Edge {
 		 BRepClass_Edge (const TopoDS_Edge & E,const TopoDS_Face & F);
 		%feature("autodoc", "	:rtype: TopoDS_Edge
 ") Edge;
-		TopoDS_Edge & Edge ();
+		TopoDS_Edge  Edge ();
 		%feature("autodoc", "	:rtype: TopoDS_Edge
 ") Edge;
-		const TopoDS_Edge & Edge ();
+		const TopoDS_Edge  Edge ();
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") Face;
-		TopoDS_Face & Face ();
+		TopoDS_Face  Face ();
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") Face;
-		const TopoDS_Face & Face ();
+		const TopoDS_Face  Face ();
 };
 
 

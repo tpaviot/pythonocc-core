@@ -618,7 +618,7 @@ class ShapeAnalysis_DataMapIteratorOfDataMapOfShapeListOfReal : public TCollecti
 		void Initialize (const ShapeAnalysis_DataMapOfShapeListOfReal & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TColStd_ListOfReal
 ") Value;
 		const TColStd_ListOfReal & Value ();
@@ -653,7 +653,7 @@ class ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal : public TCollection_M
 		 ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal (const TopoDS_Shape & K,const TColStd_ListOfReal & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TColStd_ListOfReal
 ") Value;
 		TColStd_ListOfReal & Value ();
@@ -1315,12 +1315,12 @@ class ShapeAnalysis_FreeBounds {
 
 	:rtype: TopoDS_Compound
 ") GetClosedWires;
-		const TopoDS_Compound & GetClosedWires ();
+		const TopoDS_Compound  GetClosedWires ();
 		%feature("autodoc", "	* Returns compound of open wires out of free edges.
 
 	:rtype: TopoDS_Compound
 ") GetOpenWires;
-		const TopoDS_Compound & GetOpenWires ();
+		const TopoDS_Compound  GetOpenWires ();
 		%feature("autodoc", "	* Builds sequnce of <wires> out of sequence of not sorted <edges>. Tries to build wires of maximum length. Building a wire is stopped when no edges can be connected to it at its head or at its tail.  Orientation of the edge can change when connecting. If <shared> is True connection is performed only when adjacent edges share the same vertex. If <shared> is False connection is performed only when ends of adjacent edges are at distance less than <toler>.
 
 	:param edges:
@@ -2980,7 +2980,7 @@ class ShapeAnalysis_Wire : public MMgt_TShared {
 
 	:rtype: TopoDS_Face
 ") Face;
-		const TopoDS_Face & Face ();
+		const TopoDS_Face  Face ();
 		%feature("autodoc", "	* Returns the working surface
 
 	:rtype: Handle_ShapeAnalysis_Surface

@@ -103,10 +103,10 @@ class gce_MakeMirror {
 
 	:rtype: gp_Trsf
 ") Value;
-		const gp_Trsf & Value ();
+		const gp_Trsf  Value ();
 		%feature("autodoc", "	:rtype: gp_Trsf
 ") Operator;
-		const gp_Trsf & Operator ();
+		const gp_Trsf  Operator ();
 		%feature("autodoc", "	:rtype: 
 ") operatorgp_Trsf;
 		 operator gp_Trsf ();
@@ -158,10 +158,10 @@ class gce_MakeMirror2d {
 
 	:rtype: gp_Trsf2d
 ") Value;
-		const gp_Trsf2d & Value ();
+		const gp_Trsf2d  Value ();
 		%feature("autodoc", "	:rtype: gp_Trsf2d
 ") Operator;
-		const gp_Trsf2d & Operator ();
+		const gp_Trsf2d  Operator ();
 		%feature("autodoc", "	:rtype: 
 ") operatorgp_Trsf2d;
 		 operator gp_Trsf2d ();
@@ -218,10 +218,10 @@ class gce_MakeRotation {
 
 	:rtype: gp_Trsf
 ") Value;
-		const gp_Trsf & Value ();
+		const gp_Trsf  Value ();
 		%feature("autodoc", "	:rtype: gp_Trsf
 ") Operator;
-		const gp_Trsf & Operator ();
+		const gp_Trsf  Operator ();
 		%feature("autodoc", "	:rtype: 
 ") operatorgp_Trsf;
 		 operator gp_Trsf ();
@@ -258,10 +258,10 @@ class gce_MakeRotation2d {
 
 	:rtype: gp_Trsf2d
 ") Value;
-		const gp_Trsf2d & Value ();
+		const gp_Trsf2d  Value ();
 		%feature("autodoc", "	:rtype: gp_Trsf2d
 ") Operator;
-		const gp_Trsf2d & Operator ();
+		const gp_Trsf2d  Operator ();
 		%feature("autodoc", "	:rtype: 
 ") operatorgp_Trsf2d;
 		 operator gp_Trsf2d ();
@@ -298,10 +298,10 @@ class gce_MakeScale {
 
 	:rtype: gp_Trsf
 ") Value;
-		const gp_Trsf & Value ();
+		const gp_Trsf  Value ();
 		%feature("autodoc", "	:rtype: gp_Trsf
 ") Operator;
-		const gp_Trsf & Operator ();
+		const gp_Trsf  Operator ();
 		%feature("autodoc", "	:rtype: 
 ") operatorgp_Trsf;
 		 operator gp_Trsf ();
@@ -338,10 +338,10 @@ class gce_MakeScale2d {
 
 	:rtype: gp_Trsf2d
 ") Value;
-		const gp_Trsf2d & Value ();
+		const gp_Trsf2d  Value ();
 		%feature("autodoc", "	:rtype: gp_Trsf2d
 ") Operator;
-		const gp_Trsf2d & Operator ();
+		const gp_Trsf2d  Operator ();
 		%feature("autodoc", "	:rtype: 
 ") operatorgp_Trsf2d;
 		 operator gp_Trsf2d ();
@@ -385,10 +385,10 @@ class gce_MakeTranslation {
 
 	:rtype: gp_Trsf
 ") Value;
-		const gp_Trsf & Value ();
+		const gp_Trsf  Value ();
 		%feature("autodoc", "	:rtype: gp_Trsf
 ") Operator;
-		const gp_Trsf & Operator ();
+		const gp_Trsf  Operator ();
 		%feature("autodoc", "	:rtype: 
 ") operatorgp_Trsf;
 		 operator gp_Trsf ();
@@ -432,10 +432,10 @@ class gce_MakeTranslation2d {
 
 	:rtype: gp_Trsf2d
 ") Value;
-		const gp_Trsf2d & Value ();
+		const gp_Trsf2d  Value ();
 		%feature("autodoc", "	:rtype: gp_Trsf2d
 ") Operator;
-		const gp_Trsf2d & Operator ();
+		const gp_Trsf2d  Operator ();
 		%feature("autodoc", "	:rtype: 
 ") operatorgp_Trsf2d;
 		 operator gp_Trsf2d ();
@@ -573,10 +573,10 @@ class gce_MakeCirc : public gce_Root {
 
 	:rtype: gp_Circ
 ") Value;
-		const gp_Circ & Value ();
+		const gp_Circ  Value ();
 		%feature("autodoc", "	:rtype: gp_Circ
 ") Operator;
-		const gp_Circ & Operator ();
+		const gp_Circ  Operator ();
 		%feature("autodoc", "	:rtype: 
 ") operatorgp_Circ;
 		 operator gp_Circ ();
@@ -675,10 +675,10 @@ class gce_MakeCirc2d : public gce_Root {
 
 	:rtype: gp_Circ2d
 ") Value;
-		const gp_Circ2d & Value ();
+		const gp_Circ2d  Value ();
 		%feature("autodoc", "	:rtype: gp_Circ2d
 ") Operator;
-		const gp_Circ2d & Operator ();
+		const gp_Circ2d  Operator ();
 		%feature("autodoc", "	:rtype: 
 ") operatorgp_Circ2d;
 		 operator gp_Circ2d ();
@@ -783,10 +783,10 @@ class gce_MakeCone : public gce_Root {
 
 	:rtype: gp_Cone
 ") Value;
-		const gp_Cone & Value ();
+		const gp_Cone  Value ();
 		%feature("autodoc", "	:rtype: gp_Cone
 ") Operator;
-		const gp_Cone & Operator ();
+		const gp_Cone  Operator ();
 		%feature("autodoc", "	:rtype: 
 ") operatorgp_Cone;
 		 operator gp_Cone ();
@@ -868,10 +868,10 @@ class gce_MakeCylinder : public gce_Root {
 
 	:rtype: gp_Cylinder
 ") Value;
-		const gp_Cylinder & Value ();
+		const gp_Cylinder  Value ();
 		%feature("autodoc", "	:rtype: gp_Cylinder
 ") Operator;
-		const gp_Cylinder & Operator ();
+		const gp_Cylinder  Operator ();
 		%feature("autodoc", "	:rtype: 
 ") operatorgp_Cylinder;
 		 operator gp_Cylinder ();
@@ -933,10 +933,10 @@ class gce_MakeDir : public gce_Root {
 
 	:rtype: gp_Dir
 ") Value;
-		const gp_Dir & Value ();
+		const gp_Dir  Value ();
 		%feature("autodoc", "	:rtype: gp_Dir
 ") Operator;
-		const gp_Dir & Operator ();
+		const gp_Dir  Operator ();
 		%feature("autodoc", "	:rtype: 
 ") operatorgp_Dir;
 		 operator gp_Dir ();
@@ -996,10 +996,10 @@ class gce_MakeDir2d : public gce_Root {
 
 	:rtype: gp_Dir2d
 ") Value;
-		const gp_Dir2d & Value ();
+		const gp_Dir2d  Value ();
 		%feature("autodoc", "	:rtype: gp_Dir2d
 ") Operator;
-		const gp_Dir2d & Operator ();
+		const gp_Dir2d  Operator ();
 		%feature("autodoc", "	:rtype: 
 ") operatorgp_Dir2d;
 		 operator gp_Dir2d ();
@@ -1049,10 +1049,10 @@ class gce_MakeElips : public gce_Root {
 
 	:rtype: gp_Elips
 ") Value;
-		const gp_Elips & Value ();
+		const gp_Elips  Value ();
 		%feature("autodoc", "	:rtype: gp_Elips
 ") Operator;
-		const gp_Elips & Operator ();
+		const gp_Elips  Operator ();
 		%feature("autodoc", "	:rtype: 
 ") operatorgp_Elips;
 		 operator gp_Elips ();
@@ -1115,10 +1115,10 @@ class gce_MakeElips2d : public gce_Root {
 
 	:rtype: gp_Elips2d
 ") Value;
-		const gp_Elips2d & Value ();
+		const gp_Elips2d  Value ();
 		%feature("autodoc", "	:rtype: gp_Elips2d
 ") Operator;
-		const gp_Elips2d & Operator ();
+		const gp_Elips2d  Operator ();
 		%feature("autodoc", "	:rtype: 
 ") operatorgp_Elips2d;
 		 operator gp_Elips2d ();
@@ -1168,10 +1168,10 @@ class gce_MakeHypr : public gce_Root {
 
 	:rtype: gp_Hypr
 ") Value;
-		const gp_Hypr & Value ();
+		const gp_Hypr  Value ();
 		%feature("autodoc", "	:rtype: gp_Hypr
 ") Operator;
-		const gp_Hypr & Operator ();
+		const gp_Hypr  Operator ();
 		%feature("autodoc", "	:rtype: 
 ") operatorgp_Hypr;
 		 operator gp_Hypr ();
@@ -1234,10 +1234,10 @@ class gce_MakeHypr2d : public gce_Root {
 
 	:rtype: gp_Hypr2d
 ") Value;
-		const gp_Hypr2d & Value ();
+		const gp_Hypr2d  Value ();
 		%feature("autodoc", "	:rtype: gp_Hypr2d
 ") Operator;
-		const gp_Hypr2d & Operator ();
+		const gp_Hypr2d  Operator ();
 		%feature("autodoc", "	:rtype: 
 ") operatorgp_Hypr2d;
 		 operator gp_Hypr2d ();
@@ -1299,10 +1299,10 @@ class gce_MakeLin : public gce_Root {
 
 	:rtype: gp_Lin
 ") Value;
-		const gp_Lin & Value ();
+		const gp_Lin  Value ();
 		%feature("autodoc", "	:rtype: gp_Lin
 ") Operator;
-		const gp_Lin & Operator ();
+		const gp_Lin  Operator ();
 		%feature("autodoc", "	:rtype: 
 ") operatorgp_Lin;
 		 operator gp_Lin ();
@@ -1433,10 +1433,10 @@ class gce_MakeParab : public gce_Root {
 
 	:rtype: gp_Parab
 ") Value;
-		const gp_Parab & Value ();
+		const gp_Parab  Value ();
 		%feature("autodoc", "	:rtype: gp_Parab
 ") Operator;
-		const gp_Parab & Operator ();
+		const gp_Parab  Operator ();
 		%feature("autodoc", "	:rtype: 
 ") operatorgp_Parab;
 		 operator gp_Parab ();
@@ -1515,10 +1515,10 @@ class gce_MakeParab2d : public gce_Root {
 
 	:rtype: gp_Parab2d
 ") Value;
-		const gp_Parab2d & Value ();
+		const gp_Parab2d  Value ();
 		%feature("autodoc", "	:rtype: gp_Parab2d
 ") Operator;
-		const gp_Parab2d & Operator ();
+		const gp_Parab2d  Operator ();
 		%feature("autodoc", "	:rtype: 
 ") operatorgp_Parab2d;
 		 operator gp_Parab2d ();
@@ -1620,10 +1620,10 @@ class gce_MakePln : public gce_Root {
 
 	:rtype: gp_Pln
 ") Value;
-		const gp_Pln & Value ();
+		const gp_Pln  Value ();
 		%feature("autodoc", "	:rtype: gp_Pln
 ") Operator;
-		const gp_Pln & Operator ();
+		const gp_Pln  Operator ();
 		%feature("autodoc", "	:rtype: 
 ") operatorgp_Pln;
 		 operator gp_Pln ();

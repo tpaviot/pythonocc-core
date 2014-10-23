@@ -98,12 +98,12 @@ class BRepAlgoAPI_BooleanOperation : public BRepBuilderAPI_MakeShape {
 
 	:rtype: TopoDS_Shape
 ") Shape1;
-		const TopoDS_Shape & Shape1 ();
+		const TopoDS_Shape  Shape1 ();
 		%feature("autodoc", "	* Returns the second shape involved in this Boolean operation.
 
 	:rtype: TopoDS_Shape
 ") Shape2;
-		const TopoDS_Shape & Shape2 ();
+		const TopoDS_Shape  Shape2 ();
 		%feature("autodoc", "	* Returns the type of Boolean Operation that has been performed.
 
 	:rtype: BOPAlgo_Operation

@@ -60,7 +60,7 @@ class BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool : public TCollection_BasicM
 		void Initialize (const BRepTopAdaptor_MapOfShapeTool & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: BRepTopAdaptor_Tool
 ") Value;
 		const BRepTopAdaptor_Tool & Value ();
@@ -95,7 +95,7 @@ class BRepTopAdaptor_DataMapNodeOfMapOfShapeTool : public TCollection_MapNode {
 		 BRepTopAdaptor_DataMapNodeOfMapOfShapeTool (const TopoDS_Shape & K,const BRepTopAdaptor_Tool & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: BRepTopAdaptor_Tool
 ") Value;
 		BRepTopAdaptor_Tool & Value ();
@@ -228,10 +228,10 @@ class BRepTopAdaptor_HVertex : public Adaptor3d_HVertex {
 		 BRepTopAdaptor_HVertex (const TopoDS_Vertex & Vtx,const Handle_BRepAdaptor_HCurve2d & Curve);
 		%feature("autodoc", "	:rtype: TopoDS_Vertex
 ") Vertex;
-		const TopoDS_Vertex & Vertex ();
+		const TopoDS_Vertex  Vertex ();
 		%feature("autodoc", "	:rtype: TopoDS_Vertex
 ") ChangeVertex;
-		TopoDS_Vertex & ChangeVertex ();
+		TopoDS_Vertex  ChangeVertex ();
 		%feature("autodoc", "	:rtype: gp_Pnt2d
 ") Value;
 		virtual gp_Pnt2d Value ();

@@ -227,7 +227,7 @@ class BRepGProp_Domain {
 
 	:rtype: TopoDS_Edge
 ") Value;
-		const TopoDS_Edge & Value ();
+		const TopoDS_Edge  Value ();
 		%feature("autodoc", "	* Sets the index of the arc iterator to the next arc of curve.
 
 	:rtype: None

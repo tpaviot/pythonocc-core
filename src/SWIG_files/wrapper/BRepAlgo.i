@@ -278,12 +278,12 @@ class BRepAlgo_BooleanOperation : public BRepBuilderAPI_MakeShape {
 
 	:rtype: TopoDS_Shape
 ") Shape1;
-		const TopoDS_Shape & Shape1 ();
+		const TopoDS_Shape  Shape1 ();
 		%feature("autodoc", "	* Returns the second shape involved in this Boolean operation.
 
 	:rtype: TopoDS_Shape
 ") Shape2;
-		const TopoDS_Shape & Shape2 ();
+		const TopoDS_Shape  Shape2 ();
 		%feature("autodoc", "	* Returns the list of shapes modified from the shape <S>.
 
 	:param S:
@@ -363,34 +363,34 @@ class BRepAlgo_BooleanOperations {
 
 	:rtype: TopoDS_Shape
 ") Common;
-		const TopoDS_Shape & Common ();
+		const TopoDS_Shape  Common ();
 		%feature("autodoc", "	* returns the fuse part of the shapes.
 
 	:rtype: TopoDS_Shape
 ") Fus;
-		const TopoDS_Shape & Fus ();
+		const TopoDS_Shape  Fus ();
 		%feature("autodoc", "	* returns the cut part of the shapes.
 
 	:rtype: TopoDS_Shape
 ") Cut;
-		const TopoDS_Shape & Cut ();
+		const TopoDS_Shape  Cut ();
 		%feature("autodoc", "	* returns the intersection of the shapes.
 
 	:rtype: TopoDS_Shape
 ") Section;
-		const TopoDS_Shape & Section ();
+		const TopoDS_Shape  Section ();
 		%feature("autodoc", "	* returns the result of the boolean operation.
 
 	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape ();
+		const TopoDS_Shape  Shape ();
 		%feature("autodoc", "	* Returns the shape(s) resulting of the boolean operation issued from the shape <S>.
 
 	:param S:
 	:type S: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") ShapeFrom;
-		const TopoDS_Shape & ShapeFrom (const TopoDS_Shape & S);
+		const TopoDS_Shape  ShapeFrom (const TopoDS_Shape & S);
 		%feature("autodoc", "	* Returns the list of the descendant shapes of the shape <S>.
 
 	:param S:
@@ -516,7 +516,7 @@ class BRepAlgo_DSAccess {
 	:type Compound: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") Wire;
-		const TopoDS_Shape & Wire (const TopoDS_Shape & Compound);
+		const TopoDS_Shape  Wire (const TopoDS_Shape & Compound);
 		%feature("autodoc", "	* NYI returns the vertex of section, which contains the section between face S1 and edge S2 (returns an empty Shape if S1 is not a face or if S2 is not an edge)
 
 	:param S1:
@@ -555,12 +555,12 @@ class BRepAlgo_DSAccess {
 	:type state2: TopAbs_State
 	:rtype: TopoDS_Shape
 ") Merge;
-		const TopoDS_Shape & Merge (const TopAbs_State state1,const TopAbs_State state2);
+		const TopoDS_Shape  Merge (const TopAbs_State state1,const TopAbs_State state2);
 		%feature("autodoc", "	:param state1:
 	:type state1: TopAbs_State
 	:rtype: TopoDS_Shape
 ") Merge;
-		const TopoDS_Shape & Merge (const TopAbs_State state1);
+		const TopoDS_Shape  Merge (const TopAbs_State state1);
 		%feature("autodoc", "	* NYI Propagation of a state starting from the shape FromShape = edge or vertex of section, face or Coumpound de section. LoadShape is either S1, or S2 (see the method Load). Propagation from FromShape, on the states <what> of LoadShape. Return a Wire in 2d, a Shell in 3d. Specifications are incomplete, to be redefined for the typologies correpsonding to <FromShape> and the result : exemple : FromShape resultat  vertex  wire (or edge)  edge of section face (or shell)  compound of section shell ... ...
 
 	:param what:
@@ -571,14 +571,14 @@ class BRepAlgo_DSAccess {
 	:type LoadShape: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") Propagate;
-		const TopoDS_Shape & Propagate (const TopAbs_State what,const TopoDS_Shape & FromShape,const TopoDS_Shape & LoadShape);
+		const TopoDS_Shape  Propagate (const TopAbs_State what,const TopoDS_Shape & FromShape,const TopoDS_Shape & LoadShape);
 		%feature("autodoc", "	* SectionShape est soit un Vertex de section(NYI), soit une Edge de section. Propagation des shapes de section en partant de SectionShape. return un Compound de section.
 
 	:param SectionShape:
 	:type SectionShape: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") PropagateFromSection;
-		const TopoDS_Shape & PropagateFromSection (const TopoDS_Shape & SectionShape);
+		const TopoDS_Shape  PropagateFromSection (const TopoDS_Shape & SectionShape);
 		%feature("autodoc", "	* Returns the list of the descendant shapes of the shape <S>.
 
 	:param S:
@@ -638,7 +638,7 @@ class BRepAlgo_DataMapIteratorOfDataMapOfShapeBoolean : public TCollection_Basic
 		void Initialize (const BRepAlgo_DataMapOfShapeBoolean & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: bool
 ") Value;
 		const Standard_Boolean & Value ();
@@ -677,7 +677,7 @@ class BRepAlgo_DataMapIteratorOfDataMapOfShapeInterference : public TCollection_
 		void Initialize (const BRepAlgo_DataMapOfShapeInterference & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: Handle_TopOpeBRepDS_Interference
 ") Value;
 		const Handle_TopOpeBRepDS_Interference & Value ();
@@ -712,7 +712,7 @@ class BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean : public TCollection_MapNode {
 		 BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean (const TopoDS_Shape & K,const Standard_Boolean & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 
             %feature("autodoc","1");
             %extend {
@@ -796,7 +796,7 @@ class BRepAlgo_DataMapNodeOfDataMapOfShapeInterference : public TCollection_MapN
 		 BRepAlgo_DataMapNodeOfDataMapOfShapeInterference (const TopoDS_Shape & K,const Handle_TopOpeBRepDS_Interference & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: Handle_TopOpeBRepDS_Interference
 ") Value;
 		Handle_TopOpeBRepDS_Interference & Value ();
@@ -1255,14 +1255,14 @@ class BRepAlgo_Image {
 	:type S: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") ImageFrom;
-		const TopoDS_Shape & ImageFrom (const TopoDS_Shape & S);
+		const TopoDS_Shape  ImageFrom (const TopoDS_Shape & S);
 		%feature("autodoc", "	* Returns the upper generator of <S>
 
 	:param S:
 	:type S: TopoDS_Shape &
 	:rtype: TopoDS_Shape
 ") Root;
-		const TopoDS_Shape & Root (const TopoDS_Shape & S);
+		const TopoDS_Shape  Root (const TopoDS_Shape & S);
 		%feature("autodoc", "	:param S:
 	:type S: TopoDS_Shape &
 	:rtype: bool
@@ -1494,21 +1494,21 @@ class BRepAlgo_NormalProjection {
 
 	:rtype: TopoDS_Shape
 ") Projection;
-		const TopoDS_Shape & Projection ();
+		const TopoDS_Shape  Projection ();
 		%feature("autodoc", "	* For a resulting edge, returns the corresponding initial edge.
 
 	:param E:
 	:type E: TopoDS_Edge &
 	:rtype: TopoDS_Shape
 ") Ancestor;
-		const TopoDS_Shape & Ancestor (const TopoDS_Edge & E);
+		const TopoDS_Shape  Ancestor (const TopoDS_Edge & E);
 		%feature("autodoc", "	* For a projected edge, returns the corresponding initial face.
 
 	:param E:
 	:type E: TopoDS_Edge &
 	:rtype: TopoDS_Shape
 ") Couple;
-		const TopoDS_Shape & Couple (const TopoDS_Edge & E);
+		const TopoDS_Shape  Couple (const TopoDS_Edge & E);
 		%feature("autodoc", "	* Returns the list of shapes generated from the shape <S>.
 
 	:param S:

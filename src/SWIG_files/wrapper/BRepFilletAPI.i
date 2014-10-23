@@ -85,7 +85,7 @@ class BRepFilletAPI_LocalOperation : public BRepBuilderAPI_MakeShape {
 	:type J: Standard_Integer
 	:rtype: TopoDS_Edge
 ") Edge;
-		virtual const TopoDS_Edge & Edge (const Standard_Integer I,const Standard_Integer J);
+		virtual const TopoDS_Edge  Edge (const Standard_Integer I,const Standard_Integer J);
 		%feature("autodoc", "	* remove the contour containing the Edge E.
 
 	:param E:
@@ -359,14 +359,14 @@ class BRepFilletAPI_MakeFillet2d : public BRepBuilderAPI_MakeShape {
 	:type E: TopoDS_Edge &
 	:rtype: TopoDS_Edge
 ") DescendantEdge;
-		const TopoDS_Edge & DescendantEdge (const TopoDS_Edge & E);
+		const TopoDS_Edge  DescendantEdge (const TopoDS_Edge & E);
 		%feature("autodoc", "	* Returns the basis edge on the face modified by this algorithm from which the chamfered or filleted edge E is built. If E has not been modified, this function returns E. Warning E is returned if it does not belong to the initial face.
 
 	:param E:
 	:type E: TopoDS_Edge &
 	:rtype: TopoDS_Edge
 ") BasisEdge;
-		const TopoDS_Edge & BasisEdge (const TopoDS_Edge & E);
+		const TopoDS_Edge  BasisEdge (const TopoDS_Edge & E);
 		%feature("autodoc", "	:rtype: ChFi2d_ConstructionError
 ") Status;
 		ChFi2d_ConstructionError Status ();
@@ -569,7 +569,7 @@ class BRepFilletAPI_MakeChamfer : public BRepFilletAPI_LocalOperation {
 	:type J: Standard_Integer
 	:rtype: TopoDS_Edge
 ") Edge;
-		const TopoDS_Edge & Edge (const Standard_Integer I,const Standard_Integer J);
+		const TopoDS_Edge  Edge (const Standard_Integer I,const Standard_Integer J);
 		%feature("autodoc", "	* Removes the contour in the internal data structure of this algorithm which contains the edge E of the shape. Warning Nothing is done if the edge E does not belong to the contour in the internal data structure of this algorithm.
 
 	:param E:
@@ -950,7 +950,7 @@ class BRepFilletAPI_MakeFillet : public BRepFilletAPI_LocalOperation {
 	:type J: Standard_Integer
 	:rtype: TopoDS_Edge
 ") Edge;
-		const TopoDS_Edge & Edge (const Standard_Integer I,const Standard_Integer J);
+		const TopoDS_Edge  Edge (const Standard_Integer I,const Standard_Integer J);
 		%feature("autodoc", "	* Removes the contour in the internal data structure of this algorithm which contains the edge E of the shape. Warning Nothing is done if the edge E does not belong to the contour in the internal data structure of this algorithm.
 
 	:param E:

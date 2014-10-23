@@ -190,12 +190,12 @@ class TopOpeBRepBuild_BlockBuilder {
 	:type BI: TopOpeBRepBuild_BlockIterator &
 	:rtype: TopoDS_Shape
 ") Element;
-		const TopoDS_Shape & Element (const TopOpeBRepBuild_BlockIterator & BI);
+		const TopoDS_Shape  Element (const TopOpeBRepBuild_BlockIterator & BI);
 		%feature("autodoc", "	:param I:
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") Element;
-		const TopoDS_Shape & Element (const Standard_Integer I);
+		const TopoDS_Shape  Element (const Standard_Integer I);
 		%feature("autodoc", "	:param S:
 	:type S: TopoDS_Shape &
 	:rtype: int
@@ -398,7 +398,7 @@ class TopOpeBRepBuild_CorrectFace2d {
 		 TopOpeBRepBuild_CorrectFace2d (const TopoDS_Face & aFace,const TopTools_IndexedMapOfOrientedShape & anAvoidMap,TopTools_IndexedDataMapOfShapeShape & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") Face;
-		const TopoDS_Face & Face ();
+		const TopoDS_Face  Face ();
 		%feature("autodoc", "	:rtype: None
 ") Perform;
 		void Perform ();
@@ -410,7 +410,7 @@ class TopOpeBRepBuild_CorrectFace2d {
 		Standard_Integer ErrorStatus ();
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") CorrectedFace;
-		const TopoDS_Face & CorrectedFace ();
+		const TopoDS_Face  CorrectedFace ();
 		%feature("autodoc", "	:param aMap:
 	:type aMap: TopTools_IndexedDataMapOfShapeShape &
 	:rtype: None
@@ -472,7 +472,7 @@ class TopOpeBRepBuild_DataMapIteratorOfDataMapOfShapeListOfShapeListOfShape : pu
 		void Initialize (const TopOpeBRepBuild_DataMapOfShapeListOfShapeListOfShape & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TopOpeBRepBuild_ListOfShapeListOfShape
 ") Value;
 		const TopOpeBRepBuild_ListOfShapeListOfShape & Value ();
@@ -507,7 +507,7 @@ class TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape : public
 		 TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape (const TopoDS_Shape & K,const TopOpeBRepBuild_ListOfShapeListOfShape & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TopOpeBRepBuild_ListOfShapeListOfShape
 ") Value;
 		TopOpeBRepBuild_ListOfShapeListOfShape & Value ();
@@ -702,7 +702,7 @@ class TopOpeBRepBuild_FaceBuilder {
 
 	:rtype: TopoDS_Shape
 ") Face;
-		const TopoDS_Shape & Face ();
+		const TopoDS_Shape  Face ();
 		%feature("autodoc", "	:rtype: int
 ") InitFace;
 		Standard_Integer InitFace ();
@@ -728,7 +728,7 @@ class TopOpeBRepBuild_FaceBuilder {
 
 	:rtype: TopoDS_Shape
 ") OldWire;
-		const TopoDS_Shape & OldWire ();
+		const TopoDS_Shape  OldWire ();
 		%feature("autodoc", "	* Iterates on myBlockIterator until finding a valid element
 
 	:rtype: None
@@ -747,7 +747,7 @@ class TopOpeBRepBuild_FaceBuilder {
 
 	:rtype: TopoDS_Shape
 ") Edge;
-		const TopoDS_Shape & Edge ();
+		const TopoDS_Shape  Edge ();
 		%feature("autodoc", "	:param E:
 	:type E: TopoDS_Shape &
 	:rtype: int
@@ -1342,7 +1342,7 @@ class TopOpeBRepBuild_HBuilder : public MMgt_TShared {
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") NewVertex;
-		const TopoDS_Shape & NewVertex (const Standard_Integer I);
+		const TopoDS_Shape  NewVertex (const Standard_Integer I);
 		%feature("autodoc", "	* Returns the edges created on curve <I>.
 
 	:param I:
@@ -1385,7 +1385,7 @@ class TopOpeBRepBuild_HBuilder : public MMgt_TShared {
 		void NextSection ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") CurrentSection;
-		const TopoDS_Shape & CurrentSection ();
+		const TopoDS_Shape  CurrentSection ();
 		%feature("autodoc", "	:param E:
 	:type E: TopoDS_Shape &
 	:param rank:
@@ -1534,7 +1534,7 @@ class TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo : publ
 		 TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo (const TopoDS_Shape & K1,const Standard_Integer K2,const TopOpeBRepBuild_VertexInfo & I,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key1;
-		TopoDS_Shape & Key1 ();
+		TopoDS_Shape  Key1 ();
 
             %feature("autodoc","1");
             %extend {
@@ -1664,7 +1664,7 @@ class TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo : public TCollection_Basic
 	:type I: Standard_Integer
 	:rtype: TopoDS_Shape
 ") FindKey;
-		const TopoDS_Shape & FindKey (const Standard_Integer I);
+		const TopoDS_Shape  FindKey (const Standard_Integer I);
 		%feature("autodoc", "	:param I:
 	:type I: Standard_Integer
 	:rtype: TopOpeBRepBuild_VertexInfo
@@ -2651,7 +2651,7 @@ class TopOpeBRepBuild_Loop : public MMgt_TShared {
 		virtual Standard_Boolean IsShape ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Shape;
-		virtual const TopoDS_Shape & Shape ();
+		virtual const TopoDS_Shape  Shape ();
 		%feature("autodoc", "	:rtype: TopOpeBRepBuild_BlockIterator
 ") BlockIterator;
 		const TopOpeBRepBuild_BlockIterator & BlockIterator ();
@@ -2813,10 +2813,10 @@ class TopOpeBRepBuild_ShapeListOfShape {
 		TopTools_ListOfShape & ChangeList ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape ();
+		const TopoDS_Shape  Shape ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") ChangeShape;
-		TopoDS_Shape & ChangeShape ();
+		TopoDS_Shape  ChangeShape ();
 };
 
 
@@ -2886,7 +2886,7 @@ class TopOpeBRepBuild_ShapeSet {
 		void NextShape ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape ();
+		const TopoDS_Shape  Shape ();
 		%feature("autodoc", "	:rtype: None
 ") InitStartElements;
 		void InitStartElements ();
@@ -2898,7 +2898,7 @@ class TopOpeBRepBuild_ShapeSet {
 		void NextStartElement ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") StartElement;
-		const TopoDS_Shape & StartElement ();
+		const TopoDS_Shape  StartElement ();
 		%feature("autodoc", "	:param S:
 	:type S: TopoDS_Shape &
 	:rtype: void
@@ -2912,7 +2912,7 @@ class TopOpeBRepBuild_ShapeSet {
 		void NextNeighbour ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Neighbour;
-		const TopoDS_Shape & Neighbour ();
+		const TopoDS_Shape  Neighbour ();
 		%feature("autodoc", "	:rtype: TopTools_ListOfShape
 ") ChangeStartShapes;
 		TopTools_ListOfShape & ChangeStartShapes ();
@@ -3126,7 +3126,7 @@ class TopOpeBRepBuild_SolidBuilder {
 
 	:rtype: TopoDS_Shape
 ") OldShell;
-		const TopoDS_Shape & OldShell ();
+		const TopoDS_Shape  OldShell ();
 		%feature("autodoc", "	:rtype: int
 ") InitFace;
 		Standard_Integer InitFace ();
@@ -3140,7 +3140,7 @@ class TopOpeBRepBuild_SolidBuilder {
 
 	:rtype: TopoDS_Shape
 ") Face;
-		const TopoDS_Shape & Face ();
+		const TopoDS_Shape  Face ();
 };
 
 
@@ -3461,7 +3461,7 @@ class TopOpeBRepBuild_VertexInfo {
 		void SetVertex (const TopoDS_Vertex & aV);
 		%feature("autodoc", "	:rtype: TopoDS_Vertex
 ") Vertex;
-		const TopoDS_Vertex & Vertex ();
+		const TopoDS_Vertex  Vertex ();
 		%feature("autodoc", "	:param aFlag:
 	:type aFlag: bool
 	:rtype: None
@@ -3505,7 +3505,7 @@ class TopOpeBRepBuild_VertexInfo {
 		void Dump ();
 		%feature("autodoc", "	:rtype: TopoDS_Edge
 ") CurrentOut;
-		const TopoDS_Edge & CurrentOut ();
+		const TopoDS_Edge  CurrentOut ();
 		%feature("autodoc", "	:param anE:
 	:type anE: TopoDS_Edge &
 	:rtype: None
@@ -4081,13 +4081,13 @@ class TopOpeBRepBuild_Pave : public TopOpeBRepBuild_Loop {
 		Standard_Boolean HasSameDomain ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") SameDomain;
-		const TopoDS_Shape & SameDomain ();
+		const TopoDS_Shape  SameDomain ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Vertex;
-		const TopoDS_Shape & Vertex ();
+		const TopoDS_Shape  Vertex ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") ChangeVertex;
-		TopoDS_Shape & ChangeVertex ();
+		TopoDS_Shape  ChangeVertex ();
 		%feature("autodoc", "	:rtype: float
 ") Parameter;
 		Standard_Real Parameter ();
@@ -4104,7 +4104,7 @@ class TopOpeBRepBuild_Pave : public TopOpeBRepBuild_Loop {
 		virtual Standard_Boolean IsShape ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Shape;
-		virtual const TopoDS_Shape & Shape ();
+		virtual const TopoDS_Shape  Shape ();
 		%feature("autodoc", "	:rtype: void
 ") Dump;
 		virtual void Dump ();
@@ -4261,7 +4261,7 @@ class TopOpeBRepBuild_PaveSet : public TopOpeBRepBuild_LoopSet {
 		virtual const Handle_TopOpeBRepBuild_Loop & Loop ();
 		%feature("autodoc", "	:rtype: TopoDS_Edge
 ") Edge;
-		const TopoDS_Edge & Edge ();
+		const TopoDS_Edge  Edge ();
 		%feature("autodoc", "	:rtype: bool
 ") HasEqualParameters;
 		Standard_Boolean HasEqualParameters ();
@@ -4314,7 +4314,7 @@ class TopOpeBRepBuild_ShellFaceSet : public TopOpeBRepBuild_ShapeSet {
 		 TopOpeBRepBuild_ShellFaceSet (const TopoDS_Shape & S,const Standard_Address Addr = NULL);
 		%feature("autodoc", "	:rtype: TopoDS_Solid
 ") Solid;
-		const TopoDS_Solid & Solid ();
+		const TopoDS_Solid  Solid ();
 		%feature("autodoc", "	:param S:
 	:type S: TopoDS_Shape &
 	:rtype: void
@@ -4402,7 +4402,7 @@ class TopOpeBRepBuild_WireEdgeSet : public TopOpeBRepBuild_ShapeSet {
 
 	:rtype: TopoDS_Face
 ") Face;
-		const TopoDS_Face & Face ();
+		const TopoDS_Face  Face ();
 		%feature("autodoc", "	:param S:
 	:type S: TopoDS_Shape &
 	:rtype: void
@@ -4548,7 +4548,7 @@ class TopOpeBRepBuild_EdgeBuilder : public TopOpeBRepBuild_Area1dBuilder {
 		void NextVertex ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Vertex;
-		const TopoDS_Shape & Vertex ();
+		const TopoDS_Shape  Vertex ();
 		%feature("autodoc", "	:rtype: float
 ") Parameter;
 		Standard_Real Parameter ();

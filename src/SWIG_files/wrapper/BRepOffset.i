@@ -260,7 +260,7 @@ class BRepOffset_DataMapIteratorOfDataMapOfShapeListOfInterval : public TCollect
 		void Initialize (const BRepOffset_DataMapOfShapeListOfInterval & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: BRepOffset_ListOfInterval
 ") Value;
 		const BRepOffset_ListOfInterval & Value ();
@@ -299,7 +299,7 @@ class BRepOffset_DataMapIteratorOfDataMapOfShapeMapOfShape : public TCollection_
 		void Initialize (const BRepOffset_DataMapOfShapeMapOfShape & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TopTools_MapOfShape
 ") Value;
 		const TopTools_MapOfShape & Value ();
@@ -338,7 +338,7 @@ class BRepOffset_DataMapIteratorOfDataMapOfShapeOffset : public TCollection_Basi
 		void Initialize (const BRepOffset_DataMapOfShapeOffset & aMap);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		const TopoDS_Shape & Key ();
+		const TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: BRepOffset_Offset
 ") Value;
 		const BRepOffset_Offset & Value ();
@@ -373,7 +373,7 @@ class BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval : public TCollection_
 		 BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval (const TopoDS_Shape & K,const BRepOffset_ListOfInterval & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: BRepOffset_ListOfInterval
 ") Value;
 		BRepOffset_ListOfInterval & Value ();
@@ -447,7 +447,7 @@ class BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape : public TCollection_MapN
 		 BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape (const TopoDS_Shape & K,const TopTools_MapOfShape & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: TopTools_MapOfShape
 ") Value;
 		TopTools_MapOfShape & Value ();
@@ -521,7 +521,7 @@ class BRepOffset_DataMapNodeOfDataMapOfShapeOffset : public TCollection_MapNode 
 		 BRepOffset_DataMapNodeOfDataMapOfShapeOffset (const TopoDS_Shape & K,const BRepOffset_Offset & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
-		TopoDS_Shape & Key ();
+		TopoDS_Shape  Key ();
 		%feature("autodoc", "	:rtype: BRepOffset_Offset
 ") Value;
 		BRepOffset_Offset & Value ();
@@ -1413,7 +1413,7 @@ class BRepOffset_MakeOffset {
 		Standard_Boolean IsDone ();
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Shape;
-		const TopoDS_Shape & Shape ();
+		const TopoDS_Shape  Shape ();
 		%feature("autodoc", "	* returns information if IsDone() = False.
 
 	:rtype: BRepOffset_Error
@@ -1633,10 +1633,10 @@ class BRepOffset_Offset {
 		void Init (const TopoDS_Edge & Edge,const Standard_Real Offset);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") InitialShape;
-		const TopoDS_Shape & InitialShape ();
+		const TopoDS_Shape  InitialShape ();
 		%feature("autodoc", "	:rtype: TopoDS_Face
 ") Face;
-		const TopoDS_Face & Face ();
+		const TopoDS_Face  Face ();
 		%feature("autodoc", "	:param Shape:
 	:type Shape: TopoDS_Shape &
 	:rtype: TopoDS_Shape

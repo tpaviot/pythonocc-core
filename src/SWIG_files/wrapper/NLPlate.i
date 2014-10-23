@@ -100,7 +100,7 @@ class NLPlate_HGPPConstraint : public MMgt_TShared {
 		virtual Standard_Integer ActiveOrder ();
 		%feature("autodoc", "	:rtype: gp_XY
 ") UV;
-		virtual const gp_XY & UV ();
+		virtual const gp_XY  UV ();
 		%feature("autodoc", "	:rtype: int
 ") Orientation;
 		virtual Standard_Integer Orientation ();
@@ -109,7 +109,7 @@ class NLPlate_HGPPConstraint : public MMgt_TShared {
 		virtual Standard_Boolean IsG0 ();
 		%feature("autodoc", "	:rtype: gp_XYZ
 ") G0Target;
-		virtual const gp_XYZ & G0Target ();
+		virtual const gp_XYZ  G0Target ();
 		%feature("autodoc", "	:rtype: Plate_D1
 ") G1Target;
 		virtual const Plate_D1 & G1Target ();
@@ -678,7 +678,7 @@ class NLPlate_HPG0Constraint : public NLPlate_HGPPConstraint {
 		virtual Standard_Boolean IsG0 ();
 		%feature("autodoc", "	:rtype: gp_XYZ
 ") G0Target;
-		virtual const gp_XYZ & G0Target ();
+		virtual const gp_XYZ  G0Target ();
 };
 
 
