@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -44,63 +44,57 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor TopCnx_EdgeFaceTransition;
 class TopCnx_EdgeFaceTransition {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates an empty algorithm.
 
-Creates an empty algorithm.") TopCnx_EdgeFaceTransition;
+	:rtype: None
+") TopCnx_EdgeFaceTransition;
 		 TopCnx_EdgeFaceTransition ();
-		%feature("autodoc", "Args:
-	Tgt(gp_Dir)
-	Norm(gp_Dir)
-	Curv(Standard_Real)
+		%feature("autodoc", "	* Initialize the algorithm with the local description of the edge.
 
-Returns:
-	None
-
-Initialize  the     algorithm    with the    local  
-         description of the edge.") Reset;
+	:param Tgt:
+	:type Tgt: gp_Dir
+	:param Norm:
+	:type Norm: gp_Dir
+	:param Curv:
+	:type Curv: float
+	:rtype: None
+") Reset;
 		void Reset (const gp_Dir & Tgt,const gp_Dir & Norm,const Standard_Real Curv);
-		%feature("autodoc", "Args:
-	Tgt(gp_Dir)
+		%feature("autodoc", "	* Initialize the algorithm with a linear Edge.
 
-Returns:
-	None
-
-Initialize the algorithm with a linear Edge.") Reset;
+	:param Tgt:
+	:type Tgt: gp_Dir
+	:rtype: None
+") Reset;
 		void Reset (const gp_Dir & Tgt);
-		%feature("autodoc", "Args:
-	Tole(Standard_Real)
-	Tang(gp_Dir)
-	Norm(gp_Dir)
-	Curv(Standard_Real)
-	Or(TopAbs_Orientation)
-	Tr(TopAbs_Orientation)
-	BTr(TopAbs_Orientation)
+		%feature("autodoc", "	* Add a curve element to the boundary. Or is the orientation of the interference on the boundary curve. Tr is the transition of the interference. BTr is the boundary transition of the interference.
 
-Returns:
-	None
-
-Add a curve  element to the  boundary.  Or  is the  
-         orientation of   the interference on  the boundary  
-         curve. Tr is  the transition  of the interference.  
-         BTr     is   the    boundary  transition    of the  
-         interference.") AddInterference;
+	:param Tole:
+	:type Tole: float
+	:param Tang:
+	:type Tang: gp_Dir
+	:param Norm:
+	:type Norm: gp_Dir
+	:param Curv:
+	:type Curv: float
+	:param Or:
+	:type Or: TopAbs_Orientation
+	:param Tr:
+	:type Tr: TopAbs_Orientation
+	:param BTr:
+	:type BTr: TopAbs_Orientation
+	:rtype: None
+") AddInterference;
 		void AddInterference (const Standard_Real Tole,const gp_Dir & Tang,const gp_Dir & Norm,const Standard_Real Curv,const TopAbs_Orientation Or,const TopAbs_Orientation Tr,const TopAbs_Orientation BTr);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_Orientation
+		%feature("autodoc", "	* Returns the current cumulated transition.
 
-Returns the current cumulated transition.") Transition;
+	:rtype: TopAbs_Orientation
+") Transition;
 		TopAbs_Orientation Transition ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_Orientation
+		%feature("autodoc", "	* Returns the current cumulated BoundaryTransition.
 
-Returns the current cumulated BoundaryTransition.") BoundaryTransition;
+	:rtype: TopAbs_Orientation
+") BoundaryTransition;
 		TopAbs_Orientation BoundaryTransition ();
 };
 

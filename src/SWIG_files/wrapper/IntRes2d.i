@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -63,168 +63,138 @@ enum IntRes2d_TypeTrans {
 %nodefaultctor IntRes2d_Domain;
 class IntRes2d_Domain {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates an infinite Domain (HasFirstPoint = False and HasLastPoint = False).
 
-Creates an infinite Domain (HasFirstPoint = False  
-         and HasLastPoint = False).") IntRes2d_Domain;
+	:rtype: None
+") IntRes2d_Domain;
 		 IntRes2d_Domain ();
-		%feature("autodoc", "Args:
-	Pnt1(gp_Pnt2d)
-	Par1(Standard_Real)
-	Tol1(Standard_Real)
-	Pnt2(gp_Pnt2d)
-	Par2(Standard_Real)
-	Tol2(Standard_Real)
+		%feature("autodoc", "	* Creates a bounded Domain.
 
-Returns:
-	None
-
-Creates a bounded Domain.") IntRes2d_Domain;
+	:param Pnt1:
+	:type Pnt1: gp_Pnt2d
+	:param Par1:
+	:type Par1: float
+	:param Tol1:
+	:type Tol1: float
+	:param Pnt2:
+	:type Pnt2: gp_Pnt2d
+	:param Par2:
+	:type Par2: float
+	:param Tol2:
+	:type Tol2: float
+	:rtype: None
+") IntRes2d_Domain;
 		 IntRes2d_Domain (const gp_Pnt2d & Pnt1,const Standard_Real Par1,const Standard_Real Tol1,const gp_Pnt2d & Pnt2,const Standard_Real Par2,const Standard_Real Tol2);
-		%feature("autodoc", "Args:
-	Pnt(gp_Pnt2d)
-	Par(Standard_Real)
-	Tol(Standard_Real)
-	First(Standard_Boolean)
+		%feature("autodoc", "	* Creates a semi-infinite Domain. If First is set to True, the given point is the first point of the domain, otherwise it is the last point.
 
-Returns:
-	None
-
-Creates a semi-infinite Domain. If First is set to  
-         True, the given point is the first point of the domain,  
-         otherwise it is the last point.") IntRes2d_Domain;
+	:param Pnt:
+	:type Pnt: gp_Pnt2d
+	:param Par:
+	:type Par: float
+	:param Tol:
+	:type Tol: float
+	:param First:
+	:type First: bool
+	:rtype: None
+") IntRes2d_Domain;
 		 IntRes2d_Domain (const gp_Pnt2d & Pnt,const Standard_Real Par,const Standard_Real Tol,const Standard_Boolean First);
-		%feature("autodoc", "Args:
-	Pnt1(gp_Pnt2d)
-	Par1(Standard_Real)
-	Tol1(Standard_Real)
-	Pnt2(gp_Pnt2d)
-	Par2(Standard_Real)
-	Tol2(Standard_Real)
+		%feature("autodoc", "	* Sets the values for a bounded domain.
 
-Returns:
-	None
-
-Sets the values for a bounded domain.") SetValues;
+	:param Pnt1:
+	:type Pnt1: gp_Pnt2d
+	:param Par1:
+	:type Par1: float
+	:param Tol1:
+	:type Tol1: float
+	:param Pnt2:
+	:type Pnt2: gp_Pnt2d
+	:param Par2:
+	:type Par2: float
+	:param Tol2:
+	:type Tol2: float
+	:rtype: None
+") SetValues;
 		void SetValues (const gp_Pnt2d & Pnt1,const Standard_Real Par1,const Standard_Real Tol1,const gp_Pnt2d & Pnt2,const Standard_Real Par2,const Standard_Real Tol2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Sets the values for an infinite domain.
 
-Sets the values for an infinite domain.") SetValues;
+	:rtype: None
+") SetValues;
 		void SetValues ();
-		%feature("autodoc", "Args:
-	Pnt(gp_Pnt2d)
-	Par(Standard_Real)
-	Tol(Standard_Real)
-	First(Standard_Boolean)
+		%feature("autodoc", "	* Sets the values for a semi-infinite domain.
 
-Returns:
-	None
-
-Sets the values for a semi-infinite domain.") SetValues;
+	:param Pnt:
+	:type Pnt: gp_Pnt2d
+	:param Par:
+	:type Par: float
+	:param Tol:
+	:type Tol: float
+	:param First:
+	:type First: bool
+	:rtype: None
+") SetValues;
 		void SetValues (const gp_Pnt2d & Pnt,const Standard_Real Par,const Standard_Real Tol,const Standard_Boolean First);
-		%feature("autodoc", "Args:
-	zero(Standard_Real)
-	period(Standard_Real)
+		%feature("autodoc", "	* Defines a closed domain.
 
-Returns:
-	None
-
-Defines a closed domain.") SetEquivalentParameters;
+	:param zero:
+	:type zero: float
+	:param period:
+	:type period: float
+	:rtype: None
+") SetEquivalentParameters;
 		void SetEquivalentParameters (const Standard_Real zero,const Standard_Real period);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the domain has a first point, i-e a point defining the lowest admitted parameter on the curve.
 
-Returns True if the domain has a first point, i-e  
-         a point defining the lowest admitted parameter on the  
-         curve.") HasFirstPoint;
+	:rtype: bool
+") HasFirstPoint;
 		Standard_Boolean HasFirstPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the parameter of the first point of the domain The exception DomainError is raised if HasFirstPoint returns False.
 
-Returns the parameter of the first point of the domain  
-         The exception DomainError is raised if HasFirstPoint  
-         returns False.") FirstParameter;
+	:rtype: float
+") FirstParameter;
 		Standard_Real FirstParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt2d
+		%feature("autodoc", "	* Returns the first point of the domain. The exception DomainError is raised if HasFirstPoint returns False.
 
-Returns the first point of the domain.  
-         The exception DomainError is raised if HasFirstPoint  
-         returns False.") FirstPoint;
+	:rtype: gp_Pnt2d
+") FirstPoint;
 		const gp_Pnt2d & FirstPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the tolerance of the first (left) bound. The exception DomainError is raised if HasFirstPoint returns False.
 
-Returns the tolerance of the first (left) bound.  
-         The exception DomainError is raised if HasFirstPoint  
-         returns False.") FirstTolerance;
+	:rtype: float
+") FirstTolerance;
 		Standard_Real FirstTolerance ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the domain has a last point, i-e a point defining the highest admitted parameter on the curve.
 
-Returns True if the domain has a last point, i-e  
-         a point defining the highest admitted parameter on the  
-         curve.") HasLastPoint;
+	:rtype: bool
+") HasLastPoint;
 		Standard_Boolean HasLastPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the parameter of the last point of the domain. The exception DomainError is raised if HasLastPoint returns False.
 
-Returns the parameter of the last point of the domain.  
-         The exception DomainError is raised if HasLastPoint  
-         returns False.") LastParameter;
+	:rtype: float
+") LastParameter;
 		Standard_Real LastParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt2d
+		%feature("autodoc", "	* Returns the last point of the domain. The exception DomainError is raised if HasLastPoint returns False.
 
-Returns the last point of the domain.  
-         The exception DomainError is raised if HasLastPoint  
-         returns False.") LastPoint;
+	:rtype: gp_Pnt2d
+") LastPoint;
 		const gp_Pnt2d & LastPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the tolerance of the last (right) bound. The exception DomainError is raised if HasLastPoint returns False.
 
-Returns the tolerance of the last (right) bound.  
-         The exception DomainError is raised if HasLastPoint  
-         returns False.") LastTolerance;
+	:rtype: float
+") LastTolerance;
 		Standard_Real LastTolerance ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the domain is closed.
 
-Returns True if the domain is closed.") IsClosed;
+	:rtype: bool
+") IsClosed;
 		Standard_Boolean IsClosed ();
-		%feature("autodoc", "Args:
-	zero(Standard_Real)
-	zeroplusperiod(Standard_Real)
+		%feature("autodoc", "	* Returns Equivalent parameters if the domain is closed. Otherwise, the exception DomainError is raised.
 
-Returns:
-	None
-
-Returns Equivalent parameters if the domain is closed.  
-         Otherwise, the exception DomainError is raised.") EquivalentParameters;
+	:param zero:
+	:type zero: float &
+	:param zeroplusperiod:
+	:type zeroplusperiod: float &
+	:rtype: None
+") EquivalentParameters;
 		void EquivalentParameters (Standard_Real &OutValue,Standard_Real &OutValue);
 };
 
@@ -246,71 +216,44 @@ def __del__(self):
 %nodefaultctor IntRes2d_Intersection;
 class IntRes2d_Intersection {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns True when the computation was successful.
 
-returns TRUE when the computation was successful.") IsDone;
+	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if there is no intersection between the given arguments. The exception NotDone is raised if IsDone returns False.
 
-Returns TRUE if there is no intersection between the  
-         given arguments.  
-         The exception NotDone is raised if IsDone returns FALSE.") IsEmpty;
+	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* This function returns the number of intersection points between the 2 curves. The exception NotDone is raised if IsDone returns False.
 
-This function returns the number of intersection  
-         points between the 2 curves.  
-         The exception NotDone is raised if IsDone returns FALSE.") NbPoints;
+	:rtype: int
+") NbPoints;
 		Standard_Integer NbPoints ();
-		%feature("autodoc", "Args:
-	N(Standard_Integer)
+		%feature("autodoc", "	* This function returns the intersection point of range N; The exception NotDone is raised if IsDone returns False. The exception OutOfRange is raised if (N <= 0) or (N > NbPoints).
 
-Returns:
-	IntRes2d_IntersectionPoint
-
-This function returns the intersection point  
-         of range N;  
-         The exception NotDone is raised if IsDone returns FALSE.  
-         The exception OutOfRange is raised if (N <= 0)  
-         or (N > NbPoints).") Point;
+	:param N:
+	:type N: Standard_Integer
+	:rtype: IntRes2d_IntersectionPoint
+") Point;
 		const IntRes2d_IntersectionPoint & Point (const Standard_Integer N);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* This function returns the number of intersection segments between the two curves. The exception NotDone is raised if IsDone returns False.
 
-This function returns the number of intersection  
-         segments between the two curves.  
-         The exception NotDone is raised if IsDone returns FALSE.") NbSegments;
+	:rtype: int
+") NbSegments;
 		Standard_Integer NbSegments ();
-		%feature("autodoc", "Args:
-	N(Standard_Integer)
+		%feature("autodoc", "	* This function returns the intersection segment of range N; The exception NotDone is raised if IsDone returns False. The exception OutOfRange is raised if (N <= 0) or (N > NbPoints).
 
-Returns:
-	IntRes2d_IntersectionSegment
-
-This function returns the intersection segment  
-         of range N;  
-         The exception NotDone is raised if IsDone returns FALSE.  
-         The exception OutOfRange is raised if (N <= 0)  
-         or (N > NbPoints).") Segment;
+	:param N:
+	:type N: Standard_Integer
+	:rtype: IntRes2d_IntersectionSegment
+") Segment;
 		const IntRes2d_IntersectionSegment & Segment (const Standard_Integer N);
-		%feature("autodoc", "Args:
-	Reverseflag(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetReversedParameters;
+		%feature("autodoc", "	:param Reverseflag:
+	:type Reverseflag: bool
+	:rtype: None
+") SetReversedParameters;
 		void SetReversedParameters (const Standard_Boolean Reverseflag);
 };
 
@@ -332,134 +275,94 @@ def __del__(self):
 %nodefaultctor IntRes2d_IntersectionPoint;
 class IntRes2d_IntersectionPoint {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor.
 
-Empty constructor.") IntRes2d_IntersectionPoint;
+	:rtype: None
+") IntRes2d_IntersectionPoint;
 		 IntRes2d_IntersectionPoint ();
-		%feature("autodoc", "Args:
-	P(gp_Pnt2d)
-	Uc1(Standard_Real)
-	Uc2(Standard_Real)
-	Trans1(IntRes2d_Transition)
-	Trans2(IntRes2d_Transition)
-	ReversedFlag(Standard_Boolean)
+		%feature("autodoc", "	* Creates an IntersectionPoint. if ReversedFlag is False, the parameter Uc1(resp. Uc2) and the Transition Trans1 (resp. Trans2) refer to the first curve (resp. second curve) otherwise Uc1 and Trans1 (resp. Uc2 and Trans2) refer to the second curve (resp. the first curve).
 
-Returns:
-	None
-
-Creates an IntersectionPoint.  
-         if ReversedFlag is False, the parameter Uc1(resp. Uc2)  
-         and the Transition Trans1 (resp. Trans2) refer to  
-         the first curve (resp. second curve) otherwise Uc1  
-         and Trans1 (resp. Uc2 and Trans2) refer to the  
-         second curve (resp. the first curve).") IntRes2d_IntersectionPoint;
+	:param P:
+	:type P: gp_Pnt2d
+	:param Uc1:
+	:type Uc1: float
+	:param Uc2:
+	:type Uc2: float
+	:param Trans1:
+	:type Trans1: IntRes2d_Transition &
+	:param Trans2:
+	:type Trans2: IntRes2d_Transition &
+	:param ReversedFlag:
+	:type ReversedFlag: bool
+	:rtype: None
+") IntRes2d_IntersectionPoint;
 		 IntRes2d_IntersectionPoint (const gp_Pnt2d & P,const Standard_Real Uc1,const Standard_Real Uc2,const IntRes2d_Transition & Trans1,const IntRes2d_Transition & Trans2,const Standard_Boolean ReversedFlag);
-		%feature("autodoc", "Args:
-	P(gp_Pnt2d)
-	Uc1(Standard_Real)
-	Uc2(Standard_Real)
-	Trans1(IntRes2d_Transition)
-	Trans2(IntRes2d_Transition)
-	ReversedFlag(Standard_Boolean)
+		%feature("autodoc", "	* Sets the values for an existing intersection point. The meaning of the parameters are the same as for the Create.
 
-Returns:
-	None
-
-Sets the values for an existing intersection  
-         point. The meaning of the parameters are the same  
-         as for the Create.") SetValues;
+	:param P:
+	:type P: gp_Pnt2d
+	:param Uc1:
+	:type Uc1: float
+	:param Uc2:
+	:type Uc2: float
+	:param Trans1:
+	:type Trans1: IntRes2d_Transition &
+	:param Trans2:
+	:type Trans2: IntRes2d_Transition &
+	:param ReversedFlag:
+	:type ReversedFlag: bool
+	:rtype: None
+") SetValues;
 		void SetValues (const gp_Pnt2d & P,const Standard_Real Uc1,const Standard_Real Uc2,const IntRes2d_Transition & Trans1,const IntRes2d_Transition & Trans2,const Standard_Boolean ReversedFlag);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt2d
+		%feature("autodoc", "	* Returns the value of the coordinates of the intersection point in the 2D space.
 
-Returns the value of the coordinates of the  
-         intersection point in the 2D space.") Value;
+	:rtype: gp_Pnt2d
+") Value;
 		const gp_Pnt2d & Value ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the parameter on the first curve.
 
-Returns the parameter on the first curve.") ParamOnFirst;
+	:rtype: float
+") ParamOnFirst;
 		Standard_Real ParamOnFirst ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the parameter on the second curve.
 
-Returns the parameter on the second curve.") ParamOnSecond;
+	:rtype: float
+") ParamOnSecond;
 		Standard_Real ParamOnSecond ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntRes2d_Transition
+		%feature("autodoc", "	* Returns the transition of the 1st curve compared to the 2nd one.
 
-Returns the transition of the 1st curve compared to  
-         the 2nd one.") TransitionOfFirst;
+	:rtype: IntRes2d_Transition
+") TransitionOfFirst;
 		const IntRes2d_Transition & TransitionOfFirst ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntRes2d_Transition
+		%feature("autodoc", "	* returns the transition of the 2nd curve compared to the 1st one.
 
-returns the transition of the 2nd curve compared to  
-         the 1st one.") TransitionOfSecond;
+	:rtype: IntRes2d_Transition
+") TransitionOfSecond;
 		const IntRes2d_Transition & TransitionOfSecond ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt2d
-
-No detailed docstring for this function.") _CSFDB_GetIntRes2d_IntersectionPointpt;
+		%feature("autodoc", "	:rtype: gp_Pnt2d
+") _CSFDB_GetIntRes2d_IntersectionPointpt;
 		const gp_Pnt2d & _CSFDB_GetIntRes2d_IntersectionPointpt ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") _CSFDB_GetIntRes2d_IntersectionPointp1;
+		%feature("autodoc", "	:rtype: float
+") _CSFDB_GetIntRes2d_IntersectionPointp1;
 		Standard_Real _CSFDB_GetIntRes2d_IntersectionPointp1 ();
-		%feature("autodoc", "Args:
-	p(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") _CSFDB_SetIntRes2d_IntersectionPointp1;
+		%feature("autodoc", "	:param p:
+	:type p: float
+	:rtype: None
+") _CSFDB_SetIntRes2d_IntersectionPointp1;
 		void _CSFDB_SetIntRes2d_IntersectionPointp1 (const Standard_Real p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") _CSFDB_GetIntRes2d_IntersectionPointp2;
+		%feature("autodoc", "	:rtype: float
+") _CSFDB_GetIntRes2d_IntersectionPointp2;
 		Standard_Real _CSFDB_GetIntRes2d_IntersectionPointp2 ();
-		%feature("autodoc", "Args:
-	p(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") _CSFDB_SetIntRes2d_IntersectionPointp2;
+		%feature("autodoc", "	:param p:
+	:type p: float
+	:rtype: None
+") _CSFDB_SetIntRes2d_IntersectionPointp2;
 		void _CSFDB_SetIntRes2d_IntersectionPointp2 (const Standard_Real p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntRes2d_Transition
-
-No detailed docstring for this function.") _CSFDB_GetIntRes2d_IntersectionPointtrans1;
+		%feature("autodoc", "	:rtype: IntRes2d_Transition
+") _CSFDB_GetIntRes2d_IntersectionPointtrans1;
 		const IntRes2d_Transition & _CSFDB_GetIntRes2d_IntersectionPointtrans1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntRes2d_Transition
-
-No detailed docstring for this function.") _CSFDB_GetIntRes2d_IntersectionPointtrans2;
+		%feature("autodoc", "	:rtype: IntRes2d_Transition
+") _CSFDB_GetIntRes2d_IntersectionPointtrans2;
 		const IntRes2d_Transition & _CSFDB_GetIntRes2d_IntersectionPointtrans2 ();
 };
 
@@ -481,153 +384,94 @@ def __del__(self):
 %nodefaultctor IntRes2d_IntersectionSegment;
 class IntRes2d_IntersectionSegment {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor.
 
-Empty constructor.") IntRes2d_IntersectionSegment;
+	:rtype: None
+") IntRes2d_IntersectionSegment;
 		 IntRes2d_IntersectionSegment ();
-		%feature("autodoc", "Args:
-	P1(IntRes2d_IntersectionPoint)
-	P2(IntRes2d_IntersectionPoint)
-	Oppos(Standard_Boolean)
-	ReverseFlag(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntRes2d_IntersectionSegment;
+		%feature("autodoc", "	:param P1:
+	:type P1: IntRes2d_IntersectionPoint &
+	:param P2:
+	:type P2: IntRes2d_IntersectionPoint &
+	:param Oppos:
+	:type Oppos: bool
+	:param ReverseFlag:
+	:type ReverseFlag: bool
+	:rtype: None
+") IntRes2d_IntersectionSegment;
 		 IntRes2d_IntersectionSegment (const IntRes2d_IntersectionPoint & P1,const IntRes2d_IntersectionPoint & P2,const Standard_Boolean Oppos,const Standard_Boolean ReverseFlag);
-		%feature("autodoc", "Args:
-	P(IntRes2d_IntersectionPoint)
-	First(Standard_Boolean)
-	Oppos(Standard_Boolean)
-	ReverseFlag(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntRes2d_IntersectionSegment;
+		%feature("autodoc", "	:param P:
+	:type P: IntRes2d_IntersectionPoint &
+	:param First:
+	:type First: bool
+	:param Oppos:
+	:type Oppos: bool
+	:param ReverseFlag:
+	:type ReverseFlag: bool
+	:rtype: None
+") IntRes2d_IntersectionSegment;
 		 IntRes2d_IntersectionSegment (const IntRes2d_IntersectionPoint & P,const Standard_Boolean First,const Standard_Boolean Oppos,const Standard_Boolean ReverseFlag);
-		%feature("autodoc", "Args:
-	Oppos(Standard_Boolean)
+		%feature("autodoc", "	* Creates an infinite segment of intersection.
 
-Returns:
-	None
-
-Creates an infinite segment of intersection.") IntRes2d_IntersectionSegment;
+	:param Oppos:
+	:type Oppos: bool
+	:rtype: None
+") IntRes2d_IntersectionSegment;
 		 IntRes2d_IntersectionSegment (const Standard_Boolean Oppos);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the intersection segment has got the same orientation on both curves.
 
-Returns TRUE if the intersection segment has got  
-         the same orientation on both curves.") IsOpposite;
+	:rtype: bool
+") IsOpposite;
 		Standard_Boolean IsOpposite ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the segment is limited by a first point. This point defines the lowest parameter admitted on the first curve for the segment. If IsOpposite returns False, it defines the lowest parameter on the second curve, otherwise, it is the highest parameter on the second curve.
 
-Returns True if the segment is  limited by a first  
-         point.   This  point defines  the lowest parameter  
-         admitted on the first  curve for the  segment.  If  
-         IsOpposite  returns  False, it  defines the lowest  
-         parameter on the  second curve, otherwise,  it  is  
-         the highest parameter on the second curve.") HasFirstPoint;
+	:rtype: bool
+") HasFirstPoint;
 		Standard_Boolean HasFirstPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntRes2d_IntersectionPoint
+		%feature("autodoc", "	* Returns the first point of the segment as an IntersectionPoint (with a transition). The exception DomainError is raised if HasFirstPoint returns False.
 
-Returns the  first point   of the segment    as an  
-         IntersectionPoint (with    a    transition).   The  
-         exception  DomainError  is raised if HasFirstPoint  
-         returns False.") FirstPoint;
+	:rtype: IntRes2d_IntersectionPoint
+") FirstPoint;
 		const IntRes2d_IntersectionPoint & FirstPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the segment is limited by a last point. This point defines the highest parameter admitted on the first curve for the segment. If IsOpposite returns False, it defines the highest parameter on the second curve, otherwise, it is the lowest parameter on the second curve.
 
-Returns True if the segment  is  limited by a last  
-         point.  This point  defines  the highest parameter  
-         admitted on the  first curve for  the segment.  If  
-         IsOpposite returns  False, it  defines the highest  
-         parameter on  the  second curve, otherwise, it  is  
-         the lowest parameter on the second curve.") HasLastPoint;
+	:rtype: bool
+") HasLastPoint;
 		Standard_Boolean HasLastPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntRes2d_IntersectionPoint
+		%feature("autodoc", "	* Returns the last point of the segment as an IntersectionPoint (with a transition). The exception DomainError is raised if HasLastExtremity returns False.
 
-Returns   the  last point  of the    segment as an  
-         IntersectionPoint   (with  a    transition).   The  
-         exception        DomainError     is   raised    if  
-         HasLastExtremity returns False.") LastPoint;
+	:rtype: IntRes2d_IntersectionPoint
+") LastPoint;
 		const IntRes2d_IntersectionPoint & LastPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") _CSFDB_GetIntRes2d_IntersectionSegmentoppos;
+		%feature("autodoc", "	:rtype: bool
+") _CSFDB_GetIntRes2d_IntersectionSegmentoppos;
 		Standard_Boolean _CSFDB_GetIntRes2d_IntersectionSegmentoppos ();
-		%feature("autodoc", "Args:
-	p(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") _CSFDB_SetIntRes2d_IntersectionSegmentoppos;
+		%feature("autodoc", "	:param p:
+	:type p: bool
+	:rtype: None
+") _CSFDB_SetIntRes2d_IntersectionSegmentoppos;
 		void _CSFDB_SetIntRes2d_IntersectionSegmentoppos (const Standard_Boolean p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") _CSFDB_GetIntRes2d_IntersectionSegmentfirst;
+		%feature("autodoc", "	:rtype: bool
+") _CSFDB_GetIntRes2d_IntersectionSegmentfirst;
 		Standard_Boolean _CSFDB_GetIntRes2d_IntersectionSegmentfirst ();
-		%feature("autodoc", "Args:
-	p(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") _CSFDB_SetIntRes2d_IntersectionSegmentfirst;
+		%feature("autodoc", "	:param p:
+	:type p: bool
+	:rtype: None
+") _CSFDB_SetIntRes2d_IntersectionSegmentfirst;
 		void _CSFDB_SetIntRes2d_IntersectionSegmentfirst (const Standard_Boolean p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") _CSFDB_GetIntRes2d_IntersectionSegmentlast;
+		%feature("autodoc", "	:rtype: bool
+") _CSFDB_GetIntRes2d_IntersectionSegmentlast;
 		Standard_Boolean _CSFDB_GetIntRes2d_IntersectionSegmentlast ();
-		%feature("autodoc", "Args:
-	p(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") _CSFDB_SetIntRes2d_IntersectionSegmentlast;
+		%feature("autodoc", "	:param p:
+	:type p: bool
+	:rtype: None
+") _CSFDB_SetIntRes2d_IntersectionSegmentlast;
 		void _CSFDB_SetIntRes2d_IntersectionSegmentlast (const Standard_Boolean p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntRes2d_IntersectionPoint
-
-No detailed docstring for this function.") _CSFDB_GetIntRes2d_IntersectionSegmentptfirst;
+		%feature("autodoc", "	:rtype: IntRes2d_IntersectionPoint
+") _CSFDB_GetIntRes2d_IntersectionSegmentptfirst;
 		const IntRes2d_IntersectionPoint & _CSFDB_GetIntRes2d_IntersectionSegmentptfirst ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntRes2d_IntersectionPoint
-
-No detailed docstring for this function.") _CSFDB_GetIntRes2d_IntersectionSegmentptlast;
+		%feature("autodoc", "	:rtype: IntRes2d_IntersectionPoint
+") _CSFDB_GetIntRes2d_IntersectionSegmentptlast;
 		const IntRes2d_IntersectionPoint & _CSFDB_GetIntRes2d_IntersectionSegmentptlast ();
 };
 
@@ -649,22 +493,17 @@ def __del__(self):
 %nodefaultctor IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint;
 class IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(IntRes2d_IntersectionPoint)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint;
+		%feature("autodoc", "	:param I:
+	:type I: IntRes2d_IntersectionPoint &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint;
 		 IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint (const IntRes2d_IntersectionPoint & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntRes2d_IntersectionPoint
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: IntRes2d_IntersectionPoint
+") Value;
 		IntRes2d_IntersectionPoint & Value ();
 };
 
@@ -725,22 +564,17 @@ def __del__(self):
 %nodefaultctor IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment;
 class IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(IntRes2d_IntersectionSegment)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment;
+		%feature("autodoc", "	:param I:
+	:type I: IntRes2d_IntersectionSegment &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment;
 		 IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment (const IntRes2d_IntersectionSegment & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntRes2d_IntersectionSegment
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: IntRes2d_IntersectionSegment
+") Value;
 		IntRes2d_IntersectionSegment & Value ();
 };
 
@@ -801,168 +635,111 @@ def __del__(self):
 %nodefaultctor IntRes2d_SequenceOfIntersectionPoint;
 class IntRes2d_SequenceOfIntersectionPoint : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntRes2d_SequenceOfIntersectionPoint;
+		%feature("autodoc", "	:rtype: None
+") IntRes2d_SequenceOfIntersectionPoint;
 		 IntRes2d_SequenceOfIntersectionPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(IntRes2d_SequenceOfIntersectionPoint)
-
-Returns:
-	IntRes2d_SequenceOfIntersectionPoint
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntRes2d_SequenceOfIntersectionPoint &
+	:rtype: IntRes2d_SequenceOfIntersectionPoint
+") Assign;
 		const IntRes2d_SequenceOfIntersectionPoint & Assign (const IntRes2d_SequenceOfIntersectionPoint & Other);
-		%feature("autodoc", "Args:
-	Other(IntRes2d_SequenceOfIntersectionPoint)
-
-Returns:
-	IntRes2d_SequenceOfIntersectionPoint
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntRes2d_SequenceOfIntersectionPoint &
+	:rtype: IntRes2d_SequenceOfIntersectionPoint
+") operator=;
 		const IntRes2d_SequenceOfIntersectionPoint & operator = (const IntRes2d_SequenceOfIntersectionPoint & Other);
-		%feature("autodoc", "Args:
-	T(IntRes2d_IntersectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: IntRes2d_IntersectionPoint &
+	:rtype: None
+") Append;
 		void Append (const IntRes2d_IntersectionPoint & T);
-		%feature("autodoc", "Args:
-	S(IntRes2d_SequenceOfIntersectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: IntRes2d_SequenceOfIntersectionPoint &
+	:rtype: None
+") Append;
 		void Append (IntRes2d_SequenceOfIntersectionPoint & S);
-		%feature("autodoc", "Args:
-	T(IntRes2d_IntersectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: IntRes2d_IntersectionPoint &
+	:rtype: None
+") Prepend;
 		void Prepend (const IntRes2d_IntersectionPoint & T);
-		%feature("autodoc", "Args:
-	S(IntRes2d_SequenceOfIntersectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: IntRes2d_SequenceOfIntersectionPoint &
+	:rtype: None
+") Prepend;
 		void Prepend (IntRes2d_SequenceOfIntersectionPoint & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(IntRes2d_IntersectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: IntRes2d_IntersectionPoint &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const IntRes2d_IntersectionPoint & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(IntRes2d_SequenceOfIntersectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: IntRes2d_SequenceOfIntersectionPoint &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,IntRes2d_SequenceOfIntersectionPoint & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(IntRes2d_IntersectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: IntRes2d_IntersectionPoint &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const IntRes2d_IntersectionPoint & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(IntRes2d_SequenceOfIntersectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: IntRes2d_SequenceOfIntersectionPoint &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,IntRes2d_SequenceOfIntersectionPoint & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntRes2d_IntersectionPoint
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: IntRes2d_IntersectionPoint
+") First;
 		const IntRes2d_IntersectionPoint & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntRes2d_IntersectionPoint
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: IntRes2d_IntersectionPoint
+") Last;
 		const IntRes2d_IntersectionPoint & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(IntRes2d_SequenceOfIntersectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: IntRes2d_SequenceOfIntersectionPoint &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,IntRes2d_SequenceOfIntersectionPoint & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	IntRes2d_IntersectionPoint
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: IntRes2d_IntersectionPoint
+") Value;
 		const IntRes2d_IntersectionPoint & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(IntRes2d_IntersectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: IntRes2d_IntersectionPoint &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const IntRes2d_IntersectionPoint & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	IntRes2d_IntersectionPoint
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: IntRes2d_IntersectionPoint
+") ChangeValue;
 		IntRes2d_IntersectionPoint & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -984,168 +761,111 @@ def __del__(self):
 %nodefaultctor IntRes2d_SequenceOfIntersectionSegment;
 class IntRes2d_SequenceOfIntersectionSegment : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntRes2d_SequenceOfIntersectionSegment;
+		%feature("autodoc", "	:rtype: None
+") IntRes2d_SequenceOfIntersectionSegment;
 		 IntRes2d_SequenceOfIntersectionSegment ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(IntRes2d_SequenceOfIntersectionSegment)
-
-Returns:
-	IntRes2d_SequenceOfIntersectionSegment
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntRes2d_SequenceOfIntersectionSegment &
+	:rtype: IntRes2d_SequenceOfIntersectionSegment
+") Assign;
 		const IntRes2d_SequenceOfIntersectionSegment & Assign (const IntRes2d_SequenceOfIntersectionSegment & Other);
-		%feature("autodoc", "Args:
-	Other(IntRes2d_SequenceOfIntersectionSegment)
-
-Returns:
-	IntRes2d_SequenceOfIntersectionSegment
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntRes2d_SequenceOfIntersectionSegment &
+	:rtype: IntRes2d_SequenceOfIntersectionSegment
+") operator=;
 		const IntRes2d_SequenceOfIntersectionSegment & operator = (const IntRes2d_SequenceOfIntersectionSegment & Other);
-		%feature("autodoc", "Args:
-	T(IntRes2d_IntersectionSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: IntRes2d_IntersectionSegment &
+	:rtype: None
+") Append;
 		void Append (const IntRes2d_IntersectionSegment & T);
-		%feature("autodoc", "Args:
-	S(IntRes2d_SequenceOfIntersectionSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: IntRes2d_SequenceOfIntersectionSegment &
+	:rtype: None
+") Append;
 		void Append (IntRes2d_SequenceOfIntersectionSegment & S);
-		%feature("autodoc", "Args:
-	T(IntRes2d_IntersectionSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: IntRes2d_IntersectionSegment &
+	:rtype: None
+") Prepend;
 		void Prepend (const IntRes2d_IntersectionSegment & T);
-		%feature("autodoc", "Args:
-	S(IntRes2d_SequenceOfIntersectionSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: IntRes2d_SequenceOfIntersectionSegment &
+	:rtype: None
+") Prepend;
 		void Prepend (IntRes2d_SequenceOfIntersectionSegment & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(IntRes2d_IntersectionSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: IntRes2d_IntersectionSegment &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const IntRes2d_IntersectionSegment & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(IntRes2d_SequenceOfIntersectionSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: IntRes2d_SequenceOfIntersectionSegment &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,IntRes2d_SequenceOfIntersectionSegment & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(IntRes2d_IntersectionSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: IntRes2d_IntersectionSegment &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const IntRes2d_IntersectionSegment & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(IntRes2d_SequenceOfIntersectionSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: IntRes2d_SequenceOfIntersectionSegment &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,IntRes2d_SequenceOfIntersectionSegment & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntRes2d_IntersectionSegment
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: IntRes2d_IntersectionSegment
+") First;
 		const IntRes2d_IntersectionSegment & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntRes2d_IntersectionSegment
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: IntRes2d_IntersectionSegment
+") Last;
 		const IntRes2d_IntersectionSegment & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(IntRes2d_SequenceOfIntersectionSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: IntRes2d_SequenceOfIntersectionSegment &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,IntRes2d_SequenceOfIntersectionSegment & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	IntRes2d_IntersectionSegment
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: IntRes2d_IntersectionSegment
+") Value;
 		const IntRes2d_IntersectionSegment & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(IntRes2d_IntersectionSegment)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: IntRes2d_IntersectionSegment &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const IntRes2d_IntersectionSegment & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	IntRes2d_IntersectionSegment
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: IntRes2d_IntersectionSegment
+") ChangeValue;
 		IntRes2d_IntersectionSegment & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -1167,208 +887,144 @@ def __del__(self):
 %nodefaultctor IntRes2d_Transition;
 class IntRes2d_Transition {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor.
 
-Empty constructor.") IntRes2d_Transition;
+	:rtype: None
+") IntRes2d_Transition;
 		 IntRes2d_Transition ();
-		%feature("autodoc", "Args:
-	Tangent(Standard_Boolean)
-	Pos(IntRes2d_Position)
-	Type(IntRes2d_TypeTrans)
+		%feature("autodoc", "	* Creates an IN or OUT transition.
 
-Returns:
-	None
-
-Creates an IN or OUT transition.") IntRes2d_Transition;
+	:param Tangent:
+	:type Tangent: bool
+	:param Pos:
+	:type Pos: IntRes2d_Position
+	:param Type:
+	:type Type: IntRes2d_TypeTrans
+	:rtype: None
+") IntRes2d_Transition;
 		 IntRes2d_Transition (const Standard_Boolean Tangent,const IntRes2d_Position Pos,const IntRes2d_TypeTrans Type);
-		%feature("autodoc", "Args:
-	Tangent(Standard_Boolean)
-	Pos(IntRes2d_Position)
-	Situ(IntRes2d_Situation)
-	Oppos(Standard_Boolean)
+		%feature("autodoc", "	* Creates a TOUCH transition.
 
-Returns:
-	None
-
-Creates a TOUCH transition.") IntRes2d_Transition;
+	:param Tangent:
+	:type Tangent: bool
+	:param Pos:
+	:type Pos: IntRes2d_Position
+	:param Situ:
+	:type Situ: IntRes2d_Situation
+	:param Oppos:
+	:type Oppos: bool
+	:rtype: None
+") IntRes2d_Transition;
 		 IntRes2d_Transition (const Standard_Boolean Tangent,const IntRes2d_Position Pos,const IntRes2d_Situation Situ,const Standard_Boolean Oppos);
-		%feature("autodoc", "Args:
-	Pos(IntRes2d_Position)
+		%feature("autodoc", "	* Creates an UNDECIDED transition.
 
-Returns:
-	None
-
-Creates an UNDECIDED transition.") IntRes2d_Transition;
+	:param Pos:
+	:type Pos: IntRes2d_Position
+	:rtype: None
+") IntRes2d_Transition;
 		 IntRes2d_Transition (const IntRes2d_Position Pos);
-		%feature("autodoc", "Args:
-	Tangent(Standard_Boolean)
-	Pos(IntRes2d_Position)
-	Type(IntRes2d_TypeTrans)
+		%feature("autodoc", "	* Sets the values of an IN or OUT transition.
 
-Returns:
-	None
-
-Sets the values of an IN or OUT transition.") SetValue;
+	:param Tangent:
+	:type Tangent: bool
+	:param Pos:
+	:type Pos: IntRes2d_Position
+	:param Type:
+	:type Type: IntRes2d_TypeTrans
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Boolean Tangent,const IntRes2d_Position Pos,const IntRes2d_TypeTrans Type);
-		%feature("autodoc", "Args:
-	Tangent(Standard_Boolean)
-	Pos(IntRes2d_Position)
-	Situ(IntRes2d_Situation)
-	Oppos(Standard_Boolean)
+		%feature("autodoc", "	* Sets the values of a TOUCH transition.
 
-Returns:
-	None
-
-Sets the values of a TOUCH transition.") SetValue;
+	:param Tangent:
+	:type Tangent: bool
+	:param Pos:
+	:type Pos: IntRes2d_Position
+	:param Situ:
+	:type Situ: IntRes2d_Situation
+	:param Oppos:
+	:type Oppos: bool
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Boolean Tangent,const IntRes2d_Position Pos,const IntRes2d_Situation Situ,const Standard_Boolean Oppos);
-		%feature("autodoc", "Args:
-	Pos(IntRes2d_Position)
+		%feature("autodoc", "	* Sets the values of an UNDECIDED transition.
 
-Returns:
-	None
-
-Sets the values of an UNDECIDED transition.") SetValue;
+	:param Pos:
+	:type Pos: IntRes2d_Position
+	:rtype: None
+") SetValue;
 		void SetValue (const IntRes2d_Position Pos);
-		%feature("autodoc", "Args:
-	Pos(IntRes2d_Position)
+		%feature("autodoc", "	* Sets the value of the position.
 
-Returns:
-	None
-
-Sets the value of the position.") SetPosition;
+	:param Pos:
+	:type Pos: IntRes2d_Position
+	:rtype: None
+") SetPosition;
 		void SetPosition (const IntRes2d_Position Pos);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntRes2d_Position
+		%feature("autodoc", "	* Indicates if the intersection is at the beginning (IntRes2d_Head), at the end (IntRes2d_End), or in the middle (IntRes2d_Middle) of the curve.
 
-Indicates if the  intersection is at the beginning  
-         (IntRes2d_Head),  at the end (IntRes2d_End), or in  
-         the middle (IntRes2d_Middle) of the curve.") PositionOnCurve;
+	:rtype: IntRes2d_Position
+") PositionOnCurve;
 		IntRes2d_Position PositionOnCurve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntRes2d_TypeTrans
+		%feature("autodoc", "	* Returns the type of transition at the intersection. It may be IN or OUT or TOUCH, or UNDECIDED if the two first derivatives are not enough to give the tangent to one of the two curves.
 
-Returns the type of transition at the intersection.  
-         It may be IN or OUT or TOUCH, or UNDECIDED if the  
-         two first derivatives are not enough to give  
-         the tangent to one of the two curves.") TransitionType;
+	:rtype: IntRes2d_TypeTrans
+") TransitionType;
 		IntRes2d_TypeTrans TransitionType ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True when the 2 curves are tangent at the intersection point. Theexception DomainError is raised if the type of transition is UNDECIDED.
 
-Returns TRUE when the 2 curves are tangent at the  
-         intersection point.  
-         Theexception DomainError is raised if the type of  
-         transition is UNDECIDED.") IsTangent;
+	:rtype: bool
+") IsTangent;
 		Standard_Boolean IsTangent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntRes2d_Situation
+		%feature("autodoc", "	* returns a significant value if TransitionType returns TOUCH. In this case, the function returns : INSIDE when the curve remains inside the other one, OUTSIDE when it remains outside the other one, UNKNOWN when the calculus, based on the second derivatives cannot give the result. If TransitionType returns IN or OUT or UNDECIDED, the exception DomainError is raised.
 
-returns a significant value if TransitionType returns  
-         TOUCH. In this case, the function returns :  
-         INSIDE when the curve remains inside the other one,  
-         OUTSIDE when it remains outside the other one,  
-         UNKNOWN when the calculus, based on the second derivatives  
-         cannot give the result.  
-         If TransitionType returns IN or OUT or UNDECIDED, the  
-         exception DomainError is raised.") Situation;
+	:rtype: IntRes2d_Situation
+") Situation;
 		IntRes2d_Situation Situation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns a significant value if TransitionType returns TOUCH. In this case, the function returns true when the 2 curves locally define two different parts of the space. If TransitionType returns IN or OUT or UNDECIDED, the exception DomainError is raised.
 
-returns a  significant value   if   TransitionType  
-         returns TOUCH. In this  case, the function returns  
-         true   when  the  2   curves   locally define  two  
-         different  parts of the  space.  If TransitionType  
-         returns  IN or   OUT or UNDECIDED,  the  exception  
-         DomainError is raised.") IsOpposite;
+	:rtype: bool
+") IsOpposite;
 		Standard_Boolean IsOpposite ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") _CSFDB_GetIntRes2d_Transitiontangent;
+		%feature("autodoc", "	:rtype: bool
+") _CSFDB_GetIntRes2d_Transitiontangent;
 		Standard_Boolean _CSFDB_GetIntRes2d_Transitiontangent ();
-		%feature("autodoc", "Args:
-	p(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") _CSFDB_SetIntRes2d_Transitiontangent;
+		%feature("autodoc", "	:param p:
+	:type p: bool
+	:rtype: None
+") _CSFDB_SetIntRes2d_Transitiontangent;
 		void _CSFDB_SetIntRes2d_Transitiontangent (const Standard_Boolean p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntRes2d_Position
-
-No detailed docstring for this function.") _CSFDB_GetIntRes2d_Transitionposit;
+		%feature("autodoc", "	:rtype: IntRes2d_Position
+") _CSFDB_GetIntRes2d_Transitionposit;
 		IntRes2d_Position _CSFDB_GetIntRes2d_Transitionposit ();
-		%feature("autodoc", "Args:
-	p(IntRes2d_Position)
-
-Returns:
-	None
-
-No detailed docstring for this function.") _CSFDB_SetIntRes2d_Transitionposit;
+		%feature("autodoc", "	:param p:
+	:type p: IntRes2d_Position
+	:rtype: None
+") _CSFDB_SetIntRes2d_Transitionposit;
 		void _CSFDB_SetIntRes2d_Transitionposit (const IntRes2d_Position p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntRes2d_TypeTrans
-
-No detailed docstring for this function.") _CSFDB_GetIntRes2d_Transitiontypetra;
+		%feature("autodoc", "	:rtype: IntRes2d_TypeTrans
+") _CSFDB_GetIntRes2d_Transitiontypetra;
 		IntRes2d_TypeTrans _CSFDB_GetIntRes2d_Transitiontypetra ();
-		%feature("autodoc", "Args:
-	p(IntRes2d_TypeTrans)
-
-Returns:
-	None
-
-No detailed docstring for this function.") _CSFDB_SetIntRes2d_Transitiontypetra;
+		%feature("autodoc", "	:param p:
+	:type p: IntRes2d_TypeTrans
+	:rtype: None
+") _CSFDB_SetIntRes2d_Transitiontypetra;
 		void _CSFDB_SetIntRes2d_Transitiontypetra (const IntRes2d_TypeTrans p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntRes2d_Situation
-
-No detailed docstring for this function.") _CSFDB_GetIntRes2d_Transitionsituat;
+		%feature("autodoc", "	:rtype: IntRes2d_Situation
+") _CSFDB_GetIntRes2d_Transitionsituat;
 		IntRes2d_Situation _CSFDB_GetIntRes2d_Transitionsituat ();
-		%feature("autodoc", "Args:
-	p(IntRes2d_Situation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") _CSFDB_SetIntRes2d_Transitionsituat;
+		%feature("autodoc", "	:param p:
+	:type p: IntRes2d_Situation
+	:rtype: None
+") _CSFDB_SetIntRes2d_Transitionsituat;
 		void _CSFDB_SetIntRes2d_Transitionsituat (const IntRes2d_Situation p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") _CSFDB_GetIntRes2d_Transitionoppos;
+		%feature("autodoc", "	:rtype: bool
+") _CSFDB_GetIntRes2d_Transitionoppos;
 		Standard_Boolean _CSFDB_GetIntRes2d_Transitionoppos ();
-		%feature("autodoc", "Args:
-	p(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") _CSFDB_SetIntRes2d_Transitionoppos;
+		%feature("autodoc", "	:param p:
+	:type p: bool
+	:rtype: None
+") _CSFDB_SetIntRes2d_Transitionoppos;
 		void _CSFDB_SetIntRes2d_Transitionoppos (const Standard_Boolean p);
 };
 

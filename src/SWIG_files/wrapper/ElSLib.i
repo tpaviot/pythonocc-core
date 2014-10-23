@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -45,1071 +45,1229 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor ElSLib;
 class ElSLib {
 	public:
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pl(gp_Pln)
+		%feature("autodoc", "	* For elementary surfaces from the gp package (planes, cones, cylinders, spheres and tori), computes the point of parameters (U, V).
 
-Returns:
-	static gp_Pnt
-
-For elementary surfaces from the gp package (planes,  
-cones, cylinders, spheres and tori), computes the point  
-of parameters (U, V).") Value;
+	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pl:
+	:type Pl: gp_Pln
+	:rtype: gp_Pnt
+") Value;
 		static gp_Pnt Value (const Standard_Real U,const Standard_Real V,const gp_Pln & Pl);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	C(gp_Cone)
-
-Returns:
-	static gp_Pnt
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param C:
+	:type C: gp_Cone
+	:rtype: gp_Pnt
+") Value;
 		static gp_Pnt Value (const Standard_Real U,const Standard_Real V,const gp_Cone & C);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	C(gp_Cylinder)
-
-Returns:
-	static gp_Pnt
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param C:
+	:type C: gp_Cylinder
+	:rtype: gp_Pnt
+") Value;
 		static gp_Pnt Value (const Standard_Real U,const Standard_Real V,const gp_Cylinder & C);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	S(gp_Sphere)
-
-Returns:
-	static gp_Pnt
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param S:
+	:type S: gp_Sphere
+	:rtype: gp_Pnt
+") Value;
 		static gp_Pnt Value (const Standard_Real U,const Standard_Real V,const gp_Sphere & S);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	T(gp_Torus)
-
-Returns:
-	static gp_Pnt
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param T:
+	:type T: gp_Torus
+	:rtype: gp_Pnt
+") Value;
 		static gp_Pnt Value (const Standard_Real U,const Standard_Real V,const gp_Torus & T);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pl(gp_Pln)
-	Nu(Standard_Integer)
-	Nv(Standard_Integer)
+		%feature("autodoc", "	* For elementary surfaces from the gp package (planes, cones, cylinders, spheres and tori), computes the derivative vector of order Nu and Nv in the u and v parametric directions respectively, at the point of parameters (U, V).
 
-Returns:
-	static gp_Vec
-
-For elementary surfaces from the gp package (planes,  
-cones, cylinders, spheres and tori), computes the  
-derivative vector of order Nu and Nv in the u and v  
-parametric directions respectively, at the point of  
-parameters (U, V).") DN;
+	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pl:
+	:type Pl: gp_Pln
+	:param Nu:
+	:type Nu: Standard_Integer
+	:param Nv:
+	:type Nv: Standard_Integer
+	:rtype: gp_Vec
+") DN;
 		static gp_Vec DN (const Standard_Real U,const Standard_Real V,const gp_Pln & Pl,const Standard_Integer Nu,const Standard_Integer Nv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	C(gp_Cone)
-	Nu(Standard_Integer)
-	Nv(Standard_Integer)
-
-Returns:
-	static gp_Vec
-
-No detailed docstring for this function.") DN;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param C:
+	:type C: gp_Cone
+	:param Nu:
+	:type Nu: Standard_Integer
+	:param Nv:
+	:type Nv: Standard_Integer
+	:rtype: gp_Vec
+") DN;
 		static gp_Vec DN (const Standard_Real U,const Standard_Real V,const gp_Cone & C,const Standard_Integer Nu,const Standard_Integer Nv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	C(gp_Cylinder)
-	Nu(Standard_Integer)
-	Nv(Standard_Integer)
-
-Returns:
-	static gp_Vec
-
-No detailed docstring for this function.") DN;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param C:
+	:type C: gp_Cylinder
+	:param Nu:
+	:type Nu: Standard_Integer
+	:param Nv:
+	:type Nv: Standard_Integer
+	:rtype: gp_Vec
+") DN;
 		static gp_Vec DN (const Standard_Real U,const Standard_Real V,const gp_Cylinder & C,const Standard_Integer Nu,const Standard_Integer Nv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	S(gp_Sphere)
-	Nu(Standard_Integer)
-	Nv(Standard_Integer)
-
-Returns:
-	static gp_Vec
-
-No detailed docstring for this function.") DN;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param S:
+	:type S: gp_Sphere
+	:param Nu:
+	:type Nu: Standard_Integer
+	:param Nv:
+	:type Nv: Standard_Integer
+	:rtype: gp_Vec
+") DN;
 		static gp_Vec DN (const Standard_Real U,const Standard_Real V,const gp_Sphere & S,const Standard_Integer Nu,const Standard_Integer Nv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	T(gp_Torus)
-	Nu(Standard_Integer)
-	Nv(Standard_Integer)
-
-Returns:
-	static gp_Vec
-
-No detailed docstring for this function.") DN;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param T:
+	:type T: gp_Torus
+	:param Nu:
+	:type Nu: Standard_Integer
+	:param Nv:
+	:type Nv: Standard_Integer
+	:rtype: gp_Vec
+") DN;
 		static gp_Vec DN (const Standard_Real U,const Standard_Real V,const gp_Torus & T,const Standard_Integer Nu,const Standard_Integer Nv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pl(gp_Pln)
-	P(gp_Pnt)
+		%feature("autodoc", "	* For elementary surfaces from the gp package (planes, cones, cylinders, spheres and tori), computes the point P of parameters (U, V).inline
 
-Returns:
-	static void
-
-For elementary surfaces from the gp package (planes,  
-cones, cylinders, spheres and tori), computes the point P  
-of parameters (U, V).inline") D0;
+	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pl:
+	:type Pl: gp_Pln
+	:param P:
+	:type P: gp_Pnt
+	:rtype: void
+") D0;
 		static void D0 (const Standard_Real U,const Standard_Real V,const gp_Pln & Pl,gp_Pnt & P);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	C(gp_Cone)
-	P(gp_Pnt)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") D0;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param C:
+	:type C: gp_Cone
+	:param P:
+	:type P: gp_Pnt
+	:rtype: void
+") D0;
 		static void D0 (const Standard_Real U,const Standard_Real V,const gp_Cone & C,gp_Pnt & P);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	C(gp_Cylinder)
-	P(gp_Pnt)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") D0;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param C:
+	:type C: gp_Cylinder
+	:param P:
+	:type P: gp_Pnt
+	:rtype: void
+") D0;
 		static void D0 (const Standard_Real U,const Standard_Real V,const gp_Cylinder & C,gp_Pnt & P);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	S(gp_Sphere)
-	P(gp_Pnt)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") D0;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param S:
+	:type S: gp_Sphere
+	:param P:
+	:type P: gp_Pnt
+	:rtype: void
+") D0;
 		static void D0 (const Standard_Real U,const Standard_Real V,const gp_Sphere & S,gp_Pnt & P);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	T(gp_Torus)
-	P(gp_Pnt)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") D0;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param T:
+	:type T: gp_Torus
+	:param P:
+	:type P: gp_Pnt
+	:rtype: void
+") D0;
 		static void D0 (const Standard_Real U,const Standard_Real V,const gp_Torus & T,gp_Pnt & P);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pl(gp_Pln)
-	P(gp_Pnt)
-	Vu(gp_Vec)
-	Vv(gp_Vec)
+		%feature("autodoc", "	* For elementary surfaces from the gp package (planes, cones, cylinders, spheres and tori), computes: - the point P of parameters (U, V), and - the first derivative vectors Vu and Vv at this point in the u and v parametric directions respectively.
 
-Returns:
-	static void
-
-For elementary surfaces from the gp package (planes,  
-cones, cylinders, spheres and tori), computes:  
--   the point P of parameters (U, V), and  
--   the first derivative vectors Vu and Vv at this point in  
-  the u and v parametric directions respectively.") D1;
+	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pl:
+	:type Pl: gp_Pln
+	:param P:
+	:type P: gp_Pnt
+	:param Vu:
+	:type Vu: gp_Vec
+	:param Vv:
+	:type Vv: gp_Vec
+	:rtype: void
+") D1;
 		static void D1 (const Standard_Real U,const Standard_Real V,const gp_Pln & Pl,gp_Pnt & P,gp_Vec & Vu,gp_Vec & Vv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	C(gp_Cone)
-	P(gp_Pnt)
-	Vu(gp_Vec)
-	Vv(gp_Vec)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") D1;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param C:
+	:type C: gp_Cone
+	:param P:
+	:type P: gp_Pnt
+	:param Vu:
+	:type Vu: gp_Vec
+	:param Vv:
+	:type Vv: gp_Vec
+	:rtype: void
+") D1;
 		static void D1 (const Standard_Real U,const Standard_Real V,const gp_Cone & C,gp_Pnt & P,gp_Vec & Vu,gp_Vec & Vv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	C(gp_Cylinder)
-	P(gp_Pnt)
-	Vu(gp_Vec)
-	Vv(gp_Vec)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") D1;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param C:
+	:type C: gp_Cylinder
+	:param P:
+	:type P: gp_Pnt
+	:param Vu:
+	:type Vu: gp_Vec
+	:param Vv:
+	:type Vv: gp_Vec
+	:rtype: void
+") D1;
 		static void D1 (const Standard_Real U,const Standard_Real V,const gp_Cylinder & C,gp_Pnt & P,gp_Vec & Vu,gp_Vec & Vv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	S(gp_Sphere)
-	P(gp_Pnt)
-	Vu(gp_Vec)
-	Vv(gp_Vec)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") D1;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param S:
+	:type S: gp_Sphere
+	:param P:
+	:type P: gp_Pnt
+	:param Vu:
+	:type Vu: gp_Vec
+	:param Vv:
+	:type Vv: gp_Vec
+	:rtype: void
+") D1;
 		static void D1 (const Standard_Real U,const Standard_Real V,const gp_Sphere & S,gp_Pnt & P,gp_Vec & Vu,gp_Vec & Vv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	T(gp_Torus)
-	P(gp_Pnt)
-	Vu(gp_Vec)
-	Vv(gp_Vec)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") D1;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param T:
+	:type T: gp_Torus
+	:param P:
+	:type P: gp_Pnt
+	:param Vu:
+	:type Vu: gp_Vec
+	:param Vv:
+	:type Vv: gp_Vec
+	:rtype: void
+") D1;
 		static void D1 (const Standard_Real U,const Standard_Real V,const gp_Torus & T,gp_Pnt & P,gp_Vec & Vu,gp_Vec & Vv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	C(gp_Cone)
-	P(gp_Pnt)
-	Vu(gp_Vec)
-	Vv(gp_Vec)
-	Vuu(gp_Vec)
-	Vvv(gp_Vec)
-	Vuv(gp_Vec)
+		%feature("autodoc", "	* For elementary surfaces from the gp package (cones, cylinders, spheres and tori), computes: - the point P of parameters (U, V), and - the first derivative vectors Vu and Vv at this point in the u and v parametric directions respectively, and - the second derivative vectors Vuu, Vvv and Vuv at this point.
 
-Returns:
-	static void
-
-For elementary surfaces from the gp package (cones,  
-cylinders, spheres and tori), computes:  
--   the point P of parameters (U, V), and  
--   the first derivative vectors Vu and Vv at this point in  
-  the u and v parametric directions respectively, and  
--   the second derivative vectors Vuu, Vvv and Vuv at this point.") D2;
+	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param C:
+	:type C: gp_Cone
+	:param P:
+	:type P: gp_Pnt
+	:param Vu:
+	:type Vu: gp_Vec
+	:param Vv:
+	:type Vv: gp_Vec
+	:param Vuu:
+	:type Vuu: gp_Vec
+	:param Vvv:
+	:type Vvv: gp_Vec
+	:param Vuv:
+	:type Vuv: gp_Vec
+	:rtype: void
+") D2;
 		static void D2 (const Standard_Real U,const Standard_Real V,const gp_Cone & C,gp_Pnt & P,gp_Vec & Vu,gp_Vec & Vv,gp_Vec & Vuu,gp_Vec & Vvv,gp_Vec & Vuv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	C(gp_Cylinder)
-	P(gp_Pnt)
-	Vu(gp_Vec)
-	Vv(gp_Vec)
-	Vuu(gp_Vec)
-	Vvv(gp_Vec)
-	Vuv(gp_Vec)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") D2;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param C:
+	:type C: gp_Cylinder
+	:param P:
+	:type P: gp_Pnt
+	:param Vu:
+	:type Vu: gp_Vec
+	:param Vv:
+	:type Vv: gp_Vec
+	:param Vuu:
+	:type Vuu: gp_Vec
+	:param Vvv:
+	:type Vvv: gp_Vec
+	:param Vuv:
+	:type Vuv: gp_Vec
+	:rtype: void
+") D2;
 		static void D2 (const Standard_Real U,const Standard_Real V,const gp_Cylinder & C,gp_Pnt & P,gp_Vec & Vu,gp_Vec & Vv,gp_Vec & Vuu,gp_Vec & Vvv,gp_Vec & Vuv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	S(gp_Sphere)
-	P(gp_Pnt)
-	Vu(gp_Vec)
-	Vv(gp_Vec)
-	Vuu(gp_Vec)
-	Vvv(gp_Vec)
-	Vuv(gp_Vec)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") D2;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param S:
+	:type S: gp_Sphere
+	:param P:
+	:type P: gp_Pnt
+	:param Vu:
+	:type Vu: gp_Vec
+	:param Vv:
+	:type Vv: gp_Vec
+	:param Vuu:
+	:type Vuu: gp_Vec
+	:param Vvv:
+	:type Vvv: gp_Vec
+	:param Vuv:
+	:type Vuv: gp_Vec
+	:rtype: void
+") D2;
 		static void D2 (const Standard_Real U,const Standard_Real V,const gp_Sphere & S,gp_Pnt & P,gp_Vec & Vu,gp_Vec & Vv,gp_Vec & Vuu,gp_Vec & Vvv,gp_Vec & Vuv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	T(gp_Torus)
-	P(gp_Pnt)
-	Vu(gp_Vec)
-	Vv(gp_Vec)
-	Vuu(gp_Vec)
-	Vvv(gp_Vec)
-	Vuv(gp_Vec)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") D2;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param T:
+	:type T: gp_Torus
+	:param P:
+	:type P: gp_Pnt
+	:param Vu:
+	:type Vu: gp_Vec
+	:param Vv:
+	:type Vv: gp_Vec
+	:param Vuu:
+	:type Vuu: gp_Vec
+	:param Vvv:
+	:type Vvv: gp_Vec
+	:param Vuv:
+	:type Vuv: gp_Vec
+	:rtype: void
+") D2;
 		static void D2 (const Standard_Real U,const Standard_Real V,const gp_Torus & T,gp_Pnt & P,gp_Vec & Vu,gp_Vec & Vv,gp_Vec & Vuu,gp_Vec & Vvv,gp_Vec & Vuv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	C(gp_Cone)
-	P(gp_Pnt)
-	Vu(gp_Vec)
-	Vv(gp_Vec)
-	Vuu(gp_Vec)
-	Vvv(gp_Vec)
-	Vuv(gp_Vec)
-	Vuuu(gp_Vec)
-	Vvvv(gp_Vec)
-	Vuuv(gp_Vec)
-	Vuvv(gp_Vec)
+		%feature("autodoc", "	* For elementary surfaces from the gp package (cones, cylinders, spheres and tori), computes: - the point P of parameters (U,V), and - the first derivative vectors Vu and Vv at this point in the u and v parametric directions respectively, and - the second derivative vectors Vuu, Vvv and Vuv at this point, and - the third derivative vectors Vuuu, Vvvv, Vuuv and Vuvv at this point.
 
-Returns:
-	static void
-
-For elementary surfaces from the gp package (cones,  
-cylinders, spheres and tori), computes:  
--   the point P of parameters (U,V), and  
--   the first derivative vectors Vu and Vv at this point in  
-  the u and v parametric directions respectively, and  
--   the second derivative vectors Vuu, Vvv and Vuv at  
-  this point, and  
--   the third derivative vectors Vuuu, Vvvv, Vuuv and  
-  Vuvv at this point.") D3;
+	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param C:
+	:type C: gp_Cone
+	:param P:
+	:type P: gp_Pnt
+	:param Vu:
+	:type Vu: gp_Vec
+	:param Vv:
+	:type Vv: gp_Vec
+	:param Vuu:
+	:type Vuu: gp_Vec
+	:param Vvv:
+	:type Vvv: gp_Vec
+	:param Vuv:
+	:type Vuv: gp_Vec
+	:param Vuuu:
+	:type Vuuu: gp_Vec
+	:param Vvvv:
+	:type Vvvv: gp_Vec
+	:param Vuuv:
+	:type Vuuv: gp_Vec
+	:param Vuvv:
+	:type Vuvv: gp_Vec
+	:rtype: void
+") D3;
 		static void D3 (const Standard_Real U,const Standard_Real V,const gp_Cone & C,gp_Pnt & P,gp_Vec & Vu,gp_Vec & Vv,gp_Vec & Vuu,gp_Vec & Vvv,gp_Vec & Vuv,gp_Vec & Vuuu,gp_Vec & Vvvv,gp_Vec & Vuuv,gp_Vec & Vuvv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	C(gp_Cylinder)
-	P(gp_Pnt)
-	Vu(gp_Vec)
-	Vv(gp_Vec)
-	Vuu(gp_Vec)
-	Vvv(gp_Vec)
-	Vuv(gp_Vec)
-	Vuuu(gp_Vec)
-	Vvvv(gp_Vec)
-	Vuuv(gp_Vec)
-	Vuvv(gp_Vec)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") D3;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param C:
+	:type C: gp_Cylinder
+	:param P:
+	:type P: gp_Pnt
+	:param Vu:
+	:type Vu: gp_Vec
+	:param Vv:
+	:type Vv: gp_Vec
+	:param Vuu:
+	:type Vuu: gp_Vec
+	:param Vvv:
+	:type Vvv: gp_Vec
+	:param Vuv:
+	:type Vuv: gp_Vec
+	:param Vuuu:
+	:type Vuuu: gp_Vec
+	:param Vvvv:
+	:type Vvvv: gp_Vec
+	:param Vuuv:
+	:type Vuuv: gp_Vec
+	:param Vuvv:
+	:type Vuvv: gp_Vec
+	:rtype: void
+") D3;
 		static void D3 (const Standard_Real U,const Standard_Real V,const gp_Cylinder & C,gp_Pnt & P,gp_Vec & Vu,gp_Vec & Vv,gp_Vec & Vuu,gp_Vec & Vvv,gp_Vec & Vuv,gp_Vec & Vuuu,gp_Vec & Vvvv,gp_Vec & Vuuv,gp_Vec & Vuvv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	S(gp_Sphere)
-	P(gp_Pnt)
-	Vu(gp_Vec)
-	Vv(gp_Vec)
-	Vuu(gp_Vec)
-	Vvv(gp_Vec)
-	Vuv(gp_Vec)
-	Vuuu(gp_Vec)
-	Vvvv(gp_Vec)
-	Vuuv(gp_Vec)
-	Vuvv(gp_Vec)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") D3;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param S:
+	:type S: gp_Sphere
+	:param P:
+	:type P: gp_Pnt
+	:param Vu:
+	:type Vu: gp_Vec
+	:param Vv:
+	:type Vv: gp_Vec
+	:param Vuu:
+	:type Vuu: gp_Vec
+	:param Vvv:
+	:type Vvv: gp_Vec
+	:param Vuv:
+	:type Vuv: gp_Vec
+	:param Vuuu:
+	:type Vuuu: gp_Vec
+	:param Vvvv:
+	:type Vvvv: gp_Vec
+	:param Vuuv:
+	:type Vuuv: gp_Vec
+	:param Vuvv:
+	:type Vuvv: gp_Vec
+	:rtype: void
+") D3;
 		static void D3 (const Standard_Real U,const Standard_Real V,const gp_Sphere & S,gp_Pnt & P,gp_Vec & Vu,gp_Vec & Vv,gp_Vec & Vuu,gp_Vec & Vvv,gp_Vec & Vuv,gp_Vec & Vuuu,gp_Vec & Vvvv,gp_Vec & Vuuv,gp_Vec & Vuvv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	T(gp_Torus)
-	P(gp_Pnt)
-	Vu(gp_Vec)
-	Vv(gp_Vec)
-	Vuu(gp_Vec)
-	Vvv(gp_Vec)
-	Vuv(gp_Vec)
-	Vuuu(gp_Vec)
-	Vvvv(gp_Vec)
-	Vuuv(gp_Vec)
-	Vuvv(gp_Vec)
+		%feature("autodoc", "	* Surface evaluation The following functions compute the point and the derivatives on elementary surfaces defined with their geometric characterisitics. You don't need to create the surface to use these functions. These functions are called by the previous ones. Example : A cylinder is defined with its position and its radius.
 
-Returns:
-	static void
-
-Surface evaluation  
- The following functions compute the point and the  
- derivatives on elementary surfaces defined with their  
- geometric characterisitics.  
- You don't need to create the surface to use these functions.  
- These functions are called by the previous  ones.  
-Example :  
- A cylinder is defined with its position and its radius.") D3;
+	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param T:
+	:type T: gp_Torus
+	:param P:
+	:type P: gp_Pnt
+	:param Vu:
+	:type Vu: gp_Vec
+	:param Vv:
+	:type Vv: gp_Vec
+	:param Vuu:
+	:type Vuu: gp_Vec
+	:param Vvv:
+	:type Vvv: gp_Vec
+	:param Vuv:
+	:type Vuv: gp_Vec
+	:param Vuuu:
+	:type Vuuu: gp_Vec
+	:param Vvvv:
+	:type Vvvv: gp_Vec
+	:param Vuuv:
+	:type Vuuv: gp_Vec
+	:param Vuvv:
+	:type Vuvv: gp_Vec
+	:rtype: void
+") D3;
 		static void D3 (const Standard_Real U,const Standard_Real V,const gp_Torus & T,gp_Pnt & P,gp_Vec & Vu,gp_Vec & Vv,gp_Vec & Vuu,gp_Vec & Vvv,gp_Vec & Vuv,gp_Vec & Vuuu,gp_Vec & Vvvv,gp_Vec & Vuuv,gp_Vec & Vuvv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-
-Returns:
-	static gp_Pnt
-
-No detailed docstring for this function.") PlaneValue;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:rtype: gp_Pnt
+") PlaneValue;
 		static gp_Pnt PlaneValue (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-
-Returns:
-	static gp_Pnt
-
-No detailed docstring for this function.") CylinderValue;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:rtype: gp_Pnt
+") CylinderValue;
 		static gp_Pnt CylinderValue (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,const Standard_Real Radius);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-	SAngle(Standard_Real)
-
-Returns:
-	static gp_Pnt
-
-No detailed docstring for this function.") ConeValue;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:param SAngle:
+	:type SAngle: float
+	:rtype: gp_Pnt
+") ConeValue;
 		static gp_Pnt ConeValue (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,const Standard_Real Radius,const Standard_Real SAngle);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-
-Returns:
-	static gp_Pnt
-
-No detailed docstring for this function.") SphereValue;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:rtype: gp_Pnt
+") SphereValue;
 		static gp_Pnt SphereValue (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,const Standard_Real Radius);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	MajorRadius(Standard_Real)
-	MinorRadius(Standard_Real)
-
-Returns:
-	static gp_Pnt
-
-No detailed docstring for this function.") TorusValue;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param MajorRadius:
+	:type MajorRadius: float
+	:param MinorRadius:
+	:type MinorRadius: float
+	:rtype: gp_Pnt
+") TorusValue;
 		static gp_Pnt TorusValue (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,const Standard_Real MajorRadius,const Standard_Real MinorRadius);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	Nu(Standard_Integer)
-	Nv(Standard_Integer)
-
-Returns:
-	static gp_Vec
-
-No detailed docstring for this function.") PlaneDN;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Nu:
+	:type Nu: Standard_Integer
+	:param Nv:
+	:type Nv: Standard_Integer
+	:rtype: gp_Vec
+") PlaneDN;
 		static gp_Vec PlaneDN (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,const Standard_Integer Nu,const Standard_Integer Nv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-	Nu(Standard_Integer)
-	Nv(Standard_Integer)
-
-Returns:
-	static gp_Vec
-
-No detailed docstring for this function.") CylinderDN;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:param Nu:
+	:type Nu: Standard_Integer
+	:param Nv:
+	:type Nv: Standard_Integer
+	:rtype: gp_Vec
+") CylinderDN;
 		static gp_Vec CylinderDN (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,const Standard_Real Radius,const Standard_Integer Nu,const Standard_Integer Nv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-	SAngle(Standard_Real)
-	Nu(Standard_Integer)
-	Nv(Standard_Integer)
-
-Returns:
-	static gp_Vec
-
-No detailed docstring for this function.") ConeDN;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:param SAngle:
+	:type SAngle: float
+	:param Nu:
+	:type Nu: Standard_Integer
+	:param Nv:
+	:type Nv: Standard_Integer
+	:rtype: gp_Vec
+") ConeDN;
 		static gp_Vec ConeDN (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,const Standard_Real Radius,const Standard_Real SAngle,const Standard_Integer Nu,const Standard_Integer Nv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-	Nu(Standard_Integer)
-	Nv(Standard_Integer)
-
-Returns:
-	static gp_Vec
-
-No detailed docstring for this function.") SphereDN;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:param Nu:
+	:type Nu: Standard_Integer
+	:param Nv:
+	:type Nv: Standard_Integer
+	:rtype: gp_Vec
+") SphereDN;
 		static gp_Vec SphereDN (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,const Standard_Real Radius,const Standard_Integer Nu,const Standard_Integer Nv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	MajorRadius(Standard_Real)
-	MinorRadius(Standard_Real)
-	Nu(Standard_Integer)
-	Nv(Standard_Integer)
-
-Returns:
-	static gp_Vec
-
-No detailed docstring for this function.") TorusDN;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param MajorRadius:
+	:type MajorRadius: float
+	:param MinorRadius:
+	:type MinorRadius: float
+	:param Nu:
+	:type Nu: Standard_Integer
+	:param Nv:
+	:type Nv: Standard_Integer
+	:rtype: gp_Vec
+") TorusDN;
 		static gp_Vec TorusDN (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,const Standard_Real MajorRadius,const Standard_Real MinorRadius,const Standard_Integer Nu,const Standard_Integer Nv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	P(gp_Pnt)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") PlaneD0;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param P:
+	:type P: gp_Pnt
+	:rtype: void
+") PlaneD0;
 		static void PlaneD0 (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,gp_Pnt & P);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-	SAngle(Standard_Real)
-	P(gp_Pnt)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") ConeD0;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:param SAngle:
+	:type SAngle: float
+	:param P:
+	:type P: gp_Pnt
+	:rtype: void
+") ConeD0;
 		static void ConeD0 (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,const Standard_Real Radius,const Standard_Real SAngle,gp_Pnt & P);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-	P(gp_Pnt)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") CylinderD0;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:param P:
+	:type P: gp_Pnt
+	:rtype: void
+") CylinderD0;
 		static void CylinderD0 (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,const Standard_Real Radius,gp_Pnt & P);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-	P(gp_Pnt)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") SphereD0;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:param P:
+	:type P: gp_Pnt
+	:rtype: void
+") SphereD0;
 		static void SphereD0 (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,const Standard_Real Radius,gp_Pnt & P);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	MajorRadius(Standard_Real)
-	MinorRadius(Standard_Real)
-	P(gp_Pnt)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") TorusD0;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param MajorRadius:
+	:type MajorRadius: float
+	:param MinorRadius:
+	:type MinorRadius: float
+	:param P:
+	:type P: gp_Pnt
+	:rtype: void
+") TorusD0;
 		static void TorusD0 (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,const Standard_Real MajorRadius,const Standard_Real MinorRadius,gp_Pnt & P);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	P(gp_Pnt)
-	Vu(gp_Vec)
-	Vv(gp_Vec)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") PlaneD1;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param P:
+	:type P: gp_Pnt
+	:param Vu:
+	:type Vu: gp_Vec
+	:param Vv:
+	:type Vv: gp_Vec
+	:rtype: void
+") PlaneD1;
 		static void PlaneD1 (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,gp_Pnt & P,gp_Vec & Vu,gp_Vec & Vv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-	SAngle(Standard_Real)
-	P(gp_Pnt)
-	Vu(gp_Vec)
-	Vv(gp_Vec)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") ConeD1;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:param SAngle:
+	:type SAngle: float
+	:param P:
+	:type P: gp_Pnt
+	:param Vu:
+	:type Vu: gp_Vec
+	:param Vv:
+	:type Vv: gp_Vec
+	:rtype: void
+") ConeD1;
 		static void ConeD1 (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,const Standard_Real Radius,const Standard_Real SAngle,gp_Pnt & P,gp_Vec & Vu,gp_Vec & Vv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-	P(gp_Pnt)
-	Vu(gp_Vec)
-	Vv(gp_Vec)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") CylinderD1;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:param P:
+	:type P: gp_Pnt
+	:param Vu:
+	:type Vu: gp_Vec
+	:param Vv:
+	:type Vv: gp_Vec
+	:rtype: void
+") CylinderD1;
 		static void CylinderD1 (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,const Standard_Real Radius,gp_Pnt & P,gp_Vec & Vu,gp_Vec & Vv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-	P(gp_Pnt)
-	Vu(gp_Vec)
-	Vv(gp_Vec)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") SphereD1;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:param P:
+	:type P: gp_Pnt
+	:param Vu:
+	:type Vu: gp_Vec
+	:param Vv:
+	:type Vv: gp_Vec
+	:rtype: void
+") SphereD1;
 		static void SphereD1 (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,const Standard_Real Radius,gp_Pnt & P,gp_Vec & Vu,gp_Vec & Vv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	MajorRadius(Standard_Real)
-	MinorRadius(Standard_Real)
-	P(gp_Pnt)
-	Vu(gp_Vec)
-	Vv(gp_Vec)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") TorusD1;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param MajorRadius:
+	:type MajorRadius: float
+	:param MinorRadius:
+	:type MinorRadius: float
+	:param P:
+	:type P: gp_Pnt
+	:param Vu:
+	:type Vu: gp_Vec
+	:param Vv:
+	:type Vv: gp_Vec
+	:rtype: void
+") TorusD1;
 		static void TorusD1 (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,const Standard_Real MajorRadius,const Standard_Real MinorRadius,gp_Pnt & P,gp_Vec & Vu,gp_Vec & Vv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-	SAngle(Standard_Real)
-	P(gp_Pnt)
-	Vu(gp_Vec)
-	Vv(gp_Vec)
-	Vuu(gp_Vec)
-	Vvv(gp_Vec)
-	Vuv(gp_Vec)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") ConeD2;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:param SAngle:
+	:type SAngle: float
+	:param P:
+	:type P: gp_Pnt
+	:param Vu:
+	:type Vu: gp_Vec
+	:param Vv:
+	:type Vv: gp_Vec
+	:param Vuu:
+	:type Vuu: gp_Vec
+	:param Vvv:
+	:type Vvv: gp_Vec
+	:param Vuv:
+	:type Vuv: gp_Vec
+	:rtype: void
+") ConeD2;
 		static void ConeD2 (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,const Standard_Real Radius,const Standard_Real SAngle,gp_Pnt & P,gp_Vec & Vu,gp_Vec & Vv,gp_Vec & Vuu,gp_Vec & Vvv,gp_Vec & Vuv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-	P(gp_Pnt)
-	Vu(gp_Vec)
-	Vv(gp_Vec)
-	Vuu(gp_Vec)
-	Vvv(gp_Vec)
-	Vuv(gp_Vec)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") CylinderD2;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:param P:
+	:type P: gp_Pnt
+	:param Vu:
+	:type Vu: gp_Vec
+	:param Vv:
+	:type Vv: gp_Vec
+	:param Vuu:
+	:type Vuu: gp_Vec
+	:param Vvv:
+	:type Vvv: gp_Vec
+	:param Vuv:
+	:type Vuv: gp_Vec
+	:rtype: void
+") CylinderD2;
 		static void CylinderD2 (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,const Standard_Real Radius,gp_Pnt & P,gp_Vec & Vu,gp_Vec & Vv,gp_Vec & Vuu,gp_Vec & Vvv,gp_Vec & Vuv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-	P(gp_Pnt)
-	Vu(gp_Vec)
-	Vv(gp_Vec)
-	Vuu(gp_Vec)
-	Vvv(gp_Vec)
-	Vuv(gp_Vec)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") SphereD2;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:param P:
+	:type P: gp_Pnt
+	:param Vu:
+	:type Vu: gp_Vec
+	:param Vv:
+	:type Vv: gp_Vec
+	:param Vuu:
+	:type Vuu: gp_Vec
+	:param Vvv:
+	:type Vvv: gp_Vec
+	:param Vuv:
+	:type Vuv: gp_Vec
+	:rtype: void
+") SphereD2;
 		static void SphereD2 (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,const Standard_Real Radius,gp_Pnt & P,gp_Vec & Vu,gp_Vec & Vv,gp_Vec & Vuu,gp_Vec & Vvv,gp_Vec & Vuv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	MajorRadius(Standard_Real)
-	MinorRadius(Standard_Real)
-	P(gp_Pnt)
-	Vu(gp_Vec)
-	Vv(gp_Vec)
-	Vuu(gp_Vec)
-	Vvv(gp_Vec)
-	Vuv(gp_Vec)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") TorusD2;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param MajorRadius:
+	:type MajorRadius: float
+	:param MinorRadius:
+	:type MinorRadius: float
+	:param P:
+	:type P: gp_Pnt
+	:param Vu:
+	:type Vu: gp_Vec
+	:param Vv:
+	:type Vv: gp_Vec
+	:param Vuu:
+	:type Vuu: gp_Vec
+	:param Vvv:
+	:type Vvv: gp_Vec
+	:param Vuv:
+	:type Vuv: gp_Vec
+	:rtype: void
+") TorusD2;
 		static void TorusD2 (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,const Standard_Real MajorRadius,const Standard_Real MinorRadius,gp_Pnt & P,gp_Vec & Vu,gp_Vec & Vv,gp_Vec & Vuu,gp_Vec & Vvv,gp_Vec & Vuv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-	SAngle(Standard_Real)
-	P(gp_Pnt)
-	Vu(gp_Vec)
-	Vv(gp_Vec)
-	Vuu(gp_Vec)
-	Vvv(gp_Vec)
-	Vuv(gp_Vec)
-	Vuuu(gp_Vec)
-	Vvvv(gp_Vec)
-	Vuuv(gp_Vec)
-	Vuvv(gp_Vec)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") ConeD3;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:param SAngle:
+	:type SAngle: float
+	:param P:
+	:type P: gp_Pnt
+	:param Vu:
+	:type Vu: gp_Vec
+	:param Vv:
+	:type Vv: gp_Vec
+	:param Vuu:
+	:type Vuu: gp_Vec
+	:param Vvv:
+	:type Vvv: gp_Vec
+	:param Vuv:
+	:type Vuv: gp_Vec
+	:param Vuuu:
+	:type Vuuu: gp_Vec
+	:param Vvvv:
+	:type Vvvv: gp_Vec
+	:param Vuuv:
+	:type Vuuv: gp_Vec
+	:param Vuvv:
+	:type Vuvv: gp_Vec
+	:rtype: void
+") ConeD3;
 		static void ConeD3 (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,const Standard_Real Radius,const Standard_Real SAngle,gp_Pnt & P,gp_Vec & Vu,gp_Vec & Vv,gp_Vec & Vuu,gp_Vec & Vvv,gp_Vec & Vuv,gp_Vec & Vuuu,gp_Vec & Vvvv,gp_Vec & Vuuv,gp_Vec & Vuvv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-	P(gp_Pnt)
-	Vu(gp_Vec)
-	Vv(gp_Vec)
-	Vuu(gp_Vec)
-	Vvv(gp_Vec)
-	Vuv(gp_Vec)
-	Vuuu(gp_Vec)
-	Vvvv(gp_Vec)
-	Vuuv(gp_Vec)
-	Vuvv(gp_Vec)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") CylinderD3;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:param P:
+	:type P: gp_Pnt
+	:param Vu:
+	:type Vu: gp_Vec
+	:param Vv:
+	:type Vv: gp_Vec
+	:param Vuu:
+	:type Vuu: gp_Vec
+	:param Vvv:
+	:type Vvv: gp_Vec
+	:param Vuv:
+	:type Vuv: gp_Vec
+	:param Vuuu:
+	:type Vuuu: gp_Vec
+	:param Vvvv:
+	:type Vvvv: gp_Vec
+	:param Vuuv:
+	:type Vuuv: gp_Vec
+	:param Vuvv:
+	:type Vuvv: gp_Vec
+	:rtype: void
+") CylinderD3;
 		static void CylinderD3 (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,const Standard_Real Radius,gp_Pnt & P,gp_Vec & Vu,gp_Vec & Vv,gp_Vec & Vuu,gp_Vec & Vvv,gp_Vec & Vuv,gp_Vec & Vuuu,gp_Vec & Vvvv,gp_Vec & Vuuv,gp_Vec & Vuvv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-	P(gp_Pnt)
-	Vu(gp_Vec)
-	Vv(gp_Vec)
-	Vuu(gp_Vec)
-	Vvv(gp_Vec)
-	Vuv(gp_Vec)
-	Vuuu(gp_Vec)
-	Vvvv(gp_Vec)
-	Vuuv(gp_Vec)
-	Vuvv(gp_Vec)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") SphereD3;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:param P:
+	:type P: gp_Pnt
+	:param Vu:
+	:type Vu: gp_Vec
+	:param Vv:
+	:type Vv: gp_Vec
+	:param Vuu:
+	:type Vuu: gp_Vec
+	:param Vvv:
+	:type Vvv: gp_Vec
+	:param Vuv:
+	:type Vuv: gp_Vec
+	:param Vuuu:
+	:type Vuuu: gp_Vec
+	:param Vvvv:
+	:type Vvvv: gp_Vec
+	:param Vuuv:
+	:type Vuuv: gp_Vec
+	:param Vuvv:
+	:type Vuvv: gp_Vec
+	:rtype: void
+") SphereD3;
 		static void SphereD3 (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,const Standard_Real Radius,gp_Pnt & P,gp_Vec & Vu,gp_Vec & Vv,gp_Vec & Vuu,gp_Vec & Vvv,gp_Vec & Vuv,gp_Vec & Vuuu,gp_Vec & Vvvv,gp_Vec & Vuuv,gp_Vec & Vuvv);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	V(Standard_Real)
-	Pos(gp_Ax3)
-	MajorRadius(Standard_Real)
-	MinorRadius(Standard_Real)
-	P(gp_Pnt)
-	Vu(gp_Vec)
-	Vv(gp_Vec)
-	Vuu(gp_Vec)
-	Vvv(gp_Vec)
-	Vuv(gp_Vec)
-	Vuuu(gp_Vec)
-	Vvvv(gp_Vec)
-	Vuuv(gp_Vec)
-	Vuvv(gp_Vec)
+		%feature("autodoc", "	* The following functions compute the parametric values corresponding to a given point on a elementary surface. The point should be on the surface.
 
-Returns:
-	static void
-
-The following functions compute the parametric values  
- corresponding to a given point on a elementary surface.  
- The point should be on the surface.") TorusD3;
+	:param U:
+	:type U: float
+	:param V:
+	:type V: float
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param MajorRadius:
+	:type MajorRadius: float
+	:param MinorRadius:
+	:type MinorRadius: float
+	:param P:
+	:type P: gp_Pnt
+	:param Vu:
+	:type Vu: gp_Vec
+	:param Vv:
+	:type Vv: gp_Vec
+	:param Vuu:
+	:type Vuu: gp_Vec
+	:param Vvv:
+	:type Vvv: gp_Vec
+	:param Vuv:
+	:type Vuv: gp_Vec
+	:param Vuuu:
+	:type Vuuu: gp_Vec
+	:param Vvvv:
+	:type Vvvv: gp_Vec
+	:param Vuuv:
+	:type Vuuv: gp_Vec
+	:param Vuvv:
+	:type Vuvv: gp_Vec
+	:rtype: void
+") TorusD3;
 		static void TorusD3 (const Standard_Real U,const Standard_Real V,const gp_Ax3 & Pos,const Standard_Real MajorRadius,const Standard_Real MinorRadius,gp_Pnt & P,gp_Vec & Vu,gp_Vec & Vv,gp_Vec & Vuu,gp_Vec & Vvv,gp_Vec & Vuv,gp_Vec & Vuuu,gp_Vec & Vvvv,gp_Vec & Vuuv,gp_Vec & Vuvv);
-		%feature("autodoc", "Args:
-	Pl(gp_Pln)
-	P(gp_Pnt)
-	U(Standard_Real)
-	V(Standard_Real)
+		%feature("autodoc", "	* parametrization P (U, V) = Pl.Location() + U * Pl.XDirection() + V * Pl.YDirection()
 
-Returns:
-	static void
-
-parametrization  
- P (U, V) =  
- Pl.Location() + U * Pl.XDirection() + V * Pl.YDirection()") Parameters;
+	:param Pl:
+	:type Pl: gp_Pln
+	:param P:
+	:type P: gp_Pnt
+	:param U:
+	:type U: float &
+	:param V:
+	:type V: float &
+	:rtype: void
+") Parameters;
 		static void Parameters (const gp_Pln & Pl,const gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	C(gp_Cylinder)
-	P(gp_Pnt)
-	U(Standard_Real)
-	V(Standard_Real)
+		%feature("autodoc", "	* parametrization P (U, V) = Location + V * ZDirection + Radius * (Cos(U) * XDirection + Sin (U) * YDirection)
 
-Returns:
-	static void
-
-parametrization  
- P (U, V) = Location + V * ZDirection +  
- Radius * (Cos(U) * XDirection + Sin (U) * YDirection)") Parameters;
+	:param C:
+	:type C: gp_Cylinder
+	:param P:
+	:type P: gp_Pnt
+	:param U:
+	:type U: float &
+	:param V:
+	:type V: float &
+	:rtype: void
+") Parameters;
 		static void Parameters (const gp_Cylinder & C,const gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	C(gp_Cone)
-	P(gp_Pnt)
-	U(Standard_Real)
-	V(Standard_Real)
+		%feature("autodoc", "	* parametrization P (U, V) = Location + V * ZDirection + (Radius + V * Tan (SemiAngle)) * (Cos(U) * XDirection + Sin(U) * YDirection)
 
-Returns:
-	static void
-
-parametrization  
- P (U, V) =  Location + V * ZDirection +  
- (Radius + V * Tan (SemiAngle)) *  
- (Cos(U) * XDirection + Sin(U) * YDirection)") Parameters;
+	:param C:
+	:type C: gp_Cone
+	:param P:
+	:type P: gp_Pnt
+	:param U:
+	:type U: float &
+	:param V:
+	:type V: float &
+	:rtype: void
+") Parameters;
 		static void Parameters (const gp_Cone & C,const gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	S(gp_Sphere)
-	P(gp_Pnt)
-	U(Standard_Real)
-	V(Standard_Real)
+		%feature("autodoc", "	* parametrization P (U, V) = Location + Radius * Cos (V) * (Cos (U) * XDirection + Sin (U) * YDirection) + Radius * Sin (V) * ZDirection
 
-Returns:
-	static void
-
-parametrization  
- P (U, V) = Location +  
- Radius * Cos (V) * (Cos (U) * XDirection + Sin (U) * YDirection) +  
- Radius * Sin (V) * ZDirection") Parameters;
+	:param S:
+	:type S: gp_Sphere
+	:param P:
+	:type P: gp_Pnt
+	:param U:
+	:type U: float &
+	:param V:
+	:type V: float &
+	:rtype: void
+") Parameters;
 		static void Parameters (const gp_Sphere & S,const gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	T(gp_Torus)
-	P(gp_Pnt)
-	U(Standard_Real)
-	V(Standard_Real)
+		%feature("autodoc", "	* parametrization P (U, V) = Location + (MajorRadius + MinorRadius * Cos(U)) * (Cos(V) * XDirection - Sin(V) * YDirection) + MinorRadius * Sin(U) * ZDirection
 
-Returns:
-	static void
-
-parametrization  
- P (U, V) = Location +  
- (MajorRadius + MinorRadius * Cos(U)) *  
- (Cos(V) * XDirection - Sin(V) * YDirection) +  
- MinorRadius * Sin(U) * ZDirection") Parameters;
+	:param T:
+	:type T: gp_Torus
+	:param P:
+	:type P: gp_Pnt
+	:param U:
+	:type U: float &
+	:param V:
+	:type V: float &
+	:rtype: void
+") Parameters;
 		static void Parameters (const gp_Torus & T,const gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Pos(gp_Ax3)
-	P(gp_Pnt)
-	U(Standard_Real)
-	V(Standard_Real)
+		%feature("autodoc", "	* parametrization P (U, V) = Pl.Location() + U * Pl.XDirection() + V * Pl.YDirection()
 
-Returns:
-	static void
-
-parametrization  
- P (U, V) =  
- Pl.Location() + U * Pl.XDirection() + V * Pl.YDirection()") PlaneParameters;
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param P:
+	:type P: gp_Pnt
+	:param U:
+	:type U: float &
+	:param V:
+	:type V: float &
+	:rtype: void
+") PlaneParameters;
 		static void PlaneParameters (const gp_Ax3 & Pos,const gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-	P(gp_Pnt)
-	U(Standard_Real)
-	V(Standard_Real)
+		%feature("autodoc", "	* parametrization P (U, V) = Location + V * ZDirection + Radius * (Cos(U) * XDirection + Sin (U) * YDirection)
 
-Returns:
-	static void
-
-parametrization  
- P (U, V) = Location + V * ZDirection +  
- Radius * (Cos(U) * XDirection + Sin (U) * YDirection)") CylinderParameters;
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:param P:
+	:type P: gp_Pnt
+	:param U:
+	:type U: float &
+	:param V:
+	:type V: float &
+	:rtype: void
+") CylinderParameters;
 		static void CylinderParameters (const gp_Ax3 & Pos,const Standard_Real Radius,const gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-	SAngle(Standard_Real)
-	P(gp_Pnt)
-	U(Standard_Real)
-	V(Standard_Real)
+		%feature("autodoc", "	* parametrization P (U, V) = Location + V * ZDirection + (Radius + V * Tan (SemiAngle)) * (Cos(U) * XDirection + Sin(U) * YDirection)
 
-Returns:
-	static void
-
-parametrization  
- P (U, V) =  Location + V * ZDirection +  
- (Radius + V * Tan (SemiAngle)) *  
- (Cos(U) * XDirection + Sin(U) * YDirection)") ConeParameters;
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:param SAngle:
+	:type SAngle: float
+	:param P:
+	:type P: gp_Pnt
+	:param U:
+	:type U: float &
+	:param V:
+	:type V: float &
+	:rtype: void
+") ConeParameters;
 		static void ConeParameters (const gp_Ax3 & Pos,const Standard_Real Radius,const Standard_Real SAngle,const gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-	P(gp_Pnt)
-	U(Standard_Real)
-	V(Standard_Real)
+		%feature("autodoc", "	* parametrization P (U, V) = Location + Radius * Cos (V) * (Cos (U) * XDirection + Sin (U) * YDirection) + Radius * Sin (V) * ZDirection
 
-Returns:
-	static void
-
-parametrization  
- P (U, V) = Location +  
- Radius * Cos (V) * (Cos (U) * XDirection + Sin (U) * YDirection) +  
- Radius * Sin (V) * ZDirection") SphereParameters;
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:param P:
+	:type P: gp_Pnt
+	:param U:
+	:type U: float &
+	:param V:
+	:type V: float &
+	:rtype: void
+") SphereParameters;
 		static void SphereParameters (const gp_Ax3 & Pos,const Standard_Real Radius,const gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Pos(gp_Ax3)
-	MajorRadius(Standard_Real)
-	MinorRadius(Standard_Real)
-	P(gp_Pnt)
-	U(Standard_Real)
-	V(Standard_Real)
+		%feature("autodoc", "	* parametrization P (U, V) = Location + (MajorRadius + MinorRadius * Cos(U)) * (Cos(V) * XDirection - Sin(V) * YDirection) + MinorRadius * Sin(U) * ZDirection
 
-Returns:
-	static void
-
-parametrization  
- P (U, V) = Location +  
- (MajorRadius + MinorRadius * Cos(U)) *  
- (Cos(V) * XDirection - Sin(V) * YDirection) +  
- MinorRadius * Sin(U) * ZDirection") TorusParameters;
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param MajorRadius:
+	:type MajorRadius: float
+	:param MinorRadius:
+	:type MinorRadius: float
+	:param P:
+	:type P: gp_Pnt
+	:param U:
+	:type U: float &
+	:param V:
+	:type V: float &
+	:rtype: void
+") TorusParameters;
 		static void TorusParameters (const gp_Ax3 & Pos,const Standard_Real MajorRadius,const Standard_Real MinorRadius,const gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Pos(gp_Ax3)
-	U(Standard_Real)
+		%feature("autodoc", "	* compute the U Isoparametric gp_Lin of the plane.
 
-Returns:
-	static gp_Lin
-
-compute the U Isoparametric gp_Lin of the plane.") PlaneUIso;
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param U:
+	:type U: float
+	:rtype: gp_Lin
+") PlaneUIso;
 		static gp_Lin PlaneUIso (const gp_Ax3 & Pos,const Standard_Real U);
-		%feature("autodoc", "Args:
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-	U(Standard_Real)
+		%feature("autodoc", "	* compute the U Isoparametric gp_Lin of the cylinder.
 
-Returns:
-	static gp_Lin
-
-compute the U Isoparametric gp_Lin of the cylinder.") CylinderUIso;
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:param U:
+	:type U: float
+	:rtype: gp_Lin
+") CylinderUIso;
 		static gp_Lin CylinderUIso (const gp_Ax3 & Pos,const Standard_Real Radius,const Standard_Real U);
-		%feature("autodoc", "Args:
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-	SAngle(Standard_Real)
-	U(Standard_Real)
+		%feature("autodoc", "	* compute the U Isoparametric gp_Lin of the cone.
 
-Returns:
-	static gp_Lin
-
-compute the U Isoparametric gp_Lin of the cone.") ConeUIso;
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:param SAngle:
+	:type SAngle: float
+	:param U:
+	:type U: float
+	:rtype: gp_Lin
+") ConeUIso;
 		static gp_Lin ConeUIso (const gp_Ax3 & Pos,const Standard_Real Radius,const Standard_Real SAngle,const Standard_Real U);
-		%feature("autodoc", "Args:
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-	U(Standard_Real)
+		%feature("autodoc", "	* compute the U Isoparametric gp_Circ of the sphere, (the meridian is not trimmed).
 
-Returns:
-	static gp_Circ
-
-compute the U Isoparametric gp_Circ of the sphere,  
- (the meridian is not trimmed).") SphereUIso;
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:param U:
+	:type U: float
+	:rtype: gp_Circ
+") SphereUIso;
 		static gp_Circ SphereUIso (const gp_Ax3 & Pos,const Standard_Real Radius,const Standard_Real U);
-		%feature("autodoc", "Args:
-	Pos(gp_Ax3)
-	MajorRadius(Standard_Real)
-	MinorRadius(Standard_Real)
-	U(Standard_Real)
+		%feature("autodoc", "	* compute the U Isoparametric gp_Circ of the torus.
 
-Returns:
-	static gp_Circ
-
-compute the U Isoparametric gp_Circ of the torus.") TorusUIso;
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param MajorRadius:
+	:type MajorRadius: float
+	:param MinorRadius:
+	:type MinorRadius: float
+	:param U:
+	:type U: float
+	:rtype: gp_Circ
+") TorusUIso;
 		static gp_Circ TorusUIso (const gp_Ax3 & Pos,const Standard_Real MajorRadius,const Standard_Real MinorRadius,const Standard_Real U);
-		%feature("autodoc", "Args:
-	Pos(gp_Ax3)
-	V(Standard_Real)
+		%feature("autodoc", "	* compute the V Isoparametric gp_Lin of the plane.
 
-Returns:
-	static gp_Lin
-
-compute the V Isoparametric gp_Lin of the plane.") PlaneVIso;
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param V:
+	:type V: float
+	:rtype: gp_Lin
+") PlaneVIso;
 		static gp_Lin PlaneVIso (const gp_Ax3 & Pos,const Standard_Real V);
-		%feature("autodoc", "Args:
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-	V(Standard_Real)
+		%feature("autodoc", "	* compute the V Isoparametric gp_Circ of the cylinder.
 
-Returns:
-	static gp_Circ
-
-compute the V Isoparametric gp_Circ of the cylinder.") CylinderVIso;
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:param V:
+	:type V: float
+	:rtype: gp_Circ
+") CylinderVIso;
 		static gp_Circ CylinderVIso (const gp_Ax3 & Pos,const Standard_Real Radius,const Standard_Real V);
-		%feature("autodoc", "Args:
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-	SAngle(Standard_Real)
-	V(Standard_Real)
+		%feature("autodoc", "	* compute the V Isoparametric gp_Circ of the cone.
 
-Returns:
-	static gp_Circ
-
-compute the V Isoparametric gp_Circ of the cone.") ConeVIso;
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:param SAngle:
+	:type SAngle: float
+	:param V:
+	:type V: float
+	:rtype: gp_Circ
+") ConeVIso;
 		static gp_Circ ConeVIso (const gp_Ax3 & Pos,const Standard_Real Radius,const Standard_Real SAngle,const Standard_Real V);
-		%feature("autodoc", "Args:
-	Pos(gp_Ax3)
-	Radius(Standard_Real)
-	V(Standard_Real)
+		%feature("autodoc", "	* compute the V Isoparametric gp_Circ of the sphere, (the meridian is not trimmed).
 
-Returns:
-	static gp_Circ
-
-compute the V Isoparametric gp_Circ of the sphere,  
- (the meridian is not trimmed).") SphereVIso;
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param Radius:
+	:type Radius: float
+	:param V:
+	:type V: float
+	:rtype: gp_Circ
+") SphereVIso;
 		static gp_Circ SphereVIso (const gp_Ax3 & Pos,const Standard_Real Radius,const Standard_Real V);
-		%feature("autodoc", "Args:
-	Pos(gp_Ax3)
-	MajorRadius(Standard_Real)
-	MinorRadius(Standard_Real)
-	V(Standard_Real)
+		%feature("autodoc", "	* compute the V Isoparametric gp_Circ of the torus.
 
-Returns:
-	static gp_Circ
-
-compute the V Isoparametric gp_Circ of the torus.") TorusVIso;
+	:param Pos:
+	:type Pos: gp_Ax3
+	:param MajorRadius:
+	:type MajorRadius: float
+	:param MinorRadius:
+	:type MinorRadius: float
+	:param V:
+	:type V: float
+	:rtype: gp_Circ
+") TorusVIso;
 		static gp_Circ TorusVIso (const gp_Ax3 & Pos,const Standard_Real MajorRadius,const Standard_Real MinorRadius,const Standard_Real V);
 };
 

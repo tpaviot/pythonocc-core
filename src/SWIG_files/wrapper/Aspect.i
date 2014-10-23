@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -382,35 +382,32 @@ enum Aspect_XAtom {
 %nodefaultctor Aspect;
 class Aspect {
 	public:
-		%feature("autodoc", "Args:
-	aFOSP(Aspect_FormatOfSheetPaper)
-	aWidth(Quantity_Length)
-	aHeight(Quantity_Length)
+		%feature("autodoc", "	* Returns the format size according to the default LENGTH unit of the required format <aFOSP>. Returns more the normalized format name.
 
-Returns:
-	static char *
-
-Returns the format size according to the default  
-     LENGTH unit of the required format <aFOSP>.  
-     Returns more the normalized format name.") ValuesOfFOSP;
+	:param aFOSP:
+	:type aFOSP: Aspect_FormatOfSheetPaper
+	:param aWidth:
+	:type aWidth: Quantity_Length &
+	:param aHeight:
+	:type aHeight: Quantity_Length &
+	:rtype: char *
+") ValuesOfFOSP;
 		static char * ValuesOfFOSP (const Aspect_FormatOfSheetPaper aFOSP,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	aString(TCollection_ExtendedString)
+		%feature("autodoc", "	* Translates an ExtendedString to a CString depending of the local format.
 
-Returns:
-	static char *
-
-Translates an ExtendedString to a CString  
-         depending of the local format.") ToCString;
+	:param aString:
+	:type aString: TCollection_ExtendedString &
+	:rtype: char *
+") ToCString;
 		static char * ToCString (const TCollection_ExtendedString & aString);
-		%feature("autodoc", "Args:
-	aMat(TColStd_Array2OfReal)
-	Inv(TColStd_Array2OfReal)
+		%feature("autodoc", "	* Inverses <aMat> a 4x4 matrix.
 
-Returns:
-	static Standard_Boolean
-
-Inverses <aMat> a 4x4 matrix.") Inverse;
+	:param aMat:
+	:type aMat: TColStd_Array2OfReal &
+	:param Inv:
+	:type Inv: TColStd_Array2OfReal &
+	:rtype: bool
+") Inverse;
 		static Standard_Boolean Inverse (const TColStd_Array2OfReal & aMat,TColStd_Array2OfReal & Inv);
 };
 
@@ -432,108 +429,68 @@ def __del__(self):
 %nodefaultctor Aspect_Array1OfEdge;
 class Aspect_Array1OfEdge {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Aspect_Array1OfEdge;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Aspect_Array1OfEdge;
 		 Aspect_Array1OfEdge (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Aspect_Edge)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Aspect_Array1OfEdge;
+		%feature("autodoc", "	:param Item:
+	:type Item: Aspect_Edge &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Aspect_Array1OfEdge;
 		 Aspect_Array1OfEdge (const Aspect_Edge & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Aspect_Edge)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Aspect_Edge &
+	:rtype: None
+") Init;
 		void Init (const Aspect_Edge & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(Aspect_Array1OfEdge)
-
-Returns:
-	Aspect_Array1OfEdge
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_Array1OfEdge &
+	:rtype: Aspect_Array1OfEdge
+") Assign;
 		const Aspect_Array1OfEdge & Assign (const Aspect_Array1OfEdge & Other);
-		%feature("autodoc", "Args:
-	Other(Aspect_Array1OfEdge)
-
-Returns:
-	Aspect_Array1OfEdge
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_Array1OfEdge &
+	:rtype: Aspect_Array1OfEdge
+") operator=;
 		const Aspect_Array1OfEdge & operator = (const Aspect_Array1OfEdge & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Aspect_Edge)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Aspect_Edge &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Aspect_Edge & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Aspect_Edge
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Aspect_Edge
+") Value;
 		const Aspect_Edge & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Aspect_Edge
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Aspect_Edge
+") ChangeValue;
 		Aspect_Edge & ChangeValue (const Standard_Integer Index);
 };
 
@@ -555,105 +512,89 @@ def __del__(self):
 %nodefaultctor Aspect_AspectFillArea;
 class Aspect_AspectFillArea : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	AColor(Quantity_Color)
+		%feature("autodoc", "	* Modifies the colour of the edge of the face
 
-Returns:
-	None
-
-Modifies the colour of the edge of the face") SetEdgeColor;
+	:param AColor:
+	:type AColor: Quantity_Color &
+	:rtype: None
+") SetEdgeColor;
 		void SetEdgeColor (const Quantity_Color & AColor);
-		%feature("autodoc", "Args:
-	AType(Aspect_TypeOfLine)
+		%feature("autodoc", "	* Modifies the edge line type
 
-Returns:
-	None
-
-Modifies the edge line type") SetEdgeLineType;
+	:param AType:
+	:type AType: Aspect_TypeOfLine
+	:rtype: None
+") SetEdgeLineType;
 		void SetEdgeLineType (const Aspect_TypeOfLine AType);
-		%feature("autodoc", "Args:
-	AWidth(Standard_Real)
+		%feature("autodoc", "	* Modifies the edge thickness Category: Methods to modify the class definition Warning: Raises AspectFillAreaDefinitionError if the //!	 width is a negative value.
 
-Returns:
-	None
-
-Modifies the edge thickness  
- 
- Category: Methods to modify the class definition  
- 
- Warning: Raises AspectFillAreaDefinitionError if the  
-//!	    width is a negative value.") SetEdgeWidth;
+	:param AWidth:
+	:type AWidth: float
+	:rtype: None
+") SetEdgeWidth;
 		void SetEdgeWidth (const Standard_Real AWidth);
-		%feature("autodoc", "Args:
-	AStyle(Aspect_HatchStyle)
+		%feature("autodoc", "	* Modifies the hatch type used when InteriorStyle //!	 is IS_HATCH
 
-Returns:
-	None
-
-Modifies the hatch type used when InteriorStyle  
-//!	    is IS_HATCH") SetHatchStyle;
+	:param AStyle:
+	:type AStyle: Aspect_HatchStyle
+	:rtype: None
+") SetHatchStyle;
 		void SetHatchStyle (const Aspect_HatchStyle AStyle);
-		%feature("autodoc", "Args:
-	AColor(Quantity_Color)
+		%feature("autodoc", "	* Modifies the colour of the interior of the face
 
-Returns:
-	None
-
-Modifies the colour of the interior of the face") SetInteriorColor;
+	:param AColor:
+	:type AColor: Quantity_Color &
+	:rtype: None
+") SetInteriorColor;
 		void SetInteriorColor (const Quantity_Color & AColor);
-		%feature("autodoc", "Args:
-	color(Quantity_Color)
+		%feature("autodoc", "	* Modifies the colour of the interior of the back face
 
-Returns:
-	None
-
-Modifies the colour of the interior of the back face") SetBackInteriorColor;
+	:param color:
+	:type color: Quantity_Color &
+	:rtype: None
+") SetBackInteriorColor;
 		void SetBackInteriorColor (const Quantity_Color & color);
-		%feature("autodoc", "Args:
-	AStyle(Aspect_InteriorStyle)
+		%feature("autodoc", "	* Modifies the interior type used for rendering InteriorStyle : IS_EMPTY	no interior //!		 IS_HOLLOW	display the boundaries of the surface //!		 IS_HATCH	display hatching //!		 IS_SOLID	display interior entirely filled
 
-Returns:
-	None
-
-Modifies the interior type used for rendering  
- 
-InteriorStyle : IS_EMPTY	no interior  
-//!		   IS_HOLLOW	display the boundaries of the surface  
-//!		   IS_HATCH	display hatching  
-//!		   IS_SOLID	display interior entirely filled") SetInteriorStyle;
+	:param AStyle:
+	:type AStyle: Aspect_InteriorStyle
+	:rtype: None
+") SetInteriorStyle;
 		void SetInteriorStyle (const Aspect_InteriorStyle AStyle);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_HatchStyle
+		%feature("autodoc", "	* Returns the hatch type used when InteriorStyle //!	 is IS_HATCH
 
-Returns the hatch type used when InteriorStyle  
-//!	    is IS_HATCH") HatchStyle;
+	:rtype: Aspect_HatchStyle
+") HatchStyle;
 		Aspect_HatchStyle HatchStyle ();
-		%feature("autodoc", "Args:
-	AStyle(Aspect_InteriorStyle)
-	AIntColor(Quantity_Color)
-	AEdgeColor(Quantity_Color)
-	AType(Aspect_TypeOfLine)
-	AWidth(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Values;
+		%feature("autodoc", "	:param AStyle:
+	:type AStyle: Aspect_InteriorStyle &
+	:param AIntColor:
+	:type AIntColor: Quantity_Color &
+	:param AEdgeColor:
+	:type AEdgeColor: Quantity_Color &
+	:param AType:
+	:type AType: Aspect_TypeOfLine &
+	:param AWidth:
+	:type AWidth: float &
+	:rtype: None
+") Values;
 		void Values (Aspect_InteriorStyle & AStyle,Quantity_Color & AIntColor,Quantity_Color & AEdgeColor,Aspect_TypeOfLine & AType,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	AStyle(Aspect_InteriorStyle)
-	AIntColor(Quantity_Color)
-	BackIntColor(Quantity_Color)
-	AEdgeColor(Quantity_Color)
-	AType(Aspect_TypeOfLine)
-	AWidth(Standard_Real)
+		%feature("autodoc", "	* Returns the current values of the <self> group.
 
-Returns:
-	None
-
-Returns the current values of the <self> group.") Values;
+	:param AStyle:
+	:type AStyle: Aspect_InteriorStyle &
+	:param AIntColor:
+	:type AIntColor: Quantity_Color &
+	:param BackIntColor:
+	:type BackIntColor: Quantity_Color &
+	:param AEdgeColor:
+	:type AEdgeColor: Quantity_Color &
+	:param AType:
+	:type AType: Aspect_TypeOfLine &
+	:param AWidth:
+	:type AWidth: float &
+	:rtype: None
+") Values;
 		void Values (Aspect_InteriorStyle & AStyle,Quantity_Color & AIntColor,Quantity_Color & BackIntColor,Quantity_Color & AEdgeColor,Aspect_TypeOfLine & AType,Standard_Real &OutValue);
 };
 
@@ -714,42 +655,37 @@ def __del__(self):
 %nodefaultctor Aspect_AspectLine;
 class Aspect_AspectLine : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	AColor(Quantity_Color)
+		%feature("autodoc", "	* Modifies the colour of <self>.
 
-Returns:
-	None
-
-Modifies the colour of <self>.") SetColor;
+	:param AColor:
+	:type AColor: Quantity_Color &
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_Color & AColor);
-		%feature("autodoc", "Args:
-	AType(Aspect_TypeOfLine)
+		%feature("autodoc", "	* Modifies the type of <self>.
 
-Returns:
-	None
-
-Modifies the type of <self>.") SetType;
+	:param AType:
+	:type AType: Aspect_TypeOfLine
+	:rtype: None
+") SetType;
 		void SetType (const Aspect_TypeOfLine AType);
-		%feature("autodoc", "Args:
-	AWidth(Standard_Real)
+		%feature("autodoc", "	* Modifies the thickness of <self>. Category: Methods to modify the class definition Warning: Raises AspectLineDefinitionError if the //!	 width is a negative value.
 
-Returns:
-	None
-
-Modifies the thickness of <self>.  
- Category: Methods to modify the class definition  
- Warning: Raises AspectLineDefinitionError if the  
-//!	    width is a negative value.") SetWidth;
+	:param AWidth:
+	:type AWidth: float
+	:rtype: None
+") SetWidth;
 		void SetWidth (const Standard_Real AWidth);
-		%feature("autodoc", "Args:
-	AColor(Quantity_Color)
-	AType(Aspect_TypeOfLine)
-	AWidth(Standard_Real)
+		%feature("autodoc", "	* Returns the current values of the group <self>.
 
-Returns:
-	None
-
-Returns the current values of the group <self>.") Values;
+	:param AColor:
+	:type AColor: Quantity_Color &
+	:param AType:
+	:type AType: Aspect_TypeOfLine &
+	:param AWidth:
+	:type AWidth: float &
+	:rtype: None
+") Values;
 		void Values (Quantity_Color & AColor,Aspect_TypeOfLine & AType,Standard_Real &OutValue);
 };
 
@@ -810,44 +746,37 @@ def __del__(self):
 %nodefaultctor Aspect_AspectMarker;
 class Aspect_AspectMarker : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	AColor(Quantity_Color)
+		%feature("autodoc", "	* Modifies the colour of <self>.
 
-Returns:
-	None
-
-Modifies the colour of <self>.") SetColor;
+	:param AColor:
+	:type AColor: Quantity_Color &
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_Color & AColor);
-		%feature("autodoc", "Args:
-	AScale(Standard_Real)
+		%feature("autodoc", "	* Modifies the scale factor of <self>. //!	 Marker type Aspect_TOM_POINT is not affected //!	 by the marker size scale factor. It is always //!	 the smallest displayable dot. Warning: Raises AspectMarkerDefinitionError if the //!	 scale is a negative value.
 
-Returns:
-	None
-
-Modifies the scale factor of <self>.  
-//!	    Marker type Aspect_TOM_POINT is not affected  
-//!	    by the marker size scale factor. It is always  
-//!	    the smallest displayable dot.  
- Warning: Raises AspectMarkerDefinitionError if the  
-//!	    scale is a negative value.") SetScale;
+	:param AScale:
+	:type AScale: float
+	:rtype: None
+") SetScale;
 		void SetScale (const Standard_Real AScale);
-		%feature("autodoc", "Args:
-	AType(Aspect_TypeOfMarker)
+		%feature("autodoc", "	* Modifies the type of marker <self>.
 
-Returns:
-	None
-
-Modifies the type of marker <self>.") SetType;
+	:param AType:
+	:type AType: Aspect_TypeOfMarker
+	:rtype: None
+") SetType;
 		void SetType (const Aspect_TypeOfMarker AType);
-		%feature("autodoc", "Args:
-	AColor(Quantity_Color)
-	AType(Aspect_TypeOfMarker)
-	AScale(Standard_Real)
+		%feature("autodoc", "	* Returns the current values of the group <self>.
 
-Returns:
-	None
-
-Returns the current values of the group <self>.") Values;
+	:param AColor:
+	:type AColor: Quantity_Color &
+	:param AType:
+	:type AType: Aspect_TypeOfMarker &
+	:param AScale:
+	:type AScale: float &
+	:rtype: None
+") Values;
 		void Values (Quantity_Color & AColor,Aspect_TypeOfMarker & AType,Standard_Real &OutValue);
 };
 
@@ -908,36 +837,29 @@ def __del__(self):
 %nodefaultctor Aspect_Background;
 class Aspect_Background {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates a window background. //!	 Default color : NOC_MATRAGRAY.
 
-Creates a window background.  
-//!	    Default color : NOC_MATRAGRAY.") Aspect_Background;
+	:rtype: None
+") Aspect_Background;
 		 Aspect_Background ();
-		%feature("autodoc", "Args:
-	AColor(Quantity_Color)
+		%feature("autodoc", "	* Creates a window background with the colour <AColor>.
 
-Returns:
-	None
-
-Creates a window background with the colour <AColor>.") Aspect_Background;
+	:param AColor:
+	:type AColor: Quantity_Color &
+	:rtype: None
+") Aspect_Background;
 		 Aspect_Background (const Quantity_Color & AColor);
-		%feature("autodoc", "Args:
-	AColor(Quantity_Color)
+		%feature("autodoc", "	* Modifies the colour of the window background <self>.
 
-Returns:
-	None
-
-Modifies the colour of the window background <self>.") SetColor;
+	:param AColor:
+	:type AColor: Quantity_Color &
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_Color & AColor);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Color
+		%feature("autodoc", "	* Returns the colour of the window background <self>.
 
-Returns the colour of the window background <self>.") Color;
+	:rtype: Quantity_Color
+") Color;
 		Quantity_Color Color ();
 };
 
@@ -959,89 +881,65 @@ def __del__(self):
 %nodefaultctor Aspect_ColorMap;
 class Aspect_ColorMap : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_TypeOfColorMap
-
-No detailed docstring for this function.") Type;
+		%feature("autodoc", "	:rtype: Aspect_TypeOfColorMap
+") Type;
 		Aspect_TypeOfColorMap Type ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the Allocated colormap Size
 
-Returns the Allocated colormap Size") Size;
+	:rtype: int
+") Size;
 		Standard_Integer Size ();
-		%feature("autodoc", "Args:
-	aColormapIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the ColorMapEntry.Index of the ColorMap //!	 at rank <aColormapIndex> .
 
-Returns:
-	Standard_Integer
-
-Returns the ColorMapEntry.Index of the ColorMap  
-//!	    at rank <aColormapIndex> .") Index;
+	:param aColormapIndex:
+	:type aColormapIndex: Standard_Integer
+	:rtype: int
+") Index;
 		Standard_Integer Index (const Standard_Integer aColormapIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
-		%feature("autodoc", "Args:
-	AColorMapIndex(Standard_Integer)
+		%feature("autodoc", "	* Return the value of the <Index>th element of //!	 the ColorMap
 
-Returns:
-	Aspect_ColorMapEntry
-
-Return the value of the <Index>th element of  
-//!	    the ColorMap") Entry;
+	:param AColorMapIndex:
+	:type AColorMapIndex: Standard_Integer
+	:rtype: Aspect_ColorMapEntry
+") Entry;
 		const Aspect_ColorMapEntry & Entry (const Standard_Integer AColorMapIndex);
-		%feature("autodoc", "Args:
-	AColorMapEntryIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the index in the ColorMap of the //!	 ColorMapEntry.Index() equal to <AnEntryIndex>.
 
-Returns:
-	virtual Standard_Integer
-
-Returns the index in the ColorMap of the  
-//!	    ColorMapEntry.Index() equal to <AnEntryIndex>.") FindColorMapIndex;
+	:param AColorMapEntryIndex:
+	:type AColorMapEntryIndex: Standard_Integer
+	:rtype: int
+") FindColorMapIndex;
 		virtual Standard_Integer FindColorMapIndex (const Standard_Integer AColorMapEntryIndex);
-		%feature("autodoc", "Args:
-	AColorMapEntryIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the ColorMapEntry with ColorMapEntry.Index() //!	 equal to <AnEntryIndex>.
 
-Returns:
-	virtual  Aspect_ColorMapEntry
-
-Returns the ColorMapEntry with ColorMapEntry.Index()  
-//!	    equal to <AnEntryIndex>.") FindEntry;
+	:param AColorMapEntryIndex:
+	:type AColorMapEntryIndex: Standard_Integer
+	:rtype: Aspect_ColorMapEntry
+") FindEntry;
 		virtual const Aspect_ColorMapEntry & FindEntry (const Standard_Integer AColorMapEntryIndex);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
+		%feature("autodoc", "	* Returns the index in the ColorMap of the //!	 nearest matching ColorMapEntry
 
-Returns:
-	virtual Standard_Integer
-
-Returns the index in the ColorMap of the  
-//!	    nearest matching ColorMapEntry") NearestColorMapIndex;
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: int
+") NearestColorMapIndex;
 		virtual Standard_Integer NearestColorMapIndex (const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
+		%feature("autodoc", "	* Returns the nearest ColorMapEntry that match aColor .
 
-Returns:
-	virtual  Aspect_ColorMapEntry
-
-Returns the nearest ColorMapEntry that match aColor .") NearestEntry;
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: Aspect_ColorMapEntry
+") NearestEntry;
 		virtual const Aspect_ColorMapEntry & NearestEntry (const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
+		%feature("autodoc", "	* Search an identical color entry in the color map <self> and returns the ColorMapEntry Index if exist. Or add a new entry and returns the computed ColorMapEntry index used.
 
-Returns:
-	virtual Standard_Integer
-
-Search an identical color entry in the color map <self>  
-and returns the ColorMapEntry Index if exist.  
-Or add a new entry and returns the computed ColorMapEntry index used.") AddEntry;
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: int
+") AddEntry;
 		virtual Standard_Integer AddEntry (const Quantity_Color & aColor);
 };
 
@@ -1102,176 +1000,115 @@ def __del__(self):
 %nodefaultctor Aspect_ColorMapEntry;
 class Aspect_ColorMapEntry {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates an unallocated colormap entry
 
-Creates an unallocated colormap entry") Aspect_ColorMapEntry;
+	:rtype: None
+") Aspect_ColorMapEntry;
 		 Aspect_ColorMapEntry ();
-		%feature("autodoc", "Args:
-	index(Standard_Integer)
-	rgb(Quantity_Color)
+		%feature("autodoc", "	* Creates an allocated colormap entry
 
-Returns:
-	None
-
-Creates an allocated colormap entry") Aspect_ColorMapEntry;
+	:param index:
+	:type index: Standard_Integer
+	:param rgb:
+	:type rgb: Quantity_Color &
+	:rtype: None
+") Aspect_ColorMapEntry;
 		 Aspect_ColorMapEntry (const Standard_Integer index,const Quantity_Color & rgb);
-		%feature("autodoc", "Args:
-	entry(Aspect_ColorMapEntry)
+		%feature("autodoc", "	* Creates an allocated colormap entry. Warning: Raises error if the colormap entry <entry> //!	 is unallocated.
 
-Returns:
-	None
-
-Creates an allocated colormap entry.  
- Warning: Raises error if the colormap entry <entry>  
-//!	    is unallocated.") Aspect_ColorMapEntry;
+	:param entry:
+	:type entry: Aspect_ColorMapEntry &
+	:rtype: None
+") Aspect_ColorMapEntry;
 		 Aspect_ColorMapEntry (const Aspect_ColorMapEntry & entry);
-		%feature("autodoc", "Args:
-	index(Standard_Integer)
-	rgb(Quantity_Color)
+		%feature("autodoc", "	* Sets colormap entry value and allocates it.
 
-Returns:
-	None
-
-Sets colormap entry value and allocates it.") SetValue;
+	:param index:
+	:type index: Standard_Integer
+	:param rgb:
+	:type rgb: Quantity_Color &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer index,const Quantity_Color & rgb);
-		%feature("autodoc", "Args:
-	entry(Aspect_ColorMapEntry)
+		%feature("autodoc", "	* Sets colormap entry value and allocates it.
 
-Returns:
-	None
-
-Sets colormap entry value and allocates it.") SetValue;
+	:param entry:
+	:type entry: Aspect_ColorMapEntry &
+	:rtype: None
+") SetValue;
 		void SetValue (const Aspect_ColorMapEntry & entry);
-		%feature("autodoc", "Args:
-	entry(Aspect_ColorMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param entry:
+	:type entry: Aspect_ColorMapEntry &
+	:rtype: None
+") operator=;
 		void operator = (const Aspect_ColorMapEntry & entry);
-		%feature("autodoc", "Args:
-	rgb(Quantity_Color)
+		%feature("autodoc", "	* Sets color <rgb> of colormap entry.
 
-Returns:
-	None
-
-Sets color <rgb> of colormap entry.") SetColor;
+	:param rgb:
+	:type rgb: Quantity_Color &
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_Color & rgb);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Color
-
-No detailed docstring for this function.") Color;
+		%feature("autodoc", "	:rtype: Quantity_Color
+") Color;
 		const Quantity_Color & Color ();
-		%feature("autodoc", "Args:
-	index(Standard_Integer)
+		%feature("autodoc", "	* Sets index value of a colormap entry.
 
-Returns:
-	None
-
-Sets index value of a colormap entry.") SetIndex;
+	:param index:
+	:type index: Standard_Integer
+	:rtype: None
+") SetIndex;
 		void SetIndex (const Standard_Integer index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Index;
+		%feature("autodoc", "	:rtype: int
+") Index;
 		Standard_Integer Index ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Unallocates the colormap entry.
 
-Unallocates the colormap entry.") Free;
+	:rtype: None
+") Free;
 		void Free ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the colormap entry is allocated. Warning: A colormap entry is allocated when the color and //!	 the index is defined.
 
-Returns True if the colormap entry is allocated.  
- Warning: A colormap entry is allocated when the color and  
-//!	    the index is defined.") IsAllocated;
+	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") _CSFDB_GetAspect_ColorMapEntryallocated;
+		%feature("autodoc", "	:rtype: bool
+") _CSFDB_GetAspect_ColorMapEntryallocated;
 		Standard_Boolean _CSFDB_GetAspect_ColorMapEntryallocated ();
-		%feature("autodoc", "Args:
-	p(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") _CSFDB_SetAspect_ColorMapEntryallocated;
+		%feature("autodoc", "	:param p:
+	:type p: bool
+	:rtype: None
+") _CSFDB_SetAspect_ColorMapEntryallocated;
 		void _CSFDB_SetAspect_ColorMapEntryallocated (const Standard_Boolean p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Color
-
-No detailed docstring for this function.") _CSFDB_GetAspect_ColorMapEntrymycolor;
+		%feature("autodoc", "	:rtype: Quantity_Color
+") _CSFDB_GetAspect_ColorMapEntrymycolor;
 		const Quantity_Color & _CSFDB_GetAspect_ColorMapEntrymycolor ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") _CSFDB_GetAspect_ColorMapEntrymyindex;
+		%feature("autodoc", "	:rtype: int
+") _CSFDB_GetAspect_ColorMapEntrymyindex;
 		Standard_Integer _CSFDB_GetAspect_ColorMapEntrymyindex ();
-		%feature("autodoc", "Args:
-	p(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") _CSFDB_SetAspect_ColorMapEntrymyindex;
+		%feature("autodoc", "	:param p:
+	:type p: Standard_Integer
+	:rtype: None
+") _CSFDB_SetAspect_ColorMapEntrymyindex;
 		void _CSFDB_SetAspect_ColorMapEntrymyindex (const Standard_Integer p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") _CSFDB_GetAspect_ColorMapEntrymyColorIsDef;
+		%feature("autodoc", "	:rtype: bool
+") _CSFDB_GetAspect_ColorMapEntrymyColorIsDef;
 		Standard_Boolean _CSFDB_GetAspect_ColorMapEntrymyColorIsDef ();
-		%feature("autodoc", "Args:
-	p(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") _CSFDB_SetAspect_ColorMapEntrymyColorIsDef;
+		%feature("autodoc", "	:param p:
+	:type p: bool
+	:rtype: None
+") _CSFDB_SetAspect_ColorMapEntrymyColorIsDef;
 		void _CSFDB_SetAspect_ColorMapEntrymyColorIsDef (const Standard_Boolean p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") _CSFDB_GetAspect_ColorMapEntrymyIndexIsDef;
+		%feature("autodoc", "	:rtype: bool
+") _CSFDB_GetAspect_ColorMapEntrymyIndexIsDef;
 		Standard_Boolean _CSFDB_GetAspect_ColorMapEntrymyIndexIsDef ();
-		%feature("autodoc", "Args:
-	p(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") _CSFDB_SetAspect_ColorMapEntrymyIndexIsDef;
+		%feature("autodoc", "	:param p:
+	:type p: bool
+	:rtype: None
+") _CSFDB_SetAspect_ColorMapEntrymyIndexIsDef;
 		void _CSFDB_SetAspect_ColorMapEntrymyIndexIsDef (const Standard_Boolean p);
 };
 
@@ -1293,446 +1130,372 @@ def __del__(self):
 %nodefaultctor Aspect_ColorScale;
 class Aspect_ColorScale : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Value(Standard_Real)
-	Color(Quantity_Color)
+		%feature("autodoc", "	* Calculate color according passed value; returns true if value is in range or false, if isn't
 
-Returns:
-	Standard_Boolean
-
-Calculate color according passed value; returns true if value is in range or false, if isn't") FindColor;
+	:param Value:
+	:type Value: float
+	:param Color:
+	:type Color: Quantity_Color &
+	:rtype: bool
+") FindColor;
 		Standard_Boolean FindColor (const Standard_Real Value,Quantity_Color & Color);
-		%feature("autodoc", "Args:
-	Value(Standard_Real)
-	Min(Standard_Real)
-	Max(Standard_Real)
-	ColorsCount(Standard_Integer)
-	Color(Quantity_Color)
-
-Returns:
-	static Standard_Boolean
-
-No detailed docstring for this function.") FindColor;
+		%feature("autodoc", "	:param Value:
+	:type Value: float
+	:param Min:
+	:type Min: float
+	:param Max:
+	:type Max: float
+	:param ColorsCount:
+	:type ColorsCount: Standard_Integer
+	:param Color:
+	:type Color: Quantity_Color &
+	:rtype: bool
+") FindColor;
 		static Standard_Boolean FindColor (const Standard_Real Value,const Standard_Real Min,const Standard_Real Max,const Standard_Integer ColorsCount,Quantity_Color & Color);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns minimal value of color scale;
 
-Returns minimal value of color scale;") GetMin;
+	:rtype: float
+") GetMin;
 		Standard_Real GetMin ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns maximal value of color scale;
 
-Returns maximal value of color scale;") GetMax;
+	:rtype: float
+") GetMax;
 		Standard_Real GetMax ();
-		%feature("autodoc", "Args:
-	aMin(Standard_Real)
-	aMax(Standard_Real)
+		%feature("autodoc", "	* Returns minimal and maximal values of color scale;
 
-Returns:
-	None
-
-Returns minimal and maximal values of color scale;") GetRange;
+	:param aMin:
+	:type aMin: float &
+	:param aMax:
+	:type aMax: float &
+	:rtype: None
+") GetRange;
 		void GetRange (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_TypeOfColorScaleData
+		%feature("autodoc", "	* Returns the type of labels;  Aspect_TOCSD_AUTO - labels as boundary values for intervals  Aspect_TOCSD_USER - user specified label is used
 
-Returns the type of labels;  
-        Aspect_TOCSD_AUTO - labels as boundary values for intervals  
-        Aspect_TOCSD_USER - user specified label is used") GetLabelType;
+	:rtype: Aspect_TypeOfColorScaleData
+") GetLabelType;
 		Aspect_TypeOfColorScaleData GetLabelType ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_TypeOfColorScaleData
+		%feature("autodoc", "	* Returns the type of colors;  Aspect_TOCSD_AUTO - value between Red and Blue  Aspect_TOCSD_USER - user specified color from color map
 
-Returns the type of colors;  
-        Aspect_TOCSD_AUTO - value between Red and Blue  
-        Aspect_TOCSD_USER - user specified color from color map") GetColorType;
+	:rtype: Aspect_TypeOfColorScaleData
+") GetColorType;
 		Aspect_TypeOfColorScaleData GetColorType ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of color scale intervals;
 
-Returns the number of color scale intervals;") GetNumberOfIntervals;
+	:rtype: int
+") GetNumberOfIntervals;
 		Standard_Integer GetNumberOfIntervals ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_ExtendedString
+		%feature("autodoc", "	* Returns the color scale title string;
 
-Returns the color scale title string;") GetTitle;
+	:rtype: TCollection_ExtendedString
+") GetTitle;
 		TCollection_ExtendedString GetTitle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_AsciiString
+		%feature("autodoc", "	* Returns the format for numbers.  The same like format for function printf().  Used if GetLabelType() is TOCSD_AUTO;
 
-Returns the format for numbers.  
-        The same like format for function printf().  
-        Used if GetLabelType() is TOCSD_AUTO;") GetFormat;
+	:rtype: TCollection_AsciiString
+") GetFormat;
 		TCollection_AsciiString GetFormat ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the user specified label with index <anIndex>.  Returns empty string if label not defined.
 
-Returns:
-	TCollection_ExtendedString
-
-Returns the user specified label with index <anIndex>.  
-        Returns empty string if label not defined.") GetLabel;
+	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: TCollection_ExtendedString
+") GetLabel;
 		TCollection_ExtendedString GetLabel (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the user specified color from color map with index <anIndex>.  Returns default color if index out of range in color map.
 
-Returns:
-	Quantity_Color
-
-Returns the user specified color from color map with index <anIndex>.  
-        Returns default color if index out of range in color map.") GetColor;
+	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Quantity_Color
+") GetColor;
 		Quantity_Color GetColor (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	aLabels(TColStd_SequenceOfExtendedString)
+		%feature("autodoc", "	* Returns the user specified labels.
 
-Returns:
-	None
-
-Returns the user specified labels.") GetLabels;
+	:param aLabels:
+	:type aLabels: TColStd_SequenceOfExtendedString &
+	:rtype: None
+") GetLabels;
 		void GetLabels (TColStd_SequenceOfExtendedString & aLabels);
-		%feature("autodoc", "Args:
-	aColors(Aspect_SequenceOfColor)
+		%feature("autodoc", "	* Returns the user specified colors.
 
-Returns:
-	None
-
-Returns the user specified colors.") GetColors;
+	:param aColors:
+	:type aColors: Aspect_SequenceOfColor &
+	:rtype: None
+") GetColors;
 		void GetColors (Aspect_SequenceOfColor & aColors);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_TypeOfColorScalePosition
+		%feature("autodoc", "	* Returns the position of labels concerning color filled rectangles.
 
-Returns the position of labels concerning color filled rectangles.") GetLabelPosition;
+	:rtype: Aspect_TypeOfColorScalePosition
+") GetLabelPosition;
 		Aspect_TypeOfColorScalePosition GetLabelPosition ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_TypeOfColorScalePosition
+		%feature("autodoc", "	* Returns the position of color scale title.
 
-Returns the position of color scale title.") GetTitlePosition;
+	:rtype: Aspect_TypeOfColorScalePosition
+") GetTitlePosition;
 		Aspect_TypeOfColorScalePosition GetTitlePosition ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the labels and colors used in reversed order.
 
-Returns true if the labels and colors used in reversed order.") IsReversed;
+	:rtype: bool
+") IsReversed;
 		Standard_Boolean IsReversed ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if the labels placed at border of color filled rectangles.
 
-Returns true if the labels placed at border of color filled rectangles.") IsLabelAtBorder;
+	:rtype: bool
+") IsLabelAtBorder;
 		Standard_Boolean IsLabelAtBorder ();
-		%feature("autodoc", "Args:
-	aMin(Standard_Real)
+		%feature("autodoc", "	* Sets the minimal value of color scale.
 
-Returns:
-	None
-
-Sets the minimal value of color scale.") SetMin;
+	:param aMin:
+	:type aMin: float
+	:rtype: None
+") SetMin;
 		void SetMin (const Standard_Real aMin);
-		%feature("autodoc", "Args:
-	aMax(Standard_Real)
+		%feature("autodoc", "	* Sets the maximal value of color scale.
 
-Returns:
-	None
-
-Sets the maximal value of color scale.") SetMax;
+	:param aMax:
+	:type aMax: float
+	:rtype: None
+") SetMax;
 		void SetMax (const Standard_Real aMax);
-		%feature("autodoc", "Args:
-	aMin(Standard_Real)
-	aMax(Standard_Real)
+		%feature("autodoc", "	* Sets the minimal and maximal value of color scale.
 
-Returns:
-	None
-
-Sets the minimal and maximal value of color scale.") SetRange;
+	:param aMin:
+	:type aMin: float
+	:param aMax:
+	:type aMax: float
+	:rtype: None
+") SetRange;
 		void SetRange (const Standard_Real aMin,const Standard_Real aMax);
-		%feature("autodoc", "Args:
-	aType(Aspect_TypeOfColorScaleData)
+		%feature("autodoc", "	* Sets the type of labels.  Aspect_TOCSD_AUTO - labels as boundary values for intervals  Aspect_TOCSD_USER - user specified label is used
 
-Returns:
-	None
-
-Sets the type of labels.  
-        Aspect_TOCSD_AUTO - labels as boundary values for intervals  
-        Aspect_TOCSD_USER - user specified label is used") SetLabelType;
+	:param aType:
+	:type aType: Aspect_TypeOfColorScaleData
+	:rtype: None
+") SetLabelType;
 		void SetLabelType (const Aspect_TypeOfColorScaleData aType);
-		%feature("autodoc", "Args:
-	aType(Aspect_TypeOfColorScaleData)
+		%feature("autodoc", "	* Sets the type of colors.  Aspect_TOCSD_AUTO - value between Red and Blue  Aspect_TOCSD_USER - user specified color from color map
 
-Returns:
-	None
-
-Sets the type of colors.  
-        Aspect_TOCSD_AUTO - value between Red and Blue  
-        Aspect_TOCSD_USER - user specified color from color map") SetColorType;
+	:param aType:
+	:type aType: Aspect_TypeOfColorScaleData
+	:rtype: None
+") SetColorType;
 		void SetColorType (const Aspect_TypeOfColorScaleData aType);
-		%feature("autodoc", "Args:
-	aNum(Standard_Integer)
+		%feature("autodoc", "	* Sets the number of color scale intervals.
 
-Returns:
-	None
-
-Sets the number of color scale intervals.") SetNumberOfIntervals;
+	:param aNum:
+	:type aNum: Standard_Integer
+	:rtype: None
+") SetNumberOfIntervals;
 		void SetNumberOfIntervals (const Standard_Integer aNum);
-		%feature("autodoc", "Args:
-	aTitle(TCollection_ExtendedString)
+		%feature("autodoc", "	* Sets the color scale title string.
 
-Returns:
-	None
-
-Sets the color scale title string.") SetTitle;
+	:param aTitle:
+	:type aTitle: TCollection_ExtendedString &
+	:rtype: None
+") SetTitle;
 		void SetTitle (const TCollection_ExtendedString & aTitle);
-		%feature("autodoc", "Args:
-	aFormat(TCollection_AsciiString)
+		%feature("autodoc", "	* Sets the color scale auto label format specification.
 
-Returns:
-	None
-
-Sets the color scale auto label format specification.") SetFormat;
+	:param aFormat:
+	:type aFormat: TCollection_AsciiString &
+	:rtype: None
+") SetFormat;
 		void SetFormat (const TCollection_AsciiString & aFormat);
-		%feature("autodoc", "Args:
-	aLabel(TCollection_ExtendedString)
-	anIndex(Standard_Integer)=- 1
+		%feature("autodoc", "	* Sets the color scale label at index. Index started from 1.
 
-Returns:
-	None
-
-Sets the color scale label at index. Index started from 1.") SetLabel;
+	:param aLabel:
+	:type aLabel: TCollection_ExtendedString &
+	:param anIndex: default value is - 1
+	:type anIndex: Standard_Integer
+	:rtype: None
+") SetLabel;
 		void SetLabel (const TCollection_ExtendedString & aLabel,const Standard_Integer anIndex = - 1);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
-	anIndex(Standard_Integer)=- 1
+		%feature("autodoc", "	* Sets the color scale color at index. Index started from 1.
 
-Returns:
-	None
-
-Sets the color scale color at index. Index started from 1.") SetColor;
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:param anIndex: default value is - 1
+	:type anIndex: Standard_Integer
+	:rtype: None
+") SetColor;
 		void SetColor (const Quantity_Color & aColor,const Standard_Integer anIndex = - 1);
-		%feature("autodoc", "Args:
-	aSeq(TColStd_SequenceOfExtendedString)
+		%feature("autodoc", "	* Sets the color scale labels.
 
-Returns:
-	None
-
-Sets the color scale labels.") SetLabels;
+	:param aSeq:
+	:type aSeq: TColStd_SequenceOfExtendedString &
+	:rtype: None
+") SetLabels;
 		void SetLabels (const TColStd_SequenceOfExtendedString & aSeq);
-		%feature("autodoc", "Args:
-	aMap(Handle_Aspect_ColorMap)
+		%feature("autodoc", "	* Sets the color scale colors.
 
-Returns:
-	None
-
-Sets the color scale colors.") SetColors;
+	:param aMap:
+	:type aMap: Handle_Aspect_ColorMap &
+	:rtype: None
+") SetColors;
 		void SetColors (const Handle_Aspect_ColorMap & aMap);
-		%feature("autodoc", "Args:
-	aSeq(Aspect_SequenceOfColor)
+		%feature("autodoc", "	* Sets the color scale colors.
 
-Returns:
-	None
-
-Sets the color scale colors.") SetColors;
+	:param aSeq:
+	:type aSeq: Aspect_SequenceOfColor &
+	:rtype: None
+") SetColors;
 		void SetColors (const Aspect_SequenceOfColor & aSeq);
-		%feature("autodoc", "Args:
-	aPos(Aspect_TypeOfColorScalePosition)
+		%feature("autodoc", "	* Sets the color scale labels position concerning color filled rectangles.
 
-Returns:
-	None
-
-Sets the color scale labels position concerning color filled rectangles.") SetLabelPosition;
+	:param aPos:
+	:type aPos: Aspect_TypeOfColorScalePosition
+	:rtype: None
+") SetLabelPosition;
 		void SetLabelPosition (const Aspect_TypeOfColorScalePosition aPos);
-		%feature("autodoc", "Args:
-	aPos(Aspect_TypeOfColorScalePosition)
+		%feature("autodoc", "	* Sets the color scale title position.
 
-Returns:
-	None
-
-Sets the color scale title position.") SetTitlePosition;
+	:param aPos:
+	:type aPos: Aspect_TypeOfColorScalePosition
+	:rtype: None
+") SetTitlePosition;
 		void SetTitlePosition (const Aspect_TypeOfColorScalePosition aPos);
-		%feature("autodoc", "Args:
-	aReverse(Standard_Boolean)
+		%feature("autodoc", "	* Sets true if the labels and colors used in reversed order.
 
-Returns:
-	None
-
-Sets true if the labels and colors used in reversed order.") SetReversed;
+	:param aReverse:
+	:type aReverse: bool
+	:rtype: None
+") SetReversed;
 		void SetReversed (const Standard_Boolean aReverse);
-		%feature("autodoc", "Args:
-	anOn(Standard_Boolean)
+		%feature("autodoc", "	* Sets true if the labels placed at border of color filled rectangles.
 
-Returns:
-	None
-
-Sets true if the labels placed at border of color filled rectangles.") SetLabelAtBorder;
+	:param anOn:
+	:type anOn: bool
+	:rtype: None
+") SetLabelAtBorder;
 		void SetLabelAtBorder (const Standard_Boolean anOn);
-		%feature("autodoc", "Args:
-	aWidth(Standard_Real)
-	aHeight(Standard_Real)
+		%feature("autodoc", "	* Returns the size of color scale.
 
-Returns:
-	None
-
-Returns the size of color scale.") GetSize;
+	:param aWidth:
+	:type aWidth: float &
+	:param aHeight:
+	:type aHeight: float &
+	:rtype: None
+") GetSize;
 		void GetSize (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the width of color scale.
 
-Returns the width of color scale.") GetWidth;
+	:rtype: float
+") GetWidth;
 		Standard_Real GetWidth ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the height of color scale.
 
-Returns the height of color scale.") GetHeight;
+	:rtype: float
+") GetHeight;
 		Standard_Real GetHeight ();
-		%feature("autodoc", "Args:
-	aWidth(Standard_Real)
-	aHeight(Standard_Real)
+		%feature("autodoc", "	* Sets the size of color scale.
 
-Returns:
-	None
-
-Sets the size of color scale.") SetSize;
+	:param aWidth:
+	:type aWidth: float
+	:param aHeight:
+	:type aHeight: float
+	:rtype: None
+") SetSize;
 		void SetSize (const Standard_Real aWidth,const Standard_Real aHeight);
-		%feature("autodoc", "Args:
-	aWidth(Standard_Real)
+		%feature("autodoc", "	* Sets the width of color scale.
 
-Returns:
-	None
-
-Sets the width of color scale.") SetWidth;
+	:param aWidth:
+	:type aWidth: float
+	:rtype: None
+") SetWidth;
 		void SetWidth (const Standard_Real aWidth);
-		%feature("autodoc", "Args:
-	aHeight(Standard_Real)
+		%feature("autodoc", "	* Sets the height of color scale.
 
-Returns:
-	None
-
-Sets the height of color scale.") SetHeight;
+	:param aHeight:
+	:type aHeight: float
+	:rtype: None
+") SetHeight;
 		void SetHeight (const Standard_Real aHeight);
-		%feature("autodoc", "Args:
-	aX(Standard_Real)
-	aY(Standard_Real)
+		%feature("autodoc", "	* Returns the position of color scale.
 
-Returns:
-	None
-
-Returns the position of color scale.") GetPosition;
+	:param aX:
+	:type aX: float &
+	:param aY:
+	:type aY: float &
+	:rtype: None
+") GetPosition;
 		void GetPosition (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the X position of color scale.
 
-Returns the X position of color scale.") GetXPosition;
+	:rtype: float
+") GetXPosition;
 		Standard_Real GetXPosition ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the height of color scale.
 
-Returns the height of color scale.") GetYPosition;
+	:rtype: float
+") GetYPosition;
 		Standard_Real GetYPosition ();
-		%feature("autodoc", "Args:
-	aX(Standard_Real)
-	aY(Standard_Real)
+		%feature("autodoc", "	* Sets the position of color scale.
 
-Returns:
-	None
-
-Sets the position of color scale.") SetPosition;
+	:param aX:
+	:type aX: float
+	:param aY:
+	:type aY: float
+	:rtype: None
+") SetPosition;
 		void SetPosition (const Standard_Real aX,const Standard_Real aY);
-		%feature("autodoc", "Args:
-	aX(Standard_Real)
+		%feature("autodoc", "	* Sets the X position of color scale.
 
-Returns:
-	None
-
-Sets the X position of color scale.") SetXPosition;
+	:param aX:
+	:type aX: float
+	:rtype: None
+") SetXPosition;
 		void SetXPosition (const Standard_Real aX);
-		%feature("autodoc", "Args:
-	aY(Standard_Real)
+		%feature("autodoc", "	* Sets the Y position of color scale.
 
-Returns:
-	None
-
-Sets the Y position of color scale.") SetYPosition;
+	:param aY:
+	:type aY: float
+	:rtype: None
+") SetYPosition;
 		void SetYPosition (const Standard_Real aY);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") GetTextHeight;
+		%feature("autodoc", "	:rtype: int
+") GetTextHeight;
 		Standard_Integer GetTextHeight ();
-		%feature("autodoc", "Args:
-	aHeigh(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetTextHeight;
+		%feature("autodoc", "	:param aHeigh:
+	:type aHeigh: Standard_Integer
+	:rtype: None
+") SetTextHeight;
 		void SetTextHeight (const Standard_Integer aHeigh);
-		%feature("autodoc", "Args:
-	X(Standard_Integer)
-	Y(Standard_Integer)
-	W(Standard_Integer)
-	H(Standard_Integer)
-	aColor(Quantity_Color)
-	aFilled(Standard_Boolean)=Standard_False
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") PaintRect;
+		%feature("autodoc", "	:param X:
+	:type X: Standard_Integer
+	:param Y:
+	:type Y: Standard_Integer
+	:param W:
+	:type W: Standard_Integer
+	:param H:
+	:type H: Standard_Integer
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:param aFilled: default value is Standard_False
+	:type aFilled: bool
+	:rtype: void
+") PaintRect;
 		virtual void PaintRect (const Standard_Integer X,const Standard_Integer Y,const Standard_Integer W,const Standard_Integer H,const Quantity_Color & aColor,const Standard_Boolean aFilled = Standard_False);
-		%feature("autodoc", "Args:
-	aText(TCollection_ExtendedString)
-	X(Standard_Integer)
-	Y(Standard_Integer)
-	aColor(Quantity_Color)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") PaintText;
+		%feature("autodoc", "	:param aText:
+	:type aText: TCollection_ExtendedString &
+	:param X:
+	:type X: Standard_Integer
+	:param Y:
+	:type Y: Standard_Integer
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: void
+") PaintText;
 		virtual void PaintText (const TCollection_ExtendedString & aText,const Standard_Integer X,const Standard_Integer Y,const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	aText(TCollection_ExtendedString)
-
-Returns:
-	virtual Standard_Integer
-
-No detailed docstring for this function.") TextWidth;
+		%feature("autodoc", "	:param aText:
+	:type aText: TCollection_ExtendedString &
+	:rtype: int
+") TextWidth;
 		virtual Standard_Integer TextWidth (const TCollection_ExtendedString & aText);
-		%feature("autodoc", "Args:
-	aText(TCollection_ExtendedString)
-
-Returns:
-	virtual Standard_Integer
-
-No detailed docstring for this function.") TextHeight;
+		%feature("autodoc", "	:param aText:
+	:type aText: TCollection_ExtendedString &
+	:rtype: int
+") TextHeight;
 		virtual Standard_Integer TextHeight (const TCollection_ExtendedString & aText);
 };
 
@@ -1793,449 +1556,399 @@ def __del__(self):
 %nodefaultctor Aspect_Driver;
 class Aspect_Driver : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Synchronize(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Flush all graphics and Wait after up to date
 
-Returns:
-	virtual void
-
-Flush all graphics and Wait after up to date") EndDraw;
+	:param Synchronize: default value is Standard_False
+	:type Synchronize: bool
+	:rtype: void
+") EndDraw;
 		virtual void EndDraw (const Standard_Boolean Synchronize = Standard_False);
-		%feature("autodoc", "Args:
-	aColorMap(Handle_Aspect_ColorMap)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetColorMap;
+		%feature("autodoc", "	:param aColorMap:
+	:type aColorMap: Handle_Aspect_ColorMap &
+	:rtype: None
+") SetColorMap;
 		void SetColorMap (const Handle_Aspect_ColorMap & aColorMap);
-		%feature("autodoc", "Args:
-	aTypeMap(Handle_Aspect_TypeMap)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetTypeMap;
+		%feature("autodoc", "	:param aTypeMap:
+	:type aTypeMap: Handle_Aspect_TypeMap &
+	:rtype: None
+") SetTypeMap;
 		void SetTypeMap (const Handle_Aspect_TypeMap & aTypeMap);
-		%feature("autodoc", "Args:
-	aWidthMap(Handle_Aspect_WidthMap)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetWidthMap;
+		%feature("autodoc", "	:param aWidthMap:
+	:type aWidthMap: Handle_Aspect_WidthMap &
+	:rtype: None
+") SetWidthMap;
 		void SetWidthMap (const Handle_Aspect_WidthMap & aWidthMap);
-		%feature("autodoc", "Args:
-	aFontMap(Handle_Aspect_FontMap)
+		%feature("autodoc", "	* Sets the current font map to this driver and Enable/Disable this driver to use MDTV fonts instead system fonts.
 
-Returns:
-	None
-
-Sets the current font map to this driver and Enable/Disable  
-this driver to use MDTV fonts instead system fonts.") SetFontMap;
+	:param aFontMap:
+	:type aFontMap: Handle_Aspect_FontMap &
+	:rtype: None
+") SetFontMap;
 		void SetFontMap (const Handle_Aspect_FontMap & aFontMap);
-		%feature("autodoc", "Args:
-	aMarkMap(Handle_Aspect_MarkMap)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetMarkMap;
+		%feature("autodoc", "	:param aMarkMap:
+	:type aMarkMap: Handle_Aspect_MarkMap &
+	:rtype: None
+") SetMarkMap;
 		void SetMarkMap (const Handle_Aspect_MarkMap & aMarkMap);
-		%feature("autodoc", "Args:
-	ColorIndex(Standard_Integer)
-	TypeIndex(Standard_Integer)
-	WidthIndex(Standard_Integer)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetLineAttrib;
+		%feature("autodoc", "	:param ColorIndex:
+	:type ColorIndex: Standard_Integer
+	:param TypeIndex:
+	:type TypeIndex: Standard_Integer
+	:param WidthIndex:
+	:type WidthIndex: Standard_Integer
+	:rtype: void
+") SetLineAttrib;
 		virtual void SetLineAttrib (const Standard_Integer ColorIndex,const Standard_Integer TypeIndex,const Standard_Integer WidthIndex);
-		%feature("autodoc", "Args:
-	ColorIndex(Standard_Integer)
-	FontIndex(Standard_Integer)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetTextAttrib;
+		%feature("autodoc", "	:param ColorIndex:
+	:type ColorIndex: Standard_Integer
+	:param FontIndex:
+	:type FontIndex: Standard_Integer
+	:rtype: void
+") SetTextAttrib;
 		virtual void SetTextAttrib (const Standard_Integer ColorIndex,const Standard_Integer FontIndex);
-		%feature("autodoc", "Args:
-	ColorIndex(Standard_Integer)
-	FontIndex(Standard_Integer)
-	aSlant(Quantity_PlaneAngle)
-	aHScale(Quantity_Factor)
-	aWScale(Quantity_Factor)
-	isUnderlined(Standard_Boolean)=Standard_False
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetTextAttrib;
+		%feature("autodoc", "	:param ColorIndex:
+	:type ColorIndex: Standard_Integer
+	:param FontIndex:
+	:type FontIndex: Standard_Integer
+	:param aSlant:
+	:type aSlant: Quantity_PlaneAngle
+	:param aHScale:
+	:type aHScale: Quantity_Factor
+	:param aWScale:
+	:type aWScale: Quantity_Factor
+	:param isUnderlined: default value is Standard_False
+	:type isUnderlined: bool
+	:rtype: void
+") SetTextAttrib;
 		virtual void SetTextAttrib (const Standard_Integer ColorIndex,const Standard_Integer FontIndex,const Quantity_PlaneAngle aSlant,const Quantity_Factor aHScale,const Quantity_Factor aWScale,const Standard_Boolean isUnderlined = Standard_False);
-		%feature("autodoc", "Args:
-	ColorIndex(Standard_Integer)
-	TileIndex(Standard_Integer)
-	DrawEdge(Standard_Boolean)=Standard_False
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetPolyAttrib;
+		%feature("autodoc", "	:param ColorIndex:
+	:type ColorIndex: Standard_Integer
+	:param TileIndex:
+	:type TileIndex: Standard_Integer
+	:param DrawEdge: default value is Standard_False
+	:type DrawEdge: bool
+	:rtype: void
+") SetPolyAttrib;
 		virtual void SetPolyAttrib (const Standard_Integer ColorIndex,const Standard_Integer TileIndex,const Standard_Boolean DrawEdge = Standard_False);
-		%feature("autodoc", "Args:
-	ColorIndex(Standard_Integer)
-	WidthIndex(Standard_Integer)
-	FillMarker(Standard_Boolean)=Standard_False
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetMarkerAttrib;
+		%feature("autodoc", "	:param ColorIndex:
+	:type ColorIndex: Standard_Integer
+	:param WidthIndex:
+	:type WidthIndex: Standard_Integer
+	:param FillMarker: default value is Standard_False
+	:type FillMarker: bool
+	:rtype: void
+") SetMarkerAttrib;
 		virtual void SetMarkerAttrib (const Standard_Integer ColorIndex,const Standard_Integer WidthIndex,const Standard_Boolean FillMarker = Standard_False);
-		%feature("autodoc", "Args:
-	anImage(Handle_Standard_Transient)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") IsKnownImage;
+		%feature("autodoc", "	:param anImage:
+	:type anImage: Handle_Standard_Transient &
+	:rtype: bool
+") IsKnownImage;
 		virtual Standard_Boolean IsKnownImage (const Handle_Standard_Transient & anImage);
-		%feature("autodoc", "Args:
-	anImageFile(char *)
-	aWidth(Standard_Integer)
-	aHeight(Standard_Integer)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") SizeOfImageFile;
+		%feature("autodoc", "	:param anImageFile:
+	:type anImageFile: char *
+	:param aWidth:
+	:type aWidth: Standard_Integer &
+	:param aHeight:
+	:type aHeight: Standard_Integer &
+	:rtype: bool
+") SizeOfImageFile;
 		virtual Standard_Boolean SizeOfImageFile (const char * anImageFile,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	anImageId(Handle_Standard_Transient)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") ClearImage;
+		%feature("autodoc", "	:param anImageId:
+	:type anImageId: Handle_Standard_Transient &
+	:rtype: void
+") ClearImage;
 		virtual void ClearImage (const Handle_Standard_Transient & anImageId);
-		%feature("autodoc", "Args:
-	anImageFile(char *)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") ClearImageFile;
+		%feature("autodoc", "	:param anImageFile:
+	:type anImageFile: char *
+	:rtype: void
+") ClearImageFile;
 		virtual void ClearImageFile (const char * anImageFile);
-		%feature("autodoc", "Args:
-	anImageId(Handle_Standard_Transient)
-	aX(Standard_ShortReal)
-	aY(Standard_ShortReal)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") DrawImage;
+		%feature("autodoc", "	:param anImageId:
+	:type anImageId: Handle_Standard_Transient &
+	:param aX:
+	:type aX: Standard_ShortReal
+	:param aY:
+	:type aY: Standard_ShortReal
+	:rtype: void
+") DrawImage;
 		virtual void DrawImage (const Handle_Standard_Transient & anImageId,const Standard_ShortReal aX,const Standard_ShortReal aY);
-		%feature("autodoc", "Args:
-	anImageFile(char *)
-	aX(Standard_ShortReal)
-	aY(Standard_ShortReal)
-	aScale(Quantity_Factor)=1.0
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") DrawImageFile;
+		%feature("autodoc", "	:param anImageFile:
+	:type anImageFile: char *
+	:param aX:
+	:type aX: Standard_ShortReal
+	:param aY:
+	:type aY: Standard_ShortReal
+	:param aScale: default value is 1.0
+	:type aScale: Quantity_Factor
+	:rtype: void
+") DrawImageFile;
 		virtual void DrawImageFile (const char * anImageFile,const Standard_ShortReal aX,const Standard_ShortReal aY,const Quantity_Factor aScale = 1.0);
-		%feature("autodoc", "Args:
-	anImageId(Handle_Standard_Transient)
-	aX(Standard_ShortReal)
-	aY(Standard_ShortReal)
-	aWidth(Standard_Integer)
-	aHeight(Standard_Integer)
-	anArrayOfPixels(Standard_Address)
+		%feature("autodoc", "	* Fills a complete Image .
 
-Returns:
-	virtual void
-
-Fills a complete Image .") FillAndDrawImage;
+	:param anImageId:
+	:type anImageId: Handle_Standard_Transient &
+	:param aX:
+	:type aX: Standard_ShortReal
+	:param aY:
+	:type aY: Standard_ShortReal
+	:param aWidth:
+	:type aWidth: Standard_Integer
+	:param aHeight:
+	:type aHeight: Standard_Integer
+	:param anArrayOfPixels:
+	:type anArrayOfPixels: Standard_Address
+	:rtype: void
+") FillAndDrawImage;
 		virtual void FillAndDrawImage (const Handle_Standard_Transient & anImageId,const Standard_ShortReal aX,const Standard_ShortReal aY,const Standard_Integer aWidth,const Standard_Integer aHeight,const Standard_Address anArrayOfPixels);
-		%feature("autodoc", "Args:
-	anImageId(Handle_Standard_Transient)
-	aX(Standard_ShortReal)
-	aY(Standard_ShortReal)
-	anIndexOfLine(Standard_Integer)
-	aWidth(Standard_Integer)
-	aHeight(Standard_Integer)
-	anArrayOfPixels(Standard_Address)
+		%feature("autodoc", "	* Fills a line of the Image . Warning: 0 <= anIndexOfLine < aHeight //!	 anIndexOfLine = 0 must be the first call
 
-Returns:
-	virtual void
-
-Fills a line of the Image .  
- Warning: 0 <= anIndexOfLine < aHeight  
-//!	    anIndexOfLine = 0 must be the first call") FillAndDrawImage;
+	:param anImageId:
+	:type anImageId: Handle_Standard_Transient &
+	:param aX:
+	:type aX: Standard_ShortReal
+	:param aY:
+	:type aY: Standard_ShortReal
+	:param anIndexOfLine:
+	:type anIndexOfLine: Standard_Integer
+	:param aWidth:
+	:type aWidth: Standard_Integer
+	:param aHeight:
+	:type aHeight: Standard_Integer
+	:param anArrayOfPixels:
+	:type anArrayOfPixels: Standard_Address
+	:rtype: void
+") FillAndDrawImage;
 		virtual void FillAndDrawImage (const Handle_Standard_Transient & anImageId,const Standard_ShortReal aX,const Standard_ShortReal aY,const Standard_Integer anIndexOfLine,const Standard_Integer aWidth,const Standard_Integer aHeight,const Standard_Address anArrayOfPixels);
-		%feature("autodoc", "Args:
-	aListX(TShort_Array1OfShortReal)
-	aListY(TShort_Array1OfShortReal)
+		%feature("autodoc", "	* Draw a polyline depending of the SetLineAttrib() attributes.
 
-Returns:
-	virtual void
-
-Draw a polyline depending of the SetLineAttrib() attributes.") DrawPolyline;
+	:param aListX:
+	:type aListX: TShort_Array1OfShortReal &
+	:param aListY:
+	:type aListY: TShort_Array1OfShortReal &
+	:rtype: void
+") DrawPolyline;
 		virtual void DrawPolyline (const TShort_Array1OfShortReal & aListX,const TShort_Array1OfShortReal & aListY);
-		%feature("autodoc", "Args:
-	aListX(TShort_Array1OfShortReal)
-	aListY(TShort_Array1OfShortReal)
+		%feature("autodoc", "	* Draw a polygon depending of the SetPolyAttrib() attributes.
 
-Returns:
-	virtual void
-
-Draw a polygon depending of the SetPolyAttrib() attributes.") DrawPolygon;
+	:param aListX:
+	:type aListX: TShort_Array1OfShortReal &
+	:param aListY:
+	:type aListY: TShort_Array1OfShortReal &
+	:rtype: void
+") DrawPolygon;
 		virtual void DrawPolygon (const TShort_Array1OfShortReal & aListX,const TShort_Array1OfShortReal & aListY);
-		%feature("autodoc", "Args:
-	X1(Standard_ShortReal)
-	Y1(Standard_ShortReal)
-	X2(Standard_ShortReal)
-	Y2(Standard_ShortReal)
+		%feature("autodoc", "	* Draw a segment depending of the SetLineAttrib() attributes.
 
-Returns:
-	virtual void
-
-Draw a segment depending of the SetLineAttrib() attributes.") DrawSegment;
+	:param X1:
+	:type X1: Standard_ShortReal
+	:param Y1:
+	:type Y1: Standard_ShortReal
+	:param X2:
+	:type X2: Standard_ShortReal
+	:param Y2:
+	:type Y2: Standard_ShortReal
+	:rtype: void
+") DrawSegment;
 		virtual void DrawSegment (const Standard_ShortReal X1,const Standard_ShortReal Y1,const Standard_ShortReal X2,const Standard_ShortReal Y2);
-		%feature("autodoc", "Args:
-	aText(TCollection_ExtendedString)
-	Xpos(Standard_ShortReal)
-	Ypos(Standard_ShortReal)
-	anAngle(Standard_ShortReal)=0.0
-	aType(Aspect_TypeOfText)=Aspect_TOT_SOLID
+		%feature("autodoc", "	* Draws a text depending of the SetTextAttrib() attributes.
 
-Returns:
-	virtual void
-
-Draws a text depending of the SetTextAttrib() attributes.") DrawText;
+	:param aText:
+	:type aText: TCollection_ExtendedString &
+	:param Xpos:
+	:type Xpos: Standard_ShortReal
+	:param Ypos:
+	:type Ypos: Standard_ShortReal
+	:param anAngle: default value is 0.0
+	:type anAngle: Standard_ShortReal
+	:param aType: default value is Aspect_TOT_SOLID
+	:type aType: Aspect_TypeOfText
+	:rtype: void
+") DrawText;
 		virtual void DrawText (const TCollection_ExtendedString & aText,const Standard_ShortReal Xpos,const Standard_ShortReal Ypos,const Standard_ShortReal anAngle = 0.0,const Aspect_TypeOfText aType = Aspect_TOT_SOLID);
-		%feature("autodoc", "Args:
-	aText(TCollection_ExtendedString)
-	Xpos(Standard_ShortReal)
-	Ypos(Standard_ShortReal)
-	aMarge(Quantity_Ratio)=0.1
-	anAngle(Standard_ShortReal)=0.0
-	aType(Aspect_TypeOfText)=Aspect_TOT_SOLID
+		%feature("autodoc", "	* Draws an framed text depending of the SetTextAttrib() and SetPolyAttrib() attributes. Warning: Coordinates must be defined in DWU space. //!	 <aMarge> defines the ratio of the space between the //!	 polygon borders and the bounding box of the text and //!	 depending of the height of the text.
 
-Returns:
-	virtual void
-
-Draws an framed text depending of the  
-SetTextAttrib() and SetPolyAttrib() attributes.  
- Warning: Coordinates must be defined in DWU space.  
-//!	    <aMarge> defines the ratio of the space between the  
-//!	    polygon borders and the bounding box of the text and  
-//!	    depending of the height of the text.") DrawPolyText;
+	:param aText:
+	:type aText: TCollection_ExtendedString &
+	:param Xpos:
+	:type Xpos: Standard_ShortReal
+	:param Ypos:
+	:type Ypos: Standard_ShortReal
+	:param aMarge: default value is 0.1
+	:type aMarge: Quantity_Ratio
+	:param anAngle: default value is 0.0
+	:type anAngle: Standard_ShortReal
+	:param aType: default value is Aspect_TOT_SOLID
+	:type aType: Aspect_TypeOfText
+	:rtype: void
+") DrawPolyText;
 		virtual void DrawPolyText (const TCollection_ExtendedString & aText,const Standard_ShortReal Xpos,const Standard_ShortReal Ypos,const Quantity_Ratio aMarge = 0.1,const Standard_ShortReal anAngle = 0.0,const Aspect_TypeOfText aType = Aspect_TOT_SOLID);
-		%feature("autodoc", "Args:
-	X(Standard_ShortReal)
-	Y(Standard_ShortReal)
+		%feature("autodoc", "	* Draws a 1 PIXEL point depending of the SetMarkerAttrib()
 
-Returns:
-	virtual void
-
-Draws a 1 PIXEL point depending of the SetMarkerAttrib()") DrawPoint;
+	:param X:
+	:type X: Standard_ShortReal
+	:param Y:
+	:type Y: Standard_ShortReal
+	:rtype: void
+") DrawPoint;
 		virtual void DrawPoint (const Standard_ShortReal X,const Standard_ShortReal Y);
-		%feature("autodoc", "Args:
-	aMarker(Standard_Integer)
-	Xpos(Standard_ShortReal)
-	Ypos(Standard_ShortReal)
-	Width(Standard_ShortReal)
-	Height(Standard_ShortReal)
-	Angle(Standard_ShortReal)=0.0
+		%feature("autodoc", "	* Draws the prevously defined marker <aMarker>
 
-Returns:
-	virtual void
-
-Draws the prevously defined marker <aMarker>") DrawMarker;
+	:param aMarker:
+	:type aMarker: Standard_Integer
+	:param Xpos:
+	:type Xpos: Standard_ShortReal
+	:param Ypos:
+	:type Ypos: Standard_ShortReal
+	:param Width:
+	:type Width: Standard_ShortReal
+	:param Height:
+	:type Height: Standard_ShortReal
+	:param Angle: default value is 0.0
+	:type Angle: Standard_ShortReal
+	:rtype: void
+") DrawMarker;
 		virtual void DrawMarker (const Standard_Integer aMarker,const Standard_ShortReal Xpos,const Standard_ShortReal Ypos,const Standard_ShortReal Width,const Standard_ShortReal Height,const Standard_ShortReal Angle = 0.0);
-		%feature("autodoc", "Args:
-	X(Standard_ShortReal)
-	Y(Standard_ShortReal)
-	anXradius(Standard_ShortReal)
-	anYradius(Standard_ShortReal)
-	aStartAngle(Standard_ShortReal)=0.0
-	anOpenAngle(Standard_ShortReal)=6.283185
+		%feature("autodoc", "	* Draws an Ellipsoid arc of center <X,Y> and Radius
 
-Returns:
-	virtual Standard_Boolean
-
-Draws an Ellipsoid arc of center <X,Y> and Radius") DrawArc;
+	:param X:
+	:type X: Standard_ShortReal
+	:param Y:
+	:type Y: Standard_ShortReal
+	:param anXradius:
+	:type anXradius: Standard_ShortReal
+	:param anYradius:
+	:type anYradius: Standard_ShortReal
+	:param aStartAngle: default value is 0.0
+	:type aStartAngle: Standard_ShortReal
+	:param anOpenAngle: default value is 6.283185
+	:type anOpenAngle: Standard_ShortReal
+	:rtype: bool
+") DrawArc;
 		virtual Standard_Boolean DrawArc (const Standard_ShortReal X,const Standard_ShortReal Y,const Standard_ShortReal anXradius,const Standard_ShortReal anYradius,const Standard_ShortReal aStartAngle = 0.0,const Standard_ShortReal anOpenAngle = 6.283185);
-		%feature("autodoc", "Args:
-	X(Standard_ShortReal)
-	Y(Standard_ShortReal)
-	anXradius(Standard_ShortReal)
-	anYradius(Standard_ShortReal)
-	aStartAngle(Standard_ShortReal)=0.0
-	anOpenAngle(Standard_ShortReal)=6.283185
+		%feature("autodoc", "	* Draws an filled Ellipsoid arc of center <X,Y> and Radius
 
-Returns:
-	virtual Standard_Boolean
-
-Draws an filled Ellipsoid arc of center <X,Y> and Radius") DrawPolyArc;
+	:param X:
+	:type X: Standard_ShortReal
+	:param Y:
+	:type Y: Standard_ShortReal
+	:param anXradius:
+	:type anXradius: Standard_ShortReal
+	:param anYradius:
+	:type anYradius: Standard_ShortReal
+	:param aStartAngle: default value is 0.0
+	:type aStartAngle: Standard_ShortReal
+	:param anOpenAngle: default value is 6.283185
+	:type anOpenAngle: Standard_ShortReal
+	:rtype: bool
+") DrawPolyArc;
 		virtual Standard_Boolean DrawPolyArc (const Standard_ShortReal X,const Standard_ShortReal Y,const Standard_ShortReal anXradius,const Standard_ShortReal anYradius,const Standard_ShortReal aStartAngle = 0.0,const Standard_ShortReal anOpenAngle = 6.283185);
-		%feature("autodoc", "Args:
-	aNumber(Standard_Integer)
+		%feature("autodoc", "	* Begin an incremental polyline primitive of <aNumber> of points . Warning: Points must be added by the the DrawPoint() method.
 
-Returns:
-	virtual void
-
-Begin an incremental polyline primitive of <aNumber> of points .  
- Warning: Points must be added by the the DrawPoint() method.") BeginPolyline;
+	:param aNumber:
+	:type aNumber: Standard_Integer
+	:rtype: void
+") BeginPolyline;
 		virtual void BeginPolyline (const Standard_Integer aNumber);
-		%feature("autodoc", "Args:
-	aNumber(Standard_Integer)
+		%feature("autodoc", "	* Begin an incremental polygon primitive of <aNumber> of points . Warning: Points must be added by the the DrawPoint() method.
 
-Returns:
-	virtual void
-
-Begin an incremental polygon primitive of <aNumber> of points .  
- Warning: Points must be added by the the DrawPoint() method.") BeginPolygon;
+	:param aNumber:
+	:type aNumber: Standard_Integer
+	:rtype: void
+") BeginPolygon;
 		virtual void BeginPolygon (const Standard_Integer aNumber);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Begin a set of segments . Warning: Segments must be added by the DrawSegment() method.
 
-Begin a set of segments .  
- Warning: Segments must be added by the DrawSegment() method.") BeginSegments;
+	:rtype: void
+") BeginSegments;
 		virtual void BeginSegments ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Begin a set of circles or ellips . Warning: Arcs must be added by the DrawArc() methods.
 
-Begin a set of circles or ellips .  
- Warning: Arcs must be added by the DrawArc() methods.") BeginArcs;
+	:rtype: void
+") BeginArcs;
 		virtual void BeginArcs ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Begin a set of polygon circles or ellips . Warning: Arcs must be added by the DrawPolyArc() methods.
 
-Begin a set of polygon circles or ellips .  
- Warning: Arcs must be added by the DrawPolyArc() methods.") BeginPolyArcs;
+	:rtype: void
+") BeginPolyArcs;
 		virtual void BeginPolyArcs ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Begin a set of markers . Warning: Markers must be added by the DrawMarker() method.
 
-Begin a set of markers .  
- Warning: Markers must be added by the DrawMarker() method.") BeginMarkers;
+	:rtype: void
+") BeginMarkers;
 		virtual void BeginMarkers ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Begin a set of points . Warning: Points must be added by the DrawPoint() method.
 
-Begin a set of points .  
- Warning: Points must be added by the DrawPoint() method.") BeginPoints;
+	:rtype: void
+") BeginPoints;
 		virtual void BeginPoints ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Close the last Begining primitive
 
-Close the last Begining primitive") ClosePrimitive;
+	:rtype: void
+") ClosePrimitive;
 		virtual void ClosePrimitive ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Aspect_ColorMap
-
-No detailed docstring for this function.") ColorMap;
+		%feature("autodoc", "	:rtype: Handle_Aspect_ColorMap
+") ColorMap;
 		Handle_Aspect_ColorMap ColorMap ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Aspect_TypeMap
-
-No detailed docstring for this function.") TypeMap;
+		%feature("autodoc", "	:rtype: Handle_Aspect_TypeMap
+") TypeMap;
 		Handle_Aspect_TypeMap TypeMap ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Aspect_WidthMap
-
-No detailed docstring for this function.") WidthMap;
+		%feature("autodoc", "	:rtype: Handle_Aspect_WidthMap
+") WidthMap;
 		Handle_Aspect_WidthMap WidthMap ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Aspect_FontMap
-
-No detailed docstring for this function.") FontMap;
+		%feature("autodoc", "	:rtype: Handle_Aspect_FontMap
+") FontMap;
 		Handle_Aspect_FontMap FontMap ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Aspect_MarkMap
-
-No detailed docstring for this function.") MarkMap;
+		%feature("autodoc", "	:rtype: Handle_Aspect_MarkMap
+") MarkMap;
 		Handle_Aspect_MarkMap MarkMap ();
-		%feature("autodoc", "Args:
-	Width(Quantity_Length)
-	Heigth(Quantity_Length)
+		%feature("autodoc", "	* Returns the Available WorkSpace in DWU coordinates
 
-Returns:
-	virtual void
-
-Returns the Available WorkSpace in DWU coordinates") WorkSpace;
+	:param Width:
+	:type Width: Quantity_Length &
+	:param Heigth:
+	:type Heigth: Quantity_Length &
+	:rtype: void
+") WorkSpace;
 		virtual void WorkSpace (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	PV(Standard_Integer)
+		%feature("autodoc", "	* Returns the DWU value depending of the PIXEL value.
 
-Returns:
-	virtual Quantity_Length
-
-Returns the DWU value depending of  
-         the PIXEL value.") Convert;
+	:param PV:
+	:type PV: Standard_Integer
+	:rtype: Quantity_Length
+") Convert;
 		virtual Quantity_Length Convert (const Standard_Integer PV);
-		%feature("autodoc", "Args:
-	DV(Quantity_Length)
+		%feature("autodoc", "	* Returns the PIXEL value depending of the DWU value.
 
-Returns:
-	virtual Standard_Integer
-
-Returns the PIXEL value depending of  
-         the DWU value.") Convert;
+	:param DV:
+	:type DV: Quantity_Length
+	:rtype: int
+") Convert;
 		virtual Standard_Integer Convert (const Quantity_Length DV);
-		%feature("autodoc", "Args:
-	PX(Standard_Integer)
-	PY(Standard_Integer)
-	DX(Quantity_Length)
-	DY(Quantity_Length)
+		%feature("autodoc", "	* Returns the DWU position depending of the PIXEL position .
 
-Returns:
-	virtual void
-
-Returns the DWU position depending of  
-         the PIXEL position .") Convert;
+	:param PX:
+	:type PX: Standard_Integer
+	:param PY:
+	:type PY: Standard_Integer
+	:param DX:
+	:type DX: Quantity_Length &
+	:param DY:
+	:type DY: Quantity_Length &
+	:rtype: void
+") Convert;
 		virtual void Convert (const Standard_Integer PX,const Standard_Integer PY,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	DX(Quantity_Length)
-	DY(Quantity_Length)
-	PX(Standard_Integer)
-	PY(Standard_Integer)
+		%feature("autodoc", "	* Returns the PIXEL position depending of the DWU position . Returns True when the driver must use MDTV fonts //!	instead system fonts.
 
-Returns:
-	virtual void
-
-Returns the PIXEL position depending of  
-         the DWU position .  Returns TRUE when the driver must use MDTV fonts  
-//!	instead system fonts.") Convert;
+	:param DX:
+	:type DX: Quantity_Length
+	:param DY:
+	:type DY: Quantity_Length
+	:param PX:
+	:type PX: Standard_Integer &
+	:param PY:
+	:type PY: Standard_Integer &
+	:rtype: void
+") Convert;
 		virtual void Convert (const Quantity_Length DX,const Quantity_Length DY,Standard_Integer &OutValue,Standard_Integer &OutValue);
 };
 
@@ -2296,68 +2009,58 @@ def __del__(self):
 %nodefaultctor Aspect_Edge;
 class Aspect_Edge {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates an edge.
 
-Creates an edge.") Aspect_Edge;
+	:rtype: None
+") Aspect_Edge;
 		 Aspect_Edge ();
-		%feature("autodoc", "Args:
-	AIndex1(Standard_Integer)
-	AIndex2(Standard_Integer)
-	AType(Aspect_TypeOfEdge)
+		%feature("autodoc", "	* Creates an edge from an index of vertices //!	 in a table of vertices. //!	 <AType> indicates if this edge is seen or not. Warning: Raises EdgeDefinitionError if AIndex1 == AIndex2.
 
-Returns:
-	None
-
-Creates an edge from an index of vertices  
-//!	    in a table of vertices.  
-//!	    <AType> indicates if this edge is seen or not.  
- Warning: Raises EdgeDefinitionError if AIndex1 == AIndex2.") Aspect_Edge;
+	:param AIndex1:
+	:type AIndex1: Standard_Integer
+	:param AIndex2:
+	:type AIndex2: Standard_Integer
+	:param AType:
+	:type AType: Aspect_TypeOfEdge
+	:rtype: None
+") Aspect_Edge;
 		 Aspect_Edge (const Standard_Integer AIndex1,const Standard_Integer AIndex2,const Aspect_TypeOfEdge AType);
-		%feature("autodoc", "Args:
-	AIndex1(Standard_Integer)
-	AIndex2(Standard_Integer)
-	AType(Aspect_TypeOfEdge)
+		%feature("autodoc", "	* Updates the values of an edge <self>. Warning: Raises EdgeDefinitionError if AIndex1 == AIndex2.
 
-Returns:
-	None
-
-Updates the values of an edge <self>.  
- Warning: Raises EdgeDefinitionError if AIndex1 == AIndex2.") SetValues;
+	:param AIndex1:
+	:type AIndex1: Standard_Integer
+	:param AIndex2:
+	:type AIndex2: Standard_Integer
+	:param AType:
+	:type AType: Aspect_TypeOfEdge
+	:rtype: None
+") SetValues;
 		void SetValues (const Standard_Integer AIndex1,const Standard_Integer AIndex2,const Aspect_TypeOfEdge AType);
-		%feature("autodoc", "Args:
-	AIndex1(Standard_Integer)
-	AIndex2(Standard_Integer)
-	AType(Aspect_TypeOfEdge)
+		%feature("autodoc", "	* Returns the index of the vertices and the //!	 type of edge <self>.
 
-Returns:
-	None
-
-Returns the index of the vertices and the  
-//!	    type of edge <self>.") Values;
+	:param AIndex1:
+	:type AIndex1: Standard_Integer &
+	:param AIndex2:
+	:type AIndex2: Standard_Integer &
+	:param AType:
+	:type AType: Aspect_TypeOfEdge &
+	:rtype: None
+") Values;
 		void Values (Standard_Integer &OutValue,Standard_Integer &OutValue,Aspect_TypeOfEdge & AType);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the index of the begin of the edge <self>.
 
-Returns the index of the begin of the edge <self>.") FirstIndex;
+	:rtype: int
+") FirstIndex;
 		Standard_Integer FirstIndex ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the index of the end of the edge <self>.
 
-Returns the index of the end of the edge <self>.") LastIndex;
+	:rtype: int
+") LastIndex;
 		Standard_Integer LastIndex ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_TypeOfEdge
+		%feature("autodoc", "	* Returns the type of the edge <self>.
 
-Returns the type of the edge <self>.") Type;
+	:rtype: Aspect_TypeOfEdge
+") Type;
 		Aspect_TypeOfEdge Type ();
 };
 
@@ -2379,64 +2082,44 @@ def __del__(self):
 %nodefaultctor Aspect_FontMap;
 class Aspect_FontMap : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Aspect_FontMap;
+		%feature("autodoc", "	:rtype: None
+") Aspect_FontMap;
 		 Aspect_FontMap ();
-		%feature("autodoc", "Args:
-	AnEntry(Aspect_FontMapEntry)
+		%feature("autodoc", "	* Adds an entry in the font map <self>. Warning: Raises BadAccess if FontMap size is exceeded.
 
-Returns:
-	None
-
-Adds an entry in the font map <self>.  
- Warning: Raises BadAccess if FontMap size is exceeded.") AddEntry;
+	:param AnEntry:
+	:type AnEntry: Aspect_FontMapEntry &
+	:rtype: None
+") AddEntry;
 		void AddEntry (const Aspect_FontMapEntry & AnEntry);
-		%feature("autodoc", "Args:
-	aStyle(Aspect_FontStyle)
+		%feature("autodoc", "	* Search an identical font style entry in the font map <self> and returns the FontMapEntry Index if exist. Or add a new entry and returns the computed FontMapEntry index used.
 
-Returns:
-	Standard_Integer
-
-Search an identical font style entry in the font map <self>  
-and returns the FontMapEntry Index if exist.  
-Or add a new entry and returns the computed FontMapEntry index used.") AddEntry;
+	:param aStyle:
+	:type aStyle: Aspect_FontStyle &
+	:rtype: int
+") AddEntry;
 		Standard_Integer AddEntry (const Aspect_FontStyle & aStyle);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the Allocated fontmap Size
 
-Returns the Allocated fontmap Size") Size;
+	:rtype: int
+") Size;
 		Standard_Integer Size ();
-		%feature("autodoc", "Args:
-	aFontmapIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the FontMapEntry.Index of the FontMap at rank <aFontmapIndex> .
 
-Returns:
-	Standard_Integer
-
-Returns the FontMapEntry.Index of the FontMap  
-         at rank <aFontmapIndex> .") Index;
+	:param aFontmapIndex:
+	:type aFontmapIndex: Standard_Integer
+	:rtype: int
+") Index;
 		Standard_Integer Index (const Standard_Integer aFontmapIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
-		%feature("autodoc", "Args:
-	AnIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the Font map entry with the index <AnIndex>. Warning: Raises BadAccess if the index less than 1 //!	 or greater than Size.
 
-Returns:
-	Aspect_FontMapEntry
-
-Returns the Font map entry with the index <AnIndex>.  
- Warning: Raises BadAccess if the index less than 1  
-//!	    or greater than Size.") Entry;
+	:param AnIndex:
+	:type AnIndex: Standard_Integer
+	:rtype: Aspect_FontMapEntry
+") Entry;
 		Aspect_FontMapEntry Entry (const Standard_Integer AnIndex);
 };
 
@@ -2497,108 +2180,80 @@ def __del__(self):
 %nodefaultctor Aspect_FontMapEntry;
 class Aspect_FontMapEntry {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates an unallocated fontmap entry
 
-Creates an unallocated fontmap entry") Aspect_FontMapEntry;
+	:rtype: None
+") Aspect_FontMapEntry;
 		 Aspect_FontMapEntry ();
-		%feature("autodoc", "Args:
-	index(Standard_Integer)
-	style(Aspect_FontStyle)
+		%feature("autodoc", "	* Creates an allocated fontmap entry
 
-Returns:
-	None
-
-Creates an allocated fontmap entry") Aspect_FontMapEntry;
+	:param index:
+	:type index: Standard_Integer
+	:param style:
+	:type style: Aspect_FontStyle &
+	:rtype: None
+") Aspect_FontMapEntry;
 		 Aspect_FontMapEntry (const Standard_Integer index,const Aspect_FontStyle & style);
-		%feature("autodoc", "Args:
-	entry(Aspect_FontMapEntry)
+		%feature("autodoc", "	* Creates an allocated fontmap entry. Warning: Raises error if the fontmap entry <entry> is unallocated.
 
-Returns:
-	None
-
-Creates an allocated fontmap entry.  
- Warning: Raises error if the fontmap entry <entry> is unallocated.") Aspect_FontMapEntry;
+	:param entry:
+	:type entry: Aspect_FontMapEntry &
+	:rtype: None
+") Aspect_FontMapEntry;
 		 Aspect_FontMapEntry (const Aspect_FontMapEntry & entry);
-		%feature("autodoc", "Args:
-	index(Standard_Integer)
-	style(Aspect_FontStyle)
+		%feature("autodoc", "	* Sets fontmap entry value and allocates it.
 
-Returns:
-	None
-
-Sets fontmap entry value and allocates it.") SetValue;
+	:param index:
+	:type index: Standard_Integer
+	:param style:
+	:type style: Aspect_FontStyle &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer index,const Aspect_FontStyle & style);
-		%feature("autodoc", "Args:
-	entry(Aspect_FontMapEntry)
+		%feature("autodoc", "	* Sets fontmap entry value and allocates it.
 
-Returns:
-	None
-
-Sets fontmap entry value and allocates it.") SetValue;
+	:param entry:
+	:type entry: Aspect_FontMapEntry &
+	:rtype: None
+") SetValue;
 		void SetValue (const Aspect_FontMapEntry & entry);
-		%feature("autodoc", "Args:
-	entry(Aspect_FontMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param entry:
+	:type entry: Aspect_FontMapEntry &
+	:rtype: None
+") operator=;
 		void operator = (const Aspect_FontMapEntry & entry);
-		%feature("autodoc", "Args:
-	Style(Aspect_FontStyle)
+		%feature("autodoc", "	* Sets the line style of fontmap entry.
 
-Returns:
-	None
-
-Sets the line style of fontmap entry.") SetType;
+	:param Style:
+	:type Style: Aspect_FontStyle &
+	:rtype: None
+") SetType;
 		void SetType (const Aspect_FontStyle & Style);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_FontStyle
-
-No detailed docstring for this function.") Type;
+		%feature("autodoc", "	:rtype: Aspect_FontStyle
+") Type;
 		const Aspect_FontStyle & Type ();
-		%feature("autodoc", "Args:
-	index(Standard_Integer)
+		%feature("autodoc", "	* Sets index value of a fontmap entry.
 
-Returns:
-	None
-
-Sets index value of a fontmap entry.") SetIndex;
+	:param index:
+	:type index: Standard_Integer
+	:rtype: None
+") SetIndex;
 		void SetIndex (const Standard_Integer index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Index;
+		%feature("autodoc", "	:rtype: int
+") Index;
 		Standard_Integer Index ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Unallocates the fontmap entry.
 
-Unallocates the fontmap entry.") Free;
+	:rtype: None
+") Free;
 		void Free ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the fontmap entry is allocated. Warning: A fontmap entry is allocated when the font and //!	 the index is defined.
 
-Returns True if the fontmap entry is allocated.  
- Warning: A fontmap entry is allocated when the font and  
-//!	    the index is defined.") IsAllocated;
+	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
 };
 
@@ -2620,320 +2275,236 @@ def __del__(self):
 %nodefaultctor Aspect_FontStyle;
 class Aspect_FontStyle {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates a font style with the default values of //!	 FontStyle type : DEFAULT
 
-Creates a font style with the default values of  
-//!	    FontStyle type : DEFAULT") Aspect_FontStyle;
+	:rtype: None
+") Aspect_FontStyle;
 		 Aspect_FontStyle ();
-		%feature("autodoc", "Args:
-	Type(Aspect_TypeOfFont)
-	Size(Quantity_Length)
-	Slant(Quantity_PlaneAngle)=0.0
-	CapsHeight(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Creates the font style <Type> depending of //!	 Size given in the basic LENGTH unit and Slant in //!	 the basic PLANE ANGLE unit. //!	 When CapsHeight is True the size defines the //!	 ascent height of the font;if False,the size //!	 defines the ascent+descent part of the font.
 
-Returns:
-	None
-
-Creates the font style <Type> depending of  
-//!	    Size given in the basic LENGTH unit and Slant in  
-//!	    the basic PLANE ANGLE unit.  
-//!	    When CapsHeight is TRUE the size defines the  
-//!	    ascent height of the font;if FALSE,the size  
-//!	    defines the ascent+descent part of the font.") Aspect_FontStyle;
+	:param Type:
+	:type Type: Aspect_TypeOfFont
+	:param Size:
+	:type Size: Quantity_Length
+	:param Slant: default value is 0.0
+	:type Slant: Quantity_PlaneAngle
+	:param CapsHeight: default value is Standard_False
+	:type CapsHeight: bool
+	:rtype: None
+") Aspect_FontStyle;
 		 Aspect_FontStyle (const Aspect_TypeOfFont Type,const Quantity_Length Size,const Quantity_PlaneAngle Slant = 0.0,const Standard_Boolean CapsHeight = Standard_False);
-		%feature("autodoc", "Args:
-	Style(char *)
-	Size(Quantity_Length)
-	Slant(Quantity_PlaneAngle)=0.0
-	CapsHeight(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Creates a font style from Adobe font style descriptor //!	 depending of Size given in MM and Slant in RADIAN. //!	 When CapsHeight is True the size defines the //!	 ascent height of the font;if False,the size //!	 defines the ascent+descent part of the font. //!	 Font Style Descriptor must be : //!	 Simple form is 'family' 	Ex: 'helvetica' //!	 More complex form is 'family-weight' Ex: 'helvetica-bold' //!	 Full form is : //!		'-foundry-family-weight-slant-swdth-adstyl-pixelsize' //!		'-pointsize-resx-resy-spacing-avgWidth-registry-encoding' //!		where each field must be replaced by an '*' Warning: create the smalest font size if the foundry height
 
-Returns:
-	None
-
-Creates a font style from Adobe font style descriptor  
-//!	   depending of Size given in MM and Slant in RADIAN.  
-//!	    When CapsHeight is TRUE the size defines the  
-//!	    ascent height of the font;if FALSE,the size  
-//!	    defines the ascent+descent part of the font.  
-//!	    Font Style Descriptor must be :  
-//!	       Simple form is 'family'      	Ex: 'helvetica'  
-//!	       More complex form is 'family-weight' Ex: 'helvetica-bold'  
-//!	       Full form is :  
-//!		'-foundry-family-weight-slant-swdth-adstyl-pixelsize'  
-//!		'-pointsize-resx-resy-spacing-avgWidth-registry-encoding'  
-//!		where each field must be replaced by an '*'  
- Warning: create the smalest font size if the foundry height") Aspect_FontStyle;
+	:param Style:
+	:type Style: char *
+	:param Size:
+	:type Size: Quantity_Length
+	:param Slant: default value is 0.0
+	:type Slant: Quantity_PlaneAngle
+	:param CapsHeight: default value is Standard_False
+	:type CapsHeight: bool
+	:rtype: None
+") Aspect_FontStyle;
 		 Aspect_FontStyle (const char * Style,const Quantity_Length Size,const Quantity_PlaneAngle Slant = 0.0,const Standard_Boolean CapsHeight = Standard_False);
-		%feature("autodoc", "Args:
-	Style(char *)
+		%feature("autodoc", "	* Creates a transformable font with the full font name <Style> given in the XLFD descriptor : '-foundry-family-weight-slant-swidth-adstyl-pixelsize-pointsize- resx-resy-spacing-avdWidth-registry-encoding'. The fields pixelsize ,pointsize,resx,resy are sets to 0 and all unknown fields sets to '*'. Example: 'adobe-helvetica-bold-*-*-*-0-0-0-0-*-*-iso8859-*' Warning: the height and slant of the font is supposed to be NULL and computed dynamically at the drawing text time.
 
-Returns:
-	None
-
-Creates a transformable font with the full font name <Style>  
- given in the XLFD descriptor :  
-'-foundry-family-weight-slant-swidth-adstyl-pixelsize-pointsize-  
- resx-resy-spacing-avdWidth-registry-encoding'.  
-The fields pixelsize ,pointsize,resx,resy are sets to 0  
-and all unknown fields sets to '*'.  
- Example: 'adobe-helvetica-bold-*-*-*-0-0-0-0-*-*-iso8859-*'  
- Warning: the height and slant of the font is supposed to be NULL  
-and computed dynamically at the drawing text time.") Aspect_FontStyle;
+	:param Style:
+	:type Style: char *
+	:rtype: None
+") Aspect_FontStyle;
 		 Aspect_FontStyle (const char * Style);
-		%feature("autodoc", "Args:
-	Other(Aspect_FontStyle)
+		%feature("autodoc", "	* Updates the font style <self> from the definition of the //!	 font style <Other>.
 
-Returns:
-	Aspect_FontStyle
-
-Updates the font style <self> from the definition of the  
-//!	    font style <Other>.") Assign;
+	:param Other:
+	:type Other: Aspect_FontStyle &
+	:rtype: Aspect_FontStyle
+") Assign;
 		Aspect_FontStyle & Assign (const Aspect_FontStyle & Other);
-		%feature("autodoc", "Args:
-	Other(Aspect_FontStyle)
-
-Returns:
-	Aspect_FontStyle
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_FontStyle &
+	:rtype: Aspect_FontStyle
+") operator=;
 		Aspect_FontStyle & operator = (const Aspect_FontStyle & Other);
-		%feature("autodoc", "Args:
-	Type(Aspect_TypeOfFont)
-	Size(Quantity_Length)
-	Slant(Quantity_PlaneAngle)=0.0
-	CapsHeight(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Updates the font style <self> from the definition of the //!	 font style <Type>.
 
-Returns:
-	None
-
-Updates the font style <self> from the definition of the  
-//!	    font style <Type>.") SetValues;
+	:param Type:
+	:type Type: Aspect_TypeOfFont
+	:param Size:
+	:type Size: Quantity_Length
+	:param Slant: default value is 0.0
+	:type Slant: Quantity_PlaneAngle
+	:param CapsHeight: default value is Standard_False
+	:type CapsHeight: bool
+	:rtype: None
+") SetValues;
 		void SetValues (const Aspect_TypeOfFont Type,const Quantity_Length Size,const Quantity_PlaneAngle Slant = 0.0,const Standard_Boolean CapsHeight = Standard_False);
-		%feature("autodoc", "Args:
-	Style(char *)
-	Size(Quantity_Length)
-	Slant(Quantity_PlaneAngle)=0.0
-	CapsHeight(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Updates a font style with the new Abode font descriptor Warning: create the smalest font size if the foundry height
 
-Returns:
-	None
-
-Updates a font style with the new Abode font descriptor  
- Warning: create the smalest font size if the foundry height") SetValues;
+	:param Style:
+	:type Style: char *
+	:param Size:
+	:type Size: Quantity_Length
+	:param Slant: default value is 0.0
+	:type Slant: Quantity_PlaneAngle
+	:param CapsHeight: default value is Standard_False
+	:type CapsHeight: bool
+	:rtype: None
+") SetValues;
 		void SetValues (const char * Style,const Quantity_Length Size,const Quantity_PlaneAngle Slant = 0.0,const Standard_Boolean CapsHeight = Standard_False);
-		%feature("autodoc", "Args:
-	Style(char *)
+		%feature("autodoc", "	* Updates a font style with the new XLFD font descriptor
 
-Returns:
-	None
-
-Updates a font style with the new XLFD font descriptor") SetValues;
+	:param Style:
+	:type Style: char *
+	:rtype: None
+") SetValues;
 		void SetValues (const char * Style);
-		%feature("autodoc", "Args:
-	aName(char *)
+		%feature("autodoc", "	* Sets the family of the font.
 
-Returns:
-	None
-
-Sets the family of the font.") SetFamily;
+	:param aName:
+	:type aName: char *
+	:rtype: None
+") SetFamily;
 		void SetFamily (const char * aName);
-		%feature("autodoc", "Args:
-	aName(char *)
+		%feature("autodoc", "	* Sets the weight of the font.
 
-Returns:
-	None
-
-Sets the weight of the font.") SetWeight;
+	:param aName:
+	:type aName: char *
+	:rtype: None
+") SetWeight;
 		void SetWeight (const char * aName);
-		%feature("autodoc", "Args:
-	aName(char *)
+		%feature("autodoc", "	* Sets the registry of the font.
 
-Returns:
-	None
-
-Sets the registry of the font.") SetRegistry;
+	:param aName:
+	:type aName: char *
+	:rtype: None
+") SetRegistry;
 		void SetRegistry (const char * aName);
-		%feature("autodoc", "Args:
-	aName(char *)
+		%feature("autodoc", "	* Sets the encoding of the font.
 
-Returns:
-	None
-
-Sets the encoding of the font.") SetEncoding;
+	:param aName:
+	:type aName: char *
+	:rtype: None
+") SetEncoding;
 		void SetEncoding (const char * aName);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_TypeOfFont
+		%feature("autodoc", "	* Returns the type of the font style <self>
 
-Returns the type of the font style <self>") Style;
+	:rtype: Aspect_TypeOfFont
+") Style;
 		Aspect_TypeOfFont Style ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the string components length of the font style descriptor
 
-Returns the string components length of the  
-font style descriptor") Length;
+	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	char *
+		%feature("autodoc", "	* Returns the String component of a font style
 
-Returns the String component of a font style") Value;
+	:rtype: char *
+") Value;
 		char * Value ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Length
+		%feature("autodoc", "	* Returns the Size component of a font style
 
-Returns the Size component of a font style") Size;
+	:rtype: Quantity_Length
+") Size;
 		Quantity_Length Size ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_PlaneAngle
+		%feature("autodoc", "	* Returns the Slant component of a font style
 
-Returns the Slant component of a font style") Slant;
+	:rtype: Quantity_PlaneAngle
+") Slant;
 		Quantity_PlaneAngle Slant ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns the CapsHeight component of a font style
 
-Returns the CapsHeight component of a font style") CapsHeight;
+	:rtype: bool
+") CapsHeight;
 		Standard_Boolean CapsHeight ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	char *
+		%feature("autodoc", "	* Returns a shorter font name which identify the main characteristics of the fonts.
 
-Returns a shorter font name which identify the  
-         main characteristics of the fonts.") AliasName;
+	:rtype: char *
+") AliasName;
 		char * AliasName ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	char *
+		%feature("autodoc", "	* Returns the full normalized font name
 
-Returns the full normalized font name") FullName;
+	:rtype: char *
+") FullName;
 		char * FullName ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	char *
+		%feature("autodoc", "	* Returns the foundry of the font.
 
-Returns the foundry of the font.") Foundry;
+	:rtype: char *
+") Foundry;
 		char * Foundry ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	char *
+		%feature("autodoc", "	* Returns the family of the font.
 
-Returns the family of the font.") Family;
+	:rtype: char *
+") Family;
 		char * Family ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	char *
+		%feature("autodoc", "	* Returns the weight of the font.
 
-Returns the weight of the font.") Weight;
+	:rtype: char *
+") Weight;
 		char * Weight ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	char *
+		%feature("autodoc", "	* Returns the char set registry of the font.
 
-Returns the char set registry of the font.") Registry;
+	:rtype: char *
+") Registry;
 		char * Registry ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	char *
+		%feature("autodoc", "	* Returns the char set encoding of the font.
 
-Returns the char set encoding of the font.") Encoding;
+	:rtype: char *
+") Encoding;
 		char * Encoding ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	char *
+		%feature("autodoc", "	* Returns the slant of the font.
 
-Returns the slant of the font.") SSlant;
+	:rtype: char *
+") SSlant;
 		char * SSlant ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	char *
+		%feature("autodoc", "	* Returns the width name of the font.
 
-Returns the width name of the font.") SWidth;
+	:rtype: char *
+") SWidth;
 		char * SWidth ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	char *
+		%feature("autodoc", "	* Returns the style name of the font.
 
-Returns the style name of the font.") SStyle;
+	:rtype: char *
+") SStyle;
 		char * SStyle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	char *
+		%feature("autodoc", "	* Returns the pixel size of the font.
 
-Returns the pixel size of the font.") SPixelSize;
+	:rtype: char *
+") SPixelSize;
 		char * SPixelSize ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	char *
+		%feature("autodoc", "	* Returns the point size of the font.
 
-Returns the point size of the font.") SPointSize;
+	:rtype: char *
+") SPointSize;
 		char * SPointSize ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	char *
+		%feature("autodoc", "	* Returns the resolution X of the font.
 
-Returns the resolution X of the font.") SResolutionX;
+	:rtype: char *
+") SResolutionX;
 		char * SResolutionX ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	char *
+		%feature("autodoc", "	* Returns the resolution Y of the font.
 
-Returns the resolution Y of the font.") SResolutionY;
+	:rtype: char *
+") SResolutionY;
 		char * SResolutionY ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	char *
+		%feature("autodoc", "	* Returns the spacing of the font.
 
-Returns the spacing of the font.") SSpacing;
+	:rtype: char *
+") SSpacing;
 		char * SSpacing ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	char *
+		%feature("autodoc", "	* Returns the average width of the font.
 
-Returns the average width of the font.") SAverageWidth;
+	:rtype: char *
+") SAverageWidth;
 		char * SAverageWidth ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Dumps the font attributes.
 
-Dumps the font attributes.") Dump;
+	:rtype: None
+") Dump;
 		void Dump ();
-		%feature("autodoc", "Args:
-	Other(Aspect_FontStyle)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEqual;
+		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_FontStyle &
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const Aspect_FontStyle & Other);
 
         %extend{
@@ -2949,13 +2520,10 @@ No detailed docstring for this function.") IsEqual;
             except:
                 return False
         }
-        		%feature("autodoc", "Args:
-	Other(Aspect_FontStyle)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsNotEqual;
+        		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_FontStyle &
+	:rtype: bool
+") IsNotEqual;
 		Standard_Boolean IsNotEqual (const Aspect_FontStyle & Other);
 
         %extend{
@@ -2991,68 +2559,51 @@ def __del__(self):
 %nodefaultctor Aspect_GenId;
 class Aspect_GenId {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates an available set of identifiers with the lower //!	 bound 0 and the upper bound INT_MAX/2.
 
-Creates an available set of identifiers with the lower  
-//!	    bound 0 and the upper bound INT_MAX/2.") Aspect_GenId;
+	:rtype: None
+") Aspect_GenId;
 		 Aspect_GenId ();
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
+		%feature("autodoc", "	* Creates an available set of identifiers with the lower //!	 bound <Low> and the upper bound <Up>. Warning: Raises IdentDefinitionError if <Up> is less than <Low>. Copies the content of <Other> into <self>.
 
-Returns:
-	None
-
-Creates an available set of identifiers with the lower  
-//!	    bound <Low> and the upper bound <Up>.  
- Warning: Raises IdentDefinitionError if <Up> is less than <Low>.  Copies the content of <Other> into <self>.") Aspect_GenId;
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Aspect_GenId;
 		 Aspect_GenId (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Frees all identifiers of <self>.
 
-Frees all identifiers of <self>.") Free;
+	:rtype: None
+") Free;
 		void Free ();
-		%feature("autodoc", "Args:
-	Id(Standard_Integer)
+		%feature("autodoc", "	* Frees the identifier <Id> of <self>.
 
-Returns:
-	None
-
-Frees the identifier <Id> of <self>.") Free;
+	:param Id:
+	:type Id: Standard_Integer
+	:rtype: None
+") Free;
 		void Free (const Standard_Integer Id);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of available identifiers of <self>.
 
-Returns the number of available identifiers of <self>.") Available;
+	:rtype: int
+") Available;
 		Standard_Integer Available ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the lower bound of <self>.
 
-Returns the lower bound of <self>.") Lower;
+	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns an available identifier of <self>. Warning: Raises IdentDefinitionError if all identifiers are busy.
 
-Returns an available identifier of <self>.  
- Warning: Raises IdentDefinitionError if all identifiers are busy.") Next;
+	:rtype: int
+") Next;
 		Standard_Integer Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the upper bound of <self>.
 
-Returns the upper bound of <self>.") Upper;
+	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
 };
 
@@ -3094,176 +2645,146 @@ def __del__(self):
 %nodefaultctor Aspect_Grid;
 class Aspect_Grid : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	anOrigin(Quantity_Length)
+		%feature("autodoc", "	* defines the x Origin of the grid.
 
-Returns:
-	None
-
-defines the x Origin of the grid.") SetXOrigin;
+	:param anOrigin:
+	:type anOrigin: Quantity_Length
+	:rtype: None
+") SetXOrigin;
 		void SetXOrigin (const Quantity_Length anOrigin);
-		%feature("autodoc", "Args:
-	anOrigin(Quantity_Length)
+		%feature("autodoc", "	* defines the y Origin of the grid.
 
-Returns:
-	None
-
-defines the y Origin of the grid.") SetYOrigin;
+	:param anOrigin:
+	:type anOrigin: Quantity_Length
+	:rtype: None
+") SetYOrigin;
 		void SetYOrigin (const Quantity_Length anOrigin);
-		%feature("autodoc", "Args:
-	anAngle(Quantity_PlaneAngle)
+		%feature("autodoc", "	* defines the orientation of the the grid.
 
-Returns:
-	None
-
-defines the orientation of the the grid.") SetRotationAngle;
+	:param anAngle:
+	:type anAngle: Quantity_PlaneAngle
+	:rtype: None
+") SetRotationAngle;
 		void SetRotationAngle (const Quantity_PlaneAngle anAngle);
-		%feature("autodoc", "Args:
-	anAngle(Quantity_PlaneAngle)
+		%feature("autodoc", "	* Rotate the grid from a relative angle.
 
-Returns:
-	None
-
-Rotate the grid from a relative angle.") Rotate;
+	:param anAngle:
+	:type anAngle: Quantity_PlaneAngle
+	:rtype: None
+") Rotate;
 		void Rotate (const Quantity_PlaneAngle anAngle);
-		%feature("autodoc", "Args:
-	aDx(Quantity_Length)
-	aDy(Quantity_Length)
+		%feature("autodoc", "	* Translate the grid from a relative distance.
 
-Returns:
-	None
-
-Translate the grid from a relative distance.") Translate;
+	:param aDx:
+	:type aDx: Quantity_Length
+	:param aDy:
+	:type aDy: Quantity_Length
+	:rtype: None
+") Translate;
 		void Translate (const Quantity_Length aDx,const Quantity_Length aDy);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
-	aTenthColor(Quantity_Color)
+		%feature("autodoc", "	* Change the colors of the grid
 
-Returns:
-	virtual void
-
-Change the colors of the grid") SetColors;
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:param aTenthColor:
+	:type aTenthColor: Quantity_Color &
+	:rtype: void
+") SetColors;
 		virtual void SetColors (const Quantity_Color & aColor,const Quantity_Color & aTenthColor);
-		%feature("autodoc", "Args:
-	X(Quantity_Length)
-	Y(Quantity_Length)
-	gridX(Quantity_Length)
-	gridY(Quantity_Length)
+		%feature("autodoc", "	* returns the point of the grid the closest to the point X,Y if the grid is active. If the grid is not active returns X,Y.
 
-Returns:
-	None
-
-returns the point of the grid the closest to the point X,Y  
-         if the grid is active. If the grid is not active returns  
-         X,Y.") Hit;
+	:param X:
+	:type X: Quantity_Length
+	:param Y:
+	:type Y: Quantity_Length
+	:param gridX:
+	:type gridX: Quantity_Length &
+	:param gridY:
+	:type gridY: Quantity_Length &
+	:rtype: None
+") Hit;
 		void Hit (const Quantity_Length X,const Quantity_Length Y,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	X(Quantity_Length)
-	Y(Quantity_Length)
-	gridX(Quantity_Length)
-	gridY(Quantity_Length)
+		%feature("autodoc", "	* returns the point of the grid the closest to the point X,Y
 
-Returns:
-	virtual void
-
-returns the point of the grid the closest to the point X,Y") Compute;
+	:param X:
+	:type X: Quantity_Length
+	:param Y:
+	:type Y: Quantity_Length
+	:param gridX:
+	:type gridX: Quantity_Length &
+	:param gridY:
+	:type gridY: Quantity_Length &
+	:rtype: void
+") Compute;
 		virtual void Compute (const Quantity_Length X,const Quantity_Length Y,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* activates the grid. The Hit method will return gridx and gridx computed according to the steps of the grid.
 
-activates the grid. The Hit method will return  
-         gridx and gridx computed according to the steps  
-         of the grid.") Activate;
+	:rtype: None
+") Activate;
 		void Activate ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* deactivates the grid. The hit method will return gridx and gridx as the enter value X & Y.
 
-deactivates the grid. The hit method will return  
-         gridx and gridx as the enter value X & Y.") Deactivate;
+	:rtype: None
+") Deactivate;
 		void Deactivate ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Length
+		%feature("autodoc", "	* returns the x Origin of the grid.
 
-returns the x Origin of the grid.") XOrigin;
+	:rtype: Quantity_Length
+") XOrigin;
 		Quantity_Length XOrigin ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Length
+		%feature("autodoc", "	* returns the x Origin of the grid.
 
-returns the x Origin of the grid.") YOrigin;
+	:rtype: Quantity_Length
+") YOrigin;
 		Quantity_Length YOrigin ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_PlaneAngle
+		%feature("autodoc", "	* returns the x Angle of the grid.
 
-returns the x Angle of the grid.") RotationAngle;
+	:rtype: Quantity_PlaneAngle
+") RotationAngle;
 		Quantity_PlaneAngle RotationAngle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True when the grid is active.
 
-Returns TRUE when the grid is active.") IsActive;
+	:rtype: bool
+") IsActive;
 		Standard_Boolean IsActive ();
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
-	aTenthColor(Quantity_Color)
+		%feature("autodoc", "	* Returns the colors of the grid.
 
-Returns:
-	None
-
-Returns the colors of the grid.") Colors;
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:param aTenthColor:
+	:type aTenthColor: Quantity_Color &
+	:rtype: None
+") Colors;
 		void Colors (Quantity_Color & aColor,Quantity_Color & aTenthColor);
-		%feature("autodoc", "Args:
-	aDrawMode(Aspect_GridDrawMode)
+		%feature("autodoc", "	* Change the grid aspect.
 
-Returns:
-	None
-
-Change the grid aspect.") SetDrawMode;
+	:param aDrawMode:
+	:type aDrawMode: Aspect_GridDrawMode
+	:rtype: None
+") SetDrawMode;
 		void SetDrawMode (const Aspect_GridDrawMode aDrawMode);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_GridDrawMode
+		%feature("autodoc", "	* Returns the grid aspect.
 
-Returns the grid aspect.") DrawMode;
+	:rtype: Aspect_GridDrawMode
+") DrawMode;
 		Aspect_GridDrawMode DrawMode ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Display the grid at screen.
 
-Display the grid at screen.") Display;
+	:rtype: void
+") Display;
 		virtual void Display ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Erase the grid from screen.
 
-Erase the grid from screen.") Erase;
+	:rtype: void
+") Erase;
 		virtual void Erase ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Returns True when the grid is displayed at screen.
 
-Returns TRUE when the grid is displayed at screen.") IsDisplayed;
+	:rtype: bool
+") IsDisplayed;
 		virtual Standard_Boolean IsDisplayed ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:rtype: void
+") Init;
 		virtual void Init ();
 };
 
@@ -3324,97 +2845,70 @@ def __del__(self):
 %nodefaultctor Aspect_LineStyle;
 class Aspect_LineStyle {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates a line style with the default value of //!	 LineStyle type : SOLID
 
-Creates a line style with the default value of  
-//!	    LineStyle type : SOLID") Aspect_LineStyle;
+	:rtype: None
+") Aspect_LineStyle;
 		 Aspect_LineStyle ();
-		%feature("autodoc", "Args:
-	Type(Aspect_TypeOfLine)
+		%feature("autodoc", "	* Creates the line style <Type>.
 
-Returns:
-	None
-
-Creates the line style <Type>.") Aspect_LineStyle;
+	:param Type:
+	:type Type: Aspect_TypeOfLine
+	:rtype: None
+") Aspect_LineStyle;
 		 Aspect_LineStyle (const Aspect_TypeOfLine Type);
-		%feature("autodoc", "Args:
-	Style(TColQuantity_Array1OfLength)
+		%feature("autodoc", "	* Creates a line style from METER Float style descriptor . //!	 Style Descriptor is : //!	 Each Odd float described the Drawn part of the style . //!	 Each Even float described the Hidden part of the style . //!	 (e.g) [0.010,0.002,0.005,0.004] //!		 Draw 10 MM ,Move 2 MM,Draw 5 MM ..
 
-Returns:
-	None
-
-Creates a line style from METER Float style descriptor .  
-//!	    Style Descriptor is :  
-//!	    Each Odd float described the Drawn part of the style .  
-//!	    Each Even float described the Hidden part of the style .  
-//!	    (e.g) [0.010,0.002,0.005,0.004]  
-//!		  Draw 10 MM ,Move 2 MM,Draw 5 MM ..") Aspect_LineStyle;
+	:param Style:
+	:type Style: TColQuantity_Array1OfLength &
+	:rtype: None
+") Aspect_LineStyle;
 		 Aspect_LineStyle (const TColQuantity_Array1OfLength & Style);
-		%feature("autodoc", "Args:
-	Other(Aspect_LineStyle)
+		%feature("autodoc", "	* Updates the line style <self> from the definition of the //!	 line style <Other>.
 
-Returns:
-	Aspect_LineStyle
-
-Updates the line style <self> from the definition of the  
-//!	    line style <Other>.") Assign;
+	:param Other:
+	:type Other: Aspect_LineStyle &
+	:rtype: Aspect_LineStyle
+") Assign;
 		Aspect_LineStyle & Assign (const Aspect_LineStyle & Other);
-		%feature("autodoc", "Args:
-	Other(Aspect_LineStyle)
-
-Returns:
-	Aspect_LineStyle
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_LineStyle &
+	:rtype: Aspect_LineStyle
+") operator=;
 		Aspect_LineStyle & operator = (const Aspect_LineStyle & Other);
-		%feature("autodoc", "Args:
-	Type(Aspect_TypeOfLine)
+		%feature("autodoc", "	* Updates the line style <self> from the definition of the //!	 line style <Type>.
 
-Returns:
-	None
-
-Updates the line style <self> from the definition of the  
-//!	    line style <Type>.") SetValues;
+	:param Type:
+	:type Type: Aspect_TypeOfLine
+	:rtype: None
+") SetValues;
 		void SetValues (const Aspect_TypeOfLine Type);
-		%feature("autodoc", "Args:
-	Style(TColQuantity_Array1OfLength)
+		%feature("autodoc", "	* Updates a line style with the new Float descriptor
 
-Returns:
-	None
-
-Updates a line style with the new Float descriptor") SetValues;
+	:param Style:
+	:type Style: TColQuantity_Array1OfLength &
+	:rtype: None
+") SetValues;
 		void SetValues (const TColQuantity_Array1OfLength & Style);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_TypeOfLine
+		%feature("autodoc", "	* Returns the type of the line style <self>
 
-Returns the type of the line style <self>") Style;
+	:rtype: Aspect_TypeOfLine
+") Style;
 		Aspect_TypeOfLine Style ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the components length of the line style
 
-Returns the components length of the line style") Length;
+	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColQuantity_Array1OfLength
+		%feature("autodoc", "	* Returns the components of a line style
 
-Returns the components of a line style") Values;
+	:rtype: TColQuantity_Array1OfLength
+") Values;
 		const TColQuantity_Array1OfLength & Values ();
-		%feature("autodoc", "Args:
-	Other(Aspect_LineStyle)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEqual;
+		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_LineStyle &
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const Aspect_LineStyle & Other);
 
         %extend{
@@ -3430,13 +2924,10 @@ No detailed docstring for this function.") IsEqual;
             except:
                 return False
         }
-        		%feature("autodoc", "Args:
-	Other(Aspect_LineStyle)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsNotEqual;
+        		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_LineStyle &
+	:rtype: bool
+") IsNotEqual;
 		Standard_Boolean IsNotEqual (const Aspect_LineStyle & Other);
 
         %extend{
@@ -3472,64 +2963,44 @@ def __del__(self):
 %nodefaultctor Aspect_MarkMap;
 class Aspect_MarkMap : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Aspect_MarkMap;
+		%feature("autodoc", "	:rtype: None
+") Aspect_MarkMap;
 		 Aspect_MarkMap ();
-		%feature("autodoc", "Args:
-	AnEntry(Aspect_MarkMapEntry)
+		%feature("autodoc", "	* Adds an entry in the mark map <self>. Warning: Raises BadAccess if MarkMap size is exceeded.
 
-Returns:
-	None
-
-Adds an entry in the mark map <self>.  
- Warning: Raises BadAccess if MarkMap size is exceeded.") AddEntry;
+	:param AnEntry:
+	:type AnEntry: Aspect_MarkMapEntry &
+	:rtype: None
+") AddEntry;
 		void AddEntry (const Aspect_MarkMapEntry & AnEntry);
-		%feature("autodoc", "Args:
-	aStyle(Aspect_MarkerStyle)
+		%feature("autodoc", "	* Search an identical marker style entry in the mark map <self> and returns the MarkMapEntry Index if exist. Or add a new entry and returns the computed MarkMapEntry index used.
 
-Returns:
-	Standard_Integer
-
-Search an identical marker style entry in the mark map <self>  
-and returns the MarkMapEntry Index if exist.  
-Or add a new entry and returns the computed MarkMapEntry index used.") AddEntry;
+	:param aStyle:
+	:type aStyle: Aspect_MarkerStyle &
+	:rtype: int
+") AddEntry;
 		Standard_Integer AddEntry (const Aspect_MarkerStyle & aStyle);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the Allocated markmap Size
 
-Returns the Allocated markmap Size") Size;
+	:rtype: int
+") Size;
 		Standard_Integer Size ();
-		%feature("autodoc", "Args:
-	aMarkmapIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the MarkMapEntry.Index of the MarkMap at rank <aMarkmapIndex> .
 
-Returns:
-	Standard_Integer
-
-Returns the MarkMapEntry.Index of the MarkMap  
-         at rank <aMarkmapIndex> .") Index;
+	:param aMarkmapIndex:
+	:type aMarkmapIndex: Standard_Integer
+	:rtype: int
+") Index;
 		Standard_Integer Index (const Standard_Integer aMarkmapIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
-		%feature("autodoc", "Args:
-	AnIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the Mark map entry with the index <AnIndex>. Warning: Raises BadAccess if the index less than 1 or //!	 greater than Size.
 
-Returns:
-	Aspect_MarkMapEntry
-
-Returns the Mark map entry with the index <AnIndex>.  
- Warning: Raises BadAccess if the index less than 1 or  
-//!	    greater than Size.") Entry;
+	:param AnIndex:
+	:type AnIndex: Standard_Integer
+	:rtype: Aspect_MarkMapEntry
+") Entry;
 		Aspect_MarkMapEntry Entry (const Standard_Integer AnIndex);
 };
 
@@ -3590,110 +3061,82 @@ def __del__(self):
 %nodefaultctor Aspect_MarkMapEntry;
 class Aspect_MarkMapEntry {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates an unallocated markmap entry
 
-Creates an unallocated markmap entry") Aspect_MarkMapEntry;
+	:rtype: None
+") Aspect_MarkMapEntry;
 		 Aspect_MarkMapEntry ();
-		%feature("autodoc", "Args:
-	index(Standard_Integer)
-	style(Aspect_MarkerStyle)
+		%feature("autodoc", "	* Creates an allocated markmap entry
 
-Returns:
-	None
-
-Creates an allocated markmap entry") Aspect_MarkMapEntry;
+	:param index:
+	:type index: Standard_Integer
+	:param style:
+	:type style: Aspect_MarkerStyle &
+	:rtype: None
+") Aspect_MarkMapEntry;
 		 Aspect_MarkMapEntry (const Standard_Integer index,const Aspect_MarkerStyle & style);
-		%feature("autodoc", "Args:
-	entry(Aspect_MarkMapEntry)
+		%feature("autodoc", "	* Creates an allocated markmap entry. Warning: Raises error if the markmap entry <entry> //!	 is unallocated.
 
-Returns:
-	None
-
-Creates an allocated markmap entry.  
- Warning: Raises error if the markmap entry <entry>  
-//!	    is unallocated.") Aspect_MarkMapEntry;
+	:param entry:
+	:type entry: Aspect_MarkMapEntry &
+	:rtype: None
+") Aspect_MarkMapEntry;
 		 Aspect_MarkMapEntry (const Aspect_MarkMapEntry & entry);
-		%feature("autodoc", "Args:
-	index(Standard_Integer)
-	style(Aspect_MarkerStyle)
+		%feature("autodoc", "	* Sets markmap entry value and allocates it.
 
-Returns:
-	None
-
-Sets markmap entry value and allocates it.") SetValue;
+	:param index:
+	:type index: Standard_Integer
+	:param style:
+	:type style: Aspect_MarkerStyle &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer index,const Aspect_MarkerStyle & style);
-		%feature("autodoc", "Args:
-	entry(Aspect_MarkMapEntry)
+		%feature("autodoc", "	* Sets markmap entry value and allocates it.
 
-Returns:
-	None
-
-Sets markmap entry value and allocates it.") SetValue;
+	:param entry:
+	:type entry: Aspect_MarkMapEntry &
+	:rtype: None
+") SetValue;
 		void SetValue (const Aspect_MarkMapEntry & entry);
-		%feature("autodoc", "Args:
-	entry(Aspect_MarkMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param entry:
+	:type entry: Aspect_MarkMapEntry &
+	:rtype: None
+") operator=;
 		void operator = (const Aspect_MarkMapEntry & entry);
-		%feature("autodoc", "Args:
-	Style(Aspect_MarkerStyle)
+		%feature("autodoc", "	* Sets the marker style of markmap entry.
 
-Returns:
-	None
-
-Sets the marker style of markmap entry.") SetStyle;
+	:param Style:
+	:type Style: Aspect_MarkerStyle &
+	:rtype: None
+") SetStyle;
 		void SetStyle (const Aspect_MarkerStyle & Style);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_MarkerStyle
-
-No detailed docstring for this function.") Style;
+		%feature("autodoc", "	:rtype: Aspect_MarkerStyle
+") Style;
 		const Aspect_MarkerStyle & Style ();
-		%feature("autodoc", "Args:
-	index(Standard_Integer)
+		%feature("autodoc", "	* Sets index value of a markmap entry.
 
-Returns:
-	None
-
-Sets index value of a markmap entry.") SetIndex;
+	:param index:
+	:type index: Standard_Integer
+	:rtype: None
+") SetIndex;
 		void SetIndex (const Standard_Integer index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns index value of a markmap entry. Warning: Raises error if the markmap entry is unallocated .
 
-Returns index value of a markmap entry.  
- Warning: Raises error if the markmap entry is unallocated .") Index;
+	:rtype: int
+") Index;
 		Standard_Integer Index ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Unallocates the markmap entry.
 
-Unallocates the markmap entry.") Free;
+	:rtype: None
+") Free;
 		void Free ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the markmap entry is allocated. Warning: A markmap entry is allocated when the marker and //!	 the index is defined.
 
-Returns True if the markmap entry is allocated.  
- Warning: A markmap entry is allocated when the marker and  
-//!	    the index is defined.") IsAllocated;
+	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
 };
 
@@ -3715,111 +3158,90 @@ def __del__(self):
 %nodefaultctor Aspect_MarkerStyle;
 class Aspect_MarkerStyle {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates a marker style with the default value of //!	 MarkerStyle type : POINT
 
-Creates a marker style with the default value of  
-//!	    MarkerStyle type : POINT") Aspect_MarkerStyle;
+	:rtype: None
+") Aspect_MarkerStyle;
 		 Aspect_MarkerStyle ();
-		%feature("autodoc", "Args:
-	aType(Aspect_TypeOfMarker)
+		%feature("autodoc", "	* Creates the marker style <aType>.
 
-Returns:
-	None
-
-Creates the marker style <aType>.") Aspect_MarkerStyle;
+	:param aType:
+	:type aType: Aspect_TypeOfMarker
+	:rtype: None
+") Aspect_MarkerStyle;
 		 Aspect_MarkerStyle (const Aspect_TypeOfMarker aType);
-		%feature("autodoc", "Args:
-	aXpoint(TColStd_Array1OfReal)
-	aYpoint(TColStd_Array1OfReal)
+		%feature("autodoc", "	* Creates a marker style from a implicit draw point
 
-Returns:
-	None
-
-Creates a marker style from a implicit draw point") Aspect_MarkerStyle;
+	:param aXpoint:
+	:type aXpoint: TColStd_Array1OfReal &
+	:param aYpoint:
+	:type aYpoint: TColStd_Array1OfReal &
+	:rtype: None
+") Aspect_MarkerStyle;
 		 Aspect_MarkerStyle (const TColStd_Array1OfReal & aXpoint,const TColStd_Array1OfReal & aYpoint);
-		%feature("autodoc", "Args:
-	aXpoint(TColStd_Array1OfReal)
-	aYpoint(TColStd_Array1OfReal)
-	aSpoint(TColStd_Array1OfBoolean)
+		%feature("autodoc", "	* Creates a marker style from a move-draw point descriptor . Each coordinate <aXpoint(i),aYpoint(i)> must be defined
 
-Returns:
-	None
-
-Creates a marker style from a move-draw point descriptor .  
-Each coordinate <aXpoint(i),aYpoint(i)> must be defined") Aspect_MarkerStyle;
+	:param aXpoint:
+	:type aXpoint: TColStd_Array1OfReal &
+	:param aYpoint:
+	:type aYpoint: TColStd_Array1OfReal &
+	:param aSpoint:
+	:type aSpoint: TColStd_Array1OfBoolean &
+	:rtype: None
+") Aspect_MarkerStyle;
 		 Aspect_MarkerStyle (const TColStd_Array1OfReal & aXpoint,const TColStd_Array1OfReal & aYpoint,const TColStd_Array1OfBoolean & aSpoint);
-		%feature("autodoc", "Args:
-	Other(Aspect_MarkerStyle)
+		%feature("autodoc", "	* Updates the marker style <self> from the definition of the marker style <Other>.
 
-Returns:
-	Aspect_MarkerStyle
-
-Updates the marker style <self> from the definition of the  
-         marker style <Other>.") Assign;
+	:param Other:
+	:type Other: Aspect_MarkerStyle &
+	:rtype: Aspect_MarkerStyle
+") Assign;
 		Aspect_MarkerStyle & Assign (const Aspect_MarkerStyle & Other);
-		%feature("autodoc", "Args:
-	Other(Aspect_MarkerStyle)
-
-Returns:
-	Aspect_MarkerStyle
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_MarkerStyle &
+	:rtype: Aspect_MarkerStyle
+") operator=;
 		Aspect_MarkerStyle & operator = (const Aspect_MarkerStyle & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_TypeOfMarker
+		%feature("autodoc", "	* Returns the type of the marker style <self>
 
-Returns the type of the marker style <self>") Type;
+	:rtype: Aspect_TypeOfMarker
+") Type;
 		Aspect_TypeOfMarker Type ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the components length of the marker descriptors
 
-Returns the components length of the marker descriptors") Length;
+	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	aRank(Standard_Integer)
-	aX(Standard_Real)
-	aY(Standard_Real)
+		%feature("autodoc", "	* Returns the point and status of a marker style
 
-Returns:
-	Standard_Boolean
-
-Returns the point and status of a marker style") Values;
+	:param aRank:
+	:type aRank: Standard_Integer
+	:param aX:
+	:type aX: float &
+	:param aY:
+	:type aY: float &
+	:rtype: bool
+") Values;
 		Standard_Boolean Values (const Standard_Integer aRank,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TShort_Array1OfShortReal
+		%feature("autodoc", "	* Returns the X vector of a marker style descriptor
 
-Returns the X vector of a marker style descriptor") XValues;
+	:rtype: TShort_Array1OfShortReal
+") XValues;
 		const TShort_Array1OfShortReal & XValues ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TShort_Array1OfShortReal
+		%feature("autodoc", "	* Returns the Y vector of a marker style descriptor
 
-Returns the Y vector of a marker style descriptor") YValues;
+	:rtype: TShort_Array1OfShortReal
+") YValues;
 		const TShort_Array1OfShortReal & YValues ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfBoolean
+		%feature("autodoc", "	* Returns the State vector of a marker style descriptor
 
-Returns the State vector of a marker style descriptor") SValues;
+	:rtype: TColStd_Array1OfBoolean
+") SValues;
 		const TColStd_Array1OfBoolean & SValues ();
-		%feature("autodoc", "Args:
-	Other(Aspect_MarkerStyle)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEqual;
+		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_MarkerStyle &
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const Aspect_MarkerStyle & Other);
 
         %extend{
@@ -3835,13 +3257,10 @@ No detailed docstring for this function.") IsEqual;
             except:
                 return False
         }
-        		%feature("autodoc", "Args:
-	Other(Aspect_MarkerStyle)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsNotEqual;
+        		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_MarkerStyle &
+	:rtype: bool
+") IsNotEqual;
 		Standard_Boolean IsNotEqual (const Aspect_MarkerStyle & Other);
 
         %extend{
@@ -3925,22 +3344,17 @@ def __del__(self):
 %nodefaultctor Aspect_SequenceNodeOfSequenceOfColor;
 class Aspect_SequenceNodeOfSequenceOfColor : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Quantity_Color)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Aspect_SequenceNodeOfSequenceOfColor;
+		%feature("autodoc", "	:param I:
+	:type I: Quantity_Color &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Aspect_SequenceNodeOfSequenceOfColor;
 		 Aspect_SequenceNodeOfSequenceOfColor (const Quantity_Color & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Color
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Quantity_Color
+") Value;
 		Quantity_Color & Value ();
 };
 
@@ -4001,22 +3415,17 @@ def __del__(self):
 %nodefaultctor Aspect_SequenceNodeOfSequenceOfColorMapEntry;
 class Aspect_SequenceNodeOfSequenceOfColorMapEntry : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Aspect_ColorMapEntry)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Aspect_SequenceNodeOfSequenceOfColorMapEntry;
+		%feature("autodoc", "	:param I:
+	:type I: Aspect_ColorMapEntry &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Aspect_SequenceNodeOfSequenceOfColorMapEntry;
 		 Aspect_SequenceNodeOfSequenceOfColorMapEntry (const Aspect_ColorMapEntry & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_ColorMapEntry
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Aspect_ColorMapEntry
+") Value;
 		Aspect_ColorMapEntry & Value ();
 };
 
@@ -4077,22 +3486,17 @@ def __del__(self):
 %nodefaultctor Aspect_SequenceNodeOfSequenceOfFontMapEntry;
 class Aspect_SequenceNodeOfSequenceOfFontMapEntry : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Aspect_FontMapEntry)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Aspect_SequenceNodeOfSequenceOfFontMapEntry;
+		%feature("autodoc", "	:param I:
+	:type I: Aspect_FontMapEntry &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Aspect_SequenceNodeOfSequenceOfFontMapEntry;
 		 Aspect_SequenceNodeOfSequenceOfFontMapEntry (const Aspect_FontMapEntry & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_FontMapEntry
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Aspect_FontMapEntry
+") Value;
 		Aspect_FontMapEntry & Value ();
 };
 
@@ -4153,22 +3557,17 @@ def __del__(self):
 %nodefaultctor Aspect_SequenceNodeOfSequenceOfMarkMapEntry;
 class Aspect_SequenceNodeOfSequenceOfMarkMapEntry : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Aspect_MarkMapEntry)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Aspect_SequenceNodeOfSequenceOfMarkMapEntry;
+		%feature("autodoc", "	:param I:
+	:type I: Aspect_MarkMapEntry &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Aspect_SequenceNodeOfSequenceOfMarkMapEntry;
 		 Aspect_SequenceNodeOfSequenceOfMarkMapEntry (const Aspect_MarkMapEntry & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_MarkMapEntry
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Aspect_MarkMapEntry
+") Value;
 		Aspect_MarkMapEntry & Value ();
 };
 
@@ -4229,22 +3628,17 @@ def __del__(self):
 %nodefaultctor Aspect_SequenceNodeOfSequenceOfTypeMapEntry;
 class Aspect_SequenceNodeOfSequenceOfTypeMapEntry : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Aspect_TypeMapEntry)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Aspect_SequenceNodeOfSequenceOfTypeMapEntry;
+		%feature("autodoc", "	:param I:
+	:type I: Aspect_TypeMapEntry &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Aspect_SequenceNodeOfSequenceOfTypeMapEntry;
 		 Aspect_SequenceNodeOfSequenceOfTypeMapEntry (const Aspect_TypeMapEntry & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_TypeMapEntry
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Aspect_TypeMapEntry
+") Value;
 		Aspect_TypeMapEntry & Value ();
 };
 
@@ -4305,22 +3699,17 @@ def __del__(self):
 %nodefaultctor Aspect_SequenceNodeOfSequenceOfWidthMapEntry;
 class Aspect_SequenceNodeOfSequenceOfWidthMapEntry : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Aspect_WidthMapEntry)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Aspect_SequenceNodeOfSequenceOfWidthMapEntry;
+		%feature("autodoc", "	:param I:
+	:type I: Aspect_WidthMapEntry &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Aspect_SequenceNodeOfSequenceOfWidthMapEntry;
 		 Aspect_SequenceNodeOfSequenceOfWidthMapEntry (const Aspect_WidthMapEntry & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_WidthMapEntry
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Aspect_WidthMapEntry
+") Value;
 		Aspect_WidthMapEntry & Value ();
 };
 
@@ -4381,168 +3770,111 @@ def __del__(self):
 %nodefaultctor Aspect_SequenceOfColor;
 class Aspect_SequenceOfColor : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Aspect_SequenceOfColor;
+		%feature("autodoc", "	:rtype: None
+") Aspect_SequenceOfColor;
 		 Aspect_SequenceOfColor ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Aspect_SequenceOfColor)
-
-Returns:
-	Aspect_SequenceOfColor
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_SequenceOfColor &
+	:rtype: Aspect_SequenceOfColor
+") Assign;
 		const Aspect_SequenceOfColor & Assign (const Aspect_SequenceOfColor & Other);
-		%feature("autodoc", "Args:
-	Other(Aspect_SequenceOfColor)
-
-Returns:
-	Aspect_SequenceOfColor
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_SequenceOfColor &
+	:rtype: Aspect_SequenceOfColor
+") operator=;
 		const Aspect_SequenceOfColor & operator = (const Aspect_SequenceOfColor & Other);
-		%feature("autodoc", "Args:
-	T(Quantity_Color)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Quantity_Color &
+	:rtype: None
+") Append;
 		void Append (const Quantity_Color & T);
-		%feature("autodoc", "Args:
-	S(Aspect_SequenceOfColor)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Aspect_SequenceOfColor &
+	:rtype: None
+") Append;
 		void Append (Aspect_SequenceOfColor & S);
-		%feature("autodoc", "Args:
-	T(Quantity_Color)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Quantity_Color &
+	:rtype: None
+") Prepend;
 		void Prepend (const Quantity_Color & T);
-		%feature("autodoc", "Args:
-	S(Aspect_SequenceOfColor)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Aspect_SequenceOfColor &
+	:rtype: None
+") Prepend;
 		void Prepend (Aspect_SequenceOfColor & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Quantity_Color)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Quantity_Color &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Quantity_Color & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Aspect_SequenceOfColor)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Aspect_SequenceOfColor &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Aspect_SequenceOfColor & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Quantity_Color)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Quantity_Color &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Quantity_Color & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Aspect_SequenceOfColor)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Aspect_SequenceOfColor &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Aspect_SequenceOfColor & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Color
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Quantity_Color
+") First;
 		const Quantity_Color & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Color
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Quantity_Color
+") Last;
 		const Quantity_Color & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Aspect_SequenceOfColor)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Aspect_SequenceOfColor &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Aspect_SequenceOfColor & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Quantity_Color
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Quantity_Color
+") Value;
 		const Quantity_Color & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Quantity_Color)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Quantity_Color &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Quantity_Color & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Quantity_Color
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Quantity_Color
+") ChangeValue;
 		Quantity_Color & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -4564,168 +3896,111 @@ def __del__(self):
 %nodefaultctor Aspect_SequenceOfColorMapEntry;
 class Aspect_SequenceOfColorMapEntry : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Aspect_SequenceOfColorMapEntry;
+		%feature("autodoc", "	:rtype: None
+") Aspect_SequenceOfColorMapEntry;
 		 Aspect_SequenceOfColorMapEntry ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Aspect_SequenceOfColorMapEntry)
-
-Returns:
-	Aspect_SequenceOfColorMapEntry
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_SequenceOfColorMapEntry &
+	:rtype: Aspect_SequenceOfColorMapEntry
+") Assign;
 		const Aspect_SequenceOfColorMapEntry & Assign (const Aspect_SequenceOfColorMapEntry & Other);
-		%feature("autodoc", "Args:
-	Other(Aspect_SequenceOfColorMapEntry)
-
-Returns:
-	Aspect_SequenceOfColorMapEntry
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_SequenceOfColorMapEntry &
+	:rtype: Aspect_SequenceOfColorMapEntry
+") operator=;
 		const Aspect_SequenceOfColorMapEntry & operator = (const Aspect_SequenceOfColorMapEntry & Other);
-		%feature("autodoc", "Args:
-	T(Aspect_ColorMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Aspect_ColorMapEntry &
+	:rtype: None
+") Append;
 		void Append (const Aspect_ColorMapEntry & T);
-		%feature("autodoc", "Args:
-	S(Aspect_SequenceOfColorMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Aspect_SequenceOfColorMapEntry &
+	:rtype: None
+") Append;
 		void Append (Aspect_SequenceOfColorMapEntry & S);
-		%feature("autodoc", "Args:
-	T(Aspect_ColorMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Aspect_ColorMapEntry &
+	:rtype: None
+") Prepend;
 		void Prepend (const Aspect_ColorMapEntry & T);
-		%feature("autodoc", "Args:
-	S(Aspect_SequenceOfColorMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Aspect_SequenceOfColorMapEntry &
+	:rtype: None
+") Prepend;
 		void Prepend (Aspect_SequenceOfColorMapEntry & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Aspect_ColorMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Aspect_ColorMapEntry &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Aspect_ColorMapEntry & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Aspect_SequenceOfColorMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Aspect_SequenceOfColorMapEntry &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Aspect_SequenceOfColorMapEntry & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Aspect_ColorMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Aspect_ColorMapEntry &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Aspect_ColorMapEntry & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Aspect_SequenceOfColorMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Aspect_SequenceOfColorMapEntry &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Aspect_SequenceOfColorMapEntry & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_ColorMapEntry
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Aspect_ColorMapEntry
+") First;
 		const Aspect_ColorMapEntry & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_ColorMapEntry
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Aspect_ColorMapEntry
+") Last;
 		const Aspect_ColorMapEntry & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Aspect_SequenceOfColorMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Aspect_SequenceOfColorMapEntry &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Aspect_SequenceOfColorMapEntry & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Aspect_ColorMapEntry
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Aspect_ColorMapEntry
+") Value;
 		const Aspect_ColorMapEntry & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Aspect_ColorMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Aspect_ColorMapEntry &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Aspect_ColorMapEntry & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Aspect_ColorMapEntry
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Aspect_ColorMapEntry
+") ChangeValue;
 		Aspect_ColorMapEntry & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -4747,168 +4022,111 @@ def __del__(self):
 %nodefaultctor Aspect_SequenceOfFontMapEntry;
 class Aspect_SequenceOfFontMapEntry : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Aspect_SequenceOfFontMapEntry;
+		%feature("autodoc", "	:rtype: None
+") Aspect_SequenceOfFontMapEntry;
 		 Aspect_SequenceOfFontMapEntry ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Aspect_SequenceOfFontMapEntry)
-
-Returns:
-	Aspect_SequenceOfFontMapEntry
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_SequenceOfFontMapEntry &
+	:rtype: Aspect_SequenceOfFontMapEntry
+") Assign;
 		const Aspect_SequenceOfFontMapEntry & Assign (const Aspect_SequenceOfFontMapEntry & Other);
-		%feature("autodoc", "Args:
-	Other(Aspect_SequenceOfFontMapEntry)
-
-Returns:
-	Aspect_SequenceOfFontMapEntry
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_SequenceOfFontMapEntry &
+	:rtype: Aspect_SequenceOfFontMapEntry
+") operator=;
 		const Aspect_SequenceOfFontMapEntry & operator = (const Aspect_SequenceOfFontMapEntry & Other);
-		%feature("autodoc", "Args:
-	T(Aspect_FontMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Aspect_FontMapEntry &
+	:rtype: None
+") Append;
 		void Append (const Aspect_FontMapEntry & T);
-		%feature("autodoc", "Args:
-	S(Aspect_SequenceOfFontMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Aspect_SequenceOfFontMapEntry &
+	:rtype: None
+") Append;
 		void Append (Aspect_SequenceOfFontMapEntry & S);
-		%feature("autodoc", "Args:
-	T(Aspect_FontMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Aspect_FontMapEntry &
+	:rtype: None
+") Prepend;
 		void Prepend (const Aspect_FontMapEntry & T);
-		%feature("autodoc", "Args:
-	S(Aspect_SequenceOfFontMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Aspect_SequenceOfFontMapEntry &
+	:rtype: None
+") Prepend;
 		void Prepend (Aspect_SequenceOfFontMapEntry & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Aspect_FontMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Aspect_FontMapEntry &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Aspect_FontMapEntry & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Aspect_SequenceOfFontMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Aspect_SequenceOfFontMapEntry &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Aspect_SequenceOfFontMapEntry & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Aspect_FontMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Aspect_FontMapEntry &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Aspect_FontMapEntry & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Aspect_SequenceOfFontMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Aspect_SequenceOfFontMapEntry &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Aspect_SequenceOfFontMapEntry & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_FontMapEntry
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Aspect_FontMapEntry
+") First;
 		const Aspect_FontMapEntry & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_FontMapEntry
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Aspect_FontMapEntry
+") Last;
 		const Aspect_FontMapEntry & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Aspect_SequenceOfFontMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Aspect_SequenceOfFontMapEntry &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Aspect_SequenceOfFontMapEntry & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Aspect_FontMapEntry
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Aspect_FontMapEntry
+") Value;
 		const Aspect_FontMapEntry & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Aspect_FontMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Aspect_FontMapEntry &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Aspect_FontMapEntry & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Aspect_FontMapEntry
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Aspect_FontMapEntry
+") ChangeValue;
 		Aspect_FontMapEntry & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -4930,168 +4148,111 @@ def __del__(self):
 %nodefaultctor Aspect_SequenceOfMarkMapEntry;
 class Aspect_SequenceOfMarkMapEntry : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Aspect_SequenceOfMarkMapEntry;
+		%feature("autodoc", "	:rtype: None
+") Aspect_SequenceOfMarkMapEntry;
 		 Aspect_SequenceOfMarkMapEntry ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Aspect_SequenceOfMarkMapEntry)
-
-Returns:
-	Aspect_SequenceOfMarkMapEntry
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_SequenceOfMarkMapEntry &
+	:rtype: Aspect_SequenceOfMarkMapEntry
+") Assign;
 		const Aspect_SequenceOfMarkMapEntry & Assign (const Aspect_SequenceOfMarkMapEntry & Other);
-		%feature("autodoc", "Args:
-	Other(Aspect_SequenceOfMarkMapEntry)
-
-Returns:
-	Aspect_SequenceOfMarkMapEntry
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_SequenceOfMarkMapEntry &
+	:rtype: Aspect_SequenceOfMarkMapEntry
+") operator=;
 		const Aspect_SequenceOfMarkMapEntry & operator = (const Aspect_SequenceOfMarkMapEntry & Other);
-		%feature("autodoc", "Args:
-	T(Aspect_MarkMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Aspect_MarkMapEntry &
+	:rtype: None
+") Append;
 		void Append (const Aspect_MarkMapEntry & T);
-		%feature("autodoc", "Args:
-	S(Aspect_SequenceOfMarkMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Aspect_SequenceOfMarkMapEntry &
+	:rtype: None
+") Append;
 		void Append (Aspect_SequenceOfMarkMapEntry & S);
-		%feature("autodoc", "Args:
-	T(Aspect_MarkMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Aspect_MarkMapEntry &
+	:rtype: None
+") Prepend;
 		void Prepend (const Aspect_MarkMapEntry & T);
-		%feature("autodoc", "Args:
-	S(Aspect_SequenceOfMarkMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Aspect_SequenceOfMarkMapEntry &
+	:rtype: None
+") Prepend;
 		void Prepend (Aspect_SequenceOfMarkMapEntry & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Aspect_MarkMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Aspect_MarkMapEntry &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Aspect_MarkMapEntry & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Aspect_SequenceOfMarkMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Aspect_SequenceOfMarkMapEntry &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Aspect_SequenceOfMarkMapEntry & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Aspect_MarkMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Aspect_MarkMapEntry &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Aspect_MarkMapEntry & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Aspect_SequenceOfMarkMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Aspect_SequenceOfMarkMapEntry &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Aspect_SequenceOfMarkMapEntry & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_MarkMapEntry
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Aspect_MarkMapEntry
+") First;
 		const Aspect_MarkMapEntry & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_MarkMapEntry
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Aspect_MarkMapEntry
+") Last;
 		const Aspect_MarkMapEntry & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Aspect_SequenceOfMarkMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Aspect_SequenceOfMarkMapEntry &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Aspect_SequenceOfMarkMapEntry & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Aspect_MarkMapEntry
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Aspect_MarkMapEntry
+") Value;
 		const Aspect_MarkMapEntry & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Aspect_MarkMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Aspect_MarkMapEntry &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Aspect_MarkMapEntry & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Aspect_MarkMapEntry
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Aspect_MarkMapEntry
+") ChangeValue;
 		Aspect_MarkMapEntry & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -5113,168 +4274,111 @@ def __del__(self):
 %nodefaultctor Aspect_SequenceOfTypeMapEntry;
 class Aspect_SequenceOfTypeMapEntry : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Aspect_SequenceOfTypeMapEntry;
+		%feature("autodoc", "	:rtype: None
+") Aspect_SequenceOfTypeMapEntry;
 		 Aspect_SequenceOfTypeMapEntry ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Aspect_SequenceOfTypeMapEntry)
-
-Returns:
-	Aspect_SequenceOfTypeMapEntry
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_SequenceOfTypeMapEntry &
+	:rtype: Aspect_SequenceOfTypeMapEntry
+") Assign;
 		const Aspect_SequenceOfTypeMapEntry & Assign (const Aspect_SequenceOfTypeMapEntry & Other);
-		%feature("autodoc", "Args:
-	Other(Aspect_SequenceOfTypeMapEntry)
-
-Returns:
-	Aspect_SequenceOfTypeMapEntry
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_SequenceOfTypeMapEntry &
+	:rtype: Aspect_SequenceOfTypeMapEntry
+") operator=;
 		const Aspect_SequenceOfTypeMapEntry & operator = (const Aspect_SequenceOfTypeMapEntry & Other);
-		%feature("autodoc", "Args:
-	T(Aspect_TypeMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Aspect_TypeMapEntry &
+	:rtype: None
+") Append;
 		void Append (const Aspect_TypeMapEntry & T);
-		%feature("autodoc", "Args:
-	S(Aspect_SequenceOfTypeMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Aspect_SequenceOfTypeMapEntry &
+	:rtype: None
+") Append;
 		void Append (Aspect_SequenceOfTypeMapEntry & S);
-		%feature("autodoc", "Args:
-	T(Aspect_TypeMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Aspect_TypeMapEntry &
+	:rtype: None
+") Prepend;
 		void Prepend (const Aspect_TypeMapEntry & T);
-		%feature("autodoc", "Args:
-	S(Aspect_SequenceOfTypeMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Aspect_SequenceOfTypeMapEntry &
+	:rtype: None
+") Prepend;
 		void Prepend (Aspect_SequenceOfTypeMapEntry & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Aspect_TypeMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Aspect_TypeMapEntry &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Aspect_TypeMapEntry & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Aspect_SequenceOfTypeMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Aspect_SequenceOfTypeMapEntry &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Aspect_SequenceOfTypeMapEntry & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Aspect_TypeMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Aspect_TypeMapEntry &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Aspect_TypeMapEntry & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Aspect_SequenceOfTypeMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Aspect_SequenceOfTypeMapEntry &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Aspect_SequenceOfTypeMapEntry & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_TypeMapEntry
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Aspect_TypeMapEntry
+") First;
 		const Aspect_TypeMapEntry & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_TypeMapEntry
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Aspect_TypeMapEntry
+") Last;
 		const Aspect_TypeMapEntry & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Aspect_SequenceOfTypeMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Aspect_SequenceOfTypeMapEntry &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Aspect_SequenceOfTypeMapEntry & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Aspect_TypeMapEntry
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Aspect_TypeMapEntry
+") Value;
 		const Aspect_TypeMapEntry & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Aspect_TypeMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Aspect_TypeMapEntry &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Aspect_TypeMapEntry & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Aspect_TypeMapEntry
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Aspect_TypeMapEntry
+") ChangeValue;
 		Aspect_TypeMapEntry & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -5296,168 +4400,111 @@ def __del__(self):
 %nodefaultctor Aspect_SequenceOfWidthMapEntry;
 class Aspect_SequenceOfWidthMapEntry : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Aspect_SequenceOfWidthMapEntry;
+		%feature("autodoc", "	:rtype: None
+") Aspect_SequenceOfWidthMapEntry;
 		 Aspect_SequenceOfWidthMapEntry ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Aspect_SequenceOfWidthMapEntry)
-
-Returns:
-	Aspect_SequenceOfWidthMapEntry
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_SequenceOfWidthMapEntry &
+	:rtype: Aspect_SequenceOfWidthMapEntry
+") Assign;
 		const Aspect_SequenceOfWidthMapEntry & Assign (const Aspect_SequenceOfWidthMapEntry & Other);
-		%feature("autodoc", "Args:
-	Other(Aspect_SequenceOfWidthMapEntry)
-
-Returns:
-	Aspect_SequenceOfWidthMapEntry
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_SequenceOfWidthMapEntry &
+	:rtype: Aspect_SequenceOfWidthMapEntry
+") operator=;
 		const Aspect_SequenceOfWidthMapEntry & operator = (const Aspect_SequenceOfWidthMapEntry & Other);
-		%feature("autodoc", "Args:
-	T(Aspect_WidthMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Aspect_WidthMapEntry &
+	:rtype: None
+") Append;
 		void Append (const Aspect_WidthMapEntry & T);
-		%feature("autodoc", "Args:
-	S(Aspect_SequenceOfWidthMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Aspect_SequenceOfWidthMapEntry &
+	:rtype: None
+") Append;
 		void Append (Aspect_SequenceOfWidthMapEntry & S);
-		%feature("autodoc", "Args:
-	T(Aspect_WidthMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Aspect_WidthMapEntry &
+	:rtype: None
+") Prepend;
 		void Prepend (const Aspect_WidthMapEntry & T);
-		%feature("autodoc", "Args:
-	S(Aspect_SequenceOfWidthMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Aspect_SequenceOfWidthMapEntry &
+	:rtype: None
+") Prepend;
 		void Prepend (Aspect_SequenceOfWidthMapEntry & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Aspect_WidthMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Aspect_WidthMapEntry &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Aspect_WidthMapEntry & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Aspect_SequenceOfWidthMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Aspect_SequenceOfWidthMapEntry &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Aspect_SequenceOfWidthMapEntry & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Aspect_WidthMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Aspect_WidthMapEntry &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Aspect_WidthMapEntry & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Aspect_SequenceOfWidthMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Aspect_SequenceOfWidthMapEntry &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Aspect_SequenceOfWidthMapEntry & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_WidthMapEntry
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Aspect_WidthMapEntry
+") First;
 		const Aspect_WidthMapEntry & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_WidthMapEntry
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Aspect_WidthMapEntry
+") Last;
 		const Aspect_WidthMapEntry & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Aspect_SequenceOfWidthMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Aspect_SequenceOfWidthMapEntry &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Aspect_SequenceOfWidthMapEntry & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Aspect_WidthMapEntry
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Aspect_WidthMapEntry
+") Value;
 		const Aspect_WidthMapEntry & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Aspect_WidthMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Aspect_WidthMapEntry &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Aspect_WidthMapEntry & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Aspect_WidthMapEntry
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Aspect_WidthMapEntry
+") ChangeValue;
 		Aspect_WidthMapEntry & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -5479,64 +4526,44 @@ def __del__(self):
 %nodefaultctor Aspect_TypeMap;
 class Aspect_TypeMap : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Aspect_TypeMap;
+		%feature("autodoc", "	:rtype: None
+") Aspect_TypeMap;
 		 Aspect_TypeMap ();
-		%feature("autodoc", "Args:
-	AnEntry(Aspect_TypeMapEntry)
+		%feature("autodoc", "	* Adds an entry in the type map <self>. Warning: Raises BadAccess if TypeMap size is exceeded.
 
-Returns:
-	None
-
-Adds an entry in the type map <self>.  
- Warning: Raises BadAccess if TypeMap size is exceeded.") AddEntry;
+	:param AnEntry:
+	:type AnEntry: Aspect_TypeMapEntry &
+	:rtype: None
+") AddEntry;
 		void AddEntry (const Aspect_TypeMapEntry & AnEntry);
-		%feature("autodoc", "Args:
-	aStyle(Aspect_LineStyle)
+		%feature("autodoc", "	* Search an identical type style entry in the type map <self> and returns the TypeMapEntry Index if exist. Or add a new entry and returns the computed TypeMapEntry index used.
 
-Returns:
-	Standard_Integer
-
-Search an identical type style entry in the type map <self>  
-and returns the TypeMapEntry Index if exist.  
-Or add a new entry and returns the computed TypeMapEntry index used.") AddEntry;
+	:param aStyle:
+	:type aStyle: Aspect_LineStyle &
+	:rtype: int
+") AddEntry;
 		Standard_Integer AddEntry (const Aspect_LineStyle & aStyle);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the Allocated typemap Size
 
-Returns the Allocated typemap Size") Size;
+	:rtype: int
+") Size;
 		Standard_Integer Size ();
-		%feature("autodoc", "Args:
-	aTypemapIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the TypeMapEntry.Index of the TypeMap at rank <aTypemapIndex> .
 
-Returns:
-	Standard_Integer
-
-Returns the TypeMapEntry.Index of the TypeMap  
-         at rank <aTypemapIndex> .") Index;
+	:param aTypemapIndex:
+	:type aTypemapIndex: Standard_Integer
+	:rtype: int
+") Index;
 		Standard_Integer Index (const Standard_Integer aTypemapIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
-		%feature("autodoc", "Args:
-	AnIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the Type map entry with the index <AnIndex>. Warning: Raises BadAccess if the index less than 1 or //!	 greater than Size.
 
-Returns:
-	Aspect_TypeMapEntry
-
-Returns the Type map entry with the index <AnIndex>.  
- Warning: Raises BadAccess if the index less than 1 or  
-//!	    greater than Size.") Entry;
+	:param AnIndex:
+	:type AnIndex: Standard_Integer
+	:rtype: Aspect_TypeMapEntry
+") Entry;
 		const Aspect_TypeMapEntry & Entry (const Standard_Integer AnIndex);
 };
 
@@ -5597,110 +4624,82 @@ def __del__(self):
 %nodefaultctor Aspect_TypeMapEntry;
 class Aspect_TypeMapEntry {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates an unallocated typemap entry
 
-Creates an unallocated typemap entry") Aspect_TypeMapEntry;
+	:rtype: None
+") Aspect_TypeMapEntry;
 		 Aspect_TypeMapEntry ();
-		%feature("autodoc", "Args:
-	index(Standard_Integer)
-	style(Aspect_LineStyle)
+		%feature("autodoc", "	* Creates an allocated typemap entry
 
-Returns:
-	None
-
-Creates an allocated typemap entry") Aspect_TypeMapEntry;
+	:param index:
+	:type index: Standard_Integer
+	:param style:
+	:type style: Aspect_LineStyle &
+	:rtype: None
+") Aspect_TypeMapEntry;
 		 Aspect_TypeMapEntry (const Standard_Integer index,const Aspect_LineStyle & style);
-		%feature("autodoc", "Args:
-	entry(Aspect_TypeMapEntry)
+		%feature("autodoc", "	* Creates an allocated typemap entry. Warning: Raises error if the typemap entry <entry> //!	 is unallocated.
 
-Returns:
-	None
-
-Creates an allocated typemap entry.  
- Warning: Raises error if the typemap entry <entry>  
-//!	    is unallocated.") Aspect_TypeMapEntry;
+	:param entry:
+	:type entry: Aspect_TypeMapEntry &
+	:rtype: None
+") Aspect_TypeMapEntry;
 		 Aspect_TypeMapEntry (const Aspect_TypeMapEntry & entry);
-		%feature("autodoc", "Args:
-	index(Standard_Integer)
-	style(Aspect_LineStyle)
+		%feature("autodoc", "	* Sets typemap entry value and allocates it.
 
-Returns:
-	None
-
-Sets typemap entry value and allocates it.") SetValue;
+	:param index:
+	:type index: Standard_Integer
+	:param style:
+	:type style: Aspect_LineStyle &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer index,const Aspect_LineStyle & style);
-		%feature("autodoc", "Args:
-	entry(Aspect_TypeMapEntry)
+		%feature("autodoc", "	* Sets typemap entry value and allocates it.
 
-Returns:
-	None
-
-Sets typemap entry value and allocates it.") SetValue;
+	:param entry:
+	:type entry: Aspect_TypeMapEntry &
+	:rtype: None
+") SetValue;
 		void SetValue (const Aspect_TypeMapEntry & entry);
-		%feature("autodoc", "Args:
-	entry(Aspect_TypeMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param entry:
+	:type entry: Aspect_TypeMapEntry &
+	:rtype: None
+") operator=;
 		void operator = (const Aspect_TypeMapEntry & entry);
-		%feature("autodoc", "Args:
-	Style(Aspect_LineStyle)
+		%feature("autodoc", "	* Sets the line style of typemap entry.
 
-Returns:
-	None
-
-Sets the line style of typemap entry.") SetType;
+	:param Style:
+	:type Style: Aspect_LineStyle &
+	:rtype: None
+") SetType;
 		void SetType (const Aspect_LineStyle & Style);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_LineStyle
-
-No detailed docstring for this function.") Type;
+		%feature("autodoc", "	:rtype: Aspect_LineStyle
+") Type;
 		const Aspect_LineStyle & Type ();
-		%feature("autodoc", "Args:
-	index(Standard_Integer)
+		%feature("autodoc", "	* Sets index value of a typemap entry.
 
-Returns:
-	None
-
-Sets index value of a typemap entry.") SetIndex;
+	:param index:
+	:type index: Standard_Integer
+	:rtype: None
+") SetIndex;
 		void SetIndex (const Standard_Integer index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns index value of a typemap entry. Warning: Raises error if the typemap entry is unallocated .
 
-Returns index value of a typemap entry.  
- Warning: Raises error if the typemap entry is unallocated .") Index;
+	:rtype: int
+") Index;
 		Standard_Integer Index ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Unallocates the typemap entry.
 
-Unallocates the typemap entry.") Free;
+	:rtype: None
+") Free;
 		void Free ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the typemap entry is allocated. Warning: A typemap entry is allocated when the type and //!	 the index is defined.
 
-Returns True if the typemap entry is allocated.  
- Warning: A typemap entry is allocated when the type and  
-//!	    the index is defined.") IsAllocated;
+	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
 };
 
@@ -5722,74 +4721,53 @@ def __del__(self):
 %nodefaultctor Aspect_WidthMap;
 class Aspect_WidthMap : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates a width map.
 
-Creates a width map.") Aspect_WidthMap;
+	:rtype: None
+") Aspect_WidthMap;
 		 Aspect_WidthMap ();
-		%feature("autodoc", "Args:
-	AnEntry(Aspect_WidthMapEntry)
+		%feature("autodoc", "	* Adds an entry in the Width map <self>. Warning: Raises BadAccess if WidthMap size is exceeded.
 
-Returns:
-	None
-
-Adds an entry in the Width map <self>.  
- Warning: Raises BadAccess if WidthMap size is exceeded.") AddEntry;
+	:param AnEntry:
+	:type AnEntry: Aspect_WidthMapEntry &
+	:rtype: None
+") AddEntry;
 		void AddEntry (const Aspect_WidthMapEntry & AnEntry);
-		%feature("autodoc", "Args:
-	aStyle(Aspect_WidthOfLine)
+		%feature("autodoc", "	* Search an identical line width entry in the width map <self> and returns the WidthMapEntry Index if exist. Or add a new entry and returns the computed WidthMapEntry index used.
 
-Returns:
-	Standard_Integer
-
-Search an identical line width entry in the width map <self>  
-and returns the WidthMapEntry Index if exist.  
-Or add a new entry and returns the computed WidthMapEntry index used.") AddEntry;
+	:param aStyle:
+	:type aStyle: Aspect_WidthOfLine
+	:rtype: int
+") AddEntry;
 		Standard_Integer AddEntry (const Aspect_WidthOfLine aStyle);
-		%feature("autodoc", "Args:
-	aStyle(Quantity_Length)
+		%feature("autodoc", "	* Search an identical line width entry in the width map <self> and returns the WidthMapEntry Index if exist. Or add a new entry and returns the computed WidthMapEntry index used.
 
-Returns:
-	Standard_Integer
-
-Search an identical line width entry in the width map <self>  
-and returns the WidthMapEntry Index if exist.  
-Or add a new entry and returns the computed WidthMapEntry index used.") AddEntry;
+	:param aStyle:
+	:type aStyle: Quantity_Length
+	:rtype: int
+") AddEntry;
 		Standard_Integer AddEntry (const Quantity_Length aStyle);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the Allocated widthmap Size
 
-Returns the Allocated widthmap Size") Size;
+	:rtype: int
+") Size;
 		Standard_Integer Size ();
-		%feature("autodoc", "Args:
-	aWidthmapIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the WidthMapEntry.Index of the WidthMap at rank <aWidthmapIndex> .
 
-Returns:
-	Standard_Integer
-
-Returns the WidthMapEntry.Index of the WidthMap  
-         at rank <aWidthmapIndex> .") Index;
+	:param aWidthmapIndex:
+	:type aWidthmapIndex: Standard_Integer
+	:rtype: int
+") Index;
 		Standard_Integer Index (const Standard_Integer aWidthmapIndex);
-		%feature("autodoc", "Args:
-	AnIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the Width map entry with the index <AnIndex>. Warning: Raises BadAccess if the index less than 1 or //!	 greater than Size.
 
-Returns:
-	Aspect_WidthMapEntry
-
-Returns the Width map entry with the index <AnIndex>.  
- Warning: Raises BadAccess if the index less than 1 or  
-//!	    greater than Size.") Entry;
+	:param AnIndex:
+	:type AnIndex: Standard_Integer
+	:rtype: Aspect_WidthMapEntry
+") Entry;
 		Aspect_WidthMapEntry Entry (const Standard_Integer AnIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
 };
 
@@ -5850,144 +4828,112 @@ def __del__(self):
 %nodefaultctor Aspect_WidthMapEntry;
 class Aspect_WidthMapEntry {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates an unallocated widthmap entry
 
-Creates an unallocated widthmap entry") Aspect_WidthMapEntry;
+	:rtype: None
+") Aspect_WidthMapEntry;
 		 Aspect_WidthMapEntry ();
-		%feature("autodoc", "Args:
-	index(Standard_Integer)
-	style(Aspect_WidthOfLine)
+		%feature("autodoc", "	* Creates an allocated widthmap entry from width style
 
-Returns:
-	None
-
-Creates an allocated widthmap entry from width style") Aspect_WidthMapEntry;
+	:param index:
+	:type index: Standard_Integer
+	:param style:
+	:type style: Aspect_WidthOfLine
+	:rtype: None
+") Aspect_WidthMapEntry;
 		 Aspect_WidthMapEntry (const Standard_Integer index,const Aspect_WidthOfLine style);
-		%feature("autodoc", "Args:
-	index(Standard_Integer)
-	width(Quantity_Length)
+		%feature("autodoc", "	* Creates an allocated widthmap entry from width value
 
-Returns:
-	None
-
-Creates an allocated widthmap entry from width value") Aspect_WidthMapEntry;
+	:param index:
+	:type index: Standard_Integer
+	:param width:
+	:type width: Quantity_Length
+	:rtype: None
+") Aspect_WidthMapEntry;
 		 Aspect_WidthMapEntry (const Standard_Integer index,const Quantity_Length width);
-		%feature("autodoc", "Args:
-	entry(Aspect_WidthMapEntry)
+		%feature("autodoc", "	* Creates an allocated widthmap entry.
 
-Returns:
-	None
-
-Creates an allocated widthmap entry.") Aspect_WidthMapEntry;
+	:param entry:
+	:type entry: Aspect_WidthMapEntry &
+	:rtype: None
+") Aspect_WidthMapEntry;
 		 Aspect_WidthMapEntry (const Aspect_WidthMapEntry & entry);
-		%feature("autodoc", "Args:
-	index(Standard_Integer)
-	style(Aspect_WidthOfLine)
+		%feature("autodoc", "	* Sets widthmap entry value from width style //!	 and allocates it.
 
-Returns:
-	None
-
-Sets widthmap entry value from width style  
-//!	    and allocates it.") SetValue;
+	:param index:
+	:type index: Standard_Integer
+	:param style:
+	:type style: Aspect_WidthOfLine
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer index,const Aspect_WidthOfLine style);
-		%feature("autodoc", "Args:
-	index(Standard_Integer)
-	width(Quantity_Length)
+		%feature("autodoc", "	* Sets widthmap entry value from width value //!	 and allocates it.
 
-Returns:
-	None
-
-Sets widthmap entry value from width value  
-//!	    and allocates it.") SetValue;
+	:param index:
+	:type index: Standard_Integer
+	:param width:
+	:type width: Quantity_Length
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer index,const Quantity_Length width);
-		%feature("autodoc", "Args:
-	entry(Aspect_WidthMapEntry)
+		%feature("autodoc", "	* Sets widthmap entry value and allocates it.
 
-Returns:
-	None
-
-Sets widthmap entry value and allocates it.") SetValue;
+	:param entry:
+	:type entry: Aspect_WidthMapEntry &
+	:rtype: None
+") SetValue;
 		void SetValue (const Aspect_WidthMapEntry & entry);
-		%feature("autodoc", "Args:
-	entry(Aspect_WidthMapEntry)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param entry:
+	:type entry: Aspect_WidthMapEntry &
+	:rtype: None
+") operator=;
 		void operator = (const Aspect_WidthMapEntry & entry);
-		%feature("autodoc", "Args:
-	index(Standard_Integer)
+		%feature("autodoc", "	* Sets index value of a widthmap entry.
 
-Returns:
-	None
-
-Sets index value of a widthmap entry.") SetIndex;
+	:param index:
+	:type index: Standard_Integer
+	:rtype: None
+") SetIndex;
 		void SetIndex (const Standard_Integer index);
-		%feature("autodoc", "Args:
-	Style(Aspect_WidthOfLine)
+		%feature("autodoc", "	* Sets width style of widthmap entry.
 
-Returns:
-	None
-
-Sets width style of widthmap entry.") SetType;
+	:param Style:
+	:type Style: Aspect_WidthOfLine
+	:rtype: None
+") SetType;
 		void SetType (const Aspect_WidthOfLine Style);
-		%feature("autodoc", "Args:
-	Width(Quantity_Length)
+		%feature("autodoc", "	* Sets width value of widthmap entry.
 
-Returns:
-	None
-
-Sets width value of widthmap entry.") SetWidth;
+	:param Width:
+	:type Width: Quantity_Length
+	:rtype: None
+") SetWidth;
 		void SetWidth (const Quantity_Length Width);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_WidthOfLine
-
-No detailed docstring for this function.") Type;
+		%feature("autodoc", "	:rtype: Aspect_WidthOfLine
+") Type;
 		Aspect_WidthOfLine Type ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Length
+		%feature("autodoc", "	* Returns width value of widthmap entry. Warning: Raises error if the widthmap entry is unallocated .
 
-Returns width value of widthmap entry.  
- Warning: Raises error if the widthmap entry is unallocated .") Width;
+	:rtype: Quantity_Length
+") Width;
 		Quantity_Length Width ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns index value of a widthmap entry. Warning: Raises error if the widthmap entry is unallocated .
 
-Returns index value of a widthmap entry.  
- Warning: Raises error if the widthmap entry is unallocated .") Index;
+	:rtype: int
+") Index;
 		Standard_Integer Index ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Unallocates the widthmap entry.
 
-Unallocates the widthmap entry.") Free;
+	:rtype: None
+") Free;
 		void Free ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the widthmap entry is allocated. Warning: A widthmap entry is allocated when the width and //!	 the index is defined.
 
-Returns True if the widthmap entry is allocated.  
- Warning: A widthmap entry is allocated when the width and  
-//!	    the index is defined.") IsAllocated;
+	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
 };
 
@@ -6009,155 +4955,128 @@ def __del__(self):
 %nodefaultctor Aspect_Window;
 class Aspect_Window : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	ABack(Aspect_Background)
+		%feature("autodoc", "	* Modifies the window background.
 
-Returns:
-	None
-
-Modifies the window background.") SetBackground;
+	:param ABack:
+	:type ABack: Aspect_Background &
+	:rtype: None
+") SetBackground;
 		void SetBackground (const Aspect_Background & ABack);
-		%feature("autodoc", "Args:
-	theNameOfColor(Quantity_NameOfColor)
+		%feature("autodoc", "	* Modifies the window background from a Named Color.
 
-Returns:
-	None
-
-Modifies the window background from a Named Color.") SetBackground;
+	:param theNameOfColor:
+	:type theNameOfColor: Quantity_NameOfColor
+	:rtype: None
+") SetBackground;
 		void SetBackground (const Quantity_NameOfColor theNameOfColor);
-		%feature("autodoc", "Args:
-	color(Quantity_Color)
+		%feature("autodoc", "	* Modifies the window background.
 
-Returns:
-	None
-
-Modifies the window background.") SetBackground;
+	:param color:
+	:type color: Quantity_Color &
+	:rtype: None
+") SetBackground;
 		void SetBackground (const Quantity_Color & color);
-		%feature("autodoc", "Args:
-	ABackground(Aspect_GradientBackground)
+		%feature("autodoc", "	* Modifies the window gradient background.
 
-Returns:
-	None
-
-Modifies the window gradient background.") SetBackground;
+	:param ABackground:
+	:type ABackground: Aspect_GradientBackground &
+	:rtype: None
+") SetBackground;
 		void SetBackground (const Aspect_GradientBackground & ABackground);
-		%feature("autodoc", "Args:
-	theFirstColor(Quantity_Color)
-	theSecondColor(Quantity_Color)
-	theFillMethod(Aspect_GradientFillMethod)
+		%feature("autodoc", "	* Modifies the window gradient background.
 
-Returns:
-	None
-
-Modifies the window gradient background.") SetBackground;
+	:param theFirstColor:
+	:type theFirstColor: Quantity_Color &
+	:param theSecondColor:
+	:type theSecondColor: Quantity_Color &
+	:param theFillMethod:
+	:type theFillMethod: Aspect_GradientFillMethod
+	:rtype: None
+") SetBackground;
 		void SetBackground (const Quantity_Color & theFirstColor,const Quantity_Color & theSecondColor,const Aspect_GradientFillMethod theFillMethod);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Opens the window <self>.
 
-Opens the window <self>.") Map;
+	:rtype: void
+") Map;
 		virtual void Map ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Closes the window <self>.
 
-Closes the window <self>.") Unmap;
+	:rtype: void
+") Unmap;
 		virtual void Unmap ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Aspect_TypeOfResize
+		%feature("autodoc", "	* Apply the resizing to the window <self>.
 
-Apply the resizing to the window <self>.") DoResize;
+	:rtype: Aspect_TypeOfResize
+") DoResize;
 		virtual Aspect_TypeOfResize DoResize ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Apply the mapping change to the window <self>. and returns True if the window is mapped at screen.
 
-Apply the mapping change to the window <self>.  
-and returns TRUE if the window is mapped at screen.") DoMapping;
+	:rtype: bool
+") DoMapping;
 		virtual Standard_Boolean DoMapping ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* Destroy the Window
 
-Destroy the Window") Destroy;
+	:rtype: void
+") Destroy;
 		virtual void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_Background
+		%feature("autodoc", "	* Returns the window background.
 
-Returns the window background.") Background;
+	:rtype: Aspect_Background
+") Background;
 		Aspect_Background Background ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_FillMethod
+		%feature("autodoc", "	* Returns the current image background fill mode.
 
-Returns the current image background fill mode.") BackgroundFillMethod;
+	:rtype: Aspect_FillMethod
+") BackgroundFillMethod;
 		Aspect_FillMethod BackgroundFillMethod ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_GradientBackground
+		%feature("autodoc", "	* Returns the window gradient background.
 
-Returns the window gradient background.") GradientBackground;
+	:rtype: Aspect_GradientBackground
+") GradientBackground;
 		Aspect_GradientBackground GradientBackground ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Returns True if the window <self> is opened //!	 and False if the window is closed.
 
-Returns True if the window <self> is opened  
-//!	    and False if the window is closed.") IsMapped;
+	:rtype: bool
+") IsMapped;
 		virtual Standard_Boolean IsMapped ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the window <self> is virtual
 
-Returns True if the window <self> is virtual") IsVirtual;
+	:rtype: bool
+") IsVirtual;
 		Standard_Boolean IsVirtual ();
-		%feature("autodoc", "Args:
-	theVirtual(Standard_Boolean)
+		%feature("autodoc", "	* Setup the virtual state
 
-Returns:
-	None
-
-Setup the virtual state") SetVirtual;
+	:param theVirtual:
+	:type theVirtual: bool
+	:rtype: None
+") SetVirtual;
 		void SetVirtual (const Standard_Boolean theVirtual);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Quantity_Ratio
+		%feature("autodoc", "	* Returns The Window RATIO equal to the physical //!	 WIDTH/HEIGHT dimensions
 
-Returns The Window RATIO equal to the physical  
-//!	    WIDTH/HEIGHT dimensions") Ratio;
+	:rtype: Quantity_Ratio
+") Ratio;
 		virtual Quantity_Ratio Ratio ();
-		%feature("autodoc", "Args:
-	X1(Standard_Integer)
-	Y1(Standard_Integer)
-	X2(Standard_Integer)
-	Y2(Standard_Integer)
+		%feature("autodoc", "	* Returns The Window POSITION in PIXEL
 
-Returns:
-	virtual void
-
-Returns The Window POSITION in PIXEL") Position;
+	:param X1:
+	:type X1: Standard_Integer &
+	:param Y1:
+	:type Y1: Standard_Integer &
+	:param X2:
+	:type X2: Standard_Integer &
+	:param Y2:
+	:type Y2: Standard_Integer &
+	:rtype: void
+") Position;
 		virtual void Position (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	Width(Standard_Integer)
-	Height(Standard_Integer)
+		%feature("autodoc", "	* Returns The Window SIZE in PIXEL
 
-Returns:
-	virtual void
-
-Returns The Window SIZE in PIXEL") Size;
+	:param Width:
+	:type Width: Standard_Integer &
+	:param Height:
+	:type Height: Standard_Integer &
+	:rtype: void
+") Size;
 		virtual void Size (Standard_Integer &OutValue,Standard_Integer &OutValue);
 };
 
@@ -6218,78 +5137,73 @@ def __del__(self):
 %nodefaultctor Aspect_CircularGrid;
 class Aspect_CircularGrid : public Aspect_Grid {
 	public:
-		%feature("autodoc", "Args:
-	aRadiusStep(Quantity_Length)
-	aDivisionNumber(Standard_Integer)
-	XOrigin(Quantity_Length)=0
-	anYOrigin(Quantity_Length)=0
-	aRotationAngle(Quantity_PlaneAngle)=0
+		%feature("autodoc", "	* creates a new grid. By default this grid is not active.
 
-Returns:
-	None
-
-creates a new grid. By default this grid is not  
-         active.") Aspect_CircularGrid;
+	:param aRadiusStep:
+	:type aRadiusStep: Quantity_Length
+	:param aDivisionNumber:
+	:type aDivisionNumber: Standard_Integer
+	:param XOrigin: default value is 0
+	:type XOrigin: Quantity_Length
+	:param anYOrigin: default value is 0
+	:type anYOrigin: Quantity_Length
+	:param aRotationAngle: default value is 0
+	:type aRotationAngle: Quantity_PlaneAngle
+	:rtype: None
+") Aspect_CircularGrid;
 		 Aspect_CircularGrid (const Quantity_Length aRadiusStep,const Standard_Integer aDivisionNumber,const Quantity_Length XOrigin = 0,const Quantity_Length anYOrigin = 0,const Quantity_PlaneAngle aRotationAngle = 0);
-		%feature("autodoc", "Args:
-	aStep(Quantity_Length)
+		%feature("autodoc", "	* defines the x step of the grid.
 
-Returns:
-	None
-
-defines the x step of the grid.") SetRadiusStep;
+	:param aStep:
+	:type aStep: Quantity_Length
+	:rtype: None
+") SetRadiusStep;
 		void SetRadiusStep (const Quantity_Length aStep);
-		%feature("autodoc", "Args:
-	aNumber(Standard_Integer)
+		%feature("autodoc", "	* defines the step of the grid.
 
-Returns:
-	None
-
-defines the step of the grid.") SetDivisionNumber;
+	:param aNumber:
+	:type aNumber: Standard_Integer
+	:rtype: None
+") SetDivisionNumber;
 		void SetDivisionNumber (const Standard_Integer aNumber);
-		%feature("autodoc", "Args:
-	XOrigin(Quantity_Length)
-	YOrigin(Quantity_Length)
-	RadiusStep(Quantity_Length)
-	DivisionNumber(Standard_Integer)
-	RotationAngle(Quantity_PlaneAngle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetGridValues;
+		%feature("autodoc", "	:param XOrigin:
+	:type XOrigin: Quantity_Length
+	:param YOrigin:
+	:type YOrigin: Quantity_Length
+	:param RadiusStep:
+	:type RadiusStep: Quantity_Length
+	:param DivisionNumber:
+	:type DivisionNumber: Standard_Integer
+	:param RotationAngle:
+	:type RotationAngle: Quantity_PlaneAngle
+	:rtype: None
+") SetGridValues;
 		void SetGridValues (const Quantity_Length XOrigin,const Quantity_Length YOrigin,const Quantity_Length RadiusStep,const Standard_Integer DivisionNumber,const Quantity_PlaneAngle RotationAngle);
-		%feature("autodoc", "Args:
-	X(Quantity_Length)
-	Y(Quantity_Length)
-	gridX(Quantity_Length)
-	gridY(Quantity_Length)
+		%feature("autodoc", "	* returns the point of the grid the closest to the point X,Y
 
-Returns:
-	None
-
-returns the point of the grid the closest to the point X,Y") Compute;
+	:param X:
+	:type X: Quantity_Length
+	:param Y:
+	:type Y: Quantity_Length
+	:param gridX:
+	:type gridX: Quantity_Length &
+	:param gridY:
+	:type gridY: Quantity_Length &
+	:rtype: None
+") Compute;
 		void Compute (const Quantity_Length X,const Quantity_Length Y,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Length
+		%feature("autodoc", "	* returns the x step of the grid.
 
-returns the x step of the grid.") RadiusStep;
+	:rtype: Quantity_Length
+") RadiusStep;
 		Quantity_Length RadiusStep ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* returns the x step of the grid.
 
-returns the x step of the grid.") DivisionNumber;
+	:rtype: int
+") DivisionNumber;
 		Standard_Integer DivisionNumber ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:rtype: None
+") Init;
 		void Init ();
 };
 
@@ -6350,81 +5264,76 @@ def __del__(self):
 %nodefaultctor Aspect_ColorCubeColorMap;
 class Aspect_ColorCubeColorMap : public Aspect_ColorMap {
 	public:
-		%feature("autodoc", "Args:
-	base_pixel(Standard_Integer)
-	redmax(Standard_Integer)
-	redmult(Standard_Integer)
-	greenmax(Standard_Integer)
-	greenmult(Standard_Integer)
-	bluemax(Standard_Integer)
-	bluemult(Standard_Integer)
+		%feature("autodoc", "	* Create a ColorCube ColorMap.
 
-Returns:
-	None
-
-Create a ColorCube ColorMap.") Aspect_ColorCubeColorMap;
+	:param base_pixel:
+	:type base_pixel: Standard_Integer
+	:param redmax:
+	:type redmax: Standard_Integer
+	:param redmult:
+	:type redmult: Standard_Integer
+	:param greenmax:
+	:type greenmax: Standard_Integer
+	:param greenmult:
+	:type greenmult: Standard_Integer
+	:param bluemax:
+	:type bluemax: Standard_Integer
+	:param bluemult:
+	:type bluemult: Standard_Integer
+	:rtype: None
+") Aspect_ColorCubeColorMap;
 		 Aspect_ColorCubeColorMap (const Standard_Integer base_pixel,const Standard_Integer redmax,const Standard_Integer redmult,const Standard_Integer greenmax,const Standard_Integer greenmult,const Standard_Integer bluemax,const Standard_Integer bluemult);
-		%feature("autodoc", "Args:
-	base_pixel(Standard_Integer)
-	redmax(Standard_Integer)
-	redmult(Standard_Integer)
-	greenmax(Standard_Integer)
-	greenmult(Standard_Integer)
-	bluemax(Standard_Integer)
-	bluemult(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ColorCubeDefinition;
+		%feature("autodoc", "	:param base_pixel:
+	:type base_pixel: Standard_Integer &
+	:param redmax:
+	:type redmax: Standard_Integer &
+	:param redmult:
+	:type redmult: Standard_Integer &
+	:param greenmax:
+	:type greenmax: Standard_Integer &
+	:param greenmult:
+	:type greenmult: Standard_Integer &
+	:param bluemax:
+	:type bluemax: Standard_Integer &
+	:param bluemult:
+	:type bluemult: Standard_Integer &
+	:rtype: None
+") ColorCubeDefinition;
 		void ColorCubeDefinition (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	AColorMapEntryIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the index in the ColorMap of the //!	 ColorMapEntry.Index() equal to <AnEntryIndex>. Warning: Raises BadAccess if the index is not defined in the //!	 ColorMap.
 
-Returns:
-	Standard_Integer
-
-Returns the index in the ColorMap of the  
-//!	    ColorMapEntry.Index() equal to <AnEntryIndex>.  
- Warning: Raises BadAccess if the index is not defined in the  
-//!	    ColorMap.") FindColorMapIndex;
+	:param AColorMapEntryIndex:
+	:type AColorMapEntryIndex: Standard_Integer
+	:rtype: int
+") FindColorMapIndex;
 		Standard_Integer FindColorMapIndex (const Standard_Integer AColorMapEntryIndex);
-		%feature("autodoc", "Args:
-	AColorMapEntryIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the ColorMapEntry with ColorMapEntry.Index() //!	 equal to <AnEntryIndex>. Warning: Raises BadAccess if the index is not defined in the //!	 ColorMap.
 
-Returns:
-	Aspect_ColorMapEntry
-
-Returns the ColorMapEntry with ColorMapEntry.Index()  
-//!	    equal to <AnEntryIndex>.  
- Warning: Raises BadAccess if the index is not defined in the  
-//!	    ColorMap.") FindEntry;
+	:param AColorMapEntryIndex:
+	:type AColorMapEntryIndex: Standard_Integer
+	:rtype: Aspect_ColorMapEntry
+") FindEntry;
 		const Aspect_ColorMapEntry & FindEntry (const Standard_Integer AColorMapEntryIndex);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
+		%feature("autodoc", "	* Returns the index in the ColorMap of the nearest //!	 matching ColorMapEntry
 
-Returns:
-	Standard_Integer
-
-Returns the index in the ColorMap of the nearest  
-//!	    matching ColorMapEntry") NearestColorMapIndex;
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: int
+") NearestColorMapIndex;
 		Standard_Integer NearestColorMapIndex (const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
+		%feature("autodoc", "	* Returns the nearest ColorMapEntry that match aColor .
 
-Returns:
-	Aspect_ColorMapEntry
-
-Returns the nearest ColorMapEntry that match aColor .") NearestEntry;
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: Aspect_ColorMapEntry
+") NearestEntry;
 		const Aspect_ColorMapEntry & NearestEntry (const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
+		%feature("autodoc", "	* Search an identical color entry in the color map <self> or returns the nearest ColorMapEntry Index.
 
-Returns:
-	Standard_Integer
-
-Search an identical color entry in the color map <self>  
-or returns the nearest ColorMapEntry Index.") AddEntry;
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: int
+") AddEntry;
 		Standard_Integer AddEntry (const Quantity_Color & aColor);
 };
 
@@ -6485,35 +5394,21 @@ def __del__(self):
 %nodefaultctor Aspect_ColorPixel;
 class Aspect_ColorPixel : public Aspect_Pixel {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Aspect_ColorPixel;
+		%feature("autodoc", "	:rtype: None
+") Aspect_ColorPixel;
 		 Aspect_ColorPixel ();
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Aspect_ColorPixel;
+		%feature("autodoc", "	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: None
+") Aspect_ColorPixel;
 		 Aspect_ColorPixel (const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Color
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Quantity_Color
+") Value;
 		const Quantity_Color & Value ();
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: None
+") SetValue;
 		void SetValue (const Quantity_Color & aColor);
 
         %feature("autodoc", "1");
@@ -6523,14 +5418,12 @@ No detailed docstring for this function.") SetValue;
             self->Print(s);
             return s.str();}
         };
-        		%feature("autodoc", "Args:
-	Upper(Standard_Integer)
+        		%feature("autodoc", "	* Returns a hashed value denoting <self>. This value is in  the range 1..<Upper>.
 
-Returns:
-	Standard_Integer
-
-Returns a hashed value denoting <self>. This value is in  
-        the range 1..<Upper>.") HashCode;
+	:param Upper:
+	:type Upper: Standard_Integer
+	:rtype: int
+") HashCode;
 		Standard_Integer HashCode (const Standard_Integer Upper);
 
         %extend {
@@ -6538,13 +5431,10 @@ Returns a hashed value denoting <self>. This value is in
             return $self->HashCode(2147483647);
             }
         };
-        		%feature("autodoc", "Args:
-	Other(Aspect_ColorPixel)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEqual;
+        		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_ColorPixel &
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const Aspect_ColorPixel & Other);
 
         %extend{
@@ -6560,13 +5450,10 @@ No detailed docstring for this function.") IsEqual;
             except:
                 return False
         }
-        		%feature("autodoc", "Args:
-	Other(Aspect_ColorPixel)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsNotEqual;
+        		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_ColorPixel &
+	:rtype: bool
+") IsNotEqual;
 		Standard_Boolean IsNotEqual (const Aspect_ColorPixel & Other);
 
         %extend{
@@ -6582,12 +5469,8 @@ No detailed docstring for this function.") IsNotEqual;
             except:
                 return True
         }
-        		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Color
-
-No detailed docstring for this function.") _CSFDB_GetAspect_ColorPixelmyColor;
+        		%feature("autodoc", "	:rtype: Quantity_Color
+") _CSFDB_GetAspect_ColorPixelmyColor;
 		const Quantity_Color & _CSFDB_GetAspect_ColorPixelmyColor ();
 };
 
@@ -6609,85 +5492,73 @@ def __del__(self):
 %nodefaultctor Aspect_ColorRampColorMap;
 class Aspect_ColorRampColorMap : public Aspect_ColorMap {
 	public:
-		%feature("autodoc", "Args:
-	basepixel(Standard_Integer)
-	dimension(Standard_Integer)
-	color(Quantity_Color)
+		%feature("autodoc", "	* Create a Color Ramp Colormap starting from Black at //!	 basepixel to color at basepixel+dimension-1.
 
-Returns:
-	None
-
-Create a Color Ramp Colormap starting from Black at  
-//!	     basepixel to color at basepixel+dimension-1.") Aspect_ColorRampColorMap;
+	:param basepixel:
+	:type basepixel: Standard_Integer
+	:param dimension:
+	:type dimension: Standard_Integer
+	:param color:
+	:type color: Quantity_Color &
+	:rtype: None
+") Aspect_ColorRampColorMap;
 		 Aspect_ColorRampColorMap (const Standard_Integer basepixel,const Standard_Integer dimension,const Quantity_Color & color);
-		%feature("autodoc", "Args:
-	basepixel(Standard_Integer)
-	dimension(Standard_Integer)
-	colorName(Quantity_NameOfColor)
+		%feature("autodoc", "	* Create a Color Ramp Colormap starting from Black at //!	 basepixel to color at basepixel+dimension-1.
 
-Returns:
-	None
-
-Create a Color Ramp Colormap starting from Black at  
-//!	     basepixel to color at basepixel+dimension-1.") Aspect_ColorRampColorMap;
+	:param basepixel:
+	:type basepixel: Standard_Integer
+	:param dimension:
+	:type dimension: Standard_Integer
+	:param colorName:
+	:type colorName: Quantity_NameOfColor
+	:rtype: None
+") Aspect_ColorRampColorMap;
 		 Aspect_ColorRampColorMap (const Standard_Integer basepixel,const Standard_Integer dimension,const Quantity_NameOfColor colorName);
-		%feature("autodoc", "Args:
-	basepixel(Standard_Integer)
-	dimension(Standard_Integer)
-	color(Quantity_Color)
+		%feature("autodoc", "	* Get Color Ramp Colormap definition .
 
-Returns:
-	None
-
-Get  Color Ramp Colormap definition .") ColorRampDefinition;
+	:param basepixel:
+	:type basepixel: Standard_Integer &
+	:param dimension:
+	:type dimension: Standard_Integer &
+	:param color:
+	:type color: Quantity_Color &
+	:rtype: None
+") ColorRampDefinition;
 		void ColorRampDefinition (Standard_Integer &OutValue,Standard_Integer &OutValue,Quantity_Color & color);
-		%feature("autodoc", "Args:
-	ColorMapEntryIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the index in the ColorMap of the //!	 ColorMapEntry.Index() equal to <AnEntryIndex>. Warning: Raises BadAccess if the index is not defined in the //!	 ColorMap.
 
-Returns:
-	Standard_Integer
-
-Returns the index in the ColorMap of the  
-//!	    ColorMapEntry.Index() equal to <AnEntryIndex>.  
- Warning: Raises BadAccess if the index is not defined in the  
-//!	    ColorMap.") FindColorMapIndex;
+	:param ColorMapEntryIndex:
+	:type ColorMapEntryIndex: Standard_Integer
+	:rtype: int
+") FindColorMapIndex;
 		Standard_Integer FindColorMapIndex (const Standard_Integer ColorMapEntryIndex);
-		%feature("autodoc", "Args:
-	AColorMapEntryIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the ColorMapEntry with ColorMapEntry.Index() //!	 equal to <AnEntryIndex>. Warning: Raises BadAccess if the index is not defined in the //!	 ColorMap.
 
-Returns:
-	Aspect_ColorMapEntry
-
-Returns the ColorMapEntry with ColorMapEntry.Index()  
-//!	    equal to <AnEntryIndex>.  
- Warning: Raises BadAccess if the index is not defined in the  
-//!	    ColorMap.") FindEntry;
+	:param AColorMapEntryIndex:
+	:type AColorMapEntryIndex: Standard_Integer
+	:rtype: Aspect_ColorMapEntry
+") FindEntry;
 		const Aspect_ColorMapEntry & FindEntry (const Standard_Integer AColorMapEntryIndex);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
+		%feature("autodoc", "	* Returns the index in the ColorMap of the //!	 nearest matching ColorMapEntry
 
-Returns:
-	Standard_Integer
-
-Returns the index in the ColorMap of the  
-//!	    nearest matching ColorMapEntry") NearestColorMapIndex;
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: int
+") NearestColorMapIndex;
 		Standard_Integer NearestColorMapIndex (const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
+		%feature("autodoc", "	* Returns the nearest ColorMapEntry that match aColor .
 
-Returns:
-	Aspect_ColorMapEntry
-
-Returns the nearest ColorMapEntry that match aColor .") NearestEntry;
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: Aspect_ColorMapEntry
+") NearestEntry;
 		const Aspect_ColorMapEntry & NearestEntry (const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
+		%feature("autodoc", "	* Search an identical color entry in the color map <self> or returns the nearest ColorMapEntry Index.
 
-Returns:
-	Standard_Integer
-
-Search an identical color entry in the color map <self>  
-or returns the nearest ColorMapEntry Index.") AddEntry;
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: int
+") AddEntry;
 		Standard_Integer AddEntry (const Quantity_Color & aColor);
 };
 
@@ -6748,81 +5619,59 @@ def __del__(self):
 %nodefaultctor Aspect_GenericColorMap;
 class Aspect_GenericColorMap : public Aspect_ColorMap {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates a generic ColorMap .
 
-Creates a generic ColorMap .") Aspect_GenericColorMap;
+	:rtype: None
+") Aspect_GenericColorMap;
 		 Aspect_GenericColorMap ();
-		%feature("autodoc", "Args:
-	AnEntry(Aspect_ColorMapEntry)
+		%feature("autodoc", "	* Adds an entry in the color map <self>. Warning: Raises BadAccess if the ColorMapEntry index is alreadry defined.
 
-Returns:
-	None
-
-Adds an entry in the color map <self>.  
- Warning: Raises BadAccess if the ColorMapEntry index is alreadry  
-         defined.") AddEntry;
+	:param AnEntry:
+	:type AnEntry: Aspect_ColorMapEntry &
+	:rtype: None
+") AddEntry;
 		void AddEntry (const Aspect_ColorMapEntry & AnEntry);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
+		%feature("autodoc", "	* Search an identical color entry in the color map <self> and returns the ColorMapEntry Index if exist. Or add a new entry and returns the computed ColorMapEntry index used.
 
-Returns:
-	Standard_Integer
-
-Search an identical color entry in the color map <self>  
-and returns the ColorMapEntry Index if exist.  
-Or add a new entry and returns the computed ColorMapEntry index used.") AddEntry;
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: int
+") AddEntry;
 		Standard_Integer AddEntry (const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	AColorMapEntryIndex(Standard_Integer)
+		%feature("autodoc", "	* Remove the ColorMapEntry at position index in the ColorMap Warning: Raises BadAccess if the index is not defined in the //!	 ColorMap.
 
-Returns:
-	None
-
-Remove the ColorMapEntry at position index in the ColorMap  
- Warning: Raises BadAccess if the index is not defined in the  
-//!	    ColorMap.") RemoveEntry;
+	:param AColorMapEntryIndex:
+	:type AColorMapEntryIndex: Standard_Integer
+	:rtype: None
+") RemoveEntry;
 		void RemoveEntry (const Standard_Integer AColorMapEntryIndex);
-		%feature("autodoc", "Args:
-	AColorMapEntryIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the index in the ColorMap of the //!	 ColorMapEntry.Index() equal to <AnEntryIndex>. Warning: Raises BadAccess if the index is not defined in the //!	 ColorMap.
 
-Returns:
-	Standard_Integer
-
-Returns the index in the ColorMap of the  
-//!	    ColorMapEntry.Index() equal to <AnEntryIndex>.  
- Warning: Raises BadAccess if the index is not defined in the  
-//!	    ColorMap.") FindColorMapIndex;
+	:param AColorMapEntryIndex:
+	:type AColorMapEntryIndex: Standard_Integer
+	:rtype: int
+") FindColorMapIndex;
 		Standard_Integer FindColorMapIndex (const Standard_Integer AColorMapEntryIndex);
-		%feature("autodoc", "Args:
-	AColorMapEntryIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the ColorMapEntry with ColorMapEntry.Index() //!	 equal to <AnEntryIndex>. Warning: Raises BadAccess if the index is not defined in the //!	 ColorMap.
 
-Returns:
-	Aspect_ColorMapEntry
-
-Returns the ColorMapEntry with ColorMapEntry.Index()  
-//!	    equal to <AnEntryIndex>.  
- Warning: Raises BadAccess if the index is not defined in the  
-//!	    ColorMap.") FindEntry;
+	:param AColorMapEntryIndex:
+	:type AColorMapEntryIndex: Standard_Integer
+	:rtype: Aspect_ColorMapEntry
+") FindEntry;
 		const Aspect_ColorMapEntry & FindEntry (const Standard_Integer AColorMapEntryIndex);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
+		%feature("autodoc", "	* Returns the index in the ColorMap of the //!	 nearest matching ColorMapEntry
 
-Returns:
-	Standard_Integer
-
-Returns the index in the ColorMap of the  
-//!	    nearest matching ColorMapEntry") NearestColorMapIndex;
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: int
+") NearestColorMapIndex;
 		Standard_Integer NearestColorMapIndex (const Quantity_Color & aColor);
-		%feature("autodoc", "Args:
-	aColor(Quantity_Color)
+		%feature("autodoc", "	* Returns the nearest ColorMapEntry that match aColor .
 
-Returns:
-	Aspect_ColorMapEntry
-
-Returns the nearest ColorMapEntry that match aColor .") NearestEntry;
+	:param aColor:
+	:type aColor: Quantity_Color &
+	:rtype: Aspect_ColorMapEntry
+") NearestEntry;
 		const Aspect_ColorMapEntry & NearestEntry (const Quantity_Color & aColor);
 };
 
@@ -6883,50 +5732,46 @@ def __del__(self):
 %nodefaultctor Aspect_GradientBackground;
 class Aspect_GradientBackground : public Aspect_Background {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates a window gradient background. Default colors : Quantity_NOC_BLACK. Default fill method : Aspect_GFM_NONE
 
-Creates a window gradient background.  
-Default colors : Quantity_NOC_BLACK.  
-Default fill method : Aspect_GFM_NONE") Aspect_GradientBackground;
+	:rtype: None
+") Aspect_GradientBackground;
 		 Aspect_GradientBackground ();
-		%feature("autodoc", "Args:
-	AColor1(Quantity_Color)
-	AColor2(Quantity_Color)
-	AMethod(Aspect_GradientFillMethod)=Aspect_GFM_HOR
+		%feature("autodoc", "	* Creates a window gradient background with colours <AColor1, AColor2>.
 
-Returns:
-	None
-
-Creates a window gradient background with colours <AColor1, AColor2>.") Aspect_GradientBackground;
+	:param AColor1:
+	:type AColor1: Quantity_Color &
+	:param AColor2:
+	:type AColor2: Quantity_Color &
+	:param AMethod: default value is Aspect_GFM_HOR
+	:type AMethod: Aspect_GradientFillMethod
+	:rtype: None
+") Aspect_GradientBackground;
 		 Aspect_GradientBackground (const Quantity_Color & AColor1,const Quantity_Color & AColor2,const Aspect_GradientFillMethod AMethod = Aspect_GFM_HOR);
-		%feature("autodoc", "Args:
-	AColor1(Quantity_Color)
-	AColor2(Quantity_Color)
-	AMethod(Aspect_GradientFillMethod)=Aspect_GFM_HOR
+		%feature("autodoc", "	* Modifies the colours of the window gradient background <self>.
 
-Returns:
-	None
-
-Modifies the colours of the window gradient background <self>.") SetColors;
+	:param AColor1:
+	:type AColor1: Quantity_Color &
+	:param AColor2:
+	:type AColor2: Quantity_Color &
+	:param AMethod: default value is Aspect_GFM_HOR
+	:type AMethod: Aspect_GradientFillMethod
+	:rtype: None
+") SetColors;
 		void SetColors (const Quantity_Color & AColor1,const Quantity_Color & AColor2,const Aspect_GradientFillMethod AMethod = Aspect_GFM_HOR);
-		%feature("autodoc", "Args:
-	AColor1(Quantity_Color)
-	AColor2(Quantity_Color)
+		%feature("autodoc", "	* Returns colours of the window gradient background <self>.
 
-Returns:
-	None
-
-Returns colours of the window gradient background <self>.") Colors;
+	:param AColor1:
+	:type AColor1: Quantity_Color &
+	:param AColor2:
+	:type AColor2: Quantity_Color &
+	:rtype: None
+") Colors;
 		void Colors (Quantity_Color & AColor1,Quantity_Color & AColor2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Aspect_GradientFillMethod
+		%feature("autodoc", "	* Returns the current gradient background fill mode.
 
-Returns the current gradient background fill mode.") BgGradientFillMethod;
+	:rtype: Aspect_GradientFillMethod
+") BgGradientFillMethod;
 		Aspect_GradientFillMethod BgGradientFillMethod ();
 };
 
@@ -6948,44 +5793,28 @@ def __del__(self):
 %nodefaultctor Aspect_IndexPixel;
 class Aspect_IndexPixel : public Aspect_Pixel {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Aspect_IndexPixel;
+		%feature("autodoc", "	:rtype: None
+") Aspect_IndexPixel;
 		 Aspect_IndexPixel ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Aspect_IndexPixel;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Aspect_IndexPixel;
 		 Aspect_IndexPixel (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: int
+") Value;
 		Standard_Integer Value ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	Upper(Standard_Integer)
+		%feature("autodoc", "	* Returns a hashed value denoting <self>. This value is in  the range 1..<Upper>.
 
-Returns:
-	Standard_Integer
-
-Returns a hashed value denoting <self>. This value is in  
-        the range 1..<Upper>.") HashCode;
+	:param Upper:
+	:type Upper: Standard_Integer
+	:rtype: int
+") HashCode;
 		Standard_Integer HashCode (const Standard_Integer Upper);
 
         %extend {
@@ -7001,13 +5830,10 @@ Returns a hashed value denoting <self>. This value is in
             self->Print(s);
             return s.str();}
         };
-        		%feature("autodoc", "Args:
-	Other(Aspect_IndexPixel)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEqual;
+        		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_IndexPixel &
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const Aspect_IndexPixel & Other);
 
         %extend{
@@ -7023,13 +5849,10 @@ No detailed docstring for this function.") IsEqual;
             except:
                 return False
         }
-        		%feature("autodoc", "Args:
-	Other(Aspect_IndexPixel)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsNotEqual;
+        		%feature("autodoc", "	:param Other:
+	:type Other: Aspect_IndexPixel &
+	:rtype: bool
+") IsNotEqual;
 		Standard_Boolean IsNotEqual (const Aspect_IndexPixel & Other);
 
         %extend{
@@ -7045,20 +5868,13 @@ No detailed docstring for this function.") IsNotEqual;
             except:
                 return True
         }
-        		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") _CSFDB_GetAspect_IndexPixelmyIndex;
+        		%feature("autodoc", "	:rtype: int
+") _CSFDB_GetAspect_IndexPixelmyIndex;
 		Standard_Integer _CSFDB_GetAspect_IndexPixelmyIndex ();
-		%feature("autodoc", "Args:
-	p(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") _CSFDB_SetAspect_IndexPixelmyIndex;
+		%feature("autodoc", "	:param p:
+	:type p: Standard_Integer
+	:rtype: None
+") _CSFDB_SetAspect_IndexPixelmyIndex;
 		void _CSFDB_SetAspect_IndexPixelmyIndex (const Standard_Integer p);
 };
 
@@ -7080,107 +5896,96 @@ def __del__(self):
 %nodefaultctor Aspect_RectangularGrid;
 class Aspect_RectangularGrid : public Aspect_Grid {
 	public:
-		%feature("autodoc", "Args:
-	aXStep(Quantity_Length)
-	aYStep(Quantity_Length)
-	anXOrigin(Quantity_Length)=0
-	anYOrigin(Quantity_Length)=0
-	aFirstAngle(Quantity_PlaneAngle)=0
-	aSecondAngle(Quantity_PlaneAngle)=0
-	aRotationAngle(Quantity_PlaneAngle)=0
+		%feature("autodoc", "	* creates a new grid. By default this grid is not active. The first angle is given relatively to the horizontal. The second angle is given relatively to the vertical.
 
-Returns:
-	None
-
-creates a new grid. By default this grid is not  
-         active.  
-         The first angle is given relatively to the horizontal.  
-         The second angle is given relatively to the vertical.") Aspect_RectangularGrid;
+	:param aXStep:
+	:type aXStep: Quantity_Length
+	:param aYStep:
+	:type aYStep: Quantity_Length
+	:param anXOrigin: default value is 0
+	:type anXOrigin: Quantity_Length
+	:param anYOrigin: default value is 0
+	:type anYOrigin: Quantity_Length
+	:param aFirstAngle: default value is 0
+	:type aFirstAngle: Quantity_PlaneAngle
+	:param aSecondAngle: default value is 0
+	:type aSecondAngle: Quantity_PlaneAngle
+	:param aRotationAngle: default value is 0
+	:type aRotationAngle: Quantity_PlaneAngle
+	:rtype: None
+") Aspect_RectangularGrid;
 		 Aspect_RectangularGrid (const Quantity_Length aXStep,const Quantity_Length aYStep,const Quantity_Length anXOrigin = 0,const Quantity_Length anYOrigin = 0,const Quantity_PlaneAngle aFirstAngle = 0,const Quantity_PlaneAngle aSecondAngle = 0,const Quantity_PlaneAngle aRotationAngle = 0);
-		%feature("autodoc", "Args:
-	aStep(Quantity_Length)
+		%feature("autodoc", "	* defines the x step of the grid.
 
-Returns:
-	None
-
-defines the x step of the grid.") SetXStep;
+	:param aStep:
+	:type aStep: Quantity_Length
+	:rtype: None
+") SetXStep;
 		void SetXStep (const Quantity_Length aStep);
-		%feature("autodoc", "Args:
-	aStep(Quantity_Length)
+		%feature("autodoc", "	* defines the y step of the grid.
 
-Returns:
-	None
-
-defines the y step of the grid.") SetYStep;
+	:param aStep:
+	:type aStep: Quantity_Length
+	:rtype: None
+") SetYStep;
 		void SetYStep (const Quantity_Length aStep);
-		%feature("autodoc", "Args:
-	anAngle1(Quantity_PlaneAngle)
-	anAngle2(Quantity_PlaneAngle)
+		%feature("autodoc", "	* defines the angle of the second network the fist angle is given relatively to the horizontal. the second angle is given relatively to the vertical.
 
-Returns:
-	None
-
-defines the angle of the second network  
-         the fist angle is given relatively to the horizontal.  
-         the second angle is given relatively to the vertical.") SetAngle;
+	:param anAngle1:
+	:type anAngle1: Quantity_PlaneAngle
+	:param anAngle2:
+	:type anAngle2: Quantity_PlaneAngle
+	:rtype: None
+") SetAngle;
 		void SetAngle (const Quantity_PlaneAngle anAngle1,const Quantity_PlaneAngle anAngle2);
-		%feature("autodoc", "Args:
-	XOrigin(Quantity_Length)
-	YOrigin(Quantity_Length)
-	XStep(Quantity_Length)
-	YStep(Quantity_Length)
-	RotationAngle(Quantity_PlaneAngle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetGridValues;
+		%feature("autodoc", "	:param XOrigin:
+	:type XOrigin: Quantity_Length
+	:param YOrigin:
+	:type YOrigin: Quantity_Length
+	:param XStep:
+	:type XStep: Quantity_Length
+	:param YStep:
+	:type YStep: Quantity_Length
+	:param RotationAngle:
+	:type RotationAngle: Quantity_PlaneAngle
+	:rtype: None
+") SetGridValues;
 		void SetGridValues (const Quantity_Length XOrigin,const Quantity_Length YOrigin,const Quantity_Length XStep,const Quantity_Length YStep,const Quantity_PlaneAngle RotationAngle);
-		%feature("autodoc", "Args:
-	X(Quantity_Length)
-	Y(Quantity_Length)
-	gridX(Quantity_Length)
-	gridY(Quantity_Length)
+		%feature("autodoc", "	* returns the point of the grid the closest to the point X,Y
 
-Returns:
-	None
-
-returns the point of the grid the closest to the point X,Y") Compute;
+	:param X:
+	:type X: Quantity_Length
+	:param Y:
+	:type Y: Quantity_Length
+	:param gridX:
+	:type gridX: Quantity_Length &
+	:param gridY:
+	:type gridY: Quantity_Length &
+	:rtype: None
+") Compute;
 		void Compute (const Quantity_Length X,const Quantity_Length Y,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Length
+		%feature("autodoc", "	* returns the x step of the grid.
 
-returns the x step of the grid.") XStep;
+	:rtype: Quantity_Length
+") XStep;
 		Quantity_Length XStep ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_Length
+		%feature("autodoc", "	* returns the x step of the grid.
 
-returns the x step of the grid.") YStep;
+	:rtype: Quantity_Length
+") YStep;
 		Quantity_Length YStep ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_PlaneAngle
+		%feature("autodoc", "	* returns the x Angle of the grid, relatively to the horizontal.
 
-returns the x Angle of the grid, relatively to the horizontal.") FirstAngle;
+	:rtype: Quantity_PlaneAngle
+") FirstAngle;
 		Quantity_PlaneAngle FirstAngle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Quantity_PlaneAngle
+		%feature("autodoc", "	* returns the y Angle of the grid, relatively to the vertical.
 
-returns the y Angle of the grid, relatively to the vertical.") SecondAngle;
+	:rtype: Quantity_PlaneAngle
+") SecondAngle;
 		Quantity_PlaneAngle SecondAngle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:rtype: None
+") Init;
 		void Init ();
 };
 
@@ -7241,312 +6046,280 @@ def __del__(self):
 %nodefaultctor Aspect_WindowDriver;
 class Aspect_WindowDriver : public Aspect_Driver {
 	public:
-		%feature("autodoc", "Args:
-	DoubleBuffer(Standard_Boolean)=Standard_True
-	aRetainBuffer(Standard_Integer)=0
+		%feature("autodoc", "	* Begin graphics and drawn directly to the Window or Pixmap if
 
-Returns:
-	virtual void
-
-Begin graphics and drawn directly to the Window or Pixmap if") BeginDraw;
+	:param DoubleBuffer: default value is Standard_True
+	:type DoubleBuffer: bool
+	:param aRetainBuffer: default value is 0
+	:type aRetainBuffer: Standard_Integer
+	:rtype: void
+") BeginDraw;
 		virtual void BeginDraw (const Standard_Boolean DoubleBuffer = Standard_True,const Standard_Integer aRetainBuffer = 0);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Aspect_TypeOfResize
-
-No detailed docstring for this function.") ResizeSpace;
+		%feature("autodoc", "	:rtype: Aspect_TypeOfResize
+") ResizeSpace;
 		virtual Aspect_TypeOfResize ResizeSpace ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Aspect_Window
-
-No detailed docstring for this function.") Window;
+		%feature("autodoc", "	:rtype: Handle_Aspect_Window
+") Window;
 		Handle_Aspect_Window Window ();
-		%feature("autodoc", "Args:
-	aMode(Aspect_TypeOfDrawMode)
+		%feature("autodoc", "	* Change the current drawing mode of the Driver 	 XW_REPLACE : the primitive is drawn with his defined color. //!	 XW_ERASE : the primitive is erased from the window. //!	 XW_XOR : the primitive is xored to the window. //!	 XW_XORLIGHT: the primitive is xored depending of the current //!			highlight and background colors.
 
-Returns:
-	virtual void
-
-Change the current drawing mode of the Driver  
- 	    XW_REPLACE : the primitive is drawn with his defined color.  
-//!	    XW_ERASE   : the primitive is erased from the window.  
-//!	    XW_XOR     : the primitive is xored to the window.  
-//!	    XW_XORLIGHT: the primitive is xored depending of the current  
-//!			highlight and background colors.") SetDrawMode;
+	:param aMode:
+	:type aMode: Aspect_TypeOfDrawMode
+	:rtype: void
+") SetDrawMode;
 		virtual void SetDrawMode (const Aspect_TypeOfDrawMode aMode);
-		%feature("autodoc", "Args:
-	aRetainBuffer(Standard_Integer)
-	aPivotX(Standard_ShortReal)=0.0
-	aPivotY(Standard_ShortReal)=0.0
-	aWidthIndex(Standard_Integer)=0
-	aColorIndex(Standard_Integer)=0
-	aFontIndex(Standard_Integer)=0
-	aDrawMode(Aspect_TypeOfDrawMode)=Aspect_TODM_REPLACE
+		%feature("autodoc", "	* Allocate the retain buffer <aRetainBuffer> , Defines the DWU coordinates of the pivot point for all primitives
 
-Returns:
-	virtual Standard_Boolean
-
-Allocate the retain buffer <aRetainBuffer> ,  
-Defines the DWU coordinates of the pivot point for all primitives") OpenBuffer;
+	:param aRetainBuffer:
+	:type aRetainBuffer: Standard_Integer
+	:param aPivotX: default value is 0.0
+	:type aPivotX: Standard_ShortReal
+	:param aPivotY: default value is 0.0
+	:type aPivotY: Standard_ShortReal
+	:param aWidthIndex: default value is 0
+	:type aWidthIndex: Standard_Integer
+	:param aColorIndex: default value is 0
+	:type aColorIndex: Standard_Integer
+	:param aFontIndex: default value is 0
+	:type aFontIndex: Standard_Integer
+	:param aDrawMode: default value is Aspect_TODM_REPLACE
+	:type aDrawMode: Aspect_TypeOfDrawMode
+	:rtype: bool
+") OpenBuffer;
 		virtual Standard_Boolean OpenBuffer (const Standard_Integer aRetainBuffer,const Standard_ShortReal aPivotX = 0.0,const Standard_ShortReal aPivotY = 0.0,const Standard_Integer aWidthIndex = 0,const Standard_Integer aColorIndex = 0,const Standard_Integer aFontIndex = 0,const Aspect_TypeOfDrawMode aDrawMode = Aspect_TODM_REPLACE);
-		%feature("autodoc", "Args:
-	aRetainBuffer(Standard_Integer)
+		%feature("autodoc", "	* Clear & Deallocate the retain buffer <aRetainBuffer>.
 
-Returns:
-	virtual void
-
-Clear & Deallocate the retain buffer <aRetainBuffer>.") CloseBuffer;
+	:param aRetainBuffer:
+	:type aRetainBuffer: Standard_Integer
+	:rtype: void
+") CloseBuffer;
 		virtual void CloseBuffer (const Standard_Integer aRetainBuffer);
-		%feature("autodoc", "Args:
-	aRetainBuffer(Standard_Integer)
+		%feature("autodoc", "	* Erase & Clear ALL primitives retains in the buffer <aRetainBuffer>.
 
-Returns:
-	virtual void
-
-Erase & Clear ALL primitives retains in the buffer <aRetainBuffer>.") ClearBuffer;
+	:param aRetainBuffer:
+	:type aRetainBuffer: Standard_Integer
+	:rtype: void
+") ClearBuffer;
 		virtual void ClearBuffer (const Standard_Integer aRetainBuffer);
-		%feature("autodoc", "Args:
-	aRetainBuffer(Standard_Integer)
+		%feature("autodoc", "	* Draw ALL primitives retains in the buffer <aRetainBuffer>. Warning: Note that the aspect of a retain buffer drawing is mono-colored with the current buffer Attributes and Depending of the DoubleBuffer state flag at the BeginDraw() buffer time, when DB is True,an XOR method is use for drawing and erasing buffers in the same way.In this case,some color side effect can occurs depending of the traversal primitive colors and the supported hardware. when DB is False and the background drawing has been generated with DB at True,no color side effect occurs because the DB is used for restoring the drawing context at EraseBuffer() time,this is more powerfull for the drawing quality excepted for large buffers (flicking) .
 
-Returns:
-	virtual void
-
-Draw ALL primitives retains in the buffer <aRetainBuffer>.  
- Warning: Note that the aspect of a retain buffer drawing is  
-mono-colored with the current buffer Attributes and  
-Depending of the DoubleBuffer state flag at the BeginDraw() buffer time,  
-when DB is TRUE,an XOR method is use for drawing and erasing buffers in the  
-same way.In this case,some color side effect can occurs depending of the  
-traversal primitive colors and the supported hardware.  
-when DB is FALSE and the background drawing has been generated with  
-DB at TRUE,no color side effect occurs because the DB is used for restoring  
-the drawing context at EraseBuffer() time,this is more powerfull for the  
-drawing quality excepted for large buffers (flicking) .") DrawBuffer;
+	:param aRetainBuffer:
+	:type aRetainBuffer: Standard_Integer
+	:rtype: void
+") DrawBuffer;
 		virtual void DrawBuffer (const Standard_Integer aRetainBuffer);
-		%feature("autodoc", "Args:
-	aRetainBuffer(Standard_Integer)
+		%feature("autodoc", "	* Erase ALL primitives retains in the buffer <aRetainBuffer>.
 
-Returns:
-	virtual void
-
-Erase ALL primitives retains in the buffer <aRetainBuffer>.") EraseBuffer;
+	:param aRetainBuffer:
+	:type aRetainBuffer: Standard_Integer
+	:rtype: void
+") EraseBuffer;
 		virtual void EraseBuffer (const Standard_Integer aRetainBuffer);
-		%feature("autodoc", "Args:
-	aRetainBuffer(Standard_Integer)
-	aPivotX(Standard_ShortReal)=0.0
-	aPivotY(Standard_ShortReal)=0.0
+		%feature("autodoc", "	* Erase , Translate and reDraw ALL primitives retains in the buffer
 
-Returns:
-	virtual void
-
-Erase , Translate and reDraw ALL primitives retains in the buffer") MoveBuffer;
+	:param aRetainBuffer:
+	:type aRetainBuffer: Standard_Integer
+	:param aPivotX: default value is 0.0
+	:type aPivotX: Standard_ShortReal
+	:param aPivotY: default value is 0.0
+	:type aPivotY: Standard_ShortReal
+	:rtype: void
+") MoveBuffer;
 		virtual void MoveBuffer (const Standard_Integer aRetainBuffer,const Standard_ShortReal aPivotX = 0.0,const Standard_ShortReal aPivotY = 0.0);
-		%feature("autodoc", "Args:
-	aRetainBuffer(Standard_Integer)
-	aScaleX(Quantity_Factor)=1.0
-	aScaleY(Quantity_Factor)=1.0
+		%feature("autodoc", "	* Erase , Scale the buffer from the Pivot point and reDraw ALL primitives
 
-Returns:
-	virtual void
-
-Erase , Scale the buffer from the Pivot point and reDraw ALL primitives") ScaleBuffer;
+	:param aRetainBuffer:
+	:type aRetainBuffer: Standard_Integer
+	:param aScaleX: default value is 1.0
+	:type aScaleX: Quantity_Factor
+	:param aScaleY: default value is 1.0
+	:type aScaleY: Quantity_Factor
+	:rtype: void
+") ScaleBuffer;
 		virtual void ScaleBuffer (const Standard_Integer aRetainBuffer,const Quantity_Factor aScaleX = 1.0,const Quantity_Factor aScaleY = 1.0);
-		%feature("autodoc", "Args:
-	aRetainBuffer(Standard_Integer)
-	anAngle(Quantity_PlaneAngle)=0.0
+		%feature("autodoc", "	* Erase , Rotate the buffer from the Pivot point and reDraw ALL primitives
 
-Returns:
-	virtual void
-
-Erase , Rotate the buffer from the Pivot point and reDraw ALL primitives") RotateBuffer;
+	:param aRetainBuffer:
+	:type aRetainBuffer: Standard_Integer
+	:param anAngle: default value is 0.0
+	:type anAngle: Quantity_PlaneAngle
+	:rtype: void
+") RotateBuffer;
 		virtual void RotateBuffer (const Standard_Integer aRetainBuffer,const Quantity_PlaneAngle anAngle = 0.0);
-		%feature("autodoc", "Args:
-	aRetainBuffer(Standard_Integer)
+		%feature("autodoc", "	* Returns True if the retain buffer <aRetainBuffer> is enabled
 
-Returns:
-	virtual Standard_Boolean
-
-Returns TRUE if the retain buffer <aRetainBuffer> is enabled") BufferIsOpen;
+	:param aRetainBuffer:
+	:type aRetainBuffer: Standard_Integer
+	:rtype: bool
+") BufferIsOpen;
 		virtual Standard_Boolean BufferIsOpen (const Standard_Integer aRetainBuffer);
-		%feature("autodoc", "Args:
-	aRetainBuffer(Standard_Integer)
+		%feature("autodoc", "	* Returns True if the retain buffer has not been opened or empty.  Returns False if a lot of primitives have been stored inside  because a BeginDraw(..,<aRetainBuffer>) has been done previously.
 
-Returns:
-	virtual Standard_Boolean
-
-Returns TRUE if the retain buffer has not been opened or empty.  
-        Returns FALSE if a lot of primitives have been stored inside  
-        because a BeginDraw(..,<aRetainBuffer>) has been done previously.") BufferIsEmpty;
+	:param aRetainBuffer:
+	:type aRetainBuffer: Standard_Integer
+	:rtype: bool
+") BufferIsEmpty;
 		virtual Standard_Boolean BufferIsEmpty (const Standard_Integer aRetainBuffer);
-		%feature("autodoc", "Args:
-	aRetainBuffer(Standard_Integer)
+		%feature("autodoc", "	* Returns True if the retain buffer s actually displayed at screen.
 
-Returns:
-	virtual Standard_Boolean
-
-Returns TRUE if the retain buffer s actually displayed at screen.") BufferIsDrawn;
+	:param aRetainBuffer:
+	:type aRetainBuffer: Standard_Integer
+	:rtype: bool
+") BufferIsDrawn;
 		virtual Standard_Boolean BufferIsDrawn (const Standard_Integer aRetainBuffer);
-		%feature("autodoc", "Args:
-	aRetainBuffer(Standard_Integer)
-	anAngle(Quantity_PlaneAngle)
+		%feature("autodoc", "	* Returns the current buffer rotate angle from the X axis.
 
-Returns:
-	virtual void
-
-Returns the current buffer rotate angle from the X axis.") AngleOfBuffer;
+	:param aRetainBuffer:
+	:type aRetainBuffer: Standard_Integer
+	:param anAngle:
+	:type anAngle: Quantity_PlaneAngle &
+	:rtype: void
+") AngleOfBuffer;
 		virtual void AngleOfBuffer (const Standard_Integer aRetainBuffer,Quantity_PlaneAngle & anAngle);
-		%feature("autodoc", "Args:
-	aRetainBuffer(Standard_Integer)
-	aScaleX(Quantity_Factor)
-	aScaleY(Quantity_Factor)
+		%feature("autodoc", "	* Returns the current buffer scale factors.
 
-Returns:
-	virtual void
-
-Returns the current buffer scale factors.") ScaleOfBuffer;
+	:param aRetainBuffer:
+	:type aRetainBuffer: Standard_Integer
+	:param aScaleX:
+	:type aScaleX: Quantity_Factor &
+	:param aScaleY:
+	:type aScaleY: Quantity_Factor &
+	:rtype: void
+") ScaleOfBuffer;
 		virtual void ScaleOfBuffer (const Standard_Integer aRetainBuffer,Quantity_Factor & aScaleX,Quantity_Factor & aScaleY);
-		%feature("autodoc", "Args:
-	aRetainBuffer(Standard_Integer)
-	aPivotX(Standard_ShortReal)
-	aPivotY(Standard_ShortReal)
+		%feature("autodoc", "	* Returns the current buffer position.
 
-Returns:
-	virtual void
-
-Returns the current buffer position.") PositionOfBuffer;
+	:param aRetainBuffer:
+	:type aRetainBuffer: Standard_Integer
+	:param aPivotX:
+	:type aPivotX: Standard_ShortReal &
+	:param aPivotY:
+	:type aPivotY: Standard_ShortReal &
+	:rtype: void
+") PositionOfBuffer;
 		virtual void PositionOfBuffer (const Standard_Integer aRetainBuffer,Standard_ShortReal & aPivotX,Standard_ShortReal & aPivotY);
-		%feature("autodoc", "Args:
-	aText(TCollection_ExtendedString)
-	aWidth(Standard_ShortReal)
-	aHeight(Standard_ShortReal)
-	aFontIndex(Standard_Integer)=- 1
+		%feature("autodoc", "	* Returns the TEXT size in DWU space depending of the required FontIndex if aFontIndex is >= 0 or the current FontIndex if < 0 (default).
 
-Returns:
-	virtual void
-
-Returns the TEXT size in DWU space depending  
-         of the required FontIndex if aFontIndex is >= 0  
-         or the current FontIndex if < 0 (default).") TextSize;
+	:param aText:
+	:type aText: TCollection_ExtendedString &
+	:param aWidth:
+	:type aWidth: Standard_ShortReal &
+	:param aHeight:
+	:type aHeight: Standard_ShortReal &
+	:param aFontIndex: default value is - 1
+	:type aFontIndex: Standard_Integer
+	:rtype: void
+") TextSize;
 		virtual void TextSize (const TCollection_ExtendedString & aText,Standard_ShortReal & aWidth,Standard_ShortReal & aHeight,const Standard_Integer aFontIndex = - 1);
-		%feature("autodoc", "Args:
-	aText(TCollection_ExtendedString)
-	aWidth(Standard_ShortReal)
-	aHeight(Standard_ShortReal)
-	anXoffset(Standard_ShortReal)
-	anYoffset(Standard_ShortReal)
-	aFontIndex(Standard_Integer)=- 1
+		%feature("autodoc", "	* Returns the TEXT size and offsets //!	 in DWU space depending of the required FontIndex if aFontIndex is >= 0 or the current FontIndex if < 0 (default).
 
-Returns:
-	virtual void
-
-Returns the TEXT size and offsets  
-//!	    in DWU space depending  
-         of the required FontIndex if aFontIndex is >= 0  
-         or the current FontIndex if < 0 (default).") TextSize;
+	:param aText:
+	:type aText: TCollection_ExtendedString &
+	:param aWidth:
+	:type aWidth: Standard_ShortReal &
+	:param aHeight:
+	:type aHeight: Standard_ShortReal &
+	:param anXoffset:
+	:type anXoffset: Standard_ShortReal &
+	:param anYoffset:
+	:type anYoffset: Standard_ShortReal &
+	:param aFontIndex: default value is - 1
+	:type aFontIndex: Standard_Integer
+	:rtype: void
+") TextSize;
 		virtual void TextSize (const TCollection_ExtendedString & aText,Standard_ShortReal & aWidth,Standard_ShortReal & aHeight,Standard_ShortReal & anXoffset,Standard_ShortReal & anYoffset,const Standard_Integer aFontIndex = - 1);
-		%feature("autodoc", "Args:
-	aSlant(Quantity_PlaneAngle)
-	aSize(Standard_ShortReal)
-	aBheight(Standard_ShortReal)
-	aFontIndex(Standard_Integer)=- 1
+		%feature("autodoc", "	* Returns the font string,slant,size and
 
-Returns:
-	virtual char *
-
-Returns the font string,slant,size and") FontSize;
+	:param aSlant:
+	:type aSlant: Quantity_PlaneAngle &
+	:param aSize:
+	:type aSize: Standard_ShortReal &
+	:param aBheight:
+	:type aBheight: Standard_ShortReal &
+	:param aFontIndex: default value is - 1
+	:type aFontIndex: Standard_Integer
+	:rtype: char *
+") FontSize;
 		virtual char * FontSize (Quantity_PlaneAngle & aSlant,Standard_ShortReal & aSize,Standard_ShortReal & aBheight,const Standard_Integer aFontIndex = - 1);
-		%feature("autodoc", "Args:
-	aMinIndex(Standard_Integer)
-	aMaxIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the min and max driver virtual color indexs.
 
-Returns:
-	virtual void
-
-Returns the min and max driver virtual color indexs.") ColorBoundIndexs;
+	:param aMinIndex:
+	:type aMinIndex: Standard_Integer &
+	:param aMaxIndex:
+	:type aMaxIndex: Standard_Integer &
+	:rtype: void
+") ColorBoundIndexs;
 		virtual void ColorBoundIndexs (Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the local colormap hardware index from a virtual driver color index or returns -1 if the index is not defined.
 
-Returns:
-	virtual Standard_Integer
-
-Returns the local colormap hardware index from a virtual driver color  
-index or returns -1 if the index is not defined.") LocalColorIndex;
+	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: int
+") LocalColorIndex;
 		virtual Standard_Integer LocalColorIndex (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	aMinIndex(Standard_Integer)
-	aMaxIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the min and max driver virtual font indexs.
 
-Returns:
-	virtual void
-
-Returns the min and max driver virtual font indexs.") FontBoundIndexs;
+	:param aMinIndex:
+	:type aMinIndex: Standard_Integer &
+	:param aMaxIndex:
+	:type aMaxIndex: Standard_Integer &
+	:rtype: void
+") FontBoundIndexs;
 		virtual void FontBoundIndexs (Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the associated fontmap hardware index from a virtual driver font index or returns -1 if the index is not defined.
 
-Returns:
-	virtual Standard_Integer
-
-Returns the associated fontmap hardware index from a virtual driver font  
-index or returns -1 if the index is not defined.") LocalFontIndex;
+	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: int
+") LocalFontIndex;
 		virtual Standard_Integer LocalFontIndex (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	aMinIndex(Standard_Integer)
-	aMaxIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the min and max driver virtual type indexs.
 
-Returns:
-	virtual void
-
-Returns the min and max driver virtual type indexs.") TypeBoundIndexs;
+	:param aMinIndex:
+	:type aMinIndex: Standard_Integer &
+	:param aMaxIndex:
+	:type aMaxIndex: Standard_Integer &
+	:rtype: void
+") TypeBoundIndexs;
 		virtual void TypeBoundIndexs (Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the associated typemap hardware index from a virtual driver type index or returns -1 if the index is not defined.
 
-Returns:
-	virtual Standard_Integer
-
-Returns the associated typemap hardware index from a virtual driver type  
-index or returns -1 if the index is not defined.") LocalTypeIndex;
+	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: int
+") LocalTypeIndex;
 		virtual Standard_Integer LocalTypeIndex (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	aMinIndex(Standard_Integer)
-	aMaxIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the min and max driver virtual width indexs.
 
-Returns:
-	virtual void
-
-Returns the min and max driver virtual width indexs.") WidthBoundIndexs;
+	:param aMinIndex:
+	:type aMinIndex: Standard_Integer &
+	:param aMaxIndex:
+	:type aMaxIndex: Standard_Integer &
+	:rtype: void
+") WidthBoundIndexs;
 		virtual void WidthBoundIndexs (Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the associated widthmap hardware index from a virtual driver width index or returns -1 if the index is not defined.
 
-Returns:
-	virtual Standard_Integer
-
-Returns the associated widthmap hardware index from a virtual driver width  
-index or returns -1 if the index is not defined.") LocalWidthIndex;
+	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: int
+") LocalWidthIndex;
 		virtual Standard_Integer LocalWidthIndex (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	aMinIndex(Standard_Integer)
-	aMaxIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the min and max driver virtual marker indexs.
 
-Returns:
-	virtual void
-
-Returns the min and max driver virtual marker indexs.") MarkBoundIndexs;
+	:param aMinIndex:
+	:type aMinIndex: Standard_Integer &
+	:param aMaxIndex:
+	:type aMaxIndex: Standard_Integer &
+	:rtype: void
+") MarkBoundIndexs;
 		virtual void MarkBoundIndexs (Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
+		%feature("autodoc", "	* Returns the local markmap hardware index from a virtual driver marker index or returns -1 if the index is not defined.
 
-Returns:
-	virtual Standard_Integer
-
-Returns the local markmap hardware index from a virtual driver marker  
-index or returns -1 if the index is not defined.") LocalMarkIndex;
+	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: int
+") LocalMarkIndex;
 		virtual Standard_Integer LocalMarkIndex (const Standard_Integer anIndex);
 };
 

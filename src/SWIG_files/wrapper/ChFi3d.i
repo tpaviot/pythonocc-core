@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -51,65 +51,61 @@ enum ChFi3d_FilletShape {
 %nodefaultctor ChFi3d;
 class ChFi3d {
 	public:
-		%feature("autodoc", "Args:
-	S1(BRepAdaptor_Surface)
-	S2(BRepAdaptor_Surface)
-	E(TopoDS_Edge)
-	Or1(TopAbs_Orientation)
-	Or2(TopAbs_Orientation)
+		%feature("autodoc", "	* Returns Reversed in Or1 and(or) Or2 if the concave edge defined by the interior of faces F1 and F2, in the neighbourhood of their boundary E is of the edge opposite to the normal of their surface support. The orientation of faces is not taken into consideration in the calculation. The function returns 0 if the calculation fails (tangence), if not, it returns the number of choice of the fillet or chamfer corresponding to the orientations calculated and to the tangent to the guide line read in E.
 
-Returns:
-	static Standard_Integer
-
-Returns  Reversed  in  Or1  and(or)  Or2  if  
-         the  concave edge  defined by the  interior of faces F1 and F2,  
-         in  the  neighbourhood of  their boundary E is of the edge opposite to  the  
-         normal  of their surface  support.  The  orientation of  
-         faces is  not  taken  into  consideration in  the calculation. The  
-         function  returns  0 if  the calculation fails (tangence),  
-         if  not, it  returns the  number of  choice of  the fillet  
-         or chamfer corresponding to  the orientations  calculated  
-         and  to  the tangent to  the  guide line read in  E.") ConcaveSide;
+	:param S1:
+	:type S1: BRepAdaptor_Surface &
+	:param S2:
+	:type S2: BRepAdaptor_Surface &
+	:param E:
+	:type E: TopoDS_Edge &
+	:param Or1:
+	:type Or1: TopAbs_Orientation &
+	:param Or2:
+	:type Or2: TopAbs_Orientation &
+	:rtype: int
+") ConcaveSide;
 		static Standard_Integer ConcaveSide (const BRepAdaptor_Surface & S1,const BRepAdaptor_Surface & S2,const TopoDS_Edge & E,TopAbs_Orientation & Or1,TopAbs_Orientation & Or2);
-		%feature("autodoc", "Args:
-	Or1(TopAbs_Orientation)
-	Or2(TopAbs_Orientation)
-	OrSave1(TopAbs_Orientation)
-	OrSave2(TopAbs_Orientation)
-	ChoixSauv(Standard_Integer)
+		%feature("autodoc", "	* Same as ConcaveSide, but the orientations are logically deduced from the result of the call of ConcaveSide on the first pair of faces of the fillet or chamnfer.
 
-Returns:
-	static Standard_Integer
-
-Same  as ConcaveSide, but the orientations are  
-         logically  deduced from  the result of  the call of  
-         ConcaveSide on  the  first pair of faces of  the fillet or  
-         chamnfer.") NextSide;
+	:param Or1:
+	:type Or1: TopAbs_Orientation &
+	:param Or2:
+	:type Or2: TopAbs_Orientation &
+	:param OrSave1:
+	:type OrSave1: TopAbs_Orientation
+	:param OrSave2:
+	:type OrSave2: TopAbs_Orientation
+	:param ChoixSauv:
+	:type ChoixSauv: Standard_Integer
+	:rtype: int
+") NextSide;
 		static Standard_Integer NextSide (TopAbs_Orientation & Or1,TopAbs_Orientation & Or2,const TopAbs_Orientation OrSave1,const TopAbs_Orientation OrSave2,const Standard_Integer ChoixSauv);
-		%feature("autodoc", "Args:
-	Or(TopAbs_Orientation)
-	OrSave(TopAbs_Orientation)
-	OrFace(TopAbs_Orientation)
+		%feature("autodoc", "	* Same as the other NextSide, but the calculation is done on an edge only.
 
-Returns:
-	static void
-
-Same  as  the  other NextSide, but the calculation is  done  
-         on an edge  only.") NextSide;
+	:param Or:
+	:type Or: TopAbs_Orientation &
+	:param OrSave:
+	:type OrSave: TopAbs_Orientation
+	:param OrFace:
+	:type OrFace: TopAbs_Orientation
+	:rtype: void
+") NextSide;
 		static void NextSide (TopAbs_Orientation & Or,const TopAbs_Orientation OrSave,const TopAbs_Orientation OrFace);
-		%feature("autodoc", "Args:
-	Or(TopAbs_Orientation)
-	OrSave1(TopAbs_Orientation)
-	OrSave2(TopAbs_Orientation)
-	OrFace1(TopAbs_Orientation)
-	OrFace2(TopAbs_Orientation)
+		%feature("autodoc", "	* Enables to determine while processing an angle, if two fillets or chamfers constituting a face have identic or opposed concave edges.
 
-Returns:
-	static Standard_Boolean
-
-Enables  to  determine while  processing  an  angle, if  
-         two fillets or chamfers constituting a face have  
-         identic or opposed  concave  edges.") SameSide;
+	:param Or:
+	:type Or: TopAbs_Orientation
+	:param OrSave1:
+	:type OrSave1: TopAbs_Orientation
+	:param OrSave2:
+	:type OrSave2: TopAbs_Orientation
+	:param OrFace1:
+	:type OrFace1: TopAbs_Orientation
+	:param OrFace2:
+	:type OrFace2: TopAbs_Orientation
+	:rtype: bool
+") SameSide;
 		static Standard_Boolean SameSide (const TopAbs_Orientation Or,const TopAbs_Orientation OrSave1,const TopAbs_Orientation OrSave2,const TopAbs_Orientation OrFace1,const TopAbs_Orientation OrFace2);
 };
 
@@ -131,287 +127,237 @@ def __del__(self):
 %nodefaultctor ChFi3d_Builder;
 class ChFi3d_Builder {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Delete;
+		%feature("autodoc", "	:rtype: void
+") Delete;
 		virtual void Delete ();
-		%feature("autodoc", "Args:
-	Tang(Standard_Real)
-	Tesp(Standard_Real)
-	T2d(Standard_Real)
-	TApp3d(Standard_Real)
-	TolApp2d(Standard_Real)
-	Fleche(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetParams;
+		%feature("autodoc", "	:param Tang:
+	:type Tang: float
+	:param Tesp:
+	:type Tesp: float
+	:param T2d:
+	:type T2d: float
+	:param TApp3d:
+	:type TApp3d: float
+	:param TolApp2d:
+	:type TolApp2d: float
+	:param Fleche:
+	:type Fleche: float
+	:rtype: None
+") SetParams;
 		void SetParams (const Standard_Real Tang,const Standard_Real Tesp,const Standard_Real T2d,const Standard_Real TApp3d,const Standard_Real TolApp2d,const Standard_Real Fleche);
-		%feature("autodoc", "Args:
-	InternalContinuity(GeomAbs_Shape)
-	AngularTolerance(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetContinuity;
+		%feature("autodoc", "	:param InternalContinuity:
+	:type InternalContinuity: GeomAbs_Shape
+	:param AngularTolerance:
+	:type AngularTolerance: float
+	:rtype: None
+") SetContinuity;
 		void SetContinuity (const GeomAbs_Shape InternalContinuity,const Standard_Real AngularTolerance);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
+		%feature("autodoc", "	* extracts from the list the contour containing edge E.
 
-Returns:
-	None
-
-extracts from  the list the contour containing edge E.") Remove;
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: None
+") Remove;
 		void Remove (const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
+		%feature("autodoc", "	* gives the number of the contour containing E or 0 if E does not belong to any contour.
 
-Returns:
-	Standard_Integer
-
-gives the number of  the contour containing E or 0  
-         if E does  not  belong to  any  contour.") Contains;
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: int
+") Contains;
 		Standard_Integer Contains (const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
-	IndexInSpine(Standard_Integer)
+		%feature("autodoc", "	* gives the number of the contour containing E or 0 if E does not belong to any contour. //!	 Sets in IndexInSpine the index of E in the contour if it's found
 
-Returns:
-	Standard_Integer
-
-gives  the number of  the contour containing E or 0  
-         if E does  not  belong  to  any  contour.  
-//!	        Sets in IndexInSpine the index of E in the contour if it's found") Contains;
+	:param E:
+	:type E: TopoDS_Edge &
+	:param IndexInSpine:
+	:type IndexInSpine: Standard_Integer &
+	:rtype: int
+") Contains;
 		Standard_Integer Contains (const TopoDS_Edge & E,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* gives the number of disjoint contours on which the fillets are calculated
 
-gives the number of  disjoint contours on  which  
-         the  fillets  are  calculated") NbElements;
+	:rtype: int
+") NbElements;
 		Standard_Integer NbElements ();
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* gives the n'th set of edges (contour) if I >NbElements()
 
-Returns:
-	Handle_ChFiDS_Spine
-
-gives the n'th set  of edges (contour)  if I >NbElements()") Value;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: Handle_ChFiDS_Spine
+") Value;
 		Handle_ChFiDS_Spine Value (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
+		%feature("autodoc", "	* returns the length of the contour of index IC.
 
-Returns:
-	Standard_Real
-
-returns the length of  the contour of index IC.") Length;
+	:param IC:
+	:type IC: Standard_Integer
+	:rtype: float
+") Length;
 		Standard_Real Length (const Standard_Integer IC);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
+		%feature("autodoc", "	* returns the First vertex V of the contour of index IC.
 
-Returns:
-	TopoDS_Vertex
-
-returns the First vertex V of  
-         the contour of index IC.") FirstVertex;
+	:param IC:
+	:type IC: Standard_Integer
+	:rtype: TopoDS_Vertex
+") FirstVertex;
 		TopoDS_Vertex FirstVertex (const Standard_Integer IC);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
+		%feature("autodoc", "	* returns the Last vertex V of the contour of index IC.
 
-Returns:
-	TopoDS_Vertex
-
-returns the Last vertex V of  
-         the contour of index IC.") LastVertex;
+	:param IC:
+	:type IC: Standard_Integer
+	:rtype: TopoDS_Vertex
+") LastVertex;
 		TopoDS_Vertex LastVertex (const Standard_Integer IC);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
-	V(TopoDS_Vertex)
+		%feature("autodoc", "	* returns the abscissa of the vertex V on the contour of index IC.
 
-Returns:
-	Standard_Real
-
-returns the abscissa of the vertex V on  
-         the contour of index IC.") Abscissa;
+	:param IC:
+	:type IC: Standard_Integer
+	:param V:
+	:type V: TopoDS_Vertex &
+	:rtype: float
+") Abscissa;
 		Standard_Real Abscissa (const Standard_Integer IC,const TopoDS_Vertex & V);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
-	V(TopoDS_Vertex)
+		%feature("autodoc", "	* returns the relative abscissa([0.,1.]) of the vertex V on the contour of index IC.
 
-Returns:
-	Standard_Real
-
-returns the relative abscissa([0.,1.]) of the  
-         vertex V on the contour of index IC.") RelativeAbscissa;
+	:param IC:
+	:type IC: Standard_Integer
+	:param V:
+	:type V: TopoDS_Vertex &
+	:rtype: float
+") RelativeAbscissa;
 		Standard_Real RelativeAbscissa (const Standard_Integer IC,const TopoDS_Vertex & V);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
+		%feature("autodoc", "	* returns true if the contour of index IC is closed an tangent.
 
-Returns:
-	Standard_Boolean
-
-returns true if the contour of index IC is closed  
-         an tangent.") ClosedAndTangent;
+	:param IC:
+	:type IC: Standard_Integer
+	:rtype: bool
+") ClosedAndTangent;
 		Standard_Boolean ClosedAndTangent (const Standard_Integer IC);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
+		%feature("autodoc", "	* returns true if the contour of index IC is closed
 
-Returns:
-	Standard_Boolean
-
-returns true if the contour of index IC is closed") Closed;
+	:param IC:
+	:type IC: Standard_Integer
+	:rtype: bool
+") Closed;
 		Standard_Boolean Closed (const Standard_Integer IC);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* general calculation of geometry on all edges, topologic reconstruction.
 
-general calculation of geometry on all edges,  
-         topologic reconstruction.") Compute;
+	:rtype: None
+") Compute;
 		void Compute ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns True if the computation is success
 
-returns True if the computation  is  success") IsDone;
+	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* if (Isdone()) makes the result. if (!Isdone())
 
-if (Isdone()) makes the result.  if (!Isdone())") Shape;
+	:rtype: TopoDS_Shape
+") Shape;
 		TopoDS_Shape Shape ();
-		%feature("autodoc", "Args:
-	EouV(TopoDS_Shape)
+		%feature("autodoc", "	* Advanced function for the history
 
-Returns:
-	TopTools_ListOfShape
-
-Advanced  function for the history") Generated;
+	:param EouV:
+	:type EouV: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") Generated;
 		const TopTools_ListOfShape & Generated (const TopoDS_Shape & EouV);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of contours on which the calculation has failed.
 
-Returns the number of contours on  which the calculation  
-         has failed.") NbFaultyContours;
+	:rtype: int
+") NbFaultyContours;
 		Standard_Integer NbFaultyContours ();
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* Returns the number of I'th contour on which the calculation has failed.
 
-Returns:
-	Standard_Integer
-
-Returns the number of  I'th contour on  which the calculation  
-         has failed.") FaultyContour;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: int
+") FaultyContour;
 		Standard_Integer FaultyContour (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
+		%feature("autodoc", "	* Returns the number of surfaces calculated on the contour IC.
 
-Returns:
-	Standard_Integer
-
-Returns the number of  surfaces calculated  on  the contour IC.") NbComputedSurfaces;
+	:param IC:
+	:type IC: Standard_Integer
+	:rtype: int
+") NbComputedSurfaces;
 		Standard_Integer NbComputedSurfaces (const Standard_Integer IC);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
-	IS(Standard_Integer)
+		%feature("autodoc", "	* Returns the IS'th surface calculated on the contour IC.
 
-Returns:
-	Handle_Geom_Surface
-
-Returns the IS'th surface calculated on  the contour IC.") ComputedSurface;
+	:param IC:
+	:type IC: Standard_Integer
+	:param IS:
+	:type IS: Standard_Integer
+	:rtype: Handle_Geom_Surface
+") ComputedSurface;
 		Handle_Geom_Surface ComputedSurface (const Standard_Integer IC,const Standard_Integer IS);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of vertices on which the calculation has failed.
 
-Returns the number of vertices on  which the calculation  
-         has failed.") NbFaultyVertices;
+	:rtype: int
+") NbFaultyVertices;
 		Standard_Integer NbFaultyVertices ();
-		%feature("autodoc", "Args:
-	IV(Standard_Integer)
+		%feature("autodoc", "	* Returns the IV'th vertex on which the calculation has failed.
 
-Returns:
-	TopoDS_Vertex
-
-Returns the IV'th vertex on  which the calculation has failed.") FaultyVertex;
+	:param IV:
+	:type IV: Standard_Integer
+	:rtype: TopoDS_Vertex
+") FaultyVertex;
 		TopoDS_Vertex FaultyVertex (const Standard_Integer IV);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns True if a partial result has been calculated
 
-returns True if  a partial result has  been  calculated") HasResult;
+	:rtype: bool
+") HasResult;
 		Standard_Boolean HasResult ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* if (HasResult()) returns partial result if (!HasResult())
 
-if (HasResult()) returns partial result  if (!HasResult())") BadShape;
+	:rtype: TopoDS_Shape
+") BadShape;
 		TopoDS_Shape BadShape ();
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
+		%feature("autodoc", "	* for the stripe IC ,indication on the cause of failure WalkingFailure,TwistedSurface,Error, Ok
 
-Returns:
-	ChFiDS_ErrorStatus
-
-for the stripe IC ,indication on the cause  
-         of  failure WalkingFailure,TwistedSurface,Error, Ok") StripeStatus;
+	:param IC:
+	:type IC: Standard_Integer
+	:rtype: ChFiDS_ErrorStatus
+") StripeStatus;
 		ChFiDS_ErrorStatus StripeStatus (const Standard_Integer IC);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Reset all results of compute and returns the algorythm in the state of the last acquisition to enable modification of contours or areas.
 
-Reset all  results of   compute and returns the  algorythm  
-         in  the  state  of  the  last  acquisition to  
-         enable modification of contours or areas.") Reset;
+	:rtype: None
+") Reset;
 		void Reset ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TopOpeBRepBuild_HBuilder
+		%feature("autodoc", "	* Returns the Builder of topologic operations.
 
-Returns the Builder of  topologic operations.") Builder;
+	:rtype: Handle_TopOpeBRepBuild_HBuilder
+") Builder;
 		Handle_TopOpeBRepBuild_HBuilder Builder ();
-		%feature("autodoc", "Args:
-	Data(Handle_ChFiDS_SurfData)
-	SetData(ChFiDS_SequenceOfSurfData)
-	Spine(Handle_ChFiDS_Spine)
-	Iedge(Standard_Integer)
-	S1(Handle_Adaptor3d_HSurface)
-	I1(Handle_Adaptor3d_TopolTool)
-	S2(Handle_Adaptor3d_HSurface)
-	I2(Handle_Adaptor3d_TopolTool)
-	Intf(Standard_Boolean)
-	Intl(Standard_Boolean)
+		%feature("autodoc", "	* Method, implemented in the inheritants, calculates the elements of construction of the surface (fillet or chamfer).
 
-Returns:
-	Standard_Boolean
-
-Method, implemented in the inheritants, calculates  
-         the elements of construction of the surface (fillet or  
-         chamfer).") SplitKPart;
+	:param Data:
+	:type Data: Handle_ChFiDS_SurfData &
+	:param SetData:
+	:type SetData: ChFiDS_SequenceOfSurfData &
+	:param Spine:
+	:type Spine: Handle_ChFiDS_Spine &
+	:param Iedge:
+	:type Iedge: Standard_Integer
+	:param S1:
+	:type S1: Handle_Adaptor3d_HSurface &
+	:param I1:
+	:type I1: Handle_Adaptor3d_TopolTool &
+	:param S2:
+	:type S2: Handle_Adaptor3d_HSurface &
+	:param I2:
+	:type I2: Handle_Adaptor3d_TopolTool &
+	:param Intf:
+	:type Intf: bool
+	:param Intl:
+	:type Intl: bool
+	:rtype: bool
+") SplitKPart;
 		Standard_Boolean SplitKPart (const Handle_ChFiDS_SurfData & Data,ChFiDS_SequenceOfSurfData & SetData,const Handle_ChFiDS_Spine & Spine,const Standard_Integer Iedge,const Handle_Adaptor3d_HSurface & S1,const Handle_Adaptor3d_TopolTool & I1,const Handle_Adaptor3d_HSurface & S2,const Handle_Adaptor3d_TopolTool & I2,Standard_Boolean & Intf,Standard_Boolean & Intl);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") PerformTwoCornerbyInter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: bool
+") PerformTwoCornerbyInter;
 		Standard_Boolean PerformTwoCornerbyInter (const Standard_Integer Index);
 };
 
@@ -433,51 +379,41 @@ def __del__(self):
 %nodefaultctor ChFi3d_SearchSing;
 class ChFi3d_SearchSing : public math_FunctionWithDerivative {
 	public:
-		%feature("autodoc", "Args:
-	C1(Handle_Geom_Curve)
-	C2(Handle_Geom_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChFi3d_SearchSing;
+		%feature("autodoc", "	:param C1:
+	:type C1: Handle_Geom_Curve &
+	:param C2:
+	:type C2: Handle_Geom_Curve &
+	:rtype: None
+") ChFi3d_SearchSing;
 		 ChFi3d_SearchSing (const Handle_Geom_Curve & C1,const Handle_Geom_Curve & C2);
-		%feature("autodoc", "Args:
-	X(Standard_Real)
-	F(Standard_Real)
+		%feature("autodoc", "	* computes the value of the function <F> for the variable <X>. returns True if the computation was done successfully, False otherwise.
 
-Returns:
-	Standard_Boolean
-
-computes the value of the function <F> for the  
-         variable <X>.  
-         returns True if the computation was done successfully,  
-         False otherwise.") Value;
+	:param X:
+	:type X: float
+	:param F:
+	:type F: float &
+	:rtype: bool
+") Value;
 		Standard_Boolean Value (const Standard_Real X,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	X(Standard_Real)
-	D(Standard_Real)
+		%feature("autodoc", "	* computes the derivative <D> of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
 
-Returns:
-	Standard_Boolean
-
-computes the derivative <D> of the function  
-         for the variable <X>.  
-          Returns True if the calculation were successfully done,  
-          False otherwise.") Derivative;
+	:param X:
+	:type X: float
+	:param D:
+	:type D: float &
+	:rtype: bool
+") Derivative;
 		Standard_Boolean Derivative (const Standard_Real X,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	X(Standard_Real)
-	F(Standard_Real)
-	D(Standard_Real)
+		%feature("autodoc", "	* computes the value <F> and the derivative <D> of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
 
-Returns:
-	Standard_Boolean
-
-computes the value <F> and the derivative <D> of the  
-         function for the variable <X>.  
-         Returns True if the calculation were successfully done,  
-         False otherwise.") Values;
+	:param X:
+	:type X: float
+	:param F:
+	:type F: float &
+	:param D:
+	:type D: float &
+	:rtype: bool
+") Values;
 		Standard_Boolean Values (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue);
 };
 
@@ -499,422 +435,555 @@ def __del__(self):
 %nodefaultctor ChFi3d_ChBuilder;
 class ChFi3d_ChBuilder : public ChFi3d_Builder {
 	public:
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-	Ta(Standard_Real)=1.0e-2
+		%feature("autodoc", "	* initializes the Builder with the Shape <S> for the computation of chamfers
 
-Returns:
-	None
-
-initializes the Builder with the Shape <S> for the  
-         computation of chamfers") ChFi3d_ChBuilder;
+	:param S:
+	:type S: TopoDS_Shape &
+	:param Ta: default value is 1.0e-2
+	:type Ta: float
+	:rtype: None
+") ChFi3d_ChBuilder;
 		 ChFi3d_ChBuilder (const TopoDS_Shape & S,const Standard_Real Ta = 1.0e-2);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
+		%feature("autodoc", "	* initializes a contour with the edge <E> as first (the next are found by propagation ). The two distances (parameters of the chamfer) must be set after. if the edge <E> has more than 2 adjacent faces
 
-Returns:
-	None
-
-initializes a contour with the edge <E> as first  
-         (the next are found by propagation ).  
-         The two distances (parameters of the chamfer) must  
-         be set after.  if the edge <E> has more than 2 adjacent faces") Add;
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: None
+") Add;
 		void Add (const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	Dis(Standard_Real)
-	E(TopoDS_Edge)
-	F(TopoDS_Face)
+		%feature("autodoc", "	* initializes a new contour with the edge <E> as first (the next are found by propagation ), and the distance <Dis> if the edge <E> has more than 2 adjacent faces
 
-Returns:
-	None
-
-initializes a new contour with the edge <E> as first  
-         (the next are found by propagation ), and  the  
-         distance <Dis>  if the edge <E> has more than 2 adjacent faces") Add;
+	:param Dis:
+	:type Dis: float
+	:param E:
+	:type E: TopoDS_Edge &
+	:param F:
+	:type F: TopoDS_Face &
+	:rtype: None
+") Add;
 		void Add (const Standard_Real Dis,const TopoDS_Edge & E,const TopoDS_Face & F);
-		%feature("autodoc", "Args:
-	Dis(Standard_Real)
-	IC(Standard_Integer)
-	F(TopoDS_Face)
+		%feature("autodoc", "	* set the distance <Dis> of the fillet contour of index <IC> in the DS with <Dis> on <F>. if the face <F> is not one of common faces of an edge of the contour <IC>
 
-Returns:
-	None
-
-set the distance <Dis> of the fillet  
-         contour of index <IC> in the DS with <Dis> on <F>.  if the face <F> is not one of common faces  
-         of an edge of the contour <IC>") SetDist;
+	:param Dis:
+	:type Dis: float
+	:param IC:
+	:type IC: Standard_Integer
+	:param F:
+	:type F: TopoDS_Face &
+	:rtype: None
+") SetDist;
 		void SetDist (const Standard_Real Dis,const Standard_Integer IC,const TopoDS_Face & F);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
-	Dis(Standard_Real)
+		%feature("autodoc", "	* gives the distances <Dis> of the fillet contour of index <IC> in the DS
 
-Returns:
-	None
-
-gives the distances <Dis> of the fillet  
-         contour of index <IC> in the DS") GetDist;
+	:param IC:
+	:type IC: Standard_Integer
+	:param Dis:
+	:type Dis: float &
+	:rtype: None
+") GetDist;
 		void GetDist (const Standard_Integer IC,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Dis1(Standard_Real)
-	Dis2(Standard_Real)
-	E(TopoDS_Edge)
-	F(TopoDS_Face)
+		%feature("autodoc", "	* initializes a new contour with the edge <E> as first (the next are found by propagation ), and the distance <Dis1> and <Dis2> if the edge <E> has more than 2 adjacent faces
 
-Returns:
-	None
-
-initializes a new contour with the edge <E> as first  
-         (the next are found by propagation ), and  the  
-         distance <Dis1> and <Dis2>  if the edge <E> has more than 2 adjacent faces") Add;
+	:param Dis1:
+	:type Dis1: float
+	:param Dis2:
+	:type Dis2: float
+	:param E:
+	:type E: TopoDS_Edge &
+	:param F:
+	:type F: TopoDS_Face &
+	:rtype: None
+") Add;
 		void Add (const Standard_Real Dis1,const Standard_Real Dis2,const TopoDS_Edge & E,const TopoDS_Face & F);
-		%feature("autodoc", "Args:
-	Dis1(Standard_Real)
-	Dis2(Standard_Real)
-	IC(Standard_Integer)
-	F(TopoDS_Face)
+		%feature("autodoc", "	* set the distances <Dis1> and <Dis2> of the fillet contour of index <IC> in the DS with <Dis1> on <F>. if the face <F> is not one of common faces of an edge of the contour <IC>
 
-Returns:
-	None
-
-set the distances <Dis1> and <Dis2> of the fillet  
-         contour of index <IC> in the DS with <Dis1> on <F>.  if the face <F> is not one of common faces  
-         of an edge of the contour <IC>") SetDists;
+	:param Dis1:
+	:type Dis1: float
+	:param Dis2:
+	:type Dis2: float
+	:param IC:
+	:type IC: Standard_Integer
+	:param F:
+	:type F: TopoDS_Face &
+	:rtype: None
+") SetDists;
 		void SetDists (const Standard_Real Dis1,const Standard_Real Dis2,const Standard_Integer IC,const TopoDS_Face & F);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
-	Dis1(Standard_Real)
-	Dis2(Standard_Real)
+		%feature("autodoc", "	* gives the distances <Dis1> and <Dis2> of the fillet contour of index <IC> in the DS
 
-Returns:
-	None
-
-gives the distances <Dis1> and <Dis2> of the fillet  
-         contour of index <IC> in the DS") Dists;
+	:param IC:
+	:type IC: Standard_Integer
+	:param Dis1:
+	:type Dis1: float &
+	:param Dis2:
+	:type Dis2: float &
+	:rtype: None
+") Dists;
 		void Dists (const Standard_Integer IC,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Dis(Standard_Real)
-	Angle(Standard_Real)
-	E(TopoDS_Edge)
-	F(TopoDS_Face)
+		%feature("autodoc", "	* initializes a new contour with the edge <E> as first (the next are found by propagation ), and the distance <Dis1> and <Angle> if the edge <E> has more than 2 adjacent faces
 
-Returns:
-	None
-
-initializes a new contour with the edge <E> as first  
-         (the next are found by propagation ), and  the  
-         distance <Dis1> and <Angle>  if the edge <E> has more than 2 adjacent faces") AddDA;
+	:param Dis:
+	:type Dis: float
+	:param Angle:
+	:type Angle: float
+	:param E:
+	:type E: TopoDS_Edge &
+	:param F:
+	:type F: TopoDS_Face &
+	:rtype: None
+") AddDA;
 		void AddDA (const Standard_Real Dis,const Standard_Real Angle,const TopoDS_Edge & E,const TopoDS_Face & F);
-		%feature("autodoc", "Args:
-	Dis(Standard_Real)
-	Angle(Standard_Real)
-	IC(Standard_Integer)
-	F(TopoDS_Face)
+		%feature("autodoc", "	* set the distance <Dis> and <Angle> of the fillet contour of index <IC> in the DS with <Dis> on <F>. if the face <F> is not one of common faces of an edge of the contour <IC>
 
-Returns:
-	None
-
-set the distance <Dis> and <Angle> of the fillet  
-         contour of index <IC> in the DS with <Dis> on <F>.  if the face <F> is not one of common faces  
-         of an edge of the contour <IC>") SetDistAngle;
+	:param Dis:
+	:type Dis: float
+	:param Angle:
+	:type Angle: float
+	:param IC:
+	:type IC: Standard_Integer
+	:param F:
+	:type F: TopoDS_Face &
+	:rtype: None
+") SetDistAngle;
 		void SetDistAngle (const Standard_Real Dis,const Standard_Real Angle,const Standard_Integer IC,const TopoDS_Face & F);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
-	Dis(Standard_Real)
-	Angle(Standard_Real)
-	DisOnFace1(Standard_Boolean)
+		%feature("autodoc", "	* gives the distances <Dis> and <Angle> of the fillet contour of index <IC> in the DS
 
-Returns:
-	None
-
-gives the distances <Dis> and <Angle> of the fillet  
-         contour of index <IC> in the DS") GetDistAngle;
+	:param IC:
+	:type IC: Standard_Integer
+	:param Dis:
+	:type Dis: float &
+	:param Angle:
+	:type Angle: float &
+	:param DisOnFace1:
+	:type DisOnFace1: bool
+	:rtype: None
+") GetDistAngle;
 		void GetDistAngle (const Standard_Integer IC,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Boolean & DisOnFace1);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
+		%feature("autodoc", "	* renvoi la methode des chanfreins utilisee
 
-Returns:
-	ChFiDS_ChamfMethod
-
-renvoi la methode des chanfreins utilisee") IsChamfer;
+	:param IC:
+	:type IC: Standard_Integer
+	:rtype: ChFiDS_ChamfMethod
+") IsChamfer;
 		ChFiDS_ChamfMethod IsChamfer (const Standard_Integer IC);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
+		%feature("autodoc", "	* Reset tous rayons du contour IC.
 
-Returns:
-	None
-
-Reset tous rayons du contour IC.") ResetContour;
+	:param IC:
+	:type IC: Standard_Integer
+	:rtype: None
+") ResetContour;
 		void ResetContour (const Standard_Integer IC);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Simulate;
+		%feature("autodoc", "	:param IC:
+	:type IC: Standard_Integer
+	:rtype: None
+") Simulate;
 		void Simulate (const Standard_Integer IC);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbSurf;
+		%feature("autodoc", "	:param IC:
+	:type IC: Standard_Integer
+	:rtype: int
+") NbSurf;
 		Standard_Integer NbSurf (const Standard_Integer IC);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
-	IS(Standard_Integer)
-
-Returns:
-	Handle_ChFiDS_SecHArray1
-
-No detailed docstring for this function.") Sect;
+		%feature("autodoc", "	:param IC:
+	:type IC: Standard_Integer
+	:param IS:
+	:type IS: Standard_Integer
+	:rtype: Handle_ChFiDS_SecHArray1
+") Sect;
 		Handle_ChFiDS_SecHArray1 Sect (const Standard_Integer IC,const Standard_Integer IS);
-		%feature("autodoc", "Args:
-	Data(Handle_ChFiDS_SurfData)
-	Guide(Handle_ChFiDS_HElSpine)
-	Spine(Handle_ChFiDS_Spine)
-	Choix(Standard_Integer)
-	S1(Handle_BRepAdaptor_HSurface)
-	I1(Handle_Adaptor3d_TopolTool)
-	PC1(Handle_BRepAdaptor_HCurve2d)
-	Sref1(Handle_BRepAdaptor_HSurface)
-	PCref1(Handle_BRepAdaptor_HCurve2d)
-	Decroch1(Standard_Boolean)
-	S2(Handle_BRepAdaptor_HSurface)
-	I2(Handle_Adaptor3d_TopolTool)
-	Or2(TopAbs_Orientation)
-	Fleche(Standard_Real)
-	TolGuide(Standard_Real)
-	First(Standard_Real)
-	Last(Standard_Real)
-	Inside(Standard_Boolean)
-	Appro(Standard_Boolean)
-	Forward(Standard_Boolean)
-	RecP(Standard_Boolean)
-	RecS(Standard_Boolean)
-	RecRst(Standard_Boolean)
-	Soldep(math_Vector)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SimulSurf;
+		%feature("autodoc", "	:param Data:
+	:type Data: Handle_ChFiDS_SurfData &
+	:param Guide:
+	:type Guide: Handle_ChFiDS_HElSpine &
+	:param Spine:
+	:type Spine: Handle_ChFiDS_Spine &
+	:param Choix:
+	:type Choix: Standard_Integer
+	:param S1:
+	:type S1: Handle_BRepAdaptor_HSurface &
+	:param I1:
+	:type I1: Handle_Adaptor3d_TopolTool &
+	:param PC1:
+	:type PC1: Handle_BRepAdaptor_HCurve2d &
+	:param Sref1:
+	:type Sref1: Handle_BRepAdaptor_HSurface &
+	:param PCref1:
+	:type PCref1: Handle_BRepAdaptor_HCurve2d &
+	:param Decroch1:
+	:type Decroch1: bool
+	:param S2:
+	:type S2: Handle_BRepAdaptor_HSurface &
+	:param I2:
+	:type I2: Handle_Adaptor3d_TopolTool &
+	:param Or2:
+	:type Or2: TopAbs_Orientation
+	:param Fleche:
+	:type Fleche: float
+	:param TolGuide:
+	:type TolGuide: float
+	:param First:
+	:type First: float &
+	:param Last:
+	:type Last: float &
+	:param Inside:
+	:type Inside: bool
+	:param Appro:
+	:type Appro: bool
+	:param Forward:
+	:type Forward: bool
+	:param RecP:
+	:type RecP: bool
+	:param RecS:
+	:type RecS: bool
+	:param RecRst:
+	:type RecRst: bool
+	:param Soldep:
+	:type Soldep: math_Vector &
+	:rtype: void
+") SimulSurf;
 		virtual void SimulSurf (Handle_ChFiDS_SurfData & Data,const Handle_ChFiDS_HElSpine & Guide,const Handle_ChFiDS_Spine & Spine,const Standard_Integer Choix,const Handle_BRepAdaptor_HSurface & S1,const Handle_Adaptor3d_TopolTool & I1,const Handle_BRepAdaptor_HCurve2d & PC1,const Handle_BRepAdaptor_HSurface & Sref1,const Handle_BRepAdaptor_HCurve2d & PCref1,Standard_Boolean & Decroch1,const Handle_BRepAdaptor_HSurface & S2,const Handle_Adaptor3d_TopolTool & I2,const TopAbs_Orientation Or2,const Standard_Real Fleche,const Standard_Real TolGuide,Standard_Real &OutValue,Standard_Real &OutValue,const Standard_Boolean Inside,const Standard_Boolean Appro,const Standard_Boolean Forward,const Standard_Boolean RecP,const Standard_Boolean RecS,const Standard_Boolean RecRst,const math_Vector & Soldep);
-		%feature("autodoc", "Args:
-	Data(Handle_ChFiDS_SurfData)
-	Guide(Handle_ChFiDS_HElSpine)
-	Spine(Handle_ChFiDS_Spine)
-	Choix(Standard_Integer)
-	S1(Handle_BRepAdaptor_HSurface)
-	I1(Handle_Adaptor3d_TopolTool)
-	Or1(TopAbs_Orientation)
-	S2(Handle_BRepAdaptor_HSurface)
-	I2(Handle_Adaptor3d_TopolTool)
-	PC2(Handle_BRepAdaptor_HCurve2d)
-	Sref2(Handle_BRepAdaptor_HSurface)
-	PCref2(Handle_BRepAdaptor_HCurve2d)
-	Decroch2(Standard_Boolean)
-	Fleche(Standard_Real)
-	TolGuide(Standard_Real)
-	First(Standard_Real)
-	Last(Standard_Real)
-	Inside(Standard_Boolean)
-	Appro(Standard_Boolean)
-	Forward(Standard_Boolean)
-	RecP(Standard_Boolean)
-	RecS(Standard_Boolean)
-	RecRst(Standard_Boolean)
-	Soldep(math_Vector)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SimulSurf;
+		%feature("autodoc", "	:param Data:
+	:type Data: Handle_ChFiDS_SurfData &
+	:param Guide:
+	:type Guide: Handle_ChFiDS_HElSpine &
+	:param Spine:
+	:type Spine: Handle_ChFiDS_Spine &
+	:param Choix:
+	:type Choix: Standard_Integer
+	:param S1:
+	:type S1: Handle_BRepAdaptor_HSurface &
+	:param I1:
+	:type I1: Handle_Adaptor3d_TopolTool &
+	:param Or1:
+	:type Or1: TopAbs_Orientation
+	:param S2:
+	:type S2: Handle_BRepAdaptor_HSurface &
+	:param I2:
+	:type I2: Handle_Adaptor3d_TopolTool &
+	:param PC2:
+	:type PC2: Handle_BRepAdaptor_HCurve2d &
+	:param Sref2:
+	:type Sref2: Handle_BRepAdaptor_HSurface &
+	:param PCref2:
+	:type PCref2: Handle_BRepAdaptor_HCurve2d &
+	:param Decroch2:
+	:type Decroch2: bool
+	:param Fleche:
+	:type Fleche: float
+	:param TolGuide:
+	:type TolGuide: float
+	:param First:
+	:type First: float &
+	:param Last:
+	:type Last: float &
+	:param Inside:
+	:type Inside: bool
+	:param Appro:
+	:type Appro: bool
+	:param Forward:
+	:type Forward: bool
+	:param RecP:
+	:type RecP: bool
+	:param RecS:
+	:type RecS: bool
+	:param RecRst:
+	:type RecRst: bool
+	:param Soldep:
+	:type Soldep: math_Vector &
+	:rtype: void
+") SimulSurf;
 		virtual void SimulSurf (Handle_ChFiDS_SurfData & Data,const Handle_ChFiDS_HElSpine & Guide,const Handle_ChFiDS_Spine & Spine,const Standard_Integer Choix,const Handle_BRepAdaptor_HSurface & S1,const Handle_Adaptor3d_TopolTool & I1,const TopAbs_Orientation Or1,const Handle_BRepAdaptor_HSurface & S2,const Handle_Adaptor3d_TopolTool & I2,const Handle_BRepAdaptor_HCurve2d & PC2,const Handle_BRepAdaptor_HSurface & Sref2,const Handle_BRepAdaptor_HCurve2d & PCref2,Standard_Boolean & Decroch2,const Standard_Real Fleche,const Standard_Real TolGuide,Standard_Real &OutValue,Standard_Real &OutValue,const Standard_Boolean Inside,const Standard_Boolean Appro,const Standard_Boolean Forward,const Standard_Boolean RecP,const Standard_Boolean RecS,const Standard_Boolean RecRst,const math_Vector & Soldep);
-		%feature("autodoc", "Args:
-	Data(Handle_ChFiDS_SurfData)
-	Guide(Handle_ChFiDS_HElSpine)
-	Spine(Handle_ChFiDS_Spine)
-	Choix(Standard_Integer)
-	S1(Handle_BRepAdaptor_HSurface)
-	I1(Handle_Adaptor3d_TopolTool)
-	PC1(Handle_BRepAdaptor_HCurve2d)
-	Sref1(Handle_BRepAdaptor_HSurface)
-	PCref1(Handle_BRepAdaptor_HCurve2d)
-	Decroch1(Standard_Boolean)
-	Or1(TopAbs_Orientation)
-	S2(Handle_BRepAdaptor_HSurface)
-	I2(Handle_Adaptor3d_TopolTool)
-	PC2(Handle_BRepAdaptor_HCurve2d)
-	Sref2(Handle_BRepAdaptor_HSurface)
-	PCref2(Handle_BRepAdaptor_HCurve2d)
-	Decroch2(Standard_Boolean)
-	Or2(TopAbs_Orientation)
-	Fleche(Standard_Real)
-	TolGuide(Standard_Real)
-	First(Standard_Real)
-	Last(Standard_Real)
-	Inside(Standard_Boolean)
-	Appro(Standard_Boolean)
-	Forward(Standard_Boolean)
-	RecP1(Standard_Boolean)
-	RecRst1(Standard_Boolean)
-	RecP2(Standard_Boolean)
-	RecRst2(Standard_Boolean)
-	Soldep(math_Vector)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SimulSurf;
+		%feature("autodoc", "	:param Data:
+	:type Data: Handle_ChFiDS_SurfData &
+	:param Guide:
+	:type Guide: Handle_ChFiDS_HElSpine &
+	:param Spine:
+	:type Spine: Handle_ChFiDS_Spine &
+	:param Choix:
+	:type Choix: Standard_Integer
+	:param S1:
+	:type S1: Handle_BRepAdaptor_HSurface &
+	:param I1:
+	:type I1: Handle_Adaptor3d_TopolTool &
+	:param PC1:
+	:type PC1: Handle_BRepAdaptor_HCurve2d &
+	:param Sref1:
+	:type Sref1: Handle_BRepAdaptor_HSurface &
+	:param PCref1:
+	:type PCref1: Handle_BRepAdaptor_HCurve2d &
+	:param Decroch1:
+	:type Decroch1: bool
+	:param Or1:
+	:type Or1: TopAbs_Orientation
+	:param S2:
+	:type S2: Handle_BRepAdaptor_HSurface &
+	:param I2:
+	:type I2: Handle_Adaptor3d_TopolTool &
+	:param PC2:
+	:type PC2: Handle_BRepAdaptor_HCurve2d &
+	:param Sref2:
+	:type Sref2: Handle_BRepAdaptor_HSurface &
+	:param PCref2:
+	:type PCref2: Handle_BRepAdaptor_HCurve2d &
+	:param Decroch2:
+	:type Decroch2: bool
+	:param Or2:
+	:type Or2: TopAbs_Orientation
+	:param Fleche:
+	:type Fleche: float
+	:param TolGuide:
+	:type TolGuide: float
+	:param First:
+	:type First: float &
+	:param Last:
+	:type Last: float &
+	:param Inside:
+	:type Inside: bool
+	:param Appro:
+	:type Appro: bool
+	:param Forward:
+	:type Forward: bool
+	:param RecP1:
+	:type RecP1: bool
+	:param RecRst1:
+	:type RecRst1: bool
+	:param RecP2:
+	:type RecP2: bool
+	:param RecRst2:
+	:type RecRst2: bool
+	:param Soldep:
+	:type Soldep: math_Vector &
+	:rtype: void
+") SimulSurf;
 		virtual void SimulSurf (Handle_ChFiDS_SurfData & Data,const Handle_ChFiDS_HElSpine & Guide,const Handle_ChFiDS_Spine & Spine,const Standard_Integer Choix,const Handle_BRepAdaptor_HSurface & S1,const Handle_Adaptor3d_TopolTool & I1,const Handle_BRepAdaptor_HCurve2d & PC1,const Handle_BRepAdaptor_HSurface & Sref1,const Handle_BRepAdaptor_HCurve2d & PCref1,Standard_Boolean & Decroch1,const TopAbs_Orientation Or1,const Handle_BRepAdaptor_HSurface & S2,const Handle_Adaptor3d_TopolTool & I2,const Handle_BRepAdaptor_HCurve2d & PC2,const Handle_BRepAdaptor_HSurface & Sref2,const Handle_BRepAdaptor_HCurve2d & PCref2,Standard_Boolean & Decroch2,const TopAbs_Orientation Or2,const Standard_Real Fleche,const Standard_Real TolGuide,Standard_Real &OutValue,Standard_Real &OutValue,const Standard_Boolean Inside,const Standard_Boolean Appro,const Standard_Boolean Forward,const Standard_Boolean RecP1,const Standard_Boolean RecRst1,const Standard_Boolean RecP2,const Standard_Boolean RecRst2,const math_Vector & Soldep);
-		%feature("autodoc", "Args:
-	Data(ChFiDS_SequenceOfSurfData)
-	Guide(Handle_ChFiDS_HElSpine)
-	Spine(Handle_ChFiDS_Spine)
-	Choix(Standard_Integer)
-	S1(Handle_BRepAdaptor_HSurface)
-	I1(Handle_Adaptor3d_TopolTool)
-	S2(Handle_BRepAdaptor_HSurface)
-	I2(Handle_Adaptor3d_TopolTool)
-	MaxStep(Standard_Real)
-	Fleche(Standard_Real)
-	TolGuide(Standard_Real)
-	First(Standard_Real)
-	Last(Standard_Real)
-	Inside(Standard_Boolean)
-	Appro(Standard_Boolean)
-	Forward(Standard_Boolean)
-	RecOnS1(Standard_Boolean)
-	RecOnS2(Standard_Boolean)
-	Soldep(math_Vector)
-	Intf(Standard_Integer)
-	Intl(Standard_Integer)
+		%feature("autodoc", "	* Methode, implemented in inheritants, calculates the elements of construction of the surface (fillet or chamfer).
 
-Returns:
-	virtual Standard_Boolean
-
-Methode, implemented in inheritants, calculates  
-         the elements of construction of  the surface (fillet  
-         or chamfer).") PerformSurf;
+	:param Data:
+	:type Data: ChFiDS_SequenceOfSurfData &
+	:param Guide:
+	:type Guide: Handle_ChFiDS_HElSpine &
+	:param Spine:
+	:type Spine: Handle_ChFiDS_Spine &
+	:param Choix:
+	:type Choix: Standard_Integer
+	:param S1:
+	:type S1: Handle_BRepAdaptor_HSurface &
+	:param I1:
+	:type I1: Handle_Adaptor3d_TopolTool &
+	:param S2:
+	:type S2: Handle_BRepAdaptor_HSurface &
+	:param I2:
+	:type I2: Handle_Adaptor3d_TopolTool &
+	:param MaxStep:
+	:type MaxStep: float
+	:param Fleche:
+	:type Fleche: float
+	:param TolGuide:
+	:type TolGuide: float
+	:param First:
+	:type First: float &
+	:param Last:
+	:type Last: float &
+	:param Inside:
+	:type Inside: bool
+	:param Appro:
+	:type Appro: bool
+	:param Forward:
+	:type Forward: bool
+	:param RecOnS1:
+	:type RecOnS1: bool
+	:param RecOnS2:
+	:type RecOnS2: bool
+	:param Soldep:
+	:type Soldep: math_Vector &
+	:param Intf:
+	:type Intf: Standard_Integer &
+	:param Intl:
+	:type Intl: Standard_Integer &
+	:rtype: bool
+") PerformSurf;
 		virtual Standard_Boolean PerformSurf (ChFiDS_SequenceOfSurfData & Data,const Handle_ChFiDS_HElSpine & Guide,const Handle_ChFiDS_Spine & Spine,const Standard_Integer Choix,const Handle_BRepAdaptor_HSurface & S1,const Handle_Adaptor3d_TopolTool & I1,const Handle_BRepAdaptor_HSurface & S2,const Handle_Adaptor3d_TopolTool & I2,const Standard_Real MaxStep,const Standard_Real Fleche,const Standard_Real TolGuide,Standard_Real &OutValue,Standard_Real &OutValue,const Standard_Boolean Inside,const Standard_Boolean Appro,const Standard_Boolean Forward,const Standard_Boolean RecOnS1,const Standard_Boolean RecOnS2,const math_Vector & Soldep,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	Data(ChFiDS_SequenceOfSurfData)
-	Guide(Handle_ChFiDS_HElSpine)
-	Spine(Handle_ChFiDS_Spine)
-	Choix(Standard_Integer)
-	S1(Handle_BRepAdaptor_HSurface)
-	I1(Handle_Adaptor3d_TopolTool)
-	PC1(Handle_BRepAdaptor_HCurve2d)
-	Sref1(Handle_BRepAdaptor_HSurface)
-	PCref1(Handle_BRepAdaptor_HCurve2d)
-	Decroch1(Standard_Boolean)
-	S2(Handle_BRepAdaptor_HSurface)
-	I2(Handle_Adaptor3d_TopolTool)
-	Or2(TopAbs_Orientation)
-	MaxStep(Standard_Real)
-	Fleche(Standard_Real)
-	TolGuide(Standard_Real)
-	First(Standard_Real)
-	Last(Standard_Real)
-	Inside(Standard_Boolean)
-	Appro(Standard_Boolean)
-	Forward(Standard_Boolean)
-	RecP(Standard_Boolean)
-	RecS(Standard_Boolean)
-	RecRst(Standard_Boolean)
-	Soldep(math_Vector)
+		%feature("autodoc", "	* Method, implemented in the inheritants, calculates the elements of construction of the surface (fillet or chamfer) contact edge/face.
 
-Returns:
-	virtual void
-
-Method, implemented in  the inheritants, calculates  
-         the elements of construction of  the surface (fillet  
-         or chamfer) contact edge/face.") PerformSurf;
+	:param Data:
+	:type Data: ChFiDS_SequenceOfSurfData &
+	:param Guide:
+	:type Guide: Handle_ChFiDS_HElSpine &
+	:param Spine:
+	:type Spine: Handle_ChFiDS_Spine &
+	:param Choix:
+	:type Choix: Standard_Integer
+	:param S1:
+	:type S1: Handle_BRepAdaptor_HSurface &
+	:param I1:
+	:type I1: Handle_Adaptor3d_TopolTool &
+	:param PC1:
+	:type PC1: Handle_BRepAdaptor_HCurve2d &
+	:param Sref1:
+	:type Sref1: Handle_BRepAdaptor_HSurface &
+	:param PCref1:
+	:type PCref1: Handle_BRepAdaptor_HCurve2d &
+	:param Decroch1:
+	:type Decroch1: bool
+	:param S2:
+	:type S2: Handle_BRepAdaptor_HSurface &
+	:param I2:
+	:type I2: Handle_Adaptor3d_TopolTool &
+	:param Or2:
+	:type Or2: TopAbs_Orientation
+	:param MaxStep:
+	:type MaxStep: float
+	:param Fleche:
+	:type Fleche: float
+	:param TolGuide:
+	:type TolGuide: float
+	:param First:
+	:type First: float &
+	:param Last:
+	:type Last: float &
+	:param Inside:
+	:type Inside: bool
+	:param Appro:
+	:type Appro: bool
+	:param Forward:
+	:type Forward: bool
+	:param RecP:
+	:type RecP: bool
+	:param RecS:
+	:type RecS: bool
+	:param RecRst:
+	:type RecRst: bool
+	:param Soldep:
+	:type Soldep: math_Vector &
+	:rtype: void
+") PerformSurf;
 		virtual void PerformSurf (ChFiDS_SequenceOfSurfData & Data,const Handle_ChFiDS_HElSpine & Guide,const Handle_ChFiDS_Spine & Spine,const Standard_Integer Choix,const Handle_BRepAdaptor_HSurface & S1,const Handle_Adaptor3d_TopolTool & I1,const Handle_BRepAdaptor_HCurve2d & PC1,const Handle_BRepAdaptor_HSurface & Sref1,const Handle_BRepAdaptor_HCurve2d & PCref1,Standard_Boolean & Decroch1,const Handle_BRepAdaptor_HSurface & S2,const Handle_Adaptor3d_TopolTool & I2,const TopAbs_Orientation Or2,const Standard_Real MaxStep,const Standard_Real Fleche,const Standard_Real TolGuide,Standard_Real &OutValue,Standard_Real &OutValue,const Standard_Boolean Inside,const Standard_Boolean Appro,const Standard_Boolean Forward,const Standard_Boolean RecP,const Standard_Boolean RecS,const Standard_Boolean RecRst,const math_Vector & Soldep);
-		%feature("autodoc", "Args:
-	Data(ChFiDS_SequenceOfSurfData)
-	Guide(Handle_ChFiDS_HElSpine)
-	Spine(Handle_ChFiDS_Spine)
-	Choix(Standard_Integer)
-	S1(Handle_BRepAdaptor_HSurface)
-	I1(Handle_Adaptor3d_TopolTool)
-	Or1(TopAbs_Orientation)
-	S2(Handle_BRepAdaptor_HSurface)
-	I2(Handle_Adaptor3d_TopolTool)
-	PC2(Handle_BRepAdaptor_HCurve2d)
-	Sref2(Handle_BRepAdaptor_HSurface)
-	PCref2(Handle_BRepAdaptor_HCurve2d)
-	Decroch2(Standard_Boolean)
-	MaxStep(Standard_Real)
-	Fleche(Standard_Real)
-	TolGuide(Standard_Real)
-	First(Standard_Real)
-	Last(Standard_Real)
-	Inside(Standard_Boolean)
-	Appro(Standard_Boolean)
-	Forward(Standard_Boolean)
-	RecP(Standard_Boolean)
-	RecS(Standard_Boolean)
-	RecRst(Standard_Boolean)
-	Soldep(math_Vector)
+		%feature("autodoc", "	* Method, implemented in inheritants, calculates the elements of construction of the surface (fillet or chamfer) contact edge/face.
 
-Returns:
-	virtual void
-
-Method, implemented in inheritants, calculates  
-         the elements of construction of  the surface (fillet  
-         or chamfer) contact edge/face.") PerformSurf;
+	:param Data:
+	:type Data: ChFiDS_SequenceOfSurfData &
+	:param Guide:
+	:type Guide: Handle_ChFiDS_HElSpine &
+	:param Spine:
+	:type Spine: Handle_ChFiDS_Spine &
+	:param Choix:
+	:type Choix: Standard_Integer
+	:param S1:
+	:type S1: Handle_BRepAdaptor_HSurface &
+	:param I1:
+	:type I1: Handle_Adaptor3d_TopolTool &
+	:param Or1:
+	:type Or1: TopAbs_Orientation
+	:param S2:
+	:type S2: Handle_BRepAdaptor_HSurface &
+	:param I2:
+	:type I2: Handle_Adaptor3d_TopolTool &
+	:param PC2:
+	:type PC2: Handle_BRepAdaptor_HCurve2d &
+	:param Sref2:
+	:type Sref2: Handle_BRepAdaptor_HSurface &
+	:param PCref2:
+	:type PCref2: Handle_BRepAdaptor_HCurve2d &
+	:param Decroch2:
+	:type Decroch2: bool
+	:param MaxStep:
+	:type MaxStep: float
+	:param Fleche:
+	:type Fleche: float
+	:param TolGuide:
+	:type TolGuide: float
+	:param First:
+	:type First: float &
+	:param Last:
+	:type Last: float &
+	:param Inside:
+	:type Inside: bool
+	:param Appro:
+	:type Appro: bool
+	:param Forward:
+	:type Forward: bool
+	:param RecP:
+	:type RecP: bool
+	:param RecS:
+	:type RecS: bool
+	:param RecRst:
+	:type RecRst: bool
+	:param Soldep:
+	:type Soldep: math_Vector &
+	:rtype: void
+") PerformSurf;
 		virtual void PerformSurf (ChFiDS_SequenceOfSurfData & Data,const Handle_ChFiDS_HElSpine & Guide,const Handle_ChFiDS_Spine & Spine,const Standard_Integer Choix,const Handle_BRepAdaptor_HSurface & S1,const Handle_Adaptor3d_TopolTool & I1,const TopAbs_Orientation Or1,const Handle_BRepAdaptor_HSurface & S2,const Handle_Adaptor3d_TopolTool & I2,const Handle_BRepAdaptor_HCurve2d & PC2,const Handle_BRepAdaptor_HSurface & Sref2,const Handle_BRepAdaptor_HCurve2d & PCref2,Standard_Boolean & Decroch2,const Standard_Real MaxStep,const Standard_Real Fleche,const Standard_Real TolGuide,Standard_Real &OutValue,Standard_Real &OutValue,const Standard_Boolean Inside,const Standard_Boolean Appro,const Standard_Boolean Forward,const Standard_Boolean RecP,const Standard_Boolean RecS,const Standard_Boolean RecRst,const math_Vector & Soldep);
-		%feature("autodoc", "Args:
-	Data(ChFiDS_SequenceOfSurfData)
-	Guide(Handle_ChFiDS_HElSpine)
-	Spine(Handle_ChFiDS_Spine)
-	Choix(Standard_Integer)
-	S1(Handle_BRepAdaptor_HSurface)
-	I1(Handle_Adaptor3d_TopolTool)
-	PC1(Handle_BRepAdaptor_HCurve2d)
-	Sref1(Handle_BRepAdaptor_HSurface)
-	PCref1(Handle_BRepAdaptor_HCurve2d)
-	Decroch1(Standard_Boolean)
-	Or1(TopAbs_Orientation)
-	S2(Handle_BRepAdaptor_HSurface)
-	I2(Handle_Adaptor3d_TopolTool)
-	PC2(Handle_BRepAdaptor_HCurve2d)
-	Sref2(Handle_BRepAdaptor_HSurface)
-	PCref2(Handle_BRepAdaptor_HCurve2d)
-	Decroch2(Standard_Boolean)
-	Or2(TopAbs_Orientation)
-	MaxStep(Standard_Real)
-	Fleche(Standard_Real)
-	TolGuide(Standard_Real)
-	First(Standard_Real)
-	Last(Standard_Real)
-	Inside(Standard_Boolean)
-	Appro(Standard_Boolean)
-	Forward(Standard_Boolean)
-	RecP1(Standard_Boolean)
-	RecRst1(Standard_Boolean)
-	RecP2(Standard_Boolean)
-	RecRst2(Standard_Boolean)
-	Soldep(math_Vector)
+		%feature("autodoc", "	* Method, implemented in inheritants, calculates the elements of construction of the surface (fillet or chamfer) contact edge/edge.
 
-Returns:
-	virtual void
-
-Method, implemented in  inheritants, calculates  
-         the elements of construction of  the surface (fillet  
-         or chamfer) contact edge/edge.") PerformSurf;
+	:param Data:
+	:type Data: ChFiDS_SequenceOfSurfData &
+	:param Guide:
+	:type Guide: Handle_ChFiDS_HElSpine &
+	:param Spine:
+	:type Spine: Handle_ChFiDS_Spine &
+	:param Choix:
+	:type Choix: Standard_Integer
+	:param S1:
+	:type S1: Handle_BRepAdaptor_HSurface &
+	:param I1:
+	:type I1: Handle_Adaptor3d_TopolTool &
+	:param PC1:
+	:type PC1: Handle_BRepAdaptor_HCurve2d &
+	:param Sref1:
+	:type Sref1: Handle_BRepAdaptor_HSurface &
+	:param PCref1:
+	:type PCref1: Handle_BRepAdaptor_HCurve2d &
+	:param Decroch1:
+	:type Decroch1: bool
+	:param Or1:
+	:type Or1: TopAbs_Orientation
+	:param S2:
+	:type S2: Handle_BRepAdaptor_HSurface &
+	:param I2:
+	:type I2: Handle_Adaptor3d_TopolTool &
+	:param PC2:
+	:type PC2: Handle_BRepAdaptor_HCurve2d &
+	:param Sref2:
+	:type Sref2: Handle_BRepAdaptor_HSurface &
+	:param PCref2:
+	:type PCref2: Handle_BRepAdaptor_HCurve2d &
+	:param Decroch2:
+	:type Decroch2: bool
+	:param Or2:
+	:type Or2: TopAbs_Orientation
+	:param MaxStep:
+	:type MaxStep: float
+	:param Fleche:
+	:type Fleche: float
+	:param TolGuide:
+	:type TolGuide: float
+	:param First:
+	:type First: float &
+	:param Last:
+	:type Last: float &
+	:param Inside:
+	:type Inside: bool
+	:param Appro:
+	:type Appro: bool
+	:param Forward:
+	:type Forward: bool
+	:param RecP1:
+	:type RecP1: bool
+	:param RecRst1:
+	:type RecRst1: bool
+	:param RecP2:
+	:type RecP2: bool
+	:param RecRst2:
+	:type RecRst2: bool
+	:param Soldep:
+	:type Soldep: math_Vector &
+	:rtype: void
+") PerformSurf;
 		virtual void PerformSurf (ChFiDS_SequenceOfSurfData & Data,const Handle_ChFiDS_HElSpine & Guide,const Handle_ChFiDS_Spine & Spine,const Standard_Integer Choix,const Handle_BRepAdaptor_HSurface & S1,const Handle_Adaptor3d_TopolTool & I1,const Handle_BRepAdaptor_HCurve2d & PC1,const Handle_BRepAdaptor_HSurface & Sref1,const Handle_BRepAdaptor_HCurve2d & PCref1,Standard_Boolean & Decroch1,const TopAbs_Orientation Or1,const Handle_BRepAdaptor_HSurface & S2,const Handle_Adaptor3d_TopolTool & I2,const Handle_BRepAdaptor_HCurve2d & PC2,const Handle_BRepAdaptor_HSurface & Sref2,const Handle_BRepAdaptor_HCurve2d & PCref2,Standard_Boolean & Decroch2,const TopAbs_Orientation Or2,const Standard_Real MaxStep,const Standard_Real Fleche,const Standard_Real TolGuide,Standard_Real &OutValue,Standard_Real &OutValue,const Standard_Boolean Inside,const Standard_Boolean Appro,const Standard_Boolean Forward,const Standard_Boolean RecP1,const Standard_Boolean RecRst1,const Standard_Boolean RecP2,const Standard_Boolean RecRst2,const math_Vector & Soldep);
-		%feature("autodoc", "Args:
-	Choice(Standard_Integer)
-	DisOnF1(Standard_Boolean)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FindChoiceDistAngle;
+		%feature("autodoc", "	:param Choice:
+	:type Choice: Standard_Integer
+	:param DisOnF1:
+	:type DisOnF1: bool
+	:rtype: int
+") FindChoiceDistAngle;
 		Standard_Integer FindChoiceDistAngle (const Standard_Integer Choice,const Standard_Boolean DisOnF1);
 };
 
@@ -936,212 +1005,193 @@ def __del__(self):
 %nodefaultctor ChFi3d_FilBuilder;
 class ChFi3d_FilBuilder : public ChFi3d_Builder {
 	public:
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-	FShape(ChFi3d_FilletShape)=ChFi3d_Rational
-	Ta(Standard_Real)=1.0e-2
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChFi3d_FilBuilder;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:param FShape: default value is ChFi3d_Rational
+	:type FShape: ChFi3d_FilletShape
+	:param Ta: default value is 1.0e-2
+	:type Ta: float
+	:rtype: None
+") ChFi3d_FilBuilder;
 		 ChFi3d_FilBuilder (const TopoDS_Shape & S,const ChFi3d_FilletShape FShape = ChFi3d_Rational,const Standard_Real Ta = 1.0e-2);
-		%feature("autodoc", "Args:
-	FShape(ChFi3d_FilletShape)
+		%feature("autodoc", "	* Sets the type of fillet surface.
 
-Returns:
-	None
-
-Sets the type of fillet surface.") SetFilletShape;
+	:param FShape:
+	:type FShape: ChFi3d_FilletShape
+	:rtype: None
+") SetFilletShape;
 		void SetFilletShape (const ChFi3d_FilletShape FShape);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFi3d_FilletShape
+		%feature("autodoc", "	* Returns the type of fillet surface.
 
-Returns the type of fillet surface.") GetFilletShape;
+	:rtype: ChFi3d_FilletShape
+") GetFilletShape;
 		ChFi3d_FilletShape GetFilletShape ();
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
+		%feature("autodoc", "	* initialisation of a contour with the first edge (the following are found by propagation). Attention, you need to start with SetRadius.
 
-Returns:
-	None
-
-initialisation of  a contour with the first edge  
-         (the following are found  by propagation).  
-         Attention, you  need  to start  with  SetRadius.") Add;
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: None
+") Add;
 		void Add (const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	Radius(Standard_Real)
-	E(TopoDS_Edge)
+		%feature("autodoc", "	* initialisation of the constant vector the corresponding 1st edge.
 
-Returns:
-	None
-
-initialisation of the constant vector the corresponding  1st  edge.") Add;
+	:param Radius:
+	:type Radius: float
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: None
+") Add;
 		void Add (const Standard_Real Radius,const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	C(Handle_Law_Function)
-	IC(Standard_Integer)
-	IinC(Standard_Integer)
+		%feature("autodoc", "	* Set the radius of the contour of index IC.
 
-Returns:
-	None
-
-Set the radius of the contour of index IC.") SetRadius;
+	:param C:
+	:type C: Handle_Law_Function &
+	:param IC:
+	:type IC: Standard_Integer
+	:param IinC:
+	:type IinC: Standard_Integer
+	:rtype: None
+") SetRadius;
 		void SetRadius (const Handle_Law_Function & C,const Standard_Integer IC,const Standard_Integer IinC);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
+		%feature("autodoc", "	* Returns true the contour is flaged as edge constant.
 
-Returns:
-	Standard_Boolean
-
-Returns true the contour is flaged as edge constant.") IsConstant;
+	:param IC:
+	:type IC: Standard_Integer
+	:rtype: bool
+") IsConstant;
 		Standard_Boolean IsConstant (const Standard_Integer IC);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
+		%feature("autodoc", "	* Returns the vector if the contour is flagged as edge constant.
 
-Returns:
-	Standard_Real
-
-Returns the vector if the contour is flagged as edge  
-         constant.") Radius;
+	:param IC:
+	:type IC: Standard_Integer
+	:rtype: float
+") Radius;
 		Standard_Real Radius (const Standard_Integer IC);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
+		%feature("autodoc", "	* Reset all vectors of contour IC.
 
-Returns:
-	None
-
-Reset all vectors of contour IC.") ResetContour;
+	:param IC:
+	:type IC: Standard_Integer
+	:rtype: None
+") ResetContour;
 		void ResetContour (const Standard_Integer IC);
-		%feature("autodoc", "Args:
-	Radius(Standard_Real)
-	IC(Standard_Integer)
-	E(TopoDS_Edge)
+		%feature("autodoc", "	* Set a constant on edge E of the contour of index IC. Since then E is flagged as constant.
 
-Returns:
-	None
-
-Set a constant on edge E of  the contour of  
-         index IC. Since  then  E is flagged as constant.") SetRadius;
+	:param Radius:
+	:type Radius: float
+	:param IC:
+	:type IC: Standard_Integer
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: None
+") SetRadius;
 		void SetRadius (const Standard_Real Radius,const Standard_Integer IC,const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
-	E(TopoDS_Edge)
+		%feature("autodoc", "	* Extracts the flag constant and the vector of edge E.
 
-Returns:
-	None
-
-Extracts the flag constant and the vector of edge E.") UnSet;
+	:param IC:
+	:type IC: Standard_Integer
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: None
+") UnSet;
 		void UnSet (const Standard_Integer IC,const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	Radius(Standard_Real)
-	IC(Standard_Integer)
-	V(TopoDS_Vertex)
+		%feature("autodoc", "	* Set a vector on vertex V of the contour of index IC.
 
-Returns:
-	None
-
-Set a vector on vertex  V of  the contour of index IC.") SetRadius;
+	:param Radius:
+	:type Radius: float
+	:param IC:
+	:type IC: Standard_Integer
+	:param V:
+	:type V: TopoDS_Vertex &
+	:rtype: None
+") SetRadius;
 		void SetRadius (const Standard_Real Radius,const Standard_Integer IC,const TopoDS_Vertex & V);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
-	V(TopoDS_Vertex)
+		%feature("autodoc", "	* Extracts the vector of the vertex V.
 
-Returns:
-	None
-
-Extracts the vector of  the vertex V.") UnSet;
+	:param IC:
+	:type IC: Standard_Integer
+	:param V:
+	:type V: TopoDS_Vertex &
+	:rtype: None
+") UnSet;
 		void UnSet (const Standard_Integer IC,const TopoDS_Vertex & V);
-		%feature("autodoc", "Args:
-	UandR(gp_XY)
-	IC(Standard_Integer)
-	IinC(Standard_Integer)
+		%feature("autodoc", "	* Set a vertex on the point of parametre U in the edge IinC of the contour of index IC
 
-Returns:
-	None
-
-Set  a vertex on the point of parametre U in the edge IinC  
-         of  the contour of index IC") SetRadius;
+	:param UandR:
+	:type UandR: gp_XY
+	:param IC:
+	:type IC: Standard_Integer
+	:param IinC:
+	:type IinC: Standard_Integer
+	:rtype: None
+") SetRadius;
 		void SetRadius (const gp_XY & UandR,const Standard_Integer IC,const Standard_Integer IinC);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
-	E(TopoDS_Edge)
+		%feature("autodoc", "	* Returns true E is flagged as edge constant.
 
-Returns:
-	Standard_Boolean
-
-Returns true E is flagged as edge constant.") IsConstant;
+	:param IC:
+	:type IC: Standard_Integer
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: bool
+") IsConstant;
 		Standard_Boolean IsConstant (const Standard_Integer IC,const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
-	E(TopoDS_Edge)
+		%feature("autodoc", "	* Returns the vector if E is flagged as edge constant.
 
-Returns:
-	Standard_Real
-
-Returns the vector if E is flagged as edge constant.") Radius;
+	:param IC:
+	:type IC: Standard_Integer
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: float
+") Radius;
 		Standard_Real Radius (const Standard_Integer IC,const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
-	E(TopoDS_Edge)
-	First(Standard_Real)
-	Last(Standard_Real)
+		%feature("autodoc", "	* Returns in First and Last les extremities of the part of variable vector framing E, returns False if E is flagged as edge constant.
 
-Returns:
-	Standard_Boolean
-
-Returns in First and Last  les extremities of  the  
-         part of variable  vector framing E, returns  
-         False  if  E is flagged as edge constant.") GetBounds;
+	:param IC:
+	:type IC: Standard_Integer
+	:param E:
+	:type E: TopoDS_Edge &
+	:param First:
+	:type First: float &
+	:param Last:
+	:type Last: float &
+	:rtype: bool
+") GetBounds;
 		Standard_Boolean GetBounds (const Standard_Integer IC,const TopoDS_Edge & E,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
-	E(TopoDS_Edge)
+		%feature("autodoc", "	* Returns the rule of elementary evolution of the part to variable vector framing E, returns a rule zero if E is flagged as edge constant.
 
-Returns:
-	Handle_Law_Function
-
-Returns the rule of  elementary  evolution of  the  
-         part to  variable vector framing E, returns a  
-         rule zero if E is flagged as edge constant.") GetLaw;
+	:param IC:
+	:type IC: Standard_Integer
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: Handle_Law_Function
+") GetLaw;
 		Handle_Law_Function GetLaw (const Standard_Integer IC,const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
-	E(TopoDS_Edge)
-	L(Handle_Law_Function)
+		%feature("autodoc", "	* Sets the rule of elementary evolution of the part to variable vector framing E.
 
-Returns:
-	None
-
-Sets the rule of elementary evolution of  the  
-         part to variable  vector framing E.") SetLaw;
+	:param IC:
+	:type IC: Standard_Integer
+	:param E:
+	:type E: TopoDS_Edge &
+	:param L:
+	:type L: Handle_Law_Function &
+	:rtype: None
+") SetLaw;
 		void SetLaw (const Standard_Integer IC,const TopoDS_Edge & E,const Handle_Law_Function & L);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Simulate;
+		%feature("autodoc", "	:param IC:
+	:type IC: Standard_Integer
+	:rtype: None
+") Simulate;
 		void Simulate (const Standard_Integer IC);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbSurf;
+		%feature("autodoc", "	:param IC:
+	:type IC: Standard_Integer
+	:rtype: int
+") NbSurf;
 		Standard_Integer NbSurf (const Standard_Integer IC);
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
-	IS(Standard_Integer)
-
-Returns:
-	Handle_ChFiDS_SecHArray1
-
-No detailed docstring for this function.") Sect;
+		%feature("autodoc", "	:param IC:
+	:type IC: Standard_Integer
+	:param IS:
+	:type IS: Standard_Integer
+	:rtype: Handle_ChFiDS_SecHArray1
+") Sect;
 		Handle_ChFiDS_SecHArray1 Sect (const Standard_Integer IC,const Standard_Integer IS);
 };
 

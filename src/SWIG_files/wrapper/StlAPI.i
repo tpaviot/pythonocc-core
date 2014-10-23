@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -45,26 +45,25 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor StlAPI;
 class StlAPI {
 	public:
-		%feature("autodoc", "Args:
-	aShape(TopoDS_Shape)
-	aFile(char *)
-	aAsciiMode(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Convert and write shape to STL format.  file is written in binary if aAsciiMode is False  otherwise it is written in Ascii (by default)
 
-Returns:
-	static void
-
-Convert and write shape to STL format.  
-        file is written in binary if aAsciiMode is False  
-        otherwise it is written in Ascii (by default)") Write;
+	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:param aFile:
+	:type aFile: char *
+	:param aAsciiMode: default value is Standard_True
+	:type aAsciiMode: bool
+	:rtype: void
+") Write;
 		static void Write (const TopoDS_Shape & aShape,const char * aFile,const Standard_Boolean aAsciiMode = Standard_True);
-		%feature("autodoc", "Args:
-	aShape(TopoDS_Shape)
-	aFile(char *)
+		%feature("autodoc", "	* Create a shape from a STL format.
 
-Returns:
-	static void
-
-Create a shape from a STL format.") Read;
+	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:param aFile:
+	:type aFile: char *
+	:rtype: void
+") Read;
 		static void Read (TopoDS_Shape & aShape,const char * aFile);
 };
 
@@ -86,21 +85,15 @@ def __del__(self):
 %nodefaultctor StlAPI_Reader;
 class StlAPI_Reader {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") StlAPI_Reader;
+		%feature("autodoc", "	:rtype: None
+") StlAPI_Reader;
 		 StlAPI_Reader ();
-		%feature("autodoc", "Args:
-	aShape(TopoDS_Shape)
-	aFileName(char *)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Read;
+		%feature("autodoc", "	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:param aFileName:
+	:type aFileName: char *
+	:rtype: None
+") Read;
 		void Read (TopoDS_Shape & aShape,const char * aFileName);
 };
 
@@ -122,32 +115,24 @@ def __del__(self):
 %nodefaultctor StlAPI_Writer;
 class StlAPI_Writer {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Creates a writer object with default parameters: ASCIIMode, RelativeMode, SetCoefficent, SetDeflection. These parameters may be modified.
 
-Creates a writer object with  
-default parameters: ASCIIMode, RelativeMode, SetCoefficent,  
-SetDeflection. These parameters may be modified.") StlAPI_Writer;
+	:rtype: None
+") StlAPI_Writer;
 		 StlAPI_Writer ();
-		%feature("autodoc", "Args:
-	aDeflection(Standard_Real)
+		%feature("autodoc", "	* Sets the deflection of the meshing algorithm. Deflection is used, only if relative mode is false
 
-Returns:
-	None
-
-Sets the deflection of the meshing algorithm.  
-   Deflection is used, only if relative mode is false") SetDeflection;
+	:param aDeflection:
+	:type aDeflection: float
+	:rtype: None
+") SetDeflection;
 		void SetDeflection (const Standard_Real aDeflection);
-		%feature("autodoc", "Args:
-	aCoefficient(Standard_Real)
+		%feature("autodoc", "	* Sets the coeffiecient for computation of deflection through relative size of shape. Default value = 0.001
 
-Returns:
-	None
-
-Sets the coeffiecient for computation of deflection through  
-         relative size of shape. Default value = 0.001") SetCoefficient;
+	:param aCoefficient:
+	:type aCoefficient: float
+	:rtype: None
+") SetCoefficient;
 		void SetCoefficient (const Standard_Real aCoefficient);
 
             %feature("autodoc","1");
@@ -175,15 +160,16 @@ Sets the coeffiecient for computation of deflection through
                 $self->ASCIIMode()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	aShape(TopoDS_Shape)
-	aFileName(char *)
-	InParallel(Standard_Boolean)=Standard_False
+            		%feature("autodoc", "	* Converts a given shape to STL format and writes it to file with a given filename.
 
-Returns:
-	None
-
-Converts a given shape to STL format and writes it to file with a given filename.") Write;
+	:param aShape:
+	:type aShape: TopoDS_Shape &
+	:param aFileName:
+	:type aFileName: char *
+	:param InParallel: default value is Standard_False
+	:type InParallel: bool
+	:rtype: None
+") Write;
 		void Write (const TopoDS_Shape & aShape,const char * aFileName,const Standard_Boolean InParallel = Standard_False);
 };
 

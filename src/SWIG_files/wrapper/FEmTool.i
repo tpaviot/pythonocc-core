@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -44,107 +44,87 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor FEmTool_Assembly;
 class FEmTool_Assembly {
 	public:
-		%feature("autodoc", "Args:
-	Dependence(TColStd_Array2OfInteger)
-	Table(Handle_FEmTool_HAssemblyTable)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FEmTool_Assembly;
+		%feature("autodoc", "	:param Dependence:
+	:type Dependence: TColStd_Array2OfInteger &
+	:param Table:
+	:type Table: Handle_FEmTool_HAssemblyTable &
+	:rtype: None
+") FEmTool_Assembly;
 		 FEmTool_Assembly (const TColStd_Array2OfInteger & Dependence,const Handle_FEmTool_HAssemblyTable & Table);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Nullify all Matrix 's Coefficient
 
-Nullify all Matrix 's Coefficient") NullifyMatrix;
+	:rtype: None
+") NullifyMatrix;
 		void NullifyMatrix ();
-		%feature("autodoc", "Args:
-	Element(Standard_Integer)
-	Dimension1(Standard_Integer)
-	Dimension2(Standard_Integer)
-	Mat(math_Matrix)
+		%feature("autodoc", "	* Add an elementary Matrix in the assembly Matrix if Dependence(Dimension1,Dimension2) is False
 
-Returns:
-	None
-
-Add an elementary Matrix in the assembly Matrix  
- if  Dependence(Dimension1,Dimension2)  is  False") AddMatrix;
+	:param Element:
+	:type Element: Standard_Integer
+	:param Dimension1:
+	:type Dimension1: Standard_Integer
+	:param Dimension2:
+	:type Dimension2: Standard_Integer
+	:param Mat:
+	:type Mat: math_Matrix &
+	:rtype: None
+") AddMatrix;
 		void AddMatrix (const Standard_Integer Element,const Standard_Integer Dimension1,const Standard_Integer Dimension2,const math_Matrix & Mat);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Nullify all Coordinate of assembly Vector (second member)
 
-Nullify  all  Coordinate of  assembly  Vector (second member)") NullifyVector;
+	:rtype: None
+") NullifyVector;
 		void NullifyVector ();
-		%feature("autodoc", "Args:
-	Element(Standard_Integer)
-	Dimension(Standard_Integer)
-	Vec(math_Vector)
+		%feature("autodoc", "	* Add an elementary Vector in the assembly Vector (second member)
 
-Returns:
-	None
-
-Add an elementary Vector in the assembly Vector (second member)") AddVector;
+	:param Element:
+	:type Element: Standard_Integer
+	:param Dimension:
+	:type Dimension: Standard_Integer
+	:param Vec:
+	:type Vec: math_Vector &
+	:rtype: None
+") AddVector;
 		void AddVector (const Standard_Integer Element,const Standard_Integer Dimension,const math_Vector & Vec);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Delete all Constraints.
 
-Delete all Constraints.") ResetConstraint;
+	:rtype: None
+") ResetConstraint;
 		void ResetConstraint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Nullify all Constraints.
 
-Nullify all Constraints.") NullifyConstraint;
+	:rtype: None
+") NullifyConstraint;
 		void NullifyConstraint ();
-		%feature("autodoc", "Args:
-	IndexofConstraint(Standard_Integer)
-	Element(Standard_Integer)
-	Dimension(Standard_Integer)
-	LinearForm(math_Vector)
-	Value(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") AddConstraint;
+		%feature("autodoc", "	:param IndexofConstraint:
+	:type IndexofConstraint: Standard_Integer
+	:param Element:
+	:type Element: Standard_Integer
+	:param Dimension:
+	:type Dimension: Standard_Integer
+	:param LinearForm:
+	:type LinearForm: math_Vector &
+	:param Value:
+	:type Value: float
+	:rtype: None
+") AddConstraint;
 		void AddConstraint (const Standard_Integer IndexofConstraint,const Standard_Integer Element,const Standard_Integer Dimension,const math_Vector & LinearForm,const Standard_Real Value);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Solve the assembly system Returns Standard_False if the computation failed.
 
-Solve the assembly system  
-         Returns Standard_False if the computation failed.") Solve;
+	:rtype: bool
+") Solve;
 		Standard_Boolean Solve ();
-		%feature("autodoc", "Args:
-	Solution(math_Vector)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Solution;
+		%feature("autodoc", "	:param Solution:
+	:type Solution: math_Vector &
+	:rtype: None
+") Solution;
 		void Solution (math_Vector & Solution);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbGlobVar;
+		%feature("autodoc", "	:rtype: int
+") NbGlobVar;
 		Standard_Integer NbGlobVar ();
-		%feature("autodoc", "Args:
-	AssTable(Handle_FEmTool_HAssemblyTable)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GetAssemblyTable;
+		%feature("autodoc", "	:param AssTable:
+	:type AssTable: Handle_FEmTool_HAssemblyTable &
+	:rtype: None
+") GetAssemblyTable;
 		void GetAssemblyTable (Handle_FEmTool_HAssemblyTable & AssTable);
 };
 
@@ -166,129 +146,88 @@ def __del__(self):
 %nodefaultctor FEmTool_AssemblyTable;
 class FEmTool_AssemblyTable {
 	public:
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FEmTool_AssemblyTable;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") FEmTool_AssemblyTable;
 		 FEmTool_AssemblyTable (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	Item(Handle_TColStd_HArray1OfInteger)
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FEmTool_AssemblyTable;
+		%feature("autodoc", "	:param Item:
+	:type Item: Handle_TColStd_HArray1OfInteger &
+	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") FEmTool_AssemblyTable;
 		 FEmTool_AssemblyTable (const Handle_TColStd_HArray1OfInteger & Item,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	V(Handle_TColStd_HArray1OfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_TColStd_HArray1OfInteger &
+	:rtype: None
+") Init;
 		void Init (const Handle_TColStd_HArray1OfInteger & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	Other(FEmTool_AssemblyTable)
-
-Returns:
-	FEmTool_AssemblyTable
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: FEmTool_AssemblyTable &
+	:rtype: FEmTool_AssemblyTable
+") Assign;
 		const FEmTool_AssemblyTable & Assign (const FEmTool_AssemblyTable & Other);
-		%feature("autodoc", "Args:
-	Other(FEmTool_AssemblyTable)
-
-Returns:
-	FEmTool_AssemblyTable
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: FEmTool_AssemblyTable &
+	:rtype: FEmTool_AssemblyTable
+") operator=;
 		const FEmTool_AssemblyTable & operator = (const FEmTool_AssemblyTable & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ColLength;
+		%feature("autodoc", "	:rtype: int
+") ColLength;
 		Standard_Integer ColLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") RowLength;
+		%feature("autodoc", "	:rtype: int
+") RowLength;
 		Standard_Integer RowLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerCol;
+		%feature("autodoc", "	:rtype: int
+") LowerCol;
 		Standard_Integer LowerCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerRow;
+		%feature("autodoc", "	:rtype: int
+") LowerRow;
 		Standard_Integer LowerRow ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperCol;
+		%feature("autodoc", "	:rtype: int
+") UpperCol;
 		Standard_Integer UpperCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperRow;
+		%feature("autodoc", "	:rtype: int
+") UpperRow;
 		Standard_Integer UpperRow ();
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-	Value(Handle_TColStd_HArray1OfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:param Value:
+	:type Value: Handle_TColStd_HArray1OfInteger &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Handle_TColStd_HArray1OfInteger & Value);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Handle_TColStd_HArray1OfInteger
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: Handle_TColStd_HArray1OfInteger
+") Value;
 		const Handle_TColStd_HArray1OfInteger & Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Handle_TColStd_HArray1OfInteger
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: Handle_TColStd_HArray1OfInteger
+") ChangeValue;
 		Handle_TColStd_HArray1OfInteger & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 };
 
@@ -310,135 +249,102 @@ def __del__(self):
 %nodefaultctor FEmTool_Curve;
 class FEmTool_Curve : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Dimension(Standard_Integer)
-	NbElements(Standard_Integer)
-	TheBase(Handle_PLib_Base)
-	Tolerance(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FEmTool_Curve;
+		%feature("autodoc", "	:param Dimension:
+	:type Dimension: Standard_Integer
+	:param NbElements:
+	:type NbElements: Standard_Integer
+	:param TheBase:
+	:type TheBase: Handle_PLib_Base &
+	:param Tolerance:
+	:type Tolerance: float
+	:rtype: None
+") FEmTool_Curve;
 		 FEmTool_Curve (const Standard_Integer Dimension,const Standard_Integer NbElements,const Handle_PLib_Base & TheBase,const Standard_Real Tolerance);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfReal
-
-No detailed docstring for this function.") Knots;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfReal
+") Knots;
 		TColStd_Array1OfReal & Knots ();
-		%feature("autodoc", "Args:
-	IndexOfElement(Standard_Integer)
-	Coeffs(TColStd_Array2OfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetElement;
+		%feature("autodoc", "	:param IndexOfElement:
+	:type IndexOfElement: Standard_Integer
+	:param Coeffs:
+	:type Coeffs: TColStd_Array2OfReal &
+	:rtype: None
+") SetElement;
 		void SetElement (const Standard_Integer IndexOfElement,const TColStd_Array2OfReal & Coeffs);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	Pnt(TColStd_Array1OfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") D0;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param Pnt:
+	:type Pnt: TColStd_Array1OfReal &
+	:rtype: None
+") D0;
 		void D0 (const Standard_Real U,TColStd_Array1OfReal & Pnt);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	Vec(TColStd_Array1OfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") D1;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param Vec:
+	:type Vec: TColStd_Array1OfReal &
+	:rtype: None
+") D1;
 		void D1 (const Standard_Real U,TColStd_Array1OfReal & Vec);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	Vec(TColStd_Array1OfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") D2;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param Vec:
+	:type Vec: TColStd_Array1OfReal &
+	:rtype: None
+") D2;
 		void D2 (const Standard_Real U,TColStd_Array1OfReal & Vec);
-		%feature("autodoc", "Args:
-	FirstU(Standard_Real)
-	LastU(Standard_Real)
-	Length(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:param FirstU:
+	:type FirstU: float
+	:param LastU:
+	:type LastU: float
+	:param Length:
+	:type Length: float &
+	:rtype: None
+") Length;
 		void Length (const Standard_Real FirstU,const Standard_Real LastU,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	IndexOfElement(Standard_Integer)
-	Coeffs(TColStd_Array2OfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GetElement;
+		%feature("autodoc", "	:param IndexOfElement:
+	:type IndexOfElement: Standard_Integer
+	:param Coeffs:
+	:type Coeffs: TColStd_Array2OfReal &
+	:rtype: None
+") GetElement;
 		void GetElement (const Standard_Integer IndexOfElement,TColStd_Array2OfReal & Coeffs);
-		%feature("autodoc", "Args:
-	Coeffs(TColStd_Array1OfReal)
+		%feature("autodoc", "	* returns coefficients of all elements in canonical base.
 
-Returns:
-	None
-
-returns  coefficients  of  all  elements  in  canonical  base.") GetPolynom;
+	:param Coeffs:
+	:type Coeffs: TColStd_Array1OfReal &
+	:rtype: None
+") GetPolynom;
 		void GetPolynom (TColStd_Array1OfReal & Coeffs);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbElements;
+		%feature("autodoc", "	:rtype: int
+") NbElements;
 		Standard_Integer NbElements ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Dimension;
+		%feature("autodoc", "	:rtype: int
+") Dimension;
 		Standard_Integer Dimension ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_PLib_Base
-
-No detailed docstring for this function.") Base;
+		%feature("autodoc", "	:rtype: Handle_PLib_Base
+") Base;
 		Handle_PLib_Base Base ();
-		%feature("autodoc", "Args:
-	IndexOfElement(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Degree;
+		%feature("autodoc", "	:param IndexOfElement:
+	:type IndexOfElement: Standard_Integer
+	:rtype: int
+") Degree;
 		Standard_Integer Degree (const Standard_Integer IndexOfElement);
-		%feature("autodoc", "Args:
-	IndexOfElement(Standard_Integer)
-	Degree(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetDegree;
+		%feature("autodoc", "	:param IndexOfElement:
+	:type IndexOfElement: Standard_Integer
+	:param Degree:
+	:type Degree: Standard_Integer
+	:rtype: None
+") SetDegree;
 		void SetDegree (const Standard_Integer IndexOfElement,const Standard_Integer Degree);
-		%feature("autodoc", "Args:
-	IndexOfElement(Standard_Integer)
-	Tol(Standard_Real)
-	NewDegree(Standard_Integer)
-	MaxError(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReduceDegree;
+		%feature("autodoc", "	:param IndexOfElement:
+	:type IndexOfElement: Standard_Integer
+	:param Tol:
+	:type Tol: float
+	:param NewDegree:
+	:type NewDegree: Standard_Integer &
+	:param MaxError:
+	:type MaxError: float &
+	:rtype: None
+") ReduceDegree;
 		void ReduceDegree (const Standard_Integer IndexOfElement,const Standard_Real Tol,Standard_Integer &OutValue,Standard_Real &OutValue);
 };
 
@@ -499,59 +405,51 @@ def __del__(self):
 %nodefaultctor FEmTool_ElementaryCriterion;
 class FEmTool_ElementaryCriterion : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Coeff(Handle_TColStd_HArray2OfReal)
+		%feature("autodoc", "	* Set the coefficient of the Element (the Curve)
 
-Returns:
-	None
-
-Set the coefficient of the Element (the  Curve)") Set;
+	:param Coeff:
+	:type Coeff: Handle_TColStd_HArray2OfReal &
+	:rtype: None
+") Set;
 		void Set (const Handle_TColStd_HArray2OfReal & Coeff);
-		%feature("autodoc", "Args:
-	FirstKnot(Standard_Real)
-	LastKnot(Standard_Real)
+		%feature("autodoc", "	* Set the definition interval of the Element
 
-Returns:
-	virtual void
-
-Set the definition interval of the Element") Set;
+	:param FirstKnot:
+	:type FirstKnot: float
+	:param LastKnot:
+	:type LastKnot: float
+	:rtype: void
+") Set;
 		virtual void Set (const Standard_Real FirstKnot,const Standard_Real LastKnot);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_TColStd_HArray2OfInteger
+		%feature("autodoc", "	* To know if two dimension are independent.
 
-To know if two dimension are independent.") DependenceTable;
+	:rtype: Handle_TColStd_HArray2OfInteger
+") DependenceTable;
 		virtual Handle_TColStd_HArray2OfInteger DependenceTable ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Real
+		%feature("autodoc", "	* To Compute J(E) where E is the current Element
 
-To Compute J(E) where E  is the current Element") Value;
+	:rtype: float
+") Value;
 		virtual Standard_Real Value ();
-		%feature("autodoc", "Args:
-	Dim1(Standard_Integer)
-	Dim2(Standard_Integer)
-	H(math_Matrix)
+		%feature("autodoc", "	* To Compute J(E) the coefficients of Hessian matrix of J(E) wich are crossed derivatives in dimensions <Dim1> and <Dim2>. If DependenceTable(Dimension1,Dimension2) is False
 
-Returns:
-	virtual void
-
-To Compute J(E)  the coefficients of Hessian matrix of  
-         J(E) wich are crossed derivatives in dimensions <Dim1>  
-         and  <Dim2>.  
-If DependenceTable(Dimension1,Dimension2) is False") Hessian;
+	:param Dim1:
+	:type Dim1: Standard_Integer
+	:param Dim2:
+	:type Dim2: Standard_Integer
+	:param H:
+	:type H: math_Matrix &
+	:rtype: void
+") Hessian;
 		virtual void Hessian (const Standard_Integer Dim1,const Standard_Integer Dim2,math_Matrix & H);
-		%feature("autodoc", "Args:
-	Dim(Standard_Integer)
-	G(math_Vector)
+		%feature("autodoc", "	* To Compute the coefficients in the dimension <dim> of the J(E)'s Gradient where E is the current Element
 
-Returns:
-	virtual void
-
-To Compute the  coefficients in the dimension <dim>  
-         of  the  J(E)'s  Gradient where E  is  the current  Element") Gradient;
+	:param Dim:
+	:type Dim: Standard_Integer
+	:param G:
+	:type G: math_Vector &
+	:rtype: void
+") Gradient;
 		virtual void Gradient (const Standard_Integer Dim,math_Vector & G);
 };
 
@@ -612,44 +510,31 @@ def __del__(self):
 %nodefaultctor FEmTool_ElementsOfRefMatrix;
 class FEmTool_ElementsOfRefMatrix : public math_FunctionSet {
 	public:
-		%feature("autodoc", "Args:
-	TheBase(Handle_PLib_Base)
-	DerOrder(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FEmTool_ElementsOfRefMatrix;
+		%feature("autodoc", "	:param TheBase:
+	:type TheBase: Handle_PLib_Base &
+	:param DerOrder:
+	:type DerOrder: Standard_Integer
+	:rtype: None
+") FEmTool_ElementsOfRefMatrix;
 		 FEmTool_ElementsOfRefMatrix (const Handle_PLib_Base & TheBase,const Standard_Integer DerOrder);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* returns the number of variables of the function. It is supposed that NbVariables = 1.
 
-returns the number of variables of the function.  
- It  is  supposed  that  NbVariables  =  1.") NbVariables;
+	:rtype: int
+") NbVariables;
 		Standard_Integer NbVariables ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* returns the number of equations of the function.
 
-returns the number of equations of the function.") NbEquations;
+	:rtype: int
+") NbEquations;
 		Standard_Integer NbEquations ();
-		%feature("autodoc", "Args:
-	X(math_Vector)
-	F(math_Vector)
+		%feature("autodoc", "	* computes the values <F> of the functions for the variable <X>. returns True if the computation was done successfully, False otherwise. F contains results only for i<=j in following order: P0*P0, P0*P1, P0*P2... P1*P1, P1*P2,... (upper triangle of matrix {PiPj})
 
-Returns:
-	Standard_Boolean
-
-computes the values <F> of the functions for the  
-         variable <X>.  
-         returns True if the computation was done successfully,  
-         False otherwise.  
-         F  contains  results  only  for  i<=j  in  following  order:  
-         P0*P0,  P0*P1,  P0*P2...  P1*P1,  P1*P2,...  (upper  triangle of  
-         matrix  {PiPj})") Value;
+	:param X:
+	:type X: math_Vector &
+	:param F:
+	:type F: math_Vector &
+	:rtype: bool
+") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 };
 
@@ -671,120 +556,81 @@ def __del__(self):
 %nodefaultctor FEmTool_HAssemblyTable;
 class FEmTool_HAssemblyTable : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FEmTool_HAssemblyTable;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") FEmTool_HAssemblyTable;
 		 FEmTool_HAssemblyTable (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-	V(Handle_TColStd_HArray1OfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FEmTool_HAssemblyTable;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:param V:
+	:type V: Handle_TColStd_HArray1OfInteger &
+	:rtype: None
+") FEmTool_HAssemblyTable;
 		 FEmTool_HAssemblyTable (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Handle_TColStd_HArray1OfInteger & V);
-		%feature("autodoc", "Args:
-	V(Handle_TColStd_HArray1OfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_TColStd_HArray1OfInteger &
+	:rtype: None
+") Init;
 		void Init (const Handle_TColStd_HArray1OfInteger & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ColLength;
+		%feature("autodoc", "	:rtype: int
+") ColLength;
 		Standard_Integer ColLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") RowLength;
+		%feature("autodoc", "	:rtype: int
+") RowLength;
 		Standard_Integer RowLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerCol;
+		%feature("autodoc", "	:rtype: int
+") LowerCol;
 		Standard_Integer LowerCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerRow;
+		%feature("autodoc", "	:rtype: int
+") LowerRow;
 		Standard_Integer LowerRow ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperCol;
+		%feature("autodoc", "	:rtype: int
+") UpperCol;
 		Standard_Integer UpperCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperRow;
+		%feature("autodoc", "	:rtype: int
+") UpperRow;
 		Standard_Integer UpperRow ();
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-	Value(Handle_TColStd_HArray1OfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:param Value:
+	:type Value: Handle_TColStd_HArray1OfInteger &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Handle_TColStd_HArray1OfInteger & Value);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Handle_TColStd_HArray1OfInteger
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: Handle_TColStd_HArray1OfInteger
+") Value;
 		const Handle_TColStd_HArray1OfInteger & Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Handle_TColStd_HArray1OfInteger
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: Handle_TColStd_HArray1OfInteger
+") ChangeValue;
 		Handle_TColStd_HArray1OfInteger & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	FEmTool_AssemblyTable
-
-No detailed docstring for this function.") Array2;
+		%feature("autodoc", "	:rtype: FEmTool_AssemblyTable
+") Array2;
 		const FEmTool_AssemblyTable & Array2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	FEmTool_AssemblyTable
-
-No detailed docstring for this function.") ChangeArray2;
+		%feature("autodoc", "	:rtype: FEmTool_AssemblyTable
+") ChangeArray2;
 		FEmTool_AssemblyTable & ChangeArray2 ();
 };
 
@@ -845,49 +691,27 @@ def __del__(self):
 %nodefaultctor FEmTool_ListIteratorOfListOfVectors;
 class FEmTool_ListIteratorOfListOfVectors {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") FEmTool_ListIteratorOfListOfVectors;
+		%feature("autodoc", "	:rtype: None
+") FEmTool_ListIteratorOfListOfVectors;
 		 FEmTool_ListIteratorOfListOfVectors ();
-		%feature("autodoc", "Args:
-	L(FEmTool_ListOfVectors)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FEmTool_ListIteratorOfListOfVectors;
+		%feature("autodoc", "	:param L:
+	:type L: FEmTool_ListOfVectors &
+	:rtype: None
+") FEmTool_ListIteratorOfListOfVectors;
 		 FEmTool_ListIteratorOfListOfVectors (const FEmTool_ListOfVectors & L);
-		%feature("autodoc", "Args:
-	L(FEmTool_ListOfVectors)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: FEmTool_ListOfVectors &
+	:rtype: None
+") Initialize;
 		void Initialize (const FEmTool_ListOfVectors & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColStd_HArray1OfReal
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
+") Value;
 		Handle_TColStd_HArray1OfReal & Value ();
 };
 
@@ -909,21 +733,15 @@ def __del__(self):
 %nodefaultctor FEmTool_ListNodeOfListOfVectors;
 class FEmTool_ListNodeOfListOfVectors : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_TColStd_HArray1OfReal)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FEmTool_ListNodeOfListOfVectors;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_TColStd_HArray1OfReal &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") FEmTool_ListNodeOfListOfVectors;
 		 FEmTool_ListNodeOfListOfVectors (const Handle_TColStd_HArray1OfReal & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColStd_HArray1OfReal
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
+") Value;
 		Handle_TColStd_HArray1OfReal & Value ();
 };
 
@@ -984,164 +802,103 @@ def __del__(self):
 %nodefaultctor FEmTool_ListOfVectors;
 class FEmTool_ListOfVectors {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") FEmTool_ListOfVectors;
+		%feature("autodoc", "	:rtype: None
+") FEmTool_ListOfVectors;
 		 FEmTool_ListOfVectors ();
-		%feature("autodoc", "Args:
-	Other(FEmTool_ListOfVectors)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: FEmTool_ListOfVectors &
+	:rtype: None
+") Assign;
 		void Assign (const FEmTool_ListOfVectors & Other);
-		%feature("autodoc", "Args:
-	Other(FEmTool_ListOfVectors)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: FEmTool_ListOfVectors &
+	:rtype: None
+") operator=;
 		void operator = (const FEmTool_ListOfVectors & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(Handle_TColStd_HArray1OfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_TColStd_HArray1OfReal &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_TColStd_HArray1OfReal & I);
-		%feature("autodoc", "Args:
-	I(Handle_TColStd_HArray1OfReal)
-	theIt(FEmTool_ListIteratorOfListOfVectors)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_TColStd_HArray1OfReal &
+	:param theIt:
+	:type theIt: FEmTool_ListIteratorOfListOfVectors &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_TColStd_HArray1OfReal & I,FEmTool_ListIteratorOfListOfVectors & theIt);
-		%feature("autodoc", "Args:
-	Other(FEmTool_ListOfVectors)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: FEmTool_ListOfVectors &
+	:rtype: None
+") Prepend;
 		void Prepend (FEmTool_ListOfVectors & Other);
-		%feature("autodoc", "Args:
-	I(Handle_TColStd_HArray1OfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_TColStd_HArray1OfReal &
+	:rtype: None
+") Append;
 		void Append (const Handle_TColStd_HArray1OfReal & I);
-		%feature("autodoc", "Args:
-	I(Handle_TColStd_HArray1OfReal)
-	theIt(FEmTool_ListIteratorOfListOfVectors)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_TColStd_HArray1OfReal &
+	:param theIt:
+	:type theIt: FEmTool_ListIteratorOfListOfVectors &
+	:rtype: None
+") Append;
 		void Append (const Handle_TColStd_HArray1OfReal & I,FEmTool_ListIteratorOfListOfVectors & theIt);
-		%feature("autodoc", "Args:
-	Other(FEmTool_ListOfVectors)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: FEmTool_ListOfVectors &
+	:rtype: None
+") Append;
 		void Append (FEmTool_ListOfVectors & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColStd_HArray1OfReal
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
+") First;
 		Handle_TColStd_HArray1OfReal & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColStd_HArray1OfReal
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
+") Last;
 		Handle_TColStd_HArray1OfReal & Last ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(FEmTool_ListIteratorOfListOfVectors)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: FEmTool_ListIteratorOfListOfVectors &
+	:rtype: None
+") Remove;
 		void Remove (FEmTool_ListIteratorOfListOfVectors & It);
-		%feature("autodoc", "Args:
-	I(Handle_TColStd_HArray1OfReal)
-	It(FEmTool_ListIteratorOfListOfVectors)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_TColStd_HArray1OfReal &
+	:param It:
+	:type It: FEmTool_ListIteratorOfListOfVectors &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Handle_TColStd_HArray1OfReal & I,FEmTool_ListIteratorOfListOfVectors & It);
-		%feature("autodoc", "Args:
-	Other(FEmTool_ListOfVectors)
-	It(FEmTool_ListIteratorOfListOfVectors)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: FEmTool_ListOfVectors &
+	:param It:
+	:type It: FEmTool_ListIteratorOfListOfVectors &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (FEmTool_ListOfVectors & Other,FEmTool_ListIteratorOfListOfVectors & It);
-		%feature("autodoc", "Args:
-	I(Handle_TColStd_HArray1OfReal)
-	It(FEmTool_ListIteratorOfListOfVectors)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_TColStd_HArray1OfReal &
+	:param It:
+	:type It: FEmTool_ListIteratorOfListOfVectors &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Handle_TColStd_HArray1OfReal & I,FEmTool_ListIteratorOfListOfVectors & It);
-		%feature("autodoc", "Args:
-	Other(FEmTool_ListOfVectors)
-	It(FEmTool_ListIteratorOfListOfVectors)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: FEmTool_ListOfVectors &
+	:param It:
+	:type It: FEmTool_ListIteratorOfListOfVectors &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (FEmTool_ListOfVectors & Other,FEmTool_ListIteratorOfListOfVectors & It);
 };
 
@@ -1163,168 +920,111 @@ def __del__(self):
 %nodefaultctor FEmTool_SeqOfLinConstr;
 class FEmTool_SeqOfLinConstr : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") FEmTool_SeqOfLinConstr;
+		%feature("autodoc", "	:rtype: None
+") FEmTool_SeqOfLinConstr;
 		 FEmTool_SeqOfLinConstr ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(FEmTool_SeqOfLinConstr)
-
-Returns:
-	FEmTool_SeqOfLinConstr
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: FEmTool_SeqOfLinConstr &
+	:rtype: FEmTool_SeqOfLinConstr
+") Assign;
 		const FEmTool_SeqOfLinConstr & Assign (const FEmTool_SeqOfLinConstr & Other);
-		%feature("autodoc", "Args:
-	Other(FEmTool_SeqOfLinConstr)
-
-Returns:
-	FEmTool_SeqOfLinConstr
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: FEmTool_SeqOfLinConstr &
+	:rtype: FEmTool_SeqOfLinConstr
+") operator=;
 		const FEmTool_SeqOfLinConstr & operator = (const FEmTool_SeqOfLinConstr & Other);
-		%feature("autodoc", "Args:
-	T(FEmTool_ListOfVectors)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: FEmTool_ListOfVectors &
+	:rtype: None
+") Append;
 		void Append (const FEmTool_ListOfVectors & T);
-		%feature("autodoc", "Args:
-	S(FEmTool_SeqOfLinConstr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: FEmTool_SeqOfLinConstr &
+	:rtype: None
+") Append;
 		void Append (FEmTool_SeqOfLinConstr & S);
-		%feature("autodoc", "Args:
-	T(FEmTool_ListOfVectors)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: FEmTool_ListOfVectors &
+	:rtype: None
+") Prepend;
 		void Prepend (const FEmTool_ListOfVectors & T);
-		%feature("autodoc", "Args:
-	S(FEmTool_SeqOfLinConstr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: FEmTool_SeqOfLinConstr &
+	:rtype: None
+") Prepend;
 		void Prepend (FEmTool_SeqOfLinConstr & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(FEmTool_ListOfVectors)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: FEmTool_ListOfVectors &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const FEmTool_ListOfVectors & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(FEmTool_SeqOfLinConstr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: FEmTool_SeqOfLinConstr &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,FEmTool_SeqOfLinConstr & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(FEmTool_ListOfVectors)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: FEmTool_ListOfVectors &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const FEmTool_ListOfVectors & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(FEmTool_SeqOfLinConstr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: FEmTool_SeqOfLinConstr &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,FEmTool_SeqOfLinConstr & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	FEmTool_ListOfVectors
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: FEmTool_ListOfVectors
+") First;
 		const FEmTool_ListOfVectors & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	FEmTool_ListOfVectors
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: FEmTool_ListOfVectors
+") Last;
 		const FEmTool_ListOfVectors & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(FEmTool_SeqOfLinConstr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: FEmTool_SeqOfLinConstr &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,FEmTool_SeqOfLinConstr & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	FEmTool_ListOfVectors
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: FEmTool_ListOfVectors
+") Value;
 		const FEmTool_ListOfVectors & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(FEmTool_ListOfVectors)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: FEmTool_ListOfVectors &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const FEmTool_ListOfVectors & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	FEmTool_ListOfVectors
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: FEmTool_ListOfVectors
+") ChangeValue;
 		FEmTool_ListOfVectors & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -1346,22 +1046,17 @@ def __del__(self):
 %nodefaultctor FEmTool_SequenceNodeOfSeqOfLinConstr;
 class FEmTool_SequenceNodeOfSeqOfLinConstr : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(FEmTool_ListOfVectors)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FEmTool_SequenceNodeOfSeqOfLinConstr;
+		%feature("autodoc", "	:param I:
+	:type I: FEmTool_ListOfVectors &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") FEmTool_SequenceNodeOfSeqOfLinConstr;
 		 FEmTool_SequenceNodeOfSeqOfLinConstr (const FEmTool_ListOfVectors & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	FEmTool_ListOfVectors
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: FEmTool_ListOfVectors
+") Value;
 		FEmTool_ListOfVectors & Value ();
 };
 
@@ -1422,82 +1117,72 @@ def __del__(self):
 %nodefaultctor FEmTool_SparseMatrix;
 class FEmTool_SparseMatrix : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Value(Standard_Real)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param Value:
+	:type Value: float
+	:rtype: void
+") Init;
 		virtual void Init (const Standard_Real Value);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	J(Standard_Integer)
-
-Returns:
-	virtual Standard_Real
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param J:
+	:type J: Standard_Integer
+	:rtype: float
+") ChangeValue;
 		virtual Standard_Real & ChangeValue (const Standard_Integer I,const Standard_Integer J);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* To make a Factorization of <self>
 
-To make a Factorization of <self>") Decompose;
+	:rtype: bool
+") Decompose;
 		virtual Standard_Boolean Decompose ();
-		%feature("autodoc", "Args:
-	B(math_Vector)
-	X(math_Vector)
+		%feature("autodoc", "	* Direct Solve of AX = B
 
-Returns:
-	virtual void
-
-Direct Solve of AX = B") Solve;
+	:param B:
+	:type B: math_Vector &
+	:param X:
+	:type X: math_Vector &
+	:rtype: void
+") Solve;
 		virtual void Solve (const math_Vector & B,math_Vector & X);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Make Preparation to iterative solve
 
-Make Preparation to iterative solve") Prepare;
+	:rtype: bool
+") Prepare;
 		virtual Standard_Boolean Prepare ();
-		%feature("autodoc", "Args:
-	B(math_Vector)
-	Init(math_Vector)
-	X(math_Vector)
-	Residual(math_Vector)
-	Tolerance(Standard_Real)=1.0e-8
-	NbIterations(Standard_Integer)=50
+		%feature("autodoc", "	* Iterative solve of AX = B
 
-Returns:
-	virtual void
-
-Iterative solve  of AX = B") Solve;
+	:param B:
+	:type B: math_Vector &
+	:param Init:
+	:type Init: math_Vector &
+	:param X:
+	:type X: math_Vector &
+	:param Residual:
+	:type Residual: math_Vector &
+	:param Tolerance: default value is 1.0e-8
+	:type Tolerance: float
+	:param NbIterations: default value is 50
+	:type NbIterations: Standard_Integer
+	:rtype: void
+") Solve;
 		virtual void Solve (const math_Vector & B,const math_Vector & Init,math_Vector & X,math_Vector & Residual,const Standard_Real Tolerance = 1.0e-8,const Standard_Integer NbIterations = 50);
-		%feature("autodoc", "Args:
-	X(math_Vector)
-	MX(math_Vector)
+		%feature("autodoc", "	* returns the product of a SparseMatrix by a vector. An exception is raised if the dimensions are different
 
-Returns:
-	virtual void
-
-returns the product of a SparseMatrix by a vector.  
-         An exception is raised if the dimensions are different") Multiplied;
+	:param X:
+	:type X: math_Vector &
+	:param MX:
+	:type MX: math_Vector &
+	:rtype: void
+") Multiplied;
 		virtual void Multiplied (const math_Vector & X,math_Vector & MX);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
+		%feature("autodoc", "	* returns the row range of a matrix.
 
-returns the row range of a matrix.") RowNumber;
+	:rtype: int
+") RowNumber;
 		virtual Standard_Integer RowNumber ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
+		%feature("autodoc", "	* returns the column range of the matrix.
 
-returns the column range of the matrix.") ColNumber;
+	:rtype: int
+") ColNumber;
 		virtual Standard_Integer ColNumber ();
 };
 
@@ -1558,47 +1243,34 @@ def __del__(self):
 %nodefaultctor FEmTool_LinearFlexion;
 class FEmTool_LinearFlexion : public FEmTool_ElementaryCriterion {
 	public:
-		%feature("autodoc", "Args:
-	WorkDegree(Standard_Integer)
-	ConstraintOrder(GeomAbs_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FEmTool_LinearFlexion;
+		%feature("autodoc", "	:param WorkDegree:
+	:type WorkDegree: Standard_Integer
+	:param ConstraintOrder:
+	:type ConstraintOrder: GeomAbs_Shape
+	:rtype: None
+") FEmTool_LinearFlexion;
 		 FEmTool_LinearFlexion (const Standard_Integer WorkDegree,const GeomAbs_Shape ConstraintOrder);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_TColStd_HArray2OfInteger
-
-No detailed docstring for this function.") DependenceTable;
+		%feature("autodoc", "	:rtype: Handle_TColStd_HArray2OfInteger
+") DependenceTable;
 		virtual Handle_TColStd_HArray2OfInteger DependenceTable ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Real
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: float
+") Value;
 		virtual Standard_Real Value ();
-		%feature("autodoc", "Args:
-	Dimension1(Standard_Integer)
-	Dimension2(Standard_Integer)
-	H(math_Matrix)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Hessian;
+		%feature("autodoc", "	:param Dimension1:
+	:type Dimension1: Standard_Integer
+	:param Dimension2:
+	:type Dimension2: Standard_Integer
+	:param H:
+	:type H: math_Matrix &
+	:rtype: void
+") Hessian;
 		virtual void Hessian (const Standard_Integer Dimension1,const Standard_Integer Dimension2,math_Matrix & H);
-		%feature("autodoc", "Args:
-	Dimension(Standard_Integer)
-	G(math_Vector)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Gradient;
+		%feature("autodoc", "	:param Dimension:
+	:type Dimension: Standard_Integer
+	:param G:
+	:type G: math_Vector &
+	:rtype: void
+") Gradient;
 		virtual void Gradient (const Standard_Integer Dimension,math_Vector & G);
 };
 
@@ -1659,47 +1331,34 @@ def __del__(self):
 %nodefaultctor FEmTool_LinearJerk;
 class FEmTool_LinearJerk : public FEmTool_ElementaryCriterion {
 	public:
-		%feature("autodoc", "Args:
-	WorkDegree(Standard_Integer)
-	ConstraintOrder(GeomAbs_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FEmTool_LinearJerk;
+		%feature("autodoc", "	:param WorkDegree:
+	:type WorkDegree: Standard_Integer
+	:param ConstraintOrder:
+	:type ConstraintOrder: GeomAbs_Shape
+	:rtype: None
+") FEmTool_LinearJerk;
 		 FEmTool_LinearJerk (const Standard_Integer WorkDegree,const GeomAbs_Shape ConstraintOrder);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_TColStd_HArray2OfInteger
-
-No detailed docstring for this function.") DependenceTable;
+		%feature("autodoc", "	:rtype: Handle_TColStd_HArray2OfInteger
+") DependenceTable;
 		virtual Handle_TColStd_HArray2OfInteger DependenceTable ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Real
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: float
+") Value;
 		virtual Standard_Real Value ();
-		%feature("autodoc", "Args:
-	Dimension1(Standard_Integer)
-	Dimension2(Standard_Integer)
-	H(math_Matrix)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Hessian;
+		%feature("autodoc", "	:param Dimension1:
+	:type Dimension1: Standard_Integer
+	:param Dimension2:
+	:type Dimension2: Standard_Integer
+	:param H:
+	:type H: math_Matrix &
+	:rtype: void
+") Hessian;
 		virtual void Hessian (const Standard_Integer Dimension1,const Standard_Integer Dimension2,math_Matrix & H);
-		%feature("autodoc", "Args:
-	Dimension(Standard_Integer)
-	G(math_Vector)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Gradient;
+		%feature("autodoc", "	:param Dimension:
+	:type Dimension: Standard_Integer
+	:param G:
+	:type G: math_Vector &
+	:rtype: void
+") Gradient;
 		virtual void Gradient (const Standard_Integer Dimension,math_Vector & G);
 };
 
@@ -1760,47 +1419,34 @@ def __del__(self):
 %nodefaultctor FEmTool_LinearTension;
 class FEmTool_LinearTension : public FEmTool_ElementaryCriterion {
 	public:
-		%feature("autodoc", "Args:
-	WorkDegree(Standard_Integer)
-	ConstraintOrder(GeomAbs_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FEmTool_LinearTension;
+		%feature("autodoc", "	:param WorkDegree:
+	:type WorkDegree: Standard_Integer
+	:param ConstraintOrder:
+	:type ConstraintOrder: GeomAbs_Shape
+	:rtype: None
+") FEmTool_LinearTension;
 		 FEmTool_LinearTension (const Standard_Integer WorkDegree,const GeomAbs_Shape ConstraintOrder);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Handle_TColStd_HArray2OfInteger
-
-No detailed docstring for this function.") DependenceTable;
+		%feature("autodoc", "	:rtype: Handle_TColStd_HArray2OfInteger
+") DependenceTable;
 		virtual Handle_TColStd_HArray2OfInteger DependenceTable ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Real
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: float
+") Value;
 		virtual Standard_Real Value ();
-		%feature("autodoc", "Args:
-	Dimension1(Standard_Integer)
-	Dimension2(Standard_Integer)
-	H(math_Matrix)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Hessian;
+		%feature("autodoc", "	:param Dimension1:
+	:type Dimension1: Standard_Integer
+	:param Dimension2:
+	:type Dimension2: Standard_Integer
+	:param H:
+	:type H: math_Matrix &
+	:rtype: void
+") Hessian;
 		virtual void Hessian (const Standard_Integer Dimension1,const Standard_Integer Dimension2,math_Matrix & H);
-		%feature("autodoc", "Args:
-	Dimension(Standard_Integer)
-	G(math_Vector)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Gradient;
+		%feature("autodoc", "	:param Dimension:
+	:type Dimension: Standard_Integer
+	:param G:
+	:type G: math_Vector &
+	:rtype: void
+") Gradient;
 		virtual void Gradient (const Standard_Integer Dimension,math_Vector & G);
 };
 
@@ -1861,113 +1507,90 @@ def __del__(self):
 %nodefaultctor FEmTool_ProfileMatrix;
 class FEmTool_ProfileMatrix : public FEmTool_SparseMatrix {
 	public:
-		%feature("autodoc", "Args:
-	FirstIndexes(TColStd_Array1OfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FEmTool_ProfileMatrix;
+		%feature("autodoc", "	:param FirstIndexes:
+	:type FirstIndexes: TColStd_Array1OfInteger &
+	:rtype: None
+") FEmTool_ProfileMatrix;
 		 FEmTool_ProfileMatrix (const TColStd_Array1OfInteger & FirstIndexes);
-		%feature("autodoc", "Args:
-	Value(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param Value:
+	:type Value: float
+	:rtype: None
+") Init;
 		void Init (const Standard_Real Value);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	J(Standard_Integer)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param J:
+	:type J: Standard_Integer
+	:rtype: float
+") ChangeValue;
 		Standard_Real & ChangeValue (const Standard_Integer I,const Standard_Integer J);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* To make a Factorization of <self>
 
-To make a Factorization of <self>") Decompose;
+	:rtype: bool
+") Decompose;
 		Standard_Boolean Decompose ();
-		%feature("autodoc", "Args:
-	B(math_Vector)
-	X(math_Vector)
+		%feature("autodoc", "	* Direct Solve of AX = B
 
-Returns:
-	None
-
-Direct Solve of AX = B") Solve;
+	:param B:
+	:type B: math_Vector &
+	:param X:
+	:type X: math_Vector &
+	:rtype: None
+") Solve;
 		void Solve (const math_Vector & B,math_Vector & X);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Make Preparation to iterative solve
 
-Make Preparation to iterative solve") Prepare;
+	:rtype: bool
+") Prepare;
 		Standard_Boolean Prepare ();
-		%feature("autodoc", "Args:
-	B(math_Vector)
-	Init(math_Vector)
-	X(math_Vector)
-	Residual(math_Vector)
-	Tolerance(Standard_Real)=1.0e-8
-	NbIterations(Standard_Integer)=50
+		%feature("autodoc", "	* Iterative solve of AX = B
 
-Returns:
-	None
-
-Iterative solve  of AX = B") Solve;
+	:param B:
+	:type B: math_Vector &
+	:param Init:
+	:type Init: math_Vector &
+	:param X:
+	:type X: math_Vector &
+	:param Residual:
+	:type Residual: math_Vector &
+	:param Tolerance: default value is 1.0e-8
+	:type Tolerance: float
+	:param NbIterations: default value is 50
+	:type NbIterations: Standard_Integer
+	:rtype: None
+") Solve;
 		void Solve (const math_Vector & B,const math_Vector & Init,math_Vector & X,math_Vector & Residual,const Standard_Real Tolerance = 1.0e-8,const Standard_Integer NbIterations = 50);
-		%feature("autodoc", "Args:
-	X(math_Vector)
-	MX(math_Vector)
+		%feature("autodoc", "	* returns the product of a SparseMatrix by a vector. An exception is raised if the dimensions are different
 
-Returns:
-	None
-
-returns the product of a SparseMatrix by a vector.  
-         An exception is raised if the dimensions are different") Multiplied;
+	:param X:
+	:type X: math_Vector &
+	:param MX:
+	:type MX: math_Vector &
+	:rtype: None
+") Multiplied;
 		void Multiplied (const math_Vector & X,math_Vector & MX);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* returns the row range of a matrix.
 
-returns the row range of a matrix.") RowNumber;
+	:rtype: int
+") RowNumber;
 		Standard_Integer RowNumber ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* returns the column range of the matrix.
 
-returns the column range of the matrix.") ColNumber;
+	:rtype: int
+") ColNumber;
 		Standard_Integer ColNumber ();
-		%feature("autodoc", "Args:
-	i(Standard_Integer)
-	j(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsInProfile;
+		%feature("autodoc", "	:param i:
+	:type i: Standard_Integer
+	:param j:
+	:type j: Standard_Integer
+	:rtype: bool
+") IsInProfile;
 		Standard_Boolean IsInProfile (const Standard_Integer i,const Standard_Integer j);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") OutM;
+		%feature("autodoc", "	:rtype: None
+") OutM;
 		void OutM ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") OutS;
+		%feature("autodoc", "	:rtype: None
+") OutS;
 		void OutS ();
 };
 

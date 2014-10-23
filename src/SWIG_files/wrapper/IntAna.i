@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -57,174 +57,184 @@ enum IntAna_ResultType {
 %nodefaultctor IntAna_Curve;
 class IntAna_Curve {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty Constructor
 
-Empty Constructor") IntAna_Curve;
+	:rtype: None
+") IntAna_Curve;
 		 IntAna_Curve ();
-		%feature("autodoc", "Args:
-	Cylinder(gp_Cylinder)
-	Qxx(Standard_Real)
-	Qyy(Standard_Real)
-	Qzz(Standard_Real)
-	Qxy(Standard_Real)
-	Qxz(Standard_Real)
-	Qyz(Standard_Real)
-	Qx(Standard_Real)
-	Qy(Standard_Real)
-	Qz(Standard_Real)
-	Q1(Standard_Real)
-	Tol(Standard_Real)
-	DomInf(Standard_Real)
-	DomSup(Standard_Real)
-	TwoZForATheta(Standard_Boolean)
-	ZIsPositive(Standard_Boolean)
+		%feature("autodoc", "	* Sets the parameters used to compute Points and Derivative on the curve.
 
-Returns:
-	None
-
-Sets the parameters used to compute Points and Derivative  
-         on the curve.") SetCylinderQuadValues;
+	:param Cylinder:
+	:type Cylinder: gp_Cylinder
+	:param Qxx:
+	:type Qxx: float
+	:param Qyy:
+	:type Qyy: float
+	:param Qzz:
+	:type Qzz: float
+	:param Qxy:
+	:type Qxy: float
+	:param Qxz:
+	:type Qxz: float
+	:param Qyz:
+	:type Qyz: float
+	:param Qx:
+	:type Qx: float
+	:param Qy:
+	:type Qy: float
+	:param Qz:
+	:type Qz: float
+	:param Q1:
+	:type Q1: float
+	:param Tol:
+	:type Tol: float
+	:param DomInf:
+	:type DomInf: float
+	:param DomSup:
+	:type DomSup: float
+	:param TwoZForATheta:
+	:type TwoZForATheta: bool
+	:param ZIsPositive:
+	:type ZIsPositive: bool
+	:rtype: None
+") SetCylinderQuadValues;
 		void SetCylinderQuadValues (const gp_Cylinder & Cylinder,const Standard_Real Qxx,const Standard_Real Qyy,const Standard_Real Qzz,const Standard_Real Qxy,const Standard_Real Qxz,const Standard_Real Qyz,const Standard_Real Qx,const Standard_Real Qy,const Standard_Real Qz,const Standard_Real Q1,const Standard_Real Tol,const Standard_Real DomInf,const Standard_Real DomSup,const Standard_Boolean TwoZForATheta,const Standard_Boolean ZIsPositive);
-		%feature("autodoc", "Args:
-	Cone(gp_Cone)
-	Qxx(Standard_Real)
-	Qyy(Standard_Real)
-	Qzz(Standard_Real)
-	Qxy(Standard_Real)
-	Qxz(Standard_Real)
-	Qyz(Standard_Real)
-	Qx(Standard_Real)
-	Qy(Standard_Real)
-	Qz(Standard_Real)
-	Q1(Standard_Real)
-	Tol(Standard_Real)
-	DomInf(Standard_Real)
-	DomSup(Standard_Real)
-	TwoZForATheta(Standard_Boolean)
-	ZIsPositive(Standard_Boolean)
+		%feature("autodoc", "	* Sets the parameters used to compute Points and Derivative on the curve.
 
-Returns:
-	None
-
-Sets  the parameters used    to compute Points  and  
-         Derivative on the curve.") SetConeQuadValues;
+	:param Cone:
+	:type Cone: gp_Cone
+	:param Qxx:
+	:type Qxx: float
+	:param Qyy:
+	:type Qyy: float
+	:param Qzz:
+	:type Qzz: float
+	:param Qxy:
+	:type Qxy: float
+	:param Qxz:
+	:type Qxz: float
+	:param Qyz:
+	:type Qyz: float
+	:param Qx:
+	:type Qx: float
+	:param Qy:
+	:type Qy: float
+	:param Qz:
+	:type Qz: float
+	:param Q1:
+	:type Q1: float
+	:param Tol:
+	:type Tol: float
+	:param DomInf:
+	:type DomInf: float
+	:param DomSup:
+	:type DomSup: float
+	:param TwoZForATheta:
+	:type TwoZForATheta: bool
+	:param ZIsPositive:
+	:type ZIsPositive: bool
+	:rtype: None
+") SetConeQuadValues;
 		void SetConeQuadValues (const gp_Cone & Cone,const Standard_Real Qxx,const Standard_Real Qyy,const Standard_Real Qzz,const Standard_Real Qxy,const Standard_Real Qxz,const Standard_Real Qyz,const Standard_Real Qx,const Standard_Real Qy,const Standard_Real Qz,const Standard_Real Q1,const Standard_Real Tol,const Standard_Real DomInf,const Standard_Real DomSup,const Standard_Boolean TwoZForATheta,const Standard_Boolean ZIsPositive);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the curve is not infinite at the last parameter or at the first parameter of the domain.
 
-Returns TRUE if the curve is not  infinite  at the  
-         last parameter or at the first parameter of the domain.") IsOpen;
+	:rtype: bool
+") IsOpen;
 		Standard_Boolean IsOpen ();
-		%feature("autodoc", "Args:
-	Theta1(Standard_Real)
-	Theta2(Standard_Real)
+		%feature("autodoc", "	* Returns the paramatric domain of the curve.
 
-Returns:
-	None
-
-Returns the paramatric domain of the curve.") Domain;
+	:param Theta1:
+	:type Theta1: float &
+	:param Theta2:
+	:type Theta2: float &
+	:rtype: None
+") Domain;
 		void Domain (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the function is constant.
 
-Returns TRUE if the function is constant.") IsConstant;
+	:rtype: bool
+") IsConstant;
 		Standard_Boolean IsConstant ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the domain is open at the beginning.
 
-Returns TRUE if the domain is open at the beginning.") IsFirstOpen;
+	:rtype: bool
+") IsFirstOpen;
 		Standard_Boolean IsFirstOpen ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the domain is open at the end.
 
-Returns TRUE if the domain is open at the end.") IsLastOpen;
+	:rtype: bool
+") IsLastOpen;
 		Standard_Boolean IsLastOpen ();
-		%feature("autodoc", "Args:
-	Theta(Standard_Real)
+		%feature("autodoc", "	* Returns the point at parameter Theta on the curve.
 
-Returns:
-	gp_Pnt
-
-Returns the point at parameter Theta on the curve.") Value;
+	:param Theta:
+	:type Theta: float
+	:rtype: gp_Pnt
+") Value;
 		gp_Pnt Value (const Standard_Real Theta);
-		%feature("autodoc", "Args:
-	Theta(Standard_Real)
-	P(gp_Pnt)
-	V(gp_Vec)
+		%feature("autodoc", "	* Returns the point and the first derivative at parameter Theta on the curve.
 
-Returns:
-	Standard_Boolean
-
-Returns the point and the first derivative at parameter  
-         Theta on the curve.") D1u;
+	:param Theta:
+	:type Theta: float
+	:param P:
+	:type P: gp_Pnt
+	:param V:
+	:type V: gp_Vec
+	:rtype: bool
+") D1u;
 		Standard_Boolean D1u (const Standard_Real Theta,gp_Pnt & P,gp_Vec & V);
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
-	Para(Standard_Real)
+		%feature("autodoc", "	* Tries to find the parameter of the point P on the curve. If the method returns False, the 'projection' is impossible, and the value of Para is not significant. If the method returns True, Para is the parameter of the nearest intersection between the curve and the iso-theta containing P.
 
-Returns:
-	Standard_Boolean
-
-Tries to find the parameter of the point P on the curve.  
-         If the method returns False, the 'projection' is  
-         impossible, and the value of Para is not significant.  
-         If the method returns True, Para is the parameter of the  
-         nearest intersection between the curve and the iso-theta  
-         containing P.") FindParameter;
+	:param P:
+	:type P: gp_Pnt
+	:param Para:
+	:type Para: float &
+	:rtype: bool
+") FindParameter;
 		Standard_Boolean FindParameter (const gp_Pnt & P,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Flag(Standard_Boolean)
+		%feature("autodoc", "	* If flag is True, the Curve is not defined at the first parameter of its domain.
 
-Returns:
-	None
-
-If flag is True, the Curve is not defined at the  
-         first parameter of its domain.") SetIsFirstOpen;
+	:param Flag:
+	:type Flag: bool
+	:rtype: None
+") SetIsFirstOpen;
 		void SetIsFirstOpen (const Standard_Boolean Flag);
-		%feature("autodoc", "Args:
-	Flag(Standard_Boolean)
+		%feature("autodoc", "	* If flag is True, the Curve is not defined at the first parameter of its domain.
 
-Returns:
-	None
-
-If flag is True, the Curve is not defined at the  
-         first parameter of its domain.") SetIsLastOpen;
+	:param Flag:
+	:type Flag: bool
+	:rtype: None
+") SetIsLastOpen;
 		void SetIsLastOpen (const Standard_Boolean Flag);
-		%feature("autodoc", "Args:
-	Param(Standard_Real)
-	U(Standard_Real)
-	V(Standard_Real)
-	A(Standard_Real)
-	B(Standard_Real)
-	C(Standard_Real)
-	Co(Standard_Real)
-	Si(Standard_Real)
-	Di(Standard_Real)
+		%feature("autodoc", "	* Protected function.
 
-Returns:
-	None
-
-Protected function.") InternalUVValue;
+	:param Param:
+	:type Param: float
+	:param U:
+	:type U: float &
+	:param V:
+	:type V: float &
+	:param A:
+	:type A: float &
+	:param B:
+	:type B: float &
+	:param C:
+	:type C: float &
+	:param Co:
+	:type Co: float &
+	:param Si:
+	:type Si: float &
+	:param Di:
+	:type Di: float &
+	:rtype: None
+") InternalUVValue;
 		void InternalUVValue (const Standard_Real Param,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Theta1(Standard_Real)
-	Theta2(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetDomain;
+		%feature("autodoc", "	:param Theta1:
+	:type Theta1: float
+	:param Theta2:
+	:type Theta2: float
+	:rtype: None
+") SetDomain;
 		void SetDomain (const Standard_Real Theta1,const Standard_Real Theta2);
 };
 
@@ -246,57 +256,45 @@ def __del__(self):
 %nodefaultctor IntAna_Int3Pln;
 class IntAna_Int3Pln {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntAna_Int3Pln;
+		%feature("autodoc", "	:rtype: None
+") IntAna_Int3Pln;
 		 IntAna_Int3Pln ();
-		%feature("autodoc", "Args:
-	P1(gp_Pln)
-	P2(gp_Pln)
-	P3(gp_Pln)
+		%feature("autodoc", "	* Determination of the intersection point between 3 planes.
 
-Returns:
-	None
-
-Determination of the intersection point between  
-         3 planes.") IntAna_Int3Pln;
+	:param P1:
+	:type P1: gp_Pln
+	:param P2:
+	:type P2: gp_Pln
+	:param P3:
+	:type P3: gp_Pln
+	:rtype: None
+") IntAna_Int3Pln;
 		 IntAna_Int3Pln (const gp_Pln & P1,const gp_Pln & P2,const gp_Pln & P3);
-		%feature("autodoc", "Args:
-	P1(gp_Pln)
-	P2(gp_Pln)
-	P3(gp_Pln)
+		%feature("autodoc", "	* Determination of the intersection point between 3 planes.
 
-Returns:
-	None
-
-Determination of the intersection point between  
-         3 planes.") Perform;
+	:param P1:
+	:type P1: gp_Pln
+	:param P2:
+	:type P2: gp_Pln
+	:param P3:
+	:type P3: gp_Pln
+	:rtype: None
+") Perform;
 		void Perform (const gp_Pln & P1,const gp_Pln & P2,const gp_Pln & P3);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the computation was successful.
 
-Returns True if the computation was successful.") IsDone;
+	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if there is no intersection POINT. If 2 planes are identical or parallel, IsEmpty will return True.
 
-Returns TRUE if there is no intersection POINT.  
-         If 2 planes are identical or parallel, IsEmpty  
-         will return TRUE.") IsEmpty;
+	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
+		%feature("autodoc", "	* Returns the intersection point.
 
-Returns the intersection point.") Value;
+	:rtype: gp_Pnt
+") Value;
 		const gp_Pnt & Value ();
 };
 
@@ -318,285 +316,260 @@ def __del__(self):
 %nodefaultctor IntAna_IntConicQuad;
 class IntAna_IntConicQuad {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor.
 
-Empty constructor.") IntAna_IntConicQuad;
+	:rtype: None
+") IntAna_IntConicQuad;
 		 IntAna_IntConicQuad ();
-		%feature("autodoc", "Args:
-	L(gp_Lin)
-	Q(IntAna_Quadric)
+		%feature("autodoc", "	* Creates the intersection between a line and a quadric.
 
-Returns:
-	None
-
-Creates the intersection between a line and a quadric.") IntAna_IntConicQuad;
+	:param L:
+	:type L: gp_Lin
+	:param Q:
+	:type Q: IntAna_Quadric &
+	:rtype: None
+") IntAna_IntConicQuad;
 		 IntAna_IntConicQuad (const gp_Lin & L,const IntAna_Quadric & Q);
-		%feature("autodoc", "Args:
-	L(gp_Lin)
-	Q(IntAna_Quadric)
+		%feature("autodoc", "	* Intersects a line and a quadric.
 
-Returns:
-	None
-
-Intersects a line and a quadric.") Perform;
+	:param L:
+	:type L: gp_Lin
+	:param Q:
+	:type Q: IntAna_Quadric &
+	:rtype: None
+") Perform;
 		void Perform (const gp_Lin & L,const IntAna_Quadric & Q);
-		%feature("autodoc", "Args:
-	C(gp_Circ)
-	Q(IntAna_Quadric)
+		%feature("autodoc", "	* Creates the intersection between a circle and a quadric.
 
-Returns:
-	None
-
-Creates the intersection between a circle and a quadric.") IntAna_IntConicQuad;
+	:param C:
+	:type C: gp_Circ
+	:param Q:
+	:type Q: IntAna_Quadric &
+	:rtype: None
+") IntAna_IntConicQuad;
 		 IntAna_IntConicQuad (const gp_Circ & C,const IntAna_Quadric & Q);
-		%feature("autodoc", "Args:
-	C(gp_Circ)
-	Q(IntAna_Quadric)
+		%feature("autodoc", "	* Intersects a circle and a quadric.
 
-Returns:
-	None
-
-Intersects a circle and a quadric.") Perform;
+	:param C:
+	:type C: gp_Circ
+	:param Q:
+	:type Q: IntAna_Quadric &
+	:rtype: None
+") Perform;
 		void Perform (const gp_Circ & C,const IntAna_Quadric & Q);
-		%feature("autodoc", "Args:
-	E(gp_Elips)
-	Q(IntAna_Quadric)
+		%feature("autodoc", "	* Creates the intersection between an ellipse and a quadric.
 
-Returns:
-	None
-
-Creates the intersection between an ellipse and a quadric.") IntAna_IntConicQuad;
+	:param E:
+	:type E: gp_Elips
+	:param Q:
+	:type Q: IntAna_Quadric &
+	:rtype: None
+") IntAna_IntConicQuad;
 		 IntAna_IntConicQuad (const gp_Elips & E,const IntAna_Quadric & Q);
-		%feature("autodoc", "Args:
-	E(gp_Elips)
-	Q(IntAna_Quadric)
+		%feature("autodoc", "	* Intersects an ellipse and a quadric.
 
-Returns:
-	None
-
-Intersects an ellipse and a quadric.") Perform;
+	:param E:
+	:type E: gp_Elips
+	:param Q:
+	:type Q: IntAna_Quadric &
+	:rtype: None
+") Perform;
 		void Perform (const gp_Elips & E,const IntAna_Quadric & Q);
-		%feature("autodoc", "Args:
-	P(gp_Parab)
-	Q(IntAna_Quadric)
+		%feature("autodoc", "	* Creates the intersection between a parabola and a quadric.
 
-Returns:
-	None
-
-Creates the intersection between a parabola and a quadric.") IntAna_IntConicQuad;
+	:param P:
+	:type P: gp_Parab
+	:param Q:
+	:type Q: IntAna_Quadric &
+	:rtype: None
+") IntAna_IntConicQuad;
 		 IntAna_IntConicQuad (const gp_Parab & P,const IntAna_Quadric & Q);
-		%feature("autodoc", "Args:
-	P(gp_Parab)
-	Q(IntAna_Quadric)
+		%feature("autodoc", "	* Intersects a parabola and a quadric.
 
-Returns:
-	None
-
-Intersects a parabola and a quadric.") Perform;
+	:param P:
+	:type P: gp_Parab
+	:param Q:
+	:type Q: IntAna_Quadric &
+	:rtype: None
+") Perform;
 		void Perform (const gp_Parab & P,const IntAna_Quadric & Q);
-		%feature("autodoc", "Args:
-	H(gp_Hypr)
-	Q(IntAna_Quadric)
+		%feature("autodoc", "	* Creates the intersection between an hyperbola and a quadric.
 
-Returns:
-	None
-
-Creates the intersection between an hyperbola and  
-         a quadric.") IntAna_IntConicQuad;
+	:param H:
+	:type H: gp_Hypr
+	:param Q:
+	:type Q: IntAna_Quadric &
+	:rtype: None
+") IntAna_IntConicQuad;
 		 IntAna_IntConicQuad (const gp_Hypr & H,const IntAna_Quadric & Q);
-		%feature("autodoc", "Args:
-	H(gp_Hypr)
-	Q(IntAna_Quadric)
+		%feature("autodoc", "	* Intersects an hyperbola and a quadric.
 
-Returns:
-	None
-
-Intersects an hyperbola and a quadric.") Perform;
+	:param H:
+	:type H: gp_Hypr
+	:param Q:
+	:type Q: IntAna_Quadric &
+	:rtype: None
+") Perform;
 		void Perform (const gp_Hypr & H,const IntAna_Quadric & Q);
-		%feature("autodoc", "Args:
-	L(gp_Lin)
-	P(gp_Pln)
-	Tolang(Standard_Real)
-	Tol(Standard_Real)=0
-	Len(Standard_Real)=0
+		%feature("autodoc", "	* Intersection between a line and a plane. Tolang is used to determine if the angle between two vectors is null. Tol is used to check the distance between line and plane on the distance <Len> from the origin of the line.
 
-Returns:
-	None
-
-Intersection between a line and a plane.  
-         Tolang is used to determine if the angle between two  
-         vectors is null.  
-         Tol is used to check the distance between line and plane  
-         on the distance <Len> from the origin of the line.") IntAna_IntConicQuad;
+	:param L:
+	:type L: gp_Lin
+	:param P:
+	:type P: gp_Pln
+	:param Tolang:
+	:type Tolang: float
+	:param Tol: default value is 0
+	:type Tol: float
+	:param Len: default value is 0
+	:type Len: float
+	:rtype: None
+") IntAna_IntConicQuad;
 		 IntAna_IntConicQuad (const gp_Lin & L,const gp_Pln & P,const Standard_Real Tolang,const Standard_Real Tol = 0,const Standard_Real Len = 0);
-		%feature("autodoc", "Args:
-	L(gp_Lin)
-	P(gp_Pln)
-	Tolang(Standard_Real)
-	Tol(Standard_Real)=0
-	Len(Standard_Real)=0
+		%feature("autodoc", "	* Intersects a line and a plane. Tolang is used to determine if the angle between two vectors is null. Tol is used to check the distance between line and plane on the distance <Len> from the origin of the line.
 
-Returns:
-	None
-
-Intersects a line and a plane.  
-         Tolang is used to determine if the angle between two  
-         vectors is null.  
-         Tol is used to check the distance between line and plane  
-         on the distance <Len> from the origin of the line.") Perform;
+	:param L:
+	:type L: gp_Lin
+	:param P:
+	:type P: gp_Pln
+	:param Tolang:
+	:type Tolang: float
+	:param Tol: default value is 0
+	:type Tol: float
+	:param Len: default value is 0
+	:type Len: float
+	:rtype: None
+") Perform;
 		void Perform (const gp_Lin & L,const gp_Pln & P,const Standard_Real Tolang,const Standard_Real Tol = 0,const Standard_Real Len = 0);
-		%feature("autodoc", "Args:
-	C(gp_Circ)
-	P(gp_Pln)
-	Tolang(Standard_Real)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Intersection between a circle and a plane. Tolang is used to determine if the angle between two vectors is null. Tol is used to determine if a distance is null.
 
-Returns:
-	None
-
-Intersection between a circle and a plane.  
-         Tolang is used to determine if the angle between two  
-         vectors is null.  
-         Tol is used to determine if a distance is null.") IntAna_IntConicQuad;
+	:param C:
+	:type C: gp_Circ
+	:param P:
+	:type P: gp_Pln
+	:param Tolang:
+	:type Tolang: float
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") IntAna_IntConicQuad;
 		 IntAna_IntConicQuad (const gp_Circ & C,const gp_Pln & P,const Standard_Real Tolang,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	C(gp_Circ)
-	P(gp_Pln)
-	Tolang(Standard_Real)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Intersects a circle and a plane. Tolang is used to determine if the angle between two vectors is null. Tol is used to determine if a distance is null.
 
-Returns:
-	None
-
-Intersects a circle and a plane.  
-         Tolang is used to determine if the angle between two  
-         vectors is null.  
-         Tol is used to determine if a distance is null.") Perform;
+	:param C:
+	:type C: gp_Circ
+	:param P:
+	:type P: gp_Pln
+	:param Tolang:
+	:type Tolang: float
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Perform;
 		void Perform (const gp_Circ & C,const gp_Pln & P,const Standard_Real Tolang,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	E(gp_Elips)
-	P(gp_Pln)
-	Tolang(Standard_Real)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Intersection between an ellipse and a plane. Tolang is used to determine if the angle between two vectors is null. Tol is used to determine if a distance is null.
 
-Returns:
-	None
-
-Intersection between an ellipse and a plane.  
-         Tolang is used to determine if the angle between two  
-         vectors is null.  
-         Tol is used to determine if a distance is null.") IntAna_IntConicQuad;
+	:param E:
+	:type E: gp_Elips
+	:param P:
+	:type P: gp_Pln
+	:param Tolang:
+	:type Tolang: float
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") IntAna_IntConicQuad;
 		 IntAna_IntConicQuad (const gp_Elips & E,const gp_Pln & P,const Standard_Real Tolang,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	E(gp_Elips)
-	P(gp_Pln)
-	Tolang(Standard_Real)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Intersects an ellipse and a plane. Tolang is used to determine if the angle between two vectors is null. Tol is used to determine if a distance is null.
 
-Returns:
-	None
-
-Intersects an ellipse and a plane.  
-         Tolang is used to determine if the angle between two  
-         vectors is null.  
-         Tol is used to determine if a distance is null.") Perform;
+	:param E:
+	:type E: gp_Elips
+	:param P:
+	:type P: gp_Pln
+	:param Tolang:
+	:type Tolang: float
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Perform;
 		void Perform (const gp_Elips & E,const gp_Pln & P,const Standard_Real Tolang,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Pb(gp_Parab)
-	P(gp_Pln)
-	Tolang(Standard_Real)
+		%feature("autodoc", "	* Intersection between a parabola and a plane. Tolang is used to determine if the angle between two vectors is null.
 
-Returns:
-	None
-
-Intersection between a parabola and a plane.  
-         Tolang is used to determine if the angle between two  
-         vectors is null.") IntAna_IntConicQuad;
+	:param Pb:
+	:type Pb: gp_Parab
+	:param P:
+	:type P: gp_Pln
+	:param Tolang:
+	:type Tolang: float
+	:rtype: None
+") IntAna_IntConicQuad;
 		 IntAna_IntConicQuad (const gp_Parab & Pb,const gp_Pln & P,const Standard_Real Tolang);
-		%feature("autodoc", "Args:
-	Pb(gp_Parab)
-	P(gp_Pln)
-	Tolang(Standard_Real)
+		%feature("autodoc", "	* Intersects a parabola and a plane. Tolang is used to determine if the angle between two vectors is null.
 
-Returns:
-	None
-
-Intersects a parabola and a plane.  
-         Tolang is used to determine if the angle between two  
-         vectors is null.") Perform;
+	:param Pb:
+	:type Pb: gp_Parab
+	:param P:
+	:type P: gp_Pln
+	:param Tolang:
+	:type Tolang: float
+	:rtype: None
+") Perform;
 		void Perform (const gp_Parab & Pb,const gp_Pln & P,const Standard_Real Tolang);
-		%feature("autodoc", "Args:
-	H(gp_Hypr)
-	P(gp_Pln)
-	Tolang(Standard_Real)
+		%feature("autodoc", "	* Intersection between an hyperbola and a plane. Tolang is used to determine if the angle between two vectors is null.
 
-Returns:
-	None
-
-Intersection between an hyperbola and a plane.  
-         Tolang is used to determine if the angle between two  
-         vectors is null.") IntAna_IntConicQuad;
+	:param H:
+	:type H: gp_Hypr
+	:param P:
+	:type P: gp_Pln
+	:param Tolang:
+	:type Tolang: float
+	:rtype: None
+") IntAna_IntConicQuad;
 		 IntAna_IntConicQuad (const gp_Hypr & H,const gp_Pln & P,const Standard_Real Tolang);
-		%feature("autodoc", "Args:
-	H(gp_Hypr)
-	P(gp_Pln)
-	Tolang(Standard_Real)
+		%feature("autodoc", "	* Intersects an hyperbola and a plane. Tolang is used to determine if the angle between two vectors is null.
 
-Returns:
-	None
-
-Intersects an hyperbola and a plane.  
-         Tolang is used to determine if the angle between two  
-         vectors is null.") Perform;
+	:param H:
+	:type H: gp_Hypr
+	:param P:
+	:type P: gp_Pln
+	:param Tolang:
+	:type Tolang: float
+	:rtype: None
+") Perform;
 		void Perform (const gp_Hypr & H,const gp_Pln & P,const Standard_Real Tolang);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the creation completed.
 
-Returns TRUE if the creation completed.") IsDone;
+	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the conic is in the quadric.
 
-Returns TRUE if the conic is in the quadric.") IsInQuadric;
+	:rtype: bool
+") IsInQuadric;
 		Standard_Boolean IsInQuadric ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the line is in a quadric which is parallel to the quadric.
 
-Returns TRUE if the line is in a quadric which  
-         is parallel to the quadric.") IsParallel;
+	:rtype: bool
+") IsParallel;
 		Standard_Boolean IsParallel ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of intersection point.
 
-Returns the number of intersection point.") NbPoints;
+	:rtype: int
+") NbPoints;
 		Standard_Integer NbPoints ();
-		%feature("autodoc", "Args:
-	N(Standard_Integer)
+		%feature("autodoc", "	* Returns the point of range N.
 
-Returns:
-	gp_Pnt
-
-Returns the point of range N.") Point;
+	:param N:
+	:type N: Standard_Integer
+	:rtype: gp_Pnt
+") Point;
 		const gp_Pnt & Point (const Standard_Integer N);
-		%feature("autodoc", "Args:
-	N(Standard_Integer)
+		%feature("autodoc", "	* Returns the parameter on the line of the intersection point of range N.
 
-Returns:
-	Standard_Real
-
-Returns the parameter on the line of the intersection  
-         point of range N.") ParamOnConic;
+	:param N:
+	:type N: Standard_Integer
+	:rtype: float
+") ParamOnConic;
 		Standard_Real ParamOnConic (const Standard_Integer N);
 };
 
@@ -618,72 +591,61 @@ def __del__(self):
 %nodefaultctor IntAna_IntLinTorus;
 class IntAna_IntLinTorus {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntAna_IntLinTorus;
+		%feature("autodoc", "	:rtype: None
+") IntAna_IntLinTorus;
 		 IntAna_IntLinTorus ();
-		%feature("autodoc", "Args:
-	L(gp_Lin)
-	T(gp_Torus)
+		%feature("autodoc", "	* Creates the intersection between a line and a torus.
 
-Returns:
-	None
-
-Creates the intersection between a line and a torus.") IntAna_IntLinTorus;
+	:param L:
+	:type L: gp_Lin
+	:param T:
+	:type T: gp_Torus
+	:rtype: None
+") IntAna_IntLinTorus;
 		 IntAna_IntLinTorus (const gp_Lin & L,const gp_Torus & T);
-		%feature("autodoc", "Args:
-	L(gp_Lin)
-	T(gp_Torus)
+		%feature("autodoc", "	* Intersects a line and a torus.
 
-Returns:
-	None
-
-Intersects a line and a torus.") Perform;
+	:param L:
+	:type L: gp_Lin
+	:param T:
+	:type T: gp_Torus
+	:rtype: None
+") Perform;
 		void Perform (const gp_Lin & L,const gp_Torus & T);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the computation was successful.
 
-Returns True if the computation was successful.") IsDone;
+	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of intersection points.
 
-Returns the number of intersection points.") NbPoints;
+	:rtype: int
+") NbPoints;
 		Standard_Integer NbPoints ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Returns the intersection point of range Index.
 
-Returns:
-	gp_Pnt
-
-Returns the intersection point of range Index.") Value;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: gp_Pnt
+") Value;
 		const gp_Pnt & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Returns the parameter on the line of the intersection point of range Index.
 
-Returns:
-	Standard_Real
-
-Returns the parameter on the line of the intersection  
-         point of range Index.") ParamOnLine;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: float
+") ParamOnLine;
 		Standard_Real ParamOnLine (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	FI(Standard_Real)
-	THETA(Standard_Real)
+		%feature("autodoc", "	* Returns the parameters on the torus of the intersection point of range Index.
 
-Returns:
-	None
-
-Returns the parameters on the torus of the intersection  
-         point of range Index.") ParamOnTorus;
+	:param Index:
+	:type Index: Standard_Integer
+	:param FI:
+	:type FI: float &
+	:param THETA:
+	:type THETA: float &
+	:rtype: None
+") ParamOnTorus;
 		void ParamOnTorus (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
 };
 
@@ -705,164 +667,131 @@ def __del__(self):
 %nodefaultctor IntAna_IntQuadQuad;
 class IntAna_IntQuadQuad {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty Constructor
 
-Empty Constructor") IntAna_IntQuadQuad;
+	:rtype: None
+") IntAna_IntQuadQuad;
 		 IntAna_IntQuadQuad ();
-		%feature("autodoc", "Args:
-	C(gp_Cylinder)
-	Q(IntAna_Quadric)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Creates the intersection between a cylinder and a quadric . Tol est a definir plus precisemment.
 
-Returns:
-	None
-
-Creates the intersection between a cylinder and a quadric .  
-         Tol est a definir plus precisemment.") IntAna_IntQuadQuad;
+	:param C:
+	:type C: gp_Cylinder
+	:param Q:
+	:type Q: IntAna_Quadric &
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") IntAna_IntQuadQuad;
 		 IntAna_IntQuadQuad (const gp_Cylinder & C,const IntAna_Quadric & Q,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	C(gp_Cone)
-	Q(IntAna_Quadric)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Creates the intersection between a cone and a quadric. Tol est a definir plus precisemment.
 
-Returns:
-	None
-
-Creates the intersection between a cone and a quadric.  
-         Tol est a definir plus precisemment.") IntAna_IntQuadQuad;
+	:param C:
+	:type C: gp_Cone
+	:param Q:
+	:type Q: IntAna_Quadric &
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") IntAna_IntQuadQuad;
 		 IntAna_IntQuadQuad (const gp_Cone & C,const IntAna_Quadric & Q,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	C(gp_Cylinder)
-	Q(IntAna_Quadric)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Intersects a cylinder and a quadric . Tol est a definir plus precisemment.
 
-Returns:
-	None
-
-Intersects a cylinder and a quadric .  
-         Tol est a definir plus precisemment.") Perform;
+	:param C:
+	:type C: gp_Cylinder
+	:param Q:
+	:type Q: IntAna_Quadric &
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Perform;
 		void Perform (const gp_Cylinder & C,const IntAna_Quadric & Q,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	C(gp_Cone)
-	Q(IntAna_Quadric)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Intersects a cone and a quadric. Tol est a definir plus precisemment.
 
-Returns:
-	None
-
-Intersects a cone and a quadric.  
-         Tol est a definir plus precisemment.") Perform;
+	:param C:
+	:type C: gp_Cone
+	:param Q:
+	:type Q: IntAna_Quadric &
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Perform;
 		void Perform (const gp_Cone & C,const IntAna_Quadric & Q,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the computation was successful.
 
-Returns True if the computation was successful.") IsDone;
+	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the cylinder, the cone or the sphere is identical to the quadric.
 
-Returns TRUE if the cylinder, the cone or the sphere  
-         is identical to the quadric.") IdenticalElements;
+	:rtype: bool
+") IdenticalElements;
 		Standard_Boolean IdenticalElements ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of curves solution.
 
-Returns the number of curves solution.") NbCurve;
+	:rtype: int
+") NbCurve;
 		Standard_Integer NbCurve ();
-		%feature("autodoc", "Args:
-	N(Standard_Integer)
+		%feature("autodoc", "	* Returns the curve of range N.
 
-Returns:
-	IntAna_Curve
-
-Returns the curve of range N.") Curve;
+	:param N:
+	:type N: Standard_Integer
+	:rtype: IntAna_Curve
+") Curve;
 		const IntAna_Curve & Curve (const Standard_Integer N);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of contact point.
 
-Returns the number of contact point.") NbPnt;
+	:rtype: int
+") NbPnt;
 		Standard_Integer NbPnt ();
-		%feature("autodoc", "Args:
-	N(Standard_Integer)
+		%feature("autodoc", "	* Returns the point of range N.
 
-Returns:
-	gp_Pnt
-
-Returns the point of range N.") Point;
+	:param N:
+	:type N: Standard_Integer
+	:rtype: gp_Pnt
+") Point;
 		const gp_Pnt & Point (const Standard_Integer N);
-		%feature("autodoc", "Args:
-	N(Standard_Integer)
-	U1(Standard_Real)
-	U2(Standard_Real)
+		%feature("autodoc", "	* Returns the paramaters on the 'explicit quadric' (i.e the cylinder or the cone, the first argument given to the constructor) of the point of range N.
 
-Returns:
-	None
-
-Returns  the paramaters on the  'explicit quadric'  
-         (i.e  the cylinder or the  cone, the  
-         first argument   given to the constructor)  of the  
-         point of  range  N.") Parameters;
+	:param N:
+	:type N: Standard_Integer
+	:param U1:
+	:type U1: float &
+	:param U2:
+	:type U2: float &
+	:rtype: None
+") Parameters;
 		void Parameters (const Standard_Integer N,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* Returns True if the Curve I shares its last bound with another curve.
 
-Returns:
-	Standard_Boolean
-
-Returns True if the Curve I  shares its last bound  
-         with another curve.") HasNextCurve;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: bool
+") HasNextCurve;
 		Standard_Boolean HasNextCurve (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	Opposite(Standard_Boolean)
+		%feature("autodoc", "	* If HasNextCurve(I) returns True, this function returns the Index J of the curve which has a common bound with the curve I. If Opposite == True , then the last parameter of the curve I, and the last parameter of the curve J give the same point. Else the last parameter of the curve I and the first parameter of the curve J are the same point.
 
-Returns:
-	Standard_Integer
-
-If  HasNextCurve(I)  returns True,  this  function  
-         returns  the  Index J  of the curve  which   has a  
-         common bound  with the curve   I.  If  Opposite ==  
-         True , then the last parameter of the curve I, and  
-         the last parameter of  the curve J  give  the same  
-         point. Else the last  parameter of the curve I and  
-         the first parameter  of  the curve J are  the same  
-         point.") NextCurve;
+	:param I:
+	:type I: Standard_Integer
+	:param Opposite:
+	:type Opposite: bool
+	:rtype: int
+") NextCurve;
 		Standard_Integer NextCurve (const Standard_Integer I,Standard_Boolean & Opposite);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* Returns True if the Curve I shares its first bound with another curve.
 
-Returns:
-	Standard_Boolean
-
-Returns True if the Curve I shares its first bound  
-         with another curve.") HasPreviousCurve;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: bool
+") HasPreviousCurve;
 		Standard_Boolean HasPreviousCurve (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	Opposite(Standard_Boolean)
+		%feature("autodoc", "	* if HasPreviousCurve(I) returns True, this function returns the Index J of the curve which has a common bound with the curve I. If Opposite == True , then the first parameter of the curve I, and the first parameter of the curve J give the same point. Else the first parameter of the curve I and the last parameter of the curve J are the same point.
 
-Returns:
-	Standard_Integer
-
-if HasPreviousCurve(I) returns True, this function  
-         returns the   Index  J of the   curve  which has a  
-         common  bound with the  curve  I.  If Opposite  ==  
-         True  , then the  first parameter of  the curve I,  
-         and the first parameter of the curve  J  give  the  
-         same point. Else the first  parameter of the curve  
-         I and the last  parameter  of the curve J  are the  
-         same point.") PreviousCurve;
+	:param I:
+	:type I: Standard_Integer
+	:param Opposite:
+	:type Opposite: bool
+	:rtype: int
+") PreviousCurve;
 		Standard_Integer PreviousCurve (const Standard_Integer I,Standard_Boolean & Opposite);
 };
 
@@ -884,49 +813,27 @@ def __del__(self):
 %nodefaultctor IntAna_ListIteratorOfListOfCurve;
 class IntAna_ListIteratorOfListOfCurve {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntAna_ListIteratorOfListOfCurve;
+		%feature("autodoc", "	:rtype: None
+") IntAna_ListIteratorOfListOfCurve;
 		 IntAna_ListIteratorOfListOfCurve ();
-		%feature("autodoc", "Args:
-	L(IntAna_ListOfCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntAna_ListIteratorOfListOfCurve;
+		%feature("autodoc", "	:param L:
+	:type L: IntAna_ListOfCurve &
+	:rtype: None
+") IntAna_ListIteratorOfListOfCurve;
 		 IntAna_ListIteratorOfListOfCurve (const IntAna_ListOfCurve & L);
-		%feature("autodoc", "Args:
-	L(IntAna_ListOfCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: IntAna_ListOfCurve &
+	:rtype: None
+") Initialize;
 		void Initialize (const IntAna_ListOfCurve & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntAna_Curve
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: IntAna_Curve
+") Value;
 		IntAna_Curve & Value ();
 };
 
@@ -948,21 +855,15 @@ def __del__(self):
 %nodefaultctor IntAna_ListNodeOfListOfCurve;
 class IntAna_ListNodeOfListOfCurve : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(IntAna_Curve)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntAna_ListNodeOfListOfCurve;
+		%feature("autodoc", "	:param I:
+	:type I: IntAna_Curve &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") IntAna_ListNodeOfListOfCurve;
 		 IntAna_ListNodeOfListOfCurve (const IntAna_Curve & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntAna_Curve
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: IntAna_Curve
+") Value;
 		IntAna_Curve & Value ();
 };
 
@@ -1023,164 +924,103 @@ def __del__(self):
 %nodefaultctor IntAna_ListOfCurve;
 class IntAna_ListOfCurve {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntAna_ListOfCurve;
+		%feature("autodoc", "	:rtype: None
+") IntAna_ListOfCurve;
 		 IntAna_ListOfCurve ();
-		%feature("autodoc", "Args:
-	Other(IntAna_ListOfCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntAna_ListOfCurve &
+	:rtype: None
+") Assign;
 		void Assign (const IntAna_ListOfCurve & Other);
-		%feature("autodoc", "Args:
-	Other(IntAna_ListOfCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntAna_ListOfCurve &
+	:rtype: None
+") operator=;
 		void operator = (const IntAna_ListOfCurve & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(IntAna_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: IntAna_Curve &
+	:rtype: None
+") Prepend;
 		void Prepend (const IntAna_Curve & I);
-		%feature("autodoc", "Args:
-	I(IntAna_Curve)
-	theIt(IntAna_ListIteratorOfListOfCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: IntAna_Curve &
+	:param theIt:
+	:type theIt: IntAna_ListIteratorOfListOfCurve &
+	:rtype: None
+") Prepend;
 		void Prepend (const IntAna_Curve & I,IntAna_ListIteratorOfListOfCurve & theIt);
-		%feature("autodoc", "Args:
-	Other(IntAna_ListOfCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntAna_ListOfCurve &
+	:rtype: None
+") Prepend;
 		void Prepend (IntAna_ListOfCurve & Other);
-		%feature("autodoc", "Args:
-	I(IntAna_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: IntAna_Curve &
+	:rtype: None
+") Append;
 		void Append (const IntAna_Curve & I);
-		%feature("autodoc", "Args:
-	I(IntAna_Curve)
-	theIt(IntAna_ListIteratorOfListOfCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: IntAna_Curve &
+	:param theIt:
+	:type theIt: IntAna_ListIteratorOfListOfCurve &
+	:rtype: None
+") Append;
 		void Append (const IntAna_Curve & I,IntAna_ListIteratorOfListOfCurve & theIt);
-		%feature("autodoc", "Args:
-	Other(IntAna_ListOfCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntAna_ListOfCurve &
+	:rtype: None
+") Append;
 		void Append (IntAna_ListOfCurve & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntAna_Curve
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: IntAna_Curve
+") First;
 		IntAna_Curve & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntAna_Curve
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: IntAna_Curve
+") Last;
 		IntAna_Curve & Last ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(IntAna_ListIteratorOfListOfCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: IntAna_ListIteratorOfListOfCurve &
+	:rtype: None
+") Remove;
 		void Remove (IntAna_ListIteratorOfListOfCurve & It);
-		%feature("autodoc", "Args:
-	I(IntAna_Curve)
-	It(IntAna_ListIteratorOfListOfCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: IntAna_Curve &
+	:param It:
+	:type It: IntAna_ListIteratorOfListOfCurve &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const IntAna_Curve & I,IntAna_ListIteratorOfListOfCurve & It);
-		%feature("autodoc", "Args:
-	Other(IntAna_ListOfCurve)
-	It(IntAna_ListIteratorOfListOfCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntAna_ListOfCurve &
+	:param It:
+	:type It: IntAna_ListIteratorOfListOfCurve &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (IntAna_ListOfCurve & Other,IntAna_ListIteratorOfListOfCurve & It);
-		%feature("autodoc", "Args:
-	I(IntAna_Curve)
-	It(IntAna_ListIteratorOfListOfCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: IntAna_Curve &
+	:param It:
+	:type It: IntAna_ListIteratorOfListOfCurve &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const IntAna_Curve & I,IntAna_ListIteratorOfListOfCurve & It);
-		%feature("autodoc", "Args:
-	Other(IntAna_ListOfCurve)
-	It(IntAna_ListIteratorOfListOfCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntAna_ListOfCurve &
+	:param It:
+	:type It: IntAna_ListIteratorOfListOfCurve &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (IntAna_ListOfCurve & Other,IntAna_ListIteratorOfListOfCurve & It);
 };
 
@@ -1202,445 +1042,415 @@ def __del__(self):
 %nodefaultctor IntAna_QuadQuadGeo;
 class IntAna_QuadQuadGeo {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor.
 
-Empty constructor.") IntAna_QuadQuadGeo;
+	:rtype: None
+") IntAna_QuadQuadGeo;
 		 IntAna_QuadQuadGeo ();
-		%feature("autodoc", "Args:
-	P1(gp_Pln)
-	P2(gp_Pln)
-	TolAng(Standard_Real)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Creates the intersection between two planes. TolAng is the angular tolerance used to determine if the planes are parallel. Tol is the tolerance used to determine if the planes are identical (only when they are parallel).
 
-Returns:
-	None
-
-Creates the intersection between two planes.  
-         TolAng is the angular tolerance used to determine  
-         if the planes are parallel.  
-         Tol is the tolerance used to determine if the planes  
-         are identical (only when they are parallel).") IntAna_QuadQuadGeo;
+	:param P1:
+	:type P1: gp_Pln
+	:param P2:
+	:type P2: gp_Pln
+	:param TolAng:
+	:type TolAng: float
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") IntAna_QuadQuadGeo;
 		 IntAna_QuadQuadGeo (const gp_Pln & P1,const gp_Pln & P2,const Standard_Real TolAng,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	P1(gp_Pln)
-	P2(gp_Pln)
-	TolAng(Standard_Real)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Intersects two planes. TolAng is the angular tolerance used to determine if the planes are parallel. Tol is the tolerance used to determine if the planes are identical (only when they are parallel).
 
-Returns:
-	None
-
-Intersects two planes.  
-         TolAng is the angular tolerance used to determine  
-         if the planes are parallel.  
-         Tol is the tolerance used to determine if the planes  
-         are identical (only when they are parallel).") Perform;
+	:param P1:
+	:type P1: gp_Pln
+	:param P2:
+	:type P2: gp_Pln
+	:param TolAng:
+	:type TolAng: float
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Perform;
 		void Perform (const gp_Pln & P1,const gp_Pln & P2,const Standard_Real TolAng,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	P(gp_Pln)
-	C(gp_Cylinder)
-	Tolang(Standard_Real)
-	Tol(Standard_Real)
-	H(Standard_Real)=0
+		%feature("autodoc", "	* Creates the intersection between a plane and a cylinder. TolAng is the angular tolerance used to determine if the axis of the cylinder is parallel to the plane. Tol is the tolerance used to determine if the result is a circle or an ellipse. If the maximum distance between the ellipse solution and the circle centered at the ellipse center is less than Tol, the result will be the circle. H is the height of the cylinder <Cyl>. It is used to check whether the plane and cylinder are parallel.
 
-Returns:
-	None
-
-Creates the intersection between a plane and a cylinder.  
-         TolAng is the angular tolerance used to determine  
-         if the axis of the cylinder is parallel to the plane.  
-         Tol is the tolerance used to determine if the result  
-         is a circle or an ellipse. If the maximum distance between  
-         the ellipse solution and the circle centered at the ellipse  
-         center is less than Tol, the result will be the circle.  
-         H is the height of the cylinder <Cyl>. It is  used to check  
-         whether the plane and cylinder are parallel.") IntAna_QuadQuadGeo;
+	:param P:
+	:type P: gp_Pln
+	:param C:
+	:type C: gp_Cylinder
+	:param Tolang:
+	:type Tolang: float
+	:param Tol:
+	:type Tol: float
+	:param H: default value is 0
+	:type H: float
+	:rtype: None
+") IntAna_QuadQuadGeo;
 		 IntAna_QuadQuadGeo (const gp_Pln & P,const gp_Cylinder & C,const Standard_Real Tolang,const Standard_Real Tol,const Standard_Real H = 0);
-		%feature("autodoc", "Args:
-	P(gp_Pln)
-	C(gp_Cylinder)
-	Tolang(Standard_Real)
-	Tol(Standard_Real)
-	H(Standard_Real)=0
+		%feature("autodoc", "	* Intersects a plane and a cylinder. TolAng is the angular tolerance used to determine if the axis of the cylinder is parallel to the plane. Tol is the tolerance used to determine if the result is a circle or an ellipse. If the maximum distance between the ellipse solution and the circle centered at the ellipse center is less than Tol, the result will be the circle. H is the height of the cylinder <Cyl>. It is used to check whether the plane and cylinder are parallel.
 
-Returns:
-	None
-
-Intersects a plane and a cylinder.  
-         TolAng is the angular tolerance used to determine  
-         if the axis of the cylinder is parallel to the plane.  
-         Tol is the tolerance used to determine if the result  
-         is a circle or an ellipse. If the maximum distance between  
-         the ellipse solution and the circle centered at the ellipse  
-         center is less than Tol, the result will be the circle.  
-         H is the height of the cylinder <Cyl>. It is  used to check  
-         whether the plane and cylinder are parallel.") Perform;
+	:param P:
+	:type P: gp_Pln
+	:param C:
+	:type C: gp_Cylinder
+	:param Tolang:
+	:type Tolang: float
+	:param Tol:
+	:type Tol: float
+	:param H: default value is 0
+	:type H: float
+	:rtype: None
+") Perform;
 		void Perform (const gp_Pln & P,const gp_Cylinder & C,const Standard_Real Tolang,const Standard_Real Tol,const Standard_Real H = 0);
-		%feature("autodoc", "Args:
-	P(gp_Pln)
-	S(gp_Sphere)
+		%feature("autodoc", "	* Creates the intersection between a plane and a sphere.
 
-Returns:
-	None
-
-Creates the intersection between a plane and a sphere.") IntAna_QuadQuadGeo;
+	:param P:
+	:type P: gp_Pln
+	:param S:
+	:type S: gp_Sphere
+	:rtype: None
+") IntAna_QuadQuadGeo;
 		 IntAna_QuadQuadGeo (const gp_Pln & P,const gp_Sphere & S);
-		%feature("autodoc", "Args:
-	P(gp_Pln)
-	S(gp_Sphere)
+		%feature("autodoc", "	* Intersects a plane and a sphere.
 
-Returns:
-	None
-
-Intersects a plane and a sphere.") Perform;
+	:param P:
+	:type P: gp_Pln
+	:param S:
+	:type S: gp_Sphere
+	:rtype: None
+") Perform;
 		void Perform (const gp_Pln & P,const gp_Sphere & S);
-		%feature("autodoc", "Args:
-	P(gp_Pln)
-	C(gp_Cone)
-	Tolang(Standard_Real)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Creates the intersection between a plane and a cone. TolAng is the angular tolerance used to determine if the axis of the cone is parallel or perpendicular to the plane, and if the generating line of the cone is parallel to the plane. Tol is the tolerance used to determine if the apex of the cone is in the plane.
 
-Returns:
-	None
-
-Creates the intersection between a plane and a cone.  
-         TolAng is the angular tolerance used to determine  
-         if the axis of the cone is parallel or perpendicular  
-         to the plane, and if the generating line of the cone  
-         is parallel to the plane.  
-         Tol is the tolerance used to determine if the apex  
-         of the cone is in the plane.") IntAna_QuadQuadGeo;
+	:param P:
+	:type P: gp_Pln
+	:param C:
+	:type C: gp_Cone
+	:param Tolang:
+	:type Tolang: float
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") IntAna_QuadQuadGeo;
 		 IntAna_QuadQuadGeo (const gp_Pln & P,const gp_Cone & C,const Standard_Real Tolang,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	P(gp_Pln)
-	C(gp_Cone)
-	Tolang(Standard_Real)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Intersects a plane and a cone. TolAng is the angular tolerance used to determine if the axis of the cone is parallel or perpendicular to the plane, and if the generating line of the cone is parallel to the plane. Tol is the tolerance used to determine if the apex of the cone is in the plane.
 
-Returns:
-	None
-
-Intersects a plane and a cone.  
-         TolAng is the angular tolerance used to determine  
-         if the axis of the cone is parallel or perpendicular  
-         to the plane, and if the generating line of the cone  
-         is parallel to the plane.  
-         Tol is the tolerance used to determine if the apex  
-         of the cone is in the plane.") Perform;
+	:param P:
+	:type P: gp_Pln
+	:param C:
+	:type C: gp_Cone
+	:param Tolang:
+	:type Tolang: float
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Perform;
 		void Perform (const gp_Pln & P,const gp_Cone & C,const Standard_Real Tolang,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Cyl1(gp_Cylinder)
-	Cyl2(gp_Cylinder)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Creates the intersection between two cylinders.
 
-Returns:
-	None
-
-Creates the intersection between two cylinders.") IntAna_QuadQuadGeo;
+	:param Cyl1:
+	:type Cyl1: gp_Cylinder
+	:param Cyl2:
+	:type Cyl2: gp_Cylinder
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") IntAna_QuadQuadGeo;
 		 IntAna_QuadQuadGeo (const gp_Cylinder & Cyl1,const gp_Cylinder & Cyl2,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Cyl1(gp_Cylinder)
-	Cyl2(gp_Cylinder)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Intersects two cylinders
 
-Returns:
-	None
-
-Intersects two cylinders") Perform;
+	:param Cyl1:
+	:type Cyl1: gp_Cylinder
+	:param Cyl2:
+	:type Cyl2: gp_Cylinder
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Perform;
 		void Perform (const gp_Cylinder & Cyl1,const gp_Cylinder & Cyl2,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Cyl(gp_Cylinder)
-	Sph(gp_Sphere)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Creates the intersection between a Cylinder and a Sphere.
 
-Returns:
-	None
-
-Creates the intersection between a Cylinder and a Sphere.") IntAna_QuadQuadGeo;
+	:param Cyl:
+	:type Cyl: gp_Cylinder
+	:param Sph:
+	:type Sph: gp_Sphere
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") IntAna_QuadQuadGeo;
 		 IntAna_QuadQuadGeo (const gp_Cylinder & Cyl,const gp_Sphere & Sph,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Cyl(gp_Cylinder)
-	Sph(gp_Sphere)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Intersects a cylinder and a sphere.
 
-Returns:
-	None
-
-Intersects a cylinder and a sphere.") Perform;
+	:param Cyl:
+	:type Cyl: gp_Cylinder
+	:param Sph:
+	:type Sph: gp_Sphere
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Perform;
 		void Perform (const gp_Cylinder & Cyl,const gp_Sphere & Sph,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Cyl(gp_Cylinder)
-	Con(gp_Cone)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Creates the intersection between a Cylinder and a Cone
 
-Returns:
-	None
-
-Creates the intersection between a Cylinder and a Cone") IntAna_QuadQuadGeo;
+	:param Cyl:
+	:type Cyl: gp_Cylinder
+	:param Con:
+	:type Con: gp_Cone
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") IntAna_QuadQuadGeo;
 		 IntAna_QuadQuadGeo (const gp_Cylinder & Cyl,const gp_Cone & Con,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Cyl(gp_Cylinder)
-	Con(gp_Cone)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Intersects a cylinder and a cone.
 
-Returns:
-	None
-
-Intersects a cylinder and a cone.") Perform;
+	:param Cyl:
+	:type Cyl: gp_Cylinder
+	:param Con:
+	:type Con: gp_Cone
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Perform;
 		void Perform (const gp_Cylinder & Cyl,const gp_Cone & Con,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Sph1(gp_Sphere)
-	Sph2(gp_Sphere)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Creates the intersection between two Spheres.
 
-Returns:
-	None
-
-Creates the intersection between two Spheres.") IntAna_QuadQuadGeo;
+	:param Sph1:
+	:type Sph1: gp_Sphere
+	:param Sph2:
+	:type Sph2: gp_Sphere
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") IntAna_QuadQuadGeo;
 		 IntAna_QuadQuadGeo (const gp_Sphere & Sph1,const gp_Sphere & Sph2,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Sph1(gp_Sphere)
-	Sph2(gp_Sphere)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Intersects a two spheres.
 
-Returns:
-	None
-
-Intersects a two spheres.") Perform;
+	:param Sph1:
+	:type Sph1: gp_Sphere
+	:param Sph2:
+	:type Sph2: gp_Sphere
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Perform;
 		void Perform (const gp_Sphere & Sph1,const gp_Sphere & Sph2,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Sph(gp_Sphere)
-	Con(gp_Cone)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Creates the intersection beween a Sphere and a Cone.
 
-Returns:
-	None
-
-Creates the intersection beween a Sphere and a Cone.") IntAna_QuadQuadGeo;
+	:param Sph:
+	:type Sph: gp_Sphere
+	:param Con:
+	:type Con: gp_Cone
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") IntAna_QuadQuadGeo;
 		 IntAna_QuadQuadGeo (const gp_Sphere & Sph,const gp_Cone & Con,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Sph(gp_Sphere)
-	Con(gp_Cone)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Intersects a sphere and a cone.
 
-Returns:
-	None
-
-Intersects a sphere and a cone.") Perform;
+	:param Sph:
+	:type Sph: gp_Sphere
+	:param Con:
+	:type Con: gp_Cone
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Perform;
 		void Perform (const gp_Sphere & Sph,const gp_Cone & Con,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Con1(gp_Cone)
-	Con2(gp_Cone)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Creates the intersection beween two cones.
 
-Returns:
-	None
-
-Creates the intersection beween two cones.") IntAna_QuadQuadGeo;
+	:param Con1:
+	:type Con1: gp_Cone
+	:param Con2:
+	:type Con2: gp_Cone
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") IntAna_QuadQuadGeo;
 		 IntAna_QuadQuadGeo (const gp_Cone & Con1,const gp_Cone & Con2,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Con1(gp_Cone)
-	Con2(gp_Cone)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Intersects two cones.
 
-Returns:
-	None
-
-Intersects two cones.") Perform;
+	:param Con1:
+	:type Con1: gp_Cone
+	:param Con2:
+	:type Con2: gp_Cone
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Perform;
 		void Perform (const gp_Cone & Con1,const gp_Cone & Con2,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Pln(gp_Pln)
-	Tor(gp_Torus)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Creates the intersection beween plane and torus.
 
-Returns:
-	None
-
-Creates the intersection beween plane and torus.") IntAna_QuadQuadGeo;
+	:param Pln:
+	:type Pln: gp_Pln
+	:param Tor:
+	:type Tor: gp_Torus
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") IntAna_QuadQuadGeo;
 		 IntAna_QuadQuadGeo (const gp_Pln & Pln,const gp_Torus & Tor,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Pln(gp_Pln)
-	Tor(gp_Torus)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Intersects plane and torus.
 
-Returns:
-	None
-
-Intersects plane and torus.") Perform;
+	:param Pln:
+	:type Pln: gp_Pln
+	:param Tor:
+	:type Tor: gp_Torus
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Perform;
 		void Perform (const gp_Pln & Pln,const gp_Torus & Tor,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Cyl(gp_Cylinder)
-	Tor(gp_Torus)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Creates the intersection beween cylinder and torus.
 
-Returns:
-	None
-
-Creates the intersection beween cylinder and torus.") IntAna_QuadQuadGeo;
+	:param Cyl:
+	:type Cyl: gp_Cylinder
+	:param Tor:
+	:type Tor: gp_Torus
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") IntAna_QuadQuadGeo;
 		 IntAna_QuadQuadGeo (const gp_Cylinder & Cyl,const gp_Torus & Tor,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Cyl(gp_Cylinder)
-	Tor(gp_Torus)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Intersects cylinder and torus.
 
-Returns:
-	None
-
-Intersects cylinder and torus.") Perform;
+	:param Cyl:
+	:type Cyl: gp_Cylinder
+	:param Tor:
+	:type Tor: gp_Torus
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Perform;
 		void Perform (const gp_Cylinder & Cyl,const gp_Torus & Tor,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Con(gp_Cone)
-	Tor(gp_Torus)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Creates the intersection beween cone and torus.
 
-Returns:
-	None
-
-Creates the intersection beween cone and torus.") IntAna_QuadQuadGeo;
+	:param Con:
+	:type Con: gp_Cone
+	:param Tor:
+	:type Tor: gp_Torus
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") IntAna_QuadQuadGeo;
 		 IntAna_QuadQuadGeo (const gp_Cone & Con,const gp_Torus & Tor,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Con(gp_Cone)
-	Tor(gp_Torus)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Intersects cone and torus.
 
-Returns:
-	None
-
-Intersects cone and torus.") Perform;
+	:param Con:
+	:type Con: gp_Cone
+	:param Tor:
+	:type Tor: gp_Torus
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Perform;
 		void Perform (const gp_Cone & Con,const gp_Torus & Tor,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Sph(gp_Sphere)
-	Tor(gp_Torus)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Creates the intersection beween sphere and torus.
 
-Returns:
-	None
-
-Creates the intersection beween sphere and torus.") IntAna_QuadQuadGeo;
+	:param Sph:
+	:type Sph: gp_Sphere
+	:param Tor:
+	:type Tor: gp_Torus
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") IntAna_QuadQuadGeo;
 		 IntAna_QuadQuadGeo (const gp_Sphere & Sph,const gp_Torus & Tor,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Sph(gp_Sphere)
-	Tor(gp_Torus)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Intersects sphere and torus.
 
-Returns:
-	None
-
-Intersects sphere and torus.") Perform;
+	:param Sph:
+	:type Sph: gp_Sphere
+	:param Tor:
+	:type Tor: gp_Torus
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Perform;
 		void Perform (const gp_Sphere & Sph,const gp_Torus & Tor,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Tor1(gp_Torus)
-	Tor2(gp_Torus)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Creates the intersection beween two toruses.
 
-Returns:
-	None
-
-Creates the intersection beween two toruses.") IntAna_QuadQuadGeo;
+	:param Tor1:
+	:type Tor1: gp_Torus
+	:param Tor2:
+	:type Tor2: gp_Torus
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") IntAna_QuadQuadGeo;
 		 IntAna_QuadQuadGeo (const gp_Torus & Tor1,const gp_Torus & Tor2,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Tor1(gp_Torus)
-	Tor2(gp_Torus)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Intersects two toruses.
 
-Returns:
-	None
-
-Intersects two toruses.") Perform;
+	:param Tor1:
+	:type Tor1: gp_Torus
+	:param Tor2:
+	:type Tor2: gp_Torus
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Perform;
 		void Perform (const gp_Torus & Tor1,const gp_Torus & Tor2,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns Standard_True if the computation was successful.
 
-Returns Standard_True if the computation was successful.") IsDone;
+	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntAna_ResultType
+		%feature("autodoc", "	* Returns the type of intersection.
 
-Returns the type of intersection.") TypeInter;
+	:rtype: IntAna_ResultType
+") TypeInter;
 		IntAna_ResultType TypeInter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of interesections. The possible intersections are : - 1 point - 1 or 2 line(s) - 1 Point and 1 Line - 1 circle - 1 ellipse - 1 parabola - 1 or 2 hyperbola(s).
 
-Returns the number of interesections.  
-         The possible intersections are :  
-          - 1 point  
-          - 1 or 2 line(s)  
-          - 1 Point and 1 Line  
-          - 1 circle  
-          - 1 ellipse  
-          - 1 parabola  
-          - 1 or 2 hyperbola(s).") NbSolutions;
+	:rtype: int
+") NbSolutions;
 		Standard_Integer NbSolutions ();
-		%feature("autodoc", "Args:
-	Num(Standard_Integer)
+		%feature("autodoc", "	* Returns the point solution of range Num.
 
-Returns:
-	gp_Pnt
-
-Returns the point solution of range Num.") Point;
+	:param Num:
+	:type Num: Standard_Integer
+	:rtype: gp_Pnt
+") Point;
 		gp_Pnt Point (const Standard_Integer Num);
-		%feature("autodoc", "Args:
-	Num(Standard_Integer)
+		%feature("autodoc", "	* Returns the line solution of range Num.
 
-Returns:
-	gp_Lin
-
-Returns the line solution of range Num.") Line;
+	:param Num:
+	:type Num: Standard_Integer
+	:rtype: gp_Lin
+") Line;
 		gp_Lin Line (const Standard_Integer Num);
-		%feature("autodoc", "Args:
-	Num(Standard_Integer)
+		%feature("autodoc", "	* Returns the circle solution of range Num.
 
-Returns:
-	gp_Circ
-
-Returns the circle solution of range Num.") Circle;
+	:param Num:
+	:type Num: Standard_Integer
+	:rtype: gp_Circ
+") Circle;
 		gp_Circ Circle (const Standard_Integer Num);
-		%feature("autodoc", "Args:
-	Num(Standard_Integer)
+		%feature("autodoc", "	* Returns the ellipse solution of range Num.
 
-Returns:
-	gp_Elips
-
-Returns the ellipse solution of range Num.") Ellipse;
+	:param Num:
+	:type Num: Standard_Integer
+	:rtype: gp_Elips
+") Ellipse;
 		gp_Elips Ellipse (const Standard_Integer Num);
-		%feature("autodoc", "Args:
-	Num(Standard_Integer)
+		%feature("autodoc", "	* Returns the parabola solution of range Num.
 
-Returns:
-	gp_Parab
-
-Returns the parabola solution of range Num.") Parabola;
+	:param Num:
+	:type Num: Standard_Integer
+	:rtype: gp_Parab
+") Parabola;
 		gp_Parab Parabola (const Standard_Integer Num);
-		%feature("autodoc", "Args:
-	Num(Standard_Integer)
+		%feature("autodoc", "	* Returns the hyperbola solution of range Num.
 
-Returns:
-	gp_Hypr
-
-Returns the hyperbola solution of range Num.") Hyperbola;
+	:param Num:
+	:type Num: Standard_Integer
+	:rtype: gp_Hypr
+") Hyperbola;
 		gp_Hypr Hyperbola (const Standard_Integer Num);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasCommonGen;
+		%feature("autodoc", "	:rtype: bool
+") HasCommonGen;
 		Standard_Boolean HasCommonGen ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
-
-No detailed docstring for this function.") PChar;
+		%feature("autodoc", "	:rtype: gp_Pnt
+") PChar;
 		const gp_Pnt & PChar ();
 };
 
@@ -1662,118 +1472,118 @@ def __del__(self):
 %nodefaultctor IntAna_Quadric;
 class IntAna_Quadric {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty Constructor
 
-Empty Constructor") IntAna_Quadric;
+	:rtype: None
+") IntAna_Quadric;
 		 IntAna_Quadric ();
-		%feature("autodoc", "Args:
-	P(gp_Pln)
+		%feature("autodoc", "	* Creates a Quadric from a Pln
 
-Returns:
-	None
-
-Creates a Quadric from a Pln") IntAna_Quadric;
+	:param P:
+	:type P: gp_Pln
+	:rtype: None
+") IntAna_Quadric;
 		 IntAna_Quadric (const gp_Pln & P);
-		%feature("autodoc", "Args:
-	Sph(gp_Sphere)
+		%feature("autodoc", "	* Creates a Quadric from a Sphere
 
-Returns:
-	None
-
-Creates a Quadric from a Sphere") IntAna_Quadric;
+	:param Sph:
+	:type Sph: gp_Sphere
+	:rtype: None
+") IntAna_Quadric;
 		 IntAna_Quadric (const gp_Sphere & Sph);
-		%feature("autodoc", "Args:
-	Cyl(gp_Cylinder)
+		%feature("autodoc", "	* Creates a Quadric from a Cylinder
 
-Returns:
-	None
-
-Creates a Quadric from a Cylinder") IntAna_Quadric;
+	:param Cyl:
+	:type Cyl: gp_Cylinder
+	:rtype: None
+") IntAna_Quadric;
 		 IntAna_Quadric (const gp_Cylinder & Cyl);
-		%feature("autodoc", "Args:
-	Cone(gp_Cone)
+		%feature("autodoc", "	* Creates a Quadric from a Cone
 
-Returns:
-	None
-
-Creates a Quadric from a Cone") IntAna_Quadric;
+	:param Cone:
+	:type Cone: gp_Cone
+	:rtype: None
+") IntAna_Quadric;
 		 IntAna_Quadric (const gp_Cone & Cone);
-		%feature("autodoc", "Args:
-	P(gp_Pln)
+		%feature("autodoc", "	* Initializes the quadric with a Pln
 
-Returns:
-	None
-
-Initializes the quadric with a Pln") SetQuadric;
+	:param P:
+	:type P: gp_Pln
+	:rtype: None
+") SetQuadric;
 		void SetQuadric (const gp_Pln & P);
-		%feature("autodoc", "Args:
-	Sph(gp_Sphere)
+		%feature("autodoc", "	* Initialize the quadric with a Sphere
 
-Returns:
-	None
-
-Initialize the quadric with a Sphere") SetQuadric;
+	:param Sph:
+	:type Sph: gp_Sphere
+	:rtype: None
+") SetQuadric;
 		void SetQuadric (const gp_Sphere & Sph);
-		%feature("autodoc", "Args:
-	Con(gp_Cone)
+		%feature("autodoc", "	* Initializes the quadric with a Cone
 
-Returns:
-	None
-
-Initializes the quadric with a Cone") SetQuadric;
+	:param Con:
+	:type Con: gp_Cone
+	:rtype: None
+") SetQuadric;
 		void SetQuadric (const gp_Cone & Con);
-		%feature("autodoc", "Args:
-	Cyl(gp_Cylinder)
+		%feature("autodoc", "	* Initializes the quadric with a Cylinder
 
-Returns:
-	None
-
-Initializes the quadric with a Cylinder") SetQuadric;
+	:param Cyl:
+	:type Cyl: gp_Cylinder
+	:rtype: None
+") SetQuadric;
 		void SetQuadric (const gp_Cylinder & Cyl);
-		%feature("autodoc", "Args:
-	xCXX(Standard_Real)
-	xCYY(Standard_Real)
-	xCZZ(Standard_Real)
-	xCXY(Standard_Real)
-	xCXZ(Standard_Real)
-	xCYZ(Standard_Real)
-	xCX(Standard_Real)
-	xCY(Standard_Real)
-	xCZ(Standard_Real)
-	xCCte(Standard_Real)
+		%feature("autodoc", "	* Returns the coefficients of the polynomial equation which define the quadric: xCXX x**2 + xCYY y**2 + xCZZ z**2 + 2 ( xCXY x y + xCXZ x z + xCYZ y z ) + 2 ( xCX x + xCY y + xCZ z ) + xCCte
 
-Returns:
-	None
-
-Returns the coefficients of the polynomial equation  
-         which define the quadric:  
-         xCXX x**2 + xCYY y**2 + xCZZ z**2  
-         + 2 ( xCXY x y  + xCXZ x z  + xCYZ y z  )  
-         + 2 ( xCX x + xCY y + xCZ z )  
-         + xCCte") Coefficients;
+	:param xCXX:
+	:type xCXX: float &
+	:param xCYY:
+	:type xCYY: float &
+	:param xCZZ:
+	:type xCZZ: float &
+	:param xCXY:
+	:type xCXY: float &
+	:param xCXZ:
+	:type xCXZ: float &
+	:param xCYZ:
+	:type xCYZ: float &
+	:param xCX:
+	:type xCX: float &
+	:param xCY:
+	:type xCY: float &
+	:param xCZ:
+	:type xCZ: float &
+	:param xCCte:
+	:type xCCte: float &
+	:rtype: None
+") Coefficients;
 		void Coefficients (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	xCXX(Standard_Real)
-	xCYY(Standard_Real)
-	xCZZ(Standard_Real)
-	xCXY(Standard_Real)
-	xCXZ(Standard_Real)
-	xCYZ(Standard_Real)
-	xCX(Standard_Real)
-	xCY(Standard_Real)
-	xCZ(Standard_Real)
-	xCCte(Standard_Real)
-	Axis(gp_Ax3)
+		%feature("autodoc", "	* Returns the coefficients of the polynomial equation ( written in the natural coordinates system ) in the local coordinates system defined by Axis
 
-Returns:
-	None
-
-Returns the coefficients of the polynomial equation  
-         ( written in the natural coordinates system )  
-         in the local coordinates system defined by Axis") NewCoefficients;
+	:param xCXX:
+	:type xCXX: float &
+	:param xCYY:
+	:type xCYY: float &
+	:param xCZZ:
+	:type xCZZ: float &
+	:param xCXY:
+	:type xCXY: float &
+	:param xCXZ:
+	:type xCXZ: float &
+	:param xCYZ:
+	:type xCYZ: float &
+	:param xCX:
+	:type xCX: float &
+	:param xCY:
+	:type xCY: float &
+	:param xCZ:
+	:type xCZ: float &
+	:param xCCte:
+	:type xCCte: float &
+	:param Axis:
+	:type Axis: gp_Ax3
+	:rtype: None
+") NewCoefficients;
 		void NewCoefficients (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,const gp_Ax3 & Axis);
 };
 

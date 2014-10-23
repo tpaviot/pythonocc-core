@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -49,57 +49,32 @@ enum Select3D_TypeOfSensitivity {
 %nodefaultctor Select3D_Box2d;
 class Select3D_Box2d {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Select3D_Box2d;
+		%feature("autodoc", "	:rtype: None
+") Select3D_Box2d;
 		 Select3D_Box2d ();
-		%feature("autodoc", "Args:
-	theBox(Bnd_Box2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Select3D_Box2d;
+		%feature("autodoc", "	:param theBox:
+	:type theBox: Bnd_Box2d &
+	:rtype: None
+") Select3D_Box2d;
 		 Select3D_Box2d (const Bnd_Box2d & theBox);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	inline
-
-No detailed docstring for this function.") operatorBnd_Box2d;
+		%feature("autodoc", "	:rtype: inline
+") operatorBnd_Box2d;
 		inline operator Bnd_Box2d ();
-		%feature("autodoc", "Args:
-	theBox(Bnd_Box2d)
-
-Returns:
-	inline Select3D_Box2d
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param theBox:
+	:type theBox: Bnd_Box2d &
+	:rtype: inline Select3D_Box2d
+") operator=;
 		inline Select3D_Box2d operator = (const Bnd_Box2d & theBox);
-		%feature("autodoc", "Args:
-	thePnt(gp_Pnt2d)
-
-Returns:
-	inline void
-
-No detailed docstring for this function.") Update;
+		%feature("autodoc", "	:param thePnt:
+	:type thePnt: gp_Pnt2d
+	:rtype: inline void
+") Update;
 		inline void Update (const gp_Pnt2d & thePnt);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	inline void
-
-No detailed docstring for this function.") SetVoid;
+		%feature("autodoc", "	:rtype: inline void
+") SetVoid;
 		inline void SetVoid ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	inline Standard_Boolean
-
-No detailed docstring for this function.") IsVoid;
+		%feature("autodoc", "	:rtype: inline bool
+") IsVoid;
 		inline Standard_Boolean IsVoid ();
 };
 
@@ -121,49 +96,27 @@ def __del__(self):
 %nodefaultctor Select3D_ListIteratorOfListOfSensitive;
 class Select3D_ListIteratorOfListOfSensitive {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Select3D_ListIteratorOfListOfSensitive;
+		%feature("autodoc", "	:rtype: None
+") Select3D_ListIteratorOfListOfSensitive;
 		 Select3D_ListIteratorOfListOfSensitive ();
-		%feature("autodoc", "Args:
-	L(Select3D_ListOfSensitive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Select3D_ListIteratorOfListOfSensitive;
+		%feature("autodoc", "	:param L:
+	:type L: Select3D_ListOfSensitive &
+	:rtype: None
+") Select3D_ListIteratorOfListOfSensitive;
 		 Select3D_ListIteratorOfListOfSensitive (const Select3D_ListOfSensitive & L);
-		%feature("autodoc", "Args:
-	L(Select3D_ListOfSensitive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: Select3D_ListOfSensitive &
+	:rtype: None
+") Initialize;
 		void Initialize (const Select3D_ListOfSensitive & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Select3D_SensitiveEntity
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Select3D_SensitiveEntity
+") Value;
 		Handle_Select3D_SensitiveEntity & Value ();
 };
 
@@ -185,49 +138,27 @@ def __del__(self):
 %nodefaultctor Select3D_ListIteratorOfListOfSensitiveTriangle;
 class Select3D_ListIteratorOfListOfSensitiveTriangle {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Select3D_ListIteratorOfListOfSensitiveTriangle;
+		%feature("autodoc", "	:rtype: None
+") Select3D_ListIteratorOfListOfSensitiveTriangle;
 		 Select3D_ListIteratorOfListOfSensitiveTriangle ();
-		%feature("autodoc", "Args:
-	L(Select3D_ListOfSensitiveTriangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Select3D_ListIteratorOfListOfSensitiveTriangle;
+		%feature("autodoc", "	:param L:
+	:type L: Select3D_ListOfSensitiveTriangle &
+	:rtype: None
+") Select3D_ListIteratorOfListOfSensitiveTriangle;
 		 Select3D_ListIteratorOfListOfSensitiveTriangle (const Select3D_ListOfSensitiveTriangle & L);
-		%feature("autodoc", "Args:
-	L(Select3D_ListOfSensitiveTriangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: Select3D_ListOfSensitiveTriangle &
+	:rtype: None
+") Initialize;
 		void Initialize (const Select3D_ListOfSensitiveTriangle & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Select3D_SensitiveTriangle
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Select3D_SensitiveTriangle
+") Value;
 		Handle_Select3D_SensitiveTriangle & Value ();
 };
 
@@ -249,21 +180,15 @@ def __del__(self):
 %nodefaultctor Select3D_ListNodeOfListOfSensitive;
 class Select3D_ListNodeOfListOfSensitive : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Select3D_SensitiveEntity)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Select3D_ListNodeOfListOfSensitive;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Select3D_SensitiveEntity &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") Select3D_ListNodeOfListOfSensitive;
 		 Select3D_ListNodeOfListOfSensitive (const Handle_Select3D_SensitiveEntity & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Select3D_SensitiveEntity
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Select3D_SensitiveEntity
+") Value;
 		Handle_Select3D_SensitiveEntity & Value ();
 };
 
@@ -324,21 +249,15 @@ def __del__(self):
 %nodefaultctor Select3D_ListNodeOfListOfSensitiveTriangle;
 class Select3D_ListNodeOfListOfSensitiveTriangle : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Select3D_SensitiveTriangle)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Select3D_ListNodeOfListOfSensitiveTriangle;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Select3D_SensitiveTriangle &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") Select3D_ListNodeOfListOfSensitiveTriangle;
 		 Select3D_ListNodeOfListOfSensitiveTriangle (const Handle_Select3D_SensitiveTriangle & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Select3D_SensitiveTriangle
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Select3D_SensitiveTriangle
+") Value;
 		Handle_Select3D_SensitiveTriangle & Value ();
 };
 
@@ -399,164 +318,103 @@ def __del__(self):
 %nodefaultctor Select3D_ListOfSensitive;
 class Select3D_ListOfSensitive {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Select3D_ListOfSensitive;
+		%feature("autodoc", "	:rtype: None
+") Select3D_ListOfSensitive;
 		 Select3D_ListOfSensitive ();
-		%feature("autodoc", "Args:
-	Other(Select3D_ListOfSensitive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Select3D_ListOfSensitive &
+	:rtype: None
+") Assign;
 		void Assign (const Select3D_ListOfSensitive & Other);
-		%feature("autodoc", "Args:
-	Other(Select3D_ListOfSensitive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Select3D_ListOfSensitive &
+	:rtype: None
+") operator=;
 		void operator = (const Select3D_ListOfSensitive & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(Handle_Select3D_SensitiveEntity)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Select3D_SensitiveEntity &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Select3D_SensitiveEntity & I);
-		%feature("autodoc", "Args:
-	I(Handle_Select3D_SensitiveEntity)
-	theIt(Select3D_ListIteratorOfListOfSensitive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Select3D_SensitiveEntity &
+	:param theIt:
+	:type theIt: Select3D_ListIteratorOfListOfSensitive &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Select3D_SensitiveEntity & I,Select3D_ListIteratorOfListOfSensitive & theIt);
-		%feature("autodoc", "Args:
-	Other(Select3D_ListOfSensitive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: Select3D_ListOfSensitive &
+	:rtype: None
+") Prepend;
 		void Prepend (Select3D_ListOfSensitive & Other);
-		%feature("autodoc", "Args:
-	I(Handle_Select3D_SensitiveEntity)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Select3D_SensitiveEntity &
+	:rtype: None
+") Append;
 		void Append (const Handle_Select3D_SensitiveEntity & I);
-		%feature("autodoc", "Args:
-	I(Handle_Select3D_SensitiveEntity)
-	theIt(Select3D_ListIteratorOfListOfSensitive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Select3D_SensitiveEntity &
+	:param theIt:
+	:type theIt: Select3D_ListIteratorOfListOfSensitive &
+	:rtype: None
+") Append;
 		void Append (const Handle_Select3D_SensitiveEntity & I,Select3D_ListIteratorOfListOfSensitive & theIt);
-		%feature("autodoc", "Args:
-	Other(Select3D_ListOfSensitive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: Select3D_ListOfSensitive &
+	:rtype: None
+") Append;
 		void Append (Select3D_ListOfSensitive & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Select3D_SensitiveEntity
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_Select3D_SensitiveEntity
+") First;
 		Handle_Select3D_SensitiveEntity & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Select3D_SensitiveEntity
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_Select3D_SensitiveEntity
+") Last;
 		Handle_Select3D_SensitiveEntity & Last ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(Select3D_ListIteratorOfListOfSensitive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: Select3D_ListIteratorOfListOfSensitive &
+	:rtype: None
+") Remove;
 		void Remove (Select3D_ListIteratorOfListOfSensitive & It);
-		%feature("autodoc", "Args:
-	I(Handle_Select3D_SensitiveEntity)
-	It(Select3D_ListIteratorOfListOfSensitive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Select3D_SensitiveEntity &
+	:param It:
+	:type It: Select3D_ListIteratorOfListOfSensitive &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Handle_Select3D_SensitiveEntity & I,Select3D_ListIteratorOfListOfSensitive & It);
-		%feature("autodoc", "Args:
-	Other(Select3D_ListOfSensitive)
-	It(Select3D_ListIteratorOfListOfSensitive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: Select3D_ListOfSensitive &
+	:param It:
+	:type It: Select3D_ListIteratorOfListOfSensitive &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (Select3D_ListOfSensitive & Other,Select3D_ListIteratorOfListOfSensitive & It);
-		%feature("autodoc", "Args:
-	I(Handle_Select3D_SensitiveEntity)
-	It(Select3D_ListIteratorOfListOfSensitive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Select3D_SensitiveEntity &
+	:param It:
+	:type It: Select3D_ListIteratorOfListOfSensitive &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Handle_Select3D_SensitiveEntity & I,Select3D_ListIteratorOfListOfSensitive & It);
-		%feature("autodoc", "Args:
-	Other(Select3D_ListOfSensitive)
-	It(Select3D_ListIteratorOfListOfSensitive)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: Select3D_ListOfSensitive &
+	:param It:
+	:type It: Select3D_ListIteratorOfListOfSensitive &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (Select3D_ListOfSensitive & Other,Select3D_ListIteratorOfListOfSensitive & It);
 };
 
@@ -578,164 +436,103 @@ def __del__(self):
 %nodefaultctor Select3D_ListOfSensitiveTriangle;
 class Select3D_ListOfSensitiveTriangle {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Select3D_ListOfSensitiveTriangle;
+		%feature("autodoc", "	:rtype: None
+") Select3D_ListOfSensitiveTriangle;
 		 Select3D_ListOfSensitiveTriangle ();
-		%feature("autodoc", "Args:
-	Other(Select3D_ListOfSensitiveTriangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Select3D_ListOfSensitiveTriangle &
+	:rtype: None
+") Assign;
 		void Assign (const Select3D_ListOfSensitiveTriangle & Other);
-		%feature("autodoc", "Args:
-	Other(Select3D_ListOfSensitiveTriangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Select3D_ListOfSensitiveTriangle &
+	:rtype: None
+") operator=;
 		void operator = (const Select3D_ListOfSensitiveTriangle & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(Handle_Select3D_SensitiveTriangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Select3D_SensitiveTriangle &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Select3D_SensitiveTriangle & I);
-		%feature("autodoc", "Args:
-	I(Handle_Select3D_SensitiveTriangle)
-	theIt(Select3D_ListIteratorOfListOfSensitiveTriangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Select3D_SensitiveTriangle &
+	:param theIt:
+	:type theIt: Select3D_ListIteratorOfListOfSensitiveTriangle &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Select3D_SensitiveTriangle & I,Select3D_ListIteratorOfListOfSensitiveTriangle & theIt);
-		%feature("autodoc", "Args:
-	Other(Select3D_ListOfSensitiveTriangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: Select3D_ListOfSensitiveTriangle &
+	:rtype: None
+") Prepend;
 		void Prepend (Select3D_ListOfSensitiveTriangle & Other);
-		%feature("autodoc", "Args:
-	I(Handle_Select3D_SensitiveTriangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Select3D_SensitiveTriangle &
+	:rtype: None
+") Append;
 		void Append (const Handle_Select3D_SensitiveTriangle & I);
-		%feature("autodoc", "Args:
-	I(Handle_Select3D_SensitiveTriangle)
-	theIt(Select3D_ListIteratorOfListOfSensitiveTriangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Select3D_SensitiveTriangle &
+	:param theIt:
+	:type theIt: Select3D_ListIteratorOfListOfSensitiveTriangle &
+	:rtype: None
+") Append;
 		void Append (const Handle_Select3D_SensitiveTriangle & I,Select3D_ListIteratorOfListOfSensitiveTriangle & theIt);
-		%feature("autodoc", "Args:
-	Other(Select3D_ListOfSensitiveTriangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: Select3D_ListOfSensitiveTriangle &
+	:rtype: None
+") Append;
 		void Append (Select3D_ListOfSensitiveTriangle & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Select3D_SensitiveTriangle
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_Select3D_SensitiveTriangle
+") First;
 		Handle_Select3D_SensitiveTriangle & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Select3D_SensitiveTriangle
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_Select3D_SensitiveTriangle
+") Last;
 		Handle_Select3D_SensitiveTriangle & Last ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(Select3D_ListIteratorOfListOfSensitiveTriangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: Select3D_ListIteratorOfListOfSensitiveTriangle &
+	:rtype: None
+") Remove;
 		void Remove (Select3D_ListIteratorOfListOfSensitiveTriangle & It);
-		%feature("autodoc", "Args:
-	I(Handle_Select3D_SensitiveTriangle)
-	It(Select3D_ListIteratorOfListOfSensitiveTriangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Select3D_SensitiveTriangle &
+	:param It:
+	:type It: Select3D_ListIteratorOfListOfSensitiveTriangle &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Handle_Select3D_SensitiveTriangle & I,Select3D_ListIteratorOfListOfSensitiveTriangle & It);
-		%feature("autodoc", "Args:
-	Other(Select3D_ListOfSensitiveTriangle)
-	It(Select3D_ListIteratorOfListOfSensitiveTriangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: Select3D_ListOfSensitiveTriangle &
+	:param It:
+	:type It: Select3D_ListIteratorOfListOfSensitiveTriangle &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (Select3D_ListOfSensitiveTriangle & Other,Select3D_ListIteratorOfListOfSensitiveTriangle & It);
-		%feature("autodoc", "Args:
-	I(Handle_Select3D_SensitiveTriangle)
-	It(Select3D_ListIteratorOfListOfSensitiveTriangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Select3D_SensitiveTriangle &
+	:param It:
+	:type It: Select3D_ListIteratorOfListOfSensitiveTriangle &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Handle_Select3D_SensitiveTriangle & I,Select3D_ListIteratorOfListOfSensitiveTriangle & It);
-		%feature("autodoc", "Args:
-	Other(Select3D_ListOfSensitiveTriangle)
-	It(Select3D_ListIteratorOfListOfSensitiveTriangle)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: Select3D_ListOfSensitiveTriangle &
+	:param It:
+	:type It: Select3D_ListIteratorOfListOfSensitiveTriangle &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (Select3D_ListOfSensitiveTriangle & Other,Select3D_ListIteratorOfListOfSensitiveTriangle & It);
 };
 
@@ -757,27 +554,16 @@ def __del__(self):
 %nodefaultctor Select3D_Pnt;
 class Select3D_Pnt {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	inline
-
-No detailed docstring for this function.") operatorgp_Pnt;
+		%feature("autodoc", "	:rtype: inline
+") operatorgp_Pnt;
 		inline operator gp_Pnt ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	inline
-
-No detailed docstring for this function.") operatorgp_XYZ;
+		%feature("autodoc", "	:rtype: inline
+") operatorgp_XYZ;
 		inline operator gp_XYZ ();
-		%feature("autodoc", "Args:
-	thePnt(gp_Pnt)
-
-Returns:
-	inline gp_Pnt
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param thePnt:
+	:type thePnt: gp_Pnt
+	:rtype: inline gp_Pnt
+") operator=;
 		inline gp_Pnt operator = (const gp_Pnt & thePnt);
 };
 
@@ -799,27 +585,16 @@ def __del__(self):
 %nodefaultctor Select3D_Pnt2d;
 class Select3D_Pnt2d {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	inline
-
-No detailed docstring for this function.") operatorgp_Pnt2d;
+		%feature("autodoc", "	:rtype: inline
+") operatorgp_Pnt2d;
 		inline operator gp_Pnt2d ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	inline
-
-No detailed docstring for this function.") operatorgp_XY;
+		%feature("autodoc", "	:rtype: inline
+") operatorgp_XY;
 		inline operator gp_XY ();
-		%feature("autodoc", "Args:
-	thePnt(gp_Pnt2d)
-
-Returns:
-	inline gp_Pnt2d
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param thePnt:
+	:type thePnt: gp_Pnt2d
+	:rtype: inline gp_Pnt2d
+") operator=;
 		inline gp_Pnt2d operator = (const gp_Pnt2d & thePnt);
 };
 
@@ -841,72 +616,51 @@ def __del__(self):
 %nodefaultctor Select3D_PointData;
 class Select3D_PointData {
 	public:
-		%feature("autodoc", "Args:
-	theNbPoints(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Select3D_PointData;
+		%feature("autodoc", "	:param theNbPoints:
+	:type theNbPoints: Standard_Integer
+	:rtype: None
+") Select3D_PointData;
 		 Select3D_PointData (const Standard_Integer theNbPoints);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
-	theValue(Select3D_Pnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetPnt;
+		%feature("autodoc", "	:param theIndex:
+	:type theIndex: Standard_Integer
+	:param theValue:
+	:type theValue: Select3D_Pnt &
+	:rtype: None
+") SetPnt;
 		void SetPnt (const Standard_Integer theIndex,const Select3D_Pnt & theValue);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
-	theValue(gp_Pnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetPnt;
+		%feature("autodoc", "	:param theIndex:
+	:type theIndex: Standard_Integer
+	:param theValue:
+	:type theValue: gp_Pnt
+	:rtype: None
+") SetPnt;
 		void SetPnt (const Standard_Integer theIndex,const gp_Pnt & theValue);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
-	theValue(Select3D_Pnt2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetPnt2d;
+		%feature("autodoc", "	:param theIndex:
+	:type theIndex: Standard_Integer
+	:param theValue:
+	:type theValue: Select3D_Pnt2d &
+	:rtype: None
+") SetPnt2d;
 		void SetPnt2d (const Standard_Integer theIndex,const Select3D_Pnt2d & theValue);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
-	theValue(gp_Pnt2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetPnt2d;
+		%feature("autodoc", "	:param theIndex:
+	:type theIndex: Standard_Integer
+	:param theValue:
+	:type theValue: gp_Pnt2d
+	:rtype: None
+") SetPnt2d;
 		void SetPnt2d (const Standard_Integer theIndex,const gp_Pnt2d & theValue);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
-
-Returns:
-	Select3D_Pnt
-
-No detailed docstring for this function.") Pnt;
+		%feature("autodoc", "	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: Select3D_Pnt
+") Pnt;
 		Select3D_Pnt Pnt (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
-
-Returns:
-	Select3D_Pnt2d
-
-No detailed docstring for this function.") Pnt2d;
+		%feature("autodoc", "	:param theIndex:
+	:type theIndex: Standard_Integer
+	:rtype: Select3D_Pnt2d
+") Pnt2d;
 		Select3D_Pnt2d Pnt2d (const Standard_Integer theIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Size;
+		%feature("autodoc", "	:rtype: int
+") Size;
 		Standard_Integer Size ();
 };
 
@@ -928,233 +682,174 @@ def __del__(self):
 %nodefaultctor Select3D_Projector;
 class Select3D_Projector : public Standard_Transient {
 	public:
-		%feature("autodoc", "Args:
-	aView(Handle_V3d_View)
+		%feature("autodoc", "	* Constructs the 3D projector object defined by the 3D view aView.
 
-Returns:
-	None
-
-Constructs the 3D projector object defined by the 3D view aView.") Select3D_Projector;
+	:param aView:
+	:type aView: Handle_V3d_View &
+	:rtype: None
+") Select3D_Projector;
 		 Select3D_Projector (const Handle_V3d_View & aView);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Select3D_Projector;
+		%feature("autodoc", "	:rtype: None
+") Select3D_Projector;
 		 Select3D_Projector ();
-		%feature("autodoc", "Args:
-	CS(gp_Ax2)
+		%feature("autodoc", "	* Creates an axonometric projector. <CS> represents viewing coordinate system and could be constructed from x direction, view plane normal direction, and view point location in world-coordinate space.
 
-Returns:
-	None
-
-Creates an axonometric projector. <CS> represents viewing coordinate  
-system and could be constructed from x direction, view plane normal direction,  
-and view point location in world-coordinate space.") Select3D_Projector;
+	:param CS:
+	:type CS: gp_Ax2
+	:rtype: None
+") Select3D_Projector;
 		 Select3D_Projector (const gp_Ax2 & CS);
-		%feature("autodoc", "Args:
-	CS(gp_Ax2)
-	Focus(Standard_Real)
+		%feature("autodoc", "	* Creates a perspective projector. <CS> represents viewing coordinate system and could be constructed from x direction, view plane normal direction, and focal point location in world-coordinate space. <Focus> should represent distance of an eye from view plane in world-coordinate space (focal distance).
 
-Returns:
-	None
-
-Creates  a  perspective  projector. <CS> represents viewing  
-coordinate system and could be constructed from x direction,  
-view plane normal direction, and focal point location in world-coordinate  
-space. <Focus> should represent distance of an eye from view plane  
-in world-coordinate space (focal distance).") Select3D_Projector;
+	:param CS:
+	:type CS: gp_Ax2
+	:param Focus:
+	:type Focus: float
+	:rtype: None
+") Select3D_Projector;
 		 Select3D_Projector (const gp_Ax2 & CS,const Standard_Real Focus);
-		%feature("autodoc", "Args:
-	T(gp_Trsf)
-	Persp(Standard_Boolean)
-	Focus(Standard_Real)
+		%feature("autodoc", "	* build a Projector from the given transformation. In case, when <T> transformation should represent custom view projection, it could be constructed from two separate components: transposed view orientation matrix and translation of focal point in view-coordiante system. <T> could be built up from x direction, up direction, view plane normal direction vectors and translation with SetValues(...) method, where first row arguments (a11, a12, a13, a14) are x, y, z component of x direction vector, and x value of reversed translation vector. Second row arguments, are x y z for up direction and y value of reversed translation, and the third row defined in the same manner. This also suits for simple perspective view, where <Focus> is the focale distance of an eye from view plane in world-space coordiantes. Note, that in that case amount of perspective distortion (perspective angle) should be defined through focal distance.
 
-Returns:
-	None
-
-build a Projector from the given transformation.  
-In case, when <T> transformation should represent custom view projection,  
-it could be constructed from two separate components: transposed view  
-orientation matrix and translation of focal point in view-coordiante  
-system. <T> could be built up from x direction, up direction,  
-view plane normal direction vectors and translation with SetValues(...)  
-method, where first row arguments (a11, a12, a13, a14)  are x, y, z  
-component of x direction vector, and x value of reversed translation  
-vector. Second row arguments, are x y z for up direction and y value of  
-reversed translation, and the third row defined in the same manner.  
-This also suits for simple perspective view, where <Focus> is the focale  
-distance of an eye from view plane in world-space coordiantes.  
-Note, that in that case amount of perspective distortion (perspective  
-angle) should be defined through focal distance.") Select3D_Projector;
+	:param T:
+	:type T: gp_Trsf
+	:param Persp:
+	:type Persp: bool
+	:param Focus:
+	:type Focus: float
+	:rtype: None
+") Select3D_Projector;
 		 Select3D_Projector (const gp_Trsf & T,const Standard_Boolean Persp,const Standard_Real Focus);
-		%feature("autodoc", "Args:
-	GT(gp_GTrsf)
-	Persp(Standard_Boolean)
-	Focus(Standard_Real)
+		%feature("autodoc", "	* build a Projector from the given transformation. In case, when <GT> transformation should represent custom view projection, it could be constructed from two separate components: transposed view orientation matrix and translation of a focal point in view-coordinate system. This also suits for perspective view, with <Focus> that could be equal to distance from an eye to a view plane in world-coordinates (focal distance). The 3x3 transformation matrix is built up from three vectors: x direction, up direction and view plane normal vectors, where each vector is a matrix row. Then <GT> is constructed from matrix and reversed translation with methods SetTranslationPart(..) and SetVectorialPart(..). Note, that in that case amount of perspective distortion (perspective angle) should be defined through focal distance.
 
-Returns:
-	None
-
-build a Projector from the given transformation.  
-In case, when <GT> transformation should represent custom view  
-projection, it could be constructed from two separate components:  
-transposed view orientation matrix and translation of a focal point  
-in view-coordinate system.  
-This also suits for perspective view, with <Focus> that could be  
-equal to distance from an eye to a view plane in  
-world-coordinates (focal distance).  
-The 3x3 transformation matrix is built up from three vectors:  
-x direction, up direction and view plane normal vectors, where each  
-vector is a matrix row. Then <GT> is constructed from matrix and  
-reversed translation with methods SetTranslationPart(..) and  
-SetVectorialPart(..).  
-Note, that in that case amount of perspective distortion (perspective  
-angle) should be defined through focal distance.") Select3D_Projector;
+	:param GT:
+	:type GT: gp_GTrsf
+	:param Persp:
+	:type Persp: bool
+	:param Focus:
+	:type Focus: float
+	:rtype: None
+") Select3D_Projector;
 		 Select3D_Projector (const gp_GTrsf & GT,const Standard_Boolean Persp,const Standard_Real Focus);
-		%feature("autodoc", "Args:
-	T(gp_Trsf)
-	Persp(Standard_Boolean)
-	Focus(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Set;
+		%feature("autodoc", "	:param T:
+	:type T: gp_Trsf
+	:param Persp:
+	:type Persp: bool
+	:param Focus:
+	:type Focus: float
+	:rtype: None
+") Set;
 		void Set (const gp_Trsf & T,const Standard_Boolean Persp,const Standard_Real Focus);
-		%feature("autodoc", "Args:
-	V(Handle_V3d_View)
+		%feature("autodoc", "	* Sets the 3D view V used at the time of construction.
 
-Returns:
-	None
-
-Sets the 3D view V used at the time of construction.") SetView;
+	:param V:
+	:type V: Handle_V3d_View &
+	:rtype: None
+") SetView;
 		void SetView (const Handle_V3d_View & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_V3d_View
+		%feature("autodoc", "	* Returns the 3D view used at the time of construction.
 
-Returns the 3D view used at the time of construction.") View;
+	:rtype: Handle_V3d_View
+") View;
 		const Handle_V3d_View & View ();
-		%feature("autodoc", "Args:
-	On(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* to compute with the given scale and translation.
 
-Returns:
-	virtual void
-
-to compute with the given scale and translation.") Scaled;
+	:param On: default value is Standard_False
+	:type On: bool
+	:rtype: void
+") Scaled;
 		virtual void Scaled (const Standard_Boolean On = Standard_False);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if there is a perspective transformation.
 
-Returns True if there is a perspective transformation.") Perspective;
+	:rtype: bool
+") Perspective;
 		Standard_Boolean Perspective ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_GTrsf
+		%feature("autodoc", "	* Returns the active transformation.
 
-Returns the active transformation.") Transformation;
+	:rtype: gp_GTrsf
+") Transformation;
 		const gp_GTrsf & Transformation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_GTrsf
+		%feature("autodoc", "	* Returns the active inverted transformation.
 
-Returns the active inverted transformation.") InvertedTransformation;
+	:rtype: gp_GTrsf
+") InvertedTransformation;
 		const gp_GTrsf & InvertedTransformation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Trsf
+		%feature("autodoc", "	* Returns the original transformation.
 
-Returns the original transformation.") FullTransformation;
+	:rtype: gp_Trsf
+") FullTransformation;
 		const gp_Trsf & FullTransformation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the focal length.
 
-Returns the focal length.") Focus;
+	:rtype: float
+") Focus;
 		Standard_Real Focus ();
-		%feature("autodoc", "Args:
-	D(gp_Vec)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Transform;
+		%feature("autodoc", "	:param D:
+	:type D: gp_Vec
+	:rtype: None
+") Transform;
 		void Transform (gp_Vec & D);
-		%feature("autodoc", "Args:
-	Pnt(gp_Pnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Transform;
+		%feature("autodoc", "	:param Pnt:
+	:type Pnt: gp_Pnt
+	:rtype: None
+") Transform;
 		void Transform (gp_Pnt & Pnt);
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
-	Pout(gp_Pnt2d)
+		%feature("autodoc", "	* Transform and apply perspective if needed.
 
-Returns:
-	virtual void
-
-Transform and apply perspective if needed.") Project;
+	:param P:
+	:type P: gp_Pnt
+	:param Pout:
+	:type Pout: gp_Pnt2d
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Pnt & P,gp_Pnt2d & Pout);
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
-	X(Standard_Real)
-	Y(Standard_Real)
-	Z(Standard_Real)
+		%feature("autodoc", "	* Transform and apply perspective if needed.
 
-Returns:
-	None
-
-Transform and apply perspective if needed.") Project;
+	:param P:
+	:type P: gp_Pnt
+	:param X:
+	:type X: float &
+	:param Y:
+	:type Y: float &
+	:param Z:
+	:type Z: float &
+	:rtype: None
+") Project;
 		void Project (const gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
-	D1(gp_Vec)
-	Pout(gp_Pnt2d)
-	D1out(gp_Vec2d)
+		%feature("autodoc", "	* Transform and apply perspective if needed.
 
-Returns:
-	virtual void
-
-Transform and apply perspective if needed.") Project;
+	:param P:
+	:type P: gp_Pnt
+	:param D1:
+	:type D1: gp_Vec
+	:param Pout:
+	:type Pout: gp_Pnt2d
+	:param D1out:
+	:type D1out: gp_Vec2d
+	:rtype: void
+") Project;
 		virtual void Project (const gp_Pnt & P,const gp_Vec & D1,gp_Pnt2d & Pout,gp_Vec2d & D1out);
-		%feature("autodoc", "Args:
-	X(Standard_Real)
-	Y(Standard_Real)
+		%feature("autodoc", "	* return a line going through the eye towards the 2d point <X,Y>.
 
-Returns:
-	virtual gp_Lin
-
-return a line going through the eye towards the  
-         2d point <X,Y>.") Shoot;
+	:param X:
+	:type X: float
+	:param Y:
+	:type Y: float
+	:rtype: gp_Lin
+") Shoot;
 		virtual gp_Lin Shoot (const Standard_Real X,const Standard_Real Y);
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
-	T(gp_GTrsf)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Transform;
+		%feature("autodoc", "	:param P:
+	:type P: gp_Pnt
+	:param T:
+	:type T: gp_GTrsf
+	:rtype: None
+") Transform;
 		void Transform (gp_Pnt & P,const gp_GTrsf & T);
-		%feature("autodoc", "Args:
-	D(gp_Lin)
-	T(gp_GTrsf)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Transform;
+		%feature("autodoc", "	:param D:
+	:type D: gp_Lin
+	:param T:
+	:type T: gp_GTrsf
+	:rtype: None
+") Transform;
 		void Transform (gp_Lin & D,const gp_GTrsf & T);
 };
 
@@ -1215,141 +910,99 @@ def __del__(self):
 %nodefaultctor Select3D_SensitiveEntity;
 class Select3D_SensitiveEntity : public SelectBasics_SensitiveEntity {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if this framework needs conversion.
 
-Returns true if this framework needs conversion.") NeedsConversion;
+	:rtype: bool
+") NeedsConversion;
 		Standard_Boolean NeedsConversion ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if this framework provides 3D information.
 
-Returns true if this framework provides 3D information.") Is3D;
+	:rtype: bool
+") Is3D;
 		Standard_Boolean Is3D ();
-		%feature("autodoc", "Args:
-	aProjector(Handle_Select3D_Projector)
+		%feature("autodoc", "	* In classes inheriting this framework, you must redefine this function in order to get a sensitive 2D rectangle from a 3D entity. This rectangle is the sensitive zone which makes the 3D entity selectable.
 
-Returns:
-	virtual void
-
-In classes inheriting this framework, you must  
-redefine this function in order to get a sensitive 2D  
-rectangle from a 3D entity. This rectangle is the  
-sensitive zone which makes the 3D entity selectable.") Project;
+	:param aProjector:
+	:type aProjector: Handle_Select3D_Projector &
+	:rtype: void
+") Project;
 		virtual void Project (const Handle_Select3D_Projector & aProjector);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
+		%feature("autodoc", "	* Returns the max number of sensitive areas returned by this class is 1 by default. Else on must redefine this method.
 
-Returns the max number of sensitive areas returned  
-         by this class is 1 by default.  
-         Else on must redefine this method.") MaxBoxes;
+	:rtype: int
+") MaxBoxes;
 		virtual Standard_Integer MaxBoxes ();
-		%feature("autodoc", "Args:
-	aLocation(TopLoc_Location)
+		%feature("autodoc", "	* Originally this method intended to return sensitive entity with new location aLocation, but currently sensitive entities do not hold a location, instead HasLocation() and Location() methods call corresponding entity owner's methods. Thus all entities returned by GetConnected() share the same location propagated from corresponding selectable object. You must redefine this function for any type of sensitive entity which can accept another connected sensitive entity.//can be connected to another sensitive entity.
 
-Returns:
-	virtual Handle_Select3D_SensitiveEntity
-
-Originally this method intended to return sensitive  
-entity with new location aLocation, but currently sensitive  
-entities do not hold a location, instead HasLocation() and  
-Location() methods call corresponding entity owner's methods.  
-Thus all entities returned by GetConnected() share the same  
-location propagated from corresponding selectable object.  
-You must redefine this function for any type of  
-sensitive entity which can accept another connected  
-sensitive entity.//can be connected to another sensitive entity.") GetConnected;
+	:param aLocation:
+	:type aLocation: TopLoc_Location &
+	:rtype: Handle_Select3D_SensitiveEntity
+") GetConnected;
 		virtual Handle_Select3D_SensitiveEntity GetConnected (const TopLoc_Location & aLocation);
-		%feature("autodoc", "Args:
-	XMin(Standard_Real)
-	YMin(Standard_Real)
-	XMax(Standard_Real)
-	YMax(Standard_Real)
-	aTol(Standard_Real)
+		%feature("autodoc", "	* Matches the box defined by the coordinates Xmin, Ymin, Xmax, Ymax with the entity found at that point within the tolerance aTol. Xmin, YMin define the minimum point in the lower left hand corner of the box, and XMax, YMax define the maximum point in the upper right hand corner of the box. You must redefine this function for every inheriting entity. You will have to call this framework inside the redefined function.
 
-Returns:
-	virtual Standard_Boolean
-
-Matches the box defined by the coordinates Xmin,  
-Ymin, Xmax, Ymax with the entity found at that point  
-within the tolerance aTol.  
-Xmin, YMin define the minimum point in the lower left  
-hand corner of the box, and   XMax, YMax define the  
-maximum point in the upper right hand corner of the box.  
-You must redefine this function for every inheriting entity.  
-You will have to call this framework inside the redefined function.") Matches;
+	:param XMin:
+	:type XMin: float
+	:param YMin:
+	:type YMin: float
+	:param XMax:
+	:type XMax: float
+	:param YMax:
+	:type YMax: float
+	:param aTol:
+	:type aTol: float
+	:rtype: bool
+") Matches;
 		virtual Standard_Boolean Matches (const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol);
-		%feature("autodoc", "Args:
-	Polyline(TColgp_Array1OfPnt2d)
-	aBox(Bnd_Box2d)
-	aTol(Standard_Real)
+		%feature("autodoc", "	* prevents from hiding virtual methods...
 
-Returns:
-	virtual Standard_Boolean
-
-prevents from hiding virtual methods...") Matches;
+	:param Polyline:
+	:type Polyline: TColgp_Array1OfPnt2d
+	:param aBox:
+	:type aBox: Bnd_Box2d &
+	:param aTol:
+	:type aTol: float
+	:rtype: bool
+") Matches;
 		virtual Standard_Boolean Matches (const TColgp_Array1OfPnt2d & Polyline,const Bnd_Box2d & aBox,const Standard_Real aTol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Returns true if this framework has a location defined.
 
-Returns true if this framework has a location defined.") HasLocation;
+	:rtype: bool
+") HasLocation;
 		virtual Standard_Boolean HasLocation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  TopLoc_Location
-
-No detailed docstring for this function.") Location;
+		%feature("autodoc", "	:rtype: TopLoc_Location
+") Location;
 		virtual const TopLoc_Location & Location ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
+		%feature("autodoc", "	* sets the location to Identity
 
-sets the location to Identity") ResetLocation;
+	:rtype: void
+") ResetLocation;
 		virtual void ResetLocation ();
-		%feature("autodoc", "Args:
-	aLoc(TopLoc_Location)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") SetLocation;
+		%feature("autodoc", "	:param aLoc:
+	:type aLoc: TopLoc_Location &
+	:rtype: void
+") SetLocation;
 		virtual void SetLocation (const TopLoc_Location & aLoc);
-		%feature("autodoc", "Args:
-	S(Standard_OStream)
-	FullDump(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* 2 options : <FullDump> = False -> general information //!	 <FullDump> = True -> whole informtion 3D +2d ...
 
-Returns:
-	virtual void
-
-2 options :  
-         <FullDump> = False -> general information  
-//!	        <FullDump> = True  -> whole informtion 3D +2d ...") Dump;
+	:param S:
+	:type S: Standard_OStream &
+	:param FullDump: default value is Standard_True
+	:type FullDump: bool
+	:rtype: void
+") Dump;
 		virtual void Dump (Standard_OStream & S,const Standard_Boolean FullDump = Standard_True);
-		%feature("autodoc", "Args:
-	S(Standard_OStream)
-	abox(Bnd_Box2d)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") DumpBox;
+		%feature("autodoc", "	:param S:
+	:type S: Standard_OStream &
+	:param abox:
+	:type abox: Bnd_Box2d &
+	:rtype: void
+") DumpBox;
 		static void DumpBox (Standard_OStream & S,const Bnd_Box2d & abox);
-		%feature("autodoc", "Args:
-	aLoc(TopLoc_Location)
-
-Returns:
-	None
-
-No detailed docstring for this function.") UpdateLocation;
+		%feature("autodoc", "	:param aLoc:
+	:type aLoc: TopLoc_Location &
+	:rtype: None
+") UpdateLocation;
 		void UpdateLocation (const TopLoc_Location & aLoc);
 };
 
@@ -1410,168 +1063,111 @@ def __del__(self):
 %nodefaultctor Select3D_SensitiveEntitySequence;
 class Select3D_SensitiveEntitySequence : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Select3D_SensitiveEntitySequence;
+		%feature("autodoc", "	:rtype: None
+") Select3D_SensitiveEntitySequence;
 		 Select3D_SensitiveEntitySequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Select3D_SensitiveEntitySequence)
-
-Returns:
-	Select3D_SensitiveEntitySequence
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Select3D_SensitiveEntitySequence &
+	:rtype: Select3D_SensitiveEntitySequence
+") Assign;
 		const Select3D_SensitiveEntitySequence & Assign (const Select3D_SensitiveEntitySequence & Other);
-		%feature("autodoc", "Args:
-	Other(Select3D_SensitiveEntitySequence)
-
-Returns:
-	Select3D_SensitiveEntitySequence
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Select3D_SensitiveEntitySequence &
+	:rtype: Select3D_SensitiveEntitySequence
+") operator=;
 		const Select3D_SensitiveEntitySequence & operator = (const Select3D_SensitiveEntitySequence & Other);
-		%feature("autodoc", "Args:
-	T(Handle_Select3D_SensitiveEntity)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Select3D_SensitiveEntity &
+	:rtype: None
+") Append;
 		void Append (const Handle_Select3D_SensitiveEntity & T);
-		%feature("autodoc", "Args:
-	S(Select3D_SensitiveEntitySequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Select3D_SensitiveEntitySequence &
+	:rtype: None
+") Append;
 		void Append (Select3D_SensitiveEntitySequence & S);
-		%feature("autodoc", "Args:
-	T(Handle_Select3D_SensitiveEntity)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_Select3D_SensitiveEntity &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_Select3D_SensitiveEntity & T);
-		%feature("autodoc", "Args:
-	S(Select3D_SensitiveEntitySequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Select3D_SensitiveEntitySequence &
+	:rtype: None
+") Prepend;
 		void Prepend (Select3D_SensitiveEntitySequence & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Select3D_SensitiveEntity)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Select3D_SensitiveEntity &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_Select3D_SensitiveEntity & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Select3D_SensitiveEntitySequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Select3D_SensitiveEntitySequence &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Select3D_SensitiveEntitySequence & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_Select3D_SensitiveEntity)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_Select3D_SensitiveEntity &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_Select3D_SensitiveEntity & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Select3D_SensitiveEntitySequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Select3D_SensitiveEntitySequence &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Select3D_SensitiveEntitySequence & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Select3D_SensitiveEntity
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_Select3D_SensitiveEntity
+") First;
 		const Handle_Select3D_SensitiveEntity & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Select3D_SensitiveEntity
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_Select3D_SensitiveEntity
+") Last;
 		const Handle_Select3D_SensitiveEntity & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Select3D_SensitiveEntitySequence)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Select3D_SensitiveEntitySequence &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Select3D_SensitiveEntitySequence & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Select3D_SensitiveEntity
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Select3D_SensitiveEntity
+") Value;
 		const Handle_Select3D_SensitiveEntity & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_Select3D_SensitiveEntity)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_Select3D_SensitiveEntity &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Select3D_SensitiveEntity & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Select3D_SensitiveEntity
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Select3D_SensitiveEntity
+") ChangeValue;
 		Handle_Select3D_SensitiveEntity & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -1593,22 +1189,17 @@ def __del__(self):
 %nodefaultctor Select3D_SequenceNodeOfSensitiveEntitySequence;
 class Select3D_SequenceNodeOfSensitiveEntitySequence : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_Select3D_SensitiveEntity)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Select3D_SequenceNodeOfSensitiveEntitySequence;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_Select3D_SensitiveEntity &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Select3D_SequenceNodeOfSensitiveEntitySequence;
 		 Select3D_SequenceNodeOfSensitiveEntitySequence (const Handle_Select3D_SensitiveEntity & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Select3D_SensitiveEntity
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_Select3D_SensitiveEntity
+") Value;
 		Handle_Select3D_SensitiveEntity & Value ();
 };
 
@@ -1669,118 +1260,102 @@ def __del__(self):
 %nodefaultctor Select3D_SensitiveBox;
 class Select3D_SensitiveBox : public Select3D_SensitiveEntity {
 	public:
-		%feature("autodoc", "Args:
-	OwnerId(Handle_SelectBasics_EntityOwner)
-	BoundingBox(Bnd_Box)
+		%feature("autodoc", "	* Constructs a sensitive box object defined by the owner OwnerId, and the bounding box BoundingBox.
 
-Returns:
-	None
-
-Constructs a sensitive box object defined by the  
-owner OwnerId, and the bounding box BoundingBox.") Select3D_SensitiveBox;
+	:param OwnerId:
+	:type OwnerId: Handle_SelectBasics_EntityOwner &
+	:param BoundingBox:
+	:type BoundingBox: Bnd_Box &
+	:rtype: None
+") Select3D_SensitiveBox;
 		 Select3D_SensitiveBox (const Handle_SelectBasics_EntityOwner & OwnerId,const Bnd_Box & BoundingBox);
-		%feature("autodoc", "Args:
-	OwnerId(Handle_SelectBasics_EntityOwner)
-	XMin(Standard_Real)
-	YMin(Standard_Real)
-	ZMin(Standard_Real)
-	XMax(Standard_Real)
-	YMax(Standard_Real)
-	ZMax(Standard_Real)
+		%feature("autodoc", "	* Constructs a sensitive box object defined by the owner OwnerId, and the coordinates Xmin, YMin, ZMin, XMax, YMax, ZMax. Xmin, YMin and ZMin define the minimum point in the front lower left hand corner of the box, and XMax, YMax and ZMax define the maximum point in the back upper right hand corner of the box.
 
-Returns:
-	None
-
-Constructs a sensitive box object defined by the  
-owner OwnerId, and the coordinates Xmin, YMin, ZMin, XMax, YMax, ZMax.  
-Xmin, YMin and ZMin define the minimum point in  
-the front lower left hand corner of the box,  
-and   XMax, YMax   and ZMax define the maximum  
-point in the back upper right hand corner of the box.") Select3D_SensitiveBox;
+	:param OwnerId:
+	:type OwnerId: Handle_SelectBasics_EntityOwner &
+	:param XMin:
+	:type XMin: float
+	:param YMin:
+	:type YMin: float
+	:param ZMin:
+	:type ZMin: float
+	:param XMax:
+	:type XMax: float
+	:param YMax:
+	:type YMax: float
+	:param ZMax:
+	:type ZMax: float
+	:rtype: None
+") Select3D_SensitiveBox;
 		 Select3D_SensitiveBox (const Handle_SelectBasics_EntityOwner & OwnerId,const Standard_Real XMin,const Standard_Real YMin,const Standard_Real ZMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real ZMax);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Select3D_Projector)
+		%feature("autodoc", "	* projection of the sensitive primitive in order to get 2D boxes for the Sort Algorithm
 
-Returns:
-	None
-
-projection of the sensitive primitive in order to  
-         get 2D boxes for the Sort Algorithm") Project;
+	:param aProjector:
+	:type aProjector: Handle_Select3D_Projector &
+	:rtype: None
+") Project;
 		void Project (const Handle_Select3D_Projector & aProjector);
-		%feature("autodoc", "Args:
-	boxes(SelectBasics_ListOfBox2d)
+		%feature("autodoc", "	* gives the 2D boxes which represent the Box in the selection process...
 
-Returns:
-	None
-
-gives the 2D boxes which represent the Box in the  
-         selection process...") Areas;
+	:param boxes:
+	:type boxes: SelectBasics_ListOfBox2d &
+	:rtype: None
+") Areas;
 		void Areas (SelectBasics_ListOfBox2d & boxes);
-		%feature("autodoc", "Args:
-	aLocation(TopLoc_Location)
-
-Returns:
-	Handle_Select3D_SensitiveEntity
-
-No detailed docstring for this function.") GetConnected;
+		%feature("autodoc", "	:param aLocation:
+	:type aLocation: TopLoc_Location &
+	:rtype: Handle_Select3D_SensitiveEntity
+") GetConnected;
 		Handle_Select3D_SensitiveEntity GetConnected (const TopLoc_Location & aLocation);
-		%feature("autodoc", "Args:
-	thePickArgs(SelectBasics_PickArgs)
-	theMatchDMin(Standard_Real)
-	theMatchDepth(Standard_Real)
+		%feature("autodoc", "	* Checks whether the sensitive entity matches the picking detection area (close to the picking line). For details please refer to base class declaration.
 
-Returns:
-	Standard_Boolean
-
-Checks whether the sensitive entity matches the picking  
-detection area (close to the picking line).  
-For details please refer to base class declaration.") Matches;
+	:param thePickArgs:
+	:type thePickArgs: SelectBasics_PickArgs &
+	:param theMatchDMin:
+	:type theMatchDMin: float &
+	:param theMatchDepth:
+	:type theMatchDepth: float &
+	:rtype: bool
+") Matches;
 		Standard_Boolean Matches (const SelectBasics_PickArgs & thePickArgs,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	XMin(Standard_Real)
-	YMin(Standard_Real)
-	XMax(Standard_Real)
-	YMax(Standard_Real)
-	aTol(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Matches;
+		%feature("autodoc", "	:param XMin:
+	:type XMin: float
+	:param YMin:
+	:type YMin: float
+	:param XMax:
+	:type XMax: float
+	:param YMax:
+	:type YMax: float
+	:param aTol:
+	:type aTol: float
+	:rtype: bool
+") Matches;
 		Standard_Boolean Matches (const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol);
-		%feature("autodoc", "Args:
-	Polyline(TColgp_Array1OfPnt2d)
-	aBox(Bnd_Box2d)
-	aTol(Standard_Real)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") Matches;
+		%feature("autodoc", "	:param Polyline:
+	:type Polyline: TColgp_Array1OfPnt2d
+	:param aBox:
+	:type aBox: Bnd_Box2d &
+	:param aTol:
+	:type aTol: float
+	:rtype: bool
+") Matches;
 		virtual Standard_Boolean Matches (const TColgp_Array1OfPnt2d & Polyline,const Bnd_Box2d & aBox,const Standard_Real aTol);
-		%feature("autodoc", "Args:
-	EyeLine(gp_Lin)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") ComputeDepth;
+		%feature("autodoc", "	:param EyeLine:
+	:type EyeLine: gp_Lin
+	:rtype: float
+") ComputeDepth;
 		Standard_Real ComputeDepth (const gp_Lin & EyeLine);
-		%feature("autodoc", "Args:
-	S(Standard_OStream)
-	FullDump(Standard_Boolean)=Standard_True
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param S:
+	:type S: Standard_OStream &
+	:param FullDump: default value is Standard_True
+	:type FullDump: bool
+	:rtype: void
+") Dump;
 		virtual void Dump (Standard_OStream & S,const Standard_Boolean FullDump = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Box
+		%feature("autodoc", "	* Returns the sensitive 3D box used at the time of construction.
 
-Returns the sensitive 3D box used at the time of construction.") Box;
+	:rtype: Bnd_Box
+") Box;
 		const Bnd_Box & Box ();
 };
 
@@ -1841,186 +1416,147 @@ def __del__(self):
 %nodefaultctor Select3D_SensitiveGroup;
 class Select3D_SensitiveGroup : public Select3D_SensitiveEntity {
 	public:
-		%feature("autodoc", "Args:
-	OwnerId(Handle_SelectBasics_EntityOwner)
-	MatchAll(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Constructs an empty sensitive group object. This is a set of sensitive 3D entities. The sensitive entities will be defined using the function Add to fill the entity owner OwnerId. If MatchAll is false, nothing can be added.
 
-Returns:
-	None
-
-Constructs an empty sensitive group object.  
-This is a set of sensitive 3D entities. The sensitive  
-entities will be defined using the function Add to fill  
-the entity owner OwnerId. If MatchAll is false, nothing can be added.") Select3D_SensitiveGroup;
+	:param OwnerId:
+	:type OwnerId: Handle_SelectBasics_EntityOwner &
+	:param MatchAll: default value is Standard_True
+	:type MatchAll: bool
+	:rtype: None
+") Select3D_SensitiveGroup;
 		 Select3D_SensitiveGroup (const Handle_SelectBasics_EntityOwner & OwnerId,const Standard_Boolean MatchAll = Standard_True);
-		%feature("autodoc", "Args:
-	OwnerId(Handle_SelectBasics_EntityOwner)
-	TheList(Select3D_ListOfSensitive)
-	MatchAll(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Constructs a sensitive group object defined by the list TheList and the entity owner OwnerId. If MatchAll is false, nothing is done.
 
-Returns:
-	None
-
-Constructs a sensitive group object defined by the list  
-TheList and the entity owner OwnerId. If MatchAll is false, nothing is done.") Select3D_SensitiveGroup;
+	:param OwnerId:
+	:type OwnerId: Handle_SelectBasics_EntityOwner &
+	:param TheList:
+	:type TheList: Select3D_ListOfSensitive &
+	:param MatchAll: default value is Standard_True
+	:type MatchAll: bool
+	:rtype: None
+") Select3D_SensitiveGroup;
 		 Select3D_SensitiveGroup (const Handle_SelectBasics_EntityOwner & OwnerId,Select3D_ListOfSensitive & TheList,const Standard_Boolean MatchAll = Standard_True);
-		%feature("autodoc", "Args:
-	LL(Select3D_ListOfSensitive)
+		%feature("autodoc", "	* Adds the list of sensitive entities LL to the empty sensitive group object created at construction time.
 
-Returns:
-	None
-
-Adds the list of sensitive entities LL to the empty  
-sensitive group object created at construction time.") Add;
+	:param LL:
+	:type LL: Select3D_ListOfSensitive &
+	:rtype: None
+") Add;
 		void Add (Select3D_ListOfSensitive & LL);
-		%feature("autodoc", "Args:
-	aSensitive(Handle_Select3D_SensitiveEntity)
+		%feature("autodoc", "	* Adds the sensitive entity aSensitive to the non-empty sensitive group object created at construction time.
 
-Returns:
-	None
-
-Adds the sensitive entity aSensitive to the non-empty  
-sensitive group object created at construction time.") Add;
+	:param aSensitive:
+	:type aSensitive: Handle_Select3D_SensitiveEntity &
+	:rtype: None
+") Add;
 		void Add (const Handle_Select3D_SensitiveEntity & aSensitive);
-		%feature("autodoc", "Args:
-	aSensitive(Handle_Select3D_SensitiveEntity)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param aSensitive:
+	:type aSensitive: Handle_Select3D_SensitiveEntity &
+	:rtype: None
+") Remove;
 		void Remove (const Handle_Select3D_SensitiveEntity & aSensitive);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Removes all sensitive entities from the list used at the time of construction, or added using the function Add.
 
-Removes all sensitive entities from the list used at the  
-time of construction, or added using the function Add.") Clear;
+	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	aSensitive(Handle_Select3D_SensitiveEntity)
+		%feature("autodoc", "	* Returns true if the sensitive entity aSensitive is in the list used at the time of construction, or added using the function Add.
 
-Returns:
-	Standard_Boolean
-
-Returns true if the sensitive entity aSensitive is in  
-the list used at the time of construction, or added using the function Add.") IsIn;
+	:param aSensitive:
+	:type aSensitive: Handle_Select3D_SensitiveEntity &
+	:rtype: bool
+") IsIn;
 		Standard_Boolean IsIn (const Handle_Select3D_SensitiveEntity & aSensitive);
-		%feature("autodoc", "Args:
-	MustMatchAllEntities(Standard_Boolean)
+		%feature("autodoc", "	* Sets the requirement that all sensitive entities in the list used at the time of construction, or added using the function Add must be matched.
 
-Returns:
-	None
-
-Sets the requirement that all sensitive entities in the  
-list used at the time of construction, or added using  
-the function Add must be matched.") Set;
+	:param MustMatchAllEntities:
+	:type MustMatchAllEntities: bool
+	:rtype: None
+") Set;
 		void Set (const Standard_Boolean MustMatchAllEntities);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns true if all sensitive entities in the list used at the time of construction, or added using the function Add must be matched.
 
-Returns true if all sensitive entities in the list used  
-at the time of construction, or added using the function Add must be matched.") MustMatchAll;
+	:rtype: bool
+") MustMatchAll;
 		Standard_Boolean MustMatchAll ();
-		%feature("autodoc", "Args:
-	aProjector(Handle_Select3D_Projector)
+		%feature("autodoc", "	* projection of the sensitive primitive in order to get 2D boxes for the Sort Algorithm
 
-Returns:
-	None
-
-projection of the sensitive primitive in order to  
-         get 2D boxes for the Sort Algorithm") Project;
+	:param aProjector:
+	:type aProjector: Handle_Select3D_Projector &
+	:rtype: None
+") Project;
 		void Project (const Handle_Select3D_Projector & aProjector);
-		%feature("autodoc", "Args:
-	boxes(SelectBasics_ListOfBox2d)
+		%feature("autodoc", "	* gives the 2D boxes which represent the segment in the selection process...
 
-Returns:
-	None
-
-gives the 2D boxes which represent the segment in the  
-         selection process...") Areas;
+	:param boxes:
+	:type boxes: SelectBasics_ListOfBox2d &
+	:rtype: None
+") Areas;
 		void Areas (SelectBasics_ListOfBox2d & boxes);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") MaxBoxes;
+		%feature("autodoc", "	:rtype: int
+") MaxBoxes;
 		Standard_Integer MaxBoxes ();
-		%feature("autodoc", "Args:
-	aLocation(TopLoc_Location)
-
-Returns:
-	Handle_Select3D_SensitiveEntity
-
-No detailed docstring for this function.") GetConnected;
+		%feature("autodoc", "	:param aLocation:
+	:type aLocation: TopLoc_Location &
+	:rtype: Handle_Select3D_SensitiveEntity
+") GetConnected;
 		Handle_Select3D_SensitiveEntity GetConnected (const TopLoc_Location & aLocation);
-		%feature("autodoc", "Args:
-	aLoc(TopLoc_Location)
+		%feature("autodoc", "	* propagation of location on all the sensitive inside...
 
-Returns:
-	None
-
-propagation of location on all the sensitive inside...") SetLocation;
+	:param aLoc:
+	:type aLoc: TopLoc_Location &
+	:rtype: None
+") SetLocation;
 		void SetLocation (const TopLoc_Location & aLoc);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* propagation of location on all the sensitive inside...
 
-propagation of location on all the sensitive inside...") ResetLocation;
+	:rtype: None
+") ResetLocation;
 		void ResetLocation ();
-		%feature("autodoc", "Args:
-	thePickArgs(SelectBasics_PickArgs)
-	theMatchDMin(Standard_Real)
-	theMatchDepth(Standard_Real)
+		%feature("autodoc", "	* Checks whether the sensitive entity matches the picking detection area (close to the picking line). For details please refer to base class declaration.
 
-Returns:
-	Standard_Boolean
-
-Checks whether the sensitive entity matches the picking  
-detection area (close to the picking line).  
-For details please refer to base class declaration.") Matches;
+	:param thePickArgs:
+	:type thePickArgs: SelectBasics_PickArgs &
+	:param theMatchDMin:
+	:type theMatchDMin: float &
+	:param theMatchDepth:
+	:type theMatchDepth: float &
+	:rtype: bool
+") Matches;
 		Standard_Boolean Matches (const SelectBasics_PickArgs & thePickArgs,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	XMin(Standard_Real)
-	YMin(Standard_Real)
-	XMax(Standard_Real)
-	YMax(Standard_Real)
-	aTol(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Matches;
+		%feature("autodoc", "	:param XMin:
+	:type XMin: float
+	:param YMin:
+	:type YMin: float
+	:param XMax:
+	:type XMax: float
+	:param YMax:
+	:type YMax: float
+	:param aTol:
+	:type aTol: float
+	:rtype: bool
+") Matches;
 		Standard_Boolean Matches (const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol);
-		%feature("autodoc", "Args:
-	Polyline(TColgp_Array1OfPnt2d)
-	aBox(Bnd_Box2d)
-	aTol(Standard_Real)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") Matches;
+		%feature("autodoc", "	:param Polyline:
+	:type Polyline: TColgp_Array1OfPnt2d
+	:param aBox:
+	:type aBox: Bnd_Box2d &
+	:param aTol:
+	:type aTol: float
+	:rtype: bool
+") Matches;
 		virtual Standard_Boolean Matches (const TColgp_Array1OfPnt2d & Polyline,const Bnd_Box2d & aBox,const Standard_Real aTol);
-		%feature("autodoc", "Args:
-	TheOwnerId(Handle_SelectBasics_EntityOwner)
+		%feature("autodoc", "	* Sets the owner for all entities in group
 
-Returns:
-	None
-
-Sets the owner for all entities in group") Set;
+	:param TheOwnerId:
+	:type TheOwnerId: Handle_SelectBasics_EntityOwner &
+	:rtype: None
+") Set;
 		void Set (const Handle_SelectBasics_EntityOwner & TheOwnerId);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Select3D_ListOfSensitive
+		%feature("autodoc", "	* Gets group content
 
-Gets group content") GetEntities;
+	:rtype: Select3D_ListOfSensitive
+") GetEntities;
 		const Select3D_ListOfSensitive & GetEntities ();
 };
 
@@ -2081,99 +1617,83 @@ def __del__(self):
 %nodefaultctor Select3D_SensitivePoint;
 class Select3D_SensitivePoint : public Select3D_SensitiveEntity {
 	public:
-		%feature("autodoc", "Args:
-	OwnerId(Handle_SelectBasics_EntityOwner)
-	Point(gp_Pnt)
+		%feature("autodoc", "	* Constructs a sensitive point object defined by the owner OwnerId and the point Point.
 
-Returns:
-	None
-
-Constructs a sensitive point object defined by the  
-owner OwnerId and the point Point.") Select3D_SensitivePoint;
+	:param OwnerId:
+	:type OwnerId: Handle_SelectBasics_EntityOwner &
+	:param Point:
+	:type Point: gp_Pnt
+	:rtype: None
+") Select3D_SensitivePoint;
 		 Select3D_SensitivePoint (const Handle_SelectBasics_EntityOwner & OwnerId,const gp_Pnt & Point);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Select3D_Projector)
+		%feature("autodoc", "	* //!Converts the stored 3D point into a 2D point according  to <aProjector> ; this method is called by the selection Manager.
 
-Returns:
-	None
-
-//!Converts the stored 3D point into a 2D point according  
-        to <aProjector> ; this method is called by the selection Manager.") Project;
+	:param aProjector:
+	:type aProjector: Handle_Select3D_Projector &
+	:rtype: None
+") Project;
 		void Project (const Handle_Select3D_Projector & aProjector);
-		%feature("autodoc", "Args:
-	aresult(SelectBasics_ListOfBox2d)
+		%feature("autodoc", "	* stores in <aresult> the 2D sensitive box which represents the point area in the selection process.
 
-Returns:
-	None
-
-stores in <aresult> the 2D sensitive box which represents  
-         the point area in the selection process.") Areas;
+	:param aresult:
+	:type aresult: SelectBasics_ListOfBox2d &
+	:rtype: None
+") Areas;
 		void Areas (SelectBasics_ListOfBox2d & aresult);
-		%feature("autodoc", "Args:
-	aLocation(TopLoc_Location)
-
-Returns:
-	Handle_Select3D_SensitiveEntity
-
-No detailed docstring for this function.") GetConnected;
+		%feature("autodoc", "	:param aLocation:
+	:type aLocation: TopLoc_Location &
+	:rtype: Handle_Select3D_SensitiveEntity
+") GetConnected;
 		Handle_Select3D_SensitiveEntity GetConnected (const TopLoc_Location & aLocation);
-		%feature("autodoc", "Args:
-	thePickArgs(SelectBasics_PickArgs)
-	theMatchDMin(Standard_Real)
-	theMatchDepth(Standard_Real)
+		%feature("autodoc", "	* Checks whether the sensitive entity matches the picking detection area (close to the picking line). For details please refer to base class declaration.
 
-Returns:
-	Standard_Boolean
-
-Checks whether the sensitive entity matches the picking  
-detection area (close to the picking line).  
-For details please refer to base class declaration.") Matches;
+	:param thePickArgs:
+	:type thePickArgs: SelectBasics_PickArgs &
+	:param theMatchDMin:
+	:type theMatchDMin: float &
+	:param theMatchDepth:
+	:type theMatchDepth: float &
+	:rtype: bool
+") Matches;
 		Standard_Boolean Matches (const SelectBasics_PickArgs & thePickArgs,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	XMin(Standard_Real)
-	YMin(Standard_Real)
-	XMax(Standard_Real)
-	YMax(Standard_Real)
-	aTol(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Matches;
+		%feature("autodoc", "	:param XMin:
+	:type XMin: float
+	:param YMin:
+	:type YMin: float
+	:param XMax:
+	:type XMax: float
+	:param YMax:
+	:type YMax: float
+	:param aTol:
+	:type aTol: float
+	:rtype: bool
+") Matches;
 		Standard_Boolean Matches (const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol);
-		%feature("autodoc", "Args:
-	Polyline(TColgp_Array1OfPnt2d)
-	aBox(Bnd_Box2d)
-	aTol(Standard_Real)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") Matches;
+		%feature("autodoc", "	:param Polyline:
+	:type Polyline: TColgp_Array1OfPnt2d
+	:param aBox:
+	:type aBox: Bnd_Box2d &
+	:param aTol:
+	:type aTol: float
+	:rtype: bool
+") Matches;
 		virtual Standard_Boolean Matches (const TColgp_Array1OfPnt2d & Polyline,const Bnd_Box2d & aBox,const Standard_Real aTol);
-		%feature("autodoc", "Args:
-	EyeLine(gp_Lin)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") ComputeDepth;
+		%feature("autodoc", "	:param EyeLine:
+	:type EyeLine: gp_Lin
+	:rtype: float
+") ComputeDepth;
 		Standard_Real ComputeDepth (const gp_Lin & EyeLine);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
+		%feature("autodoc", "	* Returns the point used at the time of construction.
 
-Returns the point used at the time of construction.") Point;
+	:rtype: gp_Pnt
+") Point;
 		gp_Pnt Point ();
-		%feature("autodoc", "Args:
-	S(Standard_OStream)
-	FullDump(Standard_Boolean)=Standard_True
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param S:
+	:type S: Standard_OStream &
+	:param FullDump: default value is Standard_True
+	:type FullDump: bool
+	:rtype: void
+") Dump;
 		virtual void Dump (Standard_OStream & S,const Standard_Boolean FullDump = Standard_True);
 };
 
@@ -2234,39 +1754,33 @@ def __del__(self):
 %nodefaultctor Select3D_SensitivePoly;
 class Select3D_SensitivePoly : public Select3D_SensitiveEntity {
 	public:
-		%feature("autodoc", "Args:
-	aProjector(Handle_Select3D_Projector)
+		%feature("autodoc", "	* projection of the sensitive primitive in order to get 2D boxes for the Sort Algorithm
 
-Returns:
-	virtual void
-
-projection of the sensitive primitive in order to  
-         get 2D boxes for the Sort Algorithm") Project;
+	:param aProjector:
+	:type aProjector: Handle_Select3D_Projector &
+	:rtype: void
+") Project;
 		virtual void Project (const Handle_Select3D_Projector & aProjector);
-		%feature("autodoc", "Args:
-	boxes(SelectBasics_ListOfBox2d)
+		%feature("autodoc", "	* stores in <boxes> the 2D Boxes which represent the sensitive face in the selection algorithm.
 
-Returns:
-	None
-
-stores in <boxes> the 2D Boxes which represent the sensitive face  
-         in the selection algorithm.") Areas;
+	:param boxes:
+	:type boxes: SelectBasics_ListOfBox2d &
+	:rtype: None
+") Areas;
 		void Areas (SelectBasics_ListOfBox2d & boxes);
-		%feature("autodoc", "Args:
-	theHArrayOfPnt(Handle_TColgp_HArray1OfPnt)
+		%feature("autodoc", "	* Returns the 3D points of the array used at construction time.
 
-Returns:
-	None
-
-Returns the 3D points of the array used at construction time.") Points3D;
+	:param theHArrayOfPnt:
+	:type theHArrayOfPnt: Handle_TColgp_HArray1OfPnt
+	:rtype: None
+") Points3D;
 		void Points3D (Handle_TColgp_HArray1OfPnt & theHArrayOfPnt);
-		%feature("autodoc", "Args:
-	theArrayOfPnt2d(TColgp_Array1OfPnt2d)
+		%feature("autodoc", "	* Returns the 2D points of the array used at construction time.
 
-Returns:
-	None
-
-Returns the 2D points of the array used at construction time.") Points2D;
+	:param theArrayOfPnt2d:
+	:type theArrayOfPnt2d: TColgp_Array1OfPnt2d
+	:rtype: None
+") Points2D;
 		void Points2D (TColgp_Array1OfPnt2d & theArrayOfPnt2d);
 };
 
@@ -2327,154 +1841,128 @@ def __del__(self):
 %nodefaultctor Select3D_SensitiveSegment;
 class Select3D_SensitiveSegment : public Select3D_SensitiveEntity {
 	public:
-		%feature("autodoc", "Args:
-	OwnerId(Handle_SelectBasics_EntityOwner)
-	FirstP(gp_Pnt)
-	LastP(gp_Pnt)
-	MaxRect(Standard_Integer)=1
+		%feature("autodoc", "	* Constructs the sensitive segment object defined by the owner OwnerId, the points FirstP, LastP and the maximum number of sensitive bounding boxes MaxRect.
 
-Returns:
-	None
-
-Constructs the sensitive segment object defined by  
-the owner OwnerId, the points FirstP, LastP and the  
-maximum number of sensitive bounding boxes MaxRect.") Select3D_SensitiveSegment;
+	:param OwnerId:
+	:type OwnerId: Handle_SelectBasics_EntityOwner &
+	:param FirstP:
+	:type FirstP: gp_Pnt
+	:param LastP:
+	:type LastP: gp_Pnt
+	:param MaxRect: default value is 1
+	:type MaxRect: Standard_Integer
+	:rtype: None
+") Select3D_SensitiveSegment;
 		 Select3D_SensitiveSegment (const Handle_SelectBasics_EntityOwner & OwnerId,const gp_Pnt & FirstP,const gp_Pnt & LastP,const Standard_Integer MaxRect = 1);
-		%feature("autodoc", "Args:
-	MaxRect(Standard_Integer)
+		%feature("autodoc", "	* Sets the maximum number of sensitive rectangles MaxRect.
 
-Returns:
-	None
-
-Sets the maximum number of sensitive rectangles MaxRect.") Set;
+	:param MaxRect:
+	:type MaxRect: Standard_Integer
+	:rtype: None
+") Set;
 		void Set (const Standard_Integer MaxRect);
-		%feature("autodoc", "Args:
-	aPt(gp_Pnt)
+		%feature("autodoc", "	* changes the start Point of the Segment;
 
-Returns:
-	None
-
-changes the start Point of the Segment;") StartPoint;
+	:param aPt:
+	:type aPt: gp_Pnt
+	:rtype: None
+") StartPoint;
 		void StartPoint (const gp_Pnt & aPt);
-		%feature("autodoc", "Args:
-	aPt(gp_Pnt)
+		%feature("autodoc", "	* changes the end point of the segment
 
-Returns:
-	None
-
-changes the end point of the segment") EndPoint;
+	:param aPt:
+	:type aPt: gp_Pnt
+	:rtype: None
+") EndPoint;
 		void EndPoint (const gp_Pnt & aPt);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
+		%feature("autodoc", "	* gives the 3D start Point of the Segment
 
-gives the 3D start Point of the Segment") StartPoint;
+	:rtype: gp_Pnt
+") StartPoint;
 		gp_Pnt StartPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
+		%feature("autodoc", "	* gives the 3D End Point of the Segment
 
-gives the 3D End Point of the Segment") EndPoint;
+	:rtype: gp_Pnt
+") EndPoint;
 		gp_Pnt EndPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt2d
+		%feature("autodoc", "	* gives the 3D start Point of the Segment
 
-gives the 3D start Point of the Segment") StartPoint2d;
+	:rtype: gp_Pnt2d
+") StartPoint2d;
 		gp_Pnt2d StartPoint2d ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt2d
+		%feature("autodoc", "	* gives the 3D End Point of the Segment
 
-gives the 3D End Point of the Segment") EndPoint2d;
+	:rtype: gp_Pnt2d
+") EndPoint2d;
 		gp_Pnt2d EndPoint2d ();
-		%feature("autodoc", "Args:
-	aProjector(Handle_Select3D_Projector)
+		%feature("autodoc", "	* projection of the sensitive primitive in order to get 2D boxes for the Sort Algorithm
 
-Returns:
-	virtual void
-
-projection of the sensitive primitive in order to  
-         get 2D boxes for the Sort Algorithm") Project;
+	:param aProjector:
+	:type aProjector: Handle_Select3D_Projector &
+	:rtype: void
+") Project;
 		virtual void Project (const Handle_Select3D_Projector & aProjector);
-		%feature("autodoc", "Args:
-	boxes(SelectBasics_ListOfBox2d)
+		%feature("autodoc", "	* gives the 2D boxes which represent the segment in the selection process...
 
-Returns:
-	None
-
-gives the 2D boxes which represent the segment in the  
-         selection process...") Areas;
+	:param boxes:
+	:type boxes: SelectBasics_ListOfBox2d &
+	:rtype: None
+") Areas;
 		void Areas (SelectBasics_ListOfBox2d & boxes);
-		%feature("autodoc", "Args:
-	aLocation(TopLoc_Location)
-
-Returns:
-	Handle_Select3D_SensitiveEntity
-
-No detailed docstring for this function.") GetConnected;
+		%feature("autodoc", "	:param aLocation:
+	:type aLocation: TopLoc_Location &
+	:rtype: Handle_Select3D_SensitiveEntity
+") GetConnected;
 		Handle_Select3D_SensitiveEntity GetConnected (const TopLoc_Location & aLocation);
-		%feature("autodoc", "Args:
-	thePickArgs(SelectBasics_PickArgs)
-	theMatchDMin(Standard_Real)
-	theMatchDepth(Standard_Real)
+		%feature("autodoc", "	* Checks whether the sensitive entity matches the picking detection area (close to the picking line). For details please refer to base class declaration.
 
-Returns:
-	Standard_Boolean
-
-Checks whether the sensitive entity matches the picking  
-detection area (close to the picking line).  
-For details please refer to base class declaration.") Matches;
+	:param thePickArgs:
+	:type thePickArgs: SelectBasics_PickArgs &
+	:param theMatchDMin:
+	:type theMatchDMin: float &
+	:param theMatchDepth:
+	:type theMatchDepth: float &
+	:rtype: bool
+") Matches;
 		Standard_Boolean Matches (const SelectBasics_PickArgs & thePickArgs,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	XMin(Standard_Real)
-	YMin(Standard_Real)
-	XMax(Standard_Real)
-	YMax(Standard_Real)
-	aTol(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Matches;
+		%feature("autodoc", "	:param XMin:
+	:type XMin: float
+	:param YMin:
+	:type YMin: float
+	:param XMax:
+	:type XMax: float
+	:param YMax:
+	:type YMax: float
+	:param aTol:
+	:type aTol: float
+	:rtype: bool
+") Matches;
 		Standard_Boolean Matches (const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol);
-		%feature("autodoc", "Args:
-	Polyline(TColgp_Array1OfPnt2d)
-	aBox(Bnd_Box2d)
-	aTol(Standard_Real)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") Matches;
+		%feature("autodoc", "	:param Polyline:
+	:type Polyline: TColgp_Array1OfPnt2d
+	:param aBox:
+	:type aBox: Bnd_Box2d &
+	:param aTol:
+	:type aTol: float
+	:rtype: bool
+") Matches;
 		virtual Standard_Boolean Matches (const TColgp_Array1OfPnt2d & Polyline,const Bnd_Box2d & aBox,const Standard_Real aTol);
-		%feature("autodoc", "Args:
-	EyeLine(gp_Lin)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") ComputeDepth;
+		%feature("autodoc", "	:param EyeLine:
+	:type EyeLine: gp_Lin
+	:rtype: float
+") ComputeDepth;
 		Standard_Real ComputeDepth (const gp_Lin & EyeLine);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* //!returns <mymaxrect>
 
-//!returns <mymaxrect>") MaxBoxes;
+	:rtype: int
+") MaxBoxes;
 		Standard_Integer MaxBoxes ();
-		%feature("autodoc", "Args:
-	S(Standard_OStream)
-	FullDump(Standard_Boolean)=Standard_True
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param S:
+	:type S: Standard_OStream &
+	:param FullDump: default value is Standard_True
+	:type FullDump: bool
+	:rtype: void
+") Dump;
 		virtual void Dump (Standard_OStream & S,const Standard_Boolean FullDump = Standard_True);
 };
 
@@ -2535,138 +2023,116 @@ def __del__(self):
 %nodefaultctor Select3D_SensitiveWire;
 class Select3D_SensitiveWire : public Select3D_SensitiveEntity {
 	public:
-		%feature("autodoc", "Args:
-	OwnerId(Handle_SelectBasics_EntityOwner)
-	MaxRect(Standard_Integer)=1
+		%feature("autodoc", "	* Constructs a sensitive wire object defined by the owner OwnerId, and the maximum number of sensitive rectangles MaxRect.
 
-Returns:
-	None
-
-Constructs a sensitive wire object defined by the  
-owner OwnerId, and the maximum number of  
-sensitive rectangles MaxRect.") Select3D_SensitiveWire;
+	:param OwnerId:
+	:type OwnerId: Handle_SelectBasics_EntityOwner &
+	:param MaxRect: default value is 1
+	:type MaxRect: Standard_Integer
+	:rtype: None
+") Select3D_SensitiveWire;
 		 Select3D_SensitiveWire (const Handle_SelectBasics_EntityOwner & OwnerId,const Standard_Integer MaxRect = 1);
-		%feature("autodoc", "Args:
-	aSensitive(Handle_Select3D_SensitiveEntity)
+		%feature("autodoc", "	* Adds the sensitive entity aSensitive to this framework.
 
-Returns:
-	None
-
-Adds the sensitive entity aSensitive to this framework.") Add;
+	:param aSensitive:
+	:type aSensitive: Handle_Select3D_SensitiveEntity &
+	:rtype: None
+") Add;
 		void Add (const Handle_Select3D_SensitiveEntity & aSensitive);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Select3D_Projector)
+		%feature("autodoc", "	* projection of the sensitive primitive in order to get 2D boxes for the Sort Algorithm
 
-Returns:
-	None
-
-projection of the sensitive primitive in order to  
-         get 2D boxes for the Sort Algorithm") Project;
+	:param aProjector:
+	:type aProjector: Handle_Select3D_Projector &
+	:rtype: None
+") Project;
 		void Project (const Handle_Select3D_Projector & aProjector);
-		%feature("autodoc", "Args:
-	boxes(SelectBasics_ListOfBox2d)
+		%feature("autodoc", "	* gives the 2D boxes which represent the segment in the selection process...
 
-Returns:
-	None
-
-gives the 2D boxes which represent the segment in the  
-         selection process...") Areas;
+	:param boxes:
+	:type boxes: SelectBasics_ListOfBox2d &
+	:rtype: None
+") Areas;
 		void Areas (SelectBasics_ListOfBox2d & boxes);
-		%feature("autodoc", "Args:
-	aLocation(TopLoc_Location)
-
-Returns:
-	Handle_Select3D_SensitiveEntity
-
-No detailed docstring for this function.") GetConnected;
+		%feature("autodoc", "	:param aLocation:
+	:type aLocation: TopLoc_Location &
+	:rtype: Handle_Select3D_SensitiveEntity
+") GetConnected;
 		Handle_Select3D_SensitiveEntity GetConnected (const TopLoc_Location & aLocation);
-		%feature("autodoc", "Args:
-	theEdges(Select3D_SensitiveEntitySequence)
+		%feature("autodoc", "	* returns the sensitive edges stored in this wire
 
-Returns:
-	None
-
-returns the sensitive edges stored in this wire") GetEdges;
+	:param theEdges:
+	:type theEdges: Select3D_SensitiveEntitySequence &
+	:rtype: None
+") GetEdges;
 		void GetEdges (Select3D_SensitiveEntitySequence & theEdges);
-		%feature("autodoc", "Args:
-	aLoc(TopLoc_Location)
+		%feature("autodoc", "	* propagation of location on all the sensitive inside...
 
-Returns:
-	None
-
-propagation of location on all the sensitive inside...") SetLocation;
+	:param aLoc:
+	:type aLoc: TopLoc_Location &
+	:rtype: None
+") SetLocation;
 		void SetLocation (const TopLoc_Location & aLoc);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* propagation of location on all the sensitive inside...
 
-propagation of location on all the sensitive inside...") ResetLocation;
+	:rtype: None
+") ResetLocation;
 		void ResetLocation ();
-		%feature("autodoc", "Args:
-	thePickArgs(SelectBasics_PickArgs)
-	theMatchDMin(Standard_Real)
-	theMatchDepth(Standard_Real)
+		%feature("autodoc", "	* Checks whether the sensitive entity matches the picking detection area (close to the picking line). For details please refer to base class declaration.
 
-Returns:
-	Standard_Boolean
-
-Checks whether the sensitive entity matches the picking  
-detection area (close to the picking line).  
-For details please refer to base class declaration.") Matches;
+	:param thePickArgs:
+	:type thePickArgs: SelectBasics_PickArgs &
+	:param theMatchDMin:
+	:type theMatchDMin: float &
+	:param theMatchDepth:
+	:type theMatchDepth: float &
+	:rtype: bool
+") Matches;
 		Standard_Boolean Matches (const SelectBasics_PickArgs & thePickArgs,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	XMin(Standard_Real)
-	YMin(Standard_Real)
-	XMax(Standard_Real)
-	YMax(Standard_Real)
-	aTol(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Matches;
+		%feature("autodoc", "	:param XMin:
+	:type XMin: float
+	:param YMin:
+	:type YMin: float
+	:param XMax:
+	:type XMax: float
+	:param YMax:
+	:type YMax: float
+	:param aTol:
+	:type aTol: float
+	:rtype: bool
+") Matches;
 		Standard_Boolean Matches (const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol);
-		%feature("autodoc", "Args:
-	Polyline(TColgp_Array1OfPnt2d)
-	aBox(Bnd_Box2d)
-	aTol(Standard_Real)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") Matches;
+		%feature("autodoc", "	:param Polyline:
+	:type Polyline: TColgp_Array1OfPnt2d
+	:param aBox:
+	:type aBox: Bnd_Box2d &
+	:param aTol:
+	:type aTol: float
+	:rtype: bool
+") Matches;
 		virtual Standard_Boolean Matches (const TColgp_Array1OfPnt2d & Polyline,const Bnd_Box2d & aBox,const Standard_Real aTol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* //!returns <mymaxrect>
 
-//!returns <mymaxrect>") MaxBoxes;
+	:rtype: int
+") MaxBoxes;
 		Standard_Integer MaxBoxes ();
-		%feature("autodoc", "Args:
-	S(Standard_OStream)
-	FullDump(Standard_Boolean)=Standard_True
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param S:
+	:type S: Standard_OStream &
+	:param FullDump: default value is Standard_True
+	:type FullDump: bool
+	:rtype: void
+") Dump;
 		virtual void Dump (Standard_OStream & S,const Standard_Boolean FullDump = Standard_True);
-		%feature("autodoc", "Args:
-	TheOwnerId(Handle_SelectBasics_EntityOwner)
+		%feature("autodoc", "	* Sets the owner for all entities in wire
 
-Returns:
-	None
-
-Sets the owner for all entities in wire") Set;
+	:param TheOwnerId:
+	:type TheOwnerId: Handle_SelectBasics_EntityOwner &
+	:rtype: None
+") Set;
 		void Set (const Handle_SelectBasics_EntityOwner & TheOwnerId);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Select3D_SensitiveEntity
+		%feature("autodoc", "	* //!returns <mymaxrect>
 
-//!returns <mymaxrect>") GetLastDetected;
+	:rtype: Handle_Select3D_SensitiveEntity
+") GetLastDetected;
 		Handle_Select3D_SensitiveEntity GetLastDetected ();
 };
 
@@ -2727,150 +2193,130 @@ def __del__(self):
 %nodefaultctor Select3D_SensitiveCircle;
 class Select3D_SensitiveCircle : public Select3D_SensitivePoly {
 	public:
-		%feature("autodoc", "Args:
-	OwnerId(Handle_SelectBasics_EntityOwner)
-	TheCircle(Handle_Geom_Circle)
-	FilledCircle(Standard_Boolean)=Standard_False
-	NbOfPoints(Standard_Integer)=6
+		%feature("autodoc", "	* Constructs the sensitive circle object defined by the owner OwnerId, the circle Circle, the Boolean FilledCircle and the number of points NbOfPoints.
 
-Returns:
-	None
-
-Constructs the sensitive circle object defined by the  
-owner OwnerId, the circle Circle, the Boolean  
-FilledCircle and the number of points NbOfPoints.") Select3D_SensitiveCircle;
+	:param OwnerId:
+	:type OwnerId: Handle_SelectBasics_EntityOwner &
+	:param TheCircle:
+	:type TheCircle: Handle_Geom_Circle &
+	:param FilledCircle: default value is Standard_False
+	:type FilledCircle: bool
+	:param NbOfPoints: default value is 6
+	:type NbOfPoints: Standard_Integer
+	:rtype: None
+") Select3D_SensitiveCircle;
 		 Select3D_SensitiveCircle (const Handle_SelectBasics_EntityOwner & OwnerId,const Handle_Geom_Circle & TheCircle,const Standard_Boolean FilledCircle = Standard_False,const Standard_Integer NbOfPoints = 6);
-		%feature("autodoc", "Args:
-	OwnerId(Handle_SelectBasics_EntityOwner)
-	TheCircle(Handle_Geom_Circle)
-	u1(Standard_Real)
-	u2(Standard_Real)
-	FilledCircle(Standard_Boolean)=Standard_False
-	NbOfPoints(Standard_Integer)=6
+		%feature("autodoc", "	* Constructs the sensitive arc object defined by the owner OwnerId, the circle Circle, the parameters u1 and u2, the Boolean FilledCircle and the number of points NbOfPoints. u1 and u2 define the first and last points of the arc on Circle.
 
-Returns:
-	None
-
-Constructs the sensitive arc object defined by the  
-owner OwnerId, the circle Circle, the parameters u1  
-and u2, the Boolean FilledCircle and the number of points NbOfPoints.  
-u1 and u2 define the first and last points of the arc on Circle.") Select3D_SensitiveCircle;
+	:param OwnerId:
+	:type OwnerId: Handle_SelectBasics_EntityOwner &
+	:param TheCircle:
+	:type TheCircle: Handle_Geom_Circle &
+	:param u1:
+	:type u1: float
+	:param u2:
+	:type u2: float
+	:param FilledCircle: default value is Standard_False
+	:type FilledCircle: bool
+	:param NbOfPoints: default value is 6
+	:type NbOfPoints: Standard_Integer
+	:rtype: None
+") Select3D_SensitiveCircle;
 		 Select3D_SensitiveCircle (const Handle_SelectBasics_EntityOwner & OwnerId,const Handle_Geom_Circle & TheCircle,const Standard_Real u1,const Standard_Real u2,const Standard_Boolean FilledCircle = Standard_False,const Standard_Integer NbOfPoints = 6);
-		%feature("autodoc", "Args:
-	OwnerId(Handle_SelectBasics_EntityOwner)
-	apolyg3d(Handle_TColgp_HArray1OfPnt)
-	FilledCircle(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Constructs the sensitive circle object defined by the owner OwnerId, the array of triangles apolyg3d, and the Boolean FilledCircle. apolyg3d is an array of consecutive triangles on the circle. The triangle i+1 lies on the intersection of the tangents to the circle of i and i+2. Note, that the first point of apolyg3d must be equal to the last point of apolyg3d.
 
-Returns:
-	None
-
-Constructs the sensitive circle object defined by the  
-owner OwnerId, the array of triangles apolyg3d, and the Boolean FilledCircle.  
-apolyg3d is an array of consecutive triangles on the  
-circle. The triangle i+1 lies on the intersection of the  
-tangents to the circle of i and i+2. Note, that the first point of apolyg3d  
-must be equal to the last point of apolyg3d.") Select3D_SensitiveCircle;
+	:param OwnerId:
+	:type OwnerId: Handle_SelectBasics_EntityOwner &
+	:param apolyg3d:
+	:type apolyg3d: Handle_TColgp_HArray1OfPnt
+	:param FilledCircle: default value is Standard_False
+	:type FilledCircle: bool
+	:rtype: None
+") Select3D_SensitiveCircle;
 		 Select3D_SensitiveCircle (const Handle_SelectBasics_EntityOwner & OwnerId,const Handle_TColgp_HArray1OfPnt & apolyg3d,const Standard_Boolean FilledCircle = Standard_False);
-		%feature("autodoc", "Args:
-	OwnerId(Handle_SelectBasics_EntityOwner)
-	apolyg3d(TColgp_Array1OfPnt)
-	FilledCircle(Standard_Boolean)=Standard_False
+		%feature("autodoc", "	* Constructs the sensitive circle object defined by the owner OwnerId, the array of points apolyg3d, and the Boolean FilledCircle. If the length of apolyg3d is more then 1, the first point of apolyg3d must be equal to the last point of apolyg3d.
 
-Returns:
-	None
-
-Constructs the sensitive circle object defined by the  
-owner OwnerId, the array of points apolyg3d, and the Boolean FilledCircle.  
-If the length of apolyg3d is more then 1, the first point of apolyg3d  
-must be equal to the last point of apolyg3d.") Select3D_SensitiveCircle;
+	:param OwnerId:
+	:type OwnerId: Handle_SelectBasics_EntityOwner &
+	:param apolyg3d:
+	:type apolyg3d: TColgp_Array1OfPnt
+	:param FilledCircle: default value is Standard_False
+	:type FilledCircle: bool
+	:rtype: None
+") Select3D_SensitiveCircle;
 		 Select3D_SensitiveCircle (const Handle_SelectBasics_EntityOwner & OwnerId,const TColgp_Array1OfPnt & apolyg3d,const Standard_Boolean FilledCircle = Standard_False);
-		%feature("autodoc", "Args:
-	thePickArgs(SelectBasics_PickArgs)
-	theMatchDMin(Standard_Real)
-	theMatchDepth(Standard_Real)
+		%feature("autodoc", "	* Checks whether the sensitive entity matches the picking detection area (close to the picking line). For details please refer to base class declaration.
 
-Returns:
-	Standard_Boolean
-
-Checks whether the sensitive entity matches the picking  
-detection area (close to the picking line).  
-For details please refer to base class declaration.") Matches;
+	:param thePickArgs:
+	:type thePickArgs: SelectBasics_PickArgs &
+	:param theMatchDMin:
+	:type theMatchDMin: float &
+	:param theMatchDepth:
+	:type theMatchDepth: float &
+	:rtype: bool
+") Matches;
 		Standard_Boolean Matches (const SelectBasics_PickArgs & thePickArgs,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	XMin(Standard_Real)
-	YMin(Standard_Real)
-	XMax(Standard_Real)
-	YMax(Standard_Real)
-	aTol(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Matches;
+		%feature("autodoc", "	:param XMin:
+	:type XMin: float
+	:param YMin:
+	:type YMin: float
+	:param XMax:
+	:type XMax: float
+	:param YMax:
+	:type YMax: float
+	:param aTol:
+	:type aTol: float
+	:rtype: bool
+") Matches;
 		Standard_Boolean Matches (const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol);
-		%feature("autodoc", "Args:
-	Polyline(TColgp_Array1OfPnt2d)
-	aBox(Bnd_Box2d)
-	aTol(Standard_Real)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") Matches;
+		%feature("autodoc", "	:param Polyline:
+	:type Polyline: TColgp_Array1OfPnt2d
+	:param aBox:
+	:type aBox: Bnd_Box2d &
+	:param aTol:
+	:type aTol: float
+	:rtype: bool
+") Matches;
 		virtual Standard_Boolean Matches (const TColgp_Array1OfPnt2d & Polyline,const Bnd_Box2d & aBox,const Standard_Real aTol);
-		%feature("autodoc", "Args:
-	thePickLine(gp_Lin)
-	theDetectedIndex(Standard_Integer)
+		%feature("autodoc", "	* Compute depth of sensitive circle for the detected sub-part. @param thePickLine [in] the picking line. @param theDetectedIndex [in] index of the detected sub-part. returns depth on the picking line.
 
-Returns:
-	Standard_Real
-
-Compute depth of sensitive circle for the detected sub-part.  
-@param thePickLine [in] the picking line.  
-@param theDetectedIndex [in] index of the detected sub-part.  
-@return depth on the picking line.") ComputeDepth;
+	:param thePickLine:
+	:type thePickLine: gp_Lin
+	:param theDetectedIndex:
+	:type theDetectedIndex: Standard_Integer
+	:rtype: float
+") ComputeDepth;
 		Standard_Real ComputeDepth (const gp_Lin & thePickLine,const Standard_Integer theDetectedIndex);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ArrayBounds;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer &
+	:param Up:
+	:type Up: Standard_Integer &
+	:rtype: None
+") ArrayBounds;
 		void ArrayBounds (Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	rank(Standard_Integer)
-
-Returns:
-	gp_Pnt
-
-No detailed docstring for this function.") GetPoint3d;
+		%feature("autodoc", "	:param rank:
+	:type rank: Standard_Integer
+	:rtype: gp_Pnt
+") GetPoint3d;
 		gp_Pnt GetPoint3d (const Standard_Integer rank);
-		%feature("autodoc", "Args:
-	S(Standard_OStream)
-	FullDump(Standard_Boolean)=Standard_True
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param S:
+	:type S: Standard_OStream &
+	:param FullDump: default value is Standard_True
+	:type FullDump: bool
+	:rtype: void
+") Dump;
 		virtual void Dump (Standard_OStream & S,const Standard_Boolean FullDump = Standard_True);
-		%feature("autodoc", "Args:
-	theLocation(TopLoc_Location)
+		%feature("autodoc", "	* Returns the copy of this.
 
-Returns:
-	virtual Handle_Select3D_SensitiveEntity
-
-Returns the copy of this.") GetConnected;
+	:param theLocation:
+	:type theLocation: TopLoc_Location &
+	:rtype: Handle_Select3D_SensitiveEntity
+") GetConnected;
 		virtual Handle_Select3D_SensitiveEntity GetConnected (const TopLoc_Location & theLocation);
-		%feature("autodoc", "Args:
-	aProjector(Handle_Select3D_Projector)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Project;
+		%feature("autodoc", "	:param aProjector:
+	:type aProjector: Handle_Select3D_Projector &
+	:rtype: void
+") Project;
 		virtual void Project (const Handle_Select3D_Projector & aProjector);
 };
 
@@ -2931,107 +2377,95 @@ def __del__(self):
 %nodefaultctor Select3D_SensitiveCurve;
 class Select3D_SensitiveCurve : public Select3D_SensitivePoly {
 	public:
-		%feature("autodoc", "Args:
-	OwnerId(Handle_SelectBasics_EntityOwner)
-	TheCurve(Handle_Geom_Curve)
-	MaxPoints(Standard_Integer)=17
+		%feature("autodoc", "	* Constructs a sensitive curve object defined by the owner OwnerId, the curve TheCurve, and the maximum number of points on the curve: MaxPoints.
 
-Returns:
-	None
-
-Constructs a sensitive curve object defined by the  
-owner OwnerId, the curve TheCurve, and the  
-maximum number of points on the curve: MaxPoints.") Select3D_SensitiveCurve;
+	:param OwnerId:
+	:type OwnerId: Handle_SelectBasics_EntityOwner &
+	:param TheCurve:
+	:type TheCurve: Handle_Geom_Curve &
+	:param MaxPoints: default value is 17
+	:type MaxPoints: Standard_Integer
+	:rtype: None
+") Select3D_SensitiveCurve;
 		 Select3D_SensitiveCurve (const Handle_SelectBasics_EntityOwner & OwnerId,const Handle_Geom_Curve & TheCurve,const Standard_Integer MaxPoints = 17);
-		%feature("autodoc", "Args:
-	OwnerId(Handle_SelectBasics_EntityOwner)
-	ThePoints(Handle_TColgp_HArray1OfPnt)
+		%feature("autodoc", "	* Constructs a sensitive curve object defined by the owner OwnerId and the set of points ThePoints.
 
-Returns:
-	None
-
-Constructs a sensitive curve object defined by the  
-owner OwnerId and the set of points ThePoints.") Select3D_SensitiveCurve;
+	:param OwnerId:
+	:type OwnerId: Handle_SelectBasics_EntityOwner &
+	:param ThePoints:
+	:type ThePoints: Handle_TColgp_HArray1OfPnt
+	:rtype: None
+") Select3D_SensitiveCurve;
 		 Select3D_SensitiveCurve (const Handle_SelectBasics_EntityOwner & OwnerId,const Handle_TColgp_HArray1OfPnt & ThePoints);
-		%feature("autodoc", "Args:
-	OwnerId(Handle_SelectBasics_EntityOwner)
-	ThePoints(TColgp_Array1OfPnt)
+		%feature("autodoc", "	* Creation of Sensitive Curve from Points. Warning : This Method should disappear in the next version...
 
-Returns:
-	None
-
-Creation of Sensitive Curve from Points.  
-         Warning : This Method should disappear in the next version...") Select3D_SensitiveCurve;
+	:param OwnerId:
+	:type OwnerId: Handle_SelectBasics_EntityOwner &
+	:param ThePoints:
+	:type ThePoints: TColgp_Array1OfPnt
+	:rtype: None
+") Select3D_SensitiveCurve;
 		 Select3D_SensitiveCurve (const Handle_SelectBasics_EntityOwner & OwnerId,const TColgp_Array1OfPnt & ThePoints);
-		%feature("autodoc", "Args:
-	thePickArgs(SelectBasics_PickArgs)
-	theMatchDMin(Standard_Real)
-	theMatchDepth(Standard_Real)
+		%feature("autodoc", "	* Checks whether the sensitive entity matches the picking detection area (close to the picking line). For details please refer to base class declaration.
 
-Returns:
-	Standard_Boolean
-
-Checks whether the sensitive entity matches the picking  
-detection area (close to the picking line).  
-For details please refer to base class declaration.") Matches;
+	:param thePickArgs:
+	:type thePickArgs: SelectBasics_PickArgs &
+	:param theMatchDMin:
+	:type theMatchDMin: float &
+	:param theMatchDepth:
+	:type theMatchDepth: float &
+	:rtype: bool
+") Matches;
 		Standard_Boolean Matches (const SelectBasics_PickArgs & thePickArgs,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	XMin(Standard_Real)
-	YMin(Standard_Real)
-	XMax(Standard_Real)
-	YMax(Standard_Real)
-	aTol(Standard_Real)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Matches;
+		%feature("autodoc", "	:param XMin:
+	:type XMin: float
+	:param YMin:
+	:type YMin: float
+	:param XMax:
+	:type XMax: float
+	:param YMax:
+	:type YMax: float
+	:param aTol:
+	:type aTol: float
+	:rtype: bool
+") Matches;
 		Standard_Boolean Matches (const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol);
-		%feature("autodoc", "Args:
-	Polyline(TColgp_Array1OfPnt2d)
-	aBox(Bnd_Box2d)
-	aTol(Standard_Real)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") Matches;
+		%feature("autodoc", "	:param Polyline:
+	:type Polyline: TColgp_Array1OfPnt2d
+	:param aBox:
+	:type aBox: Bnd_Box2d &
+	:param aTol:
+	:type aTol: float
+	:rtype: bool
+") Matches;
 		virtual Standard_Boolean Matches (const TColgp_Array1OfPnt2d & Polyline,const Bnd_Box2d & aBox,const Standard_Real aTol);
-		%feature("autodoc", "Args:
-	thePickLine(gp_Lin)
-	theDetectedIndex(Standard_Integer)
+		%feature("autodoc", "	* Compute depth of sensitive circle for the detected sub-part. @param thePickLine [in] the picking line. @param theDetectedIndex [in] index of the detected sub-part. returns depth on the picking line.
 
-Returns:
-	Standard_Real
-
-Compute depth of sensitive circle for the detected sub-part.  
-@param thePickLine [in] the picking line.  
-@param theDetectedIndex [in] index of the detected sub-part.  
-@return depth on the picking line.") ComputeDepth;
+	:param thePickLine:
+	:type thePickLine: gp_Lin
+	:param theDetectedIndex:
+	:type theDetectedIndex: Standard_Integer
+	:rtype: float
+") ComputeDepth;
 		Standard_Real ComputeDepth (const gp_Lin & thePickLine,const Standard_Integer theDetectedIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Gets index of last detected segment
 
-Gets index of last detected segment") GetLastDetected;
+	:rtype: int
+") GetLastDetected;
 		Standard_Integer GetLastDetected ();
-		%feature("autodoc", "Args:
-	S(Standard_OStream)
-	FullDump(Standard_Boolean)=Standard_True
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param S:
+	:type S: Standard_OStream &
+	:param FullDump: default value is Standard_True
+	:type FullDump: bool
+	:rtype: void
+") Dump;
 		virtual void Dump (Standard_OStream & S,const Standard_Boolean FullDump = Standard_True);
-		%feature("autodoc", "Args:
-	theLocation(TopLoc_Location)
+		%feature("autodoc", "	* Returns the copy of this
 
-Returns:
-	virtual Handle_Select3D_SensitiveEntity
-
-Returns the copy of this") GetConnected;
+	:param theLocation:
+	:type theLocation: TopLoc_Location &
+	:rtype: Handle_Select3D_SensitiveEntity
+") GetConnected;
 		virtual Handle_Select3D_SensitiveEntity GetConnected (const TopLoc_Location & theLocation);
 };
 
@@ -3092,95 +2526,85 @@ def __del__(self):
 %nodefaultctor Select3D_SensitiveFace;
 class Select3D_SensitiveFace : public Select3D_SensitivePoly {
 	public:
-		%feature("autodoc", "Args:
-	OwnerId(Handle_SelectBasics_EntityOwner)
-	ThePoints(TColgp_Array1OfPnt)
-	Sensitivity(Select3D_TypeOfSensitivity)=Select3D_TOS_INTERIOR
+		%feature("autodoc", "	* Constructs a sensitive face object defined by the owner OwnerId, the array of points ThePoints, and the sensitivity type Sensitivity. The array of points is the outer polygon of the geometric face.
 
-Returns:
-	None
-
-Constructs a sensitive face object defined by the  
-owner OwnerId, the array of points ThePoints, and  
-the sensitivity type Sensitivity.  
-The array of points is the outer polygon of the geometric face.") Select3D_SensitiveFace;
+	:param OwnerId:
+	:type OwnerId: Handle_SelectBasics_EntityOwner &
+	:param ThePoints:
+	:type ThePoints: TColgp_Array1OfPnt
+	:param Sensitivity: default value is Select3D_TOS_INTERIOR
+	:type Sensitivity: Select3D_TypeOfSensitivity
+	:rtype: None
+") Select3D_SensitiveFace;
 		 Select3D_SensitiveFace (const Handle_SelectBasics_EntityOwner & OwnerId,const TColgp_Array1OfPnt & ThePoints,const Select3D_TypeOfSensitivity Sensitivity = Select3D_TOS_INTERIOR);
-		%feature("autodoc", "Args:
-	OwnerId(Handle_SelectBasics_EntityOwner)
-	ThePoints(Handle_TColgp_HArray1OfPnt)
-	Sensitivity(Select3D_TypeOfSensitivity)=Select3D_TOS_INTERIOR
+		%feature("autodoc", "	* Constructs a sensitive face object defined by the owner OwnerId, the array of points ThePoints, and the sensitivity type Sensitivity. The array of points is the outer polygon of the geometric face.
 
-Returns:
-	None
-
-Constructs a sensitive face object defined by the  
-owner OwnerId, the array of points ThePoints, and  
-the sensitivity type Sensitivity.  
-The array of points is the outer polygon of the geometric face.") Select3D_SensitiveFace;
+	:param OwnerId:
+	:type OwnerId: Handle_SelectBasics_EntityOwner &
+	:param ThePoints:
+	:type ThePoints: Handle_TColgp_HArray1OfPnt
+	:param Sensitivity: default value is Select3D_TOS_INTERIOR
+	:type Sensitivity: Select3D_TypeOfSensitivity
+	:rtype: None
+") Select3D_SensitiveFace;
 		 Select3D_SensitiveFace (const Handle_SelectBasics_EntityOwner & OwnerId,const Handle_TColgp_HArray1OfPnt & ThePoints,const Select3D_TypeOfSensitivity Sensitivity = Select3D_TOS_INTERIOR);
-		%feature("autodoc", "Args:
-	thePickArgs(SelectBasics_PickArgs)
-	theMatchDMin(Standard_Real)
-	theMatchDepth(Standard_Real)
+		%feature("autodoc", "	* Checks whether the sensitive entity matches the picking detection area (close to the picking line). For details please refer to base class declaration.
 
-Returns:
-	virtual Standard_Boolean
-
-Checks whether the sensitive entity matches the picking  
-detection area (close to the picking line).  
-For details please refer to base class declaration.") Matches;
+	:param thePickArgs:
+	:type thePickArgs: SelectBasics_PickArgs &
+	:param theMatchDMin:
+	:type theMatchDMin: float &
+	:param theMatchDepth:
+	:type theMatchDepth: float &
+	:rtype: bool
+") Matches;
 		virtual Standard_Boolean Matches (const SelectBasics_PickArgs & thePickArgs,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	XMin(Standard_Real)
-	YMin(Standard_Real)
-	XMax(Standard_Real)
-	YMax(Standard_Real)
-	aTol(Standard_Real)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") Matches;
+		%feature("autodoc", "	:param XMin:
+	:type XMin: float
+	:param YMin:
+	:type YMin: float
+	:param XMax:
+	:type XMax: float
+	:param YMax:
+	:type YMax: float
+	:param aTol:
+	:type aTol: float
+	:rtype: bool
+") Matches;
 		virtual Standard_Boolean Matches (const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol);
-		%feature("autodoc", "Args:
-	Polyline(TColgp_Array1OfPnt2d)
-	aBox(Bnd_Box2d)
-	aTol(Standard_Real)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") Matches;
+		%feature("autodoc", "	:param Polyline:
+	:type Polyline: TColgp_Array1OfPnt2d
+	:param aBox:
+	:type aBox: Bnd_Box2d &
+	:param aTol:
+	:type aTol: float
+	:rtype: bool
+") Matches;
 		virtual Standard_Boolean Matches (const TColgp_Array1OfPnt2d & Polyline,const Bnd_Box2d & aBox,const Standard_Real aTol);
-		%feature("autodoc", "Args:
-	thePickLine(gp_Lin)
-	theDepthMin(Standard_Real)
-	theDepthMax(Standard_Real)
+		%feature("autodoc", "	* Computes the depth values for all 3D points defining this face and returns the minimal value among them. If the 'minimal depth' approach is not suitable and gives wrong detection results in some particular case, a custom sensitive face class can redefine this method.
 
-Returns:
-	virtual Standard_Real
-
-Computes the depth values for all 3D points defining this face and returns  
-the minimal value among them.  
-If the 'minimal depth' approach is not suitable and gives wrong detection results  
-in some particular case, a custom sensitive face class can redefine this method.") ComputeDepth;
+	:param thePickLine:
+	:type thePickLine: gp_Lin
+	:param theDepthMin:
+	:type theDepthMin: float
+	:param theDepthMax:
+	:type theDepthMax: float
+	:rtype: float
+") ComputeDepth;
 		virtual Standard_Real ComputeDepth (const gp_Lin & thePickLine,const Standard_Real theDepthMin,const Standard_Real theDepthMax);
-		%feature("autodoc", "Args:
-	S(Standard_OStream)
-	FullDump(Standard_Boolean)=Standard_True
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param S:
+	:type S: Standard_OStream &
+	:param FullDump: default value is Standard_True
+	:type FullDump: bool
+	:rtype: void
+") Dump;
 		virtual void Dump (Standard_OStream & S,const Standard_Boolean FullDump = Standard_True);
-		%feature("autodoc", "Args:
-	theLocation(TopLoc_Location)
+		%feature("autodoc", "	* Returns the copy of this
 
-Returns:
-	virtual Handle_Select3D_SensitiveEntity
-
-Returns the copy of this") GetConnected;
+	:param theLocation:
+	:type theLocation: TopLoc_Location &
+	:rtype: Handle_Select3D_SensitiveEntity
+") GetConnected;
 		virtual Handle_Select3D_SensitiveEntity GetConnected (const TopLoc_Location & theLocation);
 };
 
@@ -3241,128 +2665,121 @@ def __del__(self):
 %nodefaultctor Select3D_SensitiveTriangle;
 class Select3D_SensitiveTriangle : public Select3D_SensitivePoly {
 	public:
-		%feature("autodoc", "Args:
-	OwnerId(Handle_SelectBasics_EntityOwner)
-	P1(gp_Pnt)
-	P2(gp_Pnt)
-	P3(gp_Pnt)
-	Sensitivity(Select3D_TypeOfSensitivity)=Select3D_TOS_INTERIOR
+		%feature("autodoc", "	* Constructs a sensitive triangle object defined by the owner OwnerId, the points P1, P2, P3, and the type of sensitivity Sensitivity.
 
-Returns:
-	None
-
-Constructs a sensitive triangle object defined by the  
-owner OwnerId, the points P1, P2, P3, and the type of sensitivity Sensitivity.") Select3D_SensitiveTriangle;
+	:param OwnerId:
+	:type OwnerId: Handle_SelectBasics_EntityOwner &
+	:param P1:
+	:type P1: gp_Pnt
+	:param P2:
+	:type P2: gp_Pnt
+	:param P3:
+	:type P3: gp_Pnt
+	:param Sensitivity: default value is Select3D_TOS_INTERIOR
+	:type Sensitivity: Select3D_TypeOfSensitivity
+	:rtype: None
+") Select3D_SensitiveTriangle;
 		 Select3D_SensitiveTriangle (const Handle_SelectBasics_EntityOwner & OwnerId,const gp_Pnt & P1,const gp_Pnt & P2,const gp_Pnt & P3,const Select3D_TypeOfSensitivity Sensitivity = Select3D_TOS_INTERIOR);
-		%feature("autodoc", "Args:
-	thePickArgs(SelectBasics_PickArgs)
-	theMatchDMin(Standard_Real)
-	theMatchDepth(Standard_Real)
+		%feature("autodoc", "	* Checks whether the sensitive entity matches the picking detection area (close to the picking line). For details please refer to base class declaration.
 
-Returns:
-	Standard_Boolean
-
-Checks whether the sensitive entity matches the picking  
-detection area (close to the picking line).  
-For details please refer to base class declaration.") Matches;
+	:param thePickArgs:
+	:type thePickArgs: SelectBasics_PickArgs &
+	:param theMatchDMin:
+	:type theMatchDMin: float &
+	:param theMatchDepth:
+	:type theMatchDepth: float &
+	:rtype: bool
+") Matches;
 		Standard_Boolean Matches (const SelectBasics_PickArgs & thePickArgs,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	XMin(Standard_Real)
-	YMin(Standard_Real)
-	XMax(Standard_Real)
-	YMax(Standard_Real)
-	aTol(Standard_Real)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") Matches;
+		%feature("autodoc", "	:param XMin:
+	:type XMin: float
+	:param YMin:
+	:type YMin: float
+	:param XMax:
+	:type XMax: float
+	:param YMax:
+	:type YMax: float
+	:param aTol:
+	:type aTol: float
+	:rtype: bool
+") Matches;
 		virtual Standard_Boolean Matches (const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol);
-		%feature("autodoc", "Args:
-	Polyline(TColgp_Array1OfPnt2d)
-	aBox(Bnd_Box2d)
-	aTol(Standard_Real)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") Matches;
+		%feature("autodoc", "	:param Polyline:
+	:type Polyline: TColgp_Array1OfPnt2d
+	:param aBox:
+	:type aBox: Bnd_Box2d &
+	:param aTol:
+	:type aTol: float
+	:rtype: bool
+") Matches;
 		virtual Standard_Boolean Matches (const TColgp_Array1OfPnt2d & Polyline,const Bnd_Box2d & aBox,const Standard_Real aTol);
-		%feature("autodoc", "Args:
-	EyeLine(gp_Lin)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") ComputeDepth;
+		%feature("autodoc", "	:param EyeLine:
+	:type EyeLine: gp_Lin
+	:rtype: float
+") ComputeDepth;
 		Standard_Real ComputeDepth (const gp_Lin & EyeLine);
-		%feature("autodoc", "Args:
-	P1(gp_Pnt)
-	P2(gp_Pnt)
-	P3(gp_Pnt)
+		%feature("autodoc", "	* Returns the 3D points P1, P2, P3 used at the time of construction.
 
-Returns:
-	None
-
-Returns the 3D points P1, P2, P3 used at the time of construction.") Points3D;
+	:param P1:
+	:type P1: gp_Pnt
+	:param P2:
+	:type P2: gp_Pnt
+	:param P3:
+	:type P3: gp_Pnt
+	:rtype: None
+") Points3D;
 		void Points3D (gp_Pnt & P1,gp_Pnt & P2,gp_Pnt & P3);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
+		%feature("autodoc", "	* Returns the center point of the sensitive triangle created at construction time.
 
-Returns the center point of the sensitive triangle created at construction time.") Center3D;
+	:rtype: gp_Pnt
+") Center3D;
 		gp_Pnt Center3D ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_XY
+		%feature("autodoc", "	* WARNING : the returned Values are the original values without the stored location (if there's one). To get the genuine value, One must apply this location (Method Location() )
 
-WARNING : the returned Values are the original values  
-         without the stored  location (if there's one).  
-         To get the genuine value, One must apply this location  
-         (Method Location() )") Center2D;
+	:rtype: gp_XY
+") Center2D;
 		gp_XY Center2D ();
-		%feature("autodoc", "Args:
-	X(Standard_Real)
-	Y(Standard_Real)
-	aTol(Standard_Real)
-	Dmin(Standard_Real)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Status;
+		%feature("autodoc", "	:param X:
+	:type X: float
+	:param Y:
+	:type Y: float
+	:param aTol:
+	:type aTol: float
+	:param Dmin:
+	:type Dmin: float &
+	:rtype: int
+") Status;
 		Standard_Integer Status (const Standard_Real X,const Standard_Real Y,const Standard_Real aTol,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	p0(gp_XY)
-	p1(gp_XY)
-	p2(gp_XY)
-	aPoint(gp_XY)
-	aTol(Standard_Real)
-	Dmin(Standard_Real)
+		%feature("autodoc", "	* Dmin gives the distance between the cdg and aPoint return
 
-Returns:
-	static Standard_Integer
-
-Dmin gives the distance between the cdg and aPoint return") Status;
+	:param p0:
+	:type p0: gp_XY
+	:param p1:
+	:type p1: gp_XY
+	:param p2:
+	:type p2: gp_XY
+	:param aPoint:
+	:type aPoint: gp_XY
+	:param aTol:
+	:type aTol: float
+	:param Dmin:
+	:type Dmin: float &
+	:rtype: int
+") Status;
 		static Standard_Integer Status (const gp_XY & p0,const gp_XY & p1,const gp_XY & p2,const gp_XY & aPoint,const Standard_Real aTol,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	S(Standard_OStream)
-	FullDump(Standard_Boolean)=Standard_True
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param S:
+	:type S: Standard_OStream &
+	:param FullDump: default value is Standard_True
+	:type FullDump: bool
+	:rtype: void
+") Dump;
 		virtual void Dump (Standard_OStream & S,const Standard_Boolean FullDump = Standard_True);
-		%feature("autodoc", "Args:
-	theLocation(TopLoc_Location)
+		%feature("autodoc", "	* Returns the copy of this
 
-Returns:
-	virtual Handle_Select3D_SensitiveEntity
-
-Returns the copy of this") GetConnected;
+	:param theLocation:
+	:type theLocation: TopLoc_Location &
+	:rtype: Handle_Select3D_SensitiveEntity
+") GetConnected;
 		virtual Handle_Select3D_SensitiveEntity GetConnected (const TopLoc_Location & theLocation);
 };
 

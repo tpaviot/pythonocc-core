@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -68,52 +68,44 @@ enum ChFiDS_State {
 %nodefaultctor ChFiDS_CircSection;
 class ChFiDS_CircSection {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_CircSection;
+		%feature("autodoc", "	:rtype: None
+") ChFiDS_CircSection;
 		 ChFiDS_CircSection ();
-		%feature("autodoc", "Args:
-	C(gp_Circ)
-	F(Standard_Real)
-	L(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Set;
+		%feature("autodoc", "	:param C:
+	:type C: gp_Circ
+	:param F:
+	:type F: float
+	:param L:
+	:type L: float
+	:rtype: None
+") Set;
 		void Set (const gp_Circ & C,const Standard_Real F,const Standard_Real L);
-		%feature("autodoc", "Args:
-	C(gp_Lin)
-	F(Standard_Real)
-	L(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Set;
+		%feature("autodoc", "	:param C:
+	:type C: gp_Lin
+	:param F:
+	:type F: float
+	:param L:
+	:type L: float
+	:rtype: None
+") Set;
 		void Set (const gp_Lin & C,const Standard_Real F,const Standard_Real L);
-		%feature("autodoc", "Args:
-	C(gp_Circ)
-	F(Standard_Real)
-	L(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Get;
+		%feature("autodoc", "	:param C:
+	:type C: gp_Circ
+	:param F:
+	:type F: float &
+	:param L:
+	:type L: float &
+	:rtype: None
+") Get;
 		void Get (gp_Circ & C,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	C(gp_Lin)
-	F(Standard_Real)
-	L(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Get;
+		%feature("autodoc", "	:param C:
+	:type C: gp_Lin
+	:param F:
+	:type F: float &
+	:param L:
+	:type L: float &
+	:rtype: None
+") Get;
 		void Get (gp_Lin & C,Standard_Real &OutValue,Standard_Real &OutValue);
 };
 
@@ -135,159 +127,118 @@ def __del__(self):
 %nodefaultctor ChFiDS_CommonPoint;
 class ChFiDS_CommonPoint {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor.
 
-Empty constructor.") ChFiDS_CommonPoint;
+	:rtype: None
+") ChFiDS_CommonPoint;
 		 ChFiDS_CommonPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* default value for all fields
 
-default value for all fields") Reset;
+	:rtype: None
+") Reset;
 		void Reset ();
-		%feature("autodoc", "Args:
-	V(TopoDS_Vertex)
+		%feature("autodoc", "	* Sets the values of a point which is a vertex on the initial facet of restriction of one of the surface.
 
-Returns:
-	None
-
-Sets the values of a point which is a vertex on  
-         the initial facet of restriction of one  
-         of the surface.") SetVertex;
+	:param V:
+	:type V: TopoDS_Vertex &
+	:rtype: None
+") SetVertex;
 		void SetVertex (const TopoDS_Vertex & V);
-		%feature("autodoc", "Args:
-	Tol(Standard_Real)
-	A(TopoDS_Edge)
-	Param(Standard_Real)
-	TArc(TopAbs_Orientation)
+		%feature("autodoc", "	* Sets the values of a point which is on the arc A, at parameter Param.
 
-Returns:
-	None
-
-Sets the values of a point which is on the arc  
-         A, at parameter Param.") SetArc;
+	:param Tol:
+	:type Tol: float
+	:param A:
+	:type A: TopoDS_Edge &
+	:param Param:
+	:type Param: float
+	:param TArc:
+	:type TArc: TopAbs_Orientation
+	:rtype: None
+") SetArc;
 		void SetArc (const Standard_Real Tol,const TopoDS_Edge & A,const Standard_Real Param,const TopAbs_Orientation TArc);
-		%feature("autodoc", "Args:
-	Param(Standard_Real)
+		%feature("autodoc", "	* Sets the value of the parameter on the spine
 
-Returns:
-	None
-
-Sets the value of the parameter on the spine") SetParameter;
+	:param Param:
+	:type Param: float
+	:rtype: None
+") SetParameter;
 		void SetParameter (const Standard_Real Param);
-		%feature("autodoc", "Args:
-	Point(gp_Pnt)
+		%feature("autodoc", "	* Set the 3d point for a commonpoint that is not a vertex or on an arc.
 
-Returns:
-	None
-
-Set the 3d point for a commonpoint that is not  
-         a vertex or on an arc.") SetPoint;
+	:param Point:
+	:type Point: gp_Pnt
+	:rtype: None
+") SetPoint;
 		void SetPoint (const gp_Pnt & Point);
-		%feature("autodoc", "Args:
-	Vector(gp_Vec)
+		%feature("autodoc", "	* Set the output 3d vector
 
-Returns:
-	None
-
-Set the output 3d  vector") SetVector;
+	:param Vector:
+	:type Vector: gp_Vec
+	:rtype: None
+") SetVector;
 		void SetVector (const gp_Vec & Vector);
-		%feature("autodoc", "Args:
-	Tol(Standard_Real)
+		%feature("autodoc", "	* This method set the fuzziness on the point.
 
-Returns:
-	None
-
-This method set the fuzziness on the point.") SetTolerance;
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") SetTolerance;
 		void SetTolerance (const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* This method returns the fuzziness on the point.
 
-This method returns the fuzziness on the point.") Tolerance;
+	:rtype: float
+") Tolerance;
 		Standard_Real Tolerance ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the point is a vertex on the initial restriction facet of the surface.
 
-Returns TRUE if the point is a vertex on the initial  
-         restriction facet of the surface.") IsVertex;
+	:rtype: bool
+") IsVertex;
 		Standard_Boolean IsVertex ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Vertex
+		%feature("autodoc", "	* Returns the information about the point when it is on the domain of the first patch, i-e when the function IsVertex returns True. Otherwise, an exception is raised.
 
-Returns the information about the point when it is  
-         on the domain of the first patch, i-e when the function  
-         IsVertex returns True.  
-         Otherwise, an exception is raised.") Vertex;
+	:rtype: TopoDS_Vertex
+") Vertex;
 		const TopoDS_Vertex & Vertex ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the point is a on an edge of the initial restriction facet of the surface.
 
-Returns TRUE if the point is a on an edge of the initial  
-         restriction facet of the surface.") IsOnArc;
+	:rtype: bool
+") IsOnArc;
 		Standard_Boolean IsOnArc ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Edge
+		%feature("autodoc", "	* Returns the arc of restriction containing the vertex.
 
-Returns the arc of restriction containing the  
-         vertex.") Arc;
+	:rtype: TopoDS_Edge
+") Arc;
 		const TopoDS_Edge & Arc ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_Orientation
+		%feature("autodoc", "	* Returns the transition of the point on the arc returned by Arc().
 
-Returns the transition of the point on the arc  
-         returned by Arc().") TransitionOnArc;
+	:rtype: TopAbs_Orientation
+") TransitionOnArc;
 		TopAbs_Orientation TransitionOnArc ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the parameter of the point on the arc returned by the method Arc().
 
-Returns the parameter of the point on the  
-         arc returned by the method Arc().") ParameterOnArc;
+	:rtype: float
+") ParameterOnArc;
 		Standard_Real ParameterOnArc ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the parameter the paramter on the spine
 
-Returns  the parameter the  paramter on the  spine") Parameter;
+	:rtype: float
+") Parameter;
 		Standard_Real Parameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
+		%feature("autodoc", "	* Returns the 3d point
 
-Returns the 3d point") Point;
+	:rtype: gp_Pnt
+") Point;
 		const gp_Pnt & Point ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the output vector is stored.
 
-Returns TRUE if the output vector is  stored.") HasVector;
+	:rtype: bool
+") HasVector;
 		Standard_Boolean HasVector ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Vec
+		%feature("autodoc", "	* Returns the output 3d vector
 
-Returns the output  3d vector") Vector;
+	:rtype: gp_Vec
+") Vector;
 		const gp_Vec & Vector ();
 };
 
@@ -309,294 +260,185 @@ def __del__(self):
 %nodefaultctor ChFiDS_ElSpine;
 class ChFiDS_ElSpine : public Adaptor3d_Curve {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_ElSpine;
+		%feature("autodoc", "	:rtype: None
+") ChFiDS_ElSpine;
 		 ChFiDS_ElSpine ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Real
-
-No detailed docstring for this function.") FirstParameter;
+		%feature("autodoc", "	:rtype: float
+") FirstParameter;
 		virtual Standard_Real FirstParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Real
-
-No detailed docstring for this function.") LastParameter;
+		%feature("autodoc", "	:rtype: float
+") LastParameter;
 		virtual Standard_Real LastParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	GeomAbs_Shape
-
-No detailed docstring for this function.") Continuity;
+		%feature("autodoc", "	:rtype: GeomAbs_Shape
+") Continuity;
 		GeomAbs_Shape Continuity ();
-		%feature("autodoc", "Args:
-	S(GeomAbs_Shape)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbIntervals;
+		%feature("autodoc", "	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: int
+") NbIntervals;
 		Standard_Integer NbIntervals (const GeomAbs_Shape S);
-		%feature("autodoc", "Args:
-	T(TColStd_Array1OfReal)
-	S(GeomAbs_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Intervals;
+		%feature("autodoc", "	:param T:
+	:type T: TColStd_Array1OfReal &
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: None
+") Intervals;
 		void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
-		%feature("autodoc", "Args:
-	First(Standard_Real)
-	Last(Standard_Real)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion.
 
-Returns:
-	virtual Handle_Adaptor3d_HCurve
-
-Returns    a  curve equivalent   of  <self>  between  
-         parameters <First>  and <Last>. <Tol>  is used  to  
-         test for 3d points confusion.") Trim;
+	:param First:
+	:type First: float
+	:param Last:
+	:type Last: float
+	:param Tol:
+	:type Tol: float
+	:rtype: Handle_Adaptor3d_HCurve
+") Trim;
 		virtual Handle_Adaptor3d_HCurve Trim (const Standard_Real First,const Standard_Real Last,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	R3d(Standard_Real)
-
-Returns:
-	virtual Standard_Real
-
-No detailed docstring for this function.") Resolution;
+		%feature("autodoc", "	:param R3d:
+	:type R3d: float
+	:rtype: float
+") Resolution;
 		virtual Standard_Real Resolution (const Standard_Real R3d);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual GeomAbs_CurveType
-
-No detailed docstring for this function.") GetType;
+		%feature("autodoc", "	:rtype: GeomAbs_CurveType
+") GetType;
 		virtual GeomAbs_CurveType GetType ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") IsPeriodic;
+		%feature("autodoc", "	:rtype: bool
+") IsPeriodic;
 		virtual Standard_Boolean IsPeriodic ();
-		%feature("autodoc", "Args:
-	I(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetPeriodic;
+		%feature("autodoc", "	:param I:
+	:type I: bool
+	:rtype: None
+") SetPeriodic;
 		void SetPeriodic (const Standard_Boolean I);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Real
-
-No detailed docstring for this function.") Period;
+		%feature("autodoc", "	:rtype: float
+") Period;
 		virtual Standard_Real Period ();
-		%feature("autodoc", "Args:
-	AbsC(Standard_Real)
-
-Returns:
-	virtual gp_Pnt
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param AbsC:
+	:type AbsC: float
+	:rtype: gp_Pnt
+") Value;
 		virtual gp_Pnt Value (const Standard_Real AbsC);
-		%feature("autodoc", "Args:
-	AbsC(Standard_Real)
-	P(gp_Pnt)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") D0;
+		%feature("autodoc", "	:param AbsC:
+	:type AbsC: float
+	:param P:
+	:type P: gp_Pnt
+	:rtype: void
+") D0;
 		virtual void D0 (const Standard_Real AbsC,gp_Pnt & P);
-		%feature("autodoc", "Args:
-	AbsC(Standard_Real)
-	P(gp_Pnt)
-	V1(gp_Vec)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") D1;
+		%feature("autodoc", "	:param AbsC:
+	:type AbsC: float
+	:param P:
+	:type P: gp_Pnt
+	:param V1:
+	:type V1: gp_Vec
+	:rtype: void
+") D1;
 		virtual void D1 (const Standard_Real AbsC,gp_Pnt & P,gp_Vec & V1);
-		%feature("autodoc", "Args:
-	AbsC(Standard_Real)
-	P(gp_Pnt)
-	V1(gp_Vec)
-	V2(gp_Vec)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") D2;
+		%feature("autodoc", "	:param AbsC:
+	:type AbsC: float
+	:param P:
+	:type P: gp_Pnt
+	:param V1:
+	:type V1: gp_Vec
+	:param V2:
+	:type V2: gp_Vec
+	:rtype: void
+") D2;
 		virtual void D2 (const Standard_Real AbsC,gp_Pnt & P,gp_Vec & V1,gp_Vec & V2);
-		%feature("autodoc", "Args:
-	AbsC(Standard_Real)
-	P(gp_Pnt)
-	V1(gp_Vec)
-	V2(gp_Vec)
-	V3(gp_Vec)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") D3;
+		%feature("autodoc", "	:param AbsC:
+	:type AbsC: float
+	:param P:
+	:type P: gp_Pnt
+	:param V1:
+	:type V1: gp_Vec
+	:param V2:
+	:type V2: gp_Vec
+	:param V3:
+	:type V3: gp_Vec
+	:rtype: void
+") D3;
 		virtual void D3 (const Standard_Real AbsC,gp_Pnt & P,gp_Vec & V1,gp_Vec & V2,gp_Vec & V3);
-		%feature("autodoc", "Args:
-	P(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FirstParameter;
+		%feature("autodoc", "	:param P:
+	:type P: float
+	:rtype: None
+") FirstParameter;
 		void FirstParameter (const Standard_Real P);
-		%feature("autodoc", "Args:
-	P(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LastParameter;
+		%feature("autodoc", "	:param P:
+	:type P: float
+	:rtype: None
+") LastParameter;
 		void LastParameter (const Standard_Real P);
-		%feature("autodoc", "Args:
-	O(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetOrigin;
+		%feature("autodoc", "	:param O:
+	:type O: float
+	:rtype: None
+") SetOrigin;
 		void SetOrigin (const Standard_Real O);
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
-	T(gp_Vec)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FirstPointAndTgt;
+		%feature("autodoc", "	:param P:
+	:type P: gp_Pnt
+	:param T:
+	:type T: gp_Vec
+	:rtype: None
+") FirstPointAndTgt;
 		void FirstPointAndTgt (gp_Pnt & P,gp_Vec & T);
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
-	T(gp_Vec)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LastPointAndTgt;
+		%feature("autodoc", "	:param P:
+	:type P: gp_Pnt
+	:param T:
+	:type T: gp_Vec
+	:rtype: None
+") LastPointAndTgt;
 		void LastPointAndTgt (gp_Pnt & P,gp_Vec & T);
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
-	T(gp_Vec)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetFirstPointAndTgt;
+		%feature("autodoc", "	:param P:
+	:type P: gp_Pnt
+	:param T:
+	:type T: gp_Vec
+	:rtype: None
+") SetFirstPointAndTgt;
 		void SetFirstPointAndTgt (const gp_Pnt & P,const gp_Vec & T);
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
-	T(gp_Vec)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetLastPointAndTgt;
+		%feature("autodoc", "	:param P:
+	:type P: gp_Pnt
+	:param T:
+	:type T: gp_Vec
+	:rtype: None
+") SetLastPointAndTgt;
 		void SetLastPointAndTgt (const gp_Pnt & P,const gp_Vec & T);
-		%feature("autodoc", "Args:
-	C(Handle_Geom_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetCurve;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Geom_Curve &
+	:rtype: None
+") SetCurve;
 		void SetCurve (const Handle_Geom_Curve & C);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ChFiDS_SurfData
-
-No detailed docstring for this function.") Previous;
+		%feature("autodoc", "	:rtype: Handle_ChFiDS_SurfData
+") Previous;
 		const Handle_ChFiDS_SurfData & Previous ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ChFiDS_SurfData
-
-No detailed docstring for this function.") ChangePrevious;
+		%feature("autodoc", "	:rtype: Handle_ChFiDS_SurfData
+") ChangePrevious;
 		Handle_ChFiDS_SurfData & ChangePrevious ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ChFiDS_SurfData
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: Handle_ChFiDS_SurfData
+") Next;
 		const Handle_ChFiDS_SurfData & Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ChFiDS_SurfData
-
-No detailed docstring for this function.") ChangeNext;
+		%feature("autodoc", "	:rtype: Handle_ChFiDS_SurfData
+") ChangeNext;
 		Handle_ChFiDS_SurfData & ChangeNext ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Lin
-
-No detailed docstring for this function.") Line;
+		%feature("autodoc", "	:rtype: gp_Lin
+") Line;
 		gp_Lin Line ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Circ
-
-No detailed docstring for this function.") Circle;
+		%feature("autodoc", "	:rtype: gp_Circ
+") Circle;
 		gp_Circ Circle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Elips
-
-No detailed docstring for this function.") Ellipse;
+		%feature("autodoc", "	:rtype: gp_Elips
+") Ellipse;
 		gp_Elips Ellipse ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Hypr
-
-No detailed docstring for this function.") Hyperbola;
+		%feature("autodoc", "	:rtype: gp_Hypr
+") Hyperbola;
 		gp_Hypr Hyperbola ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Parab
-
-No detailed docstring for this function.") Parabola;
+		%feature("autodoc", "	:rtype: gp_Parab
+") Parabola;
 		gp_Parab Parabola ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_BezierCurve
-
-No detailed docstring for this function.") Bezier;
+		%feature("autodoc", "	:rtype: Handle_Geom_BezierCurve
+") Bezier;
 		Handle_Geom_BezierCurve Bezier ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_BSplineCurve
-
-No detailed docstring for this function.") BSpline;
+		%feature("autodoc", "	:rtype: Handle_Geom_BSplineCurve
+") BSpline;
 		Handle_Geom_BSplineCurve BSpline ();
 };
 
@@ -618,128 +460,75 @@ def __del__(self):
 %nodefaultctor ChFiDS_FaceInterference;
 class ChFiDS_FaceInterference {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_FaceInterference;
+		%feature("autodoc", "	:rtype: None
+") ChFiDS_FaceInterference;
 		 ChFiDS_FaceInterference ();
-		%feature("autodoc", "Args:
-	LineIndex(Standard_Integer)
-	Trans(TopAbs_Orientation)
-	PCurv1(Handle_Geom2d_Curve)
-	PCurv2(Handle_Geom2d_Curve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetInterference;
+		%feature("autodoc", "	:param LineIndex:
+	:type LineIndex: Standard_Integer
+	:param Trans:
+	:type Trans: TopAbs_Orientation
+	:param PCurv1:
+	:type PCurv1: Handle_Geom2d_Curve &
+	:param PCurv2:
+	:type PCurv2: Handle_Geom2d_Curve &
+	:rtype: None
+") SetInterference;
 		void SetInterference (const Standard_Integer LineIndex,const TopAbs_Orientation Trans,const Handle_Geom2d_Curve & PCurv1,const Handle_Geom2d_Curve & PCurv2);
-		%feature("autodoc", "Args:
-	Trans(TopAbs_Orientation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetTransition;
+		%feature("autodoc", "	:param Trans:
+	:type Trans: TopAbs_Orientation
+	:rtype: None
+") SetTransition;
 		void SetTransition (const TopAbs_Orientation Trans);
-		%feature("autodoc", "Args:
-	U1(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetFirstParameter;
+		%feature("autodoc", "	:param U1:
+	:type U1: float
+	:rtype: None
+") SetFirstParameter;
 		void SetFirstParameter (const Standard_Real U1);
-		%feature("autodoc", "Args:
-	U1(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetLastParameter;
+		%feature("autodoc", "	:param U1:
+	:type U1: float
+	:rtype: None
+") SetLastParameter;
 		void SetLastParameter (const Standard_Real U1);
-		%feature("autodoc", "Args:
-	U1(Standard_Real)
-	IsFirst(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetParameter;
+		%feature("autodoc", "	:param U1:
+	:type U1: float
+	:param IsFirst:
+	:type IsFirst: bool
+	:rtype: None
+") SetParameter;
 		void SetParameter (const Standard_Real U1,const Standard_Boolean IsFirst);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LineIndex;
+		%feature("autodoc", "	:rtype: int
+") LineIndex;
 		Standard_Integer LineIndex ();
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetLineIndex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: None
+") SetLineIndex;
 		void SetLineIndex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_Orientation
-
-No detailed docstring for this function.") Transition;
+		%feature("autodoc", "	:rtype: TopAbs_Orientation
+") Transition;
 		TopAbs_Orientation Transition ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_Curve
-
-No detailed docstring for this function.") PCurveOnFace;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_Curve
+") PCurveOnFace;
 		const Handle_Geom2d_Curve & PCurveOnFace ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_Curve
-
-No detailed docstring for this function.") PCurveOnSurf;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_Curve
+") PCurveOnSurf;
 		const Handle_Geom2d_Curve & PCurveOnSurf ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_Curve
-
-No detailed docstring for this function.") ChangePCurveOnFace;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_Curve
+") ChangePCurveOnFace;
 		Handle_Geom2d_Curve & ChangePCurveOnFace ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_Curve
-
-No detailed docstring for this function.") ChangePCurveOnSurf;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_Curve
+") ChangePCurveOnSurf;
 		Handle_Geom2d_Curve & ChangePCurveOnSurf ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") FirstParameter;
+		%feature("autodoc", "	:rtype: float
+") FirstParameter;
 		Standard_Real FirstParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") LastParameter;
+		%feature("autodoc", "	:rtype: float
+") LastParameter;
 		Standard_Real LastParameter ();
-		%feature("autodoc", "Args:
-	IsFirst(Standard_Boolean)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Parameter;
+		%feature("autodoc", "	:param IsFirst:
+	:type IsFirst: bool
+	:rtype: float
+") Parameter;
 		Standard_Real Parameter (const Standard_Boolean IsFirst);
 };
 
@@ -761,188 +550,118 @@ def __del__(self):
 %nodefaultctor ChFiDS_HData;
 class ChFiDS_HData : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_HData;
+		%feature("autodoc", "	:rtype: None
+") ChFiDS_HData;
 		 ChFiDS_HData ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	anItem(Handle_ChFiDS_SurfData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_ChFiDS_SurfData &
+	:rtype: None
+") Append;
 		void Append (const Handle_ChFiDS_SurfData & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_ChFiDS_HData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_ChFiDS_HData &
+	:rtype: None
+") Append;
 		void Append (const Handle_ChFiDS_HData & aSequence);
-		%feature("autodoc", "Args:
-	anItem(Handle_ChFiDS_SurfData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Handle_ChFiDS_SurfData &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_ChFiDS_SurfData & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_ChFiDS_HData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_ChFiDS_HData &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_ChFiDS_HData & aSequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_ChFiDS_SurfData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_ChFiDS_SurfData &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_ChFiDS_SurfData & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_ChFiDS_HData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_ChFiDS_HData &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_ChFiDS_HData & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_ChFiDS_SurfData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_ChFiDS_SurfData &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_ChFiDS_SurfData & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_ChFiDS_HData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_ChFiDS_HData &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_ChFiDS_HData & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anOtherIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Exchange;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anOtherIndex:
+	:type anOtherIndex: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_ChFiDS_HData
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_ChFiDS_HData
+") Split;
 		Handle_ChFiDS_HData Split (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Handle_ChFiDS_SurfData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Handle_ChFiDS_SurfData &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Handle_ChFiDS_SurfData & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_ChFiDS_SurfData
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_ChFiDS_SurfData
+") Value;
 		const Handle_ChFiDS_SurfData & Value (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_ChFiDS_SurfData
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_ChFiDS_SurfData
+") ChangeValue;
 		Handle_ChFiDS_SurfData & ChangeValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	fromIndex(Standard_Integer)
-	toIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param fromIndex:
+	:type fromIndex: Standard_Integer
+	:param toIndex:
+	:type toIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_SequenceOfSurfData
-
-No detailed docstring for this function.") Sequence;
+		%feature("autodoc", "	:rtype: ChFiDS_SequenceOfSurfData
+") Sequence;
 		const ChFiDS_SequenceOfSurfData & Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_SequenceOfSurfData
-
-No detailed docstring for this function.") ChangeSequence;
+		%feature("autodoc", "	:rtype: ChFiDS_SequenceOfSurfData
+") ChangeSequence;
 		ChFiDS_SequenceOfSurfData & ChangeSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ChFiDS_HData
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_ChFiDS_HData
+") ShallowCopy;
 		Handle_ChFiDS_HData ShallowCopy ();
 };
 
@@ -1003,49 +722,27 @@ def __del__(self):
 %nodefaultctor ChFiDS_HElSpine;
 class ChFiDS_HElSpine : public Adaptor3d_HCurve {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_HElSpine;
+		%feature("autodoc", "	:rtype: None
+") ChFiDS_HElSpine;
 		 ChFiDS_HElSpine ();
-		%feature("autodoc", "Args:
-	C(ChFiDS_ElSpine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_HElSpine;
+		%feature("autodoc", "	:param C:
+	:type C: ChFiDS_ElSpine &
+	:rtype: None
+") ChFiDS_HElSpine;
 		 ChFiDS_HElSpine (const ChFiDS_ElSpine & C);
-		%feature("autodoc", "Args:
-	C(ChFiDS_ElSpine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Set;
+		%feature("autodoc", "	:param C:
+	:type C: ChFiDS_ElSpine &
+	:rtype: None
+") Set;
 		void Set (const ChFiDS_ElSpine & C);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Adaptor3d_Curve
-
-No detailed docstring for this function.") Curve;
+		%feature("autodoc", "	:rtype: Adaptor3d_Curve
+") Curve;
 		const Adaptor3d_Curve & Curve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Adaptor3d_Curve
-
-No detailed docstring for this function.") GetCurve;
+		%feature("autodoc", "	:rtype: Adaptor3d_Curve
+") GetCurve;
 		Adaptor3d_Curve & GetCurve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_ElSpine
-
-No detailed docstring for this function.") ChangeCurve;
+		%feature("autodoc", "	:rtype: ChFiDS_ElSpine
+") ChangeCurve;
 		ChFiDS_ElSpine & ChangeCurve ();
 };
 
@@ -1106,24 +803,21 @@ def __del__(self):
 %nodefaultctor ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe;
 class ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K1(TopoDS_Vertex)
-	K2(Standard_Integer)
-	I(ChFiDS_ListOfStripe)
-	n1(TCollection_MapNodePtr)
-	n2(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe;
+		%feature("autodoc", "	:param K1:
+	:type K1: TopoDS_Vertex &
+	:param K2:
+	:type K2: Standard_Integer
+	:param I:
+	:type I: ChFiDS_ListOfStripe &
+	:param n1:
+	:type n1: TCollection_MapNodePtr &
+	:param n2:
+	:type n2: TCollection_MapNodePtr &
+	:rtype: None
+") ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe;
 		 ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe (const TopoDS_Vertex & K1,const Standard_Integer K2,const ChFiDS_ListOfStripe & I,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Vertex
-
-No detailed docstring for this function.") Key1;
+		%feature("autodoc", "	:rtype: TopoDS_Vertex
+") Key1;
 		TopoDS_Vertex & Key1 ();
 
             %feature("autodoc","1");
@@ -1138,19 +832,11 @@ No detailed docstring for this function.") Key1;
                 $self->Key2()=value;
                 }
             };
-            		%feature("autodoc", "Args:
-	None
-Returns:
-	TCollection_MapNodePtr
-
-No detailed docstring for this function.") Next2;
+            		%feature("autodoc", "	:rtype: TCollection_MapNodePtr
+") Next2;
 		TCollection_MapNodePtr & Next2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_ListOfStripe
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: ChFiDS_ListOfStripe
+") Value;
 		ChFiDS_ListOfStripe & Value ();
 };
 
@@ -1211,142 +897,92 @@ def __del__(self):
 %nodefaultctor ChFiDS_IndexedDataMapOfVertexListOfStripe;
 class ChFiDS_IndexedDataMapOfVertexListOfStripe : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_IndexedDataMapOfVertexListOfStripe;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ChFiDS_IndexedDataMapOfVertexListOfStripe;
 		 ChFiDS_IndexedDataMapOfVertexListOfStripe (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(ChFiDS_IndexedDataMapOfVertexListOfStripe)
-
-Returns:
-	ChFiDS_IndexedDataMapOfVertexListOfStripe
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_IndexedDataMapOfVertexListOfStripe &
+	:rtype: ChFiDS_IndexedDataMapOfVertexListOfStripe
+") Assign;
 		ChFiDS_IndexedDataMapOfVertexListOfStripe & Assign (const ChFiDS_IndexedDataMapOfVertexListOfStripe & Other);
-		%feature("autodoc", "Args:
-	Other(ChFiDS_IndexedDataMapOfVertexListOfStripe)
-
-Returns:
-	ChFiDS_IndexedDataMapOfVertexListOfStripe
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_IndexedDataMapOfVertexListOfStripe &
+	:rtype: ChFiDS_IndexedDataMapOfVertexListOfStripe
+") operator=;
 		ChFiDS_IndexedDataMapOfVertexListOfStripe & operator = (const ChFiDS_IndexedDataMapOfVertexListOfStripe & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Vertex)
-	I(ChFiDS_ListOfStripe)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Vertex &
+	:param I:
+	:type I: ChFiDS_ListOfStripe &
+	:rtype: int
+") Add;
 		Standard_Integer Add (const TopoDS_Vertex & K,const ChFiDS_ListOfStripe & I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	K(TopoDS_Vertex)
-	T(ChFiDS_ListOfStripe)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Substitute;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:param K:
+	:type K: TopoDS_Vertex &
+	:param T:
+	:type T: ChFiDS_ListOfStripe &
+	:rtype: None
+") Substitute;
 		void Substitute (const Standard_Integer I,const TopoDS_Vertex & K,const ChFiDS_ListOfStripe & T);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveLast;
+		%feature("autodoc", "	:rtype: None
+") RemoveLast;
 		void RemoveLast ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Vertex)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Vertex &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const TopoDS_Vertex & K);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopoDS_Vertex
-
-No detailed docstring for this function.") FindKey;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopoDS_Vertex
+") FindKey;
 		const TopoDS_Vertex & FindKey (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	ChFiDS_ListOfStripe
-
-No detailed docstring for this function.") FindFromIndex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: ChFiDS_ListOfStripe
+") FindFromIndex;
 		const ChFiDS_ListOfStripe & FindFromIndex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	ChFiDS_ListOfStripe
-
-No detailed docstring for this function.") ChangeFromIndex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: ChFiDS_ListOfStripe
+") ChangeFromIndex;
 		ChFiDS_ListOfStripe & ChangeFromIndex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	K(TopoDS_Vertex)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FindIndex;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Vertex &
+	:rtype: int
+") FindIndex;
 		Standard_Integer FindIndex (const TopoDS_Vertex & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Vertex)
-
-Returns:
-	ChFiDS_ListOfStripe
-
-No detailed docstring for this function.") FindFromKey;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Vertex &
+	:rtype: ChFiDS_ListOfStripe
+") FindFromKey;
 		const ChFiDS_ListOfStripe & FindFromKey (const TopoDS_Vertex & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Vertex)
-
-Returns:
-	ChFiDS_ListOfStripe
-
-No detailed docstring for this function.") ChangeFromKey;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Vertex &
+	:rtype: ChFiDS_ListOfStripe
+") ChangeFromKey;
 		ChFiDS_ListOfStripe & ChangeFromKey (const TopoDS_Vertex & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Vertex)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") FindFromKey1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Vertex &
+	:rtype: Standard_Address
+") FindFromKey1;
 		Standard_Address FindFromKey1 (const TopoDS_Vertex & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Vertex)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFromKey1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Vertex &
+	:rtype: Standard_Address
+") ChangeFromKey1;
 		Standard_Address ChangeFromKey1 (const TopoDS_Vertex & K);
 };
 
@@ -1368,49 +1004,27 @@ def __del__(self):
 %nodefaultctor ChFiDS_ListIteratorOfListOfHElSpine;
 class ChFiDS_ListIteratorOfListOfHElSpine {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_ListIteratorOfListOfHElSpine;
+		%feature("autodoc", "	:rtype: None
+") ChFiDS_ListIteratorOfListOfHElSpine;
 		 ChFiDS_ListIteratorOfListOfHElSpine ();
-		%feature("autodoc", "Args:
-	L(ChFiDS_ListOfHElSpine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_ListIteratorOfListOfHElSpine;
+		%feature("autodoc", "	:param L:
+	:type L: ChFiDS_ListOfHElSpine &
+	:rtype: None
+") ChFiDS_ListIteratorOfListOfHElSpine;
 		 ChFiDS_ListIteratorOfListOfHElSpine (const ChFiDS_ListOfHElSpine & L);
-		%feature("autodoc", "Args:
-	L(ChFiDS_ListOfHElSpine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: ChFiDS_ListOfHElSpine &
+	:rtype: None
+") Initialize;
 		void Initialize (const ChFiDS_ListOfHElSpine & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ChFiDS_HElSpine
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_ChFiDS_HElSpine
+") Value;
 		Handle_ChFiDS_HElSpine & Value ();
 };
 
@@ -1432,49 +1046,27 @@ def __del__(self):
 %nodefaultctor ChFiDS_ListIteratorOfListOfStripe;
 class ChFiDS_ListIteratorOfListOfStripe {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_ListIteratorOfListOfStripe;
+		%feature("autodoc", "	:rtype: None
+") ChFiDS_ListIteratorOfListOfStripe;
 		 ChFiDS_ListIteratorOfListOfStripe ();
-		%feature("autodoc", "Args:
-	L(ChFiDS_ListOfStripe)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_ListIteratorOfListOfStripe;
+		%feature("autodoc", "	:param L:
+	:type L: ChFiDS_ListOfStripe &
+	:rtype: None
+") ChFiDS_ListIteratorOfListOfStripe;
 		 ChFiDS_ListIteratorOfListOfStripe (const ChFiDS_ListOfStripe & L);
-		%feature("autodoc", "Args:
-	L(ChFiDS_ListOfStripe)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: ChFiDS_ListOfStripe &
+	:rtype: None
+") Initialize;
 		void Initialize (const ChFiDS_ListOfStripe & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ChFiDS_Stripe
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_ChFiDS_Stripe
+") Value;
 		Handle_ChFiDS_Stripe & Value ();
 };
 
@@ -1496,49 +1088,27 @@ def __del__(self):
 %nodefaultctor ChFiDS_ListIteratorOfRegularities;
 class ChFiDS_ListIteratorOfRegularities {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_ListIteratorOfRegularities;
+		%feature("autodoc", "	:rtype: None
+") ChFiDS_ListIteratorOfRegularities;
 		 ChFiDS_ListIteratorOfRegularities ();
-		%feature("autodoc", "Args:
-	L(ChFiDS_Regularities)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_ListIteratorOfRegularities;
+		%feature("autodoc", "	:param L:
+	:type L: ChFiDS_Regularities &
+	:rtype: None
+") ChFiDS_ListIteratorOfRegularities;
 		 ChFiDS_ListIteratorOfRegularities (const ChFiDS_Regularities & L);
-		%feature("autodoc", "Args:
-	L(ChFiDS_Regularities)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param L:
+	:type L: ChFiDS_Regularities &
+	:rtype: None
+") Initialize;
 		void Initialize (const ChFiDS_Regularities & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_Regul
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: ChFiDS_Regul
+") Value;
 		ChFiDS_Regul & Value ();
 };
 
@@ -1560,21 +1130,15 @@ def __del__(self):
 %nodefaultctor ChFiDS_ListNodeOfListOfHElSpine;
 class ChFiDS_ListNodeOfListOfHElSpine : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_ChFiDS_HElSpine)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_ListNodeOfListOfHElSpine;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_ChFiDS_HElSpine &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") ChFiDS_ListNodeOfListOfHElSpine;
 		 ChFiDS_ListNodeOfListOfHElSpine (const Handle_ChFiDS_HElSpine & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ChFiDS_HElSpine
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_ChFiDS_HElSpine
+") Value;
 		Handle_ChFiDS_HElSpine & Value ();
 };
 
@@ -1635,21 +1199,15 @@ def __del__(self):
 %nodefaultctor ChFiDS_ListNodeOfListOfStripe;
 class ChFiDS_ListNodeOfListOfStripe : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_ChFiDS_Stripe)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_ListNodeOfListOfStripe;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_ChFiDS_Stripe &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") ChFiDS_ListNodeOfListOfStripe;
 		 ChFiDS_ListNodeOfListOfStripe (const Handle_ChFiDS_Stripe & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ChFiDS_Stripe
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_ChFiDS_Stripe
+") Value;
 		Handle_ChFiDS_Stripe & Value ();
 };
 
@@ -1710,21 +1268,15 @@ def __del__(self):
 %nodefaultctor ChFiDS_ListNodeOfRegularities;
 class ChFiDS_ListNodeOfRegularities : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	I(ChFiDS_Regul)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_ListNodeOfRegularities;
+		%feature("autodoc", "	:param I:
+	:type I: ChFiDS_Regul &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") ChFiDS_ListNodeOfRegularities;
 		 ChFiDS_ListNodeOfRegularities (const ChFiDS_Regul & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_Regul
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: ChFiDS_Regul
+") Value;
 		ChFiDS_Regul & Value ();
 };
 
@@ -1785,164 +1337,103 @@ def __del__(self):
 %nodefaultctor ChFiDS_ListOfHElSpine;
 class ChFiDS_ListOfHElSpine {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_ListOfHElSpine;
+		%feature("autodoc", "	:rtype: None
+") ChFiDS_ListOfHElSpine;
 		 ChFiDS_ListOfHElSpine ();
-		%feature("autodoc", "Args:
-	Other(ChFiDS_ListOfHElSpine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_ListOfHElSpine &
+	:rtype: None
+") Assign;
 		void Assign (const ChFiDS_ListOfHElSpine & Other);
-		%feature("autodoc", "Args:
-	Other(ChFiDS_ListOfHElSpine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_ListOfHElSpine &
+	:rtype: None
+") operator=;
 		void operator = (const ChFiDS_ListOfHElSpine & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(Handle_ChFiDS_HElSpine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_ChFiDS_HElSpine &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_ChFiDS_HElSpine & I);
-		%feature("autodoc", "Args:
-	I(Handle_ChFiDS_HElSpine)
-	theIt(ChFiDS_ListIteratorOfListOfHElSpine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_ChFiDS_HElSpine &
+	:param theIt:
+	:type theIt: ChFiDS_ListIteratorOfListOfHElSpine &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_ChFiDS_HElSpine & I,ChFiDS_ListIteratorOfListOfHElSpine & theIt);
-		%feature("autodoc", "Args:
-	Other(ChFiDS_ListOfHElSpine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_ListOfHElSpine &
+	:rtype: None
+") Prepend;
 		void Prepend (ChFiDS_ListOfHElSpine & Other);
-		%feature("autodoc", "Args:
-	I(Handle_ChFiDS_HElSpine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_ChFiDS_HElSpine &
+	:rtype: None
+") Append;
 		void Append (const Handle_ChFiDS_HElSpine & I);
-		%feature("autodoc", "Args:
-	I(Handle_ChFiDS_HElSpine)
-	theIt(ChFiDS_ListIteratorOfListOfHElSpine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_ChFiDS_HElSpine &
+	:param theIt:
+	:type theIt: ChFiDS_ListIteratorOfListOfHElSpine &
+	:rtype: None
+") Append;
 		void Append (const Handle_ChFiDS_HElSpine & I,ChFiDS_ListIteratorOfListOfHElSpine & theIt);
-		%feature("autodoc", "Args:
-	Other(ChFiDS_ListOfHElSpine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_ListOfHElSpine &
+	:rtype: None
+") Append;
 		void Append (ChFiDS_ListOfHElSpine & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ChFiDS_HElSpine
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_ChFiDS_HElSpine
+") First;
 		Handle_ChFiDS_HElSpine & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ChFiDS_HElSpine
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_ChFiDS_HElSpine
+") Last;
 		Handle_ChFiDS_HElSpine & Last ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(ChFiDS_ListIteratorOfListOfHElSpine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: ChFiDS_ListIteratorOfListOfHElSpine &
+	:rtype: None
+") Remove;
 		void Remove (ChFiDS_ListIteratorOfListOfHElSpine & It);
-		%feature("autodoc", "Args:
-	I(Handle_ChFiDS_HElSpine)
-	It(ChFiDS_ListIteratorOfListOfHElSpine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_ChFiDS_HElSpine &
+	:param It:
+	:type It: ChFiDS_ListIteratorOfListOfHElSpine &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Handle_ChFiDS_HElSpine & I,ChFiDS_ListIteratorOfListOfHElSpine & It);
-		%feature("autodoc", "Args:
-	Other(ChFiDS_ListOfHElSpine)
-	It(ChFiDS_ListIteratorOfListOfHElSpine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_ListOfHElSpine &
+	:param It:
+	:type It: ChFiDS_ListIteratorOfListOfHElSpine &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (ChFiDS_ListOfHElSpine & Other,ChFiDS_ListIteratorOfListOfHElSpine & It);
-		%feature("autodoc", "Args:
-	I(Handle_ChFiDS_HElSpine)
-	It(ChFiDS_ListIteratorOfListOfHElSpine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_ChFiDS_HElSpine &
+	:param It:
+	:type It: ChFiDS_ListIteratorOfListOfHElSpine &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Handle_ChFiDS_HElSpine & I,ChFiDS_ListIteratorOfListOfHElSpine & It);
-		%feature("autodoc", "Args:
-	Other(ChFiDS_ListOfHElSpine)
-	It(ChFiDS_ListIteratorOfListOfHElSpine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_ListOfHElSpine &
+	:param It:
+	:type It: ChFiDS_ListIteratorOfListOfHElSpine &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (ChFiDS_ListOfHElSpine & Other,ChFiDS_ListIteratorOfListOfHElSpine & It);
 };
 
@@ -1964,164 +1455,103 @@ def __del__(self):
 %nodefaultctor ChFiDS_ListOfStripe;
 class ChFiDS_ListOfStripe {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_ListOfStripe;
+		%feature("autodoc", "	:rtype: None
+") ChFiDS_ListOfStripe;
 		 ChFiDS_ListOfStripe ();
-		%feature("autodoc", "Args:
-	Other(ChFiDS_ListOfStripe)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_ListOfStripe &
+	:rtype: None
+") Assign;
 		void Assign (const ChFiDS_ListOfStripe & Other);
-		%feature("autodoc", "Args:
-	Other(ChFiDS_ListOfStripe)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_ListOfStripe &
+	:rtype: None
+") operator=;
 		void operator = (const ChFiDS_ListOfStripe & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(Handle_ChFiDS_Stripe)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_ChFiDS_Stripe &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_ChFiDS_Stripe & I);
-		%feature("autodoc", "Args:
-	I(Handle_ChFiDS_Stripe)
-	theIt(ChFiDS_ListIteratorOfListOfStripe)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_ChFiDS_Stripe &
+	:param theIt:
+	:type theIt: ChFiDS_ListIteratorOfListOfStripe &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_ChFiDS_Stripe & I,ChFiDS_ListIteratorOfListOfStripe & theIt);
-		%feature("autodoc", "Args:
-	Other(ChFiDS_ListOfStripe)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_ListOfStripe &
+	:rtype: None
+") Prepend;
 		void Prepend (ChFiDS_ListOfStripe & Other);
-		%feature("autodoc", "Args:
-	I(Handle_ChFiDS_Stripe)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_ChFiDS_Stripe &
+	:rtype: None
+") Append;
 		void Append (const Handle_ChFiDS_Stripe & I);
-		%feature("autodoc", "Args:
-	I(Handle_ChFiDS_Stripe)
-	theIt(ChFiDS_ListIteratorOfListOfStripe)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_ChFiDS_Stripe &
+	:param theIt:
+	:type theIt: ChFiDS_ListIteratorOfListOfStripe &
+	:rtype: None
+") Append;
 		void Append (const Handle_ChFiDS_Stripe & I,ChFiDS_ListIteratorOfListOfStripe & theIt);
-		%feature("autodoc", "Args:
-	Other(ChFiDS_ListOfStripe)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_ListOfStripe &
+	:rtype: None
+") Append;
 		void Append (ChFiDS_ListOfStripe & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ChFiDS_Stripe
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_ChFiDS_Stripe
+") First;
 		Handle_ChFiDS_Stripe & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ChFiDS_Stripe
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_ChFiDS_Stripe
+") Last;
 		Handle_ChFiDS_Stripe & Last ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(ChFiDS_ListIteratorOfListOfStripe)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: ChFiDS_ListIteratorOfListOfStripe &
+	:rtype: None
+") Remove;
 		void Remove (ChFiDS_ListIteratorOfListOfStripe & It);
-		%feature("autodoc", "Args:
-	I(Handle_ChFiDS_Stripe)
-	It(ChFiDS_ListIteratorOfListOfStripe)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_ChFiDS_Stripe &
+	:param It:
+	:type It: ChFiDS_ListIteratorOfListOfStripe &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Handle_ChFiDS_Stripe & I,ChFiDS_ListIteratorOfListOfStripe & It);
-		%feature("autodoc", "Args:
-	Other(ChFiDS_ListOfStripe)
-	It(ChFiDS_ListIteratorOfListOfStripe)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_ListOfStripe &
+	:param It:
+	:type It: ChFiDS_ListIteratorOfListOfStripe &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (ChFiDS_ListOfStripe & Other,ChFiDS_ListIteratorOfListOfStripe & It);
-		%feature("autodoc", "Args:
-	I(Handle_ChFiDS_Stripe)
-	It(ChFiDS_ListIteratorOfListOfStripe)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_ChFiDS_Stripe &
+	:param It:
+	:type It: ChFiDS_ListIteratorOfListOfStripe &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Handle_ChFiDS_Stripe & I,ChFiDS_ListIteratorOfListOfStripe & It);
-		%feature("autodoc", "Args:
-	Other(ChFiDS_ListOfStripe)
-	It(ChFiDS_ListIteratorOfListOfStripe)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_ListOfStripe &
+	:param It:
+	:type It: ChFiDS_ListIteratorOfListOfStripe &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (ChFiDS_ListOfStripe & Other,ChFiDS_ListIteratorOfListOfStripe & It);
 };
 
@@ -2143,47 +1573,36 @@ def __del__(self):
 %nodefaultctor ChFiDS_Map;
 class ChFiDS_Map {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Create an empty Map
 
-Create an empty Map") ChFiDS_Map;
+	:rtype: None
+") ChFiDS_Map;
 		 ChFiDS_Map ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-	T1(TopAbs_ShapeEnum)
-	T2(TopAbs_ShapeEnum)
+		%feature("autodoc", "	* Fills the map with the subshapes of type T1 as keys and the list of ancestors of type T2 as items.
 
-Returns:
-	None
-
-Fills the map with the subshapes of type T1 as keys  
-         and the list of ancestors  of type T2 as items.") Fill;
+	:param S:
+	:type S: TopoDS_Shape &
+	:param T1:
+	:type T1: TopAbs_ShapeEnum
+	:param T2:
+	:type T2: TopAbs_ShapeEnum
+	:rtype: None
+") Fill;
 		void Fill (const TopoDS_Shape & S,const TopAbs_ShapeEnum T1,const TopAbs_ShapeEnum T2);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Contains;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") FindFromKey;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") FindFromKey;
 		const TopTools_ListOfShape & FindFromKey (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") FindFromIndex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopTools_ListOfShape
+") FindFromIndex;
 		const TopTools_ListOfShape & FindFromIndex (const Standard_Integer I);
 };
 
@@ -2205,73 +1624,42 @@ def __del__(self):
 %nodefaultctor ChFiDS_Regul;
 class ChFiDS_Regul {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_Regul;
+		%feature("autodoc", "	:rtype: None
+") ChFiDS_Regul;
 		 ChFiDS_Regul ();
-		%feature("autodoc", "Args:
-	IC(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetCurve;
+		%feature("autodoc", "	:param IC:
+	:type IC: Standard_Integer
+	:rtype: None
+") SetCurve;
 		void SetCurve (const Standard_Integer IC);
-		%feature("autodoc", "Args:
-	IS1(Standard_Integer)
-	IsFace(Standard_Boolean)=Standard_True
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetS1;
+		%feature("autodoc", "	:param IS1:
+	:type IS1: Standard_Integer
+	:param IsFace: default value is Standard_True
+	:type IsFace: bool
+	:rtype: None
+") SetS1;
 		void SetS1 (const Standard_Integer IS1,const Standard_Boolean IsFace = Standard_True);
-		%feature("autodoc", "Args:
-	IS2(Standard_Integer)
-	IsFace(Standard_Boolean)=Standard_True
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetS2;
+		%feature("autodoc", "	:param IS2:
+	:type IS2: Standard_Integer
+	:param IsFace: default value is Standard_True
+	:type IsFace: bool
+	:rtype: None
+") SetS2;
 		void SetS2 (const Standard_Integer IS2,const Standard_Boolean IsFace = Standard_True);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsSurface1;
+		%feature("autodoc", "	:rtype: bool
+") IsSurface1;
 		Standard_Boolean IsSurface1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsSurface2;
+		%feature("autodoc", "	:rtype: bool
+") IsSurface2;
 		Standard_Boolean IsSurface2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Curve;
+		%feature("autodoc", "	:rtype: int
+") Curve;
 		Standard_Integer Curve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") S1;
+		%feature("autodoc", "	:rtype: int
+") S1;
 		Standard_Integer S1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") S2;
+		%feature("autodoc", "	:rtype: int
+") S2;
 		Standard_Integer S2 ();
 };
 
@@ -2293,164 +1681,103 @@ def __del__(self):
 %nodefaultctor ChFiDS_Regularities;
 class ChFiDS_Regularities {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_Regularities;
+		%feature("autodoc", "	:rtype: None
+") ChFiDS_Regularities;
 		 ChFiDS_Regularities ();
-		%feature("autodoc", "Args:
-	Other(ChFiDS_Regularities)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_Regularities &
+	:rtype: None
+") Assign;
 		void Assign (const ChFiDS_Regularities & Other);
-		%feature("autodoc", "Args:
-	Other(ChFiDS_Regularities)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_Regularities &
+	:rtype: None
+") operator=;
 		void operator = (const ChFiDS_Regularities & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	I(ChFiDS_Regul)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: ChFiDS_Regul &
+	:rtype: None
+") Prepend;
 		void Prepend (const ChFiDS_Regul & I);
-		%feature("autodoc", "Args:
-	I(ChFiDS_Regul)
-	theIt(ChFiDS_ListIteratorOfRegularities)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param I:
+	:type I: ChFiDS_Regul &
+	:param theIt:
+	:type theIt: ChFiDS_ListIteratorOfRegularities &
+	:rtype: None
+") Prepend;
 		void Prepend (const ChFiDS_Regul & I,ChFiDS_ListIteratorOfRegularities & theIt);
-		%feature("autodoc", "Args:
-	Other(ChFiDS_Regularities)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_Regularities &
+	:rtype: None
+") Prepend;
 		void Prepend (ChFiDS_Regularities & Other);
-		%feature("autodoc", "Args:
-	I(ChFiDS_Regul)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: ChFiDS_Regul &
+	:rtype: None
+") Append;
 		void Append (const ChFiDS_Regul & I);
-		%feature("autodoc", "Args:
-	I(ChFiDS_Regul)
-	theIt(ChFiDS_ListIteratorOfRegularities)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param I:
+	:type I: ChFiDS_Regul &
+	:param theIt:
+	:type theIt: ChFiDS_ListIteratorOfRegularities &
+	:rtype: None
+") Append;
 		void Append (const ChFiDS_Regul & I,ChFiDS_ListIteratorOfRegularities & theIt);
-		%feature("autodoc", "Args:
-	Other(ChFiDS_Regularities)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_Regularities &
+	:rtype: None
+") Append;
 		void Append (ChFiDS_Regularities & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_Regul
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: ChFiDS_Regul
+") First;
 		ChFiDS_Regul & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_Regul
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: ChFiDS_Regul
+") Last;
 		ChFiDS_Regul & Last ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") RemoveFirst;
+		%feature("autodoc", "	:rtype: None
+") RemoveFirst;
 		void RemoveFirst ();
-		%feature("autodoc", "Args:
-	It(ChFiDS_ListIteratorOfRegularities)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param It:
+	:type It: ChFiDS_ListIteratorOfRegularities &
+	:rtype: None
+") Remove;
 		void Remove (ChFiDS_ListIteratorOfRegularities & It);
-		%feature("autodoc", "Args:
-	I(ChFiDS_Regul)
-	It(ChFiDS_ListIteratorOfRegularities)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param I:
+	:type I: ChFiDS_Regul &
+	:param It:
+	:type It: ChFiDS_ListIteratorOfRegularities &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const ChFiDS_Regul & I,ChFiDS_ListIteratorOfRegularities & It);
-		%feature("autodoc", "Args:
-	Other(ChFiDS_Regularities)
-	It(ChFiDS_ListIteratorOfRegularities)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_Regularities &
+	:param It:
+	:type It: ChFiDS_ListIteratorOfRegularities &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (ChFiDS_Regularities & Other,ChFiDS_ListIteratorOfRegularities & It);
-		%feature("autodoc", "Args:
-	I(ChFiDS_Regul)
-	It(ChFiDS_ListIteratorOfRegularities)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param I:
+	:type I: ChFiDS_Regul &
+	:param It:
+	:type It: ChFiDS_ListIteratorOfRegularities &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const ChFiDS_Regul & I,ChFiDS_ListIteratorOfRegularities & It);
-		%feature("autodoc", "Args:
-	Other(ChFiDS_Regularities)
-	It(ChFiDS_ListIteratorOfRegularities)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_Regularities &
+	:param It:
+	:type It: ChFiDS_ListIteratorOfRegularities &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (ChFiDS_Regularities & Other,ChFiDS_ListIteratorOfRegularities & It);
 };
 
@@ -2472,108 +1799,68 @@ def __del__(self):
 %nodefaultctor ChFiDS_SecArray1;
 class ChFiDS_SecArray1 {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_SecArray1;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") ChFiDS_SecArray1;
 		 ChFiDS_SecArray1 (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(ChFiDS_CircSection)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_SecArray1;
+		%feature("autodoc", "	:param Item:
+	:type Item: ChFiDS_CircSection &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") ChFiDS_SecArray1;
 		 ChFiDS_SecArray1 (const ChFiDS_CircSection & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(ChFiDS_CircSection)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: ChFiDS_CircSection &
+	:rtype: None
+") Init;
 		void Init (const ChFiDS_CircSection & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(ChFiDS_SecArray1)
-
-Returns:
-	ChFiDS_SecArray1
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_SecArray1 &
+	:rtype: ChFiDS_SecArray1
+") Assign;
 		const ChFiDS_SecArray1 & Assign (const ChFiDS_SecArray1 & Other);
-		%feature("autodoc", "Args:
-	Other(ChFiDS_SecArray1)
-
-Returns:
-	ChFiDS_SecArray1
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_SecArray1 &
+	:rtype: ChFiDS_SecArray1
+") operator=;
 		const ChFiDS_SecArray1 & operator = (const ChFiDS_SecArray1 & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(ChFiDS_CircSection)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: ChFiDS_CircSection &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const ChFiDS_CircSection & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	ChFiDS_CircSection
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: ChFiDS_CircSection
+") Value;
 		const ChFiDS_CircSection & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	ChFiDS_CircSection
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: ChFiDS_CircSection
+") ChangeValue;
 		ChFiDS_CircSection & ChangeValue (const Standard_Integer Index);
 };
 
@@ -2595,92 +1882,58 @@ def __del__(self):
 %nodefaultctor ChFiDS_SecHArray1;
 class ChFiDS_SecHArray1 : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_SecHArray1;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") ChFiDS_SecHArray1;
 		 ChFiDS_SecHArray1 (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(ChFiDS_CircSection)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_SecHArray1;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: ChFiDS_CircSection &
+	:rtype: None
+") ChFiDS_SecHArray1;
 		 ChFiDS_SecHArray1 (const Standard_Integer Low,const Standard_Integer Up,const ChFiDS_CircSection & V);
-		%feature("autodoc", "Args:
-	V(ChFiDS_CircSection)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: ChFiDS_CircSection &
+	:rtype: None
+") Init;
 		void Init (const ChFiDS_CircSection & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(ChFiDS_CircSection)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: ChFiDS_CircSection &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const ChFiDS_CircSection & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	ChFiDS_CircSection
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: ChFiDS_CircSection
+") Value;
 		const ChFiDS_CircSection & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	ChFiDS_CircSection
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: ChFiDS_CircSection
+") ChangeValue;
 		ChFiDS_CircSection & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_SecArray1
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: ChFiDS_SecArray1
+") Array1;
 		const ChFiDS_SecArray1 & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_SecArray1
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: ChFiDS_SecArray1
+") ChangeArray1;
 		ChFiDS_SecArray1 & ChangeArray1 ();
 };
 
@@ -2741,22 +1994,17 @@ def __del__(self):
 %nodefaultctor ChFiDS_SequenceNodeOfSequenceOfSpine;
 class ChFiDS_SequenceNodeOfSequenceOfSpine : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_ChFiDS_Spine)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_SequenceNodeOfSequenceOfSpine;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_ChFiDS_Spine &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") ChFiDS_SequenceNodeOfSequenceOfSpine;
 		 ChFiDS_SequenceNodeOfSequenceOfSpine (const Handle_ChFiDS_Spine & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ChFiDS_Spine
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_ChFiDS_Spine
+") Value;
 		Handle_ChFiDS_Spine & Value ();
 };
 
@@ -2817,22 +2065,17 @@ def __del__(self):
 %nodefaultctor ChFiDS_SequenceNodeOfSequenceOfSurfData;
 class ChFiDS_SequenceNodeOfSequenceOfSurfData : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_ChFiDS_SurfData)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_SequenceNodeOfSequenceOfSurfData;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_ChFiDS_SurfData &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") ChFiDS_SequenceNodeOfSequenceOfSurfData;
 		 ChFiDS_SequenceNodeOfSequenceOfSurfData (const Handle_ChFiDS_SurfData & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ChFiDS_SurfData
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_ChFiDS_SurfData
+") Value;
 		Handle_ChFiDS_SurfData & Value ();
 };
 
@@ -2893,168 +2136,111 @@ def __del__(self):
 %nodefaultctor ChFiDS_SequenceOfSpine;
 class ChFiDS_SequenceOfSpine : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_SequenceOfSpine;
+		%feature("autodoc", "	:rtype: None
+") ChFiDS_SequenceOfSpine;
 		 ChFiDS_SequenceOfSpine ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(ChFiDS_SequenceOfSpine)
-
-Returns:
-	ChFiDS_SequenceOfSpine
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_SequenceOfSpine &
+	:rtype: ChFiDS_SequenceOfSpine
+") Assign;
 		const ChFiDS_SequenceOfSpine & Assign (const ChFiDS_SequenceOfSpine & Other);
-		%feature("autodoc", "Args:
-	Other(ChFiDS_SequenceOfSpine)
-
-Returns:
-	ChFiDS_SequenceOfSpine
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_SequenceOfSpine &
+	:rtype: ChFiDS_SequenceOfSpine
+") operator=;
 		const ChFiDS_SequenceOfSpine & operator = (const ChFiDS_SequenceOfSpine & Other);
-		%feature("autodoc", "Args:
-	T(Handle_ChFiDS_Spine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_ChFiDS_Spine &
+	:rtype: None
+") Append;
 		void Append (const Handle_ChFiDS_Spine & T);
-		%feature("autodoc", "Args:
-	S(ChFiDS_SequenceOfSpine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: ChFiDS_SequenceOfSpine &
+	:rtype: None
+") Append;
 		void Append (ChFiDS_SequenceOfSpine & S);
-		%feature("autodoc", "Args:
-	T(Handle_ChFiDS_Spine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_ChFiDS_Spine &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_ChFiDS_Spine & T);
-		%feature("autodoc", "Args:
-	S(ChFiDS_SequenceOfSpine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: ChFiDS_SequenceOfSpine &
+	:rtype: None
+") Prepend;
 		void Prepend (ChFiDS_SequenceOfSpine & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_ChFiDS_Spine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_ChFiDS_Spine &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_ChFiDS_Spine & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(ChFiDS_SequenceOfSpine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: ChFiDS_SequenceOfSpine &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,ChFiDS_SequenceOfSpine & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_ChFiDS_Spine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_ChFiDS_Spine &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_ChFiDS_Spine & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(ChFiDS_SequenceOfSpine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: ChFiDS_SequenceOfSpine &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,ChFiDS_SequenceOfSpine & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ChFiDS_Spine
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_ChFiDS_Spine
+") First;
 		const Handle_ChFiDS_Spine & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ChFiDS_Spine
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_ChFiDS_Spine
+") Last;
 		const Handle_ChFiDS_Spine & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(ChFiDS_SequenceOfSpine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: ChFiDS_SequenceOfSpine &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,ChFiDS_SequenceOfSpine & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_ChFiDS_Spine
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_ChFiDS_Spine
+") Value;
 		const Handle_ChFiDS_Spine & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_ChFiDS_Spine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_ChFiDS_Spine &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_ChFiDS_Spine & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_ChFiDS_Spine
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_ChFiDS_Spine
+") ChangeValue;
 		Handle_ChFiDS_Spine & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -3076,168 +2262,111 @@ def __del__(self):
 %nodefaultctor ChFiDS_SequenceOfSurfData;
 class ChFiDS_SequenceOfSurfData : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_SequenceOfSurfData;
+		%feature("autodoc", "	:rtype: None
+") ChFiDS_SequenceOfSurfData;
 		 ChFiDS_SequenceOfSurfData ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(ChFiDS_SequenceOfSurfData)
-
-Returns:
-	ChFiDS_SequenceOfSurfData
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_SequenceOfSurfData &
+	:rtype: ChFiDS_SequenceOfSurfData
+") Assign;
 		const ChFiDS_SequenceOfSurfData & Assign (const ChFiDS_SequenceOfSurfData & Other);
-		%feature("autodoc", "Args:
-	Other(ChFiDS_SequenceOfSurfData)
-
-Returns:
-	ChFiDS_SequenceOfSurfData
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_SequenceOfSurfData &
+	:rtype: ChFiDS_SequenceOfSurfData
+") operator=;
 		const ChFiDS_SequenceOfSurfData & operator = (const ChFiDS_SequenceOfSurfData & Other);
-		%feature("autodoc", "Args:
-	T(Handle_ChFiDS_SurfData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_ChFiDS_SurfData &
+	:rtype: None
+") Append;
 		void Append (const Handle_ChFiDS_SurfData & T);
-		%feature("autodoc", "Args:
-	S(ChFiDS_SequenceOfSurfData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: ChFiDS_SequenceOfSurfData &
+	:rtype: None
+") Append;
 		void Append (ChFiDS_SequenceOfSurfData & S);
-		%feature("autodoc", "Args:
-	T(Handle_ChFiDS_SurfData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_ChFiDS_SurfData &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_ChFiDS_SurfData & T);
-		%feature("autodoc", "Args:
-	S(ChFiDS_SequenceOfSurfData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: ChFiDS_SequenceOfSurfData &
+	:rtype: None
+") Prepend;
 		void Prepend (ChFiDS_SequenceOfSurfData & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_ChFiDS_SurfData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_ChFiDS_SurfData &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_ChFiDS_SurfData & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(ChFiDS_SequenceOfSurfData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: ChFiDS_SequenceOfSurfData &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,ChFiDS_SequenceOfSurfData & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_ChFiDS_SurfData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_ChFiDS_SurfData &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_ChFiDS_SurfData & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(ChFiDS_SequenceOfSurfData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: ChFiDS_SequenceOfSurfData &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,ChFiDS_SequenceOfSurfData & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ChFiDS_SurfData
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_ChFiDS_SurfData
+") First;
 		const Handle_ChFiDS_SurfData & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ChFiDS_SurfData
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_ChFiDS_SurfData
+") Last;
 		const Handle_ChFiDS_SurfData & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(ChFiDS_SequenceOfSurfData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: ChFiDS_SequenceOfSurfData &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,ChFiDS_SequenceOfSurfData & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_ChFiDS_SurfData
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_ChFiDS_SurfData
+") Value;
 		const Handle_ChFiDS_SurfData & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_ChFiDS_SurfData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_ChFiDS_SurfData &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_ChFiDS_SurfData & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_ChFiDS_SurfData
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_ChFiDS_SurfData
+") ChangeValue;
 		Handle_ChFiDS_SurfData & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -3259,507 +2388,329 @@ def __del__(self):
 %nodefaultctor ChFiDS_Spine;
 class ChFiDS_Spine : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_Spine;
+		%feature("autodoc", "	:rtype: None
+") ChFiDS_Spine;
 		 ChFiDS_Spine ();
-		%feature("autodoc", "Args:
-	Tol(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_Spine;
+		%feature("autodoc", "	:param Tol:
+	:type Tol: float
+	:rtype: None
+") ChFiDS_Spine;
 		 ChFiDS_Spine (const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
+		%feature("autodoc", "	* store edges composing the guideline
 
-Returns:
-	None
-
-store edges composing the guideline") SetEdges;
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: None
+") SetEdges;
 		void SetEdges (const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
+		%feature("autodoc", "	* store the edge at the first position before all others
 
-Returns:
-	None
-
-store the edge at the first position before all others") PutInFirst;
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: None
+") PutInFirst;
 		void PutInFirst (const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbEdges;
+		%feature("autodoc", "	:rtype: int
+") NbEdges;
 		Standard_Integer NbEdges ();
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopoDS_Edge
-
-No detailed docstring for this function.") Edges;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopoDS_Edge
+") Edges;
 		const TopoDS_Edge & Edges (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	S(ChFiDS_State)
+		%feature("autodoc", "	* stores if the start of a set of edges starts on a section of free border or forms a closed contour
 
-Returns:
-	None
-
-stores if the start of a set of edges starts on a  
-section of free border or forms  a closed contour") SetFirstStatus;
+	:param S:
+	:type S: ChFiDS_State
+	:rtype: None
+") SetFirstStatus;
 		void SetFirstStatus (const ChFiDS_State S);
-		%feature("autodoc", "Args:
-	S(ChFiDS_State)
+		%feature("autodoc", "	* stores if the end of a set of edges starts on a section of free border or forms a closed contour
 
-Returns:
-	None
-
-stores if the end of a set of edges starts on a  
-section of free border or forms  a closed contour") SetLastStatus;
+	:param S:
+	:type S: ChFiDS_State
+	:rtype: None
+") SetLastStatus;
 		void SetLastStatus (const ChFiDS_State S);
-		%feature("autodoc", "Args:
-	Els(Handle_ChFiDS_HElSpine)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") AppendElSpine;
+		%feature("autodoc", "	:param Els:
+	:type Els: Handle_ChFiDS_HElSpine &
+	:rtype: void
+") AppendElSpine;
 		virtual void AppendElSpine (const Handle_ChFiDS_HElSpine & Els);
-		%feature("autodoc", "Args:
-	IE(Standard_Integer)
-
-Returns:
-	Handle_ChFiDS_HElSpine
-
-No detailed docstring for this function.") ElSpine;
+		%feature("autodoc", "	:param IE:
+	:type IE: Standard_Integer
+	:rtype: Handle_ChFiDS_HElSpine
+") ElSpine;
 		Handle_ChFiDS_HElSpine ElSpine (const Standard_Integer IE);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
-
-Returns:
-	Handle_ChFiDS_HElSpine
-
-No detailed docstring for this function.") ElSpine;
+		%feature("autodoc", "	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: Handle_ChFiDS_HElSpine
+") ElSpine;
 		Handle_ChFiDS_HElSpine ElSpine (const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	W(Standard_Real)
-
-Returns:
-	Handle_ChFiDS_HElSpine
-
-No detailed docstring for this function.") ElSpine;
+		%feature("autodoc", "	:param W:
+	:type W: float
+	:rtype: Handle_ChFiDS_HElSpine
+") ElSpine;
 		Handle_ChFiDS_HElSpine ElSpine (const Standard_Real W);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_ListOfHElSpine
-
-No detailed docstring for this function.") ChangeElSpines;
+		%feature("autodoc", "	:rtype: ChFiDS_ListOfHElSpine
+") ChangeElSpines;
 		ChFiDS_ListOfHElSpine & ChangeElSpines ();
-		%feature("autodoc", "Args:
-	AllData(Standard_Boolean)=Standard_False
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Reset;
+		%feature("autodoc", "	:param AllData: default value is Standard_False
+	:type AllData: bool
+	:rtype: void
+") Reset;
 		virtual void Reset (const Standard_Boolean AllData = Standard_False);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") SplitDone;
+		%feature("autodoc", "	:rtype: bool
+") SplitDone;
 		Standard_Boolean SplitDone ();
-		%feature("autodoc", "Args:
-	B(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SplitDone;
+		%feature("autodoc", "	:param B:
+	:type B: bool
+	:rtype: None
+") SplitDone;
 		void SplitDone (const Standard_Boolean B);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* prepare the guideline depending on the edges that are elementary arks (take parameters from a single curvilinear abscissa); to be able to call methods on the geometry (first,last,value,d1,d2) it is necessary to start with preparation otherwise an exception will be raised
 
-prepare the guideline depending on the edges that  
-         are elementary arks (take parameters from  
-         a single curvilinear abscissa); to be able to call  
-         methods on the geometry (first,last,value,d1,d2)  
-         it is necessary to start with preparation otherwise an  
-         exception will be raised") Load;
+	:rtype: None
+") Load;
 		void Load ();
-		%feature("autodoc", "Args:
-	R3d(Standard_Real)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Resolution;
+		%feature("autodoc", "	:param R3d:
+	:type R3d: float
+	:rtype: float
+") Resolution;
 		Standard_Real Resolution (const Standard_Real R3d);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsClosed;
+		%feature("autodoc", "	:rtype: bool
+") IsClosed;
 		Standard_Boolean IsClosed ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") FirstParameter;
+		%feature("autodoc", "	:rtype: float
+") FirstParameter;
 		Standard_Real FirstParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") LastParameter;
+		%feature("autodoc", "	:rtype: float
+") LastParameter;
 		Standard_Real LastParameter ();
-		%feature("autodoc", "Args:
-	Par(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetFirstParameter;
+		%feature("autodoc", "	:param Par:
+	:type Par: float
+	:rtype: None
+") SetFirstParameter;
 		void SetFirstParameter (const Standard_Real Par);
-		%feature("autodoc", "Args:
-	Par(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetLastParameter;
+		%feature("autodoc", "	:param Par:
+	:type Par: float
+	:rtype: None
+") SetLastParameter;
 		void SetLastParameter (const Standard_Real Par);
-		%feature("autodoc", "Args:
-	IndexSpine(Standard_Integer)
+		%feature("autodoc", "	* gives the total length of all arcs before the number IndexSp
 
-Returns:
-	Standard_Real
-
-gives the total length of all arcs before the  
-         number IndexSp") FirstParameter;
+	:param IndexSpine:
+	:type IndexSpine: Standard_Integer
+	:rtype: float
+") FirstParameter;
 		Standard_Real FirstParameter (const Standard_Integer IndexSpine);
-		%feature("autodoc", "Args:
-	IndexSpine(Standard_Integer)
+		%feature("autodoc", "	* gives the total length till the ark with number IndexSpine (inclus)
 
-Returns:
-	Standard_Real
-
-gives the total length till the ark with number  
-         IndexSpine (inclus)") LastParameter;
+	:param IndexSpine:
+	:type IndexSpine: Standard_Integer
+	:rtype: float
+") LastParameter;
 		Standard_Real LastParameter (const Standard_Integer IndexSpine);
-		%feature("autodoc", "Args:
-	IndexSpine(Standard_Integer)
+		%feature("autodoc", "	* gives the length of ark with number IndexSp
 
-Returns:
-	Standard_Real
-
-gives the length of ark with number IndexSp") Length;
+	:param IndexSpine:
+	:type IndexSpine: Standard_Integer
+	:rtype: float
+") Length;
 		Standard_Real Length (const Standard_Integer IndexSpine);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsPeriodic;
+		%feature("autodoc", "	:rtype: bool
+") IsPeriodic;
 		Standard_Boolean IsPeriodic ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Period;
+		%feature("autodoc", "	:rtype: float
+") Period;
 		Standard_Real Period ();
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Absc;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:rtype: float
+") Absc;
 		Standard_Real Absc (const Standard_Real U);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
-	I(Standard_Integer)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Absc;
+		%feature("autodoc", "	:param U:
+	:type U: float
+	:param I:
+	:type I: Standard_Integer
+	:rtype: float
+") Absc;
 		Standard_Real Absc (const Standard_Real U,const Standard_Integer I);
-		%feature("autodoc", "Args:
-	AbsC(Standard_Real)
-	U(Standard_Real)
-	Oriented(Standard_Boolean)=Standard_True
-
-Returns:
-	None
-
-No detailed docstring for this function.") Parameter;
+		%feature("autodoc", "	:param AbsC:
+	:type AbsC: float
+	:param U:
+	:type U: float &
+	:param Oriented: default value is Standard_True
+	:type Oriented: bool
+	:rtype: None
+") Parameter;
 		void Parameter (const Standard_Real AbsC,Standard_Real &OutValue,const Standard_Boolean Oriented = Standard_True);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	AbsC(Standard_Real)
-	U(Standard_Real)
-	Oriented(Standard_Boolean)=Standard_True
-
-Returns:
-	None
-
-No detailed docstring for this function.") Parameter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param AbsC:
+	:type AbsC: float
+	:param U:
+	:type U: float &
+	:param Oriented: default value is Standard_True
+	:type Oriented: bool
+	:rtype: None
+") Parameter;
 		void Parameter (const Standard_Integer Index,const Standard_Real AbsC,Standard_Real &OutValue,const Standard_Boolean Oriented = Standard_True);
-		%feature("autodoc", "Args:
-	AbsC(Standard_Real)
-
-Returns:
-	gp_Pnt
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param AbsC:
+	:type AbsC: float
+	:rtype: gp_Pnt
+") Value;
 		gp_Pnt Value (const Standard_Real AbsC);
-		%feature("autodoc", "Args:
-	AbsC(Standard_Real)
-	P(gp_Pnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") D0;
+		%feature("autodoc", "	:param AbsC:
+	:type AbsC: float
+	:param P:
+	:type P: gp_Pnt
+	:rtype: None
+") D0;
 		void D0 (const Standard_Real AbsC,gp_Pnt & P);
-		%feature("autodoc", "Args:
-	AbsC(Standard_Real)
-	P(gp_Pnt)
-	V1(gp_Vec)
-
-Returns:
-	None
-
-No detailed docstring for this function.") D1;
+		%feature("autodoc", "	:param AbsC:
+	:type AbsC: float
+	:param P:
+	:type P: gp_Pnt
+	:param V1:
+	:type V1: gp_Vec
+	:rtype: None
+") D1;
 		void D1 (const Standard_Real AbsC,gp_Pnt & P,gp_Vec & V1);
-		%feature("autodoc", "Args:
-	AbsC(Standard_Real)
-	P(gp_Pnt)
-	V1(gp_Vec)
-	V2(gp_Vec)
-
-Returns:
-	None
-
-No detailed docstring for this function.") D2;
+		%feature("autodoc", "	:param AbsC:
+	:type AbsC: float
+	:param P:
+	:type P: gp_Pnt
+	:param V1:
+	:type V1: gp_Vec
+	:param V2:
+	:type V2: gp_Vec
+	:rtype: None
+") D2;
 		void D2 (const Standard_Real AbsC,gp_Pnt & P,gp_Vec & V1,gp_Vec & V2);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetCurrent;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") SetCurrent;
 		void SetCurrent (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* sets the current curve and returns it
 
-Returns:
-	BRepAdaptor_Curve
-
-sets the current curve and returns it") CurrentElementarySpine;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: BRepAdaptor_Curve
+") CurrentElementarySpine;
 		const BRepAdaptor_Curve & CurrentElementarySpine (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") CurrentIndexOfElementarySpine;
+		%feature("autodoc", "	:rtype: int
+") CurrentIndexOfElementarySpine;
 		Standard_Integer CurrentIndexOfElementarySpine ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	GeomAbs_CurveType
-
-No detailed docstring for this function.") GetType;
+		%feature("autodoc", "	:rtype: GeomAbs_CurveType
+") GetType;
 		GeomAbs_CurveType GetType ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Lin
-
-No detailed docstring for this function.") Line;
+		%feature("autodoc", "	:rtype: gp_Lin
+") Line;
 		gp_Lin Line ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Circ
-
-No detailed docstring for this function.") Circle;
+		%feature("autodoc", "	:rtype: gp_Circ
+") Circle;
 		gp_Circ Circle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_State
+		%feature("autodoc", "	* returns if the set of edges starts on a free boundary or if the first vertex is a breakpoint or if the set is closed
 
-returns if the set of edges starts on a free boundary  
-         or if the first vertex is a breakpoint or if the set is  
-         closed") FirstStatus;
+	:rtype: ChFiDS_State
+") FirstStatus;
 		ChFiDS_State FirstStatus ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_State
+		%feature("autodoc", "	* returns the state at the end of the set
 
-returns the state at the end of the set") LastStatus;
+	:rtype: ChFiDS_State
+") LastStatus;
 		ChFiDS_State LastStatus ();
-		%feature("autodoc", "Args:
-	IsFirst(Standard_Boolean)
-
-Returns:
-	ChFiDS_State
-
-No detailed docstring for this function.") Status;
+		%feature("autodoc", "	:param IsFirst:
+	:type IsFirst: bool
+	:rtype: ChFiDS_State
+") Status;
 		ChFiDS_State Status (const Standard_Boolean IsFirst);
-		%feature("autodoc", "Args:
-	S(ChFiDS_State)
-	IsFirst(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetStatus;
+		%feature("autodoc", "	:param S:
+	:type S: ChFiDS_State
+	:param IsFirst:
+	:type IsFirst: bool
+	:rtype: None
+") SetStatus;
 		void SetStatus (const ChFiDS_State S,const Standard_Boolean IsFirst);
-		%feature("autodoc", "Args:
-	IsFirst(Standard_Boolean)
+		%feature("autodoc", "	* returns if the set of edges starts (or end) on Tangency point.
 
-Returns:
-	Standard_Boolean
-
-returns   if the  set  of  edges starts (or   end) on  
-         Tangency point.") IsTangencyExtremity;
+	:param IsFirst:
+	:type IsFirst: bool
+	:rtype: bool
+") IsTangencyExtremity;
 		Standard_Boolean IsTangencyExtremity (const Standard_Boolean IsFirst);
-		%feature("autodoc", "Args:
-	IsTangency(Standard_Boolean)
-	IsFirst(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetTangencyExtremity;
+		%feature("autodoc", "	:param IsTangency:
+	:type IsTangency: bool
+	:param IsFirst:
+	:type IsFirst: bool
+	:rtype: None
+") SetTangencyExtremity;
 		void SetTangencyExtremity (const Standard_Boolean IsTangency,const Standard_Boolean IsFirst);
-		%feature("autodoc", "Args:
-	V(TopoDS_Vertex)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Absc;
+		%feature("autodoc", "	:param V:
+	:type V: TopoDS_Vertex &
+	:rtype: float
+") Absc;
 		Standard_Real Absc (const TopoDS_Vertex & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Vertex
-
-No detailed docstring for this function.") FirstVertex;
+		%feature("autodoc", "	:rtype: TopoDS_Vertex
+") FirstVertex;
 		TopoDS_Vertex FirstVertex ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Vertex
-
-No detailed docstring for this function.") LastVertex;
+		%feature("autodoc", "	:rtype: TopoDS_Vertex
+") LastVertex;
 		TopoDS_Vertex LastVertex ();
-		%feature("autodoc", "Args:
-	W(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetFirstTgt;
+		%feature("autodoc", "	:param W:
+	:type W: float
+	:rtype: None
+") SetFirstTgt;
 		void SetFirstTgt (const Standard_Real W);
-		%feature("autodoc", "Args:
-	W(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetLastTgt;
+		%feature("autodoc", "	:param W:
+	:type W: float
+	:rtype: None
+") SetLastTgt;
 		void SetLastTgt (const Standard_Real W);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasFirstTgt;
+		%feature("autodoc", "	:rtype: bool
+") HasFirstTgt;
 		Standard_Boolean HasFirstTgt ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasLastTgt;
+		%feature("autodoc", "	:rtype: bool
+") HasLastTgt;
 		Standard_Boolean HasLastTgt ();
-		%feature("autodoc", "Args:
-	W(Standard_Real)
+		%feature("autodoc", "	* set a parameter reference for the approx.
 
-Returns:
-	None
-
-set a parameter reference for the approx.") SetReference;
+	:param W:
+	:type W: float
+	:rtype: None
+") SetReference;
 		void SetReference (const Standard_Real W);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* set a parameter reference for the approx, at the middle of edge I.
 
-Returns:
-	None
-
-set  a  parameter  reference  for  the approx,  at the  
-         middle  of edge I.") SetReference;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: None
+") SetReference;
 		void SetReference (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	W(Standard_Real)
-	Forward(Standard_Boolean)=Standard_True
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Index;
+		%feature("autodoc", "	:param W:
+	:type W: float
+	:param Forward: default value is Standard_True
+	:type Forward: bool
+	:rtype: int
+") Index;
 		Standard_Integer Index (const Standard_Real W,const Standard_Boolean Forward = Standard_True);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Index;
+		%feature("autodoc", "	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: int
+") Index;
 		Standard_Integer Index (const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") UnsetReference;
+		%feature("autodoc", "	:rtype: None
+") UnsetReference;
 		void UnsetReference ();
-		%feature("autodoc", "Args:
-	state(ChFiDS_ErrorStatus)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetErrorStatus;
+		%feature("autodoc", "	:param state:
+	:type state: ChFiDS_ErrorStatus
+	:rtype: None
+") SetErrorStatus;
 		void SetErrorStatus (const ChFiDS_ErrorStatus state);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_ErrorStatus
-
-No detailed docstring for this function.") ErrorStatus;
+		%feature("autodoc", "	:rtype: ChFiDS_ErrorStatus
+") ErrorStatus;
 		ChFiDS_ErrorStatus ErrorStatus ();
 };
 
@@ -3820,414 +2771,257 @@ def __del__(self):
 %nodefaultctor ChFiDS_Stripe;
 class ChFiDS_Stripe : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_Stripe;
+		%feature("autodoc", "	:rtype: None
+") ChFiDS_Stripe;
 		 ChFiDS_Stripe ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Reset everything except Spine.
 
-Reset everything except Spine.") Reset;
+	:rtype: None
+") Reset;
 		void Reset ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ChFiDS_HData
-
-No detailed docstring for this function.") SetOfSurfData;
+		%feature("autodoc", "	:rtype: Handle_ChFiDS_HData
+") SetOfSurfData;
 		const Handle_ChFiDS_HData & SetOfSurfData ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ChFiDS_Spine
-
-No detailed docstring for this function.") Spine;
+		%feature("autodoc", "	:rtype: Handle_ChFiDS_Spine
+") Spine;
 		const Handle_ChFiDS_Spine & Spine ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_Orientation
-
-No detailed docstring for this function.") OrientationOnFace1;
+		%feature("autodoc", "	:rtype: TopAbs_Orientation
+") OrientationOnFace1;
 		TopAbs_Orientation OrientationOnFace1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_Orientation
-
-No detailed docstring for this function.") OrientationOnFace2;
+		%feature("autodoc", "	:rtype: TopAbs_Orientation
+") OrientationOnFace2;
 		TopAbs_Orientation OrientationOnFace2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Choix;
+		%feature("autodoc", "	:rtype: int
+") Choix;
 		Standard_Integer Choix ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ChFiDS_HData
-
-No detailed docstring for this function.") ChangeSetOfSurfData;
+		%feature("autodoc", "	:rtype: Handle_ChFiDS_HData
+") ChangeSetOfSurfData;
 		Handle_ChFiDS_HData & ChangeSetOfSurfData ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_ChFiDS_Spine
-
-No detailed docstring for this function.") ChangeSpine;
+		%feature("autodoc", "	:rtype: Handle_ChFiDS_Spine
+") ChangeSpine;
 		Handle_ChFiDS_Spine & ChangeSpine ();
-		%feature("autodoc", "Args:
-	Or1(TopAbs_Orientation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") OrientationOnFace1;
+		%feature("autodoc", "	:param Or1:
+	:type Or1: TopAbs_Orientation
+	:rtype: None
+") OrientationOnFace1;
 		void OrientationOnFace1 (const TopAbs_Orientation Or1);
-		%feature("autodoc", "Args:
-	Or2(TopAbs_Orientation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") OrientationOnFace2;
+		%feature("autodoc", "	:param Or2:
+	:type Or2: TopAbs_Orientation
+	:rtype: None
+") OrientationOnFace2;
 		void OrientationOnFace2 (const TopAbs_Orientation Or2);
-		%feature("autodoc", "Args:
-	C(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Choix;
+		%feature("autodoc", "	:param C:
+	:type C: Standard_Integer
+	:rtype: None
+") Choix;
 		void Choix (const Standard_Integer C);
-		%feature("autodoc", "Args:
-	Pdeb(Standard_Real)
-	Pfin(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FirstParameters;
+		%feature("autodoc", "	:param Pdeb:
+	:type Pdeb: float &
+	:param Pfin:
+	:type Pfin: float &
+	:rtype: None
+") FirstParameters;
 		void FirstParameters (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Pdeb(Standard_Real)
-	Pfin(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LastParameters;
+		%feature("autodoc", "	:param Pdeb:
+	:type Pdeb: float &
+	:param Pfin:
+	:type Pfin: float &
+	:rtype: None
+") LastParameters;
 		void LastParameters (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Pdeb(Standard_Real)
-	Pfin(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChangeFirstParameters;
+		%feature("autodoc", "	:param Pdeb:
+	:type Pdeb: float
+	:param Pfin:
+	:type Pfin: float
+	:rtype: None
+") ChangeFirstParameters;
 		void ChangeFirstParameters (const Standard_Real Pdeb,const Standard_Real Pfin);
-		%feature("autodoc", "Args:
-	Pdeb(Standard_Real)
-	Pfin(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChangeLastParameters;
+		%feature("autodoc", "	:param Pdeb:
+	:type Pdeb: float
+	:param Pfin:
+	:type Pfin: float
+	:rtype: None
+") ChangeLastParameters;
 		void ChangeLastParameters (const Standard_Real Pdeb,const Standard_Real Pfin);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FirstCurve;
+		%feature("autodoc", "	:rtype: int
+") FirstCurve;
 		Standard_Integer FirstCurve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LastCurve;
+		%feature("autodoc", "	:rtype: int
+") LastCurve;
 		Standard_Integer LastCurve ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChangeFirstCurve;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") ChangeFirstCurve;
 		void ChangeFirstCurve (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChangeLastCurve;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") ChangeLastCurve;
 		void ChangeLastCurve (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_Curve
-
-No detailed docstring for this function.") FirstPCurve;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_Curve
+") FirstPCurve;
 		const Handle_Geom2d_Curve & FirstPCurve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_Curve
-
-No detailed docstring for this function.") LastPCurve;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_Curve
+") LastPCurve;
 		const Handle_Geom2d_Curve & LastPCurve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_Curve
-
-No detailed docstring for this function.") ChangeFirstPCurve;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_Curve
+") ChangeFirstPCurve;
 		Handle_Geom2d_Curve & ChangeFirstPCurve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_Curve
-
-No detailed docstring for this function.") ChangeLastPCurve;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_Curve
+") ChangeLastPCurve;
 		Handle_Geom2d_Curve & ChangeLastPCurve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_Orientation
-
-No detailed docstring for this function.") FirstPCurveOrientation;
+		%feature("autodoc", "	:rtype: TopAbs_Orientation
+") FirstPCurveOrientation;
 		TopAbs_Orientation FirstPCurveOrientation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_Orientation
-
-No detailed docstring for this function.") LastPCurveOrientation;
+		%feature("autodoc", "	:rtype: TopAbs_Orientation
+") LastPCurveOrientation;
 		TopAbs_Orientation LastPCurveOrientation ();
-		%feature("autodoc", "Args:
-	O(TopAbs_Orientation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FirstPCurveOrientation;
+		%feature("autodoc", "	:param O:
+	:type O: TopAbs_Orientation
+	:rtype: None
+") FirstPCurveOrientation;
 		void FirstPCurveOrientation (const TopAbs_Orientation O);
-		%feature("autodoc", "Args:
-	O(TopAbs_Orientation)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LastPCurveOrientation;
+		%feature("autodoc", "	:param O:
+	:type O: TopAbs_Orientation
+	:rtype: None
+") LastPCurveOrientation;
 		void LastPCurveOrientation (const TopAbs_Orientation O);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") IndexFirstPointOnS1;
+		%feature("autodoc", "	:rtype: int
+") IndexFirstPointOnS1;
 		Standard_Integer IndexFirstPointOnS1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") IndexFirstPointOnS2;
+		%feature("autodoc", "	:rtype: int
+") IndexFirstPointOnS2;
 		Standard_Integer IndexFirstPointOnS2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") IndexLastPointOnS1;
+		%feature("autodoc", "	:rtype: int
+") IndexLastPointOnS1;
 		Standard_Integer IndexLastPointOnS1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") IndexLastPointOnS2;
+		%feature("autodoc", "	:rtype: int
+") IndexLastPointOnS2;
 		Standard_Integer IndexLastPointOnS2 ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChangeIndexFirstPointOnS1;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") ChangeIndexFirstPointOnS1;
 		void ChangeIndexFirstPointOnS1 (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChangeIndexFirstPointOnS2;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") ChangeIndexFirstPointOnS2;
 		void ChangeIndexFirstPointOnS2 (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChangeIndexLastPointOnS1;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") ChangeIndexLastPointOnS1;
 		void ChangeIndexLastPointOnS1 (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChangeIndexLastPointOnS2;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") ChangeIndexLastPointOnS2;
 		void ChangeIndexLastPointOnS2 (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	First(Standard_Boolean)
-	Pdeb(Standard_Real)
-	Pfin(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Parameters;
+		%feature("autodoc", "	:param First:
+	:type First: bool
+	:param Pdeb:
+	:type Pdeb: float &
+	:param Pfin:
+	:type Pfin: float &
+	:rtype: None
+") Parameters;
 		void Parameters (const Standard_Boolean First,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	First(Standard_Boolean)
-	Pdeb(Standard_Real)
-	Pfin(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetParameters;
+		%feature("autodoc", "	:param First:
+	:type First: bool
+	:param Pdeb:
+	:type Pdeb: float
+	:param Pfin:
+	:type Pfin: float
+	:rtype: None
+") SetParameters;
 		void SetParameters (const Standard_Boolean First,const Standard_Real Pdeb,const Standard_Real Pfin);
-		%feature("autodoc", "Args:
-	First(Standard_Boolean)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Curve;
+		%feature("autodoc", "	:param First:
+	:type First: bool
+	:rtype: int
+") Curve;
 		Standard_Integer Curve (const Standard_Boolean First);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	First(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetCurve;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param First:
+	:type First: bool
+	:rtype: None
+") SetCurve;
 		void SetCurve (const Standard_Integer Index,const Standard_Boolean First);
-		%feature("autodoc", "Args:
-	First(Standard_Boolean)
-
-Returns:
-	Handle_Geom2d_Curve
-
-No detailed docstring for this function.") PCurve;
+		%feature("autodoc", "	:param First:
+	:type First: bool
+	:rtype: Handle_Geom2d_Curve
+") PCurve;
 		const Handle_Geom2d_Curve & PCurve (const Standard_Boolean First);
-		%feature("autodoc", "Args:
-	First(Standard_Boolean)
-
-Returns:
-	Handle_Geom2d_Curve
-
-No detailed docstring for this function.") ChangePCurve;
+		%feature("autodoc", "	:param First:
+	:type First: bool
+	:rtype: Handle_Geom2d_Curve
+") ChangePCurve;
 		Handle_Geom2d_Curve & ChangePCurve (const Standard_Boolean First);
-		%feature("autodoc", "Args:
-	OnS(Standard_Integer)
-
-Returns:
-	TopAbs_Orientation
-
-No detailed docstring for this function.") Orientation;
+		%feature("autodoc", "	:param OnS:
+	:type OnS: Standard_Integer
+	:rtype: TopAbs_Orientation
+") Orientation;
 		TopAbs_Orientation Orientation (const Standard_Integer OnS);
-		%feature("autodoc", "Args:
-	Or(TopAbs_Orientation)
-	OnS(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetOrientation;
+		%feature("autodoc", "	:param Or:
+	:type Or: TopAbs_Orientation
+	:param OnS:
+	:type OnS: Standard_Integer
+	:rtype: None
+") SetOrientation;
 		void SetOrientation (const TopAbs_Orientation Or,const Standard_Integer OnS);
-		%feature("autodoc", "Args:
-	First(Standard_Boolean)
-
-Returns:
-	TopAbs_Orientation
-
-No detailed docstring for this function.") Orientation;
+		%feature("autodoc", "	:param First:
+	:type First: bool
+	:rtype: TopAbs_Orientation
+") Orientation;
 		TopAbs_Orientation Orientation (const Standard_Boolean First);
-		%feature("autodoc", "Args:
-	Or(TopAbs_Orientation)
-	First(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetOrientation;
+		%feature("autodoc", "	:param Or:
+	:type Or: TopAbs_Orientation
+	:param First:
+	:type First: bool
+	:rtype: None
+") SetOrientation;
 		void SetOrientation (const TopAbs_Orientation Or,const Standard_Boolean First);
-		%feature("autodoc", "Args:
-	First(Standard_Boolean)
-	OnS(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") IndexPoint;
+		%feature("autodoc", "	:param First:
+	:type First: bool
+	:param OnS:
+	:type OnS: Standard_Integer
+	:rtype: int
+") IndexPoint;
 		Standard_Integer IndexPoint (const Standard_Boolean First,const Standard_Integer OnS);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	First(Standard_Boolean)
-	OnS(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetIndexPoint;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param First:
+	:type First: bool
+	:param OnS:
+	:type OnS: Standard_Integer
+	:rtype: None
+") SetIndexPoint;
 		void SetIndexPoint (const Standard_Integer Index,const Standard_Boolean First,const Standard_Integer OnS);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") SolidIndex;
+		%feature("autodoc", "	:rtype: int
+") SolidIndex;
 		Standard_Integer SolidIndex ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetSolidIndex;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") SetSolidIndex;
 		void SetSolidIndex (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	First(Standard_Boolean)
-	Nb(Standard_Integer)=1
+		%feature("autodoc", "	* Set nb of SurfData's at end put in DS
 
-Returns:
-	None
-
-Set nb of SurfData's at end put in DS") InDS;
+	:param First:
+	:type First: bool
+	:param Nb: default value is 1
+	:type Nb: Standard_Integer
+	:rtype: None
+") InDS;
 		void InDS (const Standard_Boolean First,const Standard_Integer Nb = 1);
-		%feature("autodoc", "Args:
-	First(Standard_Boolean)
+		%feature("autodoc", "	* Returns nb of SurfData's at end being in DS
 
-Returns:
-	Standard_Integer
-
-Returns nb of SurfData's at end being in DS") IsInDS;
+	:param First:
+	:type First: bool
+	:rtype: int
+") IsInDS;
 		Standard_Integer IsInDS (const Standard_Boolean First);
 };
 
@@ -4288,108 +3082,68 @@ def __del__(self):
 %nodefaultctor ChFiDS_StripeArray1;
 class ChFiDS_StripeArray1 {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_StripeArray1;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") ChFiDS_StripeArray1;
 		 ChFiDS_StripeArray1 (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Handle_ChFiDS_Stripe)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_StripeArray1;
+		%feature("autodoc", "	:param Item:
+	:type Item: Handle_ChFiDS_Stripe &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") ChFiDS_StripeArray1;
 		 ChFiDS_StripeArray1 (const Handle_ChFiDS_Stripe & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Handle_ChFiDS_Stripe)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_ChFiDS_Stripe &
+	:rtype: None
+") Init;
 		void Init (const Handle_ChFiDS_Stripe & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(ChFiDS_StripeArray1)
-
-Returns:
-	ChFiDS_StripeArray1
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_StripeArray1 &
+	:rtype: ChFiDS_StripeArray1
+") Assign;
 		const ChFiDS_StripeArray1 & Assign (const ChFiDS_StripeArray1 & Other);
-		%feature("autodoc", "Args:
-	Other(ChFiDS_StripeArray1)
-
-Returns:
-	ChFiDS_StripeArray1
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_StripeArray1 &
+	:rtype: ChFiDS_StripeArray1
+") operator=;
 		const ChFiDS_StripeArray1 & operator = (const ChFiDS_StripeArray1 & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Handle_ChFiDS_Stripe)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Handle_ChFiDS_Stripe &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_ChFiDS_Stripe & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_ChFiDS_Stripe
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_ChFiDS_Stripe
+") Value;
 		const Handle_ChFiDS_Stripe & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_ChFiDS_Stripe
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_ChFiDS_Stripe
+") ChangeValue;
 		Handle_ChFiDS_Stripe & ChangeValue (const Standard_Integer Index);
 };
 
@@ -4411,59 +3165,36 @@ def __del__(self):
 %nodefaultctor ChFiDS_StripeMap;
 class ChFiDS_StripeMap {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_StripeMap;
+		%feature("autodoc", "	:rtype: None
+") ChFiDS_StripeMap;
 		 ChFiDS_StripeMap ();
-		%feature("autodoc", "Args:
-	V(TopoDS_Vertex)
-	F(Handle_ChFiDS_Stripe)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param V:
+	:type V: TopoDS_Vertex &
+	:param F:
+	:type F: Handle_ChFiDS_Stripe &
+	:rtype: None
+") Add;
 		void Add (const TopoDS_Vertex & V,const Handle_ChFiDS_Stripe & F);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Extent;
+		%feature("autodoc", "	:rtype: int
+") Extent;
 		Standard_Integer Extent ();
-		%feature("autodoc", "Args:
-	V(TopoDS_Vertex)
-
-Returns:
-	ChFiDS_ListOfStripe
-
-No detailed docstring for this function.") FindFromKey;
+		%feature("autodoc", "	:param V:
+	:type V: TopoDS_Vertex &
+	:rtype: ChFiDS_ListOfStripe
+") FindFromKey;
 		const ChFiDS_ListOfStripe & FindFromKey (const TopoDS_Vertex & V);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	ChFiDS_ListOfStripe
-
-No detailed docstring for this function.") FindFromIndex;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: ChFiDS_ListOfStripe
+") FindFromIndex;
 		const ChFiDS_ListOfStripe & FindFromIndex (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-
-Returns:
-	TopoDS_Vertex
-
-No detailed docstring for this function.") FindKey;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_Integer
+	:rtype: TopoDS_Vertex
+") FindKey;
 		const TopoDS_Vertex & FindKey (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
 };
 
@@ -4485,410 +3216,232 @@ def __del__(self):
 %nodefaultctor ChFiDS_SurfData;
 class ChFiDS_SurfData : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_SurfData;
+		%feature("autodoc", "	:rtype: None
+") ChFiDS_SurfData;
 		 ChFiDS_SurfData ();
-		%feature("autodoc", "Args:
-	Other(Handle_ChFiDS_SurfData)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Copy;
+		%feature("autodoc", "	:param Other:
+	:type Other: Handle_ChFiDS_SurfData &
+	:rtype: None
+") Copy;
 		void Copy (const Handle_ChFiDS_SurfData & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") IndexOfS1;
+		%feature("autodoc", "	:rtype: int
+") IndexOfS1;
 		Standard_Integer IndexOfS1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") IndexOfS2;
+		%feature("autodoc", "	:rtype: int
+") IndexOfS2;
 		Standard_Integer IndexOfS2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOnCurve1;
+		%feature("autodoc", "	:rtype: bool
+") IsOnCurve1;
 		Standard_Boolean IsOnCurve1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOnCurve2;
+		%feature("autodoc", "	:rtype: bool
+") IsOnCurve2;
 		Standard_Boolean IsOnCurve2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") IndexOfC1;
+		%feature("autodoc", "	:rtype: int
+") IndexOfC1;
 		Standard_Integer IndexOfC1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") IndexOfC2;
+		%feature("autodoc", "	:rtype: int
+") IndexOfC2;
 		Standard_Integer IndexOfC2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Surf;
+		%feature("autodoc", "	:rtype: int
+") Surf;
 		Standard_Integer Surf ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_Orientation
-
-No detailed docstring for this function.") Orientation;
+		%feature("autodoc", "	:rtype: TopAbs_Orientation
+") Orientation;
 		TopAbs_Orientation Orientation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_FaceInterference
-
-No detailed docstring for this function.") InterferenceOnS1;
+		%feature("autodoc", "	:rtype: ChFiDS_FaceInterference
+") InterferenceOnS1;
 		const ChFiDS_FaceInterference & InterferenceOnS1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_FaceInterference
-
-No detailed docstring for this function.") InterferenceOnS2;
+		%feature("autodoc", "	:rtype: ChFiDS_FaceInterference
+") InterferenceOnS2;
 		const ChFiDS_FaceInterference & InterferenceOnS2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_CommonPoint
-
-No detailed docstring for this function.") VertexFirstOnS1;
+		%feature("autodoc", "	:rtype: ChFiDS_CommonPoint
+") VertexFirstOnS1;
 		const ChFiDS_CommonPoint & VertexFirstOnS1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_CommonPoint
-
-No detailed docstring for this function.") VertexFirstOnS2;
+		%feature("autodoc", "	:rtype: ChFiDS_CommonPoint
+") VertexFirstOnS2;
 		const ChFiDS_CommonPoint & VertexFirstOnS2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_CommonPoint
-
-No detailed docstring for this function.") VertexLastOnS1;
+		%feature("autodoc", "	:rtype: ChFiDS_CommonPoint
+") VertexLastOnS1;
 		const ChFiDS_CommonPoint & VertexLastOnS1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_CommonPoint
-
-No detailed docstring for this function.") VertexLastOnS2;
+		%feature("autodoc", "	:rtype: ChFiDS_CommonPoint
+") VertexLastOnS2;
 		const ChFiDS_CommonPoint & VertexLastOnS2 ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChangeIndexOfS1;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") ChangeIndexOfS1;
 		void ChangeIndexOfS1 (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChangeIndexOfS2;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") ChangeIndexOfS2;
 		void ChangeIndexOfS2 (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChangeSurf;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") ChangeSurf;
 		void ChangeSurf (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetIndexOfC1;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") SetIndexOfC1;
 		void SetIndexOfC1 (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetIndexOfC2;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") SetIndexOfC2;
 		void SetIndexOfC2 (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_Orientation
-
-No detailed docstring for this function.") ChangeOrientation;
+		%feature("autodoc", "	:rtype: TopAbs_Orientation
+") ChangeOrientation;
 		TopAbs_Orientation & ChangeOrientation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_FaceInterference
-
-No detailed docstring for this function.") ChangeInterferenceOnS1;
+		%feature("autodoc", "	:rtype: ChFiDS_FaceInterference
+") ChangeInterferenceOnS1;
 		ChFiDS_FaceInterference & ChangeInterferenceOnS1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_FaceInterference
-
-No detailed docstring for this function.") ChangeInterferenceOnS2;
+		%feature("autodoc", "	:rtype: ChFiDS_FaceInterference
+") ChangeInterferenceOnS2;
 		ChFiDS_FaceInterference & ChangeInterferenceOnS2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_CommonPoint
-
-No detailed docstring for this function.") ChangeVertexFirstOnS1;
+		%feature("autodoc", "	:rtype: ChFiDS_CommonPoint
+") ChangeVertexFirstOnS1;
 		ChFiDS_CommonPoint & ChangeVertexFirstOnS1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_CommonPoint
-
-No detailed docstring for this function.") ChangeVertexFirstOnS2;
+		%feature("autodoc", "	:rtype: ChFiDS_CommonPoint
+") ChangeVertexFirstOnS2;
 		ChFiDS_CommonPoint & ChangeVertexFirstOnS2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_CommonPoint
-
-No detailed docstring for this function.") ChangeVertexLastOnS1;
+		%feature("autodoc", "	:rtype: ChFiDS_CommonPoint
+") ChangeVertexLastOnS1;
 		ChFiDS_CommonPoint & ChangeVertexLastOnS1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_CommonPoint
-
-No detailed docstring for this function.") ChangeVertexLastOnS2;
+		%feature("autodoc", "	:rtype: ChFiDS_CommonPoint
+") ChangeVertexLastOnS2;
 		ChFiDS_CommonPoint & ChangeVertexLastOnS2 ();
-		%feature("autodoc", "Args:
-	OnS(Standard_Integer)
-
-Returns:
-	ChFiDS_FaceInterference
-
-No detailed docstring for this function.") Interference;
+		%feature("autodoc", "	:param OnS:
+	:type OnS: Standard_Integer
+	:rtype: ChFiDS_FaceInterference
+") Interference;
 		const ChFiDS_FaceInterference & Interference (const Standard_Integer OnS);
-		%feature("autodoc", "Args:
-	OnS(Standard_Integer)
-
-Returns:
-	ChFiDS_FaceInterference
-
-No detailed docstring for this function.") ChangeInterference;
+		%feature("autodoc", "	:param OnS:
+	:type OnS: Standard_Integer
+	:rtype: ChFiDS_FaceInterference
+") ChangeInterference;
 		ChFiDS_FaceInterference & ChangeInterference (const Standard_Integer OnS);
-		%feature("autodoc", "Args:
-	OfS(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Index;
+		%feature("autodoc", "	:param OfS:
+	:type OfS: Standard_Integer
+	:rtype: int
+") Index;
 		Standard_Integer Index (const Standard_Integer OfS);
-		%feature("autodoc", "Args:
-	First(Standard_Boolean)
-	OnS(Standard_Integer)
+		%feature("autodoc", "	* returns one of the four vertices wether First is true or wrong and OnS equals 1 or 2.
 
-Returns:
-	ChFiDS_CommonPoint
-
-returns one of the four vertices  wether First is true  
-         or wrong and OnS equals 1 or 2.") Vertex;
+	:param First:
+	:type First: bool
+	:param OnS:
+	:type OnS: Standard_Integer
+	:rtype: ChFiDS_CommonPoint
+") Vertex;
 		const ChFiDS_CommonPoint & Vertex (const Standard_Boolean First,const Standard_Integer OnS);
-		%feature("autodoc", "Args:
-	First(Standard_Boolean)
-	OnS(Standard_Integer)
+		%feature("autodoc", "	* returns one of the four vertices wether First is true or wrong and OnS equals 1 or 2.
 
-Returns:
-	ChFiDS_CommonPoint
-
-returns one of the four vertices  wether First is true  
-         or wrong and OnS equals 1 or 2.") ChangeVertex;
+	:param First:
+	:type First: bool
+	:param OnS:
+	:type OnS: Standard_Integer
+	:rtype: ChFiDS_CommonPoint
+") ChangeVertex;
 		ChFiDS_CommonPoint & ChangeVertex (const Standard_Boolean First,const Standard_Integer OnS);
-		%feature("autodoc", "Args:
-	OnS(Standard_Integer)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsOnCurve;
+		%feature("autodoc", "	:param OnS:
+	:type OnS: Standard_Integer
+	:rtype: bool
+") IsOnCurve;
 		Standard_Boolean IsOnCurve (const Standard_Integer OnS);
-		%feature("autodoc", "Args:
-	OnS(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") IndexOfC;
+		%feature("autodoc", "	:param OnS:
+	:type OnS: Standard_Integer
+	:rtype: int
+") IndexOfC;
 		Standard_Integer IndexOfC (const Standard_Integer OnS);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") FirstSpineParam;
+		%feature("autodoc", "	:rtype: float
+") FirstSpineParam;
 		Standard_Real FirstSpineParam ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") LastSpineParam;
+		%feature("autodoc", "	:rtype: float
+") LastSpineParam;
 		Standard_Real LastSpineParam ();
-		%feature("autodoc", "Args:
-	Par(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FirstSpineParam;
+		%feature("autodoc", "	:param Par:
+	:type Par: float
+	:rtype: None
+") FirstSpineParam;
 		void FirstSpineParam (const Standard_Real Par);
-		%feature("autodoc", "Args:
-	Par(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LastSpineParam;
+		%feature("autodoc", "	:param Par:
+	:type Par: float
+	:rtype: None
+") LastSpineParam;
 		void LastSpineParam (const Standard_Real Par);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") FirstExtensionValue;
+		%feature("autodoc", "	:rtype: float
+") FirstExtensionValue;
 		Standard_Real FirstExtensionValue ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") LastExtensionValue;
+		%feature("autodoc", "	:rtype: float
+") LastExtensionValue;
 		Standard_Real LastExtensionValue ();
-		%feature("autodoc", "Args:
-	Extend(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") FirstExtensionValue;
+		%feature("autodoc", "	:param Extend:
+	:type Extend: float
+	:rtype: None
+") FirstExtensionValue;
 		void FirstExtensionValue (const Standard_Real Extend);
-		%feature("autodoc", "Args:
-	Extend(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LastExtensionValue;
+		%feature("autodoc", "	:param Extend:
+	:type Extend: float
+	:rtype: None
+") LastExtensionValue;
 		void LastExtensionValue (const Standard_Real Extend);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_MMgt_TShared
-
-No detailed docstring for this function.") Simul;
+		%feature("autodoc", "	:rtype: Handle_MMgt_TShared
+") Simul;
 		Handle_MMgt_TShared Simul ();
-		%feature("autodoc", "Args:
-	S(Handle_MMgt_TShared)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetSimul;
+		%feature("autodoc", "	:param S:
+	:type S: Handle_MMgt_TShared &
+	:rtype: None
+") SetSimul;
 		void SetSimul (const Handle_MMgt_TShared & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ResetSimul;
+		%feature("autodoc", "	:rtype: None
+") ResetSimul;
 		void ResetSimul ();
-		%feature("autodoc", "Args:
-	First(Standard_Boolean)
-	OnS(Standard_Integer)
-
-Returns:
-	gp_Pnt2d
-
-No detailed docstring for this function.") Get2dPoints;
+		%feature("autodoc", "	:param First:
+	:type First: bool
+	:param OnS:
+	:type OnS: Standard_Integer
+	:rtype: gp_Pnt2d
+") Get2dPoints;
 		gp_Pnt2d Get2dPoints (const Standard_Boolean First,const Standard_Integer OnS);
-		%feature("autodoc", "Args:
-	P2df1(gp_Pnt2d)
-	P2dl1(gp_Pnt2d)
-	P2df2(gp_Pnt2d)
-	P2dl2(gp_Pnt2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Get2dPoints;
+		%feature("autodoc", "	:param P2df1:
+	:type P2df1: gp_Pnt2d
+	:param P2dl1:
+	:type P2dl1: gp_Pnt2d
+	:param P2df2:
+	:type P2df2: gp_Pnt2d
+	:param P2dl2:
+	:type P2dl2: gp_Pnt2d
+	:rtype: None
+") Get2dPoints;
 		void Get2dPoints (gp_Pnt2d & P2df1,gp_Pnt2d & P2dl1,gp_Pnt2d & P2df2,gp_Pnt2d & P2dl2);
-		%feature("autodoc", "Args:
-	P2df1(gp_Pnt2d)
-	P2dl1(gp_Pnt2d)
-	P2df2(gp_Pnt2d)
-	P2dl2(gp_Pnt2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Set2dPoints;
+		%feature("autodoc", "	:param P2df1:
+	:type P2df1: gp_Pnt2d
+	:param P2dl1:
+	:type P2dl1: gp_Pnt2d
+	:param P2df2:
+	:type P2df2: gp_Pnt2d
+	:param P2dl2:
+	:type P2dl2: gp_Pnt2d
+	:rtype: None
+") Set2dPoints;
 		void Set2dPoints (const gp_Pnt2d & P2df1,const gp_Pnt2d & P2dl1,const gp_Pnt2d & P2df2,const gp_Pnt2d & P2dl2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") TwistOnS1;
+		%feature("autodoc", "	:rtype: bool
+") TwistOnS1;
 		Standard_Boolean TwistOnS1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") TwistOnS2;
+		%feature("autodoc", "	:rtype: bool
+") TwistOnS2;
 		Standard_Boolean TwistOnS2 ();
-		%feature("autodoc", "Args:
-	T(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TwistOnS1;
+		%feature("autodoc", "	:param T:
+	:type T: bool
+	:rtype: None
+") TwistOnS1;
 		void TwistOnS1 (const Standard_Boolean T);
-		%feature("autodoc", "Args:
-	T(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TwistOnS2;
+		%feature("autodoc", "	:param T:
+	:type T: bool
+	:rtype: None
+") TwistOnS2;
 		void TwistOnS2 (const Standard_Boolean T);
 };
 
@@ -4949,81 +3502,60 @@ def __del__(self):
 %nodefaultctor ChFiDS_ChamfSpine;
 class ChFiDS_ChamfSpine : public ChFiDS_Spine {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_ChamfSpine;
+		%feature("autodoc", "	:rtype: None
+") ChFiDS_ChamfSpine;
 		 ChFiDS_ChamfSpine ();
-		%feature("autodoc", "Args:
-	Tol(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_ChamfSpine;
+		%feature("autodoc", "	:param Tol:
+	:type Tol: float
+	:rtype: None
+") ChFiDS_ChamfSpine;
 		 ChFiDS_ChamfSpine (const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Dis(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetDist;
+		%feature("autodoc", "	:param Dis:
+	:type Dis: float
+	:rtype: None
+") SetDist;
 		void SetDist (const Standard_Real Dis);
-		%feature("autodoc", "Args:
-	Dis(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GetDist;
+		%feature("autodoc", "	:param Dis:
+	:type Dis: float &
+	:rtype: None
+") GetDist;
 		void GetDist (Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Dis1(Standard_Real)
-	Dis2(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetDists;
+		%feature("autodoc", "	:param Dis1:
+	:type Dis1: float
+	:param Dis2:
+	:type Dis2: float
+	:rtype: None
+") SetDists;
 		void SetDists (const Standard_Real Dis1,const Standard_Real Dis2);
-		%feature("autodoc", "Args:
-	Dis1(Standard_Real)
-	Dis2(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Dists;
+		%feature("autodoc", "	:param Dis1:
+	:type Dis1: float &
+	:param Dis2:
+	:type Dis2: float &
+	:rtype: None
+") Dists;
 		void Dists (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Dis(Standard_Real)
-	Angle(Standard_Real)
-	DisOnF1(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GetDistAngle;
+		%feature("autodoc", "	:param Dis:
+	:type Dis: float &
+	:param Angle:
+	:type Angle: float &
+	:param DisOnF1:
+	:type DisOnF1: bool
+	:rtype: None
+") GetDistAngle;
 		void GetDistAngle (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Boolean & DisOnF1);
-		%feature("autodoc", "Args:
-	Dis(Standard_Real)
-	Angle(Standard_Real)
-	DisOnF1(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetDistAngle;
+		%feature("autodoc", "	:param Dis:
+	:type Dis: float
+	:param Angle:
+	:type Angle: float
+	:param DisOnF1:
+	:type DisOnF1: bool
+	:rtype: None
+") SetDistAngle;
 		void SetDistAngle (const Standard_Real Dis,const Standard_Real Angle,const Standard_Boolean DisOnF1);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	ChFiDS_ChamfMethod
+		%feature("autodoc", "	* Return the method of chamfers used
 
-Return the method of chamfers used") IsChamfer;
+	:rtype: ChFiDS_ChamfMethod
+") IsChamfer;
 		ChFiDS_ChamfMethod IsChamfer ();
 };
 
@@ -5084,162 +3616,128 @@ def __del__(self):
 %nodefaultctor ChFiDS_FilSpine;
 class ChFiDS_FilSpine : public ChFiDS_Spine {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_FilSpine;
+		%feature("autodoc", "	:rtype: None
+") ChFiDS_FilSpine;
 		 ChFiDS_FilSpine ();
-		%feature("autodoc", "Args:
-	Tol(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ChFiDS_FilSpine;
+		%feature("autodoc", "	:param Tol:
+	:type Tol: float
+	:rtype: None
+") ChFiDS_FilSpine;
 		 ChFiDS_FilSpine (const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	AllData(Standard_Boolean)=Standard_False
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") Reset;
+		%feature("autodoc", "	:param AllData: default value is Standard_False
+	:type AllData: bool
+	:rtype: void
+") Reset;
 		virtual void Reset (const Standard_Boolean AllData = Standard_False);
-		%feature("autodoc", "Args:
-	Radius(Standard_Real)
-	E(TopoDS_Edge)
+		%feature("autodoc", "	* initializes the constant vector on edge E.
 
-Returns:
-	None
-
-initializes the constant vector on edge E.") SetRadius;
+	:param Radius:
+	:type Radius: float
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: None
+") SetRadius;
 		void SetRadius (const Standard_Real Radius,const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
+		%feature("autodoc", "	* resets the constant vector on edge E.
 
-Returns:
-	None
-
-resets the constant vector  on   edge E.") UnSetRadius;
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: None
+") UnSetRadius;
 		void UnSetRadius (const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	Radius(Standard_Real)
-	V(TopoDS_Vertex)
+		%feature("autodoc", "	* initializes the vector on Vertex V.
 
-Returns:
-	None
-
-initializes the  vector on Vertex V.") SetRadius;
+	:param Radius:
+	:type Radius: float
+	:param V:
+	:type V: TopoDS_Vertex &
+	:rtype: None
+") SetRadius;
 		void SetRadius (const Standard_Real Radius,const TopoDS_Vertex & V);
-		%feature("autodoc", "Args:
-	V(TopoDS_Vertex)
+		%feature("autodoc", "	* resets the vector on Vertex V.
 
-Returns:
-	None
-
-resets the vector on Vertex V.") UnSetRadius;
+	:param V:
+	:type V: TopoDS_Vertex &
+	:rtype: None
+") UnSetRadius;
 		void UnSetRadius (const TopoDS_Vertex & V);
-		%feature("autodoc", "Args:
-	UandR(gp_XY)
-	IinC(Standard_Integer)
+		%feature("autodoc", "	* initializes the vector on the point of parameter W.
 
-Returns:
-	None
-
-initializes the vector on the point of parameter W.") SetRadius;
+	:param UandR:
+	:type UandR: gp_XY
+	:param IinC:
+	:type IinC: Standard_Integer
+	:rtype: None
+") SetRadius;
 		void SetRadius (const gp_XY & UandR,const Standard_Integer IinC);
-		%feature("autodoc", "Args:
-	Radius(Standard_Real)
+		%feature("autodoc", "	* initializes the constant vector on all spine.
 
-Returns:
-	None
-
-initializes the constant vector on all spine.") SetRadius;
+	:param Radius:
+	:type Radius: float
+	:rtype: None
+") SetRadius;
 		void SetRadius (const Standard_Real Radius);
-		%feature("autodoc", "Args:
-	C(Handle_Law_Function)
-	IinC(Standard_Integer)
+		%feature("autodoc", "	* initializes the rule of evolution on all spine.
 
-Returns:
-	None
-
-initializes the rule of evolution on all spine.") SetRadius;
+	:param C:
+	:type C: Handle_Law_Function &
+	:param IinC:
+	:type IinC: Standard_Integer
+	:rtype: None
+") SetRadius;
 		void SetRadius (const Handle_Law_Function & C,const Standard_Integer IinC);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns true if the radius is constant all along the spine.
 
-returns true if the radius is constant  
-         all along the spine.") IsConstant;
+	:rtype: bool
+") IsConstant;
 		Standard_Boolean IsConstant ();
-		%feature("autodoc", "Args:
-	IE(Standard_Integer)
+		%feature("autodoc", "	* returns true if the radius is constant all along the edge E.
 
-Returns:
-	Standard_Boolean
-
-returns true if the radius is constant  
-         all along the edge E.") IsConstant;
+	:param IE:
+	:type IE: Standard_Integer
+	:rtype: bool
+") IsConstant;
 		Standard_Boolean IsConstant (const Standard_Integer IE);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns the radius if the fillet is constant all along the spine.
 
-returns the radius if the fillet is constant  
-         all along the spine.") Radius;
+	:rtype: float
+") Radius;
 		Standard_Real Radius ();
-		%feature("autodoc", "Args:
-	IE(Standard_Integer)
+		%feature("autodoc", "	* returns the radius if the fillet is constant all along the edge E.
 
-Returns:
-	Standard_Real
-
-returns the radius if the fillet is constant  
-         all along the edge E.") Radius;
+	:param IE:
+	:type IE: Standard_Integer
+	:rtype: float
+") Radius;
 		Standard_Real Radius (const Standard_Integer IE);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
+		%feature("autodoc", "	* returns the radius if the fillet is constant all along the edge E.
 
-Returns:
-	Standard_Real
-
-returns the radius if the fillet is constant  
-         all along the edge E.") Radius;
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: float
+") Radius;
 		Standard_Real Radius (const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	Els(Handle_ChFiDS_HElSpine)
-
-Returns:
-	virtual void
-
-No detailed docstring for this function.") AppendElSpine;
+		%feature("autodoc", "	:param Els:
+	:type Els: Handle_ChFiDS_HElSpine &
+	:rtype: void
+") AppendElSpine;
 		virtual void AppendElSpine (const Handle_ChFiDS_HElSpine & Els);
-		%feature("autodoc", "Args:
-	Els(Handle_ChFiDS_HElSpine)
-
-Returns:
-	Handle_Law_Composite
-
-No detailed docstring for this function.") Law;
+		%feature("autodoc", "	:param Els:
+	:type Els: Handle_ChFiDS_HElSpine &
+	:rtype: Handle_Law_Composite
+") Law;
 		Handle_Law_Composite Law (const Handle_ChFiDS_HElSpine & Els);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
+		%feature("autodoc", "	* returns the elementary law
 
-Returns:
-	Handle_Law_Function
-
-returns the elementary law") ChangeLaw;
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: Handle_Law_Function
+") ChangeLaw;
 		Handle_Law_Function & ChangeLaw (const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns the maximum radius if the fillet is non-constant
 
-returns the maximum radius if the fillet is non-constant") MaxRadFromSeqAndLaws;
+	:rtype: float
+") MaxRadFromSeqAndLaws;
 		Standard_Real MaxRadFromSeqAndLaws ();
 };
 

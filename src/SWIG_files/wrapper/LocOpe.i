@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -51,44 +51,41 @@ enum LocOpe_Operation {
 %nodefaultctor LocOpe;
 class LocOpe {
 	public:
-		%feature("autodoc", "Args:
-	W(TopoDS_Wire)
-	OnF(TopoDS_Face)
+		%feature("autodoc", "	* Returns Standard_True when the wire <W> is closed on the face <OnF>.
 
-Returns:
-	static Standard_Boolean
-
-Returns Standard_True  when the wire <W> is closed  
-         on the face <OnF>.") Closed;
+	:param W:
+	:type W: TopoDS_Wire &
+	:param OnF:
+	:type OnF: TopoDS_Face &
+	:rtype: bool
+") Closed;
 		static Standard_Boolean Closed (const TopoDS_Wire & W,const TopoDS_Face & OnF);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
-	OnF(TopoDS_Face)
+		%feature("autodoc", "	* Returns Standard_True when the edge <E> is closed on the face <OnF>.
 
-Returns:
-	static Standard_Boolean
-
-Returns Standard_True  when the edge <E> is closed  
-         on the face <OnF>.") Closed;
+	:param E:
+	:type E: TopoDS_Edge &
+	:param OnF:
+	:type OnF: TopoDS_Face &
+	:rtype: bool
+") Closed;
 		static Standard_Boolean Closed (const TopoDS_Edge & E,const TopoDS_Face & OnF);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
-	F1(TopoDS_Face)
-	F2(TopoDS_Face)
+		%feature("autodoc", "	* Returns Standard_True when the faces are tangent
 
-Returns:
-	static Standard_Boolean
-
-Returns Standard_True  when the faces are tangent") TgtFaces;
+	:param E:
+	:type E: TopoDS_Edge &
+	:param F1:
+	:type F1: TopoDS_Face &
+	:param F2:
+	:type F2: TopoDS_Face &
+	:rtype: bool
+") TgtFaces;
 		static Standard_Boolean TgtFaces (const TopoDS_Edge & E,const TopoDS_Face & F1,const TopoDS_Face & F2);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-	Pt(TColgp_SequenceOfPnt)
-
-Returns:
-	static void
-
-No detailed docstring for this function.") SampleEdges;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:param Pt:
+	:type Pt: TColgp_SequenceOfPnt
+	:rtype: void
+") SampleEdges;
 		static void SampleEdges (const TopoDS_Shape & S,TColgp_SequenceOfPnt & Pt);
 };
 
@@ -110,37 +107,25 @@ def __del__(self):
 %nodefaultctor LocOpe_BuildShape;
 class LocOpe_BuildShape {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_BuildShape;
+		%feature("autodoc", "	:rtype: None
+") LocOpe_BuildShape;
 		 LocOpe_BuildShape ();
-		%feature("autodoc", "Args:
-	L(TopTools_ListOfShape)
+		%feature("autodoc", "	* Builds shape(s) from the list <L>. Uses only the faces of <L>.
 
-Returns:
-	None
-
-Builds shape(s) from  the list <L>.  Uses only the  
-         faces of <L>.") LocOpe_BuildShape;
+	:param L:
+	:type L: TopTools_ListOfShape &
+	:rtype: None
+") LocOpe_BuildShape;
 		 LocOpe_BuildShape (const TopTools_ListOfShape & L);
-		%feature("autodoc", "Args:
-	L(TopTools_ListOfShape)
+		%feature("autodoc", "	* Builds shape(s) from the list <L>. Uses only the faces of <L>.
 
-Returns:
-	None
-
-Builds shape(s) from  the list <L>.  Uses only the  
-         faces of <L>.") Perform;
+	:param L:
+	:type L: TopTools_ListOfShape &
+	:rtype: None
+") Perform;
 		void Perform (const TopTools_ListOfShape & L);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Shape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Shape;
 		const TopoDS_Shape & Shape ();
 };
 
@@ -162,44 +147,28 @@ def __del__(self):
 %nodefaultctor LocOpe_BuildWires;
 class LocOpe_BuildWires {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_BuildWires;
+		%feature("autodoc", "	:rtype: None
+") LocOpe_BuildWires;
 		 LocOpe_BuildWires ();
-		%feature("autodoc", "Args:
-	Ledges(TopTools_ListOfShape)
-	PW(Handle_LocOpe_ProjectedWires)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_BuildWires;
+		%feature("autodoc", "	:param Ledges:
+	:type Ledges: TopTools_ListOfShape &
+	:param PW:
+	:type PW: Handle_LocOpe_ProjectedWires &
+	:rtype: None
+") LocOpe_BuildWires;
 		 LocOpe_BuildWires (const TopTools_ListOfShape & Ledges,const Handle_LocOpe_ProjectedWires & PW);
-		%feature("autodoc", "Args:
-	Ledges(TopTools_ListOfShape)
-	PW(Handle_LocOpe_ProjectedWires)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param Ledges:
+	:type Ledges: TopTools_ListOfShape &
+	:param PW:
+	:type PW: Handle_LocOpe_ProjectedWires &
+	:rtype: None
+") Perform;
 		void Perform (const TopTools_ListOfShape & Ledges,const Handle_LocOpe_ProjectedWires & PW);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") Result;
+		%feature("autodoc", "	:rtype: TopTools_ListOfShape
+") Result;
 		const TopTools_ListOfShape & Result ();
 };
 
@@ -221,182 +190,131 @@ def __del__(self):
 %nodefaultctor LocOpe_CSIntersector;
 class LocOpe_CSIntersector {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor.
 
-Empty constructor.") LocOpe_CSIntersector;
+	:rtype: None
+") LocOpe_CSIntersector;
 		 LocOpe_CSIntersector ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* Creates and performs the intersection betwwen <Ax1> and <S>.
 
-Returns:
-	None
-
-Creates  and performs the intersection     betwwen  
-         <Ax1> and <S>.") LocOpe_CSIntersector;
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") LocOpe_CSIntersector;
 		 LocOpe_CSIntersector (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* Performs the intersection between <Ax1 and <S>.
 
-Returns:
-	None
-
-Performs the intersection between <Ax1 and <S>.") Init;
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	Slin(LocOpe_SequenceOfLin)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param Slin:
+	:type Slin: LocOpe_SequenceOfLin &
+	:rtype: None
+") Perform;
 		void Perform (const LocOpe_SequenceOfLin & Slin);
-		%feature("autodoc", "Args:
-	Scir(LocOpe_SequenceOfCirc)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param Scir:
+	:type Scir: LocOpe_SequenceOfCirc &
+	:rtype: None
+") Perform;
 		void Perform (const LocOpe_SequenceOfCirc & Scir);
-		%feature("autodoc", "Args:
-	Scur(TColGeom_SequenceOfCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param Scur:
+	:type Scur: TColGeom_SequenceOfCurve &
+	:rtype: None
+") Perform;
 		void Perform (const TColGeom_SequenceOfCurve & Scur);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns <Standard_True> if the intersection has been done.
 
-Returns <Standard_True>  if the  intersection  has  
-         been done.") IsDone;
+	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
+		%feature("autodoc", "	* Returns the number of intersection point on the element of range <I>.
 
-Returns:
-	Standard_Integer
-
-Returns  the number of   intersection point on the  
-         element of range <I>.") NbPoints;
+	:param I:
+	:type I: Standard_Integer
+	:rtype: int
+") NbPoints;
 		Standard_Integer NbPoints (const Standard_Integer I);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Returns the intersection point of range <Index> on element of range <I>. The points are sorted in increasing order of parameter along the axis.
 
-Returns:
-	LocOpe_PntFace
-
-Returns the intersection point of range <Index> on  
-         element of range   <I>. The points   are sorted in  
-         increasing order of parameter along the axis.") Point;
+	:param I:
+	:type I: Standard_Integer
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: LocOpe_PntFace
+") Point;
 		const LocOpe_PntFace & Point (const Standard_Integer I,const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	From(Standard_Real)
-	Tol(Standard_Real)
-	Or(TopAbs_Orientation)
-	IndFrom(Standard_Integer)
-	IndTo(Standard_Integer)
+		%feature("autodoc", "	* On the element of range <I>, searches the first intersection point located after the parameter <From>, wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal.  Otherwise, returns <Standard_False>.
 
-Returns:
-	Standard_Boolean
-
-On  the element of range   <I>, searches the first  
-         intersection   point  located after  the parameter  
-         <From>,   wich orientation is not TopAbs_EXTERNAL.  
-         If  found, returns <Standard_True>.  <Or> contains  
-         the orientation    of  the  point,  <IndFrom>  and  
-         <IndTo> represents  the interval  of index in  the  
-         sequence  of intersection  point corresponding  to  
-         the  point. (IndFrom <=   IndTo). <Tol> is used to  
-         determine if 2 parameters are equal.  
- 
-         Otherwise, returns <Standard_False>.") LocalizeAfter;
+	:param I:
+	:type I: Standard_Integer
+	:param From:
+	:type From: float
+	:param Tol:
+	:type Tol: float
+	:param Or:
+	:type Or: TopAbs_Orientation &
+	:param IndFrom:
+	:type IndFrom: Standard_Integer &
+	:param IndTo:
+	:type IndTo: Standard_Integer &
+	:rtype: bool
+") LocalizeAfter;
 		Standard_Boolean LocalizeAfter (const Standard_Integer I,const Standard_Real From,const Standard_Real Tol,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	From(Standard_Real)
-	Tol(Standard_Real)
-	Or(TopAbs_Orientation)
-	IndFrom(Standard_Integer)
-	IndTo(Standard_Integer)
+		%feature("autodoc", "	* On the element of range <I>, searches the first intersection point located before the parameter <From>, wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal.  Otherwise, returns <Standard_False>.
 
-Returns:
-	Standard_Boolean
-
-On the element  of range  <I>, searches the  first  
-         intersection point   located before  the parameter  
-         <From>,  wich orientation  is not TopAbs_EXTERNAL.  
-         If found,  returns <Standard_True>.  <Or> contains  
-         the   orientation  of   the point,  <IndFrom>  and  
-         <IndTo> represents the interval   of index in  the  
-         sequence of  intersection  point corresponding  to  
-         the point (IndFrom  <=  IndTo). <Tol> is   used to  
-         determine if 2 parameters are equal.  
- 
-         Otherwise, returns <Standard_False>.") LocalizeBefore;
+	:param I:
+	:type I: Standard_Integer
+	:param From:
+	:type From: float
+	:param Tol:
+	:type Tol: float
+	:param Or:
+	:type Or: TopAbs_Orientation &
+	:param IndFrom:
+	:type IndFrom: Standard_Integer &
+	:param IndTo:
+	:type IndTo: Standard_Integer &
+	:rtype: bool
+") LocalizeBefore;
 		Standard_Boolean LocalizeBefore (const Standard_Integer I,const Standard_Real From,const Standard_Real Tol,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	FromInd(Standard_Integer)
-	Tol(Standard_Real)
-	Or(TopAbs_Orientation)
-	IndFrom(Standard_Integer)
-	IndTo(Standard_Integer)
+		%feature("autodoc", "	* On the element of range <I>, searches the first intersection point located after the index <FromInd> ( >= FromInd + 1), wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal.  Otherwise, returns <Standard_False>.
 
-Returns:
-	Standard_Boolean
-
-On the  element of  range <I>, searches  the first  
-         intersection      point  located after the   index  
-         <FromInd> ( >=  FromInd + 1), wich  orientation is  
-         not    TopAbs_EXTERNAL.      If    found,  returns  
-         <Standard_True>.  <Or> contains the orientation of  
-         the  point, <IndFrom>  and <IndTo> represents  the  
-         interval of index in  the sequence of intersection  
-         point corresponding   to the  point.  (IndFrom  <=  
-         IndTo). <Tol> is used to determine if 2 parameters  
-         are equal.  
- 
-         Otherwise, returns <Standard_False>.") LocalizeAfter;
+	:param I:
+	:type I: Standard_Integer
+	:param FromInd:
+	:type FromInd: Standard_Integer
+	:param Tol:
+	:type Tol: float
+	:param Or:
+	:type Or: TopAbs_Orientation &
+	:param IndFrom:
+	:type IndFrom: Standard_Integer &
+	:param IndTo:
+	:type IndTo: Standard_Integer &
+	:rtype: bool
+") LocalizeAfter;
 		Standard_Boolean LocalizeAfter (const Standard_Integer I,const Standard_Integer FromInd,const Standard_Real Tol,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	I(Standard_Integer)
-	FromInd(Standard_Integer)
-	Tol(Standard_Real)
-	Or(TopAbs_Orientation)
-	IndFrom(Standard_Integer)
-	IndTo(Standard_Integer)
+		%feature("autodoc", "	* On the element of range <I>, searches the first intersection point located before the index <FromInd> ( <= FromInd -1), wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal.  Otherwise, returns <Standard_False>.
 
-Returns:
-	Standard_Boolean
-
-On  the element of  range  <I>, searches the first  
-         intersection  point    located  before  the  index  
-         <FromInd>  (  <= FromInd -1),  wich orientation is  
-         not   TopAbs_EXTERNAL.  If    found,       returns  
-         <Standard_True>.  <Or> contains the orientation of  
-         the  point, <IndFrom>  and  <IndTo> represents the  
-         interval of  index in the sequence of intersection  
-         point  corresponding to   the  point  (IndFrom  <=  
-         IndTo). <Tol> is used to determine if 2 parameters  
-         are equal.  
- 
-         Otherwise, returns <Standard_False>.") LocalizeBefore;
+	:param I:
+	:type I: Standard_Integer
+	:param FromInd:
+	:type FromInd: Standard_Integer
+	:param Tol:
+	:type Tol: float
+	:param Or:
+	:type Or: TopAbs_Orientation &
+	:param IndFrom:
+	:type IndFrom: Standard_Integer &
+	:param IndTo:
+	:type IndTo: Standard_Integer &
+	:rtype: bool
+") LocalizeBefore;
 		Standard_Boolean LocalizeBefore (const Standard_Integer I,const Standard_Integer FromInd,const Standard_Real Tol,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
 };
 
@@ -418,155 +336,115 @@ def __del__(self):
 %nodefaultctor LocOpe_CurveShapeIntersector;
 class LocOpe_CurveShapeIntersector {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor.
 
-Empty constructor.") LocOpe_CurveShapeIntersector;
+	:rtype: None
+") LocOpe_CurveShapeIntersector;
 		 LocOpe_CurveShapeIntersector ();
-		%feature("autodoc", "Args:
-	Axis(gp_Ax1)
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* Creates and performs the intersection betwwen <Ax1> and <S>.
 
-Returns:
-	None
-
-Creates  and performs the intersection     betwwen  
-         <Ax1> and <S>.") LocOpe_CurveShapeIntersector;
+	:param Axis:
+	:type Axis: gp_Ax1
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") LocOpe_CurveShapeIntersector;
 		 LocOpe_CurveShapeIntersector (const gp_Ax1 & Axis,const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	C(gp_Circ)
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* Creates and performs yte intersection betwwen <C> and <S>.
 
-Returns:
-	None
-
-Creates  and performs yte intersection     betwwen  
-         <C> and <S>.") LocOpe_CurveShapeIntersector;
+	:param C:
+	:type C: gp_Circ
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") LocOpe_CurveShapeIntersector;
 		 LocOpe_CurveShapeIntersector (const gp_Circ & C,const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	Axis(gp_Ax1)
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* Performs the intersection between <Ax1 and <S>.
 
-Returns:
-	None
-
-Performs the intersection between <Ax1 and <S>.") Init;
+	:param Axis:
+	:type Axis: gp_Ax1
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") Init;
 		void Init (const gp_Ax1 & Axis,const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	C(gp_Circ)
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* Performs the intersection between <Ax1 and <S>.
 
-Returns:
-	None
-
-Performs the intersection between <Ax1 and <S>.") Init;
+	:param C:
+	:type C: gp_Circ
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") Init;
 		void Init (const gp_Circ & C,const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns <Standard_True> if the intersection has been done.
 
-Returns <Standard_True>  if the  intersection  has  
-         been done.") IsDone;
+	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns the number of intersection point.
 
-Returns the number of intersection point.") NbPoints;
+	:rtype: int
+") NbPoints;
 		Standard_Integer NbPoints ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Returns the intersection point of range <Index>. The points are sorted in increasing order of parameter along the axis.
 
-Returns:
-	LocOpe_PntFace
-
-Returns the intersection  point  of range <Index>.  
-         The points  are   sorted in increasing  order   of  
-         parameter along the axis.") Point;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: LocOpe_PntFace
+") Point;
 		const LocOpe_PntFace & Point (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	From(Standard_Real)
-	Or(TopAbs_Orientation)
-	IndFrom(Standard_Integer)
-	IndTo(Standard_Integer)
+		%feature("autodoc", "	* Searches the first intersection point located after the parameter <From>, wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo).  Otherwise, returns <Standard_False>.
 
-Returns:
-	Standard_Boolean
-
-Searches the   first intersection  point   located  
-         after the  parameter  <From>, wich  orientation is  
-         not       TopAbs_EXTERNAL.      If found,  returns  
-         <Standard_True>.  <Or> contains the orientation of  
-         the  point, <IndFrom>  and  <IndTo> represents the  
-         interval of index  in the sequence of intersection  
-         point  corresponding  to   the point. (IndFrom  <=  
-         IndTo).  
- 
-         Otherwise, returns <Standard_False>.") LocalizeAfter;
+	:param From:
+	:type From: float
+	:param Or:
+	:type Or: TopAbs_Orientation &
+	:param IndFrom:
+	:type IndFrom: Standard_Integer &
+	:param IndTo:
+	:type IndTo: Standard_Integer &
+	:rtype: bool
+") LocalizeAfter;
 		Standard_Boolean LocalizeAfter (const Standard_Real From,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	From(Standard_Real)
-	Or(TopAbs_Orientation)
-	IndFrom(Standard_Integer)
-	IndTo(Standard_Integer)
+		%feature("autodoc", "	* Searches the first intersection point located before the parameter <From>, wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo).  Otherwise, returns <Standard_False>.
 
-Returns:
-	Standard_Boolean
-
-Searches  the first intersection point     located  
-         before  the parameter <From>,  wich orientation is  
-         not      TopAbs_EXTERNAL.      If  found,  returns  
-         <Standard_True>.  <Or> contains the orientation of  
-         the point,  <IndFrom>  and <IndTo>  represents the  
-         interval of index  in the sequence of intersection  
-         point  corresponding   to the point   (IndFrom  <=  
-         IndTo).  
- 
-         Otherwise, returns <Standard_False>.") LocalizeBefore;
+	:param From:
+	:type From: float
+	:param Or:
+	:type Or: TopAbs_Orientation &
+	:param IndFrom:
+	:type IndFrom: Standard_Integer &
+	:param IndTo:
+	:type IndTo: Standard_Integer &
+	:rtype: bool
+") LocalizeBefore;
 		Standard_Boolean LocalizeBefore (const Standard_Real From,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	FromInd(Standard_Integer)
-	Or(TopAbs_Orientation)
-	IndFrom(Standard_Integer)
-	IndTo(Standard_Integer)
+		%feature("autodoc", "	* Searches the first intersection point located after the index <FromInd> ( >= FromInd + 1), wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo).  Otherwise, returns <Standard_False>.
 
-Returns:
-	Standard_Boolean
-
-Searches  the first intersection point     located  
-         after the index <FromInd>  ( >= FromInd + 1), wich  
-         orientation   is   not TopAbs_EXTERNAL.   If found,  
-         returns   <Standard_True>.   <Or>  contains    the  
-         orientation of the  point, <IndFrom>  and  <IndTo>  
-         represents the interval  of index in  the sequence  
-         of  intersection  point     corresponding to   the  
-         point. (IndFrom <= IndTo).  
- 
-         Otherwise, returns <Standard_False>.") LocalizeAfter;
+	:param FromInd:
+	:type FromInd: Standard_Integer
+	:param Or:
+	:type Or: TopAbs_Orientation &
+	:param IndFrom:
+	:type IndFrom: Standard_Integer &
+	:param IndTo:
+	:type IndTo: Standard_Integer &
+	:rtype: bool
+") LocalizeAfter;
 		Standard_Boolean LocalizeAfter (const Standard_Integer FromInd,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	FromInd(Standard_Integer)
-	Or(TopAbs_Orientation)
-	IndFrom(Standard_Integer)
-	IndTo(Standard_Integer)
+		%feature("autodoc", "	* Searches the first intersection point located before the index <FromInd> ( <= FromInd -1), wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo).  Otherwise, returns <Standard_False>.
 
-Returns:
-	Standard_Boolean
-
-Searches the  first  intersection   point  located  
-         before the index <FromInd>  ( <= FromInd -1), wich  
-         orientation is   not TopAbs_EXTERNAL.   If   found,  
-         returns   <Standard_True>.  <Or>  contains     the  
-         orientation  of the  point,  <IndFrom> and <IndTo>  
-         represents the interval  of index  in the sequence  
-         of  intersection  point corresponding to the point  
-         (IndFrom <= IndTo).  
- 
-         Otherwise, returns <Standard_False>.") LocalizeBefore;
+	:param FromInd:
+	:type FromInd: Standard_Integer
+	:param Or:
+	:type Or: TopAbs_Orientation &
+	:param IndFrom:
+	:type IndFrom: Standard_Integer &
+	:param IndTo:
+	:type IndTo: Standard_Integer &
+	:rtype: bool
+") LocalizeBefore;
 		Standard_Boolean LocalizeBefore (const Standard_Integer FromInd,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
 };
 
@@ -588,91 +466,56 @@ def __del__(self):
 %nodefaultctor LocOpe_DPrism;
 class LocOpe_DPrism {
 	public:
-		%feature("autodoc", "Args:
-	Spine(TopoDS_Face)
-	Height1(Standard_Real)
-	Height2(Standard_Real)
-	Angle(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_DPrism;
+		%feature("autodoc", "	:param Spine:
+	:type Spine: TopoDS_Face &
+	:param Height1:
+	:type Height1: float
+	:param Height2:
+	:type Height2: float
+	:param Angle:
+	:type Angle: float
+	:rtype: None
+") LocOpe_DPrism;
 		 LocOpe_DPrism (const TopoDS_Face & Spine,const Standard_Real Height1,const Standard_Real Height2,const Standard_Real Angle);
-		%feature("autodoc", "Args:
-	Spine(TopoDS_Face)
-	Height(Standard_Real)
-	Angle(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_DPrism;
+		%feature("autodoc", "	:param Spine:
+	:type Spine: TopoDS_Face &
+	:param Height:
+	:type Height: float
+	:param Angle:
+	:type Angle: float
+	:rtype: None
+") LocOpe_DPrism;
 		 LocOpe_DPrism (const TopoDS_Face & Spine,const Standard_Real Height,const Standard_Real Angle);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Spine;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Spine;
 		const TopoDS_Shape & Spine ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Profile;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Profile;
 		const TopoDS_Shape & Profile ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") FirstShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") FirstShape;
 		const TopoDS_Shape & FirstShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") LastShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") LastShape;
 		const TopoDS_Shape & LastShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Shape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Shape;
 		const TopoDS_Shape & Shape ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") Shapes;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") Shapes;
 		const TopTools_ListOfShape & Shapes (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	SCurves(TColGeom_SequenceOfCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Curves;
+		%feature("autodoc", "	:param SCurves:
+	:type SCurves: TColGeom_SequenceOfCurve &
+	:rtype: None
+") Curves;
 		void Curves (TColGeom_SequenceOfCurve & SCurves);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_Curve
-
-No detailed docstring for this function.") BarycCurve;
+		%feature("autodoc", "	:rtype: Handle_Geom_Curve
+") BarycCurve;
 		Handle_Geom_Curve BarycCurve ();
 };
 
@@ -694,42 +537,24 @@ def __del__(self):
 %nodefaultctor LocOpe_DataMapIteratorOfDataMapOfShapePnt;
 class LocOpe_DataMapIteratorOfDataMapOfShapePnt : public TCollection_BasicMapIterator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_DataMapIteratorOfDataMapOfShapePnt;
+		%feature("autodoc", "	:rtype: None
+") LocOpe_DataMapIteratorOfDataMapOfShapePnt;
 		 LocOpe_DataMapIteratorOfDataMapOfShapePnt ();
-		%feature("autodoc", "Args:
-	aMap(LocOpe_DataMapOfShapePnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_DataMapIteratorOfDataMapOfShapePnt;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: LocOpe_DataMapOfShapePnt &
+	:rtype: None
+") LocOpe_DataMapIteratorOfDataMapOfShapePnt;
 		 LocOpe_DataMapIteratorOfDataMapOfShapePnt (const LocOpe_DataMapOfShapePnt & aMap);
-		%feature("autodoc", "Args:
-	aMap(LocOpe_DataMapOfShapePnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Initialize;
+		%feature("autodoc", "	:param aMap:
+	:type aMap: LocOpe_DataMapOfShapePnt &
+	:rtype: None
+") Initialize;
 		void Initialize (const LocOpe_DataMapOfShapePnt & aMap);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		const TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: gp_Pnt
+") Value;
 		const gp_Pnt & Value ();
 };
 
@@ -751,29 +576,20 @@ def __del__(self):
 %nodefaultctor LocOpe_DataMapNodeOfDataMapOfShapePnt;
 class LocOpe_DataMapNodeOfDataMapOfShapePnt : public TCollection_MapNode {
 	public:
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(gp_Pnt)
-	n(TCollection_MapNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_DataMapNodeOfDataMapOfShapePnt;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: gp_Pnt
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") LocOpe_DataMapNodeOfDataMapOfShapePnt;
 		 LocOpe_DataMapNodeOfDataMapOfShapePnt (const TopoDS_Shape & K,const gp_Pnt & I,const TCollection_MapNodePtr & n);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Key;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Key;
 		TopoDS_Shape & Key ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: gp_Pnt
+") Value;
 		gp_Pnt & Value ();
 };
 
@@ -834,101 +650,65 @@ def __del__(self):
 %nodefaultctor LocOpe_DataMapOfShapePnt;
 class LocOpe_DataMapOfShapePnt : public TCollection_BasicMap {
 	public:
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_DataMapOfShapePnt;
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") LocOpe_DataMapOfShapePnt;
 		 LocOpe_DataMapOfShapePnt (const Standard_Integer NbBuckets = 1);
-		%feature("autodoc", "Args:
-	Other(LocOpe_DataMapOfShapePnt)
-
-Returns:
-	LocOpe_DataMapOfShapePnt
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: LocOpe_DataMapOfShapePnt &
+	:rtype: LocOpe_DataMapOfShapePnt
+") Assign;
 		LocOpe_DataMapOfShapePnt & Assign (const LocOpe_DataMapOfShapePnt & Other);
-		%feature("autodoc", "Args:
-	Other(LocOpe_DataMapOfShapePnt)
-
-Returns:
-	LocOpe_DataMapOfShapePnt
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: LocOpe_DataMapOfShapePnt &
+	:rtype: LocOpe_DataMapOfShapePnt
+") operator=;
 		LocOpe_DataMapOfShapePnt & operator = (const LocOpe_DataMapOfShapePnt & Other);
-		%feature("autodoc", "Args:
-	NbBuckets(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ReSize;
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-	I(gp_Pnt)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:param I:
+	:type I: gp_Pnt
+	:rtype: bool
+") Bind;
 		Standard_Boolean Bind (const TopoDS_Shape & K,const gp_Pnt & I);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsBound;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") IsBound;
 		Standard_Boolean IsBound (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") UnBind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: bool
+") UnBind;
 		Standard_Boolean UnBind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	gp_Pnt
-
-No detailed docstring for this function.") Find;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: gp_Pnt
+") Find;
 		const gp_Pnt & Find (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	gp_Pnt
-
-No detailed docstring for this function.") ChangeFind;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: gp_Pnt
+") ChangeFind;
 		gp_Pnt & ChangeFind (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") Find1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") Find1;
 		Standard_Address Find1 (const TopoDS_Shape & K);
-		%feature("autodoc", "Args:
-	K(TopoDS_Shape)
-
-Returns:
-	Standard_Address
-
-No detailed docstring for this function.") ChangeFind1;
+		%feature("autodoc", "	:param K:
+	:type K: TopoDS_Shape &
+	:rtype: Standard_Address
+") ChangeFind1;
 		Standard_Address ChangeFind1 (const TopoDS_Shape & K);
 };
 
@@ -950,65 +730,37 @@ def __del__(self):
 %nodefaultctor LocOpe_FindEdges;
 class LocOpe_FindEdges {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_FindEdges;
+		%feature("autodoc", "	:rtype: None
+") LocOpe_FindEdges;
 		 LocOpe_FindEdges ();
-		%feature("autodoc", "Args:
-	FFrom(TopoDS_Shape)
-	FTo(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_FindEdges;
+		%feature("autodoc", "	:param FFrom:
+	:type FFrom: TopoDS_Shape &
+	:param FTo:
+	:type FTo: TopoDS_Shape &
+	:rtype: None
+") LocOpe_FindEdges;
 		 LocOpe_FindEdges (const TopoDS_Shape & FFrom,const TopoDS_Shape & FTo);
-		%feature("autodoc", "Args:
-	FFrom(TopoDS_Shape)
-	FTo(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Set;
+		%feature("autodoc", "	:param FFrom:
+	:type FFrom: TopoDS_Shape &
+	:param FTo:
+	:type FTo: TopoDS_Shape &
+	:rtype: None
+") Set;
 		void Set (const TopoDS_Shape & FFrom,const TopoDS_Shape & FTo);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") InitIterator;
+		%feature("autodoc", "	:rtype: None
+") InitIterator;
 		void InitIterator ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Edge
-
-No detailed docstring for this function.") EdgeFrom;
+		%feature("autodoc", "	:rtype: TopoDS_Edge
+") EdgeFrom;
 		const TopoDS_Edge & EdgeFrom ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Edge
-
-No detailed docstring for this function.") EdgeTo;
+		%feature("autodoc", "	:rtype: TopoDS_Edge
+") EdgeTo;
 		const TopoDS_Edge & EdgeTo ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
 };
 
@@ -1030,58 +782,34 @@ def __del__(self):
 %nodefaultctor LocOpe_FindEdgesInFace;
 class LocOpe_FindEdgesInFace {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_FindEdgesInFace;
+		%feature("autodoc", "	:rtype: None
+") LocOpe_FindEdgesInFace;
 		 LocOpe_FindEdgesInFace ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-	F(TopoDS_Face)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_FindEdgesInFace;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:param F:
+	:type F: TopoDS_Face &
+	:rtype: None
+") LocOpe_FindEdgesInFace;
 		 LocOpe_FindEdgesInFace (const TopoDS_Shape & S,const TopoDS_Face & F);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-	F(TopoDS_Face)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Set;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:param F:
+	:type F: TopoDS_Face &
+	:rtype: None
+") Set;
 		void Set (const TopoDS_Shape & S,const TopoDS_Face & F);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:rtype: None
+") Init;
 		void Init ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") More;
+		%feature("autodoc", "	:rtype: bool
+") More;
 		Standard_Boolean More ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Edge
-
-No detailed docstring for this function.") Edge;
+		%feature("autodoc", "	:rtype: TopoDS_Edge
+") Edge;
 		const TopoDS_Edge & Edge ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Next;
+		%feature("autodoc", "	:rtype: None
+") Next;
 		void Next ();
 };
 
@@ -1103,38 +831,27 @@ def __del__(self):
 %nodefaultctor LocOpe_GeneratedShape;
 class LocOpe_GeneratedShape : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  TopTools_ListOfShape
-
-No detailed docstring for this function.") GeneratingEdges;
+		%feature("autodoc", "	:rtype: TopTools_ListOfShape
+") GeneratingEdges;
 		virtual const TopTools_ListOfShape & GeneratingEdges ();
-		%feature("autodoc", "Args:
-	V(TopoDS_Vertex)
+		%feature("autodoc", "	* Returns the edge created by the vertex <V>. If none, must return a null shape.
 
-Returns:
-	virtual TopoDS_Edge
-
-Returns the  edge  created by  the  vertex <V>. If  
-         none, must return a null shape.") Generated;
+	:param V:
+	:type V: TopoDS_Vertex &
+	:rtype: TopoDS_Edge
+") Generated;
 		virtual TopoDS_Edge Generated (const TopoDS_Vertex & V);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
+		%feature("autodoc", "	* Returns the face created by the edge <E>. If none, must return a null shape.
 
-Returns:
-	virtual TopoDS_Face
-
-Returns the face created by the edge <E>. If none,  
-         must return a null shape.") Generated;
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: TopoDS_Face
+") Generated;
 		virtual TopoDS_Face Generated (const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual  TopTools_ListOfShape
+		%feature("autodoc", "	* Returns the list of correctly oriented generated faces.
 
-Returns  the  list of correctly oriented generated  
-         faces.") OrientedFaces;
+	:rtype: TopTools_ListOfShape
+") OrientedFaces;
 		virtual const TopTools_ListOfShape & OrientedFaces ();
 };
 
@@ -1195,68 +912,49 @@ def __del__(self):
 %nodefaultctor LocOpe_Generator;
 class LocOpe_Generator {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor.
 
-Empty constructor.") LocOpe_Generator;
+	:rtype: None
+") LocOpe_Generator;
 		 LocOpe_Generator ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* Creates the algorithm on the shape <S>.
 
-Returns:
-	None
-
-Creates the algorithm on the shape <S>.") LocOpe_Generator;
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") LocOpe_Generator;
 		 LocOpe_Generator (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* Initializes the algorithm on the shape <S>.
 
-Returns:
-	None
-
-Initializes the algorithm on the shape <S>.") Init;
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	G(Handle_LocOpe_GeneratedShape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param G:
+	:type G: Handle_LocOpe_GeneratedShape &
+	:rtype: None
+") Perform;
 		void Perform (const Handle_LocOpe_GeneratedShape & G);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Returns the new shape
 
-Returns the new shape") ResultingShape;
+	:rtype: TopoDS_Shape
+") ResultingShape;
 		const TopoDS_Shape & ResultingShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Returns the initial shape
 
-Returns the initial shape") Shape;
+	:rtype: TopoDS_Shape
+") Shape;
 		const TopoDS_Shape & Shape ();
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
+		%feature("autodoc", "	* Returns the descendant face of <F>. <F> may belong to the original shape or to the 'generated' shape. The returned face may be a null shape (when <F> disappears).
 
-Returns:
-	TopTools_ListOfShape
-
-Returns  the  descendant  face  of <F>.    <F> may  
-         belong to the original shape or to the 'generated'  
-         shape.  The returned    face may be   a null shape  
-         (when <F> disappears).") DescendantFace;
+	:param F:
+	:type F: TopoDS_Face &
+	:rtype: TopTools_ListOfShape
+") DescendantFace;
 		const TopTools_ListOfShape & DescendantFace (const TopoDS_Face & F);
 };
 
@@ -1278,112 +976,65 @@ def __del__(self):
 %nodefaultctor LocOpe_Gluer;
 class LocOpe_Gluer {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_Gluer;
+		%feature("autodoc", "	:rtype: None
+") LocOpe_Gluer;
 		 LocOpe_Gluer ();
-		%feature("autodoc", "Args:
-	Sbase(TopoDS_Shape)
-	Snew(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_Gluer;
+		%feature("autodoc", "	:param Sbase:
+	:type Sbase: TopoDS_Shape &
+	:param Snew:
+	:type Snew: TopoDS_Shape &
+	:rtype: None
+") LocOpe_Gluer;
 		 LocOpe_Gluer (const TopoDS_Shape & Sbase,const TopoDS_Shape & Snew);
-		%feature("autodoc", "Args:
-	Sbase(TopoDS_Shape)
-	Snew(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param Sbase:
+	:type Sbase: TopoDS_Shape &
+	:param Snew:
+	:type Snew: TopoDS_Shape &
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Shape & Sbase,const TopoDS_Shape & Snew);
-		%feature("autodoc", "Args:
-	Fnew(TopoDS_Face)
-	Fbase(TopoDS_Face)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param Fnew:
+	:type Fnew: TopoDS_Face &
+	:param Fbase:
+	:type Fbase: TopoDS_Face &
+	:rtype: None
+") Bind;
 		void Bind (const TopoDS_Face & Fnew,const TopoDS_Face & Fbase);
-		%feature("autodoc", "Args:
-	Enew(TopoDS_Edge)
-	Ebase(TopoDS_Edge)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param Enew:
+	:type Enew: TopoDS_Edge &
+	:param Ebase:
+	:type Ebase: TopoDS_Edge &
+	:rtype: None
+") Bind;
 		void Bind (const TopoDS_Edge & Enew,const TopoDS_Edge & Ebase);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	LocOpe_Operation
-
-No detailed docstring for this function.") OpeType;
+		%feature("autodoc", "	:rtype: LocOpe_Operation
+") OpeType;
 		LocOpe_Operation OpeType ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:rtype: None
+") Perform;
 		void Perform ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") ResultingShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") ResultingShape;
 		const TopoDS_Shape & ResultingShape ();
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") DescendantFaces;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:rtype: TopTools_ListOfShape
+") DescendantFaces;
 		const TopTools_ListOfShape & DescendantFaces (const TopoDS_Face & F);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") BasisShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") BasisShape;
 		const TopoDS_Shape & BasisShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") GluedShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") GluedShape;
 		const TopoDS_Shape & GluedShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") Edges;
+		%feature("autodoc", "	:rtype: TopTools_ListOfShape
+") Edges;
 		const TopTools_ListOfShape & Edges ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") TgtEdges;
+		%feature("autodoc", "	:rtype: TopTools_ListOfShape
+") TgtEdges;
 		const TopTools_ListOfShape & TgtEdges ();
 };
 
@@ -1405,28 +1056,18 @@ def __del__(self):
 %nodefaultctor LocOpe_HBuilder;
 class LocOpe_HBuilder : public TopOpeBRepBuild_HBuilder {
 	public:
-		%feature("autodoc", "Args:
-	BT(TopOpeBRepDS_BuildTool)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_HBuilder;
+		%feature("autodoc", "	:param BT:
+	:type BT: TopOpeBRepDS_BuildTool &
+	:rtype: None
+") LocOpe_HBuilder;
 		 LocOpe_HBuilder (const TopOpeBRepDS_BuildTool & BT);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Classify;
+		%feature("autodoc", "	:rtype: bool
+") Classify;
 		Standard_Boolean Classify ();
-		%feature("autodoc", "Args:
-	B(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Classify;
+		%feature("autodoc", "	:param B:
+	:type B: bool
+	:rtype: None
+") Classify;
 		void Classify (const Standard_Boolean B);
 };
 
@@ -1487,87 +1128,70 @@ def __del__(self):
 %nodefaultctor LocOpe_LinearForm;
 class LocOpe_LinearForm {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_LinearForm;
+		%feature("autodoc", "	:rtype: None
+") LocOpe_LinearForm;
 		 LocOpe_LinearForm ();
-		%feature("autodoc", "Args:
-	Base(TopoDS_Shape)
-	V(gp_Vec)
-	Pnt1(gp_Pnt)
-	Pnt2(gp_Pnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_LinearForm;
+		%feature("autodoc", "	:param Base:
+	:type Base: TopoDS_Shape &
+	:param V:
+	:type V: gp_Vec
+	:param Pnt1:
+	:type Pnt1: gp_Pnt
+	:param Pnt2:
+	:type Pnt2: gp_Pnt
+	:rtype: None
+") LocOpe_LinearForm;
 		 LocOpe_LinearForm (const TopoDS_Shape & Base,const gp_Vec & V,const gp_Pnt & Pnt1,const gp_Pnt & Pnt2);
-		%feature("autodoc", "Args:
-	Base(TopoDS_Shape)
-	V(gp_Vec)
-	Vectra(gp_Vec)
-	Pnt1(gp_Pnt)
-	Pnt2(gp_Pnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_LinearForm;
+		%feature("autodoc", "	:param Base:
+	:type Base: TopoDS_Shape &
+	:param V:
+	:type V: gp_Vec
+	:param Vectra:
+	:type Vectra: gp_Vec
+	:param Pnt1:
+	:type Pnt1: gp_Pnt
+	:param Pnt2:
+	:type Pnt2: gp_Pnt
+	:rtype: None
+") LocOpe_LinearForm;
 		 LocOpe_LinearForm (const TopoDS_Shape & Base,const gp_Vec & V,const gp_Vec & Vectra,const gp_Pnt & Pnt1,const gp_Pnt & Pnt2);
-		%feature("autodoc", "Args:
-	Base(TopoDS_Shape)
-	V(gp_Vec)
-	Pnt1(gp_Pnt)
-	Pnt2(gp_Pnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param Base:
+	:type Base: TopoDS_Shape &
+	:param V:
+	:type V: gp_Vec
+	:param Pnt1:
+	:type Pnt1: gp_Pnt
+	:param Pnt2:
+	:type Pnt2: gp_Pnt
+	:rtype: None
+") Perform;
 		void Perform (const TopoDS_Shape & Base,const gp_Vec & V,const gp_Pnt & Pnt1,const gp_Pnt & Pnt2);
-		%feature("autodoc", "Args:
-	Base(TopoDS_Shape)
-	V(gp_Vec)
-	Vectra(gp_Vec)
-	Pnt1(gp_Pnt)
-	Pnt2(gp_Pnt)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param Base:
+	:type Base: TopoDS_Shape &
+	:param V:
+	:type V: gp_Vec
+	:param Vectra:
+	:type Vectra: gp_Vec
+	:param Pnt1:
+	:type Pnt1: gp_Pnt
+	:param Pnt2:
+	:type Pnt2: gp_Pnt
+	:rtype: None
+") Perform;
 		void Perform (const TopoDS_Shape & Base,const gp_Vec & V,const gp_Vec & Vectra,const gp_Pnt & Pnt1,const gp_Pnt & Pnt2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") FirstShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") FirstShape;
 		const TopoDS_Shape & FirstShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") LastShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") LastShape;
 		const TopoDS_Shape & LastShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Shape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Shape;
 		const TopoDS_Shape & Shape ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") Shapes;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") Shapes;
 		const TopTools_ListOfShape & Shapes (const TopoDS_Shape & S);
 };
 
@@ -1589,72 +1213,40 @@ def __del__(self):
 %nodefaultctor LocOpe_Pipe;
 class LocOpe_Pipe {
 	public:
-		%feature("autodoc", "Args:
-	Spine(TopoDS_Wire)
-	Profile(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_Pipe;
+		%feature("autodoc", "	:param Spine:
+	:type Spine: TopoDS_Wire &
+	:param Profile:
+	:type Profile: TopoDS_Shape &
+	:rtype: None
+") LocOpe_Pipe;
 		 LocOpe_Pipe (const TopoDS_Wire & Spine,const TopoDS_Shape & Profile);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Spine;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Spine;
 		const TopoDS_Shape & Spine ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Profile;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Profile;
 		const TopoDS_Shape & Profile ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") FirstShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") FirstShape;
 		const TopoDS_Shape & FirstShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") LastShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") LastShape;
 		const TopoDS_Shape & LastShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Shape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Shape;
 		const TopoDS_Shape & Shape ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") Shapes;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") Shapes;
 		const TopTools_ListOfShape & Shapes (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	Spt(TColgp_SequenceOfPnt)
-
-Returns:
-	TColGeom_SequenceOfCurve
-
-No detailed docstring for this function.") Curves;
+		%feature("autodoc", "	:param Spt:
+	:type Spt: TColgp_SequenceOfPnt
+	:rtype: TColGeom_SequenceOfCurve
+") Curves;
 		const TColGeom_SequenceOfCurve & Curves (const TColgp_SequenceOfPnt & Spt);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_Curve
-
-No detailed docstring for this function.") BarycCurve;
+		%feature("autodoc", "	:rtype: Handle_Geom_Curve
+") BarycCurve;
 		Handle_Geom_Curve BarycCurve ();
 };
 
@@ -1676,74 +1268,46 @@ def __del__(self):
 %nodefaultctor LocOpe_PntFace;
 class LocOpe_PntFace {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor. Useful only for the list.
 
-Empty constructor. Useful only for the list.") LocOpe_PntFace;
+	:rtype: None
+") LocOpe_PntFace;
 		 LocOpe_PntFace ();
-		%feature("autodoc", "Args:
-	P(gp_Pnt)
-	F(TopoDS_Face)
-	Or(TopAbs_Orientation)
-	Param(Standard_Real)
-	UPar(Standard_Real)
-	VPar(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_PntFace;
+		%feature("autodoc", "	:param P:
+	:type P: gp_Pnt
+	:param F:
+	:type F: TopoDS_Face &
+	:param Or:
+	:type Or: TopAbs_Orientation
+	:param Param:
+	:type Param: float
+	:param UPar:
+	:type UPar: float
+	:param VPar:
+	:type VPar: float
+	:rtype: None
+") LocOpe_PntFace;
 		 LocOpe_PntFace (const gp_Pnt & P,const TopoDS_Face & F,const TopAbs_Orientation Or,const Standard_Real Param,const Standard_Real UPar,const Standard_Real VPar);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
-
-No detailed docstring for this function.") Pnt;
+		%feature("autodoc", "	:rtype: gp_Pnt
+") Pnt;
 		const gp_Pnt & Pnt ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Face
-
-No detailed docstring for this function.") Face;
+		%feature("autodoc", "	:rtype: TopoDS_Face
+") Face;
 		const TopoDS_Face & Face ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_Orientation
-
-No detailed docstring for this function.") Orientation;
+		%feature("autodoc", "	:rtype: TopAbs_Orientation
+") Orientation;
 		TopAbs_Orientation Orientation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopAbs_Orientation
-
-No detailed docstring for this function.") ChangeOrientation;
+		%feature("autodoc", "	:rtype: TopAbs_Orientation
+") ChangeOrientation;
 		TopAbs_Orientation & ChangeOrientation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Parameter;
+		%feature("autodoc", "	:rtype: float
+") Parameter;
 		Standard_Real Parameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") UParameter;
+		%feature("autodoc", "	:rtype: float
+") UParameter;
 		Standard_Real UParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") VParameter;
+		%feature("autodoc", "	:rtype: float
+") VParameter;
 		Standard_Real VParameter ();
 };
 
@@ -1765,94 +1329,62 @@ def __del__(self):
 %nodefaultctor LocOpe_Prism;
 class LocOpe_Prism {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_Prism;
+		%feature("autodoc", "	:rtype: None
+") LocOpe_Prism;
 		 LocOpe_Prism ();
-		%feature("autodoc", "Args:
-	Base(TopoDS_Shape)
-	V(gp_Vec)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_Prism;
+		%feature("autodoc", "	:param Base:
+	:type Base: TopoDS_Shape &
+	:param V:
+	:type V: gp_Vec
+	:rtype: None
+") LocOpe_Prism;
 		 LocOpe_Prism (const TopoDS_Shape & Base,const gp_Vec & V);
-		%feature("autodoc", "Args:
-	Base(TopoDS_Shape)
-	V(gp_Vec)
-	Vectra(gp_Vec)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_Prism;
+		%feature("autodoc", "	:param Base:
+	:type Base: TopoDS_Shape &
+	:param V:
+	:type V: gp_Vec
+	:param Vectra:
+	:type Vectra: gp_Vec
+	:rtype: None
+") LocOpe_Prism;
 		 LocOpe_Prism (const TopoDS_Shape & Base,const gp_Vec & V,const gp_Vec & Vectra);
-		%feature("autodoc", "Args:
-	Base(TopoDS_Shape)
-	V(gp_Vec)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param Base:
+	:type Base: TopoDS_Shape &
+	:param V:
+	:type V: gp_Vec
+	:rtype: None
+") Perform;
 		void Perform (const TopoDS_Shape & Base,const gp_Vec & V);
-		%feature("autodoc", "Args:
-	Base(TopoDS_Shape)
-	V(gp_Vec)
-	Vtra(gp_Vec)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param Base:
+	:type Base: TopoDS_Shape &
+	:param V:
+	:type V: gp_Vec
+	:param Vtra:
+	:type Vtra: gp_Vec
+	:rtype: None
+") Perform;
 		void Perform (const TopoDS_Shape & Base,const gp_Vec & V,const gp_Vec & Vtra);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") FirstShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") FirstShape;
 		const TopoDS_Shape & FirstShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") LastShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") LastShape;
 		const TopoDS_Shape & LastShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") Shape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") Shape;
 		const TopoDS_Shape & Shape ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") Shapes;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") Shapes;
 		const TopTools_ListOfShape & Shapes (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	SCurves(TColGeom_SequenceOfCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Curves;
+		%feature("autodoc", "	:param SCurves:
+	:type SCurves: TColGeom_SequenceOfCurve &
+	:rtype: None
+") Curves;
 		void Curves (TColGeom_SequenceOfCurve & SCurves);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_Curve
-
-No detailed docstring for this function.") BarycCurve;
+		%feature("autodoc", "	:rtype: Handle_Geom_Curve
+") BarycCurve;
 		Handle_Geom_Curve BarycCurve ();
 };
 
@@ -1874,82 +1406,54 @@ def __del__(self):
 %nodefaultctor LocOpe_ProjectedWires;
 class LocOpe_ProjectedWires : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") InitEdgeIterator;
+		%feature("autodoc", "	:rtype: void
+") InitEdgeIterator;
 		virtual void InitEdgeIterator ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") MoreEdge;
+		%feature("autodoc", "	:rtype: bool
+") MoreEdge;
 		virtual Standard_Boolean MoreEdge ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual TopoDS_Edge
-
-No detailed docstring for this function.") Edge;
+		%feature("autodoc", "	:rtype: TopoDS_Edge
+") Edge;
 		virtual TopoDS_Edge Edge ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual TopoDS_Face
+		%feature("autodoc", "	* Returns the face of the shape on which the current edge is projected.
 
-Returns the face of the shape on which the current  
-         edge is projected.") OnFace;
+	:rtype: TopoDS_Face
+") OnFace;
 		virtual TopoDS_Face OnFace ();
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
+		%feature("autodoc", "	* If the current edge is projected on an edge, returns <Standard_True> and sets the value of <E>. Otherwise, returns <Standard_False>.
 
-Returns:
-	virtual Standard_Boolean
-
-If the   current  edge is  projected  on  an edge,  
-         returns <Standard_True> and sets the value of <E>.  
-         Otherwise, returns <Standard_False>.") OnEdge;
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: bool
+") OnEdge;
 		virtual Standard_Boolean OnEdge (TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual void
-
-No detailed docstring for this function.") NextEdge;
+		%feature("autodoc", "	:rtype: void
+") NextEdge;
 		virtual void NextEdge ();
-		%feature("autodoc", "Args:
-	Vwire(TopoDS_Vertex)
-	Vshape(TopoDS_Vertex)
-
-Returns:
-	virtual Standard_Boolean
-
-No detailed docstring for this function.") OnVertex;
+		%feature("autodoc", "	:param Vwire:
+	:type Vwire: TopoDS_Vertex &
+	:param Vshape:
+	:type Vshape: TopoDS_Vertex &
+	:rtype: bool
+") OnVertex;
 		virtual Standard_Boolean OnVertex (const TopoDS_Vertex & Vwire,TopoDS_Vertex & Vshape);
-		%feature("autodoc", "Args:
-	V(TopoDS_Vertex)
-	E(TopoDS_Edge)
-	P(Standard_Real)
+		%feature("autodoc", "	* If the vertex <V> lies on an edge of the original shape, returns <Standard_True> and sets the concerned edge in <E>, and the parameter on the edge in <P>. Else returns <Standard_False>.
 
-Returns:
-	virtual Standard_Boolean
-
-If the vertex <V> lies on  an edge of the original  
-         shape,  returns     <Standard_True> and   sets the  
-         concerned edge in  <E>,  and the parameter on  the  
-         edge in <P>.  
-         Else returns <Standard_False>.") OnEdge;
+	:param V:
+	:type V: TopoDS_Vertex &
+	:param E:
+	:type E: TopoDS_Edge &
+	:param P:
+	:type P: float &
+	:rtype: bool
+") OnEdge;
 		virtual Standard_Boolean OnEdge (const TopoDS_Vertex & V,TopoDS_Edge & E,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	aFace(TopoDS_Shape)
+		%feature("autodoc", "	* tells is the face to be split by section or not
 
-Returns:
-	virtual Standard_Boolean
-
-tells is the face to be split by section or not") IsFaceWithSection;
+	:param aFace:
+	:type aFace: TopoDS_Shape &
+	:rtype: bool
+") IsFaceWithSection;
 		virtual Standard_Boolean IsFaceWithSection (const TopoDS_Shape & aFace);
 };
 
@@ -2010,22 +1514,17 @@ def __del__(self):
 %nodefaultctor LocOpe_SequenceNodeOfSequenceOfCirc;
 class LocOpe_SequenceNodeOfSequenceOfCirc : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(gp_Circ)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_SequenceNodeOfSequenceOfCirc;
+		%feature("autodoc", "	:param I:
+	:type I: gp_Circ
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") LocOpe_SequenceNodeOfSequenceOfCirc;
 		 LocOpe_SequenceNodeOfSequenceOfCirc (const gp_Circ & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Circ
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: gp_Circ
+") Value;
 		gp_Circ & Value ();
 };
 
@@ -2086,22 +1585,17 @@ def __del__(self):
 %nodefaultctor LocOpe_SequenceNodeOfSequenceOfLin;
 class LocOpe_SequenceNodeOfSequenceOfLin : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(gp_Lin)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_SequenceNodeOfSequenceOfLin;
+		%feature("autodoc", "	:param I:
+	:type I: gp_Lin
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") LocOpe_SequenceNodeOfSequenceOfLin;
 		 LocOpe_SequenceNodeOfSequenceOfLin (const gp_Lin & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Lin
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: gp_Lin
+") Value;
 		gp_Lin & Value ();
 };
 
@@ -2162,22 +1656,17 @@ def __del__(self):
 %nodefaultctor LocOpe_SequenceNodeOfSequenceOfPntFace;
 class LocOpe_SequenceNodeOfSequenceOfPntFace : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(LocOpe_PntFace)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_SequenceNodeOfSequenceOfPntFace;
+		%feature("autodoc", "	:param I:
+	:type I: LocOpe_PntFace &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") LocOpe_SequenceNodeOfSequenceOfPntFace;
 		 LocOpe_SequenceNodeOfSequenceOfPntFace (const LocOpe_PntFace & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	LocOpe_PntFace
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: LocOpe_PntFace
+") Value;
 		LocOpe_PntFace & Value ();
 };
 
@@ -2238,168 +1727,111 @@ def __del__(self):
 %nodefaultctor LocOpe_SequenceOfCirc;
 class LocOpe_SequenceOfCirc : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_SequenceOfCirc;
+		%feature("autodoc", "	:rtype: None
+") LocOpe_SequenceOfCirc;
 		 LocOpe_SequenceOfCirc ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(LocOpe_SequenceOfCirc)
-
-Returns:
-	LocOpe_SequenceOfCirc
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: LocOpe_SequenceOfCirc &
+	:rtype: LocOpe_SequenceOfCirc
+") Assign;
 		const LocOpe_SequenceOfCirc & Assign (const LocOpe_SequenceOfCirc & Other);
-		%feature("autodoc", "Args:
-	Other(LocOpe_SequenceOfCirc)
-
-Returns:
-	LocOpe_SequenceOfCirc
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: LocOpe_SequenceOfCirc &
+	:rtype: LocOpe_SequenceOfCirc
+") operator=;
 		const LocOpe_SequenceOfCirc & operator = (const LocOpe_SequenceOfCirc & Other);
-		%feature("autodoc", "Args:
-	T(gp_Circ)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: gp_Circ
+	:rtype: None
+") Append;
 		void Append (const gp_Circ & T);
-		%feature("autodoc", "Args:
-	S(LocOpe_SequenceOfCirc)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: LocOpe_SequenceOfCirc &
+	:rtype: None
+") Append;
 		void Append (LocOpe_SequenceOfCirc & S);
-		%feature("autodoc", "Args:
-	T(gp_Circ)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: gp_Circ
+	:rtype: None
+") Prepend;
 		void Prepend (const gp_Circ & T);
-		%feature("autodoc", "Args:
-	S(LocOpe_SequenceOfCirc)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: LocOpe_SequenceOfCirc &
+	:rtype: None
+") Prepend;
 		void Prepend (LocOpe_SequenceOfCirc & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(gp_Circ)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: gp_Circ
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const gp_Circ & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(LocOpe_SequenceOfCirc)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: LocOpe_SequenceOfCirc &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,LocOpe_SequenceOfCirc & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(gp_Circ)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: gp_Circ
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const gp_Circ & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(LocOpe_SequenceOfCirc)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: LocOpe_SequenceOfCirc &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,LocOpe_SequenceOfCirc & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Circ
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: gp_Circ
+") First;
 		const gp_Circ & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Circ
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: gp_Circ
+") Last;
 		const gp_Circ & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(LocOpe_SequenceOfCirc)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: LocOpe_SequenceOfCirc &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,LocOpe_SequenceOfCirc & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	gp_Circ
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: gp_Circ
+") Value;
 		const gp_Circ & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(gp_Circ)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: gp_Circ
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const gp_Circ & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	gp_Circ
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: gp_Circ
+") ChangeValue;
 		gp_Circ & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -2421,168 +1853,111 @@ def __del__(self):
 %nodefaultctor LocOpe_SequenceOfLin;
 class LocOpe_SequenceOfLin : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_SequenceOfLin;
+		%feature("autodoc", "	:rtype: None
+") LocOpe_SequenceOfLin;
 		 LocOpe_SequenceOfLin ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(LocOpe_SequenceOfLin)
-
-Returns:
-	LocOpe_SequenceOfLin
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: LocOpe_SequenceOfLin &
+	:rtype: LocOpe_SequenceOfLin
+") Assign;
 		const LocOpe_SequenceOfLin & Assign (const LocOpe_SequenceOfLin & Other);
-		%feature("autodoc", "Args:
-	Other(LocOpe_SequenceOfLin)
-
-Returns:
-	LocOpe_SequenceOfLin
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: LocOpe_SequenceOfLin &
+	:rtype: LocOpe_SequenceOfLin
+") operator=;
 		const LocOpe_SequenceOfLin & operator = (const LocOpe_SequenceOfLin & Other);
-		%feature("autodoc", "Args:
-	T(gp_Lin)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: gp_Lin
+	:rtype: None
+") Append;
 		void Append (const gp_Lin & T);
-		%feature("autodoc", "Args:
-	S(LocOpe_SequenceOfLin)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: LocOpe_SequenceOfLin &
+	:rtype: None
+") Append;
 		void Append (LocOpe_SequenceOfLin & S);
-		%feature("autodoc", "Args:
-	T(gp_Lin)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: gp_Lin
+	:rtype: None
+") Prepend;
 		void Prepend (const gp_Lin & T);
-		%feature("autodoc", "Args:
-	S(LocOpe_SequenceOfLin)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: LocOpe_SequenceOfLin &
+	:rtype: None
+") Prepend;
 		void Prepend (LocOpe_SequenceOfLin & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(gp_Lin)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: gp_Lin
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const gp_Lin & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(LocOpe_SequenceOfLin)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: LocOpe_SequenceOfLin &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,LocOpe_SequenceOfLin & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(gp_Lin)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: gp_Lin
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const gp_Lin & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(LocOpe_SequenceOfLin)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: LocOpe_SequenceOfLin &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,LocOpe_SequenceOfLin & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Lin
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: gp_Lin
+") First;
 		const gp_Lin & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Lin
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: gp_Lin
+") Last;
 		const gp_Lin & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(LocOpe_SequenceOfLin)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: LocOpe_SequenceOfLin &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,LocOpe_SequenceOfLin & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	gp_Lin
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: gp_Lin
+") Value;
 		const gp_Lin & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(gp_Lin)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: gp_Lin
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const gp_Lin & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	gp_Lin
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: gp_Lin
+") ChangeValue;
 		gp_Lin & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -2604,168 +1979,111 @@ def __del__(self):
 %nodefaultctor LocOpe_SequenceOfPntFace;
 class LocOpe_SequenceOfPntFace : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_SequenceOfPntFace;
+		%feature("autodoc", "	:rtype: None
+") LocOpe_SequenceOfPntFace;
 		 LocOpe_SequenceOfPntFace ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(LocOpe_SequenceOfPntFace)
-
-Returns:
-	LocOpe_SequenceOfPntFace
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: LocOpe_SequenceOfPntFace &
+	:rtype: LocOpe_SequenceOfPntFace
+") Assign;
 		const LocOpe_SequenceOfPntFace & Assign (const LocOpe_SequenceOfPntFace & Other);
-		%feature("autodoc", "Args:
-	Other(LocOpe_SequenceOfPntFace)
-
-Returns:
-	LocOpe_SequenceOfPntFace
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: LocOpe_SequenceOfPntFace &
+	:rtype: LocOpe_SequenceOfPntFace
+") operator=;
 		const LocOpe_SequenceOfPntFace & operator = (const LocOpe_SequenceOfPntFace & Other);
-		%feature("autodoc", "Args:
-	T(LocOpe_PntFace)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: LocOpe_PntFace &
+	:rtype: None
+") Append;
 		void Append (const LocOpe_PntFace & T);
-		%feature("autodoc", "Args:
-	S(LocOpe_SequenceOfPntFace)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: LocOpe_SequenceOfPntFace &
+	:rtype: None
+") Append;
 		void Append (LocOpe_SequenceOfPntFace & S);
-		%feature("autodoc", "Args:
-	T(LocOpe_PntFace)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: LocOpe_PntFace &
+	:rtype: None
+") Prepend;
 		void Prepend (const LocOpe_PntFace & T);
-		%feature("autodoc", "Args:
-	S(LocOpe_SequenceOfPntFace)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: LocOpe_SequenceOfPntFace &
+	:rtype: None
+") Prepend;
 		void Prepend (LocOpe_SequenceOfPntFace & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(LocOpe_PntFace)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: LocOpe_PntFace &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const LocOpe_PntFace & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(LocOpe_SequenceOfPntFace)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: LocOpe_SequenceOfPntFace &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,LocOpe_SequenceOfPntFace & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(LocOpe_PntFace)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: LocOpe_PntFace &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const LocOpe_PntFace & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(LocOpe_SequenceOfPntFace)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: LocOpe_SequenceOfPntFace &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,LocOpe_SequenceOfPntFace & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	LocOpe_PntFace
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: LocOpe_PntFace
+") First;
 		const LocOpe_PntFace & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	LocOpe_PntFace
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: LocOpe_PntFace
+") Last;
 		const LocOpe_PntFace & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(LocOpe_SequenceOfPntFace)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: LocOpe_SequenceOfPntFace &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,LocOpe_SequenceOfPntFace & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	LocOpe_PntFace
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: LocOpe_PntFace
+") Value;
 		const LocOpe_PntFace & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(LocOpe_PntFace)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: LocOpe_PntFace &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const LocOpe_PntFace & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	LocOpe_PntFace
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: LocOpe_PntFace
+") ChangeValue;
 		LocOpe_PntFace & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -2787,108 +2105,84 @@ def __del__(self):
 %nodefaultctor LocOpe_SplitDrafts;
 class LocOpe_SplitDrafts {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor.
 
-Empty constructor.") LocOpe_SplitDrafts;
+	:rtype: None
+") LocOpe_SplitDrafts;
 		 LocOpe_SplitDrafts ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* Creates the algoritm on the shape <S>.
 
-Returns:
-	None
-
-Creates the algoritm on the shape <S>.") LocOpe_SplitDrafts;
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") LocOpe_SplitDrafts;
 		 LocOpe_SplitDrafts (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* Initializes the algoritm with the shape <S>.
 
-Returns:
-	None
-
-Initializes the algoritm with the shape <S>.") Init;
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-	W(TopoDS_Wire)
-	Extractg(gp_Dir)
-	NPlg(gp_Pln)
-	Angleg(Standard_Real)
-	Extractd(gp_Dir)
-	NPld(gp_Pln)
-	Angled(Standard_Real)
-	ModifyLeft(Standard_Boolean)=Standard_True
-	ModifyRight(Standard_Boolean)=Standard_True
+		%feature("autodoc", "	* Splits the face <F> of the former given shape with the wire <W>. The wire is assumed to lie on the face. Puts a draft angle on both parts of the wire. <Extractg>, <Nplg>, <Angleg> define the arguments for the left part of the wire. <Extractd>, <Npld>, <Angled> define the arguments for the right part of the wire. The draft angle is measured with the direction <Extract>. <Npl> defines the neutral plane (points belonging to the neutral plane are not modified). <Angle> is the value of the draft angle. If <ModifyLeft> is set to <Standard_False>, no draft angle is applied to the left part of the wire. If <ModifyRight> is set to <Standard_False>,no draft angle is applied to the right part of the wire.
 
-Returns:
-	None
-
-Splits the face <F> of the former given shape with  
-         the wire  <W>.  The wire is  assumed to lie on the  
-         face.    Puts a draft  angle on  both parts of the  
-         wire.    <Extractg>,  <Nplg>, <Angleg> define  the  
-         arguments  for   the   left  part   of the   wire.  
-         <Extractd>,  <Npld>, <Angled> define the arguments  
-         for the right part of the wire. The draft angle is  
-         measured    with the  direction  <Extract>.  <Npl>  
-         defines the neutral plane (points belonging to the  
-         neutral plane are not  modified).  <Angle> is  the  
-         value of the draft  angle.  If <ModifyLeft> is set  
-         to <Standard_False>, no draft  angle is applied to  
-         the left part of the wire. If <ModifyRight> is set  
-         to <Standard_False>,no draft  angle  is applied to  
-         the right part of the wire.") Perform;
+	:param F:
+	:type F: TopoDS_Face &
+	:param W:
+	:type W: TopoDS_Wire &
+	:param Extractg:
+	:type Extractg: gp_Dir
+	:param NPlg:
+	:type NPlg: gp_Pln
+	:param Angleg:
+	:type Angleg: float
+	:param Extractd:
+	:type Extractd: gp_Dir
+	:param NPld:
+	:type NPld: gp_Pln
+	:param Angled:
+	:type Angled: float
+	:param ModifyLeft: default value is Standard_True
+	:type ModifyLeft: bool
+	:param ModifyRight: default value is Standard_True
+	:type ModifyRight: bool
+	:rtype: None
+") Perform;
 		void Perform (const TopoDS_Face & F,const TopoDS_Wire & W,const gp_Dir & Extractg,const gp_Pln & NPlg,const Standard_Real Angleg,const gp_Dir & Extractd,const gp_Pln & NPld,const Standard_Real Angled,const Standard_Boolean ModifyLeft = Standard_True,const Standard_Boolean ModifyRight = Standard_True);
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-	W(TopoDS_Wire)
-	Extract(gp_Dir)
-	NPl(gp_Pln)
-	Angle(Standard_Real)
+		%feature("autodoc", "	* Splits the face <F> of the former given shape with the wire <W>. The wire is assumed to lie on the face. Puts a draft angle on the left part of the wire. The draft angle is measured with the direction <Extract>. <Npl> defines the neutral plane (points belonging to the neutral plane are not modified). <Angle> is the value of the draft angle.
 
-Returns:
-	None
-
-Splits the face <F> of the former given shape with  
-         the  wire <W>.  The wire is  assumed to lie on the  
-         face.  Puts a draft angle  on the left part of the  
-         wire.   The draft    angle is   measured  with the  
-         direction  <Extract>.   <Npl> defines the  neutral  
-         plane (points belonging  to the neutral plane  are  
-         not modified). <Angle> is  the value of  the draft  
-         angle.") Perform;
+	:param F:
+	:type F: TopoDS_Face &
+	:param W:
+	:type W: TopoDS_Wire &
+	:param Extract:
+	:type Extract: gp_Dir
+	:param NPl:
+	:type NPl: gp_Pln
+	:param Angle:
+	:type Angle: float
+	:rtype: None
+") Perform;
 		void Perform (const TopoDS_Face & F,const TopoDS_Wire & W,const gp_Dir & Extract,const gp_Pln & NPl,const Standard_Real Angle);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns <Standard_True> if the modification has been succesfully performed.
 
-Returns <Standard_True>  if the  modification  has  
-         been succesfully performed.") IsDone;
+	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
-
-No detailed docstring for this function.") OriginalShape;
+		%feature("autodoc", "	:rtype: TopoDS_Shape
+") OriginalShape;
 		const TopoDS_Shape & OriginalShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Returns the modified shape.
 
-Returns the modified shape.") Shape;
+	:rtype: TopoDS_Shape
+") Shape;
 		const TopoDS_Shape & Shape ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* Manages the descendant shapes.
 
-Returns:
-	TopTools_ListOfShape
-
-Manages the descendant shapes.") ShapesFromShape;
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") ShapesFromShape;
 		const TopTools_ListOfShape & ShapesFromShape (const TopoDS_Shape & S);
 };
 
@@ -2910,92 +2204,81 @@ def __del__(self):
 %nodefaultctor LocOpe_SplitShape;
 class LocOpe_SplitShape {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor.
 
-Empty constructor.") LocOpe_SplitShape;
+	:rtype: None
+") LocOpe_SplitShape;
 		 LocOpe_SplitShape ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* Creates the process with the shape <S>.
 
-Returns:
-	None
-
-Creates the process  with the shape <S>.") LocOpe_SplitShape;
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") LocOpe_SplitShape;
 		 LocOpe_SplitShape (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* Initializes the process on the shape <S>.
 
-Returns:
-	None
-
-Initializes the process on the shape <S>.") Init;
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
+		%feature("autodoc", "	* Tests if it is possible to split the edge <E>.
 
-Returns:
-	Standard_Boolean
-
-Tests if it is possible to split the edge <E>.") CanSplit;
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: bool
+") CanSplit;
 		Standard_Boolean CanSplit (const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	V(TopoDS_Vertex)
-	P(Standard_Real)
-	E(TopoDS_Edge)
+		%feature("autodoc", "	* Adds the vertex <V> on the edge <E>, at parameter <P>.
 
-Returns:
-	None
-
-Adds the vertex <V> on the edge <E>, at parameter <P>.") Add;
+	:param V:
+	:type V: TopoDS_Vertex &
+	:param P:
+	:type P: float
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: None
+") Add;
 		void Add (const TopoDS_Vertex & V,const Standard_Real P,const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	W(TopoDS_Wire)
-	F(TopoDS_Face)
+		%feature("autodoc", "	* Adds the wire <W> on the face <F>.
 
-Returns:
-	None
-
-Adds the wire <W> on the face <F>.") Add;
+	:param W:
+	:type W: TopoDS_Wire &
+	:param F:
+	:type F: TopoDS_Face &
+	:rtype: None
+") Add;
 		void Add (const TopoDS_Wire & W,const TopoDS_Face & F);
-		%feature("autodoc", "Args:
-	Lwires(TopTools_ListOfShape)
-	F(TopoDS_Face)
+		%feature("autodoc", "	* Adds the list of wires <Lwires> on the face <F>.
 
-Returns:
-	None
-
-Adds the list of wires <Lwires> on the face <F>.") Add;
+	:param Lwires:
+	:type Lwires: TopTools_ListOfShape &
+	:param F:
+	:type F: TopoDS_Face &
+	:rtype: None
+") Add;
 		void Add (const TopTools_ListOfShape & Lwires,const TopoDS_Face & F);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Returns the 'original' shape.
 
-Returns the 'original' shape.") Shape;
+	:rtype: TopoDS_Shape
+") Shape;
 		const TopoDS_Shape & Shape ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* Returns the list of descendant shapes of <S>.
 
-Returns:
-	TopTools_ListOfShape
-
-Returns the list of descendant shapes of <S>.") DescendantShapes;
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") DescendantShapes;
 		const TopTools_ListOfShape & DescendantShapes (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	W(TopoDS_Wire)
-	F(TopoDS_Face)
+		%feature("autodoc", "	* Returns the 'left' part defined by the wire <W> on the face <F>. The returned list of shape is in fact a list of faces. The face <F> is considered with its topological orientation in the original shape. <W> is considered with its orientation.
 
-Returns:
-	TopTools_ListOfShape
-
-Returns the 'left' part defined by the wire <W> on  
-         the face <F>.   The  returned list of shape  is in  
-         fact  a list of faces. The  face <F> is considered  
-         with its topological  orientation  in the original  
-         shape.  <W> is considered with its orientation.") LeftOf;
+	:param W:
+	:type W: TopoDS_Wire &
+	:param F:
+	:type F: TopoDS_Face &
+	:rtype: TopTools_ListOfShape
+") LeftOf;
 		const TopTools_ListOfShape & LeftOf (const TopoDS_Wire & W,const TopoDS_Face & F);
 };
 
@@ -3017,82 +2300,59 @@ def __del__(self):
 %nodefaultctor LocOpe_Spliter;
 class LocOpe_Spliter {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Empty constructor.
 
-Empty constructor.") LocOpe_Spliter;
+	:rtype: None
+") LocOpe_Spliter;
 		 LocOpe_Spliter ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* Creates the algorithm on the shape <S>.
 
-Returns:
-	None
-
-Creates the algorithm on the shape <S>.") LocOpe_Spliter;
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") LocOpe_Spliter;
 		 LocOpe_Spliter (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* Initializes the algorithm on the shape <S>.
 
-Returns:
-	None
-
-Initializes the algorithm on the shape <S>.") Init;
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	PW(Handle_LocOpe_ProjectedWires)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param PW:
+	:type PW: Handle_LocOpe_ProjectedWires &
+	:rtype: None
+") Perform;
 		void Perform (const Handle_LocOpe_ProjectedWires & PW);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Returns the new shape
 
-Returns the new shape") ResultingShape;
+	:rtype: TopoDS_Shape
+") ResultingShape;
 		const TopoDS_Shape & ResultingShape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Shape
+		%feature("autodoc", "	* Returns the initial shape
 
-Returns the initial shape") Shape;
+	:rtype: TopoDS_Shape
+") Shape;
 		const TopoDS_Shape & Shape ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_ListOfShape
+		%feature("autodoc", "	* Returns the faces which are the left of the projected wires and which are
 
-Returns  the faces   which  are the  left of   the  
-         projected wires and which are") DirectLeft;
+	:rtype: TopTools_ListOfShape
+") DirectLeft;
 		const TopTools_ListOfShape & DirectLeft ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_ListOfShape
+		%feature("autodoc", "	* Returns the faces of the 'left' part on the shape. (It is build from DirectLeft, with the faces connected to this set, and so on...).
 
-Returns the faces of the 'left' part on the shape.  
-         (It  is build   from  DirectLeft,  with  the faces  
-         connected to this set, and so on...).") Left;
+	:rtype: TopTools_ListOfShape
+") Left;
 		const TopTools_ListOfShape & Left ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
+		%feature("autodoc", "	* Returns the list of descendant shapes of <S>.
 
-Returns:
-	TopTools_ListOfShape
-
-Returns the list of descendant shapes of <S>.") DescendantShapes;
+	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: TopTools_ListOfShape
+") DescendantShapes;
 		const TopTools_ListOfShape & DescendantShapes (const TopoDS_Shape & S);
 };
 
@@ -3114,69 +2374,45 @@ def __del__(self):
 %nodefaultctor LocOpe_GluedShape;
 class LocOpe_GluedShape : public LocOpe_GeneratedShape {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_GluedShape;
+		%feature("autodoc", "	:rtype: None
+") LocOpe_GluedShape;
 		 LocOpe_GluedShape ();
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_GluedShape;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") LocOpe_GluedShape;
 		 LocOpe_GluedShape (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	F(TopoDS_Face)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GlueOnFace;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:rtype: None
+") GlueOnFace;
 		void GlueOnFace (const TopoDS_Face & F);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_ListOfShape
-
-No detailed docstring for this function.") GeneratingEdges;
+		%feature("autodoc", "	:rtype: TopTools_ListOfShape
+") GeneratingEdges;
 		const TopTools_ListOfShape & GeneratingEdges ();
-		%feature("autodoc", "Args:
-	V(TopoDS_Vertex)
+		%feature("autodoc", "	* Returns the edge created by the vertex <V>. If none, must return a null shape.
 
-Returns:
-	TopoDS_Edge
-
-Returns the  edge  created by  the  vertex <V>. If  
-         none, must return a null shape.") Generated;
+	:param V:
+	:type V: TopoDS_Vertex &
+	:rtype: TopoDS_Edge
+") Generated;
 		TopoDS_Edge Generated (const TopoDS_Vertex & V);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
+		%feature("autodoc", "	* Returns the face created by the edge <E>. If none, must return a null shape.
 
-Returns:
-	TopoDS_Face
-
-Returns the face created by the edge <E>. If none,  
-         must return a null shape.") Generated;
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: TopoDS_Face
+") Generated;
 		TopoDS_Face Generated (const TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopTools_ListOfShape
+		%feature("autodoc", "	* Returns the list of correctly oriented generated faces.
 
-Returns  the  list of correctly oriented generated  
-         faces.") OrientedFaces;
+	:rtype: TopTools_ListOfShape
+") OrientedFaces;
 		const TopTools_ListOfShape & OrientedFaces ();
 };
 
@@ -3237,157 +2473,105 @@ def __del__(self):
 %nodefaultctor LocOpe_WiresOnShape;
 class LocOpe_WiresOnShape : public LocOpe_ProjectedWires {
 	public:
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LocOpe_WiresOnShape;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") LocOpe_WiresOnShape;
 		 LocOpe_WiresOnShape (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	S(TopoDS_Shape)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") Init;
 		void Init (const TopoDS_Shape & S);
-		%feature("autodoc", "Args:
-	ToCheckInterior(Standard_Boolean)
+		%feature("autodoc", "	* Set the flag of check internal intersections default value is True (to check)
 
-Returns:
-	None
-
-Set the flag of check internal intersections  
-         default value is True (to check)") SetCheckInterior;
+	:param ToCheckInterior:
+	:type ToCheckInterior: bool
+	:rtype: None
+") SetCheckInterior;
 		void SetCheckInterior (const Standard_Boolean ToCheckInterior);
-		%feature("autodoc", "Args:
-	W(TopoDS_Wire)
-	F(TopoDS_Face)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param W:
+	:type W: TopoDS_Wire &
+	:param F:
+	:type F: TopoDS_Face &
+	:rtype: None
+") Bind;
 		void Bind (const TopoDS_Wire & W,const TopoDS_Face & F);
-		%feature("autodoc", "Args:
-	Comp(TopoDS_Compound)
-	F(TopoDS_Face)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param Comp:
+	:type Comp: TopoDS_Compound &
+	:param F:
+	:type F: TopoDS_Face &
+	:rtype: None
+") Bind;
 		void Bind (const TopoDS_Compound & Comp,const TopoDS_Face & F);
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
-	F(TopoDS_Face)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param E:
+	:type E: TopoDS_Edge &
+	:param F:
+	:type F: TopoDS_Face &
+	:rtype: None
+") Bind;
 		void Bind (const TopoDS_Edge & E,const TopoDS_Face & F);
-		%feature("autodoc", "Args:
-	EfromW(TopoDS_Edge)
-	EonFace(TopoDS_Edge)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Bind;
+		%feature("autodoc", "	:param EfromW:
+	:type EfromW: TopoDS_Edge &
+	:param EonFace:
+	:type EonFace: TopoDS_Edge &
+	:rtype: None
+") Bind;
 		void Bind (const TopoDS_Edge & EfromW,const TopoDS_Edge & EonFace);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") BindAll;
+		%feature("autodoc", "	:rtype: None
+") BindAll;
 		void BindAll ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") InitEdgeIterator;
+		%feature("autodoc", "	:rtype: None
+") InitEdgeIterator;
 		void InitEdgeIterator ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") MoreEdge;
+		%feature("autodoc", "	:rtype: bool
+") MoreEdge;
 		Standard_Boolean MoreEdge ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Edge
-
-No detailed docstring for this function.") Edge;
+		%feature("autodoc", "	:rtype: TopoDS_Edge
+") Edge;
 		TopoDS_Edge Edge ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TopoDS_Face
+		%feature("autodoc", "	* Returns the face of the shape on which the current edge is projected.
 
-Returns the face of the shape on which the current  
-         edge is projected.") OnFace;
+	:rtype: TopoDS_Face
+") OnFace;
 		TopoDS_Face OnFace ();
-		%feature("autodoc", "Args:
-	E(TopoDS_Edge)
+		%feature("autodoc", "	* If the current edge is projected on an edge, returns <Standard_True> and sets the value of <E>. Otherwise, returns <Standard_False>.
 
-Returns:
-	Standard_Boolean
-
-If the   current  edge is  projected  on  an edge,  
-         returns <Standard_True> and sets the value of <E>.  
-         Otherwise, returns <Standard_False>.") OnEdge;
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: bool
+") OnEdge;
 		Standard_Boolean OnEdge (TopoDS_Edge & E);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") NextEdge;
+		%feature("autodoc", "	:rtype: None
+") NextEdge;
 		void NextEdge ();
-		%feature("autodoc", "Args:
-	Vwire(TopoDS_Vertex)
-	Vshape(TopoDS_Vertex)
-
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") OnVertex;
+		%feature("autodoc", "	:param Vwire:
+	:type Vwire: TopoDS_Vertex &
+	:param Vshape:
+	:type Vshape: TopoDS_Vertex &
+	:rtype: bool
+") OnVertex;
 		Standard_Boolean OnVertex (const TopoDS_Vertex & Vwire,TopoDS_Vertex & Vshape);
-		%feature("autodoc", "Args:
-	V(TopoDS_Vertex)
-	E(TopoDS_Edge)
-	P(Standard_Real)
+		%feature("autodoc", "	* If the vertex <V> lies on an edge of the original shape, returns <Standard_True> and sets the concerned edge in <E>, and the parameter on the edge in <P>. Else returns <Standard_False>.
 
-Returns:
-	Standard_Boolean
-
-If the vertex <V> lies on  an edge of the original  
-         shape,  returns     <Standard_True> and   sets the  
-         concerned edge in  <E>,  and the parameter on  the  
-         edge in <P>.  
-         Else returns <Standard_False>.") OnEdge;
+	:param V:
+	:type V: TopoDS_Vertex &
+	:param E:
+	:type E: TopoDS_Edge &
+	:param P:
+	:type P: float &
+	:rtype: bool
+") OnEdge;
 		Standard_Boolean OnEdge (const TopoDS_Vertex & V,TopoDS_Edge & E,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	aFace(TopoDS_Shape)
+		%feature("autodoc", "	* tells is the face to be split by section or not
 
-Returns:
-	Standard_Boolean
-
-tells is the face to be split by section or not") IsFaceWithSection;
+	:param aFace:
+	:type aFace: TopoDS_Shape &
+	:rtype: bool
+") IsFaceWithSection;
 		Standard_Boolean IsFaceWithSection (const TopoDS_Shape & aFace);
 };
 

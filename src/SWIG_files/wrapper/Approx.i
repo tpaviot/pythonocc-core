@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -56,108 +56,68 @@ enum Approx_Status {
 %nodefaultctor Approx_Array1OfAdHSurface;
 class Approx_Array1OfAdHSurface {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Approx_Array1OfAdHSurface;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Approx_Array1OfAdHSurface;
 		 Approx_Array1OfAdHSurface (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Handle_Adaptor3d_HSurface)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Approx_Array1OfAdHSurface;
+		%feature("autodoc", "	:param Item:
+	:type Item: Handle_Adaptor3d_HSurface &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Approx_Array1OfAdHSurface;
 		 Approx_Array1OfAdHSurface (const Handle_Adaptor3d_HSurface & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Handle_Adaptor3d_HSurface)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_Adaptor3d_HSurface &
+	:rtype: None
+") Init;
 		void Init (const Handle_Adaptor3d_HSurface & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(Approx_Array1OfAdHSurface)
-
-Returns:
-	Approx_Array1OfAdHSurface
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Approx_Array1OfAdHSurface &
+	:rtype: Approx_Array1OfAdHSurface
+") Assign;
 		const Approx_Array1OfAdHSurface & Assign (const Approx_Array1OfAdHSurface & Other);
-		%feature("autodoc", "Args:
-	Other(Approx_Array1OfAdHSurface)
-
-Returns:
-	Approx_Array1OfAdHSurface
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Approx_Array1OfAdHSurface &
+	:rtype: Approx_Array1OfAdHSurface
+") operator=;
 		const Approx_Array1OfAdHSurface & operator = (const Approx_Array1OfAdHSurface & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Handle_Adaptor3d_HSurface)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Handle_Adaptor3d_HSurface &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Adaptor3d_HSurface & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Adaptor3d_HSurface
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Adaptor3d_HSurface
+") Value;
 		const Handle_Adaptor3d_HSurface & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Adaptor3d_HSurface
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Adaptor3d_HSurface
+") ChangeValue;
 		Handle_Adaptor3d_HSurface & ChangeValue (const Standard_Integer Index);
 };
 
@@ -179,108 +139,68 @@ def __del__(self):
 %nodefaultctor Approx_Array1OfGTrsf2d;
 class Approx_Array1OfGTrsf2d {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Approx_Array1OfGTrsf2d;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Approx_Array1OfGTrsf2d;
 		 Approx_Array1OfGTrsf2d (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(gp_GTrsf2d)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Approx_Array1OfGTrsf2d;
+		%feature("autodoc", "	:param Item:
+	:type Item: gp_GTrsf2d
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Approx_Array1OfGTrsf2d;
 		 Approx_Array1OfGTrsf2d (const gp_GTrsf2d & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(gp_GTrsf2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: gp_GTrsf2d
+	:rtype: None
+") Init;
 		void Init (const gp_GTrsf2d & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(Approx_Array1OfGTrsf2d)
-
-Returns:
-	Approx_Array1OfGTrsf2d
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Approx_Array1OfGTrsf2d &
+	:rtype: Approx_Array1OfGTrsf2d
+") Assign;
 		const Approx_Array1OfGTrsf2d & Assign (const Approx_Array1OfGTrsf2d & Other);
-		%feature("autodoc", "Args:
-	Other(Approx_Array1OfGTrsf2d)
-
-Returns:
-	Approx_Array1OfGTrsf2d
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Approx_Array1OfGTrsf2d &
+	:rtype: Approx_Array1OfGTrsf2d
+") operator=;
 		const Approx_Array1OfGTrsf2d & operator = (const Approx_Array1OfGTrsf2d & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(gp_GTrsf2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: gp_GTrsf2d
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const gp_GTrsf2d & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	gp_GTrsf2d
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: gp_GTrsf2d
+") Value;
 		const gp_GTrsf2d & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	gp_GTrsf2d
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: gp_GTrsf2d
+") ChangeValue;
 		gp_GTrsf2d & ChangeValue (const Standard_Integer Index);
 };
 
@@ -302,55 +222,39 @@ def __del__(self):
 %nodefaultctor Approx_Curve2d;
 class Approx_Curve2d {
 	public:
-		%feature("autodoc", "Args:
-	C2D(Handle_Adaptor2d_HCurve2d)
-	First(Standard_Real)
-	Last(Standard_Real)
-	TolU(Standard_Real)
-	TolV(Standard_Real)
-	Continuity(GeomAbs_Shape)
-	MaxDegree(Standard_Integer)
-	MaxSegments(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Approx_Curve2d;
+		%feature("autodoc", "	:param C2D:
+	:type C2D: Handle_Adaptor2d_HCurve2d &
+	:param First:
+	:type First: float
+	:param Last:
+	:type Last: float
+	:param TolU:
+	:type TolU: float
+	:param TolV:
+	:type TolV: float
+	:param Continuity:
+	:type Continuity: GeomAbs_Shape
+	:param MaxDegree:
+	:type MaxDegree: Standard_Integer
+	:param MaxSegments:
+	:type MaxSegments: Standard_Integer
+	:rtype: None
+") Approx_Curve2d;
 		 Approx_Curve2d (const Handle_Adaptor2d_HCurve2d & C2D,const Standard_Real First,const Standard_Real Last,const Standard_Real TolU,const Standard_Real TolV,const GeomAbs_Shape Continuity,const Standard_Integer MaxDegree,const Standard_Integer MaxSegments);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasResult;
+		%feature("autodoc", "	:rtype: bool
+") HasResult;
 		Standard_Boolean HasResult ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_BSplineCurve
-
-No detailed docstring for this function.") Curve;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_BSplineCurve
+") Curve;
 		Handle_Geom2d_BSplineCurve Curve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") MaxError2dU;
+		%feature("autodoc", "	:rtype: float
+") MaxError2dU;
 		Standard_Real MaxError2dU ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") MaxError2dV;
+		%feature("autodoc", "	:rtype: float
+") MaxError2dV;
 		Standard_Real MaxError2dV ();
 };
 
@@ -372,50 +276,38 @@ def __del__(self):
 %nodefaultctor Approx_Curve3d;
 class Approx_Curve3d {
 	public:
-		%feature("autodoc", "Args:
-	Curve(Handle_Adaptor3d_HCurve)
-	Tol3d(Standard_Real)
-	Order(GeomAbs_Shape)
-	MaxSegments(Standard_Integer)
-	MaxDegree(Standard_Integer)
+		%feature("autodoc", "	* Approximation of a curve with respect of the requiered tolerance Tol3D.
 
-Returns:
-	None
-
-Approximation  of  a  curve  with respect of the  
-         requiered tolerance Tol3D.") Approx_Curve3d;
+	:param Curve:
+	:type Curve: Handle_Adaptor3d_HCurve &
+	:param Tol3d:
+	:type Tol3d: float
+	:param Order:
+	:type Order: GeomAbs_Shape
+	:param MaxSegments:
+	:type MaxSegments: Standard_Integer
+	:param MaxDegree:
+	:type MaxDegree: Standard_Integer
+	:rtype: None
+") Approx_Curve3d;
 		 Approx_Curve3d (const Handle_Adaptor3d_HCurve & Curve,const Standard_Real Tol3d,const GeomAbs_Shape Order,const Standard_Integer MaxSegments,const Standard_Integer MaxDegree);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_BSplineCurve
-
-No detailed docstring for this function.") Curve;
+		%feature("autodoc", "	:rtype: Handle_Geom_BSplineCurve
+") Curve;
 		Handle_Geom_BSplineCurve Curve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns Standard_True if the approximation has been done within requiered tolerance
 
-returns  Standard_True  if  the  approximation  has  
-been  done  within  requiered tolerance") IsDone;
+	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns Standard_True if the approximation did come out with a result that is not NECESSARELY within the required tolerance
 
-returns  Standard_True if the approximation did come out  
-with a result that  is not NECESSARELY within the required  
-tolerance") HasResult;
+	:rtype: bool
+") HasResult;
 		Standard_Boolean HasResult ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns the Maximum Error (>0 when an approximation has been done, 0 if no approximation)
 
-returns  the  Maximum  Error  (>0 when an approximation  
- has  been  done, 0  if  no  approximation)") MaxError;
+	:rtype: float
+") MaxError;
 		Standard_Real MaxError ();
 
         %feature("autodoc", "1");
@@ -445,72 +337,51 @@ def __del__(self):
 %nodefaultctor Approx_CurveOnSurface;
 class Approx_CurveOnSurface {
 	public:
-		%feature("autodoc", "Args:
-	C2D(Handle_Adaptor2d_HCurve2d)
-	Surf(Handle_Adaptor3d_HSurface)
-	First(Standard_Real)
-	Last(Standard_Real)
-	Tol(Standard_Real)
-	Continuity(GeomAbs_Shape)
-	MaxDegree(Standard_Integer)
-	MaxSegments(Standard_Integer)
-	Only3d(Standard_Boolean)=Standard_False
-	Only2d(Standard_Boolean)=Standard_False
-
-Returns:
-	None
-
-No detailed docstring for this function.") Approx_CurveOnSurface;
+		%feature("autodoc", "	:param C2D:
+	:type C2D: Handle_Adaptor2d_HCurve2d &
+	:param Surf:
+	:type Surf: Handle_Adaptor3d_HSurface &
+	:param First:
+	:type First: float
+	:param Last:
+	:type Last: float
+	:param Tol:
+	:type Tol: float
+	:param Continuity:
+	:type Continuity: GeomAbs_Shape
+	:param MaxDegree:
+	:type MaxDegree: Standard_Integer
+	:param MaxSegments:
+	:type MaxSegments: Standard_Integer
+	:param Only3d: default value is Standard_False
+	:type Only3d: bool
+	:param Only2d: default value is Standard_False
+	:type Only2d: bool
+	:rtype: None
+") Approx_CurveOnSurface;
 		 Approx_CurveOnSurface (const Handle_Adaptor2d_HCurve2d & C2D,const Handle_Adaptor3d_HSurface & Surf,const Standard_Real First,const Standard_Real Last,const Standard_Real Tol,const GeomAbs_Shape Continuity,const Standard_Integer MaxDegree,const Standard_Integer MaxSegments,const Standard_Boolean Only3d = Standard_False,const Standard_Boolean Only2d = Standard_False);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasResult;
+		%feature("autodoc", "	:rtype: bool
+") HasResult;
 		Standard_Boolean HasResult ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_BSplineCurve
-
-No detailed docstring for this function.") Curve3d;
+		%feature("autodoc", "	:rtype: Handle_Geom_BSplineCurve
+") Curve3d;
 		Handle_Geom_BSplineCurve Curve3d ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") MaxError3d;
+		%feature("autodoc", "	:rtype: float
+") MaxError3d;
 		Standard_Real MaxError3d ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_BSplineCurve
-
-No detailed docstring for this function.") Curve2d;
+		%feature("autodoc", "	:rtype: Handle_Geom2d_BSplineCurve
+") Curve2d;
 		Handle_Geom2d_BSplineCurve Curve2d ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") MaxError2dU;
+		%feature("autodoc", "	:rtype: float
+") MaxError2dU;
 		Standard_Real MaxError2dU ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns the maximum errors relativly to the U component or the V component of the  2d Curve
 
-returns the maximum errors relativly to the  U component or the V component of the  
-                2d Curve") MaxError2dV;
+	:rtype: float
+") MaxError2dV;
 		Standard_Real MaxError2dV ();
 };
 
@@ -532,103 +403,94 @@ def __del__(self):
 %nodefaultctor Approx_CurvilinearParameter;
 class Approx_CurvilinearParameter {
 	public:
-		%feature("autodoc", "Args:
-	C3D(Handle_Adaptor3d_HCurve)
-	Tol(Standard_Real)
-	Order(GeomAbs_Shape)
-	MaxDegree(Standard_Integer)
-	MaxSegments(Standard_Integer)
+		%feature("autodoc", "	* case of a free 3D curve
 
-Returns:
-	None
-
-case of a free 3D curve") Approx_CurvilinearParameter;
+	:param C3D:
+	:type C3D: Handle_Adaptor3d_HCurve &
+	:param Tol:
+	:type Tol: float
+	:param Order:
+	:type Order: GeomAbs_Shape
+	:param MaxDegree:
+	:type MaxDegree: Standard_Integer
+	:param MaxSegments:
+	:type MaxSegments: Standard_Integer
+	:rtype: None
+") Approx_CurvilinearParameter;
 		 Approx_CurvilinearParameter (const Handle_Adaptor3d_HCurve & C3D,const Standard_Real Tol,const GeomAbs_Shape Order,const Standard_Integer MaxDegree,const Standard_Integer MaxSegments);
-		%feature("autodoc", "Args:
-	C2D(Handle_Adaptor2d_HCurve2d)
-	Surf(Handle_Adaptor3d_HSurface)
-	Tol(Standard_Real)
-	Order(GeomAbs_Shape)
-	MaxDegree(Standard_Integer)
-	MaxSegments(Standard_Integer)
+		%feature("autodoc", "	* case of a curve on one surface
 
-Returns:
-	None
-
-case of a curve on one surface") Approx_CurvilinearParameter;
+	:param C2D:
+	:type C2D: Handle_Adaptor2d_HCurve2d &
+	:param Surf:
+	:type Surf: Handle_Adaptor3d_HSurface &
+	:param Tol:
+	:type Tol: float
+	:param Order:
+	:type Order: GeomAbs_Shape
+	:param MaxDegree:
+	:type MaxDegree: Standard_Integer
+	:param MaxSegments:
+	:type MaxSegments: Standard_Integer
+	:rtype: None
+") Approx_CurvilinearParameter;
 		 Approx_CurvilinearParameter (const Handle_Adaptor2d_HCurve2d & C2D,const Handle_Adaptor3d_HSurface & Surf,const Standard_Real Tol,const GeomAbs_Shape Order,const Standard_Integer MaxDegree,const Standard_Integer MaxSegments);
-		%feature("autodoc", "Args:
-	C2D1(Handle_Adaptor2d_HCurve2d)
-	Surf1(Handle_Adaptor3d_HSurface)
-	C2D2(Handle_Adaptor2d_HCurve2d)
-	Surf2(Handle_Adaptor3d_HSurface)
-	Tol(Standard_Real)
-	Order(GeomAbs_Shape)
-	MaxDegree(Standard_Integer)
-	MaxSegments(Standard_Integer)
+		%feature("autodoc", "	* case of a curve on two surfaces
 
-Returns:
-	None
-
-case of a curve on two surfaces") Approx_CurvilinearParameter;
+	:param C2D1:
+	:type C2D1: Handle_Adaptor2d_HCurve2d &
+	:param Surf1:
+	:type Surf1: Handle_Adaptor3d_HSurface &
+	:param C2D2:
+	:type C2D2: Handle_Adaptor2d_HCurve2d &
+	:param Surf2:
+	:type Surf2: Handle_Adaptor3d_HSurface &
+	:param Tol:
+	:type Tol: float
+	:param Order:
+	:type Order: GeomAbs_Shape
+	:param MaxDegree:
+	:type MaxDegree: Standard_Integer
+	:param MaxSegments:
+	:type MaxSegments: Standard_Integer
+	:rtype: None
+") Approx_CurvilinearParameter;
 		 Approx_CurvilinearParameter (const Handle_Adaptor2d_HCurve2d & C2D1,const Handle_Adaptor3d_HSurface & Surf1,const Handle_Adaptor2d_HCurve2d & C2D2,const Handle_Adaptor3d_HSurface & Surf2,const Standard_Real Tol,const GeomAbs_Shape Order,const Standard_Integer MaxDegree,const Standard_Integer MaxSegments);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") HasResult;
+		%feature("autodoc", "	:rtype: bool
+") HasResult;
 		Standard_Boolean HasResult ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom_BSplineCurve
+		%feature("autodoc", "	* returns the Bspline curve corresponding to the reparametrized 3D curve
 
-returns the Bspline curve corresponding to the reparametrized 3D curve") Curve3d;
+	:rtype: Handle_Geom_BSplineCurve
+") Curve3d;
 		Handle_Geom_BSplineCurve Curve3d ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns the maximum error on the reparametrized 3D curve
 
-returns the maximum error on the reparametrized 3D curve") MaxError3d;
+	:rtype: float
+") MaxError3d;
 		Standard_Real MaxError3d ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_BSplineCurve
+		%feature("autodoc", "	* returns the BsplineCurve representing the reparametrized 2D curve on the first surface (case of a curve on one or two surfaces)
 
-returns the BsplineCurve representing the reparametrized 2D curve on the  
-         first surface (case of a curve on one or two surfaces)") Curve2d1;
+	:rtype: Handle_Geom2d_BSplineCurve
+") Curve2d1;
 		Handle_Geom2d_BSplineCurve Curve2d1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns the maximum error on the first reparametrized 2D curve
 
-returns the maximum error on the first reparametrized 2D curve") MaxError2d1;
+	:rtype: float
+") MaxError2d1;
 		Standard_Real MaxError2d1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_BSplineCurve
+		%feature("autodoc", "	* returns the BsplineCurve representing the reparametrized 2D curve on the second surface (case of a curve on two surfaces)
 
-returns the BsplineCurve representing the reparametrized 2D curve on the  
-         second surface (case of a curve on two surfaces)") Curve2d2;
+	:rtype: Handle_Geom2d_BSplineCurve
+") Curve2d2;
 		Handle_Geom2d_BSplineCurve Curve2d2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns the maximum error on the second reparametrized 2D curve
 
-returns the maximum error on the second reparametrized 2D curve") MaxError2d2;
+	:rtype: float
+") MaxError2d2;
 		Standard_Real MaxError2d2 ();
 
         %feature("autodoc", "1");
@@ -658,164 +520,144 @@ def __del__(self):
 %nodefaultctor Approx_CurvlinFunc;
 class Approx_CurvlinFunc : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	C(Handle_Adaptor3d_HCurve)
-	Tol(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Approx_CurvlinFunc;
+		%feature("autodoc", "	:param C:
+	:type C: Handle_Adaptor3d_HCurve &
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Approx_CurvlinFunc;
 		 Approx_CurvlinFunc (const Handle_Adaptor3d_HCurve & C,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	C2D(Handle_Adaptor2d_HCurve2d)
-	S(Handle_Adaptor3d_HSurface)
-	Tol(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Approx_CurvlinFunc;
+		%feature("autodoc", "	:param C2D:
+	:type C2D: Handle_Adaptor2d_HCurve2d &
+	:param S:
+	:type S: Handle_Adaptor3d_HSurface &
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Approx_CurvlinFunc;
 		 Approx_CurvlinFunc (const Handle_Adaptor2d_HCurve2d & C2D,const Handle_Adaptor3d_HSurface & S,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	C2D1(Handle_Adaptor2d_HCurve2d)
-	C2D2(Handle_Adaptor2d_HCurve2d)
-	S1(Handle_Adaptor3d_HSurface)
-	S2(Handle_Adaptor3d_HSurface)
-	Tol(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Approx_CurvlinFunc;
+		%feature("autodoc", "	:param C2D1:
+	:type C2D1: Handle_Adaptor2d_HCurve2d &
+	:param C2D2:
+	:type C2D2: Handle_Adaptor2d_HCurve2d &
+	:param S1:
+	:type S1: Handle_Adaptor3d_HSurface &
+	:param S2:
+	:type S2: Handle_Adaptor3d_HSurface &
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Approx_CurvlinFunc;
 		 Approx_CurvlinFunc (const Handle_Adaptor2d_HCurve2d & C2D1,const Handle_Adaptor2d_HCurve2d & C2D2,const Handle_Adaptor3d_HSurface & S1,const Handle_Adaptor3d_HSurface & S2,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	Tol(Standard_Real)
+		%feature("autodoc", "	* //!---Purpose Update the tolerance to used
 
-Returns:
-	None
-
-//!---Purpose Update the tolerance to used") SetTol;
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") SetTol;
 		void SetTol (const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") FirstParameter;
+		%feature("autodoc", "	:rtype: float
+") FirstParameter;
 		Standard_Real FirstParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") LastParameter;
+		%feature("autodoc", "	:rtype: float
+") LastParameter;
 		Standard_Real LastParameter ();
-		%feature("autodoc", "Args:
-	S(GeomAbs_Shape)
+		%feature("autodoc", "	* Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>
 
-Returns:
-	Standard_Integer
-
-Returns  the number  of  intervals for  continuity  
-         <S>. May be one if Continuity(me) >= <S>") NbIntervals;
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: int
+") NbIntervals;
 		Standard_Integer NbIntervals (const GeomAbs_Shape S);
-		%feature("autodoc", "Args:
-	T(TColStd_Array1OfReal)
-	S(GeomAbs_Shape)
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
-Returns:
-	None
-
-Stores in <T> the  parameters bounding the intervals  
-         of continuity <S>.  
- 
-         The array must provide  enough room to  accomodate  
-         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+	:param T:
+	:type T: TColStd_Array1OfReal &
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: None
+") Intervals;
 		void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
-		%feature("autodoc", "Args:
-	First(Standard_Real)
-	Last(Standard_Real)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* if First < 0 or Last > 1
 
-Returns:
-	None
-
-if First < 0 or Last > 1") Trim;
+	:param First:
+	:type First: float
+	:param Last:
+	:type Last: float
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Trim;
 		void Trim (const Standard_Real First,const Standard_Real Last,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Computes length of the curve.
 
-Computes length of the curve.") Length;
+	:rtype: None
+") Length;
 		void Length ();
-		%feature("autodoc", "Args:
-	C(Adaptor3d_Curve)
-	FirstU(Standard_Real)
-	LasrU(Standard_Real)
+		%feature("autodoc", "	* Computes length of the curve segment.
 
-Returns:
-	Standard_Real
-
-Computes length of the curve segment.") Length;
+	:param C:
+	:type C: Adaptor3d_Curve &
+	:param FirstU:
+	:type FirstU: float
+	:param LasrU:
+	:type LasrU: float
+	:rtype: float
+") Length;
 		Standard_Real Length (Adaptor3d_Curve & C,const Standard_Real FirstU,const Standard_Real LasrU);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") GetLength;
+		%feature("autodoc", "	:rtype: float
+") GetLength;
 		Standard_Real GetLength ();
-		%feature("autodoc", "Args:
-	C(Adaptor3d_Curve)
-	S(Standard_Real)
-	NumberOfCurve(Standard_Integer)
+		%feature("autodoc", "	* returns original parameter correponding S. if Case == 1 computation is performed on myC2D1 and mySurf1, otherwise it is done on myC2D2 and mySurf2.
 
-Returns:
-	Standard_Real
-
-returns  original parameter correponding S.  if  
- Case == 1 computation is performed on myC2D1 and mySurf1,  
- otherwise it is done on myC2D2 and mySurf2.") GetUParameter;
+	:param C:
+	:type C: Adaptor3d_Curve &
+	:param S:
+	:type S: float
+	:param NumberOfCurve:
+	:type NumberOfCurve: Standard_Integer
+	:rtype: float
+") GetUParameter;
 		Standard_Real GetUParameter (Adaptor3d_Curve & C,const Standard_Real S,const Standard_Integer NumberOfCurve);
-		%feature("autodoc", "Args:
-	U(Standard_Real)
+		%feature("autodoc", "	* returns original parameter correponding S.
 
-Returns:
-	Standard_Real
-
-returns original parameter correponding S.") GetSParameter;
+	:param U:
+	:type U: float
+	:rtype: float
+") GetSParameter;
 		Standard_Real GetSParameter (const Standard_Real U);
-		%feature("autodoc", "Args:
-	S(Standard_Real)
-	Order(Standard_Integer)
-	Result(TColStd_Array1OfReal)
+		%feature("autodoc", "	* if myCase != 1
 
-Returns:
-	Standard_Boolean
-
-if myCase != 1") EvalCase1;
+	:param S:
+	:type S: float
+	:param Order:
+	:type Order: Standard_Integer
+	:param Result:
+	:type Result: TColStd_Array1OfReal &
+	:rtype: bool
+") EvalCase1;
 		Standard_Boolean EvalCase1 (const Standard_Real S,const Standard_Integer Order,TColStd_Array1OfReal & Result);
-		%feature("autodoc", "Args:
-	S(Standard_Real)
-	Order(Standard_Integer)
-	Result(TColStd_Array1OfReal)
+		%feature("autodoc", "	* if myCase != 2
 
-Returns:
-	Standard_Boolean
-
-if myCase != 2") EvalCase2;
+	:param S:
+	:type S: float
+	:param Order:
+	:type Order: Standard_Integer
+	:param Result:
+	:type Result: TColStd_Array1OfReal &
+	:rtype: bool
+") EvalCase2;
 		Standard_Boolean EvalCase2 (const Standard_Real S,const Standard_Integer Order,TColStd_Array1OfReal & Result);
-		%feature("autodoc", "Args:
-	S(Standard_Real)
-	Order(Standard_Integer)
-	Result(TColStd_Array1OfReal)
+		%feature("autodoc", "	* if myCase != 3
 
-Returns:
-	Standard_Boolean
-
-if myCase != 3") EvalCase3;
+	:param S:
+	:type S: float
+	:param Order:
+	:type Order: Standard_Integer
+	:param Result:
+	:type Result: TColStd_Array1OfReal &
+	:rtype: bool
+") EvalCase3;
 		Standard_Boolean EvalCase3 (const Standard_Real S,const Standard_Integer Order,TColStd_Array1OfReal & Result);
 };
 
@@ -876,118 +718,99 @@ def __del__(self):
 %nodefaultctor Approx_FitAndDivide;
 class Approx_FitAndDivide {
 	public:
-		%feature("autodoc", "Args:
-	Line(AppCont_Function)
-	degreemin(Standard_Integer)=3
-	degreemax(Standard_Integer)=8
-	Tolerance3d(Standard_Real)=1.0e-5
-	Tolerance2d(Standard_Real)=1.0e-5
-	cutting(Standard_Boolean)=Standard_False
-	FirstC(AppParCurves_Constraint)=AppParCurves_TangencyPoint
-	LastC(AppParCurves_Constraint)=AppParCurves_TangencyPoint
-
-Returns:
-	None
-
-No detailed docstring for this function.") Approx_FitAndDivide;
+		%feature("autodoc", "	:param Line:
+	:type Line: AppCont_Function &
+	:param degreemin: default value is 3
+	:type degreemin: Standard_Integer
+	:param degreemax: default value is 8
+	:type degreemax: Standard_Integer
+	:param Tolerance3d: default value is 1.0e-5
+	:type Tolerance3d: float
+	:param Tolerance2d: default value is 1.0e-5
+	:type Tolerance2d: float
+	:param cutting: default value is Standard_False
+	:type cutting: bool
+	:param FirstC: default value is AppParCurves_TangencyPoint
+	:type FirstC: AppParCurves_Constraint
+	:param LastC: default value is AppParCurves_TangencyPoint
+	:type LastC: AppParCurves_Constraint
+	:rtype: None
+") Approx_FitAndDivide;
 		 Approx_FitAndDivide (const AppCont_Function & Line,const Standard_Integer degreemin = 3,const Standard_Integer degreemax = 8,const Standard_Real Tolerance3d = 1.0e-5,const Standard_Real Tolerance2d = 1.0e-5,const Standard_Boolean cutting = Standard_False,const AppParCurves_Constraint FirstC = AppParCurves_TangencyPoint,const AppParCurves_Constraint LastC = AppParCurves_TangencyPoint);
-		%feature("autodoc", "Args:
-	degreemin(Standard_Integer)=3
-	degreemax(Standard_Integer)=8
-	Tolerance3d(Standard_Real)=1.0e-05
-	Tolerance2d(Standard_Real)=1.0e-05
-	cutting(Standard_Boolean)=Standard_False
-	FirstC(AppParCurves_Constraint)=AppParCurves_TangencyPoint
-	LastC(AppParCurves_Constraint)=AppParCurves_TangencyPoint
-
-Returns:
-	None
-
-No detailed docstring for this function.") Approx_FitAndDivide;
+		%feature("autodoc", "	:param degreemin: default value is 3
+	:type degreemin: Standard_Integer
+	:param degreemax: default value is 8
+	:type degreemax: Standard_Integer
+	:param Tolerance3d: default value is 1.0e-05
+	:type Tolerance3d: float
+	:param Tolerance2d: default value is 1.0e-05
+	:type Tolerance2d: float
+	:param cutting: default value is Standard_False
+	:type cutting: bool
+	:param FirstC: default value is AppParCurves_TangencyPoint
+	:type FirstC: AppParCurves_Constraint
+	:param LastC: default value is AppParCurves_TangencyPoint
+	:type LastC: AppParCurves_Constraint
+	:rtype: None
+") Approx_FitAndDivide;
 		 Approx_FitAndDivide (const Standard_Integer degreemin = 3,const Standard_Integer degreemax = 8,const Standard_Real Tolerance3d = 1.0e-05,const Standard_Real Tolerance2d = 1.0e-05,const Standard_Boolean cutting = Standard_False,const AppParCurves_Constraint FirstC = AppParCurves_TangencyPoint,const AppParCurves_Constraint LastC = AppParCurves_TangencyPoint);
-		%feature("autodoc", "Args:
-	Line(AppCont_Function)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param Line:
+	:type Line: AppCont_Function &
+	:rtype: None
+") Perform;
 		void Perform (const AppCont_Function & Line);
-		%feature("autodoc", "Args:
-	degreemin(Standard_Integer)
-	degreemax(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetDegrees;
+		%feature("autodoc", "	:param degreemin:
+	:type degreemin: Standard_Integer
+	:param degreemax:
+	:type degreemax: Standard_Integer
+	:rtype: None
+") SetDegrees;
 		void SetDegrees (const Standard_Integer degreemin,const Standard_Integer degreemax);
-		%feature("autodoc", "Args:
-	Tolerance3d(Standard_Real)
-	Tolerance2d(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetTolerances;
+		%feature("autodoc", "	:param Tolerance3d:
+	:type Tolerance3d: float
+	:param Tolerance2d:
+	:type Tolerance2d: float
+	:rtype: None
+") SetTolerances;
 		void SetTolerances (const Standard_Real Tolerance3d,const Standard_Real Tolerance2d);
-		%feature("autodoc", "Args:
-	FirstC(AppParCurves_Constraint)
-	LastC(AppParCurves_Constraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetConstraints;
+		%feature("autodoc", "	:param FirstC:
+	:type FirstC: AppParCurves_Constraint
+	:param LastC:
+	:type LastC: AppParCurves_Constraint
+	:rtype: None
+") SetConstraints;
 		void SetConstraints (const AppParCurves_Constraint FirstC,const AppParCurves_Constraint LastC);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllApproximated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllApproximated;
 		Standard_Boolean IsAllApproximated ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsToleranceReached;
+		%feature("autodoc", "	:rtype: bool
+") IsToleranceReached;
 		Standard_Boolean IsToleranceReached ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	tol3d(Standard_Real)
-	tol2d(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Error;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param tol3d:
+	:type tol3d: float &
+	:param tol2d:
+	:type tol2d: float &
+	:rtype: None
+") Error;
 		void Error (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbMultiCurves;
+		%feature("autodoc", "	:rtype: int
+") NbMultiCurves;
 		Standard_Integer NbMultiCurves ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)=1
-
-Returns:
-	AppParCurves_MultiCurve
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index: default value is 1
+	:type Index: Standard_Integer
+	:rtype: AppParCurves_MultiCurve
+") Value;
 		AppParCurves_MultiCurve Value (const Standard_Integer Index = 1);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	firstp(Standard_Real)
-	lastp(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Parameters;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param firstp:
+	:type firstp: float &
+	:param lastp:
+	:type lastp: float &
+	:rtype: None
+") Parameters;
 		void Parameters (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
 };
 
@@ -1009,118 +832,99 @@ def __del__(self):
 %nodefaultctor Approx_FitAndDivide2d;
 class Approx_FitAndDivide2d {
 	public:
-		%feature("autodoc", "Args:
-	Line(AppCont_Function2d)
-	degreemin(Standard_Integer)=3
-	degreemax(Standard_Integer)=8
-	Tolerance3d(Standard_Real)=1.0e-5
-	Tolerance2d(Standard_Real)=1.0e-5
-	cutting(Standard_Boolean)=Standard_False
-	FirstC(AppParCurves_Constraint)=AppParCurves_TangencyPoint
-	LastC(AppParCurves_Constraint)=AppParCurves_TangencyPoint
-
-Returns:
-	None
-
-No detailed docstring for this function.") Approx_FitAndDivide2d;
+		%feature("autodoc", "	:param Line:
+	:type Line: AppCont_Function2d &
+	:param degreemin: default value is 3
+	:type degreemin: Standard_Integer
+	:param degreemax: default value is 8
+	:type degreemax: Standard_Integer
+	:param Tolerance3d: default value is 1.0e-5
+	:type Tolerance3d: float
+	:param Tolerance2d: default value is 1.0e-5
+	:type Tolerance2d: float
+	:param cutting: default value is Standard_False
+	:type cutting: bool
+	:param FirstC: default value is AppParCurves_TangencyPoint
+	:type FirstC: AppParCurves_Constraint
+	:param LastC: default value is AppParCurves_TangencyPoint
+	:type LastC: AppParCurves_Constraint
+	:rtype: None
+") Approx_FitAndDivide2d;
 		 Approx_FitAndDivide2d (const AppCont_Function2d & Line,const Standard_Integer degreemin = 3,const Standard_Integer degreemax = 8,const Standard_Real Tolerance3d = 1.0e-5,const Standard_Real Tolerance2d = 1.0e-5,const Standard_Boolean cutting = Standard_False,const AppParCurves_Constraint FirstC = AppParCurves_TangencyPoint,const AppParCurves_Constraint LastC = AppParCurves_TangencyPoint);
-		%feature("autodoc", "Args:
-	degreemin(Standard_Integer)=3
-	degreemax(Standard_Integer)=8
-	Tolerance3d(Standard_Real)=1.0e-05
-	Tolerance2d(Standard_Real)=1.0e-05
-	cutting(Standard_Boolean)=Standard_False
-	FirstC(AppParCurves_Constraint)=AppParCurves_TangencyPoint
-	LastC(AppParCurves_Constraint)=AppParCurves_TangencyPoint
-
-Returns:
-	None
-
-No detailed docstring for this function.") Approx_FitAndDivide2d;
+		%feature("autodoc", "	:param degreemin: default value is 3
+	:type degreemin: Standard_Integer
+	:param degreemax: default value is 8
+	:type degreemax: Standard_Integer
+	:param Tolerance3d: default value is 1.0e-05
+	:type Tolerance3d: float
+	:param Tolerance2d: default value is 1.0e-05
+	:type Tolerance2d: float
+	:param cutting: default value is Standard_False
+	:type cutting: bool
+	:param FirstC: default value is AppParCurves_TangencyPoint
+	:type FirstC: AppParCurves_Constraint
+	:param LastC: default value is AppParCurves_TangencyPoint
+	:type LastC: AppParCurves_Constraint
+	:rtype: None
+") Approx_FitAndDivide2d;
 		 Approx_FitAndDivide2d (const Standard_Integer degreemin = 3,const Standard_Integer degreemax = 8,const Standard_Real Tolerance3d = 1.0e-05,const Standard_Real Tolerance2d = 1.0e-05,const Standard_Boolean cutting = Standard_False,const AppParCurves_Constraint FirstC = AppParCurves_TangencyPoint,const AppParCurves_Constraint LastC = AppParCurves_TangencyPoint);
-		%feature("autodoc", "Args:
-	Line(AppCont_Function2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param Line:
+	:type Line: AppCont_Function2d &
+	:rtype: None
+") Perform;
 		void Perform (const AppCont_Function2d & Line);
-		%feature("autodoc", "Args:
-	degreemin(Standard_Integer)
-	degreemax(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetDegrees;
+		%feature("autodoc", "	:param degreemin:
+	:type degreemin: Standard_Integer
+	:param degreemax:
+	:type degreemax: Standard_Integer
+	:rtype: None
+") SetDegrees;
 		void SetDegrees (const Standard_Integer degreemin,const Standard_Integer degreemax);
-		%feature("autodoc", "Args:
-	Tolerance3d(Standard_Real)
-	Tolerance2d(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetTolerances;
+		%feature("autodoc", "	:param Tolerance3d:
+	:type Tolerance3d: float
+	:param Tolerance2d:
+	:type Tolerance2d: float
+	:rtype: None
+") SetTolerances;
 		void SetTolerances (const Standard_Real Tolerance3d,const Standard_Real Tolerance2d);
-		%feature("autodoc", "Args:
-	FirstC(AppParCurves_Constraint)
-	LastC(AppParCurves_Constraint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetConstraints;
+		%feature("autodoc", "	:param FirstC:
+	:type FirstC: AppParCurves_Constraint
+	:param LastC:
+	:type LastC: AppParCurves_Constraint
+	:rtype: None
+") SetConstraints;
 		void SetConstraints (const AppParCurves_Constraint FirstC,const AppParCurves_Constraint LastC);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllApproximated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllApproximated;
 		Standard_Boolean IsAllApproximated ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsToleranceReached;
+		%feature("autodoc", "	:rtype: bool
+") IsToleranceReached;
 		Standard_Boolean IsToleranceReached ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	tol3d(Standard_Real)
-	tol2d(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Error;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param tol3d:
+	:type tol3d: float &
+	:param tol2d:
+	:type tol2d: float &
+	:rtype: None
+") Error;
 		void Error (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbMultiCurves;
+		%feature("autodoc", "	:rtype: int
+") NbMultiCurves;
 		Standard_Integer NbMultiCurves ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)=1
-
-Returns:
-	AppParCurves_MultiCurve
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index: default value is 1
+	:type Index: Standard_Integer
+	:rtype: AppParCurves_MultiCurve
+") Value;
 		AppParCurves_MultiCurve Value (const Standard_Integer Index = 1);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	firstp(Standard_Real)
-	lastp(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Parameters;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param firstp:
+	:type firstp: float &
+	:param lastp:
+	:type lastp: float &
+	:rtype: None
+") Parameters;
 		void Parameters (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
 };
 
@@ -1142,92 +946,58 @@ def __del__(self):
 %nodefaultctor Approx_HArray1OfAdHSurface;
 class Approx_HArray1OfAdHSurface : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Approx_HArray1OfAdHSurface;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Approx_HArray1OfAdHSurface;
 		 Approx_HArray1OfAdHSurface (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(Handle_Adaptor3d_HSurface)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Approx_HArray1OfAdHSurface;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: Handle_Adaptor3d_HSurface &
+	:rtype: None
+") Approx_HArray1OfAdHSurface;
 		 Approx_HArray1OfAdHSurface (const Standard_Integer Low,const Standard_Integer Up,const Handle_Adaptor3d_HSurface & V);
-		%feature("autodoc", "Args:
-	V(Handle_Adaptor3d_HSurface)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Handle_Adaptor3d_HSurface &
+	:rtype: None
+") Init;
 		void Init (const Handle_Adaptor3d_HSurface & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Handle_Adaptor3d_HSurface)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Handle_Adaptor3d_HSurface &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Adaptor3d_HSurface & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Adaptor3d_HSurface
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Adaptor3d_HSurface
+") Value;
 		const Handle_Adaptor3d_HSurface & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_Adaptor3d_HSurface
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_Adaptor3d_HSurface
+") ChangeValue;
 		Handle_Adaptor3d_HSurface & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Approx_Array1OfAdHSurface
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: Approx_Array1OfAdHSurface
+") Array1;
 		const Approx_Array1OfAdHSurface & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Approx_Array1OfAdHSurface
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: Approx_Array1OfAdHSurface
+") ChangeArray1;
 		Approx_Array1OfAdHSurface & ChangeArray1 ();
 };
 
@@ -1288,92 +1058,58 @@ def __del__(self):
 %nodefaultctor Approx_HArray1OfGTrsf2d;
 class Approx_HArray1OfGTrsf2d : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Approx_HArray1OfGTrsf2d;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Approx_HArray1OfGTrsf2d;
 		 Approx_HArray1OfGTrsf2d (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(gp_GTrsf2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Approx_HArray1OfGTrsf2d;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: gp_GTrsf2d
+	:rtype: None
+") Approx_HArray1OfGTrsf2d;
 		 Approx_HArray1OfGTrsf2d (const Standard_Integer Low,const Standard_Integer Up,const gp_GTrsf2d & V);
-		%feature("autodoc", "Args:
-	V(gp_GTrsf2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: gp_GTrsf2d
+	:rtype: None
+") Init;
 		void Init (const gp_GTrsf2d & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(gp_GTrsf2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: gp_GTrsf2d
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const gp_GTrsf2d & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	gp_GTrsf2d
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: gp_GTrsf2d
+") Value;
 		const gp_GTrsf2d & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	gp_GTrsf2d
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: gp_GTrsf2d
+") ChangeValue;
 		gp_GTrsf2d & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Approx_Array1OfGTrsf2d
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: Approx_Array1OfGTrsf2d
+") Array1;
 		const Approx_Array1OfGTrsf2d & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Approx_Array1OfGTrsf2d
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: Approx_Array1OfGTrsf2d
+") ChangeArray1;
 		Approx_Array1OfGTrsf2d & ChangeArray1 ();
 };
 
@@ -1434,56 +1170,34 @@ def __del__(self):
 %nodefaultctor Approx_MCurvesToBSpCurve;
 class Approx_MCurvesToBSpCurve {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Approx_MCurvesToBSpCurve;
+		%feature("autodoc", "	:rtype: None
+") Approx_MCurvesToBSpCurve;
 		 Approx_MCurvesToBSpCurve ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reset;
+		%feature("autodoc", "	:rtype: None
+") Reset;
 		void Reset ();
-		%feature("autodoc", "Args:
-	MC(AppParCurves_MultiCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param MC:
+	:type MC: AppParCurves_MultiCurve &
+	:rtype: None
+") Append;
 		void Append (const AppParCurves_MultiCurve & MC);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:rtype: None
+") Perform;
 		void Perform ();
-		%feature("autodoc", "Args:
-	TheSeq(AppParCurves_SequenceOfMultiCurve)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Perform;
+		%feature("autodoc", "	:param TheSeq:
+	:type TheSeq: AppParCurves_SequenceOfMultiCurve &
+	:rtype: None
+") Perform;
 		void Perform (const AppParCurves_SequenceOfMultiCurve & TheSeq);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	AppParCurves_MultiBSpCurve
+		%feature("autodoc", "	* return the composite MultiCurves as a MultiBSpCurve.
 
-return the composite MultiCurves as a MultiBSpCurve.") Value;
+	:rtype: AppParCurves_MultiBSpCurve
+") Value;
 		const AppParCurves_MultiBSpCurve & Value ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	AppParCurves_MultiBSpCurve
+		%feature("autodoc", "	* return the composite MultiCurves as a MultiBSpCurve.
 
-return the composite MultiCurves as a MultiBSpCurve.") ChangeValue;
+	:rtype: AppParCurves_MultiBSpCurve
+") ChangeValue;
 		const AppParCurves_MultiBSpCurve & ChangeValue ();
 };
 
@@ -1505,43 +1219,37 @@ def __del__(self):
 %nodefaultctor Approx_MyLeastSquareOfFitAndDivide;
 class Approx_MyLeastSquareOfFitAndDivide {
 	public:
-		%feature("autodoc", "Args:
-	SSP(AppCont_Function)
-	U0(Standard_Real)
-	U1(Standard_Real)
-	FirstCons(AppParCurves_Constraint)
-	LastCons(AppParCurves_Constraint)
-	Deg(Standard_Integer)
-	NbPoints(Standard_Integer)=24
-
-Returns:
-	None
-
-No detailed docstring for this function.") Approx_MyLeastSquareOfFitAndDivide;
+		%feature("autodoc", "	:param SSP:
+	:type SSP: AppCont_Function &
+	:param U0:
+	:type U0: float
+	:param U1:
+	:type U1: float
+	:param FirstCons:
+	:type FirstCons: AppParCurves_Constraint
+	:param LastCons:
+	:type LastCons: AppParCurves_Constraint
+	:param Deg:
+	:type Deg: Standard_Integer
+	:param NbPoints: default value is 24
+	:type NbPoints: Standard_Integer
+	:rtype: None
+") Approx_MyLeastSquareOfFitAndDivide;
 		 Approx_MyLeastSquareOfFitAndDivide (const AppCont_Function & SSP,const Standard_Real U0,const Standard_Real U1,const AppParCurves_Constraint FirstCons,const AppParCurves_Constraint LastCons,const Standard_Integer Deg,const Standard_Integer NbPoints = 24);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	AppParCurves_MultiCurve
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: AppParCurves_MultiCurve
+") Value;
 		const AppParCurves_MultiCurve & Value ();
-		%feature("autodoc", "Args:
-	F(Standard_Real)
-	MaxE3d(Standard_Real)
-	MaxE2d(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Error;
+		%feature("autodoc", "	:param F:
+	:type F: float &
+	:param MaxE3d:
+	:type MaxE3d: float &
+	:param MaxE2d:
+	:type MaxE2d: float &
+	:rtype: None
+") Error;
 		void Error (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 };
 
@@ -1563,43 +1271,37 @@ def __del__(self):
 %nodefaultctor Approx_MyLeastSquareOfFitAndDivide2d;
 class Approx_MyLeastSquareOfFitAndDivide2d {
 	public:
-		%feature("autodoc", "Args:
-	SSP(AppCont_Function2d)
-	U0(Standard_Real)
-	U1(Standard_Real)
-	FirstCons(AppParCurves_Constraint)
-	LastCons(AppParCurves_Constraint)
-	Deg(Standard_Integer)
-	NbPoints(Standard_Integer)=24
-
-Returns:
-	None
-
-No detailed docstring for this function.") Approx_MyLeastSquareOfFitAndDivide2d;
+		%feature("autodoc", "	:param SSP:
+	:type SSP: AppCont_Function2d &
+	:param U0:
+	:type U0: float
+	:param U1:
+	:type U1: float
+	:param FirstCons:
+	:type FirstCons: AppParCurves_Constraint
+	:param LastCons:
+	:type LastCons: AppParCurves_Constraint
+	:param Deg:
+	:type Deg: Standard_Integer
+	:param NbPoints: default value is 24
+	:type NbPoints: Standard_Integer
+	:rtype: None
+") Approx_MyLeastSquareOfFitAndDivide2d;
 		 Approx_MyLeastSquareOfFitAndDivide2d (const AppCont_Function2d & SSP,const Standard_Real U0,const Standard_Real U1,const AppParCurves_Constraint FirstCons,const AppParCurves_Constraint LastCons,const Standard_Integer Deg,const Standard_Integer NbPoints = 24);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	AppParCurves_MultiCurve
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: AppParCurves_MultiCurve
+") Value;
 		const AppParCurves_MultiCurve & Value ();
-		%feature("autodoc", "Args:
-	F(Standard_Real)
-	MaxE3d(Standard_Real)
-	MaxE2d(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Error;
+		%feature("autodoc", "	:param F:
+	:type F: float &
+	:param MaxE3d:
+	:type MaxE3d: float &
+	:param MaxE2d:
+	:type MaxE2d: float &
+	:rtype: None
+") Error;
 		void Error (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 };
 
@@ -1621,70 +1323,58 @@ def __del__(self):
 %nodefaultctor Approx_SameParameter;
 class Approx_SameParameter {
 	public:
-		%feature("autodoc", "Args:
-	C3D(Handle_Geom_Curve)
-	C2D(Handle_Geom2d_Curve)
-	S(Handle_Geom_Surface)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Warning: the C3D and C2D must have the same parametric domain.
 
-Returns:
-	None
-
-Warning: the C3D and C2D must have the same parametric domain.") Approx_SameParameter;
+	:param C3D:
+	:type C3D: Handle_Geom_Curve &
+	:param C2D:
+	:type C2D: Handle_Geom2d_Curve &
+	:param S:
+	:type S: Handle_Geom_Surface &
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Approx_SameParameter;
 		 Approx_SameParameter (const Handle_Geom_Curve & C3D,const Handle_Geom2d_Curve & C2D,const Handle_Geom_Surface & S,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	C3D(Handle_Adaptor3d_HCurve)
-	C2D(Handle_Geom2d_Curve)
-	S(Handle_Adaptor3d_HSurface)
-	Tol(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Approx_SameParameter;
+		%feature("autodoc", "	:param C3D:
+	:type C3D: Handle_Adaptor3d_HCurve &
+	:param C2D:
+	:type C2D: Handle_Geom2d_Curve &
+	:param S:
+	:type S: Handle_Adaptor3d_HSurface &
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Approx_SameParameter;
 		 Approx_SameParameter (const Handle_Adaptor3d_HCurve & C3D,const Handle_Geom2d_Curve & C2D,const Handle_Adaptor3d_HSurface & S,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	C3D(Handle_Adaptor3d_HCurve)
-	C2D(Handle_Adaptor2d_HCurve2d)
-	S(Handle_Adaptor3d_HSurface)
-	Tol(Standard_Real)
+		%feature("autodoc", "	* Warning: the C3D and C2D must have the same parametric domain.
 
-Returns:
-	None
-
-Warning: the C3D and C2D must have the same parametric domain.") Approx_SameParameter;
+	:param C3D:
+	:type C3D: Handle_Adaptor3d_HCurve &
+	:param C2D:
+	:type C2D: Handle_Adaptor2d_HCurve2d &
+	:param S:
+	:type S: Handle_Adaptor3d_HSurface &
+	:param Tol:
+	:type Tol: float
+	:rtype: None
+") Approx_SameParameter;
 		 Approx_SameParameter (const Handle_Adaptor3d_HCurve & C3D,const Handle_Adaptor2d_HCurve2d & C2D,const Handle_Adaptor3d_HSurface & S,const Standard_Real Tol);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") TolReached;
+		%feature("autodoc", "	:rtype: float
+") TolReached;
 		Standard_Real TolReached ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Tells whether the original data had already the same parameter up to the tolerance : in that case nothing is done.
 
-Tells whether the original data  had already the  same  
-         parameter up to  the tolerance :  in that case nothing  
-         is done.") IsSameParameter;
+	:rtype: bool
+") IsSameParameter;
 		Standard_Boolean IsSameParameter ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_Geom2d_BSplineCurve
+		%feature("autodoc", "	* Returns the 2D curve that has the same parameter as the 3D curve once evaluated on the surface up to the specified tolerance
 
-Returns the 2D  curve that has  the same parameter  as  
-         the  3D curve once evaluated on  the surface up to the  
-         specified tolerance") Curve2d;
+	:rtype: Handle_Geom2d_BSplineCurve
+") Curve2d;
 		Handle_Geom2d_BSplineCurve Curve2d ();
 };
 
@@ -1706,22 +1396,17 @@ def __del__(self):
 %nodefaultctor Approx_SequenceNodeOfSequenceOfHArray1OfReal;
 class Approx_SequenceNodeOfSequenceOfHArray1OfReal : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Handle_TColStd_HArray1OfReal)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Approx_SequenceNodeOfSequenceOfHArray1OfReal;
+		%feature("autodoc", "	:param I:
+	:type I: Handle_TColStd_HArray1OfReal &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Approx_SequenceNodeOfSequenceOfHArray1OfReal;
 		 Approx_SequenceNodeOfSequenceOfHArray1OfReal (const Handle_TColStd_HArray1OfReal & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColStd_HArray1OfReal
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
+") Value;
 		Handle_TColStd_HArray1OfReal & Value ();
 };
 
@@ -1782,168 +1467,111 @@ def __del__(self):
 %nodefaultctor Approx_SequenceOfHArray1OfReal;
 class Approx_SequenceOfHArray1OfReal : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Approx_SequenceOfHArray1OfReal;
+		%feature("autodoc", "	:rtype: None
+") Approx_SequenceOfHArray1OfReal;
 		 Approx_SequenceOfHArray1OfReal ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Approx_SequenceOfHArray1OfReal)
-
-Returns:
-	Approx_SequenceOfHArray1OfReal
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Approx_SequenceOfHArray1OfReal &
+	:rtype: Approx_SequenceOfHArray1OfReal
+") Assign;
 		const Approx_SequenceOfHArray1OfReal & Assign (const Approx_SequenceOfHArray1OfReal & Other);
-		%feature("autodoc", "Args:
-	Other(Approx_SequenceOfHArray1OfReal)
-
-Returns:
-	Approx_SequenceOfHArray1OfReal
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Approx_SequenceOfHArray1OfReal &
+	:rtype: Approx_SequenceOfHArray1OfReal
+") operator=;
 		const Approx_SequenceOfHArray1OfReal & operator = (const Approx_SequenceOfHArray1OfReal & Other);
-		%feature("autodoc", "Args:
-	T(Handle_TColStd_HArray1OfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_TColStd_HArray1OfReal &
+	:rtype: None
+") Append;
 		void Append (const Handle_TColStd_HArray1OfReal & T);
-		%feature("autodoc", "Args:
-	S(Approx_SequenceOfHArray1OfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Approx_SequenceOfHArray1OfReal &
+	:rtype: None
+") Append;
 		void Append (Approx_SequenceOfHArray1OfReal & S);
-		%feature("autodoc", "Args:
-	T(Handle_TColStd_HArray1OfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Handle_TColStd_HArray1OfReal &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_TColStd_HArray1OfReal & T);
-		%feature("autodoc", "Args:
-	S(Approx_SequenceOfHArray1OfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Approx_SequenceOfHArray1OfReal &
+	:rtype: None
+") Prepend;
 		void Prepend (Approx_SequenceOfHArray1OfReal & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_TColStd_HArray1OfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_TColStd_HArray1OfReal &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_TColStd_HArray1OfReal & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Approx_SequenceOfHArray1OfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Approx_SequenceOfHArray1OfReal &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Approx_SequenceOfHArray1OfReal & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Handle_TColStd_HArray1OfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Handle_TColStd_HArray1OfReal &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_TColStd_HArray1OfReal & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Approx_SequenceOfHArray1OfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Approx_SequenceOfHArray1OfReal &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Approx_SequenceOfHArray1OfReal & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColStd_HArray1OfReal
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
+") First;
 		const Handle_TColStd_HArray1OfReal & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TColStd_HArray1OfReal
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Handle_TColStd_HArray1OfReal
+") Last;
 		const Handle_TColStd_HArray1OfReal & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Approx_SequenceOfHArray1OfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Approx_SequenceOfHArray1OfReal &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Approx_SequenceOfHArray1OfReal & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_TColStd_HArray1OfReal
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_TColStd_HArray1OfReal
+") Value;
 		const Handle_TColStd_HArray1OfReal & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Handle_TColStd_HArray1OfReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Handle_TColStd_HArray1OfReal &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_TColStd_HArray1OfReal & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Handle_TColStd_HArray1OfReal
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Handle_TColStd_HArray1OfReal
+") ChangeValue;
 		Handle_TColStd_HArray1OfReal & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -1965,242 +1593,175 @@ def __del__(self):
 %nodefaultctor Approx_SweepApproximation;
 class Approx_SweepApproximation {
 	public:
-		%feature("autodoc", "Args:
-	Func(Handle_Approx_SweepFunction)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Approx_SweepApproximation;
+		%feature("autodoc", "	:param Func:
+	:type Func: Handle_Approx_SweepFunction &
+	:rtype: None
+") Approx_SweepApproximation;
 		 Approx_SweepApproximation (const Handle_Approx_SweepFunction & Func);
-		%feature("autodoc", "Args:
-	First(Standard_Real)
-	Last(Standard_Real)
-	Tol3d(Standard_Real)
-	BoundTol(Standard_Real)
-	Tol2d(Standard_Real)
-	TolAngular(Standard_Real)
-	Continuity(GeomAbs_Shape)=GeomAbs_C0
-	Degmax(Standard_Integer)=11
-	Segmax(Standard_Integer)=50
+		%feature("autodoc", "	* Perform the Approximation [First, Last] : Approx_SweepApproximation.cdl Tol3d : Tolerance to surface approximation Tol2d : Tolerance used to perform curve approximation  Normaly the 2d curve are approximated with a  tolerance given by the resolution on support surfaces,  but if this tolerance is too large Tol2d is used. TolAngular : Tolerance (in radian) to control the angle  beetween tangents on the section law and  tangent of iso-v on approximed surface Continuity : The continuity in v waiting on the surface Degmax : The maximum degree in v requiered on the surface Segmax : The maximum number of span in v requiered on  the surface Warning : The continuity ci can be obtained only if Ft is Ci
 
-Returns:
-	None
-
-Perform the Approximation  
-   [First, Last] : Approx_SweepApproximation.cdl  
-   Tol3d : Tolerance to surface approximation  
-   Tol2d : Tolerance used to perform curve approximation  
-           Normaly the 2d curve are approximated with a  
-           tolerance given by the resolution on support surfaces,  
-           but if this tolerance is too large Tol2d is used.  
-   TolAngular : Tolerance (in radian) to control the angle  
-                beetween tangents on the section law and  
-                tangent of iso-v on approximed surface  
-   Continuity : The continuity in v waiting on the surface  
-   Degmax     : The maximum degree in v requiered on the surface  
-   Segmax     : The maximum number of span in v requiered on  
-                the surface  
-  Warning : The continuity ci can be obtained only if Ft is Ci") Perform;
+	:param First:
+	:type First: float
+	:param Last:
+	:type Last: float
+	:param Tol3d:
+	:type Tol3d: float
+	:param BoundTol:
+	:type BoundTol: float
+	:param Tol2d:
+	:type Tol2d: float
+	:param TolAngular:
+	:type TolAngular: float
+	:param Continuity: default value is GeomAbs_C0
+	:type Continuity: GeomAbs_Shape
+	:param Degmax: default value is 11
+	:type Degmax: Standard_Integer
+	:param Segmax: default value is 50
+	:type Segmax: Standard_Integer
+	:rtype: None
+") Perform;
 		void Perform (const Standard_Real First,const Standard_Real Last,const Standard_Real Tol3d,const Standard_Real BoundTol,const Standard_Real Tol2d,const Standard_Real TolAngular,const GeomAbs_Shape Continuity = GeomAbs_C0,const Standard_Integer Degmax = 11,const Standard_Integer Segmax = 50);
-		%feature("autodoc", "Args:
-	Parameter(Standard_Real)
-	DerivativeRequest(Standard_Integer)
-	First(Standard_Real)
-	Last(Standard_Real)
-	Result(Standard_Real)
+		%feature("autodoc", "	* The EvaluatorFunction from AdvApprox;
 
-Returns:
-	Standard_Integer
-
-The EvaluatorFunction from AdvApprox;") Eval;
+	:param Parameter:
+	:type Parameter: float
+	:param DerivativeRequest:
+	:type DerivativeRequest: Standard_Integer
+	:param First:
+	:type First: float
+	:param Last:
+	:type Last: float
+	:param Result:
+	:type Result: float &
+	:rtype: int
+") Eval;
 		Standard_Integer Eval (const Standard_Real Parameter,const Standard_Integer DerivativeRequest,const Standard_Real First,const Standard_Real Last,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* returns if we have an result
 
-returns if we have an result") IsDone;
+	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	UDegree(Standard_Integer)
-	VDegree(Standard_Integer)
-	NbUPoles(Standard_Integer)
-	NbVPoles(Standard_Integer)
-	NbUKnots(Standard_Integer)
-	NbVKnots(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SurfShape;
+		%feature("autodoc", "	:param UDegree:
+	:type UDegree: Standard_Integer &
+	:param VDegree:
+	:type VDegree: Standard_Integer &
+	:param NbUPoles:
+	:type NbUPoles: Standard_Integer &
+	:param NbVPoles:
+	:type NbVPoles: Standard_Integer &
+	:param NbUKnots:
+	:type NbUKnots: Standard_Integer &
+	:param NbVKnots:
+	:type NbVKnots: Standard_Integer &
+	:rtype: None
+") SurfShape;
 		void SurfShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	TPoles(TColgp_Array2OfPnt)
-	TWeights(TColStd_Array2OfReal)
-	TUKnots(TColStd_Array1OfReal)
-	TVKnots(TColStd_Array1OfReal)
-	TUMults(TColStd_Array1OfInteger)
-	TVMults(TColStd_Array1OfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Surface;
+		%feature("autodoc", "	:param TPoles:
+	:type TPoles: TColgp_Array2OfPnt
+	:param TWeights:
+	:type TWeights: TColStd_Array2OfReal &
+	:param TUKnots:
+	:type TUKnots: TColStd_Array1OfReal &
+	:param TVKnots:
+	:type TVKnots: TColStd_Array1OfReal &
+	:param TUMults:
+	:type TUMults: TColStd_Array1OfInteger &
+	:param TVMults:
+	:type TVMults: TColStd_Array1OfInteger &
+	:rtype: None
+") Surface;
 		void Surface (TColgp_Array2OfPnt & TPoles,TColStd_Array2OfReal & TWeights,TColStd_Array1OfReal & TUKnots,TColStd_Array1OfReal & TVKnots,TColStd_Array1OfInteger & TUMults,TColStd_Array1OfInteger & TVMults);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UDegree;
+		%feature("autodoc", "	:rtype: int
+") UDegree;
 		Standard_Integer UDegree ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") VDegree;
+		%feature("autodoc", "	:rtype: int
+") VDegree;
 		Standard_Integer VDegree ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColgp_Array2OfPnt
-
-No detailed docstring for this function.") SurfPoles;
+		%feature("autodoc", "	:rtype: TColgp_Array2OfPnt
+") SurfPoles;
 		const TColgp_Array2OfPnt & SurfPoles ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array2OfReal
-
-No detailed docstring for this function.") SurfWeights;
+		%feature("autodoc", "	:rtype: TColStd_Array2OfReal
+") SurfWeights;
 		const TColStd_Array2OfReal & SurfWeights ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfReal
-
-No detailed docstring for this function.") SurfUKnots;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfReal
+") SurfUKnots;
 		const TColStd_Array1OfReal & SurfUKnots ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfReal
-
-No detailed docstring for this function.") SurfVKnots;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfReal
+") SurfVKnots;
 		const TColStd_Array1OfReal & SurfVKnots ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfInteger
-
-No detailed docstring for this function.") SurfUMults;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfInteger
+") SurfUMults;
 		const TColStd_Array1OfInteger & SurfUMults ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfInteger
-
-No detailed docstring for this function.") SurfVMults;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfInteger
+") SurfVMults;
 		const TColStd_Array1OfInteger & SurfVMults ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns the maximum error in the suface approximation.
 
-returns the maximum error in the suface approximation.") MaxErrorOnSurf;
+	:rtype: float
+") MaxErrorOnSurf;
 		Standard_Real MaxErrorOnSurf ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* returns the average error in the suface approximation.
 
-returns the average error in the suface approximation.") AverageErrorOnSurf;
+	:rtype: float
+") AverageErrorOnSurf;
 		Standard_Real AverageErrorOnSurf ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbCurves2d;
+		%feature("autodoc", "	:rtype: int
+") NbCurves2d;
 		Standard_Integer NbCurves2d ();
-		%feature("autodoc", "Args:
-	Degree(Standard_Integer)
-	NbPoles(Standard_Integer)
-	NbKnots(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Curves2dShape;
+		%feature("autodoc", "	:param Degree:
+	:type Degree: Standard_Integer &
+	:param NbPoles:
+	:type NbPoles: Standard_Integer &
+	:param NbKnots:
+	:type NbKnots: Standard_Integer &
+	:rtype: None
+") Curves2dShape;
 		void Curves2dShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	TPoles(TColgp_Array1OfPnt2d)
-	TKnots(TColStd_Array1OfReal)
-	TMults(TColStd_Array1OfInteger)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Curve2d;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param TPoles:
+	:type TPoles: TColgp_Array1OfPnt2d
+	:param TKnots:
+	:type TKnots: TColStd_Array1OfReal &
+	:param TMults:
+	:type TMults: TColStd_Array1OfInteger &
+	:rtype: None
+") Curve2d;
 		void Curve2d (const Standard_Integer Index,TColgp_Array1OfPnt2d & TPoles,TColStd_Array1OfReal & TKnots,TColStd_Array1OfInteger & TMults);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Curves2dDegree;
+		%feature("autodoc", "	:rtype: int
+") Curves2dDegree;
 		Standard_Integer Curves2dDegree ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	TColgp_Array1OfPnt2d
-
-No detailed docstring for this function.") Curve2dPoles;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TColgp_Array1OfPnt2d
+") Curve2dPoles;
 		const TColgp_Array1OfPnt2d & Curve2dPoles (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfReal
-
-No detailed docstring for this function.") Curves2dKnots;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfReal
+") Curves2dKnots;
 		const TColStd_Array1OfReal & Curves2dKnots ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TColStd_Array1OfInteger
-
-No detailed docstring for this function.") Curves2dMults;
+		%feature("autodoc", "	:rtype: TColStd_Array1OfInteger
+") Curves2dMults;
 		const TColStd_Array1OfInteger & Curves2dMults ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* returns the maximum error of the <Index> 2d curve approximation.
 
-Returns:
-	Standard_Real
-
-returns the maximum error of the <Index>  
-         2d curve approximation.") Max2dError;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: float
+") Max2dError;
 		Standard_Real Max2dError (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* returns the average error of the <Index> 2d curve approximation.
 
-Returns:
-	Standard_Real
-
-returns the average error of the <Index>  
-         2d curve approximation.") Average2dError;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: float
+") Average2dError;
 		Standard_Real Average2dError (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* returns the maximum 3d error of the <Index> 2d curve approximation on the Surface.
 
-Returns:
-	Standard_Real
-
-returns the  maximum 3d  error  of the  <Index>  
-          2d curve approximation on the Surface.") TolCurveOnSurf;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: float
+") TolCurveOnSurf;
 		Standard_Real TolCurveOnSurf (const Standard_Integer Index);
 
         %feature("autodoc", "1");
@@ -2230,202 +1791,186 @@ def __del__(self):
 %nodefaultctor Approx_SweepFunction;
 class Approx_SweepFunction : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Param(Standard_Real)
-	First(Standard_Real)
-	Last(Standard_Real)
-	Poles(TColgp_Array1OfPnt)
-	Poles2d(TColgp_Array1OfPnt2d)
-	Weigths(TColStd_Array1OfReal)
+		%feature("autodoc", "	* compute the section for v = param
 
-Returns:
-	virtual Standard_Boolean
-
-compute the section for v = param") D0;
+	:param Param:
+	:type Param: float
+	:param First:
+	:type First: float
+	:param Last:
+	:type Last: float
+	:param Poles:
+	:type Poles: TColgp_Array1OfPnt
+	:param Poles2d:
+	:type Poles2d: TColgp_Array1OfPnt2d
+	:param Weigths:
+	:type Weigths: TColStd_Array1OfReal &
+	:rtype: bool
+") D0;
 		virtual Standard_Boolean D0 (const Standard_Real Param,const Standard_Real First,const Standard_Real Last,TColgp_Array1OfPnt & Poles,TColgp_Array1OfPnt2d & Poles2d,TColStd_Array1OfReal & Weigths);
-		%feature("autodoc", "Args:
-	Param(Standard_Real)
-	First(Standard_Real)
-	Last(Standard_Real)
-	Poles(TColgp_Array1OfPnt)
-	DPoles(TColgp_Array1OfVec)
-	Poles2d(TColgp_Array1OfPnt2d)
-	DPoles2d(TColgp_Array1OfVec2d)
-	Weigths(TColStd_Array1OfReal)
-	DWeigths(TColStd_Array1OfReal)
+		%feature("autodoc", "	* compute the first derivative in v direction of the section for v = param Warning : It used only for C1 or C2 aproximation
 
-Returns:
-	virtual Standard_Boolean
-
-compute the first  derivative in v direction  of the  
-          section for v =  param  
- Warning : It used only for C1 or C2 aproximation") D1;
+	:param Param:
+	:type Param: float
+	:param First:
+	:type First: float
+	:param Last:
+	:type Last: float
+	:param Poles:
+	:type Poles: TColgp_Array1OfPnt
+	:param DPoles:
+	:type DPoles: TColgp_Array1OfVec
+	:param Poles2d:
+	:type Poles2d: TColgp_Array1OfPnt2d
+	:param DPoles2d:
+	:type DPoles2d: TColgp_Array1OfVec2d
+	:param Weigths:
+	:type Weigths: TColStd_Array1OfReal &
+	:param DWeigths:
+	:type DWeigths: TColStd_Array1OfReal &
+	:rtype: bool
+") D1;
 		virtual Standard_Boolean D1 (const Standard_Real Param,const Standard_Real First,const Standard_Real Last,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
-		%feature("autodoc", "Args:
-	Param(Standard_Real)
-	First(Standard_Real)
-	Last(Standard_Real)
-	Poles(TColgp_Array1OfPnt)
-	DPoles(TColgp_Array1OfVec)
-	D2Poles(TColgp_Array1OfVec)
-	Poles2d(TColgp_Array1OfPnt2d)
-	DPoles2d(TColgp_Array1OfVec2d)
-	D2Poles2d(TColgp_Array1OfVec2d)
-	Weigths(TColStd_Array1OfReal)
-	DWeigths(TColStd_Array1OfReal)
-	D2Weigths(TColStd_Array1OfReal)
+		%feature("autodoc", "	* compute the second derivative in v direction of the section for v = param Warning : It used only for C2 aproximation
 
-Returns:
-	virtual Standard_Boolean
-
-compute the second derivative  in v direction of the  
-         section  for v = param  
- Warning : It used only for C2 aproximation") D2;
+	:param Param:
+	:type Param: float
+	:param First:
+	:type First: float
+	:param Last:
+	:type Last: float
+	:param Poles:
+	:type Poles: TColgp_Array1OfPnt
+	:param DPoles:
+	:type DPoles: TColgp_Array1OfVec
+	:param D2Poles:
+	:type D2Poles: TColgp_Array1OfVec
+	:param Poles2d:
+	:type Poles2d: TColgp_Array1OfPnt2d
+	:param DPoles2d:
+	:type DPoles2d: TColgp_Array1OfVec2d
+	:param D2Poles2d:
+	:type D2Poles2d: TColgp_Array1OfVec2d
+	:param Weigths:
+	:type Weigths: TColStd_Array1OfReal &
+	:param DWeigths:
+	:type DWeigths: TColStd_Array1OfReal &
+	:param D2Weigths:
+	:type D2Weigths: TColStd_Array1OfReal &
+	:rtype: bool
+") D2;
 		virtual Standard_Boolean D2 (const Standard_Real Param,const Standard_Real First,const Standard_Real Last,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColgp_Array1OfVec2d & D2Poles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths,TColStd_Array1OfReal & D2Weigths);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
+		%feature("autodoc", "	* get the number of 2d curves to approximate.
 
-get the number of 2d curves to  approximate.") Nb2dCurves;
+	:rtype: int
+") Nb2dCurves;
 		virtual Standard_Integer Nb2dCurves ();
-		%feature("autodoc", "Args:
-	NbPoles(Standard_Integer)
-	NbKnots(Standard_Integer)
-	Degree(Standard_Integer)
+		%feature("autodoc", "	* get the format of an section
 
-Returns:
-	virtual void
-
-get the format of an  section") SectionShape;
+	:param NbPoles:
+	:type NbPoles: Standard_Integer &
+	:param NbKnots:
+	:type NbKnots: Standard_Integer &
+	:param Degree:
+	:type Degree: Standard_Integer &
+	:rtype: void
+") SectionShape;
 		virtual void SectionShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	TKnots(TColStd_Array1OfReal)
+		%feature("autodoc", "	* get the Knots of the section
 
-Returns:
-	virtual void
-
-get the Knots of the section") Knots;
+	:param TKnots:
+	:type TKnots: TColStd_Array1OfReal &
+	:rtype: void
+") Knots;
 		virtual void Knots (TColStd_Array1OfReal & TKnots);
-		%feature("autodoc", "Args:
-	TMults(TColStd_Array1OfInteger)
+		%feature("autodoc", "	* get the Multplicities of the section
 
-Returns:
-	virtual void
-
-get the Multplicities of the section") Mults;
+	:param TMults:
+	:type TMults: TColStd_Array1OfInteger &
+	:rtype: void
+") Mults;
 		virtual void Mults (TColStd_Array1OfInteger & TMults);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Returns if the sections are rationnal or not
 
-Returns if the sections are rationnal or not") IsRational;
+	:rtype: bool
+") IsRational;
 		virtual Standard_Boolean IsRational ();
-		%feature("autodoc", "Args:
-	S(GeomAbs_Shape)
+		%feature("autodoc", "	* Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>
 
-Returns:
-	virtual Standard_Integer
-
-Returns  the number  of  intervals for  continuity  
-         <S>.  
-         May be one if Continuity(me) >= <S>") NbIntervals;
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: int
+") NbIntervals;
 		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
-		%feature("autodoc", "Args:
-	T(TColStd_Array1OfReal)
-	S(GeomAbs_Shape)
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
-Returns:
-	virtual void
-
-Stores in <T> the  parameters bounding the intervals  
-         of continuity <S>.  
- 
-         The array must provide  enough room to  accomodate  
-         for the parameters. i.e. T.Length() > NbIntervals()") Intervals;
+	:param T:
+	:type T: TColStd_Array1OfReal &
+	:param S:
+	:type S: GeomAbs_Shape
+	:rtype: void
+") Intervals;
 		virtual void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
-		%feature("autodoc", "Args:
-	First(Standard_Real)
-	Last(Standard_Real)
+		%feature("autodoc", "	* Sets the bounds of the parametric interval on the fonction This determines the derivatives in these values if the function is not Cn.
 
-Returns:
-	virtual void
-
-Sets the bounds of the parametric interval on  
-         the fonction  
-         This determines the derivatives in these values if the  
-         function is not Cn.") SetInterval;
+	:param First:
+	:type First: float
+	:param Last:
+	:type Last: float
+	:rtype: void
+") SetInterval;
 		virtual void SetInterval (const Standard_Real First,const Standard_Real Last);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Tol(Standard_Real)
-	TolU(Standard_Real)
-	TolV(Standard_Real)
+		%feature("autodoc", "	* Returns the resolutions in the sub-space 2d <Index> This information is usfull to find an good tolerance in 2d approximation.
 
-Returns:
-	virtual void
-
-Returns the resolutions in the  sub-space 2d <Index>  
-         This information is usfull to find an good tolerance in  
-         2d approximation.") Resolution;
+	:param Index:
+	:type Index: Standard_Integer
+	:param Tol:
+	:type Tol: float
+	:param TolU:
+	:type TolU: float &
+	:param TolV:
+	:type TolV: float &
+	:rtype: void
+") Resolution;
 		virtual void Resolution (const Standard_Integer Index,const Standard_Real Tol,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	BoundTol(Standard_Real)
-	SurfTol(Standard_Real)
-	AngleTol(Standard_Real)
-	Tol3d(TColStd_Array1OfReal)
+		%feature("autodoc", "	* Returns the tolerance to reach in approximation to satisfy. BoundTol error at the Boundary AngleTol tangent error at the Boundary (in radian) SurfTol error inside the surface.
 
-Returns:
-	virtual void
-
-Returns the tolerance to reach in approximation  
-         to satisfy.  
-         BoundTol error at the Boundary  
-         AngleTol tangent error at the Boundary (in radian)  
-         SurfTol error inside the surface.") GetTolerance;
+	:param BoundTol:
+	:type BoundTol: float
+	:param SurfTol:
+	:type SurfTol: float
+	:param AngleTol:
+	:type AngleTol: float
+	:param Tol3d:
+	:type Tol3d: TColStd_Array1OfReal &
+	:rtype: void
+") GetTolerance;
 		virtual void GetTolerance (const Standard_Real BoundTol,const Standard_Real SurfTol,const Standard_Real AngleTol,TColStd_Array1OfReal & Tol3d);
-		%feature("autodoc", "Args:
-	Tol3d(Standard_Real)
-	Tol2d(Standard_Real)
+		%feature("autodoc", "	* Is usefull, if (me) have to run numerical algorithm to perform D0, D1 or D2
 
-Returns:
-	virtual void
-
-Is usefull, if (me) have to run numerical  
-          algorithm to perform D0, D1 or D2") SetTolerance;
+	:param Tol3d:
+	:type Tol3d: float
+	:param Tol2d:
+	:type Tol2d: float
+	:rtype: void
+") SetTolerance;
 		virtual void SetTolerance (const Standard_Real Tol3d,const Standard_Real Tol2d);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual gp_Pnt
+		%feature("autodoc", "	* Get the barycentre of Surface. An very poor estimation is sufficent. This information is usefull to perform well conditioned rational approximation. Warning: Used only if <self> IsRational
 
-Get the barycentre of Surface.  
-         An   very  poor estimation is sufficent.  
-         This information is usefull to perform well  
-         conditioned rational approximation.  
- Warning: Used only if <self> IsRational") BarycentreOfSurf;
+	:rtype: gp_Pnt
+") BarycentreOfSurf;
 		virtual gp_Pnt BarycentreOfSurf ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Real
+		%feature("autodoc", "	* Returns the length of the greater section. This information is usefull to G1's control. Warning: With an little value, approximation can be slower.
 
-Returns the   length of the greater section. This  
-         information is usefull to G1's control.  
- Warning: With an little value, approximation can be slower.") MaximalSection;
+	:rtype: float
+") MaximalSection;
 		virtual Standard_Real MaximalSection ();
-		%feature("autodoc", "Args:
-	Weigths(TColStd_Array1OfReal)
+		%feature("autodoc", "	* Compute the minimal value of weight for each poles in all sections. This information is usefull to control error in rational approximation. Warning: Used only if <self> IsRational
 
-Returns:
-	virtual void
-
-Compute the minimal value of weight for each poles  
-         in all  sections.  
-         This information is  usefull to control error  
-         in rational approximation.  
- Warning: Used only if <self> IsRational") GetMinimalWeight;
+	:param Weigths:
+	:type Weigths: TColStd_Array1OfReal &
+	:rtype: void
+") GetMinimalWeight;
 		virtual void GetMinimalWeight (TColStd_Array1OfReal & Weigths);
 };
 

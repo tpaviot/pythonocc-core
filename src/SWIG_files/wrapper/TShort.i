@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -44,108 +44,68 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor TShort_Array1OfShortReal;
 class TShort_Array1OfShortReal {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TShort_Array1OfShortReal;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TShort_Array1OfShortReal;
 		 TShort_Array1OfShortReal (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(Standard_ShortReal)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TShort_Array1OfShortReal;
+		%feature("autodoc", "	:param Item:
+	:type Item: Standard_ShortReal &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TShort_Array1OfShortReal;
 		 TShort_Array1OfShortReal (const Standard_ShortReal & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Standard_ShortReal &
+	:rtype: None
+") Init;
 		void Init (const Standard_ShortReal & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(TShort_Array1OfShortReal)
-
-Returns:
-	TShort_Array1OfShortReal
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TShort_Array1OfShortReal &
+	:rtype: TShort_Array1OfShortReal
+") Assign;
 		const TShort_Array1OfShortReal & Assign (const TShort_Array1OfShortReal & Other);
-		%feature("autodoc", "Args:
-	Other(TShort_Array1OfShortReal)
-
-Returns:
-	TShort_Array1OfShortReal
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TShort_Array1OfShortReal &
+	:rtype: TShort_Array1OfShortReal
+") operator=;
 		const TShort_Array1OfShortReal & operator = (const TShort_Array1OfShortReal & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Standard_ShortReal &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Standard_ShortReal & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Standard_ShortReal
+") Value;
 		const Standard_ShortReal & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Standard_ShortReal
+") ChangeValue;
 		Standard_ShortReal & ChangeValue (const Standard_Integer Index);
 };
 
@@ -167,129 +127,88 @@ def __del__(self):
 %nodefaultctor TShort_Array2OfShortReal;
 class TShort_Array2OfShortReal {
 	public:
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TShort_Array2OfShortReal;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") TShort_Array2OfShortReal;
 		 TShort_Array2OfShortReal (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	Item(Standard_ShortReal)
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TShort_Array2OfShortReal;
+		%feature("autodoc", "	:param Item:
+	:type Item: Standard_ShortReal &
+	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") TShort_Array2OfShortReal;
 		 TShort_Array2OfShortReal (const Standard_ShortReal & Item,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	V(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Standard_ShortReal &
+	:rtype: None
+") Init;
 		void Init (const Standard_ShortReal & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	Other(TShort_Array2OfShortReal)
-
-Returns:
-	TShort_Array2OfShortReal
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TShort_Array2OfShortReal &
+	:rtype: TShort_Array2OfShortReal
+") Assign;
 		const TShort_Array2OfShortReal & Assign (const TShort_Array2OfShortReal & Other);
-		%feature("autodoc", "Args:
-	Other(TShort_Array2OfShortReal)
-
-Returns:
-	TShort_Array2OfShortReal
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TShort_Array2OfShortReal &
+	:rtype: TShort_Array2OfShortReal
+") operator=;
 		const TShort_Array2OfShortReal & operator = (const TShort_Array2OfShortReal & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ColLength;
+		%feature("autodoc", "	:rtype: int
+") ColLength;
 		Standard_Integer ColLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") RowLength;
+		%feature("autodoc", "	:rtype: int
+") RowLength;
 		Standard_Integer RowLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerCol;
+		%feature("autodoc", "	:rtype: int
+") LowerCol;
 		Standard_Integer LowerCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerRow;
+		%feature("autodoc", "	:rtype: int
+") LowerRow;
 		Standard_Integer LowerRow ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperCol;
+		%feature("autodoc", "	:rtype: int
+") UpperCol;
 		Standard_Integer UpperCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperRow;
+		%feature("autodoc", "	:rtype: int
+") UpperRow;
 		Standard_Integer UpperRow ();
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-	Value(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:param Value:
+	:type Value: Standard_ShortReal &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Standard_ShortReal & Value);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: Standard_ShortReal
+") Value;
 		const Standard_ShortReal & Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: Standard_ShortReal
+") ChangeValue;
 		Standard_ShortReal & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
 };
 
@@ -311,92 +230,58 @@ def __del__(self):
 %nodefaultctor TShort_HArray1OfShortReal;
 class TShort_HArray1OfShortReal : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TShort_HArray1OfShortReal;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TShort_HArray1OfShortReal;
 		 TShort_HArray1OfShortReal (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-	V(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TShort_HArray1OfShortReal;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: Standard_ShortReal &
+	:rtype: None
+") TShort_HArray1OfShortReal;
 		 TShort_HArray1OfShortReal (const Standard_Integer Low,const Standard_Integer Up,const Standard_ShortReal & V);
-		%feature("autodoc", "Args:
-	V(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Standard_ShortReal &
+	:rtype: None
+") Init;
 		void Init (const Standard_ShortReal & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: Standard_ShortReal &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Standard_ShortReal & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Standard_ShortReal
+") Value;
 		const Standard_ShortReal & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Standard_ShortReal
+") ChangeValue;
 		Standard_ShortReal & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TShort_Array1OfShortReal
-
-No detailed docstring for this function.") Array1;
+		%feature("autodoc", "	:rtype: TShort_Array1OfShortReal
+") Array1;
 		const TShort_Array1OfShortReal & Array1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TShort_Array1OfShortReal
-
-No detailed docstring for this function.") ChangeArray1;
+		%feature("autodoc", "	:rtype: TShort_Array1OfShortReal
+") ChangeArray1;
 		TShort_Array1OfShortReal & ChangeArray1 ();
 };
 
@@ -457,120 +342,81 @@ def __del__(self):
 %nodefaultctor TShort_HArray2OfShortReal;
 class TShort_HArray2OfShortReal : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TShort_HArray2OfShortReal;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:rtype: None
+") TShort_HArray2OfShortReal;
 		 TShort_HArray2OfShortReal (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
-		%feature("autodoc", "Args:
-	R1(Standard_Integer)
-	R2(Standard_Integer)
-	C1(Standard_Integer)
-	C2(Standard_Integer)
-	V(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TShort_HArray2OfShortReal;
+		%feature("autodoc", "	:param R1:
+	:type R1: Standard_Integer
+	:param R2:
+	:type R2: Standard_Integer
+	:param C1:
+	:type C1: Standard_Integer
+	:param C2:
+	:type C2: Standard_Integer
+	:param V:
+	:type V: Standard_ShortReal &
+	:rtype: None
+") TShort_HArray2OfShortReal;
 		 TShort_HArray2OfShortReal (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Standard_ShortReal & V);
-		%feature("autodoc", "Args:
-	V(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: Standard_ShortReal &
+	:rtype: None
+") Init;
 		void Init (const Standard_ShortReal & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ColLength;
+		%feature("autodoc", "	:rtype: int
+") ColLength;
 		Standard_Integer ColLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") RowLength;
+		%feature("autodoc", "	:rtype: int
+") RowLength;
 		Standard_Integer RowLength ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerCol;
+		%feature("autodoc", "	:rtype: int
+") LowerCol;
 		Standard_Integer LowerCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") LowerRow;
+		%feature("autodoc", "	:rtype: int
+") LowerRow;
 		Standard_Integer LowerRow ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperCol;
+		%feature("autodoc", "	:rtype: int
+") UpperCol;
 		Standard_Integer UpperCol ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") UpperRow;
+		%feature("autodoc", "	:rtype: int
+") UpperRow;
 		Standard_Integer UpperRow ();
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-	Value(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:param Value:
+	:type Value: Standard_ShortReal &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Standard_ShortReal & Value);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: Standard_ShortReal
+") Value;
 		const Standard_ShortReal & Value (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	Row(Standard_Integer)
-	Col(Standard_Integer)
-
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Row:
+	:type Row: Standard_Integer
+	:param Col:
+	:type Col: Standard_Integer
+	:rtype: Standard_ShortReal
+") ChangeValue;
 		Standard_ShortReal & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TShort_Array2OfShortReal
-
-No detailed docstring for this function.") Array2;
+		%feature("autodoc", "	:rtype: TShort_Array2OfShortReal
+") Array2;
 		const TShort_Array2OfShortReal & Array2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TShort_Array2OfShortReal
-
-No detailed docstring for this function.") ChangeArray2;
+		%feature("autodoc", "	:rtype: TShort_Array2OfShortReal
+") ChangeArray2;
 		TShort_Array2OfShortReal & ChangeArray2 ();
 };
 
@@ -631,188 +477,118 @@ def __del__(self):
 %nodefaultctor TShort_HSequenceOfShortReal;
 class TShort_HSequenceOfShortReal : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TShort_HSequenceOfShortReal;
+		%feature("autodoc", "	:rtype: None
+") TShort_HSequenceOfShortReal;
 		 TShort_HSequenceOfShortReal ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsEmpty;
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
 		Standard_Boolean IsEmpty ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	anItem(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Standard_ShortReal &
+	:rtype: None
+") Append;
 		void Append (const Standard_ShortReal & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_TShort_HSequenceOfShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_TShort_HSequenceOfShortReal &
+	:rtype: None
+") Append;
 		void Append (const Handle_TShort_HSequenceOfShortReal & aSequence);
-		%feature("autodoc", "Args:
-	anItem(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param anItem:
+	:type anItem: Standard_ShortReal &
+	:rtype: None
+") Prepend;
 		void Prepend (const Standard_ShortReal & anItem);
-		%feature("autodoc", "Args:
-	aSequence(Handle_TShort_HSequenceOfShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param aSequence:
+	:type aSequence: Handle_TShort_HSequenceOfShortReal &
+	:rtype: None
+") Prepend;
 		void Prepend (const Handle_TShort_HSequenceOfShortReal & aSequence);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Reverse;
+		%feature("autodoc", "	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Standard_ShortReal &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Standard_ShortReal & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_TShort_HSequenceOfShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_TShort_HSequenceOfShortReal &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_TShort_HSequenceOfShortReal & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Standard_ShortReal &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Standard_ShortReal & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	aSequence(Handle_TShort_HSequenceOfShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param aSequence:
+	:type aSequence: Handle_TShort_HSequenceOfShortReal &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_TShort_HSequenceOfShortReal & aSequence);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anOtherIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Exchange;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anOtherIndex:
+	:type anOtherIndex: Standard_Integer
+	:rtype: None
+") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Handle_TShort_HSequenceOfShortReal
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Handle_TShort_HSequenceOfShortReal
+") Split;
 		Handle_TShort_HSequenceOfShortReal Split (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-	anItem(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:param anItem:
+	:type anItem: Standard_ShortReal &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Standard_ShortReal & anItem);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Standard_ShortReal
+") Value;
 		const Standard_ShortReal & Value (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: Standard_ShortReal
+") ChangeValue;
 		Standard_ShortReal & ChangeValue (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	anIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param anIndex:
+	:type anIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer anIndex);
-		%feature("autodoc", "Args:
-	fromIndex(Standard_Integer)
-	toIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param fromIndex:
+	:type fromIndex: Standard_Integer
+	:param toIndex:
+	:type toIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TShort_SequenceOfShortReal
-
-No detailed docstring for this function.") Sequence;
+		%feature("autodoc", "	:rtype: TShort_SequenceOfShortReal
+") Sequence;
 		const TShort_SequenceOfShortReal & Sequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	TShort_SequenceOfShortReal
-
-No detailed docstring for this function.") ChangeSequence;
+		%feature("autodoc", "	:rtype: TShort_SequenceOfShortReal
+") ChangeSequence;
 		TShort_SequenceOfShortReal & ChangeSequence ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Handle_TShort_HSequenceOfShortReal
-
-No detailed docstring for this function.") ShallowCopy;
+		%feature("autodoc", "	:rtype: Handle_TShort_HSequenceOfShortReal
+") ShallowCopy;
 		Handle_TShort_HSequenceOfShortReal ShallowCopy ();
 };
 
@@ -873,22 +649,17 @@ def __del__(self):
 %nodefaultctor TShort_SequenceNodeOfSequenceOfShortReal;
 class TShort_SequenceNodeOfSequenceOfShortReal : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Standard_ShortReal)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TShort_SequenceNodeOfSequenceOfShortReal;
+		%feature("autodoc", "	:param I:
+	:type I: Standard_ShortReal &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") TShort_SequenceNodeOfSequenceOfShortReal;
 		 TShort_SequenceNodeOfSequenceOfShortReal (const Standard_ShortReal & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Standard_ShortReal
+") Value;
 		Standard_ShortReal & Value ();
 };
 
@@ -949,168 +720,111 @@ def __del__(self):
 %nodefaultctor TShort_SequenceOfShortReal;
 class TShort_SequenceOfShortReal : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") TShort_SequenceOfShortReal;
+		%feature("autodoc", "	:rtype: None
+") TShort_SequenceOfShortReal;
 		 TShort_SequenceOfShortReal ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(TShort_SequenceOfShortReal)
-
-Returns:
-	TShort_SequenceOfShortReal
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: TShort_SequenceOfShortReal &
+	:rtype: TShort_SequenceOfShortReal
+") Assign;
 		const TShort_SequenceOfShortReal & Assign (const TShort_SequenceOfShortReal & Other);
-		%feature("autodoc", "Args:
-	Other(TShort_SequenceOfShortReal)
-
-Returns:
-	TShort_SequenceOfShortReal
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: TShort_SequenceOfShortReal &
+	:rtype: TShort_SequenceOfShortReal
+") operator=;
 		const TShort_SequenceOfShortReal & operator = (const TShort_SequenceOfShortReal & Other);
-		%feature("autodoc", "Args:
-	T(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Standard_ShortReal &
+	:rtype: None
+") Append;
 		void Append (const Standard_ShortReal & T);
-		%feature("autodoc", "Args:
-	S(TShort_SequenceOfShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: TShort_SequenceOfShortReal &
+	:rtype: None
+") Append;
 		void Append (TShort_SequenceOfShortReal & S);
-		%feature("autodoc", "Args:
-	T(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Standard_ShortReal &
+	:rtype: None
+") Prepend;
 		void Prepend (const Standard_ShortReal & T);
-		%feature("autodoc", "Args:
-	S(TShort_SequenceOfShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: TShort_SequenceOfShortReal &
+	:rtype: None
+") Prepend;
 		void Prepend (TShort_SequenceOfShortReal & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Standard_ShortReal &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Standard_ShortReal & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TShort_SequenceOfShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TShort_SequenceOfShortReal &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,TShort_SequenceOfShortReal & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Standard_ShortReal &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Standard_ShortReal & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(TShort_SequenceOfShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: TShort_SequenceOfShortReal &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,TShort_SequenceOfShortReal & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Standard_ShortReal
+") First;
 		const Standard_ShortReal & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Standard_ShortReal
+") Last;
 		const Standard_ShortReal & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(TShort_SequenceOfShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: TShort_SequenceOfShortReal &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,TShort_SequenceOfShortReal & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Standard_ShortReal
+") Value;
 		const Standard_ShortReal & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Standard_ShortReal)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Standard_ShortReal &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Standard_ShortReal & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Standard_ShortReal
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Standard_ShortReal
+") ChangeValue;
 		Standard_ShortReal & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 

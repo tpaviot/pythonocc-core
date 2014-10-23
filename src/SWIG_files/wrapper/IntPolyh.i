@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -52,82 +52,49 @@ typedef IntPolyh_Array <IntPolyh_Triangle> IntPolyh_ArrayOfTriangles;
 %nodefaultctor IntPolyh_Couple;
 class IntPolyh_Couple {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntPolyh_Couple;
+		%feature("autodoc", "	:rtype: None
+") IntPolyh_Couple;
 		 IntPolyh_Couple ();
-		%feature("autodoc", "Args:
-	i1(Standard_Integer)
-	i2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntPolyh_Couple;
+		%feature("autodoc", "	:param i1:
+	:type i1: Standard_Integer
+	:param i2:
+	:type i2: Standard_Integer
+	:rtype: None
+") IntPolyh_Couple;
 		 IntPolyh_Couple (const Standard_Integer i1,const Standard_Integer i2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FirstValue;
+		%feature("autodoc", "	:rtype: int
+") FirstValue;
 		Standard_Integer FirstValue ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") SecondValue;
+		%feature("autodoc", "	:rtype: int
+") SecondValue;
 		Standard_Integer SecondValue ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") AnalyseFlagValue;
+		%feature("autodoc", "	:rtype: int
+") AnalyseFlagValue;
 		Standard_Integer AnalyseFlagValue ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") AngleValue;
+		%feature("autodoc", "	:rtype: float
+") AngleValue;
 		Standard_Real AngleValue ();
-		%feature("autodoc", "Args:
-	v(Standard_Integer)
-	w(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetCoupleValue;
+		%feature("autodoc", "	:param v:
+	:type v: Standard_Integer
+	:param w:
+	:type w: Standard_Integer
+	:rtype: None
+") SetCoupleValue;
 		void SetCoupleValue (const Standard_Integer v,const Standard_Integer w);
-		%feature("autodoc", "Args:
-	v(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetAnalyseFlag;
+		%feature("autodoc", "	:param v:
+	:type v: Standard_Integer
+	:rtype: None
+") SetAnalyseFlag;
 		void SetAnalyseFlag (const Standard_Integer v);
-		%feature("autodoc", "Args:
-	ang(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetAngleValue;
+		%feature("autodoc", "	:param ang:
+	:type ang: float
+	:rtype: None
+") SetAngleValue;
 		void SetAngleValue (const Standard_Real ang);
-		%feature("autodoc", "Args:
-	v(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param v:
+	:type v: Standard_Integer
+	:rtype: None
+") Dump;
 		void Dump (const Standard_Integer v);
 };
 
@@ -149,106 +116,64 @@ def __del__(self):
 %nodefaultctor IntPolyh_Edge;
 class IntPolyh_Edge {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntPolyh_Edge;
+		%feature("autodoc", "	:rtype: None
+") IntPolyh_Edge;
 		 IntPolyh_Edge ();
-		%feature("autodoc", "Args:
-	i1(Standard_Integer)
-	i2(Standard_Integer)
-	i3(Standard_Integer)
-	i4(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntPolyh_Edge;
+		%feature("autodoc", "	:param i1:
+	:type i1: Standard_Integer
+	:param i2:
+	:type i2: Standard_Integer
+	:param i3:
+	:type i3: Standard_Integer
+	:param i4:
+	:type i4: Standard_Integer
+	:rtype: None
+") IntPolyh_Edge;
 		 IntPolyh_Edge (const Standard_Integer i1,const Standard_Integer i2,const Standard_Integer i3,const Standard_Integer i4);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FirstPoint;
+		%feature("autodoc", "	:rtype: int
+") FirstPoint;
 		Standard_Integer FirstPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") SecondPoint;
+		%feature("autodoc", "	:rtype: int
+") SecondPoint;
 		Standard_Integer SecondPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FirstTriangle;
+		%feature("autodoc", "	:rtype: int
+") FirstTriangle;
 		Standard_Integer FirstTriangle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") SecondTriangle;
+		%feature("autodoc", "	:rtype: int
+") SecondTriangle;
 		Standard_Integer SecondTriangle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") AnalysisFlag;
+		%feature("autodoc", "	:rtype: int
+") AnalysisFlag;
 		Standard_Integer AnalysisFlag ();
-		%feature("autodoc", "Args:
-	v(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetFirstPoint;
+		%feature("autodoc", "	:param v:
+	:type v: Standard_Integer
+	:rtype: None
+") SetFirstPoint;
 		void SetFirstPoint (const Standard_Integer v);
-		%feature("autodoc", "Args:
-	v(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetSecondPoint;
+		%feature("autodoc", "	:param v:
+	:type v: Standard_Integer
+	:rtype: None
+") SetSecondPoint;
 		void SetSecondPoint (const Standard_Integer v);
-		%feature("autodoc", "Args:
-	v(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetFirstTriangle;
+		%feature("autodoc", "	:param v:
+	:type v: Standard_Integer
+	:rtype: None
+") SetFirstTriangle;
 		void SetFirstTriangle (const Standard_Integer v);
-		%feature("autodoc", "Args:
-	v(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetSecondTriangle;
+		%feature("autodoc", "	:param v:
+	:type v: Standard_Integer
+	:rtype: None
+") SetSecondTriangle;
 		void SetSecondTriangle (const Standard_Integer v);
-		%feature("autodoc", "Args:
-	v(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetAnalysisFlag;
+		%feature("autodoc", "	:param v:
+	:type v: Standard_Integer
+	:rtype: None
+") SetAnalysisFlag;
 		void SetAnalysisFlag (const Standard_Integer v);
-		%feature("autodoc", "Args:
-	v(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param v:
+	:type v: Standard_Integer
+	:rtype: None
+") Dump;
 		void Dump (const Standard_Integer v);
 };
 
@@ -270,132 +195,129 @@ def __del__(self):
 %nodefaultctor IntPolyh_Intersection;
 class IntPolyh_Intersection {
 	public:
-		%feature("autodoc", "Args:
-	S1(Handle_Adaptor3d_HSurface)
-	S2(Handle_Adaptor3d_HSurface)
+		%feature("autodoc", "	* Constructor
 
-Returns:
-	None
-
-Constructor") IntPolyh_Intersection;
+	:param S1:
+	:type S1: Handle_Adaptor3d_HSurface &
+	:param S2:
+	:type S2: Handle_Adaptor3d_HSurface &
+	:rtype: None
+") IntPolyh_Intersection;
 		 IntPolyh_Intersection (const Handle_Adaptor3d_HSurface & S1,const Handle_Adaptor3d_HSurface & S2);
-		%feature("autodoc", "Args:
-	S1(Handle_Adaptor3d_HSurface)
-	NbSU1(Standard_Integer)
-	NbSV1(Standard_Integer)
-	S2(Handle_Adaptor3d_HSurface)
-	NbSU2(Standard_Integer)
-	NbSV2(Standard_Integer)
+		%feature("autodoc", "	* NbSU1 ... NbSV2 are used to compute the initial samples of the iso parametric meshes on the surfaces.
 
-Returns:
-	None
-
-NbSU1 ... NbSV2 are used to compute the initial  
-         samples of  the  iso parametric  meshes  on the  
-         surfaces.") IntPolyh_Intersection;
+	:param S1:
+	:type S1: Handle_Adaptor3d_HSurface &
+	:param NbSU1:
+	:type NbSU1: Standard_Integer
+	:param NbSV1:
+	:type NbSV1: Standard_Integer
+	:param S2:
+	:type S2: Handle_Adaptor3d_HSurface &
+	:param NbSU2:
+	:type NbSU2: Standard_Integer
+	:param NbSV2:
+	:type NbSV2: Standard_Integer
+	:rtype: None
+") IntPolyh_Intersection;
 		 IntPolyh_Intersection (const Handle_Adaptor3d_HSurface & S1,const Standard_Integer NbSU1,const Standard_Integer NbSV1,const Handle_Adaptor3d_HSurface & S2,const Standard_Integer NbSU2,const Standard_Integer NbSV2);
-		%feature("autodoc", "Args:
-	S1(Handle_Adaptor3d_HSurface)
-	anUpars1(TColStd_Array1OfReal)
-	aVpars1(TColStd_Array1OfReal)
-	S2(Handle_Adaptor3d_HSurface)
-	anUpars2(TColStd_Array1OfReal)
-	aVpars2(TColStd_Array1OfReal)
+		%feature("autodoc", "	* D1, D2 are used to compute the initial samples of the iso parametric meshes on the surfaces.
 
-Returns:
-	None
-
-D1,  D2 are used to compute the initial  
-         samples of  the  iso parametric  meshes  on the  
-         surfaces.") IntPolyh_Intersection;
+	:param S1:
+	:type S1: Handle_Adaptor3d_HSurface &
+	:param anUpars1:
+	:type anUpars1: TColStd_Array1OfReal &
+	:param aVpars1:
+	:type aVpars1: TColStd_Array1OfReal &
+	:param S2:
+	:type S2: Handle_Adaptor3d_HSurface &
+	:param anUpars2:
+	:type anUpars2: TColStd_Array1OfReal &
+	:param aVpars2:
+	:type aVpars2: TColStd_Array1OfReal &
+	:rtype: None
+") IntPolyh_Intersection;
 		 IntPolyh_Intersection (const Handle_Adaptor3d_HSurface & S1,const TColStd_Array1OfReal & anUpars1,const TColStd_Array1OfReal & aVpars1,const Handle_Adaptor3d_HSurface & S2,const TColStd_Array1OfReal & anUpars2,const TColStd_Array1OfReal & aVpars2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Compute the intersection.
 
-Compute the intersection.") Perform;
+	:rtype: None
+") Perform;
 		void Perform ();
-		%feature("autodoc", "Args:
-	Upars1(TColStd_Array1OfReal)
-	Vpars1(TColStd_Array1OfReal)
-	Upars2(TColStd_Array1OfReal)
-	Vpars2(TColStd_Array1OfReal)
+		%feature("autodoc", "	* Compute the intersection.
 
-Returns:
-	None
-
-Compute the intersection.") Perform;
+	:param Upars1:
+	:type Upars1: TColStd_Array1OfReal &
+	:param Vpars1:
+	:type Vpars1: TColStd_Array1OfReal &
+	:param Upars2:
+	:type Upars2: TColStd_Array1OfReal &
+	:param Vpars2:
+	:type Vpars2: TColStd_Array1OfReal &
+	:rtype: None
+") Perform;
 		void Perform (const TColStd_Array1OfReal & Upars1,const TColStd_Array1OfReal & Vpars1,const TColStd_Array1OfReal & Upars2,const TColStd_Array1OfReal & Vpars2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsDone;
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
 		Standard_Boolean IsDone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbSectionLines;
+		%feature("autodoc", "	:rtype: int
+") NbSectionLines;
 		Standard_Integer NbSectionLines ();
-		%feature("autodoc", "Args:
-	IndexLine(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbPointsInLine;
+		%feature("autodoc", "	:param IndexLine:
+	:type IndexLine: Standard_Integer
+	:rtype: int
+") NbPointsInLine;
 		Standard_Integer NbPointsInLine (const Standard_Integer IndexLine);
-		%feature("autodoc", "Args:
-	IndexLine(Standard_Integer)
-	IndexPoint(Standard_Integer)
-	x(Standard_Real)
-	y(Standard_Real)
-	z(Standard_Real)
-	u1(Standard_Real)
-	v1(Standard_Real)
-	u2(Standard_Real)
-	v2(Standard_Real)
-	incidence(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GetLinePoint;
+		%feature("autodoc", "	:param IndexLine:
+	:type IndexLine: Standard_Integer
+	:param IndexPoint:
+	:type IndexPoint: Standard_Integer
+	:param x:
+	:type x: float &
+	:param y:
+	:type y: float &
+	:param z:
+	:type z: float &
+	:param u1:
+	:type u1: float &
+	:param v1:
+	:type v1: float &
+	:param u2:
+	:type u2: float &
+	:param v2:
+	:type v2: float &
+	:param incidence:
+	:type incidence: float &
+	:rtype: None
+") GetLinePoint;
 		void GetLinePoint (const Standard_Integer IndexLine,const Standard_Integer IndexPoint,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbTangentZones;
+		%feature("autodoc", "	:rtype: int
+") NbTangentZones;
 		Standard_Integer NbTangentZones ();
-		%feature("autodoc", "Args:
-	IndexLine(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbPointsInTangentZone;
+		%feature("autodoc", "	:param IndexLine:
+	:type IndexLine: Standard_Integer
+	:rtype: int
+") NbPointsInTangentZone;
 		Standard_Integer NbPointsInTangentZone (const Standard_Integer IndexLine);
-		%feature("autodoc", "Args:
-	IndexLine(Standard_Integer)
-	IndexPoint(Standard_Integer)
-	x(Standard_Real)
-	y(Standard_Real)
-	z(Standard_Real)
-	u1(Standard_Real)
-	v1(Standard_Real)
-	u2(Standard_Real)
-	v2(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") GetTangentZonePoint;
+		%feature("autodoc", "	:param IndexLine:
+	:type IndexLine: Standard_Integer
+	:param IndexPoint:
+	:type IndexPoint: Standard_Integer
+	:param x:
+	:type x: float &
+	:param y:
+	:type y: float &
+	:param z:
+	:type z: float &
+	:param u1:
+	:type u1: float &
+	:param v1:
+	:type v1: float &
+	:param u2:
+	:type u2: float &
+	:param v2:
+	:type v2: float &
+	:rtype: None
+") GetTangentZonePoint;
 		void GetTangentZonePoint (const Standard_Integer IndexLine,const Standard_Integer IndexPoint,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 };
 
@@ -417,279 +339,179 @@ def __del__(self):
 %nodefaultctor IntPolyh_Point;
 class IntPolyh_Point {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntPolyh_Point;
+		%feature("autodoc", "	:rtype: None
+") IntPolyh_Point;
 		 IntPolyh_Point ();
-		%feature("autodoc", "Args:
-	xx(Standard_Real)
-	yy(Standard_Real)
-	zz(Standard_Real)
-	uu(Standard_Real)
-	vv(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntPolyh_Point;
+		%feature("autodoc", "	:param xx:
+	:type xx: float
+	:param yy:
+	:type yy: float
+	:param zz:
+	:type zz: float
+	:param uu:
+	:type uu: float
+	:param vv:
+	:type vv: float
+	:rtype: None
+") IntPolyh_Point;
 		 IntPolyh_Point (const Standard_Real xx,const Standard_Real yy,const Standard_Real zz,const Standard_Real uu,const Standard_Real vv);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") X;
+		%feature("autodoc", "	:rtype: float
+") X;
 		Standard_Real X ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Y;
+		%feature("autodoc", "	:rtype: float
+") Y;
 		Standard_Real Y ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Z;
+		%feature("autodoc", "	:rtype: float
+") Z;
 		Standard_Real Z ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") U;
+		%feature("autodoc", "	:rtype: float
+") U;
 		Standard_Real U ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") V;
+		%feature("autodoc", "	:rtype: float
+") V;
 		Standard_Real V ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") PartOfCommon;
+		%feature("autodoc", "	:rtype: int
+") PartOfCommon;
 		Standard_Integer PartOfCommon ();
-		%feature("autodoc", "Args:
-	Pt(IntPolyh_Point)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Equal;
+		%feature("autodoc", "	:param Pt:
+	:type Pt: IntPolyh_Point &
+	:rtype: None
+") Equal;
 		void Equal (const IntPolyh_Point & Pt);
-		%feature("autodoc", "Args:
-	Pt(IntPolyh_Point)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Pt:
+	:type Pt: IntPolyh_Point &
+	:rtype: None
+") operator=;
 		void operator = (const IntPolyh_Point & Pt);
-		%feature("autodoc", "Args:
-	v1(Standard_Real)
-	v2(Standard_Real)
-	v3(Standard_Real)
-	v4(Standard_Real)
-	v5(Standard_Real)
-	II(Standard_Integer)=1
-
-Returns:
-	None
-
-No detailed docstring for this function.") Set;
+		%feature("autodoc", "	:param v1:
+	:type v1: float
+	:param v2:
+	:type v2: float
+	:param v3:
+	:type v3: float
+	:param v4:
+	:type v4: float
+	:param v5:
+	:type v5: float
+	:param II: default value is 1
+	:type II: Standard_Integer
+	:rtype: None
+") Set;
 		void Set (const Standard_Real v1,const Standard_Real v2,const Standard_Real v3,const Standard_Real v4,const Standard_Real v5,const Standard_Integer II = 1);
-		%feature("autodoc", "Args:
-	v(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetX;
+		%feature("autodoc", "	:param v:
+	:type v: float
+	:rtype: None
+") SetX;
 		void SetX (const Standard_Real v);
-		%feature("autodoc", "Args:
-	v(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetY;
+		%feature("autodoc", "	:param v:
+	:type v: float
+	:rtype: None
+") SetY;
 		void SetY (const Standard_Real v);
-		%feature("autodoc", "Args:
-	v(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetZ;
+		%feature("autodoc", "	:param v:
+	:type v: float
+	:rtype: None
+") SetZ;
 		void SetZ (const Standard_Real v);
-		%feature("autodoc", "Args:
-	v(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetU;
+		%feature("autodoc", "	:param v:
+	:type v: float
+	:rtype: None
+") SetU;
 		void SetU (const Standard_Real v);
-		%feature("autodoc", "Args:
-	v(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetV;
+		%feature("autodoc", "	:param v:
+	:type v: float
+	:rtype: None
+") SetV;
 		void SetV (const Standard_Real v);
-		%feature("autodoc", "Args:
-	ii(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetPartOfCommon;
+		%feature("autodoc", "	:param ii:
+	:type ii: Standard_Integer
+	:rtype: None
+") SetPartOfCommon;
 		void SetPartOfCommon (const Standard_Integer ii);
-		%feature("autodoc", "Args:
-	MySurface(Handle_Adaptor3d_HSurface)
-	P1(IntPolyh_Point)
-	P2(IntPolyh_Point)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Middle;
+		%feature("autodoc", "	:param MySurface:
+	:type MySurface: Handle_Adaptor3d_HSurface &
+	:param P1:
+	:type P1: IntPolyh_Point &
+	:param P2:
+	:type P2: IntPolyh_Point &
+	:rtype: None
+") Middle;
 		void Middle (const Handle_Adaptor3d_HSurface & MySurface,const IntPolyh_Point & P1,const IntPolyh_Point & P2);
-		%feature("autodoc", "Args:
-	P1(IntPolyh_Point)
-
-Returns:
-	IntPolyh_Point
-
-No detailed docstring for this function.") Add;
+		%feature("autodoc", "	:param P1:
+	:type P1: IntPolyh_Point &
+	:rtype: IntPolyh_Point
+") Add;
 		IntPolyh_Point Add (const IntPolyh_Point & P1);
-		%feature("autodoc", "Args:
-	P1(IntPolyh_Point)
-
-Returns:
-	IntPolyh_Point
-
-No detailed docstring for this function.") operator+;
+		%feature("autodoc", "	:param P1:
+	:type P1: IntPolyh_Point &
+	:rtype: IntPolyh_Point
+") operator+;
 		IntPolyh_Point operator + (const IntPolyh_Point & P1);
-		%feature("autodoc", "Args:
-	P1(IntPolyh_Point)
-
-Returns:
-	IntPolyh_Point
-
-No detailed docstring for this function.") Sub;
+		%feature("autodoc", "	:param P1:
+	:type P1: IntPolyh_Point &
+	:rtype: IntPolyh_Point
+") Sub;
 		IntPolyh_Point Sub (const IntPolyh_Point & P1);
-		%feature("autodoc", "Args:
-	P1(IntPolyh_Point)
-
-Returns:
-	IntPolyh_Point
-
-No detailed docstring for this function.") operator-;
+		%feature("autodoc", "	:param P1:
+	:type P1: IntPolyh_Point &
+	:rtype: IntPolyh_Point
+") operator-;
 		IntPolyh_Point operator - (const IntPolyh_Point & P1);
-		%feature("autodoc", "Args:
-	rr(Standard_Real)
-
-Returns:
-	IntPolyh_Point
-
-No detailed docstring for this function.") Divide;
+		%feature("autodoc", "	:param rr:
+	:type rr: float
+	:rtype: IntPolyh_Point
+") Divide;
 		IntPolyh_Point Divide (const Standard_Real rr);
-		%feature("autodoc", "Args:
-	rr(Standard_Real)
-
-Returns:
-	IntPolyh_Point
-
-No detailed docstring for this function.") operator/;
+		%feature("autodoc", "	:param rr:
+	:type rr: float
+	:rtype: IntPolyh_Point
+") operator/;
 		IntPolyh_Point operator / (const Standard_Real rr);
-		%feature("autodoc", "Args:
-	rr(Standard_Real)
-
-Returns:
-	IntPolyh_Point
-
-No detailed docstring for this function.") Multiplication;
+		%feature("autodoc", "	:param rr:
+	:type rr: float
+	:rtype: IntPolyh_Point
+") Multiplication;
 		IntPolyh_Point Multiplication (const Standard_Real rr);
-		%feature("autodoc", "Args:
-	rr(Standard_Real)
-
-Returns:
-	IntPolyh_Point
-
-No detailed docstring for this function.") operator*;
+		%feature("autodoc", "	:param rr:
+	:type rr: float
+	:rtype: IntPolyh_Point
+") operator*;
 		IntPolyh_Point operator * (const Standard_Real rr);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") SquareModulus;
+		%feature("autodoc", "	:rtype: float
+") SquareModulus;
 		Standard_Real SquareModulus ();
-		%feature("autodoc", "Args:
-	P2(IntPolyh_Point)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") SquareDistance;
+		%feature("autodoc", "	:param P2:
+	:type P2: IntPolyh_Point &
+	:rtype: float
+") SquareDistance;
 		Standard_Real SquareDistance (const IntPolyh_Point & P2);
-		%feature("autodoc", "Args:
-	P2(IntPolyh_Point)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Dot;
+		%feature("autodoc", "	:param P2:
+	:type P2: IntPolyh_Point &
+	:rtype: float
+") Dot;
 		Standard_Real Dot (const IntPolyh_Point & P2);
-		%feature("autodoc", "Args:
-	P1(IntPolyh_Point)
-	P2(IntPolyh_Point)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Cross;
+		%feature("autodoc", "	:param P1:
+	:type P1: IntPolyh_Point &
+	:param P2:
+	:type P2: IntPolyh_Point &
+	:rtype: None
+") Cross;
 		void Cross (const IntPolyh_Point & P1,const IntPolyh_Point & P2);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
-		%feature("autodoc", "Args:
-	i(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param i:
+	:type i: Standard_Integer
+	:rtype: None
+") Dump;
 		void Dump (const Standard_Integer i);
-		%feature("autodoc", "Args:
-	theFlag(Standard_Boolean)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetDegenerated;
+		%feature("autodoc", "	:param theFlag:
+	:type theFlag: bool
+	:rtype: None
+") SetDegenerated;
 		void SetDegenerated (const Standard_Boolean theFlag);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") Degenerated;
+		%feature("autodoc", "	:rtype: bool
+") Degenerated;
 		Standard_Boolean Degenerated ();
 };
 
@@ -711,103 +533,58 @@ def __del__(self):
 %nodefaultctor IntPolyh_SectionLine;
 class IntPolyh_SectionLine {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntPolyh_SectionLine;
+		%feature("autodoc", "	:rtype: None
+") IntPolyh_SectionLine;
 		 IntPolyh_SectionLine ();
-		%feature("autodoc", "Args:
-	nn(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntPolyh_SectionLine;
+		%feature("autodoc", "	:param nn:
+	:type nn: Standard_Integer
+	:rtype: None
+") IntPolyh_SectionLine;
 		 IntPolyh_SectionLine (const Standard_Integer nn);
-		%feature("autodoc", "Args:
-	nn(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param nn:
+	:type nn: Standard_Integer
+	:rtype: None
+") Init;
 		void Init (const Standard_Integer nn);
-		%feature("autodoc", "Args:
-	nn(Standard_Integer)
-
-Returns:
-	IntPolyh_StartPoint
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param nn:
+	:type nn: Standard_Integer
+	:rtype: IntPolyh_StartPoint
+") Value;
 		const IntPolyh_StartPoint & Value (const Standard_Integer nn);
-		%feature("autodoc", "Args:
-	nn(Standard_Integer)
-
-Returns:
-	IntPolyh_StartPoint
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param nn:
+	:type nn: Standard_Integer
+	:rtype: IntPolyh_StartPoint
+") ChangeValue;
 		IntPolyh_StartPoint & ChangeValue (const Standard_Integer nn);
-		%feature("autodoc", "Args:
-	Other(IntPolyh_SectionLine)
-
-Returns:
-	IntPolyh_SectionLine
-
-No detailed docstring for this function.") Copy;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntPolyh_SectionLine &
+	:rtype: IntPolyh_SectionLine
+") Copy;
 		IntPolyh_SectionLine & Copy (const IntPolyh_SectionLine & Other);
-		%feature("autodoc", "Args:
-	Other(IntPolyh_SectionLine)
-
-Returns:
-	IntPolyh_SectionLine
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntPolyh_SectionLine &
+	:rtype: IntPolyh_SectionLine
+") operator=;
 		IntPolyh_SectionLine & operator = (const IntPolyh_SectionLine & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") GetN;
+		%feature("autodoc", "	:rtype: int
+") GetN;
 		Standard_Integer GetN ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbStartPoints;
+		%feature("autodoc", "	:rtype: int
+") NbStartPoints;
 		Standard_Integer NbStartPoints ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IncrementNbStartPoints;
+		%feature("autodoc", "	:rtype: None
+") IncrementNbStartPoints;
 		void IncrementNbStartPoints ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
-		%feature("autodoc", "Args:
-	SP(IntPolyh_StartPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param SP:
+	:type SP: IntPolyh_StartPoint &
+	:rtype: None
+") Prepend;
 		void Prepend (const IntPolyh_StartPoint & SP);
 };
 
@@ -829,168 +606,111 @@ def __del__(self):
 %nodefaultctor IntPolyh_SeqOfStartPoints;
 class IntPolyh_SeqOfStartPoints : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntPolyh_SeqOfStartPoints;
+		%feature("autodoc", "	:rtype: None
+") IntPolyh_SeqOfStartPoints;
 		 IntPolyh_SeqOfStartPoints ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(IntPolyh_SeqOfStartPoints)
-
-Returns:
-	IntPolyh_SeqOfStartPoints
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntPolyh_SeqOfStartPoints &
+	:rtype: IntPolyh_SeqOfStartPoints
+") Assign;
 		const IntPolyh_SeqOfStartPoints & Assign (const IntPolyh_SeqOfStartPoints & Other);
-		%feature("autodoc", "Args:
-	Other(IntPolyh_SeqOfStartPoints)
-
-Returns:
-	IntPolyh_SeqOfStartPoints
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntPolyh_SeqOfStartPoints &
+	:rtype: IntPolyh_SeqOfStartPoints
+") operator=;
 		const IntPolyh_SeqOfStartPoints & operator = (const IntPolyh_SeqOfStartPoints & Other);
-		%feature("autodoc", "Args:
-	T(IntPolyh_StartPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: IntPolyh_StartPoint &
+	:rtype: None
+") Append;
 		void Append (const IntPolyh_StartPoint & T);
-		%feature("autodoc", "Args:
-	S(IntPolyh_SeqOfStartPoints)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: IntPolyh_SeqOfStartPoints &
+	:rtype: None
+") Append;
 		void Append (IntPolyh_SeqOfStartPoints & S);
-		%feature("autodoc", "Args:
-	T(IntPolyh_StartPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: IntPolyh_StartPoint &
+	:rtype: None
+") Prepend;
 		void Prepend (const IntPolyh_StartPoint & T);
-		%feature("autodoc", "Args:
-	S(IntPolyh_SeqOfStartPoints)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: IntPolyh_SeqOfStartPoints &
+	:rtype: None
+") Prepend;
 		void Prepend (IntPolyh_SeqOfStartPoints & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(IntPolyh_StartPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: IntPolyh_StartPoint &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const IntPolyh_StartPoint & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(IntPolyh_SeqOfStartPoints)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: IntPolyh_SeqOfStartPoints &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,IntPolyh_SeqOfStartPoints & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(IntPolyh_StartPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: IntPolyh_StartPoint &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const IntPolyh_StartPoint & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(IntPolyh_SeqOfStartPoints)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: IntPolyh_SeqOfStartPoints &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,IntPolyh_SeqOfStartPoints & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntPolyh_StartPoint
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: IntPolyh_StartPoint
+") First;
 		const IntPolyh_StartPoint & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntPolyh_StartPoint
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: IntPolyh_StartPoint
+") Last;
 		const IntPolyh_StartPoint & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(IntPolyh_SeqOfStartPoints)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: IntPolyh_SeqOfStartPoints &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,IntPolyh_SeqOfStartPoints & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	IntPolyh_StartPoint
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: IntPolyh_StartPoint
+") Value;
 		const IntPolyh_StartPoint & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(IntPolyh_StartPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: IntPolyh_StartPoint &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const IntPolyh_StartPoint & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	IntPolyh_StartPoint
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: IntPolyh_StartPoint
+") ChangeValue;
 		IntPolyh_StartPoint & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -1012,22 +732,17 @@ def __del__(self):
 %nodefaultctor IntPolyh_SequenceNodeOfSeqOfStartPoints;
 class IntPolyh_SequenceNodeOfSeqOfStartPoints : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(IntPolyh_StartPoint)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntPolyh_SequenceNodeOfSeqOfStartPoints;
+		%feature("autodoc", "	:param I:
+	:type I: IntPolyh_StartPoint &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") IntPolyh_SequenceNodeOfSeqOfStartPoints;
 		 IntPolyh_SequenceNodeOfSeqOfStartPoints (const IntPolyh_StartPoint & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	IntPolyh_StartPoint
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: IntPolyh_StartPoint
+") Value;
 		IntPolyh_StartPoint & Value ();
 };
 
@@ -1088,273 +803,178 @@ def __del__(self):
 %nodefaultctor IntPolyh_StartPoint;
 class IntPolyh_StartPoint {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntPolyh_StartPoint;
+		%feature("autodoc", "	:rtype: None
+") IntPolyh_StartPoint;
 		 IntPolyh_StartPoint ();
-		%feature("autodoc", "Args:
-	xx(Standard_Real)
-	yy(Standard_Real)
-	zz(Standard_Real)
-	uu1(Standard_Real)
-	vv1(Standard_Real)
-	uu2(Standard_Real)
-	vv2(Standard_Real)
-	T1(Standard_Integer)
-	E1(Standard_Integer)
-	LAM1(Standard_Real)
-	T2(Standard_Integer)
-	E2(Standard_Integer)
-	LAM2(Standard_Real)
-	List(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntPolyh_StartPoint;
+		%feature("autodoc", "	:param xx:
+	:type xx: float
+	:param yy:
+	:type yy: float
+	:param zz:
+	:type zz: float
+	:param uu1:
+	:type uu1: float
+	:param vv1:
+	:type vv1: float
+	:param uu2:
+	:type uu2: float
+	:param vv2:
+	:type vv2: float
+	:param T1:
+	:type T1: Standard_Integer
+	:param E1:
+	:type E1: Standard_Integer
+	:param LAM1:
+	:type LAM1: float
+	:param T2:
+	:type T2: Standard_Integer
+	:param E2:
+	:type E2: Standard_Integer
+	:param LAM2:
+	:type LAM2: float
+	:param List:
+	:type List: Standard_Integer
+	:rtype: None
+") IntPolyh_StartPoint;
 		 IntPolyh_StartPoint (const Standard_Real xx,const Standard_Real yy,const Standard_Real zz,const Standard_Real uu1,const Standard_Real vv1,const Standard_Real uu2,const Standard_Real vv2,const Standard_Integer T1,const Standard_Integer E1,const Standard_Real LAM1,const Standard_Integer T2,const Standard_Integer E2,const Standard_Real LAM2,const Standard_Integer List);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") X;
+		%feature("autodoc", "	:rtype: float
+") X;
 		Standard_Real X ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Y;
+		%feature("autodoc", "	:rtype: float
+") Y;
 		Standard_Real Y ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Z;
+		%feature("autodoc", "	:rtype: float
+") Z;
 		Standard_Real Z ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") U1;
+		%feature("autodoc", "	:rtype: float
+") U1;
 		Standard_Real U1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") V1;
+		%feature("autodoc", "	:rtype: float
+") V1;
 		Standard_Real V1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") U2;
+		%feature("autodoc", "	:rtype: float
+") U2;
 		Standard_Real U2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") V2;
+		%feature("autodoc", "	:rtype: float
+") V2;
 		Standard_Real V2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") T1;
+		%feature("autodoc", "	:rtype: int
+") T1;
 		Standard_Integer T1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") E1;
+		%feature("autodoc", "	:rtype: int
+") E1;
 		Standard_Integer E1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Lambda1;
+		%feature("autodoc", "	:rtype: float
+") Lambda1;
 		Standard_Real Lambda1 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") T2;
+		%feature("autodoc", "	:rtype: int
+") T2;
 		Standard_Integer T2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") E2;
+		%feature("autodoc", "	:rtype: int
+") E2;
 		Standard_Integer E2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") Lambda2;
+		%feature("autodoc", "	:rtype: float
+") Lambda2;
 		Standard_Real Lambda2 ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") GetAngle;
+		%feature("autodoc", "	:rtype: float
+") GetAngle;
 		Standard_Real GetAngle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ChainList;
+		%feature("autodoc", "	:rtype: int
+") ChainList;
 		Standard_Integer ChainList ();
-		%feature("autodoc", "Args:
-	Triangle(IntPolyh_Triangle)
-	FirstEdgePoint(Standard_Integer)
-	SecondEdgePoint(Standard_Integer)
-	LastPoint(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") GetEdgePoints;
+		%feature("autodoc", "	:param Triangle:
+	:type Triangle: IntPolyh_Triangle &
+	:param FirstEdgePoint:
+	:type FirstEdgePoint: Standard_Integer &
+	:param SecondEdgePoint:
+	:type SecondEdgePoint: Standard_Integer &
+	:param LastPoint:
+	:type LastPoint: Standard_Integer &
+	:rtype: int
+") GetEdgePoints;
 		Standard_Integer GetEdgePoints (const IntPolyh_Triangle & Triangle,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
-		%feature("autodoc", "Args:
-	StPt(IntPolyh_StartPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Equal;
+		%feature("autodoc", "	:param StPt:
+	:type StPt: IntPolyh_StartPoint &
+	:rtype: None
+") Equal;
 		void Equal (const IntPolyh_StartPoint & StPt);
-		%feature("autodoc", "Args:
-	StPt(IntPolyh_StartPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param StPt:
+	:type StPt: IntPolyh_StartPoint &
+	:rtype: None
+") operator=;
 		void operator = (const IntPolyh_StartPoint & StPt);
-		%feature("autodoc", "Args:
-	XX(Standard_Real)
-	YY(Standard_Real)
-	ZZ(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetXYZ;
+		%feature("autodoc", "	:param XX:
+	:type XX: float
+	:param YY:
+	:type YY: float
+	:param ZZ:
+	:type ZZ: float
+	:rtype: None
+") SetXYZ;
 		void SetXYZ (const Standard_Real XX,const Standard_Real YY,const Standard_Real ZZ);
-		%feature("autodoc", "Args:
-	UU1(Standard_Real)
-	VV1(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetUV1;
+		%feature("autodoc", "	:param UU1:
+	:type UU1: float
+	:param VV1:
+	:type VV1: float
+	:rtype: None
+") SetUV1;
 		void SetUV1 (const Standard_Real UU1,const Standard_Real VV1);
-		%feature("autodoc", "Args:
-	UU2(Standard_Real)
-	VV2(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetUV2;
+		%feature("autodoc", "	:param UU2:
+	:type UU2: float
+	:param VV2:
+	:type VV2: float
+	:rtype: None
+") SetUV2;
 		void SetUV2 (const Standard_Real UU2,const Standard_Real VV2);
-		%feature("autodoc", "Args:
-	IE1(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetEdge1;
+		%feature("autodoc", "	:param IE1:
+	:type IE1: Standard_Integer
+	:rtype: None
+") SetEdge1;
 		void SetEdge1 (const Standard_Integer IE1);
-		%feature("autodoc", "Args:
-	LAM1(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetLambda1;
+		%feature("autodoc", "	:param LAM1:
+	:type LAM1: float
+	:rtype: None
+") SetLambda1;
 		void SetLambda1 (const Standard_Real LAM1);
-		%feature("autodoc", "Args:
-	IE2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetEdge2;
+		%feature("autodoc", "	:param IE2:
+	:type IE2: Standard_Integer
+	:rtype: None
+") SetEdge2;
 		void SetEdge2 (const Standard_Integer IE2);
-		%feature("autodoc", "Args:
-	LAM2(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetLambda2;
+		%feature("autodoc", "	:param LAM2:
+	:type LAM2: float
+	:rtype: None
+") SetLambda2;
 		void SetLambda2 (const Standard_Real LAM2);
-		%feature("autodoc", "Args:
-	IT1(Standard_Integer)
-	IT2(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetCoupleValue;
+		%feature("autodoc", "	:param IT1:
+	:type IT1: Standard_Integer
+	:param IT2:
+	:type IT2: Standard_Integer
+	:rtype: None
+") SetCoupleValue;
 		void SetCoupleValue (const Standard_Integer IT1,const Standard_Integer IT2);
-		%feature("autodoc", "Args:
-	ang(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetAngle;
+		%feature("autodoc", "	:param ang:
+	:type ang: float
+	:rtype: None
+") SetAngle;
 		void SetAngle (const Standard_Real ang);
-		%feature("autodoc", "Args:
-	ChList(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetChainList;
+		%feature("autodoc", "	:param ChList:
+	:type ChList: Standard_Integer
+	:rtype: None
+") SetChainList;
 		void SetChainList (const Standard_Integer ChList);
-		%feature("autodoc", "Args:
-	SP(IntPolyh_StartPoint)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") CheckSameSP;
+		%feature("autodoc", "	:param SP:
+	:type SP: IntPolyh_StartPoint &
+	:rtype: int
+") CheckSameSP;
 		Standard_Integer CheckSameSP (const IntPolyh_StartPoint & SP);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
-		%feature("autodoc", "Args:
-	i(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param i:
+	:type i: Standard_Integer
+	:rtype: None
+") Dump;
 		void Dump (const Standard_Integer i);
 };
 
@@ -1376,330 +996,237 @@ def __del__(self):
 %nodefaultctor IntPolyh_Triangle;
 class IntPolyh_Triangle {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") IntPolyh_Triangle;
+		%feature("autodoc", "	:rtype: None
+") IntPolyh_Triangle;
 		 IntPolyh_Triangle ();
-		%feature("autodoc", "Args:
-	i1(Standard_Integer)
-	i2(Standard_Integer)
-	i3(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") IntPolyh_Triangle;
+		%feature("autodoc", "	:param i1:
+	:type i1: Standard_Integer
+	:param i2:
+	:type i2: Standard_Integer
+	:param i3:
+	:type i3: Standard_Integer
+	:rtype: None
+") IntPolyh_Triangle;
 		 IntPolyh_Triangle (const Standard_Integer i1,const Standard_Integer i2,const Standard_Integer i3);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FirstPoint;
+		%feature("autodoc", "	:rtype: int
+") FirstPoint;
 		Standard_Integer FirstPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") SecondPoint;
+		%feature("autodoc", "	:rtype: int
+") SecondPoint;
 		Standard_Integer SecondPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ThirdPoint;
+		%feature("autodoc", "	:rtype: int
+") ThirdPoint;
 		Standard_Integer ThirdPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FirstEdge;
+		%feature("autodoc", "	:rtype: int
+") FirstEdge;
 		Standard_Integer FirstEdge ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") FirstEdgeOrientation;
+		%feature("autodoc", "	:rtype: int
+") FirstEdgeOrientation;
 		Standard_Integer FirstEdgeOrientation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") SecondEdge;
+		%feature("autodoc", "	:rtype: int
+") SecondEdge;
 		Standard_Integer SecondEdge ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") SecondEdgeOrientation;
+		%feature("autodoc", "	:rtype: int
+") SecondEdgeOrientation;
 		Standard_Integer SecondEdgeOrientation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ThirdEdge;
+		%feature("autodoc", "	:rtype: int
+") ThirdEdge;
 		Standard_Integer ThirdEdge ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") ThirdEdgeOrientation;
+		%feature("autodoc", "	:rtype: int
+") ThirdEdgeOrientation;
 		Standard_Integer ThirdEdgeOrientation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") GetFleche;
+		%feature("autodoc", "	:rtype: float
+") GetFleche;
 		Standard_Real GetFleche ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") IndiceIntersectionPossible;
+		%feature("autodoc", "	:rtype: int
+") IndiceIntersectionPossible;
 		Standard_Integer IndiceIntersectionPossible ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") IndiceIntersection;
+		%feature("autodoc", "	:rtype: int
+") IndiceIntersection;
 		Standard_Integer IndiceIntersection ();
-		%feature("autodoc", "Args:
-	v(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetFirstPoint;
+		%feature("autodoc", "	:param v:
+	:type v: Standard_Integer
+	:rtype: None
+") SetFirstPoint;
 		void SetFirstPoint (const Standard_Integer v);
-		%feature("autodoc", "Args:
-	v(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetSecondPoint;
+		%feature("autodoc", "	:param v:
+	:type v: Standard_Integer
+	:rtype: None
+") SetSecondPoint;
 		void SetSecondPoint (const Standard_Integer v);
-		%feature("autodoc", "Args:
-	v(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetThirdPoint;
+		%feature("autodoc", "	:param v:
+	:type v: Standard_Integer
+	:rtype: None
+") SetThirdPoint;
 		void SetThirdPoint (const Standard_Integer v);
-		%feature("autodoc", "Args:
-	v(Standard_Integer)
-	s(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetFirstEdge;
+		%feature("autodoc", "	:param v:
+	:type v: Standard_Integer
+	:param s:
+	:type s: Standard_Integer
+	:rtype: None
+") SetFirstEdge;
 		void SetFirstEdge (const Standard_Integer v,const Standard_Integer s);
-		%feature("autodoc", "Args:
-	v(Standard_Integer)
-	s(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetSecondEdge;
+		%feature("autodoc", "	:param v:
+	:type v: Standard_Integer
+	:param s:
+	:type s: Standard_Integer
+	:rtype: None
+") SetSecondEdge;
 		void SetSecondEdge (const Standard_Integer v,const Standard_Integer s);
-		%feature("autodoc", "Args:
-	v(Standard_Integer)
-	s(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetThirdEdge;
+		%feature("autodoc", "	:param v:
+	:type v: Standard_Integer
+	:param s:
+	:type s: Standard_Integer
+	:rtype: None
+") SetThirdEdge;
 		void SetThirdEdge (const Standard_Integer v,const Standard_Integer s);
-		%feature("autodoc", "Args:
-	v(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetFleche;
+		%feature("autodoc", "	:param v:
+	:type v: float
+	:rtype: None
+") SetFleche;
 		void SetFleche (const Standard_Real v);
-		%feature("autodoc", "Args:
-	v(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetIndiceIntersectionPossible;
+		%feature("autodoc", "	:param v:
+	:type v: Standard_Integer
+	:rtype: None
+") SetIndiceIntersectionPossible;
 		void SetIndiceIntersectionPossible (const Standard_Integer v);
-		%feature("autodoc", "Args:
-	v(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetIndiceIntersection;
+		%feature("autodoc", "	:param v:
+	:type v: Standard_Integer
+	:rtype: None
+") SetIndiceIntersection;
 		void SetIndiceIntersection (const Standard_Integer v);
-		%feature("autodoc", "Args:
-	v(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") GetEdgeNumber;
+		%feature("autodoc", "	:param v:
+	:type v: Standard_Integer
+	:rtype: int
+") GetEdgeNumber;
 		Standard_Integer GetEdgeNumber (const Standard_Integer v);
-		%feature("autodoc", "Args:
-	v(Standard_Integer)
-	en(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetEdge;
+		%feature("autodoc", "	:param v:
+	:type v: Standard_Integer
+	:param en:
+	:type en: Standard_Integer
+	:rtype: None
+") SetEdge;
 		void SetEdge (const Standard_Integer v,const Standard_Integer en);
-		%feature("autodoc", "Args:
-	v(Standard_Integer)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") GetEdgeOrientation;
+		%feature("autodoc", "	:param v:
+	:type v: Standard_Integer
+	:rtype: int
+") GetEdgeOrientation;
 		Standard_Integer GetEdgeOrientation (const Standard_Integer v);
-		%feature("autodoc", "Args:
-	v(Standard_Integer)
-	oe(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetEdgeOrientation;
+		%feature("autodoc", "	:param v:
+	:type v: Standard_Integer
+	:param oe:
+	:type oe: Standard_Integer
+	:rtype: None
+") SetEdgeOrientation;
 		void SetEdgeOrientation (const Standard_Integer v,const Standard_Integer oe);
-		%feature("autodoc", "Args:
-	MaSurface(Handle_Adaptor3d_HSurface)
-	TP(IntPolyh_ArrayOfPoints)
-
-Returns:
-	None
-
-No detailed docstring for this function.") TriangleDeflection;
+		%feature("autodoc", "	:param MaSurface:
+	:type MaSurface: Handle_Adaptor3d_HSurface &
+	:param TP:
+	:type TP: IntPolyh_ArrayOfPoints &
+	:rtype: None
+") TriangleDeflection;
 		void TriangleDeflection (const Handle_Adaptor3d_HSurface & MaSurface,const IntPolyh_ArrayOfPoints & TP);
-		%feature("autodoc", "Args:
-	PE1(Standard_Integer)
-	PE2(Standard_Integer)
-	P3(Standard_Integer)
-	Index(Standard_Integer)
-	TTriangles(IntPolyh_ArrayOfTriangles)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") CheckCommonEdge;
+		%feature("autodoc", "	:param PE1:
+	:type PE1: Standard_Integer
+	:param PE2:
+	:type PE2: Standard_Integer
+	:param P3:
+	:type P3: Standard_Integer
+	:param Index:
+	:type Index: Standard_Integer
+	:param TTriangles:
+	:type TTriangles: IntPolyh_ArrayOfTriangles &
+	:rtype: int
+") CheckCommonEdge;
 		Standard_Integer CheckCommonEdge (const Standard_Integer PE1,const Standard_Integer PE2,const Standard_Integer P3,const Standard_Integer Index,const IntPolyh_ArrayOfTriangles & TTriangles);
-		%feature("autodoc", "Args:
-	NumTri(Standard_Integer)
-	NumEdge(Standard_Integer)
-	TEdges(IntPolyh_ArrayOfEdges)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") GetNextTriangle2;
+		%feature("autodoc", "	:param NumTri:
+	:type NumTri: Standard_Integer
+	:param NumEdge:
+	:type NumEdge: Standard_Integer
+	:param TEdges:
+	:type TEdges: IntPolyh_ArrayOfEdges &
+	:rtype: int
+") GetNextTriangle2;
 		Standard_Integer GetNextTriangle2 (const Standard_Integer NumTri,const Standard_Integer NumEdge,const IntPolyh_ArrayOfEdges & TEdges);
-		%feature("autodoc", "Args:
-	TriangleNumber(Standard_Integer)
-	MySurface(Handle_Adaptor3d_HSurface)
-	TPoints(IntPolyh_ArrayOfPoints)
-	TTriangles(IntPolyh_ArrayOfTriangles)
-	TEdges(IntPolyh_ArrayOfEdges)
-
-Returns:
-	None
-
-No detailed docstring for this function.") MiddleRefinement;
+		%feature("autodoc", "	:param TriangleNumber:
+	:type TriangleNumber: Standard_Integer
+	:param MySurface:
+	:type MySurface: Handle_Adaptor3d_HSurface &
+	:param TPoints:
+	:type TPoints: IntPolyh_ArrayOfPoints &
+	:param TTriangles:
+	:type TTriangles: IntPolyh_ArrayOfTriangles &
+	:param TEdges:
+	:type TEdges: IntPolyh_ArrayOfEdges &
+	:rtype: None
+") MiddleRefinement;
 		void MiddleRefinement (const Standard_Integer TriangleNumber,const Handle_Adaptor3d_HSurface & MySurface,IntPolyh_ArrayOfPoints & TPoints,IntPolyh_ArrayOfTriangles & TTriangles,IntPolyh_ArrayOfEdges & TEdges);
-		%feature("autodoc", "Args:
-	NombreAffinages(Standard_Integer)
-	TriangleNumber(Standard_Integer)
-	MySurface(Handle_Adaptor3d_HSurface)
-	TPoints(IntPolyh_ArrayOfPoints)
-	TTriangles(IntPolyh_ArrayOfTriangles)
-	TEdges(IntPolyh_ArrayOfEdges)
-
-Returns:
-	None
-
-No detailed docstring for this function.") MultipleMiddleRefinement;
+		%feature("autodoc", "	:param NombreAffinages:
+	:type NombreAffinages: Standard_Integer
+	:param TriangleNumber:
+	:type TriangleNumber: Standard_Integer
+	:param MySurface:
+	:type MySurface: Handle_Adaptor3d_HSurface &
+	:param TPoints:
+	:type TPoints: IntPolyh_ArrayOfPoints &
+	:param TTriangles:
+	:type TTriangles: IntPolyh_ArrayOfTriangles &
+	:param TEdges:
+	:type TEdges: IntPolyh_ArrayOfEdges &
+	:rtype: None
+") MultipleMiddleRefinement;
 		void MultipleMiddleRefinement (const Standard_Integer NombreAffinages,const Standard_Integer TriangleNumber,const Handle_Adaptor3d_HSurface & MySurface,IntPolyh_ArrayOfPoints & TPoints,IntPolyh_ArrayOfTriangles & TTriangles,IntPolyh_ArrayOfEdges & TEdges);
-		%feature("autodoc", "Args:
-	b(Bnd_Box)
-	TPoints(IntPolyh_ArrayOfPoints)
-
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") CompareBoxTriangle;
+		%feature("autodoc", "	:param b:
+	:type b: Bnd_Box &
+	:param TPoints:
+	:type TPoints: IntPolyh_ArrayOfPoints &
+	:rtype: int
+") CompareBoxTriangle;
 		Standard_Integer CompareBoxTriangle (const Bnd_Box & b,const IntPolyh_ArrayOfPoints & TPoints);
-		%feature("autodoc", "Args:
-	RefineCriterion(Standard_Real)
-	thebox(Bnd_Box)
-	TriangleNumber(Standard_Integer)
-	MySurface(Handle_Adaptor3d_HSurface)
-	TPoints(IntPolyh_ArrayOfPoints)
-	TTriangles(IntPolyh_ArrayOfTriangles)
-	TEdges(IntPolyh_ArrayOfEdges)
-
-Returns:
-	None
-
-No detailed docstring for this function.") MultipleMiddleRefinement2;
+		%feature("autodoc", "	:param RefineCriterion:
+	:type RefineCriterion: float
+	:param thebox:
+	:type thebox: Bnd_Box &
+	:param TriangleNumber:
+	:type TriangleNumber: Standard_Integer
+	:param MySurface:
+	:type MySurface: Handle_Adaptor3d_HSurface &
+	:param TPoints:
+	:type TPoints: IntPolyh_ArrayOfPoints &
+	:param TTriangles:
+	:type TTriangles: IntPolyh_ArrayOfTriangles &
+	:param TEdges:
+	:type TEdges: IntPolyh_ArrayOfEdges &
+	:rtype: None
+") MultipleMiddleRefinement2;
 		void MultipleMiddleRefinement2 (const Standard_Real RefineCriterion,const Bnd_Box & thebox,const Standard_Integer TriangleNumber,const Handle_Adaptor3d_HSurface & MySurface,IntPolyh_ArrayOfPoints & TPoints,IntPolyh_ArrayOfTriangles & TTriangles,IntPolyh_ArrayOfEdges & TEdges);
-		%feature("autodoc", "Args:
-	TEdges(IntPolyh_ArrayOfEdges)
-	ed1(Standard_Integer)
-	ed2(Standard_Integer)
-	ed3(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LinkEdges2Triangle;
+		%feature("autodoc", "	:param TEdges:
+	:type TEdges: IntPolyh_ArrayOfEdges &
+	:param ed1:
+	:type ed1: Standard_Integer
+	:param ed2:
+	:type ed2: Standard_Integer
+	:param ed3:
+	:type ed3: Standard_Integer
+	:rtype: None
+") LinkEdges2Triangle;
 		void LinkEdges2Triangle (const IntPolyh_ArrayOfEdges & TEdges,const Standard_Integer ed1,const Standard_Integer ed2,const Standard_Integer ed3);
-		%feature("autodoc", "Args:
-	Edge(Standard_Integer)
-	TEdges(IntPolyh_ArrayOfEdges)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetEdgeandOrientation;
+		%feature("autodoc", "	:param Edge:
+	:type Edge: Standard_Integer
+	:param TEdges:
+	:type TEdges: IntPolyh_ArrayOfEdges &
+	:rtype: None
+") SetEdgeandOrientation;
 		void SetEdgeandOrientation (const Standard_Integer Edge,const IntPolyh_ArrayOfEdges & TEdges);
-		%feature("autodoc", "Args:
-	v(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param v:
+	:type v: Standard_Integer
+	:rtype: None
+") Dump;
 		void Dump (const Standard_Integer v);
-		%feature("autodoc", "Args:
-	v(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") DumpFleche;
+		%feature("autodoc", "	:param v:
+	:type v: Standard_Integer
+	:rtype: None
+") DumpFleche;
 		void DumpFleche (const Standard_Integer v);
 };
 

@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -44,14 +44,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor IntStart_SITopolTool;
 class IntStart_SITopolTool : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	P(gp_Pnt2d)
-	Tol(Standard_Real)
-
-Returns:
-	virtual TopAbs_State
-
-No detailed docstring for this function.") Classify;
+		%feature("autodoc", "	:param P:
+	:type P: gp_Pnt2d
+	:param Tol:
+	:type Tol: float
+	:rtype: TopAbs_State
+") Classify;
 		virtual TopAbs_State Classify (const gp_Pnt2d & P,const Standard_Real Tol);
 };
 

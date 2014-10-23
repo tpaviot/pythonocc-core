@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -53,56 +53,40 @@ enum GccInt_IType {
 %nodefaultctor GccInt_Bisec;
 class GccInt_Bisec : public MMgt_TShared {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual GccInt_IType
+		%feature("autodoc", "	* Returns the type of bisecting object (line, circle, parabola, hyperbola, ellipse, point).
 
-Returns the type of bisecting object (line, circle,  
-parabola, hyperbola, ellipse, point).") ArcType;
+	:rtype: GccInt_IType
+") ArcType;
 		virtual GccInt_IType ArcType ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual gp_Pnt2d
+		%feature("autodoc", "	* Returns the bisecting line when ArcType returns Pnt. An exception DomainError is raised if ArcType is not a Pnt.
 
-Returns the bisecting line when ArcType returns Pnt.  
-         An exception DomainError is raised if ArcType is not a Pnt.") Point;
+	:rtype: gp_Pnt2d
+") Point;
 		virtual gp_Pnt2d Point ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual gp_Lin2d
+		%feature("autodoc", "	* Returns the bisecting line when ArcType returns Lin. An exception DomainError is raised if ArcType is not a Lin.
 
-Returns the bisecting line when ArcType returns Lin.  An exception DomainError is raised if ArcType is not a Lin.") Line;
+	:rtype: gp_Lin2d
+") Line;
 		virtual gp_Lin2d Line ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual gp_Circ2d
+		%feature("autodoc", "	* Returns the bisecting line when ArcType returns Cir. An exception DomainError is raised if ArcType is not a Cir.
 
-Returns the bisecting line when ArcType returns Cir.  An exception DomainError is raised if ArcType is not a Cir.") Circle;
+	:rtype: gp_Circ2d
+") Circle;
 		virtual gp_Circ2d Circle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual gp_Hypr2d
+		%feature("autodoc", "	* Returns the bisecting line when ArcType returns Hpr. An exception DomainError is raised if ArcType is not a Hpr.
 
-Returns the bisecting line when ArcType returns Hpr.  An exception DomainError is raised if ArcType is not a Hpr.") Hyperbola;
+	:rtype: gp_Hypr2d
+") Hyperbola;
 		virtual gp_Hypr2d Hyperbola ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual gp_Parab2d
+		%feature("autodoc", "	* Returns the bisecting line when ArcType returns Par. An exception DomainError is raised if ArcType is not a Par.
 
-Returns the bisecting line when ArcType returns Par.  An exception DomainError is raised if ArcType is not a Par.") Parabola;
+	:rtype: gp_Parab2d
+") Parabola;
 		virtual gp_Parab2d Parabola ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual gp_Elips2d
+		%feature("autodoc", "	* Returns the bisecting line when ArcType returns Ell. An exception DomainError is raised if ArcType is not an Ell.
 
-Returns the bisecting line when ArcType returns Ell.  An exception DomainError is raised if ArcType is not an Ell.") Ellipse;
+	:rtype: gp_Elips2d
+") Ellipse;
 		virtual gp_Elips2d Ellipse ();
 };
 
@@ -163,27 +147,22 @@ def __del__(self):
 %nodefaultctor GccInt_BCirc;
 class GccInt_BCirc : public GccInt_Bisec {
 	public:
-		%feature("autodoc", "Args:
-	Circ(gp_Circ2d)
+		%feature("autodoc", "	* Constructs a bisecting curve whose geometry is the 2D circle Circ.
 
-Returns:
-	None
-
-Constructs a bisecting curve whose geometry is the 2D circle Circ.") GccInt_BCirc;
+	:param Circ:
+	:type Circ: gp_Circ2d
+	:rtype: None
+") GccInt_BCirc;
 		 GccInt_BCirc (const gp_Circ2d & Circ);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual gp_Circ2d
+		%feature("autodoc", "	* Returns a 2D circle which is the geometry of this bisecting curve.
 
-Returns a 2D circle which is the geometry of this bisecting curve.") Circle;
+	:rtype: gp_Circ2d
+") Circle;
 		virtual gp_Circ2d Circle ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	GccInt_IType
+		%feature("autodoc", "	* Returns GccInt_Cir, which is the type of any GccInt_BCirc bisecting curve.
 
-Returns GccInt_Cir, which is the type of any GccInt_BCirc bisecting curve.") ArcType;
+	:rtype: GccInt_IType
+") ArcType;
 		GccInt_IType ArcType ();
 };
 
@@ -244,27 +223,22 @@ def __del__(self):
 %nodefaultctor GccInt_BElips;
 class GccInt_BElips : public GccInt_Bisec {
 	public:
-		%feature("autodoc", "Args:
-	Ellipse(gp_Elips2d)
+		%feature("autodoc", "	* Constructs a bisecting curve whose geometry is the 2D ellipse Ellipse.
 
-Returns:
-	None
-
-Constructs a bisecting curve whose geometry is the 2D ellipse Ellipse.") GccInt_BElips;
+	:param Ellipse:
+	:type Ellipse: gp_Elips2d
+	:rtype: None
+") GccInt_BElips;
 		 GccInt_BElips (const gp_Elips2d & Ellipse);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual gp_Elips2d
+		%feature("autodoc", "	* Returns a 2D ellipse which is the geometry of this bisecting curve.
 
-Returns a 2D ellipse which is the geometry of this bisecting curve.") Ellipse;
+	:rtype: gp_Elips2d
+") Ellipse;
 		virtual gp_Elips2d Ellipse ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	GccInt_IType
+		%feature("autodoc", "	* Returns GccInt_Ell, which is the type of any GccInt_BElips bisecting curve.
 
-Returns GccInt_Ell, which is the type of any GccInt_BElips bisecting curve.") ArcType;
+	:rtype: GccInt_IType
+") ArcType;
 		GccInt_IType ArcType ();
 };
 
@@ -325,27 +299,22 @@ def __del__(self):
 %nodefaultctor GccInt_BHyper;
 class GccInt_BHyper : public GccInt_Bisec {
 	public:
-		%feature("autodoc", "Args:
-	Hyper(gp_Hypr2d)
+		%feature("autodoc", "	* Constructs a bisecting curve whose geometry is the 2D hyperbola Hyper.
 
-Returns:
-	None
-
-Constructs a bisecting curve whose geometry is the 2D hyperbola Hyper.") GccInt_BHyper;
+	:param Hyper:
+	:type Hyper: gp_Hypr2d
+	:rtype: None
+") GccInt_BHyper;
 		 GccInt_BHyper (const gp_Hypr2d & Hyper);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual gp_Hypr2d
+		%feature("autodoc", "	* Returns a 2D hyperbola which is the geometry of this bisecting curve.
 
-Returns a 2D hyperbola which is the geometry of this bisecting curve.") Hyperbola;
+	:rtype: gp_Hypr2d
+") Hyperbola;
 		virtual gp_Hypr2d Hyperbola ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	GccInt_IType
+		%feature("autodoc", "	* Returns GccInt_Hpr, which is the type of any GccInt_BHyper bisecting curve.
 
-Returns GccInt_Hpr, which is the type of any GccInt_BHyper bisecting curve.") ArcType;
+	:rtype: GccInt_IType
+") ArcType;
 		GccInt_IType ArcType ();
 };
 
@@ -406,27 +375,22 @@ def __del__(self):
 %nodefaultctor GccInt_BLine;
 class GccInt_BLine : public GccInt_Bisec {
 	public:
-		%feature("autodoc", "Args:
-	Line(gp_Lin2d)
+		%feature("autodoc", "	* Constructs a bisecting line whose geometry is the 2D line Line.
 
-Returns:
-	None
-
-Constructs a bisecting line whose geometry is the 2D line Line.") GccInt_BLine;
+	:param Line:
+	:type Line: gp_Lin2d
+	:rtype: None
+") GccInt_BLine;
 		 GccInt_BLine (const gp_Lin2d & Line);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual gp_Lin2d
+		%feature("autodoc", "	* Returns a 2D line which is the geometry of this bisecting line.
 
-Returns a 2D line which is the geometry of this bisecting line.") Line;
+	:rtype: gp_Lin2d
+") Line;
 		virtual gp_Lin2d Line ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	GccInt_IType
+		%feature("autodoc", "	* Returns GccInt_Lin, which is the type of any GccInt_BLine bisecting line.
 
-Returns GccInt_Lin, which is the type of any GccInt_BLine bisecting line.") ArcType;
+	:rtype: GccInt_IType
+") ArcType;
 		GccInt_IType ArcType ();
 };
 
@@ -487,27 +451,22 @@ def __del__(self):
 %nodefaultctor GccInt_BParab;
 class GccInt_BParab : public GccInt_Bisec {
 	public:
-		%feature("autodoc", "Args:
-	Parab(gp_Parab2d)
+		%feature("autodoc", "	* Constructs a bisecting curve whose geometry is the 2D parabola Parab.
 
-Returns:
-	None
-
-Constructs a bisecting curve whose geometry is the 2D parabola Parab.") GccInt_BParab;
+	:param Parab:
+	:type Parab: gp_Parab2d
+	:rtype: None
+") GccInt_BParab;
 		 GccInt_BParab (const gp_Parab2d & Parab);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual gp_Parab2d
+		%feature("autodoc", "	* Returns a 2D parabola which is the geometry of this bisecting curve.
 
-Returns a 2D parabola which is the geometry of this bisecting curve.") Parabola;
+	:rtype: gp_Parab2d
+") Parabola;
 		virtual gp_Parab2d Parabola ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	GccInt_IType
+		%feature("autodoc", "	* Returns GccInt_Par, which is the type of any GccInt_BParab bisecting curve.
 
-Returns GccInt_Par, which is the type of any GccInt_BParab bisecting curve.") ArcType;
+	:rtype: GccInt_IType
+") ArcType;
 		GccInt_IType ArcType ();
 };
 
@@ -568,27 +527,22 @@ def __del__(self):
 %nodefaultctor GccInt_BPoint;
 class GccInt_BPoint : public GccInt_Bisec {
 	public:
-		%feature("autodoc", "Args:
-	Point(gp_Pnt2d)
+		%feature("autodoc", "	* Constructs a bisecting object whose geometry is the 2D point Point.
 
-Returns:
-	None
-
-Constructs a bisecting object whose geometry is the 2D point Point.") GccInt_BPoint;
+	:param Point:
+	:type Point: gp_Pnt2d
+	:rtype: None
+") GccInt_BPoint;
 		 GccInt_BPoint (const gp_Pnt2d & Point);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual gp_Pnt2d
+		%feature("autodoc", "	* Returns a 2D point which is the geometry of this bisecting object.
 
-Returns a 2D point which is the geometry of this bisecting object.") Point;
+	:rtype: gp_Pnt2d
+") Point;
 		virtual gp_Pnt2d Point ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	GccInt_IType
+		%feature("autodoc", "	* Returns GccInt_Pnt, which is the type of any GccInt_BPoint bisecting object.
 
-Returns GccInt_Pnt, which is the type of any GccInt_BPoint bisecting object.") ArcType;
+	:rtype: GccInt_IType
+") ArcType;
 		GccInt_IType ArcType ();
 };
 

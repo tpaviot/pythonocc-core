@@ -7,7 +7,7 @@ pythonOCC is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-    
+
 pythonOCC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -52,34 +52,33 @@ enum Intf_PIType {
 %nodefaultctor Intf;
 class Intf {
 	public:
-		%feature("autodoc", "Args:
-	P1(gp_Pnt)
-	P2(gp_Pnt)
-	P3(gp_Pnt)
-	NormalVector(gp_XYZ)
-	PolarDistance(Standard_Real)
+		%feature("autodoc", "	* Computes the interference between two polygons in 2d. Result : points of intersections and zones of tangence. Computes the interference between two polygon in 3d. Section points, common perpendicular and projections. Computes the interference between a polygon or a straight line and a polyhedron. Points of intersection and zones of tangence. Compute the interference between two polyhedron. Points of intersection , polylines of intersection and zones of tangence. Give the plane equation of the triangle <P1> <P2> <P3>.
 
-Returns:
-	static void
-
-Computes   the  interference between   two polygons in  2d.  
-         Result : points of intersections and zones of tangence.  Computes  the   interference  between  two  polygon  in 3d.  
-         Section points, common perpendicular and projections.  Computes the interference  between a polygon or  a straight  
-         line and a polyhedron.   Points of intersection  and zones  
-         of tangence.  Compute the  interference  between two polyhedron.  Points  
-         of intersection ,  polylines  of intersection and zones of  
-         tangence.  Give the plane equation of the triangle <P1> <P2> <P3>.") PlaneEquation;
+	:param P1:
+	:type P1: gp_Pnt
+	:param P2:
+	:type P2: gp_Pnt
+	:param P3:
+	:type P3: gp_Pnt
+	:param NormalVector:
+	:type NormalVector: gp_XYZ
+	:param PolarDistance:
+	:type PolarDistance: float &
+	:rtype: void
+") PlaneEquation;
 		static void PlaneEquation (const gp_Pnt & P1,const gp_Pnt & P2,const gp_Pnt & P3,gp_XYZ & NormalVector,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	P1(gp_Pnt)
-	P2(gp_Pnt)
-	P3(gp_Pnt)
-	ThePnt(gp_Pnt)
+		%feature("autodoc", "	* Compute if the triangle <P1> <P2> <P3> contain <ThePnt>.
 
-Returns:
-	static Standard_Boolean
-
-Compute if the triangle <P1> <P2> <P3> contain <ThePnt>.") Contain;
+	:param P1:
+	:type P1: gp_Pnt
+	:param P2:
+	:type P2: gp_Pnt
+	:param P3:
+	:type P3: gp_Pnt
+	:param ThePnt:
+	:type ThePnt: gp_Pnt
+	:rtype: bool
+") Contain;
 		static Standard_Boolean Contain (const gp_Pnt & P1,const gp_Pnt & P2,const gp_Pnt & P3,const gp_Pnt & ThePnt);
 };
 
@@ -101,108 +100,68 @@ def __del__(self):
 %nodefaultctor Intf_Array1OfLin;
 class Intf_Array1OfLin {
 	public:
-		%feature("autodoc", "Args:
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Intf_Array1OfLin;
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Intf_Array1OfLin;
 		 Intf_Array1OfLin (const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	Item(gp_Lin)
-	Low(Standard_Integer)
-	Up(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Intf_Array1OfLin;
+		%feature("autodoc", "	:param Item:
+	:type Item: gp_Lin
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") Intf_Array1OfLin;
 		 Intf_Array1OfLin (const gp_Lin & Item,const Standard_Integer Low,const Standard_Integer Up);
-		%feature("autodoc", "Args:
-	V(gp_Lin)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Init;
+		%feature("autodoc", "	:param V:
+	:type V: gp_Lin
+	:rtype: None
+") Init;
 		void Init (const gp_Lin & V);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Destroy;
+		%feature("autodoc", "	:rtype: None
+") Destroy;
 		void Destroy ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
-
-No detailed docstring for this function.") IsAllocated;
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
 		Standard_Boolean IsAllocated ();
-		%feature("autodoc", "Args:
-	Other(Intf_Array1OfLin)
-
-Returns:
-	Intf_Array1OfLin
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Intf_Array1OfLin &
+	:rtype: Intf_Array1OfLin
+") Assign;
 		const Intf_Array1OfLin & Assign (const Intf_Array1OfLin & Other);
-		%feature("autodoc", "Args:
-	Other(Intf_Array1OfLin)
-
-Returns:
-	Intf_Array1OfLin
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Intf_Array1OfLin &
+	:rtype: Intf_Array1OfLin
+") operator=;
 		const Intf_Array1OfLin & operator = (const Intf_Array1OfLin & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Length;
+		%feature("autodoc", "	:rtype: int
+") Length;
 		Standard_Integer Length ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Lower;
+		%feature("autodoc", "	:rtype: int
+") Lower;
 		Standard_Integer Lower ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") Upper;
+		%feature("autodoc", "	:rtype: int
+") Upper;
 		Standard_Integer Upper ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Value(gp_Lin)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: gp_Lin
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const gp_Lin & Value);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	gp_Lin
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: gp_Lin
+") Value;
 		const gp_Lin & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	gp_Lin
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: gp_Lin
+") ChangeValue;
 		gp_Lin & ChangeValue (const Standard_Integer Index);
 };
 
@@ -224,98 +183,72 @@ def __del__(self):
 %nodefaultctor Intf_Interference;
 class Intf_Interference {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Gives the number of points of intersection in the interference.
 
-Gives the number   of  points of  intersection  in the  
-         interference.") NbSectionPoints;
+	:rtype: int
+") NbSectionPoints;
 		Standard_Integer NbSectionPoints ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Gives the point of intersection of address Index in the interference.
 
-Returns:
-	Intf_SectionPoint
-
-Gives the point of  intersection of address  Index in  
-         the interference.") PntValue;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Intf_SectionPoint
+") PntValue;
 		const Intf_SectionPoint & PntValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Gives the number of polylines of intersection in the interference.
 
-Gives the number  of polylines of  intersection in the  
-         interference.") NbSectionLines;
+	:rtype: int
+") NbSectionLines;
 		Standard_Integer NbSectionLines ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Gives the polyline of intersection at address <Index> in the interference.
 
-Returns:
-	Intf_SectionLine
-
-Gives the polyline of intersection at address <Index> in  
-         the interference.") LineValue;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Intf_SectionLine
+") LineValue;
 		const Intf_SectionLine & LineValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Gives the number of zones of tangence in the interference.
 
-Gives the number of zones of tangence in the interference.") NbTangentZones;
+	:rtype: int
+") NbTangentZones;
 		Standard_Integer NbTangentZones ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Gives the zone of tangence at address Index in the interference.
 
-Returns:
-	Intf_TangentZone
-
-Gives  the zone of  tangence at address   Index in the  
-         interference.") ZoneValue;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Intf_TangentZone
+") ZoneValue;
 		const Intf_TangentZone & ZoneValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Gives the tolerance used for the calculation.
 
-Gives the tolerance used for the calculation.") GetTolerance;
+	:rtype: float
+") GetTolerance;
 		Standard_Real GetTolerance ();
-		%feature("autodoc", "Args:
-	ThePnt(Intf_SectionPoint)
+		%feature("autodoc", "	* Tests if the polylines of intersection or the zones of tangence contain the point of intersection <ThePnt>.
 
-Returns:
-	Standard_Boolean
-
-Tests if the polylines of  intersection or the zones of  
-         tangence contain the point of intersection <ThePnt>.") Contains;
+	:param ThePnt:
+	:type ThePnt: Intf_SectionPoint &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const Intf_SectionPoint & ThePnt);
-		%feature("autodoc", "Args:
-	TheZone(Intf_TangentZone)
+		%feature("autodoc", "	* Inserts a new zone of tangence in the current list of tangent zones of the interference and returns True when done.
 
-Returns:
-	Standard_Boolean
-
-Inserts a new zone of tangence in  the current list of  
-         tangent zones of  the interference  and  returns  True  
-         when done.") Insert;
+	:param TheZone:
+	:type TheZone: Intf_TangentZone &
+	:rtype: bool
+") Insert;
 		Standard_Boolean Insert (const Intf_TangentZone & TheZone);
-		%feature("autodoc", "Args:
-	pdeb(Intf_SectionPoint)
-	pfin(Intf_SectionPoint)
+		%feature("autodoc", "	* Insert a new segment of intersection in the current list of polylines of intersection of the interference.
 
-Returns:
-	None
-
-Insert a new segment of intersection in the current  list of  
-         polylines of intersection of the interference.") Insert;
+	:param pdeb:
+	:type pdeb: Intf_SectionPoint &
+	:param pfin:
+	:type pfin: Intf_SectionPoint &
+	:rtype: None
+") Insert;
 		void Insert (const Intf_SectionPoint & pdeb,const Intf_SectionPoint & pfin);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:rtype: None
+") Dump;
 		void Dump ();
 };
 
@@ -337,43 +270,36 @@ def __del__(self):
 %nodefaultctor Intf_Polygon2d;
 class Intf_Polygon2d {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Bnd_Box2d
+		%feature("autodoc", "	* Returns the bounding box of the polygon.
 
-Returns the bounding box of the polygon.") Bounding;
+	:rtype: Bnd_Box2d
+") Bounding;
 		const Bnd_Box2d & Bounding ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Boolean
+		%feature("autodoc", "	* Returns True if the polyline is closed.
 
-Returns True if the polyline is closed.") Closed;
+	:rtype: bool
+") Closed;
 		virtual Standard_Boolean Closed ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Real
+		%feature("autodoc", "	* Returns the tolerance of the polygon.
 
-Returns the tolerance of the polygon.") DeflectionOverEstimation;
+	:rtype: float
+") DeflectionOverEstimation;
 		virtual Standard_Real DeflectionOverEstimation ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	virtual Standard_Integer
+		%feature("autodoc", "	* Returns the number of Segments in the polyline.
 
-Returns the number of Segments in the polyline.") NbSegments;
+	:rtype: int
+") NbSegments;
 		virtual Standard_Integer NbSegments ();
-		%feature("autodoc", "Args:
-	theIndex(Standard_Integer)
-	theBegin(gp_Pnt2d)
-	theEnd(gp_Pnt2d)
+		%feature("autodoc", "	* Returns the points of the segment <Index> in the Polygon.
 
-Returns:
-	virtual void
-
-Returns the points of the segment <Index> in the Polygon.") Segment;
+	:param theIndex:
+	:type theIndex: Standard_Integer
+	:param theBegin:
+	:type theBegin: gp_Pnt2d
+	:param theEnd:
+	:type theEnd: gp_Pnt2d
+	:rtype: void
+") Segment;
 		virtual void Segment (const Standard_Integer theIndex,gp_Pnt2d & theBegin,gp_Pnt2d & theEnd);
 };
 
@@ -395,53 +321,43 @@ def __del__(self):
 %nodefaultctor Intf_SectionLine;
 class Intf_SectionLine {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns number of points in this SectionLine.
 
-Returns number of points in this SectionLine.") NumberOfPoints;
+	:rtype: int
+") NumberOfPoints;
 		Standard_Integer NumberOfPoints ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Gives the point of intersection of address <Index> in the SectionLine.
 
-Returns:
-	Intf_SectionPoint
-
-Gives the point of intersection of  address <Index>  in the  
-         SectionLine.") GetPoint;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Intf_SectionPoint
+") GetPoint;
 		const Intf_SectionPoint & GetPoint (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Boolean
+		%feature("autodoc", "	* Returns True if the SectionLine is closed.
 
-Returns True if the SectionLine is closed.") IsClosed;
+	:rtype: bool
+") IsClosed;
 		Standard_Boolean IsClosed ();
-		%feature("autodoc", "Args:
-	ThePI(Intf_SectionPoint)
+		%feature("autodoc", "	* Returns True if ThePI is in the SectionLine <self>.
 
-Returns:
-	Standard_Boolean
-
-Returns True if ThePI is in the SectionLine <self>.") Contains;
+	:param ThePI:
+	:type ThePI: Intf_SectionPoint &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const Intf_SectionPoint & ThePI);
-		%feature("autodoc", "Args:
-	ThePI(Intf_SectionPoint)
+		%feature("autodoc", "	* Checks if <ThePI> is an end of the SectionLine. Returns 1 for the beginning, 2 for the end, otherwise 0.
 
-Returns:
-	Standard_Integer
-
-Checks if <ThePI>  is an end of  the SectionLine. Returns 1  
-         for the beginning, 2 for the end, otherwise 0.") IsEnd;
+	:param ThePI:
+	:type ThePI: Intf_SectionPoint &
+	:rtype: int
+") IsEnd;
 		Standard_Integer IsEnd (const Intf_SectionPoint & ThePI);
-		%feature("autodoc", "Args:
-	Other(Intf_SectionLine)
+		%feature("autodoc", "	* Compares two SectionLines.
 
-Returns:
-	Standard_Boolean
-
-Compares two SectionLines.") IsEqual;
+	:param Other:
+	:type Other: Intf_SectionLine &
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const Intf_SectionLine & Other);
 
         %extend{
@@ -457,76 +373,60 @@ Compares two SectionLines.") IsEqual;
             except:
                 return False
         }
-        		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+        		%feature("autodoc", "	* Constructs an empty SectionLine.
 
-Constructs an empty SectionLine.") Intf_SectionLine;
+	:rtype: None
+") Intf_SectionLine;
 		 Intf_SectionLine ();
-		%feature("autodoc", "Args:
-	Other(Intf_SectionLine)
+		%feature("autodoc", "	* Copies a SectionLine.
 
-Returns:
-	None
-
-Copies a SectionLine.") Intf_SectionLine;
+	:param Other:
+	:type Other: Intf_SectionLine &
+	:rtype: None
+") Intf_SectionLine;
 		 Intf_SectionLine (const Intf_SectionLine & Other);
-		%feature("autodoc", "Args:
-	Pi(Intf_SectionPoint)
+		%feature("autodoc", "	* Adds a point at the end of the SectionLine.
 
-Returns:
-	None
-
-Adds a point at the end of the SectionLine.") Append;
+	:param Pi:
+	:type Pi: Intf_SectionPoint &
+	:rtype: None
+") Append;
 		void Append (const Intf_SectionPoint & Pi);
-		%feature("autodoc", "Args:
-	LS(Intf_SectionLine)
+		%feature("autodoc", "	* Concatenates the SectionLine <LS> at the end of the SectionLine <self>.
 
-Returns:
-	None
-
-Concatenates   the SectionLine  <LS>  at  the  end  of  the  
-         SectionLine <self>.") Append;
+	:param LS:
+	:type LS: Intf_SectionLine &
+	:rtype: None
+") Append;
 		void Append (Intf_SectionLine & LS);
-		%feature("autodoc", "Args:
-	Pi(Intf_SectionPoint)
+		%feature("autodoc", "	* Adds a point to the beginning of the SectionLine <self>.
 
-Returns:
-	None
-
-Adds a point to the beginning of the SectionLine <self>.") Prepend;
+	:param Pi:
+	:type Pi: Intf_SectionPoint &
+	:rtype: None
+") Prepend;
 		void Prepend (const Intf_SectionPoint & Pi);
-		%feature("autodoc", "Args:
-	LS(Intf_SectionLine)
+		%feature("autodoc", "	* Concatenates a SectionLine <LS> at the beginning of the SectionLine <self>.
 
-Returns:
-	None
-
-Concatenates a SectionLine  <LS>  at the  beginning  of the  
-         SectionLine <self>.") Prepend;
+	:param LS:
+	:type LS: Intf_SectionLine &
+	:rtype: None
+") Prepend;
 		void Prepend (Intf_SectionLine & LS);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Reverses the order of the elements of the SectionLine.
 
-Reverses the order of the elements of the SectionLine.") Reverse;
+	:rtype: None
+") Reverse;
 		void Reverse ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Closes the SectionLine.
 
-Closes the SectionLine.") Close;
+	:rtype: None
+") Close;
 		void Close ();
-		%feature("autodoc", "Args:
-	Indent(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param Indent:
+	:type Indent: Standard_Integer
+	:rtype: None
+") Dump;
 		void Dump (const Standard_Integer Indent);
 };
 
@@ -548,105 +448,86 @@ def __del__(self):
 %nodefaultctor Intf_SectionPoint;
 class Intf_SectionPoint {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	gp_Pnt
+		%feature("autodoc", "	* Returns the location of the SectionPoint.
 
-Returns the location of the SectionPoint.") Pnt;
+	:rtype: gp_Pnt
+") Pnt;
 		const gp_Pnt & Pnt ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the cumulated Parameter of the SectionPoint on the first element.
 
-Returns the cumulated  Parameter of the SectionPoint on the  
-         first element.") ParamOnFirst;
+	:rtype: float
+") ParamOnFirst;
 		Standard_Real ParamOnFirst ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Returns the cumulated Parameter of the section point on the second element.
 
-Returns the cumulated Parameter of the section point on the  
-         second element.") ParamOnSecond;
+	:rtype: float
+") ParamOnSecond;
 		Standard_Real ParamOnSecond ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Intf_PIType
+		%feature("autodoc", "	* Returns the type of the section point on the first element.
 
-Returns the type of the section point on the first element.") TypeOnFirst;
+	:rtype: Intf_PIType
+") TypeOnFirst;
 		Intf_PIType TypeOnFirst ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Intf_PIType
+		%feature("autodoc", "	* Returns the type of the section point on the second element.
 
-Returns  the  type  of the  section  point  on  the  second  
-         element.") TypeOnSecond;
+	:rtype: Intf_PIType
+") TypeOnSecond;
 		Intf_PIType TypeOnSecond ();
-		%feature("autodoc", "Args:
-	Dim(Intf_PIType)
-	Add1(Standard_Integer)
-	Add2(Standard_Integer)
-	Param(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InfoFirst;
+		%feature("autodoc", "	:param Dim:
+	:type Dim: Intf_PIType &
+	:param Add1:
+	:type Add1: Standard_Integer &
+	:param Add2:
+	:type Add2: Standard_Integer &
+	:param Param:
+	:type Param: float &
+	:rtype: None
+") InfoFirst;
 		void InfoFirst (Intf_PIType & Dim,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Dim(Intf_PIType)
-	Addr(Standard_Integer)
-	Param(Standard_Real)
+		%feature("autodoc", "	* Gives the datas about the first argument of the Interference.
 
-Returns:
-	None
-
-Gives the   datas  about   the    first  argument of    the  
-         Interference.") InfoFirst;
+	:param Dim:
+	:type Dim: Intf_PIType &
+	:param Addr:
+	:type Addr: Standard_Integer &
+	:param Param:
+	:type Param: float &
+	:rtype: None
+") InfoFirst;
 		void InfoFirst (Intf_PIType & Dim,Standard_Integer &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Dim(Intf_PIType)
-	Add1(Standard_Integer)
-	Add2(Standard_Integer)
-	Param(Standard_Real)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InfoSecond;
+		%feature("autodoc", "	:param Dim:
+	:type Dim: Intf_PIType &
+	:param Add1:
+	:type Add1: Standard_Integer &
+	:param Add2:
+	:type Add2: Standard_Integer &
+	:param Param:
+	:type Param: float &
+	:rtype: None
+") InfoSecond;
 		void InfoSecond (Intf_PIType & Dim,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	Dim(Intf_PIType)
-	Addr(Standard_Integer)
-	Param(Standard_Real)
+		%feature("autodoc", "	* Gives the datas about the second argument of the Interference.
 
-Returns:
-	None
-
-Gives the   datas  about   the    second  argument of    the  
-         Interference.") InfoSecond;
+	:param Dim:
+	:type Dim: Intf_PIType &
+	:param Addr:
+	:type Addr: Standard_Integer &
+	:param Param:
+	:type Param: float &
+	:rtype: None
+") InfoSecond;
 		void InfoSecond (Intf_PIType & Dim,Standard_Integer &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Real
+		%feature("autodoc", "	* Gives the incidence at this section point. The incidence between the two triangles is given by the cosine. The best incidence is 0. (PI/2). The worst is 1. (null angle).
 
-Gives the incidence at  this  section point. The  incidence  
-         between the two triangles is given by the cosine.  The best  
-         incidence is 0. (PI/2).  The worst is 1. (null angle).") Incidence;
+	:rtype: float
+") Incidence;
 		Standard_Real Incidence ();
-		%feature("autodoc", "Args:
-	Other(Intf_SectionPoint)
+		%feature("autodoc", "	* Returns True if the two SectionPoint have the same logical informations.
 
-Returns:
-	Standard_Boolean
-
-Returns True if the two SectionPoint have the  same logical  
-         informations.") IsEqual;
+	:param Other:
+	:type Other: Intf_SectionPoint &
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const Intf_SectionPoint & Other);
 
         %extend{
@@ -662,73 +543,73 @@ Returns True if the two SectionPoint have the  same logical
             except:
                 return False
         }
-        		%feature("autodoc", "Args:
-	Other(Intf_SectionPoint)
+        		%feature("autodoc", "	* Returns True if the two SectionPoints are on the same edge of the first or the second element.
 
-Returns:
-	Standard_Boolean
-
-Returns True if the two SectionPoints are  on the  same edge  
-         of the first or the second element.") IsOnSameEdge;
+	:param Other:
+	:type Other: Intf_SectionPoint &
+	:rtype: bool
+") IsOnSameEdge;
 		Standard_Boolean IsOnSameEdge (const Intf_SectionPoint & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Intf_SectionPoint;
+		%feature("autodoc", "	:rtype: None
+") Intf_SectionPoint;
 		 Intf_SectionPoint ();
-		%feature("autodoc", "Args:
-	Where(gp_Pnt)
-	DimeO(Intf_PIType)
-	AddrO1(Standard_Integer)
-	AddrO2(Standard_Integer)
-	ParamO(Standard_Real)
-	DimeT(Intf_PIType)
-	AddrT1(Standard_Integer)
-	AddrT2(Standard_Integer)
-	ParamT(Standard_Real)
-	Incid(Standard_Real)
+		%feature("autodoc", "	* Builds a SectionPoint with the respective dimensions (vertex edge or face) of the concerned arguments and their addresses in the Topological structure.
 
-Returns:
-	None
-
-Builds  a  SectionPoint    with the  respective  dimensions  
-         (vertex edge or face)  of the concerned arguments and their  
-         addresses in the Topological structure.") Intf_SectionPoint;
+	:param Where:
+	:type Where: gp_Pnt
+	:param DimeO:
+	:type DimeO: Intf_PIType
+	:param AddrO1:
+	:type AddrO1: Standard_Integer
+	:param AddrO2:
+	:type AddrO2: Standard_Integer
+	:param ParamO:
+	:type ParamO: float
+	:param DimeT:
+	:type DimeT: Intf_PIType
+	:param AddrT1:
+	:type AddrT1: Standard_Integer
+	:param AddrT2:
+	:type AddrT2: Standard_Integer
+	:param ParamT:
+	:type ParamT: float
+	:param Incid:
+	:type Incid: float
+	:rtype: None
+") Intf_SectionPoint;
 		 Intf_SectionPoint (const gp_Pnt & Where,const Intf_PIType DimeO,const Standard_Integer AddrO1,const Standard_Integer AddrO2,const Standard_Real ParamO,const Intf_PIType DimeT,const Standard_Integer AddrT1,const Standard_Integer AddrT2,const Standard_Real ParamT,const Standard_Real Incid);
-		%feature("autodoc", "Args:
-	Where(gp_Pnt2d)
-	DimeO(Intf_PIType)
-	AddrO1(Standard_Integer)
-	ParamO(Standard_Real)
-	DimeT(Intf_PIType)
-	AddrT1(Standard_Integer)
-	ParamT(Standard_Real)
-	Incid(Standard_Real)
+		%feature("autodoc", "	* Builds a SectionPoint 2d with the respective dimensions (vertex or edge) of the concerned arguments and their addresses in the Topological structure.
 
-Returns:
-	None
-
-Builds  a  SectionPoint 2d   with the respective dimensions  
-         (vertex or  edge)  of  the concerned arguments   and  their  
-         addresses in the Topological structure.") Intf_SectionPoint;
+	:param Where:
+	:type Where: gp_Pnt2d
+	:param DimeO:
+	:type DimeO: Intf_PIType
+	:param AddrO1:
+	:type AddrO1: Standard_Integer
+	:param ParamO:
+	:type ParamO: float
+	:param DimeT:
+	:type DimeT: Intf_PIType
+	:param AddrT1:
+	:type AddrT1: Standard_Integer
+	:param ParamT:
+	:type ParamT: float
+	:param Incid:
+	:type Incid: float
+	:rtype: None
+") Intf_SectionPoint;
 		 Intf_SectionPoint (const gp_Pnt2d & Where,const Intf_PIType DimeO,const Standard_Integer AddrO1,const Standard_Real ParamO,const Intf_PIType DimeT,const Standard_Integer AddrT1,const Standard_Real ParamT,const Standard_Real Incid);
-		%feature("autodoc", "Args:
-	Other(Intf_SectionPoint)
+		%feature("autodoc", "	* Merges two SectionPoints.
 
-Returns:
-	None
-
-Merges two SectionPoints.") Merge;
+	:param Other:
+	:type Other: Intf_SectionPoint &
+	:rtype: None
+") Merge;
 		void Merge (Intf_SectionPoint & Other);
-		%feature("autodoc", "Args:
-	Indent(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param Indent:
+	:type Indent: Standard_Integer
+	:rtype: None
+") Dump;
 		void Dump (const Standard_Integer Indent);
 };
 
@@ -750,168 +631,111 @@ def __del__(self):
 %nodefaultctor Intf_SeqOfSectionLine;
 class Intf_SeqOfSectionLine : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Intf_SeqOfSectionLine;
+		%feature("autodoc", "	:rtype: None
+") Intf_SeqOfSectionLine;
 		 Intf_SeqOfSectionLine ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Intf_SeqOfSectionLine)
-
-Returns:
-	Intf_SeqOfSectionLine
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Intf_SeqOfSectionLine &
+	:rtype: Intf_SeqOfSectionLine
+") Assign;
 		const Intf_SeqOfSectionLine & Assign (const Intf_SeqOfSectionLine & Other);
-		%feature("autodoc", "Args:
-	Other(Intf_SeqOfSectionLine)
-
-Returns:
-	Intf_SeqOfSectionLine
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Intf_SeqOfSectionLine &
+	:rtype: Intf_SeqOfSectionLine
+") operator=;
 		const Intf_SeqOfSectionLine & operator = (const Intf_SeqOfSectionLine & Other);
-		%feature("autodoc", "Args:
-	T(Intf_SectionLine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Intf_SectionLine &
+	:rtype: None
+") Append;
 		void Append (const Intf_SectionLine & T);
-		%feature("autodoc", "Args:
-	S(Intf_SeqOfSectionLine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Intf_SeqOfSectionLine &
+	:rtype: None
+") Append;
 		void Append (Intf_SeqOfSectionLine & S);
-		%feature("autodoc", "Args:
-	T(Intf_SectionLine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Intf_SectionLine &
+	:rtype: None
+") Prepend;
 		void Prepend (const Intf_SectionLine & T);
-		%feature("autodoc", "Args:
-	S(Intf_SeqOfSectionLine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Intf_SeqOfSectionLine &
+	:rtype: None
+") Prepend;
 		void Prepend (Intf_SeqOfSectionLine & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Intf_SectionLine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Intf_SectionLine &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Intf_SectionLine & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Intf_SeqOfSectionLine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Intf_SeqOfSectionLine &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Intf_SeqOfSectionLine & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Intf_SectionLine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Intf_SectionLine &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Intf_SectionLine & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Intf_SeqOfSectionLine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Intf_SeqOfSectionLine &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Intf_SeqOfSectionLine & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Intf_SectionLine
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Intf_SectionLine
+") First;
 		const Intf_SectionLine & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Intf_SectionLine
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Intf_SectionLine
+") Last;
 		const Intf_SectionLine & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Intf_SeqOfSectionLine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Intf_SeqOfSectionLine &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Intf_SeqOfSectionLine & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Intf_SectionLine
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Intf_SectionLine
+") Value;
 		const Intf_SectionLine & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Intf_SectionLine)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Intf_SectionLine &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Intf_SectionLine & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Intf_SectionLine
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Intf_SectionLine
+") ChangeValue;
 		Intf_SectionLine & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -933,168 +757,111 @@ def __del__(self):
 %nodefaultctor Intf_SeqOfSectionPoint;
 class Intf_SeqOfSectionPoint : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Intf_SeqOfSectionPoint;
+		%feature("autodoc", "	:rtype: None
+") Intf_SeqOfSectionPoint;
 		 Intf_SeqOfSectionPoint ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Intf_SeqOfSectionPoint)
-
-Returns:
-	Intf_SeqOfSectionPoint
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Intf_SeqOfSectionPoint &
+	:rtype: Intf_SeqOfSectionPoint
+") Assign;
 		const Intf_SeqOfSectionPoint & Assign (const Intf_SeqOfSectionPoint & Other);
-		%feature("autodoc", "Args:
-	Other(Intf_SeqOfSectionPoint)
-
-Returns:
-	Intf_SeqOfSectionPoint
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Intf_SeqOfSectionPoint &
+	:rtype: Intf_SeqOfSectionPoint
+") operator=;
 		const Intf_SeqOfSectionPoint & operator = (const Intf_SeqOfSectionPoint & Other);
-		%feature("autodoc", "Args:
-	T(Intf_SectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Intf_SectionPoint &
+	:rtype: None
+") Append;
 		void Append (const Intf_SectionPoint & T);
-		%feature("autodoc", "Args:
-	S(Intf_SeqOfSectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Intf_SeqOfSectionPoint &
+	:rtype: None
+") Append;
 		void Append (Intf_SeqOfSectionPoint & S);
-		%feature("autodoc", "Args:
-	T(Intf_SectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Intf_SectionPoint &
+	:rtype: None
+") Prepend;
 		void Prepend (const Intf_SectionPoint & T);
-		%feature("autodoc", "Args:
-	S(Intf_SeqOfSectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Intf_SeqOfSectionPoint &
+	:rtype: None
+") Prepend;
 		void Prepend (Intf_SeqOfSectionPoint & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Intf_SectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Intf_SectionPoint &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Intf_SectionPoint & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Intf_SeqOfSectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Intf_SeqOfSectionPoint &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Intf_SeqOfSectionPoint & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Intf_SectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Intf_SectionPoint &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Intf_SectionPoint & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Intf_SeqOfSectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Intf_SeqOfSectionPoint &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Intf_SeqOfSectionPoint & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Intf_SectionPoint
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Intf_SectionPoint
+") First;
 		const Intf_SectionPoint & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Intf_SectionPoint
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Intf_SectionPoint
+") Last;
 		const Intf_SectionPoint & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Intf_SeqOfSectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Intf_SeqOfSectionPoint &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Intf_SeqOfSectionPoint & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Intf_SectionPoint
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Intf_SectionPoint
+") Value;
 		const Intf_SectionPoint & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Intf_SectionPoint)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Intf_SectionPoint &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Intf_SectionPoint & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Intf_SectionPoint
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Intf_SectionPoint
+") ChangeValue;
 		Intf_SectionPoint & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -1116,168 +883,111 @@ def __del__(self):
 %nodefaultctor Intf_SeqOfTangentZone;
 class Intf_SeqOfTangentZone : public TCollection_BaseSequence {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Intf_SeqOfTangentZone;
+		%feature("autodoc", "	:rtype: None
+") Intf_SeqOfTangentZone;
 		 Intf_SeqOfTangentZone ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Clear;
+		%feature("autodoc", "	:rtype: None
+") Clear;
 		void Clear ();
-		%feature("autodoc", "Args:
-	Other(Intf_SeqOfTangentZone)
-
-Returns:
-	Intf_SeqOfTangentZone
-
-No detailed docstring for this function.") Assign;
+		%feature("autodoc", "	:param Other:
+	:type Other: Intf_SeqOfTangentZone &
+	:rtype: Intf_SeqOfTangentZone
+") Assign;
 		const Intf_SeqOfTangentZone & Assign (const Intf_SeqOfTangentZone & Other);
-		%feature("autodoc", "Args:
-	Other(Intf_SeqOfTangentZone)
-
-Returns:
-	Intf_SeqOfTangentZone
-
-No detailed docstring for this function.") operator=;
+		%feature("autodoc", "	:param Other:
+	:type Other: Intf_SeqOfTangentZone &
+	:rtype: Intf_SeqOfTangentZone
+") operator=;
 		const Intf_SeqOfTangentZone & operator = (const Intf_SeqOfTangentZone & Other);
-		%feature("autodoc", "Args:
-	T(Intf_TangentZone)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param T:
+	:type T: Intf_TangentZone &
+	:rtype: None
+") Append;
 		void Append (const Intf_TangentZone & T);
-		%feature("autodoc", "Args:
-	S(Intf_SeqOfTangentZone)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Append;
+		%feature("autodoc", "	:param S:
+	:type S: Intf_SeqOfTangentZone &
+	:rtype: None
+") Append;
 		void Append (Intf_SeqOfTangentZone & S);
-		%feature("autodoc", "Args:
-	T(Intf_TangentZone)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param T:
+	:type T: Intf_TangentZone &
+	:rtype: None
+") Prepend;
 		void Prepend (const Intf_TangentZone & T);
-		%feature("autodoc", "Args:
-	S(Intf_SeqOfTangentZone)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Prepend;
+		%feature("autodoc", "	:param S:
+	:type S: Intf_SeqOfTangentZone &
+	:rtype: None
+") Prepend;
 		void Prepend (Intf_SeqOfTangentZone & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Intf_TangentZone)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Intf_TangentZone &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Intf_TangentZone & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Intf_SeqOfTangentZone)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertBefore;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Intf_SeqOfTangentZone &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Intf_SeqOfTangentZone & S);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	T(Intf_TangentZone)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param T:
+	:type T: Intf_TangentZone &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Intf_TangentZone & T);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	S(Intf_SeqOfTangentZone)
-
-Returns:
-	None
-
-No detailed docstring for this function.") InsertAfter;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param S:
+	:type S: Intf_SeqOfTangentZone &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Intf_SeqOfTangentZone & S);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Intf_TangentZone
-
-No detailed docstring for this function.") First;
+		%feature("autodoc", "	:rtype: Intf_TangentZone
+") First;
 		const Intf_TangentZone & First ();
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Intf_TangentZone
-
-No detailed docstring for this function.") Last;
+		%feature("autodoc", "	:rtype: Intf_TangentZone
+") Last;
 		const Intf_TangentZone & Last ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Sub(Intf_SeqOfTangentZone)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Split;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Sub:
+	:type Sub: Intf_SeqOfTangentZone &
+	:rtype: None
+") Split;
 		void Split (const Standard_Integer Index,Intf_SeqOfTangentZone & Sub);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Intf_TangentZone
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Intf_TangentZone
+") Value;
 		const Intf_TangentZone & Value (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	I(Intf_TangentZone)
-
-Returns:
-	None
-
-No detailed docstring for this function.") SetValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param I:
+	:type I: Intf_TangentZone &
+	:rtype: None
+") SetValue;
 		void SetValue (const Standard_Integer Index,const Intf_TangentZone & I);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	Intf_TangentZone
-
-No detailed docstring for this function.") ChangeValue;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Intf_TangentZone
+") ChangeValue;
 		Intf_TangentZone & ChangeValue (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	FromIndex(Standard_Integer)
-	ToIndex(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Remove;
+		%feature("autodoc", "	:param FromIndex:
+	:type FromIndex: Standard_Integer
+	:param ToIndex:
+	:type ToIndex: Standard_Integer
+	:rtype: None
+") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 };
 
@@ -1299,22 +1009,17 @@ def __del__(self):
 %nodefaultctor Intf_SequenceNodeOfSeqOfSectionLine;
 class Intf_SequenceNodeOfSeqOfSectionLine : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Intf_SectionLine)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Intf_SequenceNodeOfSeqOfSectionLine;
+		%feature("autodoc", "	:param I:
+	:type I: Intf_SectionLine &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Intf_SequenceNodeOfSeqOfSectionLine;
 		 Intf_SequenceNodeOfSeqOfSectionLine (const Intf_SectionLine & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Intf_SectionLine
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Intf_SectionLine
+") Value;
 		Intf_SectionLine & Value ();
 };
 
@@ -1375,22 +1080,17 @@ def __del__(self):
 %nodefaultctor Intf_SequenceNodeOfSeqOfSectionPoint;
 class Intf_SequenceNodeOfSeqOfSectionPoint : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Intf_SectionPoint)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Intf_SequenceNodeOfSeqOfSectionPoint;
+		%feature("autodoc", "	:param I:
+	:type I: Intf_SectionPoint &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Intf_SequenceNodeOfSeqOfSectionPoint;
 		 Intf_SequenceNodeOfSeqOfSectionPoint (const Intf_SectionPoint & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Intf_SectionPoint
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Intf_SectionPoint
+") Value;
 		Intf_SectionPoint & Value ();
 };
 
@@ -1451,22 +1151,17 @@ def __del__(self):
 %nodefaultctor Intf_SequenceNodeOfSeqOfTangentZone;
 class Intf_SequenceNodeOfSeqOfTangentZone : public TCollection_SeqNode {
 	public:
-		%feature("autodoc", "Args:
-	I(Intf_TangentZone)
-	n(TCollection_SeqNodePtr)
-	p(TCollection_SeqNodePtr)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Intf_SequenceNodeOfSeqOfTangentZone;
+		%feature("autodoc", "	:param I:
+	:type I: Intf_TangentZone &
+	:param n:
+	:type n: TCollection_SeqNodePtr &
+	:param p:
+	:type p: TCollection_SeqNodePtr &
+	:rtype: None
+") Intf_SequenceNodeOfSeqOfTangentZone;
 		 Intf_SequenceNodeOfSeqOfTangentZone (const Intf_TangentZone & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Intf_TangentZone
-
-No detailed docstring for this function.") Value;
+		%feature("autodoc", "	:rtype: Intf_TangentZone
+") Value;
 		Intf_TangentZone & Value ();
 };
 
@@ -1527,29 +1222,24 @@ def __del__(self):
 %nodefaultctor Intf_TangentZone;
 class Intf_TangentZone {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
+		%feature("autodoc", "	* Returns number of SectionPoint in this TangentZone.
 
-Returns number of SectionPoint in this TangentZone.") NumberOfPoints;
+	:rtype: int
+") NumberOfPoints;
 		Standard_Integer NumberOfPoints ();
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Gives the SectionPoint of address <Index> in the TangentZone.
 
-Returns:
-	Intf_SectionPoint
-
-Gives   the   SectionPoint   of  address  <Index>  in  the  
-         TangentZone.") GetPoint;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: Intf_SectionPoint
+") GetPoint;
 		const Intf_SectionPoint & GetPoint (const Standard_Integer Index);
-		%feature("autodoc", "Args:
-	Other(Intf_TangentZone)
+		%feature("autodoc", "	* Compares two TangentZones.
 
-Returns:
-	Standard_Boolean
-
-Compares two TangentZones.") IsEqual;
+	:param Other:
+	:type Other: Intf_TangentZone &
+	:rtype: bool
+") IsEqual;
 		Standard_Boolean IsEqual (const Intf_TangentZone & Other);
 
         %extend{
@@ -1565,148 +1255,133 @@ Compares two TangentZones.") IsEqual;
             except:
                 return False
         }
-        		%feature("autodoc", "Args:
-	ThePI(Intf_SectionPoint)
+        		%feature("autodoc", "	* Checks if <ThePI> is in TangentZone.
 
-Returns:
-	Standard_Boolean
-
-Checks if <ThePI> is in TangentZone.") Contains;
+	:param ThePI:
+	:type ThePI: Intf_SectionPoint &
+	:rtype: bool
+") Contains;
 		Standard_Boolean Contains (const Intf_SectionPoint & ThePI);
-		%feature("autodoc", "Args:
-	paraMin(Standard_Real)
-	paraMax(Standard_Real)
+		%feature("autodoc", "	* Gives the parameter range of the TangentZone on the first argument of the Interference. (Usable only for polygon)
 
-Returns:
-	None
-
-Gives  the parameter range of the  TangentZone on the first  
-         argument of the Interference. (Usable only for polygon)") ParamOnFirst;
+	:param paraMin:
+	:type paraMin: float &
+	:param paraMax:
+	:type paraMax: float &
+	:rtype: None
+") ParamOnFirst;
 		void ParamOnFirst (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	paraMin(Standard_Real)
-	paraMax(Standard_Real)
+		%feature("autodoc", "	* Gives the parameter range of the TangentZone on the second argument of the Interference. (Usable only for polygon)
 
-Returns:
-	None
-
-Gives the parameter range of the  TangentZone on the second  
-         argument of the Interference. (Usable only for polygon)") ParamOnSecond;
+	:param paraMin:
+	:type paraMin: float &
+	:param paraMax:
+	:type paraMax: float &
+	:rtype: None
+") ParamOnSecond;
 		void ParamOnSecond (Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	segMin(Standard_Integer)
-	paraMin(Standard_Real)
-	segMax(Standard_Integer)
-	paraMax(Standard_Real)
+		%feature("autodoc", "	* Gives information about the first argument of the Interference. (Usable only for polygon)
 
-Returns:
-	None
-
-Gives information  about  the    first argument   of   the  
-         Interference. (Usable only for polygon)") InfoFirst;
+	:param segMin:
+	:type segMin: Standard_Integer &
+	:param paraMin:
+	:type paraMin: float &
+	:param segMax:
+	:type segMax: Standard_Integer &
+	:param paraMax:
+	:type paraMax: float &
+	:rtype: None
+") InfoFirst;
 		void InfoFirst (Standard_Integer &OutValue,Standard_Real &OutValue,Standard_Integer &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	segMin(Standard_Integer)
-	paraMin(Standard_Real)
-	segMax(Standard_Integer)
-	paraMax(Standard_Real)
+		%feature("autodoc", "	* Gives informations about the second argument of the Interference. (Usable only for polygon)
 
-Returns:
-	None
-
-Gives   informations  about  the  second   argument of  the  
-         Interference. (Usable only for polygon)") InfoSecond;
+	:param segMin:
+	:type segMin: Standard_Integer &
+	:param paraMin:
+	:type paraMin: float &
+	:param segMax:
+	:type segMax: Standard_Integer &
+	:param paraMax:
+	:type paraMax: float &
+	:rtype: None
+") InfoSecond;
 		void InfoSecond (Standard_Integer &OutValue,Standard_Real &OutValue,Standard_Integer &OutValue,Standard_Real &OutValue);
-		%feature("autodoc", "Args:
-	ThePI(Intf_SectionPoint)
+		%feature("autodoc", "	* Returns True if <ThePI> is in the parameter range of the TangentZone.
 
-Returns:
-	Standard_Boolean
-
-Returns True if  <ThePI>  is in the parameter  range of the  
-         TangentZone.") RangeContains;
+	:param ThePI:
+	:type ThePI: Intf_SectionPoint &
+	:rtype: bool
+") RangeContains;
 		Standard_Boolean RangeContains (const Intf_SectionPoint & ThePI);
-		%feature("autodoc", "Args:
-	Other(Intf_TangentZone)
+		%feature("autodoc", "	* Returns True if the TangentZone <Other> has a common part with <self>.
 
-Returns:
-	Standard_Boolean
-
-Returns True if the TangentZone  <Other> has  a common part  
-         with <self>.") HasCommonRange;
+	:param Other:
+	:type Other: Intf_TangentZone &
+	:rtype: bool
+") HasCommonRange;
 		Standard_Boolean HasCommonRange (const Intf_TangentZone & Other);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Builds an empty tangent zone.
 
-Builds an empty tangent zone.") Intf_TangentZone;
+	:rtype: None
+") Intf_TangentZone;
 		 Intf_TangentZone ();
-		%feature("autodoc", "Args:
-	Other(Intf_TangentZone)
+		%feature("autodoc", "	* Copies a Tangent zone.
 
-Returns:
-	None
-
-Copies a Tangent zone.") Intf_TangentZone;
+	:param Other:
+	:type Other: Intf_TangentZone &
+	:rtype: None
+") Intf_TangentZone;
 		 Intf_TangentZone (const Intf_TangentZone & Other);
-		%feature("autodoc", "Args:
-	Pi(Intf_SectionPoint)
+		%feature("autodoc", "	* Adds a SectionPoint to the TangentZone.
 
-Returns:
-	None
-
-Adds a SectionPoint to the TangentZone.") Append;
+	:param Pi:
+	:type Pi: Intf_SectionPoint &
+	:rtype: None
+") Append;
 		void Append (const Intf_SectionPoint & Pi);
-		%feature("autodoc", "Args:
-	Tzi(Intf_TangentZone)
+		%feature("autodoc", "	* Adds the TangentZone <Tzi> to <self>.
 
-Returns:
-	None
-
-Adds the TangentZone <Tzi> to <self>.") Append;
+	:param Tzi:
+	:type Tzi: Intf_TangentZone &
+	:rtype: None
+") Append;
 		void Append (const Intf_TangentZone & Tzi);
-		%feature("autodoc", "Args:
-	Pi(Intf_SectionPoint)
+		%feature("autodoc", "	* Inserts a SectionPoint in the TangentZone.
 
-Returns:
-	Standard_Boolean
-
-Inserts a SectionPoint in the TangentZone.") Insert;
+	:param Pi:
+	:type Pi: Intf_SectionPoint &
+	:rtype: bool
+") Insert;
 		Standard_Boolean Insert (const Intf_SectionPoint & Pi);
-		%feature("autodoc", "Args:
-	Pi(Intf_SectionPoint)
+		%feature("autodoc", "	* Inserts a point in the polygonal TangentZone.
 
-Returns:
-	None
-
-Inserts a point in the polygonal TangentZone.") PolygonInsert;
+	:param Pi:
+	:type Pi: Intf_SectionPoint &
+	:rtype: None
+") PolygonInsert;
 		void PolygonInsert (const Intf_SectionPoint & Pi);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Pi(Intf_SectionPoint)
+		%feature("autodoc", "	* Inserts a SectionPoint before <Index> in the TangentZone.
 
-Returns:
-	None
-
-Inserts a SectionPoint before <Index> in the TangentZone.") InsertBefore;
+	:param Index:
+	:type Index: Standard_Integer
+	:param Pi:
+	:type Pi: Intf_SectionPoint &
+	:rtype: None
+") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Intf_SectionPoint & Pi);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
-	Pi(Intf_SectionPoint)
+		%feature("autodoc", "	* Inserts a SectionPoint after <Index> in the TangentZone.
 
-Returns:
-	None
-
-Inserts a SectionPoint after <Index> in the TangentZone.") InsertAfter;
+	:param Index:
+	:type Index: Standard_Integer
+	:param Pi:
+	:type Pi: Intf_SectionPoint &
+	:rtype: None
+") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Intf_SectionPoint & Pi);
-		%feature("autodoc", "Args:
-	Indent(Standard_Integer)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Dump;
+		%feature("autodoc", "	:param Indent:
+	:type Indent: Standard_Integer
+	:rtype: None
+") Dump;
 		void Dump (const Standard_Integer Indent);
 };
 
@@ -1728,95 +1403,75 @@ def __del__(self):
 %nodefaultctor Intf_Tool;
 class Intf_Tool {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
-
-No detailed docstring for this function.") Intf_Tool;
+		%feature("autodoc", "	:rtype: None
+") Intf_Tool;
 		 Intf_Tool ();
-		%feature("autodoc", "Args:
-	theLin2d(gp_Lin2d)
-	bounding(Bnd_Box2d)
-	boxLin(Bnd_Box2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Lin2dBox;
+		%feature("autodoc", "	:param theLin2d:
+	:type theLin2d: gp_Lin2d
+	:param bounding:
+	:type bounding: Bnd_Box2d &
+	:param boxLin:
+	:type boxLin: Bnd_Box2d &
+	:rtype: None
+") Lin2dBox;
 		void Lin2dBox (const gp_Lin2d & theLin2d,const Bnd_Box2d & bounding,Bnd_Box2d & boxLin);
-		%feature("autodoc", "Args:
-	theHypr2d(gp_Hypr2d)
-	bounding(Bnd_Box2d)
-	boxHypr(Bnd_Box2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Hypr2dBox;
+		%feature("autodoc", "	:param theHypr2d:
+	:type theHypr2d: gp_Hypr2d
+	:param bounding:
+	:type bounding: Bnd_Box2d &
+	:param boxHypr:
+	:type boxHypr: Bnd_Box2d &
+	:rtype: None
+") Hypr2dBox;
 		void Hypr2dBox (const gp_Hypr2d & theHypr2d,const Bnd_Box2d & bounding,Bnd_Box2d & boxHypr);
-		%feature("autodoc", "Args:
-	theParab2d(gp_Parab2d)
-	bounding(Bnd_Box2d)
-	boxHypr(Bnd_Box2d)
-
-Returns:
-	None
-
-No detailed docstring for this function.") Parab2dBox;
+		%feature("autodoc", "	:param theParab2d:
+	:type theParab2d: gp_Parab2d
+	:param bounding:
+	:type bounding: Bnd_Box2d &
+	:param boxHypr:
+	:type boxHypr: Bnd_Box2d &
+	:rtype: None
+") Parab2dBox;
 		void Parab2dBox (const gp_Parab2d & theParab2d,const Bnd_Box2d & bounding,Bnd_Box2d & boxHypr);
-		%feature("autodoc", "Args:
-	theLin(gp_Lin)
-	bounding(Bnd_Box)
-	boxLin(Bnd_Box)
-
-Returns:
-	None
-
-No detailed docstring for this function.") LinBox;
+		%feature("autodoc", "	:param theLin:
+	:type theLin: gp_Lin
+	:param bounding:
+	:type bounding: Bnd_Box &
+	:param boxLin:
+	:type boxLin: Bnd_Box &
+	:rtype: None
+") LinBox;
 		void LinBox (const gp_Lin & theLin,const Bnd_Box & bounding,Bnd_Box & boxLin);
-		%feature("autodoc", "Args:
-	theHypr(gp_Hypr)
-	bounding(Bnd_Box)
-	boxHypr(Bnd_Box)
-
-Returns:
-	None
-
-No detailed docstring for this function.") HyprBox;
+		%feature("autodoc", "	:param theHypr:
+	:type theHypr: gp_Hypr
+	:param bounding:
+	:type bounding: Bnd_Box &
+	:param boxHypr:
+	:type boxHypr: Bnd_Box &
+	:rtype: None
+") HyprBox;
 		void HyprBox (const gp_Hypr & theHypr,const Bnd_Box & bounding,Bnd_Box & boxHypr);
-		%feature("autodoc", "Args:
-	theParab(gp_Parab)
-	bounding(Bnd_Box)
-	boxHypr(Bnd_Box)
-
-Returns:
-	None
-
-No detailed docstring for this function.") ParabBox;
+		%feature("autodoc", "	:param theParab:
+	:type theParab: gp_Parab
+	:param bounding:
+	:type bounding: Bnd_Box &
+	:param boxHypr:
+	:type boxHypr: Bnd_Box &
+	:rtype: None
+") ParabBox;
 		void ParabBox (const gp_Parab & theParab,const Bnd_Box & bounding,Bnd_Box & boxHypr);
-		%feature("autodoc", "Args:
-	None
-Returns:
-	Standard_Integer
-
-No detailed docstring for this function.") NbSegments;
+		%feature("autodoc", "	:rtype: int
+") NbSegments;
 		Standard_Integer NbSegments ();
-		%feature("autodoc", "Args:
-	SegmentNum(Standard_Integer)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") BeginParam;
+		%feature("autodoc", "	:param SegmentNum:
+	:type SegmentNum: Standard_Integer
+	:rtype: float
+") BeginParam;
 		Standard_Real BeginParam (const Standard_Integer SegmentNum);
-		%feature("autodoc", "Args:
-	SegmentNum(Standard_Integer)
-
-Returns:
-	Standard_Real
-
-No detailed docstring for this function.") EndParam;
+		%feature("autodoc", "	:param SegmentNum:
+	:type SegmentNum: Standard_Integer
+	:rtype: float
+") EndParam;
 		Standard_Real EndParam (const Standard_Integer SegmentNum);
 };
 
@@ -1838,55 +1493,49 @@ def __del__(self):
 %nodefaultctor Intf_InterferencePolygon2d;
 class Intf_InterferencePolygon2d : public Intf_Interference {
 	public:
-		%feature("autodoc", "Args:
-	None
-Returns:
-	None
+		%feature("autodoc", "	* Constructs an empty interference of Polygon.
 
-Constructs an empty interference of Polygon.") Intf_InterferencePolygon2d;
+	:rtype: None
+") Intf_InterferencePolygon2d;
 		 Intf_InterferencePolygon2d ();
-		%feature("autodoc", "Args:
-	Obje1(Intf_Polygon2d)
-	Obje2(Intf_Polygon2d)
+		%feature("autodoc", "	* Constructs and computes an interference between two Polygons.
 
-Returns:
-	None
-
-Constructs and computes an interference between two Polygons.") Intf_InterferencePolygon2d;
+	:param Obje1:
+	:type Obje1: Intf_Polygon2d &
+	:param Obje2:
+	:type Obje2: Intf_Polygon2d &
+	:rtype: None
+") Intf_InterferencePolygon2d;
 		 Intf_InterferencePolygon2d (const Intf_Polygon2d & Obje1,const Intf_Polygon2d & Obje2);
-		%feature("autodoc", "Args:
-	Obje(Intf_Polygon2d)
+		%feature("autodoc", "	* Constructs and computes the auto interference of a Polygon.
 
-Returns:
-	None
-
-Constructs and computes the auto interference of a Polygon.") Intf_InterferencePolygon2d;
+	:param Obje:
+	:type Obje: Intf_Polygon2d &
+	:rtype: None
+") Intf_InterferencePolygon2d;
 		 Intf_InterferencePolygon2d (const Intf_Polygon2d & Obje);
-		%feature("autodoc", "Args:
-	Obje1(Intf_Polygon2d)
-	Obje2(Intf_Polygon2d)
+		%feature("autodoc", "	* Computes an interference between two Polygons.
 
-Returns:
-	None
-
-Computes an interference between two Polygons.") Perform;
+	:param Obje1:
+	:type Obje1: Intf_Polygon2d &
+	:param Obje2:
+	:type Obje2: Intf_Polygon2d &
+	:rtype: None
+") Perform;
 		void Perform (const Intf_Polygon2d & Obje1,const Intf_Polygon2d & Obje2);
-		%feature("autodoc", "Args:
-	Obje(Intf_Polygon2d)
+		%feature("autodoc", "	* Computes the self interference of a Polygon.
 
-Returns:
-	None
-
-Computes the self interference of a Polygon.") Perform;
+	:param Obje:
+	:type Obje: Intf_Polygon2d &
+	:rtype: None
+") Perform;
 		void Perform (const Intf_Polygon2d & Obje);
-		%feature("autodoc", "Args:
-	Index(Standard_Integer)
+		%feature("autodoc", "	* Gives the geometrical 2d point of the intersection point at address <Index> in the interference.
 
-Returns:
-	gp_Pnt2d
-
-Gives the  geometrical 2d point   of the  intersection  
-         point at address <Index> in the interference.") Pnt2dValue;
+	:param Index:
+	:type Index: Standard_Integer
+	:rtype: gp_Pnt2d
+") Pnt2dValue;
 		gp_Pnt2d Pnt2dValue (const Standard_Integer Index);
 };
 
