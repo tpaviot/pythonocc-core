@@ -1,4 +1,4 @@
-##Copyright 2011-2013 Thomas Paviot (tpaviot@gmail.com)
+##Copyright 2011-2014 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##

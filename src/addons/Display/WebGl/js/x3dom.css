@@ -1,0 +1,214 @@
+/*
+ * X3DOM JavaScript Library
+ * http://www.x3dom.org
+ *
+ * (C)2009 Fraunhofer IGD, Darmstadt, Germany
+ * Dual licensed under the MIT and GPL
+ *
+ * Based on code originally provided by
+ * Philip Taylor: http://philip.html5.org
+ */
+
+body {
+  background-color: white;
+}
+
+X3D, x3d {
+  position:relative;    /* in order to be able to position stat-div within X3D */
+  float:left;           /* float the element so it has the same size like the canvas */
+  cursor:pointer;
+  width:100%;
+  height:100%;
+  margin: 0;
+  padding: 0;
+}
+
+object {
+	margin: 0;
+	padding: 0;
+	border: none;
+	z-index: 0;
+  width:100%;
+  height:100%;
+  float:left;
+}
+
+X3D:hover, 
+x3d:hover, 
+.x3dom-canvas:hover {
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.x3dom-canvas {
+  border:none;
+  cursor:pointer;
+  width:100%;
+  height:100%;
+  float:left;
+}
+
+.x3dom-canvas:focus {
+    outline:none; 
+}
+.x3dom-progress {
+    margin: 0;
+    padding: 6px 8px 0px 26px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    color: #0f0;
+    font-family: Helvetica, sans-serif;
+    line-height:10px;
+    font-size: 10px;
+    min-width: 45px;
+    min-height: 20px;
+    border: 0px;
+    background-position: 4px 4px;
+    background-repeat: no-repeat;
+    background-color: #333;
+    background-color: rgba(51, 51, 51, 0.9);
+    z-index: 100;
+    background-image: url('data:image/gif;base64,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');
+}
+
+.x3dom-progress.bar span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  line-height: 20px;
+  background-color: red;
+}
+
+
+.x3dom-statdiv {
+    margin: 0;
+    padding: 0;
+    right: 10px;
+    top: 10px;
+    position: absolute;
+    color: #0f0;
+    font-family: Helvetica, sans-serif;
+    line-height:10px;
+    font-size: 10px;
+    width: 75px;
+    height: 70px;
+    border: 0px;
+}
+
+#x3dom-state-canvas {
+    margin: 2px;
+    padding: 0;
+    right: 0%;
+    top: 0%;
+    position: absolute;
+}
+
+#x3dom-state-viewer {
+  position: absolute;
+  margin: 2px;
+  padding: 5px;
+  width: 135px;
+  top: 0%;
+  right: 0%;
+  opacity: 0.9;
+  background-color: #323232;
+  z-index: 1000;
+  font-family: Arial, sans-serif;
+  color: #C8C8C8;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: help;
+}
+
+.x3dom-states-head {
+  display: block;
+  font-size: 26px;
+}
+
+.x3dom-states-head2 {
+  font-size: 10px;
+}
+
+.x3dom-states-list {
+  float: left;
+  width: 100%;
+  border-top: 1px solid #C8C8C8;
+  list-style: none;
+  font-size: 9px;
+  line-height: 16px;
+  margin:0;
+  padding: 0;
+  padding-top: 2px;
+}
+
+.x3dom-states-item  {
+  width: 100%;
+  float: left;
+}
+
+.x3dom-states-item-title {
+  float: left;
+  margin-left: 2px;
+}
+
+.x3dom-states-item-value {
+  float: right;
+  margin-right: 2px;
+}
+
+.x3dom-touch-marker {
+	display: inline;
+    padding: 5px;
+	border-radius: 10px;
+    position: absolute;
+    font-family: Helvetica, sans-serif;
+    line-height:10px;
+    font-size: 10px;
+    color: darkorange;
+    background: cornsilk;
+    opacity: 0.6;
+    border: 2px solid orange;
+	z-index: 200;
+}
+
+.x3dom-logContainer {
+    border: 2px solid olivedrab;
+    height: 200px;
+    padding: 4px;
+    overflow: auto;
+    white-space: pre-wrap;
+    font-family: sans-serif;
+    font-size: x-small;
+    color: #00ff00;
+    background-color: black;
+    margin-right: 10px;
+}
+
+.x3dom-nox3d {
+    font-family: Helvetica, sans-serif;
+    font-size: 14px;
+    background-color: #eb7a7a;
+    padding: 1em;
+    opacity: 0.75;
+}
+
+.x3dom-nox3d p { 
+    color: #fff;
+    font-size: 14px;
+}
+
+.x3dom-nox3d a { 
+    color: #fff;
+    font-size: 14px;
+}
+
+
+/* self-clearing floats */
+.group:after {
+  content: "."; 
+  display: block; 
+  height: 0; 
+  clear: both; 
+  visibility: hidden;
+}
