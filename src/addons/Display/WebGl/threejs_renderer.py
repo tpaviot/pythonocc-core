@@ -207,17 +207,16 @@ class HTMLBody(object):
             """
             if self._uniforms is None:
                 body_str = body_str.replace('@Uniforms@', 'uniforms ={};\n')
-                print("Yes")
             else:
                 body_str = body_str.replace('@Uniforms@', self._uniforms)
+                if 'time' in self._uniforms:
+                    body_str = body_str.replace('@IncrementTime@', 'uniforms.time.value += 0.05;')
+                else:
+                    body_str = body_str.replace('@IncrementTime@', '')
             body_str = body_str.replace('@VertexShaderDefinition@', vertex_shader_string_definition)
             body_str = body_str.replace('@FragmentShaderDefinition@', fragment_shader_string_definition)
             body_str = body_str.replace('@ShaderMaterialDefinition@', shader_material_definition)
             body_str = body_str.replace('@ShapeMaterial@', 'shader_material')
-            if 'time' in self._uniforms:
-                body_str = body_str.replace('@IncrementTime@', 'uniforms.time.value += 0.05;')
-            else:
-                body_str = body_str.replace('@IncrementTime@', '')
         else:
             body_str = body_str.replace('@Uniforms@', '')
             body_str = body_str.replace('@VertexShaderDefinition@', '')
