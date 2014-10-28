@@ -1,9 +1,9 @@
-language: python
-python:
-  - "2.7"
-  - "3.3"
+language: cpp
+compiler:
+  - gcc
+  - clang
 before_install:
-   - sudo apt-get install swig
+# following ppa contains oce-0.16.0
    - sudo add-apt-repository "deb http://ppa.launchpad.net/freecad-maintainers/oce-release/ubuntu precise main" -y
    - sudo apt-get update -q
    - sudo apt-get install liboce-ocaf-dev oce-draw
@@ -13,15 +13,23 @@ before_install:
    - sudo python -c "from PyQt4 import QtGui, QtCore, QtOpenGL"
    - sudo apt-get install python-pyside
    - sudo python -c "from PySide import QtGui, QtCore, QtOpenGL"
+# and this one python3.4 for ubuntu precise
+   - sudo add-apt-repository "deb http://ppa.launchpad.net/fkrull/deadsnakes/ubuntu precise main" -y
+   - sudo apt-get update
+   - sudo apt-get install python3.4
+   - sudo apt-get install python3.4-dev
 before_script:
-  - mkdir cmake-build
-  - cd cmake-build
-script: ../.travis.build.sh
+  - wget http://prdownloads.sourceforge.net/swig/swig-2.0.10.tar.gz
+# untar swig files generates thousands of lines. Redirect stdout stream
+# to a file
+  - tar -xvf swig-2.0.10.tar.gz > swig-2.0.10-filelist.txt
+  - cd swig-2.0.10
+  - ./configure
+  - make -j6 && sudo make install
+  - cd ..
+  - swig -version
+script: ./.travis.build.sh
 after_script:
-  - cd ../test
-  - python run_tests.py
-  - xvfb-run -s "-screen 0 1024x768x16" sudo python core_display_unittest.py
-  - xvfb-run -s "-screen 0 1024x768x16" sudo python core_webgl_unittest.py
 branches:
   only:
     - master
