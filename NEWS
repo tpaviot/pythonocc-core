@@ -1,0 +1,16 @@
+Version 0.16.0 - October 2014
+
+* Support for latest oce release (0.16.0)
+
+* major code refactoring, including examples
+
+* completed WebGl three.js work
+
+* added x3dom renderer and x3d export feature
+
+* improved project quality (travis-ci, pylint check, pep8 compliancy,
+  removed old and/or untested code)
+
+* sphinx based documentation
+
+* python3 support

@@ -1,17 +1,14 @@
-## pythonocc is not a small project... 
-it depends on one of the largest Open Source code bases out there, [OpenCasCADE](http://opencascade.org)
-specifically, the [OpenCasCADE Community Edition](https://github.com/tpaviot/oce)
+## Packaging with conda
 
-in the past, one of the major hurdles in exploring PythonOCC is that while the library is user friendly in itself,
-building the project presented a huge obstacle, ruining the short term experience. 
-[conda](http://conda.pydata.org/docs/) solves that problem convincingly 
-in that now the time to install PythonOCC and *all* of its dependencies can be installed in about 5 minutes. 
-by supporting conda installations we think that we'll lower the threshold to get going with PythonOCC considerable  
+pythonocc depends on one of the largest Open Source code bases out there, [OpenCasCADE](http://opencascade.org)
+specifically, the [OpenCasCADE Community Edition](https://github.com/tpaviot/oce).
 
-## So how is this done?
+[conda](http://conda.pydata.org/docs/) is a solution to install pythonOCC and *all* of its dependencies in about 5 minutes. 
+
+## How is this done?
+
 First, decide if you prefer the complete [anaconda](http://docs.continuum.io/anaconda/index.html#packages-included-in-anaconda)
-that comes with many great modules readily installed. I prefer a lighter handed approach, by installing [miniconda](http://conda.pydata.org/miniconda.html)
-and installing dependencies as I go. This is accomplished through the following command on linux:
+that comes with many great modules readily installed or a lighter handed approach (prefered), by installing [miniconda](http://conda.pydata.org/miniconda.html). This is accomplished through the following command on linux:
 
 ```
 curl 'http://repo.continuum.io/miniconda/Miniconda-3.7.0-Linux-x86_64.sh' > Miniconda.sh
@@ -25,10 +22,10 @@ curl 'http://repo.continuum.io/miniconda/Miniconda-3.7.0-MacOSX-x86_64.sh' > Min
 bash Miniconda.sh
 ```
 
-that installs a fresh python interpreter
+that installs a fresh python interpreter.
 
-as of now, *only* an osx build is completed, as conda support is a work in progress. 
-you can install pythonocc-core like so:
+As of now, *only* an osx build is completed, as conda support for pythonocc is a work in progress. 
+You can install pythonocc-core like so:
 
 ```
 # add the channel
@@ -47,21 +44,13 @@ Environments are a very important concept, and conda provides more fundamental s
 [virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/). This is again, related to dependencies.
 With conda, mutiple version of pythonocc supporting different version of the OCE library can be supported.
 By changing your environment, its easy to upgrade your codebase to a newer version of PythonOCC while still 
-being able to switch to your rusty, trusty ol' version in no time.
+being able to switch to any older version.
 
-## How we got to adopting conda
-Earlier and thanks to the support of the PythonOCC community we've tried to overcome this issue while working with 
-[platform depended package managers](http://en.wikipedia.org/wiki/Package_manager) this turned out to be a poor idea... 
+## packages at binstar
 
-It creates fragmentation; on every platform there are a number of package managers and creates a situation where it becomes impossible to support all of these. 
-with conda, there is a pythonic cross-platform package manager that works and is a pleasure to use.
-
-Exisiting solutions such as [pip](https://pip.readthedocs.org/en/latest/) are grossfully out of their depth, since it 
-cannot deal with installing and managing the *many* dependencies of a sopisticated python module wrapping C++. 
+[binstar](https://binstar.org/) is a site where you can upload and distribute your own repository of packages [here's Jelle's](https://binstar.org/jf/). 
+Ownership of packages can be shared, which is great for working together on supporting a package for different platforms. 
+Check out available packages by the [maintainer of conda and binstar](https://binstar.org/asmeurer/_list-packages) 
  
-[binstar](https://binstar.org/) is a site where you can upload and distribute your own repository of packages [here's mine](https://binstar.org/jf/). 
-A cool feature is that ownership of packages can be shared, which is great for working together on supporting a package for different platforms. 
-check out available packages by the [maintainer of conda and binstar](https://binstar.org/asmeurer/_list-packages) 
- 
-If your interested to learn more about conda, check out the [documentation](http://conda.pydata.org/docs) and I encourage you to see this [excellent talk]
-(http://youtu.be/UaIvrDWrIWM) by [Aaron Meurer](https://github.com/asmeurer) who does an amazing job of pointing out the importance of the conda project.
+If your interested to learn more about conda, check out the [documentation](http://conda.pydata.org/docs). You're also encouraged you to see this [excellent talk]
+(http://youtu.be/UaIvrDWrIWM) by [Aaron Meurer](https://github.com/asmeurer).
