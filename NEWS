@@ -1,4 +1,4 @@
-Version 0.16.0 - October 2014
+Version 0.16.0 - November 2014
 
 * Support for latest oce release (0.16.0)
 
@@ -11,6 +11,6 @@ Version 0.16.0 - October 2014
 * improved project quality (travis-ci, pylint check, pep8 compliancy,
   removed old and/or untested code)
 
-* sphinx based documentation
+* sphinx based documentation, both for api documentation and getting started
 
 * python3 support
