@@ -129,7 +129,7 @@ As of now, *only* an osx build is completed, as conda support for pythonocc is a
 You can install pythonocc-core like so::
 
   # add the channel
-  $ conda config --add channels http://conda.binstar.org/jf/osx-64/
+  $ conda config --add channels http://conda.binstar.org/jf
   # create a pythonocc environment
   $ conda create -n pythonocc python
   # grab and install pythonocc
