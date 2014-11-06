@@ -1,6 +1,6 @@
 package:
   name: pythonocc-core
-  version: 0.16.0-dev
+  version: 0.16.0
 
 source:
     git_url: https://github.com/jf---/pythonocc-core.git
