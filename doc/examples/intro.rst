@@ -15,7 +15,7 @@ From a python prompt, type the following::
 
   In [1]: import OCC
   In [2]: OCC.VERSION
-  Out[2]: '0.16.0-dev'
+  Out[2]: '0.16.0'
 
 About this Document
 -------------------
