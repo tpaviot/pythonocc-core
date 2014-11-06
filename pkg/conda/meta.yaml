@@ -3,8 +3,8 @@ package:
   version: 0.16.0
 
 source:
-    git_url: https://github.com/jf---/pythonocc-core.git
-    sha1: 55f9128c0247da27beefaa3e3ec32a8ba2dedb5c
+    git_url: https://github.com/tpaviot/pythonocc-core.git
+    git_tag: 0.16.0
 
 build:
   number: 0
