@@ -4,14 +4,10 @@ OCC.Display.WebGl package
 Submodules
 ----------
 
-OCC.Display.WebGl.threejs_renderer module
------------------------------------------
+.. toctree::
 
-.. automodule:: OCC.Display.WebGl.threejs_renderer
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
+   OCC.Display.WebGl.threejs_renderer
+   OCC.Display.WebGl.x3dom_renderer
 
 Module contents
 ---------------
