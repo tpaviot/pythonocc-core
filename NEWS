@@ -1,5 +1,7 @@
 Version 0.16.0 - November 2014
 
+This release requires oce-0.16.0
+
 * Support for latest oce release (0.16.0)
 
 * major code refactoring, including examples
