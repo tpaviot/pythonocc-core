@@ -90,9 +90,10 @@ Binary packages for Windows/py2 and py3 are available at our  `github release pa
 
 ::
 
+  $ sudo add-apt-repository ppa:freecad-maintainers/oce-release -y
   $ sudo add-apt-repository ppa:tpaviot/pythonocc -y
   $ sudo apt-get update -q
-  $ sudo apt-get install pythonocc
+  $ sudo apt-get install pythonocc-core
 
 * OSX
 
