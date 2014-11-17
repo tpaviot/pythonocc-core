@@ -366,6 +366,7 @@ class Intf_SectionLine {
             else return false;
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __eq__(self,right):
             try:
@@ -373,6 +374,7 @@ class Intf_SectionLine {
             except:
                 return False
         }
+#endif        
         		%feature("autodoc", "	* Constructs an empty SectionLine.
 
 	:rtype: None
@@ -536,6 +538,7 @@ class Intf_SectionPoint {
             else return false;
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __eq__(self,right):
             try:
@@ -543,6 +546,7 @@ class Intf_SectionPoint {
             except:
                 return False
         }
+#endif        
         		%feature("autodoc", "	* Returns True if the two SectionPoints are on the same edge of the first or the second element.
 
 	:param Other:
@@ -1248,6 +1252,7 @@ class Intf_TangentZone {
             else return false;
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __eq__(self,right):
             try:
@@ -1255,6 +1260,7 @@ class Intf_TangentZone {
             except:
                 return False
         }
+#endif        
         		%feature("autodoc", "	* Checks if <ThePI> is in TangentZone.
 
 	:param ThePI:

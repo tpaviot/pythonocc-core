@@ -182,6 +182,7 @@ class MAT2d_BiInt {
             else return false;
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __eq__(self,right):
             try:
@@ -189,6 +190,7 @@ class MAT2d_BiInt {
             except:
                 return False
         }
+#endif        
         };
 
 

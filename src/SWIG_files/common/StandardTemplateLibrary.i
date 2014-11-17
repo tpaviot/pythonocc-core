@@ -18,8 +18,16 @@ You should have received a copy of the GNU General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-
+#if defined(SWIGPYTHON)
 %include <python/std_vector.i>
+#endif
+#if defined(SWIGJAVA)
+%include <java/std_vector.i>
+#endif
+#if defined(SWIGCSHARP)
+%include <csharp/std_vector.i>
+#endif
+
 
 // Define IntVector and DoubleVector to handle std::vector<int> and std::vector<double>
 

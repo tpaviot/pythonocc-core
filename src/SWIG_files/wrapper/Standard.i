@@ -330,6 +330,7 @@ class Standard_GUID {
             else return false;
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __eq__(self,right):
             try:
@@ -337,6 +338,7 @@ class Standard_GUID {
             except:
                 return False
         }
+#endif        
         		%feature("autodoc", "	:param uid:
 	:type uid: Standard_GUID &
 	:rtype: bool
@@ -349,6 +351,7 @@ class Standard_GUID {
             else return false;
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __ne__(self,right):
             try:
@@ -356,6 +359,7 @@ class Standard_GUID {
             except:
                 return True
         }
+#endif        
         		%feature("autodoc", "	:param uid:
 	:type uid: Standard_GUID &
 	:rtype: None
@@ -619,6 +623,7 @@ class Standard_Storable {
             else return false;
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __eq__(self,right):
             try:
@@ -626,6 +631,7 @@ class Standard_Storable {
             except:
                 return False
         }
+#endif         
         		%feature("autodoc", "	* Returns true if the Deep contents of <self> and  <Other> are memberwise equal.
 
 	:param Other:
@@ -802,6 +808,7 @@ class Handle_Standard_Transient {
             return s.str();
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __eq__(self,right):
             try:
@@ -816,6 +823,7 @@ class Handle_Standard_Transient {
             except:
                 return True
         }
+#endif       
 
 };
 %extend Handle_Standard_Transient {

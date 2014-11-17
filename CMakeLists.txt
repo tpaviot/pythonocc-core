@@ -88,8 +88,12 @@ SET(OCE_LIB_PATH /usr/local/lib CACHE PATH "OCE lib path" )
 # Installation directory                     #
 # by default, installed to site-packages/OCC #
 ##############################################
-EXECUTE_PROCESS(COMMAND ${PYTHON_EXECUTABLE} -c "from __future__ import print_function; from distutils.sysconfig import get_python_lib; import os;print(get_python_lib())" OUTPUT_VARIABLE python_lib OUTPUT_STRIP_TRAILING_WHITESPACE )
-SET(PYTHONOCC_INSTALL_DIRECTORY ${python_lib}/OCC CACHE PATH "pythonOCC install directory" )
+EXECUTE_PROCESS(COMMAND python -c "from __future__ import print_function; from distutils.sysconfig import get_python_lib; import os;print(get_python_lib())" OUTPUT_VARIABLE python_lib OUTPUT_STRIP_TRAILING_WHITESPACE )
+#if (BUILD_PYTHON)
+#SET(${PROJECT_NAME}_INSTALL_DIRECTORY ${python_lib}/OCC CACHE PATH "pythonOCC install directory" )
+#else()
+SET(${PROJECT_NAME}_INSTALL_DIRECTORY /tmp/OCC CACHE PATH "pythonOCC install directory" )
+#endif()
 
 # List of OCE shared libraries to link with
 # TODO: this should be build from the module list
@@ -138,11 +142,12 @@ MESSAGE(STATUS "Platform:" ${PLATFORM})
 ##################################
 # Tells Swig to use py3k option  #
 ##################################
-EXECUTE_PROCESS(COMMAND ${PYTHON_EXECUTABLE} -c "from __future__ import print_function; import sys; print(sys.version_info.major)" OUTPUT_VARIABLE python_version_major OUTPUT_STRIP_TRAILING_WHITESPACE )
-
-IF(${python_version_major} MATCHES "3")
-  SET(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -py3)
-ENDIF(${python_version_major} MATCHES "3")
+##################################
+#if (${BUILD_PYTHON})
+#IF(${PYTHON_VERSION_MAJOR} MATCHES "3")
+#  SET(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -py3)
+#ENDIF(${PYTHON_VERSION_MAJOR} MATCHES "3")
+#endif()
 
 ################################################
 # Define output path for generated libraries:  #
@@ -181,13 +186,36 @@ OPTION_WITH_DEFAULT(PYTHONOCC_WRAP_DATAEXCHANGE "Compile Data Exchange" TRUE)
 # Wrapper Modules #
 ###################
 
+#FIND_PACKAGE(JNI)
+#find_package(Java REQUIRED COMPONENTS Runtime Development)
+#MESSAGE(STATUS "Java include in : ${JAVA_INCLUDE_PATH}")
+#MESSAGE(STATUS "Java include2 in : ${JAVA_INCLUDE_PATH}")
+#INCLUDE_DIRECTORIES(${JAVA_INCLUDE_PATH})
+#INCLUDE_DIRECTORIES("${JAVA_INCLUDE_PATH2}")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
+FIND_PACKAGE(Mono)
+
 # MODEL Toolkits
 FILE(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/${SWIG_FILES_PATH})
 FOREACH(OCE_MODULE ${OCE_TOOLKIT_MODEL})
 	SET(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
 	SET_SOURCE_FILES_PROPERTIES(${FILE} PROPERTIES CPLUSPLUS ON)
-    SWIG_ADD_MODULE(${OCE_MODULE} python ${FILE})
-    SWIG_LINK_LIBRARIES(${OCE_MODULE} ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES})
+    #if (${BUILD_PYTHON})
+    # SWIG_ADD_MODULE(${OCE_MODULE} python ${FILE})
+    #  SWIG_LINK_LIBRARIES(${OCE_MODULE} ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES})
+    #  SWIG_LINK_LIBRARIES(${OCE_MODULE} ${OCE_MODEL_LIBRARIES})
+    #endif()
+    #if (${BUILD_JAVA})
+
+      #SWIG_ADD_MODULE(${OCE_MODULE} java ${FILE})
+      #SWIG_LINK_LIBRARIES(${OCE_MODULE} ${OCE_MODEL_LIBRARIES})
+    #endif()
+    #if (${BUILD_CSHARP})
+       SWIG_ADD_MODULE(${OCE_MODULE} csharp ${FILE})
+       SWIG_LINK_LIBRARIES(${OCE_MODULE} ${MONO_LIBRARIES} ${OCE_MODEL_LIBRARIES})
+    #  SWIG_LINK_LIBRARIES(${OCE_MODULE} ${OCE_MODEL_LIBRARIES})
+    #endif()
+    
 ENDFOREACH(OCE_MODULE)
 
 # Visualisation

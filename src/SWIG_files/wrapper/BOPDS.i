@@ -1466,6 +1466,7 @@ class BOPDS_Pave {
             else return false;
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __eq__(self,right):
             try:
@@ -1473,6 +1474,7 @@ class BOPDS_Pave {
             except:
                 return False
         }
+#endif        
         		%feature("autodoc", "	:rtype: None
 ") Dump;
 		void Dump ();
