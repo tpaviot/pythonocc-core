@@ -1,5 +1,5 @@
 After cmake and make, you should have many ".cs" files created by swig 
-(this will be automated by cmake using FindJava module, someday) that must be compiled:
+(this will be automated by cmake using FindMono module, someday) that must be compiled:
 
 cd ~/git/pythonocc-core/cmake-build/Unix/x86_64-MinSizeRel-64
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`pwd`
