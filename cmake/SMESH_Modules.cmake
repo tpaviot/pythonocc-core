@@ -1,0 +1,10 @@
+LIST(APPEND TOOLKIT_SMESH
+        SMDSAbs
+        SMESH
+        SMDS
+        SMESHDS
+        StdMeshers
+)
+if (PYTHONOCC_WRAP_NETGEN)
+  SET(TOOLKIT_SMESH ${TOOLKIT_SMESH} NETGENPlugin)
+endif()  
