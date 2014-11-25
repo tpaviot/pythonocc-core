@@ -96,7 +96,7 @@ SET(PYTHONOCC_INSTALL_DIRECTORY ${python_lib}/OCC CACHE PATH "pythonOCC install 
 SET(OCE_MODEL_LIBRARIES TKernel TKMath TKAdvTools TKG2d TKG3d TKGeomBase TKBRep TKGeomAlgo
                   TKTopAlgo TKPrim TKBO TKHLR TKMesh TKShHealing TKXMesh
                   TKBool TKFillet TKFeat TKOffset)
-SET(OCE_VISUALIZATION_LIBRARIES TKService TKV3d TKOpenGl)
+SET(OCE_VISUALIZATION_LIBRARIES TKService TKV3d TKMeshVS TKOpenGl)
 SET(OCE_DATAEXCHANGE_LIBRARIES TKSTL TKXSBase TKSTEPBase TKIGES TKSTEPAttr TKSTEP209
                   TKSTEP TKVRML)
 # Tells CMake where are the required headers

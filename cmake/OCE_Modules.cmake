@@ -229,6 +229,8 @@ LIST(APPEND OCE_TOOLKIT_VISUALIZATION
         AIS
         DsgPrs
         StdSelect
+# TKMeshVS
+        MeshVS
         )
 
 LIST(APPEND OCE_TOOLKIT_DATAEXCHANGE
