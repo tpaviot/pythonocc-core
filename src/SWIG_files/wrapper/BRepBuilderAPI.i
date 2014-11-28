@@ -713,7 +713,7 @@ class BRepBuilderAPI_BndBoxTreeSelector : public BRepBuilderAPI_BndBoxTree::Sele
 	:type theObj: Standard_Integer &
 	:rtype: bool
 ") Accept;
-		Standard_Boolean Accept (Standard_Integer &OutValue);
+		Standard_Boolean Accept (const Standard_Integer & theObj);
 		%feature("autodoc", "	* Clear the list of intersecting boxes
 
 	:rtype: None

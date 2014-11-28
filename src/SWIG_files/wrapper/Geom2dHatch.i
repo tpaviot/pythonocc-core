@@ -189,7 +189,7 @@ class Geom2dHatch_DataMapNodeOfHatchingsOfHatcher : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") Geom2dHatch_DataMapNodeOfHatchingsOfHatcher;
-		 Geom2dHatch_DataMapNodeOfHatchingsOfHatcher (Standard_Integer &OutValue,const Geom2dHatch_HatchingOfHatcher & I,const TCollection_MapNodePtr & n);
+		 Geom2dHatch_DataMapNodeOfHatchingsOfHatcher (const Standard_Integer & K,const Geom2dHatch_HatchingOfHatcher & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -273,7 +273,7 @@ class Geom2dHatch_DataMapNodeOfMapOfElementsOfElementsOfHatcher : public TCollec
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") Geom2dHatch_DataMapNodeOfMapOfElementsOfElementsOfHatcher;
-		 Geom2dHatch_DataMapNodeOfMapOfElementsOfElementsOfHatcher (Standard_Integer &OutValue,const Geom2dHatch_ElementOfHatcher & I,const TCollection_MapNodePtr & n);
+		 Geom2dHatch_DataMapNodeOfMapOfElementsOfElementsOfHatcher (const Standard_Integer & K,const Geom2dHatch_ElementOfHatcher & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -415,27 +415,27 @@ class Geom2dHatch_ElementsOfHatcher {
 	:type I: Geom2dHatch_ElementOfHatcher &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const Geom2dHatch_ElementOfHatcher & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const Geom2dHatch_ElementOfHatcher & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Geom2dHatch_ElementOfHatcher
 ") Find;
-		const Geom2dHatch_ElementOfHatcher & Find (Standard_Integer &OutValue);
+		const Geom2dHatch_ElementOfHatcher & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Geom2dHatch_ElementOfHatcher
 ") ChangeFind;
-		Geom2dHatch_ElementOfHatcher & ChangeFind (Standard_Integer &OutValue);
+		Geom2dHatch_ElementOfHatcher & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param P:
 	:type P: gp_Pnt2d
 	:rtype: bool
@@ -899,37 +899,37 @@ class Geom2dHatch_HatchingsOfHatcher : public TCollection_BasicMap {
 	:type I: Geom2dHatch_HatchingOfHatcher &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const Geom2dHatch_HatchingOfHatcher & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const Geom2dHatch_HatchingOfHatcher & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Geom2dHatch_HatchingOfHatcher
 ") Find;
-		const Geom2dHatch_HatchingOfHatcher & Find (Standard_Integer &OutValue);
+		const Geom2dHatch_HatchingOfHatcher & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Geom2dHatch_HatchingOfHatcher
 ") ChangeFind;
-		Geom2dHatch_HatchingOfHatcher & ChangeFind (Standard_Integer &OutValue);
+		Geom2dHatch_HatchingOfHatcher & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -1072,37 +1072,37 @@ class Geom2dHatch_MapOfElementsOfElementsOfHatcher : public TCollection_BasicMap
 	:type I: Geom2dHatch_ElementOfHatcher &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const Geom2dHatch_ElementOfHatcher & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const Geom2dHatch_ElementOfHatcher & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Geom2dHatch_ElementOfHatcher
 ") Find;
-		const Geom2dHatch_ElementOfHatcher & Find (Standard_Integer &OutValue);
+		const Geom2dHatch_ElementOfHatcher & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Geom2dHatch_ElementOfHatcher
 ") ChangeFind;
-		Geom2dHatch_ElementOfHatcher & ChangeFind (Standard_Integer &OutValue);
+		Geom2dHatch_ElementOfHatcher & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 

@@ -676,7 +676,7 @@ class MAT_DataMapNodeOfDataMapOfIntegerArc : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") MAT_DataMapNodeOfDataMapOfIntegerArc;
-		 MAT_DataMapNodeOfDataMapOfIntegerArc (Standard_Integer &OutValue,const Handle_MAT_Arc & I,const TCollection_MapNodePtr & n);
+		 MAT_DataMapNodeOfDataMapOfIntegerArc (const Standard_Integer & K,const Handle_MAT_Arc & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -760,7 +760,7 @@ class MAT_DataMapNodeOfDataMapOfIntegerBasicElt : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") MAT_DataMapNodeOfDataMapOfIntegerBasicElt;
-		 MAT_DataMapNodeOfDataMapOfIntegerBasicElt (Standard_Integer &OutValue,const Handle_MAT_BasicElt & I,const TCollection_MapNodePtr & n);
+		 MAT_DataMapNodeOfDataMapOfIntegerBasicElt (const Standard_Integer & K,const Handle_MAT_BasicElt & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -844,7 +844,7 @@ class MAT_DataMapNodeOfDataMapOfIntegerBisector : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") MAT_DataMapNodeOfDataMapOfIntegerBisector;
-		 MAT_DataMapNodeOfDataMapOfIntegerBisector (Standard_Integer &OutValue,const Handle_MAT_Bisector & I,const TCollection_MapNodePtr & n);
+		 MAT_DataMapNodeOfDataMapOfIntegerBisector (const Standard_Integer & K,const Handle_MAT_Bisector & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -928,7 +928,7 @@ class MAT_DataMapNodeOfDataMapOfIntegerNode : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") MAT_DataMapNodeOfDataMapOfIntegerNode;
-		 MAT_DataMapNodeOfDataMapOfIntegerNode (Standard_Integer &OutValue,const Handle_MAT_Node & I,const TCollection_MapNodePtr & n);
+		 MAT_DataMapNodeOfDataMapOfIntegerNode (const Standard_Integer & K,const Handle_MAT_Node & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -1033,37 +1033,37 @@ class MAT_DataMapOfIntegerArc : public TCollection_BasicMap {
 	:type I: Handle_MAT_Arc &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const Handle_MAT_Arc & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const Handle_MAT_Arc & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Handle_MAT_Arc
 ") Find;
-		const Handle_MAT_Arc & Find (Standard_Integer &OutValue);
+		const Handle_MAT_Arc & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Handle_MAT_Arc
 ") ChangeFind;
-		Handle_MAT_Arc & ChangeFind (Standard_Integer &OutValue);
+		Handle_MAT_Arc & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -1113,37 +1113,37 @@ class MAT_DataMapOfIntegerBasicElt : public TCollection_BasicMap {
 	:type I: Handle_MAT_BasicElt &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const Handle_MAT_BasicElt & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const Handle_MAT_BasicElt & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Handle_MAT_BasicElt
 ") Find;
-		const Handle_MAT_BasicElt & Find (Standard_Integer &OutValue);
+		const Handle_MAT_BasicElt & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Handle_MAT_BasicElt
 ") ChangeFind;
-		Handle_MAT_BasicElt & ChangeFind (Standard_Integer &OutValue);
+		Handle_MAT_BasicElt & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -1193,37 +1193,37 @@ class MAT_DataMapOfIntegerBisector : public TCollection_BasicMap {
 	:type I: Handle_MAT_Bisector &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const Handle_MAT_Bisector & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const Handle_MAT_Bisector & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Handle_MAT_Bisector
 ") Find;
-		const Handle_MAT_Bisector & Find (Standard_Integer &OutValue);
+		const Handle_MAT_Bisector & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Handle_MAT_Bisector
 ") ChangeFind;
-		Handle_MAT_Bisector & ChangeFind (Standard_Integer &OutValue);
+		Handle_MAT_Bisector & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -1273,37 +1273,37 @@ class MAT_DataMapOfIntegerNode : public TCollection_BasicMap {
 	:type I: Handle_MAT_Node &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const Handle_MAT_Node & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const Handle_MAT_Node & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Handle_MAT_Node
 ") Find;
-		const Handle_MAT_Node & Find (Standard_Integer &OutValue);
+		const Handle_MAT_Node & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Handle_MAT_Node
 ") ChangeFind;
-		Handle_MAT_Node & ChangeFind (Standard_Integer &OutValue);
+		Handle_MAT_Node & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 

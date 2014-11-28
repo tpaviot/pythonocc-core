@@ -1074,7 +1074,7 @@ class AIS_DataMapNodeOfDataMapOfILC : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") AIS_DataMapNodeOfDataMapOfILC;
-		 AIS_DataMapNodeOfDataMapOfILC (Standard_Integer &OutValue,const Handle_AIS_LocalContext & I,const TCollection_MapNodePtr & n);
+		 AIS_DataMapNodeOfDataMapOfILC (const Standard_Integer & K,const Handle_AIS_LocalContext & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -1306,7 +1306,7 @@ class AIS_DataMapNodeOfDataMapofIntegerListOfinteractive : public TCollection_Ma
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") AIS_DataMapNodeOfDataMapofIntegerListOfinteractive;
-		 AIS_DataMapNodeOfDataMapofIntegerListOfinteractive (Standard_Integer &OutValue,const AIS_ListOfInteractive & I,const TCollection_MapNodePtr & n);
+		 AIS_DataMapNodeOfDataMapofIntegerListOfinteractive (const Standard_Integer & K,const AIS_ListOfInteractive & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -1411,37 +1411,37 @@ class AIS_DataMapOfILC : public TCollection_BasicMap {
 	:type I: Handle_AIS_LocalContext &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const Handle_AIS_LocalContext & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const Handle_AIS_LocalContext & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Handle_AIS_LocalContext
 ") Find;
-		const Handle_AIS_LocalContext & Find (Standard_Integer &OutValue);
+		const Handle_AIS_LocalContext & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Handle_AIS_LocalContext
 ") ChangeFind;
-		Handle_AIS_LocalContext & ChangeFind (Standard_Integer &OutValue);
+		Handle_AIS_LocalContext & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -1651,37 +1651,37 @@ class AIS_DataMapofIntegerListOfinteractive : public TCollection_BasicMap {
 	:type I: AIS_ListOfInteractive &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const AIS_ListOfInteractive & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const AIS_ListOfInteractive & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: AIS_ListOfInteractive
 ") Find;
-		const AIS_ListOfInteractive & Find (Standard_Integer &OutValue);
+		const AIS_ListOfInteractive & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: AIS_ListOfInteractive
 ") ChangeFind;
-		AIS_ListOfInteractive & ChangeFind (Standard_Integer &OutValue);
+		AIS_ListOfInteractive & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 

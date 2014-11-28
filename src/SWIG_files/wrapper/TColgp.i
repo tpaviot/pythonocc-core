@@ -1951,7 +1951,7 @@ class TColgp_DataMapNodeOfDataMapOfIntegerCirc2d : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") TColgp_DataMapNodeOfDataMapOfIntegerCirc2d;
-		 TColgp_DataMapNodeOfDataMapOfIntegerCirc2d (Standard_Integer &OutValue,const gp_Circ2d & I,const TCollection_MapNodePtr & n);
+		 TColgp_DataMapNodeOfDataMapOfIntegerCirc2d (const Standard_Integer & K,const gp_Circ2d & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -2056,37 +2056,37 @@ class TColgp_DataMapOfIntegerCirc2d : public TCollection_BasicMap {
 	:type I: gp_Circ2d
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const gp_Circ2d & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const gp_Circ2d & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: gp_Circ2d
 ") Find;
-		const gp_Circ2d  Find (Standard_Integer &OutValue);
+		const gp_Circ2d  Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: gp_Circ2d
 ") ChangeFind;
-		gp_Circ2d  ChangeFind (Standard_Integer &OutValue);
+		gp_Circ2d  ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 

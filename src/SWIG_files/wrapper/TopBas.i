@@ -288,7 +288,7 @@ class TopBas_TestInterference {
 	:type BTrans: TopAbs_Orientation
 	:rtype: None
 ") TopBas_TestInterference;
-		 TopBas_TestInterference (const Standard_Real & Inters,Standard_Integer &OutValue,const TopAbs_Orientation Orient,const TopAbs_Orientation Trans,const TopAbs_Orientation BTrans);
+		 TopBas_TestInterference (const Standard_Real & Inters,const Standard_Integer & Bound,const TopAbs_Orientation Orient,const TopAbs_Orientation Trans,const TopAbs_Orientation BTrans);
 		%feature("autodoc", "	:param I:
 	:type I: float &
 	:rtype: None
@@ -298,7 +298,7 @@ class TopBas_TestInterference {
 	:type B: Standard_Integer &
 	:rtype: None
 ") Boundary;
-		void Boundary (Standard_Integer &OutValue);
+		void Boundary (const Standard_Integer & B);
 		%feature("autodoc", "	:param O:
 	:type O: TopAbs_Orientation
 	:rtype: None

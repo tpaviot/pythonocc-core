@@ -2327,7 +2327,7 @@ class Storage_IndexedDataMapNodeOfPType : public TCollection_MapNode {
 	:type n2: TCollection_MapNodePtr &
 	:rtype: None
 ") Storage_IndexedDataMapNodeOfPType;
-		 Storage_IndexedDataMapNodeOfPType (const TCollection_AsciiString & K1,const Standard_Integer K2,Standard_Integer &OutValue,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
+		 Storage_IndexedDataMapNodeOfPType (const TCollection_AsciiString & K1,const Standard_Integer K2,const Standard_Integer & I,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
 		%feature("autodoc", "	:rtype: TCollection_AsciiString
 ") Key1;
 		TCollection_AsciiString & Key1 ();
@@ -2790,7 +2790,7 @@ class Storage_PType : public TCollection_BasicMap {
 	:type I: Standard_Integer &
 	:rtype: int
 ") Add;
-		Standard_Integer Add (const TCollection_AsciiString & K,Standard_Integer &OutValue);
+		Standard_Integer Add (const TCollection_AsciiString & K,const Standard_Integer & I);
 		%feature("autodoc", "	:param I:
 	:type I: Standard_Integer
 	:param K:
@@ -2799,7 +2799,7 @@ class Storage_PType : public TCollection_BasicMap {
 	:type T: Standard_Integer &
 	:rtype: None
 ") Substitute;
-		void Substitute (const Standard_Integer I,const TCollection_AsciiString & K,Standard_Integer &OutValue);
+		void Substitute (const Standard_Integer I,const TCollection_AsciiString & K,const Standard_Integer & T);
 		%feature("autodoc", "	:rtype: None
 ") RemoveLast;
 		void RemoveLast ();

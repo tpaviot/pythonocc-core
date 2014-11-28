@@ -1062,7 +1062,7 @@ class BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger : public TCollection_M
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger;
-		 BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger (Standard_Integer &OutValue,const BRepMesh_ListOfInteger & I,const TCollection_MapNodePtr & n);
+		 BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger (const Standard_Integer & K,const BRepMesh_ListOfInteger & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -1146,7 +1146,7 @@ class BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY : public TCollection_MapNod
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY;
-		 BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY (Standard_Integer &OutValue,const BRepMesh_ListOfXY & I,const TCollection_MapNodePtr & n);
+		 BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY (const Standard_Integer & K,const BRepMesh_ListOfXY & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -1230,7 +1230,7 @@ class BRepMesh_DataMapNodeOfDataMapOfIntegerPnt : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") BRepMesh_DataMapNodeOfDataMapOfIntegerPnt;
-		 BRepMesh_DataMapNodeOfDataMapOfIntegerPnt (Standard_Integer &OutValue,const gp_Pnt & I,const TCollection_MapNodePtr & n);
+		 BRepMesh_DataMapNodeOfDataMapOfIntegerPnt (const Standard_Integer & K,const gp_Pnt & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -1472,7 +1472,7 @@ class BRepMesh_DataMapNodeOfDataMapOfVertexInteger : public TCollection_MapNode 
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") BRepMesh_DataMapNodeOfDataMapOfVertexInteger;
-		 BRepMesh_DataMapNodeOfDataMapOfVertexInteger (const TopoDS_Vertex & K,Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
+		 BRepMesh_DataMapNodeOfDataMapOfVertexInteger (const TopoDS_Vertex & K,const Standard_Integer & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Vertex
 ") Key;
 		TopoDS_Vertex  Key ();
@@ -1657,37 +1657,37 @@ class BRepMesh_DataMapOfIntegerListOfInteger : public TCollection_BasicMap {
 	:type I: BRepMesh_ListOfInteger &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const BRepMesh_ListOfInteger & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const BRepMesh_ListOfInteger & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: BRepMesh_ListOfInteger
 ") Find;
-		const BRepMesh_ListOfInteger & Find (Standard_Integer &OutValue);
+		const BRepMesh_ListOfInteger & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: BRepMesh_ListOfInteger
 ") ChangeFind;
-		BRepMesh_ListOfInteger & ChangeFind (Standard_Integer &OutValue);
+		BRepMesh_ListOfInteger & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -1737,37 +1737,37 @@ class BRepMesh_DataMapOfIntegerListOfXY : public TCollection_BasicMap {
 	:type I: BRepMesh_ListOfXY &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const BRepMesh_ListOfXY & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const BRepMesh_ListOfXY & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: BRepMesh_ListOfXY
 ") Find;
-		const BRepMesh_ListOfXY & Find (Standard_Integer &OutValue);
+		const BRepMesh_ListOfXY & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: BRepMesh_ListOfXY
 ") ChangeFind;
-		BRepMesh_ListOfXY & ChangeFind (Standard_Integer &OutValue);
+		BRepMesh_ListOfXY & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -1817,37 +1817,37 @@ class BRepMesh_DataMapOfIntegerPnt : public TCollection_BasicMap {
 	:type I: gp_Pnt
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const gp_Pnt & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const gp_Pnt & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: gp_Pnt
 ") Find;
-		const gp_Pnt  Find (Standard_Integer &OutValue);
+		const gp_Pnt  Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: gp_Pnt
 ") ChangeFind;
-		gp_Pnt  ChangeFind (Standard_Integer &OutValue);
+		gp_Pnt  ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -2057,7 +2057,7 @@ class BRepMesh_DataMapOfVertexInteger : public TCollection_BasicMap {
 	:type I: Standard_Integer &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (const TopoDS_Vertex & K,Standard_Integer &OutValue);
+		Standard_Boolean Bind (const TopoDS_Vertex & K,const Standard_Integer & I);
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Vertex &
 	:rtype: bool
