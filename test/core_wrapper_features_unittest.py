@@ -30,7 +30,7 @@ from OCC.GCE2d import GCE2d_MakeSegment
 from OCC.ShapeFix import ShapeFix_Solid, ShapeFix_Wire
 from OCC.TopoDS import TopoDS_Compound, TopoDS_Builder
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeCylinder
-from OCC.TColStd import TColStd_Array1OfReal
+from OCC.TColStd import TColStd_Array1OfReal, TColStd_Array1OfInteger
 from OCC.TopExp import TopExp_Explorer
 from OCC.TopAbs import TopAbs_FACE
 
@@ -52,6 +52,16 @@ class TestWrapperFeatures(unittest.TestCase):
         t = TColStd_Array1OfReal(1, 10)
         t.SetValue(3, 3.14)
         self.assertEqual(t.Value(3), 3.14)
+
+    def test_const_Standard_Integer_byref(self):
+        '''
+        Test wrapper for const Standard_Integer &
+        '''
+        t = TColStd_Array1OfInteger(1, 2)
+        t.SetValue(1, 3)
+        t.SetValue(2, 33)
+        self.assertEqual(t.Value(1), 3)
+        self.assertEqual(t.Value(2), 33)
 
     def test_list(self):
         '''
