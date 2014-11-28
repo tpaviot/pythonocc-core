@@ -101,7 +101,7 @@ class Dico_DictionaryOfInteger : public MMgt_TShared {
 	:type exact: bool
 	:rtype: None
 ") SetItem;
-		void SetItem (const char * name,Standard_Integer &OutValue,const Standard_Boolean exact = Standard_True);
+		void SetItem (const char * name,const Standard_Integer & anitem,const Standard_Boolean exact = Standard_True);
 		%feature("autodoc", "	:param name:
 	:type name: TCollection_AsciiString &
 	:param anitem:
@@ -110,7 +110,7 @@ class Dico_DictionaryOfInteger : public MMgt_TShared {
 	:type exact: bool
 	:rtype: None
 ") SetItem;
-		void SetItem (const TCollection_AsciiString & name,Standard_Integer &OutValue,const Standard_Boolean exact = Standard_True);
+		void SetItem (const TCollection_AsciiString & name,const Standard_Integer & anitem,const Standard_Boolean exact = Standard_True);
 		%feature("autodoc", "	:param name:
 	:type name: char *
 	:param isvalued:

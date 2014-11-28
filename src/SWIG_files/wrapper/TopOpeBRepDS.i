@@ -1590,7 +1590,7 @@ class TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus : public TCollection_MapNod
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus;
-		 TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus (Standard_Integer &OutValue,const TopOpeBRepDS_CheckStatus & I,const TCollection_MapNodePtr & n);
+		 TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus (const Standard_Integer & K,const TopOpeBRepDS_CheckStatus & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -1674,7 +1674,7 @@ class TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference : public TCol
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference;
-		 TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference (Standard_Integer &OutValue,const TopOpeBRepDS_ListOfInterference & I,const TCollection_MapNodePtr & n);
+		 TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference (const Standard_Integer & K,const TopOpeBRepDS_ListOfInterference & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -2054,7 +2054,7 @@ class TopOpeBRepDS_DataMapNodeOfMapOfCurve : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") TopOpeBRepDS_DataMapNodeOfMapOfCurve;
-		 TopOpeBRepDS_DataMapNodeOfMapOfCurve (Standard_Integer &OutValue,const TopOpeBRepDS_CurveData & I,const TCollection_MapNodePtr & n);
+		 TopOpeBRepDS_DataMapNodeOfMapOfCurve (const Standard_Integer & K,const TopOpeBRepDS_CurveData & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -2138,7 +2138,7 @@ class TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData : public TCollection_MapNo
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData;
-		 TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData (Standard_Integer &OutValue,const TopOpeBRepDS_ShapeData & I,const TCollection_MapNodePtr & n);
+		 TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData (const Standard_Integer & K,const TopOpeBRepDS_ShapeData & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -2222,7 +2222,7 @@ class TopOpeBRepDS_DataMapNodeOfMapOfPoint : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") TopOpeBRepDS_DataMapNodeOfMapOfPoint;
-		 TopOpeBRepDS_DataMapNodeOfMapOfPoint (Standard_Integer &OutValue,const TopOpeBRepDS_PointData & I,const TCollection_MapNodePtr & n);
+		 TopOpeBRepDS_DataMapNodeOfMapOfPoint (const Standard_Integer & K,const TopOpeBRepDS_PointData & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -2306,7 +2306,7 @@ class TopOpeBRepDS_DataMapNodeOfMapOfSurface : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") TopOpeBRepDS_DataMapNodeOfMapOfSurface;
-		 TopOpeBRepDS_DataMapNodeOfMapOfSurface (Standard_Integer &OutValue,const TopOpeBRepDS_SurfaceData & I,const TCollection_MapNodePtr & n);
+		 TopOpeBRepDS_DataMapNodeOfMapOfSurface (const Standard_Integer & K,const TopOpeBRepDS_SurfaceData & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -2485,37 +2485,37 @@ class TopOpeBRepDS_DataMapOfCheckStatus : public TCollection_BasicMap {
 	:type I: TopOpeBRepDS_CheckStatus &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const TopOpeBRepDS_CheckStatus & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const TopOpeBRepDS_CheckStatus & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: TopOpeBRepDS_CheckStatus
 ") Find;
-		const TopOpeBRepDS_CheckStatus & Find (Standard_Integer &OutValue);
+		const TopOpeBRepDS_CheckStatus & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: TopOpeBRepDS_CheckStatus
 ") ChangeFind;
-		TopOpeBRepDS_CheckStatus & ChangeFind (Standard_Integer &OutValue);
+		TopOpeBRepDS_CheckStatus & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -2565,37 +2565,37 @@ class TopOpeBRepDS_DataMapOfIntegerListOfInterference : public TCollection_Basic
 	:type I: TopOpeBRepDS_ListOfInterference &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const TopOpeBRepDS_ListOfInterference & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const TopOpeBRepDS_ListOfInterference & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: TopOpeBRepDS_ListOfInterference
 ") Find;
-		const TopOpeBRepDS_ListOfInterference & Find (Standard_Integer &OutValue);
+		const TopOpeBRepDS_ListOfInterference & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: TopOpeBRepDS_ListOfInterference
 ") ChangeFind;
-		TopOpeBRepDS_ListOfInterference & ChangeFind (Standard_Integer &OutValue);
+		TopOpeBRepDS_ListOfInterference & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -3580,7 +3580,7 @@ class TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape : public TCollection_M
 	:type n2: TCollection_MapNodePtr &
 	:rtype: None
 ") TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape;
-		 TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape (Standard_Integer &OutValue,const TopoDS_Shape & K2,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
+		 TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape (const Standard_Integer & K1,const TopoDS_Shape & K2,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
 
             %feature("autodoc","1");
             %extend {
@@ -3688,19 +3688,19 @@ class TopOpeBRepDS_DoubleMapOfIntegerShape : public TCollection_BasicMap {
 	:type K2: TopoDS_Shape &
 	:rtype: None
 ") Bind;
-		void Bind (Standard_Integer &OutValue,const TopoDS_Shape & K2);
+		void Bind (const Standard_Integer & K1,const TopoDS_Shape & K2);
 		%feature("autodoc", "	:param K1:
 	:type K1: Standard_Integer &
 	:param K2:
 	:type K2: TopoDS_Shape &
 	:rtype: bool
 ") AreBound;
-		Standard_Boolean AreBound (Standard_Integer &OutValue,const TopoDS_Shape & K2);
+		Standard_Boolean AreBound (const Standard_Integer & K1,const TopoDS_Shape & K2);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound1;
-		Standard_Boolean IsBound1 (Standard_Integer &OutValue);
+		Standard_Boolean IsBound1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
 	:rtype: bool
@@ -3710,7 +3710,7 @@ class TopOpeBRepDS_DoubleMapOfIntegerShape : public TCollection_BasicMap {
 	:type K: Standard_Integer &
 	:rtype: TopoDS_Shape
 ") Find1;
-		const TopoDS_Shape  Find1 (Standard_Integer &OutValue);
+		const TopoDS_Shape  Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
 	:rtype: int
@@ -3720,7 +3720,7 @@ class TopOpeBRepDS_DoubleMapOfIntegerShape : public TCollection_BasicMap {
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind1;
-		Standard_Boolean UnBind1 (Standard_Integer &OutValue);
+		Standard_Boolean UnBind1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
 	:rtype: bool
@@ -5941,37 +5941,37 @@ class TopOpeBRepDS_MapOfCurve : public TCollection_BasicMap {
 	:type I: TopOpeBRepDS_CurveData &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const TopOpeBRepDS_CurveData & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const TopOpeBRepDS_CurveData & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: TopOpeBRepDS_CurveData
 ") Find;
-		const TopOpeBRepDS_CurveData & Find (Standard_Integer &OutValue);
+		const TopOpeBRepDS_CurveData & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: TopOpeBRepDS_CurveData
 ") ChangeFind;
-		TopOpeBRepDS_CurveData & ChangeFind (Standard_Integer &OutValue);
+		TopOpeBRepDS_CurveData & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -6021,37 +6021,37 @@ class TopOpeBRepDS_MapOfIntegerShapeData : public TCollection_BasicMap {
 	:type I: TopOpeBRepDS_ShapeData &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const TopOpeBRepDS_ShapeData & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const TopOpeBRepDS_ShapeData & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: TopOpeBRepDS_ShapeData
 ") Find;
-		const TopOpeBRepDS_ShapeData & Find (Standard_Integer &OutValue);
+		const TopOpeBRepDS_ShapeData & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: TopOpeBRepDS_ShapeData
 ") ChangeFind;
-		TopOpeBRepDS_ShapeData & ChangeFind (Standard_Integer &OutValue);
+		TopOpeBRepDS_ShapeData & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -6101,37 +6101,37 @@ class TopOpeBRepDS_MapOfPoint : public TCollection_BasicMap {
 	:type I: TopOpeBRepDS_PointData &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const TopOpeBRepDS_PointData & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const TopOpeBRepDS_PointData & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: TopOpeBRepDS_PointData
 ") Find;
-		const TopOpeBRepDS_PointData & Find (Standard_Integer &OutValue);
+		const TopOpeBRepDS_PointData & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: TopOpeBRepDS_PointData
 ") ChangeFind;
-		TopOpeBRepDS_PointData & ChangeFind (Standard_Integer &OutValue);
+		TopOpeBRepDS_PointData & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -6288,37 +6288,37 @@ class TopOpeBRepDS_MapOfSurface : public TCollection_BasicMap {
 	:type I: TopOpeBRepDS_SurfaceData &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const TopOpeBRepDS_SurfaceData & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const TopOpeBRepDS_SurfaceData & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: TopOpeBRepDS_SurfaceData
 ") Find;
-		const TopOpeBRepDS_SurfaceData & Find (Standard_Integer &OutValue);
+		const TopOpeBRepDS_SurfaceData & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: TopOpeBRepDS_SurfaceData
 ") ChangeFind;
-		TopOpeBRepDS_SurfaceData & ChangeFind (Standard_Integer &OutValue);
+		TopOpeBRepDS_SurfaceData & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 

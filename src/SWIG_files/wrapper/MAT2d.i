@@ -801,7 +801,7 @@ class MAT2d_DataMapNodeOfDataMapOfBiIntInteger : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") MAT2d_DataMapNodeOfDataMapOfBiIntInteger;
-		 MAT2d_DataMapNodeOfDataMapOfBiIntInteger (const MAT2d_BiInt & K,Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
+		 MAT2d_DataMapNodeOfDataMapOfBiIntInteger (const MAT2d_BiInt & K,const Standard_Integer & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: MAT2d_BiInt
 ") Key;
 		MAT2d_BiInt & Key ();
@@ -959,7 +959,7 @@ class MAT2d_DataMapNodeOfDataMapOfIntegerBisec : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") MAT2d_DataMapNodeOfDataMapOfIntegerBisec;
-		 MAT2d_DataMapNodeOfDataMapOfIntegerBisec (Standard_Integer &OutValue,const Bisector_Bisec & I,const TCollection_MapNodePtr & n);
+		 MAT2d_DataMapNodeOfDataMapOfIntegerBisec (const Standard_Integer & K,const Bisector_Bisec & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -1043,7 +1043,7 @@ class MAT2d_DataMapNodeOfDataMapOfIntegerConnexion : public TCollection_MapNode 
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") MAT2d_DataMapNodeOfDataMapOfIntegerConnexion;
-		 MAT2d_DataMapNodeOfDataMapOfIntegerConnexion (Standard_Integer &OutValue,const Handle_MAT2d_Connexion & I,const TCollection_MapNodePtr & n);
+		 MAT2d_DataMapNodeOfDataMapOfIntegerConnexion (const Standard_Integer & K,const Handle_MAT2d_Connexion & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -1127,7 +1127,7 @@ class MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d;
-		 MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d (Standard_Integer &OutValue,const gp_Pnt2d & I,const TCollection_MapNodePtr & n);
+		 MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d (const Standard_Integer & K,const gp_Pnt2d & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -1211,7 +1211,7 @@ class MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion : public TCollectio
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion;
-		 MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion (Standard_Integer &OutValue,const MAT2d_SequenceOfConnexion & I,const TCollection_MapNodePtr & n);
+		 MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion (const Standard_Integer & K,const MAT2d_SequenceOfConnexion & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -1295,7 +1295,7 @@ class MAT2d_DataMapNodeOfDataMapOfIntegerVec2d : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") MAT2d_DataMapNodeOfDataMapOfIntegerVec2d;
-		 MAT2d_DataMapNodeOfDataMapOfIntegerVec2d (Standard_Integer &OutValue,const gp_Vec2d & I,const TCollection_MapNodePtr & n);
+		 MAT2d_DataMapNodeOfDataMapOfIntegerVec2d (const Standard_Integer & K,const gp_Vec2d & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -1400,7 +1400,7 @@ class MAT2d_DataMapOfBiIntInteger : public TCollection_BasicMap {
 	:type I: Standard_Integer &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (const MAT2d_BiInt & K,Standard_Integer &OutValue);
+		Standard_Boolean Bind (const MAT2d_BiInt & K,const Standard_Integer & I);
 		%feature("autodoc", "	:param K:
 	:type K: MAT2d_BiInt &
 	:rtype: bool
@@ -1560,37 +1560,37 @@ class MAT2d_DataMapOfIntegerBisec : public TCollection_BasicMap {
 	:type I: Bisector_Bisec &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const Bisector_Bisec & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const Bisector_Bisec & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Bisector_Bisec
 ") Find;
-		const Bisector_Bisec & Find (Standard_Integer &OutValue);
+		const Bisector_Bisec & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Bisector_Bisec
 ") ChangeFind;
-		Bisector_Bisec & ChangeFind (Standard_Integer &OutValue);
+		Bisector_Bisec & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -1640,37 +1640,37 @@ class MAT2d_DataMapOfIntegerConnexion : public TCollection_BasicMap {
 	:type I: Handle_MAT2d_Connexion &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const Handle_MAT2d_Connexion & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const Handle_MAT2d_Connexion & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Handle_MAT2d_Connexion
 ") Find;
-		const Handle_MAT2d_Connexion & Find (Standard_Integer &OutValue);
+		const Handle_MAT2d_Connexion & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Handle_MAT2d_Connexion
 ") ChangeFind;
-		Handle_MAT2d_Connexion & ChangeFind (Standard_Integer &OutValue);
+		Handle_MAT2d_Connexion & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -1720,37 +1720,37 @@ class MAT2d_DataMapOfIntegerPnt2d : public TCollection_BasicMap {
 	:type I: gp_Pnt2d
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const gp_Pnt2d & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const gp_Pnt2d & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: gp_Pnt2d
 ") Find;
-		const gp_Pnt2d  Find (Standard_Integer &OutValue);
+		const gp_Pnt2d  Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: gp_Pnt2d
 ") ChangeFind;
-		gp_Pnt2d  ChangeFind (Standard_Integer &OutValue);
+		gp_Pnt2d  ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -1800,37 +1800,37 @@ class MAT2d_DataMapOfIntegerSequenceOfConnexion : public TCollection_BasicMap {
 	:type I: MAT2d_SequenceOfConnexion &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const MAT2d_SequenceOfConnexion & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const MAT2d_SequenceOfConnexion & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: MAT2d_SequenceOfConnexion
 ") Find;
-		const MAT2d_SequenceOfConnexion & Find (Standard_Integer &OutValue);
+		const MAT2d_SequenceOfConnexion & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: MAT2d_SequenceOfConnexion
 ") ChangeFind;
-		MAT2d_SequenceOfConnexion & ChangeFind (Standard_Integer &OutValue);
+		MAT2d_SequenceOfConnexion & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -1880,37 +1880,37 @@ class MAT2d_DataMapOfIntegerVec2d : public TCollection_BasicMap {
 	:type I: gp_Vec2d
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const gp_Vec2d & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const gp_Vec2d & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: gp_Vec2d
 ") Find;
-		const gp_Vec2d  Find (Standard_Integer &OutValue);
+		const gp_Vec2d  Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: gp_Vec2d
 ") ChangeFind;
-		gp_Vec2d  ChangeFind (Standard_Integer &OutValue);
+		gp_Vec2d  ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 

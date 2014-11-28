@@ -474,12 +474,12 @@ class TColStd_Array1OfInteger {
 	:type Up: Standard_Integer
 	:rtype: None
 ") TColStd_Array1OfInteger;
-		 TColStd_Array1OfInteger (Standard_Integer &OutValue,const Standard_Integer Low,const Standard_Integer Up);
+		 TColStd_Array1OfInteger (const Standard_Integer & Item,const Standard_Integer Low,const Standard_Integer Up);
 		%feature("autodoc", "	:param V:
 	:type V: Standard_Integer &
 	:rtype: None
 ") Init;
-		void Init (Standard_Integer &OutValue);
+		void Init (const Standard_Integer & V);
 		%feature("autodoc", "	:rtype: None
 ") Destroy;
 		void Destroy ();
@@ -511,7 +511,7 @@ class TColStd_Array1OfInteger {
 	:type Value: Standard_Integer &
 	:rtype: None
 ") SetValue;
-		void SetValue (const Standard_Integer Index,Standard_Integer &OutValue);
+		void SetValue (const Standard_Integer Index,const Standard_Integer & Value);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: int
@@ -1020,12 +1020,12 @@ class TColStd_Array2OfInteger {
 	:type C2: Standard_Integer
 	:rtype: None
 ") TColStd_Array2OfInteger;
-		 TColStd_Array2OfInteger (Standard_Integer &OutValue,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+		 TColStd_Array2OfInteger (const Standard_Integer & Item,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
 		%feature("autodoc", "	:param V:
 	:type V: Standard_Integer &
 	:rtype: None
 ") Init;
-		void Init (Standard_Integer &OutValue);
+		void Init (const Standard_Integer & V);
 		%feature("autodoc", "	:rtype: None
 ") Destroy;
 		void Destroy ();
@@ -1065,7 +1065,7 @@ class TColStd_Array2OfInteger {
 	:type Value: Standard_Integer &
 	:rtype: None
 ") SetValue;
-		void SetValue (const Standard_Integer Row,const Standard_Integer Col,Standard_Integer &OutValue);
+		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Standard_Integer & Value);
 		%feature("autodoc", "	:param Row:
 	:type Row: Standard_Integer
 	:param Col:
@@ -1587,7 +1587,7 @@ class TColStd_DataMapNodeOfDataMapOfAsciiStringInteger : public TCollection_MapN
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") TColStd_DataMapNodeOfDataMapOfAsciiStringInteger;
-		 TColStd_DataMapNodeOfDataMapOfAsciiStringInteger (const TCollection_AsciiString & K,Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
+		 TColStd_DataMapNodeOfDataMapOfAsciiStringInteger (const TCollection_AsciiString & K,const Standard_Integer & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TCollection_AsciiString
 ") Key;
 		TCollection_AsciiString & Key ();
@@ -1671,7 +1671,7 @@ class TColStd_DataMapNodeOfDataMapOfIntegerInteger : public TCollection_MapNode 
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") TColStd_DataMapNodeOfDataMapOfIntegerInteger;
-		 TColStd_DataMapNodeOfDataMapOfIntegerInteger (Standard_Integer &OutValue,Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
+		 TColStd_DataMapNodeOfDataMapOfIntegerInteger (const Standard_Integer & K,const Standard_Integer & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -1765,7 +1765,7 @@ class TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger : public TCollection_Ma
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger;
-		 TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger (Standard_Integer &OutValue,const TColStd_ListOfInteger & I,const TCollection_MapNodePtr & n);
+		 TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger (const Standard_Integer & K,const TColStd_ListOfInteger & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -1849,7 +1849,7 @@ class TColStd_DataMapNodeOfDataMapOfIntegerReal : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") TColStd_DataMapNodeOfDataMapOfIntegerReal;
-		 TColStd_DataMapNodeOfDataMapOfIntegerReal (Standard_Integer &OutValue,const Standard_Real & I,const TCollection_MapNodePtr & n);
+		 TColStd_DataMapNodeOfDataMapOfIntegerReal (const Standard_Integer & K,const Standard_Real & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -1943,7 +1943,7 @@ class TColStd_DataMapNodeOfDataMapOfIntegerTransient : public TCollection_MapNod
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") TColStd_DataMapNodeOfDataMapOfIntegerTransient;
-		 TColStd_DataMapNodeOfDataMapOfIntegerTransient (Standard_Integer &OutValue,const Handle_Standard_Transient & I,const TCollection_MapNodePtr & n);
+		 TColStd_DataMapNodeOfDataMapOfIntegerTransient (const Standard_Integer & K,const Handle_Standard_Transient & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -2027,7 +2027,7 @@ class TColStd_DataMapNodeOfDataMapOfStringInteger : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") TColStd_DataMapNodeOfDataMapOfStringInteger;
-		 TColStd_DataMapNodeOfDataMapOfStringInteger (const TCollection_ExtendedString & K,Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
+		 TColStd_DataMapNodeOfDataMapOfStringInteger (const TCollection_ExtendedString & K,const Standard_Integer & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TCollection_ExtendedString
 ") Key;
 		TCollection_ExtendedString & Key ();
@@ -2206,7 +2206,7 @@ class TColStd_DataMapOfAsciiStringInteger : public TCollection_BasicMap {
 	:type I: Standard_Integer &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (const TCollection_AsciiString & K,Standard_Integer &OutValue);
+		Standard_Boolean Bind (const TCollection_AsciiString & K,const Standard_Integer & I);
 		%feature("autodoc", "	:param K:
 	:type K: TCollection_AsciiString &
 	:rtype: bool
@@ -2286,37 +2286,37 @@ class TColStd_DataMapOfIntegerInteger : public TCollection_BasicMap {
 	:type I: Standard_Integer &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,Standard_Integer &OutValue);
+		Standard_Boolean Bind (const Standard_Integer & K,const Standard_Integer & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: int
 ") Find;
-		const Standard_Integer & Find (Standard_Integer &OutValue);
+		const Standard_Integer & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: int
 ") ChangeFind;
-		Standard_Integer & ChangeFind (Standard_Integer &OutValue);
+		Standard_Integer & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -2366,37 +2366,37 @@ class TColStd_DataMapOfIntegerListOfInteger : public TCollection_BasicMap {
 	:type I: TColStd_ListOfInteger &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const TColStd_ListOfInteger & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const TColStd_ListOfInteger & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: TColStd_ListOfInteger
 ") Find;
-		const TColStd_ListOfInteger & Find (Standard_Integer &OutValue);
+		const TColStd_ListOfInteger & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: TColStd_ListOfInteger
 ") ChangeFind;
-		TColStd_ListOfInteger & ChangeFind (Standard_Integer &OutValue);
+		TColStd_ListOfInteger & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -2446,37 +2446,37 @@ class TColStd_DataMapOfIntegerReal : public TCollection_BasicMap {
 	:type I: float &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const Standard_Real & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const Standard_Real & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: float
 ") Find;
-		const Standard_Real & Find (Standard_Integer &OutValue);
+		const Standard_Real & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: float
 ") ChangeFind;
-		Standard_Real & ChangeFind (Standard_Integer &OutValue);
+		Standard_Real & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -2526,37 +2526,37 @@ class TColStd_DataMapOfIntegerTransient : public TCollection_BasicMap {
 	:type I: Handle_Standard_Transient &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const Handle_Standard_Transient & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const Handle_Standard_Transient & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Handle_Standard_Transient
 ") Find;
-		const Handle_Standard_Transient & Find (Standard_Integer &OutValue);
+		const Handle_Standard_Transient & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Handle_Standard_Transient
 ") ChangeFind;
-		Handle_Standard_Transient & ChangeFind (Standard_Integer &OutValue);
+		Handle_Standard_Transient & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -2606,7 +2606,7 @@ class TColStd_DataMapOfStringInteger : public TCollection_BasicMap {
 	:type I: Standard_Integer &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (const TCollection_ExtendedString & K,Standard_Integer &OutValue);
+		Standard_Boolean Bind (const TCollection_ExtendedString & K,const Standard_Integer & I);
 		%feature("autodoc", "	:param K:
 	:type K: TCollection_ExtendedString &
 	:rtype: bool
@@ -3312,12 +3312,12 @@ class TColStd_HArray1OfInteger : public MMgt_TShared {
 	:type V: Standard_Integer &
 	:rtype: None
 ") TColStd_HArray1OfInteger;
-		 TColStd_HArray1OfInteger (const Standard_Integer Low,const Standard_Integer Up,Standard_Integer &OutValue);
+		 TColStd_HArray1OfInteger (const Standard_Integer Low,const Standard_Integer Up,const Standard_Integer & V);
 		%feature("autodoc", "	:param V:
 	:type V: Standard_Integer &
 	:rtype: None
 ") Init;
-		void Init (Standard_Integer &OutValue);
+		void Init (const Standard_Integer & V);
 		%feature("autodoc", "	:rtype: int
 ") Length;
 		Standard_Integer Length ();
@@ -3333,7 +3333,7 @@ class TColStd_HArray1OfInteger : public MMgt_TShared {
 	:type Value: Standard_Integer &
 	:rtype: None
 ") SetValue;
-		void SetValue (const Standard_Integer Index,Standard_Integer &OutValue);
+		void SetValue (const Standard_Integer Index,const Standard_Integer & Value);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: int
@@ -4038,12 +4038,12 @@ class TColStd_HArray2OfInteger : public MMgt_TShared {
 	:type V: Standard_Integer &
 	:rtype: None
 ") TColStd_HArray2OfInteger;
-		 TColStd_HArray2OfInteger (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,Standard_Integer &OutValue);
+		 TColStd_HArray2OfInteger (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Standard_Integer & V);
 		%feature("autodoc", "	:param V:
 	:type V: Standard_Integer &
 	:rtype: None
 ") Init;
-		void Init (Standard_Integer &OutValue);
+		void Init (const Standard_Integer & V);
 		%feature("autodoc", "	:rtype: int
 ") ColLength;
 		Standard_Integer ColLength ();
@@ -4070,7 +4070,7 @@ class TColStd_HArray2OfInteger : public MMgt_TShared {
 	:type Value: Standard_Integer &
 	:rtype: None
 ") SetValue;
-		void SetValue (const Standard_Integer Row,const Standard_Integer Col,Standard_Integer &OutValue);
+		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Standard_Integer & Value);
 		%feature("autodoc", "	:param Row:
 	:type Row: Standard_Integer
 	:param Col:
@@ -5199,7 +5199,7 @@ class TColStd_HSequenceOfInteger : public MMgt_TShared {
 	:type anItem: Standard_Integer &
 	:rtype: None
 ") Append;
-		void Append (Standard_Integer &OutValue);
+		void Append (const Standard_Integer & anItem);
 		%feature("autodoc", "	:param aSequence:
 	:type aSequence: Handle_TColStd_HSequenceOfInteger &
 	:rtype: None
@@ -5209,7 +5209,7 @@ class TColStd_HSequenceOfInteger : public MMgt_TShared {
 	:type anItem: Standard_Integer &
 	:rtype: None
 ") Prepend;
-		void Prepend (Standard_Integer &OutValue);
+		void Prepend (const Standard_Integer & anItem);
 		%feature("autodoc", "	:param aSequence:
 	:type aSequence: Handle_TColStd_HSequenceOfInteger &
 	:rtype: None
@@ -5224,7 +5224,7 @@ class TColStd_HSequenceOfInteger : public MMgt_TShared {
 	:type anItem: Standard_Integer &
 	:rtype: None
 ") InsertBefore;
-		void InsertBefore (const Standard_Integer anIndex,Standard_Integer &OutValue);
+		void InsertBefore (const Standard_Integer anIndex,const Standard_Integer & anItem);
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: Standard_Integer
 	:param aSequence:
@@ -5238,7 +5238,7 @@ class TColStd_HSequenceOfInteger : public MMgt_TShared {
 	:type anItem: Standard_Integer &
 	:rtype: None
 ") InsertAfter;
-		void InsertAfter (const Standard_Integer anIndex,Standard_Integer &OutValue);
+		void InsertAfter (const Standard_Integer anIndex,const Standard_Integer & anItem);
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: Standard_Integer
 	:param aSequence:
@@ -5264,7 +5264,7 @@ class TColStd_HSequenceOfInteger : public MMgt_TShared {
 	:type anItem: Standard_Integer &
 	:rtype: None
 ") SetValue;
-		void SetValue (const Standard_Integer anIndex,Standard_Integer &OutValue);
+		void SetValue (const Standard_Integer anIndex,const Standard_Integer & anItem);
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: Standard_Integer
 	:rtype: int
@@ -5715,12 +5715,12 @@ class TColStd_HSetOfInteger : public MMgt_TShared {
 	:type T: Standard_Integer &
 	:rtype: bool
 ") Add;
-		Standard_Boolean Add (Standard_Integer &OutValue);
+		Standard_Boolean Add (const Standard_Integer & T);
 		%feature("autodoc", "	:param T:
 	:type T: Standard_Integer &
 	:rtype: bool
 ") Remove;
-		Standard_Boolean Remove (Standard_Integer &OutValue);
+		Standard_Boolean Remove (const Standard_Integer & T);
 		%feature("autodoc", "	:param B:
 	:type B: Handle_TColStd_HSetOfInteger &
 	:rtype: Handle_TColStd_HSetOfInteger
@@ -5740,7 +5740,7 @@ class TColStd_HSetOfInteger : public MMgt_TShared {
 	:type T: Standard_Integer &
 	:rtype: bool
 ") Contains;
-		Standard_Boolean Contains (Standard_Integer &OutValue);
+		Standard_Boolean Contains (const Standard_Integer & T);
 		%feature("autodoc", "	:param S:
 	:type S: Handle_TColStd_HSetOfInteger &
 	:rtype: bool
@@ -6270,7 +6270,7 @@ class TColStd_IndexedMapNodeOfIndexedMapOfInteger : public TCollection_MapNode {
 	:type n2: TCollection_MapNodePtr &
 	:rtype: None
 ") TColStd_IndexedMapNodeOfIndexedMapOfInteger;
-		 TColStd_IndexedMapNodeOfIndexedMapOfInteger (Standard_Integer &OutValue,const Standard_Integer K2,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
+		 TColStd_IndexedMapNodeOfIndexedMapOfInteger (const Standard_Integer & K1,const Standard_Integer K2,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
 
             %feature("autodoc","1");
             %extend {
@@ -6574,14 +6574,14 @@ class TColStd_IndexedMapOfInteger : public TCollection_BasicMap {
 	:type K: Standard_Integer &
 	:rtype: int
 ") Add;
-		Standard_Integer Add (Standard_Integer &OutValue);
+		Standard_Integer Add (const Standard_Integer & K);
 		%feature("autodoc", "	:param I:
 	:type I: Standard_Integer
 	:param K:
 	:type K: Standard_Integer &
 	:rtype: None
 ") Substitute;
-		void Substitute (const Standard_Integer I,Standard_Integer &OutValue);
+		void Substitute (const Standard_Integer I,const Standard_Integer & K);
 		%feature("autodoc", "	:rtype: None
 ") RemoveLast;
 		void RemoveLast ();
@@ -6589,7 +6589,7 @@ class TColStd_IndexedMapOfInteger : public TCollection_BasicMap {
 	:type K: Standard_Integer &
 	:rtype: bool
 ") Contains;
-		Standard_Boolean Contains (Standard_Integer &OutValue);
+		Standard_Boolean Contains (const Standard_Integer & K);
 		%feature("autodoc", "	:param I:
 	:type I: Standard_Integer
 	:rtype: int
@@ -6599,7 +6599,7 @@ class TColStd_IndexedMapOfInteger : public TCollection_BasicMap {
 	:type K: Standard_Integer &
 	:rtype: int
 ") FindIndex;
-		Standard_Integer FindIndex (Standard_Integer &OutValue);
+		Standard_Integer FindIndex (const Standard_Integer & K);
 };
 
 
@@ -7175,7 +7175,7 @@ class TColStd_ListNodeOfListOfInteger : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") TColStd_ListNodeOfListOfInteger;
-		 TColStd_ListNodeOfListOfInteger (Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
+		 TColStd_ListNodeOfListOfInteger (const Standard_Integer & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -7402,7 +7402,7 @@ class TColStd_ListNodeOfSetListOfSetOfInteger : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") TColStd_ListNodeOfSetListOfSetOfInteger;
-		 TColStd_ListNodeOfSetListOfSetOfInteger (Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
+		 TColStd_ListNodeOfSetListOfSetOfInteger (const Standard_Integer & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -7767,14 +7767,14 @@ class TColStd_ListOfInteger {
 	:type I: Standard_Integer &
 	:rtype: None
 ") Prepend;
-		void Prepend (Standard_Integer &OutValue);
+		void Prepend (const Standard_Integer & I);
 		%feature("autodoc", "	:param I:
 	:type I: Standard_Integer &
 	:param theIt:
 	:type theIt: TColStd_ListIteratorOfListOfInteger &
 	:rtype: None
 ") Prepend;
-		void Prepend (Standard_Integer &OutValue,TColStd_ListIteratorOfListOfInteger & theIt);
+		void Prepend (const Standard_Integer & I,TColStd_ListIteratorOfListOfInteger & theIt);
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_ListOfInteger &
 	:rtype: None
@@ -7784,14 +7784,14 @@ class TColStd_ListOfInteger {
 	:type I: Standard_Integer &
 	:rtype: None
 ") Append;
-		void Append (Standard_Integer &OutValue);
+		void Append (const Standard_Integer & I);
 		%feature("autodoc", "	:param I:
 	:type I: Standard_Integer &
 	:param theIt:
 	:type theIt: TColStd_ListIteratorOfListOfInteger &
 	:rtype: None
 ") Append;
-		void Append (Standard_Integer &OutValue,TColStd_ListIteratorOfListOfInteger & theIt);
+		void Append (const Standard_Integer & I,TColStd_ListIteratorOfListOfInteger & theIt);
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_ListOfInteger &
 	:rtype: None
@@ -7837,7 +7837,7 @@ class TColStd_ListOfInteger {
 	:type It: TColStd_ListIteratorOfListOfInteger &
 	:rtype: None
 ") InsertBefore;
-		void InsertBefore (Standard_Integer &OutValue,TColStd_ListIteratorOfListOfInteger & It);
+		void InsertBefore (const Standard_Integer & I,TColStd_ListIteratorOfListOfInteger & It);
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_ListOfInteger &
 	:param It:
@@ -7851,7 +7851,7 @@ class TColStd_ListOfInteger {
 	:type It: TColStd_ListIteratorOfListOfInteger &
 	:rtype: None
 ") InsertAfter;
-		void InsertAfter (Standard_Integer &OutValue,TColStd_ListIteratorOfListOfInteger & It);
+		void InsertAfter (const Standard_Integer & I,TColStd_ListIteratorOfListOfInteger & It);
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_ListOfInteger &
 	:param It:
@@ -8141,14 +8141,14 @@ class TColStd_MapIntegerHasher {
 	:type Upper: Standard_Integer
 	:rtype: int
 ") HashCode;
-		static Standard_Integer HashCode (Standard_Integer &OutValue,const Standard_Integer Upper);
+		static Standard_Integer HashCode (const Standard_Integer & K,const Standard_Integer Upper);
 		%feature("autodoc", "	:param K1:
 	:type K1: Standard_Integer &
 	:param K2:
 	:type K2: Standard_Integer &
 	:rtype: bool
 ") IsEqual;
-		static Standard_Boolean IsEqual (Standard_Integer &OutValue,Standard_Integer &OutValue);
+		static Standard_Boolean IsEqual (const Standard_Integer & K1,const Standard_Integer & K2);
 };
 
 
@@ -8452,17 +8452,17 @@ class TColStd_MapOfInteger : public TCollection_BasicMap {
 	:type aKey: Standard_Integer &
 	:rtype: bool
 ") Add;
-		Standard_Boolean Add (Standard_Integer &OutValue);
+		Standard_Boolean Add (const Standard_Integer & aKey);
 		%feature("autodoc", "	:param aKey:
 	:type aKey: Standard_Integer &
 	:rtype: bool
 ") Contains;
-		Standard_Boolean Contains (Standard_Integer &OutValue);
+		Standard_Boolean Contains (const Standard_Integer & aKey);
 		%feature("autodoc", "	:param aKey:
 	:type aKey: Standard_Integer &
 	:rtype: bool
 ") Remove;
-		Standard_Boolean Remove (Standard_Integer &OutValue);
+		Standard_Boolean Remove (const Standard_Integer & aKey);
 };
 
 
@@ -8673,7 +8673,7 @@ class TColStd_QueueNodeOfQueueOfInteger : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") TColStd_QueueNodeOfQueueOfInteger;
-		 TColStd_QueueNodeOfQueueOfInteger (Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
+		 TColStd_QueueNodeOfQueueOfInteger (const Standard_Integer & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -8923,7 +8923,7 @@ class TColStd_QueueOfInteger {
 	:type T: Standard_Integer &
 	:rtype: None
 ") Push;
-		void Push (Standard_Integer &OutValue);
+		void Push (const Standard_Integer & T);
 		%feature("autodoc", "	:rtype: None
 ") Pop;
 		void Pop ();
@@ -9526,7 +9526,7 @@ class TColStd_SequenceNodeOfSequenceOfInteger : public TCollection_SeqNode {
 	:type p: TCollection_SeqNodePtr &
 	:rtype: None
 ") TColStd_SequenceNodeOfSequenceOfInteger;
-		 TColStd_SequenceNodeOfSequenceOfInteger (Standard_Integer &OutValue,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
+		 TColStd_SequenceNodeOfSequenceOfInteger (const Standard_Integer & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
 
             %feature("autodoc","1");
             %extend {
@@ -10527,7 +10527,7 @@ class TColStd_SequenceOfInteger : public TCollection_BaseSequence {
 	:type T: Standard_Integer &
 	:rtype: None
 ") Append;
-		void Append (Standard_Integer &OutValue);
+		void Append (const Standard_Integer & T);
 		%feature("autodoc", "	:param S:
 	:type S: TColStd_SequenceOfInteger &
 	:rtype: None
@@ -10537,7 +10537,7 @@ class TColStd_SequenceOfInteger : public TCollection_BaseSequence {
 	:type T: Standard_Integer &
 	:rtype: None
 ") Prepend;
-		void Prepend (Standard_Integer &OutValue);
+		void Prepend (const Standard_Integer & T);
 		%feature("autodoc", "	:param S:
 	:type S: TColStd_SequenceOfInteger &
 	:rtype: None
@@ -10549,7 +10549,7 @@ class TColStd_SequenceOfInteger : public TCollection_BaseSequence {
 	:type T: Standard_Integer &
 	:rtype: None
 ") InsertBefore;
-		void InsertBefore (const Standard_Integer Index,Standard_Integer &OutValue);
+		void InsertBefore (const Standard_Integer Index,const Standard_Integer & T);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:param S:
@@ -10563,7 +10563,7 @@ class TColStd_SequenceOfInteger : public TCollection_BaseSequence {
 	:type T: Standard_Integer &
 	:rtype: None
 ") InsertAfter;
-		void InsertAfter (const Standard_Integer Index,Standard_Integer &OutValue);
+		void InsertAfter (const Standard_Integer Index,const Standard_Integer & T);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:param S:
@@ -10595,7 +10595,7 @@ class TColStd_SequenceOfInteger : public TCollection_BaseSequence {
 	:type I: Standard_Integer &
 	:rtype: None
 ") SetValue;
-		void SetValue (const Standard_Integer Index,Standard_Integer &OutValue);
+		void SetValue (const Standard_Integer Index,const Standard_Integer & I);
 		%feature("autodoc", "	:param Index:
 	:type Index: Standard_Integer
 	:rtype: int
@@ -11037,14 +11037,14 @@ class TColStd_SetListOfSetOfInteger {
 	:type I: Standard_Integer &
 	:rtype: None
 ") Prepend;
-		void Prepend (Standard_Integer &OutValue);
+		void Prepend (const Standard_Integer & I);
 		%feature("autodoc", "	:param I:
 	:type I: Standard_Integer &
 	:param theIt:
 	:type theIt: TColStd_ListIteratorOfSetListOfSetOfInteger &
 	:rtype: None
 ") Prepend;
-		void Prepend (Standard_Integer &OutValue,TColStd_ListIteratorOfSetListOfSetOfInteger & theIt);
+		void Prepend (const Standard_Integer & I,TColStd_ListIteratorOfSetListOfSetOfInteger & theIt);
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_SetListOfSetOfInteger &
 	:rtype: None
@@ -11054,14 +11054,14 @@ class TColStd_SetListOfSetOfInteger {
 	:type I: Standard_Integer &
 	:rtype: None
 ") Append;
-		void Append (Standard_Integer &OutValue);
+		void Append (const Standard_Integer & I);
 		%feature("autodoc", "	:param I:
 	:type I: Standard_Integer &
 	:param theIt:
 	:type theIt: TColStd_ListIteratorOfSetListOfSetOfInteger &
 	:rtype: None
 ") Append;
-		void Append (Standard_Integer &OutValue,TColStd_ListIteratorOfSetListOfSetOfInteger & theIt);
+		void Append (const Standard_Integer & I,TColStd_ListIteratorOfSetListOfSetOfInteger & theIt);
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_SetListOfSetOfInteger &
 	:rtype: None
@@ -11107,7 +11107,7 @@ class TColStd_SetListOfSetOfInteger {
 	:type It: TColStd_ListIteratorOfSetListOfSetOfInteger &
 	:rtype: None
 ") InsertBefore;
-		void InsertBefore (Standard_Integer &OutValue,TColStd_ListIteratorOfSetListOfSetOfInteger & It);
+		void InsertBefore (const Standard_Integer & I,TColStd_ListIteratorOfSetListOfSetOfInteger & It);
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_SetListOfSetOfInteger &
 	:param It:
@@ -11121,7 +11121,7 @@ class TColStd_SetListOfSetOfInteger {
 	:type It: TColStd_ListIteratorOfSetListOfSetOfInteger &
 	:rtype: None
 ") InsertAfter;
-		void InsertAfter (Standard_Integer &OutValue,TColStd_ListIteratorOfSetListOfSetOfInteger & It);
+		void InsertAfter (const Standard_Integer & I,TColStd_ListIteratorOfSetListOfSetOfInteger & It);
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_SetListOfSetOfInteger &
 	:param It:
@@ -11421,12 +11421,12 @@ class TColStd_SetOfInteger {
 	:type T: Standard_Integer &
 	:rtype: bool
 ") Add;
-		Standard_Boolean Add (Standard_Integer &OutValue);
+		Standard_Boolean Add (const Standard_Integer & T);
 		%feature("autodoc", "	:param T:
 	:type T: Standard_Integer &
 	:rtype: bool
 ") Remove;
-		Standard_Boolean Remove (Standard_Integer &OutValue);
+		Standard_Boolean Remove (const Standard_Integer & T);
 		%feature("autodoc", "	:param B:
 	:type B: TColStd_SetOfInteger &
 	:rtype: None
@@ -11446,7 +11446,7 @@ class TColStd_SetOfInteger {
 	:type T: Standard_Integer &
 	:rtype: bool
 ") Contains;
-		Standard_Boolean Contains (Standard_Integer &OutValue);
+		Standard_Boolean Contains (const Standard_Integer & T);
 		%feature("autodoc", "	:param S:
 	:type S: TColStd_SetOfInteger &
 	:rtype: bool
@@ -11753,7 +11753,7 @@ class TColStd_StackNodeOfStackOfInteger : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") TColStd_StackNodeOfStackOfInteger;
-		 TColStd_StackNodeOfStackOfInteger (Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
+		 TColStd_StackNodeOfStackOfInteger (const Standard_Integer & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -12000,7 +12000,7 @@ class TColStd_StackOfInteger {
 	:type I: Standard_Integer &
 	:rtype: None
 ") Push;
-		void Push (Standard_Integer &OutValue);
+		void Push (const Standard_Integer & I);
 		%feature("autodoc", "	:rtype: None
 ") Pop;
 		void Pop ();
@@ -12237,7 +12237,7 @@ class TColStd_StdMapNodeOfMapOfInteger : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") TColStd_StdMapNodeOfMapOfInteger;
-		 TColStd_StdMapNodeOfMapOfInteger (Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
+		 TColStd_StdMapNodeOfMapOfInteger (const Standard_Integer & K,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {

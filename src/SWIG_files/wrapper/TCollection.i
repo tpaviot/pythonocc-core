@@ -2491,21 +2491,21 @@ class TCollection_PrivCompareOfInteger {
 	:type Right: Standard_Integer &
 	:rtype: bool
 ") IsLower;
-		virtual Standard_Boolean IsLower (Standard_Integer &OutValue,Standard_Integer &OutValue);
+		virtual Standard_Boolean IsLower (const Standard_Integer & Left,const Standard_Integer & Right);
 		%feature("autodoc", "	:param Left:
 	:type Left: Standard_Integer &
 	:param Right:
 	:type Right: Standard_Integer &
 	:rtype: bool
 ") IsGreater;
-		virtual Standard_Boolean IsGreater (Standard_Integer &OutValue,Standard_Integer &OutValue);
+		virtual Standard_Boolean IsGreater (const Standard_Integer & Left,const Standard_Integer & Right);
 		%feature("autodoc", "	:param Left:
 	:type Left: Standard_Integer &
 	:param Right:
 	:type Right: Standard_Integer &
 	:rtype: bool
 ") IsEqual;
-		virtual Standard_Boolean IsEqual (Standard_Integer &OutValue,Standard_Integer &OutValue);
+		virtual Standard_Boolean IsEqual (const Standard_Integer & Left,const Standard_Integer & Right);
 };
 
 
@@ -2650,7 +2650,7 @@ class TCollection_CompareOfInteger : public TCollection_PrivCompareOfInteger {
 	:type Right: Standard_Integer &
 	:rtype: bool
 ") IsLower;
-		virtual Standard_Boolean IsLower (Standard_Integer &OutValue,Standard_Integer &OutValue);
+		virtual Standard_Boolean IsLower (const Standard_Integer & Left,const Standard_Integer & Right);
 		%feature("autodoc", "	* Returns True if <Left> is greater than <Right>.
 
 	:param Left:
@@ -2659,7 +2659,7 @@ class TCollection_CompareOfInteger : public TCollection_PrivCompareOfInteger {
 	:type Right: Standard_Integer &
 	:rtype: bool
 ") IsGreater;
-		virtual Standard_Boolean IsGreater (Standard_Integer &OutValue,Standard_Integer &OutValue);
+		virtual Standard_Boolean IsGreater (const Standard_Integer & Left,const Standard_Integer & Right);
 };
 
 

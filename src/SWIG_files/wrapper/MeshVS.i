@@ -753,7 +753,7 @@ class MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger : public TCollecti
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger;
-		 MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger (Standard_Integer &OutValue,const Handle_MeshVS_HArray1OfSequenceOfInteger & I,const TCollection_MapNodePtr & n);
+		 MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger (const Standard_Integer & K,const Handle_MeshVS_HArray1OfSequenceOfInteger & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -837,7 +837,7 @@ class MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString : public TCollection_MapNo
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString;
-		 MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString (Standard_Integer &OutValue,const TCollection_AsciiString & I,const TCollection_MapNodePtr & n);
+		 MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString (const Standard_Integer & K,const TCollection_AsciiString & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -921,7 +921,7 @@ class MeshVS_DataMapNodeOfDataMapOfIntegerBoolean : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") MeshVS_DataMapNodeOfDataMapOfIntegerBoolean;
-		 MeshVS_DataMapNodeOfDataMapOfIntegerBoolean (Standard_Integer &OutValue,const Standard_Boolean & I,const TCollection_MapNodePtr & n);
+		 MeshVS_DataMapNodeOfDataMapOfIntegerBoolean (const Standard_Integer & K,const Standard_Boolean & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -1015,7 +1015,7 @@ class MeshVS_DataMapNodeOfDataMapOfIntegerColor : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") MeshVS_DataMapNodeOfDataMapOfIntegerColor;
-		 MeshVS_DataMapNodeOfDataMapOfIntegerColor (Standard_Integer &OutValue,const Quantity_Color & I,const TCollection_MapNodePtr & n);
+		 MeshVS_DataMapNodeOfDataMapOfIntegerColor (const Standard_Integer & K,const Quantity_Color & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -1099,7 +1099,7 @@ class MeshVS_DataMapNodeOfDataMapOfIntegerMaterial : public TCollection_MapNode 
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") MeshVS_DataMapNodeOfDataMapOfIntegerMaterial;
-		 MeshVS_DataMapNodeOfDataMapOfIntegerMaterial (Standard_Integer &OutValue,const Graphic3d_MaterialAspect & I,const TCollection_MapNodePtr & n);
+		 MeshVS_DataMapNodeOfDataMapOfIntegerMaterial (const Standard_Integer & K,const Graphic3d_MaterialAspect & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -1183,7 +1183,7 @@ class MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner : public TCollection_M
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner;
-		 MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner (Standard_Integer &OutValue,const Handle_MeshVS_MeshEntityOwner & I,const TCollection_MapNodePtr & n);
+		 MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner (const Standard_Integer & K,const Handle_MeshVS_MeshEntityOwner & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -1267,7 +1267,7 @@ class MeshVS_DataMapNodeOfDataMapOfIntegerOwner : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") MeshVS_DataMapNodeOfDataMapOfIntegerOwner;
-		 MeshVS_DataMapNodeOfDataMapOfIntegerOwner (Standard_Integer &OutValue,const Handle_SelectMgr_EntityOwner & I,const TCollection_MapNodePtr & n);
+		 MeshVS_DataMapNodeOfDataMapOfIntegerOwner (const Standard_Integer & K,const Handle_SelectMgr_EntityOwner & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -1351,7 +1351,7 @@ class MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors : public TCollection_MapNode
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors;
-		 MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors (Standard_Integer &OutValue,const MeshVS_TwoColors & I,const TCollection_MapNodePtr & n);
+		 MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors (const Standard_Integer & K,const MeshVS_TwoColors & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -1435,7 +1435,7 @@ class MeshVS_DataMapNodeOfDataMapOfIntegerVector : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") MeshVS_DataMapNodeOfDataMapOfIntegerVector;
-		 MeshVS_DataMapNodeOfDataMapOfIntegerVector (Standard_Integer &OutValue,const gp_Vec & I,const TCollection_MapNodePtr & n);
+		 MeshVS_DataMapNodeOfDataMapOfIntegerVector (const Standard_Integer & K,const gp_Vec & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -1694,37 +1694,37 @@ class MeshVS_DataMapOfHArray1OfSequenceOfInteger : public TCollection_BasicMap {
 	:type I: Handle_MeshVS_HArray1OfSequenceOfInteger &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const Handle_MeshVS_HArray1OfSequenceOfInteger & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const Handle_MeshVS_HArray1OfSequenceOfInteger & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Handle_MeshVS_HArray1OfSequenceOfInteger
 ") Find;
-		const Handle_MeshVS_HArray1OfSequenceOfInteger & Find (Standard_Integer &OutValue);
+		const Handle_MeshVS_HArray1OfSequenceOfInteger & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Handle_MeshVS_HArray1OfSequenceOfInteger
 ") ChangeFind;
-		Handle_MeshVS_HArray1OfSequenceOfInteger & ChangeFind (Standard_Integer &OutValue);
+		Handle_MeshVS_HArray1OfSequenceOfInteger & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -1774,37 +1774,37 @@ class MeshVS_DataMapOfIntegerAsciiString : public TCollection_BasicMap {
 	:type I: TCollection_AsciiString &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const TCollection_AsciiString & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const TCollection_AsciiString & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: TCollection_AsciiString
 ") Find;
-		const TCollection_AsciiString & Find (Standard_Integer &OutValue);
+		const TCollection_AsciiString & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: TCollection_AsciiString
 ") ChangeFind;
-		TCollection_AsciiString & ChangeFind (Standard_Integer &OutValue);
+		TCollection_AsciiString & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -1854,37 +1854,37 @@ class MeshVS_DataMapOfIntegerBoolean : public TCollection_BasicMap {
 	:type I: bool
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const Standard_Boolean & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const Standard_Boolean & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") Find;
-		const Standard_Boolean & Find (Standard_Integer &OutValue);
+		const Standard_Boolean & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") ChangeFind;
-		Standard_Boolean & ChangeFind (Standard_Integer &OutValue);
+		Standard_Boolean & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -1934,37 +1934,37 @@ class MeshVS_DataMapOfIntegerColor : public TCollection_BasicMap {
 	:type I: Quantity_Color &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const Quantity_Color & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const Quantity_Color & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Quantity_Color
 ") Find;
-		const Quantity_Color & Find (Standard_Integer &OutValue);
+		const Quantity_Color & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Quantity_Color
 ") ChangeFind;
-		Quantity_Color & ChangeFind (Standard_Integer &OutValue);
+		Quantity_Color & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -2014,37 +2014,37 @@ class MeshVS_DataMapOfIntegerMaterial : public TCollection_BasicMap {
 	:type I: Graphic3d_MaterialAspect &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const Graphic3d_MaterialAspect & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const Graphic3d_MaterialAspect & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Graphic3d_MaterialAspect
 ") Find;
-		const Graphic3d_MaterialAspect & Find (Standard_Integer &OutValue);
+		const Graphic3d_MaterialAspect & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Graphic3d_MaterialAspect
 ") ChangeFind;
-		Graphic3d_MaterialAspect & ChangeFind (Standard_Integer &OutValue);
+		Graphic3d_MaterialAspect & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -2094,37 +2094,37 @@ class MeshVS_DataMapOfIntegerMeshEntityOwner : public TCollection_BasicMap {
 	:type I: Handle_MeshVS_MeshEntityOwner &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const Handle_MeshVS_MeshEntityOwner & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const Handle_MeshVS_MeshEntityOwner & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Handle_MeshVS_MeshEntityOwner
 ") Find;
-		const Handle_MeshVS_MeshEntityOwner & Find (Standard_Integer &OutValue);
+		const Handle_MeshVS_MeshEntityOwner & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Handle_MeshVS_MeshEntityOwner
 ") ChangeFind;
-		Handle_MeshVS_MeshEntityOwner & ChangeFind (Standard_Integer &OutValue);
+		Handle_MeshVS_MeshEntityOwner & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -2174,37 +2174,37 @@ class MeshVS_DataMapOfIntegerOwner : public TCollection_BasicMap {
 	:type I: Handle_SelectMgr_EntityOwner &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const Handle_SelectMgr_EntityOwner & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const Handle_SelectMgr_EntityOwner & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Handle_SelectMgr_EntityOwner
 ") Find;
-		const Handle_SelectMgr_EntityOwner & Find (Standard_Integer &OutValue);
+		const Handle_SelectMgr_EntityOwner & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Handle_SelectMgr_EntityOwner
 ") ChangeFind;
-		Handle_SelectMgr_EntityOwner & ChangeFind (Standard_Integer &OutValue);
+		Handle_SelectMgr_EntityOwner & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -2254,37 +2254,37 @@ class MeshVS_DataMapOfIntegerTwoColors : public TCollection_BasicMap {
 	:type I: MeshVS_TwoColors &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const MeshVS_TwoColors & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const MeshVS_TwoColors & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: MeshVS_TwoColors
 ") Find;
-		const MeshVS_TwoColors & Find (Standard_Integer &OutValue);
+		const MeshVS_TwoColors & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: MeshVS_TwoColors
 ") ChangeFind;
-		MeshVS_TwoColors & ChangeFind (Standard_Integer &OutValue);
+		MeshVS_TwoColors & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -2334,37 +2334,37 @@ class MeshVS_DataMapOfIntegerVector : public TCollection_BasicMap {
 	:type I: gp_Vec
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const gp_Vec & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const gp_Vec & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: gp_Vec
 ") Find;
-		const gp_Vec  Find (Standard_Integer &OutValue);
+		const gp_Vec  Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: gp_Vec
 ") ChangeFind;
-		gp_Vec  ChangeFind (Standard_Integer &OutValue);
+		gp_Vec  ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 

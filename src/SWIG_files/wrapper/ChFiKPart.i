@@ -219,7 +219,7 @@ class ChFiKPart_DataMapNodeOfRstMap : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") ChFiKPart_DataMapNodeOfRstMap;
-		 ChFiKPart_DataMapNodeOfRstMap (Standard_Integer &OutValue,const Handle_Adaptor2d_HCurve2d & I,const TCollection_MapNodePtr & n);
+		 ChFiKPart_DataMapNodeOfRstMap (const Standard_Integer & K,const Handle_Adaptor2d_HCurve2d & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -324,37 +324,37 @@ class ChFiKPart_RstMap : public TCollection_BasicMap {
 	:type I: Handle_Adaptor2d_HCurve2d &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const Handle_Adaptor2d_HCurve2d & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const Handle_Adaptor2d_HCurve2d & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Handle_Adaptor2d_HCurve2d
 ") Find;
-		const Handle_Adaptor2d_HCurve2d & Find (Standard_Integer &OutValue);
+		const Handle_Adaptor2d_HCurve2d & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Handle_Adaptor2d_HCurve2d
 ") ChangeFind;
-		Handle_Adaptor2d_HCurve2d & ChangeFind (Standard_Integer &OutValue);
+		Handle_Adaptor2d_HCurve2d & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 

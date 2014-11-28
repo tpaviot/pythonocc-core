@@ -4858,7 +4858,7 @@ class Graphic3d_MarkerImage : public Standard_Transient {
 	:type theHeight: Standard_Integer &
 	:rtype: None
 ") Graphic3d_MarkerImage;
-		 Graphic3d_MarkerImage (const Handle_TColStd_HArray1OfByte & theBitMap,Standard_Integer &OutValue,Standard_Integer &OutValue);
+		 Graphic3d_MarkerImage (const Handle_TColStd_HArray1OfByte & theBitMap,const Standard_Integer & theWidth,const Standard_Integer & theHeight);
 		%feature("autodoc", "	* @param theAlphaValue pixels in the image that have alpha value greater than  or equal to this parameter will be stored in bitmap as '1',  others will be stored as '0' returns marker image as array of bytes. If an instance of the class has been initialized with image, it will be converted to bitmap based on the parameter theAlphaValue.
 
 	:param theAlphaValue: default value is 0.5

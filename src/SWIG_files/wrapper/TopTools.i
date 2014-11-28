@@ -749,7 +749,7 @@ class TopTools_DataMapNodeOfDataMapOfIntegerListOfShape : public TCollection_Map
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") TopTools_DataMapNodeOfDataMapOfIntegerListOfShape;
-		 TopTools_DataMapNodeOfDataMapOfIntegerListOfShape (Standard_Integer &OutValue,const TopTools_ListOfShape & I,const TCollection_MapNodePtr & n);
+		 TopTools_DataMapNodeOfDataMapOfIntegerListOfShape (const Standard_Integer & K,const TopTools_ListOfShape & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -833,7 +833,7 @@ class TopTools_DataMapNodeOfDataMapOfIntegerShape : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") TopTools_DataMapNodeOfDataMapOfIntegerShape;
-		 TopTools_DataMapNodeOfDataMapOfIntegerShape (Standard_Integer &OutValue,const TopoDS_Shape & I,const TCollection_MapNodePtr & n);
+		 TopTools_DataMapNodeOfDataMapOfIntegerShape (const Standard_Integer & K,const TopoDS_Shape & I,const TCollection_MapNodePtr & n);
 
             %feature("autodoc","1");
             %extend {
@@ -917,7 +917,7 @@ class TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger : public TCollection_M
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger;
-		 TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger (const TopoDS_Shape & K,Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
+		 TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger (const TopoDS_Shape & K,const Standard_Integer & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
 		TopoDS_Shape  Key ();
@@ -1075,7 +1075,7 @@ class TopTools_DataMapNodeOfDataMapOfShapeInteger : public TCollection_MapNode {
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") TopTools_DataMapNodeOfDataMapOfShapeInteger;
-		 TopTools_DataMapNodeOfDataMapOfShapeInteger (const TopoDS_Shape & K,Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
+		 TopTools_DataMapNodeOfDataMapOfShapeInteger (const TopoDS_Shape & K,const Standard_Integer & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: TopoDS_Shape
 ") Key;
 		TopoDS_Shape  Key ();
@@ -1560,37 +1560,37 @@ class TopTools_DataMapOfIntegerListOfShape : public TCollection_BasicMap {
 	:type I: TopTools_ListOfShape &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const TopTools_ListOfShape & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const TopTools_ListOfShape & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: TopTools_ListOfShape
 ") Find;
-		const TopTools_ListOfShape & Find (Standard_Integer &OutValue);
+		const TopTools_ListOfShape & Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: TopTools_ListOfShape
 ") ChangeFind;
-		TopTools_ListOfShape & ChangeFind (Standard_Integer &OutValue);
+		TopTools_ListOfShape & ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -1640,37 +1640,37 @@ class TopTools_DataMapOfIntegerShape : public TCollection_BasicMap {
 	:type I: TopoDS_Shape &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (Standard_Integer &OutValue,const TopoDS_Shape & I);
+		Standard_Boolean Bind (const Standard_Integer & K,const TopoDS_Shape & I);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") IsBound;
-		Standard_Boolean IsBound (Standard_Integer &OutValue);
+		Standard_Boolean IsBound (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: bool
 ") UnBind;
-		Standard_Boolean UnBind (Standard_Integer &OutValue);
+		Standard_Boolean UnBind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: TopoDS_Shape
 ") Find;
-		const TopoDS_Shape  Find (Standard_Integer &OutValue);
+		const TopoDS_Shape  Find (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: TopoDS_Shape
 ") ChangeFind;
-		TopoDS_Shape  ChangeFind (Standard_Integer &OutValue);
+		TopoDS_Shape  ChangeFind (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") Find1;
-		Standard_Address Find1 (Standard_Integer &OutValue);
+		Standard_Address Find1 (const Standard_Integer & K);
 		%feature("autodoc", "	:param K:
 	:type K: Standard_Integer &
 	:rtype: Standard_Address
 ") ChangeFind1;
-		Standard_Address ChangeFind1 (Standard_Integer &OutValue);
+		Standard_Address ChangeFind1 (const Standard_Integer & K);
 };
 
 
@@ -1720,7 +1720,7 @@ class TopTools_DataMapOfOrientedShapeInteger : public TCollection_BasicMap {
 	:type I: Standard_Integer &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (const TopoDS_Shape & K,Standard_Integer &OutValue);
+		Standard_Boolean Bind (const TopoDS_Shape & K,const Standard_Integer & I);
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
 	:rtype: bool
@@ -1880,7 +1880,7 @@ class TopTools_DataMapOfShapeInteger : public TCollection_BasicMap {
 	:type I: Standard_Integer &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (const TopoDS_Shape & K,Standard_Integer &OutValue);
+		Standard_Boolean Bind (const TopoDS_Shape & K,const Standard_Integer & I);
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
 	:rtype: bool

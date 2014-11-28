@@ -1568,7 +1568,7 @@ class Interface_DataMapNodeOfDataMapOfTransientInteger : public TCollection_MapN
 	:type n: TCollection_MapNodePtr &
 	:rtype: None
 ") Interface_DataMapNodeOfDataMapOfTransientInteger;
-		 Interface_DataMapNodeOfDataMapOfTransientInteger (const Handle_Standard_Transient & K,Standard_Integer &OutValue,const TCollection_MapNodePtr & n);
+		 Interface_DataMapNodeOfDataMapOfTransientInteger (const Handle_Standard_Transient & K,const Standard_Integer & I,const TCollection_MapNodePtr & n);
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Key;
 		Handle_Standard_Transient & Key ();
@@ -1673,7 +1673,7 @@ class Interface_DataMapOfTransientInteger : public TCollection_BasicMap {
 	:type I: Standard_Integer &
 	:rtype: bool
 ") Bind;
-		Standard_Boolean Bind (const Handle_Standard_Transient & K,Standard_Integer &OutValue);
+		Standard_Boolean Bind (const Handle_Standard_Transient & K,const Standard_Integer & I);
 		%feature("autodoc", "	:param K:
 	:type K: Handle_Standard_Transient &
 	:rtype: bool

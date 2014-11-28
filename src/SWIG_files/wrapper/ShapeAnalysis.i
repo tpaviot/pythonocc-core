@@ -3885,7 +3885,7 @@ class ShapeAnalysis_BoxBndTreeSelector : public ShapeAnalysis_BoxBndTree::Select
 	:type &: Standard_Integer
 	:rtype: bool
 ") Accept;
-		Standard_Boolean Accept (Standard_Integer &OutValue);
+		Standard_Boolean Accept (const Standard_Integer &);
 };
 
 
