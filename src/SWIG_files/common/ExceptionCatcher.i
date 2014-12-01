@@ -44,8 +44,16 @@ Exception handling
 	    strcpy(message, error_name);
 	    strcat(message,"\n");
         strcat(message, error_message);
-        // raise the python exception
-        PyErr_SetString(PyExc_RuntimeError, message);
+		#if defined(SWIGPYTHON)
+		// raise the python exception
+		PyErr_SetString(PyExc_RuntimeError, message);
 	    return NULL;
+		#endif
+		#if defined(SWIGJAVA)
+		// %SWIG_JavaThrowException(jenv, SWIG_JavaRuntimeException, message);
+		#endif
+		#if defined(SWIGCSHARP)
+		// %SWIG_CSharpSetPendingException(SWIG_CSharpApplicationException, message)
+		#endif        
     }
 }

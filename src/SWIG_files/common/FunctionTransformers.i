@@ -22,6 +22,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 /*
 Standard_Real & function transformation
 */
+#if defined(SWIGPYTHON)
 %typemap(argout) Standard_Real &OutValue {
     PyObject *o, *o2, *o3;
     o = PyFloat_FromDouble(*$1);
@@ -99,3 +100,9 @@ FairCurve_Analysis & function transformation
 %typemap(in,numinputs=0) FairCurve_AnalysisCode &OutValue(FairCurve_AnalysisCode temp) {
     $1 = &temp;
 }
+#endif
+#if defined(SWIGJAVA)
+#endif
+#if defined(SWIGCSHARP)
+#endif
+

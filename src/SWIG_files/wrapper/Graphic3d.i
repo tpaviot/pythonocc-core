@@ -5140,6 +5140,7 @@ class Graphic3d_MaterialAspect {
             else return false;
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __ne__(self,right):
             try:
@@ -5147,6 +5148,7 @@ class Graphic3d_MaterialAspect {
             except:
                 return True
         }
+#endif        
         		%feature("autodoc", "	* Returns Standard_True if the materials <self> and <Other> are identical.
 
 	:param Other:
@@ -5161,6 +5163,7 @@ class Graphic3d_MaterialAspect {
             else return false;
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __eq__(self,right):
             try:
@@ -5168,6 +5171,7 @@ class Graphic3d_MaterialAspect {
             except:
                 return False
         }
+#endif        
         		%feature("autodoc", "	* Returns the number of predefined textures.
 
 	:rtype: int

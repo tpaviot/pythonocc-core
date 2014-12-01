@@ -1113,6 +1113,7 @@ class Quantity_Color {
             else return false;
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __ne__(self,right):
             try:
@@ -1120,6 +1121,7 @@ class Quantity_Color {
             except:
                 return True
         }
+#endif        
         		%feature("autodoc", "	* Returns true if the Other color is - different from, or - equal to this color. Two colors are considered to be equal if their distance is no greater than Epsilon(). These methods are aliases of operator != and operator ==.
 
 	:param Other:
@@ -1134,6 +1136,7 @@ class Quantity_Color {
             else return false;
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __eq__(self,right):
             try:
@@ -1141,6 +1144,7 @@ class Quantity_Color {
             except:
                 return False
         }
+#endif        
         		%feature("autodoc", "	* Returns the Light component (value of the lightness) of the //!	 color <self>.
 
 	:rtype: Quantity_Parameter
@@ -1519,6 +1523,7 @@ class Quantity_Date {
             else return false;
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __eq__(self,right):
             try:
@@ -1526,6 +1531,7 @@ class Quantity_Date {
             except:
                 return False
         }
+#endif        
         		%feature("autodoc", "	* Returns True if <self> is earlier than <other>.
 
 	:param anOther:
@@ -1842,6 +1848,7 @@ class Quantity_Period {
             else return false;
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __eq__(self,right):
             try:
@@ -1849,6 +1856,7 @@ class Quantity_Period {
             except:
                 return False
         }
+#endif        
         		%feature("autodoc", "	* Returns True if <self> is shorter than <other>.
 
 	:param anOther:

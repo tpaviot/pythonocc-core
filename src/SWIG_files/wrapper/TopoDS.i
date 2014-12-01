@@ -835,6 +835,7 @@ class TopoDS_Shape {
             else return false;
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __eq__(self,right):
             try:
@@ -842,6 +843,7 @@ class TopoDS_Shape {
             except:
                 return False
         }
+#endif        
         		%feature("autodoc", "	* Negation of the IsEqual method.
 
 	:param other:
@@ -856,6 +858,7 @@ class TopoDS_Shape {
             else return false;
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __ne__(self,right):
             try:
@@ -863,6 +866,7 @@ class TopoDS_Shape {
             except:
                 return True
         }
+#endif        
         		%feature("autodoc", "	* Returns a hashed value denoting <self>. This value is in the range 1..<Upper>. It is computed from the TShape and the Location. The Orientation is not used.
 
 	:param Upper:
@@ -909,6 +913,7 @@ def __del__(self):
 	}
 };
 %extend TopoDS_Shape {
+#if defined(SWIGPYTHON)
 %pythoncode {
 	def __getstate__(self):
 		from .BRepTools import BRepTools_ShapeSet
@@ -927,6 +932,7 @@ def __del__(self):
 		the_shape.Location(location)
 		self.this = the_shape.this
 	}
+#endif
 };
 %nodefaultctor TopoDS_TShape;
 class TopoDS_TShape : public MMgt_TShared {

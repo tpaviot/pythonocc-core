@@ -462,6 +462,7 @@ class TopLoc_Location {
             else return false;
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __eq__(self,right):
             try:
@@ -469,6 +470,11 @@ class TopLoc_Location {
             except:
                 return False
         }
+#endif
+#if defined(SWIGJAVA)
+#endif
+#if defined(SWIGCSHARP)
+#endif
         		%feature("autodoc", "	* Returns true if this location and the location Other do not have the same elementary data, i.e. do not contain the same series of TopLoc_Datum3D and respective powers. This method is an alias for operator !=.
 
 	:param Other:
@@ -483,6 +489,7 @@ class TopLoc_Location {
             else return false;
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __ne__(self,right):
             try:
@@ -490,6 +497,7 @@ class TopLoc_Location {
             except:
                 return True
         }
+#endif        
         
         %feature("autodoc", "1");
         %extend{

@@ -51,9 +51,16 @@ enum Message_Gravity {
 	Message_Fail = 4,
 };
 
+enum Message_StatusType {
+	Message_DONE = 256,
+	Message_WARN = 512,
+	Message_ALARM = 1024,
+	Message_FAIL = 2048,
+};
+
 enum Message_Status {
 	Message_None = 0,
-	Message_Done1 = Message_DONE,
+	Message_Done1 = 256,//Message_DONE,
 	Message_Done2 = 2,
 	Message_Done3 = 3,
 	Message_Done4 = 4,
@@ -85,7 +92,7 @@ enum Message_Status {
 	Message_Done30 = 30,
 	Message_Done31 = 31,
 	Message_Done32 = 32,
-	Message_Warn1 = Message_WARN,
+	Message_Warn1 = 512,//Message_WARN,
 	Message_Warn2 = 34,
 	Message_Warn3 = 35,
 	Message_Warn4 = 36,
@@ -117,7 +124,7 @@ enum Message_Status {
 	Message_Warn30 = 62,
 	Message_Warn31 = 63,
 	Message_Warn32 = 64,
-	Message_Alarm1 = Message_ALARM,
+	Message_Alarm1 = 1024,//Message_ALARM,
 	Message_Alarm2 = 66,
 	Message_Alarm3 = 67,
 	Message_Alarm4 = 68,
@@ -149,7 +156,7 @@ enum Message_Status {
 	Message_Alarm30 = 94,
 	Message_Alarm31 = 95,
 	Message_Alarm32 = 96,
-	Message_Fail1 = Message_FAIL,
+	Message_Fail1 = 2048,//Message_FAIL,
 	Message_Fail2 = 98,
 	Message_Fail3 = 99,
 	Message_Fail4 = 100,
@@ -183,16 +190,9 @@ enum Message_Status {
 	Message_Fail32 = 128,
 };
 
-enum Message_StatusType {
-	Message_DONE = 256,
-	Message_WARN = 512,
-	Message_ALARM = 1024,
-	Message_FAIL = 2048,
-};
-
 /* end public enums declaration */
 
-%rename(message) Message;
+%rename(message2) Message;
 %nodefaultctor Message;
 class Message {
 	public:

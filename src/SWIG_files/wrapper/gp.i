@@ -82,7 +82,7 @@ enum gp_TrsfForm {
 
 /* end public enums declaration */
 
-%rename(gp) gp;
+%rename(gpmod) gp;
 %nodefaultctor gp;
 class gp {
 	public:

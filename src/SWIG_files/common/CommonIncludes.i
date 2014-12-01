@@ -24,6 +24,13 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include cpointer.i
 %include carrays.i
 %include exception.i
-%include <python/std_list.i>
+#if defined(SWIGPYTHON)
 %include <python/std_string.i>
-%include <python/std_basic_string.i>
+#endif
+#if defined(SWIGJAVA)
+%include <java/std_string.i>
+#endif
+#if defined(SWIGCSHARP)
+%include <csharp/std_string.i>
+#endif
+

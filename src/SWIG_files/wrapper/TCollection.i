@@ -610,6 +610,7 @@ class TCollection_AsciiString {
             else return false;
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __eq__(self,right):
             try:
@@ -617,6 +618,7 @@ class TCollection_AsciiString {
             except:
                 return False
         }
+#endif                 
         		%feature("autodoc", "	* Returns true if the characters in this ASCII string are identical to the characters in ASCII string other. Note that this method is an alias of operator ==.
 
 	:param other:
@@ -631,6 +633,7 @@ class TCollection_AsciiString {
             else return false;
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __eq__(self,right):
             try:
@@ -638,6 +641,7 @@ class TCollection_AsciiString {
             except:
                 return False
         }
+#endif
         		%feature("autodoc", "	* Returns true if there are differences between the characters in this ASCII string and ASCII string other. Note that this method is an alias of operator !=
 
 	:param other:
@@ -652,6 +656,7 @@ class TCollection_AsciiString {
             else return false;
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __ne__(self,right):
             try:
@@ -659,6 +664,7 @@ class TCollection_AsciiString {
             except:
                 return True
         }
+#endif        
         		%feature("autodoc", "	* Returns true if there are differences between the characters in this ASCII string and ASCII string other. Note that this method is an alias of operator !=
 
 	:param other:
@@ -673,6 +679,7 @@ class TCollection_AsciiString {
             else return false;
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __ne__(self,right):
             try:
@@ -680,6 +687,7 @@ class TCollection_AsciiString {
             except:
                 return True
         }
+#endif        
         		%feature("autodoc", "	* Returns True if <self> is 'ASCII' less than <other>.
 
 	:param other:
@@ -1299,6 +1307,7 @@ class TCollection_ExtendedString {
             else return false;
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __eq__(self,right):
             try:
@@ -1306,6 +1315,7 @@ class TCollection_ExtendedString {
             except:
                 return False
         }
+#endif        
         		%feature("autodoc", "	* Returns true if the characters in this extended string are identical to the characters in the other extended string. Note that this method is an alias of operator ==
 
 	:param other:
@@ -1320,6 +1330,7 @@ class TCollection_ExtendedString {
             else return false;
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __eq__(self,right):
             try:
@@ -1327,6 +1338,7 @@ class TCollection_ExtendedString {
             except:
                 return False
         }
+#endif        
         		%feature("autodoc", "	* Returns true if there are differences between the characters in this extended string and the other extended string. Note that this method is an alias of operator !=.
 
 	:param other:
@@ -1341,6 +1353,7 @@ class TCollection_ExtendedString {
             else return false;
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __ne__(self,right):
             try:
@@ -1348,6 +1361,7 @@ class TCollection_ExtendedString {
             except:
                 return True
         }
+#endif        
         		%feature("autodoc", "	* Returns true if there are differences between the characters in this extended string and the other extended string. Note that this method is an alias of operator !=.
 
 	:param other:
@@ -1362,6 +1376,7 @@ class TCollection_ExtendedString {
             else return false;
             }
         }
+#if defined(SWIGPYTHON)
         %pythoncode {
         def __ne__(self,right):
             try:
@@ -1369,6 +1384,7 @@ class TCollection_ExtendedString {
             except:
                 return True
         }
+#endif        
         		%feature("autodoc", "	* Returns True if <self> is less than <other>.
 
 	:param other:
