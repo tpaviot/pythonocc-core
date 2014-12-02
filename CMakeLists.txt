@@ -15,134 +15,136 @@
 ##You should have received a copy of the GNU General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-# pythonOCC cmake build file
-SET(PROJECT_NAME pythonOCC)
-PROJECT(PYTHONOCC)
+project(PYTHONOCC)
 
 # set pythonOCC version
-SET(PYTHONOCC_VERSION_MAJOR 0)
-SET(PYTHONOCC_VERSION_MINOR 16)
-SET(PYTHONOCC_VERSION_PATCH 1)
+set(PYTHONOCC_VERSION_MAJOR 0)
+set(PYTHONOCC_VERSION_MINOR 16)
+set(PYTHONOCC_VERSION_PATCH 1)
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
-SET(PYTHONOCC_VERSION_DEVEL -dev)
+set(PYTHONOCC_VERSION_DEVEL -dev)
 
-CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
+cmake_minimum_required(VERSION 2.6)
 
-SET(CMAKE_BUILD_TYPE "MinSizeRel" CACHE STRING "Build type")
-MESSAGE(STATUS " ${CMAKE_CXX_FLAGS}") 
-SET(BUILD_SHARED_LIBS ON)
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
+set(CMAKE_BUILD_TYPE "MinSizeRel" CACHE STRING "Build type")
+message(STATUS " ${CMAKE_CXX_FLAGS}") 
+set(BUILD_SHARED_LIBS ON)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 #############################
 # Option_With_Default macro #
 #############################
-MACRO( OPTION_WITH_DEFAULT OPTION_NAME OPTION_STRING OPTION_DEFAULT )
-IF( NOT DEFINED ${OPTION_NAME} )
-	SET( ${OPTION_NAME} ${OPTION_DEFAULT} )
-ENDIF( NOT DEFINED ${OPTION_NAME} )
+macro( option_with_default OPTION_NAME OPTION_STRING OPTION_DEFAULT )
+if( NOT DEFINED ${OPTION_NAME} )
+	set( ${OPTION_NAME} ${OPTION_DEFAULT} )
+endif( NOT DEFINED ${OPTION_NAME} )
 	OPTION( ${OPTION_NAME} "${OPTION_STRING}" ${${OPTION_NAME}} )
-ENDMACRO( OPTION_WITH_DEFAULT OPTION_NAME OPTION_STRING OPTION_DEFAULT )
+endmacro( option_with_default OPTION_NAME OPTION_STRING OPTION_DEFAULT )
 
 ##########
 # Python #
 ##########
-FIND_PACKAGE(PythonInterp)
-FIND_PACKAGE(PythonLibs)
-INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_PATH})
+find_package(PythonInterp)
+find_package(PythonLibs)
+include_directories(${PYTHON_INCLUDE_PATH})
 
 ##############################################################
 # 32/64 bit detection
 ###############################################################
-IF(${CMAKE_SIZEOF_VOID_P} MATCHES "8")
+if(${CMAKE_SIZEOF_VOID_P} MATCHES "8")
 	# If in 64bit mode, we have to define the _OCC64 variable
-	ADD_DEFINITIONS(-D_OCC64)
-	SET(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -D_OCC64)
-	SET(BIT 64)
-ELSE(${CMAKE_SIZEOF_VOID_P} MATCHES "8")
-	SET(BIT 32)
-ENDIF(${CMAKE_SIZEOF_VOID_P} MATCHES "8")
-MESSAGE(STATUS "Build ${BIT}bit")
+	add_definitions(-D_OCC64)
+	set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -D_OCC64)
+	set(BIT 64)
+else(${CMAKE_SIZEOF_VOID_P} MATCHES "8")
+	set(BIT 32)
+endif(${CMAKE_SIZEOF_VOID_P} MATCHES "8")
+message(STATUS "Build ${BIT}bit")
 
-IF ((NOT MSVC) OR (CMAKE_BUILD_TOOL STREQUAL "nmake"))
-	IF( NOT DEFINED PYTHONOCC_BUILD_TYPE )
-		SET( PYTHONOCC_BUILD_TYPE "MinSizeRel" CACHE STRING "Build type" ) # By default set release build
-	ENDIF( NOT DEFINED PYTHONOCC_BUILD_TYPE )
-	SET( CMAKE_BUILD_TYPE ${PYTHONOCC_BUILD_TYPE} CACHE INTERNAL "Build type,
+if ((NOT MSVC) OR (CMAKE_BUILD_TOOL STREQUAL "nmake"))
+	if( NOT DEFINED PYTHONOCC_BUILD_TYPE )
+		set( PYTHONOCC_BUILD_TYPE "MinSizeRel" CACHE STRING "Build type" ) # By default set release build
+	endif( NOT DEFINED PYTHONOCC_BUILD_TYPE )
+	set( CMAKE_BUILD_TYPE ${PYTHONOCC_BUILD_TYPE} CACHE INTERNAL "Build type,
 		immutable" FORCE )
-ENDIF((NOT MSVC) OR (CMAKE_BUILD_TOOL STREQUAL "nmake"))
+endif((NOT MSVC) OR (CMAKE_BUILD_TOOL STREQUAL "nmake"))
 
 ########
 # SWIG #
 ########
-FIND_PACKAGE(SWIG)
-INCLUDE(${SWIG_USE_FILE})
-SET(SWIG_FILES_PATH src/SWIG_files/wrapper)
+find_package(SWIG)
+include(${SWIG_USE_FILE})
+set(SWIG_FILES_PATH src/SWIG_files/wrapper)
     
 ################################
 # OCE include and lib location #
 ################################
-SET(OCE_INCLUDE_PATH /usr/local/include/oce CACHE PATH "OCE include path" )
-SET(OCE_LIB_PATH /usr/local/lib CACHE PATH "OCE lib path" )
+find_package(OCE REQUIRED)
+if(OCE_FOUND)
+  message(STATUS "OpenCASCADE Community Edition found.")
+  include_directories(${OCE_INCLUDE_DIRS})
+  #set(OCE_LIBRARIES ${OCE_REQUIRED_LIBS})
+else()
+  set(OCE_include_PATH /usr/local/include/oce CACHE PATH "OCE include path" )
+  set(OCE_LIB_PATH /usr/local/lib CACHE PATH "OCE lib path" )
+  include_directories(${OCE_INCLUDE_PATH})
+  link_directories(${OCE_LIB_PATH})
+endif(OCE_FOUND)
 
 ##############################################
 # Installation directory                     #
 # by default, installed to site-packages/OCC #
 ##############################################
-EXECUTE_PROCESS(COMMAND ${PYTHON_EXECUTABLE} -c "from __future__ import print_function; from distutils.sysconfig import get_python_lib; import os;print(get_python_lib())" OUTPUT_VARIABLE python_lib OUTPUT_STRIP_TRAILING_WHITESPACE )
-SET(PYTHONOCC_INSTALL_DIRECTORY ${python_lib}/OCC CACHE PATH "pythonOCC install directory" )
+execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "from __future__ import print_function; from distutils.sysconfig import get_python_lib; import os;print(get_python_lib())" OUTPUT_VARIABLE python_lib OUTPUT_STRIP_TRAILING_WHITESPACE )
+set(PYTHONOCC_INSTALL_DIRECTORY ${python_lib}/OCC CACHE PATH "pythonOCC install directory" )
 
 # List of OCE shared libraries to link with
 # TODO: this should be build from the module list
-SET(OCE_MODEL_LIBRARIES TKernel TKMath TKAdvTools TKG2d TKG3d TKGeomBase TKBRep TKGeomAlgo
-                  TKTopAlgo TKPrim TKBO TKHLR TKMesh TKShHealing TKXMesh
-                  TKBool TKFillet TKFeat TKOffset)
-SET(OCE_VISUALIZATION_LIBRARIES TKService TKV3d TKMeshVS TKOpenGl)
-SET(OCE_DATAEXCHANGE_LIBRARIES TKSTL TKXSBase TKSTEPBase TKIGES TKSTEPAttr TKSTEP209
-                  TKSTEP TKVRML)
-# Tells CMake where are the required headers
-INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_PATH})
-INCLUDE_DIRECTORIES(${OCE_INCLUDE_PATH})
-LINK_DIRECTORIES(${OCE_LIB_PATH})
+set(OCE_MODEL_LIBRARIES TKernel TKMath TKAdvTools TKG2d TKG3d TKGeomBase TKBRep TKGeomAlgo
+    TKTopAlgo TKPrim TKBO TKHLR TKMesh TKShHealing TKXMesh TKBool TKFillet TKFeat TKOffset)
+set(OCE_VISUALIZATION_LIBRARIES TKService TKV3d TKMeshVS TKOpenGl)
+set(OCE_DATAEXCHANGE_LIBRARIES TKSTL TKXSBase TKSTEPBase TKIGES TKSTEPAttr TKSTEP209
+    TKSTEP TKVRML)
 
 ######################################################
 # Configure Build settings according to the platform #
 ######################################################
-IF(UNIX)
-  IF(APPLE)
+if(UNIX)
+  if(APPLE)
     ######### MacOSX ###########
-	SET(PLATFORM Darwin)
-  ELSE(APPLE)
+	set(PLATFORM Darwin)
+  else(APPLE)
     ######### Unix/Linux ###########
-    SET(PLATFORM Unix)
-  ENDIF(APPLE)
-  SET(CMAKE_SWIG_FLAGS -O -w302,401,314,509,512
+    set(PLATFORM Unix)
+  endif(APPLE)
+  set(CMAKE_SWIG_FLAGS -O -w302,401,314,509,512
         -DCSFDB -DHAVE_CONFIG_H -DOCC_CONVERT_SIGNALS)
-  ADD_DEFINITIONS(-DHAVE_CONFIG_H -DCSFDB -DOCC_CONVERT_SIGNALS)
-ELSE(UNIX)
-  IF(WIN32)
+  add_definitions(-DHAVE_CONFIG_H -DCSFDB -DOCC_CONVERT_SIGNALS)
+else(UNIX)
+  if(WIN32)
     ######### Windows ###########
-    ADD_DEFINITIONS(-DWNT -DWIN32 -D_WINDOWS -DCSFDB -DHAVE_CONFIG_H)
+    add_definitions(-DWNT -DWIN32 -D_WINDOWS -DCSFDB -DHAVE_CONFIG_H)
 	# specific windows defines for python version >=2.6.0
-	EXECUTE_PROCESS(COMMAND python -c "import sys;print (2,6)>=sys.version_info[:2]" OUTPUT_VARIABLE PYTHON_26_OR_HIGHER OUTPUT_STRIP_TRAILING_WHITESPACE)
-	IF(${PYTHON_26_OR_HIGHER} MATCHES "True")
-	  ADD_DEFINITIONS(-DHAVE_ACOSH -DHAVE_ASINH -DHAVE_ATANH)
-	ENDIF(${PYTHON_26_OR_HIGHER} MATCHES "True")
-    SET(CMAKE_SWIG_FLAGS -O -w302,401,314,509,512 -DCSFDB -DWIN32 -D_WINDOWS)
-    SET(PLATFORM win)
-  ELSE(WIN32)
-    MESSAGE(STATUS "Unknown platform")
-  ENDIF(WIN32)
-ENDIF(UNIX)
-MESSAGE(STATUS "Platform:" ${PLATFORM})
+	execute_process(COMMAND python -c "import sys;print (2,6)>=sys.version_info[:2]" OUTPUT_VARIABLE PYTHON_26_OR_HIGHER OUTPUT_STRIP_TRAILING_WHITESPACE)
+	if(${PYTHON_26_OR_HIGHER} MATCHES "True")
+	  add_definitions(-DHAVE_ACOSH -DHAVE_ASINH -DHAVE_ATANH)
+	endif(${PYTHON_26_OR_HIGHER} MATCHES "True")
+    set(CMAKE_SWIG_FLAGS -O -w302,401,314,509,512 -DCSFDB -DWIN32 -D_WINDOWS)
+    set(PLATFORM win)
+  else(WIN32)
+    message(STATUS "Unknown platform")
+  endif(WIN32)
+endif(UNIX)
+message(STATUS "Platform:" ${PLATFORM})
 
 ##################################
 # Tells Swig to use py3k option  #
 ##################################
-EXECUTE_PROCESS(COMMAND ${PYTHON_EXECUTABLE} -c "from __future__ import print_function; import sys; print(sys.version_info.major)" OUTPUT_VARIABLE python_version_major OUTPUT_STRIP_TRAILING_WHITESPACE )
+execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "from __future__ import print_function; import sys; print(sys.version_info.major)" OUTPUT_VARIABLE python_version_major OUTPUT_STRIP_TRAILING_WHITESPACE )
 
-IF(${python_version_major} MATCHES "3")
-  SET(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -py3)
-ENDIF(${python_version_major} MATCHES "3")
+if(${python_version_major} MATCHES "3")
+  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -py3)
+endif(${python_version_major} MATCHES "3")
 
 ################################################
 # Define output path for generated libraries:  #
@@ -152,157 +154,157 @@ ENDIF(${python_version_major} MATCHES "3")
 #     ./win32/bin/vc9-debug-32                 #
 #     ./Unix/i386-debug-64                     #
 ################################################
-IF(WIN32)
-  IF(MSVC) # The compiler used is MSVC
-    MESSAGE(STATUS "Found MSVC compiler: ${MSVC} ${MSVC_VERSION}")
-    SET(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin/)
-  ELSEIF (BORLAND) # The compiler used is BORLAND
-    SET(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/win${BIT}/bin/${CMAKE_BUILD_TYPE})
-  ELSE()
-    SET(LIBRARY_OUTPUT_PATH win${BIT}/bin/${CMAKE_BUILD_TYPE})
-  ENDIF()
-  SET(EXECUTABLE_OUTPUT_PATH ${LIBRARY_OUTPUT_PATH})
-ELSE(WIN32)
-  SET(LIBRARY_OUTPUT_PATH ${PLATFORM}/${CMAKE_SYSTEM_PROCESSOR}-${CMAKE_BUILD_TYPE}-${BIT})
-ENDIF(WIN32)
-SET(CMAKE_SWIG_OUTDIR ${LIBRARY_OUTPUT_PATH})
-MESSAGE(STATUS "output_path: ${LIBRARY_OUTPUT_PATH}")
+if(WIN32)
+  if(MSVC) # The compiler used is MSVC
+    message(STATUS "Found MSVC compiler: ${MSVC} ${MSVC_VERSION}")
+    set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin/)
+  elseif (BORLAND) # The compiler used is BORLAND
+    set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/win${BIT}/bin/${CMAKE_BUILD_TYPE})
+  else()
+    set(LIBRARY_OUTPUT_PATH win${BIT}/bin/${CMAKE_BUILD_TYPE})
+  endif()
+  set(EXECUTABLE_OUTPUT_PATH ${LIBRARY_OUTPUT_PATH})
+else(WIN32)
+  set(LIBRARY_OUTPUT_PATH ${PLATFORM}/${CMAKE_SYSTEM_PROCESSOR}-${CMAKE_BUILD_TYPE}-${BIT})
+endif(WIN32)
+set(CMAKE_SWIG_OUTDIR ${LIBRARY_OUTPUT_PATH})
+message(STATUS "output_path: ${LIBRARY_OUTPUT_PATH}")
 
 ############################
 # OpenCASCADE Modules list #
 ############################
-INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OCE_Modules.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OCE_Modules.cmake)
 # add an option to choose toolkits to compile
-OPTION_WITH_DEFAULT(PYTHONOCC_WRAP_MODEL "Compile Foundation/Model" TRUE)
-OPTION_WITH_DEFAULT(PYTHONOCC_WRAP_VISU "Compile Visualisation" TRUE)
-OPTION_WITH_DEFAULT(PYTHONOCC_WRAP_DATAEXCHANGE "Compile Data Exchange" TRUE)
+option_with_default(PYTHONOCC_WRAP_VISU "Compile Visualisation" TRUE)
+option_with_default(PYTHONOCC_WRAP_DATAEXCHANGE "Compile Data Exchange" TRUE)
 
 ###################
 # Wrapper Modules #
 ###################
 
 # MODEL Toolkits
-FILE(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/${SWIG_FILES_PATH})
-FOREACH(OCE_MODULE ${OCE_TOOLKIT_MODEL})
-	SET(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
-	SET_SOURCE_FILES_PROPERTIES(${FILE} PROPERTIES CPLUSPLUS ON)
-    SWIG_ADD_MODULE(${OCE_MODULE} python ${FILE})
-    SWIG_LINK_LIBRARIES(${OCE_MODULE} ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES})
-ENDFOREACH(OCE_MODULE)
+file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/${SWIG_FILES_PATH})
+foreach(OCE_MODULE ${OCE_TOOLKIT_MODEL})
+	set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
+	set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
+  swig_add_module(${OCE_MODULE} python ${FILE})
+  swig_link_libraries(${OCE_MODULE} ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES})
+endforeach(OCE_MODULE)
 
-# Visualisation
-IF(PYTHONOCC_WRAP_VISU)
-FOREACH(OCE_MODULE ${OCE_TOOLKIT_VISUALIZATION})
-    SET(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
-    SET_SOURCE_FILES_PROPERTIES(${FILE} PROPERTIES CPLUSPLUS ON)
-    SWIG_ADD_MODULE(${OCE_MODULE} python ${FILE})
-    SWIG_LINK_LIBRARIES(${OCE_MODULE} ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES})
-ENDFOREACH(OCE_MODULE)
-ENDIF(PYTHONOCC_WRAP_VISU)
+#################
+# Visualisation #
+#################
+if(PYTHONOCC_WRAP_VISU)
+  foreach(OCE_MODULE ${OCE_TOOLKIT_VISUALIZATION})
+    set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
+    set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
+    swig_add_module(${OCE_MODULE} python ${FILE})
+    swig_link_libraries(${OCE_MODULE} ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES})
+  endforeach(OCE_MODULE)
+  # Build third part modules
+  # TODO : the following line is strange but necessary
+  execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory src/Visualization)
+  set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Visualization.i PROPERTIES CPLUSPLUS ON)
+  include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization)
+  set(VISUALIZATION_SOURCE_FILES
+  	${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Visualization.i
+  	${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Display3d.cpp
+  	${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Tesselator.cpp
+  	)
+  swig_add_module(Visualization python ${VISUALIZATION_SOURCE_FILES})
+  if(APPLE)
+    # on OSX, always add /System/Library/Frameworks/Cocoa.framework, even
+    # if GLX is enabled
+    swig_link_libraries(Visualization ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} /System/Library/Frameworks/Cocoa.framework)
+  else(APPLE)
+    swig_link_libraries(Visualization ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES})
+  endif(APPLE)
+endif(PYTHONOCC_WRAP_VISU)
 
-IF(PYTHONOCC_WRAP_VISU)
-# Build third part modules
-# TODO : the following line is strange but necessary
-EXECUTE_PROCESS(COMMAND ${CMAKE_COMMAND} -E make_directory src/Visualization)
-SET_SOURCE_FILES_PROPERTIES(${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Visualization.i PROPERTIES CPLUSPLUS ON)
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization)
-SET(VISUALIZATION_SOURCE_FILES
-	${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Visualization.i
-	${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Display3d.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Tesselator.cpp
-	)
-SWIG_ADD_MODULE(Visualization python ${VISUALIZATION_SOURCE_FILES})
-IF(APPLE)
-# on OSX, always add /System/Library/Frameworks/Cocoa.framework, even
-# if GLX is enabled
-SWIG_LINK_LIBRARIES(Visualization ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} /System/Library/Frameworks/Cocoa.framework)
-ELSE(APPLE)
-SWIG_LINK_LIBRARIES(Visualization ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES})
-ENDIF(APPLE)
-ENDIF(PYTHONOCC_WRAP_VISU)
-
-# DataExchange
-IF(PYTHONOCC_WRAP_DATAEXCHANGE)
-FOREACH(OCE_MODULE ${OCE_TOOLKIT_DATAEXCHANGE})
-    SET(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
-    SET_SOURCE_FILES_PROPERTIES(${FILE} PROPERTIES CPLUSPLUS ON)
-    SWIG_ADD_MODULE(${OCE_MODULE} python ${FILE})
-    SWIG_LINK_LIBRARIES(${OCE_MODULE} ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} ${OCE_DATAEXCHANGE_LIBRARIES})
-ENDFOREACH(OCE_MODULE)
-ENDIF(PYTHONOCC_WRAP_DATAEXCHANGE)
+################
+# DataExchange #
+################
+if(PYTHONOCC_WRAP_DATAEXCHANGE)
+  foreach(OCE_MODULE ${OCE_TOOLKIT_DATAEXCHANGE})
+    set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
+    set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
+    swig_add_module(${OCE_MODULE} python ${FILE})
+    swig_link_libraries(${OCE_MODULE} ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES} ${OCE_DATAEXCHANGE_LIBRARIES})
+  endforeach(OCE_MODULE)
+endif(PYTHONOCC_WRAP_DATAEXCHANGE)
 
 ################
 # Installation #
 ################
-IF(WIN32)
-	SET(EXTENSION "pyd")
-ELSE(WIN32)
-	SET(EXTENSION "so")
-ENDIF(WIN32)
-SET(BUILD_DIR ${CMAKE_BINARY_DIR}/${LIBRARY_OUTPUT_PATH})
+if(WIN32)
+	set(EXTENSION "pyd")
+else(WIN32)
+	set(EXTENSION "so")
+endif(WIN32)
+set(BUILD_DIR ${CMAKE_BINARY_DIR}/${LIBRARY_OUTPUT_PATH})
 
 # install pythonOCC modules
-FOREACH(OCE_MODULE ${OCE_TOOLKIT_MODEL})
-	INSTALL(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
-	INSTALL(FILES ${BUILD_DIR}/_${OCE_MODULE}.${EXTENSION} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
-ENDFOREACH(OCE_MODULE)
-IF(PYTHONOCC_WRAP_VISU)
-FOREACH(OCE_MODULE ${OCE_TOOLKIT_VISUALIZATION})
-    INSTALL(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
-    INSTALL(FILES ${BUILD_DIR}/_${OCE_MODULE}.${EXTENSION} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
-ENDFOREACH(OCE_MODULE)
-ENDIF(PYTHONOCC_WRAP_VISU)
-IF(PYTHONOCC_WRAP_DATAEXCHANGE)
-FOREACH(OCE_MODULE ${OCE_TOOLKIT_DATAEXCHANGE})
-    INSTALL(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
-    INSTALL(FILES ${BUILD_DIR}/_${OCE_MODULE}.${EXTENSION} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
-ENDFOREACH(OCE_MODULE)
-ENDIF(PYTHONOCC_WRAP_DATAEXCHANGE)
+foreach(OCE_MODULE ${OCE_TOOLKIT_MODEL})
+	install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+	install(FILES ${BUILD_DIR}/_${OCE_MODULE}.${EXTENSION} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+endforeach(OCE_MODULE)
+if(PYTHONOCC_WRAP_VISU)
+foreach(OCE_MODULE ${OCE_TOOLKIT_VISUALIZATION})
+    install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+    install(FILES ${BUILD_DIR}/_${OCE_MODULE}.${EXTENSION} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+endforeach(OCE_MODULE)
+endif(PYTHONOCC_WRAP_VISU)
+if(PYTHONOCC_WRAP_DATAEXCHANGE)
+foreach(OCE_MODULE ${OCE_TOOLKIT_DATAEXCHANGE})
+    install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+    install(FILES ${BUILD_DIR}/_${OCE_MODULE}.${EXTENSION} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+endforeach(OCE_MODULE)
+endif(PYTHONOCC_WRAP_DATAEXCHANGE)
 
 # install third part modules
-IF(PYTHONOCC_WRAP_VISU)
-INSTALL(FILES ${BUILD_DIR}/Visualization.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
-INSTALL(FILES ${BUILD_DIR}/_Visualization.${EXTENSION} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
-ENDIF(PYTHONOCC_WRAP_VISU)
+if(PYTHONOCC_WRAP_VISU)
+install(FILES ${BUILD_DIR}/Visualization.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+install(FILES ${BUILD_DIR}/_Visualization.${EXTENSION} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+endif(PYTHONOCC_WRAP_VISU)
 
 # install GC
-INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/GarbageCollector.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/GarbageCollector.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
 # install addons
-INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/addons/Display DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/addons/Display DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
 # install LICENSE file
-INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/LICENSE DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/LICENSE DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
 # install AUTHORS file
-INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/AUTHORS DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/AUTHORS DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
 # install __init__.py file
-INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/__init__.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/__init__.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
 
 #######################
 # pythonOCC Packaging #
 # $ make package      #
 #######################
-IF(UNIX)
-  INCLUDE(InstallRequiredSystemLibraries)
-ENDIF(UNIX)
-SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "pythonOCC")
-SET(CPACK_PACKAGE_VENDOR "Thomas Paviot (tpaviot@gmail.com)")
-SET(CPACK_SET_DESTDIR "ON")
-SET(CPACK_PACKAGE_DESCRIPTION "A 3D CAD/CAM python package")
-SET(CPACK_PACKAGE_VERSION "0.16.0")
-SET(CPACK_PACKAGE_VERSION_MAJOR ${PYTHONOCC_VERSION_MAJOR})
-SET(CPACK_PACKAGE_VERSION_MINOR ${PYTHONOCC_VERSION_MINOR})
-SET(CPACK_PACKAGE_VERSION_PATCH ${PYTHONOCC_VERSION_PATCH})
-SET(CPACK_PACKAGE_NAME PYTHONOCC)
-SET(CPACK_RESOURCE_FILE_LICENSE ${CMAKE_CURRENT_SOURCE_DIR}/LICENSE)
-SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "A 3D CAD/CAM python package")
-SET(CPACK_PACKAGE_CONTACT "pythonocc googlegroup <pythonocc@googlegroups.com>")
+if(UNIX)
+  include(InstallRequiredSystemLibraries)
+endif(UNIX)
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "pythonOCC")
+set(CPACK_PACKAGE_VENDOR "Thomas Paviot (tpaviot@gmail.com)")
+set(CPACK_SET_DESTDIR "ON")
+set(CPACK_PACKAGE_DESCRIPTION "A 3D CAD/CAM python package")
+set(CPACK_PACKAGE_VERSION "0.16.0")
+set(CPACK_PACKAGE_VERSION_MAJOR ${PYTHONOCC_VERSION_MAJOR})
+set(CPACK_PACKAGE_VERSION_MINOR ${PYTHONOCC_VERSION_MINOR})
+set(CPACK_PACKAGE_VERSION_PATCH ${PYTHONOCC_VERSION_PATCH})
+set(CPACK_PACKAGE_NAME PYTHONOCC)
+set(CPACK_RESOURCE_FILE_LICENSE ${CMAKE_CURRENT_SOURCE_DIR}/LICENSE)
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "A 3D CAD/CAM python package")
+set(CPACK_PACKAGE_CONTACT "pythonocc googlegroup <pythonocc@googlegroups.com>")
 
 ##########
 # Debian #
 ##########
-SET(CPACK_GENERATOR "DEB")
-SET(CPACK_DEBIAN_PACKAGE_NAME "pythonocc")
-SET(CPACK_DEBIAN_PACKAGE_SECTION "devel")
-SET(CPACK_DEBIAN_PACKAGE_PRIORITY "optional")
-SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "Thomas Paviot (tpaviot@gmail.com)")
-SET(CPACK_DEBIAN_PACKAGE_HOMEPAGE "http://www.pythonocc.org")
-INCLUDE(CPack)
+set(CPACK_GENERATOR "DEB")
+set(CPACK_DEBIAN_PACKAGE_NAME "pythonocc")
+set(CPACK_DEBIAN_PACKAGE_SECTION "devel")
+set(CPACK_DEBIAN_PACKAGE_PRIORITY "optional")
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Thomas Paviot (tpaviot@gmail.com)")
+set(CPACK_DEBIAN_PACKAGE_HOMEPAGE "http://www.pythonocc.org")
+include(CPack)
