@@ -18,16 +18,25 @@ before_install:
    - sudo apt-get update
    - sudo apt-get install python3.4
    - sudo apt-get install python3.4-dev
+# gfortran is necessary for smesh to compile
+   - sudo apt-get install gfortran
 before_script:
-  - wget http://prdownloads.sourceforge.net/swig/swig-2.0.10.tar.gz
-# untar swig files generates thousands of lines. Redirect stdout stream
-# to a file
-  - tar -xvf swig-2.0.10.tar.gz > swig-2.0.10-filelist.txt
-  - cd swig-2.0.10
+# download/build/install swig-3.0.2
+  - curl -L http://prdownloads.sourceforge.net/swig/swig-3.0.2.tar.gz | tar zx
+  - cd swig-3.0.2
   - ./configure
   - make -j6 && sudo make install
   - cd ..
   - swig -version
+# download/build/install smesh-6.5.3.1
+  - curl -L https://github.com/tpaviot/smesh/tarball/6.5.3.1 | tar zx
+  - cd tpaviot-smesh-49d0d6c
+  - mkdir cmake-build
+  - cd cmake-build
+  - cmake ..
+  - sudo make -j6 install | grep Built
+  - cd ../..
+  
 script: ./.travis.build.sh
 after_script:
 branches:
