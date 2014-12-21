@@ -740,11 +740,11 @@ class GCPnts_UniformAbscissa {
 	:type C: Adaptor3d_Curve &
 	:param Abscissa:
 	:type Abscissa: float
-	:param Toler: default value is - 1
+	:param Toler: default value is -1
 	:type Toler: float
 	:rtype: None
 ") GCPnts_UniformAbscissa;
-		 GCPnts_UniformAbscissa (Adaptor3d_Curve & C,const Standard_Real Abscissa,const Standard_Real Toler = - 1);
+		 GCPnts_UniformAbscissa (Adaptor3d_Curve & C,const Standard_Real Abscissa,const Standard_Real Toler = -1);
 		%feature("autodoc", "	* Computes a Uniform abscissa distribution of points on a part of the Curve <C>. Parameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length
 
 	:param C:
@@ -755,22 +755,22 @@ class GCPnts_UniformAbscissa {
 	:type U1: float
 	:param U2:
 	:type U2: float
-	:param Toler: default value is - 1
+	:param Toler: default value is -1
 	:type Toler: float
 	:rtype: None
 ") GCPnts_UniformAbscissa;
-		 GCPnts_UniformAbscissa (Adaptor3d_Curve & C,const Standard_Real Abscissa,const Standard_Real U1,const Standard_Real U2,const Standard_Real Toler = - 1);
+		 GCPnts_UniformAbscissa (Adaptor3d_Curve & C,const Standard_Real Abscissa,const Standard_Real U1,const Standard_Real U2,const Standard_Real Toler = -1);
 		%feature("autodoc", "	* Computes a uniform abscissa distribution of points on the Curve <C>. <NbPoints> defines the nomber of desired points. Parameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length
 
 	:param C:
 	:type C: Adaptor3d_Curve &
 	:param NbPoints:
 	:type NbPoints: Standard_Integer
-	:param Toler: default value is - 1
+	:param Toler: default value is -1
 	:type Toler: float
 	:rtype: None
 ") GCPnts_UniformAbscissa;
-		 GCPnts_UniformAbscissa (Adaptor3d_Curve & C,const Standard_Integer NbPoints,const Standard_Real Toler = - 1);
+		 GCPnts_UniformAbscissa (Adaptor3d_Curve & C,const Standard_Integer NbPoints,const Standard_Real Toler = -1);
 		%feature("autodoc", "	* Computes a Uniform abscissa distribution of points on a part of the Curve <C>. Parameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length
 
 	:param C:
@@ -781,22 +781,22 @@ class GCPnts_UniformAbscissa {
 	:type U1: float
 	:param U2:
 	:type U2: float
-	:param Toler: default value is - 1
+	:param Toler: default value is -1
 	:type Toler: float
 	:rtype: None
 ") GCPnts_UniformAbscissa;
-		 GCPnts_UniformAbscissa (Adaptor3d_Curve & C,const Standard_Integer NbPoints,const Standard_Real U1,const Standard_Real U2,const Standard_Real Toler = - 1);
+		 GCPnts_UniformAbscissa (Adaptor3d_Curve & C,const Standard_Integer NbPoints,const Standard_Real U1,const Standard_Real U2,const Standard_Real Toler = -1);
 		%feature("autodoc", "	* Initialize the algoritms with <C>, <Abscissa>, <Toler>
 
 	:param C:
 	:type C: Adaptor3d_Curve &
 	:param Abscissa:
 	:type Abscissa: float
-	:param Toler: default value is - 1
+	:param Toler: default value is -1
 	:type Toler: float
 	:rtype: None
 ") Initialize;
-		void Initialize (Adaptor3d_Curve & C,const Standard_Real Abscissa,const Standard_Real Toler = - 1);
+		void Initialize (Adaptor3d_Curve & C,const Standard_Real Abscissa,const Standard_Real Toler = -1);
 		%feature("autodoc", "	* Initialize the algoritms with <C>, <Abscissa>, <U1>, <U2>, <Toler>
 
 	:param C:
@@ -807,22 +807,22 @@ class GCPnts_UniformAbscissa {
 	:type U1: float
 	:param U2:
 	:type U2: float
-	:param Toler: default value is - 1
+	:param Toler: default value is -1
 	:type Toler: float
 	:rtype: None
 ") Initialize;
-		void Initialize (Adaptor3d_Curve & C,const Standard_Real Abscissa,const Standard_Real U1,const Standard_Real U2,const Standard_Real Toler = - 1);
+		void Initialize (Adaptor3d_Curve & C,const Standard_Real Abscissa,const Standard_Real U1,const Standard_Real U2,const Standard_Real Toler = -1);
 		%feature("autodoc", "	* Initialize the algoritms with <C>, <NbPoints>, <Toler> and
 
 	:param C:
 	:type C: Adaptor3d_Curve &
 	:param NbPoints:
 	:type NbPoints: Standard_Integer
-	:param Toler: default value is - 1
+	:param Toler: default value is -1
 	:type Toler: float
 	:rtype: None
 ") Initialize;
-		void Initialize (Adaptor3d_Curve & C,const Standard_Integer NbPoints,const Standard_Real Toler = - 1);
+		void Initialize (Adaptor3d_Curve & C,const Standard_Integer NbPoints,const Standard_Real Toler = -1);
 		%feature("autodoc", "	* Initialize the algoritms with <C>, <Abscissa>, <U1>, <U2>, <Toler>.
 
 	:param C:
@@ -833,22 +833,22 @@ class GCPnts_UniformAbscissa {
 	:type U1: float
 	:param U2:
 	:type U2: float
-	:param Toler: default value is - 1
+	:param Toler: default value is -1
 	:type Toler: float
 	:rtype: None
 ") Initialize;
-		void Initialize (Adaptor3d_Curve & C,const Standard_Integer NbPoints,const Standard_Real U1,const Standard_Real U2,const Standard_Real Toler = - 1);
+		void Initialize (Adaptor3d_Curve & C,const Standard_Integer NbPoints,const Standard_Real U1,const Standard_Real U2,const Standard_Real Toler = -1);
 		%feature("autodoc", "	* Computes a uniform abscissa distribution of points on the Curve2d <C>. Parameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length
 
 	:param C:
 	:type C: Adaptor2d_Curve2d &
 	:param Abscissa:
 	:type Abscissa: float
-	:param Toler: default value is - 1
+	:param Toler: default value is -1
 	:type Toler: float
 	:rtype: None
 ") GCPnts_UniformAbscissa;
-		 GCPnts_UniformAbscissa (Adaptor2d_Curve2d & C,const Standard_Real Abscissa,const Standard_Real Toler = - 1);
+		 GCPnts_UniformAbscissa (Adaptor2d_Curve2d & C,const Standard_Real Abscissa,const Standard_Real Toler = -1);
 		%feature("autodoc", "	* Computes a Uniform abscissa distribution of points on a part of the Curve2d <C>. Parameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length
 
 	:param C:
@@ -859,22 +859,22 @@ class GCPnts_UniformAbscissa {
 	:type U1: float
 	:param U2:
 	:type U2: float
-	:param Toler: default value is - 1
+	:param Toler: default value is -1
 	:type Toler: float
 	:rtype: None
 ") GCPnts_UniformAbscissa;
-		 GCPnts_UniformAbscissa (Adaptor2d_Curve2d & C,const Standard_Real Abscissa,const Standard_Real U1,const Standard_Real U2,const Standard_Real Toler = - 1);
+		 GCPnts_UniformAbscissa (Adaptor2d_Curve2d & C,const Standard_Real Abscissa,const Standard_Real U1,const Standard_Real U2,const Standard_Real Toler = -1);
 		%feature("autodoc", "	* Computes a uniform abscissa distribution of points on the Curve2d <C>. <NbPoints> defines the nomber of desired points. Parameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length
 
 	:param C:
 	:type C: Adaptor2d_Curve2d &
 	:param NbPoints:
 	:type NbPoints: Standard_Integer
-	:param Toler: default value is - 1
+	:param Toler: default value is -1
 	:type Toler: float
 	:rtype: None
 ") GCPnts_UniformAbscissa;
-		 GCPnts_UniformAbscissa (Adaptor2d_Curve2d & C,const Standard_Integer NbPoints,const Standard_Real Toler = - 1);
+		 GCPnts_UniformAbscissa (Adaptor2d_Curve2d & C,const Standard_Integer NbPoints,const Standard_Real Toler = -1);
 		%feature("autodoc", "	* Computes a Uniform abscissa distribution of points on a part of the Curve2d <C>. Parameter Toler is equal Precision::Confusion by default. It Is used for more precise calculation of curve length
 
 	:param C:
@@ -885,22 +885,22 @@ class GCPnts_UniformAbscissa {
 	:type U1: float
 	:param U2:
 	:type U2: float
-	:param Toler: default value is - 1
+	:param Toler: default value is -1
 	:type Toler: float
 	:rtype: None
 ") GCPnts_UniformAbscissa;
-		 GCPnts_UniformAbscissa (Adaptor2d_Curve2d & C,const Standard_Integer NbPoints,const Standard_Real U1,const Standard_Real U2,const Standard_Real Toler = - 1);
+		 GCPnts_UniformAbscissa (Adaptor2d_Curve2d & C,const Standard_Integer NbPoints,const Standard_Real U1,const Standard_Real U2,const Standard_Real Toler = -1);
 		%feature("autodoc", "	* Initialize the algoritms with <C>, <Abscissa>, <Toler>
 
 	:param C:
 	:type C: Adaptor2d_Curve2d &
 	:param Abscissa:
 	:type Abscissa: float
-	:param Toler: default value is - 1
+	:param Toler: default value is -1
 	:type Toler: float
 	:rtype: None
 ") Initialize;
-		void Initialize (Adaptor2d_Curve2d & C,const Standard_Real Abscissa,const Standard_Real Toler = - 1);
+		void Initialize (Adaptor2d_Curve2d & C,const Standard_Real Abscissa,const Standard_Real Toler = -1);
 		%feature("autodoc", "	* Initialize the algoritms with <C>, <Abscissa>, <U1>, <U2>, <Toler>
 
 	:param C:
@@ -911,22 +911,22 @@ class GCPnts_UniformAbscissa {
 	:type U1: float
 	:param U2:
 	:type U2: float
-	:param Toler: default value is - 1
+	:param Toler: default value is -1
 	:type Toler: float
 	:rtype: None
 ") Initialize;
-		void Initialize (Adaptor2d_Curve2d & C,const Standard_Real Abscissa,const Standard_Real U1,const Standard_Real U2,const Standard_Real Toler = - 1);
+		void Initialize (Adaptor2d_Curve2d & C,const Standard_Real Abscissa,const Standard_Real U1,const Standard_Real U2,const Standard_Real Toler = -1);
 		%feature("autodoc", "	* Initialize the algoritms with <C>, <NbPoints>, <Toler> and
 
 	:param C:
 	:type C: Adaptor2d_Curve2d &
 	:param NbPoints:
 	:type NbPoints: Standard_Integer
-	:param Toler: default value is - 1
+	:param Toler: default value is -1
 	:type Toler: float
 	:rtype: None
 ") Initialize;
-		void Initialize (Adaptor2d_Curve2d & C,const Standard_Integer NbPoints,const Standard_Real Toler = - 1);
+		void Initialize (Adaptor2d_Curve2d & C,const Standard_Integer NbPoints,const Standard_Real Toler = -1);
 		%feature("autodoc", "	* Initialize the algoritms with <C>, <Abscissa>, <U1>, <U2>, <Toler>.
 
 	:param C:
@@ -937,11 +937,11 @@ class GCPnts_UniformAbscissa {
 	:type U1: float
 	:param U2:
 	:type U2: float
-	:param Toler: default value is - 1
+	:param Toler: default value is -1
 	:type Toler: float
 	:rtype: None
 ") Initialize;
-		void Initialize (Adaptor2d_Curve2d & C,const Standard_Integer NbPoints,const Standard_Real U1,const Standard_Real U2,const Standard_Real Toler = - 1);
+		void Initialize (Adaptor2d_Curve2d & C,const Standard_Integer NbPoints,const Standard_Real U1,const Standard_Real U2,const Standard_Real Toler = -1);
 		%feature("autodoc", "	:rtype: bool
 ") IsDone;
 		Standard_Boolean IsDone ();

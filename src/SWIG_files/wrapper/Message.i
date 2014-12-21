@@ -857,7 +857,7 @@ class Message_MsgFile {
 	:type envname: char *
 	:param filename:
 	:type filename: char *
-	:param ext: default value is 
+	:param ext: default value is ""
 	:type ext: char *
 	:rtype: void
 ") LoadFromEnv;

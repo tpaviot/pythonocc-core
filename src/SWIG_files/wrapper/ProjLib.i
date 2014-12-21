@@ -964,13 +964,13 @@ class ProjLib_PrjResolve {
 	:type Inf: gp_Pnt2d
 	:param Sup:
 	:type Sup: gp_Pnt2d
-	:param FTol: default value is - 1
+	:param FTol: default value is -1
 	:type FTol: float
 	:param StrictInside: default value is Standard_False
 	:type StrictInside: bool
 	:rtype: None
 ") Perform;
-		void Perform (const Standard_Real t,const Standard_Real U,const Standard_Real V,const gp_Pnt2d & Tol,const gp_Pnt2d & Inf,const gp_Pnt2d & Sup,const Standard_Real FTol = - 1,const Standard_Boolean StrictInside = Standard_False);
+		void Perform (const Standard_Real t,const Standard_Real U,const Standard_Real V,const gp_Pnt2d & Tol,const gp_Pnt2d & Inf,const gp_Pnt2d & Sup,const Standard_Real FTol = -1,const Standard_Boolean StrictInside = Standard_False);
 		%feature("autodoc", "	* Returns True if the distance is found.
 
 	:rtype: bool

@@ -2990,36 +2990,36 @@ class TopOpeBRepBuild_ShapeSet {
 		Standard_Integer DEBNumber ();
 		%feature("autodoc", "	:param S:
 	:type S: TopoDS_Shape &
-	:param sb: default value is 
+	:param sb: default value is ""
 	:type sb: TCollection_AsciiString &
-	:param sa: default value is 
+	:param sa: default value is ""
 	:type sa: TCollection_AsciiString &
 	:rtype: TCollection_AsciiString
 ") SName;
 		virtual TCollection_AsciiString SName (const TopoDS_Shape & S,const TCollection_AsciiString & sb = "",const TCollection_AsciiString & sa = "");
 		%feature("autodoc", "	:param S:
 	:type S: TopoDS_Shape &
-	:param sb: default value is 
+	:param sb: default value is ""
 	:type sb: TCollection_AsciiString &
-	:param sa: default value is 
+	:param sa: default value is ""
 	:type sa: TCollection_AsciiString &
 	:rtype: TCollection_AsciiString
 ") SNameori;
 		virtual TCollection_AsciiString SNameori (const TopoDS_Shape & S,const TCollection_AsciiString & sb = "",const TCollection_AsciiString & sa = "");
 		%feature("autodoc", "	:param S:
 	:type S: TopTools_ListOfShape &
-	:param sb: default value is 
+	:param sb: default value is ""
 	:type sb: TCollection_AsciiString &
-	:param sa: default value is 
+	:param sa: default value is ""
 	:type sa: TCollection_AsciiString &
 	:rtype: TCollection_AsciiString
 ") SName;
 		virtual TCollection_AsciiString SName (const TopTools_ListOfShape & S,const TCollection_AsciiString & sb = "",const TCollection_AsciiString & sa = "");
 		%feature("autodoc", "	:param S:
 	:type S: TopTools_ListOfShape &
-	:param sb: default value is 
+	:param sb: default value is ""
 	:type sb: TCollection_AsciiString &
-	:param sa: default value is 
+	:param sa: default value is ""
 	:type sa: TCollection_AsciiString &
 	:rtype: TCollection_AsciiString
 ") SNameori;
@@ -4335,36 +4335,36 @@ class TopOpeBRepBuild_ShellFaceSet : public TopOpeBRepBuild_ShapeSet {
 		virtual void DumpSS ();
 		%feature("autodoc", "	:param S:
 	:type S: TopoDS_Shape &
-	:param sb: default value is 
+	:param sb: default value is ""
 	:type sb: TCollection_AsciiString &
-	:param sa: default value is 
+	:param sa: default value is ""
 	:type sa: TCollection_AsciiString &
 	:rtype: TCollection_AsciiString
 ") SName;
 		virtual TCollection_AsciiString SName (const TopoDS_Shape & S,const TCollection_AsciiString & sb = "",const TCollection_AsciiString & sa = "");
 		%feature("autodoc", "	:param S:
 	:type S: TopTools_ListOfShape &
-	:param sb: default value is 
+	:param sb: default value is ""
 	:type sb: TCollection_AsciiString &
-	:param sa: default value is 
+	:param sa: default value is ""
 	:type sa: TCollection_AsciiString &
 	:rtype: TCollection_AsciiString
 ") SName;
 		virtual TCollection_AsciiString SName (const TopTools_ListOfShape & S,const TCollection_AsciiString & sb = "",const TCollection_AsciiString & sa = "");
 		%feature("autodoc", "	:param S:
 	:type S: TopoDS_Shape &
-	:param sb: default value is 
+	:param sb: default value is ""
 	:type sb: TCollection_AsciiString &
-	:param sa: default value is 
+	:param sa: default value is ""
 	:type sa: TCollection_AsciiString &
 	:rtype: TCollection_AsciiString
 ") SNameori;
 		virtual TCollection_AsciiString SNameori (const TopoDS_Shape & S,const TCollection_AsciiString & sb = "",const TCollection_AsciiString & sa = "");
 		%feature("autodoc", "	:param S:
 	:type S: TopTools_ListOfShape &
-	:param sb: default value is 
+	:param sb: default value is ""
 	:type sb: TCollection_AsciiString &
-	:param sa: default value is 
+	:param sa: default value is ""
 	:type sa: TCollection_AsciiString &
 	:rtype: TCollection_AsciiString
 ") SNameori;
@@ -4451,36 +4451,36 @@ class TopOpeBRepBuild_WireEdgeSet : public TopOpeBRepBuild_ShapeSet {
 		virtual void DumpSS ();
 		%feature("autodoc", "	:param S:
 	:type S: TopoDS_Shape &
-	:param sb: default value is 
+	:param sb: default value is ""
 	:type sb: TCollection_AsciiString &
-	:param sa: default value is 
+	:param sa: default value is ""
 	:type sa: TCollection_AsciiString &
 	:rtype: TCollection_AsciiString
 ") SName;
 		virtual TCollection_AsciiString SName (const TopoDS_Shape & S,const TCollection_AsciiString & sb = "",const TCollection_AsciiString & sa = "");
 		%feature("autodoc", "	:param S:
 	:type S: TopTools_ListOfShape &
-	:param sb: default value is 
+	:param sb: default value is ""
 	:type sb: TCollection_AsciiString &
-	:param sa: default value is 
+	:param sa: default value is ""
 	:type sa: TCollection_AsciiString &
 	:rtype: TCollection_AsciiString
 ") SName;
 		virtual TCollection_AsciiString SName (const TopTools_ListOfShape & S,const TCollection_AsciiString & sb = "",const TCollection_AsciiString & sa = "");
 		%feature("autodoc", "	:param S:
 	:type S: TopoDS_Shape &
-	:param sb: default value is 
+	:param sb: default value is ""
 	:type sb: TCollection_AsciiString &
-	:param sa: default value is 
+	:param sa: default value is ""
 	:type sa: TCollection_AsciiString &
 	:rtype: TCollection_AsciiString
 ") SNameori;
 		virtual TCollection_AsciiString SNameori (const TopoDS_Shape & S,const TCollection_AsciiString & sb = "",const TCollection_AsciiString & sa = "");
 		%feature("autodoc", "	:param S:
 	:type S: TopTools_ListOfShape &
-	:param sb: default value is 
+	:param sb: default value is ""
 	:type sb: TCollection_AsciiString &
-	:param sa: default value is 
+	:param sa: default value is ""
 	:type sa: TCollection_AsciiString &
 	:rtype: TCollection_AsciiString
 ") SNameori;

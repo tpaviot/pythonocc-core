@@ -940,13 +940,13 @@ class TCollection_AsciiString {
 		char * ToCString ();
 		%feature("autodoc", "	* Extracts <whichone> token from <self>. By default, the <separators> is set to space and tabulation. By default, the token extracted is the first one (whichone = 1). <separators> contains all separators you need. If no token indexed by <whichone> is found, it returns empty AsciiString. Example: aString contains 'This is a message' aString.Token() returns 'This' aString.Token(' ',4) returns 'message' aString.Token(' ',2) returns 'is' aString.Token(' ',9) returns '' Other separators than space character and tabulation are allowed : aString contains '1234; test:message , value' aString.Token('; :,',4) returns 'value' aString.Token('; :,',2) returns 'test'
 
-	:param separators: default value is  \t
+	:param separators: default value is '\t'
 	:type separators: char *
 	:param whichone: default value is 1
 	:type whichone: Standard_Integer
 	:rtype: TCollection_AsciiString
 ") Token;
-		TCollection_AsciiString Token (const char * separators = " \t",const Standard_Integer whichone = 1);
+		TCollection_AsciiString Token (const char * separators = '\t',const Standard_Integer whichone = 1);
 		%feature("autodoc", "	* Truncates <self> to <ahowmany> characters. Example: me = 'Hello Dolly' -> Trunc(3) -> me = 'Hel'
 
 	:param ahowmany:
@@ -2005,13 +2005,13 @@ class TCollection_HAsciiString : public MMgt_TShared {
 		char * ToCString ();
 		%feature("autodoc", "	* Extracts <whichone> token from <self>. By default, the <separators> is set to space and tabulation. By default, the token extracted is the first one (whichone = 1). <separators> contains all separators you need. If no token indexed by <whichone> is found, it returns an empty String. Example: aString contains 'This is a message' aString.Token() returns 'This' aString.Token(' ',4) returns 'message' aString.Token(' ',2) returns 'is' aString.Token(' ',9) returns '' Other separators than space character and tabulation are allowed aString contains '1234; test:message , value' aString.Token('; :,',4) returns 'value' aString.Token('; :,',2) returns 'test'
 
-	:param separators: default value is  \t
+	:param separators: default value is '\t'
 	:type separators: char *
 	:param whichone: default value is 1
 	:type whichone: Standard_Integer
 	:rtype: Handle_TCollection_HAsciiString
 ") Token;
-		Handle_TCollection_HAsciiString Token (const char * separators = " \t",const Standard_Integer whichone = 1);
+		Handle_TCollection_HAsciiString Token (const char * separators = '\t',const Standard_Integer whichone = 1);
 		%feature("autodoc", "	* Truncates <self> to <ahowmany> characters. Example: me = 'Hello Dolly' -> Trunc(3) -> me = 'Hel'
 
 	:param ahowmany:

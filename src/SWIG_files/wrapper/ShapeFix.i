@@ -3616,11 +3616,11 @@ class ShapeFix_Wireframe : public ShapeFix_Root {
 	:type theMultyEdges: TopTools_MapOfShape &
 	:param theModeDrop: default value is Standard_False
 	:type theModeDrop: bool
-	:param theLimitAngle: default value is - 1
+	:param theLimitAngle: default value is -1
 	:type theLimitAngle: float
 	:rtype: bool
 ") MergeSmallEdges;
-		Standard_Boolean MergeSmallEdges (TopTools_MapOfShape & theSmallEdges,TopTools_DataMapOfShapeListOfShape & theEdgeToFaces,TopTools_DataMapOfShapeListOfShape & theFaceWithSmall,TopTools_MapOfShape & theMultyEdges,const Standard_Boolean theModeDrop = Standard_False,const Standard_Real theLimitAngle = - 1);
+		Standard_Boolean MergeSmallEdges (TopTools_MapOfShape & theSmallEdges,TopTools_DataMapOfShapeListOfShape & theEdgeToFaces,TopTools_DataMapOfShapeListOfShape & theFaceWithSmall,TopTools_MapOfShape & theMultyEdges,const Standard_Boolean theModeDrop = Standard_False,const Standard_Real theLimitAngle = -1);
 		%feature("autodoc", "	* Decodes the status of the last FixWireGaps. OK - No gaps were found DONE1 - Some gaps in 3D were fixed DONE2 - Some gaps in 2D were fixed FAIL1 - Failed to fix some gaps in 3D FAIL2 - Failed to fix some gaps in 2D
 
 	:param status:

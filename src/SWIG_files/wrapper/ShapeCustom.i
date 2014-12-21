@@ -343,11 +343,11 @@ class ShapeCustom_Curve {
 
 	:param substitute:
 	:type substitute: bool
-	:param preci: default value is - 1
+	:param preci: default value is -1
 	:type preci: float
 	:rtype: Handle_Geom_Curve
 ") ConvertToPeriodic;
-		Handle_Geom_Curve ConvertToPeriodic (const Standard_Boolean substitute,const Standard_Real preci = - 1);
+		Handle_Geom_Curve ConvertToPeriodic (const Standard_Boolean substitute,const Standard_Real preci = -1);
 };
 
 
@@ -880,11 +880,11 @@ class ShapeCustom_Surface {
 
 	:param substitute:
 	:type substitute: bool
-	:param preci: default value is - 1
+	:param preci: default value is -1
 	:type preci: float
 	:rtype: Handle_Geom_Surface
 ") ConvertToPeriodic;
-		Handle_Geom_Surface ConvertToPeriodic (const Standard_Boolean substitute,const Standard_Real preci = - 1);
+		Handle_Geom_Surface ConvertToPeriodic (const Standard_Boolean substitute,const Standard_Real preci = -1);
 };
 
 

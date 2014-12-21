@@ -99,9 +99,9 @@ class TopOpeBRepDS {
 	:type K: TopOpeBRepDS_Kind
 	:param I:
 	:type I: Standard_Integer
-	:param B: default value is 
+	:param B: default value is ""
 	:type B: TCollection_AsciiString &
-	:param A: default value is 
+	:param A: default value is ""
 	:type A: TCollection_AsciiString &
 	:rtype: TCollection_AsciiString
 ") SPrint;
@@ -119,9 +119,9 @@ class TopOpeBRepDS {
 	:type I: Standard_Integer
 	:param S:
 	:type S: Standard_OStream &
-	:param B: default value is 
+	:param B: default value is ""
 	:type B: TCollection_AsciiString &
-	:param A: default value is 
+	:param A: default value is ""
 	:type A: TCollection_AsciiString &
 	:rtype: Standard_OStream
 ") Print;
@@ -3923,14 +3923,14 @@ class TopOpeBRepDS_Dumper {
 		TCollection_AsciiString SPrintShape (const TopoDS_Shape & S);
 		%feature("autodoc", "	:param S:
 	:type S: TopoDS_Shape &
-	:param B: default value is 
+	:param B: default value is ""
 	:type B: TCollection_AsciiString &
 	:rtype: TCollection_AsciiString
 ") SPrintShapeRefOri;
 		TCollection_AsciiString SPrintShapeRefOri (const TopoDS_Shape & S,const TCollection_AsciiString & B = "");
 		%feature("autodoc", "	:param L:
 	:type L: TopTools_ListOfShape &
-	:param B: default value is 
+	:param B: default value is ""
 	:type B: TCollection_AsciiString &
 	:rtype: TCollection_AsciiString
 ") SPrintShapeRefOri;
@@ -6960,18 +6960,18 @@ class TopOpeBRepDS_TKI {
 	:rtype: None
 ") Add;
 		void Add (const TopOpeBRepDS_Kind K,const Standard_Integer G,const Handle_TopOpeBRepDS_Interference & HI);
-		%feature("autodoc", "	:param s1: default value is 
+		%feature("autodoc", "	:param s1: default value is ""
 	:type s1: TCollection_AsciiString &
-	:param s2: default value is 
+	:param s2: default value is ""
 	:type s2: TCollection_AsciiString &
 	:rtype: None
 ") DumpTKI;
 		void DumpTKI (const TCollection_AsciiString & s1 = "",const TCollection_AsciiString & s2 = "");
 		%feature("autodoc", "	:param K:
 	:type K: TopOpeBRepDS_Kind
-	:param s1: default value is 
+	:param s1: default value is ""
 	:type s1: TCollection_AsciiString &
-	:param s2: default value is 
+	:param s2: default value is ""
 	:type s2: TCollection_AsciiString &
 	:rtype: None
 ") DumpTKI;
@@ -6980,9 +6980,9 @@ class TopOpeBRepDS_TKI {
 	:type K: TopOpeBRepDS_Kind
 	:param G:
 	:type G: Standard_Integer
-	:param s1: default value is 
+	:param s1: default value is ""
 	:type s1: TCollection_AsciiString &
-	:param s2: default value is 
+	:param s2: default value is ""
 	:type s2: TCollection_AsciiString &
 	:rtype: None
 ") DumpTKI;
@@ -6993,16 +6993,16 @@ class TopOpeBRepDS_TKI {
 	:type G: Standard_Integer
 	:param L:
 	:type L: TopOpeBRepDS_ListOfInterference &
-	:param s1: default value is 
+	:param s1: default value is ""
 	:type s1: TCollection_AsciiString &
-	:param s2: default value is 
+	:param s2: default value is ""
 	:type s2: TCollection_AsciiString &
 	:rtype: None
 ") DumpTKI;
 		void DumpTKI (const TopOpeBRepDS_Kind K,const Standard_Integer G,const TopOpeBRepDS_ListOfInterference & L,const TCollection_AsciiString & s1 = "",const TCollection_AsciiString & s2 = "");
-		%feature("autodoc", "	:param s1: default value is 
+		%feature("autodoc", "	:param s1: default value is ""
 	:type s1: TCollection_AsciiString &
-	:param s2: default value is 
+	:param s2: default value is ""
 	:type s2: TCollection_AsciiString &
 	:rtype: None
 ") DumpTKIIterator;

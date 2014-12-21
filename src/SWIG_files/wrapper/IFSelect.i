@@ -212,13 +212,13 @@ class IFSelect_Activator : public MMgt_TShared {
 		static Standard_Integer Mode (const char * command);
 		%feature("autodoc", "	* Returns, for a root of command title, the list of possible commands. <mode> : -1 (D) for all commands if <commands> is empty -1 + command : about a Group , >= 0 see Adding By default, it returns the whole list of known commands.
 
-	:param mode: default value is - 1
+	:param mode: default value is -1
 	:type mode: Standard_Integer
-	:param command: default value is 
+	:param command: default value is ""
 	:type command: char *
 	:rtype: Handle_TColStd_HSequenceOfAsciiString
 ") Commands;
-		static Handle_TColStd_HSequenceOfAsciiString Commands (const Standard_Integer mode = - 1,const char * command = "");
+		static Handle_TColStd_HSequenceOfAsciiString Commands (const Standard_Integer mode = -1,const char * command = "");
 		%feature("autodoc", "	* Tries to execute a Command Line. <number> is the number of the command for this Activator. It Must forecast to record the result of the execution, for need of Undo-Redo Must Returns : 0 for a void command (not to be recorded), 1 if execution OK, -1 if command incorrect, -2 if error on execution
 
 	:param number:
@@ -245,7 +245,7 @@ class IFSelect_Activator : public MMgt_TShared {
 
 	:param group:
 	:type group: char *
-	:param file: default value is 
+	:param file: default value is ""
 	:type file: char *
 	:rtype: None
 ") SetForGroup;
@@ -430,7 +430,7 @@ class IFSelect_ContextModif {
 	:type graph: Interface_Graph &
 	:param TC:
 	:type TC: Interface_CopyTool &
-	:param filename: default value is 
+	:param filename: default value is ""
 	:type filename: char *
 	:rtype: None
 ") IFSelect_ContextModif;
@@ -439,7 +439,7 @@ class IFSelect_ContextModif {
 
 	:param graph:
 	:type graph: Interface_Graph &
-	:param filename: default value is 
+	:param filename: default value is ""
 	:type filename: char *
 	:rtype: None
 ") IFSelect_ContextModif;
@@ -561,7 +561,7 @@ class IFSelect_ContextModif {
 		void TraceModifier (const Handle_IFSelect_GeneralModifier & modif);
 		%feature("autodoc", "	* Traces the modification of the current entity (see above, ValueOriginal and ValueResult) for default trace level >= 2. To be called on each indivudual entity really modified <mess> is an optionnal additional message
 
-	:param mess: default value is 
+	:param mess: default value is ""
 	:type mess: char *
 	:rtype: None
 ") Trace;
@@ -579,7 +579,7 @@ class IFSelect_ContextModif {
 	:type start: Handle_Standard_Transient &
 	:param mess:
 	:type mess: char *
-	:param orig: default value is 
+	:param orig: default value is ""
 	:type orig: char *
 	:rtype: None
 ") AddWarning;
@@ -590,7 +590,7 @@ class IFSelect_ContextModif {
 	:type start: Handle_Standard_Transient &
 	:param mess:
 	:type mess: char *
-	:param orig: default value is 
+	:param orig: default value is ""
 	:type orig: char *
 	:rtype: None
 ") AddFail;
@@ -750,7 +750,7 @@ class IFSelect_ContextWrite {
 	:type start: Handle_Standard_Transient &
 	:param mess:
 	:type mess: char *
-	:param orig: default value is 
+	:param orig: default value is ""
 	:type orig: char *
 	:rtype: None
 ") AddWarning;
@@ -761,7 +761,7 @@ class IFSelect_ContextWrite {
 	:type start: Handle_Standard_Transient &
 	:param mess:
 	:type mess: char *
-	:param orig: default value is 
+	:param orig: default value is ""
 	:type orig: char *
 	:rtype: None
 ") AddFail;
@@ -964,7 +964,7 @@ class IFSelect_EditForm : public MMgt_TShared {
 	:type readonly: bool
 	:param undoable:
 	:type undoable: bool
-	:param label: default value is 
+	:param label: default value is ""
 	:type label: char *
 	:rtype: None
 ") IFSelect_EditForm;
@@ -979,7 +979,7 @@ class IFSelect_EditForm : public MMgt_TShared {
 	:type readonly: bool
 	:param undoable:
 	:type undoable: bool
-	:param label: default value is 
+	:param label: default value is ""
 	:type label: char *
 	:rtype: None
 ") IFSelect_EditForm;
@@ -1332,7 +1332,7 @@ class IFSelect_Editor : public MMgt_TShared {
 	:type num: Standard_Integer
 	:param typval:
 	:type typval: Handle_Interface_TypedValue &
-	:param shortname: default value is 
+	:param shortname: default value is ""
 	:type shortname: char *
 	:param accessmode: default value is IFSelect_Editable
 	:type accessmode: IFSelect_EditValue
@@ -1573,7 +1573,7 @@ class IFSelect_Functions {
 
 	:param WS:
 	:type WS: Handle_IFSelect_WorkSession &
-	:param name: default value is 
+	:param name: default value is ""
 	:type name: char *
 	:rtype: Handle_Standard_Transient
 ") GiveEntity;
@@ -1582,7 +1582,7 @@ class IFSelect_Functions {
 
 	:param WS:
 	:type WS: Handle_IFSelect_WorkSession &
-	:param name: default value is 
+	:param name: default value is ""
 	:type name: char *
 	:rtype: int
 ") GiveEntityNumber;
@@ -1591,9 +1591,9 @@ class IFSelect_Functions {
 
 	:param WS:
 	:type WS: Handle_IFSelect_WorkSession &
-	:param first: default value is 
+	:param first: default value is ""
 	:type first: char *
-	:param second: default value is 
+	:param second: default value is ""
 	:type second: char *
 	:rtype: Handle_TColStd_HSequenceOfTransient
 ") GiveList;
@@ -4439,7 +4439,7 @@ class IFSelect_SignatureList : public MMgt_TShared {
 		void Init (const char * name,const Handle_Dico_DictionaryOfInteger & count,const Handle_Dico_DictionaryOfTransient & list,const Standard_Integer nbnuls);
 		%feature("autodoc", "	* Returns the list of signatures, as a sequence of strings (but without their respective counts). It is ordered. By default, for all the signatures. If <root> is given non empty, for the signatures which begin by <root>
 
-	:param root: default value is 
+	:param root: default value is ""
 	:type root: char *
 	:rtype: Handle_TColStd_HSequenceOfHAsciiString
 ") List;
@@ -5450,7 +5450,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 
 	:param statname:
 	:type statname: char *
-	:param name: default value is 
+	:param name: default value is ""
 	:type name: char *
 	:rtype: Handle_Standard_Transient
 ") NewParamFromStatic;
@@ -5471,7 +5471,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 		Standard_Integer IntValue (const Handle_IFSelect_IntParam & it);
 		%feature("autodoc", "	* Creates a new IntParam. A Name can be set (Optional) Returns the created IntParam, or a Null Handle in case of Failure (see AddItem/AddNamedItem)
 
-	:param name: default value is 
+	:param name: default value is ""
 	:type name: char *
 	:rtype: Handle_IFSelect_IntParam
 ") NewIntParam;
@@ -5501,7 +5501,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 		TCollection_AsciiString TextValue (const Handle_TCollection_HAsciiString & par);
 		%feature("autodoc", "	* Creates a new (empty) TextParam. A Name can be set (Optional) Returns the created TextParam (as an HAsciiString), or a Null Handle in case of Failure (see AddItem/AddNamedItem)
 
-	:param name: default value is 
+	:param name: default value is ""
 	:type name: char *
 	:rtype: Handle_TCollection_HAsciiString
 ") NewTextParam;
@@ -5768,7 +5768,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 
 	:param copy:
 	:type copy: bool
-	:param name: default value is 
+	:param name: default value is ""
 	:type name: char *
 	:rtype: Handle_IFSelect_Transformer
 ") NewTransformStandard;
@@ -5901,11 +5901,11 @@ class IFSelect_WorkSession : public MMgt_TShared {
 		Handle_IFSelect_PacketList EvalSplit ();
 		%feature("autodoc", "	* Returns the list of Entities sent in files, accourding the count of files each one has been sent (these counts are reset by SetModel or SetRemaining(Forget) ) stored in Graph Status <count> = -1 (default) is for ENtities sent at least once <count> = 0 is for the Remaining List (entities not yet sent) <count> = 1 is for entities sent in one and only one file (the ideal case) Remaining Data are computed on each Sending/Copying output files (see methods EvaluateFile and SendSplit) Graph Status is 0 for Remaining Entity, <count> for Sent into <count> files This status is set to 0 (not yet sent) for all by SetModel and by SetRemaining(mode=Forget,Display)
 
-	:param count: default value is - 1
+	:param count: default value is -1
 	:type count: Standard_Integer
 	:rtype: Interface_EntityIterator
 ") SentList;
-		Interface_EntityIterator SentList (const Standard_Integer count = - 1);
+		Interface_EntityIterator SentList (const Standard_Integer count = -1);
 		%feature("autodoc", "	* Returns the greater count of different files in which any of the starting entities could be sent. Before any file output, this count is 0. Ideal count is 1. More than 1 means that duplications occur.
 
 	:rtype: int
@@ -6062,7 +6062,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 
 	:param first:
 	:type first: char *
-	:param second: default value is 
+	:param second: default value is ""
 	:type second: char *
 	:rtype: Handle_TColStd_HSequenceOfTransient
 ") GiveList;
@@ -6135,7 +6135,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 		void DumpShare ();
 		%feature("autodoc", "	* Lists the Labels of all Items of the WorkSession If <label> is defined, lists labels which contain it
 
-	:param label: default value is 
+	:param label: default value is ""
 	:type label: char *
 	:rtype: None
 ") ListItems;
@@ -6341,7 +6341,7 @@ class IFSelect_Act : public IFSelect_Activator {
 
 	:param group:
 	:type group: char *
-	:param file: default value is 
+	:param file: default value is ""
 	:type file: char *
 	:rtype: void
 ") SetGroup;
@@ -7200,7 +7200,7 @@ class IFSelect_ParamEditor : public IFSelect_Editor {
 
 	:param nbmax: default value is 100
 	:type nbmax: Standard_Integer
-	:param label: default value is 
+	:param label: default value is ""
 	:type label: char *
 	:rtype: None
 ") IFSelect_ParamEditor;
@@ -7209,7 +7209,7 @@ class IFSelect_ParamEditor : public IFSelect_Editor {
 
 	:param val:
 	:type val: Handle_Interface_TypedValue &
-	:param shortname: default value is 
+	:param shortname: default value is ""
 	:type shortname: char *
 	:rtype: None
 ") AddValue;
@@ -7220,7 +7220,7 @@ class IFSelect_ParamEditor : public IFSelect_Editor {
 	:type val: char *
 	:param shortname:
 	:type shortname: char *
-	:param completename: default value is 
+	:param completename: default value is ""
 	:type completename: char *
 	:rtype: None
 ") AddConstantText;
@@ -7262,7 +7262,7 @@ class IFSelect_ParamEditor : public IFSelect_Editor {
 
 	:param list:
 	:type list: Handle_TColStd_HSequenceOfHAsciiString &
-	:param label: default value is 
+	:param label: default value is ""
 	:type label: char *
 	:rtype: Handle_IFSelect_ParamEditor
 ") StaticEditor;
@@ -7697,7 +7697,7 @@ class IFSelect_SessionPilot : public IFSelect_Activator {
 	public:
 		%feature("autodoc", "	* Creates an empty SessionPilot, with a prompt which will be displayed on querying commands. If not precised (''), this prompt is set to 'Test-XSTEP>'
 
-	:param prompt: default value is 
+	:param prompt: default value is ""
 	:type prompt: char *
 	:rtype: None
 ") IFSelect_SessionPilot;
@@ -7814,7 +7814,7 @@ class IFSelect_SessionPilot : public IFSelect_Activator {
 		void Clear ();
 		%feature("autodoc", "	* Reads commands from a Script File, named <file>. By default (file = ''), reads from standard input with a prompt Else (reading from a file), the read commands are displayed onto standard output. Allows nested reads. Reading is stopped either by command x or exit, or by reaching end of file Return Value follows the rules of Do : RetEnd for normal end, RetFail if script could not be opened
 
-	:param file: default value is 
+	:param file: default value is ""
 	:type file: char *
 	:rtype: IFSelect_ReturnStatus
 ") ReadScript;

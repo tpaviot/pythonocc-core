@@ -102,7 +102,7 @@ class ShapeProcess_Context : public MMgt_TShared {
 
 	:param file:
 	:type file: char *
-	:param scope: default value is 
+	:param scope: default value is ""
 	:type scope: char *
 	:rtype: None
 ") ShapeProcess_Context;
@@ -111,7 +111,7 @@ class ShapeProcess_Context : public MMgt_TShared {
 
 	:param file:
 	:type file: char *
-	:param scope: default value is 
+	:param scope: default value is ""
 	:type scope: char *
 	:rtype: bool
 ") Init;
@@ -719,7 +719,7 @@ class ShapeProcess_ShapeContext : public ShapeProcess_Context {
 	public:
 		%feature("autodoc", "	:param file:
 	:type file: char *
-	:param seq: default value is 
+	:param seq: default value is ""
 	:type seq: char *
 	:rtype: None
 ") ShapeProcess_ShapeContext;
@@ -730,7 +730,7 @@ class ShapeProcess_ShapeContext : public ShapeProcess_Context {
 	:type S: TopoDS_Shape &
 	:param file:
 	:type file: char *
-	:param seq: default value is 
+	:param seq: default value is ""
 	:type seq: char *
 	:rtype: None
 ") ShapeProcess_ShapeContext;

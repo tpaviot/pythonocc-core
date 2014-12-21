@@ -320,7 +320,7 @@ class BRepLib_FindSurface {
 
 	:param S:
 	:type S: TopoDS_Shape &
-	:param Tol: default value is - 1
+	:param Tol: default value is -1
 	:type Tol: float
 	:param OnlyPlane: default value is Standard_False
 	:type OnlyPlane: bool
@@ -328,12 +328,12 @@ class BRepLib_FindSurface {
 	:type OnlyClosed: bool
 	:rtype: None
 ") BRepLib_FindSurface;
-		 BRepLib_FindSurface (const TopoDS_Shape & S,const Standard_Real Tol = - 1,const Standard_Boolean OnlyPlane = Standard_False,const Standard_Boolean OnlyClosed = Standard_False);
+		 BRepLib_FindSurface (const TopoDS_Shape & S,const Standard_Real Tol = -1,const Standard_Boolean OnlyPlane = Standard_False,const Standard_Boolean OnlyClosed = Standard_False);
 		%feature("autodoc", "	* Computes the Surface from the edges of <S> with the given tolerance. if <OnlyPlane> is true, the computed surface will be a plane. If it is not possible to find a plane, the flag NotDone will be set. If <OnlyClosed> is true, then S sould be a wire and the existing surface, on which wire S is not closed in 2D, will be ignored.
 
 	:param S:
 	:type S: TopoDS_Shape &
-	:param Tol: default value is - 1
+	:param Tol: default value is -1
 	:type Tol: float
 	:param OnlyPlane: default value is Standard_False
 	:type OnlyPlane: bool
@@ -341,7 +341,7 @@ class BRepLib_FindSurface {
 	:type OnlyClosed: bool
 	:rtype: None
 ") Init;
-		void Init (const TopoDS_Shape & S,const Standard_Real Tol = - 1,const Standard_Boolean OnlyPlane = Standard_False,const Standard_Boolean OnlyClosed = Standard_False);
+		void Init (const TopoDS_Shape & S,const Standard_Real Tol = -1,const Standard_Boolean OnlyPlane = Standard_False,const Standard_Boolean OnlyClosed = Standard_False);
 		%feature("autodoc", "	:rtype: bool
 ") Found;
 		Standard_Boolean Found ();
