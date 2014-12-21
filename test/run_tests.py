@@ -23,6 +23,12 @@ import core_wrapper_features_unittest
 import core_geometry_unittest
 import core_visualization_unittest
 
+try:  # SMESH unittests launched if and only if SMESH wrapper is found
+    import core_smesh_unittest
+    HAVE_SMESH = True
+except:
+    HAVE_SMESH = False
+
 # Create test suite
 suite = unittest.TestSuite()
 
@@ -31,6 +37,9 @@ suite1 = core_wrapper_features_unittest.suite()
 suite2 = core_geometry_unittest.suite()
 suite3 = core_visualization_unittest.suite()
 tests = [suite1, suite2, suite3]
+if HAVE_SMESH:
+    suite4 = core_smesh_unittest.suite()
+    tests.append(suite4)
 # Add test cases
 suite.addTests(tests)
 
