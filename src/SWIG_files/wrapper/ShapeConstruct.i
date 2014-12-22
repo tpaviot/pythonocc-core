@@ -535,11 +535,11 @@ class ShapeConstruct_ProjectCurveOnSurface : public MMgt_TShared {
 	:type continuity: GeomAbs_Shape
 	:param maxdeg: default value is 12
 	:type maxdeg: Standard_Integer
-	:param nbinterval: default value is - 1
+	:param nbinterval: default value is -1
 	:type nbinterval: Standard_Integer
 	:rtype: bool
 ") Perform;
-		virtual Standard_Boolean Perform (Handle_Geom_Curve & c3d,const Standard_Real First,const Standard_Real Last,Handle_Geom2d_Curve & c2d,const GeomAbs_Shape continuity = GeomAbs_C1,const Standard_Integer maxdeg = 12,const Standard_Integer nbinterval = - 1);
+		virtual Standard_Boolean Perform (Handle_Geom_Curve & c3d,const Standard_Real First,const Standard_Real Last,Handle_Geom2d_Curve & c2d,const GeomAbs_Shape continuity = GeomAbs_C1,const Standard_Integer maxdeg = 12,const Standard_Integer nbinterval = -1);
 		%feature("autodoc", "	* Computes the projection of 3d curve onto a surface using the standard algorithm from ProjLib. Returns False if standard projector fails or raises an exception or cuts the curve by parametrical bounds of the surface. Else, if pcurve computed successfully, returns True. The continuity, maxdeg and nbinterval are parameters of call to Approx_CurveOnSurface. If nbinterval is equal to -1 (default), this value is computed depending on source 3d curve and surface.
 
 	:param c3d:
@@ -554,11 +554,11 @@ class ShapeConstruct_ProjectCurveOnSurface : public MMgt_TShared {
 	:type continuity: GeomAbs_Shape
 	:param maxdeg: default value is 12
 	:type maxdeg: Standard_Integer
-	:param nbinterval: default value is - 1
+	:param nbinterval: default value is -1
 	:type nbinterval: Standard_Integer
 	:rtype: bool
 ") PerformByProjLib;
-		Standard_Boolean PerformByProjLib (Handle_Geom_Curve & c3d,const Standard_Real First,const Standard_Real Last,Handle_Geom2d_Curve & c2d,const GeomAbs_Shape continuity = GeomAbs_C1,const Standard_Integer maxdeg = 12,const Standard_Integer nbinterval = - 1);
+		Standard_Boolean PerformByProjLib (Handle_Geom_Curve & c3d,const Standard_Real First,const Standard_Real Last,Handle_Geom2d_Curve & c2d,const GeomAbs_Shape continuity = GeomAbs_C1,const Standard_Integer maxdeg = 12,const Standard_Integer nbinterval = -1);
 		%feature("autodoc", "	* Computes the projection of 3d curve onto a surface using either standard projector (method PerformByStandard()) or internal one (method Perform()). The selection is done by analyzing the surface and 3d curve and is aimed to filter the cases potentially dangerous for the standard projector. If the standard projector fails, internal one is used.
 
 	:param c3d:

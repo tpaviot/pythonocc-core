@@ -564,11 +564,11 @@ class ShapeAnalysis_Curve {
 
 	:param curve:
 	:type curve: Handle_Geom_Curve &
-	:param preci: default value is - 1
+	:param preci: default value is -1
 	:type preci: float
 	:rtype: bool
 ") IsClosed;
-		static Standard_Boolean IsClosed (const Handle_Geom_Curve & curve,const Standard_Real preci = - 1);
+		static Standard_Boolean IsClosed (const Handle_Geom_Curve & curve,const Standard_Real preci = -1);
 		%feature("autodoc", "	* This method was implemented as fix for changes in trimmed curve behaviour. For the moment trimmed curve returns false anyway. So it is necessary to adapt all Data exchange tools for this behaviour. Current implementation takes into account that curve may be offset.
 
 	:param curve:
@@ -980,24 +980,24 @@ class ShapeAnalysis_Edge {
 
 	:param edge:
 	:type edge: TopoDS_Edge &
-	:param preci: default value is - 1
+	:param preci: default value is -1
 	:type preci: float
 	:param vtx: default value is 0
 	:type vtx: Standard_Integer
 	:rtype: bool
 ") CheckVerticesWithCurve3d;
-		Standard_Boolean CheckVerticesWithCurve3d (const TopoDS_Edge & edge,const Standard_Real preci = - 1,const Standard_Integer vtx = 0);
+		Standard_Boolean CheckVerticesWithCurve3d (const TopoDS_Edge & edge,const Standard_Real preci = -1,const Standard_Integer vtx = 0);
 		%feature("autodoc", "	:param edge:
 	:type edge: TopoDS_Edge &
 	:param face:
 	:type face: TopoDS_Face &
-	:param preci: default value is - 1
+	:param preci: default value is -1
 	:type preci: float
 	:param vtx: default value is 0
 	:type vtx: Standard_Integer
 	:rtype: bool
 ") CheckVerticesWithPCurve;
-		Standard_Boolean CheckVerticesWithPCurve (const TopoDS_Edge & edge,const TopoDS_Face & face,const Standard_Real preci = - 1,const Standard_Integer vtx = 0);
+		Standard_Boolean CheckVerticesWithPCurve (const TopoDS_Edge & edge,const TopoDS_Face & face,const Standard_Real preci = -1,const Standard_Integer vtx = 0);
 		%feature("autodoc", "	* Checks the start and/or end vertex of the edge for matching with pcurve with the given precision. <vtx> = 1 : start vertex <vtx> = 2 : end vertex <vtx> = 0 : both If preci < 0 the vertices are considered with their own tolerances, else with the given <preci>.
 
 	:param edge:
@@ -1006,13 +1006,13 @@ class ShapeAnalysis_Edge {
 	:type surface: Handle_Geom_Surface &
 	:param location:
 	:type location: TopLoc_Location &
-	:param preci: default value is - 1
+	:param preci: default value is -1
 	:type preci: float
 	:param vtx: default value is 0
 	:type vtx: Standard_Integer
 	:rtype: bool
 ") CheckVerticesWithPCurve;
-		Standard_Boolean CheckVerticesWithPCurve (const TopoDS_Edge & edge,const Handle_Geom_Surface & surface,const TopLoc_Location & location,const Standard_Real preci = - 1,const Standard_Integer vtx = 0);
+		Standard_Boolean CheckVerticesWithPCurve (const TopoDS_Edge & edge,const Handle_Geom_Surface & surface,const TopLoc_Location & location,const Standard_Real preci = -1,const Standard_Integer vtx = 0);
 		%feature("autodoc", "	:param edge:
 	:type edge: TopoDS_Edge &
 	:param face:
@@ -2602,18 +2602,18 @@ class ShapeAnalysis_Surface : public MMgt_TShared {
 		Handle_Geom_Curve VIso (const Standard_Real V);
 		%feature("autodoc", "	* Tells if the Surface is spatially closed in U with given precision. If <preci> < 0 then Precision::Confusion is used. If Geom_Surface says that the surface is U-closed, this method also says this. Otherwise additional analysis is performed, comparing given precision with the following distances: - periodic B-Splines are closed, - polinomial B-Spline with boundary multiplicities degree+1  and Bezier - maximum distance between poles, - rational B-Spline or one with boundary multiplicities not  degree+1 - maximum distance computed at knots and their  middles, - surface of extrusion - distance between ends of basis  curve, - other (RectangularTrimmed and Offset) - maximum distance  computed at 100 equi-distanted points.
 
-	:param preci: default value is - 1
+	:param preci: default value is -1
 	:type preci: float
 	:rtype: bool
 ") IsUClosed;
-		Standard_Boolean IsUClosed (const Standard_Real preci = - 1);
+		Standard_Boolean IsUClosed (const Standard_Real preci = -1);
 		%feature("autodoc", "	* Tells if the Surface is spatially closed in V with given precision. If <preci> < 0 then Precision::Confusion is used. If Geom_Surface says that the surface is V-closed, this method also says this. Otherwise additional analysis is performed, comparing given precision with the following distances: - periodic B-Splines are closed, - polinomial B-Spline with boundary multiplicities degree+1  and Bezier - maximum distance between poles, - rational B-Spline or one with boundary multiplicities not  degree+1 - maximum distance computed at knots and their  middles, - surface of revolution - distance between ends of basis  curve, - other (RectangularTrimmed and Offset) - maximum distance  computed at 100 equi-distanted points.
 
-	:param preci: default value is - 1
+	:param preci: default value is -1
 	:type preci: float
 	:rtype: bool
 ") IsVClosed;
-		Standard_Boolean IsVClosed (const Standard_Real preci = - 1);
+		Standard_Boolean IsVClosed (const Standard_Real preci = -1);
 		%feature("autodoc", "	* Computes the parameters in the surface parametrical space of 3D point. The result is parameters of the point projected onto the surface. This method enhances functionality provided by the standard tool GeomAPI_ProjectPointOnSurface by treatment of cases when the projected point is near to the surface boundaries and when this standard tool fails.
 
 	:param P3D:

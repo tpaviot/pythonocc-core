@@ -1395,11 +1395,11 @@ class V3d_View : public MMgt_TShared {
 		void GetGraduatedTrihedron (TCollection_ExtendedString & xname,TCollection_ExtendedString & yname,TCollection_ExtendedString & zname,Standard_Boolean & xdrawname,Standard_Boolean & ydrawname,Standard_Boolean & zdrawname,Standard_Boolean & xdrawvalues,Standard_Boolean & ydrawvalues,Standard_Boolean & zdrawvalues,Standard_Boolean & drawgrid,Standard_Boolean & drawaxes,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Boolean & xdrawtickmarks,Standard_Boolean & ydrawtickmarks,Standard_Boolean & zdrawtickmarks,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Quantity_Color & gridcolor,Quantity_Color & xnamecolor,Quantity_Color & ynamecolor,Quantity_Color & znamecolor,Quantity_Color & xcolor,Quantity_Color & ycolor,Quantity_Color & zcolor,TCollection_AsciiString & fontOfNames,Font_FontAspect & styleOfNames,Standard_Integer &OutValue,TCollection_AsciiString & fontOfValues,Font_FontAspect & styleOfValues,Standard_Integer &OutValue);
 		%feature("autodoc", "	* Displays a graduated trihedron.
 
-	:param xname: default value is X
+	:param xname: default value is 'X'
 	:type xname: TCollection_ExtendedString &
-	:param yname: default value is Y
+	:param yname: default value is 'Y'
 	:type yname: TCollection_ExtendedString &
-	:param zname: default value is Z
+	:param zname: default value is 'Z'
 	:type zname: TCollection_ExtendedString &
 	:param xdrawname: default value is Standard_True
 	:type xdrawname: bool
@@ -1461,13 +1461,13 @@ class V3d_View : public MMgt_TShared {
 	:type ycolor: Quantity_Color &
 	:param zcolor: default value is Quantity_NOC_BLUE1
 	:type zcolor: Quantity_Color &
-	:param fontOfNames: default value is Arial
+	:param fontOfNames: default value is 'Arial'
 	:type fontOfNames: TCollection_AsciiString &
 	:param styleOfNames: default value is Font_FA_Bold
 	:type styleOfNames: Font_FontAspect
 	:param sizeOfNames: default value is 12
 	:type sizeOfNames: Standard_Integer
-	:param fontOfValues: default value is Arial
+	:param fontOfValues: default value is 'Arial'
 	:type fontOfValues: TCollection_AsciiString &
 	:param styleOfValues: default value is Font_FA_Regular
 	:type styleOfValues: Font_FontAspect
@@ -1475,7 +1475,7 @@ class V3d_View : public MMgt_TShared {
 	:type sizeOfValues: Standard_Integer
 	:rtype: None
 ") GraduatedTrihedronDisplay;
-		void GraduatedTrihedronDisplay (const TCollection_ExtendedString & xname = "X",const TCollection_ExtendedString & yname = "Y",const TCollection_ExtendedString & zname = "Z",const Standard_Boolean xdrawname = Standard_True,const Standard_Boolean ydrawname = Standard_True,const Standard_Boolean zdrawname = Standard_True,const Standard_Boolean xdrawvalues = Standard_True,const Standard_Boolean ydrawvalues = Standard_True,const Standard_Boolean zdrawvalues = Standard_True,const Standard_Boolean drawgrid = Standard_True,const Standard_Boolean drawaxes = Standard_True,const Standard_Integer nbx = 3,const Standard_Integer nby = 3,const Standard_Integer nbz = 3,const Standard_Integer xoffset = 10,const Standard_Integer yoffset = 10,const Standard_Integer zoffset = 10,const Standard_Integer xaxisoffset = 30,const Standard_Integer yaxisoffset = 30,const Standard_Integer zaxisoffset = 30,const Standard_Boolean xdrawtickmarks = Standard_True,const Standard_Boolean ydrawtickmarks = Standard_True,const Standard_Boolean zdrawtickmarks = Standard_True,const Standard_Integer xtickmarklength = 10,const Standard_Integer ytickmarklength = 10,const Standard_Integer ztickmarklength = 10,const Quantity_Color & gridcolor = Quantity_NOC_WHITE,const Quantity_Color & xnamecolor = Quantity_NOC_RED,const Quantity_Color & ynamecolor = Quantity_NOC_GREEN,const Quantity_Color & znamecolor = Quantity_NOC_BLUE1,const Quantity_Color & xcolor = Quantity_NOC_RED,const Quantity_Color & ycolor = Quantity_NOC_GREEN,const Quantity_Color & zcolor = Quantity_NOC_BLUE1,const TCollection_AsciiString & fontOfNames = "Arial",const Font_FontAspect styleOfNames = Font_FA_Bold,const Standard_Integer sizeOfNames = 12,const TCollection_AsciiString & fontOfValues = "Arial",const Font_FontAspect styleOfValues = Font_FA_Regular,const Standard_Integer sizeOfValues = 12);
+		void GraduatedTrihedronDisplay (const TCollection_ExtendedString & xname = 'X',const TCollection_ExtendedString & yname = 'Y',const TCollection_ExtendedString & zname = 'Z',const Standard_Boolean xdrawname = Standard_True,const Standard_Boolean ydrawname = Standard_True,const Standard_Boolean zdrawname = Standard_True,const Standard_Boolean xdrawvalues = Standard_True,const Standard_Boolean ydrawvalues = Standard_True,const Standard_Boolean zdrawvalues = Standard_True,const Standard_Boolean drawgrid = Standard_True,const Standard_Boolean drawaxes = Standard_True,const Standard_Integer nbx = 3,const Standard_Integer nby = 3,const Standard_Integer nbz = 3,const Standard_Integer xoffset = 10,const Standard_Integer yoffset = 10,const Standard_Integer zoffset = 10,const Standard_Integer xaxisoffset = 30,const Standard_Integer yaxisoffset = 30,const Standard_Integer zaxisoffset = 30,const Standard_Boolean xdrawtickmarks = Standard_True,const Standard_Boolean ydrawtickmarks = Standard_True,const Standard_Boolean zdrawtickmarks = Standard_True,const Standard_Integer xtickmarklength = 10,const Standard_Integer ytickmarklength = 10,const Standard_Integer ztickmarklength = 10,const Quantity_Color & gridcolor = Quantity_NOC_WHITE,const Quantity_Color & xnamecolor = Quantity_NOC_RED,const Quantity_Color & ynamecolor = Quantity_NOC_GREEN,const Quantity_Color & znamecolor = Quantity_NOC_BLUE1,const Quantity_Color & xcolor = Quantity_NOC_RED,const Quantity_Color & ycolor = Quantity_NOC_GREEN,const Quantity_Color & zcolor = Quantity_NOC_BLUE1,const TCollection_AsciiString & fontOfNames = 'Arial',const Font_FontAspect styleOfNames = Font_FA_Bold,const Standard_Integer sizeOfNames = 12,const TCollection_AsciiString & fontOfValues = 'Arial',const Font_FontAspect styleOfValues = Font_FA_Regular,const Standard_Integer sizeOfValues = 12);
 		%feature("autodoc", "	* Erases a graduated trihedron from the view.
 
 	:rtype: None
@@ -2714,7 +2714,7 @@ class V3d_Viewer : public MMgt_TShared {
 	:type theDriver: Handle_Graphic3d_GraphicDriver &
 	:param theName:
 	:type theName: Standard_ExtString
-	:param theDomain: default value is 
+	:param theDomain: default value is ""
 	:type theDomain: char *
 	:param theViewSize: default value is 1000.0
 	:type theViewSize: Quantity_Length

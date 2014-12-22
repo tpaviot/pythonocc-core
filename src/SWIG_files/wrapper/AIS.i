@@ -2899,13 +2899,13 @@ class AIS_InteractiveContext : public MMgt_TShared {
 
 	:param aniobj:
 	:type aniobj: Handle_AIS_InteractiveObject &
-	:param SelectionMode: default value is - 1
+	:param SelectionMode: default value is -1
 	:type SelectionMode: Standard_Integer
 	:param AllowDecomp: default value is Standard_False
 	:type AllowDecomp: bool
 	:rtype: None
 ") Load;
-		void Load (const Handle_AIS_InteractiveObject & aniobj,const Standard_Integer SelectionMode = - 1,const Standard_Boolean AllowDecomp = Standard_False);
+		void Load (const Handle_AIS_InteractiveObject & aniobj,const Standard_Integer SelectionMode = -1,const Standard_Boolean AllowDecomp = Standard_False);
 		%feature("autodoc", "	* Hides the object. The object's presentations are simply flagged as invisible and therefore excluded from redrawing. To show hidden objects, use Display().
 
 	:param aniobj:
@@ -2947,11 +2947,11 @@ class AIS_InteractiveContext : public MMgt_TShared {
 
 	:param anIObj:
 	:type anIObj: Handle_AIS_InteractiveObject &
-	:param InWhichLocal: default value is - 1
+	:param InWhichLocal: default value is -1
 	:type InWhichLocal: Standard_Integer
 	:rtype: bool
 ") KeepTemporary;
-		Standard_Boolean KeepTemporary (const Handle_AIS_InteractiveObject & anIObj,const Standard_Integer InWhichLocal = - 1);
+		Standard_Boolean KeepTemporary (const Handle_AIS_InteractiveObject & anIObj,const Standard_Integer InWhichLocal = -1);
 		%feature("autodoc", "	* Removes the interactive object aniobj from all viewers. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated.
 
 	:param aniobj:
@@ -3057,13 +3057,13 @@ class AIS_InteractiveContext : public MMgt_TShared {
 
 	:param aTypeOfObject:
 	:type aTypeOfObject: AIS_KindOfInteractive
-	:param Signature: default value is - 1
+	:param Signature: default value is -1
 	:type Signature: Standard_Integer
 	:param updateviewer: default value is Standard_True
 	:type updateviewer: bool
 	:rtype: None
 ") Redisplay;
-		void Redisplay (const AIS_KindOfInteractive aTypeOfObject,const Standard_Integer Signature = - 1,const Standard_Boolean updateviewer = Standard_True);
+		void Redisplay (const AIS_KindOfInteractive aTypeOfObject,const Standard_Integer Signature = -1,const Standard_Boolean updateviewer = Standard_True);
 		%feature("autodoc", "	* Recomputes the displayed presentations, flags the others Doesn't update presentations
 
 	:param anIobj:
@@ -4040,11 +4040,11 @@ class AIS_InteractiveContext : public MMgt_TShared {
 	:type theOwners: SelectMgr_IndexedMapOfOwner &
 	:param theIObj:
 	:type theIObj: Handle_AIS_InteractiveObject &
-	:param theMode: default value is - 1
+	:param theMode: default value is -1
 	:type theMode: Standard_Integer
 	:rtype: None
 ") EntityOwners;
-		void EntityOwners (SelectMgr_IndexedMapOfOwner & theOwners,const Handle_AIS_InteractiveObject & theIObj,const Standard_Integer theMode = - 1);
+		void EntityOwners (SelectMgr_IndexedMapOfOwner & theOwners,const Handle_AIS_InteractiveObject & theIObj,const Standard_Integer theMode = -1);
 		%feature("autodoc", "	* Returns the location of the selected Interactive Object.
 
 	:rtype: Handle_AIS_InteractiveObject
@@ -4118,13 +4118,13 @@ class AIS_InteractiveContext : public MMgt_TShared {
 		Standard_Integer OpenLocalContext (const Standard_Boolean UseDisplayedObjects = Standard_True,const Standard_Boolean AllowShapeDecomposition = Standard_True,const Standard_Boolean AcceptEraseOfObjects = Standard_False,const Standard_Boolean BothViewers = Standard_False);
 		%feature("autodoc", "	* Allows you to close local contexts. For greater security, you should close the context with the index Index given on opening. When you close a local context, the one before, which is still on the stack, reactivates. If none is left, you return to Neutral Point. If a local context is open and if updateviewer equals Standard_False, the presentation of the Interactive Object activates the selection mode; the object is displayed but no viewer will be updated. Warning When the index isn't specified, the current context is closed. This option can be dangerous, as other Interactive Functions can open local contexts without necessarily warning the user.
 
-	:param Index: default value is - 1
+	:param Index: default value is -1
 	:type Index: Standard_Integer
 	:param updateviewer: default value is Standard_True
 	:type updateviewer: bool
 	:rtype: None
 ") CloseLocalContext;
-		void CloseLocalContext (const Standard_Integer Index = - 1,const Standard_Boolean updateviewer = Standard_True);
+		void CloseLocalContext (const Standard_Integer Index = -1,const Standard_Boolean updateviewer = Standard_True);
 		%feature("autodoc", "	* returns -1 if no opened local context.
 
 	:rtype: int
@@ -4449,11 +4449,11 @@ class AIS_InteractiveContext : public MMgt_TShared {
 	:type aListOfIO: AIS_ListOfInteractive &
 	:param WhichKind: default value is AIS_KOI_None
 	:type WhichKind: AIS_KindOfInteractive
-	:param WhichSignature: default value is - 1
+	:param WhichSignature: default value is -1
 	:type WhichSignature: Standard_Integer
 	:rtype: None
 ") ObjectsInside;
-		void ObjectsInside (AIS_ListOfInteractive & aListOfIO,const AIS_KindOfInteractive WhichKind = AIS_KOI_None,const Standard_Integer WhichSignature = - 1);
+		void ObjectsInside (AIS_ListOfInteractive & aListOfIO,const AIS_KindOfInteractive WhichKind = AIS_KOI_None,const Standard_Integer WhichSignature = -1);
 		%feature("autodoc", "	* Returns true if there is an open context.
 
 	:rtype: bool
@@ -5954,9 +5954,9 @@ class AIS_LocalStatus : public MMgt_TShared {
 	:type IsTemporary: bool
 	:param Decompose: default value is Standard_False
 	:type Decompose: bool
-	:param DisplayMode: default value is - 1
+	:param DisplayMode: default value is -1
 	:type DisplayMode: Standard_Integer
-	:param SelectionMode: default value is - 1
+	:param SelectionMode: default value is -1
 	:type SelectionMode: Standard_Integer
 	:param HilightMode: default value is 0
 	:type HilightMode: Standard_Integer
@@ -5966,7 +5966,7 @@ class AIS_LocalStatus : public MMgt_TShared {
 	:type TheHiCol: Quantity_NameOfColor
 	:rtype: None
 ") AIS_LocalStatus;
-		 AIS_LocalStatus (const Standard_Boolean IsTemporary = Standard_True,const Standard_Boolean Decompose = Standard_False,const Standard_Integer DisplayMode = - 1,const Standard_Integer SelectionMode = - 1,const Standard_Integer HilightMode = 0,const Standard_Boolean SubIntensity = 0,const Quantity_NameOfColor TheHiCol = Quantity_NOC_WHITE);
+		 AIS_LocalStatus (const Standard_Boolean IsTemporary = Standard_True,const Standard_Boolean Decompose = Standard_False,const Standard_Integer DisplayMode = -1,const Standard_Integer SelectionMode = -1,const Standard_Integer HilightMode = 0,const Standard_Boolean SubIntensity = 0,const Quantity_NameOfColor TheHiCol = Quantity_NOC_WHITE);
 		%feature("autodoc", "	:rtype: bool
 ") Decomposed;
 		Standard_Boolean Decomposed ();
@@ -7404,6 +7404,15 @@ def __del__(self):
 
 %nodefaultctor AIS_Dimension;
 class AIS_Dimension : public AIS_InteractiveObject {
+/* public enums */
+enum ComputeMode {
+	ComputeMode_All = 0,
+	ComputeMode_Line = 1,
+	ComputeMode_Text = 2,
+};
+
+/* end public enums declaration */
+
 	public:
 		%feature("autodoc", "	* Constructor with default parameters values. @param theType [in] the type of dimension.
 

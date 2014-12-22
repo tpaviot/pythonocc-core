@@ -6183,6 +6183,14 @@ def __del__(self):
 };
 %nodefaultctor Graphic3d_ShaderProgram;
 class Graphic3d_ShaderProgram : public Standard_Transient {
+/* public enums */
+enum ShaderName {
+	ShaderName_UNKNOWN = 0,
+	ShaderName_Phong = 1,
+};
+
+/* end public enums declaration */
+
 	public:
 		%feature("autodoc", "	* Creates new empty program object.
 

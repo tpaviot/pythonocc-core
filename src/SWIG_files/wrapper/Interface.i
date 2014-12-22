@@ -317,7 +317,7 @@ class Interface_BitMap {
 		void SetLength (const Standard_Integer nbitems);
 		%feature("autodoc", "	* Adds a flag, a name can be attached to it Returns its flag number Makes required reservation
 
-	:param name: default value is 
+	:param name: default value is ""
 	:type name: char *
 	:rtype: int
 ") AddFlag;
@@ -605,7 +605,7 @@ class Interface_Check : public MMgt_TShared {
 
 	:param amess:
 	:type amess: char *
-	:param orig: default value is 
+	:param orig: default value is ""
 	:type orig: char *
 	:rtype: None
 ") AddFail;
@@ -679,7 +679,7 @@ class Interface_Check : public MMgt_TShared {
 
 	:param amess:
 	:type amess: char *
-	:param orig: default value is 
+	:param orig: default value is ""
 	:type orig: char *
 	:rtype: None
 ") AddWarning;
@@ -879,13 +879,13 @@ class Interface_Check : public MMgt_TShared {
 		void Print (const Handle_Message_Messenger & S,const Standard_Integer level,const Standard_Integer final = 1);
 		%feature("autodoc", "	* Prints the messages of the check to the default trace file By default, according to the default standard level Else, according level (see method Print)
 
-	:param level: default value is - 1
+	:param level: default value is -1
 	:type level: Standard_Integer
 	:param final: default value is 1
 	:type final: Standard_Integer
 	:rtype: None
 ") Trace;
-		void Trace (const Standard_Integer level = - 1,const Standard_Integer final = 1);
+		void Trace (const Standard_Integer level = -1,const Standard_Integer final = 1);
 };
 
 
@@ -5058,11 +5058,11 @@ class Interface_MSG {
 	:type key: char *
 	:param r1:
 	:type r1: float
-	:param intervals: default value is - 1
+	:param intervals: default value is -1
 	:type intervals: Standard_Integer
 	:rtype: None
 ") Interface_MSG;
-		 Interface_MSG (const char * key,const Standard_Real r1,const Standard_Integer intervals = - 1);
+		 Interface_MSG (const char * key,const Standard_Real r1,const Standard_Integer intervals = -1);
 		%feature("autodoc", "	* Translates a message which contains one string variable As for one integer, it is just a writing help The basic message is intended to be in C-sprintf format with one %s form in it
 
 	:param key:
@@ -5114,7 +5114,7 @@ class Interface_MSG {
 
 	:param S:
 	:type S: Standard_OStream &
-	:param rootkey: default value is 
+	:param rootkey: default value is ""
 	:type rootkey: char *
 	:rtype: int
 ") Write;
@@ -5195,7 +5195,7 @@ class Interface_MSG {
 	:type mn: Standard_Integer
 	:param ss:
 	:type ss: Standard_Integer
-	:param format: default value is 
+	:param format: default value is ""
 	:type format: char *
 	:rtype: void
 ") TDate;
@@ -5261,11 +5261,11 @@ class Interface_MSG {
 	:type val: char *
 	:param max:
 	:type max: Standard_Integer
-	:param just: default value is - 1
+	:param just: default value is -1
 	:type just: Standard_Integer
 	:rtype: void
 ") Print;
-		static void Print (Standard_OStream & S,const char * val,const Standard_Integer max,const Standard_Integer just = - 1);
+		static void Print (Standard_OStream & S,const char * val,const Standard_Integer max,const Standard_Integer just = -1);
 };
 
 
@@ -6750,7 +6750,7 @@ class Interface_TypedValue : public MoniTool_TypedValue {
 	:type name: char *
 	:param type: default value is Interface_ParamText
 	:type type: Interface_ParamType
-	:param init: default value is 
+	:param init: default value is ""
 	:type init: char *
 	:rtype: None
 ") Interface_TypedValue;
@@ -7210,7 +7210,7 @@ class Interface_Static : public Interface_TypedValue {
 	:type name: char *
 	:param type: default value is Interface_ParamText
 	:type type: Interface_ParamType
-	:param init: default value is 
+	:param init: default value is ""
 	:type init: char *
 	:rtype: None
 ") Interface_Static;
@@ -7268,7 +7268,7 @@ class Interface_Static : public Interface_TypedValue {
 	:type name: char *
 	:param type:
 	:type type: Interface_ParamType
-	:param init: default value is 
+	:param init: default value is ""
 	:type init: char *
 	:rtype: bool
 ") Init;
@@ -7281,7 +7281,7 @@ class Interface_Static : public Interface_TypedValue {
 	:type name: char *
 	:param type:
 	:type type: Standard_Character
-	:param init: default value is 
+	:param init: default value is ""
 	:type init: char *
 	:rtype: bool
 ") Init;
@@ -7393,7 +7393,7 @@ class Interface_Static : public Interface_TypedValue {
 
 	:param mode: default value is 0
 	:type mode: Standard_Integer
-	:param criter: default value is 
+	:param criter: default value is ""
 	:type criter: char *
 	:rtype: Handle_TColStd_HSequenceOfHAsciiString
 ") Items;

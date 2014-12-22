@@ -478,11 +478,11 @@ class ChFi2d_FilletAPI {
 	:type theEdge1: TopoDS_Edge &
 	:param theEdge2:
 	:type theEdge2: TopoDS_Edge &
-	:param iSolution: default value is - 1
+	:param iSolution: default value is -1
 	:type iSolution: Standard_Integer
 	:rtype: TopoDS_Edge
 ") Result;
-		TopoDS_Edge Result (const gp_Pnt & thePoint,TopoDS_Edge & theEdge1,TopoDS_Edge & theEdge2,const Standard_Integer iSolution = - 1);
+		TopoDS_Edge Result (const gp_Pnt & thePoint,TopoDS_Edge & theEdge1,TopoDS_Edge & theEdge2,const Standard_Integer iSolution = -1);
 };
 
 
@@ -570,11 +570,11 @@ class ChFi2d_FilletAlgo {
 	:type theEdge1: TopoDS_Edge &
 	:param theEdge2:
 	:type theEdge2: TopoDS_Edge &
-	:param iSolution: default value is - 1
+	:param iSolution: default value is -1
 	:type iSolution: Standard_Integer
 	:rtype: TopoDS_Edge
 ") Result;
-		TopoDS_Edge Result (const gp_Pnt & thePoint,TopoDS_Edge & theEdge1,TopoDS_Edge & theEdge2,const Standard_Integer iSolution = - 1);
+		TopoDS_Edge Result (const gp_Pnt & thePoint,TopoDS_Edge & theEdge1,TopoDS_Edge & theEdge2,const Standard_Integer iSolution = -1);
 };
 
 

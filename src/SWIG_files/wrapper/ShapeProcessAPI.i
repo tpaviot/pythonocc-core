@@ -48,7 +48,7 @@ class ShapeProcessAPI_ApplySequence {
 
 	:param rscName:
 	:type rscName: char *
-	:param seqName: default value is 
+	:param seqName: default value is ""
 	:type seqName: char *
 	:rtype: None
 ") ShapeProcessAPI_ApplySequence;

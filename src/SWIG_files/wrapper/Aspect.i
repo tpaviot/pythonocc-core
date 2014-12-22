@@ -1306,20 +1306,20 @@ class Aspect_ColorScale : public MMgt_TShared {
 
 	:param aLabel:
 	:type aLabel: TCollection_ExtendedString &
-	:param anIndex: default value is - 1
+	:param anIndex: default value is -1
 	:type anIndex: Standard_Integer
 	:rtype: None
 ") SetLabel;
-		void SetLabel (const TCollection_ExtendedString & aLabel,const Standard_Integer anIndex = - 1);
+		void SetLabel (const TCollection_ExtendedString & aLabel,const Standard_Integer anIndex = -1);
 		%feature("autodoc", "	* Sets the color scale color at index. Index started from 1.
 
 	:param aColor:
 	:type aColor: Quantity_Color &
-	:param anIndex: default value is - 1
+	:param anIndex: default value is -1
 	:type anIndex: Standard_Integer
 	:rtype: None
 ") SetColor;
-		void SetColor (const Quantity_Color & aColor,const Standard_Integer anIndex = - 1);
+		void SetColor (const Quantity_Color & aColor,const Standard_Integer anIndex = -1);
 		%feature("autodoc", "	* Sets the color scale labels.
 
 	:param aSeq:
@@ -6206,11 +6206,11 @@ class Aspect_WindowDriver : public Aspect_Driver {
 	:type aWidth: Standard_ShortReal &
 	:param aHeight:
 	:type aHeight: Standard_ShortReal &
-	:param aFontIndex: default value is - 1
+	:param aFontIndex: default value is -1
 	:type aFontIndex: Standard_Integer
 	:rtype: void
 ") TextSize;
-		virtual void TextSize (const TCollection_ExtendedString & aText,Standard_ShortReal & aWidth,Standard_ShortReal & aHeight,const Standard_Integer aFontIndex = - 1);
+		virtual void TextSize (const TCollection_ExtendedString & aText,Standard_ShortReal & aWidth,Standard_ShortReal & aHeight,const Standard_Integer aFontIndex = -1);
 		%feature("autodoc", "	* Returns the TEXT size and offsets //!	 in DWU space depending of the required FontIndex if aFontIndex is >= 0 or the current FontIndex if < 0 (default).
 
 	:param aText:
@@ -6223,11 +6223,11 @@ class Aspect_WindowDriver : public Aspect_Driver {
 	:type anXoffset: Standard_ShortReal &
 	:param anYoffset:
 	:type anYoffset: Standard_ShortReal &
-	:param aFontIndex: default value is - 1
+	:param aFontIndex: default value is -1
 	:type aFontIndex: Standard_Integer
 	:rtype: void
 ") TextSize;
-		virtual void TextSize (const TCollection_ExtendedString & aText,Standard_ShortReal & aWidth,Standard_ShortReal & aHeight,Standard_ShortReal & anXoffset,Standard_ShortReal & anYoffset,const Standard_Integer aFontIndex = - 1);
+		virtual void TextSize (const TCollection_ExtendedString & aText,Standard_ShortReal & aWidth,Standard_ShortReal & aHeight,Standard_ShortReal & anXoffset,Standard_ShortReal & anYoffset,const Standard_Integer aFontIndex = -1);
 		%feature("autodoc", "	* Returns the font string,slant,size and
 
 	:param aSlant:
@@ -6236,11 +6236,11 @@ class Aspect_WindowDriver : public Aspect_Driver {
 	:type aSize: Standard_ShortReal &
 	:param aBheight:
 	:type aBheight: Standard_ShortReal &
-	:param aFontIndex: default value is - 1
+	:param aFontIndex: default value is -1
 	:type aFontIndex: Standard_Integer
 	:rtype: char *
 ") FontSize;
-		virtual char * FontSize (Quantity_PlaneAngle & aSlant,Standard_ShortReal & aSize,Standard_ShortReal & aBheight,const Standard_Integer aFontIndex = - 1);
+		virtual char * FontSize (Quantity_PlaneAngle & aSlant,Standard_ShortReal & aSize,Standard_ShortReal & aBheight,const Standard_Integer aFontIndex = -1);
 		%feature("autodoc", "	* Returns the min and max driver virtual color indexs.
 
 	:param aMinIndex:

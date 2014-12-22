@@ -5138,13 +5138,13 @@ class MeshVS_ElementalColorPrsBuilder : public MeshVS_PrsBuilder {
 	:type Flags: MeshVS_DisplayModeFlags &
 	:param DS: default value is 0
 	:type DS: Handle_MeshVS_DataSource &
-	:param Id: default value is - 1
+	:param Id: default value is -1
 	:type Id: Standard_Integer
 	:param Priority: default value is MeshVS_BP_ElemColor
 	:type Priority: MeshVS_BuilderPriority &
 	:rtype: None
 ") MeshVS_ElementalColorPrsBuilder;
-		 MeshVS_ElementalColorPrsBuilder (const Handle_MeshVS_Mesh & Parent,const MeshVS_DisplayModeFlags & Flags = MeshVS_DMF_ElementalColorDataPrs,const Handle_MeshVS_DataSource & DS = 0,const Standard_Integer Id = - 1,const MeshVS_BuilderPriority & Priority = MeshVS_BP_ElemColor);
+		 MeshVS_ElementalColorPrsBuilder (const Handle_MeshVS_Mesh & Parent,const MeshVS_DisplayModeFlags & Flags = MeshVS_DMF_ElementalColorDataPrs,const Handle_MeshVS_DataSource & DS = 0,const Standard_Integer Id = -1,const MeshVS_BuilderPriority & Priority = MeshVS_BP_ElemColor);
 		%feature("autodoc", "	* Builds presentation of elements with assigned colors.
 
 	:param Prs:
@@ -5319,13 +5319,13 @@ class MeshVS_MeshPrsBuilder : public MeshVS_PrsBuilder {
 	:type Flags: MeshVS_DisplayModeFlags &
 	:param DS: default value is 0
 	:type DS: Handle_MeshVS_DataSource &
-	:param Id: default value is - 1
+	:param Id: default value is -1
 	:type Id: Standard_Integer
 	:param Priority: default value is MeshVS_BP_Mesh
 	:type Priority: MeshVS_BuilderPriority &
 	:rtype: None
 ") MeshVS_MeshPrsBuilder;
-		 MeshVS_MeshPrsBuilder (const Handle_MeshVS_Mesh & Parent,const MeshVS_DisplayModeFlags & Flags = MeshVS_DMF_OCCMask,const Handle_MeshVS_DataSource & DS = 0,const Standard_Integer Id = - 1,const MeshVS_BuilderPriority & Priority = MeshVS_BP_Mesh);
+		 MeshVS_MeshPrsBuilder (const Handle_MeshVS_Mesh & Parent,const MeshVS_DisplayModeFlags & Flags = MeshVS_DMF_OCCMask,const Handle_MeshVS_DataSource & DS = 0,const Standard_Integer Id = -1,const MeshVS_BuilderPriority & Priority = MeshVS_BP_Mesh);
 		%feature("autodoc", "	* Builds base mesh presentation by calling the methods below
 
 	:param Prs:
@@ -5481,13 +5481,13 @@ class MeshVS_NodalColorPrsBuilder : public MeshVS_PrsBuilder {
 	:type Flags: MeshVS_DisplayModeFlags &
 	:param DS: default value is 0
 	:type DS: Handle_MeshVS_DataSource &
-	:param Id: default value is - 1
+	:param Id: default value is -1
 	:type Id: Standard_Integer
 	:param Priority: default value is MeshVS_BP_NodalColor
 	:type Priority: MeshVS_BuilderPriority &
 	:rtype: None
 ") MeshVS_NodalColorPrsBuilder;
-		 MeshVS_NodalColorPrsBuilder (const Handle_MeshVS_Mesh & Parent,const MeshVS_DisplayModeFlags & Flags = MeshVS_DMF_NodalColorDataPrs,const Handle_MeshVS_DataSource & DS = 0,const Standard_Integer Id = - 1,const MeshVS_BuilderPriority & Priority = MeshVS_BP_NodalColor);
+		 MeshVS_NodalColorPrsBuilder (const Handle_MeshVS_Mesh & Parent,const MeshVS_DisplayModeFlags & Flags = MeshVS_DMF_NodalColorDataPrs,const Handle_MeshVS_DataSource & DS = 0,const Standard_Integer Id = -1,const MeshVS_BuilderPriority & Priority = MeshVS_BP_NodalColor);
 		%feature("autodoc", "	* Builds presentation of nodes with assigned color.
 
 	:param Prs:
@@ -5671,13 +5671,13 @@ class MeshVS_TextPrsBuilder : public MeshVS_PrsBuilder {
 	:type Flags: MeshVS_DisplayModeFlags &
 	:param DS: default value is 0
 	:type DS: Handle_MeshVS_DataSource &
-	:param Id: default value is - 1
+	:param Id: default value is -1
 	:type Id: Standard_Integer
 	:param Priority: default value is MeshVS_BP_Text
 	:type Priority: MeshVS_BuilderPriority &
 	:rtype: None
 ") MeshVS_TextPrsBuilder;
-		 MeshVS_TextPrsBuilder (const Handle_MeshVS_Mesh & Parent,const Standard_Real Height,const Quantity_Color & Color,const MeshVS_DisplayModeFlags & Flags = MeshVS_DMF_TextDataPrs,const Handle_MeshVS_DataSource & DS = 0,const Standard_Integer Id = - 1,const MeshVS_BuilderPriority & Priority = MeshVS_BP_Text);
+		 MeshVS_TextPrsBuilder (const Handle_MeshVS_Mesh & Parent,const Standard_Real Height,const Quantity_Color & Color,const MeshVS_DisplayModeFlags & Flags = MeshVS_DMF_TextDataPrs,const Handle_MeshVS_DataSource & DS = 0,const Standard_Integer Id = -1,const MeshVS_BuilderPriority & Priority = MeshVS_BP_Text);
 		%feature("autodoc", "	* Builds presentation of text data
 
 	:param Prs:
@@ -5807,7 +5807,7 @@ class MeshVS_VectorPrsBuilder : public MeshVS_PrsBuilder {
 	:type Flags: MeshVS_DisplayModeFlags &
 	:param DS: default value is 0
 	:type DS: Handle_MeshVS_DataSource &
-	:param Id: default value is - 1
+	:param Id: default value is -1
 	:type Id: Standard_Integer
 	:param Priority: default value is MeshVS_BP_Vector
 	:type Priority: MeshVS_BuilderPriority &
@@ -5815,7 +5815,7 @@ class MeshVS_VectorPrsBuilder : public MeshVS_PrsBuilder {
 	:type IsSimplePrs: bool
 	:rtype: None
 ") MeshVS_VectorPrsBuilder;
-		 MeshVS_VectorPrsBuilder (const Handle_MeshVS_Mesh & Parent,const Standard_Real MaxLength,const Quantity_Color & VectorColor,const MeshVS_DisplayModeFlags & Flags = MeshVS_DMF_VectorDataPrs,const Handle_MeshVS_DataSource & DS = 0,const Standard_Integer Id = - 1,const MeshVS_BuilderPriority & Priority = MeshVS_BP_Vector,const Standard_Boolean IsSimplePrs = Standard_False);
+		 MeshVS_VectorPrsBuilder (const Handle_MeshVS_Mesh & Parent,const Standard_Real MaxLength,const Quantity_Color & VectorColor,const MeshVS_DisplayModeFlags & Flags = MeshVS_DMF_VectorDataPrs,const Handle_MeshVS_DataSource & DS = 0,const Standard_Integer Id = -1,const MeshVS_BuilderPriority & Priority = MeshVS_BP_Vector,const Standard_Boolean IsSimplePrs = Standard_False);
 		%feature("autodoc", "	* Builds vector data presentation
 
 	:param Prs:

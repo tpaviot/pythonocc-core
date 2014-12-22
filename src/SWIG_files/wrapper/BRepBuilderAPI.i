@@ -240,20 +240,20 @@ class BRepBuilderAPI_FindPlane {
 
 	:param S:
 	:type S: TopoDS_Shape &
-	:param Tol: default value is - 1
+	:param Tol: default value is -1
 	:type Tol: float
 	:rtype: None
 ") BRepBuilderAPI_FindPlane;
-		 BRepBuilderAPI_FindPlane (const TopoDS_Shape & S,const Standard_Real Tol = - 1);
+		 BRepBuilderAPI_FindPlane (const TopoDS_Shape & S,const Standard_Real Tol = -1);
 		%feature("autodoc", "	* Constructs the plane containing the edges of the shape S. A plane is built only if all the edges are within a distance of less than or equal to tolerance from a planar surface. This tolerance value is equal to the larger of the following two values: - Tol, where the default value is negative, or - the largest of the tolerance values assigned to the individual edges of S. Use the function Found to verify that a plane is built. The resulting plane is then retrieved using the function Plane.
 
 	:param S:
 	:type S: TopoDS_Shape &
-	:param Tol: default value is - 1
+	:param Tol: default value is -1
 	:type Tol: float
 	:rtype: None
 ") Init;
-		void Init (const TopoDS_Shape & S,const Standard_Real Tol = - 1);
+		void Init (const TopoDS_Shape & S,const Standard_Real Tol = -1);
 		%feature("autodoc", "	* Returns true if a plane containing the edges of the shape is found and built. Use the function Plane to consult the result.
 
 	:rtype: bool
