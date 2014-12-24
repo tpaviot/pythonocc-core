@@ -1,25 +1,29 @@
 package:
   name: pythonocc-core
-  version: 0.16.0
+  version: 0.16.2
 
 source:
     git_url: https://github.com/tpaviot/pythonocc-core.git
-    git_tag: 0.16.0
+    git_tag: review/smesh-6.5.3.1-support
 
 build:
-  number: 0
+  number: 2
   binary_relocation: true
 
 requirements:
   build:
-    - cmake
+    - cmake 3.0.1
     - python
-    - opencascade_community_edition
-    - swig 2.0.10
+    - opencascade_community_edition 0.16.1
+    - smesh
+    - boost
+    - swig 3.0.2
 
   run:
     - python
-    - opencascade_community_edition
+    - opencascade_community_edition 0.16.1
+    - boost
+    - smesh
 
 #test:
 #  commands:
