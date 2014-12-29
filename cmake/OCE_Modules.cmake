@@ -248,3 +248,20 @@ LIST(APPEND OCE_TOOLKIT_DATAEXCHANGE
         IFSelect
         XSControl
         )
+
+LIST(APPEND OCE_TOOLKIT_OCAF
+# TKLCAF
+        TDF
+        TDataStd
+        TFunction
+        TDocStd
+        AppStdL
+# TKXCAF
+        XCAFApp
+        XCAFDoc
+        XCAFPrs
+# TKXDESTEP
+        STEPCAFControl
+# TKXDEIGES
+        IGESCAFControl
+        )

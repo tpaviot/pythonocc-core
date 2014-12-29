@@ -105,6 +105,7 @@ set(OCE_MODEL_LIBRARIES TKernel TKMath TKAdvTools TKG2d TKG3d TKGeomBase TKBRep 
 set(OCE_VISUALIZATION_LIBRARIES TKService TKV3d TKMeshVS TKOpenGl)
 set(OCE_DATAEXCHANGE_LIBRARIES TKSTL TKXSBase TKSTEPBase TKIGES TKSTEPAttr TKSTEP209
     TKSTEP TKVRML)
+set(OCE_OCAF_LIBRARIES TKLCAF TKXCAF TKXDESTEP TKXDEIGES)
 
 ######################################################
 # Configure Build settings according to the platform #
@@ -176,7 +177,8 @@ message(STATUS "output_path: ${LIBRARY_OUTPUT_PATH}")
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OCE_Modules.cmake)
 # add an option to choose toolkits to compile
 option_with_default(PYTHONOCC_WRAP_VISU "Compile Visualisation" TRUE)
-option_with_default(PYTHONOCC_WRAP_DATAEXCHANGE "Compile Data Exchange" TRUE)
+option_with_default(PYTHONOCC_WRAP_DATAEXCHANGE "Compile DataExchange wrapper" TRUE)
+option_with_default(PYTHONOCC_WRAP_OCAF "Compile OCE Application Framework wrapper" TRUE)
 
 ###################
 # Wrapper Modules #
@@ -233,6 +235,18 @@ if(PYTHONOCC_WRAP_DATAEXCHANGE)
   endforeach(OCE_MODULE)
 endif(PYTHONOCC_WRAP_DATAEXCHANGE)
 
+########
+# OCAF #
+########
+if(PYTHONOCC_WRAP_OCAF)
+  foreach(OCE_MODULE ${OCE_TOOLKIT_OCAF})
+    set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
+    set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
+    swig_add_module(${OCE_MODULE} python ${FILE})
+    swig_link_libraries(${OCE_MODULE} ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES} ${OCE_OCAF_LIBRARIES})
+  endforeach(OCE_MODULE)
+endif(PYTHONOCC_WRAP_OCAF)
+
 ################
 # Installation #
 ################
@@ -260,6 +274,12 @@ foreach(OCE_MODULE ${OCE_TOOLKIT_DATAEXCHANGE})
     install(FILES ${BUILD_DIR}/_${OCE_MODULE}.${EXTENSION} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
 endforeach(OCE_MODULE)
 endif(PYTHONOCC_WRAP_DATAEXCHANGE)
+if(PYTHONOCC_WRAP_OCAF)
+foreach(OCE_MODULE ${OCE_TOOLKIT_OCAF})
+    install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+    install(FILES ${BUILD_DIR}/_${OCE_MODULE}.${EXTENSION} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+endforeach(OCE_MODULE)
+endif(PYTHONOCC_WRAP_OCAF)
 
 # install third part modules
 if(PYTHONOCC_WRAP_VISU)
