@@ -1,0 +1,1918 @@
+/*
+Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+
+
+This file is part of pythonOCC.
+pythonOCC is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+pythonOCC is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
+
+*/
+%module (package="OCC") TFunction
+
+#pragma SWIG nowarn=504,325,503
+
+%{
+#ifdef WNT
+#pragma warning(disable : 4716)
+#endif
+%}
+
+%include ../common/CommonIncludes.i
+%include ../common/StandardDefines.i
+%include ../common/ExceptionCatcher.i
+%include ../common/FunctionTransformers.i
+%include ../common/Operators.i
+
+%include TFunction_headers.i
+
+/* typedefs */
+/* end typedefs declaration */
+
+/* public enums */
+enum TFunction_ExecutionStatus {
+	TFunction_ES_WrongDefinition = 0,
+	TFunction_ES_NotExecuted = 1,
+	TFunction_ES_Executing = 2,
+	TFunction_ES_Succeeded = 3,
+	TFunction_ES_Failed = 4,
+};
+
+/* end public enums declaration */
+
+%nodefaultctor TFunction_Array1OfDataMapOfGUIDDriver;
+class TFunction_Array1OfDataMapOfGUIDDriver {
+	public:
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TFunction_Array1OfDataMapOfGUIDDriver;
+		 TFunction_Array1OfDataMapOfGUIDDriver (const Standard_Integer Low,const Standard_Integer Up);
+		%feature("autodoc", "	:param Item:
+	:type Item: TFunction_DataMapOfGUIDDriver &
+	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TFunction_Array1OfDataMapOfGUIDDriver;
+		 TFunction_Array1OfDataMapOfGUIDDriver (const TFunction_DataMapOfGUIDDriver & Item,const Standard_Integer Low,const Standard_Integer Up);
+		%feature("autodoc", "	:param V:
+	:type V: TFunction_DataMapOfGUIDDriver &
+	:rtype: None
+") Init;
+		void Init (const TFunction_DataMapOfGUIDDriver & V);
+		%feature("autodoc", "	:rtype: None
+") Destroy;
+		void Destroy ();
+		%feature("autodoc", "	:rtype: bool
+") IsAllocated;
+		Standard_Boolean IsAllocated ();
+		%feature("autodoc", "	:param Other:
+	:type Other: TFunction_Array1OfDataMapOfGUIDDriver &
+	:rtype: TFunction_Array1OfDataMapOfGUIDDriver
+") Assign;
+		const TFunction_Array1OfDataMapOfGUIDDriver & Assign (const TFunction_Array1OfDataMapOfGUIDDriver & Other);
+		%feature("autodoc", "	:param Other:
+	:type Other: TFunction_Array1OfDataMapOfGUIDDriver &
+	:rtype: TFunction_Array1OfDataMapOfGUIDDriver
+") operator=;
+		const TFunction_Array1OfDataMapOfGUIDDriver & operator = (const TFunction_Array1OfDataMapOfGUIDDriver & Other);
+		%feature("autodoc", "	:rtype: int
+") Length;
+		Standard_Integer Length ();
+		%feature("autodoc", "	:rtype: int
+") Lower;
+		Standard_Integer Lower ();
+		%feature("autodoc", "	:rtype: int
+") Upper;
+		Standard_Integer Upper ();
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: TFunction_DataMapOfGUIDDriver &
+	:rtype: None
+") SetValue;
+		void SetValue (const Standard_Integer Index,const TFunction_DataMapOfGUIDDriver & Value);
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TFunction_DataMapOfGUIDDriver
+") Value;
+		const TFunction_DataMapOfGUIDDriver & Value (const Standard_Integer Index);
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TFunction_DataMapOfGUIDDriver
+") ChangeValue;
+		TFunction_DataMapOfGUIDDriver & ChangeValue (const Standard_Integer Index);
+};
+
+
+%feature("shadow") TFunction_Array1OfDataMapOfGUIDDriver::~TFunction_Array1OfDataMapOfGUIDDriver %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend TFunction_Array1OfDataMapOfGUIDDriver {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor TFunction_DataMapIteratorOfDataMapOfGUIDDriver;
+class TFunction_DataMapIteratorOfDataMapOfGUIDDriver : public TCollection_BasicMapIterator {
+	public:
+		%feature("autodoc", "	:rtype: None
+") TFunction_DataMapIteratorOfDataMapOfGUIDDriver;
+		 TFunction_DataMapIteratorOfDataMapOfGUIDDriver ();
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TFunction_DataMapOfGUIDDriver &
+	:rtype: None
+") TFunction_DataMapIteratorOfDataMapOfGUIDDriver;
+		 TFunction_DataMapIteratorOfDataMapOfGUIDDriver (const TFunction_DataMapOfGUIDDriver & aMap);
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TFunction_DataMapOfGUIDDriver &
+	:rtype: None
+") Initialize;
+		void Initialize (const TFunction_DataMapOfGUIDDriver & aMap);
+		%feature("autodoc", "	:rtype: Standard_GUID
+") Key;
+		const Standard_GUID & Key ();
+		%feature("autodoc", "	:rtype: Handle_TFunction_Driver
+") Value;
+		const Handle_TFunction_Driver & Value ();
+};
+
+
+%feature("shadow") TFunction_DataMapIteratorOfDataMapOfGUIDDriver::~TFunction_DataMapIteratorOfDataMapOfGUIDDriver %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend TFunction_DataMapIteratorOfDataMapOfGUIDDriver {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel;
+class TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel : public TCollection_BasicMapIterator {
+	public:
+		%feature("autodoc", "	:rtype: None
+") TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel;
+		 TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel ();
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TFunction_DataMapOfLabelListOfLabel &
+	:rtype: None
+") TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel;
+		 TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel (const TFunction_DataMapOfLabelListOfLabel & aMap);
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TFunction_DataMapOfLabelListOfLabel &
+	:rtype: None
+") Initialize;
+		void Initialize (const TFunction_DataMapOfLabelListOfLabel & aMap);
+		%feature("autodoc", "	:rtype: TDF_Label
+") Key;
+		const TDF_Label & Key ();
+		%feature("autodoc", "	:rtype: TDF_LabelList
+") Value;
+		const TDF_LabelList & Value ();
+};
+
+
+%feature("shadow") TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel::~TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor TFunction_DataMapNodeOfDataMapOfGUIDDriver;
+class TFunction_DataMapNodeOfDataMapOfGUIDDriver : public TCollection_MapNode {
+	public:
+		%feature("autodoc", "	:param K:
+	:type K: Standard_GUID &
+	:param I:
+	:type I: Handle_TFunction_Driver &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TFunction_DataMapNodeOfDataMapOfGUIDDriver;
+		 TFunction_DataMapNodeOfDataMapOfGUIDDriver (const Standard_GUID & K,const Handle_TFunction_Driver & I,const TCollection_MapNodePtr & n);
+		%feature("autodoc", "	:rtype: Standard_GUID
+") Key;
+		Standard_GUID & Key ();
+		%feature("autodoc", "	:rtype: Handle_TFunction_Driver
+") Value;
+		Handle_TFunction_Driver & Value ();
+};
+
+
+%feature("shadow") TFunction_DataMapNodeOfDataMapOfGUIDDriver::~TFunction_DataMapNodeOfDataMapOfGUIDDriver %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend TFunction_DataMapNodeOfDataMapOfGUIDDriver {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend TFunction_DataMapNodeOfDataMapOfGUIDDriver {
+	Handle_TFunction_DataMapNodeOfDataMapOfGUIDDriver GetHandle() {
+	return *(Handle_TFunction_DataMapNodeOfDataMapOfGUIDDriver*) &$self;
+	}
+};
+
+%nodefaultctor Handle_TFunction_DataMapNodeOfDataMapOfGUIDDriver;
+class Handle_TFunction_DataMapNodeOfDataMapOfGUIDDriver : public Handle_TCollection_MapNode {
+
+    public:
+        // constructors
+        Handle_TFunction_DataMapNodeOfDataMapOfGUIDDriver();
+        Handle_TFunction_DataMapNodeOfDataMapOfGUIDDriver(const Handle_TFunction_DataMapNodeOfDataMapOfGUIDDriver &aHandle);
+        Handle_TFunction_DataMapNodeOfDataMapOfGUIDDriver(const TFunction_DataMapNodeOfDataMapOfGUIDDriver *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_TFunction_DataMapNodeOfDataMapOfGUIDDriver DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_TFunction_DataMapNodeOfDataMapOfGUIDDriver {
+    TFunction_DataMapNodeOfDataMapOfGUIDDriver* GetObject() {
+    return (TFunction_DataMapNodeOfDataMapOfGUIDDriver*)$self->Access();
+    }
+};
+%feature("shadow") Handle_TFunction_DataMapNodeOfDataMapOfGUIDDriver::~Handle_TFunction_DataMapNodeOfDataMapOfGUIDDriver %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_TFunction_DataMapNodeOfDataMapOfGUIDDriver {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor TFunction_DataMapNodeOfDataMapOfLabelListOfLabel;
+class TFunction_DataMapNodeOfDataMapOfLabelListOfLabel : public TCollection_MapNode {
+	public:
+		%feature("autodoc", "	:param K:
+	:type K: TDF_Label &
+	:param I:
+	:type I: TDF_LabelList &
+	:param n:
+	:type n: TCollection_MapNodePtr &
+	:rtype: None
+") TFunction_DataMapNodeOfDataMapOfLabelListOfLabel;
+		 TFunction_DataMapNodeOfDataMapOfLabelListOfLabel (const TDF_Label & K,const TDF_LabelList & I,const TCollection_MapNodePtr & n);
+		%feature("autodoc", "	:rtype: TDF_Label
+") Key;
+		TDF_Label & Key ();
+		%feature("autodoc", "	:rtype: TDF_LabelList
+") Value;
+		TDF_LabelList & Value ();
+};
+
+
+%feature("shadow") TFunction_DataMapNodeOfDataMapOfLabelListOfLabel::~TFunction_DataMapNodeOfDataMapOfLabelListOfLabel %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend TFunction_DataMapNodeOfDataMapOfLabelListOfLabel {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend TFunction_DataMapNodeOfDataMapOfLabelListOfLabel {
+	Handle_TFunction_DataMapNodeOfDataMapOfLabelListOfLabel GetHandle() {
+	return *(Handle_TFunction_DataMapNodeOfDataMapOfLabelListOfLabel*) &$self;
+	}
+};
+
+%nodefaultctor Handle_TFunction_DataMapNodeOfDataMapOfLabelListOfLabel;
+class Handle_TFunction_DataMapNodeOfDataMapOfLabelListOfLabel : public Handle_TCollection_MapNode {
+
+    public:
+        // constructors
+        Handle_TFunction_DataMapNodeOfDataMapOfLabelListOfLabel();
+        Handle_TFunction_DataMapNodeOfDataMapOfLabelListOfLabel(const Handle_TFunction_DataMapNodeOfDataMapOfLabelListOfLabel &aHandle);
+        Handle_TFunction_DataMapNodeOfDataMapOfLabelListOfLabel(const TFunction_DataMapNodeOfDataMapOfLabelListOfLabel *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_TFunction_DataMapNodeOfDataMapOfLabelListOfLabel DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_TFunction_DataMapNodeOfDataMapOfLabelListOfLabel {
+    TFunction_DataMapNodeOfDataMapOfLabelListOfLabel* GetObject() {
+    return (TFunction_DataMapNodeOfDataMapOfLabelListOfLabel*)$self->Access();
+    }
+};
+%feature("shadow") Handle_TFunction_DataMapNodeOfDataMapOfLabelListOfLabel::~Handle_TFunction_DataMapNodeOfDataMapOfLabelListOfLabel %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_TFunction_DataMapNodeOfDataMapOfLabelListOfLabel {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor TFunction_DataMapOfGUIDDriver;
+class TFunction_DataMapOfGUIDDriver : public TCollection_BasicMap {
+	public:
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TFunction_DataMapOfGUIDDriver;
+		 TFunction_DataMapOfGUIDDriver (const Standard_Integer NbBuckets = 1);
+		%feature("autodoc", "	:param Other:
+	:type Other: TFunction_DataMapOfGUIDDriver &
+	:rtype: TFunction_DataMapOfGUIDDriver
+") Assign;
+		TFunction_DataMapOfGUIDDriver & Assign (const TFunction_DataMapOfGUIDDriver & Other);
+		%feature("autodoc", "	:param Other:
+	:type Other: TFunction_DataMapOfGUIDDriver &
+	:rtype: TFunction_DataMapOfGUIDDriver
+") operator=;
+		TFunction_DataMapOfGUIDDriver & operator = (const TFunction_DataMapOfGUIDDriver & Other);
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
+		void ReSize (const Standard_Integer NbBuckets);
+		%feature("autodoc", "	:rtype: None
+") Clear;
+		void Clear ();
+		%feature("autodoc", "	:param K:
+	:type K: Standard_GUID &
+	:param I:
+	:type I: Handle_TFunction_Driver &
+	:rtype: bool
+") Bind;
+		Standard_Boolean Bind (const Standard_GUID & K,const Handle_TFunction_Driver & I);
+		%feature("autodoc", "	:param K:
+	:type K: Standard_GUID &
+	:rtype: bool
+") IsBound;
+		Standard_Boolean IsBound (const Standard_GUID & K);
+		%feature("autodoc", "	:param K:
+	:type K: Standard_GUID &
+	:rtype: bool
+") UnBind;
+		Standard_Boolean UnBind (const Standard_GUID & K);
+		%feature("autodoc", "	:param K:
+	:type K: Standard_GUID &
+	:rtype: Handle_TFunction_Driver
+") Find;
+		const Handle_TFunction_Driver & Find (const Standard_GUID & K);
+		%feature("autodoc", "	:param K:
+	:type K: Standard_GUID &
+	:rtype: Handle_TFunction_Driver
+") ChangeFind;
+		Handle_TFunction_Driver & ChangeFind (const Standard_GUID & K);
+		%feature("autodoc", "	:param K:
+	:type K: Standard_GUID &
+	:rtype: Standard_Address
+") Find1;
+		Standard_Address Find1 (const Standard_GUID & K);
+		%feature("autodoc", "	:param K:
+	:type K: Standard_GUID &
+	:rtype: Standard_Address
+") ChangeFind1;
+		Standard_Address ChangeFind1 (const Standard_GUID & K);
+};
+
+
+%feature("shadow") TFunction_DataMapOfGUIDDriver::~TFunction_DataMapOfGUIDDriver %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend TFunction_DataMapOfGUIDDriver {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor TFunction_DataMapOfLabelListOfLabel;
+class TFunction_DataMapOfLabelListOfLabel : public TCollection_BasicMap {
+	public:
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TFunction_DataMapOfLabelListOfLabel;
+		 TFunction_DataMapOfLabelListOfLabel (const Standard_Integer NbBuckets = 1);
+		%feature("autodoc", "	:param Other:
+	:type Other: TFunction_DataMapOfLabelListOfLabel &
+	:rtype: TFunction_DataMapOfLabelListOfLabel
+") Assign;
+		TFunction_DataMapOfLabelListOfLabel & Assign (const TFunction_DataMapOfLabelListOfLabel & Other);
+		%feature("autodoc", "	:param Other:
+	:type Other: TFunction_DataMapOfLabelListOfLabel &
+	:rtype: TFunction_DataMapOfLabelListOfLabel
+") operator=;
+		TFunction_DataMapOfLabelListOfLabel & operator = (const TFunction_DataMapOfLabelListOfLabel & Other);
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
+		void ReSize (const Standard_Integer NbBuckets);
+		%feature("autodoc", "	:rtype: None
+") Clear;
+		void Clear ();
+		%feature("autodoc", "	:param K:
+	:type K: TDF_Label &
+	:param I:
+	:type I: TDF_LabelList &
+	:rtype: bool
+") Bind;
+		Standard_Boolean Bind (const TDF_Label & K,const TDF_LabelList & I);
+		%feature("autodoc", "	:param K:
+	:type K: TDF_Label &
+	:rtype: bool
+") IsBound;
+		Standard_Boolean IsBound (const TDF_Label & K);
+		%feature("autodoc", "	:param K:
+	:type K: TDF_Label &
+	:rtype: bool
+") UnBind;
+		Standard_Boolean UnBind (const TDF_Label & K);
+		%feature("autodoc", "	:param K:
+	:type K: TDF_Label &
+	:rtype: TDF_LabelList
+") Find;
+		const TDF_LabelList & Find (const TDF_Label & K);
+		%feature("autodoc", "	:param K:
+	:type K: TDF_Label &
+	:rtype: TDF_LabelList
+") ChangeFind;
+		TDF_LabelList & ChangeFind (const TDF_Label & K);
+		%feature("autodoc", "	:param K:
+	:type K: TDF_Label &
+	:rtype: Standard_Address
+") Find1;
+		Standard_Address Find1 (const TDF_Label & K);
+		%feature("autodoc", "	:param K:
+	:type K: TDF_Label &
+	:rtype: Standard_Address
+") ChangeFind1;
+		Standard_Address ChangeFind1 (const TDF_Label & K);
+};
+
+
+%feature("shadow") TFunction_DataMapOfLabelListOfLabel::~TFunction_DataMapOfLabelListOfLabel %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend TFunction_DataMapOfLabelListOfLabel {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor TFunction_DoubleMapIteratorOfDoubleMapOfIntegerLabel;
+class TFunction_DoubleMapIteratorOfDoubleMapOfIntegerLabel : public TCollection_BasicMapIterator {
+	public:
+		%feature("autodoc", "	:rtype: None
+") TFunction_DoubleMapIteratorOfDoubleMapOfIntegerLabel;
+		 TFunction_DoubleMapIteratorOfDoubleMapOfIntegerLabel ();
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TFunction_DoubleMapOfIntegerLabel &
+	:rtype: None
+") TFunction_DoubleMapIteratorOfDoubleMapOfIntegerLabel;
+		 TFunction_DoubleMapIteratorOfDoubleMapOfIntegerLabel (const TFunction_DoubleMapOfIntegerLabel & aMap);
+		%feature("autodoc", "	:param aMap:
+	:type aMap: TFunction_DoubleMapOfIntegerLabel &
+	:rtype: None
+") Initialize;
+		void Initialize (const TFunction_DoubleMapOfIntegerLabel & aMap);
+		%feature("autodoc", "	:rtype: int
+") Key1;
+		const Standard_Integer & Key1 ();
+		%feature("autodoc", "	:rtype: TDF_Label
+") Key2;
+		const TDF_Label & Key2 ();
+};
+
+
+%feature("shadow") TFunction_DoubleMapIteratorOfDoubleMapOfIntegerLabel::~TFunction_DoubleMapIteratorOfDoubleMapOfIntegerLabel %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend TFunction_DoubleMapIteratorOfDoubleMapOfIntegerLabel {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel;
+class TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel : public TCollection_MapNode {
+	public:
+		%feature("autodoc", "	:param K1:
+	:type K1: Standard_Integer &
+	:param K2:
+	:type K2: TDF_Label &
+	:param n1:
+	:type n1: TCollection_MapNodePtr &
+	:param n2:
+	:type n2: TCollection_MapNodePtr &
+	:rtype: None
+") TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel;
+		 TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel (const Standard_Integer & K1,const TDF_Label & K2,const TCollection_MapNodePtr & n1,const TCollection_MapNodePtr & n2);
+
+            %feature("autodoc","1");
+            %extend {
+                Standard_Integer GetKey1() {
+                return (Standard_Integer) $self->Key1();
+                }
+            };
+            %feature("autodoc","1");
+            %extend {
+                void SetKey1(Standard_Integer value ) {
+                $self->Key1()=value;
+                }
+            };
+            		%feature("autodoc", "	:rtype: TDF_Label
+") Key2;
+		TDF_Label & Key2 ();
+		%feature("autodoc", "	:rtype: TCollection_MapNodePtr
+") Next2;
+		TCollection_MapNodePtr & Next2 ();
+};
+
+
+%feature("shadow") TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel::~TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel {
+	Handle_TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel GetHandle() {
+	return *(Handle_TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel*) &$self;
+	}
+};
+
+%nodefaultctor Handle_TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel;
+class Handle_TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel : public Handle_TCollection_MapNode {
+
+    public:
+        // constructors
+        Handle_TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel();
+        Handle_TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel(const Handle_TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel &aHandle);
+        Handle_TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel(const TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel {
+    TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel* GetObject() {
+    return (TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel*)$self->Access();
+    }
+};
+%feature("shadow") Handle_TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel::~Handle_TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor TFunction_DoubleMapOfIntegerLabel;
+class TFunction_DoubleMapOfIntegerLabel : public TCollection_BasicMap {
+	public:
+		%feature("autodoc", "	:param NbBuckets: default value is 1
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") TFunction_DoubleMapOfIntegerLabel;
+		 TFunction_DoubleMapOfIntegerLabel (const Standard_Integer NbBuckets = 1);
+		%feature("autodoc", "	:param Other:
+	:type Other: TFunction_DoubleMapOfIntegerLabel &
+	:rtype: TFunction_DoubleMapOfIntegerLabel
+") Assign;
+		TFunction_DoubleMapOfIntegerLabel & Assign (const TFunction_DoubleMapOfIntegerLabel & Other);
+		%feature("autodoc", "	:param Other:
+	:type Other: TFunction_DoubleMapOfIntegerLabel &
+	:rtype: TFunction_DoubleMapOfIntegerLabel
+") operator=;
+		TFunction_DoubleMapOfIntegerLabel & operator = (const TFunction_DoubleMapOfIntegerLabel & Other);
+		%feature("autodoc", "	:param NbBuckets:
+	:type NbBuckets: Standard_Integer
+	:rtype: None
+") ReSize;
+		void ReSize (const Standard_Integer NbBuckets);
+		%feature("autodoc", "	:rtype: None
+") Clear;
+		void Clear ();
+		%feature("autodoc", "	:param K1:
+	:type K1: Standard_Integer &
+	:param K2:
+	:type K2: TDF_Label &
+	:rtype: None
+") Bind;
+		void Bind (const Standard_Integer & K1,const TDF_Label & K2);
+		%feature("autodoc", "	:param K1:
+	:type K1: Standard_Integer &
+	:param K2:
+	:type K2: TDF_Label &
+	:rtype: bool
+") AreBound;
+		Standard_Boolean AreBound (const Standard_Integer & K1,const TDF_Label & K2);
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") IsBound1;
+		Standard_Boolean IsBound1 (const Standard_Integer & K);
+		%feature("autodoc", "	:param K:
+	:type K: TDF_Label &
+	:rtype: bool
+") IsBound2;
+		Standard_Boolean IsBound2 (const TDF_Label & K);
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: TDF_Label
+") Find1;
+		const TDF_Label & Find1 (const Standard_Integer & K);
+		%feature("autodoc", "	:param K:
+	:type K: TDF_Label &
+	:rtype: int
+") Find2;
+		const Standard_Integer & Find2 (const TDF_Label & K);
+		%feature("autodoc", "	:param K:
+	:type K: Standard_Integer &
+	:rtype: bool
+") UnBind1;
+		Standard_Boolean UnBind1 (const Standard_Integer & K);
+		%feature("autodoc", "	:param K:
+	:type K: TDF_Label &
+	:rtype: bool
+") UnBind2;
+		Standard_Boolean UnBind2 (const TDF_Label & K);
+};
+
+
+%feature("shadow") TFunction_DoubleMapOfIntegerLabel::~TFunction_DoubleMapOfIntegerLabel %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend TFunction_DoubleMapOfIntegerLabel {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor TFunction_Driver;
+class TFunction_Driver : public MMgt_TShared {
+	public:
+		%feature("autodoc", "	* Initializes the label L for this function prior to its execution.
+
+	:param L:
+	:type L: TDF_Label &
+	:rtype: None
+") Init;
+		void Init (const TDF_Label & L);
+		%feature("autodoc", "	* Returns the label of the driver for this function.
+
+	:rtype: TDF_Label
+") Label;
+		TDF_Label Label ();
+		%feature("autodoc", "	* Validates labels of a function in <log>. This function is the one initialized in this function driver. Warning In regeneration mode, the solver must call this method even if the function is not executed. execution of function =====================
+
+	:param log:
+	:type log: TFunction_Logbook &
+	:rtype: void
+") Validate;
+		virtual void Validate (TFunction_Logbook & log);
+		%feature("autodoc", "	* Analyzes the labels in the logbook log. Returns true if attributes have been modified. If the function label itself has been modified, the function must be executed.
+
+	:param log:
+	:type log: TFunction_Logbook &
+	:rtype: bool
+") MustExecute;
+		virtual Standard_Boolean MustExecute (const TFunction_Logbook & log);
+		%feature("autodoc", "	* Executes the function in this function driver and puts the impacted labels in the logbook log. arguments & results of functions ================================
+
+	:param log:
+	:type log: TFunction_Logbook &
+	:rtype: int
+") Execute;
+		virtual Standard_Integer Execute (TFunction_Logbook & log);
+		%feature("autodoc", "	* The method fills-in the list by labels, where the arguments of the function are located.
+
+	:param args:
+	:type args: TDF_LabelList &
+	:rtype: void
+") Arguments;
+		virtual void Arguments (TDF_LabelList & args);
+		%feature("autodoc", "	* The method fills-in the list by labels, where the results of the function are located.
+
+	:param res:
+	:type res: TDF_LabelList &
+	:rtype: void
+") Results;
+		virtual void Results (TDF_LabelList & res);
+};
+
+
+%feature("shadow") TFunction_Driver::~TFunction_Driver %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend TFunction_Driver {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend TFunction_Driver {
+	Handle_TFunction_Driver GetHandle() {
+	return *(Handle_TFunction_Driver*) &$self;
+	}
+};
+
+%nodefaultctor Handle_TFunction_Driver;
+class Handle_TFunction_Driver : public Handle_MMgt_TShared {
+
+    public:
+        // constructors
+        Handle_TFunction_Driver();
+        Handle_TFunction_Driver(const Handle_TFunction_Driver &aHandle);
+        Handle_TFunction_Driver(const TFunction_Driver *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_TFunction_Driver DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_TFunction_Driver {
+    TFunction_Driver* GetObject() {
+    return (TFunction_Driver*)$self->Access();
+    }
+};
+%feature("shadow") Handle_TFunction_Driver::~Handle_TFunction_Driver %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_TFunction_Driver {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor TFunction_DriverTable;
+class TFunction_DriverTable : public MMgt_TShared {
+	public:
+		%feature("autodoc", "	* Returns the driver table. If a driver does not exist, creates it.
+
+	:rtype: Handle_TFunction_DriverTable
+") Get;
+		static Handle_TFunction_DriverTable Get ();
+		%feature("autodoc", "	* Default constructor
+
+	:rtype: None
+") TFunction_DriverTable;
+		 TFunction_DriverTable ();
+		%feature("autodoc", "	* Returns true if the driver has been added successfully to the driver table.
+
+	:param guid:
+	:type guid: Standard_GUID &
+	:param driver:
+	:type driver: Handle_TFunction_Driver &
+	:param thread: default value is 0
+	:type thread: Standard_Integer
+	:rtype: bool
+") AddDriver;
+		Standard_Boolean AddDriver (const Standard_GUID & guid,const Handle_TFunction_Driver & driver,const Standard_Integer thread = 0);
+		%feature("autodoc", "	* Returns true if the driver exists in the driver table.
+
+	:param guid:
+	:type guid: Standard_GUID &
+	:param thread: default value is 0
+	:type thread: Standard_Integer
+	:rtype: bool
+") HasDriver;
+		Standard_Boolean HasDriver (const Standard_GUID & guid,const Standard_Integer thread = 0);
+		%feature("autodoc", "	* Returns true if the driver was found.
+
+	:param guid:
+	:type guid: Standard_GUID &
+	:param driver:
+	:type driver: Handle_TFunction_Driver &
+	:param thread: default value is 0
+	:type thread: Standard_Integer
+	:rtype: bool
+") FindDriver;
+		Standard_Boolean FindDriver (const Standard_GUID & guid,Handle_TFunction_Driver & driver,const Standard_Integer thread = 0);
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "	* Removes a driver with the given GUID. Returns true if the driver has been removed successfully.
+
+	:param guid:
+	:type guid: Standard_GUID &
+	:param thread: default value is 0
+	:type thread: Standard_Integer
+	:rtype: bool
+") RemoveDriver;
+		Standard_Boolean RemoveDriver (const Standard_GUID & guid,const Standard_Integer thread = 0);
+		%feature("autodoc", "	* Removes all drivers. Returns true if the driver has been removed successfully.
+
+	:rtype: None
+") Clear;
+		void Clear ();
+};
+
+
+%feature("shadow") TFunction_DriverTable::~TFunction_DriverTable %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend TFunction_DriverTable {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend TFunction_DriverTable {
+	Handle_TFunction_DriverTable GetHandle() {
+	return *(Handle_TFunction_DriverTable*) &$self;
+	}
+};
+
+%nodefaultctor Handle_TFunction_DriverTable;
+class Handle_TFunction_DriverTable : public Handle_MMgt_TShared {
+
+    public:
+        // constructors
+        Handle_TFunction_DriverTable();
+        Handle_TFunction_DriverTable(const Handle_TFunction_DriverTable &aHandle);
+        Handle_TFunction_DriverTable(const TFunction_DriverTable *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_TFunction_DriverTable DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_TFunction_DriverTable {
+    TFunction_DriverTable* GetObject() {
+    return (TFunction_DriverTable*)$self->Access();
+    }
+};
+%feature("shadow") Handle_TFunction_DriverTable::~Handle_TFunction_DriverTable %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_TFunction_DriverTable {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor TFunction_Function;
+class TFunction_Function : public TDF_Attribute {
+	public:
+		%feature("autodoc", "	* Static methods: ============== Finds or Creates a function attribute on the label <L>. Returns the function attribute.
+
+	:param L:
+	:type L: TDF_Label &
+	:rtype: Handle_TFunction_Function
+") Set;
+		static Handle_TFunction_Function Set (const TDF_Label & L);
+		%feature("autodoc", "	* Finds or Creates a function attribute on the label <L>. Sets a driver ID to the function. Returns the function attribute.
+
+	:param L:
+	:type L: TDF_Label &
+	:param DriverID:
+	:type DriverID: Standard_GUID &
+	:rtype: Handle_TFunction_Function
+") Set;
+		static Handle_TFunction_Function Set (const TDF_Label & L,const Standard_GUID & DriverID);
+		%feature("autodoc", "	* Returns the GUID for functions. Returns a function found on the label. Instance methods: ================
+
+	:rtype: Standard_GUID
+") GetID;
+		static const Standard_GUID & GetID ();
+		%feature("autodoc", "	:rtype: None
+") TFunction_Function;
+		 TFunction_Function ();
+		%feature("autodoc", "	* Returns the GUID for this function's driver.
+
+	:rtype: Standard_GUID
+") GetDriverGUID;
+		const Standard_GUID & GetDriverGUID ();
+		%feature("autodoc", "	* Sets the driver for this function as that indentified by the GUID guid.
+
+	:param guid:
+	:type guid: Standard_GUID &
+	:rtype: None
+") SetDriverGUID;
+		void SetDriverGUID (const Standard_GUID & guid);
+		%feature("autodoc", "	* Returns true if the execution failed
+
+	:rtype: bool
+") Failed;
+		Standard_Boolean Failed ();
+		%feature("autodoc", "	* Sets the failed index.
+
+	:param mode: default value is 0
+	:type mode: Standard_Integer
+	:rtype: None
+") SetFailure;
+		void SetFailure (const Standard_Integer mode = 0);
+		%feature("autodoc", "	* Returns an index of failure if the execution of this function failed. If this integer value is 0, no failure has occurred. Implementation of Attribute methods: ===================================
+
+	:rtype: int
+") GetFailure;
+		Standard_Integer GetFailure ();
+		%feature("autodoc", "	:rtype: Standard_GUID
+") ID;
+		const Standard_GUID & ID ();
+		%feature("autodoc", "	:param with:
+	:type with: Handle_TDF_Attribute &
+	:rtype: void
+") Restore;
+		virtual void Restore (const Handle_TDF_Attribute & with);
+		%feature("autodoc", "	:param into:
+	:type into: Handle_TDF_Attribute &
+	:param RT:
+	:type RT: Handle_TDF_RelocationTable &
+	:rtype: void
+") Paste;
+		virtual void Paste (const Handle_TDF_Attribute & into,const Handle_TDF_RelocationTable & RT);
+		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
+") NewEmpty;
+		virtual Handle_TDF_Attribute NewEmpty ();
+		%feature("autodoc", "	:param aDataSet:
+	:type aDataSet: Handle_TDF_DataSet &
+	:rtype: void
+") References;
+		virtual void References (const Handle_TDF_DataSet & aDataSet);
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
+
+
+%feature("shadow") TFunction_Function::~TFunction_Function %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend TFunction_Function {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend TFunction_Function {
+	Handle_TFunction_Function GetHandle() {
+	return *(Handle_TFunction_Function*) &$self;
+	}
+};
+
+%nodefaultctor Handle_TFunction_Function;
+class Handle_TFunction_Function : public Handle_TDF_Attribute {
+
+    public:
+        // constructors
+        Handle_TFunction_Function();
+        Handle_TFunction_Function(const Handle_TFunction_Function &aHandle);
+        Handle_TFunction_Function(const TFunction_Function *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_TFunction_Function DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_TFunction_Function {
+    TFunction_Function* GetObject() {
+    return (TFunction_Function*)$self->Access();
+    }
+};
+%feature("shadow") Handle_TFunction_Function::~Handle_TFunction_Function %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_TFunction_Function {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor TFunction_GraphNode;
+class TFunction_GraphNode : public TDF_Attribute {
+	public:
+		%feature("autodoc", "	* Static methods ============== Finds or Creates a graph node attribute at the label <L>. Returns the attribute.
+
+	:param L:
+	:type L: TDF_Label &
+	:rtype: Handle_TFunction_GraphNode
+") Set;
+		static Handle_TFunction_GraphNode Set (const TDF_Label & L);
+		%feature("autodoc", "	* Returns the GUID for GraphNode attribute. Instant methods =============== Constructor (empty).
+
+	:rtype: Standard_GUID
+") GetID;
+		static const Standard_GUID & GetID ();
+		%feature("autodoc", "	:rtype: None
+") TFunction_GraphNode;
+		 TFunction_GraphNode ();
+		%feature("autodoc", "	* Defines a reference to the function as a previous one.
+
+	:param funcID:
+	:type funcID: Standard_Integer
+	:rtype: bool
+") AddPrevious;
+		Standard_Boolean AddPrevious (const Standard_Integer funcID);
+		%feature("autodoc", "	* Defines a reference to the function as a previous one.
+
+	:param func:
+	:type func: TDF_Label &
+	:rtype: bool
+") AddPrevious;
+		Standard_Boolean AddPrevious (const TDF_Label & func);
+		%feature("autodoc", "	* Removes a reference to the function as a previous one.
+
+	:param funcID:
+	:type funcID: Standard_Integer
+	:rtype: bool
+") RemovePrevious;
+		Standard_Boolean RemovePrevious (const Standard_Integer funcID);
+		%feature("autodoc", "	* Removes a reference to the function as a previous one.
+
+	:param func:
+	:type func: TDF_Label &
+	:rtype: bool
+") RemovePrevious;
+		Standard_Boolean RemovePrevious (const TDF_Label & func);
+		%feature("autodoc", "	* Returns a map of previous functions.
+
+	:rtype: TColStd_MapOfInteger
+") GetPrevious;
+		const TColStd_MapOfInteger & GetPrevious ();
+		%feature("autodoc", "	* Clears a map of previous functions.
+
+	:rtype: None
+") RemoveAllPrevious;
+		void RemoveAllPrevious ();
+		%feature("autodoc", "	* Defines a reference to the function as a next one.
+
+	:param funcID:
+	:type funcID: Standard_Integer
+	:rtype: bool
+") AddNext;
+		Standard_Boolean AddNext (const Standard_Integer funcID);
+		%feature("autodoc", "	* Defines a reference to the function as a next one.
+
+	:param func:
+	:type func: TDF_Label &
+	:rtype: bool
+") AddNext;
+		Standard_Boolean AddNext (const TDF_Label & func);
+		%feature("autodoc", "	* Removes a reference to the function as a next one.
+
+	:param funcID:
+	:type funcID: Standard_Integer
+	:rtype: bool
+") RemoveNext;
+		Standard_Boolean RemoveNext (const Standard_Integer funcID);
+		%feature("autodoc", "	* Removes a reference to the function as a next one.
+
+	:param func:
+	:type func: TDF_Label &
+	:rtype: bool
+") RemoveNext;
+		Standard_Boolean RemoveNext (const TDF_Label & func);
+		%feature("autodoc", "	* Returns a map of next functions.
+
+	:rtype: TColStd_MapOfInteger
+") GetNext;
+		const TColStd_MapOfInteger & GetNext ();
+		%feature("autodoc", "	* Clears a map of next functions.
+
+	:rtype: None
+") RemoveAllNext;
+		void RemoveAllNext ();
+		%feature("autodoc", "	* Returns the execution status of the function.
+
+	:rtype: TFunction_ExecutionStatus
+") GetStatus;
+		TFunction_ExecutionStatus GetStatus ();
+		%feature("autodoc", "	* Defines an execution status for a function. Implementation of Attribute methods ===================================
+
+	:param status:
+	:type status: TFunction_ExecutionStatus
+	:rtype: None
+") SetStatus;
+		void SetStatus (const TFunction_ExecutionStatus status);
+		%feature("autodoc", "	:rtype: Standard_GUID
+") ID;
+		const Standard_GUID & ID ();
+		%feature("autodoc", "	:param with:
+	:type with: Handle_TDF_Attribute &
+	:rtype: void
+") Restore;
+		virtual void Restore (const Handle_TDF_Attribute & with);
+		%feature("autodoc", "	:param into:
+	:type into: Handle_TDF_Attribute &
+	:param RT:
+	:type RT: Handle_TDF_RelocationTable &
+	:rtype: void
+") Paste;
+		virtual void Paste (const Handle_TDF_Attribute & into,const Handle_TDF_RelocationTable & RT);
+		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
+") NewEmpty;
+		virtual Handle_TDF_Attribute NewEmpty ();
+		%feature("autodoc", "	:param aDataSet:
+	:type aDataSet: Handle_TDF_DataSet &
+	:rtype: void
+") References;
+		virtual void References (const Handle_TDF_DataSet & aDataSet);
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
+
+
+%feature("shadow") TFunction_GraphNode::~TFunction_GraphNode %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend TFunction_GraphNode {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend TFunction_GraphNode {
+	Handle_TFunction_GraphNode GetHandle() {
+	return *(Handle_TFunction_GraphNode*) &$self;
+	}
+};
+
+%nodefaultctor Handle_TFunction_GraphNode;
+class Handle_TFunction_GraphNode : public Handle_TDF_Attribute {
+
+    public:
+        // constructors
+        Handle_TFunction_GraphNode();
+        Handle_TFunction_GraphNode(const Handle_TFunction_GraphNode &aHandle);
+        Handle_TFunction_GraphNode(const TFunction_GraphNode *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_TFunction_GraphNode DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_TFunction_GraphNode {
+    TFunction_GraphNode* GetObject() {
+    return (TFunction_GraphNode*)$self->Access();
+    }
+};
+%feature("shadow") Handle_TFunction_GraphNode::~Handle_TFunction_GraphNode %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_TFunction_GraphNode {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor TFunction_HArray1OfDataMapOfGUIDDriver;
+class TFunction_HArray1OfDataMapOfGUIDDriver : public MMgt_TShared {
+	public:
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:rtype: None
+") TFunction_HArray1OfDataMapOfGUIDDriver;
+		 TFunction_HArray1OfDataMapOfGUIDDriver (const Standard_Integer Low,const Standard_Integer Up);
+		%feature("autodoc", "	:param Low:
+	:type Low: Standard_Integer
+	:param Up:
+	:type Up: Standard_Integer
+	:param V:
+	:type V: TFunction_DataMapOfGUIDDriver &
+	:rtype: None
+") TFunction_HArray1OfDataMapOfGUIDDriver;
+		 TFunction_HArray1OfDataMapOfGUIDDriver (const Standard_Integer Low,const Standard_Integer Up,const TFunction_DataMapOfGUIDDriver & V);
+		%feature("autodoc", "	:param V:
+	:type V: TFunction_DataMapOfGUIDDriver &
+	:rtype: None
+") Init;
+		void Init (const TFunction_DataMapOfGUIDDriver & V);
+		%feature("autodoc", "	:rtype: int
+") Length;
+		Standard_Integer Length ();
+		%feature("autodoc", "	:rtype: int
+") Lower;
+		Standard_Integer Lower ();
+		%feature("autodoc", "	:rtype: int
+") Upper;
+		Standard_Integer Upper ();
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:param Value:
+	:type Value: TFunction_DataMapOfGUIDDriver &
+	:rtype: None
+") SetValue;
+		void SetValue (const Standard_Integer Index,const TFunction_DataMapOfGUIDDriver & Value);
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TFunction_DataMapOfGUIDDriver
+") Value;
+		const TFunction_DataMapOfGUIDDriver & Value (const Standard_Integer Index);
+		%feature("autodoc", "	:param Index:
+	:type Index: Standard_Integer
+	:rtype: TFunction_DataMapOfGUIDDriver
+") ChangeValue;
+		TFunction_DataMapOfGUIDDriver & ChangeValue (const Standard_Integer Index);
+		%feature("autodoc", "	:rtype: TFunction_Array1OfDataMapOfGUIDDriver
+") Array1;
+		const TFunction_Array1OfDataMapOfGUIDDriver & Array1 ();
+		%feature("autodoc", "	:rtype: TFunction_Array1OfDataMapOfGUIDDriver
+") ChangeArray1;
+		TFunction_Array1OfDataMapOfGUIDDriver & ChangeArray1 ();
+};
+
+
+%feature("shadow") TFunction_HArray1OfDataMapOfGUIDDriver::~TFunction_HArray1OfDataMapOfGUIDDriver %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend TFunction_HArray1OfDataMapOfGUIDDriver {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend TFunction_HArray1OfDataMapOfGUIDDriver {
+	Handle_TFunction_HArray1OfDataMapOfGUIDDriver GetHandle() {
+	return *(Handle_TFunction_HArray1OfDataMapOfGUIDDriver*) &$self;
+	}
+};
+
+%nodefaultctor Handle_TFunction_HArray1OfDataMapOfGUIDDriver;
+class Handle_TFunction_HArray1OfDataMapOfGUIDDriver : public Handle_MMgt_TShared {
+
+    public:
+        // constructors
+        Handle_TFunction_HArray1OfDataMapOfGUIDDriver();
+        Handle_TFunction_HArray1OfDataMapOfGUIDDriver(const Handle_TFunction_HArray1OfDataMapOfGUIDDriver &aHandle);
+        Handle_TFunction_HArray1OfDataMapOfGUIDDriver(const TFunction_HArray1OfDataMapOfGUIDDriver *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_TFunction_HArray1OfDataMapOfGUIDDriver DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_TFunction_HArray1OfDataMapOfGUIDDriver {
+    TFunction_HArray1OfDataMapOfGUIDDriver* GetObject() {
+    return (TFunction_HArray1OfDataMapOfGUIDDriver*)$self->Access();
+    }
+};
+%feature("shadow") Handle_TFunction_HArray1OfDataMapOfGUIDDriver::~Handle_TFunction_HArray1OfDataMapOfGUIDDriver %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_TFunction_HArray1OfDataMapOfGUIDDriver {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
+%nodefaultctor TFunction_IFunction;
+class TFunction_IFunction {
+	public:
+		%feature("autodoc", "	* Sets a new function attached to a label <L> with <ID>. It creates a new TFunction_Function attribute initialized by the <ID>, a new TFunction_GraphNode with an empty list of dependencies and the status equal to TFunction_ES_WrongDefinition. It registers the function in the scope of functions for this document.
+
+	:param L:
+	:type L: TDF_Label &
+	:param ID:
+	:type ID: Standard_GUID &
+	:rtype: bool
+") NewFunction;
+		static Standard_Boolean NewFunction (const TDF_Label & L,const Standard_GUID & ID);
+		%feature("autodoc", "	* Deletes a function attached to a label <L>. It deletes a TFunction_Function attribute and a TFunction_GraphNode. It deletes the functions from the scope of function of this document.
+
+	:param L:
+	:type L: TDF_Label &
+	:rtype: bool
+") DeleteFunction;
+		static Standard_Boolean DeleteFunction (const TDF_Label & L);
+		%feature("autodoc", "	* Updates dependencies for all functions of the scope. It returns false in case of an error. An empty constructor.
+
+	:param Access:
+	:type Access: TDF_Label &
+	:rtype: bool
+") UpdateDependencies;
+		static Standard_Boolean UpdateDependencies (const TDF_Label & Access);
+		%feature("autodoc", "	:rtype: None
+") TFunction_IFunction;
+		 TFunction_IFunction ();
+		%feature("autodoc", "	* A constructor. Initializes the interface by the label of function.
+
+	:param L:
+	:type L: TDF_Label &
+	:rtype: None
+") TFunction_IFunction;
+		 TFunction_IFunction (const TDF_Label & L);
+		%feature("autodoc", "	* Initializes the interface by the label of function.
+
+	:param L:
+	:type L: TDF_Label &
+	:rtype: None
+") Init;
+		void Init (const TDF_Label & L);
+		%feature("autodoc", "	* Returns a label of the function.
+
+	:rtype: TDF_Label
+") Label;
+		const TDF_Label & Label ();
+		%feature("autodoc", "	* Updates the dependencies of this function only.
+
+	:rtype: bool
+") UpdateDependencies;
+		Standard_Boolean UpdateDependencies ();
+		%feature("autodoc", "	* The method fills-in the list by labels, where the arguments of the function are located.
+
+	:param args:
+	:type args: TDF_LabelList &
+	:rtype: None
+") Arguments;
+		void Arguments (TDF_LabelList & args);
+		%feature("autodoc", "	* The method fills-in the list by labels, where the results of the function are located.
+
+	:param res:
+	:type res: TDF_LabelList &
+	:rtype: None
+") Results;
+		void Results (TDF_LabelList & res);
+		%feature("autodoc", "	* Returns a list of previous functions.
+
+	:param prev:
+	:type prev: TDF_LabelList &
+	:rtype: None
+") GetPrevious;
+		void GetPrevious (TDF_LabelList & prev);
+		%feature("autodoc", "	* Returns a list of next functions.
+
+	:param prev:
+	:type prev: TDF_LabelList &
+	:rtype: None
+") GetNext;
+		void GetNext (TDF_LabelList & prev);
+		%feature("autodoc", "	* Returns the execution status of the function.
+
+	:rtype: TFunction_ExecutionStatus
+") GetStatus;
+		TFunction_ExecutionStatus GetStatus ();
+		%feature("autodoc", "	* Defines an execution status for a function.
+
+	:param status:
+	:type status: TFunction_ExecutionStatus
+	:rtype: None
+") SetStatus;
+		void SetStatus (const TFunction_ExecutionStatus status);
+		%feature("autodoc", "	* Returns the scope of all functions.
+
+	:rtype: TFunction_DoubleMapOfIntegerLabel
+") GetAllFunctions;
+		const TFunction_DoubleMapOfIntegerLabel & GetAllFunctions ();
+		%feature("autodoc", "	* Returns the Logbook - keeper of modifications.
+
+	:rtype: TFunction_Logbook
+") GetLogbook;
+		TFunction_Logbook & GetLogbook ();
+		%feature("autodoc", "	* Returns a driver of the function.
+
+	:param thread: default value is 0
+	:type thread: Standard_Integer
+	:rtype: Handle_TFunction_Driver
+") GetDriver;
+		Handle_TFunction_Driver GetDriver (const Standard_Integer thread = 0);
+		%feature("autodoc", "	* Returns a graph node of the function.
+
+	:rtype: Handle_TFunction_GraphNode
+") GetGraphNode;
+		Handle_TFunction_GraphNode GetGraphNode ();
+};
+
+
+%feature("shadow") TFunction_IFunction::~TFunction_IFunction %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend TFunction_IFunction {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor TFunction_Iterator;
+class TFunction_Iterator {
+	public:
+		%feature("autodoc", "	* An empty constructor.
+
+	:rtype: None
+") TFunction_Iterator;
+		 TFunction_Iterator ();
+		%feature("autodoc", "	* A constructor. Initializes the iterator.
+
+	:param Access:
+	:type Access: TDF_Label &
+	:rtype: None
+") TFunction_Iterator;
+		 TFunction_Iterator (const TDF_Label & Access);
+		%feature("autodoc", "	* Initializes the Iterator.
+
+	:param Access:
+	:type Access: TDF_Label &
+	:rtype: void
+") Init;
+		virtual void Init (const TDF_Label & Access);
+		%feature("autodoc", "	* Defines the mode of iteration - usage or not of the execution status. If the iterator takes into account the execution status, the method ::Current() returns only 'not executed' functions while their status is not changed. If the iterator ignores the execution status, the method ::Current() returns the functions following their dependencies and ignoring the execution status.
+
+	:param usage:
+	:type usage: bool
+	:rtype: None
+") SetUsageOfExecutionStatus;
+		void SetUsageOfExecutionStatus (const Standard_Boolean usage);
+		%feature("autodoc", "	* Returns usage of execution status by the iterator.
+
+	:rtype: bool
+") GetUsageOfExecutionStatus;
+		Standard_Boolean GetUsageOfExecutionStatus ();
+		%feature("autodoc", "	* Analyses the graph of dependencies and returns maximum number of threads may be used to calculate the model.
+
+	:rtype: int
+") GetMaxNbThreads;
+		virtual Standard_Integer GetMaxNbThreads ();
+		%feature("autodoc", "	* Returns the current list of functions. If the iterator uses the execution status, the returned list contains only the functions with 'not executed' status.
+
+	:rtype: TDF_LabelList
+") Current;
+		virtual const TDF_LabelList & Current ();
+		%feature("autodoc", "	* Returns false if the graph of functions is fully iterated.
+
+	:rtype: bool
+") More;
+		virtual Standard_Boolean More ();
+		%feature("autodoc", "	* Switches the iterator to the next list of current functions.
+
+	:rtype: void
+") Next;
+		virtual void Next ();
+		%feature("autodoc", "	* A help-function aimed to help the user to check the status of retrurned function. It calls TFunction_GraphNode::GetStatus() inside.
+
+	:param func:
+	:type func: TDF_Label &
+	:rtype: TFunction_ExecutionStatus
+") GetStatus;
+		TFunction_ExecutionStatus GetStatus (const TDF_Label & func);
+		%feature("autodoc", "	* A help-function aimed to help the user to change the execution status of a function. It calls TFunction_GraphNode::SetStatus() inside.
+
+	:param func:
+	:type func: TDF_Label &
+	:param status:
+	:type status: TFunction_ExecutionStatus
+	:rtype: None
+") SetStatus;
+		void SetStatus (const TDF_Label & func,const TFunction_ExecutionStatus status);
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
+
+
+%feature("shadow") TFunction_Iterator::~TFunction_Iterator %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend TFunction_Iterator {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor TFunction_Logbook;
+class TFunction_Logbook {
+	public:
+		%feature("autodoc", "	* next methods are solving declaration ===================================
+
+	:rtype: None
+") TFunction_Logbook;
+		 TFunction_Logbook ();
+		%feature("autodoc", "	* Clears this logbook to its default, empty state.
+
+	:rtype: None
+") Clear;
+		void Clear ();
+		%feature("autodoc", "	:rtype: bool
+") IsEmpty;
+		Standard_Boolean IsEmpty ();
+		%feature("autodoc", "	* Sets the label L as a touched label in this logbook. In other words, L is understood to have been modified by the end user.
+
+	:param L:
+	:type L: TDF_Label &
+	:rtype: None
+") SetTouched;
+		void SetTouched (const TDF_Label & L);
+		%feature("autodoc", "	* Sets the label L as an impacted label in this logbook. This method is called by execution of the function driver.
+
+	:param L:
+	:type L: TDF_Label &
+	:param WithChildren: default value is Standard_False
+	:type WithChildren: bool
+	:rtype: None
+") SetImpacted;
+		void SetImpacted (const TDF_Label & L,const Standard_Boolean WithChildren = Standard_False);
+		%feature("autodoc", "	* Sets the label L as a valid label in this logbook.
+
+	:param L:
+	:type L: TDF_Label &
+	:param WithChildren: default value is Standard_False
+	:type WithChildren: bool
+	:rtype: None
+") SetValid;
+		void SetValid (const TDF_Label & L,const Standard_Boolean WithChildren = Standard_False);
+		%feature("autodoc", "	:rtype: TDF_LabelMap
+") ChangeValid;
+		TDF_LabelMap & ChangeValid ();
+		%feature("autodoc", "	* Returns True if the label L is touched or impacted. This method is called by <TFunction_FunctionDriver::MustExecute>. If <WithChildren> is set to true, the method checks all the sublabels of <L> too. next method to consult solving result =====================================
+
+	:param L:
+	:type L: TDF_Label &
+	:param WithChildren: default value is Standard_False
+	:type WithChildren: bool
+	:rtype: bool
+") IsModified;
+		Standard_Boolean IsModified (const TDF_Label & L,const Standard_Boolean WithChildren = Standard_False);
+		%feature("autodoc", "	* Returns the map of touched labels in this logbook. A touched label is the one modified by the end user.
+
+	:rtype: TDF_LabelMap
+") GetTouched;
+		const TDF_LabelMap & GetTouched ();
+		%feature("autodoc", "	* Returns the map of impacted labels contained in this logbook.
+
+	:rtype: TDF_LabelMap
+") GetImpacted;
+		const TDF_LabelMap & GetImpacted ();
+		%feature("autodoc", "	* Returns the map of valid labels in this logbook.
+
+	:rtype: TDF_LabelMap
+") GetValid;
+		const TDF_LabelMap & GetValid ();
+		%feature("autodoc", "	* Sets if the execution failed
+
+	:param status:
+	:type status: bool
+	:rtype: None
+") Done;
+		void Done (const Standard_Boolean status);
+		%feature("autodoc", "	:rtype: bool
+") IsDone;
+		Standard_Boolean IsDone ();
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        };
+
+
+%feature("shadow") TFunction_Logbook::~TFunction_Logbook %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend TFunction_Logbook {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%nodefaultctor TFunction_Scope;
+class TFunction_Scope : public TDF_Attribute {
+	public:
+		%feature("autodoc", "	* Static methods ============== Finds or Creates a TFunction_Scope attribute at the root label accessed by <Access>. Returns the attribute.
+
+	:param Access:
+	:type Access: TDF_Label &
+	:rtype: Handle_TFunction_Scope
+") Set;
+		static Handle_TFunction_Scope Set (const TDF_Label & Access);
+		%feature("autodoc", "	* Returns the GUID for Scope attribute. Instant methods =============== Constructor (empty).
+
+	:rtype: Standard_GUID
+") GetID;
+		static const Standard_GUID & GetID ();
+		%feature("autodoc", "	:rtype: None
+") TFunction_Scope;
+		 TFunction_Scope ();
+		%feature("autodoc", "	* Adds a function to the scope of functions.
+
+	:param L:
+	:type L: TDF_Label &
+	:rtype: bool
+") AddFunction;
+		Standard_Boolean AddFunction (const TDF_Label & L);
+		%feature("autodoc", "	* Removes a function from the scope of functions.
+
+	:param L:
+	:type L: TDF_Label &
+	:rtype: bool
+") RemoveFunction;
+		Standard_Boolean RemoveFunction (const TDF_Label & L);
+		%feature("autodoc", "	* Removes a function from the scope of functions.
+
+	:param ID:
+	:type ID: Standard_Integer
+	:rtype: bool
+") RemoveFunction;
+		Standard_Boolean RemoveFunction (const Standard_Integer ID);
+		%feature("autodoc", "	* Removes all functions from the scope of functions.
+
+	:rtype: None
+") RemoveAllFunctions;
+		void RemoveAllFunctions ();
+		%feature("autodoc", "	* Returns true if the function exists with such an ID.
+
+	:param ID:
+	:type ID: Standard_Integer
+	:rtype: bool
+") HasFunction;
+		Standard_Boolean HasFunction (const Standard_Integer ID);
+		%feature("autodoc", "	* Returns true if the label contains a function of this scope.
+
+	:param L:
+	:type L: TDF_Label &
+	:rtype: bool
+") HasFunction;
+		Standard_Boolean HasFunction (const TDF_Label & L);
+		%feature("autodoc", "	* Returns an ID of the function.
+
+	:param L:
+	:type L: TDF_Label &
+	:rtype: int
+") GetFunction;
+		Standard_Integer GetFunction (const TDF_Label & L);
+		%feature("autodoc", "	* Returns the label of the function with this ID.
+
+	:param ID:
+	:type ID: Standard_Integer
+	:rtype: TDF_Label
+") GetFunction;
+		const TDF_Label & GetFunction (const Standard_Integer ID);
+		%feature("autodoc", "	* Returns the Logbook used in TFunction_Driver methods. Implementation of Attribute methods ===================================
+
+	:rtype: TFunction_Logbook
+") GetLogbook;
+		TFunction_Logbook & GetLogbook ();
+		%feature("autodoc", "	:rtype: Standard_GUID
+") ID;
+		const Standard_GUID & ID ();
+		%feature("autodoc", "	:param with:
+	:type with: Handle_TDF_Attribute &
+	:rtype: void
+") Restore;
+		virtual void Restore (const Handle_TDF_Attribute & with);
+		%feature("autodoc", "	:param into:
+	:type into: Handle_TDF_Attribute &
+	:param RT:
+	:type RT: Handle_TDF_RelocationTable &
+	:rtype: void
+") Paste;
+		virtual void Paste (const Handle_TDF_Attribute & into,const Handle_TDF_RelocationTable & RT);
+		%feature("autodoc", "	:rtype: Handle_TDF_Attribute
+") NewEmpty;
+		virtual Handle_TDF_Attribute NewEmpty ();
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string DumpToString() {
+            std::stringstream s;
+            self->Dump(s);
+            return s.str();}
+        };
+        		%feature("autodoc", "	* Returns the scope of functions.
+
+	:rtype: TFunction_DoubleMapOfIntegerLabel
+") GetFunctions;
+		const TFunction_DoubleMapOfIntegerLabel & GetFunctions ();
+		%feature("autodoc", "	* Returns the scope of functions for modification. Warning: Don't use this method if You are not sure what You do!
+
+	:rtype: TFunction_DoubleMapOfIntegerLabel
+") ChangeFunctions;
+		TFunction_DoubleMapOfIntegerLabel & ChangeFunctions ();
+		%feature("autodoc", "	:param ID:
+	:type ID: Standard_Integer
+	:rtype: None
+") SetFreeID;
+		void SetFreeID (const Standard_Integer ID);
+		%feature("autodoc", "	:rtype: int
+") GetFreeID;
+		Standard_Integer GetFreeID ();
+};
+
+
+%feature("shadow") TFunction_Scope::~TFunction_Scope %{
+def __del__(self):
+	try:
+		self.thisown = False
+		GarbageCollector.garbage.collect_object(self)
+	except:
+		pass
+%}
+
+%extend TFunction_Scope {
+	void _kill_pointed() {
+		delete $self;
+	}
+};
+%extend TFunction_Scope {
+	Handle_TFunction_Scope GetHandle() {
+	return *(Handle_TFunction_Scope*) &$self;
+	}
+};
+
+%nodefaultctor Handle_TFunction_Scope;
+class Handle_TFunction_Scope : public Handle_TDF_Attribute {
+
+    public:
+        // constructors
+        Handle_TFunction_Scope();
+        Handle_TFunction_Scope(const Handle_TFunction_Scope &aHandle);
+        Handle_TFunction_Scope(const TFunction_Scope *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_TFunction_Scope DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_TFunction_Scope {
+    TFunction_Scope* GetObject() {
+    return (TFunction_Scope*)$self->Access();
+    }
+};
+%feature("shadow") Handle_TFunction_Scope::~Handle_TFunction_Scope %{
+def __del__(self):
+    try:
+        self.thisown = False
+        GarbageCollector.garbage.collect_object(self)
+    except:
+        pass
+%}
+
+%extend Handle_TFunction_Scope {
+    void _kill_pointed() {
+        delete $self;
+    }
+};
+
