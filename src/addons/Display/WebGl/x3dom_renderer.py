@@ -123,7 +123,7 @@ class HTMLBody(object):
         return body_str
 
 
-class X3DomRenderer:
+class X3DomRenderer(object):
     def __init__(self, background_color="#123345"):
         self._x3d_filename = "shape.x3d"
         self._html_filename = "x3dom_topods_shape.html"

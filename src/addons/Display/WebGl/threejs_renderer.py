@@ -134,7 +134,10 @@ BODY = """
             scene.add( light1 );
             @Uniforms@
             @ShaderMaterialDefinition@
-            phong_material = new THREE.MeshPhongMaterial( { ambient: 0x000000, color: 0xffaa00, specular: 0x555555, shininess: 30 } )
+            phong_material = new THREE.MeshPhongMaterial( { ambient: 0x000000,
+                                                            color: 0xffaa00,
+                                                            specular: 0x555555,
+                                                            shininess: 30 });
             object = new THREE.Mesh( new Shape(), @ShapeMaterial@);
             object.overdraw = true;
             object.rotation.x = -1.57/2;
@@ -203,7 +206,9 @@ class HTMLBody(object):
             shader_material_definition = """
             var vertexShader = document.getElementById( 'vertexShader' ).textContent;
             var fragmentShader = document.getElementById( 'fragmentShader' ).textContent;
-            var shader_material = new THREE.ShaderMaterial( { uniforms: uniforms, vertexShader: vertexShader, fragmentShader: fragmentShader } );
+            var shader_material = new THREE.ShaderMaterial( { uniforms: uniforms,
+                                                              vertexShader: vertexShader,
+                                                              fragmentShader: fragmentShader } );
             """
             if self._uniforms is None:
                 body_str = body_str.replace('@Uniforms@', 'uniforms ={};\n')
@@ -227,7 +232,7 @@ class HTMLBody(object):
         return body_str
 
 
-class ThreejsRenderer:
+class ThreejsRenderer(object):
     def __init__(self, background_color="#123345", vertex_shader=None, fragment_shader=None, uniforms=None):
         self._js_filename = "shape.js"
         self._html_filename = "webgl_topods_shape.html"
