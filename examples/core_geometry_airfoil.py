@@ -33,7 +33,7 @@ from OCC.TColgp import TColgp_Array1OfPnt2d
 from core_geometry_utils import make_wire, make_edge
 
 
-class UiucAirfoil:
+class UiucAirfoil(object):
     """
     Airfoil with a section from the UIUC database
     """
