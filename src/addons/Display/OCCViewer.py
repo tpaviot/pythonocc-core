@@ -26,21 +26,28 @@ import itertools
 from OCC.AIS import AIS_MultipleConnectedInteractive, AIS_Shape
 from OCC.TopoDS import TopoDS_Shape
 from OCC.gp import gp_Dir, gp_Pnt, gp_Pnt2d
-from OCC.BRepBuilderAPI import BRepBuilderAPI_MakeVertex,\
-                               BRepBuilderAPI_MakeEdge,\
-                               BRepBuilderAPI_MakeEdge2d,\
-                               BRepBuilderAPI_MakeFace
-from OCC.TopAbs import TopAbs_FACE, TopAbs_EDGE, TopAbs_VERTEX,\
-                       TopAbs_SHELL, TopAbs_SOLID
+from OCC.BRepBuilderAPI import (BRepBuilderAPI_MakeVertex,
+                                BRepBuilderAPI_MakeEdge,
+                                BRepBuilderAPI_MakeEdge2d,
+                                BRepBuilderAPI_MakeFace)
+from OCC.TopAbs import (TopAbs_FACE, TopAbs_EDGE, TopAbs_VERTEX,
+                        TopAbs_SHELL, TopAbs_SOLID)
 from OCC.Geom import Handle_Geom_Curve, Handle_Geom_Surface
 from OCC.Geom2d import Handle_Geom2d_Curve
 import OCC.Visualization
 import OCC.V3d
 import OCC.AIS
 from OCC.TCollection import TCollection_ExtendedString, TCollection_AsciiString
-from OCC.Quantity import *
-from OCC.Prs3d import Prs3d_Arrow, Prs3d_Presentation, Prs3d_Text, Prs3d_TextAspect
+from OCC.Quantity import (Quantity_Color, Quantity_TOC_RGB, Quantity_NOC_WHITE,
+                          Quantity_NOC_BLACK, Quantity_NOC_BLUE1,
+                          Quantity_NOC_CYAN1, Quantity_NOC_RED,
+                          Quantity_NOC_GREEN,
+                          Quantity_NOC_ORANGE, Quantity_NOC_YELLOW)
+from OCC.Prs3d import (Prs3d_Arrow, Prs3d_Presentation, Prs3d_Text,
+                       Prs3d_TextAspect)
 from OCC.Graphic3d import Graphic3d_NOM_NEON_GNC
+from OCC.V3d import V3d_ZBUFFER
+from OCC.Aspect import Aspect_TOTP_RIGHT_LOWER
 
 
 def color(r, g, b):
@@ -74,11 +81,9 @@ modes = itertools.cycle([TopAbs_FACE, TopAbs_EDGE,
                          TopAbs_SHELL, TopAbs_SOLID])
 
 
-class BaseDriver(object):
-    """
-    The base driver class
-    """
+class Viewer3d(OCC.Visualization.Display3d):
     def __init__(self, window_handle):
+        OCC.Visualization.Display3d.__init__(self)
         self._window_handle = window_handle
         self._inited = False
         self._local_context_opened = False
@@ -98,9 +103,6 @@ class BaseDriver(object):
         self.View.ZFitAll()
         self.View.FitAll()
 
-    def SetWindow(self, window_handle):
-        self._window_handle = window_handle
-
     def Create(self, create_default_lights=True):
         self.Init(self._window_handle)
         self.Context_handle = self.GetContext()
@@ -118,13 +120,6 @@ class BaseDriver(object):
         #self.Context.SelectionColor(Quantity_NOC_ORANGE)
         # nessecary for text rendering
         self._struc_mgr = self.Context.MainPrsMgr().GetObject().StructureManager()
-
-
-class Viewer3d(BaseDriver, OCC.Visualization.Display3d):
-    def __init__(self, window_handle):
-        BaseDriver.__init__(self, window_handle)
-        OCC.Visualization.Display3d.__init__(self)
-        self.selected_shape = None
 
     def SetDoubleBuffer(self, on_or_off):
         """enables double buffering when shapes are moved in the viewer
@@ -191,7 +186,7 @@ class Viewer3d(BaseDriver, OCC.Visualization.Display3d):
         if reflections:
             self.View.EnableRaytracedReflections()
         if antialiasing:
-            self.View.EnableRaytracedAntialiasing() 
+            self.View.EnableRaytracedAntialiasing()
 
     def display_graduated_trihedron(self):
         self.View.GraduatedTrihedronDisplay()
@@ -199,8 +194,6 @@ class Viewer3d(BaseDriver, OCC.Visualization.Display3d):
     def display_trihedron(self):
         """ Show a black trihedron in lower right corner
         """
-        from OCC.V3d import V3d_ZBUFFER
-        from OCC.Aspect import Aspect_TOTP_RIGHT_LOWER
         self.View.TriedronDisplay(Aspect_TOTP_RIGHT_LOWER, Quantity_NOC_BLACK, 0.1, V3d_ZBUFFER)
 
     def set_bg_gradient_color(self, R1, G1, B1, R2, G2, B2):
@@ -380,15 +373,14 @@ class Viewer3d(BaseDriver, OCC.Visualization.Display3d):
 
     def DisplayColoredShape(self, shapes, color='YELLOW', update=False, ):
         if isinstance(color, str):
-            dict_color = {'WHITE': OCC.Quantity.Quantity_NOC_WHITE,
-                          'BLUE': OCC.Quantity.Quantity_NOC_BLUE1,
-                          'RED': OCC.Quantity.Quantity_NOC_RED,
-                          'GREEN': OCC.Quantity.Quantity_NOC_GREEN,
-                          'YELLOW': OCC.Quantity.Quantity_NOC_YELLOW,
-                          'CYAN': OCC.Quantity.Quantity_NOC_CYAN1,
-                          'WHITE': OCC.Quantity.Quantity_NOC_WHITE,
-                          'BLACK': OCC.Quantity.Quantity_NOC_BLACK,
-                          'ORANGE': OCC.Quantity.Quantity_NOC_ORANGE, }
+            dict_color = {'WHITE': Quantity_NOC_WHITE,
+                          'BLUE': Quantity_NOC_BLUE1,
+                          'RED': Quantity_NOC_RED,
+                          'GREEN': Quantity_NOC_GREEN,
+                          'YELLOW': Quantity_NOC_YELLOW,
+                          'CYAN': Quantity_NOC_CYAN1,
+                          'BLACK': Quantity_NOC_BLACK,
+                          'ORANGE': Quantity_NOC_ORANGE}
             clr = Quantity_Color(dict_color[color])
         elif isinstance(color, Quantity_Color):
             clr = color

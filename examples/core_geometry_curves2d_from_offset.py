@@ -32,7 +32,7 @@ def curves2d_from_offset(event=None):
     '''
     @param display:
     '''
-    pnt2d_array = TColgp_Array1OfPnt2d(1,5)
+    pnt2d_array = TColgp_Array1OfPnt2d(1, 5)
     pnt2d_array.SetValue(1, gp_Pnt2d(-4, 0))
     pnt2d_array.SetValue(2, gp_Pnt2d(-7, 2))
     pnt2d_array.SetValue(3, gp_Pnt2d(-6, 3))
@@ -42,11 +42,11 @@ def curves2d_from_offset(event=None):
     spline_1 = Geom2dAPI_PointsToBSpline(pnt2d_array).Curve()
 
     dist = 1
-    offset_curve1 = Geom2d_OffsetCurve(SPL1, dist)
+    offset_curve1 = Geom2d_OffsetCurve(spline_1, dist)
     result = offset_curve1.IsCN(2)
     print("Offset curve yellow is C2: %r" % result)
     dist2 = 1.5
-    offset_curve2 = Geom2d_OffsetCurve(SPL1, dist2)
+    offset_curve2 = Geom2d_OffsetCurve(spline_1, dist2)
     result2 = offset_curve2.IsCN(2)
     result = offset_curve1.IsCN(2)
     print("Offset curve blue is C2: %r" % result2)
