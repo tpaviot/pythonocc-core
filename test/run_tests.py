@@ -22,7 +22,11 @@ import unittest
 import core_wrapper_features_unittest
 import core_geometry_unittest
 import core_visualization_unittest
-
+try:
+    import core_ocaf_unittest
+    HAVE_OCAF = True
+except:
+    HAVE_OCAF = False
 # Create test suite
 suite = unittest.TestSuite()
 
@@ -31,6 +35,9 @@ suite1 = core_wrapper_features_unittest.suite()
 suite2 = core_geometry_unittest.suite()
 suite3 = core_visualization_unittest.suite()
 tests = [suite1, suite2, suite3]
+if HAVE_OCAF:
+    suite4 = core_ocaf_unittest.suite()
+    tests.append(suite4)
 # Add test cases
 suite.addTests(tests)
 
