@@ -165,6 +165,8 @@ class qtViewer3d(qtBaseViewer):
 
     def mouseReleaseEvent(self, event):
         pt = point(event.pos())
+        modifiers = event.modifiers()
+
         if event.button() == QtCore.Qt.LeftButton:
             pt = point(event.pos())
             if self._select_area:
@@ -173,7 +175,7 @@ class qtViewer3d(qtBaseViewer):
                 self._select_area = False
             else:
                 # multiple select if shift is pressed
-                if QtCore.Qt.ShiftModifier:
+                if modifiers == QtCore.Qt.ShiftModifier:
                     self._display.ShiftSelect(pt.x,pt.y)
                 else:
                 # single select otherwise
