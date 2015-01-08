@@ -22,7 +22,20 @@ from __future__ import print_function
 import sys
 from OCC.Display import OCCViewer
 
-from PySide import QtCore, QtGui, QtOpenGL
+HAVE_PYQT4 = False
+HAVE_PYSIDE = False
+try:
+    from PyQt4 import QtCore, QtGui, QtOpenGL
+    HAVE_PYQT4 = True
+    print("Using PyQt4")
+except:
+    from PySide import QtCore, QtGui, QtOpenGL
+    HAVE_PYSIDE = True
+    print("PyQt4 not found - using PySide")
+
+
+def get_qt_modules():
+    return QtCore, QtGui, QtOpenGL
 
 
 class point(object):
