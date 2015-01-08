@@ -8,8 +8,11 @@ this allows for interesting interfaces, where elements are drawn as an overlay
 
 the example is extends Qt's :ref:`OpenGL overpainting example`
 
-.. Catia's structure browser:: http://api.ning.com/files/baXVy107Waz1W6uzhBRSrhOaW6c2w8r-8560KbD2GBunh443xLrj2*jQWeecIWDpMtgaI2DeAVeJ2xKFYQyCH3DjdvxSfpWv/capture_061.jpg
-.. OpenGL overpainting example:: https://github.com/Werkov/PyQt4/blob/master/examples/opengl/overpainting.py
+.. Catia's structure browser::
+        http://goo.gl/KBh7BL
+
+.. OpenGL overpainting example::
+        https://github.com/Werkov/PyQt4/blob/master/examples/opengl/overpainting.py
 
 
 """
@@ -195,7 +198,7 @@ class GLWidget(qtViewer3d):
         return QtCore.QSize(400, 400)
 
     def createBubbles(self, number):
-        for i in range(number):
+        for _ in range(number):
             position = QtCore.QPointF(self.width() * (0.1 + 0.8 * random.random()),
                                       self.height() * (0.1 + 0.8 * random.random()))
             radius = min(self.width(), self.height()) * (0.0125 + 0.0875 * random.random())

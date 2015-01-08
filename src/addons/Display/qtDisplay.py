@@ -28,7 +28,7 @@ try:
     from PyQt4 import QtCore, QtGui, QtOpenGL
     HAVE_PYQT4 = True
     print("Using PyQt4")
-except:
+except ImportError:
     from PySide import QtCore, QtGui, QtOpenGL
     HAVE_PYSIDE = True
     print("PyQt4 not found - using PySide")
@@ -180,14 +180,14 @@ class qtViewer3d(qtBaseViewer):
             pt = point(event.pos())
             if self._select_area:
                 [Xmin, Ymin, dx, dy] = self._drawbox
-                selected_shapes = self._display.SelectArea(Xmin,Ymin,Xmin+dx,Ymin+dy)
+                self._display.SelectArea(Xmin, Ymin, Xmin+dx, Ymin+dy)
                 self._select_area = False
             else:
                 # multiple select if shift is pressed
                 if modifiers == QtCore.Qt.ShiftModifier:
                     self._display.ShiftSelect(pt.x,pt.y)
                 else:
-                # single select otherwise
+                    # single select otherwise
                     self._display.Select(pt.x, pt.y)
         elif event.button() == QtCore.Qt.RightButton:
             if self._zoom_area:
@@ -235,39 +235,13 @@ class qtViewer3d(qtBaseViewer):
         elif (buttons == QtCore.Qt.RightButton and modifiers == QtCore.Qt.ShiftModifier):
             self._zoom_area = True
             self.DrawBox(evt)
-         # SELECT AREA
+        # SELECT AREA
         elif (buttons == QtCore.Qt.LeftButton and modifiers == QtCore.Qt.ShiftModifier):
             self._select_area = True
             self.DrawBox(evt)
         else:
             self._drawbox = False
             self._display.MoveTo(pt.x, pt.y)
-
-
-def Test3d():
-    class AppFrame(QtGui.QWidget):
-        def __init__(self, parent=None):
-            QtGui.QWidget.__init__(self, parent)
-            self.setWindowTitle(self.tr("qtDisplay3d sample"))
-            self.resize(640, 480)
-            self.canva = qtViewer3d(self)
-            mainLayout = QtGui.QHBoxLayout()
-            mainLayout.addWidget(self.canva)
-            mainLayout.setContentsMargins(0, 0, 0, 0)
-            self.setLayout(mainLayout)
-
-        def runTests(self):
-            self.canva._display.Test()
-
-    app = QtGui.QApplication(sys.argv)
-    frame = AppFrame()
-    frame.show()
-    frame.canva.InitDriver()
-    frame.runTests()
-    sys.exit(app.exec_())
-
-if __name__ == "__main__":
-    Test3d()
 
 
 def Test3d():
