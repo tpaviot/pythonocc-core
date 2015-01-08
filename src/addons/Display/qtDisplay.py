@@ -57,12 +57,16 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
         QtOpenGL.QGLWidget.__init__(self, parent)
         self._display = None
         self._inited = False
-        self.setMouseTracking(True)  # enable Mouse Tracking
-        self.setFocusPolicy(QtCore.Qt.WheelFocus)  # Strong focus
-        # On X11, setting this attribute will disable all double buffering
+
+        # enable Mouse Tracking
+        self.setMouseTracking(True)
+        # Strong focus
+        self.setFocusPolicy(QtCore.Qt.WheelFocus)
+
+        # required for overpainting the widget
         self.setAttribute(QtCore.Qt.WA_PaintOnScreen)
-        # setting this flag implicitly disables double buffering for the widget
         self.setAttribute(QtCore.Qt.WA_NoSystemBackground)
+        self.setAutoFillBackground(False)
 
     def GetHandle(self):
         return int(self.winId())
@@ -70,9 +74,6 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
     def resizeEvent(self, event):
         if self._inited:
             self._display.OnResize()
-
-    def paintEngine(self):
-        return None
 
 
 class qtViewer3d(qtBaseViewer):
@@ -136,13 +137,21 @@ class qtViewer3d(qtBaseViewer):
 
     def paintEvent(self, event):
         if self._inited:
-            self._display.Repaint()
+            self._display.Context.UpdateCurrentViewer()
+            # important to allow overpainting of the OCC OpenGL context in Qt
+            self.swapBuffers()
+
         if self._drawbox:
+            self.makeCurrent()
             painter = QtGui.QPainter(self)
-            painter.setPen(QtGui.QPen(QtGui.QColor(0, 0, 0), 1))
+            painter.setPen(QtGui.QPen(QtGui.QColor(0,0,0), 1))
             rect = QtCore.QRect(*self._drawbox)
             painter.drawRect(rect)
             painter.end()
+            self.doneCurrent()
+
+    def resizeGL(self, width, height):
+        self.setupViewport(width, height)
 
     def ZoomAll(self, evt):
         self._display.Zoom_FitAll()
@@ -157,7 +166,7 @@ class qtViewer3d(qtBaseViewer):
 
     def dragMoveEvent(self, event):
         pass
-        
+
     def mousePressEvent(self, event):
         self.setFocus()
         self.dragStartPos = point(event.pos())
@@ -165,14 +174,21 @@ class qtViewer3d(qtBaseViewer):
 
     def mouseReleaseEvent(self, event):
         pt = point(event.pos())
+        modifiers = event.modifiers()
+
         if event.button() == QtCore.Qt.LeftButton:
             pt = point(event.pos())
             if self._select_area:
                 [Xmin, Ymin, dx, dy] = self._drawbox
-                selected_shapes = self._display.SelectArea(Xmin, Ymin, Xmin+dx, Ymin+dy)
+                selected_shapes = self._display.SelectArea(Xmin,Ymin,Xmin+dx,Ymin+dy)
                 self._select_area = False
             else:
-                self._display.Select(pt.x, pt.y)
+                # multiple select if shift is pressed
+                if modifiers == QtCore.Qt.ShiftModifier:
+                    self._display.ShiftSelect(pt.x,pt.y)
+                else:
+                # single select otherwise
+                    self._display.Select(pt.x, pt.y)
         elif event.button() == QtCore.Qt.RightButton:
             if self._zoom_area:
                 [Xmin, Ymin, dx, dy] = self._drawbox
@@ -181,13 +197,13 @@ class qtViewer3d(qtBaseViewer):
 
     def DrawBox(self, event):
         tolerance = 2
-        pt = point(event.pos())
+        pt = point( event.pos() )
         dx = pt.x - self.dragStartPos.x
         dy = pt.y - self.dragStartPos.y
-        if abs(dx) <= tolerance and abs(dy) <= tolerance:
+        if abs( dx ) <= tolerance and abs( dy ) <= tolerance:
             return
-        self.repaint()
-        self._drawbox = [self.dragStartPos.x, self.dragStartPos.y, dx, dy]
+        self._drawbox = [self.dragStartPos.x, self.dragStartPos.y , dx, dy]
+        self.update()
 
     def mouseMoveEvent(self, evt):
         pt = point(evt.pos())
@@ -252,3 +268,31 @@ def Test3d():
 
 if __name__ == "__main__":
     Test3d()
+
+
+def Test3d():
+    class AppFrame(QtGui.QWidget):
+        def __init__(self, parent=None):
+            QtGui.QWidget.__init__(self, parent)
+            self.setWindowTitle(self.tr("qtDisplay3d sample"))
+            self.resize(640, 480)
+            self.canva = qtViewer3d(self)
+            mainLayout = QtGui.QHBoxLayout()
+            mainLayout.addWidget(self.canva)
+            mainLayout.setContentsMargins(0, 0, 0, 0)
+            self.setLayout(mainLayout)
+
+        def runTests(self):
+            self.canva._display.Test()
+
+    app = QtGui.QApplication(sys.argv)
+    frame = AppFrame()
+    frame.show()
+    frame.canva.InitDriver()
+    frame.runTests()
+    sys.exit(app.exec_())
+
+if __name__ == "__main__":
+    Test3d()
+
+
