@@ -18,6 +18,8 @@ We use the following online resources:
        http://www.pythonocc.org
   * Sources
        https://github.com/tpaviot/pythonocc-core
+  * API documentation
+       http://api.pythonocc.org
   * Bug tracker
        https://github.com/tpaviot/pythonocc-core/issues
   * Mailing list
