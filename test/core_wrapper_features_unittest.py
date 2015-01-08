@@ -22,17 +22,20 @@ import unittest
 
 from OCC.Standard import Standard_Transient, Handle_Standard_Transient
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
-from OCC.BRepBuilderAPI import BRepBuilderAPI_MakeVertex
+from OCC.BRepBuilderAPI import (BRepBuilderAPI_MakeVertex,
+                                BRepBuilderAPI_MakeEdge)
 from OCC.gp import gp_Pnt, gp_Vec, gp_Pnt2d, gp_Lin, gp_Dir
 from OCC.STEPControl import STEPControl_Writer
 from OCC.Interface import Interface_Static_SetCVal, Interface_Static_CVal
 from OCC.GCE2d import GCE2d_MakeSegment
 from OCC.ShapeFix import ShapeFix_Solid, ShapeFix_Wire
-from OCC.TopoDS import TopoDS_Compound, TopoDS_Builder
+from OCC.TopoDS import TopoDS_Compound, TopoDS_Builder, TopoDS_Edge
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeCylinder
 from OCC.TColStd import TColStd_Array1OfReal, TColStd_Array1OfInteger
 from OCC.TopExp import TopExp_Explorer
 from OCC.TopAbs import TopAbs_FACE
+from OCC.GProp import GProp_GProps
+from OCC.BRepGProp import brepgprop_LinearProperties
 
 
 class TestWrapperFeatures(unittest.TestCase):
@@ -331,6 +334,31 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertTrue(shape_1 != shape_2)
         self.assertFalse(shape_1 != shape_1)
         self.assertTrue(shape_1 != "some_string")
+
+    def test_inherit_topods_shape(self):
+        at = self.assertTrue
+        af = self.assertFalse
+
+        class InheritEdge(TopoDS_Edge):
+            def __init__(self, edge):
+                # following constructor creates an empy TopoDS_Edge
+                super(InheritEdge, self).__init__()
+                # we need to copy the base shape using the following three
+                # lines
+                at(self.IsNull())
+                self.TShape(edge.TShape())
+                self.Location(edge.Location())
+                self.Orientation(edge.Orientation())
+                af(self.IsNull())
+                # then it becomes possible to extend the base class
+        # create a line, compute its length
+        base_edge = BRepBuilderAPI_MakeEdge(gp_Pnt(100., 0., 0.),
+                                            gp_Pnt(150., 0., 0.)).Edge()
+        inherited_edge = InheritEdge(base_edge)
+        g1 = GProp_GProps()
+        brepgprop_LinearProperties(inherited_edge, g1)
+        length = g1.Mass()
+        self.assertEqual(length, 50.)
 
 
 def suite():
