@@ -30,13 +30,13 @@ from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
 
 # pyside test
 print('pyside test')
-pyside_display, start_display, add_menu, add_function_to_menu = init_display('pyside')
+pyside_display, start_display, add_menu, add_function_to_menu = init_display('qt-pyside')
 my_box_1 = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
 pyside_display.DisplayShape(my_box_1, update=True)
 
 # pyqt4 test
 print('pyqt4 test')
-pyqt4_display, start_display, add_menu, add_function_to_menu = init_display('pyqt4')
+pyqt4_display, start_display, add_menu, add_function_to_menu = init_display('qt-pyqt4')
 my_box_2 = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
 pyqt4_display.DisplayShape(my_box_2, update=True)
 
