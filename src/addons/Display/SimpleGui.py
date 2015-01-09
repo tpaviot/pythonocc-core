@@ -29,13 +29,13 @@ def get_backend():
     is much preferred
     """
     try:
-        from PySide import QtCore, QtGui
-        return 'pyside'
+        from PyQt4 import QtCore, QtGui
+        return 'qt-pyqt4'
     except:
         pass
     try:
-        from PyQt4 import QtCore, QtGui
-        return 'pyqt4'
+        from PySide import QtCore, QtGui
+        return 'qt-pyside'
     except:
         pass
     # Check wxPython
@@ -52,7 +52,7 @@ def init_display(backend_str=None, size=(1024, 768)):
 
     if not backend_str:
         USED_BACKEND = get_backend()
-    elif backend_str in ['wx', 'pyside', 'pyqt4']:
+    elif backend_str in ['wx', 'qt-pyside', 'qt-pyqt4']:
         USED_BACKEND = backend_str
     else:
         raise ValueError("You should pass either 'wx','qt' or 'tkinter' to the init_display function.")
@@ -104,15 +104,10 @@ def init_display(backend_str=None, size=(1024, 768)):
 
         def start_display():
             app.MainLoop()
-
     # Qt based simple GUI
-    elif USED_BACKEND in ['pyqt4', 'pyside']:
-        if USED_BACKEND == 'pyqt4':
-            from PyQt4 import QtCore, QtGui, QtOpenGL
-            from OCC.Display.pyqt4Display import qtViewer3d
-        elif USED_BACKEND == 'pyside':
-            from PySide import QtCore, QtGui, QtOpenGL
-            from OCC.Display.pysideDisplay import qtViewer3d
+    elif 'qt' in USED_BACKEND:
+        from OCC.Display.qtDisplay import qtViewer3d, get_qt_modules
+        QtCore, QtGui, QtOpenGL = get_qt_modules()
 
         class MainWindow(QtGui.QMainWindow):
             def __init__(self, *args):
