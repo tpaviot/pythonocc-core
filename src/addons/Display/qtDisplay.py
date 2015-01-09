@@ -25,7 +25,7 @@ from OCC.Display import OCCViewer
 HAVE_PYQT4 = False
 HAVE_PYSIDE = False
 try:
-    from PyQt4 import QtCore, QtGui, QtOpenGL
+    from PyQt4 import QtCossre, QtGui, QtOpenGL
     HAVE_PYQT4 = True
     print("Using PyQt4")
 except ImportError:
@@ -33,6 +33,11 @@ except ImportError:
     HAVE_PYSIDE = True
     print("PyQt4 not found - using PySide")
 
+if not HAVE_PYQT4 and not HAVE_PYSIDE:
+    # fail early
+    print( "neither PyQt4 or PySide was found"\
+           "either of which is required to use the Qt backend" )
+    sys.exit(status=1)
 
 def get_qt_modules():
     return QtCore, QtGui, QtOpenGL

@@ -25,7 +25,7 @@ from OCC.Display.qtDisplay import qtViewer3d, HAVE_PYQT4
 if HAVE_PYQT4:
     from PyQt4 import QtCore, QtGui
 else:
-    from pyside import QtCore, QtGui
+    from PySide import QtCore, QtGui
 
 try:
     from OpenGL.GL import glViewport, glMatrixMode, glOrtho, glLoadIdentity, GL_PROJECTION, GL_MODELVIEW
@@ -250,7 +250,10 @@ if __name__ == '__main__':
                 self.canva = GLWidget(self)
                 mainLayout = QtGui.QHBoxLayout()
                 mainLayout.addWidget(self.canva)
-                mainLayout.setMargin(0)
+                try:
+                    mainLayout.setMargin(0)
+                except AttributeError: # missing in Pyside
+                    pass
                 self.setLayout(mainLayout)
 
             def runTests(self):
