@@ -25,7 +25,7 @@ from OCC.Display import OCCViewer
 HAVE_PYQT4 = False
 HAVE_PYSIDE = False
 try:
-    from PyQt4 import QtCossre, QtGui, QtOpenGL
+    from PyQt4 import QtCore, QtGui, QtOpenGL
     HAVE_PYQT4 = True
     print("Using PyQt4")
 except ImportError:
