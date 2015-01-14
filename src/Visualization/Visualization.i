@@ -25,6 +25,7 @@
 %}
 
 %include ../SWIG_files/common/ExceptionCatcher.i
+%include "python/std_string.i"
 
 %typemap(out) float [ANY] {
   int i;
@@ -60,7 +61,8 @@ class Tesselator {
 	int ObjGetTriangleCount();
 	int ObjGetVertexCount();
 	int ObjGetNormalCount();
-	void ExportShapeToJSON(char *filename);
+    std::string ExportShapeToX3DIndexedFaceSet();
+	void ExportShapeToThreejs(char *filename);
 	void ExportShapeToX3D(char *filename, int diffR=1, int diffG=0, int diffB=0);
 	void SetDeviation(float aDeviation);
 };

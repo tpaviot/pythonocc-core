@@ -50,6 +50,14 @@ class TestTesselator(unittest.TestCase):
         Tesselator(a_sphere).ExportShapeToX3D("sphere.x3d")
         self.assert_(os.path.exists("sphere.x3d"))
 
+    def test_export_to_x3d_IndexedFaceSet(self):
+        """ 3rd test : export a sphere to an X3D IndexedFaceSet triangle mesh """
+        a_sphere = BRepPrimAPI_MakeBox(10., 10., 10.).Shape()
+        ifs = Tesselator(a_sphere).ExportShapeToX3DIndexedFaceSet()
+        self.assert_(ifs.startswith("<IndexedFaceSet"))
+        self.assert_("0 10 0" in ifs)  # a vertex
+        self.assert_("0 0 1" in ifs)  # a normal
+
 
 def suite():
     """ builds the test suite """

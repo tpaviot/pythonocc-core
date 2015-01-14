@@ -21,7 +21,7 @@ from OCC.BRepAlgoAPI import BRepAlgoAPI_Fuse
 from OCC.BRepBuilderAPI import BRepBuilderAPI_MakeEdge
 from OCC.BRepMesh import brepmesh_Mesh
 from OCC.TopExp import TopExp_Explorer
-from OCC.TopoDS import TopoDS_Compound, topods_Face
+from OCC.TopoDS import TopoDS_Compound, topods_Face, topods_Edge
 from OCC.TopAbs import TopAbs_FACE
 from OCC.TopLoc import TopLoc_Location
 from OCC.gp import gp_Pnt
