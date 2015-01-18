@@ -1,7 +1,7 @@
 #! /bin/sh
 set -e
 
-ncpus=4
+ncpus=6
 
 #####################
 # build for python3 #
