@@ -10,11 +10,12 @@ echo "Timestamp" && date
 echo "Configuring pythonocc for python3"
 mkdir cmake-build-py3
 cd cmake-build-py3
-cmake -DOCE_INCLUDE_PATH=/usr/include/oce \
-      -DOCE_LIB_PATH=/usr/lib \
-      -DPYTHON_EXECUTABLE=/usr/bin/python3.4 \
+cmake -DPYTHON_EXECUTABLE=/usr/bin/python3.4 \
       -DPYTHON_INCLUDE_DIR=/usr/include/python3.4m \
       -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.4m.so \
+      -DPYTHONOCC_WRAP_SMESH=TRUE \
+      -DSMESH_INCLUDE_PATH=/usr/local/include/smesh \
+      -DSMESH_LIB_PATH=/usr/local/lib \
       ..
 echo ""
 echo "Timestamp" && date
@@ -37,8 +38,9 @@ echo "Timestamp" && date
 echo "Configuring pythonocc for python2"
 mkdir cmake-build-py2
 cd cmake-build-py2
-cmake -DOCE_INCLUDE_PATH=/usr/include/oce \
-      -DOCE_LIB_PATH=/usr/lib \
+cmake -DPYTHONOCC_WRAP_SMESH=TRUE \
+      -DSMESH_INCLUDE_PATH=/usr/local/include/smesh \
+      -DSMESH_LIB_PATH=/usr/local/lib \
       ..
 echo ""
 echo "Timestamp" && date

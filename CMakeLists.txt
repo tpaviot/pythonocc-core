@@ -179,6 +179,10 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OCE_Modules.cmake)
 option_with_default(PYTHONOCC_WRAP_VISU "Compile Visualisation" TRUE)
 option_with_default(PYTHONOCC_WRAP_DATAEXCHANGE "Compile DataExchange wrapper" TRUE)
 option_with_default(PYTHONOCC_WRAP_OCAF "Compile OCE Application Framework wrapper" TRUE)
+option_with_default(PYTHONOCC_WRAP_SMESH "Smesh wrapper" FALSE)
+if (PYTHONOCC_WRAP_SMESH)
+  option_with_default(PYTHONOCC_WRAP_NETGEN "netgen wrapper" FALSE)
+endif()
 
 ###################
 # Wrapper Modules #
@@ -235,7 +239,7 @@ if(PYTHONOCC_WRAP_DATAEXCHANGE)
   endforeach(OCE_MODULE)
 endif(PYTHONOCC_WRAP_DATAEXCHANGE)
 
-########
+######
 # OCAF #
 ########
 if(PYTHONOCC_WRAP_OCAF)
@@ -246,6 +250,36 @@ if(PYTHONOCC_WRAP_OCAF)
     swig_link_libraries(${OCE_MODULE} ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES} ${OCE_OCAF_LIBRARIES})
   endforeach(OCE_MODULE)
 endif(PYTHONOCC_WRAP_OCAF)
+
+#########
+# Smesh #
+#########
+if(PYTHONOCC_WRAP_SMESH)
+  set(SMESH_INCLUDE_PATH /usr/local/include/smesh CACHE PATH "smesh include path")
+  set(SMESH_LIB_PATH /usr/local/lib CACHE PATH "smesh library path")
+  include_directories(${SMESH_INCLUDE_PATH})
+  set(SMESH_LIBRARIES SMESH)
+  link_directories(${SMESH_LIB_PATH})
+  # boost headers are required
+  find_path(BOOST_BUNDLED_DIR NAMES shared_ptr.hpp PATHS ${SMESH_INCLUDE_PATH}/boost)
+  if(BOOST_BUNDLED_DIR_FOUND)
+    message(STATUS "Using boost-1.52.0 headers bundled with SMESH")
+  else()
+    find_package(Boost)
+    if(Boost_FOUND)
+      message(STATUS "Using boost provided with the system")
+      include_directories(${Boost_INCLUDE_DIRS})
+    endif()
+  endif()
+  # starts wrapping
+  include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/SMESH_Modules.cmake)
+  foreach(SMESH_MODULE ${TOOLKIT_SMESH})
+    set(FILE ${SWIG_FILES_PATH}/${SMESH_MODULE}.i)
+    set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
+    swig_add_module(${SMESH_MODULE} python ${FILE})
+    swig_link_libraries(${SMESH_MODULE} ${PYTHON_LIBRARIES} ${OCE_MODEL_LIBRARIES} ${SMESH_LIBRARIES} ${OCE_DATAEXCHANGE_LIBRARIES})
+  endforeach(SMESH_MODULE)
+endif(PYTHONOCC_WRAP_SMESH)
 
 ################
 # Installation #
@@ -263,16 +297,16 @@ foreach(OCE_MODULE ${OCE_TOOLKIT_MODEL})
 	install(FILES ${BUILD_DIR}/_${OCE_MODULE}.${EXTENSION} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
 endforeach(OCE_MODULE)
 if(PYTHONOCC_WRAP_VISU)
-foreach(OCE_MODULE ${OCE_TOOLKIT_VISUALIZATION})
-    install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
-    install(FILES ${BUILD_DIR}/_${OCE_MODULE}.${EXTENSION} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
-endforeach(OCE_MODULE)
+  foreach(OCE_MODULE ${OCE_TOOLKIT_VISUALIZATION})
+      install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+      install(FILES ${BUILD_DIR}/_${OCE_MODULE}.${EXTENSION} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+  endforeach(OCE_MODULE)
 endif(PYTHONOCC_WRAP_VISU)
 if(PYTHONOCC_WRAP_DATAEXCHANGE)
-foreach(OCE_MODULE ${OCE_TOOLKIT_DATAEXCHANGE})
-    install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
-    install(FILES ${BUILD_DIR}/_${OCE_MODULE}.${EXTENSION} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
-endforeach(OCE_MODULE)
+  foreach(OCE_MODULE ${OCE_TOOLKIT_DATAEXCHANGE})
+      install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+      install(FILES ${BUILD_DIR}/_${OCE_MODULE}.${EXTENSION} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+  endforeach(OCE_MODULE)
 endif(PYTHONOCC_WRAP_DATAEXCHANGE)
 if(PYTHONOCC_WRAP_OCAF)
 foreach(OCE_MODULE ${OCE_TOOLKIT_OCAF})
@@ -281,10 +315,18 @@ foreach(OCE_MODULE ${OCE_TOOLKIT_OCAF})
 endforeach(OCE_MODULE)
 endif(PYTHONOCC_WRAP_OCAF)
 
+# install smesh wrapper
+if(PYTHONOCC_WRAP_SMESH)
+  foreach(SMESH_MODULE ${TOOLKIT_SMESH})
+    install(FILES ${BUILD_DIR}/${SMESH_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+    install(FILES ${BUILD_DIR}/_${SMESH_MODULE}.${EXTENSION} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+  endforeach(SMESH_MODULE)
+endif()
+
 # install third part modules
 if(PYTHONOCC_WRAP_VISU)
-install(FILES ${BUILD_DIR}/Visualization.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
-install(FILES ${BUILD_DIR}/_Visualization.${EXTENSION} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+  install(FILES ${BUILD_DIR}/Visualization.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
+  install(FILES ${BUILD_DIR}/_Visualization.${EXTENSION} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
 endif(PYTHONOCC_WRAP_VISU)
 
 # install GC
@@ -309,7 +351,7 @@ set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "pythonOCC")
 set(CPACK_PACKAGE_VENDOR "Thomas Paviot (tpaviot@gmail.com)")
 set(CPACK_SET_DESTDIR "ON")
 set(CPACK_PACKAGE_DESCRIPTION "A 3D CAD/CAM python package")
-set(CPACK_PACKAGE_VERSION "0.16.0")
+set(CPACK_PACKAGE_VERSION "0.16.1-dev")
 set(CPACK_PACKAGE_VERSION_MAJOR ${PYTHONOCC_VERSION_MAJOR})
 set(CPACK_PACKAGE_VERSION_MINOR ${PYTHONOCC_VERSION_MINOR})
 set(CPACK_PACKAGE_VERSION_PATCH ${PYTHONOCC_VERSION_PATCH})
