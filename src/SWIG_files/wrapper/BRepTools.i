@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -42,7 +41,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 /* end public enums declaration */
 
 %rename(breptools) BRepTools;
-%nodefaultctor BRepTools;
 class BRepTools {
 	public:
 		%feature("autodoc", "	* Returns in UMin, UMax, VMin, VMax the bounding values in the parametric space of F.

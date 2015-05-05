@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -50,7 +49,6 @@ enum GccEnt_Position {
 /* end public enums declaration */
 
 %rename(gccent) GccEnt;
-%nodefaultctor GccEnt;
 class GccEnt {
 	public:
 		%feature("autodoc", "	* Constructs a qualified line, so that the relative position to the circle or line of the solution computed by a construction algorithm using the qualified circle or line is not qualified, i.e. all solutions apply.

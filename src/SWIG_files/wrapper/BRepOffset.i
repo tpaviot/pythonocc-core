@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -72,7 +71,6 @@ enum BRepOffset_Type {
 /* end public enums declaration */
 
 %rename(brepoffset) BRepOffset;
-%nodefaultctor BRepOffset;
 class BRepOffset {
 	public:
 		%feature("autodoc", "	* returns the Offset surface computed from the surface <Surface> at an OffsetDistance <Offset>.  If possible, this method returns the real type of the surface ( e.g. An Offset of a plane is a plane).  If no particular case is detected, the returned surface will have the Type Geom_OffsetSurface.
@@ -821,7 +819,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor BRepOffset_Inter2d;
 class BRepOffset_Inter2d {
 	public:
 		%feature("autodoc", "	* Computes the intersections between the edges stored is AsDes as descendants of <F> . Intersections is computed between two edges if one of them is bound in NewEdges.
@@ -1662,7 +1659,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor BRepOffset_Tool;
 class BRepOffset_Tool {
 	public:
 		%feature("autodoc", "	* <V1> is the FirstVertex ,<V2> is the Last Vertex of <Edge> taking account the orientation of Edge.

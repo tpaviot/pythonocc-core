@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -2826,7 +2825,6 @@ def __del__(self):
     }
 };
 
-%nodefaultctor Interface_GeneralLib;
 class Interface_GeneralLib {
 	public:
 		%feature("autodoc", "	:param amodule:
@@ -5283,7 +5281,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor Interface_MapAsciiStringHasher;
 class Interface_MapAsciiStringHasher {
 	public:
 		%feature("autodoc", "	:param K:
@@ -5864,7 +5861,6 @@ def __del__(self):
     }
 };
 
-%nodefaultctor Interface_ReaderLib;
 class Interface_ReaderLib {
 	public:
 		%feature("autodoc", "	:param amodule:

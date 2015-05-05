@@ -317,7 +317,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Interface_Translates.hxx>
 #include<Interface_TypedValue.hxx>
 #include<Interface_UndefinedContent.hxx>
-#include<Interface_ValueInterpret.hxx>
 #include<Interface_ValueSatisfies.hxx>
 #include<Interface_VectorOfFileParameter.hxx>
 #include<Interface_Version.hxx>

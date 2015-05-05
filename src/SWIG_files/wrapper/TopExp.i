@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -43,7 +42,6 @@ typedef TopoDS_Iterator * TopExp_Stack;
 /* end public enums declaration */
 
 %rename(topexp) TopExp;
-%nodefaultctor TopExp;
 class TopExp {
 	public:
 		%feature("autodoc", "	* Tool to explore a topological data structure. Stores in the map <M> all the sub-shapes of <S> of type <T>. Warning: The map is not cleared at first.

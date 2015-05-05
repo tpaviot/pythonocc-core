@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -42,7 +41,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 /* end public enums declaration */
 
 %rename(selectbasics) SelectBasics;
-%nodefaultctor SelectBasics;
 class SelectBasics {
 	public:
 		%feature("autodoc", "	* Structure to provide all-in-one information on picking arguments for 'Matches' method of SelectBasics_SensitiveEntity.
@@ -70,7 +68,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor SelectBasics_BasicTool;
 class SelectBasics_BasicTool {
 	public:
 		%feature("autodoc", "	* returns True if The Segment {P1P2} is intersected by the segment {P3P4}

@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -813,7 +812,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor IntCurveSurface_TheHCurveTool;
 class IntCurveSurface_TheHCurveTool {
 	public:
 		%feature("autodoc", "	:param C:
@@ -1242,7 +1240,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor IntCurveSurface_ThePolygonToolOfHInter;
 class IntCurveSurface_ThePolygonToolOfHInter {
 	public:
 		%feature("autodoc", "	:param thePolygon:
@@ -1301,7 +1298,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor IntCurveSurface_ThePolyhedronToolOfHInter;
 class IntCurveSurface_ThePolyhedronToolOfHInter {
 	public:
 		%feature("autodoc", "	:param thePolyh:

@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -193,7 +192,6 @@ enum Message_StatusType {
 /* end public enums declaration */
 
 %rename(message) Message;
-%nodefaultctor Message;
 class Message {
 	public:
 		%feature("autodoc", "	* Defines default messenger for OCCT applications. This is global static instance of the messenger. By default, it contains single printer directed to cout. It can be customized according to the application needs.
@@ -832,7 +830,6 @@ def __del__(self):
     }
 };
 
-%nodefaultctor Message_MsgFile;
 class Message_MsgFile {
 	public:
 		%feature("autodoc", "	* Load message file <theFileName> from directory <theDirName> or its sub-directory

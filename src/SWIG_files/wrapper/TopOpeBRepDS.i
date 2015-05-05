@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -69,7 +68,6 @@ enum TopOpeBRepDS_Kind {
 /* end public enums declaration */
 
 %rename(topopebrepds) TopOpeBRepDS;
-%nodefaultctor TopOpeBRepDS;
 class TopOpeBRepDS {
 	public:
 		%feature("autodoc", "	* IN OU ON UN
@@ -5523,7 +5521,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor TopOpeBRepDS_InterferenceTool;
 class TopOpeBRepDS_InterferenceTool {
 	public:
 		%feature("autodoc", "	:param T:
@@ -7047,7 +7044,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor TopOpeBRepDS_TOOL;
 class TopOpeBRepDS_TOOL {
 	public:
 		%feature("autodoc", "	:param HDS:

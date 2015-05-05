@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -54,7 +53,6 @@ enum GCPnts_DeflectionType {
 
 /* end public enums declaration */
 
-%nodefaultctor GCPnts_AbscissaPoint;
 class GCPnts_AbscissaPoint {
 	public:
 		%feature("autodoc", "	* Computes the length of the Curve <C>.

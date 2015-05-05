@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -161,7 +160,6 @@ enum V3d_TypeOfZclipping {
 /* end public enums declaration */
 
 %rename(v3d) V3d;
-%nodefaultctor V3d;
 class V3d {
 	public:
 		%feature("autodoc", "	* Determines the orientation vector corresponding to the predefined orientation type.

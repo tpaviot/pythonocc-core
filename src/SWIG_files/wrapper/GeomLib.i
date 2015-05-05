@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -50,7 +49,6 @@ enum GeomLib_InterpolationErrors {
 /* end public enums declaration */
 
 %rename(geomlib) GeomLib;
-%nodefaultctor GeomLib;
 class GeomLib {
 	public:
 		%feature("autodoc", "	* Computes the curve 3d from package Geom corresponding to curve 2d from package Geom2d, on the plan defined with the local coordinate system Position.
@@ -776,7 +774,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor GeomLib_Tool;
 class GeomLib_Tool {
 	public:
 		%feature("autodoc", "	* Extracts the parameter of a 3D point lying on a 3D curve or at a distance less than the tolerance value.

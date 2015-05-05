@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -69,7 +68,6 @@ enum TopOpeBRep_TypeLineCurve {
 /* end public enums declaration */
 
 %rename(topopebrep) TopOpeBRep;
-%nodefaultctor TopOpeBRep;
 class TopOpeBRep {
 	public:
 		%feature("autodoc", "	* Prints the name of <TLC> as a String on the Stream <S> and returns <S>.
@@ -984,7 +982,6 @@ def __del__(self):
     }
 };
 
-%nodefaultctor TopOpeBRep_FFTransitionTool;
 class TopOpeBRep_FFTransitionTool {
 	public:
 		%feature("autodoc", "	:param P:
@@ -1721,7 +1718,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor TopOpeBRep_GeomTool;
 class TopOpeBRep_GeomTool {
 	public:
 		%feature("autodoc", "	* Make the DS curve <C> and the pcurves <PC1,PC2> from intersection line <L> lying on shapes <S1,S2>. <min,max> = <L> bounds
@@ -2898,7 +2894,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor TopOpeBRep_PointGeomTool;
 class TopOpeBRep_PointGeomTool {
 	public:
 		%feature("autodoc", "	:param IP:

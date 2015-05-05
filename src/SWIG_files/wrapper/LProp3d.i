@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -131,7 +130,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor LProp3d_CurveTool;
 class LProp3d_CurveTool {
 	public:
 		%feature("autodoc", "	* Computes the point <P> of parameter <U> on the HCurve <C>.
@@ -354,7 +352,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor LProp3d_SurfaceTool;
 class LProp3d_SurfaceTool {
 	public:
 		%feature("autodoc", "	* Computes the point <P> of parameter <U> and <V> on the HSurface <S>.

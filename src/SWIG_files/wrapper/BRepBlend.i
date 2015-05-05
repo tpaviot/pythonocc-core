@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -698,7 +697,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor BRepBlend_BlendTool;
 class BRepBlend_BlendTool {
 	public:
 		%feature("autodoc", "	* Projects the point P on the arc C. If the methods returns Standard_True, the projection is successful, and Paramproj is the parameter on the arc of the projected point, Dist is the distance between P and the curve.. If the method returns Standard_False, Param proj and Dist are not significant.
@@ -1146,7 +1144,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor BRepBlend_HCurve2dTool;
 class BRepBlend_HCurve2dTool {
 	public:
 		%feature("autodoc", "	:param C:
@@ -1332,7 +1329,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor BRepBlend_HCurveTool;
 class BRepBlend_HCurveTool {
 	public:
 		%feature("autodoc", "	:param C:

@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -247,7 +246,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor AppCont_FunctionTool;
 class AppCont_FunctionTool {
 	public:
 		%feature("autodoc", "	* returns the first parameter of the Function.
@@ -357,7 +355,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor AppCont_FunctionTool2d;
 class AppCont_FunctionTool2d {
 	public:
 		%feature("autodoc", "	* returns the first parameter of the Function.

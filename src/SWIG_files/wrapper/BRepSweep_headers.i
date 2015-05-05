@@ -229,7 +229,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Quantity_Coefficient.hxx>
 #include<Quantity_CoefficientOfExpansion.hxx>
 #include<Quantity_Color.hxx>
-#include<Quantity_Color_1.hxx>
 #include<Quantity_ColorDefinitionError.hxx>
 #include<Quantity_Concentration.hxx>
 #include<Quantity_Conductivity.hxx>

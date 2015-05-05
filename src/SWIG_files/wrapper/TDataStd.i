@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -49,7 +48,6 @@ enum TDataStd_RealEnum {
 /* end public enums declaration */
 
 %rename(tdatastd) TDataStd;
-%nodefaultctor TDataStd;
 class TDataStd {
 	public:
 		%feature("autodoc", "	* Appends to <anIDList> the list of the attributes IDs of this package. CAUTION: <anIDList> is NOT cleared before use.

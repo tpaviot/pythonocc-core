@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -1719,7 +1718,6 @@ def __del__(self):
     }
 };
 
-%nodefaultctor Extrema_Curve2dTool;
 class Extrema_Curve2dTool {
 	public:
 		%feature("autodoc", "	:param C:
@@ -1936,7 +1934,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor Extrema_CurveTool;
 class Extrema_CurveTool {
 	public:
 		%feature("autodoc", "	:param C:

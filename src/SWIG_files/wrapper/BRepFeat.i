@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -87,7 +86,6 @@ enum BRepFeat_StatusError {
 /* end public enums declaration */
 
 %rename(brepfeat) BRepFeat;
-%nodefaultctor BRepFeat;
 class BRepFeat {
 	public:
 		%feature("autodoc", "	:param S:

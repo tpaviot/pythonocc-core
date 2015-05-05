@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -1365,7 +1364,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor BOPDS_PassKeyMapHasher;
 class BOPDS_PassKeyMapHasher {
 	public:
 		%feature("autodoc", "	:param aPKey:
@@ -1731,7 +1729,6 @@ def __del__(self):
     }
 };
 
-%nodefaultctor BOPDS_PaveMapHasher;
 class BOPDS_PaveMapHasher {
 	public:
 		%feature("autodoc", "	:param aPave:
@@ -2077,7 +2074,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor BOPDS_Tools;
 class BOPDS_Tools {
 	public:
 		%feature("autodoc", "	* Converts the conmbination of two types of shape <theT1>,<theT2> to the one integer value, that is returned

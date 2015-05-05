@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -210,7 +209,6 @@ enum AIS_TypeOfPlane {
 /* end public enums declaration */
 
 %rename(ais) AIS;
-%nodefaultctor AIS;
 class AIS {
 	public:
 		%feature("autodoc", "	* Returns the nearest point in a shape. This is used by several classes in calculation of dimensions.
@@ -2569,7 +2567,6 @@ def __del__(self):
     }
 };
 
-%nodefaultctor AIS_GraphicTool;
 class AIS_GraphicTool {
 	public:
 		%feature("autodoc", "	:param aDrawer:

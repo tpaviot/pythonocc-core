@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -42,7 +41,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 /* end public enums declaration */
 
 %rename(breplprop) BRepLProp;
-%nodefaultctor BRepLProp;
 class BRepLProp {
 	public:
 		%feature("autodoc", "	* Computes the regularity at the junction between C1 and C2. The point u1 on C1 and the point u2 on C2 must be confused. tl and ta are the linear and angular tolerance used two compare the derivative.
@@ -182,7 +180,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor BRepLProp_CurveTool;
 class BRepLProp_CurveTool {
 	public:
 		%feature("autodoc", "	* Computes the point <P> of parameter <U> on the curve <C>.
@@ -405,7 +402,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor BRepLProp_SurfaceTool;
 class BRepLProp_SurfaceTool {
 	public:
 		%feature("autodoc", "	* Computes the point <P> of parameter <U> and <V> on the Surface <S>.

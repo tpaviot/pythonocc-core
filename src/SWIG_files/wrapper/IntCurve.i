@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -915,7 +914,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor IntCurve_PConicTool;
 class IntCurve_PConicTool {
 	public:
 		%feature("autodoc", "	:param C:
@@ -985,7 +983,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor IntCurve_ProjectOnPConicTool;
 class IntCurve_ProjectOnPConicTool {
 	public:
 		%feature("autodoc", "	* Returns the parameter V of the point on the parametric curve corresponding to the Point Pnt. The Correspondance between Pnt and the point P(V) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. Tol is the tolerance on the distance between a point and the parametrised curve. In that case, no bounds are given. The research of the rigth parameter has to be made on the natural parametric domain of the curve.

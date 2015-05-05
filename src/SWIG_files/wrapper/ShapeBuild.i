@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -42,7 +41,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 /* end public enums declaration */
 
 %rename(shapebuild) ShapeBuild;
-%nodefaultctor ShapeBuild;
 class ShapeBuild {
 	public:
 		%feature("autodoc", "	* Rebuilds a shape with substitution of some components Returns a Geom_Surface which is the Plane XOY (Z positive) This allows to consider an UV space homologous to a 3D space, with this support surface
@@ -67,7 +65,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor ShapeBuild_Edge;
 class ShapeBuild_Edge {
 	public:
 		%feature("autodoc", "	* Copy edge and replace one or both its vertices to a given one(s). Vertex V1 replaces FORWARD vertex, and V2 - REVERSED, as they are found by TopoDS_Iterator. If V1 or V2 is NULL, the original vertex is taken
@@ -404,7 +401,6 @@ def __del__(self):
     }
 };
 
-%nodefaultctor ShapeBuild_Vertex;
 class ShapeBuild_Vertex {
 	public:
 		%feature("autodoc", "	* Combines new vertex from two others. This new one is the smallest vertex which comprises both of the source vertices. The function takes into account the positions and tolerances of the source vertices. The tolerance of the new vertex will be equal to the minimal tolerance that is required to comprise source vertices multiplied by tolFactor (in order to avoid errors because of discreteness of calculations).

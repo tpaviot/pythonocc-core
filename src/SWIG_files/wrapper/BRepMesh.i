@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -79,7 +78,6 @@ enum BRepMesh_Status {
 /* end public enums declaration */
 
 %rename(brepmesh) BRepMesh;
-%nodefaultctor BRepMesh;
 class BRepMesh {
 	public:
 		%feature("autodoc", "	* call to incremental mesh.
@@ -2698,7 +2696,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor BRepMesh_ElemHasherOfDataStructureOfDelaun;
 class BRepMesh_ElemHasherOfDataStructureOfDelaun {
 	public:
 		%feature("autodoc", "	:param K:
@@ -3572,7 +3569,6 @@ def __del__(self):
     }
 };
 
-%nodefaultctor BRepMesh_HeapSortIndexedVertexOfDelaun;
 class BRepMesh_HeapSortIndexedVertexOfDelaun {
 	public:
 		%feature("autodoc", "	:param TheArray:
@@ -3599,7 +3595,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor BRepMesh_HeapSortVertexOfDelaun;
 class BRepMesh_HeapSortVertexOfDelaun {
 	public:
 		%feature("autodoc", "	:param TheArray:
@@ -4352,7 +4347,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor BRepMesh_LinkHasherOfDataStructureOfDelaun;
 class BRepMesh_LinkHasherOfDataStructureOfDelaun {
 	public:
 		%feature("autodoc", "	:param K:
@@ -4844,7 +4838,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor BRepMesh_NodeHasherOfDataStructureOfDelaun;
 class BRepMesh_NodeHasherOfDataStructureOfDelaun {
 	public:
 		%feature("autodoc", "	:param K:
@@ -5499,7 +5492,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor BRepMesh_VertexHasher;
 class BRepMesh_VertexHasher {
 	public:
 		%feature("autodoc", "	:param K:

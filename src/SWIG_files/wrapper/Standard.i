@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -110,7 +109,6 @@ enum Standard_WayOfLife {
 /* end public enums declaration */
 
 %rename(standard) Standard;
-%nodefaultctor Standard;
 class Standard {
 	public:
 		%feature("autodoc", "	* Allocates memory blocks aSize - bytes to allocate
@@ -586,7 +584,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor Standard_Storable;
 class Standard_Storable {
 	public:
 		%feature("autodoc", "	:rtype: void

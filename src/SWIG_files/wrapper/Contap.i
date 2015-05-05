@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -305,7 +304,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor Contap_HContTool;
 class Contap_HContTool {
 	public:
 		%feature("autodoc", "	:param S:
@@ -465,7 +463,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor Contap_HCurve2dTool;
 class Contap_HCurve2dTool {
 	public:
 		%feature("autodoc", "	:param C:
@@ -2767,7 +2764,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor Contap_TheSurfPropsOfContour;
 class Contap_TheSurfPropsOfContour {
 	public:
 		%feature("autodoc", "	:param S:

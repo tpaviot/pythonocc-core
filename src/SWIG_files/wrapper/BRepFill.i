@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -54,7 +53,6 @@ enum BRepFill_TypeOfContact {
 /* end public enums declaration */
 
 %rename(brepfill) BRepFill;
-%nodefaultctor BRepFill;
 class BRepFill {
 	public:
 		%feature("autodoc", "	* Computes a ruled surface between two edges.
@@ -3000,7 +2998,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor BRepFill_MultiLineTool;
 class BRepFill_MultiLineTool {
 	public:
 		%feature("autodoc", "	* returns the first parameter of the Line.

@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -48,7 +47,6 @@ enum LocOpe_Operation {
 /* end public enums declaration */
 
 %rename(locope) LocOpe;
-%nodefaultctor LocOpe;
 class LocOpe {
 	public:
 		%feature("autodoc", "	* Returns Standard_True when the wire <W> is closed on the face <OnF>.

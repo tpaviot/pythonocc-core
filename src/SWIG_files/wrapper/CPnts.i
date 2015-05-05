@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -42,7 +41,6 @@ typedef Standard_Real ( * CPnts_RealFunction ) ( const Standard_Real , 	 	 	 	 	
 /* public enums */
 /* end public enums declaration */
 
-%nodefaultctor CPnts_AbscissaPoint;
 class CPnts_AbscissaPoint {
 	public:
 		%feature("autodoc", "	* Computes the length of the Curve <C>.

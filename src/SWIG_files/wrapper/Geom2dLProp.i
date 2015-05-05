@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -182,7 +181,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor Geom2dLProp_Curve2dTool;
 class Geom2dLProp_Curve2dTool {
 	public:
 		%feature("autodoc", "	* Computes the point <P> of parameter <U> on the curve <C>.

@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -51,7 +50,6 @@ enum TopOpeBRepTool_OutCurveType {
 /* end public enums declaration */
 
 %rename(topopebreptool) TopOpeBRepTool;
-%nodefaultctor TopOpeBRepTool;
 class TopOpeBRepTool {
 	public:
 		%feature("autodoc", "	* Fuse edges (in a wire) of a shape where we have useless vertex. In case face <FF> is built on UV-non-connexed wires (with the two closing edges FORWARD and REVERSED, in spite of one only), we find out the faulty edge, add the faulty shapes (edge,wire,face) to <MshNOK>. <FF> is a face descendant of <F>. <MWisOld>(wire) = 1 if wire is wire of <F>  0 wire results from <F>'s wire splitted. returns false if purge fails
@@ -168,7 +166,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor TopOpeBRepTool_AncestorsTool;
 class TopOpeBRepTool_AncestorsTool {
 	public:
 		%feature("autodoc", "	* same as package method TopExp::MapShapeListOfShapes()
@@ -3156,7 +3153,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor TopOpeBRepTool_ShapeTool;
 class TopOpeBRepTool_ShapeTool {
 	public:
 		%feature("autodoc", "	* Returns the tolerance of the shape <S>. If the shape <S> is Null, returns 0.
@@ -3430,7 +3426,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor TopOpeBRepTool_TOOL;
 class TopOpeBRepTool_TOOL {
 	public:
 		%feature("autodoc", "	:param sub:

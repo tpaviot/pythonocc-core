@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -51,7 +50,6 @@ enum  {
 /* end public enums declaration */
 
 %rename(tdf) TDF;
-%nodefaultctor TDF;
 class TDF {
 	public:
 		%feature("autodoc", "	* Returns ID '00000000-0000-0000-0000-000000000000', sometimes used as null ID.
@@ -1456,7 +1454,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor TDF_ClosureTool;
 class TDF_ClosureTool {
 	public:
 		%feature("autodoc", "	* Builds the transitive closure of label and attribute sets into <aDataSet>.
@@ -1509,7 +1506,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor TDF_ComparisonTool;
 class TDF_ComparisonTool {
 	public:
 		%feature("autodoc", "	* Compares <aSourceDataSet> with <aTargetDataSet>, updating <aRelocationTable> with labels and attributes found in both sets.
@@ -1677,7 +1673,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor TDF_CopyTool;
 class TDF_CopyTool {
 	public:
 		%feature("autodoc", "	* Copy <aSourceDataSet> with using and updating <aRelocationTable>. This method ignores target attributes privilege over source ones.
@@ -4564,7 +4559,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor TDF_LabelMapHasher;
 class TDF_LabelMapHasher {
 	public:
 		%feature("autodoc", "	* Returns a HasCode value for the Key <K> in the range 0..Upper.
@@ -5929,7 +5923,6 @@ def __del__(self):
     }
 };
 
-%nodefaultctor TDF_Tool;
 class TDF_Tool {
 	public:
 		%feature("autodoc", "	* Returns the number of labels of the tree, including <aLabel>. aLabel is also included in this figure. This information is useful in setting the size of an array.

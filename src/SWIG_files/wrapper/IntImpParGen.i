@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -42,7 +41,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 /* end public enums declaration */
 
 %rename(intimppargen) IntImpParGen;
-%nodefaultctor IntImpParGen;
 class IntImpParGen {
 	public:
 		%feature("autodoc", "	* Template class for an implicit curve. Template class for a tool on a parameterised curve. Math function, instantiated inside the Intersector. Tool used by the package IntCurve and IntImpParGen

@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -74,7 +73,6 @@ enum Storage_SolveMode {
 /* end public enums declaration */
 
 %rename(storage) Storage;
-%nodefaultctor Storage;
 class Storage {
 	public:
 		%feature("autodoc", "	* returns the version of Storage's read/write routines
@@ -2641,7 +2639,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor Storage_MapPSDHasher;
 class Storage_MapPSDHasher {
 	public:
 		%feature("autodoc", "	:param K:

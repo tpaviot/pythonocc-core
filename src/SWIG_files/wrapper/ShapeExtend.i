@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -70,7 +69,6 @@ enum ShapeExtend_Status {
 /* end public enums declaration */
 
 %rename(shapeextend) ShapeExtend;
-%nodefaultctor ShapeExtend;
 class ShapeExtend {
 	public:
 		%feature("autodoc", "	* Inits using of ShapeExtend. Currently, loads messages output by ShapeHealing algorithms.

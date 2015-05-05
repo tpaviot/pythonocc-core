@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -43,7 +42,6 @@ typedef Standard_Boolean ( * ShapeProcess_OperFunc ) ( const Handle_ShapeProcess
 /* end public enums declaration */
 
 %rename(shapeprocess) ShapeProcess;
-%nodefaultctor ShapeProcess;
 class ShapeProcess {
 	public:
 		%feature("autodoc", "	* Registers operator to make it visible for Performer
@@ -532,7 +530,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor ShapeProcess_OperLibrary;
 class ShapeProcess_OperLibrary {
 	public:
 		%feature("autodoc", "	* Registers all the operators

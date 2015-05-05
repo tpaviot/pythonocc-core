@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -42,7 +41,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 /* end public enums declaration */
 
 %rename(geom2dgcc) Geom2dGcc;
-%nodefaultctor Geom2dGcc;
 class Geom2dGcc {
 	public:
 		%feature("autodoc", "	* Constructs such a qualified curve that the relative position of the solution computed by a construction algorithm using the qualified curve to the circle or line is not qualified, i.e. all solutions apply. Warning Obj is an adapted curve, i.e. an object which is an interface between: - the services provided by a 2D curve from the package Geom2d, - and those required on the curve by a computation algorithm. The adapted curve is created in the following way: Handle_Geom2d_Curve mycurve = ... ; Geom2dAdaptor_Curve Obj ( mycurve ) ; The qualified curve is then constructed with this object: Geom2dGcc_QualifiedCurve myQCurve = Geom2dGcc::Unqualified(Obj);
@@ -756,7 +754,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor Geom2dGcc_CurveTool;
 class Geom2dGcc_CurveTool {
 	public:
 		%feature("autodoc", "	:param C:
@@ -2445,7 +2442,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor Geom2dGcc_MyCurveTool;
 class Geom2dGcc_MyCurveTool {
 	public:
 		%feature("autodoc", "	:param C:

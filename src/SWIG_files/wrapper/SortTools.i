@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -41,7 +40,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 /* public enums */
 /* end public enums declaration */
 
-%nodefaultctor SortTools_HeapSortOfInteger;
 class SortTools_HeapSortOfInteger {
 	public:
 		%feature("autodoc", "	:param TheArray:
@@ -68,7 +66,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor SortTools_HeapSortOfReal;
 class SortTools_HeapSortOfReal {
 	public:
 		%feature("autodoc", "	:param TheArray:
@@ -95,7 +92,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor SortTools_QuickSortOfInteger;
 class SortTools_QuickSortOfInteger {
 	public:
 		%feature("autodoc", "	:param TheArray:
@@ -122,7 +118,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor SortTools_QuickSortOfReal;
 class SortTools_QuickSortOfReal {
 	public:
 		%feature("autodoc", "	:param TheArray:
@@ -149,7 +144,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor SortTools_ShellSortOfInteger;
 class SortTools_ShellSortOfInteger {
 	public:
 		%feature("autodoc", "	:param TheArray:
@@ -176,7 +170,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor SortTools_ShellSortOfReal;
 class SortTools_ShellSortOfReal {
 	public:
 		%feature("autodoc", "	:param TheArray:
@@ -203,7 +196,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor SortTools_StraightInsertionSortOfInteger;
 class SortTools_StraightInsertionSortOfInteger {
 	public:
 		%feature("autodoc", "	:param TheArray:
@@ -230,7 +222,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor SortTools_StraightInsertionSortOfReal;
 class SortTools_StraightInsertionSortOfReal {
 	public:
 		%feature("autodoc", "	:param TheArray:

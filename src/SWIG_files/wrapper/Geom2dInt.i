@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -287,7 +286,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor Geom2dInt_Geom2dCurveTool;
 class Geom2dInt_Geom2dCurveTool {
 	public:
 		%feature("autodoc", "	:param C:
@@ -981,7 +979,6 @@ def __del__(self):
     }
 };
 
-%nodefaultctor Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter;
 class Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter {
 	public:
 };
@@ -1574,7 +1571,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor Geom2dInt_TheProjPCurOfGInter;
 class Geom2dInt_TheProjPCurOfGInter {
 	public:
 		%feature("autodoc", "	:param C:

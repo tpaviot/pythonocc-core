@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -83,7 +82,6 @@ enum gp_TrsfForm {
 /* end public enums declaration */
 
 %rename(gp) gp;
-%nodefaultctor gp;
 class gp {
 	public:
 		%feature("autodoc", "	* Parabola. Method of package gp In geometric computations, defines the tolerance criterion used to determine when two numbers can be considered equal. Many class functions use this tolerance criterion, for example, to avoid division by zero in geometric computations. In the documentation, tolerance criterion is always referred to as gp::Resolution().

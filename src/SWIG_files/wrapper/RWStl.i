@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -42,7 +41,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 /* end public enums declaration */
 
 %rename(rwstl) RWStl;
-%nodefaultctor RWStl;
 class RWStl {
 	public:
 		%feature("autodoc", "	* write the meshing in a file following the  binary format of an STL file.  Returns false if the cannot be opened;

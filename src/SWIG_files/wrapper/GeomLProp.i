@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -42,7 +41,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 /* end public enums declaration */
 
 %rename(geomlprop) GeomLProp;
-%nodefaultctor GeomLProp;
 class GeomLProp {
 	public:
 		%feature("autodoc", "	* Computes the regularity at the junction between C1 and C2. The booleans r1 and r2 are true if the curves must be taken reversed. The point u1 on C1 and the point u2 on C2 must be confused. tl and ta are the linear and angular tolerance used two compare the derivative.
@@ -190,7 +188,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor GeomLProp_CurveTool;
 class GeomLProp_CurveTool {
 	public:
 		%feature("autodoc", "	* Computes the point <P> of parameter <U> on the curve <C>.
@@ -413,7 +410,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor GeomLProp_SurfaceTool;
 class GeomLProp_SurfaceTool {
 	public:
 		%feature("autodoc", "	* Computes the point <P> of parameter <U> and <V> on the Surface <S>.
