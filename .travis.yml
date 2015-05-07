@@ -1,23 +1,33 @@
 language: cpp
 compiler:
-  - gcc
+ # - gcc
   - clang
 before_install:
-# following ppa contains oce-0.16.0
-   - sudo add-apt-repository "deb http://ppa.launchpad.net/freecad-maintainers/oce-release/ubuntu precise main" -y
-   - sudo apt-get update -q
-   - sudo apt-get install liboce-ocaf-dev oce-draw
-   - sudo apt-get install python-wxgtk2.8
-   - sudo python -c "import wx"
-   - sudo apt-get install python-qt4 python-qt4-gl
-   - sudo python -c "from PyQt4 import QtGui, QtCore, QtOpenGL"
-   - sudo apt-get install python-pyside
-   - sudo python -c "from PySide import QtGui, QtCore, QtOpenGL"
+# first downlod/install oce-0.16.1
+  - sudo apt-get update
+  - sudo apt-get install tcl8.5-dev tk8.5-dev libgl2ps-dev libfreeimage-dev
+  - wget https://github.com/tpaviot/oce/archive/OCE-0.16.1.tar.gz
+  - tar -xvf OCE-0.16.1.tar.gz > OCE-0.16.1-filelist.txt
+  - cd oce-OCE-0.16.1
+  - mkdir cmake-build
+  - cd cmake-build
+  - sh ../../.travis.build-oce.sh
+  - sudo make install > oce-installed-files.txt
+  - cd ../..
+#   - sudo add-apt-repository "deb http://ppa.launchpad.net/freecad-maintainers/oce-release/ubuntu precise main" -y
+#   - sudo apt-get update -q
+#   - sudo apt-get install liboce-ocaf-dev oce-draw
+  - sudo apt-get install python-wxgtk2.8
+  - sudo python -c "import wx"
+  - sudo apt-get install python-qt4 python-qt4-gl
+  - sudo python -c "from PyQt4 import QtGui, QtCore, QtOpenGL"
+  - sudo apt-get install python-pyside
+  - sudo python -c "from PySide import QtGui, QtCore, QtOpenGL"
 # and this one python3.4 for ubuntu precise
-   - sudo add-apt-repository "deb http://ppa.launchpad.net/fkrull/deadsnakes/ubuntu precise main" -y
-   - sudo apt-get update
-   - sudo apt-get install python3.4
-   - sudo apt-get install python3.4-dev
+  - sudo add-apt-repository "deb http://ppa.launchpad.net/fkrull/deadsnakes/ubuntu precise main" -y
+  - sudo apt-get update
+  - sudo apt-get install python3.4
+  - sudo apt-get install python3.4-dev
 before_script:
   - wget http://prdownloads.sourceforge.net/swig/swig-2.0.10.tar.gz
 # untar swig files generates thousands of lines. Redirect stdout stream
@@ -25,7 +35,8 @@ before_script:
   - tar -xvf swig-2.0.10.tar.gz > swig-2.0.10-filelist.txt
   - cd swig-2.0.10
   - ./configure
-  - make -j6 && sudo make install
+  - make -j6 > swig-build-log.txt
+  - sudo make install
   - cd ..
   - swig -version
 script: ./.travis.build.sh
