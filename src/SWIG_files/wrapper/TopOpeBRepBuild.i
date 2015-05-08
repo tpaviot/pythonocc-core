@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -36,8 +35,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include TopOpeBRepBuild_headers.i
 
 /* typedefs */
-typedef TopOpeBRepBuild_Builder * TopOpeBRepBuild_PBuilder;
 typedef TopOpeBRepBuild_GTopo * TopOpeBRepBuild_PGTopo;
+typedef TopOpeBRepBuild_Builder * TopOpeBRepBuild_PBuilder;
 typedef TopOpeBRepBuild_WireEdgeSet * TopOpeBRepBuild_PWireEdgeSet;
 /* end typedefs declaration */
 
@@ -914,7 +913,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor TopOpeBRepBuild_GTool;
 class TopOpeBRepBuild_GTool {
 	public:
 		%feature("autodoc", "	:param s1:
@@ -3158,7 +3156,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor TopOpeBRepBuild_Tools;
 class TopOpeBRepBuild_Tools {
 	public:
 		%feature("autodoc", "	:param iP:
@@ -3409,7 +3406,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor TopOpeBRepBuild_Tools2d;
 class TopOpeBRepBuild_Tools2d {
 	public:
 		%feature("autodoc", "	:param aWire:

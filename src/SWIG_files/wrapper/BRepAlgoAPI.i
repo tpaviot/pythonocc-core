@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -42,7 +41,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 /* end public enums declaration */
 
 %rename(brepalgoapi) BRepAlgoAPI;
-%nodefaultctor BRepAlgoAPI;
 class BRepAlgoAPI {
 	public:
 		%feature("autodoc", "	* Check shapes on validity for boolean operation. Dump arguments and result of boolean operation in the file specified by path.

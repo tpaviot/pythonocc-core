@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -42,7 +41,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 /* end public enums declaration */
 
 %rename(shapecustom) ShapeCustom;
-%nodefaultctor ShapeCustom;
 class ShapeCustom {
 	public:
 		%feature("autodoc", "	* Applies modifier to shape and checks sharing in the case assemblies.
@@ -365,7 +363,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor ShapeCustom_Curve2d;
 class ShapeCustom_Curve2d {
 	public:
 		%feature("autodoc", "	* Check if poleses is in the plane with given precision Returns false if no.

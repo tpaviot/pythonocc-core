@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -88,7 +87,6 @@ enum IFSelect_ReturnStatus {
 /* end public enums declaration */
 
 %rename(ifselect) IFSelect;
-%nodefaultctor IFSelect;
 class IFSelect {
 	public:
 		%feature("autodoc", "	* Saves the state of a WorkSession from IFSelect, by using a SessionFile from IFSelect. Returns True if Done, False in case of Error on Writing. <file> gives the name of the File to be produced (this avoids to export the class SessionFile).
@@ -1566,7 +1564,6 @@ def __del__(self):
     }
 };
 
-%nodefaultctor IFSelect_Functions;
 class IFSelect_Functions {
 	public:
 		%feature("autodoc", "	* Takes the name of an entity, either as argument, or (if <name> is empty) on keybord, and returns the entity name can be a label or a number (in alphanumeric), it is searched by NumberFromLabel from WorkSession. If <name> doesn't match en entity, a Null Handle is returned

@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -64,7 +63,6 @@ enum CSLib_NormalStatus {
 /* end public enums declaration */
 
 %rename(cslib) CSLib;
-%nodefaultctor CSLib;
 class CSLib {
 	public:
 		%feature("autodoc", "	* The following functions computes the normal to a surface inherits FunctionWithDerivative from math Computes the normal direction of a surface as the cross product between D1U and D1V. If D1U has null length or D1V has null length or D1U and D1V are parallel the normal is undefined. To check that D1U and D1V are colinear the sinus of the angle between D1U and D1V is computed and compared with SinTol. The normal is computed if Status == Done else the Status gives the reason why the computation has failed.

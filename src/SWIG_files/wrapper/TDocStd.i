@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -43,7 +42,6 @@ typedef TDocStd_XLink * TDocStd_XLinkPtr;
 /* end public enums declaration */
 
 %rename(tdocstd) TDocStd;
-%nodefaultctor TDocStd;
 class TDocStd {
 	public:
 		%feature("autodoc", "	* specific GUID of this package ============================= Appends to <anIDList> the list of the attributes IDs of this package. CAUTION: <anIDList> is NOT cleared before use.

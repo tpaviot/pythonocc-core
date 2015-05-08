@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -42,7 +41,6 @@ typedef Adaptor2d_Curve2d * Adaptor2d_Curve2dPtr;
 /* public enums */
 /* end public enums declaration */
 
-%nodefaultctor Adaptor2d_Curve2d;
 class Adaptor2d_Curve2d {
 	public:
 		%feature("autodoc", "	:rtype: void

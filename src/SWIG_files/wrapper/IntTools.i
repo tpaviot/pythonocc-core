@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -42,7 +41,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 /* end public enums declaration */
 
 %rename(inttools) IntTools;
-%nodefaultctor IntTools;
 class IntTools {
 	public:
 		%feature("autodoc", "	* returns the length of the edge;
@@ -986,44 +984,6 @@ def __del__(self):
 %}
 
 %extend IntTools_CurveRangeLocalizeData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%nodefaultctor IntTools_CurveRangeSampleMapHasher;
-class IntTools_CurveRangeSampleMapHasher {
-	public:
-		%feature("autodoc", "	* Returns a HasCode value for the Key <K> in the range 0..Upper.
-
-	:param K:
-	:type K: IntTools_CurveRangeSample &
-	:param Upper:
-	:type Upper: Standard_Integer
-	:rtype: int
-") HashCode;
-		static Standard_Integer HashCode (const IntTools_CurveRangeSample & K,const Standard_Integer Upper);
-		%feature("autodoc", "	* Returns True when the two keys are the same. Two same keys must have the same hashcode, the contrary is not necessary.
-
-	:param S1:
-	:type S1: IntTools_CurveRangeSample &
-	:param S2:
-	:type S2: IntTools_CurveRangeSample &
-	:rtype: bool
-") IsEqual;
-		static Standard_Boolean IsEqual (const IntTools_CurveRangeSample & S1,const IntTools_CurveRangeSample & S2);
-};
-
-
-%feature("shadow") IntTools_CurveRangeSampleMapHasher::~IntTools_CurveRangeSampleMapHasher %{
-def __del__(self):
-	try:
-		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_CurveRangeSampleMapHasher {
 	void _kill_pointed() {
 		delete $self;
 	}
@@ -3273,7 +3233,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor IntTools_QuickSort;
 class IntTools_QuickSort {
 	public:
 		%feature("autodoc", "	:param TheArray:
@@ -3300,7 +3259,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor IntTools_QuickSortRange;
 class IntTools_QuickSortRange {
 	public:
 		%feature("autodoc", "	:param TheArray:
@@ -5046,7 +5004,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor IntTools_SurfaceRangeSampleMapHasher;
 class IntTools_SurfaceRangeSampleMapHasher {
 	public:
 		%feature("autodoc", "	* Returns a HasCode value for the Key <K> in the range 0..Upper.
@@ -5084,7 +5041,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor IntTools_Tools;
 class IntTools_Tools {
 	public:
 		%feature("autodoc", "	* Computes distance between vertex V1 and vertex V2, if the distance is less than sum of vertex tolerances returns zero, otherwise returns negative value

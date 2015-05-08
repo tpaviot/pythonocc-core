@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -379,7 +378,6 @@ enum Aspect_XAtom {
 /* end public enums declaration */
 
 %rename(aspect) Aspect;
-%nodefaultctor Aspect;
 class Aspect {
 	public:
 		%feature("autodoc", "	* Returns the format size according to the default LENGTH unit of the required format <aFOSP>. Returns more the normalized format name.

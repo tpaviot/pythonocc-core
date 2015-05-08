@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -42,7 +41,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 /* end public enums declaration */
 
 %rename(shapeconstruct) ShapeConstruct;
-%nodefaultctor ShapeConstruct;
 class ShapeConstruct {
 	public:
 		%feature("autodoc", "	* Tool for wire triangulation
@@ -298,7 +296,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor ShapeConstruct_Curve;
 class ShapeConstruct_Curve {
 	public:
 		%feature("autodoc", "	* Modifies a curve in order to make its bounds confused with given points. Works only on lines and B-Splines, returns True in this case, else returns False. For line considers both bounding points, for B-Splines only specified. Warning : Does not check if curve should be reversed

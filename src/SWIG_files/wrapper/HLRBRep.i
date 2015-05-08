@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -42,7 +41,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 /* end public enums declaration */
 
 %rename(hlrbrep) HLRBRep;
-%nodefaultctor HLRBRep;
 class HLRBRep {
 	public:
 		%feature("autodoc", "	:param ec:
@@ -393,7 +391,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor HLRBRep_BCurveTool;
 class HLRBRep_BCurveTool {
 	public:
 		%feature("autodoc", "	:param C:
@@ -1083,7 +1080,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor HLRBRep_CLPropsATool;
 class HLRBRep_CLPropsATool {
 	public:
 		%feature("autodoc", "	* Computes the point <P> of parameter <U> on the Curve from HLRBRep <C>.
@@ -1479,7 +1475,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor HLRBRep_CurveTool;
 class HLRBRep_CurveTool {
 	public:
 		%feature("autodoc", "	:param C:
@@ -2334,7 +2329,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor HLRBRep_EdgeFaceTool;
 class HLRBRep_EdgeFaceTool {
 	public:
 		%feature("autodoc", "	:param F:
@@ -2380,7 +2374,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor HLRBRep_EdgeIList;
 class HLRBRep_EdgeIList {
 	public:
 		%feature("autodoc", "	* Add the interference <I> to the list <IL>.
@@ -3599,7 +3592,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor HLRBRep_LineTool;
 class HLRBRep_LineTool {
 	public:
 		%feature("autodoc", "	:param C:
@@ -4934,7 +4926,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor HLRBRep_SLPropsATool;
 class HLRBRep_SLPropsATool {
 	public:
 		%feature("autodoc", "	* Computes the point <P> of 	parameter <U> and <V> on the Surface <A>.
@@ -5564,7 +5555,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor HLRBRep_ShapeToHLR;
 class HLRBRep_ShapeToHLR {
 	public:
 		%feature("autodoc", "	* Creates a DataStructure containing the OutLiner <S> depending on the projector <P> and nbIso.
@@ -5597,7 +5587,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor HLRBRep_SurfaceTool;
 class HLRBRep_SurfaceTool {
 	public:
 		%feature("autodoc", "	:param S:
@@ -6886,7 +6875,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor HLRBRep_ThePolygonToolOfInterCSurf;
 class HLRBRep_ThePolygonToolOfInterCSurf {
 	public:
 		%feature("autodoc", "	:param thePolygon:
@@ -6945,7 +6933,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor HLRBRep_ThePolyhedronToolOfInterCSurf;
 class HLRBRep_ThePolyhedronToolOfInterCSurf {
 	public:
 		%feature("autodoc", "	:param thePolyh:
@@ -7039,7 +7026,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor HLRBRep_TheProjPCurOfCInter;
 class HLRBRep_TheProjPCurOfCInter {
 	public:
 		%feature("autodoc", "	:param C:

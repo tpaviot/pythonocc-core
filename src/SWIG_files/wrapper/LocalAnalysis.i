@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -50,7 +49,6 @@ enum LocalAnalysis_StatusErrorType {
 /* end public enums declaration */
 
 %rename(localanalysis) LocalAnalysis;
-%nodefaultctor LocalAnalysis;
 class LocalAnalysis {
 	public:
 		%feature("autodoc", "	* This class compute s and gives tools to check the local continuity between two points situated on 2 curves) This fonction gives informations about a variable CurveContinuity

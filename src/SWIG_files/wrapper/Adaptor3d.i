@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -44,7 +43,6 @@ typedef Adaptor3d_CurveOnSurface * Adaptor3d_CurveOnSurfacePtr;
 /* public enums */
 /* end public enums declaration */
 
-%nodefaultctor Adaptor3d_Curve;
 class Adaptor3d_Curve {
 	public:
 		%feature("autodoc", "	:rtype: void
@@ -805,7 +803,6 @@ def __del__(self):
     }
 };
 
-%nodefaultctor Adaptor3d_HSurfaceTool;
 class Adaptor3d_HSurfaceTool {
 	public:
 		%feature("autodoc", "	:param S:
@@ -1531,7 +1528,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor Adaptor3d_Surface;
 class Adaptor3d_Surface {
 	public:
 		%feature("autodoc", "	:rtype: void

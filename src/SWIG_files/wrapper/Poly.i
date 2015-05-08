@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -46,7 +45,6 @@ typedef NCollection_List <Handle_Poly_Triangulation> Poly_ListOfTriangulation;
 /* end public enums declaration */
 
 %rename(poly) Poly;
-%nodefaultctor Poly;
 class Poly {
 	public:
 		%feature("autodoc", "	* Computes and stores the link from nodes to triangles and from triangles to neighbouring triangles. This tool is obsolete, replaced by Poly_CoherentTriangulation Algorithm to make minimal loops in a graph Join several triangulations to one new triangulation object. The new triangulation is just a mechanical sum of input triangulations, without node sharing. UV coordinates are dropped in the result.

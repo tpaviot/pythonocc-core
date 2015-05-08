@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -205,7 +204,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor MeshVS_ColorHasher;
 class MeshVS_ColorHasher : public TColStd_MapIntegerHasher {
 	public:
 		%feature("autodoc", "	:param K:
@@ -4677,7 +4675,6 @@ def __del__(self):
     }
 };
 
-%nodefaultctor MeshVS_Tool;
 class MeshVS_Tool {
 	public:
 		%feature("autodoc", "	* Creates fill area aspect with values from Drawer according to keys from DrawerAttribute
@@ -4782,7 +4779,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor MeshVS_TwoColorsHasher;
 class MeshVS_TwoColorsHasher {
 	public:
 		%feature("autodoc", "	:param K:
@@ -4843,7 +4839,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor MeshVS_TwoNodesHasher;
 class MeshVS_TwoNodesHasher {
 	public:
 		%feature("autodoc", "	:param K:

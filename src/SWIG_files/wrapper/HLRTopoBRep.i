@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -41,7 +40,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 /* public enums */
 /* end public enums declaration */
 
-%nodefaultctor HLRTopoBRep_DSFiller;
 class HLRTopoBRep_DSFiller {
 	public:
 		%feature("autodoc", "	* Stores in <DS> the outlines of <S> using the current outliner and stores the isolines in <DS> using a Hatcher.
@@ -643,7 +641,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor HLRTopoBRep_FaceIsoLiner;
 class HLRTopoBRep_FaceIsoLiner {
 	public:
 		%feature("autodoc", "	:param FI:

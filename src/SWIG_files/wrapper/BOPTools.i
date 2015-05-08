@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -52,7 +51,6 @@ typedef NCollection_Map <BOPTools_Set , BOPTools_SetMapHasher> BOPTools_MapOfSet
 /* end public enums declaration */
 
 %rename(boptools) BOPTools;
-%nodefaultctor BOPTools;
 class BOPTools {
 	public:
 		%feature("autodoc", "	:param S:
@@ -106,7 +104,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor BOPTools_AlgoTools;
 class BOPTools_AlgoTools {
 	public:
 		%feature("autodoc", "	:param aV1:
@@ -658,7 +655,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor BOPTools_AlgoTools2D;
 class BOPTools_AlgoTools2D {
 	public:
 		%feature("autodoc", "	* Compute P-Curve for the edge <aE> on the face <aF>
@@ -853,7 +849,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor BOPTools_AlgoTools3D;
 class BOPTools_AlgoTools3D {
 	public:
 		%feature("autodoc", "	* Make the edge <aSp> seam edge for the face <aF>
@@ -1263,7 +1258,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor BOPTools_SetMapHasher;
 class BOPTools_SetMapHasher {
 	public:
 		%feature("autodoc", "	:param aSet:

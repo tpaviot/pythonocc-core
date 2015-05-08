@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -43,7 +42,6 @@ typedef TopTools_LocationSet * TopTools_LocationSetPtr;
 /* end public enums declaration */
 
 %rename(toptools) TopTools;
-%nodefaultctor TopTools;
 class TopTools {
 	public:
 		%feature("autodoc", "	* A set of Shapes. Can be dump, wrote or read. Dumps the topological structure of <Sh> on the stream <S>.
@@ -4338,7 +4336,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor TopTools_OrientedShapeMapHasher;
 class TopTools_OrientedShapeMapHasher {
 	public:
 		%feature("autodoc", "	* Returns a HasCode value for the Key <K> in the range 0..Upper.
@@ -4573,7 +4570,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor TopTools_ShapeMapHasher;
 class TopTools_ShapeMapHasher {
 	public:
 		%feature("autodoc", "	* Returns a HasCode value for the Key <K> in the range 0..Upper.

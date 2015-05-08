@@ -487,7 +487,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Interface_Translates.hxx>
 #include<Interface_TypedValue.hxx>
 #include<Interface_UndefinedContent.hxx>
-#include<Interface_ValueInterpret.hxx>
 #include<Interface_ValueSatisfies.hxx>
 #include<Interface_VectorOfFileParameter.hxx>
 #include<Interface_Version.hxx>
@@ -611,7 +610,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Quantity_Coefficient.hxx>
 #include<Quantity_CoefficientOfExpansion.hxx>
 #include<Quantity_Color.hxx>
-#include<Quantity_Color_1.hxx>
 #include<Quantity_ColorDefinitionError.hxx>
 #include<Quantity_Concentration.hxx>
 #include<Quantity_Conductivity.hxx>

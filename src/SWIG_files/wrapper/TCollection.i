@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -50,7 +49,6 @@ enum TCollection_Side {
 /* end public enums declaration */
 
 %rename(tcollection) TCollection;
-%nodefaultctor TCollection;
 class TCollection {
 	public:
 		%feature("autodoc", "	* Returns a prime number greater than <I> suitable to dimension a Map. When <I> becomes great there is a limit on the result (today the limit is around 1 000 000). This is not a limit of the number of items but a limit in the number of buckets. i.e. there will be more collisions in the map.
@@ -2482,7 +2480,6 @@ def __del__(self):
     }
 };
 
-%nodefaultctor TCollection_PrivCompareOfInteger;
 class TCollection_PrivCompareOfInteger {
 	public:
 		%feature("autodoc", "	:param Left:
@@ -2523,7 +2520,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor TCollection_PrivCompareOfReal;
 class TCollection_PrivCompareOfReal {
 	public:
 		%feature("autodoc", "	:param Left:

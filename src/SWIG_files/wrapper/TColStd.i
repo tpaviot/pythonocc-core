@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -8132,7 +8131,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor TColStd_MapIntegerHasher;
 class TColStd_MapIntegerHasher {
 	public:
 		%feature("autodoc", "	:param K:
@@ -8596,7 +8594,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor TColStd_MapRealHasher;
 class TColStd_MapRealHasher {
 	public:
 		%feature("autodoc", "	:param K:
@@ -8630,7 +8627,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor TColStd_MapTransientHasher;
 class TColStd_MapTransientHasher {
 	public:
 		%feature("autodoc", "	:param K:

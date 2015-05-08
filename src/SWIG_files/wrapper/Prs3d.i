@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -73,7 +72,6 @@ enum Prs3d_TypeOfLinePicking {
 /* end public enums declaration */
 
 %rename(prs3d) Prs3d;
-%nodefaultctor Prs3d;
 class Prs3d {
 	public:
 		%feature("autodoc", "	* draws an arrow at a given location, with respect to a given direction.
@@ -1158,7 +1156,6 @@ def __del__(self):
     }
 };
 
-%nodefaultctor Prs3d_Root;
 class Prs3d_Root {
 	public:
 		%feature("autodoc", "	* Returns the current group of primititves inside graphic objects in the display. A group also contains the attributes whose ranges are limited to the primitives in it.
@@ -1293,7 +1290,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor Prs3d_Arrow;
 class Prs3d_Arrow : public Prs3d_Root {
 	public:
 		%feature("autodoc", "	* Defines the representation of the arrow defined by the location point aLocation, the direction aDirection and the length aLength. The angle anAngle defines the angle of opening of the arrow head. The presentation object aPresentation stores the information defined in this framework.
@@ -2378,7 +2374,6 @@ def __del__(self):
     }
 };
 
-%nodefaultctor Prs3d_Text;
 class Prs3d_Text : public Prs3d_Root {
 	public:
 		%feature("autodoc", "	* Defines the display of the text aText at the point AttachmentPoint. The drawer aDrawer specifies the display attributes which texts will have. The presentation object aPresentation stores the information defined in this framework. static void Draw (const Handle_Prs3d_Presentation& aPresentation, const Handle_Prs3d_TextAspect& anAspect, const TCollection_ExtendedString& aText, const gp_Pnt& AttachmentPoint);

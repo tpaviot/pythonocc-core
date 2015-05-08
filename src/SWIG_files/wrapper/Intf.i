@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -49,7 +48,6 @@ enum Intf_PIType {
 /* end public enums declaration */
 
 %rename(intf) Intf;
-%nodefaultctor Intf;
 class Intf {
 	public:
 		%feature("autodoc", "	* Computes the interference between two polygons in 2d. Result : points of intersections and zones of tangence. Computes the interference between two polygon in 3d. Section points, common perpendicular and projections. Computes the interference between a polygon or a straight line and a polyhedron. Points of intersection and zones of tangence. Compute the interference between two polyhedron. Points of intersection , polylines of intersection and zones of tangence. Give the plane equation of the triangle <P1> <P2> <P3>.
@@ -318,7 +316,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor Intf_SectionLine;
 class Intf_SectionLine {
 	public:
 		%feature("autodoc", "	* Returns number of points in this SectionLine.
@@ -445,7 +442,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor Intf_SectionPoint;
 class Intf_SectionPoint {
 	public:
 		%feature("autodoc", "	* Returns the location of the SectionPoint.
@@ -1219,7 +1215,6 @@ def __del__(self):
     }
 };
 
-%nodefaultctor Intf_TangentZone;
 class Intf_TangentZone {
 	public:
 		%feature("autodoc", "	* Returns number of SectionPoint in this TangentZone.

@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -48,7 +47,6 @@ enum UnitsAPI_SystemUnits {
 /* end public enums declaration */
 
 %rename(unitsapi) UnitsAPI;
-%nodefaultctor UnitsAPI;
 class UnitsAPI {
 	public:
 		%feature("autodoc", "	* Converts the current unit value to the local system units value. Example: CurrentToLS(1.,'LENGTH') returns 1000. if the current length unit is meter and LocalSystem is MDTV.

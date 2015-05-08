@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -47,7 +46,6 @@ enum BRepAlgo_CheckStatus {
 /* end public enums declaration */
 
 %rename(brepalgo) BRepAlgo;
-%nodefaultctor BRepAlgo;
 class BRepAlgo {
 	public:
 		%feature("autodoc", "	* this method makes a wire whose edges are C1 from a Wire whose edges could be G1. It removes a vertex between G1 edges. Option can be G1 or C1.
@@ -1742,7 +1740,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor BRepAlgo_Tool;
 class BRepAlgo_Tool {
 	public:
 		%feature("autodoc", "	* Remove the non valid part of an offsetshape 1 - Remove all the free boundary and the faces connex to such edges. 2 - Remove all the shapes not valid in the result (according to the side of offseting) in this verion only the first point is implemented.

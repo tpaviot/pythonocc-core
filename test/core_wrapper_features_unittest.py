@@ -36,6 +36,8 @@ from OCC.TopExp import TopExp_Explorer
 from OCC.TopAbs import TopAbs_FACE
 from OCC.GProp import GProp_GProps
 from OCC.BRepGProp import brepgprop_LinearProperties
+from OCC.ShapeAnalysis import ShapeAnalysis_Curve
+from OCC.BRep import BRep_Builder
 
 
 class TestWrapperFeatures(unittest.TestCase):
@@ -359,6 +361,14 @@ class TestWrapperFeatures(unittest.TestCase):
         brepgprop_LinearProperties(inherited_edge, g1)
         length = g1.Mass()
         self.assertEqual(length, 50.)
+
+    def test_default_constructor_DEFINE_STANDARD_ALLOC(self):
+        ''' OCE classes the defines standard alllocator can be instanciated
+        if they're not abstract nor define any protected or private
+        constructor '''
+        BRep_Builder()
+        TopoDS_Builder()
+        ShapeAnalysis_Curve()
 
 
 def suite():

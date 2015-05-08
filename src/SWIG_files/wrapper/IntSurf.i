@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -57,7 +56,6 @@ enum IntSurf_TypeTrans {
 /* end public enums declaration */
 
 %rename(intsurf) IntSurf;
-%nodefaultctor IntSurf;
 class IntSurf {
 	public:
 		%feature("autodoc", "	* Computes the transition of the intersection point between the two lines. TgFirst is the tangent vector of the first line. TgSecond is the tangent vector of the second line. Normal is the direction used to orientate the cross product TgFirst^TgSecond. TFirst is the transition of the point on the first line. TSecond is the transition of the point on the second line.
@@ -215,7 +213,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor IntSurf_InteriorPointTool;
 class IntSurf_InteriorPointTool {
 	public:
 		%feature("autodoc", "	* Returns the 3d coordinates of the starting point.
@@ -727,7 +724,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor IntSurf_PathPointTool;
 class IntSurf_PathPointTool {
 	public:
 		%feature("autodoc", "	* Returns the 3d coordinates of the starting point.
@@ -1095,7 +1091,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor IntSurf_QuadricTool;
 class IntSurf_QuadricTool {
 	public:
 		%feature("autodoc", "	* Returns the value of the function.

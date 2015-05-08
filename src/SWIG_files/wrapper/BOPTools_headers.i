@@ -235,7 +235,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<IntTools_Curve.hxx>
 #include<IntTools_CurveRangeLocalizeData.hxx>
 #include<IntTools_CurveRangeSample.hxx>
-#include<IntTools_CurveRangeSampleMapHasher.hxx>
 #include<IntTools_DataMapIteratorOfDataMapOfCurveSampleBox.hxx>
 #include<IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox.hxx>
 #include<IntTools_DataMapNodeOfDataMapOfCurveSampleBox.hxx>

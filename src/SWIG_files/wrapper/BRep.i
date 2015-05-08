@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -1848,7 +1847,6 @@ def __del__(self):
     }
 };
 
-%nodefaultctor BRep_Tool;
 class BRep_Tool {
 	public:
 		%feature("autodoc", "	* Returns <True> if S if flaged Closed, if S is a Solid,Shell or Compound returns <True> is S has no free boundaries.

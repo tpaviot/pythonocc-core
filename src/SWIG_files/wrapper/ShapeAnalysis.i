@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -43,7 +42,6 @@ typedef NCollection_UBTree <Standard_Integer , Bnd_Box> ShapeAnalysis_BoxBndTree
 /* end public enums declaration */
 
 %rename(shapeanalysis) ShapeAnalysis;
-%nodefaultctor ShapeAnalysis;
 class ShapeAnalysis {
 	public:
 		%feature("autodoc", "	* Returns the outer wire on the face <Face>. This is replacement of the method BRepTools::OuterWire until it works badly. Returns the first wire oriented as outer according to FClass2d_Classifier. If none, last wire is returned.
@@ -362,7 +360,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor ShapeAnalysis_Curve;
 class ShapeAnalysis_Curve {
 	public:
 		%feature("autodoc", "	* Projects a Point on a Curve. Computes the projected point and its parameter on the curve. <preci> is used as 3d precision (hence, 0 will produce reject unless exact confusion). The number of iterations is limited. If AdjustToEnds is True, point will be adjusted to the end of the curve if distance is less than <preci> Returned value is the distance between the given point and computed one.
@@ -1575,7 +1572,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor ShapeAnalysis_Geom;
 class ShapeAnalysis_Geom {
 	public:
 		%feature("autodoc", "	* Builds a plane out of a set of points in array Returns in <dmax> the maximal distance between the produced plane and given points
@@ -2306,7 +2302,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor ShapeAnalysis_Shell;
 class ShapeAnalysis_Shell {
 	public:
 		%feature("autodoc", "	* Clears data about loaded shells and performed checks

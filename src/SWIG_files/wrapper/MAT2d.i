@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -1928,7 +1927,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor MAT2d_MapBiIntHasher;
 class MAT2d_MapBiIntHasher {
 	public:
 		%feature("autodoc", "	:param Key1:

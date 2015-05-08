@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -42,7 +41,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 /* end public enums declaration */
 
 %rename(stlmesh) StlMesh;
-%nodefaultctor StlMesh;
 class StlMesh {
 	public:
 		%feature("autodoc", "	* Sequence of meshes Make a merge of two Mesh and returns a new Mesh. Very useful if you want to merge partMesh and CheckSurfaceMesh for example

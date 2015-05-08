@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -42,7 +41,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 /* end public enums declaration */
 
 %rename(bsplslib) BSplSLib;
-%nodefaultctor BSplSLib;
 class BSplSLib {
 	public:
 		%feature("autodoc", "	* this is a one dimensional function typedef void (*EvaluatorFunction) ( Standard_Integer // Derivative Request Standard_Real * // StartEnd[2][2]  // [0] = U  // [1] = V  // [0] = start  // [1] = end Standard_Real // UParameter Standard_Real // VParamerer Standard_Real & // Result Standard_Integer &) ;// Error Code serves to multiply a given vectorial BSpline by a function Computes the derivatives of a ratio of two-variables functions x(u,v) / w(u,v) at orders <N,M>, x(u,v) is a vector in dimension <3>.  <Ders> is an array containing the values of the input derivatives from 0 to Min(<N>,<UDeg>), 0 to Min(<M>,<VDeg>). For orders higher than <UDeg,VDeg> the input derivatives are assumed to be 0.  The <Ders> is a 2d array and the dimension of the lines is always (<VDeg>+1) * (<3>+1), even if <N> is smaller than <Udeg> (the derivatives higher than <N> are not used).  Content of <Ders> :  x(i,j)[k] means : the composant k of x derivated (i) times in u and (j) times in v.  ... First line ...  x[1],x[2],...,x[3],w x(0,1)[1],...,x(0,1)[3],w(1,0) ... x(0,VDeg)[1],...,x(0,VDeg)[3],w(0,VDeg)  ... Then second line ...  x(1,0)[1],...,x(1,0)[3],w(1,0) x(1,1)[1],...,x(1,1)[3],w(1,1) ... x(1,VDeg)[1],...,x(1,VDeg)[3],w(1,VDeg)  ...  ... Last line ...  x(UDeg,0)[1],...,x(UDeg,0)[3],w(UDeg,0) x(UDeg,1)[1],...,x(UDeg,1)[3],w(UDeg,1) ... x(Udeg,VDeg)[1],...,x(UDeg,VDeg)[3],w(Udeg,VDeg) If <All> is false, only the derivative at order <N,M> is computed. <RDers> is an array of length 3 which will contain the result :  x(1)/w , x(2)/w , ... derivated <N> <M> times  If <All> is true multiples derivatives are computed. All the derivatives (i,j) with 0 <= i+j <= Max(N,M) are computed. <RDers> is an array of length 3 * (<N>+1) * (<M>+1) which will contains :  x(1)/w , x(2)/w , ... x(1)/w , x(2)/w , ... derivated <0,1> times x(1)/w , x(2)/w , ... derivated <0,2> times ... x(1)/w , x(2)/w , ... derivated <0,N> times  x(1)/w , x(2)/w , ... derivated <1,0> times x(1)/w , x(2)/w , ... derivated <1,1> times ... x(1)/w , x(2)/w , ... derivated <1,N> times  x(1)/w , x(2)/w , ... derivated <N,0> times .... Warning: <RDers> must be dimensionned properly.

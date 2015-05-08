@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -388,7 +387,6 @@ def __del__(self):
 		delete $self;
 	}
 };
-%nodefaultctor BOPInt_Tools;
 class BOPInt_Tools {
 	public:
 		%feature("autodoc", "	:param theC:

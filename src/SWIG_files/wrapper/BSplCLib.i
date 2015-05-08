@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %}
 
 %include ../common/CommonIncludes.i
-%include ../common/StandardDefines.i
 %include ../common/ExceptionCatcher.i
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
@@ -53,7 +52,6 @@ enum BSplCLib_MultDistribution {
 /* end public enums declaration */
 
 %rename(bsplclib) BSplCLib;
-%nodefaultctor BSplCLib;
 class BSplCLib {
 	public:
 		%feature("autodoc", "	* This routine searches the position of the real  value X in the ordered set of real values XX. The elements in the table XX are either  monotonically increasing or monotonically  decreasing. The input value Iloc is used to initialize the  algorithm : if Iloc is outside of the bounds  [XX.Lower(), -- XX.Upper()] the bisection algorithm  is used else the routine searches from a previous  known position by increasing steps then converges  by bisection. This routine is used to locate a knot value in a  set of knots.
