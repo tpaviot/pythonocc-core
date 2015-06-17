@@ -69,7 +69,16 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
         self.setAutoFillBackground(False)
 
     def GetHandle(self):
-        return int(self.winId())
+        ### with PySide, self.winId() does not return an integer
+        if HAVE_PYSIDE:
+            pycobject_hwnd = self.winId()
+            import ctypes
+            ctypes.pythonapi.PyCObject_AsVoidPtr.restype = ctypes.c_void_p
+            ctypes.pythonapi.PyCObject_AsVoidPtr.argtypes = [ctypes.py_object]
+            win_id = ctypes.pythonapi.PyCObject_AsVoidPtr(pycobject_hwnd)
+        elif HAVE_PYQT4:
+            win_id = self.winId()
+        return win_id
 
     def resizeEvent(self, event):
         if self._inited:
