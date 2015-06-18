@@ -71,11 +71,14 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
     def GetHandle(self):
         ### with PySide, self.winId() does not return an integer
         if HAVE_PYSIDE:
-            pycobject_hwnd = self.winId()
-            import ctypes
-            ctypes.pythonapi.PyCObject_AsVoidPtr.restype = ctypes.c_void_p
-            ctypes.pythonapi.PyCObject_AsVoidPtr.argtypes = [ctypes.py_object]
-            win_id = ctypes.pythonapi.PyCObject_AsVoidPtr(pycobject_hwnd)
+            if sys.platform == "win32":
+                pycobject_hwnd = self.winId()
+                import ctypes
+                ctypes.pythonapi.PyCObject_AsVoidPtr.restype = ctypes.c_void_p
+                ctypes.pythonapi.PyCObject_AsVoidPtr.argtypes = [ctypes.py_object]
+                win_id = ctypes.pythonapi.PyCObject_AsVoidPtr(pycobject_hwnd)
+            else:
+                win_id = self.winId()
         elif HAVE_PYQT4:
             win_id = self.winId()
         return win_id
