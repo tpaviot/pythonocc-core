@@ -49,6 +49,17 @@ from OCC.Graphic3d import Graphic3d_NOM_NEON_GNC
 from OCC.V3d import V3d_ZBUFFER
 from OCC.Aspect import Aspect_TOTP_RIGHT_LOWER
 
+#
+# On Windows, the CSF_GraphicShr env variable must be set up
+# and point to the TKOpenGl.dll library.
+#
+import sys
+if sys.platform == "win32":  # all of this is win specific
+    # if the CSF_GraphicShr variable is not set
+    # it should point to the TKOpenGl.dll library that is shipped with pythonocc binary
+    if not "CSF_GraphicShr" in os.environ:
+        os.environ["CSF_GraphicShr"] = os.path.join(os.path.dirname(OCC.Aspect.__file__), "TKOpenGL.dll")
+
 
 def color(r, g, b):
     return Quantity_Color(r, g, b, Quantity_TOC_RGB)
