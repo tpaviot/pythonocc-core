@@ -112,7 +112,7 @@ class HTMLHeader(object):
 
 
 class HTMLBody(object):
-    def __init__(self, background_color='#000000'):
+    def __init__(self, background_color):
         self._background_color = background_color
 
     def get_str(self):
@@ -126,8 +126,10 @@ class HTMLBody(object):
 
 class X3DExporter(object):
     """ A class for exporting a TopoDS_Shape to an x3d file """
-    def __init__(self, shape):
+    def __init__(self, shape, vertex_shader=None, fragment_shader=None):
         self._shape = shape
+        self._vs = vertex_shader
+        self._fs = fragment_shader
         # the list of indexed face sets that compose the shape
         self._indexed_face_sets = []
 
@@ -140,7 +142,6 @@ class X3DExporter(object):
             current_face = explorer.Current()
             faces.append(current_face)
             explorer.Next()
-        print(len(faces))
         # loop over faces
         for face in faces:
             face_tesselator = Tesselator(face)
@@ -157,17 +158,22 @@ class X3DExporter(object):
         </head>
         <Scene>
         """)
-        # write part
-        #f.write('''
-        #    <Group DEF="Omni Wheel Hub">
-        #    <Group>
-        #''')
         for indexed_face_set in self._indexed_face_sets:
-            f.write('''<Shape>
-            <Appearance DEF="2">
-                <Material diffuseColor='0.65 0.65 0.65' shininess='0.9' specularColor='1 1 1'></Material>
-            </Appearance>
-            ''')
+            f.write("<Shape><Appearance>\n")
+            #
+            # set Material or shader
+            #
+            if self._vs is None and self._fs is None:
+                f.write("<Material diffuseColor='0.65 0.65 0.65' shininess='0.9' specularColor='1 1 1'></Material>\n")
+            else:  # set shaders
+                f.write('<ComposedShader><ShaderPart type="VERTEX" style="display:none;">\n')
+                f.write(self._vs)
+                f.write('</ShaderPart>\n')
+                f.write('<ShaderPart type="FRAGMENT" style="display:none;">\n')
+                f.write(self._fs)
+                f.write('</ShaderPart></ComposedShader>\n')
+            f.write('</Appearance>\n')
+            # export triangles
             f.write(indexed_face_set)
             f.write("</Shape>\n")
         f.write('</Scene>\n</x3d>\n')
@@ -187,13 +193,14 @@ class X3DomRenderer(object):
         self._html_filename = "x3dom_topods_shape.html"
         self._background_color = background_color
 
-    def DisplayShape(self, shape):
-        x3d_exporter = X3DExporter(shape)
+    def DisplayShape(self, shape, vertex_shader=None, fragment_shader=None):
+        x3d_exporter = X3DExporter(shape, vertex_shader, fragment_shader)
         x3d_exporter.compute()
         x3d_exporter.write_to_file("shape.x3d")
         self.GenerateHTMLFile()
         # open the file in the browser
-        _path = "file:///{0}".format(os.path.join(os.getcwd(), self._html_filename))
+        _path = "file:///{0}".format(os.path.join(os.getcwd(),
+                                     self._html_filename))
         webbrowser.open_new_tab(_path)
 
     def GenerateHTMLFile(self):
