@@ -1,3 +1,27 @@
+==========================
+Version 0.16.1 - June 2015
+
+This release requires oce-0.16.0 or oce-0.16.1
+
+* WebGL upgrades and improvements, for both Three.js and x3dom, new webgl examples
+
+* used deque in garbage collector rather than python lists
+
+* pyside fix on Windows
+
+* qt viewer improvements
+
+* added classic bottle example
+
+* wrapper fix for C++ const Standard_Integer & parameters
+
+* wrapper fix for default values ;
+
+* minor cmake fixes/improvements
+
+* new wrapper for : MeshVS, OCAF STEP and IGES 
+
+==============================
 Version 0.16.0 - November 2014
 
 This release requires oce-0.16.0
