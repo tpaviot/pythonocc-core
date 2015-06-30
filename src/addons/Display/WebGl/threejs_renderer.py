@@ -258,7 +258,7 @@ class ThreejsRenderer(object):
         print("done in %f s." % (t1-t0))
         print("Exporting tesselation to JSON ...")
         t2 = time()
-        tess.ExportShapeToJSON(self._js_filename)
+        tess.ExportShapeToThreejs(self._js_filename)
         t3 = time()
         print("done in %f s." % (t3-t2))
         print("Generating HTML stream ...")
