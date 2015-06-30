@@ -22,7 +22,6 @@ from OCC.Visualization import Tesselator
 from OCC.TopExp import TopExp_Explorer
 from OCC.TopAbs import TopAbs_FACE
 import OCC
-from time import time
 import os
 
 # <script type="text/javascript" src="@x3dom-full.jsPath@/x3dom-full.js"></script>
@@ -145,7 +144,7 @@ class X3DExporter(object):
         # loop over faces
         for face in faces:
             face_tesselator = Tesselator(face)
-            self._indexed_face_sets.append(face_tesselator.ExportShapeToX3DString())
+            self._indexed_face_sets.append(face_tesselator.ExportShapeToX3DIndexedFaceSet())
 
     def write_to_file(self, filename):
         # write header
@@ -159,19 +158,19 @@ class X3DExporter(object):
         <Scene>
         """)
         # write part
-        f.write('''
-            <Group DEF="Omni Wheel Hub">
-            <Group>
-        ''')
+        #f.write('''
+        #    <Group DEF="Omni Wheel Hub">
+        #    <Group>
+        #''')
         for indexed_face_set in self._indexed_face_sets:
             f.write('''<Shape>
             <Appearance DEF="2">
-                <Material diffuseColor='0.65 0.65 0.65' shininess='0.9' specularColor='1 1 1'/>
+                <Material diffuseColor='0.65 0.65 0.65' shininess='0.9' specularColor='1 1 1'></Material>
             </Appearance>
             ''')
             f.write(indexed_face_set)
             f.write("</Shape>\n")
-        f.write('</Group>\n</Group>\n</Scene>\n</x3d>\n')
+        f.write('</Scene>\n</x3d>\n')
 
 
 def test_X3DExporter():
