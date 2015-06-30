@@ -212,6 +212,7 @@ class HTMLBody(object):
             """
             if self._uniforms is None:
                 body_str = body_str.replace('@Uniforms@', 'uniforms ={};\n')
+                body_str = body_str.replace('@IncrementTime@', '')
             else:
                 body_str = body_str.replace('@Uniforms@', self._uniforms)
                 if 'time' in self._uniforms:
