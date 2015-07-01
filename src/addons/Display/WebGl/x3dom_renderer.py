@@ -34,6 +34,7 @@ HEADER = """
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="@jspath@/x3dom.css" charset="utf-8" ></link>
     <script type="text/javascript" src="@jspath@/x3dom-full.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js" ></script>
     <style type="text/css">
         body {
             background-color: @background-color@;
@@ -67,6 +68,22 @@ HEADER = """
             font-size: 16px;
             opacity: 0.7;
         }
+        #selection_info {
+            padding: 5px;
+            position: absolute;
+            left: 85%;
+            top: 1%;
+            height: 60px;
+            width: 200px;
+            border-radius: 5px;
+            border: 2px solid #f7941e;
+            opacity: 0.7;
+            font-family: Arial;
+            background-color: #414042;
+            color: #ffffff;
+            font-size: 16px;
+            opacity: 0.7;
+        }
         a {
             color: #f7941e;
             text-decoration: none;
@@ -89,12 +106,44 @@ BODY = """
         CAD in a browser
         <a style="font-size:14px;" href=http://www.pythonocc.org>http://www.pythonocc.org</a>
     </div>
+    <div id="selection_info">
+        <b>Selection</b><hr>
+        <span id="lastClickedObject">id: -</span>
+    </div>
     <script>
     x3dom.runtime.ready = function()
     {
         document.getElementsByTagName('x3d')[0].runtime.showAll();
     }
     </script>
+     <script>
+        //Round a float value to x.xx format
+        function roundWithTwoDecimals(value)
+        {
+            return (Math.round(value * 100)) / 100;
+        }
+        //Handle click on any group member
+        function handleGroupClick(event)
+        {
+            console.log(event);
+            //Display coordinates of hitting point (rounded)
+            //var coordinates = event.hitPnt;
+            //$('#coordX').html(roundWithTwoDecimals(coordinates[0]));
+            //$('#coordY').html(roundWithTwoDecimals(coordinates[1]));
+            //$('#coordZ').html(roundWithTwoDecimals(coordinates[2]));
+        }
+        //Handle click on a shape
+        function handleSingleClick(shape)
+        {
+            $('#lastClickedObject').html('id: ' + $(shape).attr("def"));
+        }
+        $(document).ready(function(){
+            //Add a onclick callback to every shape
+            $("shape").each(function() {
+                $(this).attr("onclick", "handleSingleClick(this)");
+            });
+        });
+        </script>
 </body>
 """
 
@@ -163,6 +212,7 @@ class X3DExporter(object):
         </head>
         <Scene>
         """)
+        f.write('<Group onclick="handleGroupClick(event)">\n')
         shape_id = 0
         for indexed_face_set in self._indexed_face_sets:
             f.write('<Shape DEF="shape_%i"><Appearance>\n' % shape_id)
@@ -183,6 +233,7 @@ class X3DExporter(object):
             f.write(indexed_face_set)
             f.write("</Shape>\n")
             shape_id += 1
+        f.write("</Group>\n")
         f.write('</Scene>\n</x3d>\n')
 
 
