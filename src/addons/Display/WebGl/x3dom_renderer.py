@@ -126,10 +126,11 @@ class HTMLBody(object):
 
 class X3DExporter(object):
     """ A class for exporting a TopoDS_Shape to an x3d file """
-    def __init__(self, shape, vertex_shader=None, fragment_shader=None):
+    def __init__(self, shape, vertex_shader=None, fragment_shader=None, map_faces_to_mesh=False):
         self._shape = shape
         self._vs = vertex_shader
         self._fs = fragment_shader
+        self._map_faces_to_mesh = map_faces_to_mesh
         # the list of indexed face sets that compose the shape
         self._indexed_face_sets = []
 
@@ -137,15 +138,19 @@ class X3DExporter(object):
         # get faces
         explorer = TopExp_Explorer()
         explorer.Init(self._shape, TopAbs_FACE)
-        faces = []
-        while explorer.More():
-            current_face = explorer.Current()
-            faces.append(current_face)
-            explorer.Next()
-        # loop over faces
-        for face in faces:
-            face_tesselator = Tesselator(face)
-            self._indexed_face_sets.append(face_tesselator.ExportShapeToX3DIndexedFaceSet())
+        if self._map_faces_to_mesh:  # one mesh per face
+            faces = []
+            while explorer.More():
+                current_face = explorer.Current()
+                faces.append(current_face)
+                explorer.Next()
+            # loop over faces
+            for face in faces:
+                face_tesselator = Tesselator(face)
+                self._indexed_face_sets.append(face_tesselator.ExportShapeToX3DIndexedFaceSet())
+        else:  # only one mesh for the whole shape
+            shape_tesselator = Tesselator(self._shape)
+            self._indexed_face_sets.append(shape_tesselator.ExportShapeToX3DIndexedFaceSet())
 
     def write_to_file(self, filename):
         # write header
@@ -158,8 +163,9 @@ class X3DExporter(object):
         </head>
         <Scene>
         """)
+        shape_id = 0
         for indexed_face_set in self._indexed_face_sets:
-            f.write("<Shape><Appearance>\n")
+            f.write('<Shape DEF="shape_%i"><Appearance>\n' % shape_id)
             #
             # set Material or shader
             #
@@ -176,6 +182,7 @@ class X3DExporter(object):
             # export triangles
             f.write(indexed_face_set)
             f.write("</Shape>\n")
+            shape_id += 1
         f.write('</Scene>\n</x3d>\n')
 
 
@@ -193,8 +200,8 @@ class X3DomRenderer(object):
         self._html_filename = "x3dom_topods_shape.html"
         self._background_color = background_color
 
-    def DisplayShape(self, shape, vertex_shader=None, fragment_shader=None):
-        x3d_exporter = X3DExporter(shape, vertex_shader, fragment_shader)
+    def DisplayShape(self, shape, vertex_shader=None, fragment_shader=None, map_faces_to_mesh=False):
+        x3d_exporter = X3DExporter(shape, vertex_shader, fragment_shader, map_faces_to_mesh)
         x3d_exporter.compute()
         x3d_exporter.write_to_file("shape.x3d")
         self.GenerateHTMLFile()
