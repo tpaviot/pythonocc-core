@@ -12,7 +12,7 @@ before_install:
   - mkdir cmake-build
   - cd cmake-build
   - sh ../../.travis.build-oce.sh
-  - sudo make install > oce-installed-files.txt
+  - sudo make -j16 install > oce-installed-files.txt
   - cd ../..
 #   - sudo add-apt-repository "deb http://ppa.launchpad.net/freecad-maintainers/oce-release/ubuntu precise main" -y
 #   - sudo apt-get update -q
