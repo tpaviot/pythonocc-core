@@ -25,7 +25,7 @@ We use the following online resources:
   * Mailing list
        http://groups.google.com/group/pythonocc/about
   * Travic-CI
-       https://travis-ci.org/tpaviot/pythonocc
+       https://travis-ci.org/tpaviot/pythonocc-core
   * twitter
        https://twitter.com/pythonocc
 
