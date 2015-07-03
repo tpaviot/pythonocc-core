@@ -19,8 +19,9 @@ from __future__ import print_function
 
 import webbrowser
 from OCC.Visualization import Tesselator
+from OCC.TopExp import TopExp_Explorer
+from OCC.TopAbs import TopAbs_FACE
 import OCC
-from time import time
 import os
 
 # <script type="text/javascript" src="@x3dom-full.jsPath@/x3dom-full.js"></script>
@@ -33,6 +34,7 @@ HEADER = """
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="@jspath@/x3dom.css" charset="utf-8" ></link>
     <script type="text/javascript" src="@jspath@/x3dom-full.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js" ></script>
     <style type="text/css">
         body {
             background-color: @background-color@;
@@ -66,6 +68,22 @@ HEADER = """
             font-size: 16px;
             opacity: 0.7;
         }
+        #selection_info {
+            padding: 5px;
+            position: absolute;
+            left: 85%;
+            top: 1%;
+            height: 60px;
+            width: 200px;
+            border-radius: 5px;
+            border: 2px solid #f7941e;
+            opacity: 0.7;
+            font-family: Arial;
+            background-color: #414042;
+            color: #ffffff;
+            font-size: 16px;
+            opacity: 0.7;
+        }
         a {
             color: #f7941e;
             text-decoration: none;
@@ -88,12 +106,44 @@ BODY = """
         CAD in a browser
         <a style="font-size:14px;" href=http://www.pythonocc.org>http://www.pythonocc.org</a>
     </div>
+    <div id="selection_info">
+        <b>Selection</b><hr>
+        <span id="lastClickedObject">id: -</span>
+    </div>
     <script>
     x3dom.runtime.ready = function()
     {
         document.getElementsByTagName('x3d')[0].runtime.showAll();
     }
     </script>
+     <script>
+        //Round a float value to x.xx format
+        function roundWithTwoDecimals(value)
+        {
+            return (Math.round(value * 100)) / 100;
+        }
+        //Handle click on any group member
+        function handleGroupClick(event)
+        {
+            console.log(event);
+            //Display coordinates of hitting point (rounded)
+            //var coordinates = event.hitPnt;
+            //$('#coordX').html(roundWithTwoDecimals(coordinates[0]));
+            //$('#coordY').html(roundWithTwoDecimals(coordinates[1]));
+            //$('#coordZ').html(roundWithTwoDecimals(coordinates[2]));
+        }
+        //Handle click on a shape
+        function handleSingleClick(shape)
+        {
+            $('#lastClickedObject').html('id: ' + $(shape).attr("def"));
+        }
+        $(document).ready(function(){
+            //Add a onclick callback to every shape
+            $("shape").each(function() {
+                $(this).attr("onclick", "handleSingleClick(this)");
+            });
+        });
+        </script>
 </body>
 """
 
@@ -111,7 +161,7 @@ class HTMLHeader(object):
 
 
 class HTMLBody(object):
-    def __init__(self, background_color='#000000'):
+    def __init__(self, background_color):
         self._background_color = background_color
 
     def get_str(self):
@@ -123,30 +173,92 @@ class HTMLBody(object):
         return body_str
 
 
+class X3DExporter(object):
+    """ A class for exporting a TopoDS_Shape to an x3d file """
+    def __init__(self, shape, vertex_shader=None, fragment_shader=None, map_faces_to_mesh=False):
+        self._shape = shape
+        self._vs = vertex_shader
+        self._fs = fragment_shader
+        self._map_faces_to_mesh = map_faces_to_mesh
+        # the list of indexed face sets that compose the shape
+        self._indexed_face_sets = []
+
+    def compute(self):
+        # get faces
+        explorer = TopExp_Explorer()
+        explorer.Init(self._shape, TopAbs_FACE)
+        if self._map_faces_to_mesh:  # one mesh per face
+            faces = []
+            while explorer.More():
+                current_face = explorer.Current()
+                faces.append(current_face)
+                explorer.Next()
+            # loop over faces
+            for face in faces:
+                face_tesselator = Tesselator(face)
+                self._indexed_face_sets.append(face_tesselator.ExportShapeToX3DIndexedFaceSet())
+        else:  # only one mesh for the whole shape
+            shape_tesselator = Tesselator(self._shape)
+            self._indexed_face_sets.append(shape_tesselator.ExportShapeToX3DIndexedFaceSet())
+
+    def write_to_file(self, filename):
+        # write header
+        f = open(filename, "w")
+        f.write("""
+        <?xml version="1.0" encoding="UTF-8"?>
+        <X3D profile="Immersive" version="3.2" xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance" xsd:noNamespaceSchemaLocation="http://www.web3d.org/specifications/x3d-3.2.xsd">
+        <head>
+            <meta name="generator" content="pythonOCC (www.pythonocc.org)"/>
+        </head>
+        <Scene>
+        """)
+        f.write('<Group onclick="handleGroupClick(event)">\n')
+        shape_id = 0
+        for indexed_face_set in self._indexed_face_sets:
+            f.write('<Shape DEF="shape_%i"><Appearance>\n' % shape_id)
+            #
+            # set Material or shader
+            #
+            if self._vs is None and self._fs is None:
+                f.write("<Material diffuseColor='0.65 0.65 0.65' shininess='0.9' specularColor='1 1 1'></Material>\n")
+            else:  # set shaders
+                f.write('<ComposedShader><ShaderPart type="VERTEX" style="display:none;">\n')
+                f.write(self._vs)
+                f.write('</ShaderPart>\n')
+                f.write('<ShaderPart type="FRAGMENT" style="display:none;">\n')
+                f.write(self._fs)
+                f.write('</ShaderPart></ComposedShader>\n')
+            f.write('</Appearance>\n')
+            # export triangles
+            f.write(indexed_face_set)
+            f.write("</Shape>\n")
+            shape_id += 1
+        f.write("</Group>\n")
+        f.write('</Scene>\n</x3d>\n')
+
+
+def test_X3DExporter():
+    from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
+    box_shp = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+    # loop over faces
+    x3d_exporter = X3DExporter(box_shp)
+    x3d_exporter.compute()
+    x3d_exporter.write_to_file("popo.x3d")
+
+
 class X3DomRenderer(object):
     def __init__(self, background_color="#123345"):
-        self._x3d_filename = "shape.x3d"
         self._html_filename = "x3dom_topods_shape.html"
         self._background_color = background_color
 
-    def DisplayShape(self, shape):
-        self._shape = shape
-        print("Tesselate shape ...")
-        t0 = time()
-        tess = Tesselator(self._shape)
-        t1 = time()
-        print("done in %f s." % (t1-t0))
-        print("Exporting tesselation to X3D ...")
-        t2 = time()
-        tess.ExportShapeToX3D(self._x3d_filename)
-        t3 = time()
-        print("done in %f s." % (t3-t2))
-        print("Generating HTML stream ...")
+    def DisplayShape(self, shape, vertex_shader=None, fragment_shader=None, map_faces_to_mesh=False):
+        x3d_exporter = X3DExporter(shape, vertex_shader, fragment_shader, map_faces_to_mesh)
+        x3d_exporter.compute()
+        x3d_exporter.write_to_file("shape.x3d")
         self.GenerateHTMLFile()
-        print("done.")
-        print("Opening html output in the default webbrowser ...")
         # open the file in the browser
-        _path = "file:///{0}".format(os.path.join(os.getcwd(), self._html_filename))
+        _path = "file:///{0}".format(os.path.join(os.getcwd(),
+                                     self._html_filename))
         webbrowser.open_new_tab(_path)
 
     def GenerateHTMLFile(self):

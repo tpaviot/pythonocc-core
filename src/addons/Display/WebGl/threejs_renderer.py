@@ -212,6 +212,7 @@ class HTMLBody(object):
             """
             if self._uniforms is None:
                 body_str = body_str.replace('@Uniforms@', 'uniforms ={};\n')
+                body_str = body_str.replace('@IncrementTime@', '')
             else:
                 body_str = body_str.replace('@Uniforms@', self._uniforms)
                 if 'time' in self._uniforms:
@@ -258,7 +259,7 @@ class ThreejsRenderer(object):
         print("done in %f s." % (t1-t0))
         print("Exporting tesselation to JSON ...")
         t2 = time()
-        tess.ExportShapeToJSON(self._js_filename)
+        tess.ExportShapeToThreejs(self._js_filename)
         t3 = time()
         print("done in %f s." % (t3-t2))
         print("Generating HTML stream ...")

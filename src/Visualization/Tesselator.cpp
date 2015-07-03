@@ -17,6 +17,7 @@
 
 //---------------------------------------------------------------------------
 #include "Tesselator.h"
+#include <sstream>
 //---------------------------------------------------------------------------
 #include <TopExp_Explorer.hxx>
 #include <Bnd_Box.hxx>
@@ -224,7 +225,7 @@ void Tesselator::TesselateWithUVCoords()
 
   gp_Vec2d theCoord_p;
   gp_Pnt2d d_coord;
-  cout << "Tesselate with UV coords\n";
+  
   //Triangulate
   BRepMesh::Mesh(myShape, myDeviation);
 
@@ -342,12 +343,62 @@ void Tesselator::ComputeDefaultDeviation()
     myDeviation = adeviation;
 }
 
+std::string Tesselator::ExportShapeToX3DIndexedFaceSet()
+{
+  std::stringstream str1;
+  int *vertices_idx = new int[3];
+  int *texcoords_idx = new int[3];
+  int *normals_idx = new int[3];
+  
+  str1 << "<IndexedFaceSet coordIndex='";
+    for (int i=0;i<tot_triangle_count;i++) {
+        ObjGetTriangle(i, vertices_idx, texcoords_idx, normals_idx);
+        // vertex indices
+        str1 << i*3 << " " << 1+i*3 << " " << 2+i*3 << " -1\n";
+    } 
+    str1 << "' solid='false'>\n";
+    // write points coordinates
+    str1 << "<Coordinate point='";
+    for (int i=0;i<tot_triangle_count;i++) {
+        ObjGetTriangle(i, vertices_idx, texcoords_idx, normals_idx);
+        str1 <<locVertexcoord[vertices_idx[0]]<< " " <<locVertexcoord[vertices_idx[0]+1]<<" "
+            << locVertexcoord[vertices_idx[0]+2]<<"\n";
+        // Second vertex
+        str1 <<locVertexcoord[vertices_idx[1]]<<" "<<locVertexcoord[vertices_idx[1]+1]<<" "
+            << locVertexcoord[vertices_idx[1]+2]<<"\n";
+        // Third vertex
+        str1 << locVertexcoord[vertices_idx[2]]<<" "<<locVertexcoord[vertices_idx[2]+1]<<" "
+            << locVertexcoord[vertices_idx[2]+2]<<"\n";
+    }
+    str1 << "' containerField='coord'></Coordinate>\n";
+    // write normals
+    str1 << "<Normal vector='";
+    for (int i=0;i<tot_triangle_count;i++) {
+        ObjGetTriangle(i, vertices_idx, texcoords_idx, normals_idx);
+        // First normal
+        str1 << locNormalcoord[normals_idx[0]]<<" "<<locNormalcoord[normals_idx[0]+1]<<" "
+            << locNormalcoord[normals_idx[0]+2]<<"\n";
+        // Second normal
+        str1 << locNormalcoord[normals_idx[1]]<<" "<<locNormalcoord[normals_idx[1]+1]<<" "
+            << locNormalcoord[normals_idx[1]+2]<<"\n";
+        // Third normal
+        str1 << locNormalcoord[normals_idx[2]]<<" "<<locNormalcoord[normals_idx[2]+1]<<" "
+            << locNormalcoord[normals_idx[2]+2] << "\n";
+    }
+    str1 << "' containerField='normal'></Normal>\n";
+    // close all markups
+    str1 << "</IndexedFaceSet>\n";
+    
+    delete [] vertices_idx;
+    delete [] texcoords_idx;
+    delete [] normals_idx;
+    
+    return str1.str();
+}
+
 void Tesselator::ExportShapeToX3D(char * filename, int diffR, int diffG, int diffB)
 {
     ofstream X3Dfile;
-    int *vertices_idx = new int[3];
-    int *texcoords_idx = new int[3];
-    int *normals_idx = new int[3];
     X3Dfile.open (filename);
     // write header
     X3Dfile << "<?xml version='1.0' encoding='UTF-8'?>" ;
@@ -358,74 +409,35 @@ void Tesselator::ExportShapeToX3D(char * filename, int diffR, int diffG, int dif
     X3Dfile << "</Head>";
     X3Dfile << "<Scene><Shape><Appearance><Material DEF='Shape_Mat' diffuseColor='0.65 0.65 0.65' ";
     X3Dfile << "shininess='0.9' specularColor='1 1 1'></Material></Appearance>";
-    // export faces indices
-    X3Dfile << "<IndexedFaceSet coordIndex='";
-    for (int i=0;i<tot_triangle_count;i++) {
-        ObjGetTriangle(i, vertices_idx, texcoords_idx, normals_idx);
-        // vertex indices
-        X3Dfile << i*3 << " " << 1+i*3 << " " << 2+i*3 << " -1 ";
-    } 
-    X3Dfile << "' solid='false'>";
-    // write points coordinates
-    X3Dfile << "<Coordinate point='";
-    for (int i=0;i<tot_triangle_count;i++) {
-        ObjGetTriangle(i, vertices_idx, texcoords_idx, normals_idx);
-        X3Dfile <<locVertexcoord[vertices_idx[0]]<< " " <<locVertexcoord[vertices_idx[0]+1]<<" "
-            << locVertexcoord[vertices_idx[0]+2]<<" ";
-        // Second vertex
-        X3Dfile <<locVertexcoord[vertices_idx[1]]<<" "<<locVertexcoord[vertices_idx[1]+1]<<" "
-            << locVertexcoord[vertices_idx[1]+2]<<" ";
-        // Third vertex
-        X3Dfile << locVertexcoord[vertices_idx[2]]<<" "<<locVertexcoord[vertices_idx[2]+1]<<" "
-            << locVertexcoord[vertices_idx[2]+2]<<" ";
-    }
-    X3Dfile << "' containerField='coord'></Coordinate>";
-    // write normals
-    X3Dfile << "<Normal vector='";
-    for (int i=0;i<tot_triangle_count;i++) {
-        ObjGetTriangle(i, vertices_idx, texcoords_idx, normals_idx);
-        // First normal
-        X3Dfile << locNormalcoord[normals_idx[0]]<<" "<<locNormalcoord[normals_idx[0]+1]<<" "
-            << locNormalcoord[normals_idx[0]+2]<<" ";
-        // Second normal
-        X3Dfile << locNormalcoord[normals_idx[1]]<<" "<<locNormalcoord[normals_idx[1]+1]<<" "
-            << locNormalcoord[normals_idx[1]+2]<<" ";
-        // Third normal
-        X3Dfile << locNormalcoord[normals_idx[2]]<<" "<<locNormalcoord[normals_idx[2]+1]<<" "
-            << locNormalcoord[normals_idx[2]+2] << " ";
-    }
-    X3Dfile << "' containerField='normal'></Normal>";
-    // close all markups
-    X3Dfile << "</IndexedFaceSet></Shape></Scene></X3D>\n"; 
+    // write tesselation
+    X3Dfile << ExportShapeToX3DIndexedFaceSet();
+    X3Dfile << "</Shape></Scene></X3D>\n";
     X3Dfile.close();
-    delete [] vertices_idx;
-    delete [] texcoords_idx;
-    delete [] normals_idx;
 
 }
 
-void Tesselator::ExportShapeToJSON(char * filename)
+void Tesselator::ExportShapeToThreejs(char * filename)
 {
-    ofstream JSONObject;
+    ofstream js_file;
     int *vertices_idx = new int[3];
     int *texcoords_idx = new int[3];
     int *normals_idx = new int[3];
-    JSONObject.open (filename);
+    js_file.open (filename);
     // write header
-    JSONObject << "var Shape = function () {\n";
-    JSONObject << "var scope = this;\n";
-    JSONObject << "THREE.Geometry.call( this );\n";
+    js_file << "var Shape = function () {\n";
+    js_file << "var scope = this;\n";
+    js_file << "THREE.Geometry.call( this );\n";
     // first write vertices coords
     for (int i=0;i<tot_triangle_count;i++) {
         ObjGetTriangle(i, vertices_idx, texcoords_idx, normals_idx);
         // First vertex
-        JSONObject << "v("<<locVertexcoord[vertices_idx[0]]<<","<<locVertexcoord[vertices_idx[0]+1]<<","
+        js_file << "v("<<locVertexcoord[vertices_idx[0]]<<","<<locVertexcoord[vertices_idx[0]+1]<<","
             << locVertexcoord[vertices_idx[0]+2]<<");\n";
         // Second vertex
-        JSONObject << "v("<<locVertexcoord[vertices_idx[1]]<<","<<locVertexcoord[vertices_idx[1]+1]<<","
+        js_file << "v("<<locVertexcoord[vertices_idx[1]]<<","<<locVertexcoord[vertices_idx[1]+1]<<","
             << locVertexcoord[vertices_idx[1]+2]<<");\n";
         // Third vertex
-        JSONObject << "v("<<locVertexcoord[vertices_idx[2]]<<","<<locVertexcoord[vertices_idx[2]+1]<<","
+        js_file << "v("<<locVertexcoord[vertices_idx[2]]<<","<<locVertexcoord[vertices_idx[2]+1]<<","
             << locVertexcoord[vertices_idx[2]+2]<<");\n";
         
     
@@ -434,43 +446,43 @@ void Tesselator::ExportShapeToJSON(char * filename)
     for (int i=0;i<tot_triangle_count;i++) {
         ObjGetTriangle(i, vertices_idx, texcoords_idx, normals_idx);
         // vertex indices
-        JSONObject << "f3("<<i*3<<","<<1+i*3<<","<<2+i*3<<",";
+        js_file << "f3("<<i*3<<","<<1+i*3<<","<<2+i*3<<",";
         // First normal
-        JSONObject << locNormalcoord[normals_idx[0]]<<","<<locNormalcoord[normals_idx[0]+1]<<","
+        js_file << locNormalcoord[normals_idx[0]]<<","<<locNormalcoord[normals_idx[0]+1]<<","
             << locNormalcoord[normals_idx[0]+2]<<",";
         // Second normal
-        JSONObject << locNormalcoord[normals_idx[1]]<<","<<locNormalcoord[normals_idx[1]+1]<<","
+        js_file << locNormalcoord[normals_idx[1]]<<","<<locNormalcoord[normals_idx[1]+1]<<","
             << locNormalcoord[normals_idx[1]+2]<<",";
         // Third normal
-        JSONObject << locNormalcoord[normals_idx[2]]<<","<<locNormalcoord[normals_idx[2]+1]<<","
+        js_file << locNormalcoord[normals_idx[2]]<<","<<locNormalcoord[normals_idx[2]+1]<<","
             << locNormalcoord[normals_idx[2]+2];
-        JSONObject << ");\n";
+        js_file << ");\n";
     }
 
     // at last, write texcoords
     for (int i=0;i<tot_triangle_count;i++) {
         ObjGetTriangle(i, vertices_idx, texcoords_idx, normals_idx);
-        JSONObject << "uvs(";
-        JSONObject << locTexcoord[texcoords_idx[0]]<<","<<locTexcoord[texcoords_idx[0]+2]<<",";
-        JSONObject << locTexcoord[texcoords_idx[1]]<<","<<locTexcoord[texcoords_idx[1]+2]<<",";
-        JSONObject << locTexcoord[texcoords_idx[2]]<<","<<locTexcoord[texcoords_idx[2]+2];
-        JSONObject << ");\n";
+        js_file << "uvs(";
+        js_file << locTexcoord[texcoords_idx[0]]<<","<<locTexcoord[texcoords_idx[0]+2]<<",";
+        js_file << locTexcoord[texcoords_idx[1]]<<","<<locTexcoord[texcoords_idx[1]+2]<<",";
+        js_file << locTexcoord[texcoords_idx[2]]<<","<<locTexcoord[texcoords_idx[2]+2];
+        js_file << ");\n";
     }
 
     // footer
-    JSONObject << "function v( x, y, z ) {\n";
-    JSONObject<< "  scope.vertices.push(new THREE.Vector3(x,y,z));\n";
-    JSONObject<<"}\n";
-    JSONObject <<"function f3( a, b, c, n1_x,n1_y,n1_z,n2_x,n2_y,n2_z,n3_x,n3_y,n3_z ) {\n";
-    JSONObject << "  scope.faces.push(new THREE.Face3(a,b,c,[new THREE.Vector3(n1_x,n1_y,n1_z),\n";
-    JSONObject << "new THREE.Vector3( n2_x, n2_y, n2_z ), new THREE.Vector3( n3_x, n3_y, n3_z ) ]  ) );\n";
-    JSONObject << "}\n";
-    JSONObject << "function uvs(a,b,c,d,e,f) {\n";
-    JSONObject << "scope.faceVertexUvs[ 0 ].push( [new THREE.Vector2(a,b), new THREE.Vector2(c,d), new THREE.Vector2(e,f)] );\n";
-    JSONObject << "}\n}\n";
-    JSONObject << "Shape.prototype = new THREE.Geometry();\n";
-    JSONObject << "Shape.prototype.constructor = Shape;\n";
-    JSONObject.close();
+    js_file << "function v( x, y, z ) {\n";
+    js_file<< "  scope.vertices.push(new THREE.Vector3(x,y,z));\n";
+    js_file<<"}\n";
+    js_file <<"function f3( a, b, c, n1_x,n1_y,n1_z,n2_x,n2_y,n2_z,n3_x,n3_y,n3_z ) {\n";
+    js_file << "  scope.faces.push(new THREE.Face3(a,b,c,[new THREE.Vector3(n1_x,n1_y,n1_z),\n";
+    js_file << "new THREE.Vector3( n2_x, n2_y, n2_z ), new THREE.Vector3( n3_x, n3_y, n3_z ) ]  ) );\n";
+    js_file << "}\n";
+    js_file << "function uvs(a,b,c,d,e,f) {\n";
+    js_file << "scope.faceVertexUvs[ 0 ].push( [new THREE.Vector2(a,b), new THREE.Vector2(c,d), new THREE.Vector2(e,f)] );\n";
+    js_file << "}\n}\n";
+    js_file << "Shape.prototype = new THREE.Geometry();\n";
+    js_file << "Shape.prototype.constructor = Shape;\n";
+    js_file.close();
     delete [] vertices_idx;
     delete [] texcoords_idx;
     delete [] normals_idx;
