@@ -24,11 +24,11 @@ from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
 import pickle
 
 # Create shape
-box1 = BRepPrimAPI_MakeBox(10.,10.,10.).Shape()
+box1 = BRepPrimAPI_MakeBox(10., 10., 10.).Shape()
 
 # Dump shape to a python string
 box_dump_string = pickle.dumps(box1)
-print("Box (10,10,10) dump:\n",box_dump_string)
+print("Box (10,10,10) dump:\n", box_dump_string)
 
 # this string can, of course, be saved to a file
 
