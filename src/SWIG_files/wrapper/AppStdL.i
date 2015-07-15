@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -43,12 +43,15 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor AppStdL_Application;
 class AppStdL_Application : public TDocStd_Application {
 	public:
+		%feature("compactdefaultargs") AppStdL_Application;
 		%feature("autodoc", "	:rtype: None
 ") AppStdL_Application;
 		 AppStdL_Application ();
+		%feature("compactdefaultargs") MessageDriver;
 		%feature("autodoc", "	:rtype: Handle_CDM_MessageDriver
 ") MessageDriver;
 		virtual Handle_CDM_MessageDriver MessageDriver ();
+		%feature("compactdefaultargs") Formats;
 		%feature("autodoc", "	* returns supported format for application documents.
 
 	:param theFormats:
@@ -56,6 +59,7 @@ class AppStdL_Application : public TDocStd_Application {
 	:rtype: void
 ") Formats;
 		virtual void Formats (TColStd_SequenceOfExtendedString & theFormats);
+		%feature("compactdefaultargs") ResourcesName;
 		%feature("autodoc", "	* returns the file name which contains application resources
 
 	:rtype: char *

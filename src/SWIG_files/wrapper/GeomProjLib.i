@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -43,6 +43,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %rename(geomprojlib) GeomProjLib;
 class GeomProjLib {
 	public:
+		%feature("compactdefaultargs") Curve2d;
 		%feature("autodoc", "	* gives the 2d-curve of a 3d-curve lying on a surface ( uses GeomProjLib_ProjectedCurve ) The 3dCurve is taken between the parametrization range [First, Last] <Tolerance> is used as input if the projection needs an approximation. In this case, the reached tolerance is set in <Tolerance> as output. WARNING : if the projection has failed, this method returns a null Handle.
 
 	:param C:
@@ -66,6 +67,7 @@ class GeomProjLib {
 	:rtype: Handle_Geom2d_Curve
 ") Curve2d;
 		static Handle_Geom2d_Curve Curve2d (const Handle_Geom_Curve & C,const Standard_Real First,const Standard_Real Last,const Handle_Geom_Surface & S,const Standard_Real UFirst,const Standard_Real ULast,const Standard_Real VFirst,const Standard_Real VLast,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Curve2d;
 		%feature("autodoc", "	* gives the 2d-curve of a 3d-curve lying on a surface ( uses GeomProjLib_ProjectedCurve ) The 3dCurve is taken between the parametrization range [First, Last] <Tolerance> is used as input if the projection needs an approximation. In this case, the reached tolerance is set in <Tolerance> as output. WARNING : if the projection has failed, this method returns a null Handle.
 
 	:param C:
@@ -81,6 +83,7 @@ class GeomProjLib {
 	:rtype: Handle_Geom2d_Curve
 ") Curve2d;
 		static Handle_Geom2d_Curve Curve2d (const Handle_Geom_Curve & C,const Standard_Real First,const Standard_Real Last,const Handle_Geom_Surface & S,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Curve2d;
 		%feature("autodoc", "	* gives the 2d-curve of a 3d-curve lying on a surface ( uses GeomProjLib_ProjectedCurve ) The 3dCurve is taken between the parametrization range [First, Last] If the projection needs an approximation, Precision::PApproximation() is used. WARNING : if the projection has failed, this method returns a null Handle.
 
 	:param C:
@@ -94,6 +97,7 @@ class GeomProjLib {
 	:rtype: Handle_Geom2d_Curve
 ") Curve2d;
 		static Handle_Geom2d_Curve Curve2d (const Handle_Geom_Curve & C,const Standard_Real First,const Standard_Real Last,const Handle_Geom_Surface & S);
+		%feature("compactdefaultargs") Curve2d;
 		%feature("autodoc", "	* gives the 2d-curve of a 3d-curve lying on a surface ( uses GeomProjLib_ProjectedCurve ). If the projection needs an approximation, Precision::PApproximation() is used. WARNING : if the projection has failed, this method returns a null Handle.
 
 	:param C:
@@ -103,6 +107,7 @@ class GeomProjLib {
 	:rtype: Handle_Geom2d_Curve
 ") Curve2d;
 		static Handle_Geom2d_Curve Curve2d (const Handle_Geom_Curve & C,const Handle_Geom_Surface & S);
+		%feature("compactdefaultargs") Curve2d;
 		%feature("autodoc", "	* gives the 2d-curve of a 3d-curve lying on a surface ( uses GeomProjLib_ProjectedCurve ). If the projection needs an approximation, Precision::PApproximation() is used. WARNING : if the projection has failed, this method returns a null Handle. can expand a little the bounds of surface
 
 	:param C:
@@ -120,6 +125,7 @@ class GeomProjLib {
 	:rtype: Handle_Geom2d_Curve
 ") Curve2d;
 		static Handle_Geom2d_Curve Curve2d (const Handle_Geom_Curve & C,const Handle_Geom_Surface & S,const Standard_Real UDeb,const Standard_Real UFin,const Standard_Real VDeb,const Standard_Real VFin);
+		%feature("compactdefaultargs") Curve2d;
 		%feature("autodoc", "	* gives the 2d-curve of a 3d-curve lying on a surface ( uses GeomProjLib_ProjectedCurve ). If the projection needs an approximation, Precision::PApproximation() is used. WARNING : if the projection has failed, this method returns a null Handle. can expand a little the bounds of surface
 
 	:param C:
@@ -139,6 +145,7 @@ class GeomProjLib {
 	:rtype: Handle_Geom2d_Curve
 ") Curve2d;
 		static Handle_Geom2d_Curve Curve2d (const Handle_Geom_Curve & C,const Handle_Geom_Surface & S,const Standard_Real UDeb,const Standard_Real UFin,const Standard_Real VDeb,const Standard_Real VFin,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "	* Constructs the 3d-curve from the normal projection of the Curve <C> on the surface <S>. WARNING : if the projection has failes returns a null Handle.
 
 	:param C:
@@ -148,6 +155,7 @@ class GeomProjLib {
 	:rtype: Handle_Geom_Curve
 ") Project;
 		static Handle_Geom_Curve Project (const Handle_Geom_Curve & C,const Handle_Geom_Surface & S);
+		%feature("compactdefaultargs") ProjectOnPlane;
 		%feature("autodoc", "	* Constructs the 3d-curves from the projection of the curve <Curve> on the plane <Plane> along the direction <Dir>. If <KeepParametrization> is true, the parametrization of the Projected Curve <PC> will be the same as the parametrization of the initial curve <C>. It meens: proj(C(u)) = PC(u) for each u. Otherwize, the parametrization may change.
 
 	:param Curve:

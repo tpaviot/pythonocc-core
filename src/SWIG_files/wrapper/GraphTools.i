@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -43,25 +43,31 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor GraphTools_ListIteratorOfListOfSequenceOfInteger;
 class GraphTools_ListIteratorOfListOfSequenceOfInteger {
 	public:
+		%feature("compactdefaultargs") GraphTools_ListIteratorOfListOfSequenceOfInteger;
 		%feature("autodoc", "	:rtype: None
 ") GraphTools_ListIteratorOfListOfSequenceOfInteger;
 		 GraphTools_ListIteratorOfListOfSequenceOfInteger ();
+		%feature("compactdefaultargs") GraphTools_ListIteratorOfListOfSequenceOfInteger;
 		%feature("autodoc", "	:param L:
 	:type L: GraphTools_ListOfSequenceOfInteger &
 	:rtype: None
 ") GraphTools_ListIteratorOfListOfSequenceOfInteger;
 		 GraphTools_ListIteratorOfListOfSequenceOfInteger (const GraphTools_ListOfSequenceOfInteger & L);
+		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "	:param L:
 	:type L: GraphTools_ListOfSequenceOfInteger &
 	:rtype: None
 ") Initialize;
 		void Initialize (const GraphTools_ListOfSequenceOfInteger & L);
+		%feature("compactdefaultargs") More;
 		%feature("autodoc", "	:rtype: bool
 ") More;
 		Standard_Boolean More ();
+		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "	:rtype: None
 ") Next;
 		void Next ();
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: TColStd_SequenceOfInteger
 ") Value;
 		TColStd_SequenceOfInteger & Value ();
@@ -85,25 +91,31 @@ def __del__(self):
 %nodefaultctor GraphTools_ListIteratorOfSCList;
 class GraphTools_ListIteratorOfSCList {
 	public:
+		%feature("compactdefaultargs") GraphTools_ListIteratorOfSCList;
 		%feature("autodoc", "	:rtype: None
 ") GraphTools_ListIteratorOfSCList;
 		 GraphTools_ListIteratorOfSCList ();
+		%feature("compactdefaultargs") GraphTools_ListIteratorOfSCList;
 		%feature("autodoc", "	:param L:
 	:type L: GraphTools_SCList &
 	:rtype: None
 ") GraphTools_ListIteratorOfSCList;
 		 GraphTools_ListIteratorOfSCList (const GraphTools_SCList & L);
+		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "	:param L:
 	:type L: GraphTools_SCList &
 	:rtype: None
 ") Initialize;
 		void Initialize (const GraphTools_SCList & L);
+		%feature("compactdefaultargs") More;
 		%feature("autodoc", "	:rtype: bool
 ") More;
 		Standard_Boolean More ();
+		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "	:rtype: None
 ") Next;
 		void Next ();
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_GraphTools_SC
 ") Value;
 		Handle_GraphTools_SC & Value ();
@@ -127,6 +139,7 @@ def __del__(self):
 %nodefaultctor GraphTools_ListNodeOfListOfSequenceOfInteger;
 class GraphTools_ListNodeOfListOfSequenceOfInteger : public TCollection_MapNode {
 	public:
+		%feature("compactdefaultargs") GraphTools_ListNodeOfListOfSequenceOfInteger;
 		%feature("autodoc", "	:param I:
 	:type I: TColStd_SequenceOfInteger &
 	:param n:
@@ -134,6 +147,7 @@ class GraphTools_ListNodeOfListOfSequenceOfInteger : public TCollection_MapNode 
 	:rtype: None
 ") GraphTools_ListNodeOfListOfSequenceOfInteger;
 		 GraphTools_ListNodeOfListOfSequenceOfInteger (const TColStd_SequenceOfInteger & I,const TCollection_MapNodePtr & n);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: TColStd_SequenceOfInteger
 ") Value;
 		TColStd_SequenceOfInteger & Value ();
@@ -196,6 +210,7 @@ def __del__(self):
 %nodefaultctor GraphTools_ListNodeOfSCList;
 class GraphTools_ListNodeOfSCList : public TCollection_MapNode {
 	public:
+		%feature("compactdefaultargs") GraphTools_ListNodeOfSCList;
 		%feature("autodoc", "	:param I:
 	:type I: Handle_GraphTools_SC &
 	:param n:
@@ -203,6 +218,7 @@ class GraphTools_ListNodeOfSCList : public TCollection_MapNode {
 	:rtype: None
 ") GraphTools_ListNodeOfSCList;
 		 GraphTools_ListNodeOfSCList (const Handle_GraphTools_SC & I,const TCollection_MapNodePtr & n);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_GraphTools_SC
 ") Value;
 		Handle_GraphTools_SC & Value ();
@@ -265,33 +281,41 @@ def __del__(self):
 %nodefaultctor GraphTools_ListOfSequenceOfInteger;
 class GraphTools_ListOfSequenceOfInteger {
 	public:
+		%feature("compactdefaultargs") GraphTools_ListOfSequenceOfInteger;
 		%feature("autodoc", "	:rtype: None
 ") GraphTools_ListOfSequenceOfInteger;
 		 GraphTools_ListOfSequenceOfInteger ();
+		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: GraphTools_ListOfSequenceOfInteger &
 	:rtype: None
 ") Assign;
 		void Assign (const GraphTools_ListOfSequenceOfInteger & Other);
+		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", "	:param Other:
 	:type Other: GraphTools_ListOfSequenceOfInteger &
 	:rtype: None
 ") operator=;
 		void operator = (const GraphTools_ListOfSequenceOfInteger & Other);
+		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
 ") Extent;
 		Standard_Integer Extent ();
+		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
 		void Clear ();
+		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "	:rtype: bool
 ") IsEmpty;
 		Standard_Boolean IsEmpty ();
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param I:
 	:type I: TColStd_SequenceOfInteger &
 	:rtype: None
 ") Prepend;
 		void Prepend (const TColStd_SequenceOfInteger & I);
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param I:
 	:type I: TColStd_SequenceOfInteger &
 	:param theIt:
@@ -299,16 +323,19 @@ class GraphTools_ListOfSequenceOfInteger {
 	:rtype: None
 ") Prepend;
 		void Prepend (const TColStd_SequenceOfInteger & I,GraphTools_ListIteratorOfListOfSequenceOfInteger & theIt);
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param Other:
 	:type Other: GraphTools_ListOfSequenceOfInteger &
 	:rtype: None
 ") Prepend;
 		void Prepend (GraphTools_ListOfSequenceOfInteger & Other);
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param I:
 	:type I: TColStd_SequenceOfInteger &
 	:rtype: None
 ") Append;
 		void Append (const TColStd_SequenceOfInteger & I);
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param I:
 	:type I: TColStd_SequenceOfInteger &
 	:param theIt:
@@ -316,25 +343,31 @@ class GraphTools_ListOfSequenceOfInteger {
 	:rtype: None
 ") Append;
 		void Append (const TColStd_SequenceOfInteger & I,GraphTools_ListIteratorOfListOfSequenceOfInteger & theIt);
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param Other:
 	:type Other: GraphTools_ListOfSequenceOfInteger &
 	:rtype: None
 ") Append;
 		void Append (GraphTools_ListOfSequenceOfInteger & Other);
+		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: TColStd_SequenceOfInteger
 ") First;
 		TColStd_SequenceOfInteger & First ();
+		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: TColStd_SequenceOfInteger
 ") Last;
 		TColStd_SequenceOfInteger & Last ();
+		%feature("compactdefaultargs") RemoveFirst;
 		%feature("autodoc", "	:rtype: None
 ") RemoveFirst;
 		void RemoveFirst ();
+		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param It:
 	:type It: GraphTools_ListIteratorOfListOfSequenceOfInteger &
 	:rtype: None
 ") Remove;
 		void Remove (GraphTools_ListIteratorOfListOfSequenceOfInteger & It);
+		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "	:param I:
 	:type I: TColStd_SequenceOfInteger &
 	:param It:
@@ -342,6 +375,7 @@ class GraphTools_ListOfSequenceOfInteger {
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (const TColStd_SequenceOfInteger & I,GraphTools_ListIteratorOfListOfSequenceOfInteger & It);
+		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "	:param Other:
 	:type Other: GraphTools_ListOfSequenceOfInteger &
 	:param It:
@@ -349,6 +383,7 @@ class GraphTools_ListOfSequenceOfInteger {
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (GraphTools_ListOfSequenceOfInteger & Other,GraphTools_ListIteratorOfListOfSequenceOfInteger & It);
+		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "	:param I:
 	:type I: TColStd_SequenceOfInteger &
 	:param It:
@@ -356,6 +391,7 @@ class GraphTools_ListOfSequenceOfInteger {
 	:rtype: None
 ") InsertAfter;
 		void InsertAfter (const TColStd_SequenceOfInteger & I,GraphTools_ListIteratorOfListOfSequenceOfInteger & It);
+		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "	:param Other:
 	:type Other: GraphTools_ListOfSequenceOfInteger &
 	:param It:
@@ -383,38 +419,47 @@ def __del__(self):
 %nodefaultctor GraphTools_RGNode;
 class GraphTools_RGNode {
 	public:
+		%feature("compactdefaultargs") GraphTools_RGNode;
 		%feature("autodoc", "	:rtype: None
 ") GraphTools_RGNode;
 		 GraphTools_RGNode ();
+		%feature("compactdefaultargs") Reset;
 		%feature("autodoc", "	:rtype: None
 ") Reset;
 		void Reset ();
+		%feature("compactdefaultargs") SetVisited;
 		%feature("autodoc", "	:param v:
-	:type v: Standard_Integer
+	:type v: int
 	:rtype: None
 ") SetVisited;
 		void SetVisited (const Standard_Integer v);
+		%feature("compactdefaultargs") GetVisited;
 		%feature("autodoc", "	:rtype: int
 ") GetVisited;
 		Standard_Integer GetVisited ();
+		%feature("compactdefaultargs") AddAdj;
 		%feature("autodoc", "	:param adj:
-	:type adj: Standard_Integer
+	:type adj: int
 	:rtype: None
 ") AddAdj;
 		void AddAdj (const Standard_Integer adj);
+		%feature("compactdefaultargs") NbAdj;
 		%feature("autodoc", "	:rtype: int
 ") NbAdj;
 		Standard_Integer NbAdj ();
+		%feature("compactdefaultargs") GetAdj;
 		%feature("autodoc", "	:param index:
-	:type index: Standard_Integer
+	:type index: int
 	:rtype: int
 ") GetAdj;
 		Standard_Integer GetAdj (const Standard_Integer index);
+		%feature("compactdefaultargs") SetSC;
 		%feature("autodoc", "	:param SC:
 	:type SC: Handle_GraphTools_SC &
 	:rtype: None
 ") SetSC;
 		void SetSC (const Handle_GraphTools_SC & SC);
+		%feature("compactdefaultargs") GetSC;
 		%feature("autodoc", "	:rtype: Handle_GraphTools_SC
 ") GetSC;
 		Handle_GraphTools_SC GetSC ();
@@ -438,38 +483,47 @@ def __del__(self):
 %nodefaultctor GraphTools_SC;
 class GraphTools_SC : public MMgt_TShared {
 	public:
+		%feature("compactdefaultargs") GraphTools_SC;
 		%feature("autodoc", "	:rtype: None
 ") GraphTools_SC;
 		 GraphTools_SC ();
+		%feature("compactdefaultargs") Reset;
 		%feature("autodoc", "	:rtype: None
 ") Reset;
 		void Reset ();
+		%feature("compactdefaultargs") AddVertex;
 		%feature("autodoc", "	:param V:
-	:type V: Standard_Integer
+	:type V: int
 	:rtype: None
 ") AddVertex;
 		void AddVertex (const Standard_Integer V);
+		%feature("compactdefaultargs") NbVertices;
 		%feature("autodoc", "	:rtype: int
 ") NbVertices;
 		Standard_Integer NbVertices ();
+		%feature("compactdefaultargs") GetVertex;
 		%feature("autodoc", "	:param index:
-	:type index: Standard_Integer
+	:type index: int
 	:rtype: int
 ") GetVertex;
 		Standard_Integer GetVertex (const Standard_Integer index);
+		%feature("compactdefaultargs") AddFrontSC;
 		%feature("autodoc", "	:param SC:
 	:type SC: Handle_GraphTools_SC &
 	:rtype: None
 ") AddFrontSC;
 		void AddFrontSC (const Handle_GraphTools_SC & SC);
+		%feature("compactdefaultargs") GetFrontSC;
 		%feature("autodoc", "	:rtype: GraphTools_SCList
 ") GetFrontSC;
 		const GraphTools_SCList & GetFrontSC ();
+		%feature("compactdefaultargs") AddBackSC;
 		%feature("autodoc", "	:param SC:
 	:type SC: Handle_GraphTools_SC &
 	:rtype: None
 ") AddBackSC;
 		void AddBackSC (const Handle_GraphTools_SC & SC);
+		%feature("compactdefaultargs") GetBackSC;
 		%feature("autodoc", "	:rtype: GraphTools_SCList
 ") GetBackSC;
 		const GraphTools_SCList & GetBackSC ();
@@ -532,33 +586,41 @@ def __del__(self):
 %nodefaultctor GraphTools_SCList;
 class GraphTools_SCList {
 	public:
+		%feature("compactdefaultargs") GraphTools_SCList;
 		%feature("autodoc", "	:rtype: None
 ") GraphTools_SCList;
 		 GraphTools_SCList ();
+		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: GraphTools_SCList &
 	:rtype: None
 ") Assign;
 		void Assign (const GraphTools_SCList & Other);
+		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", "	:param Other:
 	:type Other: GraphTools_SCList &
 	:rtype: None
 ") operator=;
 		void operator = (const GraphTools_SCList & Other);
+		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
 ") Extent;
 		Standard_Integer Extent ();
+		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
 		void Clear ();
+		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "	:rtype: bool
 ") IsEmpty;
 		Standard_Boolean IsEmpty ();
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param I:
 	:type I: Handle_GraphTools_SC &
 	:rtype: None
 ") Prepend;
 		void Prepend (const Handle_GraphTools_SC & I);
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param I:
 	:type I: Handle_GraphTools_SC &
 	:param theIt:
@@ -566,16 +628,19 @@ class GraphTools_SCList {
 	:rtype: None
 ") Prepend;
 		void Prepend (const Handle_GraphTools_SC & I,GraphTools_ListIteratorOfSCList & theIt);
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param Other:
 	:type Other: GraphTools_SCList &
 	:rtype: None
 ") Prepend;
 		void Prepend (GraphTools_SCList & Other);
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param I:
 	:type I: Handle_GraphTools_SC &
 	:rtype: None
 ") Append;
 		void Append (const Handle_GraphTools_SC & I);
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param I:
 	:type I: Handle_GraphTools_SC &
 	:param theIt:
@@ -583,25 +648,31 @@ class GraphTools_SCList {
 	:rtype: None
 ") Append;
 		void Append (const Handle_GraphTools_SC & I,GraphTools_ListIteratorOfSCList & theIt);
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param Other:
 	:type Other: GraphTools_SCList &
 	:rtype: None
 ") Append;
 		void Append (GraphTools_SCList & Other);
+		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_GraphTools_SC
 ") First;
 		Handle_GraphTools_SC & First ();
+		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_GraphTools_SC
 ") Last;
 		Handle_GraphTools_SC & Last ();
+		%feature("compactdefaultargs") RemoveFirst;
 		%feature("autodoc", "	:rtype: None
 ") RemoveFirst;
 		void RemoveFirst ();
+		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param It:
 	:type It: GraphTools_ListIteratorOfSCList &
 	:rtype: None
 ") Remove;
 		void Remove (GraphTools_ListIteratorOfSCList & It);
+		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "	:param I:
 	:type I: Handle_GraphTools_SC &
 	:param It:
@@ -609,6 +680,7 @@ class GraphTools_SCList {
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (const Handle_GraphTools_SC & I,GraphTools_ListIteratorOfSCList & It);
+		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "	:param Other:
 	:type Other: GraphTools_SCList &
 	:param It:
@@ -616,6 +688,7 @@ class GraphTools_SCList {
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (GraphTools_SCList & Other,GraphTools_ListIteratorOfSCList & It);
+		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "	:param I:
 	:type I: Handle_GraphTools_SC &
 	:param It:
@@ -623,6 +696,7 @@ class GraphTools_SCList {
 	:rtype: None
 ") InsertAfter;
 		void InsertAfter (const Handle_GraphTools_SC & I,GraphTools_ListIteratorOfSCList & It);
+		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "	:param Other:
 	:type Other: GraphTools_SCList &
 	:param It:
@@ -650,31 +724,39 @@ def __del__(self):
 %nodefaultctor GraphTools_TSNode;
 class GraphTools_TSNode {
 	public:
+		%feature("compactdefaultargs") GraphTools_TSNode;
 		%feature("autodoc", "	:rtype: None
 ") GraphTools_TSNode;
 		 GraphTools_TSNode ();
+		%feature("compactdefaultargs") Reset;
 		%feature("autodoc", "	:rtype: None
 ") Reset;
 		void Reset ();
+		%feature("compactdefaultargs") IncreaseRef;
 		%feature("autodoc", "	:rtype: None
 ") IncreaseRef;
 		void IncreaseRef ();
+		%feature("compactdefaultargs") DecreaseRef;
 		%feature("autodoc", "	:rtype: None
 ") DecreaseRef;
 		void DecreaseRef ();
+		%feature("compactdefaultargs") NbRef;
 		%feature("autodoc", "	:rtype: int
 ") NbRef;
 		Standard_Integer NbRef ();
+		%feature("compactdefaultargs") AddSuccessor;
 		%feature("autodoc", "	:param s:
-	:type s: Standard_Integer
+	:type s: int
 	:rtype: None
 ") AddSuccessor;
 		void AddSuccessor (const Standard_Integer s);
+		%feature("compactdefaultargs") NbSuccessors;
 		%feature("autodoc", "	:rtype: int
 ") NbSuccessors;
 		Standard_Integer NbSuccessors ();
+		%feature("compactdefaultargs") GetSuccessor;
 		%feature("autodoc", "	:param index:
-	:type index: Standard_Integer
+	:type index: int
 	:rtype: int
 ") GetSuccessor;
 		Standard_Integer GetSuccessor (const Standard_Integer index);

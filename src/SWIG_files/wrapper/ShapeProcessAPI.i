@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -43,6 +43,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor ShapeProcessAPI_ApplySequence;
 class ShapeProcessAPI_ApplySequence {
 	public:
+		%feature("compactdefaultargs") ShapeProcessAPI_ApplySequence;
 		%feature("autodoc", "	* Creates an object and loads resource file and sequence of operators given by their names.
 
 	:param rscName:
@@ -52,11 +53,13 @@ class ShapeProcessAPI_ApplySequence {
 	:rtype: None
 ") ShapeProcessAPI_ApplySequence;
 		 ShapeProcessAPI_ApplySequence (const char * rscName,const char * seqName = "");
+		%feature("compactdefaultargs") Context;
 		%feature("autodoc", "	* Returns object for managing resource file and sequence of operators.
 
 	:rtype: Handle_ShapeProcess_ShapeContext
 ") Context;
 		Handle_ShapeProcess_ShapeContext & Context ();
+		%feature("compactdefaultargs") PrepareShape;
 		%feature("autodoc", "	* Performs sequence of operators stored in myRsc. If <fillmap> is True adds history 'shape-shape' into myMap for shape and its subshapes until level <until> (included). If <until> is TopAbs_SHAPE, all the subshapes are considered.
 
 	:param shape:
@@ -68,16 +71,19 @@ class ShapeProcessAPI_ApplySequence {
 	:rtype: TopoDS_Shape
 ") PrepareShape;
 		TopoDS_Shape PrepareShape (const TopoDS_Shape & shape,const Standard_Boolean fillmap = Standard_False,const TopAbs_ShapeEnum until = TopAbs_SHAPE);
+		%feature("compactdefaultargs") ClearMap;
 		%feature("autodoc", "	* Clears myMap with accumulated history.
 
 	:rtype: None
 ") ClearMap;
 		void ClearMap ();
+		%feature("compactdefaultargs") Map;
 		%feature("autodoc", "	* Returns myMap with accumulated history.
 
 	:rtype: TopTools_DataMapOfShapeShape
 ") Map;
 		const TopTools_DataMapOfShapeShape & Map ();
+		%feature("compactdefaultargs") PrintPreparationResult;
 		%feature("autodoc", "	* Prints result of preparation onto the messenger of the context. Note that results can be accumulated from previous preparations it method ClearMap was not called before PrepareShape.
 
 	:rtype: None

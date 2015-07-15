@@ -38,6 +38,7 @@ from OCC.GProp import GProp_GProps
 from OCC.BRepGProp import brepgprop_LinearProperties
 from OCC.ShapeAnalysis import ShapeAnalysis_Curve
 from OCC.BRep import BRep_Builder
+from OCC.ChFiDS import ChFiDS_ChamfSpine
 
 
 class TestWrapperFeatures(unittest.TestCase):
@@ -222,6 +223,14 @@ class TestWrapperFeatures(unittest.TestCase):
         bb.MakeCompound(c)
         for child in [cyl1, cyl2]:
             bb.Add(c, child)
+
+    def test_standard_boolean_byref(self):
+        '''
+        Test byref returned standard_boolean
+        '''
+        cs = ChFiDS_ChamfSpine()
+        cs.SetDistAngle(1., 45, True)
+        assert cs.GetDistAngle() == (1.0, 45.0, True)
 
     def test_dump_to_string(self):
         '''

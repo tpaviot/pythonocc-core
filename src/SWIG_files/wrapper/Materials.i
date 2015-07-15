@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -43,6 +43,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %rename(materials) Materials;
 class Materials {
 	public:
+		%feature("compactdefaultargs") MaterialFile;
 		%feature("autodoc", "	* Sets the location and the name of the file defining the definition of a material, in term of properties.
 
 	:param afile:
@@ -50,6 +51,7 @@ class Materials {
 	:rtype: void
 ") MaterialFile;
 		static void MaterialFile (const char * afile);
+		%feature("compactdefaultargs") MaterialsFile;
 		%feature("autodoc", "	* Sets the location and the name of the file defining the dictionary of materials.
 
 	:param afile:
@@ -57,16 +59,19 @@ class Materials {
 	:rtype: void
 ") MaterialsFile;
 		static void MaterialsFile (const char * afile);
+		%feature("compactdefaultargs") MaterialsFile;
 		%feature("autodoc", "	* Returns the location and the name of the dictionary file of materials.
 
 	:rtype: char *
 ") MaterialsFile;
 		static char * MaterialsFile ();
+		%feature("compactdefaultargs") DictionaryOfMaterials;
 		%feature("autodoc", "	* Returns the dictionary of materials.The dictionary is created at the first call to this method, or if the dictionary is not up to date with respect to the file date.
 
 	:rtype: Handle_Materials_MaterialsDictionary
 ") DictionaryOfMaterials;
 		static Handle_Materials_MaterialsDictionary DictionaryOfMaterials ();
+		%feature("compactdefaultargs") ExistMaterial;
 		%feature("autodoc", "	* True if the materialofname aName exists ...
 
 	:param aName:
@@ -74,6 +79,7 @@ class Materials {
 	:rtype: bool
 ") ExistMaterial;
 		static Standard_Boolean ExistMaterial (const char * aName);
+		%feature("compactdefaultargs") Material;
 		%feature("autodoc", "	* Retrieves from the dictionary the object material with <amaterial> as name.
 
 	:param amaterial:
@@ -81,15 +87,17 @@ class Materials {
 	:rtype: Handle_Materials_Material
 ") Material;
 		static Handle_Materials_Material Material (const char * amaterial);
+		%feature("compactdefaultargs") NumberOfMaterials;
 		%feature("autodoc", "	* Returns the number of materials previously stored in the dictionary.
 
 	:rtype: int
 ") NumberOfMaterials;
 		static Standard_Integer NumberOfMaterials ();
+		%feature("compactdefaultargs") Material;
 		%feature("autodoc", "	* This method used with the previous one, allows the exploration of all the dictionary. It returns a Material instance.
 
 	:param anindex:
-	:type anindex: Standard_Integer
+	:type anindex: int
 	:rtype: Handle_Materials_Material
 ") Material;
 		static Handle_Materials_Material Material (const Standard_Integer anindex);
@@ -113,11 +121,13 @@ def __del__(self):
 %nodefaultctor Materials_Color;
 class Materials_Color : public Standard_Transient {
 	public:
+		%feature("compactdefaultargs") Materials_Color;
 		%feature("autodoc", "	* Creates an empty instance of Color.
 
 	:rtype: None
 ") Materials_Color;
 		 Materials_Color ();
+		%feature("compactdefaultargs") Materials_Color;
 		%feature("autodoc", "	* Creates an instance of Color, with <acolor> as color.
 
 	:param acolor:
@@ -125,6 +135,7 @@ class Materials_Color : public Standard_Transient {
 	:rtype: None
 ") Materials_Color;
 		 Materials_Color (const Quantity_Color & acolor);
+		%feature("compactdefaultargs") Color;
 		%feature("autodoc", "	* Sets <acolor> into <self>.
 
 	:param acolor:
@@ -132,11 +143,13 @@ class Materials_Color : public Standard_Transient {
 	:rtype: None
 ") Color;
 		void Color (const Quantity_Color & acolor);
+		%feature("compactdefaultargs") Color;
 		%feature("autodoc", "	* Returns a Quantity_Color corresponding to <self>.
 
 	:rtype: Quantity_Color
 ") Color;
 		Quantity_Color Color ();
+		%feature("compactdefaultargs") Color;
 		%feature("autodoc", "	* Get the values ( RGB or HLS ) between 0.0 and 1.0
 
 	:param aTypeOfColor:
@@ -150,6 +163,7 @@ class Materials_Color : public Standard_Transient {
 	:rtype: None
 ") Color;
 		void Color (const Quantity_TypeOfColor aTypeOfColor,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Color255;
 		%feature("autodoc", "	* Get the values ( RGB or HLS ) between 0.0 and 255.0
 
 	:param aTypeOfColor:
@@ -163,6 +177,7 @@ class Materials_Color : public Standard_Transient {
 	:rtype: None
 ") Color255;
 		void Color255 (const Quantity_TypeOfColor aTypeOfColor,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "	* Set the values ( RGB or HLS ) between 0.0 and 1.0
 
 	:param aTypeOfColor:
@@ -176,6 +191,7 @@ class Materials_Color : public Standard_Transient {
 	:rtype: None
 ") SetColor;
 		void SetColor (const Quantity_TypeOfColor aTypeOfColor,const Standard_Real Reel1,const Standard_Real Reel2,const Standard_Real Reel3);
+		%feature("compactdefaultargs") SetColor255;
 		%feature("autodoc", "	* Set the values ( RGB or HLS ) between 0.0 and 255.0
 
 	:param aTypeOfColor:
@@ -248,22 +264,27 @@ def __del__(self):
 %nodefaultctor Materials_FuzzyInstance;
 class Materials_FuzzyInstance : public Dynamic_FuzzyClass {
 	public:
+		%feature("compactdefaultargs") Materials_FuzzyInstance;
 		%feature("autodoc", "	:param atype:
 	:type atype: char *
 	:rtype: None
 ") Materials_FuzzyInstance;
 		 Materials_FuzzyInstance (const char * atype);
+		%feature("compactdefaultargs") Materials_FuzzyInstance;
 		%feature("autodoc", "	:param afuzzyinstance:
 	:type afuzzyinstance: Handle_Materials_FuzzyInstance &
 	:rtype: None
 ") Materials_FuzzyInstance;
 		 Materials_FuzzyInstance (const Handle_Materials_FuzzyInstance & afuzzyinstance);
+		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "	:rtype: TCollection_AsciiString
 ") Type;
 		virtual TCollection_AsciiString Type ();
+		%feature("compactdefaultargs") Definition;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_FuzzyClass
 ") Definition;
 		Handle_Dynamic_FuzzyClass Definition ();
+		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	:param aparameter:
 	:type aparameter: char *
 	:param avalue:
@@ -271,13 +292,15 @@ class Materials_FuzzyInstance : public Dynamic_FuzzyClass {
 	:rtype: void
 ") Parameter;
 		virtual void Parameter (const char * aparameter,const Standard_Boolean avalue);
+		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	:param aparameter:
 	:type aparameter: char *
 	:param avalue:
-	:type avalue: Standard_Integer
+	:type avalue: int
 	:rtype: void
 ") Parameter;
 		virtual void Parameter (const char * aparameter,const Standard_Integer avalue);
+		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	:param aparameter:
 	:type aparameter: char *
 	:param avalue:
@@ -285,6 +308,7 @@ class Materials_FuzzyInstance : public Dynamic_FuzzyClass {
 	:rtype: void
 ") Parameter;
 		virtual void Parameter (const char * aparameter,const Standard_Real avalue);
+		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	:param aparameter:
 	:type aparameter: char *
 	:param astring:
@@ -292,6 +316,7 @@ class Materials_FuzzyInstance : public Dynamic_FuzzyClass {
 	:rtype: void
 ") Parameter;
 		virtual void Parameter (const char * aparameter,const char * astring);
+		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	:param aparameter:
 	:type aparameter: char *
 	:param anobject:
@@ -299,20 +324,23 @@ class Materials_FuzzyInstance : public Dynamic_FuzzyClass {
 	:rtype: void
 ") Parameter;
 		virtual void Parameter (const char * aparameter,const Handle_Standard_Transient & anobject);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:param aparameter:
 	:type aparameter: char *
 	:param avalue:
 	:type avalue: bool
 	:rtype: bool
 ") Value;
-		virtual Standard_Boolean Value (const char * aparameter,Standard_Boolean & avalue);
+		virtual Standard_Boolean Value (const char * aparameter,Standard_Boolean &OutValue);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:param aparameter:
 	:type aparameter: char *
 	:param avalue:
-	:type avalue: Standard_Integer &
+	:type avalue: int &
 	:rtype: bool
 ") Value;
 		virtual Standard_Boolean Value (const char * aparameter,Standard_Integer &OutValue);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:param aparameter:
 	:type aparameter: char *
 	:param avalue:
@@ -320,6 +348,7 @@ class Materials_FuzzyInstance : public Dynamic_FuzzyClass {
 	:rtype: bool
 ") Value;
 		virtual Standard_Boolean Value (const char * aparameter,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:param aparameter:
 	:type aparameter: char *
 	:param avalue:
@@ -327,6 +356,7 @@ class Materials_FuzzyInstance : public Dynamic_FuzzyClass {
 	:rtype: bool
 ") Value;
 		virtual Standard_Boolean Value (const char * aparameter,TCollection_AsciiString & avalue);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:param aparameter:
 	:type aparameter: char *
 	:param avalue:
@@ -401,11 +431,13 @@ def __del__(self):
 %nodefaultctor Materials_MaterialDefinition;
 class Materials_MaterialDefinition : public Dynamic_FuzzyDefinitionsDictionary {
 	public:
+		%feature("compactdefaultargs") Materials_MaterialDefinition;
 		%feature("autodoc", "	* Creates the exhaustive definition of a material.
 
 	:rtype: None
 ") Materials_MaterialDefinition;
 		 Materials_MaterialDefinition ();
+		%feature("compactdefaultargs") Switch;
 		%feature("autodoc", "	* Starting with the identifier of the parameter <aname>, the type of parameter <atype> and a string <avalue> which describes the values useful for this type of parameters, creates and returns a Parameter object from Dynamic.
 
 	:param aname:
@@ -476,11 +508,13 @@ def __del__(self):
 %nodefaultctor Materials_MaterialsDictionary;
 class Materials_MaterialsDictionary : public Standard_Transient {
 	public:
+		%feature("compactdefaultargs") Materials_MaterialsDictionary;
 		%feature("autodoc", "	* Returns a MaterialsDictionary object which contains the sequence of all the materials the user wants to consider.
 
 	:rtype: None
 ") Materials_MaterialsDictionary;
 		 Materials_MaterialsDictionary ();
+		%feature("compactdefaultargs") Material;
 		%feature("autodoc", "	* Retrieves from the dictionary the object material with <amaterial> as name. If <amaterial> does not exist in the dictionary an exeption is raised.
 
 	:param amaterial:
@@ -488,6 +522,7 @@ class Materials_MaterialsDictionary : public Standard_Transient {
 	:rtype: Handle_Materials_Material
 ") Material;
 		Handle_Materials_Material Material (const char * amaterial);
+		%feature("compactdefaultargs") ExistMaterial;
 		%feature("autodoc", "	* True if the materialofname aName exists ...
 
 	:param aName:
@@ -495,18 +530,21 @@ class Materials_MaterialsDictionary : public Standard_Transient {
 	:rtype: bool
 ") ExistMaterial;
 		Standard_Boolean ExistMaterial (const char * aName);
+		%feature("compactdefaultargs") NumberOfMaterials;
 		%feature("autodoc", "	* Returns the number of materials previously stored in the dictionary.
 
 	:rtype: int
 ") NumberOfMaterials;
 		Standard_Integer NumberOfMaterials ();
+		%feature("compactdefaultargs") Material;
 		%feature("autodoc", "	* This method used with the previous one, allow the exploration of all the dictionary. It returns a Material instance.
 
 	:param anindex:
-	:type anindex: Standard_Integer
+	:type anindex: int
 	:rtype: Handle_Materials_Material
 ") Material;
 		Handle_Materials_Material Material (const Standard_Integer anindex);
+		%feature("compactdefaultargs") UpToDate;
 		%feature("autodoc", "	* Returns true if there has been no modification of the file Materials.dat since the creation of the dictionary object, false otherwise.
 
 	:rtype: bool
@@ -579,116 +617,139 @@ def __del__(self):
 %nodefaultctor Materials_MaterialsSequence;
 class Materials_MaterialsSequence : public MMgt_TShared {
 	public:
+		%feature("compactdefaultargs") Materials_MaterialsSequence;
 		%feature("autodoc", "	:rtype: None
 ") Materials_MaterialsSequence;
 		 Materials_MaterialsSequence ();
+		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "	:rtype: bool
 ") IsEmpty;
 		Standard_Boolean IsEmpty ();
+		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
 ") Length;
 		Standard_Integer Length ();
+		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
 		void Clear ();
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param anItem:
 	:type anItem: Handle_Materials_Material &
 	:rtype: None
 ") Append;
 		void Append (const Handle_Materials_Material & anItem);
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param aSequence:
 	:type aSequence: Handle_Materials_MaterialsSequence &
 	:rtype: None
 ") Append;
 		void Append (const Handle_Materials_MaterialsSequence & aSequence);
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param anItem:
 	:type anItem: Handle_Materials_Material &
 	:rtype: None
 ") Prepend;
 		void Prepend (const Handle_Materials_Material & anItem);
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param aSequence:
 	:type aSequence: Handle_Materials_MaterialsSequence &
 	:rtype: None
 ") Prepend;
 		void Prepend (const Handle_Materials_MaterialsSequence & aSequence);
+		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "	:rtype: None
 ") Reverse;
 		void Reverse ();
+		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param anItem:
 	:type anItem: Handle_Materials_Material &
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Materials_Material & anItem);
+		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param aSequence:
 	:type aSequence: Handle_Materials_MaterialsSequence &
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Materials_MaterialsSequence & aSequence);
+		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param anItem:
 	:type anItem: Handle_Materials_Material &
 	:rtype: None
 ") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Materials_Material & anItem);
+		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param aSequence:
 	:type aSequence: Handle_Materials_MaterialsSequence &
 	:rtype: None
 ") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Materials_MaterialsSequence & aSequence);
+		%feature("compactdefaultargs") Exchange;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param anOtherIndex:
-	:type anOtherIndex: Standard_Integer
+	:type anOtherIndex: int
 	:rtype: None
 ") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
+		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:rtype: Handle_Materials_MaterialsSequence
 ") Split;
 		Handle_Materials_MaterialsSequence Split (const Standard_Integer anIndex);
+		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param anItem:
 	:type anItem: Handle_Materials_Material &
 	:rtype: None
 ") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Handle_Materials_Material & anItem);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:rtype: Handle_Materials_Material
 ") Value;
 		const Handle_Materials_Material & Value (const Standard_Integer anIndex);
+		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:rtype: Handle_Materials_Material
 ") ChangeValue;
 		Handle_Materials_Material & ChangeValue (const Standard_Integer anIndex);
+		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:rtype: None
 ") Remove;
 		void Remove (const Standard_Integer anIndex);
+		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param fromIndex:
-	:type fromIndex: Standard_Integer
+	:type fromIndex: int
 	:param toIndex:
-	:type toIndex: Standard_Integer
+	:type toIndex: int
 	:rtype: None
 ") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
+		%feature("compactdefaultargs") Sequence;
 		%feature("autodoc", "	:rtype: Materials_MtsSequence
 ") Sequence;
 		const Materials_MtsSequence & Sequence ();
+		%feature("compactdefaultargs") ChangeSequence;
 		%feature("autodoc", "	:rtype: Materials_MtsSequence
 ") ChangeSequence;
 		Materials_MtsSequence & ChangeSequence ();
+		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "	:rtype: Handle_Materials_MaterialsSequence
 ") ShallowCopy;
 		Handle_Materials_MaterialsSequence ShallowCopy ();
@@ -751,109 +812,129 @@ def __del__(self):
 %nodefaultctor Materials_MtsSequence;
 class Materials_MtsSequence : public TCollection_BaseSequence {
 	public:
+		%feature("compactdefaultargs") Materials_MtsSequence;
 		%feature("autodoc", "	:rtype: None
 ") Materials_MtsSequence;
 		 Materials_MtsSequence ();
+		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
 		void Clear ();
+		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: Materials_MtsSequence &
 	:rtype: Materials_MtsSequence
 ") Assign;
 		const Materials_MtsSequence & Assign (const Materials_MtsSequence & Other);
+		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", "	:param Other:
 	:type Other: Materials_MtsSequence &
 	:rtype: Materials_MtsSequence
 ") operator=;
 		const Materials_MtsSequence & operator = (const Materials_MtsSequence & Other);
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
 	:type T: Handle_Materials_Material &
 	:rtype: None
 ") Append;
 		void Append (const Handle_Materials_Material & T);
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param S:
 	:type S: Materials_MtsSequence &
 	:rtype: None
 ") Append;
 		void Append (Materials_MtsSequence & S);
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param T:
 	:type T: Handle_Materials_Material &
 	:rtype: None
 ") Prepend;
 		void Prepend (const Handle_Materials_Material & T);
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param S:
 	:type S: Materials_MtsSequence &
 	:rtype: None
 ") Prepend;
 		void Prepend (Materials_MtsSequence & S);
+		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param T:
 	:type T: Handle_Materials_Material &
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_Materials_Material & T);
+		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param S:
 	:type S: Materials_MtsSequence &
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Materials_MtsSequence & S);
+		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param T:
 	:type T: Handle_Materials_Material &
 	:rtype: None
 ") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_Materials_Material & T);
+		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param S:
 	:type S: Materials_MtsSequence &
 	:rtype: None
 ") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Materials_MtsSequence & S);
+		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Materials_Material
 ") First;
 		const Handle_Materials_Material & First ();
+		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Materials_Material
 ") Last;
 		const Handle_Materials_Material & Last ();
+		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param Sub:
 	:type Sub: Materials_MtsSequence &
 	:rtype: None
 ") Split;
 		void Split (const Standard_Integer Index,Materials_MtsSequence & Sub);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:rtype: Handle_Materials_Material
 ") Value;
 		const Handle_Materials_Material & Value (const Standard_Integer Index);
+		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param I:
 	:type I: Handle_Materials_Material &
 	:rtype: None
 ") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Materials_Material & I);
+		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:rtype: Handle_Materials_Material
 ") ChangeValue;
 		Handle_Materials_Material & ChangeValue (const Standard_Integer Index);
+		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:rtype: None
 ") Remove;
 		void Remove (const Standard_Integer Index);
+		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param FromIndex:
-	:type FromIndex: Standard_Integer
+	:type FromIndex: int
 	:param ToIndex:
-	:type ToIndex: Standard_Integer
+	:type ToIndex: int
 	:rtype: None
 ") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
@@ -877,6 +958,7 @@ def __del__(self):
 %nodefaultctor Materials_SequenceNodeOfMtsSequence;
 class Materials_SequenceNodeOfMtsSequence : public TCollection_SeqNode {
 	public:
+		%feature("compactdefaultargs") Materials_SequenceNodeOfMtsSequence;
 		%feature("autodoc", "	:param I:
 	:type I: Handle_Materials_Material &
 	:param n:
@@ -886,6 +968,7 @@ class Materials_SequenceNodeOfMtsSequence : public TCollection_SeqNode {
 	:rtype: None
 ") Materials_SequenceNodeOfMtsSequence;
 		 Materials_SequenceNodeOfMtsSequence (const Handle_Materials_Material & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Materials_Material
 ") Value;
 		Handle_Materials_Material & Value ();
@@ -948,6 +1031,7 @@ def __del__(self):
 %nodefaultctor Materials_Material;
 class Materials_Material : public Materials_FuzzyInstance {
 	public:
+		%feature("compactdefaultargs") Materials_Material;
 		%feature("autodoc", "	* Creates the material <amaterial>.
 
 	:param amaterial:
@@ -955,6 +1039,7 @@ class Materials_Material : public Materials_FuzzyInstance {
 	:rtype: None
 ") Materials_Material;
 		 Materials_Material (const char * amaterial);
+		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "	* Returns the name of the material.
 
 	:rtype: TCollection_AsciiString

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -52,36 +52,43 @@ enum GccInt_IType {
 %nodefaultctor GccInt_Bisec;
 class GccInt_Bisec : public MMgt_TShared {
 	public:
+		%feature("compactdefaultargs") ArcType;
 		%feature("autodoc", "	* Returns the type of bisecting object (line, circle, parabola, hyperbola, ellipse, point).
 
 	:rtype: GccInt_IType
 ") ArcType;
 		virtual GccInt_IType ArcType ();
+		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "	* Returns the bisecting line when ArcType returns Pnt. An exception DomainError is raised if ArcType is not a Pnt.
 
 	:rtype: gp_Pnt2d
 ") Point;
 		virtual gp_Pnt2d Point ();
+		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "	* Returns the bisecting line when ArcType returns Lin. An exception DomainError is raised if ArcType is not a Lin.
 
 	:rtype: gp_Lin2d
 ") Line;
 		virtual gp_Lin2d Line ();
+		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", "	* Returns the bisecting line when ArcType returns Cir. An exception DomainError is raised if ArcType is not a Cir.
 
 	:rtype: gp_Circ2d
 ") Circle;
 		virtual gp_Circ2d Circle ();
+		%feature("compactdefaultargs") Hyperbola;
 		%feature("autodoc", "	* Returns the bisecting line when ArcType returns Hpr. An exception DomainError is raised if ArcType is not a Hpr.
 
 	:rtype: gp_Hypr2d
 ") Hyperbola;
 		virtual gp_Hypr2d Hyperbola ();
+		%feature("compactdefaultargs") Parabola;
 		%feature("autodoc", "	* Returns the bisecting line when ArcType returns Par. An exception DomainError is raised if ArcType is not a Par.
 
 	:rtype: gp_Parab2d
 ") Parabola;
 		virtual gp_Parab2d Parabola ();
+		%feature("compactdefaultargs") Ellipse;
 		%feature("autodoc", "	* Returns the bisecting line when ArcType returns Ell. An exception DomainError is raised if ArcType is not an Ell.
 
 	:rtype: gp_Elips2d
@@ -146,6 +153,7 @@ def __del__(self):
 %nodefaultctor GccInt_BCirc;
 class GccInt_BCirc : public GccInt_Bisec {
 	public:
+		%feature("compactdefaultargs") GccInt_BCirc;
 		%feature("autodoc", "	* Constructs a bisecting curve whose geometry is the 2D circle Circ.
 
 	:param Circ:
@@ -153,11 +161,13 @@ class GccInt_BCirc : public GccInt_Bisec {
 	:rtype: None
 ") GccInt_BCirc;
 		 GccInt_BCirc (const gp_Circ2d & Circ);
+		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", "	* Returns a 2D circle which is the geometry of this bisecting curve.
 
 	:rtype: gp_Circ2d
 ") Circle;
 		virtual gp_Circ2d Circle ();
+		%feature("compactdefaultargs") ArcType;
 		%feature("autodoc", "	* Returns GccInt_Cir, which is the type of any GccInt_BCirc bisecting curve.
 
 	:rtype: GccInt_IType
@@ -222,6 +232,7 @@ def __del__(self):
 %nodefaultctor GccInt_BElips;
 class GccInt_BElips : public GccInt_Bisec {
 	public:
+		%feature("compactdefaultargs") GccInt_BElips;
 		%feature("autodoc", "	* Constructs a bisecting curve whose geometry is the 2D ellipse Ellipse.
 
 	:param Ellipse:
@@ -229,11 +240,13 @@ class GccInt_BElips : public GccInt_Bisec {
 	:rtype: None
 ") GccInt_BElips;
 		 GccInt_BElips (const gp_Elips2d & Ellipse);
+		%feature("compactdefaultargs") Ellipse;
 		%feature("autodoc", "	* Returns a 2D ellipse which is the geometry of this bisecting curve.
 
 	:rtype: gp_Elips2d
 ") Ellipse;
 		virtual gp_Elips2d Ellipse ();
+		%feature("compactdefaultargs") ArcType;
 		%feature("autodoc", "	* Returns GccInt_Ell, which is the type of any GccInt_BElips bisecting curve.
 
 	:rtype: GccInt_IType
@@ -298,6 +311,7 @@ def __del__(self):
 %nodefaultctor GccInt_BHyper;
 class GccInt_BHyper : public GccInt_Bisec {
 	public:
+		%feature("compactdefaultargs") GccInt_BHyper;
 		%feature("autodoc", "	* Constructs a bisecting curve whose geometry is the 2D hyperbola Hyper.
 
 	:param Hyper:
@@ -305,11 +319,13 @@ class GccInt_BHyper : public GccInt_Bisec {
 	:rtype: None
 ") GccInt_BHyper;
 		 GccInt_BHyper (const gp_Hypr2d & Hyper);
+		%feature("compactdefaultargs") Hyperbola;
 		%feature("autodoc", "	* Returns a 2D hyperbola which is the geometry of this bisecting curve.
 
 	:rtype: gp_Hypr2d
 ") Hyperbola;
 		virtual gp_Hypr2d Hyperbola ();
+		%feature("compactdefaultargs") ArcType;
 		%feature("autodoc", "	* Returns GccInt_Hpr, which is the type of any GccInt_BHyper bisecting curve.
 
 	:rtype: GccInt_IType
@@ -374,6 +390,7 @@ def __del__(self):
 %nodefaultctor GccInt_BLine;
 class GccInt_BLine : public GccInt_Bisec {
 	public:
+		%feature("compactdefaultargs") GccInt_BLine;
 		%feature("autodoc", "	* Constructs a bisecting line whose geometry is the 2D line Line.
 
 	:param Line:
@@ -381,11 +398,13 @@ class GccInt_BLine : public GccInt_Bisec {
 	:rtype: None
 ") GccInt_BLine;
 		 GccInt_BLine (const gp_Lin2d & Line);
+		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "	* Returns a 2D line which is the geometry of this bisecting line.
 
 	:rtype: gp_Lin2d
 ") Line;
 		virtual gp_Lin2d Line ();
+		%feature("compactdefaultargs") ArcType;
 		%feature("autodoc", "	* Returns GccInt_Lin, which is the type of any GccInt_BLine bisecting line.
 
 	:rtype: GccInt_IType
@@ -450,6 +469,7 @@ def __del__(self):
 %nodefaultctor GccInt_BParab;
 class GccInt_BParab : public GccInt_Bisec {
 	public:
+		%feature("compactdefaultargs") GccInt_BParab;
 		%feature("autodoc", "	* Constructs a bisecting curve whose geometry is the 2D parabola Parab.
 
 	:param Parab:
@@ -457,11 +477,13 @@ class GccInt_BParab : public GccInt_Bisec {
 	:rtype: None
 ") GccInt_BParab;
 		 GccInt_BParab (const gp_Parab2d & Parab);
+		%feature("compactdefaultargs") Parabola;
 		%feature("autodoc", "	* Returns a 2D parabola which is the geometry of this bisecting curve.
 
 	:rtype: gp_Parab2d
 ") Parabola;
 		virtual gp_Parab2d Parabola ();
+		%feature("compactdefaultargs") ArcType;
 		%feature("autodoc", "	* Returns GccInt_Par, which is the type of any GccInt_BParab bisecting curve.
 
 	:rtype: GccInt_IType
@@ -526,6 +548,7 @@ def __del__(self):
 %nodefaultctor GccInt_BPoint;
 class GccInt_BPoint : public GccInt_Bisec {
 	public:
+		%feature("compactdefaultargs") GccInt_BPoint;
 		%feature("autodoc", "	* Constructs a bisecting object whose geometry is the 2D point Point.
 
 	:param Point:
@@ -533,11 +556,13 @@ class GccInt_BPoint : public GccInt_Bisec {
 	:rtype: None
 ") GccInt_BPoint;
 		 GccInt_BPoint (const gp_Pnt2d & Point);
+		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "	* Returns a 2D point which is the geometry of this bisecting object.
 
 	:rtype: gp_Pnt2d
 ") Point;
 		virtual gp_Pnt2d Point ();
+		%feature("compactdefaultargs") ArcType;
 		%feature("autodoc", "	* Returns GccInt_Pnt, which is the type of any GccInt_BPoint bisecting object.
 
 	:rtype: GccInt_IType

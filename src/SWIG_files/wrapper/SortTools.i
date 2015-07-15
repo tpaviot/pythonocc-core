@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -42,6 +42,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 class SortTools_HeapSortOfInteger {
 	public:
+		%feature("compactdefaultargs") Sort;
 		%feature("autodoc", "	:param TheArray:
 	:type TheArray: TColStd_Array1OfInteger &
 	:param Comp:
@@ -68,6 +69,7 @@ def __del__(self):
 };
 class SortTools_HeapSortOfReal {
 	public:
+		%feature("compactdefaultargs") Sort;
 		%feature("autodoc", "	:param TheArray:
 	:type TheArray: TColStd_Array1OfReal &
 	:param Comp:
@@ -94,6 +96,7 @@ def __del__(self):
 };
 class SortTools_QuickSortOfInteger {
 	public:
+		%feature("compactdefaultargs") Sort;
 		%feature("autodoc", "	:param TheArray:
 	:type TheArray: TColStd_Array1OfInteger &
 	:param Comp:
@@ -120,6 +123,7 @@ def __del__(self):
 };
 class SortTools_QuickSortOfReal {
 	public:
+		%feature("compactdefaultargs") Sort;
 		%feature("autodoc", "	:param TheArray:
 	:type TheArray: TColStd_Array1OfReal &
 	:param Comp:
@@ -146,6 +150,7 @@ def __del__(self):
 };
 class SortTools_ShellSortOfInteger {
 	public:
+		%feature("compactdefaultargs") Sort;
 		%feature("autodoc", "	:param TheArray:
 	:type TheArray: TColStd_Array1OfInteger &
 	:param Comp:
@@ -172,6 +177,7 @@ def __del__(self):
 };
 class SortTools_ShellSortOfReal {
 	public:
+		%feature("compactdefaultargs") Sort;
 		%feature("autodoc", "	:param TheArray:
 	:type TheArray: TColStd_Array1OfReal &
 	:param Comp:
@@ -198,6 +204,7 @@ def __del__(self):
 };
 class SortTools_StraightInsertionSortOfInteger {
 	public:
+		%feature("compactdefaultargs") Sort;
 		%feature("autodoc", "	:param TheArray:
 	:type TheArray: TColStd_Array1OfInteger &
 	:param Comp:
@@ -224,6 +231,7 @@ def __del__(self):
 };
 class SortTools_StraightInsertionSortOfReal {
 	public:
+		%feature("compactdefaultargs") Sort;
 		%feature("autodoc", "	:param TheArray:
 	:type TheArray: TColStd_Array1OfReal &
 	:param Comp:

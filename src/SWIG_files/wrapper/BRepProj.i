@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -43,6 +43,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor BRepProj_Projection;
 class BRepProj_Projection {
 	public:
+		%feature("compactdefaultargs") BRepProj_Projection;
 		%feature("autodoc", "	* Makes a Cylindrical projection of Wire om Shape
 
 	:param Wire:
@@ -54,6 +55,7 @@ class BRepProj_Projection {
 	:rtype: None
 ") BRepProj_Projection;
 		 BRepProj_Projection (const TopoDS_Shape & Wire,const TopoDS_Shape & Shape,const gp_Dir & D);
+		%feature("compactdefaultargs") BRepProj_Projection;
 		%feature("autodoc", "	* Makes a Conical projection of Wire om Shape
 
 	:param Wire:
@@ -65,31 +67,37 @@ class BRepProj_Projection {
 	:rtype: None
 ") BRepProj_Projection;
 		 BRepProj_Projection (const TopoDS_Shape & Wire,const TopoDS_Shape & Shape,const gp_Pnt & P);
+		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	* returns False if the section failed
 
 	:rtype: bool
 ") IsDone;
 		Standard_Boolean IsDone ();
+		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Resets the iterator by resulting wires.
 
 	:rtype: None
 ") Init;
 		void Init ();
+		%feature("compactdefaultargs") More;
 		%feature("autodoc", "	* Returns True if there is a current result wire
 
 	:rtype: bool
 ") More;
 		Standard_Boolean More ();
+		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "	* Move to the next result wire.
 
 	:rtype: None
 ") Next;
 		void Next ();
+		%feature("compactdefaultargs") Current;
 		%feature("autodoc", "	* Returns the current result wire.
 
 	:rtype: TopoDS_Wire
 ") Current;
 		TopoDS_Wire Current ();
+		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "	* Returns the complete result as compound of wires.
 
 	:rtype: TopoDS_Compound

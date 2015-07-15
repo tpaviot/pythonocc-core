@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -43,6 +43,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %rename(stlapi) StlAPI;
 class StlAPI {
 	public:
+		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "	* Convert and write shape to STL format.  file is written in binary if aAsciiMode is False  otherwise it is written in Ascii (by default)
 
 	:param aShape:
@@ -54,6 +55,7 @@ class StlAPI {
 	:rtype: void
 ") Write;
 		static void Write (const TopoDS_Shape & aShape,const char * aFile,const Standard_Boolean aAsciiMode = Standard_True);
+		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "	* Create a shape from a STL format.
 
 	:param aShape:
@@ -83,9 +85,11 @@ def __del__(self):
 %nodefaultctor StlAPI_Reader;
 class StlAPI_Reader {
 	public:
+		%feature("compactdefaultargs") StlAPI_Reader;
 		%feature("autodoc", "	:rtype: None
 ") StlAPI_Reader;
 		 StlAPI_Reader ();
+		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "	:param aShape:
 	:type aShape: TopoDS_Shape &
 	:param aFileName:
@@ -113,11 +117,13 @@ def __del__(self):
 %nodefaultctor StlAPI_Writer;
 class StlAPI_Writer {
 	public:
+		%feature("compactdefaultargs") StlAPI_Writer;
 		%feature("autodoc", "	* Creates a writer object with default parameters: ASCIIMode, RelativeMode, SetCoefficent, SetDeflection. These parameters may be modified.
 
 	:rtype: None
 ") StlAPI_Writer;
 		 StlAPI_Writer ();
+		%feature("compactdefaultargs") SetDeflection;
 		%feature("autodoc", "	* Sets the deflection of the meshing algorithm. Deflection is used, only if relative mode is false
 
 	:param aDeflection:
@@ -125,6 +131,7 @@ class StlAPI_Writer {
 	:rtype: None
 ") SetDeflection;
 		void SetDeflection (const Standard_Real aDeflection);
+		%feature("compactdefaultargs") SetCoefficient;
 		%feature("autodoc", "	* Sets the coeffiecient for computation of deflection through relative size of shape. Default value = 0.001
 
 	:param aCoefficient:
@@ -158,7 +165,8 @@ class StlAPI_Writer {
                 $self->ASCIIMode()=value;
                 }
             };
-            		%feature("autodoc", "	* Converts a given shape to STL format and writes it to file with a given filename.
+            		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "	* Converts a given shape to STL format and writes it to file with a given filename.
 
 	:param aShape:
 	:type aShape: TopoDS_Shape &

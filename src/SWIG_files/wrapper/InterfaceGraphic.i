@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -35,22 +35,40 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include InterfaceGraphic_headers.i
 
 /* typedefs */
-typedef TEL_TRANSFORM_PERSISTENCE * tel_transform_persistence;
+typedef int Tint;
 typedef TEL_TEXTURE_COORD * tel_texture_coord;
 typedef double Tdouble;
 typedef unsigned short Techar;
 typedef TEL_POINT * tel_point;
 typedef TEL_COLOUR * tel_colour;
 typedef signed char Tchar;
-typedef union Points;
-typedef int Tint;
-typedef float CALL_DEF_MATRIX4X4 [ 4 ] [ 4 ];
+typedef TEL_TRANSFORM_PERSISTENCE * tel_transform_persistence;
 typedef float Tfloat;
 typedef unsigned int Tuint;
 typedef TEL_POFFSET_PARAM * tel_poffset_param;
+typedef float CALL_DEF_MATRIX4X4 [ 4 ][4];
 typedef char Tbool;
 /* end typedefs declaration */
 
 /* public enums */
+enum TelPrimitivesArrayType {
+	TelUnknownArrayType = 0,
+	TelPointsArrayType = 1,
+	TelPolylinesArrayType = 2,
+	TelSegmentsArrayType = 3,
+	TelPolygonsArrayType = 4,
+	TelTrianglesArrayType = 5,
+	TelQuadranglesArrayType = 6,
+	TelTriangleStripsArrayType = 7,
+	TelQuadrangleStripsArrayType = 8,
+	TelTriangleFansArrayType = 9,
+};
+
+enum TelCullMode {
+	TelCullNone = 0,
+	TelCullFront = 1,
+	TelCullBack = 2,
+};
+
 /* end public enums declaration */
 
