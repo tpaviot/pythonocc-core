@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -43,11 +43,13 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %rename(shapealgo) ShapeAlgo;
 class ShapeAlgo {
 	public:
+		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Provides initerface to the algorithms from Shape Healing. Creates and initializes default AlgoContainer.
 
 	:rtype: void
 ") Init;
 		static void Init ();
+		%feature("compactdefaultargs") SetAlgoContainer;
 		%feature("autodoc", "	* Sets default AlgoContainer
 
 	:param aContainer:
@@ -55,6 +57,7 @@ class ShapeAlgo {
 	:rtype: void
 ") SetAlgoContainer;
 		static void SetAlgoContainer (const Handle_ShapeAlgo_AlgoContainer & aContainer);
+		%feature("compactdefaultargs") AlgoContainer;
 		%feature("autodoc", "	* Returns default AlgoContainer
 
 	:rtype: Handle_ShapeAlgo_AlgoContainer
@@ -80,16 +83,19 @@ def __del__(self):
 %nodefaultctor ShapeAlgo_ToolContainer;
 class ShapeAlgo_ToolContainer : public MMgt_TShared {
 	public:
+		%feature("compactdefaultargs") ShapeAlgo_ToolContainer;
 		%feature("autodoc", "	* Empty constructor
 
 	:rtype: None
 ") ShapeAlgo_ToolContainer;
 		 ShapeAlgo_ToolContainer ();
+		%feature("compactdefaultargs") FixShape;
 		%feature("autodoc", "	* Returns ShapeFix_Shape
 
 	:rtype: Handle_ShapeFix_Shape
 ") FixShape;
 		virtual Handle_ShapeFix_Shape FixShape ();
+		%feature("compactdefaultargs") EdgeProjAux;
 		%feature("autodoc", "	* Returns ShapeFix_EdgeProjAux
 
 	:rtype: Handle_ShapeFix_EdgeProjAux

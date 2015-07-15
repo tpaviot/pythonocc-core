@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -42,6 +42,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 class ChFiKPart_ComputeData {
 	public:
+		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "	* Computes a simple fillet in several particular cases.
 
 	:param DStr:
@@ -59,10 +60,11 @@ class ChFiKPart_ComputeData {
 	:param Sp:
 	:type Sp: Handle_ChFiDS_Spine &
 	:param Iedge:
-	:type Iedge: Standard_Integer
+	:type Iedge: int
 	:rtype: bool
 ") Compute;
 		static Standard_Boolean Compute (TopOpeBRepDS_DataStructure & DStr,Handle_ChFiDS_SurfData & Data,const Handle_Adaptor3d_HSurface & S1,const Handle_Adaptor3d_HSurface & S2,const TopAbs_Orientation Or1,const TopAbs_Orientation Or2,const Handle_ChFiDS_Spine & Sp,const Standard_Integer Iedge);
+		%feature("compactdefaultargs") ComputeCorner;
 		%feature("autodoc", "	* Computes a toric or spheric corner fillet.
 
 	:param DStr:
@@ -96,6 +98,7 @@ class ChFiKPart_ComputeData {
 	:rtype: bool
 ") ComputeCorner;
 		static Standard_Boolean ComputeCorner (TopOpeBRepDS_DataStructure & DStr,const Handle_ChFiDS_SurfData & Data,const Handle_Adaptor3d_HSurface & S1,const Handle_Adaptor3d_HSurface & S2,const TopAbs_Orientation OrFace1,const TopAbs_Orientation OrFace2,const TopAbs_Orientation Or1,const TopAbs_Orientation Or2,const Standard_Real minRad,const Standard_Real majRad,const gp_Pnt2d & P1S1,const gp_Pnt2d & P2S1,const gp_Pnt2d & P1S2,const gp_Pnt2d & P2S2);
+		%feature("compactdefaultargs") ComputeCorner;
 		%feature("autodoc", "	* Computes spheric corner fillet with non iso pcurve on S2.
 
 	:param DStr:
@@ -125,6 +128,7 @@ class ChFiKPart_ComputeData {
 	:rtype: bool
 ") ComputeCorner;
 		static Standard_Boolean ComputeCorner (TopOpeBRepDS_DataStructure & DStr,const Handle_ChFiDS_SurfData & Data,const Handle_Adaptor3d_HSurface & S1,const Handle_Adaptor3d_HSurface & S2,const TopAbs_Orientation OrFace1,const TopAbs_Orientation OrFace2,const TopAbs_Orientation Or1,const TopAbs_Orientation Or2,const Standard_Real Rad,const gp_Pnt2d & PS1,const gp_Pnt2d & P1S2,const gp_Pnt2d & P2S2);
+		%feature("compactdefaultargs") ComputeCorner;
 		%feature("autodoc", "	* Computes a toric corner rotule.
 
 	:param DStr:
@@ -170,22 +174,27 @@ def __del__(self):
 %nodefaultctor ChFiKPart_DataMapIteratorOfRstMap;
 class ChFiKPart_DataMapIteratorOfRstMap : public TCollection_BasicMapIterator {
 	public:
+		%feature("compactdefaultargs") ChFiKPart_DataMapIteratorOfRstMap;
 		%feature("autodoc", "	:rtype: None
 ") ChFiKPart_DataMapIteratorOfRstMap;
 		 ChFiKPart_DataMapIteratorOfRstMap ();
+		%feature("compactdefaultargs") ChFiKPart_DataMapIteratorOfRstMap;
 		%feature("autodoc", "	:param aMap:
 	:type aMap: ChFiKPart_RstMap &
 	:rtype: None
 ") ChFiKPart_DataMapIteratorOfRstMap;
 		 ChFiKPart_DataMapIteratorOfRstMap (const ChFiKPart_RstMap & aMap);
+		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "	:param aMap:
 	:type aMap: ChFiKPart_RstMap &
 	:rtype: None
 ") Initialize;
 		void Initialize (const ChFiKPart_RstMap & aMap);
+		%feature("compactdefaultargs") Key;
 		%feature("autodoc", "	:rtype: int
 ") Key;
 		const Standard_Integer & Key ();
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Adaptor2d_HCurve2d
 ") Value;
 		const Handle_Adaptor2d_HCurve2d & Value ();
@@ -209,8 +218,9 @@ def __del__(self):
 %nodefaultctor ChFiKPart_DataMapNodeOfRstMap;
 class ChFiKPart_DataMapNodeOfRstMap : public TCollection_MapNode {
 	public:
+		%feature("compactdefaultargs") ChFiKPart_DataMapNodeOfRstMap;
 		%feature("autodoc", "	:param K:
-	:type K: Standard_Integer &
+	:type K: int &
 	:param I:
 	:type I: Handle_Adaptor2d_HCurve2d &
 	:param n:
@@ -231,7 +241,8 @@ class ChFiKPart_DataMapNodeOfRstMap : public TCollection_MapNode {
                 $self->Key()=value;
                 }
             };
-            		%feature("autodoc", "	:rtype: Handle_Adaptor2d_HCurve2d
+            		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "	:rtype: Handle_Adaptor2d_HCurve2d
 ") Value;
 		Handle_Adaptor2d_HCurve2d & Value ();
 };
@@ -293,63 +304,75 @@ def __del__(self):
 %nodefaultctor ChFiKPart_RstMap;
 class ChFiKPart_RstMap : public TCollection_BasicMap {
 	public:
+		%feature("compactdefaultargs") ChFiKPart_RstMap;
 		%feature("autodoc", "	:param NbBuckets: default value is 1
-	:type NbBuckets: Standard_Integer
+	:type NbBuckets: int
 	:rtype: None
 ") ChFiKPart_RstMap;
 		 ChFiKPart_RstMap (const Standard_Integer NbBuckets = 1);
+		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: ChFiKPart_RstMap &
 	:rtype: ChFiKPart_RstMap
 ") Assign;
 		ChFiKPart_RstMap & Assign (const ChFiKPart_RstMap & Other);
+		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", "	:param Other:
 	:type Other: ChFiKPart_RstMap &
 	:rtype: ChFiKPart_RstMap
 ") operator=;
 		ChFiKPart_RstMap & operator = (const ChFiKPart_RstMap & Other);
+		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "	:param NbBuckets:
-	:type NbBuckets: Standard_Integer
+	:type NbBuckets: int
 	:rtype: None
 ") ReSize;
 		void ReSize (const Standard_Integer NbBuckets);
+		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
 		void Clear ();
+		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "	:param K:
-	:type K: Standard_Integer &
+	:type K: int &
 	:param I:
 	:type I: Handle_Adaptor2d_HCurve2d &
 	:rtype: bool
 ") Bind;
 		Standard_Boolean Bind (const Standard_Integer & K,const Handle_Adaptor2d_HCurve2d & I);
+		%feature("compactdefaultargs") IsBound;
 		%feature("autodoc", "	:param K:
-	:type K: Standard_Integer &
+	:type K: int &
 	:rtype: bool
 ") IsBound;
 		Standard_Boolean IsBound (const Standard_Integer & K);
+		%feature("compactdefaultargs") UnBind;
 		%feature("autodoc", "	:param K:
-	:type K: Standard_Integer &
+	:type K: int &
 	:rtype: bool
 ") UnBind;
 		Standard_Boolean UnBind (const Standard_Integer & K);
+		%feature("compactdefaultargs") Find;
 		%feature("autodoc", "	:param K:
-	:type K: Standard_Integer &
+	:type K: int &
 	:rtype: Handle_Adaptor2d_HCurve2d
 ") Find;
 		const Handle_Adaptor2d_HCurve2d & Find (const Standard_Integer & K);
+		%feature("compactdefaultargs") ChangeFind;
 		%feature("autodoc", "	:param K:
-	:type K: Standard_Integer &
+	:type K: int &
 	:rtype: Handle_Adaptor2d_HCurve2d
 ") ChangeFind;
 		Handle_Adaptor2d_HCurve2d & ChangeFind (const Standard_Integer & K);
+		%feature("compactdefaultargs") Find1;
 		%feature("autodoc", "	:param K:
-	:type K: Standard_Integer &
+	:type K: int &
 	:rtype: Standard_Address
 ") Find1;
 		Standard_Address Find1 (const Standard_Integer & K);
+		%feature("compactdefaultargs") ChangeFind1;
 		%feature("autodoc", "	:param K:
-	:type K: Standard_Integer &
+	:type K: int &
 	:rtype: Standard_Address
 ") ChangeFind1;
 		Standard_Address ChangeFind1 (const Standard_Integer & K);

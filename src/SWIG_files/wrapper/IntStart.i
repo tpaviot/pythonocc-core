@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -43,6 +43,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor IntStart_SITopolTool;
 class IntStart_SITopolTool : public MMgt_TShared {
 	public:
+		%feature("compactdefaultargs") Classify;
 		%feature("autodoc", "	:param P:
 	:type P: gp_Pnt2d
 	:param Tol:

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -718,66 +718,79 @@ enum Quantity_TypeOfColor {
 %nodefaultctor Quantity_Array1OfCoefficient;
 class Quantity_Array1OfCoefficient {
 	public:
+		%feature("compactdefaultargs") Quantity_Array1OfCoefficient;
 		%feature("autodoc", "	:param Low:
-	:type Low: Standard_Integer
+	:type Low: int
 	:param Up:
-	:type Up: Standard_Integer
+	:type Up: int
 	:rtype: None
 ") Quantity_Array1OfCoefficient;
 		 Quantity_Array1OfCoefficient (const Standard_Integer Low,const Standard_Integer Up);
+		%feature("compactdefaultargs") Quantity_Array1OfCoefficient;
 		%feature("autodoc", "	:param Item:
 	:type Item: Quantity_Coefficient &
 	:param Low:
-	:type Low: Standard_Integer
+	:type Low: int
 	:param Up:
-	:type Up: Standard_Integer
+	:type Up: int
 	:rtype: None
 ") Quantity_Array1OfCoefficient;
 		 Quantity_Array1OfCoefficient (const Quantity_Coefficient & Item,const Standard_Integer Low,const Standard_Integer Up);
+		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param V:
 	:type V: Quantity_Coefficient &
 	:rtype: None
 ") Init;
 		void Init (const Quantity_Coefficient & V);
+		%feature("compactdefaultargs") Destroy;
 		%feature("autodoc", "	:rtype: None
 ") Destroy;
 		void Destroy ();
+		%feature("compactdefaultargs") IsAllocated;
 		%feature("autodoc", "	:rtype: bool
 ") IsAllocated;
 		Standard_Boolean IsAllocated ();
+		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: Quantity_Array1OfCoefficient &
 	:rtype: Quantity_Array1OfCoefficient
 ") Assign;
 		const Quantity_Array1OfCoefficient & Assign (const Quantity_Array1OfCoefficient & Other);
+		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", "	:param Other:
 	:type Other: Quantity_Array1OfCoefficient &
 	:rtype: Quantity_Array1OfCoefficient
 ") operator=;
 		const Quantity_Array1OfCoefficient & operator = (const Quantity_Array1OfCoefficient & Other);
+		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
 ") Length;
 		Standard_Integer Length ();
+		%feature("compactdefaultargs") Lower;
 		%feature("autodoc", "	:rtype: int
 ") Lower;
 		Standard_Integer Lower ();
+		%feature("compactdefaultargs") Upper;
 		%feature("autodoc", "	:rtype: int
 ") Upper;
 		Standard_Integer Upper ();
+		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param Value:
 	:type Value: Quantity_Coefficient &
 	:rtype: None
 ") SetValue;
 		void SetValue (const Standard_Integer Index,const Quantity_Coefficient & Value);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:rtype: Quantity_Coefficient
 ") Value;
 		const Quantity_Coefficient & Value (const Standard_Integer Index);
+		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:rtype: Quantity_Coefficient
 ") ChangeValue;
 		Quantity_Coefficient & ChangeValue (const Standard_Integer Index);
@@ -801,66 +814,79 @@ def __del__(self):
 %nodefaultctor Quantity_Array1OfColor;
 class Quantity_Array1OfColor {
 	public:
+		%feature("compactdefaultargs") Quantity_Array1OfColor;
 		%feature("autodoc", "	:param Low:
-	:type Low: Standard_Integer
+	:type Low: int
 	:param Up:
-	:type Up: Standard_Integer
+	:type Up: int
 	:rtype: None
 ") Quantity_Array1OfColor;
 		 Quantity_Array1OfColor (const Standard_Integer Low,const Standard_Integer Up);
+		%feature("compactdefaultargs") Quantity_Array1OfColor;
 		%feature("autodoc", "	:param Item:
 	:type Item: Quantity_Color &
 	:param Low:
-	:type Low: Standard_Integer
+	:type Low: int
 	:param Up:
-	:type Up: Standard_Integer
+	:type Up: int
 	:rtype: None
 ") Quantity_Array1OfColor;
 		 Quantity_Array1OfColor (const Quantity_Color & Item,const Standard_Integer Low,const Standard_Integer Up);
+		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param V:
 	:type V: Quantity_Color &
 	:rtype: None
 ") Init;
 		void Init (const Quantity_Color & V);
+		%feature("compactdefaultargs") Destroy;
 		%feature("autodoc", "	:rtype: None
 ") Destroy;
 		void Destroy ();
+		%feature("compactdefaultargs") IsAllocated;
 		%feature("autodoc", "	:rtype: bool
 ") IsAllocated;
 		Standard_Boolean IsAllocated ();
+		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: Quantity_Array1OfColor &
 	:rtype: Quantity_Array1OfColor
 ") Assign;
 		const Quantity_Array1OfColor & Assign (const Quantity_Array1OfColor & Other);
+		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", "	:param Other:
 	:type Other: Quantity_Array1OfColor &
 	:rtype: Quantity_Array1OfColor
 ") operator=;
 		const Quantity_Array1OfColor & operator = (const Quantity_Array1OfColor & Other);
+		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
 ") Length;
 		Standard_Integer Length ();
+		%feature("compactdefaultargs") Lower;
 		%feature("autodoc", "	:rtype: int
 ") Lower;
 		Standard_Integer Lower ();
+		%feature("compactdefaultargs") Upper;
 		%feature("autodoc", "	:rtype: int
 ") Upper;
 		Standard_Integer Upper ();
+		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param Value:
 	:type Value: Quantity_Color &
 	:rtype: None
 ") SetValue;
 		void SetValue (const Standard_Integer Index,const Quantity_Color & Value);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:rtype: Quantity_Color
 ") Value;
 		const Quantity_Color & Value (const Standard_Integer Index);
+		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:rtype: Quantity_Color
 ") ChangeValue;
 		Quantity_Color & ChangeValue (const Standard_Integer Index);
@@ -884,86 +910,101 @@ def __del__(self):
 %nodefaultctor Quantity_Array2OfColor;
 class Quantity_Array2OfColor {
 	public:
+		%feature("compactdefaultargs") Quantity_Array2OfColor;
 		%feature("autodoc", "	:param R1:
-	:type R1: Standard_Integer
+	:type R1: int
 	:param R2:
-	:type R2: Standard_Integer
+	:type R2: int
 	:param C1:
-	:type C1: Standard_Integer
+	:type C1: int
 	:param C2:
-	:type C2: Standard_Integer
+	:type C2: int
 	:rtype: None
 ") Quantity_Array2OfColor;
 		 Quantity_Array2OfColor (const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+		%feature("compactdefaultargs") Quantity_Array2OfColor;
 		%feature("autodoc", "	:param Item:
 	:type Item: Quantity_Color &
 	:param R1:
-	:type R1: Standard_Integer
+	:type R1: int
 	:param R2:
-	:type R2: Standard_Integer
+	:type R2: int
 	:param C1:
-	:type C1: Standard_Integer
+	:type C1: int
 	:param C2:
-	:type C2: Standard_Integer
+	:type C2: int
 	:rtype: None
 ") Quantity_Array2OfColor;
 		 Quantity_Array2OfColor (const Quantity_Color & Item,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param V:
 	:type V: Quantity_Color &
 	:rtype: None
 ") Init;
 		void Init (const Quantity_Color & V);
+		%feature("compactdefaultargs") Destroy;
 		%feature("autodoc", "	:rtype: None
 ") Destroy;
 		void Destroy ();
+		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: Quantity_Array2OfColor &
 	:rtype: Quantity_Array2OfColor
 ") Assign;
 		const Quantity_Array2OfColor & Assign (const Quantity_Array2OfColor & Other);
+		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", "	:param Other:
 	:type Other: Quantity_Array2OfColor &
 	:rtype: Quantity_Array2OfColor
 ") operator=;
 		const Quantity_Array2OfColor & operator = (const Quantity_Array2OfColor & Other);
+		%feature("compactdefaultargs") ColLength;
 		%feature("autodoc", "	:rtype: int
 ") ColLength;
 		Standard_Integer ColLength ();
+		%feature("compactdefaultargs") RowLength;
 		%feature("autodoc", "	:rtype: int
 ") RowLength;
 		Standard_Integer RowLength ();
+		%feature("compactdefaultargs") LowerCol;
 		%feature("autodoc", "	:rtype: int
 ") LowerCol;
 		Standard_Integer LowerCol ();
+		%feature("compactdefaultargs") LowerRow;
 		%feature("autodoc", "	:rtype: int
 ") LowerRow;
 		Standard_Integer LowerRow ();
+		%feature("compactdefaultargs") UpperCol;
 		%feature("autodoc", "	:rtype: int
 ") UpperCol;
 		Standard_Integer UpperCol ();
+		%feature("compactdefaultargs") UpperRow;
 		%feature("autodoc", "	:rtype: int
 ") UpperRow;
 		Standard_Integer UpperRow ();
+		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Row:
-	:type Row: Standard_Integer
+	:type Row: int
 	:param Col:
-	:type Col: Standard_Integer
+	:type Col: int
 	:param Value:
 	:type Value: Quantity_Color &
 	:rtype: None
 ") SetValue;
 		void SetValue (const Standard_Integer Row,const Standard_Integer Col,const Quantity_Color & Value);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:param Row:
-	:type Row: Standard_Integer
+	:type Row: int
 	:param Col:
-	:type Col: Standard_Integer
+	:type Col: int
 	:rtype: Quantity_Color
 ") Value;
 		const Quantity_Color & Value (const Standard_Integer Row,const Standard_Integer Col);
+		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Row:
-	:type Row: Standard_Integer
+	:type Row: int
 	:param Col:
-	:type Col: Standard_Integer
+	:type Col: int
 	:rtype: Quantity_Color
 ") ChangeValue;
 		Quantity_Color & ChangeValue (const Standard_Integer Row,const Standard_Integer Col);
@@ -987,11 +1028,13 @@ def __del__(self):
 %nodefaultctor Quantity_Color;
 class Quantity_Color {
 	public:
+		%feature("compactdefaultargs") Quantity_Color;
 		%feature("autodoc", "	* Creates a colour with the default value of //!	 Colour name : YELLOW
 
 	:rtype: None
 ") Quantity_Color;
 		 Quantity_Color ();
+		%feature("compactdefaultargs") Quantity_Color;
 		%feature("autodoc", "	* Creates the colour <AName>.
 
 	:param AName:
@@ -999,6 +1042,7 @@ class Quantity_Color {
 	:rtype: None
 ") Quantity_Color;
 		 Quantity_Color (const Quantity_NameOfColor AName);
+		%feature("compactdefaultargs") Quantity_Color;
 		%feature("autodoc", "	* Creates a colour according to the definition system //!	 TypeOfColor. //!	 TOC_RGB : <R1> the value of red between 0. and 1. //!		 <R2> the value of green between 0. and 1. //!		 <R3> the value of blue between 0. and 1. //!	 TOC_HLS : <R1> is the hue angle in degrees, 0. being red //!	 	 <R2> is the lightness between 0. and 1. //!		 <R3> is the saturation between 0. and 1.
 
 	:param R1:
@@ -1012,6 +1056,7 @@ class Quantity_Color {
 	:rtype: None
 ") Quantity_Color;
 		 Quantity_Color (const Quantity_Parameter R1,const Quantity_Parameter R2,const Quantity_Parameter R3,const Quantity_TypeOfColor AType);
+		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	* Updates the colour <self> from the definition of the //!	 colour <Other>.
 
 	:param Other:
@@ -1019,11 +1064,13 @@ class Quantity_Color {
 	:rtype: Quantity_Color
 ") Assign;
 		Quantity_Color & Assign (const Quantity_Color & Other);
+		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", "	:param Other:
 	:type Other: Quantity_Color &
 	:rtype: Quantity_Color
 ") operator=;
 		Quantity_Color & operator = (const Quantity_Color & Other);
+		%feature("compactdefaultargs") ChangeContrast;
 		%feature("autodoc", "	* Increases or decreases the contrast by <ADelta>. //!	 <ADelta> is a percentage. Any value greater than zero //!	 will increase the contrast. //!	 The variation is expressed as a percentage of the //!	 current value. //!	 It is a variation of the saturation.
 
 	:param ADelta:
@@ -1031,6 +1078,7 @@ class Quantity_Color {
 	:rtype: None
 ") ChangeContrast;
 		void ChangeContrast (const Quantity_Rate ADelta);
+		%feature("compactdefaultargs") ChangeIntensity;
 		%feature("autodoc", "	* Increases or decreases the intensity by <ADelta>. //!	 <ADelta> is a percentage. Any value greater than zero //!	 will increase the intensity. //!	 The variation is expressed as a percentage of the //!	 current value. //!	 It is a variation of the lightness.
 
 	:param ADelta:
@@ -1038,6 +1086,7 @@ class Quantity_Color {
 	:rtype: None
 ") ChangeIntensity;
 		void ChangeIntensity (const Quantity_Rate ADelta);
+		%feature("compactdefaultargs") SetValues;
 		%feature("autodoc", "	* Updates the colour <self> from the definition of the //!	 colour <AName>.
 
 	:param AName:
@@ -1045,6 +1094,7 @@ class Quantity_Color {
 	:rtype: None
 ") SetValues;
 		void SetValues (const Quantity_NameOfColor AName);
+		%feature("compactdefaultargs") SetValues;
 		%feature("autodoc", "	* Updates a colour according to the mode specified by //!	 TypeOfColor //!	 TOC_RGB : <R1> the value of red between 0. and 1. //!		 <R2> the value of green between 0. and 1. //!		 <R3> the value of blue between 0. and 1. //!	 TOC_HLS : <R1> is the hue angle in degrees, 0. being red //!	 	 <R2> is the lightness between 0. and 1. //!		 <R3> is the saturation between 0. and 1.
 
 	:param R1:
@@ -1058,6 +1108,7 @@ class Quantity_Color {
 	:rtype: None
 ") SetValues;
 		void SetValues (const Quantity_Parameter R1,const Quantity_Parameter R2,const Quantity_Parameter R3,const Quantity_TypeOfColor AType);
+		%feature("compactdefaultargs") Delta;
 		%feature("autodoc", "	* Returns the percentage change of contrast and intensity //!	 between <self> and <AColor>. //!	 <DC> and <DI> are percentages, either positive or negative. //!	 The calculation is with respect to the current value of <self> //!	 If <DC> is positive then <self> is more contrasty. //!	 If <DI> is positive then <self> is more intense.
 
 	:param AColor:
@@ -1069,6 +1120,7 @@ class Quantity_Color {
 	:rtype: None
 ") Delta;
 		void Delta (const Quantity_Color & AColor,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "	* Returns the distance between two colours. It's a //!	 value between 0 and the square root of 3 //!	 (the black/white distance)
 
 	:param AColor:
@@ -1076,6 +1128,7 @@ class Quantity_Color {
 	:rtype: float
 ") Distance;
 		Standard_Real Distance (const Quantity_Color & AColor);
+		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "	* Returns the square of distance between two colours.
 
 	:param AColor:
@@ -1083,21 +1136,25 @@ class Quantity_Color {
 	:rtype: float
 ") SquareDistance;
 		Standard_Real SquareDistance (const Quantity_Color & AColor);
+		%feature("compactdefaultargs") Blue;
 		%feature("autodoc", "	* Returns the Blue component (quantity of blue) of the //!	 color <self>.
 
 	:rtype: Quantity_Parameter
 ") Blue;
 		Quantity_Parameter Blue ();
+		%feature("compactdefaultargs") Green;
 		%feature("autodoc", "	* Returns the Green component (quantity of green) of the //!	 color <self>.
 
 	:rtype: Quantity_Parameter
 ") Green;
 		Quantity_Parameter Green ();
+		%feature("compactdefaultargs") Hue;
 		%feature("autodoc", "	* Returns the Hue component (hue angle) of the //!	 color <self>.
 
 	:rtype: Quantity_Parameter
 ") Hue;
 		Quantity_Parameter Hue ();
+		%feature("compactdefaultargs") IsDifferent;
 		%feature("autodoc", "	* Returns Standard_True if the distance between <self> and //!	 <Other> is greater than Epsilon ().
 
 	:param Other:
@@ -1119,7 +1176,8 @@ class Quantity_Color {
             except:
                 return True
         }
-        		%feature("autodoc", "	* Returns true if the Other color is - different from, or - equal to this color. Two colors are considered to be equal if their distance is no greater than Epsilon(). These methods are aliases of operator != and operator ==.
+        		%feature("compactdefaultargs") IsEqual;
+		%feature("autodoc", "	* Returns true if the Other color is - different from, or - equal to this color. Two colors are considered to be equal if their distance is no greater than Epsilon(). These methods are aliases of operator != and operator ==.
 
 	:param Other:
 	:type Other: Quantity_Color &
@@ -1140,26 +1198,31 @@ class Quantity_Color {
             except:
                 return False
         }
-        		%feature("autodoc", "	* Returns the Light component (value of the lightness) of the //!	 color <self>.
+        		%feature("compactdefaultargs") Light;
+		%feature("autodoc", "	* Returns the Light component (value of the lightness) of the //!	 color <self>.
 
 	:rtype: Quantity_Parameter
 ") Light;
 		Quantity_Parameter Light ();
+		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "	* Returns the name of the color defined by its quantities of red R, green G and blue B; more precisely this is the nearest color from the Quantity_NameOfColor enumeration. Exceptions Standard_OutOfRange if R, G or B is less than 0. or greater than 1.
 
 	:rtype: Quantity_NameOfColor
 ") Name;
 		Quantity_NameOfColor Name ();
+		%feature("compactdefaultargs") Red;
 		%feature("autodoc", "	* Returns the Red component (quantity of red) of the //!	 color <self>.
 
 	:rtype: Quantity_Parameter
 ") Red;
 		Quantity_Parameter Red ();
+		%feature("compactdefaultargs") Saturation;
 		%feature("autodoc", "	* Returns the Saturation component (value of the saturation) //!	 of the color <self>.
 
 	:rtype: Quantity_Parameter
 ") Saturation;
 		Quantity_Parameter Saturation ();
+		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "	* Returns in R1, R2 and R3 the components of this color according to the color system definition AType. - if AType is Quantity_TOC_RGB R1 is the quantity of red, R2 is the quantity of green and R3 is the quantity of blue in this color. - if AType is Quantity_TOC_HLS R1 is the hue angle in degrees (0 being red), R2 is the lightness and R3 is the saturation of this color.
 
 	:param R1:
@@ -1173,6 +1236,7 @@ class Quantity_Color {
 	:rtype: None
 ") Values;
 		void Values (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,const Quantity_TypeOfColor AType);
+		%feature("compactdefaultargs") SetEpsilon;
 		%feature("autodoc", "	* Sets the specified value used to compare <self> and //!	 an other color in IsDifferent and in IsEqual methods. Warning: The default value is 0.0001
 
 	:param AnEpsilon:
@@ -1180,11 +1244,13 @@ class Quantity_Color {
 	:rtype: void
 ") SetEpsilon;
 		static void SetEpsilon (const Quantity_Parameter AnEpsilon);
+		%feature("compactdefaultargs") Epsilon;
 		%feature("autodoc", "	* Returns the specified value used to compare <self> and //!	 an other color in IsDifferent and in IsEqual methods.
 
 	:rtype: Quantity_Parameter
 ") Epsilon;
 		static Quantity_Parameter Epsilon ();
+		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "	* Returns the name of the colour for which the RGB components //!	 are nearest to <R>, <G> and <B>.
 
 	:param R:
@@ -1196,6 +1262,7 @@ class Quantity_Color {
 	:rtype: Quantity_NameOfColor
 ") Name;
 		static Quantity_NameOfColor Name (const Quantity_Parameter R,const Quantity_Parameter G,const Quantity_Parameter B);
+		%feature("compactdefaultargs") StringName;
 		%feature("autodoc", "	* Returns the name of the color identified by AName in the Quantity_NameOfColor enumeration. For example, the name of the color which corresponds to Quantity_NOC_BLACK is 'BLACK'. Exceptions Standard_OutOfRange if AName in not known in the Quantity_NameOfColor enumeration.
 
 	:param AColor:
@@ -1203,6 +1270,7 @@ class Quantity_Color {
 	:rtype: char *
 ") StringName;
 		static char * StringName (const Quantity_NameOfColor AColor);
+		%feature("compactdefaultargs") HlsRgb;
 		%feature("autodoc", "	* Converts HLS components into RGB ones.
 
 	:param H:
@@ -1220,6 +1288,7 @@ class Quantity_Color {
 	:rtype: void
 ") HlsRgb;
 		static void HlsRgb (const Quantity_Parameter H,const Quantity_Parameter L,const Quantity_Parameter S,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") RgbHls;
 		%feature("autodoc", "	* Converts RGB components into HLS ones.
 
 	:param R:
@@ -1237,48 +1306,57 @@ class Quantity_Color {
 	:rtype: void
 ") RgbHls;
 		static void RgbHls (const Quantity_Parameter R,const Quantity_Parameter G,const Quantity_Parameter B,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Color2argb;
 		%feature("autodoc", "	* Convert the Color value to ARGB integer value. theARGB has Alpha equal to zero, so the output is formatted as 0x00RRGGBB
 
 	:param theColor:
 	:type theColor: Quantity_Color &
 	:param theARGB:
-	:type theARGB: Standard_Integer &
+	:type theARGB: int &
 	:rtype: void
 ") Color2argb;
 		static void Color2argb (const Quantity_Color & theColor,Standard_Integer &OutValue);
+		%feature("compactdefaultargs") Argb2color;
 		%feature("autodoc", "	* Convert integer ARGB value to Color. Alpha bits are ignored
 
 	:param theARGB:
-	:type theARGB: Standard_Integer
+	:type theARGB: int
 	:param theColor:
 	:type theColor: Quantity_Color &
 	:rtype: void
 ") Argb2color;
 		static void Argb2color (const Standard_Integer theARGB,Quantity_Color & theColor);
+		%feature("compactdefaultargs") Test;
 		%feature("autodoc", "	* Internal test
 
 	:rtype: void
 ") Test;
 		static void Test ();
+		%feature("compactdefaultargs") _CSFDB_GetQuantity_ColorMyRed;
 		%feature("autodoc", "	:rtype: Standard_ShortReal
 ") _CSFDB_GetQuantity_ColorMyRed;
 		Standard_ShortReal _CSFDB_GetQuantity_ColorMyRed ();
+		%feature("compactdefaultargs") _CSFDB_SetQuantity_ColorMyRed;
 		%feature("autodoc", "	:param p:
 	:type p: Standard_ShortReal
 	:rtype: None
 ") _CSFDB_SetQuantity_ColorMyRed;
 		void _CSFDB_SetQuantity_ColorMyRed (const Standard_ShortReal p);
+		%feature("compactdefaultargs") _CSFDB_GetQuantity_ColorMyGreen;
 		%feature("autodoc", "	:rtype: Standard_ShortReal
 ") _CSFDB_GetQuantity_ColorMyGreen;
 		Standard_ShortReal _CSFDB_GetQuantity_ColorMyGreen ();
+		%feature("compactdefaultargs") _CSFDB_SetQuantity_ColorMyGreen;
 		%feature("autodoc", "	:param p:
 	:type p: Standard_ShortReal
 	:rtype: None
 ") _CSFDB_SetQuantity_ColorMyGreen;
 		void _CSFDB_SetQuantity_ColorMyGreen (const Standard_ShortReal p);
+		%feature("compactdefaultargs") _CSFDB_GetQuantity_ColorMyBlue;
 		%feature("autodoc", "	:rtype: Standard_ShortReal
 ") _CSFDB_GetQuantity_ColorMyBlue;
 		Standard_ShortReal _CSFDB_GetQuantity_ColorMyBlue ();
+		%feature("compactdefaultargs") _CSFDB_SetQuantity_ColorMyBlue;
 		%feature("autodoc", "	:param p:
 	:type p: Standard_ShortReal
 	:rtype: None
@@ -1304,11 +1382,13 @@ def __del__(self):
 %nodefaultctor Quantity_Convert;
 class Quantity_Convert {
 	public:
+		%feature("compactdefaultargs") Quantity_Convert;
 		%feature("autodoc", "	* Creates an object;
 
 	:rtype: None
 ") Quantity_Convert;
 		 Quantity_Convert ();
+		%feature("compactdefaultargs") SetQuantity;
 		%feature("autodoc", "	* Updates the conversion table (correspondances between Quantities and conversion coefficients).
 
 	:param aQuantity:
@@ -1318,6 +1398,7 @@ class Quantity_Convert {
 	:rtype: void
 ") SetQuantity;
 		static void SetQuantity (const Quantity_PhysicalQuantity aQuantity,const Quantity_Coefficient aCoef);
+		%feature("compactdefaultargs") ConvertUserToSI;
 		%feature("autodoc", "	* Converts, from the conversion table, the value <aVal> from the user system to the SI system.
 
 	:param aQuantity:
@@ -1327,6 +1408,7 @@ class Quantity_Convert {
 	:rtype: float
 ") ConvertUserToSI;
 		static Standard_Real ConvertUserToSI (const Quantity_PhysicalQuantity aQuantity,const Standard_Real aVal);
+		%feature("compactdefaultargs") ConvertSIToUser;
 		%feature("autodoc", "	* Converts, from the conversion table, the value <aVal> from the SI system to the user system.
 
 	:param aQuantity:
@@ -1336,6 +1418,7 @@ class Quantity_Convert {
 	:rtype: float
 ") ConvertSIToUser;
 		static Standard_Real ConvertSIToUser (const Quantity_PhysicalQuantity aQuantity,const Standard_Real aVal);
+		%feature("compactdefaultargs") IsPhysicalQuantity;
 		%feature("autodoc", "	* if (aType is a physical quantity) returns True and the name of the associated PhysicalQuantity . else returns False.
 
 	:param aTypeName:
@@ -1365,74 +1448,79 @@ def __del__(self):
 %nodefaultctor Quantity_Date;
 class Quantity_Date {
 	public:
+		%feature("compactdefaultargs") Quantity_Date;
 		%feature("autodoc", "	* Constructs a default date (00:00 GMT, January 1, 1979 (zero hour)); use the function SetValues to define the required date; or
 
 	:rtype: None
 ") Quantity_Date;
 		 Quantity_Date ();
+		%feature("compactdefaultargs") Quantity_Date;
 		%feature("autodoc", "	* Constructs a date from the year yyyy, the month mm, the day dd, the hour hh, the minute mn, the second ss, the millisecond mis (defaulted to 0) and the microsecond mics (defaulted to 0).. With: 1 <= mm <= 12  1 <= dd <= max number of days of <mm>  1979 <= yyyy  0 <= hh <= 23  0 <= mn <= 59  0 <= ss <= 59  0 <= mis <= 999  0 <= mics <= 999 Exceptions Quantity_DateDefinitionError if mm, dd, hh, mn, ss, mis and mics are not the components of the valid date.
 
 	:param mm:
-	:type mm: Standard_Integer
+	:type mm: int
 	:param dd:
-	:type dd: Standard_Integer
+	:type dd: int
 	:param yyyy:
-	:type yyyy: Standard_Integer
+	:type yyyy: int
 	:param hh:
-	:type hh: Standard_Integer
+	:type hh: int
 	:param mn:
-	:type mn: Standard_Integer
+	:type mn: int
 	:param ss:
-	:type ss: Standard_Integer
+	:type ss: int
 	:param mis: default value is 0
-	:type mis: Standard_Integer
+	:type mis: int
 	:param mics: default value is 0
-	:type mics: Standard_Integer
+	:type mics: int
 	:rtype: None
 ") Quantity_Date;
 		 Quantity_Date (const Standard_Integer mm,const Standard_Integer dd,const Standard_Integer yyyy,const Standard_Integer hh,const Standard_Integer mn,const Standard_Integer ss,const Standard_Integer mis = 0,const Standard_Integer mics = 0);
+		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "	* Gets a complete Date. - in mm - the month, - in dd - the day, - in yyyy - the year, - in hh - the hour, - in mn - the minute, - in ss - the second, - in mis - the millisecond, and - in mics - the microsecond
 
 	:param mm:
-	:type mm: Standard_Integer &
+	:type mm: int &
 	:param dd:
-	:type dd: Standard_Integer &
+	:type dd: int &
 	:param yy:
-	:type yy: Standard_Integer &
+	:type yy: int &
 	:param hh:
-	:type hh: Standard_Integer &
+	:type hh: int &
 	:param mn:
-	:type mn: Standard_Integer &
+	:type mn: int &
 	:param ss:
-	:type ss: Standard_Integer &
+	:type ss: int &
 	:param mis:
-	:type mis: Standard_Integer &
+	:type mis: int &
 	:param mics:
-	:type mics: Standard_Integer &
+	:type mics: int &
 	:rtype: None
 ") Values;
 		void Values (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
+		%feature("compactdefaultargs") SetValues;
 		%feature("autodoc", "	* Assigns to this date the year yyyy, the month mm, the day dd, the hour hh, the minute mn, the second ss, the millisecond mis (defaulted to 0) and the microsecond mics (defaulted to 0). Exceptions Quantity_DateDefinitionError if mm, dd, hh, mn, ss, mis and mics are not components of a valid date.
 
 	:param mm:
-	:type mm: Standard_Integer
+	:type mm: int
 	:param dd:
-	:type dd: Standard_Integer
+	:type dd: int
 	:param yy:
-	:type yy: Standard_Integer
+	:type yy: int
 	:param hh:
-	:type hh: Standard_Integer
+	:type hh: int
 	:param mn:
-	:type mn: Standard_Integer
+	:type mn: int
 	:param ss:
-	:type ss: Standard_Integer
+	:type ss: int
 	:param mis: default value is 0
-	:type mis: Standard_Integer
+	:type mis: int
 	:param mics: default value is 0
-	:type mics: Standard_Integer
+	:type mics: int
 	:rtype: None
 ") SetValues;
 		void SetValues (const Standard_Integer mm,const Standard_Integer dd,const Standard_Integer yy,const Standard_Integer hh,const Standard_Integer mn,const Standard_Integer ss,const Standard_Integer mis = 0,const Standard_Integer mics = 0);
+		%feature("compactdefaultargs") Difference;
 		%feature("autodoc", "	* Subtracts one Date from another one to find the period between and returns the value. The result is the absolute value between the difference of two dates.
 
 	:param anOther:
@@ -1440,6 +1528,7 @@ class Quantity_Date {
 	:rtype: Quantity_Period
 ") Difference;
 		Quantity_Period Difference (const Quantity_Date & anOther);
+		%feature("compactdefaultargs") Subtract;
 		%feature("autodoc", "	* Subtracts a period from a Date and returns the new Date. Raises an exception if the result date is anterior to Jan 1, 1979.
 
 	:param aPeriod:
@@ -1447,11 +1536,13 @@ class Quantity_Date {
 	:rtype: Quantity_Date
 ") Subtract;
 		Quantity_Date Subtract (const Quantity_Period & aPeriod);
+		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", "	:param aPeriod:
 	:type aPeriod: Quantity_Period &
 	:rtype: Quantity_Date
 ") operator-;
 		Quantity_Date operator - (const Quantity_Period & aPeriod);
+		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "	* Adds a Period to a Date and returns the new Date.
 
 	:param aPeriod:
@@ -1459,51 +1550,61 @@ class Quantity_Date {
 	:rtype: Quantity_Date
 ") Add;
 		Quantity_Date Add (const Quantity_Period & aPeriod);
+		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", "	:param aPeriod:
 	:type aPeriod: Quantity_Period &
 	:rtype: Quantity_Date
 ") operator+;
 		Quantity_Date operator + (const Quantity_Period & aPeriod);
+		%feature("compactdefaultargs") Year;
 		%feature("autodoc", "	* Returns year of a Date.
 
 	:rtype: int
 ") Year;
 		Standard_Integer Year ();
+		%feature("compactdefaultargs") Month;
 		%feature("autodoc", "	* Returns month of a Date.
 
 	:rtype: int
 ") Month;
 		Standard_Integer Month ();
+		%feature("compactdefaultargs") Day;
 		%feature("autodoc", "	* Returns Day of a Date.
 
 	:rtype: int
 ") Day;
 		Standard_Integer Day ();
+		%feature("compactdefaultargs") Hour;
 		%feature("autodoc", "	* Returns Hour of a Date.
 
 	:rtype: int
 ") Hour;
 		Standard_Integer Hour ();
+		%feature("compactdefaultargs") Minute;
 		%feature("autodoc", "	* Returns minute of a Date.
 
 	:rtype: int
 ") Minute;
 		Standard_Integer Minute ();
+		%feature("compactdefaultargs") Second;
 		%feature("autodoc", "	* Returns seconde of a Date.
 
 	:rtype: int
 ") Second;
 		Standard_Integer Second ();
+		%feature("compactdefaultargs") MilliSecond;
 		%feature("autodoc", "	* Returns millisecond of a Date.
 
 	:rtype: int
 ") MilliSecond;
 		Standard_Integer MilliSecond ();
+		%feature("compactdefaultargs") MicroSecond;
 		%feature("autodoc", "	* Returns microsecond of a Date.
 
 	:rtype: int
 ") MicroSecond;
 		Standard_Integer MicroSecond ();
+		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "	* Returns True if both <self> and <other> are equal. This method is an alias of operator ==.
 
 	:param anOther:
@@ -1525,18 +1626,21 @@ class Quantity_Date {
             except:
                 return False
         }
-        		%feature("autodoc", "	* Returns True if <self> is earlier than <other>.
+        		%feature("compactdefaultargs") IsEarlier;
+		%feature("autodoc", "	* Returns True if <self> is earlier than <other>.
 
 	:param anOther:
 	:type anOther: Quantity_Date &
 	:rtype: bool
 ") IsEarlier;
 		Standard_Boolean IsEarlier (const Quantity_Date & anOther);
+		%feature("compactdefaultargs") operator <;
 		%feature("autodoc", "	:param anOther:
 	:type anOther: Quantity_Date &
 	:rtype: bool
 ") operator<;
 		Standard_Boolean operator < (const Quantity_Date & anOther);
+		%feature("compactdefaultargs") IsLater;
 		%feature("autodoc", "	* Returns True if <self> is later then <other>.
 
 	:param anOther:
@@ -1544,52 +1648,59 @@ class Quantity_Date {
 	:rtype: bool
 ") IsLater;
 		Standard_Boolean IsLater (const Quantity_Date & anOther);
+		%feature("compactdefaultargs") operator >;
 		%feature("autodoc", "	:param anOther:
 	:type anOther: Quantity_Date &
 	:rtype: bool
 ") operator>;
 		Standard_Boolean operator > (const Quantity_Date & anOther);
+		%feature("compactdefaultargs") IsValid;
 		%feature("autodoc", "	* Checks the validity of a date - returns true if a date defined from the year yyyy, the month mm, the day dd, the hour hh, the minute mn, the second ss, the millisecond mis (defaulted to 0) and the microsecond mics (defaulted to 0) is valid. A date must satisfy the conditions above: - yyyy is greater than or equal to 1979, - mm lies within the range [1, 12] (with 1 corresponding to January and 12 to December), - dd lies within a valid range for the month mm (from 1 to 28, 29, 30 or 31 depending on mm and whether yyyy is a leap year or not), - hh lies within the range [0, 23], - mn lies within the range [0, 59], - ss lies within the range [0, 59], - mis lies within the range [0, 999], - mics lies within the range [0, 999].C
 
 	:param mm:
-	:type mm: Standard_Integer
+	:type mm: int
 	:param dd:
-	:type dd: Standard_Integer
+	:type dd: int
 	:param yy:
-	:type yy: Standard_Integer
+	:type yy: int
 	:param hh:
-	:type hh: Standard_Integer
+	:type hh: int
 	:param mn:
-	:type mn: Standard_Integer
+	:type mn: int
 	:param ss:
-	:type ss: Standard_Integer
+	:type ss: int
 	:param mis: default value is 0
-	:type mis: Standard_Integer
+	:type mis: int
 	:param mics: default value is 0
-	:type mics: Standard_Integer
+	:type mics: int
 	:rtype: bool
 ") IsValid;
 		static Standard_Boolean IsValid (const Standard_Integer mm,const Standard_Integer dd,const Standard_Integer yy,const Standard_Integer hh,const Standard_Integer mn,const Standard_Integer ss,const Standard_Integer mis = 0,const Standard_Integer mics = 0);
+		%feature("compactdefaultargs") IsLeap;
 		%feature("autodoc", "	* Returns true if a year is a leap year. The leap years are divisable by 4 and not by 100 except the years divisable by 400.
 
 	:param yy:
-	:type yy: Standard_Integer
+	:type yy: int
 	:rtype: bool
 ") IsLeap;
 		static Standard_Boolean IsLeap (const Standard_Integer yy);
+		%feature("compactdefaultargs") _CSFDB_GetQuantity_DatemySec;
 		%feature("autodoc", "	:rtype: int
 ") _CSFDB_GetQuantity_DatemySec;
 		Standard_Integer _CSFDB_GetQuantity_DatemySec ();
+		%feature("compactdefaultargs") _CSFDB_SetQuantity_DatemySec;
 		%feature("autodoc", "	:param p:
-	:type p: Standard_Integer
+	:type p: int
 	:rtype: None
 ") _CSFDB_SetQuantity_DatemySec;
 		void _CSFDB_SetQuantity_DatemySec (const Standard_Integer p);
+		%feature("compactdefaultargs") _CSFDB_GetQuantity_DatemyUSec;
 		%feature("autodoc", "	:rtype: int
 ") _CSFDB_GetQuantity_DatemyUSec;
 		Standard_Integer _CSFDB_GetQuantity_DatemyUSec ();
+		%feature("compactdefaultargs") _CSFDB_SetQuantity_DatemyUSec;
 		%feature("autodoc", "	:param p:
-	:type p: Standard_Integer
+	:type p: int
 	:rtype: None
 ") _CSFDB_SetQuantity_DatemyUSec;
 		void _CSFDB_SetQuantity_DatemyUSec (const Standard_Integer p);
@@ -1613,56 +1724,67 @@ def __del__(self):
 %nodefaultctor Quantity_HArray1OfColor;
 class Quantity_HArray1OfColor : public MMgt_TShared {
 	public:
+		%feature("compactdefaultargs") Quantity_HArray1OfColor;
 		%feature("autodoc", "	:param Low:
-	:type Low: Standard_Integer
+	:type Low: int
 	:param Up:
-	:type Up: Standard_Integer
+	:type Up: int
 	:rtype: None
 ") Quantity_HArray1OfColor;
 		 Quantity_HArray1OfColor (const Standard_Integer Low,const Standard_Integer Up);
+		%feature("compactdefaultargs") Quantity_HArray1OfColor;
 		%feature("autodoc", "	:param Low:
-	:type Low: Standard_Integer
+	:type Low: int
 	:param Up:
-	:type Up: Standard_Integer
+	:type Up: int
 	:param V:
 	:type V: Quantity_Color &
 	:rtype: None
 ") Quantity_HArray1OfColor;
 		 Quantity_HArray1OfColor (const Standard_Integer Low,const Standard_Integer Up,const Quantity_Color & V);
+		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:param V:
 	:type V: Quantity_Color &
 	:rtype: None
 ") Init;
 		void Init (const Quantity_Color & V);
+		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
 ") Length;
 		Standard_Integer Length ();
+		%feature("compactdefaultargs") Lower;
 		%feature("autodoc", "	:rtype: int
 ") Lower;
 		Standard_Integer Lower ();
+		%feature("compactdefaultargs") Upper;
 		%feature("autodoc", "	:rtype: int
 ") Upper;
 		Standard_Integer Upper ();
+		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param Value:
 	:type Value: Quantity_Color &
 	:rtype: None
 ") SetValue;
 		void SetValue (const Standard_Integer Index,const Quantity_Color & Value);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:rtype: Quantity_Color
 ") Value;
 		const Quantity_Color & Value (const Standard_Integer Index);
+		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:rtype: Quantity_Color
 ") ChangeValue;
 		Quantity_Color & ChangeValue (const Standard_Integer Index);
+		%feature("compactdefaultargs") Array1;
 		%feature("autodoc", "	:rtype: Quantity_Array1OfColor
 ") Array1;
 		const Quantity_Array1OfColor & Array1 ();
+		%feature("compactdefaultargs") ChangeArray1;
 		%feature("autodoc", "	:rtype: Quantity_Array1OfColor
 ") ChangeArray1;
 		Quantity_Array1OfColor & ChangeArray1 ();
@@ -1725,84 +1847,91 @@ def __del__(self):
 %nodefaultctor Quantity_Period;
 class Quantity_Period {
 	public:
+		%feature("compactdefaultargs") Quantity_Period;
 		%feature("autodoc", "	* Creates a Period With: 0 <= dd  0 <= hh  0 <= mn  0 <= ss  0 <= mis  0 <= mics
 
 	:param dd:
-	:type dd: Standard_Integer
+	:type dd: int
 	:param hh:
-	:type hh: Standard_Integer
+	:type hh: int
 	:param mn:
-	:type mn: Standard_Integer
+	:type mn: int
 	:param ss:
-	:type ss: Standard_Integer
+	:type ss: int
 	:param mis: default value is 0
-	:type mis: Standard_Integer
+	:type mis: int
 	:param mics: default value is 0
-	:type mics: Standard_Integer
+	:type mics: int
 	:rtype: None
 ") Quantity_Period;
 		 Quantity_Period (const Standard_Integer dd,const Standard_Integer hh,const Standard_Integer mn,const Standard_Integer ss,const Standard_Integer mis = 0,const Standard_Integer mics = 0);
+		%feature("compactdefaultargs") Quantity_Period;
 		%feature("autodoc", "	* Creates a Period with a number of seconds and microseconds. Exceptions Quantity_PeriodDefinitionError: - if the number of seconds expressed either by: - dd days, hh hours, mn minutes and ss seconds, or - Ss is less than 0. - if the number of microseconds expressed either by: - mis milliseconds and mics microseconds, or - Mics is less than 0.
 
 	:param ss:
-	:type ss: Standard_Integer
+	:type ss: int
 	:param mics: default value is 0
-	:type mics: Standard_Integer
+	:type mics: int
 	:rtype: None
 ") Quantity_Period;
 		 Quantity_Period (const Standard_Integer ss,const Standard_Integer mics = 0);
+		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "	* Decomposes this period into a number of days,hours, minutes,seconds,milliseconds and microseconds Example of return values: 2 days, 15 hours, 0 minute , 0 second 0 millisecond and 0 microsecond
 
 	:param dd:
-	:type dd: Standard_Integer &
+	:type dd: int &
 	:param hh:
-	:type hh: Standard_Integer &
+	:type hh: int &
 	:param mn:
-	:type mn: Standard_Integer &
+	:type mn: int &
 	:param ss:
-	:type ss: Standard_Integer &
+	:type ss: int &
 	:param mis:
-	:type mis: Standard_Integer &
+	:type mis: int &
 	:param mics:
-	:type mics: Standard_Integer &
+	:type mics: int &
 	:rtype: None
 ") Values;
 		void Values (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
+		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "	* Returns the number of seconds in Ss and the number of remainding microseconds in Mics of this period. Example of return values: 3600 seconds and 0 microseconds
 
 	:param ss:
-	:type ss: Standard_Integer &
+	:type ss: int &
 	:param mics:
-	:type mics: Standard_Integer &
+	:type mics: int &
 	:rtype: None
 ") Values;
 		void Values (Standard_Integer &OutValue,Standard_Integer &OutValue);
+		%feature("compactdefaultargs") SetValues;
 		%feature("autodoc", "	* Assigns to this period the time interval defined - with dd days, hh hours, mn minutes, ss seconds, mis (defaulted to 0) milliseconds and mics (defaulted to 0) microseconds; or
 
 	:param dd:
-	:type dd: Standard_Integer
+	:type dd: int
 	:param hh:
-	:type hh: Standard_Integer
+	:type hh: int
 	:param mn:
-	:type mn: Standard_Integer
+	:type mn: int
 	:param ss:
-	:type ss: Standard_Integer
+	:type ss: int
 	:param mis: default value is 0
-	:type mis: Standard_Integer
+	:type mis: int
 	:param mics: default value is 0
-	:type mics: Standard_Integer
+	:type mics: int
 	:rtype: None
 ") SetValues;
 		void SetValues (const Standard_Integer dd,const Standard_Integer hh,const Standard_Integer mn,const Standard_Integer ss,const Standard_Integer mis = 0,const Standard_Integer mics = 0);
+		%feature("compactdefaultargs") SetValues;
 		%feature("autodoc", "	* Assigns to this period the time interval defined - with Ss seconds and Mics (defaulted to 0) microseconds. Exceptions Quantity_PeriodDefinitionError: - if the number of seconds expressed either by: - dd days, hh hours, mn minutes and ss seconds, or - Ss is less than 0. - if the number of microseconds expressed either by: - mis milliseconds and mics microseconds, or - Mics is less than 0.
 
 	:param ss:
-	:type ss: Standard_Integer
+	:type ss: int
 	:param mics: default value is 0
-	:type mics: Standard_Integer
+	:type mics: int
 	:rtype: None
 ") SetValues;
 		void SetValues (const Standard_Integer ss,const Standard_Integer mics = 0);
+		%feature("compactdefaultargs") Subtract;
 		%feature("autodoc", "	* Subtracts one Period from another and returns the difference.
 
 	:param anOther:
@@ -1810,11 +1939,13 @@ class Quantity_Period {
 	:rtype: Quantity_Period
 ") Subtract;
 		Quantity_Period Subtract (const Quantity_Period & anOther);
+		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", "	:param anOther:
 	:type anOther: Quantity_Period &
 	:rtype: Quantity_Period
 ") operator-;
 		Quantity_Period operator - (const Quantity_Period & anOther);
+		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "	* Adds one Period to another one.
 
 	:param anOther:
@@ -1822,11 +1953,13 @@ class Quantity_Period {
 	:rtype: Quantity_Period
 ") Add;
 		Quantity_Period Add (const Quantity_Period & anOther);
+		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", "	:param anOther:
 	:type anOther: Quantity_Period &
 	:rtype: Quantity_Period
 ") operator+;
 		Quantity_Period operator + (const Quantity_Period & anOther);
+		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "	* Returns True if both <self> and <other> are equal.
 
 	:param anOther:
@@ -1848,18 +1981,21 @@ class Quantity_Period {
             except:
                 return False
         }
-        		%feature("autodoc", "	* Returns True if <self> is shorter than <other>.
+        		%feature("compactdefaultargs") IsShorter;
+		%feature("autodoc", "	* Returns True if <self> is shorter than <other>.
 
 	:param anOther:
 	:type anOther: Quantity_Period &
 	:rtype: bool
 ") IsShorter;
 		Standard_Boolean IsShorter (const Quantity_Period & anOther);
+		%feature("compactdefaultargs") operator <;
 		%feature("autodoc", "	:param anOther:
 	:type anOther: Quantity_Period &
 	:rtype: bool
 ") operator<;
 		Standard_Boolean operator < (const Quantity_Period & anOther);
+		%feature("compactdefaultargs") IsLonger;
 		%feature("autodoc", "	* Returns True if <self> is longer then <other>.
 
 	:param anOther:
@@ -1867,53 +2003,61 @@ class Quantity_Period {
 	:rtype: bool
 ") IsLonger;
 		Standard_Boolean IsLonger (const Quantity_Period & anOther);
+		%feature("compactdefaultargs") operator >;
 		%feature("autodoc", "	:param anOther:
 	:type anOther: Quantity_Period &
 	:rtype: bool
 ") operator>;
 		Standard_Boolean operator > (const Quantity_Period & anOther);
+		%feature("compactdefaultargs") IsValid;
 		%feature("autodoc", "	* Checks the validity of a Period in form (dd,hh,mn,ss,mil,mic) With: 0 <= dd  0 <= hh  0 <= mn  0 <= ss  0 <= mis  0 <= mics
 
 	:param dd:
-	:type dd: Standard_Integer
+	:type dd: int
 	:param hh:
-	:type hh: Standard_Integer
+	:type hh: int
 	:param mn:
-	:type mn: Standard_Integer
+	:type mn: int
 	:param ss:
-	:type ss: Standard_Integer
+	:type ss: int
 	:param mis: default value is 0
-	:type mis: Standard_Integer
+	:type mis: int
 	:param mics: default value is 0
-	:type mics: Standard_Integer
+	:type mics: int
 	:rtype: bool
 ") IsValid;
 		static Standard_Boolean IsValid (const Standard_Integer dd,const Standard_Integer hh,const Standard_Integer mn,const Standard_Integer ss,const Standard_Integer mis = 0,const Standard_Integer mics = 0);
+		%feature("compactdefaultargs") IsValid;
 		%feature("autodoc", "	* Checks the validity of a Period in form (ss,mic) With: 0 <= ss  0 <= mics
 
 	:param ss:
-	:type ss: Standard_Integer
+	:type ss: int
 	:param mics: default value is 0
-	:type mics: Standard_Integer
+	:type mics: int
 	:rtype: bool
 ") IsValid;
 		static Standard_Boolean IsValid (const Standard_Integer ss,const Standard_Integer mics = 0);
+		%feature("compactdefaultargs") Quantity_Period;
 		%feature("autodoc", "	:rtype: None
 ") Quantity_Period;
 		 Quantity_Period ();
+		%feature("compactdefaultargs") _CSFDB_GetQuantity_PeriodmySec;
 		%feature("autodoc", "	:rtype: int
 ") _CSFDB_GetQuantity_PeriodmySec;
 		Standard_Integer _CSFDB_GetQuantity_PeriodmySec ();
+		%feature("compactdefaultargs") _CSFDB_SetQuantity_PeriodmySec;
 		%feature("autodoc", "	:param p:
-	:type p: Standard_Integer
+	:type p: int
 	:rtype: None
 ") _CSFDB_SetQuantity_PeriodmySec;
 		void _CSFDB_SetQuantity_PeriodmySec (const Standard_Integer p);
+		%feature("compactdefaultargs") _CSFDB_GetQuantity_PeriodmyUSec;
 		%feature("autodoc", "	:rtype: int
 ") _CSFDB_GetQuantity_PeriodmyUSec;
 		Standard_Integer _CSFDB_GetQuantity_PeriodmyUSec ();
+		%feature("compactdefaultargs") _CSFDB_SetQuantity_PeriodmyUSec;
 		%feature("autodoc", "	:param p:
-	:type p: Standard_Integer
+	:type p: int
 	:rtype: None
 ") _CSFDB_SetQuantity_PeriodmyUSec;
 		void _CSFDB_SetQuantity_PeriodmyUSec (const Standard_Integer p);

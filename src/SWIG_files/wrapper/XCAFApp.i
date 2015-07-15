@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -43,16 +43,19 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor XCAFApp_Application;
 class XCAFApp_Application : public TDocStd_Application {
 	public:
+		%feature("compactdefaultargs") Formats;
 		%feature("autodoc", "	:param Formats:
 	:type Formats: TColStd_SequenceOfExtendedString &
 	:rtype: void
 ") Formats;
 		virtual void Formats (TColStd_SequenceOfExtendedString & Formats);
+		%feature("compactdefaultargs") ResourcesName;
 		%feature("autodoc", "	* methods from TDocStd_Application ================================
 
 	:rtype: char *
 ") ResourcesName;
 		virtual char * ResourcesName ();
+		%feature("compactdefaultargs") InitDocument;
 		%feature("autodoc", "	* Set XCAFDoc_DocumentTool attribute
 
 	:param aDoc:
@@ -60,6 +63,7 @@ class XCAFApp_Application : public TDocStd_Application {
 	:rtype: void
 ") InitDocument;
 		virtual void InitDocument (const Handle_TDocStd_Document & aDoc);
+		%feature("compactdefaultargs") GetApplication;
 		%feature("autodoc", "	* Initializes (for the first time) and returns the static object (XCAFApp_Application) This is the only valid method to get XCAFApp_Application object, and it should be called at least once before any actions with documents in order to init application
 
 	:rtype: Handle_XCAFApp_Application

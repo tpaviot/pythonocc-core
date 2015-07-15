@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -43,9 +43,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor Dico_DictionaryOfInteger;
 class Dico_DictionaryOfInteger : public MMgt_TShared {
 	public:
+		%feature("compactdefaultargs") Dico_DictionaryOfInteger;
 		%feature("autodoc", "	:rtype: None
 ") Dico_DictionaryOfInteger;
 		 Dico_DictionaryOfInteger ();
+		%feature("compactdefaultargs") HasItem;
 		%feature("autodoc", "	:param name:
 	:type name: char *
 	:param exact: default value is Standard_False
@@ -53,6 +55,7 @@ class Dico_DictionaryOfInteger : public MMgt_TShared {
 	:rtype: bool
 ") HasItem;
 		Standard_Boolean HasItem (const char * name,const Standard_Boolean exact = Standard_False);
+		%feature("compactdefaultargs") HasItem;
 		%feature("autodoc", "	:param name:
 	:type name: TCollection_AsciiString &
 	:param exact: default value is Standard_True
@@ -60,6 +63,7 @@ class Dico_DictionaryOfInteger : public MMgt_TShared {
 	:rtype: bool
 ") HasItem;
 		Standard_Boolean HasItem (const TCollection_AsciiString & name,const Standard_Boolean exact = Standard_True);
+		%feature("compactdefaultargs") Item;
 		%feature("autodoc", "	:param name:
 	:type name: char *
 	:param exact: default value is Standard_True
@@ -67,6 +71,7 @@ class Dico_DictionaryOfInteger : public MMgt_TShared {
 	:rtype: int
 ") Item;
 		const Standard_Integer & Item (const char * name,const Standard_Boolean exact = Standard_True);
+		%feature("compactdefaultargs") Item;
 		%feature("autodoc", "	:param name:
 	:type name: TCollection_AsciiString &
 	:param exact: default value is Standard_True
@@ -74,42 +79,47 @@ class Dico_DictionaryOfInteger : public MMgt_TShared {
 	:rtype: int
 ") Item;
 		const Standard_Integer & Item (const TCollection_AsciiString & name,const Standard_Boolean exact = Standard_True);
+		%feature("compactdefaultargs") GetItem;
 		%feature("autodoc", "	:param name:
 	:type name: char *
 	:param anitem:
-	:type anitem: Standard_Integer &
+	:type anitem: int &
 	:param exact: default value is Standard_True
 	:type exact: bool
 	:rtype: bool
 ") GetItem;
 		Standard_Boolean GetItem (const char * name,Standard_Integer &OutValue,const Standard_Boolean exact = Standard_True);
+		%feature("compactdefaultargs") GetItem;
 		%feature("autodoc", "	:param name:
 	:type name: TCollection_AsciiString &
 	:param anitem:
-	:type anitem: Standard_Integer &
+	:type anitem: int &
 	:param exact: default value is Standard_True
 	:type exact: bool
 	:rtype: bool
 ") GetItem;
 		Standard_Boolean GetItem (const TCollection_AsciiString & name,Standard_Integer &OutValue,const Standard_Boolean exact = Standard_True);
+		%feature("compactdefaultargs") SetItem;
 		%feature("autodoc", "	:param name:
 	:type name: char *
 	:param anitem:
-	:type anitem: Standard_Integer &
+	:type anitem: int &
 	:param exact: default value is Standard_True
 	:type exact: bool
 	:rtype: None
 ") SetItem;
 		void SetItem (const char * name,const Standard_Integer & anitem,const Standard_Boolean exact = Standard_True);
+		%feature("compactdefaultargs") SetItem;
 		%feature("autodoc", "	:param name:
 	:type name: TCollection_AsciiString &
 	:param anitem:
-	:type anitem: Standard_Integer &
+	:type anitem: int &
 	:param exact: default value is Standard_True
 	:type exact: bool
 	:rtype: None
 ") SetItem;
 		void SetItem (const TCollection_AsciiString & name,const Standard_Integer & anitem,const Standard_Boolean exact = Standard_True);
+		%feature("compactdefaultargs") NewItem;
 		%feature("autodoc", "	:param name:
 	:type name: char *
 	:param isvalued:
@@ -118,7 +128,8 @@ class Dico_DictionaryOfInteger : public MMgt_TShared {
 	:type exact: bool
 	:rtype: int
 ") NewItem;
-		Standard_Integer & NewItem (const char * name,Standard_Boolean & isvalued,const Standard_Boolean exact = Standard_True);
+		Standard_Integer & NewItem (const char * name,Standard_Boolean &OutValue,const Standard_Boolean exact = Standard_True);
+		%feature("compactdefaultargs") NewItem;
 		%feature("autodoc", "	:param name:
 	:type name: TCollection_AsciiString &
 	:param isvalued:
@@ -127,7 +138,8 @@ class Dico_DictionaryOfInteger : public MMgt_TShared {
 	:type exact: bool
 	:rtype: int
 ") NewItem;
-		Standard_Integer & NewItem (const TCollection_AsciiString & name,Standard_Boolean & isvalued,const Standard_Boolean exact = Standard_True);
+		Standard_Integer & NewItem (const TCollection_AsciiString & name,Standard_Boolean &OutValue,const Standard_Boolean exact = Standard_True);
+		%feature("compactdefaultargs") RemoveItem;
 		%feature("autodoc", "	:param name:
 	:type name: char *
 	:param cln: default value is Standard_True
@@ -137,6 +149,7 @@ class Dico_DictionaryOfInteger : public MMgt_TShared {
 	:rtype: bool
 ") RemoveItem;
 		Standard_Boolean RemoveItem (const char * name,const Standard_Boolean cln = Standard_True,const Standard_Boolean exact = Standard_True);
+		%feature("compactdefaultargs") RemoveItem;
 		%feature("autodoc", "	:param name:
 	:type name: TCollection_AsciiString &
 	:param cln: default value is Standard_True
@@ -146,18 +159,23 @@ class Dico_DictionaryOfInteger : public MMgt_TShared {
 	:rtype: bool
 ") RemoveItem;
 		Standard_Boolean RemoveItem (const TCollection_AsciiString & name,const Standard_Boolean cln = Standard_True,const Standard_Boolean exact = Standard_True);
+		%feature("compactdefaultargs") Clean;
 		%feature("autodoc", "	:rtype: None
 ") Clean;
 		void Clean ();
+		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "	:rtype: bool
 ") IsEmpty;
 		Standard_Boolean IsEmpty ();
+		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
 		void Clear ();
+		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "	:rtype: Handle_Dico_DictionaryOfInteger
 ") Copy;
 		Handle_Dico_DictionaryOfInteger Copy ();
+		%feature("compactdefaultargs") Complete;
 		%feature("autodoc", "	:param acell:
 	:type acell: Handle_Dico_DictionaryOfInteger &
 	:rtype: bool
@@ -222,9 +240,11 @@ def __del__(self):
 %nodefaultctor Dico_DictionaryOfTransient;
 class Dico_DictionaryOfTransient : public MMgt_TShared {
 	public:
+		%feature("compactdefaultargs") Dico_DictionaryOfTransient;
 		%feature("autodoc", "	:rtype: None
 ") Dico_DictionaryOfTransient;
 		 Dico_DictionaryOfTransient ();
+		%feature("compactdefaultargs") HasItem;
 		%feature("autodoc", "	:param name:
 	:type name: char *
 	:param exact: default value is Standard_False
@@ -232,6 +252,7 @@ class Dico_DictionaryOfTransient : public MMgt_TShared {
 	:rtype: bool
 ") HasItem;
 		Standard_Boolean HasItem (const char * name,const Standard_Boolean exact = Standard_False);
+		%feature("compactdefaultargs") HasItem;
 		%feature("autodoc", "	:param name:
 	:type name: TCollection_AsciiString &
 	:param exact: default value is Standard_True
@@ -239,6 +260,7 @@ class Dico_DictionaryOfTransient : public MMgt_TShared {
 	:rtype: bool
 ") HasItem;
 		Standard_Boolean HasItem (const TCollection_AsciiString & name,const Standard_Boolean exact = Standard_True);
+		%feature("compactdefaultargs") Item;
 		%feature("autodoc", "	:param name:
 	:type name: char *
 	:param exact: default value is Standard_True
@@ -246,6 +268,7 @@ class Dico_DictionaryOfTransient : public MMgt_TShared {
 	:rtype: Handle_Standard_Transient
 ") Item;
 		const Handle_Standard_Transient & Item (const char * name,const Standard_Boolean exact = Standard_True);
+		%feature("compactdefaultargs") Item;
 		%feature("autodoc", "	:param name:
 	:type name: TCollection_AsciiString &
 	:param exact: default value is Standard_True
@@ -253,6 +276,7 @@ class Dico_DictionaryOfTransient : public MMgt_TShared {
 	:rtype: Handle_Standard_Transient
 ") Item;
 		const Handle_Standard_Transient & Item (const TCollection_AsciiString & name,const Standard_Boolean exact = Standard_True);
+		%feature("compactdefaultargs") GetItem;
 		%feature("autodoc", "	:param name:
 	:type name: char *
 	:param anitem:
@@ -262,6 +286,7 @@ class Dico_DictionaryOfTransient : public MMgt_TShared {
 	:rtype: bool
 ") GetItem;
 		Standard_Boolean GetItem (const char * name,Handle_Standard_Transient & anitem,const Standard_Boolean exact = Standard_True);
+		%feature("compactdefaultargs") GetItem;
 		%feature("autodoc", "	:param name:
 	:type name: TCollection_AsciiString &
 	:param anitem:
@@ -271,6 +296,7 @@ class Dico_DictionaryOfTransient : public MMgt_TShared {
 	:rtype: bool
 ") GetItem;
 		Standard_Boolean GetItem (const TCollection_AsciiString & name,Handle_Standard_Transient & anitem,const Standard_Boolean exact = Standard_True);
+		%feature("compactdefaultargs") SetItem;
 		%feature("autodoc", "	:param name:
 	:type name: char *
 	:param anitem:
@@ -280,6 +306,7 @@ class Dico_DictionaryOfTransient : public MMgt_TShared {
 	:rtype: None
 ") SetItem;
 		void SetItem (const char * name,const Handle_Standard_Transient & anitem,const Standard_Boolean exact = Standard_True);
+		%feature("compactdefaultargs") SetItem;
 		%feature("autodoc", "	:param name:
 	:type name: TCollection_AsciiString &
 	:param anitem:
@@ -289,6 +316,7 @@ class Dico_DictionaryOfTransient : public MMgt_TShared {
 	:rtype: None
 ") SetItem;
 		void SetItem (const TCollection_AsciiString & name,const Handle_Standard_Transient & anitem,const Standard_Boolean exact = Standard_True);
+		%feature("compactdefaultargs") NewItem;
 		%feature("autodoc", "	:param name:
 	:type name: char *
 	:param isvalued:
@@ -297,7 +325,8 @@ class Dico_DictionaryOfTransient : public MMgt_TShared {
 	:type exact: bool
 	:rtype: Handle_Standard_Transient
 ") NewItem;
-		Handle_Standard_Transient & NewItem (const char * name,Standard_Boolean & isvalued,const Standard_Boolean exact = Standard_True);
+		Handle_Standard_Transient & NewItem (const char * name,Standard_Boolean &OutValue,const Standard_Boolean exact = Standard_True);
+		%feature("compactdefaultargs") NewItem;
 		%feature("autodoc", "	:param name:
 	:type name: TCollection_AsciiString &
 	:param isvalued:
@@ -306,7 +335,8 @@ class Dico_DictionaryOfTransient : public MMgt_TShared {
 	:type exact: bool
 	:rtype: Handle_Standard_Transient
 ") NewItem;
-		Handle_Standard_Transient & NewItem (const TCollection_AsciiString & name,Standard_Boolean & isvalued,const Standard_Boolean exact = Standard_True);
+		Handle_Standard_Transient & NewItem (const TCollection_AsciiString & name,Standard_Boolean &OutValue,const Standard_Boolean exact = Standard_True);
+		%feature("compactdefaultargs") RemoveItem;
 		%feature("autodoc", "	:param name:
 	:type name: char *
 	:param cln: default value is Standard_True
@@ -316,6 +346,7 @@ class Dico_DictionaryOfTransient : public MMgt_TShared {
 	:rtype: bool
 ") RemoveItem;
 		Standard_Boolean RemoveItem (const char * name,const Standard_Boolean cln = Standard_True,const Standard_Boolean exact = Standard_True);
+		%feature("compactdefaultargs") RemoveItem;
 		%feature("autodoc", "	:param name:
 	:type name: TCollection_AsciiString &
 	:param cln: default value is Standard_True
@@ -325,18 +356,23 @@ class Dico_DictionaryOfTransient : public MMgt_TShared {
 	:rtype: bool
 ") RemoveItem;
 		Standard_Boolean RemoveItem (const TCollection_AsciiString & name,const Standard_Boolean cln = Standard_True,const Standard_Boolean exact = Standard_True);
+		%feature("compactdefaultargs") Clean;
 		%feature("autodoc", "	:rtype: None
 ") Clean;
 		void Clean ();
+		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "	:rtype: bool
 ") IsEmpty;
 		Standard_Boolean IsEmpty ();
+		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
 		void Clear ();
+		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "	:rtype: Handle_Dico_DictionaryOfTransient
 ") Copy;
 		Handle_Dico_DictionaryOfTransient Copy ();
+		%feature("compactdefaultargs") Complete;
 		%feature("autodoc", "	:param acell:
 	:type acell: Handle_Dico_DictionaryOfTransient &
 	:rtype: bool
@@ -401,11 +437,13 @@ def __del__(self):
 %nodefaultctor Dico_IteratorOfDictionaryOfInteger;
 class Dico_IteratorOfDictionaryOfInteger {
 	public:
+		%feature("compactdefaultargs") Dico_IteratorOfDictionaryOfInteger;
 		%feature("autodoc", "	:param acell:
 	:type acell: Handle_Dico_DictionaryOfInteger &
 	:rtype: None
 ") Dico_IteratorOfDictionaryOfInteger;
 		 Dico_IteratorOfDictionaryOfInteger (const Handle_Dico_DictionaryOfInteger & acell);
+		%feature("compactdefaultargs") Dico_IteratorOfDictionaryOfInteger;
 		%feature("autodoc", "	:param acell:
 	:type acell: Handle_Dico_DictionaryOfInteger &
 	:param basename:
@@ -413,6 +451,7 @@ class Dico_IteratorOfDictionaryOfInteger {
 	:rtype: None
 ") Dico_IteratorOfDictionaryOfInteger;
 		 Dico_IteratorOfDictionaryOfInteger (const Handle_Dico_DictionaryOfInteger & acell,const char * basename);
+		%feature("compactdefaultargs") Dico_IteratorOfDictionaryOfInteger;
 		%feature("autodoc", "	:param acell:
 	:type acell: Handle_Dico_DictionaryOfInteger &
 	:param basename:
@@ -420,18 +459,23 @@ class Dico_IteratorOfDictionaryOfInteger {
 	:rtype: None
 ") Dico_IteratorOfDictionaryOfInteger;
 		 Dico_IteratorOfDictionaryOfInteger (const Handle_Dico_DictionaryOfInteger & acell,const TCollection_AsciiString & basename);
+		%feature("compactdefaultargs") Start;
 		%feature("autodoc", "	:rtype: None
 ") Start;
 		void Start ();
+		%feature("compactdefaultargs") More;
 		%feature("autodoc", "	:rtype: bool
 ") More;
 		Standard_Boolean More ();
+		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "	:rtype: None
 ") Next;
 		void Next ();
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: int
 ") Value;
 		const Standard_Integer & Value ();
+		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "	:rtype: TCollection_AsciiString
 ") Name;
 		TCollection_AsciiString Name ();
@@ -455,11 +499,13 @@ def __del__(self):
 %nodefaultctor Dico_IteratorOfDictionaryOfTransient;
 class Dico_IteratorOfDictionaryOfTransient {
 	public:
+		%feature("compactdefaultargs") Dico_IteratorOfDictionaryOfTransient;
 		%feature("autodoc", "	:param acell:
 	:type acell: Handle_Dico_DictionaryOfTransient &
 	:rtype: None
 ") Dico_IteratorOfDictionaryOfTransient;
 		 Dico_IteratorOfDictionaryOfTransient (const Handle_Dico_DictionaryOfTransient & acell);
+		%feature("compactdefaultargs") Dico_IteratorOfDictionaryOfTransient;
 		%feature("autodoc", "	:param acell:
 	:type acell: Handle_Dico_DictionaryOfTransient &
 	:param basename:
@@ -467,6 +513,7 @@ class Dico_IteratorOfDictionaryOfTransient {
 	:rtype: None
 ") Dico_IteratorOfDictionaryOfTransient;
 		 Dico_IteratorOfDictionaryOfTransient (const Handle_Dico_DictionaryOfTransient & acell,const char * basename);
+		%feature("compactdefaultargs") Dico_IteratorOfDictionaryOfTransient;
 		%feature("autodoc", "	:param acell:
 	:type acell: Handle_Dico_DictionaryOfTransient &
 	:param basename:
@@ -474,18 +521,23 @@ class Dico_IteratorOfDictionaryOfTransient {
 	:rtype: None
 ") Dico_IteratorOfDictionaryOfTransient;
 		 Dico_IteratorOfDictionaryOfTransient (const Handle_Dico_DictionaryOfTransient & acell,const TCollection_AsciiString & basename);
+		%feature("compactdefaultargs") Start;
 		%feature("autodoc", "	:rtype: None
 ") Start;
 		void Start ();
+		%feature("compactdefaultargs") More;
 		%feature("autodoc", "	:rtype: bool
 ") More;
 		Standard_Boolean More ();
+		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "	:rtype: None
 ") Next;
 		void Next ();
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Value;
 		const Handle_Standard_Transient & Value ();
+		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "	:rtype: TCollection_AsciiString
 ") Name;
 		TCollection_AsciiString Name ();
@@ -509,20 +561,25 @@ def __del__(self):
 %nodefaultctor Dico_StackItemOfDictionaryOfInteger;
 class Dico_StackItemOfDictionaryOfInteger : public MMgt_TShared {
 	public:
+		%feature("compactdefaultargs") Dico_StackItemOfDictionaryOfInteger;
 		%feature("autodoc", "	:rtype: None
 ") Dico_StackItemOfDictionaryOfInteger;
 		 Dico_StackItemOfDictionaryOfInteger ();
+		%feature("compactdefaultargs") Dico_StackItemOfDictionaryOfInteger;
 		%feature("autodoc", "	:param previous:
 	:type previous: Handle_Dico_StackItemOfDictionaryOfInteger &
 	:rtype: None
 ") Dico_StackItemOfDictionaryOfInteger;
 		 Dico_StackItemOfDictionaryOfInteger (const Handle_Dico_StackItemOfDictionaryOfInteger & previous);
+		%feature("compactdefaultargs") Previous;
 		%feature("autodoc", "	:rtype: Handle_Dico_StackItemOfDictionaryOfInteger
 ") Previous;
 		Handle_Dico_StackItemOfDictionaryOfInteger Previous ();
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Dico_DictionaryOfInteger
 ") Value;
 		Handle_Dico_DictionaryOfInteger Value ();
+		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param cval:
 	:type cval: Handle_Dico_DictionaryOfInteger &
 	:rtype: None
@@ -587,20 +644,25 @@ def __del__(self):
 %nodefaultctor Dico_StackItemOfDictionaryOfTransient;
 class Dico_StackItemOfDictionaryOfTransient : public MMgt_TShared {
 	public:
+		%feature("compactdefaultargs") Dico_StackItemOfDictionaryOfTransient;
 		%feature("autodoc", "	:rtype: None
 ") Dico_StackItemOfDictionaryOfTransient;
 		 Dico_StackItemOfDictionaryOfTransient ();
+		%feature("compactdefaultargs") Dico_StackItemOfDictionaryOfTransient;
 		%feature("autodoc", "	:param previous:
 	:type previous: Handle_Dico_StackItemOfDictionaryOfTransient &
 	:rtype: None
 ") Dico_StackItemOfDictionaryOfTransient;
 		 Dico_StackItemOfDictionaryOfTransient (const Handle_Dico_StackItemOfDictionaryOfTransient & previous);
+		%feature("compactdefaultargs") Previous;
 		%feature("autodoc", "	:rtype: Handle_Dico_StackItemOfDictionaryOfTransient
 ") Previous;
 		Handle_Dico_StackItemOfDictionaryOfTransient Previous ();
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Dico_DictionaryOfTransient
 ") Value;
 		Handle_Dico_DictionaryOfTransient Value ();
+		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param cval:
 	:type cval: Handle_Dico_DictionaryOfTransient &
 	:rtype: None

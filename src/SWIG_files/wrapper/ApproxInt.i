@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -43,9 +43,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor ApproxInt_SvSurfaces;
 class ApproxInt_SvSurfaces {
 	public:
+		%feature("compactdefaultargs") Delete;
 		%feature("autodoc", "	:rtype: void
 ") Delete;
 		virtual void Delete ();
+		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "	* returns True if Tg,Tguv1 Tguv2 can be computed.
 
 	:param u1:
@@ -67,6 +69,7 @@ class ApproxInt_SvSurfaces {
 	:rtype: bool
 ") Compute;
 		virtual Standard_Boolean Compute (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,gp_Pnt & Pt,gp_Vec & Tg,gp_Vec2d & Tguv1,gp_Vec2d & Tguv2);
+		%feature("compactdefaultargs") Pnt;
 		%feature("autodoc", "	:param u1:
 	:type u1: float
 	:param v1:
@@ -80,6 +83,7 @@ class ApproxInt_SvSurfaces {
 	:rtype: void
 ") Pnt;
 		virtual void Pnt (const Standard_Real u1,const Standard_Real v1,const Standard_Real u2,const Standard_Real v2,gp_Pnt & P);
+		%feature("compactdefaultargs") Tangency;
 		%feature("autodoc", "	:param u1:
 	:type u1: float
 	:param v1:
@@ -93,6 +97,7 @@ class ApproxInt_SvSurfaces {
 	:rtype: bool
 ") Tangency;
 		virtual Standard_Boolean Tangency (const Standard_Real u1,const Standard_Real v1,const Standard_Real u2,const Standard_Real v2,gp_Vec & Tg);
+		%feature("compactdefaultargs") TangencyOnSurf1;
 		%feature("autodoc", "	:param u1:
 	:type u1: float
 	:param v1:
@@ -106,6 +111,7 @@ class ApproxInt_SvSurfaces {
 	:rtype: bool
 ") TangencyOnSurf1;
 		virtual Standard_Boolean TangencyOnSurf1 (const Standard_Real u1,const Standard_Real v1,const Standard_Real u2,const Standard_Real v2,gp_Vec2d & Tg);
+		%feature("compactdefaultargs") TangencyOnSurf2;
 		%feature("autodoc", "	:param u1:
 	:type u1: float
 	:param v1:

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -51,6 +51,7 @@ enum Dynamic_ModeEnum {
 %rename(dynamic) Dynamic;
 class Dynamic {
 	public:
+		%feature("compactdefaultargs") Mode;
 		%feature("autodoc", "	:param amode:
 	:type amode: char *
 	:rtype: Dynamic_ModeEnum
@@ -76,6 +77,7 @@ def __del__(self):
 %nodefaultctor Dynamic_DynamicClass;
 class Dynamic_DynamicClass : public MMgt_TShared {
 	public:
+		%feature("compactdefaultargs") Dynamic_DynamicClass;
 		%feature("autodoc", "	* Creates a new empty instance of DynamicClass.
 
 	:param aname:
@@ -83,6 +85,7 @@ class Dynamic_DynamicClass : public MMgt_TShared {
 	:rtype: None
 ") Dynamic_DynamicClass;
 		 Dynamic_DynamicClass (const char * aname);
+		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	* Adds another parameter <aparameter> to the sequence of parameter definitions.
 
 	:param aparameter:
@@ -90,6 +93,7 @@ class Dynamic_DynamicClass : public MMgt_TShared {
 	:rtype: None
 ") Parameter;
 		void Parameter (const Handle_Dynamic_Parameter & aparameter);
+		%feature("compactdefaultargs") CompiledMethod;
 		%feature("autodoc", "	* Adds another method to the sequence of methods. It has <amethod> as name and <anaddress> as mangled name of the corresponding C++ function which must be called.
 
 	:param amethod:
@@ -99,6 +103,7 @@ class Dynamic_DynamicClass : public MMgt_TShared {
 	:rtype: None
 ") CompiledMethod;
 		void CompiledMethod (const char * amethod,const char * anaddress);
+		%feature("compactdefaultargs") InterpretedMethod;
 		%feature("autodoc", "	* Adds another method to the sequence of methods. It has <amethod> as name and <afile> as interpreted file.
 
 	:param amethod:
@@ -108,6 +113,7 @@ class Dynamic_DynamicClass : public MMgt_TShared {
 	:rtype: None
 ") InterpretedMethod;
 		void InterpretedMethod (const char * amethod,const char * afile);
+		%feature("compactdefaultargs") Method;
 		%feature("autodoc", "	* Returns a reference to the method object identified by the string <amethod>.
 
 	:param amethod:
@@ -115,6 +121,7 @@ class Dynamic_DynamicClass : public MMgt_TShared {
 	:rtype: Handle_Dynamic_Method
 ") Method;
 		virtual Handle_Dynamic_Method Method (const char * amethod);
+		%feature("compactdefaultargs") Instance;
 		%feature("autodoc", "	* Returns an instance object of this class.
 
 	:rtype: Handle_Dynamic_DynamicInstance
@@ -187,11 +194,13 @@ def __del__(self):
 %nodefaultctor Dynamic_DynamicInstance;
 class Dynamic_DynamicInstance : public MMgt_TShared {
 	public:
+		%feature("compactdefaultargs") Dynamic_DynamicInstance;
 		%feature("autodoc", "	* Creates an empty instance of this class.
 
 	:rtype: None
 ") Dynamic_DynamicInstance;
 		 Dynamic_DynamicInstance ();
+		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	* Adds <aparameter> to the sequence of parameters of <self>.
 
 	:param aparameter:
@@ -199,6 +208,7 @@ class Dynamic_DynamicInstance : public MMgt_TShared {
 	:rtype: None
 ") Parameter;
 		void Parameter (const Handle_Dynamic_Parameter & aparameter);
+		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	* Adds all the parameters of <self>, to the sequence of parameters of <aninstance>.
 
 	:param aninstance:
@@ -206,15 +216,17 @@ class Dynamic_DynamicInstance : public MMgt_TShared {
 	:rtype: None
 ") Parameter;
 		void Parameter (const Handle_Dynamic_DynamicInstance & aninstance);
+		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	* Puts the integer value <avalue> into the parameter object identified by the string <aparameter>.
 
 	:param aparameter:
 	:type aparameter: char *
 	:param avalue:
-	:type avalue: Standard_Integer
+	:type avalue: int
 	:rtype: None
 ") Parameter;
 		void Parameter (const char * aparameter,const Standard_Integer avalue);
+		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	* Puts the real value <avalue> into the parameter object identified by the string <aparameter>.
 
 	:param aparameter:
@@ -224,6 +236,7 @@ class Dynamic_DynamicInstance : public MMgt_TShared {
 	:rtype: None
 ") Parameter;
 		void Parameter (const char * aparameter,const Standard_Real avalue);
+		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	* Puts the string <avalue> into the parameter object identified by the string <aparameter>.
 
 	:param aparameter:
@@ -233,6 +246,7 @@ class Dynamic_DynamicInstance : public MMgt_TShared {
 	:rtype: None
 ") Parameter;
 		void Parameter (const char * aparameter,const char * avalue);
+		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	* Puts the dynamic instance <avalue> into the parameter object identified by the string <aparameter>.
 
 	:param aparameter:
@@ -242,6 +256,7 @@ class Dynamic_DynamicInstance : public MMgt_TShared {
 	:rtype: None
 ") Parameter;
 		void Parameter (const char * aparameter,const Handle_Dynamic_DynamicInstance & avalue);
+		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	* Searches and returns the parameter object identified by the string <aparameter>.
 
 	:param aparameter:
@@ -249,6 +264,7 @@ class Dynamic_DynamicInstance : public MMgt_TShared {
 	:rtype: Handle_Dynamic_Parameter
 ") Parameter;
 		Handle_Dynamic_Parameter Parameter (const char * aparameter);
+		%feature("compactdefaultargs") Class;
 		%feature("autodoc", "	* Sets the reference of the class.
 
 	:param aclass:
@@ -256,6 +272,7 @@ class Dynamic_DynamicInstance : public MMgt_TShared {
 	:rtype: None
 ") Class;
 		void Class (const Handle_Dynamic_DynamicClass & aclass);
+		%feature("compactdefaultargs") Execute;
 		%feature("autodoc", "	* Calls the method identified by the string <amethod>.
 
 	:param amethod:
@@ -322,16 +339,19 @@ def __del__(self):
 %nodefaultctor Dynamic_FuzzyClass;
 class Dynamic_FuzzyClass : public MMgt_TShared {
 	public:
+		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "	* This deferred method must returns the type of the object. If the instance is of the type FuzzyDefinition the method simply returns the field <thetype>. If the instance is of the type FuzzyInstance the method calls the Type method on the true definition.
 
 	:rtype: TCollection_AsciiString
 ") Type;
 		virtual TCollection_AsciiString Type ();
+		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "	* Returns the head of the list of parameters. For the FuzzyDefinition class this method returns the head of the exaustive list of parameters defining the object and for the FuzzyInstance it just returns the head of the overloaded values.
 
 	:rtype: Handle_Dynamic_ParameterNode
 ") FirstParameter;
 		Handle_Dynamic_ParameterNode FirstParameter ();
+		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	* Returns true if there is a parameter with <aparameter> as name, false otherwise.
 
 	:param aparameter:
@@ -339,6 +359,7 @@ class Dynamic_FuzzyClass : public MMgt_TShared {
 	:rtype: bool
 ") Parameter;
 		Standard_Boolean Parameter (const char * aparameter);
+		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	* Adds another parameter <aparameter> to the sequence of parameters.
 
 	:param aparameter:
@@ -346,6 +367,7 @@ class Dynamic_FuzzyClass : public MMgt_TShared {
 	:rtype: None
 ") Parameter;
 		void Parameter (const Handle_Dynamic_Parameter & aparameter);
+		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	* Adds to the instance <self> the parameter <aparameter> with the boolean value <avalue>.
 
 	:param aparameter:
@@ -355,15 +377,17 @@ class Dynamic_FuzzyClass : public MMgt_TShared {
 	:rtype: void
 ") Parameter;
 		virtual void Parameter (const char * aparameter,const Standard_Boolean avalue);
+		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	* Adds to the instance <self> the parameter <aparameter> with the integer value <avalue>.
 
 	:param aparameter:
 	:type aparameter: char *
 	:param avalue:
-	:type avalue: Standard_Integer
+	:type avalue: int
 	:rtype: void
 ") Parameter;
 		virtual void Parameter (const char * aparameter,const Standard_Integer avalue);
+		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	* Adds to the instance <self> the parameter <aparameter> with the real value <avalue>.
 
 	:param aparameter:
@@ -373,6 +397,7 @@ class Dynamic_FuzzyClass : public MMgt_TShared {
 	:rtype: void
 ") Parameter;
 		virtual void Parameter (const char * aparameter,const Standard_Real avalue);
+		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	* Adds to the instance <self> the parameter <aparameter> with the string <astring>.
 
 	:param aparameter:
@@ -382,6 +407,7 @@ class Dynamic_FuzzyClass : public MMgt_TShared {
 	:rtype: void
 ") Parameter;
 		virtual void Parameter (const char * aparameter,const char * astring);
+		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	* Adds to the instance <self> the parameter <aparameter> with the object value <anobject>.
 
 	:param aparameter:
@@ -391,6 +417,7 @@ class Dynamic_FuzzyClass : public MMgt_TShared {
 	:rtype: void
 ") Parameter;
 		virtual void Parameter (const char * aparameter,const Handle_Standard_Transient & anobject);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns True, if there is a parameter <aparameter> previously stored in the instance <self> and there is the corresponding boolean value in the output argument <avalue>, False otherwise.
 
 	:param aparameter:
@@ -399,16 +426,18 @@ class Dynamic_FuzzyClass : public MMgt_TShared {
 	:type avalue: bool
 	:rtype: bool
 ") Value;
-		virtual Standard_Boolean Value (const char * aparameter,Standard_Boolean & avalue);
+		virtual Standard_Boolean Value (const char * aparameter,Standard_Boolean &OutValue);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns True, if there is a parameter <aparameter> previously stored in the instance <self> and there is the corresponding integer value in the output argument <avalue>, False otherwise.
 
 	:param aparameter:
 	:type aparameter: char *
 	:param avalue:
-	:type avalue: Standard_Integer &
+	:type avalue: int &
 	:rtype: bool
 ") Value;
 		virtual Standard_Boolean Value (const char * aparameter,Standard_Integer &OutValue);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns True, if there is a parameter <aparameter> previously stored in the instance <self> and there is the corresponding real value in the output argument <avalue>, False otherwise.
 
 	:param aparameter:
@@ -418,6 +447,7 @@ class Dynamic_FuzzyClass : public MMgt_TShared {
 	:rtype: bool
 ") Value;
 		virtual Standard_Boolean Value (const char * aparameter,Standard_Real &OutValue);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns True, if there is a parameter <aparameter> previously stored in the instance <self> and there is the corresponding string in the output argument <avalue>, False otherwise.
 
 	:param aparameter:
@@ -427,6 +457,7 @@ class Dynamic_FuzzyClass : public MMgt_TShared {
 	:rtype: bool
 ") Value;
 		virtual Standard_Boolean Value (const char * aparameter,TCollection_AsciiString & avalue);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns True, if there is a parameter <aparameter> previously stored in the instance <self> and there is the corresponding object value in the output argument <avalue>, False otherwise.
 
 	:param aparameter:
@@ -503,6 +534,7 @@ def __del__(self):
 %nodefaultctor Dynamic_FuzzyDefinitionsDictionary;
 class Dynamic_FuzzyDefinitionsDictionary : public MMgt_TShared {
 	public:
+		%feature("compactdefaultargs") Creates;
 		%feature("autodoc", "	* Starting with a file named <afilename>, fills the dictionary with all the wishes definitions.
 
 	:param afilename:
@@ -510,6 +542,7 @@ class Dynamic_FuzzyDefinitionsDictionary : public MMgt_TShared {
 	:rtype: None
 ") Creates;
 		void Creates (const char * afilename);
+		%feature("compactdefaultargs") Switch;
 		%feature("autodoc", "	* This virtual method allows the user to add recognition of its own parameters when reading the file to fill the dictionary.
 
 	:param aname:
@@ -521,6 +554,7 @@ class Dynamic_FuzzyDefinitionsDictionary : public MMgt_TShared {
 	:rtype: Handle_Dynamic_Parameter
 ") Switch;
 		virtual Handle_Dynamic_Parameter Switch (const char * aname,const char * atype,const char * avalue);
+		%feature("compactdefaultargs") Definition;
 		%feature("autodoc", "	* Returns from the dictionary in the out variable <adefinition> a reference to the right instance of the definition identified by its type <atype>. The method returns true if the definition exist, false otherwise.
 
 	:param atype:
@@ -530,20 +564,23 @@ class Dynamic_FuzzyDefinitionsDictionary : public MMgt_TShared {
 	:rtype: bool
 ") Definition;
 		Standard_Boolean Definition (const char * atype,Handle_Dynamic_FuzzyClass & adefinition);
+		%feature("compactdefaultargs") UpToDate;
 		%feature("autodoc", "	* Returns true if there has been no modification of the file fuzzyclasses.dat since the creation of the dictionary object, false otherwise.
 
 	:rtype: bool
 ") UpToDate;
 		Standard_Boolean UpToDate ();
+		%feature("compactdefaultargs") NumberOfDefinitions;
 		%feature("autodoc", "	* Returns the number of definitions stored in the dictionary.
 
 	:rtype: int
 ") NumberOfDefinitions;
 		Standard_Integer NumberOfDefinitions ();
+		%feature("compactdefaultargs") Definition;
 		%feature("autodoc", "	* Returns a reference on the definition identified by the index <anidex>.
 
 	:param anindex:
-	:type anindex: Standard_Integer
+	:type anindex: int
 	:rtype: Handle_Dynamic_FuzzyClass
 ") Definition;
 		Handle_Dynamic_FuzzyClass Definition (const Standard_Integer anindex);
@@ -614,16 +651,19 @@ def __del__(self):
 %nodefaultctor Dynamic_Method;
 class Dynamic_Method : public MMgt_TShared {
 	public:
+		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "	* Returns the type of object which is the name of the function definition.
 
 	:rtype: TCollection_AsciiString
 ") Type;
 		virtual TCollection_AsciiString Type ();
+		%feature("compactdefaultargs") FirstVariableNode;
 		%feature("autodoc", "	* Returns the first variable node of the Method which contains a variable.
 
 	:rtype: Handle_Dynamic_VariableNode
 ") FirstVariableNode;
 		Handle_Dynamic_VariableNode FirstVariableNode ();
+		%feature("compactdefaultargs") Variable;
 		%feature("autodoc", "	* Returns true if there is a variable with <avariable> as name, false otherwise.
 
 	:param avariable:
@@ -631,6 +671,7 @@ class Dynamic_Method : public MMgt_TShared {
 	:rtype: bool
 ") Variable;
 		Standard_Boolean Variable (const char * avariable);
+		%feature("compactdefaultargs") Variable;
 		%feature("autodoc", "	* Adds another variable <avariable> to the sequence of variable definitions.
 
 	:param avariable:
@@ -638,6 +679,7 @@ class Dynamic_Method : public MMgt_TShared {
 	:rtype: None
 ") Variable;
 		void Variable (const Handle_Dynamic_Variable & avariable);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns True, if there is a variable <avariable> previously stored in the instance <self> and there is the corresponding parameter value in the output argument <aparameter>, False otherwise.
 
 	:param aname:
@@ -649,6 +691,7 @@ class Dynamic_Method : public MMgt_TShared {
 	:rtype: bool
 ") Value;
 		Standard_Boolean Value (const char * aname,Handle_Dynamic_Parameter & aparameter,Dynamic_ModeEnum & amode);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns True, if there is a variable named <aname> previously stored in the instance of <self> and returns the corresponding variable in the output argument <avariable>, False otherwise.
 
 	:param aname:
@@ -725,6 +768,7 @@ def __del__(self):
 %nodefaultctor Dynamic_MethodDefinitionsDictionary;
 class Dynamic_MethodDefinitionsDictionary : public Standard_Transient {
 	public:
+		%feature("compactdefaultargs") Creates;
 		%feature("autodoc", "	* Starting with a file named <afilename>, fills the dictionary with all the wishes definitions.
 
 	:param afilename:
@@ -732,6 +776,7 @@ class Dynamic_MethodDefinitionsDictionary : public Standard_Transient {
 	:rtype: None
 ") Creates;
 		void Creates (const char * afilename);
+		%feature("compactdefaultargs") Definition;
 		%feature("autodoc", "	* This method sets the new definition <adefinition> in the dictionary. It returns true if the operation is successful, false otherwise.
 
 	:param adefinition:
@@ -739,6 +784,7 @@ class Dynamic_MethodDefinitionsDictionary : public Standard_Transient {
 	:rtype: bool
 ") Definition;
 		Standard_Boolean Definition (const Handle_Dynamic_Method & adefinition);
+		%feature("compactdefaultargs") Switch;
 		%feature("autodoc", "	* This virtual method allows the user to add recognition of its own parameters when reading the file to fill the dictionary.
 
 	:param aname:
@@ -750,6 +796,7 @@ class Dynamic_MethodDefinitionsDictionary : public Standard_Transient {
 	:rtype: Handle_Dynamic_Parameter
 ") Switch;
 		Handle_Dynamic_Parameter Switch (const char * aname,const char * atype,const char * avalue);
+		%feature("compactdefaultargs") Definition;
 		%feature("autodoc", "	* Returns from the dictionary in the out variable <adefinition> a reference to the right instance of the definition identified by its type <atype>. The method returns true if the definition exist, false otherwise.
 
 	:param atype:
@@ -759,20 +806,23 @@ class Dynamic_MethodDefinitionsDictionary : public Standard_Transient {
 	:rtype: bool
 ") Definition;
 		Standard_Boolean Definition (const char * atype,Handle_Dynamic_Method & adefinition);
+		%feature("compactdefaultargs") UpToDate;
 		%feature("autodoc", "	* Returns true if there has been no modification of the file method-definitions.dat since the creation of the dictionary object, false otherwise.
 
 	:rtype: bool
 ") UpToDate;
 		Standard_Boolean UpToDate ();
+		%feature("compactdefaultargs") NumberOfDefinitions;
 		%feature("autodoc", "	* Returns the number of definitions stored in the dictionary.
 
 	:rtype: int
 ") NumberOfDefinitions;
 		Standard_Integer NumberOfDefinitions ();
+		%feature("compactdefaultargs") Definition;
 		%feature("autodoc", "	* Returns a reference on the definition identified by the index <anidex>.
 
 	:param anindex:
-	:type anindex: Standard_Integer
+	:type anindex: int
 	:rtype: Handle_Dynamic_Method
 ") Definition;
 		Handle_Dynamic_Method Definition (const Standard_Integer anindex);
@@ -843,6 +893,7 @@ def __del__(self):
 %nodefaultctor Dynamic_Parameter;
 class Dynamic_Parameter : public MMgt_TShared {
 	public:
+		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "	* Returns in an AsciiString the name of the parameter.
 
 	:rtype: TCollection_AsciiString
@@ -915,27 +966,33 @@ def __del__(self):
 %nodefaultctor Dynamic_ParameterNode;
 class Dynamic_ParameterNode : public MMgt_TShared {
 	public:
+		%feature("compactdefaultargs") Dynamic_ParameterNode;
 		%feature("autodoc", "	:rtype: None
 ") Dynamic_ParameterNode;
 		 Dynamic_ParameterNode ();
+		%feature("compactdefaultargs") Dynamic_ParameterNode;
 		%feature("autodoc", "	:param anitem:
 	:type anitem: Handle_Dynamic_Parameter &
 	:rtype: None
 ") Dynamic_ParameterNode;
 		 Dynamic_ParameterNode (const Handle_Dynamic_Parameter & anitem);
+		%feature("compactdefaultargs") Object;
 		%feature("autodoc", "	:param anitem:
 	:type anitem: Handle_Dynamic_Parameter &
 	:rtype: None
 ") Object;
 		void Object (const Handle_Dynamic_Parameter & anitem);
+		%feature("compactdefaultargs") Object;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_Parameter
 ") Object;
 		Handle_Dynamic_Parameter Object ();
+		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "	:param anode:
 	:type anode: Handle_Dynamic_ParameterNode &
 	:rtype: None
 ") Next;
 		void Next (const Handle_Dynamic_ParameterNode & anode);
+		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_ParameterNode
 ") Next;
 		Handle_Dynamic_ParameterNode Next ();
@@ -998,109 +1055,129 @@ def __del__(self):
 %nodefaultctor Dynamic_SeqOfClasses;
 class Dynamic_SeqOfClasses : public TCollection_BaseSequence {
 	public:
+		%feature("compactdefaultargs") Dynamic_SeqOfClasses;
 		%feature("autodoc", "	:rtype: None
 ") Dynamic_SeqOfClasses;
 		 Dynamic_SeqOfClasses ();
+		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
 		void Clear ();
+		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: Dynamic_SeqOfClasses &
 	:rtype: Dynamic_SeqOfClasses
 ") Assign;
 		const Dynamic_SeqOfClasses & Assign (const Dynamic_SeqOfClasses & Other);
+		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", "	:param Other:
 	:type Other: Dynamic_SeqOfClasses &
 	:rtype: Dynamic_SeqOfClasses
 ") operator=;
 		const Dynamic_SeqOfClasses & operator = (const Dynamic_SeqOfClasses & Other);
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
 	:type T: Handle_Dynamic_DynamicClass &
 	:rtype: None
 ") Append;
 		void Append (const Handle_Dynamic_DynamicClass & T);
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param S:
 	:type S: Dynamic_SeqOfClasses &
 	:rtype: None
 ") Append;
 		void Append (Dynamic_SeqOfClasses & S);
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param T:
 	:type T: Handle_Dynamic_DynamicClass &
 	:rtype: None
 ") Prepend;
 		void Prepend (const Handle_Dynamic_DynamicClass & T);
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param S:
 	:type S: Dynamic_SeqOfClasses &
 	:rtype: None
 ") Prepend;
 		void Prepend (Dynamic_SeqOfClasses & S);
+		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param T:
 	:type T: Handle_Dynamic_DynamicClass &
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_Dynamic_DynamicClass & T);
+		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param S:
 	:type S: Dynamic_SeqOfClasses &
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Dynamic_SeqOfClasses & S);
+		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param T:
 	:type T: Handle_Dynamic_DynamicClass &
 	:rtype: None
 ") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_Dynamic_DynamicClass & T);
+		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param S:
 	:type S: Dynamic_SeqOfClasses &
 	:rtype: None
 ") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Dynamic_SeqOfClasses & S);
+		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_DynamicClass
 ") First;
 		const Handle_Dynamic_DynamicClass & First ();
+		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_DynamicClass
 ") Last;
 		const Handle_Dynamic_DynamicClass & Last ();
+		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param Sub:
 	:type Sub: Dynamic_SeqOfClasses &
 	:rtype: None
 ") Split;
 		void Split (const Standard_Integer Index,Dynamic_SeqOfClasses & Sub);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:rtype: Handle_Dynamic_DynamicClass
 ") Value;
 		const Handle_Dynamic_DynamicClass & Value (const Standard_Integer Index);
+		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param I:
 	:type I: Handle_Dynamic_DynamicClass &
 	:rtype: None
 ") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Dynamic_DynamicClass & I);
+		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:rtype: Handle_Dynamic_DynamicClass
 ") ChangeValue;
 		Handle_Dynamic_DynamicClass & ChangeValue (const Standard_Integer Index);
+		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:rtype: None
 ") Remove;
 		void Remove (const Standard_Integer Index);
+		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param FromIndex:
-	:type FromIndex: Standard_Integer
+	:type FromIndex: int
 	:param ToIndex:
-	:type ToIndex: Standard_Integer
+	:type ToIndex: int
 	:rtype: None
 ") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
@@ -1124,109 +1201,129 @@ def __del__(self):
 %nodefaultctor Dynamic_SeqOfFuzzyDefinitions;
 class Dynamic_SeqOfFuzzyDefinitions : public TCollection_BaseSequence {
 	public:
+		%feature("compactdefaultargs") Dynamic_SeqOfFuzzyDefinitions;
 		%feature("autodoc", "	:rtype: None
 ") Dynamic_SeqOfFuzzyDefinitions;
 		 Dynamic_SeqOfFuzzyDefinitions ();
+		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
 		void Clear ();
+		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: Dynamic_SeqOfFuzzyDefinitions &
 	:rtype: Dynamic_SeqOfFuzzyDefinitions
 ") Assign;
 		const Dynamic_SeqOfFuzzyDefinitions & Assign (const Dynamic_SeqOfFuzzyDefinitions & Other);
+		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", "	:param Other:
 	:type Other: Dynamic_SeqOfFuzzyDefinitions &
 	:rtype: Dynamic_SeqOfFuzzyDefinitions
 ") operator=;
 		const Dynamic_SeqOfFuzzyDefinitions & operator = (const Dynamic_SeqOfFuzzyDefinitions & Other);
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
 	:type T: Handle_Dynamic_FuzzyDefinition &
 	:rtype: None
 ") Append;
 		void Append (const Handle_Dynamic_FuzzyDefinition & T);
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param S:
 	:type S: Dynamic_SeqOfFuzzyDefinitions &
 	:rtype: None
 ") Append;
 		void Append (Dynamic_SeqOfFuzzyDefinitions & S);
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param T:
 	:type T: Handle_Dynamic_FuzzyDefinition &
 	:rtype: None
 ") Prepend;
 		void Prepend (const Handle_Dynamic_FuzzyDefinition & T);
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param S:
 	:type S: Dynamic_SeqOfFuzzyDefinitions &
 	:rtype: None
 ") Prepend;
 		void Prepend (Dynamic_SeqOfFuzzyDefinitions & S);
+		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param T:
 	:type T: Handle_Dynamic_FuzzyDefinition &
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_Dynamic_FuzzyDefinition & T);
+		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param S:
 	:type S: Dynamic_SeqOfFuzzyDefinitions &
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Dynamic_SeqOfFuzzyDefinitions & S);
+		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param T:
 	:type T: Handle_Dynamic_FuzzyDefinition &
 	:rtype: None
 ") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_Dynamic_FuzzyDefinition & T);
+		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param S:
 	:type S: Dynamic_SeqOfFuzzyDefinitions &
 	:rtype: None
 ") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Dynamic_SeqOfFuzzyDefinitions & S);
+		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_FuzzyDefinition
 ") First;
 		const Handle_Dynamic_FuzzyDefinition & First ();
+		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_FuzzyDefinition
 ") Last;
 		const Handle_Dynamic_FuzzyDefinition & Last ();
+		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param Sub:
 	:type Sub: Dynamic_SeqOfFuzzyDefinitions &
 	:rtype: None
 ") Split;
 		void Split (const Standard_Integer Index,Dynamic_SeqOfFuzzyDefinitions & Sub);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:rtype: Handle_Dynamic_FuzzyDefinition
 ") Value;
 		const Handle_Dynamic_FuzzyDefinition & Value (const Standard_Integer Index);
+		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param I:
 	:type I: Handle_Dynamic_FuzzyDefinition &
 	:rtype: None
 ") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Dynamic_FuzzyDefinition & I);
+		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:rtype: Handle_Dynamic_FuzzyDefinition
 ") ChangeValue;
 		Handle_Dynamic_FuzzyDefinition & ChangeValue (const Standard_Integer Index);
+		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:rtype: None
 ") Remove;
 		void Remove (const Standard_Integer Index);
+		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param FromIndex:
-	:type FromIndex: Standard_Integer
+	:type FromIndex: int
 	:param ToIndex:
-	:type ToIndex: Standard_Integer
+	:type ToIndex: int
 	:rtype: None
 ") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
@@ -1250,109 +1347,129 @@ def __del__(self):
 %nodefaultctor Dynamic_SeqOfMethodDefinitions;
 class Dynamic_SeqOfMethodDefinitions : public TCollection_BaseSequence {
 	public:
+		%feature("compactdefaultargs") Dynamic_SeqOfMethodDefinitions;
 		%feature("autodoc", "	:rtype: None
 ") Dynamic_SeqOfMethodDefinitions;
 		 Dynamic_SeqOfMethodDefinitions ();
+		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
 		void Clear ();
+		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: Dynamic_SeqOfMethodDefinitions &
 	:rtype: Dynamic_SeqOfMethodDefinitions
 ") Assign;
 		const Dynamic_SeqOfMethodDefinitions & Assign (const Dynamic_SeqOfMethodDefinitions & Other);
+		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", "	:param Other:
 	:type Other: Dynamic_SeqOfMethodDefinitions &
 	:rtype: Dynamic_SeqOfMethodDefinitions
 ") operator=;
 		const Dynamic_SeqOfMethodDefinitions & operator = (const Dynamic_SeqOfMethodDefinitions & Other);
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
 	:type T: Handle_Dynamic_MethodDefinition &
 	:rtype: None
 ") Append;
 		void Append (const Handle_Dynamic_MethodDefinition & T);
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param S:
 	:type S: Dynamic_SeqOfMethodDefinitions &
 	:rtype: None
 ") Append;
 		void Append (Dynamic_SeqOfMethodDefinitions & S);
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param T:
 	:type T: Handle_Dynamic_MethodDefinition &
 	:rtype: None
 ") Prepend;
 		void Prepend (const Handle_Dynamic_MethodDefinition & T);
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param S:
 	:type S: Dynamic_SeqOfMethodDefinitions &
 	:rtype: None
 ") Prepend;
 		void Prepend (Dynamic_SeqOfMethodDefinitions & S);
+		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param T:
 	:type T: Handle_Dynamic_MethodDefinition &
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_Dynamic_MethodDefinition & T);
+		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param S:
 	:type S: Dynamic_SeqOfMethodDefinitions &
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Dynamic_SeqOfMethodDefinitions & S);
+		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param T:
 	:type T: Handle_Dynamic_MethodDefinition &
 	:rtype: None
 ") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_Dynamic_MethodDefinition & T);
+		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param S:
 	:type S: Dynamic_SeqOfMethodDefinitions &
 	:rtype: None
 ") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Dynamic_SeqOfMethodDefinitions & S);
+		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_MethodDefinition
 ") First;
 		const Handle_Dynamic_MethodDefinition & First ();
+		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_MethodDefinition
 ") Last;
 		const Handle_Dynamic_MethodDefinition & Last ();
+		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param Sub:
 	:type Sub: Dynamic_SeqOfMethodDefinitions &
 	:rtype: None
 ") Split;
 		void Split (const Standard_Integer Index,Dynamic_SeqOfMethodDefinitions & Sub);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:rtype: Handle_Dynamic_MethodDefinition
 ") Value;
 		const Handle_Dynamic_MethodDefinition & Value (const Standard_Integer Index);
+		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param I:
 	:type I: Handle_Dynamic_MethodDefinition &
 	:rtype: None
 ") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Dynamic_MethodDefinition & I);
+		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:rtype: Handle_Dynamic_MethodDefinition
 ") ChangeValue;
 		Handle_Dynamic_MethodDefinition & ChangeValue (const Standard_Integer Index);
+		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:rtype: None
 ") Remove;
 		void Remove (const Standard_Integer Index);
+		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param FromIndex:
-	:type FromIndex: Standard_Integer
+	:type FromIndex: int
 	:param ToIndex:
-	:type ToIndex: Standard_Integer
+	:type ToIndex: int
 	:rtype: None
 ") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
@@ -1376,109 +1493,129 @@ def __del__(self):
 %nodefaultctor Dynamic_SeqOfMethods;
 class Dynamic_SeqOfMethods : public TCollection_BaseSequence {
 	public:
+		%feature("compactdefaultargs") Dynamic_SeqOfMethods;
 		%feature("autodoc", "	:rtype: None
 ") Dynamic_SeqOfMethods;
 		 Dynamic_SeqOfMethods ();
+		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
 		void Clear ();
+		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: Dynamic_SeqOfMethods &
 	:rtype: Dynamic_SeqOfMethods
 ") Assign;
 		const Dynamic_SeqOfMethods & Assign (const Dynamic_SeqOfMethods & Other);
+		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", "	:param Other:
 	:type Other: Dynamic_SeqOfMethods &
 	:rtype: Dynamic_SeqOfMethods
 ") operator=;
 		const Dynamic_SeqOfMethods & operator = (const Dynamic_SeqOfMethods & Other);
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param T:
 	:type T: Handle_Dynamic_Method &
 	:rtype: None
 ") Append;
 		void Append (const Handle_Dynamic_Method & T);
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param S:
 	:type S: Dynamic_SeqOfMethods &
 	:rtype: None
 ") Append;
 		void Append (Dynamic_SeqOfMethods & S);
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param T:
 	:type T: Handle_Dynamic_Method &
 	:rtype: None
 ") Prepend;
 		void Prepend (const Handle_Dynamic_Method & T);
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param S:
 	:type S: Dynamic_SeqOfMethods &
 	:rtype: None
 ") Prepend;
 		void Prepend (Dynamic_SeqOfMethods & S);
+		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param T:
 	:type T: Handle_Dynamic_Method &
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Handle_Dynamic_Method & T);
+		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param S:
 	:type S: Dynamic_SeqOfMethods &
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,Dynamic_SeqOfMethods & S);
+		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param T:
 	:type T: Handle_Dynamic_Method &
 	:rtype: None
 ") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,const Handle_Dynamic_Method & T);
+		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param S:
 	:type S: Dynamic_SeqOfMethods &
 	:rtype: None
 ") InsertAfter;
 		void InsertAfter (const Standard_Integer Index,Dynamic_SeqOfMethods & S);
+		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_Method
 ") First;
 		const Handle_Dynamic_Method & First ();
+		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_Method
 ") Last;
 		const Handle_Dynamic_Method & Last ();
+		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param Sub:
 	:type Sub: Dynamic_SeqOfMethods &
 	:rtype: None
 ") Split;
 		void Split (const Standard_Integer Index,Dynamic_SeqOfMethods & Sub);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:rtype: Handle_Dynamic_Method
 ") Value;
 		const Handle_Dynamic_Method & Value (const Standard_Integer Index);
+		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:param I:
 	:type I: Handle_Dynamic_Method &
 	:rtype: None
 ") SetValue;
 		void SetValue (const Standard_Integer Index,const Handle_Dynamic_Method & I);
+		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:rtype: Handle_Dynamic_Method
 ") ChangeValue;
 		Handle_Dynamic_Method & ChangeValue (const Standard_Integer Index);
+		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
-	:type Index: Standard_Integer
+	:type Index: int
 	:rtype: None
 ") Remove;
 		void Remove (const Standard_Integer Index);
+		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param FromIndex:
-	:type FromIndex: Standard_Integer
+	:type FromIndex: int
 	:param ToIndex:
-	:type ToIndex: Standard_Integer
+	:type ToIndex: int
 	:rtype: None
 ") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
@@ -1502,6 +1639,7 @@ def __del__(self):
 %nodefaultctor Dynamic_SequenceNodeOfSeqOfClasses;
 class Dynamic_SequenceNodeOfSeqOfClasses : public TCollection_SeqNode {
 	public:
+		%feature("compactdefaultargs") Dynamic_SequenceNodeOfSeqOfClasses;
 		%feature("autodoc", "	:param I:
 	:type I: Handle_Dynamic_DynamicClass &
 	:param n:
@@ -1511,6 +1649,7 @@ class Dynamic_SequenceNodeOfSeqOfClasses : public TCollection_SeqNode {
 	:rtype: None
 ") Dynamic_SequenceNodeOfSeqOfClasses;
 		 Dynamic_SequenceNodeOfSeqOfClasses (const Handle_Dynamic_DynamicClass & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_DynamicClass
 ") Value;
 		Handle_Dynamic_DynamicClass & Value ();
@@ -1573,6 +1712,7 @@ def __del__(self):
 %nodefaultctor Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions;
 class Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions : public TCollection_SeqNode {
 	public:
+		%feature("compactdefaultargs") Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions;
 		%feature("autodoc", "	:param I:
 	:type I: Handle_Dynamic_FuzzyDefinition &
 	:param n:
@@ -1582,6 +1722,7 @@ class Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions : public TCollection_SeqNode {
 	:rtype: None
 ") Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions;
 		 Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions (const Handle_Dynamic_FuzzyDefinition & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_FuzzyDefinition
 ") Value;
 		Handle_Dynamic_FuzzyDefinition & Value ();
@@ -1644,6 +1785,7 @@ def __del__(self):
 %nodefaultctor Dynamic_SequenceNodeOfSeqOfMethodDefinitions;
 class Dynamic_SequenceNodeOfSeqOfMethodDefinitions : public TCollection_SeqNode {
 	public:
+		%feature("compactdefaultargs") Dynamic_SequenceNodeOfSeqOfMethodDefinitions;
 		%feature("autodoc", "	:param I:
 	:type I: Handle_Dynamic_MethodDefinition &
 	:param n:
@@ -1653,6 +1795,7 @@ class Dynamic_SequenceNodeOfSeqOfMethodDefinitions : public TCollection_SeqNode 
 	:rtype: None
 ") Dynamic_SequenceNodeOfSeqOfMethodDefinitions;
 		 Dynamic_SequenceNodeOfSeqOfMethodDefinitions (const Handle_Dynamic_MethodDefinition & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_MethodDefinition
 ") Value;
 		Handle_Dynamic_MethodDefinition & Value ();
@@ -1715,6 +1858,7 @@ def __del__(self):
 %nodefaultctor Dynamic_SequenceNodeOfSeqOfMethods;
 class Dynamic_SequenceNodeOfSeqOfMethods : public TCollection_SeqNode {
 	public:
+		%feature("compactdefaultargs") Dynamic_SequenceNodeOfSeqOfMethods;
 		%feature("autodoc", "	:param I:
 	:type I: Handle_Dynamic_Method &
 	:param n:
@@ -1724,6 +1868,7 @@ class Dynamic_SequenceNodeOfSeqOfMethods : public TCollection_SeqNode {
 	:rtype: None
 ") Dynamic_SequenceNodeOfSeqOfMethods;
 		 Dynamic_SequenceNodeOfSeqOfMethods (const Handle_Dynamic_Method & I,const TCollection_SeqNodePtr & n,const TCollection_SeqNodePtr & p);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_Method
 ") Value;
 		Handle_Dynamic_Method & Value ();
@@ -1786,116 +1931,139 @@ def __del__(self):
 %nodefaultctor Dynamic_SequenceOfClasses;
 class Dynamic_SequenceOfClasses : public MMgt_TShared {
 	public:
+		%feature("compactdefaultargs") Dynamic_SequenceOfClasses;
 		%feature("autodoc", "	:rtype: None
 ") Dynamic_SequenceOfClasses;
 		 Dynamic_SequenceOfClasses ();
+		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "	:rtype: bool
 ") IsEmpty;
 		Standard_Boolean IsEmpty ();
+		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
 ") Length;
 		Standard_Integer Length ();
+		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
 		void Clear ();
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param anItem:
 	:type anItem: Handle_Dynamic_DynamicClass &
 	:rtype: None
 ") Append;
 		void Append (const Handle_Dynamic_DynamicClass & anItem);
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param aSequence:
 	:type aSequence: Handle_Dynamic_SequenceOfClasses &
 	:rtype: None
 ") Append;
 		void Append (const Handle_Dynamic_SequenceOfClasses & aSequence);
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param anItem:
 	:type anItem: Handle_Dynamic_DynamicClass &
 	:rtype: None
 ") Prepend;
 		void Prepend (const Handle_Dynamic_DynamicClass & anItem);
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param aSequence:
 	:type aSequence: Handle_Dynamic_SequenceOfClasses &
 	:rtype: None
 ") Prepend;
 		void Prepend (const Handle_Dynamic_SequenceOfClasses & aSequence);
+		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "	:rtype: None
 ") Reverse;
 		void Reverse ();
+		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param anItem:
 	:type anItem: Handle_Dynamic_DynamicClass &
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Dynamic_DynamicClass & anItem);
+		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param aSequence:
 	:type aSequence: Handle_Dynamic_SequenceOfClasses &
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Dynamic_SequenceOfClasses & aSequence);
+		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param anItem:
 	:type anItem: Handle_Dynamic_DynamicClass &
 	:rtype: None
 ") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Dynamic_DynamicClass & anItem);
+		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param aSequence:
 	:type aSequence: Handle_Dynamic_SequenceOfClasses &
 	:rtype: None
 ") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Dynamic_SequenceOfClasses & aSequence);
+		%feature("compactdefaultargs") Exchange;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param anOtherIndex:
-	:type anOtherIndex: Standard_Integer
+	:type anOtherIndex: int
 	:rtype: None
 ") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
+		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:rtype: Handle_Dynamic_SequenceOfClasses
 ") Split;
 		Handle_Dynamic_SequenceOfClasses Split (const Standard_Integer anIndex);
+		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param anItem:
 	:type anItem: Handle_Dynamic_DynamicClass &
 	:rtype: None
 ") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Handle_Dynamic_DynamicClass & anItem);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:rtype: Handle_Dynamic_DynamicClass
 ") Value;
 		const Handle_Dynamic_DynamicClass & Value (const Standard_Integer anIndex);
+		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:rtype: Handle_Dynamic_DynamicClass
 ") ChangeValue;
 		Handle_Dynamic_DynamicClass & ChangeValue (const Standard_Integer anIndex);
+		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:rtype: None
 ") Remove;
 		void Remove (const Standard_Integer anIndex);
+		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param fromIndex:
-	:type fromIndex: Standard_Integer
+	:type fromIndex: int
 	:param toIndex:
-	:type toIndex: Standard_Integer
+	:type toIndex: int
 	:rtype: None
 ") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
+		%feature("compactdefaultargs") Sequence;
 		%feature("autodoc", "	:rtype: Dynamic_SeqOfClasses
 ") Sequence;
 		const Dynamic_SeqOfClasses & Sequence ();
+		%feature("compactdefaultargs") ChangeSequence;
 		%feature("autodoc", "	:rtype: Dynamic_SeqOfClasses
 ") ChangeSequence;
 		Dynamic_SeqOfClasses & ChangeSequence ();
+		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_SequenceOfClasses
 ") ShallowCopy;
 		Handle_Dynamic_SequenceOfClasses ShallowCopy ();
@@ -1958,116 +2126,139 @@ def __del__(self):
 %nodefaultctor Dynamic_SequenceOfFuzzyDefinitions;
 class Dynamic_SequenceOfFuzzyDefinitions : public MMgt_TShared {
 	public:
+		%feature("compactdefaultargs") Dynamic_SequenceOfFuzzyDefinitions;
 		%feature("autodoc", "	:rtype: None
 ") Dynamic_SequenceOfFuzzyDefinitions;
 		 Dynamic_SequenceOfFuzzyDefinitions ();
+		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "	:rtype: bool
 ") IsEmpty;
 		Standard_Boolean IsEmpty ();
+		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
 ") Length;
 		Standard_Integer Length ();
+		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
 		void Clear ();
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param anItem:
 	:type anItem: Handle_Dynamic_FuzzyDefinition &
 	:rtype: None
 ") Append;
 		void Append (const Handle_Dynamic_FuzzyDefinition & anItem);
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param aSequence:
 	:type aSequence: Handle_Dynamic_SequenceOfFuzzyDefinitions &
 	:rtype: None
 ") Append;
 		void Append (const Handle_Dynamic_SequenceOfFuzzyDefinitions & aSequence);
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param anItem:
 	:type anItem: Handle_Dynamic_FuzzyDefinition &
 	:rtype: None
 ") Prepend;
 		void Prepend (const Handle_Dynamic_FuzzyDefinition & anItem);
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param aSequence:
 	:type aSequence: Handle_Dynamic_SequenceOfFuzzyDefinitions &
 	:rtype: None
 ") Prepend;
 		void Prepend (const Handle_Dynamic_SequenceOfFuzzyDefinitions & aSequence);
+		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "	:rtype: None
 ") Reverse;
 		void Reverse ();
+		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param anItem:
 	:type anItem: Handle_Dynamic_FuzzyDefinition &
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Dynamic_FuzzyDefinition & anItem);
+		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param aSequence:
 	:type aSequence: Handle_Dynamic_SequenceOfFuzzyDefinitions &
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Dynamic_SequenceOfFuzzyDefinitions & aSequence);
+		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param anItem:
 	:type anItem: Handle_Dynamic_FuzzyDefinition &
 	:rtype: None
 ") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Dynamic_FuzzyDefinition & anItem);
+		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param aSequence:
 	:type aSequence: Handle_Dynamic_SequenceOfFuzzyDefinitions &
 	:rtype: None
 ") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Dynamic_SequenceOfFuzzyDefinitions & aSequence);
+		%feature("compactdefaultargs") Exchange;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param anOtherIndex:
-	:type anOtherIndex: Standard_Integer
+	:type anOtherIndex: int
 	:rtype: None
 ") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
+		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:rtype: Handle_Dynamic_SequenceOfFuzzyDefinitions
 ") Split;
 		Handle_Dynamic_SequenceOfFuzzyDefinitions Split (const Standard_Integer anIndex);
+		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param anItem:
 	:type anItem: Handle_Dynamic_FuzzyDefinition &
 	:rtype: None
 ") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Handle_Dynamic_FuzzyDefinition & anItem);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:rtype: Handle_Dynamic_FuzzyDefinition
 ") Value;
 		const Handle_Dynamic_FuzzyDefinition & Value (const Standard_Integer anIndex);
+		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:rtype: Handle_Dynamic_FuzzyDefinition
 ") ChangeValue;
 		Handle_Dynamic_FuzzyDefinition & ChangeValue (const Standard_Integer anIndex);
+		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:rtype: None
 ") Remove;
 		void Remove (const Standard_Integer anIndex);
+		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param fromIndex:
-	:type fromIndex: Standard_Integer
+	:type fromIndex: int
 	:param toIndex:
-	:type toIndex: Standard_Integer
+	:type toIndex: int
 	:rtype: None
 ") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
+		%feature("compactdefaultargs") Sequence;
 		%feature("autodoc", "	:rtype: Dynamic_SeqOfFuzzyDefinitions
 ") Sequence;
 		const Dynamic_SeqOfFuzzyDefinitions & Sequence ();
+		%feature("compactdefaultargs") ChangeSequence;
 		%feature("autodoc", "	:rtype: Dynamic_SeqOfFuzzyDefinitions
 ") ChangeSequence;
 		Dynamic_SeqOfFuzzyDefinitions & ChangeSequence ();
+		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_SequenceOfFuzzyDefinitions
 ") ShallowCopy;
 		Handle_Dynamic_SequenceOfFuzzyDefinitions ShallowCopy ();
@@ -2130,116 +2321,139 @@ def __del__(self):
 %nodefaultctor Dynamic_SequenceOfMethodDefinitions;
 class Dynamic_SequenceOfMethodDefinitions : public MMgt_TShared {
 	public:
+		%feature("compactdefaultargs") Dynamic_SequenceOfMethodDefinitions;
 		%feature("autodoc", "	:rtype: None
 ") Dynamic_SequenceOfMethodDefinitions;
 		 Dynamic_SequenceOfMethodDefinitions ();
+		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "	:rtype: bool
 ") IsEmpty;
 		Standard_Boolean IsEmpty ();
+		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
 ") Length;
 		Standard_Integer Length ();
+		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
 		void Clear ();
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param anItem:
 	:type anItem: Handle_Dynamic_MethodDefinition &
 	:rtype: None
 ") Append;
 		void Append (const Handle_Dynamic_MethodDefinition & anItem);
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param aSequence:
 	:type aSequence: Handle_Dynamic_SequenceOfMethodDefinitions &
 	:rtype: None
 ") Append;
 		void Append (const Handle_Dynamic_SequenceOfMethodDefinitions & aSequence);
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param anItem:
 	:type anItem: Handle_Dynamic_MethodDefinition &
 	:rtype: None
 ") Prepend;
 		void Prepend (const Handle_Dynamic_MethodDefinition & anItem);
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param aSequence:
 	:type aSequence: Handle_Dynamic_SequenceOfMethodDefinitions &
 	:rtype: None
 ") Prepend;
 		void Prepend (const Handle_Dynamic_SequenceOfMethodDefinitions & aSequence);
+		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "	:rtype: None
 ") Reverse;
 		void Reverse ();
+		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param anItem:
 	:type anItem: Handle_Dynamic_MethodDefinition &
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Dynamic_MethodDefinition & anItem);
+		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param aSequence:
 	:type aSequence: Handle_Dynamic_SequenceOfMethodDefinitions &
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Dynamic_SequenceOfMethodDefinitions & aSequence);
+		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param anItem:
 	:type anItem: Handle_Dynamic_MethodDefinition &
 	:rtype: None
 ") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Dynamic_MethodDefinition & anItem);
+		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param aSequence:
 	:type aSequence: Handle_Dynamic_SequenceOfMethodDefinitions &
 	:rtype: None
 ") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Dynamic_SequenceOfMethodDefinitions & aSequence);
+		%feature("compactdefaultargs") Exchange;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param anOtherIndex:
-	:type anOtherIndex: Standard_Integer
+	:type anOtherIndex: int
 	:rtype: None
 ") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
+		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:rtype: Handle_Dynamic_SequenceOfMethodDefinitions
 ") Split;
 		Handle_Dynamic_SequenceOfMethodDefinitions Split (const Standard_Integer anIndex);
+		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param anItem:
 	:type anItem: Handle_Dynamic_MethodDefinition &
 	:rtype: None
 ") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Handle_Dynamic_MethodDefinition & anItem);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:rtype: Handle_Dynamic_MethodDefinition
 ") Value;
 		const Handle_Dynamic_MethodDefinition & Value (const Standard_Integer anIndex);
+		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:rtype: Handle_Dynamic_MethodDefinition
 ") ChangeValue;
 		Handle_Dynamic_MethodDefinition & ChangeValue (const Standard_Integer anIndex);
+		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:rtype: None
 ") Remove;
 		void Remove (const Standard_Integer anIndex);
+		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param fromIndex:
-	:type fromIndex: Standard_Integer
+	:type fromIndex: int
 	:param toIndex:
-	:type toIndex: Standard_Integer
+	:type toIndex: int
 	:rtype: None
 ") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
+		%feature("compactdefaultargs") Sequence;
 		%feature("autodoc", "	:rtype: Dynamic_SeqOfMethodDefinitions
 ") Sequence;
 		const Dynamic_SeqOfMethodDefinitions & Sequence ();
+		%feature("compactdefaultargs") ChangeSequence;
 		%feature("autodoc", "	:rtype: Dynamic_SeqOfMethodDefinitions
 ") ChangeSequence;
 		Dynamic_SeqOfMethodDefinitions & ChangeSequence ();
+		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_SequenceOfMethodDefinitions
 ") ShallowCopy;
 		Handle_Dynamic_SequenceOfMethodDefinitions ShallowCopy ();
@@ -2302,116 +2516,139 @@ def __del__(self):
 %nodefaultctor Dynamic_SequenceOfMethods;
 class Dynamic_SequenceOfMethods : public MMgt_TShared {
 	public:
+		%feature("compactdefaultargs") Dynamic_SequenceOfMethods;
 		%feature("autodoc", "	:rtype: None
 ") Dynamic_SequenceOfMethods;
 		 Dynamic_SequenceOfMethods ();
+		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "	:rtype: bool
 ") IsEmpty;
 		Standard_Boolean IsEmpty ();
+		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "	:rtype: int
 ") Length;
 		Standard_Integer Length ();
+		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
 		void Clear ();
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param anItem:
 	:type anItem: Handle_Dynamic_Method &
 	:rtype: None
 ") Append;
 		void Append (const Handle_Dynamic_Method & anItem);
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param aSequence:
 	:type aSequence: Handle_Dynamic_SequenceOfMethods &
 	:rtype: None
 ") Append;
 		void Append (const Handle_Dynamic_SequenceOfMethods & aSequence);
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param anItem:
 	:type anItem: Handle_Dynamic_Method &
 	:rtype: None
 ") Prepend;
 		void Prepend (const Handle_Dynamic_Method & anItem);
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param aSequence:
 	:type aSequence: Handle_Dynamic_SequenceOfMethods &
 	:rtype: None
 ") Prepend;
 		void Prepend (const Handle_Dynamic_SequenceOfMethods & aSequence);
+		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "	:rtype: None
 ") Reverse;
 		void Reverse ();
+		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param anItem:
 	:type anItem: Handle_Dynamic_Method &
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Dynamic_Method & anItem);
+		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param aSequence:
 	:type aSequence: Handle_Dynamic_SequenceOfMethods &
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (const Standard_Integer anIndex,const Handle_Dynamic_SequenceOfMethods & aSequence);
+		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param anItem:
 	:type anItem: Handle_Dynamic_Method &
 	:rtype: None
 ") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Dynamic_Method & anItem);
+		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param aSequence:
 	:type aSequence: Handle_Dynamic_SequenceOfMethods &
 	:rtype: None
 ") InsertAfter;
 		void InsertAfter (const Standard_Integer anIndex,const Handle_Dynamic_SequenceOfMethods & aSequence);
+		%feature("compactdefaultargs") Exchange;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param anOtherIndex:
-	:type anOtherIndex: Standard_Integer
+	:type anOtherIndex: int
 	:rtype: None
 ") Exchange;
 		void Exchange (const Standard_Integer anIndex,const Standard_Integer anOtherIndex);
+		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:rtype: Handle_Dynamic_SequenceOfMethods
 ") Split;
 		Handle_Dynamic_SequenceOfMethods Split (const Standard_Integer anIndex);
+		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:param anItem:
 	:type anItem: Handle_Dynamic_Method &
 	:rtype: None
 ") SetValue;
 		void SetValue (const Standard_Integer anIndex,const Handle_Dynamic_Method & anItem);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:rtype: Handle_Dynamic_Method
 ") Value;
 		const Handle_Dynamic_Method & Value (const Standard_Integer anIndex);
+		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:rtype: Handle_Dynamic_Method
 ") ChangeValue;
 		Handle_Dynamic_Method & ChangeValue (const Standard_Integer anIndex);
+		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param anIndex:
-	:type anIndex: Standard_Integer
+	:type anIndex: int
 	:rtype: None
 ") Remove;
 		void Remove (const Standard_Integer anIndex);
+		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param fromIndex:
-	:type fromIndex: Standard_Integer
+	:type fromIndex: int
 	:param toIndex:
-	:type toIndex: Standard_Integer
+	:type toIndex: int
 	:rtype: None
 ") Remove;
 		void Remove (const Standard_Integer fromIndex,const Standard_Integer toIndex);
+		%feature("compactdefaultargs") Sequence;
 		%feature("autodoc", "	:rtype: Dynamic_SeqOfMethods
 ") Sequence;
 		const Dynamic_SeqOfMethods & Sequence ();
+		%feature("compactdefaultargs") ChangeSequence;
 		%feature("autodoc", "	:rtype: Dynamic_SeqOfMethods
 ") ChangeSequence;
 		Dynamic_SeqOfMethods & ChangeSequence ();
+		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_SequenceOfMethods
 ") ShallowCopy;
 		Handle_Dynamic_SequenceOfMethods ShallowCopy ();
@@ -2474,11 +2711,13 @@ def __del__(self):
 %nodefaultctor Dynamic_Variable;
 class Dynamic_Variable : public MMgt_TShared {
 	public:
+		%feature("compactdefaultargs") Dynamic_Variable;
 		%feature("autodoc", "	* Creates and returns an empty instance of this class.
 
 	:rtype: None
 ") Dynamic_Variable;
 		 Dynamic_Variable ();
+		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	* Sets the parameter <aparameter> in <self>. This parameter gives the name, the type of value, and if necessary the default value of the variable.
 
 	:param aparameter:
@@ -2486,11 +2725,13 @@ class Dynamic_Variable : public MMgt_TShared {
 	:rtype: None
 ") Parameter;
 		void Parameter (const Handle_Dynamic_Parameter & aparameter);
+		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "	* Returns the parameter stored in <self>.
 
 	:rtype: Handle_Dynamic_Parameter
 ") Parameter;
 		Handle_Dynamic_Parameter Parameter ();
+		%feature("compactdefaultargs") Mode;
 		%feature("autodoc", "	* Sets the mode to the variable. the mode is to take in the enumeration IN, OUT, INOUT, INTERNAL, CONSTANT, which describes the type of the variable.
 
 	:param amode:
@@ -2498,6 +2739,7 @@ class Dynamic_Variable : public MMgt_TShared {
 	:rtype: None
 ") Mode;
 		void Mode (const Dynamic_ModeEnum amode);
+		%feature("compactdefaultargs") Mode;
 		%feature("autodoc", "	* Returns the mode of the variable.
 
 	:rtype: Dynamic_ModeEnum
@@ -2570,27 +2812,33 @@ def __del__(self):
 %nodefaultctor Dynamic_VariableNode;
 class Dynamic_VariableNode : public MMgt_TShared {
 	public:
+		%feature("compactdefaultargs") Dynamic_VariableNode;
 		%feature("autodoc", "	:rtype: None
 ") Dynamic_VariableNode;
 		 Dynamic_VariableNode ();
+		%feature("compactdefaultargs") Dynamic_VariableNode;
 		%feature("autodoc", "	:param anitem:
 	:type anitem: Handle_Dynamic_Variable &
 	:rtype: None
 ") Dynamic_VariableNode;
 		 Dynamic_VariableNode (const Handle_Dynamic_Variable & anitem);
+		%feature("compactdefaultargs") Object;
 		%feature("autodoc", "	:param anitem:
 	:type anitem: Handle_Dynamic_Variable &
 	:rtype: None
 ") Object;
 		void Object (const Handle_Dynamic_Variable & anitem);
+		%feature("compactdefaultargs") Object;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_Variable
 ") Object;
 		Handle_Dynamic_Variable Object ();
+		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "	:param anode:
 	:type anode: Handle_Dynamic_VariableNode &
 	:rtype: None
 ") Next;
 		void Next (const Handle_Dynamic_VariableNode & anode);
+		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "	:rtype: Handle_Dynamic_VariableNode
 ") Next;
 		Handle_Dynamic_VariableNode Next ();
@@ -2653,6 +2901,7 @@ def __del__(self):
 %nodefaultctor Dynamic_AbstractVariableInstance;
 class Dynamic_AbstractVariableInstance : public Dynamic_Variable {
 	public:
+		%feature("compactdefaultargs") Variable;
 		%feature("autodoc", "	* This deferred method must be implemented in the derived classes for setting reference(s) to the corresponding variable(s) which define the signature of the method definition.
 
 	:param avariable:
@@ -2719,6 +2968,7 @@ def __del__(self):
 %nodefaultctor Dynamic_BooleanParameter;
 class Dynamic_BooleanParameter : public Dynamic_Parameter {
 	public:
+		%feature("compactdefaultargs") Dynamic_BooleanParameter;
 		%feature("autodoc", "	* Creates a boolean parameter with <aparameter> as name.
 
 	:param aparameter:
@@ -2726,6 +2976,7 @@ class Dynamic_BooleanParameter : public Dynamic_Parameter {
 	:rtype: None
 ") Dynamic_BooleanParameter;
 		 Dynamic_BooleanParameter (const char * aparameter);
+		%feature("compactdefaultargs") Dynamic_BooleanParameter;
 		%feature("autodoc", "	* Creates a boolean parameter with <aparameter> and <avalue> respectively as name and value.
 
 	:param aparameter:
@@ -2735,6 +2986,7 @@ class Dynamic_BooleanParameter : public Dynamic_Parameter {
 	:rtype: None
 ") Dynamic_BooleanParameter;
 		 Dynamic_BooleanParameter (const char * aparameter,const Standard_Boolean avalue);
+		%feature("compactdefaultargs") Dynamic_BooleanParameter;
 		%feature("autodoc", "	* Creates a boolean parameter with <aparameter> as name and <avalue> as value. <avalue> is a CString with two possible values which are : 'Standard_True' and 'Standard_False'.
 
 	:param aparameter:
@@ -2744,11 +2996,13 @@ class Dynamic_BooleanParameter : public Dynamic_Parameter {
 	:rtype: None
 ") Dynamic_BooleanParameter;
 		 Dynamic_BooleanParameter (const char * aparameter,const char * avalue);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns the boolean value <thevalue>.
 
 	:rtype: bool
 ") Value;
 		Standard_Boolean Value ();
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Sets the field <thevalue> with the boolean value <avalue>
 
 	:param avalue:
@@ -2823,6 +3077,7 @@ def __del__(self):
 %nodefaultctor Dynamic_DynamicDerivedClass;
 class Dynamic_DynamicDerivedClass : public Dynamic_DynamicClass {
 	public:
+		%feature("compactdefaultargs") Dynamic_DynamicDerivedClass;
 		%feature("autodoc", "	* Creates a new instance of this class with <aname> as name.
 
 	:param aname:
@@ -2830,6 +3085,7 @@ class Dynamic_DynamicDerivedClass : public Dynamic_DynamicClass {
 	:rtype: None
 ") Dynamic_DynamicDerivedClass;
 		 Dynamic_DynamicDerivedClass (const char * aname);
+		%feature("compactdefaultargs") AddClass;
 		%feature("autodoc", "	* Adds another class <aclass> to the sequence of derived classes.
 
 	:param aclass:
@@ -2837,6 +3093,7 @@ class Dynamic_DynamicDerivedClass : public Dynamic_DynamicClass {
 	:rtype: None
 ") AddClass;
 		void AddClass (const Handle_Dynamic_DynamicClass & aclass);
+		%feature("compactdefaultargs") Method;
 		%feature("autodoc", "	* Starting with the name of a method, this redefined method searches for the right method object in the sequence of methods of the derived class and in all the inherited classes.
 
 	:param amethod:
@@ -2844,6 +3101,7 @@ class Dynamic_DynamicDerivedClass : public Dynamic_DynamicClass {
 	:rtype: Handle_Dynamic_Method
 ") Method;
 		virtual Handle_Dynamic_Method Method (const char * amethod);
+		%feature("compactdefaultargs") Instance;
 		%feature("autodoc", "	* Defines an instance of this class definition.
 
 	:rtype: Handle_Dynamic_DynamicInstance
@@ -2908,6 +3166,7 @@ def __del__(self):
 %nodefaultctor Dynamic_FuzzyDefinition;
 class Dynamic_FuzzyDefinition : public Dynamic_FuzzyClass {
 	public:
+		%feature("compactdefaultargs") Dynamic_FuzzyDefinition;
 		%feature("autodoc", "	* Creates a FuzzyDefinition with <aname> as type.
 
 	:param aname:
@@ -2915,6 +3174,7 @@ class Dynamic_FuzzyDefinition : public Dynamic_FuzzyClass {
 	:rtype: None
 ") Dynamic_FuzzyDefinition;
 		 Dynamic_FuzzyDefinition (const char * aname);
+		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "	* Returns the type of object.
 
 	:rtype: TCollection_AsciiString
@@ -2987,6 +3247,7 @@ def __del__(self):
 %nodefaultctor Dynamic_InstanceParameter;
 class Dynamic_InstanceParameter : public Dynamic_Parameter {
 	public:
+		%feature("compactdefaultargs") Dynamic_InstanceParameter;
 		%feature("autodoc", "	* Creates an InstanceParameter with <aparameter> as identifier.
 
 	:param aparameter:
@@ -2994,6 +3255,7 @@ class Dynamic_InstanceParameter : public Dynamic_Parameter {
 	:rtype: None
 ") Dynamic_InstanceParameter;
 		 Dynamic_InstanceParameter (const char * aparameter);
+		%feature("compactdefaultargs") Dynamic_InstanceParameter;
 		%feature("autodoc", "	* Creates an InstanceParameter with <aparameter> as identifier and <avalue> as initial value.
 
 	:param aparameter:
@@ -3003,11 +3265,13 @@ class Dynamic_InstanceParameter : public Dynamic_Parameter {
 	:rtype: None
 ") Dynamic_InstanceParameter;
 		 Dynamic_InstanceParameter (const char * aparameter,const Handle_Dynamic_DynamicInstance & avalue);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns <thevalue>.
 
 	:rtype: Handle_Dynamic_DynamicInstance
 ") Value;
 		Handle_Dynamic_DynamicInstance Value ();
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Sets <avalue> to <thevalue>.
 
 	:param avalue:
@@ -3082,6 +3346,7 @@ def __del__(self):
 %nodefaultctor Dynamic_IntegerParameter;
 class Dynamic_IntegerParameter : public Dynamic_Parameter {
 	public:
+		%feature("compactdefaultargs") Dynamic_IntegerParameter;
 		%feature("autodoc", "	* Creates an IntegerParameter with <aparameter> as identifier.
 
 	:param aparameter:
@@ -3089,24 +3354,27 @@ class Dynamic_IntegerParameter : public Dynamic_Parameter {
 	:rtype: None
 ") Dynamic_IntegerParameter;
 		 Dynamic_IntegerParameter (const char * aparameter);
+		%feature("compactdefaultargs") Dynamic_IntegerParameter;
 		%feature("autodoc", "	* Creates an IntegerParameter with <aparameter> as identifier and <avalue> as initial value.
 
 	:param aparameter:
 	:type aparameter: char *
 	:param avalue:
-	:type avalue: Standard_Integer
+	:type avalue: int
 	:rtype: None
 ") Dynamic_IntegerParameter;
 		 Dynamic_IntegerParameter (const char * aparameter,const Standard_Integer avalue);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns the integer value <thevalue>.
 
 	:rtype: int
 ") Value;
 		Standard_Integer Value ();
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Sets the field <thevalue> with the integer value <avalue>
 
 	:param avalue:
-	:type avalue: Standard_Integer
+	:type avalue: int
 	:rtype: None
 ") Value;
 		void Value (const Standard_Integer avalue);
@@ -3177,11 +3445,13 @@ def __del__(self):
 %nodefaultctor Dynamic_MethodDefinition;
 class Dynamic_MethodDefinition : public Dynamic_Method {
 	public:
+		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "	* Returns the name of the method definition.
 
 	:rtype: TCollection_AsciiString
 ") Type;
 		virtual TCollection_AsciiString Type ();
+		%feature("compactdefaultargs") AddVariable;
 		%feature("autodoc", "	* Adds a new variable created from the parameter <aparameter>, which defines the name of the variable its type and if necessary its default value, the mode <amode> which precise if it is an in, out, inout, internal or constant variable and the flag <agroup> for accepting a set of homogeneous variables. with the parameter value <aparameter>.
 
 	:param aparameter:
@@ -3260,6 +3530,7 @@ def __del__(self):
 %nodefaultctor Dynamic_ObjectParameter;
 class Dynamic_ObjectParameter : public Dynamic_Parameter {
 	public:
+		%feature("compactdefaultargs") Dynamic_ObjectParameter;
 		%feature("autodoc", "	* Creates an ObjectParameter with <aparameter> as name.
 
 	:param aparameter:
@@ -3267,6 +3538,7 @@ class Dynamic_ObjectParameter : public Dynamic_Parameter {
 	:rtype: None
 ") Dynamic_ObjectParameter;
 		 Dynamic_ObjectParameter (const char * aparameter);
+		%feature("compactdefaultargs") Dynamic_ObjectParameter;
 		%feature("autodoc", "	* With the name of the Parameter <aparameter> and the object <anobject>, creates an instance of ObjectParameter.
 
 	:param aparameter:
@@ -3276,11 +3548,13 @@ class Dynamic_ObjectParameter : public Dynamic_Parameter {
 	:rtype: None
 ") Dynamic_ObjectParameter;
 		 Dynamic_ObjectParameter (const char * aparameter,const Handle_Standard_Transient & anobject);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns the value of the parameter which is an object.
 
 	:rtype: Handle_Standard_Transient
 ") Value;
 		Handle_Standard_Transient Value ();
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Sets the object <anobject> in <self>.
 
 	:param anobject:
@@ -3355,6 +3629,7 @@ def __del__(self):
 %nodefaultctor Dynamic_RealParameter;
 class Dynamic_RealParameter : public Dynamic_Parameter {
 	public:
+		%feature("compactdefaultargs") Dynamic_RealParameter;
 		%feature("autodoc", "	* Creates a RealParameter with <aparameter> as name.
 
 	:param aparameter:
@@ -3362,6 +3637,7 @@ class Dynamic_RealParameter : public Dynamic_Parameter {
 	:rtype: None
 ") Dynamic_RealParameter;
 		 Dynamic_RealParameter (const char * aparameter);
+		%feature("compactdefaultargs") Dynamic_RealParameter;
 		%feature("autodoc", "	* With the name of the Parameter <aparameter> and the real <avalue>, creates an instance of RealParameter.
 
 	:param aparameter:
@@ -3371,11 +3647,13 @@ class Dynamic_RealParameter : public Dynamic_Parameter {
 	:rtype: None
 ") Dynamic_RealParameter;
 		 Dynamic_RealParameter (const char * aparameter,const Standard_Real avalue);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns the value of the parameter which is a real.
 
 	:rtype: float
 ") Value;
 		Standard_Real Value ();
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Sets the real <avalue> in <self>.
 
 	:param avalue:
@@ -3450,6 +3728,7 @@ def __del__(self):
 %nodefaultctor Dynamic_StringParameter;
 class Dynamic_StringParameter : public Dynamic_Parameter {
 	public:
+		%feature("compactdefaultargs") Dynamic_StringParameter;
 		%feature("autodoc", "	* Creates a StringParameter with <aparameter> as name.
 
 	:param aparameter:
@@ -3457,6 +3736,7 @@ class Dynamic_StringParameter : public Dynamic_Parameter {
 	:rtype: None
 ") Dynamic_StringParameter;
 		 Dynamic_StringParameter (const char * aparameter);
+		%feature("compactdefaultargs") Dynamic_StringParameter;
 		%feature("autodoc", "	* With the name of the Parameter <aparameter> and the string <astring>, creates an instance of StringParameter.
 
 	:param aparameter:
@@ -3466,11 +3746,13 @@ class Dynamic_StringParameter : public Dynamic_Parameter {
 	:rtype: None
 ") Dynamic_StringParameter;
 		 Dynamic_StringParameter (const char * aparameter,const char * astring);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Returns the value of the parameter which is an AsciiString.
 
 	:rtype: TCollection_AsciiString
 ") Value;
 		TCollection_AsciiString Value ();
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	* Sets the string <avalue> in <self>.
 
 	:param avalue:
@@ -3545,6 +3827,7 @@ def __del__(self):
 %nodefaultctor Dynamic_VariableGroup;
 class Dynamic_VariableGroup : public Dynamic_Variable {
 	public:
+		%feature("compactdefaultargs") Dynamic_VariableGroup;
 		%feature("autodoc", "	* Creates and Returns a new instance of this class.
 
 	:rtype: None
@@ -3609,6 +3892,7 @@ def __del__(self):
 %nodefaultctor Dynamic_CompiledMethod;
 class Dynamic_CompiledMethod : public Dynamic_MethodDefinition {
 	public:
+		%feature("compactdefaultargs") Dynamic_CompiledMethod;
 		%feature("autodoc", "	* Creates a compiled method with <aname> as user name and <afunction> as C++ mangled name.
 
 	:param aname:
@@ -3618,6 +3902,7 @@ class Dynamic_CompiledMethod : public Dynamic_MethodDefinition {
 	:rtype: None
 ") Dynamic_CompiledMethod;
 		 Dynamic_CompiledMethod (const char * aname,const char * afunction);
+		%feature("compactdefaultargs") Function;
 		%feature("autodoc", "	* Sets the C++ mangled name of the method to the field <thefunction>.
 
 	:param afunction:
@@ -3625,6 +3910,7 @@ class Dynamic_CompiledMethod : public Dynamic_MethodDefinition {
 	:rtype: None
 ") Function;
 		void Function (const char * afunction);
+		%feature("compactdefaultargs") Function;
 		%feature("autodoc", "	* Returns the C++ mangled name of the function.
 
 	:rtype: TCollection_AsciiString
@@ -3689,6 +3975,7 @@ def __del__(self):
 %nodefaultctor Dynamic_CompositMethod;
 class Dynamic_CompositMethod : public Dynamic_MethodDefinition {
 	public:
+		%feature("compactdefaultargs") Dynamic_CompositMethod;
 		%feature("autodoc", "	* Creates a composit method with <aname> as name.
 
 	:param aname:
@@ -3696,6 +3983,7 @@ class Dynamic_CompositMethod : public Dynamic_MethodDefinition {
 	:rtype: None
 ") Dynamic_CompositMethod;
 		 Dynamic_CompositMethod (const char * aname);
+		%feature("compactdefaultargs") Method;
 		%feature("autodoc", "	* Adds <amethod>, which is an elementary or a composit method to <self>.
 
 	:param amethod:
@@ -3703,15 +3991,17 @@ class Dynamic_CompositMethod : public Dynamic_MethodDefinition {
 	:rtype: None
 ") Method;
 		void Method (const Handle_Dynamic_Method & amethod);
+		%feature("compactdefaultargs") NumberOfMethods;
 		%feature("autodoc", "	* Returns the number of methods referenced by the composit method <self>.
 
 	:rtype: int
 ") NumberOfMethods;
 		Standard_Integer NumberOfMethods ();
+		%feature("compactdefaultargs") Method;
 		%feature("autodoc", "	* Returns the method of range <anindex>.
 
 	:param anindex:
-	:type anindex: Standard_Integer
+	:type anindex: int
 	:rtype: Handle_Dynamic_Method
 ") Method;
 		Handle_Dynamic_Method Method (const Standard_Integer anindex);
@@ -3782,11 +4072,13 @@ def __del__(self):
 %nodefaultctor Dynamic_CompositVariableInstance;
 class Dynamic_CompositVariableInstance : public Dynamic_AbstractVariableInstance {
 	public:
+		%feature("compactdefaultargs") Dynamic_CompositVariableInstance;
 		%feature("autodoc", "	* Creates a new empty instance of CompositVariable- Instance.
 
 	:rtype: None
 ") Dynamic_CompositVariableInstance;
 		 Dynamic_CompositVariableInstance ();
+		%feature("compactdefaultargs") Variable;
 		%feature("autodoc", "	* Sets <avariable> into the collection of variable.
 
 	:param avariable:
@@ -3794,6 +4086,7 @@ class Dynamic_CompositVariableInstance : public Dynamic_AbstractVariableInstance
 	:rtype: void
 ") Variable;
 		virtual void Variable (const Handle_Dynamic_Variable & avariable);
+		%feature("compactdefaultargs") FirstVariableNode;
 		%feature("autodoc", "	* Returns the first VariableNode useful to explore the list of variables addressed by <self>.
 
 	:rtype: Handle_Dynamic_VariableNode
@@ -3858,6 +4151,7 @@ def __del__(self):
 %nodefaultctor Dynamic_InterpretedMethod;
 class Dynamic_InterpretedMethod : public Dynamic_MethodDefinition {
 	public:
+		%feature("compactdefaultargs") Dynamic_InterpretedMethod;
 		%feature("autodoc", "	* Creates a new InterpretedMethod with <aname> as name and <afile> as file name to be interpreted.
 
 	:param aname:
@@ -3867,6 +4161,7 @@ class Dynamic_InterpretedMethod : public Dynamic_MethodDefinition {
 	:rtype: None
 ") Dynamic_InterpretedMethod;
 		 Dynamic_InterpretedMethod (const char * aname,const char * afile);
+		%feature("compactdefaultargs") Function;
 		%feature("autodoc", "	* Sets the the name of the file to be interpreted to <afile>.
 
 	:param afile:
@@ -3874,6 +4169,7 @@ class Dynamic_InterpretedMethod : public Dynamic_MethodDefinition {
 	:rtype: None
 ") Function;
 		void Function (const char * afile);
+		%feature("compactdefaultargs") Function;
 		%feature("autodoc", "	* Returns the name of the file to be interpreted.
 
 	:rtype: TCollection_AsciiString
@@ -3938,11 +4234,13 @@ def __del__(self):
 %nodefaultctor Dynamic_VariableInstance;
 class Dynamic_VariableInstance : public Dynamic_AbstractVariableInstance {
 	public:
+		%feature("compactdefaultargs") Dynamic_VariableInstance;
 		%feature("autodoc", "	* Returns a new empty instance of this class.
 
 	:rtype: None
 ") Dynamic_VariableInstance;
 		 Dynamic_VariableInstance ();
+		%feature("compactdefaultargs") Variable;
 		%feature("autodoc", "	* Sets the variable <avariable> into the VariableInstance <self>.
 
 	:param avariable:
@@ -3950,6 +4248,7 @@ class Dynamic_VariableInstance : public Dynamic_AbstractVariableInstance {
 	:rtype: void
 ") Variable;
 		virtual void Variable (const Handle_Dynamic_Variable & avariable);
+		%feature("compactdefaultargs") Variable;
 		%feature("autodoc", "	* Returns the variable contained into the VariableInstance <self>.
 
 	:rtype: Handle_Dynamic_Variable

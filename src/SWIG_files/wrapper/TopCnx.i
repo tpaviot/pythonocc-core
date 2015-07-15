@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -43,11 +43,13 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor TopCnx_EdgeFaceTransition;
 class TopCnx_EdgeFaceTransition {
 	public:
+		%feature("compactdefaultargs") TopCnx_EdgeFaceTransition;
 		%feature("autodoc", "	* Creates an empty algorithm.
 
 	:rtype: None
 ") TopCnx_EdgeFaceTransition;
 		 TopCnx_EdgeFaceTransition ();
+		%feature("compactdefaultargs") Reset;
 		%feature("autodoc", "	* Initialize the algorithm with the local description of the edge.
 
 	:param Tgt:
@@ -59,6 +61,7 @@ class TopCnx_EdgeFaceTransition {
 	:rtype: None
 ") Reset;
 		void Reset (const gp_Dir & Tgt,const gp_Dir & Norm,const Standard_Real Curv);
+		%feature("compactdefaultargs") Reset;
 		%feature("autodoc", "	* Initialize the algorithm with a linear Edge.
 
 	:param Tgt:
@@ -66,6 +69,7 @@ class TopCnx_EdgeFaceTransition {
 	:rtype: None
 ") Reset;
 		void Reset (const gp_Dir & Tgt);
+		%feature("compactdefaultargs") AddInterference;
 		%feature("autodoc", "	* Add a curve element to the boundary. Or is the orientation of the interference on the boundary curve. Tr is the transition of the interference. BTr is the boundary transition of the interference.
 
 	:param Tole:
@@ -85,11 +89,13 @@ class TopCnx_EdgeFaceTransition {
 	:rtype: None
 ") AddInterference;
 		void AddInterference (const Standard_Real Tole,const gp_Dir & Tang,const gp_Dir & Norm,const Standard_Real Curv,const TopAbs_Orientation Or,const TopAbs_Orientation Tr,const TopAbs_Orientation BTr);
+		%feature("compactdefaultargs") Transition;
 		%feature("autodoc", "	* Returns the current cumulated transition.
 
 	:rtype: TopAbs_Orientation
 ") Transition;
 		TopAbs_Orientation Transition ();
+		%feature("compactdefaultargs") BoundaryTransition;
 		%feature("autodoc", "	* Returns the current cumulated BoundaryTransition.
 
 	:rtype: TopAbs_Orientation

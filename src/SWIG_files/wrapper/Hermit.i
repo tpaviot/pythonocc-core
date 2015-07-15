@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -43,6 +43,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %rename(hermit) Hermit;
 class Hermit {
 	public:
+		%feature("compactdefaultargs") Solution;
 		%feature("autodoc", "	* //!returns the correct spline a(u) which will  be multiplicated with BS later.
 
 	:param BS:
@@ -54,6 +55,7 @@ class Hermit {
 	:rtype: Handle_Geom2d_BSplineCurve
 ") Solution;
 		static Handle_Geom2d_BSplineCurve Solution (const Handle_Geom_BSplineCurve & BS,const Standard_Real TolPoles = 0.000001,const Standard_Real TolKnots = 0.000001);
+		%feature("compactdefaultargs") Solution;
 		%feature("autodoc", "	* //!returns the correct spline a(u) which will  be multiplicated with BS later.
 
 	:param BS:
@@ -65,6 +67,7 @@ class Hermit {
 	:rtype: Handle_Geom2d_BSplineCurve
 ") Solution;
 		static Handle_Geom2d_BSplineCurve Solution (const Handle_Geom2d_BSplineCurve & BS,const Standard_Real TolPoles = 0.000001,const Standard_Real TolKnots = 0.000001);
+		%feature("compactdefaultargs") Solutionbis;
 		%feature("autodoc", "	* //!returns the knots to insert to a(u) to  stay with a constant sign and in the  tolerances.
 
 	:param BS:

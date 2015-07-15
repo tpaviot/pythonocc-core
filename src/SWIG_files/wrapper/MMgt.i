@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -43,6 +43,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor MMgt_TShared;
 class MMgt_TShared : public Standard_Transient {
 	public:
+		%feature("compactdefaultargs") Delete;
 		%feature("autodoc", "	:rtype: void
 ") Delete;
 		virtual void Delete ();

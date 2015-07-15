@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -43,25 +43,31 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %nodefaultctor TopBas_ListIteratorOfListOfTestInterference;
 class TopBas_ListIteratorOfListOfTestInterference {
 	public:
+		%feature("compactdefaultargs") TopBas_ListIteratorOfListOfTestInterference;
 		%feature("autodoc", "	:rtype: None
 ") TopBas_ListIteratorOfListOfTestInterference;
 		 TopBas_ListIteratorOfListOfTestInterference ();
+		%feature("compactdefaultargs") TopBas_ListIteratorOfListOfTestInterference;
 		%feature("autodoc", "	:param L:
 	:type L: TopBas_ListOfTestInterference &
 	:rtype: None
 ") TopBas_ListIteratorOfListOfTestInterference;
 		 TopBas_ListIteratorOfListOfTestInterference (const TopBas_ListOfTestInterference & L);
+		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "	:param L:
 	:type L: TopBas_ListOfTestInterference &
 	:rtype: None
 ") Initialize;
 		void Initialize (const TopBas_ListOfTestInterference & L);
+		%feature("compactdefaultargs") More;
 		%feature("autodoc", "	:rtype: bool
 ") More;
 		Standard_Boolean More ();
+		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "	:rtype: None
 ") Next;
 		void Next ();
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: TopBas_TestInterference
 ") Value;
 		TopBas_TestInterference & Value ();
@@ -85,6 +91,7 @@ def __del__(self):
 %nodefaultctor TopBas_ListNodeOfListOfTestInterference;
 class TopBas_ListNodeOfListOfTestInterference : public TCollection_MapNode {
 	public:
+		%feature("compactdefaultargs") TopBas_ListNodeOfListOfTestInterference;
 		%feature("autodoc", "	:param I:
 	:type I: TopBas_TestInterference &
 	:param n:
@@ -92,6 +99,7 @@ class TopBas_ListNodeOfListOfTestInterference : public TCollection_MapNode {
 	:rtype: None
 ") TopBas_ListNodeOfListOfTestInterference;
 		 TopBas_ListNodeOfListOfTestInterference (const TopBas_TestInterference & I,const TCollection_MapNodePtr & n);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: TopBas_TestInterference
 ") Value;
 		TopBas_TestInterference & Value ();
@@ -154,33 +162,41 @@ def __del__(self):
 %nodefaultctor TopBas_ListOfTestInterference;
 class TopBas_ListOfTestInterference {
 	public:
+		%feature("compactdefaultargs") TopBas_ListOfTestInterference;
 		%feature("autodoc", "	:rtype: None
 ") TopBas_ListOfTestInterference;
 		 TopBas_ListOfTestInterference ();
+		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TopBas_ListOfTestInterference &
 	:rtype: None
 ") Assign;
 		void Assign (const TopBas_ListOfTestInterference & Other);
+		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", "	:param Other:
 	:type Other: TopBas_ListOfTestInterference &
 	:rtype: None
 ") operator=;
 		void operator = (const TopBas_ListOfTestInterference & Other);
+		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "	:rtype: int
 ") Extent;
 		Standard_Integer Extent ();
+		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
 		void Clear ();
+		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "	:rtype: bool
 ") IsEmpty;
 		Standard_Boolean IsEmpty ();
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param I:
 	:type I: TopBas_TestInterference &
 	:rtype: None
 ") Prepend;
 		void Prepend (const TopBas_TestInterference & I);
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param I:
 	:type I: TopBas_TestInterference &
 	:param theIt:
@@ -188,16 +204,19 @@ class TopBas_ListOfTestInterference {
 	:rtype: None
 ") Prepend;
 		void Prepend (const TopBas_TestInterference & I,TopBas_ListIteratorOfListOfTestInterference & theIt);
+		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "	:param Other:
 	:type Other: TopBas_ListOfTestInterference &
 	:rtype: None
 ") Prepend;
 		void Prepend (TopBas_ListOfTestInterference & Other);
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param I:
 	:type I: TopBas_TestInterference &
 	:rtype: None
 ") Append;
 		void Append (const TopBas_TestInterference & I);
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param I:
 	:type I: TopBas_TestInterference &
 	:param theIt:
@@ -205,25 +224,31 @@ class TopBas_ListOfTestInterference {
 	:rtype: None
 ") Append;
 		void Append (const TopBas_TestInterference & I,TopBas_ListIteratorOfListOfTestInterference & theIt);
+		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "	:param Other:
 	:type Other: TopBas_ListOfTestInterference &
 	:rtype: None
 ") Append;
 		void Append (TopBas_ListOfTestInterference & Other);
+		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: TopBas_TestInterference
 ") First;
 		TopBas_TestInterference & First ();
+		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: TopBas_TestInterference
 ") Last;
 		TopBas_TestInterference & Last ();
+		%feature("compactdefaultargs") RemoveFirst;
 		%feature("autodoc", "	:rtype: None
 ") RemoveFirst;
 		void RemoveFirst ();
+		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param It:
 	:type It: TopBas_ListIteratorOfListOfTestInterference &
 	:rtype: None
 ") Remove;
 		void Remove (TopBas_ListIteratorOfListOfTestInterference & It);
+		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "	:param I:
 	:type I: TopBas_TestInterference &
 	:param It:
@@ -231,6 +256,7 @@ class TopBas_ListOfTestInterference {
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (const TopBas_TestInterference & I,TopBas_ListIteratorOfListOfTestInterference & It);
+		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "	:param Other:
 	:type Other: TopBas_ListOfTestInterference &
 	:param It:
@@ -238,6 +264,7 @@ class TopBas_ListOfTestInterference {
 	:rtype: None
 ") InsertBefore;
 		void InsertBefore (TopBas_ListOfTestInterference & Other,TopBas_ListIteratorOfListOfTestInterference & It);
+		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "	:param I:
 	:type I: TopBas_TestInterference &
 	:param It:
@@ -245,6 +272,7 @@ class TopBas_ListOfTestInterference {
 	:rtype: None
 ") InsertAfter;
 		void InsertAfter (const TopBas_TestInterference & I,TopBas_ListIteratorOfListOfTestInterference & It);
+		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "	:param Other:
 	:type Other: TopBas_ListOfTestInterference &
 	:param It:
@@ -272,13 +300,15 @@ def __del__(self):
 %nodefaultctor TopBas_TestInterference;
 class TopBas_TestInterference {
 	public:
+		%feature("compactdefaultargs") TopBas_TestInterference;
 		%feature("autodoc", "	:rtype: None
 ") TopBas_TestInterference;
 		 TopBas_TestInterference ();
+		%feature("compactdefaultargs") TopBas_TestInterference;
 		%feature("autodoc", "	:param Inters:
 	:type Inters: float &
 	:param Bound:
-	:type Bound: Standard_Integer &
+	:type Bound: int &
 	:param Orient:
 	:type Orient: TopAbs_Orientation
 	:param Trans:
@@ -288,31 +318,37 @@ class TopBas_TestInterference {
 	:rtype: None
 ") TopBas_TestInterference;
 		 TopBas_TestInterference (const Standard_Real & Inters,const Standard_Integer & Bound,const TopAbs_Orientation Orient,const TopAbs_Orientation Trans,const TopAbs_Orientation BTrans);
+		%feature("compactdefaultargs") Intersection;
 		%feature("autodoc", "	:param I:
 	:type I: float &
 	:rtype: None
 ") Intersection;
 		void Intersection (const Standard_Real & I);
+		%feature("compactdefaultargs") Boundary;
 		%feature("autodoc", "	:param B:
-	:type B: Standard_Integer &
+	:type B: int &
 	:rtype: None
 ") Boundary;
 		void Boundary (const Standard_Integer & B);
+		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "	:param O:
 	:type O: TopAbs_Orientation
 	:rtype: None
 ") Orientation;
 		void Orientation (const TopAbs_Orientation O);
+		%feature("compactdefaultargs") Transition;
 		%feature("autodoc", "	:param Tr:
 	:type Tr: TopAbs_Orientation
 	:rtype: None
 ") Transition;
 		void Transition (const TopAbs_Orientation Tr);
+		%feature("compactdefaultargs") BoundaryTransition;
 		%feature("autodoc", "	:param BTr:
 	:type BTr: TopAbs_Orientation
 	:rtype: None
 ") BoundaryTransition;
 		void BoundaryTransition (const TopAbs_Orientation BTr);
+		%feature("compactdefaultargs") Intersection;
 		%feature("autodoc", "	:rtype: float
 ") Intersection;
 		const Standard_Real & Intersection ();
@@ -329,7 +365,8 @@ class TopBas_TestInterference {
                 $self->ChangeIntersection()=value;
                 }
             };
-            		%feature("autodoc", "	:rtype: int
+            		%feature("compactdefaultargs") Boundary;
+		%feature("autodoc", "	:rtype: int
 ") Boundary;
 		const Standard_Integer & Boundary ();
 
@@ -345,12 +382,15 @@ class TopBas_TestInterference {
                 $self->ChangeBoundary()=value;
                 }
             };
-            		%feature("autodoc", "	:rtype: TopAbs_Orientation
+            		%feature("compactdefaultargs") Orientation;
+		%feature("autodoc", "	:rtype: TopAbs_Orientation
 ") Orientation;
 		TopAbs_Orientation Orientation ();
+		%feature("compactdefaultargs") Transition;
 		%feature("autodoc", "	:rtype: TopAbs_Orientation
 ") Transition;
 		TopAbs_Orientation Transition ();
+		%feature("compactdefaultargs") BoundaryTransition;
 		%feature("autodoc", "	:rtype: TopAbs_Orientation
 ") BoundaryTransition;
 		TopAbs_Orientation BoundaryTransition ();

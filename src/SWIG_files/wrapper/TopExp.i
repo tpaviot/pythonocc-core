@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -44,6 +44,7 @@ typedef TopoDS_Iterator * TopExp_Stack;
 %rename(topexp) TopExp;
 class TopExp {
 	public:
+		%feature("compactdefaultargs") MapShapes;
 		%feature("autodoc", "	* Tool to explore a topological data structure. Stores in the map <M> all the sub-shapes of <S> of type <T>. Warning: The map is not cleared at first.
 
 	:param S:
@@ -55,6 +56,7 @@ class TopExp {
 	:rtype: void
 ") MapShapes;
 		static void MapShapes (const TopoDS_Shape & S,const TopAbs_ShapeEnum T,TopTools_IndexedMapOfShape & M);
+		%feature("compactdefaultargs") MapShapes;
 		%feature("autodoc", "	* Stores in the map <M> all the sub-shapes of <S>.
 
 	:param S:
@@ -64,6 +66,7 @@ class TopExp {
 	:rtype: void
 ") MapShapes;
 		static void MapShapes (const TopoDS_Shape & S,TopTools_IndexedMapOfShape & M);
+		%feature("compactdefaultargs") MapShapesAndAncestors;
 		%feature("autodoc", "	* Stores in the map <M> all the subshape of <S> of type <TS> for each one append to the list all the ancestors of type <TA>. For example map all the edges and bind the list of faces. Warning: The map is not cleared at first.
 
 	:param S:
@@ -77,6 +80,7 @@ class TopExp {
 	:rtype: void
 ") MapShapesAndAncestors;
 		static void MapShapesAndAncestors (const TopoDS_Shape & S,const TopAbs_ShapeEnum TS,const TopAbs_ShapeEnum TA,TopTools_IndexedDataMapOfShapeListOfShape & M);
+		%feature("compactdefaultargs") FirstVertex;
 		%feature("autodoc", "	* Returns the Vertex of orientation FORWARD in E. If there is none returns a Null Shape. CumOri = True : taking account the edge orientation
 
 	:param E:
@@ -86,6 +90,7 @@ class TopExp {
 	:rtype: TopoDS_Vertex
 ") FirstVertex;
 		static TopoDS_Vertex FirstVertex (const TopoDS_Edge & E,const Standard_Boolean CumOri = Standard_False);
+		%feature("compactdefaultargs") LastVertex;
 		%feature("autodoc", "	* Returns the Vertex of orientation REVERSED in E. If there is none returns a Null Shape. CumOri = True : taking account the edge orientation
 
 	:param E:
@@ -95,6 +100,7 @@ class TopExp {
 	:rtype: TopoDS_Vertex
 ") LastVertex;
 		static TopoDS_Vertex LastVertex (const TopoDS_Edge & E,const Standard_Boolean CumOri = Standard_False);
+		%feature("compactdefaultargs") Vertices;
 		%feature("autodoc", "	* Returns in Vfirst, Vlast the FORWARD and REVERSED vertices of the edge <E>. May be null shapes. CumOri = True : taking account the edge orientation
 
 	:param E:
@@ -108,6 +114,7 @@ class TopExp {
 	:rtype: void
 ") Vertices;
 		static void Vertices (const TopoDS_Edge & E,TopoDS_Vertex & Vfirst,TopoDS_Vertex & Vlast,const Standard_Boolean CumOri = Standard_False);
+		%feature("compactdefaultargs") Vertices;
 		%feature("autodoc", "	* Returns in Vfirst, Vlast the first and last vertices of the open wire <W>. May be null shapes. if <W> is closed Vfirst and Vlast are a same vertex on <W>. if <W> is no manifold. VFirst and VLast are null shapes.
 
 	:param W:
@@ -119,6 +126,7 @@ class TopExp {
 	:rtype: void
 ") Vertices;
 		static void Vertices (const TopoDS_Wire & W,TopoDS_Vertex & Vfirst,TopoDS_Vertex & Vlast);
+		%feature("compactdefaultargs") CommonVertex;
 		%feature("autodoc", "	* Finds the vertex <V> common to the two edges <E1,E2>, returns True if this vertex exists. Warning: <V> has sense only if the value <True> is returned
 
 	:param E1:
@@ -150,11 +158,13 @@ def __del__(self):
 %nodefaultctor TopExp_Explorer;
 class TopExp_Explorer {
 	public:
+		%feature("compactdefaultargs") TopExp_Explorer;
 		%feature("autodoc", "	* Creates an empty explorer, becomes usefull after Init.
 
 	:rtype: None
 ") TopExp_Explorer;
 		 TopExp_Explorer ();
+		%feature("compactdefaultargs") TopExp_Explorer;
 		%feature("autodoc", "	* Creates an Explorer on the Shape <S>.  <ToFind> is the type of shapes to search. TopAbs_VERTEX, TopAbs_EDGE, ...  <ToAvoid> is the type of shape to skip in the exploration. If <ToAvoid> is equal or less complex than <ToFind> or if <ToAVoid> is SHAPE it has no effect on the exploration.
 
 	:param S:
@@ -166,6 +176,7 @@ class TopExp_Explorer {
 	:rtype: None
 ") TopExp_Explorer;
 		 TopExp_Explorer (const TopoDS_Shape & S,const TopAbs_ShapeEnum ToFind,const TopAbs_ShapeEnum ToAvoid = TopAbs_SHAPE);
+		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Resets this explorer on the shape S. It is initialized to search the shape S, for shapes of type ToFind, that are not part of a shape ToAvoid. If the shape ToAvoid is equal to TopAbs_SHAPE, or if it is the same as, or less complex than, the shape ToFind it has no effect on the search.
 
 	:param S:
@@ -177,36 +188,43 @@ class TopExp_Explorer {
 	:rtype: None
 ") Init;
 		void Init (const TopoDS_Shape & S,const TopAbs_ShapeEnum ToFind,const TopAbs_ShapeEnum ToAvoid = TopAbs_SHAPE);
+		%feature("compactdefaultargs") More;
 		%feature("autodoc", "	* Returns True if there are more shapes in the exploration.
 
 	:rtype: bool
 ") More;
 		Standard_Boolean More ();
+		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "	* Moves to the next Shape in the exploration. Exceptions Standard_NoMoreObject if there are no more shapes to explore.
 
 	:rtype: None
 ") Next;
 		void Next ();
+		%feature("compactdefaultargs") Current;
 		%feature("autodoc", "	* Returns the current shape in the exploration. Exceptions Standard_NoSuchObject if this explorer has no more shapes to explore.
 
 	:rtype: TopoDS_Shape
 ") Current;
 		const TopoDS_Shape  Current ();
+		%feature("compactdefaultargs") ReInit;
 		%feature("autodoc", "	* Reinitialize the exploration with the original arguments.
 
 	:rtype: None
 ") ReInit;
 		void ReInit ();
+		%feature("compactdefaultargs") Depth;
 		%feature("autodoc", "	* Returns the current depth of the exploration. 0 is the shape to explore itself.
 
 	:rtype: int
 ") Depth;
 		Standard_Integer Depth ();
+		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	* Clears the content of the explorer. It will return False on More().
 
 	:rtype: None
 ") Clear;
 		void Clear ();
+		%feature("compactdefaultargs") Destroy;
 		%feature("autodoc", "	:rtype: None
 ") Destroy;
 		void Destroy ();
@@ -230,25 +248,31 @@ def __del__(self):
 %nodefaultctor TopExp_StackIteratorOfStackOfIterator;
 class TopExp_StackIteratorOfStackOfIterator {
 	public:
+		%feature("compactdefaultargs") TopExp_StackIteratorOfStackOfIterator;
 		%feature("autodoc", "	:rtype: None
 ") TopExp_StackIteratorOfStackOfIterator;
 		 TopExp_StackIteratorOfStackOfIterator ();
+		%feature("compactdefaultargs") TopExp_StackIteratorOfStackOfIterator;
 		%feature("autodoc", "	:param S:
 	:type S: TopExp_StackOfIterator &
 	:rtype: None
 ") TopExp_StackIteratorOfStackOfIterator;
 		 TopExp_StackIteratorOfStackOfIterator (const TopExp_StackOfIterator & S);
+		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "	:param S:
 	:type S: TopExp_StackOfIterator &
 	:rtype: None
 ") Initialize;
 		void Initialize (const TopExp_StackOfIterator & S);
+		%feature("compactdefaultargs") More;
 		%feature("autodoc", "	:rtype: bool
 ") More;
 		Standard_Boolean More ();
+		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "	:rtype: None
 ") Next;
 		void Next ();
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: TopoDS_Iterator
 ") Value;
 		const TopoDS_Iterator  Value ();
@@ -272,6 +296,7 @@ def __del__(self):
 %nodefaultctor TopExp_StackNodeOfStackOfIterator;
 class TopExp_StackNodeOfStackOfIterator : public TCollection_MapNode {
 	public:
+		%feature("compactdefaultargs") TopExp_StackNodeOfStackOfIterator;
 		%feature("autodoc", "	:param I:
 	:type I: TopoDS_Iterator &
 	:param n:
@@ -279,6 +304,7 @@ class TopExp_StackNodeOfStackOfIterator : public TCollection_MapNode {
 	:rtype: None
 ") TopExp_StackNodeOfStackOfIterator;
 		 TopExp_StackNodeOfStackOfIterator (const TopoDS_Iterator & I,const TCollection_MapNodePtr & n);
+		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: TopoDS_Iterator
 ") Value;
 		TopoDS_Iterator  Value ();
@@ -341,39 +367,49 @@ def __del__(self):
 %nodefaultctor TopExp_StackOfIterator;
 class TopExp_StackOfIterator {
 	public:
+		%feature("compactdefaultargs") TopExp_StackOfIterator;
 		%feature("autodoc", "	:rtype: None
 ") TopExp_StackOfIterator;
 		 TopExp_StackOfIterator ();
+		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TopExp_StackOfIterator &
 	:rtype: TopExp_StackOfIterator
 ") Assign;
 		const TopExp_StackOfIterator & Assign (const TopExp_StackOfIterator & Other);
+		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", "	:param Other:
 	:type Other: TopExp_StackOfIterator &
 	:rtype: TopExp_StackOfIterator
 ") operator=;
 		const TopExp_StackOfIterator & operator = (const TopExp_StackOfIterator & Other);
+		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "	:rtype: bool
 ") IsEmpty;
 		Standard_Boolean IsEmpty ();
+		%feature("compactdefaultargs") Depth;
 		%feature("autodoc", "	:rtype: int
 ") Depth;
 		Standard_Integer Depth ();
+		%feature("compactdefaultargs") Top;
 		%feature("autodoc", "	:rtype: TopoDS_Iterator
 ") Top;
 		const TopoDS_Iterator  Top ();
+		%feature("compactdefaultargs") Push;
 		%feature("autodoc", "	:param I:
 	:type I: TopoDS_Iterator &
 	:rtype: None
 ") Push;
 		void Push (const TopoDS_Iterator & I);
+		%feature("compactdefaultargs") Pop;
 		%feature("autodoc", "	:rtype: None
 ") Pop;
 		void Pop ();
+		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
 		void Clear ();
+		%feature("compactdefaultargs") ChangeTop;
 		%feature("autodoc", "	:rtype: TopoDS_Iterator
 ") ChangeTop;
 		TopoDS_Iterator  ChangeTop ();

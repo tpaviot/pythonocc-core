@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2014 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2015 Thomas Paviot (tpaviot@gmail.com)
 
 
 This file is part of pythonOCC.
@@ -43,6 +43,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %rename(intimppargen) IntImpParGen;
 class IntImpParGen {
 	public:
+		%feature("compactdefaultargs") DetermineTransition;
 		%feature("autodoc", "	* Template class for an implicit curve. Template class for a tool on a parameterised curve. Math function, instantiated inside the Intersector. Tool used by the package IntCurve and IntImpParGen
 
 	:param Pos1:
@@ -66,6 +67,7 @@ class IntImpParGen {
 	:rtype: void
 ") DetermineTransition;
 		static void DetermineTransition (const IntRes2d_Position Pos1,gp_Vec2d & Tan1,const gp_Vec2d & Norm1,IntRes2d_Transition & Trans1,const IntRes2d_Position Pos2,gp_Vec2d & Tan2,const gp_Vec2d & Norm2,IntRes2d_Transition & Trans2,const Standard_Real Tol);
+		%feature("compactdefaultargs") DetermineTransition;
 		%feature("autodoc", "	:param Pos1:
 	:type Pos1: IntRes2d_Position
 	:param Tan1:
@@ -83,6 +85,7 @@ class IntImpParGen {
 	:rtype: bool
 ") DetermineTransition;
 		static Standard_Boolean DetermineTransition (const IntRes2d_Position Pos1,gp_Vec2d & Tan1,IntRes2d_Transition & Trans1,const IntRes2d_Position Pos2,gp_Vec2d & Tan2,IntRes2d_Transition & Trans2,const Standard_Real Tol);
+		%feature("compactdefaultargs") DeterminePosition;
 		%feature("autodoc", "	:param Pos1:
 	:type Pos1: IntRes2d_Position &
 	:param Dom1:
@@ -94,6 +97,7 @@ class IntImpParGen {
 	:rtype: void
 ") DeterminePosition;
 		static void DeterminePosition (IntRes2d_Position & Pos1,const IntRes2d_Domain & Dom1,const gp_Pnt2d & P1,const Standard_Real Tol);
+		%feature("compactdefaultargs") NormalizeOnDomain;
 		%feature("autodoc", "	:param Par1:
 	:type Par1: float &
 	:param Dom1:
