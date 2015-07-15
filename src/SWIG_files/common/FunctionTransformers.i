@@ -74,6 +74,33 @@ Standard_Integer & function transformation
 }
 
 /*
+Standard_Boolean & function transformation
+*/
+%typemap(argout) Standard_Boolean &OutValue {
+    PyObject *o, *o2, *o3;
+    o = PyBool_FromLong(*$1);
+    if ((!$result) || ($result == Py_None)) {
+        $result = o;
+    } else {
+        if (!PyTuple_Check($result)) {
+            PyObject *o2 = $result;
+            $result = PyTuple_New(1);
+            PyTuple_SetItem($result,0,o2);
+        }
+        o3 = PyTuple_New(1);
+        PyTuple_SetItem(o3,0,o);
+        o2 = $result;
+        $result = PySequence_Concat(o2,o3);
+        Py_DECREF(o2);
+        Py_DECREF(o3);
+    }
+}
+
+%typemap(in,numinputs=0) Standard_Boolean &OutValue(Standard_Boolean temp) {
+    $1 = &temp;
+}
+
+/*
 FairCurve_Analysis & function transformation
 */
 %typemap(argout) FairCurve_AnalysisCode &OutValue {
