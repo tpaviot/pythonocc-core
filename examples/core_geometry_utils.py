@@ -17,7 +17,8 @@
 
 from OCC.BRepBuilderAPI import (BRepBuilderAPI_MakeEdge,
                                 BRepBuilderAPI_MakeVertex,
-                                BRepBuilderAPI_MakeWire)
+                                BRepBuilderAPI_MakeWire,
+                                BRepBuilderAPI_MakeFace)
 from OCC.BRepFill import BRepFill_Filling
 from OCC.GeomAbs import GeomAbs_C0
 from OCC.GeomAPI import GeomAPI_PointsToBSpline
@@ -57,9 +58,22 @@ def make_wire(*args):
     return wire.Wire()
 
 
+def make_face(*args):
+    face = BRepBuilderAPI_MakeFace(*args)
+    assert(face.IsDone())
+    result = face.Face()
+    return result
+
+
 def points_to_bspline(pnts):
     pts = TColgp_Array1OfPnt(0, len(pnts)-1)
     for n, i in enumerate(pnts):
         pts.SetValue(n, i)
     crv = GeomAPI_PointsToBSpline(pts)
     return crv.Curve()
+
+def point_list_to_TColgp_Array1OfPnt(li):
+    pts = TColgp_Array1OfPnt(0, len(li)-1)
+    for n, i in enumerate(li):
+        pts.SetValue(n, i)
+    return pts
