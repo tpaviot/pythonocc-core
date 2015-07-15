@@ -79,17 +79,28 @@ set(SWIG_FILES_PATH src/SWIG_files/wrapper)
 ################################
 # OCE include and lib location #
 ################################
-find_package(OCE REQUIRED)
-if(OCE_FOUND)
-  message(STATUS "OpenCASCADE Community Edition found.")
-  include_directories(${OCE_INCLUDE_DIRS})
-  #set(OCE_LIBRARIES ${OCE_REQUIRED_LIBS})
-else()
-  set(OCE_include_PATH /usr/local/include/oce CACHE PATH "OCE include path" )
-  set(OCE_LIB_PATH /usr/local/lib CACHE PATH "OCE lib path" )
+if(DEFINED OCE_INCLUDE_PATH)
+  if(NOT DEFINED OCE_LIB_PATH)
+    message(FATAL_ERROR "OCE_LIB_PATH must be defined")
+  endif (NOT DEFINED OCE_LIB_PATH)
+  set(OCE_INCLUDE_PATH ${OCE_INCLUDE_PATH} CACHE PATH "OCE include path")
+  set(OCE_LIB_PATH ${OCE_LIB_PATH} CACHE PATH "OCE lib path")
   include_directories(${OCE_INCLUDE_PATH})
   link_directories(${OCE_LIB_PATH})
-endif(OCE_FOUND)
+# if OCE_INCLUDE_PATH is not passed at command line,
+# find OCE automatically
+else(OCE_INCLUDE_PATH)
+  find_package(OCE REQUIRED)
+  if(OCE_FOUND)
+    message(STATUS "OpenCASCADE Community Edition (OCE) found.")
+    include_directories(${OCE_INCLUDE_DIRS})
+  else()  # set default paths
+    set(OCE_INCLUDE_PATH /usr/local/include/oce CACHE PATH "OCE include path")
+    set(OCE_LIB_PATH /usr/local/lib CACHE PATH "OCE lib path")
+    include_directories(${OCE_INCLUDE_PATH})
+    link_directories(${OCE_LIB_PATH})
+  endif(OCE_FOUND)
+endif(DEFINED OCE_INCLUDE_PATH)
 
 ##############################################
 # Installation directory                     #
