@@ -15,6 +15,8 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+import sys
+
 from OCC.Display.SimpleGui import init_display
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
 
@@ -26,6 +28,7 @@ display.DisplayShape(my_box, update=True)
 # in order to be able to export to usual file formats
 # oce must have been compiled with FreeImage
 # otherwise, images will be exported to PPM format
+
 
 def export_to_BMP(event=None):
     display.View.Dump('./capture_bmp.bmp')

@@ -6,7 +6,8 @@ This release requires oce-0.16.0 or oce-0.16.1
 * New examples : display_quality, surface_from_curve, export_to_image,
 shape_pickling, display_linewidth, prs3d_customization, textured_shape,
 faircurve, topology_prism, topology_pipe, evolved_shape, draft_angle,
-through_section, topology_face, topology_edge, vertex_filleting
+through_section, topology_face, topology_edge, vertex_filleting,
+export_to_EF(PDF, PS, tex, SVG)
 
 * Mingw64 compilation fix
 
