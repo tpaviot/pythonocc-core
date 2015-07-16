@@ -69,6 +69,14 @@ if ((NOT MSVC) OR (CMAKE_BUILD_TOOL STREQUAL "nmake"))
 		immutable" FORCE )
 endif((NOT MSVC) OR (CMAKE_BUILD_TOOL STREQUAL "nmake"))
 
+# Mingw64 needs MS_WIN64 to be defined (otherwise link failures)
+if(MINGW)
+	message(STATUS "MinGW:")
+	if(BIT MATCHES "64")
+		add_definitions(-DMS_WIN64)
+	endif(BIT MATCHES "64")
+endif(MINGW)
+
 ########
 # SWIG #
 ########
