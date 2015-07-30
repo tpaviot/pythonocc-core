@@ -22,6 +22,7 @@ from OCC.Visualization import Tesselator
 import OCC
 from time import time
 import os
+import tempfile
 
 HEADER = """
 <head>
@@ -188,7 +189,8 @@ class HTMLHeader(object):
 
 
 class HTMLBody(object):
-    def __init__(self, background_color='#000000', vertex_shader=None, fragment_shader=None, uniforms=None):
+    def __init__(self, background_color='#000000', vertex_shader=None,
+                 fragment_shader=None, uniforms=None):
         self._background_color = background_color
         self._vertex_shader = vertex_shader
         self._fragment_shader = fragment_shader
@@ -234,9 +236,13 @@ class HTMLBody(object):
 
 
 class ThreejsRenderer(object):
-    def __init__(self, background_color="#123345", vertex_shader=None, fragment_shader=None, uniforms=None):
-        self._js_filename = "shape.js"
-        self._html_filename = "webgl_topods_shape.html"
+    def __init__(self, background_color="#123345", vertex_shader=None, fragment_shader=None, uniforms=None, path=None):
+        if not path:
+            self._path = tempfile.mkdtemp()
+        else:
+            self._path = path
+        self._js_filename = os.path.join(self._path, "shape.js")
+        self._html_filename = os.path.join(self._path, "webgl_topods_shape.html"    )
         self._background_color = background_color
         self._vertex_shader = vertex_shader
         self._fragment_shader = fragment_shader
