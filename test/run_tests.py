@@ -28,6 +28,8 @@ try:
 except:
     HAVE_OCAF = False
 # Create test suite
+import core_webgl_unittest
+
 suite = unittest.TestSuite()
 
 # Get all test suites from modules
@@ -38,6 +40,8 @@ tests = [suite1, suite2, suite3]
 if HAVE_OCAF:
     suite4 = core_ocaf_unittest.suite()
     tests.append(suite4)
+suite5 = core_webgl_unittest.suite()
+tests.append(suite5)
 # Add test cases
 suite.addTests(tests)
 

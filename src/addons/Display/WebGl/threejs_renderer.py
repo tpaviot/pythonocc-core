@@ -256,7 +256,8 @@ class ThreejsRenderer(object):
         ''' adds a fragment shader '''
         self._fragment_shader = fragment_shader
 
-    def DisplayShape(self, shape):
+    def create_files(self, shape):
+        ''' generate .js and .html files '''
         self._shape = shape
         print("Tesselate shape ...")
         t0 = time()
@@ -271,6 +272,10 @@ class ThreejsRenderer(object):
         print("Generating HTML stream ...")
         self.GenerateHTMLFile()
         print("done.")
+        return self._js_filename, self._html_filename
+
+    def DisplayShape(self, shape):
+        self.create_files(shape)
         print("Opening html output in the default webbrowser ...")
         # previous version us a os.system call to the "open" command
         # but this is a platform (osx) specific solution

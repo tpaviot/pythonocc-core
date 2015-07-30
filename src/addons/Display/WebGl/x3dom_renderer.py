@@ -262,11 +262,17 @@ class X3DomRenderer(object):
         self._x3d_filename = os.path.join(self._path, 'shape.x3d')
         self._html_filename = os.path.join(self._path, 'x3dom_topods_shape.html')
 
-    def DisplayShape(self, shape, vertex_shader=None, fragment_shader=None, map_faces_to_mesh=False):
+    def create_files(self, shape, vertex_shader=None, fragment_shader=None, map_faces_to_mesh=False):
+        # First, the x3d file
         x3d_exporter = X3DExporter(shape, vertex_shader, fragment_shader, map_faces_to_mesh)
         x3d_exporter.compute()
         x3d_exporter.write_to_file(self._x3d_filename)
+        # then the html file
         self.GenerateHTMLFile()
+        return self._x3d_filename, self._html_filename
+
+    def DisplayShape(self, shape, vertex_shader=None, fragment_shader=None, map_faces_to_mesh=False):
+        self.create_files(shape, vertex_shader, fragment_shader, map_faces_to_mesh)
         # open the file in the browser
         _path = "file:///{0}".format(os.path.join(os.getcwd(),
                                      self._html_filename))
