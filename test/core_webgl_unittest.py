@@ -31,9 +31,9 @@ class TestWebGL(unittest.TestCase):
         '''Test: point from curve'''
         torus_shp = BRepPrimAPI_MakeTorus(20., 10.).Shape()
         my_renderer = threejs_renderer.ThreejsRenderer(background_color="#123345")
-        my_renderer.DisplayShape(torus_shp)
-        assert os.path.isfile('./shape.js')
-        assert os.path.isfile('./webgl_topods_shape.html')
+        js_file, html_file = my_renderer.create_files(torus_shp)
+        assert os.path.isfile(js_file)
+        assert os.path.isfile(html_file)
 
     def test_three_jsshaders(self):
         '''Test: point from curve'''
@@ -59,18 +59,18 @@ class TestWebGL(unittest.TestCase):
                 gl_FragColor.a = 1.0;
             }
             """
-        my_renderer = threejs_renderer.ThreejsRenderer("#123345", vertex_shader, fragment_shader)
-        my_renderer.DisplayShape(torus_shp)
-        assert os.path.isfile('./shape.js')
-        assert os.path.isfile('./webgl_topods_shape.html')
+        my_renderer = threejs_renderer.ThreejsRenderer("#123345", vertex_shader, fragment_shader, path="./test_io")
+        js_file, html_file = my_renderer.create_files(torus_shp)
+        assert os.path.isfile(js_file)
+        assert os.path.isfile(html_file)
 
     def test_x3dom_render_torus(self):
         '''Test: point from curve'''
         torus_shp = BRepPrimAPI_MakeTorus(20., 10.).Shape()
-        my_renderer = x3dom_renderer.X3DomRenderer()
-        my_renderer.DisplayShape(torus_shp)
-        assert os.path.isfile('./shape.x3d')
-        assert os.path.isfile('./x3dom_topods_shape.html')
+        my_renderer = x3dom_renderer.X3DomRenderer(path="./test_io")
+        x3d_file, html_file = my_renderer.create_files(torus_shp)
+        assert os.path.isfile(x3d_file)
+        assert os.path.isfile(html_file)
 
 
 def suite():

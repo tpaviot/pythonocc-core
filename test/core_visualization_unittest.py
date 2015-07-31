@@ -47,8 +47,8 @@ class TestTesselator(unittest.TestCase):
     def test_export_to_x3d(self):
         """ 3rd test : export a sphere to X3D file format """
         a_sphere = BRepPrimAPI_MakeSphere(10.).Shape()
-        Tesselator(a_sphere).ExportShapeToX3D("sphere.x3d")
-        self.assert_(os.path.exists("sphere.x3d"))
+        Tesselator(a_sphere).ExportShapeToX3D(os.path.join("test_io", "sphere.x3d"))
+        self.assert_(os.path.exists(os.path.join("test_io", "sphere.x3d")))
 
     def test_export_to_x3d_IndexedFaceSet(self):
         """ 3rd test : export a sphere to an X3D IndexedFaceSet triangle mesh """

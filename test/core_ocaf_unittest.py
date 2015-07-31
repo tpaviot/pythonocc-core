@@ -20,6 +20,7 @@
 from __future__ import print_function
 
 import unittest
+import os
 
 from OCC.TCollection import TCollection_ExtendedString
 
@@ -75,8 +76,9 @@ class TestOCAF(unittest.TestCase):
         WS = XSControl_WorkSession()
         writer = STEPCAFControl_Writer(WS.GetHandle(), False)
         writer.Transfer(h_doc, STEPControl_AsIs)
-        status = writer.Write("test_ocaf.stp")
-        assert(status)
+        status = writer.Write("./test_io/test_ocaf_generated.stp")
+        assert status
+        assert os.path.isfile("./test_io/test_ocaf_generated.stp")
 
     def test_read_step_file(self):
         ''' Reads the previous step file '''
@@ -94,7 +96,7 @@ class TestOCAF(unittest.TestCase):
         step_reader.SetLayerMode(True)
         step_reader.SetNameMode(True)
         step_reader.SetMatMode(True)
-        status = step_reader.ReadFile("test_ocaf.stp")
+        status = step_reader.ReadFile("./test_io/test_ocaf.stp")
         if status == IFSelect_RetDone:
             step_reader.Transfer(doc.GetHandle())
 

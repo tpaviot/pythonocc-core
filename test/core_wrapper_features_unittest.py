@@ -19,6 +19,7 @@
 
 import pickle
 import unittest
+import os
 
 from OCC.Standard import Standard_Transient, Handle_Standard_Transient
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
@@ -240,15 +241,16 @@ class TestWrapperFeatures(unittest.TestCase):
         box_shape = BRepPrimAPI_MakeBox(100, 200, 300).Shape()
         shp_dump = pickle.dumps(box_shape)
         # write to file
-        output = open("box_shape.brep", "wb")
+        output = open("./test_io/box_shape_generated.brep", "wb")
         output.write(shp_dump)
         output.close()
+        assert os.path.isfile("./test_io/box_shape_generated.brep")
 
     def test_pickle_from_file(self):
         '''
         Checks if the pickle python module works for TopoDS_Shapes
         '''
-        shp_dump = open("box_shape.brep", "rb")
+        shp_dump = open("./test_io/box_shape.brep", "rb")
         box_shape = pickle.load(shp_dump)
         self.assertFalse(box_shape.IsNull())
 

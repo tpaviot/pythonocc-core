@@ -18,6 +18,8 @@
 from __future__ import print_function
 
 import webbrowser
+import tempfile
+
 from OCC.Visualization import Tesselator
 from OCC.TopExp import TopExp_Explorer
 from OCC.TopAbs import TopAbs_FACE
@@ -161,14 +163,17 @@ class HTMLHeader(object):
 
 
 class HTMLBody(object):
-    def __init__(self, background_color):
+    def __init__(self, background_color, x3d_filename):
         self._background_color = background_color
+        self._x3d_filename = x3d_filename
 
     def get_str(self):
         # get the location where pythonocc is running from
         body_str = BODY.replace('@background-color@', '%s' % self._background_color)
         body_str = body_str.replace('@VERSION@', OCC.VERSION)
-        x3dfile_content = open('shape.x3d', 'r').read()
+        x3dfile = open(self._x3d_filename, 'r')
+        x3dfile_content = x3dfile.read()
+        x3dfile.close()
         body_str = body_str.replace('@X3DSCENE@', x3dfile_content)
         return body_str
 
@@ -247,15 +252,27 @@ def test_X3DExporter():
 
 
 class X3DomRenderer(object):
-    def __init__(self, background_color="#123345"):
-        self._html_filename = "x3dom_topods_shape.html"
+    def __init__(self, background_color="#123345", path=None):
         self._background_color = background_color
+        if not path:  # by default, write to a temp directory
+            self._path = tempfile.mkdtemp()
+        else:
+            self._path = path
+        self._html_filename = "x3dom_topods_shape.html"
+        self._x3d_filename = os.path.join(self._path, 'shape.x3d')
+        self._html_filename = os.path.join(self._path, 'x3dom_topods_shape.html')
 
-    def DisplayShape(self, shape, vertex_shader=None, fragment_shader=None, map_faces_to_mesh=False):
+    def create_files(self, shape, vertex_shader=None, fragment_shader=None, map_faces_to_mesh=False):
+        # First, the x3d file
         x3d_exporter = X3DExporter(shape, vertex_shader, fragment_shader, map_faces_to_mesh)
         x3d_exporter.compute()
-        x3d_exporter.write_to_file("shape.x3d")
+        x3d_exporter.write_to_file(self._x3d_filename)
+        # then the html file
         self.GenerateHTMLFile()
+        return self._x3d_filename, self._html_filename
+
+    def DisplayShape(self, shape, vertex_shader=None, fragment_shader=None, map_faces_to_mesh=False):
+        self.create_files(shape, vertex_shader, fragment_shader, map_faces_to_mesh)
         # open the file in the browser
         _path = "file:///{0}".format(os.path.join(os.getcwd(),
                                      self._html_filename))
@@ -270,7 +287,7 @@ class X3DomRenderer(object):
         # header
         fp.write(HTMLHeader(self._background_color).get_str())
         # body
-        fp.write(HTMLBody(self._background_color).get_str())
+        fp.write(HTMLBody(self._background_color, self._x3d_filename).get_str())
         fp.write("</html>\n")
         fp.close()
 
