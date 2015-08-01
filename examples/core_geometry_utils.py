@@ -14,15 +14,18 @@
 ##
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
+from OCC.BRepBndLib import brepbndlib_Add
 
 from OCC.BRepBuilderAPI import (BRepBuilderAPI_MakeEdge,
                                 BRepBuilderAPI_MakeVertex,
                                 BRepBuilderAPI_MakeWire,
                                 BRepBuilderAPI_MakeFace)
 from OCC.BRepFill import BRepFill_Filling
+from OCC.Bnd import Bnd_Box
 from OCC.GeomAbs import GeomAbs_C0
 from OCC.GeomAPI import GeomAPI_PointsToBSpline
 from OCC.TColgp import TColgp_Array1OfPnt
+from OCC.gp import gp_Vec, gp_Pnt
 
 
 def make_edge(*args):
@@ -60,20 +63,92 @@ def make_wire(*args):
 
 def make_face(*args):
     face = BRepBuilderAPI_MakeFace(*args)
-    assert(face.IsDone())
+    assert (face.IsDone())
     result = face.Face()
     return result
 
 
 def points_to_bspline(pnts):
-    pts = TColgp_Array1OfPnt(0, len(pnts)-1)
+    pts = TColgp_Array1OfPnt(0, len(pnts) - 1)
     for n, i in enumerate(pnts):
         pts.SetValue(n, i)
     crv = GeomAPI_PointsToBSpline(pts)
     return crv.Curve()
 
+
 def point_list_to_TColgp_Array1OfPnt(li):
-    pts = TColgp_Array1OfPnt(0, len(li)-1)
+    pts = TColgp_Array1OfPnt(0, len(li) - 1)
     for n, i in enumerate(li):
         pts.SetValue(n, i)
     return pts
+
+
+def get_boundingbox(shape, tol=1e-6, as_vec=False):
+    """ return the bounding box of the TopoDS_Shape `shape`
+
+    Parameters
+    ----------
+
+    shape : TopoDS_Shape or a subclass such as TopoDS_Face
+        the shape to compute the bounding box from
+
+    tol: float
+        tolerance of the computed boundingbox
+
+    as_vec : bool
+        wether to return the lower and upper point of the bounding box as gp_Vec instances
+
+    Returns
+    -------
+        if `as_vec` is True, return a tuple of gp_Vec instances
+         for the lower and another for the upper X,Y,Z values representing the bounding box
+
+        if `as_vec` is False, return a tuple of lower and then upper X,Y,Z values
+         representing the bounding box
+    """
+    bbox = Bnd_Box()
+    bbox.SetGap(tol)
+    brepbndlib_Add(shape, bbox)
+    xmin, ymin, zmin, xmax, ymax, zmax = bbox.Get()
+    if as_vec is False:
+        return xmin, ymin, zmin, xmax, ymax, zmax
+    else:
+        return gp_Vec(xmin, ymin, zmin), gp_Vec(xmax, ymax, zmax)
+
+
+def midpoint(pntA, pntB):
+    """ computes the point that lies in the middle between pntA and pntB
+
+    Parameters
+    ----------
+
+    pntA, pntB : gp_Pnt
+
+    Returns
+    -------
+
+    gp_Pnt
+
+    """
+    vec1 = gp_Vec(pntA.XYZ())
+    vec2 = gp_Vec(pntB.XYZ())
+    veccie = (vec1 + vec2) / 2.
+    return gp_Pnt(veccie.XYZ())
+
+
+def center_boundingbox(shape):
+    """ compute the center point of a TopoDS_Shape, based on its bounding box
+
+    Parameters
+    ----------
+
+    shape : TopoDS_Shape instance or a subclass like TopoDS_Face
+
+    Returns
+    -------
+
+    gp_Pnt
+
+    """
+    xmin, ymin, zmin, xmax, ymax, zmax = get_boundingbox(shape, 1e-6)
+    return midpoint(gp_Pnt(xmin, ymin, zmin), gp_Pnt(xmax, ymax, zmax))
