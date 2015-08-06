@@ -28,6 +28,7 @@ can compile/use it :
 
 - CMake 2.8 or higher (http://www.cmake.org).
 
+**Important**: the OCE version has to match the pythonocc-core version, which is currently **0.16**
 
 pythonocc-core compilation
 --------------------------
