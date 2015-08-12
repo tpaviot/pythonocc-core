@@ -29,6 +29,10 @@ my_box = BRepPrimAPI_MakeTorus(40., 20.).Shape()
 display.DisplayShape(my_box, update=True)
 f = display.View.View().GetObject()
 
+print("""IMPORTANT : For this example to work, OCE needs to be built against
+the gl2ps lib. Otherwise, generated SVG/PDF/PS files may be empty or
+corrupted.""")
+
 
 def export_to_PDF(event=None):
     f.Export('torus_export.pdf', Graphic3d_EF_PDF)
