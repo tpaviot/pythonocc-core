@@ -69,18 +69,26 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
         self.setAutoFillBackground(False)
 
     def GetHandle(self):
-        ### with PySide, self.winId() does not return an integer
+        ''' returns an the identifier of the GUI widget.
+        It must be an integer
+        '''
+        win_id = self.winId()  ## this returns either an int or voitptr
         if HAVE_PYSIDE:
+            ### with PySide, self.winId() does not return an integer
             if sys.platform == "win32":
-                pycobject_hwnd = self.winId()
+                ## Be careful, this hack is py27 specific
+                ## does not work with python31 or higher
+                ## since the PyCObject api was changed
                 import ctypes
                 ctypes.pythonapi.PyCObject_AsVoidPtr.restype = ctypes.c_void_p
                 ctypes.pythonapi.PyCObject_AsVoidPtr.argtypes = [ctypes.py_object]
-                win_id = ctypes.pythonapi.PyCObject_AsVoidPtr(pycobject_hwnd)
-            else:
-                win_id = self.winId()
+                win_id = ctypes.pythonapi.PyCObject_AsVoidPtr(win_id)                
         elif HAVE_PYQT4:
-            win_id = self.winId()
+            ## below integer cast may be required because self.winId() can
+            ## returns a sip.voitptr according to the PyQt version used
+            ## as well as the python version
+            if type(win_id) is not int:  # cast to int using the int() funtion
+                win_id = int(win_id)
         return win_id
 
     def resizeEvent(self, event):
@@ -280,5 +288,3 @@ def Test3d():
 
 if __name__ == "__main__":
     Test3d()
-
-
