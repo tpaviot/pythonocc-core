@@ -18,7 +18,6 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 import sys
-
 from OCC import VERSION
 
 
@@ -34,13 +33,11 @@ def get_backend():
         return 'qt-pyqt4'
     except:
         pass
-
     try:
         from PySide import QtCore, QtGui
         return 'qt-pyside'
     except:
         pass
-
     # Check wxPython
     try:
         import wx
@@ -70,8 +67,7 @@ def init_display(backend_str=None, size=(1024, 768)):
 
         class AppFrame(wx.Frame):
             def __init__(self, parent):
-                wx.Frame.__init__(self, parent, -1, "pythonOCC-%s 3d viewer ('wx' backend)" % VERSION,
-                                  style=wx.DEFAULT_FRAME_STYLE, size=size)
+                wx.Frame.__init__(self, parent, -1, "pythonOCC-%s 3d viewer ('wx' backend)" % VERSION, style=wx.DEFAULT_FRAME_STYLE, size=size)
                 self.canva = wxViewer3d(self)
                 self.menuBar = wx.MenuBar()
                 self._menus = {}
@@ -79,7 +75,7 @@ def init_display(backend_str=None, size=(1024, 768)):
 
             def add_menu(self, menu_name):
                 _menu = wx.Menu()
-                self.menuBar.Append(_menu, "&" + menu_name)
+                self.menuBar.Append(_menu, "&"+menu_name)
                 self.SetMenuBar(self.menuBar)
                 self._menus[menu_name] = _menu
 
@@ -92,7 +88,6 @@ def init_display(backend_str=None, size=(1024, 768)):
                 except KeyError:
                     raise ValueError('the menu item %s does not exist' % menu_name)
                 self.Bind(wx.EVT_MENU, _callable, id=_id)
-
         app = wx.PySimpleApp()
         win = AppFrame(None)
         win.Show(True)
@@ -109,9 +104,8 @@ def init_display(backend_str=None, size=(1024, 768)):
 
         def start_display():
             app.MainLoop()
-
     # Qt based simple GUI
-    elif "qt" in USED_BACKEND:
+    elif 'qt' in USED_BACKEND:
         from OCC.Display.qtDisplay import qtViewer3d, get_qt_modules
         QtCore, QtGui, QtOpenGL = get_qt_modules()
 
@@ -122,11 +116,15 @@ def init_display(backend_str=None, size=(1024, 768)):
                 self.setWindowTitle("pythonOCC-%s 3d viewer ('%s' backend)" % (VERSION, USED_BACKEND))
                 self.resize(size[0], size[1])
                 self.setCentralWidget(self.canva)
-
-                if sys.platform == 'darwin':
-                    QtGui.qt_mac_set_native_menubar(False)
-                self.menu_bar = self.menuBar()
-
+                if not sys.platform == 'darwin':
+                    self.menu_bar = self.menuBar()
+                else:
+                    # create a parentless menubar
+                    # see: http://stackoverflow.com/questions/11375176/qmenubar-and-qmenu-doesnt-show-in-mac-os-x?lq=1
+                    # noticeable is that the menu ( alas ) is created in the topleft of the screen, just
+                    # next to the apple icon
+                    # still does ugly things like showing the "Python" menu in bold
+                    self.menu_bar = QtGui.QMenuBar()
                 self._menus = {}
                 self._menu_methods = {}
                 # place the window in the center of the screen, at half the screen size
@@ -139,7 +137,7 @@ def init_display(backend_str=None, size=(1024, 768)):
                           (resolution.height() / 2) - (self.frameSize().height() / 2))
 
             def add_menu(self, menu_name):
-                _menu = self.menu_bar.addMenu("&" + menu_name)
+                _menu = self.menu_bar.addMenu("&"+menu_name)
                 self._menus[menu_name] = _menu
 
             def add_function_to_menu(self, menu_name, _callable):
@@ -152,10 +150,9 @@ def init_display(backend_str=None, size=(1024, 768)):
                     self._menus[menu_name].addAction(_action)
                 except KeyError:
                     raise ValueError('the menu item %s does not exist' % menu_name)
-
         # following couple of lines is a twek to enable ipython --gui='qt'
-        app = QtGui.QApplication.instance()  # checks if QApplication already exists
-        if not app:  # create QApplication if it doesnt exist
+        app = QtGui.QApplication.instance()  # checks if QApplication already exists 
+        if not app:  # create QApplication if it doesnt exist 
             app = QtGui.QApplication(sys.argv)
         win = MainWindow()
         win.show()
@@ -177,9 +174,7 @@ def init_display(backend_str=None, size=(1024, 768)):
         def start_display():
             win.raise_()  # make the application float to the top
             app.exec_()
-
     return display, start_display, add_menu, add_function_to_menu
-
 
 if __name__ == '__main__':
     display, start_display, add_menu, add_function_to_menu = init_display()
