@@ -58,7 +58,7 @@ if sys.platform == "win32":  # all of this is win specific
     # if the CSF_GraphicShr variable is not set
     # it should point to the TKOpenGl.dll library that is shipped with pythonocc binary
     if not "CSF_GraphicShr" in os.environ:
-        os.environ["CSF_GraphicShr"] = os.path.join(os.path.dirname(OCC.Aspect.__file__), "TKOpenGL.dll")
+        os.environ["CSF_GraphicShr"] = os.path.join(os.path.dirname(OCC.Aspect.__file__), "TKOpenGl.dll")
 
 
 def color(r, g, b):
