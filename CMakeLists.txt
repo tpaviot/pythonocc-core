@@ -177,9 +177,9 @@ endif(${python_version_major} MATCHES "3")
 if(WIN32)
   if(MSVC) # The compiler used is MSVC
     message(STATUS "Found MSVC compiler: ${MSVC} ${MSVC_VERSION}")
-    set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin/)
+    set(LIBRARY_OUTPUT_PATH bin/)
   elseif (BORLAND) # The compiler used is BORLAND
-    set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/win${BIT}/bin/${CMAKE_BUILD_TYPE})
+    set(LIBRARY_OUTPUT_PATH win${BIT}/bin/${CMAKE_BUILD_TYPE})
   else()
     set(LIBRARY_OUTPUT_PATH win${BIT}/bin/${CMAKE_BUILD_TYPE})
   endif()
