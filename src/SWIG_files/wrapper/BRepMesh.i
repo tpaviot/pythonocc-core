@@ -398,18 +398,7 @@ def __del__(self):
 %nodefaultctor BRepMesh_CircleInspector;
 class BRepMesh_CircleInspector : public NCollection_CellFilter_InspectorXY {
 	public:
-		%feature("compactdefaultargs") BRepMesh_CircleInspector;
-		%feature("autodoc", "	* Constructor; remembers tolerance and collector data structure. All the found points are put in the map and excluded from further consideration.
 
-	:param theTol:
-	:type theTol: float
-	:param nbComp:
-	:type nbComp: int
-	:param theAlloc:
-	:type theAlloc: BRepMesh_BaseAllocator &
-	:rtype: None
-") BRepMesh_CircleInspector;
-		 BRepMesh_CircleInspector (Standard_Real theTol,Standard_Integer nbComp,const BRepMesh_BaseAllocator & theAlloc);
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "	:param theInd:
 	:type theInd: int
@@ -446,14 +435,7 @@ class BRepMesh_CircleInspector : public NCollection_CellFilter_InspectorXY {
 	:rtype: BRepMesh_ListOfInteger
 ") GetCoincidentInd;
 		BRepMesh_ListOfInteger & GetCoincidentInd ();
-		%feature("compactdefaultargs") Inspect;
-		%feature("autodoc", "	* Implementation of inspection method
 
-	:param theTarget:
-	:type theTarget: int
-	:rtype: NCollection_CellFilter_Action
-") Inspect;
-		NCollection_CellFilter_Action Inspect (const Standard_Integer theTarget);
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "	:param theIdx:
 	:type theIdx: int
@@ -2685,24 +2667,7 @@ class BRepMesh_Delaun {
 	:rtype: Handle_BRepMesh_DataStructureOfDelaun
 ") Result;
 		const Handle_BRepMesh_DataStructureOfDelaun & Result ();
-		%feature("compactdefaultargs") Frontier;
-		%feature("autodoc", "	* Gives the list of frontier edges
 
-	:rtype: inline Handle_BRepMesh_MapOfInteger
-") Frontier;
-		inline Handle_BRepMesh_MapOfInteger Frontier ();
-		%feature("compactdefaultargs") InternalEdges;
-		%feature("autodoc", "	* Gives the list of internal edges
-
-	:rtype: inline Handle_BRepMesh_MapOfInteger
-") InternalEdges;
-		inline Handle_BRepMesh_MapOfInteger InternalEdges ();
-		%feature("compactdefaultargs") FreeEdges;
-		%feature("autodoc", "	* Gives the list of free edges used only one time
-
-	:rtype: inline Handle_BRepMesh_MapOfInteger
-") FreeEdges;
-		inline Handle_BRepMesh_MapOfInteger FreeEdges ();
 		%feature("compactdefaultargs") GetVertex;
 		%feature("autodoc", "	* Gives vertex with the given index
 
@@ -6073,44 +6038,7 @@ def __del__(self):
 %nodefaultctor BRepMesh_VertexInspector;
 class BRepMesh_VertexInspector : public NCollection_CellFilter_InspectorXY {
 	public:
-		%feature("compactdefaultargs") BRepMesh_VertexInspector;
-		%feature("autodoc", "	* Constructor; remembers tolerance and collector data structure. theTol can be Real or Array1OfReal with two elements which describe tolerance for each dimension.
 
-	:param nbComp:
-	:type nbComp: int
-	:param theAlloc:
-	:type theAlloc: BRepMesh_BaseAllocator &
-	:rtype: None
-") BRepMesh_VertexInspector;
-		 BRepMesh_VertexInspector (const Standard_Integer nbComp,const BRepMesh_BaseAllocator & theAlloc);
-		%feature("compactdefaultargs") BRepMesh_VertexInspector;
-		%feature("autodoc", "	:param nbComp:
-	:type nbComp: int
-	:param theTol:
-	:type theTol: float
-	:param theAlloc:
-	:type theAlloc: BRepMesh_BaseAllocator &
-	:rtype: None
-") BRepMesh_VertexInspector;
-		 BRepMesh_VertexInspector (const Standard_Integer nbComp,const Standard_Real theTol,const BRepMesh_BaseAllocator & theAlloc);
-		%feature("compactdefaultargs") BRepMesh_VertexInspector;
-		%feature("autodoc", "	:param nbComp:
-	:type nbComp: int
-	:param aTolX:
-	:type aTolX: float
-	:param aTolY:
-	:type aTolY: float
-	:param theAlloc:
-	:type theAlloc: BRepMesh_BaseAllocator &
-	:rtype: None
-") BRepMesh_VertexInspector;
-		 BRepMesh_VertexInspector (const Standard_Integer nbComp,const Standard_Real aTolX,const Standard_Real aTolY,const BRepMesh_BaseAllocator & theAlloc);
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	:param theVertex:
-	:type theVertex: BRepMesh_Vertex &
-	:rtype: int
-") Add;
-		Standard_Integer Add (const BRepMesh_Vertex & theVertex);
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "	:param theTol:
 	:type theTol: float
@@ -6165,14 +6093,7 @@ class BRepMesh_VertexInspector : public NCollection_CellFilter_InspectorXY {
 		%feature("autodoc", "	:rtype: BRepMesh_ListOfInteger
 ") GetListOfDelNodes;
 		const BRepMesh_ListOfInteger & GetListOfDelNodes ();
-		%feature("compactdefaultargs") Inspect;
-		%feature("autodoc", "	* Implementation of inspection method
 
-	:param theTarget:
-	:type theTarget: int
-	:rtype: NCollection_CellFilter_Action
-") Inspect;
-		NCollection_CellFilter_Action Inspect (const Standard_Integer theTarget);
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "	:param theIdx:
 	:type theIdx: int
