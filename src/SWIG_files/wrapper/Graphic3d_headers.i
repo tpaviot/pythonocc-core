@@ -173,8 +173,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Aspect_ColorScale.hxx>
 #include<Aspect_Convert.hxx>
 #include<Aspect_Display.hxx>
-#include<Aspect_DisplayConnection_Handle.hxx>
 #include<Aspect_DisplayConnectionDefinitionError.hxx>
+#include<Aspect_DisplayConnection_Handle.hxx>
 #include<Aspect_Drawable.hxx>
 #include<Aspect_Driver.hxx>
 #include<Aspect_DriverDefinitionError.hxx>
@@ -642,8 +642,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Image_Color.hxx>
 #include<Image_Diff.hxx>
 #include<Image_PixMap.hxx>
-#include<Image_PixMap_Handle.hxx>
 #include<Image_PixMapData.hxx>
+#include<Image_PixMap_Handle.hxx>
 #include<TCollection.hxx>
 #include<TCollection_Array1Descriptor.hxx>
 #include<TCollection_Array2Descriptor.hxx>
@@ -686,10 +686,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<OSD_Exception_FLT_STACK_CHECK.hxx>
 #include<OSD_Exception_FLT_UNDERFLOW.hxx>
 #include<OSD_Exception_ILLEGAL_INSTRUCTION.hxx>
-#include<OSD_Exception_IN_PAGE_ERROR.hxx>
 #include<OSD_Exception_INT_DIVIDE_BY_ZERO.hxx>
 #include<OSD_Exception_INT_OVERFLOW.hxx>
 #include<OSD_Exception_INVALID_DISPOSITION.hxx>
+#include<OSD_Exception_IN_PAGE_ERROR.hxx>
 #include<OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx>
 #include<OSD_Exception_PRIV_INSTRUCTION.hxx>
 #include<OSD_Exception_STACK_OVERFLOW.hxx>
