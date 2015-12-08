@@ -1049,7 +1049,7 @@ class TCollection_AsciiString {
 	:type whichone: int
 	:rtype: TCollection_AsciiString
 ") Token;
-		TCollection_AsciiString Token (const char * separators = '\t',const Standard_Integer whichone = 1);
+		TCollection_AsciiString Token (const char * separators = "\t",const Standard_Integer whichone = 1);
 		%feature("compactdefaultargs") Trunc;
 		%feature("autodoc", "	* Truncates <self> to <ahowmany> characters. Example: me = 'Hello Dolly' -> Trunc(3) -> me = 'Hel'
 
@@ -2239,7 +2239,7 @@ class TCollection_HAsciiString : public MMgt_TShared {
 	:type whichone: int
 	:rtype: Handle_TCollection_HAsciiString
 ") Token;
-		Handle_TCollection_HAsciiString Token (const char * separators = '\t',const Standard_Integer whichone = 1);
+		Handle_TCollection_HAsciiString Token (const char * separators = "\t",const Standard_Integer whichone = 1);
 		%feature("compactdefaultargs") Trunc;
 		%feature("autodoc", "	* Truncates <self> to <ahowmany> characters. Example: me = 'Hello Dolly' -> Trunc(3) -> me = 'Hel'
 

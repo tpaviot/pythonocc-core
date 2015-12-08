@@ -308,8 +308,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Aspect_ColorScale.hxx>
 #include<Aspect_Convert.hxx>
 #include<Aspect_Display.hxx>
-#include<Aspect_DisplayConnection_Handle.hxx>
 #include<Aspect_DisplayConnectionDefinitionError.hxx>
+#include<Aspect_DisplayConnection_Handle.hxx>
 #include<Aspect_Drawable.hxx>
 #include<Aspect_Driver.hxx>
 #include<Aspect_DriverDefinitionError.hxx>
@@ -674,8 +674,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Image_Color.hxx>
 #include<Image_Diff.hxx>
 #include<Image_PixMap.hxx>
-#include<Image_PixMap_Handle.hxx>
 #include<Image_PixMapData.hxx>
+#include<Image_PixMap_Handle.hxx>
 #include<TShort_Array1OfShortReal.hxx>
 #include<TShort_Array2OfShortReal.hxx>
 #include<TShort_HArray1OfShortReal.hxx>

@@ -22,8 +22,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Image_Color.hxx>
 #include<Image_Diff.hxx>
 #include<Image_PixMap.hxx>
-#include<Image_PixMap_Handle.hxx>
 #include<Image_PixMapData.hxx>
+#include<Image_PixMap_Handle.hxx>
 #include<TColgp_Array1OfCirc2d.hxx>
 #include<TColgp_Array1OfDir.hxx>
 #include<TColgp_Array1OfDir2d.hxx>
