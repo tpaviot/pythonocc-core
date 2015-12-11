@@ -37,7 +37,11 @@ struct aface {
   int   number_of_texcoords;
   int   number_of_triangles;
 };
-
+//---------------------------------------------------------------------------
+struct aedge {
+  float *vertex_coord;
+  int   number_of_coords;
+};
 //---------------------------------------------------------------------------
 enum theTextureMappingRule {atCube, atNormal, atNormalAutoScale};
 //---------------------------------------------------------------------------
@@ -55,6 +59,7 @@ Standard_EXPORT class Tesselator
       int tot_texcoord_count;
       int tot_triangle_count;
       std::vector<aface*> facelist;
+      std::vector<aedge*> edgelist;
       Standard_Real myDeviation;
       Standard_Real myUOrigin;
       Standard_Real myVOrigin;
@@ -74,6 +79,7 @@ Standard_EXPORT class Tesselator
       void PrepareBoxTextureCoordinates(const TopoDS_Shape& aShape);
       void GetBoxTextureCoordinate(const gp_Pnt& p, const gp_Dir& N1, gp_Vec2d& theCoord_p);
       void ComputeDefaultDeviation();
+      void ComputeEdges();
 
   public:
       Tesselator(TopoDS_Shape aShape,
@@ -95,6 +101,10 @@ Standard_EXPORT class Tesselator
       void JoinPrimitives();
       void JoinPrimitivesWithUVCoords();
       void SetDeviation(Standard_Real aDeviation);
+      void GetVertex(int ivert, float& x, float& y, float& z);
+      void GetNormal(int inorm, float& x, float& y, float& z);
+      void GetTriangleIndex(int triangleIdx, int& v1, int& v2, int& v3);
+      void GetEdgeVertex(int iEdge, int ivert, float& x, float& y, float& z);
       float* VerticesList();
       float* NormalsList();
       float* TextureCoordinatesList();
@@ -105,6 +115,8 @@ Standard_EXPORT class Tesselator
       int ObjGetVertexCount();
       int ObjGetNormalCount();
       int ObjGetTexCoordCount();
+      int ObjGetEdgeCount();
+      int ObjEdgeGetVertexCount(int iEdge);
       void ObjGetTriangle(int trianglenum, int *vertices, int *texcoords, int *normals);
 };
 #endif

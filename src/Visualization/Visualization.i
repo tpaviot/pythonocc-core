@@ -26,6 +26,7 @@
 
 %include ../SWIG_files/common/ExceptionCatcher.i
 %include "python/std_string.i"
+%include "typemaps.i"
 
 %typemap(out) float [ANY] {
   int i;
@@ -42,6 +43,9 @@ enum theTextureMappingRule {
 	atNormalAutoScale
 	};
 
+%apply int& OUTPUT {int& v1, int& v2, int& v3}
+%apply float& OUTPUT {float& x, float& y, float& z}
+
 class Tesselator {
  public:
     Tesselator(TopoDS_Shape aShape,
@@ -57,10 +61,16 @@ class Tesselator {
                float aScaleV,
                float aRotationAngle);
     Tesselator(TopoDS_Shape aShape);
+    void GetVertex(int ivert, float& x, float& y, float& z);
+    void GetNormal(int inorm, float& x, float& y, float& z);
+    void GetTriangleIndex(int triangleIdx, int& v1, int& v2, int& v3);
+    void GetEdgeVertex(int iEdge, int ivert, float& x, float& y, float& z);
 	float* VerticesList();
 	int ObjGetTriangleCount();
 	int ObjGetVertexCount();
 	int ObjGetNormalCount();
+	int ObjGetEdgeCount();
+	int ObjEdgeGetVertexCount(int iEdge);
     std::string ExportShapeToX3DIndexedFaceSet();
 	void ExportShapeToThreejs(char *filename);
 	void ExportShapeToX3D(char *filename, int diffR=1, int diffG=0, int diffB=0);
