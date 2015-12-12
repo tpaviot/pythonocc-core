@@ -1,6 +1,6 @@
 ﻿package:
   name: pythonocc-core
-  version: {{ environ.get('GIT_DESCRIBE_TAG', '0.16.4') }}
+  version: {{ environ.get('GIT_DESCRIBE_TAG', '0.17.dev') }}
 
 source:
   path: ../..
@@ -25,15 +25,16 @@ requirements:
   build:
     - patch             [win]
     - python
-    - oce ==0.17.1
+    - oce 0.17.*
     - cmake
+    - ninja             [win]
     - swig
 
   run:
     - pyqt
     - wxpython          [py27]
     - pyside            [py27]
-    - oce ==0.17.1
+    - oce 0.17.*
     - python
 
 
