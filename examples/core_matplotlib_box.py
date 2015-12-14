@@ -17,8 +17,8 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-# A sample that shows how to generate the gear geometry according
-# to knowledge
+# Small example how to use the Tesselator interface to draw
+# a shape with matplotlib
 
 from OCC.Visualization import Tesselator
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
