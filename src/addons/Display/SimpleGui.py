@@ -1,73 +1,49 @@
 #!/usr/bin/env python
 
-##Copyright 2009-2014 Thomas Paviot (tpaviot@gmail.com)
+# Copyright 2009-2016 Thomas Paviot (tpaviot@gmail.com)
 ##
-##This file is part of pythonOCC.
+# This file is part of pythonOCC.
 ##
-##pythonOCC is free software: you can redistribute it and/or modify
-##it under the terms of the GNU Lesser General Public License as published by
-##the Free Software Foundation, either version 3 of the License, or
-##(at your option) any later version.
+# pythonOCC is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Lesser General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 ##
-##pythonOCC is distributed in the hope that it will be useful,
-##but WITHOUT ANY WARRANTY; without even the implied warranty of
-##MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-##GNU Lesser General Public License for more details.
+# pythonOCC is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Lesser General Public License for more details.
 ##
-##You should have received a copy of the GNU Lesser General Public License
-##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
+# You should have received a copy of the GNU Lesser General Public License
+# along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+import logging
 import sys
+
 from OCC import VERSION
+from OCC.Display.backend import get_backend, get_qt_modules
+
+log = logging.getLogger(__name__)
 
 
-def get_backend():
-    """
-    loads a backend
-    backends are loaded in order of preference
-    since python comes with Tk included, but that PySide or PyQt4
-    is much preferred
-    """
-    try:
-        from PyQt4 import QtCore, QtGui
-        return 'qt-pyqt4'
-    except:
-        pass
-    try:
-        from PySide import QtCore, QtGui
-        return 'qt-pyside'
-    except:
-        pass
-    # Check wxPython
-    try:
-        import wx
-        return 'wx'
-    except:
-        raise ImportError("No compliant GUI library found. You must have either PySide, PyQt4 or wxPython installed.")
-        sys.exit(1)
+def check_callable(_callable):
+    assert callable(_callable), 'the function supplied is not callable'
 
 
 def init_display(backend_str=None, size=(1024, 768)):
-    global display, add_menu, add_function_to_menu, start_display, app, win, USED_BACKEND
+    used_backend = get_backend(backend_str)
 
-    if not backend_str:
-        USED_BACKEND = get_backend()
-    elif backend_str in ['wx', 'qt-pyside', 'qt-pyqt4']:
-        USED_BACKEND = backend_str
-    else:
-        raise ValueError("You should pass either 'wx','qt' or 'tkinter' to the init_display function.")
-        sys.exit(1)
+    log.info("GUI backend set to: {0}".format(used_backend))
     # wxPython based simple GUI
-    if USED_BACKEND == 'wx':
-        try:
-            import wx
-        except:
-            raise ImportError("Please install wxPython.")
+    if used_backend == 'wx':
+        import wx
         from wxDisplay import wxViewer3d
 
         class AppFrame(wx.Frame):
+
             def __init__(self, parent):
-                wx.Frame.__init__(self, parent, -1, "pythonOCC-%s 3d viewer ('wx' backend)" % VERSION, style=wx.DEFAULT_FRAME_STYLE, size=size)
+                wx.Frame.__init__(self, parent, -1, "pythonOCC-%s 3d viewer ('wx' backend)" % VERSION,
+                                  style=wx.DEFAULT_FRAME_STYLE, size=size)
                 self.canva = wxViewer3d(self)
                 self.menuBar = wx.MenuBar()
                 self._menus = {}
@@ -75,19 +51,21 @@ def init_display(backend_str=None, size=(1024, 768)):
 
             def add_menu(self, menu_name):
                 _menu = wx.Menu()
-                self.menuBar.Append(_menu, "&"+menu_name)
+                self.menuBar.Append(_menu, "&" + menu_name)
                 self.SetMenuBar(self.menuBar)
                 self._menus[menu_name] = _menu
 
             def add_function_to_menu(self, menu_name, _callable):
                 # point on curve
                 _id = wx.NewId()
-                assert callable(_callable), 'the function supplied is not callable'
+                check_callable(_callable)
                 try:
-                    self._menus[menu_name].Append(_id, _callable.__name__.replace('_', ' ').lower())
+                    self._menus[menu_name].Append(_id,
+                                                  _callable.__name__.replace('_', ' ').lower())
                 except KeyError:
                     raise ValueError('the menu item %s does not exist' % menu_name)
                 self.Bind(wx.EVT_MENU, _callable, id=_id)
+
         app = wx.PySimpleApp()
         win = AppFrame(None)
         win.Show(True)
@@ -104,16 +82,18 @@ def init_display(backend_str=None, size=(1024, 768)):
 
         def start_display():
             app.MainLoop()
-    # Qt based simple GUI
-    elif 'qt' in USED_BACKEND:
-        from OCC.Display.qtDisplay import qtViewer3d, get_qt_modules
-        QtCore, QtGui, QtOpenGL = get_qt_modules()
 
-        class MainWindow(QtGui.QMainWindow):
+    # Qt based simple GUI
+    elif 'qt' in used_backend:
+        from OCC.Display.qtDisplay import qtViewer3d
+        QtCore, QtGui, QtWidgets, QtOpenGL = get_qt_modules()
+
+        class MainWindow(QtWidgets.QMainWindow):
+
             def __init__(self, *args):
-                QtGui.QMainWindow.__init__(self, *args)
+                QtWidgets.QMainWindow.__init__(self, *args)
                 self.canva = qtViewer3d(self)
-                self.setWindowTitle("pythonOCC-%s 3d viewer ('%s' backend)" % (VERSION, USED_BACKEND))
+                self.setWindowTitle("pythonOCC-%s 3d viewer ('%s' backend)" % (VERSION, used_backend))
                 self.resize(size[0], size[1])
                 self.setCentralWidget(self.canva)
                 if not sys.platform == 'darwin':
@@ -121,39 +101,43 @@ def init_display(backend_str=None, size=(1024, 768)):
                 else:
                     # create a parentless menubar
                     # see: http://stackoverflow.com/questions/11375176/qmenubar-and-qmenu-doesnt-show-in-mac-os-x?lq=1
-                    # noticeable is that the menu ( alas ) is created in the topleft of the screen, just
+                    # noticeable is that the menu ( alas ) is created in the
+                    # topleft of the screen, just
                     # next to the apple icon
-                    # still does ugly things like showing the "Python" menu in bold
-                    self.menu_bar = QtGui.QMenuBar()
+                    # still does ugly things like showing the "Python" menu in
+                    # bold
+                    self.menu_bar = QtWidgets.QMenuBar()
                 self._menus = {}
                 self._menu_methods = {}
-                # place the window in the center of the screen, at half the screen size
+                # place the window in the center of the screen, at half the
+                # screen size
                 self.centerOnScreen()
 
             def centerOnScreen(self):
                 '''Centers the window on the screen.'''
-                resolution = QtGui.QDesktopWidget().screenGeometry()
+                resolution = QtWidgets.QDesktopWidget().screenGeometry()
                 self.move((resolution.width() / 2) - (self.frameSize().width() / 2),
                           (resolution.height() / 2) - (self.frameSize().height() / 2))
 
             def add_menu(self, menu_name):
-                _menu = self.menu_bar.addMenu("&"+menu_name)
+                _menu = self.menu_bar.addMenu("&" + menu_name)
                 self._menus[menu_name] = _menu
 
             def add_function_to_menu(self, menu_name, _callable):
-                assert callable(_callable), 'the function supplied is not callable'
+                check_callable(_callable)
                 try:
-                    _action = QtGui.QAction(_callable.__name__.replace('_', ' ').lower(), self)
+                    _action = QtWidgets.QAction(_callable.__name__.replace('_', ' ').lower(), self)
                     # if not, the "exit" action is now shown...
-                    _action.setMenuRole(QtGui.QAction.NoRole)
+                    _action.setMenuRole(QtWidgets.QAction.NoRole)
                     self.connect(_action, QtCore.SIGNAL("triggered()"), _callable)
                     self._menus[menu_name].addAction(_action)
                 except KeyError:
                     raise ValueError('the menu item %s does not exist' % menu_name)
+
         # following couple of lines is a twek to enable ipython --gui='qt'
-        app = QtGui.QApplication.instance()  # checks if QApplication already exists 
-        if not app:  # create QApplication if it doesnt exist 
-            app = QtGui.QApplication(sys.argv)
+        app = QtWidgets.QApplication.instance()  # checks if QApplication already exists
+        if not app:  # create QApplication if it doesnt exist
+            app = QtWidgets.QApplication(sys.argv)
         win = MainWindow()
         win.show()
         win.canva.InitDriver()
@@ -175,6 +159,7 @@ def init_display(backend_str=None, size=(1024, 768)):
             win.raise_()  # make the application float to the top
             app.exec_()
     return display, start_display, add_menu, add_function_to_menu
+
 
 if __name__ == '__main__':
     display, start_display, add_menu, add_function_to_menu = init_display()

@@ -22,4 +22,7 @@ echo "Timestamp" && date
 cd ../test
 /home/travis/miniconda/bin/python run_tests.py
 /home/travis/miniconda/bin/python core_webgl_unittest.py
-xvfb-run -s "-screen 0 1024x768x16" /home/travis/miniconda/bin/python core_display_unittest.py
+xvfb-run -s "-screen 0 1024x768x16" /home/travis/miniconda/bin/python core_display_pyqt4_unittest.py
+xvfb-run -s "-screen 0 1024x768x16" /home/travis/miniconda/bin/python core_display_pyqt5_unittest.py
+xvfb-run -s "-screen 0 1024x768x16" /home/travis/miniconda/bin/python core_display_pyside_unittest.py
+xvfb-run -s "-screen 0 1024x768x16" /home/travis/miniconda/bin/python core_display_wx_unittest.py
