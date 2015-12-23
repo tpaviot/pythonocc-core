@@ -19,23 +19,19 @@
 
 from __future__ import print_function
 
+import logging
 import sys
+
+log = logging.getLogger(__name__)
+
 from OCC.Display import OCCViewer
+from . import HAVE_PYQT5, HAVE_PYQT4, HAVE_PYSIDE, get_qt_modules
+QtCore, QtGui, QtOpenGL = get_qt_modules()
 
-HAVE_PYQT4 = False
-HAVE_PYSIDE = False
-try:
-    from PyQt4 import QtCore, QtGui, QtOpenGL
-    HAVE_PYQT4 = True
-    print("Using PyQt4")
-except ImportError:
-    from PySide import QtCore, QtGui, QtOpenGL
-    HAVE_PYSIDE = True
-    print("PyQt4 not found - using PySide")
-
-
-def get_qt_modules():
-    return QtCore, QtGui, QtOpenGL
+if HAVE_PYQT5:
+    from PyQt5.QtGui import QPen, QColor, QPainter
+else:
+    QtPen, QColor, QPainter = QtGui.QPen, QtGui.QColor, QtGui.QPainter
 
 
 class point(object):
@@ -53,6 +49,7 @@ class point(object):
 class qtBaseViewer(QtOpenGL.QGLWidget):
     ''' The base Qt Widget for an OCC viewer
     '''
+
     def __init__(self, parent=None):
         QtOpenGL.QGLWidget.__init__(self, parent)
         self._display = None
@@ -82,8 +79,8 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
                 import ctypes
                 ctypes.pythonapi.PyCObject_AsVoidPtr.restype = ctypes.c_void_p
                 ctypes.pythonapi.PyCObject_AsVoidPtr.argtypes = [ctypes.py_object]
-                win_id = ctypes.pythonapi.PyCObject_AsVoidPtr(win_id)                
-        elif HAVE_PYQT4:
+                win_id = ctypes.pythonapi.PyCObject_AsVoidPtr(win_id)
+        elif HAVE_PYQT4 or HAVE_PYQT5:
             ## below integer cast may be required because self.winId() can
             ## returns a sip.voitptr according to the PyQt version used
             ## as well as the python version
@@ -163,8 +160,8 @@ class qtViewer3d(qtBaseViewer):
 
         if self._drawbox:
             self.makeCurrent()
-            painter = QtGui.QPainter(self)
-            painter.setPen(QtGui.QPen(QtGui.QColor(0, 0, 0), 1))
+            painter = QPainter(self)
+            painter.setPen(QPen(QColor(0, 0, 0), 1))
             rect = QtCore.QRect(*self._drawbox)
             painter.drawRect(rect)
             painter.end()
@@ -200,7 +197,7 @@ class qtViewer3d(qtBaseViewer):
             pt = point(event.pos())
             if self._select_area:
                 [Xmin, Ymin, dx, dy] = self._drawbox
-                self._display.SelectArea(Xmin, Ymin, Xmin+dx, Ymin+dy)
+                self._display.SelectArea(Xmin, Ymin, Xmin + dx, Ymin + dy)
                 self._select_area = False
             else:
                 # multiple select if shift is pressed
@@ -212,7 +209,7 @@ class qtViewer3d(qtBaseViewer):
         elif event.button() == QtCore.Qt.RightButton:
             if self._zoom_area:
                 [Xmin, Ymin, dx, dy] = self._drawbox
-                self._display.ZoomArea(Xmin, Ymin, Xmin+dx, Ymin+dy)
+                self._display.ZoomArea(Xmin, Ymin, Xmin + dx, Ymin + dy)
                 self._zoom_area = False
 
     def DrawBox(self, event):
@@ -262,29 +259,3 @@ class qtViewer3d(qtBaseViewer):
         else:
             self._drawbox = False
             self._display.MoveTo(pt.x, pt.y)
-
-
-def Test3d():
-    class AppFrame(QtGui.QWidget):
-        def __init__(self, parent=None):
-            QtGui.QWidget.__init__(self, parent)
-            self.setWindowTitle(self.tr("qtDisplay3d sample"))
-            self.resize(640, 480)
-            self.canva = qtViewer3d(self)
-            mainLayout = QtGui.QHBoxLayout()
-            mainLayout.addWidget(self.canva)
-            mainLayout.setContentsMargins(0, 0, 0, 0)
-            self.setLayout(mainLayout)
-
-        def runTests(self):
-            self.canva._display.Test()
-
-    app = QtGui.QApplication(sys.argv)
-    frame = AppFrame()
-    frame.show()
-    frame.canva.InitDriver()
-    frame.runTests()
-    sys.exit(app.exec_())
-
-if __name__ == "__main__":
-    Test3d()
