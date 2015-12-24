@@ -36,20 +36,27 @@ the example is extends Qt's :ref:`OpenGL overpainting example`
 from __future__ import print_function
 
 import random
+import logging
 import sys
+
+logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
+log = logging.getLogger(__name__)
 
 from OCC.Display.qtDisplay import qtViewer3d, get_qt_modules, HAVE_PYQT5, HAVE_PYQT4, HAVE_PYSIDE
 
 QtCore, QtGui, QtOpenGL = get_qt_modules()
 
 if HAVE_PYQT5:
+    log.info("loaded GUI backend: PyQt5")
     from PyQt5.QtGui import QRadialGradient, QColor, QBrush, QMouseEvent, QWheelEvent, QPainter, QPen, QFontMetrics
     from PyQt5.QtWidgets import QWidget, QHBoxLayout, QApplication
 
 elif HAVE_PYQT4:
+    log.info("loaded GUI backend: PyQt4")
     from PyQt4.QtGui import (QRadialGradient, QColor, QBrush, QMouseEvent, QWheelEvent, QPainter, QPen, QFontMetrics,
                              QWidget, QHBoxLayout, QApplication)
 elif HAVE_PYSIDE:
+    log.info("loaded GUI backend: PySide")
     from PySide.QtGui import (QRadialGradient, QColor, QBrush, QMouseEvent, QWheelEvent, QPainter, QPen, QFontMetrics,
                              QWidget, QHBoxLayout, QApplication)
 
@@ -59,7 +66,7 @@ try:
 except ImportError:
     msg = "for this example, the OpenGL module is required " \
           "why not run \"pip install PyOpenGL\"?"
-    print(msg)
+    log.critical(msg)
     sys.exit()
 
 # -------------------------------------------------------------------------------
@@ -433,7 +440,7 @@ class GLWidget(qtViewer3d):
         # TODO: 6.9.1 changes this, important...
         # If theToRedrawOnUpdate is set to false, callee should call RedrawImmediate() to highlight detected object.
 
-        print(" no specific action -> MoveTo")
+        log.info(" no specific action -> MoveTo")
         self._display.MoveTo(*self.point_on_mouse_move)
 
     def on_select(self):
@@ -467,15 +474,15 @@ class GLWidget(qtViewer3d):
         perform_action = False
 
         if self.current_action:
-            print("handling camera action:", self.current_action)
+            log.info("handling camera action: {0}".format(self.current_action))
 
         try:
             if self.current_action is not None:
                 action = getattr(self, self.current_action)
                 action()
 
-        except Exception, e:
-            print("tried invoking camera command action {0}, raising exception: {1}".format(self.current_action, e))
+        except Exception:
+            log.exception("tried invoking camera command action {0}".format(self.current_action))
 
         finally:
             self.current_action = None
@@ -517,7 +524,7 @@ class GLWidget(qtViewer3d):
                 # hand over the OpenGL context
                 self.doneCurrent()
             else:
-                print('invalid OpenGL context: Qt cannot overpaint viewer')
+                log.info('invalid OpenGL context: Qt cannot overpaint viewer')
 
     def _overpaint(self, event, painter):
         """ overpaint the viewport

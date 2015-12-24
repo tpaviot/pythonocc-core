@@ -22,6 +22,7 @@ from __future__ import print_function
 import logging
 import sys
 
+logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 log = logging.getLogger(__name__)
 
 from OCC.Display import OCCViewer
@@ -138,7 +139,7 @@ class qtViewer3d(qtBaseViewer):
         if code in self._key_map:
             self._key_map[code]()
         else:
-            print('key', code, ' not mapped to any function')
+            log.info('key', code, ' not mapped to any function')
 
     def Test(self):
         if self._inited:
@@ -259,3 +260,4 @@ class qtViewer3d(qtBaseViewer):
         else:
             self._drawbox = False
             self._display.MoveTo(pt.x, pt.y)
+

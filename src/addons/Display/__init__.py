@@ -1,5 +1,7 @@
+import sys
 import logging
 
+logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 log = logging.getLogger(__name__)
 
 HAVE_PYQT5, HAVE_PYQT4, HAVE_PYSIDE = False, False, False
@@ -26,7 +28,7 @@ if not HAVE_PYQT5:
     except ImportError:
         pass
 
-if not HAVE_PYQT5 or HAVE_PYQT4:
+if not HAVE_PYQT5 and not HAVE_PYQT4:
     try:
         from PySide import QtCore, QtGui, QtOpenGL
 
@@ -43,3 +45,4 @@ def get_qt_modules():
 if not HAVE_PYQT5 and not HAVE_PYQT4 and not HAVE_PYSIDE:
     print "HAVE_PYQT5, HAVE_PYQT4, HAVE_PYSIDE: ", HAVE_PYQT5, HAVE_PYQT4, HAVE_PYSIDE
     raise ImportError("could not load PyQt5, PyQt4 nor PySide, in that particular order...")
+
