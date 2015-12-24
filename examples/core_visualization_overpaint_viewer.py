@@ -39,6 +39,7 @@ import random
 import sys
 
 from OCC.Display.qtDisplay import qtViewer3d, get_qt_modules
+# pyqt4 only, this is corrected in PR #175, where handling of imported Qt backend is better handled...
 from PyQt4 import Qt
 
 QtCore, QtGui, QtOpenGL = get_qt_modules()
@@ -643,3 +644,4 @@ if __name__ == '__main__':
 
 
     TestOverPainting()
+
