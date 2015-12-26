@@ -84,7 +84,7 @@ def get_backend(backend_str=None):
             HAVE_BACKEND = True
             HAVE_PYQT5 = True
             BACKEND_MODULE = 'qt-pyqt5'
-            log.info("backend loaded: {0}".format(backend_str))
+            log.info("backend loaded: {0}".format(BACKEND_MODULE))
             return BACKEND_MODULE
 
         except ImportError:
@@ -102,7 +102,7 @@ def get_backend(backend_str=None):
             HAVE_BACKEND = True
             HAVE_PYQT4 = True
             BACKEND_MODULE = 'qt-pyqt4'
-            log.info("backend loaded: {0}".format(backend_str))
+            log.info("backend loaded: {0}".format(BACKEND_MODULE))
             return BACKEND_MODULE
 
         except ImportError:
@@ -120,7 +120,7 @@ def get_backend(backend_str=None):
             HAVE_BACKEND = True
             HAVE_PYSIDE = True
             BACKEND_MODULE = 'qt-pyside'
-            log.info("backend loaded: {0}".format(backend_str))
+            log.info("backend loaded: {0}".format(BACKEND_MODULE))
             return BACKEND_MODULE
 
         except ImportError:
@@ -140,7 +140,7 @@ def get_backend(backend_str=None):
             HAVE_BACKEND = True
             HAVE_WX = True
             BACKEND_MODULE = 'wx'
-            log.info("backend loaded: {0}".format(backend_str))
+            log.info("backend loaded: {0}".format(BACKEND_MODULE))
             return BACKEND_MODULE
 
         except:
