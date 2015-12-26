@@ -26,13 +26,8 @@ logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 log = logging.getLogger(__name__)
 
 from OCC.Display import OCCViewer
-from . import HAVE_PYQT5, HAVE_PYQT4, HAVE_PYSIDE, get_qt_modules
-QtCore, QtGui, QtOpenGL = get_qt_modules()
-
-if HAVE_PYQT5:
-    from PyQt5.QtGui import QPen, QColor, QPainter
-else:
-    QtPen, QColor, QPainter = QtGui.QPen, QtGui.QColor, QtGui.QPainter
+from backend import get_qt_modules
+QtCore, QtGui, QtWidgets, QtOpenGL = get_qt_modules()
 
 
 class point(object):
@@ -161,8 +156,8 @@ class qtViewer3d(qtBaseViewer):
 
         if self._drawbox:
             self.makeCurrent()
-            painter = QPainter(self)
-            painter.setPen(QPen(QColor(0, 0, 0), 1))
+            painter = QtGui.QPainter(self)
+            painter.setPen(QtGui.Pen(QtGui.QColor(0, 0, 0), 1))
             rect = QtCore.QRect(*self._drawbox)
             painter.drawRect(rect)
             painter.end()
