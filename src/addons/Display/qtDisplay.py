@@ -27,6 +27,7 @@ log = logging.getLogger(__name__)
 
 from OCC.Display import OCCViewer
 from backend import get_qt_modules
+
 QtCore, QtGui, QtWidgets, QtOpenGL = get_qt_modules()
 
 
@@ -66,6 +67,14 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
         It must be an integer
         '''
         win_id = self.winId()  ## this returns either an int or voitptr
+
+        from OCC.Display.backend import HAVE_PYSIDE, HAVE_PYQT4, HAVE_PYQT5, \
+            HAVE_BACKEND
+
+        if not HAVE_BACKEND:
+            raise ValueError("no backend has been loaded yet... use "
+                             "``get_backend`` first")
+
         if HAVE_PYSIDE:
             ### with PySide, self.winId() does not return an integer
             if sys.platform == "win32":
@@ -74,7 +83,8 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
                 ## since the PyCObject api was changed
                 import ctypes
                 ctypes.pythonapi.PyCObject_AsVoidPtr.restype = ctypes.c_void_p
-                ctypes.pythonapi.PyCObject_AsVoidPtr.argtypes = [ctypes.py_object]
+                ctypes.pythonapi.PyCObject_AsVoidPtr.argtypes = [
+                    ctypes.py_object]
                 win_id = ctypes.pythonapi.PyCObject_AsVoidPtr(win_id)
         elif HAVE_PYQT4 or HAVE_PYQT5:
             ## below integer cast may be required because self.winId() can
@@ -223,15 +233,19 @@ class qtViewer3d(qtBaseViewer):
         buttons = int(evt.buttons())
         modifiers = evt.modifiers()
         # ROTATE
-        if (buttons == QtCore.Qt.LeftButton and not modifiers == QtCore.Qt.ShiftModifier):
+        if (buttons == QtCore.Qt.LeftButton and
+                not modifiers == QtCore.Qt.ShiftModifier):
             dx = pt.x - self.dragStartPos.x
             dy = pt.y - self.dragStartPos.y
             self._display.Rotation(pt.x, pt.y)
             self._drawbox = False
         # DYNAMIC ZOOM
-        elif (buttons == QtCore.Qt.RightButton and not modifiers == QtCore.Qt.ShiftModifier):
+        elif (buttons == QtCore.Qt.RightButton and
+                  not modifiers == QtCore.Qt.ShiftModifier):
             self._display.Repaint()
-            self._display.DynamicZoom(abs(self.dragStartPos.x), abs(self.dragStartPos.y), abs(pt.x), abs(pt.y))
+            self._display.DynamicZoom(abs(self.dragStartPos.x),
+                                      abs(self.dragStartPos.y), abs(pt.x),
+                                      abs(pt.y))
             self.dragStartPos.x = pt.x
             self.dragStartPos.y = pt.y
             self._drawbox = False
@@ -245,14 +259,15 @@ class qtViewer3d(qtBaseViewer):
             self._drawbox = False
         # DRAW BOX
         # ZOOM WINDOW
-        elif (buttons == QtCore.Qt.RightButton and modifiers == QtCore.Qt.ShiftModifier):
+        elif (buttons == QtCore.Qt.RightButton and
+                      modifiers == QtCore.Qt.ShiftModifier):
             self._zoom_area = True
             self.DrawBox(evt)
         # SELECT AREA
-        elif (buttons == QtCore.Qt.LeftButton and modifiers == QtCore.Qt.ShiftModifier):
+        elif (buttons == QtCore.Qt.LeftButton and
+                      modifiers == QtCore.Qt.ShiftModifier):
             self._select_area = True
             self.DrawBox(evt)
         else:
             self._drawbox = False
             self._display.MoveTo(pt.x, pt.y)
-

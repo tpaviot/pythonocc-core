@@ -1,17 +1,17 @@
-##This file is part of pythonOCC.
+# This file is part of pythonOCC.
 ##
-##pythonOCC is free software: you can redistribute it and/or modify
-##it under the terms of the GNU Lesser General Public License as published by
-##the Free Software Foundation, either version 3 of the License, or
-##(at your option) any later version.
+# pythonOCC is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Lesser General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 ##
-##pythonOCC is distributed in the hope that it will be useful,
-##but WITHOUT ANY WARRANTY; without even the implied warranty of
-##MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-##GNU Lesser General Public License for more details.
+# pythonOCC is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Lesser General Public License for more details.
 ##
-##You should have received a copy of the GNU Lesser General Public License
-##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
+# You should have received a copy of the GNU Lesser General Public License
+# along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 """
 
@@ -36,45 +36,28 @@ the example is extends Qt's :ref:`OpenGL overpainting example`
 from __future__ import print_function
 
 import random
-import logging
 import sys
 
-logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
-log = logging.getLogger(__name__)
+from OCC.Display.backend import get_backend, get_qt_modules
+backend = get_backend()
+QtCore, QtGui, QtWidgets, QtOpenGL = get_qt_modules()
+from OCC.Display.qtDisplay import qtViewer3d
 
-from OCC.Display.qtDisplay import qtViewer3d, get_qt_modules, HAVE_PYQT5, HAVE_PYQT4, HAVE_PYSIDE
-
-QtCore, QtGui, QtOpenGL = get_qt_modules()
-
-if HAVE_PYQT5:
-    log.info("loaded GUI backend: PyQt5")
-    from PyQt5.QtGui import QRadialGradient, QColor, QBrush, QMouseEvent, QWheelEvent, QPainter, QPen, QFontMetrics
-    from PyQt5.QtWidgets import QWidget, QHBoxLayout, QApplication
-
-elif HAVE_PYQT4:
-    log.info("loaded GUI backend: PyQt4")
-    from PyQt4.QtGui import (QRadialGradient, QColor, QBrush, QMouseEvent, QWheelEvent, QPainter, QPen, QFontMetrics,
-                             QWidget, QHBoxLayout, QApplication)
-elif HAVE_PYSIDE:
-    log.info("loaded GUI backend: PySide")
-    from PySide.QtGui import (QRadialGradient, QColor, QBrush, QMouseEvent, QWheelEvent, QPainter, QPen, QFontMetrics,
-                             QWidget, QHBoxLayout, QApplication)
 
 try:
     from OpenGL.GL import (glViewport, glMatrixMode, glOrtho, glLoadIdentity,
                            GL_PROJECTION, GL_MODELVIEW)
 except ImportError:
-    msg = "for this example, the OpenGL module is required " \
-          "why not run \"pip install PyOpenGL\"?"
-    log.critical(msg)
-    sys.exit()
+    msg = "for this example, the OpenGL module is required" \
+          "why not run \"pip install PyOpenGL\"\?"
+    sys.exit(status=1)
 
-# -------------------------------------------------------------------------------
+# --------------------------------------------------------------------------
 # these are names of actions that invoke the OpenGL viewport to be redrawn
 # such actions need to be invoked through the GLWidget.update method, which
 # in turn invoked the GLWidget.paintEvent method
 # this way, all command that redraw the viewport are invoked synchronously
-# -------------------------------------------------------------------------------
+# --------------------------------------------------------------------------
 
 
 ON_ZOOM = "on_zoom"
@@ -101,12 +84,13 @@ class Bubble(object):
         self.updateBrush()
 
     def updateBrush(self):
-        gradient = QRadialGradient(QtCore.QPointF(self.radius, self.radius),
-                                   self.radius, QtCore.QPointF(self.radius * 0.5, self.radius * 0.5))
-        gradient.setColorAt(0, QColor(255, 255, 255, 0))
+        gradient = QtGui.QRadialGradient(QtCore.QPointF(self.radius, self.radius),
+                                         self.radius,
+                                         QtCore.QPointF(self.radius * 0.5, self.radius * 0.5))
+        gradient.setColorAt(0, QtGui.QColor(255, 255, 255, 0))
         gradient.setColorAt(0.25, self.innerColor)
         gradient.setColorAt(1, self.outerColor)
-        self.brush = QBrush(gradient)
+        self.brush = QtGui.QBrush(gradient)
 
     def drawBubble(self, painter, mouse_intersects):
         painter.save()
@@ -129,7 +113,7 @@ class Bubble(object):
         green = random.randrange(205, 256)
         blue = random.randrange(205, 256)
         alpha = random.randrange(91, 192)
-        return QColor(red, green, blue, alpha)
+        return QtGui.QColor(red, green, blue, alpha)
 
     def move(self, bbox):
         self.position += self.vel
@@ -159,6 +143,7 @@ class Bubble(object):
 
 
 class GLWidget(qtViewer3d):
+
     def __init__(self, parent=None):
         super(GLWidget, self).__init__(parent)
 
@@ -168,9 +153,9 @@ class GLWidget(qtViewer3d):
         # no effect?
         self.doubleBuffer()
 
-        # -------------------------------------------------------------------------------
+        # ---------------------------------------------------------------------
         # parameters for bubbles
-        # -------------------------------------------------------------------------------
+        # ---------------------------------------------------------------------
 
         midnight = QtCore.QTime(0, 0, 0)
         random.seed(midnight.secsTo(QtCore.QTime.currentTime()))
@@ -179,19 +164,19 @@ class GLWidget(qtViewer3d):
         # parameter for overpainted text box
 
         self.text = """
-    Example overpainting the OpenGL viewport, inspired by a similar example from Qt
-    """
+        Example overpainting the OpenGL viewport, inspired by a similar example from Qt
+        """
 
-        # -------------------------------------------------------------------------------
-        # create properties for the last coordinate, such that the stupid "point" conversion
-        # takes place implicitly
-        # -------------------------------------------------------------------------------
+        # ---------------------------------------------------------------------
+        # create properties for the last coordinate, such that the stupid
+        # "point" conversion takes place implicitly
+        # ---------------------------------------------------------------------
 
         self.lastPos = QtCore.QPoint()
 
-        # -------------------------------------------------------------------------------
+        # ---------------------------------------------------------------------
         # GUI parameters
-        # -------------------------------------------------------------------------------
+        # ---------------------------------------------------------------------
 
         self.setMinimumSize(200, 200)
         self.setWindowTitle("Overpainting a Scene")
@@ -200,17 +185,17 @@ class GLWidget(qtViewer3d):
         self.setAttribute(QtCore.Qt.WA_NoSystemBackground)
         self.setAutoFillBackground(False)
 
-        # -------------------------------------------------------------------------------
+        # ---------------------------------------------------------------------
         # setup
-        # -------------------------------------------------------------------------------
+        # ---------------------------------------------------------------------
 
         # start the background thread that performs the overpainting of
         # the OpenGL view with bubbles
         self._setupAnimation()
 
-        # -------------------------------------------------------------------------------
+        # ---------------------------------------------------------------------
         # GUI State
-        # -------------------------------------------------------------------------------
+        # ---------------------------------------------------------------------
 
         # QPoint stored on mouse press
         self._point_on_mouse_press = QtCore.QPoint()
@@ -234,7 +219,7 @@ class GLWidget(qtViewer3d):
 
     @point_on_mouse_press.setter
     def point_on_mouse_press(self, event):
-        if isinstance(event, QMouseEvent):
+        if isinstance(event, QtGui.QMouseEvent):
             self._point_on_mouse_press = QtCore.QPoint(event.pos())
         elif isinstance(event, QtCore.QPoint):
             self._point_on_mouse_press = QtCore.QPoint(event)
@@ -247,7 +232,7 @@ class GLWidget(qtViewer3d):
 
     @point_on_mouse_move.setter
     def point_on_mouse_move(self, event):
-        if isinstance(event, (QMouseEvent, QWheelEvent)):
+        if isinstance(event, (QtGui.QMouseEvent, QtGui.QWheelEvent)):
             self._point_on_mouse_move = QtCore.QPoint(event.pos())
         elif isinstance(event, QtCore.QPoint):
             self._point_on_mouse_move = QtCore.QPoint(event)
@@ -433,14 +418,16 @@ class GLWidget(qtViewer3d):
         self._display.Pan(-dx, dy)
 
     def on_move_to(self):
-        # Relays mouse position in pixels theXPix and theYPix to the interactive context selectors
-        # This is done by the view theView passing this position to the main viewer and updating it
+        # Relays mouse position in pixels theXPix and theYPix to the
+        # interactive context selectors
+        # This is done by the view theView passing this position to the main
+        # viewer and updating it
         # Functions in both Neutral Point and local contexts
 
         # TODO: 6.9.1 changes this, important...
-        # If theToRedrawOnUpdate is set to false, callee should call RedrawImmediate() to highlight detected object.
-
-        log.info(" no specific action -> MoveTo")
+        # If theToRedrawOnUpdate is set to false, callee should call
+        # RedrawImmediate() to highlight detected object.
+        print(" no specific action -> MoveTo")
         self._display.MoveTo(*self.point_on_mouse_move)
 
     def on_select(self):
@@ -455,34 +442,35 @@ class GLWidget(qtViewer3d):
         # self._display.SelectArea(Xmin, Ymin, Xmin+dx, Ymin+dy)
 
     def _dispatch_camera_command_actions(self):
-        """ dispatches actions that involve zooming, panning or rotating the viewport
+        """ dispatches actions that involve zooming, panning or rotating
+        the viewport. Any of these actions invokes redrawing the view.
+        This is why its relevant that these are handled in a specific method
 
-        any of these actions invokes redrawing the view
-        this is why its relevant that these are handled in a specific method
-
-        this method is to be called **exclusisely** from the .paintEvent method
+        This method is to be called **exclusisely** from the .paintEvent method
         since here it can be interwoven with the overpainting routines
 
         Returns
         -------
 
         perform_action : bool
-            True if any actions were performed, and implicitly the viewport was redrawn
+            True if any actions were performed, and implicitly the viewport
+            was redrawn
             False otherwise
 
         """
         perform_action = False
 
         if self.current_action:
-            log.info("handling camera action: {0}".format(self.current_action))
+            print("handling camera action:", self.current_action)
 
         try:
             if self.current_action is not None:
                 action = getattr(self, self.current_action)
                 action()
 
-        except Exception:
-            log.exception("tried invoking camera command action {0}".format(self.current_action))
+        except Exception, e:
+            print("tried invoking camera command action {0},"
+                  " raising exception: {1}".format(self.current_action, e))
 
         finally:
             self.current_action = None
@@ -498,24 +486,28 @@ class GLWidget(qtViewer3d):
 
         See Also
         --------
-        this method is also invoked through the self.update method, see the mouseMoveEvent method
-
+        this method is also invoked through the self.update method, see the
+        mouseMoveEvent method
         """
 
         if self._inited:
-            # actions like panning, zooming and rotating the view invoke redrawing it
-            # therefore, these actions need to be performed in the paintEvent method
-            # this way, redrawing the view takes place synchronous with the overpaint action
+            # actions like panning, zooming and rotating the view invoke
+            # redrawing it
+            # therefore, these actions need to be performed in the paintEvent
+            # method
+            # this way, redrawing the view takes place synchronous with the
+            # overpaint action
             # not respecting this order would lead to a jittering view
             if not self._dispatch_camera_command_actions():
-                # if no camera actions took place, invoke a redraw of the viewport
+                # if no camera actions took place, invoke a redraw of
+                # the viewport
                 self._display.View.Redraw()
 
             if self.context().isValid():
                 # acquire the OpenGL context
                 self.makeCurrent()
-                painter = QPainter(self)
-                painter.setRenderHint(QPainter.Antialiasing, True)
+                painter = QtGui.QPainter(self)
+                painter.setRenderHint(QtGui.QPainter.Antialiasing, True)
                 # swap the buffer before overpainting it
                 self.swapBuffers()
                 # perform overpainting
@@ -524,7 +516,7 @@ class GLWidget(qtViewer3d):
                 # hand over the OpenGL context
                 self.doneCurrent()
             else:
-                log.info('invalid OpenGL context: Qt cannot overpaint viewer')
+                print('invalid OpenGL context: Qt cannot overpaint viewer')
 
     def _overpaint(self, event, painter):
         """ overpaint the viewport
@@ -543,7 +535,8 @@ class GLWidget(qtViewer3d):
         """
         self.drawBubbles(event, painter)
 
-        # draw instructions in half transparent rectangle on top of the viewport
+        # draw instructions in half transparent rectangle on top of
+        # the viewport
         self.drawInstructions(painter)
 
         if self._drawbox:
@@ -560,8 +553,8 @@ class GLWidget(qtViewer3d):
         return QtCore.QSize(800, 600)
 
     def createBubbles(self, number):
-        """ instantiate a `number` of bubbles to be painted on top of the viewport
-
+        """ instantiate a `number` of bubbles to be painted on top of
+        the viewport
         """
         for _ in range(number):
             position = QtCore.QPointF(self.width() * (0.1 + 0.8 * random.random()),
@@ -583,10 +576,10 @@ class GLWidget(qtViewer3d):
         self.update()
 
     def drawBox(self, painter):
-        """ overpaint a rectangle on top of the viewport, when selecting with Shift + right mouse button
-
+        """ overpaint a rectangle on top of the viewport, when selecting with
+        Shift + right mouse button
         """
-        painter.setPen(QPen(QColor(0, 0, 0), 1))
+        painter.setPen(QtGui.QPen(QtGui.QColor(0, 0, 0), 1))
         tolerance = 2
 
         dx, dy = self.delta_mouse_event_pos
@@ -614,22 +607,22 @@ class GLWidget(qtViewer3d):
 
         """
         transparency = 80
-        metrics = QFontMetrics(self.font())
+        metrics = QtGui.QFontMetrics(self.font())
         border = max(4, metrics.leading())
 
         rect = metrics.boundingRect(0, 0, self.width() - 2 * border,
                                     int(self.height() * 0.125),
                                     QtCore.Qt.AlignCenter | QtCore.Qt.TextWordWrap, self.text)
 
-        painter.setRenderHint(QPainter.TextAntialiasing)
+        painter.setRenderHint(QtGui.QPainter.TextAntialiasing)
 
         painter.fillRect(QtCore.QRect(0, 0, self.width(), rect.height() + 2 * border),
-                         QColor(0, 0, 0, transparency))
+                         QtGui.QColor(0, 0, 0, transparency))
 
         painter.setPen(QtCore.Qt.white)
 
         painter.fillRect(QtCore.QRect(0, 0, self.width(), rect.height() + 2 * border),
-                         QColor(0, 0, 0, transparency))
+                         QtGui.QColor(0, 0, 0, transparency))
 
         painter.drawText((self.width() - rect.width()) / 2, border, rect.width(),
                          rect.height(), QtCore.Qt.AlignCenter | QtCore.Qt.TextWordWrap,
@@ -638,13 +631,13 @@ class GLWidget(qtViewer3d):
 
 if __name__ == '__main__':
     def TestOverPainting():
-        class AppFrame(QWidget):
+        class AppFrame(QtWidgets.QWidget):
             def __init__(self, parent=None):
-                QWidget.__init__(self, parent)
+                QtWidgets.QWidget.__init__(self, parent)
                 self.setWindowTitle(self.tr("qtDisplay3d overpainting example"))
                 self.resize(1280, 1024)
                 self.canva = GLWidget(self)
-                mainLayout = QHBoxLayout()
+                mainLayout = QtWidgets.QHBoxLayout()
                 mainLayout.addWidget(self.canva)
                 mainLayout.setContentsMargins(0, 0, 0, 0)
                 self.setLayout(mainLayout)
@@ -652,13 +645,11 @@ if __name__ == '__main__':
             def runTests(self):
                 self.canva._display.Test()
 
-        app = QApplication(sys.argv)
+        app = QtWidgets.QApplication(sys.argv)
         frame = AppFrame()
         frame.show()
         frame.canva.InitDriver()
         frame.runTests()
         app.exec_()
 
-
     TestOverPainting()
-
