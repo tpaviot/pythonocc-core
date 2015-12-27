@@ -94,7 +94,8 @@ def get_backend(backend_str=None):
             else:
                 pass
 
-    elif backend_str == "qt-pyqt4" or backend_str is None:
+    if backend_str == "qt-pyqt4" or \
+            (backend_str is None and not HAVE_BACKEND):
         try:
             from PyQt4 import QtCore, QtGui, QtOpenGL
             QtWidgets = QtGui
@@ -112,7 +113,8 @@ def get_backend(backend_str=None):
             else:
                 pass
 
-    elif backend_str == "qt-pyside" or backend_str is None:
+    if backend_str == "qt-pyside" or \
+            (backend_str is None and not HAVE_BACKEND):
         try:
             from PySide import QtCore, QtGui, QtOpenGL
             QtWidgets = QtGui
@@ -130,7 +132,8 @@ def get_backend(backend_str=None):
             else:
                 pass
 
-    elif backend_str == "wx" or backend_str is None:
+    if backend_str == "wx" or \
+            (backend_str is None and not HAVE_BACKEND):
         try:
             import wx
 
