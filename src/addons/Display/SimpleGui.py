@@ -21,7 +21,7 @@ import logging
 import sys
 
 from OCC import VERSION
-from backend import get_backend, get_qt_modules
+from OCC.Display.backend import get_backend, get_qt_modules
 
 log = logging.getLogger(__name__)
 

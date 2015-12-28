@@ -39,10 +39,10 @@ import random
 import sys
 
 from OCC.Display.backend import get_backend, get_qt_modules
+
 backend = get_backend()
 QtCore, QtGui, QtWidgets, QtOpenGL = get_qt_modules()
 from OCC.Display.qtDisplay import qtViewer3d
-
 
 try:
     from OpenGL.GL import (glViewport, glMatrixMode, glOrtho, glLoadIdentity,
@@ -84,9 +84,10 @@ class Bubble(object):
         self.updateBrush()
 
     def updateBrush(self):
-        gradient = QtGui.QRadialGradient(QtCore.QPointF(self.radius, self.radius),
-                                         self.radius,
-                                         QtCore.QPointF(self.radius * 0.5, self.radius * 0.5))
+        gradient = QtGui.QRadialGradient(
+            QtCore.QPointF(self.radius, self.radius),
+            self.radius,
+            QtCore.QPointF(self.radius * 0.5, self.radius * 0.5))
         gradient.setColorAt(0, QtGui.QColor(255, 255, 255, 0))
         gradient.setColorAt(0.25, self.innerColor)
         gradient.setColorAt(1, self.outerColor)
@@ -143,7 +144,6 @@ class Bubble(object):
 
 
 class GLWidget(qtViewer3d):
-
     def __init__(self, parent=None):
         super(GLWidget, self).__init__(parent)
 
@@ -379,8 +379,10 @@ class GLWidget(qtViewer3d):
             pass
         else:
             if not self.is_right_mouse_button_surpressed:
-                coords = [self.point_on_mouse_press[0], self.point_on_mouse_press[1],
-                          self.point_on_mouse_move[0], self.point_on_mouse_move[1]]
+                coords = [self.point_on_mouse_press[0],
+                          self.point_on_mouse_press[1],
+                          self.point_on_mouse_move[0],
+                          self.point_on_mouse_move[1]]
                 self._display.ZoomArea(*coords)
 
     def on_zoom_factor(self):
@@ -403,8 +405,10 @@ class GLWidget(qtViewer3d):
         through the shift + right mouse button
 
         """
-        self._display.DynamicZoom(self.point_on_mouse_press[0], self.point_on_mouse_press[1],
-                                  self.point_on_mouse_move[0], self.point_on_mouse_move[1]
+        self._display.DynamicZoom(self.point_on_mouse_press[0],
+                                  self.point_on_mouse_press[1],
+                                  self.point_on_mouse_move[0],
+                                  self.point_on_mouse_move[1]
                                   )
         self.point_on_mouse_press = self._point_on_mouse_move
 
@@ -475,9 +479,9 @@ class GLWidget(qtViewer3d):
                 action = getattr(self, self.current_action)
                 action()
 
-        except Exception, e:
-            print("tried invoking camera command action {0},"
-                  " raising exception: {1}".format(self.current_action, e))
+        except Exception:
+            print("could not invoke camera command action {0}".format(
+                self.current_action))
 
         finally:
             self.current_action = None
@@ -564,11 +568,14 @@ class GLWidget(qtViewer3d):
         the viewport
         """
         for _ in range(number):
-            position = QtCore.QPointF(self.width() * (0.1 + 0.8 * random.random()),
-                                      self.height() * (0.1 + 0.8 * random.random()))
-            radius = min(self.width(), self.height()) * (0.0125 + 0.0875 * random.random())
-            velocity = QtCore.QPointF(self.width() * 0.0125 * (-0.5 + random.random()),
-                                      self.height() * 0.0125 * (-0.5 + random.random()))
+            position = QtCore.QPointF(
+                self.width() * (0.1 + 0.8 * random.random()),
+                self.height() * (0.1 + 0.8 * random.random()))
+            radius = min(self.width(), self.height()) * (
+            0.0125 + 0.0875 * random.random())
+            velocity = QtCore.QPointF(
+                self.width() * 0.0125 * (-0.5 + random.random()),
+                self.height() * 0.0125 * (-0.5 + random.random()))
 
             self.bubbles.append(Bubble(position, radius, velocity))
 
@@ -595,7 +602,8 @@ class GLWidget(qtViewer3d):
             pass
 
         else:
-            rect = QtCore.QRect(self.point_on_mouse_press[0], self.point_on_mouse_press[1], -dx, -dy)
+            rect = QtCore.QRect(self.point_on_mouse_press[0],
+                                self.point_on_mouse_press[1], -dx, -dy)
             painter.drawRect(rect)
 
     def drawBubbles(self, event, painter):
@@ -619,20 +627,25 @@ class GLWidget(qtViewer3d):
 
         rect = metrics.boundingRect(0, 0, self.width() - 2 * border,
                                     int(self.height() * 0.125),
-                                    QtCore.Qt.AlignCenter | QtCore.Qt.TextWordWrap, self.text)
+                                    QtCore.Qt.AlignCenter | QtCore.Qt.TextWordWrap,
+                                    self.text)
 
         painter.setRenderHint(QtGui.QPainter.TextAntialiasing)
 
-        painter.fillRect(QtCore.QRect(0, 0, self.width(), rect.height() + 2 * border),
-                         QtGui.QColor(0, 0, 0, transparency))
+        painter.fillRect(
+            QtCore.QRect(0, 0, self.width(), rect.height() + 2 * border),
+            QtGui.QColor(0, 0, 0, transparency))
 
         painter.setPen(QtCore.Qt.white)
 
-        painter.fillRect(QtCore.QRect(0, 0, self.width(), rect.height() + 2 * border),
-                         QtGui.QColor(0, 0, 0, transparency))
+        painter.fillRect(
+            QtCore.QRect(0, 0, self.width(), rect.height() + 2 * border),
+            QtGui.QColor(0, 0, 0, transparency))
 
-        painter.drawText((self.width() - rect.width()) / 2, border, rect.width(),
-                         rect.height(), QtCore.Qt.AlignCenter | QtCore.Qt.TextWordWrap,
+        painter.drawText((self.width() - rect.width()) / 2, border,
+                         rect.width(),
+                         rect.height(),
+                         QtCore.Qt.AlignCenter | QtCore.Qt.TextWordWrap,
                          self.text)
 
 
@@ -658,5 +671,6 @@ if __name__ == '__main__':
         frame.canva.InitDriver()
         frame.runTests()
         app.exec_()
+
 
     TestOverPainting()
