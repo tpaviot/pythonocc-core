@@ -346,7 +346,14 @@ class GLWidget(qtViewer3d):
         self.update()
 
     def wheelEvent(self, event):
-        if event.delta() > 0:
+        from OCC.Display.backend import HAVE_PYQT5
+
+        if HAVE_PYQT5:
+            delta = event.angleDelta().y()
+        else:
+            delta = event.delta()
+
+        if delta > 0:
             self.zoom_factor = 1.3
         else:
             self.zoom_factor = 0.7
