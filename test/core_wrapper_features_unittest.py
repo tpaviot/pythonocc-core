@@ -241,7 +241,7 @@ class TestWrapperFeatures(unittest.TestCase):
         box_shape = BRepPrimAPI_MakeBox(100, 200, 300).Shape()
         shp_dump = pickle.dumps(box_shape)
         # write to file
-        output = open("./test_io/box_shape_generated.brep", "w")
+        output = open("./test_io/box_shape_generated.brep", "wb")
         output.write(shp_dump)
         output.close()
         assert os.path.isfile("./test_io/box_shape_generated.brep")
@@ -250,7 +250,7 @@ class TestWrapperFeatures(unittest.TestCase):
         '''
         Checks if the pickle python module works for TopoDS_Shapes
         '''
-        shp_dump = open("./test_io/box_shape.brep", "r")
+        shp_dump = open("./test_io/box_shape.brep", "rb")
         box_shape = pickle.load(shp_dump)
         self.assertFalse(box_shape.IsNull())
 
