@@ -1,45 +1,46 @@
 language: cpp
+
 compiler:
- # - gcc
+  - gcc
   - clang
-before_install:
-# first downlod/install oce-0.16.1
-  - sudo apt-get update
-  - sudo apt-get install tcl8.5-dev tk8.5-dev libgl2ps-dev libfreeimage-dev
-  - wget https://github.com/tpaviot/oce/archive/OCE-0.16.1.tar.gz
-  - tar -xvf OCE-0.16.1.tar.gz > OCE-0.16.1-filelist.txt
-  - cd oce-OCE-0.16.1
-  - mkdir cmake-build
-  - cd cmake-build
-  - sh ../../.travis.build-oce.sh
-  - sudo make -j16 install > oce-installed-files.txt
-  - cd ../..
-#   - sudo add-apt-repository "deb http://ppa.launchpad.net/freecad-maintainers/oce-release/ubuntu precise main" -y
-#   - sudo apt-get update -q
-#   - sudo apt-get install liboce-ocaf-dev oce-draw
-  - sudo apt-get install python-wxgtk2.8
-  - sudo python -c "import wx"
-  - sudo apt-get install python-qt4 python-qt4-gl
-  - sudo python -c "from PyQt4 import QtGui, QtCore, QtOpenGL"
-  - sudo apt-get install python-pyside
-  - sudo python -c "from PySide import QtGui, QtCore, QtOpenGL"
-# and this one python3.4 for ubuntu precise
-  - sudo add-apt-repository "deb http://ppa.launchpad.net/fkrull/deadsnakes/ubuntu precise main" -y
-  - sudo apt-get update
-  - sudo apt-get install python3.4
-  - sudo apt-get install python3.4-dev
-before_script:
-  - wget http://prdownloads.sourceforge.net/swig/swig-2.0.10.tar.gz
-# untar swig files generates thousands of lines. Redirect stdout stream
-# to a file
-  - tar -xvf swig-2.0.10.tar.gz > swig-2.0.10-filelist.txt
-  - cd swig-2.0.10
-  - ./configure
-  - make -j6 > swig-build-log.txt
-  - sudo make install
-  - cd ..
-  - swig -version
+
+env:
+  matrix:
+    - python_version=2.7
+    - python_version=3.5m
+
+install:
+  # We do this conditionally because it saves us some downloading if the
+  # version is the same.
+  - if [[ "$python_version" == "2.7" ]]; then
+      wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh;
+    else
+      wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+    fi
+  - bash miniconda.sh -b -p $HOME/miniconda
+  - export PATH="$HOME/miniconda/bin:$HOME/miniconda/lib:$PATH"
+  - hash -r
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q conda
+  # Useful for debugging any issues with conda
+  - conda info -a
+   # download/install OCE from DLR-SC channel
+  - conda install -c https://conda.anaconda.org/dlr-sc oce
+  # download/install swig
+  - conda install swig
+  # and wxpython, pyside, pyqt are used for testing graphics
+  # wxpython/pyside packages only available for python 2
+  # pyqt is available for both
+  # however, we install pyqt on py3k only, this cause the simplegui
+  # to force pyside on python2 since pyqt4 is not found
+  - if [[ "$python_version" == "2.7" ]]; then
+      conda install wxpython;
+      conda install pyside;
+    else
+      conda install pyqt;
+    fi
 script: ./.travis.build.sh
+
 after_script:
 branches:
   only:
