@@ -196,3 +196,33 @@ def get_qt_modules():
                "`OCC.Display.backend.get_backend` function")
 
         raise ValueError(msg)
+
+
+def have_pyqt5():
+    global HAVE_PYQT5
+    return HAVE_PYQT5
+
+
+def have_pyqt4():
+    global HAVE_PYQT4
+    return HAVE_PYQT4
+
+
+def have_pyside():
+    global HAVE_PYSIDE
+    return HAVE_PYSIDE
+
+
+def have_wx():
+    global HAVE_WX
+    return HAVE_WX
+
+
+def have_backend():
+    global HAVE_BACKEND
+    return HAVE_BACKEND
+
+
+def get_loaded_backend():
+    global BACKEND_MODULE
+    return BACKEND_MODULE

@@ -62,20 +62,26 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
         self.setAttribute(QtCore.Qt.WA_NoSystemBackground)
         self.setAutoFillBackground(False)
 
+        # Qt backend bookkeeping
+        from OCC.Display.backend import have_pyside, have_pyqt4, have_pyqt5, \
+            have_backend
+
+        self._have_pyside = have_pyside()
+        self._have_pyqt4 = have_pyqt4()
+        self._have_pyqt5 = have_pyqt5()
+        self._have_backend = have_backend()
+
     def GetHandle(self):
         ''' returns an the identifier of the GUI widget.
         It must be an integer
         '''
         win_id = self.winId()  ## this returns either an int or voitptr
 
-        from OCC.Display.backend import HAVE_PYSIDE, HAVE_PYQT4, HAVE_PYQT5, \
-            HAVE_BACKEND
-
-        if not HAVE_BACKEND:
+        if not self._have_backend:
             raise ValueError("no backend has been loaded yet... use "
                              "``get_backend`` first")
 
-        if HAVE_PYSIDE:
+        if self._have_pyside:
             ### with PySide, self.winId() does not return an integer
             if sys.platform == "win32":
                 ## Be careful, this hack is py27 specific
@@ -86,7 +92,7 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
                 ctypes.pythonapi.PyCObject_AsVoidPtr.argtypes = [
                     ctypes.py_object]
                 win_id = ctypes.pythonapi.PyCObject_AsVoidPtr(win_id)
-        elif HAVE_PYQT4 or HAVE_PYQT5:
+        elif self._have_pyqt4 or self._have_pyqt5:
             ## below integer cast may be required because self.winId() can
             ## returns a sip.voitptr according to the PyQt version used
             ## as well as the python version
@@ -144,7 +150,8 @@ class qtViewer3d(qtBaseViewer):
         if code in self._key_map:
             self._key_map[code]()
         else:
-            log.info('key', code, ' not mapped to any function')
+            msg = "key: {0}\nnot mapped to any function".format(code)
+            log.info(msg)
 
     def Test(self):
         if self._inited:
