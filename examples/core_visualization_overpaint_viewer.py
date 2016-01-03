@@ -44,14 +44,6 @@ backend = get_backend()
 QtCore, QtGui, QtWidgets, QtOpenGL = get_qt_modules()
 from OCC.Display.qtDisplay import qtViewer3d
 
-try:
-    from OpenGL.GL import (glViewport, glMatrixMode, glOrtho, glLoadIdentity,
-                           GL_PROJECTION, GL_MODELVIEW)
-except ImportError:
-    msg = "for this example, the OpenGL module is required" \
-          "why not run \"pip install PyOpenGL\"\?"
-    sys.exit(status=1)
-
 # --------------------------------------------------------------------------
 # these are names of actions that invoke the OpenGL viewport to be redrawn
 # such actions need to be invoked through the GLWidget.update method, which
@@ -85,9 +77,9 @@ class Bubble(object):
 
     def updateBrush(self):
         gradient = QtGui.QRadialGradient(
-            QtCore.QPointF(self.radius, self.radius),
-            self.radius,
-            QtCore.QPointF(self.radius * 0.5, self.radius * 0.5))
+                QtCore.QPointF(self.radius, self.radius),
+                self.radius,
+                QtCore.QPointF(self.radius * 0.5, self.radius * 0.5))
         gradient.setColorAt(0, QtGui.QColor(255, 255, 255, 0))
         gradient.setColorAt(0.25, self.innerColor)
         gradient.setColorAt(1, self.outerColor)
@@ -480,7 +472,7 @@ class GLWidget(qtViewer3d):
 
         except Exception:
             print("could not invoke camera command action {0}".format(
-                self.current_action))
+                    self.current_action))
 
         finally:
             self.current_action = None
@@ -568,13 +560,13 @@ class GLWidget(qtViewer3d):
         """
         for _ in range(number):
             position = QtCore.QPointF(
-                self.width() * (0.1 + 0.8 * random.random()),
-                self.height() * (0.1 + 0.8 * random.random()))
+                    self.width() * (0.1 + 0.8 * random.random()),
+                    self.height() * (0.1 + 0.8 * random.random()))
             radius = min(self.width(), self.height()) * (
-            0.0125 + 0.0875 * random.random())
+                0.0125 + 0.0875 * random.random())
             velocity = QtCore.QPointF(
-                self.width() * 0.0125 * (-0.5 + random.random()),
-                self.height() * 0.0125 * (-0.5 + random.random()))
+                    self.width() * 0.0125 * (-0.5 + random.random()),
+                    self.height() * 0.0125 * (-0.5 + random.random()))
 
             self.bubbles.append(Bubble(position, radius, velocity))
 
@@ -632,14 +624,14 @@ class GLWidget(qtViewer3d):
         painter.setRenderHint(QtGui.QPainter.TextAntialiasing)
 
         painter.fillRect(
-            QtCore.QRect(0, 0, self.width(), rect.height() + 2 * border),
-            QtGui.QColor(0, 0, 0, transparency))
+                QtCore.QRect(0, 0, self.width(), rect.height() + 2 * border),
+                QtGui.QColor(0, 0, 0, transparency))
 
         painter.setPen(QtCore.Qt.white)
 
         painter.fillRect(
-            QtCore.QRect(0, 0, self.width(), rect.height() + 2 * border),
-            QtGui.QColor(0, 0, 0, transparency))
+                QtCore.QRect(0, 0, self.width(), rect.height() + 2 * border),
+                QtGui.QColor(0, 0, 0, transparency))
 
         painter.drawText((self.width() - rect.width()) / 2, border,
                          rect.width(),
