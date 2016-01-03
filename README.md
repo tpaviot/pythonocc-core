@@ -6,12 +6,30 @@
 pythonocc-core
 --------------
 
+what is pythonocc?
+------------------
+
 pythonocc is a python library whose purpose is to provide 3D modeling
 features. It is intended to developers who aim at developing
 CAD/PDM/PLM applications.
 
-The basis of pythonocc is python wrapper for the [oce C++ library](https://github.com/tpaviot/oce), aka pythonocc-core.
-pythonocc-core version number correspond to oce releases its wrapping. For example; the current pythonocc-core release, 0.16.2, requires the lastes [OCE 0.16](https://github.com/tpaviot/oce/releases) release.
+how do __oce__ and __pythonocc__ relate?
+----------------------------------------
+
+The basis of pythonocc is python wrapper for the [oce C++ library / CAD kernel]
+(https://github.com/tpaviot/oce), aka pythonocc-core.
+pythonocc-core version number correspond to oce library releases its wrapping.
+ 
+For example; the current pythonocc-core release, 0.16.x, requires [OCE
+ 0.16.x](https://github.com/tpaviot/oce/releases) release. Here, the __Major__ 
+ version name of either OCE or pythonocc-core release is __0__, the __Minor__ 
+ version is __16__ and the __Patch__ version is __x__. pythonocc-core can be 
+ built with any OCE version that has a corresponding __Major__ and __Minor__ version 
+ number. That is pythonocc-core 0.16.0 can be built with OCE 0.16.1 and visa 
+ versa.   
+
+Online resources
+----------------
 
 We use the following online resources:
   * Homepage
