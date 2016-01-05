@@ -174,7 +174,7 @@ class qtViewer3d(qtBaseViewer):
         if self._drawbox:
             self.makeCurrent()
             painter = QtGui.QPainter(self)
-            painter.setPen(QtGui.Pen(QtGui.QColor(0, 0, 0), 1))
+            painter.setPen(QtGui.QPen(QtGui.QColor(0, 0, 0), 1))
             rect = QtCore.QRect(*self._drawbox)
             painter.drawRect(rect)
             painter.end()
