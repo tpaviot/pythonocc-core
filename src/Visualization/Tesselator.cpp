@@ -18,6 +18,7 @@
 //---------------------------------------------------------------------------
 #include "Tesselator.h"
 #include <sstream>
+#include <algorithm>
 //---------------------------------------------------------------------------
 #include <TopExp_Explorer.hxx>
 #include <Bnd_Box.hxx>
@@ -136,14 +137,6 @@ void Tesselator::SetDeviation(Standard_Real aDeviation)
 //---------------------------------------------------------------------------
 void Tesselator::Tesselate()
 {
-    Standard_Real Umin;
-    Standard_Real Umax;
-    Standard_Real Vmin;
-    Standard_Real Vmax;
-
-    Standard_Real dUmax;
-    Standard_Real dVmax;
-
     TopExp_Explorer       ExpFace;
     StdPrs_ToolShadedShape   SST;
 
@@ -173,9 +166,9 @@ void Tesselator::Tesselate()
         this_face->number_of_coords = Nodes.Length();
         for (int i = Nodes.Lower(); i <= Nodes.Upper(); i++) {
           p = Nodes(i).Transformed(aLocation.Transformation());
-          this_face->vertex_coord[((i-1) * 3)+ 0] = p.X();
-          this_face->vertex_coord[((i-1) * 3)+ 1] = p.Y();
-          this_face->vertex_coord[((i-1) * 3)+ 2] = p.Z();
+          this_face->vertex_coord[((i-1) * 3)+ 0] = static_cast<float>(p.X());
+          this_face->vertex_coord[((i-1) * 3)+ 1] = static_cast<float>(p.Y());
+          this_face->vertex_coord[((i-1) * 3)+ 2] = static_cast<float>(p.Z());
         }
 
         //write normal buffer
@@ -185,9 +178,9 @@ void Tesselator::Tesselate()
         this_face->number_of_normals = myNormal.Length();
         for (int i = myNormal.Lower(); i <= myNormal.Upper(); i++) {
           d = myNormal(i).Transformed(aLocation.Transformation());
-          this_face->normal_coord[((i-1) * 3)+ 0] = d.X();
-          this_face->normal_coord[((i-1) * 3)+ 1] = d.Y();
-          this_face->normal_coord[((i-1) * 3)+ 2] = d.Z();
+          this_face->normal_coord[((i-1) * 3)+ 0] = static_cast<float>(d.X());
+          this_face->normal_coord[((i-1) * 3)+ 1] = static_cast<float>(d.Y());
+          this_face->normal_coord[((i-1) * 3)+ 2] = static_cast<float>(d.Z());
         }
 
         // set uvcoords buffers to NULL
@@ -263,9 +256,9 @@ void Tesselator::TesselateWithUVCoords()
       this_face->number_of_coords = Nodes.Length();
       for (int i = Nodes.Lower(); i <= Nodes.Upper(); i++) {
         p = Nodes(i).Transformed(aLocation.Transformation());
-        this_face->vertex_coord[((i-1) * 3)+ 0] = p.X();
-        this_face->vertex_coord[((i-1) * 3)+ 1] = p.Y();
-        this_face->vertex_coord[((i-1) * 3)+ 2] = p.Z();
+        this_face->vertex_coord[((i-1) * 3)+ 0] = static_cast<float>(p.X());
+        this_face->vertex_coord[((i-1) * 3)+ 1] = static_cast<float>(p.Y());
+        this_face->vertex_coord[((i-1) * 3)+ 2] = static_cast<float>(p.Z());
       }
 
       //write normal buffer
@@ -275,9 +268,9 @@ void Tesselator::TesselateWithUVCoords()
       this_face->number_of_normals = myNormal.Length();
       for (int i = myNormal.Lower(); i <= myNormal.Upper(); i++) {
         d = myNormal(i).Transformed(aLocation.Transformation());
-        this_face->normal_coord[((i-1) * 3)+ 0] = d.X();
-        this_face->normal_coord[((i-1) * 3)+ 1] = d.Y();
-        this_face->normal_coord[((i-1) * 3)+ 2] = d.Z();
+        this_face->normal_coord[((i-1) * 3)+ 0] = static_cast<float>(d.X());
+        this_face->normal_coord[((i-1) * 3)+ 1] = static_cast<float>(d.Y());
+        this_face->normal_coord[((i-1) * 3)+ 2] = static_cast<float>(d.Z());
       }
 
       //write uvcoord buffer
@@ -309,9 +302,9 @@ void Tesselator::TesselateWithUVCoords()
           d_coord.SetY((-myVOrigin+(myVRepeat*(d_coord.Y()-Vmin))/dVmax)/myScaleV);
         }
         d_coord.Rotate(gp::Origin2d(), myRotationAngle);  
-        this_face->tex_coord[((i-1) * 3)+ id1] = d_coord.X();
-        this_face->tex_coord[((i-1) * 3)+ id2] = d_coord.Y();
-        this_face->tex_coord[((i-1) * 3)+ idNull] = 0;
+        this_face->tex_coord[((i-1) * 3)+ id1] = static_cast<float>(d_coord.X());
+        this_face->tex_coord[((i-1) * 3)+ id2] = static_cast<float>(d_coord.Y());
+        this_face->tex_coord[((i-1) * 3)+ idNull] = 0.;
       }
 
       //write triangle buffer
@@ -877,9 +870,6 @@ void Tesselator::PrepareBoxTextureCoordinates(const TopoDS_Shape& aShape)
   //declare local variables
   Bnd_Box aBox;
   Standard_Real aXmin,aYmin ,aZmin ,aXmax ,aYmax ,aZmax;
-  Standard_Real aUmaxBack, aVmaxBack;
-  Standard_Real aUmaxLeft, aVmaxLeft;
-  Standard_Real aUmaxBottom, aVmaxBottom;
 
   //calculate the bounding box
   BRepBndLib::Add(aShape, aBox);
