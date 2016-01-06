@@ -1,17 +1,17 @@
-##This file is part of pythonOCC.
+# This file is part of pythonOCC.
 ##
-##pythonOCC is free software: you can redistribute it and/or modify
-##it under the terms of the GNU Lesser General Public License as published by
-##the Free Software Foundation, either version 3 of the License, or
-##(at your option) any later version.
+# pythonOCC is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Lesser General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 ##
-##pythonOCC is distributed in the hope that it will be useful,
-##but WITHOUT ANY WARRANTY; without even the implied warranty of
-##MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-##GNU Lesser General Public License for more details.
+# pythonOCC is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Lesser General Public License for more details.
 ##
-##You should have received a copy of the GNU Lesser General Public License
-##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
+# You should have received a copy of the GNU Lesser General Public License
+# along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 """
 
@@ -38,19 +38,11 @@ from __future__ import print_function
 import random
 import sys
 
-from OCC.Display.qtDisplay import qtViewer3d, get_qt_modules
-# pyqt4 only
-from PyQt4 import Qt
+from OCC.Display.backend import get_backend, get_qt_modules
 
-QtCore, QtGui, QtOpenGL = get_qt_modules()
-
-try:
-    from OpenGL.GL import (glViewport, glMatrixMode, glOrtho, glLoadIdentity,
-                           GL_PROJECTION, GL_MODELVIEW)
-except ImportError:
-    msg = "for this example, the OpenGL module is required" \
-          "why not run \"pip install PyOpenGL\"\?"
-    sys.exit(status=1)
+backend = get_backend()
+QtCore, QtGui, QtWidgets, QtOpenGL = get_qt_modules()
+from OCC.Display.qtDisplay import qtViewer3d
 
 # --------------------------------------------------------------------------
 # these are names of actions that invoke the OpenGL viewport to be redrawn
@@ -84,9 +76,10 @@ class Bubble(object):
         self.updateBrush()
 
     def updateBrush(self):
-        gradient = QtGui.QRadialGradient(QtCore.QPointF(self.radius, self.radius),
-                                         self.radius,
-                                         QtCore.QPointF(self.radius * 0.5, self.radius * 0.5))
+        gradient = QtGui.QRadialGradient(
+                QtCore.QPointF(self.radius, self.radius),
+                self.radius,
+                QtCore.QPointF(self.radius * 0.5, self.radius * 0.5))
         gradient.setColorAt(0, QtGui.QColor(255, 255, 255, 0))
         gradient.setColorAt(0.25, self.innerColor)
         gradient.setColorAt(1, self.outerColor)
@@ -197,10 +190,10 @@ class GLWidget(qtViewer3d):
         # ---------------------------------------------------------------------
 
         # QPoint stored on mouse press
-        self._point_on_mouse_press = Qt.QPoint()
+        self._point_on_mouse_press = QtCore.QPoint()
 
         # QPoint stored on mouse move
-        self._point_on_mouse_move = Qt.QPoint()
+        self._point_on_mouse_move = QtCore.QPoint()
 
         # stores the delta between self._point_on_mouse_press and self._point_on_mouse_move
         self._delta_event_pos = None
@@ -218,10 +211,10 @@ class GLWidget(qtViewer3d):
 
     @point_on_mouse_press.setter
     def point_on_mouse_press(self, event):
-        if isinstance(event, Qt.QMouseEvent):
-            self._point_on_mouse_press = Qt.QPoint(event.pos())
-        elif isinstance(event, Qt.QPoint):
-            self._point_on_mouse_press = Qt.QPoint(event)
+        if isinstance(event, QtGui.QMouseEvent):
+            self._point_on_mouse_press = QtCore.QPoint(event.pos())
+        elif isinstance(event, QtCore.QPoint):
+            self._point_on_mouse_press = QtCore.QPoint(event)
 
     @property
     def point_on_mouse_move(self):
@@ -231,10 +224,10 @@ class GLWidget(qtViewer3d):
 
     @point_on_mouse_move.setter
     def point_on_mouse_move(self, event):
-        if isinstance(event, (Qt.QMouseEvent, Qt.QWheelEvent)):
-            self._point_on_mouse_move = Qt.QPoint(event.pos())
-        elif isinstance(event, Qt.QPoint):
-            self._point_on_mouse_move = Qt.QPoint(event)
+        if isinstance(event, (QtGui.QMouseEvent, QtGui.QWheelEvent)):
+            self._point_on_mouse_move = QtCore.QPoint(event.pos())
+        elif isinstance(event, QtCore.QPoint):
+            self._point_on_mouse_move = QtCore.QPoint(event)
 
     @property
     def delta_mouse_event_pos(self):
@@ -345,7 +338,13 @@ class GLWidget(qtViewer3d):
         self.update()
 
     def wheelEvent(self, event):
-        if event.delta() > 0:
+
+        if self._have_pyqt5:
+            delta = event.angleDelta().y()
+        else:
+            delta = event.delta()
+
+        if delta > 0:
             self.zoom_factor = 1.3
         else:
             self.zoom_factor = 0.7
@@ -371,8 +370,10 @@ class GLWidget(qtViewer3d):
             pass
         else:
             if not self.is_right_mouse_button_surpressed:
-                coords = [self.point_on_mouse_press[0], self.point_on_mouse_press[1],
-                          self.point_on_mouse_move[0], self.point_on_mouse_move[1]]
+                coords = [self.point_on_mouse_press[0],
+                          self.point_on_mouse_press[1],
+                          self.point_on_mouse_move[0],
+                          self.point_on_mouse_move[1]]
                 self._display.ZoomArea(*coords)
 
     def on_zoom_factor(self):
@@ -395,8 +396,10 @@ class GLWidget(qtViewer3d):
         through the shift + right mouse button
 
         """
-        self._display.DynamicZoom(self.point_on_mouse_press[0], self.point_on_mouse_press[1],
-                                  self.point_on_mouse_move[0], self.point_on_mouse_move[1]
+        self._display.DynamicZoom(self.point_on_mouse_press[0],
+                                  self.point_on_mouse_press[1],
+                                  self.point_on_mouse_move[0],
+                                  self.point_on_mouse_move[1]
                                   )
         self.point_on_mouse_press = self._point_on_mouse_move
 
@@ -467,8 +470,9 @@ class GLWidget(qtViewer3d):
                 action = getattr(self, self.current_action)
                 action()
 
-        except Exception, e:
-            print("tried invoking camera command action {0}, raising exception: {1}".format(self.current_action, e))
+        except Exception:
+            print("could not invoke camera command action {0}".format(
+                    self.current_action))
 
         finally:
             self.current_action = None
@@ -555,11 +559,14 @@ class GLWidget(qtViewer3d):
         the viewport
         """
         for _ in range(number):
-            position = QtCore.QPointF(self.width() * (0.1 + 0.8 * random.random()),
-                                      self.height() * (0.1 + 0.8 * random.random()))
-            radius = min(self.width(), self.height()) * (0.0125 + 0.0875 * random.random())
-            velocity = QtCore.QPointF(self.width() * 0.0125 * (-0.5 + random.random()),
-                                      self.height() * 0.0125 * (-0.5 + random.random()))
+            position = QtCore.QPointF(
+                    self.width() * (0.1 + 0.8 * random.random()),
+                    self.height() * (0.1 + 0.8 * random.random()))
+            radius = min(self.width(), self.height()) * (
+                0.0125 + 0.0875 * random.random())
+            velocity = QtCore.QPointF(
+                    self.width() * 0.0125 * (-0.5 + random.random()),
+                    self.height() * 0.0125 * (-0.5 + random.random()))
 
             self.bubbles.append(Bubble(position, radius, velocity))
 
@@ -586,7 +593,8 @@ class GLWidget(qtViewer3d):
             pass
 
         else:
-            rect = QtCore.QRect(self.point_on_mouse_press[0], self.point_on_mouse_press[1], -dx, -dy)
+            rect = QtCore.QRect(self.point_on_mouse_press[0],
+                                self.point_on_mouse_press[1], -dx, -dy)
             painter.drawRect(rect)
 
     def drawBubbles(self, event, painter):
@@ -596,7 +604,7 @@ class GLWidget(qtViewer3d):
         for bubble in self.bubbles:
             bubble_rect = bubble.rect()
             if bubble_rect.intersects(QtCore.QRectF(event.rect())):
-                pt = Qt.QPointF(self._point_on_mouse_move)
+                pt = QtCore.QPointF(self._point_on_mouse_move)
                 over_mouse = bubble_rect.contains(pt)
                 bubble.drawBubble(painter, over_mouse)
 
@@ -610,32 +618,37 @@ class GLWidget(qtViewer3d):
 
         rect = metrics.boundingRect(0, 0, self.width() - 2 * border,
                                     int(self.height() * 0.125),
-                                    QtCore.Qt.AlignCenter | QtCore.Qt.TextWordWrap, self.text)
+                                    QtCore.Qt.AlignCenter | QtCore.Qt.TextWordWrap,
+                                    self.text)
 
         painter.setRenderHint(QtGui.QPainter.TextAntialiasing)
 
-        painter.fillRect(QtCore.QRect(0, 0, self.width(), rect.height() + 2 * border),
-                         QtGui.QColor(0, 0, 0, transparency))
+        painter.fillRect(
+                QtCore.QRect(0, 0, self.width(), rect.height() + 2 * border),
+                QtGui.QColor(0, 0, 0, transparency))
 
         painter.setPen(QtCore.Qt.white)
 
-        painter.fillRect(QtCore.QRect(0, 0, self.width(), rect.height() + 2 * border),
-                         QtGui.QColor(0, 0, 0, transparency))
+        painter.fillRect(
+                QtCore.QRect(0, 0, self.width(), rect.height() + 2 * border),
+                QtGui.QColor(0, 0, 0, transparency))
 
-        painter.drawText((self.width() - rect.width()) / 2, border, rect.width(),
-                         rect.height(), QtCore.Qt.AlignCenter | QtCore.Qt.TextWordWrap,
+        painter.drawText((self.width() - rect.width()) / 2, border,
+                         rect.width(),
+                         rect.height(),
+                         QtCore.Qt.AlignCenter | QtCore.Qt.TextWordWrap,
                          self.text)
 
 
 if __name__ == '__main__':
     def TestOverPainting():
-        class AppFrame(QtGui.QWidget):
+        class AppFrame(QtWidgets.QWidget):
             def __init__(self, parent=None):
-                QtGui.QWidget.__init__(self, parent)
+                QtWidgets.QWidget.__init__(self, parent)
                 self.setWindowTitle(self.tr("qtDisplay3d overpainting example"))
                 self.resize(1280, 1024)
                 self.canva = GLWidget(self)
-                mainLayout = QtGui.QHBoxLayout()
+                mainLayout = QtWidgets.QHBoxLayout()
                 mainLayout.addWidget(self.canva)
                 mainLayout.setContentsMargins(0, 0, 0, 0)
                 self.setLayout(mainLayout)
@@ -643,11 +656,12 @@ if __name__ == '__main__':
             def runTests(self):
                 self.canva._display.Test()
 
-        app = QtGui.QApplication(sys.argv)
+        app = QtWidgets.QApplication(sys.argv)
         frame = AppFrame()
         frame.show()
         frame.canva.InitDriver()
         frame.runTests()
         app.exec_()
+
 
     TestOverPainting()
