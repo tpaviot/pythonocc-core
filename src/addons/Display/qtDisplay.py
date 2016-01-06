@@ -26,7 +26,7 @@ logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 log = logging.getLogger(__name__)
 
 from OCC.Display import OCCViewer
-from backend import get_qt_modules
+from OCC.Display.backend import get_qt_modules
 
 QtCore, QtGui, QtWidgets, QtOpenGL = get_qt_modules()
 

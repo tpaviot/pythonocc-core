@@ -139,7 +139,7 @@ def get_backend(backend_str=None):
 
             warnings.warn("wx for pythonocc development is in maintanence mode"
                           "use Qt ( PqyQt5, PyQt4 or PySide ) for new projects",
-                          DeprecationWarning, level=2)
+                          DeprecationWarning)
             HAVE_BACKEND = True
             HAVE_WX = True
             BACKEND_MODULE = 'wx'
