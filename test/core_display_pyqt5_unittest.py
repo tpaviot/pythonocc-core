@@ -29,7 +29,7 @@ from OCC.Display.SimpleGui import init_display
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
 
 # pyside test
-print('pyside test')
-pyside_display, start_display, add_menu, add_function_to_menu = init_display('qt-pyqt5')
+print('pyqt5 test')
+pyqt5_display, start_display, add_menu, add_function_to_menu = init_display('qt-pyqt5')
 my_box_1 = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
-pyside_display.DisplayShape(my_box_1, update=True)
+pyqt5_display.DisplayShape(my_box_1, update=True)
