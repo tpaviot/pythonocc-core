@@ -27,6 +27,32 @@ def generate_points(spread, n):
 
 
 def draw_lines(pnt_list, nr_of_points, display):
+    """
+
+    rendering a large number of points through the usual way of:
+
+        display.DisplayShape( make_vertex( gp_Pnt() ) )
+
+    is fine for TopoDS_Shapes but certainly not for large number of points.
+    in comparison, drawing all the voxel samples takes 18sec using the approach above, but negigable when using this function
+    its about 2 orders of Magnitude faster, so worth the extra hassle
+
+    here we use a more close-to-the-metal approach of drawing directly in OpenGL
+
+    see [1] for a more detailed / elegant way to perform this task
+
+    [1] http://www.opencascade.org/org/forum/thread_21732/?forum=3
+
+    Parameters
+    ----------
+
+    pnt_list: list of (x,y,z) tuples
+        vertex list
+
+    display: qtViewer3d
+
+    """
+
     a_presentation, group = create_ogl_group(display)
     black = Quantity_Color(Quantity_NOC_BLACK)
     asp = Graphic3d_AspectLine3d(black, Aspect_TOL_SOLID, 1)
