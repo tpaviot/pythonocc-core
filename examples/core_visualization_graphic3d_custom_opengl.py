@@ -1,11 +1,11 @@
+from __future__ import print_function
 import random
-
 import sys
 
 try:
     import numpy as np
 except ImportError:
-    print "sorry, this example requires numpy"
+    print("sorry, this example requires numpy")
     sys.exit()
 
 from OCC.Aspect import Aspect_TOL_SOLID
