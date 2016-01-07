@@ -74,9 +74,9 @@ def draw_lines(pnt_list, nr_of_points, display):
 
     try:
         while 1:
-            pnt = gp_Pnt(*pnt_list.next())
+            pnt = gp_Pnt(*next(pnt_list))
             gg.AddVertex(pnt)
-            pnt = gp_Pnt(*pnt_list.next())
+            pnt = gp_Pnt(*next(pnt_list))
             gg.AddVertex(pnt)
             # create the line, with a random color
             gg.AddBound(2, random.random(), random.random(), random.random())
