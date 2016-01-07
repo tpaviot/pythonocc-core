@@ -45,7 +45,7 @@ struct aedge {
 //---------------------------------------------------------------------------
 enum theTextureMappingRule {atCube, atNormal, atNormalAutoScale};
 //---------------------------------------------------------------------------
-Standard_EXPORT class Tesselator
+class Tesselator
 {
   private:
 
