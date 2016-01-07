@@ -1,3 +1,19 @@
+=============================
+Version 0.16.3 - January 2016
+
+This release requires oce-0.16.0 or oce-0.16.1
+
+* New examples: visualization_overpaint_viewerer,
+visualization_graphic3d_custom_opengl.py, matplotlib_box,
+parallel_slicer, topology_glue
+
+* PyQt5 support
+
+* Improvements and fixes to the Tesselator class:
+Computation of edges, Interface to Vertices, Normals, and Triangles
+
+* minor portability fixes/improvements.
+
 ==========================
 Version 0.16.2 - July 2015
 
