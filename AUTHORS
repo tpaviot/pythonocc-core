@@ -1,5 +1,7 @@
 pythonOCC is developed and maintained by Thomas Paviot (tpaviot@gmail.com).
 
 pythonOCC-core contains contributions from :
-* Jelle Feringa (jelleferinga@gmail.com) : conda build for OSX, examples, traits display
-* Guillaume Florent (florentsailing@gmail.com) : geometry airfoil example.
+* Jelle Feringa (jelleferinga@gmail.com): conda build for OSX, examples, PyQt5 support
+* Guillaume Florent (florentsailing@gmail.com): geometry airfoil example.
+* Martin Siggel (martin.siggel@dlr.de): conda recipes for linux/windows, wrapper fixes,
+matplotlib examples.

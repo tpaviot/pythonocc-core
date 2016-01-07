@@ -67,6 +67,14 @@ You may require admin privileges to install
 
     sudo make install
 
+install with conda
+------------------
+pythonocc-core can be installed using conda on win32/win64/linux64/osx64.
+
+```bash
+conda install -c https://conda.anaconda.org/dlr-sc pythonocc-core
+```
+
 test
 ----
 In order to check that everything is ok, run the pythonocc unittest suite:
