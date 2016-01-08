@@ -1,6 +1,7 @@
 [![license](https://binstar.org/jf/pythonocc-core/badges/license.svg)](https://github.com/tpaviot/pythonocc-core/blob/master/LICENSE)
 [![Build Status](https://travis-ci.org/tpaviot/pythonocc-core.png?branch=master)](https://travis-ci.org/tpaviot/pythonocc-core)
 [![Conda installer](https://anaconda.org/dlr-sc/pythonocc-core/badges/installer/conda.svg)](https://anaconda.org/dlr-sc/pythonocc-core)
+[![Join the chat at https://gitter.im/tpaviot/pythonocc-core](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/tpaviot/pythonocc-core?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 pythonocc-core
 --------------
