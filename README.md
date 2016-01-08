@@ -5,6 +5,8 @@
 pythonocc-core
 --------------
 
+[![Join the chat at https://gitter.im/tpaviot/pythonocc-core](https://badges.gitter.im/tpaviot/pythonocc-core.svg)](https://gitter.im/tpaviot/pythonocc-core?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 what is pythonocc?
 ------------------
 
