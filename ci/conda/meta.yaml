@@ -15,7 +15,7 @@ build:
     - CXX
 
   number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
-  binary_relocation: false
+  binary_relocation: false [osx]
   features:
     - vc9               [win and py27]
     - vc10              [win and py34]
@@ -23,7 +23,6 @@ build:
 
 requirements:
   build:
-    - ninja
     - patch             [win]
     - python
     - oce ==0.16.1

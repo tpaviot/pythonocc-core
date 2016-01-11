@@ -13,7 +13,7 @@ else
 fi
 
 # Configure step
-cmake -G "Ninja" -DCMAKE_INSTALL_PREFIX=$PREFIX \
+cmake -DCMAKE_INSTALL_PREFIX=$PREFIX \
  -DCMAKE_BUILD_TYPE=Release \
  -DCMAKE_PREFIX_PATH=$PREFIX \
  -DCMAKE_SYSTEM_PREFIX_PATH=$PREFIX \
@@ -23,10 +23,10 @@ cmake -G "Ninja" -DCMAKE_INSTALL_PREFIX=$PREFIX \
  .
 
 # Build step
-ninja
+make -j 4
 
 # Install step
-ninja install
+make install
 
 # copy the source
 mkdir -p $PREFIX/src
