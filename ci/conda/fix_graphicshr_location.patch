@@ -1,0 +1,15 @@
+# Fixes the changed path of TKOpenGL.dll
+
+diff --git src/addons/Display/OCCViewer.py src/addons/Display/OCCViewer.py
+index 7dd04d5..f460da4 100644
+--- src/addons/Display/OCCViewer.py
++++ src/addons/Display/OCCViewer.py
+@@ -58,7 +58,7 @@ if sys.platform == "win32":  # all of this is win specific
+     # if the CSF_GraphicShr variable is not set
+     # it should point to the TKOpenGl.dll library that is shipped with pythonocc binary
+     if not "CSF_GraphicShr" in os.environ:
+-        os.environ["CSF_GraphicShr"] = os.path.join(os.path.dirname(OCC.Aspect.__file__), "TKOpenGl.dll")
++        os.environ["CSF_GraphicShr"] = os.path.join(sys.prefix, "Library", "bin", "TKOpenGl.dll")
+ 
+ 
+ def color(r, g, b):

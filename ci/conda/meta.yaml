@@ -1,0 +1,41 @@
+﻿package:
+  name: pythonocc-core
+  version: {{ environ.get('GIT_DESCRIBE_TAG', '') }}
+
+source:
+  path: ../..
+  patches:
+    - fix_graphicshr_location.patch [win]
+
+build:
+  number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
+  binary_relocation: true
+  features:
+    - vc9               [win and py27]
+    - vc10              [win and py34]
+    - vc14              [win and py35]
+
+requirements:
+  build:
+    - ninja
+    - patch             [win]
+    - python
+    - oce ==0.16.1
+    - cmake
+    - swig
+    - gcc               [linux]
+
+  run:
+    - pyqt
+    - oce ==0.16.1
+    - python
+
+test:
+  imports:
+    - OCC
+    - OCC.BRepPrimAPI
+
+about:
+  home: https://github.com/tpaviot/pythonocc-core
+  license: LGPL
+  summary: A python wrapper for the OCE library
