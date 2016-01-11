@@ -25,11 +25,9 @@ install:
   # Useful for debugging any issues with conda
   - conda info -a
    # download/install OCE from DLR-SC channel
-  - conda install -c https://conda.anaconda.org/dlr-sc oce
-  # download/install swig
-  - conda install swig
+  - conda config --add channels https://conda.anaconda.org/dlr-sc
   # install everything required to build the receipe
-  - conda install pip conda-build jinja2 binstar
+  - conda install conda-build anaconda-client
   # and wxpython, pyside, pyqt are used for testing graphics
   # wxpython/pyside packages only available for python 2
   # pyqt is available for both
@@ -46,6 +44,8 @@ script:
   - conda build ci/conda
 
 after_script:
+  - conda install pythonocc-core --use-local
+  # TODO: run tests
 
 branches:
   only:

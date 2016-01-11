@@ -8,8 +8,14 @@ source:
     - fix_graphicshr_location.patch [win]
 
 build:
+
+build:
+  script_env:
+    - CC
+    - CXX
+
   number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
-  binary_relocation: true
+  binary_relocation: false
   features:
     - vc9               [win and py27]
     - vc10              [win and py34]
@@ -23,7 +29,6 @@ requirements:
     - oce ==0.16.1
     - cmake
     - swig
-    - gcc               [linux]
 
   run:
     - pyqt
