@@ -28,6 +28,8 @@ install:
   - conda install -c https://conda.anaconda.org/dlr-sc oce
   # download/install swig
   - conda install swig
+  # install everything required to build the receipe
+  - conda install pip conda-build jinja2 binstar
   # and wxpython, pyside, pyqt are used for testing graphics
   # wxpython/pyside packages only available for python 2
   # pyqt is available for both
@@ -39,9 +41,12 @@ install:
     else
       conda install pyqt;
     fi
-script: ./.travis.build.sh
+
+script:
+  - conda build ci/conda
 
 after_script:
+
 branches:
   only:
     - master
