@@ -129,7 +129,8 @@ def init_display(backend_str=None, size=(1024, 768)):
                     _action = QtWidgets.QAction(_callable.__name__.replace('_', ' ').lower(), self)
                     # if not, the "exit" action is now shown...
                     _action.setMenuRole(QtWidgets.QAction.NoRole)
-                    self.connect(_action, QtCore.SIGNAL("triggered()"), _callable)
+                    _action.triggered.connect(_callable)
+
                     self._menus[menu_name].addAction(_action)
                 except KeyError:
                     raise ValueError('the menu item %s does not exist' % menu_name)
@@ -162,7 +163,7 @@ def init_display(backend_str=None, size=(1024, 768)):
 
 
 if __name__ == '__main__':
-    display, start_display, add_menu, add_function_to_menu = init_display()
+    display, start_display, add_menu, add_function_to_menu = init_display("qt-pyside")
     from OCC.BRepPrimAPI import BRepPrimAPI_MakeSphere, BRepPrimAPI_MakeBox
 
     def sphere(event=None):

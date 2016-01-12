@@ -186,7 +186,12 @@ class qtViewer3d(qtBaseViewer):
         self._display.FitAll()
 
     def wheelEvent(self, event):
-        if event.delta() > 0:
+        if self._have_pyqt5:
+            delta = event.angleDelta().y()
+        else:
+            delta = event.delta()
+
+        if delta > 0:
             zoom_factor = 2
         else:
             zoom_factor = 0.5
