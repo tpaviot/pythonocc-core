@@ -32,6 +32,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
+%pythoncode {
+import OCC.GarbageCollector
+};
+
 %include BRepTopAdaptor_headers.i
 
 /* typedefs */
@@ -75,7 +79,7 @@ class BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool : public TCollection_BasicM
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -113,7 +117,7 @@ class BRepTopAdaptor_DataMapNodeOfMapOfShapeTool : public TCollection_MapNode {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -151,7 +155,7 @@ class Handle_BRepTopAdaptor_DataMapNodeOfMapOfShapeTool : public Handle_TCollect
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -220,7 +224,7 @@ class BRepTopAdaptor_FClass2d {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -284,7 +288,7 @@ class BRepTopAdaptor_HVertex : public Adaptor3d_HVertex {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -322,7 +326,7 @@ class Handle_BRepTopAdaptor_HVertex : public Handle_Adaptor3d_HVertex {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -415,7 +419,7 @@ class BRepTopAdaptor_MapOfShapeTool : public TCollection_BasicMap {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -489,7 +493,7 @@ class BRepTopAdaptor_Tool {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -679,7 +683,7 @@ class BRepTopAdaptor_TopolTool : public Adaptor3d_TopolTool {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -717,7 +721,7 @@ class Handle_BRepTopAdaptor_TopolTool : public Handle_Adaptor3d_TopolTool {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}

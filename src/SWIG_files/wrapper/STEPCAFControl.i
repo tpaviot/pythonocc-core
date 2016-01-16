@@ -32,6 +32,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
+%pythoncode {
+import OCC.GarbageCollector
+};
+
 %include STEPCAFControl_headers.i
 
 /* typedefs */
@@ -84,7 +88,7 @@ class STEPCAFControl_ActorWrite : public STEPControl_ActorWrite {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -122,7 +126,7 @@ class Handle_STEPCAFControl_ActorWrite : public Handle_STEPControl_ActorWrite {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -155,7 +159,7 @@ class STEPCAFControl_Controller : public STEPControl_Controller {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -193,7 +197,7 @@ class Handle_STEPCAFControl_Controller : public Handle_STEPControl_Controller {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -238,7 +242,7 @@ class STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile : public TCollect
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -282,7 +286,7 @@ class STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape : public TCollection_B
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -326,7 +330,7 @@ class STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile : public TCollection
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -370,7 +374,7 @@ class STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile : public TCollectio
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -414,7 +418,7 @@ class STEPCAFControl_DataMapIteratorOfDataMapOfShapePD : public TCollection_Basi
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -458,7 +462,7 @@ class STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR : public TCollection_Bas
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -496,7 +500,7 @@ class STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile : public TCollection_
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -534,7 +538,7 @@ class Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile : public Handl
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -573,7 +577,7 @@ class STEPCAFControl_DataMapNodeOfDataMapOfLabelShape : public TCollection_MapNo
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -611,7 +615,7 @@ class Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape : public Handle_TCo
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -650,7 +654,7 @@ class STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile : public TCollection_Map
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -688,7 +692,7 @@ class Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile : public Handle_T
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -727,7 +731,7 @@ class STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile : public TCollection_Ma
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -765,7 +769,7 @@ class Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile : public Handle_
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -804,7 +808,7 @@ class STEPCAFControl_DataMapNodeOfDataMapOfShapePD : public TCollection_MapNode 
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -842,7 +846,7 @@ class Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD : public Handle_TColle
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -881,7 +885,7 @@ class STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR : public TCollection_MapNode
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -919,7 +923,7 @@ class Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR : public Handle_TColl
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1012,7 +1016,7 @@ class STEPCAFControl_DataMapOfLabelExternFile : public TCollection_BasicMap {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1104,7 +1108,7 @@ class STEPCAFControl_DataMapOfLabelShape : public TCollection_BasicMap {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1196,7 +1200,7 @@ class STEPCAFControl_DataMapOfPDExternFile : public TCollection_BasicMap {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1288,7 +1292,7 @@ class STEPCAFControl_DataMapOfSDRExternFile : public TCollection_BasicMap {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1380,7 +1384,7 @@ class STEPCAFControl_DataMapOfShapePD : public TCollection_BasicMap {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1472,7 +1476,7 @@ class STEPCAFControl_DataMapOfShapeSDR : public TCollection_BasicMap {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1630,7 +1634,7 @@ class STEPCAFControl_DictionaryOfExternFile : public MMgt_TShared {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1668,7 +1672,7 @@ class Handle_STEPCAFControl_DictionaryOfExternFile : public Handle_MMgt_TShared 
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1755,7 +1759,7 @@ class STEPCAFControl_ExternFile : public MMgt_TShared {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1793,7 +1797,7 @@ class Handle_STEPCAFControl_ExternFile : public Handle_MMgt_TShared {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1856,7 +1860,7 @@ class STEPCAFControl_IteratorOfDictionaryOfExternFile {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -2080,7 +2084,7 @@ class STEPCAFControl_Reader {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -2124,7 +2128,7 @@ class STEPCAFControl_StackItemOfDictionaryOfExternFile : public MMgt_TShared {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -2162,7 +2166,7 @@ class Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile : public Handle_MM
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -2379,7 +2383,7 @@ class STEPCAFControl_Writer {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}

@@ -32,6 +32,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
+%pythoncode {
+import OCC.GarbageCollector
+};
+
 %include BRepOffsetAPI_headers.i
 
 /* typedefs */
@@ -162,7 +166,7 @@ class BRepOffsetAPI_DraftAngle : public BRepBuilderAPI_ModifyShape {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -290,7 +294,7 @@ class BRepOffsetAPI_FindContigousEdges {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -384,7 +388,7 @@ class BRepOffsetAPI_MakeDraft : public BRepBuilderAPI_MakeShape {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -478,7 +482,7 @@ class BRepOffsetAPI_MakeEvolved : public BRepBuilderAPI_MakeShape {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -690,7 +694,7 @@ class BRepOffsetAPI_MakeFilling : public BRepBuilderAPI_MakeShape {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -784,7 +788,7 @@ class BRepOffsetAPI_MakeOffset : public BRepBuilderAPI_MakeShape {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -860,7 +864,7 @@ class BRepOffsetAPI_MakeOffsetShape : public BRepBuilderAPI_MakeShape {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -934,7 +938,7 @@ class BRepOffsetAPI_MakePipe : public BRepPrimAPI_MakeSweep {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1158,7 +1162,7 @@ class BRepOffsetAPI_MakePipeShell : public BRepPrimAPI_MakeSweep {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1194,7 +1198,7 @@ class BRepOffsetAPI_MiddlePath : public BRepBuilderAPI_MakeShape {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1334,7 +1338,7 @@ class BRepOffsetAPI_NormalProjection : public BRepBuilderAPI_MakeShape {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1368,7 +1372,7 @@ class BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal : public TCollection_
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1406,7 +1410,7 @@ class Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal : public Handl
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1441,7 +1445,7 @@ class BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape : public TCollection
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1479,7 +1483,7 @@ class Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape : public Hand
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1626,7 +1630,7 @@ class BRepOffsetAPI_SequenceOfSequenceOfReal : public TCollection_BaseSequence {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1772,7 +1776,7 @@ class BRepOffsetAPI_SequenceOfSequenceOfShape : public TCollection_BaseSequence 
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1942,7 +1946,7 @@ class BRepOffsetAPI_ThruSections : public BRepBuilderAPI_MakeShape {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -2002,7 +2006,7 @@ class BRepOffsetAPI_MakeThickSolid : public BRepOffsetAPI_MakeOffsetShape {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
