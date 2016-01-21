@@ -32,6 +32,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
+%pythoncode {
+import OCC.GarbageCollector
+};
+
 %include PrsMgr_headers.i
 
 /* typedefs */
@@ -82,7 +86,7 @@ class PrsMgr_ModedPresentation {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -242,7 +246,7 @@ class PrsMgr_PresentableObject : public MMgt_TShared {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -280,7 +284,7 @@ class Handle_PrsMgr_PresentableObject : public Handle_MMgt_TShared {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -329,7 +333,7 @@ class PrsMgr_Presentation : public MMgt_TShared {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -367,7 +371,7 @@ class Handle_PrsMgr_Presentation : public Handle_MMgt_TShared {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -586,7 +590,7 @@ class PrsMgr_PresentationManager : public MMgt_TShared {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -624,7 +628,7 @@ class Handle_PrsMgr_PresentationManager : public Handle_MMgt_TShared {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -771,7 +775,7 @@ class PrsMgr_Presentations : public TCollection_BaseSequence {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -843,7 +847,7 @@ class PrsMgr_Prs : public Prs3d_Presentation {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -881,7 +885,7 @@ class Handle_PrsMgr_Prs : public Handle_Prs3d_Presentation {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -916,7 +920,7 @@ class PrsMgr_SequenceNodeOfPresentations : public TCollection_SeqNode {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -954,7 +958,7 @@ class Handle_PrsMgr_SequenceNodeOfPresentations : public Handle_TCollection_SeqN
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -989,7 +993,7 @@ class PrsMgr_Presentation3d : public PrsMgr_Presentation {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1027,7 +1031,7 @@ class Handle_PrsMgr_Presentation3d : public Handle_PrsMgr_Presentation {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1210,7 +1214,7 @@ class PrsMgr_PresentationManager3d : public PrsMgr_PresentationManager {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1248,7 +1252,7 @@ class Handle_PrsMgr_PresentationManager3d : public Handle_PrsMgr_PresentationMan
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}

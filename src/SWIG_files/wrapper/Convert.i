@@ -32,6 +32,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
+%pythoncode {
+import OCC.GarbageCollector
+};
+
 %include Convert_headers.i
 
 /* typedefs */
@@ -121,7 +125,7 @@ class Convert_CompBezierCurves2dToBSplineCurve2d {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -199,7 +203,7 @@ class Convert_CompBezierCurvesToBSplineCurve {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -325,7 +329,7 @@ class Convert_CompPolynomialToPoles {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -441,7 +445,7 @@ class Convert_ConicToBSplineCurve {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -553,7 +557,7 @@ class Convert_ElementarySurfaceToBSplineSurface {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -703,7 +707,7 @@ class Convert_GridPolynomialToPoles {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -737,7 +741,7 @@ class Convert_SequenceNodeOfSequenceOfArray1OfPoles : public TCollection_SeqNode
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -775,7 +779,7 @@ class Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles : public Handle_TColl
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -922,7 +926,7 @@ class Convert_SequenceOfArray1OfPoles : public TCollection_BaseSequence {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -966,7 +970,7 @@ class Convert_CircleToBSplineCurve : public Convert_ConicToBSplineCurve {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1014,7 +1018,7 @@ class Convert_ConeToBSplineSurface : public Convert_ElementarySurfaceToBSplineSu
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1062,7 +1066,7 @@ class Convert_CylinderToBSplineSurface : public Convert_ElementarySurfaceToBSpli
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1106,7 +1110,7 @@ class Convert_EllipseToBSplineCurve : public Convert_ConicToBSplineCurve {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1138,7 +1142,7 @@ class Convert_HyperbolaToBSplineCurve : public Convert_ConicToBSplineCurve {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1170,7 +1174,7 @@ class Convert_ParabolaToBSplineCurve : public Convert_ConicToBSplineCurve {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1228,7 +1232,7 @@ class Convert_SphereToBSplineSurface : public Convert_ElementarySurfaceToBSpline
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1286,7 +1290,7 @@ class Convert_TorusToBSplineSurface : public Convert_ElementarySurfaceToBSplineS
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}

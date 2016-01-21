@@ -32,6 +32,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
+%pythoncode {
+import OCC.GarbageCollector
+};
+
 %include Units_headers.i
 
 /* typedefs */
@@ -166,7 +170,7 @@ class Units {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -306,7 +310,7 @@ class Units_Explorer {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -376,7 +380,7 @@ class Units_Lexicon : public MMgt_TShared {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -414,7 +418,7 @@ class Handle_Units_Lexicon : public Handle_MMgt_TShared {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -595,7 +599,7 @@ class Units_Measurement {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -741,7 +745,7 @@ class Units_QtsSequence : public TCollection_BaseSequence {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -897,7 +901,7 @@ class Units_QuantitiesSequence : public MMgt_TShared {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -935,7 +939,7 @@ class Handle_Units_QuantitiesSequence : public Handle_MMgt_TShared {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1004,7 +1008,7 @@ class Units_Sentence {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1038,7 +1042,7 @@ class Units_SequenceNodeOfQtsSequence : public TCollection_SeqNode {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1076,7 +1080,7 @@ class Handle_Units_SequenceNodeOfQtsSequence : public Handle_TCollection_SeqNode
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1111,7 +1115,7 @@ class Units_SequenceNodeOfTksSequence : public TCollection_SeqNode {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1149,7 +1153,7 @@ class Handle_Units_SequenceNodeOfTksSequence : public Handle_TCollection_SeqNode
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1184,7 +1188,7 @@ class Units_SequenceNodeOfUtsSequence : public TCollection_SeqNode {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1222,7 +1226,7 @@ class Handle_Units_SequenceNodeOfUtsSequence : public Handle_TCollection_SeqNode
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1369,7 +1373,7 @@ class Units_TksSequence : public TCollection_BaseSequence {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1673,7 +1677,7 @@ class Units_Token : public MMgt_TShared {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1711,7 +1715,7 @@ class Handle_Units_Token : public Handle_MMgt_TShared {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1868,7 +1872,7 @@ class Units_TokensSequence : public MMgt_TShared {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1906,7 +1910,7 @@ class Handle_Units_TokensSequence : public Handle_MMgt_TShared {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -2031,7 +2035,7 @@ class Units_Unit : public MMgt_TShared {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -2069,7 +2073,7 @@ class Handle_Units_Unit : public Handle_MMgt_TShared {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -2140,7 +2144,7 @@ class Units_UnitsDictionary : public MMgt_TShared {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -2178,7 +2182,7 @@ class Handle_Units_UnitsDictionary : public Handle_MMgt_TShared {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -2335,7 +2339,7 @@ class Units_UnitsSequence : public MMgt_TShared {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -2373,7 +2377,7 @@ class Handle_Units_UnitsSequence : public Handle_MMgt_TShared {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -2508,7 +2512,7 @@ class Units_UnitsSystem : public MMgt_TShared {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -2546,7 +2550,7 @@ class Handle_Units_UnitsSystem : public Handle_MMgt_TShared {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -2693,7 +2697,7 @@ class Units_UtsSequence : public TCollection_BaseSequence {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -2721,7 +2725,7 @@ class Units_MathSentence : public Units_Sentence {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -2799,7 +2803,7 @@ class Units_ShiftedToken : public Units_Token {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -2837,7 +2841,7 @@ class Handle_Units_ShiftedToken : public Handle_Units_Token {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -2920,7 +2924,7 @@ class Units_ShiftedUnit : public Units_Unit {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -2958,7 +2962,7 @@ class Handle_Units_ShiftedUnit : public Handle_Units_Unit {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -3011,7 +3015,7 @@ class Units_UnitSentence : public Units_Sentence {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -3067,7 +3071,7 @@ class Units_UnitsLexicon : public Units_Lexicon {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -3105,7 +3109,7 @@ class Handle_Units_UnitsLexicon : public Handle_Units_Lexicon {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}

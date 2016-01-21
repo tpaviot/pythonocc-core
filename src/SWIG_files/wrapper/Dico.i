@@ -32,6 +32,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
+%pythoncode {
+import OCC.GarbageCollector
+};
+
 %include Dico_headers.i
 
 /* typedefs */
@@ -188,7 +192,7 @@ class Dico_DictionaryOfInteger : public MMgt_TShared {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -226,7 +230,7 @@ class Handle_Dico_DictionaryOfInteger : public Handle_MMgt_TShared {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -385,7 +389,7 @@ class Dico_DictionaryOfTransient : public MMgt_TShared {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -423,7 +427,7 @@ class Handle_Dico_DictionaryOfTransient : public Handle_MMgt_TShared {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -486,7 +490,7 @@ class Dico_IteratorOfDictionaryOfInteger {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -548,7 +552,7 @@ class Dico_IteratorOfDictionaryOfTransient {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -592,7 +596,7 @@ class Dico_StackItemOfDictionaryOfInteger : public MMgt_TShared {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -630,7 +634,7 @@ class Handle_Dico_StackItemOfDictionaryOfInteger : public Handle_MMgt_TShared {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -675,7 +679,7 @@ class Dico_StackItemOfDictionaryOfTransient : public MMgt_TShared {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -713,7 +717,7 @@ class Handle_Dico_StackItemOfDictionaryOfTransient : public Handle_MMgt_TShared 
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}

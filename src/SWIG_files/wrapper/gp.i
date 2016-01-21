@@ -32,6 +32,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
+%pythoncode {
+import OCC.GarbageCollector
+};
+
 %include gp_headers.i
 
 /* typedefs */
@@ -187,7 +191,7 @@ class gp {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -461,7 +465,7 @@ class gp_Ax1 {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -751,7 +755,7 @@ class gp_Ax2 {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1011,7 +1015,7 @@ class gp_Ax22d {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1255,7 +1259,7 @@ class gp_Ax2d {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1579,7 +1583,7 @@ class gp_Ax3 {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1859,7 +1863,7 @@ class gp_Circ {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -2181,7 +2185,7 @@ class gp_Circ2d {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -2499,7 +2503,7 @@ class gp_Cone {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -2785,7 +2789,7 @@ class gp_Cylinder {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -3157,7 +3161,7 @@ class gp_Dir {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -3439,7 +3443,7 @@ class gp_Dir2d {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -3755,7 +3759,7 @@ class gp_Elips {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -4103,7 +4107,7 @@ class gp_Elips2d {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -4347,7 +4351,7 @@ class gp_GTrsf {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -4591,7 +4595,7 @@ class gp_GTrsf2d {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -4931,7 +4935,7 @@ class gp_Hypr {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -5307,7 +5311,7 @@ class gp_Hypr2d {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -5589,7 +5593,7 @@ class gp_Lin {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -5881,7 +5885,7 @@ class gp_Lin2d {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -6283,7 +6287,7 @@ class gp_Mat {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -6631,7 +6635,7 @@ class gp_Mat2d {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -6901,7 +6905,7 @@ class gp_Parab {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -7203,7 +7207,7 @@ class gp_Parab2d {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -7545,7 +7549,7 @@ class gp_Pln {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -7867,7 +7871,7 @@ class gp_Pnt {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -8143,7 +8147,7 @@ class gp_Pnt2d {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -8567,7 +8571,7 @@ class gp_Quaternion {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -8635,7 +8639,7 @@ class gp_QuaternionNLerp {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -8693,7 +8697,7 @@ class gp_QuaternionSLerp {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -8977,7 +8981,7 @@ class gp_Sphere {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -9275,7 +9279,7 @@ class gp_Torus {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -9633,7 +9637,7 @@ class gp_Trsf {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -9909,7 +9913,7 @@ class gp_Trsf2d {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -10537,7 +10541,7 @@ class gp_Vec {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -11043,7 +11047,7 @@ class gp_Vec2d {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -11473,7 +11477,7 @@ class gp_XY {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -12009,7 +12013,7 @@ class gp_XYZ {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}

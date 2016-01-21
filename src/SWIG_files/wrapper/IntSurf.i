@@ -32,6 +32,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
+%pythoncode {
+import OCC.GarbageCollector
+};
+
 %include IntSurf_headers.i
 
 /* typedefs */
@@ -81,7 +85,7 @@ class IntSurf {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -125,7 +129,7 @@ class IntSurf_Couple {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -217,7 +221,7 @@ class IntSurf_InteriorPoint {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -272,7 +276,7 @@ class IntSurf_InteriorPointTool {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -376,7 +380,7 @@ class IntSurf_LineOn2S : public MMgt_TShared {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -414,7 +418,7 @@ class Handle_IntSurf_LineOn2S : public Handle_MMgt_TShared {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -463,7 +467,7 @@ class IntSurf_ListIteratorOfListOfPntOn2S {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -495,7 +499,7 @@ class IntSurf_ListNodeOfListOfPntOn2S : public TCollection_MapNode {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -533,7 +537,7 @@ class Handle_IntSurf_ListNodeOfListOfPntOn2S : public Handle_TCollection_MapNode
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -672,7 +676,7 @@ class IntSurf_ListOfPntOn2S {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -786,7 +790,7 @@ class IntSurf_PathPoint {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -879,7 +883,7 @@ class IntSurf_PathPointTool {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1009,7 +1013,7 @@ class IntSurf_PntOn2S {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1197,7 +1201,7 @@ class IntSurf_Quadric {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1272,7 +1276,7 @@ class IntSurf_QuadricTool {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1306,7 +1310,7 @@ class IntSurf_SequenceNodeOfSequenceOfCouple : public TCollection_SeqNode {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1344,7 +1348,7 @@ class Handle_IntSurf_SequenceNodeOfSequenceOfCouple : public Handle_TCollection_
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1379,7 +1383,7 @@ class IntSurf_SequenceNodeOfSequenceOfInteriorPoint : public TCollection_SeqNode
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1417,7 +1421,7 @@ class Handle_IntSurf_SequenceNodeOfSequenceOfInteriorPoint : public Handle_TColl
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1452,7 +1456,7 @@ class IntSurf_SequenceNodeOfSequenceOfPathPoint : public TCollection_SeqNode {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1490,7 +1494,7 @@ class Handle_IntSurf_SequenceNodeOfSequenceOfPathPoint : public Handle_TCollecti
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1637,7 +1641,7 @@ class IntSurf_SequenceOfCouple : public TCollection_BaseSequence {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1783,7 +1787,7 @@ class IntSurf_SequenceOfInteriorPoint : public TCollection_BaseSequence {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1929,7 +1933,7 @@ class IntSurf_SequenceOfPathPoint : public TCollection_BaseSequence {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -2029,7 +2033,7 @@ class IntSurf_Transition {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}

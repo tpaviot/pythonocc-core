@@ -32,6 +32,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
+%pythoncode {
+import OCC.GarbageCollector
+};
+
 %include BRep_headers.i
 
 /* typedefs */
@@ -719,7 +723,7 @@ class BRep_Builder : public TopoDS_Builder {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -959,7 +963,7 @@ class BRep_CurveRepresentation : public MMgt_TShared {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -997,7 +1001,7 @@ class Handle_BRep_CurveRepresentation : public Handle_MMgt_TShared {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1046,7 +1050,7 @@ class BRep_ListIteratorOfListOfCurveRepresentation {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1094,7 +1098,7 @@ class BRep_ListIteratorOfListOfPointRepresentation {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1126,7 +1130,7 @@ class BRep_ListNodeOfListOfCurveRepresentation : public TCollection_MapNode {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1164,7 +1168,7 @@ class Handle_BRep_ListNodeOfListOfCurveRepresentation : public Handle_TCollectio
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1197,7 +1201,7 @@ class BRep_ListNodeOfListOfPointRepresentation : public TCollection_MapNode {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1235,7 +1239,7 @@ class Handle_BRep_ListNodeOfListOfPointRepresentation : public Handle_TCollectio
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1374,7 +1378,7 @@ class BRep_ListOfCurveRepresentation {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1512,7 +1516,7 @@ class BRep_ListOfPointRepresentation {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1642,7 +1646,7 @@ class BRep_PointRepresentation : public MMgt_TShared {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1680,7 +1684,7 @@ class Handle_BRep_PointRepresentation : public Handle_MMgt_TShared {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1769,7 +1773,7 @@ class BRep_TEdge : public TopoDS_TEdge {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1807,7 +1811,7 @@ class Handle_BRep_TEdge : public Handle_TopoDS_TEdge {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1890,7 +1894,7 @@ class BRep_TFace : public TopoDS_TFace {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1928,7 +1932,7 @@ class Handle_BRep_TFace : public Handle_TopoDS_TFace {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1995,7 +1999,7 @@ class BRep_TVertex : public TopoDS_TVertex {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -2033,7 +2037,7 @@ class Handle_BRep_TVertex : public Handle_TopoDS_TVertex {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -2603,7 +2607,7 @@ class BRep_Tool {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -2695,7 +2699,7 @@ class BRep_CurveOn2Surfaces : public BRep_CurveRepresentation {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -2733,7 +2737,7 @@ class Handle_BRep_CurveOn2Surfaces : public Handle_BRep_CurveRepresentation {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -2806,7 +2810,7 @@ class BRep_GCurve : public BRep_CurveRepresentation {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -2844,7 +2848,7 @@ class Handle_BRep_GCurve : public Handle_BRep_CurveRepresentation {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -2899,7 +2903,7 @@ class BRep_PointOnCurve : public BRep_PointRepresentation {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -2937,7 +2941,7 @@ class Handle_BRep_PointOnCurve : public Handle_BRep_PointRepresentation {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -2968,7 +2972,7 @@ class BRep_PointsOnSurface : public BRep_PointRepresentation {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -3006,7 +3010,7 @@ class Handle_BRep_PointsOnSurface : public Handle_BRep_PointRepresentation {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -3057,7 +3061,7 @@ class BRep_Polygon3D : public BRep_CurveRepresentation {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -3095,7 +3099,7 @@ class Handle_BRep_Polygon3D : public Handle_BRep_CurveRepresentation {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -3162,7 +3166,7 @@ class BRep_PolygonOnSurface : public BRep_CurveRepresentation {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -3200,7 +3204,7 @@ class Handle_BRep_PolygonOnSurface : public Handle_BRep_CurveRepresentation {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -3269,7 +3273,7 @@ class BRep_PolygonOnTriangulation : public BRep_CurveRepresentation {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -3307,7 +3311,7 @@ class Handle_BRep_PolygonOnTriangulation : public Handle_BRep_CurveRepresentatio
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -3368,7 +3372,7 @@ class BRep_Curve3D : public BRep_GCurve {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -3406,7 +3410,7 @@ class Handle_BRep_Curve3D : public Handle_BRep_GCurve {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -3505,7 +3509,7 @@ class BRep_CurveOnSurface : public BRep_GCurve {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -3543,7 +3547,7 @@ class Handle_BRep_CurveOnSurface : public Handle_BRep_GCurve {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -3602,7 +3606,7 @@ class BRep_PointOnCurveOnSurface : public BRep_PointsOnSurface {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -3640,7 +3644,7 @@ class Handle_BRep_PointOnCurveOnSurface : public Handle_BRep_PointsOnSurface {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -3695,7 +3699,7 @@ class BRep_PointOnSurface : public BRep_PointsOnSurface {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -3733,7 +3737,7 @@ class Handle_BRep_PointOnSurface : public Handle_BRep_PointsOnSurface {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -3788,7 +3792,7 @@ class BRep_PolygonOnClosedSurface : public BRep_PolygonOnSurface {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -3826,7 +3830,7 @@ class Handle_BRep_PolygonOnClosedSurface : public Handle_BRep_PolygonOnSurface {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -3881,7 +3885,7 @@ class BRep_PolygonOnClosedTriangulation : public BRep_PolygonOnTriangulation {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -3919,7 +3923,7 @@ class Handle_BRep_PolygonOnClosedTriangulation : public Handle_BRep_PolygonOnTri
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -4040,7 +4044,7 @@ class BRep_CurveOnClosedSurface : public BRep_CurveOnSurface {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -4078,7 +4082,7 @@ class Handle_BRep_CurveOnClosedSurface : public Handle_BRep_CurveOnSurface {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}

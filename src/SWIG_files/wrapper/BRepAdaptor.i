@@ -32,6 +32,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
+%pythoncode {
+import OCC.GarbageCollector
+};
+
 %include BRepAdaptor_headers.i
 
 /* typedefs */
@@ -126,7 +130,7 @@ class BRepAdaptor_Array1OfCurve {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -408,7 +412,7 @@ class BRepAdaptor_CompCurve : public Adaptor3d_Curve {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -696,7 +700,7 @@ class BRepAdaptor_Curve : public Adaptor3d_Curve {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -754,7 +758,7 @@ class BRepAdaptor_Curve2d : public Geom2dAdaptor_Curve {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -838,7 +842,7 @@ class BRepAdaptor_HArray1OfCurve : public MMgt_TShared {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -876,7 +880,7 @@ class Handle_BRepAdaptor_HArray1OfCurve : public Handle_MMgt_TShared {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -925,7 +929,7 @@ class BRepAdaptor_HCompCurve : public Adaptor3d_HCurve {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -963,7 +967,7 @@ class Handle_BRepAdaptor_HCompCurve : public Handle_Adaptor3d_HCurve {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1012,7 +1016,7 @@ class BRepAdaptor_HCurve : public Adaptor3d_HCurve {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1050,7 +1054,7 @@ class Handle_BRepAdaptor_HCurve : public Handle_Adaptor3d_HCurve {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1095,7 +1099,7 @@ class BRepAdaptor_HCurve2d : public Adaptor2d_HCurve2d {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1133,7 +1137,7 @@ class Handle_BRepAdaptor_HCurve2d : public Handle_Adaptor2d_HCurve2d {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1178,7 +1182,7 @@ class BRepAdaptor_HSurface : public Adaptor3d_HSurface {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1216,7 +1220,7 @@ class Handle_BRepAdaptor_HSurface : public Handle_Adaptor3d_HSurface {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1611,7 +1615,7 @@ class BRepAdaptor_Surface : public Adaptor3d_Surface {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}

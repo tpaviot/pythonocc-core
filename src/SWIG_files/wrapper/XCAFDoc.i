@@ -32,6 +32,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
+%pythoncode {
+import OCC.GarbageCollector
+};
+
 %include XCAFDoc_headers.i
 
 /* typedefs */
@@ -118,7 +122,7 @@ class XCAFDoc {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -210,7 +214,7 @@ class XCAFDoc_Area : public TDF_Attribute {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -248,7 +252,7 @@ class Handle_XCAFDoc_Area : public Handle_TDF_Attribute {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -339,7 +343,7 @@ class XCAFDoc_Centroid : public TDF_Attribute {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -377,7 +381,7 @@ class Handle_XCAFDoc_Centroid : public Handle_TDF_Attribute {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -500,7 +504,7 @@ class XCAFDoc_Color : public TDF_Attribute {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -538,7 +542,7 @@ class Handle_XCAFDoc_Color : public Handle_TDF_Attribute {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -863,7 +867,7 @@ class XCAFDoc_ColorTool : public TDF_Attribute {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -901,7 +905,7 @@ class Handle_XCAFDoc_ColorTool : public Handle_TDF_Attribute {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -946,7 +950,7 @@ class XCAFDoc_DataMapIteratorOfDataMapOfShapeLabel : public TCollection_BasicMap
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -984,7 +988,7 @@ class XCAFDoc_DataMapNodeOfDataMapOfShapeLabel : public TCollection_MapNode {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1022,7 +1026,7 @@ class Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel : public Handle_TCollectio
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1115,7 +1119,7 @@ class XCAFDoc_DataMapOfShapeLabel : public TCollection_BasicMap {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1199,7 +1203,7 @@ class XCAFDoc_Datum : public TDF_Attribute {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1237,7 +1241,7 @@ class Handle_XCAFDoc_Datum : public Handle_TDF_Attribute {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1330,7 +1334,7 @@ class XCAFDoc_DimTol : public TDF_Attribute {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1368,7 +1372,7 @@ class Handle_XCAFDoc_DimTol : public Handle_TDF_Attribute {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1653,7 +1657,7 @@ class XCAFDoc_DimTolTool : public TDF_Attribute {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1691,7 +1695,7 @@ class Handle_XCAFDoc_DimTolTool : public Handle_TDF_Attribute {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -1858,7 +1862,7 @@ class XCAFDoc_DocumentTool : public TDF_Attribute {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -1896,7 +1900,7 @@ class Handle_XCAFDoc_DocumentTool : public Handle_TDF_Attribute {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -2111,7 +2115,7 @@ class XCAFDoc_GraphNode : public TDF_Attribute {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -2149,7 +2153,7 @@ class Handle_XCAFDoc_GraphNode : public Handle_TDF_Attribute {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -2296,7 +2300,7 @@ class XCAFDoc_GraphNodeSequence : public TCollection_BaseSequence {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -2654,7 +2658,7 @@ class XCAFDoc_LayerTool : public TDF_Attribute {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -2692,7 +2696,7 @@ class Handle_XCAFDoc_LayerTool : public Handle_TDF_Attribute {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -2767,7 +2771,7 @@ class XCAFDoc_Location : public TDF_Attribute {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -2805,7 +2809,7 @@ class Handle_XCAFDoc_Location : public Handle_TDF_Attribute {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -2906,7 +2910,7 @@ class XCAFDoc_Material : public TDF_Attribute {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -2944,7 +2948,7 @@ class Handle_XCAFDoc_Material : public Handle_TDF_Attribute {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -3101,7 +3105,7 @@ class XCAFDoc_MaterialTool : public TDF_Attribute {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -3139,7 +3143,7 @@ class Handle_XCAFDoc_MaterialTool : public Handle_TDF_Attribute {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -3174,7 +3178,7 @@ class XCAFDoc_SequenceNodeOfGraphNodeSequence : public TCollection_SeqNode {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -3212,7 +3216,7 @@ class Handle_XCAFDoc_SequenceNodeOfGraphNodeSequence : public Handle_TCollection
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -3293,7 +3297,7 @@ class XCAFDoc_ShapeMapTool : public TDF_Attribute {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -3331,7 +3335,7 @@ class Handle_XCAFDoc_ShapeMapTool : public Handle_TDF_Attribute {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -3932,7 +3936,7 @@ class XCAFDoc_ShapeTool : public TDF_Attribute {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -3970,7 +3974,7 @@ class Handle_XCAFDoc_ShapeTool : public Handle_TDF_Attribute {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}
@@ -4063,7 +4067,7 @@ class XCAFDoc_Volume : public TDF_Attribute {
 def __del__(self):
 	try:
 		self.thisown = False
-		GarbageCollector.garbage.collect_object(self)
+		OCC.GarbageCollector.garbage.collect_object(self)
 	except:
 		pass
 %}
@@ -4101,7 +4105,7 @@ class Handle_XCAFDoc_Volume : public Handle_TDF_Attribute {
 def __del__(self):
     try:
         self.thisown = False
-        GarbageCollector.garbage.collect_object(self)
+        OCC.GarbageCollector.garbage.collect_object(self)
     except:
         pass
 %}

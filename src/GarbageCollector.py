@@ -18,6 +18,7 @@
 # Init logging system
 from collections import deque
 
+
 class GarbageCollector(object):
     """ Garbage collector for OCC objects
     """
@@ -82,12 +83,12 @@ class GarbageCollector(object):
             # in the garbage should be 0
             handle.was_purged = True
         # Remove Transients
-        for transient in self._transients:
+        for transient in list(self._transients):
             transient_must_be_purged = False
             if transient.GetRefCount() == 0:
                 transient_must_be_purged = True
             if transient_must_be_purged:
-                transient._kill_pointed()
+                #transient._kill_pointed()
                 transient.was_purged = True
                 self._transients.remove(transient)
         # Remove other objects
