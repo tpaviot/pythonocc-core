@@ -88,7 +88,7 @@ class GarbageCollector(object):
             if transient.GetRefCount() == 0:
                 transient_must_be_purged = True
             if transient_must_be_purged:
-                transient._kill_pointed()
+                #transient._kill_pointed()
                 transient.was_purged = True
                 self._transients.remove(transient)
         # Remove other objects
