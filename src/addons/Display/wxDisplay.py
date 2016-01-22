@@ -43,6 +43,8 @@ class wxBaseViewer(wx.Panel):
         self.Bind(wx.EVT_MIDDLE_UP, self.OnMiddleUp)
         self.Bind(wx.EVT_MOTION, self.OnMotion)
         self.Bind(wx.EVT_KEY_DOWN, self.OnKeyDown)
+        self.Bind(wx.EVT_MOUSEWHEEL, self.OnWheelScroll)
+
         self._display = None
         self._inited = False
 
@@ -102,6 +104,7 @@ class wxViewer3d(wxBaseViewer):
         self._middleisdown = False
         self._rightisdown = False
         self._selection = None
+        self._scrollwheel = False
 
     def InitDriver(self):
         self._display = OCCViewer.Viewer3d(self.GetHandle())
@@ -200,6 +203,17 @@ class wxViewer3d(wxBaseViewer):
         self.dragStartPos = evt.GetPosition()
         self._display.StartRotation(self.dragStartPos.x, self.dragStartPos.y)
 
+    def OnWheelScroll(self, evt):
+        # Zooming by wheel
+        if evt.GetWheelRotation() > 0:
+            zoom_factor = 2
+        else:
+            zoom_factor = 0.5
+            
+        self._display.Repaint()
+        self._display.ZoomFactor(zoom_factor)
+  
+
     def DrawBox(self, event):
         tolerance = 2
         pt = event.GetPosition()
@@ -222,6 +236,7 @@ class wxViewer3d(wxBaseViewer):
 
     def OnMotion(self, evt):
         pt = evt.GetPosition()
+        
         # ROTATE
         if (evt.LeftIsDown() and not evt.ShiftDown()):
             dx = pt.x - self.dragStartPos.x
@@ -229,6 +244,7 @@ class wxViewer3d(wxBaseViewer):
             self._display.Rotation(pt.x, pt.y)
             self._drawbox = False
         # DYNAMIC ZOOM
+			
         elif (evt.RightIsDown() and not evt.ShiftDown()):
             self._display.Repaint()
             self._display.DynamicZoom(abs(self.dragStartPos.x), abs(self.dragStartPos.y), abs(pt.x), abs(pt.y))
@@ -265,7 +281,7 @@ def Test3d():
         def runTests(self):
             self.canva._display.Test()
 
-    app = wx.PySimpleApp()
+    app = wx.App(False) 
     wx.InitAllImageHandlers()
     frame = AppFrame(None)
     frame.Show(True)
