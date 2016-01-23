@@ -31,6 +31,8 @@ requirements:
 
   run:
     - pyqt
+    - wxpython          [py27]
+    - pyside            [py27]
     - oce ==0.16.1
     - python
 
