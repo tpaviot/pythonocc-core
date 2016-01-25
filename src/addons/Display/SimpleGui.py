@@ -66,7 +66,7 @@ def init_display(backend_str=None, size=(1024, 768)):
                     raise ValueError('the menu item %s does not exist' % menu_name)
                 self.Bind(wx.EVT_MENU, _callable, id=_id)
 
-        app = wx.PySimpleApp()
+        app = wx.App(False)
         win = AppFrame(None)
         win.Show(True)
         wx.SafeYield()
