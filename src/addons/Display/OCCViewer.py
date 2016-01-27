@@ -247,8 +247,7 @@ class Viewer3d(OCC.Visualization.Display3d):
     def DisplayVector(self, vec, pnt, update=False):
         if self._inited:
             aPresentation = Prs3d_Presentation(self._struc_mgr)
-            arrow = Prs3d_Arrow()
-            arrow.Draw(
+            Prs3d_Arrow.Draw(
                 aPresentation.GetHandle(),
                 (pnt.as_vec() + vec).as_pnt(),
                 gp_Dir(vec),
