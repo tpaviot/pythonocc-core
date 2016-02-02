@@ -209,13 +209,12 @@ class X3DExporter(object):
     def write_to_file(self, filename):
         # write header
         f = open(filename, "w")
-        f.write("""
-        <?xml version="1.0" encoding="UTF-8"?>
-        <X3D profile="Immersive" version="3.2" xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance" xsd:noNamespaceSchemaLocation="http://www.web3d.org/specifications/x3d-3.2.xsd">
-        <head>
-            <meta name="generator" content="pythonOCC (www.pythonocc.org)"/>
-        </head>
-        <Scene>
+        f.write("""<?xml version="1.0" encoding="UTF-8"?>
+<X3D profile="Immersive" version="3.2" xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance" xsd:noNamespaceSchemaLocation="http://www.web3d.org/specifications/x3d-3.2.xsd">
+<head>
+    <meta name="generator" content="pythonOCC (www.pythonocc.org)"/>
+</head>
+<Scene>
         """)
         f.write('<Group onclick="handleGroupClick(event)">\n')
         shape_id = 0
@@ -239,7 +238,7 @@ class X3DExporter(object):
             f.write("</Shape>\n")
             shape_id += 1
         f.write("</Group>\n")
-        f.write('</Scene>\n</x3d>\n')
+        f.write('</Scene>\n</X3D>\n')
 
 
 def test_X3DExporter():
