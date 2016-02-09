@@ -29,16 +29,14 @@ except:
     HAVE_OCAF = False
 # Create test suite
 import core_webgl_unittest
-import core_memory_unittest
 
 suite = unittest.TestSuite()
 
 # Get all test suites from modules
-suite0 = core_memory_unittest.suite()
 suite1 = core_wrapper_features_unittest.suite()
 suite2 = core_geometry_unittest.suite()
 suite3 = core_visualization_unittest.suite()
-tests = [suite0, suite1, suite2, suite3]
+tests = [suite1, suite2, suite3]
 if HAVE_OCAF:
     suite4 = core_ocaf_unittest.suite()
     tests.append(suite4)
