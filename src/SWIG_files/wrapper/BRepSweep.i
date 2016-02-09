@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include BRepSweep_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -148,20 +160,6 @@ class BRepSweep_Array2OfShapesOfNumLinearRegularSweep {
 };
 
 
-%feature("shadow") BRepSweep_Array2OfShapesOfNumLinearRegularSweep::~BRepSweep_Array2OfShapesOfNumLinearRegularSweep %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepSweep_Array2OfShapesOfNumLinearRegularSweep {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepSweep_Builder;
 class BRepSweep_Builder {
 	public:
@@ -242,20 +240,6 @@ class BRepSweep_Builder {
 };
 
 
-%feature("shadow") BRepSweep_Builder::~BRepSweep_Builder %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepSweep_Builder {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepSweep_Iterator;
 class BRepSweep_Iterator {
 	public:
@@ -298,20 +282,6 @@ class BRepSweep_Iterator {
 };
 
 
-%feature("shadow") BRepSweep_Iterator::~BRepSweep_Iterator %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepSweep_Iterator {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepSweep_NumLinearRegularSweep;
 class BRepSweep_NumLinearRegularSweep {
 	public:
@@ -558,20 +528,6 @@ class BRepSweep_NumLinearRegularSweep {
 };
 
 
-%feature("shadow") BRepSweep_NumLinearRegularSweep::~BRepSweep_NumLinearRegularSweep %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepSweep_NumLinearRegularSweep {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepSweep_Prism;
 class BRepSweep_Prism {
 	public:
@@ -656,20 +612,6 @@ class BRepSweep_Prism {
 };
 
 
-%feature("shadow") BRepSweep_Prism::~BRepSweep_Prism %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepSweep_Prism {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepSweep_Revol;
 class BRepSweep_Revol {
 	public:
@@ -756,20 +698,6 @@ class BRepSweep_Revol {
 };
 
 
-%feature("shadow") BRepSweep_Revol::~BRepSweep_Revol %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepSweep_Revol {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep;
 class BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep : public TCollection_SeqNode {
 	public:
@@ -790,25 +718,23 @@ class BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep : public T
 };
 
 
-%feature("shadow") BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep::~BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep {
-	Handle_BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep GetHandle() {
-	return *(Handle_BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep*) &$self;
-	}
-};
+%pythonappend Handle_BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep::Handle_BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep;
 class Handle_BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep : public Handle_TCollection_SeqNode {
@@ -826,20 +752,6 @@ class Handle_BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep : p
 %extend Handle_BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep {
     BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep* GetObject() {
     return (BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep::~Handle_BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -975,20 +887,6 @@ class BRepSweep_SequenceOfShapesOfNumLinearRegularSweep : public TCollection_Bas
 };
 
 
-%feature("shadow") BRepSweep_SequenceOfShapesOfNumLinearRegularSweep::~BRepSweep_SequenceOfShapesOfNumLinearRegularSweep %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepSweep_SequenceOfShapesOfNumLinearRegularSweep {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepSweep_Tool;
 class BRepSweep_Tool {
 	public:
@@ -1051,20 +949,6 @@ class BRepSweep_Tool {
 };
 
 
-%feature("shadow") BRepSweep_Tool::~BRepSweep_Tool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepSweep_Tool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepSweep_Trsf;
 class BRepSweep_Trsf : public BRepSweep_NumLinearRegularSweep {
 	public:
@@ -1309,20 +1193,6 @@ class BRepSweep_Trsf : public BRepSweep_NumLinearRegularSweep {
 };
 
 
-%feature("shadow") BRepSweep_Trsf::~BRepSweep_Trsf %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepSweep_Trsf {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepSweep_Rotation;
 class BRepSweep_Rotation : public BRepSweep_Trsf {
 	public:
@@ -1585,20 +1455,6 @@ class BRepSweep_Rotation : public BRepSweep_Trsf {
 };
 
 
-%feature("shadow") BRepSweep_Rotation::~BRepSweep_Rotation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepSweep_Rotation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepSweep_Translation;
 class BRepSweep_Translation : public BRepSweep_Trsf {
 	public:
@@ -1851,17 +1707,3 @@ class BRepSweep_Translation : public BRepSweep_Trsf {
 };
 
 
-%feature("shadow") BRepSweep_Translation::~BRepSweep_Translation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepSweep_Translation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include GeomFill_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -275,20 +287,6 @@ class GeomFill {
 };
 
 
-%feature("shadow") GeomFill::~GeomFill %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_AppSurf;
 class GeomFill_AppSurf : public AppBlend_Approx {
 	public:
@@ -525,20 +523,6 @@ class GeomFill_AppSurf : public AppBlend_Approx {
 };
 
 
-%feature("shadow") GeomFill_AppSurf::~GeomFill_AppSurf %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_AppSurf {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_AppSweep;
 class GeomFill_AppSweep : public AppBlend_Approx {
 	public:
@@ -775,20 +759,6 @@ class GeomFill_AppSweep : public AppBlend_Approx {
 };
 
 
-%feature("shadow") GeomFill_AppSweep::~GeomFill_AppSweep %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_AppSweep {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_Array1OfLocationLaw;
 class GeomFill_Array1OfLocationLaw {
 	public:
@@ -861,30 +831,16 @@ class GeomFill_Array1OfLocationLaw {
 	:type Index: int
 	:rtype: Handle_GeomFill_LocationLaw
 ") Value;
-		const Handle_GeomFill_LocationLaw & Value (const Standard_Integer Index);
+		Handle_GeomFill_LocationLaw Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_GeomFill_LocationLaw
 ") ChangeValue;
-		Handle_GeomFill_LocationLaw & ChangeValue (const Standard_Integer Index);
+		Handle_GeomFill_LocationLaw ChangeValue (const Standard_Integer Index);
 };
 
 
-%feature("shadow") GeomFill_Array1OfLocationLaw::~GeomFill_Array1OfLocationLaw %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_Array1OfLocationLaw {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_Array1OfSectionLaw;
 class GeomFill_Array1OfSectionLaw {
 	public:
@@ -957,30 +913,16 @@ class GeomFill_Array1OfSectionLaw {
 	:type Index: int
 	:rtype: Handle_GeomFill_SectionLaw
 ") Value;
-		const Handle_GeomFill_SectionLaw & Value (const Standard_Integer Index);
+		Handle_GeomFill_SectionLaw Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_GeomFill_SectionLaw
 ") ChangeValue;
-		Handle_GeomFill_SectionLaw & ChangeValue (const Standard_Integer Index);
+		Handle_GeomFill_SectionLaw ChangeValue (const Standard_Integer Index);
 };
 
 
-%feature("shadow") GeomFill_Array1OfSectionLaw::~GeomFill_Array1OfSectionLaw %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_Array1OfSectionLaw {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_BSplineCurves;
 class GeomFill_BSplineCurves {
 	public:
@@ -1075,24 +1017,10 @@ class GeomFill_BSplineCurves {
 
 	:rtype: Handle_Geom_BSplineSurface
 ") Surface;
-		const Handle_Geom_BSplineSurface & Surface ();
+		Handle_Geom_BSplineSurface Surface ();
 };
 
 
-%feature("shadow") GeomFill_BSplineCurves::~GeomFill_BSplineCurves %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_BSplineCurves {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_BezierCurves;
 class GeomFill_BezierCurves {
 	public:
@@ -1191,24 +1119,10 @@ class GeomFill_BezierCurves {
 
 	:rtype: Handle_Geom_BezierSurface
 ") Surface;
-		const Handle_Geom_BezierSurface & Surface ();
+		Handle_Geom_BezierSurface Surface ();
 };
 
 
-%feature("shadow") GeomFill_BezierCurves::~GeomFill_BezierCurves %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_BezierCurves {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_Boundary;
 class GeomFill_Boundary : public MMgt_TShared {
 	public:
@@ -1309,25 +1223,23 @@ class GeomFill_Boundary : public MMgt_TShared {
 };
 
 
-%feature("shadow") GeomFill_Boundary::~GeomFill_Boundary %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_Boundary {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_Boundary(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_Boundary {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_Boundary {
-	Handle_GeomFill_Boundary GetHandle() {
-	return *(Handle_GeomFill_Boundary*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_Boundary::Handle_GeomFill_Boundary %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_Boundary;
 class Handle_GeomFill_Boundary : public Handle_MMgt_TShared {
@@ -1345,20 +1257,6 @@ class Handle_GeomFill_Boundary : public Handle_MMgt_TShared {
 %extend Handle_GeomFill_Boundary {
     GeomFill_Boundary* GetObject() {
     return (GeomFill_Boundary*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_Boundary::~Handle_GeomFill_Boundary %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_Boundary {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1568,25 +1466,23 @@ class GeomFill_CircularBlendFunc : public Approx_SweepFunction {
 };
 
 
-%feature("shadow") GeomFill_CircularBlendFunc::~GeomFill_CircularBlendFunc %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_CircularBlendFunc {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_CircularBlendFunc(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_CircularBlendFunc {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_CircularBlendFunc {
-	Handle_GeomFill_CircularBlendFunc GetHandle() {
-	return *(Handle_GeomFill_CircularBlendFunc*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_CircularBlendFunc::Handle_GeomFill_CircularBlendFunc %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_CircularBlendFunc;
 class Handle_GeomFill_CircularBlendFunc : public Handle_Approx_SweepFunction {
@@ -1604,20 +1500,6 @@ class Handle_GeomFill_CircularBlendFunc : public Handle_Approx_SweepFunction {
 %extend Handle_GeomFill_CircularBlendFunc {
     GeomFill_CircularBlendFunc* GetObject() {
     return (GeomFill_CircularBlendFunc*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_CircularBlendFunc::~Handle_GeomFill_CircularBlendFunc %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_CircularBlendFunc {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1739,20 +1621,6 @@ class GeomFill_ConstrainedFilling {
 };
 
 
-%feature("shadow") GeomFill_ConstrainedFilling::~GeomFill_ConstrainedFilling %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_ConstrainedFilling {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_CoonsAlgPatch;
 class GeomFill_CoonsAlgPatch : public MMgt_TShared {
 	public:
@@ -1841,35 +1709,33 @@ class GeomFill_CoonsAlgPatch : public MMgt_TShared {
 	:type I: int
 	:rtype: Handle_GeomFill_Boundary
 ") Bound;
-		const Handle_GeomFill_Boundary & Bound (const Standard_Integer I);
+		Handle_GeomFill_Boundary Bound (const Standard_Integer I);
 		%feature("compactdefaultargs") Func;
 		%feature("autodoc", "	:param I:
 	:type I: int
 	:rtype: Handle_Law_Function
 ") Func;
-		const Handle_Law_Function & Func (const Standard_Integer I);
+		Handle_Law_Function Func (const Standard_Integer I);
 };
 
 
-%feature("shadow") GeomFill_CoonsAlgPatch::~GeomFill_CoonsAlgPatch %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend GeomFill_CoonsAlgPatch {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_CoonsAlgPatch(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_GeomFill_CoonsAlgPatch::Handle_GeomFill_CoonsAlgPatch %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend GeomFill_CoonsAlgPatch {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_CoonsAlgPatch {
-	Handle_GeomFill_CoonsAlgPatch GetHandle() {
-	return *(Handle_GeomFill_CoonsAlgPatch*) &$self;
-	}
-};
 
 %nodefaultctor Handle_GeomFill_CoonsAlgPatch;
 class Handle_GeomFill_CoonsAlgPatch : public Handle_MMgt_TShared {
@@ -1887,20 +1753,6 @@ class Handle_GeomFill_CoonsAlgPatch : public Handle_MMgt_TShared {
 %extend Handle_GeomFill_CoonsAlgPatch {
     GeomFill_CoonsAlgPatch* GetObject() {
     return (GeomFill_CoonsAlgPatch*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_CoonsAlgPatch::~Handle_GeomFill_CoonsAlgPatch %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_CoonsAlgPatch {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1964,20 +1816,6 @@ class GeomFill_CornerState {
 };
 
 
-%feature("shadow") GeomFill_CornerState::~GeomFill_CornerState %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_CornerState {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_Filling;
 class GeomFill_Filling {
 	public:
@@ -2012,20 +1850,6 @@ class GeomFill_Filling {
 };
 
 
-%feature("shadow") GeomFill_Filling::~GeomFill_Filling %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_Filling {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_FunctionDraft;
 class GeomFill_FunctionDraft : public math_FunctionSetWithDerivatives {
 	public:
@@ -2142,20 +1966,6 @@ class GeomFill_FunctionDraft : public math_FunctionSetWithDerivatives {
 };
 
 
-%feature("shadow") GeomFill_FunctionDraft::~GeomFill_FunctionDraft %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_FunctionDraft {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_FunctionGuide;
 class GeomFill_FunctionGuide : public math_FunctionSetWithDerivatives {
 	public:
@@ -2242,20 +2052,6 @@ class GeomFill_FunctionGuide : public math_FunctionSetWithDerivatives {
 };
 
 
-%feature("shadow") GeomFill_FunctionGuide::~GeomFill_FunctionGuide %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_FunctionGuide {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_HArray1OfLocationLaw;
 class GeomFill_HArray1OfLocationLaw : public MMgt_TShared {
 	public:
@@ -2308,13 +2104,13 @@ class GeomFill_HArray1OfLocationLaw : public MMgt_TShared {
 	:type Index: int
 	:rtype: Handle_GeomFill_LocationLaw
 ") Value;
-		const Handle_GeomFill_LocationLaw & Value (const Standard_Integer Index);
+		Handle_GeomFill_LocationLaw Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_GeomFill_LocationLaw
 ") ChangeValue;
-		Handle_GeomFill_LocationLaw & ChangeValue (const Standard_Integer Index);
+		Handle_GeomFill_LocationLaw ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Array1;
 		%feature("autodoc", "	:rtype: GeomFill_Array1OfLocationLaw
 ") Array1;
@@ -2326,25 +2122,23 @@ class GeomFill_HArray1OfLocationLaw : public MMgt_TShared {
 };
 
 
-%feature("shadow") GeomFill_HArray1OfLocationLaw::~GeomFill_HArray1OfLocationLaw %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_HArray1OfLocationLaw {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_HArray1OfLocationLaw(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_HArray1OfLocationLaw {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_HArray1OfLocationLaw {
-	Handle_GeomFill_HArray1OfLocationLaw GetHandle() {
-	return *(Handle_GeomFill_HArray1OfLocationLaw*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_HArray1OfLocationLaw::Handle_GeomFill_HArray1OfLocationLaw %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_HArray1OfLocationLaw;
 class Handle_GeomFill_HArray1OfLocationLaw : public Handle_MMgt_TShared {
@@ -2362,20 +2156,6 @@ class Handle_GeomFill_HArray1OfLocationLaw : public Handle_MMgt_TShared {
 %extend Handle_GeomFill_HArray1OfLocationLaw {
     GeomFill_HArray1OfLocationLaw* GetObject() {
     return (GeomFill_HArray1OfLocationLaw*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_HArray1OfLocationLaw::~Handle_GeomFill_HArray1OfLocationLaw %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_HArray1OfLocationLaw {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2431,13 +2211,13 @@ class GeomFill_HArray1OfSectionLaw : public MMgt_TShared {
 	:type Index: int
 	:rtype: Handle_GeomFill_SectionLaw
 ") Value;
-		const Handle_GeomFill_SectionLaw & Value (const Standard_Integer Index);
+		Handle_GeomFill_SectionLaw Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_GeomFill_SectionLaw
 ") ChangeValue;
-		Handle_GeomFill_SectionLaw & ChangeValue (const Standard_Integer Index);
+		Handle_GeomFill_SectionLaw ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Array1;
 		%feature("autodoc", "	:rtype: GeomFill_Array1OfSectionLaw
 ") Array1;
@@ -2449,25 +2229,23 @@ class GeomFill_HArray1OfSectionLaw : public MMgt_TShared {
 };
 
 
-%feature("shadow") GeomFill_HArray1OfSectionLaw::~GeomFill_HArray1OfSectionLaw %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_HArray1OfSectionLaw {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_HArray1OfSectionLaw(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_HArray1OfSectionLaw {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_HArray1OfSectionLaw {
-	Handle_GeomFill_HArray1OfSectionLaw GetHandle() {
-	return *(Handle_GeomFill_HArray1OfSectionLaw*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_HArray1OfSectionLaw::Handle_GeomFill_HArray1OfSectionLaw %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_HArray1OfSectionLaw;
 class Handle_GeomFill_HArray1OfSectionLaw : public Handle_MMgt_TShared {
@@ -2485,20 +2263,6 @@ class Handle_GeomFill_HArray1OfSectionLaw : public Handle_MMgt_TShared {
 %extend Handle_GeomFill_HArray1OfSectionLaw {
     GeomFill_HArray1OfSectionLaw* GetObject() {
     return (GeomFill_HArray1OfSectionLaw*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_HArray1OfSectionLaw::~Handle_GeomFill_HArray1OfSectionLaw %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_HArray1OfSectionLaw {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2644,25 +2408,23 @@ class GeomFill_HSequenceOfAx2 : public MMgt_TShared {
 };
 
 
-%feature("shadow") GeomFill_HSequenceOfAx2::~GeomFill_HSequenceOfAx2 %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_HSequenceOfAx2 {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_HSequenceOfAx2(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_HSequenceOfAx2 {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_HSequenceOfAx2 {
-	Handle_GeomFill_HSequenceOfAx2 GetHandle() {
-	return *(Handle_GeomFill_HSequenceOfAx2*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_HSequenceOfAx2::Handle_GeomFill_HSequenceOfAx2 %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_HSequenceOfAx2;
 class Handle_GeomFill_HSequenceOfAx2 : public Handle_MMgt_TShared {
@@ -2680,20 +2442,6 @@ class Handle_GeomFill_HSequenceOfAx2 : public Handle_MMgt_TShared {
 %extend Handle_GeomFill_HSequenceOfAx2 {
     GeomFill_HSequenceOfAx2* GetObject() {
     return (GeomFill_HSequenceOfAx2*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_HSequenceOfAx2::~Handle_GeomFill_HSequenceOfAx2 %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_HSequenceOfAx2 {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2723,25 +2471,23 @@ class GeomFill_Line : public MMgt_TShared {
 };
 
 
-%feature("shadow") GeomFill_Line::~GeomFill_Line %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_Line {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_Line(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_Line {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_Line {
-	Handle_GeomFill_Line GetHandle() {
-	return *(Handle_GeomFill_Line*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_Line::Handle_GeomFill_Line %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_Line;
 class Handle_GeomFill_Line : public Handle_MMgt_TShared {
@@ -2759,20 +2505,6 @@ class Handle_GeomFill_Line : public Handle_MMgt_TShared {
 %extend Handle_GeomFill_Line {
     GeomFill_Line* GetObject() {
     return (GeomFill_Line*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_Line::~Handle_GeomFill_Line %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_Line {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2840,20 +2572,6 @@ class GeomFill_LocFunction {
 };
 
 
-%feature("shadow") GeomFill_LocFunction::~GeomFill_LocFunction %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_LocFunction {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_LocationLaw;
 class GeomFill_LocationLaw : public MMgt_TShared {
 	public:
@@ -2866,7 +2584,7 @@ class GeomFill_LocationLaw : public MMgt_TShared {
 		%feature("compactdefaultargs") GetCurve;
 		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HCurve
 ") GetCurve;
-		virtual const Handle_Adaptor3d_HCurve & GetCurve ();
+		Handle_Adaptor3d_HCurve GetCurve ();
 		%feature("compactdefaultargs") SetTrsf;
 		%feature("autodoc", "	* Set a transformation Matrix like the law M(t) become Mat * M(t)
 
@@ -3094,25 +2812,23 @@ class GeomFill_LocationLaw : public MMgt_TShared {
 };
 
 
-%feature("shadow") GeomFill_LocationLaw::~GeomFill_LocationLaw %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_LocationLaw {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_LocationLaw(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_LocationLaw {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_LocationLaw {
-	Handle_GeomFill_LocationLaw GetHandle() {
-	return *(Handle_GeomFill_LocationLaw*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_LocationLaw::Handle_GeomFill_LocationLaw %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_LocationLaw;
 class Handle_GeomFill_LocationLaw : public Handle_MMgt_TShared {
@@ -3130,20 +2846,6 @@ class Handle_GeomFill_LocationLaw : public Handle_MMgt_TShared {
 %extend Handle_GeomFill_LocationLaw {
     GeomFill_LocationLaw* GetObject() {
     return (GeomFill_LocationLaw*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_LocationLaw::~Handle_GeomFill_LocationLaw %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_LocationLaw {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3383,7 +3085,7 @@ class GeomFill_Pipe {
 
 	:rtype: Handle_Geom_Surface
 ") Surface;
-		const Handle_Geom_Surface & Surface ();
+		Handle_Geom_Surface Surface ();
 		%feature("compactdefaultargs") ExchangeUV;
 		%feature("autodoc", "	* The u parametric direction of the surface constructed by this algorithm usually corresponds to the evolution along the path and the v parametric direction corresponds to the evolution along the section(s). However, this rule is not respected when constructing certain specific Geom surfaces (typically cylindrical surfaces, surfaces of revolution, etc.) for which the parameterization is inversed. The ExchangeUV function checks for this, and returns true in all these specific cases. Warning Do not use this function before the surface is built.
 
@@ -3413,20 +3115,6 @@ class GeomFill_Pipe {
 };
 
 
-%feature("shadow") GeomFill_Pipe::~GeomFill_Pipe %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_Pipe {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_PlanFunc;
 class GeomFill_PlanFunc : public math_FunctionWithDerivative {
 	public:
@@ -3519,20 +3207,6 @@ class GeomFill_PlanFunc : public math_FunctionWithDerivative {
 };
 
 
-%feature("shadow") GeomFill_PlanFunc::~GeomFill_PlanFunc %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_PlanFunc {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_PolynomialConvertor;
 class GeomFill_PolynomialConvertor {
 	public:
@@ -3625,20 +3299,6 @@ class GeomFill_PolynomialConvertor {
 };
 
 
-%feature("shadow") GeomFill_PolynomialConvertor::~GeomFill_PolynomialConvertor %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_PolynomialConvertor {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_Profiler;
 class GeomFill_Profiler {
 	public:
@@ -3721,24 +3381,10 @@ class GeomFill_Profiler {
 	:type Index: int
 	:rtype: Handle_Geom_Curve
 ") Curve;
-		const Handle_Geom_Curve & Curve (const Standard_Integer Index);
+		Handle_Geom_Curve Curve (const Standard_Integer Index);
 };
 
 
-%feature("shadow") GeomFill_Profiler::~GeomFill_Profiler %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_Profiler {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_QuasiAngularConvertor;
 class GeomFill_QuasiAngularConvertor {
 	public:
@@ -3843,20 +3489,6 @@ class GeomFill_QuasiAngularConvertor {
 };
 
 
-%feature("shadow") GeomFill_QuasiAngularConvertor::~GeomFill_QuasiAngularConvertor %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_QuasiAngularConvertor {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_SectionLaw;
 class GeomFill_SectionLaw : public MMgt_TShared {
 	public:
@@ -4085,25 +3717,23 @@ class GeomFill_SectionLaw : public MMgt_TShared {
 };
 
 
-%feature("shadow") GeomFill_SectionLaw::~GeomFill_SectionLaw %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_SectionLaw {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_SectionLaw(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_SectionLaw {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_SectionLaw {
-	Handle_GeomFill_SectionLaw GetHandle() {
-	return *(Handle_GeomFill_SectionLaw*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_SectionLaw::Handle_GeomFill_SectionLaw %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_SectionLaw;
 class Handle_GeomFill_SectionLaw : public Handle_MMgt_TShared {
@@ -4121,20 +3751,6 @@ class Handle_GeomFill_SectionLaw : public Handle_MMgt_TShared {
 %extend Handle_GeomFill_SectionLaw {
     GeomFill_SectionLaw* GetObject() {
     return (GeomFill_SectionLaw*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_SectionLaw::~Handle_GeomFill_SectionLaw %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_SectionLaw {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4226,20 +3842,6 @@ class GeomFill_SectionPlacement {
 };
 
 
-%feature("shadow") GeomFill_SectionPlacement::~GeomFill_SectionPlacement %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_SectionPlacement {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_SequenceNodeOfSequenceOfAx2;
 class GeomFill_SequenceNodeOfSequenceOfAx2 : public TCollection_SeqNode {
 	public:
@@ -4260,25 +3862,23 @@ class GeomFill_SequenceNodeOfSequenceOfAx2 : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") GeomFill_SequenceNodeOfSequenceOfAx2::~GeomFill_SequenceNodeOfSequenceOfAx2 %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_SequenceNodeOfSequenceOfAx2 {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_SequenceNodeOfSequenceOfAx2(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_SequenceNodeOfSequenceOfAx2 {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_SequenceNodeOfSequenceOfAx2 {
-	Handle_GeomFill_SequenceNodeOfSequenceOfAx2 GetHandle() {
-	return *(Handle_GeomFill_SequenceNodeOfSequenceOfAx2*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_SequenceNodeOfSequenceOfAx2::Handle_GeomFill_SequenceNodeOfSequenceOfAx2 %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_SequenceNodeOfSequenceOfAx2;
 class Handle_GeomFill_SequenceNodeOfSequenceOfAx2 : public Handle_TCollection_SeqNode {
@@ -4296,20 +3896,6 @@ class Handle_GeomFill_SequenceNodeOfSequenceOfAx2 : public Handle_TCollection_Se
 %extend Handle_GeomFill_SequenceNodeOfSequenceOfAx2 {
     GeomFill_SequenceNodeOfSequenceOfAx2* GetObject() {
     return (GeomFill_SequenceNodeOfSequenceOfAx2*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_SequenceNodeOfSequenceOfAx2::~Handle_GeomFill_SequenceNodeOfSequenceOfAx2 %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_SequenceNodeOfSequenceOfAx2 {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4333,25 +3919,23 @@ class GeomFill_SequenceNodeOfSequenceOfTrsf : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") GeomFill_SequenceNodeOfSequenceOfTrsf::~GeomFill_SequenceNodeOfSequenceOfTrsf %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_SequenceNodeOfSequenceOfTrsf {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_SequenceNodeOfSequenceOfTrsf(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_SequenceNodeOfSequenceOfTrsf {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_SequenceNodeOfSequenceOfTrsf {
-	Handle_GeomFill_SequenceNodeOfSequenceOfTrsf GetHandle() {
-	return *(Handle_GeomFill_SequenceNodeOfSequenceOfTrsf*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_SequenceNodeOfSequenceOfTrsf::Handle_GeomFill_SequenceNodeOfSequenceOfTrsf %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_SequenceNodeOfSequenceOfTrsf;
 class Handle_GeomFill_SequenceNodeOfSequenceOfTrsf : public Handle_TCollection_SeqNode {
@@ -4369,20 +3953,6 @@ class Handle_GeomFill_SequenceNodeOfSequenceOfTrsf : public Handle_TCollection_S
 %extend Handle_GeomFill_SequenceNodeOfSequenceOfTrsf {
     GeomFill_SequenceNodeOfSequenceOfTrsf* GetObject() {
     return (GeomFill_SequenceNodeOfSequenceOfTrsf*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_SequenceNodeOfSequenceOfTrsf::~Handle_GeomFill_SequenceNodeOfSequenceOfTrsf %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_SequenceNodeOfSequenceOfTrsf {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4518,20 +4088,6 @@ class GeomFill_SequenceOfAx2 : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") GeomFill_SequenceOfAx2::~GeomFill_SequenceOfAx2 %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_SequenceOfAx2 {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_SequenceOfTrsf;
 class GeomFill_SequenceOfTrsf : public TCollection_BaseSequence {
 	public:
@@ -4664,20 +4220,6 @@ class GeomFill_SequenceOfTrsf : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") GeomFill_SequenceOfTrsf::~GeomFill_SequenceOfTrsf %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_SequenceOfTrsf {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_SnglrFunc;
 class GeomFill_SnglrFunc : public Adaptor3d_Curve {
 	public:
@@ -4814,20 +4356,6 @@ class GeomFill_SnglrFunc : public Adaptor3d_Curve {
 };
 
 
-%feature("shadow") GeomFill_SnglrFunc::~GeomFill_SnglrFunc %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_SnglrFunc {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_Sweep;
 class GeomFill_Sweep {
 	public:
@@ -4968,20 +4496,6 @@ class GeomFill_Sweep {
 };
 
 
-%feature("shadow") GeomFill_Sweep::~GeomFill_Sweep %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_Sweep {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_SweepFunction;
 class GeomFill_SweepFunction : public Approx_SweepFunction {
 	public:
@@ -5200,25 +4714,23 @@ class GeomFill_SweepFunction : public Approx_SweepFunction {
 };
 
 
-%feature("shadow") GeomFill_SweepFunction::~GeomFill_SweepFunction %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_SweepFunction {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_SweepFunction(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_SweepFunction {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_SweepFunction {
-	Handle_GeomFill_SweepFunction GetHandle() {
-	return *(Handle_GeomFill_SweepFunction*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_SweepFunction::Handle_GeomFill_SweepFunction %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_SweepFunction;
 class Handle_GeomFill_SweepFunction : public Handle_Approx_SweepFunction {
@@ -5236,20 +4748,6 @@ class Handle_GeomFill_SweepFunction : public Handle_Approx_SweepFunction {
 %extend Handle_GeomFill_SweepFunction {
     GeomFill_SweepFunction* GetObject() {
     return (GeomFill_SweepFunction*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_SweepFunction::~Handle_GeomFill_SweepFunction %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_SweepFunction {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5309,20 +4807,6 @@ class GeomFill_Tensor {
 };
 
 
-%feature("shadow") GeomFill_Tensor::~GeomFill_Tensor %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_Tensor {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_TgtField;
 class GeomFill_TgtField : public MMgt_TShared {
 	public:
@@ -5367,25 +4851,23 @@ class GeomFill_TgtField : public MMgt_TShared {
 };
 
 
-%feature("shadow") GeomFill_TgtField::~GeomFill_TgtField %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_TgtField {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_TgtField(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_TgtField {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_TgtField {
-	Handle_GeomFill_TgtField GetHandle() {
-	return *(Handle_GeomFill_TgtField*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_TgtField::Handle_GeomFill_TgtField %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_TgtField;
 class Handle_GeomFill_TgtField : public Handle_MMgt_TShared {
@@ -5403,20 +4885,6 @@ class Handle_GeomFill_TgtField : public Handle_MMgt_TShared {
 %extend Handle_GeomFill_TgtField {
     GeomFill_TgtField* GetObject() {
     return (GeomFill_TgtField*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_TgtField::~Handle_GeomFill_TgtField %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_TgtField {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5564,25 +5032,23 @@ class GeomFill_TrihedronLaw : public MMgt_TShared {
 };
 
 
-%feature("shadow") GeomFill_TrihedronLaw::~GeomFill_TrihedronLaw %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_TrihedronLaw {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_TrihedronLaw(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_TrihedronLaw {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_TrihedronLaw {
-	Handle_GeomFill_TrihedronLaw GetHandle() {
-	return *(Handle_GeomFill_TrihedronLaw*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_TrihedronLaw::Handle_GeomFill_TrihedronLaw %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_TrihedronLaw;
 class Handle_GeomFill_TrihedronLaw : public Handle_MMgt_TShared {
@@ -5600,20 +5066,6 @@ class Handle_GeomFill_TrihedronLaw : public Handle_MMgt_TShared {
 %extend Handle_GeomFill_TrihedronLaw {
     GeomFill_TrihedronLaw* GetObject() {
     return (GeomFill_TrihedronLaw*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_TrihedronLaw::~Handle_GeomFill_TrihedronLaw %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_TrihedronLaw {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5701,25 +5153,23 @@ class GeomFill_BoundWithSurf : public GeomFill_Boundary {
 };
 
 
-%feature("shadow") GeomFill_BoundWithSurf::~GeomFill_BoundWithSurf %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_BoundWithSurf {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_BoundWithSurf(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_BoundWithSurf {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_BoundWithSurf {
-	Handle_GeomFill_BoundWithSurf GetHandle() {
-	return *(Handle_GeomFill_BoundWithSurf*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_BoundWithSurf::Handle_GeomFill_BoundWithSurf %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_BoundWithSurf;
 class Handle_GeomFill_BoundWithSurf : public Handle_GeomFill_Boundary {
@@ -5737,20 +5187,6 @@ class Handle_GeomFill_BoundWithSurf : public Handle_GeomFill_Boundary {
 %extend Handle_GeomFill_BoundWithSurf {
     GeomFill_BoundWithSurf* GetObject() {
     return (GeomFill_BoundWithSurf*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_BoundWithSurf::~Handle_GeomFill_BoundWithSurf %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_BoundWithSurf {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5878,25 +5314,23 @@ class GeomFill_ConstantBiNormal : public GeomFill_TrihedronLaw {
 };
 
 
-%feature("shadow") GeomFill_ConstantBiNormal::~GeomFill_ConstantBiNormal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_ConstantBiNormal {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_ConstantBiNormal(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_ConstantBiNormal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_ConstantBiNormal {
-	Handle_GeomFill_ConstantBiNormal GetHandle() {
-	return *(Handle_GeomFill_ConstantBiNormal*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_ConstantBiNormal::Handle_GeomFill_ConstantBiNormal %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_ConstantBiNormal;
 class Handle_GeomFill_ConstantBiNormal : public Handle_GeomFill_TrihedronLaw {
@@ -5914,20 +5348,6 @@ class Handle_GeomFill_ConstantBiNormal : public Handle_GeomFill_TrihedronLaw {
 %extend Handle_GeomFill_ConstantBiNormal {
     GeomFill_ConstantBiNormal* GetObject() {
     return (GeomFill_ConstantBiNormal*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_ConstantBiNormal::~Handle_GeomFill_ConstantBiNormal %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_ConstantBiNormal {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6005,20 +5425,6 @@ class GeomFill_Coons : public GeomFill_Filling {
 };
 
 
-%feature("shadow") GeomFill_Coons::~GeomFill_Coons %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_Coons {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_CorrectedFrenet;
 class GeomFill_CorrectedFrenet : public GeomFill_TrihedronLaw {
 	public:
@@ -6161,25 +5567,23 @@ class GeomFill_CorrectedFrenet : public GeomFill_TrihedronLaw {
 };
 
 
-%feature("shadow") GeomFill_CorrectedFrenet::~GeomFill_CorrectedFrenet %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_CorrectedFrenet {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_CorrectedFrenet(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_CorrectedFrenet {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_CorrectedFrenet {
-	Handle_GeomFill_CorrectedFrenet GetHandle() {
-	return *(Handle_GeomFill_CorrectedFrenet*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_CorrectedFrenet::Handle_GeomFill_CorrectedFrenet %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_CorrectedFrenet;
 class Handle_GeomFill_CorrectedFrenet : public Handle_GeomFill_TrihedronLaw {
@@ -6197,20 +5601,6 @@ class Handle_GeomFill_CorrectedFrenet : public Handle_GeomFill_TrihedronLaw {
 %extend Handle_GeomFill_CorrectedFrenet {
     GeomFill_CorrectedFrenet* GetObject() {
     return (GeomFill_CorrectedFrenet*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_CorrectedFrenet::~Handle_GeomFill_CorrectedFrenet %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_CorrectedFrenet {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6232,7 +5622,7 @@ class GeomFill_CurveAndTrihedron : public GeomFill_LocationLaw {
 		%feature("compactdefaultargs") GetCurve;
 		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HCurve
 ") GetCurve;
-		virtual const Handle_Adaptor3d_HCurve & GetCurve ();
+		Handle_Adaptor3d_HCurve GetCurve ();
 		%feature("compactdefaultargs") SetTrsf;
 		%feature("autodoc", "	* Set a transformation Matrix like the law M(t) become Mat * M(t)
 
@@ -6406,25 +5796,23 @@ class GeomFill_CurveAndTrihedron : public GeomFill_LocationLaw {
 };
 
 
-%feature("shadow") GeomFill_CurveAndTrihedron::~GeomFill_CurveAndTrihedron %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_CurveAndTrihedron {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_CurveAndTrihedron(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_CurveAndTrihedron {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_CurveAndTrihedron {
-	Handle_GeomFill_CurveAndTrihedron GetHandle() {
-	return *(Handle_GeomFill_CurveAndTrihedron*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_CurveAndTrihedron::Handle_GeomFill_CurveAndTrihedron %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_CurveAndTrihedron;
 class Handle_GeomFill_CurveAndTrihedron : public Handle_GeomFill_LocationLaw {
@@ -6442,20 +5830,6 @@ class Handle_GeomFill_CurveAndTrihedron : public Handle_GeomFill_LocationLaw {
 %extend Handle_GeomFill_CurveAndTrihedron {
     GeomFill_CurveAndTrihedron* GetObject() {
     return (GeomFill_CurveAndTrihedron*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_CurveAndTrihedron::~Handle_GeomFill_CurveAndTrihedron %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_CurveAndTrihedron {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6625,20 +5999,6 @@ class GeomFill_Curved : public GeomFill_Filling {
 };
 
 
-%feature("shadow") GeomFill_Curved::~GeomFill_Curved %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_Curved {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_Darboux;
 class GeomFill_Darboux : public GeomFill_TrihedronLaw {
 	public:
@@ -6755,25 +6115,23 @@ class GeomFill_Darboux : public GeomFill_TrihedronLaw {
 };
 
 
-%feature("shadow") GeomFill_Darboux::~GeomFill_Darboux %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_Darboux {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_Darboux(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_Darboux {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_Darboux {
-	Handle_GeomFill_Darboux GetHandle() {
-	return *(Handle_GeomFill_Darboux*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_Darboux::Handle_GeomFill_Darboux %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_Darboux;
 class Handle_GeomFill_Darboux : public Handle_GeomFill_TrihedronLaw {
@@ -6791,20 +6149,6 @@ class Handle_GeomFill_Darboux : public Handle_GeomFill_TrihedronLaw {
 %extend Handle_GeomFill_Darboux {
     GeomFill_Darboux* GetObject() {
     return (GeomFill_Darboux*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_Darboux::~Handle_GeomFill_Darboux %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_Darboux {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6874,25 +6218,23 @@ class GeomFill_DegeneratedBound : public GeomFill_Boundary {
 };
 
 
-%feature("shadow") GeomFill_DegeneratedBound::~GeomFill_DegeneratedBound %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_DegeneratedBound {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_DegeneratedBound(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_DegeneratedBound {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_DegeneratedBound {
-	Handle_GeomFill_DegeneratedBound GetHandle() {
-	return *(Handle_GeomFill_DegeneratedBound*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_DegeneratedBound::Handle_GeomFill_DegeneratedBound %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_DegeneratedBound;
 class Handle_GeomFill_DegeneratedBound : public Handle_GeomFill_Boundary {
@@ -6910,20 +6252,6 @@ class Handle_GeomFill_DegeneratedBound : public Handle_GeomFill_Boundary {
 %extend Handle_GeomFill_DegeneratedBound {
     GeomFill_DegeneratedBound* GetObject() {
     return (GeomFill_DegeneratedBound*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_DegeneratedBound::~Handle_GeomFill_DegeneratedBound %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_DegeneratedBound {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -7053,25 +6381,23 @@ class GeomFill_DiscreteTrihedron : public GeomFill_TrihedronLaw {
 };
 
 
-%feature("shadow") GeomFill_DiscreteTrihedron::~GeomFill_DiscreteTrihedron %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_DiscreteTrihedron {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_DiscreteTrihedron(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_DiscreteTrihedron {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_DiscreteTrihedron {
-	Handle_GeomFill_DiscreteTrihedron GetHandle() {
-	return *(Handle_GeomFill_DiscreteTrihedron*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_DiscreteTrihedron::Handle_GeomFill_DiscreteTrihedron %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_DiscreteTrihedron;
 class Handle_GeomFill_DiscreteTrihedron : public Handle_GeomFill_TrihedronLaw {
@@ -7089,20 +6415,6 @@ class Handle_GeomFill_DiscreteTrihedron : public Handle_GeomFill_TrihedronLaw {
 %extend Handle_GeomFill_DiscreteTrihedron {
     GeomFill_DiscreteTrihedron* GetObject() {
     return (GeomFill_DiscreteTrihedron*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_DiscreteTrihedron::~Handle_GeomFill_DiscreteTrihedron %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_DiscreteTrihedron {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -7230,25 +6542,23 @@ class GeomFill_DraftTrihedron : public GeomFill_TrihedronLaw {
 };
 
 
-%feature("shadow") GeomFill_DraftTrihedron::~GeomFill_DraftTrihedron %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_DraftTrihedron {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_DraftTrihedron(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_DraftTrihedron {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_DraftTrihedron {
-	Handle_GeomFill_DraftTrihedron GetHandle() {
-	return *(Handle_GeomFill_DraftTrihedron*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_DraftTrihedron::Handle_GeomFill_DraftTrihedron %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_DraftTrihedron;
 class Handle_GeomFill_DraftTrihedron : public Handle_GeomFill_TrihedronLaw {
@@ -7266,20 +6576,6 @@ class Handle_GeomFill_DraftTrihedron : public Handle_GeomFill_TrihedronLaw {
 %extend Handle_GeomFill_DraftTrihedron {
     GeomFill_DraftTrihedron* GetObject() {
     return (GeomFill_DraftTrihedron*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_DraftTrihedron::~Handle_GeomFill_DraftTrihedron %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_DraftTrihedron {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -7495,25 +6791,23 @@ class GeomFill_EvolvedSection : public GeomFill_SectionLaw {
 };
 
 
-%feature("shadow") GeomFill_EvolvedSection::~GeomFill_EvolvedSection %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_EvolvedSection {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_EvolvedSection(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_EvolvedSection {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_EvolvedSection {
-	Handle_GeomFill_EvolvedSection GetHandle() {
-	return *(Handle_GeomFill_EvolvedSection*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_EvolvedSection::Handle_GeomFill_EvolvedSection %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_EvolvedSection;
 class Handle_GeomFill_EvolvedSection : public Handle_GeomFill_SectionLaw {
@@ -7531,20 +6825,6 @@ class Handle_GeomFill_EvolvedSection : public Handle_GeomFill_SectionLaw {
 %extend Handle_GeomFill_EvolvedSection {
     GeomFill_EvolvedSection* GetObject() {
     return (GeomFill_EvolvedSection*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_EvolvedSection::~Handle_GeomFill_EvolvedSection %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_EvolvedSection {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -7662,25 +6942,23 @@ class GeomFill_Fixed : public GeomFill_TrihedronLaw {
 };
 
 
-%feature("shadow") GeomFill_Fixed::~GeomFill_Fixed %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_Fixed {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_Fixed(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_Fixed {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_Fixed {
-	Handle_GeomFill_Fixed GetHandle() {
-	return *(Handle_GeomFill_Fixed*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_Fixed::Handle_GeomFill_Fixed %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_Fixed;
 class Handle_GeomFill_Fixed : public Handle_GeomFill_TrihedronLaw {
@@ -7698,20 +6976,6 @@ class Handle_GeomFill_Fixed : public Handle_GeomFill_TrihedronLaw {
 %extend Handle_GeomFill_Fixed {
     GeomFill_Fixed* GetObject() {
     return (GeomFill_Fixed*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_Fixed::~Handle_GeomFill_Fixed %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_Fixed {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -7841,25 +7105,23 @@ class GeomFill_Frenet : public GeomFill_TrihedronLaw {
 };
 
 
-%feature("shadow") GeomFill_Frenet::~GeomFill_Frenet %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_Frenet {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_Frenet(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_Frenet {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_Frenet {
-	Handle_GeomFill_Frenet GetHandle() {
-	return *(Handle_GeomFill_Frenet*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_Frenet::Handle_GeomFill_Frenet %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_Frenet;
 class Handle_GeomFill_Frenet : public Handle_GeomFill_TrihedronLaw {
@@ -7877,20 +7139,6 @@ class Handle_GeomFill_Frenet : public Handle_GeomFill_TrihedronLaw {
 %extend Handle_GeomFill_Frenet {
     GeomFill_Frenet* GetObject() {
     return (GeomFill_Frenet*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_Frenet::~Handle_GeomFill_Frenet %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_Frenet {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -7912,24 +7160,10 @@ class GeomFill_Generator : public GeomFill_Profiler {
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "	:rtype: Handle_Geom_Surface
 ") Surface;
-		const Handle_Geom_Surface & Surface ();
+		Handle_Geom_Surface Surface ();
 };
 
 
-%feature("shadow") GeomFill_Generator::~GeomFill_Generator %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_Generator {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_LocationDraft;
 class GeomFill_LocationDraft : public GeomFill_LocationLaw {
 	public:
@@ -7962,7 +7196,7 @@ class GeomFill_LocationDraft : public GeomFill_LocationLaw {
 		%feature("compactdefaultargs") GetCurve;
 		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HCurve
 ") GetCurve;
-		virtual const Handle_Adaptor3d_HCurve & GetCurve ();
+		Handle_Adaptor3d_HCurve GetCurve ();
 		%feature("compactdefaultargs") SetTrsf;
 		%feature("autodoc", "	:param Transfo:
 	:type Transfo: gp_Mat
@@ -8176,25 +7410,23 @@ class GeomFill_LocationDraft : public GeomFill_LocationLaw {
 };
 
 
-%feature("shadow") GeomFill_LocationDraft::~GeomFill_LocationDraft %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_LocationDraft {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_LocationDraft(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_LocationDraft {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_LocationDraft {
-	Handle_GeomFill_LocationDraft GetHandle() {
-	return *(Handle_GeomFill_LocationDraft*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_LocationDraft::Handle_GeomFill_LocationDraft %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_LocationDraft;
 class Handle_GeomFill_LocationDraft : public Handle_GeomFill_LocationLaw {
@@ -8212,20 +7444,6 @@ class Handle_GeomFill_LocationDraft : public Handle_GeomFill_LocationLaw {
 %extend Handle_GeomFill_LocationDraft {
     GeomFill_LocationDraft* GetObject() {
     return (GeomFill_LocationDraft*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_LocationDraft::~Handle_GeomFill_LocationDraft %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_LocationDraft {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -8267,7 +7485,7 @@ class GeomFill_LocationGuide : public GeomFill_LocationLaw {
 		%feature("compactdefaultargs") GetCurve;
 		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HCurve
 ") GetCurve;
-		virtual const Handle_Adaptor3d_HCurve & GetCurve ();
+		Handle_Adaptor3d_HCurve GetCurve ();
 		%feature("compactdefaultargs") SetTrsf;
 		%feature("autodoc", "	:param Transfo:
 	:type Transfo: gp_Mat
@@ -8509,25 +7727,23 @@ class GeomFill_LocationGuide : public GeomFill_LocationLaw {
 };
 
 
-%feature("shadow") GeomFill_LocationGuide::~GeomFill_LocationGuide %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_LocationGuide {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_LocationGuide(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_LocationGuide {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_LocationGuide {
-	Handle_GeomFill_LocationGuide GetHandle() {
-	return *(Handle_GeomFill_LocationGuide*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_LocationGuide::Handle_GeomFill_LocationGuide %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_LocationGuide;
 class Handle_GeomFill_LocationGuide : public Handle_GeomFill_LocationLaw {
@@ -8545,20 +7761,6 @@ class Handle_GeomFill_LocationGuide : public Handle_GeomFill_LocationLaw {
 %extend Handle_GeomFill_LocationGuide {
     GeomFill_LocationGuide* GetObject() {
     return (GeomFill_LocationGuide*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_LocationGuide::~Handle_GeomFill_LocationGuide %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_LocationGuide {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -8642,20 +7844,6 @@ class GeomFill_SectionGenerator : public GeomFill_Profiler {
 };
 
 
-%feature("shadow") GeomFill_SectionGenerator::~GeomFill_SectionGenerator %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_SectionGenerator {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_SimpleBound;
 class GeomFill_SimpleBound : public GeomFill_Boundary {
 	public:
@@ -8720,25 +7908,23 @@ class GeomFill_SimpleBound : public GeomFill_Boundary {
 };
 
 
-%feature("shadow") GeomFill_SimpleBound::~GeomFill_SimpleBound %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_SimpleBound {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_SimpleBound(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_SimpleBound {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_SimpleBound {
-	Handle_GeomFill_SimpleBound GetHandle() {
-	return *(Handle_GeomFill_SimpleBound*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_SimpleBound::Handle_GeomFill_SimpleBound %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_SimpleBound;
 class Handle_GeomFill_SimpleBound : public Handle_GeomFill_Boundary {
@@ -8756,20 +7942,6 @@ class Handle_GeomFill_SimpleBound : public Handle_GeomFill_Boundary {
 %extend Handle_GeomFill_SimpleBound {
     GeomFill_SimpleBound* GetObject() {
     return (GeomFill_SimpleBound*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_SimpleBound::~Handle_GeomFill_SimpleBound %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_SimpleBound {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -8847,20 +8019,6 @@ class GeomFill_Stretch : public GeomFill_Filling {
 };
 
 
-%feature("shadow") GeomFill_Stretch::~GeomFill_Stretch %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GeomFill_Stretch {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GeomFill_TgtOnCoons;
 class GeomFill_TgtOnCoons : public GeomFill_TgtField {
 	public:
@@ -8903,25 +8061,23 @@ class GeomFill_TgtOnCoons : public GeomFill_TgtField {
 };
 
 
-%feature("shadow") GeomFill_TgtOnCoons::~GeomFill_TgtOnCoons %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_TgtOnCoons {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_TgtOnCoons(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_TgtOnCoons {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_TgtOnCoons {
-	Handle_GeomFill_TgtOnCoons GetHandle() {
-	return *(Handle_GeomFill_TgtOnCoons*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_TgtOnCoons::Handle_GeomFill_TgtOnCoons %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_TgtOnCoons;
 class Handle_GeomFill_TgtOnCoons : public Handle_GeomFill_TgtField {
@@ -8939,20 +8095,6 @@ class Handle_GeomFill_TgtOnCoons : public Handle_GeomFill_TgtField {
 %extend Handle_GeomFill_TgtOnCoons {
     GeomFill_TgtOnCoons* GetObject() {
     return (GeomFill_TgtOnCoons*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_TgtOnCoons::~Handle_GeomFill_TgtOnCoons %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_TgtOnCoons {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -8980,25 +8122,23 @@ class GeomFill_TrihedronWithGuide : public GeomFill_TrihedronLaw {
 };
 
 
-%feature("shadow") GeomFill_TrihedronWithGuide::~GeomFill_TrihedronWithGuide %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_TrihedronWithGuide {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_TrihedronWithGuide(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_TrihedronWithGuide {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_TrihedronWithGuide {
-	Handle_GeomFill_TrihedronWithGuide GetHandle() {
-	return *(Handle_GeomFill_TrihedronWithGuide*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_TrihedronWithGuide::Handle_GeomFill_TrihedronWithGuide %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_TrihedronWithGuide;
 class Handle_GeomFill_TrihedronWithGuide : public Handle_GeomFill_TrihedronLaw {
@@ -9016,20 +8156,6 @@ class Handle_GeomFill_TrihedronWithGuide : public Handle_GeomFill_TrihedronLaw {
 %extend Handle_GeomFill_TrihedronWithGuide {
     GeomFill_TrihedronWithGuide* GetObject() {
     return (GeomFill_TrihedronWithGuide*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_TrihedronWithGuide::~Handle_GeomFill_TrihedronWithGuide %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_TrihedronWithGuide {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -9247,25 +8373,23 @@ class GeomFill_UniformSection : public GeomFill_SectionLaw {
 };
 
 
-%feature("shadow") GeomFill_UniformSection::~GeomFill_UniformSection %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_UniformSection {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_UniformSection(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_UniformSection {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_UniformSection {
-	Handle_GeomFill_UniformSection GetHandle() {
-	return *(Handle_GeomFill_UniformSection*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_UniformSection::Handle_GeomFill_UniformSection %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_UniformSection;
 class Handle_GeomFill_UniformSection : public Handle_GeomFill_SectionLaw {
@@ -9283,20 +8407,6 @@ class Handle_GeomFill_UniformSection : public Handle_GeomFill_SectionLaw {
 %extend Handle_GeomFill_UniformSection {
     GeomFill_UniformSection* GetObject() {
     return (GeomFill_UniformSection*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_UniformSection::~Handle_GeomFill_UniformSection %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_UniformSection {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -9440,25 +8550,23 @@ class GeomFill_GuideTrihedronAC : public GeomFill_TrihedronWithGuide {
 };
 
 
-%feature("shadow") GeomFill_GuideTrihedronAC::~GeomFill_GuideTrihedronAC %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_GuideTrihedronAC {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_GuideTrihedronAC(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_GuideTrihedronAC {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_GuideTrihedronAC {
-	Handle_GeomFill_GuideTrihedronAC GetHandle() {
-	return *(Handle_GeomFill_GuideTrihedronAC*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_GuideTrihedronAC::Handle_GeomFill_GuideTrihedronAC %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_GuideTrihedronAC;
 class Handle_GeomFill_GuideTrihedronAC : public Handle_GeomFill_TrihedronWithGuide {
@@ -9476,20 +8584,6 @@ class Handle_GeomFill_GuideTrihedronAC : public Handle_GeomFill_TrihedronWithGui
 %extend Handle_GeomFill_GuideTrihedronAC {
     GeomFill_GuideTrihedronAC* GetObject() {
     return (GeomFill_GuideTrihedronAC*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_GuideTrihedronAC::~Handle_GeomFill_GuideTrihedronAC %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_GuideTrihedronAC {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -9639,25 +8733,23 @@ class GeomFill_GuideTrihedronPlan : public GeomFill_TrihedronWithGuide {
 };
 
 
-%feature("shadow") GeomFill_GuideTrihedronPlan::~GeomFill_GuideTrihedronPlan %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend GeomFill_GuideTrihedronPlan {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_GeomFill_GuideTrihedronPlan(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend GeomFill_GuideTrihedronPlan {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend GeomFill_GuideTrihedronPlan {
-	Handle_GeomFill_GuideTrihedronPlan GetHandle() {
-	return *(Handle_GeomFill_GuideTrihedronPlan*) &$self;
-	}
-};
+%pythonappend Handle_GeomFill_GuideTrihedronPlan::Handle_GeomFill_GuideTrihedronPlan %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_GeomFill_GuideTrihedronPlan;
 class Handle_GeomFill_GuideTrihedronPlan : public Handle_GeomFill_TrihedronWithGuide {
@@ -9675,20 +8767,6 @@ class Handle_GeomFill_GuideTrihedronPlan : public Handle_GeomFill_TrihedronWithG
 %extend Handle_GeomFill_GuideTrihedronPlan {
     GeomFill_GuideTrihedronPlan* GetObject() {
     return (GeomFill_GuideTrihedronPlan*)$self->Access();
-    }
-};
-%feature("shadow") Handle_GeomFill_GuideTrihedronPlan::~Handle_GeomFill_GuideTrihedronPlan %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_GeomFill_GuideTrihedronPlan {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

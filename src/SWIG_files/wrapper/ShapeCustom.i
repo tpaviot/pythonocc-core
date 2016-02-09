@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include ShapeCustom_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -140,20 +152,6 @@ class ShapeCustom {
 };
 
 
-%feature("shadow") ShapeCustom::~ShapeCustom %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeCustom {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeCustom_ConvertToBSpline;
 class ShapeCustom_ConvertToBSpline : public BRepTools_Modification {
 	public:
@@ -290,25 +288,23 @@ class ShapeCustom_ConvertToBSpline : public BRepTools_Modification {
 };
 
 
-%feature("shadow") ShapeCustom_ConvertToBSpline::~ShapeCustom_ConvertToBSpline %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeCustom_ConvertToBSpline {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeCustom_ConvertToBSpline(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeCustom_ConvertToBSpline {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeCustom_ConvertToBSpline {
-	Handle_ShapeCustom_ConvertToBSpline GetHandle() {
-	return *(Handle_ShapeCustom_ConvertToBSpline*) &$self;
-	}
-};
+%pythonappend Handle_ShapeCustom_ConvertToBSpline::Handle_ShapeCustom_ConvertToBSpline %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeCustom_ConvertToBSpline;
 class Handle_ShapeCustom_ConvertToBSpline : public Handle_BRepTools_Modification {
@@ -326,20 +322,6 @@ class Handle_ShapeCustom_ConvertToBSpline : public Handle_BRepTools_Modification
 %extend Handle_ShapeCustom_ConvertToBSpline {
     ShapeCustom_ConvertToBSpline* GetObject() {
     return (ShapeCustom_ConvertToBSpline*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeCustom_ConvertToBSpline::~Handle_ShapeCustom_ConvertToBSpline %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeCustom_ConvertToBSpline {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -375,20 +357,6 @@ class ShapeCustom_Curve {
 };
 
 
-%feature("shadow") ShapeCustom_Curve::~ShapeCustom_Curve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeCustom_Curve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class ShapeCustom_Curve2d {
 	public:
 		%feature("compactdefaultargs") IsLinear;
@@ -436,20 +404,6 @@ class ShapeCustom_Curve2d {
 };
 
 
-%feature("shadow") ShapeCustom_Curve2d::~ShapeCustom_Curve2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeCustom_Curve2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeCustom_DirectModification;
 class ShapeCustom_DirectModification : public BRepTools_Modification {
 	public:
@@ -554,25 +508,23 @@ class ShapeCustom_DirectModification : public BRepTools_Modification {
 };
 
 
-%feature("shadow") ShapeCustom_DirectModification::~ShapeCustom_DirectModification %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeCustom_DirectModification {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeCustom_DirectModification(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeCustom_DirectModification {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeCustom_DirectModification {
-	Handle_ShapeCustom_DirectModification GetHandle() {
-	return *(Handle_ShapeCustom_DirectModification*) &$self;
-	}
-};
+%pythonappend Handle_ShapeCustom_DirectModification::Handle_ShapeCustom_DirectModification %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeCustom_DirectModification;
 class Handle_ShapeCustom_DirectModification : public Handle_BRepTools_Modification {
@@ -590,20 +542,6 @@ class Handle_ShapeCustom_DirectModification : public Handle_BRepTools_Modificati
 %extend Handle_ShapeCustom_DirectModification {
     ShapeCustom_DirectModification* GetObject() {
     return (ShapeCustom_DirectModification*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeCustom_DirectModification::~Handle_ShapeCustom_DirectModification %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeCustom_DirectModification {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -827,25 +765,23 @@ class ShapeCustom_RestrictionParameters : public MMgt_TShared {
             };
 
 
-%feature("shadow") ShapeCustom_RestrictionParameters::~ShapeCustom_RestrictionParameters %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeCustom_RestrictionParameters {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeCustom_RestrictionParameters(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeCustom_RestrictionParameters {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeCustom_RestrictionParameters {
-	Handle_ShapeCustom_RestrictionParameters GetHandle() {
-	return *(Handle_ShapeCustom_RestrictionParameters*) &$self;
-	}
-};
+%pythonappend Handle_ShapeCustom_RestrictionParameters::Handle_ShapeCustom_RestrictionParameters %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeCustom_RestrictionParameters;
 class Handle_ShapeCustom_RestrictionParameters : public Handle_MMgt_TShared {
@@ -863,20 +799,6 @@ class Handle_ShapeCustom_RestrictionParameters : public Handle_MMgt_TShared {
 %extend Handle_ShapeCustom_RestrictionParameters {
     ShapeCustom_RestrictionParameters* GetObject() {
     return (ShapeCustom_RestrictionParameters*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeCustom_RestrictionParameters::~Handle_ShapeCustom_RestrictionParameters %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeCustom_RestrictionParameters {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -928,20 +850,6 @@ class ShapeCustom_Surface {
 };
 
 
-%feature("shadow") ShapeCustom_Surface::~ShapeCustom_Surface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ShapeCustom_Surface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ShapeCustom_TrsfModification;
 class ShapeCustom_TrsfModification : public BRepTools_TrsfModification {
 	public:
@@ -1032,25 +940,23 @@ class ShapeCustom_TrsfModification : public BRepTools_TrsfModification {
 };
 
 
-%feature("shadow") ShapeCustom_TrsfModification::~ShapeCustom_TrsfModification %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ShapeCustom_TrsfModification {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ShapeCustom_TrsfModification(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ShapeCustom_TrsfModification {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ShapeCustom_TrsfModification {
-	Handle_ShapeCustom_TrsfModification GetHandle() {
-	return *(Handle_ShapeCustom_TrsfModification*) &$self;
-	}
-};
+%pythonappend Handle_ShapeCustom_TrsfModification::Handle_ShapeCustom_TrsfModification %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ShapeCustom_TrsfModification;
 class Handle_ShapeCustom_TrsfModification : public Handle_BRepTools_TrsfModification {
@@ -1068,20 +974,6 @@ class Handle_ShapeCustom_TrsfModification : public Handle_BRepTools_TrsfModifica
 %extend Handle_ShapeCustom_TrsfModification {
     ShapeCustom_TrsfModification* GetObject() {
     return (ShapeCustom_TrsfModification*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ShapeCustom_TrsfModification::~Handle_ShapeCustom_TrsfModification %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ShapeCustom_TrsfModification {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include FilletSurf_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -121,7 +133,7 @@ class FilletSurf_Builder {
 	:type Index: int
 	:rtype: Handle_Geom_Surface
 ") SurfaceFillet;
-		const Handle_Geom_Surface & SurfaceFillet (const Standard_Integer Index);
+		Handle_Geom_Surface SurfaceFillet (const Standard_Integer Index);
 		%feature("compactdefaultargs") TolApp3d;
 		%feature("autodoc", "	* gives the 3d tolerance reached during approximation of surface of index Index
 
@@ -153,7 +165,7 @@ class FilletSurf_Builder {
 	:type Index: int
 	:rtype: Handle_Geom_Curve
 ") CurveOnFace1;
-		const Handle_Geom_Curve & CurveOnFace1 (const Standard_Integer Index);
+		Handle_Geom_Curve CurveOnFace1 (const Standard_Integer Index);
 		%feature("compactdefaultargs") CurveOnFace2;
 		%feature("autodoc", "	* gives the 3d curve of SurfaceFillet(Index) on SupportFace2(Index)
 
@@ -161,7 +173,7 @@ class FilletSurf_Builder {
 	:type Index: int
 	:rtype: Handle_Geom_Curve
 ") CurveOnFace2;
-		const Handle_Geom_Curve & CurveOnFace2 (const Standard_Integer Index);
+		Handle_Geom_Curve CurveOnFace2 (const Standard_Integer Index);
 		%feature("compactdefaultargs") PCurveOnFace1;
 		%feature("autodoc", "	* //!gives the PCurve associated to CurvOnSup1(Index) on the support face
 
@@ -169,7 +181,7 @@ class FilletSurf_Builder {
 	:type Index: int
 	:rtype: Handle_Geom2d_Curve
 ") PCurveOnFace1;
-		const Handle_Geom2d_Curve & PCurveOnFace1 (const Standard_Integer Index);
+		Handle_Geom2d_Curve PCurveOnFace1 (const Standard_Integer Index);
 		%feature("compactdefaultargs") PCurve1OnFillet;
 		%feature("autodoc", "	* gives the PCurve associated to CurveOnFace1(Index) on the Fillet
 
@@ -177,7 +189,7 @@ class FilletSurf_Builder {
 	:type Index: int
 	:rtype: Handle_Geom2d_Curve
 ") PCurve1OnFillet;
-		const Handle_Geom2d_Curve & PCurve1OnFillet (const Standard_Integer Index);
+		Handle_Geom2d_Curve PCurve1OnFillet (const Standard_Integer Index);
 		%feature("compactdefaultargs") PCurveOnFace2;
 		%feature("autodoc", "	* gives the PCurve associated to CurveOnSup2(Index) on the support face
 
@@ -185,7 +197,7 @@ class FilletSurf_Builder {
 	:type Index: int
 	:rtype: Handle_Geom2d_Curve
 ") PCurveOnFace2;
-		const Handle_Geom2d_Curve & PCurveOnFace2 (const Standard_Integer Index);
+		Handle_Geom2d_Curve PCurveOnFace2 (const Standard_Integer Index);
 		%feature("compactdefaultargs") PCurve2OnFillet;
 		%feature("autodoc", "	* gives the PCurve associated to CurveOnSup2(Index) on the fillet
 
@@ -193,7 +205,7 @@ class FilletSurf_Builder {
 	:type Index: int
 	:rtype: Handle_Geom2d_Curve
 ") PCurve2OnFillet;
-		const Handle_Geom2d_Curve & PCurve2OnFillet (const Standard_Integer Index);
+		Handle_Geom2d_Curve PCurve2OnFillet (const Standard_Integer Index);
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "	* //!gives the parameter of the fillet on the first edge.
 
@@ -233,20 +245,6 @@ class FilletSurf_Builder {
 };
 
 
-%feature("shadow") FilletSurf_Builder::~FilletSurf_Builder %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend FilletSurf_Builder {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor FilletSurf_InternalBuilder;
 class FilletSurf_InternalBuilder : public ChFi3d_FilBuilder {
 	public:
@@ -295,7 +293,7 @@ class FilletSurf_InternalBuilder : public ChFi3d_FilBuilder {
 	:type Index: int
 	:rtype: Handle_Geom_Surface
 ") SurfaceFillet;
-		const Handle_Geom_Surface & SurfaceFillet (const Standard_Integer Index);
+		Handle_Geom_Surface SurfaceFillet (const Standard_Integer Index);
 		%feature("compactdefaultargs") TolApp3d;
 		%feature("autodoc", "	* gives the 3d tolerance reached during approximation of the surface of index Index
 
@@ -327,7 +325,7 @@ class FilletSurf_InternalBuilder : public ChFi3d_FilBuilder {
 	:type Index: int
 	:rtype: Handle_Geom_Curve
 ") CurveOnFace1;
-		const Handle_Geom_Curve & CurveOnFace1 (const Standard_Integer Index);
+		Handle_Geom_Curve CurveOnFace1 (const Standard_Integer Index);
 		%feature("compactdefaultargs") CurveOnFace2;
 		%feature("autodoc", "	* gives the 3d curve of SurfaceFillet(Index) on SupportFace2(Index)
 
@@ -335,7 +333,7 @@ class FilletSurf_InternalBuilder : public ChFi3d_FilBuilder {
 	:type Index: int
 	:rtype: Handle_Geom_Curve
 ") CurveOnFace2;
-		const Handle_Geom_Curve & CurveOnFace2 (const Standard_Integer Index);
+		Handle_Geom_Curve CurveOnFace2 (const Standard_Integer Index);
 		%feature("compactdefaultargs") PCurveOnFace1;
 		%feature("autodoc", "	* //!gives the PCurve associated to CurvOnSup1(Index) on the support face
 
@@ -343,7 +341,7 @@ class FilletSurf_InternalBuilder : public ChFi3d_FilBuilder {
 	:type Index: int
 	:rtype: Handle_Geom2d_Curve
 ") PCurveOnFace1;
-		const Handle_Geom2d_Curve & PCurveOnFace1 (const Standard_Integer Index);
+		Handle_Geom2d_Curve PCurveOnFace1 (const Standard_Integer Index);
 		%feature("compactdefaultargs") PCurve1OnFillet;
 		%feature("autodoc", "	* gives the PCurve associated to CurveOnFace1(Index) on the Fillet
 
@@ -351,7 +349,7 @@ class FilletSurf_InternalBuilder : public ChFi3d_FilBuilder {
 	:type Index: int
 	:rtype: Handle_Geom2d_Curve
 ") PCurve1OnFillet;
-		const Handle_Geom2d_Curve & PCurve1OnFillet (const Standard_Integer Index);
+		Handle_Geom2d_Curve PCurve1OnFillet (const Standard_Integer Index);
 		%feature("compactdefaultargs") PCurveOnFace2;
 		%feature("autodoc", "	* gives the PCurve associated to CurveOnSup2(Index) on the support face
 
@@ -359,7 +357,7 @@ class FilletSurf_InternalBuilder : public ChFi3d_FilBuilder {
 	:type Index: int
 	:rtype: Handle_Geom2d_Curve
 ") PCurveOnFace2;
-		const Handle_Geom2d_Curve & PCurveOnFace2 (const Standard_Integer Index);
+		Handle_Geom2d_Curve PCurveOnFace2 (const Standard_Integer Index);
 		%feature("compactdefaultargs") PCurve2OnFillet;
 		%feature("autodoc", "	* gives the PCurve associated to CurveOnSup2(Index) on the fillet
 
@@ -367,7 +365,7 @@ class FilletSurf_InternalBuilder : public ChFi3d_FilBuilder {
 	:type Index: int
 	:rtype: Handle_Geom2d_Curve
 ") PCurve2OnFillet;
-		const Handle_Geom2d_Curve & PCurve2OnFillet (const Standard_Integer Index);
+		Handle_Geom2d_Curve PCurve2OnFillet (const Standard_Integer Index);
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "	* //!gives the parameter of the fillet on the first edge.
 
@@ -411,17 +409,3 @@ class FilletSurf_InternalBuilder : public ChFi3d_FilBuilder {
 };
 
 
-%feature("shadow") FilletSurf_InternalBuilder::~FilletSurf_InternalBuilder %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend FilletSurf_InternalBuilder {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

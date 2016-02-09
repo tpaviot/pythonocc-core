@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include IntAna_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -257,20 +269,6 @@ class IntAna_Curve {
 };
 
 
-%feature("shadow") IntAna_Curve::~IntAna_Curve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntAna_Curve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntAna_Int3Pln;
 class IntAna_Int3Pln {
 	public:
@@ -323,20 +321,6 @@ class IntAna_Int3Pln {
 };
 
 
-%feature("shadow") IntAna_Int3Pln::~IntAna_Int3Pln %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntAna_Int3Pln {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntAna_IntConicQuad;
 class IntAna_IntConicQuad {
 	public:
@@ -625,20 +609,6 @@ class IntAna_IntConicQuad {
 };
 
 
-%feature("shadow") IntAna_IntConicQuad::~IntAna_IntConicQuad %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntAna_IntConicQuad {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntAna_IntLinTorus;
 class IntAna_IntLinTorus {
 	public:
@@ -709,20 +679,6 @@ class IntAna_IntLinTorus {
 };
 
 
-%feature("shadow") IntAna_IntLinTorus::~IntAna_IntLinTorus %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntAna_IntLinTorus {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntAna_IntQuadQuad;
 class IntAna_IntQuadQuad {
 	public:
@@ -871,20 +827,6 @@ class IntAna_IntQuadQuad {
 };
 
 
-%feature("shadow") IntAna_IntQuadQuad::~IntAna_IntQuadQuad %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntAna_IntQuadQuad {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntAna_ListIteratorOfListOfCurve;
 class IntAna_ListIteratorOfListOfCurve {
 	public:
@@ -919,20 +861,6 @@ class IntAna_ListIteratorOfListOfCurve {
 };
 
 
-%feature("shadow") IntAna_ListIteratorOfListOfCurve::~IntAna_ListIteratorOfListOfCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntAna_ListIteratorOfListOfCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntAna_ListNodeOfListOfCurve;
 class IntAna_ListNodeOfListOfCurve : public TCollection_MapNode {
 	public:
@@ -951,25 +879,23 @@ class IntAna_ListNodeOfListOfCurve : public TCollection_MapNode {
 };
 
 
-%feature("shadow") IntAna_ListNodeOfListOfCurve::~IntAna_ListNodeOfListOfCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend IntAna_ListNodeOfListOfCurve {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IntAna_ListNodeOfListOfCurve(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend IntAna_ListNodeOfListOfCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend IntAna_ListNodeOfListOfCurve {
-	Handle_IntAna_ListNodeOfListOfCurve GetHandle() {
-	return *(Handle_IntAna_ListNodeOfListOfCurve*) &$self;
-	}
-};
+%pythonappend Handle_IntAna_ListNodeOfListOfCurve::Handle_IntAna_ListNodeOfListOfCurve %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_IntAna_ListNodeOfListOfCurve;
 class Handle_IntAna_ListNodeOfListOfCurve : public Handle_TCollection_MapNode {
@@ -987,20 +913,6 @@ class Handle_IntAna_ListNodeOfListOfCurve : public Handle_TCollection_MapNode {
 %extend Handle_IntAna_ListNodeOfListOfCurve {
     IntAna_ListNodeOfListOfCurve* GetObject() {
     return (IntAna_ListNodeOfListOfCurve*)$self->Access();
-    }
-};
-%feature("shadow") Handle_IntAna_ListNodeOfListOfCurve::~Handle_IntAna_ListNodeOfListOfCurve %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_IntAna_ListNodeOfListOfCurve {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1128,20 +1040,6 @@ class IntAna_ListOfCurve {
 };
 
 
-%feature("shadow") IntAna_ListOfCurve::~IntAna_ListOfCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntAna_ListOfCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntAna_QuadQuadGeo;
 class IntAna_QuadQuadGeo {
 	public:
@@ -1600,20 +1498,6 @@ class IntAna_QuadQuadGeo {
 };
 
 
-%feature("shadow") IntAna_QuadQuadGeo::~IntAna_QuadQuadGeo %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntAna_QuadQuadGeo {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntAna_Quadric;
 class IntAna_Quadric {
 	public:
@@ -1744,17 +1628,3 @@ class IntAna_Quadric {
 };
 
 
-%feature("shadow") IntAna_Quadric::~IntAna_Quadric %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntAna_Quadric {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include Storage_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 typedef Storage_BaseDriver * Storage_Container;
@@ -88,20 +100,6 @@ class Storage {
 };
 
 
-%feature("shadow") Storage::~Storage %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Storage {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Storage_ArrayOfCallBack;
 class Storage_ArrayOfCallBack {
 	public:
@@ -174,30 +172,16 @@ class Storage_ArrayOfCallBack {
 	:type Index: int
 	:rtype: Handle_Storage_CallBack
 ") Value;
-		const Handle_Storage_CallBack & Value (const Standard_Integer Index);
+		Handle_Storage_CallBack Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_Storage_CallBack
 ") ChangeValue;
-		Handle_Storage_CallBack & ChangeValue (const Standard_Integer Index);
+		Handle_Storage_CallBack ChangeValue (const Standard_Integer Index);
 };
 
 
-%feature("shadow") Storage_ArrayOfCallBack::~Storage_ArrayOfCallBack %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Storage_ArrayOfCallBack {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Storage_ArrayOfSchema;
 class Storage_ArrayOfSchema {
 	public:
@@ -270,30 +254,16 @@ class Storage_ArrayOfSchema {
 	:type Index: int
 	:rtype: Handle_Storage_Schema
 ") Value;
-		const Handle_Storage_Schema & Value (const Standard_Integer Index);
+		Handle_Storage_Schema Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_Storage_Schema
 ") ChangeValue;
-		Handle_Storage_Schema & ChangeValue (const Standard_Integer Index);
+		Handle_Storage_Schema ChangeValue (const Standard_Integer Index);
 };
 
 
-%feature("shadow") Storage_ArrayOfSchema::~Storage_ArrayOfSchema %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Storage_ArrayOfSchema {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Storage_BaseDriver;
 class Storage_BaseDriver {
 	public:
@@ -742,20 +712,6 @@ class Storage_BaseDriver {
 };
 
 
-%feature("shadow") Storage_BaseDriver::~Storage_BaseDriver %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Storage_BaseDriver {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Storage_CallBack;
 class Storage_CallBack : public MMgt_TShared {
 	public:
@@ -794,25 +750,23 @@ class Storage_CallBack : public MMgt_TShared {
 };
 
 
-%feature("shadow") Storage_CallBack::~Storage_CallBack %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Storage_CallBack {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Storage_CallBack(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Storage_CallBack {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Storage_CallBack {
-	Handle_Storage_CallBack GetHandle() {
-	return *(Handle_Storage_CallBack*) &$self;
-	}
-};
+%pythonappend Handle_Storage_CallBack::Handle_Storage_CallBack %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Storage_CallBack;
 class Handle_Storage_CallBack : public Handle_MMgt_TShared {
@@ -830,20 +784,6 @@ class Handle_Storage_CallBack : public Handle_MMgt_TShared {
 %extend Handle_Storage_CallBack {
     Storage_CallBack* GetObject() {
     return (Storage_CallBack*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Storage_CallBack::~Handle_Storage_CallBack %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Storage_CallBack {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1049,25 +989,23 @@ class Storage_Data : public MMgt_TShared {
 };
 
 
-%feature("shadow") Storage_Data::~Storage_Data %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Storage_Data {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Storage_Data(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Storage_Data {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Storage_Data {
-	Handle_Storage_Data GetHandle() {
-	return *(Handle_Storage_Data*) &$self;
-	}
-};
+%pythonappend Handle_Storage_Data::Handle_Storage_Data %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Storage_Data;
 class Handle_Storage_Data : public Handle_MMgt_TShared {
@@ -1085,20 +1023,6 @@ class Handle_Storage_Data : public Handle_MMgt_TShared {
 %extend Handle_Storage_Data {
     Storage_Data* GetObject() {
     return (Storage_Data*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Storage_Data::~Handle_Storage_Data %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Storage_Data {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1128,24 +1052,10 @@ class Storage_DataMapIteratorOfMapOfCallBack : public TCollection_BasicMapIterat
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Storage_TypedCallBack
 ") Value;
-		const Handle_Storage_TypedCallBack & Value ();
+		Handle_Storage_TypedCallBack Value ();
 };
 
 
-%feature("shadow") Storage_DataMapIteratorOfMapOfCallBack::~Storage_DataMapIteratorOfMapOfCallBack %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Storage_DataMapIteratorOfMapOfCallBack {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Storage_DataMapIteratorOfMapOfPers;
 class Storage_DataMapIteratorOfMapOfPers : public TCollection_BasicMapIterator {
 	public:
@@ -1172,24 +1082,10 @@ class Storage_DataMapIteratorOfMapOfPers : public TCollection_BasicMapIterator {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Storage_Root
 ") Value;
-		const Handle_Storage_Root & Value ();
+		Handle_Storage_Root Value ();
 };
 
 
-%feature("shadow") Storage_DataMapIteratorOfMapOfPers::~Storage_DataMapIteratorOfMapOfPers %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Storage_DataMapIteratorOfMapOfPers {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Storage_DataMapNodeOfMapOfCallBack;
 class Storage_DataMapNodeOfMapOfCallBack : public TCollection_MapNode {
 	public:
@@ -1210,29 +1106,27 @@ class Storage_DataMapNodeOfMapOfCallBack : public TCollection_MapNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Storage_TypedCallBack
 ") Value;
-		Handle_Storage_TypedCallBack & Value ();
+		Handle_Storage_TypedCallBack Value ();
 };
 
 
-%feature("shadow") Storage_DataMapNodeOfMapOfCallBack::~Storage_DataMapNodeOfMapOfCallBack %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend Storage_DataMapNodeOfMapOfCallBack {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Storage_DataMapNodeOfMapOfCallBack(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_Storage_DataMapNodeOfMapOfCallBack::Handle_Storage_DataMapNodeOfMapOfCallBack %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend Storage_DataMapNodeOfMapOfCallBack {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Storage_DataMapNodeOfMapOfCallBack {
-	Handle_Storage_DataMapNodeOfMapOfCallBack GetHandle() {
-	return *(Handle_Storage_DataMapNodeOfMapOfCallBack*) &$self;
-	}
-};
 
 %nodefaultctor Handle_Storage_DataMapNodeOfMapOfCallBack;
 class Handle_Storage_DataMapNodeOfMapOfCallBack : public Handle_TCollection_MapNode {
@@ -1250,20 +1144,6 @@ class Handle_Storage_DataMapNodeOfMapOfCallBack : public Handle_TCollection_MapN
 %extend Handle_Storage_DataMapNodeOfMapOfCallBack {
     Storage_DataMapNodeOfMapOfCallBack* GetObject() {
     return (Storage_DataMapNodeOfMapOfCallBack*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Storage_DataMapNodeOfMapOfCallBack::~Handle_Storage_DataMapNodeOfMapOfCallBack %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Storage_DataMapNodeOfMapOfCallBack {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1287,29 +1167,27 @@ class Storage_DataMapNodeOfMapOfPers : public TCollection_MapNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Storage_Root
 ") Value;
-		Handle_Storage_Root & Value ();
+		Handle_Storage_Root Value ();
 };
 
 
-%feature("shadow") Storage_DataMapNodeOfMapOfPers::~Storage_DataMapNodeOfMapOfPers %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend Storage_DataMapNodeOfMapOfPers {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Storage_DataMapNodeOfMapOfPers(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_Storage_DataMapNodeOfMapOfPers::Handle_Storage_DataMapNodeOfMapOfPers %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend Storage_DataMapNodeOfMapOfPers {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Storage_DataMapNodeOfMapOfPers {
-	Handle_Storage_DataMapNodeOfMapOfPers GetHandle() {
-	return *(Handle_Storage_DataMapNodeOfMapOfPers*) &$self;
-	}
-};
 
 %nodefaultctor Handle_Storage_DataMapNodeOfMapOfPers;
 class Handle_Storage_DataMapNodeOfMapOfPers : public Handle_TCollection_MapNode {
@@ -1327,20 +1205,6 @@ class Handle_Storage_DataMapNodeOfMapOfPers : public Handle_TCollection_MapNode 
 %extend Handle_Storage_DataMapNodeOfMapOfPers {
     Storage_DataMapNodeOfMapOfPers* GetObject() {
     return (Storage_DataMapNodeOfMapOfPers*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Storage_DataMapNodeOfMapOfPers::~Handle_Storage_DataMapNodeOfMapOfPers %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Storage_DataMapNodeOfMapOfPers {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1396,13 +1260,13 @@ class Storage_HArrayOfCallBack : public MMgt_TShared {
 	:type Index: int
 	:rtype: Handle_Storage_CallBack
 ") Value;
-		const Handle_Storage_CallBack & Value (const Standard_Integer Index);
+		Handle_Storage_CallBack Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_Storage_CallBack
 ") ChangeValue;
-		Handle_Storage_CallBack & ChangeValue (const Standard_Integer Index);
+		Handle_Storage_CallBack ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Array1;
 		%feature("autodoc", "	:rtype: Storage_ArrayOfCallBack
 ") Array1;
@@ -1414,25 +1278,23 @@ class Storage_HArrayOfCallBack : public MMgt_TShared {
 };
 
 
-%feature("shadow") Storage_HArrayOfCallBack::~Storage_HArrayOfCallBack %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Storage_HArrayOfCallBack {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Storage_HArrayOfCallBack(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Storage_HArrayOfCallBack {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Storage_HArrayOfCallBack {
-	Handle_Storage_HArrayOfCallBack GetHandle() {
-	return *(Handle_Storage_HArrayOfCallBack*) &$self;
-	}
-};
+%pythonappend Handle_Storage_HArrayOfCallBack::Handle_Storage_HArrayOfCallBack %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Storage_HArrayOfCallBack;
 class Handle_Storage_HArrayOfCallBack : public Handle_MMgt_TShared {
@@ -1450,20 +1312,6 @@ class Handle_Storage_HArrayOfCallBack : public Handle_MMgt_TShared {
 %extend Handle_Storage_HArrayOfCallBack {
     Storage_HArrayOfCallBack* GetObject() {
     return (Storage_HArrayOfCallBack*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Storage_HArrayOfCallBack::~Handle_Storage_HArrayOfCallBack %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Storage_HArrayOfCallBack {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1519,13 +1367,13 @@ class Storage_HArrayOfSchema : public MMgt_TShared {
 	:type Index: int
 	:rtype: Handle_Storage_Schema
 ") Value;
-		const Handle_Storage_Schema & Value (const Standard_Integer Index);
+		Handle_Storage_Schema Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_Storage_Schema
 ") ChangeValue;
-		Handle_Storage_Schema & ChangeValue (const Standard_Integer Index);
+		Handle_Storage_Schema ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Array1;
 		%feature("autodoc", "	:rtype: Storage_ArrayOfSchema
 ") Array1;
@@ -1537,25 +1385,23 @@ class Storage_HArrayOfSchema : public MMgt_TShared {
 };
 
 
-%feature("shadow") Storage_HArrayOfSchema::~Storage_HArrayOfSchema %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Storage_HArrayOfSchema {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Storage_HArrayOfSchema(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Storage_HArrayOfSchema {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Storage_HArrayOfSchema {
-	Handle_Storage_HArrayOfSchema GetHandle() {
-	return *(Handle_Storage_HArrayOfSchema*) &$self;
-	}
-};
+%pythonappend Handle_Storage_HArrayOfSchema::Handle_Storage_HArrayOfSchema %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Storage_HArrayOfSchema;
 class Handle_Storage_HArrayOfSchema : public Handle_MMgt_TShared {
@@ -1573,20 +1419,6 @@ class Handle_Storage_HArrayOfSchema : public Handle_MMgt_TShared {
 %extend Handle_Storage_HArrayOfSchema {
     Storage_HArrayOfSchema* GetObject() {
     return (Storage_HArrayOfSchema*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Storage_HArrayOfSchema::~Handle_Storage_HArrayOfSchema %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Storage_HArrayOfSchema {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1642,13 +1474,13 @@ class Storage_HPArray : public MMgt_TShared {
 	:type Index: int
 	:rtype: Handle_Standard_Persistent
 ") Value;
-		const Handle_Standard_Persistent & Value (const Standard_Integer Index);
+		Handle_Standard_Persistent Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_Standard_Persistent
 ") ChangeValue;
-		Handle_Standard_Persistent & ChangeValue (const Standard_Integer Index);
+		Handle_Standard_Persistent ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Array1;
 		%feature("autodoc", "	:rtype: Storage_PArray
 ") Array1;
@@ -1660,25 +1492,23 @@ class Storage_HPArray : public MMgt_TShared {
 };
 
 
-%feature("shadow") Storage_HPArray::~Storage_HPArray %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Storage_HPArray {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Storage_HPArray(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Storage_HPArray {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Storage_HPArray {
-	Handle_Storage_HPArray GetHandle() {
-	return *(Handle_Storage_HPArray*) &$self;
-	}
-};
+%pythonappend Handle_Storage_HPArray::Handle_Storage_HPArray %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Storage_HPArray;
 class Handle_Storage_HPArray : public Handle_MMgt_TShared {
@@ -1696,20 +1526,6 @@ class Handle_Storage_HPArray : public Handle_MMgt_TShared {
 %extend Handle_Storage_HPArray {
     Storage_HPArray* GetObject() {
     return (Storage_HPArray*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Storage_HPArray::~Handle_Storage_HPArray %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Storage_HPArray {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1819,13 +1635,13 @@ class Storage_HSeqOfCallBack : public MMgt_TShared {
 	:type anIndex: int
 	:rtype: Handle_Storage_CallBack
 ") Value;
-		const Handle_Storage_CallBack & Value (const Standard_Integer anIndex);
+		Handle_Storage_CallBack Value (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
 	:rtype: Handle_Storage_CallBack
 ") ChangeValue;
-		Handle_Storage_CallBack & ChangeValue (const Standard_Integer anIndex);
+		Handle_Storage_CallBack ChangeValue (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
@@ -1855,25 +1671,23 @@ class Storage_HSeqOfCallBack : public MMgt_TShared {
 };
 
 
-%feature("shadow") Storage_HSeqOfCallBack::~Storage_HSeqOfCallBack %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Storage_HSeqOfCallBack {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Storage_HSeqOfCallBack(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Storage_HSeqOfCallBack {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Storage_HSeqOfCallBack {
-	Handle_Storage_HSeqOfCallBack GetHandle() {
-	return *(Handle_Storage_HSeqOfCallBack*) &$self;
-	}
-};
+%pythonappend Handle_Storage_HSeqOfCallBack::Handle_Storage_HSeqOfCallBack %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Storage_HSeqOfCallBack;
 class Handle_Storage_HSeqOfCallBack : public Handle_MMgt_TShared {
@@ -1891,20 +1705,6 @@ class Handle_Storage_HSeqOfCallBack : public Handle_MMgt_TShared {
 %extend Handle_Storage_HSeqOfCallBack {
     Storage_HSeqOfCallBack* GetObject() {
     return (Storage_HSeqOfCallBack*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Storage_HSeqOfCallBack::~Handle_Storage_HSeqOfCallBack %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Storage_HSeqOfCallBack {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2014,13 +1814,13 @@ class Storage_HSeqOfPersistent : public MMgt_TShared {
 	:type anIndex: int
 	:rtype: Handle_Standard_Persistent
 ") Value;
-		const Handle_Standard_Persistent & Value (const Standard_Integer anIndex);
+		Handle_Standard_Persistent Value (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
 	:rtype: Handle_Standard_Persistent
 ") ChangeValue;
-		Handle_Standard_Persistent & ChangeValue (const Standard_Integer anIndex);
+		Handle_Standard_Persistent ChangeValue (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
@@ -2050,25 +1850,23 @@ class Storage_HSeqOfPersistent : public MMgt_TShared {
 };
 
 
-%feature("shadow") Storage_HSeqOfPersistent::~Storage_HSeqOfPersistent %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Storage_HSeqOfPersistent {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Storage_HSeqOfPersistent(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Storage_HSeqOfPersistent {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Storage_HSeqOfPersistent {
-	Handle_Storage_HSeqOfPersistent GetHandle() {
-	return *(Handle_Storage_HSeqOfPersistent*) &$self;
-	}
-};
+%pythonappend Handle_Storage_HSeqOfPersistent::Handle_Storage_HSeqOfPersistent %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Storage_HSeqOfPersistent;
 class Handle_Storage_HSeqOfPersistent : public Handle_MMgt_TShared {
@@ -2086,20 +1884,6 @@ class Handle_Storage_HSeqOfPersistent : public Handle_MMgt_TShared {
 %extend Handle_Storage_HSeqOfPersistent {
     Storage_HSeqOfPersistent* GetObject() {
     return (Storage_HSeqOfPersistent*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Storage_HSeqOfPersistent::~Handle_Storage_HSeqOfPersistent %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Storage_HSeqOfPersistent {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2209,13 +1993,13 @@ class Storage_HSeqOfRoot : public MMgt_TShared {
 	:type anIndex: int
 	:rtype: Handle_Storage_Root
 ") Value;
-		const Handle_Storage_Root & Value (const Standard_Integer anIndex);
+		Handle_Storage_Root Value (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
 	:rtype: Handle_Storage_Root
 ") ChangeValue;
-		Handle_Storage_Root & ChangeValue (const Standard_Integer anIndex);
+		Handle_Storage_Root ChangeValue (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
@@ -2245,25 +2029,23 @@ class Storage_HSeqOfRoot : public MMgt_TShared {
 };
 
 
-%feature("shadow") Storage_HSeqOfRoot::~Storage_HSeqOfRoot %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Storage_HSeqOfRoot {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Storage_HSeqOfRoot(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Storage_HSeqOfRoot {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Storage_HSeqOfRoot {
-	Handle_Storage_HSeqOfRoot GetHandle() {
-	return *(Handle_Storage_HSeqOfRoot*) &$self;
-	}
-};
+%pythonappend Handle_Storage_HSeqOfRoot::Handle_Storage_HSeqOfRoot %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Storage_HSeqOfRoot;
 class Handle_Storage_HSeqOfRoot : public Handle_MMgt_TShared {
@@ -2281,20 +2063,6 @@ class Handle_Storage_HSeqOfRoot : public Handle_MMgt_TShared {
 %extend Handle_Storage_HSeqOfRoot {
     Storage_HSeqOfRoot* GetObject() {
     return (Storage_HSeqOfRoot*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Storage_HSeqOfRoot::~Handle_Storage_HSeqOfRoot %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Storage_HSeqOfRoot {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2420,25 +2188,23 @@ class Storage_HeaderData : public MMgt_TShared {
 };
 
 
-%feature("shadow") Storage_HeaderData::~Storage_HeaderData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Storage_HeaderData {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Storage_HeaderData(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Storage_HeaderData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Storage_HeaderData {
-	Handle_Storage_HeaderData GetHandle() {
-	return *(Handle_Storage_HeaderData*) &$self;
-	}
-};
+%pythonappend Handle_Storage_HeaderData::Handle_Storage_HeaderData %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Storage_HeaderData;
 class Handle_Storage_HeaderData : public Handle_MMgt_TShared {
@@ -2456,20 +2222,6 @@ class Handle_Storage_HeaderData : public Handle_MMgt_TShared {
 %extend Handle_Storage_HeaderData {
     Storage_HeaderData* GetObject() {
     return (Storage_HeaderData*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Storage_HeaderData::~Handle_Storage_HeaderData %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Storage_HeaderData {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2527,25 +2279,23 @@ class Storage_IndexedDataMapNodeOfPType : public TCollection_MapNode {
             };
 
 
-%feature("shadow") Storage_IndexedDataMapNodeOfPType::~Storage_IndexedDataMapNodeOfPType %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Storage_IndexedDataMapNodeOfPType {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Storage_IndexedDataMapNodeOfPType(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Storage_IndexedDataMapNodeOfPType {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Storage_IndexedDataMapNodeOfPType {
-	Handle_Storage_IndexedDataMapNodeOfPType GetHandle() {
-	return *(Handle_Storage_IndexedDataMapNodeOfPType*) &$self;
-	}
-};
+%pythonappend Handle_Storage_IndexedDataMapNodeOfPType::Handle_Storage_IndexedDataMapNodeOfPType %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Storage_IndexedDataMapNodeOfPType;
 class Handle_Storage_IndexedDataMapNodeOfPType : public Handle_TCollection_MapNode {
@@ -2565,20 +2315,6 @@ class Handle_Storage_IndexedDataMapNodeOfPType : public Handle_TCollection_MapNo
     return (Storage_IndexedDataMapNodeOfPType*)$self->Access();
     }
 };
-%feature("shadow") Handle_Storage_IndexedDataMapNodeOfPType::~Handle_Storage_IndexedDataMapNodeOfPType %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Storage_IndexedDataMapNodeOfPType {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor Storage_InternalData;
 class Storage_InternalData : public MMgt_TShared {
@@ -2594,25 +2330,23 @@ class Storage_InternalData : public MMgt_TShared {
 };
 
 
-%feature("shadow") Storage_InternalData::~Storage_InternalData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Storage_InternalData {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Storage_InternalData(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Storage_InternalData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Storage_InternalData {
-	Handle_Storage_InternalData GetHandle() {
-	return *(Handle_Storage_InternalData*) &$self;
-	}
-};
+%pythonappend Handle_Storage_InternalData::Handle_Storage_InternalData %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Storage_InternalData;
 class Handle_Storage_InternalData : public Handle_MMgt_TShared {
@@ -2630,20 +2364,6 @@ class Handle_Storage_InternalData : public Handle_MMgt_TShared {
 %extend Handle_Storage_InternalData {
     Storage_InternalData* GetObject() {
     return (Storage_InternalData*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Storage_InternalData::~Handle_Storage_InternalData %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Storage_InternalData {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2703,13 +2423,13 @@ class Storage_MapOfCallBack : public TCollection_BasicMap {
 	:type K: TCollection_AsciiString &
 	:rtype: Handle_Storage_TypedCallBack
 ") Find;
-		const Handle_Storage_TypedCallBack & Find (const TCollection_AsciiString & K);
+		Handle_Storage_TypedCallBack Find (const TCollection_AsciiString & K);
 		%feature("compactdefaultargs") ChangeFind;
 		%feature("autodoc", "	:param K:
 	:type K: TCollection_AsciiString &
 	:rtype: Handle_Storage_TypedCallBack
 ") ChangeFind;
-		Handle_Storage_TypedCallBack & ChangeFind (const TCollection_AsciiString & K);
+		Handle_Storage_TypedCallBack ChangeFind (const TCollection_AsciiString & K);
 		%feature("compactdefaultargs") Find1;
 		%feature("autodoc", "	:param K:
 	:type K: TCollection_AsciiString &
@@ -2725,20 +2445,6 @@ class Storage_MapOfCallBack : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") Storage_MapOfCallBack::~Storage_MapOfCallBack %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Storage_MapOfCallBack {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Storage_MapOfPers;
 class Storage_MapOfPers : public TCollection_BasicMap {
 	public:
@@ -2795,13 +2501,13 @@ class Storage_MapOfPers : public TCollection_BasicMap {
 	:type K: TCollection_AsciiString &
 	:rtype: Handle_Storage_Root
 ") Find;
-		const Handle_Storage_Root & Find (const TCollection_AsciiString & K);
+		Handle_Storage_Root Find (const TCollection_AsciiString & K);
 		%feature("compactdefaultargs") ChangeFind;
 		%feature("autodoc", "	:param K:
 	:type K: TCollection_AsciiString &
 	:rtype: Handle_Storage_Root
 ") ChangeFind;
-		Handle_Storage_Root & ChangeFind (const TCollection_AsciiString & K);
+		Handle_Storage_Root ChangeFind (const TCollection_AsciiString & K);
 		%feature("compactdefaultargs") Find1;
 		%feature("autodoc", "	:param K:
 	:type K: TCollection_AsciiString &
@@ -2817,20 +2523,6 @@ class Storage_MapOfPers : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") Storage_MapOfPers::~Storage_MapOfPers %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Storage_MapOfPers {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class Storage_MapPSDHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -2852,20 +2544,6 @@ class Storage_MapPSDHasher {
 };
 
 
-%feature("shadow") Storage_MapPSDHasher::~Storage_MapPSDHasher %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Storage_MapPSDHasher {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Storage_PArray;
 class Storage_PArray {
 	public:
@@ -2938,30 +2616,16 @@ class Storage_PArray {
 	:type Index: int
 	:rtype: Handle_Standard_Persistent
 ") Value;
-		const Handle_Standard_Persistent & Value (const Standard_Integer Index);
+		Handle_Standard_Persistent Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_Standard_Persistent
 ") ChangeValue;
-		Handle_Standard_Persistent & ChangeValue (const Standard_Integer Index);
+		Handle_Standard_Persistent ChangeValue (const Standard_Integer Index);
 };
 
 
-%feature("shadow") Storage_PArray::~Storage_PArray %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Storage_PArray {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Storage_PType;
 class Storage_PType : public TCollection_BasicMap {
 	public:
@@ -3072,20 +2736,6 @@ class Storage_PType : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") Storage_PType::~Storage_PType %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Storage_PType {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Storage_Root;
 class Storage_Root : public MMgt_TShared {
 	public:
@@ -3134,25 +2784,23 @@ class Storage_Root : public MMgt_TShared {
 };
 
 
-%feature("shadow") Storage_Root::~Storage_Root %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Storage_Root {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Storage_Root(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Storage_Root {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Storage_Root {
-	Handle_Storage_Root GetHandle() {
-	return *(Handle_Storage_Root*) &$self;
-	}
-};
+%pythonappend Handle_Storage_Root::Handle_Storage_Root %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Storage_Root;
 class Handle_Storage_Root : public Handle_MMgt_TShared {
@@ -3170,20 +2818,6 @@ class Handle_Storage_Root : public Handle_MMgt_TShared {
 %extend Handle_Storage_Root {
     Storage_Root* GetObject() {
     return (Storage_Root*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Storage_Root::~Handle_Storage_Root %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Storage_Root {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3251,25 +2885,23 @@ class Storage_RootData : public MMgt_TShared {
 };
 
 
-%feature("shadow") Storage_RootData::~Storage_RootData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Storage_RootData {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Storage_RootData(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Storage_RootData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Storage_RootData {
-	Handle_Storage_RootData GetHandle() {
-	return *(Handle_Storage_RootData*) &$self;
-	}
-};
+%pythonappend Handle_Storage_RootData::Handle_Storage_RootData %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Storage_RootData;
 class Handle_Storage_RootData : public Handle_MMgt_TShared {
@@ -3287,20 +2919,6 @@ class Handle_Storage_RootData : public Handle_MMgt_TShared {
 %extend Handle_Storage_RootData {
     Storage_RootData* GetObject() {
     return (Storage_RootData*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Storage_RootData::~Handle_Storage_RootData %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Storage_RootData {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3562,25 +3180,23 @@ class Storage_Schema : public MMgt_TShared {
 };
 
 
-%feature("shadow") Storage_Schema::~Storage_Schema %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Storage_Schema {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Storage_Schema(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Storage_Schema {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Storage_Schema {
-	Handle_Storage_Schema GetHandle() {
-	return *(Handle_Storage_Schema*) &$self;
-	}
-};
+%pythonappend Handle_Storage_Schema::Handle_Storage_Schema %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Storage_Schema;
 class Handle_Storage_Schema : public Handle_MMgt_TShared {
@@ -3598,20 +3214,6 @@ class Handle_Storage_Schema : public Handle_MMgt_TShared {
 %extend Handle_Storage_Schema {
     Storage_Schema* GetObject() {
     return (Storage_Schema*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Storage_Schema::~Handle_Storage_Schema %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Storage_Schema {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3697,11 +3299,11 @@ class Storage_SeqOfCallBack : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Storage_CallBack
 ") First;
-		const Handle_Storage_CallBack & First ();
+		Handle_Storage_CallBack First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Storage_CallBack
 ") Last;
-		const Handle_Storage_CallBack & Last ();
+		Handle_Storage_CallBack Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -3715,7 +3317,7 @@ class Storage_SeqOfCallBack : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Storage_CallBack
 ") Value;
-		const Handle_Storage_CallBack & Value (const Standard_Integer Index);
+		Handle_Storage_CallBack Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -3729,7 +3331,7 @@ class Storage_SeqOfCallBack : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Storage_CallBack
 ") ChangeValue;
-		Handle_Storage_CallBack & ChangeValue (const Standard_Integer Index);
+		Handle_Storage_CallBack ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -3747,20 +3349,6 @@ class Storage_SeqOfCallBack : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Storage_SeqOfCallBack::~Storage_SeqOfCallBack %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Storage_SeqOfCallBack {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Storage_SeqOfPersistent;
 class Storage_SeqOfPersistent : public TCollection_BaseSequence {
 	public:
@@ -3843,11 +3431,11 @@ class Storage_SeqOfPersistent : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Standard_Persistent
 ") First;
-		const Handle_Standard_Persistent & First ();
+		Handle_Standard_Persistent First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Standard_Persistent
 ") Last;
-		const Handle_Standard_Persistent & Last ();
+		Handle_Standard_Persistent Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -3861,7 +3449,7 @@ class Storage_SeqOfPersistent : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Standard_Persistent
 ") Value;
-		const Handle_Standard_Persistent & Value (const Standard_Integer Index);
+		Handle_Standard_Persistent Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -3875,7 +3463,7 @@ class Storage_SeqOfPersistent : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Standard_Persistent
 ") ChangeValue;
-		Handle_Standard_Persistent & ChangeValue (const Standard_Integer Index);
+		Handle_Standard_Persistent ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -3893,20 +3481,6 @@ class Storage_SeqOfPersistent : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Storage_SeqOfPersistent::~Storage_SeqOfPersistent %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Storage_SeqOfPersistent {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Storage_SeqOfRoot;
 class Storage_SeqOfRoot : public TCollection_BaseSequence {
 	public:
@@ -3989,11 +3563,11 @@ class Storage_SeqOfRoot : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Storage_Root
 ") First;
-		const Handle_Storage_Root & First ();
+		Handle_Storage_Root First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Storage_Root
 ") Last;
-		const Handle_Storage_Root & Last ();
+		Handle_Storage_Root Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -4007,7 +3581,7 @@ class Storage_SeqOfRoot : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Storage_Root
 ") Value;
-		const Handle_Storage_Root & Value (const Standard_Integer Index);
+		Handle_Storage_Root Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -4021,7 +3595,7 @@ class Storage_SeqOfRoot : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Storage_Root
 ") ChangeValue;
-		Handle_Storage_Root & ChangeValue (const Standard_Integer Index);
+		Handle_Storage_Root ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -4039,20 +3613,6 @@ class Storage_SeqOfRoot : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Storage_SeqOfRoot::~Storage_SeqOfRoot %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Storage_SeqOfRoot {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Storage_SequenceNodeOfSeqOfCallBack;
 class Storage_SequenceNodeOfSeqOfCallBack : public TCollection_SeqNode {
 	public:
@@ -4069,29 +3629,27 @@ class Storage_SequenceNodeOfSeqOfCallBack : public TCollection_SeqNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Storage_CallBack
 ") Value;
-		Handle_Storage_CallBack & Value ();
+		Handle_Storage_CallBack Value ();
 };
 
 
-%feature("shadow") Storage_SequenceNodeOfSeqOfCallBack::~Storage_SequenceNodeOfSeqOfCallBack %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend Storage_SequenceNodeOfSeqOfCallBack {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Storage_SequenceNodeOfSeqOfCallBack(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_Storage_SequenceNodeOfSeqOfCallBack::Handle_Storage_SequenceNodeOfSeqOfCallBack %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend Storage_SequenceNodeOfSeqOfCallBack {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Storage_SequenceNodeOfSeqOfCallBack {
-	Handle_Storage_SequenceNodeOfSeqOfCallBack GetHandle() {
-	return *(Handle_Storage_SequenceNodeOfSeqOfCallBack*) &$self;
-	}
-};
 
 %nodefaultctor Handle_Storage_SequenceNodeOfSeqOfCallBack;
 class Handle_Storage_SequenceNodeOfSeqOfCallBack : public Handle_TCollection_SeqNode {
@@ -4111,20 +3669,6 @@ class Handle_Storage_SequenceNodeOfSeqOfCallBack : public Handle_TCollection_Seq
     return (Storage_SequenceNodeOfSeqOfCallBack*)$self->Access();
     }
 };
-%feature("shadow") Handle_Storage_SequenceNodeOfSeqOfCallBack::~Handle_Storage_SequenceNodeOfSeqOfCallBack %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Storage_SequenceNodeOfSeqOfCallBack {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor Storage_SequenceNodeOfSeqOfPersistent;
 class Storage_SequenceNodeOfSeqOfPersistent : public TCollection_SeqNode {
@@ -4142,29 +3686,27 @@ class Storage_SequenceNodeOfSeqOfPersistent : public TCollection_SeqNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Standard_Persistent
 ") Value;
-		Handle_Standard_Persistent & Value ();
+		Handle_Standard_Persistent Value ();
 };
 
 
-%feature("shadow") Storage_SequenceNodeOfSeqOfPersistent::~Storage_SequenceNodeOfSeqOfPersistent %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend Storage_SequenceNodeOfSeqOfPersistent {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Storage_SequenceNodeOfSeqOfPersistent(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_Storage_SequenceNodeOfSeqOfPersistent::Handle_Storage_SequenceNodeOfSeqOfPersistent %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend Storage_SequenceNodeOfSeqOfPersistent {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Storage_SequenceNodeOfSeqOfPersistent {
-	Handle_Storage_SequenceNodeOfSeqOfPersistent GetHandle() {
-	return *(Handle_Storage_SequenceNodeOfSeqOfPersistent*) &$self;
-	}
-};
 
 %nodefaultctor Handle_Storage_SequenceNodeOfSeqOfPersistent;
 class Handle_Storage_SequenceNodeOfSeqOfPersistent : public Handle_TCollection_SeqNode {
@@ -4184,20 +3726,6 @@ class Handle_Storage_SequenceNodeOfSeqOfPersistent : public Handle_TCollection_S
     return (Storage_SequenceNodeOfSeqOfPersistent*)$self->Access();
     }
 };
-%feature("shadow") Handle_Storage_SequenceNodeOfSeqOfPersistent::~Handle_Storage_SequenceNodeOfSeqOfPersistent %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Storage_SequenceNodeOfSeqOfPersistent {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor Storage_SequenceNodeOfSeqOfRoot;
 class Storage_SequenceNodeOfSeqOfRoot : public TCollection_SeqNode {
@@ -4215,29 +3743,27 @@ class Storage_SequenceNodeOfSeqOfRoot : public TCollection_SeqNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Storage_Root
 ") Value;
-		Handle_Storage_Root & Value ();
+		Handle_Storage_Root Value ();
 };
 
 
-%feature("shadow") Storage_SequenceNodeOfSeqOfRoot::~Storage_SequenceNodeOfSeqOfRoot %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend Storage_SequenceNodeOfSeqOfRoot {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Storage_SequenceNodeOfSeqOfRoot(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_Storage_SequenceNodeOfSeqOfRoot::Handle_Storage_SequenceNodeOfSeqOfRoot %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend Storage_SequenceNodeOfSeqOfRoot {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Storage_SequenceNodeOfSeqOfRoot {
-	Handle_Storage_SequenceNodeOfSeqOfRoot GetHandle() {
-	return *(Handle_Storage_SequenceNodeOfSeqOfRoot*) &$self;
-	}
-};
 
 %nodefaultctor Handle_Storage_SequenceNodeOfSeqOfRoot;
 class Handle_Storage_SequenceNodeOfSeqOfRoot : public Handle_TCollection_SeqNode {
@@ -4255,20 +3781,6 @@ class Handle_Storage_SequenceNodeOfSeqOfRoot : public Handle_TCollection_SeqNode
 %extend Handle_Storage_SequenceNodeOfSeqOfRoot {
     Storage_SequenceNodeOfSeqOfRoot* GetObject() {
     return (Storage_SequenceNodeOfSeqOfRoot*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Storage_SequenceNodeOfSeqOfRoot::~Handle_Storage_SequenceNodeOfSeqOfRoot %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Storage_SequenceNodeOfSeqOfRoot {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4312,25 +3824,23 @@ class Storage_TypeData : public MMgt_TShared {
 };
 
 
-%feature("shadow") Storage_TypeData::~Storage_TypeData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Storage_TypeData {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Storage_TypeData(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Storage_TypeData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Storage_TypeData {
-	Handle_Storage_TypeData GetHandle() {
-	return *(Handle_Storage_TypeData*) &$self;
-	}
-};
+%pythonappend Handle_Storage_TypeData::Handle_Storage_TypeData %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Storage_TypeData;
 class Handle_Storage_TypeData : public Handle_MMgt_TShared {
@@ -4348,20 +3858,6 @@ class Handle_Storage_TypeData : public Handle_MMgt_TShared {
 %extend Handle_Storage_TypeData {
     Storage_TypeData* GetObject() {
     return (Storage_TypeData*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Storage_TypeData::~Handle_Storage_TypeData %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Storage_TypeData {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4413,25 +3909,23 @@ class Storage_TypedCallBack : public MMgt_TShared {
 };
 
 
-%feature("shadow") Storage_TypedCallBack::~Storage_TypedCallBack %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Storage_TypedCallBack {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Storage_TypedCallBack(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Storage_TypedCallBack {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Storage_TypedCallBack {
-	Handle_Storage_TypedCallBack GetHandle() {
-	return *(Handle_Storage_TypedCallBack*) &$self;
-	}
-};
+%pythonappend Handle_Storage_TypedCallBack::Handle_Storage_TypedCallBack %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Storage_TypedCallBack;
 class Handle_Storage_TypedCallBack : public Handle_MMgt_TShared {
@@ -4451,20 +3945,6 @@ class Handle_Storage_TypedCallBack : public Handle_MMgt_TShared {
     return (Storage_TypedCallBack*)$self->Access();
     }
 };
-%feature("shadow") Handle_Storage_TypedCallBack::~Handle_Storage_TypedCallBack %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Storage_TypedCallBack {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor Storage_stCONSTclCOM;
 class Storage_stCONSTclCOM {
@@ -4472,20 +3952,6 @@ class Storage_stCONSTclCOM {
 };
 
 
-%feature("shadow") Storage_stCONSTclCOM::~Storage_stCONSTclCOM %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Storage_stCONSTclCOM {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Storage_DefaultCallBack;
 class Storage_DefaultCallBack : public Storage_CallBack {
 	public:
@@ -4528,25 +3994,23 @@ class Storage_DefaultCallBack : public Storage_CallBack {
 };
 
 
-%feature("shadow") Storage_DefaultCallBack::~Storage_DefaultCallBack %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Storage_DefaultCallBack {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Storage_DefaultCallBack(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Storage_DefaultCallBack {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Storage_DefaultCallBack {
-	Handle_Storage_DefaultCallBack GetHandle() {
-	return *(Handle_Storage_DefaultCallBack*) &$self;
-	}
-};
+%pythonappend Handle_Storage_DefaultCallBack::Handle_Storage_DefaultCallBack %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Storage_DefaultCallBack;
 class Handle_Storage_DefaultCallBack : public Handle_Storage_CallBack {
@@ -4564,20 +4028,6 @@ class Handle_Storage_DefaultCallBack : public Handle_Storage_CallBack {
 %extend Handle_Storage_DefaultCallBack {
     Storage_DefaultCallBack* GetObject() {
     return (Storage_DefaultCallBack*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Storage_DefaultCallBack::~Handle_Storage_DefaultCallBack %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Storage_DefaultCallBack {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

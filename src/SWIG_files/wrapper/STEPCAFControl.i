@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include STEPCAFControl_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -84,25 +96,23 @@ class STEPCAFControl_ActorWrite : public STEPControl_ActorWrite {
 };
 
 
-%feature("shadow") STEPCAFControl_ActorWrite::~STEPCAFControl_ActorWrite %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend STEPCAFControl_ActorWrite {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_STEPCAFControl_ActorWrite(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend STEPCAFControl_ActorWrite {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend STEPCAFControl_ActorWrite {
-	Handle_STEPCAFControl_ActorWrite GetHandle() {
-	return *(Handle_STEPCAFControl_ActorWrite*) &$self;
-	}
-};
+%pythonappend Handle_STEPCAFControl_ActorWrite::Handle_STEPCAFControl_ActorWrite %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_STEPCAFControl_ActorWrite;
 class Handle_STEPCAFControl_ActorWrite : public Handle_STEPControl_ActorWrite {
@@ -120,20 +130,6 @@ class Handle_STEPCAFControl_ActorWrite : public Handle_STEPControl_ActorWrite {
 %extend Handle_STEPCAFControl_ActorWrite {
     STEPCAFControl_ActorWrite* GetObject() {
     return (STEPCAFControl_ActorWrite*)$self->Access();
-    }
-};
-%feature("shadow") Handle_STEPCAFControl_ActorWrite::~Handle_STEPCAFControl_ActorWrite %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_STEPCAFControl_ActorWrite {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -155,25 +151,23 @@ class STEPCAFControl_Controller : public STEPControl_Controller {
 };
 
 
-%feature("shadow") STEPCAFControl_Controller::~STEPCAFControl_Controller %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend STEPCAFControl_Controller {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_STEPCAFControl_Controller(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend STEPCAFControl_Controller {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend STEPCAFControl_Controller {
-	Handle_STEPCAFControl_Controller GetHandle() {
-	return *(Handle_STEPCAFControl_Controller*) &$self;
-	}
-};
+%pythonappend Handle_STEPCAFControl_Controller::Handle_STEPCAFControl_Controller %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_STEPCAFControl_Controller;
 class Handle_STEPCAFControl_Controller : public Handle_STEPControl_Controller {
@@ -191,20 +185,6 @@ class Handle_STEPCAFControl_Controller : public Handle_STEPControl_Controller {
 %extend Handle_STEPCAFControl_Controller {
     STEPCAFControl_Controller* GetObject() {
     return (STEPCAFControl_Controller*)$self->Access();
-    }
-};
-%feature("shadow") Handle_STEPCAFControl_Controller::~Handle_STEPCAFControl_Controller %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_STEPCAFControl_Controller {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -234,24 +214,10 @@ class STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile : public TCollect
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_STEPCAFControl_ExternFile
 ") Value;
-		const Handle_STEPCAFControl_ExternFile & Value ();
+		Handle_STEPCAFControl_ExternFile Value ();
 };
 
 
-%feature("shadow") STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile::~STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape;
 class STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape : public TCollection_BasicMapIterator {
 	public:
@@ -282,20 +248,6 @@ class STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape : public TCollection_B
 };
 
 
-%feature("shadow") STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape::~STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile;
 class STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile : public TCollection_BasicMapIterator {
 	public:
@@ -318,28 +270,14 @@ class STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile : public TCollection
 		%feature("compactdefaultargs") Key;
 		%feature("autodoc", "	:rtype: Handle_StepBasic_ProductDefinition
 ") Key;
-		const Handle_StepBasic_ProductDefinition & Key ();
+		Handle_StepBasic_ProductDefinition Key ();
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_STEPCAFControl_ExternFile
 ") Value;
-		const Handle_STEPCAFControl_ExternFile & Value ();
+		Handle_STEPCAFControl_ExternFile Value ();
 };
 
 
-%feature("shadow") STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile::~STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile;
 class STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile : public TCollection_BasicMapIterator {
 	public:
@@ -362,28 +300,14 @@ class STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile : public TCollectio
 		%feature("compactdefaultargs") Key;
 		%feature("autodoc", "	:rtype: Handle_StepShape_ShapeDefinitionRepresentation
 ") Key;
-		const Handle_StepShape_ShapeDefinitionRepresentation & Key ();
+		Handle_StepShape_ShapeDefinitionRepresentation Key ();
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_STEPCAFControl_ExternFile
 ") Value;
-		const Handle_STEPCAFControl_ExternFile & Value ();
+		Handle_STEPCAFControl_ExternFile Value ();
 };
 
 
-%feature("shadow") STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile::~STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor STEPCAFControl_DataMapIteratorOfDataMapOfShapePD;
 class STEPCAFControl_DataMapIteratorOfDataMapOfShapePD : public TCollection_BasicMapIterator {
 	public:
@@ -410,24 +334,10 @@ class STEPCAFControl_DataMapIteratorOfDataMapOfShapePD : public TCollection_Basi
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_StepBasic_ProductDefinition
 ") Value;
-		const Handle_StepBasic_ProductDefinition & Value ();
+		Handle_StepBasic_ProductDefinition Value ();
 };
 
 
-%feature("shadow") STEPCAFControl_DataMapIteratorOfDataMapOfShapePD::~STEPCAFControl_DataMapIteratorOfDataMapOfShapePD %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend STEPCAFControl_DataMapIteratorOfDataMapOfShapePD {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR;
 class STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR : public TCollection_BasicMapIterator {
 	public:
@@ -454,24 +364,10 @@ class STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR : public TCollection_Bas
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_StepShape_ShapeDefinitionRepresentation
 ") Value;
-		const Handle_StepShape_ShapeDefinitionRepresentation & Value ();
+		Handle_StepShape_ShapeDefinitionRepresentation Value ();
 };
 
 
-%feature("shadow") STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR::~STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile;
 class STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile : public TCollection_MapNode {
 	public:
@@ -492,29 +388,27 @@ class STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile : public TCollection_
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_STEPCAFControl_ExternFile
 ") Value;
-		Handle_STEPCAFControl_ExternFile & Value ();
+		Handle_STEPCAFControl_ExternFile Value ();
 };
 
 
-%feature("shadow") STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile::~STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile::Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile {
-	Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile GetHandle() {
-	return *(Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile*) &$self;
-	}
-};
 
 %nodefaultctor Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile;
 class Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile : public Handle_TCollection_MapNode {
@@ -532,20 +426,6 @@ class Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile : public Handl
 %extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile {
     STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile* GetObject() {
     return (STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile*)$self->Access();
-    }
-};
-%feature("shadow") Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile::~Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -573,25 +453,23 @@ class STEPCAFControl_DataMapNodeOfDataMapOfLabelShape : public TCollection_MapNo
 };
 
 
-%feature("shadow") STEPCAFControl_DataMapNodeOfDataMapOfLabelShape::~STEPCAFControl_DataMapNodeOfDataMapOfLabelShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend STEPCAFControl_DataMapNodeOfDataMapOfLabelShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend STEPCAFControl_DataMapNodeOfDataMapOfLabelShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend STEPCAFControl_DataMapNodeOfDataMapOfLabelShape {
-	Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape GetHandle() {
-	return *(Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape*) &$self;
-	}
-};
+%pythonappend Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape::Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape;
 class Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape : public Handle_TCollection_MapNode {
@@ -611,20 +489,6 @@ class Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape : public Handle_TCo
     return (STEPCAFControl_DataMapNodeOfDataMapOfLabelShape*)$self->Access();
     }
 };
-%feature("shadow") Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape::~Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile;
 class STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile : public TCollection_MapNode {
@@ -642,33 +506,31 @@ class STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile : public TCollection_Map
 		%feature("compactdefaultargs") Key;
 		%feature("autodoc", "	:rtype: Handle_StepBasic_ProductDefinition
 ") Key;
-		Handle_StepBasic_ProductDefinition & Key ();
+		Handle_StepBasic_ProductDefinition Key ();
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_STEPCAFControl_ExternFile
 ") Value;
-		Handle_STEPCAFControl_ExternFile & Value ();
+		Handle_STEPCAFControl_ExternFile Value ();
 };
 
 
-%feature("shadow") STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile::~STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile::Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile {
-	Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile GetHandle() {
-	return *(Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile*) &$self;
-	}
-};
 
 %nodefaultctor Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile;
 class Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile : public Handle_TCollection_MapNode {
@@ -688,20 +550,6 @@ class Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile : public Handle_T
     return (STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile*)$self->Access();
     }
 };
-%feature("shadow") Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile::~Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile;
 class STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile : public TCollection_MapNode {
@@ -719,33 +567,31 @@ class STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile : public TCollection_Ma
 		%feature("compactdefaultargs") Key;
 		%feature("autodoc", "	:rtype: Handle_StepShape_ShapeDefinitionRepresentation
 ") Key;
-		Handle_StepShape_ShapeDefinitionRepresentation & Key ();
+		Handle_StepShape_ShapeDefinitionRepresentation Key ();
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_STEPCAFControl_ExternFile
 ") Value;
-		Handle_STEPCAFControl_ExternFile & Value ();
+		Handle_STEPCAFControl_ExternFile Value ();
 };
 
 
-%feature("shadow") STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile::~STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile::Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile {
-	Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile GetHandle() {
-	return *(Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile*) &$self;
-	}
-};
 
 %nodefaultctor Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile;
 class Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile : public Handle_TCollection_MapNode {
@@ -763,20 +609,6 @@ class Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile : public Handle_
 %extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile {
     STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile* GetObject() {
     return (STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile*)$self->Access();
-    }
-};
-%feature("shadow") Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile::~Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -800,29 +632,27 @@ class STEPCAFControl_DataMapNodeOfDataMapOfShapePD : public TCollection_MapNode 
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_StepBasic_ProductDefinition
 ") Value;
-		Handle_StepBasic_ProductDefinition & Value ();
+		Handle_StepBasic_ProductDefinition Value ();
 };
 
 
-%feature("shadow") STEPCAFControl_DataMapNodeOfDataMapOfShapePD::~STEPCAFControl_DataMapNodeOfDataMapOfShapePD %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend STEPCAFControl_DataMapNodeOfDataMapOfShapePD {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD::Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend STEPCAFControl_DataMapNodeOfDataMapOfShapePD {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend STEPCAFControl_DataMapNodeOfDataMapOfShapePD {
-	Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD GetHandle() {
-	return *(Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD*) &$self;
-	}
-};
 
 %nodefaultctor Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD;
 class Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD : public Handle_TCollection_MapNode {
@@ -840,20 +670,6 @@ class Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD : public Handle_TColle
 %extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD {
     STEPCAFControl_DataMapNodeOfDataMapOfShapePD* GetObject() {
     return (STEPCAFControl_DataMapNodeOfDataMapOfShapePD*)$self->Access();
-    }
-};
-%feature("shadow") Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD::~Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -877,29 +693,27 @@ class STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR : public TCollection_MapNode
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_StepShape_ShapeDefinitionRepresentation
 ") Value;
-		Handle_StepShape_ShapeDefinitionRepresentation & Value ();
+		Handle_StepShape_ShapeDefinitionRepresentation Value ();
 };
 
 
-%feature("shadow") STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR::~STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR::Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR {
-	Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR GetHandle() {
-	return *(Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR*) &$self;
-	}
-};
 
 %nodefaultctor Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR;
 class Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR : public Handle_TCollection_MapNode {
@@ -917,20 +731,6 @@ class Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR : public Handle_TColl
 %extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR {
     STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR* GetObject() {
     return (STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR*)$self->Access();
-    }
-};
-%feature("shadow") Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR::~Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -990,13 +790,13 @@ class STEPCAFControl_DataMapOfLabelExternFile : public TCollection_BasicMap {
 	:type K: TDF_Label &
 	:rtype: Handle_STEPCAFControl_ExternFile
 ") Find;
-		const Handle_STEPCAFControl_ExternFile & Find (const TDF_Label & K);
+		Handle_STEPCAFControl_ExternFile Find (const TDF_Label & K);
 		%feature("compactdefaultargs") ChangeFind;
 		%feature("autodoc", "	:param K:
 	:type K: TDF_Label &
 	:rtype: Handle_STEPCAFControl_ExternFile
 ") ChangeFind;
-		Handle_STEPCAFControl_ExternFile & ChangeFind (const TDF_Label & K);
+		Handle_STEPCAFControl_ExternFile ChangeFind (const TDF_Label & K);
 		%feature("compactdefaultargs") Find1;
 		%feature("autodoc", "	:param K:
 	:type K: TDF_Label &
@@ -1012,20 +812,6 @@ class STEPCAFControl_DataMapOfLabelExternFile : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") STEPCAFControl_DataMapOfLabelExternFile::~STEPCAFControl_DataMapOfLabelExternFile %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend STEPCAFControl_DataMapOfLabelExternFile {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor STEPCAFControl_DataMapOfLabelShape;
 class STEPCAFControl_DataMapOfLabelShape : public TCollection_BasicMap {
 	public:
@@ -1104,20 +890,6 @@ class STEPCAFControl_DataMapOfLabelShape : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") STEPCAFControl_DataMapOfLabelShape::~STEPCAFControl_DataMapOfLabelShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend STEPCAFControl_DataMapOfLabelShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor STEPCAFControl_DataMapOfPDExternFile;
 class STEPCAFControl_DataMapOfPDExternFile : public TCollection_BasicMap {
 	public:
@@ -1174,13 +946,13 @@ class STEPCAFControl_DataMapOfPDExternFile : public TCollection_BasicMap {
 	:type K: Handle_StepBasic_ProductDefinition &
 	:rtype: Handle_STEPCAFControl_ExternFile
 ") Find;
-		const Handle_STEPCAFControl_ExternFile & Find (const Handle_StepBasic_ProductDefinition & K);
+		Handle_STEPCAFControl_ExternFile Find (const Handle_StepBasic_ProductDefinition & K);
 		%feature("compactdefaultargs") ChangeFind;
 		%feature("autodoc", "	:param K:
 	:type K: Handle_StepBasic_ProductDefinition &
 	:rtype: Handle_STEPCAFControl_ExternFile
 ") ChangeFind;
-		Handle_STEPCAFControl_ExternFile & ChangeFind (const Handle_StepBasic_ProductDefinition & K);
+		Handle_STEPCAFControl_ExternFile ChangeFind (const Handle_StepBasic_ProductDefinition & K);
 		%feature("compactdefaultargs") Find1;
 		%feature("autodoc", "	:param K:
 	:type K: Handle_StepBasic_ProductDefinition &
@@ -1196,20 +968,6 @@ class STEPCAFControl_DataMapOfPDExternFile : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") STEPCAFControl_DataMapOfPDExternFile::~STEPCAFControl_DataMapOfPDExternFile %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend STEPCAFControl_DataMapOfPDExternFile {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor STEPCAFControl_DataMapOfSDRExternFile;
 class STEPCAFControl_DataMapOfSDRExternFile : public TCollection_BasicMap {
 	public:
@@ -1266,13 +1024,13 @@ class STEPCAFControl_DataMapOfSDRExternFile : public TCollection_BasicMap {
 	:type K: Handle_StepShape_ShapeDefinitionRepresentation &
 	:rtype: Handle_STEPCAFControl_ExternFile
 ") Find;
-		const Handle_STEPCAFControl_ExternFile & Find (const Handle_StepShape_ShapeDefinitionRepresentation & K);
+		Handle_STEPCAFControl_ExternFile Find (const Handle_StepShape_ShapeDefinitionRepresentation & K);
 		%feature("compactdefaultargs") ChangeFind;
 		%feature("autodoc", "	:param K:
 	:type K: Handle_StepShape_ShapeDefinitionRepresentation &
 	:rtype: Handle_STEPCAFControl_ExternFile
 ") ChangeFind;
-		Handle_STEPCAFControl_ExternFile & ChangeFind (const Handle_StepShape_ShapeDefinitionRepresentation & K);
+		Handle_STEPCAFControl_ExternFile ChangeFind (const Handle_StepShape_ShapeDefinitionRepresentation & K);
 		%feature("compactdefaultargs") Find1;
 		%feature("autodoc", "	:param K:
 	:type K: Handle_StepShape_ShapeDefinitionRepresentation &
@@ -1288,20 +1046,6 @@ class STEPCAFControl_DataMapOfSDRExternFile : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") STEPCAFControl_DataMapOfSDRExternFile::~STEPCAFControl_DataMapOfSDRExternFile %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend STEPCAFControl_DataMapOfSDRExternFile {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor STEPCAFControl_DataMapOfShapePD;
 class STEPCAFControl_DataMapOfShapePD : public TCollection_BasicMap {
 	public:
@@ -1358,13 +1102,13 @@ class STEPCAFControl_DataMapOfShapePD : public TCollection_BasicMap {
 	:type K: TopoDS_Shape &
 	:rtype: Handle_StepBasic_ProductDefinition
 ") Find;
-		const Handle_StepBasic_ProductDefinition & Find (const TopoDS_Shape & K);
+		Handle_StepBasic_ProductDefinition Find (const TopoDS_Shape & K);
 		%feature("compactdefaultargs") ChangeFind;
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
 	:rtype: Handle_StepBasic_ProductDefinition
 ") ChangeFind;
-		Handle_StepBasic_ProductDefinition & ChangeFind (const TopoDS_Shape & K);
+		Handle_StepBasic_ProductDefinition ChangeFind (const TopoDS_Shape & K);
 		%feature("compactdefaultargs") Find1;
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
@@ -1380,20 +1124,6 @@ class STEPCAFControl_DataMapOfShapePD : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") STEPCAFControl_DataMapOfShapePD::~STEPCAFControl_DataMapOfShapePD %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend STEPCAFControl_DataMapOfShapePD {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor STEPCAFControl_DataMapOfShapeSDR;
 class STEPCAFControl_DataMapOfShapeSDR : public TCollection_BasicMap {
 	public:
@@ -1450,13 +1180,13 @@ class STEPCAFControl_DataMapOfShapeSDR : public TCollection_BasicMap {
 	:type K: TopoDS_Shape &
 	:rtype: Handle_StepShape_ShapeDefinitionRepresentation
 ") Find;
-		const Handle_StepShape_ShapeDefinitionRepresentation & Find (const TopoDS_Shape & K);
+		Handle_StepShape_ShapeDefinitionRepresentation Find (const TopoDS_Shape & K);
 		%feature("compactdefaultargs") ChangeFind;
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
 	:rtype: Handle_StepShape_ShapeDefinitionRepresentation
 ") ChangeFind;
-		Handle_StepShape_ShapeDefinitionRepresentation & ChangeFind (const TopoDS_Shape & K);
+		Handle_StepShape_ShapeDefinitionRepresentation ChangeFind (const TopoDS_Shape & K);
 		%feature("compactdefaultargs") Find1;
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
@@ -1472,20 +1202,6 @@ class STEPCAFControl_DataMapOfShapeSDR : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") STEPCAFControl_DataMapOfShapeSDR::~STEPCAFControl_DataMapOfShapeSDR %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend STEPCAFControl_DataMapOfShapeSDR {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor STEPCAFControl_DictionaryOfExternFile;
 class STEPCAFControl_DictionaryOfExternFile : public MMgt_TShared {
 	public:
@@ -1516,7 +1232,7 @@ class STEPCAFControl_DictionaryOfExternFile : public MMgt_TShared {
 	:type exact: bool
 	:rtype: Handle_STEPCAFControl_ExternFile
 ") Item;
-		const Handle_STEPCAFControl_ExternFile & Item (const char * name,const Standard_Boolean exact = Standard_True);
+		Handle_STEPCAFControl_ExternFile Item (const char * name,const Standard_Boolean exact = Standard_True);
 		%feature("compactdefaultargs") Item;
 		%feature("autodoc", "	:param name:
 	:type name: TCollection_AsciiString &
@@ -1524,7 +1240,7 @@ class STEPCAFControl_DictionaryOfExternFile : public MMgt_TShared {
 	:type exact: bool
 	:rtype: Handle_STEPCAFControl_ExternFile
 ") Item;
-		const Handle_STEPCAFControl_ExternFile & Item (const TCollection_AsciiString & name,const Standard_Boolean exact = Standard_True);
+		Handle_STEPCAFControl_ExternFile Item (const TCollection_AsciiString & name,const Standard_Boolean exact = Standard_True);
 		%feature("compactdefaultargs") GetItem;
 		%feature("autodoc", "	:param name:
 	:type name: char *
@@ -1574,7 +1290,7 @@ class STEPCAFControl_DictionaryOfExternFile : public MMgt_TShared {
 	:type exact: bool
 	:rtype: Handle_STEPCAFControl_ExternFile
 ") NewItem;
-		Handle_STEPCAFControl_ExternFile & NewItem (const char * name,Standard_Boolean &OutValue,const Standard_Boolean exact = Standard_True);
+		Handle_STEPCAFControl_ExternFile NewItem (const char * name,Standard_Boolean &OutValue,const Standard_Boolean exact = Standard_True);
 		%feature("compactdefaultargs") NewItem;
 		%feature("autodoc", "	:param name:
 	:type name: TCollection_AsciiString &
@@ -1584,7 +1300,7 @@ class STEPCAFControl_DictionaryOfExternFile : public MMgt_TShared {
 	:type exact: bool
 	:rtype: Handle_STEPCAFControl_ExternFile
 ") NewItem;
-		Handle_STEPCAFControl_ExternFile & NewItem (const TCollection_AsciiString & name,Standard_Boolean &OutValue,const Standard_Boolean exact = Standard_True);
+		Handle_STEPCAFControl_ExternFile NewItem (const TCollection_AsciiString & name,Standard_Boolean &OutValue,const Standard_Boolean exact = Standard_True);
 		%feature("compactdefaultargs") RemoveItem;
 		%feature("autodoc", "	:param name:
 	:type name: char *
@@ -1630,25 +1346,23 @@ class STEPCAFControl_DictionaryOfExternFile : public MMgt_TShared {
 };
 
 
-%feature("shadow") STEPCAFControl_DictionaryOfExternFile::~STEPCAFControl_DictionaryOfExternFile %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend STEPCAFControl_DictionaryOfExternFile {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_STEPCAFControl_DictionaryOfExternFile(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend STEPCAFControl_DictionaryOfExternFile {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend STEPCAFControl_DictionaryOfExternFile {
-	Handle_STEPCAFControl_DictionaryOfExternFile GetHandle() {
-	return *(Handle_STEPCAFControl_DictionaryOfExternFile*) &$self;
-	}
-};
+%pythonappend Handle_STEPCAFControl_DictionaryOfExternFile::Handle_STEPCAFControl_DictionaryOfExternFile %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_STEPCAFControl_DictionaryOfExternFile;
 class Handle_STEPCAFControl_DictionaryOfExternFile : public Handle_MMgt_TShared {
@@ -1666,20 +1380,6 @@ class Handle_STEPCAFControl_DictionaryOfExternFile : public Handle_MMgt_TShared 
 %extend Handle_STEPCAFControl_DictionaryOfExternFile {
     STEPCAFControl_DictionaryOfExternFile* GetObject() {
     return (STEPCAFControl_DictionaryOfExternFile*)$self->Access();
-    }
-};
-%feature("shadow") Handle_STEPCAFControl_DictionaryOfExternFile::~Handle_STEPCAFControl_DictionaryOfExternFile %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_STEPCAFControl_DictionaryOfExternFile {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1755,25 +1455,23 @@ class STEPCAFControl_ExternFile : public MMgt_TShared {
 };
 
 
-%feature("shadow") STEPCAFControl_ExternFile::~STEPCAFControl_ExternFile %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend STEPCAFControl_ExternFile {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_STEPCAFControl_ExternFile(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend STEPCAFControl_ExternFile {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend STEPCAFControl_ExternFile {
-	Handle_STEPCAFControl_ExternFile GetHandle() {
-	return *(Handle_STEPCAFControl_ExternFile*) &$self;
-	}
-};
+%pythonappend Handle_STEPCAFControl_ExternFile::Handle_STEPCAFControl_ExternFile %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_STEPCAFControl_ExternFile;
 class Handle_STEPCAFControl_ExternFile : public Handle_MMgt_TShared {
@@ -1791,20 +1489,6 @@ class Handle_STEPCAFControl_ExternFile : public Handle_MMgt_TShared {
 %extend Handle_STEPCAFControl_ExternFile {
     STEPCAFControl_ExternFile* GetObject() {
     return (STEPCAFControl_ExternFile*)$self->Access();
-    }
-};
-%feature("shadow") Handle_STEPCAFControl_ExternFile::~Handle_STEPCAFControl_ExternFile %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_STEPCAFControl_ExternFile {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1848,7 +1532,7 @@ class STEPCAFControl_IteratorOfDictionaryOfExternFile {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_STEPCAFControl_ExternFile
 ") Value;
-		const Handle_STEPCAFControl_ExternFile & Value ();
+		Handle_STEPCAFControl_ExternFile Value ();
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "	:rtype: TCollection_AsciiString
 ") Name;
@@ -1856,20 +1540,6 @@ class STEPCAFControl_IteratorOfDictionaryOfExternFile {
 };
 
 
-%feature("shadow") STEPCAFControl_IteratorOfDictionaryOfExternFile::~STEPCAFControl_IteratorOfDictionaryOfExternFile %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend STEPCAFControl_IteratorOfDictionaryOfExternFile {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor STEPCAFControl_Reader;
 class STEPCAFControl_Reader {
 	public:
@@ -1954,7 +1624,7 @@ class STEPCAFControl_Reader {
 
 	:rtype: Handle_STEPCAFControl_DictionaryOfExternFile
 ") ExternFiles;
-		const Handle_STEPCAFControl_DictionaryOfExternFile & ExternFiles ();
+		Handle_STEPCAFControl_DictionaryOfExternFile ExternFiles ();
 		%feature("compactdefaultargs") ExternFile;
 		%feature("autodoc", "	* Returns data on external file by its name Returns False if no external file with given name is read
 
@@ -2080,20 +1750,6 @@ class STEPCAFControl_Reader {
 };
 
 
-%feature("shadow") STEPCAFControl_Reader::~STEPCAFControl_Reader %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend STEPCAFControl_Reader {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor STEPCAFControl_StackItemOfDictionaryOfExternFile;
 class STEPCAFControl_StackItemOfDictionaryOfExternFile : public MMgt_TShared {
 	public:
@@ -2124,25 +1780,23 @@ class STEPCAFControl_StackItemOfDictionaryOfExternFile : public MMgt_TShared {
 };
 
 
-%feature("shadow") STEPCAFControl_StackItemOfDictionaryOfExternFile::~STEPCAFControl_StackItemOfDictionaryOfExternFile %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend STEPCAFControl_StackItemOfDictionaryOfExternFile {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend STEPCAFControl_StackItemOfDictionaryOfExternFile {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend STEPCAFControl_StackItemOfDictionaryOfExternFile {
-	Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile GetHandle() {
-	return *(Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile*) &$self;
-	}
-};
+%pythonappend Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile::Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile;
 class Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile : public Handle_MMgt_TShared {
@@ -2160,20 +1814,6 @@ class Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile : public Handle_MM
 %extend Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile {
     STEPCAFControl_StackItemOfDictionaryOfExternFile* GetObject() {
     return (STEPCAFControl_StackItemOfDictionaryOfExternFile*)$self->Access();
-    }
-};
-%feature("shadow") Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile::~Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2259,7 +1899,7 @@ class STEPCAFControl_Writer {
 
 	:rtype: Handle_STEPCAFControl_DictionaryOfExternFile
 ") ExternFiles;
-		const Handle_STEPCAFControl_DictionaryOfExternFile & ExternFiles ();
+		Handle_STEPCAFControl_DictionaryOfExternFile ExternFiles ();
 		%feature("compactdefaultargs") ExternFile;
 		%feature("autodoc", "	* Returns data on external file by its original label Returns False if no external file with given name is read
 
@@ -2379,17 +2019,3 @@ class STEPCAFControl_Writer {
 };
 
 
-%feature("shadow") STEPCAFControl_Writer::~STEPCAFControl_Writer %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend STEPCAFControl_Writer {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include ChFiKPart_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -161,20 +173,6 @@ class ChFiKPart_ComputeData {
 };
 
 
-%feature("shadow") ChFiKPart_ComputeData::~ChFiKPart_ComputeData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ChFiKPart_ComputeData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ChFiKPart_DataMapIteratorOfRstMap;
 class ChFiKPart_DataMapIteratorOfRstMap : public TCollection_BasicMapIterator {
 	public:
@@ -201,24 +199,10 @@ class ChFiKPart_DataMapIteratorOfRstMap : public TCollection_BasicMapIterator {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Adaptor2d_HCurve2d
 ") Value;
-		const Handle_Adaptor2d_HCurve2d & Value ();
+		Handle_Adaptor2d_HCurve2d Value ();
 };
 
 
-%feature("shadow") ChFiKPart_DataMapIteratorOfRstMap::~ChFiKPart_DataMapIteratorOfRstMap %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ChFiKPart_DataMapIteratorOfRstMap {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ChFiKPart_DataMapNodeOfRstMap;
 class ChFiKPart_DataMapNodeOfRstMap : public TCollection_MapNode {
 	public:
@@ -248,29 +232,27 @@ class ChFiKPart_DataMapNodeOfRstMap : public TCollection_MapNode {
             		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Adaptor2d_HCurve2d
 ") Value;
-		Handle_Adaptor2d_HCurve2d & Value ();
+		Handle_Adaptor2d_HCurve2d Value ();
 };
 
 
-%feature("shadow") ChFiKPart_DataMapNodeOfRstMap::~ChFiKPart_DataMapNodeOfRstMap %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend ChFiKPart_DataMapNodeOfRstMap {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ChFiKPart_DataMapNodeOfRstMap(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_ChFiKPart_DataMapNodeOfRstMap::Handle_ChFiKPart_DataMapNodeOfRstMap %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend ChFiKPart_DataMapNodeOfRstMap {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ChFiKPart_DataMapNodeOfRstMap {
-	Handle_ChFiKPart_DataMapNodeOfRstMap GetHandle() {
-	return *(Handle_ChFiKPart_DataMapNodeOfRstMap*) &$self;
-	}
-};
 
 %nodefaultctor Handle_ChFiKPart_DataMapNodeOfRstMap;
 class Handle_ChFiKPart_DataMapNodeOfRstMap : public Handle_TCollection_MapNode {
@@ -288,20 +270,6 @@ class Handle_ChFiKPart_DataMapNodeOfRstMap : public Handle_TCollection_MapNode {
 %extend Handle_ChFiKPart_DataMapNodeOfRstMap {
     ChFiKPart_DataMapNodeOfRstMap* GetObject() {
     return (ChFiKPart_DataMapNodeOfRstMap*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ChFiKPart_DataMapNodeOfRstMap::~Handle_ChFiKPart_DataMapNodeOfRstMap %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ChFiKPart_DataMapNodeOfRstMap {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -361,13 +329,13 @@ class ChFiKPart_RstMap : public TCollection_BasicMap {
 	:type K: int &
 	:rtype: Handle_Adaptor2d_HCurve2d
 ") Find;
-		const Handle_Adaptor2d_HCurve2d & Find (const Standard_Integer & K);
+		Handle_Adaptor2d_HCurve2d Find (const Standard_Integer & K);
 		%feature("compactdefaultargs") ChangeFind;
 		%feature("autodoc", "	:param K:
 	:type K: int &
 	:rtype: Handle_Adaptor2d_HCurve2d
 ") ChangeFind;
-		Handle_Adaptor2d_HCurve2d & ChangeFind (const Standard_Integer & K);
+		Handle_Adaptor2d_HCurve2d ChangeFind (const Standard_Integer & K);
 		%feature("compactdefaultargs") Find1;
 		%feature("autodoc", "	:param K:
 	:type K: int &
@@ -383,17 +351,3 @@ class ChFiKPart_RstMap : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") ChFiKPart_RstMap::~ChFiKPart_RstMap %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ChFiKPart_RstMap {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

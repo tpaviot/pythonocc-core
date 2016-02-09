@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include Geom2dAPI_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -144,20 +156,6 @@ class Geom2dAPI_ExtremaCurveCurve {
 };
 
 
-%feature("shadow") Geom2dAPI_ExtremaCurveCurve::~Geom2dAPI_ExtremaCurveCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dAPI_ExtremaCurveCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dAPI_InterCurveCurve;
 class Geom2dAPI_InterCurveCurve {
 	public:
@@ -262,20 +260,6 @@ class Geom2dAPI_InterCurveCurve {
 };
 
 
-%feature("shadow") Geom2dAPI_InterCurveCurve::~Geom2dAPI_InterCurveCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dAPI_InterCurveCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dAPI_Interpolate;
 class Geom2dAPI_Interpolate {
 	public:
@@ -336,7 +320,7 @@ class Geom2dAPI_Interpolate {
 
 	:rtype: Handle_Geom2d_BSplineCurve
 ") Curve;
-		const Handle_Geom2d_BSplineCurve & Curve ();
+		Handle_Geom2d_BSplineCurve Curve ();
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	* Returns true if the constrained BSpline curve is successfully constructed. Note: in this case, the result is given by the function Curve.
 
@@ -346,20 +330,6 @@ class Geom2dAPI_Interpolate {
 };
 
 
-%feature("shadow") Geom2dAPI_Interpolate::~Geom2dAPI_Interpolate %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dAPI_Interpolate {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dAPI_PointsToBSpline;
 class Geom2dAPI_PointsToBSpline {
 	public:
@@ -558,7 +528,7 @@ class Geom2dAPI_PointsToBSpline {
 
 	:rtype: Handle_Geom2d_BSplineCurve
 ") Curve;
-		const Handle_Geom2d_BSplineCurve & Curve ();
+		Handle_Geom2d_BSplineCurve Curve ();
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	:rtype: bool
 ") IsDone;
@@ -566,20 +536,6 @@ class Geom2dAPI_PointsToBSpline {
 };
 
 
-%feature("shadow") Geom2dAPI_PointsToBSpline::~Geom2dAPI_PointsToBSpline %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dAPI_PointsToBSpline {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dAPI_ProjectPointOnCurve;
 class Geom2dAPI_ProjectPointOnCurve {
 	public:
@@ -716,17 +672,3 @@ class Geom2dAPI_ProjectPointOnCurve {
 };
 
 
-%feature("shadow") Geom2dAPI_ProjectPointOnCurve::~Geom2dAPI_ProjectPointOnCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dAPI_ProjectPointOnCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

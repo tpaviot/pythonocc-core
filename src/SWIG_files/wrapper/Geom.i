@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include Geom_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -180,25 +192,23 @@ class Geom_Geometry : public MMgt_TShared {
 };
 
 
-%feature("shadow") Geom_Geometry::~Geom_Geometry %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_Geometry {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_Geometry(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_Geometry {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_Geometry {
-	Handle_Geom_Geometry GetHandle() {
-	return *(Handle_Geom_Geometry*) &$self;
-	}
-};
+%pythonappend Handle_Geom_Geometry::Handle_Geom_Geometry %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_Geometry;
 class Handle_Geom_Geometry : public Handle_MMgt_TShared {
@@ -216,20 +226,6 @@ class Handle_Geom_Geometry : public Handle_MMgt_TShared {
 %extend Handle_Geom_Geometry {
     Geom_Geometry* GetObject() {
     return (Geom_Geometry*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_Geometry::~Handle_Geom_Geometry %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_Geometry {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -339,13 +335,13 @@ class Geom_HSequenceOfBSplineSurface : public MMgt_TShared {
 	:type anIndex: int
 	:rtype: Handle_Geom_BSplineSurface
 ") Value;
-		const Handle_Geom_BSplineSurface & Value (const Standard_Integer anIndex);
+		Handle_Geom_BSplineSurface Value (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
 	:rtype: Handle_Geom_BSplineSurface
 ") ChangeValue;
-		Handle_Geom_BSplineSurface & ChangeValue (const Standard_Integer anIndex);
+		Handle_Geom_BSplineSurface ChangeValue (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
@@ -375,25 +371,23 @@ class Geom_HSequenceOfBSplineSurface : public MMgt_TShared {
 };
 
 
-%feature("shadow") Geom_HSequenceOfBSplineSurface::~Geom_HSequenceOfBSplineSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_HSequenceOfBSplineSurface {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_HSequenceOfBSplineSurface(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_HSequenceOfBSplineSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_HSequenceOfBSplineSurface {
-	Handle_Geom_HSequenceOfBSplineSurface GetHandle() {
-	return *(Handle_Geom_HSequenceOfBSplineSurface*) &$self;
-	}
-};
+%pythonappend Handle_Geom_HSequenceOfBSplineSurface::Handle_Geom_HSequenceOfBSplineSurface %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_HSequenceOfBSplineSurface;
 class Handle_Geom_HSequenceOfBSplineSurface : public Handle_MMgt_TShared {
@@ -411,20 +405,6 @@ class Handle_Geom_HSequenceOfBSplineSurface : public Handle_MMgt_TShared {
 %extend Handle_Geom_HSequenceOfBSplineSurface {
     Geom_HSequenceOfBSplineSurface* GetObject() {
     return (Geom_HSequenceOfBSplineSurface*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_HSequenceOfBSplineSurface::~Handle_Geom_HSequenceOfBSplineSurface %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_HSequenceOfBSplineSurface {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -534,13 +514,13 @@ class Geom_HSequenceOfSurface : public MMgt_TShared {
 	:type anIndex: int
 	:rtype: Handle_Geom_Surface
 ") Value;
-		const Handle_Geom_Surface & Value (const Standard_Integer anIndex);
+		Handle_Geom_Surface Value (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
 	:rtype: Handle_Geom_Surface
 ") ChangeValue;
-		Handle_Geom_Surface & ChangeValue (const Standard_Integer anIndex);
+		Handle_Geom_Surface ChangeValue (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
@@ -570,25 +550,23 @@ class Geom_HSequenceOfSurface : public MMgt_TShared {
 };
 
 
-%feature("shadow") Geom_HSequenceOfSurface::~Geom_HSequenceOfSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_HSequenceOfSurface {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_HSequenceOfSurface(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_HSequenceOfSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_HSequenceOfSurface {
-	Handle_Geom_HSequenceOfSurface GetHandle() {
-	return *(Handle_Geom_HSequenceOfSurface*) &$self;
-	}
-};
+%pythonappend Handle_Geom_HSequenceOfSurface::Handle_Geom_HSequenceOfSurface %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_HSequenceOfSurface;
 class Handle_Geom_HSequenceOfSurface : public Handle_MMgt_TShared {
@@ -606,20 +584,6 @@ class Handle_Geom_HSequenceOfSurface : public Handle_MMgt_TShared {
 %extend Handle_Geom_HSequenceOfSurface {
     Geom_HSequenceOfSurface* GetObject() {
     return (Geom_HSequenceOfSurface*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_HSequenceOfSurface::~Handle_Geom_HSequenceOfSurface %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_HSequenceOfSurface {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -687,20 +651,6 @@ class Geom_OsculatingSurface {
 };
 
 
-%feature("shadow") Geom_OsculatingSurface::~Geom_OsculatingSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom_OsculatingSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom_SequenceNodeOfSequenceOfBSplineSurface;
 class Geom_SequenceNodeOfSequenceOfBSplineSurface : public TCollection_SeqNode {
 	public:
@@ -717,29 +667,27 @@ class Geom_SequenceNodeOfSequenceOfBSplineSurface : public TCollection_SeqNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Geom_BSplineSurface
 ") Value;
-		Handle_Geom_BSplineSurface & Value ();
+		Handle_Geom_BSplineSurface Value ();
 };
 
 
-%feature("shadow") Geom_SequenceNodeOfSequenceOfBSplineSurface::~Geom_SequenceNodeOfSequenceOfBSplineSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend Geom_SequenceNodeOfSequenceOfBSplineSurface {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface::Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend Geom_SequenceNodeOfSequenceOfBSplineSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_SequenceNodeOfSequenceOfBSplineSurface {
-	Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface GetHandle() {
-	return *(Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface*) &$self;
-	}
-};
 
 %nodefaultctor Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface;
 class Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface : public Handle_TCollection_SeqNode {
@@ -759,20 +707,6 @@ class Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface : public Handle_TCollec
     return (Geom_SequenceNodeOfSequenceOfBSplineSurface*)$self->Access();
     }
 };
-%feature("shadow") Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface::~Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor Geom_SequenceNodeOfSequenceOfSurface;
 class Geom_SequenceNodeOfSequenceOfSurface : public TCollection_SeqNode {
@@ -790,29 +724,27 @@ class Geom_SequenceNodeOfSequenceOfSurface : public TCollection_SeqNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Geom_Surface
 ") Value;
-		Handle_Geom_Surface & Value ();
+		Handle_Geom_Surface Value ();
 };
 
 
-%feature("shadow") Geom_SequenceNodeOfSequenceOfSurface::~Geom_SequenceNodeOfSequenceOfSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend Geom_SequenceNodeOfSequenceOfSurface {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_SequenceNodeOfSequenceOfSurface(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_Geom_SequenceNodeOfSequenceOfSurface::Handle_Geom_SequenceNodeOfSequenceOfSurface %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend Geom_SequenceNodeOfSequenceOfSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_SequenceNodeOfSequenceOfSurface {
-	Handle_Geom_SequenceNodeOfSequenceOfSurface GetHandle() {
-	return *(Handle_Geom_SequenceNodeOfSequenceOfSurface*) &$self;
-	}
-};
 
 %nodefaultctor Handle_Geom_SequenceNodeOfSequenceOfSurface;
 class Handle_Geom_SequenceNodeOfSequenceOfSurface : public Handle_TCollection_SeqNode {
@@ -830,20 +762,6 @@ class Handle_Geom_SequenceNodeOfSequenceOfSurface : public Handle_TCollection_Se
 %extend Handle_Geom_SequenceNodeOfSequenceOfSurface {
     Geom_SequenceNodeOfSequenceOfSurface* GetObject() {
     return (Geom_SequenceNodeOfSequenceOfSurface*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_SequenceNodeOfSequenceOfSurface::~Handle_Geom_SequenceNodeOfSequenceOfSurface %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_SequenceNodeOfSequenceOfSurface {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -929,11 +847,11 @@ class Geom_SequenceOfBSplineSurface : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Geom_BSplineSurface
 ") First;
-		const Handle_Geom_BSplineSurface & First ();
+		Handle_Geom_BSplineSurface First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Geom_BSplineSurface
 ") Last;
-		const Handle_Geom_BSplineSurface & Last ();
+		Handle_Geom_BSplineSurface Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -947,7 +865,7 @@ class Geom_SequenceOfBSplineSurface : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Geom_BSplineSurface
 ") Value;
-		const Handle_Geom_BSplineSurface & Value (const Standard_Integer Index);
+		Handle_Geom_BSplineSurface Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -961,7 +879,7 @@ class Geom_SequenceOfBSplineSurface : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Geom_BSplineSurface
 ") ChangeValue;
-		Handle_Geom_BSplineSurface & ChangeValue (const Standard_Integer Index);
+		Handle_Geom_BSplineSurface ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -979,20 +897,6 @@ class Geom_SequenceOfBSplineSurface : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Geom_SequenceOfBSplineSurface::~Geom_SequenceOfBSplineSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom_SequenceOfBSplineSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom_SequenceOfSurface;
 class Geom_SequenceOfSurface : public TCollection_BaseSequence {
 	public:
@@ -1075,11 +979,11 @@ class Geom_SequenceOfSurface : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Geom_Surface
 ") First;
-		const Handle_Geom_Surface & First ();
+		Handle_Geom_Surface First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Geom_Surface
 ") Last;
-		const Handle_Geom_Surface & Last ();
+		Handle_Geom_Surface Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -1093,7 +997,7 @@ class Geom_SequenceOfSurface : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Geom_Surface
 ") Value;
-		const Handle_Geom_Surface & Value (const Standard_Integer Index);
+		Handle_Geom_Surface Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -1107,7 +1011,7 @@ class Geom_SequenceOfSurface : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Geom_Surface
 ") ChangeValue;
-		Handle_Geom_Surface & ChangeValue (const Standard_Integer Index);
+		Handle_Geom_Surface ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -1125,20 +1029,6 @@ class Geom_SequenceOfSurface : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Geom_SequenceOfSurface::~Geom_SequenceOfSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom_SequenceOfSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom_Transformation;
 class Geom_Transformation : public MMgt_TShared {
 	public:
@@ -1351,25 +1241,23 @@ class Geom_Transformation : public MMgt_TShared {
 };
 
 
-%feature("shadow") Geom_Transformation::~Geom_Transformation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_Transformation {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_Transformation(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_Transformation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_Transformation {
-	Handle_Geom_Transformation GetHandle() {
-	return *(Handle_Geom_Transformation*) &$self;
-	}
-};
+%pythonappend Handle_Geom_Transformation::Handle_Geom_Transformation %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_Transformation;
 class Handle_Geom_Transformation : public Handle_MMgt_TShared {
@@ -1387,20 +1275,6 @@ class Handle_Geom_Transformation : public Handle_MMgt_TShared {
 %extend Handle_Geom_Transformation {
     Geom_Transformation* GetObject() {
     return (Geom_Transformation*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_Transformation::~Handle_Geom_Transformation %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_Transformation {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1460,25 +1334,23 @@ class Geom_AxisPlacement : public Geom_Geometry {
 };
 
 
-%feature("shadow") Geom_AxisPlacement::~Geom_AxisPlacement %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_AxisPlacement {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_AxisPlacement(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_AxisPlacement {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_AxisPlacement {
-	Handle_Geom_AxisPlacement GetHandle() {
-	return *(Handle_Geom_AxisPlacement*) &$self;
-	}
-};
+%pythonappend Handle_Geom_AxisPlacement::Handle_Geom_AxisPlacement %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_AxisPlacement;
 class Handle_Geom_AxisPlacement : public Handle_Geom_Geometry {
@@ -1496,20 +1368,6 @@ class Handle_Geom_AxisPlacement : public Handle_Geom_Geometry {
 %extend Handle_Geom_AxisPlacement {
     Geom_AxisPlacement* GetObject() {
     return (Geom_AxisPlacement*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_AxisPlacement::~Handle_Geom_AxisPlacement %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_AxisPlacement {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1671,25 +1529,23 @@ class Geom_Curve : public Geom_Geometry {
 };
 
 
-%feature("shadow") Geom_Curve::~Geom_Curve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_Curve {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_Curve(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_Curve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_Curve {
-	Handle_Geom_Curve GetHandle() {
-	return *(Handle_Geom_Curve*) &$self;
-	}
-};
+%pythonappend Handle_Geom_Curve::Handle_Geom_Curve %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_Curve;
 class Handle_Geom_Curve : public Handle_Geom_Geometry {
@@ -1707,20 +1563,6 @@ class Handle_Geom_Curve : public Handle_Geom_Geometry {
 %extend Handle_Geom_Curve {
     Geom_Curve* GetObject() {
     return (Geom_Curve*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_Curve::~Handle_Geom_Curve %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_Curve {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1782,25 +1624,23 @@ class Geom_Point : public Geom_Geometry {
 };
 
 
-%feature("shadow") Geom_Point::~Geom_Point %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_Point {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_Point(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_Point {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_Point {
-	Handle_Geom_Point GetHandle() {
-	return *(Handle_Geom_Point*) &$self;
-	}
-};
+%pythonappend Handle_Geom_Point::Handle_Geom_Point %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_Point;
 class Handle_Geom_Point : public Handle_Geom_Geometry {
@@ -1818,20 +1658,6 @@ class Handle_Geom_Point : public Handle_Geom_Geometry {
 %extend Handle_Geom_Point {
     Geom_Point* GetObject() {
     return (Geom_Point*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_Point::~Handle_Geom_Point %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_Point {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2093,25 +1919,23 @@ class Geom_Surface : public Geom_Geometry {
 };
 
 
-%feature("shadow") Geom_Surface::~Geom_Surface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_Surface {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_Surface(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_Surface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_Surface {
-	Handle_Geom_Surface GetHandle() {
-	return *(Handle_Geom_Surface*) &$self;
-	}
-};
+%pythonappend Handle_Geom_Surface::Handle_Geom_Surface %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_Surface;
 class Handle_Geom_Surface : public Handle_Geom_Geometry {
@@ -2129,20 +1953,6 @@ class Handle_Geom_Surface : public Handle_Geom_Geometry {
 %extend Handle_Geom_Surface {
     Geom_Surface* GetObject() {
     return (Geom_Surface*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_Surface::~Handle_Geom_Surface %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_Surface {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2284,25 +2094,23 @@ class Geom_Vector : public Geom_Geometry {
 };
 
 
-%feature("shadow") Geom_Vector::~Geom_Vector %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_Vector {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_Vector(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_Vector {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_Vector {
-	Handle_Geom_Vector GetHandle() {
-	return *(Handle_Geom_Vector*) &$self;
-	}
-};
+%pythonappend Handle_Geom_Vector::Handle_Geom_Vector %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_Vector;
 class Handle_Geom_Vector : public Handle_Geom_Geometry {
@@ -2320,20 +2128,6 @@ class Handle_Geom_Vector : public Handle_Geom_Geometry {
 %extend Handle_Geom_Vector {
     Geom_Vector* GetObject() {
     return (Geom_Vector*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_Vector::~Handle_Geom_Vector %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_Vector {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2401,25 +2195,23 @@ class Geom_Axis1Placement : public Geom_AxisPlacement {
 };
 
 
-%feature("shadow") Geom_Axis1Placement::~Geom_Axis1Placement %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_Axis1Placement {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_Axis1Placement(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_Axis1Placement {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_Axis1Placement {
-	Handle_Geom_Axis1Placement GetHandle() {
-	return *(Handle_Geom_Axis1Placement*) &$self;
-	}
-};
+%pythonappend Handle_Geom_Axis1Placement::Handle_Geom_Axis1Placement %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_Axis1Placement;
 class Handle_Geom_Axis1Placement : public Handle_Geom_AxisPlacement {
@@ -2437,20 +2229,6 @@ class Handle_Geom_Axis1Placement : public Handle_Geom_AxisPlacement {
 %extend Handle_Geom_Axis1Placement {
     Geom_Axis1Placement* GetObject() {
     return (Geom_Axis1Placement*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_Axis1Placement::~Handle_Geom_Axis1Placement %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_Axis1Placement {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2544,25 +2322,23 @@ class Geom_Axis2Placement : public Geom_AxisPlacement {
 };
 
 
-%feature("shadow") Geom_Axis2Placement::~Geom_Axis2Placement %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_Axis2Placement {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_Axis2Placement(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_Axis2Placement {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_Axis2Placement {
-	Handle_Geom_Axis2Placement GetHandle() {
-	return *(Handle_Geom_Axis2Placement*) &$self;
-	}
-};
+%pythonappend Handle_Geom_Axis2Placement::Handle_Geom_Axis2Placement %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_Axis2Placement;
 class Handle_Geom_Axis2Placement : public Handle_Geom_AxisPlacement {
@@ -2580,20 +2356,6 @@ class Handle_Geom_Axis2Placement : public Handle_Geom_AxisPlacement {
 %extend Handle_Geom_Axis2Placement {
     Geom_Axis2Placement* GetObject() {
     return (Geom_Axis2Placement*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_Axis2Placement::~Handle_Geom_Axis2Placement %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_Axis2Placement {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2615,25 +2377,23 @@ class Geom_BoundedCurve : public Geom_Curve {
 };
 
 
-%feature("shadow") Geom_BoundedCurve::~Geom_BoundedCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_BoundedCurve {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_BoundedCurve(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_BoundedCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_BoundedCurve {
-	Handle_Geom_BoundedCurve GetHandle() {
-	return *(Handle_Geom_BoundedCurve*) &$self;
-	}
-};
+%pythonappend Handle_Geom_BoundedCurve::Handle_Geom_BoundedCurve %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_BoundedCurve;
 class Handle_Geom_BoundedCurve : public Handle_Geom_Curve {
@@ -2653,20 +2413,6 @@ class Handle_Geom_BoundedCurve : public Handle_Geom_Curve {
     return (Geom_BoundedCurve*)$self->Access();
     }
 };
-%feature("shadow") Handle_Geom_BoundedCurve::~Handle_Geom_BoundedCurve %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_BoundedCurve {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor Geom_BoundedSurface;
 class Geom_BoundedSurface : public Geom_Surface {
@@ -2674,25 +2420,23 @@ class Geom_BoundedSurface : public Geom_Surface {
 };
 
 
-%feature("shadow") Geom_BoundedSurface::~Geom_BoundedSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_BoundedSurface {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_BoundedSurface(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_BoundedSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_BoundedSurface {
-	Handle_Geom_BoundedSurface GetHandle() {
-	return *(Handle_Geom_BoundedSurface*) &$self;
-	}
-};
+%pythonappend Handle_Geom_BoundedSurface::Handle_Geom_BoundedSurface %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_BoundedSurface;
 class Handle_Geom_BoundedSurface : public Handle_Geom_Surface {
@@ -2710,20 +2454,6 @@ class Handle_Geom_BoundedSurface : public Handle_Geom_Surface {
 %extend Handle_Geom_BoundedSurface {
     Geom_BoundedSurface* GetObject() {
     return (Geom_BoundedSurface*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_BoundedSurface::~Handle_Geom_BoundedSurface %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_BoundedSurface {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2847,25 +2577,23 @@ class Geom_CartesianPoint : public Geom_Point {
 };
 
 
-%feature("shadow") Geom_CartesianPoint::~Geom_CartesianPoint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_CartesianPoint {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_CartesianPoint(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_CartesianPoint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_CartesianPoint {
-	Handle_Geom_CartesianPoint GetHandle() {
-	return *(Handle_Geom_CartesianPoint*) &$self;
-	}
-};
+%pythonappend Handle_Geom_CartesianPoint::Handle_Geom_CartesianPoint %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_CartesianPoint;
 class Handle_Geom_CartesianPoint : public Handle_Geom_Point {
@@ -2883,20 +2611,6 @@ class Handle_Geom_CartesianPoint : public Handle_Geom_Point {
 %extend Handle_Geom_CartesianPoint {
     Geom_CartesianPoint* GetObject() {
     return (Geom_CartesianPoint*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_CartesianPoint::~Handle_Geom_CartesianPoint %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_CartesianPoint {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2994,25 +2708,23 @@ class Geom_Conic : public Geom_Curve {
 };
 
 
-%feature("shadow") Geom_Conic::~Geom_Conic %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_Conic {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_Conic(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_Conic {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_Conic {
-	Handle_Geom_Conic GetHandle() {
-	return *(Handle_Geom_Conic*) &$self;
-	}
-};
+%pythonappend Handle_Geom_Conic::Handle_Geom_Conic %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_Conic;
 class Handle_Geom_Conic : public Handle_Geom_Curve {
@@ -3030,20 +2742,6 @@ class Handle_Geom_Conic : public Handle_Geom_Curve {
 %extend Handle_Geom_Conic {
     Geom_Conic* GetObject() {
     return (Geom_Conic*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_Conic::~Handle_Geom_Conic %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_Conic {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3185,25 +2883,23 @@ class Geom_Direction : public Geom_Vector {
 };
 
 
-%feature("shadow") Geom_Direction::~Geom_Direction %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_Direction {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_Direction(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_Direction {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_Direction {
-	Handle_Geom_Direction GetHandle() {
-	return *(Handle_Geom_Direction*) &$self;
-	}
-};
+%pythonappend Handle_Geom_Direction::Handle_Geom_Direction %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_Direction;
 class Handle_Geom_Direction : public Handle_Geom_Vector {
@@ -3221,20 +2917,6 @@ class Handle_Geom_Direction : public Handle_Geom_Vector {
 %extend Handle_Geom_Direction {
     Geom_Direction* GetObject() {
     return (Geom_Direction*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_Direction::~Handle_Geom_Direction %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_Direction {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3336,25 +3018,23 @@ class Geom_ElementarySurface : public Geom_Surface {
 };
 
 
-%feature("shadow") Geom_ElementarySurface::~Geom_ElementarySurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_ElementarySurface {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_ElementarySurface(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_ElementarySurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_ElementarySurface {
-	Handle_Geom_ElementarySurface GetHandle() {
-	return *(Handle_Geom_ElementarySurface*) &$self;
-	}
-};
+%pythonappend Handle_Geom_ElementarySurface::Handle_Geom_ElementarySurface %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_ElementarySurface;
 class Handle_Geom_ElementarySurface : public Handle_Geom_Surface {
@@ -3372,20 +3052,6 @@ class Handle_Geom_ElementarySurface : public Handle_Geom_Surface {
 %extend Handle_Geom_ElementarySurface {
     Geom_ElementarySurface* GetObject() {
     return (Geom_ElementarySurface*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_ElementarySurface::~Handle_Geom_ElementarySurface %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_ElementarySurface {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3611,25 +3277,23 @@ class Geom_Line : public Geom_Curve {
 };
 
 
-%feature("shadow") Geom_Line::~Geom_Line %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_Line {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_Line(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_Line {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_Line {
-	Handle_Geom_Line GetHandle() {
-	return *(Handle_Geom_Line*) &$self;
-	}
-};
+%pythonappend Handle_Geom_Line::Handle_Geom_Line %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_Line;
 class Handle_Geom_Line : public Handle_Geom_Curve {
@@ -3647,20 +3311,6 @@ class Handle_Geom_Line : public Handle_Geom_Curve {
 %extend Handle_Geom_Line {
     Geom_Line* GetObject() {
     return (Geom_Line*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_Line::~Handle_Geom_Line %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_Line {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3940,25 +3590,23 @@ class Geom_OffsetCurve : public Geom_Curve {
 };
 
 
-%feature("shadow") Geom_OffsetCurve::~Geom_OffsetCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_OffsetCurve {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_OffsetCurve(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_OffsetCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_OffsetCurve {
-	Handle_Geom_OffsetCurve GetHandle() {
-	return *(Handle_Geom_OffsetCurve*) &$self;
-	}
-};
+%pythonappend Handle_Geom_OffsetCurve::Handle_Geom_OffsetCurve %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_OffsetCurve;
 class Handle_Geom_OffsetCurve : public Handle_Geom_Curve {
@@ -3976,20 +3624,6 @@ class Handle_Geom_OffsetCurve : public Handle_Geom_Curve {
 %extend Handle_Geom_OffsetCurve {
     Geom_OffsetCurve* GetObject() {
     return (Geom_OffsetCurve*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_OffsetCurve::~Handle_Geom_OffsetCurve %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_OffsetCurve {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4507,25 +4141,23 @@ class Geom_OffsetSurface : public Geom_Surface {
 };
 
 
-%feature("shadow") Geom_OffsetSurface::~Geom_OffsetSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_OffsetSurface {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_OffsetSurface(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_OffsetSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_OffsetSurface {
-	Handle_Geom_OffsetSurface GetHandle() {
-	return *(Handle_Geom_OffsetSurface*) &$self;
-	}
-};
+%pythonappend Handle_Geom_OffsetSurface::Handle_Geom_OffsetSurface %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_OffsetSurface;
 class Handle_Geom_OffsetSurface : public Handle_Geom_Surface {
@@ -4543,20 +4175,6 @@ class Handle_Geom_OffsetSurface : public Handle_Geom_Surface {
 %extend Handle_Geom_OffsetSurface {
     Geom_OffsetSurface* GetObject() {
     return (Geom_OffsetSurface*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_OffsetSurface::~Handle_Geom_OffsetSurface %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_OffsetSurface {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4584,25 +4202,23 @@ class Geom_SweptSurface : public Geom_Surface {
 };
 
 
-%feature("shadow") Geom_SweptSurface::~Geom_SweptSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_SweptSurface {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_SweptSurface(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_SweptSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_SweptSurface {
-	Handle_Geom_SweptSurface GetHandle() {
-	return *(Handle_Geom_SweptSurface*) &$self;
-	}
-};
+%pythonappend Handle_Geom_SweptSurface::Handle_Geom_SweptSurface %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_SweptSurface;
 class Handle_Geom_SweptSurface : public Handle_Geom_Surface {
@@ -4620,20 +4236,6 @@ class Handle_Geom_SweptSurface : public Handle_Geom_Surface {
 %extend Handle_Geom_SweptSurface {
     Geom_SweptSurface* GetObject() {
     return (Geom_SweptSurface*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_SweptSurface::~Handle_Geom_SweptSurface %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_SweptSurface {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4855,25 +4457,23 @@ class Geom_VectorWithMagnitude : public Geom_Vector {
 };
 
 
-%feature("shadow") Geom_VectorWithMagnitude::~Geom_VectorWithMagnitude %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_VectorWithMagnitude {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_VectorWithMagnitude(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_VectorWithMagnitude {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_VectorWithMagnitude {
-	Handle_Geom_VectorWithMagnitude GetHandle() {
-	return *(Handle_Geom_VectorWithMagnitude*) &$self;
-	}
-};
+%pythonappend Handle_Geom_VectorWithMagnitude::Handle_Geom_VectorWithMagnitude %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_VectorWithMagnitude;
 class Handle_Geom_VectorWithMagnitude : public Handle_Geom_Vector {
@@ -4891,20 +4491,6 @@ class Handle_Geom_VectorWithMagnitude : public Handle_Geom_Vector {
 %extend Handle_Geom_VectorWithMagnitude {
     Geom_VectorWithMagnitude* GetObject() {
     return (Geom_VectorWithMagnitude*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_VectorWithMagnitude::~Handle_Geom_VectorWithMagnitude %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_VectorWithMagnitude {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5570,25 +5156,23 @@ class Geom_BSplineCurve : public Geom_BoundedCurve {
 };
 
 
-%feature("shadow") Geom_BSplineCurve::~Geom_BSplineCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_BSplineCurve {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_BSplineCurve(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_BSplineCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_BSplineCurve {
-	Handle_Geom_BSplineCurve GetHandle() {
-	return *(Handle_Geom_BSplineCurve*) &$self;
-	}
-};
+%pythonappend Handle_Geom_BSplineCurve::Handle_Geom_BSplineCurve %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_BSplineCurve;
 class Handle_Geom_BSplineCurve : public Handle_Geom_BoundedCurve {
@@ -5606,20 +5190,6 @@ class Handle_Geom_BSplineCurve : public Handle_Geom_BoundedCurve {
 %extend Handle_Geom_BSplineCurve {
     Geom_BSplineCurve* GetObject() {
     return (Geom_BSplineCurve*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_BSplineCurve::~Handle_Geom_BSplineCurve %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_BSplineCurve {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6743,25 +6313,23 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 };
 
 
-%feature("shadow") Geom_BSplineSurface::~Geom_BSplineSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_BSplineSurface {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_BSplineSurface(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_BSplineSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_BSplineSurface {
-	Handle_Geom_BSplineSurface GetHandle() {
-	return *(Handle_Geom_BSplineSurface*) &$self;
-	}
-};
+%pythonappend Handle_Geom_BSplineSurface::Handle_Geom_BSplineSurface %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_BSplineSurface;
 class Handle_Geom_BSplineSurface : public Handle_Geom_BoundedSurface {
@@ -6779,20 +6347,6 @@ class Handle_Geom_BSplineSurface : public Handle_Geom_BoundedSurface {
 %extend Handle_Geom_BSplineSurface {
     Geom_BSplineSurface* GetObject() {
     return (Geom_BSplineSurface*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_BSplineSurface::~Handle_Geom_BSplineSurface %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_BSplineSurface {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -7122,25 +6676,23 @@ class Geom_BezierCurve : public Geom_BoundedCurve {
 };
 
 
-%feature("shadow") Geom_BezierCurve::~Geom_BezierCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_BezierCurve {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_BezierCurve(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_BezierCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_BezierCurve {
-	Handle_Geom_BezierCurve GetHandle() {
-	return *(Handle_Geom_BezierCurve*) &$self;
-	}
-};
+%pythonappend Handle_Geom_BezierCurve::Handle_Geom_BezierCurve %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_BezierCurve;
 class Handle_Geom_BezierCurve : public Handle_Geom_BoundedCurve {
@@ -7158,20 +6710,6 @@ class Handle_Geom_BezierCurve : public Handle_Geom_BoundedCurve {
 %extend Handle_Geom_BezierCurve {
     Geom_BezierCurve* GetObject() {
     return (Geom_BezierCurve*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_BezierCurve::~Handle_Geom_BezierCurve %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_BezierCurve {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -7731,25 +7269,23 @@ class Geom_BezierSurface : public Geom_BoundedSurface {
 };
 
 
-%feature("shadow") Geom_BezierSurface::~Geom_BezierSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_BezierSurface {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_BezierSurface(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_BezierSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_BezierSurface {
-	Handle_Geom_BezierSurface GetHandle() {
-	return *(Handle_Geom_BezierSurface*) &$self;
-	}
-};
+%pythonappend Handle_Geom_BezierSurface::Handle_Geom_BezierSurface %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_BezierSurface;
 class Handle_Geom_BezierSurface : public Handle_Geom_BoundedSurface {
@@ -7767,20 +7303,6 @@ class Handle_Geom_BezierSurface : public Handle_Geom_BoundedSurface {
 %extend Handle_Geom_BezierSurface {
     Geom_BezierSurface* GetObject() {
     return (Geom_BezierSurface*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_BezierSurface::~Handle_Geom_BezierSurface %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_BezierSurface {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -7950,25 +7472,23 @@ class Geom_Circle : public Geom_Conic {
 };
 
 
-%feature("shadow") Geom_Circle::~Geom_Circle %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_Circle {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_Circle(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_Circle {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_Circle {
-	Handle_Geom_Circle GetHandle() {
-	return *(Handle_Geom_Circle*) &$self;
-	}
-};
+%pythonappend Handle_Geom_Circle::Handle_Geom_Circle %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_Circle;
 class Handle_Geom_Circle : public Handle_Geom_Conic {
@@ -7986,20 +7506,6 @@ class Handle_Geom_Circle : public Handle_Geom_Conic {
 %extend Handle_Geom_Circle {
     Geom_Circle* GetObject() {
     return (Geom_Circle*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_Circle::~Handle_Geom_Circle %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_Circle {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -8307,25 +7813,23 @@ class Geom_ConicalSurface : public Geom_ElementarySurface {
 };
 
 
-%feature("shadow") Geom_ConicalSurface::~Geom_ConicalSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_ConicalSurface {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_ConicalSurface(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_ConicalSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_ConicalSurface {
-	Handle_Geom_ConicalSurface GetHandle() {
-	return *(Handle_Geom_ConicalSurface*) &$self;
-	}
-};
+%pythonappend Handle_Geom_ConicalSurface::Handle_Geom_ConicalSurface %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_ConicalSurface;
 class Handle_Geom_ConicalSurface : public Handle_Geom_ElementarySurface {
@@ -8343,20 +7847,6 @@ class Handle_Geom_ConicalSurface : public Handle_Geom_ElementarySurface {
 %extend Handle_Geom_ConicalSurface {
     Geom_ConicalSurface* GetObject() {
     return (Geom_ConicalSurface*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_ConicalSurface::~Handle_Geom_ConicalSurface %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_ConicalSurface {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -8636,25 +8126,23 @@ class Geom_CylindricalSurface : public Geom_ElementarySurface {
 };
 
 
-%feature("shadow") Geom_CylindricalSurface::~Geom_CylindricalSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_CylindricalSurface {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_CylindricalSurface(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_CylindricalSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_CylindricalSurface {
-	Handle_Geom_CylindricalSurface GetHandle() {
-	return *(Handle_Geom_CylindricalSurface*) &$self;
-	}
-};
+%pythonappend Handle_Geom_CylindricalSurface::Handle_Geom_CylindricalSurface %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_CylindricalSurface;
 class Handle_Geom_CylindricalSurface : public Handle_Geom_ElementarySurface {
@@ -8672,20 +8160,6 @@ class Handle_Geom_CylindricalSurface : public Handle_Geom_ElementarySurface {
 %extend Handle_Geom_CylindricalSurface {
     Geom_CylindricalSurface* GetObject() {
     return (Geom_CylindricalSurface*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_CylindricalSurface::~Handle_Geom_CylindricalSurface %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_CylindricalSurface {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -8905,25 +8379,23 @@ class Geom_Ellipse : public Geom_Conic {
 };
 
 
-%feature("shadow") Geom_Ellipse::~Geom_Ellipse %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_Ellipse {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_Ellipse(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_Ellipse {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_Ellipse {
-	Handle_Geom_Ellipse GetHandle() {
-	return *(Handle_Geom_Ellipse*) &$self;
-	}
-};
+%pythonappend Handle_Geom_Ellipse::Handle_Geom_Ellipse %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_Ellipse;
 class Handle_Geom_Ellipse : public Handle_Geom_Conic {
@@ -8941,20 +8413,6 @@ class Handle_Geom_Ellipse : public Handle_Geom_Conic {
 %extend Handle_Geom_Ellipse {
     Geom_Ellipse* GetObject() {
     return (Geom_Ellipse*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_Ellipse::~Handle_Geom_Ellipse %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_Ellipse {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -9206,25 +8664,23 @@ class Geom_Hyperbola : public Geom_Conic {
 };
 
 
-%feature("shadow") Geom_Hyperbola::~Geom_Hyperbola %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_Hyperbola {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_Hyperbola(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_Hyperbola {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_Hyperbola {
-	Handle_Geom_Hyperbola GetHandle() {
-	return *(Handle_Geom_Hyperbola*) &$self;
-	}
-};
+%pythonappend Handle_Geom_Hyperbola::Handle_Geom_Hyperbola %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_Hyperbola;
 class Handle_Geom_Hyperbola : public Handle_Geom_Conic {
@@ -9242,20 +8698,6 @@ class Handle_Geom_Hyperbola : public Handle_Geom_Conic {
 %extend Handle_Geom_Hyperbola {
     Geom_Hyperbola* GetObject() {
     return (Geom_Hyperbola*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_Hyperbola::~Handle_Geom_Hyperbola %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_Hyperbola {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -9471,25 +8913,23 @@ class Geom_Parabola : public Geom_Conic {
 };
 
 
-%feature("shadow") Geom_Parabola::~Geom_Parabola %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_Parabola {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_Parabola(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_Parabola {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_Parabola {
-	Handle_Geom_Parabola GetHandle() {
-	return *(Handle_Geom_Parabola*) &$self;
-	}
-};
+%pythonappend Handle_Geom_Parabola::Handle_Geom_Parabola %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_Parabola;
 class Handle_Geom_Parabola : public Handle_Geom_Conic {
@@ -9507,20 +8947,6 @@ class Handle_Geom_Parabola : public Handle_Geom_Conic {
 %extend Handle_Geom_Parabola {
     Geom_Parabola* GetObject() {
     return (Geom_Parabola*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_Parabola::~Handle_Geom_Parabola %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_Parabola {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -9808,25 +9234,23 @@ class Geom_Plane : public Geom_ElementarySurface {
 };
 
 
-%feature("shadow") Geom_Plane::~Geom_Plane %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_Plane {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_Plane(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_Plane {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_Plane {
-	Handle_Geom_Plane GetHandle() {
-	return *(Handle_Geom_Plane*) &$self;
-	}
-};
+%pythonappend Handle_Geom_Plane::Handle_Geom_Plane %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_Plane;
 class Handle_Geom_Plane : public Handle_Geom_ElementarySurface {
@@ -9844,20 +9268,6 @@ class Handle_Geom_Plane : public Handle_Geom_ElementarySurface {
 %extend Handle_Geom_Plane {
     Geom_Plane* GetObject() {
     return (Geom_Plane*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_Plane::~Handle_Geom_Plane %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_Plane {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -10185,25 +9595,23 @@ class Geom_RectangularTrimmedSurface : public Geom_BoundedSurface {
 };
 
 
-%feature("shadow") Geom_RectangularTrimmedSurface::~Geom_RectangularTrimmedSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_RectangularTrimmedSurface {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_RectangularTrimmedSurface(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_RectangularTrimmedSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_RectangularTrimmedSurface {
-	Handle_Geom_RectangularTrimmedSurface GetHandle() {
-	return *(Handle_Geom_RectangularTrimmedSurface*) &$self;
-	}
-};
+%pythonappend Handle_Geom_RectangularTrimmedSurface::Handle_Geom_RectangularTrimmedSurface %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_RectangularTrimmedSurface;
 class Handle_Geom_RectangularTrimmedSurface : public Handle_Geom_BoundedSurface {
@@ -10221,20 +9629,6 @@ class Handle_Geom_RectangularTrimmedSurface : public Handle_Geom_BoundedSurface 
 %extend Handle_Geom_RectangularTrimmedSurface {
     Geom_RectangularTrimmedSurface* GetObject() {
     return (Geom_RectangularTrimmedSurface*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_RectangularTrimmedSurface::~Handle_Geom_RectangularTrimmedSurface %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_RectangularTrimmedSurface {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -10506,25 +9900,23 @@ class Geom_SphericalSurface : public Geom_ElementarySurface {
 };
 
 
-%feature("shadow") Geom_SphericalSurface::~Geom_SphericalSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_SphericalSurface {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_SphericalSurface(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_SphericalSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_SphericalSurface {
-	Handle_Geom_SphericalSurface GetHandle() {
-	return *(Handle_Geom_SphericalSurface*) &$self;
-	}
-};
+%pythonappend Handle_Geom_SphericalSurface::Handle_Geom_SphericalSurface %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_SphericalSurface;
 class Handle_Geom_SphericalSurface : public Handle_Geom_ElementarySurface {
@@ -10542,20 +9934,6 @@ class Handle_Geom_SphericalSurface : public Handle_Geom_ElementarySurface {
 %extend Handle_Geom_SphericalSurface {
     Geom_SphericalSurface* GetObject() {
     return (Geom_SphericalSurface*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_SphericalSurface::~Handle_Geom_SphericalSurface %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_SphericalSurface {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -10913,25 +10291,23 @@ class Geom_SurfaceOfLinearExtrusion : public Geom_SweptSurface {
 };
 
 
-%feature("shadow") Geom_SurfaceOfLinearExtrusion::~Geom_SurfaceOfLinearExtrusion %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_SurfaceOfLinearExtrusion {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_SurfaceOfLinearExtrusion(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_SurfaceOfLinearExtrusion {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_SurfaceOfLinearExtrusion {
-	Handle_Geom_SurfaceOfLinearExtrusion GetHandle() {
-	return *(Handle_Geom_SurfaceOfLinearExtrusion*) &$self;
-	}
-};
+%pythonappend Handle_Geom_SurfaceOfLinearExtrusion::Handle_Geom_SurfaceOfLinearExtrusion %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_SurfaceOfLinearExtrusion;
 class Handle_Geom_SurfaceOfLinearExtrusion : public Handle_Geom_SweptSurface {
@@ -10949,20 +10325,6 @@ class Handle_Geom_SurfaceOfLinearExtrusion : public Handle_Geom_SweptSurface {
 %extend Handle_Geom_SurfaceOfLinearExtrusion {
     Geom_SurfaceOfLinearExtrusion* GetObject() {
     return (Geom_SurfaceOfLinearExtrusion*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_SurfaceOfLinearExtrusion::~Handle_Geom_SurfaceOfLinearExtrusion %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_SurfaceOfLinearExtrusion {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -11352,25 +10714,23 @@ class Geom_SurfaceOfRevolution : public Geom_SweptSurface {
 };
 
 
-%feature("shadow") Geom_SurfaceOfRevolution::~Geom_SurfaceOfRevolution %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_SurfaceOfRevolution {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_SurfaceOfRevolution(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_SurfaceOfRevolution {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_SurfaceOfRevolution {
-	Handle_Geom_SurfaceOfRevolution GetHandle() {
-	return *(Handle_Geom_SurfaceOfRevolution*) &$self;
-	}
-};
+%pythonappend Handle_Geom_SurfaceOfRevolution::Handle_Geom_SurfaceOfRevolution %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_SurfaceOfRevolution;
 class Handle_Geom_SurfaceOfRevolution : public Handle_Geom_SweptSurface {
@@ -11388,20 +10748,6 @@ class Handle_Geom_SurfaceOfRevolution : public Handle_Geom_SweptSurface {
 %extend Handle_Geom_SurfaceOfRevolution {
     Geom_SurfaceOfRevolution* GetObject() {
     return (Geom_SurfaceOfRevolution*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_SurfaceOfRevolution::~Handle_Geom_SurfaceOfRevolution %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_SurfaceOfRevolution {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -11671,25 +11017,23 @@ class Geom_ToroidalSurface : public Geom_ElementarySurface {
 };
 
 
-%feature("shadow") Geom_ToroidalSurface::~Geom_ToroidalSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_ToroidalSurface {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_ToroidalSurface(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_ToroidalSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_ToroidalSurface {
-	Handle_Geom_ToroidalSurface GetHandle() {
-	return *(Handle_Geom_ToroidalSurface*) &$self;
-	}
-};
+%pythonappend Handle_Geom_ToroidalSurface::Handle_Geom_ToroidalSurface %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_ToroidalSurface;
 class Handle_Geom_ToroidalSurface : public Handle_Geom_ElementarySurface {
@@ -11707,20 +11051,6 @@ class Handle_Geom_ToroidalSurface : public Handle_Geom_ElementarySurface {
 %extend Handle_Geom_ToroidalSurface {
     Geom_ToroidalSurface* GetObject() {
     return (Geom_ToroidalSurface*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_ToroidalSurface::~Handle_Geom_ToroidalSurface %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_ToroidalSurface {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -11926,25 +11256,23 @@ class Geom_TrimmedCurve : public Geom_BoundedCurve {
 };
 
 
-%feature("shadow") Geom_TrimmedCurve::~Geom_TrimmedCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Geom_TrimmedCurve {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Geom_TrimmedCurve(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Geom_TrimmedCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Geom_TrimmedCurve {
-	Handle_Geom_TrimmedCurve GetHandle() {
-	return *(Handle_Geom_TrimmedCurve*) &$self;
-	}
-};
+%pythonappend Handle_Geom_TrimmedCurve::Handle_Geom_TrimmedCurve %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Geom_TrimmedCurve;
 class Handle_Geom_TrimmedCurve : public Handle_Geom_BoundedCurve {
@@ -11962,20 +11290,6 @@ class Handle_Geom_TrimmedCurve : public Handle_Geom_BoundedCurve {
 %extend Handle_Geom_TrimmedCurve {
     Geom_TrimmedCurve* GetObject() {
     return (Geom_TrimmedCurve*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Geom_TrimmedCurve::~Handle_Geom_TrimmedCurve %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Geom_TrimmedCurve {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include BRepAlgo_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -105,20 +117,6 @@ class BRepAlgo {
 };
 
 
-%feature("shadow") BRepAlgo::~BRepAlgo %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepAlgo {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepAlgo_AsDes;
 class BRepAlgo_AsDes : public MMgt_TShared {
 	public:
@@ -221,25 +219,23 @@ class BRepAlgo_AsDes : public MMgt_TShared {
 };
 
 
-%feature("shadow") BRepAlgo_AsDes::~BRepAlgo_AsDes %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepAlgo_AsDes {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepAlgo_AsDes(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepAlgo_AsDes {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepAlgo_AsDes {
-	Handle_BRepAlgo_AsDes GetHandle() {
-	return *(Handle_BRepAlgo_AsDes*) &$self;
-	}
-};
+%pythonappend Handle_BRepAlgo_AsDes::Handle_BRepAlgo_AsDes %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepAlgo_AsDes;
 class Handle_BRepAlgo_AsDes : public Handle_MMgt_TShared {
@@ -257,20 +253,6 @@ class Handle_BRepAlgo_AsDes : public Handle_MMgt_TShared {
 %extend Handle_BRepAlgo_AsDes {
     BRepAlgo_AsDes* GetObject() {
     return (BRepAlgo_AsDes*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepAlgo_AsDes::~Handle_BRepAlgo_AsDes %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepAlgo_AsDes {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -326,20 +308,6 @@ class BRepAlgo_BooleanOperation : public BRepBuilderAPI_MakeShape {
 };
 
 
-%feature("shadow") BRepAlgo_BooleanOperation::~BRepAlgo_BooleanOperation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepAlgo_BooleanOperation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepAlgo_BooleanOperations;
 class BRepAlgo_BooleanOperations {
 	public:
@@ -448,19 +416,19 @@ class BRepAlgo_BooleanOperations {
 		%feature("compactdefaultargs") DataStructure;
 		%feature("autodoc", "	:rtype: Handle_TopOpeBRepDS_HDataStructure
 ") DataStructure;
-		const Handle_TopOpeBRepDS_HDataStructure & DataStructure ();
+		Handle_TopOpeBRepDS_HDataStructure DataStructure ();
 		%feature("compactdefaultargs") ChangeDataStructure;
 		%feature("autodoc", "	:rtype: Handle_TopOpeBRepDS_HDataStructure
 ") ChangeDataStructure;
-		Handle_TopOpeBRepDS_HDataStructure & ChangeDataStructure ();
+		Handle_TopOpeBRepDS_HDataStructure ChangeDataStructure ();
 		%feature("compactdefaultargs") Builder;
 		%feature("autodoc", "	:rtype: Handle_TopOpeBRepBuild_HBuilder
 ") Builder;
-		const Handle_TopOpeBRepBuild_HBuilder & Builder ();
+		Handle_TopOpeBRepBuild_HBuilder Builder ();
 		%feature("compactdefaultargs") ChangeBuilder;
 		%feature("autodoc", "	:rtype: Handle_TopOpeBRepBuild_HBuilder
 ") ChangeBuilder;
-		Handle_TopOpeBRepBuild_HBuilder & ChangeBuilder ();
+		Handle_TopOpeBRepBuild_HBuilder ChangeBuilder ();
 		%feature("compactdefaultargs") DataStructureAccess;
 		%feature("autodoc", "	* returns the member myDSA. It is useful to then access the method GetSectionEdgeSet (wich is a member of DSAccess)
 
@@ -470,20 +438,6 @@ class BRepAlgo_BooleanOperations {
 };
 
 
-%feature("shadow") BRepAlgo_BooleanOperations::~BRepAlgo_BooleanOperations %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepAlgo_BooleanOperations {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepAlgo_DSAccess;
 class BRepAlgo_DSAccess {
 	public:
@@ -660,36 +614,22 @@ class BRepAlgo_DSAccess {
 		%feature("compactdefaultargs") DS;
 		%feature("autodoc", "	:rtype: Handle_TopOpeBRepDS_HDataStructure
 ") DS;
-		const Handle_TopOpeBRepDS_HDataStructure & DS ();
+		Handle_TopOpeBRepDS_HDataStructure DS ();
 		%feature("compactdefaultargs") ChangeDS;
 		%feature("autodoc", "	:rtype: Handle_TopOpeBRepDS_HDataStructure
 ") ChangeDS;
-		Handle_TopOpeBRepDS_HDataStructure & ChangeDS ();
+		Handle_TopOpeBRepDS_HDataStructure ChangeDS ();
 		%feature("compactdefaultargs") Builder;
 		%feature("autodoc", "	:rtype: Handle_TopOpeBRepBuild_HBuilder
 ") Builder;
-		const Handle_TopOpeBRepBuild_HBuilder & Builder ();
+		Handle_TopOpeBRepBuild_HBuilder Builder ();
 		%feature("compactdefaultargs") ChangeBuilder;
 		%feature("autodoc", "	:rtype: Handle_TopOpeBRepBuild_HBuilder
 ") ChangeBuilder;
-		Handle_TopOpeBRepBuild_HBuilder & ChangeBuilder ();
+		Handle_TopOpeBRepBuild_HBuilder ChangeBuilder ();
 };
 
 
-%feature("shadow") BRepAlgo_DSAccess::~BRepAlgo_DSAccess %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepAlgo_DSAccess {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepAlgo_DataMapIteratorOfDataMapOfShapeBoolean;
 class BRepAlgo_DataMapIteratorOfDataMapOfShapeBoolean : public TCollection_BasicMapIterator {
 	public:
@@ -720,20 +660,6 @@ class BRepAlgo_DataMapIteratorOfDataMapOfShapeBoolean : public TCollection_Basic
 };
 
 
-%feature("shadow") BRepAlgo_DataMapIteratorOfDataMapOfShapeBoolean::~BRepAlgo_DataMapIteratorOfDataMapOfShapeBoolean %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepAlgo_DataMapIteratorOfDataMapOfShapeBoolean {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepAlgo_DataMapIteratorOfDataMapOfShapeInterference;
 class BRepAlgo_DataMapIteratorOfDataMapOfShapeInterference : public TCollection_BasicMapIterator {
 	public:
@@ -760,24 +686,10 @@ class BRepAlgo_DataMapIteratorOfDataMapOfShapeInterference : public TCollection_
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_TopOpeBRepDS_Interference
 ") Value;
-		const Handle_TopOpeBRepDS_Interference & Value ();
+		Handle_TopOpeBRepDS_Interference Value ();
 };
 
 
-%feature("shadow") BRepAlgo_DataMapIteratorOfDataMapOfShapeInterference::~BRepAlgo_DataMapIteratorOfDataMapOfShapeInterference %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepAlgo_DataMapIteratorOfDataMapOfShapeInterference {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean;
 class BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean : public TCollection_MapNode {
 	public:
@@ -811,25 +723,23 @@ class BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean : public TCollection_MapNode {
             };
 
 
-%feature("shadow") BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean::~BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean {
-	Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean GetHandle() {
-	return *(Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean*) &$self;
-	}
-};
+%pythonappend Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean::Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean;
 class Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean : public Handle_TCollection_MapNode {
@@ -847,20 +757,6 @@ class Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean : public Handle_TCollec
 %extend Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean {
     BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean* GetObject() {
     return (BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean::~Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -884,29 +780,27 @@ class BRepAlgo_DataMapNodeOfDataMapOfShapeInterference : public TCollection_MapN
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_TopOpeBRepDS_Interference
 ") Value;
-		Handle_TopOpeBRepDS_Interference & Value ();
+		Handle_TopOpeBRepDS_Interference Value ();
 };
 
 
-%feature("shadow") BRepAlgo_DataMapNodeOfDataMapOfShapeInterference::~BRepAlgo_DataMapNodeOfDataMapOfShapeInterference %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend BRepAlgo_DataMapNodeOfDataMapOfShapeInterference {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference::Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend BRepAlgo_DataMapNodeOfDataMapOfShapeInterference {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepAlgo_DataMapNodeOfDataMapOfShapeInterference {
-	Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference GetHandle() {
-	return *(Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference*) &$self;
-	}
-};
 
 %nodefaultctor Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference;
 class Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference : public Handle_TCollection_MapNode {
@@ -924,20 +818,6 @@ class Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference : public Handle_TC
 %extend Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference {
     BRepAlgo_DataMapNodeOfDataMapOfShapeInterference* GetObject() {
     return (BRepAlgo_DataMapNodeOfDataMapOfShapeInterference*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference::~Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1019,20 +899,6 @@ class BRepAlgo_DataMapOfShapeBoolean : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") BRepAlgo_DataMapOfShapeBoolean::~BRepAlgo_DataMapOfShapeBoolean %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepAlgo_DataMapOfShapeBoolean {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepAlgo_DataMapOfShapeInterference;
 class BRepAlgo_DataMapOfShapeInterference : public TCollection_BasicMap {
 	public:
@@ -1089,13 +955,13 @@ class BRepAlgo_DataMapOfShapeInterference : public TCollection_BasicMap {
 	:type K: TopoDS_Shape &
 	:rtype: Handle_TopOpeBRepDS_Interference
 ") Find;
-		const Handle_TopOpeBRepDS_Interference & Find (const TopoDS_Shape & K);
+		Handle_TopOpeBRepDS_Interference Find (const TopoDS_Shape & K);
 		%feature("compactdefaultargs") ChangeFind;
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
 	:rtype: Handle_TopOpeBRepDS_Interference
 ") ChangeFind;
-		Handle_TopOpeBRepDS_Interference & ChangeFind (const TopoDS_Shape & K);
+		Handle_TopOpeBRepDS_Interference ChangeFind (const TopoDS_Shape & K);
 		%feature("compactdefaultargs") Find1;
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Shape &
@@ -1111,20 +977,6 @@ class BRepAlgo_DataMapOfShapeInterference : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") BRepAlgo_DataMapOfShapeInterference::~BRepAlgo_DataMapOfShapeInterference %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepAlgo_DataMapOfShapeInterference {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepAlgo_EdgeConnector;
 class BRepAlgo_EdgeConnector : public MMgt_TShared {
 	public:
@@ -1187,25 +1039,23 @@ class BRepAlgo_EdgeConnector : public MMgt_TShared {
 };
 
 
-%feature("shadow") BRepAlgo_EdgeConnector::~BRepAlgo_EdgeConnector %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepAlgo_EdgeConnector {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepAlgo_EdgeConnector(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepAlgo_EdgeConnector {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepAlgo_EdgeConnector {
-	Handle_BRepAlgo_EdgeConnector GetHandle() {
-	return *(Handle_BRepAlgo_EdgeConnector*) &$self;
-	}
-};
+%pythonappend Handle_BRepAlgo_EdgeConnector::Handle_BRepAlgo_EdgeConnector %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepAlgo_EdgeConnector;
 class Handle_BRepAlgo_EdgeConnector : public Handle_MMgt_TShared {
@@ -1223,20 +1073,6 @@ class Handle_BRepAlgo_EdgeConnector : public Handle_MMgt_TShared {
 %extend Handle_BRepAlgo_EdgeConnector {
     BRepAlgo_EdgeConnector* GetObject() {
     return (BRepAlgo_EdgeConnector*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepAlgo_EdgeConnector::~Handle_BRepAlgo_EdgeConnector %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepAlgo_EdgeConnector {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1298,20 +1134,6 @@ class BRepAlgo_FaceRestrictor {
 };
 
 
-%feature("shadow") BRepAlgo_FaceRestrictor::~BRepAlgo_FaceRestrictor %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepAlgo_FaceRestrictor {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepAlgo_Image;
 class BRepAlgo_Image {
 	public:
@@ -1446,20 +1268,6 @@ class BRepAlgo_Image {
 };
 
 
-%feature("shadow") BRepAlgo_Image::~BRepAlgo_Image %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepAlgo_Image {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepAlgo_Loop;
 class BRepAlgo_Loop {
 	public:
@@ -1562,20 +1370,6 @@ class BRepAlgo_Loop {
 };
 
 
-%feature("shadow") BRepAlgo_Loop::~BRepAlgo_Loop %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepAlgo_Loop {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepAlgo_NormalProjection;
 class BRepAlgo_NormalProjection {
 	public:
@@ -1706,20 +1500,6 @@ class BRepAlgo_NormalProjection {
 };
 
 
-%feature("shadow") BRepAlgo_NormalProjection::~BRepAlgo_NormalProjection %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepAlgo_NormalProjection {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger;
 class BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger : public TCollection_SeqNode {
 	public:
@@ -1740,25 +1520,23 @@ class BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger : public TCollection_Se
 };
 
 
-%feature("shadow") BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger::~BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger {
-	Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger GetHandle() {
-	return *(Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger*) &$self;
-	}
-};
+%pythonappend Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger::Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger;
 class Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger : public Handle_TCollection_SeqNode {
@@ -1776,20 +1554,6 @@ class Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger : public Handle_
 %extend Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger {
     BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger* GetObject() {
     return (BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger::~Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1925,20 +1689,6 @@ class BRepAlgo_SequenceOfSequenceOfInteger : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") BRepAlgo_SequenceOfSequenceOfInteger::~BRepAlgo_SequenceOfSequenceOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepAlgo_SequenceOfSequenceOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class BRepAlgo_Tool {
 	public:
 		%feature("compactdefaultargs") Deboucle3D;
@@ -1954,20 +1704,6 @@ class BRepAlgo_Tool {
 };
 
 
-%feature("shadow") BRepAlgo_Tool::~BRepAlgo_Tool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepAlgo_Tool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepAlgo_Common;
 class BRepAlgo_Common : public BRepAlgo_BooleanOperation {
 	public:
@@ -1984,20 +1720,6 @@ class BRepAlgo_Common : public BRepAlgo_BooleanOperation {
 };
 
 
-%feature("shadow") BRepAlgo_Common::~BRepAlgo_Common %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepAlgo_Common {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepAlgo_Cut;
 class BRepAlgo_Cut : public BRepAlgo_BooleanOperation {
 	public:
@@ -2014,20 +1736,6 @@ class BRepAlgo_Cut : public BRepAlgo_BooleanOperation {
 };
 
 
-%feature("shadow") BRepAlgo_Cut::~BRepAlgo_Cut %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepAlgo_Cut {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepAlgo_Fuse;
 class BRepAlgo_Fuse : public BRepAlgo_BooleanOperation {
 	public:
@@ -2044,20 +1752,6 @@ class BRepAlgo_Fuse : public BRepAlgo_BooleanOperation {
 };
 
 
-%feature("shadow") BRepAlgo_Fuse::~BRepAlgo_Fuse %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepAlgo_Fuse {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepAlgo_Section;
 class BRepAlgo_Section : public BRepAlgo_BooleanOperation {
 	public:
@@ -2214,17 +1908,3 @@ class BRepAlgo_Section : public BRepAlgo_BooleanOperation {
 };
 
 
-%feature("shadow") BRepAlgo_Section::~BRepAlgo_Section %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepAlgo_Section {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

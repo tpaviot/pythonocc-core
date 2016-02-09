@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include Law_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -146,20 +158,6 @@ class Law {
 };
 
 
-%feature("shadow") Law::~Law %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Law {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Law_BSpline;
 class Law_BSpline : public MMgt_TShared {
 	public:
@@ -758,25 +756,23 @@ class Law_BSpline : public MMgt_TShared {
 };
 
 
-%feature("shadow") Law_BSpline::~Law_BSpline %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Law_BSpline {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Law_BSpline(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Law_BSpline {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Law_BSpline {
-	Handle_Law_BSpline GetHandle() {
-	return *(Handle_Law_BSpline*) &$self;
-	}
-};
+%pythonappend Handle_Law_BSpline::Handle_Law_BSpline %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Law_BSpline;
 class Handle_Law_BSpline : public Handle_MMgt_TShared {
@@ -794,20 +790,6 @@ class Handle_Law_BSpline : public Handle_MMgt_TShared {
 %extend Handle_Law_BSpline {
     Law_BSpline* GetObject() {
     return (Law_BSpline*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Law_BSpline::~Handle_Law_BSpline %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Law_BSpline {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -849,20 +831,6 @@ class Law_BSplineKnotSplitting {
 };
 
 
-%feature("shadow") Law_BSplineKnotSplitting::~Law_BSplineKnotSplitting %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Law_BSplineKnotSplitting {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Law_Function;
 class Law_Function : public MMgt_TShared {
 	public:
@@ -947,25 +915,23 @@ class Law_Function : public MMgt_TShared {
 };
 
 
-%feature("shadow") Law_Function::~Law_Function %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Law_Function {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Law_Function(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Law_Function {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Law_Function {
-	Handle_Law_Function GetHandle() {
-	return *(Handle_Law_Function*) &$self;
-	}
-};
+%pythonappend Handle_Law_Function::Handle_Law_Function %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Law_Function;
 class Handle_Law_Function : public Handle_MMgt_TShared {
@@ -983,20 +949,6 @@ class Handle_Law_Function : public Handle_MMgt_TShared {
 %extend Handle_Law_Function {
     Law_Function* GetObject() {
     return (Law_Function*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Law_Function::~Handle_Law_Function %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Law_Function {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1058,7 +1010,7 @@ class Law_Interpolate {
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "	:rtype: Handle_Law_BSpline
 ") Curve;
-		const Handle_Law_BSpline & Curve ();
+		Handle_Law_BSpline Curve ();
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	:rtype: bool
 ") IsDone;
@@ -1066,20 +1018,6 @@ class Law_Interpolate {
 };
 
 
-%feature("shadow") Law_Interpolate::~Law_Interpolate %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Law_Interpolate {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Law_Laws;
 class Law_Laws {
 	public:
@@ -1154,11 +1092,11 @@ class Law_Laws {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Law_Function
 ") First;
-		Handle_Law_Function & First ();
+		Handle_Law_Function First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Law_Function
 ") Last;
-		Handle_Law_Function & Last ();
+		Handle_Law_Function Last ();
 		%feature("compactdefaultargs") RemoveFirst;
 		%feature("autodoc", "	:rtype: None
 ") RemoveFirst;
@@ -1204,20 +1142,6 @@ class Law_Laws {
 };
 
 
-%feature("shadow") Law_Laws::~Law_Laws %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Law_Laws {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Law_ListIteratorOfLaws;
 class Law_ListIteratorOfLaws {
 	public:
@@ -1248,24 +1172,10 @@ class Law_ListIteratorOfLaws {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Law_Function
 ") Value;
-		Handle_Law_Function & Value ();
+		Handle_Law_Function Value ();
 };
 
 
-%feature("shadow") Law_ListIteratorOfLaws::~Law_ListIteratorOfLaws %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Law_ListIteratorOfLaws {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Law_ListNodeOfLaws;
 class Law_ListNodeOfLaws : public TCollection_MapNode {
 	public:
@@ -1280,29 +1190,27 @@ class Law_ListNodeOfLaws : public TCollection_MapNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Law_Function
 ") Value;
-		Handle_Law_Function & Value ();
+		Handle_Law_Function Value ();
 };
 
 
-%feature("shadow") Law_ListNodeOfLaws::~Law_ListNodeOfLaws %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend Law_ListNodeOfLaws {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Law_ListNodeOfLaws(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_Law_ListNodeOfLaws::Handle_Law_ListNodeOfLaws %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend Law_ListNodeOfLaws {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Law_ListNodeOfLaws {
-	Handle_Law_ListNodeOfLaws GetHandle() {
-	return *(Handle_Law_ListNodeOfLaws*) &$self;
-	}
-};
 
 %nodefaultctor Handle_Law_ListNodeOfLaws;
 class Handle_Law_ListNodeOfLaws : public Handle_TCollection_MapNode {
@@ -1320,20 +1228,6 @@ class Handle_Law_ListNodeOfLaws : public Handle_TCollection_MapNode {
 %extend Handle_Law_ListNodeOfLaws {
     Law_ListNodeOfLaws* GetObject() {
     return (Law_ListNodeOfLaws*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Law_ListNodeOfLaws::~Handle_Law_ListNodeOfLaws %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Law_ListNodeOfLaws {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1437,25 +1331,23 @@ class Law_BSpFunc : public Law_Function {
 };
 
 
-%feature("shadow") Law_BSpFunc::~Law_BSpFunc %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Law_BSpFunc {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Law_BSpFunc(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Law_BSpFunc {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Law_BSpFunc {
-	Handle_Law_BSpFunc GetHandle() {
-	return *(Handle_Law_BSpFunc*) &$self;
-	}
-};
+%pythonappend Handle_Law_BSpFunc::Handle_Law_BSpFunc %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Law_BSpFunc;
 class Handle_Law_BSpFunc : public Handle_Law_Function {
@@ -1473,20 +1365,6 @@ class Handle_Law_BSpFunc : public Handle_Law_Function {
 %extend Handle_Law_BSpFunc {
     Law_BSpFunc* GetObject() {
     return (Law_BSpFunc*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Law_BSpFunc::~Handle_Law_BSpFunc %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Law_BSpFunc {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1596,7 +1474,7 @@ class Law_Composite : public Law_Function {
 	:type W: float
 	:rtype: Handle_Law_Function
 ") ChangeElementaryLaw;
-		Handle_Law_Function & ChangeElementaryLaw (const Standard_Real W);
+		Handle_Law_Function ChangeElementaryLaw (const Standard_Real W);
 		%feature("compactdefaultargs") ChangeLaws;
 		%feature("autodoc", "	:rtype: Law_Laws
 ") ChangeLaws;
@@ -1612,25 +1490,23 @@ class Law_Composite : public Law_Function {
 };
 
 
-%feature("shadow") Law_Composite::~Law_Composite %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Law_Composite {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Law_Composite(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Law_Composite {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Law_Composite {
-	Handle_Law_Composite GetHandle() {
-	return *(Handle_Law_Composite*) &$self;
-	}
-};
+%pythonappend Handle_Law_Composite::Handle_Law_Composite %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Law_Composite;
 class Handle_Law_Composite : public Handle_Law_Function {
@@ -1648,20 +1524,6 @@ class Handle_Law_Composite : public Handle_Law_Function {
 %extend Handle_Law_Composite {
     Law_Composite* GetObject() {
     return (Law_Composite*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Law_Composite::~Handle_Law_Composite %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Law_Composite {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1763,25 +1625,23 @@ class Law_Constant : public Law_Function {
 };
 
 
-%feature("shadow") Law_Constant::~Law_Constant %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Law_Constant {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Law_Constant(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Law_Constant {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Law_Constant {
-	Handle_Law_Constant GetHandle() {
-	return *(Handle_Law_Constant*) &$self;
-	}
-};
+%pythonappend Handle_Law_Constant::Handle_Law_Constant %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Law_Constant;
 class Handle_Law_Constant : public Handle_Law_Function {
@@ -1799,20 +1659,6 @@ class Handle_Law_Constant : public Handle_Law_Function {
 %extend Handle_Law_Constant {
     Law_Constant* GetObject() {
     return (Law_Constant*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Law_Constant::~Handle_Law_Constant %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Law_Constant {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1920,25 +1766,23 @@ class Law_Linear : public Law_Function {
 };
 
 
-%feature("shadow") Law_Linear::~Law_Linear %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Law_Linear {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Law_Linear(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Law_Linear {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Law_Linear {
-	Handle_Law_Linear GetHandle() {
-	return *(Handle_Law_Linear*) &$self;
-	}
-};
+%pythonappend Handle_Law_Linear::Handle_Law_Linear %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Law_Linear;
 class Handle_Law_Linear : public Handle_Law_Function {
@@ -1956,20 +1800,6 @@ class Handle_Law_Linear : public Handle_Law_Function {
 %extend Handle_Law_Linear {
     Law_Linear* GetObject() {
     return (Law_Linear*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Law_Linear::~Handle_Law_Linear %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Law_Linear {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2037,25 +1867,23 @@ class Law_Interpol : public Law_BSpFunc {
 };
 
 
-%feature("shadow") Law_Interpol::~Law_Interpol %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Law_Interpol {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Law_Interpol(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Law_Interpol {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Law_Interpol {
-	Handle_Law_Interpol GetHandle() {
-	return *(Handle_Law_Interpol*) &$self;
-	}
-};
+%pythonappend Handle_Law_Interpol::Handle_Law_Interpol %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Law_Interpol;
 class Handle_Law_Interpol : public Handle_Law_BSpFunc {
@@ -2073,20 +1901,6 @@ class Handle_Law_Interpol : public Handle_Law_BSpFunc {
 %extend Handle_Law_Interpol {
     Law_Interpol* GetObject() {
     return (Law_Interpol*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Law_Interpol::~Handle_Law_Interpol %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Law_Interpol {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2134,25 +1948,23 @@ class Law_S : public Law_BSpFunc {
 };
 
 
-%feature("shadow") Law_S::~Law_S %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Law_S {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Law_S(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Law_S {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Law_S {
-	Handle_Law_S GetHandle() {
-	return *(Handle_Law_S*) &$self;
-	}
-};
+%pythonappend Handle_Law_S::Handle_Law_S %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Law_S;
 class Handle_Law_S : public Handle_Law_BSpFunc {
@@ -2170,20 +1982,6 @@ class Handle_Law_S : public Handle_Law_BSpFunc {
 %extend Handle_Law_S {
     Law_S* GetObject() {
     return (Law_S*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Law_S::~Handle_Law_S %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Law_S {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

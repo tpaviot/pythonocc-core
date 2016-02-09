@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include TopExp_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 typedef TopoDS_Iterator * TopExp_Stack;
@@ -145,20 +157,6 @@ class TopExp {
 };
 
 
-%feature("shadow") TopExp::~TopExp %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopExp {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopExp_Explorer;
 class TopExp_Explorer {
 	public:
@@ -235,20 +233,6 @@ class TopExp_Explorer {
 };
 
 
-%feature("shadow") TopExp_Explorer::~TopExp_Explorer %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopExp_Explorer {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopExp_StackIteratorOfStackOfIterator;
 class TopExp_StackIteratorOfStackOfIterator {
 	public:
@@ -283,20 +267,6 @@ class TopExp_StackIteratorOfStackOfIterator {
 };
 
 
-%feature("shadow") TopExp_StackIteratorOfStackOfIterator::~TopExp_StackIteratorOfStackOfIterator %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopExp_StackIteratorOfStackOfIterator {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopExp_StackNodeOfStackOfIterator;
 class TopExp_StackNodeOfStackOfIterator : public TCollection_MapNode {
 	public:
@@ -315,25 +285,23 @@ class TopExp_StackNodeOfStackOfIterator : public TCollection_MapNode {
 };
 
 
-%feature("shadow") TopExp_StackNodeOfStackOfIterator::~TopExp_StackNodeOfStackOfIterator %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopExp_StackNodeOfStackOfIterator {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopExp_StackNodeOfStackOfIterator(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopExp_StackNodeOfStackOfIterator {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopExp_StackNodeOfStackOfIterator {
-	Handle_TopExp_StackNodeOfStackOfIterator GetHandle() {
-	return *(Handle_TopExp_StackNodeOfStackOfIterator*) &$self;
-	}
-};
+%pythonappend Handle_TopExp_StackNodeOfStackOfIterator::Handle_TopExp_StackNodeOfStackOfIterator %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopExp_StackNodeOfStackOfIterator;
 class Handle_TopExp_StackNodeOfStackOfIterator : public Handle_TCollection_MapNode {
@@ -351,20 +319,6 @@ class Handle_TopExp_StackNodeOfStackOfIterator : public Handle_TCollection_MapNo
 %extend Handle_TopExp_StackNodeOfStackOfIterator {
     TopExp_StackNodeOfStackOfIterator* GetObject() {
     return (TopExp_StackNodeOfStackOfIterator*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopExp_StackNodeOfStackOfIterator::~Handle_TopExp_StackNodeOfStackOfIterator %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopExp_StackNodeOfStackOfIterator {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -420,17 +374,3 @@ class TopExp_StackOfIterator {
 };
 
 
-%feature("shadow") TopExp_StackOfIterator::~TopExp_StackOfIterator %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopExp_StackOfIterator {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

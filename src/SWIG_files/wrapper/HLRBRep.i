@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include HLRBRep_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -80,20 +92,6 @@ class HLRBRep {
 };
 
 
-%feature("shadow") HLRBRep::~HLRBRep %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_AreaLimit;
 class HLRBRep_AreaLimit : public MMgt_TShared {
 	public:
@@ -196,25 +194,23 @@ class HLRBRep_AreaLimit : public MMgt_TShared {
 };
 
 
-%feature("shadow") HLRBRep_AreaLimit::~HLRBRep_AreaLimit %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HLRBRep_AreaLimit {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HLRBRep_AreaLimit(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HLRBRep_AreaLimit {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HLRBRep_AreaLimit {
-	Handle_HLRBRep_AreaLimit GetHandle() {
-	return *(Handle_HLRBRep_AreaLimit*) &$self;
-	}
-};
+%pythonappend Handle_HLRBRep_AreaLimit::Handle_HLRBRep_AreaLimit %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HLRBRep_AreaLimit;
 class Handle_HLRBRep_AreaLimit : public Handle_MMgt_TShared {
@@ -232,20 +228,6 @@ class Handle_HLRBRep_AreaLimit : public Handle_MMgt_TShared {
 %extend Handle_HLRBRep_AreaLimit {
     HLRBRep_AreaLimit* GetObject() {
     return (HLRBRep_AreaLimit*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HLRBRep_AreaLimit::~Handle_HLRBRep_AreaLimit %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HLRBRep_AreaLimit {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -331,20 +313,6 @@ class HLRBRep_Array1OfEData {
 };
 
 
-%feature("shadow") HLRBRep_Array1OfEData::~HLRBRep_Array1OfEData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_Array1OfEData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_Array1OfFData;
 class HLRBRep_Array1OfFData {
 	public:
@@ -427,20 +395,6 @@ class HLRBRep_Array1OfFData {
 };
 
 
-%feature("shadow") HLRBRep_Array1OfFData::~HLRBRep_Array1OfFData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_Array1OfFData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class HLRBRep_BCurveTool {
 	public:
 		%feature("compactdefaultargs") FirstParameter;
@@ -698,20 +652,6 @@ class HLRBRep_BCurveTool {
 };
 
 
-%feature("shadow") HLRBRep_BCurveTool::~HLRBRep_BCurveTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_BCurveTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_BiPnt2D;
 class HLRBRep_BiPnt2D {
 	public:
@@ -802,20 +742,6 @@ class HLRBRep_BiPnt2D {
 };
 
 
-%feature("shadow") HLRBRep_BiPnt2D::~HLRBRep_BiPnt2D %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_BiPnt2D {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_BiPoint;
 class HLRBRep_BiPoint {
 	public:
@@ -910,20 +836,6 @@ class HLRBRep_BiPoint {
 };
 
 
-%feature("shadow") HLRBRep_BiPoint::~HLRBRep_BiPoint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_BiPoint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_CInter;
 class HLRBRep_CInter : public IntRes2d_Intersection {
 	public:
@@ -1098,20 +1010,6 @@ class HLRBRep_CInter : public IntRes2d_Intersection {
 };
 
 
-%feature("shadow") HLRBRep_CInter::~HLRBRep_CInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_CInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_CLProps;
 class HLRBRep_CLProps {
 	public:
@@ -1202,20 +1100,6 @@ class HLRBRep_CLProps {
 };
 
 
-%feature("shadow") HLRBRep_CLProps::~HLRBRep_CLProps %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_CLProps {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class HLRBRep_CLPropsATool {
 	public:
 		%feature("compactdefaultargs") Value;
@@ -1305,20 +1189,6 @@ class HLRBRep_CLPropsATool {
 };
 
 
-%feature("shadow") HLRBRep_CLPropsATool::~HLRBRep_CLPropsATool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_CLPropsATool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_Curve;
 class HLRBRep_Curve {
 	public:
@@ -1649,20 +1519,6 @@ class HLRBRep_Curve {
 };
 
 
-%feature("shadow") HLRBRep_Curve::~HLRBRep_Curve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_Curve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class HLRBRep_CurveTool {
 	public:
 		%feature("compactdefaultargs") FirstParameter;
@@ -1916,20 +1772,6 @@ class HLRBRep_CurveTool {
 };
 
 
-%feature("shadow") HLRBRep_CurveTool::~HLRBRep_CurveTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_CurveTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_Data;
 class HLRBRep_Data : public MMgt_TShared {
 	public:
@@ -2208,25 +2050,23 @@ class HLRBRep_Data : public MMgt_TShared {
 };
 
 
-%feature("shadow") HLRBRep_Data::~HLRBRep_Data %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HLRBRep_Data {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HLRBRep_Data(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HLRBRep_Data {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HLRBRep_Data {
-	Handle_HLRBRep_Data GetHandle() {
-	return *(Handle_HLRBRep_Data*) &$self;
-	}
-};
+%pythonappend Handle_HLRBRep_Data::Handle_HLRBRep_Data %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HLRBRep_Data;
 class Handle_HLRBRep_Data : public Handle_MMgt_TShared {
@@ -2244,20 +2084,6 @@ class Handle_HLRBRep_Data : public Handle_MMgt_TShared {
 %extend Handle_HLRBRep_Data {
     HLRBRep_Data* GetObject() {
     return (HLRBRep_Data*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HLRBRep_Data::~Handle_HLRBRep_Data %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HLRBRep_Data {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2383,20 +2209,6 @@ class HLRBRep_EdgeBuilder {
 };
 
 
-%feature("shadow") HLRBRep_EdgeBuilder::~HLRBRep_EdgeBuilder %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_EdgeBuilder {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_EdgeData;
 class HLRBRep_EdgeData {
 	public:
@@ -2627,20 +2439,6 @@ class HLRBRep_EdgeData {
 };
 
 
-%feature("shadow") HLRBRep_EdgeData::~HLRBRep_EdgeData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_EdgeData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class HLRBRep_EdgeFaceTool {
 	public:
 		%feature("compactdefaultargs") CurvatureValue;
@@ -2674,20 +2472,6 @@ class HLRBRep_EdgeFaceTool {
 };
 
 
-%feature("shadow") HLRBRep_EdgeFaceTool::~HLRBRep_EdgeFaceTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_EdgeFaceTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class HLRBRep_EdgeIList {
 	public:
 		%feature("compactdefaultargs") AddInterference;
@@ -2715,20 +2499,6 @@ class HLRBRep_EdgeIList {
 };
 
 
-%feature("shadow") HLRBRep_EdgeIList::~HLRBRep_EdgeIList %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_EdgeIList {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_EdgeInterferenceTool;
 class HLRBRep_EdgeInterferenceTool {
 	public:
@@ -2825,20 +2595,6 @@ class HLRBRep_EdgeInterferenceTool {
 };
 
 
-%feature("shadow") HLRBRep_EdgeInterferenceTool::~HLRBRep_EdgeInterferenceTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_EdgeInterferenceTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter;
 class HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter {
 	public:
@@ -2903,20 +2659,6 @@ class HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter {
 };
 
 
-%feature("shadow") HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::~HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_FaceData;
 class HLRBRep_FaceData {
 	public:
@@ -3123,7 +2865,7 @@ class HLRBRep_FaceData {
 		%feature("compactdefaultargs") Wires;
 		%feature("autodoc", "	:rtype: Handle_HLRAlgo_WiresBlock
 ") Wires;
-		Handle_HLRAlgo_WiresBlock & Wires ();
+		Handle_HLRAlgo_WiresBlock Wires ();
 		%feature("compactdefaultargs") Geometry;
 		%feature("autodoc", "	:rtype: HLRBRep_Surface
 ") Geometry;
@@ -3135,20 +2877,6 @@ class HLRBRep_FaceData {
 };
 
 
-%feature("shadow") HLRBRep_FaceData::~HLRBRep_FaceData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_FaceData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_FaceIterator;
 class HLRBRep_FaceIterator {
 	public:
@@ -3223,20 +2951,6 @@ class HLRBRep_FaceIterator {
 };
 
 
-%feature("shadow") HLRBRep_FaceIterator::~HLRBRep_FaceIterator %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_FaceIterator {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_HLRToShape;
 class HLRBRep_HLRToShape {
 	public:
@@ -3355,20 +3069,6 @@ class HLRBRep_HLRToShape {
 };
 
 
-%feature("shadow") HLRBRep_HLRToShape::~HLRBRep_HLRToShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_HLRToShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_Hider;
 class HLRBRep_Hider {
 	public:
@@ -3401,20 +3101,6 @@ class HLRBRep_Hider {
 };
 
 
-%feature("shadow") HLRBRep_Hider::~HLRBRep_Hider %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_Hider {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_IntConicCurveOfCInter;
 class HLRBRep_IntConicCurveOfCInter : public IntRes2d_Intersection {
 	public:
@@ -3585,20 +3271,6 @@ class HLRBRep_IntConicCurveOfCInter : public IntRes2d_Intersection {
 };
 
 
-%feature("shadow") HLRBRep_IntConicCurveOfCInter::~HLRBRep_IntConicCurveOfCInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_IntConicCurveOfCInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_InterCSurf;
 class HLRBRep_InterCSurf : public IntCurveSurface_Intersection {
 	public:
@@ -3663,20 +3335,6 @@ class HLRBRep_InterCSurf : public IntCurveSurface_Intersection {
 };
 
 
-%feature("shadow") HLRBRep_InterCSurf::~HLRBRep_InterCSurf %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_InterCSurf {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_InternalAlgo;
 class HLRBRep_InternalAlgo : public MMgt_TShared {
 	public:
@@ -3883,25 +3541,23 @@ class HLRBRep_InternalAlgo : public MMgt_TShared {
 };
 
 
-%feature("shadow") HLRBRep_InternalAlgo::~HLRBRep_InternalAlgo %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HLRBRep_InternalAlgo {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HLRBRep_InternalAlgo(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HLRBRep_InternalAlgo {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HLRBRep_InternalAlgo {
-	Handle_HLRBRep_InternalAlgo GetHandle() {
-	return *(Handle_HLRBRep_InternalAlgo*) &$self;
-	}
-};
+%pythonappend Handle_HLRBRep_InternalAlgo::Handle_HLRBRep_InternalAlgo %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HLRBRep_InternalAlgo;
 class Handle_HLRBRep_InternalAlgo : public Handle_MMgt_TShared {
@@ -3919,20 +3575,6 @@ class Handle_HLRBRep_InternalAlgo : public Handle_MMgt_TShared {
 %extend Handle_HLRBRep_InternalAlgo {
     HLRBRep_InternalAlgo* GetObject() {
     return (HLRBRep_InternalAlgo*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HLRBRep_InternalAlgo::~Handle_HLRBRep_InternalAlgo %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HLRBRep_InternalAlgo {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4050,20 +3692,6 @@ class HLRBRep_Intersector {
 };
 
 
-%feature("shadow") HLRBRep_Intersector::~HLRBRep_Intersector %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_Intersector {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class HLRBRep_LineTool {
 	public:
 		%feature("compactdefaultargs") FirstParameter;
@@ -4369,20 +3997,6 @@ class HLRBRep_LineTool {
 };
 
 
-%feature("shadow") HLRBRep_LineTool::~HLRBRep_LineTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_LineTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_ListIteratorOfListOfBPnt2D;
 class HLRBRep_ListIteratorOfListOfBPnt2D {
 	public:
@@ -4417,20 +4031,6 @@ class HLRBRep_ListIteratorOfListOfBPnt2D {
 };
 
 
-%feature("shadow") HLRBRep_ListIteratorOfListOfBPnt2D::~HLRBRep_ListIteratorOfListOfBPnt2D %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_ListIteratorOfListOfBPnt2D {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_ListIteratorOfListOfBPoint;
 class HLRBRep_ListIteratorOfListOfBPoint {
 	public:
@@ -4465,20 +4065,6 @@ class HLRBRep_ListIteratorOfListOfBPoint {
 };
 
 
-%feature("shadow") HLRBRep_ListIteratorOfListOfBPoint::~HLRBRep_ListIteratorOfListOfBPoint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_ListIteratorOfListOfBPoint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_ListNodeOfListOfBPnt2D;
 class HLRBRep_ListNodeOfListOfBPnt2D : public TCollection_MapNode {
 	public:
@@ -4497,25 +4083,23 @@ class HLRBRep_ListNodeOfListOfBPnt2D : public TCollection_MapNode {
 };
 
 
-%feature("shadow") HLRBRep_ListNodeOfListOfBPnt2D::~HLRBRep_ListNodeOfListOfBPnt2D %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HLRBRep_ListNodeOfListOfBPnt2D {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HLRBRep_ListNodeOfListOfBPnt2D(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HLRBRep_ListNodeOfListOfBPnt2D {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HLRBRep_ListNodeOfListOfBPnt2D {
-	Handle_HLRBRep_ListNodeOfListOfBPnt2D GetHandle() {
-	return *(Handle_HLRBRep_ListNodeOfListOfBPnt2D*) &$self;
-	}
-};
+%pythonappend Handle_HLRBRep_ListNodeOfListOfBPnt2D::Handle_HLRBRep_ListNodeOfListOfBPnt2D %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HLRBRep_ListNodeOfListOfBPnt2D;
 class Handle_HLRBRep_ListNodeOfListOfBPnt2D : public Handle_TCollection_MapNode {
@@ -4533,20 +4117,6 @@ class Handle_HLRBRep_ListNodeOfListOfBPnt2D : public Handle_TCollection_MapNode 
 %extend Handle_HLRBRep_ListNodeOfListOfBPnt2D {
     HLRBRep_ListNodeOfListOfBPnt2D* GetObject() {
     return (HLRBRep_ListNodeOfListOfBPnt2D*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HLRBRep_ListNodeOfListOfBPnt2D::~Handle_HLRBRep_ListNodeOfListOfBPnt2D %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HLRBRep_ListNodeOfListOfBPnt2D {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4568,25 +4138,23 @@ class HLRBRep_ListNodeOfListOfBPoint : public TCollection_MapNode {
 };
 
 
-%feature("shadow") HLRBRep_ListNodeOfListOfBPoint::~HLRBRep_ListNodeOfListOfBPoint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HLRBRep_ListNodeOfListOfBPoint {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HLRBRep_ListNodeOfListOfBPoint(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HLRBRep_ListNodeOfListOfBPoint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HLRBRep_ListNodeOfListOfBPoint {
-	Handle_HLRBRep_ListNodeOfListOfBPoint GetHandle() {
-	return *(Handle_HLRBRep_ListNodeOfListOfBPoint*) &$self;
-	}
-};
+%pythonappend Handle_HLRBRep_ListNodeOfListOfBPoint::Handle_HLRBRep_ListNodeOfListOfBPoint %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HLRBRep_ListNodeOfListOfBPoint;
 class Handle_HLRBRep_ListNodeOfListOfBPoint : public Handle_TCollection_MapNode {
@@ -4604,20 +4172,6 @@ class Handle_HLRBRep_ListNodeOfListOfBPoint : public Handle_TCollection_MapNode 
 %extend Handle_HLRBRep_ListNodeOfListOfBPoint {
     HLRBRep_ListNodeOfListOfBPoint* GetObject() {
     return (HLRBRep_ListNodeOfListOfBPoint*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HLRBRep_ListNodeOfListOfBPoint::~Handle_HLRBRep_ListNodeOfListOfBPoint %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HLRBRep_ListNodeOfListOfBPoint {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4745,20 +4299,6 @@ class HLRBRep_ListOfBPnt2D {
 };
 
 
-%feature("shadow") HLRBRep_ListOfBPnt2D::~HLRBRep_ListOfBPnt2D %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_ListOfBPnt2D {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_ListOfBPoint;
 class HLRBRep_ListOfBPoint {
 	public:
@@ -4883,20 +4423,6 @@ class HLRBRep_ListOfBPoint {
 };
 
 
-%feature("shadow") HLRBRep_ListOfBPoint::~HLRBRep_ListOfBPoint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_ListOfBPoint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter;
 class HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter : public math_FunctionWithDerivative {
 	public:
@@ -4937,20 +4463,6 @@ class HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter : public ma
 };
 
 
-%feature("shadow") HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter::~HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter;
 class HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter : public math_FunctionWithDerivative {
 	public:
@@ -5045,20 +4557,6 @@ class HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter : public math_Function
 };
 
 
-%feature("shadow") HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::~HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_PolyAlgo;
 class HLRBRep_PolyAlgo : public MMgt_TShared {
 	public:
@@ -5245,25 +4743,23 @@ class HLRBRep_PolyAlgo : public MMgt_TShared {
 };
 
 
-%feature("shadow") HLRBRep_PolyAlgo::~HLRBRep_PolyAlgo %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HLRBRep_PolyAlgo {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HLRBRep_PolyAlgo(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HLRBRep_PolyAlgo {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HLRBRep_PolyAlgo {
-	Handle_HLRBRep_PolyAlgo GetHandle() {
-	return *(Handle_HLRBRep_PolyAlgo*) &$self;
-	}
-};
+%pythonappend Handle_HLRBRep_PolyAlgo::Handle_HLRBRep_PolyAlgo %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HLRBRep_PolyAlgo;
 class Handle_HLRBRep_PolyAlgo : public Handle_MMgt_TShared {
@@ -5281,20 +4777,6 @@ class Handle_HLRBRep_PolyAlgo : public Handle_MMgt_TShared {
 %extend Handle_HLRBRep_PolyAlgo {
     HLRBRep_PolyAlgo* GetObject() {
     return (HLRBRep_PolyAlgo*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HLRBRep_PolyAlgo::~Handle_HLRBRep_PolyAlgo %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HLRBRep_PolyAlgo {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5416,20 +4898,6 @@ class HLRBRep_PolyHLRToShape {
 };
 
 
-%feature("shadow") HLRBRep_PolyHLRToShape::~HLRBRep_PolyHLRToShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_PolyHLRToShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_SLProps;
 class HLRBRep_SLProps {
 	public:
@@ -5566,20 +5034,6 @@ class HLRBRep_SLProps {
 };
 
 
-%feature("shadow") HLRBRep_SLProps::~HLRBRep_SLProps %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_SLProps {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class HLRBRep_SLPropsATool {
 	public:
 		%feature("compactdefaultargs") Value;
@@ -5679,20 +5133,6 @@ class HLRBRep_SLPropsATool {
 };
 
 
-%feature("shadow") HLRBRep_SLPropsATool::~HLRBRep_SLPropsATool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_SLPropsATool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_SeqOfShapeBounds;
 class HLRBRep_SeqOfShapeBounds : public TCollection_BaseSequence {
 	public:
@@ -5825,20 +5265,6 @@ class HLRBRep_SeqOfShapeBounds : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") HLRBRep_SeqOfShapeBounds::~HLRBRep_SeqOfShapeBounds %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_SeqOfShapeBounds {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter;
 class HLRBRep_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter : public TCollection_BaseSequence {
 	public:
@@ -5971,20 +5397,6 @@ class HLRBRep_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter : public TColle
 };
 
 
-%feature("shadow") HLRBRep_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::~HLRBRep_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_SequenceNodeOfSeqOfShapeBounds;
 class HLRBRep_SequenceNodeOfSeqOfShapeBounds : public TCollection_SeqNode {
 	public:
@@ -6005,25 +5417,23 @@ class HLRBRep_SequenceNodeOfSeqOfShapeBounds : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") HLRBRep_SequenceNodeOfSeqOfShapeBounds::~HLRBRep_SequenceNodeOfSeqOfShapeBounds %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HLRBRep_SequenceNodeOfSeqOfShapeBounds {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HLRBRep_SequenceNodeOfSeqOfShapeBounds {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HLRBRep_SequenceNodeOfSeqOfShapeBounds {
-	Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds GetHandle() {
-	return *(Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds*) &$self;
-	}
-};
+%pythonappend Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds::Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds;
 class Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds : public Handle_TCollection_SeqNode {
@@ -6041,20 +5451,6 @@ class Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds : public Handle_TCollection_
 %extend Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds {
     HLRBRep_SequenceNodeOfSeqOfShapeBounds* GetObject() {
     return (HLRBRep_SequenceNodeOfSeqOfShapeBounds*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds::~Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6078,25 +5474,23 @@ class HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter :
 };
 
 
-%feature("shadow") HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::~HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
-	Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter GetHandle() {
-	return *(Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter*) &$self;
-	}
-};
+%pythonappend Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter;
 class Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter : public Handle_TCollection_SeqNode {
@@ -6114,20 +5508,6 @@ class Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfC
 %extend Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
     HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter* GetObject() {
     return (HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::~Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HLRBRep_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6199,7 +5579,7 @@ class HLRBRep_ShapeBounds {
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "	:rtype: Handle_HLRTopoBRep_OutLiner
 ") Shape;
-		const Handle_HLRTopoBRep_OutLiner & Shape ();
+		Handle_HLRTopoBRep_OutLiner Shape ();
 		%feature("compactdefaultargs") ShapeData;
 		%feature("autodoc", "	:param SD:
 	:type SD: Handle_MMgt_TShared &
@@ -6209,7 +5589,7 @@ class HLRBRep_ShapeBounds {
 		%feature("compactdefaultargs") ShapeData;
 		%feature("autodoc", "	:rtype: Handle_MMgt_TShared
 ") ShapeData;
-		const Handle_MMgt_TShared & ShapeData ();
+		Handle_MMgt_TShared ShapeData ();
 		%feature("compactdefaultargs") NbOfIso;
 		%feature("autodoc", "	:param nbIso:
 	:type nbIso: int
@@ -6259,20 +5639,6 @@ class HLRBRep_ShapeBounds {
 };
 
 
-%feature("shadow") HLRBRep_ShapeBounds::~HLRBRep_ShapeBounds %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_ShapeBounds {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class HLRBRep_ShapeToHLR {
 	public:
 		%feature("compactdefaultargs") Load;
@@ -6292,20 +5658,6 @@ class HLRBRep_ShapeToHLR {
 };
 
 
-%feature("shadow") HLRBRep_ShapeToHLR::~HLRBRep_ShapeToHLR %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_ShapeToHLR {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class HLRBRep_SurfaceTool {
 	public:
 		%feature("compactdefaultargs") FirstUParameter;
@@ -6665,20 +6017,6 @@ class HLRBRep_SurfaceTool {
 };
 
 
-%feature("shadow") HLRBRep_SurfaceTool::~HLRBRep_SurfaceTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_SurfaceTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_TheCSFunctionOfInterCSurf;
 class HLRBRep_TheCSFunctionOfInterCSurf : public math_FunctionSetWithDerivatives {
 	public:
@@ -6743,20 +6081,6 @@ class HLRBRep_TheCSFunctionOfInterCSurf : public math_FunctionSetWithDerivatives
 };
 
 
-%feature("shadow") HLRBRep_TheCSFunctionOfInterCSurf::~HLRBRep_TheCSFunctionOfInterCSurf %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_TheCSFunctionOfInterCSurf {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter;
 class HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter : public math_FunctionSetWithDerivatives {
 	public:
@@ -6805,20 +6129,6 @@ class HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter : public math_Fu
 };
 
 
-%feature("shadow") HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::~HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_TheExactInterCSurf;
 class HLRBRep_TheExactInterCSurf {
 	public:
@@ -6901,20 +6211,6 @@ class HLRBRep_TheExactInterCSurf {
 };
 
 
-%feature("shadow") HLRBRep_TheExactInterCSurf::~HLRBRep_TheExactInterCSurf %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_TheExactInterCSurf {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_TheIntConicCurveOfCInter;
 class HLRBRep_TheIntConicCurveOfCInter : public IntRes2d_Intersection {
 	public:
@@ -7085,20 +6381,6 @@ class HLRBRep_TheIntConicCurveOfCInter : public IntRes2d_Intersection {
 };
 
 
-%feature("shadow") HLRBRep_TheIntConicCurveOfCInter::~HLRBRep_TheIntConicCurveOfCInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_TheIntConicCurveOfCInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_TheIntPCurvePCurveOfCInter;
 class HLRBRep_TheIntPCurvePCurveOfCInter : public IntRes2d_Intersection {
 	public:
@@ -7137,20 +6419,6 @@ class HLRBRep_TheIntPCurvePCurveOfCInter : public IntRes2d_Intersection {
 };
 
 
-%feature("shadow") HLRBRep_TheIntPCurvePCurveOfCInter::~HLRBRep_TheIntPCurvePCurveOfCInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_TheIntPCurvePCurveOfCInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_TheInterferenceOfInterCSurf;
 class HLRBRep_TheInterferenceOfInterCSurf : public Intf_Interference {
 	public:
@@ -7287,20 +6555,6 @@ class HLRBRep_TheInterferenceOfInterCSurf : public Intf_Interference {
 };
 
 
-%feature("shadow") HLRBRep_TheInterferenceOfInterCSurf::~HLRBRep_TheInterferenceOfInterCSurf %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_TheInterferenceOfInterCSurf {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter;
 class HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter : public IntRes2d_Intersection {
 	public:
@@ -7399,20 +6653,6 @@ class HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter : public IntRes2d_Interse
 };
 
 
-%feature("shadow") HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::~HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter;
 class HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter {
 	public:
@@ -7487,20 +6727,6 @@ class HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter {
 };
 
 
-%feature("shadow") HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::~HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter;
 class HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter : public Intf_Polygon2d {
 	public:
@@ -7611,20 +6837,6 @@ class HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter : public Intf_Polygon2d {
 };
 
 
-%feature("shadow") HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::~HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_ThePolygonOfInterCSurf;
 class HLRBRep_ThePolygonOfInterCSurf {
 	public:
@@ -7719,20 +6931,6 @@ class HLRBRep_ThePolygonOfInterCSurf {
 };
 
 
-%feature("shadow") HLRBRep_ThePolygonOfInterCSurf::~HLRBRep_ThePolygonOfInterCSurf %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_ThePolygonOfInterCSurf {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class HLRBRep_ThePolygonToolOfInterCSurf {
 	public:
 		%feature("compactdefaultargs") Bounding;
@@ -7784,20 +6982,6 @@ class HLRBRep_ThePolygonToolOfInterCSurf {
 };
 
 
-%feature("shadow") HLRBRep_ThePolygonToolOfInterCSurf::~HLRBRep_ThePolygonToolOfInterCSurf %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_ThePolygonToolOfInterCSurf {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class HLRBRep_ThePolyhedronToolOfInterCSurf {
 	public:
 		%feature("compactdefaultargs") Bounding;
@@ -7811,7 +6995,7 @@ class HLRBRep_ThePolyhedronToolOfInterCSurf {
 	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
 	:rtype: Handle_Bnd_HArray1OfBox
 ") ComponentsBounding;
-		static const Handle_Bnd_HArray1OfBox & ComponentsBounding (const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
+		Handle_Bnd_HArray1OfBox ComponentsBounding (const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 		%feature("compactdefaultargs") DeflectionOverEstimation;
 		%feature("autodoc", "	:param thePolyh:
 	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
@@ -7887,20 +7071,6 @@ class HLRBRep_ThePolyhedronToolOfInterCSurf {
 };
 
 
-%feature("shadow") HLRBRep_ThePolyhedronToolOfInterCSurf::~HLRBRep_ThePolyhedronToolOfInterCSurf %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_ThePolyhedronToolOfInterCSurf {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class HLRBRep_TheProjPCurOfCInter {
 	public:
 		%feature("compactdefaultargs") FindParameter;
@@ -7930,20 +7100,6 @@ class HLRBRep_TheProjPCurOfCInter {
 };
 
 
-%feature("shadow") HLRBRep_TheProjPCurOfCInter::~HLRBRep_TheProjPCurOfCInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_TheProjPCurOfCInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_TheQuadCurvExactInterCSurf;
 class HLRBRep_TheQuadCurvExactInterCSurf {
 	public:
@@ -7986,20 +7142,6 @@ class HLRBRep_TheQuadCurvExactInterCSurf {
 };
 
 
-%feature("shadow") HLRBRep_TheQuadCurvExactInterCSurf::~HLRBRep_TheQuadCurvExactInterCSurf %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_TheQuadCurvExactInterCSurf {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf;
 class HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf : public math_FunctionWithDerivative {
 	public:
@@ -8040,20 +7182,6 @@ class HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf : public math_Function
 };
 
 
-%feature("shadow") HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf::~HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_VertexList;
 class HLRBRep_VertexList {
 	public:
@@ -8122,20 +7250,6 @@ class HLRBRep_VertexList {
 };
 
 
-%feature("shadow") HLRBRep_VertexList::~HLRBRep_VertexList %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HLRBRep_VertexList {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HLRBRep_Algo;
 class HLRBRep_Algo : public HLRBRep_InternalAlgo {
 	public:
@@ -8190,25 +7304,23 @@ class HLRBRep_Algo : public HLRBRep_InternalAlgo {
 };
 
 
-%feature("shadow") HLRBRep_Algo::~HLRBRep_Algo %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HLRBRep_Algo {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HLRBRep_Algo(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HLRBRep_Algo {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HLRBRep_Algo {
-	Handle_HLRBRep_Algo GetHandle() {
-	return *(Handle_HLRBRep_Algo*) &$self;
-	}
-};
+%pythonappend Handle_HLRBRep_Algo::Handle_HLRBRep_Algo %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HLRBRep_Algo;
 class Handle_HLRBRep_Algo : public Handle_HLRBRep_InternalAlgo {
@@ -8226,20 +7338,6 @@ class Handle_HLRBRep_Algo : public Handle_HLRBRep_InternalAlgo {
 %extend Handle_HLRBRep_Algo {
     HLRBRep_Algo* GetObject() {
     return (HLRBRep_Algo*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HLRBRep_Algo::~Handle_HLRBRep_Algo %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HLRBRep_Algo {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

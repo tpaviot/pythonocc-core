@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include Bnd_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -126,20 +138,6 @@ class Bnd_Array1OfBox {
 };
 
 
-%feature("shadow") Bnd_Array1OfBox::~Bnd_Array1OfBox %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Bnd_Array1OfBox {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Bnd_Array1OfBox2d;
 class Bnd_Array1OfBox2d {
 	public:
@@ -222,20 +220,6 @@ class Bnd_Array1OfBox2d {
 };
 
 
-%feature("shadow") Bnd_Array1OfBox2d::~Bnd_Array1OfBox2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Bnd_Array1OfBox2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Bnd_Array1OfSphere;
 class Bnd_Array1OfSphere {
 	public:
@@ -318,20 +302,6 @@ class Bnd_Array1OfSphere {
 };
 
 
-%feature("shadow") Bnd_Array1OfSphere::~Bnd_Array1OfSphere %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Bnd_Array1OfSphere {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Bnd_B2d;
 class Bnd_B2d {
 	public:
@@ -476,20 +446,6 @@ class Bnd_B2d {
 };
 
 
-%feature("shadow") Bnd_B2d::~Bnd_B2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Bnd_B2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Bnd_B2f;
 class Bnd_B2f {
 	public:
@@ -634,20 +590,6 @@ class Bnd_B2f {
 };
 
 
-%feature("shadow") Bnd_B2f::~Bnd_B2f %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Bnd_B2f {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Bnd_B3d;
 class Bnd_B3d {
 	public:
@@ -794,20 +736,6 @@ class Bnd_B3d {
 };
 
 
-%feature("shadow") Bnd_B3d::~Bnd_B3d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Bnd_B3d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Bnd_B3f;
 class Bnd_B3f {
 	public:
@@ -954,20 +882,6 @@ class Bnd_B3f {
 };
 
 
-%feature("shadow") Bnd_B3f::~Bnd_B3f %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Bnd_B3f {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Bnd_BoundSortBox;
 class Bnd_BoundSortBox {
 	public:
@@ -1042,20 +956,6 @@ class Bnd_BoundSortBox {
 };
 
 
-%feature("shadow") Bnd_BoundSortBox::~Bnd_BoundSortBox %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Bnd_BoundSortBox {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Bnd_BoundSortBox2d;
 class Bnd_BoundSortBox2d {
 	public:
@@ -1118,20 +1018,6 @@ class Bnd_BoundSortBox2d {
 };
 
 
-%feature("shadow") Bnd_BoundSortBox2d::~Bnd_BoundSortBox2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Bnd_BoundSortBox2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Bnd_Box;
 class Bnd_Box {
 	public:
@@ -1486,20 +1372,6 @@ class Bnd_Box {
 };
 
 
-%feature("shadow") Bnd_Box::~Bnd_Box %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Bnd_Box {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Bnd_Box2d;
 class Bnd_Box2d {
 	public:
@@ -1752,20 +1624,6 @@ class Bnd_Box2d {
 };
 
 
-%feature("shadow") Bnd_Box2d::~Bnd_Box2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Bnd_Box2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Bnd_HArray1OfBox;
 class Bnd_HArray1OfBox : public MMgt_TShared {
 	public:
@@ -1836,25 +1694,23 @@ class Bnd_HArray1OfBox : public MMgt_TShared {
 };
 
 
-%feature("shadow") Bnd_HArray1OfBox::~Bnd_HArray1OfBox %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Bnd_HArray1OfBox {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Bnd_HArray1OfBox(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Bnd_HArray1OfBox {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Bnd_HArray1OfBox {
-	Handle_Bnd_HArray1OfBox GetHandle() {
-	return *(Handle_Bnd_HArray1OfBox*) &$self;
-	}
-};
+%pythonappend Handle_Bnd_HArray1OfBox::Handle_Bnd_HArray1OfBox %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Bnd_HArray1OfBox;
 class Handle_Bnd_HArray1OfBox : public Handle_MMgt_TShared {
@@ -1872,20 +1728,6 @@ class Handle_Bnd_HArray1OfBox : public Handle_MMgt_TShared {
 %extend Handle_Bnd_HArray1OfBox {
     Bnd_HArray1OfBox* GetObject() {
     return (Bnd_HArray1OfBox*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Bnd_HArray1OfBox::~Handle_Bnd_HArray1OfBox %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Bnd_HArray1OfBox {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1959,25 +1801,23 @@ class Bnd_HArray1OfBox2d : public MMgt_TShared {
 };
 
 
-%feature("shadow") Bnd_HArray1OfBox2d::~Bnd_HArray1OfBox2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Bnd_HArray1OfBox2d {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Bnd_HArray1OfBox2d(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Bnd_HArray1OfBox2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Bnd_HArray1OfBox2d {
-	Handle_Bnd_HArray1OfBox2d GetHandle() {
-	return *(Handle_Bnd_HArray1OfBox2d*) &$self;
-	}
-};
+%pythonappend Handle_Bnd_HArray1OfBox2d::Handle_Bnd_HArray1OfBox2d %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Bnd_HArray1OfBox2d;
 class Handle_Bnd_HArray1OfBox2d : public Handle_MMgt_TShared {
@@ -1995,20 +1835,6 @@ class Handle_Bnd_HArray1OfBox2d : public Handle_MMgt_TShared {
 %extend Handle_Bnd_HArray1OfBox2d {
     Bnd_HArray1OfBox2d* GetObject() {
     return (Bnd_HArray1OfBox2d*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Bnd_HArray1OfBox2d::~Handle_Bnd_HArray1OfBox2d %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Bnd_HArray1OfBox2d {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2082,25 +1908,23 @@ class Bnd_HArray1OfSphere : public MMgt_TShared {
 };
 
 
-%feature("shadow") Bnd_HArray1OfSphere::~Bnd_HArray1OfSphere %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Bnd_HArray1OfSphere {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Bnd_HArray1OfSphere(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Bnd_HArray1OfSphere {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Bnd_HArray1OfSphere {
-	Handle_Bnd_HArray1OfSphere GetHandle() {
-	return *(Handle_Bnd_HArray1OfSphere*) &$self;
-	}
-};
+%pythonappend Handle_Bnd_HArray1OfSphere::Handle_Bnd_HArray1OfSphere %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Bnd_HArray1OfSphere;
 class Handle_Bnd_HArray1OfSphere : public Handle_MMgt_TShared {
@@ -2118,20 +1942,6 @@ class Handle_Bnd_HArray1OfSphere : public Handle_MMgt_TShared {
 %extend Handle_Bnd_HArray1OfSphere {
     Bnd_HArray1OfSphere* GetObject() {
     return (Bnd_HArray1OfSphere*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Bnd_HArray1OfSphere::~Handle_Bnd_HArray1OfSphere %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Bnd_HArray1OfSphere {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2267,20 +2077,6 @@ class Bnd_SeqOfBox : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Bnd_SeqOfBox::~Bnd_SeqOfBox %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Bnd_SeqOfBox {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Bnd_SequenceNodeOfSeqOfBox;
 class Bnd_SequenceNodeOfSeqOfBox : public TCollection_SeqNode {
 	public:
@@ -2301,25 +2097,23 @@ class Bnd_SequenceNodeOfSeqOfBox : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") Bnd_SequenceNodeOfSeqOfBox::~Bnd_SequenceNodeOfSeqOfBox %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Bnd_SequenceNodeOfSeqOfBox {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Bnd_SequenceNodeOfSeqOfBox(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Bnd_SequenceNodeOfSeqOfBox {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Bnd_SequenceNodeOfSeqOfBox {
-	Handle_Bnd_SequenceNodeOfSeqOfBox GetHandle() {
-	return *(Handle_Bnd_SequenceNodeOfSeqOfBox*) &$self;
-	}
-};
+%pythonappend Handle_Bnd_SequenceNodeOfSeqOfBox::Handle_Bnd_SequenceNodeOfSeqOfBox %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Bnd_SequenceNodeOfSeqOfBox;
 class Handle_Bnd_SequenceNodeOfSeqOfBox : public Handle_TCollection_SeqNode {
@@ -2337,20 +2131,6 @@ class Handle_Bnd_SequenceNodeOfSeqOfBox : public Handle_TCollection_SeqNode {
 %extend Handle_Bnd_SequenceNodeOfSeqOfBox {
     Bnd_SequenceNodeOfSeqOfBox* GetObject() {
     return (Bnd_SequenceNodeOfSeqOfBox*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Bnd_SequenceNodeOfSeqOfBox::~Handle_Bnd_SequenceNodeOfSeqOfBox %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Bnd_SequenceNodeOfSeqOfBox {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2490,17 +2270,3 @@ class Bnd_Sphere {
 };
 
 
-%feature("shadow") Bnd_Sphere::~Bnd_Sphere %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Bnd_Sphere {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

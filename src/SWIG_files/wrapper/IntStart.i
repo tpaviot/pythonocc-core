@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include IntStart_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -58,25 +70,23 @@ class IntStart_SITopolTool : public MMgt_TShared {
 };
 
 
-%feature("shadow") IntStart_SITopolTool::~IntStart_SITopolTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend IntStart_SITopolTool {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IntStart_SITopolTool(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend IntStart_SITopolTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend IntStart_SITopolTool {
-	Handle_IntStart_SITopolTool GetHandle() {
-	return *(Handle_IntStart_SITopolTool*) &$self;
-	}
-};
+%pythonappend Handle_IntStart_SITopolTool::Handle_IntStart_SITopolTool %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_IntStart_SITopolTool;
 class Handle_IntStart_SITopolTool : public Handle_MMgt_TShared {
@@ -94,20 +104,6 @@ class Handle_IntStart_SITopolTool : public Handle_MMgt_TShared {
 %extend Handle_IntStart_SITopolTool {
     IntStart_SITopolTool* GetObject() {
     return (IntStart_SITopolTool*)$self->Access();
-    }
-};
-%feature("shadow") Handle_IntStart_SITopolTool::~Handle_IntStart_SITopolTool %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_IntStart_SITopolTool {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

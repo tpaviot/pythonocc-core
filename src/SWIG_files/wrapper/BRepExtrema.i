@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include BRepExtrema_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 typedef NCollection_Sequence <BRepExtrema_SolutionElem> BRepExtrema_SeqOfSolution;
@@ -257,20 +269,6 @@ class BRepExtrema_DistShapeShape {
 };
 
 
-%feature("shadow") BRepExtrema_DistShapeShape::~BRepExtrema_DistShapeShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepExtrema_DistShapeShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepExtrema_DistanceSS;
 class BRepExtrema_DistanceSS {
 	public:
@@ -359,20 +357,6 @@ class BRepExtrema_DistanceSS {
 };
 
 
-%feature("shadow") BRepExtrema_DistanceSS::~BRepExtrema_DistanceSS %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepExtrema_DistanceSS {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepExtrema_ExtCC;
 class BRepExtrema_ExtCC {
 	public:
@@ -487,20 +471,6 @@ class BRepExtrema_ExtCC {
 };
 
 
-%feature("shadow") BRepExtrema_ExtCC::~BRepExtrema_ExtCC %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepExtrema_ExtCC {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepExtrema_ExtCF;
 class BRepExtrema_ExtCF {
 	public:
@@ -601,20 +571,6 @@ class BRepExtrema_ExtCF {
 };
 
 
-%feature("shadow") BRepExtrema_ExtCF::~BRepExtrema_ExtCF %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepExtrema_ExtCF {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepExtrema_ExtFF;
 class BRepExtrema_ExtFF {
 	public:
@@ -717,20 +673,6 @@ class BRepExtrema_ExtFF {
 };
 
 
-%feature("shadow") BRepExtrema_ExtFF::~BRepExtrema_ExtFF %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepExtrema_ExtFF {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepExtrema_ExtPC;
 class BRepExtrema_ExtPC {
 	public:
@@ -823,20 +765,6 @@ class BRepExtrema_ExtPC {
 };
 
 
-%feature("shadow") BRepExtrema_ExtPC::~BRepExtrema_ExtPC %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepExtrema_ExtPC {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepExtrema_ExtPF;
 class BRepExtrema_ExtPF {
 	public:
@@ -933,20 +861,6 @@ class BRepExtrema_ExtPF {
 };
 
 
-%feature("shadow") BRepExtrema_ExtPF::~BRepExtrema_ExtPF %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepExtrema_ExtPF {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepExtrema_Poly;
 class BRepExtrema_Poly {
 	public:
@@ -969,20 +883,6 @@ class BRepExtrema_Poly {
 };
 
 
-%feature("shadow") BRepExtrema_Poly::~BRepExtrema_Poly %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepExtrema_Poly {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepExtrema_SolutionElem;
 class BRepExtrema_SolutionElem {
 	public:
@@ -1095,17 +995,3 @@ class BRepExtrema_SolutionElem {
 };
 
 
-%feature("shadow") BRepExtrema_SolutionElem::~BRepExtrema_SolutionElem %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepExtrema_SolutionElem {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

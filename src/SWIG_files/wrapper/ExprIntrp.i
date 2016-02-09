@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include ExprIntrp_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -51,20 +63,6 @@ class ExprIntrp {
 };
 
 
-%feature("shadow") ExprIntrp::~ExprIntrp %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ExprIntrp {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ExprIntrp_Analysis;
 class ExprIntrp_Analysis {
 	public:
@@ -167,20 +165,6 @@ class ExprIntrp_Analysis {
 };
 
 
-%feature("shadow") ExprIntrp_Analysis::~ExprIntrp_Analysis %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ExprIntrp_Analysis {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ExprIntrp_Generator;
 class ExprIntrp_Generator : public MMgt_TShared {
 	public:
@@ -223,25 +207,23 @@ class ExprIntrp_Generator : public MMgt_TShared {
 };
 
 
-%feature("shadow") ExprIntrp_Generator::~ExprIntrp_Generator %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ExprIntrp_Generator {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ExprIntrp_Generator(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ExprIntrp_Generator {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ExprIntrp_Generator {
-	Handle_ExprIntrp_Generator GetHandle() {
-	return *(Handle_ExprIntrp_Generator*) &$self;
-	}
-};
+%pythonappend Handle_ExprIntrp_Generator::Handle_ExprIntrp_Generator %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ExprIntrp_Generator;
 class Handle_ExprIntrp_Generator : public Handle_MMgt_TShared {
@@ -261,20 +243,6 @@ class Handle_ExprIntrp_Generator : public Handle_MMgt_TShared {
     return (ExprIntrp_Generator*)$self->Access();
     }
 };
-%feature("shadow") Handle_ExprIntrp_Generator::~Handle_ExprIntrp_Generator %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ExprIntrp_Generator {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor ExprIntrp_SequenceNodeOfSequenceOfNamedExpression;
 class ExprIntrp_SequenceNodeOfSequenceOfNamedExpression : public TCollection_SeqNode {
@@ -292,29 +260,27 @@ class ExprIntrp_SequenceNodeOfSequenceOfNamedExpression : public TCollection_Seq
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Expr_NamedExpression
 ") Value;
-		Handle_Expr_NamedExpression & Value ();
+		Handle_Expr_NamedExpression Value ();
 };
 
 
-%feature("shadow") ExprIntrp_SequenceNodeOfSequenceOfNamedExpression::~ExprIntrp_SequenceNodeOfSequenceOfNamedExpression %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend ExprIntrp_SequenceNodeOfSequenceOfNamedExpression {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression::Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend ExprIntrp_SequenceNodeOfSequenceOfNamedExpression {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ExprIntrp_SequenceNodeOfSequenceOfNamedExpression {
-	Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression GetHandle() {
-	return *(Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression*) &$self;
-	}
-};
 
 %nodefaultctor Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression;
 class Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression : public Handle_TCollection_SeqNode {
@@ -334,20 +300,6 @@ class Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression : public Handle_T
     return (ExprIntrp_SequenceNodeOfSequenceOfNamedExpression*)$self->Access();
     }
 };
-%feature("shadow") Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression::~Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor ExprIntrp_SequenceNodeOfSequenceOfNamedFunction;
 class ExprIntrp_SequenceNodeOfSequenceOfNamedFunction : public TCollection_SeqNode {
@@ -365,29 +317,27 @@ class ExprIntrp_SequenceNodeOfSequenceOfNamedFunction : public TCollection_SeqNo
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Expr_NamedFunction
 ") Value;
-		Handle_Expr_NamedFunction & Value ();
+		Handle_Expr_NamedFunction Value ();
 };
 
 
-%feature("shadow") ExprIntrp_SequenceNodeOfSequenceOfNamedFunction::~ExprIntrp_SequenceNodeOfSequenceOfNamedFunction %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend ExprIntrp_SequenceNodeOfSequenceOfNamedFunction {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction::Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend ExprIntrp_SequenceNodeOfSequenceOfNamedFunction {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ExprIntrp_SequenceNodeOfSequenceOfNamedFunction {
-	Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction GetHandle() {
-	return *(Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction*) &$self;
-	}
-};
 
 %nodefaultctor Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction;
 class Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction : public Handle_TCollection_SeqNode {
@@ -405,20 +355,6 @@ class Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction : public Handle_TCo
 %extend Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction {
     ExprIntrp_SequenceNodeOfSequenceOfNamedFunction* GetObject() {
     return (ExprIntrp_SequenceNodeOfSequenceOfNamedFunction*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction::~Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -504,11 +440,11 @@ class ExprIntrp_SequenceOfNamedExpression : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Expr_NamedExpression
 ") First;
-		const Handle_Expr_NamedExpression & First ();
+		Handle_Expr_NamedExpression First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Expr_NamedExpression
 ") Last;
-		const Handle_Expr_NamedExpression & Last ();
+		Handle_Expr_NamedExpression Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -522,7 +458,7 @@ class ExprIntrp_SequenceOfNamedExpression : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Expr_NamedExpression
 ") Value;
-		const Handle_Expr_NamedExpression & Value (const Standard_Integer Index);
+		Handle_Expr_NamedExpression Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -536,7 +472,7 @@ class ExprIntrp_SequenceOfNamedExpression : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Expr_NamedExpression
 ") ChangeValue;
-		Handle_Expr_NamedExpression & ChangeValue (const Standard_Integer Index);
+		Handle_Expr_NamedExpression ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -554,20 +490,6 @@ class ExprIntrp_SequenceOfNamedExpression : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") ExprIntrp_SequenceOfNamedExpression::~ExprIntrp_SequenceOfNamedExpression %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ExprIntrp_SequenceOfNamedExpression {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ExprIntrp_SequenceOfNamedFunction;
 class ExprIntrp_SequenceOfNamedFunction : public TCollection_BaseSequence {
 	public:
@@ -650,11 +572,11 @@ class ExprIntrp_SequenceOfNamedFunction : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Expr_NamedFunction
 ") First;
-		const Handle_Expr_NamedFunction & First ();
+		Handle_Expr_NamedFunction First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Expr_NamedFunction
 ") Last;
-		const Handle_Expr_NamedFunction & Last ();
+		Handle_Expr_NamedFunction Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -668,7 +590,7 @@ class ExprIntrp_SequenceOfNamedFunction : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Expr_NamedFunction
 ") Value;
-		const Handle_Expr_NamedFunction & Value (const Standard_Integer Index);
+		Handle_Expr_NamedFunction Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -682,7 +604,7 @@ class ExprIntrp_SequenceOfNamedFunction : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Expr_NamedFunction
 ") ChangeValue;
-		Handle_Expr_NamedFunction & ChangeValue (const Standard_Integer Index);
+		Handle_Expr_NamedFunction ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -700,20 +622,6 @@ class ExprIntrp_SequenceOfNamedFunction : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") ExprIntrp_SequenceOfNamedFunction::~ExprIntrp_SequenceOfNamedFunction %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ExprIntrp_SequenceOfNamedFunction {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ExprIntrp_StackIteratorOfStackOfGeneralExpression;
 class ExprIntrp_StackIteratorOfStackOfGeneralExpression {
 	public:
@@ -744,24 +652,10 @@ class ExprIntrp_StackIteratorOfStackOfGeneralExpression {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Expr_GeneralExpression
 ") Value;
-		const Handle_Expr_GeneralExpression & Value ();
+		Handle_Expr_GeneralExpression Value ();
 };
 
 
-%feature("shadow") ExprIntrp_StackIteratorOfStackOfGeneralExpression::~ExprIntrp_StackIteratorOfStackOfGeneralExpression %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ExprIntrp_StackIteratorOfStackOfGeneralExpression {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ExprIntrp_StackIteratorOfStackOfGeneralFunction;
 class ExprIntrp_StackIteratorOfStackOfGeneralFunction {
 	public:
@@ -792,24 +686,10 @@ class ExprIntrp_StackIteratorOfStackOfGeneralFunction {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Expr_GeneralFunction
 ") Value;
-		const Handle_Expr_GeneralFunction & Value ();
+		Handle_Expr_GeneralFunction Value ();
 };
 
 
-%feature("shadow") ExprIntrp_StackIteratorOfStackOfGeneralFunction::~ExprIntrp_StackIteratorOfStackOfGeneralFunction %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ExprIntrp_StackIteratorOfStackOfGeneralFunction {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ExprIntrp_StackIteratorOfStackOfGeneralRelation;
 class ExprIntrp_StackIteratorOfStackOfGeneralRelation {
 	public:
@@ -840,24 +720,10 @@ class ExprIntrp_StackIteratorOfStackOfGeneralRelation {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Expr_GeneralRelation
 ") Value;
-		const Handle_Expr_GeneralRelation & Value ();
+		Handle_Expr_GeneralRelation Value ();
 };
 
 
-%feature("shadow") ExprIntrp_StackIteratorOfStackOfGeneralRelation::~ExprIntrp_StackIteratorOfStackOfGeneralRelation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ExprIntrp_StackIteratorOfStackOfGeneralRelation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ExprIntrp_StackIteratorOfStackOfNames;
 class ExprIntrp_StackIteratorOfStackOfNames {
 	public:
@@ -892,20 +758,6 @@ class ExprIntrp_StackIteratorOfStackOfNames {
 };
 
 
-%feature("shadow") ExprIntrp_StackIteratorOfStackOfNames::~ExprIntrp_StackIteratorOfStackOfNames %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ExprIntrp_StackIteratorOfStackOfNames {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ExprIntrp_StackNodeOfStackOfGeneralExpression;
 class ExprIntrp_StackNodeOfStackOfGeneralExpression : public TCollection_MapNode {
 	public:
@@ -920,29 +772,27 @@ class ExprIntrp_StackNodeOfStackOfGeneralExpression : public TCollection_MapNode
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Expr_GeneralExpression
 ") Value;
-		Handle_Expr_GeneralExpression & Value ();
+		Handle_Expr_GeneralExpression Value ();
 };
 
 
-%feature("shadow") ExprIntrp_StackNodeOfStackOfGeneralExpression::~ExprIntrp_StackNodeOfStackOfGeneralExpression %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend ExprIntrp_StackNodeOfStackOfGeneralExpression {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ExprIntrp_StackNodeOfStackOfGeneralExpression(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_ExprIntrp_StackNodeOfStackOfGeneralExpression::Handle_ExprIntrp_StackNodeOfStackOfGeneralExpression %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend ExprIntrp_StackNodeOfStackOfGeneralExpression {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ExprIntrp_StackNodeOfStackOfGeneralExpression {
-	Handle_ExprIntrp_StackNodeOfStackOfGeneralExpression GetHandle() {
-	return *(Handle_ExprIntrp_StackNodeOfStackOfGeneralExpression*) &$self;
-	}
-};
 
 %nodefaultctor Handle_ExprIntrp_StackNodeOfStackOfGeneralExpression;
 class Handle_ExprIntrp_StackNodeOfStackOfGeneralExpression : public Handle_TCollection_MapNode {
@@ -962,20 +812,6 @@ class Handle_ExprIntrp_StackNodeOfStackOfGeneralExpression : public Handle_TColl
     return (ExprIntrp_StackNodeOfStackOfGeneralExpression*)$self->Access();
     }
 };
-%feature("shadow") Handle_ExprIntrp_StackNodeOfStackOfGeneralExpression::~Handle_ExprIntrp_StackNodeOfStackOfGeneralExpression %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ExprIntrp_StackNodeOfStackOfGeneralExpression {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor ExprIntrp_StackNodeOfStackOfGeneralFunction;
 class ExprIntrp_StackNodeOfStackOfGeneralFunction : public TCollection_MapNode {
@@ -991,29 +827,27 @@ class ExprIntrp_StackNodeOfStackOfGeneralFunction : public TCollection_MapNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Expr_GeneralFunction
 ") Value;
-		Handle_Expr_GeneralFunction & Value ();
+		Handle_Expr_GeneralFunction Value ();
 };
 
 
-%feature("shadow") ExprIntrp_StackNodeOfStackOfGeneralFunction::~ExprIntrp_StackNodeOfStackOfGeneralFunction %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend ExprIntrp_StackNodeOfStackOfGeneralFunction {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ExprIntrp_StackNodeOfStackOfGeneralFunction(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_ExprIntrp_StackNodeOfStackOfGeneralFunction::Handle_ExprIntrp_StackNodeOfStackOfGeneralFunction %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend ExprIntrp_StackNodeOfStackOfGeneralFunction {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ExprIntrp_StackNodeOfStackOfGeneralFunction {
-	Handle_ExprIntrp_StackNodeOfStackOfGeneralFunction GetHandle() {
-	return *(Handle_ExprIntrp_StackNodeOfStackOfGeneralFunction*) &$self;
-	}
-};
 
 %nodefaultctor Handle_ExprIntrp_StackNodeOfStackOfGeneralFunction;
 class Handle_ExprIntrp_StackNodeOfStackOfGeneralFunction : public Handle_TCollection_MapNode {
@@ -1033,20 +867,6 @@ class Handle_ExprIntrp_StackNodeOfStackOfGeneralFunction : public Handle_TCollec
     return (ExprIntrp_StackNodeOfStackOfGeneralFunction*)$self->Access();
     }
 };
-%feature("shadow") Handle_ExprIntrp_StackNodeOfStackOfGeneralFunction::~Handle_ExprIntrp_StackNodeOfStackOfGeneralFunction %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ExprIntrp_StackNodeOfStackOfGeneralFunction {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor ExprIntrp_StackNodeOfStackOfGeneralRelation;
 class ExprIntrp_StackNodeOfStackOfGeneralRelation : public TCollection_MapNode {
@@ -1062,29 +882,27 @@ class ExprIntrp_StackNodeOfStackOfGeneralRelation : public TCollection_MapNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Expr_GeneralRelation
 ") Value;
-		Handle_Expr_GeneralRelation & Value ();
+		Handle_Expr_GeneralRelation Value ();
 };
 
 
-%feature("shadow") ExprIntrp_StackNodeOfStackOfGeneralRelation::~ExprIntrp_StackNodeOfStackOfGeneralRelation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend ExprIntrp_StackNodeOfStackOfGeneralRelation {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ExprIntrp_StackNodeOfStackOfGeneralRelation(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_ExprIntrp_StackNodeOfStackOfGeneralRelation::Handle_ExprIntrp_StackNodeOfStackOfGeneralRelation %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend ExprIntrp_StackNodeOfStackOfGeneralRelation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ExprIntrp_StackNodeOfStackOfGeneralRelation {
-	Handle_ExprIntrp_StackNodeOfStackOfGeneralRelation GetHandle() {
-	return *(Handle_ExprIntrp_StackNodeOfStackOfGeneralRelation*) &$self;
-	}
-};
 
 %nodefaultctor Handle_ExprIntrp_StackNodeOfStackOfGeneralRelation;
 class Handle_ExprIntrp_StackNodeOfStackOfGeneralRelation : public Handle_TCollection_MapNode {
@@ -1102,20 +920,6 @@ class Handle_ExprIntrp_StackNodeOfStackOfGeneralRelation : public Handle_TCollec
 %extend Handle_ExprIntrp_StackNodeOfStackOfGeneralRelation {
     ExprIntrp_StackNodeOfStackOfGeneralRelation* GetObject() {
     return (ExprIntrp_StackNodeOfStackOfGeneralRelation*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ExprIntrp_StackNodeOfStackOfGeneralRelation::~Handle_ExprIntrp_StackNodeOfStackOfGeneralRelation %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ExprIntrp_StackNodeOfStackOfGeneralRelation {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1137,25 +941,23 @@ class ExprIntrp_StackNodeOfStackOfNames : public TCollection_MapNode {
 };
 
 
-%feature("shadow") ExprIntrp_StackNodeOfStackOfNames::~ExprIntrp_StackNodeOfStackOfNames %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ExprIntrp_StackNodeOfStackOfNames {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ExprIntrp_StackNodeOfStackOfNames(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ExprIntrp_StackNodeOfStackOfNames {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ExprIntrp_StackNodeOfStackOfNames {
-	Handle_ExprIntrp_StackNodeOfStackOfNames GetHandle() {
-	return *(Handle_ExprIntrp_StackNodeOfStackOfNames*) &$self;
-	}
-};
+%pythonappend Handle_ExprIntrp_StackNodeOfStackOfNames::Handle_ExprIntrp_StackNodeOfStackOfNames %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ExprIntrp_StackNodeOfStackOfNames;
 class Handle_ExprIntrp_StackNodeOfStackOfNames : public Handle_TCollection_MapNode {
@@ -1173,20 +975,6 @@ class Handle_ExprIntrp_StackNodeOfStackOfNames : public Handle_TCollection_MapNo
 %extend Handle_ExprIntrp_StackNodeOfStackOfNames {
     ExprIntrp_StackNodeOfStackOfNames* GetObject() {
     return (ExprIntrp_StackNodeOfStackOfNames*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ExprIntrp_StackNodeOfStackOfNames::~Handle_ExprIntrp_StackNodeOfStackOfNames %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ExprIntrp_StackNodeOfStackOfNames {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1220,7 +1008,7 @@ class ExprIntrp_StackOfGeneralExpression {
 		%feature("compactdefaultargs") Top;
 		%feature("autodoc", "	:rtype: Handle_Expr_GeneralExpression
 ") Top;
-		const Handle_Expr_GeneralExpression & Top ();
+		Handle_Expr_GeneralExpression Top ();
 		%feature("compactdefaultargs") Push;
 		%feature("autodoc", "	:param I:
 	:type I: Handle_Expr_GeneralExpression &
@@ -1238,24 +1026,10 @@ class ExprIntrp_StackOfGeneralExpression {
 		%feature("compactdefaultargs") ChangeTop;
 		%feature("autodoc", "	:rtype: Handle_Expr_GeneralExpression
 ") ChangeTop;
-		Handle_Expr_GeneralExpression & ChangeTop ();
+		Handle_Expr_GeneralExpression ChangeTop ();
 };
 
 
-%feature("shadow") ExprIntrp_StackOfGeneralExpression::~ExprIntrp_StackOfGeneralExpression %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ExprIntrp_StackOfGeneralExpression {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ExprIntrp_StackOfGeneralFunction;
 class ExprIntrp_StackOfGeneralFunction {
 	public:
@@ -1286,7 +1060,7 @@ class ExprIntrp_StackOfGeneralFunction {
 		%feature("compactdefaultargs") Top;
 		%feature("autodoc", "	:rtype: Handle_Expr_GeneralFunction
 ") Top;
-		const Handle_Expr_GeneralFunction & Top ();
+		Handle_Expr_GeneralFunction Top ();
 		%feature("compactdefaultargs") Push;
 		%feature("autodoc", "	:param I:
 	:type I: Handle_Expr_GeneralFunction &
@@ -1304,24 +1078,10 @@ class ExprIntrp_StackOfGeneralFunction {
 		%feature("compactdefaultargs") ChangeTop;
 		%feature("autodoc", "	:rtype: Handle_Expr_GeneralFunction
 ") ChangeTop;
-		Handle_Expr_GeneralFunction & ChangeTop ();
+		Handle_Expr_GeneralFunction ChangeTop ();
 };
 
 
-%feature("shadow") ExprIntrp_StackOfGeneralFunction::~ExprIntrp_StackOfGeneralFunction %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ExprIntrp_StackOfGeneralFunction {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ExprIntrp_StackOfGeneralRelation;
 class ExprIntrp_StackOfGeneralRelation {
 	public:
@@ -1352,7 +1112,7 @@ class ExprIntrp_StackOfGeneralRelation {
 		%feature("compactdefaultargs") Top;
 		%feature("autodoc", "	:rtype: Handle_Expr_GeneralRelation
 ") Top;
-		const Handle_Expr_GeneralRelation & Top ();
+		Handle_Expr_GeneralRelation Top ();
 		%feature("compactdefaultargs") Push;
 		%feature("autodoc", "	:param I:
 	:type I: Handle_Expr_GeneralRelation &
@@ -1370,24 +1130,10 @@ class ExprIntrp_StackOfGeneralRelation {
 		%feature("compactdefaultargs") ChangeTop;
 		%feature("autodoc", "	:rtype: Handle_Expr_GeneralRelation
 ") ChangeTop;
-		Handle_Expr_GeneralRelation & ChangeTop ();
+		Handle_Expr_GeneralRelation ChangeTop ();
 };
 
 
-%feature("shadow") ExprIntrp_StackOfGeneralRelation::~ExprIntrp_StackOfGeneralRelation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ExprIntrp_StackOfGeneralRelation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ExprIntrp_StackOfNames;
 class ExprIntrp_StackOfNames {
 	public:
@@ -1440,20 +1186,6 @@ class ExprIntrp_StackOfNames {
 };
 
 
-%feature("shadow") ExprIntrp_StackOfNames::~ExprIntrp_StackOfNames %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ExprIntrp_StackOfNames {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ExprIntrp_GenExp;
 class ExprIntrp_GenExp : public ExprIntrp_Generator {
 	public:
@@ -1484,25 +1216,23 @@ class ExprIntrp_GenExp : public ExprIntrp_Generator {
 };
 
 
-%feature("shadow") ExprIntrp_GenExp::~ExprIntrp_GenExp %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ExprIntrp_GenExp {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ExprIntrp_GenExp(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ExprIntrp_GenExp {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ExprIntrp_GenExp {
-	Handle_ExprIntrp_GenExp GetHandle() {
-	return *(Handle_ExprIntrp_GenExp*) &$self;
-	}
-};
+%pythonappend Handle_ExprIntrp_GenExp::Handle_ExprIntrp_GenExp %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ExprIntrp_GenExp;
 class Handle_ExprIntrp_GenExp : public Handle_ExprIntrp_Generator {
@@ -1520,20 +1250,6 @@ class Handle_ExprIntrp_GenExp : public Handle_ExprIntrp_Generator {
 %extend Handle_ExprIntrp_GenExp {
     ExprIntrp_GenExp* GetObject() {
     return (ExprIntrp_GenExp*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ExprIntrp_GenExp::~Handle_ExprIntrp_GenExp %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ExprIntrp_GenExp {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1557,25 +1273,23 @@ class ExprIntrp_GenFct : public ExprIntrp_Generator {
 };
 
 
-%feature("shadow") ExprIntrp_GenFct::~ExprIntrp_GenFct %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ExprIntrp_GenFct {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ExprIntrp_GenFct(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ExprIntrp_GenFct {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ExprIntrp_GenFct {
-	Handle_ExprIntrp_GenFct GetHandle() {
-	return *(Handle_ExprIntrp_GenFct*) &$self;
-	}
-};
+%pythonappend Handle_ExprIntrp_GenFct::Handle_ExprIntrp_GenFct %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ExprIntrp_GenFct;
 class Handle_ExprIntrp_GenFct : public Handle_ExprIntrp_Generator {
@@ -1593,20 +1307,6 @@ class Handle_ExprIntrp_GenFct : public Handle_ExprIntrp_Generator {
 %extend Handle_ExprIntrp_GenFct {
     ExprIntrp_GenFct* GetObject() {
     return (ExprIntrp_GenFct*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ExprIntrp_GenFct::~Handle_ExprIntrp_GenFct %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ExprIntrp_GenFct {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1640,25 +1340,23 @@ class ExprIntrp_GenRel : public ExprIntrp_Generator {
 };
 
 
-%feature("shadow") ExprIntrp_GenRel::~ExprIntrp_GenRel %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ExprIntrp_GenRel {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ExprIntrp_GenRel(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ExprIntrp_GenRel {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ExprIntrp_GenRel {
-	Handle_ExprIntrp_GenRel GetHandle() {
-	return *(Handle_ExprIntrp_GenRel*) &$self;
-	}
-};
+%pythonappend Handle_ExprIntrp_GenRel::Handle_ExprIntrp_GenRel %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ExprIntrp_GenRel;
 class Handle_ExprIntrp_GenRel : public Handle_ExprIntrp_Generator {
@@ -1676,20 +1374,6 @@ class Handle_ExprIntrp_GenRel : public Handle_ExprIntrp_Generator {
 %extend Handle_ExprIntrp_GenRel {
     ExprIntrp_GenRel* GetObject() {
     return (ExprIntrp_GenRel*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ExprIntrp_GenRel::~Handle_ExprIntrp_GenRel %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ExprIntrp_GenRel {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include PrsMgr_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 typedef PrsMgr_Presentation3d * PrsMgr_Presentation3dPointer;
@@ -82,20 +94,6 @@ class PrsMgr_ModedPresentation {
 };
 
 
-%feature("shadow") PrsMgr_ModedPresentation::~PrsMgr_ModedPresentation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend PrsMgr_ModedPresentation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor PrsMgr_PresentableObject;
 class PrsMgr_PresentableObject : public MMgt_TShared {
 	public:
@@ -242,25 +240,23 @@ class PrsMgr_PresentableObject : public MMgt_TShared {
 };
 
 
-%feature("shadow") PrsMgr_PresentableObject::~PrsMgr_PresentableObject %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend PrsMgr_PresentableObject {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_PrsMgr_PresentableObject(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend PrsMgr_PresentableObject {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend PrsMgr_PresentableObject {
-	Handle_PrsMgr_PresentableObject GetHandle() {
-	return *(Handle_PrsMgr_PresentableObject*) &$self;
-	}
-};
+%pythonappend Handle_PrsMgr_PresentableObject::Handle_PrsMgr_PresentableObject %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_PrsMgr_PresentableObject;
 class Handle_PrsMgr_PresentableObject : public Handle_MMgt_TShared {
@@ -278,20 +274,6 @@ class Handle_PrsMgr_PresentableObject : public Handle_MMgt_TShared {
 %extend Handle_PrsMgr_PresentableObject {
     PrsMgr_PresentableObject* GetObject() {
     return (PrsMgr_PresentableObject*)$self->Access();
-    }
-};
-%feature("shadow") Handle_PrsMgr_PresentableObject::~Handle_PrsMgr_PresentableObject %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_PrsMgr_PresentableObject {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -315,7 +297,7 @@ class PrsMgr_Presentation : public MMgt_TShared {
 
 	:rtype: Handle_PrsMgr_PresentationManager
 ") PresentationManager;
-		const Handle_PrsMgr_PresentationManager & PresentationManager ();
+		Handle_PrsMgr_PresentationManager PresentationManager ();
 		%feature("compactdefaultargs") SetUpdateStatus;
 		%feature("autodoc", "	:param aStat:
 	:type aStat: bool
@@ -329,25 +311,23 @@ class PrsMgr_Presentation : public MMgt_TShared {
 };
 
 
-%feature("shadow") PrsMgr_Presentation::~PrsMgr_Presentation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend PrsMgr_Presentation {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_PrsMgr_Presentation(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend PrsMgr_Presentation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend PrsMgr_Presentation {
-	Handle_PrsMgr_Presentation GetHandle() {
-	return *(Handle_PrsMgr_Presentation*) &$self;
-	}
-};
+%pythonappend Handle_PrsMgr_Presentation::Handle_PrsMgr_Presentation %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_PrsMgr_Presentation;
 class Handle_PrsMgr_Presentation : public Handle_MMgt_TShared {
@@ -365,20 +345,6 @@ class Handle_PrsMgr_Presentation : public Handle_MMgt_TShared {
 %extend Handle_PrsMgr_Presentation {
     PrsMgr_Presentation* GetObject() {
     return (PrsMgr_Presentation*)$self->Access();
-    }
-};
-%feature("shadow") Handle_PrsMgr_Presentation::~Handle_PrsMgr_Presentation %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_PrsMgr_Presentation {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -586,25 +552,23 @@ class PrsMgr_PresentationManager : public MMgt_TShared {
 };
 
 
-%feature("shadow") PrsMgr_PresentationManager::~PrsMgr_PresentationManager %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend PrsMgr_PresentationManager {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_PrsMgr_PresentationManager(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend PrsMgr_PresentationManager {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend PrsMgr_PresentationManager {
-	Handle_PrsMgr_PresentationManager GetHandle() {
-	return *(Handle_PrsMgr_PresentationManager*) &$self;
-	}
-};
+%pythonappend Handle_PrsMgr_PresentationManager::Handle_PrsMgr_PresentationManager %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_PrsMgr_PresentationManager;
 class Handle_PrsMgr_PresentationManager : public Handle_MMgt_TShared {
@@ -622,20 +586,6 @@ class Handle_PrsMgr_PresentationManager : public Handle_MMgt_TShared {
 %extend Handle_PrsMgr_PresentationManager {
     PrsMgr_PresentationManager* GetObject() {
     return (PrsMgr_PresentationManager*)$self->Access();
-    }
-};
-%feature("shadow") Handle_PrsMgr_PresentationManager::~Handle_PrsMgr_PresentationManager %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_PrsMgr_PresentationManager {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -771,20 +721,6 @@ class PrsMgr_Presentations : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") PrsMgr_Presentations::~PrsMgr_Presentations %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend PrsMgr_Presentations {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor PrsMgr_Prs;
 class PrsMgr_Prs : public Prs3d_Presentation {
 	public:
@@ -843,25 +779,23 @@ class PrsMgr_Prs : public Prs3d_Presentation {
 };
 
 
-%feature("shadow") PrsMgr_Prs::~PrsMgr_Prs %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend PrsMgr_Prs {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_PrsMgr_Prs(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend PrsMgr_Prs {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend PrsMgr_Prs {
-	Handle_PrsMgr_Prs GetHandle() {
-	return *(Handle_PrsMgr_Prs*) &$self;
-	}
-};
+%pythonappend Handle_PrsMgr_Prs::Handle_PrsMgr_Prs %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_PrsMgr_Prs;
 class Handle_PrsMgr_Prs : public Handle_Prs3d_Presentation {
@@ -879,20 +813,6 @@ class Handle_PrsMgr_Prs : public Handle_Prs3d_Presentation {
 %extend Handle_PrsMgr_Prs {
     PrsMgr_Prs* GetObject() {
     return (PrsMgr_Prs*)$self->Access();
-    }
-};
-%feature("shadow") Handle_PrsMgr_Prs::~Handle_PrsMgr_Prs %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_PrsMgr_Prs {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -916,25 +836,23 @@ class PrsMgr_SequenceNodeOfPresentations : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") PrsMgr_SequenceNodeOfPresentations::~PrsMgr_SequenceNodeOfPresentations %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend PrsMgr_SequenceNodeOfPresentations {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_PrsMgr_SequenceNodeOfPresentations(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend PrsMgr_SequenceNodeOfPresentations {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend PrsMgr_SequenceNodeOfPresentations {
-	Handle_PrsMgr_SequenceNodeOfPresentations GetHandle() {
-	return *(Handle_PrsMgr_SequenceNodeOfPresentations*) &$self;
-	}
-};
+%pythonappend Handle_PrsMgr_SequenceNodeOfPresentations::Handle_PrsMgr_SequenceNodeOfPresentations %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_PrsMgr_SequenceNodeOfPresentations;
 class Handle_PrsMgr_SequenceNodeOfPresentations : public Handle_TCollection_SeqNode {
@@ -952,20 +870,6 @@ class Handle_PrsMgr_SequenceNodeOfPresentations : public Handle_TCollection_SeqN
 %extend Handle_PrsMgr_SequenceNodeOfPresentations {
     PrsMgr_SequenceNodeOfPresentations* GetObject() {
     return (PrsMgr_SequenceNodeOfPresentations*)$self->Access();
-    }
-};
-%feature("shadow") Handle_PrsMgr_SequenceNodeOfPresentations::~Handle_PrsMgr_SequenceNodeOfPresentations %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_PrsMgr_SequenceNodeOfPresentations {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -989,25 +893,23 @@ class PrsMgr_Presentation3d : public PrsMgr_Presentation {
 };
 
 
-%feature("shadow") PrsMgr_Presentation3d::~PrsMgr_Presentation3d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend PrsMgr_Presentation3d {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_PrsMgr_Presentation3d(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend PrsMgr_Presentation3d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend PrsMgr_Presentation3d {
-	Handle_PrsMgr_Presentation3d GetHandle() {
-	return *(Handle_PrsMgr_Presentation3d*) &$self;
-	}
-};
+%pythonappend Handle_PrsMgr_Presentation3d::Handle_PrsMgr_Presentation3d %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_PrsMgr_Presentation3d;
 class Handle_PrsMgr_Presentation3d : public Handle_PrsMgr_Presentation {
@@ -1025,20 +927,6 @@ class Handle_PrsMgr_Presentation3d : public Handle_PrsMgr_Presentation {
 %extend Handle_PrsMgr_Presentation3d {
     PrsMgr_Presentation3d* GetObject() {
     return (PrsMgr_Presentation3d*)$self->Access();
-    }
-};
-%feature("shadow") Handle_PrsMgr_Presentation3d::~Handle_PrsMgr_Presentation3d %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_PrsMgr_Presentation3d {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1172,7 +1060,7 @@ class PrsMgr_PresentationManager3d : public PrsMgr_PresentationManager {
 
 	:rtype: Handle_Graphic3d_StructureManager
 ") StructureManager;
-		const Handle_Graphic3d_StructureManager & StructureManager ();
+		Handle_Graphic3d_StructureManager StructureManager ();
 		%feature("compactdefaultargs") SetShadingAspect;
 		%feature("autodoc", "	* this method will change the color and the aspect of the presentations containg shaded structures.
 
@@ -1210,25 +1098,23 @@ class PrsMgr_PresentationManager3d : public PrsMgr_PresentationManager {
 };
 
 
-%feature("shadow") PrsMgr_PresentationManager3d::~PrsMgr_PresentationManager3d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend PrsMgr_PresentationManager3d {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_PrsMgr_PresentationManager3d(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend PrsMgr_PresentationManager3d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend PrsMgr_PresentationManager3d {
-	Handle_PrsMgr_PresentationManager3d GetHandle() {
-	return *(Handle_PrsMgr_PresentationManager3d*) &$self;
-	}
-};
+%pythonappend Handle_PrsMgr_PresentationManager3d::Handle_PrsMgr_PresentationManager3d %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_PrsMgr_PresentationManager3d;
 class Handle_PrsMgr_PresentationManager3d : public Handle_PrsMgr_PresentationManager {
@@ -1246,20 +1132,6 @@ class Handle_PrsMgr_PresentationManager3d : public Handle_PrsMgr_PresentationMan
 %extend Handle_PrsMgr_PresentationManager3d {
     PrsMgr_PresentationManager3d* GetObject() {
     return (PrsMgr_PresentationManager3d*)$self->Access();
-    }
-};
-%feature("shadow") Handle_PrsMgr_PresentationManager3d::~Handle_PrsMgr_PresentationManager3d %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_PrsMgr_PresentationManager3d {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

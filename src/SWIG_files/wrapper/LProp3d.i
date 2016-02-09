@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include LProp3d_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -134,20 +146,6 @@ class LProp3d_CLProps {
 };
 
 
-%feature("shadow") LProp3d_CLProps::~LProp3d_CLProps %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend LProp3d_CLProps {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class LProp3d_CurveTool {
 	public:
 		%feature("compactdefaultargs") Value;
@@ -237,20 +235,6 @@ class LProp3d_CurveTool {
 };
 
 
-%feature("shadow") LProp3d_CurveTool::~LProp3d_CurveTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend LProp3d_CurveTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor LProp3d_SLProps;
 class LProp3d_SLProps {
 	public:
@@ -387,20 +371,6 @@ class LProp3d_SLProps {
 };
 
 
-%feature("shadow") LProp3d_SLProps::~LProp3d_SLProps %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend LProp3d_SLProps {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class LProp3d_SurfaceTool {
 	public:
 		%feature("compactdefaultargs") Value;
@@ -500,17 +470,3 @@ class LProp3d_SurfaceTool {
 };
 
 
-%feature("shadow") LProp3d_SurfaceTool::~LProp3d_SurfaceTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend LProp3d_SurfaceTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include CSLib_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -202,20 +214,6 @@ class CSLib {
 };
 
 
-%feature("shadow") CSLib::~CSLib %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend CSLib {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor CSLib_Class2d;
 class CSLib_Class2d {
 	public:
@@ -286,20 +284,6 @@ class CSLib_Class2d {
 };
 
 
-%feature("shadow") CSLib_Class2d::~CSLib_Class2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend CSLib_Class2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor CSLib_NormalPolyDef;
 class CSLib_NormalPolyDef : public math_FunctionWithDerivative {
 	public:
@@ -346,17 +330,3 @@ class CSLib_NormalPolyDef : public math_FunctionWithDerivative {
 };
 
 
-%feature("shadow") CSLib_NormalPolyDef::~CSLib_NormalPolyDef %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend CSLib_NormalPolyDef {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include Geom2dConvert_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -180,20 +192,6 @@ class Geom2dConvert {
 };
 
 
-%feature("shadow") Geom2dConvert::~Geom2dConvert %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dConvert {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dConvert_ApproxCurve;
 class Geom2dConvert_ApproxCurve {
 	public:
@@ -248,20 +246,6 @@ class Geom2dConvert_ApproxCurve {
         };
 
 
-%feature("shadow") Geom2dConvert_ApproxCurve::~Geom2dConvert_ApproxCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dConvert_ApproxCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dConvert_BSplineCurveKnotSplitting;
 class Geom2dConvert_BSplineCurveKnotSplitting {
 	public:
@@ -300,20 +284,6 @@ class Geom2dConvert_BSplineCurveKnotSplitting {
 };
 
 
-%feature("shadow") Geom2dConvert_BSplineCurveKnotSplitting::~Geom2dConvert_BSplineCurveKnotSplitting %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dConvert_BSplineCurveKnotSplitting {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dConvert_BSplineCurveToBezierCurve;
 class Geom2dConvert_BSplineCurveToBezierCurve {
 	public:
@@ -372,20 +342,6 @@ class Geom2dConvert_BSplineCurveToBezierCurve {
 };
 
 
-%feature("shadow") Geom2dConvert_BSplineCurveToBezierCurve::~Geom2dConvert_BSplineCurveToBezierCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dConvert_BSplineCurveToBezierCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Geom2dConvert_CompCurveToBSplineCurve;
 class Geom2dConvert_CompCurveToBSplineCurve {
 	public:
@@ -432,17 +388,3 @@ class Geom2dConvert_CompCurveToBSplineCurve {
 };
 
 
-%feature("shadow") Geom2dConvert_CompCurveToBSplineCurve::~Geom2dConvert_CompCurveToBSplineCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Geom2dConvert_CompCurveToBSplineCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

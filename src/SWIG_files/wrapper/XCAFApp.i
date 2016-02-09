@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include XCAFApp_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -76,25 +88,23 @@ class XCAFApp_Application : public TDocStd_Application {
 };
 
 
-%feature("shadow") XCAFApp_Application::~XCAFApp_Application %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend XCAFApp_Application {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_XCAFApp_Application(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend XCAFApp_Application {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend XCAFApp_Application {
-	Handle_XCAFApp_Application GetHandle() {
-	return *(Handle_XCAFApp_Application*) &$self;
-	}
-};
+%pythonappend Handle_XCAFApp_Application::Handle_XCAFApp_Application %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_XCAFApp_Application;
 class Handle_XCAFApp_Application : public Handle_TDocStd_Application {
@@ -112,20 +122,6 @@ class Handle_XCAFApp_Application : public Handle_TDocStd_Application {
 %extend Handle_XCAFApp_Application {
     XCAFApp_Application* GetObject() {
     return (XCAFApp_Application*)$self->Access();
-    }
-};
-%feature("shadow") Handle_XCAFApp_Application::~Handle_XCAFApp_Application %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_XCAFApp_Application {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

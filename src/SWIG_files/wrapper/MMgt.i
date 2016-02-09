@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include MMgt_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -54,25 +66,23 @@ class MMgt_TShared : public Standard_Transient {
 };
 
 
-%feature("shadow") MMgt_TShared::~MMgt_TShared %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend MMgt_TShared {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_MMgt_TShared(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend MMgt_TShared {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend MMgt_TShared {
-	Handle_MMgt_TShared GetHandle() {
-	return *(Handle_MMgt_TShared*) &$self;
-	}
-};
+%pythonappend Handle_MMgt_TShared::Handle_MMgt_TShared %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_MMgt_TShared;
 class Handle_MMgt_TShared : public Handle_Standard_Transient {
@@ -90,20 +100,6 @@ class Handle_MMgt_TShared : public Handle_Standard_Transient {
 %extend Handle_MMgt_TShared {
     MMgt_TShared* GetObject() {
     return (MMgt_TShared*)$self->Access();
-    }
-};
-%feature("shadow") Handle_MMgt_TShared::~Handle_MMgt_TShared %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_MMgt_TShared {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include HatchGen_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -167,20 +179,6 @@ class HatchGen_Domain {
 };
 
 
-%feature("shadow") HatchGen_Domain::~HatchGen_Domain %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HatchGen_Domain {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HatchGen_Domains;
 class HatchGen_Domains : public TCollection_BaseSequence {
 	public:
@@ -313,20 +311,6 @@ class HatchGen_Domains : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") HatchGen_Domains::~HatchGen_Domains %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HatchGen_Domains {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HatchGen_IntersectionPoint;
 class HatchGen_IntersectionPoint {
 	public:
@@ -439,20 +423,6 @@ class HatchGen_IntersectionPoint {
 };
 
 
-%feature("shadow") HatchGen_IntersectionPoint::~HatchGen_IntersectionPoint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HatchGen_IntersectionPoint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HatchGen_PointsOnElement;
 class HatchGen_PointsOnElement : public TCollection_BaseSequence {
 	public:
@@ -585,20 +555,6 @@ class HatchGen_PointsOnElement : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") HatchGen_PointsOnElement::~HatchGen_PointsOnElement %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HatchGen_PointsOnElement {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HatchGen_PointsOnHatching;
 class HatchGen_PointsOnHatching : public TCollection_BaseSequence {
 	public:
@@ -731,20 +687,6 @@ class HatchGen_PointsOnHatching : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") HatchGen_PointsOnHatching::~HatchGen_PointsOnHatching %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HatchGen_PointsOnHatching {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HatchGen_SequenceNodeOfDomains;
 class HatchGen_SequenceNodeOfDomains : public TCollection_SeqNode {
 	public:
@@ -765,25 +707,23 @@ class HatchGen_SequenceNodeOfDomains : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") HatchGen_SequenceNodeOfDomains::~HatchGen_SequenceNodeOfDomains %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HatchGen_SequenceNodeOfDomains {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HatchGen_SequenceNodeOfDomains(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HatchGen_SequenceNodeOfDomains {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HatchGen_SequenceNodeOfDomains {
-	Handle_HatchGen_SequenceNodeOfDomains GetHandle() {
-	return *(Handle_HatchGen_SequenceNodeOfDomains*) &$self;
-	}
-};
+%pythonappend Handle_HatchGen_SequenceNodeOfDomains::Handle_HatchGen_SequenceNodeOfDomains %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HatchGen_SequenceNodeOfDomains;
 class Handle_HatchGen_SequenceNodeOfDomains : public Handle_TCollection_SeqNode {
@@ -801,20 +741,6 @@ class Handle_HatchGen_SequenceNodeOfDomains : public Handle_TCollection_SeqNode 
 %extend Handle_HatchGen_SequenceNodeOfDomains {
     HatchGen_SequenceNodeOfDomains* GetObject() {
     return (HatchGen_SequenceNodeOfDomains*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HatchGen_SequenceNodeOfDomains::~Handle_HatchGen_SequenceNodeOfDomains %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HatchGen_SequenceNodeOfDomains {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -838,25 +764,23 @@ class HatchGen_SequenceNodeOfPointsOnElement : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") HatchGen_SequenceNodeOfPointsOnElement::~HatchGen_SequenceNodeOfPointsOnElement %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HatchGen_SequenceNodeOfPointsOnElement {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HatchGen_SequenceNodeOfPointsOnElement(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HatchGen_SequenceNodeOfPointsOnElement {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HatchGen_SequenceNodeOfPointsOnElement {
-	Handle_HatchGen_SequenceNodeOfPointsOnElement GetHandle() {
-	return *(Handle_HatchGen_SequenceNodeOfPointsOnElement*) &$self;
-	}
-};
+%pythonappend Handle_HatchGen_SequenceNodeOfPointsOnElement::Handle_HatchGen_SequenceNodeOfPointsOnElement %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HatchGen_SequenceNodeOfPointsOnElement;
 class Handle_HatchGen_SequenceNodeOfPointsOnElement : public Handle_TCollection_SeqNode {
@@ -874,20 +798,6 @@ class Handle_HatchGen_SequenceNodeOfPointsOnElement : public Handle_TCollection_
 %extend Handle_HatchGen_SequenceNodeOfPointsOnElement {
     HatchGen_SequenceNodeOfPointsOnElement* GetObject() {
     return (HatchGen_SequenceNodeOfPointsOnElement*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HatchGen_SequenceNodeOfPointsOnElement::~Handle_HatchGen_SequenceNodeOfPointsOnElement %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HatchGen_SequenceNodeOfPointsOnElement {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -911,25 +821,23 @@ class HatchGen_SequenceNodeOfPointsOnHatching : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") HatchGen_SequenceNodeOfPointsOnHatching::~HatchGen_SequenceNodeOfPointsOnHatching %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend HatchGen_SequenceNodeOfPointsOnHatching {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_HatchGen_SequenceNodeOfPointsOnHatching(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend HatchGen_SequenceNodeOfPointsOnHatching {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend HatchGen_SequenceNodeOfPointsOnHatching {
-	Handle_HatchGen_SequenceNodeOfPointsOnHatching GetHandle() {
-	return *(Handle_HatchGen_SequenceNodeOfPointsOnHatching*) &$self;
-	}
-};
+%pythonappend Handle_HatchGen_SequenceNodeOfPointsOnHatching::Handle_HatchGen_SequenceNodeOfPointsOnHatching %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_HatchGen_SequenceNodeOfPointsOnHatching;
 class Handle_HatchGen_SequenceNodeOfPointsOnHatching : public Handle_TCollection_SeqNode {
@@ -947,20 +855,6 @@ class Handle_HatchGen_SequenceNodeOfPointsOnHatching : public Handle_TCollection
 %extend Handle_HatchGen_SequenceNodeOfPointsOnHatching {
     HatchGen_SequenceNodeOfPointsOnHatching* GetObject() {
     return (HatchGen_SequenceNodeOfPointsOnHatching*)$self->Access();
-    }
-};
-%feature("shadow") Handle_HatchGen_SequenceNodeOfPointsOnHatching::~Handle_HatchGen_SequenceNodeOfPointsOnHatching %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_HatchGen_SequenceNodeOfPointsOnHatching {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1034,20 +928,6 @@ class HatchGen_PointOnElement : public HatchGen_IntersectionPoint {
 };
 
 
-%feature("shadow") HatchGen_PointOnElement::~HatchGen_PointOnElement %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HatchGen_PointOnElement {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor HatchGen_PointOnHatching;
 class HatchGen_PointOnHatching : public HatchGen_IntersectionPoint {
 	public:
@@ -1158,17 +1038,3 @@ class HatchGen_PointOnHatching : public HatchGen_IntersectionPoint {
 };
 
 
-%feature("shadow") HatchGen_PointOnHatching::~HatchGen_PointOnHatching %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend HatchGen_PointOnHatching {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

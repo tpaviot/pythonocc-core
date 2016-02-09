@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include BRepMesh_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 typedef NCollection_Vector <BRepMesh_Vertex> BRepMesh_VectorOfVertex;
@@ -97,20 +109,6 @@ class BRepMesh {
 };
 
 
-%feature("shadow") BRepMesh::~BRepMesh %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_Array1OfBiPoint;
 class BRepMesh_Array1OfBiPoint {
 	public:
@@ -193,20 +191,6 @@ class BRepMesh_Array1OfBiPoint {
 };
 
 
-%feature("shadow") BRepMesh_Array1OfBiPoint::~BRepMesh_Array1OfBiPoint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_Array1OfBiPoint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_Array1OfVertexOfDelaun;
 class BRepMesh_Array1OfVertexOfDelaun {
 	public:
@@ -289,20 +273,6 @@ class BRepMesh_Array1OfVertexOfDelaun {
 };
 
 
-%feature("shadow") BRepMesh_Array1OfVertexOfDelaun::~BRepMesh_Array1OfVertexOfDelaun %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_Array1OfVertexOfDelaun {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_BiPoint;
 class BRepMesh_BiPoint {
 	public:
@@ -333,20 +303,6 @@ class BRepMesh_BiPoint {
 };
 
 
-%feature("shadow") BRepMesh_BiPoint::~BRepMesh_BiPoint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_BiPoint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_Circ;
 class BRepMesh_Circ {
 	public:
@@ -385,20 +341,6 @@ class BRepMesh_Circ {
 };
 
 
-%feature("shadow") BRepMesh_Circ::~BRepMesh_Circ %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_Circ {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_CircleInspector;
 class BRepMesh_CircleInspector : public NCollection_CellFilter_InspectorXY {
 	public:
@@ -449,20 +391,6 @@ class BRepMesh_CircleInspector : public NCollection_CellFilter_InspectorXY {
 };
 
 
-%feature("shadow") BRepMesh_CircleInspector::~BRepMesh_CircleInspector %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_CircleInspector {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_CircleTool;
 class BRepMesh_CircleTool {
 	public:
@@ -569,20 +497,6 @@ class BRepMesh_CircleTool {
 };
 
 
-%feature("shadow") BRepMesh_CircleTool::~BRepMesh_CircleTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_CircleTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_Classifier;
 class BRepMesh_Classifier {
 	public:
@@ -625,20 +539,6 @@ class BRepMesh_Classifier {
 };
 
 
-%feature("shadow") BRepMesh_Classifier::~BRepMesh_Classifier %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_Classifier {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_ComparatorOfIndexedVertexOfDelaun;
 class BRepMesh_ComparatorOfIndexedVertexOfDelaun {
 	public:
@@ -685,20 +585,6 @@ class BRepMesh_ComparatorOfIndexedVertexOfDelaun {
 };
 
 
-%feature("shadow") BRepMesh_ComparatorOfIndexedVertexOfDelaun::~BRepMesh_ComparatorOfIndexedVertexOfDelaun %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_ComparatorOfIndexedVertexOfDelaun {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_ComparatorOfVertexOfDelaun;
 class BRepMesh_ComparatorOfVertexOfDelaun {
 	public:
@@ -741,20 +627,6 @@ class BRepMesh_ComparatorOfVertexOfDelaun {
 };
 
 
-%feature("shadow") BRepMesh_ComparatorOfVertexOfDelaun::~BRepMesh_ComparatorOfVertexOfDelaun %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_ComparatorOfVertexOfDelaun {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_DataMapIteratorOfDataMapOfFaceAttribute;
 class BRepMesh_DataMapIteratorOfDataMapOfFaceAttribute : public TCollection_BasicMapIterator {
 	public:
@@ -781,24 +653,10 @@ class BRepMesh_DataMapIteratorOfDataMapOfFaceAttribute : public TCollection_Basi
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_BRepMesh_FaceAttribute
 ") Value;
-		const Handle_BRepMesh_FaceAttribute & Value ();
+		Handle_BRepMesh_FaceAttribute Value ();
 };
 
 
-%feature("shadow") BRepMesh_DataMapIteratorOfDataMapOfFaceAttribute::~BRepMesh_DataMapIteratorOfDataMapOfFaceAttribute %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_DataMapIteratorOfDataMapOfFaceAttribute {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfInteger;
 class BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfInteger : public TCollection_BasicMapIterator {
 	public:
@@ -829,20 +687,6 @@ class BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfInteger : public TCollecti
 };
 
 
-%feature("shadow") BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfInteger::~BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfXY;
 class BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfXY : public TCollection_BasicMapIterator {
 	public:
@@ -873,20 +717,6 @@ class BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfXY : public TCollection_Ba
 };
 
 
-%feature("shadow") BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfXY::~BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfXY %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfXY {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_DataMapIteratorOfDataMapOfIntegerPnt;
 class BRepMesh_DataMapIteratorOfDataMapOfIntegerPnt : public TCollection_BasicMapIterator {
 	public:
@@ -917,20 +747,6 @@ class BRepMesh_DataMapIteratorOfDataMapOfIntegerPnt : public TCollection_BasicMa
 };
 
 
-%feature("shadow") BRepMesh_DataMapIteratorOfDataMapOfIntegerPnt::~BRepMesh_DataMapIteratorOfDataMapOfIntegerPnt %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_DataMapIteratorOfDataMapOfIntegerPnt {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_DataMapIteratorOfDataMapOfShapePairOfPolygon;
 class BRepMesh_DataMapIteratorOfDataMapOfShapePairOfPolygon : public TCollection_BasicMapIterator {
 	public:
@@ -961,20 +777,6 @@ class BRepMesh_DataMapIteratorOfDataMapOfShapePairOfPolygon : public TCollection
 };
 
 
-%feature("shadow") BRepMesh_DataMapIteratorOfDataMapOfShapePairOfPolygon::~BRepMesh_DataMapIteratorOfDataMapOfShapePairOfPolygon %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_DataMapIteratorOfDataMapOfShapePairOfPolygon {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_DataMapIteratorOfDataMapOfShapeReal;
 class BRepMesh_DataMapIteratorOfDataMapOfShapeReal : public TCollection_BasicMapIterator {
 	public:
@@ -1005,20 +807,6 @@ class BRepMesh_DataMapIteratorOfDataMapOfShapeReal : public TCollection_BasicMap
 };
 
 
-%feature("shadow") BRepMesh_DataMapIteratorOfDataMapOfShapeReal::~BRepMesh_DataMapIteratorOfDataMapOfShapeReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_DataMapIteratorOfDataMapOfShapeReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_DataMapIteratorOfDataMapOfVertexInteger;
 class BRepMesh_DataMapIteratorOfDataMapOfVertexInteger : public TCollection_BasicMapIterator {
 	public:
@@ -1049,20 +837,6 @@ class BRepMesh_DataMapIteratorOfDataMapOfVertexInteger : public TCollection_Basi
 };
 
 
-%feature("shadow") BRepMesh_DataMapIteratorOfDataMapOfVertexInteger::~BRepMesh_DataMapIteratorOfDataMapOfVertexInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_DataMapIteratorOfDataMapOfVertexInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_DataMapNodeOfDataMapOfFaceAttribute;
 class BRepMesh_DataMapNodeOfDataMapOfFaceAttribute : public TCollection_MapNode {
 	public:
@@ -1083,29 +857,27 @@ class BRepMesh_DataMapNodeOfDataMapOfFaceAttribute : public TCollection_MapNode 
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_BRepMesh_FaceAttribute
 ") Value;
-		Handle_BRepMesh_FaceAttribute & Value ();
+		Handle_BRepMesh_FaceAttribute Value ();
 };
 
 
-%feature("shadow") BRepMesh_DataMapNodeOfDataMapOfFaceAttribute::~BRepMesh_DataMapNodeOfDataMapOfFaceAttribute %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend BRepMesh_DataMapNodeOfDataMapOfFaceAttribute {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepMesh_DataMapNodeOfDataMapOfFaceAttribute(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_BRepMesh_DataMapNodeOfDataMapOfFaceAttribute::Handle_BRepMesh_DataMapNodeOfDataMapOfFaceAttribute %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend BRepMesh_DataMapNodeOfDataMapOfFaceAttribute {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepMesh_DataMapNodeOfDataMapOfFaceAttribute {
-	Handle_BRepMesh_DataMapNodeOfDataMapOfFaceAttribute GetHandle() {
-	return *(Handle_BRepMesh_DataMapNodeOfDataMapOfFaceAttribute*) &$self;
-	}
-};
 
 %nodefaultctor Handle_BRepMesh_DataMapNodeOfDataMapOfFaceAttribute;
 class Handle_BRepMesh_DataMapNodeOfDataMapOfFaceAttribute : public Handle_TCollection_MapNode {
@@ -1123,20 +895,6 @@ class Handle_BRepMesh_DataMapNodeOfDataMapOfFaceAttribute : public Handle_TColle
 %extend Handle_BRepMesh_DataMapNodeOfDataMapOfFaceAttribute {
     BRepMesh_DataMapNodeOfDataMapOfFaceAttribute* GetObject() {
     return (BRepMesh_DataMapNodeOfDataMapOfFaceAttribute*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepMesh_DataMapNodeOfDataMapOfFaceAttribute::~Handle_BRepMesh_DataMapNodeOfDataMapOfFaceAttribute %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepMesh_DataMapNodeOfDataMapOfFaceAttribute {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1173,25 +931,23 @@ class BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger : public TCollection_M
 };
 
 
-%feature("shadow") BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger::~BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger {
-	Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger GetHandle() {
-	return *(Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger*) &$self;
-	}
-};
+%pythonappend Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger::Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger;
 class Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger : public Handle_TCollection_MapNode {
@@ -1209,20 +965,6 @@ class Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger : public Handle
 %extend Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger {
     BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger* GetObject() {
     return (BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger::~Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1259,25 +1001,23 @@ class BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY : public TCollection_MapNod
 };
 
 
-%feature("shadow") BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY::~BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY {
-	Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY GetHandle() {
-	return *(Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY*) &$self;
-	}
-};
+%pythonappend Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY::Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY;
 class Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY : public Handle_TCollection_MapNode {
@@ -1295,20 +1035,6 @@ class Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY : public Handle_TCol
 %extend Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY {
     BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY* GetObject() {
     return (BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY::~Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1345,25 +1071,23 @@ class BRepMesh_DataMapNodeOfDataMapOfIntegerPnt : public TCollection_MapNode {
 };
 
 
-%feature("shadow") BRepMesh_DataMapNodeOfDataMapOfIntegerPnt::~BRepMesh_DataMapNodeOfDataMapOfIntegerPnt %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepMesh_DataMapNodeOfDataMapOfIntegerPnt {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerPnt(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepMesh_DataMapNodeOfDataMapOfIntegerPnt {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepMesh_DataMapNodeOfDataMapOfIntegerPnt {
-	Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerPnt GetHandle() {
-	return *(Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerPnt*) &$self;
-	}
-};
+%pythonappend Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerPnt::Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerPnt %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerPnt;
 class Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerPnt : public Handle_TCollection_MapNode {
@@ -1381,20 +1105,6 @@ class Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerPnt : public Handle_TCollecti
 %extend Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerPnt {
     BRepMesh_DataMapNodeOfDataMapOfIntegerPnt* GetObject() {
     return (BRepMesh_DataMapNodeOfDataMapOfIntegerPnt*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerPnt::~Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerPnt %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerPnt {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1422,25 +1132,23 @@ class BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon : public TCollection_Map
 };
 
 
-%feature("shadow") BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon::~BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon {
-	Handle_BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon GetHandle() {
-	return *(Handle_BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon*) &$self;
-	}
-};
+%pythonappend Handle_BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon::Handle_BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon;
 class Handle_BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon : public Handle_TCollection_MapNode {
@@ -1458,20 +1166,6 @@ class Handle_BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon : public Handle_T
 %extend Handle_BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon {
     BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon* GetObject() {
     return (BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon::~Handle_BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1508,25 +1202,23 @@ class BRepMesh_DataMapNodeOfDataMapOfShapeReal : public TCollection_MapNode {
             };
 
 
-%feature("shadow") BRepMesh_DataMapNodeOfDataMapOfShapeReal::~BRepMesh_DataMapNodeOfDataMapOfShapeReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepMesh_DataMapNodeOfDataMapOfShapeReal {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepMesh_DataMapNodeOfDataMapOfShapeReal(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepMesh_DataMapNodeOfDataMapOfShapeReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepMesh_DataMapNodeOfDataMapOfShapeReal {
-	Handle_BRepMesh_DataMapNodeOfDataMapOfShapeReal GetHandle() {
-	return *(Handle_BRepMesh_DataMapNodeOfDataMapOfShapeReal*) &$self;
-	}
-};
+%pythonappend Handle_BRepMesh_DataMapNodeOfDataMapOfShapeReal::Handle_BRepMesh_DataMapNodeOfDataMapOfShapeReal %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepMesh_DataMapNodeOfDataMapOfShapeReal;
 class Handle_BRepMesh_DataMapNodeOfDataMapOfShapeReal : public Handle_TCollection_MapNode {
@@ -1544,20 +1236,6 @@ class Handle_BRepMesh_DataMapNodeOfDataMapOfShapeReal : public Handle_TCollectio
 %extend Handle_BRepMesh_DataMapNodeOfDataMapOfShapeReal {
     BRepMesh_DataMapNodeOfDataMapOfShapeReal* GetObject() {
     return (BRepMesh_DataMapNodeOfDataMapOfShapeReal*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepMesh_DataMapNodeOfDataMapOfShapeReal::~Handle_BRepMesh_DataMapNodeOfDataMapOfShapeReal %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepMesh_DataMapNodeOfDataMapOfShapeReal {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1594,25 +1272,23 @@ class BRepMesh_DataMapNodeOfDataMapOfVertexInteger : public TCollection_MapNode 
             };
 
 
-%feature("shadow") BRepMesh_DataMapNodeOfDataMapOfVertexInteger::~BRepMesh_DataMapNodeOfDataMapOfVertexInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepMesh_DataMapNodeOfDataMapOfVertexInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepMesh_DataMapNodeOfDataMapOfVertexInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepMesh_DataMapNodeOfDataMapOfVertexInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepMesh_DataMapNodeOfDataMapOfVertexInteger {
-	Handle_BRepMesh_DataMapNodeOfDataMapOfVertexInteger GetHandle() {
-	return *(Handle_BRepMesh_DataMapNodeOfDataMapOfVertexInteger*) &$self;
-	}
-};
+%pythonappend Handle_BRepMesh_DataMapNodeOfDataMapOfVertexInteger::Handle_BRepMesh_DataMapNodeOfDataMapOfVertexInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepMesh_DataMapNodeOfDataMapOfVertexInteger;
 class Handle_BRepMesh_DataMapNodeOfDataMapOfVertexInteger : public Handle_TCollection_MapNode {
@@ -1630,20 +1306,6 @@ class Handle_BRepMesh_DataMapNodeOfDataMapOfVertexInteger : public Handle_TColle
 %extend Handle_BRepMesh_DataMapNodeOfDataMapOfVertexInteger {
     BRepMesh_DataMapNodeOfDataMapOfVertexInteger* GetObject() {
     return (BRepMesh_DataMapNodeOfDataMapOfVertexInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepMesh_DataMapNodeOfDataMapOfVertexInteger::~Handle_BRepMesh_DataMapNodeOfDataMapOfVertexInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepMesh_DataMapNodeOfDataMapOfVertexInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1703,13 +1365,13 @@ class BRepMesh_DataMapOfFaceAttribute : public TCollection_BasicMap {
 	:type K: TopoDS_Face &
 	:rtype: Handle_BRepMesh_FaceAttribute
 ") Find;
-		const Handle_BRepMesh_FaceAttribute & Find (const TopoDS_Face & K);
+		Handle_BRepMesh_FaceAttribute Find (const TopoDS_Face & K);
 		%feature("compactdefaultargs") ChangeFind;
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Face &
 	:rtype: Handle_BRepMesh_FaceAttribute
 ") ChangeFind;
-		Handle_BRepMesh_FaceAttribute & ChangeFind (const TopoDS_Face & K);
+		Handle_BRepMesh_FaceAttribute ChangeFind (const TopoDS_Face & K);
 		%feature("compactdefaultargs") Find1;
 		%feature("autodoc", "	:param K:
 	:type K: TopoDS_Face &
@@ -1725,20 +1387,6 @@ class BRepMesh_DataMapOfFaceAttribute : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") BRepMesh_DataMapOfFaceAttribute::~BRepMesh_DataMapOfFaceAttribute %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_DataMapOfFaceAttribute {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_DataMapOfIntegerListOfInteger;
 class BRepMesh_DataMapOfIntegerListOfInteger : public TCollection_BasicMap {
 	public:
@@ -1817,20 +1465,6 @@ class BRepMesh_DataMapOfIntegerListOfInteger : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") BRepMesh_DataMapOfIntegerListOfInteger::~BRepMesh_DataMapOfIntegerListOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_DataMapOfIntegerListOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_DataMapOfIntegerListOfXY;
 class BRepMesh_DataMapOfIntegerListOfXY : public TCollection_BasicMap {
 	public:
@@ -1909,20 +1543,6 @@ class BRepMesh_DataMapOfIntegerListOfXY : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") BRepMesh_DataMapOfIntegerListOfXY::~BRepMesh_DataMapOfIntegerListOfXY %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_DataMapOfIntegerListOfXY {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_DataMapOfIntegerPnt;
 class BRepMesh_DataMapOfIntegerPnt : public TCollection_BasicMap {
 	public:
@@ -2001,20 +1621,6 @@ class BRepMesh_DataMapOfIntegerPnt : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") BRepMesh_DataMapOfIntegerPnt::~BRepMesh_DataMapOfIntegerPnt %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_DataMapOfIntegerPnt {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_DataMapOfShapePairOfPolygon;
 class BRepMesh_DataMapOfShapePairOfPolygon : public TCollection_BasicMap {
 	public:
@@ -2093,20 +1699,6 @@ class BRepMesh_DataMapOfShapePairOfPolygon : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") BRepMesh_DataMapOfShapePairOfPolygon::~BRepMesh_DataMapOfShapePairOfPolygon %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_DataMapOfShapePairOfPolygon {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_DataMapOfShapeReal;
 class BRepMesh_DataMapOfShapeReal : public TCollection_BasicMap {
 	public:
@@ -2185,20 +1777,6 @@ class BRepMesh_DataMapOfShapeReal : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") BRepMesh_DataMapOfShapeReal::~BRepMesh_DataMapOfShapeReal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_DataMapOfShapeReal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_DataMapOfVertexInteger;
 class BRepMesh_DataMapOfVertexInteger : public TCollection_BasicMap {
 	public:
@@ -2277,20 +1855,6 @@ class BRepMesh_DataMapOfVertexInteger : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") BRepMesh_DataMapOfVertexInteger::~BRepMesh_DataMapOfVertexInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_DataMapOfVertexInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_DataStructureOfDelaun;
 class BRepMesh_DataStructureOfDelaun : public MMgt_TShared {
 	public:
@@ -2541,25 +2105,23 @@ class BRepMesh_DataStructureOfDelaun : public MMgt_TShared {
 };
 
 
-%feature("shadow") BRepMesh_DataStructureOfDelaun::~BRepMesh_DataStructureOfDelaun %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepMesh_DataStructureOfDelaun {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepMesh_DataStructureOfDelaun(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepMesh_DataStructureOfDelaun {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepMesh_DataStructureOfDelaun {
-	Handle_BRepMesh_DataStructureOfDelaun GetHandle() {
-	return *(Handle_BRepMesh_DataStructureOfDelaun*) &$self;
-	}
-};
+%pythonappend Handle_BRepMesh_DataStructureOfDelaun::Handle_BRepMesh_DataStructureOfDelaun %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepMesh_DataStructureOfDelaun;
 class Handle_BRepMesh_DataStructureOfDelaun : public Handle_MMgt_TShared {
@@ -2577,20 +2139,6 @@ class Handle_BRepMesh_DataStructureOfDelaun : public Handle_MMgt_TShared {
 %extend Handle_BRepMesh_DataStructureOfDelaun {
     BRepMesh_DataStructureOfDelaun* GetObject() {
     return (BRepMesh_DataStructureOfDelaun*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepMesh_DataStructureOfDelaun::~Handle_BRepMesh_DataStructureOfDelaun %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepMesh_DataStructureOfDelaun {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2668,7 +2216,7 @@ class BRepMesh_Delaun {
 
 	:rtype: Handle_BRepMesh_DataStructureOfDelaun
 ") Result;
-		const Handle_BRepMesh_DataStructureOfDelaun & Result ();
+		Handle_BRepMesh_DataStructureOfDelaun Result ();
 		%feature("compactdefaultargs") GetVertex;
 		%feature("autodoc", "	* Gives vertex with the given index
 
@@ -2708,20 +2256,6 @@ class BRepMesh_Delaun {
 };
 
 
-%feature("shadow") BRepMesh_Delaun::~BRepMesh_Delaun %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_Delaun {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_DiscretRoot;
 class BRepMesh_DiscretRoot : public Standard_Transient {
 	public:
@@ -2780,25 +2314,23 @@ class BRepMesh_DiscretRoot : public Standard_Transient {
 };
 
 
-%feature("shadow") BRepMesh_DiscretRoot::~BRepMesh_DiscretRoot %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepMesh_DiscretRoot {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepMesh_DiscretRoot(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepMesh_DiscretRoot {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepMesh_DiscretRoot {
-	Handle_BRepMesh_DiscretRoot GetHandle() {
-	return *(Handle_BRepMesh_DiscretRoot*) &$self;
-	}
-};
+%pythonappend Handle_BRepMesh_DiscretRoot::Handle_BRepMesh_DiscretRoot %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepMesh_DiscretRoot;
 class Handle_BRepMesh_DiscretRoot : public Handle_Standard_Transient {
@@ -2816,20 +2348,6 @@ class Handle_BRepMesh_DiscretRoot : public Handle_Standard_Transient {
 %extend Handle_BRepMesh_DiscretRoot {
     BRepMesh_DiscretRoot* GetObject() {
     return (BRepMesh_DiscretRoot*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepMesh_DiscretRoot::~Handle_BRepMesh_DiscretRoot %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepMesh_DiscretRoot {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2915,20 +2433,6 @@ class BRepMesh_Edge {
         };
 
 
-%feature("shadow") BRepMesh_Edge::~BRepMesh_Edge %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_Edge {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class BRepMesh_ElemHasherOfDataStructureOfDelaun {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -2950,20 +2454,6 @@ class BRepMesh_ElemHasherOfDataStructureOfDelaun {
 };
 
 
-%feature("shadow") BRepMesh_ElemHasherOfDataStructureOfDelaun::~BRepMesh_ElemHasherOfDataStructureOfDelaun %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_ElemHasherOfDataStructureOfDelaun {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_FaceAttribute;
 class BRepMesh_FaceAttribute : public MMgt_TShared {
 	public:
@@ -3095,25 +2585,23 @@ class BRepMesh_FaceAttribute : public MMgt_TShared {
 };
 
 
-%feature("shadow") BRepMesh_FaceAttribute::~BRepMesh_FaceAttribute %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepMesh_FaceAttribute {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepMesh_FaceAttribute(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepMesh_FaceAttribute {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepMesh_FaceAttribute {
-	Handle_BRepMesh_FaceAttribute GetHandle() {
-	return *(Handle_BRepMesh_FaceAttribute*) &$self;
-	}
-};
+%pythonappend Handle_BRepMesh_FaceAttribute::Handle_BRepMesh_FaceAttribute %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepMesh_FaceAttribute;
 class Handle_BRepMesh_FaceAttribute : public Handle_MMgt_TShared {
@@ -3131,20 +2619,6 @@ class Handle_BRepMesh_FaceAttribute : public Handle_MMgt_TShared {
 %extend Handle_BRepMesh_FaceAttribute {
     BRepMesh_FaceAttribute* GetObject() {
     return (BRepMesh_FaceAttribute*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepMesh_FaceAttribute::~Handle_BRepMesh_FaceAttribute %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepMesh_FaceAttribute {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3412,25 +2886,23 @@ class BRepMesh_FastDiscret : public MMgt_TShared {
 };
 
 
-%feature("shadow") BRepMesh_FastDiscret::~BRepMesh_FastDiscret %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepMesh_FastDiscret {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepMesh_FastDiscret(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepMesh_FastDiscret {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepMesh_FastDiscret {
-	Handle_BRepMesh_FastDiscret GetHandle() {
-	return *(Handle_BRepMesh_FastDiscret*) &$self;
-	}
-};
+%pythonappend Handle_BRepMesh_FastDiscret::Handle_BRepMesh_FastDiscret %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepMesh_FastDiscret;
 class Handle_BRepMesh_FastDiscret : public Handle_MMgt_TShared {
@@ -3448,20 +2920,6 @@ class Handle_BRepMesh_FastDiscret : public Handle_MMgt_TShared {
 %extend Handle_BRepMesh_FastDiscret {
     BRepMesh_FastDiscret* GetObject() {
     return (BRepMesh_FastDiscret*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepMesh_FastDiscret::~Handle_BRepMesh_FastDiscret %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepMesh_FastDiscret {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3559,25 +3017,23 @@ class BRepMesh_FastDiscretFace : public MMgt_TShared {
 };
 
 
-%feature("shadow") BRepMesh_FastDiscretFace::~BRepMesh_FastDiscretFace %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepMesh_FastDiscretFace {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepMesh_FastDiscretFace(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepMesh_FastDiscretFace {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepMesh_FastDiscretFace {
-	Handle_BRepMesh_FastDiscretFace GetHandle() {
-	return *(Handle_BRepMesh_FastDiscretFace*) &$self;
-	}
-};
+%pythonappend Handle_BRepMesh_FastDiscretFace::Handle_BRepMesh_FastDiscretFace %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepMesh_FastDiscretFace;
 class Handle_BRepMesh_FastDiscretFace : public Handle_MMgt_TShared {
@@ -3595,20 +3051,6 @@ class Handle_BRepMesh_FastDiscretFace : public Handle_MMgt_TShared {
 %extend Handle_BRepMesh_FastDiscretFace {
     BRepMesh_FastDiscretFace* GetObject() {
     return (BRepMesh_FastDiscretFace*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepMesh_FastDiscretFace::~Handle_BRepMesh_FastDiscretFace %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepMesh_FastDiscretFace {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3728,20 +3170,6 @@ class BRepMesh_GeomTool {
 };
 
 
-%feature("shadow") BRepMesh_GeomTool::~BRepMesh_GeomTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_GeomTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_HArray1OfVertexOfDelaun;
 class BRepMesh_HArray1OfVertexOfDelaun : public MMgt_TShared {
 	public:
@@ -3812,25 +3240,23 @@ class BRepMesh_HArray1OfVertexOfDelaun : public MMgt_TShared {
 };
 
 
-%feature("shadow") BRepMesh_HArray1OfVertexOfDelaun::~BRepMesh_HArray1OfVertexOfDelaun %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepMesh_HArray1OfVertexOfDelaun {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepMesh_HArray1OfVertexOfDelaun(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepMesh_HArray1OfVertexOfDelaun {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepMesh_HArray1OfVertexOfDelaun {
-	Handle_BRepMesh_HArray1OfVertexOfDelaun GetHandle() {
-	return *(Handle_BRepMesh_HArray1OfVertexOfDelaun*) &$self;
-	}
-};
+%pythonappend Handle_BRepMesh_HArray1OfVertexOfDelaun::Handle_BRepMesh_HArray1OfVertexOfDelaun %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepMesh_HArray1OfVertexOfDelaun;
 class Handle_BRepMesh_HArray1OfVertexOfDelaun : public Handle_MMgt_TShared {
@@ -3850,20 +3276,6 @@ class Handle_BRepMesh_HArray1OfVertexOfDelaun : public Handle_MMgt_TShared {
     return (BRepMesh_HArray1OfVertexOfDelaun*)$self->Access();
     }
 };
-%feature("shadow") Handle_BRepMesh_HArray1OfVertexOfDelaun::~Handle_BRepMesh_HArray1OfVertexOfDelaun %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepMesh_HArray1OfVertexOfDelaun {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 class BRepMesh_HeapSortIndexedVertexOfDelaun {
 	public:
@@ -3878,20 +3290,6 @@ class BRepMesh_HeapSortIndexedVertexOfDelaun {
 };
 
 
-%feature("shadow") BRepMesh_HeapSortIndexedVertexOfDelaun::~BRepMesh_HeapSortIndexedVertexOfDelaun %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_HeapSortIndexedVertexOfDelaun {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class BRepMesh_HeapSortVertexOfDelaun {
 	public:
 		%feature("compactdefaultargs") Sort;
@@ -3905,20 +3303,6 @@ class BRepMesh_HeapSortVertexOfDelaun {
 };
 
 
-%feature("shadow") BRepMesh_HeapSortVertexOfDelaun::~BRepMesh_HeapSortVertexOfDelaun %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_HeapSortVertexOfDelaun {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_IDMapOfLinkOfDataStructureOfDelaun;
 class BRepMesh_IDMapOfLinkOfDataStructureOfDelaun : public TCollection_BasicMap {
 	public:
@@ -4029,20 +3413,6 @@ class BRepMesh_IDMapOfLinkOfDataStructureOfDelaun : public TCollection_BasicMap 
 };
 
 
-%feature("shadow") BRepMesh_IDMapOfLinkOfDataStructureOfDelaun::~BRepMesh_IDMapOfLinkOfDataStructureOfDelaun %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_IDMapOfLinkOfDataStructureOfDelaun {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_IDMapOfNodeOfDataStructureOfDelaun;
 class BRepMesh_IDMapOfNodeOfDataStructureOfDelaun : public TCollection_BasicMap {
 	public:
@@ -4153,20 +3523,6 @@ class BRepMesh_IDMapOfNodeOfDataStructureOfDelaun : public TCollection_BasicMap 
 };
 
 
-%feature("shadow") BRepMesh_IDMapOfNodeOfDataStructureOfDelaun::~BRepMesh_IDMapOfNodeOfDataStructureOfDelaun %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_IDMapOfNodeOfDataStructureOfDelaun {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_IMapOfElementOfDataStructureOfDelaun;
 class BRepMesh_IMapOfElementOfDataStructureOfDelaun : public TCollection_BasicMap {
 	public:
@@ -4237,20 +3593,6 @@ class BRepMesh_IMapOfElementOfDataStructureOfDelaun : public TCollection_BasicMa
 };
 
 
-%feature("shadow") BRepMesh_IMapOfElementOfDataStructureOfDelaun::~BRepMesh_IMapOfElementOfDataStructureOfDelaun %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_IMapOfElementOfDataStructureOfDelaun {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun;
 class BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun : public TCollection_MapNode {
 	public:
@@ -4296,25 +3638,23 @@ class BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun : public T
 };
 
 
-%feature("shadow") BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun::~BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun {
-	Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun GetHandle() {
-	return *(Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun*) &$self;
-	}
-};
+%pythonappend Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun::Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun;
 class Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun : public Handle_TCollection_MapNode {
@@ -4332,20 +3672,6 @@ class Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun : p
 %extend Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun {
     BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun* GetObject() {
     return (BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun::~Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4394,25 +3720,23 @@ class BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun : public T
 };
 
 
-%feature("shadow") BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun::~BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun {
-	Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun GetHandle() {
-	return *(Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun*) &$self;
-	}
-};
+%pythonappend Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun::Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun;
 class Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun : public Handle_TCollection_MapNode {
@@ -4430,20 +3754,6 @@ class Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun : p
 %extend Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun {
     BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun* GetObject() {
     return (BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun::~Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4486,25 +3796,23 @@ class BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun : public TCo
 };
 
 
-%feature("shadow") BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun::~BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun {
-	Handle_BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun GetHandle() {
-	return *(Handle_BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun*) &$self;
-	}
-};
+%pythonappend Handle_BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun::Handle_BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun;
 class Handle_BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun : public Handle_TCollection_MapNode {
@@ -4522,20 +3830,6 @@ class Handle_BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun : pub
 %extend Handle_BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun {
     BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun* GetObject() {
     return (BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun::~Handle_BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4578,25 +3872,23 @@ class BRepMesh_IndexedMapNodeOfIndexedMapOfVertex : public TCollection_MapNode {
 };
 
 
-%feature("shadow") BRepMesh_IndexedMapNodeOfIndexedMapOfVertex::~BRepMesh_IndexedMapNodeOfIndexedMapOfVertex %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepMesh_IndexedMapNodeOfIndexedMapOfVertex {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepMesh_IndexedMapNodeOfIndexedMapOfVertex(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepMesh_IndexedMapNodeOfIndexedMapOfVertex {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepMesh_IndexedMapNodeOfIndexedMapOfVertex {
-	Handle_BRepMesh_IndexedMapNodeOfIndexedMapOfVertex GetHandle() {
-	return *(Handle_BRepMesh_IndexedMapNodeOfIndexedMapOfVertex*) &$self;
-	}
-};
+%pythonappend Handle_BRepMesh_IndexedMapNodeOfIndexedMapOfVertex::Handle_BRepMesh_IndexedMapNodeOfIndexedMapOfVertex %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepMesh_IndexedMapNodeOfIndexedMapOfVertex;
 class Handle_BRepMesh_IndexedMapNodeOfIndexedMapOfVertex : public Handle_TCollection_MapNode {
@@ -4614,20 +3906,6 @@ class Handle_BRepMesh_IndexedMapNodeOfIndexedMapOfVertex : public Handle_TCollec
 %extend Handle_BRepMesh_IndexedMapNodeOfIndexedMapOfVertex {
     BRepMesh_IndexedMapNodeOfIndexedMapOfVertex* GetObject() {
     return (BRepMesh_IndexedMapNodeOfIndexedMapOfVertex*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepMesh_IndexedMapNodeOfIndexedMapOfVertex::~Handle_BRepMesh_IndexedMapNodeOfIndexedMapOfVertex %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepMesh_IndexedMapNodeOfIndexedMapOfVertex {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4701,20 +3979,6 @@ class BRepMesh_IndexedMapOfVertex : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") BRepMesh_IndexedMapOfVertex::~BRepMesh_IndexedMapOfVertex %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_IndexedMapOfVertex {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class BRepMesh_LinkHasherOfDataStructureOfDelaun {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -4736,20 +4000,6 @@ class BRepMesh_LinkHasherOfDataStructureOfDelaun {
 };
 
 
-%feature("shadow") BRepMesh_LinkHasherOfDataStructureOfDelaun::~BRepMesh_LinkHasherOfDataStructureOfDelaun %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_LinkHasherOfDataStructureOfDelaun {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_ListIteratorOfListOfVertex;
 class BRepMesh_ListIteratorOfListOfVertex {
 	public:
@@ -4784,20 +4034,6 @@ class BRepMesh_ListIteratorOfListOfVertex {
 };
 
 
-%feature("shadow") BRepMesh_ListIteratorOfListOfVertex::~BRepMesh_ListIteratorOfListOfVertex %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_ListIteratorOfListOfVertex {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_ListIteratorOfListOfXY;
 class BRepMesh_ListIteratorOfListOfXY {
 	public:
@@ -4832,20 +4068,6 @@ class BRepMesh_ListIteratorOfListOfXY {
 };
 
 
-%feature("shadow") BRepMesh_ListIteratorOfListOfXY::~BRepMesh_ListIteratorOfListOfXY %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_ListIteratorOfListOfXY {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_ListNodeOfListOfVertex;
 class BRepMesh_ListNodeOfListOfVertex : public TCollection_MapNode {
 	public:
@@ -4864,25 +4086,23 @@ class BRepMesh_ListNodeOfListOfVertex : public TCollection_MapNode {
 };
 
 
-%feature("shadow") BRepMesh_ListNodeOfListOfVertex::~BRepMesh_ListNodeOfListOfVertex %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepMesh_ListNodeOfListOfVertex {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepMesh_ListNodeOfListOfVertex(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepMesh_ListNodeOfListOfVertex {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepMesh_ListNodeOfListOfVertex {
-	Handle_BRepMesh_ListNodeOfListOfVertex GetHandle() {
-	return *(Handle_BRepMesh_ListNodeOfListOfVertex*) &$self;
-	}
-};
+%pythonappend Handle_BRepMesh_ListNodeOfListOfVertex::Handle_BRepMesh_ListNodeOfListOfVertex %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepMesh_ListNodeOfListOfVertex;
 class Handle_BRepMesh_ListNodeOfListOfVertex : public Handle_TCollection_MapNode {
@@ -4900,20 +4120,6 @@ class Handle_BRepMesh_ListNodeOfListOfVertex : public Handle_TCollection_MapNode
 %extend Handle_BRepMesh_ListNodeOfListOfVertex {
     BRepMesh_ListNodeOfListOfVertex* GetObject() {
     return (BRepMesh_ListNodeOfListOfVertex*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepMesh_ListNodeOfListOfVertex::~Handle_BRepMesh_ListNodeOfListOfVertex %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepMesh_ListNodeOfListOfVertex {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4935,25 +4141,23 @@ class BRepMesh_ListNodeOfListOfXY : public TCollection_MapNode {
 };
 
 
-%feature("shadow") BRepMesh_ListNodeOfListOfXY::~BRepMesh_ListNodeOfListOfXY %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepMesh_ListNodeOfListOfXY {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepMesh_ListNodeOfListOfXY(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepMesh_ListNodeOfListOfXY {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepMesh_ListNodeOfListOfXY {
-	Handle_BRepMesh_ListNodeOfListOfXY GetHandle() {
-	return *(Handle_BRepMesh_ListNodeOfListOfXY*) &$self;
-	}
-};
+%pythonappend Handle_BRepMesh_ListNodeOfListOfXY::Handle_BRepMesh_ListNodeOfListOfXY %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepMesh_ListNodeOfListOfXY;
 class Handle_BRepMesh_ListNodeOfListOfXY : public Handle_TCollection_MapNode {
@@ -4971,20 +4175,6 @@ class Handle_BRepMesh_ListNodeOfListOfXY : public Handle_TCollection_MapNode {
 %extend Handle_BRepMesh_ListNodeOfListOfXY {
     BRepMesh_ListNodeOfListOfXY* GetObject() {
     return (BRepMesh_ListNodeOfListOfXY*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepMesh_ListNodeOfListOfXY::~Handle_BRepMesh_ListNodeOfListOfXY %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepMesh_ListNodeOfListOfXY {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5112,20 +4302,6 @@ class BRepMesh_ListOfVertex {
 };
 
 
-%feature("shadow") BRepMesh_ListOfVertex::~BRepMesh_ListOfVertex %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_ListOfVertex {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_ListOfXY;
 class BRepMesh_ListOfXY {
 	public:
@@ -5250,20 +4426,6 @@ class BRepMesh_ListOfXY {
 };
 
 
-%feature("shadow") BRepMesh_ListOfXY::~BRepMesh_ListOfXY %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_ListOfXY {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class BRepMesh_NodeHasherOfDataStructureOfDelaun {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -5285,20 +4447,6 @@ class BRepMesh_NodeHasherOfDataStructureOfDelaun {
 };
 
 
-%feature("shadow") BRepMesh_NodeHasherOfDataStructureOfDelaun::~BRepMesh_NodeHasherOfDataStructureOfDelaun %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_NodeHasherOfDataStructureOfDelaun {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_PairOfIndex;
 class BRepMesh_PairOfIndex {
 	public:
@@ -5383,20 +4531,6 @@ class BRepMesh_PairOfIndex {
 };
 
 
-%feature("shadow") BRepMesh_PairOfIndex::~BRepMesh_PairOfIndex %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_PairOfIndex {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_PairOfPolygon;
 class BRepMesh_PairOfPolygon {
 	public:
@@ -5429,30 +4563,16 @@ class BRepMesh_PairOfPolygon {
 
 	:rtype: Handle_Poly_PolygonOnTriangulation
 ") First;
-		const Handle_Poly_PolygonOnTriangulation & First ();
+		Handle_Poly_PolygonOnTriangulation First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	* Returns last polygon on triangulation
 
 	:rtype: Handle_Poly_PolygonOnTriangulation
 ") Last;
-		const Handle_Poly_PolygonOnTriangulation & Last ();
+		Handle_Poly_PolygonOnTriangulation Last ();
 };
 
 
-%feature("shadow") BRepMesh_PairOfPolygon::~BRepMesh_PairOfPolygon %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_PairOfPolygon {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_SelectorOfDataStructureOfDelaun;
 class BRepMesh_SelectorOfDataStructureOfDelaun {
 	public:
@@ -5553,20 +4673,6 @@ class BRepMesh_SelectorOfDataStructureOfDelaun {
 };
 
 
-%feature("shadow") BRepMesh_SelectorOfDataStructureOfDelaun::~BRepMesh_SelectorOfDataStructureOfDelaun %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_SelectorOfDataStructureOfDelaun {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_ShapeTool;
 class BRepMesh_ShapeTool {
 	public:
@@ -5765,20 +4871,6 @@ class BRepMesh_ShapeTool {
 };
 
 
-%feature("shadow") BRepMesh_ShapeTool::~BRepMesh_ShapeTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_ShapeTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_Triangle;
 class BRepMesh_Triangle {
 	public:
@@ -5883,20 +4975,6 @@ class BRepMesh_Triangle {
         };
 
 
-%feature("shadow") BRepMesh_Triangle::~BRepMesh_Triangle %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_Triangle {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_Vertex;
 class BRepMesh_Vertex {
 	public:
@@ -5987,20 +5065,6 @@ class BRepMesh_Vertex {
         };
 
 
-%feature("shadow") BRepMesh_Vertex::~BRepMesh_Vertex %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_Vertex {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class BRepMesh_VertexHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -6022,20 +5086,6 @@ class BRepMesh_VertexHasher {
 };
 
 
-%feature("shadow") BRepMesh_VertexHasher::~BRepMesh_VertexHasher %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_VertexHasher {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_VertexInspector;
 class BRepMesh_VertexInspector : public NCollection_CellFilter_InspectorXY {
 	public:
@@ -6104,20 +5154,6 @@ class BRepMesh_VertexInspector : public NCollection_CellFilter_InspectorXY {
 };
 
 
-%feature("shadow") BRepMesh_VertexInspector::~BRepMesh_VertexInspector %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_VertexInspector {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_VertexTool;
 class BRepMesh_VertexTool {
 	public:
@@ -6270,20 +5306,6 @@ class BRepMesh_VertexTool {
         };
 
 
-%feature("shadow") BRepMesh_VertexTool::~BRepMesh_VertexTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepMesh_VertexTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepMesh_IncrementalMesh;
 class BRepMesh_IncrementalMesh : public BRepMesh_DiscretRoot {
 	public:
@@ -6382,25 +5404,23 @@ class BRepMesh_IncrementalMesh : public BRepMesh_DiscretRoot {
 };
 
 
-%feature("shadow") BRepMesh_IncrementalMesh::~BRepMesh_IncrementalMesh %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepMesh_IncrementalMesh {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepMesh_IncrementalMesh(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepMesh_IncrementalMesh {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepMesh_IncrementalMesh {
-	Handle_BRepMesh_IncrementalMesh GetHandle() {
-	return *(Handle_BRepMesh_IncrementalMesh*) &$self;
-	}
-};
+%pythonappend Handle_BRepMesh_IncrementalMesh::Handle_BRepMesh_IncrementalMesh %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepMesh_IncrementalMesh;
 class Handle_BRepMesh_IncrementalMesh : public Handle_BRepMesh_DiscretRoot {
@@ -6418,20 +5438,6 @@ class Handle_BRepMesh_IncrementalMesh : public Handle_BRepMesh_DiscretRoot {
 %extend Handle_BRepMesh_IncrementalMesh {
     BRepMesh_IncrementalMesh* GetObject() {
     return (BRepMesh_IncrementalMesh*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepMesh_IncrementalMesh::~Handle_BRepMesh_IncrementalMesh %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepMesh_IncrementalMesh {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

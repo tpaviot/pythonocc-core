@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include TopoDS_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -162,20 +174,6 @@ class TopoDS {
 };
 
 
-%feature("shadow") TopoDS::~TopoDS %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopoDS {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class TopoDS_Builder {
 	public:
 		%feature("compactdefaultargs") MakeWire;
@@ -241,20 +239,6 @@ class TopoDS_Builder {
 };
 
 
-%feature("shadow") TopoDS_Builder::~TopoDS_Builder %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopoDS_Builder {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopoDS_HShape;
 class TopoDS_HShape : public MMgt_TShared {
 	public:
@@ -295,25 +279,23 @@ class TopoDS_HShape : public MMgt_TShared {
 };
 
 
-%feature("shadow") TopoDS_HShape::~TopoDS_HShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopoDS_HShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopoDS_HShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopoDS_HShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopoDS_HShape {
-	Handle_TopoDS_HShape GetHandle() {
-	return *(Handle_TopoDS_HShape*) &$self;
-	}
-};
+%pythonappend Handle_TopoDS_HShape::Handle_TopoDS_HShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopoDS_HShape;
 class Handle_TopoDS_HShape : public Handle_MMgt_TShared {
@@ -331,20 +313,6 @@ class Handle_TopoDS_HShape : public Handle_MMgt_TShared {
 %extend Handle_TopoDS_HShape {
     TopoDS_HShape* GetObject() {
     return (TopoDS_HShape*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopoDS_HShape::~Handle_TopoDS_HShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopoDS_HShape {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -402,20 +370,6 @@ class TopoDS_Iterator {
 };
 
 
-%feature("shadow") TopoDS_Iterator::~TopoDS_Iterator %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopoDS_Iterator {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopoDS_ListIteratorOfListOfShape;
 class TopoDS_ListIteratorOfListOfShape {
 	public:
@@ -450,20 +404,6 @@ class TopoDS_ListIteratorOfListOfShape {
 };
 
 
-%feature("shadow") TopoDS_ListIteratorOfListOfShape::~TopoDS_ListIteratorOfListOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopoDS_ListIteratorOfListOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopoDS_ListNodeOfListOfShape;
 class TopoDS_ListNodeOfListOfShape : public TCollection_MapNode {
 	public:
@@ -482,25 +422,23 @@ class TopoDS_ListNodeOfListOfShape : public TCollection_MapNode {
 };
 
 
-%feature("shadow") TopoDS_ListNodeOfListOfShape::~TopoDS_ListNodeOfListOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopoDS_ListNodeOfListOfShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopoDS_ListNodeOfListOfShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopoDS_ListNodeOfListOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopoDS_ListNodeOfListOfShape {
-	Handle_TopoDS_ListNodeOfListOfShape GetHandle() {
-	return *(Handle_TopoDS_ListNodeOfListOfShape*) &$self;
-	}
-};
+%pythonappend Handle_TopoDS_ListNodeOfListOfShape::Handle_TopoDS_ListNodeOfListOfShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopoDS_ListNodeOfListOfShape;
 class Handle_TopoDS_ListNodeOfListOfShape : public Handle_TCollection_MapNode {
@@ -518,20 +456,6 @@ class Handle_TopoDS_ListNodeOfListOfShape : public Handle_TCollection_MapNode {
 %extend Handle_TopoDS_ListNodeOfListOfShape {
     TopoDS_ListNodeOfListOfShape* GetObject() {
     return (TopoDS_ListNodeOfListOfShape*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopoDS_ListNodeOfListOfShape::~Handle_TopoDS_ListNodeOfListOfShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopoDS_ListNodeOfListOfShape {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -659,20 +583,6 @@ class TopoDS_ListOfShape {
 };
 
 
-%feature("shadow") TopoDS_ListOfShape::~TopoDS_ListOfShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopoDS_ListOfShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopoDS_Shape;
 class TopoDS_Shape {
 	public:
@@ -999,20 +909,6 @@ class TopoDS_Shape {
 };
 
 
-%feature("shadow") TopoDS_Shape::~TopoDS_Shape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopoDS_Shape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %extend TopoDS_Shape {
 %pythoncode {
 	def __getstate__(self):
@@ -1149,25 +1045,23 @@ class TopoDS_TShape : public MMgt_TShared {
 };
 
 
-%feature("shadow") TopoDS_TShape::~TopoDS_TShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopoDS_TShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopoDS_TShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopoDS_TShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopoDS_TShape {
-	Handle_TopoDS_TShape GetHandle() {
-	return *(Handle_TopoDS_TShape*) &$self;
-	}
-};
+%pythonappend Handle_TopoDS_TShape::Handle_TopoDS_TShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopoDS_TShape;
 class Handle_TopoDS_TShape : public Handle_MMgt_TShared {
@@ -1187,20 +1081,6 @@ class Handle_TopoDS_TShape : public Handle_MMgt_TShared {
     return (TopoDS_TShape*)$self->Access();
     }
 };
-%feature("shadow") Handle_TopoDS_TShape::~Handle_TopoDS_TShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopoDS_TShape {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor TopoDS_CompSolid;
 class TopoDS_CompSolid : public TopoDS_Shape {
@@ -1214,20 +1094,6 @@ class TopoDS_CompSolid : public TopoDS_Shape {
 };
 
 
-%feature("shadow") TopoDS_CompSolid::~TopoDS_CompSolid %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopoDS_CompSolid {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopoDS_Compound;
 class TopoDS_Compound : public TopoDS_Shape {
 	public:
@@ -1240,20 +1106,6 @@ class TopoDS_Compound : public TopoDS_Shape {
 };
 
 
-%feature("shadow") TopoDS_Compound::~TopoDS_Compound %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopoDS_Compound {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopoDS_Edge;
 class TopoDS_Edge : public TopoDS_Shape {
 	public:
@@ -1266,20 +1118,6 @@ class TopoDS_Edge : public TopoDS_Shape {
 };
 
 
-%feature("shadow") TopoDS_Edge::~TopoDS_Edge %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopoDS_Edge {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopoDS_Face;
 class TopoDS_Face : public TopoDS_Shape {
 	public:
@@ -1292,20 +1130,6 @@ class TopoDS_Face : public TopoDS_Shape {
 };
 
 
-%feature("shadow") TopoDS_Face::~TopoDS_Face %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopoDS_Face {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopoDS_Shell;
 class TopoDS_Shell : public TopoDS_Shape {
 	public:
@@ -1318,20 +1142,6 @@ class TopoDS_Shell : public TopoDS_Shape {
 };
 
 
-%feature("shadow") TopoDS_Shell::~TopoDS_Shell %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopoDS_Shell {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopoDS_Solid;
 class TopoDS_Solid : public TopoDS_Shape {
 	public:
@@ -1344,20 +1154,6 @@ class TopoDS_Solid : public TopoDS_Shape {
 };
 
 
-%feature("shadow") TopoDS_Solid::~TopoDS_Solid %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopoDS_Solid {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopoDS_TCompSolid;
 class TopoDS_TCompSolid : public TopoDS_TShape {
 	public:
@@ -1382,25 +1178,23 @@ class TopoDS_TCompSolid : public TopoDS_TShape {
 };
 
 
-%feature("shadow") TopoDS_TCompSolid::~TopoDS_TCompSolid %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopoDS_TCompSolid {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopoDS_TCompSolid(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopoDS_TCompSolid {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopoDS_TCompSolid {
-	Handle_TopoDS_TCompSolid GetHandle() {
-	return *(Handle_TopoDS_TCompSolid*) &$self;
-	}
-};
+%pythonappend Handle_TopoDS_TCompSolid::Handle_TopoDS_TCompSolid %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopoDS_TCompSolid;
 class Handle_TopoDS_TCompSolid : public Handle_TopoDS_TShape {
@@ -1418,20 +1212,6 @@ class Handle_TopoDS_TCompSolid : public Handle_TopoDS_TShape {
 %extend Handle_TopoDS_TCompSolid {
     TopoDS_TCompSolid* GetObject() {
     return (TopoDS_TCompSolid*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopoDS_TCompSolid::~Handle_TopoDS_TCompSolid %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopoDS_TCompSolid {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1459,25 +1239,23 @@ class TopoDS_TCompound : public TopoDS_TShape {
 };
 
 
-%feature("shadow") TopoDS_TCompound::~TopoDS_TCompound %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopoDS_TCompound {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopoDS_TCompound(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopoDS_TCompound {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopoDS_TCompound {
-	Handle_TopoDS_TCompound GetHandle() {
-	return *(Handle_TopoDS_TCompound*) &$self;
-	}
-};
+%pythonappend Handle_TopoDS_TCompound::Handle_TopoDS_TCompound %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopoDS_TCompound;
 class Handle_TopoDS_TCompound : public Handle_TopoDS_TShape {
@@ -1497,20 +1275,6 @@ class Handle_TopoDS_TCompound : public Handle_TopoDS_TShape {
     return (TopoDS_TCompound*)$self->Access();
     }
 };
-%feature("shadow") Handle_TopoDS_TCompound::~Handle_TopoDS_TCompound %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopoDS_TCompound {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor TopoDS_TEdge;
 class TopoDS_TEdge : public TopoDS_TShape {
@@ -1524,25 +1288,23 @@ class TopoDS_TEdge : public TopoDS_TShape {
 };
 
 
-%feature("shadow") TopoDS_TEdge::~TopoDS_TEdge %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopoDS_TEdge {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopoDS_TEdge(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopoDS_TEdge {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopoDS_TEdge {
-	Handle_TopoDS_TEdge GetHandle() {
-	return *(Handle_TopoDS_TEdge*) &$self;
-	}
-};
+%pythonappend Handle_TopoDS_TEdge::Handle_TopoDS_TEdge %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopoDS_TEdge;
 class Handle_TopoDS_TEdge : public Handle_TopoDS_TShape {
@@ -1560,20 +1322,6 @@ class Handle_TopoDS_TEdge : public Handle_TopoDS_TShape {
 %extend Handle_TopoDS_TEdge {
     TopoDS_TEdge* GetObject() {
     return (TopoDS_TEdge*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopoDS_TEdge::~Handle_TopoDS_TEdge %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopoDS_TEdge {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1601,25 +1349,23 @@ class TopoDS_TFace : public TopoDS_TShape {
 };
 
 
-%feature("shadow") TopoDS_TFace::~TopoDS_TFace %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopoDS_TFace {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopoDS_TFace(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopoDS_TFace {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopoDS_TFace {
-	Handle_TopoDS_TFace GetHandle() {
-	return *(Handle_TopoDS_TFace*) &$self;
-	}
-};
+%pythonappend Handle_TopoDS_TFace::Handle_TopoDS_TFace %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopoDS_TFace;
 class Handle_TopoDS_TFace : public Handle_TopoDS_TShape {
@@ -1637,20 +1383,6 @@ class Handle_TopoDS_TFace : public Handle_TopoDS_TShape {
 %extend Handle_TopoDS_TFace {
     TopoDS_TFace* GetObject() {
     return (TopoDS_TFace*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopoDS_TFace::~Handle_TopoDS_TFace %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopoDS_TFace {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1678,25 +1410,23 @@ class TopoDS_TShell : public TopoDS_TShape {
 };
 
 
-%feature("shadow") TopoDS_TShell::~TopoDS_TShell %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopoDS_TShell {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopoDS_TShell(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopoDS_TShell {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopoDS_TShell {
-	Handle_TopoDS_TShell GetHandle() {
-	return *(Handle_TopoDS_TShell*) &$self;
-	}
-};
+%pythonappend Handle_TopoDS_TShell::Handle_TopoDS_TShell %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopoDS_TShell;
 class Handle_TopoDS_TShell : public Handle_TopoDS_TShape {
@@ -1714,20 +1444,6 @@ class Handle_TopoDS_TShell : public Handle_TopoDS_TShape {
 %extend Handle_TopoDS_TShell {
     TopoDS_TShell* GetObject() {
     return (TopoDS_TShell*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopoDS_TShell::~Handle_TopoDS_TShell %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopoDS_TShell {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1755,25 +1471,23 @@ class TopoDS_TSolid : public TopoDS_TShape {
 };
 
 
-%feature("shadow") TopoDS_TSolid::~TopoDS_TSolid %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopoDS_TSolid {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopoDS_TSolid(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopoDS_TSolid {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopoDS_TSolid {
-	Handle_TopoDS_TSolid GetHandle() {
-	return *(Handle_TopoDS_TSolid*) &$self;
-	}
-};
+%pythonappend Handle_TopoDS_TSolid::Handle_TopoDS_TSolid %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopoDS_TSolid;
 class Handle_TopoDS_TSolid : public Handle_TopoDS_TShape {
@@ -1793,20 +1507,6 @@ class Handle_TopoDS_TSolid : public Handle_TopoDS_TShape {
     return (TopoDS_TSolid*)$self->Access();
     }
 };
-%feature("shadow") Handle_TopoDS_TSolid::~Handle_TopoDS_TSolid %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopoDS_TSolid {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor TopoDS_TVertex;
 class TopoDS_TVertex : public TopoDS_TShape {
@@ -1820,25 +1520,23 @@ class TopoDS_TVertex : public TopoDS_TShape {
 };
 
 
-%feature("shadow") TopoDS_TVertex::~TopoDS_TVertex %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopoDS_TVertex {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopoDS_TVertex(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopoDS_TVertex {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopoDS_TVertex {
-	Handle_TopoDS_TVertex GetHandle() {
-	return *(Handle_TopoDS_TVertex*) &$self;
-	}
-};
+%pythonappend Handle_TopoDS_TVertex::Handle_TopoDS_TVertex %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopoDS_TVertex;
 class Handle_TopoDS_TVertex : public Handle_TopoDS_TShape {
@@ -1856,20 +1554,6 @@ class Handle_TopoDS_TVertex : public Handle_TopoDS_TShape {
 %extend Handle_TopoDS_TVertex {
     TopoDS_TVertex* GetObject() {
     return (TopoDS_TVertex*)$self->Access();
-    }
-};
-%feature("shadow") Handle_TopoDS_TVertex::~Handle_TopoDS_TVertex %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopoDS_TVertex {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1897,25 +1581,23 @@ class TopoDS_TWire : public TopoDS_TShape {
 };
 
 
-%feature("shadow") TopoDS_TWire::~TopoDS_TWire %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend TopoDS_TWire {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_TopoDS_TWire(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend TopoDS_TWire {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend TopoDS_TWire {
-	Handle_TopoDS_TWire GetHandle() {
-	return *(Handle_TopoDS_TWire*) &$self;
-	}
-};
+%pythonappend Handle_TopoDS_TWire::Handle_TopoDS_TWire %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_TopoDS_TWire;
 class Handle_TopoDS_TWire : public Handle_TopoDS_TShape {
@@ -1935,20 +1617,6 @@ class Handle_TopoDS_TWire : public Handle_TopoDS_TShape {
     return (TopoDS_TWire*)$self->Access();
     }
 };
-%feature("shadow") Handle_TopoDS_TWire::~Handle_TopoDS_TWire %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_TopoDS_TWire {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor TopoDS_Vertex;
 class TopoDS_Vertex : public TopoDS_Shape {
@@ -1964,20 +1632,6 @@ class TopoDS_Vertex : public TopoDS_Shape {
 };
 
 
-%feature("shadow") TopoDS_Vertex::~TopoDS_Vertex %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopoDS_Vertex {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor TopoDS_Wire;
 class TopoDS_Wire : public TopoDS_Shape {
 	public:
@@ -1990,17 +1644,3 @@ class TopoDS_Wire : public TopoDS_Shape {
 };
 
 
-%feature("shadow") TopoDS_Wire::~TopoDS_Wire %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend TopoDS_Wire {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

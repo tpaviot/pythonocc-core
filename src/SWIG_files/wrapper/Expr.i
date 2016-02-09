@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include Expr_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -74,20 +86,6 @@ class Expr {
 };
 
 
-%feature("shadow") Expr::~Expr %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Expr {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Expr_Array1OfGeneralExpression;
 class Expr_Array1OfGeneralExpression {
 	public:
@@ -160,30 +158,16 @@ class Expr_Array1OfGeneralExpression {
 	:type Index: int
 	:rtype: Handle_Expr_GeneralExpression
 ") Value;
-		const Handle_Expr_GeneralExpression & Value (const Standard_Integer Index);
+		Handle_Expr_GeneralExpression Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_Expr_GeneralExpression
 ") ChangeValue;
-		Handle_Expr_GeneralExpression & ChangeValue (const Standard_Integer Index);
+		Handle_Expr_GeneralExpression ChangeValue (const Standard_Integer Index);
 };
 
 
-%feature("shadow") Expr_Array1OfGeneralExpression::~Expr_Array1OfGeneralExpression %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Expr_Array1OfGeneralExpression {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Expr_Array1OfNamedUnknown;
 class Expr_Array1OfNamedUnknown {
 	public:
@@ -256,30 +240,16 @@ class Expr_Array1OfNamedUnknown {
 	:type Index: int
 	:rtype: Handle_Expr_NamedUnknown
 ") Value;
-		const Handle_Expr_NamedUnknown & Value (const Standard_Integer Index);
+		Handle_Expr_NamedUnknown Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_Expr_NamedUnknown
 ") ChangeValue;
-		Handle_Expr_NamedUnknown & ChangeValue (const Standard_Integer Index);
+		Handle_Expr_NamedUnknown ChangeValue (const Standard_Integer Index);
 };
 
 
-%feature("shadow") Expr_Array1OfNamedUnknown::~Expr_Array1OfNamedUnknown %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Expr_Array1OfNamedUnknown {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Expr_Array1OfSingleRelation;
 class Expr_Array1OfSingleRelation {
 	public:
@@ -352,30 +322,16 @@ class Expr_Array1OfSingleRelation {
 	:type Index: int
 	:rtype: Handle_Expr_SingleRelation
 ") Value;
-		const Handle_Expr_SingleRelation & Value (const Standard_Integer Index);
+		Handle_Expr_SingleRelation Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
 	:rtype: Handle_Expr_SingleRelation
 ") ChangeValue;
-		Handle_Expr_SingleRelation & ChangeValue (const Standard_Integer Index);
+		Handle_Expr_SingleRelation ChangeValue (const Standard_Integer Index);
 };
 
 
-%feature("shadow") Expr_Array1OfSingleRelation::~Expr_Array1OfSingleRelation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Expr_Array1OfSingleRelation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Expr_GeneralExpression;
 class Expr_GeneralExpression : public MMgt_TShared {
 	public:
@@ -392,7 +348,7 @@ class Expr_GeneralExpression : public MMgt_TShared {
 	:type I: int
 	:rtype: Handle_Expr_GeneralExpression
 ") SubExpression;
-		virtual const Handle_Expr_GeneralExpression & SubExpression (const Standard_Integer I);
+		Handle_Expr_GeneralExpression SubExpression (const Standard_Integer I);
 		%feature("compactdefaultargs") Simplified;
 		%feature("autodoc", "	* Returns a GeneralExpression after replacement of NamedUnknowns by an associated expression and after values computation.
 
@@ -498,25 +454,23 @@ class Expr_GeneralExpression : public MMgt_TShared {
 };
 
 
-%feature("shadow") Expr_GeneralExpression::~Expr_GeneralExpression %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_GeneralExpression {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_GeneralExpression(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_GeneralExpression {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_GeneralExpression {
-	Handle_Expr_GeneralExpression GetHandle() {
-	return *(Handle_Expr_GeneralExpression*) &$self;
-	}
-};
+%pythonappend Handle_Expr_GeneralExpression::Handle_Expr_GeneralExpression %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_GeneralExpression;
 class Handle_Expr_GeneralExpression : public Handle_MMgt_TShared {
@@ -534,20 +488,6 @@ class Handle_Expr_GeneralExpression : public Handle_MMgt_TShared {
 %extend Handle_Expr_GeneralExpression {
     Expr_GeneralExpression* GetObject() {
     return (Expr_GeneralExpression*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_GeneralExpression::~Handle_Expr_GeneralExpression %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_GeneralExpression {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -625,25 +565,23 @@ class Expr_GeneralFunction : public MMgt_TShared {
 };
 
 
-%feature("shadow") Expr_GeneralFunction::~Expr_GeneralFunction %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_GeneralFunction {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_GeneralFunction(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_GeneralFunction {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_GeneralFunction {
-	Handle_Expr_GeneralFunction GetHandle() {
-	return *(Handle_Expr_GeneralFunction*) &$self;
-	}
-};
+%pythonappend Handle_Expr_GeneralFunction::Handle_Expr_GeneralFunction %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_GeneralFunction;
 class Handle_Expr_GeneralFunction : public Handle_MMgt_TShared {
@@ -661,20 +599,6 @@ class Handle_Expr_GeneralFunction : public Handle_MMgt_TShared {
 %extend Handle_Expr_GeneralFunction {
     Expr_GeneralFunction* GetObject() {
     return (Expr_GeneralFunction*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_GeneralFunction::~Handle_Expr_GeneralFunction %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_GeneralFunction {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -758,25 +682,23 @@ class Expr_GeneralRelation : public MMgt_TShared {
 };
 
 
-%feature("shadow") Expr_GeneralRelation::~Expr_GeneralRelation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_GeneralRelation {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_GeneralRelation(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_GeneralRelation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_GeneralRelation {
-	Handle_Expr_GeneralRelation GetHandle() {
-	return *(Handle_Expr_GeneralRelation*) &$self;
-	}
-};
+%pythonappend Handle_Expr_GeneralRelation::Handle_Expr_GeneralRelation %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_GeneralRelation;
 class Handle_Expr_GeneralRelation : public Handle_MMgt_TShared {
@@ -794,20 +716,6 @@ class Handle_Expr_GeneralRelation : public Handle_MMgt_TShared {
 %extend Handle_Expr_GeneralRelation {
     Expr_GeneralRelation* GetObject() {
     return (Expr_GeneralRelation*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_GeneralRelation::~Handle_Expr_GeneralRelation %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_GeneralRelation {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -829,7 +737,7 @@ class Expr_IndexedMapNodeOfMapOfNamedUnknown : public TCollection_MapNode {
 		%feature("compactdefaultargs") Key1;
 		%feature("autodoc", "	:rtype: Handle_Expr_NamedUnknown
 ") Key1;
-		Handle_Expr_NamedUnknown & Key1 ();
+		Handle_Expr_NamedUnknown Key1 ();
 
             %feature("autodoc","1");
             %extend {
@@ -850,25 +758,23 @@ class Expr_IndexedMapNodeOfMapOfNamedUnknown : public TCollection_MapNode {
 };
 
 
-%feature("shadow") Expr_IndexedMapNodeOfMapOfNamedUnknown::~Expr_IndexedMapNodeOfMapOfNamedUnknown %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_IndexedMapNodeOfMapOfNamedUnknown {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_IndexedMapNodeOfMapOfNamedUnknown {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_IndexedMapNodeOfMapOfNamedUnknown {
-	Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown GetHandle() {
-	return *(Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown*) &$self;
-	}
-};
+%pythonappend Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown::Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown;
 class Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown : public Handle_TCollection_MapNode {
@@ -886,20 +792,6 @@ class Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown : public Handle_TCollection_
 %extend Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown {
     Expr_IndexedMapNodeOfMapOfNamedUnknown* GetObject() {
     return (Expr_IndexedMapNodeOfMapOfNamedUnknown*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown::~Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -963,7 +855,7 @@ class Expr_MapOfNamedUnknown : public TCollection_BasicMap {
 	:type I: int
 	:rtype: Handle_Expr_NamedUnknown
 ") FindKey;
-		const Handle_Expr_NamedUnknown & FindKey (const Standard_Integer I);
+		Handle_Expr_NamedUnknown FindKey (const Standard_Integer I);
 		%feature("compactdefaultargs") FindIndex;
 		%feature("autodoc", "	:param K:
 	:type K: Handle_Expr_NamedUnknown &
@@ -973,20 +865,6 @@ class Expr_MapOfNamedUnknown : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") Expr_MapOfNamedUnknown::~Expr_MapOfNamedUnknown %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Expr_MapOfNamedUnknown {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Expr_RUIterator;
 class Expr_RUIterator {
 	public:
@@ -1017,20 +895,6 @@ class Expr_RUIterator {
 };
 
 
-%feature("shadow") Expr_RUIterator::~Expr_RUIterator %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Expr_RUIterator {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Expr_RelationIterator;
 class Expr_RelationIterator {
 	public:
@@ -1059,20 +923,6 @@ class Expr_RelationIterator {
 };
 
 
-%feature("shadow") Expr_RelationIterator::~Expr_RelationIterator %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Expr_RelationIterator {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Expr_SequenceNodeOfSequenceOfGeneralExpression;
 class Expr_SequenceNodeOfSequenceOfGeneralExpression : public TCollection_SeqNode {
 	public:
@@ -1089,29 +939,27 @@ class Expr_SequenceNodeOfSequenceOfGeneralExpression : public TCollection_SeqNod
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Expr_GeneralExpression
 ") Value;
-		Handle_Expr_GeneralExpression & Value ();
+		Handle_Expr_GeneralExpression Value ();
 };
 
 
-%feature("shadow") Expr_SequenceNodeOfSequenceOfGeneralExpression::~Expr_SequenceNodeOfSequenceOfGeneralExpression %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend Expr_SequenceNodeOfSequenceOfGeneralExpression {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression::Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend Expr_SequenceNodeOfSequenceOfGeneralExpression {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_SequenceNodeOfSequenceOfGeneralExpression {
-	Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression GetHandle() {
-	return *(Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression*) &$self;
-	}
-};
 
 %nodefaultctor Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression;
 class Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression : public Handle_TCollection_SeqNode {
@@ -1131,20 +979,6 @@ class Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression : public Handle_TCol
     return (Expr_SequenceNodeOfSequenceOfGeneralExpression*)$self->Access();
     }
 };
-%feature("shadow") Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression::~Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_SequenceNodeOfSequenceOfGeneralExpression {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor Expr_SequenceNodeOfSequenceOfGeneralRelation;
 class Expr_SequenceNodeOfSequenceOfGeneralRelation : public TCollection_SeqNode {
@@ -1162,29 +996,27 @@ class Expr_SequenceNodeOfSequenceOfGeneralRelation : public TCollection_SeqNode 
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Expr_GeneralRelation
 ") Value;
-		Handle_Expr_GeneralRelation & Value ();
+		Handle_Expr_GeneralRelation Value ();
 };
 
 
-%feature("shadow") Expr_SequenceNodeOfSequenceOfGeneralRelation::~Expr_SequenceNodeOfSequenceOfGeneralRelation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend Expr_SequenceNodeOfSequenceOfGeneralRelation {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation::Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend Expr_SequenceNodeOfSequenceOfGeneralRelation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_SequenceNodeOfSequenceOfGeneralRelation {
-	Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation GetHandle() {
-	return *(Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation*) &$self;
-	}
-};
 
 %nodefaultctor Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation;
 class Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation : public Handle_TCollection_SeqNode {
@@ -1202,20 +1034,6 @@ class Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation : public Handle_TColle
 %extend Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation {
     Expr_SequenceNodeOfSequenceOfGeneralRelation* GetObject() {
     return (Expr_SequenceNodeOfSequenceOfGeneralRelation*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation::~Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_SequenceNodeOfSequenceOfGeneralRelation {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1301,11 +1119,11 @@ class Expr_SequenceOfGeneralExpression : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Expr_GeneralExpression
 ") First;
-		const Handle_Expr_GeneralExpression & First ();
+		Handle_Expr_GeneralExpression First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Expr_GeneralExpression
 ") Last;
-		const Handle_Expr_GeneralExpression & Last ();
+		Handle_Expr_GeneralExpression Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -1319,7 +1137,7 @@ class Expr_SequenceOfGeneralExpression : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Expr_GeneralExpression
 ") Value;
-		const Handle_Expr_GeneralExpression & Value (const Standard_Integer Index);
+		Handle_Expr_GeneralExpression Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -1333,7 +1151,7 @@ class Expr_SequenceOfGeneralExpression : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Expr_GeneralExpression
 ") ChangeValue;
-		Handle_Expr_GeneralExpression & ChangeValue (const Standard_Integer Index);
+		Handle_Expr_GeneralExpression ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -1351,20 +1169,6 @@ class Expr_SequenceOfGeneralExpression : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Expr_SequenceOfGeneralExpression::~Expr_SequenceOfGeneralExpression %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Expr_SequenceOfGeneralExpression {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Expr_SequenceOfGeneralRelation;
 class Expr_SequenceOfGeneralRelation : public TCollection_BaseSequence {
 	public:
@@ -1447,11 +1251,11 @@ class Expr_SequenceOfGeneralRelation : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_Expr_GeneralRelation
 ") First;
-		const Handle_Expr_GeneralRelation & First ();
+		Handle_Expr_GeneralRelation First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_Expr_GeneralRelation
 ") Last;
-		const Handle_Expr_GeneralRelation & Last ();
+		Handle_Expr_GeneralRelation Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -1465,7 +1269,7 @@ class Expr_SequenceOfGeneralRelation : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Expr_GeneralRelation
 ") Value;
-		const Handle_Expr_GeneralRelation & Value (const Standard_Integer Index);
+		Handle_Expr_GeneralRelation Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -1479,7 +1283,7 @@ class Expr_SequenceOfGeneralRelation : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_Expr_GeneralRelation
 ") ChangeValue;
-		Handle_Expr_GeneralRelation & ChangeValue (const Standard_Integer Index);
+		Handle_Expr_GeneralRelation ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -1497,20 +1301,6 @@ class Expr_SequenceOfGeneralRelation : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Expr_SequenceOfGeneralRelation::~Expr_SequenceOfGeneralRelation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Expr_SequenceOfGeneralRelation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Expr_UnknownIterator;
 class Expr_UnknownIterator {
 	public:
@@ -1535,31 +1325,17 @@ class Expr_UnknownIterator {
 };
 
 
-%feature("shadow") Expr_UnknownIterator::~Expr_UnknownIterator %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Expr_UnknownIterator {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Expr_BinaryExpression;
 class Expr_BinaryExpression : public Expr_GeneralExpression {
 	public:
 		%feature("compactdefaultargs") FirstOperand;
 		%feature("autodoc", "	:rtype: Handle_Expr_GeneralExpression
 ") FirstOperand;
-		const Handle_Expr_GeneralExpression & FirstOperand ();
+		Handle_Expr_GeneralExpression FirstOperand ();
 		%feature("compactdefaultargs") SecondOperand;
 		%feature("autodoc", "	:rtype: Handle_Expr_GeneralExpression
 ") SecondOperand;
-		const Handle_Expr_GeneralExpression & SecondOperand ();
+		Handle_Expr_GeneralExpression SecondOperand ();
 		%feature("compactdefaultargs") SetFirstOperand;
 		%feature("autodoc", "	* Sets first operand of <self> Raises InvalidOperand if exp = me
 
@@ -1589,7 +1365,7 @@ class Expr_BinaryExpression : public Expr_GeneralExpression {
 	:type I: int
 	:rtype: Handle_Expr_GeneralExpression
 ") SubExpression;
-		const Handle_Expr_GeneralExpression & SubExpression (const Standard_Integer I);
+		Handle_Expr_GeneralExpression SubExpression (const Standard_Integer I);
 		%feature("compactdefaultargs") ContainsUnknowns;
 		%feature("autodoc", "	* Does <self> contain NamedUnknown ?
 
@@ -1623,25 +1399,23 @@ class Expr_BinaryExpression : public Expr_GeneralExpression {
 };
 
 
-%feature("shadow") Expr_BinaryExpression::~Expr_BinaryExpression %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_BinaryExpression {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_BinaryExpression(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_BinaryExpression {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_BinaryExpression {
-	Handle_Expr_BinaryExpression GetHandle() {
-	return *(Handle_Expr_BinaryExpression*) &$self;
-	}
-};
+%pythonappend Handle_Expr_BinaryExpression::Handle_Expr_BinaryExpression %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_BinaryExpression;
 class Handle_Expr_BinaryExpression : public Handle_Expr_GeneralExpression {
@@ -1659,20 +1433,6 @@ class Handle_Expr_BinaryExpression : public Handle_Expr_GeneralExpression {
 %extend Handle_Expr_BinaryExpression {
     Expr_BinaryExpression* GetObject() {
     return (Expr_BinaryExpression*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_BinaryExpression::~Handle_Expr_BinaryExpression %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_BinaryExpression {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1788,25 +1548,23 @@ class Expr_FunctionDerivative : public Expr_GeneralFunction {
 };
 
 
-%feature("shadow") Expr_FunctionDerivative::~Expr_FunctionDerivative %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_FunctionDerivative {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_FunctionDerivative(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_FunctionDerivative {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_FunctionDerivative {
-	Handle_Expr_FunctionDerivative GetHandle() {
-	return *(Handle_Expr_FunctionDerivative*) &$self;
-	}
-};
+%pythonappend Handle_Expr_FunctionDerivative::Handle_Expr_FunctionDerivative %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_FunctionDerivative;
 class Handle_Expr_FunctionDerivative : public Handle_Expr_GeneralFunction {
@@ -1824,20 +1582,6 @@ class Handle_Expr_FunctionDerivative : public Handle_Expr_GeneralFunction {
 %extend Handle_Expr_FunctionDerivative {
     Expr_FunctionDerivative* GetObject() {
     return (Expr_FunctionDerivative*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_FunctionDerivative::~Handle_Expr_FunctionDerivative %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_FunctionDerivative {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1877,25 +1621,23 @@ class Expr_NamedExpression : public Expr_GeneralExpression {
 };
 
 
-%feature("shadow") Expr_NamedExpression::~Expr_NamedExpression %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_NamedExpression {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_NamedExpression(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_NamedExpression {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_NamedExpression {
-	Handle_Expr_NamedExpression GetHandle() {
-	return *(Handle_Expr_NamedExpression*) &$self;
-	}
-};
+%pythonappend Handle_Expr_NamedExpression::Handle_Expr_NamedExpression %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_NamedExpression;
 class Handle_Expr_NamedExpression : public Handle_Expr_GeneralExpression {
@@ -1913,20 +1655,6 @@ class Handle_Expr_NamedExpression : public Handle_Expr_GeneralExpression {
 %extend Handle_Expr_NamedExpression {
     Expr_NamedExpression* GetObject() {
     return (Expr_NamedExpression*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_NamedExpression::~Handle_Expr_NamedExpression %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_NamedExpression {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2044,25 +1772,23 @@ class Expr_NamedFunction : public Expr_GeneralFunction {
 };
 
 
-%feature("shadow") Expr_NamedFunction::~Expr_NamedFunction %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_NamedFunction {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_NamedFunction(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_NamedFunction {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_NamedFunction {
-	Handle_Expr_NamedFunction GetHandle() {
-	return *(Handle_Expr_NamedFunction*) &$self;
-	}
-};
+%pythonappend Handle_Expr_NamedFunction::Handle_Expr_NamedFunction %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_NamedFunction;
 class Handle_Expr_NamedFunction : public Handle_Expr_GeneralFunction {
@@ -2080,20 +1806,6 @@ class Handle_Expr_NamedFunction : public Handle_Expr_GeneralFunction {
 %extend Handle_Expr_NamedFunction {
     Expr_NamedFunction* GetObject() {
     return (Expr_NamedFunction*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_NamedFunction::~Handle_Expr_NamedFunction %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_NamedFunction {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2129,7 +1841,7 @@ class Expr_NumericValue : public Expr_GeneralExpression {
 	:type I: int
 	:rtype: Handle_Expr_GeneralExpression
 ") SubExpression;
-		const Handle_Expr_GeneralExpression & SubExpression (const Standard_Integer I);
+		Handle_Expr_GeneralExpression SubExpression (const Standard_Integer I);
 		%feature("compactdefaultargs") Simplified;
 		%feature("autodoc", "	* Returns a GeneralExpression after replacement of NamedUnknowns by an associated expression and after values computation.
 
@@ -2221,25 +1933,23 @@ class Expr_NumericValue : public Expr_GeneralExpression {
 };
 
 
-%feature("shadow") Expr_NumericValue::~Expr_NumericValue %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_NumericValue {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_NumericValue(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_NumericValue {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_NumericValue {
-	Handle_Expr_NumericValue GetHandle() {
-	return *(Handle_Expr_NumericValue*) &$self;
-	}
-};
+%pythonappend Handle_Expr_NumericValue::Handle_Expr_NumericValue %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_NumericValue;
 class Handle_Expr_NumericValue : public Handle_Expr_GeneralExpression {
@@ -2259,20 +1969,6 @@ class Handle_Expr_NumericValue : public Handle_Expr_GeneralExpression {
     return (Expr_NumericValue*)$self->Access();
     }
 };
-%feature("shadow") Handle_Expr_NumericValue::~Handle_Expr_NumericValue %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_NumericValue {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor Expr_PolyExpression;
 class Expr_PolyExpression : public Expr_GeneralExpression {
@@ -2290,7 +1986,7 @@ class Expr_PolyExpression : public Expr_GeneralExpression {
 	:type index: int
 	:rtype: Handle_Expr_GeneralExpression
 ") Operand;
-		const Handle_Expr_GeneralExpression & Operand (const Standard_Integer index);
+		Handle_Expr_GeneralExpression Operand (const Standard_Integer index);
 		%feature("compactdefaultargs") SetOperand;
 		%feature("autodoc", "	* Sets the <index>-th operand used in <self>. An exception is raised if <index> is out of range Raises InvalidOperand if <exp> contains <self>.
 
@@ -2314,7 +2010,7 @@ class Expr_PolyExpression : public Expr_GeneralExpression {
 	:type I: int
 	:rtype: Handle_Expr_GeneralExpression
 ") SubExpression;
-		const Handle_Expr_GeneralExpression & SubExpression (const Standard_Integer I);
+		Handle_Expr_GeneralExpression SubExpression (const Standard_Integer I);
 		%feature("compactdefaultargs") ContainsUnknowns;
 		%feature("autodoc", "	* Does <self> contains NamedUnknown ?
 
@@ -2348,25 +2044,23 @@ class Expr_PolyExpression : public Expr_GeneralExpression {
 };
 
 
-%feature("shadow") Expr_PolyExpression::~Expr_PolyExpression %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_PolyExpression {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_PolyExpression(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_PolyExpression {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_PolyExpression {
-	Handle_Expr_PolyExpression GetHandle() {
-	return *(Handle_Expr_PolyExpression*) &$self;
-	}
-};
+%pythonappend Handle_Expr_PolyExpression::Handle_Expr_PolyExpression %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_PolyExpression;
 class Handle_Expr_PolyExpression : public Handle_Expr_GeneralExpression {
@@ -2384,20 +2078,6 @@ class Handle_Expr_PolyExpression : public Handle_Expr_GeneralExpression {
 %extend Handle_Expr_PolyExpression {
     Expr_PolyExpression* GetObject() {
     return (Expr_PolyExpression*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_PolyExpression::~Handle_Expr_PolyExpression %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_PolyExpression {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2479,25 +2159,23 @@ class Expr_SingleRelation : public Expr_GeneralRelation {
 };
 
 
-%feature("shadow") Expr_SingleRelation::~Expr_SingleRelation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_SingleRelation {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_SingleRelation(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_SingleRelation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_SingleRelation {
-	Handle_Expr_SingleRelation GetHandle() {
-	return *(Handle_Expr_SingleRelation*) &$self;
-	}
-};
+%pythonappend Handle_Expr_SingleRelation::Handle_Expr_SingleRelation %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_SingleRelation;
 class Handle_Expr_SingleRelation : public Handle_Expr_GeneralRelation {
@@ -2515,20 +2193,6 @@ class Handle_Expr_SingleRelation : public Handle_Expr_GeneralRelation {
 %extend Handle_Expr_SingleRelation {
     Expr_SingleRelation* GetObject() {
     return (Expr_SingleRelation*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_SingleRelation::~Handle_Expr_SingleRelation %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_SingleRelation {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2632,25 +2296,23 @@ class Expr_SystemRelation : public Expr_GeneralRelation {
 };
 
 
-%feature("shadow") Expr_SystemRelation::~Expr_SystemRelation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_SystemRelation {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_SystemRelation(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_SystemRelation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_SystemRelation {
-	Handle_Expr_SystemRelation GetHandle() {
-	return *(Handle_Expr_SystemRelation*) &$self;
-	}
-};
+%pythonappend Handle_Expr_SystemRelation::Handle_Expr_SystemRelation %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_SystemRelation;
 class Handle_Expr_SystemRelation : public Handle_Expr_GeneralRelation {
@@ -2670,20 +2332,6 @@ class Handle_Expr_SystemRelation : public Handle_Expr_GeneralRelation {
     return (Expr_SystemRelation*)$self->Access();
     }
 };
-%feature("shadow") Handle_Expr_SystemRelation::~Handle_Expr_SystemRelation %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_SystemRelation {
-    void _kill_pointed() {
-        delete $self;
-    }
-};
 
 %nodefaultctor Expr_UnaryExpression;
 class Expr_UnaryExpression : public Expr_GeneralExpression {
@@ -2693,7 +2341,7 @@ class Expr_UnaryExpression : public Expr_GeneralExpression {
 
 	:rtype: Handle_Expr_GeneralExpression
 ") Operand;
-		const Handle_Expr_GeneralExpression & Operand ();
+		Handle_Expr_GeneralExpression Operand ();
 		%feature("compactdefaultargs") SetOperand;
 		%feature("autodoc", "	* Sets the operand used Raises InvalidOperand if <exp> contains <self>.
 
@@ -2715,7 +2363,7 @@ class Expr_UnaryExpression : public Expr_GeneralExpression {
 	:type I: int
 	:rtype: Handle_Expr_GeneralExpression
 ") SubExpression;
-		const Handle_Expr_GeneralExpression & SubExpression (const Standard_Integer I);
+		Handle_Expr_GeneralExpression SubExpression (const Standard_Integer I);
 		%feature("compactdefaultargs") ContainsUnknowns;
 		%feature("autodoc", "	* Does <self> contains NamedUnknown ?
 
@@ -2749,25 +2397,23 @@ class Expr_UnaryExpression : public Expr_GeneralExpression {
 };
 
 
-%feature("shadow") Expr_UnaryExpression::~Expr_UnaryExpression %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_UnaryExpression {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_UnaryExpression(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_UnaryExpression {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_UnaryExpression {
-	Handle_Expr_UnaryExpression GetHandle() {
-	return *(Handle_Expr_UnaryExpression*) &$self;
-	}
-};
+%pythonappend Handle_Expr_UnaryExpression::Handle_Expr_UnaryExpression %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_UnaryExpression;
 class Handle_Expr_UnaryExpression : public Handle_Expr_GeneralExpression {
@@ -2785,20 +2431,6 @@ class Handle_Expr_UnaryExpression : public Handle_Expr_GeneralExpression {
 %extend Handle_Expr_UnaryExpression {
     Expr_UnaryExpression* GetObject() {
     return (Expr_UnaryExpression*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_UnaryExpression::~Handle_Expr_UnaryExpression %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_UnaryExpression {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2864,25 +2496,23 @@ class Expr_Absolute : public Expr_UnaryExpression {
 };
 
 
-%feature("shadow") Expr_Absolute::~Expr_Absolute %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_Absolute {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_Absolute(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_Absolute {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_Absolute {
-	Handle_Expr_Absolute GetHandle() {
-	return *(Handle_Expr_Absolute*) &$self;
-	}
-};
+%pythonappend Handle_Expr_Absolute::Handle_Expr_Absolute %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_Absolute;
 class Handle_Expr_Absolute : public Handle_Expr_UnaryExpression {
@@ -2900,20 +2530,6 @@ class Handle_Expr_Absolute : public Handle_Expr_UnaryExpression {
 %extend Handle_Expr_Absolute {
     Expr_Absolute* GetObject() {
     return (Expr_Absolute*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_Absolute::~Handle_Expr_Absolute %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_Absolute {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2979,25 +2595,23 @@ class Expr_ArcCosine : public Expr_UnaryExpression {
 };
 
 
-%feature("shadow") Expr_ArcCosine::~Expr_ArcCosine %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_ArcCosine {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_ArcCosine(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_ArcCosine {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_ArcCosine {
-	Handle_Expr_ArcCosine GetHandle() {
-	return *(Handle_Expr_ArcCosine*) &$self;
-	}
-};
+%pythonappend Handle_Expr_ArcCosine::Handle_Expr_ArcCosine %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_ArcCosine;
 class Handle_Expr_ArcCosine : public Handle_Expr_UnaryExpression {
@@ -3015,20 +2629,6 @@ class Handle_Expr_ArcCosine : public Handle_Expr_UnaryExpression {
 %extend Handle_Expr_ArcCosine {
     Expr_ArcCosine* GetObject() {
     return (Expr_ArcCosine*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_ArcCosine::~Handle_Expr_ArcCosine %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_ArcCosine {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3094,25 +2694,23 @@ class Expr_ArcSine : public Expr_UnaryExpression {
 };
 
 
-%feature("shadow") Expr_ArcSine::~Expr_ArcSine %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_ArcSine {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_ArcSine(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_ArcSine {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_ArcSine {
-	Handle_Expr_ArcSine GetHandle() {
-	return *(Handle_Expr_ArcSine*) &$self;
-	}
-};
+%pythonappend Handle_Expr_ArcSine::Handle_Expr_ArcSine %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_ArcSine;
 class Handle_Expr_ArcSine : public Handle_Expr_UnaryExpression {
@@ -3130,20 +2728,6 @@ class Handle_Expr_ArcSine : public Handle_Expr_UnaryExpression {
 %extend Handle_Expr_ArcSine {
     Expr_ArcSine* GetObject() {
     return (Expr_ArcSine*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_ArcSine::~Handle_Expr_ArcSine %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_ArcSine {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3209,25 +2793,23 @@ class Expr_ArcTangent : public Expr_UnaryExpression {
 };
 
 
-%feature("shadow") Expr_ArcTangent::~Expr_ArcTangent %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_ArcTangent {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_ArcTangent(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_ArcTangent {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_ArcTangent {
-	Handle_Expr_ArcTangent GetHandle() {
-	return *(Handle_Expr_ArcTangent*) &$self;
-	}
-};
+%pythonappend Handle_Expr_ArcTangent::Handle_Expr_ArcTangent %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_ArcTangent;
 class Handle_Expr_ArcTangent : public Handle_Expr_UnaryExpression {
@@ -3245,20 +2827,6 @@ class Handle_Expr_ArcTangent : public Handle_Expr_UnaryExpression {
 %extend Handle_Expr_ArcTangent {
     Expr_ArcTangent* GetObject() {
     return (Expr_ArcTangent*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_ArcTangent::~Handle_Expr_ArcTangent %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_ArcTangent {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3324,25 +2892,23 @@ class Expr_ArgCosh : public Expr_UnaryExpression {
 };
 
 
-%feature("shadow") Expr_ArgCosh::~Expr_ArgCosh %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_ArgCosh {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_ArgCosh(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_ArgCosh {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_ArgCosh {
-	Handle_Expr_ArgCosh GetHandle() {
-	return *(Handle_Expr_ArgCosh*) &$self;
-	}
-};
+%pythonappend Handle_Expr_ArgCosh::Handle_Expr_ArgCosh %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_ArgCosh;
 class Handle_Expr_ArgCosh : public Handle_Expr_UnaryExpression {
@@ -3360,20 +2926,6 @@ class Handle_Expr_ArgCosh : public Handle_Expr_UnaryExpression {
 %extend Handle_Expr_ArgCosh {
     Expr_ArgCosh* GetObject() {
     return (Expr_ArgCosh*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_ArgCosh::~Handle_Expr_ArgCosh %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_ArgCosh {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3439,25 +2991,23 @@ class Expr_ArgSinh : public Expr_UnaryExpression {
 };
 
 
-%feature("shadow") Expr_ArgSinh::~Expr_ArgSinh %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_ArgSinh {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_ArgSinh(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_ArgSinh {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_ArgSinh {
-	Handle_Expr_ArgSinh GetHandle() {
-	return *(Handle_Expr_ArgSinh*) &$self;
-	}
-};
+%pythonappend Handle_Expr_ArgSinh::Handle_Expr_ArgSinh %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_ArgSinh;
 class Handle_Expr_ArgSinh : public Handle_Expr_UnaryExpression {
@@ -3475,20 +3025,6 @@ class Handle_Expr_ArgSinh : public Handle_Expr_UnaryExpression {
 %extend Handle_Expr_ArgSinh {
     Expr_ArgSinh* GetObject() {
     return (Expr_ArgSinh*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_ArgSinh::~Handle_Expr_ArgSinh %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_ArgSinh {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3554,25 +3090,23 @@ class Expr_ArgTanh : public Expr_UnaryExpression {
 };
 
 
-%feature("shadow") Expr_ArgTanh::~Expr_ArgTanh %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_ArgTanh {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_ArgTanh(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_ArgTanh {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_ArgTanh {
-	Handle_Expr_ArgTanh GetHandle() {
-	return *(Handle_Expr_ArgTanh*) &$self;
-	}
-};
+%pythonappend Handle_Expr_ArgTanh::Handle_Expr_ArgTanh %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_ArgTanh;
 class Handle_Expr_ArgTanh : public Handle_Expr_UnaryExpression {
@@ -3590,20 +3124,6 @@ class Handle_Expr_ArgTanh : public Handle_Expr_UnaryExpression {
 %extend Handle_Expr_ArgTanh {
     Expr_ArgTanh* GetObject() {
     return (Expr_ArgTanh*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_ArgTanh::~Handle_Expr_ArgTanh %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_ArgTanh {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3679,25 +3199,23 @@ class Expr_BinaryFunction : public Expr_BinaryExpression {
 };
 
 
-%feature("shadow") Expr_BinaryFunction::~Expr_BinaryFunction %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_BinaryFunction {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_BinaryFunction(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_BinaryFunction {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_BinaryFunction {
-	Handle_Expr_BinaryFunction GetHandle() {
-	return *(Handle_Expr_BinaryFunction*) &$self;
-	}
-};
+%pythonappend Handle_Expr_BinaryFunction::Handle_Expr_BinaryFunction %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_BinaryFunction;
 class Handle_Expr_BinaryFunction : public Handle_Expr_BinaryExpression {
@@ -3715,20 +3233,6 @@ class Handle_Expr_BinaryFunction : public Handle_Expr_BinaryExpression {
 %extend Handle_Expr_BinaryFunction {
     Expr_BinaryFunction* GetObject() {
     return (Expr_BinaryFunction*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_BinaryFunction::~Handle_Expr_BinaryFunction %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_BinaryFunction {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3794,25 +3298,23 @@ class Expr_Cosh : public Expr_UnaryExpression {
 };
 
 
-%feature("shadow") Expr_Cosh::~Expr_Cosh %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_Cosh {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_Cosh(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_Cosh {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_Cosh {
-	Handle_Expr_Cosh GetHandle() {
-	return *(Handle_Expr_Cosh*) &$self;
-	}
-};
+%pythonappend Handle_Expr_Cosh::Handle_Expr_Cosh %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_Cosh;
 class Handle_Expr_Cosh : public Handle_Expr_UnaryExpression {
@@ -3830,20 +3332,6 @@ class Handle_Expr_Cosh : public Handle_Expr_UnaryExpression {
 %extend Handle_Expr_Cosh {
     Expr_Cosh* GetObject() {
     return (Expr_Cosh*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_Cosh::~Handle_Expr_Cosh %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_Cosh {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3909,25 +3397,23 @@ class Expr_Cosine : public Expr_UnaryExpression {
 };
 
 
-%feature("shadow") Expr_Cosine::~Expr_Cosine %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_Cosine {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_Cosine(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_Cosine {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_Cosine {
-	Handle_Expr_Cosine GetHandle() {
-	return *(Handle_Expr_Cosine*) &$self;
-	}
-};
+%pythonappend Handle_Expr_Cosine::Handle_Expr_Cosine %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_Cosine;
 class Handle_Expr_Cosine : public Handle_Expr_UnaryExpression {
@@ -3945,20 +3431,6 @@ class Handle_Expr_Cosine : public Handle_Expr_UnaryExpression {
 %extend Handle_Expr_Cosine {
     Expr_Cosine* GetObject() {
     return (Expr_Cosine*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_Cosine::~Handle_Expr_Cosine %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_Cosine {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4036,25 +3508,23 @@ class Expr_Difference : public Expr_BinaryExpression {
 };
 
 
-%feature("shadow") Expr_Difference::~Expr_Difference %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_Difference {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_Difference(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_Difference {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_Difference {
-	Handle_Expr_Difference GetHandle() {
-	return *(Handle_Expr_Difference*) &$self;
-	}
-};
+%pythonappend Handle_Expr_Difference::Handle_Expr_Difference %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_Difference;
 class Handle_Expr_Difference : public Handle_Expr_BinaryExpression {
@@ -4072,20 +3542,6 @@ class Handle_Expr_Difference : public Handle_Expr_BinaryExpression {
 %extend Handle_Expr_Difference {
     Expr_Difference* GetObject() {
     return (Expr_Difference*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_Difference::~Handle_Expr_Difference %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_Difference {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4133,25 +3589,23 @@ class Expr_Different : public Expr_SingleRelation {
 };
 
 
-%feature("shadow") Expr_Different::~Expr_Different %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_Different {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_Different(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_Different {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_Different {
-	Handle_Expr_Different GetHandle() {
-	return *(Handle_Expr_Different*) &$self;
-	}
-};
+%pythonappend Handle_Expr_Different::Handle_Expr_Different %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_Different;
 class Handle_Expr_Different : public Handle_Expr_SingleRelation {
@@ -4169,20 +3623,6 @@ class Handle_Expr_Different : public Handle_Expr_SingleRelation {
 %extend Handle_Expr_Different {
     Expr_Different* GetObject() {
     return (Expr_Different*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_Different::~Handle_Expr_Different %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_Different {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4250,25 +3690,23 @@ class Expr_Division : public Expr_BinaryExpression {
 };
 
 
-%feature("shadow") Expr_Division::~Expr_Division %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_Division {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_Division(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_Division {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_Division {
-	Handle_Expr_Division GetHandle() {
-	return *(Handle_Expr_Division*) &$self;
-	}
-};
+%pythonappend Handle_Expr_Division::Handle_Expr_Division %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_Division;
 class Handle_Expr_Division : public Handle_Expr_BinaryExpression {
@@ -4286,20 +3724,6 @@ class Handle_Expr_Division : public Handle_Expr_BinaryExpression {
 %extend Handle_Expr_Division {
     Expr_Division* GetObject() {
     return (Expr_Division*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_Division::~Handle_Expr_Division %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_Division {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4347,25 +3771,23 @@ class Expr_Equal : public Expr_SingleRelation {
 };
 
 
-%feature("shadow") Expr_Equal::~Expr_Equal %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_Equal {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_Equal(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_Equal {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_Equal {
-	Handle_Expr_Equal GetHandle() {
-	return *(Handle_Expr_Equal*) &$self;
-	}
-};
+%pythonappend Handle_Expr_Equal::Handle_Expr_Equal %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_Equal;
 class Handle_Expr_Equal : public Handle_Expr_SingleRelation {
@@ -4383,20 +3805,6 @@ class Handle_Expr_Equal : public Handle_Expr_SingleRelation {
 %extend Handle_Expr_Equal {
     Expr_Equal* GetObject() {
     return (Expr_Equal*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_Equal::~Handle_Expr_Equal %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_Equal {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4462,25 +3870,23 @@ class Expr_Exponential : public Expr_UnaryExpression {
 };
 
 
-%feature("shadow") Expr_Exponential::~Expr_Exponential %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_Exponential {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_Exponential(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_Exponential {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_Exponential {
-	Handle_Expr_Exponential GetHandle() {
-	return *(Handle_Expr_Exponential*) &$self;
-	}
-};
+%pythonappend Handle_Expr_Exponential::Handle_Expr_Exponential %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_Exponential;
 class Handle_Expr_Exponential : public Handle_Expr_UnaryExpression {
@@ -4498,20 +3904,6 @@ class Handle_Expr_Exponential : public Handle_Expr_UnaryExpression {
 %extend Handle_Expr_Exponential {
     Expr_Exponential* GetObject() {
     return (Expr_Exponential*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_Exponential::~Handle_Expr_Exponential %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_Exponential {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4579,25 +3971,23 @@ class Expr_Exponentiate : public Expr_BinaryExpression {
 };
 
 
-%feature("shadow") Expr_Exponentiate::~Expr_Exponentiate %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_Exponentiate {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_Exponentiate(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_Exponentiate {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_Exponentiate {
-	Handle_Expr_Exponentiate GetHandle() {
-	return *(Handle_Expr_Exponentiate*) &$self;
-	}
-};
+%pythonappend Handle_Expr_Exponentiate::Handle_Expr_Exponentiate %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_Exponentiate;
 class Handle_Expr_Exponentiate : public Handle_Expr_BinaryExpression {
@@ -4615,20 +4005,6 @@ class Handle_Expr_Exponentiate : public Handle_Expr_BinaryExpression {
 %extend Handle_Expr_Exponentiate {
     Expr_Exponentiate* GetObject() {
     return (Expr_Exponentiate*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_Exponentiate::~Handle_Expr_Exponentiate %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_Exponentiate {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4676,25 +4052,23 @@ class Expr_GreaterThan : public Expr_SingleRelation {
 };
 
 
-%feature("shadow") Expr_GreaterThan::~Expr_GreaterThan %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_GreaterThan {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_GreaterThan(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_GreaterThan {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_GreaterThan {
-	Handle_Expr_GreaterThan GetHandle() {
-	return *(Handle_Expr_GreaterThan*) &$self;
-	}
-};
+%pythonappend Handle_Expr_GreaterThan::Handle_Expr_GreaterThan %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_GreaterThan;
 class Handle_Expr_GreaterThan : public Handle_Expr_SingleRelation {
@@ -4712,20 +4086,6 @@ class Handle_Expr_GreaterThan : public Handle_Expr_SingleRelation {
 %extend Handle_Expr_GreaterThan {
     Expr_GreaterThan* GetObject() {
     return (Expr_GreaterThan*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_GreaterThan::~Handle_Expr_GreaterThan %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_GreaterThan {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4773,25 +4133,23 @@ class Expr_GreaterThanOrEqual : public Expr_SingleRelation {
 };
 
 
-%feature("shadow") Expr_GreaterThanOrEqual::~Expr_GreaterThanOrEqual %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_GreaterThanOrEqual {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_GreaterThanOrEqual(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_GreaterThanOrEqual {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_GreaterThanOrEqual {
-	Handle_Expr_GreaterThanOrEqual GetHandle() {
-	return *(Handle_Expr_GreaterThanOrEqual*) &$self;
-	}
-};
+%pythonappend Handle_Expr_GreaterThanOrEqual::Handle_Expr_GreaterThanOrEqual %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_GreaterThanOrEqual;
 class Handle_Expr_GreaterThanOrEqual : public Handle_Expr_SingleRelation {
@@ -4809,20 +4167,6 @@ class Handle_Expr_GreaterThanOrEqual : public Handle_Expr_SingleRelation {
 %extend Handle_Expr_GreaterThanOrEqual {
     Expr_GreaterThanOrEqual* GetObject() {
     return (Expr_GreaterThanOrEqual*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_GreaterThanOrEqual::~Handle_Expr_GreaterThanOrEqual %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_GreaterThanOrEqual {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4870,25 +4214,23 @@ class Expr_LessThan : public Expr_SingleRelation {
 };
 
 
-%feature("shadow") Expr_LessThan::~Expr_LessThan %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_LessThan {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_LessThan(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_LessThan {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_LessThan {
-	Handle_Expr_LessThan GetHandle() {
-	return *(Handle_Expr_LessThan*) &$self;
-	}
-};
+%pythonappend Handle_Expr_LessThan::Handle_Expr_LessThan %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_LessThan;
 class Handle_Expr_LessThan : public Handle_Expr_SingleRelation {
@@ -4906,20 +4248,6 @@ class Handle_Expr_LessThan : public Handle_Expr_SingleRelation {
 %extend Handle_Expr_LessThan {
     Expr_LessThan* GetObject() {
     return (Expr_LessThan*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_LessThan::~Handle_Expr_LessThan %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_LessThan {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4967,25 +4295,23 @@ class Expr_LessThanOrEqual : public Expr_SingleRelation {
 };
 
 
-%feature("shadow") Expr_LessThanOrEqual::~Expr_LessThanOrEqual %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_LessThanOrEqual {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_LessThanOrEqual(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_LessThanOrEqual {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_LessThanOrEqual {
-	Handle_Expr_LessThanOrEqual GetHandle() {
-	return *(Handle_Expr_LessThanOrEqual*) &$self;
-	}
-};
+%pythonappend Handle_Expr_LessThanOrEqual::Handle_Expr_LessThanOrEqual %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_LessThanOrEqual;
 class Handle_Expr_LessThanOrEqual : public Handle_Expr_SingleRelation {
@@ -5003,20 +4329,6 @@ class Handle_Expr_LessThanOrEqual : public Handle_Expr_SingleRelation {
 %extend Handle_Expr_LessThanOrEqual {
     Expr_LessThanOrEqual* GetObject() {
     return (Expr_LessThanOrEqual*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_LessThanOrEqual::~Handle_Expr_LessThanOrEqual %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_LessThanOrEqual {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5082,25 +4394,23 @@ class Expr_LogOf10 : public Expr_UnaryExpression {
 };
 
 
-%feature("shadow") Expr_LogOf10::~Expr_LogOf10 %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_LogOf10 {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_LogOf10(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_LogOf10 {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_LogOf10 {
-	Handle_Expr_LogOf10 GetHandle() {
-	return *(Handle_Expr_LogOf10*) &$self;
-	}
-};
+%pythonappend Handle_Expr_LogOf10::Handle_Expr_LogOf10 %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_LogOf10;
 class Handle_Expr_LogOf10 : public Handle_Expr_UnaryExpression {
@@ -5118,20 +4428,6 @@ class Handle_Expr_LogOf10 : public Handle_Expr_UnaryExpression {
 %extend Handle_Expr_LogOf10 {
     Expr_LogOf10* GetObject() {
     return (Expr_LogOf10*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_LogOf10::~Handle_Expr_LogOf10 %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_LogOf10 {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5197,25 +4493,23 @@ class Expr_LogOfe : public Expr_UnaryExpression {
 };
 
 
-%feature("shadow") Expr_LogOfe::~Expr_LogOfe %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_LogOfe {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_LogOfe(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_LogOfe {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_LogOfe {
-	Handle_Expr_LogOfe GetHandle() {
-	return *(Handle_Expr_LogOfe*) &$self;
-	}
-};
+%pythonappend Handle_Expr_LogOfe::Handle_Expr_LogOfe %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_LogOfe;
 class Handle_Expr_LogOfe : public Handle_Expr_UnaryExpression {
@@ -5233,20 +4527,6 @@ class Handle_Expr_LogOfe : public Handle_Expr_UnaryExpression {
 %extend Handle_Expr_LogOfe {
     Expr_LogOfe* GetObject() {
     return (Expr_LogOfe*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_LogOfe::~Handle_Expr_LogOfe %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_LogOfe {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5280,7 +4560,7 @@ class Expr_NamedConstant : public Expr_NamedExpression {
 	:type I: int
 	:rtype: Handle_Expr_GeneralExpression
 ") SubExpression;
-		const Handle_Expr_GeneralExpression & SubExpression (const Standard_Integer I);
+		Handle_Expr_GeneralExpression SubExpression (const Standard_Integer I);
 		%feature("compactdefaultargs") Simplified;
 		%feature("autodoc", "	* returns a GeneralExpression after replacement of NamedUnknowns by an associated expression and after values computation.
 
@@ -5358,25 +4638,23 @@ class Expr_NamedConstant : public Expr_NamedExpression {
 };
 
 
-%feature("shadow") Expr_NamedConstant::~Expr_NamedConstant %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_NamedConstant {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_NamedConstant(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_NamedConstant {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_NamedConstant {
-	Handle_Expr_NamedConstant GetHandle() {
-	return *(Handle_Expr_NamedConstant*) &$self;
-	}
-};
+%pythonappend Handle_Expr_NamedConstant::Handle_Expr_NamedConstant %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_NamedConstant;
 class Handle_Expr_NamedConstant : public Handle_Expr_NamedExpression {
@@ -5394,20 +4672,6 @@ class Handle_Expr_NamedConstant : public Handle_Expr_NamedExpression {
 %extend Handle_Expr_NamedConstant {
     Expr_NamedConstant* GetObject() {
     return (Expr_NamedConstant*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_NamedConstant::~Handle_Expr_NamedConstant %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_NamedConstant {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5431,7 +4695,7 @@ class Expr_NamedUnknown : public Expr_NamedExpression {
 
 	:rtype: Handle_Expr_GeneralExpression
 ") AssignedExpression;
-		const Handle_Expr_GeneralExpression & AssignedExpression ();
+		Handle_Expr_GeneralExpression AssignedExpression ();
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	* Assigns <self> to <exp> expression. Raises exception if <exp> refers to <self>.
 
@@ -5459,7 +4723,7 @@ class Expr_NamedUnknown : public Expr_NamedExpression {
 	:type I: int
 	:rtype: Handle_Expr_GeneralExpression
 ") SubExpression;
-		const Handle_Expr_GeneralExpression & SubExpression (const Standard_Integer I);
+		Handle_Expr_GeneralExpression SubExpression (const Standard_Integer I);
 		%feature("compactdefaultargs") Simplified;
 		%feature("autodoc", "	* Returns a GeneralExpression after replacement of NamedUnknowns by an associated expression and after values computation.
 
@@ -5527,25 +4791,23 @@ class Expr_NamedUnknown : public Expr_NamedExpression {
 };
 
 
-%feature("shadow") Expr_NamedUnknown::~Expr_NamedUnknown %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_NamedUnknown {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_NamedUnknown(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_NamedUnknown {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_NamedUnknown {
-	Handle_Expr_NamedUnknown GetHandle() {
-	return *(Handle_Expr_NamedUnknown*) &$self;
-	}
-};
+%pythonappend Handle_Expr_NamedUnknown::Handle_Expr_NamedUnknown %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_NamedUnknown;
 class Handle_Expr_NamedUnknown : public Handle_Expr_NamedExpression {
@@ -5563,20 +4825,6 @@ class Handle_Expr_NamedUnknown : public Handle_Expr_NamedExpression {
 %extend Handle_Expr_NamedUnknown {
     Expr_NamedUnknown* GetObject() {
     return (Expr_NamedUnknown*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_NamedUnknown::~Handle_Expr_NamedUnknown %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_NamedUnknown {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5650,25 +4898,23 @@ class Expr_PolyFunction : public Expr_PolyExpression {
 };
 
 
-%feature("shadow") Expr_PolyFunction::~Expr_PolyFunction %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_PolyFunction {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_PolyFunction(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_PolyFunction {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_PolyFunction {
-	Handle_Expr_PolyFunction GetHandle() {
-	return *(Handle_Expr_PolyFunction*) &$self;
-	}
-};
+%pythonappend Handle_Expr_PolyFunction::Handle_Expr_PolyFunction %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_PolyFunction;
 class Handle_Expr_PolyFunction : public Handle_Expr_PolyExpression {
@@ -5686,20 +4932,6 @@ class Handle_Expr_PolyFunction : public Handle_Expr_PolyExpression {
 %extend Handle_Expr_PolyFunction {
     Expr_PolyFunction* GetObject() {
     return (Expr_PolyFunction*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_PolyFunction::~Handle_Expr_PolyFunction %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_PolyFunction {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5775,25 +5007,23 @@ class Expr_Product : public Expr_PolyExpression {
 };
 
 
-%feature("shadow") Expr_Product::~Expr_Product %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_Product {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_Product(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_Product {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_Product {
-	Handle_Expr_Product GetHandle() {
-	return *(Handle_Expr_Product*) &$self;
-	}
-};
+%pythonappend Handle_Expr_Product::Handle_Expr_Product %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_Product;
 class Handle_Expr_Product : public Handle_Expr_PolyExpression {
@@ -5811,20 +5041,6 @@ class Handle_Expr_Product : public Handle_Expr_PolyExpression {
 %extend Handle_Expr_Product {
     Expr_Product* GetObject() {
     return (Expr_Product*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_Product::~Handle_Expr_Product %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_Product {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5890,25 +5106,23 @@ class Expr_Sine : public Expr_UnaryExpression {
 };
 
 
-%feature("shadow") Expr_Sine::~Expr_Sine %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_Sine {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_Sine(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_Sine {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_Sine {
-	Handle_Expr_Sine GetHandle() {
-	return *(Handle_Expr_Sine*) &$self;
-	}
-};
+%pythonappend Handle_Expr_Sine::Handle_Expr_Sine %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_Sine;
 class Handle_Expr_Sine : public Handle_Expr_UnaryExpression {
@@ -5926,20 +5140,6 @@ class Handle_Expr_Sine : public Handle_Expr_UnaryExpression {
 %extend Handle_Expr_Sine {
     Expr_Sine* GetObject() {
     return (Expr_Sine*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_Sine::~Handle_Expr_Sine %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_Sine {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6005,25 +5205,23 @@ class Expr_Sinh : public Expr_UnaryExpression {
 };
 
 
-%feature("shadow") Expr_Sinh::~Expr_Sinh %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_Sinh {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_Sinh(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_Sinh {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_Sinh {
-	Handle_Expr_Sinh GetHandle() {
-	return *(Handle_Expr_Sinh*) &$self;
-	}
-};
+%pythonappend Handle_Expr_Sinh::Handle_Expr_Sinh %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_Sinh;
 class Handle_Expr_Sinh : public Handle_Expr_UnaryExpression {
@@ -6041,20 +5239,6 @@ class Handle_Expr_Sinh : public Handle_Expr_UnaryExpression {
 %extend Handle_Expr_Sinh {
     Expr_Sinh* GetObject() {
     return (Expr_Sinh*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_Sinh::~Handle_Expr_Sinh %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_Sinh {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6120,25 +5304,23 @@ class Expr_Square : public Expr_UnaryExpression {
 };
 
 
-%feature("shadow") Expr_Square::~Expr_Square %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_Square {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_Square(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_Square {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_Square {
-	Handle_Expr_Square GetHandle() {
-	return *(Handle_Expr_Square*) &$self;
-	}
-};
+%pythonappend Handle_Expr_Square::Handle_Expr_Square %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_Square;
 class Handle_Expr_Square : public Handle_Expr_UnaryExpression {
@@ -6156,20 +5338,6 @@ class Handle_Expr_Square : public Handle_Expr_UnaryExpression {
 %extend Handle_Expr_Square {
     Expr_Square* GetObject() {
     return (Expr_Square*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_Square::~Handle_Expr_Square %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_Square {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6235,25 +5403,23 @@ class Expr_SquareRoot : public Expr_UnaryExpression {
 };
 
 
-%feature("shadow") Expr_SquareRoot::~Expr_SquareRoot %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_SquareRoot {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_SquareRoot(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_SquareRoot {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_SquareRoot {
-	Handle_Expr_SquareRoot GetHandle() {
-	return *(Handle_Expr_SquareRoot*) &$self;
-	}
-};
+%pythonappend Handle_Expr_SquareRoot::Handle_Expr_SquareRoot %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_SquareRoot;
 class Handle_Expr_SquareRoot : public Handle_Expr_UnaryExpression {
@@ -6271,20 +5437,6 @@ class Handle_Expr_SquareRoot : public Handle_Expr_UnaryExpression {
 %extend Handle_Expr_SquareRoot {
     Expr_SquareRoot* GetObject() {
     return (Expr_SquareRoot*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_SquareRoot::~Handle_Expr_SquareRoot %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_SquareRoot {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6370,25 +5522,23 @@ class Expr_Sum : public Expr_PolyExpression {
 };
 
 
-%feature("shadow") Expr_Sum::~Expr_Sum %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_Sum {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_Sum(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_Sum {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_Sum {
-	Handle_Expr_Sum GetHandle() {
-	return *(Handle_Expr_Sum*) &$self;
-	}
-};
+%pythonappend Handle_Expr_Sum::Handle_Expr_Sum %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_Sum;
 class Handle_Expr_Sum : public Handle_Expr_PolyExpression {
@@ -6406,20 +5556,6 @@ class Handle_Expr_Sum : public Handle_Expr_PolyExpression {
 %extend Handle_Expr_Sum {
     Expr_Sum* GetObject() {
     return (Expr_Sum*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_Sum::~Handle_Expr_Sum %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_Sum {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6485,25 +5621,23 @@ class Expr_Tangent : public Expr_UnaryExpression {
 };
 
 
-%feature("shadow") Expr_Tangent::~Expr_Tangent %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_Tangent {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_Tangent(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_Tangent {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_Tangent {
-	Handle_Expr_Tangent GetHandle() {
-	return *(Handle_Expr_Tangent*) &$self;
-	}
-};
+%pythonappend Handle_Expr_Tangent::Handle_Expr_Tangent %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_Tangent;
 class Handle_Expr_Tangent : public Handle_Expr_UnaryExpression {
@@ -6521,20 +5655,6 @@ class Handle_Expr_Tangent : public Handle_Expr_UnaryExpression {
 %extend Handle_Expr_Tangent {
     Expr_Tangent* GetObject() {
     return (Expr_Tangent*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_Tangent::~Handle_Expr_Tangent %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_Tangent {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6600,25 +5720,23 @@ class Expr_Tanh : public Expr_UnaryExpression {
 };
 
 
-%feature("shadow") Expr_Tanh::~Expr_Tanh %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_Tanh {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_Tanh(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_Tanh {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_Tanh {
-	Handle_Expr_Tanh GetHandle() {
-	return *(Handle_Expr_Tanh*) &$self;
-	}
-};
+%pythonappend Handle_Expr_Tanh::Handle_Expr_Tanh %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_Tanh;
 class Handle_Expr_Tanh : public Handle_Expr_UnaryExpression {
@@ -6636,20 +5754,6 @@ class Handle_Expr_Tanh : public Handle_Expr_UnaryExpression {
 %extend Handle_Expr_Tanh {
     Expr_Tanh* GetObject() {
     return (Expr_Tanh*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_Tanh::~Handle_Expr_Tanh %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_Tanh {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6723,25 +5827,23 @@ class Expr_UnaryFunction : public Expr_UnaryExpression {
 };
 
 
-%feature("shadow") Expr_UnaryFunction::~Expr_UnaryFunction %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_UnaryFunction {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_UnaryFunction(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_UnaryFunction {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_UnaryFunction {
-	Handle_Expr_UnaryFunction GetHandle() {
-	return *(Handle_Expr_UnaryFunction*) &$self;
-	}
-};
+%pythonappend Handle_Expr_UnaryFunction::Handle_Expr_UnaryFunction %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_UnaryFunction;
 class Handle_Expr_UnaryFunction : public Handle_Expr_UnaryExpression {
@@ -6759,20 +5861,6 @@ class Handle_Expr_UnaryFunction : public Handle_Expr_UnaryExpression {
 %extend Handle_Expr_UnaryFunction {
     Expr_UnaryFunction* GetObject() {
     return (Expr_UnaryFunction*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_UnaryFunction::~Handle_Expr_UnaryFunction %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_UnaryFunction {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -6848,25 +5936,23 @@ class Expr_UnaryMinus : public Expr_UnaryExpression {
 };
 
 
-%feature("shadow") Expr_UnaryMinus::~Expr_UnaryMinus %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Expr_UnaryMinus {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Expr_UnaryMinus(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Expr_UnaryMinus {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Expr_UnaryMinus {
-	Handle_Expr_UnaryMinus GetHandle() {
-	return *(Handle_Expr_UnaryMinus*) &$self;
-	}
-};
+%pythonappend Handle_Expr_UnaryMinus::Handle_Expr_UnaryMinus %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Expr_UnaryMinus;
 class Handle_Expr_UnaryMinus : public Handle_Expr_UnaryExpression {
@@ -6884,20 +5970,6 @@ class Handle_Expr_UnaryMinus : public Handle_Expr_UnaryExpression {
 %extend Handle_Expr_UnaryMinus {
     Expr_UnaryMinus* GetObject() {
     return (Expr_UnaryMinus*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Expr_UnaryMinus::~Handle_Expr_UnaryMinus %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Expr_UnaryMinus {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

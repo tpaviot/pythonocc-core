@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include IntTools_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -126,20 +138,6 @@ class IntTools {
 };
 
 
-%feature("shadow") IntTools::~IntTools %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_Array1OfRange;
 class IntTools_Array1OfRange {
 	public:
@@ -222,20 +220,6 @@ class IntTools_Array1OfRange {
 };
 
 
-%feature("shadow") IntTools_Array1OfRange::~IntTools_Array1OfRange %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_Array1OfRange {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_Array1OfRoots;
 class IntTools_Array1OfRoots {
 	public:
@@ -318,20 +302,6 @@ class IntTools_Array1OfRoots {
 };
 
 
-%feature("shadow") IntTools_Array1OfRoots::~IntTools_Array1OfRoots %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_Array1OfRoots {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_BaseRangeSample;
 class IntTools_BaseRangeSample {
 	public:
@@ -358,20 +328,6 @@ class IntTools_BaseRangeSample {
 };
 
 
-%feature("shadow") IntTools_BaseRangeSample::~IntTools_BaseRangeSample %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_BaseRangeSample {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_BeanFaceIntersector;
 class IntTools_BeanFaceIntersector {
 	public:
@@ -492,7 +448,7 @@ class IntTools_BeanFaceIntersector {
 
 	:rtype: Handle_BOPInt_Context
 ") Context;
-		const Handle_BOPInt_Context & Context ();
+		Handle_BOPInt_Context Context ();
 		%feature("compactdefaultargs") SetBeanParameters;
 		%feature("autodoc", "	* Set restrictions for curve
 
@@ -540,20 +496,6 @@ class IntTools_BeanFaceIntersector {
 };
 
 
-%feature("shadow") IntTools_BeanFaceIntersector::~IntTools_BeanFaceIntersector %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_BeanFaceIntersector {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_CommonPrt;
 class IntTools_CommonPrt {
 	public:
@@ -762,20 +704,6 @@ class IntTools_CommonPrt {
 };
 
 
-%feature("shadow") IntTools_CommonPrt::~IntTools_CommonPrt %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_CommonPrt {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_Compare;
 class IntTools_Compare {
 	public:
@@ -826,20 +754,6 @@ class IntTools_Compare {
 };
 
 
-%feature("shadow") IntTools_Compare::~IntTools_Compare %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_Compare {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_CompareRange;
 class IntTools_CompareRange {
 	public:
@@ -890,20 +804,6 @@ class IntTools_CompareRange {
 };
 
 
-%feature("shadow") IntTools_CompareRange::~IntTools_CompareRange %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_CompareRange {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_Curve;
 class IntTools_Curve {
 	public:
@@ -966,19 +866,19 @@ class IntTools_Curve {
 
 	:rtype: Handle_Geom_Curve
 ") Curve;
-		const Handle_Geom_Curve & Curve ();
+		Handle_Geom_Curve Curve ();
 		%feature("compactdefaultargs") FirstCurve2d;
 		%feature("autodoc", "	* Selector
 
 	:rtype: Handle_Geom2d_Curve
 ") FirstCurve2d;
-		const Handle_Geom2d_Curve & FirstCurve2d ();
+		Handle_Geom2d_Curve FirstCurve2d ();
 		%feature("compactdefaultargs") SecondCurve2d;
 		%feature("autodoc", "	* Selector
 
 	:rtype: Handle_Geom2d_Curve
 ") SecondCurve2d;
-		const Handle_Geom2d_Curve & SecondCurve2d ();
+		Handle_Geom2d_Curve SecondCurve2d ();
 		%feature("compactdefaultargs") HasBounds;
 		%feature("autodoc", "	* Returns true if 3d curve is BoundedCurve from Geom
 
@@ -1018,20 +918,6 @@ class IntTools_Curve {
 };
 
 
-%feature("shadow") IntTools_Curve::~IntTools_Curve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_Curve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_CurveRangeLocalizeData;
 class IntTools_CurveRangeLocalizeData {
 	public:
@@ -1088,20 +974,6 @@ class IntTools_CurveRangeLocalizeData {
 };
 
 
-%feature("shadow") IntTools_CurveRangeLocalizeData::~IntTools_CurveRangeLocalizeData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_CurveRangeLocalizeData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_DataMapIteratorOfDataMapOfCurveSampleBox;
 class IntTools_DataMapIteratorOfDataMapOfCurveSampleBox : public TCollection_BasicMapIterator {
 	public:
@@ -1132,20 +1004,6 @@ class IntTools_DataMapIteratorOfDataMapOfCurveSampleBox : public TCollection_Bas
 };
 
 
-%feature("shadow") IntTools_DataMapIteratorOfDataMapOfCurveSampleBox::~IntTools_DataMapIteratorOfDataMapOfCurveSampleBox %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_DataMapIteratorOfDataMapOfCurveSampleBox {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox;
 class IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox : public TCollection_BasicMapIterator {
 	public:
@@ -1176,20 +1034,6 @@ class IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox : public TCollection_B
 };
 
 
-%feature("shadow") IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox::~IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_DataMapNodeOfDataMapOfCurveSampleBox;
 class IntTools_DataMapNodeOfDataMapOfCurveSampleBox : public TCollection_MapNode {
 	public:
@@ -1214,25 +1058,23 @@ class IntTools_DataMapNodeOfDataMapOfCurveSampleBox : public TCollection_MapNode
 };
 
 
-%feature("shadow") IntTools_DataMapNodeOfDataMapOfCurveSampleBox::~IntTools_DataMapNodeOfDataMapOfCurveSampleBox %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend IntTools_DataMapNodeOfDataMapOfCurveSampleBox {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend IntTools_DataMapNodeOfDataMapOfCurveSampleBox {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend IntTools_DataMapNodeOfDataMapOfCurveSampleBox {
-	Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox GetHandle() {
-	return *(Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox*) &$self;
-	}
-};
+%pythonappend Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox::Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox;
 class Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox : public Handle_TCollection_MapNode {
@@ -1250,20 +1092,6 @@ class Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox : public Handle_TColl
 %extend Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox {
     IntTools_DataMapNodeOfDataMapOfCurveSampleBox* GetObject() {
     return (IntTools_DataMapNodeOfDataMapOfCurveSampleBox*)$self->Access();
-    }
-};
-%feature("shadow") Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox::~Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1291,25 +1119,23 @@ class IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox : public TCollection_MapNo
 };
 
 
-%feature("shadow") IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox::~IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox {
-	Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox GetHandle() {
-	return *(Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox*) &$self;
-	}
-};
+%pythonappend Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox::Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox;
 class Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox : public Handle_TCollection_MapNode {
@@ -1327,20 +1153,6 @@ class Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox : public Handle_TCo
 %extend Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox {
     IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox* GetObject() {
     return (IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox*)$self->Access();
-    }
-};
-%feature("shadow") Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox::~Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1422,20 +1234,6 @@ class IntTools_DataMapOfCurveSampleBox : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") IntTools_DataMapOfCurveSampleBox::~IntTools_DataMapOfCurveSampleBox %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_DataMapOfCurveSampleBox {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_DataMapOfSurfaceSampleBox;
 class IntTools_DataMapOfSurfaceSampleBox : public TCollection_BasicMap {
 	public:
@@ -1514,20 +1312,6 @@ class IntTools_DataMapOfSurfaceSampleBox : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") IntTools_DataMapOfSurfaceSampleBox::~IntTools_DataMapOfSurfaceSampleBox %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_DataMapOfSurfaceSampleBox {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_EdgeEdge;
 class IntTools_EdgeEdge {
 	public:
@@ -1662,20 +1446,6 @@ class IntTools_EdgeEdge {
 };
 
 
-%feature("shadow") IntTools_EdgeEdge::~IntTools_EdgeEdge %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_EdgeEdge {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_EdgeFace;
 class IntTools_EdgeFace {
 	public:
@@ -1780,7 +1550,7 @@ class IntTools_EdgeFace {
 
 	:rtype: Handle_BOPInt_Context
 ") Context;
-		const Handle_BOPInt_Context & Context ();
+		Handle_BOPInt_Context Context ();
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	* Launches the process
 
@@ -1828,20 +1598,6 @@ class IntTools_EdgeFace {
 };
 
 
-%feature("shadow") IntTools_EdgeFace::~IntTools_EdgeFace %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_EdgeFace {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_FClass2d;
 class IntTools_FClass2d {
 	public:
@@ -1912,20 +1668,6 @@ class IntTools_FClass2d {
 };
 
 
-%feature("shadow") IntTools_FClass2d::~IntTools_FClass2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_FClass2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_FaceFace;
 class IntTools_FaceFace {
 	public:
@@ -2034,24 +1776,10 @@ class IntTools_FaceFace {
 
 	:rtype: Handle_BOPInt_Context
 ") Context;
-		const Handle_BOPInt_Context & Context ();
+		Handle_BOPInt_Context Context ();
 };
 
 
-%feature("shadow") IntTools_FaceFace::~IntTools_FaceFace %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_FaceFace {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress;
 class IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress : public TCollection_MapNode {
 	public:
@@ -2072,7 +1800,7 @@ class IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress : public TCo
 		%feature("compactdefaultargs") Key1;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Key1;
-		Handle_Standard_Transient & Key1 ();
+		Handle_Standard_Transient Key1 ();
 
             %feature("autodoc","1");
             %extend {
@@ -2097,25 +1825,23 @@ class IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress : public TCo
 };
 
 
-%feature("shadow") IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress::~IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress {
-	Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress GetHandle() {
-	return *(Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress*) &$self;
-	}
-};
+%pythonappend Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress::Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress;
 class Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress : public Handle_TCollection_MapNode {
@@ -2133,20 +1859,6 @@ class Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress : pub
 %extend Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress {
     IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress* GetObject() {
     return (IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress*)$self->Access();
-    }
-};
-%feature("shadow") Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress::~Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2214,7 +1926,7 @@ class IntTools_IndexedDataMapOfTransientAddress : public TCollection_BasicMap {
 	:type I: int
 	:rtype: Handle_Standard_Transient
 ") FindKey;
-		const Handle_Standard_Transient & FindKey (const Standard_Integer I);
+		Handle_Standard_Transient FindKey (const Standard_Integer I);
 		%feature("compactdefaultargs") FindFromIndex;
 		%feature("autodoc", "	:param I:
 	:type I: int
@@ -2260,20 +1972,6 @@ class IntTools_IndexedDataMapOfTransientAddress : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") IntTools_IndexedDataMapOfTransientAddress::~IntTools_IndexedDataMapOfTransientAddress %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_IndexedDataMapOfTransientAddress {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_ListIteratorOfListOfBox;
 class IntTools_ListIteratorOfListOfBox {
 	public:
@@ -2308,20 +2006,6 @@ class IntTools_ListIteratorOfListOfBox {
 };
 
 
-%feature("shadow") IntTools_ListIteratorOfListOfBox::~IntTools_ListIteratorOfListOfBox %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_ListIteratorOfListOfBox {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_ListIteratorOfListOfCurveRangeSample;
 class IntTools_ListIteratorOfListOfCurveRangeSample {
 	public:
@@ -2356,20 +2040,6 @@ class IntTools_ListIteratorOfListOfCurveRangeSample {
 };
 
 
-%feature("shadow") IntTools_ListIteratorOfListOfCurveRangeSample::~IntTools_ListIteratorOfListOfCurveRangeSample %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_ListIteratorOfListOfCurveRangeSample {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_ListIteratorOfListOfSurfaceRangeSample;
 class IntTools_ListIteratorOfListOfSurfaceRangeSample {
 	public:
@@ -2404,20 +2074,6 @@ class IntTools_ListIteratorOfListOfSurfaceRangeSample {
 };
 
 
-%feature("shadow") IntTools_ListIteratorOfListOfSurfaceRangeSample::~IntTools_ListIteratorOfListOfSurfaceRangeSample %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_ListIteratorOfListOfSurfaceRangeSample {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_ListNodeOfListOfBox;
 class IntTools_ListNodeOfListOfBox : public TCollection_MapNode {
 	public:
@@ -2436,25 +2092,23 @@ class IntTools_ListNodeOfListOfBox : public TCollection_MapNode {
 };
 
 
-%feature("shadow") IntTools_ListNodeOfListOfBox::~IntTools_ListNodeOfListOfBox %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend IntTools_ListNodeOfListOfBox {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IntTools_ListNodeOfListOfBox(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend IntTools_ListNodeOfListOfBox {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend IntTools_ListNodeOfListOfBox {
-	Handle_IntTools_ListNodeOfListOfBox GetHandle() {
-	return *(Handle_IntTools_ListNodeOfListOfBox*) &$self;
-	}
-};
+%pythonappend Handle_IntTools_ListNodeOfListOfBox::Handle_IntTools_ListNodeOfListOfBox %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_IntTools_ListNodeOfListOfBox;
 class Handle_IntTools_ListNodeOfListOfBox : public Handle_TCollection_MapNode {
@@ -2472,20 +2126,6 @@ class Handle_IntTools_ListNodeOfListOfBox : public Handle_TCollection_MapNode {
 %extend Handle_IntTools_ListNodeOfListOfBox {
     IntTools_ListNodeOfListOfBox* GetObject() {
     return (IntTools_ListNodeOfListOfBox*)$self->Access();
-    }
-};
-%feature("shadow") Handle_IntTools_ListNodeOfListOfBox::~Handle_IntTools_ListNodeOfListOfBox %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_IntTools_ListNodeOfListOfBox {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2507,25 +2147,23 @@ class IntTools_ListNodeOfListOfCurveRangeSample : public TCollection_MapNode {
 };
 
 
-%feature("shadow") IntTools_ListNodeOfListOfCurveRangeSample::~IntTools_ListNodeOfListOfCurveRangeSample %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend IntTools_ListNodeOfListOfCurveRangeSample {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IntTools_ListNodeOfListOfCurveRangeSample(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend IntTools_ListNodeOfListOfCurveRangeSample {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend IntTools_ListNodeOfListOfCurveRangeSample {
-	Handle_IntTools_ListNodeOfListOfCurveRangeSample GetHandle() {
-	return *(Handle_IntTools_ListNodeOfListOfCurveRangeSample*) &$self;
-	}
-};
+%pythonappend Handle_IntTools_ListNodeOfListOfCurveRangeSample::Handle_IntTools_ListNodeOfListOfCurveRangeSample %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_IntTools_ListNodeOfListOfCurveRangeSample;
 class Handle_IntTools_ListNodeOfListOfCurveRangeSample : public Handle_TCollection_MapNode {
@@ -2543,20 +2181,6 @@ class Handle_IntTools_ListNodeOfListOfCurveRangeSample : public Handle_TCollecti
 %extend Handle_IntTools_ListNodeOfListOfCurveRangeSample {
     IntTools_ListNodeOfListOfCurveRangeSample* GetObject() {
     return (IntTools_ListNodeOfListOfCurveRangeSample*)$self->Access();
-    }
-};
-%feature("shadow") Handle_IntTools_ListNodeOfListOfCurveRangeSample::~Handle_IntTools_ListNodeOfListOfCurveRangeSample %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_IntTools_ListNodeOfListOfCurveRangeSample {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2578,25 +2202,23 @@ class IntTools_ListNodeOfListOfSurfaceRangeSample : public TCollection_MapNode {
 };
 
 
-%feature("shadow") IntTools_ListNodeOfListOfSurfaceRangeSample::~IntTools_ListNodeOfListOfSurfaceRangeSample %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend IntTools_ListNodeOfListOfSurfaceRangeSample {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IntTools_ListNodeOfListOfSurfaceRangeSample(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend IntTools_ListNodeOfListOfSurfaceRangeSample {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend IntTools_ListNodeOfListOfSurfaceRangeSample {
-	Handle_IntTools_ListNodeOfListOfSurfaceRangeSample GetHandle() {
-	return *(Handle_IntTools_ListNodeOfListOfSurfaceRangeSample*) &$self;
-	}
-};
+%pythonappend Handle_IntTools_ListNodeOfListOfSurfaceRangeSample::Handle_IntTools_ListNodeOfListOfSurfaceRangeSample %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_IntTools_ListNodeOfListOfSurfaceRangeSample;
 class Handle_IntTools_ListNodeOfListOfSurfaceRangeSample : public Handle_TCollection_MapNode {
@@ -2614,20 +2236,6 @@ class Handle_IntTools_ListNodeOfListOfSurfaceRangeSample : public Handle_TCollec
 %extend Handle_IntTools_ListNodeOfListOfSurfaceRangeSample {
     IntTools_ListNodeOfListOfSurfaceRangeSample* GetObject() {
     return (IntTools_ListNodeOfListOfSurfaceRangeSample*)$self->Access();
-    }
-};
-%feature("shadow") Handle_IntTools_ListNodeOfListOfSurfaceRangeSample::~Handle_IntTools_ListNodeOfListOfSurfaceRangeSample %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_IntTools_ListNodeOfListOfSurfaceRangeSample {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2755,20 +2363,6 @@ class IntTools_ListOfBox {
 };
 
 
-%feature("shadow") IntTools_ListOfBox::~IntTools_ListOfBox %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_ListOfBox {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_ListOfCurveRangeSample;
 class IntTools_ListOfCurveRangeSample {
 	public:
@@ -2893,20 +2487,6 @@ class IntTools_ListOfCurveRangeSample {
 };
 
 
-%feature("shadow") IntTools_ListOfCurveRangeSample::~IntTools_ListOfCurveRangeSample %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_ListOfCurveRangeSample {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_ListOfSurfaceRangeSample;
 class IntTools_ListOfSurfaceRangeSample {
 	public:
@@ -3031,20 +2611,6 @@ class IntTools_ListOfSurfaceRangeSample {
 };
 
 
-%feature("shadow") IntTools_ListOfSurfaceRangeSample::~IntTools_ListOfSurfaceRangeSample %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_ListOfSurfaceRangeSample {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_MapIteratorOfMapOfCurveSample;
 class IntTools_MapIteratorOfMapOfCurveSample : public TCollection_BasicMapIterator {
 	public:
@@ -3071,20 +2637,6 @@ class IntTools_MapIteratorOfMapOfCurveSample : public TCollection_BasicMapIterat
 };
 
 
-%feature("shadow") IntTools_MapIteratorOfMapOfCurveSample::~IntTools_MapIteratorOfMapOfCurveSample %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_MapIteratorOfMapOfCurveSample {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_MapIteratorOfMapOfSurfaceSample;
 class IntTools_MapIteratorOfMapOfSurfaceSample : public TCollection_BasicMapIterator {
 	public:
@@ -3111,20 +2663,6 @@ class IntTools_MapIteratorOfMapOfSurfaceSample : public TCollection_BasicMapIter
 };
 
 
-%feature("shadow") IntTools_MapIteratorOfMapOfSurfaceSample::~IntTools_MapIteratorOfMapOfSurfaceSample %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_MapIteratorOfMapOfSurfaceSample {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_MapOfCurveSample;
 class IntTools_MapOfCurveSample : public TCollection_BasicMap {
 	public:
@@ -3177,20 +2715,6 @@ class IntTools_MapOfCurveSample : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") IntTools_MapOfCurveSample::~IntTools_MapOfCurveSample %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_MapOfCurveSample {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_MapOfSurfaceSample;
 class IntTools_MapOfSurfaceSample : public TCollection_BasicMap {
 	public:
@@ -3243,20 +2767,6 @@ class IntTools_MapOfSurfaceSample : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") IntTools_MapOfSurfaceSample::~IntTools_MapOfSurfaceSample %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_MapOfSurfaceSample {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_MarkedRangeSet;
 class IntTools_MarkedRangeSet {
 	public:
@@ -3417,20 +2927,6 @@ class IntTools_MarkedRangeSet {
 };
 
 
-%feature("shadow") IntTools_MarkedRangeSet::~IntTools_MarkedRangeSet %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_MarkedRangeSet {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_PntOn2Faces;
 class IntTools_PntOn2Faces {
 	public:
@@ -3495,20 +2991,6 @@ class IntTools_PntOn2Faces {
 };
 
 
-%feature("shadow") IntTools_PntOn2Faces::~IntTools_PntOn2Faces %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_PntOn2Faces {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_PntOnFace;
 class IntTools_PntOnFace {
 	public:
@@ -3591,20 +3073,6 @@ class IntTools_PntOnFace {
 };
 
 
-%feature("shadow") IntTools_PntOnFace::~IntTools_PntOnFace %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_PntOnFace {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class IntTools_QuickSort {
 	public:
 		%feature("compactdefaultargs") Sort;
@@ -3618,20 +3086,6 @@ class IntTools_QuickSort {
 };
 
 
-%feature("shadow") IntTools_QuickSort::~IntTools_QuickSort %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_QuickSort {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class IntTools_QuickSortRange {
 	public:
 		%feature("compactdefaultargs") Sort;
@@ -3645,20 +3099,6 @@ class IntTools_QuickSortRange {
 };
 
 
-%feature("shadow") IntTools_QuickSortRange::~IntTools_QuickSortRange %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_QuickSortRange {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_Range;
 class IntTools_Range {
 	public:
@@ -3719,20 +3159,6 @@ class IntTools_Range {
 };
 
 
-%feature("shadow") IntTools_Range::~IntTools_Range %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_Range {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_Root;
 class IntTools_Root {
 	public:
@@ -3859,20 +3285,6 @@ class IntTools_Root {
 };
 
 
-%feature("shadow") IntTools_Root::~IntTools_Root %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_Root {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_SequenceNodeOfSequenceOfCommonPrts;
 class IntTools_SequenceNodeOfSequenceOfCommonPrts : public TCollection_SeqNode {
 	public:
@@ -3893,25 +3305,23 @@ class IntTools_SequenceNodeOfSequenceOfCommonPrts : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") IntTools_SequenceNodeOfSequenceOfCommonPrts::~IntTools_SequenceNodeOfSequenceOfCommonPrts %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend IntTools_SequenceNodeOfSequenceOfCommonPrts {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend IntTools_SequenceNodeOfSequenceOfCommonPrts {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend IntTools_SequenceNodeOfSequenceOfCommonPrts {
-	Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts GetHandle() {
-	return *(Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts*) &$self;
-	}
-};
+%pythonappend Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts::Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts;
 class Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts : public Handle_TCollection_SeqNode {
@@ -3929,20 +3339,6 @@ class Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts : public Handle_TCollec
 %extend Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts {
     IntTools_SequenceNodeOfSequenceOfCommonPrts* GetObject() {
     return (IntTools_SequenceNodeOfSequenceOfCommonPrts*)$self->Access();
-    }
-};
-%feature("shadow") Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts::~Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3966,25 +3362,23 @@ class IntTools_SequenceNodeOfSequenceOfCurves : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") IntTools_SequenceNodeOfSequenceOfCurves::~IntTools_SequenceNodeOfSequenceOfCurves %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend IntTools_SequenceNodeOfSequenceOfCurves {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IntTools_SequenceNodeOfSequenceOfCurves(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend IntTools_SequenceNodeOfSequenceOfCurves {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend IntTools_SequenceNodeOfSequenceOfCurves {
-	Handle_IntTools_SequenceNodeOfSequenceOfCurves GetHandle() {
-	return *(Handle_IntTools_SequenceNodeOfSequenceOfCurves*) &$self;
-	}
-};
+%pythonappend Handle_IntTools_SequenceNodeOfSequenceOfCurves::Handle_IntTools_SequenceNodeOfSequenceOfCurves %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_IntTools_SequenceNodeOfSequenceOfCurves;
 class Handle_IntTools_SequenceNodeOfSequenceOfCurves : public Handle_TCollection_SeqNode {
@@ -4002,20 +3396,6 @@ class Handle_IntTools_SequenceNodeOfSequenceOfCurves : public Handle_TCollection
 %extend Handle_IntTools_SequenceNodeOfSequenceOfCurves {
     IntTools_SequenceNodeOfSequenceOfCurves* GetObject() {
     return (IntTools_SequenceNodeOfSequenceOfCurves*)$self->Access();
-    }
-};
-%feature("shadow") Handle_IntTools_SequenceNodeOfSequenceOfCurves::~Handle_IntTools_SequenceNodeOfSequenceOfCurves %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_IntTools_SequenceNodeOfSequenceOfCurves {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4039,25 +3419,23 @@ class IntTools_SequenceNodeOfSequenceOfPntOn2Faces : public TCollection_SeqNode 
 };
 
 
-%feature("shadow") IntTools_SequenceNodeOfSequenceOfPntOn2Faces::~IntTools_SequenceNodeOfSequenceOfPntOn2Faces %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend IntTools_SequenceNodeOfSequenceOfPntOn2Faces {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend IntTools_SequenceNodeOfSequenceOfPntOn2Faces {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend IntTools_SequenceNodeOfSequenceOfPntOn2Faces {
-	Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces GetHandle() {
-	return *(Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces*) &$self;
-	}
-};
+%pythonappend Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces::Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces;
 class Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces : public Handle_TCollection_SeqNode {
@@ -4075,20 +3453,6 @@ class Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces : public Handle_TColle
 %extend Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces {
     IntTools_SequenceNodeOfSequenceOfPntOn2Faces* GetObject() {
     return (IntTools_SequenceNodeOfSequenceOfPntOn2Faces*)$self->Access();
-    }
-};
-%feature("shadow") Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces::~Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4112,25 +3476,23 @@ class IntTools_SequenceNodeOfSequenceOfRanges : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") IntTools_SequenceNodeOfSequenceOfRanges::~IntTools_SequenceNodeOfSequenceOfRanges %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend IntTools_SequenceNodeOfSequenceOfRanges {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IntTools_SequenceNodeOfSequenceOfRanges(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend IntTools_SequenceNodeOfSequenceOfRanges {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend IntTools_SequenceNodeOfSequenceOfRanges {
-	Handle_IntTools_SequenceNodeOfSequenceOfRanges GetHandle() {
-	return *(Handle_IntTools_SequenceNodeOfSequenceOfRanges*) &$self;
-	}
-};
+%pythonappend Handle_IntTools_SequenceNodeOfSequenceOfRanges::Handle_IntTools_SequenceNodeOfSequenceOfRanges %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_IntTools_SequenceNodeOfSequenceOfRanges;
 class Handle_IntTools_SequenceNodeOfSequenceOfRanges : public Handle_TCollection_SeqNode {
@@ -4148,20 +3510,6 @@ class Handle_IntTools_SequenceNodeOfSequenceOfRanges : public Handle_TCollection
 %extend Handle_IntTools_SequenceNodeOfSequenceOfRanges {
     IntTools_SequenceNodeOfSequenceOfRanges* GetObject() {
     return (IntTools_SequenceNodeOfSequenceOfRanges*)$self->Access();
-    }
-};
-%feature("shadow") Handle_IntTools_SequenceNodeOfSequenceOfRanges::~Handle_IntTools_SequenceNodeOfSequenceOfRanges %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_IntTools_SequenceNodeOfSequenceOfRanges {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4185,25 +3533,23 @@ class IntTools_SequenceNodeOfSequenceOfRoots : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") IntTools_SequenceNodeOfSequenceOfRoots::~IntTools_SequenceNodeOfSequenceOfRoots %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend IntTools_SequenceNodeOfSequenceOfRoots {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IntTools_SequenceNodeOfSequenceOfRoots(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend IntTools_SequenceNodeOfSequenceOfRoots {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend IntTools_SequenceNodeOfSequenceOfRoots {
-	Handle_IntTools_SequenceNodeOfSequenceOfRoots GetHandle() {
-	return *(Handle_IntTools_SequenceNodeOfSequenceOfRoots*) &$self;
-	}
-};
+%pythonappend Handle_IntTools_SequenceNodeOfSequenceOfRoots::Handle_IntTools_SequenceNodeOfSequenceOfRoots %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_IntTools_SequenceNodeOfSequenceOfRoots;
 class Handle_IntTools_SequenceNodeOfSequenceOfRoots : public Handle_TCollection_SeqNode {
@@ -4221,20 +3567,6 @@ class Handle_IntTools_SequenceNodeOfSequenceOfRoots : public Handle_TCollection_
 %extend Handle_IntTools_SequenceNodeOfSequenceOfRoots {
     IntTools_SequenceNodeOfSequenceOfRoots* GetObject() {
     return (IntTools_SequenceNodeOfSequenceOfRoots*)$self->Access();
-    }
-};
-%feature("shadow") Handle_IntTools_SequenceNodeOfSequenceOfRoots::~Handle_IntTools_SequenceNodeOfSequenceOfRoots %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_IntTools_SequenceNodeOfSequenceOfRoots {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4370,20 +3702,6 @@ class IntTools_SequenceOfCommonPrts : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") IntTools_SequenceOfCommonPrts::~IntTools_SequenceOfCommonPrts %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_SequenceOfCommonPrts {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_SequenceOfCurves;
 class IntTools_SequenceOfCurves : public TCollection_BaseSequence {
 	public:
@@ -4516,20 +3834,6 @@ class IntTools_SequenceOfCurves : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") IntTools_SequenceOfCurves::~IntTools_SequenceOfCurves %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_SequenceOfCurves {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_SequenceOfPntOn2Faces;
 class IntTools_SequenceOfPntOn2Faces : public TCollection_BaseSequence {
 	public:
@@ -4662,20 +3966,6 @@ class IntTools_SequenceOfPntOn2Faces : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") IntTools_SequenceOfPntOn2Faces::~IntTools_SequenceOfPntOn2Faces %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_SequenceOfPntOn2Faces {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_SequenceOfRanges;
 class IntTools_SequenceOfRanges : public TCollection_BaseSequence {
 	public:
@@ -4808,20 +4098,6 @@ class IntTools_SequenceOfRanges : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") IntTools_SequenceOfRanges::~IntTools_SequenceOfRanges %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_SequenceOfRanges {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_SequenceOfRoots;
 class IntTools_SequenceOfRoots : public TCollection_BaseSequence {
 	public:
@@ -4954,20 +4230,6 @@ class IntTools_SequenceOfRoots : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") IntTools_SequenceOfRoots::~IntTools_SequenceOfRoots %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_SequenceOfRoots {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_StdMapNodeOfMapOfCurveSample;
 class IntTools_StdMapNodeOfMapOfCurveSample : public TCollection_MapNode {
 	public:
@@ -4986,25 +4248,23 @@ class IntTools_StdMapNodeOfMapOfCurveSample : public TCollection_MapNode {
 };
 
 
-%feature("shadow") IntTools_StdMapNodeOfMapOfCurveSample::~IntTools_StdMapNodeOfMapOfCurveSample %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend IntTools_StdMapNodeOfMapOfCurveSample {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IntTools_StdMapNodeOfMapOfCurveSample(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend IntTools_StdMapNodeOfMapOfCurveSample {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend IntTools_StdMapNodeOfMapOfCurveSample {
-	Handle_IntTools_StdMapNodeOfMapOfCurveSample GetHandle() {
-	return *(Handle_IntTools_StdMapNodeOfMapOfCurveSample*) &$self;
-	}
-};
+%pythonappend Handle_IntTools_StdMapNodeOfMapOfCurveSample::Handle_IntTools_StdMapNodeOfMapOfCurveSample %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_IntTools_StdMapNodeOfMapOfCurveSample;
 class Handle_IntTools_StdMapNodeOfMapOfCurveSample : public Handle_TCollection_MapNode {
@@ -5022,20 +4282,6 @@ class Handle_IntTools_StdMapNodeOfMapOfCurveSample : public Handle_TCollection_M
 %extend Handle_IntTools_StdMapNodeOfMapOfCurveSample {
     IntTools_StdMapNodeOfMapOfCurveSample* GetObject() {
     return (IntTools_StdMapNodeOfMapOfCurveSample*)$self->Access();
-    }
-};
-%feature("shadow") Handle_IntTools_StdMapNodeOfMapOfCurveSample::~Handle_IntTools_StdMapNodeOfMapOfCurveSample %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_IntTools_StdMapNodeOfMapOfCurveSample {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5057,25 +4303,23 @@ class IntTools_StdMapNodeOfMapOfSurfaceSample : public TCollection_MapNode {
 };
 
 
-%feature("shadow") IntTools_StdMapNodeOfMapOfSurfaceSample::~IntTools_StdMapNodeOfMapOfSurfaceSample %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend IntTools_StdMapNodeOfMapOfSurfaceSample {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IntTools_StdMapNodeOfMapOfSurfaceSample(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend IntTools_StdMapNodeOfMapOfSurfaceSample {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend IntTools_StdMapNodeOfMapOfSurfaceSample {
-	Handle_IntTools_StdMapNodeOfMapOfSurfaceSample GetHandle() {
-	return *(Handle_IntTools_StdMapNodeOfMapOfSurfaceSample*) &$self;
-	}
-};
+%pythonappend Handle_IntTools_StdMapNodeOfMapOfSurfaceSample::Handle_IntTools_StdMapNodeOfMapOfSurfaceSample %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_IntTools_StdMapNodeOfMapOfSurfaceSample;
 class Handle_IntTools_StdMapNodeOfMapOfSurfaceSample : public Handle_TCollection_MapNode {
@@ -5093,20 +4337,6 @@ class Handle_IntTools_StdMapNodeOfMapOfSurfaceSample : public Handle_TCollection
 %extend Handle_IntTools_StdMapNodeOfMapOfSurfaceSample {
     IntTools_StdMapNodeOfMapOfSurfaceSample* GetObject() {
     return (IntTools_StdMapNodeOfMapOfSurfaceSample*)$self->Access();
-    }
-};
-%feature("shadow") Handle_IntTools_StdMapNodeOfMapOfSurfaceSample::~Handle_IntTools_StdMapNodeOfMapOfSurfaceSample %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_IntTools_StdMapNodeOfMapOfSurfaceSample {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5362,20 +4592,6 @@ class IntTools_SurfaceRangeLocalizeData {
 };
 
 
-%feature("shadow") IntTools_SurfaceRangeLocalizeData::~IntTools_SurfaceRangeLocalizeData %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_SurfaceRangeLocalizeData {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_SurfaceRangeSample;
 class IntTools_SurfaceRangeSample {
 	public:
@@ -5562,20 +4778,6 @@ class IntTools_SurfaceRangeSample {
 };
 
 
-%feature("shadow") IntTools_SurfaceRangeSample::~IntTools_SurfaceRangeSample %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_SurfaceRangeSample {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class IntTools_SurfaceRangeSampleMapHasher {
 	public:
 		%feature("compactdefaultargs") HashCode;
@@ -5601,20 +4803,6 @@ class IntTools_SurfaceRangeSampleMapHasher {
 };
 
 
-%feature("shadow") IntTools_SurfaceRangeSampleMapHasher::~IntTools_SurfaceRangeSampleMapHasher %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_SurfaceRangeSampleMapHasher {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class IntTools_Tools {
 	public:
 		%feature("compactdefaultargs") ComputeVV;
@@ -5782,20 +4970,6 @@ class IntTools_Tools {
 };
 
 
-%feature("shadow") IntTools_Tools::~IntTools_Tools %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_Tools {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntTools_TopolTool;
 class IntTools_TopolTool : public Adaptor3d_TopolTool {
 	public:
@@ -5878,25 +5052,23 @@ class IntTools_TopolTool : public Adaptor3d_TopolTool {
 };
 
 
-%feature("shadow") IntTools_TopolTool::~IntTools_TopolTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend IntTools_TopolTool {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IntTools_TopolTool(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend IntTools_TopolTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend IntTools_TopolTool {
-	Handle_IntTools_TopolTool GetHandle() {
-	return *(Handle_IntTools_TopolTool*) &$self;
-	}
-};
+%pythonappend Handle_IntTools_TopolTool::Handle_IntTools_TopolTool %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_IntTools_TopolTool;
 class Handle_IntTools_TopolTool : public Handle_Adaptor3d_TopolTool {
@@ -5914,20 +5086,6 @@ class Handle_IntTools_TopolTool : public Handle_Adaptor3d_TopolTool {
 %extend Handle_IntTools_TopolTool {
     IntTools_TopolTool* GetObject() {
     return (IntTools_TopolTool*)$self->Access();
-    }
-};
-%feature("shadow") Handle_IntTools_TopolTool::~Handle_IntTools_TopolTool %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_IntTools_TopolTool {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5979,17 +5137,3 @@ class IntTools_CurveRangeSample : public IntTools_BaseRangeSample {
 };
 
 
-%feature("shadow") IntTools_CurveRangeSample::~IntTools_CurveRangeSample %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntTools_CurveRangeSample {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

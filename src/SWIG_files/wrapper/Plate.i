@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include Plate_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -126,20 +138,6 @@ class Plate_Array1OfPinpointConstraint {
 };
 
 
-%feature("shadow") Plate_Array1OfPinpointConstraint::~Plate_Array1OfPinpointConstraint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Plate_Array1OfPinpointConstraint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Plate_D1;
 class Plate_D1 {
 	public:
@@ -168,20 +166,6 @@ class Plate_D1 {
 };
 
 
-%feature("shadow") Plate_D1::~Plate_D1 %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Plate_D1 {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Plate_D2;
 class Plate_D2 {
 	public:
@@ -204,20 +188,6 @@ class Plate_D2 {
 };
 
 
-%feature("shadow") Plate_D2::~Plate_D2 %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Plate_D2 {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Plate_D3;
 class Plate_D3 {
 	public:
@@ -242,20 +212,6 @@ class Plate_D3 {
 };
 
 
-%feature("shadow") Plate_D3::~Plate_D3 %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Plate_D3 {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Plate_FreeGtoCConstraint;
 class Plate_FreeGtoCConstraint {
 	public:
@@ -336,20 +292,6 @@ class Plate_FreeGtoCConstraint {
 };
 
 
-%feature("shadow") Plate_FreeGtoCConstraint::~Plate_FreeGtoCConstraint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Plate_FreeGtoCConstraint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Plate_GlobalTranslationConstraint;
 class Plate_GlobalTranslationConstraint {
 	public:
@@ -366,20 +308,6 @@ class Plate_GlobalTranslationConstraint {
 };
 
 
-%feature("shadow") Plate_GlobalTranslationConstraint::~Plate_GlobalTranslationConstraint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Plate_GlobalTranslationConstraint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Plate_GtoCConstraint;
 class Plate_GtoCConstraint {
 	public:
@@ -496,20 +424,6 @@ class Plate_GtoCConstraint {
 };
 
 
-%feature("shadow") Plate_GtoCConstraint::~Plate_GtoCConstraint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Plate_GtoCConstraint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Plate_HArray1OfPinpointConstraint;
 class Plate_HArray1OfPinpointConstraint : public MMgt_TShared {
 	public:
@@ -580,25 +494,23 @@ class Plate_HArray1OfPinpointConstraint : public MMgt_TShared {
 };
 
 
-%feature("shadow") Plate_HArray1OfPinpointConstraint::~Plate_HArray1OfPinpointConstraint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Plate_HArray1OfPinpointConstraint {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Plate_HArray1OfPinpointConstraint(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Plate_HArray1OfPinpointConstraint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Plate_HArray1OfPinpointConstraint {
-	Handle_Plate_HArray1OfPinpointConstraint GetHandle() {
-	return *(Handle_Plate_HArray1OfPinpointConstraint*) &$self;
-	}
-};
+%pythonappend Handle_Plate_HArray1OfPinpointConstraint::Handle_Plate_HArray1OfPinpointConstraint %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Plate_HArray1OfPinpointConstraint;
 class Handle_Plate_HArray1OfPinpointConstraint : public Handle_MMgt_TShared {
@@ -616,20 +528,6 @@ class Handle_Plate_HArray1OfPinpointConstraint : public Handle_MMgt_TShared {
 %extend Handle_Plate_HArray1OfPinpointConstraint {
     Plate_HArray1OfPinpointConstraint* GetObject() {
     return (Plate_HArray1OfPinpointConstraint*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Plate_HArray1OfPinpointConstraint::~Handle_Plate_HArray1OfPinpointConstraint %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Plate_HArray1OfPinpointConstraint {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -655,20 +553,6 @@ class Plate_LineConstraint {
 };
 
 
-%feature("shadow") Plate_LineConstraint::~Plate_LineConstraint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Plate_LineConstraint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Plate_LinearScalarConstraint;
 class Plate_LinearScalarConstraint {
 	public:
@@ -741,20 +625,6 @@ class Plate_LinearScalarConstraint {
 };
 
 
-%feature("shadow") Plate_LinearScalarConstraint::~Plate_LinearScalarConstraint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Plate_LinearScalarConstraint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Plate_LinearXYZConstraint;
 class Plate_LinearXYZConstraint {
 	public:
@@ -819,20 +689,6 @@ class Plate_LinearXYZConstraint {
 };
 
 
-%feature("shadow") Plate_LinearXYZConstraint::~Plate_LinearXYZConstraint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Plate_LinearXYZConstraint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Plate_PinpointConstraint;
 class Plate_PinpointConstraint {
 	public:
@@ -871,20 +727,6 @@ class Plate_PinpointConstraint {
 };
 
 
-%feature("shadow") Plate_PinpointConstraint::~Plate_PinpointConstraint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Plate_PinpointConstraint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Plate_PlaneConstraint;
 class Plate_PlaneConstraint {
 	public:
@@ -907,20 +749,6 @@ class Plate_PlaneConstraint {
 };
 
 
-%feature("shadow") Plate_PlaneConstraint::~Plate_PlaneConstraint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Plate_PlaneConstraint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Plate_Plate;
 class Plate_Plate {
 	public:
@@ -1077,20 +905,6 @@ class Plate_Plate {
 };
 
 
-%feature("shadow") Plate_Plate::~Plate_Plate %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Plate_Plate {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Plate_SampledCurveConstraint;
 class Plate_SampledCurveConstraint {
 	public:
@@ -1109,20 +923,6 @@ class Plate_SampledCurveConstraint {
 };
 
 
-%feature("shadow") Plate_SampledCurveConstraint::~Plate_SampledCurveConstraint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Plate_SampledCurveConstraint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Plate_SequenceNodeOfSequenceOfLinearScalarConstraint;
 class Plate_SequenceNodeOfSequenceOfLinearScalarConstraint : public TCollection_SeqNode {
 	public:
@@ -1143,25 +943,23 @@ class Plate_SequenceNodeOfSequenceOfLinearScalarConstraint : public TCollection_
 };
 
 
-%feature("shadow") Plate_SequenceNodeOfSequenceOfLinearScalarConstraint::~Plate_SequenceNodeOfSequenceOfLinearScalarConstraint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Plate_SequenceNodeOfSequenceOfLinearScalarConstraint {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Plate_SequenceNodeOfSequenceOfLinearScalarConstraint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Plate_SequenceNodeOfSequenceOfLinearScalarConstraint {
-	Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint GetHandle() {
-	return *(Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint*) &$self;
-	}
-};
+%pythonappend Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint::Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint;
 class Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint : public Handle_TCollection_SeqNode {
@@ -1179,20 +977,6 @@ class Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint : public Handl
 %extend Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint {
     Plate_SequenceNodeOfSequenceOfLinearScalarConstraint* GetObject() {
     return (Plate_SequenceNodeOfSequenceOfLinearScalarConstraint*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint::~Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1216,25 +1000,23 @@ class Plate_SequenceNodeOfSequenceOfLinearXYZConstraint : public TCollection_Seq
 };
 
 
-%feature("shadow") Plate_SequenceNodeOfSequenceOfLinearXYZConstraint::~Plate_SequenceNodeOfSequenceOfLinearXYZConstraint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Plate_SequenceNodeOfSequenceOfLinearXYZConstraint {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Plate_SequenceNodeOfSequenceOfLinearXYZConstraint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Plate_SequenceNodeOfSequenceOfLinearXYZConstraint {
-	Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint GetHandle() {
-	return *(Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint*) &$self;
-	}
-};
+%pythonappend Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint::Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint;
 class Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint : public Handle_TCollection_SeqNode {
@@ -1252,20 +1034,6 @@ class Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint : public Handle_T
 %extend Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint {
     Plate_SequenceNodeOfSequenceOfLinearXYZConstraint* GetObject() {
     return (Plate_SequenceNodeOfSequenceOfLinearXYZConstraint*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint::~Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1289,25 +1057,23 @@ class Plate_SequenceNodeOfSequenceOfPinpointConstraint : public TCollection_SeqN
 };
 
 
-%feature("shadow") Plate_SequenceNodeOfSequenceOfPinpointConstraint::~Plate_SequenceNodeOfSequenceOfPinpointConstraint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Plate_SequenceNodeOfSequenceOfPinpointConstraint {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Plate_SequenceNodeOfSequenceOfPinpointConstraint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Plate_SequenceNodeOfSequenceOfPinpointConstraint {
-	Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint GetHandle() {
-	return *(Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint*) &$self;
-	}
-};
+%pythonappend Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint::Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint;
 class Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint : public Handle_TCollection_SeqNode {
@@ -1325,20 +1091,6 @@ class Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint : public Handle_TC
 %extend Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint {
     Plate_SequenceNodeOfSequenceOfPinpointConstraint* GetObject() {
     return (Plate_SequenceNodeOfSequenceOfPinpointConstraint*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint::~Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Plate_SequenceNodeOfSequenceOfPinpointConstraint {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1474,20 +1226,6 @@ class Plate_SequenceOfLinearScalarConstraint : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Plate_SequenceOfLinearScalarConstraint::~Plate_SequenceOfLinearScalarConstraint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Plate_SequenceOfLinearScalarConstraint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Plate_SequenceOfLinearXYZConstraint;
 class Plate_SequenceOfLinearXYZConstraint : public TCollection_BaseSequence {
 	public:
@@ -1620,20 +1358,6 @@ class Plate_SequenceOfLinearXYZConstraint : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Plate_SequenceOfLinearXYZConstraint::~Plate_SequenceOfLinearXYZConstraint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Plate_SequenceOfLinearXYZConstraint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Plate_SequenceOfPinpointConstraint;
 class Plate_SequenceOfPinpointConstraint : public TCollection_BaseSequence {
 	public:
@@ -1766,17 +1490,3 @@ class Plate_SequenceOfPinpointConstraint : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") Plate_SequenceOfPinpointConstraint::~Plate_SequenceOfPinpointConstraint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Plate_SequenceOfPinpointConstraint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

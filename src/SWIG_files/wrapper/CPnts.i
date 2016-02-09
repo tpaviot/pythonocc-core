@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include CPnts_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 typedef Standard_Real ( * CPnts_RealFunction ) ( const Standard_Real , 	 	 	 	 	 const Standard_Address );
@@ -350,20 +362,6 @@ class CPnts_AbscissaPoint {
 };
 
 
-%feature("shadow") CPnts_AbscissaPoint::~CPnts_AbscissaPoint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend CPnts_AbscissaPoint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor CPnts_MyGaussFunction;
 class CPnts_MyGaussFunction : public math_Function {
 	public:
@@ -392,20 +390,6 @@ class CPnts_MyGaussFunction : public math_Function {
 };
 
 
-%feature("shadow") CPnts_MyGaussFunction::~CPnts_MyGaussFunction %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend CPnts_MyGaussFunction {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor CPnts_MyRootFunction;
 class CPnts_MyRootFunction : public math_FunctionWithDerivative {
 	public:
@@ -480,20 +464,6 @@ class CPnts_MyRootFunction : public math_FunctionWithDerivative {
 };
 
 
-%feature("shadow") CPnts_MyRootFunction::~CPnts_MyRootFunction %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend CPnts_MyRootFunction {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor CPnts_UniformDeflection;
 class CPnts_UniformDeflection {
 	public:
@@ -664,17 +634,3 @@ class CPnts_UniformDeflection {
 };
 
 
-%feature("shadow") CPnts_UniformDeflection::~CPnts_UniformDeflection %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend CPnts_UniformDeflection {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include GProp_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -86,20 +98,6 @@ class GProp {
 };
 
 
-%feature("shadow") GProp::~GProp %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GProp {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GProp_GProps;
 class GProp_GProps {
 	public:
@@ -182,20 +180,6 @@ class GProp_GProps {
 };
 
 
-%feature("shadow") GProp_GProps::~GProp_GProps %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GProp_GProps {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GProp_PEquation;
 class GProp_PEquation {
 	public:
@@ -268,20 +252,6 @@ class GProp_PEquation {
 };
 
 
-%feature("shadow") GProp_PEquation::~GProp_PEquation %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GProp_PEquation {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GProp_PrincipalProps;
 class GProp_PrincipalProps {
 	public:
@@ -364,20 +334,6 @@ class GProp_PrincipalProps {
 };
 
 
-%feature("shadow") GProp_PrincipalProps::~GProp_PrincipalProps %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GProp_PrincipalProps {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GProp_CelGProps;
 class GProp_CelGProps : public GProp_GProps {
 	public:
@@ -446,20 +402,6 @@ class GProp_CelGProps : public GProp_GProps {
 };
 
 
-%feature("shadow") GProp_CelGProps::~GProp_CelGProps %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GProp_CelGProps {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GProp_PGProps;
 class GProp_PGProps : public GProp_GProps {
 	public:
@@ -570,20 +512,6 @@ class GProp_PGProps : public GProp_GProps {
 };
 
 
-%feature("shadow") GProp_PGProps::~GProp_PGProps %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GProp_PGProps {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GProp_SelGProps;
 class GProp_SelGProps : public GProp_GProps {
 	public:
@@ -720,20 +648,6 @@ class GProp_SelGProps : public GProp_GProps {
 };
 
 
-%feature("shadow") GProp_SelGProps::~GProp_SelGProps %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GProp_SelGProps {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GProp_VelGProps;
 class GProp_VelGProps : public GProp_GProps {
 	public:
@@ -870,17 +784,3 @@ class GProp_VelGProps : public GProp_GProps {
 };
 
 
-%feature("shadow") GProp_VelGProps::~GProp_VelGProps %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GProp_VelGProps {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

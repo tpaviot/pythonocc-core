@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include ProjLib_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -180,20 +192,6 @@ class ProjLib {
 };
 
 
-%feature("shadow") ProjLib::~ProjLib %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ProjLib {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ProjLib_CompProjectedCurve;
 class ProjLib_CompProjectedCurve : public Adaptor2d_Curve2d {
 	public:
@@ -256,11 +254,11 @@ class ProjLib_CompProjectedCurve : public Adaptor2d_Curve2d {
 		%feature("compactdefaultargs") GetSurface;
 		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HSurface
 ") GetSurface;
-		const Handle_Adaptor3d_HSurface & GetSurface ();
+		Handle_Adaptor3d_HSurface GetSurface ();
 		%feature("compactdefaultargs") GetCurve;
 		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HCurve
 ") GetCurve;
-		const Handle_Adaptor3d_HCurve & GetCurve ();
+		Handle_Adaptor3d_HCurve GetCurve ();
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "	:param TolU:
 	:type TolU: float &
@@ -424,7 +422,7 @@ class ProjLib_CompProjectedCurve : public Adaptor2d_Curve2d {
 		%feature("compactdefaultargs") GetSequence;
 		%feature("autodoc", "	:rtype: Handle_ProjLib_HSequenceOfHSequenceOfPnt
 ") GetSequence;
-		const Handle_ProjLib_HSequenceOfHSequenceOfPnt & GetSequence ();
+		Handle_ProjLib_HSequenceOfHSequenceOfPnt GetSequence ();
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "	* Returns the type of the curve in the current interval : Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 
@@ -434,20 +432,6 @@ class ProjLib_CompProjectedCurve : public Adaptor2d_Curve2d {
 };
 
 
-%feature("shadow") ProjLib_CompProjectedCurve::~ProjLib_CompProjectedCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ProjLib_CompProjectedCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ProjLib_ComputeApprox;
 class ProjLib_ComputeApprox {
 	public:
@@ -480,20 +464,6 @@ class ProjLib_ComputeApprox {
 };
 
 
-%feature("shadow") ProjLib_ComputeApprox::~ProjLib_ComputeApprox %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ProjLib_ComputeApprox {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ProjLib_ComputeApproxOnPolarSurface;
 class ProjLib_ComputeApproxOnPolarSurface {
 	public:
@@ -580,20 +550,6 @@ class ProjLib_ComputeApproxOnPolarSurface {
 };
 
 
-%feature("shadow") ProjLib_ComputeApproxOnPolarSurface::~ProjLib_ComputeApproxOnPolarSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ProjLib_ComputeApproxOnPolarSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ProjLib_HCompProjectedCurve;
 class ProjLib_HCompProjectedCurve : public Adaptor2d_HCurve2d {
 	public:
@@ -624,25 +580,23 @@ class ProjLib_HCompProjectedCurve : public Adaptor2d_HCurve2d {
 };
 
 
-%feature("shadow") ProjLib_HCompProjectedCurve::~ProjLib_HCompProjectedCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ProjLib_HCompProjectedCurve {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ProjLib_HCompProjectedCurve(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ProjLib_HCompProjectedCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ProjLib_HCompProjectedCurve {
-	Handle_ProjLib_HCompProjectedCurve GetHandle() {
-	return *(Handle_ProjLib_HCompProjectedCurve*) &$self;
-	}
-};
+%pythonappend Handle_ProjLib_HCompProjectedCurve::Handle_ProjLib_HCompProjectedCurve %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ProjLib_HCompProjectedCurve;
 class Handle_ProjLib_HCompProjectedCurve : public Handle_Adaptor2d_HCurve2d {
@@ -660,20 +614,6 @@ class Handle_ProjLib_HCompProjectedCurve : public Handle_Adaptor2d_HCurve2d {
 %extend Handle_ProjLib_HCompProjectedCurve {
     ProjLib_HCompProjectedCurve* GetObject() {
     return (ProjLib_HCompProjectedCurve*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ProjLib_HCompProjectedCurve::~Handle_ProjLib_HCompProjectedCurve %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ProjLib_HCompProjectedCurve {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -707,25 +647,23 @@ class ProjLib_HProjectedCurve : public Adaptor2d_HCurve2d {
 };
 
 
-%feature("shadow") ProjLib_HProjectedCurve::~ProjLib_HProjectedCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ProjLib_HProjectedCurve {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ProjLib_HProjectedCurve(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ProjLib_HProjectedCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ProjLib_HProjectedCurve {
-	Handle_ProjLib_HProjectedCurve GetHandle() {
-	return *(Handle_ProjLib_HProjectedCurve*) &$self;
-	}
-};
+%pythonappend Handle_ProjLib_HProjectedCurve::Handle_ProjLib_HProjectedCurve %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ProjLib_HProjectedCurve;
 class Handle_ProjLib_HProjectedCurve : public Handle_Adaptor2d_HCurve2d {
@@ -743,20 +681,6 @@ class Handle_ProjLib_HProjectedCurve : public Handle_Adaptor2d_HCurve2d {
 %extend Handle_ProjLib_HProjectedCurve {
     ProjLib_HProjectedCurve* GetObject() {
     return (ProjLib_HProjectedCurve*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ProjLib_HProjectedCurve::~Handle_ProjLib_HProjectedCurve %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ProjLib_HProjectedCurve {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -866,13 +790,13 @@ class ProjLib_HSequenceOfHSequenceOfPnt : public MMgt_TShared {
 	:type anIndex: int
 	:rtype: Handle_TColgp_HSequenceOfPnt
 ") Value;
-		const Handle_TColgp_HSequenceOfPnt & Value (const Standard_Integer anIndex);
+		Handle_TColgp_HSequenceOfPnt Value (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
 	:rtype: Handle_TColgp_HSequenceOfPnt
 ") ChangeValue;
-		Handle_TColgp_HSequenceOfPnt & ChangeValue (const Standard_Integer anIndex);
+		Handle_TColgp_HSequenceOfPnt ChangeValue (const Standard_Integer anIndex);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param anIndex:
 	:type anIndex: int
@@ -902,25 +826,23 @@ class ProjLib_HSequenceOfHSequenceOfPnt : public MMgt_TShared {
 };
 
 
-%feature("shadow") ProjLib_HSequenceOfHSequenceOfPnt::~ProjLib_HSequenceOfHSequenceOfPnt %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend ProjLib_HSequenceOfHSequenceOfPnt {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ProjLib_HSequenceOfHSequenceOfPnt(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend ProjLib_HSequenceOfHSequenceOfPnt {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ProjLib_HSequenceOfHSequenceOfPnt {
-	Handle_ProjLib_HSequenceOfHSequenceOfPnt GetHandle() {
-	return *(Handle_ProjLib_HSequenceOfHSequenceOfPnt*) &$self;
-	}
-};
+%pythonappend Handle_ProjLib_HSequenceOfHSequenceOfPnt::Handle_ProjLib_HSequenceOfHSequenceOfPnt %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_ProjLib_HSequenceOfHSequenceOfPnt;
 class Handle_ProjLib_HSequenceOfHSequenceOfPnt : public Handle_MMgt_TShared {
@@ -938,20 +860,6 @@ class Handle_ProjLib_HSequenceOfHSequenceOfPnt : public Handle_MMgt_TShared {
 %extend Handle_ProjLib_HSequenceOfHSequenceOfPnt {
     ProjLib_HSequenceOfHSequenceOfPnt* GetObject() {
     return (ProjLib_HSequenceOfHSequenceOfPnt*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ProjLib_HSequenceOfHSequenceOfPnt::~Handle_ProjLib_HSequenceOfHSequenceOfPnt %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ProjLib_HSequenceOfHSequenceOfPnt {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1023,20 +931,6 @@ class ProjLib_PrjFunc : public math_FunctionSetWithDerivatives {
 };
 
 
-%feature("shadow") ProjLib_PrjFunc::~ProjLib_PrjFunc %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ProjLib_PrjFunc {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ProjLib_PrjResolve;
 class ProjLib_PrjResolve {
 	public:
@@ -1087,20 +981,6 @@ class ProjLib_PrjResolve {
 };
 
 
-%feature("shadow") ProjLib_PrjResolve::~ProjLib_PrjResolve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ProjLib_PrjResolve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ProjLib_ProjectOnPlane;
 class ProjLib_ProjectOnPlane : public Adaptor3d_Curve {
 	public:
@@ -1151,7 +1031,7 @@ class ProjLib_ProjectOnPlane : public Adaptor3d_Curve {
 		%feature("compactdefaultargs") GetCurve;
 		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HCurve
 ") GetCurve;
-		const Handle_Adaptor3d_HCurve & GetCurve ();
+		Handle_Adaptor3d_HCurve GetCurve ();
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "	:rtype: float
 ") FirstParameter;
@@ -1341,20 +1221,6 @@ class ProjLib_ProjectOnPlane : public Adaptor3d_Curve {
 };
 
 
-%feature("shadow") ProjLib_ProjectOnPlane::~ProjLib_ProjectOnPlane %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ProjLib_ProjectOnPlane {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ProjLib_ProjectOnSurface;
 class ProjLib_ProjectOnSurface {
 	public:
@@ -1387,20 +1253,6 @@ class ProjLib_ProjectOnSurface {
 };
 
 
-%feature("shadow") ProjLib_ProjectOnSurface::~ProjLib_ProjectOnSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ProjLib_ProjectOnSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ProjLib_ProjectedCurve;
 class ProjLib_ProjectedCurve : public Adaptor2d_Curve2d {
 	public:
@@ -1435,11 +1287,11 @@ class ProjLib_ProjectedCurve : public Adaptor2d_Curve2d {
 		%feature("compactdefaultargs") GetSurface;
 		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HSurface
 ") GetSurface;
-		const Handle_Adaptor3d_HSurface & GetSurface ();
+		Handle_Adaptor3d_HSurface GetSurface ();
 		%feature("compactdefaultargs") GetCurve;
 		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HCurve
 ") GetCurve;
-		const Handle_Adaptor3d_HCurve & GetCurve ();
+		Handle_Adaptor3d_HCurve GetCurve ();
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "	* returns the tolerance reached if an approximation is Done.
 
@@ -1635,20 +1487,6 @@ class ProjLib_ProjectedCurve : public Adaptor2d_Curve2d {
 };
 
 
-%feature("shadow") ProjLib_ProjectedCurve::~ProjLib_ProjectedCurve %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ProjLib_ProjectedCurve {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ProjLib_Projector;
 class ProjLib_Projector {
 	public:
@@ -1791,20 +1629,6 @@ class ProjLib_Projector {
 };
 
 
-%feature("shadow") ProjLib_Projector::~ProjLib_Projector %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ProjLib_Projector {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt;
 class ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt : public TCollection_SeqNode {
 	public:
@@ -1821,29 +1645,27 @@ class ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt : public TCollection_SeqNod
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_TColgp_HSequenceOfPnt
 ") Value;
-		Handle_TColgp_HSequenceOfPnt & Value ();
+		Handle_TColgp_HSequenceOfPnt Value ();
 };
 
 
-%feature("shadow") ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt::~ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt::Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt {
-	Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt GetHandle() {
-	return *(Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt*) &$self;
-	}
-};
 
 %nodefaultctor Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt;
 class Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt : public Handle_TCollection_SeqNode {
@@ -1861,20 +1683,6 @@ class Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt : public Handle_TCol
 %extend Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt {
     ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt* GetObject() {
     return (ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt*)$self->Access();
-    }
-};
-%feature("shadow") Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt::~Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1960,11 +1768,11 @@ class ProjLib_SequenceOfHSequenceOfPnt : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_TColgp_HSequenceOfPnt
 ") First;
-		const Handle_TColgp_HSequenceOfPnt & First ();
+		Handle_TColgp_HSequenceOfPnt First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_TColgp_HSequenceOfPnt
 ") Last;
-		const Handle_TColgp_HSequenceOfPnt & Last ();
+		Handle_TColgp_HSequenceOfPnt Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -1978,7 +1786,7 @@ class ProjLib_SequenceOfHSequenceOfPnt : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_TColgp_HSequenceOfPnt
 ") Value;
-		const Handle_TColgp_HSequenceOfPnt & Value (const Standard_Integer Index);
+		Handle_TColgp_HSequenceOfPnt Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -1992,7 +1800,7 @@ class ProjLib_SequenceOfHSequenceOfPnt : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_TColgp_HSequenceOfPnt
 ") ChangeValue;
-		Handle_TColgp_HSequenceOfPnt & ChangeValue (const Standard_Integer Index);
+		Handle_TColgp_HSequenceOfPnt ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -2010,20 +1818,6 @@ class ProjLib_SequenceOfHSequenceOfPnt : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") ProjLib_SequenceOfHSequenceOfPnt::~ProjLib_SequenceOfHSequenceOfPnt %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ProjLib_SequenceOfHSequenceOfPnt {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ProjLib_Cone;
 class ProjLib_Cone : public ProjLib_Projector {
 	public:
@@ -2100,20 +1894,6 @@ class ProjLib_Cone : public ProjLib_Projector {
 };
 
 
-%feature("shadow") ProjLib_Cone::~ProjLib_Cone %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ProjLib_Cone {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ProjLib_Cylinder;
 class ProjLib_Cylinder : public ProjLib_Projector {
 	public:
@@ -2200,20 +1980,6 @@ class ProjLib_Cylinder : public ProjLib_Projector {
 };
 
 
-%feature("shadow") ProjLib_Cylinder::~ProjLib_Cylinder %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ProjLib_Cylinder {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ProjLib_Plane;
 class ProjLib_Plane : public ProjLib_Projector {
 	public:
@@ -2320,20 +2086,6 @@ class ProjLib_Plane : public ProjLib_Projector {
 };
 
 
-%feature("shadow") ProjLib_Plane::~ProjLib_Plane %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ProjLib_Plane {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ProjLib_Sphere;
 class ProjLib_Sphere : public ProjLib_Projector {
 	public:
@@ -2408,20 +2160,6 @@ class ProjLib_Sphere : public ProjLib_Projector {
 };
 
 
-%feature("shadow") ProjLib_Sphere::~ProjLib_Sphere %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ProjLib_Sphere {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor ProjLib_Torus;
 class ProjLib_Torus : public ProjLib_Projector {
 	public:
@@ -2488,17 +2226,3 @@ class ProjLib_Torus : public ProjLib_Projector {
 };
 
 
-%feature("shadow") ProjLib_Torus::~ProjLib_Torus %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend ProjLib_Torus {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

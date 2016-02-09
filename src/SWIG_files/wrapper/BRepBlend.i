@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include BRepBlend_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 typedef BlendFunc_Chamfer BRepBlend_Chamfer;
@@ -280,25 +292,23 @@ class BRepBlend_AppFuncRoot : public Approx_SweepFunction {
 };
 
 
-%feature("shadow") BRepBlend_AppFuncRoot::~BRepBlend_AppFuncRoot %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepBlend_AppFuncRoot {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepBlend_AppFuncRoot(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepBlend_AppFuncRoot {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepBlend_AppFuncRoot {
-	Handle_BRepBlend_AppFuncRoot GetHandle() {
-	return *(Handle_BRepBlend_AppFuncRoot*) &$self;
-	}
-};
+%pythonappend Handle_BRepBlend_AppFuncRoot::Handle_BRepBlend_AppFuncRoot %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepBlend_AppFuncRoot;
 class Handle_BRepBlend_AppFuncRoot : public Handle_Approx_SweepFunction {
@@ -316,20 +326,6 @@ class Handle_BRepBlend_AppFuncRoot : public Handle_Approx_SweepFunction {
 %extend Handle_BRepBlend_AppFuncRoot {
     BRepBlend_AppFuncRoot* GetObject() {
     return (BRepBlend_AppFuncRoot*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepBlend_AppFuncRoot::~Handle_BRepBlend_AppFuncRoot %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepBlend_AppFuncRoot {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -569,20 +565,6 @@ class BRepBlend_AppSurf : public AppBlend_Approx {
 };
 
 
-%feature("shadow") BRepBlend_AppSurf::~BRepBlend_AppSurf %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepBlend_AppSurf {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepBlend_AppSurface;
 class BRepBlend_AppSurface : public AppBlend_Approx {
 	public:
@@ -761,20 +743,6 @@ class BRepBlend_AppSurface : public AppBlend_Approx {
         };
 
 
-%feature("shadow") BRepBlend_AppSurface::~BRepBlend_AppSurface %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepBlend_AppSurface {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class BRepBlend_BlendTool {
 	public:
 		%feature("compactdefaultargs") Project;
@@ -896,20 +864,6 @@ class BRepBlend_BlendTool {
 };
 
 
-%feature("shadow") BRepBlend_BlendTool::~BRepBlend_BlendTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepBlend_BlendTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepBlend_CSWalking;
 class BRepBlend_CSWalking {
 	public:
@@ -960,24 +914,10 @@ class BRepBlend_CSWalking {
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "	:rtype: Handle_BRepBlend_Line
 ") Line;
-		const Handle_BRepBlend_Line & Line ();
+		Handle_BRepBlend_Line Line ();
 };
 
 
-%feature("shadow") BRepBlend_CSWalking::~BRepBlend_CSWalking %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepBlend_CSWalking {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepBlend_CurvPointRadInv;
 class BRepBlend_CurvPointRadInv : public Blend_CurvPointFuncInv {
 	public:
@@ -1074,20 +1014,6 @@ class BRepBlend_CurvPointRadInv : public Blend_CurvPointFuncInv {
 };
 
 
-%feature("shadow") BRepBlend_CurvPointRadInv::~BRepBlend_CurvPointRadInv %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepBlend_CurvPointRadInv {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepBlend_Extremity;
 class BRepBlend_Extremity {
 	public:
@@ -1234,7 +1160,7 @@ class BRepBlend_Extremity {
 		%feature("compactdefaultargs") Vertex;
 		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HVertex
 ") Vertex;
-		const Handle_Adaptor3d_HVertex & Vertex ();
+		Handle_Adaptor3d_HVertex Vertex ();
 		%feature("compactdefaultargs") NbPointOnRst;
 		%feature("autodoc", "	:rtype: int
 ") NbPointOnRst;
@@ -1256,20 +1182,6 @@ class BRepBlend_Extremity {
 };
 
 
-%feature("shadow") BRepBlend_Extremity::~BRepBlend_Extremity %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepBlend_Extremity {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class BRepBlend_HCurve2dTool {
 	public:
 		%feature("compactdefaultargs") FirstParameter;
@@ -1465,20 +1377,6 @@ class BRepBlend_HCurve2dTool {
 };
 
 
-%feature("shadow") BRepBlend_HCurve2dTool::~BRepBlend_HCurve2dTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepBlend_HCurve2dTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class BRepBlend_HCurveTool {
 	public:
 		%feature("compactdefaultargs") FirstParameter;
@@ -1674,20 +1572,6 @@ class BRepBlend_HCurveTool {
 };
 
 
-%feature("shadow") BRepBlend_HCurveTool::~BRepBlend_HCurveTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepBlend_HCurveTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepBlend_Line;
 class BRepBlend_Line : public MMgt_TShared {
 	public:
@@ -1798,25 +1682,23 @@ class BRepBlend_Line : public MMgt_TShared {
 };
 
 
-%feature("shadow") BRepBlend_Line::~BRepBlend_Line %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepBlend_Line {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepBlend_Line(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepBlend_Line {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepBlend_Line {
-	Handle_BRepBlend_Line GetHandle() {
-	return *(Handle_BRepBlend_Line*) &$self;
-	}
-};
+%pythonappend Handle_BRepBlend_Line::Handle_BRepBlend_Line %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepBlend_Line;
 class Handle_BRepBlend_Line : public Handle_MMgt_TShared {
@@ -1834,20 +1716,6 @@ class Handle_BRepBlend_Line : public Handle_MMgt_TShared {
 %extend Handle_BRepBlend_Line {
     BRepBlend_Line* GetObject() {
     return (BRepBlend_Line*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepBlend_Line::~Handle_BRepBlend_Line %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepBlend_Line {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1885,7 +1753,7 @@ class BRepBlend_PointOnRst {
 		%feature("compactdefaultargs") Arc;
 		%feature("autodoc", "	:rtype: Handle_Adaptor2d_HCurve2d
 ") Arc;
-		const Handle_Adaptor2d_HCurve2d & Arc ();
+		Handle_Adaptor2d_HCurve2d Arc ();
 		%feature("compactdefaultargs") TransitionOnLine;
 		%feature("autodoc", "	:rtype: IntSurf_Transition
 ") TransitionOnLine;
@@ -1901,20 +1769,6 @@ class BRepBlend_PointOnRst {
 };
 
 
-%feature("shadow") BRepBlend_PointOnRst::~BRepBlend_PointOnRst %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepBlend_PointOnRst {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepBlend_RstRstConstRad;
 class BRepBlend_RstRstConstRad : public Blend_RstRstFunction {
 	public:
@@ -2301,20 +2155,6 @@ class BRepBlend_RstRstConstRad : public Blend_RstRstFunction {
 };
 
 
-%feature("shadow") BRepBlend_RstRstConstRad::~BRepBlend_RstRstConstRad %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepBlend_RstRstConstRad {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepBlend_RstRstEvolRad;
 class BRepBlend_RstRstEvolRad : public Blend_RstRstFunction {
 	public:
@@ -2701,20 +2541,6 @@ class BRepBlend_RstRstEvolRad : public Blend_RstRstFunction {
 };
 
 
-%feature("shadow") BRepBlend_RstRstEvolRad::~BRepBlend_RstRstEvolRad %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepBlend_RstRstEvolRad {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepBlend_RstRstLineBuilder;
 class BRepBlend_RstRstLineBuilder {
 	public:
@@ -2823,7 +2649,7 @@ class BRepBlend_RstRstLineBuilder {
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "	:rtype: Handle_BRepBlend_Line
 ") Line;
-		const Handle_BRepBlend_Line & Line ();
+		Handle_BRepBlend_Line Line ();
 		%feature("compactdefaultargs") Decroch1Start;
 		%feature("autodoc", "	:rtype: bool
 ") Decroch1Start;
@@ -2843,20 +2669,6 @@ class BRepBlend_RstRstLineBuilder {
 };
 
 
-%feature("shadow") BRepBlend_RstRstLineBuilder::~BRepBlend_RstRstLineBuilder %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepBlend_RstRstLineBuilder {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepBlend_SequenceNodeOfSequenceOfLine;
 class BRepBlend_SequenceNodeOfSequenceOfLine : public TCollection_SeqNode {
 	public:
@@ -2873,29 +2685,27 @@ class BRepBlend_SequenceNodeOfSequenceOfLine : public TCollection_SeqNode {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_BRepBlend_Line
 ") Value;
-		Handle_BRepBlend_Line & Value ();
+		Handle_BRepBlend_Line Value ();
 };
 
 
-%feature("shadow") BRepBlend_SequenceNodeOfSequenceOfLine::~BRepBlend_SequenceNodeOfSequenceOfLine %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
+%extend BRepBlend_SequenceNodeOfSequenceOfLine {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepBlend_SequenceNodeOfSequenceOfLine(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_BRepBlend_SequenceNodeOfSequenceOfLine::Handle_BRepBlend_SequenceNodeOfSequenceOfLine %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
 %}
-
-%extend BRepBlend_SequenceNodeOfSequenceOfLine {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepBlend_SequenceNodeOfSequenceOfLine {
-	Handle_BRepBlend_SequenceNodeOfSequenceOfLine GetHandle() {
-	return *(Handle_BRepBlend_SequenceNodeOfSequenceOfLine*) &$self;
-	}
-};
 
 %nodefaultctor Handle_BRepBlend_SequenceNodeOfSequenceOfLine;
 class Handle_BRepBlend_SequenceNodeOfSequenceOfLine : public Handle_TCollection_SeqNode {
@@ -2913,20 +2723,6 @@ class Handle_BRepBlend_SequenceNodeOfSequenceOfLine : public Handle_TCollection_
 %extend Handle_BRepBlend_SequenceNodeOfSequenceOfLine {
     BRepBlend_SequenceNodeOfSequenceOfLine* GetObject() {
     return (BRepBlend_SequenceNodeOfSequenceOfLine*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepBlend_SequenceNodeOfSequenceOfLine::~Handle_BRepBlend_SequenceNodeOfSequenceOfLine %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepBlend_SequenceNodeOfSequenceOfLine {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2950,25 +2746,23 @@ class BRepBlend_SequenceNodeOfSequenceOfPointOnRst : public TCollection_SeqNode 
 };
 
 
-%feature("shadow") BRepBlend_SequenceNodeOfSequenceOfPointOnRst::~BRepBlend_SequenceNodeOfSequenceOfPointOnRst %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepBlend_SequenceNodeOfSequenceOfPointOnRst {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepBlend_SequenceNodeOfSequenceOfPointOnRst {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepBlend_SequenceNodeOfSequenceOfPointOnRst {
-	Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst GetHandle() {
-	return *(Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst*) &$self;
-	}
-};
+%pythonappend Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst::Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst;
 class Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst : public Handle_TCollection_SeqNode {
@@ -2986,20 +2780,6 @@ class Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst : public Handle_TColle
 %extend Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst {
     BRepBlend_SequenceNodeOfSequenceOfPointOnRst* GetObject() {
     return (BRepBlend_SequenceNodeOfSequenceOfPointOnRst*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst::~Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -3085,11 +2865,11 @@ class BRepBlend_SequenceOfLine : public TCollection_BaseSequence {
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "	:rtype: Handle_BRepBlend_Line
 ") First;
-		const Handle_BRepBlend_Line & First ();
+		Handle_BRepBlend_Line First ();
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "	:rtype: Handle_BRepBlend_Line
 ") Last;
-		const Handle_BRepBlend_Line & Last ();
+		Handle_BRepBlend_Line Last ();
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -3103,7 +2883,7 @@ class BRepBlend_SequenceOfLine : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_BRepBlend_Line
 ") Value;
-		const Handle_BRepBlend_Line & Value (const Standard_Integer Index);
+		Handle_BRepBlend_Line Value (const Standard_Integer Index);
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -3117,7 +2897,7 @@ class BRepBlend_SequenceOfLine : public TCollection_BaseSequence {
 	:type Index: int
 	:rtype: Handle_BRepBlend_Line
 ") ChangeValue;
-		Handle_BRepBlend_Line & ChangeValue (const Standard_Integer Index);
+		Handle_BRepBlend_Line ChangeValue (const Standard_Integer Index);
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	:param Index:
 	:type Index: int
@@ -3135,20 +2915,6 @@ class BRepBlend_SequenceOfLine : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") BRepBlend_SequenceOfLine::~BRepBlend_SequenceOfLine %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepBlend_SequenceOfLine {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepBlend_SequenceOfPointOnRst;
 class BRepBlend_SequenceOfPointOnRst : public TCollection_BaseSequence {
 	public:
@@ -3281,20 +3047,6 @@ class BRepBlend_SequenceOfPointOnRst : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") BRepBlend_SequenceOfPointOnRst::~BRepBlend_SequenceOfPointOnRst %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepBlend_SequenceOfPointOnRst {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepBlend_SurfCurvConstRadInv;
 class BRepBlend_SurfCurvConstRadInv : public Blend_SurfCurvFuncInv {
 	public:
@@ -3395,20 +3147,6 @@ class BRepBlend_SurfCurvConstRadInv : public Blend_SurfCurvFuncInv {
 };
 
 
-%feature("shadow") BRepBlend_SurfCurvConstRadInv::~BRepBlend_SurfCurvConstRadInv %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepBlend_SurfCurvConstRadInv {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepBlend_SurfCurvEvolRadInv;
 class BRepBlend_SurfCurvEvolRadInv : public Blend_SurfCurvFuncInv {
 	public:
@@ -3509,20 +3247,6 @@ class BRepBlend_SurfCurvEvolRadInv : public Blend_SurfCurvFuncInv {
 };
 
 
-%feature("shadow") BRepBlend_SurfCurvEvolRadInv::~BRepBlend_SurfCurvEvolRadInv %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepBlend_SurfCurvEvolRadInv {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepBlend_SurfPointConstRadInv;
 class BRepBlend_SurfPointConstRadInv : public Blend_SurfPointFuncInv {
 	public:
@@ -3621,20 +3345,6 @@ class BRepBlend_SurfPointConstRadInv : public Blend_SurfPointFuncInv {
 };
 
 
-%feature("shadow") BRepBlend_SurfPointConstRadInv::~BRepBlend_SurfPointConstRadInv %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepBlend_SurfPointConstRadInv {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepBlend_SurfPointEvolRadInv;
 class BRepBlend_SurfPointEvolRadInv : public Blend_SurfPointFuncInv {
 	public:
@@ -3733,20 +3443,6 @@ class BRepBlend_SurfPointEvolRadInv : public Blend_SurfPointFuncInv {
 };
 
 
-%feature("shadow") BRepBlend_SurfPointEvolRadInv::~BRepBlend_SurfPointEvolRadInv %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepBlend_SurfPointEvolRadInv {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepBlend_SurfRstConstRad;
 class BRepBlend_SurfRstConstRad : public Blend_SurfRstFunction {
 	public:
@@ -4103,20 +3799,6 @@ class BRepBlend_SurfRstConstRad : public Blend_SurfRstFunction {
 };
 
 
-%feature("shadow") BRepBlend_SurfRstConstRad::~BRepBlend_SurfRstConstRad %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepBlend_SurfRstConstRad {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepBlend_SurfRstEvolRad;
 class BRepBlend_SurfRstEvolRad : public Blend_SurfRstFunction {
 	public:
@@ -4473,20 +4155,6 @@ class BRepBlend_SurfRstEvolRad : public Blend_SurfRstFunction {
 };
 
 
-%feature("shadow") BRepBlend_SurfRstEvolRad::~BRepBlend_SurfRstEvolRad %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepBlend_SurfRstEvolRad {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepBlend_SurfRstLineBuilder;
 class BRepBlend_SurfRstLineBuilder {
 	public:
@@ -4599,7 +4267,7 @@ class BRepBlend_SurfRstLineBuilder {
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "	:rtype: Handle_BRepBlend_Line
 ") Line;
-		const Handle_BRepBlend_Line & Line ();
+		Handle_BRepBlend_Line Line ();
 		%feature("compactdefaultargs") DecrochStart;
 		%feature("autodoc", "	:rtype: bool
 ") DecrochStart;
@@ -4611,20 +4279,6 @@ class BRepBlend_SurfRstLineBuilder {
 };
 
 
-%feature("shadow") BRepBlend_SurfRstLineBuilder::~BRepBlend_SurfRstLineBuilder %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepBlend_SurfRstLineBuilder {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepBlend_Walking;
 class BRepBlend_Walking {
 	public:
@@ -4793,24 +4447,10 @@ class BRepBlend_Walking {
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "	:rtype: Handle_BRepBlend_Line
 ") Line;
-		const Handle_BRepBlend_Line & Line ();
+		Handle_BRepBlend_Line Line ();
 };
 
 
-%feature("shadow") BRepBlend_Walking::~BRepBlend_Walking %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepBlend_Walking {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepBlend_AppFunc;
 class BRepBlend_AppFunc : public BRepBlend_AppFuncRoot {
 	public:
@@ -4849,25 +4489,23 @@ class BRepBlend_AppFunc : public BRepBlend_AppFuncRoot {
 };
 
 
-%feature("shadow") BRepBlend_AppFunc::~BRepBlend_AppFunc %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepBlend_AppFunc {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepBlend_AppFunc(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepBlend_AppFunc {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepBlend_AppFunc {
-	Handle_BRepBlend_AppFunc GetHandle() {
-	return *(Handle_BRepBlend_AppFunc*) &$self;
-	}
-};
+%pythonappend Handle_BRepBlend_AppFunc::Handle_BRepBlend_AppFunc %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepBlend_AppFunc;
 class Handle_BRepBlend_AppFunc : public Handle_BRepBlend_AppFuncRoot {
@@ -4885,20 +4523,6 @@ class Handle_BRepBlend_AppFunc : public Handle_BRepBlend_AppFuncRoot {
 %extend Handle_BRepBlend_AppFunc {
     BRepBlend_AppFunc* GetObject() {
     return (BRepBlend_AppFunc*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepBlend_AppFunc::~Handle_BRepBlend_AppFunc %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepBlend_AppFunc {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -4940,25 +4564,23 @@ class BRepBlend_AppFuncRst : public BRepBlend_AppFuncRoot {
 };
 
 
-%feature("shadow") BRepBlend_AppFuncRst::~BRepBlend_AppFuncRst %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepBlend_AppFuncRst {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepBlend_AppFuncRst(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepBlend_AppFuncRst {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepBlend_AppFuncRst {
-	Handle_BRepBlend_AppFuncRst GetHandle() {
-	return *(Handle_BRepBlend_AppFuncRst*) &$self;
-	}
-};
+%pythonappend Handle_BRepBlend_AppFuncRst::Handle_BRepBlend_AppFuncRst %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepBlend_AppFuncRst;
 class Handle_BRepBlend_AppFuncRst : public Handle_BRepBlend_AppFuncRoot {
@@ -4976,20 +4598,6 @@ class Handle_BRepBlend_AppFuncRst : public Handle_BRepBlend_AppFuncRoot {
 %extend Handle_BRepBlend_AppFuncRst {
     BRepBlend_AppFuncRst* GetObject() {
     return (BRepBlend_AppFuncRst*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepBlend_AppFuncRst::~Handle_BRepBlend_AppFuncRst %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepBlend_AppFuncRst {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -5031,25 +4639,23 @@ class BRepBlend_AppFuncRstRst : public BRepBlend_AppFuncRoot {
 };
 
 
-%feature("shadow") BRepBlend_AppFuncRstRst::~BRepBlend_AppFuncRstRst %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepBlend_AppFuncRstRst {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepBlend_AppFuncRstRst(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepBlend_AppFuncRstRst {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepBlend_AppFuncRstRst {
-	Handle_BRepBlend_AppFuncRstRst GetHandle() {
-	return *(Handle_BRepBlend_AppFuncRstRst*) &$self;
-	}
-};
+%pythonappend Handle_BRepBlend_AppFuncRstRst::Handle_BRepBlend_AppFuncRstRst %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepBlend_AppFuncRstRst;
 class Handle_BRepBlend_AppFuncRstRst : public Handle_BRepBlend_AppFuncRoot {
@@ -5067,20 +4673,6 @@ class Handle_BRepBlend_AppFuncRstRst : public Handle_BRepBlend_AppFuncRoot {
 %extend Handle_BRepBlend_AppFuncRstRst {
     BRepBlend_AppFuncRstRst* GetObject() {
     return (BRepBlend_AppFuncRstRst*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepBlend_AppFuncRstRst::~Handle_BRepBlend_AppFuncRstRst %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepBlend_AppFuncRstRst {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

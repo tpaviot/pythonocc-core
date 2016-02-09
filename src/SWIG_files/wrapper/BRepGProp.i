@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include BRepGProp_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -146,20 +158,6 @@ class BRepGProp {
 };
 
 
-%feature("shadow") BRepGProp::~BRepGProp %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepGProp {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepGProp_Cinert;
 class BRepGProp_Cinert : public GProp_GProps {
 	public:
@@ -190,20 +188,6 @@ class BRepGProp_Cinert : public GProp_GProps {
 };
 
 
-%feature("shadow") BRepGProp_Cinert::~BRepGProp_Cinert %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepGProp_Cinert {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepGProp_Domain;
 class BRepGProp_Domain {
 	public:
@@ -256,20 +240,6 @@ class BRepGProp_Domain {
 };
 
 
-%feature("shadow") BRepGProp_Domain::~BRepGProp_Domain %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepGProp_Domain {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class BRepGProp_EdgeTool {
 	public:
 		%feature("compactdefaultargs") FirstParameter;
@@ -345,20 +315,6 @@ class BRepGProp_EdgeTool {
 };
 
 
-%feature("shadow") BRepGProp_EdgeTool::~BRepGProp_EdgeTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepGProp_EdgeTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepGProp_Face;
 class BRepGProp_Face {
 	public:
@@ -555,20 +511,6 @@ class BRepGProp_Face {
 };
 
 
-%feature("shadow") BRepGProp_Face::~BRepGProp_Face %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepGProp_Face {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepGProp_Sinert;
 class BRepGProp_Sinert : public GProp_GProps {
 	public:
@@ -661,20 +603,6 @@ class BRepGProp_Sinert : public GProp_GProps {
 };
 
 
-%feature("shadow") BRepGProp_Sinert::~BRepGProp_Sinert %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepGProp_Sinert {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepGProp_TFunctionOfVinertGK;
 class BRepGProp_TFunctionOfVinertGK : public math_Function {
 	public:
@@ -739,20 +667,6 @@ class BRepGProp_TFunctionOfVinertGK : public math_Function {
 };
 
 
-%feature("shadow") BRepGProp_TFunctionOfVinertGK::~BRepGProp_TFunctionOfVinertGK %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepGProp_TFunctionOfVinertGK {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepGProp_UFunctionOfVinertGK;
 class BRepGProp_UFunctionOfVinertGK : public math_Function {
 	public:
@@ -791,20 +705,6 @@ class BRepGProp_UFunctionOfVinertGK : public math_Function {
 };
 
 
-%feature("shadow") BRepGProp_UFunctionOfVinertGK::~BRepGProp_UFunctionOfVinertGK %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepGProp_UFunctionOfVinertGK {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepGProp_Vinert;
 class BRepGProp_Vinert : public GProp_GProps {
 	public:
@@ -1073,20 +973,6 @@ class BRepGProp_Vinert : public GProp_GProps {
 };
 
 
-%feature("shadow") BRepGProp_Vinert::~BRepGProp_Vinert %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepGProp_Vinert {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepGProp_VinertGK;
 class BRepGProp_VinertGK : public GProp_GProps {
 	public:
@@ -1291,17 +1177,3 @@ class BRepGProp_VinertGK : public GProp_GProps {
 };
 
 
-%feature("shadow") BRepGProp_VinertGK::~BRepGProp_VinertGK %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepGProp_VinertGK {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include IntCurveSurface_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -96,20 +108,6 @@ class IntCurveSurface_Intersection {
 };
 
 
-%feature("shadow") IntCurveSurface_Intersection::~IntCurveSurface_Intersection %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntCurveSurface_Intersection {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntCurveSurface_IntersectionPoint;
 class IntCurveSurface_IntersectionPoint {
 	public:
@@ -206,20 +204,6 @@ class IntCurveSurface_IntersectionPoint {
 };
 
 
-%feature("shadow") IntCurveSurface_IntersectionPoint::~IntCurveSurface_IntersectionPoint %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntCurveSurface_IntersectionPoint {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntCurveSurface_IntersectionSegment;
 class IntCurveSurface_IntersectionSegment {
 	public:
@@ -278,20 +262,6 @@ class IntCurveSurface_IntersectionSegment {
 };
 
 
-%feature("shadow") IntCurveSurface_IntersectionSegment::~IntCurveSurface_IntersectionSegment %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntCurveSurface_IntersectionSegment {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntCurveSurface_SequenceNodeOfSequenceOfPnt;
 class IntCurveSurface_SequenceNodeOfSequenceOfPnt : public TCollection_SeqNode {
 	public:
@@ -312,25 +282,23 @@ class IntCurveSurface_SequenceNodeOfSequenceOfPnt : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") IntCurveSurface_SequenceNodeOfSequenceOfPnt::~IntCurveSurface_SequenceNodeOfSequenceOfPnt %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend IntCurveSurface_SequenceNodeOfSequenceOfPnt {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IntCurveSurface_SequenceNodeOfSequenceOfPnt(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend IntCurveSurface_SequenceNodeOfSequenceOfPnt {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend IntCurveSurface_SequenceNodeOfSequenceOfPnt {
-	Handle_IntCurveSurface_SequenceNodeOfSequenceOfPnt GetHandle() {
-	return *(Handle_IntCurveSurface_SequenceNodeOfSequenceOfPnt*) &$self;
-	}
-};
+%pythonappend Handle_IntCurveSurface_SequenceNodeOfSequenceOfPnt::Handle_IntCurveSurface_SequenceNodeOfSequenceOfPnt %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_IntCurveSurface_SequenceNodeOfSequenceOfPnt;
 class Handle_IntCurveSurface_SequenceNodeOfSequenceOfPnt : public Handle_TCollection_SeqNode {
@@ -348,20 +316,6 @@ class Handle_IntCurveSurface_SequenceNodeOfSequenceOfPnt : public Handle_TCollec
 %extend Handle_IntCurveSurface_SequenceNodeOfSequenceOfPnt {
     IntCurveSurface_SequenceNodeOfSequenceOfPnt* GetObject() {
     return (IntCurveSurface_SequenceNodeOfSequenceOfPnt*)$self->Access();
-    }
-};
-%feature("shadow") Handle_IntCurveSurface_SequenceNodeOfSequenceOfPnt::~Handle_IntCurveSurface_SequenceNodeOfSequenceOfPnt %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_IntCurveSurface_SequenceNodeOfSequenceOfPnt {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -385,25 +339,23 @@ class IntCurveSurface_SequenceNodeOfSequenceOfSeg : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") IntCurveSurface_SequenceNodeOfSequenceOfSeg::~IntCurveSurface_SequenceNodeOfSequenceOfSeg %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend IntCurveSurface_SequenceNodeOfSequenceOfSeg {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_IntCurveSurface_SequenceNodeOfSequenceOfSeg(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend IntCurveSurface_SequenceNodeOfSequenceOfSeg {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend IntCurveSurface_SequenceNodeOfSequenceOfSeg {
-	Handle_IntCurveSurface_SequenceNodeOfSequenceOfSeg GetHandle() {
-	return *(Handle_IntCurveSurface_SequenceNodeOfSequenceOfSeg*) &$self;
-	}
-};
+%pythonappend Handle_IntCurveSurface_SequenceNodeOfSequenceOfSeg::Handle_IntCurveSurface_SequenceNodeOfSequenceOfSeg %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_IntCurveSurface_SequenceNodeOfSequenceOfSeg;
 class Handle_IntCurveSurface_SequenceNodeOfSequenceOfSeg : public Handle_TCollection_SeqNode {
@@ -421,20 +373,6 @@ class Handle_IntCurveSurface_SequenceNodeOfSequenceOfSeg : public Handle_TCollec
 %extend Handle_IntCurveSurface_SequenceNodeOfSequenceOfSeg {
     IntCurveSurface_SequenceNodeOfSequenceOfSeg* GetObject() {
     return (IntCurveSurface_SequenceNodeOfSequenceOfSeg*)$self->Access();
-    }
-};
-%feature("shadow") Handle_IntCurveSurface_SequenceNodeOfSequenceOfSeg::~Handle_IntCurveSurface_SequenceNodeOfSequenceOfSeg %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_IntCurveSurface_SequenceNodeOfSequenceOfSeg {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -570,20 +508,6 @@ class IntCurveSurface_SequenceOfPnt : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") IntCurveSurface_SequenceOfPnt::~IntCurveSurface_SequenceOfPnt %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntCurveSurface_SequenceOfPnt {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntCurveSurface_SequenceOfSeg;
 class IntCurveSurface_SequenceOfSeg : public TCollection_BaseSequence {
 	public:
@@ -716,20 +640,6 @@ class IntCurveSurface_SequenceOfSeg : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") IntCurveSurface_SequenceOfSeg::~IntCurveSurface_SequenceOfSeg %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntCurveSurface_SequenceOfSeg {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntCurveSurface_TheCSFunctionOfHInter;
 class IntCurveSurface_TheCSFunctionOfHInter : public math_FunctionSetWithDerivatives {
 	public:
@@ -786,28 +696,14 @@ class IntCurveSurface_TheCSFunctionOfHInter : public math_FunctionSetWithDerivat
 		%feature("compactdefaultargs") AuxillarSurface;
 		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HSurface
 ") AuxillarSurface;
-		const Handle_Adaptor3d_HSurface & AuxillarSurface ();
+		Handle_Adaptor3d_HSurface AuxillarSurface ();
 		%feature("compactdefaultargs") AuxillarCurve;
 		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HCurve
 ") AuxillarCurve;
-		const Handle_Adaptor3d_HCurve & AuxillarCurve ();
+		Handle_Adaptor3d_HCurve AuxillarCurve ();
 };
 
 
-%feature("shadow") IntCurveSurface_TheCSFunctionOfHInter::~IntCurveSurface_TheCSFunctionOfHInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntCurveSurface_TheCSFunctionOfHInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntCurveSurface_TheExactHInter;
 class IntCurveSurface_TheExactHInter {
 	public:
@@ -890,20 +786,6 @@ class IntCurveSurface_TheExactHInter {
 };
 
 
-%feature("shadow") IntCurveSurface_TheExactHInter::~IntCurveSurface_TheExactHInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntCurveSurface_TheExactHInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class IntCurveSurface_TheHCurveTool {
 	public:
 		%feature("compactdefaultargs") FirstParameter;
@@ -1115,20 +997,6 @@ class IntCurveSurface_TheHCurveTool {
 };
 
 
-%feature("shadow") IntCurveSurface_TheHCurveTool::~IntCurveSurface_TheHCurveTool %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntCurveSurface_TheHCurveTool {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntCurveSurface_TheInterferenceOfHInter;
 class IntCurveSurface_TheInterferenceOfHInter : public Intf_Interference {
 	public:
@@ -1265,20 +1133,6 @@ class IntCurveSurface_TheInterferenceOfHInter : public Intf_Interference {
 };
 
 
-%feature("shadow") IntCurveSurface_TheInterferenceOfHInter::~IntCurveSurface_TheInterferenceOfHInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntCurveSurface_TheInterferenceOfHInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntCurveSurface_ThePolygonOfHInter;
 class IntCurveSurface_ThePolygonOfHInter {
 	public:
@@ -1373,20 +1227,6 @@ class IntCurveSurface_ThePolygonOfHInter {
 };
 
 
-%feature("shadow") IntCurveSurface_ThePolygonOfHInter::~IntCurveSurface_ThePolygonOfHInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntCurveSurface_ThePolygonOfHInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class IntCurveSurface_ThePolygonToolOfHInter {
 	public:
 		%feature("compactdefaultargs") Bounding;
@@ -1438,20 +1278,6 @@ class IntCurveSurface_ThePolygonToolOfHInter {
 };
 
 
-%feature("shadow") IntCurveSurface_ThePolygonToolOfHInter::~IntCurveSurface_ThePolygonToolOfHInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntCurveSurface_ThePolygonToolOfHInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 class IntCurveSurface_ThePolyhedronToolOfHInter {
 	public:
 		%feature("compactdefaultargs") Bounding;
@@ -1465,7 +1291,7 @@ class IntCurveSurface_ThePolyhedronToolOfHInter {
 	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
 	:rtype: Handle_Bnd_HArray1OfBox
 ") ComponentsBounding;
-		static const Handle_Bnd_HArray1OfBox & ComponentsBounding (const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
+		Handle_Bnd_HArray1OfBox ComponentsBounding (const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 		%feature("compactdefaultargs") DeflectionOverEstimation;
 		%feature("autodoc", "	:param thePolyh:
 	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
@@ -1541,20 +1367,6 @@ class IntCurveSurface_ThePolyhedronToolOfHInter {
 };
 
 
-%feature("shadow") IntCurveSurface_ThePolyhedronToolOfHInter::~IntCurveSurface_ThePolyhedronToolOfHInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntCurveSurface_ThePolyhedronToolOfHInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntCurveSurface_TheQuadCurvExactHInter;
 class IntCurveSurface_TheQuadCurvExactHInter {
 	public:
@@ -1597,20 +1409,6 @@ class IntCurveSurface_TheQuadCurvExactHInter {
 };
 
 
-%feature("shadow") IntCurveSurface_TheQuadCurvExactHInter::~IntCurveSurface_TheQuadCurvExactHInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntCurveSurface_TheQuadCurvExactHInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter;
 class IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter : public math_FunctionWithDerivative {
 	public:
@@ -1651,20 +1449,6 @@ class IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter : public math_Func
 };
 
 
-%feature("shadow") IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter::~IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor IntCurveSurface_HInter;
 class IntCurveSurface_HInter : public IntCurveSurface_Intersection {
 	public:
@@ -1729,17 +1513,3 @@ class IntCurveSurface_HInter : public IntCurveSurface_Intersection {
 };
 
 
-%feature("shadow") IntCurveSurface_HInter::~IntCurveSurface_HInter %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend IntCurveSurface_HInter {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

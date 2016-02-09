@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include Dico_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -188,25 +200,23 @@ class Dico_DictionaryOfInteger : public MMgt_TShared {
 };
 
 
-%feature("shadow") Dico_DictionaryOfInteger::~Dico_DictionaryOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dico_DictionaryOfInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dico_DictionaryOfInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dico_DictionaryOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dico_DictionaryOfInteger {
-	Handle_Dico_DictionaryOfInteger GetHandle() {
-	return *(Handle_Dico_DictionaryOfInteger*) &$self;
-	}
-};
+%pythonappend Handle_Dico_DictionaryOfInteger::Handle_Dico_DictionaryOfInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dico_DictionaryOfInteger;
 class Handle_Dico_DictionaryOfInteger : public Handle_MMgt_TShared {
@@ -224,20 +234,6 @@ class Handle_Dico_DictionaryOfInteger : public Handle_MMgt_TShared {
 %extend Handle_Dico_DictionaryOfInteger {
     Dico_DictionaryOfInteger* GetObject() {
     return (Dico_DictionaryOfInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dico_DictionaryOfInteger::~Handle_Dico_DictionaryOfInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dico_DictionaryOfInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -271,7 +267,7 @@ class Dico_DictionaryOfTransient : public MMgt_TShared {
 	:type exact: bool
 	:rtype: Handle_Standard_Transient
 ") Item;
-		const Handle_Standard_Transient & Item (const char * name,const Standard_Boolean exact = Standard_True);
+		Handle_Standard_Transient Item (const char * name,const Standard_Boolean exact = Standard_True);
 		%feature("compactdefaultargs") Item;
 		%feature("autodoc", "	:param name:
 	:type name: TCollection_AsciiString &
@@ -279,7 +275,7 @@ class Dico_DictionaryOfTransient : public MMgt_TShared {
 	:type exact: bool
 	:rtype: Handle_Standard_Transient
 ") Item;
-		const Handle_Standard_Transient & Item (const TCollection_AsciiString & name,const Standard_Boolean exact = Standard_True);
+		Handle_Standard_Transient Item (const TCollection_AsciiString & name,const Standard_Boolean exact = Standard_True);
 		%feature("compactdefaultargs") GetItem;
 		%feature("autodoc", "	:param name:
 	:type name: char *
@@ -329,7 +325,7 @@ class Dico_DictionaryOfTransient : public MMgt_TShared {
 	:type exact: bool
 	:rtype: Handle_Standard_Transient
 ") NewItem;
-		Handle_Standard_Transient & NewItem (const char * name,Standard_Boolean &OutValue,const Standard_Boolean exact = Standard_True);
+		Handle_Standard_Transient NewItem (const char * name,Standard_Boolean &OutValue,const Standard_Boolean exact = Standard_True);
 		%feature("compactdefaultargs") NewItem;
 		%feature("autodoc", "	:param name:
 	:type name: TCollection_AsciiString &
@@ -339,7 +335,7 @@ class Dico_DictionaryOfTransient : public MMgt_TShared {
 	:type exact: bool
 	:rtype: Handle_Standard_Transient
 ") NewItem;
-		Handle_Standard_Transient & NewItem (const TCollection_AsciiString & name,Standard_Boolean &OutValue,const Standard_Boolean exact = Standard_True);
+		Handle_Standard_Transient NewItem (const TCollection_AsciiString & name,Standard_Boolean &OutValue,const Standard_Boolean exact = Standard_True);
 		%feature("compactdefaultargs") RemoveItem;
 		%feature("autodoc", "	:param name:
 	:type name: char *
@@ -385,25 +381,23 @@ class Dico_DictionaryOfTransient : public MMgt_TShared {
 };
 
 
-%feature("shadow") Dico_DictionaryOfTransient::~Dico_DictionaryOfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dico_DictionaryOfTransient {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dico_DictionaryOfTransient(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dico_DictionaryOfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dico_DictionaryOfTransient {
-	Handle_Dico_DictionaryOfTransient GetHandle() {
-	return *(Handle_Dico_DictionaryOfTransient*) &$self;
-	}
-};
+%pythonappend Handle_Dico_DictionaryOfTransient::Handle_Dico_DictionaryOfTransient %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dico_DictionaryOfTransient;
 class Handle_Dico_DictionaryOfTransient : public Handle_MMgt_TShared {
@@ -421,20 +415,6 @@ class Handle_Dico_DictionaryOfTransient : public Handle_MMgt_TShared {
 %extend Handle_Dico_DictionaryOfTransient {
     Dico_DictionaryOfTransient* GetObject() {
     return (Dico_DictionaryOfTransient*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dico_DictionaryOfTransient::~Handle_Dico_DictionaryOfTransient %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dico_DictionaryOfTransient {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -486,20 +466,6 @@ class Dico_IteratorOfDictionaryOfInteger {
 };
 
 
-%feature("shadow") Dico_IteratorOfDictionaryOfInteger::~Dico_IteratorOfDictionaryOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Dico_IteratorOfDictionaryOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Dico_IteratorOfDictionaryOfTransient;
 class Dico_IteratorOfDictionaryOfTransient {
 	public:
@@ -540,7 +506,7 @@ class Dico_IteratorOfDictionaryOfTransient {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "	:rtype: Handle_Standard_Transient
 ") Value;
-		const Handle_Standard_Transient & Value ();
+		Handle_Standard_Transient Value ();
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "	:rtype: TCollection_AsciiString
 ") Name;
@@ -548,20 +514,6 @@ class Dico_IteratorOfDictionaryOfTransient {
 };
 
 
-%feature("shadow") Dico_IteratorOfDictionaryOfTransient::~Dico_IteratorOfDictionaryOfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend Dico_IteratorOfDictionaryOfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor Dico_StackItemOfDictionaryOfInteger;
 class Dico_StackItemOfDictionaryOfInteger : public MMgt_TShared {
 	public:
@@ -592,25 +544,23 @@ class Dico_StackItemOfDictionaryOfInteger : public MMgt_TShared {
 };
 
 
-%feature("shadow") Dico_StackItemOfDictionaryOfInteger::~Dico_StackItemOfDictionaryOfInteger %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dico_StackItemOfDictionaryOfInteger {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dico_StackItemOfDictionaryOfInteger(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dico_StackItemOfDictionaryOfInteger {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dico_StackItemOfDictionaryOfInteger {
-	Handle_Dico_StackItemOfDictionaryOfInteger GetHandle() {
-	return *(Handle_Dico_StackItemOfDictionaryOfInteger*) &$self;
-	}
-};
+%pythonappend Handle_Dico_StackItemOfDictionaryOfInteger::Handle_Dico_StackItemOfDictionaryOfInteger %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dico_StackItemOfDictionaryOfInteger;
 class Handle_Dico_StackItemOfDictionaryOfInteger : public Handle_MMgt_TShared {
@@ -628,20 +578,6 @@ class Handle_Dico_StackItemOfDictionaryOfInteger : public Handle_MMgt_TShared {
 %extend Handle_Dico_StackItemOfDictionaryOfInteger {
     Dico_StackItemOfDictionaryOfInteger* GetObject() {
     return (Dico_StackItemOfDictionaryOfInteger*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dico_StackItemOfDictionaryOfInteger::~Handle_Dico_StackItemOfDictionaryOfInteger %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dico_StackItemOfDictionaryOfInteger {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -675,25 +611,23 @@ class Dico_StackItemOfDictionaryOfTransient : public MMgt_TShared {
 };
 
 
-%feature("shadow") Dico_StackItemOfDictionaryOfTransient::~Dico_StackItemOfDictionaryOfTransient %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend Dico_StackItemOfDictionaryOfTransient {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_Dico_StackItemOfDictionaryOfTransient(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend Dico_StackItemOfDictionaryOfTransient {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend Dico_StackItemOfDictionaryOfTransient {
-	Handle_Dico_StackItemOfDictionaryOfTransient GetHandle() {
-	return *(Handle_Dico_StackItemOfDictionaryOfTransient*) &$self;
-	}
-};
+%pythonappend Handle_Dico_StackItemOfDictionaryOfTransient::Handle_Dico_StackItemOfDictionaryOfTransient %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_Dico_StackItemOfDictionaryOfTransient;
 class Handle_Dico_StackItemOfDictionaryOfTransient : public Handle_MMgt_TShared {
@@ -711,20 +645,6 @@ class Handle_Dico_StackItemOfDictionaryOfTransient : public Handle_MMgt_TShared 
 %extend Handle_Dico_StackItemOfDictionaryOfTransient {
     Dico_StackItemOfDictionaryOfTransient* GetObject() {
     return (Dico_StackItemOfDictionaryOfTransient*)$self->Access();
-    }
-};
-%feature("shadow") Handle_Dico_StackItemOfDictionaryOfTransient::~Handle_Dico_StackItemOfDictionaryOfTransient %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_Dico_StackItemOfDictionaryOfTransient {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

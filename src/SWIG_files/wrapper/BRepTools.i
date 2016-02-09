@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include BRepTools_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -352,20 +364,6 @@ class BRepTools {
 };
 
 
-%feature("shadow") BRepTools::~BRepTools %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepTools {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepTools_DataMapIteratorOfMapOfVertexPnt2d;
 class BRepTools_DataMapIteratorOfMapOfVertexPnt2d : public TCollection_BasicMapIterator {
 	public:
@@ -396,20 +394,6 @@ class BRepTools_DataMapIteratorOfMapOfVertexPnt2d : public TCollection_BasicMapI
 };
 
 
-%feature("shadow") BRepTools_DataMapIteratorOfMapOfVertexPnt2d::~BRepTools_DataMapIteratorOfMapOfVertexPnt2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepTools_DataMapIteratorOfMapOfVertexPnt2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepTools_DataMapNodeOfMapOfVertexPnt2d;
 class BRepTools_DataMapNodeOfMapOfVertexPnt2d : public TCollection_MapNode {
 	public:
@@ -434,25 +418,23 @@ class BRepTools_DataMapNodeOfMapOfVertexPnt2d : public TCollection_MapNode {
 };
 
 
-%feature("shadow") BRepTools_DataMapNodeOfMapOfVertexPnt2d::~BRepTools_DataMapNodeOfMapOfVertexPnt2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepTools_DataMapNodeOfMapOfVertexPnt2d {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepTools_DataMapNodeOfMapOfVertexPnt2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepTools_DataMapNodeOfMapOfVertexPnt2d {
-	Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d GetHandle() {
-	return *(Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d*) &$self;
-	}
-};
+%pythonappend Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d::Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d;
 class Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d : public Handle_TCollection_MapNode {
@@ -470,20 +452,6 @@ class Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d : public Handle_TCollection
 %extend Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d {
     BRepTools_DataMapNodeOfMapOfVertexPnt2d* GetObject() {
     return (BRepTools_DataMapNodeOfMapOfVertexPnt2d*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d::~Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -565,20 +533,6 @@ class BRepTools_MapOfVertexPnt2d : public TCollection_BasicMap {
 };
 
 
-%feature("shadow") BRepTools_MapOfVertexPnt2d::~BRepTools_MapOfVertexPnt2d %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepTools_MapOfVertexPnt2d {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepTools_Modification;
 class BRepTools_Modification : public MMgt_TShared {
 	public:
@@ -679,25 +633,23 @@ class BRepTools_Modification : public MMgt_TShared {
 };
 
 
-%feature("shadow") BRepTools_Modification::~BRepTools_Modification %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepTools_Modification {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepTools_Modification(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepTools_Modification {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepTools_Modification {
-	Handle_BRepTools_Modification GetHandle() {
-	return *(Handle_BRepTools_Modification*) &$self;
-	}
-};
+%pythonappend Handle_BRepTools_Modification::Handle_BRepTools_Modification %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepTools_Modification;
 class Handle_BRepTools_Modification : public Handle_MMgt_TShared {
@@ -715,20 +667,6 @@ class Handle_BRepTools_Modification : public Handle_MMgt_TShared {
 %extend Handle_BRepTools_Modification {
     BRepTools_Modification* GetObject() {
     return (BRepTools_Modification*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepTools_Modification::~Handle_BRepTools_Modification %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepTools_Modification {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -792,20 +730,6 @@ class BRepTools_Modifier {
 };
 
 
-%feature("shadow") BRepTools_Modifier::~BRepTools_Modifier %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepTools_Modifier {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepTools_Quilt;
 class BRepTools_Quilt {
 	public:
@@ -866,20 +790,6 @@ class BRepTools_Quilt {
 };
 
 
-%feature("shadow") BRepTools_Quilt::~BRepTools_Quilt %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepTools_Quilt {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepTools_ReShape;
 class BRepTools_ReShape : public MMgt_TShared {
 	public:
@@ -996,25 +906,23 @@ class BRepTools_ReShape : public MMgt_TShared {
             };
 
 
-%feature("shadow") BRepTools_ReShape::~BRepTools_ReShape %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepTools_ReShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepTools_ReShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepTools_ReShape {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepTools_ReShape {
-	Handle_BRepTools_ReShape GetHandle() {
-	return *(Handle_BRepTools_ReShape*) &$self;
-	}
-};
+%pythonappend Handle_BRepTools_ReShape::Handle_BRepTools_ReShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepTools_ReShape;
 class Handle_BRepTools_ReShape : public Handle_MMgt_TShared {
@@ -1032,20 +940,6 @@ class Handle_BRepTools_ReShape : public Handle_MMgt_TShared {
 %extend Handle_BRepTools_ReShape {
     BRepTools_ReShape* GetObject() {
     return (BRepTools_ReShape*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepTools_ReShape::~Handle_BRepTools_ReShape %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepTools_ReShape {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1235,20 +1129,6 @@ class BRepTools_ShapeSet : public TopTools_ShapeSet {
         };
 
 
-%feature("shadow") BRepTools_ShapeSet::~BRepTools_ShapeSet %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepTools_ShapeSet {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepTools_Substitution;
 class BRepTools_Substitution {
 	public:
@@ -1299,20 +1179,6 @@ class BRepTools_Substitution {
 };
 
 
-%feature("shadow") BRepTools_Substitution::~BRepTools_Substitution %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepTools_Substitution {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepTools_WireExplorer;
 class BRepTools_WireExplorer {
 	public:
@@ -1397,20 +1263,6 @@ class BRepTools_WireExplorer {
 };
 
 
-%feature("shadow") BRepTools_WireExplorer::~BRepTools_WireExplorer %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend BRepTools_WireExplorer {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor BRepTools_GTrsfModification;
 class BRepTools_GTrsfModification : public BRepTools_Modification {
 	public:
@@ -1523,25 +1375,23 @@ class BRepTools_GTrsfModification : public BRepTools_Modification {
 };
 
 
-%feature("shadow") BRepTools_GTrsfModification::~BRepTools_GTrsfModification %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepTools_GTrsfModification {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepTools_GTrsfModification(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepTools_GTrsfModification {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepTools_GTrsfModification {
-	Handle_BRepTools_GTrsfModification GetHandle() {
-	return *(Handle_BRepTools_GTrsfModification*) &$self;
-	}
-};
+%pythonappend Handle_BRepTools_GTrsfModification::Handle_BRepTools_GTrsfModification %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepTools_GTrsfModification;
 class Handle_BRepTools_GTrsfModification : public Handle_BRepTools_Modification {
@@ -1559,20 +1409,6 @@ class Handle_BRepTools_GTrsfModification : public Handle_BRepTools_Modification 
 %extend Handle_BRepTools_GTrsfModification {
     BRepTools_GTrsfModification* GetObject() {
     return (BRepTools_GTrsfModification*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepTools_GTrsfModification::~Handle_BRepTools_GTrsfModification %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepTools_GTrsfModification {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1680,25 +1516,23 @@ class BRepTools_NurbsConvertModification : public BRepTools_Modification {
 };
 
 
-%feature("shadow") BRepTools_NurbsConvertModification::~BRepTools_NurbsConvertModification %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepTools_NurbsConvertModification {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepTools_NurbsConvertModification(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepTools_NurbsConvertModification {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepTools_NurbsConvertModification {
-	Handle_BRepTools_NurbsConvertModification GetHandle() {
-	return *(Handle_BRepTools_NurbsConvertModification*) &$self;
-	}
-};
+%pythonappend Handle_BRepTools_NurbsConvertModification::Handle_BRepTools_NurbsConvertModification %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepTools_NurbsConvertModification;
 class Handle_BRepTools_NurbsConvertModification : public Handle_BRepTools_Modification {
@@ -1716,20 +1550,6 @@ class Handle_BRepTools_NurbsConvertModification : public Handle_BRepTools_Modifi
 %extend Handle_BRepTools_NurbsConvertModification {
     BRepTools_NurbsConvertModification* GetObject() {
     return (BRepTools_NurbsConvertModification*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepTools_NurbsConvertModification::~Handle_BRepTools_NurbsConvertModification %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepTools_NurbsConvertModification {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -1845,25 +1665,23 @@ class BRepTools_TrsfModification : public BRepTools_Modification {
 };
 
 
-%feature("shadow") BRepTools_TrsfModification::~BRepTools_TrsfModification %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend BRepTools_TrsfModification {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_BRepTools_TrsfModification(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend BRepTools_TrsfModification {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend BRepTools_TrsfModification {
-	Handle_BRepTools_TrsfModification GetHandle() {
-	return *(Handle_BRepTools_TrsfModification*) &$self;
-	}
-};
+%pythonappend Handle_BRepTools_TrsfModification::Handle_BRepTools_TrsfModification %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_BRepTools_TrsfModification;
 class Handle_BRepTools_TrsfModification : public Handle_BRepTools_Modification {
@@ -1881,20 +1699,6 @@ class Handle_BRepTools_TrsfModification : public Handle_BRepTools_Modification {
 %extend Handle_BRepTools_TrsfModification {
     BRepTools_TrsfModification* GetObject() {
     return (BRepTools_TrsfModification*)$self->Access();
-    }
-};
-%feature("shadow") Handle_BRepTools_TrsfModification::~Handle_BRepTools_TrsfModification %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_BRepTools_TrsfModification {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 

@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include AdvApp2Var_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -284,20 +296,6 @@ class AdvApp2Var_ApproxAFunc2Var {
         };
 
 
-%feature("shadow") AdvApp2Var_ApproxAFunc2Var::~AdvApp2Var_ApproxAFunc2Var %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AdvApp2Var_ApproxAFunc2Var {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AdvApp2Var_ApproxF2var;
 class AdvApp2Var_ApproxF2var {
 	public:
@@ -690,20 +688,6 @@ class AdvApp2Var_ApproxF2var {
 };
 
 
-%feature("shadow") AdvApp2Var_ApproxF2var::~AdvApp2Var_ApproxF2var %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AdvApp2Var_ApproxF2var {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AdvApp2Var_Context;
 class AdvApp2Var_Context {
 	public:
@@ -820,20 +804,6 @@ class AdvApp2Var_Context {
 };
 
 
-%feature("shadow") AdvApp2Var_Context::~AdvApp2Var_Context %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AdvApp2Var_Context {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AdvApp2Var_Criterion;
 class AdvApp2Var_Criterion {
 	public:
@@ -870,20 +840,6 @@ class AdvApp2Var_Criterion {
 };
 
 
-%feature("shadow") AdvApp2Var_Criterion::~AdvApp2Var_Criterion %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AdvApp2Var_Criterion {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AdvApp2Var_Data;
 class AdvApp2Var_Data {
 	public:
@@ -934,20 +890,6 @@ class AdvApp2Var_Data {
 };
 
 
-%feature("shadow") AdvApp2Var_Data::~AdvApp2Var_Data %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AdvApp2Var_Data {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AdvApp2Var_Framework;
 class AdvApp2Var_Framework {
 	public:
@@ -1066,7 +1008,7 @@ class AdvApp2Var_Framework {
 	:type IndexStrip: int
 	:rtype: Handle_TColStd_HArray1OfReal
 ") UEquation;
-		const Handle_TColStd_HArray1OfReal & UEquation (const Standard_Integer IndexIso,const Standard_Integer IndexStrip);
+		Handle_TColStd_HArray1OfReal UEquation (const Standard_Integer IndexIso,const Standard_Integer IndexStrip);
 		%feature("compactdefaultargs") VEquation;
 		%feature("autodoc", "	:param IndexIso:
 	:type IndexIso: int
@@ -1074,24 +1016,10 @@ class AdvApp2Var_Framework {
 	:type IndexStrip: int
 	:rtype: Handle_TColStd_HArray1OfReal
 ") VEquation;
-		const Handle_TColStd_HArray1OfReal & VEquation (const Standard_Integer IndexIso,const Standard_Integer IndexStrip);
+		Handle_TColStd_HArray1OfReal VEquation (const Standard_Integer IndexIso,const Standard_Integer IndexStrip);
 };
 
 
-%feature("shadow") AdvApp2Var_Framework::~AdvApp2Var_Framework %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AdvApp2Var_Framework {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AdvApp2Var_MathBase;
 class AdvApp2Var_MathBase {
 	public:
@@ -1752,20 +1680,6 @@ class AdvApp2Var_MathBase {
 };
 
 
-%feature("shadow") AdvApp2Var_MathBase::~AdvApp2Var_MathBase %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AdvApp2Var_MathBase {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AdvApp2Var_Network;
 class AdvApp2Var_Network {
 	public:
@@ -1856,20 +1770,6 @@ class AdvApp2Var_Network {
 };
 
 
-%feature("shadow") AdvApp2Var_Network::~AdvApp2Var_Network %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AdvApp2Var_Network {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AdvApp2Var_Node;
 class AdvApp2Var_Node {
 	public:
@@ -1954,20 +1854,6 @@ class AdvApp2Var_Node {
 };
 
 
-%feature("shadow") AdvApp2Var_Node::~AdvApp2Var_Node %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AdvApp2Var_Node {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AdvApp2Var_Patch;
 class AdvApp2Var_Patch {
 	public:
@@ -2150,20 +2036,6 @@ class AdvApp2Var_Patch {
 };
 
 
-%feature("shadow") AdvApp2Var_Patch::~AdvApp2Var_Patch %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AdvApp2Var_Patch {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AdvApp2Var_SequenceNodeOfSequenceOfNode;
 class AdvApp2Var_SequenceNodeOfSequenceOfNode : public TCollection_SeqNode {
 	public:
@@ -2184,25 +2056,23 @@ class AdvApp2Var_SequenceNodeOfSequenceOfNode : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") AdvApp2Var_SequenceNodeOfSequenceOfNode::~AdvApp2Var_SequenceNodeOfSequenceOfNode %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AdvApp2Var_SequenceNodeOfSequenceOfNode {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AdvApp2Var_SequenceNodeOfSequenceOfNode {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AdvApp2Var_SequenceNodeOfSequenceOfNode {
-	Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode GetHandle() {
-	return *(Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode*) &$self;
-	}
-};
+%pythonappend Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode::Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode;
 class Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode : public Handle_TCollection_SeqNode {
@@ -2220,20 +2090,6 @@ class Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode : public Handle_TCollection
 %extend Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode {
     AdvApp2Var_SequenceNodeOfSequenceOfNode* GetObject() {
     return (AdvApp2Var_SequenceNodeOfSequenceOfNode*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode::~Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2257,25 +2113,23 @@ class AdvApp2Var_SequenceNodeOfSequenceOfPatch : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") AdvApp2Var_SequenceNodeOfSequenceOfPatch::~AdvApp2Var_SequenceNodeOfSequenceOfPatch %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AdvApp2Var_SequenceNodeOfSequenceOfPatch {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AdvApp2Var_SequenceNodeOfSequenceOfPatch {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AdvApp2Var_SequenceNodeOfSequenceOfPatch {
-	Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch GetHandle() {
-	return *(Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch*) &$self;
-	}
-};
+%pythonappend Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch::Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch;
 class Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch : public Handle_TCollection_SeqNode {
@@ -2293,20 +2147,6 @@ class Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch : public Handle_TCollectio
 %extend Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch {
     AdvApp2Var_SequenceNodeOfSequenceOfPatch* GetObject() {
     return (AdvApp2Var_SequenceNodeOfSequenceOfPatch*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch::~Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2330,25 +2170,23 @@ class AdvApp2Var_SequenceNodeOfSequenceOfStrip : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") AdvApp2Var_SequenceNodeOfSequenceOfStrip::~AdvApp2Var_SequenceNodeOfSequenceOfStrip %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AdvApp2Var_SequenceNodeOfSequenceOfStrip {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AdvApp2Var_SequenceNodeOfSequenceOfStrip {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AdvApp2Var_SequenceNodeOfSequenceOfStrip {
-	Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip GetHandle() {
-	return *(Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip*) &$self;
-	}
-};
+%pythonappend Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip::Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip;
 class Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip : public Handle_TCollection_SeqNode {
@@ -2366,20 +2204,6 @@ class Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip : public Handle_TCollectio
 %extend Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip {
     AdvApp2Var_SequenceNodeOfSequenceOfStrip* GetObject() {
     return (AdvApp2Var_SequenceNodeOfSequenceOfStrip*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip::~Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2403,25 +2227,23 @@ class AdvApp2Var_SequenceNodeOfStrip : public TCollection_SeqNode {
 };
 
 
-%feature("shadow") AdvApp2Var_SequenceNodeOfStrip::~AdvApp2Var_SequenceNodeOfStrip %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
+%extend AdvApp2Var_SequenceNodeOfStrip {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_AdvApp2Var_SequenceNodeOfStrip(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
 
-%extend AdvApp2Var_SequenceNodeOfStrip {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
-%extend AdvApp2Var_SequenceNodeOfStrip {
-	Handle_AdvApp2Var_SequenceNodeOfStrip GetHandle() {
-	return *(Handle_AdvApp2Var_SequenceNodeOfStrip*) &$self;
-	}
-};
+%pythonappend Handle_AdvApp2Var_SequenceNodeOfStrip::Handle_AdvApp2Var_SequenceNodeOfStrip %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
 
 %nodefaultctor Handle_AdvApp2Var_SequenceNodeOfStrip;
 class Handle_AdvApp2Var_SequenceNodeOfStrip : public Handle_TCollection_SeqNode {
@@ -2439,20 +2261,6 @@ class Handle_AdvApp2Var_SequenceNodeOfStrip : public Handle_TCollection_SeqNode 
 %extend Handle_AdvApp2Var_SequenceNodeOfStrip {
     AdvApp2Var_SequenceNodeOfStrip* GetObject() {
     return (AdvApp2Var_SequenceNodeOfStrip*)$self->Access();
-    }
-};
-%feature("shadow") Handle_AdvApp2Var_SequenceNodeOfStrip::~Handle_AdvApp2Var_SequenceNodeOfStrip %{
-def __del__(self):
-    try:
-        self.thisown = False
-        OCC.GarbageCollector.garbage.collect_object(self)
-    except:
-        pass
-%}
-
-%extend Handle_AdvApp2Var_SequenceNodeOfStrip {
-    void _kill_pointed() {
-        delete $self;
     }
 };
 
@@ -2588,20 +2396,6 @@ class AdvApp2Var_SequenceOfNode : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") AdvApp2Var_SequenceOfNode::~AdvApp2Var_SequenceOfNode %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AdvApp2Var_SequenceOfNode {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AdvApp2Var_SequenceOfPatch;
 class AdvApp2Var_SequenceOfPatch : public TCollection_BaseSequence {
 	public:
@@ -2734,20 +2528,6 @@ class AdvApp2Var_SequenceOfPatch : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") AdvApp2Var_SequenceOfPatch::~AdvApp2Var_SequenceOfPatch %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AdvApp2Var_SequenceOfPatch {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AdvApp2Var_SequenceOfStrip;
 class AdvApp2Var_SequenceOfStrip : public TCollection_BaseSequence {
 	public:
@@ -2880,20 +2660,6 @@ class AdvApp2Var_SequenceOfStrip : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") AdvApp2Var_SequenceOfStrip::~AdvApp2Var_SequenceOfStrip %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AdvApp2Var_SequenceOfStrip {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AdvApp2Var_Strip;
 class AdvApp2Var_Strip : public TCollection_BaseSequence {
 	public:
@@ -3026,20 +2792,6 @@ class AdvApp2Var_Strip : public TCollection_BaseSequence {
 };
 
 
-%feature("shadow") AdvApp2Var_Strip::~AdvApp2Var_Strip %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AdvApp2Var_Strip {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor AdvApp2Var_SysBase;
 class AdvApp2Var_SysBase {
 	public:
@@ -3254,17 +3006,3 @@ class AdvApp2Var_SysBase {
 };
 
 
-%feature("shadow") AdvApp2Var_SysBase::~AdvApp2Var_SysBase %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend AdvApp2Var_SysBase {
-	void _kill_pointed() {
-		delete $self;
-	}
-};

@@ -32,11 +32,23 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 
-%pythoncode {
-import OCC.GarbageCollector
-};
 
 %include GccEnt_headers.i
+
+
+%pythoncode {
+def register_handle(handle, base_object):
+    """
+    Inserts the handle into the base object to
+    prevent memory corruption in certain cases
+    """
+    try:
+        if base_object.IsKind("Standard_Transient"):
+            base_object.thisHandle = handle
+            base_object.thisown = False
+    except:
+        pass
+};
 
 /* typedefs */
 /* end typedefs declaration */
@@ -114,20 +126,6 @@ class GccEnt {
 };
 
 
-%feature("shadow") GccEnt::~GccEnt %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GccEnt {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GccEnt_Array1OfPosition;
 class GccEnt_Array1OfPosition {
 	public:
@@ -210,20 +208,6 @@ class GccEnt_Array1OfPosition {
 };
 
 
-%feature("shadow") GccEnt_Array1OfPosition::~GccEnt_Array1OfPosition %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GccEnt_Array1OfPosition {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GccEnt_QualifiedCirc;
 class GccEnt_QualifiedCirc {
 	public:
@@ -294,20 +278,6 @@ class GccEnt_QualifiedCirc {
 };
 
 
-%feature("shadow") GccEnt_QualifiedCirc::~GccEnt_QualifiedCirc %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GccEnt_QualifiedCirc {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
 %nodefaultctor GccEnt_QualifiedLin;
 class GccEnt_QualifiedLin {
 	public:
@@ -372,17 +342,3 @@ class GccEnt_QualifiedLin {
 };
 
 
-%feature("shadow") GccEnt_QualifiedLin::~GccEnt_QualifiedLin %{
-def __del__(self):
-	try:
-		self.thisown = False
-		OCC.GarbageCollector.garbage.collect_object(self)
-	except:
-		pass
-%}
-
-%extend GccEnt_QualifiedLin {
-	void _kill_pointed() {
-		delete $self;
-	}
-};
