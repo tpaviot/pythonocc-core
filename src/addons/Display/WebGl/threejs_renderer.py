@@ -23,6 +23,7 @@ import OCC
 from time import time
 import os
 import tempfile
+import urlparse, urllib
 
 HEADER = """
 <head>
@@ -178,6 +179,13 @@ BODY = """
 """
 
 
+def path2url(path):
+    """
+    Converts a file path into a file URL
+    """
+    return urlparse.urljoin(
+      'file:', urllib.pathname2url(path))
+
 class HTMLHeader(object):
     def __init__(self, background_color='#000000'):
         self._background_color = background_color
@@ -198,7 +206,7 @@ class HTMLBody(object):
 
     def get_str(self):
         # get the location where pythonocc is running from
-        threejs_build_location = os.sep.join([OCC.__path__[0], 'Display', 'WebGl', 'js'])
+        threejs_build_location = path2url(os.sep.join([OCC.__path__[0], 'Display', 'WebGl', 'js']))
         body_str = BODY.replace('@Three.jsPath@', '%s' % threejs_build_location)
         body_str = body_str.replace('@background-color@', '%s' % self._background_color)
         body_str = body_str.replace('@VERSION@', OCC.VERSION)
