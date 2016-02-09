@@ -23,7 +23,12 @@ import OCC
 from time import time
 import os
 import tempfile
-import urlparse, urllib
+try:  # python2
+    import urlparse
+    import urllib
+except ImportError:  # python3
+    import urllib.parse as urlparse
+    import urllib.request as urllib
 
 HEADER = """
 <head>
@@ -183,8 +188,8 @@ def path2url(path):
     """
     Converts a file path into a file URL
     """
-    return urlparse.urljoin(
-      'file:', urllib.pathname2url(path))
+    return urlparse.urljoin('file:', urllib.pathname2url(path))
+
 
 class HTMLHeader(object):
     def __init__(self, background_color='#000000'):
