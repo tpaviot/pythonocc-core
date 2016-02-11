@@ -25,7 +25,12 @@ from OCC.TopExp import TopExp_Explorer
 from OCC.TopAbs import TopAbs_FACE
 import OCC
 import os
-import urlparse, urllib
+try:  # python2
+    import urlparse
+    import urllib
+except ImportError:  # python3
+    import urllib.parse as urlparse
+    import urllib.request as urllib
 
 # <script type="text/javascript" src="@x3dom-full.jsPath@/x3dom-full.js"></script>
     
@@ -155,8 +160,8 @@ def path2url(path):
     """
     Converts a file path into a file URL
     """
-    return urlparse.urljoin(
-      'file:', urllib.pathname2url(path))
+    return urlparse.urljoin('file:', urllib.pathname2url(path))
+
 
 class HTMLHeader(object):
     def __init__(self, background_color='#000000'):
@@ -247,7 +252,7 @@ class X3DExporter(object):
             shape_id += 1
         f.write("</Group>\n")
         f.write('</Scene>\n</X3D>\n')
-
+        f.close()
 
 def test_X3DExporter():
     from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
