@@ -252,7 +252,7 @@ class X3DExporter(object):
             shape_id += 1
         f.write("</Group>\n")
         f.write('</Scene>\n</X3D>\n')
-
+        f.close()
 
 def test_X3DExporter():
     from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
