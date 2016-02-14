@@ -703,7 +703,7 @@ class TDataStd_ChildNodeIterator {
 
 	:rtype: Handle_TDataStd_TreeNode
 ") Value;
-		Handle_TDataStd_TreeNode Value ();
+		const Handle_TDataStd_TreeNode & Value ();
 };
 
 
