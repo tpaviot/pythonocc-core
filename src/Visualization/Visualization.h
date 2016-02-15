@@ -25,8 +25,12 @@
 #include <V3d_Viewer.hxx>
 #include <V3d_View.hxx>
 #include <AIS_Shape.hxx>
+
+#include <Handle_V3d_Viewer.hxx>
+#include <Handle_V3d_View.hxx>
 #include <Handle_Graphic3d_GraphicDriver.hxx>
 #include <OpenGl_GraphicDriver.hxx>
+
 #include <Aspect_DisplayConnection.hxx>
 
 #include <cstdlib>
@@ -44,12 +48,7 @@ class Display3d
 public:
 	Standard_EXPORT Display3d();
 	Standard_EXPORT virtual ~Display3d();
-	//Standard_EXPORT void Init(long window_handle);
-	Standard_EXPORT void Init(long window_handle,
-                              bool ffpEnabled=true,
-                              bool buffersNoSwapEnabled=false,
-                              bool glslWarningsEnabled=false);
-
+	Standard_EXPORT void Init(long window_handle);
 	Standard_EXPORT Handle_V3d_View& GetView() {return myV3dView;};
 	Standard_EXPORT Handle_V3d_Viewer& GetViewer() {return myV3dViewer;};
 	Standard_EXPORT Handle_AIS_InteractiveContext GetContext() {return myAISContext;};
@@ -59,9 +58,6 @@ protected:
    Handle_AIS_InteractiveContext myAISContext;
    Handle_V3d_Viewer myV3dViewer;
    Handle_V3d_View myV3dView;
-//   OpenGl_GraphicDriver aDriver;
-
-
    #ifdef WNT
      Handle_WNT_Window myWindow;
    #elif defined(__APPLE__) && !defined(MACOSX_USE_GLX)
