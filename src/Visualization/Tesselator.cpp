@@ -23,7 +23,8 @@
 #include <TopExp_Explorer.hxx>
 #include <Bnd_Box.hxx>
 #include <StdPrs_ToolShadedShape.hxx>
-#include <BRepMesh.hxx>
+#include <BRepMesh_IncrementalMesh.hxx>
+#include <TopoDS.hxx>
 #include <Poly_Connect.hxx>
 #include <Poly_Triangulation.hxx>
 #include <Poly_PolygonOnTriangulation.hxx>
@@ -147,7 +148,7 @@ void Tesselator::Tesselate()
     gp_Pnt2d d_coord;
 
     //Triangulate
-    BRepMesh::Mesh(myShape, myDeviation);
+    BRepMesh_IncrementalMesh(myShape, myDeviation);
 
     for (ExpFace.Init(myShape, TopAbs_FACE); ExpFace.More(); ExpFace.Next()) {
       const TopoDS_Face&    myFace    = TopoDS::Face(ExpFace.Current());
@@ -237,7 +238,7 @@ void Tesselator::TesselateWithUVCoords()
   gp_Pnt2d d_coord;
   
   //Triangulate
-  BRepMesh::Mesh(myShape, myDeviation);
+  BRepMesh_IncrementalMesh(myShape, myDeviation);
 
   for (ExpFace.Init(myShape, TopAbs_FACE); ExpFace.More(); ExpFace.Next()) {
     const TopoDS_Face&    myFace    = TopoDS::Face(ExpFace.Current());
