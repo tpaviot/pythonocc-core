@@ -35,7 +35,6 @@ install:
   # install everything required to build the receipe
   - conda install conda-build anaconda-client
 
-
 script:
   - if [[ "$python_version" == "2.7" ]]; then
       export CONDA_PY=27;
