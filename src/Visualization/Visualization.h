@@ -59,6 +59,9 @@ protected:
    Handle_AIS_InteractiveContext myAISContext;
    Handle_V3d_Viewer myV3dViewer;
    Handle_V3d_View myV3dView;
+//   OpenGl_GraphicDriver aDriver;
+
+
    #ifdef WNT
      Handle_WNT_Window myWindow;
    #elif defined(__APPLE__) && !defined(MACOSX_USE_GLX)
