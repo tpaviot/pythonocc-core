@@ -51,6 +51,7 @@ def register_handle(handle, base_object):
 };
 
 /* typedefs */
+typedef NCollection_List <Handle_TColgp_HSequenceOfPnt> Prs3d_NListOfSequenceOfPnt;
 typedef Prs3d_NListOfSequenceOfPnt::Iterator Prs3d_NListIteratorOfListOfSequenceOfPnt;
 /* end typedefs declaration */
 
@@ -85,6 +86,12 @@ enum Prs3d_TypeOfLinePicking {
 	Prs3d_TOLP_Segment = 1,
 };
 
+enum Prs3d_VertexDrawMode {
+	Prs3d_VDM_Isolated = 0,
+	Prs3d_VDM_All = 1,
+	Prs3d_VDM_Inherited = 2,
+};
+
 /* end public enums declaration */
 
 %rename(prs3d) Prs3d;
@@ -110,6 +117,16 @@ class Prs3d {
 	:rtype: bool
 ") MatchSegment;
 		static Standard_Boolean MatchSegment (const Quantity_Length X,const Quantity_Length Y,const Quantity_Length Z,const Quantity_Length aDistance,const gp_Pnt & p1,const gp_Pnt & p2,Standard_Real &OutValue);
+		%feature("compactdefaultargs") GetDeflection;
+		%feature("autodoc", "	* Computes the absolute deflection value depending on the type of deflection in theDrawer: <ul> <li><b>Aspect_TOD_RELATIVE</b>: the absolute deflection is computed using the relative deviation coefficient from theDrawer and the shape's bounding box;</li> <li><b>Aspect_TOD_ABSOLUTE</b>: the maximal chordial deviation from theDrawer is returned.</li> </ul> This function should always be used to compute the deflection value for building discrete representations of the shape (triangualtion, wireframe) to avoid incosistencies between different representations of the shape and undesirable visual artifacts.
+
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:param theDrawer:
+	:type theDrawer: Handle_Prs3d_Drawer &
+	:rtype: float
+") GetDeflection;
+		static Standard_Real GetDeflection (const TopoDS_Shape & theShape,const Handle_Prs3d_Drawer & theDrawer);
 };
 
 
@@ -224,7 +241,7 @@ class Prs3d_Drawer : public MMgt_TShared {
 ") TypeOfDeflection;
 		virtual Aspect_TypeOfDeflection TypeOfDeflection ();
 		%feature("compactdefaultargs") SetMaximalChordialDeviation;
-		%feature("autodoc", "	* Defines the maximal chordial deviation when drawing any curve; Even if the type of deviation is set to TOD_Relative, this value is used by:  Prs3d_DeflectionCurve Prs3d_WFDeflectionSurface Prs3d_WFDeflectionRestrictedFace
+		%feature("autodoc", "	* Defines the maximal chordial deviation when drawing any curve; Even if the type of deviation is set to TOD_Relative, this value is used by: //! Prs3d_DeflectionCurve Prs3d_WFDeflectionSurface Prs3d_WFDeflectionRestrictedFace
 
 	:param aChordialDeviation:
 	:type aChordialDeviation: Quantity_Length
@@ -350,7 +367,7 @@ class Prs3d_Drawer : public MMgt_TShared {
 ") TypeOfHLR;
 		virtual Prs3d_TypeOfHLR TypeOfHLR ();
 		%feature("compactdefaultargs") UIsoAspect;
-		%feature("autodoc", "	* Defines the attributes which are used when drawing an U isoparametric curve of a face. Defines the number of U isoparametric curves to be drawn for a single face. The LineAspect for U isoparametric lines can be edited (methods SetColor, SetTypeOfLine, SetWidth, SetNumber) The default values are: COLOR : Quantity_NOC_GRAY75 TYPE OF LINE: Aspect_TOL_SOLID WIDTH : 0.5 These attributes are used by the following algorithms: Prs3d_WFDeflectionSurface Prs3d_WFDeflectionRestrictedFace
+		%feature("autodoc", "	* Defines the attributes which are used when drawing an U isoparametric curve of a face. Defines the number of U isoparametric curves to be drawn for a single face. The LineAspect for U isoparametric lines can be edited (methods SetColor, SetTypeOfLine, SetWidth, SetNumber) The default values are: COLOR : Quantity_NOC_GRAY75 TYPE OF LINE: Aspect_TOL_SOLID WIDTH : 0.5 //! These attributes are used by the following algorithms: Prs3d_WFDeflectionSurface Prs3d_WFDeflectionRestrictedFace
 
 	:rtype: Handle_Prs3d_IsoAspect
 ") UIsoAspect;
@@ -362,7 +379,7 @@ class Prs3d_Drawer : public MMgt_TShared {
 ") SetUIsoAspect;
 		virtual void SetUIsoAspect (const Handle_Prs3d_IsoAspect & anAspect);
 		%feature("compactdefaultargs") VIsoAspect;
-		%feature("autodoc", "	* Defines the attributes which are used when drawing an V isoparametric curve of a face. Defines the number of V isoparametric curves to be drawn for a single face. The LineAspect for V isoparametric lines can be edited (methods SetColor, SetTypeOfLine, SetWidth, SetNumber) The default values are: COLOR : Quantity_NOC_GRAY82 TYPE OF LINE: Aspect_TOL_SOLID WIDTH : 0.5 These attributes are used by the following algorithms: Prs3d_WFDeflectionSurface Prs3d_WFDeflectionRestrictedFace
+		%feature("autodoc", "	* Defines the attributes which are used when drawing an V isoparametric curve of a face. Defines the number of V isoparametric curves to be drawn for a single face. The LineAspect for V isoparametric lines can be edited (methods SetColor, SetTypeOfLine, SetWidth, SetNumber) The default values are: COLOR : Quantity_NOC_GRAY82 TYPE OF LINE: Aspect_TOL_SOLID WIDTH : 0.5 //! These attributes are used by the following algorithms: Prs3d_WFDeflectionSurface Prs3d_WFDeflectionRestrictedFace
 
 	:rtype: Handle_Prs3d_IsoAspect
 ") VIsoAspect;
@@ -496,7 +513,7 @@ class Prs3d_Drawer : public MMgt_TShared {
 ") SetLineArrowDraw;
 		virtual void SetLineArrowDraw (const Standard_Boolean OnOff);
 		%feature("compactdefaultargs") LineArrowDraw;
-		%feature("autodoc", "	* Sets LineArrowDraw on or off by setting the parameter OnOff to true or false.
+		%feature("autodoc", "	* Returns True if drawing an arrow at the end of each edge is enabled and False otherwise (the default).
 
 	:rtype: bool
 ") LineArrowDraw;
@@ -529,6 +546,20 @@ class Prs3d_Drawer : public MMgt_TShared {
 	:rtype: void
 ") SetPointAspect;
 		virtual void SetPointAspect (const Handle_Prs3d_PointAspect & anAspect);
+		%feature("compactdefaultargs") SetVertexDrawMode;
+		%feature("autodoc", "	* Sets the mode of visualization of vertices of a TopoDS_Shape instance. By default, only stand-alone vertices (not belonging topologically to an edge) are drawn, that corresponds to <b>Prs3d_VDM_Standalone</b> mode. Switching to <b>Prs3d_VDM_Standalone</b> mode makes all shape's vertices visible. To inherit this parameter from the global drawer instance ('the link') when it is present, <b>Prs3d_VDM_Inherited</b> value should be used.
+
+	:param theMode:
+	:type theMode: Prs3d_VertexDrawMode
+	:rtype: void
+") SetVertexDrawMode;
+		virtual void SetVertexDrawMode (const Prs3d_VertexDrawMode theMode);
+		%feature("compactdefaultargs") VertexDrawMode;
+		%feature("autodoc", "	* Returns the current mode of visualization of vertices of a TopoDS_Shape instance.
+
+	:rtype: Prs3d_VertexDrawMode
+") VertexDrawMode;
+		virtual Prs3d_VertexDrawMode VertexDrawMode ();
 		%feature("compactdefaultargs") ShadingAspect;
 		%feature("autodoc", "	* Returns settings for shading aspects. These settings can be edited. The default values are: - Color: Quantity_NOC_YELLOW - Material: Graphic3d_NOM_BRASS Shading aspect is obtained through decomposition of 3d faces into triangles, each side of each triangle being a chord of the corresponding curved edge in the face. Reflection of light in each projector perspective is then calculated for each of the resultant triangular planes.
 
@@ -916,13 +947,23 @@ class Prs3d_Presentation : public Graphic3d_Structure {
 		%feature("compactdefaultargs") Prs3d_Presentation;
 		%feature("autodoc", "	* Constructs a presentation object if <Init> is false, no color initialization is done.
 
-	:param aStructureManager:
-	:type aStructureManager: Handle_Graphic3d_StructureManager &
-	:param Init: default value is Standard_True
-	:type Init: bool
+	:param theStructManager:
+	:type theStructManager: Handle_Graphic3d_StructureManager &
+	:param theToInit: default value is Standard_True
+	:type theToInit: bool
 	:rtype: None
 ") Prs3d_Presentation;
-		 Prs3d_Presentation (const Handle_Graphic3d_StructureManager & aStructureManager,const Standard_Boolean Init = Standard_True);
+		 Prs3d_Presentation (const Handle_Graphic3d_StructureManager & theStructManager,const Standard_Boolean theToInit = Standard_True);
+		%feature("compactdefaultargs") Prs3d_Presentation;
+		%feature("autodoc", "	* Constructs a presentation object.
+
+	:param theStructManager:
+	:type theStructManager: Handle_Graphic3d_StructureManager &
+	:param thePrs:
+	:type thePrs: Handle_Prs3d_Presentation &
+	:rtype: None
+") Prs3d_Presentation;
+		 Prs3d_Presentation (const Handle_Graphic3d_StructureManager & theStructManager,const Handle_Prs3d_Presentation & thePrs);
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "	:param aProjector:
 	:type aProjector: Handle_Graphic3d_DataStructureManager &
@@ -979,10 +1020,14 @@ class Prs3d_Presentation : public Graphic3d_Structure {
 		%feature("autodoc", "	:rtype: None
 ") BoundBox;
 		void BoundBox ();
-		%feature("compactdefaultargs") Display;
-		%feature("autodoc", "	:rtype: None
-") Display;
-		void Display ();
+		%feature("compactdefaultargs") SetIsForHighlight;
+		%feature("autodoc", "	* marks the structure <self> representing wired structure needed for highlight only so it won't be added to BVH tree.
+
+	:param isForHighlight:
+	:type isForHighlight: bool
+	:rtype: void
+") SetIsForHighlight;
+		virtual void SetIsForHighlight (const Standard_Boolean isForHighlight);
 		%feature("compactdefaultargs") SetShadingAspect;
 		%feature("autodoc", "	:param aShadingAspect:
 	:type aShadingAspect: Handle_Prs3d_ShadingAspect &
@@ -1029,14 +1074,6 @@ class Prs3d_Presentation : public Graphic3d_Structure {
 		%feature("autodoc", "	:rtype: Handle_Geom_Transformation
 ") Transformation;
 		Handle_Geom_Transformation Transformation ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	* removes the whole content of the presentation. Does not remove the other connected presentations. //!	 if WithDestruction == Standard_False then //!		clears all the groups of primitives in the structure.
-
-	:param WithDestruction: default value is Standard_True
-	:type WithDestruction: bool
-	:rtype: void
-") Clear;
-		virtual void Clear (const Standard_Boolean WithDestruction = Standard_True);
 		%feature("compactdefaultargs") Connect;
 		%feature("autodoc", "	:param aPresentation:
 	:type aPresentation: Handle_Prs3d_Presentation &
@@ -1209,11 +1246,15 @@ class Prs3d_Root {
 class Prs3d_ShapeTool {
 	public:
 		%feature("compactdefaultargs") Prs3d_ShapeTool;
-		%feature("autodoc", "	:param TheShape:
-	:type TheShape: TopoDS_Shape &
+		%feature("autodoc", "	* Constructs the tool and initializes it using theShape and theAllVertices (optional) arguments. By default, only isolated and internal vertices are considered, however if theAllVertices argument is equal to True, all shape's vertices are taken into account.
+
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:param theAllVertices: default value is Standard_False
+	:type theAllVertices: bool
 	:rtype: None
 ") Prs3d_ShapeTool;
-		 Prs3d_ShapeTool (const TopoDS_Shape & TheShape);
+		 Prs3d_ShapeTool (const TopoDS_Shape & theShape,const Standard_Boolean theAllVertices = Standard_False);
 		%feature("compactdefaultargs") InitFace;
 		%feature("autodoc", "	:rtype: None
 ") InitFace;
@@ -2240,6 +2281,22 @@ class Handle_Prs3d_PointAspect : public Handle_Prs3d_BasicAspect {
     }
 };
 
+%nodefaultctor Prs3d_PresentationShadow;
+class Prs3d_PresentationShadow : public Prs3d_Presentation {
+	public:
+		%feature("compactdefaultargs") Prs3d_PresentationShadow;
+		%feature("autodoc", "	* Constructs a shadow of existing presentation object.
+
+	:param theViewer:
+	:type theViewer: Handle_Graphic3d_StructureManager &
+	:param thePrs:
+	:type thePrs: Handle_Prs3d_Presentation &
+	:rtype: None
+") Prs3d_PresentationShadow;
+		 Prs3d_PresentationShadow (const Handle_Graphic3d_StructureManager & theViewer,const Handle_Prs3d_Presentation & thePrs);
+};
+
+
 %nodefaultctor Prs3d_ShadingAspect;
 class Prs3d_ShadingAspect : public Prs3d_BasicAspect {
 	public:
@@ -2601,7 +2658,7 @@ class Prs3d_IsoAspect : public Prs3d_LineAspect {
 ") Prs3d_IsoAspect;
 		 Prs3d_IsoAspect (const Quantity_Color & aColor,const Aspect_TypeOfLine aType,const Standard_Real aWidth,const Standard_Integer aNumber);
 		%feature("compactdefaultargs") SetNumber;
-		%feature("autodoc", "	* defines the number of U or V isoparametric curves  to be drawn for a single face. Default value: 10
+		%feature("autodoc", "	* defines the number of U or V isoparametric curves to be drawn for a single face. Default value: 10
 
 	:param aNumber:
 	:type aNumber: int

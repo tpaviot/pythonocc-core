@@ -210,7 +210,7 @@ class STEPConstruct_AP203Context {
 ") Init;
 		void Init (const Handle_StepShape_ShapeDefinitionRepresentation & sdr);
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Takes tool which describes standard data around part (common for AP203 and AP214) and creates all the additional entities required for AP203  The created entities can be obtained by calls to methods GetCreator(), GetDesignOwner(), GetDesignSupplier(), GetClassificationOfficer(), GetSecurity(), GetCreationDate(), GetClassificationDate(), GetApproval(), GetApprover(), GetApprovalDateTime(), GetProductCategoryRelationship()
+		%feature("autodoc", "	* Takes tool which describes standard data around part (common for AP203 and AP214) and creates all the additional entities required for AP203 //! The created entities can be obtained by calls to methods GetCreator(), GetDesignOwner(), GetDesignSupplier(), GetClassificationOfficer(), GetSecurity(), GetCreationDate(), GetClassificationDate(), GetApproval(), GetApprover(), GetApprovalDateTime(), GetProductCategoryRelationship()
 
 	:param SDRTool:
 	:type SDRTool: STEPConstruct_Part &
@@ -218,7 +218,7 @@ class STEPConstruct_AP203Context {
 ") Init;
 		void Init (const STEPConstruct_Part & SDRTool);
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Takes NAUO which describes assembly link to component and creates the security_classification entity associated to it as required by the AP203  Instantiated (or existing previously) entities concerned can be obtained by calls to methods GetClassificationOfficer(), GetSecurity(), GetClassificationDate(), GetApproval(), GetApprover(), GetApprovalDateTime() Takes tool which describes standard data around part (common for AP203 and AP214) and takes from model (or creates if missing) all the additional entities required by AP203
+		%feature("autodoc", "	* Takes NAUO which describes assembly link to component and creates the security_classification entity associated to it as required by the AP203 //! Instantiated (or existing previously) entities concerned can be obtained by calls to methods GetClassificationOfficer(), GetSecurity(), GetClassificationDate(), GetApproval(), GetApprover(), GetApprovalDateTime() Takes tool which describes standard data around part (common for AP203 and AP214) and takes from model (or creates if missing) all the additional entities required by AP203
 
 	:param nauo:
 	:type nauo: Handle_StepRepr_NextAssemblyUsageOccurrence &

@@ -152,6 +152,12 @@ class TopBas_ListOfTestInterference {
 		%feature("autodoc", "	:rtype: None
 ") TopBas_ListOfTestInterference;
 		 TopBas_ListOfTestInterference ();
+		%feature("compactdefaultargs") TopBas_ListOfTestInterference;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopBas_ListOfTestInterference &
+	:rtype: None
+") TopBas_ListOfTestInterference;
+		 TopBas_ListOfTestInterference (const TopBas_ListOfTestInterference & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TopBas_ListOfTestInterference &

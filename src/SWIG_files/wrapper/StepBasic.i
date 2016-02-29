@@ -9090,7 +9090,7 @@ class StepBasic_SizeSelect : public StepData_SelectType {
 ") NewMember;
 		virtual Handle_StepData_SelectMember NewMember ();
 		%feature("compactdefaultargs") CaseMem;
-		%feature("autodoc", "	* Recognizes a SelectMember as Real, named as PARAMETER_VALUE  1 -> PositiveLengthMeasure i.e. Real  0 else (i.e. Entity)
+		%feature("autodoc", "	* Recognizes a SelectMember as Real, named as PARAMETER_VALUE 1 -> PositiveLengthMeasure i.e. Real 0 else (i.e. Entity)
 
 	:param ent:
 	:type ent: Handle_StepData_SelectMember &

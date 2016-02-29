@@ -473,10 +473,6 @@ class STEPSelections_HSequenceOfAssemblyLink : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: STEPSelections_SequenceOfAssemblyLink
 ") ChangeSequence;
 		STEPSelections_SequenceOfAssemblyLink & ChangeSequence ();
-		%feature("compactdefaultargs") ShallowCopy;
-		%feature("autodoc", "	:rtype: Handle_STEPSelections_HSequenceOfAssemblyLink
-") ShallowCopy;
-		Handle_STEPSelections_HSequenceOfAssemblyLink ShallowCopy ();
 };
 
 
@@ -1026,6 +1022,12 @@ class STEPSelections_SequenceOfAssemblyComponent : public TCollection_BaseSequen
 		%feature("autodoc", "	:rtype: None
 ") STEPSelections_SequenceOfAssemblyComponent;
 		 STEPSelections_SequenceOfAssemblyComponent ();
+		%feature("compactdefaultargs") STEPSelections_SequenceOfAssemblyComponent;
+		%feature("autodoc", "	:param Other:
+	:type Other: STEPSelections_SequenceOfAssemblyComponent &
+	:rtype: None
+") STEPSelections_SequenceOfAssemblyComponent;
+		 STEPSelections_SequenceOfAssemblyComponent (const STEPSelections_SequenceOfAssemblyComponent & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -1158,6 +1160,12 @@ class STEPSelections_SequenceOfAssemblyLink : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") STEPSelections_SequenceOfAssemblyLink;
 		 STEPSelections_SequenceOfAssemblyLink ();
+		%feature("compactdefaultargs") STEPSelections_SequenceOfAssemblyLink;
+		%feature("autodoc", "	:param Other:
+	:type Other: STEPSelections_SequenceOfAssemblyLink &
+	:rtype: None
+") STEPSelections_SequenceOfAssemblyLink;
+		 STEPSelections_SequenceOfAssemblyLink (const STEPSelections_SequenceOfAssemblyLink & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;

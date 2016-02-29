@@ -1081,7 +1081,7 @@ class StepToTopoDS_MakeTransformed : public StepToTopoDS_Root {
 ") Transform;
 		Standard_Boolean Transform (TopoDS_Shape & shape);
 		%feature("compactdefaultargs") TranslateMappedItem;
-		%feature("autodoc", "	* Translates a MappedItem. More precisely A MappedItem has a MappingSource and a MappingTarget MappingSource has a MappedRepresentation and a MappingOrigin MappedRepresentation is the basic item to be instanced MappingOrigin is the starting placement MappingTarget is the final placement Hence, the transformation from MappingOrigin and MappingTarget is computed, the MappedRepr. is converted to a Shape, then transformed as an instance of this Shape
+		%feature("autodoc", "	* Translates a MappedItem. More precisely A MappedItem has a MappingSource and a MappingTarget MappingSource has a MappedRepresentation and a MappingOrigin MappedRepresentation is the basic item to be instanced MappingOrigin is the starting placement MappingTarget is the final placement //! Hence, the transformation from MappingOrigin and MappingTarget is computed, the MappedRepr. is converted to a Shape, then transformed as an instance of this Shape
 
 	:param mapit:
 	:type mapit: Handle_StepRepr_MappedItem &

@@ -68,27 +68,45 @@ class BRepIntCurveSurface_Inter {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Load the Shape, the curve and initialize the tolerance used for the classification.
 
-	:param Sh:
-	:type Sh: TopoDS_Shape &
-	:param Cu:
-	:type Cu: GeomAdaptor_Curve &
-	:param Tol:
-	:type Tol: float
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:param theCurve:
+	:type theCurve: GeomAdaptor_Curve &
+	:param theTol:
+	:type theTol: float
 	:rtype: None
 ") Init;
-		void Init (const TopoDS_Shape & Sh,const GeomAdaptor_Curve & Cu,const Standard_Real Tol);
+		void Init (const TopoDS_Shape & theShape,const GeomAdaptor_Curve & theCurve,const Standard_Real theTol);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	* Load the Shape, the curve and initialize the tolerance used for the classification.
 
-	:param Sh:
-	:type Sh: TopoDS_Shape &
-	:param L:
-	:type L: gp_Lin
-	:param Tol:
-	:type Tol: float
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:param theLine:
+	:type theLine: gp_Lin
+	:param theTol:
+	:type theTol: float
 	:rtype: None
 ") Init;
-		void Init (const TopoDS_Shape & Sh,const gp_Lin & L,const Standard_Real Tol);
+		void Init (const TopoDS_Shape & theShape,const gp_Lin & theLine,const Standard_Real theTol);
+		%feature("compactdefaultargs") Load;
+		%feature("autodoc", "	* Load the Shape, and initialize the tolerance used for the classification.
+
+	:param theShape:
+	:type theShape: TopoDS_Shape &
+	:param theTol:
+	:type theTol: float
+	:rtype: None
+") Load;
+		void Load (const TopoDS_Shape & theShape,const Standard_Real theTol);
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	* Method to find intersections of specified curve with loaded shape.
+
+	:param theCurve:
+	:type theCurve: GeomAdaptor_Curve &
+	:rtype: None
+") Init;
+		void Init (const GeomAdaptor_Curve & theCurve);
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "	* returns True if there is a current face.
 
@@ -96,7 +114,7 @@ class BRepIntCurveSurface_Inter {
 ") More;
 		Standard_Boolean More ();
 		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	* Sets the explorer to the next face.
+		%feature("autodoc", "	* Sets the next intersection point to check.
 
 	:rtype: None
 ") Next;

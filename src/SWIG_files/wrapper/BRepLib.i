@@ -200,7 +200,7 @@ class BRepLib {
 ") UpdateEdgeTol;
 		static Standard_Boolean UpdateEdgeTol (const TopoDS_Edge & E,const Standard_Real MinToleranceRequest,const Standard_Real MaxToleranceToCheck);
 		%feature("compactdefaultargs") UpdateEdgeTolerance;
-		%feature("autodoc", "	* -- Checks all the edges of the shape whose -- -- -- Tolerance is smaller than MaxToleranceToCheck -- Returns True if at least one edge was updated -- MinToleranceRequest is the minimum tolerance before -- it -- is usefull to start testing. Usually it should be arround -- 10e-5-- Warning :The method is very slow as it checks all.  Use only in interfaces or processing assimilate batch
+		%feature("autodoc", "	* -- Checks all the edges of the shape whose -- -- -- Tolerance is smaller than MaxToleranceToCheck -- Returns True if at least one edge was updated -- MinToleranceRequest is the minimum tolerance before -- it -- is usefull to start testing. Usually it should be arround -- 10e-5-- //! Warning :The method is very slow as it checks all. Use only in interfaces or processing assimilate batch
 
 	:param S:
 	:type S: TopoDS_Shape &
@@ -276,7 +276,7 @@ class BRepLib {
 ") EncodeRegularity;
 		static void EncodeRegularity (TopoDS_Edge & S,const TopoDS_Face & F1,const TopoDS_Face & F2,const Standard_Real TolAng = 1.0e-10);
 		%feature("compactdefaultargs") SortFaces;
-		%feature("autodoc", "	* Sorts in LF the Faces of S on the complexity of  their surfaces (Plane,Cylinder,Cone,Sphere,Torus,other)
+		%feature("autodoc", "	* Sorts in LF the Faces of S on the complexity of their surfaces (Plane,Cylinder,Cone,Sphere,Torus,other)
 
 	:param S:
 	:type S: TopoDS_Shape &
@@ -286,7 +286,7 @@ class BRepLib {
 ") SortFaces;
 		static void SortFaces (const TopoDS_Shape & S,TopTools_ListOfShape & LF);
 		%feature("compactdefaultargs") ReverseSortFaces;
-		%feature("autodoc", "	* Sorts in LF the Faces of S on the reverse  complexity of their surfaces (other,Torus,Sphere,Cone,Cylinder,Plane)
+		%feature("autodoc", "	* Sorts in LF the Faces of S on the reverse complexity of their surfaces (other,Torus,Sphere,Cone,Cylinder,Plane)
 
 	:param S:
 	:type S: TopoDS_Shape &

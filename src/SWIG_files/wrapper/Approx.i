@@ -382,7 +382,7 @@ class Approx_CurveOnSurface {
 ") MaxError2dU;
 		Standard_Real MaxError2dU ();
 		%feature("compactdefaultargs") MaxError2dV;
-		%feature("autodoc", "	* returns the maximum errors relativly to the U component or the V component of the  2d Curve
+		%feature("autodoc", "	* returns the maximum errors relativly to the U component or the V component of the 2d Curve
 
 	:rtype: float
 ") MaxError2dV;
@@ -540,7 +540,7 @@ class Approx_CurvlinFunc : public MMgt_TShared {
 ") Approx_CurvlinFunc;
 		 Approx_CurvlinFunc (const Handle_Adaptor2d_HCurve2d & C2D1,const Handle_Adaptor2d_HCurve2d & C2D2,const Handle_Adaptor3d_HSurface & S1,const Handle_Adaptor3d_HSurface & S2,const Standard_Real Tol);
 		%feature("compactdefaultargs") SetTol;
-		%feature("autodoc", "	* //!---Purpose Update the tolerance to used
+		%feature("autodoc", "	* ---Purpose Update the tolerance to used
 
 	:param Tol:
 	:type Tol: float
@@ -564,7 +564,7 @@ class Approx_CurvlinFunc : public MMgt_TShared {
 ") NbIntervals;
 		Standard_Integer NbIntervals (const GeomAbs_Shape S);
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
 	:param T:
 	:type T: TColStd_Array1OfReal &
@@ -1397,6 +1397,12 @@ class Approx_SequenceOfHArray1OfReal : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") Approx_SequenceOfHArray1OfReal;
 		 Approx_SequenceOfHArray1OfReal ();
+		%feature("compactdefaultargs") Approx_SequenceOfHArray1OfReal;
+		%feature("autodoc", "	:param Other:
+	:type Other: Approx_SequenceOfHArray1OfReal &
+	:rtype: None
+") Approx_SequenceOfHArray1OfReal;
+		 Approx_SequenceOfHArray1OfReal (const Approx_SequenceOfHArray1OfReal & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -1532,7 +1538,7 @@ class Approx_SweepApproximation {
 ") Approx_SweepApproximation;
 		 Approx_SweepApproximation (const Handle_Approx_SweepFunction & Func);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Perform the Approximation [First, Last] : Approx_SweepApproximation.cdl Tol3d : Tolerance to surface approximation Tol2d : Tolerance used to perform curve approximation  Normaly the 2d curve are approximated with a  tolerance given by the resolution on support surfaces,  but if this tolerance is too large Tol2d is used. TolAngular : Tolerance (in radian) to control the angle  beetween tangents on the section law and  tangent of iso-v on approximed surface Continuity : The continuity in v waiting on the surface Degmax : The maximum degree in v requiered on the surface Segmax : The maximum number of span in v requiered on  the surface Warning : The continuity ci can be obtained only if Ft is Ci
+		%feature("autodoc", "	* Perform the Approximation [First, Last] : Approx_SweepApproximation.cdl Tol3d : Tolerance to surface approximation Tol2d : Tolerance used to perform curve approximation Normaly the 2d curve are approximated with a tolerance given by the resolution on support surfaces, but if this tolerance is too large Tol2d is used. TolAngular : Tolerance (in radian) to control the angle beetween tangents on the section law and tangent of iso-v on approximed surface Continuity : The continuity in v waiting on the surface Degmax : The maximum degree in v requiered on the surface Segmax : The maximum number of span in v requiered on the surface Warning : The continuity ci can be obtained only if Ft is Ci
 
 	:param First:
 	:type First: float
@@ -1856,7 +1862,7 @@ class Approx_SweepFunction : public MMgt_TShared {
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
 	:param T:
 	:type T: TColStd_Array1OfReal &

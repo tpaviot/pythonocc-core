@@ -54,6 +54,15 @@ def register_handle(handle, base_object):
 /* end typedefs declaration */
 
 /* public enums */
+enum BRepPrim_Direction {
+	BRepPrim_XMin = 0,
+	BRepPrim_XMax = 1,
+	BRepPrim_YMin = 2,
+	BRepPrim_YMax = 3,
+	BRepPrim_ZMin = 4,
+	BRepPrim_ZMax = 5,
+};
+
 /* end public enums declaration */
 
 %nodefaultctor BRepPrim_Builder;
@@ -382,7 +391,9 @@ class BRepPrim_FaceBuilder {
 class BRepPrim_GWedge {
 	public:
 		%feature("compactdefaultargs") BRepPrim_GWedge;
-		%feature("autodoc", "	:param B:
+		%feature("autodoc", "	* Creates a GWedge algorithm. <Axes> is the axis system for the primitive. //! XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = XMin X2Max = XMax The result is a box dx,dy,dz should be positive
+
+	:param B:
 	:type B: BRepPrim_Builder &
 	:param Axes:
 	:type Axes: gp_Ax2
@@ -396,7 +407,9 @@ class BRepPrim_GWedge {
 ") BRepPrim_GWedge;
 		 BRepPrim_GWedge (const BRepPrim_Builder & B,const gp_Ax2 & Axes,const Standard_Real dx,const Standard_Real dy,const Standard_Real dz);
 		%feature("compactdefaultargs") BRepPrim_GWedge;
-		%feature("autodoc", "	:param B:
+		%feature("autodoc", "	* Creates a GWedge primitive. <Axes> is the axis system for the primitive. //! XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = ltx X2Max = ltx The result is a STEP right angular wedge dx,dy,dz should be positive ltx should not be negative
+
+	:param B:
 	:type B: BRepPrim_Builder &
 	:param Axes:
 	:type Axes: gp_Ax2
@@ -412,7 +425,9 @@ class BRepPrim_GWedge {
 ") BRepPrim_GWedge;
 		 BRepPrim_GWedge (const BRepPrim_Builder & B,const gp_Ax2 & Axes,const Standard_Real dx,const Standard_Real dy,const Standard_Real dz,const Standard_Real ltx);
 		%feature("compactdefaultargs") BRepPrim_GWedge;
-		%feature("autodoc", "	:param B:
+		%feature("autodoc", "	* Create a GWedge primitive. <Axes> is the axis system for the primitive. //! all the fields are set to the corresponding value XYZMax - XYZMin should be positive ZX2Max - ZX2Min should not be negative
+
+	:param B:
 	:type B: BRepPrim_Builder &
 	:param Axes:
 	:type Axes: gp_Ax2
@@ -440,155 +455,207 @@ class BRepPrim_GWedge {
 ") BRepPrim_GWedge;
 		 BRepPrim_GWedge (const BRepPrim_Builder & B,const gp_Ax2 & Axes,const Standard_Real xmin,const Standard_Real ymin,const Standard_Real zmin,const Standard_Real z2min,const Standard_Real x2min,const Standard_Real xmax,const Standard_Real ymax,const Standard_Real zmax,const Standard_Real z2max,const Standard_Real x2max);
 		%feature("compactdefaultargs") Axes;
-		%feature("autodoc", "	:rtype: gp_Ax2
+		%feature("autodoc", "	* Returns the coordinates system from <self>.
+
+	:rtype: gp_Ax2
 ") Axes;
 		gp_Ax2 Axes ();
 		%feature("compactdefaultargs") GetXMin;
-		%feature("autodoc", "	:rtype: float
+		%feature("autodoc", "	* Returns Xmin value from <self>.
+
+	:rtype: float
 ") GetXMin;
 		Standard_Real GetXMin ();
 		%feature("compactdefaultargs") GetYMin;
-		%feature("autodoc", "	:rtype: float
+		%feature("autodoc", "	* Returns YMin value from <self>.
+
+	:rtype: float
 ") GetYMin;
 		Standard_Real GetYMin ();
 		%feature("compactdefaultargs") GetZMin;
-		%feature("autodoc", "	:rtype: float
+		%feature("autodoc", "	* Returns ZMin value from <self>.
+
+	:rtype: float
 ") GetZMin;
 		Standard_Real GetZMin ();
 		%feature("compactdefaultargs") GetZ2Min;
-		%feature("autodoc", "	:rtype: float
+		%feature("autodoc", "	* Returns Z2Min value from <self>.
+
+	:rtype: float
 ") GetZ2Min;
 		Standard_Real GetZ2Min ();
 		%feature("compactdefaultargs") GetX2Min;
-		%feature("autodoc", "	:rtype: float
+		%feature("autodoc", "	* Returns X2Min value from <self>.
+
+	:rtype: float
 ") GetX2Min;
 		Standard_Real GetX2Min ();
 		%feature("compactdefaultargs") GetXMax;
-		%feature("autodoc", "	:rtype: float
+		%feature("autodoc", "	* Returns XMax value from <self>.
+
+	:rtype: float
 ") GetXMax;
 		Standard_Real GetXMax ();
 		%feature("compactdefaultargs") GetYMax;
-		%feature("autodoc", "	:rtype: float
+		%feature("autodoc", "	* Returns YMax value from <self>.
+
+	:rtype: float
 ") GetYMax;
 		Standard_Real GetYMax ();
 		%feature("compactdefaultargs") GetZMax;
-		%feature("autodoc", "	:rtype: float
+		%feature("autodoc", "	* Returns ZMax value from <self>.
+
+	:rtype: float
 ") GetZMax;
 		Standard_Real GetZMax ();
 		%feature("compactdefaultargs") GetZ2Max;
-		%feature("autodoc", "	:rtype: float
+		%feature("autodoc", "	* Returns Z2Max value from <self>.
+
+	:rtype: float
 ") GetZ2Max;
 		Standard_Real GetZ2Max ();
 		%feature("compactdefaultargs") GetX2Max;
-		%feature("autodoc", "	:rtype: float
+		%feature("autodoc", "	* Returns X2Max value from <self>.
+
+	:rtype: float
 ") GetX2Max;
 		Standard_Real GetX2Max ();
 		%feature("compactdefaultargs") Open;
-		%feature("autodoc", "	:param d1:
-	:type d1: Primitives_Direction
+		%feature("autodoc", "	* Opens <self> in <d1> direction. A face and its edges or vertices are said nonexistant.
+
+	:param d1:
+	:type d1: BRepPrim_Direction
 	:rtype: None
 ") Open;
-		void Open (const Primitives_Direction d1);
+		void Open (const BRepPrim_Direction d1);
 		%feature("compactdefaultargs") Close;
-		%feature("autodoc", "	:param d1:
-	:type d1: Primitives_Direction
+		%feature("autodoc", "	* Closes <self> in <d1> direction. A face and its edges or vertices are said existant.
+
+	:param d1:
+	:type d1: BRepPrim_Direction
 	:rtype: None
 ") Close;
-		void Close (const Primitives_Direction d1);
+		void Close (const BRepPrim_Direction d1);
 		%feature("compactdefaultargs") IsInfinite;
-		%feature("autodoc", "	:param d1:
-	:type d1: Primitives_Direction
+		%feature("autodoc", "	* Returns True if <self> is open in <d1> direction.
+
+	:param d1:
+	:type d1: BRepPrim_Direction
 	:rtype: bool
 ") IsInfinite;
-		Standard_Boolean IsInfinite (const Primitives_Direction d1);
+		Standard_Boolean IsInfinite (const BRepPrim_Direction d1);
 		%feature("compactdefaultargs") Shell;
-		%feature("autodoc", "	:rtype: TopoDS_Shell
+		%feature("autodoc", "	* Returns the Shell containing the Faces of <self>.
+
+	:rtype: TopoDS_Shell
 ") Shell;
 		const TopoDS_Shell  Shell ();
 		%feature("compactdefaultargs") HasFace;
-		%feature("autodoc", "	:param d1:
-	:type d1: Primitives_Direction
+		%feature("autodoc", "	* Returns True if <self> has a Face in <d1> direction.
+
+	:param d1:
+	:type d1: BRepPrim_Direction
 	:rtype: bool
 ") HasFace;
-		Standard_Boolean HasFace (const Primitives_Direction d1);
+		Standard_Boolean HasFace (const BRepPrim_Direction d1);
 		%feature("compactdefaultargs") Face;
-		%feature("autodoc", "	:param d1:
-	:type d1: Primitives_Direction
+		%feature("autodoc", "	* Returns the Face of <self> located in <d1> direction.
+
+	:param d1:
+	:type d1: BRepPrim_Direction
 	:rtype: TopoDS_Face
 ") Face;
-		const TopoDS_Face  Face (const Primitives_Direction d1);
+		const TopoDS_Face  Face (const BRepPrim_Direction d1);
 		%feature("compactdefaultargs") Plane;
-		%feature("autodoc", "	:param d1:
-	:type d1: Primitives_Direction
+		%feature("autodoc", "	* Returns the plane of the Face of <self> located in <d1> direction.
+
+	:param d1:
+	:type d1: BRepPrim_Direction
 	:rtype: gp_Pln
 ") Plane;
-		gp_Pln Plane (const Primitives_Direction d1);
+		gp_Pln Plane (const BRepPrim_Direction d1);
 		%feature("compactdefaultargs") HasWire;
-		%feature("autodoc", "	:param d1:
-	:type d1: Primitives_Direction
+		%feature("autodoc", "	* Returns True if <self> has a Wire in <d1> direction.
+
+	:param d1:
+	:type d1: BRepPrim_Direction
 	:rtype: bool
 ") HasWire;
-		Standard_Boolean HasWire (const Primitives_Direction d1);
+		Standard_Boolean HasWire (const BRepPrim_Direction d1);
 		%feature("compactdefaultargs") Wire;
-		%feature("autodoc", "	:param d1:
-	:type d1: Primitives_Direction
+		%feature("autodoc", "	* Returns the Wire of <self> located in <d1> direction.
+
+	:param d1:
+	:type d1: BRepPrim_Direction
 	:rtype: TopoDS_Wire
 ") Wire;
-		const TopoDS_Wire  Wire (const Primitives_Direction d1);
+		const TopoDS_Wire  Wire (const BRepPrim_Direction d1);
 		%feature("compactdefaultargs") HasEdge;
-		%feature("autodoc", "	:param d1:
-	:type d1: Primitives_Direction
+		%feature("autodoc", "	* Returns True if <self> has an Edge in <d1><d2> direction.
+
+	:param d1:
+	:type d1: BRepPrim_Direction
 	:param d2:
-	:type d2: Primitives_Direction
+	:type d2: BRepPrim_Direction
 	:rtype: bool
 ") HasEdge;
-		Standard_Boolean HasEdge (const Primitives_Direction d1,const Primitives_Direction d2);
+		Standard_Boolean HasEdge (const BRepPrim_Direction d1,const BRepPrim_Direction d2);
 		%feature("compactdefaultargs") Edge;
-		%feature("autodoc", "	:param d1:
-	:type d1: Primitives_Direction
+		%feature("autodoc", "	* Returns the Edge of <self> located in <d1><d2> direction.
+
+	:param d1:
+	:type d1: BRepPrim_Direction
 	:param d2:
-	:type d2: Primitives_Direction
+	:type d2: BRepPrim_Direction
 	:rtype: TopoDS_Edge
 ") Edge;
-		const TopoDS_Edge  Edge (const Primitives_Direction d1,const Primitives_Direction d2);
+		const TopoDS_Edge  Edge (const BRepPrim_Direction d1,const BRepPrim_Direction d2);
 		%feature("compactdefaultargs") Line;
-		%feature("autodoc", "	:param d1:
-	:type d1: Primitives_Direction
+		%feature("autodoc", "	* Returns the line of the Edge of <self> located in <d1><d2> direction.
+
+	:param d1:
+	:type d1: BRepPrim_Direction
 	:param d2:
-	:type d2: Primitives_Direction
+	:type d2: BRepPrim_Direction
 	:rtype: gp_Lin
 ") Line;
-		gp_Lin Line (const Primitives_Direction d1,const Primitives_Direction d2);
+		gp_Lin Line (const BRepPrim_Direction d1,const BRepPrim_Direction d2);
 		%feature("compactdefaultargs") HasVertex;
-		%feature("autodoc", "	:param d1:
-	:type d1: Primitives_Direction
+		%feature("autodoc", "	* Returns True if <self> has a Vertex in <d1><d2><d3> direction.
+
+	:param d1:
+	:type d1: BRepPrim_Direction
 	:param d2:
-	:type d2: Primitives_Direction
+	:type d2: BRepPrim_Direction
 	:param d3:
-	:type d3: Primitives_Direction
+	:type d3: BRepPrim_Direction
 	:rtype: bool
 ") HasVertex;
-		Standard_Boolean HasVertex (const Primitives_Direction d1,const Primitives_Direction d2,const Primitives_Direction d3);
+		Standard_Boolean HasVertex (const BRepPrim_Direction d1,const BRepPrim_Direction d2,const BRepPrim_Direction d3);
 		%feature("compactdefaultargs") Vertex;
-		%feature("autodoc", "	:param d1:
-	:type d1: Primitives_Direction
+		%feature("autodoc", "	* Returns the Vertex of <self> located in <d1><d2><d3> direction.
+
+	:param d1:
+	:type d1: BRepPrim_Direction
 	:param d2:
-	:type d2: Primitives_Direction
+	:type d2: BRepPrim_Direction
 	:param d3:
-	:type d3: Primitives_Direction
+	:type d3: BRepPrim_Direction
 	:rtype: TopoDS_Vertex
 ") Vertex;
-		const TopoDS_Vertex  Vertex (const Primitives_Direction d1,const Primitives_Direction d2,const Primitives_Direction d3);
+		const TopoDS_Vertex  Vertex (const BRepPrim_Direction d1,const BRepPrim_Direction d2,const BRepPrim_Direction d3);
 		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "	:param d1:
-	:type d1: Primitives_Direction
+		%feature("autodoc", "	* Returns the point of the Vertex of <self> located in <d1><d2><d3> direction.
+
+	:param d1:
+	:type d1: BRepPrim_Direction
 	:param d2:
-	:type d2: Primitives_Direction
+	:type d2: BRepPrim_Direction
 	:param d3:
-	:type d3: Primitives_Direction
+	:type d3: BRepPrim_Direction
 	:rtype: gp_Pnt
 ") Point;
-		gp_Pnt Point (const Primitives_Direction d1,const Primitives_Direction d2,const Primitives_Direction d3);
+		gp_Pnt Point (const BRepPrim_Direction d1,const BRepPrim_Direction d2,const BRepPrim_Direction d3);
 };
 
 
@@ -600,13 +667,17 @@ class BRepPrim_OneAxis {
 ") Delete;
 		virtual void Delete ();
 		%feature("compactdefaultargs") SetMeridianOffset;
-		%feature("autodoc", "	:param MeridianOffset: default value is 0
+		%feature("autodoc", "	* The MeridianOffset is added to the parameters on the meridian curve and to the V values of the pcurves. This is used for the sphere for example, to give a range on the meridian edge which is not VMin, VMax.
+
+	:param MeridianOffset: default value is 0
 	:type MeridianOffset: float
 	:rtype: None
 ") SetMeridianOffset;
 		void SetMeridianOffset (const Standard_Real MeridianOffset = 0);
 		%feature("compactdefaultargs") Axes;
-		%feature("autodoc", "	:rtype: gp_Ax2
+		%feature("autodoc", "	* Returns the Ax2 from <self>.
+
+	:rtype: gp_Ax2
 ") Axes;
 		const gp_Ax2  Axes ();
 		%feature("compactdefaultargs") Axes;
@@ -646,17 +717,23 @@ class BRepPrim_OneAxis {
 ") VMax;
 		void VMax (const Standard_Real V);
 		%feature("compactdefaultargs") MakeEmptyLateralFace;
-		%feature("autodoc", "	:rtype: TopoDS_Face
+		%feature("autodoc", "	* Returns a face with no edges. The surface is the lateral surface with normals pointing outward. The U parameter is the angle with the origin on the X axis. The V parameter is the parameter of the meridian.
+
+	:rtype: TopoDS_Face
 ") MakeEmptyLateralFace;
 		virtual TopoDS_Face MakeEmptyLateralFace ();
 		%feature("compactdefaultargs") MakeEmptyMeridianEdge;
-		%feature("autodoc", "	:param Ang:
+		%feature("autodoc", "	* Returns an edge with a 3D curve made from the meridian in the XZ plane rotated by <Ang> around the Z-axis. Ang may be 0 or myAngle.
+
+	:param Ang:
 	:type Ang: float
 	:rtype: TopoDS_Edge
 ") MakeEmptyMeridianEdge;
 		virtual TopoDS_Edge MakeEmptyMeridianEdge (const Standard_Real Ang);
 		%feature("compactdefaultargs") SetMeridianPCurve;
-		%feature("autodoc", "	:param E:
+		%feature("autodoc", "	* Sets the parametric curve of the edge <E> in the face <F> to be the 2d representation of the meridian.
+
+	:param E:
 	:type E: TopoDS_Edge &
 	:param F:
 	:type F: TopoDS_Face &
@@ -664,159 +741,235 @@ class BRepPrim_OneAxis {
 ") SetMeridianPCurve;
 		virtual void SetMeridianPCurve (TopoDS_Edge & E,const TopoDS_Face & F);
 		%feature("compactdefaultargs") MeridianValue;
-		%feature("autodoc", "	:param V:
+		%feature("autodoc", "	* Returns the meridian point at parameter <V> in the plane XZ.
+
+	:param V:
 	:type V: float
 	:rtype: gp_Pnt2d
 ") MeridianValue;
 		virtual gp_Pnt2d MeridianValue (const Standard_Real V);
 		%feature("compactdefaultargs") MeridianOnAxis;
-		%feature("autodoc", "	:param V:
+		%feature("autodoc", "	* Returns True if the point of parameter <V> on the meridian is on the Axis. Default implementation is Abs(MeridianValue(V).X()) < Precision::Confusion()
+
+	:param V:
 	:type V: float
 	:rtype: bool
 ") MeridianOnAxis;
 		virtual Standard_Boolean MeridianOnAxis (const Standard_Real V);
 		%feature("compactdefaultargs") MeridianClosed;
-		%feature("autodoc", "	:rtype: bool
+		%feature("autodoc", "	* Returns True if the meridian is closed. Default implementation  is MeridianValue(VMin).IsEqual(MeridianValue(VMax), Precision::Confusion())
+
+	:rtype: bool
 ") MeridianClosed;
 		virtual Standard_Boolean MeridianClosed ();
 		%feature("compactdefaultargs") VMaxInfinite;
-		%feature("autodoc", "	:rtype: bool
+		%feature("autodoc", "	* Returns True if VMax is infinite. Default Precision::IsPositiveInfinite(VMax);
+
+	:rtype: bool
 ") VMaxInfinite;
 		virtual Standard_Boolean VMaxInfinite ();
 		%feature("compactdefaultargs") VMinInfinite;
-		%feature("autodoc", "	:rtype: bool
+		%feature("autodoc", "	* Returns True if VMin is infinite. Default Precision::IsNegativeInfinite(VMax);
+
+	:rtype: bool
 ") VMinInfinite;
 		virtual Standard_Boolean VMinInfinite ();
 		%feature("compactdefaultargs") HasTop;
-		%feature("autodoc", "	:rtype: bool
+		%feature("autodoc", "	* Returns True if there is a top face. //! That is neither : VMaxInfinite() MeridianClosed() MeridianOnAxis(VMax)
+
+	:rtype: bool
 ") HasTop;
 		virtual Standard_Boolean HasTop ();
 		%feature("compactdefaultargs") HasBottom;
-		%feature("autodoc", "	:rtype: bool
+		%feature("autodoc", "	* Returns True if there is a bottom face. //! That is neither : VMinInfinite() MeridianClosed() MeridianOnAxis(VMin)
+
+	:rtype: bool
 ") HasBottom;
 		virtual Standard_Boolean HasBottom ();
 		%feature("compactdefaultargs") HasSides;
-		%feature("autodoc", "	:rtype: bool
+		%feature("autodoc", "	* Returns True if there are Start and End faces. //! That is : 2*PI - Angle > Precision::Angular()
+
+	:rtype: bool
 ") HasSides;
 		virtual Standard_Boolean HasSides ();
 		%feature("compactdefaultargs") Shell;
-		%feature("autodoc", "	:rtype: TopoDS_Shell
+		%feature("autodoc", "	* Returns the Shell containing all the Faces of the primitive.
+
+	:rtype: TopoDS_Shell
 ") Shell;
 		const TopoDS_Shell  Shell ();
 		%feature("compactdefaultargs") LateralFace;
-		%feature("autodoc", "	:rtype: TopoDS_Face
+		%feature("autodoc", "	* Returns the lateral Face. It is oriented toward the outside of the primitive.
+
+	:rtype: TopoDS_Face
 ") LateralFace;
 		const TopoDS_Face  LateralFace ();
 		%feature("compactdefaultargs") TopFace;
-		%feature("autodoc", "	:rtype: TopoDS_Face
+		%feature("autodoc", "	* Returns the top planar Face. It is Oriented toward the +Z axis (outside).
+
+	:rtype: TopoDS_Face
 ") TopFace;
 		const TopoDS_Face  TopFace ();
 		%feature("compactdefaultargs") BottomFace;
-		%feature("autodoc", "	:rtype: TopoDS_Face
+		%feature("autodoc", "	* Returns the Bottom planar Face. It is Oriented toward the -Z axis (outside).
+
+	:rtype: TopoDS_Face
 ") BottomFace;
 		const TopoDS_Face  BottomFace ();
 		%feature("compactdefaultargs") StartFace;
-		%feature("autodoc", "	:rtype: TopoDS_Face
+		%feature("autodoc", "	* Returns the Face starting the slice, it is oriented toward the exterior of the primitive.
+
+	:rtype: TopoDS_Face
 ") StartFace;
 		const TopoDS_Face  StartFace ();
 		%feature("compactdefaultargs") EndFace;
-		%feature("autodoc", "	:rtype: TopoDS_Face
+		%feature("autodoc", "	* Returns the Face ending the slice, it is oriented toward the exterior of the primitive.
+
+	:rtype: TopoDS_Face
 ") EndFace;
 		const TopoDS_Face  EndFace ();
 		%feature("compactdefaultargs") LateralWire;
-		%feature("autodoc", "	:rtype: TopoDS_Wire
+		%feature("autodoc", "	* Returns the wire in the lateral face.
+
+	:rtype: TopoDS_Wire
 ") LateralWire;
 		const TopoDS_Wire  LateralWire ();
 		%feature("compactdefaultargs") LateralStartWire;
-		%feature("autodoc", "	:rtype: TopoDS_Wire
+		%feature("autodoc", "	* Returns the wire in the lateral face with the start edge.
+
+	:rtype: TopoDS_Wire
 ") LateralStartWire;
 		const TopoDS_Wire  LateralStartWire ();
 		%feature("compactdefaultargs") LateralEndWire;
-		%feature("autodoc", "	:rtype: TopoDS_Wire
+		%feature("autodoc", "	* Returns the wire with in lateral face with the end edge.
+
+	:rtype: TopoDS_Wire
 ") LateralEndWire;
 		const TopoDS_Wire  LateralEndWire ();
 		%feature("compactdefaultargs") TopWire;
-		%feature("autodoc", "	:rtype: TopoDS_Wire
+		%feature("autodoc", "	* Returns the wire in the top face.
+
+	:rtype: TopoDS_Wire
 ") TopWire;
 		const TopoDS_Wire  TopWire ();
 		%feature("compactdefaultargs") BottomWire;
-		%feature("autodoc", "	:rtype: TopoDS_Wire
+		%feature("autodoc", "	* Returns the wire in the bottom face.
+
+	:rtype: TopoDS_Wire
 ") BottomWire;
 		const TopoDS_Wire  BottomWire ();
 		%feature("compactdefaultargs") StartWire;
-		%feature("autodoc", "	:rtype: TopoDS_Wire
+		%feature("autodoc", "	* Returns the wire in the start face.
+
+	:rtype: TopoDS_Wire
 ") StartWire;
 		const TopoDS_Wire  StartWire ();
 		%feature("compactdefaultargs") AxisStartWire;
-		%feature("autodoc", "	:rtype: TopoDS_Wire
+		%feature("autodoc", "	* Returns the wire in the start face with the AxisEdge.
+
+	:rtype: TopoDS_Wire
 ") AxisStartWire;
 		const TopoDS_Wire  AxisStartWire ();
 		%feature("compactdefaultargs") EndWire;
-		%feature("autodoc", "	:rtype: TopoDS_Wire
+		%feature("autodoc", "	* Returns the Wire in the end face.
+
+	:rtype: TopoDS_Wire
 ") EndWire;
 		const TopoDS_Wire  EndWire ();
 		%feature("compactdefaultargs") AxisEndWire;
-		%feature("autodoc", "	:rtype: TopoDS_Wire
+		%feature("autodoc", "	* Returns the Wire in the end face with the AxisEdge.
+
+	:rtype: TopoDS_Wire
 ") AxisEndWire;
 		const TopoDS_Wire  AxisEndWire ();
 		%feature("compactdefaultargs") AxisEdge;
-		%feature("autodoc", "	:rtype: TopoDS_Edge
+		%feature("autodoc", "	* Returns the Edge built along the Axis and oriented on +Z of the Axis.
+
+	:rtype: TopoDS_Edge
 ") AxisEdge;
 		const TopoDS_Edge  AxisEdge ();
 		%feature("compactdefaultargs") StartEdge;
-		%feature("autodoc", "	:rtype: TopoDS_Edge
+		%feature("autodoc", "	* Returns the Edge at angle 0.
+
+	:rtype: TopoDS_Edge
 ") StartEdge;
 		const TopoDS_Edge  StartEdge ();
 		%feature("compactdefaultargs") EndEdge;
-		%feature("autodoc", "	:rtype: TopoDS_Edge
+		%feature("autodoc", "	* Returns the Edge at angle Angle. If !HasSides() the StartEdge and the EndEdge are the same edge.
+
+	:rtype: TopoDS_Edge
 ") EndEdge;
 		const TopoDS_Edge  EndEdge ();
 		%feature("compactdefaultargs") StartTopEdge;
-		%feature("autodoc", "	:rtype: TopoDS_Edge
+		%feature("autodoc", "	* Returns the linear Edge between start Face and top Face.
+
+	:rtype: TopoDS_Edge
 ") StartTopEdge;
 		const TopoDS_Edge  StartTopEdge ();
 		%feature("compactdefaultargs") StartBottomEdge;
-		%feature("autodoc", "	:rtype: TopoDS_Edge
+		%feature("autodoc", "	* Returns the linear Edge between start Face and bottom Face.
+
+	:rtype: TopoDS_Edge
 ") StartBottomEdge;
 		const TopoDS_Edge  StartBottomEdge ();
 		%feature("compactdefaultargs") EndTopEdge;
-		%feature("autodoc", "	:rtype: TopoDS_Edge
+		%feature("autodoc", "	* Returns the linear Edge between end Face and top Face.
+
+	:rtype: TopoDS_Edge
 ") EndTopEdge;
 		const TopoDS_Edge  EndTopEdge ();
 		%feature("compactdefaultargs") EndBottomEdge;
-		%feature("autodoc", "	:rtype: TopoDS_Edge
+		%feature("autodoc", "	* Returns the linear Edge between end Face and bottom Face.
+
+	:rtype: TopoDS_Edge
 ") EndBottomEdge;
 		const TopoDS_Edge  EndBottomEdge ();
 		%feature("compactdefaultargs") TopEdge;
-		%feature("autodoc", "	:rtype: TopoDS_Edge
+		%feature("autodoc", "	* Returns the edge at VMax. If MeridianClosed() the TopEdge and the BottomEdge are the same edge.
+
+	:rtype: TopoDS_Edge
 ") TopEdge;
 		const TopoDS_Edge  TopEdge ();
 		%feature("compactdefaultargs") BottomEdge;
-		%feature("autodoc", "	:rtype: TopoDS_Edge
+		%feature("autodoc", "	* Returns the edge at VMin. If MeridianClosed() the TopEdge and the BottomEdge are the same edge.
+
+	:rtype: TopoDS_Edge
 ") BottomEdge;
 		const TopoDS_Edge  BottomEdge ();
 		%feature("compactdefaultargs") AxisTopVertex;
-		%feature("autodoc", "	:rtype: TopoDS_Vertex
+		%feature("autodoc", "	* Returns the Vertex at the Top altitude on the axis.
+
+	:rtype: TopoDS_Vertex
 ") AxisTopVertex;
 		const TopoDS_Vertex  AxisTopVertex ();
 		%feature("compactdefaultargs") AxisBottomVertex;
-		%feature("autodoc", "	:rtype: TopoDS_Vertex
+		%feature("autodoc", "	* Returns the Vertex at the Bottom altitude on the axis.
+
+	:rtype: TopoDS_Vertex
 ") AxisBottomVertex;
 		const TopoDS_Vertex  AxisBottomVertex ();
 		%feature("compactdefaultargs") TopStartVertex;
-		%feature("autodoc", "	:rtype: TopoDS_Vertex
+		%feature("autodoc", "	* Returns the vertex (0,VMax)
+
+	:rtype: TopoDS_Vertex
 ") TopStartVertex;
 		const TopoDS_Vertex  TopStartVertex ();
 		%feature("compactdefaultargs") TopEndVertex;
-		%feature("autodoc", "	:rtype: TopoDS_Vertex
+		%feature("autodoc", "	* Returns the vertex (angle,VMax)
+
+	:rtype: TopoDS_Vertex
 ") TopEndVertex;
 		const TopoDS_Vertex  TopEndVertex ();
 		%feature("compactdefaultargs") BottomStartVertex;
-		%feature("autodoc", "	:rtype: TopoDS_Vertex
+		%feature("autodoc", "	* Returns the vertex (0,VMin)
+
+	:rtype: TopoDS_Vertex
 ") BottomStartVertex;
 		const TopoDS_Vertex  BottomStartVertex ();
 		%feature("compactdefaultargs") BottomEndVertex;
-		%feature("autodoc", "	:rtype: TopoDS_Vertex
+		%feature("autodoc", "	* Returns the vertex (angle,VMax)
+
+	:rtype: TopoDS_Vertex
 ") BottomEndVertex;
 		const TopoDS_Vertex  BottomEndVertex ();
 };
@@ -880,7 +1033,7 @@ class BRepPrim_Revolution : public BRepPrim_OneAxis {
 class BRepPrim_Wedge : public BRepPrim_GWedge {
 	public:
 		%feature("compactdefaultargs") BRepPrim_Wedge;
-		%feature("autodoc", "	* Creates a Wedge algorithm. <Axes> is the axis system for the primitive.  XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = XMin X2Max = XMax The result is a box dx,dy,dz should be positive
+		%feature("autodoc", "	* Creates a Wedge algorithm. <Axes> is the axis system for the primitive. //! XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = XMin X2Max = XMax The result is a box dx,dy,dz should be positive
 
 	:param Axes:
 	:type Axes: gp_Ax2
@@ -894,7 +1047,7 @@ class BRepPrim_Wedge : public BRepPrim_GWedge {
 ") BRepPrim_Wedge;
 		 BRepPrim_Wedge (const gp_Ax2 & Axes,const Standard_Real dx,const Standard_Real dy,const Standard_Real dz);
 		%feature("compactdefaultargs") BRepPrim_Wedge;
-		%feature("autodoc", "	* Creates a Wedge primitive. <Axes> is the axis system for the primitive.  XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = ltx X2Max = ltx The result is a STEP right angular wedge dx,dy,dz should be positive ltx should not be negative
+		%feature("autodoc", "	* Creates a Wedge primitive. <Axes> is the axis system for the primitive. //! XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = ltx X2Max = ltx The result is a STEP right angular wedge dx,dy,dz should be positive ltx should not be negative
 
 	:param Axes:
 	:type Axes: gp_Ax2
@@ -910,7 +1063,7 @@ class BRepPrim_Wedge : public BRepPrim_GWedge {
 ") BRepPrim_Wedge;
 		 BRepPrim_Wedge (const gp_Ax2 & Axes,const Standard_Real dx,const Standard_Real dy,const Standard_Real dz,const Standard_Real ltx);
 		%feature("compactdefaultargs") BRepPrim_Wedge;
-		%feature("autodoc", "	* Create a Wedge primitive. <Axes> is the axis system for the primitive.  all the fields are set to the corresponding value XYZMax - XYZMin should be positive ZX2Max - ZX2Min should not be negative
+		%feature("autodoc", "	* Create a Wedge primitive. <Axes> is the axis system for the primitive. //! all the fields are set to the corresponding value XYZMax - XYZMin should be positive ZX2Max - ZX2Min should not be negative
 
 	:param Axes:
 	:type Axes: gp_Ax2
@@ -944,7 +1097,7 @@ class BRepPrim_Wedge : public BRepPrim_GWedge {
 class BRepPrim_Cone : public BRepPrim_Revolution {
 	public:
 		%feature("compactdefaultargs") BRepPrim_Cone;
-		%feature("autodoc", "	* the STEP definition Angle = semi-angle of the cone Position : the coordinate system Height : height of the cone. Radius : radius of truncated face at z = 0  The apex is on z < 0  Errors : Height < Resolution  Angle < Resolution / Height  Angle > PI/2 - Resolution / Height
+		%feature("autodoc", "	* the STEP definition Angle = semi-angle of the cone Position : the coordinate system Height : height of the cone. Radius : radius of truncated face at z = 0 //! The apex is on z < 0 //! Errors : Height < Resolution Angle < Resolution / Height Angle > PI/2 - Resolution / Height
 
 	:param Angle:
 	:type Angle: float
@@ -986,7 +1139,7 @@ class BRepPrim_Cone : public BRepPrim_Revolution {
 ") BRepPrim_Cone;
 		 BRepPrim_Cone (const Standard_Real Angle,const gp_Ax2 & Axes);
 		%feature("compactdefaultargs") BRepPrim_Cone;
-		%feature("autodoc", "	* create a Cone at origin on Z axis, of height H, radius R1 at Z = 0, R2 at Z = H, X is the origin of angles. If R1 or R2 is 0 there is an apex. Otherwise, it is a truncated cone.  Error : R1 and R2 < Resolution R1 or R2 negative Abs(R1-R2) < Resolution H < Resolution H negative
+		%feature("autodoc", "	* create a Cone at origin on Z axis, of height H, radius R1 at Z = 0, R2 at Z = H, X is the origin of angles. If R1 or R2 is 0 there is an apex. Otherwise, it is a truncated cone. //! Error : R1 and R2 < Resolution R1 or R2 negative Abs(R1-R2) < Resolution H < Resolution H negative
 
 	:param R1:
 	:type R1: float
@@ -1038,7 +1191,7 @@ class BRepPrim_Cone : public BRepPrim_Revolution {
 class BRepPrim_Cylinder : public BRepPrim_Revolution {
 	public:
 		%feature("compactdefaultargs") BRepPrim_Cylinder;
-		%feature("autodoc", "	* the STEP definition Position : center of a Face and Axis Radius : radius of cylinder Height : distance between faces on positive side  Errors : Height < Resolution Radius < Resolution
+		%feature("autodoc", "	* the STEP definition Position : center of a Face and Axis Radius : radius of cylinder Height : distance between faces on positive side //! Errors : Height < Resolution Radius < Resolution
 
 	:param Position:
 	:type Position: gp_Ax2
@@ -1152,7 +1305,7 @@ class BRepPrim_Sphere : public BRepPrim_Revolution {
 class BRepPrim_Torus : public BRepPrim_Revolution {
 	public:
 		%feature("compactdefaultargs") BRepPrim_Torus;
-		%feature("autodoc", "	* the STEP definition Position : center and axes Major, Minor : Radii  Errors : Major < Resolution Minor < Resolution
+		%feature("autodoc", "	* the STEP definition Position : center and axes Major, Minor : Radii //! Errors : Major < Resolution Minor < Resolution
 
 	:param Position:
 	:type Position: gp_Ax2

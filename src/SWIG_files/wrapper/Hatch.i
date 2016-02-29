@@ -96,7 +96,7 @@ class Hatch_Hatcher {
 ") AddLine;
 		void AddLine (const gp_Lin2d & L,const Hatch_LineForm T = Hatch_ANYLINE);
 		%feature("compactdefaultargs") AddLine;
-		%feature("autodoc", "	* Add an infinite line on direction <D> at distance <Dist> from the origin to be trimmed. <Dist> may be negative.  If O is the origin of the 2D plane, and V the vector perpendicular to D (in the direct direction).  A point P is on the line if :  OP dot V = Dist The parameter of P on the line is  OP dot D
+		%feature("autodoc", "	* Add an infinite line on direction <D> at distance <Dist> from the origin to be trimmed. <Dist> may be negative. //! If O is the origin of the 2D plane, and V the vector perpendicular to D (in the direct direction). //! A point P is on the line if : OP dot V = Dist The parameter of P on the line is OP dot D
 
 	:param D:
 	:type D: gp_Dir2d
@@ -445,6 +445,12 @@ class Hatch_SequenceOfLine : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") Hatch_SequenceOfLine;
 		 Hatch_SequenceOfLine ();
+		%feature("compactdefaultargs") Hatch_SequenceOfLine;
+		%feature("autodoc", "	:param Other:
+	:type Other: Hatch_SequenceOfLine &
+	:rtype: None
+") Hatch_SequenceOfLine;
+		 Hatch_SequenceOfLine (const Hatch_SequenceOfLine & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -577,6 +583,12 @@ class Hatch_SequenceOfParameter : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") Hatch_SequenceOfParameter;
 		 Hatch_SequenceOfParameter ();
+		%feature("compactdefaultargs") Hatch_SequenceOfParameter;
+		%feature("autodoc", "	:param Other:
+	:type Other: Hatch_SequenceOfParameter &
+	:rtype: None
+") Hatch_SequenceOfParameter;
+		 Hatch_SequenceOfParameter (const Hatch_SequenceOfParameter & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;

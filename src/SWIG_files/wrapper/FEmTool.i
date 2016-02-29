@@ -775,6 +775,12 @@ class FEmTool_ListOfVectors {
 		%feature("autodoc", "	:rtype: None
 ") FEmTool_ListOfVectors;
 		 FEmTool_ListOfVectors ();
+		%feature("compactdefaultargs") FEmTool_ListOfVectors;
+		%feature("autodoc", "	:param Other:
+	:type Other: FEmTool_ListOfVectors &
+	:rtype: None
+") FEmTool_ListOfVectors;
+		 FEmTool_ListOfVectors (const FEmTool_ListOfVectors & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: FEmTool_ListOfVectors &
@@ -899,6 +905,12 @@ class FEmTool_SeqOfLinConstr : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") FEmTool_SeqOfLinConstr;
 		 FEmTool_SeqOfLinConstr ();
+		%feature("compactdefaultargs") FEmTool_SeqOfLinConstr;
+		%feature("autodoc", "	:param Other:
+	:type Other: FEmTool_SeqOfLinConstr &
+	:rtype: None
+") FEmTool_SeqOfLinConstr;
+		 FEmTool_SeqOfLinConstr (const FEmTool_SeqOfLinConstr & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;

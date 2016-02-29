@@ -86,7 +86,7 @@ class Adaptor3d_Curve {
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
 	:param T:
 	:type T: TColStd_Array1OfReal &
@@ -190,7 +190,7 @@ class Adaptor3d_Curve {
 ") DN;
 		virtual gp_Vec DN (const Standard_Real U,const Standard_Integer N);
 		%feature("compactdefaultargs") Resolution;
-		%feature("autodoc", "	* Returns the parametric resolution corresponding  to the real space resolution <R3d>.
+		%feature("autodoc", "	* Returns the parametric resolution corresponding to the real space resolution <R3d>.
 
 	:param R3d:
 	:type R3d: float
@@ -284,7 +284,7 @@ class Adaptor3d_HCurve : public MMgt_TShared {
 ") NbIntervals;
 		Standard_Integer NbIntervals (const GeomAbs_Shape S);
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
 	:param T:
 	:type T: TColStd_Array1OfReal &
@@ -294,7 +294,7 @@ class Adaptor3d_HCurve : public MMgt_TShared {
 ") Intervals;
 		void Intervals (TColStd_Array1OfReal & T,const GeomAbs_Shape S);
 		%feature("compactdefaultargs") Trim;
-		%feature("autodoc", "	* Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>
+		%feature("autodoc", "	* Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. //! If <First> >= <Last>
 
 	:param First:
 	:type First: float
@@ -1317,7 +1317,7 @@ class Handle_Adaptor3d_HVertex : public Handle_MMgt_TShared {
 class Adaptor3d_InterFunc : public math_FunctionWithDerivative {
 	public:
 		%feature("compactdefaultargs") Adaptor3d_InterFunc;
-		%feature("autodoc", "	* build the function U(t)=FixVal if Fix =1 or  V(t)=FixVal if Fix=2
+		%feature("autodoc", "	* build the function U(t)=FixVal if Fix =1 or V(t)=FixVal if Fix=2
 
 	:param C:
 	:type C: Handle_Adaptor2d_HCurve2d &
@@ -1329,7 +1329,7 @@ class Adaptor3d_InterFunc : public math_FunctionWithDerivative {
 ") Adaptor3d_InterFunc;
 		 Adaptor3d_InterFunc (const Handle_Adaptor2d_HCurve2d & C,const Standard_Real FixVal,const Standard_Integer Fix);
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* computes the value <F>of the function for the variable <X>.  Returns True if the calculation were successfully done, False otherwise.
+		%feature("autodoc", "	* computes the value <F>of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
 
 	:param X:
 	:type X: float
@@ -1461,7 +1461,7 @@ class Adaptor3d_OffsetCurve : public Adaptor2d_Curve2d {
 ") NbIntervals;
 		Standard_Integer NbIntervals (const GeomAbs_Shape S);
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
 	:param T:
 	:type T: TColStd_Array1OfReal &
@@ -1565,7 +1565,7 @@ class Adaptor3d_OffsetCurve : public Adaptor2d_Curve2d {
 ") DN;
 		gp_Vec2d DN (const Standard_Real U,const Standard_Integer N);
 		%feature("compactdefaultargs") Resolution;
-		%feature("autodoc", "	* Returns the parametric resolution corresponding  to the real space resolution <R3d>.
+		%feature("autodoc", "	* Returns the parametric resolution corresponding to the real space resolution <R3d>.
 
 	:param R3d:
 	:type R3d: float
@@ -1844,7 +1844,7 @@ class Adaptor3d_Surface {
 ") DN;
 		virtual gp_Vec DN (const Standard_Real U,const Standard_Real V,const Standard_Integer Nu,const Standard_Integer Nv);
 		%feature("compactdefaultargs") UResolution;
-		%feature("autodoc", "	* Returns the parametric U resolution corresponding  to the real space resolution <R3d>.
+		%feature("autodoc", "	* Returns the parametric U resolution corresponding to the real space resolution <R3d>.
 
 	:param R3d:
 	:type R3d: float
@@ -1852,7 +1852,7 @@ class Adaptor3d_Surface {
 ") UResolution;
 		virtual Standard_Real UResolution (const Standard_Real R3d);
 		%feature("compactdefaultargs") VResolution;
-		%feature("autodoc", "	* Returns the parametric V resolution corresponding  to the real space resolution <R3d>.
+		%feature("autodoc", "	* Returns the parametric V resolution corresponding to the real space resolution <R3d>.
 
 	:param R3d:
 	:type R3d: float
@@ -2287,7 +2287,7 @@ class Adaptor3d_CurveOnSurface : public Adaptor3d_Curve {
 ") NbIntervals;
 		Standard_Integer NbIntervals (const GeomAbs_Shape S);
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
 	:param T:
 	:type T: TColStd_Array1OfReal &
@@ -2391,7 +2391,7 @@ class Adaptor3d_CurveOnSurface : public Adaptor3d_Curve {
 ") DN;
 		gp_Vec DN (const Standard_Real U,const Standard_Integer N);
 		%feature("compactdefaultargs") Resolution;
-		%feature("autodoc", "	* Returns the parametric resolution corresponding  to the real space resolution <R3d>.
+		%feature("autodoc", "	* Returns the parametric resolution corresponding to the real space resolution <R3d>.
 
 	:param R3d:
 	:type R3d: float
@@ -2837,7 +2837,7 @@ class Adaptor3d_IsoCurve : public Adaptor3d_Curve {
 ") NbIntervals;
 		Standard_Integer NbIntervals (const GeomAbs_Shape S);
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
 	:param T:
 	:type T: TColStd_Array1OfReal &
@@ -2941,7 +2941,7 @@ class Adaptor3d_IsoCurve : public Adaptor3d_Curve {
 ") DN;
 		gp_Vec DN (const Standard_Real U,const Standard_Integer N);
 		%feature("compactdefaultargs") Resolution;
-		%feature("autodoc", "	* Returns the parametric resolution corresponding  to the real space resolution <R3d>.
+		%feature("autodoc", "	* Returns the parametric resolution corresponding to the real space resolution <R3d>.
 
 	:param R3d:
 	:type R3d: float
@@ -3257,7 +3257,7 @@ class Adaptor3d_SurfaceOfLinearExtrusion : public Adaptor3d_Surface {
 ") DN;
 		gp_Vec DN (const Standard_Real U,const Standard_Real V,const Standard_Integer Nu,const Standard_Integer Nv);
 		%feature("compactdefaultargs") UResolution;
-		%feature("autodoc", "	* Returns the parametric U resolution corresponding  to the real space resolution <R3d>.
+		%feature("autodoc", "	* Returns the parametric U resolution corresponding to the real space resolution <R3d>.
 
 	:param R3d:
 	:type R3d: float
@@ -3265,7 +3265,7 @@ class Adaptor3d_SurfaceOfLinearExtrusion : public Adaptor3d_Surface {
 ") UResolution;
 		Standard_Real UResolution (const Standard_Real R3d);
 		%feature("compactdefaultargs") VResolution;
-		%feature("autodoc", "	* Returns the parametric V resolution corresponding  to the real space resolution <R3d>.
+		%feature("autodoc", "	* Returns the parametric V resolution corresponding to the real space resolution <R3d>.
 
 	:param R3d:
 	:type R3d: float
@@ -3613,7 +3613,7 @@ class Adaptor3d_SurfaceOfRevolution : public Adaptor3d_Surface {
 ") DN;
 		gp_Vec DN (const Standard_Real U,const Standard_Real V,const Standard_Integer Nu,const Standard_Integer Nv);
 		%feature("compactdefaultargs") UResolution;
-		%feature("autodoc", "	* Returns the parametric U resolution corresponding  to the real space resolution <R3d>.
+		%feature("autodoc", "	* Returns the parametric U resolution corresponding to the real space resolution <R3d>.
 
 	:param R3d:
 	:type R3d: float
@@ -3621,7 +3621,7 @@ class Adaptor3d_SurfaceOfRevolution : public Adaptor3d_Surface {
 ") UResolution;
 		Standard_Real UResolution (const Standard_Real R3d);
 		%feature("compactdefaultargs") VResolution;
-		%feature("autodoc", "	* Returns the parametric V resolution corresponding  to the real space resolution <R3d>.
+		%feature("autodoc", "	* Returns the parametric V resolution corresponding to the real space resolution <R3d>.
 
 	:param R3d:
 	:type R3d: float

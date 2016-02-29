@@ -104,7 +104,7 @@ class TNaming {
 ") Substitute;
 		static void Substitute (const TDF_Label & labelsource,const TDF_Label & labelcible,TopTools_DataMapOfShapeShape & mapOldNew);
 		%feature("compactdefaultargs") Update;
-		%feature("autodoc", "	* Mise a jour des shapes du label et de ses fils en tenant compte des substitutions decrite par mapOldNew. Warning: le remplacement du shape est fait dans tous les attributs qui le contiennent meme si ceux ci ne sont pas associees a des sous-labels de <Label>.
+		%feature("autodoc", "	* Mise a jour des shapes du label et de ses fils en tenant compte des substitutions decrite par mapOldNew. //! Warning: le remplacement du shape est fait dans tous les attributs qui le contiennent meme si ceux ci ne sont pas associees a des sous-labels de <Label>.
 
 	:param label:
 	:type label: TDF_Label &
@@ -1321,6 +1321,12 @@ class TNaming_ListOfIndexedDataMapOfShapeListOfShape {
 		%feature("autodoc", "	:rtype: None
 ") TNaming_ListOfIndexedDataMapOfShapeListOfShape;
 		 TNaming_ListOfIndexedDataMapOfShapeListOfShape ();
+		%feature("compactdefaultargs") TNaming_ListOfIndexedDataMapOfShapeListOfShape;
+		%feature("autodoc", "	:param Other:
+	:type Other: TNaming_ListOfIndexedDataMapOfShapeListOfShape &
+	:rtype: None
+") TNaming_ListOfIndexedDataMapOfShapeListOfShape;
+		 TNaming_ListOfIndexedDataMapOfShapeListOfShape (const TNaming_ListOfIndexedDataMapOfShapeListOfShape & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TNaming_ListOfIndexedDataMapOfShapeListOfShape &
@@ -1445,6 +1451,12 @@ class TNaming_ListOfMapOfShape {
 		%feature("autodoc", "	:rtype: None
 ") TNaming_ListOfMapOfShape;
 		 TNaming_ListOfMapOfShape ();
+		%feature("compactdefaultargs") TNaming_ListOfMapOfShape;
+		%feature("autodoc", "	:param Other:
+	:type Other: TNaming_ListOfMapOfShape &
+	:rtype: None
+") TNaming_ListOfMapOfShape;
+		 TNaming_ListOfMapOfShape (const TNaming_ListOfMapOfShape & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TNaming_ListOfMapOfShape &
@@ -1569,6 +1581,12 @@ class TNaming_ListOfNamedShape {
 		%feature("autodoc", "	:rtype: None
 ") TNaming_ListOfNamedShape;
 		 TNaming_ListOfNamedShape ();
+		%feature("compactdefaultargs") TNaming_ListOfNamedShape;
+		%feature("autodoc", "	:param Other:
+	:type Other: TNaming_ListOfNamedShape &
+	:rtype: None
+") TNaming_ListOfNamedShape;
+		 TNaming_ListOfNamedShape (const TNaming_ListOfNamedShape & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TNaming_ListOfNamedShape &
@@ -1831,6 +1849,12 @@ class TNaming_MapOfNamedShape : public TCollection_BasicMap {
 	:rtype: None
 ") TNaming_MapOfNamedShape;
 		 TNaming_MapOfNamedShape (const Standard_Integer NbBuckets = 1);
+		%feature("compactdefaultargs") TNaming_MapOfNamedShape;
+		%feature("autodoc", "	:param Other:
+	:type Other: TNaming_MapOfNamedShape &
+	:rtype: None
+") TNaming_MapOfNamedShape;
+		 TNaming_MapOfNamedShape (const TNaming_MapOfNamedShape & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TNaming_MapOfNamedShape &
@@ -2048,7 +2072,7 @@ class TNaming_NamedShape : public TDF_Attribute {
 ") Restore;
 		virtual void Restore (const Handle_TDF_Attribute & anAttribute);
 		%feature("compactdefaultargs") DeltaOnModification;
-		%feature("autodoc", "	* Makes a DeltaOnModification between <self> and  <anOldAttribute.
+		%feature("autodoc", "	* Makes a DeltaOnModification between <self> and <anOldAttribute.
 
 	:param anOldAttribute:
 	:type anOldAttribute: Handle_TDF_Attribute &
@@ -2064,7 +2088,7 @@ class TNaming_NamedShape : public TDF_Attribute {
 ") DeltaOnModification;
 		virtual void DeltaOnModification (const Handle_TDF_DeltaOnModification & aDelta);
 		%feature("compactdefaultargs") DeltaOnRemoval;
-		%feature("autodoc", "	* Makes a DeltaOnRemoval on <self> because <self> has  disappeared from the DS.
+		%feature("autodoc", "	* Makes a DeltaOnRemoval on <self> because <self> has disappeared from the DS.
 
 	:rtype: Handle_TDF_DeltaOnRemoval
 ") DeltaOnRemoval;
@@ -2202,7 +2226,7 @@ class TNaming_Naming : public TDF_Attribute {
 ") Insert;
 		static Handle_TNaming_Naming Insert (const TDF_Label & under);
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	* Creates a Namimg attribute at label <where> to identify the shape <Selection>. Geometry is Standard_True if we are only interested by the  underlying geometry (e.g. setting a constraint). <Context> is used to find neighbours of <S> when required by the naming. If KeepOrientation is True the Selection orientation is taken into account. BNproblem == True points out that Context sub-shapes in DF have orientation differences with Context shape itself. instance method ===============
+		%feature("autodoc", "	* Creates a Namimg attribute at label <where> to identify the shape <Selection>. Geometry is Standard_True if we are only interested by the underlying geometry (e.g. setting a constraint). <Context> is used to find neighbours of <S> when required by the naming. If KeepOrientation is True the Selection orientation is taken into account. BNproblem == True points out that Context sub-shapes in DF have orientation differences with Context shape itself. instance method ===============
 
 	:param where:
 	:type where: TDF_Label &
@@ -2677,7 +2701,7 @@ class TNaming_Scope {
 class TNaming_Selector {
 	public:
 		%feature("compactdefaultargs") IsIdentified;
-		%feature("autodoc", "	* To know if a shape is already identified (not selected) ======================================================= The label access defines the point of access to the data framework. selection is the shape for which we want to know whether it is identified or not. If true, NS is returned as the identity of selection. If Geometry is true, NS will be the named shape containing the first appearance of selection and not any other shape. In other words, selection must be the only shape stored in NS.
+		%feature("autodoc", "	* To know if a shape is already identified (not selected) ======================================================= //! The label access defines the point of access to the data framework. selection is the shape for which we want to know whether it is identified or not. If true, NS is returned as the identity of selection. If Geometry is true, NS will be the named shape containing the first appearance of selection and not any other shape. In other words, selection must be the only shape stored in NS.
 
 	:param access:
 	:type access: TDF_Label &
@@ -2931,7 +2955,7 @@ class TNaming_Tool {
 ") CurrentNamedShape;
 		static Handle_TNaming_NamedShape CurrentNamedShape (const Handle_TNaming_NamedShape & NS);
 		%feature("compactdefaultargs") NamedShape;
-		%feature("autodoc", "	* Returns the named shape attribute defined by the shape aShape and the label anAccess. This attribute is returned as a new shape. You call this function, if you need to create a topological attribute for existing data. Example class MyPkg_MyClass { public: Standard_Boolean SameEdge(const Handle_OCafTest_Line& , const Handle_CafTest_Line& ); }; Standard_Boolean MyPkg_MyClass::SameEdge (const Handle_OCafTest_Line& L1 const Handle_OCafTest_Line& L2) { Handle_TNaming_NamedShape NS1 = L1->NamedShape(); Handle_TNaming_NamedShape NS2 = L2->NamedShape(); return BRepTools::Compare(NS1->Get(),NS2->Get()); } In the example above, the function SameEdge is created to compare the edges having two lines for geometric supports. If these edges are found by BRepTools::Compare to be within the same tolerance, they are considered to be the same. Warning To avoid sharing of names, a SELECTED attribute will not be returned. Sharing of names makes it harder to manage the data structure. When the user of the name is removed, for example, it is difficult to know whether the name should be destroyed.
+		%feature("autodoc", "	* Returns the named shape attribute defined by the shape aShape and the label anAccess. This attribute is returned as a new shape. You call this function, if you need to create a topological attribute for existing data. Example class MyPkg_MyClass { public: Standard_Boolean SameEdge(const Handle_OCafTest_Line& , const Handle_CafTest_Line& ); }; //! Standard_Boolean MyPkg_MyClass::SameEdge (const Handle_OCafTest_Line& L1 const Handle_OCafTest_Line& L2) { Handle_TNaming_NamedShape NS1 = L1->NamedShape(); Handle_TNaming_NamedShape NS2 = L2->NamedShape(); //! return BRepTools::Compare(NS1->Get(),NS2->Get()); } In the example above, the function SameEdge is created to compare the edges having two lines for geometric supports. If these edges are found by BRepTools::Compare to be within the same tolerance, they are considered to be the same. Warning To avoid sharing of names, a SELECTED attribute will not be returned. Sharing of names makes it harder to manage the data structure. When the user of the name is removed, for example, it is difficult to know whether the name should be destroyed.
 
 	:param aShape:
 	:type aShape: TopoDS_Shape &
@@ -3300,7 +3324,7 @@ class TNaming_UsedShapes : public TDF_Attribute {
 ") Paste;
 		virtual void Paste (const Handle_TDF_Attribute & intoAttribute,const Handle_TDF_RelocationTable & aRelocTationable);
 		%feature("compactdefaultargs") References;
-		%feature("autodoc", "	* Adds the directly referenced attributes and labels to <aDataSet>. 'Directly' means we have only to look at the first level of references.  For this, use only the AddLabel() & AddAttribute() from DataSet and do not try to modify information previously stored in <aDataSet>.
+		%feature("autodoc", "	* Adds the directly referenced attributes and labels to <aDataSet>. 'Directly' means we have only to look at the first level of references. //! For this, use only the AddLabel() & AddAttribute() from DataSet and do not try to modify information previously stored in <aDataSet>.
 
 	:param aDataSet:
 	:type aDataSet: Handle_TDF_DataSet &

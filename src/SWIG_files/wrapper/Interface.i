@@ -1471,7 +1471,7 @@ class Interface_CopyTool {
 ") Clear;
 		virtual void Clear ();
 		%feature("compactdefaultargs") Copy;
-		%feature("autodoc", "	* Creates the CounterPart of an Entity (by ShallowCopy), Binds it, then Copies the content of the former Entity to the other one (same Type), by call to the General Service Library It may command the Copy of Referenced Entities Then, its returns True. If <mapped> is True, the Map is used to store the Result Else, the Result is simply produced : it can be used to Copy internal sub-parts of Entities, which are not intended to be shared (Strings, Arrays, etc...) If <errstat> is True, this means that the Entity is recorded in the Model as Erroneous : in this case, the General Service for Deep Copy is not called (this could be dangerous) : hence the Counter-Part is produced but empty, it can be referenced. This method does nothing and returns False if the Protocol does not recognize <ent>. It basically makes a Deep Copy without changing the Types. It can be redefined for special uses.
+		%feature("autodoc", "	* Creates the CounterPart of an Entity (by ShallowCopy), Binds it, then Copies the content of the former Entity to the other one (same Type), by call to the General Service Library It may command the Copy of Referenced Entities Then, its returns True. //! If <mapped> is True, the Map is used to store the Result Else, the Result is simply produced : it can be used to Copy internal sub-parts of Entities, which are not intended to be shared (Strings, Arrays, etc...) If <errstat> is True, this means that the Entity is recorded in the Model as Erroneous : in this case, the General Service for Deep Copy is not called (this could be dangerous) : hence the Counter-Part is produced but empty, it can be referenced. //! This method does nothing and returns False if the Protocol does not recognize <ent>. It basically makes a Deep Copy without changing the Types. It can be redefined for special uses.
 
 	:param entfrom:
 	:type entfrom: Handle_Standard_Transient &
@@ -1519,7 +1519,7 @@ class Interface_CopyTool {
 ") ClearLastFlags;
 		void ClearLastFlags ();
 		%feature("compactdefaultargs") LastCopiedAfter;
-		%feature("autodoc", "	* Returns an copied Entity and its Result which were operated after last call to ClearLastFlags. It returns the first 'Last Copied Entity' which Number follows <numfrom>, Zero if none. It is used in a loop as follow : Integer num = 0; while ( (num = CopyTool.LastCopiedAfter(num,ent,res)) ) {  .. Process Starting <ent> and its Result <res> }
+		%feature("autodoc", "	* Returns an copied Entity and its Result which were operated after last call to ClearLastFlags. It returns the first 'Last Copied Entity' which Number follows <numfrom>, Zero if none. It is used in a loop as follow : Integer num = 0; while ( (num = CopyTool.LastCopiedAfter(num,ent,res)) ) { .. Process Starting <ent> and its Result <res> }
 
 	:param numfrom:
 	:type numfrom: int
@@ -1976,7 +1976,7 @@ class Interface_EntityIterator {
 ") Next;
 		void Next ();
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns the current Entity iterated, to be used by Interface tools or by GraphTools (where Entity is a Vertex)
+		%feature("autodoc", "	* Returns the current Entity iterated, to be used by Interface tools
 
 	:rtype: Handle_Standard_Transient
 ") Value;
@@ -2511,7 +2511,7 @@ class Interface_FileReaderTool {
 ") SetEntities;
 		void SetEntities ();
 		%feature("compactdefaultargs") Recognize;
-		%feature("autodoc", "	* Recognizes a record, given its number. Specific to each Interface; called by SetEntities. It can call the basic method RecognizeByLib. Returns False if recognition has failed, True else. <ach> has not to be filled if simply Recognition has failed : it must record true error messages : RecognizeByLib can generate error messages if NewRead is called Note that it works thru a Recognizer (method Evaluate) which has to be memorized before starting
+		%feature("autodoc", "	* Recognizes a record, given its number. Specific to each Interface; called by SetEntities. It can call the basic method RecognizeByLib. Returns False if recognition has failed, True else. <ach> has not to be filled if simply Recognition has failed : it must record true error messages : RecognizeByLib can generate error messages if NewRead is called //! Note that it works thru a Recognizer (method Evaluate) which has to be memorized before starting
 
 	:param num:
 	:type num: int
@@ -2575,7 +2575,7 @@ class Interface_FileReaderTool {
 ") BeginRead;
 		virtual void BeginRead (const Handle_Interface_InterfaceModel & amodel);
 		%feature("compactdefaultargs") AnalyseRecord;
-		%feature("autodoc", "	* Fills an Entity, given record no; specific to each Interface, called by AnalyseFile from InterfaceModel (which manages its calling arguments) To work, each Interface can define a method in its proper Transient class, like this (given as an example) : AnalyseRecord (me : mutable; FR : in out FileReaderTool;  num : Integer; acheck : in out Check)  returns Boolean; and call it from AnalyseRecord Returned Value : True if the entity could be loaded, False else (in case of syntactic fail)
+		%feature("autodoc", "	* Fills an Entity, given record no; specific to each Interface, called by AnalyseFile from InterfaceModel (which manages its calling arguments) To work, each Interface can define a method in its proper Transient class, like this (given as an example) : AnalyseRecord (me : mutable; FR : in out FileReaderTool; num : Integer; acheck : in out Check) returns Boolean; and call it from AnalyseRecord //! Returned Value : True if the entity could be loaded, False else (in case of syntactic fail)
 
 	:param num:
 	:type num: int
@@ -3013,7 +3013,7 @@ class Interface_GeneralModule : public MMgt_TShared {
 ") CanCopy;
 		virtual Standard_Boolean CanCopy (const Standard_Integer CN,const Handle_Standard_Transient & ent);
 		%feature("compactdefaultargs") Dispatch;
-		%feature("autodoc", "	* Dispatches an entity Returns True if it works by copy, False if it just duplicates the starting Handle Dispatching means producing a new entity, image of the starting one, in order to be put into a new Model, this Model being itself the result of a dispatch from an original Model According to the cases, dispatch can either * just return <entto> as equating <entfrom> -> the new model designates the starting entity : it is lighter, but the dispatched entity being shared might not be modified for dispatch * copy <entfrom> to <entto> by calling NewVoid+CopyCase (two steps) or NewCopiedCase (1) -> the dispatched entity is a COPY, hence it can be modified The provided default just duplicates the handle without copying, then returns False. Can be redefined
+		%feature("autodoc", "	* Dispatches an entity Returns True if it works by copy, False if it just duplicates the starting Handle //! Dispatching means producing a new entity, image of the starting one, in order to be put into a new Model, this Model being itself the result of a dispatch from an original Model //! According to the cases, dispatch can either * just return <entto> as equating <entfrom> -> the new model designates the starting entity : it is lighter, but the dispatched entity being shared might not be modified for dispatch * copy <entfrom> to <entto> by calling NewVoid+CopyCase (two steps) or NewCopiedCase (1) -> the dispatched entity is a COPY, hence it can be modified //! The provided default just duplicates the handle without copying, then returns False. Can be redefined
 
 	:param CN:
 	:type CN: int
@@ -3079,7 +3079,7 @@ class Interface_GeneralModule : public MMgt_TShared {
 ") RenewImpliedCase;
 		virtual void RenewImpliedCase (const Standard_Integer CN,const Handle_Standard_Transient & entfrom,const Handle_Standard_Transient & entto,const Interface_CopyTool & TC);
 		%feature("compactdefaultargs") WhenDeleteCase;
-		%feature("autodoc", "	* Prepares an entity to be deleted. What does it mean : Basically, any class of entity may define its own destructor By default, it does nothing but calling destructors on fields With the Memory Manager, it is useless to call destructor, it is done automatically when the Handle is nullified(cleared) BUT this is ineffective in looping structures (whatever these are 'Implied' references or not). THUS : if no loop may appear in definitions, a class which inherits from TShared is correctly managed by automatic way BUT if there can be loops (or simply back pointers), they must be broken, for instance by clearing fields of one of the nodes The default does nothing, to be redefined if a loop can occur (Implied generally requires WhenDelete, but other cases can occur) Warning : <dispatched> tells if the entity to be deleted has been produced by Dispatch or not. Hence WhenDelete must be in coherence with Dispatch Dispatch can either copy or not. If it copies the entity, this one should be deleted If it doesnt (i.e. duplicates the handle) nothing to do If <dispatch> is False, normal deletion is to be performed
+		%feature("autodoc", "	* Prepares an entity to be deleted. What does it mean : Basically, any class of entity may define its own destructor By default, it does nothing but calling destructors on fields With the Memory Manager, it is useless to call destructor, it is done automatically when the Handle is nullified(cleared) BUT this is ineffective in looping structures (whatever these are 'Implied' references or not). //! THUS : if no loop may appear in definitions, a class which inherits from TShared is correctly managed by automatic way BUT if there can be loops (or simply back pointers), they must be broken, for instance by clearing fields of one of the nodes The default does nothing, to be redefined if a loop can occur (Implied generally requires WhenDelete, but other cases can occur) //! Warning : <dispatched> tells if the entity to be deleted has been produced by Dispatch or not. Hence WhenDelete must be in coherence with Dispatch Dispatch can either copy or not. If it copies the entity, this one should be deleted If it doesnt (i.e. duplicates the handle) nothing to do //! If <dispatch> is False, normal deletion is to be performed
 
 	:param CN:
 	:type CN: int
@@ -3103,7 +3103,7 @@ class Interface_GeneralModule : public MMgt_TShared {
 ") CategoryNumber;
 		virtual Standard_Integer CategoryNumber (const Standard_Integer CN,const Handle_Standard_Transient & ent,const Interface_ShareTool & shares);
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	* Determines if an entity brings a Name (or widerly, if a Name can be attached to it, through the ShareTool By default, returns a Null Handle_nonamecanbeproduced Can be redefined Warning : While this string may be edited on the spot, if it is a read field, the returned value must be copied before.
+		%feature("autodoc", "	* Determines if an entity brings a Name (or widerly, if a Name can be attached to it, through the ShareTool By default, returns a Null Handle_nonamecanbeproduced Can be redefined //! Warning : While this string may be edited on the spot, if it is a read field, the returned value must be copied before.
 
 	:param CN:
 	:type CN: int
@@ -3388,7 +3388,7 @@ class Interface_Graph {
 ") IsPresent;
 		Standard_Boolean IsPresent (const Standard_Integer num);
 		%feature("compactdefaultargs") IsPresent;
-		%feature("autodoc", "	* Same as above but directly on an Entity <ent> : if it is not contained in the Model, returns False. Else calls  IsPresent(num) with <num> given by EntityNumber
+		%feature("autodoc", "	* Same as above but directly on an Entity <ent> : if it is not contained in the Model, returns False. Else calls IsPresent(num) with <num> given by EntityNumber
 
 	:param ent:
 	:type ent: Handle_Standard_Transient &
@@ -3971,10 +3971,6 @@ class Interface_HSequenceOfCheck : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: Interface_SequenceOfCheck
 ") ChangeSequence;
 		Interface_SequenceOfCheck & ChangeSequence ();
-		%feature("compactdefaultargs") ShallowCopy;
-		%feature("autodoc", "	:rtype: Handle_Interface_HSequenceOfCheck
-") ShallowCopy;
-		Handle_Interface_HSequenceOfCheck ShallowCopy ();
 };
 
 
@@ -4100,6 +4096,12 @@ class Interface_IndexedMapOfAsciiString : public TCollection_BasicMap {
 	:rtype: None
 ") Interface_IndexedMapOfAsciiString;
 		 Interface_IndexedMapOfAsciiString (const Standard_Integer NbBuckets = 1);
+		%feature("compactdefaultargs") Interface_IndexedMapOfAsciiString;
+		%feature("autodoc", "	:param Other:
+	:type Other: Interface_IndexedMapOfAsciiString &
+	:rtype: None
+") Interface_IndexedMapOfAsciiString;
+		 Interface_IndexedMapOfAsciiString (const Interface_IndexedMapOfAsciiString & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: Interface_IndexedMapOfAsciiString &
@@ -4165,7 +4167,7 @@ class Interface_IndexedMapOfAsciiString : public TCollection_BasicMap {
 class Interface_IntList {
 	public:
 		%feature("compactdefaultargs") Interface_IntList;
-		%feature("autodoc", "	* //!Creates empty IntList.
+		%feature("autodoc", "	* Creates empty IntList.
 
 	:rtype: None
 ") Interface_IntList;
@@ -4189,7 +4191,7 @@ class Interface_IntList {
 ") Interface_IntList;
 		 Interface_IntList (const Interface_IntList & other,const Standard_Boolean copied);
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	* //!Initialize IntList by number of entities.
+		%feature("autodoc", "	* Initialize IntList by number of entities.
 
 	:param nbe:
 	:type nbe: int
@@ -4470,7 +4472,7 @@ class Interface_InterfaceModel : public MMgt_TShared {
 ") Contains;
 		Standard_Boolean Contains (const Handle_Standard_Transient & anentity);
 		%feature("compactdefaultargs") Number;
-		%feature("autodoc", "	* Returns the Number of an Entity in the Model if it contains it. Else returns 0. For a ReportEntity, looks at Concerned Entity. Returns the Directory entry Number of an Entity in  the Model if it contains it. Else returns 0. For a  ReportEntity, looks at Concerned Entity.
+		%feature("autodoc", "	* Returns the Number of an Entity in the Model if it contains it. Else returns 0. For a ReportEntity, looks at Concerned Entity. Returns the Directory entry Number of an Entity in the Model if it contains it. Else returns 0. For a ReportEntity, looks at Concerned Entity.
 
 	:param anentity:
 	:type anentity: Handle_Standard_Transient &
@@ -4478,7 +4480,7 @@ class Interface_InterfaceModel : public MMgt_TShared {
 ") Number;
 		Standard_Integer Number (const Handle_Standard_Transient & anentity);
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	* Returns an Entity identified by its number in the Model Each sub-class of InterfaceModel can define its own method Entity to return its specific class of Entity (e.g. for VDA, VDAModel returns a VDAEntity), working by calling Value Remark : For a Reported Entity, (Erroneous, Corrected, Unknown), this 	 method returns this Reported Entity. See ReportEntity for other questions.
+		%feature("autodoc", "	* Returns an Entity identified by its number in the Model Each sub-class of InterfaceModel can define its own method Entity to return its specific class of Entity (e.g. for VDA, VDAModel returns a VDAEntity), working by calling Value Remark : For a Reported Entity, (Erroneous, Corrected, Unknown), this method returns this Reported Entity. See ReportEntity for other questions.
 
 	:param num:
 	:type num: int
@@ -4530,7 +4532,7 @@ class Interface_InterfaceModel : public MMgt_TShared {
 ") EntityState;
 		Interface_DataState EntityState (const Standard_Integer num);
 		%feature("compactdefaultargs") IsReportEntity;
-		%feature("autodoc", "	* Returns True if <num> identifies a ReportEntity in the Model Hence, ReportEntity can be called. By default, queries main report, if <semantic> is True, it queries report for semantic check Remember that a Report Entity can be defined for an Unknown Entity, or a Corrected or Erroneous (at read time) Entity. The ReportEntity is defined before call to method AddEntity.
+		%feature("autodoc", "	* Returns True if <num> identifies a ReportEntity in the Model Hence, ReportEntity can be called. //! By default, queries main report, if <semantic> is True, it queries report for semantic check //! Remember that a Report Entity can be defined for an Unknown Entity, or a Corrected or Erroneous (at read time) Entity. The ReportEntity is defined before call to method AddEntity.
 
 	:param num:
 	:type num: int
@@ -4540,7 +4542,7 @@ class Interface_InterfaceModel : public MMgt_TShared {
 ") IsReportEntity;
 		Standard_Boolean IsReportEntity (const Standard_Integer num,const Standard_Boolean semantic = Standard_False);
 		%feature("compactdefaultargs") ReportEntity;
-		%feature("autodoc", "	* Returns a ReportEntity identified by its number in the Model, or a Null Handle If <num> does not identify a ReportEntity. By default, queries main report, if <semantic> is True, it queries report for semantic check
+		%feature("autodoc", "	* Returns a ReportEntity identified by its number in the Model, or a Null Handle If <num> does not identify a ReportEntity. //! By default, queries main report, if <semantic> is True, it queries report for semantic check
 
 	:param num:
 	:type num: int
@@ -4644,7 +4646,7 @@ class Interface_InterfaceModel : public MMgt_TShared {
 ") AddEntity;
 		virtual void AddEntity (const Handle_Standard_Transient & anentity);
 		%feature("compactdefaultargs") AddWithRefs;
-		%feature("autodoc", "	* Adds to the Model, an Entity with all its References, as they are defined by General Services FillShared and ListImplied. Process is recursive (any sub-levels) if <level> = 0 (Default) Else, adds sub-entities until the required sub-level. Especially, if <level> = 1, adds immediate subs and that's all If <listall> is False (Default), an entity (<anentity> itself or one of its subs at any level) which is already recorded in the Model is not analysed, only the newly added ones are. If <listall> is True, all items are analysed (this allows to ensure the consistency of an adding made by steps)
+		%feature("autodoc", "	* Adds to the Model, an Entity with all its References, as they are defined by General Services FillShared and ListImplied. Process is recursive (any sub-levels) if <level> = 0 (Default) Else, adds sub-entities until the required sub-level. Especially, if <level> = 1, adds immediate subs and that's all //! If <listall> is False (Default), an entity (<anentity> itself or one of its subs at any level) which is already recorded in the Model is not analysed, only the newly added ones are. If <listall> is True, all items are analysed (this allows to ensure the consistency of an adding made by steps)
 
 	:param anent:
 	:type anent: Handle_Standard_Transient &
@@ -4838,7 +4840,7 @@ class Interface_InterfaceModel : public MMgt_TShared {
 ") PrintLabel;
 		virtual void PrintLabel (const Handle_Standard_Transient & ent,const Handle_Message_Messenger & S);
 		%feature("compactdefaultargs") PrintToLog;
-		%feature("autodoc", "	* Prints label specific to each norm in log format, for  a given entity.  By default, just calls PrintLabel, can be redefined
+		%feature("autodoc", "	* Prints label specific to each norm in log format, for a given entity. By default, just calls PrintLabel, can be redefined
 
 	:param ent:
 	:type ent: Handle_Standard_Transient &
@@ -4856,7 +4858,7 @@ class Interface_InterfaceModel : public MMgt_TShared {
 ") StringLabel;
 		virtual Handle_TCollection_HAsciiString StringLabel (const Handle_Standard_Transient & ent);
 		%feature("compactdefaultargs") NextNumberForLabel;
-		%feature("autodoc", "	* Searches a label which matches with one entity. Begins from <lastnum>+1 (default:1) and scans the entities until <NbEntities>. For the first which matches <label>, this method returns its Number. Returns 0 if nothing found Can be called recursively (labels are not specified as unique) <exact> : if True (default), exact match is required else, checks the END of entity label This method is virtual, hence it can be redefined for a more efficient search (if exact is true).
+		%feature("autodoc", "	* Searches a label which matches with one entity. Begins from <lastnum>+1 (default:1) and scans the entities until <NbEntities>. For the first which matches <label>, this method returns its Number. Returns 0 if nothing found Can be called recursively (labels are not specified as unique) <exact> : if True (default), exact match is required else, checks the END of entity label //! This method is virtual, hence it can be redefined for a more efficient search (if exact is true).
 
 	:param label:
 	:type label: char *
@@ -5067,7 +5069,7 @@ class Interface_LineBuffer {
 class Interface_MSG {
 	public:
 		%feature("compactdefaultargs") Interface_MSG;
-		%feature("autodoc", "	* A MSG is created to write a 'functional code' in conjunction with operator () attached to Value Then, to have a translated message, write in C++ : Interface_MSG('...mykey...') which returns a CString See also some help which follow
+		%feature("autodoc", "	* A MSG is created to write a 'functional code' in conjunction with operator () attached to Value Then, to have a translated message, write in C++ : //! Interface_MSG('...mykey...') which returns a CString See also some help which follow
 
 	:param key:
 	:type key: char *
@@ -5075,7 +5077,7 @@ class Interface_MSG {
 ") Interface_MSG;
 		 Interface_MSG (const char * key);
 		%feature("compactdefaultargs") Interface_MSG;
-		%feature("autodoc", "	* Translates a message which contains one integer variable It is just a help which avoid the following : char mess[100]; sprintf(mess,Interface_MSG('code'),ival); then AddFail(mess); replaced by AddFail (Interface_MSG('code',ival)); The basic message is intended to be in C-sprintf format, with one %d form in it
+		%feature("autodoc", "	* Translates a message which contains one integer variable It is just a help which avoid the following : char mess[100]; sprintf(mess,Interface_MSG('code'),ival); then AddFail(mess); replaced by AddFail (Interface_MSG('code',ival)); //! The basic message is intended to be in C-sprintf format, with one %d form in it
 
 	:param key:
 	:type key: char *
@@ -5085,7 +5087,7 @@ class Interface_MSG {
 ") Interface_MSG;
 		 Interface_MSG (const char * key,const Standard_Integer i1);
 		%feature("compactdefaultargs") Interface_MSG;
-		%feature("autodoc", "	* Translates a message which contains two integer variables As for one integer, it is just a writing help The basic message is intended to be in C-sprintf format with two %d forms in it
+		%feature("autodoc", "	* Translates a message which contains two integer variables As for one integer, it is just a writing help //! The basic message is intended to be in C-sprintf format with two %d forms in it
 
 	:param key:
 	:type key: char *
@@ -5097,7 +5099,7 @@ class Interface_MSG {
 ") Interface_MSG;
 		 Interface_MSG (const char * key,const Standard_Integer i1,const Standard_Integer i2);
 		%feature("compactdefaultargs") Interface_MSG;
-		%feature("autodoc", "	* Translates a message which contains one real variable <intervals> if set, commands the variable to be rounded to an interval (see below, method Intervals) As for one integer, it is just a writing help The basic message is intended to be in C-sprintf format with one %f form (or equivalent : %e etc) in it
+		%feature("autodoc", "	* Translates a message which contains one real variable <intervals> if set, commands the variable to be rounded to an interval (see below, method Intervals) As for one integer, it is just a writing help //! The basic message is intended to be in C-sprintf format with one %f form (or equivalent : %e etc) in it
 
 	:param key:
 	:type key: char *
@@ -5109,7 +5111,7 @@ class Interface_MSG {
 ") Interface_MSG;
 		 Interface_MSG (const char * key,const Standard_Real r1,const Standard_Integer intervals = -1);
 		%feature("compactdefaultargs") Interface_MSG;
-		%feature("autodoc", "	* Translates a message which contains one string variable As for one integer, it is just a writing help The basic message is intended to be in C-sprintf format with one %s form in it
+		%feature("autodoc", "	* Translates a message which contains one string variable As for one integer, it is just a writing help //! The basic message is intended to be in C-sprintf format with one %s form in it
 
 	:param key:
 	:type key: char *
@@ -5119,7 +5121,7 @@ class Interface_MSG {
 ") Interface_MSG;
 		 Interface_MSG (const char * key,const char * str);
 		%feature("compactdefaultargs") Interface_MSG;
-		%feature("autodoc", "	* Translates a message which contains one integer and one string variables As for one integer, it is just a writing help Used for instance to say 'Param n0.<ival> i.e. <str> is not..' The basic message is intended to be in C-sprintf format with one %d then one %s forms in it
+		%feature("autodoc", "	* Translates a message which contains one integer and one string variables As for one integer, it is just a writing help Used for instance to say 'Param n0.<ival> i.e. <str> is not..' //! The basic message is intended to be in C-sprintf format with one %d then one %s forms in it
 
 	:param key:
 	:type key: char *
@@ -5226,7 +5228,7 @@ class Interface_MSG {
             return s.str();}
         };
         		%feature("compactdefaultargs") Intervalled;
-		%feature("autodoc", "	* Returns an 'intervalled' value from a starting real <val> : i.e. a value which is rounded on an interval limit Interval limits are defined to be in a coarsely 'geometric' progression (two successive intervals are inside a limit ratio) <order> gives the count of desired intervals in a range <1-10> <upper> False, returns the first lower interval (D) <upper> True, returns the first upper interval Values of Intervals according <order> : 0,1 : 1 10 100 ... 2 : 1 3 10 30 100 ... 3(D): 1 2 5 10 20 50 100 ... 4 : 1 2 3 6 10 20 30 60 100 ... 6 : 1 1.5 2 3 5 7 10 15 20 ... 10 : 1 1.2 1.5 2 2.5 3 4 5 6 8 10 12 15 20 25 ...
+		%feature("autodoc", "	* Returns an 'intervalled' value from a starting real <val> : i.e. a value which is rounded on an interval limit Interval limits are defined to be in a coarsely 'geometric' progression (two successive intervals are inside a limit ratio) //! <order> gives the count of desired intervals in a range <1-10> <upper> False, returns the first lower interval (D) <upper> True, returns the first upper interval Values of Intervals according <order> : 0,1 : 1 10 100 ... 2 : 1 3 10 30 100 ... 3(D): 1 2 5 10 20 50 100 ... 4 : 1 2 3 6 10 20 30 60 100 ... 6 : 1 1.5 2 3 5 7 10 15 20 ... 10 : 1 1.2 1.5 2 2.5 3 4 5 6 8 10 12 15 20 25 ...
 
 	:param val:
 	:type val: float
@@ -5787,7 +5789,7 @@ class Interface_Protocol : public MMgt_TShared {
 ") TypeNumber;
 		virtual Standard_Integer TypeNumber (const Handle_Standard_Type & atype);
 		%feature("compactdefaultargs") GlobalCheck;
-		%feature("autodoc", "	* Evaluates a Global Check for a model (with its Graph) Returns True when done, False if data in model do not apply Very specific of each norm, i.e. of each protocol : the uppest level Protocol assumes it, it can call GlobalCheck of its ressources only if it is necessary Default does nothing, can be redefined
+		%feature("autodoc", "	* Evaluates a Global Check for a model (with its Graph) Returns True when done, False if data in model do not apply //! Very specific of each norm, i.e. of each protocol : the uppest level Protocol assumes it, it can call GlobalCheck of its ressources only if it is necessary //! Default does nothing, can be redefined
 
 	:param G:
 	:type G: Interface_Graph &
@@ -5961,7 +5963,7 @@ class Interface_ReaderModule : public MMgt_TShared {
 ") Read;
 		virtual void Read (const Standard_Integer casenum,const Handle_Interface_FileReaderData & data,const Standard_Integer num,Handle_Interface_Check & ach,const Handle_Standard_Transient & ent);
 		%feature("compactdefaultargs") NewRead;
-		%feature("autodoc", "	* Specific operator (create+read) defaulted to do nothing. It can be redefined when it is not possible to work in two steps (NewVoid then Read). This occurs when no default constructor is defined : hence the result <ent> must be created with an effective definition from the reader. Remark : if NewRead is defined, Copy has nothing to do. Returns True if it has produced something, false else. If nothing was produced, <ach> should be filled : it will be treated as 'Unrecognized case' by reader tool.
+		%feature("autodoc", "	* Specific operator (create+read) defaulted to do nothing. It can be redefined when it is not possible to work in two steps (NewVoid then Read). This occurs when no default constructor is defined : hence the result <ent> must be created with an effective definition from the reader. Remark : if NewRead is defined, Copy has nothing to do. //! Returns True if it has produced something, false else. If nothing was produced, <ach> should be filled : it will be treated as 'Unrecognized case' by reader tool.
 
 	:param casenum:
 	:type casenum: int
@@ -6197,6 +6199,12 @@ class Interface_SequenceOfCheck : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") Interface_SequenceOfCheck;
 		 Interface_SequenceOfCheck ();
+		%feature("compactdefaultargs") Interface_SequenceOfCheck;
+		%feature("autodoc", "	:param Other:
+	:type Other: Interface_SequenceOfCheck &
+	:rtype: None
+") Interface_SequenceOfCheck;
+		 Interface_SequenceOfCheck (const Interface_SequenceOfCheck & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -6688,7 +6696,7 @@ class Handle_Interface_SignType : public Handle_MoniTool_SignText {
 class Interface_TypedValue : public MoniTool_TypedValue {
 	public:
 		%feature("compactdefaultargs") Interface_TypedValue;
-		%feature("autodoc", "	* Creates a TypedValue, with a name type gives the type of the parameter, default is free text Also available : Integer, Real, Enum, Entity (i.e. Object) More precise specifications, titles, can be given to the TypedValue once created init gives an initial value. If it is not given, the TypedValue begins as 'not set', its value is empty
+		%feature("autodoc", "	* Creates a TypedValue, with a name //! type gives the type of the parameter, default is free text Also available : Integer, Real, Enum, Entity (i.e. Object) More precise specifications, titles, can be given to the TypedValue once created //! init gives an initial value. If it is not given, the TypedValue begins as 'not set', its value is empty
 
 	:param name:
 	:type name: char *
@@ -6706,7 +6714,7 @@ class Interface_TypedValue : public MoniTool_TypedValue {
 ") Type;
 		Interface_ParamType Type ();
 		%feature("compactdefaultargs") ParamTypeToValueType;
-		%feature("autodoc", "	* Correspondance ParamType from Interface to  ValueType from MoniTool
+		%feature("autodoc", "	* Correspondance ParamType from Interface to ValueType from MoniTool
 
 	:param typ:
 	:type typ: Interface_ParamType
@@ -6714,7 +6722,7 @@ class Interface_TypedValue : public MoniTool_TypedValue {
 ") ParamTypeToValueType;
 		static MoniTool_ValueType ParamTypeToValueType (const Interface_ParamType typ);
 		%feature("compactdefaultargs") ValueTypeToParamType;
-		%feature("autodoc", "	* Correspondance ParamType from Interface to  ValueType from MoniTool
+		%feature("autodoc", "	* Correspondance ParamType from Interface to ValueType from MoniTool
 
 	:param typ:
 	:type typ: MoniTool_ValueType
@@ -7119,7 +7127,7 @@ class Interface_GraphContent : public Interface_EntityIterator {
 class Interface_Static : public Interface_TypedValue {
 	public:
 		%feature("compactdefaultargs") Interface_Static;
-		%feature("autodoc", "	* Creates and records a Static, with a family and a name family can report to a name of ressource or to a system or internal definition. The name must be unique. type gives the type of the parameter, default is free text Also available : Integer, Real, Enum, Entity (i.e. Object) More precise specifications, titles, can be given to the Static once created init gives an initial value. If it is not given, the Static begin as 'not set', its value is empty
+		%feature("autodoc", "	* Creates and records a Static, with a family and a name family can report to a name of ressource or to a system or internal definition. The name must be unique. //! type gives the type of the parameter, default is free text Also available : Integer, Real, Enum, Entity (i.e. Object) More precise specifications, titles, can be given to the Static once created //! init gives an initial value. If it is not given, the Static begin as 'not set', its value is empty
 
 	:param family:
 	:type family: char *
@@ -7229,7 +7237,7 @@ class Interface_Static : public Interface_TypedValue {
 ") IsPresent;
 		static Standard_Boolean IsPresent (const char * name);
 		%feature("compactdefaultargs") CDef;
-		%feature("autodoc", "	* Returns a part of the definition of a Static, as a CString The part is designated by its name, as a CString If the required value is not a string, it is converted to a CString then returned If <name> is not present, or <part> not defined for <name>, this function returns an empty string Allowed parts for CDef : family : the family type : the type ('integer','real','text','enum') label : the label satis : satisfy function name if any rmin : minimum real value rmax : maximum real value imin : minimum integer value imax : maximum integer value enum nn (nn : value of an integer) : enum value for nn unit : unit definition for a real
+		%feature("autodoc", "	* Returns a part of the definition of a Static, as a CString The part is designated by its name, as a CString If the required value is not a string, it is converted to a CString then returned If <name> is not present, or <part> not defined for <name>, this function returns an empty string //! Allowed parts for CDef : family : the family type : the type ('integer','real','text','enum') label : the label satis : satisfy function name if any rmin : minimum real value rmax : maximum real value imin : minimum integer value imax : maximum integer value enum nn (nn : value of an integer) : enum value for nn unit : unit definition for a real
 
 	:param name:
 	:type name: char *
@@ -7239,7 +7247,7 @@ class Interface_Static : public Interface_TypedValue {
 ") CDef;
 		static char * CDef (const char * name,const char * part);
 		%feature("compactdefaultargs") IDef;
-		%feature("autodoc", "	* Returns a part of the definition of a Static, as an Integer The part is designated by its name, as a CString If the required value is not a string, returns zero For a Boolean, 0 for false, 1 for true If <name> is not present, or <part> not defined for <name>, this function returns zero Allowed parts for IDef : imin, imax : minimum or maximum integer value estart : starting number for enum ecount : count of enum values (starting from estart) ematch : exact match status eval val : case determined from a string
+		%feature("autodoc", "	* Returns a part of the definition of a Static, as an Integer The part is designated by its name, as a CString If the required value is not a string, returns zero For a Boolean, 0 for false, 1 for true If <name> is not present, or <part> not defined for <name>, this function returns zero //! Allowed parts for IDef : imin, imax : minimum or maximum integer value estart : starting number for enum ecount : count of enum values (starting from estart) ematch : exact match status eval val : case determined from a string
 
 	:param name:
 	:type name: char *
@@ -7329,7 +7337,7 @@ class Interface_Static : public Interface_TypedValue {
 ") IsUpdated;
 		static Standard_Boolean IsUpdated (const char * name);
 		%feature("compactdefaultargs") Items;
-		%feature("autodoc", "	* Returns a list of names of statics : <mode> = 0 (D) : criter is for family <mode> = 1 : criter is regexp on names, takes final items (ignore wild cards) <mode> = 2 : idem but take only wilded, not final items <mode> = 3 : idem, take all items matching criter idem + 100 : takes only non-updated items idem + 200 : takes only updated items criter empty (D) : returns all names else returns names which match the given criter Remark : families beginning by '$' are not listed by criter '' they are listed only by criter '$' This allows for instance to set new values after having loaded or reloaded a resource, then to update them as required
+		%feature("autodoc", "	* Returns a list of names of statics : <mode> = 0 (D) : criter is for family <mode> = 1 : criter is regexp on names, takes final items (ignore wild cards) <mode> = 2 : idem but take only wilded, not final items <mode> = 3 : idem, take all items matching criter idem + 100 : takes only non-updated items idem + 200 : takes only updated items criter empty (D) : returns all names else returns names which match the given criter Remark : families beginning by '$' are not listed by criter '' they are listed only by criter '$' //! This allows for instance to set new values after having loaded or reloaded a resource, then to update them as required
 
 	:param mode: default value is 0
 	:type mode: int

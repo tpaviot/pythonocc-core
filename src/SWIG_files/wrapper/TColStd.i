@@ -4395,10 +4395,6 @@ class TColStd_HSequenceOfAsciiString : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: TColStd_SequenceOfAsciiString
 ") ChangeSequence;
 		TColStd_SequenceOfAsciiString & ChangeSequence ();
-		%feature("compactdefaultargs") ShallowCopy;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HSequenceOfAsciiString
-") ShallowCopy;
-		Handle_TColStd_HSequenceOfAsciiString ShallowCopy ();
 };
 
 
@@ -4574,10 +4570,6 @@ class TColStd_HSequenceOfExtendedString : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: TColStd_SequenceOfExtendedString
 ") ChangeSequence;
 		TColStd_SequenceOfExtendedString & ChangeSequence ();
-		%feature("compactdefaultargs") ShallowCopy;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HSequenceOfExtendedString
-") ShallowCopy;
-		Handle_TColStd_HSequenceOfExtendedString ShallowCopy ();
 };
 
 
@@ -4753,10 +4745,6 @@ class TColStd_HSequenceOfHAsciiString : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: TColStd_SequenceOfHAsciiString
 ") ChangeSequence;
 		TColStd_SequenceOfHAsciiString & ChangeSequence ();
-		%feature("compactdefaultargs") ShallowCopy;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HSequenceOfHAsciiString
-") ShallowCopy;
-		Handle_TColStd_HSequenceOfHAsciiString ShallowCopy ();
 };
 
 
@@ -4932,10 +4920,6 @@ class TColStd_HSequenceOfHExtendedString : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: TColStd_SequenceOfHExtendedString
 ") ChangeSequence;
 		TColStd_SequenceOfHExtendedString & ChangeSequence ();
-		%feature("compactdefaultargs") ShallowCopy;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HSequenceOfHExtendedString
-") ShallowCopy;
-		Handle_TColStd_HSequenceOfHExtendedString ShallowCopy ();
 };
 
 
@@ -5111,10 +5095,6 @@ class TColStd_HSequenceOfInteger : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: TColStd_SequenceOfInteger
 ") ChangeSequence;
 		TColStd_SequenceOfInteger & ChangeSequence ();
-		%feature("compactdefaultargs") ShallowCopy;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HSequenceOfInteger
-") ShallowCopy;
-		Handle_TColStd_HSequenceOfInteger ShallowCopy ();
 };
 
 
@@ -5290,10 +5270,6 @@ class TColStd_HSequenceOfReal : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: TColStd_SequenceOfReal
 ") ChangeSequence;
 		TColStd_SequenceOfReal & ChangeSequence ();
-		%feature("compactdefaultargs") ShallowCopy;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HSequenceOfReal
-") ShallowCopy;
-		Handle_TColStd_HSequenceOfReal ShallowCopy ();
 };
 
 
@@ -5469,10 +5445,6 @@ class TColStd_HSequenceOfTransient : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: TColStd_SequenceOfTransient
 ") ChangeSequence;
 		TColStd_SequenceOfTransient & ChangeSequence ();
-		%feature("compactdefaultargs") ShallowCopy;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HSequenceOfTransient
-") ShallowCopy;
-		Handle_TColStd_HSequenceOfTransient ShallowCopy ();
 };
 
 
@@ -5510,363 +5482,6 @@ class Handle_TColStd_HSequenceOfTransient : public Handle_MMgt_TShared {
 %extend Handle_TColStd_HSequenceOfTransient {
     TColStd_HSequenceOfTransient* GetObject() {
     return (TColStd_HSequenceOfTransient*)$self->Access();
-    }
-};
-
-%nodefaultctor TColStd_HSetOfInteger;
-class TColStd_HSetOfInteger : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") TColStd_HSetOfInteger;
-		%feature("autodoc", "	:rtype: None
-") TColStd_HSetOfInteger;
-		 TColStd_HSetOfInteger ();
-		%feature("compactdefaultargs") Extent;
-		%feature("autodoc", "	:rtype: int
-") Extent;
-		Standard_Integer Extent ();
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	:param T:
-	:type T: int &
-	:rtype: bool
-") Add;
-		Standard_Boolean Add (const Standard_Integer & T);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param T:
-	:type T: int &
-	:rtype: bool
-") Remove;
-		Standard_Boolean Remove (const Standard_Integer & T);
-		%feature("compactdefaultargs") Union;
-		%feature("autodoc", "	:param B:
-	:type B: Handle_TColStd_HSetOfInteger &
-	:rtype: Handle_TColStd_HSetOfInteger
-") Union;
-		Handle_TColStd_HSetOfInteger Union (const Handle_TColStd_HSetOfInteger & B);
-		%feature("compactdefaultargs") Intersection;
-		%feature("autodoc", "	:param B:
-	:type B: Handle_TColStd_HSetOfInteger &
-	:rtype: Handle_TColStd_HSetOfInteger
-") Intersection;
-		Handle_TColStd_HSetOfInteger Intersection (const Handle_TColStd_HSetOfInteger & B);
-		%feature("compactdefaultargs") Difference;
-		%feature("autodoc", "	:param B:
-	:type B: Handle_TColStd_HSetOfInteger &
-	:rtype: Handle_TColStd_HSetOfInteger
-") Difference;
-		Handle_TColStd_HSetOfInteger Difference (const Handle_TColStd_HSetOfInteger & B);
-		%feature("compactdefaultargs") Contains;
-		%feature("autodoc", "	:param T:
-	:type T: int &
-	:rtype: bool
-") Contains;
-		Standard_Boolean Contains (const Standard_Integer & T);
-		%feature("compactdefaultargs") IsASubset;
-		%feature("autodoc", "	:param S:
-	:type S: Handle_TColStd_HSetOfInteger &
-	:rtype: bool
-") IsASubset;
-		Standard_Boolean IsASubset (const Handle_TColStd_HSetOfInteger & S);
-		%feature("compactdefaultargs") IsAProperSubset;
-		%feature("autodoc", "	:param S:
-	:type S: Handle_TColStd_HSetOfInteger &
-	:rtype: bool
-") IsAProperSubset;
-		Standard_Boolean IsAProperSubset (const Handle_TColStd_HSetOfInteger & S);
-		%feature("compactdefaultargs") ShallowCopy;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HSetOfInteger
-") ShallowCopy;
-		Handle_TColStd_HSetOfInteger ShallowCopy ();
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	:rtype: TColStd_SetOfInteger
-") Set;
-		const TColStd_SetOfInteger & Set ();
-		%feature("compactdefaultargs") ChangeSet;
-		%feature("autodoc", "	:rtype: TColStd_SetOfInteger
-") ChangeSet;
-		TColStd_SetOfInteger & ChangeSet ();
-};
-
-
-%extend TColStd_HSetOfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_HSetOfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_HSetOfInteger::Handle_TColStd_HSetOfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_HSetOfInteger;
-class Handle_TColStd_HSetOfInteger : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColStd_HSetOfInteger();
-        Handle_TColStd_HSetOfInteger(const Handle_TColStd_HSetOfInteger &aHandle);
-        Handle_TColStd_HSetOfInteger(const TColStd_HSetOfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_HSetOfInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_HSetOfInteger {
-    TColStd_HSetOfInteger* GetObject() {
-    return (TColStd_HSetOfInteger*)$self->Access();
-    }
-};
-
-%nodefaultctor TColStd_HSetOfReal;
-class TColStd_HSetOfReal : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") TColStd_HSetOfReal;
-		%feature("autodoc", "	:rtype: None
-") TColStd_HSetOfReal;
-		 TColStd_HSetOfReal ();
-		%feature("compactdefaultargs") Extent;
-		%feature("autodoc", "	:rtype: int
-") Extent;
-		Standard_Integer Extent ();
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	:param T:
-	:type T: float &
-	:rtype: bool
-") Add;
-		Standard_Boolean Add (const Standard_Real & T);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param T:
-	:type T: float &
-	:rtype: bool
-") Remove;
-		Standard_Boolean Remove (const Standard_Real & T);
-		%feature("compactdefaultargs") Union;
-		%feature("autodoc", "	:param B:
-	:type B: Handle_TColStd_HSetOfReal &
-	:rtype: Handle_TColStd_HSetOfReal
-") Union;
-		Handle_TColStd_HSetOfReal Union (const Handle_TColStd_HSetOfReal & B);
-		%feature("compactdefaultargs") Intersection;
-		%feature("autodoc", "	:param B:
-	:type B: Handle_TColStd_HSetOfReal &
-	:rtype: Handle_TColStd_HSetOfReal
-") Intersection;
-		Handle_TColStd_HSetOfReal Intersection (const Handle_TColStd_HSetOfReal & B);
-		%feature("compactdefaultargs") Difference;
-		%feature("autodoc", "	:param B:
-	:type B: Handle_TColStd_HSetOfReal &
-	:rtype: Handle_TColStd_HSetOfReal
-") Difference;
-		Handle_TColStd_HSetOfReal Difference (const Handle_TColStd_HSetOfReal & B);
-		%feature("compactdefaultargs") Contains;
-		%feature("autodoc", "	:param T:
-	:type T: float &
-	:rtype: bool
-") Contains;
-		Standard_Boolean Contains (const Standard_Real & T);
-		%feature("compactdefaultargs") IsASubset;
-		%feature("autodoc", "	:param S:
-	:type S: Handle_TColStd_HSetOfReal &
-	:rtype: bool
-") IsASubset;
-		Standard_Boolean IsASubset (const Handle_TColStd_HSetOfReal & S);
-		%feature("compactdefaultargs") IsAProperSubset;
-		%feature("autodoc", "	:param S:
-	:type S: Handle_TColStd_HSetOfReal &
-	:rtype: bool
-") IsAProperSubset;
-		Standard_Boolean IsAProperSubset (const Handle_TColStd_HSetOfReal & S);
-		%feature("compactdefaultargs") ShallowCopy;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HSetOfReal
-") ShallowCopy;
-		Handle_TColStd_HSetOfReal ShallowCopy ();
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	:rtype: TColStd_SetOfReal
-") Set;
-		const TColStd_SetOfReal & Set ();
-		%feature("compactdefaultargs") ChangeSet;
-		%feature("autodoc", "	:rtype: TColStd_SetOfReal
-") ChangeSet;
-		TColStd_SetOfReal & ChangeSet ();
-};
-
-
-%extend TColStd_HSetOfReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_HSetOfReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_HSetOfReal::Handle_TColStd_HSetOfReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_HSetOfReal;
-class Handle_TColStd_HSetOfReal : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColStd_HSetOfReal();
-        Handle_TColStd_HSetOfReal(const Handle_TColStd_HSetOfReal &aHandle);
-        Handle_TColStd_HSetOfReal(const TColStd_HSetOfReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_HSetOfReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_HSetOfReal {
-    TColStd_HSetOfReal* GetObject() {
-    return (TColStd_HSetOfReal*)$self->Access();
-    }
-};
-
-%nodefaultctor TColStd_HSetOfTransient;
-class TColStd_HSetOfTransient : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") TColStd_HSetOfTransient;
-		%feature("autodoc", "	:rtype: None
-") TColStd_HSetOfTransient;
-		 TColStd_HSetOfTransient ();
-		%feature("compactdefaultargs") Extent;
-		%feature("autodoc", "	:rtype: int
-") Extent;
-		Standard_Integer Extent ();
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	:param T:
-	:type T: Handle_Standard_Transient &
-	:rtype: bool
-") Add;
-		Standard_Boolean Add (const Handle_Standard_Transient & T);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param T:
-	:type T: Handle_Standard_Transient &
-	:rtype: bool
-") Remove;
-		Standard_Boolean Remove (const Handle_Standard_Transient & T);
-		%feature("compactdefaultargs") Union;
-		%feature("autodoc", "	:param B:
-	:type B: Handle_TColStd_HSetOfTransient &
-	:rtype: Handle_TColStd_HSetOfTransient
-") Union;
-		Handle_TColStd_HSetOfTransient Union (const Handle_TColStd_HSetOfTransient & B);
-		%feature("compactdefaultargs") Intersection;
-		%feature("autodoc", "	:param B:
-	:type B: Handle_TColStd_HSetOfTransient &
-	:rtype: Handle_TColStd_HSetOfTransient
-") Intersection;
-		Handle_TColStd_HSetOfTransient Intersection (const Handle_TColStd_HSetOfTransient & B);
-		%feature("compactdefaultargs") Difference;
-		%feature("autodoc", "	:param B:
-	:type B: Handle_TColStd_HSetOfTransient &
-	:rtype: Handle_TColStd_HSetOfTransient
-") Difference;
-		Handle_TColStd_HSetOfTransient Difference (const Handle_TColStd_HSetOfTransient & B);
-		%feature("compactdefaultargs") Contains;
-		%feature("autodoc", "	:param T:
-	:type T: Handle_Standard_Transient &
-	:rtype: bool
-") Contains;
-		Standard_Boolean Contains (const Handle_Standard_Transient & T);
-		%feature("compactdefaultargs") IsASubset;
-		%feature("autodoc", "	:param S:
-	:type S: Handle_TColStd_HSetOfTransient &
-	:rtype: bool
-") IsASubset;
-		Standard_Boolean IsASubset (const Handle_TColStd_HSetOfTransient & S);
-		%feature("compactdefaultargs") IsAProperSubset;
-		%feature("autodoc", "	:param S:
-	:type S: Handle_TColStd_HSetOfTransient &
-	:rtype: bool
-") IsAProperSubset;
-		Standard_Boolean IsAProperSubset (const Handle_TColStd_HSetOfTransient & S);
-		%feature("compactdefaultargs") ShallowCopy;
-		%feature("autodoc", "	:rtype: Handle_TColStd_HSetOfTransient
-") ShallowCopy;
-		Handle_TColStd_HSetOfTransient ShallowCopy ();
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	:rtype: TColStd_SetOfTransient
-") Set;
-		const TColStd_SetOfTransient & Set ();
-		%feature("compactdefaultargs") ChangeSet;
-		%feature("autodoc", "	:rtype: TColStd_SetOfTransient
-") ChangeSet;
-		TColStd_SetOfTransient & ChangeSet ();
-};
-
-
-%extend TColStd_HSetOfTransient {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_HSetOfTransient(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_HSetOfTransient::Handle_TColStd_HSetOfTransient %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_HSetOfTransient;
-class Handle_TColStd_HSetOfTransient : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TColStd_HSetOfTransient();
-        Handle_TColStd_HSetOfTransient(const Handle_TColStd_HSetOfTransient &aHandle);
-        Handle_TColStd_HSetOfTransient(const TColStd_HSetOfTransient *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_HSetOfTransient DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_HSetOfTransient {
-    TColStd_HSetOfTransient* GetObject() {
-    return (TColStd_HSetOfTransient*)$self->Access();
     }
 };
 
@@ -6317,6 +5932,12 @@ class TColStd_IndexedMapOfInteger : public TCollection_BasicMap {
 	:rtype: None
 ") TColStd_IndexedMapOfInteger;
 		 TColStd_IndexedMapOfInteger (const Standard_Integer NbBuckets = 1);
+		%feature("compactdefaultargs") TColStd_IndexedMapOfInteger;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_IndexedMapOfInteger &
+	:rtype: None
+") TColStd_IndexedMapOfInteger;
+		 TColStd_IndexedMapOfInteger (const TColStd_IndexedMapOfInteger & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_IndexedMapOfInteger &
@@ -6387,6 +6008,12 @@ class TColStd_IndexedMapOfReal : public TCollection_BasicMap {
 	:rtype: None
 ") TColStd_IndexedMapOfReal;
 		 TColStd_IndexedMapOfReal (const Standard_Integer NbBuckets = 1);
+		%feature("compactdefaultargs") TColStd_IndexedMapOfReal;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_IndexedMapOfReal &
+	:rtype: None
+") TColStd_IndexedMapOfReal;
+		 TColStd_IndexedMapOfReal (const TColStd_IndexedMapOfReal & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_IndexedMapOfReal &
@@ -6457,6 +6084,12 @@ class TColStd_IndexedMapOfTransient : public TCollection_BasicMap {
 	:rtype: None
 ") TColStd_IndexedMapOfTransient;
 		 TColStd_IndexedMapOfTransient (const Standard_Integer NbBuckets = 1);
+		%feature("compactdefaultargs") TColStd_IndexedMapOfTransient;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_IndexedMapOfTransient &
+	:rtype: None
+") TColStd_IndexedMapOfTransient;
+		 TColStd_IndexedMapOfTransient (const TColStd_IndexedMapOfTransient & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_IndexedMapOfTransient &
@@ -6657,126 +6290,6 @@ class TColStd_ListIteratorOfListOfTransient {
 	:rtype: None
 ") Initialize;
 		void Initialize (const TColStd_ListOfTransient & L);
-		%feature("compactdefaultargs") More;
-		%feature("autodoc", "	:rtype: bool
-") More;
-		Standard_Boolean More ();
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	:rtype: None
-") Next;
-		void Next ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_Standard_Transient
-") Value;
-		Handle_Standard_Transient Value ();
-};
-
-
-%nodefaultctor TColStd_ListIteratorOfSetListOfSetOfInteger;
-class TColStd_ListIteratorOfSetListOfSetOfInteger {
-	public:
-		%feature("compactdefaultargs") TColStd_ListIteratorOfSetListOfSetOfInteger;
-		%feature("autodoc", "	:rtype: None
-") TColStd_ListIteratorOfSetListOfSetOfInteger;
-		 TColStd_ListIteratorOfSetListOfSetOfInteger ();
-		%feature("compactdefaultargs") TColStd_ListIteratorOfSetListOfSetOfInteger;
-		%feature("autodoc", "	:param L:
-	:type L: TColStd_SetListOfSetOfInteger &
-	:rtype: None
-") TColStd_ListIteratorOfSetListOfSetOfInteger;
-		 TColStd_ListIteratorOfSetListOfSetOfInteger (const TColStd_SetListOfSetOfInteger & L);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param L:
-	:type L: TColStd_SetListOfSetOfInteger &
-	:rtype: None
-") Initialize;
-		void Initialize (const TColStd_SetListOfSetOfInteger & L);
-		%feature("compactdefaultargs") More;
-		%feature("autodoc", "	:rtype: bool
-") More;
-		Standard_Boolean More ();
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	:rtype: None
-") Next;
-		void Next ();
-
-            %feature("autodoc","1");
-            %extend {
-                Standard_Integer GetValue() {
-                return (Standard_Integer) $self->Value();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetValue(Standard_Integer value ) {
-                $self->Value()=value;
-                }
-            };
-            };
-
-
-%nodefaultctor TColStd_ListIteratorOfSetListOfSetOfReal;
-class TColStd_ListIteratorOfSetListOfSetOfReal {
-	public:
-		%feature("compactdefaultargs") TColStd_ListIteratorOfSetListOfSetOfReal;
-		%feature("autodoc", "	:rtype: None
-") TColStd_ListIteratorOfSetListOfSetOfReal;
-		 TColStd_ListIteratorOfSetListOfSetOfReal ();
-		%feature("compactdefaultargs") TColStd_ListIteratorOfSetListOfSetOfReal;
-		%feature("autodoc", "	:param L:
-	:type L: TColStd_SetListOfSetOfReal &
-	:rtype: None
-") TColStd_ListIteratorOfSetListOfSetOfReal;
-		 TColStd_ListIteratorOfSetListOfSetOfReal (const TColStd_SetListOfSetOfReal & L);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param L:
-	:type L: TColStd_SetListOfSetOfReal &
-	:rtype: None
-") Initialize;
-		void Initialize (const TColStd_SetListOfSetOfReal & L);
-		%feature("compactdefaultargs") More;
-		%feature("autodoc", "	:rtype: bool
-") More;
-		Standard_Boolean More ();
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	:rtype: None
-") Next;
-		void Next ();
-
-            %feature("autodoc","1");
-            %extend {
-                Standard_Real GetValue() {
-                return (Standard_Real) $self->Value();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetValue(Standard_Real value ) {
-                $self->Value()=value;
-                }
-            };
-            };
-
-
-%nodefaultctor TColStd_ListIteratorOfSetListOfSetOfTransient;
-class TColStd_ListIteratorOfSetListOfSetOfTransient {
-	public:
-		%feature("compactdefaultargs") TColStd_ListIteratorOfSetListOfSetOfTransient;
-		%feature("autodoc", "	:rtype: None
-") TColStd_ListIteratorOfSetListOfSetOfTransient;
-		 TColStd_ListIteratorOfSetListOfSetOfTransient ();
-		%feature("compactdefaultargs") TColStd_ListIteratorOfSetListOfSetOfTransient;
-		%feature("autodoc", "	:param L:
-	:type L: TColStd_SetListOfSetOfTransient &
-	:rtype: None
-") TColStd_ListIteratorOfSetListOfSetOfTransient;
-		 TColStd_ListIteratorOfSetListOfSetOfTransient (const TColStd_SetListOfSetOfTransient & L);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param L:
-	:type L: TColStd_SetListOfSetOfTransient &
-	:rtype: None
-") Initialize;
-		void Initialize (const TColStd_SetListOfSetOfTransient & L);
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "	:rtype: bool
 ") More;
@@ -7030,189 +6543,6 @@ class Handle_TColStd_ListNodeOfListOfTransient : public Handle_TCollection_MapNo
     }
 };
 
-%nodefaultctor TColStd_ListNodeOfSetListOfSetOfInteger;
-class TColStd_ListNodeOfSetListOfSetOfInteger : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") TColStd_ListNodeOfSetListOfSetOfInteger;
-		%feature("autodoc", "	:param I:
-	:type I: int &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") TColStd_ListNodeOfSetListOfSetOfInteger;
-		 TColStd_ListNodeOfSetListOfSetOfInteger (const Standard_Integer & I,const TCollection_MapNodePtr & n);
-
-            %feature("autodoc","1");
-            %extend {
-                Standard_Integer GetValue() {
-                return (Standard_Integer) $self->Value();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetValue(Standard_Integer value ) {
-                $self->Value()=value;
-                }
-            };
-            };
-
-
-%extend TColStd_ListNodeOfSetListOfSetOfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_ListNodeOfSetListOfSetOfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_ListNodeOfSetListOfSetOfInteger::Handle_TColStd_ListNodeOfSetListOfSetOfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_ListNodeOfSetListOfSetOfInteger;
-class Handle_TColStd_ListNodeOfSetListOfSetOfInteger : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_ListNodeOfSetListOfSetOfInteger();
-        Handle_TColStd_ListNodeOfSetListOfSetOfInteger(const Handle_TColStd_ListNodeOfSetListOfSetOfInteger &aHandle);
-        Handle_TColStd_ListNodeOfSetListOfSetOfInteger(const TColStd_ListNodeOfSetListOfSetOfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_ListNodeOfSetListOfSetOfInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_ListNodeOfSetListOfSetOfInteger {
-    TColStd_ListNodeOfSetListOfSetOfInteger* GetObject() {
-    return (TColStd_ListNodeOfSetListOfSetOfInteger*)$self->Access();
-    }
-};
-
-%nodefaultctor TColStd_ListNodeOfSetListOfSetOfReal;
-class TColStd_ListNodeOfSetListOfSetOfReal : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") TColStd_ListNodeOfSetListOfSetOfReal;
-		%feature("autodoc", "	:param I:
-	:type I: float &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") TColStd_ListNodeOfSetListOfSetOfReal;
-		 TColStd_ListNodeOfSetListOfSetOfReal (const Standard_Real & I,const TCollection_MapNodePtr & n);
-
-            %feature("autodoc","1");
-            %extend {
-                Standard_Real GetValue() {
-                return (Standard_Real) $self->Value();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetValue(Standard_Real value ) {
-                $self->Value()=value;
-                }
-            };
-            };
-
-
-%extend TColStd_ListNodeOfSetListOfSetOfReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_ListNodeOfSetListOfSetOfReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_ListNodeOfSetListOfSetOfReal::Handle_TColStd_ListNodeOfSetListOfSetOfReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_ListNodeOfSetListOfSetOfReal;
-class Handle_TColStd_ListNodeOfSetListOfSetOfReal : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_ListNodeOfSetListOfSetOfReal();
-        Handle_TColStd_ListNodeOfSetListOfSetOfReal(const Handle_TColStd_ListNodeOfSetListOfSetOfReal &aHandle);
-        Handle_TColStd_ListNodeOfSetListOfSetOfReal(const TColStd_ListNodeOfSetListOfSetOfReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_ListNodeOfSetListOfSetOfReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_ListNodeOfSetListOfSetOfReal {
-    TColStd_ListNodeOfSetListOfSetOfReal* GetObject() {
-    return (TColStd_ListNodeOfSetListOfSetOfReal*)$self->Access();
-    }
-};
-
-%nodefaultctor TColStd_ListNodeOfSetListOfSetOfTransient;
-class TColStd_ListNodeOfSetListOfSetOfTransient : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") TColStd_ListNodeOfSetListOfSetOfTransient;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_Standard_Transient &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") TColStd_ListNodeOfSetListOfSetOfTransient;
-		 TColStd_ListNodeOfSetListOfSetOfTransient (const Handle_Standard_Transient & I,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_Standard_Transient
-") Value;
-		Handle_Standard_Transient Value ();
-};
-
-
-%extend TColStd_ListNodeOfSetListOfSetOfTransient {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_ListNodeOfSetListOfSetOfTransient(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_ListNodeOfSetListOfSetOfTransient::Handle_TColStd_ListNodeOfSetListOfSetOfTransient %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_ListNodeOfSetListOfSetOfTransient;
-class Handle_TColStd_ListNodeOfSetListOfSetOfTransient : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_ListNodeOfSetListOfSetOfTransient();
-        Handle_TColStd_ListNodeOfSetListOfSetOfTransient(const Handle_TColStd_ListNodeOfSetListOfSetOfTransient &aHandle);
-        Handle_TColStd_ListNodeOfSetListOfSetOfTransient(const TColStd_ListNodeOfSetListOfSetOfTransient *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_ListNodeOfSetListOfSetOfTransient DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_ListNodeOfSetListOfSetOfTransient {
-    TColStd_ListNodeOfSetListOfSetOfTransient* GetObject() {
-    return (TColStd_ListNodeOfSetListOfSetOfTransient*)$self->Access();
-    }
-};
-
 %nodefaultctor TColStd_ListOfAsciiString;
 class TColStd_ListOfAsciiString {
 	public:
@@ -7220,6 +6550,12 @@ class TColStd_ListOfAsciiString {
 		%feature("autodoc", "	:rtype: None
 ") TColStd_ListOfAsciiString;
 		 TColStd_ListOfAsciiString ();
+		%feature("compactdefaultargs") TColStd_ListOfAsciiString;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfAsciiString &
+	:rtype: None
+") TColStd_ListOfAsciiString;
+		 TColStd_ListOfAsciiString (const TColStd_ListOfAsciiString & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_ListOfAsciiString &
@@ -7344,6 +6680,12 @@ class TColStd_ListOfInteger {
 		%feature("autodoc", "	:rtype: None
 ") TColStd_ListOfInteger;
 		 TColStd_ListOfInteger ();
+		%feature("compactdefaultargs") TColStd_ListOfInteger;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfInteger &
+	:rtype: None
+") TColStd_ListOfInteger;
+		 TColStd_ListOfInteger (const TColStd_ListOfInteger & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_ListOfInteger &
@@ -7486,6 +6828,12 @@ class TColStd_ListOfReal {
 		%feature("autodoc", "	:rtype: None
 ") TColStd_ListOfReal;
 		 TColStd_ListOfReal ();
+		%feature("compactdefaultargs") TColStd_ListOfReal;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfReal &
+	:rtype: None
+") TColStd_ListOfReal;
+		 TColStd_ListOfReal (const TColStd_ListOfReal & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_ListOfReal &
@@ -7628,6 +6976,12 @@ class TColStd_ListOfTransient {
 		%feature("autodoc", "	:rtype: None
 ") TColStd_ListOfTransient;
 		 TColStd_ListOfTransient ();
+		%feature("compactdefaultargs") TColStd_ListOfTransient;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_ListOfTransient &
+	:rtype: None
+") TColStd_ListOfTransient;
+		 TColStd_ListOfTransient (const TColStd_ListOfTransient & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_ListOfTransient &
@@ -7925,6 +7279,12 @@ class TColStd_MapOfAsciiString : public TCollection_BasicMap {
 	:rtype: None
 ") TColStd_MapOfAsciiString;
 		 TColStd_MapOfAsciiString (const Standard_Integer NbBuckets = 1);
+		%feature("compactdefaultargs") TColStd_MapOfAsciiString;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_MapOfAsciiString &
+	:rtype: None
+") TColStd_MapOfAsciiString;
+		 TColStd_MapOfAsciiString (const TColStd_MapOfAsciiString & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_MapOfAsciiString &
@@ -7977,6 +7337,12 @@ class TColStd_MapOfInteger : public TCollection_BasicMap {
 	:rtype: None
 ") TColStd_MapOfInteger;
 		 TColStd_MapOfInteger (const Standard_Integer NbBuckets = 1);
+		%feature("compactdefaultargs") TColStd_MapOfInteger;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_MapOfInteger &
+	:rtype: None
+") TColStd_MapOfInteger;
+		 TColStd_MapOfInteger (const TColStd_MapOfInteger & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_MapOfInteger &
@@ -8029,6 +7395,12 @@ class TColStd_MapOfReal : public TCollection_BasicMap {
 	:rtype: None
 ") TColStd_MapOfReal;
 		 TColStd_MapOfReal (const Standard_Integer NbBuckets = 1);
+		%feature("compactdefaultargs") TColStd_MapOfReal;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_MapOfReal &
+	:rtype: None
+") TColStd_MapOfReal;
+		 TColStd_MapOfReal (const TColStd_MapOfReal & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_MapOfReal &
@@ -8081,6 +7453,12 @@ class TColStd_MapOfTransient : public TCollection_BasicMap {
 	:rtype: None
 ") TColStd_MapOfTransient;
 		 TColStd_MapOfTransient (const Standard_Integer NbBuckets = 1);
+		%feature("compactdefaultargs") TColStd_MapOfTransient;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_MapOfTransient &
+	:rtype: None
+") TColStd_MapOfTransient;
+		 TColStd_MapOfTransient (const TColStd_MapOfTransient & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TColStd_MapOfTransient &
@@ -8163,363 +7541,6 @@ class TColStd_MapTransientHasher {
 	:rtype: bool
 ") IsEqual;
 		static Standard_Boolean IsEqual (const Handle_Standard_Transient & K1,const Handle_Standard_Transient & K2);
-};
-
-
-%nodefaultctor TColStd_QueueNodeOfQueueOfInteger;
-class TColStd_QueueNodeOfQueueOfInteger : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") TColStd_QueueNodeOfQueueOfInteger;
-		%feature("autodoc", "	:param I:
-	:type I: int &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") TColStd_QueueNodeOfQueueOfInteger;
-		 TColStd_QueueNodeOfQueueOfInteger (const Standard_Integer & I,const TCollection_MapNodePtr & n);
-
-            %feature("autodoc","1");
-            %extend {
-                Standard_Integer GetValue() {
-                return (Standard_Integer) $self->Value();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetValue(Standard_Integer value ) {
-                $self->Value()=value;
-                }
-            };
-            };
-
-
-%extend TColStd_QueueNodeOfQueueOfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_QueueNodeOfQueueOfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_QueueNodeOfQueueOfInteger::Handle_TColStd_QueueNodeOfQueueOfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_QueueNodeOfQueueOfInteger;
-class Handle_TColStd_QueueNodeOfQueueOfInteger : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_QueueNodeOfQueueOfInteger();
-        Handle_TColStd_QueueNodeOfQueueOfInteger(const Handle_TColStd_QueueNodeOfQueueOfInteger &aHandle);
-        Handle_TColStd_QueueNodeOfQueueOfInteger(const TColStd_QueueNodeOfQueueOfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_QueueNodeOfQueueOfInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_QueueNodeOfQueueOfInteger {
-    TColStd_QueueNodeOfQueueOfInteger* GetObject() {
-    return (TColStd_QueueNodeOfQueueOfInteger*)$self->Access();
-    }
-};
-
-%nodefaultctor TColStd_QueueNodeOfQueueOfReal;
-class TColStd_QueueNodeOfQueueOfReal : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") TColStd_QueueNodeOfQueueOfReal;
-		%feature("autodoc", "	:param I:
-	:type I: float &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") TColStd_QueueNodeOfQueueOfReal;
-		 TColStd_QueueNodeOfQueueOfReal (const Standard_Real & I,const TCollection_MapNodePtr & n);
-
-            %feature("autodoc","1");
-            %extend {
-                Standard_Real GetValue() {
-                return (Standard_Real) $self->Value();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetValue(Standard_Real value ) {
-                $self->Value()=value;
-                }
-            };
-            };
-
-
-%extend TColStd_QueueNodeOfQueueOfReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_QueueNodeOfQueueOfReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_QueueNodeOfQueueOfReal::Handle_TColStd_QueueNodeOfQueueOfReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_QueueNodeOfQueueOfReal;
-class Handle_TColStd_QueueNodeOfQueueOfReal : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_QueueNodeOfQueueOfReal();
-        Handle_TColStd_QueueNodeOfQueueOfReal(const Handle_TColStd_QueueNodeOfQueueOfReal &aHandle);
-        Handle_TColStd_QueueNodeOfQueueOfReal(const TColStd_QueueNodeOfQueueOfReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_QueueNodeOfQueueOfReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_QueueNodeOfQueueOfReal {
-    TColStd_QueueNodeOfQueueOfReal* GetObject() {
-    return (TColStd_QueueNodeOfQueueOfReal*)$self->Access();
-    }
-};
-
-%nodefaultctor TColStd_QueueNodeOfQueueOfTransient;
-class TColStd_QueueNodeOfQueueOfTransient : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") TColStd_QueueNodeOfQueueOfTransient;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_Standard_Transient &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") TColStd_QueueNodeOfQueueOfTransient;
-		 TColStd_QueueNodeOfQueueOfTransient (const Handle_Standard_Transient & I,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_Standard_Transient
-") Value;
-		Handle_Standard_Transient Value ();
-};
-
-
-%extend TColStd_QueueNodeOfQueueOfTransient {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_QueueNodeOfQueueOfTransient(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_QueueNodeOfQueueOfTransient::Handle_TColStd_QueueNodeOfQueueOfTransient %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_QueueNodeOfQueueOfTransient;
-class Handle_TColStd_QueueNodeOfQueueOfTransient : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_QueueNodeOfQueueOfTransient();
-        Handle_TColStd_QueueNodeOfQueueOfTransient(const Handle_TColStd_QueueNodeOfQueueOfTransient &aHandle);
-        Handle_TColStd_QueueNodeOfQueueOfTransient(const TColStd_QueueNodeOfQueueOfTransient *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_QueueNodeOfQueueOfTransient DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_QueueNodeOfQueueOfTransient {
-    TColStd_QueueNodeOfQueueOfTransient* GetObject() {
-    return (TColStd_QueueNodeOfQueueOfTransient*)$self->Access();
-    }
-};
-
-%nodefaultctor TColStd_QueueOfInteger;
-class TColStd_QueueOfInteger {
-	public:
-		%feature("compactdefaultargs") TColStd_QueueOfInteger;
-		%feature("autodoc", "	:rtype: None
-") TColStd_QueueOfInteger;
-		 TColStd_QueueOfInteger ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_QueueOfInteger &
-	:rtype: TColStd_QueueOfInteger
-") Assign;
-		const TColStd_QueueOfInteger & Assign (const TColStd_QueueOfInteger & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_QueueOfInteger &
-	:rtype: TColStd_QueueOfInteger
-") operator=;
-		const TColStd_QueueOfInteger & operator = (const TColStd_QueueOfInteger & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Front;
-		%feature("autodoc", "	:rtype: int
-") Front;
-		const Standard_Integer & Front ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Push;
-		%feature("autodoc", "	:param T:
-	:type T: int &
-	:rtype: None
-") Push;
-		void Push (const Standard_Integer & T);
-		%feature("compactdefaultargs") Pop;
-		%feature("autodoc", "	:rtype: None
-") Pop;
-		void Pop ();
-
-            %feature("autodoc","1");
-            %extend {
-                Standard_Integer GetChangeFront() {
-                return (Standard_Integer) $self->ChangeFront();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetChangeFront(Standard_Integer value ) {
-                $self->ChangeFront()=value;
-                }
-            };
-            };
-
-
-%nodefaultctor TColStd_QueueOfReal;
-class TColStd_QueueOfReal {
-	public:
-		%feature("compactdefaultargs") TColStd_QueueOfReal;
-		%feature("autodoc", "	:rtype: None
-") TColStd_QueueOfReal;
-		 TColStd_QueueOfReal ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_QueueOfReal &
-	:rtype: TColStd_QueueOfReal
-") Assign;
-		const TColStd_QueueOfReal & Assign (const TColStd_QueueOfReal & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_QueueOfReal &
-	:rtype: TColStd_QueueOfReal
-") operator=;
-		const TColStd_QueueOfReal & operator = (const TColStd_QueueOfReal & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Front;
-		%feature("autodoc", "	:rtype: float
-") Front;
-		const Standard_Real & Front ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Push;
-		%feature("autodoc", "	:param T:
-	:type T: float &
-	:rtype: None
-") Push;
-		void Push (const Standard_Real & T);
-		%feature("compactdefaultargs") Pop;
-		%feature("autodoc", "	:rtype: None
-") Pop;
-		void Pop ();
-
-            %feature("autodoc","1");
-            %extend {
-                Standard_Real GetChangeFront() {
-                return (Standard_Real) $self->ChangeFront();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetChangeFront(Standard_Real value ) {
-                $self->ChangeFront()=value;
-                }
-            };
-            };
-
-
-%nodefaultctor TColStd_QueueOfTransient;
-class TColStd_QueueOfTransient {
-	public:
-		%feature("compactdefaultargs") TColStd_QueueOfTransient;
-		%feature("autodoc", "	:rtype: None
-") TColStd_QueueOfTransient;
-		 TColStd_QueueOfTransient ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_QueueOfTransient &
-	:rtype: TColStd_QueueOfTransient
-") Assign;
-		const TColStd_QueueOfTransient & Assign (const TColStd_QueueOfTransient & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_QueueOfTransient &
-	:rtype: TColStd_QueueOfTransient
-") operator=;
-		const TColStd_QueueOfTransient & operator = (const TColStd_QueueOfTransient & Other);
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "	:rtype: int
-") Length;
-		Standard_Integer Length ();
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Front;
-		%feature("autodoc", "	:rtype: Handle_Standard_Transient
-") Front;
-		Handle_Standard_Transient Front ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Push;
-		%feature("autodoc", "	:param T:
-	:type T: Handle_Standard_Transient &
-	:rtype: None
-") Push;
-		void Push (const Handle_Standard_Transient & T);
-		%feature("compactdefaultargs") Pop;
-		%feature("autodoc", "	:rtype: None
-") Pop;
-		void Pop ();
-		%feature("compactdefaultargs") ChangeFront;
-		%feature("autodoc", "	:rtype: Handle_Standard_Transient
-") ChangeFront;
-		Handle_Standard_Transient ChangeFront ();
 };
 
 
@@ -9070,6 +8091,12 @@ class TColStd_SequenceOfAddress : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") TColStd_SequenceOfAddress;
 		 TColStd_SequenceOfAddress ();
+		%feature("compactdefaultargs") TColStd_SequenceOfAddress;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfAddress &
+	:rtype: None
+") TColStd_SequenceOfAddress;
+		 TColStd_SequenceOfAddress (const TColStd_SequenceOfAddress & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -9202,6 +8229,12 @@ class TColStd_SequenceOfAsciiString : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") TColStd_SequenceOfAsciiString;
 		 TColStd_SequenceOfAsciiString ();
+		%feature("compactdefaultargs") TColStd_SequenceOfAsciiString;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfAsciiString &
+	:rtype: None
+") TColStd_SequenceOfAsciiString;
+		 TColStd_SequenceOfAsciiString (const TColStd_SequenceOfAsciiString & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -9334,6 +8367,12 @@ class TColStd_SequenceOfBoolean : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") TColStd_SequenceOfBoolean;
 		 TColStd_SequenceOfBoolean ();
+		%feature("compactdefaultargs") TColStd_SequenceOfBoolean;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfBoolean &
+	:rtype: None
+") TColStd_SequenceOfBoolean;
+		 TColStd_SequenceOfBoolean (const TColStd_SequenceOfBoolean & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -9466,6 +8505,12 @@ class TColStd_SequenceOfExtendedString : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") TColStd_SequenceOfExtendedString;
 		 TColStd_SequenceOfExtendedString ();
+		%feature("compactdefaultargs") TColStd_SequenceOfExtendedString;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfExtendedString &
+	:rtype: None
+") TColStd_SequenceOfExtendedString;
+		 TColStd_SequenceOfExtendedString (const TColStd_SequenceOfExtendedString & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -9598,6 +8643,12 @@ class TColStd_SequenceOfHAsciiString : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") TColStd_SequenceOfHAsciiString;
 		 TColStd_SequenceOfHAsciiString ();
+		%feature("compactdefaultargs") TColStd_SequenceOfHAsciiString;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfHAsciiString &
+	:rtype: None
+") TColStd_SequenceOfHAsciiString;
+		 TColStd_SequenceOfHAsciiString (const TColStd_SequenceOfHAsciiString & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -9730,6 +8781,12 @@ class TColStd_SequenceOfHExtendedString : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") TColStd_SequenceOfHExtendedString;
 		 TColStd_SequenceOfHExtendedString ();
+		%feature("compactdefaultargs") TColStd_SequenceOfHExtendedString;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfHExtendedString &
+	:rtype: None
+") TColStd_SequenceOfHExtendedString;
+		 TColStd_SequenceOfHExtendedString (const TColStd_SequenceOfHExtendedString & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -9862,6 +8919,12 @@ class TColStd_SequenceOfInteger : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") TColStd_SequenceOfInteger;
 		 TColStd_SequenceOfInteger ();
+		%feature("compactdefaultargs") TColStd_SequenceOfInteger;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfInteger &
+	:rtype: None
+") TColStd_SequenceOfInteger;
+		 TColStd_SequenceOfInteger (const TColStd_SequenceOfInteger & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -9994,6 +9057,12 @@ class TColStd_SequenceOfReal : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") TColStd_SequenceOfReal;
 		 TColStd_SequenceOfReal ();
+		%feature("compactdefaultargs") TColStd_SequenceOfReal;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfReal &
+	:rtype: None
+") TColStd_SequenceOfReal;
+		 TColStd_SequenceOfReal (const TColStd_SequenceOfReal & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -10126,6 +9195,12 @@ class TColStd_SequenceOfTransient : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") TColStd_SequenceOfTransient;
 		 TColStd_SequenceOfTransient ();
+		%feature("compactdefaultargs") TColStd_SequenceOfTransient;
+		%feature("autodoc", "	:param Other:
+	:type Other: TColStd_SequenceOfTransient &
+	:rtype: None
+") TColStd_SequenceOfTransient;
+		 TColStd_SequenceOfTransient (const TColStd_SequenceOfTransient & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -10248,1185 +9323,6 @@ class TColStd_SequenceOfTransient : public TCollection_BaseSequence {
 	:rtype: None
 ") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
-};
-
-
-%nodefaultctor TColStd_SetIteratorOfSetOfInteger;
-class TColStd_SetIteratorOfSetOfInteger {
-	public:
-		%feature("compactdefaultargs") TColStd_SetIteratorOfSetOfInteger;
-		%feature("autodoc", "	:rtype: None
-") TColStd_SetIteratorOfSetOfInteger;
-		 TColStd_SetIteratorOfSetOfInteger ();
-		%feature("compactdefaultargs") TColStd_SetIteratorOfSetOfInteger;
-		%feature("autodoc", "	:param S:
-	:type S: TColStd_SetOfInteger &
-	:rtype: None
-") TColStd_SetIteratorOfSetOfInteger;
-		 TColStd_SetIteratorOfSetOfInteger (const TColStd_SetOfInteger & S);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param S:
-	:type S: TColStd_SetOfInteger &
-	:rtype: None
-") Initialize;
-		void Initialize (const TColStd_SetOfInteger & S);
-		%feature("compactdefaultargs") More;
-		%feature("autodoc", "	:rtype: bool
-") More;
-		Standard_Boolean More ();
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	:rtype: None
-") Next;
-		void Next ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: int
-") Value;
-		const Standard_Integer & Value ();
-};
-
-
-%nodefaultctor TColStd_SetIteratorOfSetOfReal;
-class TColStd_SetIteratorOfSetOfReal {
-	public:
-		%feature("compactdefaultargs") TColStd_SetIteratorOfSetOfReal;
-		%feature("autodoc", "	:rtype: None
-") TColStd_SetIteratorOfSetOfReal;
-		 TColStd_SetIteratorOfSetOfReal ();
-		%feature("compactdefaultargs") TColStd_SetIteratorOfSetOfReal;
-		%feature("autodoc", "	:param S:
-	:type S: TColStd_SetOfReal &
-	:rtype: None
-") TColStd_SetIteratorOfSetOfReal;
-		 TColStd_SetIteratorOfSetOfReal (const TColStd_SetOfReal & S);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param S:
-	:type S: TColStd_SetOfReal &
-	:rtype: None
-") Initialize;
-		void Initialize (const TColStd_SetOfReal & S);
-		%feature("compactdefaultargs") More;
-		%feature("autodoc", "	:rtype: bool
-") More;
-		Standard_Boolean More ();
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	:rtype: None
-") Next;
-		void Next ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: float
-") Value;
-		const Standard_Real & Value ();
-};
-
-
-%nodefaultctor TColStd_SetIteratorOfSetOfTransient;
-class TColStd_SetIteratorOfSetOfTransient {
-	public:
-		%feature("compactdefaultargs") TColStd_SetIteratorOfSetOfTransient;
-		%feature("autodoc", "	:rtype: None
-") TColStd_SetIteratorOfSetOfTransient;
-		 TColStd_SetIteratorOfSetOfTransient ();
-		%feature("compactdefaultargs") TColStd_SetIteratorOfSetOfTransient;
-		%feature("autodoc", "	:param S:
-	:type S: TColStd_SetOfTransient &
-	:rtype: None
-") TColStd_SetIteratorOfSetOfTransient;
-		 TColStd_SetIteratorOfSetOfTransient (const TColStd_SetOfTransient & S);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param S:
-	:type S: TColStd_SetOfTransient &
-	:rtype: None
-") Initialize;
-		void Initialize (const TColStd_SetOfTransient & S);
-		%feature("compactdefaultargs") More;
-		%feature("autodoc", "	:rtype: bool
-") More;
-		Standard_Boolean More ();
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	:rtype: None
-") Next;
-		void Next ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_Standard_Transient
-") Value;
-		Handle_Standard_Transient Value ();
-};
-
-
-%nodefaultctor TColStd_SetListOfSetOfInteger;
-class TColStd_SetListOfSetOfInteger {
-	public:
-		%feature("compactdefaultargs") TColStd_SetListOfSetOfInteger;
-		%feature("autodoc", "	:rtype: None
-") TColStd_SetListOfSetOfInteger;
-		 TColStd_SetListOfSetOfInteger ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_SetListOfSetOfInteger &
-	:rtype: None
-") Assign;
-		void Assign (const TColStd_SetListOfSetOfInteger & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_SetListOfSetOfInteger &
-	:rtype: None
-") operator=;
-		void operator = (const TColStd_SetListOfSetOfInteger & Other);
-		%feature("compactdefaultargs") Extent;
-		%feature("autodoc", "	:rtype: int
-") Extent;
-		Standard_Integer Extent ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param I:
-	:type I: int &
-	:rtype: None
-") Prepend;
-		void Prepend (const Standard_Integer & I);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param I:
-	:type I: int &
-	:param theIt:
-	:type theIt: TColStd_ListIteratorOfSetListOfSetOfInteger &
-	:rtype: None
-") Prepend;
-		void Prepend (const Standard_Integer & I,TColStd_ListIteratorOfSetListOfSetOfInteger & theIt);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_SetListOfSetOfInteger &
-	:rtype: None
-") Prepend;
-		void Prepend (TColStd_SetListOfSetOfInteger & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param I:
-	:type I: int &
-	:rtype: None
-") Append;
-		void Append (const Standard_Integer & I);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param I:
-	:type I: int &
-	:param theIt:
-	:type theIt: TColStd_ListIteratorOfSetListOfSetOfInteger &
-	:rtype: None
-") Append;
-		void Append (const Standard_Integer & I,TColStd_ListIteratorOfSetListOfSetOfInteger & theIt);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_SetListOfSetOfInteger &
-	:rtype: None
-") Append;
-		void Append (TColStd_SetListOfSetOfInteger & Other);
-
-            %feature("autodoc","1");
-            %extend {
-                Standard_Integer GetFirst() {
-                return (Standard_Integer) $self->First();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetFirst(Standard_Integer value ) {
-                $self->First()=value;
-                }
-            };
-            
-            %feature("autodoc","1");
-            %extend {
-                Standard_Integer GetLast() {
-                return (Standard_Integer) $self->Last();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetLast(Standard_Integer value ) {
-                $self->Last()=value;
-                }
-            };
-            		%feature("compactdefaultargs") RemoveFirst;
-		%feature("autodoc", "	:rtype: None
-") RemoveFirst;
-		void RemoveFirst ();
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param It:
-	:type It: TColStd_ListIteratorOfSetListOfSetOfInteger &
-	:rtype: None
-") Remove;
-		void Remove (TColStd_ListIteratorOfSetListOfSetOfInteger & It);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param I:
-	:type I: int &
-	:param It:
-	:type It: TColStd_ListIteratorOfSetListOfSetOfInteger &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Integer & I,TColStd_ListIteratorOfSetListOfSetOfInteger & It);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_SetListOfSetOfInteger &
-	:param It:
-	:type It: TColStd_ListIteratorOfSetListOfSetOfInteger &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (TColStd_SetListOfSetOfInteger & Other,TColStd_ListIteratorOfSetListOfSetOfInteger & It);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param I:
-	:type I: int &
-	:param It:
-	:type It: TColStd_ListIteratorOfSetListOfSetOfInteger &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Integer & I,TColStd_ListIteratorOfSetListOfSetOfInteger & It);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_SetListOfSetOfInteger &
-	:param It:
-	:type It: TColStd_ListIteratorOfSetListOfSetOfInteger &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (TColStd_SetListOfSetOfInteger & Other,TColStd_ListIteratorOfSetListOfSetOfInteger & It);
-};
-
-
-%nodefaultctor TColStd_SetListOfSetOfReal;
-class TColStd_SetListOfSetOfReal {
-	public:
-		%feature("compactdefaultargs") TColStd_SetListOfSetOfReal;
-		%feature("autodoc", "	:rtype: None
-") TColStd_SetListOfSetOfReal;
-		 TColStd_SetListOfSetOfReal ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_SetListOfSetOfReal &
-	:rtype: None
-") Assign;
-		void Assign (const TColStd_SetListOfSetOfReal & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_SetListOfSetOfReal &
-	:rtype: None
-") operator=;
-		void operator = (const TColStd_SetListOfSetOfReal & Other);
-		%feature("compactdefaultargs") Extent;
-		%feature("autodoc", "	:rtype: int
-") Extent;
-		Standard_Integer Extent ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param I:
-	:type I: float &
-	:rtype: None
-") Prepend;
-		void Prepend (const Standard_Real & I);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param I:
-	:type I: float &
-	:param theIt:
-	:type theIt: TColStd_ListIteratorOfSetListOfSetOfReal &
-	:rtype: None
-") Prepend;
-		void Prepend (const Standard_Real & I,TColStd_ListIteratorOfSetListOfSetOfReal & theIt);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_SetListOfSetOfReal &
-	:rtype: None
-") Prepend;
-		void Prepend (TColStd_SetListOfSetOfReal & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param I:
-	:type I: float &
-	:rtype: None
-") Append;
-		void Append (const Standard_Real & I);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param I:
-	:type I: float &
-	:param theIt:
-	:type theIt: TColStd_ListIteratorOfSetListOfSetOfReal &
-	:rtype: None
-") Append;
-		void Append (const Standard_Real & I,TColStd_ListIteratorOfSetListOfSetOfReal & theIt);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_SetListOfSetOfReal &
-	:rtype: None
-") Append;
-		void Append (TColStd_SetListOfSetOfReal & Other);
-
-            %feature("autodoc","1");
-            %extend {
-                Standard_Real GetFirst() {
-                return (Standard_Real) $self->First();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetFirst(Standard_Real value ) {
-                $self->First()=value;
-                }
-            };
-            
-            %feature("autodoc","1");
-            %extend {
-                Standard_Real GetLast() {
-                return (Standard_Real) $self->Last();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetLast(Standard_Real value ) {
-                $self->Last()=value;
-                }
-            };
-            		%feature("compactdefaultargs") RemoveFirst;
-		%feature("autodoc", "	:rtype: None
-") RemoveFirst;
-		void RemoveFirst ();
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param It:
-	:type It: TColStd_ListIteratorOfSetListOfSetOfReal &
-	:rtype: None
-") Remove;
-		void Remove (TColStd_ListIteratorOfSetListOfSetOfReal & It);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param I:
-	:type I: float &
-	:param It:
-	:type It: TColStd_ListIteratorOfSetListOfSetOfReal &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Standard_Real & I,TColStd_ListIteratorOfSetListOfSetOfReal & It);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_SetListOfSetOfReal &
-	:param It:
-	:type It: TColStd_ListIteratorOfSetListOfSetOfReal &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (TColStd_SetListOfSetOfReal & Other,TColStd_ListIteratorOfSetListOfSetOfReal & It);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param I:
-	:type I: float &
-	:param It:
-	:type It: TColStd_ListIteratorOfSetListOfSetOfReal &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Standard_Real & I,TColStd_ListIteratorOfSetListOfSetOfReal & It);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_SetListOfSetOfReal &
-	:param It:
-	:type It: TColStd_ListIteratorOfSetListOfSetOfReal &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (TColStd_SetListOfSetOfReal & Other,TColStd_ListIteratorOfSetListOfSetOfReal & It);
-};
-
-
-%nodefaultctor TColStd_SetListOfSetOfTransient;
-class TColStd_SetListOfSetOfTransient {
-	public:
-		%feature("compactdefaultargs") TColStd_SetListOfSetOfTransient;
-		%feature("autodoc", "	:rtype: None
-") TColStd_SetListOfSetOfTransient;
-		 TColStd_SetListOfSetOfTransient ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_SetListOfSetOfTransient &
-	:rtype: None
-") Assign;
-		void Assign (const TColStd_SetListOfSetOfTransient & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_SetListOfSetOfTransient &
-	:rtype: None
-") operator=;
-		void operator = (const TColStd_SetListOfSetOfTransient & Other);
-		%feature("compactdefaultargs") Extent;
-		%feature("autodoc", "	:rtype: int
-") Extent;
-		Standard_Integer Extent ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_Standard_Transient &
-	:rtype: None
-") Prepend;
-		void Prepend (const Handle_Standard_Transient & I);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_Standard_Transient &
-	:param theIt:
-	:type theIt: TColStd_ListIteratorOfSetListOfSetOfTransient &
-	:rtype: None
-") Prepend;
-		void Prepend (const Handle_Standard_Transient & I,TColStd_ListIteratorOfSetListOfSetOfTransient & theIt);
-		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_SetListOfSetOfTransient &
-	:rtype: None
-") Prepend;
-		void Prepend (TColStd_SetListOfSetOfTransient & Other);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_Standard_Transient &
-	:rtype: None
-") Append;
-		void Append (const Handle_Standard_Transient & I);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_Standard_Transient &
-	:param theIt:
-	:type theIt: TColStd_ListIteratorOfSetListOfSetOfTransient &
-	:rtype: None
-") Append;
-		void Append (const Handle_Standard_Transient & I,TColStd_ListIteratorOfSetListOfSetOfTransient & theIt);
-		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_SetListOfSetOfTransient &
-	:rtype: None
-") Append;
-		void Append (TColStd_SetListOfSetOfTransient & Other);
-		%feature("compactdefaultargs") First;
-		%feature("autodoc", "	:rtype: Handle_Standard_Transient
-") First;
-		Handle_Standard_Transient First ();
-		%feature("compactdefaultargs") Last;
-		%feature("autodoc", "	:rtype: Handle_Standard_Transient
-") Last;
-		Handle_Standard_Transient Last ();
-		%feature("compactdefaultargs") RemoveFirst;
-		%feature("autodoc", "	:rtype: None
-") RemoveFirst;
-		void RemoveFirst ();
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param It:
-	:type It: TColStd_ListIteratorOfSetListOfSetOfTransient &
-	:rtype: None
-") Remove;
-		void Remove (TColStd_ListIteratorOfSetListOfSetOfTransient & It);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_Standard_Transient &
-	:param It:
-	:type It: TColStd_ListIteratorOfSetListOfSetOfTransient &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (const Handle_Standard_Transient & I,TColStd_ListIteratorOfSetListOfSetOfTransient & It);
-		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_SetListOfSetOfTransient &
-	:param It:
-	:type It: TColStd_ListIteratorOfSetListOfSetOfTransient &
-	:rtype: None
-") InsertBefore;
-		void InsertBefore (TColStd_SetListOfSetOfTransient & Other,TColStd_ListIteratorOfSetListOfSetOfTransient & It);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_Standard_Transient &
-	:param It:
-	:type It: TColStd_ListIteratorOfSetListOfSetOfTransient &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (const Handle_Standard_Transient & I,TColStd_ListIteratorOfSetListOfSetOfTransient & It);
-		%feature("compactdefaultargs") InsertAfter;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_SetListOfSetOfTransient &
-	:param It:
-	:type It: TColStd_ListIteratorOfSetListOfSetOfTransient &
-	:rtype: None
-") InsertAfter;
-		void InsertAfter (TColStd_SetListOfSetOfTransient & Other,TColStd_ListIteratorOfSetListOfSetOfTransient & It);
-};
-
-
-%nodefaultctor TColStd_SetOfInteger;
-class TColStd_SetOfInteger {
-	public:
-		%feature("compactdefaultargs") TColStd_SetOfInteger;
-		%feature("autodoc", "	:rtype: None
-") TColStd_SetOfInteger;
-		 TColStd_SetOfInteger ();
-		%feature("compactdefaultargs") Extent;
-		%feature("autodoc", "	:rtype: int
-") Extent;
-		Standard_Integer Extent ();
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	:param T:
-	:type T: int &
-	:rtype: bool
-") Add;
-		Standard_Boolean Add (const Standard_Integer & T);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param T:
-	:type T: int &
-	:rtype: bool
-") Remove;
-		Standard_Boolean Remove (const Standard_Integer & T);
-		%feature("compactdefaultargs") Union;
-		%feature("autodoc", "	:param B:
-	:type B: TColStd_SetOfInteger &
-	:rtype: None
-") Union;
-		void Union (const TColStd_SetOfInteger & B);
-		%feature("compactdefaultargs") Intersection;
-		%feature("autodoc", "	:param B:
-	:type B: TColStd_SetOfInteger &
-	:rtype: None
-") Intersection;
-		void Intersection (const TColStd_SetOfInteger & B);
-		%feature("compactdefaultargs") Difference;
-		%feature("autodoc", "	:param B:
-	:type B: TColStd_SetOfInteger &
-	:rtype: None
-") Difference;
-		void Difference (const TColStd_SetOfInteger & B);
-		%feature("compactdefaultargs") Contains;
-		%feature("autodoc", "	:param T:
-	:type T: int &
-	:rtype: bool
-") Contains;
-		Standard_Boolean Contains (const Standard_Integer & T);
-		%feature("compactdefaultargs") IsASubset;
-		%feature("autodoc", "	:param S:
-	:type S: TColStd_SetOfInteger &
-	:rtype: bool
-") IsASubset;
-		Standard_Boolean IsASubset (const TColStd_SetOfInteger & S);
-		%feature("compactdefaultargs") IsAProperSubset;
-		%feature("autodoc", "	:param S:
-	:type S: TColStd_SetOfInteger &
-	:rtype: bool
-") IsAProperSubset;
-		Standard_Boolean IsAProperSubset (const TColStd_SetOfInteger & S);
-};
-
-
-%nodefaultctor TColStd_SetOfReal;
-class TColStd_SetOfReal {
-	public:
-		%feature("compactdefaultargs") TColStd_SetOfReal;
-		%feature("autodoc", "	:rtype: None
-") TColStd_SetOfReal;
-		 TColStd_SetOfReal ();
-		%feature("compactdefaultargs") Extent;
-		%feature("autodoc", "	:rtype: int
-") Extent;
-		Standard_Integer Extent ();
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	:param T:
-	:type T: float &
-	:rtype: bool
-") Add;
-		Standard_Boolean Add (const Standard_Real & T);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param T:
-	:type T: float &
-	:rtype: bool
-") Remove;
-		Standard_Boolean Remove (const Standard_Real & T);
-		%feature("compactdefaultargs") Union;
-		%feature("autodoc", "	:param B:
-	:type B: TColStd_SetOfReal &
-	:rtype: None
-") Union;
-		void Union (const TColStd_SetOfReal & B);
-		%feature("compactdefaultargs") Intersection;
-		%feature("autodoc", "	:param B:
-	:type B: TColStd_SetOfReal &
-	:rtype: None
-") Intersection;
-		void Intersection (const TColStd_SetOfReal & B);
-		%feature("compactdefaultargs") Difference;
-		%feature("autodoc", "	:param B:
-	:type B: TColStd_SetOfReal &
-	:rtype: None
-") Difference;
-		void Difference (const TColStd_SetOfReal & B);
-		%feature("compactdefaultargs") Contains;
-		%feature("autodoc", "	:param T:
-	:type T: float &
-	:rtype: bool
-") Contains;
-		Standard_Boolean Contains (const Standard_Real & T);
-		%feature("compactdefaultargs") IsASubset;
-		%feature("autodoc", "	:param S:
-	:type S: TColStd_SetOfReal &
-	:rtype: bool
-") IsASubset;
-		Standard_Boolean IsASubset (const TColStd_SetOfReal & S);
-		%feature("compactdefaultargs") IsAProperSubset;
-		%feature("autodoc", "	:param S:
-	:type S: TColStd_SetOfReal &
-	:rtype: bool
-") IsAProperSubset;
-		Standard_Boolean IsAProperSubset (const TColStd_SetOfReal & S);
-};
-
-
-%nodefaultctor TColStd_SetOfTransient;
-class TColStd_SetOfTransient {
-	public:
-		%feature("compactdefaultargs") TColStd_SetOfTransient;
-		%feature("autodoc", "	:rtype: None
-") TColStd_SetOfTransient;
-		 TColStd_SetOfTransient ();
-		%feature("compactdefaultargs") Extent;
-		%feature("autodoc", "	:rtype: int
-") Extent;
-		Standard_Integer Extent ();
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	:param T:
-	:type T: Handle_Standard_Transient &
-	:rtype: bool
-") Add;
-		Standard_Boolean Add (const Handle_Standard_Transient & T);
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param T:
-	:type T: Handle_Standard_Transient &
-	:rtype: bool
-") Remove;
-		Standard_Boolean Remove (const Handle_Standard_Transient & T);
-		%feature("compactdefaultargs") Union;
-		%feature("autodoc", "	:param B:
-	:type B: TColStd_SetOfTransient &
-	:rtype: None
-") Union;
-		void Union (const TColStd_SetOfTransient & B);
-		%feature("compactdefaultargs") Intersection;
-		%feature("autodoc", "	:param B:
-	:type B: TColStd_SetOfTransient &
-	:rtype: None
-") Intersection;
-		void Intersection (const TColStd_SetOfTransient & B);
-		%feature("compactdefaultargs") Difference;
-		%feature("autodoc", "	:param B:
-	:type B: TColStd_SetOfTransient &
-	:rtype: None
-") Difference;
-		void Difference (const TColStd_SetOfTransient & B);
-		%feature("compactdefaultargs") Contains;
-		%feature("autodoc", "	:param T:
-	:type T: Handle_Standard_Transient &
-	:rtype: bool
-") Contains;
-		Standard_Boolean Contains (const Handle_Standard_Transient & T);
-		%feature("compactdefaultargs") IsASubset;
-		%feature("autodoc", "	:param S:
-	:type S: TColStd_SetOfTransient &
-	:rtype: bool
-") IsASubset;
-		Standard_Boolean IsASubset (const TColStd_SetOfTransient & S);
-		%feature("compactdefaultargs") IsAProperSubset;
-		%feature("autodoc", "	:param S:
-	:type S: TColStd_SetOfTransient &
-	:rtype: bool
-") IsAProperSubset;
-		Standard_Boolean IsAProperSubset (const TColStd_SetOfTransient & S);
-};
-
-
-%nodefaultctor TColStd_StackIteratorOfStackOfInteger;
-class TColStd_StackIteratorOfStackOfInteger {
-	public:
-		%feature("compactdefaultargs") TColStd_StackIteratorOfStackOfInteger;
-		%feature("autodoc", "	:rtype: None
-") TColStd_StackIteratorOfStackOfInteger;
-		 TColStd_StackIteratorOfStackOfInteger ();
-		%feature("compactdefaultargs") TColStd_StackIteratorOfStackOfInteger;
-		%feature("autodoc", "	:param S:
-	:type S: TColStd_StackOfInteger &
-	:rtype: None
-") TColStd_StackIteratorOfStackOfInteger;
-		 TColStd_StackIteratorOfStackOfInteger (const TColStd_StackOfInteger & S);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param S:
-	:type S: TColStd_StackOfInteger &
-	:rtype: None
-") Initialize;
-		void Initialize (const TColStd_StackOfInteger & S);
-		%feature("compactdefaultargs") More;
-		%feature("autodoc", "	:rtype: bool
-") More;
-		Standard_Boolean More ();
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	:rtype: None
-") Next;
-		void Next ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: int
-") Value;
-		const Standard_Integer & Value ();
-};
-
-
-%nodefaultctor TColStd_StackIteratorOfStackOfReal;
-class TColStd_StackIteratorOfStackOfReal {
-	public:
-		%feature("compactdefaultargs") TColStd_StackIteratorOfStackOfReal;
-		%feature("autodoc", "	:rtype: None
-") TColStd_StackIteratorOfStackOfReal;
-		 TColStd_StackIteratorOfStackOfReal ();
-		%feature("compactdefaultargs") TColStd_StackIteratorOfStackOfReal;
-		%feature("autodoc", "	:param S:
-	:type S: TColStd_StackOfReal &
-	:rtype: None
-") TColStd_StackIteratorOfStackOfReal;
-		 TColStd_StackIteratorOfStackOfReal (const TColStd_StackOfReal & S);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param S:
-	:type S: TColStd_StackOfReal &
-	:rtype: None
-") Initialize;
-		void Initialize (const TColStd_StackOfReal & S);
-		%feature("compactdefaultargs") More;
-		%feature("autodoc", "	:rtype: bool
-") More;
-		Standard_Boolean More ();
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	:rtype: None
-") Next;
-		void Next ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: float
-") Value;
-		const Standard_Real & Value ();
-};
-
-
-%nodefaultctor TColStd_StackIteratorOfStackOfTransient;
-class TColStd_StackIteratorOfStackOfTransient {
-	public:
-		%feature("compactdefaultargs") TColStd_StackIteratorOfStackOfTransient;
-		%feature("autodoc", "	:rtype: None
-") TColStd_StackIteratorOfStackOfTransient;
-		 TColStd_StackIteratorOfStackOfTransient ();
-		%feature("compactdefaultargs") TColStd_StackIteratorOfStackOfTransient;
-		%feature("autodoc", "	:param S:
-	:type S: TColStd_StackOfTransient &
-	:rtype: None
-") TColStd_StackIteratorOfStackOfTransient;
-		 TColStd_StackIteratorOfStackOfTransient (const TColStd_StackOfTransient & S);
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "	:param S:
-	:type S: TColStd_StackOfTransient &
-	:rtype: None
-") Initialize;
-		void Initialize (const TColStd_StackOfTransient & S);
-		%feature("compactdefaultargs") More;
-		%feature("autodoc", "	:rtype: bool
-") More;
-		Standard_Boolean More ();
-		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	:rtype: None
-") Next;
-		void Next ();
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_Standard_Transient
-") Value;
-		Handle_Standard_Transient Value ();
-};
-
-
-%nodefaultctor TColStd_StackNodeOfStackOfInteger;
-class TColStd_StackNodeOfStackOfInteger : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") TColStd_StackNodeOfStackOfInteger;
-		%feature("autodoc", "	:param I:
-	:type I: int &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") TColStd_StackNodeOfStackOfInteger;
-		 TColStd_StackNodeOfStackOfInteger (const Standard_Integer & I,const TCollection_MapNodePtr & n);
-
-            %feature("autodoc","1");
-            %extend {
-                Standard_Integer GetValue() {
-                return (Standard_Integer) $self->Value();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetValue(Standard_Integer value ) {
-                $self->Value()=value;
-                }
-            };
-            };
-
-
-%extend TColStd_StackNodeOfStackOfInteger {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_StackNodeOfStackOfInteger(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_StackNodeOfStackOfInteger::Handle_TColStd_StackNodeOfStackOfInteger %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_StackNodeOfStackOfInteger;
-class Handle_TColStd_StackNodeOfStackOfInteger : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_StackNodeOfStackOfInteger();
-        Handle_TColStd_StackNodeOfStackOfInteger(const Handle_TColStd_StackNodeOfStackOfInteger &aHandle);
-        Handle_TColStd_StackNodeOfStackOfInteger(const TColStd_StackNodeOfStackOfInteger *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_StackNodeOfStackOfInteger DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_StackNodeOfStackOfInteger {
-    TColStd_StackNodeOfStackOfInteger* GetObject() {
-    return (TColStd_StackNodeOfStackOfInteger*)$self->Access();
-    }
-};
-
-%nodefaultctor TColStd_StackNodeOfStackOfReal;
-class TColStd_StackNodeOfStackOfReal : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") TColStd_StackNodeOfStackOfReal;
-		%feature("autodoc", "	:param I:
-	:type I: float &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") TColStd_StackNodeOfStackOfReal;
-		 TColStd_StackNodeOfStackOfReal (const Standard_Real & I,const TCollection_MapNodePtr & n);
-
-            %feature("autodoc","1");
-            %extend {
-                Standard_Real GetValue() {
-                return (Standard_Real) $self->Value();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetValue(Standard_Real value ) {
-                $self->Value()=value;
-                }
-            };
-            };
-
-
-%extend TColStd_StackNodeOfStackOfReal {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_StackNodeOfStackOfReal(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_StackNodeOfStackOfReal::Handle_TColStd_StackNodeOfStackOfReal %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_StackNodeOfStackOfReal;
-class Handle_TColStd_StackNodeOfStackOfReal : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_StackNodeOfStackOfReal();
-        Handle_TColStd_StackNodeOfStackOfReal(const Handle_TColStd_StackNodeOfStackOfReal &aHandle);
-        Handle_TColStd_StackNodeOfStackOfReal(const TColStd_StackNodeOfStackOfReal *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_StackNodeOfStackOfReal DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_StackNodeOfStackOfReal {
-    TColStd_StackNodeOfStackOfReal* GetObject() {
-    return (TColStd_StackNodeOfStackOfReal*)$self->Access();
-    }
-};
-
-%nodefaultctor TColStd_StackNodeOfStackOfTransient;
-class TColStd_StackNodeOfStackOfTransient : public TCollection_MapNode {
-	public:
-		%feature("compactdefaultargs") TColStd_StackNodeOfStackOfTransient;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_Standard_Transient &
-	:param n:
-	:type n: TCollection_MapNodePtr &
-	:rtype: None
-") TColStd_StackNodeOfStackOfTransient;
-		 TColStd_StackNodeOfStackOfTransient (const Handle_Standard_Transient & I,const TCollection_MapNodePtr & n);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: Handle_Standard_Transient
-") Value;
-		Handle_Standard_Transient Value ();
-};
-
-
-%extend TColStd_StackNodeOfStackOfTransient {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TColStd_StackNodeOfStackOfTransient(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TColStd_StackNodeOfStackOfTransient::Handle_TColStd_StackNodeOfStackOfTransient %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TColStd_StackNodeOfStackOfTransient;
-class Handle_TColStd_StackNodeOfStackOfTransient : public Handle_TCollection_MapNode {
-
-    public:
-        // constructors
-        Handle_TColStd_StackNodeOfStackOfTransient();
-        Handle_TColStd_StackNodeOfStackOfTransient(const Handle_TColStd_StackNodeOfStackOfTransient &aHandle);
-        Handle_TColStd_StackNodeOfStackOfTransient(const TColStd_StackNodeOfStackOfTransient *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TColStd_StackNodeOfStackOfTransient DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TColStd_StackNodeOfStackOfTransient {
-    TColStd_StackNodeOfStackOfTransient* GetObject() {
-    return (TColStd_StackNodeOfStackOfTransient*)$self->Access();
-    }
-};
-
-%nodefaultctor TColStd_StackOfInteger;
-class TColStd_StackOfInteger {
-	public:
-		%feature("compactdefaultargs") TColStd_StackOfInteger;
-		%feature("autodoc", "	:rtype: None
-") TColStd_StackOfInteger;
-		 TColStd_StackOfInteger ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_StackOfInteger &
-	:rtype: TColStd_StackOfInteger
-") Assign;
-		const TColStd_StackOfInteger & Assign (const TColStd_StackOfInteger & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_StackOfInteger &
-	:rtype: TColStd_StackOfInteger
-") operator=;
-		const TColStd_StackOfInteger & operator = (const TColStd_StackOfInteger & Other);
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Depth;
-		%feature("autodoc", "	:rtype: int
-") Depth;
-		Standard_Integer Depth ();
-		%feature("compactdefaultargs") Top;
-		%feature("autodoc", "	:rtype: int
-") Top;
-		const Standard_Integer & Top ();
-		%feature("compactdefaultargs") Push;
-		%feature("autodoc", "	:param I:
-	:type I: int &
-	:rtype: None
-") Push;
-		void Push (const Standard_Integer & I);
-		%feature("compactdefaultargs") Pop;
-		%feature("autodoc", "	:rtype: None
-") Pop;
-		void Pop ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-
-            %feature("autodoc","1");
-            %extend {
-                Standard_Integer GetChangeTop() {
-                return (Standard_Integer) $self->ChangeTop();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetChangeTop(Standard_Integer value ) {
-                $self->ChangeTop()=value;
-                }
-            };
-            };
-
-
-%nodefaultctor TColStd_StackOfReal;
-class TColStd_StackOfReal {
-	public:
-		%feature("compactdefaultargs") TColStd_StackOfReal;
-		%feature("autodoc", "	:rtype: None
-") TColStd_StackOfReal;
-		 TColStd_StackOfReal ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_StackOfReal &
-	:rtype: TColStd_StackOfReal
-") Assign;
-		const TColStd_StackOfReal & Assign (const TColStd_StackOfReal & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_StackOfReal &
-	:rtype: TColStd_StackOfReal
-") operator=;
-		const TColStd_StackOfReal & operator = (const TColStd_StackOfReal & Other);
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Depth;
-		%feature("autodoc", "	:rtype: int
-") Depth;
-		Standard_Integer Depth ();
-		%feature("compactdefaultargs") Top;
-		%feature("autodoc", "	:rtype: float
-") Top;
-		const Standard_Real & Top ();
-		%feature("compactdefaultargs") Push;
-		%feature("autodoc", "	:param I:
-	:type I: float &
-	:rtype: None
-") Push;
-		void Push (const Standard_Real & I);
-		%feature("compactdefaultargs") Pop;
-		%feature("autodoc", "	:rtype: None
-") Pop;
-		void Pop ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-
-            %feature("autodoc","1");
-            %extend {
-                Standard_Real GetChangeTop() {
-                return (Standard_Real) $self->ChangeTop();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetChangeTop(Standard_Real value ) {
-                $self->ChangeTop()=value;
-                }
-            };
-            };
-
-
-%nodefaultctor TColStd_StackOfTransient;
-class TColStd_StackOfTransient {
-	public:
-		%feature("compactdefaultargs") TColStd_StackOfTransient;
-		%feature("autodoc", "	:rtype: None
-") TColStd_StackOfTransient;
-		 TColStd_StackOfTransient ();
-		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_StackOfTransient &
-	:rtype: TColStd_StackOfTransient
-") Assign;
-		const TColStd_StackOfTransient & Assign (const TColStd_StackOfTransient & Other);
-		%feature("compactdefaultargs") operator =;
-		%feature("autodoc", "	:param Other:
-	:type Other: TColStd_StackOfTransient &
-	:rtype: TColStd_StackOfTransient
-") operator=;
-		const TColStd_StackOfTransient & operator = (const TColStd_StackOfTransient & Other);
-		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "	:rtype: bool
-") IsEmpty;
-		Standard_Boolean IsEmpty ();
-		%feature("compactdefaultargs") Depth;
-		%feature("autodoc", "	:rtype: int
-") Depth;
-		Standard_Integer Depth ();
-		%feature("compactdefaultargs") Top;
-		%feature("autodoc", "	:rtype: Handle_Standard_Transient
-") Top;
-		Handle_Standard_Transient Top ();
-		%feature("compactdefaultargs") Push;
-		%feature("autodoc", "	:param I:
-	:type I: Handle_Standard_Transient &
-	:rtype: None
-") Push;
-		void Push (const Handle_Standard_Transient & I);
-		%feature("compactdefaultargs") Pop;
-		%feature("autodoc", "	:rtype: None
-") Pop;
-		void Pop ();
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
-") Clear;
-		void Clear ();
-		%feature("compactdefaultargs") ChangeTop;
-		%feature("autodoc", "	:rtype: Handle_Standard_Transient
-") ChangeTop;
-		Handle_Standard_Transient ChangeTop ();
 };
 
 

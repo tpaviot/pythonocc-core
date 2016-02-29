@@ -1444,10 +1444,6 @@ class StepRepr_HSequenceOfMaterialPropertyRepresentation : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: StepRepr_SequenceOfMaterialPropertyRepresentation
 ") ChangeSequence;
 		StepRepr_SequenceOfMaterialPropertyRepresentation & ChangeSequence ();
-		%feature("compactdefaultargs") ShallowCopy;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_HSequenceOfMaterialPropertyRepresentation
-") ShallowCopy;
-		Handle_StepRepr_HSequenceOfMaterialPropertyRepresentation ShallowCopy ();
 };
 
 
@@ -1623,10 +1619,6 @@ class StepRepr_HSequenceOfRepresentationItem : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: StepRepr_SequenceOfRepresentationItem
 ") ChangeSequence;
 		StepRepr_SequenceOfRepresentationItem & ChangeSequence ();
-		%feature("compactdefaultargs") ShallowCopy;
-		%feature("autodoc", "	:rtype: Handle_StepRepr_HSequenceOfRepresentationItem
-") ShallowCopy;
-		Handle_StepRepr_HSequenceOfRepresentationItem ShallowCopy ();
 };
 
 
@@ -2924,6 +2916,12 @@ class StepRepr_SequenceOfMaterialPropertyRepresentation : public TCollection_Bas
 		%feature("autodoc", "	:rtype: None
 ") StepRepr_SequenceOfMaterialPropertyRepresentation;
 		 StepRepr_SequenceOfMaterialPropertyRepresentation ();
+		%feature("compactdefaultargs") StepRepr_SequenceOfMaterialPropertyRepresentation;
+		%feature("autodoc", "	:param Other:
+	:type Other: StepRepr_SequenceOfMaterialPropertyRepresentation &
+	:rtype: None
+") StepRepr_SequenceOfMaterialPropertyRepresentation;
+		 StepRepr_SequenceOfMaterialPropertyRepresentation (const StepRepr_SequenceOfMaterialPropertyRepresentation & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -3056,6 +3054,12 @@ class StepRepr_SequenceOfRepresentationItem : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") StepRepr_SequenceOfRepresentationItem;
 		 StepRepr_SequenceOfRepresentationItem ();
+		%feature("compactdefaultargs") StepRepr_SequenceOfRepresentationItem;
+		%feature("autodoc", "	:param Other:
+	:type Other: StepRepr_SequenceOfRepresentationItem &
+	:rtype: None
+") StepRepr_SequenceOfRepresentationItem;
+		 StepRepr_SequenceOfRepresentationItem (const StepRepr_SequenceOfRepresentationItem & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;

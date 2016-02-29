@@ -174,7 +174,7 @@ class IFSelect_Activator : public MMgt_TShared {
 ") Remove;
 		static void Remove (const char * command);
 		%feature("compactdefaultargs") SetAlias;
-		%feature("autodoc", "	* Records, for a configuration named <conf>, that the command <command> may be aliased by another command <alias> To be used by call to Alias (no automatic redirection) The configuration typically refers to a norm
+		%feature("autodoc", "	* Records, for a configuration named <conf>, that the command <command> may be aliased by another command <alias> //! To be used by call to Alias (no automatic redirection) The configuration typically refers to a norm
 
 	:param conf:
 	:type conf: char *
@@ -418,7 +418,7 @@ class Handle_IFSelect_AppliedModifiers : public Handle_MMgt_TShared {
 class IFSelect_ContextModif {
 	public:
 		%feature("compactdefaultargs") IFSelect_ContextModif;
-		%feature("autodoc", "	* Prepares a ContextModif with these informations : - the graph established from original model (target passed directly to Modifier) - the CopyTool which detains the CopyControl, which maps starting (in original) and result (in target) entities - an optional file name (for file output) Such a ContextModif is considered to be applied on all transferred entities (no filter active)
+		%feature("autodoc", "	* Prepares a ContextModif with these informations : - the graph established from original model (target passed directly to Modifier) - the CopyTool which detains the CopyControl, which maps starting (in original) and result (in target) entities - an optional file name (for file output) //! Such a ContextModif is considered to be applied on all transferred entities (no filter active)
 
 	:param graph:
 	:type graph: Interface_Graph &
@@ -430,7 +430,7 @@ class IFSelect_ContextModif {
 ") IFSelect_ContextModif;
 		 IFSelect_ContextModif (const Interface_Graph & graph,const Interface_CopyTool & TC,const char * filename = "");
 		%feature("compactdefaultargs") IFSelect_ContextModif;
-		%feature("autodoc", "	* Prepares a ContextModif with these informations : - the graph established from original model (target passed directly to Modifier) - an optional file name (for file output) Here, no CopyControl, hence all entities are considered equal as starting and result Such a ContextModif is considered to be applied on all transferred entities (no filter active)
+		%feature("autodoc", "	* Prepares a ContextModif with these informations : - the graph established from original model (target passed directly to Modifier) - an optional file name (for file output) Here, no CopyControl, hence all entities are considered equal as starting and result //! Such a ContextModif is considered to be applied on all transferred entities (no filter active)
 
 	:param graph:
 	:type graph: Interface_Graph &
@@ -1535,7 +1535,7 @@ class IFSelect_Editor : public MMgt_TShared {
 ") Load;
 		virtual Standard_Boolean Load (const Handle_IFSelect_EditForm & form,const Handle_Standard_Transient & ent,const Handle_Interface_InterfaceModel & model);
 		%feature("compactdefaultargs") Update;
-		%feature("autodoc", "	* Updates the EditForm when a parameter is modified I.E. default does nothing, can be redefined, as follows : Returns True when done (even if does nothing), False in case of refuse (for instance, if the new value is not suitable) <num> is the rank of the parameter for the EDITOR itself <enforce> True means that protected parameters can be touched If a parameter commands the value of other ones, when it is modified, it is necessary to touch them by Touch from EditForm
+		%feature("autodoc", "	* Updates the EditForm when a parameter is modified I.E. default does nothing, can be redefined, as follows : Returns True when done (even if does nothing), False in case of refuse (for instance, if the new value is not suitable) <num> is the rank of the parameter for the EDITOR itself <enforce> True means that protected parameters can be touched //! If a parameter commands the value of other ones, when it is modified, it is necessary to touch them by Touch from EditForm
 
 	:param form:
 	:type form: Handle_IFSelect_EditForm &
@@ -1907,10 +1907,6 @@ class IFSelect_HSeqOfSelection : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: IFSelect_TSeqOfSelection
 ") ChangeSequence;
 		IFSelect_TSeqOfSelection & ChangeSequence ();
-		%feature("compactdefaultargs") ShallowCopy;
-		%feature("autodoc", "	:rtype: Handle_IFSelect_HSeqOfSelection
-") ShallowCopy;
-		Handle_IFSelect_HSeqOfSelection ShallowCopy ();
 };
 
 
@@ -1961,7 +1957,7 @@ class IFSelect_IntParam : public MMgt_TShared {
 ") IFSelect_IntParam;
 		 IFSelect_IntParam ();
 		%feature("compactdefaultargs") SetStaticName;
-		%feature("autodoc", "	* Commands this IntParam to be bound to a Static Hence, Value will return the value if this Static if it is set Else, Value works on the locally stored value SetValue also will set the value of the Static This works only for a present static of type integer or enum Else, it is ignored If <statname> is empty, disconnects the IntParam from Static
+		%feature("autodoc", "	* Commands this IntParam to be bound to a Static Hence, Value will return the value if this Static if it is set Else, Value works on the locally stored value SetValue also will set the value of the Static This works only for a present static of type integer or enum Else, it is ignored //! If <statname> is empty, disconnects the IntParam from Static
 
 	:param statname:
 	:type statname: char *
@@ -2070,7 +2066,7 @@ class IFSelect_ListEditor : public MMgt_TShared {
 ") ClearEdit;
 		void ClearEdit ();
 		%feature("compactdefaultargs") LoadEdited;
-		%feature("autodoc", "	* Loads a new list to replace the older one, in once ! By default (can be redefined) checks the length of the list and the value of each item according to the def Items are all recorded as Modified If no def has been given at creation time, no check is done Returns True when done, False if checks have failed ... a specialisation may also lock it by returning always False ...
+		%feature("autodoc", "	* Loads a new list to replace the older one, in once ! By default (can be redefined) checks the length of the list and the value of each item according to the def Items are all recorded as Modified //! If no def has been given at creation time, no check is done Returns True when done, False if checks have failed ... a specialisation may also lock it by returning always False ...
 
 	:param list:
 	:type list: Handle_TColStd_HSequenceOfHAsciiString &
@@ -3032,6 +3028,12 @@ class IFSelect_SequenceOfAppliedModifiers : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") IFSelect_SequenceOfAppliedModifiers;
 		 IFSelect_SequenceOfAppliedModifiers ();
+		%feature("compactdefaultargs") IFSelect_SequenceOfAppliedModifiers;
+		%feature("autodoc", "	:param Other:
+	:type Other: IFSelect_SequenceOfAppliedModifiers &
+	:rtype: None
+") IFSelect_SequenceOfAppliedModifiers;
+		 IFSelect_SequenceOfAppliedModifiers (const IFSelect_SequenceOfAppliedModifiers & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -3164,6 +3166,12 @@ class IFSelect_SequenceOfGeneralModifier : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") IFSelect_SequenceOfGeneralModifier;
 		 IFSelect_SequenceOfGeneralModifier ();
+		%feature("compactdefaultargs") IFSelect_SequenceOfGeneralModifier;
+		%feature("autodoc", "	:param Other:
+	:type Other: IFSelect_SequenceOfGeneralModifier &
+	:rtype: None
+") IFSelect_SequenceOfGeneralModifier;
+		 IFSelect_SequenceOfGeneralModifier (const IFSelect_SequenceOfGeneralModifier & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -3296,6 +3304,12 @@ class IFSelect_SequenceOfInterfaceModel : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") IFSelect_SequenceOfInterfaceModel;
 		 IFSelect_SequenceOfInterfaceModel ();
+		%feature("compactdefaultargs") IFSelect_SequenceOfInterfaceModel;
+		%feature("autodoc", "	:param Other:
+	:type Other: IFSelect_SequenceOfInterfaceModel &
+	:rtype: None
+") IFSelect_SequenceOfInterfaceModel;
+		 IFSelect_SequenceOfInterfaceModel (const IFSelect_SequenceOfInterfaceModel & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -3578,7 +3592,7 @@ class IFSelect_SessionFile {
 ") RecognizeFile;
 		Standard_Boolean RecognizeFile (const char * headerline);
 		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "	* Performs a Write Operation from a WorkSession to a File i.e. calls WriteSession then WriteEnd, and WriteFile Returned Value is : 0 for OK, -1 File could not be created,  >0 Error during Write (see WriteSession) IsDone can be called too (will return True for OK)
+		%feature("autodoc", "	* Performs a Write Operation from a WorkSession to a File i.e. calls WriteSession then WriteEnd, and WriteFile Returned Value is : 0 for OK, -1 File could not be created, >0 Error during Write (see WriteSession) IsDone can be called too (will return True for OK)
 
 	:param filename:
 	:type filename: char *
@@ -3586,7 +3600,7 @@ class IFSelect_SessionFile {
 ") Write;
 		Standard_Integer Write (const char * filename);
 		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "	* Performs a Read Operation from a file to a WorkSession i.e. calls ReadFile, then ReadSession and ReadEnd Returned Value is : 0 for OK, -1 File could not be opened,  >0 Error during Read (see WriteSession) IsDone can be called too (will return True for OK)
+		%feature("autodoc", "	* Performs a Read Operation from a file to a WorkSession i.e. calls ReadFile, then ReadSession and ReadEnd Returned Value is : 0 for OK, -1 File could not be opened, >0 Error during Read (see WriteSession) IsDone can be called too (will return True for OK)
 
 	:param filename:
 	:type filename: char *
@@ -4034,7 +4048,7 @@ class IFSelect_ShareOut : public MMgt_TShared {
 ") Extension;
 		Handle_TCollection_HAsciiString Extension ();
 		%feature("compactdefaultargs") FileName;
-		%feature("autodoc", "	* Computes the complete file name for a Packet of a Dispatch, given Dispatch Number (Rank), Packet Number, and Count of Packets generated by this Dispatch (0 if unknown) File Name is made of following strings, concatenated : General Prefix, Root Name for Dispatch, Packet Suffix, and General Extension. If no Root Name is specified for a Dispatch, DefaultRootName is considered (and pnum is not used, but <thenbdefs> is incremented and used Error if no Root is defined for this <idnum>
+		%feature("autodoc", "	* Computes the complete file name for a Packet of a Dispatch, given Dispatch Number (Rank), Packet Number, and Count of Packets generated by this Dispatch (0 if unknown) //! File Name is made of following strings, concatenated : General Prefix, Root Name for Dispatch, Packet Suffix, and General Extension. If no Root Name is specified for a Dispatch, DefaultRootName is considered (and pnum is not used, but <thenbdefs> is incremented and used Error if no Root is defined for this <idnum>
 
 	:param dnum:
 	:type dnum: int
@@ -4167,7 +4181,7 @@ class IFSelect_ShareOutResult {
 ") NbPackets;
 		Standard_Integer NbPackets ();
 		%feature("compactdefaultargs") Prepare;
-		%feature("autodoc", "	* Prepares the iteration on the packets This method is called by Evaluate, but can be called anytime The iteration consists in taking each Dispatch of the ShareOut beginning by the first one, compute its packets, then iterate on these packets. Once all these packets are iterated, the iteration passes to the next Dispatch, or stops. For a creation from a unique Dispatch, same but with only this Dispatch. Each packet can be listed, or really transferred (producing a derived Model, from which a file can be generated) Prepare sets the iteration to the first Dispatch, first Packet
+		%feature("autodoc", "	* Prepares the iteration on the packets This method is called by Evaluate, but can be called anytime The iteration consists in taking each Dispatch of the ShareOut beginning by the first one, compute its packets, then iterate on these packets. Once all these packets are iterated, the iteration passes to the next Dispatch, or stops. For a creation from a unique Dispatch, same but with only this Dispatch. Each packet can be listed, or really transferred (producing a derived Model, from which a file can be generated) //! Prepare sets the iteration to the first Dispatch, first Packet
 
 	:rtype: None
 ") Prepare;
@@ -4401,7 +4415,7 @@ class IFSelect_SignatureList : public MMgt_TShared {
 ") Clear;
 		virtual void Clear ();
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* Adds an entity with its signature, i.e. : - counts an item more for <sign> - if record-list status is set, records the entity Accepts a null entity (the signature is then for the global model). But if the string is empty, counts a Null item. If SignOnly Mode is set, this work is replaced by just setting LastValue
+		%feature("autodoc", "	* Adds an entity with its signature, i.e. : - counts an item more for <sign> - if record-list status is set, records the entity Accepts a null entity (the signature is then for the global model). But if the string is empty, counts a Null item. //! If SignOnly Mode is set, this work is replaced by just setting LastValue
 
 	:param ent:
 	:type ent: Handle_Standard_Transient &
@@ -4555,6 +4569,12 @@ class IFSelect_TSeqOfDispatch : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") IFSelect_TSeqOfDispatch;
 		 IFSelect_TSeqOfDispatch ();
+		%feature("compactdefaultargs") IFSelect_TSeqOfDispatch;
+		%feature("autodoc", "	:param Other:
+	:type Other: IFSelect_TSeqOfDispatch &
+	:rtype: None
+") IFSelect_TSeqOfDispatch;
+		 IFSelect_TSeqOfDispatch (const IFSelect_TSeqOfDispatch & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -4687,6 +4707,12 @@ class IFSelect_TSeqOfSelection : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") IFSelect_TSeqOfSelection;
 		 IFSelect_TSeqOfSelection ();
+		%feature("compactdefaultargs") IFSelect_TSeqOfSelection;
+		%feature("autodoc", "	:param Other:
+	:type Other: IFSelect_TSeqOfSelection &
+	:rtype: None
+") IFSelect_TSeqOfSelection;
+		 IFSelect_TSeqOfSelection (const IFSelect_TSeqOfSelection & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -4816,7 +4842,7 @@ class IFSelect_TSeqOfSelection : public TCollection_BaseSequence {
 class IFSelect_Transformer : public MMgt_TShared {
 	public:
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Performs a Transformation (defined by each sub-class) :  <G> gives the input data (especially the starting model) and can be used for queries (by Selections, etc...)  <protocol> allows to work with General Services as necessary (it applies to input data) If the change corresponds to a conversion to a new protocol, see also the method ChangeProtocol  <checks> stores produced checks messages if any  <newmod> gives the result of the transformation :  - if it is Null (i.e. has not been affected), the transformation has been made on the spot, it is assumed to cause no change to the graph of dependances  - if it equates the starting Model, it has been transformed on the spot (possibiliy some entities were replaced inside it)  - if it is new, it corresponds to a new data set which replaces the starting one <self> is mutable to allow results for ChangeProtocol to be memorized if needed, and to store informations useful for the method Updated Returns True if Done, False if an Error occured : in this case, if a new data set has been produced, the transformation is ignored, else data may be corrupted.
+		%feature("autodoc", "	* Performs a Transformation (defined by each sub-class) : <G> gives the input data (especially the starting model) and can be used for queries (by Selections, etc...) <protocol> allows to work with General Services as necessary (it applies to input data) If the change corresponds to a conversion to a new protocol, see also the method ChangeProtocol <checks> stores produced checks messages if any <newmod> gives the result of the transformation : - if it is Null (i.e. has not been affected), the transformation has been made on the spot, it is assumed to cause no change to the graph of dependances - if it equates the starting Model, it has been transformed on the spot (possibiliy some entities were replaced inside it) - if it is new, it corresponds to a new data set which replaces the starting one //! <self> is mutable to allow results for ChangeProtocol to be memorized if needed, and to store informations useful for the method Updated //! Returns True if Done, False if an Error occured : in this case, if a new data set has been produced, the transformation is ignored, else data may be corrupted.
 
 	:param G:
 	:type G: Interface_Graph &
@@ -4830,7 +4856,7 @@ class IFSelect_Transformer : public MMgt_TShared {
 ") Perform;
 		virtual Standard_Boolean Perform (const Interface_Graph & G,const Handle_Interface_Protocol & protocol,Interface_CheckIterator & checks,Handle_Interface_InterfaceModel & newmod);
 		%feature("compactdefaultargs") ChangeProtocol;
-		%feature("autodoc", "	* This methods allows to declare that the Protocol applied to the new Model has changed. It applies to the last call to Perform. Returns True if the Protocol has changed, False else. The provided default keeps the starting Protocol. This method should be redefined as required by the effect of Perform.
+		%feature("autodoc", "	* This methods allows to declare that the Protocol applied to the new Model has changed. It applies to the last call to Perform. //! Returns True if the Protocol has changed, False else. The provided default keeps the starting Protocol. This method should be redefined as required by the effect of Perform.
 
 	:param newproto:
 	:type newproto: Handle_Interface_Protocol &
@@ -4909,7 +4935,7 @@ class IFSelect_WorkLibrary : public Standard_Transient {
 ") ReadFile;
 		virtual Standard_Integer ReadFile (const char * name,Handle_Interface_InterfaceModel & model,const Handle_Interface_Protocol & protocol);
 		%feature("compactdefaultargs") WriteFile;
-		%feature("autodoc", "	* Gives the way to Write a File from a Model. <ctx> contains all necessary informations : the model, the protocol, the file name, and the list of File Modifiers to be applied, also with restricted list of selected entities for each one, if required. In return, it brings the produced check-list The WorkLibrary has to query <applied> to get then run the ContextWrite by looping like this (example) : for (numap = 1; numap <= ctx.NbModifiers(); numap ++) {  ctx.SetModifier (numap);  cast ctx.FileModifier() to specific type -> variable filemod  if (!filemod.IsNull()) filemod->Perform (ctx,writer);  filemod then works with ctx. It can, either act on the  model itself (for instance on its header), or iterate  on selected entities (Start/Next/More/Value)  it can call AddFail or AddWarning, as necessary }
+		%feature("autodoc", "	* Gives the way to Write a File from a Model. <ctx> contains all necessary informations : the model, the protocol, the file name, and the list of File Modifiers to be applied, also with restricted list of selected entities for each one, if required. In return, it brings the produced check-list //! The WorkLibrary has to query <applied> to get then run the ContextWrite by looping like this (example) : for (numap = 1; numap <= ctx.NbModifiers(); numap ++) { ctx.SetModifier (numap); cast ctx.FileModifier() to specific type -> variable filemod if (!filemod.IsNull()) filemod->Perform (ctx,writer); filemod then works with ctx. It can, either act on the model itself (for instance on its header), or iterate on selected entities (Start/Next/More/Value) it can call AddFail or AddWarning, as necessary }
 
 	:param ctx:
 	:type ctx: IFSelect_ContextWrite &
@@ -5184,7 +5210,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 ") StartingNumber;
 		Standard_Integer StartingNumber (const Handle_Standard_Transient & ent);
 		%feature("compactdefaultargs") NumberFromLabel;
-		%feature("autodoc", "	* From a given label in Model, returns the corresponding number Starts from first entity by Default, may start after a given number : this number may be given negative, its absolute value is then considered. Hence a loop on NumberFromLabel may be programmed (stop test is : returned value positive or null) Returns 0 if not found, < 0 if more than one found (first found in negative). If <val> just gives an integer value, returns it
+		%feature("autodoc", "	* From a given label in Model, returns the corresponding number Starts from first entity by Default, may start after a given number : this number may be given negative, its absolute value is then considered. Hence a loop on NumberFromLabel may be programmed (stop test is : returned value positive or null) //! Returns 0 if not found, < 0 if more than one found (first found in negative). If <val> just gives an integer value, returns it
 
 	:param val:
 	:type val: char *
@@ -5292,7 +5318,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 ") ComputeCheck;
 		Standard_Boolean ComputeCheck (const Standard_Boolean enforce = Standard_False);
 		%feature("compactdefaultargs") ModelCheckList;
-		%feature("autodoc", "	* Returns the Check List for the Model currently loaded : <complete> = True : complete (syntactic & semantic messages),  computed if not yet done <complete> = False : only syntactic (check file form)
+		%feature("autodoc", "	* Returns the Check List for the Model currently loaded : <complete> = True : complete (syntactic & semantic messages), computed if not yet done <complete> = False : only syntactic (check file form)
 
 	:param complete: default value is Standard_True
 	:type complete: bool
@@ -5472,7 +5498,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 ") ItemNamesForLabel;
 		Handle_TColStd_HSequenceOfHAsciiString ItemNamesForLabel (const char * label);
 		%feature("compactdefaultargs") NextIdentForLabel;
-		%feature("autodoc", "	* For query by Label with possible iterations Searches the Ident of which Item has a Label which matches a given one, the search starts from an initial Ident. Returns the first found Ident which follows <id>, or ZERO The search must start with <id> = 0, it returns the next Ident which matches. To iterate, call again this method which this returned value as <id>. Once an Ident has been returned, the Item can be obtained by the method Item <mode> precises the required matching mode : - 0 (Default) : <label> must match exactly with the Item Label - 1 : <label> must match the exact beginning (the end is free) - 2 : <label> must be at least once wherever in the Item Label - other values are ignored
+		%feature("autodoc", "	* For query by Label with possible iterations Searches the Ident of which Item has a Label which matches a given one, the search starts from an initial Ident. Returns the first found Ident which follows <id>, or ZERO //! The search must start with <id> = 0, it returns the next Ident which matches. To iterate, call again this method which this returned value as <id>. Once an Ident has been returned, the Item can be obtained by the method Item //! <mode> precises the required matching mode : - 0 (Default) : <label> must match exactly with the Item Label - 1 : <label> must match the exact beginning (the end is free) - 2 : <label> must be at least once wherever in the Item Label - other values are ignored
 
 	:param label:
 	:type label: char *
@@ -5612,7 +5638,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 ") SelectionResult;
 		Handle_TColStd_HSequenceOfTransient SelectionResult (const Handle_IFSelect_Selection & sel);
 		%feature("compactdefaultargs") SelectionResultFromList;
-		%feature("autodoc", "	* Returns the result of a Selection, by forcing its input with a given list <list> (unless <list> is Null).  RULES : <list> applies only for a SelectDeduct kind Selection : its Input is considered : if it is a SelectDeduct kind  Selection, its Input is considered, etc... until an Input is not a Deduct/Extract : its result is replaced by <list> and all the chain of deductions is applied
+		%feature("autodoc", "	* Returns the result of a Selection, by forcing its input with a given list <list> (unless <list> is Null). RULES : <list> applies only for a SelectDeduct kind Selection : its Input is considered : if it is a SelectDeduct kind Selection, its Input is considered, etc... until an Input is not a Deduct/Extract : its result is replaced by <list> and all the chain of deductions is applied
 
 	:param sel:
 	:type sel: Handle_IFSelect_Selection &
@@ -5814,7 +5840,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 ") Transformer;
 		Handle_IFSelect_Transformer Transformer (const Standard_Integer id);
 		%feature("compactdefaultargs") RunTransformer;
-		%feature("autodoc", "	* Runs a Transformer on starting Model, which can then be edited or replaced by a new one. The Protocol can also be changed. Fills LastRunCheckList Returned status is 0 if nothing done (<transf> or model undefined), positive if OK, negative else : 0 : Nothing done 1 : OK, edition on the spot with no change to the graph of dependances (purely local) 2 : OK, model edited on the spot (graph recomputed, may  have changed), protocol unchanged 3 : OK, new model produced, same protocol 4 : OK, model edited on the spot (graph recomputed), but protocol has changed 5 : OK, new model produced, protocol has changed -1 : Error on the spot (slight changes), data may be corrupted (remark : corruption should not be profound) -2 : Error on edition the spot, data may be corrupted (checking them is recommanded) -3 : Error with a new data set, transformation ignored -4 : OK as 4, but graph of dependances count not be recomputed (the former one is kept) : check the protocol
+		%feature("autodoc", "	* Runs a Transformer on starting Model, which can then be edited or replaced by a new one. The Protocol can also be changed. Fills LastRunCheckList //! Returned status is 0 if nothing done (<transf> or model undefined), positive if OK, negative else : 0 : Nothing done 1 : OK, edition on the spot with no change to the graph of dependances (purely local) 2 : OK, model edited on the spot (graph recomputed, may have changed), protocol unchanged 3 : OK, new model produced, same protocol 4 : OK, model edited on the spot (graph recomputed), but protocol has changed 5 : OK, new model produced, protocol has changed -1 : Error on the spot (slight changes), data may be corrupted (remark : corruption should not be profound) -2 : Error on edition the spot, data may be corrupted (checking them is recommanded) -3 : Error with a new data set, transformation ignored -4 : OK as 4, but graph of dependances count not be recomputed (the former one is kept) : check the protocol
 
 	:param transf:
 	:type transf: Handle_IFSelect_Transformer &
@@ -5822,7 +5848,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 ") RunTransformer;
 		Standard_Integer RunTransformer (const Handle_IFSelect_Transformer & transf);
 		%feature("compactdefaultargs") RunModifier;
-		%feature("autodoc", "	* Runs a Modifier on Starting Model. It can modify entities, or add new ones. But the Model or the Protocol is unchanged. The Modifier is applied on each entity of the Model. See also RunModifierSelected Fills LastRunCheckList <copy> : if True, a new data set is produced which brings the modifications (Model + its Entities) if False, data are modified on the spot It works through a TransformStandard defined with <modif> Returned status as RunTransformer : 0 nothing done, >0 OK, <0 problem, but only between -3 and 3 (protocol unchanged) Remark : <copy> True will give <effect> = 3 or -3
+		%feature("autodoc", "	* Runs a Modifier on Starting Model. It can modify entities, or add new ones. But the Model or the Protocol is unchanged. The Modifier is applied on each entity of the Model. See also RunModifierSelected Fills LastRunCheckList //! <copy> : if True, a new data set is produced which brings the modifications (Model + its Entities) if False, data are modified on the spot //! It works through a TransformStandard defined with <modif> Returned status as RunTransformer : 0 nothing done, >0 OK, <0 problem, but only between -3 and 3 (protocol unchanged) Remark : <copy> True will give <effect> = 3 or -3
 
 	:param modif:
 	:type modif: Handle_IFSelect_Modifier &
@@ -5988,7 +6014,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 ") SentFiles;
 		Handle_TColStd_HSequenceOfHAsciiString SentFiles ();
 		%feature("compactdefaultargs") SendSplit;
-		%feature("autodoc", "	* Performs creation of derived files from the input Model Takes its data (sub-models and names), from result EvaluateFile if active, else by dynamic Evaluation (not stored) After SendSplit, result of EvaluateFile is Cleared Fills LastRunCheckList Works with the WorkLibrary which acts on specific type of Model and can work with File Modifiers (managed by the Model Copier) and a ModelCopier, which can work with Model Modifiers Returns False if, either WorkLibrary has failed on at least one sub-file, or the Work Session is badly conditionned (no Model defined, or FileNaming not in phase with ShareOut)
+		%feature("autodoc", "	* Performs creation of derived files from the input Model Takes its data (sub-models and names), from result EvaluateFile if active, else by dynamic Evaluation (not stored) After SendSplit, result of EvaluateFile is Cleared Fills LastRunCheckList //! Works with the WorkLibrary which acts on specific type of Model and can work with File Modifiers (managed by the Model Copier) and a ModelCopier, which can work with Model Modifiers Returns False if, either WorkLibrary has failed on at least one sub-file, or the Work Session is badly conditionned (no Model defined, or FileNaming not in phase with ShareOut)
 
 	:rtype: bool
 ") SendSplit;
@@ -6014,7 +6040,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 ") MaxSendingCount;
 		Standard_Integer MaxSendingCount ();
 		%feature("compactdefaultargs") SetRemaining;
-		%feature("autodoc", "	* Processes Remaining data (after having sent files), mode : Forget : forget remaining info (i.e. clear all 'Sent' status) Compute : compute and keep remaining (does nothing if :  remaining is empty or if no files has been sent) Display : display entities recorded as remaining Undo : restore former state of data (after Remaining(1) ) Returns True if OK, False else (i.e. mode = 2 and Remaining List is either empty or takes all the entities, or mode = 3 and no former computation of remaining data was done)
+		%feature("autodoc", "	* Processes Remaining data (after having sent files), mode : Forget : forget remaining info (i.e. clear all 'Sent' status) Compute : compute and keep remaining (does nothing if : remaining is empty or if no files has been sent) Display : display entities recorded as remaining Undo : restore former state of data (after Remaining(1) ) Returns True if OK, False else (i.e. mode = 2 and Remaining List is either empty or takes all the entities, or mode = 3 and no former computation of remaining data was done)
 
 	:param mode:
 	:type mode: IFSelect_RemainMode
@@ -6022,7 +6048,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 ") SetRemaining;
 		Standard_Boolean SetRemaining (const IFSelect_RemainMode mode);
 		%feature("compactdefaultargs") SendAll;
-		%feature("autodoc", "	* Sends the starting Model into one file, without splitting, managing remaining data or anything else. <computegraph> true commands the Graph to be recomputed before sending : required when a Model is filled in several steps The Model and File Modifiers recorded to be applied on sending files are. Returns a status of execution : Done if OK, Void if no data available, Error if errors occured (work library is not defined), errors during translation Fail if exception during translation is raised Stop if no disk space or disk, file is write protected Fills LastRunCheckList
+		%feature("autodoc", "	* Sends the starting Model into one file, without splitting, managing remaining data or anything else. <computegraph> true commands the Graph to be recomputed before sending : required when a Model is filled in several steps //! The Model and File Modifiers recorded to be applied on sending files are. Returns a status of execution : Done if OK, Void if no data available, Error if errors occured (work library is not defined), errors during translation Fail if exception during translation is raised Stop if no disk space or disk, file is write protected Fills LastRunCheckList
 
 	:param filename:
 	:type filename: char *
@@ -6032,7 +6058,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 ") SendAll;
 		IFSelect_ReturnStatus SendAll (const char * filename,const Standard_Boolean computegraph = Standard_False);
 		%feature("compactdefaultargs") SendSelected;
-		%feature("autodoc", "	* Sends a part of the starting Model into one file, without splitting. But remaining data are managed. <computegraph> true commands the Graph to be recomputed before sending : required when a Model is filled in several steps The Model and File Modifiers recorded to be applied on sending files are. Returns a status : Done if OK, Fail if error during send,  Error : WorkLibrary not defined, Void : selection list empty Fills LastRunCheckList
+		%feature("autodoc", "	* Sends a part of the starting Model into one file, without splitting. But remaining data are managed. <computegraph> true commands the Graph to be recomputed before sending : required when a Model is filled in several steps //! The Model and File Modifiers recorded to be applied on sending files are. Returns a status : Done if OK, Fail if error during send, Error : WorkLibrary not defined, Void : selection list empty Fills LastRunCheckList
 
 	:param filename:
 	:type filename: char *
@@ -6150,7 +6176,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 ") NewSelectPointed;
 		Handle_IFSelect_Selection NewSelectPointed (const Handle_TColStd_HSequenceOfTransient & list,const char * name);
 		%feature("compactdefaultargs") SetSelectPointed;
-		%feature("autodoc", "	* Changes the content of a Selection of type SelectPointed According <mode> : 0 set <list> as new content (clear former) 1 : adds <list> to actual content  -1 : removes <list> from actual content Returns True if done, False if <sel> is not a SelectPointed
+		%feature("autodoc", "	* Changes the content of a Selection of type SelectPointed According <mode> : 0 set <list> as new content (clear former) 1 : adds <list> to actual content -1 : removes <list> from actual content Returns True if done, False if <sel> is not a SelectPointed
 
 	:param sel:
 	:type sel: Handle_IFSelect_Selection &
@@ -6188,7 +6214,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 ") GiveList;
 		Handle_TColStd_HSequenceOfTransient GiveList (const char * first,const char * second = "");
 		%feature("compactdefaultargs") GiveListFromList;
-		%feature("autodoc", "	* Computes a List of entities from the model as follows <first> beeing a Selection or a combination of Selections, <ent> beeing an entity or a list of entities (as a HSequenceOfTransient) : the standard result of this selection applied to this list if <ent> is Null, the standard definition of the selection is used (which contains a default input selection) if <selname> is erroneous, a null handle is returned REMARK : selname is processed as <first second> of preceeding GiveList
+		%feature("autodoc", "	* Computes a List of entities from the model as follows <first> beeing a Selection or a combination of Selections, <ent> beeing an entity or a list of entities (as a HSequenceOfTransient) : the standard result of this selection applied to this list if <ent> is Null, the standard definition of the selection is used (which contains a default input selection) if <selname> is erroneous, a null handle is returned //! REMARK : selname is processed as <first second> of preceeding GiveList
 
 	:param selname:
 	:type selname: char *
@@ -6218,7 +6244,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 ") QueryCheckList;
 		void QueryCheckList (const Interface_CheckIterator & chl);
 		%feature("compactdefaultargs") QueryCheckStatus;
-		%feature("autodoc", "	* Determines check status for an entity regarding last call to QueryCheckList : -1 : <ent> unknown in the model, ignored  0 : no check at all, immediate or inherited thru Graph  1 : immediate warning (no fail), no inherited check  2 : immediate fail, no inherited check +10 : idem but some inherited warning (no fail) +20 : idem but some inherited fail
+		%feature("autodoc", "	* Determines check status for an entity regarding last call to QueryCheckList : -1 : <ent> unknown in the model, ignored 0 : no check at all, immediate or inherited thru Graph 1 : immediate warning (no fail), no inherited check 2 : immediate fail, no inherited check +10 : idem but some inherited warning (no fail) +20 : idem but some inherited fail
 
 	:param ent:
 	:type ent: Handle_Standard_Transient &
@@ -6236,7 +6262,7 @@ class IFSelect_WorkSession : public MMgt_TShared {
 ") QueryParent;
 		Standard_Integer QueryParent (const Handle_Standard_Transient & entdad,const Handle_Standard_Transient & entson);
 		%feature("compactdefaultargs") SetParams;
-		%feature("autodoc", "	* Sets a list of Parameters, i.e. TypedValue, to be handled through an Editor The two lists are parallel, if <params> is longer than <uses>, surnumeral parameters are for general use EditForms are created to handle these parameters (list, edit) on the basis of a ParamEditor xst-params-edit A use number dispatches the parameter to a given EditForm EditForms are defined as follows Name Use Means xst-params all All Parameters (complete list) xst-params-general 1 Generals xst-params-load 2 LoadFile (no Transfer) xst-params-send 3 SendFile (Write, no Transfer) xst-params-split 4 Split xst-param-read 5 Transfer on Reading xst-param-write 6 Transfer on Writing
+		%feature("autodoc", "	* Sets a list of Parameters, i.e. TypedValue, to be handled through an Editor The two lists are parallel, if <params> is longer than <uses>, surnumeral parameters are for general use //! EditForms are created to handle these parameters (list, edit) on the basis of a ParamEditor xst-params-edit //! A use number dispatches the parameter to a given EditForm EditForms are defined as follows Name Use Means xst-params all All Parameters (complete list) xst-params-general 1 Generals xst-params-load 2 LoadFile (no Transfer) xst-params-send 3 SendFile (Write, no Transfer) xst-params-split 4 Split xst-param-read 5 Transfer on Reading xst-param-write 6 Transfer on Writing
 
 	:param params:
 	:type params: TColStd_SequenceOfTransient &
@@ -7169,7 +7195,7 @@ class Handle_IFSelect_DispPerSignature : public Handle_IFSelect_Dispatch {
 class IFSelect_Modifier : public IFSelect_GeneralModifier {
 	public:
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* This deferred method defines the action specific to each class of Modifier. It is called by a ModelCopier, once the Model generated and filled. ModelCopier has already checked the criteria (Dispatch, Model Rank, Selection) before calling it. <ctx> detains informations about original data and selection. The result of copying, on which modifications are to be done, is <target>. <TC> allows to run additional copies as required In case of Error, use methods CCheck from the ContextModif to aknowledge an entity Check or a Global Check with messages
+		%feature("autodoc", "	* This deferred method defines the action specific to each class of Modifier. It is called by a ModelCopier, once the Model generated and filled. ModelCopier has already checked the criteria (Dispatch, Model Rank, Selection) before calling it. //! <ctx> detains informations about original data and selection. The result of copying, on which modifications are to be done, is <target>. <TC> allows to run additional copies as required //! In case of Error, use methods CCheck from the ContextModif to aknowledge an entity Check or a Global Check with messages
 
 	:param ctx:
 	:type ctx: IFSelect_ContextModif &
@@ -7610,13 +7636,13 @@ class IFSelect_SelectDeduct : public IFSelect_Selection {
 ") HasAlternate;
 		Standard_Boolean HasAlternate ();
 		%feature("compactdefaultargs") Alternate;
-		%feature("autodoc", "	* Returns the Alternate Definition It is returned modifiable, hence an already defined SelectPointed can be used But if it was not yet defined, it is created the first time It is exploited by InputResult
+		%feature("autodoc", "	* Returns the Alternate Definition It is returned modifiable, hence an already defined SelectPointed can be used But if it was not yet defined, it is created the first time //! It is exploited by InputResult
 
 	:rtype: Handle_IFSelect_SelectPointed
 ") Alternate;
 		Handle_IFSelect_SelectPointed Alternate ();
 		%feature("compactdefaultargs") InputResult;
-		%feature("autodoc", "	* Returns the Result determined by Input Selection, as Unique if Input Selection is not defined, returns an empty list. If Alternate is set, InputResult takes its definition instead of calling the Input Selection, then clears it
+		%feature("autodoc", "	* Returns the Result determined by Input Selection, as Unique if Input Selection is not defined, returns an empty list. //! If Alternate is set, InputResult takes its definition instead of calling the Input Selection, then clears it
 
 	:param G:
 	:type G: Interface_Graph &
@@ -7825,7 +7851,7 @@ class IFSelect_SessionPilot : public IFSelect_Activator {
 ") Perform;
 		IFSelect_ReturnStatus Perform ();
 		%feature("compactdefaultargs") ExecuteAlias;
-		%feature("autodoc", "	* Executes the Commands, except that the command name (word 0) is aliased. The rest of the command line is unchanged If <alias> is empty, Executes with no change Error status is returned if the alias is unknown as command
+		%feature("autodoc", "	* Executes the Commands, except that the command name (word 0) is aliased. The rest of the command line is unchanged If <alias> is empty, Executes with no change //! Error status is returned if the alias is unknown as command
 
 	:param aliasname:
 	:type aliasname: TCollection_AsciiString &
@@ -8027,7 +8053,7 @@ class IFSelect_SignCounter : public IFSelect_SignatureList {
 ") AddEntity;
 		virtual Standard_Boolean AddEntity (const Handle_Standard_Transient & ent,const Handle_Interface_InterfaceModel & model);
 		%feature("compactdefaultargs") AddSign;
-		%feature("autodoc", "	* Adds an entity (already filtered by Map) with its signature. This signature can be computed with the containing model. Its value is provided by the object Signature given at start, if no Signature is defined, it does nothing. Can be redefined (in this case, see also Sign)
+		%feature("autodoc", "	* Adds an entity (already filtered by Map) with its signature. This signature can be computed with the containing model. Its value is provided by the object Signature given at start, if no Signature is defined, it does nothing. //! Can be redefined (in this case, see also Sign)
 
 	:param ent:
 	:type ent: Handle_Standard_Transient &
@@ -8103,7 +8129,7 @@ class IFSelect_SignCounter : public IFSelect_SignatureList {
 ") SelMode;
 		Standard_Integer SelMode ();
 		%feature("compactdefaultargs") ComputeSelected;
-		%feature("autodoc", "	* Computes from the selection result, if selection is active (mode 2). If selection is not defined (mode 0) or is inhibited (mode 1) does nothing. Returns True if computation is done (or optimised), False else This method is called by ComputeCounter from WorkSession If <forced> is True, recomputes systematically Else (D), if the counter was not cleared and if the former computed result started from the same total size of Graph and same count of selected entities : computation is not redone unless <forced> is given as True
+		%feature("autodoc", "	* Computes from the selection result, if selection is active (mode 2). If selection is not defined (mode 0) or is inhibited (mode 1) does nothing. Returns True if computation is done (or optimised), False else This method is called by ComputeCounter from WorkSession //! If <forced> is True, recomputes systematically Else (D), if the counter was not cleared and if the former computed result started from the same total size of Graph and same count of selected entities : computation is not redone unless <forced> is given as True
 
 	:param G:
 	:type G: Interface_Graph &
@@ -8113,7 +8139,7 @@ class IFSelect_SignCounter : public IFSelect_SignatureList {
 ") ComputeSelected;
 		Standard_Boolean ComputeSelected (const Interface_Graph & G,const Standard_Boolean forced = Standard_False);
 		%feature("compactdefaultargs") Sign;
-		%feature("autodoc", "	* Determines and returns the value of the signature for an entity as an HAsciiString. This method works exactly as AddSign, which is optimized Can be redefined, accorded with AddSign
+		%feature("autodoc", "	* Determines and returns the value of the signature for an entity as an HAsciiString. This method works exactly as AddSign, which is optimized //! Can be redefined, accorded with AddSign
 
 	:param ent:
 	:type ent: Handle_Standard_Transient &
@@ -9142,7 +9168,7 @@ class IFSelect_SelectExplore : public IFSelect_SelectDeduct {
 ") RootResult;
 		Interface_EntityIterator RootResult (const Interface_Graph & G);
 		%feature("compactdefaultargs") Explore;
-		%feature("autodoc", "	* Analyses and, if required, Explores an entity, as follows : The explored list starts as empty, it has to be filled by this method. If it returns False, <ent> is rejected for result (this is to  be used only as safety) If it returns True and <explored> remains empty, <ent> is taken itself for result, not explored If it returns True and <explored> is not empty, the content of this list is considered : If maximum level is attained, it is taken for result Else (or no max), each of its entity will be itself explored
+		%feature("autodoc", "	* Analyses and, if required, Explores an entity, as follows : The explored list starts as empty, it has to be filled by this method. If it returns False, <ent> is rejected for result (this is to be used only as safety) If it returns True and <explored> remains empty, <ent> is taken itself for result, not explored If it returns True and <explored> is not empty, the content of this list is considered : If maximum level is attained, it is taken for result Else (or no max), each of its entity will be itself explored
 
 	:param level:
 	:type level: int
@@ -9535,7 +9561,7 @@ class IFSelect_SelectPointed : public IFSelect_SelectBase {
 ") SetEntity;
 		void SetEntity (const Handle_Standard_Transient & item);
 		%feature("compactdefaultargs") SetList;
-		%feature("autodoc", "	* Sets a given list to define the list of selected items <list> can be empty or null : in this case, the list is said as being set, but it is empty To use it as an alternate input, one shot : - SetList or SetEntity to define the input list - RootResult to get it - then Clear to drop it
+		%feature("autodoc", "	* Sets a given list to define the list of selected items <list> can be empty or null : in this case, the list is said as being set, but it is empty //! To use it as an alternate input, one shot : - SetList or SetEntity to define the input list - RootResult to get it - then Clear to drop it
 
 	:param list:
 	:type list: Handle_TColStd_HSequenceOfTransient &
@@ -10187,7 +10213,7 @@ class IFSelect_SelectFlag : public IFSelect_SelectExtract {
 ") FlagName;
 		char * FlagName ();
 		%feature("compactdefaultargs") RootResult;
-		%feature("autodoc", "	* Returns the list of selected entities. It is redefined to work on the graph itself (not queried by sort) An entity is selected if its flag is True on Direct mode, False on Reversed mode If flag does not exist for the given name, returns an empty result, whatever the Direct/Reversed sense
+		%feature("autodoc", "	* Returns the list of selected entities. It is redefined to work on the graph itself (not queried by sort) //! An entity is selected if its flag is True on Direct mode, False on Reversed mode //! If flag does not exist for the given name, returns an empty result, whatever the Direct/Reversed sense
 
 	:param G:
 	:type G: Interface_Graph &
@@ -10632,7 +10658,7 @@ class IFSelect_SelectSent : public IFSelect_SelectExtract {
 ") AtLeast;
 		Standard_Boolean AtLeast ();
 		%feature("compactdefaultargs") RootResult;
-		%feature("autodoc", "	* Returns the list of selected entities. It is redefined to work on the graph itself (not queried by sort) An entity is selected if its count complies to the query in Direct Mode, rejected in Reversed Mode Query works on the sending count recorded as status in Graph
+		%feature("autodoc", "	* Returns the list of selected entities. It is redefined to work on the graph itself (not queried by sort) //! An entity is selected if its count complies to the query in Direct Mode, rejected in Reversed Mode //! Query works on the sending count recorded as status in Graph
 
 	:param G:
 	:type G: Interface_Graph &

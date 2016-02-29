@@ -201,7 +201,7 @@ class Convert_CompBezierCurvesToBSplineCurve {
 class Convert_CompPolynomialToPoles {
 	public:
 		%feature("compactdefaultargs") Convert_CompPolynomialToPoles;
-		%feature("autodoc", "	* Warning! Continuity can be at MOST the maximum degree of the polynomial functions TrueIntervals : this is the true parameterisation for the composite curve that is : the curve has myContinuity if the nth curve is parameterized between myTrueIntervals(n) and myTrueIntervals(n+1) Coefficients have to be the implicit 'c form': Coefficients[Numcurves][MaxDegree+1][Dimension] Warning!  The NumberOfCoefficient of an polynome is his degree + 1 Example: To convert the linear function f(x) = 2*x + 1 on the  domaine [2,5] to BSpline with the bound [-1,1]. Arguments are : NumCurves = 1; Continuity = 1; Dimension = 1; MaxDegree = 1; NumCoeffPerCurve [1] = {2}; Coefficients[2] = {1, 2}; PolynomialIntervals[1,2] = {{2,5}} TrueIntervals[2] = {-1, 1}
+		%feature("autodoc", "	* Warning! Continuity can be at MOST the maximum degree of the polynomial functions TrueIntervals : this is the true parameterisation for the composite curve that is : the curve has myContinuity if the nth curve is parameterized between myTrueIntervals(n) and myTrueIntervals(n+1) //! Coefficients have to be the implicit 'c form': Coefficients[Numcurves][MaxDegree+1][Dimension] //! Warning! The NumberOfCoefficient of an polynome is his degree + 1 Example: To convert the linear function f(x) = 2*x + 1 on the domaine [2,5] to BSpline with the bound [-1,1]. Arguments are : NumCurves = 1; Continuity = 1; Dimension = 1; MaxDegree = 1; NumCoeffPerCurve [1] = {2}; Coefficients[2] = {1, 2}; PolynomialIntervals[1,2] = {{2,5}} TrueIntervals[2] = {-1, 1}
 
 	:param NumCurves:
 	:type NumCurves: int
@@ -513,7 +513,7 @@ class Convert_ElementarySurfaceToBSplineSurface {
 class Convert_GridPolynomialToPoles {
 	public:
 		%feature("compactdefaultargs") Convert_GridPolynomialToPoles;
-		%feature("autodoc", "	* To only one polynomial Surface. The Length of <PolynomialUIntervals> and <PolynomialVIntervals> have to be 2. This values defined the parametric domain of the Polynomial Equation.  Coefficients : The <Coefficients> have to be formated than an 'C array' [MaxUDegree+1] [MaxVDegree+1] [3]
+		%feature("autodoc", "	* To only one polynomial Surface. The Length of <PolynomialUIntervals> and <PolynomialVIntervals> have to be 2. This values defined the parametric domain of the Polynomial Equation. //! Coefficients : The <Coefficients> have to be formated than an 'C array' [MaxUDegree+1] [MaxVDegree+1] [3]
 
 	:param MaxUDegree:
 	:type MaxUDegree: int
@@ -531,7 +531,7 @@ class Convert_GridPolynomialToPoles {
 ") Convert_GridPolynomialToPoles;
 		 Convert_GridPolynomialToPoles (const Standard_Integer MaxUDegree,const Standard_Integer MaxVDegree,const Handle_TColStd_HArray1OfInteger & NumCoeff,const Handle_TColStd_HArray1OfReal & Coefficients,const Handle_TColStd_HArray1OfReal & PolynomialUIntervals,const Handle_TColStd_HArray1OfReal & PolynomialVIntervals);
 		%feature("compactdefaultargs") Convert_GridPolynomialToPoles;
-		%feature("autodoc", "	* To one grid of polynomial Surface. Warning! Continuity in each parametric direction can be at MOST the maximum degree of the polynomial functions. <TrueUIntervals>, <TrueVIntervals> : this is the true parameterisation for the composite surface Coefficients : The Coefficients have to be formated than an 'C array' [NbVSurfaces] [NBUSurfaces] [MaxUDegree+1] [MaxVDegree+1] [3] raises DomainError if <NumCoeffPerSurface> is not a [1, NbVSurfaces*NbUSurfaces, 1,2] array. if <Coefficients> is not a
+		%feature("autodoc", "	* To one grid of polynomial Surface. Warning! Continuity in each parametric direction can be at MOST the maximum degree of the polynomial functions. //! <TrueUIntervals>, <TrueVIntervals> : this is the true parameterisation for the composite surface //! Coefficients : The Coefficients have to be formated than an 'C array' [NbVSurfaces] [NBUSurfaces] [MaxUDegree+1] [MaxVDegree+1] [3] raises DomainError if <NumCoeffPerSurface> is not a [1, NbVSurfaces*NbUSurfaces, 1,2] array. if <Coefficients> is not a
 
 	:param NbUSurfaces:
 	:type NbUSurfaces: int
@@ -709,6 +709,12 @@ class Convert_SequenceOfArray1OfPoles : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") Convert_SequenceOfArray1OfPoles;
 		 Convert_SequenceOfArray1OfPoles ();
+		%feature("compactdefaultargs") Convert_SequenceOfArray1OfPoles;
+		%feature("autodoc", "	:param Other:
+	:type Other: Convert_SequenceOfArray1OfPoles &
+	:rtype: None
+") Convert_SequenceOfArray1OfPoles;
+		 Convert_SequenceOfArray1OfPoles (const Convert_SequenceOfArray1OfPoles & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -848,7 +854,7 @@ class Convert_CircleToBSplineCurve : public Convert_ConicToBSplineCurve {
 ") Convert_CircleToBSplineCurve;
 		 Convert_CircleToBSplineCurve (const gp_Circ2d & C,const Convert_ParameterisationType Parameterisation = Convert_TgtThetaOver2);
 		%feature("compactdefaultargs") Convert_CircleToBSplineCurve;
-		%feature("autodoc", "	* The circle C is limited between the parametric values U1, U2 in radians. U1 and U2 [0.0, 2*Pi] . The equivalent B-spline curve is oriented from U1 to U2 and has the same orientation as the circle C. Raised if U1 = U2 or U1 = U2 + 2.0 * Pi
+		%feature("autodoc", "	* The circle C is limited between the parametric values U1, U2 in radians. U1 and U2 [0.0, 2*Pi] . The equivalent B-spline curve is oriented from U1 to U2 and has the same orientation as the circle C. //! Raised if U1 = U2 or U1 = U2 + 2.0 * Pi
 
 	:param C:
 	:type C: gp_Circ2d
@@ -868,7 +874,7 @@ class Convert_CircleToBSplineCurve : public Convert_ConicToBSplineCurve {
 class Convert_ConeToBSplineSurface : public Convert_ElementarySurfaceToBSplineSurface {
 	public:
 		%feature("compactdefaultargs") Convert_ConeToBSplineSurface;
-		%feature("autodoc", "	* The equivalent B-spline surface as the same orientation as the Cone in the U and V parametric directions. Raised if U1 = U2 or U1 = U2 + 2.0 * Pi Raised if V1 = V2.
+		%feature("autodoc", "	* The equivalent B-spline surface as the same orientation as the Cone in the U and V parametric directions. //! Raised if U1 = U2 or U1 = U2 + 2.0 * Pi Raised if V1 = V2.
 
 	:param C:
 	:type C: gp_Cone
@@ -884,7 +890,7 @@ class Convert_ConeToBSplineSurface : public Convert_ElementarySurfaceToBSplineSu
 ") Convert_ConeToBSplineSurface;
 		 Convert_ConeToBSplineSurface (const gp_Cone & C,const Standard_Real U1,const Standard_Real U2,const Standard_Real V1,const Standard_Real V2);
 		%feature("compactdefaultargs") Convert_ConeToBSplineSurface;
-		%feature("autodoc", "	* The equivalent B-spline surface as the same orientation as the Cone in the U and V parametric directions. Raised if V1 = V2.
+		%feature("autodoc", "	* The equivalent B-spline surface as the same orientation as the Cone in the U and V parametric directions. //! Raised if V1 = V2.
 
 	:param C:
 	:type C: gp_Cone
@@ -902,7 +908,7 @@ class Convert_ConeToBSplineSurface : public Convert_ElementarySurfaceToBSplineSu
 class Convert_CylinderToBSplineSurface : public Convert_ElementarySurfaceToBSplineSurface {
 	public:
 		%feature("compactdefaultargs") Convert_CylinderToBSplineSurface;
-		%feature("autodoc", "	* The equivalent B-splineSurface as the same orientation as the cylinder in the U and V parametric directions. Raised if U1 = U2 or U1 = U2 + 2.0 * Pi Raised if V1 = V2.
+		%feature("autodoc", "	* The equivalent B-splineSurface as the same orientation as the cylinder in the U and V parametric directions. //! Raised if U1 = U2 or U1 = U2 + 2.0 * Pi Raised if V1 = V2.
 
 	:param Cyl:
 	:type Cyl: gp_Cylinder
@@ -918,7 +924,7 @@ class Convert_CylinderToBSplineSurface : public Convert_ElementarySurfaceToBSpli
 ") Convert_CylinderToBSplineSurface;
 		 Convert_CylinderToBSplineSurface (const gp_Cylinder & Cyl,const Standard_Real U1,const Standard_Real U2,const Standard_Real V1,const Standard_Real V2);
 		%feature("compactdefaultargs") Convert_CylinderToBSplineSurface;
-		%feature("autodoc", "	* The equivalent B-splineSurface as the same orientation as the cylinder in the U and V parametric directions. Raised if V1 = V2.
+		%feature("autodoc", "	* The equivalent B-splineSurface as the same orientation as the cylinder in the U and V parametric directions. //! Raised if V1 = V2.
 
 	:param Cyl:
 	:type Cyl: gp_Cylinder
@@ -946,7 +952,7 @@ class Convert_EllipseToBSplineCurve : public Convert_ConicToBSplineCurve {
 ") Convert_EllipseToBSplineCurve;
 		 Convert_EllipseToBSplineCurve (const gp_Elips2d & E,const Convert_ParameterisationType Parameterisation = Convert_TgtThetaOver2);
 		%feature("compactdefaultargs") Convert_EllipseToBSplineCurve;
-		%feature("autodoc", "	* The ellipse E is limited between the parametric values U1, U2. The equivalent B-spline curve is oriented from U1 to U2 and has the same orientation as E. Raised if U1 = U2 or U1 = U2 + 2.0 * Pi
+		%feature("autodoc", "	* The ellipse E is limited between the parametric values U1, U2. The equivalent B-spline curve is oriented from U1 to U2 and has the same orientation as E. //! Raised if U1 = U2 or U1 = U2 + 2.0 * Pi
 
 	:param E:
 	:type E: gp_Elips2d
@@ -1002,7 +1008,7 @@ class Convert_ParabolaToBSplineCurve : public Convert_ConicToBSplineCurve {
 class Convert_SphereToBSplineSurface : public Convert_ElementarySurfaceToBSplineSurface {
 	public:
 		%feature("compactdefaultargs") Convert_SphereToBSplineSurface;
-		%feature("autodoc", "	* The equivalent B-spline surface as the same orientation as the sphere in the U and V parametric directions. Raised if U1 = U2 or U1 = U2 + 2.0 * Pi Raised if V1 = V2.
+		%feature("autodoc", "	* The equivalent B-spline surface as the same orientation as the sphere in the U and V parametric directions. //! Raised if U1 = U2 or U1 = U2 + 2.0 * Pi Raised if V1 = V2.
 
 	:param Sph:
 	:type Sph: gp_Sphere
@@ -1018,7 +1024,7 @@ class Convert_SphereToBSplineSurface : public Convert_ElementarySurfaceToBSpline
 ") Convert_SphereToBSplineSurface;
 		 Convert_SphereToBSplineSurface (const gp_Sphere & Sph,const Standard_Real U1,const Standard_Real U2,const Standard_Real V1,const Standard_Real V2);
 		%feature("compactdefaultargs") Convert_SphereToBSplineSurface;
-		%feature("autodoc", "	* The equivalent B-spline surface as the same orientation as the sphere in the U and V parametric directions. Raised if UTrim = True and Param1 = Param2 or  Param1 = Param2 + 2.0 * Pi Raised if UTrim = False and Param1 = Param2
+		%feature("autodoc", "	* The equivalent B-spline surface as the same orientation as the sphere in the U and V parametric directions. //! Raised if UTrim = True and Param1 = Param2 or Param1 = Param2 + 2.0 * Pi Raised if UTrim = False and Param1 = Param2
 
 	:param Sph:
 	:type Sph: gp_Sphere
@@ -1046,7 +1052,7 @@ class Convert_SphereToBSplineSurface : public Convert_ElementarySurfaceToBSpline
 class Convert_TorusToBSplineSurface : public Convert_ElementarySurfaceToBSplineSurface {
 	public:
 		%feature("compactdefaultargs") Convert_TorusToBSplineSurface;
-		%feature("autodoc", "	* The equivalent B-spline surface as the same orientation as the torus in the U and V parametric directions. Raised if U1 = U2 or U1 = U2 + 2.0 * Pi Raised if V1 = V2 or V1 = V2 + 2.0 * Pi
+		%feature("autodoc", "	* The equivalent B-spline surface as the same orientation as the torus in the U and V parametric directions. //! Raised if U1 = U2 or U1 = U2 + 2.0 * Pi Raised if V1 = V2 or V1 = V2 + 2.0 * Pi
 
 	:param T:
 	:type T: gp_Torus
@@ -1062,7 +1068,7 @@ class Convert_TorusToBSplineSurface : public Convert_ElementarySurfaceToBSplineS
 ") Convert_TorusToBSplineSurface;
 		 Convert_TorusToBSplineSurface (const gp_Torus & T,const Standard_Real U1,const Standard_Real U2,const Standard_Real V1,const Standard_Real V2);
 		%feature("compactdefaultargs") Convert_TorusToBSplineSurface;
-		%feature("autodoc", "	* The equivalent B-spline surface as the same orientation as the torus in the U and V parametric directions. Raised if Param1 = Param2 or Param1 = Param2 + 2.0 * Pi
+		%feature("autodoc", "	* The equivalent B-spline surface as the same orientation as the torus in the U and V parametric directions. //! Raised if Param1 = Param2 or Param1 = Param2 + 2.0 * Pi
 
 	:param T:
 	:type T: gp_Torus

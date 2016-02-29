@@ -149,18 +149,18 @@ class LocOpe_BuildWires {
 		%feature("autodoc", "	:param Ledges:
 	:type Ledges: TopTools_ListOfShape &
 	:param PW:
-	:type PW: Handle_LocOpe_ProjectedWires &
+	:type PW: Handle_LocOpe_WiresOnShape &
 	:rtype: None
 ") LocOpe_BuildWires;
-		 LocOpe_BuildWires (const TopTools_ListOfShape & Ledges,const Handle_LocOpe_ProjectedWires & PW);
+		 LocOpe_BuildWires (const TopTools_ListOfShape & Ledges,const Handle_LocOpe_WiresOnShape & PW);
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	:param Ledges:
 	:type Ledges: TopTools_ListOfShape &
 	:param PW:
-	:type PW: Handle_LocOpe_ProjectedWires &
+	:type PW: Handle_LocOpe_WiresOnShape &
 	:rtype: None
 ") Perform;
-		void Perform (const TopTools_ListOfShape & Ledges,const Handle_LocOpe_ProjectedWires & PW);
+		void Perform (const TopTools_ListOfShape & Ledges,const Handle_LocOpe_WiresOnShape & PW);
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	:rtype: bool
 ") IsDone;
@@ -240,7 +240,7 @@ class LocOpe_CSIntersector {
 ") Point;
 		const LocOpe_PntFace & Point (const Standard_Integer I,const Standard_Integer Index);
 		%feature("compactdefaultargs") LocalizeAfter;
-		%feature("autodoc", "	* On the element of range <I>, searches the first intersection point located after the parameter <From>, wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal.  Otherwise, returns <Standard_False>.
+		%feature("autodoc", "	* On the element of range <I>, searches the first intersection point located after the parameter <From>, wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal. //! Otherwise, returns <Standard_False>.
 
 	:param I:
 	:type I: int
@@ -258,7 +258,7 @@ class LocOpe_CSIntersector {
 ") LocalizeAfter;
 		Standard_Boolean LocalizeAfter (const Standard_Integer I,const Standard_Real From,const Standard_Real Tol,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
 		%feature("compactdefaultargs") LocalizeBefore;
-		%feature("autodoc", "	* On the element of range <I>, searches the first intersection point located before the parameter <From>, wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal.  Otherwise, returns <Standard_False>.
+		%feature("autodoc", "	* On the element of range <I>, searches the first intersection point located before the parameter <From>, wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal. //! Otherwise, returns <Standard_False>.
 
 	:param I:
 	:type I: int
@@ -276,7 +276,7 @@ class LocOpe_CSIntersector {
 ") LocalizeBefore;
 		Standard_Boolean LocalizeBefore (const Standard_Integer I,const Standard_Real From,const Standard_Real Tol,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
 		%feature("compactdefaultargs") LocalizeAfter;
-		%feature("autodoc", "	* On the element of range <I>, searches the first intersection point located after the index <FromInd> ( >= FromInd + 1), wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal.  Otherwise, returns <Standard_False>.
+		%feature("autodoc", "	* On the element of range <I>, searches the first intersection point located after the index <FromInd> ( >= FromInd + 1), wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal. //! Otherwise, returns <Standard_False>.
 
 	:param I:
 	:type I: int
@@ -294,7 +294,7 @@ class LocOpe_CSIntersector {
 ") LocalizeAfter;
 		Standard_Boolean LocalizeAfter (const Standard_Integer I,const Standard_Integer FromInd,const Standard_Real Tol,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
 		%feature("compactdefaultargs") LocalizeBefore;
-		%feature("autodoc", "	* On the element of range <I>, searches the first intersection point located before the index <FromInd> ( <= FromInd -1), wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal.  Otherwise, returns <Standard_False>.
+		%feature("autodoc", "	* On the element of range <I>, searches the first intersection point located before the index <FromInd> ( <= FromInd -1), wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal. //! Otherwise, returns <Standard_False>.
 
 	:param I:
 	:type I: int
@@ -388,7 +388,7 @@ class LocOpe_CurveShapeIntersector {
 ") Point;
 		const LocOpe_PntFace & Point (const Standard_Integer Index);
 		%feature("compactdefaultargs") LocalizeAfter;
-		%feature("autodoc", "	* Searches the first intersection point located after the parameter <From>, wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo).  Otherwise, returns <Standard_False>.
+		%feature("autodoc", "	* Searches the first intersection point located after the parameter <From>, wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo). //! Otherwise, returns <Standard_False>.
 
 	:param From:
 	:type From: float
@@ -402,7 +402,7 @@ class LocOpe_CurveShapeIntersector {
 ") LocalizeAfter;
 		Standard_Boolean LocalizeAfter (const Standard_Real From,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
 		%feature("compactdefaultargs") LocalizeBefore;
-		%feature("autodoc", "	* Searches the first intersection point located before the parameter <From>, wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo).  Otherwise, returns <Standard_False>.
+		%feature("autodoc", "	* Searches the first intersection point located before the parameter <From>, wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo). //! Otherwise, returns <Standard_False>.
 
 	:param From:
 	:type From: float
@@ -416,7 +416,7 @@ class LocOpe_CurveShapeIntersector {
 ") LocalizeBefore;
 		Standard_Boolean LocalizeBefore (const Standard_Real From,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
 		%feature("compactdefaultargs") LocalizeAfter;
-		%feature("autodoc", "	* Searches the first intersection point located after the index <FromInd> ( >= FromInd + 1), wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo).  Otherwise, returns <Standard_False>.
+		%feature("autodoc", "	* Searches the first intersection point located after the index <FromInd> ( >= FromInd + 1), wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo). //! Otherwise, returns <Standard_False>.
 
 	:param FromInd:
 	:type FromInd: int
@@ -430,7 +430,7 @@ class LocOpe_CurveShapeIntersector {
 ") LocalizeAfter;
 		Standard_Boolean LocalizeAfter (const Standard_Integer FromInd,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
 		%feature("compactdefaultargs") LocalizeBefore;
-		%feature("autodoc", "	* Searches the first intersection point located before the index <FromInd> ( <= FromInd -1), wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo).  Otherwise, returns <Standard_False>.
+		%feature("autodoc", "	* Searches the first intersection point located before the index <FromInd> ( <= FromInd -1), wich orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo). //! Otherwise, returns <Standard_False>.
 
 	:param FromInd:
 	:type FromInd: int
@@ -1297,107 +1297,6 @@ class LocOpe_Prism {
 };
 
 
-%nodefaultctor LocOpe_ProjectedWires;
-class LocOpe_ProjectedWires : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") InitEdgeIterator;
-		%feature("autodoc", "	:rtype: void
-") InitEdgeIterator;
-		virtual void InitEdgeIterator ();
-		%feature("compactdefaultargs") MoreEdge;
-		%feature("autodoc", "	:rtype: bool
-") MoreEdge;
-		virtual Standard_Boolean MoreEdge ();
-		%feature("compactdefaultargs") Edge;
-		%feature("autodoc", "	:rtype: TopoDS_Edge
-") Edge;
-		virtual TopoDS_Edge Edge ();
-		%feature("compactdefaultargs") OnFace;
-		%feature("autodoc", "	* Returns the face of the shape on which the current edge is projected.
-
-	:rtype: TopoDS_Face
-") OnFace;
-		virtual TopoDS_Face OnFace ();
-		%feature("compactdefaultargs") OnEdge;
-		%feature("autodoc", "	* If the current edge is projected on an edge, returns <Standard_True> and sets the value of <E>. Otherwise, returns <Standard_False>.
-
-	:param E:
-	:type E: TopoDS_Edge &
-	:rtype: bool
-") OnEdge;
-		virtual Standard_Boolean OnEdge (TopoDS_Edge & E);
-		%feature("compactdefaultargs") NextEdge;
-		%feature("autodoc", "	:rtype: void
-") NextEdge;
-		virtual void NextEdge ();
-		%feature("compactdefaultargs") OnVertex;
-		%feature("autodoc", "	:param Vwire:
-	:type Vwire: TopoDS_Vertex &
-	:param Vshape:
-	:type Vshape: TopoDS_Vertex &
-	:rtype: bool
-") OnVertex;
-		virtual Standard_Boolean OnVertex (const TopoDS_Vertex & Vwire,TopoDS_Vertex & Vshape);
-		%feature("compactdefaultargs") OnEdge;
-		%feature("autodoc", "	* If the vertex <V> lies on an edge of the original shape, returns <Standard_True> and sets the concerned edge in <E>, and the parameter on the edge in <P>. Else returns <Standard_False>.
-
-	:param V:
-	:type V: TopoDS_Vertex &
-	:param E:
-	:type E: TopoDS_Edge &
-	:param P:
-	:type P: float &
-	:rtype: bool
-") OnEdge;
-		virtual Standard_Boolean OnEdge (const TopoDS_Vertex & V,TopoDS_Edge & E,Standard_Real &OutValue);
-		%feature("compactdefaultargs") IsFaceWithSection;
-		%feature("autodoc", "	* tells is the face to be split by section or not
-
-	:param aFace:
-	:type aFace: TopoDS_Shape &
-	:rtype: bool
-") IsFaceWithSection;
-		virtual Standard_Boolean IsFaceWithSection (const TopoDS_Shape & aFace);
-};
-
-
-%extend LocOpe_ProjectedWires {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_LocOpe_ProjectedWires(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_LocOpe_ProjectedWires::Handle_LocOpe_ProjectedWires %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_LocOpe_ProjectedWires;
-class Handle_LocOpe_ProjectedWires : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_LocOpe_ProjectedWires();
-        Handle_LocOpe_ProjectedWires(const Handle_LocOpe_ProjectedWires &aHandle);
-        Handle_LocOpe_ProjectedWires(const LocOpe_ProjectedWires *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_LocOpe_ProjectedWires DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_LocOpe_ProjectedWires {
-    LocOpe_ProjectedWires* GetObject() {
-    return (LocOpe_ProjectedWires*)$self->Access();
-    }
-};
-
 %nodefaultctor LocOpe_SequenceNodeOfSequenceOfCirc;
 class LocOpe_SequenceNodeOfSequenceOfCirc : public TCollection_SeqNode {
 	public:
@@ -1576,6 +1475,12 @@ class LocOpe_SequenceOfCirc : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") LocOpe_SequenceOfCirc;
 		 LocOpe_SequenceOfCirc ();
+		%feature("compactdefaultargs") LocOpe_SequenceOfCirc;
+		%feature("autodoc", "	:param Other:
+	:type Other: LocOpe_SequenceOfCirc &
+	:rtype: None
+") LocOpe_SequenceOfCirc;
+		 LocOpe_SequenceOfCirc (const LocOpe_SequenceOfCirc & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -1708,6 +1613,12 @@ class LocOpe_SequenceOfLin : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") LocOpe_SequenceOfLin;
 		 LocOpe_SequenceOfLin ();
+		%feature("compactdefaultargs") LocOpe_SequenceOfLin;
+		%feature("autodoc", "	:param Other:
+	:type Other: LocOpe_SequenceOfLin &
+	:rtype: None
+") LocOpe_SequenceOfLin;
+		 LocOpe_SequenceOfLin (const LocOpe_SequenceOfLin & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -1840,6 +1751,12 @@ class LocOpe_SequenceOfPntFace : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") LocOpe_SequenceOfPntFace;
 		 LocOpe_SequenceOfPntFace ();
+		%feature("compactdefaultargs") LocOpe_SequenceOfPntFace;
+		%feature("autodoc", "	:param Other:
+	:type Other: LocOpe_SequenceOfPntFace &
+	:rtype: None
+") LocOpe_SequenceOfPntFace;
+		 LocOpe_SequenceOfPntFace (const LocOpe_SequenceOfPntFace & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -2178,10 +2095,10 @@ class LocOpe_Spliter {
 		void Init (const TopoDS_Shape & S);
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	:param PW:
-	:type PW: Handle_LocOpe_ProjectedWires &
+	:type PW: Handle_LocOpe_WiresOnShape &
 	:rtype: None
 ") Perform;
-		void Perform (const Handle_LocOpe_ProjectedWires & PW);
+		void Perform (const Handle_LocOpe_WiresOnShape & PW);
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "	:rtype: bool
 ") IsDone;
@@ -2221,99 +2138,8 @@ class LocOpe_Spliter {
 };
 
 
-%nodefaultctor LocOpe_GluedShape;
-class LocOpe_GluedShape : public LocOpe_GeneratedShape {
-	public:
-		%feature("compactdefaultargs") LocOpe_GluedShape;
-		%feature("autodoc", "	:rtype: None
-") LocOpe_GluedShape;
-		 LocOpe_GluedShape ();
-		%feature("compactdefaultargs") LocOpe_GluedShape;
-		%feature("autodoc", "	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: None
-") LocOpe_GluedShape;
-		 LocOpe_GluedShape (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:param S:
-	:type S: TopoDS_Shape &
-	:rtype: None
-") Init;
-		void Init (const TopoDS_Shape & S);
-		%feature("compactdefaultargs") GlueOnFace;
-		%feature("autodoc", "	:param F:
-	:type F: TopoDS_Face &
-	:rtype: None
-") GlueOnFace;
-		void GlueOnFace (const TopoDS_Face & F);
-		%feature("compactdefaultargs") GeneratingEdges;
-		%feature("autodoc", "	:rtype: TopTools_ListOfShape
-") GeneratingEdges;
-		const TopTools_ListOfShape & GeneratingEdges ();
-		%feature("compactdefaultargs") Generated;
-		%feature("autodoc", "	* Returns the edge created by the vertex <V>. If none, must return a null shape.
-
-	:param V:
-	:type V: TopoDS_Vertex &
-	:rtype: TopoDS_Edge
-") Generated;
-		TopoDS_Edge Generated (const TopoDS_Vertex & V);
-		%feature("compactdefaultargs") Generated;
-		%feature("autodoc", "	* Returns the face created by the edge <E>. If none, must return a null shape.
-
-	:param E:
-	:type E: TopoDS_Edge &
-	:rtype: TopoDS_Face
-") Generated;
-		TopoDS_Face Generated (const TopoDS_Edge & E);
-		%feature("compactdefaultargs") OrientedFaces;
-		%feature("autodoc", "	* Returns the list of correctly oriented generated faces.
-
-	:rtype: TopTools_ListOfShape
-") OrientedFaces;
-		const TopTools_ListOfShape & OrientedFaces ();
-};
-
-
-%extend LocOpe_GluedShape {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_LocOpe_GluedShape(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_LocOpe_GluedShape::Handle_LocOpe_GluedShape %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_LocOpe_GluedShape;
-class Handle_LocOpe_GluedShape : public Handle_LocOpe_GeneratedShape {
-
-    public:
-        // constructors
-        Handle_LocOpe_GluedShape();
-        Handle_LocOpe_GluedShape(const Handle_LocOpe_GluedShape &aHandle);
-        Handle_LocOpe_GluedShape(const LocOpe_GluedShape *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_LocOpe_GluedShape DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_LocOpe_GluedShape {
-    LocOpe_GluedShape* GetObject() {
-    return (LocOpe_GluedShape*)$self->Access();
-    }
-};
-
 %nodefaultctor LocOpe_WiresOnShape;
-class LocOpe_WiresOnShape : public LocOpe_ProjectedWires {
+class LocOpe_WiresOnShape : public MMgt_TShared {
 	public:
 		%feature("compactdefaultargs") LocOpe_WiresOnShape;
 		%feature("autodoc", "	:param S:
@@ -2425,6 +2251,20 @@ class LocOpe_WiresOnShape : public LocOpe_ProjectedWires {
 	:rtype: bool
 ") OnEdge;
 		Standard_Boolean OnEdge (const TopoDS_Vertex & V,TopoDS_Edge & E,Standard_Real &OutValue);
+		%feature("compactdefaultargs") OnEdge;
+		%feature("autodoc", "	* If the vertex <V> lies on an edge of the original shape, returns <Standard_True> and sets the concerned edge in <E>, and the parameter on the edge in <P>. Else returns <Standard_False>.
+
+	:param V:
+	:type V: TopoDS_Vertex &
+	:param EdgeFrom:
+	:type EdgeFrom: TopoDS_Edge &
+	:param E:
+	:type E: TopoDS_Edge &
+	:param P:
+	:type P: float &
+	:rtype: bool
+") OnEdge;
+		Standard_Boolean OnEdge (const TopoDS_Vertex & V,const TopoDS_Edge & EdgeFrom,TopoDS_Edge & E,Standard_Real &OutValue);
 		%feature("compactdefaultargs") IsFaceWithSection;
 		%feature("autodoc", "	* tells is the face to be split by section or not
 
@@ -2455,7 +2295,7 @@ class LocOpe_WiresOnShape : public LocOpe_ProjectedWires {
 %}
 
 %nodefaultctor Handle_LocOpe_WiresOnShape;
-class Handle_LocOpe_WiresOnShape : public Handle_LocOpe_ProjectedWires {
+class Handle_LocOpe_WiresOnShape : public Handle_MMgt_TShared {
 
     public:
         // constructors
@@ -2470,6 +2310,97 @@ class Handle_LocOpe_WiresOnShape : public Handle_LocOpe_ProjectedWires {
 %extend Handle_LocOpe_WiresOnShape {
     LocOpe_WiresOnShape* GetObject() {
     return (LocOpe_WiresOnShape*)$self->Access();
+    }
+};
+
+%nodefaultctor LocOpe_GluedShape;
+class LocOpe_GluedShape : public LocOpe_GeneratedShape {
+	public:
+		%feature("compactdefaultargs") LocOpe_GluedShape;
+		%feature("autodoc", "	:rtype: None
+") LocOpe_GluedShape;
+		 LocOpe_GluedShape ();
+		%feature("compactdefaultargs") LocOpe_GluedShape;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") LocOpe_GluedShape;
+		 LocOpe_GluedShape (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "	:param S:
+	:type S: TopoDS_Shape &
+	:rtype: None
+") Init;
+		void Init (const TopoDS_Shape & S);
+		%feature("compactdefaultargs") GlueOnFace;
+		%feature("autodoc", "	:param F:
+	:type F: TopoDS_Face &
+	:rtype: None
+") GlueOnFace;
+		void GlueOnFace (const TopoDS_Face & F);
+		%feature("compactdefaultargs") GeneratingEdges;
+		%feature("autodoc", "	:rtype: TopTools_ListOfShape
+") GeneratingEdges;
+		const TopTools_ListOfShape & GeneratingEdges ();
+		%feature("compactdefaultargs") Generated;
+		%feature("autodoc", "	* Returns the edge created by the vertex <V>. If none, must return a null shape.
+
+	:param V:
+	:type V: TopoDS_Vertex &
+	:rtype: TopoDS_Edge
+") Generated;
+		TopoDS_Edge Generated (const TopoDS_Vertex & V);
+		%feature("compactdefaultargs") Generated;
+		%feature("autodoc", "	* Returns the face created by the edge <E>. If none, must return a null shape.
+
+	:param E:
+	:type E: TopoDS_Edge &
+	:rtype: TopoDS_Face
+") Generated;
+		TopoDS_Face Generated (const TopoDS_Edge & E);
+		%feature("compactdefaultargs") OrientedFaces;
+		%feature("autodoc", "	* Returns the list of correctly oriented generated faces.
+
+	:rtype: TopTools_ListOfShape
+") OrientedFaces;
+		const TopTools_ListOfShape & OrientedFaces ();
+};
+
+
+%extend LocOpe_GluedShape {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_LocOpe_GluedShape(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_LocOpe_GluedShape::Handle_LocOpe_GluedShape %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_LocOpe_GluedShape;
+class Handle_LocOpe_GluedShape : public Handle_LocOpe_GeneratedShape {
+
+    public:
+        // constructors
+        Handle_LocOpe_GluedShape();
+        Handle_LocOpe_GluedShape(const Handle_LocOpe_GluedShape &aHandle);
+        Handle_LocOpe_GluedShape(const LocOpe_GluedShape *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_LocOpe_GluedShape DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_LocOpe_GluedShape {
+    LocOpe_GluedShape* GetObject() {
+    return (LocOpe_GluedShape*)$self->Access();
     }
 };
 
