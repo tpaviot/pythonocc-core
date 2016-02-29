@@ -637,6 +637,12 @@ class IntPolyh_SeqOfStartPoints : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") IntPolyh_SeqOfStartPoints;
 		 IntPolyh_SeqOfStartPoints ();
+		%feature("compactdefaultargs") IntPolyh_SeqOfStartPoints;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntPolyh_SeqOfStartPoints &
+	:rtype: None
+") IntPolyh_SeqOfStartPoints;
+		 IntPolyh_SeqOfStartPoints (const IntPolyh_SeqOfStartPoints & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;

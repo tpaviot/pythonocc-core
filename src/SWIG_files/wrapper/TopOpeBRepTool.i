@@ -69,7 +69,7 @@ enum TopOpeBRepTool_OutCurveType {
 class TopOpeBRepTool {
 	public:
 		%feature("compactdefaultargs") PurgeClosingEdges;
-		%feature("autodoc", "	* Fuse edges (in a wire) of a shape where we have useless vertex. In case face <FF> is built on UV-non-connexed wires (with the two closing edges FORWARD and REVERSED, in spite of one only), we find out the faulty edge, add the faulty shapes (edge,wire,face) to <MshNOK>. <FF> is a face descendant of <F>. <MWisOld>(wire) = 1 if wire is wire of <F>  0 wire results from <F>'s wire splitted. returns false if purge fails
+		%feature("autodoc", "	* Fuse edges (in a wire) of a shape where we have useless vertex. In case face <FF> is built on UV-non-connexed wires (with the two closing edges FORWARD and REVERSED, in spite of one only), we find out the faulty edge, add the faulty shapes (edge,wire,face) to <MshNOK>. <FF> is a face descendant of <F>. <MWisOld>(wire) = 1 if wire is wire of <F> 0 wire results from <F>'s wire splitted. returns false if purge fails
 
 	:param F:
 	:type F: TopoDS_Face &
@@ -2422,6 +2422,12 @@ class TopOpeBRepTool_ListOfC2DF {
 		%feature("autodoc", "	:rtype: None
 ") TopOpeBRepTool_ListOfC2DF;
 		 TopOpeBRepTool_ListOfC2DF ();
+		%feature("compactdefaultargs") TopOpeBRepTool_ListOfC2DF;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopOpeBRepTool_ListOfC2DF &
+	:rtype: None
+") TopOpeBRepTool_ListOfC2DF;
+		 TopOpeBRepTool_ListOfC2DF (const TopOpeBRepTool_ListOfC2DF & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepTool_ListOfC2DF &
@@ -2863,7 +2869,7 @@ class TopOpeBRepTool_ShapeClassifier {
 ") SameDomain;
 		Standard_Integer SameDomain ();
 		%feature("compactdefaultargs") SameDomain;
-		%feature("autodoc", "	* set mode for next StateShapeShape call 	 samedomain = true --> S,Sref are same domain --> point 	 on restriction (ON S) is used to classify S. 	 samedomain = false --> S,Sref are not domain --> point 	 not on restriction of S (IN S) is used to classify S. 	 samedomain value is used only in next StateShapeShape call
+		%feature("autodoc", "	* set mode for next StateShapeShape call samedomain = true --> S,Sref are same domain --> point on restriction (ON S) is used to classify S. samedomain = false --> S,Sref are not domain --> point not on restriction of S (IN S) is used to classify S. samedomain value is used only in next StateShapeShape call
 
 	:param samedomain:
 	:type samedomain: int
@@ -2961,7 +2967,7 @@ class TopOpeBRepTool_ShapeExplorer {
 ") TopOpeBRepTool_ShapeExplorer;
 		 TopOpeBRepTool_ShapeExplorer ();
 		%feature("compactdefaultargs") TopOpeBRepTool_ShapeExplorer;
-		%feature("autodoc", "	* Creates an Explorer on the Shape <S>.  <ToFind> is the type of shapes to search. TopAbs_VERTEX, TopAbs_EDGE, ...  <ToAvoid> is the type of shape to skip in the exploration. If <ToAvoid> is equal or less complex than <ToFind> or if <ToAVoid> is SHAPE it has no effect on the exploration.
+		%feature("autodoc", "	* Creates an Explorer on the Shape <S>. //! <ToFind> is the type of shapes to search. TopAbs_VERTEX, TopAbs_EDGE, ... //! <ToAvoid> is the type of shape to skip in the exploration. If <ToAvoid> is equal or less complex than <ToFind> or if <ToAVoid> is SHAPE it has no effect on the exploration.
 
 	:param S:
 	:type S: TopoDS_Shape &

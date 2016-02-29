@@ -617,10 +617,6 @@ class TShort_HSequenceOfShortReal : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: TShort_SequenceOfShortReal
 ") ChangeSequence;
 		TShort_SequenceOfShortReal & ChangeSequence ();
-		%feature("compactdefaultargs") ShallowCopy;
-		%feature("autodoc", "	:rtype: Handle_TShort_HSequenceOfShortReal
-") ShallowCopy;
-		Handle_TShort_HSequenceOfShortReal ShallowCopy ();
 };
 
 
@@ -725,6 +721,12 @@ class TShort_SequenceOfShortReal : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") TShort_SequenceOfShortReal;
 		 TShort_SequenceOfShortReal ();
+		%feature("compactdefaultargs") TShort_SequenceOfShortReal;
+		%feature("autodoc", "	:param Other:
+	:type Other: TShort_SequenceOfShortReal &
+	:rtype: None
+") TShort_SequenceOfShortReal;
+		 TShort_SequenceOfShortReal (const TShort_SequenceOfShortReal & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;

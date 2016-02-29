@@ -59,6 +59,12 @@ typedef V3d_LayerMgr * V3d_LayerMgrPointer;
 /* end typedefs declaration */
 
 /* public enums */
+enum V3d_StereoDumpOptions {
+	V3d_SDO_MONO = 0,
+	V3d_SDO_LEFT_EYE = 1,
+	V3d_SDO_RIGHT_EYE = 2,
+};
+
 enum V3d_TypeOfAxe {
 	V3d_X = 0,
 	V3d_Y = 1,
@@ -125,11 +131,6 @@ enum V3d_TypeOfPickLight {
 	V3d_NOTHING = 5,
 };
 
-enum V3d_TypeOfProjectionModel {
-	V3d_TPM_SCREEN = 0,
-	V3d_TPM_WALKTHROUGH = 1,
-};
-
 enum V3d_TypeOfRepresentation {
 	V3d_SIMPLE = 0,
 	V3d_COMPLETE = 1,
@@ -139,10 +140,9 @@ enum V3d_TypeOfRepresentation {
 
 enum V3d_TypeOfShadingModel {
 	V3d_COLOR = 0,
-	V3d_MULTICOLOR = 1,
-	V3d_FLAT = 2,
-	V3d_GOURAUD = 3,
-	V3d_HIDDEN = 4,
+	V3d_FLAT = 1,
+	V3d_GOURAUD = 2,
+	V3d_PHONG = 3,
 };
 
 enum V3d_TypeOfSurfaceDetail {
@@ -657,7 +657,7 @@ class V3d_Light : public MMgt_TShared {
 ") SetColor;
 		void SetColor (const Quantity_TypeOfColor Type,const Quantity_Parameter V1,const Quantity_Parameter V2,const Quantity_Parameter V3);
 		%feature("compactdefaultargs") SetColor;
-		%feature("autodoc", "	* Defines the colour of a light source by giving //!	 the name of the colour in the form Quantity_NOC_xxxx .
+		%feature("autodoc", "	* Defines the colour of a light source by giving the name of the colour in the form Quantity_NOC_xxxx .
 
 	:param Name:
 	:type Name: Quantity_NameOfColor
@@ -665,7 +665,7 @@ class V3d_Light : public MMgt_TShared {
 ") SetColor;
 		void SetColor (const Quantity_NameOfColor Name);
 		%feature("compactdefaultargs") SetColor;
-		%feature("autodoc", "	* Defines the colour of a light source by giving //!	 the basic colour.
+		%feature("autodoc", "	* Defines the colour of a light source by giving the basic colour.
 
 	:param Name:
 	:type Name: Quantity_Color &
@@ -673,7 +673,7 @@ class V3d_Light : public MMgt_TShared {
 ") SetColor;
 		void SetColor (const Quantity_Color & Name);
 		%feature("compactdefaultargs") Color;
-		%feature("autodoc", "	* Returns the colour of the light source depending of //!	 the color type.
+		%feature("autodoc", "	* Returns the colour of the light source depending of the color type.
 
 	:param Type:
 	:type Type: Quantity_TypeOfColor
@@ -769,22 +769,98 @@ class Handle_V3d_Light : public Handle_MMgt_TShared {
 %nodefaultctor V3d_ListOfTransient;
 class V3d_ListOfTransient : public TColStd_ListOfTransient {
 	public:
-		%feature("compactdefaultargs") V3d_ListOfTransient;
-		%feature("autodoc", "	:rtype: None
-") V3d_ListOfTransient;
-		 V3d_ListOfTransient ();
 		%feature("compactdefaultargs") Contains;
-		%feature("autodoc", "	:param aTransient:
-	:type aTransient: Handle_Standard_Transient &
+		%feature("autodoc", "	* Return true if theObject is stored in the list
+
+	:param theObject:
+	:type theObject: Handle_Standard_Transient &
 	:rtype: bool
 ") Contains;
-		Standard_Boolean Contains (const Handle_Standard_Transient & aTransient);
+		Standard_Boolean Contains (const Handle_Standard_Transient & theObject);
 		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param aTransient:
-	:type aTransient: Handle_Standard_Transient &
+		%feature("autodoc", "	* Remove all elements equal to theObject from the list
+
+	:param theObject:
+	:type theObject: Handle_Standard_Transient &
 	:rtype: None
 ") Remove;
-		void Remove (const Handle_Standard_Transient & aTransient);
+		void Remove (const Handle_Standard_Transient & theObject);
+};
+
+
+%nodefaultctor V3d_Plane;
+class V3d_Plane : public MMgt_TShared {
+	public:
+		%feature("compactdefaultargs") V3d_Plane;
+		%feature("autodoc", "	* Creates a clipping plane from plane coefficients.
+
+	:param theA: default value is 0.0
+	:type theA: Quantity_Parameter
+	:param theB: default value is 0.0
+	:type theB: Quantity_Parameter
+	:param theC: default value is 1.0
+	:type theC: Quantity_Parameter
+	:param theD: default value is 0.0
+	:type theD: Quantity_Parameter
+	:rtype: None
+") V3d_Plane;
+		 V3d_Plane (const Quantity_Parameter theA = 0.0,const Quantity_Parameter theB = 0.0,const Quantity_Parameter theC = 1.0,const Quantity_Parameter theD = 0.0);
+		%feature("compactdefaultargs") SetPlane;
+		%feature("autodoc", "	* Change plane equation.
+
+	:param theA:
+	:type theA: Quantity_Parameter
+	:param theB:
+	:type theB: Quantity_Parameter
+	:param theC:
+	:type theC: Quantity_Parameter
+	:param theD:
+	:type theD: Quantity_Parameter
+	:rtype: None
+") SetPlane;
+		void SetPlane (const Quantity_Parameter theA,const Quantity_Parameter theB,const Quantity_Parameter theC,const Quantity_Parameter theD);
+		%feature("compactdefaultargs") Display;
+		%feature("autodoc", "	* Display the plane representation in the choosen view.
+
+	:param theView:
+	:type theView: Handle_V3d_View &
+	:param theColor: default value is Quantity_NOC_GRAY
+	:type theColor: Quantity_Color &
+	:rtype: void
+") Display;
+		virtual void Display (const Handle_V3d_View & theView,const Quantity_Color & theColor = Quantity_NOC_GRAY);
+		%feature("compactdefaultargs") Erase;
+		%feature("autodoc", "	* Erase the plane representation.
+
+	:rtype: None
+") Erase;
+		void Erase ();
+		%feature("compactdefaultargs") Plane;
+		%feature("autodoc", "	* Returns the parameters of the plane.
+
+	:param theA:
+	:type theA: Quantity_Parameter &
+	:param theB:
+	:type theB: Quantity_Parameter &
+	:param theC:
+	:type theC: Quantity_Parameter &
+	:param theD:
+	:type theD: Quantity_Parameter &
+	:rtype: None
+") Plane;
+		void Plane (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") IsDisplayed;
+		%feature("autodoc", "	* Returns True when the plane representation is displayed.
+
+	:rtype: bool
+") IsDisplayed;
+		Standard_Boolean IsDisplayed ();
+		%feature("compactdefaultargs") ClipPlane;
+		%feature("autodoc", "	* Use this method to pass clipping plane implementation for standard clipping workflow. returns clipping plane implementation handle.
+
+	:rtype: Handle_Graphic3d_ClipPlane
+") ClipPlane;
+		Handle_Graphic3d_ClipPlane ClipPlane ();
 };
 
 
@@ -885,7 +961,7 @@ class Handle_V3d_RectangularGrid : public Handle_Aspect_RectangularGrid {
 class V3d_View : public MMgt_TShared {
 	public:
 		%feature("compactdefaultargs") V3d_View;
-		%feature("autodoc", "	* Initialises the view.
+		%feature("autodoc", "	* Initializes the view.
 
 	:param VM:
 	:type VM: Handle_V3d_Viewer &
@@ -895,17 +971,15 @@ class V3d_View : public MMgt_TShared {
 ") V3d_View;
 		 V3d_View (const Handle_V3d_Viewer & VM,const V3d_TypeOfView Type = V3d_ORTHOGRAPHIC);
 		%feature("compactdefaultargs") V3d_View;
-		%feature("autodoc", "	* Initialises the view by copying.
+		%feature("autodoc", "	* Initializes the view by copying.
 
-	:param VM:
-	:type VM: Handle_V3d_Viewer &
-	:param V:
-	:type V: Handle_V3d_View &
-	:param Type: default value is V3d_ORTHOGRAPHIC
-	:type Type: V3d_TypeOfView
+	:param theVM:
+	:type theVM: Handle_V3d_Viewer &
+	:param theView:
+	:type theView: Handle_V3d_View &
 	:rtype: None
 ") V3d_View;
-		 V3d_View (const Handle_V3d_Viewer & VM,const Handle_V3d_View & V,const V3d_TypeOfView Type = V3d_ORTHOGRAPHIC);
+		 V3d_View (const Handle_V3d_Viewer & theVM,const Handle_V3d_View & theView);
 		%feature("compactdefaultargs") SetWindow;
 		%feature("autodoc", "	* Activates the view in the window specified and Map the Window to the screen. Warning! raises MultiplyDefined from Standard if the view is already activated in a window. Warning: The view is centered and resized to preserve the height/width ratio of the window.
 
@@ -962,6 +1036,18 @@ class V3d_View : public MMgt_TShared {
 	:rtype: None
 ") Redraw;
 		void Redraw ();
+		%feature("compactdefaultargs") RedrawImmediate;
+		%feature("autodoc", "	* Updates layer of immediate presentations.
+
+	:rtype: None
+") RedrawImmediate;
+		void RedrawImmediate ();
+		%feature("compactdefaultargs") Invalidate;
+		%feature("autodoc", "	* Invalidates view content but does not redraw it.
+
+	:rtype: None
+") Invalidate;
+		void Invalidate ();
 		%feature("compactdefaultargs") Redraw;
 		%feature("autodoc", "	* Redisplays the view area after esxposure. [x,y] define the min xy area position [width,height] the size of the area in pixel unit.
 
@@ -1000,6 +1086,20 @@ class V3d_View : public MMgt_TShared {
 	:rtype: None
 ") UpdateLights;
 		void UpdateLights ();
+		%feature("compactdefaultargs") AutoZFit;
+		%feature("autodoc", "	* If automatic z-range fitting is turned on, adjusts Z-min and Z-max projection volume planes with call to ZFitAll.
+
+	:rtype: None
+") AutoZFit;
+		void AutoZFit ();
+		%feature("compactdefaultargs") ZFitAll;
+		%feature("autodoc", "	* Change Z-min and Z-max planes of projection volume to match the displayed objects.
+
+	:param theScaleFactor: default value is 1.0
+	:type theScaleFactor: float
+	:rtype: None
+") ZFitAll;
+		void ZFitAll (const Standard_Real theScaleFactor = 1.0);
 		%feature("compactdefaultargs") SetBackgroundColor;
 		%feature("autodoc", "	* Defines the background colour of the view by supplying : the colour definition type, and the three corresponding values.
 
@@ -1069,7 +1169,7 @@ class V3d_View : public MMgt_TShared {
 ") SetBgGradientStyle;
 		void SetBgGradientStyle (const Aspect_GradientFillMethod AMethod = Aspect_GFM_HOR,const Standard_Boolean update = Standard_False);
 		%feature("compactdefaultargs") SetBackgroundImage;
-		%feature("autodoc", "	* Defines the background texture of the view  by supplying :  texture image file name,  and fill method (centered by default)
+		%feature("autodoc", "	* Defines the background texture of the view by supplying : texture image file name, and fill method (centered by default)
 
 	:param FileName:
 	:type FileName: char *
@@ -1257,7 +1357,7 @@ class V3d_View : public MMgt_TShared {
 ") SetImmediateUpdate;
 		Standard_Boolean SetImmediateUpdate (const Standard_Boolean theImmediateUpdate);
 		%feature("compactdefaultargs") ZBufferTriedronSetup;
-		%feature("autodoc", "	* Customization of the ZBUFFER Triedron.  XColor,YColor,ZColor - colors of axis  SizeRatio - ratio of decreasing of the trihedron size when its phisical  position comes out of the view  AxisDiametr - diameter relatively to axis length  NbFacettes - number of facettes of cylinders and cones
+		%feature("autodoc", "	* Customization of the ZBUFFER Triedron. XColor,YColor,ZColor - colors of axis SizeRatio - ratio of decreasing of the trihedron size when its phisical position comes out of the view AxisDiametr - diameter relatively to axis length NbFacettes - number of facettes of cylinders and cones
 
 	:param XColor: default value is Quantity_NOC_RED
 	:type XColor: Quantity_NameOfColor
@@ -1275,7 +1375,7 @@ class V3d_View : public MMgt_TShared {
 ") ZBufferTriedronSetup;
 		void ZBufferTriedronSetup (const Quantity_NameOfColor XColor = Quantity_NOC_RED,const Quantity_NameOfColor YColor = Quantity_NOC_GREEN,const Quantity_NameOfColor ZColor = Quantity_NOC_BLUE1,const Standard_Real SizeRatio = 0.8,const Standard_Real AxisDiametr = 0.05,const Standard_Integer NbFacettes = 12);
 		%feature("compactdefaultargs") TriedronDisplay;
-		%feature("autodoc", "	* Display of the Triedron.  Initialize position, color and length of Triedron axes.  The scale is a percent of the window width.
+		%feature("autodoc", "	* Display of the Triedron. Initialize position, color and length of Triedron axes. The scale is a percent of the window width.
 
 	:param APosition: default value is Aspect_TOTP_CENTER
 	:type APosition: Aspect_TypeOfTriedronPosition
@@ -1653,15 +1753,15 @@ class V3d_View : public MMgt_TShared {
 		%feature("compactdefaultargs") Place;
 		%feature("autodoc", "	* places the point of the view corresponding at the pixel position x,y at the center of the window and updates the view.
 
-	:param x:
-	:type x: int
-	:param y:
-	:type y: int
-	:param aZoomFactor: default value is 1
-	:type aZoomFactor: Quantity_Factor
+	:param theXp:
+	:type theXp: int
+	:param theYp:
+	:type theYp: int
+	:param theZoomFactor: default value is 1
+	:type theZoomFactor: Quantity_Factor
 	:rtype: None
 ") Place;
-		void Place (const Standard_Integer x,const Standard_Integer y,const Quantity_Factor aZoomFactor = 1);
+		void Place (const Standard_Integer theXp,const Standard_Integer theYp,const Quantity_Factor theZoomFactor = 1);
 		%feature("compactdefaultargs") Turn;
 		%feature("autodoc", "	* Rotation of the view point around the frame of reference of the screen for which the origin is the eye of the projection with a relative angular value in RADIANS with respect to the initial position expressed by Start = Standard_True
 
@@ -1778,14 +1878,6 @@ class V3d_View : public MMgt_TShared {
 	:rtype: None
 ") SetUp;
 		void SetUp (const V3d_TypeOfOrientation Orientation);
-		%feature("compactdefaultargs") SetViewOrientation;
-		%feature("autodoc", "	* Modifies the orientation of the view.
-
-	:param VO:
-	:type VO: Visual3d_ViewOrientation &
-	:rtype: None
-") SetViewOrientation;
-		void SetViewOrientation (const Visual3d_ViewOrientation & VO);
 		%feature("compactdefaultargs") SetViewOrientationDefault;
 		%feature("autodoc", "	* Saves the current state of the orientation of the view which will be the return state at ResetViewOrientation.
 
@@ -1799,49 +1891,39 @@ class V3d_View : public MMgt_TShared {
 ") ResetViewOrientation;
 		void ResetViewOrientation ();
 		%feature("compactdefaultargs") Panning;
-		%feature("autodoc", "	* translates the center of the view and zooms the view. Updates the view.
+		%feature("autodoc", "	* Translates the center of the view along 'x' and 'y' axes of view projection. Can be used to perform interactive panning operation. In that case the DXv, DXy parameters specify panning relative to the point where the operation is started. @param theDXv [in] the relative panning on 'x' axis of view projection, in view space coordinates. @param theDYv [in] the relative panning on 'y' axis of view projection, in view space coordinates. @param theZoomFactor [in] the zooming factor. @param theToStart [in] pass True when starting panning to remember view state prior to panning for relative arguments. If panning is started, passing {0, 0} for {theDXv, theDYv} will return view to initial state. Performs update of view.
 
-	:param Dx:
-	:type Dx: Quantity_Length
-	:param Dy:
-	:type Dy: Quantity_Length
-	:param aZoomFactor: default value is 1
-	:type aZoomFactor: Quantity_Factor
-	:param Start: default value is Standard_True
-	:type Start: bool
+	:param theDXv:
+	:type theDXv: float
+	:param theDYv:
+	:type theDYv: float
+	:param theZoomFactor: default value is 1
+	:type theZoomFactor: Quantity_Factor
+	:param theToStart: default value is Standard_True
+	:type theToStart: bool
 	:rtype: None
 ") Panning;
-		void Panning (const Quantity_Length Dx,const Quantity_Length Dy,const Quantity_Factor aZoomFactor = 1,const Standard_Boolean Start = Standard_True);
+		void Panning (const Standard_Real theDXv,const Standard_Real theDYv,const Quantity_Factor theZoomFactor = 1,const Standard_Boolean theToStart = Standard_True);
 		%feature("compactdefaultargs") SetCenter;
-		%feature("autodoc", "	* Defines the centre of the view. Updates the view.
+		%feature("autodoc", "	* Relocates center of screen to the point, determined by {Xp, Yp} pixel coordinates relative to the bottom-left corner of screen. To calculate pixel coordinates for any point from world coordinate space, it can be projected using 'Project'. @param theXp [in] the x coordinate. @param theYp [in] the y coordinate.
 
-	:param Xc:
-	:type Xc: V3d_Coordinate
-	:param Yc:
-	:type Yc: V3d_Coordinate
+	:param theXp:
+	:type theXp: int
+	:param theYp:
+	:type theYp: int
 	:rtype: None
 ") SetCenter;
-		void SetCenter (const V3d_Coordinate Xc,const V3d_Coordinate Yc);
-		%feature("compactdefaultargs") SetCenter;
-		%feature("autodoc", "	* Defines the centre of the view from a pixel position. Updates the view.
-
-	:param X:
-	:type X: int
-	:param Y:
-	:type Y: int
-	:rtype: None
-") SetCenter;
-		void SetCenter (const Standard_Integer X,const Standard_Integer Y);
+		void SetCenter (const Standard_Integer theXp,const Standard_Integer theYp);
 		%feature("compactdefaultargs") SetSize;
-		%feature("autodoc", "	* Defines the size of the view while preserving the center and height/width ratio of the window supporting the view. NOTE than the Depth of the View is NOT modified .
+		%feature("autodoc", "	* Defines the view projection size in its maximum dimension, keeping the inital height/width ratio unchanged.
 
-	:param Size:
-	:type Size: Quantity_Length
+	:param theSize:
+	:type theSize: Quantity_Length
 	:rtype: None
 ") SetSize;
-		void SetSize (const Quantity_Length Size);
+		void SetSize (const Quantity_Length theSize);
 		%feature("compactdefaultargs") SetZSize;
-		%feature("autodoc", "	* Defines the Depth size of the view Front Plane will be set to Size/2. Back Plane will be set to -Size/2. Any Object located Above the Front Plane or  behind the Back Plane will be Clipped . NOTE than the XY Size of the View is NOT modified .
+		%feature("autodoc", "	* Defines the Depth size of the view Front Plane will be set to Size/2. Back Plane will be set to -Size/2. Any Object located Above the Front Plane or behind the Back Plane will be Clipped . NOTE than the XY Size of the View is NOT modified .
 
 	:param Size:
 	:type Size: Quantity_Length
@@ -1879,25 +1961,15 @@ class V3d_View : public MMgt_TShared {
 ") SetAxialScale;
 		void SetAxialScale (const Standard_Real Sx,const Standard_Real Sy,const Standard_Real Sz);
 		%feature("compactdefaultargs") FitAll;
-		%feature("autodoc", "	* Automatic zoom/panning. Objects in the view are visualised so as to occupy the maximum space while respecting the margin coefficient and the initial height /width ratio. NOTE than the original Z size of the view is NOT modified .
+		%feature("autodoc", "	* Adjust view parameters to fit the displayed scene, respecting height / width ratio. The Z clipping range (depth range) is fitted if AutoZFit flag is True. Throws program error exception if margin coefficient is < 0 or >= 1. Updates the view. @param theMargin [in] the margin coefficient for view borders. @param theToUpdate [in] flag to perform view update.
 
-	:param Coef: default value is 0.01
-	:type Coef: Quantity_Coefficient
-	:param FitZ: default value is Standard_False
-	:type FitZ: bool
-	:param update: default value is Standard_True
-	:type update: bool
+	:param theMargin: default value is 0.01
+	:type theMargin: Quantity_Coefficient
+	:param theToUpdate: default value is Standard_True
+	:type theToUpdate: bool
 	:rtype: None
 ") FitAll;
-		void FitAll (const Quantity_Coefficient Coef = 0.01,const Standard_Boolean FitZ = Standard_False,const Standard_Boolean update = Standard_True);
-		%feature("compactdefaultargs") ZFitAll;
-		%feature("autodoc", "	* Automatic Depth Panning. Objects visible in the view are visualised so as to occupy the maximum Z amount of space while respecting the margin coefficient . NOTE than the original XY size of the view is NOT modified .
-
-	:param Coef: default value is 1.0
-	:type Coef: Quantity_Coefficient
-	:rtype: None
-") ZFitAll;
-		void ZFitAll (const Quantity_Coefficient Coef = 1.0);
+		void FitAll (const Quantity_Coefficient theMargin = 0.01,const Standard_Boolean theToUpdate = Standard_True);
 		%feature("compactdefaultargs") DepthFitAll;
 		%feature("autodoc", "	* Adjusts the viewing volume so as not to clip the displayed objects by front and back and back clipping planes. Also sets depth value automatically depending on the calculated Z size and Aspect parameter. NOTE than the original XY size of the view is NOT modified .
 
@@ -1909,59 +1981,33 @@ class V3d_View : public MMgt_TShared {
 ") DepthFitAll;
 		void DepthFitAll (const Quantity_Coefficient Aspect = 0.01,const Quantity_Coefficient Margin = 0.01);
 		%feature("compactdefaultargs") FitAll;
-		%feature("autodoc", "	* Centres the defined projection window so that it occupies the maximum space while respecting the initial height/width ratio. NOTE than the original Z size of the view is NOT modified .
+		%feature("autodoc", "	* Centers the defined projection window so that it occupies the maximum space while respecting the initial height/width ratio. NOTE than the original Z size of the view is NOT modified .
 
-	:param Umin:
-	:type Umin: V3d_Coordinate
-	:param Vmin:
-	:type Vmin: V3d_Coordinate
-	:param Umax:
-	:type Umax: V3d_Coordinate
-	:param Vmax:
-	:type Vmax: V3d_Coordinate
+	:param theMinXv:
+	:type theMinXv: float
+	:param theMinYv:
+	:type theMinYv: float
+	:param theMaxXv:
+	:type theMaxXv: float
+	:param theMaxYv:
+	:type theMaxYv: float
 	:rtype: None
 ") FitAll;
-		void FitAll (const V3d_Coordinate Umin,const V3d_Coordinate Vmin,const V3d_Coordinate Umax,const V3d_Coordinate Vmax);
+		void FitAll (const Standard_Real theMinXv,const Standard_Real theMinYv,const Standard_Real theMaxXv,const Standard_Real theMaxYv);
 		%feature("compactdefaultargs") WindowFit;
-		%feature("autodoc", "	* Centres the defined PIXEL window so that it occupies the maximum space while respecting the initial height/width ratio. NOTE than the original Z size of the view is NOT modified .
+		%feature("autodoc", "	* Centers the defined PIXEL window so that it occupies the maximum space while respecting the initial height/width ratio. NOTE than the original Z size of the view is NOT modified. @param theMinXp [in] pixel coordinates of minimal corner on x screen axis. @param theMinYp [in] pixel coordinates of minimal corner on y screen axis. @param theMaxXp [in] pixel coordinates of maximal corner on x screen axis. @param theMaxYp [in] pixel coordinates of maximal corner on y screen axis.
 
-	:param Xmin:
-	:type Xmin: int
-	:param Ymin:
-	:type Ymin: int
-	:param Xmax:
-	:type Xmax: int
-	:param Ymax:
-	:type Ymax: int
+	:param theMinXp:
+	:type theMinXp: int
+	:param theMinYp:
+	:type theMinYp: int
+	:param theMaxXp:
+	:type theMaxXp: int
+	:param theMaxYp:
+	:type theMaxYp: int
 	:rtype: None
 ") WindowFit;
-		void WindowFit (const Standard_Integer Xmin,const Standard_Integer Ymin,const Standard_Integer Xmax,const Standard_Integer Ymax);
-		%feature("compactdefaultargs") SetViewingVolume;
-		%feature("autodoc", "	* Sets Z and XY size of the view according to given values with respecting the initial view depth (eye position). Width/heigth aspect ratio should be preserved by the caller of this method similarly to SetSize() to avoid unexpected visual results like non-uniform scaling of objects in the view.
-
-	:param Left:
-	:type Left: float
-	:param Right:
-	:type Right: float
-	:param Bottom:
-	:type Bottom: float
-	:param Top:
-	:type Top: float
-	:param ZNear:
-	:type ZNear: float
-	:param ZFar:
-	:type ZFar: float
-	:rtype: None
-") SetViewingVolume;
-		void SetViewingVolume (const Standard_Real Left,const Standard_Real Right,const Standard_Real Bottom,const Standard_Real Top,const Standard_Real ZNear,const Standard_Real ZFar);
-		%feature("compactdefaultargs") SetViewMapping;
-		%feature("autodoc", "	* Modifies the mapping of the view.
-
-	:param VM:
-	:type VM: Visual3d_ViewMapping &
-	:rtype: None
-") SetViewMapping;
-		void SetViewMapping (const Visual3d_ViewMapping & VM);
+		void WindowFit (const Standard_Integer theMinXp,const Standard_Integer theMinYp,const Standard_Integer theMaxXp,const Standard_Integer theMaxYp);
 		%feature("compactdefaultargs") SetViewMappingDefault;
 		%feature("autodoc", "	* Saves the current view mapping. This will be the state returned from ResetViewmapping.
 
@@ -1969,13 +2015,13 @@ class V3d_View : public MMgt_TShared {
 ") SetViewMappingDefault;
 		void SetViewMappingDefault ();
 		%feature("compactdefaultargs") ResetViewMapping;
-		%feature("autodoc", "	* Resets the centring of the view. Updates the view
+		%feature("autodoc", "	* Resets the centering of the view. Updates the view
 
 	:rtype: None
 ") ResetViewMapping;
 		void ResetViewMapping ();
 		%feature("compactdefaultargs") Reset;
-		%feature("autodoc", "	* Resets the centring and the orientation of the view Updates the view
+		%feature("autodoc", "	* Resets the centering and the orientation of the view Updates the view
 
 	:param update: default value is Standard_True
 	:type update: bool
@@ -2065,7 +2111,7 @@ class V3d_View : public MMgt_TShared {
 ") ConvertWithProj;
 		void ConvertWithProj (const Standard_Integer Xp,const Standard_Integer Yp,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") ConvertToGrid;
-		%feature("autodoc", "	* Converts the projected point into the nearest grid point in the reference frame of the view corresponding to the intersection with the projection plane of the eye/view point vector and display the grid marker. Warning: When the grid is not active the result is identical to the above Convert() method. How to use : 1) Enable the grid echo display myViewer->SetGridEcho(Standard_True); 2) When application receive a move event : 2.1) Check if any object is detected if( myInteractiveContext->MoveTo(x,y) == AIS_SOD_Nothing ) { 2.2) Check if the grid is active if( myViewer->Grid()->IsActive() ) { 2.3) Display the grid echo and gets the grid point myView->ConvertToGrid(x,y,X,Y,Z); 2.4) Else this is the standard case } else myView->Convert(x,y,X,Y,Z);
+		%feature("autodoc", "	* Converts the projected point into the nearest grid point in the reference frame of the view corresponding to the intersection with the projection plane of the eye/view point vector and display the grid marker. Warning: When the grid is not active the result is identical to the above Convert() method. How to use: 1) Enable the grid echo display myViewer->SetGridEcho(Standard_True); 2) When application receive a move event: 2.1) Check if any object is detected if( myInteractiveContext->MoveTo(x,y) == AIS_SOD_Nothing ) { 2.2) Check if the grid is active if( myViewer->Grid()->IsActive() ) { 2.3) Display the grid echo and gets the grid point myView->ConvertToGrid(x,y,X,Y,Z); myView->Viewer()->ShowGridEcho (myView, Graphic3d_Vertex (X,Y,Z)); myView->RedrawImmediate(); 2.4) Else this is the standard case } else myView->Convert(x,y,X,Y,Z);
 
 	:param Xp:
 	:type Xp: int
@@ -2184,16 +2230,6 @@ class V3d_View : public MMgt_TShared {
 	:rtype: None
 ") AxialScale;
 		void AxialScale (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
-		%feature("compactdefaultargs") Center;
-		%feature("autodoc", "	* Returns the centre of the view.
-
-	:param Xc:
-	:type Xc: V3d_Coordinate &
-	:param Yc:
-	:type Yc: V3d_Coordinate &
-	:rtype: None
-") Center;
-		void Center (Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Size;
 		%feature("autodoc", "	* Returns the height and width of the view.
 
@@ -2347,7 +2383,7 @@ class V3d_View : public MMgt_TShared {
 ") ZCueing;
 		Standard_Boolean ZCueing (Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") ZClipping;
-		%feature("autodoc", "	* Returns current information on the ZClipping. <Depth> : Depth of plane. <Width> : Thickness around the plane. <TypeOfZclipping> : 'BACK'  'FRONT'  'SLICE'  'OFF'
+		%feature("autodoc", "	* Returns current information on the ZClipping. <Depth> : Depth of plane. <Width> : Thickness around the plane. <TypeOfZclipping> : 'BACK' 'FRONT' 'SLICE' 'OFF'
 
 	:param Depth:
 	:type Depth: Quantity_Length &
@@ -2409,65 +2445,57 @@ class V3d_View : public MMgt_TShared {
 ") Type;
 		V3d_TypeOfView Type ();
 		%feature("compactdefaultargs") Pan;
-		%feature("autodoc", "	* translates the center of the view and zooms the view. and updates the view.
+		%feature("autodoc", "	* Translates the center of the view along 'x' and 'y' axes of view projection. Can be used to perform interactive panning operation. In that case the DXp, DXp parameters specify panning relative to the point where the operation is started. @param theDXp [in] the relative panning on 'x' axis of view projection, in pixels. @param theDYp [in] the relative panning on 'y' axis of view projection, in pixels. @param theZoomFactor [in] the zooming factor. @param theToStart [in] pass True when starting panning to remember view state prior to panning for relative arguments. Passing 0 for relative panning parameter should return view panning to initial state. Performs update of view.
 
-	:param Dx:
-	:type Dx: int
-	:param Dy:
-	:type Dy: int
-	:param aZoomFactor: default value is 1
-	:type aZoomFactor: Quantity_Factor
+	:param theDXp:
+	:type theDXp: int
+	:param theDYp:
+	:type theDYp: int
+	:param theZoomFactor: default value is 1
+	:type theZoomFactor: Quantity_Factor
+	:param theToStart: default value is Standard_True
+	:type theToStart: bool
 	:rtype: None
 ") Pan;
-		void Pan (const Standard_Integer Dx,const Standard_Integer Dy,const Quantity_Factor aZoomFactor = 1);
+		void Pan (const Standard_Integer theDXp,const Standard_Integer theDYp,const Quantity_Factor theZoomFactor = 1,const Standard_Boolean theToStart = Standard_True);
 		%feature("compactdefaultargs") Zoom;
-		%feature("autodoc", "	* Zoom the view according to a zoom factor computed from the distance between the 2 mouse position <X1,Y1>,<X2,Y2>
+		%feature("autodoc", "	* Zoom the view according to a zoom factor computed from the distance between the 2 mouse position. @param theXp1 [in] the x coordinate of first mouse position, in pixels. @param theYp1 [in] the y coordinate of first mouse position, in pixels. @param theXp2 [in] the x coordinate of second mouse position, in pixels. @param theYp2 [in] the y coordinate of second mouse position, in pixels.
 
-	:param X1:
-	:type X1: int
-	:param Y1:
-	:type Y1: int
-	:param X2:
-	:type X2: int
-	:param Y2:
-	:type Y2: int
+	:param theXp1:
+	:type theXp1: int
+	:param theYp1:
+	:type theYp1: int
+	:param theXp2:
+	:type theXp2: int
+	:param theYp2:
+	:type theYp2: int
 	:rtype: None
 ") Zoom;
-		void Zoom (const Standard_Integer X1,const Standard_Integer Y1,const Standard_Integer X2,const Standard_Integer Y2);
-		%feature("compactdefaultargs") Zoom;
-		%feature("autodoc", "	* Zoom the view according to a zoom factor computed from the distance between the last and new mouse position <X,Y>
-
-	:param X:
-	:type X: int
-	:param Y:
-	:type Y: int
-	:rtype: None
-") Zoom;
-		void Zoom (const Standard_Integer X,const Standard_Integer Y);
+		void Zoom (const Standard_Integer theXp1,const Standard_Integer theYp1,const Standard_Integer theXp2,const Standard_Integer theYp2);
 		%feature("compactdefaultargs") StartZoomAtPoint;
-		%feature("autodoc", "	* Defines the point (pixel) of zooming (for the method ZoomAtPoint()).
+		%feature("autodoc", "	* Defines starting point for ZoomAtPoint view operation. @param theXp [in] the x mouse coordinate, in pixels. @param theYp [in] the y mouse coordinate, in pixels.
 
-	:param xpix:
-	:type xpix: int
-	:param ypix:
-	:type ypix: int
+	:param theXp:
+	:type theXp: int
+	:param theYp:
+	:type theYp: int
 	:rtype: None
 ") StartZoomAtPoint;
-		void StartZoomAtPoint (const Standard_Integer xpix,const Standard_Integer ypix);
+		void StartZoomAtPoint (const Standard_Integer theXp,const Standard_Integer theYp);
 		%feature("compactdefaultargs") ZoomAtPoint;
 		%feature("autodoc", "	* Zooms the model at a pixel defined by the method StartZoomAtPoint().
 
-	:param mouseStartX:
-	:type mouseStartX: int
-	:param mouseStartY:
-	:type mouseStartY: int
-	:param mouseEndX:
-	:type mouseEndX: int
-	:param mouseEndY:
-	:type mouseEndY: int
+	:param theMouseStartX:
+	:type theMouseStartX: int
+	:param theMouseStartY:
+	:type theMouseStartY: int
+	:param theMouseEndX:
+	:type theMouseEndX: int
+	:param theMouseEndY:
+	:type theMouseEndY: int
 	:rtype: None
 ") ZoomAtPoint;
-		void ZoomAtPoint (const Standard_Integer mouseStartX,const Standard_Integer mouseStartY,const Standard_Integer mouseEndX,const Standard_Integer mouseEndY);
+		void ZoomAtPoint (const Standard_Integer theMouseStartX,const Standard_Integer theMouseStartY,const Standard_Integer theMouseEndX,const Standard_Integer theMouseEndY);
 		%feature("compactdefaultargs") AxialScale;
 		%feature("autodoc", "	* Performs anisotropic scaling of <self> view along the given <Axis>. The scale factor is calculated on a basis of the mouse pointer displacement <Dx,Dy>. The calculated scale factor is then passed to SetAxialScale(Sx, Sy, Sz) method.
 
@@ -2481,7 +2509,7 @@ class V3d_View : public MMgt_TShared {
 ") AxialScale;
 		void AxialScale (const Standard_Integer Dx,const Standard_Integer Dy,const V3d_TypeOfAxe Axis);
 		%feature("compactdefaultargs") StartRotation;
-		%feature("autodoc", "	* Begin the rotation of the view arround the screen axis according to the mouse position <X,Y>. Warning: Enable rotation around the Z screen axis when <zRotationThreshold> factor is > 0 soon the distance from the start point and the center of the view is > (medium viewSize * <zRotationThreshold> ). Generally a value of 0.4 is usable to rotate around XY screen axis inside the circular treshold area and to rotate around Z screen axis outside this area.
+		%feature("autodoc", "	* Begin the rotation of the view around the screen axis according to the mouse position <X,Y>. Warning: Enable rotation around the Z screen axis when <zRotationThreshold> factor is > 0 soon the distance from the start point and the center of the view is > (medium viewSize * <zRotationThreshold> ). Generally a value of 0.4 is usable to rotate around XY screen axis inside the circular threshold area and to rotate around Z screen axis outside this area.
 
 	:param X:
 	:type X: int
@@ -2522,40 +2550,6 @@ class V3d_View : public MMgt_TShared {
 	:rtype: Handle_Visual3d_View
 ") View;
 		Handle_Visual3d_View View ();
-		%feature("compactdefaultargs") ViewMapping;
-		%feature("autodoc", "	* Returns the current mapping of the view.
-
-	:rtype: Visual3d_ViewMapping
-") ViewMapping;
-		Visual3d_ViewMapping ViewMapping ();
-		%feature("compactdefaultargs") ViewOrientation;
-		%feature("autodoc", "	* Returns the current orientation of the view.
-
-	:rtype: Visual3d_ViewOrientation
-") ViewOrientation;
-		Visual3d_ViewOrientation ViewOrientation ();
-		%feature("compactdefaultargs") TransientManagerBeginDraw;
-		%feature("autodoc", "	* Begins any graphics in the view <aView> Redraw any structured graphics in the back buffer before if <DoubleBuffer> is True. Restore the front buffer from the back before if <DoubleBuffer> is False. if <RetainMode> is True. the graphic managed itself exposure,resizing ... if <RetainMode> is False. the application must managed itself exposure,resizing ...
-
-	:param DoubleBuffer: default value is Standard_False
-	:type DoubleBuffer: bool
-	:param RetainMode: default value is Standard_False
-	:type RetainMode: bool
-	:rtype: bool
-") TransientManagerBeginDraw;
-		Standard_Boolean TransientManagerBeginDraw (const Standard_Boolean DoubleBuffer = Standard_False,const Standard_Boolean RetainMode = Standard_False);
-		%feature("compactdefaultargs") TransientManagerClearDraw;
-		%feature("autodoc", "	* Clear all transient graphics in the view <aView>
-
-	:rtype: None
-") TransientManagerClearDraw;
-		void TransientManagerClearDraw ();
-		%feature("compactdefaultargs") TransientManagerBeginAddDraw;
-		%feature("autodoc", "	* Begins any add graphics in the view <aView> Redraw any structured graphics in the back buffer before the application must managed itself exposure,resizing ... Warning: Returns True if transient drawing is enabled in  the associated view. Returns False ,if nothing works because something  is wrong for the transient principle :
-
-	:rtype: bool
-") TransientManagerBeginAddDraw;
-		Standard_Boolean TransientManagerBeginAddDraw ();
 		%feature("compactdefaultargs") SetComputedMode;
 		%feature("autodoc", "	* Switches computed HLR mode in the view
 
@@ -2584,20 +2578,6 @@ class V3d_View : public MMgt_TShared {
 	:rtype: None
 ") WindowFitAll;
 		void WindowFitAll (const Standard_Integer Xmin,const Standard_Integer Ymin,const Standard_Integer Xmax,const Standard_Integer Ymax);
-		%feature("compactdefaultargs") SetPlotter;
-		%feature("autodoc", "	* Set a plotter for plotting the contents of the view field MyPlotter
-
-	:param aPlotter:
-	:type aPlotter: Handle_Graphic3d_Plotter &
-	:rtype: void
-") SetPlotter;
-		virtual void SetPlotter (const Handle_Graphic3d_Plotter & aPlotter);
-		%feature("compactdefaultargs") Plot;
-		%feature("autodoc", "	* Create a 2D View for plotting the contents of the view
-
-	:rtype: None
-") Plot;
-		void Plot ();
 		%feature("compactdefaultargs") SetGrid;
 		%feature("autodoc", "	* Defines or Updates the definition of the grid in <self>
 
@@ -2635,7 +2615,7 @@ class V3d_View : public MMgt_TShared {
 ") Dump;
 		Standard_Boolean Dump (const char * theFile,const Graphic3d_BufferType & theBufferType = Graphic3d_BT_RGB);
 		%feature("compactdefaultargs") ToPixMap;
-		%feature("autodoc", "	* dump the full contents of the view to a pixmap of pixel size <theWidth>*<theHeight> and buffer type <theBufferType>. If <theForceCentered> is true view scene will be centered. Pixmap will be automatically (re)allocated when needed.
+		%feature("autodoc", "	* Dumps the full contents of the view to a pixmap of pixel size <theWidth> * <theHeight> and buffer type <theBufferType>. If <theToKeepAspect> is true the aspect ratio of view will be kept if <theWidth> and <theHeight> define another ratio. Pixmap will be automatically (re)allocated when needed. When dumping stereographic camera - the corresponding middle-point monographic projection will be used for dumping by default. <theStereoOptions> flags are to be used for dumping then left or right eye projections.
 
 	:param theImage:
 	:type theImage: Image_PixMap &
@@ -2645,25 +2625,13 @@ class V3d_View : public MMgt_TShared {
 	:type theHeight: int
 	:param theBufferType: default value is Graphic3d_BT_RGB
 	:type theBufferType: Graphic3d_BufferType &
-	:param theForceCentered: default value is Standard_True
-	:type theForceCentered: bool
+	:param theToKeepAspect: default value is Standard_True
+	:type theToKeepAspect: bool
+	:param theStereoOptions: default value is V3d_SDO_MONO
+	:type theStereoOptions: V3d_StereoDumpOptions
 	:rtype: bool
 ") ToPixMap;
-		Standard_Boolean ToPixMap (Image_PixMap & theImage,const Standard_Integer theWidth,const Standard_Integer theHeight,const Graphic3d_BufferType & theBufferType = Graphic3d_BT_RGB,const Standard_Boolean theForceCentered = Standard_True);
-		%feature("compactdefaultargs") SetProjModel;
-		%feature("autodoc", "	* Manages projection model
-
-	:param amOdel: default value is V3d_TPM_SCREEN
-	:type amOdel: V3d_TypeOfProjectionModel
-	:rtype: None
-") SetProjModel;
-		void SetProjModel (const V3d_TypeOfProjectionModel amOdel = V3d_TPM_SCREEN);
-		%feature("compactdefaultargs") ProjModel;
-		%feature("autodoc", "	* Returns the current projection model
-
-	:rtype: V3d_TypeOfProjectionModel
-") ProjModel;
-		V3d_TypeOfProjectionModel ProjModel ();
+		Standard_Boolean ToPixMap (Image_PixMap & theImage,const Standard_Integer theWidth,const Standard_Integer theHeight,const Graphic3d_BufferType & theBufferType = Graphic3d_BT_RGB,const Standard_Boolean theToKeepAspect = Standard_True,const V3d_StereoDumpOptions theStereoOptions = V3d_SDO_MONO);
 		%feature("compactdefaultargs") SetBackFacingModel;
 		%feature("autodoc", "	* Manages display of the back faces When <aModel> is TOBM_AUTOMATIC the object backfaces are displayed only for surface objects and never displayed for solid objects. this was the previous mode. <aModel> is TOBM_ALWAYS_DISPLAYED the object backfaces are always displayed both for surfaces or solids. <aModel> is TOBM_NEVER_DISPLAYED the object backfaces are never displayed.
 
@@ -2707,7 +2675,7 @@ class V3d_View : public MMgt_TShared {
 ") IsGLLightEnabled;
 		Standard_Boolean IsGLLightEnabled ();
 		%feature("compactdefaultargs") AddClipPlane;
-		%feature("autodoc", "	* Adds clip plane to the view. The composition of clip planes truncates the rendering space to convex volume. Number of supported clip planes can be consulted by PlaneLimit method of associated Visual3d_View. Please be aware that the planes which exceed the limit are igonred during rendering. @param thePlane [in] the clip plane to be added to view.
+		%feature("autodoc", "	* Adds clip plane to the view. The composition of clip planes truncates the rendering space to convex volume. Number of supported clip planes can be consulted by PlaneLimit method of associated Visual3d_View. Please be aware that the planes which exceed the limit are ignored during rendering. @param thePlane [in] the clip plane to be added to view.
 
 	:param thePlane:
 	:type thePlane: Graphic3d_ClipPlane_Handle &
@@ -2723,7 +2691,7 @@ class V3d_View : public MMgt_TShared {
 ") RemoveClipPlane;
 		virtual void RemoveClipPlane (const Graphic3d_ClipPlane_Handle & thePlane);
 		%feature("compactdefaultargs") SetClipPlanes;
-		%feature("autodoc", "	* Sets sequence of clip planes to the view. The planes that have been set before are removed from the view. The composition of clip planes truncates the rendering space to convex volume. Number of supported clip planes can be consulted by PlaneLimit method of associated Visual3d_View. Please be aware that the planes which exceed the limit are igonred during rendering. @param thePlanes [in] the clip planes to set.
+		%feature("autodoc", "	* Sets sequence of clip planes to the view. The planes that have been set before are removed from the view. The composition of clip planes truncates the rendering space to convex volume. Number of supported clip planes can be consulted by PlaneLimit method of associated Visual3d_View. Please be aware that the planes which exceed the limit are ignored during rendering. @param thePlanes [in] the clip planes to set.
 
 	:param thePlanes:
 	:type thePlanes: Graphic3d_SequenceOfHClipPlane &
@@ -2736,54 +2704,46 @@ class V3d_View : public MMgt_TShared {
 	:rtype: Graphic3d_SequenceOfHClipPlane
 ") GetClipPlanes;
 		const Graphic3d_SequenceOfHClipPlane & GetClipPlanes ();
-		%feature("compactdefaultargs") SetRaytracingMode;
-		%feature("autodoc", "	* enables OpenCL-based ray-tracing mode
+		%feature("compactdefaultargs") SetCamera;
+		%feature("autodoc", "	* Change camera used by view.
 
+	:param theCamera:
+	:type theCamera: Graphic3d_Camera_Handle &
 	:rtype: None
-") SetRaytracingMode;
-		void SetRaytracingMode ();
-		%feature("compactdefaultargs") SetRasterizationMode;
-		%feature("autodoc", "	* enables OpenGL-based rasterization mode
+") SetCamera;
+		void SetCamera (const Graphic3d_Camera_Handle & theCamera);
+		%feature("compactdefaultargs") Camera;
+		%feature("autodoc", "	* Returns camera object of the view. returns: handle to camera object, or NULL if 3D view does not use the camera approach.
 
-	:rtype: None
-") SetRasterizationMode;
-		void SetRasterizationMode ();
-		%feature("compactdefaultargs") EnableRaytracedShadows;
-		%feature("autodoc", "	* enables sharp shadows in OpenCL-based ray-tracing mode
+	:rtype: Graphic3d_Camera_Handle
+") Camera;
+		const Graphic3d_Camera_Handle & Camera ();
+		%feature("compactdefaultargs") RenderingParams;
+		%feature("autodoc", "	* Returns current rendering parameters and effect settings.
 
-	:rtype: None
-") EnableRaytracedShadows;
-		void EnableRaytracedShadows ();
-		%feature("compactdefaultargs") EnableRaytracedReflections;
-		%feature("autodoc", "	* enables specular reflections in OpenCL-based ray-tracing mode
+	:rtype: Graphic3d_RenderingParams
+") RenderingParams;
+		const Graphic3d_RenderingParams & RenderingParams ();
+		%feature("compactdefaultargs") ChangeRenderingParams;
+		%feature("autodoc", "	* Returns reference to current rendering parameters and effect settings.
 
-	:rtype: None
-") EnableRaytracedReflections;
-		void EnableRaytracedReflections ();
-		%feature("compactdefaultargs") EnableRaytracedAntialiasing;
-		%feature("autodoc", "	* enables antialiasing in OpenCL-based ray-tracing mode
+	:rtype: Graphic3d_RenderingParams
+") ChangeRenderingParams;
+		Graphic3d_RenderingParams & ChangeRenderingParams ();
+		%feature("compactdefaultargs") IsCullingEnabled;
+		%feature("autodoc", "	* returns flag value of objects culling mechanism
 
-	:rtype: None
-") EnableRaytracedAntialiasing;
-		void EnableRaytracedAntialiasing ();
-		%feature("compactdefaultargs") DisableRaytracedShadows;
-		%feature("autodoc", "	* disables sharp shadows in OpenCL-based ray-tracing mode
+	:rtype: bool
+") IsCullingEnabled;
+		Standard_Boolean IsCullingEnabled ();
+		%feature("compactdefaultargs") SetFrustumCulling;
+		%feature("autodoc", "	* Turn on/off automatic culling of objects outside frustrum (ON by default)
 
+	:param theMode:
+	:type theMode: bool
 	:rtype: None
-") DisableRaytracedShadows;
-		void DisableRaytracedShadows ();
-		%feature("compactdefaultargs") DisableRaytracedReflections;
-		%feature("autodoc", "	* disables specular reflections in OpenCL-based ray-tracing mode
-
-	:rtype: None
-") DisableRaytracedReflections;
-		void DisableRaytracedReflections ();
-		%feature("compactdefaultargs") DisableRaytracedAntialiasing;
-		%feature("autodoc", "	* disables antialiasing in OpenCL-based ray-tracing mode
-
-	:rtype: None
-") DisableRaytracedAntialiasing;
-		void DisableRaytracedAntialiasing ();
+") SetFrustumCulling;
+		void SetFrustumCulling (const Standard_Boolean theMode);
 };
 
 
@@ -2864,13 +2824,13 @@ class V3d_Viewer : public MMgt_TShared {
 ") CreateView;
 		Handle_V3d_View CreateView ();
 		%feature("compactdefaultargs") SetViewOn;
-		%feature("autodoc", "	* Activates all of the views of a viewer attached  to a window.
+		%feature("autodoc", "	* Activates all of the views of a viewer attached to a window.
 
 	:rtype: None
 ") SetViewOn;
 		void SetViewOn ();
 		%feature("compactdefaultargs") SetViewOn;
-		%feature("autodoc", "	* Activates a particular view in the Viewer .  Must be call if the Window attached to the view  has been Deiconified .
+		%feature("autodoc", "	* Activates a particular view in the Viewer . Must be call if the Window attached to the view has been Deiconified .
 
 	:param View:
 	:type View: Handle_V3d_View &
@@ -2878,13 +2838,13 @@ class V3d_Viewer : public MMgt_TShared {
 ") SetViewOn;
 		void SetViewOn (const Handle_V3d_View & View);
 		%feature("compactdefaultargs") SetViewOff;
-		%feature("autodoc", "	* Deactivates all the views of a Viewer  attached to a window.
+		%feature("autodoc", "	* Deactivates all the views of a Viewer attached to a window.
 
 	:rtype: None
 ") SetViewOff;
 		void SetViewOff ();
 		%feature("compactdefaultargs") SetViewOff;
-		%feature("autodoc", "	* Deactivates a particular view in the Viewer.  Must be call if the Window attached to the view  has been Iconified .
+		%feature("autodoc", "	* Deactivates a particular view in the Viewer. Must be call if the Window attached to the view has been Iconified .
 
 	:param View:
 	:type View: Handle_V3d_View &
@@ -2904,11 +2864,23 @@ class V3d_Viewer : public MMgt_TShared {
 ") UpdateLights;
 		void UpdateLights ();
 		%feature("compactdefaultargs") Redraw;
-		%feature("autodoc", "	* Redraws all the views of the Viewer even if no  modification has taken place. Must be called if  all the views of the Viewer are exposed, as for example in a global DeIconification.
+		%feature("autodoc", "	* Redraws all the views of the Viewer even if no modification has taken place. Must be called if all the views of the Viewer are exposed, as for example in a global DeIconification.
 
 	:rtype: None
 ") Redraw;
 		void Redraw ();
+		%feature("compactdefaultargs") RedrawImmediate;
+		%feature("autodoc", "	* Updates layer of immediate presentations.
+
+	:rtype: None
+") RedrawImmediate;
+		void RedrawImmediate ();
+		%feature("compactdefaultargs") Invalidate;
+		%feature("autodoc", "	* Invalidates viewer content but does not redraw it.
+
+	:rtype: None
+") Invalidate;
+		void Invalidate ();
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "	* Suppresses the Viewer.
 
@@ -2928,7 +2900,7 @@ class V3d_Viewer : public MMgt_TShared {
 ") UnHighlight;
 		void UnHighlight ();
 		%feature("compactdefaultargs") SetDefaultBackgroundColor;
-		%feature("autodoc", "	* Defines the default base colour of views attached  to the Viewer by supplying the type of colour  definition and the three component values..
+		%feature("autodoc", "	* Defines the default base colour of views attached to the Viewer by supplying the type of colour definition and the three component values..
 
 	:param Type:
 	:type Type: Quantity_TypeOfColor
@@ -2942,7 +2914,7 @@ class V3d_Viewer : public MMgt_TShared {
 ") SetDefaultBackgroundColor;
 		void SetDefaultBackgroundColor (const Quantity_TypeOfColor Type,const Quantity_Parameter V1,const Quantity_Parameter V2,const Quantity_Parameter V3);
 		%feature("compactdefaultargs") SetDefaultBackgroundColor;
-		%feature("autodoc", "	* Defines the default background colour of views  attached to the viewer by supplying the name of the  colour under the form Quantity_NOC_xxxx .
+		%feature("autodoc", "	* Defines the default background colour of views attached to the viewer by supplying the name of the colour under the form Quantity_NOC_xxxx .
 
 	:param Name:
 	:type Name: Quantity_NameOfColor
@@ -2950,7 +2922,7 @@ class V3d_Viewer : public MMgt_TShared {
 ") SetDefaultBackgroundColor;
 		void SetDefaultBackgroundColor (const Quantity_NameOfColor Name);
 		%feature("compactdefaultargs") SetDefaultBackgroundColor;
-		%feature("autodoc", "	* Defines the default background colour of views  attached to the viewer by supplying the color object
+		%feature("autodoc", "	* Defines the default background colour of views attached to the viewer by supplying the color object
 
 	:param Color:
 	:type Color: Quantity_Color &
@@ -2958,7 +2930,7 @@ class V3d_Viewer : public MMgt_TShared {
 ") SetDefaultBackgroundColor;
 		void SetDefaultBackgroundColor (const Quantity_Color & Color);
 		%feature("compactdefaultargs") SetDefaultBgGradientColors;
-		%feature("autodoc", "	* Defines the default gradient background colours of view  attached to the viewer by supplying the name of the  colours under the form Quantity_NOC_xxxx .
+		%feature("autodoc", "	* Defines the default gradient background colours of view attached to the viewer by supplying the name of the colours under the form Quantity_NOC_xxxx .
 
 	:param Name1:
 	:type Name1: Quantity_NameOfColor
@@ -2970,7 +2942,7 @@ class V3d_Viewer : public MMgt_TShared {
 ") SetDefaultBgGradientColors;
 		void SetDefaultBgGradientColors (const Quantity_NameOfColor Name1,const Quantity_NameOfColor Name2,const Aspect_GradientFillMethod FillStyle = Aspect_GFM_HOR);
 		%feature("compactdefaultargs") SetDefaultBgGradientColors;
-		%feature("autodoc", "	* Defines the default gradient background colours of views  attached to the viewer by supplying the colour objects
+		%feature("autodoc", "	* Defines the default gradient background colours of views attached to the viewer by supplying the colour objects
 
 	:param Color1:
 	:type Color1: Quantity_Color &
@@ -2982,7 +2954,7 @@ class V3d_Viewer : public MMgt_TShared {
 ") SetDefaultBgGradientColors;
 		void SetDefaultBgGradientColors (const Quantity_Color & Color1,const Quantity_Color & Color2,const Aspect_GradientFillMethod FillStyle = Aspect_GFM_HOR);
 		%feature("compactdefaultargs") SetDefaultViewSize;
-		%feature("autodoc", "	* Gives a default size for the creation of views of  the viewer.
+		%feature("autodoc", "	* Gives a default size for the creation of views of the viewer.
 
 	:param Size:
 	:type Size: Quantity_Length
@@ -2990,7 +2962,7 @@ class V3d_Viewer : public MMgt_TShared {
 ") SetDefaultViewSize;
 		void SetDefaultViewSize (const Quantity_Length Size);
 		%feature("compactdefaultargs") SetDefaultViewProj;
-		%feature("autodoc", "	* Gives the default projection for creating views  in the viewer.
+		%feature("autodoc", "	* Gives the default projection for creating views in the viewer.
 
 	:param Orientation:
 	:type Orientation: V3d_TypeOfOrientation
@@ -3042,7 +3014,7 @@ class V3d_Viewer : public MMgt_TShared {
 ") SetDefaultAngle;
 		void SetDefaultAngle (const Quantity_PlaneAngle Angle);
 		%feature("compactdefaultargs") SetUpdateMode;
-		%feature("autodoc", "	* Defines the mode of regenerating the views making  up the viewer. This can be immediate <ASAP> or  deferred <WAIT>. In this latter case, the views are  updated when the method Update(me) is called.
+		%feature("autodoc", "	* Defines the mode of regenerating the views making up the viewer. This can be immediate <ASAP> or deferred <WAIT>. In this latter case, the views are updated when the method Update(me) is called.
 
 	:param Mode:
 	:type Mode: V3d_TypeOfUpdate
@@ -3402,7 +3374,7 @@ class V3d_Viewer : public MMgt_TShared {
 ") RectangularGridValues;
 		void RectangularGridValues (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Quantity_PlaneAngle & RotationAngle);
 		%feature("compactdefaultargs") SetRectangularGridValues;
-		%feature("autodoc", "	* Sets the definition of the rectangular grid.  <XOrigin>, <YOrigin> defines the origin of the grid.  <XStep> defines the interval between 2 vertical lines.  <YStep> defines the interval between 2 horizontal lines.  <RotationAngle> defines the rotation angle of the grid.
+		%feature("autodoc", "	* Sets the definition of the rectangular grid. <XOrigin>, <YOrigin> defines the origin of the grid. <XStep> defines the interval between 2 vertical lines. <YStep> defines the interval between 2 horizontal lines. <RotationAngle> defines the rotation angle of the grid.
 
 	:param XOrigin:
 	:type XOrigin: Quantity_Length
@@ -3434,7 +3406,7 @@ class V3d_Viewer : public MMgt_TShared {
 ") CircularGridValues;
 		void CircularGridValues (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Integer &OutValue,Quantity_PlaneAngle & RotationAngle);
 		%feature("compactdefaultargs") SetCircularGridValues;
-		%feature("autodoc", "	* Sets the definition of the circular grid.  <XOrigin>, <YOrigin> defines the origin of the grid.  <RadiusStep> defines the interval between 2 circles.  <DivisionNumber> defines the section number of one half circle.  <RotationAngle> defines the rotation angle of the grid.
+		%feature("autodoc", "	* Sets the definition of the circular grid. <XOrigin>, <YOrigin> defines the origin of the grid. <RadiusStep> defines the interval between 2 circles. <DivisionNumber> defines the section number of one half circle. <RotationAngle> defines the rotation angle of the grid.
 
 	:param XOrigin:
 	:type XOrigin: Quantity_Length
@@ -3460,7 +3432,7 @@ class V3d_Viewer : public MMgt_TShared {
 ") CircularGridGraphicValues;
 		void CircularGridGraphicValues (Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") SetCircularGridGraphicValues;
-		%feature("autodoc", "	* Sets the location and the size of the grid.  <XSize> defines the width of the grid.  <YSize> defines the height of the grid.  <OffSet> defines the displacement along the plane normal.
+		%feature("autodoc", "	* Sets the location and the size of the grid. <XSize> defines the width of the grid. <YSize> defines the height of the grid. <OffSet> defines the displacement along the plane normal.
 
 	:param Radius:
 	:type Radius: Quantity_Length
@@ -3482,7 +3454,7 @@ class V3d_Viewer : public MMgt_TShared {
 ") RectangularGridGraphicValues;
 		void RectangularGridGraphicValues (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") SetRectangularGridGraphicValues;
-		%feature("autodoc", "	* Sets the location and the size of the grid.  <XSize> defines the width of the grid.  <YSize> defines the height of the grid.  <OffSet> defines the displacement along the plane normal.
+		%feature("autodoc", "	* Sets the location and the size of the grid. <XSize> defines the width of the grid. <YSize> defines the height of the grid. <OffSet> defines the displacement along the plane normal.
 
 	:param XSize:
 	:type XSize: Quantity_Length
@@ -3505,16 +3477,34 @@ class V3d_Viewer : public MMgt_TShared {
 	:rtype: None
 ") SetDefaultLights;
 		void SetDefaultLights ();
+		%feature("compactdefaultargs") ShowGridEcho;
+		%feature("autodoc", "	* Display grid echo at requested point in the view.
+
+	:param theView:
+	:type theView: Handle_V3d_View &
+	:param thePoint:
+	:type thePoint: Graphic3d_Vertex &
+	:rtype: None
+") ShowGridEcho;
+		void ShowGridEcho (const Handle_V3d_View & theView,const Graphic3d_Vertex & thePoint);
+		%feature("compactdefaultargs") HideGridEcho;
+		%feature("autodoc", "	* Temporarly hide grid echo.
+
+	:param theView:
+	:type theView: Handle_V3d_View &
+	:rtype: None
+") HideGridEcho;
+		void HideGridEcho (const Handle_V3d_View & theView);
 		%feature("compactdefaultargs") SetZLayerSettings;
 		%feature("autodoc", "	* Sets the settings for a single Z layer.
 
 	:param theLayerId:
 	:type theLayerId: int
 	:param theSettings:
-	:type theSettings: Graphic3d_ZLayerSettings
+	:type theSettings: Graphic3d_ZLayerSettings &
 	:rtype: None
 ") SetZLayerSettings;
-		void SetZLayerSettings (const Standard_Integer theLayerId,const Graphic3d_ZLayerSettings theSettings);
+		void SetZLayerSettings (const Standard_Integer theLayerId,const Graphic3d_ZLayerSettings & theSettings);
 		%feature("compactdefaultargs") ZLayerSettings;
 		%feature("autodoc", "	* Returns the settings of a single Z layer.
 
@@ -3652,184 +3642,6 @@ class Handle_V3d_AmbientLight : public Handle_V3d_Light {
     }
 };
 
-%nodefaultctor V3d_OrthographicView;
-class V3d_OrthographicView : public V3d_View {
-	public:
-		%feature("compactdefaultargs") V3d_OrthographicView;
-		%feature("autodoc", "	* Define an orthographic view in the viewer VM.
-
-	:param VM:
-	:type VM: Handle_V3d_Viewer &
-	:rtype: None
-") V3d_OrthographicView;
-		 V3d_OrthographicView (const Handle_V3d_Viewer & VM);
-		%feature("compactdefaultargs") V3d_OrthographicView;
-		%feature("autodoc", "	* Defines an orthographic view from a Perspective view. //!	 The parameters of the original view are duplicated //!	 in the resulting view (Projection,Mapping,Context) . //!	 The view thus created must be activated in a new //!	 window.
-
-	:param VM:
-	:type VM: Handle_V3d_Viewer &
-	:param V:
-	:type V: Handle_V3d_PerspectiveView &
-	:rtype: None
-") V3d_OrthographicView;
-		 V3d_OrthographicView (const Handle_V3d_Viewer & VM,const Handle_V3d_PerspectiveView & V);
-		%feature("compactdefaultargs") V3d_OrthographicView;
-		%feature("autodoc", "	* Defines one orthographic view from another. //!	 The parameters of the original view are duplicated //!	 in the resulting view. (Projection,Mapping,Context) . //!	 The view thus created must be activated in a new window.
-
-	:param VM:
-	:type VM: Handle_V3d_Viewer &
-	:param V:
-	:type V: Handle_V3d_OrthographicView &
-	:rtype: None
-") V3d_OrthographicView;
-		 V3d_OrthographicView (const Handle_V3d_Viewer & VM,const Handle_V3d_OrthographicView & V);
-		%feature("compactdefaultargs") Copy;
-		%feature("autodoc", "	:rtype: Handle_V3d_OrthographicView
-") Copy;
-		Handle_V3d_OrthographicView Copy ();
-};
-
-
-%extend V3d_OrthographicView {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_V3d_OrthographicView(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_V3d_OrthographicView::Handle_V3d_OrthographicView %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_V3d_OrthographicView;
-class Handle_V3d_OrthographicView : public Handle_V3d_View {
-
-    public:
-        // constructors
-        Handle_V3d_OrthographicView();
-        Handle_V3d_OrthographicView(const Handle_V3d_OrthographicView &aHandle);
-        Handle_V3d_OrthographicView(const V3d_OrthographicView *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_V3d_OrthographicView DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_V3d_OrthographicView {
-    V3d_OrthographicView* GetObject() {
-    return (V3d_OrthographicView*)$self->Access();
-    }
-};
-
-%nodefaultctor V3d_PerspectiveView;
-class V3d_PerspectiveView : public V3d_View {
-	public:
-		%feature("compactdefaultargs") V3d_PerspectiveView;
-		%feature("autodoc", "	* Defines a perspective view in a viewer VM. The default angle of opening is given by the viewer.
-
-	:param VM:
-	:type VM: Handle_V3d_Viewer &
-	:rtype: None
-") V3d_PerspectiveView;
-		 V3d_PerspectiveView (const Handle_V3d_Viewer & VM);
-		%feature("compactdefaultargs") V3d_PerspectiveView;
-		%feature("autodoc", "	* Creates a perspective view from the parameters //!	 of an orthographic view. The parameters of the original view are duplicated in the resulting view (Projection,Mapping,Context) . The view thus created must be activated in a new window. The default angle of opening is given by the viewer.
-
-	:param VM:
-	:type VM: Handle_V3d_Viewer &
-	:param V:
-	:type V: Handle_V3d_OrthographicView &
-	:rtype: None
-") V3d_PerspectiveView;
-		 V3d_PerspectiveView (const Handle_V3d_Viewer & VM,const Handle_V3d_OrthographicView & V);
-		%feature("compactdefaultargs") V3d_PerspectiveView;
-		%feature("autodoc", "	* Creates one perspective view from another. The parameters of the original view are duplicated in the resulting view (Projection,Mapping,Context) . The view thus created must be activated in a new window.
-
-	:param VM:
-	:type VM: Handle_V3d_Viewer &
-	:param V:
-	:type V: Handle_V3d_PerspectiveView &
-	:rtype: None
-") V3d_PerspectiveView;
-		 V3d_PerspectiveView (const Handle_V3d_Viewer & VM,const Handle_V3d_PerspectiveView & V);
-		%feature("compactdefaultargs") Copy;
-		%feature("autodoc", "	:rtype: Handle_V3d_PerspectiveView
-") Copy;
-		Handle_V3d_PerspectiveView Copy ();
-		%feature("compactdefaultargs") SetAngle;
-		%feature("autodoc", "	* Modifies the angle of opening of the perspective in RADIANS. //!	 The projection window is resized according to the //!	 formula : //!	 TAN(Angle/2) = Size/Length //!	 	Size expresses the smallest dimension of the window. //!	 Length expresses the focal length. Warning! raises BadValue from V3d //!	 if the opening angle is <= 0 or >= PI
-
-	:param Angle:
-	:type Angle: Quantity_PlaneAngle
-	:rtype: None
-") SetAngle;
-		void SetAngle (const Quantity_PlaneAngle Angle);
-		%feature("compactdefaultargs") Angle;
-		%feature("autodoc", "	* Returns the value of the angle of opening.
-
-	:rtype: Quantity_PlaneAngle
-") Angle;
-		Quantity_PlaneAngle Angle ();
-		%feature("compactdefaultargs") SetPerspective;
-		%feature("autodoc", "	* Modifies the viewing perspective volume by given //!		angle of opening of the perspective in RADIANS, aspect ratio of window width to its height and near and far clipping planes
-
-	:param Angle:
-	:type Angle: Quantity_PlaneAngle
-	:param UVRatio:
-	:type UVRatio: float
-	:param ZNear:
-	:type ZNear: float
-	:param ZFar:
-	:type ZFar: float
-	:rtype: None
-") SetPerspective;
-		void SetPerspective (const Quantity_PlaneAngle Angle,const Standard_Real UVRatio,const Standard_Real ZNear,const Standard_Real ZFar);
-};
-
-
-%extend V3d_PerspectiveView {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_V3d_PerspectiveView(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_V3d_PerspectiveView::Handle_V3d_PerspectiveView %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_V3d_PerspectiveView;
-class Handle_V3d_PerspectiveView : public Handle_V3d_View {
-
-    public:
-        // constructors
-        Handle_V3d_PerspectiveView();
-        Handle_V3d_PerspectiveView(const Handle_V3d_PerspectiveView &aHandle);
-        Handle_V3d_PerspectiveView(const V3d_PerspectiveView *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_V3d_PerspectiveView DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_V3d_PerspectiveView {
-    V3d_PerspectiveView* GetObject() {
-    return (V3d_PerspectiveView*)$self->Access();
-    }
-};
-
 %nodefaultctor V3d_PositionLight;
 class V3d_PositionLight : public V3d_Light {
 	public:
@@ -3896,7 +3708,7 @@ class V3d_PositionLight : public V3d_Light {
 ") Tracking;
 		void Tracking (const Handle_V3d_View & aView,const V3d_TypeOfPickLight WathPick,const Standard_Integer Xpix,const Standard_Integer Ypix);
 		%feature("compactdefaultargs") Display;
-		%feature("autodoc", "	* Display the graphic structure of light source in the choosen view. We have three type of representation - SIMPLE : Only the light source is displayed. - PARTIAL : The light source and the light space are  displayed. - COMPLETE : The light source, the light space and the  radius of light space are displayed. We can choose the 'SAMELAST' as parameter of representation In this case the graphic structure representation will be the last displayed.
+		%feature("autodoc", "	* Display the graphic structure of light source in the choosen view. We have three type of representation - SIMPLE : Only the light source is displayed. - PARTIAL : The light source and the light space are displayed. - COMPLETE : The light source, the light space and the radius of light space are displayed. We can choose the 'SAMELAST' as parameter of representation In this case the graphic structure representation will be the last displayed.
 
 	:param aView:
 	:type aView: Handle_V3d_View &
@@ -4031,7 +3843,7 @@ class V3d_DirectionalLight : public V3d_PositionLight {
 ") V3d_DirectionalLight;
 		 V3d_DirectionalLight (const Handle_V3d_Viewer & VM,const V3d_Coordinate Xt,const V3d_Coordinate Yt,const V3d_Coordinate Zt,const V3d_Coordinate Xp,const V3d_Coordinate Yp,const V3d_Coordinate Zp,const Quantity_NameOfColor Color = Quantity_NOC_WHITE,const Standard_Boolean Headlight = Standard_False);
 		%feature("compactdefaultargs") SetDirection;
-		%feature("autodoc", "	* Defines the direction of the light source //!	 by a predefined orientation.
+		%feature("autodoc", "	* Defines the direction of the light source by a predefined orientation.
 
 	:param Direction:
 	:type Direction: V3d_TypeOfOrientation
@@ -4075,7 +3887,7 @@ class V3d_DirectionalLight : public V3d_PositionLight {
 ") SetPosition;
 		virtual void SetPosition (const V3d_Coordinate Xp,const V3d_Coordinate Yp,const V3d_Coordinate Zp);
 		%feature("compactdefaultargs") Display;
-		%feature("autodoc", "	* Display the graphic structure of light source in the choosen view. We have three type of representation - SIMPLE : Only the light source is displayed. - PARTIAL : The light source and the light space are  displayed. - COMPLETE : The same representation as PARTIAL. We can choose the 'SAMELAST' as parameter of representation In this case the graphic structure representation will be the last displayed.
+		%feature("autodoc", "	* Display the graphic structure of light source in the choosen view. We have three type of representation - SIMPLE : Only the light source is displayed. - PARTIAL : The light source and the light space are displayed. - COMPLETE : The same representation as PARTIAL. We can choose the 'SAMELAST' as parameter of representation In this case the graphic structure representation will be the last displayed.
 
 	:param aView:
 	:type aView: Handle_V3d_View &
@@ -4164,7 +3976,7 @@ class Handle_V3d_DirectionalLight : public Handle_V3d_PositionLight {
 class V3d_PositionalLight : public V3d_PositionLight {
 	public:
 		%feature("compactdefaultargs") V3d_PositionalLight;
-		%feature("autodoc", "	* Creates an isolated light source X,Y,Z in the viewer. It is also defined by the color Color and two attenuation factors Attenuation1, Attenuation2. //!	 The resulting attenuation factor determining the //!	 illumination of a surface depends on the following //!	 formula : //!	 F = 1/(A1 + A2*Length) //!		A1,A2 being the two factors of attenuation //!	 	Length is the distance of the isolated source //!	 from the surface. Warning! raises BadValue from V3d if one of the attenuation coefficients is not between 0 et 1.
+		%feature("autodoc", "	* Creates an isolated light source X,Y,Z in the viewer. It is also defined by the color Color and two attenuation factors Attenuation1, Attenuation2. The resulting attenuation factor determining the illumination of a surface depends on the following formula : F = 1/(A1 + A2*Length) A1,A2 being the two factors of attenuation Length is the distance of the isolated source from the surface. Warning! raises BadValue from V3d if one of the attenuation coefficients is not between 0 et 1.
 
 	:param VM:
 	:type VM: Handle_V3d_Viewer &
@@ -4232,7 +4044,7 @@ class V3d_PositionalLight : public V3d_PositionLight {
 ") SetAttenuation;
 		void SetAttenuation (const Quantity_Coefficient A1,const Quantity_Coefficient A2);
 		%feature("compactdefaultargs") Display;
-		%feature("autodoc", "	* Display the graphic structure of light source in the choosen view. We have three type of representation - SIMPLE : Only the light source is displayed. - PARTIAL : The light source and the light space are  displayed. - COMPLETE : The light source, the light space and the  radius of light space are displayed. We can choose the 'SAMELAST' as parameter of representation In this case the graphic structure representation will be the last displayed.
+		%feature("autodoc", "	* Display the graphic structure of light source in the choosen view. We have three type of representation - SIMPLE : Only the light source is displayed. - PARTIAL : The light source and the light space are displayed. - COMPLETE : The light source, the light space and the radius of light space are displayed. We can choose the 'SAMELAST' as parameter of representation In this case the graphic structure representation will be the last displayed.
 
 	:param aView:
 	:type aView: Handle_V3d_View &
@@ -4307,7 +4119,7 @@ class Handle_V3d_PositionalLight : public Handle_V3d_PositionLight {
 class V3d_SpotLight : public V3d_PositionLight {
 	public:
 		%feature("compactdefaultargs") V3d_SpotLight;
-		%feature("autodoc", "	* Creates a light source of the Spot type in the viewer. The attenuation factor F which determines the illumination of a surface depends on the following formula : F = 1/(A1 + A2*Length) A1,A2 being the 2 factors of attenuation Length is the distance from the source to the surface. //!	 The default values (1.0,0.0) correspond to a minimum //!	 of attenuation . //!	 The concentration factor determines the dispersion //!	 of the light on the surface, the default value //!	 (1.0) corresponds to a minimum of dispersion . Warning! raises BadValue from V3d - //!	If one of the coefficients is not between 0 and 1 . //!	If the lighting angle is <= 0 ou > PI .
+		%feature("autodoc", "	* Creates a light source of the Spot type in the viewer. The attenuation factor F which determines the illumination of a surface depends on the following formula : F = 1/(A1 + A2*Length) A1,A2 being the 2 factors of attenuation Length is the distance from the source to the surface. The default values (1.0,0.0) correspond to a minimum of attenuation . The concentration factor determines the dispersion of the light on the surface, the default value (1.0) corresponds to a minimum of dispersion . Warning! raises BadValue from V3d - If one of the coefficients is not between 0 and 1 . If the lighting angle is <= 0 ou > PI .
 
 	:param VM:
 	:type VM: Handle_V3d_Viewer &
@@ -4333,7 +4145,7 @@ class V3d_SpotLight : public V3d_PositionLight {
 ") V3d_SpotLight;
 		 V3d_SpotLight (const Handle_V3d_Viewer & VM,const V3d_Coordinate X,const V3d_Coordinate Y,const V3d_Coordinate Z,const V3d_TypeOfOrientation Direction = V3d_XnegYnegZpos,const Quantity_NameOfColor Color = Quantity_NOC_WHITE,const Quantity_Coefficient Attenuation1 = 1.0,const Quantity_Coefficient Attenuation2 = 0.0,const Quantity_Coefficient Concentration = 1.0,const Quantity_PlaneAngle Angle = 0.523599);
 		%feature("compactdefaultargs") V3d_SpotLight;
-		%feature("autodoc", "	* Creates a light source of the Spot type in the viewer. Xt,Yt,Zt : Coordinate of light source Target. Xp,Yp,Zp : Coordinate of light source Position. The others parameters describe before. Warning! raises BadValue from V3d - //!	If one of the coefficients is not between 0 and 1 . //!	If the lighting angle is <= 0 ou > PI .
+		%feature("autodoc", "	* Creates a light source of the Spot type in the viewer. Xt,Yt,Zt : Coordinate of light source Target. Xp,Yp,Zp : Coordinate of light source Position. The others parameters describe before. Warning! raises BadValue from V3d - If one of the coefficients is not between 0 and 1 . If the lighting angle is <= 0 ou > PI .
 
 	:param VM:
 	:type VM: Handle_V3d_Viewer &
@@ -4375,7 +4187,7 @@ class V3d_SpotLight : public V3d_PositionLight {
 ") SetPosition;
 		virtual void SetPosition (const V3d_Coordinate X,const V3d_Coordinate Y,const V3d_Coordinate Z);
 		%feature("compactdefaultargs") SetDirection;
-		%feature("autodoc", "	* Defines the direction of the light source. //!	If the normal vector is NULL.
+		%feature("autodoc", "	* Defines the direction of the light source. If the normal vector is NULL.
 
 	:param Vx:
 	:type Vx: Quantity_Parameter
@@ -4387,7 +4199,7 @@ class V3d_SpotLight : public V3d_PositionLight {
 ") SetDirection;
 		void SetDirection (const Quantity_Parameter Vx,const Quantity_Parameter Vy,const Quantity_Parameter Vz);
 		%feature("compactdefaultargs") SetDirection;
-		%feature("autodoc", "	* Defines the direction of the light source //!	 according to a predefined directional vector.
+		%feature("autodoc", "	* Defines the direction of the light source according to a predefined directional vector.
 
 	:param Orientation:
 	:type Orientation: V3d_TypeOfOrientation
@@ -4395,7 +4207,7 @@ class V3d_SpotLight : public V3d_PositionLight {
 ") SetDirection;
 		void SetDirection (const V3d_TypeOfOrientation Orientation);
 		%feature("compactdefaultargs") SetAttenuation;
-		%feature("autodoc", "	* Defines the coefficients of attenuation. Warning! raises BadValue from V3d //!	 if one of the coefficient is <0 ou >1 .
+		%feature("autodoc", "	* Defines the coefficients of attenuation. Warning! raises BadValue from V3d if one of the coefficient is <0 ou >1 .
 
 	:param A1:
 	:type A1: Quantity_Coefficient
@@ -4405,7 +4217,7 @@ class V3d_SpotLight : public V3d_PositionLight {
 ") SetAttenuation;
 		void SetAttenuation (const Quantity_Coefficient A1,const Quantity_Coefficient A2);
 		%feature("compactdefaultargs") SetConcentration;
-		%feature("autodoc", "	* Defines the coefficient of concentration. //!	if the coefficient is <0 ou >1 .
+		%feature("autodoc", "	* Defines the coefficient of concentration. if the coefficient is <0 ou >1 .
 
 	:param C:
 	:type C: Quantity_Coefficient
@@ -4413,7 +4225,7 @@ class V3d_SpotLight : public V3d_PositionLight {
 ") SetConcentration;
 		void SetConcentration (const Quantity_Coefficient C);
 		%feature("compactdefaultargs") SetAngle;
-		%feature("autodoc", "	* Defines the spot angle in RADIANS. Warning: raises BadValue from from V3d //!	If the angle is <= 0 ou > PI .
+		%feature("autodoc", "	* Defines the spot angle in RADIANS. Warning: raises BadValue from from V3d If the angle is <= 0 ou > PI .
 
 	:param Angle:
 	:type Angle: Quantity_PlaneAngle
@@ -4421,7 +4233,7 @@ class V3d_SpotLight : public V3d_PositionLight {
 ") SetAngle;
 		void SetAngle (const Quantity_PlaneAngle Angle);
 		%feature("compactdefaultargs") Display;
-		%feature("autodoc", "	* Display the graphic structure of light source in the choosen view. We have three type of representation - SIMPLE : Only the light source is displayed. - PARTIAL : The light source and the light space are  displayed. - COMPLETE : The light source, the light space and the  radius of light space are displayed. We can choose the 'SAMELAST' as parameter of representation In this case the graphic structure representation will be the last displayed.
+		%feature("autodoc", "	* Display the graphic structure of light source in the choosen view. We have three type of representation - SIMPLE : Only the light source is displayed. - PARTIAL : The light source and the light space are displayed. - COMPLETE : The light source, the light space and the radius of light space are displayed. We can choose the 'SAMELAST' as parameter of representation In this case the graphic structure representation will be the last displayed.
 
 	:param aView:
 	:type aView: Handle_V3d_View &

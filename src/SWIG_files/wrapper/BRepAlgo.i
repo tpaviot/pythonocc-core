@@ -93,7 +93,7 @@ class BRepAlgo {
 ") IsValid;
 		static Standard_Boolean IsValid (const TopoDS_Shape & S);
 		%feature("compactdefaultargs") IsValid;
-		%feature("autodoc", "	* Checks if the Generated and Modified Faces from the shapes <arguments> in the shape <result> are 'correct'. The args may be empty, then all faces will be checked. If <Closed> is True, only closed shape are valid. If <GeomCtrl> is False the geometry of new  vertices and edges are not verified and the auto-intersection of new wires are not searched.
+		%feature("autodoc", "	* Checks if the Generated and Modified Faces from the shapes <arguments> in the shape <result> are 'correct'. The args may be empty, then all faces will be checked. If <Closed> is True, only closed shape are valid. If <GeomCtrl> is False the geometry of new vertices and edges are not verified and the auto-intersection of new wires are not searched.
 
 	:param theArgs:
 	:type theArgs: TopTools_ListOfShape &
@@ -336,7 +336,7 @@ class BRepAlgo_BooleanOperations {
 ") Shapes;
 		void Shapes (const TopoDS_Shape & S1,const TopoDS_Shape & S2);
 		%feature("compactdefaultargs") SetApproxParameters;
-		%feature("autodoc", "	* Sets different parameters for the curve approximations : NbPntMax : Maximum number of points to be approximated at  the same time in one curve. Tol3D, Tol2D : Tolerances to be reached by the approximation. RelativeTol : The given tolerances are relative.
+		%feature("autodoc", "	* Sets different parameters for the curve approximations : NbPntMax : Maximum number of points to be approximated at the same time in one curve. Tol3D, Tol2D : Tolerances to be reached by the approximation. RelativeTol : The given tolerances are relative.
 
 	:param NbPntMax:
 	:type NbPntMax: int
@@ -578,7 +578,7 @@ class BRepAlgo_DSAccess {
 ") Merge;
 		const TopoDS_Shape  Merge (const TopAbs_State state1);
 		%feature("compactdefaultargs") Propagate;
-		%feature("autodoc", "	* NYI Propagation of a state starting from the shape FromShape = edge or vertex of section, face or Coumpound de section. LoadShape is either S1, or S2 (see the method Load). Propagation from FromShape, on the states <what> of LoadShape. Return a Wire in 2d, a Shell in 3d. Specifications are incomplete, to be redefined for the typologies correpsonding to <FromShape> and the result : exemple : FromShape resultat  vertex  wire (or edge)  edge of section face (or shell)  compound of section shell ... ...
+		%feature("autodoc", "	* NYI Propagation of a state starting from the shape FromShape = edge or vertex of section, face or Coumpound de section. LoadShape is either S1, or S2 (see the method Load). Propagation from FromShape, on the states <what> of LoadShape. Return a Wire in 2d, a Shell in 3d. Specifications are incomplete, to be redefined for the typologies correpsonding to <FromShape> and the result : exemple : FromShape resultat vertex  wire (or edge) edge of section face (or shell) compound of section shell ... ...
 
 	:param what:
 	:type what: TopAbs_State
@@ -1096,7 +1096,7 @@ class BRepAlgo_FaceRestrictor {
 ") Init;
 		void Init (const TopoDS_Face & F,const Standard_Boolean Proj = Standard_False,const Standard_Boolean ControlOrientation = Standard_False);
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* Add the wire <W> to the set of wires. Warning: The Wires must be closed.  The edges of <W> can be modified if they have not pcurves on the surface <S> of <F>. In this case if <Proj> is false the first pcurve of the edge is positionned on <S>. if <Proj> is True ,the Pcurve On <S> is the projection of the curve 3d on <F>.
+		%feature("autodoc", "	* Add the wire <W> to the set of wires. //! Warning: The Wires must be closed. //! The edges of <W> can be modified if they have not pcurves on the surface <S> of <F>. In this case if <Proj> is false the first pcurve of the edge is positionned on <S>. if <Proj> is True ,the Pcurve On <S> is the projection of the curve 3d on <F>.
 
 	:param W:
 	:type W: TopoDS_Wire &
@@ -1564,6 +1564,12 @@ class BRepAlgo_SequenceOfSequenceOfInteger : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") BRepAlgo_SequenceOfSequenceOfInteger;
 		 BRepAlgo_SequenceOfSequenceOfInteger ();
+		%feature("compactdefaultargs") BRepAlgo_SequenceOfSequenceOfInteger;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepAlgo_SequenceOfSequenceOfInteger &
+	:rtype: None
+") BRepAlgo_SequenceOfSequenceOfInteger;
+		 BRepAlgo_SequenceOfSequenceOfInteger (const BRepAlgo_SequenceOfSequenceOfInteger & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -1886,7 +1892,7 @@ class BRepAlgo_Section : public BRepAlgo_BooleanOperation {
 ") Build;
 		void Build ();
 		%feature("compactdefaultargs") HasAncestorFaceOn1;
-		%feature("autodoc", "	* //!Identifies the ancestor faces of the new intersection edge E resulting from the last computation performed in this framework, that is, the faces of the two original shapes on which the edge E lies: - HasAncestorFaceOn1 gives the ancestor face in the first shape, and These functions return: - true if an ancestor face F is found, or - false if not. An ancestor face is identifiable for the edge E if the three following conditions are satisfied: - the first part on which this algorithm performed its last computation is a shape, that is, it was not given as a surface or a plane at the time of construction of this algorithm or at a later time by the Init1 function, - E is one of the elementary edges built by the last computation of this section algorithm, - the edge E is built on an intersection curve. In other words, E is a new edge built on the intersection curve, not on edges belonging to the intersecting shapes. To use these functions properly, you have to test the returned Boolean value before using the ancestor face: F is significant only if the returned Boolean value equals true.
+		%feature("autodoc", "	* Identifies the ancestor faces of the new intersection edge E resulting from the last computation performed in this framework, that is, the faces of the two original shapes on which the edge E lies: - HasAncestorFaceOn1 gives the ancestor face in the first shape, and These functions return: - true if an ancestor face F is found, or - false if not. An ancestor face is identifiable for the edge E if the three following conditions are satisfied: - the first part on which this algorithm performed its last computation is a shape, that is, it was not given as a surface or a plane at the time of construction of this algorithm or at a later time by the Init1 function, - E is one of the elementary edges built by the last computation of this section algorithm, - the edge E is built on an intersection curve. In other words, E is a new edge built on the intersection curve, not on edges belonging to the intersecting shapes. To use these functions properly, you have to test the returned Boolean value before using the ancestor face: F is significant only if the returned Boolean value equals true.
 
 	:param E:
 	:type E: TopoDS_Shape &

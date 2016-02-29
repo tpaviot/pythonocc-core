@@ -170,7 +170,7 @@ class PLib {
 ") Bin;
 		static Standard_Real Bin (const Standard_Integer N,const Standard_Integer P);
 		%feature("compactdefaultargs") RationalDerivative;
-		%feature("autodoc", "	* Computes the derivatives of a ratio at order <N> in dimension <Dimension>.  <Ders> is an array containing the values of the input derivatives from 0 to Min(<N>,<Degree>). For orders higher than <Degree> the inputcd /s2d1/BMDL/ derivatives are assumed to be 0.  Content of <Ders> :  x(1),x(2),...,x(Dimension),w x'(1),x'(2),...,x'(Dimension),w' x''(1),x''(2),...,x''(Dimension),w''  If <All> is false, only the derivative at order <N> is computed. <RDers> is an array of length Dimension which will contain the result :  x(1)/w , x(2)/w , ... derivated <N> times  If <All> is true all the derivatives up to order <N> are computed. <RDers> is an array of length Dimension * (N+1) which will contains :  x(1)/w , x(2)/w , ... x(1)/w , x(2)/w , ... derivated <1> times x(1)/w , x(2)/w , ... derivated <2> times ... x(1)/w , x(2)/w , ... derivated <N> times Warning: <RDers> must be dimensionned properly.
+		%feature("autodoc", "	* Computes the derivatives of a ratio at order <N> in dimension <Dimension>. //! <Ders> is an array containing the values of the input derivatives from 0 to Min(<N>,<Degree>). For orders higher than <Degree> the inputcd /s2d1/BMDL/ derivatives are assumed to be 0. //! Content of <Ders> : //! x(1),x(2),...,x(Dimension),w x'(1),x'(2),...,x'(Dimension),w' x''(1),x''(2),...,x''(Dimension),w'' //! If <All> is false, only the derivative at order <N> is computed. <RDers> is an array of length Dimension which will contain the result : //! x(1)/w , x(2)/w , ... derivated <N> times //! If <All> is true all the derivatives up to order <N> are computed. <RDers> is an array of length Dimension * (N+1) which will contains : //! x(1)/w , x(2)/w , ... x(1)/w , x(2)/w , ... derivated <1> times x(1)/w , x(2)/w , ... derivated <2> times ... x(1)/w , x(2)/w , ... derivated <N> times //! Warning: <RDers> must be dimensionned properly.
 
 	:param Degree:
 	:type Degree: int
@@ -188,7 +188,7 @@ class PLib {
 ") RationalDerivative;
 		static void RationalDerivative (const Standard_Integer Degree,const Standard_Integer N,const Standard_Integer Dimension,Standard_Real &OutValue,Standard_Real &OutValue,const Standard_Boolean All = Standard_True);
 		%feature("compactdefaultargs") RationalDerivatives;
-		%feature("autodoc", "	* Computes DerivativesRequest derivatives of a ratio at of a BSpline function of degree <Degree> dimension <Dimension>.  <PolesDerivatives> is an array containing the values of the input derivatives from 0 to <DerivativeRequest> For orders higher than <Degree> the input derivatives are assumed to be 0.  Content of <PoleasDerivatives> :  x(1),x(2),...,x(Dimension) x'(1),x'(2),...,x'(Dimension) x''(1),x''(2),...,x''(Dimension) WeightsDerivatives is an array that contains derivatives from 0 to <DerivativeRequest> After returning from the routine the array RationalDerivatives contains the following x(1)/w , x(2)/w , ... x(1)/w , x(2)/w , ... derivated once x(1)/w , x(2)/w , ... twice x(1)/w , x(2)/w , ... derivated <DerivativeRequest> times  The array RationalDerivatives and PolesDerivatives can be same since the overwrite is non destructive within the algorithm Warning: <RationalDerivates> must be dimensionned properly.
+		%feature("autodoc", "	* Computes DerivativesRequest derivatives of a ratio at of a BSpline function of degree <Degree> dimension <Dimension>. //! <PolesDerivatives> is an array containing the values of the input derivatives from 0 to <DerivativeRequest> For orders higher than <Degree> the input derivatives are assumed to be 0. //! Content of <PoleasDerivatives> : //! x(1),x(2),...,x(Dimension) x'(1),x'(2),...,x'(Dimension) x''(1),x''(2),...,x''(Dimension) //! WeightsDerivatives is an array that contains derivatives from 0 to <DerivativeRequest> After returning from the routine the array RationalDerivatives contains the following x(1)/w , x(2)/w , ... x(1)/w , x(2)/w , ... derivated once x(1)/w , x(2)/w , ... twice x(1)/w , x(2)/w , ... derivated <DerivativeRequest> times //! The array RationalDerivatives and PolesDerivatives can be same since the overwrite is non destructive within the algorithm //! Warning: <RationalDerivates> must be dimensionned properly.
 
 	:param DerivativesRequest:
 	:type DerivativesRequest: int
@@ -204,7 +204,7 @@ class PLib {
 ") RationalDerivatives;
 		static void RationalDerivatives (const Standard_Integer DerivativesRequest,const Standard_Integer Dimension,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") EvalPolynomial;
-		%feature("autodoc", "	* Performs Horner method with synthethic division for derivatives parameter <U>, with <Degree> and <Dimension>. PolynomialCoeff are stored in the following fashion c0(1) c0(2) .... c0(Dimension) c1(1) c1(2) .... c1(Dimension) cDegree(1) cDegree(2) .... cDegree(Dimension) where the polynomial is defined as :  2 Degree c0 + c1 X + c2 X + .... cDegree X  Results stores the result in the following format  f(1) f(2) .... f(Dimension) (1)  (1)  (1) f (1) f (2) .... f (Dimension) (DerivativeRequest) (DerivativeRequest) f (1)  f (Dimension)  this just evaluates the point at parameter U Warning: <Results> and <PolynomialCoeff> must be dimensioned properly
+		%feature("autodoc", "	* Performs Horner method with synthethic division for derivatives parameter <U>, with <Degree> and <Dimension>. PolynomialCoeff are stored in the following fashion c0(1) c0(2) .... c0(Dimension) c1(1) c1(2) .... c1(Dimension) //! cDegree(1) cDegree(2) .... cDegree(Dimension) where the polynomial is defined as : //! 2 Degree c0 + c1 X + c2 X + .... cDegree X //! Results stores the result in the following format //! f(1) f(2) .... f(Dimension) (1)  (1)  (1) f (1) f (2) .... f (Dimension) //! (DerivativeRequest) (DerivativeRequest) f (1)  f (Dimension) //! this just evaluates the point at parameter U //! Warning: <Results> and <PolynomialCoeff> must be dimensioned properly
 
 	:param U:
 	:type U: float
@@ -240,7 +240,7 @@ class PLib {
 ") NoDerivativeEvalPolynomial;
 		static void NoDerivativeEvalPolynomial (const Standard_Real U,const Standard_Integer Degree,const Standard_Integer Dimension,const Standard_Integer DegreeDimension,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") EvalPoly2Var;
-		%feature("autodoc", "	* Applies EvalPolynomial twice to evaluate the derivative of orders UDerivativeOrder in U, VDerivativeOrder in V at parameters U,V PolynomialCoeff are stored in the following fashion c00(1) .... c00(Dimension) c10(1) .... c10(Dimension) .... cm0(1) .... cm0(Dimension) .... c01(1) .... c01(Dimension) c11(1) .... c11(Dimension) .... cm1(1) .... cm1(Dimension) .... c0n(1) .... c0n(Dimension) c1n(1) .... c1n(Dimension) .... cmn(1) .... cmn(Dimension) where the polynomial is defined as :  2  m c00 + c10 U + c20 U + .... + cm0 U  2  m + c01 V + c11 UV + c21 U V + .... + cm1 U V  n m n + .... + c0n V + .... + cmn U V  with m = UDegree and n = VDegree  Results stores the result in the following format  f(1) f(2) .... f(Dimension) Warning: <Results> and <PolynomialCoeff> must be dimensioned properly
+		%feature("autodoc", "	* Applies EvalPolynomial twice to evaluate the derivative of orders UDerivativeOrder in U, VDerivativeOrder in V at parameters U,V //! PolynomialCoeff are stored in the following fashion c00(1) .... c00(Dimension) c10(1) .... c10(Dimension) .... cm0(1) .... cm0(Dimension) .... c01(1) .... c01(Dimension) c11(1) .... c11(Dimension) .... cm1(1) .... cm1(Dimension) .... c0n(1) .... c0n(Dimension) c1n(1) .... c1n(Dimension) .... cmn(1) .... cmn(Dimension) //! where the polynomial is defined as : 2  m c00 + c10 U + c20 U + .... + cm0 U 2  m + c01 V + c11 UV + c21 U V + .... + cm1 U V n m n + .... + c0n V + .... + cmn U V //! with m = UDegree and n = VDegree //! Results stores the result in the following format //! f(1) f(2) .... f(Dimension) //! Warning: <Results> and <PolynomialCoeff> must be dimensioned properly
 
 	:param U:
 	:type U: float
@@ -264,7 +264,7 @@ class PLib {
 ") EvalPoly2Var;
 		static void EvalPoly2Var (const Standard_Real U,const Standard_Real V,const Standard_Integer UDerivativeOrder,const Standard_Integer VDerivativeOrder,const Standard_Integer UDegree,const Standard_Integer VDegree,const Standard_Integer Dimension,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") EvalLagrange;
-		%feature("autodoc", "	* Performs the Lagrange Interpolation of given series of points with given parameters with the requested derivative order Results will store things in the following format with d = DerivativeOrder [0], [Dimension-1]  : value [Dimension], [Dimension + Dimension-1] : first derivative [d *Dimension], [d*Dimension + Dimension-1]: dth derivative
+		%feature("autodoc", "	* Performs the Lagrange Interpolation of given series of points with given parameters with the requested derivative order Results will store things in the following format with d = DerivativeOrder //! [0], [Dimension-1]  : value [Dimension], [Dimension + Dimension-1] : first derivative //! [d *Dimension], [d*Dimension + Dimension-1]: dth derivative
 
 	:param U:
 	:type U: float
@@ -284,7 +284,7 @@ class PLib {
 ") EvalLagrange;
 		static Standard_Integer EvalLagrange (const Standard_Real U,const Standard_Integer DerivativeOrder,const Standard_Integer Degree,const Standard_Integer Dimension,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") EvalCubicHermite;
-		%feature("autodoc", "	* Performs the Cubic Hermite Interpolation of given series of points with given parameters with the requested derivative order. ValueArray stores the value at the first and last parameter. It has the following format : [0], [Dimension-1]  : value at first param [Dimension], [Dimension + Dimension-1] : value at last param Derivative array stores the value of the derivatives at the first parameter and at the last parameter in the following format [0], [Dimension-1]  : derivative at   first param [Dimension], [Dimension + Dimension-1] : derivative at   last param  ParameterArray stores the first and last parameter in the following format : [0] : first parameter [1] : last parameter  Results will store things in the following format with d = DerivativeOrder [0], [Dimension-1]  : value [Dimension], [Dimension + Dimension-1] : first derivative [d *Dimension], [d*Dimension + Dimension-1]: dth derivative
+		%feature("autodoc", "	* Performs the Cubic Hermite Interpolation of given series of points with given parameters with the requested derivative order. ValueArray stores the value at the first and last parameter. It has the following format : [0], [Dimension-1]  : value at first param [Dimension], [Dimension + Dimension-1] : value at last param Derivative array stores the value of the derivatives at the first parameter and at the last parameter in the following format [0], [Dimension-1]  : derivative at first param [Dimension], [Dimension + Dimension-1] : derivative at last param //! ParameterArray stores the first and last parameter in the following format : [0] : first parameter [1] : last parameter //! Results will store things in the following format with d = DerivativeOrder //! [0], [Dimension-1]  : value [Dimension], [Dimension + Dimension-1] : first derivative //! [d *Dimension], [d*Dimension + Dimension-1]: dth derivative
 
 	:param U:
 	:type U: float
@@ -304,7 +304,7 @@ class PLib {
 ") EvalCubicHermite;
 		static Standard_Integer EvalCubicHermite (const Standard_Real U,const Standard_Integer DerivativeOrder,const Standard_Integer Dimension,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") HermiteCoefficients;
-		%feature("autodoc", "	* This build the coefficient of Hermite's polynomes on [FirstParameter, LastParameter]  if j <= FirstOrder+1 then  MatrixCoefs[i, j] = ith coefficient of the polynome H0,j-1  else  MatrixCoefs[i, j] = ith coefficient of the polynome H1,k  with k = j - FirstOrder - 2  return false if - |FirstParameter| > 100 - |LastParameter| > 100 - |FirstParameter| +|LastParameter| < 1/100 - |LastParameter - FirstParameter|  / (|FirstParameter| +|LastParameter|) < 1/100
+		%feature("autodoc", "	* This build the coefficient of Hermite's polynomes on [FirstParameter, LastParameter] //! if j <= FirstOrder+1 then //! MatrixCoefs[i, j] = ith coefficient of the polynome H0,j-1 //! else //! MatrixCoefs[i, j] = ith coefficient of the polynome H1,k with k = j - FirstOrder - 2 //! return false if - |FirstParameter| > 100 - |LastParameter| > 100 - |FirstParameter| +|LastParameter| < 1/100 - |LastParameter - FirstParameter| / (|FirstParameter| +|LastParameter|) < 1/100
 
 	:param FirstParameter:
 	:type FirstParameter: float
@@ -456,7 +456,7 @@ class PLib {
 ") VTrimming;
 		static void VTrimming (const Standard_Real V1,const Standard_Real V2,TColgp_Array2OfPnt & Coeffs,TColStd_Array2OfReal & WCoeffs);
 		%feature("compactdefaultargs") HermiteInterpolate;
-		%feature("autodoc", "	* Compute the coefficients in the canonical base of the  polynomial satisfying the given constraints  at the given parameters  The array FirstContr(i,j) i=1,Dimension j=0,FirstOrder  contains the values of the constraint at parameter FirstParameter  idem for LastConstr
+		%feature("autodoc", "	* Compute the coefficients in the canonical base of the polynomial satisfying the given constraints at the given parameters The array FirstContr(i,j) i=1,Dimension j=0,FirstOrder contains the values of the constraint at parameter FirstParameter idem for LastConstr
 
 	:param Dimension:
 	:type Dimension: int
@@ -478,7 +478,7 @@ class PLib {
 ") HermiteInterpolate;
 		static Standard_Boolean HermiteInterpolate (const Standard_Integer Dimension,const Standard_Real FirstParameter,const Standard_Real LastParameter,const Standard_Integer FirstOrder,const Standard_Integer LastOrder,const TColStd_Array2OfReal & FirstConstr,const TColStd_Array2OfReal & LastConstr,TColStd_Array1OfReal & Coefficients);
 		%feature("compactdefaultargs") JacobiParameters;
-		%feature("autodoc", "	* Compute the number of points used for integral  computations (NbGaussPoints) and the degree of Jacobi  Polynomial (WorkDegree).  ConstraintOrder has to be GeomAbs_C0, GeomAbs_C1 or GeomAbs_C2  Code: Code d' init. des parametres de discretisation.  = -5  = -4  = -3  = -2  = -1  = 1 calcul rapide avec precision moyenne.  = 2 calcul rapide avec meilleure precision.  = 3 calcul un peu plus lent avec bonne precision.  = 4 calcul lent avec la meilleure precision possible.
+		%feature("autodoc", "	* Compute the number of points used for integral computations (NbGaussPoints) and the degree of Jacobi Polynomial (WorkDegree). ConstraintOrder has to be GeomAbs_C0, GeomAbs_C1 or GeomAbs_C2 Code: Code d' init. des parametres de discretisation. = -5 = -4 = -3 = -2 = -1 = 1 calcul rapide avec precision moyenne. = 2 calcul rapide avec meilleure precision. = 3 calcul un peu plus lent avec bonne precision. = 4 calcul lent avec la meilleure precision possible.
 
 	:param ConstraintOrder:
 	:type ConstraintOrder: GeomAbs_Shape
@@ -825,11 +825,182 @@ class PLib_DoubleJacobiPolynomial {
 };
 
 
+%nodefaultctor PLib_HermitJacobi;
+class PLib_HermitJacobi : public PLib_Base {
+	public:
+		%feature("compactdefaultargs") PLib_HermitJacobi;
+		%feature("autodoc", "	* Initialize the polynomial class Degree has to be <= 30 ConstraintOrder has to be GeomAbs_C0 GeomAbs_C1 GeomAbs_C2
+
+	:param WorkDegree:
+	:type WorkDegree: int
+	:param ConstraintOrder:
+	:type ConstraintOrder: GeomAbs_Shape
+	:rtype: None
+") PLib_HermitJacobi;
+		 PLib_HermitJacobi (const Standard_Integer WorkDegree,const GeomAbs_Shape ConstraintOrder);
+		%feature("compactdefaultargs") MaxError;
+		%feature("autodoc", "	* This method computes the maximum error on the polynomial W(t) Q(t) obtained by missing the coefficients of JacCoeff from NewDegree +1 to Degree
+
+	:param Dimension:
+	:type Dimension: int
+	:param HermJacCoeff:
+	:type HermJacCoeff: float &
+	:param NewDegree:
+	:type NewDegree: int
+	:rtype: float
+") MaxError;
+		Standard_Real MaxError (const Standard_Integer Dimension,Standard_Real &OutValue,const Standard_Integer NewDegree);
+		%feature("compactdefaultargs") ReduceDegree;
+		%feature("autodoc", "	* Compute NewDegree <= MaxDegree so that MaxError is lower than Tol. MaxError can be greater than Tol if it is not possible to find a NewDegree <= MaxDegree. In this case NewDegree = MaxDegree
+
+	:param Dimension:
+	:type Dimension: int
+	:param MaxDegree:
+	:type MaxDegree: int
+	:param Tol:
+	:type Tol: float
+	:param HermJacCoeff:
+	:type HermJacCoeff: float &
+	:param NewDegree:
+	:type NewDegree: int &
+	:param MaxError:
+	:type MaxError: float &
+	:rtype: None
+") ReduceDegree;
+		void ReduceDegree (const Standard_Integer Dimension,const Standard_Integer MaxDegree,const Standard_Real Tol,Standard_Real &OutValue,Standard_Integer &OutValue,Standard_Real &OutValue);
+		%feature("compactdefaultargs") AverageError;
+		%feature("autodoc", "	:param Dimension:
+	:type Dimension: int
+	:param HermJacCoeff:
+	:type HermJacCoeff: float &
+	:param NewDegree:
+	:type NewDegree: int
+	:rtype: float
+") AverageError;
+		Standard_Real AverageError (const Standard_Integer Dimension,Standard_Real &OutValue,const Standard_Integer NewDegree);
+		%feature("compactdefaultargs") ToCoefficients;
+		%feature("autodoc", "	* Convert the polynomial P(t) = H(t) + W(t) Q(t) in the canonical base.
+
+	:param Dimension:
+	:type Dimension: int
+	:param Degree:
+	:type Degree: int
+	:param HermJacCoeff:
+	:type HermJacCoeff: TColStd_Array1OfReal &
+	:param Coefficients:
+	:type Coefficients: TColStd_Array1OfReal &
+	:rtype: None
+") ToCoefficients;
+		void ToCoefficients (const Standard_Integer Dimension,const Standard_Integer Degree,const TColStd_Array1OfReal & HermJacCoeff,TColStd_Array1OfReal & Coefficients);
+		%feature("compactdefaultargs") D0;
+		%feature("autodoc", "	* Compute the values of the basis functions in u
+
+	:param U:
+	:type U: float
+	:param BasisValue:
+	:type BasisValue: TColStd_Array1OfReal &
+	:rtype: None
+") D0;
+		void D0 (const Standard_Real U,TColStd_Array1OfReal & BasisValue);
+		%feature("compactdefaultargs") D1;
+		%feature("autodoc", "	* Compute the values and the derivatives values of the basis functions in u
+
+	:param U:
+	:type U: float
+	:param BasisValue:
+	:type BasisValue: TColStd_Array1OfReal &
+	:param BasisD1:
+	:type BasisD1: TColStd_Array1OfReal &
+	:rtype: None
+") D1;
+		void D1 (const Standard_Real U,TColStd_Array1OfReal & BasisValue,TColStd_Array1OfReal & BasisD1);
+		%feature("compactdefaultargs") D2;
+		%feature("autodoc", "	* Compute the values and the derivatives values of the basis functions in u
+
+	:param U:
+	:type U: float
+	:param BasisValue:
+	:type BasisValue: TColStd_Array1OfReal &
+	:param BasisD1:
+	:type BasisD1: TColStd_Array1OfReal &
+	:param BasisD2:
+	:type BasisD2: TColStd_Array1OfReal &
+	:rtype: None
+") D2;
+		void D2 (const Standard_Real U,TColStd_Array1OfReal & BasisValue,TColStd_Array1OfReal & BasisD1,TColStd_Array1OfReal & BasisD2);
+		%feature("compactdefaultargs") D3;
+		%feature("autodoc", "	* Compute the values and the derivatives values of the basis functions in u
+
+	:param U:
+	:type U: float
+	:param BasisValue:
+	:type BasisValue: TColStd_Array1OfReal &
+	:param BasisD1:
+	:type BasisD1: TColStd_Array1OfReal &
+	:param BasisD2:
+	:type BasisD2: TColStd_Array1OfReal &
+	:param BasisD3:
+	:type BasisD3: TColStd_Array1OfReal &
+	:rtype: None
+") D3;
+		void D3 (const Standard_Real U,TColStd_Array1OfReal & BasisValue,TColStd_Array1OfReal & BasisD1,TColStd_Array1OfReal & BasisD2,TColStd_Array1OfReal & BasisD3);
+		%feature("compactdefaultargs") WorkDegree;
+		%feature("autodoc", "	* returns WorkDegree
+
+	:rtype: int
+") WorkDegree;
+		Standard_Integer WorkDegree ();
+		%feature("compactdefaultargs") NivConstr;
+		%feature("autodoc", "	* returns NivConstr
+
+	:rtype: int
+") NivConstr;
+		Standard_Integer NivConstr ();
+};
+
+
+%extend PLib_HermitJacobi {
+	%pythoncode {
+		def GetHandle(self):
+		    try:
+		        return self.thisHandle
+		    except:
+		        self.thisHandle = Handle_PLib_HermitJacobi(self)
+		        self.thisown = False
+		        return self.thisHandle
+	}
+};
+
+%pythonappend Handle_PLib_HermitJacobi::Handle_PLib_HermitJacobi %{
+    # register the handle in the base object
+    if len(args) > 0:
+        register_handle(self, args[0])
+%}
+
+%nodefaultctor Handle_PLib_HermitJacobi;
+class Handle_PLib_HermitJacobi : public Handle_PLib_Base {
+
+    public:
+        // constructors
+        Handle_PLib_HermitJacobi();
+        Handle_PLib_HermitJacobi(const Handle_PLib_HermitJacobi &aHandle);
+        Handle_PLib_HermitJacobi(const PLib_HermitJacobi *anItem);
+        void Nullify();
+        Standard_Boolean IsNull() const;
+        static const Handle_PLib_HermitJacobi DownCast(const Handle_Standard_Transient &AnObject);
+
+};
+%extend Handle_PLib_HermitJacobi {
+    PLib_HermitJacobi* GetObject() {
+    return (PLib_HermitJacobi*)$self->Access();
+    }
+};
+
 %nodefaultctor PLib_JacobiPolynomial;
 class PLib_JacobiPolynomial : public PLib_Base {
 	public:
 		%feature("compactdefaultargs") PLib_JacobiPolynomial;
-		%feature("autodoc", "	* Initialize the polynomial class Degree has to be <= 30 ConstraintOrder has to be GeomAbs_C0  GeomAbs_C1  GeomAbs_C2
+		%feature("autodoc", "	* Initialize the polynomial class Degree has to be <= 30 ConstraintOrder has to be GeomAbs_C0 GeomAbs_C1 GeomAbs_C2
 
 	:param WorkDegree:
 	:type WorkDegree: int

@@ -355,7 +355,7 @@ class FairCurve_Energy : public math_MultipleVarFunctionWithHessian {
 ") Value;
 		virtual Standard_Boolean Value (const math_Vector & X,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Gradient;
-		%feature("autodoc", "	* //!computes the gradient <G> of the energys for the  variable <X>.  Returns True if the computation was done successfully,  False otherwise.
+		%feature("autodoc", "	* computes the gradient <G> of the energys for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 
 	:param X:
 	:type X: math_Vector &
@@ -411,7 +411,7 @@ class FairCurve_Energy : public math_MultipleVarFunctionWithHessian {
 class FairCurve_Newton : public math_NewtonMinimum {
 	public:
 		%feature("compactdefaultargs") FairCurve_Newton;
-		%feature("autodoc", "	* -- Given the starting point StartingPoint,  The tolerance required on the solution is given by  Tolerance. Iteration are stopped if (!WithSingularity) and H(F(Xi)) is not definite positive (if the smaller eigenvalue of H < Convexity) or IsConverged() returns True for 2 successives Iterations. Warning: Obsolete Constructor (because IsConverged can not be redefined with this. )
+		%feature("autodoc", "	* -- Given the starting point StartingPoint, The tolerance required on the solution is given by Tolerance. Iteration are stopped if (!WithSingularity) and H(F(Xi)) is not definite positive (if the smaller eigenvalue of H < Convexity) or IsConverged() returns True for 2 successives Iterations. Warning: Obsolete Constructor (because IsConverged can not be redefined with this. )
 
 	:param F:
 	:type F: math_MultipleVarFunctionWithHessian &
@@ -431,7 +431,7 @@ class FairCurve_Newton : public math_NewtonMinimum {
 ") FairCurve_Newton;
 		 FairCurve_Newton (math_MultipleVarFunctionWithHessian & F,const math_Vector & StartingPoint,const Standard_Real SpatialTolerance = 1.0e-7,const Standard_Real CriteriumTolerance = 1.0e-2,const Standard_Integer NbIterations = 40,const Standard_Real Convexity = 1.0e-6,const Standard_Boolean WithSingularity = Standard_True);
 		%feature("compactdefaultargs") FairCurve_Newton;
-		%feature("autodoc", "	* The tolerance required on the solution is given by  Tolerance. Iteration are stopped if (!WithSingularity) and H(F(Xi)) is not definite positive (if the smaller eigenvalue of H < Convexity)  or IsConverged() returns True for 2 successives Iterations. Warning: This constructor do not computation
+		%feature("autodoc", "	* The tolerance required on the solution is given by Tolerance. Iteration are stopped if (!WithSingularity) and H(F(Xi)) is not definite positive (if the smaller eigenvalue of H < Convexity) or IsConverged() returns True for 2 successives Iterations. Warning: This constructor do not computation
 
 	:param F:
 	:type F: math_MultipleVarFunctionWithHessian &

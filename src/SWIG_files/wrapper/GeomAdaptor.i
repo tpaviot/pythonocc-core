@@ -148,7 +148,7 @@ class GeomAdaptor_Curve : public Adaptor3d_Curve {
 ") NbIntervals;
 		Standard_Integer NbIntervals (const GeomAbs_Shape S);
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
 	:param T:
 	:type T: TColStd_Array1OfReal &
@@ -200,7 +200,7 @@ class GeomAdaptor_Curve : public Adaptor3d_Curve {
 ") D0;
 		void D0 (const Standard_Real U,gp_Pnt & P);
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	* Computes the point of parameter U on the curve with its first derivative. Warning : On the specific case of BSplineCurve: if the curve is cut in interval of continuity at least C1, the derivatives are computed on the current interval. else the derivatives are computed on the basis curve.
+		%feature("autodoc", "	* Computes the point of parameter U on the curve with its first derivative. //! Warning : On the specific case of BSplineCurve: if the curve is cut in interval of continuity at least C1, the derivatives are computed on the current interval. else the derivatives are computed on the basis curve.
 
 	:param U:
 	:type U: float
@@ -212,7 +212,7 @@ class GeomAdaptor_Curve : public Adaptor3d_Curve {
 ") D1;
 		void D1 (const Standard_Real U,gp_Pnt & P,gp_Vec & V);
 		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "	* Returns the point P of parameter U, the first and second derivatives V1 and V2. Warning : On the specific case of BSplineCurve: if the curve is cut in interval of continuity at least C2, the derivatives are computed on the current interval. else the derivatives are computed on the basis curve.
+		%feature("autodoc", "	* Returns the point P of parameter U, the first and second derivatives V1 and V2. //! Warning : On the specific case of BSplineCurve: if the curve is cut in interval of continuity at least C2, the derivatives are computed on the current interval. else the derivatives are computed on the basis curve.
 
 	:param U:
 	:type U: float
@@ -226,7 +226,7 @@ class GeomAdaptor_Curve : public Adaptor3d_Curve {
 ") D2;
 		void D2 (const Standard_Real U,gp_Pnt & P,gp_Vec & V1,gp_Vec & V2);
 		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "	* Returns the point P of parameter U, the first, the second and the third derivative. Warning : On the specific case of BSplineCurve: if the curve is cut in interval of continuity at least C3, the derivatives are computed on the current interval. else the derivatives are computed on the basis curve.
+		%feature("autodoc", "	* Returns the point P of parameter U, the first, the second and the third derivative. //! Warning : On the specific case of BSplineCurve: if the curve is cut in interval of continuity at least C3, the derivatives are computed on the current interval. else the derivatives are computed on the basis curve.
 
 	:param U:
 	:type U: float
@@ -308,13 +308,13 @@ class GeomAdaptor_Curve : public Adaptor3d_Curve {
 ") NbKnots;
 		Standard_Integer NbKnots ();
 		%feature("compactdefaultargs") Bezier;
-		%feature("autodoc", "	* this will NOT make a copy of the  Bezier Curve : If you want to modify  the Curve please make a copy yourself  Also it will NOT trim the surface to  myFirst/Last.
+		%feature("autodoc", "	* this will NOT make a copy of the Bezier Curve : If you want to modify the Curve please make a copy yourself Also it will NOT trim the surface to myFirst/Last.
 
 	:rtype: Handle_Geom_BezierCurve
 ") Bezier;
 		Handle_Geom_BezierCurve Bezier ();
 		%feature("compactdefaultargs") BSpline;
-		%feature("autodoc", "	* this will NOT make a copy of the  BSpline Curve : If you want to modify  the Curve please make a copy yourself  Also it will NOT trim the surface to  myFirst/Last.
+		%feature("autodoc", "	* this will NOT make a copy of the BSpline Curve : If you want to modify the Curve please make a copy yourself Also it will NOT trim the surface to myFirst/Last.
 
 	:rtype: Handle_Geom_BSplineCurve
 ") BSpline;
@@ -654,7 +654,7 @@ class GeomAdaptor_Surface : public Adaptor3d_Surface {
 ") D0;
 		void D0 (const Standard_Real U,const Standard_Real V,gp_Pnt & P);
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	* Computes the point and the first derivatives on the surface. Warning : On the specific case of BSplineSurface: if the surface is cut in interval of continuity at least C1, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface.
+		%feature("autodoc", "	* Computes the point and the first derivatives on the surface. //! Warning : On the specific case of BSplineSurface: if the surface is cut in interval of continuity at least C1, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface.
 
 	:param U:
 	:type U: float
@@ -670,7 +670,7 @@ class GeomAdaptor_Surface : public Adaptor3d_Surface {
 ") D1;
 		void D1 (const Standard_Real U,const Standard_Real V,gp_Pnt & P,gp_Vec & D1U,gp_Vec & D1V);
 		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "	* Computes the point, the first and second derivatives on the surface. Warning : On the specific case of BSplineSurface: if the surface is cut in interval of continuity at least C2, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface.
+		%feature("autodoc", "	* Computes the point, the first and second derivatives on the surface. //! Warning : On the specific case of BSplineSurface: if the surface is cut in interval of continuity at least C2, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface.
 
 	:param U:
 	:type U: float
@@ -692,7 +692,7 @@ class GeomAdaptor_Surface : public Adaptor3d_Surface {
 ") D2;
 		void D2 (const Standard_Real U,const Standard_Real V,gp_Pnt & P,gp_Vec & D1U,gp_Vec & D1V,gp_Vec & D2U,gp_Vec & D2V,gp_Vec & D2UV);
 		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "	* Computes the point, the first, second and third derivatives on the surface. Warning : On the specific case of BSplineSurface: if the surface is cut in interval of continuity at least C3, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface.
+		%feature("autodoc", "	* Computes the point, the first, second and third derivatives on the surface. //! Warning : On the specific case of BSplineSurface: if the surface is cut in interval of continuity at least C3, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface.
 
 	:param U:
 	:type U: float
@@ -722,7 +722,7 @@ class GeomAdaptor_Surface : public Adaptor3d_Surface {
 ") D3;
 		void D3 (const Standard_Real U,const Standard_Real V,gp_Pnt & P,gp_Vec & D1U,gp_Vec & D1V,gp_Vec & D2U,gp_Vec & D2V,gp_Vec & D2UV,gp_Vec & D3U,gp_Vec & D3V,gp_Vec & D3UUV,gp_Vec & D3UVV);
 		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "	* Computes the derivative of order Nu in the direction U and Nv in the direction V at the point P(U, V). Warning : On the specific case of BSplineSurface: if the surface is cut in interval of continuity CN, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+		%feature("autodoc", "	* Computes the derivative of order Nu in the direction U and Nv in the direction V at the point P(U, V). //! Warning : On the specific case of BSplineSurface: if the surface is cut in interval of continuity CN, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
 
 	:param U:
 	:type U: float
@@ -736,7 +736,7 @@ class GeomAdaptor_Surface : public Adaptor3d_Surface {
 ") DN;
 		gp_Vec DN (const Standard_Real U,const Standard_Real V,const Standard_Integer Nu,const Standard_Integer Nv);
 		%feature("compactdefaultargs") UResolution;
-		%feature("autodoc", "	* Returns the parametric U resolution corresponding  to the real space resolution <R3d>.
+		%feature("autodoc", "	* Returns the parametric U resolution corresponding to the real space resolution <R3d>.
 
 	:param R3d:
 	:type R3d: float
@@ -744,7 +744,7 @@ class GeomAdaptor_Surface : public Adaptor3d_Surface {
 ") UResolution;
 		Standard_Real UResolution (const Standard_Real R3d);
 		%feature("compactdefaultargs") VResolution;
-		%feature("autodoc", "	* Returns the parametric V resolution corresponding  to the real space resolution <R3d>.
+		%feature("autodoc", "	* Returns the parametric V resolution corresponding to the real space resolution <R3d>.
 
 	:param R3d:
 	:type R3d: float

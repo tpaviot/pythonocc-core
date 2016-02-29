@@ -1003,7 +1003,7 @@ class Quantity_Array2OfColor {
 class Quantity_Color {
 	public:
 		%feature("compactdefaultargs") Quantity_Color;
-		%feature("autodoc", "	* Creates a colour with the default value of //!	 Colour name : YELLOW
+		%feature("autodoc", "	* Creates a colour with the default value of Colour name : YELLOW
 
 	:rtype: None
 ") Quantity_Color;
@@ -1017,7 +1017,7 @@ class Quantity_Color {
 ") Quantity_Color;
 		 Quantity_Color (const Quantity_NameOfColor AName);
 		%feature("compactdefaultargs") Quantity_Color;
-		%feature("autodoc", "	* Creates a colour according to the definition system //!	 TypeOfColor. //!	 TOC_RGB : <R1> the value of red between 0. and 1. //!		 <R2> the value of green between 0. and 1. //!		 <R3> the value of blue between 0. and 1. //!	 TOC_HLS : <R1> is the hue angle in degrees, 0. being red //!	 	 <R2> is the lightness between 0. and 1. //!		 <R3> is the saturation between 0. and 1.
+		%feature("autodoc", "	* Creates a colour according to the definition system TypeOfColor. TOC_RGB : <R1> the value of red between 0. and 1. <R2> the value of green between 0. and 1. <R3> the value of blue between 0. and 1. //! TOC_HLS : <R1> is the hue angle in degrees, 0. being red <R2> is the lightness between 0. and 1. <R3> is the saturation between 0. and 1.
 
 	:param R1:
 	:type R1: Quantity_Parameter
@@ -1031,7 +1031,7 @@ class Quantity_Color {
 ") Quantity_Color;
 		 Quantity_Color (const Quantity_Parameter R1,const Quantity_Parameter R2,const Quantity_Parameter R3,const Quantity_TypeOfColor AType);
 		%feature("compactdefaultargs") Assign;
-		%feature("autodoc", "	* Updates the colour <self> from the definition of the //!	 colour <Other>.
+		%feature("autodoc", "	* Updates the colour <self> from the definition of the colour <Other>.
 
 	:param Other:
 	:type Other: Quantity_Color &
@@ -1045,7 +1045,7 @@ class Quantity_Color {
 ") operator=;
 		Quantity_Color & operator = (const Quantity_Color & Other);
 		%feature("compactdefaultargs") ChangeContrast;
-		%feature("autodoc", "	* Increases or decreases the contrast by <ADelta>. //!	 <ADelta> is a percentage. Any value greater than zero //!	 will increase the contrast. //!	 The variation is expressed as a percentage of the //!	 current value. //!	 It is a variation of the saturation.
+		%feature("autodoc", "	* Increases or decreases the contrast by <ADelta>. <ADelta> is a percentage. Any value greater than zero will increase the contrast. The variation is expressed as a percentage of the current value. It is a variation of the saturation.
 
 	:param ADelta:
 	:type ADelta: Quantity_Rate
@@ -1053,7 +1053,7 @@ class Quantity_Color {
 ") ChangeContrast;
 		void ChangeContrast (const Quantity_Rate ADelta);
 		%feature("compactdefaultargs") ChangeIntensity;
-		%feature("autodoc", "	* Increases or decreases the intensity by <ADelta>. //!	 <ADelta> is a percentage. Any value greater than zero //!	 will increase the intensity. //!	 The variation is expressed as a percentage of the //!	 current value. //!	 It is a variation of the lightness.
+		%feature("autodoc", "	* Increases or decreases the intensity by <ADelta>. <ADelta> is a percentage. Any value greater than zero will increase the intensity. The variation is expressed as a percentage of the current value. It is a variation of the lightness.
 
 	:param ADelta:
 	:type ADelta: Quantity_Rate
@@ -1061,7 +1061,7 @@ class Quantity_Color {
 ") ChangeIntensity;
 		void ChangeIntensity (const Quantity_Rate ADelta);
 		%feature("compactdefaultargs") SetValues;
-		%feature("autodoc", "	* Updates the colour <self> from the definition of the //!	 colour <AName>.
+		%feature("autodoc", "	* Updates the colour <self> from the definition of the colour <AName>.
 
 	:param AName:
 	:type AName: Quantity_NameOfColor
@@ -1069,7 +1069,7 @@ class Quantity_Color {
 ") SetValues;
 		void SetValues (const Quantity_NameOfColor AName);
 		%feature("compactdefaultargs") SetValues;
-		%feature("autodoc", "	* Updates a colour according to the mode specified by //!	 TypeOfColor //!	 TOC_RGB : <R1> the value of red between 0. and 1. //!		 <R2> the value of green between 0. and 1. //!		 <R3> the value of blue between 0. and 1. //!	 TOC_HLS : <R1> is the hue angle in degrees, 0. being red //!	 	 <R2> is the lightness between 0. and 1. //!		 <R3> is the saturation between 0. and 1.
+		%feature("autodoc", "	* Updates a colour according to the mode specified by TypeOfColor TOC_RGB : <R1> the value of red between 0. and 1. <R2> the value of green between 0. and 1. <R3> the value of blue between 0. and 1. //! TOC_HLS : <R1> is the hue angle in degrees, 0. being red <R2> is the lightness between 0. and 1. <R3> is the saturation between 0. and 1.
 
 	:param R1:
 	:type R1: Quantity_Parameter
@@ -1083,7 +1083,7 @@ class Quantity_Color {
 ") SetValues;
 		void SetValues (const Quantity_Parameter R1,const Quantity_Parameter R2,const Quantity_Parameter R3,const Quantity_TypeOfColor AType);
 		%feature("compactdefaultargs") Delta;
-		%feature("autodoc", "	* Returns the percentage change of contrast and intensity //!	 between <self> and <AColor>. //!	 <DC> and <DI> are percentages, either positive or negative. //!	 The calculation is with respect to the current value of <self> //!	 If <DC> is positive then <self> is more contrasty. //!	 If <DI> is positive then <self> is more intense.
+		%feature("autodoc", "	* Returns the percentage change of contrast and intensity between <self> and <AColor>. <DC> and <DI> are percentages, either positive or negative. The calculation is with respect to the current value of <self> If <DC> is positive then <self> is more contrasty. If <DI> is positive then <self> is more intense.
 
 	:param AColor:
 	:type AColor: Quantity_Color &
@@ -1095,7 +1095,7 @@ class Quantity_Color {
 ") Delta;
 		void Delta (const Quantity_Color & AColor,Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") Distance;
-		%feature("autodoc", "	* Returns the distance between two colours. It's a //!	 value between 0 and the square root of 3 //!	 (the black/white distance)
+		%feature("autodoc", "	* Returns the distance between two colours. It's a value between 0 and the square root of 3 (the black/white distance)
 
 	:param AColor:
 	:type AColor: Quantity_Color &
@@ -1111,25 +1111,25 @@ class Quantity_Color {
 ") SquareDistance;
 		Standard_Real SquareDistance (const Quantity_Color & AColor);
 		%feature("compactdefaultargs") Blue;
-		%feature("autodoc", "	* Returns the Blue component (quantity of blue) of the //!	 color <self>.
+		%feature("autodoc", "	* Returns the Blue component (quantity of blue) of the color <self>.
 
 	:rtype: Quantity_Parameter
 ") Blue;
 		Quantity_Parameter Blue ();
 		%feature("compactdefaultargs") Green;
-		%feature("autodoc", "	* Returns the Green component (quantity of green) of the //!	 color <self>.
+		%feature("autodoc", "	* Returns the Green component (quantity of green) of the color <self>.
 
 	:rtype: Quantity_Parameter
 ") Green;
 		Quantity_Parameter Green ();
 		%feature("compactdefaultargs") Hue;
-		%feature("autodoc", "	* Returns the Hue component (hue angle) of the //!	 color <self>.
+		%feature("autodoc", "	* Returns the Hue component (hue angle) of the color <self>.
 
 	:rtype: Quantity_Parameter
 ") Hue;
 		Quantity_Parameter Hue ();
 		%feature("compactdefaultargs") IsDifferent;
-		%feature("autodoc", "	* Returns Standard_True if the distance between <self> and //!	 <Other> is greater than Epsilon ().
+		%feature("autodoc", "	* Returns Standard_True if the distance between <self> and <Other> is greater than Epsilon ().
 
 	:param Other:
 	:type Other: Quantity_Color &
@@ -1173,7 +1173,7 @@ class Quantity_Color {
                 return False
         }
         		%feature("compactdefaultargs") Light;
-		%feature("autodoc", "	* Returns the Light component (value of the lightness) of the //!	 color <self>.
+		%feature("autodoc", "	* Returns the Light component (value of the lightness) of the color <self>.
 
 	:rtype: Quantity_Parameter
 ") Light;
@@ -1185,13 +1185,13 @@ class Quantity_Color {
 ") Name;
 		Quantity_NameOfColor Name ();
 		%feature("compactdefaultargs") Red;
-		%feature("autodoc", "	* Returns the Red component (quantity of red) of the //!	 color <self>.
+		%feature("autodoc", "	* Returns the Red component (quantity of red) of the color <self>.
 
 	:rtype: Quantity_Parameter
 ") Red;
 		Quantity_Parameter Red ();
 		%feature("compactdefaultargs") Saturation;
-		%feature("autodoc", "	* Returns the Saturation component (value of the saturation) //!	 of the color <self>.
+		%feature("autodoc", "	* Returns the Saturation component (value of the saturation) of the color <self>.
 
 	:rtype: Quantity_Parameter
 ") Saturation;
@@ -1211,7 +1211,7 @@ class Quantity_Color {
 ") Values;
 		void Values (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,const Quantity_TypeOfColor AType);
 		%feature("compactdefaultargs") SetEpsilon;
-		%feature("autodoc", "	* Sets the specified value used to compare <self> and //!	 an other color in IsDifferent and in IsEqual methods. Warning: The default value is 0.0001
+		%feature("autodoc", "	* Sets the specified value used to compare <self> and an other color in IsDifferent and in IsEqual methods. Warning: The default value is 0.0001
 
 	:param AnEpsilon:
 	:type AnEpsilon: Quantity_Parameter
@@ -1219,13 +1219,13 @@ class Quantity_Color {
 ") SetEpsilon;
 		static void SetEpsilon (const Quantity_Parameter AnEpsilon);
 		%feature("compactdefaultargs") Epsilon;
-		%feature("autodoc", "	* Returns the specified value used to compare <self> and //!	 an other color in IsDifferent and in IsEqual methods.
+		%feature("autodoc", "	* Returns the specified value used to compare <self> and an other color in IsDifferent and in IsEqual methods.
 
 	:rtype: Quantity_Parameter
 ") Epsilon;
 		static Quantity_Parameter Epsilon ();
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "	* Returns the name of the colour for which the RGB components //!	 are nearest to <R>, <G> and <B>.
+		%feature("autodoc", "	* Returns the name of the colour for which the RGB components are nearest to <R>, <G> and <B>.
 
 	:param R:
 	:type R: Quantity_Parameter
@@ -1244,6 +1244,16 @@ class Quantity_Color {
 	:rtype: char *
 ") StringName;
 		static char * StringName (const Quantity_NameOfColor AColor);
+		%feature("compactdefaultargs") ColorFromName;
+		%feature("autodoc", "	* Finds color from predefined names. For example, the name of the color which corresponds to 'BLACK' is Quantity_NOC_BLACK. Returns false if name is unknown.
+
+	:param theName:
+	:type theName: char *
+	:param theColor:
+	:type theColor: Quantity_NameOfColor &
+	:rtype: bool
+") ColorFromName;
+		static Standard_Boolean ColorFromName (const char * theName,Quantity_NameOfColor & theColor);
 		%feature("compactdefaultargs") HlsRgb;
 		%feature("autodoc", "	* Converts HLS components into RGB ones.
 
@@ -1401,7 +1411,7 @@ class Quantity_Date {
 ") Quantity_Date;
 		 Quantity_Date ();
 		%feature("compactdefaultargs") Quantity_Date;
-		%feature("autodoc", "	* Constructs a date from the year yyyy, the month mm, the day dd, the hour hh, the minute mn, the second ss, the millisecond mis (defaulted to 0) and the microsecond mics (defaulted to 0).. With: 1 <= mm <= 12  1 <= dd <= max number of days of <mm>  1979 <= yyyy  0 <= hh <= 23  0 <= mn <= 59  0 <= ss <= 59  0 <= mis <= 999  0 <= mics <= 999 Exceptions Quantity_DateDefinitionError if mm, dd, hh, mn, ss, mis and mics are not the components of the valid date.
+		%feature("autodoc", "	* Constructs a date from the year yyyy, the month mm, the day dd, the hour hh, the minute mn, the second ss, the millisecond mis (defaulted to 0) and the microsecond mics (defaulted to 0).. With: 1 <= mm <= 12 1 <= dd <= max number of days of <mm> 1979 <= yyyy 0 <= hh <= 23 0 <= mn <= 59 0 <= ss <= 59 0 <= mis <= 999 0 <= mics <= 999 Exceptions Quantity_DateDefinitionError if mm, dd, hh, mn, ss, mis and mics are not the components of the valid date.
 
 	:param mm:
 	:type mm: int
@@ -1764,7 +1774,7 @@ class Handle_Quantity_HArray1OfColor : public Handle_MMgt_TShared {
 class Quantity_Period {
 	public:
 		%feature("compactdefaultargs") Quantity_Period;
-		%feature("autodoc", "	* Creates a Period With: 0 <= dd  0 <= hh  0 <= mn  0 <= ss  0 <= mis  0 <= mics
+		%feature("autodoc", "	* Creates a Period With: 0 <= dd 0 <= hh 0 <= mn 0 <= ss 0 <= mis 0 <= mics
 
 	:param dd:
 	:type dd: int
@@ -1926,7 +1936,7 @@ class Quantity_Period {
 ") operator>;
 		Standard_Boolean operator > (const Quantity_Period & anOther);
 		%feature("compactdefaultargs") IsValid;
-		%feature("autodoc", "	* Checks the validity of a Period in form (dd,hh,mn,ss,mil,mic) With: 0 <= dd  0 <= hh  0 <= mn  0 <= ss  0 <= mis  0 <= mics
+		%feature("autodoc", "	* Checks the validity of a Period in form (dd,hh,mn,ss,mil,mic) With: 0 <= dd 0 <= hh 0 <= mn 0 <= ss 0 <= mis 0 <= mics
 
 	:param dd:
 	:type dd: int
@@ -1944,7 +1954,7 @@ class Quantity_Period {
 ") IsValid;
 		static Standard_Boolean IsValid (const Standard_Integer dd,const Standard_Integer hh,const Standard_Integer mn,const Standard_Integer ss,const Standard_Integer mis = 0,const Standard_Integer mics = 0);
 		%feature("compactdefaultargs") IsValid;
-		%feature("autodoc", "	* Checks the validity of a Period in form (ss,mic) With: 0 <= ss  0 <= mics
+		%feature("autodoc", "	* Checks the validity of a Period in form (ss,mic) With: 0 <= ss 0 <= mics
 
 	:param ss:
 	:type ss: int

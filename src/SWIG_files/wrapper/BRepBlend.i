@@ -192,7 +192,7 @@ class BRepBlend_AppFuncRoot : public Approx_SweepFunction {
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals (const GeomAbs_Shape S);
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
 	:param T:
 	:type T: TColStd_Array1OfReal &
@@ -1022,7 +1022,9 @@ class BRepBlend_Extremity {
 ") BRepBlend_Extremity;
 		 BRepBlend_Extremity ();
 		%feature("compactdefaultargs") BRepBlend_Extremity;
-		%feature("autodoc", "	:param P:
+		%feature("autodoc", "	* Creates an extremity on a surface
+
+	:param P:
 	:type P: gp_Pnt
 	:param U:
 	:type U: float
@@ -1036,7 +1038,9 @@ class BRepBlend_Extremity {
 ") BRepBlend_Extremity;
 		 BRepBlend_Extremity (const gp_Pnt & P,const Standard_Real U,const Standard_Real V,const Standard_Real Param,const Standard_Real Tol);
 		%feature("compactdefaultargs") BRepBlend_Extremity;
-		%feature("autodoc", "	:param P:
+		%feature("autodoc", "	* Creates an extremity on a surface. This extremity matches the vertex <Vtx>.
+
+	:param P:
 	:type P: gp_Pnt
 	:param U:
 	:type U: float
@@ -1052,7 +1056,9 @@ class BRepBlend_Extremity {
 ") BRepBlend_Extremity;
 		 BRepBlend_Extremity (const gp_Pnt & P,const Standard_Real U,const Standard_Real V,const Standard_Real Param,const Standard_Real Tol,const Handle_Adaptor3d_HVertex & Vtx);
 		%feature("compactdefaultargs") BRepBlend_Extremity;
-		%feature("autodoc", "	:param P:
+		%feature("autodoc", "	* Creates an extremity on a curve
+
+	:param P:
 	:type P: gp_Pnt
 	:param W:
 	:type W: float
@@ -1064,7 +1070,9 @@ class BRepBlend_Extremity {
 ") BRepBlend_Extremity;
 		 BRepBlend_Extremity (const gp_Pnt & P,const Standard_Real W,const Standard_Real Param,const Standard_Real Tol);
 		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param P:
+		%feature("autodoc", "	* Set the values for an extremity on a surface.
+
+	:param P:
 	:type P: gp_Pnt
 	:param U:
 	:type U: float
@@ -1078,7 +1086,9 @@ class BRepBlend_Extremity {
 ") SetValue;
 		void SetValue (const gp_Pnt & P,const Standard_Real U,const Standard_Real V,const Standard_Real Param,const Standard_Real Tol);
 		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param P:
+		%feature("autodoc", "	* Set the values for an extremity on a surface.This extremity matches the vertex <Vtx>.
+
+	:param P:
 	:type P: gp_Pnt
 	:param U:
 	:type U: float
@@ -1094,7 +1104,9 @@ class BRepBlend_Extremity {
 ") SetValue;
 		void SetValue (const gp_Pnt & P,const Standard_Real U,const Standard_Real V,const Standard_Real Param,const Standard_Real Tol,const Handle_Adaptor3d_HVertex & Vtx);
 		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "	:param P:
+		%feature("autodoc", "	* Set the values for an extremity on curve.
+
+	:param P:
 	:type P: gp_Pnt
 	:param W:
 	:type W: float
@@ -1106,35 +1118,49 @@ class BRepBlend_Extremity {
 ") SetValue;
 		void SetValue (const gp_Pnt & P,const Standard_Real W,const Standard_Real Param,const Standard_Real Tol);
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:rtype: gp_Pnt
+		%feature("autodoc", "	* This method returns the value of the point in 3d space.
+
+	:rtype: gp_Pnt
 ") Value;
 		const gp_Pnt  Value ();
 		%feature("compactdefaultargs") SetTangent;
-		%feature("autodoc", "	:param Tangent:
+		%feature("autodoc", "	* Set the tangent vector for an extremity on a surface.
+
+	:param Tangent:
 	:type Tangent: gp_Vec
 	:rtype: None
 ") SetTangent;
 		void SetTangent (const gp_Vec & Tangent);
 		%feature("compactdefaultargs") HasTangent;
-		%feature("autodoc", "	:rtype: bool
+		%feature("autodoc", "	* Returns True if the Tangent is stored.
+
+	:rtype: bool
 ") HasTangent;
 		Standard_Boolean HasTangent ();
 		%feature("compactdefaultargs") Tangent;
-		%feature("autodoc", "	:rtype: gp_Vec
+		%feature("autodoc", "	* This method returns the value of tangent in 3d space.
+
+	:rtype: gp_Vec
 ") Tangent;
 		const gp_Vec  Tangent ();
 		%feature("compactdefaultargs") Tolerance;
-		%feature("autodoc", "	:rtype: float
+		%feature("autodoc", "	* This method returns the fuzziness on the point in 3d space.
+
+	:rtype: float
 ") Tolerance;
 		Standard_Real Tolerance ();
 		%feature("compactdefaultargs") SetVertex;
-		%feature("autodoc", "	:param V:
+		%feature("autodoc", "	* Set the values for an extremity on a curve.
+
+	:param V:
 	:type V: Handle_Adaptor3d_HVertex &
 	:rtype: None
 ") SetVertex;
 		void SetVertex (const Handle_Adaptor3d_HVertex & V);
 		%feature("compactdefaultargs") AddArc;
-		%feature("autodoc", "	:param A:
+		%feature("autodoc", "	* Sets the values of a point which is on the arc A, at parameter Param.
+
+	:param A:
 	:type A: Handle_Adaptor2d_HCurve2d &
 	:param Param:
 	:type Param: float
@@ -1146,7 +1172,9 @@ class BRepBlend_Extremity {
 ") AddArc;
 		void AddArc (const Handle_Adaptor2d_HCurve2d & A,const Standard_Real Param,const IntSurf_Transition & TLine,const IntSurf_Transition & TArc);
 		%feature("compactdefaultargs") Parameters;
-		%feature("autodoc", "	:param U:
+		%feature("autodoc", "	* This method returns the parameters of the point on the concerned surface.
+
+	:param U:
 	:type U: float &
 	:param V:
 	:type V: float &
@@ -1154,15 +1182,21 @@ class BRepBlend_Extremity {
 ") Parameters;
 		void Parameters (Standard_Real &OutValue,Standard_Real &OutValue);
 		%feature("compactdefaultargs") IsVertex;
-		%feature("autodoc", "	:rtype: bool
+		%feature("autodoc", "	* Returns Standard_True when the point coincide with an existing vertex.
+
+	:rtype: bool
 ") IsVertex;
 		Standard_Boolean IsVertex ();
 		%feature("compactdefaultargs") Vertex;
-		%feature("autodoc", "	:rtype: Handle_Adaptor3d_HVertex
+		%feature("autodoc", "	* Returns the vertex when IsVertex returns Standard_True.
+
+	:rtype: Handle_Adaptor3d_HVertex
 ") Vertex;
 		Handle_Adaptor3d_HVertex Vertex ();
 		%feature("compactdefaultargs") NbPointOnRst;
-		%feature("autodoc", "	:rtype: int
+		%feature("autodoc", "	* Returns the number of arc containing the extremity. If the method returns 0, the point is inside the surface. Otherwise, the extremity lies on at least 1 arc, and all the information (arc, parameter, transitions) are given by the point on restriction (PointOnRst) returned by the next method.
+
+	:rtype: int
 ") NbPointOnRst;
 		Standard_Integer NbPointOnRst ();
 		%feature("compactdefaultargs") PointOnRst;
@@ -1182,396 +1216,6 @@ class BRepBlend_Extremity {
 };
 
 
-class BRepBlend_HCurve2dTool {
-	public:
-		%feature("compactdefaultargs") FirstParameter;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor2d_HCurve2d &
-	:rtype: float
-") FirstParameter;
-		static Standard_Real FirstParameter (const Handle_Adaptor2d_HCurve2d & C);
-		%feature("compactdefaultargs") LastParameter;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor2d_HCurve2d &
-	:rtype: float
-") LastParameter;
-		static Standard_Real LastParameter (const Handle_Adaptor2d_HCurve2d & C);
-		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor2d_HCurve2d &
-	:rtype: GeomAbs_Shape
-") Continuity;
-		static GeomAbs_Shape Continuity (const Handle_Adaptor2d_HCurve2d & C);
-		%feature("compactdefaultargs") NbIntervals;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor2d_HCurve2d &
-	:param S:
-	:type S: GeomAbs_Shape
-	:rtype: int
-") NbIntervals;
-		static Standard_Integer NbIntervals (const Handle_Adaptor2d_HCurve2d & C,const GeomAbs_Shape S);
-		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor2d_HCurve2d &
-	:param T:
-	:type T: TColStd_Array1OfReal &
-	:param S:
-	:type S: GeomAbs_Shape
-	:rtype: void
-") Intervals;
-		static void Intervals (const Handle_Adaptor2d_HCurve2d & C,TColStd_Array1OfReal & T,const GeomAbs_Shape S);
-		%feature("compactdefaultargs") IsClosed;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor2d_HCurve2d &
-	:rtype: bool
-") IsClosed;
-		static Standard_Boolean IsClosed (const Handle_Adaptor2d_HCurve2d & C);
-		%feature("compactdefaultargs") IsPeriodic;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor2d_HCurve2d &
-	:rtype: bool
-") IsPeriodic;
-		static Standard_Boolean IsPeriodic (const Handle_Adaptor2d_HCurve2d & C);
-		%feature("compactdefaultargs") Period;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor2d_HCurve2d &
-	:rtype: float
-") Period;
-		static Standard_Real Period (const Handle_Adaptor2d_HCurve2d & C);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor2d_HCurve2d &
-	:param U:
-	:type U: float
-	:rtype: gp_Pnt2d
-") Value;
-		static gp_Pnt2d Value (const Handle_Adaptor2d_HCurve2d & C,const Standard_Real U);
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor2d_HCurve2d &
-	:param U:
-	:type U: float
-	:param P:
-	:type P: gp_Pnt2d
-	:rtype: void
-") D0;
-		static void D0 (const Handle_Adaptor2d_HCurve2d & C,const Standard_Real U,gp_Pnt2d & P);
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor2d_HCurve2d &
-	:param U:
-	:type U: float
-	:param P:
-	:type P: gp_Pnt2d
-	:param V:
-	:type V: gp_Vec2d
-	:rtype: void
-") D1;
-		static void D1 (const Handle_Adaptor2d_HCurve2d & C,const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V);
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor2d_HCurve2d &
-	:param U:
-	:type U: float
-	:param P:
-	:type P: gp_Pnt2d
-	:param V1:
-	:type V1: gp_Vec2d
-	:param V2:
-	:type V2: gp_Vec2d
-	:rtype: void
-") D2;
-		static void D2 (const Handle_Adaptor2d_HCurve2d & C,const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2);
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor2d_HCurve2d &
-	:param U:
-	:type U: float
-	:param P:
-	:type P: gp_Pnt2d
-	:param V1:
-	:type V1: gp_Vec2d
-	:param V2:
-	:type V2: gp_Vec2d
-	:param V3:
-	:type V3: gp_Vec2d
-	:rtype: void
-") D3;
-		static void D3 (const Handle_Adaptor2d_HCurve2d & C,const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2,gp_Vec2d & V3);
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor2d_HCurve2d &
-	:param U:
-	:type U: float
-	:param N:
-	:type N: int
-	:rtype: gp_Vec2d
-") DN;
-		static gp_Vec2d DN (const Handle_Adaptor2d_HCurve2d & C,const Standard_Real U,const Standard_Integer N);
-		%feature("compactdefaultargs") Resolution;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor2d_HCurve2d &
-	:param R3d:
-	:type R3d: float
-	:rtype: float
-") Resolution;
-		static Standard_Real Resolution (const Handle_Adaptor2d_HCurve2d & C,const Standard_Real R3d);
-		%feature("compactdefaultargs") GetType;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor2d_HCurve2d &
-	:rtype: GeomAbs_CurveType
-") GetType;
-		static GeomAbs_CurveType GetType (const Handle_Adaptor2d_HCurve2d & C);
-		%feature("compactdefaultargs") Line;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor2d_HCurve2d &
-	:rtype: gp_Lin2d
-") Line;
-		static gp_Lin2d Line (const Handle_Adaptor2d_HCurve2d & C);
-		%feature("compactdefaultargs") Circle;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor2d_HCurve2d &
-	:rtype: gp_Circ2d
-") Circle;
-		static gp_Circ2d Circle (const Handle_Adaptor2d_HCurve2d & C);
-		%feature("compactdefaultargs") Ellipse;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor2d_HCurve2d &
-	:rtype: gp_Elips2d
-") Ellipse;
-		static gp_Elips2d Ellipse (const Handle_Adaptor2d_HCurve2d & C);
-		%feature("compactdefaultargs") Hyperbola;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor2d_HCurve2d &
-	:rtype: gp_Hypr2d
-") Hyperbola;
-		static gp_Hypr2d Hyperbola (const Handle_Adaptor2d_HCurve2d & C);
-		%feature("compactdefaultargs") Parabola;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor2d_HCurve2d &
-	:rtype: gp_Parab2d
-") Parabola;
-		static gp_Parab2d Parabola (const Handle_Adaptor2d_HCurve2d & C);
-		%feature("compactdefaultargs") Bezier;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor2d_HCurve2d &
-	:rtype: Handle_Geom2d_BezierCurve
-") Bezier;
-		static Handle_Geom2d_BezierCurve Bezier (const Handle_Adaptor2d_HCurve2d & C);
-		%feature("compactdefaultargs") BSpline;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor2d_HCurve2d &
-	:rtype: Handle_Geom2d_BSplineCurve
-") BSpline;
-		static Handle_Geom2d_BSplineCurve BSpline (const Handle_Adaptor2d_HCurve2d & C);
-		%feature("compactdefaultargs") NbSamples;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor2d_HCurve2d &
-	:param U0:
-	:type U0: float
-	:param U1:
-	:type U1: float
-	:rtype: int
-") NbSamples;
-		static Standard_Integer NbSamples (const Handle_Adaptor2d_HCurve2d & C,const Standard_Real U0,const Standard_Real U1);
-};
-
-
-class BRepBlend_HCurveTool {
-	public:
-		%feature("compactdefaultargs") FirstParameter;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor3d_HCurve &
-	:rtype: float
-") FirstParameter;
-		static Standard_Real FirstParameter (const Handle_Adaptor3d_HCurve & C);
-		%feature("compactdefaultargs") LastParameter;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor3d_HCurve &
-	:rtype: float
-") LastParameter;
-		static Standard_Real LastParameter (const Handle_Adaptor3d_HCurve & C);
-		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor3d_HCurve &
-	:rtype: GeomAbs_Shape
-") Continuity;
-		static GeomAbs_Shape Continuity (const Handle_Adaptor3d_HCurve & C);
-		%feature("compactdefaultargs") NbIntervals;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor3d_HCurve &
-	:param S:
-	:type S: GeomAbs_Shape
-	:rtype: int
-") NbIntervals;
-		static Standard_Integer NbIntervals (const Handle_Adaptor3d_HCurve & C,const GeomAbs_Shape S);
-		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor3d_HCurve &
-	:param T:
-	:type T: TColStd_Array1OfReal &
-	:param S:
-	:type S: GeomAbs_Shape
-	:rtype: void
-") Intervals;
-		static void Intervals (const Handle_Adaptor3d_HCurve & C,TColStd_Array1OfReal & T,const GeomAbs_Shape S);
-		%feature("compactdefaultargs") IsClosed;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor3d_HCurve &
-	:rtype: bool
-") IsClosed;
-		static Standard_Boolean IsClosed (const Handle_Adaptor3d_HCurve & C);
-		%feature("compactdefaultargs") IsPeriodic;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor3d_HCurve &
-	:rtype: bool
-") IsPeriodic;
-		static Standard_Boolean IsPeriodic (const Handle_Adaptor3d_HCurve & C);
-		%feature("compactdefaultargs") Period;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor3d_HCurve &
-	:rtype: float
-") Period;
-		static Standard_Real Period (const Handle_Adaptor3d_HCurve & C);
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor3d_HCurve &
-	:param U:
-	:type U: float
-	:rtype: gp_Pnt
-") Value;
-		static gp_Pnt Value (const Handle_Adaptor3d_HCurve & C,const Standard_Real U);
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor3d_HCurve &
-	:param U:
-	:type U: float
-	:param P:
-	:type P: gp_Pnt
-	:rtype: void
-") D0;
-		static void D0 (const Handle_Adaptor3d_HCurve & C,const Standard_Real U,gp_Pnt & P);
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor3d_HCurve &
-	:param U:
-	:type U: float
-	:param P:
-	:type P: gp_Pnt
-	:param V:
-	:type V: gp_Vec
-	:rtype: void
-") D1;
-		static void D1 (const Handle_Adaptor3d_HCurve & C,const Standard_Real U,gp_Pnt & P,gp_Vec & V);
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor3d_HCurve &
-	:param U:
-	:type U: float
-	:param P:
-	:type P: gp_Pnt
-	:param V1:
-	:type V1: gp_Vec
-	:param V2:
-	:type V2: gp_Vec
-	:rtype: void
-") D2;
-		static void D2 (const Handle_Adaptor3d_HCurve & C,const Standard_Real U,gp_Pnt & P,gp_Vec & V1,gp_Vec & V2);
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor3d_HCurve &
-	:param U:
-	:type U: float
-	:param P:
-	:type P: gp_Pnt
-	:param V1:
-	:type V1: gp_Vec
-	:param V2:
-	:type V2: gp_Vec
-	:param V3:
-	:type V3: gp_Vec
-	:rtype: void
-") D3;
-		static void D3 (const Handle_Adaptor3d_HCurve & C,const Standard_Real U,gp_Pnt & P,gp_Vec & V1,gp_Vec & V2,gp_Vec & V3);
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor3d_HCurve &
-	:param U:
-	:type U: float
-	:param N:
-	:type N: int
-	:rtype: gp_Vec
-") DN;
-		static gp_Vec DN (const Handle_Adaptor3d_HCurve & C,const Standard_Real U,const Standard_Integer N);
-		%feature("compactdefaultargs") Resolution;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor3d_HCurve &
-	:param R3d:
-	:type R3d: float
-	:rtype: float
-") Resolution;
-		static Standard_Real Resolution (const Handle_Adaptor3d_HCurve & C,const Standard_Real R3d);
-		%feature("compactdefaultargs") GetType;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor3d_HCurve &
-	:rtype: GeomAbs_CurveType
-") GetType;
-		static GeomAbs_CurveType GetType (const Handle_Adaptor3d_HCurve & C);
-		%feature("compactdefaultargs") Line;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor3d_HCurve &
-	:rtype: gp_Lin
-") Line;
-		static gp_Lin Line (const Handle_Adaptor3d_HCurve & C);
-		%feature("compactdefaultargs") Circle;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor3d_HCurve &
-	:rtype: gp_Circ
-") Circle;
-		static gp_Circ Circle (const Handle_Adaptor3d_HCurve & C);
-		%feature("compactdefaultargs") Ellipse;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor3d_HCurve &
-	:rtype: gp_Elips
-") Ellipse;
-		static gp_Elips Ellipse (const Handle_Adaptor3d_HCurve & C);
-		%feature("compactdefaultargs") Hyperbola;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor3d_HCurve &
-	:rtype: gp_Hypr
-") Hyperbola;
-		static gp_Hypr Hyperbola (const Handle_Adaptor3d_HCurve & C);
-		%feature("compactdefaultargs") Parabola;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor3d_HCurve &
-	:rtype: gp_Parab
-") Parabola;
-		static gp_Parab Parabola (const Handle_Adaptor3d_HCurve & C);
-		%feature("compactdefaultargs") Bezier;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor3d_HCurve &
-	:rtype: Handle_Geom_BezierCurve
-") Bezier;
-		static Handle_Geom_BezierCurve Bezier (const Handle_Adaptor3d_HCurve & C);
-		%feature("compactdefaultargs") BSpline;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor3d_HCurve &
-	:rtype: Handle_Geom_BSplineCurve
-") BSpline;
-		static Handle_Geom_BSplineCurve BSpline (const Handle_Adaptor3d_HCurve & C);
-		%feature("compactdefaultargs") NbSamples;
-		%feature("autodoc", "	:param C:
-	:type C: Handle_Adaptor3d_HCurve &
-	:param U0:
-	:type U0: float
-	:param U1:
-	:type U1: float
-	:rtype: int
-") NbSamples;
-		static Standard_Integer NbSamples (const Handle_Adaptor3d_HCurve & C,const Standard_Real U0,const Standard_Real U1);
-};
-
-
 %nodefaultctor BRepBlend_Line;
 class BRepBlend_Line : public MMgt_TShared {
 	public:
@@ -1580,23 +1224,31 @@ class BRepBlend_Line : public MMgt_TShared {
 ") BRepBlend_Line;
 		 BRepBlend_Line ();
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "	:rtype: None
+		%feature("autodoc", "	* Clears the content of the line.
+
+	:rtype: None
 ") Clear;
 		void Clear ();
 		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "	:param P:
+		%feature("autodoc", "	* Adds a point in the line.
+
+	:param P:
 	:type P: Blend_Point &
 	:rtype: None
 ") Append;
 		void Append (const Blend_Point & P);
 		%feature("compactdefaultargs") Prepend;
-		%feature("autodoc", "	:param P:
+		%feature("autodoc", "	* Adds a point in the line at the first place.
+
+	:param P:
 	:type P: Blend_Point &
 	:rtype: None
 ") Prepend;
 		void Prepend (const Blend_Point & P);
 		%feature("compactdefaultargs") InsertBefore;
-		%feature("autodoc", "	:param Index:
+		%feature("autodoc", "	* Adds a point in the line at the first place.
+
+	:param Index:
 	:type Index: int
 	:param P:
 	:type P: Blend_Point &
@@ -1604,7 +1256,9 @@ class BRepBlend_Line : public MMgt_TShared {
 ") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Blend_Point & P);
 		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	:param FromIndex:
+		%feature("autodoc", "	* Removes from <self> all the items of positions between <FromIndex> and <ToIndex>. Raises an exception if the indices are out of bounds.
+
+	:param FromIndex:
 	:type FromIndex: int
 	:param ToIndex:
 	:type ToIndex: int
@@ -1612,7 +1266,9 @@ class BRepBlend_Line : public MMgt_TShared {
 ") Remove;
 		void Remove (const Standard_Integer FromIndex,const Standard_Integer ToIndex);
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	:param TranS1:
+		%feature("autodoc", "	* Sets the value of the transition of the line on S1 and the line on S2.
+
+	:param TranS1:
 	:type TranS1: IntSurf_TypeTrans
 	:param TranS2:
 	:type TranS2: IntSurf_TypeTrans
@@ -1620,13 +1276,17 @@ class BRepBlend_Line : public MMgt_TShared {
 ") Set;
 		void Set (const IntSurf_TypeTrans TranS1,const IntSurf_TypeTrans TranS2);
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	:param Trans:
+		%feature("autodoc", "	* Sets the value of the transition of the line on a surface
+
+	:param Trans:
 	:type Trans: IntSurf_TypeTrans
 	:rtype: None
 ") Set;
 		void Set (const IntSurf_TypeTrans Trans);
 		%feature("compactdefaultargs") SetStartPoints;
-		%feature("autodoc", "	:param StartPt1:
+		%feature("autodoc", "	* Sets the values of the start points for the line.
+
+	:param StartPt1:
 	:type StartPt1: BRepBlend_Extremity &
 	:param StartPt2:
 	:type StartPt2: BRepBlend_Extremity &
@@ -1634,7 +1294,9 @@ class BRepBlend_Line : public MMgt_TShared {
 ") SetStartPoints;
 		void SetStartPoints (const BRepBlend_Extremity & StartPt1,const BRepBlend_Extremity & StartPt2);
 		%feature("compactdefaultargs") SetEndPoints;
-		%feature("autodoc", "	:param EndPt1:
+		%feature("autodoc", "	* Sets tne values of the end points for the line.
+
+	:param EndPt1:
 	:type EndPt1: BRepBlend_Extremity &
 	:param EndPt2:
 	:type EndPt2: BRepBlend_Extremity &
@@ -1642,41 +1304,59 @@ class BRepBlend_Line : public MMgt_TShared {
 ") SetEndPoints;
 		void SetEndPoints (const BRepBlend_Extremity & EndPt1,const BRepBlend_Extremity & EndPt2);
 		%feature("compactdefaultargs") NbPoints;
-		%feature("autodoc", "	:rtype: int
+		%feature("autodoc", "	* Returns the number of points in the line.
+
+	:rtype: int
 ") NbPoints;
 		Standard_Integer NbPoints ();
 		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "	:param Index:
+		%feature("autodoc", "	* Returns the point of range Index.
+
+	:param Index:
 	:type Index: int
 	:rtype: Blend_Point
 ") Point;
 		const Blend_Point & Point (const Standard_Integer Index);
 		%feature("compactdefaultargs") TransitionOnS1;
-		%feature("autodoc", "	:rtype: IntSurf_TypeTrans
+		%feature("autodoc", "	* Returns the type of the transition of the line defined on the first surface. The transition is 'constant' along the line. The transition is IN if the line is oriented in such a way that the system of vectors (N,DRac,T) is right-handed, where N is the normal to the first surface at a point P, DRac is a vector tangent to the blending patch, oriented towards the valid part of this patch, T is the tangent to the line on S1 at P. The transitioon is OUT when the system of vectors is left-handed.
+
+	:rtype: IntSurf_TypeTrans
 ") TransitionOnS1;
 		IntSurf_TypeTrans TransitionOnS1 ();
 		%feature("compactdefaultargs") TransitionOnS2;
-		%feature("autodoc", "	:rtype: IntSurf_TypeTrans
+		%feature("autodoc", "	* Returns the type of the transition of the line defined on the second surface. The transition is 'constant' along the line.
+
+	:rtype: IntSurf_TypeTrans
 ") TransitionOnS2;
 		IntSurf_TypeTrans TransitionOnS2 ();
 		%feature("compactdefaultargs") StartPointOnFirst;
-		%feature("autodoc", "	:rtype: BRepBlend_Extremity
+		%feature("autodoc", "	* Returns the start point on S1.
+
+	:rtype: BRepBlend_Extremity
 ") StartPointOnFirst;
 		const BRepBlend_Extremity & StartPointOnFirst ();
 		%feature("compactdefaultargs") StartPointOnSecond;
-		%feature("autodoc", "	:rtype: BRepBlend_Extremity
+		%feature("autodoc", "	* Returns the start point on S2
+
+	:rtype: BRepBlend_Extremity
 ") StartPointOnSecond;
 		const BRepBlend_Extremity & StartPointOnSecond ();
 		%feature("compactdefaultargs") EndPointOnFirst;
-		%feature("autodoc", "	:rtype: BRepBlend_Extremity
+		%feature("autodoc", "	* Returns the end point on S1.
+
+	:rtype: BRepBlend_Extremity
 ") EndPointOnFirst;
 		const BRepBlend_Extremity & EndPointOnFirst ();
 		%feature("compactdefaultargs") EndPointOnSecond;
-		%feature("autodoc", "	:rtype: BRepBlend_Extremity
+		%feature("autodoc", "	* Returns the point on S2.
+
+	:rtype: BRepBlend_Extremity
 ") EndPointOnSecond;
 		const BRepBlend_Extremity & EndPointOnSecond ();
 		%feature("compactdefaultargs") TransitionOnS;
-		%feature("autodoc", "	:rtype: IntSurf_TypeTrans
+		%feature("autodoc", "	* Returns the type of the transition of the line defined on the surface.
+
+	:rtype: IntSurf_TypeTrans
 ") TransitionOnS;
 		IntSurf_TypeTrans TransitionOnS ();
 };
@@ -1723,11 +1403,15 @@ class Handle_BRepBlend_Line : public Handle_MMgt_TShared {
 class BRepBlend_PointOnRst {
 	public:
 		%feature("compactdefaultargs") BRepBlend_PointOnRst;
-		%feature("autodoc", "	:rtype: None
+		%feature("autodoc", "	* Empty constructor.
+
+	:rtype: None
 ") BRepBlend_PointOnRst;
 		 BRepBlend_PointOnRst ();
 		%feature("compactdefaultargs") BRepBlend_PointOnRst;
-		%feature("autodoc", "	:param A:
+		%feature("autodoc", "	* Creates the PointOnRst on the arc A, at parameter Param, with the transition TLine on the walking line, and TArc on the arc A.
+
+	:param A:
 	:type A: Handle_Adaptor2d_HCurve2d &
 	:param Param:
 	:type Param: float
@@ -1739,7 +1423,9 @@ class BRepBlend_PointOnRst {
 ") BRepBlend_PointOnRst;
 		 BRepBlend_PointOnRst (const Handle_Adaptor2d_HCurve2d & A,const Standard_Real Param,const IntSurf_Transition & TLine,const IntSurf_Transition & TArc);
 		%feature("compactdefaultargs") SetArc;
-		%feature("autodoc", "	:param A:
+		%feature("autodoc", "	* Sets the values of a point which is on the arc A, at parameter Param.
+
+	:param A:
 	:type A: Handle_Adaptor2d_HCurve2d &
 	:param Param:
 	:type Param: float
@@ -1751,19 +1437,27 @@ class BRepBlend_PointOnRst {
 ") SetArc;
 		void SetArc (const Handle_Adaptor2d_HCurve2d & A,const Standard_Real Param,const IntSurf_Transition & TLine,const IntSurf_Transition & TArc);
 		%feature("compactdefaultargs") Arc;
-		%feature("autodoc", "	:rtype: Handle_Adaptor2d_HCurve2d
+		%feature("autodoc", "	* Returns the arc of restriction containing the vertex.
+
+	:rtype: Handle_Adaptor2d_HCurve2d
 ") Arc;
 		Handle_Adaptor2d_HCurve2d Arc ();
 		%feature("compactdefaultargs") TransitionOnLine;
-		%feature("autodoc", "	:rtype: IntSurf_Transition
+		%feature("autodoc", "	* Returns the transition of the point on the line on surface.
+
+	:rtype: IntSurf_Transition
 ") TransitionOnLine;
 		const IntSurf_Transition & TransitionOnLine ();
 		%feature("compactdefaultargs") TransitionOnArc;
-		%feature("autodoc", "	:rtype: IntSurf_Transition
+		%feature("autodoc", "	* Returns the transition of the point on the arc returned by Arc().
+
+	:rtype: IntSurf_Transition
 ") TransitionOnArc;
 		const IntSurf_Transition & TransitionOnArc ();
 		%feature("compactdefaultargs") ParameterOnArc;
-		%feature("autodoc", "	:rtype: float
+		%feature("autodoc", "	* Returns the parameter of the point on the arc returned by the method Arc().
+
+	:rtype: float
 ") ParameterOnArc;
 		Standard_Real ParameterOnArc ();
 };
@@ -2790,6 +2484,12 @@ class BRepBlend_SequenceOfLine : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") BRepBlend_SequenceOfLine;
 		 BRepBlend_SequenceOfLine ();
+		%feature("compactdefaultargs") BRepBlend_SequenceOfLine;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepBlend_SequenceOfLine &
+	:rtype: None
+") BRepBlend_SequenceOfLine;
+		 BRepBlend_SequenceOfLine (const BRepBlend_SequenceOfLine & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -2922,6 +2622,12 @@ class BRepBlend_SequenceOfPointOnRst : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") BRepBlend_SequenceOfPointOnRst;
 		 BRepBlend_SequenceOfPointOnRst ();
+		%feature("compactdefaultargs") BRepBlend_SequenceOfPointOnRst;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepBlend_SequenceOfPointOnRst &
+	:rtype: None
+") BRepBlend_SequenceOfPointOnRst;
+		 BRepBlend_SequenceOfPointOnRst (const BRepBlend_SequenceOfPointOnRst & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;

@@ -307,7 +307,7 @@ class TopOpeBRep_DSFiller {
 ") PShapeClassifier;
 		TopOpeBRepTool_PShapeClassifier PShapeClassifier ();
 		%feature("compactdefaultargs") Insert;
-		%feature("autodoc", "	* Stores in <DS> the intersections of <S1> and <S2>. if orientFORWARD = True  S FORWARD,REVERSED --> FORWARD  S EXTERNAL,INTERNAL --> EXTERNAL,INTERNAL
+		%feature("autodoc", "	* Stores in <DS> the intersections of <S1> and <S2>. if orientFORWARD = True S FORWARD,REVERSED --> FORWARD S EXTERNAL,INTERNAL --> EXTERNAL,INTERNAL
 
 	:param S1:
 	:type S1: TopoDS_Shape &
@@ -321,7 +321,7 @@ class TopOpeBRep_DSFiller {
 ") Insert;
 		void Insert (const TopoDS_Shape & S1,const TopoDS_Shape & S2,const Handle_TopOpeBRepDS_HDataStructure & HDS,const Standard_Boolean orientFORWARD = Standard_True);
 		%feature("compactdefaultargs") InsertIntersection;
-		%feature("autodoc", "	* Stores in <DS> the intersections of <S1> and <S2>. if orientFORWARD = True  S FORWAR,REVERSED --> FORWARD  S EXTERNAL,INTERNAL --> EXTERNAL,INTERNAL
+		%feature("autodoc", "	* Stores in <DS> the intersections of <S1> and <S2>. if orientFORWARD = True S FORWAR,REVERSED --> FORWARD S EXTERNAL,INTERNAL --> EXTERNAL,INTERNAL
 
 	:param S1:
 	:type S1: TopoDS_Shape &
@@ -377,7 +377,7 @@ class TopOpeBRep_DSFiller {
 ") IsContext1d;
 		Standard_Boolean IsContext1d (const TopoDS_Shape & S);
 		%feature("compactdefaultargs") Insert1d;
-		%feature("autodoc", "	* Stores in <DS> the intersections of <S1> and <S2>. S1 and S2 are edges or wires. S1 edges have a 2d representation in face F1 S2 edges have a 2d representation in face F2 F1 is the face which surface is taken as reference for 2d description of S1 and S2 edges. if orientFORWARD = True  S FORWARD,REVERSED --> FORWARD  S EXTERNAL,INTERNAL --> EXTERNAL,INTERNAL
+		%feature("autodoc", "	* Stores in <DS> the intersections of <S1> and <S2>. S1 and S2 are edges or wires. S1 edges have a 2d representation in face F1 S2 edges have a 2d representation in face F2 F1 is the face which surface is taken as reference for 2d description of S1 and S2 edges. if orientFORWARD = True S FORWARD,REVERSED --> FORWARD S EXTERNAL,INTERNAL --> EXTERNAL,INTERNAL
 
 	:param S1:
 	:type S1: TopoDS_Shape &
@@ -421,7 +421,7 @@ class TopOpeBRep_DSFiller {
 ") GapFiller;
 		void GapFiller (const Handle_TopOpeBRepDS_HDataStructure & HDS);
 		%feature("compactdefaultargs") CompleteDS;
-		%feature("autodoc", "	* Update the data structure with relevant informations deduced from the intersections.  Shells containing an intersected face. Wires containing an intersected edge.
+		%feature("autodoc", "	* Update the data structure with relevant informations deduced from the intersections. //! Shells containing an intersected face. Wires containing an intersected edge.
 
 	:param HDS:
 	:type HDS: Handle_TopOpeBRepDS_HDataStructure &
@@ -453,7 +453,7 @@ class TopOpeBRep_DSFiller {
 ") Checker;
 		void Checker (const Handle_TopOpeBRepDS_HDataStructure & HDS);
 		%feature("compactdefaultargs") CompleteDS2d;
-		%feature("autodoc", "	* Update the data structure with relevant informations deduced from the intersections 2d.  Shells containing an intersected face. Wires containing an intersected edge. search for interference identity using edge connexity //NYI
+		%feature("autodoc", "	* Update the data structure with relevant informations deduced from the intersections 2d. //! Shells containing an intersected face. Wires containing an intersected edge. //! search for interference identity using edge connexity //NYI
 
 	:param HDS:
 	:type HDS: Handle_TopOpeBRepDS_HDataStructure &
@@ -1274,7 +1274,7 @@ class TopOpeBRep_FacesFiller {
 ") ProcessRLine;
 		void ProcessRLine ();
 		%feature("compactdefaultargs") FillLineVPonR;
-		%feature("autodoc", "	* VP processing for restriction line and line sharing same domain with section edges :  - if restriction :  Adds restriction edges as section edges and compute face/edge interference.  - if same domain :  If line share same domain with section edges, compute parts of line IN/IN the two faces, and compute curve/point interference for VP boundaries.
+		%feature("autodoc", "	* VP processing for restriction line and line sharing same domain with section edges : - if restriction : Adds restriction edges as section edges and compute face/edge interference. - if same domain : If line share same domain with section edges, compute parts of line IN/IN the two faces, and compute curve/point interference for VP boundaries.
 
 	:rtype: None
 ") FillLineVPonR;
@@ -2523,6 +2523,12 @@ class TopOpeBRep_ListOfBipoint {
 		%feature("autodoc", "	:rtype: None
 ") TopOpeBRep_ListOfBipoint;
 		 TopOpeBRep_ListOfBipoint ();
+		%feature("compactdefaultargs") TopOpeBRep_ListOfBipoint;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopOpeBRep_ListOfBipoint &
+	:rtype: None
+") TopOpeBRep_ListOfBipoint;
+		 TopOpeBRep_ListOfBipoint (const TopOpeBRep_ListOfBipoint & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRep_ListOfBipoint &
@@ -2987,6 +2993,12 @@ class TopOpeBRep_SequenceOfPoint2d : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") TopOpeBRep_SequenceOfPoint2d;
 		 TopOpeBRep_SequenceOfPoint2d ();
+		%feature("compactdefaultargs") TopOpeBRep_SequenceOfPoint2d;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopOpeBRep_SequenceOfPoint2d &
+	:rtype: None
+") TopOpeBRep_SequenceOfPoint2d;
+		 TopOpeBRep_SequenceOfPoint2d (const TopOpeBRep_SequenceOfPoint2d & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;

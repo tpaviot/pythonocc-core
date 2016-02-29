@@ -653,7 +653,7 @@ class BRepFeat_SplitShape : public BRepBuilderAPI_MakeShape {
 ") Add;
 		void Add (const TopoDS_Edge & E,const TopoDS_Face & F);
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* Adds the compound <Comp> on the face <F>. The compound <Comp> must consist of edges lying on the face <F>. If edges are geometrically connected, they must be connected topologically, i.e. they must share common vertices. Raises NoSuchObject if <F> does not belong to the original shape.
+		%feature("autodoc", "	* Adds the compound <Comp> on the face <F>. The compound <Comp> must consist of edges lying on the face <F>. If edges are geometrically connected, they must be connected topologically, i.e. they must share common vertices. //! Raises NoSuchObject if <F> does not belong to the original shape.
 
 	:param Comp:
 	:type Comp: TopoDS_Compound &

@@ -53,7 +53,6 @@ def register_handle(handle, base_object):
 /* typedefs */
 typedef TCollection_SeqNode * TCollection_SeqNodePtr;
 typedef TCollection_MapNode * TCollection_MapNodePtr;
-typedef TCollection_AVLBaseNode * TCollection_AVLBaseNodePtr;
 /* end typedefs declaration */
 
 /* public enums */
@@ -75,148 +74,6 @@ class TCollection {
 	:rtype: int
 ") NextPrimeForMap;
 		static Standard_Integer NextPrimeForMap (const Standard_Integer I);
-};
-
-
-%nodefaultctor TCollection_AVLBaseNode;
-class TCollection_AVLBaseNode : public MMgt_TShared {
-	public:
-		%feature("compactdefaultargs") TCollection_AVLBaseNode;
-		%feature("autodoc", "	:param L:
-	:type L: TCollection_AVLBaseNodePtr &
-	:param R:
-	:type R: TCollection_AVLBaseNodePtr &
-	:rtype: None
-") TCollection_AVLBaseNode;
-		 TCollection_AVLBaseNode (const TCollection_AVLBaseNodePtr & L,const TCollection_AVLBaseNodePtr & R);
-		%feature("compactdefaultargs") SetChild;
-		%feature("autodoc", "	:param theNode:
-	:type theNode: TCollection_AVLBaseNodePtr &
-	:param theSide:
-	:type theSide: TCollection_Side
-	:rtype: None
-") SetChild;
-		void SetChild (const TCollection_AVLBaseNodePtr & theNode,const TCollection_Side theSide);
-		%feature("compactdefaultargs") Height;
-		%feature("autodoc", "	:param ANode:
-	:type ANode: TCollection_AVLBaseNodePtr &
-	:rtype: int
-") Height;
-		static Standard_Integer Height (const TCollection_AVLBaseNodePtr & ANode);
-		%feature("compactdefaultargs") RecursiveExtent;
-		%feature("autodoc", "	:param ANode:
-	:type ANode: TCollection_AVLBaseNodePtr &
-	:rtype: int
-") RecursiveExtent;
-		static Standard_Integer RecursiveExtent (const TCollection_AVLBaseNodePtr & ANode);
-		%feature("compactdefaultargs") RecursiveTotalExtent;
-		%feature("autodoc", "	:param ANode:
-	:type ANode: TCollection_AVLBaseNodePtr &
-	:rtype: int
-") RecursiveTotalExtent;
-		static Standard_Integer RecursiveTotalExtent (const TCollection_AVLBaseNodePtr & ANode);
-		%feature("compactdefaultargs") Right;
-		%feature("autodoc", "	:rtype: TCollection_AVLBaseNodePtr
-") Right;
-		TCollection_AVLBaseNodePtr & Right ();
-		%feature("compactdefaultargs") Left;
-		%feature("autodoc", "	:rtype: TCollection_AVLBaseNodePtr
-") Left;
-		TCollection_AVLBaseNodePtr & Left ();
-
-            %feature("autodoc","1");
-            %extend {
-                Standard_Integer GetCount() {
-                return (Standard_Integer) $self->Count();
-                }
-            };
-            %feature("autodoc","1");
-            %extend {
-                void SetCount(Standard_Integer value ) {
-                $self->Count()=value;
-                }
-            };
-            };
-
-
-%extend TCollection_AVLBaseNode {
-	%pythoncode {
-		def GetHandle(self):
-		    try:
-		        return self.thisHandle
-		    except:
-		        self.thisHandle = Handle_TCollection_AVLBaseNode(self)
-		        self.thisown = False
-		        return self.thisHandle
-	}
-};
-
-%pythonappend Handle_TCollection_AVLBaseNode::Handle_TCollection_AVLBaseNode %{
-    # register the handle in the base object
-    if len(args) > 0:
-        register_handle(self, args[0])
-%}
-
-%nodefaultctor Handle_TCollection_AVLBaseNode;
-class Handle_TCollection_AVLBaseNode : public Handle_MMgt_TShared {
-
-    public:
-        // constructors
-        Handle_TCollection_AVLBaseNode();
-        Handle_TCollection_AVLBaseNode(const Handle_TCollection_AVLBaseNode &aHandle);
-        Handle_TCollection_AVLBaseNode(const TCollection_AVLBaseNode *anItem);
-        void Nullify();
-        Standard_Boolean IsNull() const;
-        static const Handle_TCollection_AVLBaseNode DownCast(const Handle_Standard_Transient &AnObject);
-
-};
-%extend Handle_TCollection_AVLBaseNode {
-    TCollection_AVLBaseNode* GetObject() {
-    return (TCollection_AVLBaseNode*)$self->Access();
-    }
-};
-
-%nodefaultctor TCollection_Array1Descriptor;
-class TCollection_Array1Descriptor {
-	public:
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "	:rtype: int
-") Upper;
-		Standard_Integer Upper ();
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "	:rtype: int
-") Lower;
-		Standard_Integer Lower ();
-		%feature("compactdefaultargs") Address;
-		%feature("autodoc", "	:rtype: Standard_Address
-") Address;
-		Standard_Address Address ();
-};
-
-
-%nodefaultctor TCollection_Array2Descriptor;
-class TCollection_Array2Descriptor {
-	public:
-		%feature("compactdefaultargs") UpperRow;
-		%feature("autodoc", "	:rtype: int
-") UpperRow;
-		Standard_Integer UpperRow ();
-		%feature("compactdefaultargs") LowerRow;
-		%feature("autodoc", "	:rtype: int
-") LowerRow;
-		Standard_Integer LowerRow ();
-		%feature("compactdefaultargs") UpperCol;
-		%feature("autodoc", "	:rtype: int
-") UpperCol;
-		Standard_Integer UpperCol ();
-		%feature("compactdefaultargs") LowerCol;
-		%feature("autodoc", "	:rtype: int
-") LowerCol;
-		Standard_Integer LowerCol ();
-		%feature("compactdefaultargs") Address;
-		%feature("autodoc", "	:rtype: Standard_Address
-") Address;
-		Standard_Address Address ();
 };
 
 
@@ -320,7 +177,7 @@ class TCollection_AsciiString {
 ") TCollection_AsciiString;
 		 TCollection_AsciiString (const TCollection_AsciiString & astring,const TCollection_AsciiString & message);
 		%feature("compactdefaultargs") TCollection_AsciiString;
-		%feature("autodoc", "	* Creation by converting an extended string to an ascii string. If replaceNonAscii is non-null charecter, it will be used in place of any non-ascii character found in the source string. Otherwise, raises OutOfRange exception if at least one character in the source string is not in the 'Ascii range'.
+		%feature("autodoc", "	* Creation by converting an extended string to an ascii string. If replaceNonAscii is non-null charecter, it will be used in place of any non-ascii character found in the source string. Otherwise, creates UTF-8 unicode string.
 
 	:param astring:
 	:type astring: TCollection_ExtendedString &
@@ -1169,7 +1026,7 @@ class TCollection_ExtendedString {
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString ();
 		%feature("compactdefaultargs") TCollection_ExtendedString;
-		%feature("autodoc", "	* Creation by converting a CString to an extended string.
+		%feature("autodoc", "	* Creation by converting a CString to an extended string. If <isMultiByte> is true then the string is treated as having UTF-8 coding. If it is not a UTF-8 then <isMultiByte> is ignored and each character is copied to ExtCharacter.
 
 	:param astring:
 	:type astring: char *
@@ -1237,7 +1094,7 @@ class TCollection_ExtendedString {
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString (const TCollection_ExtendedString & astring);
 		%feature("compactdefaultargs") TCollection_ExtendedString;
-		%feature("autodoc", "	* Creation by converting a normal Ascii string to an extended string.
+		%feature("autodoc", "	* Creation by converting an Ascii string to an extended string. The string is treated as having UTF-8 coding. If it is not a UTF-8 then each character is copied to ExtCharacter.
 
 	:param astring:
 	:type astring: TCollection_AsciiString &
@@ -2162,19 +2019,7 @@ class TCollection_HAsciiString : public MMgt_TShared {
 	:rtype: TCollection_AsciiString
 ") String;
 		const TCollection_AsciiString & String ();
-		%feature("compactdefaultargs") ShallowCopy;
-		%feature("autodoc", "	:rtype: Handle_TCollection_HAsciiString
-") ShallowCopy;
-		Handle_TCollection_HAsciiString ShallowCopy ();
-
-        %feature("autodoc", "1");
-        %extend{
-            std::string ShallowDumpToString() {
-            std::stringstream s;
-            self->ShallowDump(s);
-            return s.str();}
-        };
-        		%feature("compactdefaultargs") IsSameState;
+		%feature("compactdefaultargs") IsSameState;
 		%feature("autodoc", "	:param other:
 	:type other: Handle_TCollection_HAsciiString &
 	:rtype: bool
@@ -2479,18 +2324,6 @@ class TCollection_HExtendedString : public MMgt_TShared {
             std::string PrintToString() {
             std::stringstream s;
             self->Print(s);
-            return s.str();}
-        };
-        		%feature("compactdefaultargs") ShallowCopy;
-		%feature("autodoc", "	:rtype: Handle_TCollection_HExtendedString
-") ShallowCopy;
-		Handle_TCollection_HExtendedString ShallowCopy ();
-
-        %feature("autodoc", "1");
-        %extend{
-            std::string ShallowDumpToString() {
-            std::stringstream s;
-            self->ShallowDump(s);
             return s.str();}
         };
         		%feature("compactdefaultargs") IsSameState;

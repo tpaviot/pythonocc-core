@@ -67,10 +67,10 @@ class XBRepMesh {
 	:param theAngle:
 	:type theAngle: float
 	:param theAlgo:
-	:type theAlgo: BRepMesh_PDiscretRoot &
+	:type theAlgo: BRepMesh_DiscretRoot * &
 	:rtype: int
 ") Discret;
-		static Standard_Integer Discret (const TopoDS_Shape & theShape,const Standard_Real theDeflection,const Standard_Real theAngle,BRepMesh_PDiscretRoot & theAlgo);
+		static Standard_Integer Discret (const TopoDS_Shape & theShape,const Standard_Real theDeflection,const Standard_Real theAngle,BRepMesh_DiscretRoot * & theAlgo);
 };
 
 

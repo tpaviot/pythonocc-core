@@ -159,6 +159,16 @@ class GeomTools {
 		%feature("autodoc", "	:rtype: Handle_GeomTools_UndefinedTypeHandler
 ") GetUndefinedTypeHandler;
 		static Handle_GeomTools_UndefinedTypeHandler GetUndefinedTypeHandler ();
+		%feature("compactdefaultargs") GetReal;
+		%feature("autodoc", "	* Reads the Standard_Real value from the stream. Zero is read in case of error
+
+	:param IS:
+	:type IS: Standard_IStream &
+	:param theValue:
+	:type theValue: float &
+	:rtype: void
+") GetReal;
+		static void GetReal (Standard_IStream & IS,Standard_Real &OutValue);
 };
 
 

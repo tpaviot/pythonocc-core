@@ -84,7 +84,7 @@ class BRepAlgoAPI {
 class BRepAlgoAPI_BooleanOperation : public BRepBuilderAPI_MakeShape {
 	public:
 		%feature("compactdefaultargs") SetOperation;
-		%feature("autodoc", "	* Sets the type of Boolean operation to perform It can be BOPAlgo_SECTION  BOPAlgo_COMMON  BOPAlgo_FUSE  BOPAlgo_CUT  BOPAlgo_CUT21
+		%feature("autodoc", "	* Sets the type of Boolean operation to perform It can be BOPAlgo_SECTION BOPAlgo_COMMON BOPAlgo_FUSE BOPAlgo_CUT BOPAlgo_CUT21
 
 	:param anOp:
 	:type anOp: BOPAlgo_Operation
@@ -154,7 +154,7 @@ class BRepAlgoAPI_BooleanOperation : public BRepBuilderAPI_MakeShape {
 ") IsDeleted;
 		virtual Standard_Boolean IsDeleted (const TopoDS_Shape & aS);
 		%feature("compactdefaultargs") Generated;
-		%feature("autodoc", "	* Returns the list of shapes generated from the shape <S>.  For use in BRepNaming.
+		%feature("autodoc", "	* Returns the list of shapes generated from the shape <S>. For use in BRepNaming.
 
 	:param S:
 	:type S: TopoDS_Shape &
@@ -162,19 +162,19 @@ class BRepAlgoAPI_BooleanOperation : public BRepBuilderAPI_MakeShape {
 ") Generated;
 		virtual const TopTools_ListOfShape & Generated (const TopoDS_Shape & S);
 		%feature("compactdefaultargs") HasModified;
-		%feature("autodoc", "	* Returns true if there is at least one modified shape.  For use in BRepNaming.
+		%feature("autodoc", "	* Returns true if there is at least one modified shape. For use in BRepNaming.
 
 	:rtype: bool
 ") HasModified;
 		virtual Standard_Boolean HasModified ();
 		%feature("compactdefaultargs") HasGenerated;
-		%feature("autodoc", "	* Returns true if there is at least one generated shape.  For use in BRepNaming.
+		%feature("autodoc", "	* Returns true if there is at least one generated shape. For use in BRepNaming.
 
 	:rtype: bool
 ") HasGenerated;
 		virtual Standard_Boolean HasGenerated ();
 		%feature("compactdefaultargs") HasDeleted;
-		%feature("autodoc", "	* Returns true if there is at least one deleted shape.  For use in BRepNaming.
+		%feature("autodoc", "	* Returns true if there is at least one deleted shape. For use in BRepNaming.
 
 	:rtype: bool
 ") HasDeleted;
@@ -202,7 +202,7 @@ class BRepAlgoAPI_Check {
 ") BRepAlgoAPI_Check;
 		 BRepAlgoAPI_Check ();
 		%feature("compactdefaultargs") BRepAlgoAPI_Check;
-		%feature("autodoc", "	* Constructor for checking single shape. It calls methods Init(theS, TopoDS_Shape(), BOPAlgo_UNKNOWN, bTestSE, bTestSI) and Perform(). Params: theS - the shape that should be checked; bTestSE - flag that specifies whether check on small edges  should be performed; by default it is set to True; bTestSI - flag that specifies whether check on self-interference  should be performed; by default it is set to True;
+		%feature("autodoc", "	* Constructor for checking single shape. It calls methods Init(theS, TopoDS_Shape(), BOPAlgo_UNKNOWN, bTestSE, bTestSI) and Perform(). Params: theS - the shape that should be checked; bTestSE - flag that specifies whether check on small edges should be performed; by default it is set to True; bTestSI - flag that specifies whether check on self-interference should be performed; by default it is set to True;
 
 	:param theS:
 	:type theS: TopoDS_Shape &
@@ -214,7 +214,7 @@ class BRepAlgoAPI_Check {
 ") BRepAlgoAPI_Check;
 		 BRepAlgoAPI_Check (const TopoDS_Shape & theS,const Standard_Boolean bTestSE = Standard_True,const Standard_Boolean bTestSI = Standard_True);
 		%feature("compactdefaultargs") BRepAlgoAPI_Check;
-		%feature("autodoc", "	* Constructor for couple of shapes. It calls methods Init(theS1, theS2, theOp, bTestSE, bTestSI) and Perform(). Params: theS1, theS2 - the initial shapes. theOp - the type of Boolean Operation; if it is not defined (set to UNKNOWN) for each shape performed check as for single shape. bTestSE - flag that specifies whether check on small edges  should be performed; by default it is set to True; bTestSI - flag that specifies whether check on self-interference  should be performed; by default it is set to True;
+		%feature("autodoc", "	* Constructor for couple of shapes. It calls methods Init(theS1, theS2, theOp, bTestSE, bTestSI) and Perform(). Params: theS1, theS2 - the initial shapes. theOp - the type of Boolean Operation; if it is not defined (set to UNKNOWN) for each shape performed check as for single shape. bTestSE - flag that specifies whether check on small edges should be performed; by default it is set to True; bTestSI - flag that specifies whether check on self-interference should be performed; by default it is set to True;
 
 	:param theS1:
 	:type theS1: TopoDS_Shape &
@@ -516,7 +516,7 @@ class BRepAlgoAPI_Section : public BRepAlgoAPI_BooleanOperation {
 ") Build;
 		void Build ();
 		%feature("compactdefaultargs") HasAncestorFaceOn1;
-		%feature("autodoc", "	* get the face of the first part giving section edge <E>. Returns True on the 3 following conditions : 1/ <E> is an edge returned by the Shape() method. 2/ First part of section performed is a shape. 3/ <E> is built on a intersection curve (i.e <E> 	 is not the result of common edges) When False, F remains untouched.
+		%feature("autodoc", "	* get the face of the first part giving section edge <E>. Returns True on the 3 following conditions : 1/ <E> is an edge returned by the Shape() method. 2/ First part of section performed is a shape. 3/ <E> is built on a intersection curve (i.e <E> is not the result of common edges) When False, F remains untouched.
 
 	:param E:
 	:type E: TopoDS_Shape &

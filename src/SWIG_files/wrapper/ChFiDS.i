@@ -717,10 +717,6 @@ class ChFiDS_HData : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: ChFiDS_SequenceOfSurfData
 ") ChangeSequence;
 		ChFiDS_SequenceOfSurfData & ChangeSequence ();
-		%feature("compactdefaultargs") ShallowCopy;
-		%feature("autodoc", "	:rtype: Handle_ChFiDS_HData
-") ShallowCopy;
-		Handle_ChFiDS_HData ShallowCopy ();
 };
 
 
@@ -1298,6 +1294,12 @@ class ChFiDS_ListOfHElSpine {
 		%feature("autodoc", "	:rtype: None
 ") ChFiDS_ListOfHElSpine;
 		 ChFiDS_ListOfHElSpine ();
+		%feature("compactdefaultargs") ChFiDS_ListOfHElSpine;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_ListOfHElSpine &
+	:rtype: None
+") ChFiDS_ListOfHElSpine;
+		 ChFiDS_ListOfHElSpine (const ChFiDS_ListOfHElSpine & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: ChFiDS_ListOfHElSpine &
@@ -1422,6 +1424,12 @@ class ChFiDS_ListOfStripe {
 		%feature("autodoc", "	:rtype: None
 ") ChFiDS_ListOfStripe;
 		 ChFiDS_ListOfStripe ();
+		%feature("compactdefaultargs") ChFiDS_ListOfStripe;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_ListOfStripe &
+	:rtype: None
+") ChFiDS_ListOfStripe;
+		 ChFiDS_ListOfStripe (const ChFiDS_ListOfStripe & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: ChFiDS_ListOfStripe &
@@ -1640,6 +1648,12 @@ class ChFiDS_Regularities {
 		%feature("autodoc", "	:rtype: None
 ") ChFiDS_Regularities;
 		 ChFiDS_Regularities ();
+		%feature("compactdefaultargs") ChFiDS_Regularities;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_Regularities &
+	:rtype: None
+") ChFiDS_Regularities;
+		 ChFiDS_Regularities (const ChFiDS_Regularities & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: ChFiDS_Regularities &
@@ -2067,6 +2081,12 @@ class ChFiDS_SequenceOfSpine : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") ChFiDS_SequenceOfSpine;
 		 ChFiDS_SequenceOfSpine ();
+		%feature("compactdefaultargs") ChFiDS_SequenceOfSpine;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_SequenceOfSpine &
+	:rtype: None
+") ChFiDS_SequenceOfSpine;
+		 ChFiDS_SequenceOfSpine (const ChFiDS_SequenceOfSpine & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -2199,6 +2219,12 @@ class ChFiDS_SequenceOfSurfData : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") ChFiDS_SequenceOfSurfData;
 		 ChFiDS_SequenceOfSurfData ();
+		%feature("compactdefaultargs") ChFiDS_SequenceOfSurfData;
+		%feature("autodoc", "	:param Other:
+	:type Other: ChFiDS_SequenceOfSurfData &
+	:rtype: None
+") ChFiDS_SequenceOfSurfData;
+		 ChFiDS_SequenceOfSurfData (const ChFiDS_SequenceOfSurfData & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;

@@ -760,6 +760,12 @@ class HLRTopoBRep_ListOfVData {
 		%feature("autodoc", "	:rtype: None
 ") HLRTopoBRep_ListOfVData;
 		 HLRTopoBRep_ListOfVData ();
+		%feature("compactdefaultargs") HLRTopoBRep_ListOfVData;
+		%feature("autodoc", "	:param Other:
+	:type Other: HLRTopoBRep_ListOfVData &
+	:rtype: None
+") HLRTopoBRep_ListOfVData;
+		 HLRTopoBRep_ListOfVData (const HLRTopoBRep_ListOfVData & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: HLRTopoBRep_ListOfVData &

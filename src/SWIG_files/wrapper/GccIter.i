@@ -54,34 +54,5 @@ def register_handle(handle, base_object):
 /* end typedefs declaration */
 
 /* public enums */
-enum GccIter_Type1 {
-	GccIter_CuCuCu = 0,
-	GccIter_CiCuCu = 1,
-	GccIter_CiCiCu = 2,
-	GccIter_CiLiCu = 3,
-	GccIter_LiLiCu = 4,
-	GccIter_LiCuCu = 5,
-};
-
-enum GccIter_Type2 {
-	GccIter_CuCuOnCu = 0,
-	GccIter_CiCuOnCu = 1,
-	GccIter_LiCuOnCu = 2,
-	GccIter_CuPtOnCu = 3,
-	GccIter_CuCuOnLi = 4,
-	GccIter_CiCuOnLi = 5,
-	GccIter_LiCuOnLi = 6,
-	GccIter_CuPtOnLi = 7,
-	GccIter_CuCuOnCi = 8,
-	GccIter_CiCuOnCi = 9,
-	GccIter_LiCuOnCi = 10,
-	GccIter_CuPtOnCi = 11,
-};
-
-enum GccIter_Type3 {
-	GccIter_CuCu = 0,
-	GccIter_CiCu = 1,
-};
-
 /* end public enums declaration */
 
