@@ -308,6 +308,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BOPAlgo_CheckResult.hxx>
 #include<BOPAlgo_CheckStatus.hxx>
 #include<BOPAlgo_ListOfCheckResult.hxx>
+#include<BOPAlgo_MakerVolume.hxx>
 #include<BOPAlgo_Operation.hxx>
 #include<BOPAlgo_PArgumentAnalyzer.hxx>
 #include<BOPAlgo_PaveFiller.hxx>
