@@ -86,13 +86,13 @@ class ShapeUpgrade {
 class ShapeUpgrade_RemoveLocations : public MMgt_TShared {
 	public:
 		%feature("compactdefaultargs") ShapeUpgrade_RemoveLocations;
-		%feature("autodoc", "	* //!Empy constructor
+		%feature("autodoc", "	* Empy constructor
 
 	:rtype: None
 ") ShapeUpgrade_RemoveLocations;
 		 ShapeUpgrade_RemoveLocations ();
 		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "	* //!Removes all location correspodingly to RemoveLevel.
+		%feature("autodoc", "	* Removes all location correspodingly to RemoveLevel.
 
 	:param theShape:
 	:type theShape: TopoDS_Shape &
@@ -100,13 +100,13 @@ class ShapeUpgrade_RemoveLocations : public MMgt_TShared {
 ") Remove;
 		Standard_Boolean Remove (const TopoDS_Shape & theShape);
 		%feature("compactdefaultargs") GetResult;
-		%feature("autodoc", "	* //!Returns shape with removed locatins.
+		%feature("autodoc", "	* Returns shape with removed locatins.
 
 	:rtype: TopoDS_Shape
 ") GetResult;
 		TopoDS_Shape GetResult ();
 		%feature("compactdefaultargs") SetRemoveLevel;
-		%feature("autodoc", "	* //!sets level starting with that location will be removed,  by default TopAbs_SHAPE. In this case locations will be kept for specified shape  and if specified shape is TopAbs_COMPOUND for sub-shapes of first level.
+		%feature("autodoc", "	* sets level starting with that location will be removed, by default TopAbs_SHAPE. In this case locations will be kept for specified shape and if specified shape is TopAbs_COMPOUND for sub-shapes of first level.
 
 	:param theLevel:
 	:type theLevel: TopAbs_ShapeEnum
@@ -114,7 +114,7 @@ class ShapeUpgrade_RemoveLocations : public MMgt_TShared {
 ") SetRemoveLevel;
 		void SetRemoveLevel (const TopAbs_ShapeEnum theLevel);
 		%feature("compactdefaultargs") RemoveLevel;
-		%feature("autodoc", "	* //!sets level starting with that location will be removed.Value of level can be set to  TopAbs_SHAPE,TopAbs_COMPOUND,TopAbs_SOLID,TopAbs_SHELL,TopAbs_FACE.By default TopAbs_SHAPE.  In this case location will be removed for all shape types for exception of compound.
+		%feature("autodoc", "	* sets level starting with that location will be removed.Value of level can be set to TopAbs_SHAPE,TopAbs_COMPOUND,TopAbs_SOLID,TopAbs_SHELL,TopAbs_FACE.By default TopAbs_SHAPE. In this case location will be removed for all shape types for exception of compound.
 
 	:rtype: TopAbs_ShapeEnum
 ") RemoveLevel;
@@ -271,7 +271,7 @@ class ShapeUpgrade_ShapeDivide {
 ") SetSplitFaceTool;
 		void SetSplitFaceTool (const Handle_ShapeUpgrade_FaceDivide & splitFaceTool);
 		%feature("compactdefaultargs") SetEdgeMode;
-		%feature("autodoc", "	* //!Sets mode for splitting 3d curves from edges. 0 - only curve 3d from free edges. 1 - only curve 3d from shared edges. 2 - all curve 3d.
+		%feature("autodoc", "	* Sets mode for splitting 3d curves from edges. 0 - only curve 3d from free edges. 1 - only curve 3d from shared edges. 2 - all curve 3d.
 
 	:param aEdgeMode:
 	:type aEdgeMode: int
@@ -291,7 +291,7 @@ class ShapeUpgrade_ShellSewing {
 ") ShapeUpgrade_ShellSewing;
 		 ShapeUpgrade_ShellSewing ();
 		%feature("compactdefaultargs") ApplySewing;
-		%feature("autodoc", "	* Builds a new shape from a former one, by calling Sewing from BRepOffsetAPI. Rebuilt solids are oriented to be 'not infinite'  If <tol> is not given (i.e. value 0. by default), it is computed as the mean tolerance recorded in <shape>  If no shell has been sewed, this method returns the input shape
+		%feature("autodoc", "	* Builds a new shape from a former one, by calling Sewing from BRepOffsetAPI. Rebuilt solids are oriented to be 'not infinite' //! If <tol> is not given (i.e. value 0. by default), it is computed as the mean tolerance recorded in <shape> //! If no shell has been sewed, this method returns the input shape
 
 	:param shape:
 	:type shape: TopoDS_Shape &
@@ -351,7 +351,7 @@ class ShapeUpgrade_SplitCurve : public MMgt_TShared {
 ") Compute;
 		virtual void Compute ();
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Performs correction/splitting of the curve.  First defines splitting values by method Compute(), then calls method Build().
+		%feature("autodoc", "	* Performs correction/splitting of the curve. First defines splitting values by method Compute(), then calls method Build().
 
 	:param Segment: default value is Standard_True
 	:type Segment: bool
@@ -1094,6 +1094,12 @@ class ShapeUpgrade_FaceDivide : public ShapeUpgrade_Tool {
 	:rtype: None
 ") SetWireDivideTool;
 		void SetWireDivideTool (const Handle_ShapeUpgrade_WireDivide & wireDivideTool);
+		%feature("compactdefaultargs") GetSplitSurfaceTool;
+		%feature("autodoc", "	* Returns the tool for splitting surfaces. This tool must be already initialized.
+
+	:rtype: Handle_ShapeUpgrade_SplitSurface
+") GetSplitSurfaceTool;
+		virtual Handle_ShapeUpgrade_SplitSurface GetSplitSurfaceTool ();
 		%feature("compactdefaultargs") GetWireDivideTool;
 		%feature("autodoc", "	* Returns the tool for dividing edges on Face. This tool must be already initialized.
 
@@ -1257,13 +1263,13 @@ class ShapeUpgrade_RemoveInternalWires : public ShapeUpgrade_Tool {
 ") Init;
 		void Init (const TopoDS_Shape & theShape);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* //!Removes all internal wires having area less than area specified as minimal allowed area
+		%feature("autodoc", "	* Removes all internal wires having area less than area specified as minimal allowed area
 
 	:rtype: bool
 ") Perform;
 		Standard_Boolean Perform ();
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* //!If specified sequence of shape contains - //!	 1.wires then these wires will be removed if they have area less than allowed min area.  2.faces than internal wires from these faces will be removed if they have area less than allowed min area.
+		%feature("autodoc", "	* If specified sequence of shape contains - 1.wires then these wires will be removed if they have area less than allowed min area. 2.faces than internal wires from these faces will be removed if they have area less than allowed min area.
 
 	:param theSeqShapes:
 	:type theSeqShapes: TopTools_SequenceOfShape &
@@ -1271,7 +1277,7 @@ class ShapeUpgrade_RemoveInternalWires : public ShapeUpgrade_Tool {
 ") Perform;
 		Standard_Boolean Perform (const TopTools_SequenceOfShape & theSeqShapes);
 		%feature("compactdefaultargs") GetResult;
-		%feature("autodoc", "	* //!Get result shape
+		%feature("autodoc", "	* Get result shape
 
 	:rtype: TopoDS_Shape
 ") GetResult;
@@ -1303,19 +1309,19 @@ class ShapeUpgrade_RemoveInternalWires : public ShapeUpgrade_Tool {
                 }
             };
             		%feature("compactdefaultargs") RemovedFaces;
-		%feature("autodoc", "	* //!Returns sequence of removed faces.
+		%feature("autodoc", "	* Returns sequence of removed faces.
 
 	:rtype: TopTools_SequenceOfShape
 ") RemovedFaces;
 		const TopTools_SequenceOfShape & RemovedFaces ();
 		%feature("compactdefaultargs") RemovedWires;
-		%feature("autodoc", "	* //!Returns sequence of removed faces.
+		%feature("autodoc", "	* Returns sequence of removed faces.
 
 	:rtype: TopTools_SequenceOfShape
 ") RemovedWires;
 		const TopTools_SequenceOfShape & RemovedWires ();
 		%feature("compactdefaultargs") Status;
-		%feature("autodoc", "	* //!Queries status of last call to Perform() : OK - nothing was done :DONE1 - internal wires were removed :DONE2 - small faces were removed. :FAIL1 - initial shape is not specified :FAIL2 - specified sub-shape is not belonged to inotial shape.
+		%feature("autodoc", "	* Queries status of last call to Perform() : OK - nothing was done :DONE1 - internal wires were removed :DONE2 - small faces were removed. :FAIL1 - initial shape is not specified :FAIL2 - specified sub-shape is not belonged to inotial shape.
 
 	:param theStatus:
 	:type theStatus: ShapeExtend_Status
@@ -1683,7 +1689,7 @@ class ShapeUpgrade_ShapeDivideContinuity : public ShapeUpgrade_ShapeDivide {
 ") SetTolerance2d;
 		void SetTolerance2d (const Standard_Real Tol);
 		%feature("compactdefaultargs") SetBoundaryCriterion;
-		%feature("autodoc", "	* Defines a criterion of continuity for the boundary (all the Wires) The possible values are C0, G1, C1, G2, C2, C3, CN The default is C1 to respect the Cas.Cade Shape Validity. G1 and G2 are not authorized.
+		%feature("autodoc", "	* Defines a criterion of continuity for the boundary (all the Wires) //! The possible values are C0, G1, C1, G2, C2, C3, CN The default is C1 to respect the Cas.Cade Shape Validity. G1 and G2 are not authorized.
 
 	:param Criterion: default value is GeomAbs_C1
 	:type Criterion: GeomAbs_Shape
@@ -1691,7 +1697,7 @@ class ShapeUpgrade_ShapeDivideContinuity : public ShapeUpgrade_ShapeDivide {
 ") SetBoundaryCriterion;
 		void SetBoundaryCriterion (const GeomAbs_Shape Criterion = GeomAbs_C1);
 		%feature("compactdefaultargs") SetPCurveCriterion;
-		%feature("autodoc", "	* Defines a criterion of continuity for the boundary (all the pcurves of Wires) The possible values are C0, G1, C1, G2, C2, C3, CN The default is C1 to respect the Cas.Cade Shape Validity. G1 and G2 are not authorized.
+		%feature("autodoc", "	* Defines a criterion of continuity for the boundary (all the pcurves of Wires) //! The possible values are C0, G1, C1, G2, C2, C3, CN The default is C1 to respect the Cas.Cade Shape Validity. G1 and G2 are not authorized.
 
 	:param Criterion: default value is GeomAbs_C1
 	:type Criterion: GeomAbs_Shape
@@ -1699,7 +1705,7 @@ class ShapeUpgrade_ShapeDivideContinuity : public ShapeUpgrade_ShapeDivide {
 ") SetPCurveCriterion;
 		void SetPCurveCriterion (const GeomAbs_Shape Criterion = GeomAbs_C1);
 		%feature("compactdefaultargs") SetSurfaceCriterion;
-		%feature("autodoc", "	* Defines a criterion of continuity for the boundary (all the Wires) The possible values are C0, G1, C1, G2, C2, C3, CN The default is C1 to respect the Cas.Cade Shape Validity. G1 and G2 are not authorized.
+		%feature("autodoc", "	* Defines a criterion of continuity for the boundary (all the Wires) //! The possible values are C0, G1, C1, G2, C2, C3, CN The default is C1 to respect the Cas.Cade Shape Validity. G1 and G2 are not authorized.
 
 	:param Criterion: default value is GeomAbs_C1
 	:type Criterion: GeomAbs_Shape
@@ -1897,7 +1903,7 @@ class ShapeUpgrade_SplitSurfaceAngle : public ShapeUpgrade_SplitSurface {
 ") MaxAngle;
 		Standard_Real MaxAngle ();
 		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "	* Performs splitting of the supporting surface(s).  First defines splitting values, then calls inherited method.
+		%feature("autodoc", "	* Performs splitting of the supporting surface(s). First defines splitting values, then calls inherited method.
 
 	:param Segment:
 	:type Segment: bool
@@ -2219,7 +2225,7 @@ class ShapeUpgrade_WireDivide : public ShapeUpgrade_Tool {
 ") GetTransferParamTool;
 		virtual Handle_ShapeAnalysis_TransferParameters GetTransferParamTool ();
 		%feature("compactdefaultargs") SetEdgeMode;
-		%feature("autodoc", "	* //!Sets mode for splitting 3d curves from edges. 0 - only curve 3d from free edges. 1 - only curve 3d from shared edges. 2 - all curve 3d.
+		%feature("autodoc", "	* Sets mode for splitting 3d curves from edges. 0 - only curve 3d from free edges. 1 - only curve 3d from shared edges. 2 - all curve 3d.
 
 	:param EdgeMode:
 	:type EdgeMode: int
@@ -2227,7 +2233,7 @@ class ShapeUpgrade_WireDivide : public ShapeUpgrade_Tool {
 ") SetEdgeMode;
 		void SetEdgeMode (const Standard_Integer EdgeMode);
 		%feature("compactdefaultargs") SetFixSmallCurveTool;
-		%feature("autodoc", "	* //!Sets tool for fixing small curves with specified min tolerance;
+		%feature("autodoc", "	* Sets tool for fixing small curves with specified min tolerance;
 
 	:param FixSmallCurvesTool:
 	:type FixSmallCurvesTool: Handle_ShapeUpgrade_FixSmallCurves &
@@ -2235,7 +2241,7 @@ class ShapeUpgrade_WireDivide : public ShapeUpgrade_Tool {
 ") SetFixSmallCurveTool;
 		void SetFixSmallCurveTool (const Handle_ShapeUpgrade_FixSmallCurves & FixSmallCurvesTool);
 		%feature("compactdefaultargs") GetFixSmallCurveTool;
-		%feature("autodoc", "	* //!Returns tool for fixing small curves
+		%feature("autodoc", "	* Returns tool for fixing small curves
 
 	:rtype: Handle_ShapeUpgrade_FixSmallCurves
 ") GetFixSmallCurveTool;

@@ -1428,7 +1428,7 @@ class ElCLib {
 ") ParabolaParameter;
 		static Standard_Real ParabolaParameter (const gp_Ax2 & Pos,const gp_Pnt & P);
 		%feature("compactdefaultargs") ParabolaParameter;
-		%feature("autodoc", "	* Pos is the mirror axis of the parabola parametrization In the local coordinate system of the parabola Y**2 = (2*P) * X where P is the distance between the focus and the directrix. The following functions build a 3d curve from a  2d curve at a given position defined with an Ax2.
+		%feature("autodoc", "	* Pos is the mirror axis of the parabola parametrization In the local coordinate system of the parabola Y**2 = (2*P) * X where P is the distance between the focus and the directrix. The following functions build a 3d curve from a 2d curve at a given position defined with an Ax2.
 
 	:param Pos:
 	:type Pos: gp_Ax22d

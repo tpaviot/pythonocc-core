@@ -67,7 +67,7 @@ enum Intf_PIType {
 class Intf {
 	public:
 		%feature("compactdefaultargs") PlaneEquation;
-		%feature("autodoc", "	* Computes the interference between two polygons in 2d. Result : points of intersections and zones of tangence. Computes the interference between two polygon in 3d. Section points, common perpendicular and projections. Computes the interference between a polygon or a straight line and a polyhedron. Points of intersection and zones of tangence. Compute the interference between two polyhedron. Points of intersection , polylines of intersection and zones of tangence. Give the plane equation of the triangle <P1> <P2> <P3>.
+		%feature("autodoc", "	* Computes the interference between two polygons in 2d. Result : points of intersections and zones of tangence. Computes the interference between a polygon or a straight line and a polyhedron. Points of intersection and zones of tangence. Give the plane equation of the triangle <P1> <P2> <P3>.
 
 	:param P1:
 	:type P1: gp_Pnt
@@ -626,6 +626,12 @@ class Intf_SeqOfSectionLine : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") Intf_SeqOfSectionLine;
 		 Intf_SeqOfSectionLine ();
+		%feature("compactdefaultargs") Intf_SeqOfSectionLine;
+		%feature("autodoc", "	:param Other:
+	:type Other: Intf_SeqOfSectionLine &
+	:rtype: None
+") Intf_SeqOfSectionLine;
+		 Intf_SeqOfSectionLine (const Intf_SeqOfSectionLine & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -758,6 +764,12 @@ class Intf_SeqOfSectionPoint : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") Intf_SeqOfSectionPoint;
 		 Intf_SeqOfSectionPoint ();
+		%feature("compactdefaultargs") Intf_SeqOfSectionPoint;
+		%feature("autodoc", "	:param Other:
+	:type Other: Intf_SeqOfSectionPoint &
+	:rtype: None
+") Intf_SeqOfSectionPoint;
+		 Intf_SeqOfSectionPoint (const Intf_SeqOfSectionPoint & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -890,6 +902,12 @@ class Intf_SeqOfTangentZone : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") Intf_SeqOfTangentZone;
 		 Intf_SeqOfTangentZone ();
+		%feature("compactdefaultargs") Intf_SeqOfTangentZone;
+		%feature("autodoc", "	:param Other:
+	:type Other: Intf_SeqOfTangentZone &
+	:rtype: None
+") Intf_SeqOfTangentZone;
+		 Intf_SeqOfTangentZone (const Intf_SeqOfTangentZone & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;

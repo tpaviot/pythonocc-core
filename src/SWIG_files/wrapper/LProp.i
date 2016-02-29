@@ -209,6 +209,12 @@ class LProp_SequenceOfCIType : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") LProp_SequenceOfCIType;
 		 LProp_SequenceOfCIType ();
+		%feature("compactdefaultargs") LProp_SequenceOfCIType;
+		%feature("autodoc", "	:param Other:
+	:type Other: LProp_SequenceOfCIType &
+	:rtype: None
+") LProp_SequenceOfCIType;
+		 LProp_SequenceOfCIType (const LProp_SequenceOfCIType & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;

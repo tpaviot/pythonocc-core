@@ -60,9 +60,7 @@ def register_handle(handle, base_object):
 class ProjLib {
 	public:
 		%feature("compactdefaultargs") Project;
-		%feature("autodoc", "	* Projection on a torus.
-
-	:param Pl:
+		%feature("autodoc", "	:param Pl:
 	:type Pl: gp_Pln
 	:param P:
 	:type P: gp_Pnt
@@ -402,7 +400,7 @@ class ProjLib_CompProjectedCurve : public Adaptor2d_Curve2d {
 ") Trim;
 		Handle_Adaptor2d_HCurve2d Trim (const Standard_Real FirstParam,const Standard_Real LastParam,const Standard_Real Tol);
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Returns the parameters corresponding to S discontinuities.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
+		%feature("autodoc", "	* Returns the parameters corresponding to S discontinuities. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
 	:param T:
 	:type T: TColStd_Array1OfReal &
@@ -819,10 +817,6 @@ class ProjLib_HSequenceOfHSequenceOfPnt : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: ProjLib_SequenceOfHSequenceOfPnt
 ") ChangeSequence;
 		ProjLib_SequenceOfHSequenceOfPnt & ChangeSequence ();
-		%feature("compactdefaultargs") ShallowCopy;
-		%feature("autodoc", "	:rtype: Handle_ProjLib_HSequenceOfHSequenceOfPnt
-") ShallowCopy;
-		Handle_ProjLib_HSequenceOfHSequenceOfPnt ShallowCopy ();
 };
 
 
@@ -1053,7 +1047,7 @@ class ProjLib_ProjectOnPlane : public Adaptor3d_Curve {
 ") NbIntervals;
 		Standard_Integer NbIntervals (const GeomAbs_Shape S);
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
 	:param T:
 	:type T: TColStd_Array1OfReal &
@@ -1157,7 +1151,7 @@ class ProjLib_ProjectOnPlane : public Adaptor3d_Curve {
 ") DN;
 		gp_Vec DN (const Standard_Real U,const Standard_Integer N);
 		%feature("compactdefaultargs") Resolution;
-		%feature("autodoc", "	* Returns the parametric resolution corresponding  to the real space resolution <R3d>.
+		%feature("autodoc", "	* Returns the parametric resolution corresponding to the real space resolution <R3d>.
 
 	:param R3d:
 	:type R3d: float
@@ -1207,13 +1201,13 @@ class ProjLib_ProjectOnPlane : public Adaptor3d_Curve {
 ") NbKnots;
 		Standard_Integer NbKnots ();
 		%feature("compactdefaultargs") Bezier;
-		%feature("autodoc", "	* Warning ! this will NOT make a copy of the  Bezier Curve : If you want to modify  the Curve please make a copy yourself  Also it will NOT trim the surface to  myFirst/Last.
+		%feature("autodoc", "	* Warning ! this will NOT make a copy of the Bezier Curve : If you want to modify the Curve please make a copy yourself Also it will NOT trim the surface to myFirst/Last.
 
 	:rtype: Handle_Geom_BezierCurve
 ") Bezier;
 		Handle_Geom_BezierCurve Bezier ();
 		%feature("compactdefaultargs") BSpline;
-		%feature("autodoc", "	* Warning ! this will NOT make a copy of the  BSpline Curve : If you want to modify  the Curve please make a copy yourself  Also it will NOT trim the surface to  myFirst/Last.
+		%feature("autodoc", "	* Warning ! this will NOT make a copy of the BSpline Curve : If you want to modify the Curve please make a copy yourself Also it will NOT trim the surface to myFirst/Last.
 
 	:rtype: Handle_Geom_BSplineCurve
 ") BSpline;
@@ -1319,7 +1313,7 @@ class ProjLib_ProjectedCurve : public Adaptor2d_Curve2d {
 ") NbIntervals;
 		Standard_Integer NbIntervals (const GeomAbs_Shape S);
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
 	:param T:
 	:type T: TColStd_Array1OfReal &
@@ -1423,7 +1417,7 @@ class ProjLib_ProjectedCurve : public Adaptor2d_Curve2d {
 ") DN;
 		gp_Vec2d DN (const Standard_Real U,const Standard_Integer N);
 		%feature("compactdefaultargs") Resolution;
-		%feature("autodoc", "	* Returns the parametric resolution corresponding  to the real space resolution <R3d>.
+		%feature("autodoc", "	* Returns the parametric resolution corresponding to the real space resolution <R3d>.
 
 	:param R3d:
 	:type R3d: float
@@ -1473,13 +1467,13 @@ class ProjLib_ProjectedCurve : public Adaptor2d_Curve2d {
 ") NbKnots;
 		Standard_Integer NbKnots ();
 		%feature("compactdefaultargs") Bezier;
-		%feature("autodoc", "	* Warning ! This will NOT make a copy of the -- Bezier Curve -  If you want to modify -- the Curve please make a copy  yourself -- Also it will NOT trim the surface to --  myFirst/Last.
+		%feature("autodoc", "	* Warning ! This will NOT make a copy of the -- Bezier Curve - If you want to modify -- the Curve please make a copy yourself -- Also it will NOT trim the surface to -- myFirst/Last.
 
 	:rtype: Handle_Geom2d_BezierCurve
 ") Bezier;
 		Handle_Geom2d_BezierCurve Bezier ();
 		%feature("compactdefaultargs") BSpline;
-		%feature("autodoc", "	* Warning ! This will NOT make a copy of the BSpline Curve - If  you want to modify the Curve please make a copy  yourself Also it will NOT trim the surface to  myFirst/Last.
+		%feature("autodoc", "	* Warning ! This will NOT make a copy of the BSpline Curve - If you want to modify the Curve please make a copy yourself Also it will NOT trim the surface to myFirst/Last.
 
 	:rtype: Handle_Geom2d_BSplineCurve
 ") BSpline;
@@ -1693,6 +1687,12 @@ class ProjLib_SequenceOfHSequenceOfPnt : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") ProjLib_SequenceOfHSequenceOfPnt;
 		 ProjLib_SequenceOfHSequenceOfPnt ();
+		%feature("compactdefaultargs") ProjLib_SequenceOfHSequenceOfPnt;
+		%feature("autodoc", "	:param Other:
+	:type Other: ProjLib_SequenceOfHSequenceOfPnt &
+	:rtype: None
+") ProjLib_SequenceOfHSequenceOfPnt;
+		 ProjLib_SequenceOfHSequenceOfPnt (const ProjLib_SequenceOfHSequenceOfPnt & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;

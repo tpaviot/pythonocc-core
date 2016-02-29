@@ -326,7 +326,7 @@ class CPnts_AbscissaPoint {
 ") Perform;
 		void Perform (const Standard_Real Abscissa,const Standard_Real U0,const Standard_Real Ui,const Standard_Real Resolution);
 		%feature("compactdefaultargs") AdvPerform;
-		%feature("autodoc", "	* Computes the point at the distance <Abscissa> of the curve; performs more appropriate tolerance managment; to use this method in right way it is necessary to call empty consructor. then call method Init with //!	 Tolerance = Resolution, then call AdvPermorm.
+		%feature("autodoc", "	* Computes the point at the distance <Abscissa> of the curve; performs more appropriate tolerance managment; to use this method in right way it is necessary to call empty consructor. then call method Init with Tolerance = Resolution, then call AdvPermorm.
 
 	:param Abscissa:
 	:type Abscissa: float
@@ -370,7 +370,7 @@ class CPnts_MyGaussFunction : public math_Function {
 ") CPnts_MyGaussFunction;
 		 CPnts_MyGaussFunction ();
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* F is a pointer on a function D is a client data  Each value is computed with F(D)
+		%feature("autodoc", "	* F is a pointer on a function D is a client data //! Each value is computed with F(D)
 
 	:param F:
 	:type F: CPnts_RealFunction &

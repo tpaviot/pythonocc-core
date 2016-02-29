@@ -640,7 +640,7 @@ class GccAna_Circ2d3Tan {
 ") NbSolutions;
 		Standard_Integer NbSolutions ();
 		%feature("compactdefaultargs") ThisSolution;
-		%feature("autodoc", "	* Returns the solution number Index and raises OutOfRange 	 exception if Index is greater than the number of 	 solutions. Be careful: the Index is only a way to get all the solutions, but is not associated to those outside the context of the algorithm-object. Raises OutOfRange if Index is greater than the number of solutions. It raises NotDone if the algorithm failed.
+		%feature("autodoc", "	* Returns the solution number Index and raises OutOfRange exception if Index is greater than the number of solutions. Be careful: the Index is only a way to get all the solutions, but is not associated to those outside the context of the algorithm-object. Raises OutOfRange if Index is greater than the number of solutions. It raises NotDone if the algorithm failed.
 
 	:param Index:
 	:type Index: int
@@ -956,7 +956,7 @@ class GccAna_Circ2dTanOnRad {
 ") NbSolutions;
 		Standard_Integer NbSolutions ();
 		%feature("compactdefaultargs") ThisSolution;
-		%feature("autodoc", "	* Returns the solution number Index and raises OutOfRange 	exception if Index is greater than the number of solutions. Be careful: the Index is only a way to get all the solutions, but is not associated to theses outside the context of the algorithm-object. Raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions
+		%feature("autodoc", "	* Returns the solution number Index and raises OutOfRange exception if Index is greater than the number of solutions. Be careful: the Index is only a way to get all the solutions, but is not associated to theses outside the context of the algorithm-object. Raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions
 
 	:param Index:
 	:type Index: int
@@ -1036,7 +1036,7 @@ class GccAna_CircLin2dBisec {
 ") NbSolutions;
 		Standard_Integer NbSolutions ();
 		%feature("compactdefaultargs") ThisSolution;
-		%feature("autodoc", "	* Returns the solution number Index and raises OutOfRange  exception if Index is greater than the number of solutions Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm.
+		%feature("autodoc", "	* Returns the solution number Index and raises OutOfRange exception if Index is greater than the number of solutions Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm.
 
 	:param Index:
 	:type Index: int
@@ -1222,7 +1222,7 @@ class GccAna_Lin2dBisec {
 ") NbSolutions;
 		Standard_Integer NbSolutions ();
 		%feature("compactdefaultargs") ThisSolution;
-		%feature("autodoc", "	* //!Returns the solution number Index . The first solution is the inside one and the second is the outside one. For the first solution the direction is D1+D2 (D1 is the direction of the first argument and D2 the direction of the second argument). For the second solution the direction is D1-D2. Raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
+		%feature("autodoc", "	* Returns the solution number Index . The first solution is the inside one and the second is the outside one. For the first solution the direction is D1+D2 (D1 is the direction of the first argument and D2 the direction of the second argument). For the second solution the direction is D1-D2. Raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 
 	:param Index:
 	:type Index: int

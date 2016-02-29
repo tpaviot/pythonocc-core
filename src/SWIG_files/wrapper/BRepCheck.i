@@ -87,8 +87,9 @@ enum BRepCheck_Status {
 	BRepCheck_SubshapeNotInShape = 29,
 	BRepCheck_BadOrientation = 30,
 	BRepCheck_BadOrientationOfSubshape = 31,
-	BRepCheck_InvalidToleranceValue = 32,
-	BRepCheck_CheckFail = 33,
+	BRepCheck_InvalidPolygonOnTriangulation = 32,
+	BRepCheck_InvalidToleranceValue = 33,
+	BRepCheck_CheckFail = 34,
 };
 
 /* end public enums declaration */
@@ -607,6 +608,12 @@ class BRepCheck_ListOfStatus {
 		%feature("autodoc", "	:rtype: None
 ") BRepCheck_ListOfStatus;
 		 BRepCheck_ListOfStatus ();
+		%feature("compactdefaultargs") BRepCheck_ListOfStatus;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepCheck_ListOfStatus &
+	:rtype: None
+") BRepCheck_ListOfStatus;
+		 BRepCheck_ListOfStatus (const BRepCheck_ListOfStatus & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepCheck_ListOfStatus &
@@ -870,6 +877,22 @@ class BRepCheck_Edge : public BRepCheck_Result {
 		%feature("autodoc", "	:rtype: float
 ") Tolerance;
 		Standard_Real Tolerance ();
+		%feature("compactdefaultargs") SetStatus;
+		%feature("autodoc", "	* Sets status of Edge;
+
+	:param theStatus:
+	:type theStatus: BRepCheck_Status
+	:rtype: None
+") SetStatus;
+		void SetStatus (const BRepCheck_Status theStatus);
+		%feature("compactdefaultargs") CheckPolygonOnTriangulation;
+		%feature("autodoc", "	* Checks, if polygon on triangulation of heEdge is out of 3D-curve of this edge.
+
+	:param theEdge:
+	:type theEdge: TopoDS_Edge &
+	:rtype: BRepCheck_Status
+") CheckPolygonOnTriangulation;
+		BRepCheck_Status CheckPolygonOnTriangulation (const TopoDS_Edge & theEdge);
 };
 
 
@@ -955,6 +978,14 @@ class BRepCheck_Face : public BRepCheck_Result {
 		%feature("autodoc", "	:rtype: None
 ") SetUnorientable;
 		void SetUnorientable ();
+		%feature("compactdefaultargs") SetStatus;
+		%feature("autodoc", "	* Sets status of Face;
+
+	:param theStatus:
+	:type theStatus: BRepCheck_Status
+	:rtype: None
+") SetStatus;
+		void SetStatus (const BRepCheck_Status theStatus);
 		%feature("compactdefaultargs") IsUnorientable;
 		%feature("autodoc", "	:rtype: bool
 ") IsUnorientable;
@@ -1254,6 +1285,14 @@ class BRepCheck_Wire : public BRepCheck_Result {
 	:rtype: None
 ") GeometricControls;
 		void GeometricControls (const Standard_Boolean B);
+		%feature("compactdefaultargs") SetStatus;
+		%feature("autodoc", "	* Sets status of Wire;
+
+	:param theStatus:
+	:type theStatus: BRepCheck_Status
+	:rtype: None
+") SetStatus;
+		void SetStatus (const BRepCheck_Status theStatus);
 };
 
 

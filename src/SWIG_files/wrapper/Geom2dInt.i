@@ -303,31 +303,41 @@ class Geom2dInt_Geom2dCurveTool {
 ") GetType;
 		static GeomAbs_CurveType GetType (const Adaptor2d_Curve2d & C);
 		%feature("compactdefaultargs") Line;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", "	* Returns the Lin2d from gp corresponding to the curve C. This method is called only when TheType returns GeomAbs_Line.
+
+	:param C:
 	:type C: Adaptor2d_Curve2d &
 	:rtype: gp_Lin2d
 ") Line;
 		static gp_Lin2d Line (const Adaptor2d_Curve2d & C);
 		%feature("compactdefaultargs") Circle;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", "	* Returns the Circ2d from gp corresponding to the curve C. This method is called only when TheType returns GeomAbs_Circle.
+
+	:param C:
 	:type C: Adaptor2d_Curve2d &
 	:rtype: gp_Circ2d
 ") Circle;
 		static gp_Circ2d Circle (const Adaptor2d_Curve2d & C);
 		%feature("compactdefaultargs") Ellipse;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", "	* Returns the Elips2d from gp corresponding to the curve C. This method is called only when TheType returns GeomAbs_Ellipse.
+
+	:param C:
 	:type C: Adaptor2d_Curve2d &
 	:rtype: gp_Elips2d
 ") Ellipse;
 		static gp_Elips2d Ellipse (const Adaptor2d_Curve2d & C);
 		%feature("compactdefaultargs") Parabola;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", "	* Returns the Parab2d from gp corresponding to the curve C. This method is called only when TheType returns GeomAbs_Parabola.
+
+	:param C:
 	:type C: Adaptor2d_Curve2d &
 	:rtype: gp_Parab2d
 ") Parabola;
 		static gp_Parab2d Parabola (const Adaptor2d_Curve2d & C);
 		%feature("compactdefaultargs") Hyperbola;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", "	* Returns the Hypr2d from gp corresponding to the curve C. This method is called only when TheType returns GeomAbs_Hyperbola.
+
+	:param C:
 	:type C: Adaptor2d_Curve2d &
 	:rtype: gp_Hypr2d
 ") Hyperbola;
@@ -445,13 +455,17 @@ class Geom2dInt_Geom2dCurveTool {
 ") DN;
 		static gp_Vec2d DN (const Adaptor2d_Curve2d & C,const Standard_Real U,const Standard_Integer N);
 		%feature("compactdefaultargs") NbIntervals;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", "	* output the number of interval of continuity C2 of the curve
+
+	:param C:
 	:type C: Adaptor2d_Curve2d &
 	:rtype: int
 ") NbIntervals;
 		static Standard_Integer NbIntervals (const Adaptor2d_Curve2d & C);
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", "	* compute Tab.
+
+	:param C:
 	:type C: Adaptor2d_Curve2d &
 	:param Tab:
 	:type Tab: TColStd_Array1OfReal &
@@ -459,7 +473,9 @@ class Geom2dInt_Geom2dCurveTool {
 ") Intervals;
 		static void Intervals (const Adaptor2d_Curve2d & C,TColStd_Array1OfReal & Tab);
 		%feature("compactdefaultargs") GetInterval;
-		%feature("autodoc", "	:param C:
+		%feature("autodoc", "	* output the bounds of interval of index <Index> used if Type == Composite.
+
+	:param C:
 	:type C: Adaptor2d_Curve2d &
 	:param Index:
 	:type Index: int
@@ -792,6 +808,12 @@ class Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter : public TCol
 		%feature("autodoc", "	:rtype: None
 ") Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter;
 		 Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter ();
+		%feature("compactdefaultargs") Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter;
+		%feature("autodoc", "	:param Other:
+	:type Other: Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter &
+	:rtype: None
+") Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter;
+		 Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter (const Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;

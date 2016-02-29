@@ -887,108 +887,110 @@ class BRepExtrema_Poly {
 class BRepExtrema_SolutionElem {
 	public:
 		%feature("compactdefaultargs") BRepExtrema_SolutionElem;
-		%feature("autodoc", "	:rtype: None
+		%feature("autodoc", "	* Empty constructor
+
+	:rtype: None
 ") BRepExtrema_SolutionElem;
 		 BRepExtrema_SolutionElem ();
 		%feature("compactdefaultargs") BRepExtrema_SolutionElem;
-		%feature("autodoc", "	* initialisation of the fields This constructor is used when the solution of a distance is a Vertex. The different initialized fields are:  _ the distance d  _ the solution point  _ the type of solution  _ and the Vertex.
+		%feature("autodoc", "	* This constructor is used when the solution of a distance is a Vertex. The different initialized fields are: @param theDist the distance @param thePoint the solution point @param theSolType the type of solution @param theVertex and the Vertex
 
-	:param d:
-	:type d: float
-	:param Pt:
-	:type Pt: gp_Pnt
-	:param SolType:
-	:type SolType: BRepExtrema_SupportType
-	:param vertex:
-	:type vertex: TopoDS_Vertex &
+	:param theDist:
+	:type theDist: float
+	:param thePoint:
+	:type thePoint: gp_Pnt
+	:param theSolType:
+	:type theSolType: BRepExtrema_SupportType
+	:param theVertex:
+	:type theVertex: TopoDS_Vertex &
 	:rtype: None
 ") BRepExtrema_SolutionElem;
-		 BRepExtrema_SolutionElem (const Standard_Real d,const gp_Pnt & Pt,const BRepExtrema_SupportType SolType,const TopoDS_Vertex & vertex);
+		 BRepExtrema_SolutionElem (const Standard_Real theDist,const gp_Pnt & thePoint,const BRepExtrema_SupportType theSolType,const TopoDS_Vertex & theVertex);
 		%feature("compactdefaultargs") BRepExtrema_SolutionElem;
-		%feature("autodoc", "	* initialisation of the fiels. This constructor is used when the solution of distance is on an Edge. The different initialized fields are:  _ the distance d,  _ the solution point,  _ the type of solution,  _ the Edge,  _ and the parameter t to locate the solution.
+		%feature("autodoc", "	* This constructor is used when the solution of distance is on an Edge. The different initialized fields are: @param theDist the distance @param thePoint the solution point @param theSolType the type of solution @param theEdge the Edge @param theParam the parameter to locate the solution
 
-	:param d:
-	:type d: float
-	:param Pt:
-	:type Pt: gp_Pnt
-	:param SolType:
-	:type SolType: BRepExtrema_SupportType
-	:param edge:
-	:type edge: TopoDS_Edge &
-	:param t:
-	:type t: float
+	:param theDist:
+	:type theDist: float
+	:param thePoint:
+	:type thePoint: gp_Pnt
+	:param theSolType:
+	:type theSolType: BRepExtrema_SupportType
+	:param theEdge:
+	:type theEdge: TopoDS_Edge &
+	:param theParam:
+	:type theParam: float
 	:rtype: None
 ") BRepExtrema_SolutionElem;
-		 BRepExtrema_SolutionElem (const Standard_Real d,const gp_Pnt & Pt,const BRepExtrema_SupportType SolType,const TopoDS_Edge & edge,const Standard_Real t);
+		 BRepExtrema_SolutionElem (const Standard_Real theDist,const gp_Pnt & thePoint,const BRepExtrema_SupportType theSolType,const TopoDS_Edge & theEdge,const Standard_Real theParam);
 		%feature("compactdefaultargs") BRepExtrema_SolutionElem;
-		%feature("autodoc", "	* initialisation of the fields This constructor is used when the solution of distance is in a Face. The different initialized fields are:  _ the distance d,  _ the solution point,  _ the type of solution,  _ the Face,  _ and the parameter u et v to locate the solution.
+		%feature("autodoc", "	* This constructor is used when the solution of distance is in a Face. The different initialized fields are: @param theDist the distance @param thePoint the solution point @param theSolType the type of solution @param theFace the Face @param theU U parameter to locate the solution @param theV V parameter to locate the solution
 
-	:param d:
-	:type d: float
-	:param Pt:
-	:type Pt: gp_Pnt
-	:param SolType:
-	:type SolType: BRepExtrema_SupportType
-	:param face:
-	:type face: TopoDS_Face &
-	:param u:
-	:type u: float
-	:param v:
-	:type v: float
+	:param theDist:
+	:type theDist: float
+	:param thePoint:
+	:type thePoint: gp_Pnt
+	:param theSolType:
+	:type theSolType: BRepExtrema_SupportType
+	:param theFace:
+	:type theFace: TopoDS_Face &
+	:param theU:
+	:type theU: float
+	:param theV:
+	:type theV: float
 	:rtype: None
 ") BRepExtrema_SolutionElem;
-		 BRepExtrema_SolutionElem (const Standard_Real d,const gp_Pnt & Pt,const BRepExtrema_SupportType SolType,const TopoDS_Face & face,const Standard_Real u,const Standard_Real v);
+		 BRepExtrema_SolutionElem (const Standard_Real theDist,const gp_Pnt & thePoint,const BRepExtrema_SupportType theSolType,const TopoDS_Face & theFace,const Standard_Real theU,const Standard_Real theV);
 		%feature("compactdefaultargs") Dist;
-		%feature("autodoc", "	* returns the value of the minimum distance.
+		%feature("autodoc", "	* Returns the value of the minimum distance.
 
 	:rtype: float
 ") Dist;
 		Standard_Real Dist ();
 		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "	* returns the solution point.
+		%feature("autodoc", "	* Returns the solution point.
 
 	:rtype: gp_Pnt
 ") Point;
 		const gp_Pnt  Point ();
 		%feature("compactdefaultargs") SupportKind;
-		%feature("autodoc", "	* returns the Support type : //!	 IsVertex => The solution is a vertex. 	 IsOnEdge => The solution belongs to an Edge. 	 IsInFace => The solution is inside a Face.
+		%feature("autodoc", "	* Returns the Support type: IsVertex => The solution is a vertex. IsOnEdge => The solution belongs to an Edge. IsInFace => The solution is inside a Face.
 
 	:rtype: BRepExtrema_SupportType
 ") SupportKind;
 		BRepExtrema_SupportType SupportKind ();
 		%feature("compactdefaultargs") Vertex;
-		%feature("autodoc", "	* returns the vertex if the solution is a Vertex.
+		%feature("autodoc", "	* Returns the vertex if the solution is a Vertex.
 
 	:rtype: TopoDS_Vertex
 ") Vertex;
 		const TopoDS_Vertex  Vertex ();
 		%feature("compactdefaultargs") Edge;
-		%feature("autodoc", "	* returns the vertex if the solution is an Edge.
+		%feature("autodoc", "	* Returns the vertex if the solution is an Edge.
 
 	:rtype: TopoDS_Edge
 ") Edge;
 		const TopoDS_Edge  Edge ();
 		%feature("compactdefaultargs") Face;
-		%feature("autodoc", "	* returns the vertex if the solution is an Face.
+		%feature("autodoc", "	* Returns the vertex if the solution is an Face.
 
 	:rtype: TopoDS_Face
 ") Face;
 		const TopoDS_Face  Face ();
 		%feature("compactdefaultargs") EdgeParameter;
-		%feature("autodoc", "	* returns the parameter t if the solution is on Edge.
+		%feature("autodoc", "	* Returns the parameter value if the solution is on Edge.
 
-	:param par1:
-	:type par1: float &
+	:param theParam:
+	:type theParam: float &
 	:rtype: None
 ") EdgeParameter;
 		void EdgeParameter (Standard_Real &OutValue);
 		%feature("compactdefaultargs") FaceParameter;
-		%feature("autodoc", "	* returns the parameters u et v if the solution is in a Face.
+		%feature("autodoc", "	* Returns the parameters U and V if the solution is in a Face.
 
-	:param par1:
-	:type par1: float &
-	:param par2:
-	:type par2: float &
+	:param theU:
+	:type theU: float &
+	:param theV:
+	:type theV: float &
 	:rtype: None
 ") FaceParameter;
 		void FaceParameter (Standard_Real &OutValue,Standard_Real &OutValue);

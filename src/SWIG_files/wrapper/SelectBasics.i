@@ -165,7 +165,7 @@ class SelectBasics_EntityOwner : public MMgt_TShared {
 		%feature("compactdefaultargs") Location;
 		%feature("autodoc", "	:rtype: TopLoc_Location
 ") Location;
-		virtual const TopLoc_Location & Location ();
+		virtual TopLoc_Location Location ();
 };
 
 
@@ -391,6 +391,12 @@ class SelectBasics_ListOfBox2d {
 		%feature("autodoc", "	:rtype: None
 ") SelectBasics_ListOfBox2d;
 		 SelectBasics_ListOfBox2d ();
+		%feature("compactdefaultargs") SelectBasics_ListOfBox2d;
+		%feature("autodoc", "	:param Other:
+	:type Other: SelectBasics_ListOfBox2d &
+	:rtype: None
+") SelectBasics_ListOfBox2d;
+		 SelectBasics_ListOfBox2d (const SelectBasics_ListOfBox2d & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: SelectBasics_ListOfBox2d &
@@ -515,6 +521,12 @@ class SelectBasics_ListOfSensitive {
 		%feature("autodoc", "	:rtype: None
 ") SelectBasics_ListOfSensitive;
 		 SelectBasics_ListOfSensitive ();
+		%feature("compactdefaultargs") SelectBasics_ListOfSensitive;
+		%feature("autodoc", "	:param Other:
+	:type Other: SelectBasics_ListOfSensitive &
+	:rtype: None
+") SelectBasics_ListOfSensitive;
+		 SelectBasics_ListOfSensitive (const SelectBasics_ListOfSensitive & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: SelectBasics_ListOfSensitive &
@@ -710,7 +722,7 @@ class SelectBasics_SensitiveEntity : public MMgt_TShared {
 ") Areas;
 		virtual void Areas (SelectBasics_ListOfBox2d & aresult);
 		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "	* Checks whether the sensitive entity matches the picking detection area (close to the picking line). This method takes into account depth limits produced by abstract view: far/near planes, clippings. Please port existing implementations of your picking detection, which were done at Matches (X, Y, Tol, DMin) method to this one, introducing the depth checks. Please note that the previous method is suppressed and the virtual implementations are not used by OCC selection framework. The porting procedure for simple sensitives (or if you are not interested in implementing full scale depth checks) can be simplified to writing the following code snippet: @code { // example code for porting descendants of Select3D_SensitiveEntity // invoke implementation of obsolete matches method (if implemented)... if (!Matches (thePickArgs.X(), thePickArgs.Y(), thePickArgs.Tolerance(), theMatchDMin)) return Standard_False; // invoke your implementation of computing depth (if implemented)... Standard_Real aDetectDepth = ComputeDepth (thePickArgs.PickLine()); return !thePickArgs.IsClipped(aDetectDepth); } @endcode @param thePickArgs [in] the picking arguments. @param theMatchDMin [out] the minimum distance on xy plane from point of picking to center of gravity of the detected sub-part of sensitive entity or the whole sensitive (e.g. used for resolving selection of coinciding circles, selection will be set to the one whose center is closest to the picking point). @param theMatchDepth [out] the minimum detected depth: depth of the closest detected sub-part of sensitive entity (or the whole sensitive). returns True if the sensitive matches the detection area. This method is an entry point for picking detection framework. The method is triggered when it is required to compose list of detected sensitive entities. The sensitives are filtered out from detection result if returned value is False. The passed entities are then can be sorted by 'theDetectDist', 'theDetectDepth' parameters.
+		%feature("autodoc", "	* Checks whether the sensitive entity matches the picking detection area (close to the picking line). This method takes into account depth limits produced by abstract view: far/near planes, clippings. Please port existing implementations of your picking detection, which were done at Matches (X, Y, Tol, DMin) method to this one, introducing the depth checks. Please note that the previous method is suppressed and the virtual implementations are not used by OCC selection framework. The porting procedure for simple sensitives (or if you are not interested in implementing full scale depth checks) can be simplified to writing the following code snippet: @code { // example code for porting descendants of Select3D_SensitiveEntity //! // invoke implementation of obsolete matches method (if implemented)... if (!Matches (thePickArgs.X(), thePickArgs.Y(), thePickArgs.Tolerance(), theMatchDMin)) return Standard_False; //! // invoke your implementation of computing depth (if implemented)... Standard_Real aDetectDepth = ComputeDepth (thePickArgs.PickLine()); //! return !thePickArgs.IsClipped(aDetectDepth); } @endcode @param thePickArgs [in] the picking arguments. @param theMatchDMin [out] the minimum distance on xy plane from point of picking to center of gravity of the detected sub-part of sensitive entity or the whole sensitive (e.g. used for resolving selection of coinciding circles, selection will be set to the one whose center is closest to the picking point). @param theMatchDepth [out] the minimum detected depth: depth of the closest detected sub-part of sensitive entity (or the whole sensitive). returns True if the sensitive matches the detection area. This method is an entry point for picking detection framework. The method is triggered when it is required to compose list of detected sensitive entities. The sensitives are filtered out from detection result if returned value is False. The passed entities are then can be sorted by 'theDetectDist', 'theDetectDepth' parameters.
 
 	:param thePickArgs:
 	:type thePickArgs: SelectBasics_PickArgs &
@@ -881,6 +893,12 @@ class SelectBasics_SequenceOfOwner : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") SelectBasics_SequenceOfOwner;
 		 SelectBasics_SequenceOfOwner ();
+		%feature("compactdefaultargs") SelectBasics_SequenceOfOwner;
+		%feature("autodoc", "	:param Other:
+	:type Other: SelectBasics_SequenceOfOwner &
+	:rtype: None
+") SelectBasics_SequenceOfOwner;
+		 SelectBasics_SequenceOfOwner (const SelectBasics_SequenceOfOwner & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
