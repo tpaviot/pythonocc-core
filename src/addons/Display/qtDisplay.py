@@ -130,6 +130,8 @@ class qtViewer3d(qtBaseViewer):
         self._inited = True
         # dict mapping keys to functions
         self._SetupKeyMap()
+        #
+        self._display.thisown = False
 
     def _SetupKeyMap(self):
         def set_shade_mode():
