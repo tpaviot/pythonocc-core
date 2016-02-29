@@ -58,6 +58,14 @@ How to stay up to date with latest developements?
     cd pythonocc-core
     git pull
 
+How to install ?
+----------------
+
+pythonocc provides [conda packages](https://anaconda.org/DLR-SC/pythonocc-core). 
+this will get you up & running in minutes:
+
+conda install -c https://conda.anaconda.org/dlr-sc pythonocc-core
+
 How to compile ?
 ----------------
 
