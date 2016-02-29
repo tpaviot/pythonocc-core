@@ -58,6 +58,7 @@ typedef BOPAlgo_WireEdgeSet * BOPAlgo_PWireEdgeSet;
 typedef BOPAlgo_Builder * BOPAlgo_PBuilder;
 typedef BOPAlgo_BOP * BOPAlgo_PBOP;
 typedef BOPAlgo_PaveFiller * BOPAlgo_PPaveFiller;
+typedef BOPAlgo_Section * BOPAlgo_PSection;
 /* end typedefs declaration */
 
 /* public enums */
@@ -72,7 +73,8 @@ enum BOPAlgo_CheckStatus {
 	BOPAlgo_IncompatibilityOfFace = 7,
 	BOPAlgo_OperationAborted = 8,
 	BOPAlgo_GeomAbs_C0 = 9,
-	BOPAlgo_NotValid = 10,
+	BOPAlgo_InvalidCurveOnSurface = 10,
+	BOPAlgo_NotValid = 11,
 };
 
 enum BOPAlgo_Operation {

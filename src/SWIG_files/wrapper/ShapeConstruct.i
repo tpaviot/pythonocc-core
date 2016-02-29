@@ -120,7 +120,7 @@ class ShapeConstruct {
 ") ConvertSurfaceToBSpline;
 		static Handle_Geom_BSplineSurface ConvertSurfaceToBSpline (const Handle_Geom_Surface & surf,const Standard_Real UF,const Standard_Real UL,const Standard_Real VF,const Standard_Real VL,const Standard_Real Tol3d,const GeomAbs_Shape Continuity,const Standard_Integer MaxSegments,const Standard_Integer MaxDegree);
 		%feature("compactdefaultargs") JoinPCurves;
-		%feature("autodoc", "	* join pcurves of the <theEdge> on the <theFace> 	 try to use pcurves from originas edges <theEdges> Returns false if cannot join pcurves
+		%feature("autodoc", "	* join pcurves of the <theEdge> on the <theFace> try to use pcurves from originas edges <theEdges> Returns false if cannot join pcurves
 
 	:param theEdges:
 	:type theEdges: Handle_TopTools_HSequenceOfShape &
@@ -132,7 +132,7 @@ class ShapeConstruct {
 ") JoinPCurves;
 		static Standard_Boolean JoinPCurves (const Handle_TopTools_HSequenceOfShape & theEdges,const TopoDS_Face & theFace,TopoDS_Edge & theEdge);
 		%feature("compactdefaultargs") JoinCurves;
-		%feature("autodoc", "	* //!Method for joininig curves 3D. Parameters : c3d1,ac3d2 - initial curves //!	 Orient1, Orient2 - initial edges orientations.  first1,last1,first2,last2 - parameters for trimming curves //!	 	 (re-calculate with account of orientation edges)  c3dOut - result curve  isRev1,isRev2 - out parameters indicative on possible errors. Return value : True - if curves were joined successfully,  else - False.
+		%feature("autodoc", "	* Method for joininig curves 3D. Parameters : c3d1,ac3d2 - initial curves Orient1, Orient2 - initial edges orientations. first1,last1,first2,last2 - parameters for trimming curves (re-calculate with account of orientation edges) c3dOut - result curve isRev1,isRev2 - out parameters indicative on possible errors. Return value : True - if curves were joined successfully, else - False.
 
 	:param c3d1:
 	:type c3d1: Handle_Geom_Curve &
@@ -160,7 +160,7 @@ class ShapeConstruct {
 ") JoinCurves;
 		static Standard_Boolean JoinCurves (const Handle_Geom_Curve & c3d1,const Handle_Geom_Curve & ac3d2,const TopAbs_Orientation Orient1,const TopAbs_Orientation Orient2,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Handle_Geom_Curve & c3dOut,Standard_Boolean &OutValue,Standard_Boolean &OutValue);
 		%feature("compactdefaultargs") JoinCurves;
-		%feature("autodoc", "	* //!Method for joininig curves 3D. Parameters : c3d1,ac3d2 - initial curves //!	 Orient1, Orient2 - initial edges orientations.  first1,last1,first2,last2 - parameters for trimming curves //!	 	 (re-calculate with account of orientation edges)  c3dOut - result curve  isRev1,isRev2 - out parameters indicative on possible errors.  isError - input parameter indicative possible errors due to that one from edges have one vertex  Return value : True - if curves were joined successfully,  else - False.
+		%feature("autodoc", "	* Method for joininig curves 3D. Parameters : c3d1,ac3d2 - initial curves Orient1, Orient2 - initial edges orientations. first1,last1,first2,last2 - parameters for trimming curves (re-calculate with account of orientation edges) c3dOut - result curve isRev1,isRev2 - out parameters indicative on possible errors. isError - input parameter indicative possible errors due to that one from edges have one vertex Return value : True - if curves were joined successfully, else - False.
 
 	:param c2d1:
 	:type c2d1: Handle_Geom2d_Curve &
@@ -295,7 +295,7 @@ class ShapeConstruct_CompBezierCurvesToBSplineCurve {
 class ShapeConstruct_Curve {
 	public:
 		%feature("compactdefaultargs") AdjustCurve;
-		%feature("autodoc", "	* Modifies a curve in order to make its bounds confused with given points. Works only on lines and B-Splines, returns True in this case, else returns False. For line considers both bounding points, for B-Splines only specified. Warning : Does not check if curve should be reversed
+		%feature("autodoc", "	* Modifies a curve in order to make its bounds confused with given points. Works only on lines and B-Splines, returns True in this case, else returns False. For line considers both bounding points, for B-Splines only specified. //! Warning : Does not check if curve should be reversed
 
 	:param C3D:
 	:type C3D: Handle_Geom_Curve &
@@ -311,7 +311,7 @@ class ShapeConstruct_Curve {
 ") AdjustCurve;
 		Standard_Boolean AdjustCurve (const Handle_Geom_Curve & C3D,const gp_Pnt & P1,const gp_Pnt & P2,const Standard_Boolean take1 = Standard_True,const Standard_Boolean take2 = Standard_True);
 		%feature("compactdefaultargs") AdjustCurveSegment;
-		%feature("autodoc", "	* Modifies a curve in order to make its bounds confused with given points. Works only on lines and B-Splines. For lines works as previous method, B-Splines are segmented at the given values and then are adjusted to the points.
+		%feature("autodoc", "	* Modifies a curve in order to make its bounds confused with given points. Works only on lines and B-Splines. //! For lines works as previous method, B-Splines are segmented at the given values and then are adjusted to the points.
 
 	:param C3D:
 	:type C3D: Handle_Geom_Curve &
@@ -327,7 +327,7 @@ class ShapeConstruct_Curve {
 ") AdjustCurveSegment;
 		Standard_Boolean AdjustCurveSegment (const Handle_Geom_Curve & C3D,const gp_Pnt & P1,const gp_Pnt & P2,const Standard_Real U1,const Standard_Real U2);
 		%feature("compactdefaultargs") AdjustCurve2d;
-		%feature("autodoc", "	* Modifies a curve in order to make its bounds confused with given points. Works only on lines and B-Splines, returns True in this case, else returns False. For line considers both bounding points, for B-Splines only specified. Warning : Does not check if curve should be reversed
+		%feature("autodoc", "	* Modifies a curve in order to make its bounds confused with given points. Works only on lines and B-Splines, returns True in this case, else returns False. //! For line considers both bounding points, for B-Splines only specified. //! Warning : Does not check if curve should be reversed
 
 	:param C2D:
 	:type C2D: Handle_Geom2d_Curve &

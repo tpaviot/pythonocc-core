@@ -1150,10 +1150,6 @@ class GeomPlate_HSequenceOfCurveConstraint : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: GeomPlate_SequenceOfCurveConstraint
 ") ChangeSequence;
 		GeomPlate_SequenceOfCurveConstraint & ChangeSequence ();
-		%feature("compactdefaultargs") ShallowCopy;
-		%feature("autodoc", "	:rtype: Handle_GeomPlate_HSequenceOfCurveConstraint
-") ShallowCopy;
-		Handle_GeomPlate_HSequenceOfCurveConstraint ShallowCopy ();
 };
 
 
@@ -1329,10 +1325,6 @@ class GeomPlate_HSequenceOfPointConstraint : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: GeomPlate_SequenceOfPointConstraint
 ") ChangeSequence;
 		GeomPlate_SequenceOfPointConstraint & ChangeSequence ();
-		%feature("compactdefaultargs") ShallowCopy;
-		%feature("autodoc", "	:rtype: Handle_GeomPlate_HSequenceOfPointConstraint
-") ShallowCopy;
-		Handle_GeomPlate_HSequenceOfPointConstraint ShallowCopy ();
 };
 
 
@@ -1397,7 +1389,7 @@ class GeomPlate_MakeApprox {
 ") GeomPlate_MakeApprox;
 		 GeomPlate_MakeApprox (const Handle_GeomPlate_Surface & SurfPlate,const AdvApp2Var_Criterion & PlateCrit,const Standard_Real Tol3d,const Standard_Integer Nbmax,const Standard_Integer dgmax,const GeomAbs_Shape Continuity = GeomAbs_C1,const Standard_Real EnlargeCoeff = 1.1);
 		%feature("compactdefaultargs") GeomPlate_MakeApprox;
-		%feature("autodoc", "	* Converts SurfPlate into a Geom_BSplineSurface with n Bezier pieces (n<=Nbmax) of degree <= dgmax and an approximation error < Tol3d if possible if CritOrder = -1 , no criterion is used if CritOrder = 0 , a PlateG0Criterion is used with max value > 10*dmax if CritOrder = 1 , a PlateG1Criterion is used with max value > 10*dmax WARNING : for CritOrder = 0 or 1, only the constraints points of SurfPlate  are used to evaluate the value of the criterion
+		%feature("autodoc", "	* Converts SurfPlate into a Geom_BSplineSurface with n Bezier pieces (n<=Nbmax) of degree <= dgmax and an approximation error < Tol3d if possible if CritOrder = -1 , no criterion is used if CritOrder = 0 , a PlateG0Criterion is used with max value > 10*dmax if CritOrder = 1 , a PlateG1Criterion is used with max value > 10*dmax WARNING : for CritOrder = 0 or 1, only the constraints points of SurfPlate are used to evaluate the value of the criterion
 
 	:param SurfPlate:
 	:type SurfPlate: Handle_GeomPlate_Surface &
@@ -1864,6 +1856,12 @@ class GeomPlate_SequenceOfAij : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") GeomPlate_SequenceOfAij;
 		 GeomPlate_SequenceOfAij ();
+		%feature("compactdefaultargs") GeomPlate_SequenceOfAij;
+		%feature("autodoc", "	:param Other:
+	:type Other: GeomPlate_SequenceOfAij &
+	:rtype: None
+") GeomPlate_SequenceOfAij;
+		 GeomPlate_SequenceOfAij (const GeomPlate_SequenceOfAij & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -1996,6 +1994,12 @@ class GeomPlate_SequenceOfCurveConstraint : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") GeomPlate_SequenceOfCurveConstraint;
 		 GeomPlate_SequenceOfCurveConstraint ();
+		%feature("compactdefaultargs") GeomPlate_SequenceOfCurveConstraint;
+		%feature("autodoc", "	:param Other:
+	:type Other: GeomPlate_SequenceOfCurveConstraint &
+	:rtype: None
+") GeomPlate_SequenceOfCurveConstraint;
+		 GeomPlate_SequenceOfCurveConstraint (const GeomPlate_SequenceOfCurveConstraint & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -2128,6 +2132,12 @@ class GeomPlate_SequenceOfPointConstraint : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") GeomPlate_SequenceOfPointConstraint;
 		 GeomPlate_SequenceOfPointConstraint ();
+		%feature("compactdefaultargs") GeomPlate_SequenceOfPointConstraint;
+		%feature("autodoc", "	:param Other:
+	:type Other: GeomPlate_SequenceOfPointConstraint &
+	:rtype: None
+") GeomPlate_SequenceOfPointConstraint;
+		 GeomPlate_SequenceOfPointConstraint (const GeomPlate_SequenceOfPointConstraint & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -2271,7 +2281,7 @@ class GeomPlate_Surface : public Geom_Surface {
 ") UReverse;
 		void UReverse ();
 		%feature("compactdefaultargs") UReversedParameter;
-		%feature("autodoc", "	* Return the parameter on the Ureversed surface for the point of parameter U on <self>.  me->UReversed()->Value(me->UReversedParameter(U),V)  is the same point as  me->Value(U,V)
+		%feature("autodoc", "	* Return the parameter on the Ureversed surface for the point of parameter U on <self>. //! me->UReversed()->Value(me->UReversedParameter(U),V) //! is the same point as //! me->Value(U,V)
 
 	:param U:
 	:type U: float
@@ -2285,7 +2295,7 @@ class GeomPlate_Surface : public Geom_Surface {
 ") VReverse;
 		void VReverse ();
 		%feature("compactdefaultargs") VReversedParameter;
-		%feature("autodoc", "	* Return the parameter on the Vreversed surface for the point of parameter V on <self>.  me->VReversed()->Value(U,me->VReversedParameter(V))  is the same point as  me->Value(U,V)
+		%feature("autodoc", "	* Return the parameter on the Vreversed surface for the point of parameter V on <self>. //! me->VReversed()->Value(U,me->VReversedParameter(V)) //! is the same point as //! me->Value(U,V)
 
 	:param V:
 	:type V: float
@@ -2293,7 +2303,7 @@ class GeomPlate_Surface : public Geom_Surface {
 ") VReversedParameter;
 		Standard_Real VReversedParameter (const Standard_Real V);
 		%feature("compactdefaultargs") TransformParameters;
-		%feature("autodoc", "	* Computes the parameters on the transformed surface for the transform of the point of parameters U,V on <self>.  me->Transformed(T)->Value(U',V')  is the same point as  me->Value(U,V).Transformed(T)  Where U',V' are the new values of U,V after calling  me->TranformParameters(U,V,T)  This methods does not change <U> and <V>  It can be redefined. For example on the Plane, Cylinder, Cone, Revolved and Extruded surfaces.
+		%feature("autodoc", "	* Computes the parameters on the transformed surface for the transform of the point of parameters U,V on <self>. //! me->Transformed(T)->Value(U',V') //! is the same point as //! me->Value(U,V).Transformed(T) //! Where U',V' are the new values of U,V after calling //! me->TranformParameters(U,V,T) //! This methods does not change <U> and <V> //! It can be redefined. For example on the Plane, Cylinder, Cone, Revolved and Extruded surfaces.
 
 	:param U:
 	:type U: float &
@@ -2305,7 +2315,7 @@ class GeomPlate_Surface : public Geom_Surface {
 ") TransformParameters;
 		virtual void TransformParameters (Standard_Real &OutValue,Standard_Real &OutValue,const gp_Trsf & T);
 		%feature("compactdefaultargs") ParametricTransformation;
-		%feature("autodoc", "	* Returns a 2d transformation used to find the new parameters of a point on the transformed surface.  me->Transformed(T)->Value(U',V')  is the same point as  me->Value(U,V).Transformed(T)  Where U',V' are obtained by transforming U,V with th 2d transformation returned by  me->ParametricTransformation(T)  This methods returns an identity transformation  It can be redefined. For example on the Plane, Cylinder, Cone, Revolved and Extruded surfaces.
+		%feature("autodoc", "	* Returns a 2d transformation used to find the new parameters of a point on the transformed surface. //! me->Transformed(T)->Value(U',V') //! is the same point as //! me->Value(U,V).Transformed(T) //! Where U',V' are obtained by transforming U,V with th 2d transformation returned by //! me->ParametricTransformation(T) //! This methods returns an identity transformation //! It can be redefined. For example on the Plane, Cylinder, Cone, Revolved and Extruded surfaces.
 
 	:param T:
 	:type T: gp_Trsf
@@ -2399,7 +2409,7 @@ class GeomPlate_Surface : public Geom_Surface {
 ") IsCNv;
 		Standard_Boolean IsCNv (const Standard_Integer N);
 		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "	* Computes the point of parameter U,V on the surface. Raised only for an 'OffsetSurface' if it is not possible to compute the current point.
+		%feature("autodoc", "	* Computes the point of parameter U,V on the surface. //! Raised only for an 'OffsetSurface' if it is not possible to compute the current point.
 
 	:param U:
 	:type U: float
@@ -2479,7 +2489,7 @@ class GeomPlate_Surface : public Geom_Surface {
 ") D3;
 		void D3 (const Standard_Real U,const Standard_Real V,gp_Pnt & P,gp_Vec & D1U,gp_Vec & D1V,gp_Vec & D2U,gp_Vec & D2V,gp_Vec & D2UV,gp_Vec & D3U,gp_Vec & D3V,gp_Vec & D3UUV,gp_Vec & D3UVV);
 		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "	* //!---Purpose ; Computes the derivative of order Nu in the direction U and Nv in the direction V at the point P(U, V). Raised if the continuity of the surface is not CNu in the U direction or not CNv in the V direction. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+		%feature("autodoc", "	* ---Purpose ; Computes the derivative of order Nu in the direction U and Nv in the direction V at the point P(U, V). //! Raised if the continuity of the surface is not CNu in the U direction or not CNv in the V direction. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
 
 	:param U:
 	:type U: float

@@ -1101,6 +1101,12 @@ class Plate_SequenceOfLinearScalarConstraint : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") Plate_SequenceOfLinearScalarConstraint;
 		 Plate_SequenceOfLinearScalarConstraint ();
+		%feature("compactdefaultargs") Plate_SequenceOfLinearScalarConstraint;
+		%feature("autodoc", "	:param Other:
+	:type Other: Plate_SequenceOfLinearScalarConstraint &
+	:rtype: None
+") Plate_SequenceOfLinearScalarConstraint;
+		 Plate_SequenceOfLinearScalarConstraint (const Plate_SequenceOfLinearScalarConstraint & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -1233,6 +1239,12 @@ class Plate_SequenceOfLinearXYZConstraint : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") Plate_SequenceOfLinearXYZConstraint;
 		 Plate_SequenceOfLinearXYZConstraint ();
+		%feature("compactdefaultargs") Plate_SequenceOfLinearXYZConstraint;
+		%feature("autodoc", "	:param Other:
+	:type Other: Plate_SequenceOfLinearXYZConstraint &
+	:rtype: None
+") Plate_SequenceOfLinearXYZConstraint;
+		 Plate_SequenceOfLinearXYZConstraint (const Plate_SequenceOfLinearXYZConstraint & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -1365,6 +1377,12 @@ class Plate_SequenceOfPinpointConstraint : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") Plate_SequenceOfPinpointConstraint;
 		 Plate_SequenceOfPinpointConstraint ();
+		%feature("compactdefaultargs") Plate_SequenceOfPinpointConstraint;
+		%feature("autodoc", "	:param Other:
+	:type Other: Plate_SequenceOfPinpointConstraint &
+	:rtype: None
+") Plate_SequenceOfPinpointConstraint;
+		 Plate_SequenceOfPinpointConstraint (const Plate_SequenceOfPinpointConstraint & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;

@@ -109,7 +109,7 @@ class STEPControl_ActorRead : public Transfer_ActorOfTransientProcess {
 ") PrepareUnits;
 		void PrepareUnits (const Handle_StepRepr_Representation & rep,const Handle_Transfer_TransientProcess & TP);
 		%feature("compactdefaultargs") ResetUnits;
-		%feature("autodoc", "	* reset units and tolerances context to default  (mm, radians, read.precision.val, etc.)
+		%feature("autodoc", "	* reset units and tolerances context to default (mm, radians, read.precision.val, etc.)
 
 	:rtype: None
 ") ResetUnits;
@@ -349,7 +349,7 @@ class STEPControl_Controller : public XSControl_Controller {
 ") Customise;
 		virtual void Customise (Handle_XSControl_WorkSession & WS);
 		%feature("compactdefaultargs") TransferWriteShape;
-		%feature("autodoc", "	* Takes one Shape and transfers it to the InterfaceModel (already created by NewModel for instance) <modeshape> is to be interpreted by each kind of XstepAdaptor Returns a status : 0 OK 1 No result 2 Fail -1 bad modeshape  -2 bad model (requires a StepModel) modeshape : 1 Facetted BRep, 2 Shell, 3 Manifold Solid
+		%feature("autodoc", "	* Takes one Shape and transfers it to the InterfaceModel (already created by NewModel for instance) <modeshape> is to be interpreted by each kind of XstepAdaptor Returns a status : 0 OK 1 No result 2 Fail -1 bad modeshape -2 bad model (requires a StepModel) modeshape : 1 Facetted BRep, 2 Shell, 3 Manifold Solid
 
 	:param shape:
 	:type shape: TopoDS_Shape &

@@ -759,6 +759,12 @@ class StlMesh_SequenceOfMesh : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") StlMesh_SequenceOfMesh;
 		 StlMesh_SequenceOfMesh ();
+		%feature("compactdefaultargs") StlMesh_SequenceOfMesh;
+		%feature("autodoc", "	:param Other:
+	:type Other: StlMesh_SequenceOfMesh &
+	:rtype: None
+") StlMesh_SequenceOfMesh;
+		 StlMesh_SequenceOfMesh (const StlMesh_SequenceOfMesh & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -891,6 +897,12 @@ class StlMesh_SequenceOfMeshDomain : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") StlMesh_SequenceOfMeshDomain;
 		 StlMesh_SequenceOfMeshDomain ();
+		%feature("compactdefaultargs") StlMesh_SequenceOfMeshDomain;
+		%feature("autodoc", "	:param Other:
+	:type Other: StlMesh_SequenceOfMeshDomain &
+	:rtype: None
+") StlMesh_SequenceOfMeshDomain;
+		 StlMesh_SequenceOfMeshDomain (const StlMesh_SequenceOfMeshDomain & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -1023,6 +1035,12 @@ class StlMesh_SequenceOfMeshTriangle : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") StlMesh_SequenceOfMeshTriangle;
 		 StlMesh_SequenceOfMeshTriangle ();
+		%feature("compactdefaultargs") StlMesh_SequenceOfMeshTriangle;
+		%feature("autodoc", "	:param Other:
+	:type Other: StlMesh_SequenceOfMeshTriangle &
+	:rtype: None
+") StlMesh_SequenceOfMeshTriangle;
+		 StlMesh_SequenceOfMeshTriangle (const StlMesh_SequenceOfMeshTriangle & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;

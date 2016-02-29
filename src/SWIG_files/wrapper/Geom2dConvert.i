@@ -60,7 +60,7 @@ def register_handle(handle, base_object):
 class Geom2dConvert {
 	public:
 		%feature("compactdefaultargs") SplitBSplineCurve;
-		%feature("autodoc", "	* -- Convert a curve to BSpline by Approximation This method computes the arc of B-spline curve between the two knots FromK1 and ToK2. If C is periodic the arc has the same orientation as C if SameOrientation = Standard_True. If C is not periodic SameOrientation is not used for the computation and C is oriented from the knot fromK1 to the knot toK2. We just keep the local definition of C between the knots FromK1 and ToK2. The returned B-spline curve has its first and last knots with a multiplicity equal to degree + 1, where degree is the polynomial degree of C. The indexes of the knots FromK1 and ToK2 doesn't include the repetition of multiple knots in their definition. Raised if FromK1 or ToK2 are out of the bounds [FirstUKnotIndex, LastUKnotIndex] Raised if FromK1 = ToK2
+		%feature("autodoc", "	* -- Convert a curve to BSpline by Approximation //! This method computes the arc of B-spline curve between the two knots FromK1 and ToK2. If C is periodic the arc has the same orientation as C if SameOrientation = Standard_True. If C is not periodic SameOrientation is not used for the computation and C is oriented from the knot fromK1 to the knot toK2. We just keep the local definition of C between the knots FromK1 and ToK2. The returned B-spline curve has its first and last knots with a multiplicity equal to degree + 1, where degree is the polynomial degree of C. The indexes of the knots FromK1 and ToK2 doesn't include the repetition of multiple knots in their definition. //! Raised if FromK1 or ToK2 are out of the bounds [FirstUKnotIndex, LastUKnotIndex] Raised if FromK1 = ToK2
 
 	:param C:
 	:type C: Handle_Geom2d_BSplineCurve &
@@ -74,7 +74,7 @@ class Geom2dConvert {
 ") SplitBSplineCurve;
 		static Handle_Geom2d_BSplineCurve SplitBSplineCurve (const Handle_Geom2d_BSplineCurve & C,const Standard_Integer FromK1,const Standard_Integer ToK2,const Standard_Boolean SameOrientation = Standard_True);
 		%feature("compactdefaultargs") SplitBSplineCurve;
-		%feature("autodoc", "	* This function computes the segment of B-spline curve between the parametric values FromU1, ToU2. If C is periodic the arc has the same orientation as C if SameOrientation = True. If C is not periodic SameOrientation is not used for the computation and C is oriented fromU1 toU2. If U1 and U2 and two parametric values we consider that U1 = U2 if Abs (U1 - U2) <= ParametricTolerance and ParametricTolerance must be greater or equal to Resolution from package gp. Raised if FromU1 or ToU2 are out of the parametric bounds of the curve (The tolerance criterion is ParametricTolerance). Raised if Abs (FromU1 - ToU2) <= ParametricTolerance Raised if ParametricTolerance < Resolution from gp.
+		%feature("autodoc", "	* This function computes the segment of B-spline curve between the parametric values FromU1, ToU2. If C is periodic the arc has the same orientation as C if SameOrientation = True. If C is not periodic SameOrientation is not used for the computation and C is oriented fromU1 toU2. If U1 and U2 and two parametric values we consider that U1 = U2 if Abs (U1 - U2) <= ParametricTolerance and ParametricTolerance must be greater or equal to Resolution from package gp. //! Raised if FromU1 or ToU2 are out of the parametric bounds of the curve (The tolerance criterion is ParametricTolerance). Raised if Abs (FromU1 - ToU2) <= ParametricTolerance Raised if ParametricTolerance < Resolution from gp.
 
 	:param C:
 	:type C: Handle_Geom2d_BSplineCurve &
@@ -90,7 +90,7 @@ class Geom2dConvert {
 ") SplitBSplineCurve;
 		static Handle_Geom2d_BSplineCurve SplitBSplineCurve (const Handle_Geom2d_BSplineCurve & C,const Standard_Real FromU1,const Standard_Real ToU2,const Standard_Real ParametricTolerance,const Standard_Boolean SameOrientation = Standard_True);
 		%feature("compactdefaultargs") CurveToBSplineCurve;
-		%feature("autodoc", "	* This function converts a non infinite curve from Geom into a B-spline curve. C must be an ellipse or a circle or a trimmed conic or a trimmed line or a Bezier curve or a trimmed Bezier curve or a BSpline curve or a trimmed BSpline curve or an Offset curve or a trimmed Offset curve. The returned B-spline is not periodic except if C is a Circle or an Ellipse. ParameterisationType applies only if the curve is a Circle or an ellipse : TgtThetaOver2, TgtThetaOver2_1, TgtThetaOver2_2, TgtThetaOver2_3, TgtThetaOver2_4, Purpose: this is the classical rational parameterisation  2  1 - t cos(theta) = ------  2  1 + t 2t sin(theta) = ------  2 1 + t t = tan (theta/2) with TgtThetaOver2 the routine will compute the number of spans using the rule num_spans = [ (ULast - UFirst) / 1.2 ] + 1 with TgtThetaOver2_N, N spans will be forced: an error will be raized if (ULast - UFirst) >= PI and N = 1, ULast - UFirst >= 2 PI and N = 2 QuasiAngular, here t is a rational function that approximates theta ----> tan(theta/2). Neverthless the composing with above function yields exact functions whose square sum up to 1 RationalC1 ; t is replaced by a polynomial function of u so as to grant C1 contiuity across knots. Exceptions Standard_DomainError if the curve C is infinite. Standard_ConstructionError: - if C is a complete circle or ellipse, and if Parameterisation is not equal to Convert_TgtThetaOver2 or to Convert_RationalC1, or - if C is a trimmed circle or ellipse and if Parameterisation is equal to Convert_TgtThetaOver2_1 and if U2 - U1 > 0.9999 * Pi where U1 and U2 are respectively the first and the last parameters of the trimmed curve (this method of parameterization cannot be used to convert a half-circle or a half-ellipse, for example), or - if C is a trimmed circle or ellipse and Parameterisation is equal to Convert_TgtThetaOver2_2 and U2 - U1 > 1.9999 * Pi where U1 and U2 are respectively the first and the last parameters of the trimmed curve (this method of parameterization cannot be used to convert a quasi-complete circle or ellipse).
+		%feature("autodoc", "	* This function converts a non infinite curve from Geom into a B-spline curve. C must be an ellipse or a circle or a trimmed conic or a trimmed line or a Bezier curve or a trimmed Bezier curve or a BSpline curve or a trimmed BSpline curve or an Offset curve or a trimmed Offset curve. The returned B-spline is not periodic except if C is a Circle or an Ellipse. ParameterisationType applies only if the curve is a Circle or an ellipse : TgtThetaOver2, TgtThetaOver2_1, TgtThetaOver2_2, TgtThetaOver2_3, TgtThetaOver2_4, Purpose: this is the classical rational parameterisation 2 1 - t cos(theta) = ------ 2 1 + t //! 2t sin(theta) = ------ 2 1 + t //! t = tan (theta/2) //! with TgtThetaOver2 the routine will compute the number of spans using the rule num_spans = [ (ULast - UFirst) / 1.2 ] + 1 with TgtThetaOver2_N, N spans will be forced: an error will be raized if (ULast - UFirst) >= PI and N = 1, ULast - UFirst >= 2 PI and N = 2 //! QuasiAngular, here t is a rational function that approximates theta ----> tan(theta/2). Neverthless the composing with above function yields exact functions whose square sum up to 1 RationalC1 ; t is replaced by a polynomial function of u so as to grant C1 contiuity across knots. Exceptions Standard_DomainError if the curve C is infinite. Standard_ConstructionError: - if C is a complete circle or ellipse, and if Parameterisation is not equal to Convert_TgtThetaOver2 or to Convert_RationalC1, or - if C is a trimmed circle or ellipse and if Parameterisation is equal to Convert_TgtThetaOver2_1 and if U2 - U1 > 0.9999 * Pi where U1 and U2 are respectively the first and the last parameters of the trimmed curve (this method of parameterization cannot be used to convert a half-circle or a half-ellipse, for example), or - if C is a trimmed circle or ellipse and Parameterisation is equal to Convert_TgtThetaOver2_2 and U2 - U1 > 1.9999 * Pi where U1 and U2 are respectively the first and the last parameters of the trimmed curve (this method of parameterization cannot be used to convert a quasi-complete circle or ellipse).
 
 	:param C:
 	:type C: Handle_Geom2d_Curve &
@@ -100,7 +100,7 @@ class Geom2dConvert {
 ") CurveToBSplineCurve;
 		static Handle_Geom2d_BSplineCurve CurveToBSplineCurve (const Handle_Geom2d_Curve & C,const Convert_ParameterisationType Parameterisation = Convert_TgtThetaOver2);
 		%feature("compactdefaultargs") ConcatG1;
-		%feature("autodoc", "	* This Method concatenates G1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two  points shared by two consecutives curves.  Its dimension: [0..N-2] ClosedTolerance indicates if the ArrayOfCurves is closed.  In this case ClosedTolerance contains the biggest tolerance  of the two points which are at the closure.  Otherwise its value is 0.0
+		%feature("autodoc", "	* This Method concatenates G1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two points shared by two consecutives curves. Its dimension: [0..N-2] ClosedTolerance indicates if the ArrayOfCurves is closed. In this case ClosedTolerance contains the biggest tolerance of the two points which are at the closure. Otherwise its value is 0.0
 
 	:param ArrayOfCurves:
 	:type ArrayOfCurves: TColGeom2d_Array1OfBSplineCurve &
@@ -116,7 +116,7 @@ class Geom2dConvert {
 ") ConcatG1;
 		static void ConcatG1 (TColGeom2d_Array1OfBSplineCurve & ArrayOfCurves,const TColStd_Array1OfReal & ArrayOfToler,Handle_TColGeom2d_HArray1OfBSplineCurve & ArrayOfConcatenated,const Standard_Boolean ClosedFlag,const Standard_Real ClosedTolerance);
 		%feature("compactdefaultargs") ConcatC1;
-		%feature("autodoc", "	* This Method concatenates C1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two  points shared by two consecutives curves.  Its dimension: [0..N-2] ClosedTolerance indicates if the ArrayOfCurves is closed.  In this case ClosedTolerance contains the biggest tolerance  of the two points which are at the closure.  Otherwise its value is 0.0
+		%feature("autodoc", "	* This Method concatenates C1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two points shared by two consecutives curves. Its dimension: [0..N-2] ClosedTolerance indicates if the ArrayOfCurves is closed. In this case ClosedTolerance contains the biggest tolerance of the two points which are at the closure. Otherwise its value is 0.0
 
 	:param ArrayOfCurves:
 	:type ArrayOfCurves: TColGeom2d_Array1OfBSplineCurve &
@@ -134,7 +134,7 @@ class Geom2dConvert {
 ") ConcatC1;
 		static void ConcatC1 (TColGeom2d_Array1OfBSplineCurve & ArrayOfCurves,const TColStd_Array1OfReal & ArrayOfToler,Handle_TColStd_HArray1OfInteger & ArrayOfIndices,Handle_TColGeom2d_HArray1OfBSplineCurve & ArrayOfConcatenated,const Standard_Boolean ClosedFlag,const Standard_Real ClosedTolerance);
 		%feature("compactdefaultargs") ConcatC1;
-		%feature("autodoc", "	* This Method concatenates C1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two  points shared by two consecutives curves.  Its dimension: [0..N-2] ClosedTolerance indicates if the ArrayOfCurves is closed.  In this case ClosedTolerance contains the biggest tolerance  of the two points which are at the closure.  Otherwise its value is 0.0
+		%feature("autodoc", "	* This Method concatenates C1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two points shared by two consecutives curves. Its dimension: [0..N-2] ClosedTolerance indicates if the ArrayOfCurves is closed. In this case ClosedTolerance contains the biggest tolerance of the two points which are at the closure. Otherwise its value is 0.0
 
 	:param ArrayOfCurves:
 	:type ArrayOfCurves: TColGeom2d_Array1OfBSplineCurve &
@@ -164,7 +164,7 @@ class Geom2dConvert {
 ") C0BSplineToC1BSplineCurve;
 		static void C0BSplineToC1BSplineCurve (Handle_Geom2d_BSplineCurve & BS,const Standard_Real Tolerance);
 		%feature("compactdefaultargs") C0BSplineToArrayOfC1BSplineCurve;
-		%feature("autodoc", "	* //!This Method reduces as far as it is possible the multiplicities of the knots of the BSpline BS.(keeping the geometry). It returns an array of BSpline C1. Tolerance is a geometrical tolerance
+		%feature("autodoc", "	* This Method reduces as far as it is possible the multiplicities of the knots of the BSpline BS.(keeping the geometry). It returns an array of BSpline C1. Tolerance is a geometrical tolerance
 
 	:param BS:
 	:type BS: Handle_Geom2d_BSplineCurve &
@@ -176,7 +176,7 @@ class Geom2dConvert {
 ") C0BSplineToArrayOfC1BSplineCurve;
 		static void C0BSplineToArrayOfC1BSplineCurve (const Handle_Geom2d_BSplineCurve & BS,Handle_TColGeom2d_HArray1OfBSplineCurve & tabBS,const Standard_Real Tolerance);
 		%feature("compactdefaultargs") C0BSplineToArrayOfC1BSplineCurve;
-		%feature("autodoc", "	* //!This Method reduces as far as it is possible the multiplicities of the knots of the BSpline BS.(keeping the geometry). It returns an array of BSpline C1. tolerance is a geometrical tolerance
+		%feature("autodoc", "	* This Method reduces as far as it is possible the multiplicities of the knots of the BSpline BS.(keeping the geometry). It returns an array of BSpline C1. tolerance is a geometrical tolerance
 
 	:param BS:
 	:type BS: Handle_Geom2d_BSplineCurve &
@@ -260,7 +260,7 @@ class Geom2dConvert_BSplineCurveKnotSplitting {
 ") Geom2dConvert_BSplineCurveKnotSplitting;
 		 Geom2dConvert_BSplineCurveKnotSplitting (const Handle_Geom2d_BSplineCurve & BasisCurve,const Standard_Integer ContinuityRange);
 		%feature("compactdefaultargs") NbSplits;
-		%feature("autodoc", "	* //!Returns the number of points at which the analysed BSpline curve should be split, in order to obtain arcs with the continuity required by this framework. All these points correspond to knot values. Note that the first and last points of the curve, which bound the first and last arcs, are counted among these splitting points.
+		%feature("autodoc", "	* Returns the number of points at which the analysed BSpline curve should be split, in order to obtain arcs with the continuity required by this framework. All these points correspond to knot values. Note that the first and last points of the curve, which bound the first and last arcs, are counted among these splitting points.
 
 	:rtype: int
 ") NbSplits;
@@ -274,7 +274,7 @@ class Geom2dConvert_BSplineCurveKnotSplitting {
 ") Splitting;
 		void Splitting (TColStd_Array1OfInteger & SplitValues);
 		%feature("compactdefaultargs") SplitValue;
-		%feature("autodoc", "	* //!Returns the split knot of index Index to the split knots table computed in this framework. The returned value is an index in the knots table of the BSpline curve analysed by this algorithm. Notes: - If Index is equal to 1, the corresponding knot gives the first point of the curve. - If Index is equal to the number of split knots computed in this framework, the corresponding point is the last point of the curve. Exceptions Standard_RangeError if Index is less than 1 or greater than the number of split knots computed in this framework.
+		%feature("autodoc", "	* Returns the split knot of index Index to the split knots table computed in this framework. The returned value is an index in the knots table of the BSpline curve analysed by this algorithm. Notes: - If Index is equal to 1, the corresponding knot gives the first point of the curve. - If Index is equal to the number of split knots computed in this framework, the corresponding point is the last point of the curve. Exceptions Standard_RangeError if Index is less than 1 or greater than the number of split knots computed in this framework.
 
 	:param Index:
 	:type Index: int
@@ -310,7 +310,7 @@ class Geom2dConvert_BSplineCurveToBezierCurve {
 ") Geom2dConvert_BSplineCurveToBezierCurve;
 		 Geom2dConvert_BSplineCurveToBezierCurve (const Handle_Geom2d_BSplineCurve & BasisCurve,const Standard_Real U1,const Standard_Real U2,const Standard_Real ParametricTolerance);
 		%feature("compactdefaultargs") Arc;
-		%feature("autodoc", "	* //!Constructs and returns the Bezier curve of index Index to the table of adjacent Bezier arcs computed by this algorithm. This Bezier curve has the same orientation as the BSpline curve analyzed in this framework. Exceptions Standard_OutOfRange if Index is less than 1 or greater than the number of adjacent Bezier arcs computed by this algorithm.
+		%feature("autodoc", "	* Constructs and returns the Bezier curve of index Index to the table of adjacent Bezier arcs computed by this algorithm. This Bezier curve has the same orientation as the BSpline curve analyzed in this framework. Exceptions Standard_OutOfRange if Index is less than 1 or greater than the number of adjacent Bezier arcs computed by this algorithm.
 
 	:param Index:
 	:type Index: int
@@ -318,7 +318,7 @@ class Geom2dConvert_BSplineCurveToBezierCurve {
 ") Arc;
 		Handle_Geom2d_BezierCurve Arc (const Standard_Integer Index);
 		%feature("compactdefaultargs") Arcs;
-		%feature("autodoc", "	* //!Constructs all the Bezier curves whose data is computed by this algorithm and loads these curves into the Curves table. The Bezier curves have the same orientation as the BSpline curve analyzed in this framework. Exceptions Standard_DimensionError if the Curves array was not created with the following bounds: - 1 , and - the number of adjacent Bezier arcs computed by this algorithm (as given by the function NbArcs).
+		%feature("autodoc", "	* Constructs all the Bezier curves whose data is computed by this algorithm and loads these curves into the Curves table. The Bezier curves have the same orientation as the BSpline curve analyzed in this framework. Exceptions Standard_DimensionError if the Curves array was not created with the following bounds: - 1 , and - the number of adjacent Bezier arcs computed by this algorithm (as given by the function NbArcs).
 
 	:param Curves:
 	:type Curves: TColGeom2d_Array1OfBezierCurve &

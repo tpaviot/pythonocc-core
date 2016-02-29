@@ -90,7 +90,7 @@ enum BRepOffset_Type {
 class BRepOffset {
 	public:
 		%feature("compactdefaultargs") Surface;
-		%feature("autodoc", "	* returns the Offset surface computed from the surface <Surface> at an OffsetDistance <Offset>.  If possible, this method returns the real type of the surface ( e.g. An Offset of a plane is a plane).  If no particular case is detected, the returned surface will have the Type Geom_OffsetSurface.
+		%feature("autodoc", "	* returns the Offset surface computed from the surface <Surface> at an OffsetDistance <Offset>. //! If possible, this method returns the real type of the surface ( e.g. An Offset of a plane is a plane). //! If no particular case is detected, the returned surface will have the Type Geom_OffsetSurface.
 
 	:param Surface:
 	:type Surface: Handle_Geom_Surface &
@@ -1062,6 +1062,12 @@ class BRepOffset_ListOfInterval {
 		%feature("autodoc", "	:rtype: None
 ") BRepOffset_ListOfInterval;
 		 BRepOffset_ListOfInterval ();
+		%feature("compactdefaultargs") BRepOffset_ListOfInterval;
+		%feature("autodoc", "	:param Other:
+	:type Other: BRepOffset_ListOfInterval &
+	:rtype: None
+") BRepOffset_ListOfInterval;
+		 BRepOffset_ListOfInterval (const BRepOffset_ListOfInterval & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: BRepOffset_ListOfInterval &
@@ -1361,7 +1367,7 @@ class BRepOffset_Offset {
 ") BRepOffset_Offset;
 		 BRepOffset_Offset (const TopoDS_Face & Face,const Standard_Real Offset,const Standard_Boolean OffsetOutside = Standard_True,const GeomAbs_JoinType JoinType = GeomAbs_Arc);
 		%feature("compactdefaultargs") BRepOffset_Offset;
-		%feature("autodoc", "	* This method will be called when you want to share the edges soon generated from an other face. e.g. when two faces are tangents the common edge will generate only one edge ( no pipe).  The Map will be fill as follow:  Created(E) = E' with: E = an edge of <Face> E' = the image of E in the offseting of  another face sharing E with a  continuity at least G1
+		%feature("autodoc", "	* This method will be called when you want to share the edges soon generated from an other face. e.g. when two faces are tangents the common edge will generate only one edge ( no pipe). //! The Map will be fill as follow: //! Created(E) = E' with: E = an edge of <Face> E' = the image of E in the offseting of another face sharing E with a continuity at least G1
 
 	:param Face:
 	:type Face: TopoDS_Face &

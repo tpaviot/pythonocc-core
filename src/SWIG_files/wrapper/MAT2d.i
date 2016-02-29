@@ -218,9 +218,13 @@ class MAT2d_BiInt {
 class MAT2d_Circuit : public MMgt_TShared {
 	public:
 		%feature("compactdefaultargs") MAT2d_Circuit;
-		%feature("autodoc", "	:rtype: None
+		%feature("autodoc", "	:param aJoinType: default value is GeomAbs_Arc
+	:type aJoinType: GeomAbs_JoinType
+	:param IsOpenResult: default value is Standard_False
+	:type IsOpenResult: bool
+	:rtype: None
 ") MAT2d_Circuit;
-		 MAT2d_Circuit ();
+		 MAT2d_Circuit (const GeomAbs_JoinType aJoinType = GeomAbs_Arc,const Standard_Boolean IsOpenResult = Standard_False);
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "	:param aFigure:
 	:type aFigure: MAT2d_SequenceOfSequenceOfGeometry &
@@ -1786,41 +1790,69 @@ class MAT2d_MapBiIntHasher {
 class MAT2d_Mat2d {
 	public:
 		%feature("compactdefaultargs") MAT2d_Mat2d;
-		%feature("autodoc", "	:rtype: None
+		%feature("autodoc", "	* Empty construtor.
+
+	:param IsOpenResult: default value is Standard_False
+	:type IsOpenResult: bool
+	:rtype: None
 ") MAT2d_Mat2d;
-		 MAT2d_Mat2d ();
+		 MAT2d_Mat2d (const Standard_Boolean IsOpenResult = Standard_False);
 		%feature("compactdefaultargs") CreateMat;
-		%feature("autodoc", "	:param aTool:
+		%feature("autodoc", "	* Algoritm of computation of the bisecting locus.
+
+	:param aTool:
 	:type aTool: MAT2d_Tool2d &
 	:rtype: None
 ") CreateMat;
 		void CreateMat (MAT2d_Tool2d & aTool);
+		%feature("compactdefaultargs") CreateMatOpen;
+		%feature("autodoc", "	* Algoritm of computation of the bisecting locus for open wire.
+
+	:param aTool:
+	:type aTool: MAT2d_Tool2d &
+	:rtype: None
+") CreateMatOpen;
+		void CreateMatOpen (MAT2d_Tool2d & aTool);
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "	:rtype: bool
+		%feature("autodoc", "	* Returns <True> if CreateMat has succeeded.
+
+	:rtype: bool
 ") IsDone;
 		Standard_Boolean IsDone ();
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	:rtype: None
+		%feature("autodoc", "	* Initialize an iterator on the set of the roots of the trees of bisectors.
+
+	:rtype: None
 ") Init;
 		void Init ();
 		%feature("compactdefaultargs") More;
-		%feature("autodoc", "	:rtype: bool
+		%feature("autodoc", "	* Return False if there is no more roots.
+
+	:rtype: bool
 ") More;
 		Standard_Boolean More ();
 		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "	:rtype: None
+		%feature("autodoc", "	* Move to the next root.
+
+	:rtype: None
 ") Next;
 		void Next ();
 		%feature("compactdefaultargs") Bisector;
-		%feature("autodoc", "	:rtype: Handle_MAT_Bisector
+		%feature("autodoc", "	* Returns the current root.
+
+	:rtype: Handle_MAT_Bisector
 ") Bisector;
 		Handle_MAT_Bisector Bisector ();
 		%feature("compactdefaultargs") SemiInfinite;
-		%feature("autodoc", "	:rtype: bool
+		%feature("autodoc", "	* Returns True if there are semi_infinite bisectors. So there is a tree for each semi_infinte bisector.
+
+	:rtype: bool
 ") SemiInfinite;
 		Standard_Boolean SemiInfinite ();
 		%feature("compactdefaultargs") NumberOfBisectors;
-		%feature("autodoc", "	:rtype: int
+		%feature("autodoc", "	* Returns the total number of bisectors.
+
+	:rtype: int
 ") NumberOfBisectors;
 		Standard_Integer NumberOfBisectors ();
 };
@@ -1846,7 +1878,7 @@ class MAT2d_MiniPath {
 ") Perform;
 		void Perform (const MAT2d_SequenceOfSequenceOfGeometry & Figure,const Standard_Integer IndStart,const Standard_Boolean Sense);
 		%feature("compactdefaultargs") RunOnConnexions;
-		%feature("autodoc", "	* Run on the set of connexions to compute the path. the path is an exploration of the tree which contains the connexions and their reverses. if the tree of connexions is  A  / B E  / \ C D F  the path is A->B, B->C, C->B, B->D, D->B, B->A, A->E, E->F, F->E, E->A.
+		%feature("autodoc", "	* Run on the set of connexions to compute the path. the path is an exploration of the tree which contains the connexions and their reverses. if the tree of connexions is A / | B E / | | C D F //! the path is A->B, B->C, C->B, B->D, D->B, B->A, A->E, E->F, F->E, E->A.
 
 	:rtype: None
 ") RunOnConnexions;
@@ -2070,6 +2102,12 @@ class MAT2d_SequenceOfConnexion : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") MAT2d_SequenceOfConnexion;
 		 MAT2d_SequenceOfConnexion ();
+		%feature("compactdefaultargs") MAT2d_SequenceOfConnexion;
+		%feature("autodoc", "	:param Other:
+	:type Other: MAT2d_SequenceOfConnexion &
+	:rtype: None
+") MAT2d_SequenceOfConnexion;
+		 MAT2d_SequenceOfConnexion (const MAT2d_SequenceOfConnexion & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -2202,6 +2240,12 @@ class MAT2d_SequenceOfSequenceOfCurve : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") MAT2d_SequenceOfSequenceOfCurve;
 		 MAT2d_SequenceOfSequenceOfCurve ();
+		%feature("compactdefaultargs") MAT2d_SequenceOfSequenceOfCurve;
+		%feature("autodoc", "	:param Other:
+	:type Other: MAT2d_SequenceOfSequenceOfCurve &
+	:rtype: None
+") MAT2d_SequenceOfSequenceOfCurve;
+		 MAT2d_SequenceOfSequenceOfCurve (const MAT2d_SequenceOfSequenceOfCurve & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -2334,6 +2378,12 @@ class MAT2d_SequenceOfSequenceOfGeometry : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") MAT2d_SequenceOfSequenceOfGeometry;
 		 MAT2d_SequenceOfSequenceOfGeometry ();
+		%feature("compactdefaultargs") MAT2d_SequenceOfSequenceOfGeometry;
+		%feature("autodoc", "	:param Other:
+	:type Other: MAT2d_SequenceOfSequenceOfGeometry &
+	:rtype: None
+") MAT2d_SequenceOfSequenceOfGeometry;
+		 MAT2d_SequenceOfSequenceOfGeometry (const MAT2d_SequenceOfSequenceOfGeometry & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -2469,15 +2519,21 @@ class MAT2d_Tool2d {
 ") MAT2d_Tool2d;
 		 MAT2d_Tool2d ();
 		%feature("compactdefaultargs") Sense;
-		%feature("autodoc", "	* //!<aSide> defines the side of the computation of the map.
+		%feature("autodoc", "	* <aSide> defines the side of the computation of the map.
 
 	:param aside:
 	:type aside: MAT_Side
 	:rtype: None
 ") Sense;
 		void Sense (const MAT_Side aside);
+		%feature("compactdefaultargs") SetJoinType;
+		%feature("autodoc", "	:param aJoinType:
+	:type aJoinType: GeomAbs_JoinType
+	:rtype: None
+") SetJoinType;
+		void SetJoinType (const GeomAbs_JoinType aJoinType);
 		%feature("compactdefaultargs") InitItems;
-		%feature("autodoc", "	* InitItems cuts the line in Items.  this Items are the geometrics representations of  the BasicElts from MAT.
+		%feature("autodoc", "	* InitItems cuts the line in Items. this Items are the geometrics representations of the BasicElts from MAT.
 
 	:param aCircuit:
 	:type aCircuit: Handle_MAT2d_Circuit &
@@ -2497,7 +2553,7 @@ class MAT2d_Tool2d {
 ") ToleranceOfConfusion;
 		Standard_Real ToleranceOfConfusion ();
 		%feature("compactdefaultargs") FirstPoint;
-		%feature("autodoc", "	* Creates the point at the origin of the bisector between  anitem and the previous item.  dist is the distance from the FirstPoint to <anitem>.  Returns the index of this point in <theGeomPnts>.
+		%feature("autodoc", "	* Creates the point at the origin of the bisector between anitem and the previous item. dist is the distance from the FirstPoint to <anitem>. Returns the index of this point in <theGeomPnts>.
 
 	:param anitem:
 	:type anitem: int
@@ -2507,23 +2563,27 @@ class MAT2d_Tool2d {
 ") FirstPoint;
 		Standard_Integer FirstPoint (const Standard_Integer anitem,Standard_Real &OutValue);
 		%feature("compactdefaultargs") TangentBefore;
-		%feature("autodoc", "	* Creates the Tangent at the end of the Item defined  by <anitem>. Returns the index of this vector in  <theGeomVecs>
+		%feature("autodoc", "	* Creates the Tangent at the end of the Item defined by <anitem>. Returns the index of this vector in <theGeomVecs>
 
 	:param anitem:
 	:type anitem: int
+	:param IsOpenResult:
+	:type IsOpenResult: bool
 	:rtype: int
 ") TangentBefore;
-		Standard_Integer TangentBefore (const Standard_Integer anitem);
+		Standard_Integer TangentBefore (const Standard_Integer anitem,const Standard_Boolean IsOpenResult);
 		%feature("compactdefaultargs") TangentAfter;
-		%feature("autodoc", "	* Creates the Reversed Tangent at the origin of the Item  defined by <anitem>. Returns the index of this vector in  <theGeomVecs>
+		%feature("autodoc", "	* Creates the Reversed Tangent at the origin of the Item defined by <anitem>. Returns the index of this vector in <theGeomVecs>
 
 	:param anitem:
 	:type anitem: int
+	:param IsOpenResult:
+	:type IsOpenResult: bool
 	:rtype: int
 ") TangentAfter;
-		Standard_Integer TangentAfter (const Standard_Integer anitem);
+		Standard_Integer TangentAfter (const Standard_Integer anitem,const Standard_Boolean IsOpenResult);
 		%feature("compactdefaultargs") Tangent;
-		%feature("autodoc", "	* Creates the Tangent at the end of the bisector defined  by <bisector>. Returns the index of this vector in  <theGeomVecs>
+		%feature("autodoc", "	* Creates the Tangent at the end of the bisector defined by <bisector>. Returns the index of this vector in <theGeomVecs>
 
 	:param bisector:
 	:type bisector: int
@@ -2539,7 +2599,7 @@ class MAT2d_Tool2d {
 ") CreateBisector;
 		void CreateBisector (const Handle_MAT_Bisector & abisector);
 		%feature("compactdefaultargs") TrimBisector;
-		%feature("autodoc", "	* Trims the geometric bisector by the <firstparameter>  of <abisector>.  If the parameter is out of the bisector, Return False.  else Return True.
+		%feature("autodoc", "	* Trims the geometric bisector by the <firstparameter> of <abisector>. If the parameter is out of the bisector, Return False. else Return True.
 
 	:param abisector:
 	:type abisector: Handle_MAT_Bisector &
@@ -2547,7 +2607,7 @@ class MAT2d_Tool2d {
 ") TrimBisector;
 		Standard_Boolean TrimBisector (const Handle_MAT_Bisector & abisector);
 		%feature("compactdefaultargs") TrimBisector;
-		%feature("autodoc", "	* Trims the geometric bisector by the point of index  <apoint> in <theGeomPnts>.  If the point is out of the bisector, Return False.  else Return True.
+		%feature("autodoc", "	* Trims the geometric bisector by the point of index <apoint> in <theGeomPnts>. If the point is out of the bisector, Return False. else Return True.
 
 	:param abisector:
 	:type abisector: Handle_MAT_Bisector &
@@ -2581,7 +2641,7 @@ class MAT2d_Tool2d {
 ") Distance;
 		Standard_Real Distance (const Handle_MAT_Bisector & abisector,const Standard_Real param1,const Standard_Real param2);
 		%feature("compactdefaultargs") Dump;
-		%feature("autodoc", "	* displays informations about the bisector defined by  <bisector>.
+		%feature("autodoc", "	* displays informations about the bisector defined by <bisector>.
 
 	:param bisector:
 	:type bisector: int
@@ -2591,7 +2651,7 @@ class MAT2d_Tool2d {
 ") Dump;
 		void Dump (const Standard_Integer bisector,const Standard_Integer erease);
 		%feature("compactdefaultargs") GeomBis;
-		%feature("autodoc", "	* Returns the <Bisec> of index <Index> in  <theGeomBisectors>.
+		%feature("autodoc", "	* Returns the <Bisec> of index <Index> in <theGeomBisectors>.
 
 	:param Index:
 	:type Index: int
@@ -2615,7 +2675,7 @@ class MAT2d_Tool2d {
 ") GeomPnt;
 		const gp_Pnt2d  GeomPnt (const Standard_Integer Index);
 		%feature("compactdefaultargs") GeomVec;
-		%feature("autodoc", "	* Returns the vector of index <Index> in the  <theGeomVecs>.
+		%feature("autodoc", "	* Returns the vector of index <Index> in the <theGeomVecs>.
 
 	:param Index:
 	:type Index: int
@@ -2623,9 +2683,7 @@ class MAT2d_Tool2d {
 ") GeomVec;
 		const gp_Vec2d  GeomVec (const Standard_Integer Index);
 		%feature("compactdefaultargs") Circuit;
-		%feature("autodoc", "	* 
-
-	:rtype: Handle_MAT2d_Circuit
+		%feature("autodoc", "	:rtype: Handle_MAT2d_Circuit
 ") Circuit;
 		Handle_MAT2d_Circuit Circuit ();
 		%feature("compactdefaultargs") BisecFusion;
@@ -2637,7 +2695,7 @@ class MAT2d_Tool2d {
 ") BisecFusion;
 		void BisecFusion (const Standard_Integer Index1,const Standard_Integer Index2);
 		%feature("compactdefaultargs") ChangeGeomBis;
-		%feature("autodoc", "	* Returns the <Bisec> of index <Index> in  <theGeomBisectors>.
+		%feature("autodoc", "	* Returns the <Bisec> of index <Index> in <theGeomBisectors>.
 
 	:param Index:
 	:type Index: int

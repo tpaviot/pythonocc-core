@@ -60,7 +60,7 @@ def register_handle(handle, base_object):
 class TopClass_Intersection3d {
 	public:
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	* Perform the intersection between the segment L(0) ... L(Prm) and the Face <Face>.  Only the point with the smallest parameter on the line is returned.  The Tolerance <Tol> is used to determine if the first point of the segment is near the face. In that case, the parameter of the intersection point on the line can be a negative value (greater than -Tol).
+		%feature("autodoc", "	* Perform the intersection between the segment L(0) ... L(Prm) and the Face <Face>. //! Only the point with the smallest parameter on the line is returned. //! The Tolerance <Tol> is used to determine if the first point of the segment is near the face. In that case, the parameter of the intersection point on the line can be a negative value (greater than -Tol).
 
 	:param L:
 	:type L: gp_Lin
@@ -124,7 +124,7 @@ class TopClass_SolidExplorer {
 ") Segment;
 		virtual void Segment (const gp_Pnt & P,gp_Lin & L,Standard_Real &OutValue);
 		%feature("compactdefaultargs") OtherSegment;
-		%feature("autodoc", "	* Returns in <L>, <Par> a segment having at least one intersection with the shape boundary to compute intersections.  The First Call to this method returns a line which point to a point of the first face of the shape. The Second Call provide a line to the second face and so on.  if the method is called N times on a shape with F faces (N>F) the line point to other points on the face 1,2,3 ... N
+		%feature("autodoc", "	* Returns in <L>, <Par> a segment having at least one intersection with the shape boundary to compute intersections. //! The First Call to this method returns a line which point to a point of the first face of the shape. The Second Call provide a line to the second face and so on. //! if the method is called N times on a shape with F faces (N>F) the line point to other points on the face 1,2,3 ... N
 
 	:param P:
 	:type P: gp_Pnt

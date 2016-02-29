@@ -701,7 +701,7 @@ class TDocStd_Document : public CDM_Document {
 ") Recompute;
 		void Recompute ();
 		%feature("compactdefaultargs") Update;
-		%feature("autodoc", "	* This method Update will be called to signal the end of the modified references list. The document should be recomputed and UpdateFromDocuments should be called. Update should returns True in case of success, false otherwise. In case of Failure, additional information can be given in ErrorString. Update the document by propagation ================================== Update the document from internal stored  modifications. If you want to undoing this operation, please call NewCommand before. to change format (advanced programming) ================
+		%feature("autodoc", "	* This method Update will be called to signal the end of the modified references list. The document should be recomputed and UpdateFromDocuments should be called. Update should returns True in case of success, false otherwise. In case of Failure, additional information can be given in ErrorString. Update the document by propagation ================================== Update the document from internal stored modifications. If you want to undoing this operation, please call NewCommand before. to change format (advanced programming) ================
 
 	:param aToDocument:
 	:type aToDocument: Handle_CDM_Document &
@@ -1492,6 +1492,12 @@ class TDocStd_SequenceOfApplicationDelta : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") TDocStd_SequenceOfApplicationDelta;
 		 TDocStd_SequenceOfApplicationDelta ();
+		%feature("compactdefaultargs") TDocStd_SequenceOfApplicationDelta;
+		%feature("autodoc", "	:param Other:
+	:type Other: TDocStd_SequenceOfApplicationDelta &
+	:rtype: None
+") TDocStd_SequenceOfApplicationDelta;
+		 TDocStd_SequenceOfApplicationDelta (const TDocStd_SequenceOfApplicationDelta & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -1624,6 +1630,12 @@ class TDocStd_SequenceOfDocument : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") TDocStd_SequenceOfDocument;
 		 TDocStd_SequenceOfDocument ();
+		%feature("compactdefaultargs") TDocStd_SequenceOfDocument;
+		%feature("autodoc", "	:param Other:
+	:type Other: TDocStd_SequenceOfDocument &
+	:rtype: None
+") TDocStd_SequenceOfDocument;
+		 TDocStd_SequenceOfDocument (const TDocStd_SequenceOfDocument & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;

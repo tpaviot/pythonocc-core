@@ -80,7 +80,7 @@ class BRepGProp {
 ") SurfaceProperties;
 		static void SurfaceProperties (const TopoDS_Shape & S,GProp_GProps & SProps);
 		%feature("compactdefaultargs") SurfaceProperties;
-		%feature("autodoc", "	* Updates <SProps> with the shape <S>, that contains its pricipal properties. The surface properties of all the faces in <S> are computed. Adaptive 2D Gauss integration is used. Parameter Eps sets maximal relative error of computed mass (area) for each face. Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values for two successive steps of adaptive integration. Method returns estimation of relative error reached for whole shape. WARNING: if Eps > 0.001 algorithm performs non-adaptive integration. Computes the global volume properties of the solid S, and brings them together with the global properties still retained by the framework VProps. If the current system of VProps was empty, its global properties become equal to the global properties of S for volume. For this computation, no volume density is attached to the solid. Consequently, the added mass corresponds to the volume of S. The density of the component systems, i.e. that of each component of the current system of VProps, and that of S which is considered to be equal to 1, must be coherent to each other. Note that this coherence cannot be checked. You are advised to use a separate framework for each density, and then to bring these frameworks together into a global one. The point relative to which the inertia of the system is computed is the reference point of the framework VProps. Note: if your programming ensures that the framework VProps retains only global properties of volume (brought together for example, by the function VolumeProperties) for objects the density of which is equal to 1 (or is not defined), the function Mass will return the total volume of the solids of the system analysed by VProps. Warning The shape S must represent an object whose global volume properties can be computed. It may be a finite solid, or a series of finite solids all oriented in a coherent way. Nonetheless, S must be exempt of any free boundary. Note that these conditions of coherence are not checked by this algorithm, and results will be false if they are not respected.
+		%feature("autodoc", "	* Updates <SProps> with the shape <S>, that contains its pricipal properties. The surface properties of all the faces in <S> are computed. Adaptive 2D Gauss integration is used. Parameter Eps sets maximal relative error of computed mass (area) for each face. Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values for two successive steps of adaptive integration. Method returns estimation of relative error reached for whole shape. WARNING: if Eps > 0.001 algorithm performs non-adaptive integration. //! Computes the global volume properties of the solid S, and brings them together with the global properties still retained by the framework VProps. If the current system of VProps was empty, its global properties become equal to the global properties of S for volume. For this computation, no volume density is attached to the solid. Consequently, the added mass corresponds to the volume of S. The density of the component systems, i.e. that of each component of the current system of VProps, and that of S which is considered to be equal to 1, must be coherent to each other. Note that this coherence cannot be checked. You are advised to use a separate framework for each density, and then to bring these frameworks together into a global one. The point relative to which the inertia of the system is computed is the reference point of the framework VProps. Note: if your programming ensures that the framework VProps retains only global properties of volume (brought together for example, by the function VolumeProperties) for objects the density of which is equal to 1 (or is not defined), the function Mass will return the total volume of the solids of the system analysed by VProps. Warning The shape S must represent an object whose global volume properties can be computed. It may be a finite solid, or a series of finite solids all oriented in a coherent way. Nonetheless, S must be exempt of any free boundary. Note that these conditions of coherence are not checked by this algorithm, and results will be false if they are not respected.
 
 	:param S:
 	:type S: TopoDS_Shape &
@@ -301,7 +301,7 @@ class BRepGProp_EdgeTool {
 ") NbIntervals;
 		static Standard_Integer NbIntervals (const BRepAdaptor_Curve & C,const GeomAbs_Shape S);
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
 	:param C:
 	:type C: BRepAdaptor_Curve &
@@ -527,7 +527,9 @@ class BRepGProp_Sinert : public GProp_GProps {
 ") BRepGProp_Sinert;
 		 BRepGProp_Sinert (const BRepGProp_Face & S,const gp_Pnt & SLocation);
 		%feature("compactdefaultargs") BRepGProp_Sinert;
-		%feature("autodoc", "	:param S:
+		%feature("autodoc", "	* Builds a Sinert to evaluate the global properties of the face <S>. If isNaturalRestriction is true the domain of S is defined with the natural bounds, else it defined with an iterator of Edge from TopoDS (see DomainTool from GProp)
+
+	:param S:
 	:type S: BRepGProp_Face &
 	:param D:
 	:type D: BRepGProp_Domain &
@@ -597,17 +599,21 @@ class BRepGProp_Sinert : public GProp_GProps {
 ") Perform;
 		Standard_Real Perform (BRepGProp_Face & S,BRepGProp_Domain & D,const Standard_Real Eps);
 		%feature("compactdefaultargs") GetEpsilon;
-		%feature("autodoc", "	:rtype: float
+		%feature("autodoc", "	* If previously used method contained Eps parameter get actual relative error of the computation, else return 1.0.
+
+	:rtype: float
 ") GetEpsilon;
 		Standard_Real GetEpsilon ();
 };
 
 
-%nodefaultctor BRepGProp_TFunctionOfVinertGK;
-class BRepGProp_TFunctionOfVinertGK : public math_Function {
+%nodefaultctor BRepGProp_TFunction;
+class BRepGProp_TFunction : public math_Function {
 	public:
-		%feature("compactdefaultargs") BRepGProp_TFunctionOfVinertGK;
-		%feature("autodoc", "	:param theSurface:
+		%feature("compactdefaultargs") BRepGProp_TFunction;
+		%feature("autodoc", "	* Constructor. Initializes the function with the face, the location point, the flag IsByPoint, the coefficients theCoeff that have different meaning depending on the value of IsByPoint. The last two parameters are theUMin - the lower bound of the inner integral. This value is fixed for any integral. And the value of tolerance of inner integral computation. If IsByPoint is equal to Standard_True, the number of the coefficients is equal to 3 and they represent X, Y and Z coordinates (theCoeff[0], theCoeff[1] and theCoeff[2] correspondingly) of the shift if the inertia is computed with respect to the point different then the location. If IsByPoint is equal to Standard_False, the number of the coefficients is 4 and they represent the compbination of plane parameters and shift values.
+
+	:param theSurface:
 	:type theSurface: BRepGProp_Face &
 	:param theVertex:
 	:type theVertex: gp_Pnt
@@ -620,40 +626,52 @@ class BRepGProp_TFunctionOfVinertGK : public math_Function {
 	:param theTolerance:
 	:type theTolerance: float
 	:rtype: None
-") BRepGProp_TFunctionOfVinertGK;
-		 BRepGProp_TFunctionOfVinertGK (const BRepGProp_Face & theSurface,const gp_Pnt & theVertex,const Standard_Boolean IsByPoint,const Standard_Address theCoeffs,const Standard_Real theUMin,const Standard_Real theTolerance);
+") BRepGProp_TFunction;
+		 BRepGProp_TFunction (const BRepGProp_Face & theSurface,const gp_Pnt & theVertex,const Standard_Boolean IsByPoint,const Standard_Address theCoeffs,const Standard_Real theUMin,const Standard_Real theTolerance);
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "	:rtype: None
 ") Init;
 		void Init ();
 		%feature("compactdefaultargs") SetNbKronrodPoints;
-		%feature("autodoc", "	:param theNbPoints:
+		%feature("autodoc", "	* Setting the expected number of Kronrod points for the outer integral computation. This number is required for computation of a value of tolerance for inner integral computation. After GetStateNumber method call, this number is recomputed by the same law as in math_KronrodSingleIntegration, i.e. next number of points is equal to the current number plus a square root of the current number. If the law in math_KronrodSingleIntegration is changed, the modification algo should be modified accordingly.
+
+	:param theNbPoints:
 	:type theNbPoints: int
 	:rtype: None
 ") SetNbKronrodPoints;
 		void SetNbKronrodPoints (const Standard_Integer theNbPoints);
 		%feature("compactdefaultargs") SetValueType;
-		%feature("autodoc", "	:param aType:
+		%feature("autodoc", "	* Setting the type of the value to be returned. This parameter is directly passed to the UFunction.
+
+	:param aType:
 	:type aType: GProp_ValueType
 	:rtype: None
 ") SetValueType;
 		void SetValueType (const GProp_ValueType aType);
 		%feature("compactdefaultargs") SetTolerance;
-		%feature("autodoc", "	:param aTol:
+		%feature("autodoc", "	* Setting the tolerance for inner integration
+
+	:param aTol:
 	:type aTol: float
 	:rtype: None
 ") SetTolerance;
 		void SetTolerance (const Standard_Real aTol);
 		%feature("compactdefaultargs") ErrorReached;
-		%feature("autodoc", "	:rtype: float
+		%feature("autodoc", "	* Returns the relative reached error of all values computation since the last call of GetStateNumber method.
+
+	:rtype: float
 ") ErrorReached;
 		Standard_Real ErrorReached ();
 		%feature("compactdefaultargs") AbsolutError;
-		%feature("autodoc", "	:rtype: float
+		%feature("autodoc", "	* Returns the absolut reached error of all values computation since the last call of GetStateNumber method.
+
+	:rtype: float
 ") AbsolutError;
 		Standard_Real AbsolutError ();
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param X:
+		%feature("autodoc", "	* Returns a value of the function. The value represents an integral of UFunction. It is computed with the predefined tolerance using the adaptive Gauss-Kronrod method.
+
+	:param X:
 	:type X: float
 	:param F:
 	:type F: float &
@@ -661,17 +679,21 @@ class BRepGProp_TFunctionOfVinertGK : public math_Function {
 ") Value;
 		virtual Standard_Boolean Value (const Standard_Real X,Standard_Real &OutValue);
 		%feature("compactdefaultargs") GetStateNumber;
-		%feature("autodoc", "	:rtype: int
+		%feature("autodoc", "	* Redefined method. Remembers the error reached during computation of integral values since the object creation or the last call of GetStateNumber. It is invoked in each algorithm from the package math. Particularly in the algorithm math_KronrodSingleIntegration that is used to compute the integral of TFunction.
+
+	:rtype: int
 ") GetStateNumber;
-		Standard_Integer GetStateNumber ();
+		virtual Standard_Integer GetStateNumber ();
 };
 
 
-%nodefaultctor BRepGProp_UFunctionOfVinertGK;
-class BRepGProp_UFunctionOfVinertGK : public math_Function {
+%nodefaultctor BRepGProp_UFunction;
+class BRepGProp_UFunction : public math_Function {
 	public:
-		%feature("compactdefaultargs") BRepGProp_UFunctionOfVinertGK;
-		%feature("autodoc", "	:param theSurface:
+		%feature("compactdefaultargs") BRepGProp_UFunction;
+		%feature("autodoc", "	* Constructor. Initializes the function with the face, the location point, the flag IsByPoint and the coefficients theCoeff that have different meaning depending on the value of IsByPoint. If IsByPoint is equal to Standard_True, the number of the coefficients is equal to 3 and they represent X, Y and Z coordinates (theCoeff[0], theCoeff[1] and theCoeff[2] correspondingly) of the shift, if the inertia is computed with respect to the point different then the location. If IsByPoint is equal to Standard_False, the number of the coefficients is 4 and they represent the combination of plane parameters and shift values.
+
+	:param theSurface:
 	:type theSurface: BRepGProp_Face &
 	:param theVertex:
 	:type theVertex: gp_Pnt
@@ -680,22 +702,28 @@ class BRepGProp_UFunctionOfVinertGK : public math_Function {
 	:param theCoeffs:
 	:type theCoeffs: Standard_Address
 	:rtype: None
-") BRepGProp_UFunctionOfVinertGK;
-		 BRepGProp_UFunctionOfVinertGK (const BRepGProp_Face & theSurface,const gp_Pnt & theVertex,const Standard_Boolean IsByPoint,const Standard_Address theCoeffs);
+") BRepGProp_UFunction;
+		 BRepGProp_UFunction (const BRepGProp_Face & theSurface,const gp_Pnt & theVertex,const Standard_Boolean IsByPoint,const Standard_Address theCoeffs);
 		%feature("compactdefaultargs") SetValueType;
-		%feature("autodoc", "	:param theType:
+		%feature("autodoc", "	* Setting the type of the value to be returned.
+
+	:param theType:
 	:type theType: GProp_ValueType
 	:rtype: None
 ") SetValueType;
 		void SetValueType (const GProp_ValueType theType);
 		%feature("compactdefaultargs") SetVParam;
-		%feature("autodoc", "	:param theVParam:
+		%feature("autodoc", "	* Setting the V parameter that is constant during the integral computation.
+
+	:param theVParam:
 	:type theVParam: float
 	:rtype: None
 ") SetVParam;
 		void SetVParam (const Standard_Real theVParam);
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "	:param X:
+		%feature("autodoc", "	* Returns a value of the function.
+
+	:param X:
 	:type X: float
 	:param F:
 	:type F: float &
@@ -713,7 +741,9 @@ class BRepGProp_Vinert : public GProp_GProps {
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert ();
 		%feature("compactdefaultargs") BRepGProp_Vinert;
-		%feature("autodoc", "	:param S:
+		%feature("autodoc", "	* Computes the global properties of a region of 3D space delimited with the surface <S> and the point VLocation. S can be closed The method is quick and its precision is enough for many cases of analytical surfaces. Non-adaptive 2D Gauss integration with predefined numbers of Gauss points is used. Numbers of points depend on types of surfaces and curves. Errror of the computation is not calculated.
+
+	:param S:
 	:type S: BRepGProp_Face &
 	:param VLocation:
 	:type VLocation: gp_Pnt
@@ -721,7 +751,9 @@ class BRepGProp_Vinert : public GProp_GProps {
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert (const BRepGProp_Face & S,const gp_Pnt & VLocation);
 		%feature("compactdefaultargs") BRepGProp_Vinert;
-		%feature("autodoc", "	:param S:
+		%feature("autodoc", "	* Computes the global properties of a region of 3D space delimited with the surface <S> and the point VLocation. S can be closed Adaptive 2D Gauss integration is used. Parameter Eps sets maximal relative error of computed mass (volume) for face. Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values for two successive steps of adaptive integration.
+
+	:param S:
 	:type S: BRepGProp_Face &
 	:param VLocation:
 	:type VLocation: gp_Pnt
@@ -731,7 +763,9 @@ class BRepGProp_Vinert : public GProp_GProps {
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert (BRepGProp_Face & S,const gp_Pnt & VLocation,const Standard_Real Eps);
 		%feature("compactdefaultargs") BRepGProp_Vinert;
-		%feature("autodoc", "	:param S:
+		%feature("autodoc", "	* Computes the global properties of the region of 3D space delimited with the surface <S> and the point VLocation. The method is quick and its precision is enough for many cases of analytical surfaces. Non-adaptive 2D Gauss integration with predefined numbers of Gauss points is used. Numbers of points depend on types of surfaces and curves. Error of the computation is not calculated.
+
+	:param S:
 	:type S: BRepGProp_Face &
 	:param O:
 	:type O: gp_Pnt
@@ -741,7 +775,9 @@ class BRepGProp_Vinert : public GProp_GProps {
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert (const BRepGProp_Face & S,const gp_Pnt & O,const gp_Pnt & VLocation);
 		%feature("compactdefaultargs") BRepGProp_Vinert;
-		%feature("autodoc", "	:param S:
+		%feature("autodoc", "	* Computes the global properties of the region of 3D space delimited with the surface <S> and the point VLocation. Adaptive 2D Gauss integration is used. Parameter Eps sets maximal relative error of computed mass (volume) for face. Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values for two successive steps of adaptive integration. WARNING: if Eps > 0.001 algorithm performs non-adaptive integration.
+
+	:param S:
 	:type S: BRepGProp_Face &
 	:param O:
 	:type O: gp_Pnt
@@ -753,7 +789,9 @@ class BRepGProp_Vinert : public GProp_GProps {
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert (BRepGProp_Face & S,const gp_Pnt & O,const gp_Pnt & VLocation,const Standard_Real Eps);
 		%feature("compactdefaultargs") BRepGProp_Vinert;
-		%feature("autodoc", "	:param S:
+		%feature("autodoc", "	* Computes the global properties of the region of 3D space delimited with the surface <S> and the plane Pln. The method is quick and its precision is enough for many cases of analytical surfaces. Non-adaptive 2D Gauss integration with predefined numbers of Gauss points is used. Numbers of points depend on types of surfaces and curves. Error of the computation is not calculated.
+
+	:param S:
 	:type S: BRepGProp_Face &
 	:param Pl:
 	:type Pl: gp_Pln
@@ -763,7 +801,9 @@ class BRepGProp_Vinert : public GProp_GProps {
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert (const BRepGProp_Face & S,const gp_Pln & Pl,const gp_Pnt & VLocation);
 		%feature("compactdefaultargs") BRepGProp_Vinert;
-		%feature("autodoc", "	:param S:
+		%feature("autodoc", "	* Computes the global properties of the region of 3D space delimited with the surface <S> and the plane Pln. Adaptive 2D Gauss integration is used. Parameter Eps sets maximal relative error of computed mass (volume) for face. Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values for two successive steps of adaptive integration. WARNING: if Eps > 0.001 algorithm performs non-adaptive integration.
+
+	:param S:
 	:type S: BRepGProp_Face &
 	:param Pl:
 	:type Pl: gp_Pln
@@ -775,7 +815,9 @@ class BRepGProp_Vinert : public GProp_GProps {
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert (BRepGProp_Face & S,const gp_Pln & Pl,const gp_Pnt & VLocation,const Standard_Real Eps);
 		%feature("compactdefaultargs") BRepGProp_Vinert;
-		%feature("autodoc", "	:param S:
+		%feature("autodoc", "	* Computes the global properties of a region of 3D space delimited with the surface <S> and the point VLocation. S can be closed The method is quick and its precision is enough for many cases of analytical surfaces. Non-adaptive 2D Gauss integration with predefined numbers of Gauss points is used. Numbers of points depend on types of surfaces and curves. Errror of the computation is not calculated.
+
+	:param S:
 	:type S: BRepGProp_Face &
 	:param D:
 	:type D: BRepGProp_Domain &
@@ -785,7 +827,9 @@ class BRepGProp_Vinert : public GProp_GProps {
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert (BRepGProp_Face & S,BRepGProp_Domain & D,const gp_Pnt & VLocation);
 		%feature("compactdefaultargs") BRepGProp_Vinert;
-		%feature("autodoc", "	:param S:
+		%feature("autodoc", "	* Computes the global properties of a region of 3D space delimited with the surface <S> and the point VLocation. S can be closed Adaptive 2D Gauss integration is used. Parameter Eps sets maximal relative error of computed mass (volume) for face. Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values for two successive steps of adaptive integration.
+
+	:param S:
 	:type S: BRepGProp_Face &
 	:param D:
 	:type D: BRepGProp_Domain &
@@ -797,7 +841,9 @@ class BRepGProp_Vinert : public GProp_GProps {
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert (BRepGProp_Face & S,BRepGProp_Domain & D,const gp_Pnt & VLocation,const Standard_Real Eps);
 		%feature("compactdefaultargs") BRepGProp_Vinert;
-		%feature("autodoc", "	:param S:
+		%feature("autodoc", "	* Computes the global properties of the region of 3D space delimited with the surface <S> and the point VLocation. The method is quick and its precision is enough for many cases of analytical surfaces. Non-adaptive 2D Gauss integration with predefined numbers of Gauss points is used. Numbers of points depend on types of surfaces and curves. Error of the computation is not calculated.
+
+	:param S:
 	:type S: BRepGProp_Face &
 	:param D:
 	:type D: BRepGProp_Domain &
@@ -809,7 +855,9 @@ class BRepGProp_Vinert : public GProp_GProps {
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert (BRepGProp_Face & S,BRepGProp_Domain & D,const gp_Pnt & O,const gp_Pnt & VLocation);
 		%feature("compactdefaultargs") BRepGProp_Vinert;
-		%feature("autodoc", "	:param S:
+		%feature("autodoc", "	* Computes the global properties of the region of 3D space delimited with the surface <S> and the point VLocation. Adaptive 2D Gauss integration is used. Parameter Eps sets maximal relative error of computed mass (volume) for face. Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values for two successive steps of adaptive integration. WARNING: if Eps > 0.001 algorithm performs non-adaptive integration.
+
+	:param S:
 	:type S: BRepGProp_Face &
 	:param D:
 	:type D: BRepGProp_Domain &
@@ -823,7 +871,9 @@ class BRepGProp_Vinert : public GProp_GProps {
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert (BRepGProp_Face & S,BRepGProp_Domain & D,const gp_Pnt & O,const gp_Pnt & VLocation,const Standard_Real Eps);
 		%feature("compactdefaultargs") BRepGProp_Vinert;
-		%feature("autodoc", "	:param S:
+		%feature("autodoc", "	* Computes the global properties of the region of 3D space delimited with the surface <S> and the plane Pln. The method is quick and its precision is enough for many cases of analytical surfaces. Non-adaptive 2D Gauss integration with predefined numbers of Gauss points is used. Numbers of points depend on types of surfaces and curves. Error of the computation is not calculated.
+
+	:param S:
 	:type S: BRepGProp_Face &
 	:param D:
 	:type D: BRepGProp_Domain &
@@ -835,7 +885,9 @@ class BRepGProp_Vinert : public GProp_GProps {
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert (BRepGProp_Face & S,BRepGProp_Domain & D,const gp_Pln & Pl,const gp_Pnt & VLocation);
 		%feature("compactdefaultargs") BRepGProp_Vinert;
-		%feature("autodoc", "	:param S:
+		%feature("autodoc", "	* Computes the global properties of the region of 3D space delimited with the surface <S> and the plane Pln. Adaptive 2D Gauss integration is used. Parameter Eps sets maximal relative error of computed mass (volume) for face. Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values for two successive steps of adaptive integration. WARNING: if Eps > 0.001 algorithm performs non-adaptive integration.
+
+	:param S:
 	:type S: BRepGProp_Face &
 	:param D:
 	:type D: BRepGProp_Domain &
@@ -967,7 +1019,9 @@ class BRepGProp_Vinert : public GProp_GProps {
 ") Perform;
 		Standard_Real Perform (BRepGProp_Face & S,BRepGProp_Domain & D,const gp_Pln & Pl,const Standard_Real Eps);
 		%feature("compactdefaultargs") GetEpsilon;
-		%feature("autodoc", "	:rtype: float
+		%feature("autodoc", "	* If previously used methods containe Eps parameter gets actual relative error of the computation, else returns 1.0.
+
+	:rtype: float
 ") GetEpsilon;
 		Standard_Real GetEpsilon ();
 };
@@ -977,11 +1031,15 @@ class BRepGProp_Vinert : public GProp_GProps {
 class BRepGProp_VinertGK : public GProp_GProps {
 	public:
 		%feature("compactdefaultargs") BRepGProp_VinertGK;
-		%feature("autodoc", "	:rtype: None
+		%feature("autodoc", "	* Empty constructor.
+
+	:rtype: None
 ") BRepGProp_VinertGK;
 		 BRepGProp_VinertGK ();
 		%feature("compactdefaultargs") BRepGProp_VinertGK;
-		%feature("autodoc", "	:param theSurface:
+		%feature("autodoc", "	* Constructor. Computes the global properties of a region of 3D space delimited with the naturally restricted surface and the point VLocation.
+
+	:param theSurface:
 	:type theSurface: BRepGProp_Face &
 	:param theLocation:
 	:type theLocation: gp_Pnt
@@ -995,7 +1053,9 @@ class BRepGProp_VinertGK : public GProp_GProps {
 ") BRepGProp_VinertGK;
 		 BRepGProp_VinertGK (BRepGProp_Face & theSurface,const gp_Pnt & theLocation,const Standard_Real theTolerance = 0.001,const Standard_Boolean theCGFlag = Standard_False,const Standard_Boolean theIFlag = Standard_False);
 		%feature("compactdefaultargs") BRepGProp_VinertGK;
-		%feature("autodoc", "	:param theSurface:
+		%feature("autodoc", "	* Constructor. Computes the global properties of a region of 3D space delimited with the naturally restricted surface and the point VLocation. The inertia is computed with respect to thePoint.
+
+	:param theSurface:
 	:type theSurface: BRepGProp_Face &
 	:param thePoint:
 	:type thePoint: gp_Pnt
@@ -1011,7 +1071,9 @@ class BRepGProp_VinertGK : public GProp_GProps {
 ") BRepGProp_VinertGK;
 		 BRepGProp_VinertGK (BRepGProp_Face & theSurface,const gp_Pnt & thePoint,const gp_Pnt & theLocation,const Standard_Real theTolerance = 0.001,const Standard_Boolean theCGFlag = Standard_False,const Standard_Boolean theIFlag = Standard_False);
 		%feature("compactdefaultargs") BRepGProp_VinertGK;
-		%feature("autodoc", "	:param theSurface:
+		%feature("autodoc", "	* Constructor. Computes the global properties of a region of 3D space delimited with the surface bounded by the domain and the point VLocation.
+
+	:param theSurface:
 	:type theSurface: BRepGProp_Face &
 	:param theDomain:
 	:type theDomain: BRepGProp_Domain &
@@ -1027,7 +1089,9 @@ class BRepGProp_VinertGK : public GProp_GProps {
 ") BRepGProp_VinertGK;
 		 BRepGProp_VinertGK (BRepGProp_Face & theSurface,BRepGProp_Domain & theDomain,const gp_Pnt & theLocation,const Standard_Real theTolerance = 0.001,const Standard_Boolean theCGFlag = Standard_False,const Standard_Boolean theIFlag = Standard_False);
 		%feature("compactdefaultargs") BRepGProp_VinertGK;
-		%feature("autodoc", "	:param theSurface:
+		%feature("autodoc", "	* Constructor. Computes the global properties of a region of 3D space delimited with the surface bounded by the domain and the point VLocation. The inertia is computed with respect to thePoint.
+
+	:param theSurface:
 	:type theSurface: BRepGProp_Face &
 	:param theDomain:
 	:type theDomain: BRepGProp_Domain &
@@ -1045,7 +1109,9 @@ class BRepGProp_VinertGK : public GProp_GProps {
 ") BRepGProp_VinertGK;
 		 BRepGProp_VinertGK (BRepGProp_Face & theSurface,BRepGProp_Domain & theDomain,const gp_Pnt & thePoint,const gp_Pnt & theLocation,const Standard_Real theTolerance = 0.001,const Standard_Boolean theCGFlag = Standard_False,const Standard_Boolean theIFlag = Standard_False);
 		%feature("compactdefaultargs") BRepGProp_VinertGK;
-		%feature("autodoc", "	:param theSurface:
+		%feature("autodoc", "	* Constructor. Computes the global properties of a region of 3D space delimited with the naturally restricted surface and the plane.
+
+	:param theSurface:
 	:type theSurface: BRepGProp_Face &
 	:param thePlane:
 	:type thePlane: gp_Pln
@@ -1061,7 +1127,9 @@ class BRepGProp_VinertGK : public GProp_GProps {
 ") BRepGProp_VinertGK;
 		 BRepGProp_VinertGK (BRepGProp_Face & theSurface,const gp_Pln & thePlane,const gp_Pnt & theLocation,const Standard_Real theTolerance = 0.001,const Standard_Boolean theCGFlag = Standard_False,const Standard_Boolean theIFlag = Standard_False);
 		%feature("compactdefaultargs") BRepGProp_VinertGK;
-		%feature("autodoc", "	:param theSurface:
+		%feature("autodoc", "	* Constructor. Computes the global properties of a region of 3D space delimited with the surface bounded by the domain and the plane.
+
+	:param theSurface:
 	:type theSurface: BRepGProp_Face &
 	:param theDomain:
 	:type theDomain: BRepGProp_Domain &
@@ -1079,13 +1147,17 @@ class BRepGProp_VinertGK : public GProp_GProps {
 ") BRepGProp_VinertGK;
 		 BRepGProp_VinertGK (BRepGProp_Face & theSurface,BRepGProp_Domain & theDomain,const gp_Pln & thePlane,const gp_Pnt & theLocation,const Standard_Real theTolerance = 0.001,const Standard_Boolean theCGFlag = Standard_False,const Standard_Boolean theIFlag = Standard_False);
 		%feature("compactdefaultargs") SetLocation;
-		%feature("autodoc", "	:param theLocation:
+		%feature("autodoc", "	* Sets the vertex that delimit 3D closed region of space.
+
+	:param theLocation:
 	:type theLocation: gp_Pnt
 	:rtype: None
 ") SetLocation;
 		void SetLocation (const gp_Pnt & theLocation);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	:param theSurface:
+		%feature("autodoc", "	* Computes the global properties of a region of 3D space delimited with the naturally restricted surface and the point VLocation.
+
+	:param theSurface:
 	:type theSurface: BRepGProp_Face &
 	:param theTolerance: default value is 0.001
 	:type theTolerance: float
@@ -1097,7 +1169,9 @@ class BRepGProp_VinertGK : public GProp_GProps {
 ") Perform;
 		Standard_Real Perform (BRepGProp_Face & theSurface,const Standard_Real theTolerance = 0.001,const Standard_Boolean theCGFlag = Standard_False,const Standard_Boolean theIFlag = Standard_False);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	:param theSurface:
+		%feature("autodoc", "	* Computes the global properties of a region of 3D space delimited with the naturally restricted surface and the point VLocation. The inertia is computed with respect to thePoint.
+
+	:param theSurface:
 	:type theSurface: BRepGProp_Face &
 	:param thePoint:
 	:type thePoint: gp_Pnt
@@ -1111,7 +1185,9 @@ class BRepGProp_VinertGK : public GProp_GProps {
 ") Perform;
 		Standard_Real Perform (BRepGProp_Face & theSurface,const gp_Pnt & thePoint,const Standard_Real theTolerance = 0.001,const Standard_Boolean theCGFlag = Standard_False,const Standard_Boolean theIFlag = Standard_False);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	:param theSurface:
+		%feature("autodoc", "	* Computes the global properties of a region of 3D space delimited with the surface bounded by the domain and the point VLocation.
+
+	:param theSurface:
 	:type theSurface: BRepGProp_Face &
 	:param theDomain:
 	:type theDomain: BRepGProp_Domain &
@@ -1125,7 +1201,9 @@ class BRepGProp_VinertGK : public GProp_GProps {
 ") Perform;
 		Standard_Real Perform (BRepGProp_Face & theSurface,BRepGProp_Domain & theDomain,const Standard_Real theTolerance = 0.001,const Standard_Boolean theCGFlag = Standard_False,const Standard_Boolean theIFlag = Standard_False);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	:param theSurface:
+		%feature("autodoc", "	* Computes the global properties of a region of 3D space delimited with the surface bounded by the domain and the point VLocation. The inertia is computed with respect to thePoint.
+
+	:param theSurface:
 	:type theSurface: BRepGProp_Face &
 	:param theDomain:
 	:type theDomain: BRepGProp_Domain &
@@ -1141,7 +1219,9 @@ class BRepGProp_VinertGK : public GProp_GProps {
 ") Perform;
 		Standard_Real Perform (BRepGProp_Face & theSurface,BRepGProp_Domain & theDomain,const gp_Pnt & thePoint,const Standard_Real theTolerance = 0.001,const Standard_Boolean theCGFlag = Standard_False,const Standard_Boolean theIFlag = Standard_False);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	:param theSurface:
+		%feature("autodoc", "	* Computes the global properties of a region of 3D space delimited with the naturally restricted surface and the plane.
+
+	:param theSurface:
 	:type theSurface: BRepGProp_Face &
 	:param thePlane:
 	:type thePlane: gp_Pln
@@ -1155,7 +1235,9 @@ class BRepGProp_VinertGK : public GProp_GProps {
 ") Perform;
 		Standard_Real Perform (BRepGProp_Face & theSurface,const gp_Pln & thePlane,const Standard_Real theTolerance = 0.001,const Standard_Boolean theCGFlag = Standard_False,const Standard_Boolean theIFlag = Standard_False);
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "	:param theSurface:
+		%feature("autodoc", "	* Computes the global properties of a region of 3D space delimited with the surface bounded by the domain and the plane.
+
+	:param theSurface:
 	:type theSurface: BRepGProp_Face &
 	:param theDomain:
 	:type theDomain: BRepGProp_Domain &
@@ -1171,7 +1253,9 @@ class BRepGProp_VinertGK : public GProp_GProps {
 ") Perform;
 		Standard_Real Perform (BRepGProp_Face & theSurface,BRepGProp_Domain & theDomain,const gp_Pln & thePlane,const Standard_Real theTolerance = 0.001,const Standard_Boolean theCGFlag = Standard_False,const Standard_Boolean theIFlag = Standard_False);
 		%feature("compactdefaultargs") GetErrorReached;
-		%feature("autodoc", "	:rtype: float
+		%feature("autodoc", "	* Returns the relative reached computation error.
+
+	:rtype: float
 ") GetErrorReached;
 		Standard_Real GetErrorReached ();
 };

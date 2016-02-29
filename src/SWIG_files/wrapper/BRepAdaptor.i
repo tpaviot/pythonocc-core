@@ -244,7 +244,7 @@ class BRepAdaptor_CompCurve : public Adaptor3d_Curve {
 ") NbIntervals;
 		Standard_Integer NbIntervals (const GeomAbs_Shape S);
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
 	:param T:
 	:type T: TColStd_Array1OfReal &
@@ -514,7 +514,7 @@ class BRepAdaptor_Curve : public Adaptor3d_Curve {
 ") NbIntervals;
 		Standard_Integer NbIntervals (const GeomAbs_Shape S);
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>.  The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
+		%feature("autodoc", "	* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 
 	:param T:
 	:type T: TColStd_Array1OfReal &
@@ -666,13 +666,13 @@ class BRepAdaptor_Curve : public Adaptor3d_Curve {
 ") NbKnots;
 		Standard_Integer NbKnots ();
 		%feature("compactdefaultargs") Bezier;
-		%feature("autodoc", "	* Warning :  This will make a copy of the Bezier Curve  since it applies to it myTsrf . Be carefull when  using this method
+		%feature("autodoc", "	* Warning : This will make a copy of the Bezier Curve since it applies to it myTsrf . Be carefull when using this method
 
 	:rtype: Handle_Geom_BezierCurve
 ") Bezier;
 		Handle_Geom_BezierCurve Bezier ();
 		%feature("compactdefaultargs") BSpline;
-		%feature("autodoc", "	* Warning :  This will make a copy of the BSpline Curve  since it applies to it myTsrf . Be carefull when  using this method
+		%feature("autodoc", "	* Warning : This will make a copy of the BSpline Curve since it applies to it myTsrf . Be carefull when using this method
 
 	:rtype: Handle_Geom_BSplineCurve
 ") BSpline;
@@ -1379,7 +1379,7 @@ class BRepAdaptor_Surface : public Adaptor3d_Surface {
 ") DN;
 		gp_Vec DN (const Standard_Real U,const Standard_Real V,const Standard_Integer Nu,const Standard_Integer Nv);
 		%feature("compactdefaultargs") UResolution;
-		%feature("autodoc", "	* Returns the parametric U resolution corresponding  to the real space resolution <R3d>.
+		%feature("autodoc", "	* Returns the parametric U resolution corresponding to the real space resolution <R3d>.
 
 	:param R3d:
 	:type R3d: float
@@ -1387,7 +1387,7 @@ class BRepAdaptor_Surface : public Adaptor3d_Surface {
 ") UResolution;
 		Standard_Real UResolution (const Standard_Real R3d);
 		%feature("compactdefaultargs") VResolution;
-		%feature("autodoc", "	* Returns the parametric V resolution corresponding  to the real space resolution <R3d>.
+		%feature("autodoc", "	* Returns the parametric V resolution corresponding to the real space resolution <R3d>.
 
 	:param R3d:
 	:type R3d: float

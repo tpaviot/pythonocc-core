@@ -2566,10 +2566,6 @@ class TopTools_HSequenceOfShape : public MMgt_TShared {
 		%feature("autodoc", "	:rtype: TopTools_SequenceOfShape
 ") ChangeSequence;
 		TopTools_SequenceOfShape & ChangeSequence ();
-		%feature("compactdefaultargs") ShallowCopy;
-		%feature("autodoc", "	:rtype: Handle_TopTools_HSequenceOfShape
-") ShallowCopy;
-		Handle_TopTools_HSequenceOfShape ShallowCopy ();
 };
 
 
@@ -3347,6 +3343,12 @@ class TopTools_IndexedMapOfOrientedShape : public TCollection_BasicMap {
 	:rtype: None
 ") TopTools_IndexedMapOfOrientedShape;
 		 TopTools_IndexedMapOfOrientedShape (const Standard_Integer NbBuckets = 1);
+		%feature("compactdefaultargs") TopTools_IndexedMapOfOrientedShape;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_IndexedMapOfOrientedShape &
+	:rtype: None
+") TopTools_IndexedMapOfOrientedShape;
+		 TopTools_IndexedMapOfOrientedShape (const TopTools_IndexedMapOfOrientedShape & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_IndexedMapOfOrientedShape &
@@ -3417,6 +3419,12 @@ class TopTools_IndexedMapOfShape : public TCollection_BasicMap {
 	:rtype: None
 ") TopTools_IndexedMapOfShape;
 		 TopTools_IndexedMapOfShape (const Standard_Integer NbBuckets = 1);
+		%feature("compactdefaultargs") TopTools_IndexedMapOfShape;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_IndexedMapOfShape &
+	:rtype: None
+") TopTools_IndexedMapOfShape;
+		 TopTools_IndexedMapOfShape (const TopTools_IndexedMapOfShape & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_IndexedMapOfShape &
@@ -3574,6 +3582,12 @@ class TopTools_ListOfShape {
 		%feature("autodoc", "	:rtype: None
 ") TopTools_ListOfShape;
 		 TopTools_ListOfShape ();
+		%feature("compactdefaultargs") TopTools_ListOfShape;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_ListOfShape &
+	:rtype: None
+") TopTools_ListOfShape;
+		 TopTools_ListOfShape (const TopTools_ListOfShape & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_ListOfShape &
@@ -3827,6 +3841,12 @@ class TopTools_MapOfOrientedShape : public TCollection_BasicMap {
 	:rtype: None
 ") TopTools_MapOfOrientedShape;
 		 TopTools_MapOfOrientedShape (const Standard_Integer NbBuckets = 1);
+		%feature("compactdefaultargs") TopTools_MapOfOrientedShape;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_MapOfOrientedShape &
+	:rtype: None
+") TopTools_MapOfOrientedShape;
+		 TopTools_MapOfOrientedShape (const TopTools_MapOfOrientedShape & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_MapOfOrientedShape &
@@ -3879,6 +3899,12 @@ class TopTools_MapOfShape : public TCollection_BasicMap {
 	:rtype: None
 ") TopTools_MapOfShape;
 		 TopTools_MapOfShape (const Standard_Integer NbBuckets = 1);
+		%feature("compactdefaultargs") TopTools_MapOfShape;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_MapOfShape &
+	:rtype: None
+") TopTools_MapOfShape;
+		 TopTools_MapOfShape (const TopTools_MapOfShape & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TopTools_MapOfShape &
@@ -4055,6 +4081,12 @@ class TopTools_SequenceOfShape : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") TopTools_SequenceOfShape;
 		 TopTools_SequenceOfShape ();
+		%feature("compactdefaultargs") TopTools_SequenceOfShape;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopTools_SequenceOfShape &
+	:rtype: None
+") TopTools_SequenceOfShape;
+		 TopTools_SequenceOfShape (const TopTools_SequenceOfShape & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -4225,7 +4257,7 @@ class TopTools_ShapeSet {
 ") SetFormatNb;
 		void SetFormatNb (const Standard_Integer theFormatNb);
 		%feature("compactdefaultargs") FormatNb;
-		%feature("autodoc", "	* two formats available for the moment: First: does not write CurveOnSurface UV Points into the file  on reading calls Check() method. Second: stores CurveOnSurface UV Points. On reading format is recognized from Version string.
+		%feature("autodoc", "	* two formats available for the moment: First: does not write CurveOnSurface UV Points into the file on reading calls Check() method. Second: stores CurveOnSurface UV Points. On reading format is recognized from Version string.
 
 	:rtype: int
 ") FormatNb;
@@ -4421,7 +4453,7 @@ class TopTools_ShapeSet {
 ") Check;
 		virtual void Check (const TopAbs_ShapeEnum T,TopoDS_Shape & S);
 		%feature("compactdefaultargs") NbShapes;
-		%feature("autodoc", "	* //!Returns number of shapes read from file.
+		%feature("autodoc", "	* Returns number of shapes read from file.
 
 	:rtype: int
 ") NbShapes;

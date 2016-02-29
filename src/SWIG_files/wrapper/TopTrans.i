@@ -260,7 +260,7 @@ class TopTrans_SurfaceTransition {
 ") Reset;
 		void Reset (const gp_Dir & Tgt,const gp_Dir & Norm);
 		%feature("compactdefaultargs") Compare;
-		%feature("autodoc", "	* Add a face element to the boundary.  - S defines topological orientation for the face : S FORWARD means: along the intersection curve on the reference surface, transition states while crossing the face are OUT,IN. S REVERSED means states are IN,OUT. S INTERNAL means states are IN,IN.  - O defines curve's position on face : O FORWARD means the face is before the intersection O REVERSED means the face is AFTER O INTERNAL means the curve intersection is in the face. PREQUESITORY : Norm oriented OUTSIDE 'geometric matter'
+		%feature("autodoc", "	* Add a face element to the boundary. //! - S defines topological orientation for the face : S FORWARD means: along the intersection curve on the reference surface, transition states while crossing the face are OUT,IN. S REVERSED means states are IN,OUT. S INTERNAL means states are IN,IN. //! - O defines curve's position on face : O FORWARD means the face is before the intersection O REVERSED means the face is AFTER O INTERNAL means the curve intersection is in the face. PREQUESITORY : Norm oriented OUTSIDE 'geometric matter'
 
 	:param Tole:
 	:type Tole: float

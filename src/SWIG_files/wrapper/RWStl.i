@@ -60,7 +60,7 @@ def register_handle(handle, base_object):
 class RWStl {
 	public:
 		%feature("compactdefaultargs") WriteBinary;
-		%feature("autodoc", "	* write the meshing in a file following the  binary format of an STL file.  Returns false if the cannot be opened;
+		%feature("autodoc", "	* write the meshing in a file following the binary format of an STL file. Returns false if the cannot be opened;
 
 	:param aMesh:
 	:type aMesh: Handle_StlMesh_Mesh &
@@ -72,7 +72,7 @@ class RWStl {
 ") WriteBinary;
 		static Standard_Boolean WriteBinary (const Handle_StlMesh_Mesh & aMesh,const OSD_Path & aPath,const Handle_Message_ProgressIndicator & aProgInd = NULL);
 		%feature("compactdefaultargs") WriteAscii;
-		%feature("autodoc", "	* write the meshing in a file following the  Ascii format of an STL file.  Returns false if the cannot be opened;
+		%feature("autodoc", "	* write the meshing in a file following the Ascii format of an STL file. Returns false if the cannot be opened;
 
 	:param aMesh:
 	:type aMesh: Handle_StlMesh_Mesh &
@@ -84,7 +84,7 @@ class RWStl {
 ") WriteAscii;
 		static Standard_Boolean WriteAscii (const Handle_StlMesh_Mesh & aMesh,const OSD_Path & aPath,const Handle_Message_ProgressIndicator & aProgInd = NULL);
 		%feature("compactdefaultargs") ReadFile;
-		%feature("autodoc", "	* This method will chwck if the file is a binary  file or an AsciiFile testing the 5 first  characters of the file wich are :'solid' in an  ascii file. If we do not find that word we assume  that it is a binary file.
+		%feature("autodoc", "	* This method will chwck if the file is a binary file or an AsciiFile testing the 5 first characters of the file wich are :'solid' in an ascii file. If we do not find that word we assume that it is a binary file.
 
 	:param aPath:
 	:type aPath: OSD_Path &

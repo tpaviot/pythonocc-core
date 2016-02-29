@@ -4022,7 +4022,7 @@ class TopOpeBRepDS_FaceInterferenceTool {
 ") TopOpeBRepDS_FaceInterferenceTool;
 		 TopOpeBRepDS_FaceInterferenceTool (const TopOpeBRepDS_PDataStructure & P);
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "	* Eisnew = true if E is a new edge built on edge I->Geometry() 	 false if E is shape <=> I->Geometry()
+		%feature("autodoc", "	* Eisnew = true if E is a new edge built on edge I->Geometry() false if E is shape <=> I->Geometry()
 
 	:param FI:
 	:type FI: TopoDS_Shape &
@@ -4036,7 +4036,7 @@ class TopOpeBRepDS_FaceInterferenceTool {
 ") Init;
 		void Init (const TopoDS_Shape & FI,const TopoDS_Shape & E,const Standard_Boolean Eisnew,const Handle_TopOpeBRepDS_Interference & I);
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "	* Eisnew = true if E is a new edge built on edge I->Geometry() 	 false if E is shape <=> I->Geometry()
+		%feature("autodoc", "	* Eisnew = true if E is a new edge built on edge I->Geometry() false if E is shape <=> I->Geometry()
 
 	:param FI:
 	:type FI: TopoDS_Shape &
@@ -4166,7 +4166,7 @@ class TopOpeBRepDS_GapFiller {
 ") FindAssociatedPoints;
 		void FindAssociatedPoints (const Handle_TopOpeBRepDS_Interference & I,TopOpeBRepDS_ListOfInterference & LI);
 		%feature("compactdefaultargs") CheckConnexity;
-		%feature("autodoc", "	* //!Enchaine les sections via les points d'Interferences deja  associe; Renvoit dans <L> les points extremites des Lignes. Methodes pour construire la liste des Points qui peuvent correspondre a une Point donne.
+		%feature("autodoc", "	* Enchaine les sections via les points d'Interferences deja associe; Renvoit dans <L> les points extremites des Lignes. Methodes pour construire la liste des Points qui peuvent correspondre a une Point donne.
 
 	:param LI:
 	:type LI: TopOpeBRepDS_ListOfInterference &
@@ -5488,6 +5488,12 @@ class TopOpeBRepDS_ListOfInterference {
 		%feature("autodoc", "	:rtype: None
 ") TopOpeBRepDS_ListOfInterference;
 		 TopOpeBRepDS_ListOfInterference ();
+		%feature("compactdefaultargs") TopOpeBRepDS_ListOfInterference;
+		%feature("autodoc", "	:param Other:
+	:type Other: TopOpeBRepDS_ListOfInterference &
+	:rtype: None
+") TopOpeBRepDS_ListOfInterference;
+		 TopOpeBRepDS_ListOfInterference (const TopOpeBRepDS_ListOfInterference & Other);
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "	:param Other:
 	:type Other: TopOpeBRepDS_ListOfInterference &
@@ -6921,7 +6927,7 @@ class TopOpeBRepDS_Transition {
 ") IndexAfter;
 		Standard_Integer IndexAfter ();
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "	* set the transition corresponding to orientation <O>  O Before After FORWARD OUT IN REVERSED IN OUT INTERNAL IN IN EXTERNAL OUT OUT
+		%feature("autodoc", "	* set the transition corresponding to orientation <O> //! O Before After //! FORWARD OUT IN REVERSED IN OUT INTERNAL IN IN EXTERNAL OUT OUT
 
 	:param O:
 	:type O: TopAbs_Orientation
@@ -6929,7 +6935,7 @@ class TopOpeBRepDS_Transition {
 ") Set;
 		void Set (const TopAbs_Orientation O);
 		%feature("compactdefaultargs") Orientation;
-		%feature("autodoc", "	* returns the orientation corresponding to state <S> Before and After not equal TopAbs_ON : -------------------------------------- Before After Computed orientation S not S REVERSED (we leave state S) not S S FORWARD (we enter state S) S S INTERNAL (we stay in state S) not S not S EXTERNAL (we stay outside state S)
+		%feature("autodoc", "	* returns the orientation corresponding to state <S> //! Before and After not equal TopAbs_ON : -------------------------------------- Before After Computed orientation //! S not S REVERSED (we leave state S) not S S FORWARD (we enter state S) S S INTERNAL (we stay in state S) not S not S EXTERNAL (we stay outside state S)
 
 	:param S:
 	:type S: TopAbs_State
@@ -7210,7 +7216,7 @@ class TopOpeBRepDS_PointIterator : public TopOpeBRepDS_InterferenceIterator {
 class TopOpeBRepDS_ShapeShapeInterference : public TopOpeBRepDS_Interference {
 	public:
 		%feature("compactdefaultargs") TopOpeBRepDS_ShapeShapeInterference;
-		%feature("autodoc", "	* a shape interfers on shape <G> with shape <S>. examples : create a ShapeShapeInterference describing : vertex V of edge E1 found on edge E2 : ST,S,GT,G = TopOpeBRepDS_EDGE,E2,TopOpeBRepDS_VERTEX,V create a ShapeShapeInterference describing vertex V of edge E found on face F : ST,S,GT,G = TopOpeBRepDS_FACE,F,TopOpeBRepDS_VERTEX,V <GBound> indicates if shape <G> is a bound of shape <S>. <SCC> : UNSH_GEOMETRY : 	 <S> and <Ancestor> have any types, 	 <S> and <Ancestor> don't share the same geometry SAME_ORIENTED : 	 <S> and <Ancestor> have identical types, 	 <S> and <Ancestor> orientations are IDENTICAL. DIFF_ORIENTED : 	 <S> and <Ancestor> have identical types, 	 <S> and <Ancestor> orientations are DIFFERENT.
+		%feature("autodoc", "	* a shape interfers on shape <G> with shape <S>. examples : create a ShapeShapeInterference describing : vertex V of edge E1 found on edge E2 : ST,S,GT,G = TopOpeBRepDS_EDGE,E2,TopOpeBRepDS_VERTEX,V //! create a ShapeShapeInterference describing vertex V of edge E found on face F : ST,S,GT,G = TopOpeBRepDS_FACE,F,TopOpeBRepDS_VERTEX,V //! <GBound> indicates if shape <G> is a bound of shape <S>. //! <SCC> : UNSH_GEOMETRY : <S> and <Ancestor> have any types, <S> and <Ancestor> don't share the same geometry SAME_ORIENTED : <S> and <Ancestor> have identical types, <S> and <Ancestor> orientations are IDENTICAL. DIFF_ORIENTED : <S> and <Ancestor> have identical types, <S> and <Ancestor> orientations are DIFFERENT.
 
 	:param T:
 	:type T: TopOpeBRepDS_Transition &
@@ -7497,7 +7503,7 @@ class TopOpeBRepDS_SurfaceIterator : public TopOpeBRepDS_InterferenceIterator {
 class TopOpeBRepDS_EdgeVertexInterference : public TopOpeBRepDS_ShapeShapeInterference {
 	public:
 		%feature("compactdefaultargs") TopOpeBRepDS_EdgeVertexInterference;
-		%feature("autodoc", "	* Create an interference of VERTEX <G> on a crossed EDGE E. if support type <ST> == EDGE : <S> is edge E  FACE : <S> is the face with bound E. <T> is the transition along the edge, crossing the crossed edge. E is the crossed edge. <GIsBound> indicates if <G> is a bound of the edge. <P> is the parameter of <G> on the edge. interference is stored in the list of interfs of the edge.
+		%feature("autodoc", "	* Create an interference of VERTEX <G> on a crossed EDGE E. //! if support type <ST> == EDGE : <S> is edge E FACE : <S> is the face with bound E. <T> is the transition along the edge, crossing the crossed edge. E is the crossed edge. <GIsBound> indicates if <G> is a bound of the edge. <P> is the parameter of <G> on the edge. //! interference is stored in the list of interfs of the edge.
 
 	:param T:
 	:type T: TopOpeBRepDS_Transition &
@@ -7517,7 +7523,7 @@ class TopOpeBRepDS_EdgeVertexInterference : public TopOpeBRepDS_ShapeShapeInterf
 ") TopOpeBRepDS_EdgeVertexInterference;
 		 TopOpeBRepDS_EdgeVertexInterference (const TopOpeBRepDS_Transition & T,const TopOpeBRepDS_Kind ST,const Standard_Integer S,const Standard_Integer G,const Standard_Boolean GIsBound,const TopOpeBRepDS_Config C,const Standard_Real P);
 		%feature("compactdefaultargs") TopOpeBRepDS_EdgeVertexInterference;
-		%feature("autodoc", "	* Create an interference of VERTEX <G> on crossed EDGE <S>. <T> is the transition along the edge, crossing the crossed edge. <S> is the crossed edge. <GIsBound> indicates if <G> is a bound of the edge. <C> indicates the geometric configuration between the edge and the crossed edge. <P> is the parameter of <G> on the edge. interference is stored in the list of interfs of the edge.
+		%feature("autodoc", "	* Create an interference of VERTEX <G> on crossed EDGE <S>. //! <T> is the transition along the edge, crossing the crossed edge. <S> is the crossed edge. <GIsBound> indicates if <G> is a bound of the edge. <C> indicates the geometric configuration between the edge and the crossed edge. <P> is the parameter of <G> on the edge. //! interference is stored in the list of interfs of the edge.
 
 	:param T:
 	:type T: TopOpeBRepDS_Transition &

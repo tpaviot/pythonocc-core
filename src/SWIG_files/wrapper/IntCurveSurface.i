@@ -383,6 +383,12 @@ class IntCurveSurface_SequenceOfPnt : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") IntCurveSurface_SequenceOfPnt;
 		 IntCurveSurface_SequenceOfPnt ();
+		%feature("compactdefaultargs") IntCurveSurface_SequenceOfPnt;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntCurveSurface_SequenceOfPnt &
+	:rtype: None
+") IntCurveSurface_SequenceOfPnt;
+		 IntCurveSurface_SequenceOfPnt (const IntCurveSurface_SequenceOfPnt & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
@@ -515,6 +521,12 @@ class IntCurveSurface_SequenceOfSeg : public TCollection_BaseSequence {
 		%feature("autodoc", "	:rtype: None
 ") IntCurveSurface_SequenceOfSeg;
 		 IntCurveSurface_SequenceOfSeg ();
+		%feature("compactdefaultargs") IntCurveSurface_SequenceOfSeg;
+		%feature("autodoc", "	:param Other:
+	:type Other: IntCurveSurface_SequenceOfSeg &
+	:rtype: None
+") IntCurveSurface_SequenceOfSeg;
+		 IntCurveSurface_SequenceOfSeg (const IntCurveSurface_SequenceOfSeg & Other);
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "	:rtype: None
 ") Clear;
